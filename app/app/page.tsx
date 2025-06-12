@@ -32,7 +32,7 @@ export default function Home() {
         <div className="container relative z-10 px-4 md:px-6 flex flex-col items-center justify-center flex-1">
           <div className="flex flex-col items-center justify-center text-center max-w-4xl w-full">
             <div>
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tighter mb-6 text-center">MCP Control Platform</h1>
+              <h1 className="text-5xl md:text-6xl font-bold tracking-tighter mb-6 text-center">MCP Orchestration Platform</h1>
               <p className="text-xl text-gray-700 mb-8 max-w-md mx-auto">
                 Archestra makes it easy for enterprises to manage MCP servers with security and enterprise-readiness
                 focus.
