@@ -62,6 +62,7 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center">
               <div className="w-full max-w-lg">
                 <SlackButton />
+                
               </div>
               <div className="w-full max-w-lg">
                 <EmailForm />
