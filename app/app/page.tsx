@@ -1,4 +1,6 @@
 import { Linkedin } from "lucide-react"
+import { EmailForm } from "../components/email-form"
+import { SlackButton } from "../components/slack-button"
 
 export default function Home() {
   return (
@@ -27,7 +29,7 @@ export default function Home() {
 
         <div className="container relative z-10 px-4 md:px-6 flex flex-col items-center justify-center flex-1">
           <div className="flex flex-col items-center justify-center space-y-4">
-            <p className="text-sm text-gray-500">Founded by</p>
+            <p className="text-sm text-gray-500">Founded with conviction and urgency by</p>
             <div className="flex flex-wrap gap-6 justify-center">
               <a
                 href="https://www.linkedin.com/in/ildari/"
@@ -47,6 +49,23 @@ export default function Home() {
                 <Linkedin size={18} />
                 <span>Matvey Kukuy</span>
               </a>
+              <a
+                href="https://www.linkedin.com/in/josephorlando1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-gray-700 hover:text-yellow-600 transition-colors"
+              >
+                <Linkedin size={18} />
+                <span>Joey Orlando</span>
+              </a>
+            </div>
+            <div className="flex flex-col items-center justify-center">
+              <div className="w-full max-w-lg">
+                <SlackButton />
+              </div>
+              <div className="w-full max-w-lg">
+                <EmailForm />
+              </div>
             </div>
           </div>
         </div>
