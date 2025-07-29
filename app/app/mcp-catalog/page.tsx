@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import {
   Card,
   CardContent,
@@ -169,7 +170,9 @@ export default function MCPCatalogPage() {
             </div>
           </div>
 
-          <MCPCatalogClient mcpServers={mcpServers} categories={categories} />
+          <Suspense fallback={<div>Loading catalog...</div>}>
+            <MCPCatalogClient mcpServers={mcpServers} categories={categories} />
+          </Suspense>
         </div>
       </main>
 
