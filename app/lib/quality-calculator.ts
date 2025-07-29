@@ -95,10 +95,10 @@ export function calculateBadgeUsageScore(
     return 0;
   }
 
-  // Check for common badge patterns that might indicate our badge usage
-  const badgePatterns = [/archestra/i, /mcp.*badge/i, /quality.*score/i];
+  // Check for our specific Archestra MCP Quality badge pattern
+  const archestraBadgePattern = /\[\!\[MCP Quality\]\(https:\/\/archestra\.ai\/api\/badge\/quality\//i;
 
-  return badgePatterns.some((pattern) => pattern.test(readmeContent)) ? 2 : 0;
+  return archestraBadgePattern.test(readmeContent) ? 2 : 0;
 }
 
 /**

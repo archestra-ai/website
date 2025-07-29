@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../..
 import { Badge } from "../../../components/ui/badge";
 import { Button } from "../../../components/ui/button";
 import { MCPServer, getMCPServerName, getMCPServerGitHubUrl } from "../../../data/types";
-import { loadAllServers } from "../../../lib/server-utils";
+import { loadServers } from "../../../lib/server-utils";
 import { calculateQualityScore } from "../../../lib/quality-calculator";
 import { QualityBar } from "../../../components/quality-bar";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
@@ -18,13 +18,16 @@ import rehypeRaw from "rehype-raw";
 import "highlight.js/styles/github.css";
 
 interface PageProps {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default function MCPDetailPage({ params, searchParams }: PageProps) {
-  const servers = loadAllServers();
-  const server = servers.find(s => s.slug === params.slug);
+export default async function MCPDetailPage({ params, searchParams }: PageProps) {
+  const { slug } = await params;
+  const searchParamsData = await searchParams;
+  
+  const servers = loadServers(slug);
+  const server = servers[0];
   
   if (!server) {
     notFound();
@@ -33,12 +36,14 @@ export default function MCPDetailPage({ params, searchParams }: PageProps) {
   // Build back URL with preserved state
   const backUrl = (() => {
     const catalogParams = new URLSearchParams();
-    const search = typeof searchParams.search === 'string' ? searchParams.search : undefined;
-    const category = typeof searchParams.category === 'string' ? searchParams.category : undefined;
-    const scroll = typeof searchParams.scroll === 'string' ? searchParams.scroll : undefined;
+    const search = typeof searchParamsData.search === 'string' ? searchParamsData.search : undefined;
+    const category = typeof searchParamsData.category === 'string' ? searchParamsData.category : undefined;
+    const language = typeof searchParamsData.language === 'string' ? searchParamsData.language : undefined;
+    const scroll = typeof searchParamsData.scroll === 'string' ? searchParamsData.scroll : undefined;
     
     if (search) catalogParams.set('search', search);
     if (category) catalogParams.set('category', category);
+    if (language) catalogParams.set('language', language);
     if (scroll) catalogParams.set('scroll', scroll);
     
     return catalogParams.toString() ? `/mcp-catalog?${catalogParams.toString()}` : '/mcp-catalog';
@@ -87,6 +92,38 @@ export default function MCPDetailPage({ params, searchParams }: PageProps) {
                         </>
                       )}
                     </div>
+                    
+                    {/* Commit Hash and Last Scraped */}
+                    <div className="flex flex-wrap gap-4 mb-4 text-xs text-gray-500">
+                      {server.gh_latest_commit_hash && (
+                        <div className="flex items-center gap-1">
+                          <span>🔗 Latest commit:</span>
+                          <a 
+                            href={`${githubUrl}/commit/${server.gh_latest_commit_hash}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-mono text-blue-600 hover:underline"
+                            title={server.gh_latest_commit_hash}
+                          >
+                            {server.gh_latest_commit_hash.substring(0, 7)}
+                          </a>
+                        </div>
+                      )}
+                      {server.last_scraped_at && (
+                        <div className="flex items-center gap-1">
+                          <span>🕒 Updated:</span>
+                          <span className="font-mono">
+                            {new Date(server.last_scraped_at).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'short',
+                              day: 'numeric',
+                              hour: '2-digit',
+                              minute: '2-digit'
+                            })}
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <div className="flex gap-2">
                     <Badge variant="outline">
@@ -103,7 +140,7 @@ export default function MCPDetailPage({ params, searchParams }: PageProps) {
               {/* Quality Score */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Archestra MCP Quality Score</CardTitle>
+                  <CardTitle>MCP Quality Score</CardTitle>
                   <CardDescription>
                     {server.qualityScore !== null 
                       ? "Based on our comprehensive evaluation criteria" 
@@ -154,6 +191,46 @@ export default function MCPDetailPage({ params, searchParams }: PageProps) {
                   })()}
                 </CardContent>
               </Card>
+
+              {/* Configuration */}
+              {server.configToRun ? (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Configuration</CardTitle>
+                    <CardDescription>Configuration example extracted from README.md for Claude Desktop and other clients.</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="bg-gray-50 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+                      <pre className="whitespace-pre-wrap">
+                        {JSON.stringify(server.configToRun, null, 2)}
+                      </pre>
+                    </div>
+                  </CardContent>
+                </Card>
+              ) : (
+                <Card className="border-dashed border-2 border-gray-300">
+                  <CardHeader>
+                    <CardTitle>Configuration Needed</CardTitle>
+                    <CardDescription>Help improve this catalog by contributing configuration information</CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <p className="text-gray-600 mb-4">
+                      We don't have configuration information for this MCP server yet.
+                    </p>
+                    <a
+                      href={`https://github.com/archestra-ai/website/issues/new?title=Add configuration for ${encodeURIComponent(serverName)}&body=Please add configToRun information for the MCP server: ${encodeURIComponent(serverName)}%0A%0AServer: ${server.gitHubOrg}/${server.gitHubRepo}${server.repositoryPath ? `/${server.repositoryPath}` : ''}%0ASlug: ${server.slug}%0A%0APlease provide the JSON configuration needed to run this server.`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                      </svg>
+                      Suggest Configuration
+                    </a>
+                  </CardContent>
+                </Card>
+              )}
 
               {/* GitHub Metrics */}
               {server.qualityScore !== null && (
@@ -366,6 +443,21 @@ export default function MCPDetailPage({ params, searchParams }: PageProps) {
                   })()}
                 </CardContent>
               </Card>
+
+              {/* Open Source Button */}
+              <div>
+                <a
+                  href="https://github.com/archestra-ai/website/issues/new"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 w-full justify-center"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                  </svg>
+                  This catalog is Open Source: add new MCP, propose a fix!
+                </a>
+              </div>
             </div>
           </div>
         </div>

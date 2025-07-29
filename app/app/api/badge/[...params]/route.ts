@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import { MCPServer } from "../../../../data/types";
-import { loadAllServers } from "../../../../lib/server-utils";
+import { loadServers } from "../../../../lib/server-utils";
 
 export async function GET(
   request: NextRequest,
@@ -21,13 +21,18 @@ export async function GET(
   // Convert path back from URL format (-- becomes /)
   const repositoryPath = pathParts.length > 0 ? pathParts.join('/').replace(/--/g, '/') : null;
   
-  // Find the server
-  const servers = loadAllServers();
-  const server = servers.find(s => 
-    s.gitHubOrg === githubOrg && 
-    s.gitHubRepo === repoName && 
-    s.repositoryPath === repositoryPath
-  );
+  // Construct slug to match the format used in loadServers
+  const slug = repositoryPath 
+    ? `${githubOrg}__${repoName}__${repositoryPath.replace(/\//g, '__')}`
+        .toLowerCase()
+        .replace(/[^a-z0-9_-]/g, "-")
+    : `${githubOrg}__${repoName}`
+        .toLowerCase()
+        .replace(/[^a-z0-9_-]/g, "-");
+  
+  // Find the server by slug
+  const servers = loadServers(slug);
+  const server = servers[0];
 
   if (!server) {
     // Return a "calculating" badge instead of 404

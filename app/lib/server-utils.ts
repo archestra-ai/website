@@ -2,6 +2,15 @@ import { MCPServer } from "../data/types";
 import fs from "fs";
 import path from "path";
 
+// Cache for loaded servers
+const serversCache = new Map<string, MCPServer[]>();
+const CACHE_KEY_ALL = "__ALL_SERVERS__";
+
+// Clear the cache (useful for development or when data changes)
+export function clearServersCache(): void {
+  serversCache.clear();
+}
+
 // Extract server info and generate slug from GitHub URL
 export function extractServerInfo(githubUrl: string): { gitHubOrg: string; gitHubRepo: string; slug: string; repositoryPath: string | null } {
   try {
@@ -52,38 +61,66 @@ export function extractServerInfo(githubUrl: string): { gitHubOrg: string; gitHu
   }
 }
 
-// Load all servers from mcp-servers.json and merge with evaluations
-export function loadAllServers(): MCPServer[] {
+// Load servers from mcp-servers.json and merge with evaluations
+// If slug is provided, returns only that specific server in an array
+// If no slug is provided, returns all servers
+export function loadServers(slug?: string): MCPServer[] {
+  // Clear cache in development mode to ensure fresh data
+  if (process.env.NODE_ENV === 'development') {
+    serversCache.clear();
+  }
+  
+  // Check cache first
+  const cacheKey = slug || CACHE_KEY_ALL;
+  const cached = serversCache.get(cacheKey);
+  if (cached) {
+    return cached;
+  }
   const servers: MCPServer[] = [];
   const evaluationsMap = new Map<string, MCPServer>();
   const processedSlugs = new Set<string>();
 
-  // First, load all evaluations
-  const evaluationsDir = path.join(process.cwd(), "data", "mcp-evaluations");
+  // If a specific slug is requested, try to load just that evaluation file
+  if (slug) {
+    const evaluationPath = path.join(process.cwd(), "data", "mcp-evaluations", `${slug}.json`);
+    
+    if (fs.existsSync(evaluationPath)) {
+      try {
+        const content = fs.readFileSync(evaluationPath, "utf-8");
+        const evaluation = JSON.parse(content) as MCPServer;
+        evaluationsMap.set(evaluation.slug, evaluation);
+      } catch (error) {
+        console.warn(`Failed to load evaluation file for ${slug}:`, error);
+      }
+    }
+  } else {
+    // Load all evaluations if no specific slug is requested
+    const evaluationsDir = path.join(process.cwd(), "data", "mcp-evaluations");
 
-  if (fs.existsSync(evaluationsDir)) {
-    try {
-      const files = fs.readdirSync(evaluationsDir);
+    if (fs.existsSync(evaluationsDir)) {
+      try {
+        const files = fs.readdirSync(evaluationsDir);
 
-      for (const file of files) {
-        if (file.endsWith(".json")) {
-          try {
-            const filePath = path.join(evaluationsDir, file);
-            const content = fs.readFileSync(filePath, "utf-8");
-            const evaluation = JSON.parse(content) as MCPServer;
-            // Map by slug instead of trying to reconstruct URL
-            evaluationsMap.set(evaluation.slug, evaluation);
-          } catch (error) {
-            console.warn(`Failed to load evaluation file ${file}:`, error);
+        for (const file of files) {
+          if (file.endsWith(".json")) {
+            try {
+              const filePath = path.join(evaluationsDir, file);
+              const content = fs.readFileSync(filePath, "utf-8");
+              const evaluation = JSON.parse(content) as MCPServer;
+              // Map by slug instead of trying to reconstruct URL
+              evaluationsMap.set(evaluation.slug, evaluation);
+            } catch (error) {
+              console.warn(`Failed to load evaluation file ${file}:`, error);
+            }
           }
         }
+      } catch (error) {
+        console.error("Failed to load evaluations:", error);
       }
-    } catch (error) {
-      console.error("Failed to load evaluations:", error);
     }
   }
 
-  // Then, load all servers from mcp-servers.json
+  // Then, load servers from mcp-servers.json
   const mcpServersPath = path.join(process.cwd(), "data", "mcp-servers.json");
 
   try {
@@ -92,23 +129,33 @@ export function loadAllServers(): MCPServer[] {
 
     for (const url of mcpServerUrls) {
       // Extract info to generate slug for lookup
-      const { gitHubOrg, gitHubRepo, slug, repositoryPath } = extractServerInfo(url);
+      const { gitHubOrg, gitHubRepo, slug: urlSlug, repositoryPath } = extractServerInfo(url);
       
-      // Skip if we've already processed this slug (avoid duplicates)
-      if (processedSlugs.has(slug)) {
+      // If we're looking for a specific slug, skip others
+      if (slug && urlSlug !== slug) {
         continue;
       }
-      processedSlugs.add(slug);
+      
+      // Skip if we've already processed this slug (avoid duplicates)
+      if (processedSlugs.has(urlSlug)) {
+        continue;
+      }
+      processedSlugs.add(urlSlug);
       
       // Check if we have an evaluation for this server using the slug
-      const evaluation = evaluationsMap.get(slug);
+      const evaluation = evaluationsMap.get(urlSlug);
 
       if (evaluation) {
         servers.push(evaluation);
+        // If we found the specific slug we're looking for, we can cache and return early
+        if (slug) {
+          serversCache.set(cacheKey, servers);
+          return servers;
+        }
       } else {
         // Create a placeholder entry for servers without evaluation
-        servers.push({
-          slug,
+        const server = {
+          slug: urlSlug,
           description: "We're evaluating this MCP server",
           category: null,
           qualityScore: null,
@@ -130,7 +177,13 @@ export function loadAllServers(): MCPServer[] {
           implementing_stdio: false,
           implementing_streamable_http: false,
           implementing_oauth2: false,
-        });
+        };
+        servers.push(server);
+        // If we found the specific slug we're looking for, we can cache and return early
+        if (slug) {
+          serversCache.set(cacheKey, servers);
+          return servers;
+        }
       }
     }
   } catch (error) {
@@ -138,7 +191,7 @@ export function loadAllServers(): MCPServer[] {
   }
 
   // Sort: evaluated servers first (by quality score), then unevaluated servers
-  return servers.sort((a, b) => {
+  const sortedServers = servers.sort((a, b) => {
     // Get names using the helper function
     const nameA = a.repositoryPath ? a.repositoryPath.split('/').pop() || a.gitHubRepo : a.gitHubRepo;
     const nameB = b.repositoryPath ? b.repositoryPath.split('/').pop() || b.gitHubRepo : b.gitHubRepo;
@@ -158,4 +211,8 @@ export function loadAllServers(): MCPServer[] {
     // Among unevaluated servers, sort alphabetically
     return nameA.localeCompare(nameB);
   });
+
+  // Cache the results
+  serversCache.set(cacheKey, sortedServers);
+  return sortedServers;
 }

@@ -53,6 +53,8 @@ export interface MCPServer {
   gh_issues: number;
   gh_releases: boolean;
   gh_ci_cd: boolean;
+  gh_latest_commit_hash?: string;
+  last_scraped_at?: string; // ISO date string
   // MCP Protocol Features
   implementing_tools: boolean;
   implementing_prompts: boolean;
@@ -65,6 +67,8 @@ export interface MCPServer {
   implementing_streamable_http: boolean;
   // Authorization Support
   implementing_oauth2: boolean;
+  // Configuration
+  configToRun?: Record<string, any> | null;
   tools?: MCPTool[];
   scoreBreakdown?: {
     codeQuality: number;

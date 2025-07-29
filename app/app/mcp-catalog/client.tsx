@@ -11,7 +11,7 @@ import {
 import Link from "next/link";
 import { Badge } from "../../components/ui/badge";
 import { Input } from "../../components/ui/input";
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { MCPServer, getMCPServerName, getMCPServerGitHubUrl } from "../../data/types";
 import { QualityBar } from "../../components/quality-bar";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -21,10 +21,11 @@ const ITEMS_PER_PAGE = 30;
 interface MCPCatalogClientProps {
   mcpServers: MCPServer[];
   categories: string[];
+  languages: string[];
 }
 
 
-export default function MCPCatalogClient({ mcpServers, categories }: MCPCatalogClientProps) {
+export default function MCPCatalogClient({ mcpServers, categories, languages }: MCPCatalogClientProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const serverGridRef = useRef<HTMLDivElement>(null);
@@ -34,6 +35,7 @@ export default function MCPCatalogClient({ mcpServers, categories }: MCPCatalogC
   // Initialize state from URL parameters
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || "");
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || "All");
+  const [selectedLanguage, setSelectedLanguage] = useState(searchParams.get('language') || "All");
   const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
   const [isLoading, setIsLoading] = useState(false);
   const [isClient, setIsClient] = useState(false);
@@ -42,6 +44,23 @@ export default function MCPCatalogClient({ mcpServers, categories }: MCPCatalogC
   useEffect(() => {
     setIsClient(true);
   }, []);
+  
+  // Check if any filters are active
+  const hasActiveFilters = searchQuery !== "" || selectedCategory !== "All" || selectedLanguage !== "All";
+  
+  // Count active filters
+  const activeFilterCount = [
+    searchQuery !== "",
+    selectedCategory !== "All",
+    selectedLanguage !== "All"
+  ].filter(Boolean).length;
+  
+  // Clear all filters
+  const clearFilters = () => {
+    setSearchQuery("");
+    setSelectedCategory("All");
+    setSelectedLanguage("All");
+  };
   
   // Restore scroll position
   useEffect(() => {
@@ -59,10 +78,11 @@ export default function MCPCatalogClient({ mcpServers, categories }: MCPCatalogC
     const params = new URLSearchParams();
     if (searchQuery) params.set('search', searchQuery);
     if (selectedCategory !== 'All') params.set('category', selectedCategory);
+    if (selectedLanguage !== 'All') params.set('language', selectedLanguage);
     
     const newUrl = params.toString() ? `?${params.toString()}` : '/mcp-catalog';
     router.replace(newUrl, { scroll: false });
-  }, [searchQuery, selectedCategory, router]);
+  }, [searchQuery, selectedCategory, selectedLanguage, router]);
 
   const filteredServers = mcpServers.filter((server) => {
     const query = searchQuery.toLowerCase();
@@ -77,14 +97,18 @@ export default function MCPCatalogClient({ mcpServers, categories }: MCPCatalogC
       (server.repositoryPath && server.repositoryPath.toLowerCase().includes(query)) ||
       (server.readme && server.readme.toLowerCase().includes(query));
     const matchesCategory =
-      selectedCategory === "All" || server.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+      selectedCategory === "All" || 
+      (selectedCategory === "Uncategorized" && server.category === null) ||
+      server.category === selectedCategory;
+    const matchesLanguage =
+      selectedLanguage === "All" || server.programmingLanguage === selectedLanguage;
+    return matchesSearch && matchesCategory && matchesLanguage;
   });
 
   // Reset displayed items when filters change
   useEffect(() => {
     setDisplayedItems(ITEMS_PER_PAGE);
-  }, [searchQuery, selectedCategory]);
+  }, [searchQuery, selectedCategory, selectedLanguage]);
 
   // Load more items
   const loadMore = useCallback(() => {
@@ -126,7 +150,21 @@ export default function MCPCatalogClient({ mcpServers, categories }: MCPCatalogC
       <div className="w-64 flex-shrink-0">
         <Card className="bg-gray-50 border-gray-200">
           <CardHeader className="pb-3">
-            <CardTitle className="text-lg text-gray-900">Search & Filter</CardTitle>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-lg text-gray-900">Search & Filter</CardTitle>
+              {hasActiveFilters && (
+                <button
+                  onClick={clearFilters}
+                  className="flex items-center gap-1.5 text-xs text-gray-600 hover:text-gray-900 transition-colors group"
+                >
+                  <span className="bg-gray-200 text-gray-700 px-1.5 py-0.5 rounded-full text-xs font-medium group-hover:bg-gray-300">
+                    {activeFilterCount}
+                  </span>
+                  <X size={14} />
+                  Clear
+                </button>
+              )}
+            </div>
           </CardHeader>
           <CardContent className="pt-0">
             <div className="space-y-4">
@@ -160,7 +198,34 @@ export default function MCPCatalogClient({ mcpServers, categories }: MCPCatalogC
                       <span className="float-right text-xs text-gray-500">
                         {category === "All" 
                           ? mcpServers.length 
+                          : category === "Uncategorized"
+                          ? mcpServers.filter(s => s.category === null).length
                           : mcpServers.filter(s => s.category === category).length}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Programming Languages */}
+              <div>
+                <h3 className="text-sm font-medium text-gray-700 mb-2">Languages</h3>
+                <div className="space-y-1">
+                  {languages.map((language) => (
+                    <button
+                      key={language}
+                      onClick={() => setSelectedLanguage(language)}
+                      className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
+                        selectedLanguage === language
+                          ? "bg-blue-100 text-blue-800 font-medium"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`}
+                    >
+                      {language}
+                      <span className="float-right text-xs text-gray-500">
+                        {language === "All" 
+                          ? mcpServers.length 
+                          : mcpServers.filter(s => s.programmingLanguage === language).length}
                       </span>
                     </button>
                   ))}
@@ -181,6 +246,7 @@ export default function MCPCatalogClient({ mcpServers, categories }: MCPCatalogC
                 const params = new URLSearchParams();
                 if (searchQuery) params.set('search', searchQuery);
                 if (selectedCategory !== 'All') params.set('category', selectedCategory);
+                if (selectedLanguage !== 'All') params.set('language', selectedLanguage);
                 if (isClient) {
                   params.set('scroll', window.scrollY.toString());
                 }

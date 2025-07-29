@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "../../components/ui/card";
 import { MCPServer } from "../../data/types";
-import { loadAllServers } from "../../lib/server-utils";
+import { loadServers } from "../../lib/server-utils";
 import MCPCatalogClient from "./client";
 import BadgeCopyMain from "./badge-copy-main";
 import Header from "../../components/header";
@@ -15,20 +15,45 @@ import Header from "../../components/header";
 // Get unique categories from evaluations
 function getCategories(evaluations: MCPServer[]): string[] {
   const categories = new Set<string>();
+  let hasUncategorized = false;
 
   for (const evaluation of evaluations) {
     if (evaluation.category) {
       categories.add(evaluation.category);
+    } else {
+      hasUncategorized = true;
     }
   }
 
   const sortedCategories = Array.from(categories).sort();
-  return ["All", ...sortedCategories];
+  const result = ["All", ...sortedCategories];
+  
+  // Add Uncategorized at the end if there are any servers without a category
+  if (hasUncategorized) {
+    result.push("Uncategorized");
+  }
+  
+  return result;
+}
+
+// Get unique programming languages from evaluations
+function getProgrammingLanguages(evaluations: MCPServer[]): string[] {
+  const languages = new Set<string>();
+
+  for (const evaluation of evaluations) {
+    if (evaluation.programmingLanguage && evaluation.programmingLanguage !== "Unknown") {
+      languages.add(evaluation.programmingLanguage);
+    }
+  }
+
+  const sortedLanguages = Array.from(languages).sort();
+  return ["All", ...sortedLanguages];
 }
 
 export default function MCPCatalogPage() {
-  const mcpServers = loadAllServers();
+  const mcpServers = loadServers();
   const categories = getCategories(mcpServers);
+  const languages = getProgrammingLanguages(mcpServers);
   
   // Find the highest scoring MCP server for the badge example
   const topScoredServer = mcpServers
@@ -59,22 +84,25 @@ export default function MCPCatalogPage() {
                   MCP Catalog
                 </h1>
                 <p className="text-lg text-gray-600 mb-6">
-                  We at Archestra decided to catalog all the servers and
-                  calculate a score based on code quality, documentation,
-                  community support, stability, and performance.
+                  Too many MCP servers... Let's highlight the best!
                 </p>
 
                 <div className="bg-white border border-gray-200 rounded-lg p-6 mt-10 mb-6 max-w-2xl">
                   <div className="flex items-center gap-4 mb-4">
                     {topScoredServer ? (
-                      <img
-                        src={topScoredServer.repositoryPath 
-                          ? `/api/badge/quality/${topScoredServer.gitHubOrg}/${topScoredServer.gitHubRepo}/${topScoredServer.repositoryPath.replace(/\//g, '--')}`
-                          : `/api/badge/quality/${topScoredServer.gitHubOrg}/${topScoredServer.gitHubRepo}`
-                        }
-                        alt="MCP Quality Badge"
-                        className="h-5"
-                      />
+                      <a
+                        href={`/mcp-catalog/${topScoredServer.slug}`}
+                        className="hover:opacity-80 transition-opacity"
+                      >
+                        <img
+                          src={topScoredServer.repositoryPath 
+                            ? `/api/badge/quality/${topScoredServer.gitHubOrg}/${topScoredServer.gitHubRepo}/${topScoredServer.repositoryPath.replace(/\//g, '--')}`
+                            : `/api/badge/quality/${topScoredServer.gitHubOrg}/${topScoredServer.gitHubRepo}`
+                          }
+                          alt="MCP Quality Badge"
+                          className="h-5"
+                        />
+                      </a>
                     ) : (
                       <img
                         src="/api/badge/quality/YOUR-GITHUB-ORG/YOUR-REPO-NAME"
@@ -83,11 +111,26 @@ export default function MCPCatalogPage() {
                       />
                     )}
                     <span className="text-sm text-gray-500">
-                      ← Add the badge to your README.md to get into the catalog
+                      ← Add the badge to your README.md
                     </span>
                   </div>
 
                   <BadgeCopyMain />
+                </div>
+
+                {/* Add Server Button */}
+                <div className="mt-8">
+                  <a
+                    href="https://github.com/archestra-ai/website/issues/new"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                    This catalog is Open Source: add new MCP, propose a fix!
+                  </a>
                 </div>
               </div>
 
@@ -171,7 +214,7 @@ export default function MCPCatalogPage() {
           </div>
 
           <Suspense fallback={<div>Loading catalog...</div>}>
-            <MCPCatalogClient mcpServers={mcpServers} categories={categories} />
+            <MCPCatalogClient mcpServers={mcpServers} categories={categories} languages={languages} />
           </Suspense>
         </div>
       </main>

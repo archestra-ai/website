@@ -26,6 +26,7 @@ interface GitHubApiResponse {
   has_workflows: boolean;
   contributors_count: number;
   readme_content?: string;
+  latest_commit_hash?: string;
 }
 
 
@@ -62,13 +63,20 @@ async function fetchRepoData(
   repo: string,
 ): Promise<GitHubApiResponse> {
   const token = process.env.GITHUB_TOKEN;
+  
+  if (!token) {
+    console.warn("⚠️  Warning: GITHUB_TOKEN not found. This may result in rate limiting.");
+    console.warn("   Set GITHUB_TOKEN environment variable to avoid API rate limits.");
+  }
+  
   const headers: Record<string, string> = {
     Accept: "application/vnd.github.v3+json",
     "User-Agent": "Archestra-MCP-Evaluator",
+    "X-GitHub-Api-Version": "2022-11-28",
   };
 
   if (token) {
-    headers["Authorization"] = `token ${token}`;
+    headers["Authorization"] = `Bearer ${token}`;
   }
 
   const maxRetries = 50;
@@ -164,6 +172,26 @@ async function fetchRepoData(
       console.warn("Could not fetch README:", error);
     }
 
+    // Fetch latest commit hash
+    let latestCommitHash = "";
+    try {
+      const commitsResponse = await fetch(
+        `https://api.github.com/repos/${owner}/${repo}/commits?per_page=1`,
+        {
+          headers,
+        },
+      );
+
+      if (commitsResponse.ok) {
+        const commits = await commitsResponse.json();
+        if (Array.isArray(commits) && commits.length > 0) {
+          latestCommitHash = commits[0].sha;
+        }
+      }
+    } catch (error) {
+      console.warn("Could not fetch latest commit:", error);
+    }
+
       return {
         name: repoData.name,
         description: repoData.description || "",
@@ -174,6 +202,7 @@ async function fetchRepoData(
         has_workflows: hasWorkflows,
         contributors_count: contributorsCount,
         readme_content: readmeContent,
+        latest_commit_hash: latestCommitHash,
       };
     } catch (error) {
       const errorMessage = error.toString();
@@ -268,6 +297,8 @@ function createMCPServerFromGitHub(
     gh_issues: apiData.total_issues_count,
     gh_releases: apiData.has_releases,
     gh_ci_cd: apiData.has_workflows,
+    gh_latest_commit_hash: apiData.latest_commit_hash,
+    last_scraped_at: new Date().toISOString(),
     ...mcpImplementation,
   };
 }
@@ -354,6 +385,18 @@ async function evaluateAllRepos(newOnly: boolean = false): Promise<void> {
   const evaluationsDir = path.join(__dirname, "../app/data/mcp-evaluations");
   const serversPath = path.join(__dirname, "../app/data/mcp-servers.json");
   
+  // Check GitHub token
+  const token = process.env.GITHUB_TOKEN;
+  if (!token) {
+    console.log(`⚠️  GitHub Token Notice:`);
+    console.log(`   No GITHUB_TOKEN environment variable found.`);
+    console.log(`   You may experience API rate limiting (60 requests/hour).`);
+    console.log(`   For better performance, set GITHUB_TOKEN with a personal access token.`);
+    console.log(`   Visit: https://github.com/settings/tokens\n`);
+  } else {
+    console.log(`✅ GitHub token configured - enhanced rate limits available\n`);
+  }
+  
   // Ensure evaluations directory exists
   if (!fs.existsSync(evaluationsDir)) {
     fs.mkdirSync(evaluationsDir, { recursive: true });
@@ -366,7 +409,7 @@ async function evaluateAllRepos(newOnly: boolean = false): Promise<void> {
   const existingFiles = fs.readdirSync(evaluationsDir).filter(f => f.endsWith('.json'));
   const existingSlugs = new Set(existingFiles.map(f => f.replace('.json', '')));
   
-  console.log(`📊 MCP Server Evaluation Processor`);
+  console.log(`📊 MCP Server GitHub Scraper`);
   console.log(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
   console.log(`Total servers: ${githubUrls.length}`);
   console.log(`Existing evaluations: ${existingFiles.length}`);
@@ -473,25 +516,26 @@ async function main() {
   const arg = process.argv[2];
 
   if (!arg) {
-    // No argument - evaluate all servers
-    console.log("📦 Evaluating all MCP servers...\n");
+    // No argument - scrape all servers
+    console.log("📦 Scraping GitHub data for all MCP servers...\n");
     await evaluateAllRepos();
   } else if (arg === "--new-only") {
-    // Evaluate only non-evaluated servers
-    console.log("📦 Evaluating only non-evaluated MCP servers...\n");
+    // Scrape only non-evaluated servers
+    console.log("📦 Scraping GitHub data for only non-evaluated MCP servers...\n");
     await evaluateAllRepos(true);
   } else if (arg.includes("github.com")) {
-    // GitHub URL provided - evaluate single repository
+    // GitHub URL provided - scrape single repository
     await evaluateSingleRepo(arg);
   } else {
     // Invalid argument
     console.error("❌ Invalid argument!\n");
     console.error("Usage:");
-    console.error("  npm run evaluate                    # Evaluate all servers");
-    console.error("  npm run evaluate --new-only         # Evaluate only non-evaluated servers");
-    console.error("  npm run evaluate <github-url>       # Evaluate specific server");
+    console.error("  npm run scrape-github                    # Scrape all servers");
+    console.error("  npm run scrape-github --new-only         # Scrape only non-scraped servers");
+    console.error("  npm run scrape-github <github-url>       # Scrape specific server");
     console.error("\nExample:");
-    console.error("  npm run evaluate https://github.com/anthropics/mcp-filesystem");
+    console.error("  npm run scrape-github https://github.com/anthropics/mcp-filesystem");
+    console.error("\nTip: Set GITHUB_TOKEN environment variable to avoid rate limiting.");
     process.exit(1);
   }
 }

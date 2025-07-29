@@ -15,6 +15,8 @@
   "gh_issues": 4,
   "gh_releases": true,
   "gh_ci_cd": true,
+  "gh_latest_commit_hash": "1b293dca12153bb0440de5091825b3c746b6cf9d",
+  "last_scraped_at": "2025-07-29T19:03:55.627Z",
   "implementing_tools": null,
   "implementing_prompts": null,
   "implementing_resources": null,
