@@ -1,6 +1,6 @@
-import { Linkedin } from "lucide-react"
-import { EmailForm } from "../components/email-form"
-import { SlackButton } from "../components/slack-button"
+import { Linkedin } from "lucide-react";
+import { EmailForm } from "../components/email-form";
+import { SlackButton } from "../components/slack-button";
 
 export default function Home() {
   return (
@@ -8,8 +8,20 @@ export default function Home() {
       {/* Header */}
       <header className="border-b border-gray-200 bg-white">
         <div className="container flex items-center px-4 md:px-6 justify-between h-16">
-          <div className="flex items-center gap-2">
-            <span className="font-mono text-2xl text-black">archestra.ai</span>
+          <div className="flex items-center gap-8">
+            <a href="/" className="text-sm text-gray-900 font-medium">
+              <span className="font-mono text-2xl text-black">
+                archestra.ai
+              </span>
+            </a>
+            <nav className="flex items-center gap-4 mt-1">
+              {/* <a
+                href="/mcp-catalog"
+                className="text-sm text-gray-600 hover:text-yellow-600 transition-colors"
+              >
+                MCP Catalog
+              </a> */}
+            </nav>
           </div>
           <div className="flex items-center gap-2"></div>
         </div>
@@ -29,7 +41,7 @@ export default function Home() {
 
         <div className="container relative z-10 px-4 md:px-6 flex flex-col items-center justify-center flex-1">
           <div className="flex flex-col items-center justify-center space-y-4">
-            <p className="text-sm text-gray-500">Founded with conviction and urgency by</p>
+            <p className="text-sm text-gray-500">Founded with urgency by</p>
             <div className="flex flex-wrap gap-6 justify-center">
               <a
                 href="https://www.linkedin.com/in/ildari/"
@@ -62,7 +74,6 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center">
               <div className="w-full max-w-lg">
                 <SlackButton />
-                
               </div>
               <div className="w-full max-w-lg">
                 <EmailForm />
@@ -76,10 +87,12 @@ export default function Home() {
       <footer className="border-t border-gray-200 bg-white py-6">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center">
-            <p className="text-xs text-gray-400">© 2025 Archestra.ai. All rights reserved.</p>
+            <p className="text-xs text-gray-400">
+              © 2025 Archestra.ai. All rights reserved.
+            </p>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }
