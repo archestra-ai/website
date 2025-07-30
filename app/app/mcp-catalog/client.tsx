@@ -12,8 +12,8 @@ import Link from "next/link";
 import { Badge } from "../../components/ui/badge";
 import { Input } from "../../components/ui/input";
 import { Search, X } from "lucide-react";
-import { MCPServer, getMCPServerName, getMCPServerGitHubUrl } from "../../data/types";
-import { QualityBar } from "../../components/quality-bar";
+import { MCPServer, getMCPServerName, getMCPServerGitHubUrl } from "./data/types";
+import { QualityBar } from "./components/quality-bar";
 import { useSearchParams, useRouter } from "next/navigation";
 
 const ITEMS_PER_PAGE = 30;

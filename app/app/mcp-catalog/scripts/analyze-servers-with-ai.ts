@@ -4,13 +4,13 @@ import fs from 'fs';
 import path from 'path';
 import { exec } from 'child_process';
 import { promisify } from 'util';
-import { MCPServer } from '../app/data/types';
+import { MCPServer } from '../data/types';
 
 const execAsync = promisify(exec);
 
 // Function to extract categories from the types.ts file
 function extractCategories(): string[] {
-  const typesPath = path.join(__dirname, '../app/data/types.ts');
+  const typesPath = path.join(__dirname, '../data/types.ts');
   const typesContent = fs.readFileSync(typesPath, 'utf-8');
   
   // Find the category type definition
@@ -274,7 +274,7 @@ async function main() {
     process.exit(1);
   }
   
-  const evaluationsDir = path.join(__dirname, '../app/data/mcp-evaluations');
+  const evaluationsDir = path.join(__dirname, '../data/mcp-evaluations');
   let files = fs.readdirSync(evaluationsDir).filter(f => f.endsWith('.json'));
   
   // Filter to specific server if requested

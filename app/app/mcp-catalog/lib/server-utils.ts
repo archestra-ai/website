@@ -82,7 +82,7 @@ export function loadServers(slug?: string): MCPServer[] {
 
   // If a specific slug is requested, try to load just that evaluation file
   if (slug) {
-    const evaluationPath = path.join(process.cwd(), "data", "mcp-evaluations", `${slug}.json`);
+    const evaluationPath = path.join(process.cwd(), "app", "mcp-catalog", "data", "mcp-evaluations", `${slug}.json`);
     
     if (fs.existsSync(evaluationPath)) {
       try {
@@ -95,7 +95,7 @@ export function loadServers(slug?: string): MCPServer[] {
     }
   } else {
     // Load all evaluations if no specific slug is requested
-    const evaluationsDir = path.join(process.cwd(), "data", "mcp-evaluations");
+    const evaluationsDir = path.join(process.cwd(), "app", "mcp-catalog", "data", "mcp-evaluations");
 
     if (fs.existsSync(evaluationsDir)) {
       try {
@@ -121,7 +121,7 @@ export function loadServers(slug?: string): MCPServer[] {
   }
 
   // Then, load servers from mcp-servers.json
-  const mcpServersPath = path.join(process.cwd(), "data", "mcp-servers.json");
+  const mcpServersPath = path.join(process.cwd(), "app", "mcp-catalog", "data", "mcp-servers.json");
 
   try {
     const mcpServersContent = fs.readFileSync(mcpServersPath, "utf-8");

@@ -4,9 +4,9 @@ import fs from "fs";
 import path from "path";
 import { exec } from "child_process";
 import { promisify } from "util";
-import { MCPServer } from "../app/data/types";
-import { calculateQualityScore } from "../app/lib/quality-calculator";
-import { extractServerInfo } from "../app/lib/server-utils";
+import { MCPServer } from "../data/types";
+import { calculateQualityScore } from "../lib/quality-calculator";
+import { extractServerInfo } from "../lib/server-utils";
 
 const execAsync = promisify(exec);
 
@@ -351,8 +351,8 @@ async function evaluateSingleRepo(githubUrl: string): Promise<void> {
  * Evaluate all repositories from mcp-servers.json
  */
 async function evaluateAllRepos(newOnly: boolean = false): Promise<void> {
-  const evaluationsDir = path.join(__dirname, "../app/data/mcp-evaluations");
-  const serversPath = path.join(__dirname, "../app/data/mcp-servers.json");
+  const evaluationsDir = path.join(__dirname, "../data/mcp-evaluations");
+  const serversPath = path.join(__dirname, "../data/mcp-servers.json");
   
   // Ensure evaluations directory exists
   if (!fs.existsSync(evaluationsDir)) {

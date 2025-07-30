@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { MCPServer } from "../app/data/types";
+import { MCPServer } from "../data/types";
 
 interface ParsedServer {
   name: string;
@@ -237,7 +237,7 @@ async function main() {
     const jsonContent = JSON.stringify(githubUrls, null, 2);
 
     // Write to JSON file
-    const jsonFilePath = path.join(__dirname, "../app/data/mcp-servers.json");
+    const jsonFilePath = path.join(__dirname, "../data/mcp-servers.json");
     fs.writeFileSync(jsonFilePath, jsonContent, "utf-8");
 
     console.log(`Successfully updated ${jsonFilePath}`);

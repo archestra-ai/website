@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
-import { MCPServer } from "../../../../data/types";
-import { loadServers } from "../../../../lib/server-utils";
+import { MCPServer } from "../../../mcp-catalog/data/types";
+import { loadServers } from "../../../mcp-catalog/lib/server-utils";
 
 export async function GET(
   request: NextRequest,

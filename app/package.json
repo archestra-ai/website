@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "scrape-github": "npx tsx ../scripts/scrape-github.ts"
+    "scrape-github": "npx tsx app/mcp-catalog/scripts/scrape-github.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

@@ -6,8 +6,8 @@ import {
   CardHeader,
   CardTitle,
 } from "../../components/ui/card";
-import { MCPServer } from "../../data/types";
-import { loadServers } from "../../lib/server-utils";
+import { MCPServer } from "./data/types";
+import { loadServers } from "./lib/server-utils";
 import MCPCatalogClient from "./client";
 import BadgeCopyMain from "./badge-copy-main";
 import Header from "../../components/header";
