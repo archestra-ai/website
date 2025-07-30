@@ -406,6 +406,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                 </CardContent>
               </Card>
 
+
               {/* Framework Badge */}
               {server.framework && (
                 <Card>

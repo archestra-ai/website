@@ -341,8 +341,21 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
           </>
         ) : (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No servers found matching "{searchQuery}"</p>
-            <p className="text-gray-400 text-sm mt-2">Try searching with different keywords</p>
+            <p className="text-gray-500 text-lg">
+              No servers found{searchQuery && ` matching "${searchQuery}"`}
+              {selectedCategory !== "All" && ` in ${selectedCategory}`}
+              {selectedLanguage !== "All" && ` using ${selectedLanguage}`}
+            </p>
+            <p className="text-gray-400 text-sm mt-2">Try searching with different keywords or filters</p>
+            {hasActiveFilters && (
+              <button
+                onClick={clearFilters}
+                className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors"
+              >
+                <X size={16} />
+                Remove Filters
+              </button>
+            )}
           </div>
         )}
       </div>

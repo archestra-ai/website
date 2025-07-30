@@ -84,7 +84,7 @@ export default function MCPCatalogPage() {
                   MCP Catalog
                 </h1>
                 <p className="text-lg text-gray-600 mb-6">
-                  Too many MCP servers... Let's highlight the best!
+                  Securing the agentic supply chain by evaluating quality, trust, and reliability of MCP servers.
                 </p>
 
                 <div className="bg-white border border-gray-200 rounded-lg p-6 mt-10 mb-6 max-w-2xl">
