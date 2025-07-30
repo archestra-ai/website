@@ -122,7 +122,7 @@ export default function MCPCatalogPage() {
                 <div className="mt-8 flex flex-wrap gap-4">
                   {/* Add New MCP Server Button */}
                   <a
-                    href="https://github.com/archestra-ai/website/blob/main/app/data/mcp-servers.json"
+                    href="https://github.com/archestra-ai/website/edit/main/app/data/mcp-servers.json"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"

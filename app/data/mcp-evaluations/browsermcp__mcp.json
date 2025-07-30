@@ -3,7 +3,7 @@
   "slug": "browsermcp__mcp",
   "description": "Browser MCP is a Model Context Provider (MCP) server that allows AI applications to control your browser",
   "readme": "<a href=\"https://browsermcp.io\">\n  <img src=\"./.github/images/banner.png\" alt=\"Browser MCP banner\">\n</a>\n\n<h3 align=\"center\">Browser MCP</h3>\n\n<p align=\"center\">\n  Automate your browser with AI.\n  <br />\n  <a href=\"https://browsermcp.io\"><strong>Website</strong></a> \n  •\n  <a href=\"https://docs.browsermcp.io\"><strong>Docs</strong></a>\n</p>\n\n## About\n\nBrowser MCP is an MCP server + Chrome extension that allows you to automate your browser using AI applications like VS Code, Claude, Cursor, and Windsurf.\n\n## Features\n\n- ⚡ Fast: Automation happens locally on your machine, resulting in better performance without network latency.\n- 🔒 Private: Since automation happens locally, your browser activity stays on your device and isn't sent to remote servers.\n- 👤 Logged In: Uses your existing browser profile, keeping you logged into all your services.\n- 🥷🏼 Stealth: Avoids basic bot detection and CAPTCHAs by using your real browser fingerprint.\n\n## Contributing\n\nThis repo contains all the core MCP code for Browser MCP, but currently cannot yet be built on its own due to dependencies on utils and types from the monorepo where it's developed.\n\n## Credits\n\nBrowser MCP was adapted from the [Playwright MCP server](https://github.com/microsoft/playwright-mcp) in order to automate the user's browser rather than creating new browser instances. This allows using the user's existing browser profile to use logged-in sessions and avoid bot detection mechanisms that commonly block automated browser use.\n",
-  "category": null,
+  "category": "Browser Automation",
   "qualityScore": 82,
   "githubUrl": "https://github.com/browsermcp/mcp",
   "programmingLanguage": "TypeScript",
@@ -25,5 +25,16 @@
   "implementing_logging": null,
   "implementing_stdio": null,
   "implementing_streamable_http": null,
-  "implementing_oauth2": null
+  "implementing_oauth2": null,
+  "configToRun": {
+    "mcpServers": {
+      "browsermcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@browsermcp/browsermcp"
+        ]
+      }
+    }
+  }
 }

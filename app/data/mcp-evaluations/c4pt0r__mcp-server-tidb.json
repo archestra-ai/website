@@ -3,7 +3,7 @@
   "slug": "c4pt0r__mcp-server-tidb",
   "description": "mcp server for tidb",
   "readme": "# mcp-server-tidb\n\nMCP server implementation for TiDB (serverless) database.\n\n## Prerequisites\n\n- uv (Python package installer)\n\n## Installation\n\n```\n# Clone the repository\ngit clone https://github.com/c4pt0r/mcp-server-tidb\ncd mcp-server-tidb\n\n# Install the package and dependencies using uv\nuv venv\nuv pip install -e .\n```\n\n## Configuration\n\nGo [tidbcloud.com](https://tidbcloud.com) to create a free TiDB database cluster\n\nConfiguration can be provided through environment variables, or using .env:\n- `TIDB_HOST` - TiDB host address, e.g. 'gateway01.us-east-1.prod.aws.tidbcloud.com'\n- `TIDB_PORT` - TiDB port (default: 4000)\n- `TIDB_USERNAME` - Database username, e.g.  'xxxxxxxxxx.\\<username\\>'\n- `TIDB_PASSWORD` - Database password\n- `TIDB_DATABASE` - Database name, default is test\n\n## Run with Claude Desktop\n\nConfig Claude Desktop, [HOWTO](https://modelcontextprotocol.io/quickstart/user)\n\n`claude_desktop_config.json`:\n\n```\n{\n  \"mcpServers\": {\n      \"tidb\": {\n          \"command\": \"uv\",\n          \"args\": [\n              \"--directory\",\n              \"/path/to/mcp-server-tidb\",\n              \"run\",\n              \"src/main.py\"\n          ]\n      }\n  }\n}\n```\n\n\nIf you're running mcp-server-tidb in WSL, the `claude_desktop_config.json` should look like this:\n\n```\n{\n  \"mcpServers\": {\n    \"tool-with-env-vars\": {\n      \"command\": \"wsl.exe\",\n      \"args\": [\n        \"bash\",\n        \"-c\",\n        \"/path/to/uv --directory /path/to/mcp-server-tidb run python src/main.py\"\n      ]\n    }\n  }\n}\n```\n",
-  "category": null,
+  "category": "Data",
   "qualityScore": 72,
   "githubUrl": "https://github.com/c4pt0r/mcp-server-tidb",
   "programmingLanguage": "Python",
@@ -25,5 +25,18 @@
   "implementing_logging": null,
   "implementing_stdio": null,
   "implementing_streamable_http": null,
-  "implementing_oauth2": null
+  "implementing_oauth2": null,
+  "configToRun": {
+    "mcpServers": {
+      "tidb": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/mcp-server-tidb",
+          "run",
+          "src/main.py"
+        ]
+      }
+    }
+  }
 }

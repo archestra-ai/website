@@ -448,7 +448,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
               <div className="space-y-3">
                 {/* Edit This Server Button */}
                 <a
-                  href={`https://github.com/archestra-ai/website/blob/main/app/data/mcp-evaluations/${server.slug}.json`}
+                  href={`https://github.com/archestra-ai/website/edit/main/app/data/mcp-evaluations/${server.slug}.json`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 w-full justify-center text-sm"
@@ -461,7 +461,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                 
                 {/* Add New MCP Server Button */}
                 <a
-                  href="https://github.com/archestra-ai/website/blob/main/app/data/mcp-servers.json"
+                  href="https://github.com/archestra-ai/website/edit/main/app/data/mcp-servers.json"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 w-full justify-center text-sm"
