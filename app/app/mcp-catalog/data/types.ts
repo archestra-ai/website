@@ -67,8 +67,10 @@ export interface MCPServer {
   implementing_streamable_http: boolean;
   // Authorization Support
   implementing_oauth2: boolean;
-  // Configuration
-  configToRun?: Record<string, any> | null;
+  // Configuration for CLaude and other clients
+  configForClients?: Record<string, any> | null;
+  // Configuration for Archestra
+  configForArchestra?: Record<string, any> | null;
   tools?: MCPTool[];
   scoreBreakdown?: {
     codeQuality: number;
@@ -83,7 +85,7 @@ export interface MCPServer {
 export function getMCPServerName(server: MCPServer): string {
   if (server.repositoryPath) {
     // If there's a repository path, use the last part of it
-    const pathParts = server.repositoryPath.split('/');
+    const pathParts = server.repositoryPath.split("/");
     return pathParts[pathParts.length - 1];
   }
   // Otherwise, use the repository name

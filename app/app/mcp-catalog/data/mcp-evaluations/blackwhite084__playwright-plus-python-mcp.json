@@ -12,11 +12,11 @@
   "repositoryPath": null,
   "gh_stars": 137,
   "gh_contributors": 2,
-  "gh_issues": 2,
+  "gh_issues": 0,
   "gh_releases": false,
   "gh_ci_cd": false,
   "gh_latest_commit_hash": "e5bdaad978ca041620c18e5614a7fd4987d5a4f8",
-  "last_scraped_at": "2025-07-29T19:05:32.538Z",
+  "last_scraped_at": "2025-08-01T13:16:21.684Z",
   "implementing_tools": null,
   "implementing_prompts": null,
   "implementing_resources": null,
@@ -25,15 +25,5 @@
   "implementing_logging": null,
   "implementing_stdio": null,
   "implementing_streamable_http": null,
-  "implementing_oauth2": null,
-  "configToRun": {
-    "mcpServers": {
-      "playwright-server": {
-        "command": "uvx",
-        "args": [
-          "playwright-server"
-        ]
-      }
-    }
-  }
+  "implementing_oauth2": null
 }

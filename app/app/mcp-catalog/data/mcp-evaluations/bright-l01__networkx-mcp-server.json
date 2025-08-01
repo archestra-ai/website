@@ -3,7 +3,7 @@
   "slug": "bright-l01__networkx-mcp-server",
   "description": "🕸️ First NetworkX MCP server for graph analysis in AI conversations | Community & Enterprise editions | Graph algorithms • Network analysis • MCP integration",
   "readme": "# NetworkX MCP Server\n\nA comprehensive Model Context Protocol (MCP) server providing advanced graph analysis capabilities using NetworkX.\n\n## 🚀 Features\n\n- **Complete MCP Implementation**: Full Model Context Protocol support with Tools, Resources, and Prompts\n- **Modular Architecture**: Clean, maintainable codebase with 35+ focused modules\n- **Advanced Graph Analysis**: Comprehensive suite of graph algorithms and analytics\n- **Production Ready**: Enterprise-grade security, monitoring, and scalability features\n- **Developer Friendly**: Extensive documentation, testing, and development tools\n\n## 🏗️ Architecture\n\nThe server follows a clean modular architecture:\n\n```\n├── Core Layer          # Basic graph operations and MCP server\n├── Handler Layer       # Function organization and re-exports\n├── Advanced Layer      # Specialized algorithms and features\n└── Supporting Layer    # Monitoring, security, and infrastructure\n```\n\nSee [ARCHITECTURE.md](ARCHITECTURE.md) for detailed architectural documentation.\n\n## 📦 Quick Start\n\n### Installation\n\n```bash\ngit clone https://github.com/username/networkx-mcp-server.git\ncd networkx-mcp-server\npip install -e .\n```\n\n### Basic Usage\n\n```python\nfrom networkx_mcp.server import create_graph, add_nodes, add_edges\n\n# Create a graph\nresult = create_graph(\"my_graph\", \"undirected\")\n\n# Add nodes and edges\nadd_nodes(\"my_graph\", [\"A\", \"B\", \"C\"])\nadd_edges(\"my_graph\", [(\"A\", \"B\"), (\"B\", \"C\")])\n```\n\n### Running the Server\n\n```bash\n# Start the MCP server\npython -m networkx_mcp\n\n# Or use the development script\n./run_tests.sh\n```\n\n## 🧪 Testing\n\nThe project maintains 80%+ test coverage with comprehensive test suites:\n\n```bash\n# Run all tests\npytest\n\n# Run with coverage\npytest --cov=src/networkx_mcp --cov-report=html\n\n# Run specific test categories\npytest tests/unit/          # Unit tests\npytest tests/integration/   # Integration tests\npytest tests/performance/   # Performance tests\n```\n\n## 📖 Documentation\n\n- [Architecture Overview](ARCHITECTURE.md) - Complete system architecture\n- [Module Structure](docs/MODULE_STRUCTURE.md) - Detailed module organization\n- [Development Guide](docs/DEVELOPMENT_GUIDE.md) - Developer handbook\n- [API Documentation](docs/api/) - Detailed API reference\n\n## 🤝 Contributing\n\nWe welcome contributions! Please see our [Development Guide](docs/DEVELOPMENT_GUIDE.md) for:\n\n- Setting up the development environment\n- Code standards and conventions\n- Testing requirements\n- Submission guidelines\n\n### Quick Development Setup\n\n```bash\n# Install development dependencies\npip install -e \".[dev]\"\n\n# Install pre-commit hooks\npre-commit install\n\n# Run the test suite\npytest\n```\n\n## 🏆 Quality Standards\n\nThis project maintains high quality standards:\n\n- **Code Quality**: Automated formatting with ruff, black, and isort\n- **Type Safety**: Comprehensive type hints with mypy validation\n- **Security**: Bandit security scanning and vulnerability checks\n- **Testing**: 80%+ test coverage with multiple test categories\n- **Documentation**: Comprehensive documentation and examples\n\n## 📋 Requirements\n\n- Python 3.11+\n- NetworkX 3.0+\n- FastMCP (or compatible MCP implementation)\n\nSee [pyproject.toml](pyproject.toml) for complete dependency list.\n\n## 🚀 Deployment\n\n### Docker\n\n```bash\n# Build and run with Docker\ndocker build -t networkx-mcp-server .\ndocker run -p 8000:8000 networkx-mcp-server\n```\n\n### Kubernetes\n\n```bash\n# Deploy to Kubernetes\nkubectl apply -f k8s/\n```\n\nSee [deployment documentation](docs/deployment/) for production deployment guides.\n\n## 📊 Performance\n\nThe server is optimized for performance:\n\n- **Modular Design**: Efficient memory usage and fast load times\n- **Algorithm Optimization**: Optimized implementations for large graphs\n- **Monitoring**: Built-in performance metrics and health checks\n- **Scalability**: Stateless design supporting horizontal scaling\n\n## 🔒 Security\n\nSecurity is a top priority:\n\n- **Input Validation**: Comprehensive input sanitization and validation\n- **Access Control**: Authentication and authorization layers\n- **Audit Logging**: Complete audit trail for security events\n- **Vulnerability Scanning**: Automated dependency vulnerability checks\n\n## 📈 Monitoring\n\nBuilt-in observability features:\n\n- **Health Checks**: Comprehensive health monitoring endpoints\n- **Metrics**: Performance and usage metrics collection\n- **Tracing**: Distributed tracing support\n- **Logging**: Structured logging with configurable levels\n\n## 🗂️ Project Structure\n\n```\nnetworkx-mcp-server/\n├── src/networkx_mcp/       # Main source code\n│   ├── core/               # Core graph operations\n│   ├── handlers/           # Function handlers\n│   ├── advanced/           # Advanced algorithms\n│   ├── monitoring/         # Monitoring and observability\n│   └── security/           # Security features\n├── tests/                  # Comprehensive test suite\n├── docs/                   # Documentation\n├── scripts/                # Development and deployment scripts\n└── examples/               # Usage examples\n```\n\n## 📜 License\n\nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.\n\n## 🙏 Acknowledgments\n\n- NetworkX team for the excellent graph analysis library\n- FastMCP team for the Model Context Protocol implementation\n- Contributors and users of this project\n\n## 📞 Support\n\n- **Issues**: [GitHub Issues](https://github.com/username/networkx-mcp-server/issues)\n- **Discussions**: [GitHub Discussions](https://github.com/username/networkx-mcp-server/discussions)\n- **Documentation**: [Project Documentation](docs/)\n\n---\n\n**Built with ❤️ for the graph analysis community**\n",
-  "category": "Data Science",
+  "category": null,
   "qualityScore": 78,
   "githubUrl": "https://github.com/Bright-L01/networkx-mcp-server",
   "programmingLanguage": "Python",
@@ -16,7 +16,7 @@
   "gh_releases": true,
   "gh_ci_cd": true,
   "gh_latest_commit_hash": "10795e740ef9667bc5daba4964ef46ee28c6c228",
-  "last_scraped_at": "2025-07-29T19:20:21.400Z",
+  "last_scraped_at": "2025-07-31T20:48:45.493Z",
   "implementing_tools": null,
   "implementing_prompts": null,
   "implementing_resources": null,
@@ -25,16 +25,5 @@
   "implementing_logging": null,
   "implementing_stdio": null,
   "implementing_streamable_http": null,
-  "implementing_oauth2": null,
-  "configToRun": {
-    "mcpServers": {
-      "networkx-mcp-server": {
-        "command": "python",
-        "args": [
-          "-m",
-          "networkx_mcp"
-        ]
-      }
-    }
-  }
+  "implementing_oauth2": null
 }

@@ -12,41 +12,67 @@ import MCPCatalogClient from "./client";
 import BadgeCopyMain from "./badge-copy-main";
 import Header from "../../components/header";
 
-// Get unique categories from evaluations
+// Get unique categories from evaluations, sorted by count
 function getCategories(evaluations: MCPServer[]): string[] {
-  const categories = new Set<string>();
-  let hasUncategorized = false;
+  const categoryCounts = new Map<string, number>();
+  let uncategorizedCount = 0;
 
+  // Count items per category
   for (const evaluation of evaluations) {
     if (evaluation.category) {
-      categories.add(evaluation.category);
+      categoryCounts.set(evaluation.category, (categoryCounts.get(evaluation.category) || 0) + 1);
     } else {
-      hasUncategorized = true;
+      uncategorizedCount++;
     }
   }
 
-  const sortedCategories = Array.from(categories).sort();
+  // Sort categories by count (descending) and then alphabetically
+  const sortedCategories = Array.from(categoryCounts.entries())
+    .sort((a, b) => {
+      if (b[1] !== a[1]) {
+        return b[1] - a[1]; // Sort by count descending
+      }
+      return a[0].localeCompare(b[0]); // Then alphabetically
+    })
+    .map(([category]) => category);
+
   const result = ["All", ...sortedCategories];
-  
+
   // Add Uncategorized at the end if there are any servers without a category
-  if (hasUncategorized) {
+  if (uncategorizedCount > 0) {
     result.push("Uncategorized");
   }
-  
+
   return result;
 }
 
-// Get unique programming languages from evaluations
+// Get unique programming languages from evaluations, sorted by count
 function getProgrammingLanguages(evaluations: MCPServer[]): string[] {
-  const languages = new Set<string>();
+  const languageCounts = new Map<string, number>();
 
+  // Count items per language
   for (const evaluation of evaluations) {
-    if (evaluation.programmingLanguage && evaluation.programmingLanguage !== "Unknown") {
-      languages.add(evaluation.programmingLanguage);
+    if (
+      evaluation.programmingLanguage &&
+      evaluation.programmingLanguage !== "Unknown"
+    ) {
+      languageCounts.set(
+        evaluation.programmingLanguage, 
+        (languageCounts.get(evaluation.programmingLanguage) || 0) + 1
+      );
     }
   }
 
-  const sortedLanguages = Array.from(languages).sort();
+  // Sort languages by count (descending) and then alphabetically
+  const sortedLanguages = Array.from(languageCounts.entries())
+    .sort((a, b) => {
+      if (b[1] !== a[1]) {
+        return b[1] - a[1]; // Sort by count descending
+      }
+      return a[0].localeCompare(b[0]); // Then alphabetically
+    })
+    .map(([language]) => language);
+
   return ["All", ...sortedLanguages];
 }
 
@@ -54,10 +80,10 @@ export default function MCPCatalogPage() {
   const mcpServers = loadServers();
   const categories = getCategories(mcpServers);
   const languages = getProgrammingLanguages(mcpServers);
-  
+
   // Find the highest scoring MCP server for the badge example
   const topScoredServer = mcpServers
-    .filter(server => server.qualityScore !== null)
+    .filter((server) => server.qualityScore !== null)
     .sort((a, b) => b.qualityScore! - a.qualityScore!)[0];
 
   return (
@@ -84,7 +110,10 @@ export default function MCPCatalogPage() {
                   MCP Catalog
                 </h1>
                 <p className="text-lg text-gray-600 mb-6">
-                  Securing the agentic supply chain by evaluating quality, trust, and reliability of MCP servers.
+                  By scoring servers on protocol adherence, development
+                  maturity, and security best practices, we provide a clear,
+                  standardized way to distinguish trustworthy tools from
+                  potential threats, helping you build with confidence.
                 </p>
 
                 <div className="bg-white border border-gray-200 rounded-lg p-6 mt-10 mb-6 max-w-2xl">
@@ -95,9 +124,10 @@ export default function MCPCatalogPage() {
                         className="hover:opacity-80 transition-opacity"
                       >
                         <img
-                          src={topScoredServer.repositoryPath 
-                            ? `/api/badge/quality/${topScoredServer.gitHubOrg}/${topScoredServer.gitHubRepo}/${topScoredServer.repositoryPath.replace(/\//g, '--')}`
-                            : `/api/badge/quality/${topScoredServer.gitHubOrg}/${topScoredServer.gitHubRepo}`
+                          src={
+                            topScoredServer.repositoryPath
+                              ? `/mcp-catalog/api/badge/quality/${topScoredServer.gitHubOrg}/${topScoredServer.gitHubRepo}/${topScoredServer.repositoryPath.replace(/\//g, "--")}`
+                              : `/mcp-catalog/api/badge/quality/${topScoredServer.gitHubOrg}/${topScoredServer.gitHubRepo}`
                           }
                           alt="MCP Quality Badge"
                           className="h-5"
@@ -105,7 +135,7 @@ export default function MCPCatalogPage() {
                       </a>
                     ) : (
                       <img
-                        src="/api/badge/quality/YOUR-GITHUB-ORG/YOUR-REPO-NAME"
+                        src="/mcp-catalog/api/badge/quality/YOUR-GITHUB-ORG/YOUR-REPO-NAME"
                         alt="MCP Quality Badge"
                         className="h-5"
                       />
@@ -127,12 +157,22 @@ export default function MCPCatalogPage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
                   >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 4v16m8-8H4"
+                      />
                     </svg>
                     Add New MCP Server
                   </a>
-                  
+
                   {/* Report Issue Button */}
                   <a
                     href="https://github.com/archestra-ai/website/issues/new"
@@ -140,12 +180,43 @@ export default function MCPCatalogPage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
                   >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
                     </svg>
                     Report an Issue
                   </a>
-                  
+
+                  {/* API Documentation Button */}
+                  <a
+                    href="/mcp-catalog/api-docs"
+                    className="inline-flex items-center gap-2 px-5 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                    API Documentation
+                  </a>
+
                   {/* GitHub Repo Button */}
                   <a
                     href="https://github.com/archestra-ai/website/tree/main/app/app/mcp-catalog"
@@ -153,8 +224,16 @@ export default function MCPCatalogPage() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-3 bg-gray-800 hover:bg-gray-900 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
                   >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                     View on GitHub
                   </a>
@@ -241,7 +320,11 @@ export default function MCPCatalogPage() {
           </div>
 
           <Suspense fallback={<div>Loading catalog...</div>}>
-            <MCPCatalogClient mcpServers={mcpServers} categories={categories} languages={languages} />
+            <MCPCatalogClient
+              mcpServers={mcpServers}
+              categories={categories}
+              languages={languages}
+            />
           </Suspense>
         </div>
       </main>

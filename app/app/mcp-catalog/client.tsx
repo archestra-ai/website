@@ -11,7 +11,7 @@ import {
 import Link from "next/link";
 import { Badge } from "../../components/ui/badge";
 import { Input } from "../../components/ui/input";
-import { Search, X } from "lucide-react";
+import { Search, X, ChevronUp, ChevronDown, ChevronsUpDown } from "lucide-react";
 import { MCPServer, getMCPServerName, getMCPServerGitHubUrl } from "./data/types";
 import { QualityBar } from "./components/quality-bar";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -36,6 +36,10 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || "");
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || "All");
   const [selectedLanguage, setSelectedLanguage] = useState(searchParams.get('language') || "All");
+  const [sortBy, setSortBy] = useState(searchParams.get('sort') || "quality");
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | null>(
+    searchParams.get('dir') as 'asc' | 'desc' || 'desc'
+  );
   const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
   const [isLoading, setIsLoading] = useState(false);
   const [isClient, setIsClient] = useState(false);
@@ -62,6 +66,25 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
     setSelectedLanguage("All");
   };
   
+  // Handle sort button click with three states: desc -> asc -> null -> desc
+  const handleSortClick = (field: string) => {
+    if (sortBy === field) {
+      // Same field clicked, cycle through states
+      if (sortDirection === 'desc') {
+        setSortDirection('asc');
+      } else if (sortDirection === 'asc') {
+        setSortDirection(null);
+        setSortBy('quality'); // Reset to default
+      } else {
+        setSortDirection('desc');
+      }
+    } else {
+      // Different field clicked
+      setSortBy(field);
+      setSortDirection('desc');
+    }
+  };
+  
   // Restore scroll position
   useEffect(() => {
     const scrollY = searchParams.get('scroll');
@@ -79,10 +102,14 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
     if (searchQuery) params.set('search', searchQuery);
     if (selectedCategory !== 'All') params.set('category', selectedCategory);
     if (selectedLanguage !== 'All') params.set('language', selectedLanguage);
+    if (sortBy && sortDirection) {
+      params.set('sort', sortBy);
+      params.set('dir', sortDirection);
+    }
     
     const newUrl = params.toString() ? `?${params.toString()}` : '/mcp-catalog';
     router.replace(newUrl, { scroll: false });
-  }, [searchQuery, selectedCategory, selectedLanguage, router]);
+  }, [searchQuery, selectedCategory, selectedLanguage, sortBy, sortDirection, router]);
 
   const filteredServers = mcpServers.filter((server) => {
     const query = searchQuery.toLowerCase();
@@ -105,22 +132,66 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
     return matchesSearch && matchesCategory && matchesLanguage;
   });
 
+  // Sort filtered servers
+  const sortedServers = sortDirection === null ? [...filteredServers] : [...filteredServers].sort((a, b) => {
+    let result = 0;
+    
+    switch (sortBy) {
+      case "quality":
+        // Sort by quality score, null values last
+        if (a.qualityScore === null && b.qualityScore === null) return 0;
+        if (a.qualityScore === null) return 1;
+        if (b.qualityScore === null) return -1;
+        result = a.qualityScore - b.qualityScore;
+        break;
+      
+      case "stars":
+        // Sort by GitHub stars
+        result = (a.gh_stars || 0) - (b.gh_stars || 0);
+        break;
+      
+      case "contributors":
+        // Sort by contributors
+        result = (a.gh_contributors || 0) - (b.gh_contributors || 0);
+        break;
+      
+      case "issues":
+        // Sort by issues
+        result = (a.gh_issues || 0) - (b.gh_issues || 0);
+        break;
+      
+      case "updated":
+        // Sort by last updated - using last_scraped_at
+        if (!a.last_scraped_at && !b.last_scraped_at) return 0;
+        if (!a.last_scraped_at) return 1;
+        if (!b.last_scraped_at) return -1;
+        result = new Date(a.last_scraped_at).getTime() - new Date(b.last_scraped_at).getTime();
+        break;
+      
+      default:
+        return 0;
+    }
+    
+    // Apply sort direction
+    return sortDirection === 'desc' ? -result : result;
+  });
+
   // Reset displayed items when filters change
   useEffect(() => {
     setDisplayedItems(ITEMS_PER_PAGE);
-  }, [searchQuery, selectedCategory, selectedLanguage]);
+  }, [searchQuery, selectedCategory, selectedLanguage, sortBy]);
 
   // Load more items
   const loadMore = useCallback(() => {
-    if (isLoading || displayedItems >= filteredServers.length) return;
+    if (isLoading || displayedItems >= sortedServers.length) return;
     
     setIsLoading(true);
     // Simulate loading delay for smooth UX
     setTimeout(() => {
-      setDisplayedItems(prev => Math.min(prev + ITEMS_PER_PAGE, filteredServers.length));
+      setDisplayedItems(prev => Math.min(prev + ITEMS_PER_PAGE, sortedServers.length));
       setIsLoading(false);
     }, 200);
-  }, [isLoading, displayedItems, filteredServers.length]);
+  }, [isLoading, displayedItems, sortedServers.length]);
 
   // Set up intersection observer
   useEffect(() => {
@@ -238,10 +309,89 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
 
       {/* Server Grid */}
       <div className="flex-1" ref={serverGridRef}>
-        {filteredServers.length > 0 ? (
+        {/* Sorting Controls */}
+        <div className="mb-6 flex justify-between items-center">
+          <div className="text-sm text-gray-600">
+            {sortedServers.length} servers found
+          </div>
+          
+          <div className="flex gap-2">
+            <button
+              onClick={() => handleSortClick('quality')}
+              className={`px-3 py-1.5 text-sm rounded-md flex items-center gap-1 transition-colors ${
+                sortBy === 'quality' && sortDirection !== null
+                  ? 'bg-blue-100 text-blue-700'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Quality
+              {sortBy === 'quality' && sortDirection === 'desc' && <ChevronDown size={14} />}
+              {sortBy === 'quality' && sortDirection === 'asc' && <ChevronUp size={14} />}
+              {sortBy !== 'quality' && <ChevronsUpDown size={14} className="opacity-40" />}
+            </button>
+            
+            <button
+              onClick={() => handleSortClick('stars')}
+              className={`px-3 py-1.5 text-sm rounded-md flex items-center gap-1 transition-colors ${
+                sortBy === 'stars' && sortDirection !== null
+                  ? 'bg-blue-100 text-blue-700'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Stars
+              {sortBy === 'stars' && sortDirection === 'desc' && <ChevronDown size={14} />}
+              {sortBy === 'stars' && sortDirection === 'asc' && <ChevronUp size={14} />}
+              {sortBy !== 'stars' && <ChevronsUpDown size={14} className="opacity-40" />}
+            </button>
+            
+            <button
+              onClick={() => handleSortClick('contributors')}
+              className={`px-3 py-1.5 text-sm rounded-md flex items-center gap-1 transition-colors ${
+                sortBy === 'contributors' && sortDirection !== null
+                  ? 'bg-blue-100 text-blue-700'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Contributors
+              {sortBy === 'contributors' && sortDirection === 'desc' && <ChevronDown size={14} />}
+              {sortBy === 'contributors' && sortDirection === 'asc' && <ChevronUp size={14} />}
+              {sortBy !== 'contributors' && <ChevronsUpDown size={14} className="opacity-40" />}
+            </button>
+            
+            <button
+              onClick={() => handleSortClick('issues')}
+              className={`px-3 py-1.5 text-sm rounded-md flex items-center gap-1 transition-colors ${
+                sortBy === 'issues' && sortDirection !== null
+                  ? 'bg-blue-100 text-blue-700'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Issues
+              {sortBy === 'issues' && sortDirection === 'desc' && <ChevronDown size={14} />}
+              {sortBy === 'issues' && sortDirection === 'asc' && <ChevronUp size={14} />}
+              {sortBy !== 'issues' && <ChevronsUpDown size={14} className="opacity-40" />}
+            </button>
+            
+            <button
+              onClick={() => handleSortClick('updated')}
+              className={`px-3 py-1.5 text-sm rounded-md flex items-center gap-1 transition-colors ${
+                sortBy === 'updated' && sortDirection !== null
+                  ? 'bg-blue-100 text-blue-700'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Updated
+              {sortBy === 'updated' && sortDirection === 'desc' && <ChevronDown size={14} />}
+              {sortBy === 'updated' && sortDirection === 'asc' && <ChevronUp size={14} />}
+              {sortBy !== 'updated' && <ChevronsUpDown size={14} className="opacity-40" />}
+            </button>
+          </div>
+        </div>
+        
+        {sortedServers.length > 0 ? (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredServers.slice(0, displayedItems).map((server) => {
+              {sortedServers.slice(0, displayedItems).map((server) => {
                 // Preserve current state in the link
                 const params = new URLSearchParams();
                 if (searchQuery) params.set('search', searchQuery);
@@ -321,7 +471,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
             </div>
             
             {/* Load More Trigger */}
-            {displayedItems < filteredServers.length && (
+            {displayedItems < sortedServers.length && (
               <div 
                 ref={loadMoreRef} 
                 className="flex justify-center py-8"
@@ -333,7 +483,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
                   </div>
                 ) : (
                   <div className="text-gray-400 text-sm">
-                    Showing {displayedItems} of {filteredServers.length} servers
+                    Showing {displayedItems} of {sortedServers.length} servers
                   </div>
                 )}
               </div>

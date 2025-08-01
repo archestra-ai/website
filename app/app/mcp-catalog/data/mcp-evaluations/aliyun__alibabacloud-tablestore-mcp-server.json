@@ -3,20 +3,20 @@
   "slug": "aliyun__alibabacloud-tablestore-mcp-server",
   "description": "MCP server from aliyun/alibabacloud-tablestore-mcp-server",
   "readme": "\n# [Tablestore](https://www.aliyun.com/product/ots) MCP servers.\n\n## 实现列表\n\n## 1. Java\n1. [入门示例: tablestore-java-mcp-server](https://github.com/aliyun/alibabacloud-tablestore-mcp-server/blob/master/tablestore-java-mcp-server/README.md)\n2. [基于 MCP 架构实现知识库答疑系统: tablestore-java-mcp-server-rag](https://github.com/aliyun/alibabacloud-tablestore-mcp-server/blob/master/tablestore-java-mcp-server-rag/README.md)\n   - 实现一个目前最常见的一类 AI 应用即答疑系统，支持基于私有知识库的问答，会对知识库构建和 RAG 做一些优化。\n\n## 2. Python \n1. [入门示例: tablestore-python-mcp-server](https://github.com/aliyun/alibabacloud-tablestore-mcp-server/blob/master/tablestore-python-mcp-server/README.md)\n\n\n## 技术支持\n\n欢迎加入我们的钉钉公开群，与我们一起探讨 AI 技术。钉钉群号：36165029092\n\n<img src=\"./docs/img/dingding_group3.png\" alt=\"store\" width=\"500\"/>",
-  "category": "AI Tools",
+  "category": null,
   "qualityScore": 79,
   "githubUrl": "https://github.com/aliyun/alibabacloud-tablestore-mcp-server",
   "programmingLanguage": "Java",
   "gitHubOrg": "aliyun",
   "gitHubRepo": "alibabacloud-tablestore-mcp-server",
   "repositoryPath": null,
-  "gh_stars": 141,
+  "gh_stars": 142,
   "gh_contributors": 1,
-  "gh_issues": 5,
+  "gh_issues": 0,
   "gh_releases": false,
   "gh_ci_cd": true,
   "gh_latest_commit_hash": "b8b09ff27037874c1444aca9c625074efc117a5d",
-  "last_scraped_at": "2025-07-29T19:11:19.789Z",
+  "last_scraped_at": "2025-08-01T13:16:36.426Z",
   "implementing_tools": null,
   "implementing_prompts": null,
   "implementing_resources": null,
@@ -25,23 +25,5 @@
   "implementing_logging": null,
   "implementing_stdio": null,
   "implementing_streamable_http": null,
-  "implementing_oauth2": null,
-  "configToRun": {
-    "mcpServers": {
-      "java": {
-        "command": "npx -y @aliyun/tablestore-mcp-server",
-        "args": [
-          "-y",
-          "@aliyun/tablestore-mcp-server"
-        ]
-      },
-      "python": {
-        "command": "npx -y @aliyun/tablestore-mcp-server",
-        "args": [
-          "-y",
-          "@aliyun/tablestore-mcp-server"
-        ]
-      }
-    }
-  }
+  "implementing_oauth2": null
 }

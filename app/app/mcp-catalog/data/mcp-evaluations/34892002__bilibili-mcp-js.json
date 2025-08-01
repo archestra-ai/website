@@ -10,13 +10,13 @@
   "gitHubOrg": "34892002",
   "gitHubRepo": "bilibili-mcp-js",
   "repositoryPath": null,
-  "gh_stars": 112,
+  "gh_stars": 114,
   "gh_contributors": 1,
-  "gh_issues": 5,
+  "gh_issues": 0,
   "gh_releases": false,
   "gh_ci_cd": false,
   "gh_latest_commit_hash": "9cc1941f93a1a0623a8cf8c9249bbdc0479870fa",
-  "last_scraped_at": "2025-07-29T19:05:24.357Z",
+  "last_scraped_at": "2025-08-01T13:16:20.500Z",
   "implementing_tools": null,
   "implementing_prompts": null,
   "implementing_resources": null,
@@ -25,15 +25,5 @@
   "implementing_logging": null,
   "implementing_stdio": null,
   "implementing_streamable_http": null,
-  "implementing_oauth2": null,
-  "configToRun": {
-    "mcpServers": {
-      "bilibili-search": {
-        "command": "npx",
-        "args": [
-          "bilibili-mcp"
-        ]
-      }
-    }
-  }
+  "implementing_oauth2": null
 }

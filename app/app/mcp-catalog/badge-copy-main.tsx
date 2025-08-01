@@ -7,7 +7,7 @@ import { Copy, Check } from "lucide-react";
 export default function BadgeCopyMain() {
   const [copied, setCopied] = useState(false);
 
-  const badgeMarkdown = `[![MCP Quality](https://archestra.ai/api/badge/quality/YOUR-GITHUB-ORG/YOUR-REPO-NAME)](https://archestra.ai/mcp-catalog/your-github-org__your-repo-name)`;
+  const badgeMarkdown = `[![MCP Quality](https://archestra.ai/mcp-catalog/api/badge/quality/YOUR-GITHUB-ORG/YOUR-REPO-NAME)](https://archestra.ai/mcp-catalog/your-github-org__your-repo-name)`;
 
   const copyToClipboard = async (text: string) => {
     try {
