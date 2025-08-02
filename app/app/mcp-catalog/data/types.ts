@@ -38,8 +38,10 @@ export interface MCPServer {
     | "Translation"
     | "Audio"
     | "Travel"
-    | "Productivity"
-    | "Utilities"
+    | "Messengers"
+    | "Email"
+    | "CRM"
+    | "Enterprise"
     | null;
   qualityScore: number | null; // 0-100
   gitHubOrg: string; // e.g. "modelcontextprotocol"

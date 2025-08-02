@@ -40,6 +40,9 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | null>(
     searchParams.get('dir') as 'asc' | 'desc' || 'desc'
   );
+  
+  // Track if we've auto-switched to relevance sort
+  const [hasAutoSwitchedToRelevance, setHasAutoSwitchedToRelevance] = useState(false);
   const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
   const [isLoading, setIsLoading] = useState(false);
   const [isClient, setIsClient] = useState(false);
@@ -64,7 +67,26 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
     setSearchQuery("");
     setSelectedCategory("All");
     setSelectedLanguage("All");
+    // Reset to quality sort when clearing filters
+    if (sortBy === "relevance") {
+      setSortBy("quality");
+      setSortDirection("desc");
+    }
   };
+  
+  // Auto-switch to relevance sort when search query is entered
+  useEffect(() => {
+    if (searchQuery && !hasAutoSwitchedToRelevance) {
+      setSortBy("relevance");
+      setSortDirection("desc");
+      setHasAutoSwitchedToRelevance(true);
+    } else if (!searchQuery && hasAutoSwitchedToRelevance) {
+      // Reset when search is cleared
+      setSortBy("quality");
+      setSortDirection("desc");
+      setHasAutoSwitchedToRelevance(false);
+    }
+  }, [searchQuery, hasAutoSwitchedToRelevance]);
   
   // Handle sort button click with three states: desc -> asc -> null -> desc
   const handleSortClick = (field: string) => {
@@ -111,61 +133,137 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
     router.replace(newUrl, { scroll: false });
   }, [searchQuery, selectedCategory, selectedLanguage, sortBy, sortDirection, router]);
 
-  const filteredServers = mcpServers.filter((server) => {
-    const query = searchQuery.toLowerCase();
-    const serverName = getMCPServerName(server);
-    const githubUrl = getMCPServerGitHubUrl(server);
-    const matchesSearch =
-      serverName.toLowerCase().includes(query) ||
-      server.description.toLowerCase().includes(query) ||
-      githubUrl.toLowerCase().includes(query) ||
-      server.gitHubOrg.toLowerCase().includes(query) ||
-      server.gitHubRepo.toLowerCase().includes(query) ||
-      (server.repositoryPath && server.repositoryPath.toLowerCase().includes(query)) ||
-      (server.readme && server.readme.toLowerCase().includes(query));
-    const matchesCategory =
-      selectedCategory === "All" || 
-      (selectedCategory === "Uncategorized" && server.category === null) ||
-      server.category === selectedCategory;
-    const matchesLanguage =
-      selectedLanguage === "All" || server.programmingLanguage === selectedLanguage;
-    return matchesSearch && matchesCategory && matchesLanguage;
-  });
+  // Calculate search relevance score for a server
+  const calculateSearchRelevance = (server: MCPServer, query: string): number => {
+    if (!query) return 0;
+    
+    const lowerQuery = query.toLowerCase();
+    const serverName = getMCPServerName(server).toLowerCase();
+    let score = 0;
+    
+    // Exact name match (highest priority)
+    if (serverName === lowerQuery) {
+      score += 100;
+    } else if (serverName.includes(lowerQuery)) {
+      // Name contains query
+      if (serverName.startsWith(lowerQuery)) {
+        score += 60; // Higher score for prefix matches
+      } else {
+        score += 40;
+      }
+    }
+    
+    // Description match
+    if (server.description && server.description.toLowerCase().includes(lowerQuery)) {
+      score += 30;
+    }
+    
+    // Category match
+    if (server.category && server.category.toLowerCase().includes(lowerQuery)) {
+      score += 35;
+    }
+    
+    // Repository name match (without github.com)
+    if (server.gitHubRepo.toLowerCase().includes(lowerQuery)) {
+      score += 20;
+    }
+    
+    // Organization name match
+    if (server.gitHubOrg.toLowerCase().includes(lowerQuery)) {
+      score += 15;
+    }
+    
+    // URL path match (for repository paths)
+    if (server.repositoryPath && server.repositoryPath.toLowerCase().includes(lowerQuery)) {
+      score += 10;
+    }
+    
+    // README match (lowest priority)
+    if (server.readme && server.readme.toLowerCase().includes(lowerQuery)) {
+      score += 5;
+    }
+    
+    // Boost score for servers where the query matches multiple fields
+    const matchCount = [
+      serverName.includes(lowerQuery),
+      server.description && server.description.toLowerCase().includes(lowerQuery),
+      server.category && server.category.toLowerCase().includes(lowerQuery),
+      server.gitHubRepo.toLowerCase().includes(lowerQuery),
+      server.gitHubOrg.toLowerCase().includes(lowerQuery)
+    ].filter(Boolean).length;
+    
+    // Add bonus for multiple field matches (indicates more relevant result)
+    if (matchCount > 1) {
+      score += (matchCount - 1) * 10;
+    }
+    
+    return score;
+  };
+
+  const filteredAndScoredServers = mcpServers
+    .map(server => ({
+      server,
+      searchScore: searchQuery ? calculateSearchRelevance(server, searchQuery) : 0
+    }))
+    .filter(({ server, searchScore }) => {
+      // Filter by search
+      const matchesSearch = !searchQuery || searchScore > 0;
+      
+      // Filter by category
+      const matchesCategory =
+        selectedCategory === "All" || 
+        (selectedCategory === "Uncategorized" && server.category === null) ||
+        server.category === selectedCategory;
+      
+      // Filter by language
+      const matchesLanguage =
+        selectedLanguage === "All" || server.programmingLanguage === selectedLanguage;
+      
+      return matchesSearch && matchesCategory && matchesLanguage;
+    });
 
   // Sort filtered servers
-  const sortedServers = sortDirection === null ? [...filteredServers] : [...filteredServers].sort((a, b) => {
+  const sortedServers = [...filteredAndScoredServers].sort((a, b) => {
+    if (sortDirection === null) return 0;
+    
     let result = 0;
+    const serverA = a.server;
+    const serverB = b.server;
     
     switch (sortBy) {
+      case "relevance":
+        // Sort by search relevance score
+        result = a.searchScore - b.searchScore;
+        break;
       case "quality":
         // Sort by quality score, null values last
-        if (a.qualityScore === null && b.qualityScore === null) return 0;
-        if (a.qualityScore === null) return 1;
-        if (b.qualityScore === null) return -1;
-        result = a.qualityScore - b.qualityScore;
+        if (serverA.qualityScore === null && serverB.qualityScore === null) return 0;
+        if (serverA.qualityScore === null) return 1;
+        if (serverB.qualityScore === null) return -1;
+        result = serverA.qualityScore - serverB.qualityScore;
         break;
       
       case "stars":
         // Sort by GitHub stars
-        result = (a.gh_stars || 0) - (b.gh_stars || 0);
+        result = (serverA.gh_stars || 0) - (serverB.gh_stars || 0);
         break;
       
       case "contributors":
         // Sort by contributors
-        result = (a.gh_contributors || 0) - (b.gh_contributors || 0);
+        result = (serverA.gh_contributors || 0) - (serverB.gh_contributors || 0);
         break;
       
       case "issues":
         // Sort by issues
-        result = (a.gh_issues || 0) - (b.gh_issues || 0);
+        result = (serverA.gh_issues || 0) - (serverB.gh_issues || 0);
         break;
       
       case "updated":
         // Sort by last updated - using last_scraped_at
-        if (!a.last_scraped_at && !b.last_scraped_at) return 0;
-        if (!a.last_scraped_at) return 1;
-        if (!b.last_scraped_at) return -1;
-        result = new Date(a.last_scraped_at).getTime() - new Date(b.last_scraped_at).getTime();
+        if (!serverA.last_scraped_at && !serverB.last_scraped_at) return 0;
+        if (!serverA.last_scraped_at) return 1;
+        if (!serverB.last_scraped_at) return -1;
+        result = new Date(serverA.last_scraped_at).getTime() - new Date(serverB.last_scraped_at).getTime();
         break;
       
       default:
@@ -316,6 +414,22 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
           </div>
           
           <div className="flex gap-2">
+            {searchQuery && (
+              <button
+                onClick={() => handleSortClick('relevance')}
+                className={`px-3 py-1.5 text-sm rounded-md flex items-center gap-1 transition-colors ${
+                  sortBy === 'relevance' && sortDirection !== null
+                    ? 'bg-green-100 text-green-700'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                Relevance
+                {sortBy === 'relevance' && sortDirection === 'desc' && <ChevronDown size={14} />}
+                {sortBy === 'relevance' && sortDirection === 'asc' && <ChevronUp size={14} />}
+                {sortBy !== 'relevance' && <ChevronsUpDown size={14} className="opacity-40" />}
+              </button>
+            )}
+            
             <button
               onClick={() => handleSortClick('quality')}
               className={`px-3 py-1.5 text-sm rounded-md flex items-center gap-1 transition-colors ${
@@ -391,7 +505,10 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
         {sortedServers.length > 0 ? (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {sortedServers.slice(0, displayedItems).map((server) => {
+              {sortedServers.slice(0, displayedItems).map((item) => {
+                const server = item.server;
+                const searchScore = item.searchScore;
+                
                 // Preserve current state in the link
                 const params = new URLSearchParams();
                 if (searchQuery) params.set('search', searchQuery);
@@ -410,12 +527,23 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
                     <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
                       <CardHeader>
                         <div className="flex items-start justify-between mb-2">
-                          <Badge variant="outline">
-                            {server.programmingLanguage}
-                          </Badge>
-                          <Badge variant="outline">
-                            {server.category || 'Uncategorized'}
-                          </Badge>
+                          <div className="flex gap-2">
+                            <Badge variant="outline">
+                              {server.programmingLanguage}
+                            </Badge>
+                            <Badge variant="outline">
+                              {server.category || 'Uncategorized'}
+                            </Badge>
+                          </div>
+                          {searchQuery && searchScore > 0 && (
+                            <Badge 
+                              variant="default" 
+                              className="bg-green-100 text-green-800 border-green-200"
+                              title={`Relevance: ${searchScore}`}
+                            >
+                              Match
+                            </Badge>
+                          )}
                         </div>
                         <CardTitle className="text-xl">
                           {getMCPServerName(server)}
