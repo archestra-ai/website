@@ -1,0 +1,46 @@
+{
+  "name": "bugsy",
+  "slug": "mobb-dev__bugsy-tab-readme-ov-file-model-context-protocol-mcp-server",
+  "description": "MCP server from mobb-dev/bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
+  "category": "AI Tools",
+  "qualityScore": 24,
+  "githubUrl": "https://github.com/mobb-dev/bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
+  "programmingLanguage": "TypeScript",
+  "gitHubOrg": "mobb-dev",
+  "gitHubRepo": "bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
+  "repositoryPath": null,
+  "gh_stars": 56,
+  "gh_contributors": 1,
+  "gh_issues": 1,
+  "gh_releases": false,
+  "gh_ci_cd": false,
+  "gh_latest_commit_hash": "",
+  "last_scraped_at": "2025-08-03T20:49:10.339Z",
+  "implementing_tools": false,
+  "implementing_prompts": false,
+  "implementing_resources": false,
+  "implementing_sampling": false,
+  "implementing_roots": false,
+  "implementing_logging": false,
+  "implementing_stdio": false,
+  "implementing_streamable_http": false,
+  "implementing_oauth2": false,
+  "evaluation_model": "gemini-2.5-flash",
+  "configForArchestra": {
+    "oauth": {
+      "provider": "github",
+      "required": true
+    },
+    "server_config": {
+      "args": [
+        "-y",
+        "@mobb/mcp-server",
+        "--transport",
+        "stdio"
+      ],
+      "command": "npx",
+      "transport": "stdio",
+      "env": {}
+    }
+  }
+}

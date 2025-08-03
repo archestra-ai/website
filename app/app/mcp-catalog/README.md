@@ -2,7 +2,7 @@
 
 Welcome to the **MCP Catalog**, your comprehensive guide to the Model Context Protocol ecosystem! 🚀
 
-[![MCP Quality](https://archestra.ai/mcp-catalog/api/badge/quality/strowk/mcp-k8s-go)](https://archestra.ai/mcp-catalog/strowk__mcp-k8s-go)
+[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/strowk/mcp-k8s-go)](https://archestra.ai/mcp-catalog/strowk__mcp-k8s-go)
 
 ## What is the MCP Catalog?
 
@@ -17,7 +17,7 @@ The MCP Catalog is an open-source, community-driven directory that helps develop
 
 ### Todo
 - Split GH metrics for multi-mcp-repos
+- weibaohui__k8m summ of points is more than 100.
 - Validate if configs work
 - Add 404.
-- Mobile version
 - Evaluate all servers

@@ -1253,19 +1253,19 @@ Respond with JSON format:
 }
 
 /**
- * Extract/calculate quality score
+ * Extract/calculate trust score
  */
 async function extractScore(
   server: MCPServer,
   force: boolean = false
 ): Promise<MCPServer> {
-  // Note: Quality score can be recalculated even for human evaluations
+  // Note: Trust score can be recalculated even for human evaluations
   // Skip if already exists and not forcing
   if (server.qualityScore !== null && !force) {
-    console.log(`  ⏭️  Quality Score: Skipped (already exists: ${server.qualityScore}/100)`);
+    console.log(`  ⏭️  Trust Score: Skipped (already exists: ${server.qualityScore}/100)`);
     return server;
   }
-  console.log(`  🔄 Quality Score: Calculating...`);
+  console.log(`  🔄 Trust Score: Calculating...`);
 
   // Load all servers for dependency commonality calculation
   const allServers = loadServers();
@@ -1369,7 +1369,7 @@ async function evaluateSingleRepo(
     if (options.showOutput !== false && server.qualityScore !== null) {
       const allServers = loadServers();
       const scoreBreakdown = calculateQualityScore(server, server.readme, allServers);
-      console.log("\n📈 Quality Score Breakdown:");
+      console.log("\n📈 Trust Score Breakdown:");
       console.log(`  MCP Protocol Implementation: ${scoreBreakdown.mcpProtocol}/40`);
       console.log(`  GitHub Community Health: ${scoreBreakdown.githubMetrics}/20`);
       console.log(`  Dependency Optimization: ${scoreBreakdown.dependencies}/20`);
@@ -1584,7 +1584,7 @@ Update Options:
   --config-for-archestra Update configuration for Archestra hosting
   --dependencies        Update library dependencies
   --protocol            Update MCP protocol features implementation
-  --score               Update quality scores
+  --score               Update trust scores
   --all                 Update everything
   (no flags)            Fill in missing data only
 

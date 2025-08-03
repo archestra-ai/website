@@ -252,7 +252,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
         result = a.searchScore - b.searchScore;
         break;
       case "quality":
-        // Sort by quality score, null values last
+        // Sort by trust score, null values last
         if (serverA.qualityScore === null && serverB.qualityScore === null) return 0;
         if (serverA.qualityScore === null) return 1;
         if (serverB.qualityScore === null) return -1;
@@ -646,7 +646,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              Quality
+              Trust
               {sortBy === 'quality' && sortDirection === 'desc' && <ChevronDown size={14} />}
               {sortBy === 'quality' && sortDirection === 'asc' && <ChevronUp size={14} />}
               {sortBy !== 'quality' && <ChevronsUpDown size={14} className="opacity-40" />}
@@ -726,8 +726,8 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
                   <option value="relevance-asc">Least Relevant</option>
                 </>
               )}
-              <option value="quality-desc">Highest Quality</option>
-              <option value="quality-asc">Lowest Quality</option>
+              <option value="quality-desc">Highest Trust</option>
+              <option value="quality-asc">Lowest Trust</option>
               <option value="stars-desc">Most Stars</option>
               <option value="stars-asc">Least Stars</option>
               <option value="contributors-desc">Most Contributors</option>

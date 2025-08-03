@@ -165,7 +165,7 @@ export async function GET() {
                               },
                               total: { 
                                 type: "integer",
-                                description: "Total quality score (max 100)"
+                                description: "Total trust score (max 100)"
                               },
                             },
                           },
@@ -311,7 +311,7 @@ export async function GET() {
               nullable: true,
               minimum: 0,
               maximum: 100,
-              description: "Quality score based on various metrics"
+              description: "Trust score based on various metrics"
             },
             gitHubOrg: { 
               type: "string",

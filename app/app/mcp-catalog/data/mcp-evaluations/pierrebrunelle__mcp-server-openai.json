@@ -1,0 +1,77 @@
+{
+  "name": "openai",
+  "slug": "pierrebrunelle__mcp-server-openai",
+  "description": "Query OpenAI models directly from Claude using MCP protocol.",
+  "readme": "# OpenAI MCP Server\r\n\r\nQuery OpenAI models directly from Claude using MCP protocol.\r\n\r\n![preview](preview.png)\r\n\r\n## Setup\r\n\r\nAdd to `claude_desktop_config.json`:\r\n\r\n```json\r\n{\r\n  \"mcpServers\": {\r\n    \"openai-server\": {\r\n      \"command\": \"python\",\r\n      \"args\": [\"-m\", \"src.mcp_server_openai.server\"],\r\n      \"env\": {\r\n        \"PYTHONPATH\": \"C:/path/to/your/mcp-server-openai\",\r\n        \"OPENAI_API_KEY\": \"your-key-here\"\r\n      }\r\n    }\r\n  }\r\n}\r\n```\r\n\r\n## Development\r\n```bash\r\ngit clone https://github.com/pierrebrunelle/mcp-server-openai\r\ncd mcp-server-openai\r\npip install -e .\r\n```\r\n\r\n## Testing\r\n```python\r\n# Run tests from project root\r\npytest -v test_openai.py -s\r\n\r\n# Sample test output:\r\nTesting OpenAI API call...\r\nOpenAI Response: Hello! I'm doing well, thank you for asking...\r\nPASSED\r\n```\r\n\r\n## License\r\nMIT License\r\n",
+  "category": "AI Tools",
+  "qualityScore": 41,
+  "githubUrl": "https://github.com/pierrebrunelle/mcp-server-openai",
+  "programmingLanguage": "Python",
+  "gitHubOrg": "pierrebrunelle",
+  "gitHubRepo": "mcp-server-openai",
+  "repositoryPath": null,
+  "gh_stars": 71,
+  "gh_contributors": 1,
+  "gh_issues": 5,
+  "gh_releases": false,
+  "gh_ci_cd": false,
+  "gh_latest_commit_hash": "67e598884e6fe7f28fc43bec2db8e37f482953ee",
+  "last_scraped_at": "2025-08-03T21:03:24.534Z",
+  "implementing_tools": false,
+  "implementing_prompts": false,
+  "implementing_resources": false,
+  "implementing_sampling": true,
+  "implementing_roots": false,
+  "implementing_logging": false,
+  "implementing_stdio": true,
+  "implementing_streamable_http": false,
+  "implementing_oauth2": false,
+  "rawDependencies": "=== pyproject.toml ===\n[project]\r\nname = \"mcp-server-openai\"\r\nversion = \"0.1.0\"\r\ndescription = \"MCP server for OpenAI API integration\"\r\nrequires-python = \">=3.10\"\r\ndependencies = [\r\n    \"mcp>=0.9.1\",\r\n    \"openai>=1.0.0\",\r\n    \"click>=8.0.0\",\r\n    \"pytest-asyncio\"\r\n]\r\n\r\n[build-system]\r\nrequires = [\"hatchling\"]\r\nbuild-backend = \"hatchling.build\"\r\n\r\n[project.scripts]\r\nmcp-server-openai = \"mcp_server_openai.server:main\"",
+  "evaluation_model": "gemini-2.5-flash",
+  "configForClients": {
+    "mcpServers": {
+      "mcp-server-openai": {
+        "command": "python",
+        "args": [
+          "-m",
+          "src.mcp_server_openai.server"
+        ],
+        "env": {
+          "PYTHONPATH": "C:/path/to/your/mcp-server-openai",
+          "OPENAI_API_KEY": "your-key-here"
+        }
+      }
+    }
+  },
+  "configForArchestra": {
+    "oauth": {},
+    "server_config": {
+      "args": [
+        "-m",
+        "src.mcp_server_openai.server",
+        "--transport",
+        "stdio"
+      ],
+      "command": "python",
+      "transport": "stdio",
+      "env": {
+        "server-basic": "PYTHONPATH",
+        "server-configured": "OPENAI_API_KEY"
+      }
+    }
+  },
+  "dependencies": [
+    {
+      "importance": 10,
+      "name": "mcp"
+    },
+    {
+      "importance": 8,
+      "name": "openai"
+    },
+    {
+      "importance": 4,
+      "name": "click"
+    }
+  ]
+}

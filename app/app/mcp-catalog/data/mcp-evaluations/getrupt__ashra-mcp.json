@@ -4,7 +4,7 @@
   "description": "A Model Context Protocol server for Ashra",
   "readme": "# Ashra MCP\n\nA Model Context Protocol server for Ashra.\n\n## Usage\n\nInstall dependencies:\n\n`yarn`\n\nBuild the project:\n\n`yarn build`\n\n## Claude Configuration\n\nDownload the latest version of [Claude](https://claude.ai/download).\n\nAdd to or create the following file `claude_desktop_config.json` in `cd ~/Library/Application\\ Support/Claude`:\n\n```json\n{\n  \"mcpServers\": {\n    \"ashra\": {\n      \"command\": \"node\",\n      // OR if you're using nvm and the version picked is not preferred/working\n      // \"command\": \"/Users/<user>/.nvm/versions/node/<version>/bin/node\",\n      \"args\": [\"<path/to/ashra-mcp>/build/index.js\"],\n      \"env\": {\n        \"ASHRA_API_KEY\": \"<YOUR-API-KEY>\"\n      }\n    }\n  }\n}\n```\n\n## Troubleshooting\n\nConsult the [MCP server documentation](https://modelcontextprotocol.io/quickstart/server) for more information.\n",
   "category": "AI Tools",
-  "qualityScore": 30,
+  "qualityScore": 32,
   "githubUrl": "https://github.com/getrupt/ashra-mcp",
   "programmingLanguage": "TypeScript",
   "gitHubOrg": "getrupt",

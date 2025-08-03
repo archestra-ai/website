@@ -123,8 +123,8 @@ export function calculateBadgeUsageScore(
     return 0;
   }
 
-  // Check for our specific Archestra MCP Quality badge pattern
-  const archestraBadgePattern = /\[\!\[MCP Quality\]\(https:\/\/archestra\.ai\/api\/badge\/quality\//i;
+  // Check for our specific Archestra Trust Score badge pattern (accepts MCP Quality, MCP Trust, or Trust Score)
+  const archestraBadgePattern = /\[\!\[(MCP Quality|MCP Trust|Trust Score)\]\(https:\/\/archestra\.ai\/api\/badge\/quality\//i;
 
   return archestraBadgePattern.test(readmeContent) ? 2 : 0;
 }
@@ -191,7 +191,7 @@ export function calculateDependenciesScore(
 }
 
 /**
- * Calculate total quality score with breakdown
+ * Calculate total trust score with breakdown
  */
 export function calculateQualityScore(
   server: MCPServer,

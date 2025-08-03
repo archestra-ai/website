@@ -190,7 +190,7 @@ export function loadServers(slug?: string): MCPServer[] {
     console.error("Failed to load mcp-servers.json:", error);
   }
 
-  // Sort: evaluated servers first (by quality score), then unevaluated servers
+  // Sort: evaluated servers first (by trust score), then unevaluated servers
   const sortedServers = servers.sort((a, b) => {
     // Get names using the helper function
     const nameA = a.repositoryPath ? a.repositoryPath.split('/').pop() || a.gitHubRepo : a.gitHubRepo;
@@ -200,7 +200,7 @@ export function loadServers(slug?: string): MCPServer[] {
     if (a.qualityScore !== null && b.qualityScore === null) return -1;
     if (a.qualityScore === null && b.qualityScore !== null) return 1;
 
-    // Among evaluated servers, sort by quality score
+    // Among evaluated servers, sort by trust score
     if (a.qualityScore !== null && b.qualityScore !== null) {
       if (a.qualityScore !== b.qualityScore) {
         return b.qualityScore - a.qualityScore;

@@ -115,7 +115,7 @@ export async function GET(request: NextRequest) {
     filteredServers.sort((a, b) => {
       switch (sortBy) {
         case "quality":
-          // Sort by quality score (descending), null values last
+          // Sort by trust score (descending), null values last
           if (a.qualityScore === null && b.qualityScore === null) return 0;
           if (a.qualityScore === null) return 1;
           if (b.qualityScore === null) return -1;

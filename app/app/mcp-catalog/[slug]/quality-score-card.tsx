@@ -65,8 +65,8 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
     }
     if (category === "badge adoption") {
       if (percentage > 0)
-        return `Archestra MCP Quality badge (${score}/${maxScore})`;
-      return `Archestra MCP Quality score badge is missing`;
+        return `Archestra MCP Trust badge (${score}/${maxScore})`;
+      return `Archestra MCP Trust score badge is missing`;
     }
     if (category === "MCP protocol implementation") {
       // Check if protocol features have been evaluated
@@ -97,7 +97,7 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
   return (
     <Card>
       <CardHeader>
-        <CardTitle>MCP Quality Score</CardTitle>
+        <CardTitle>MCP Trust Score</CardTitle>
         <CardDescription>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <span>

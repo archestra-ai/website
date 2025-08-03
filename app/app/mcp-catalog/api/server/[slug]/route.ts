@@ -50,7 +50,7 @@ import { calculateQualityScore } from "../../../lib/quality-calculator";
  *                           description: Points for displaying quality badge (max 2)
  *                         total:
  *                           type: integer
- *                           description: Total quality score (max 100)
+ *                           description: Total trust score (max 100)
  *                     githubUrl:
  *                       type: string
  *                       description: Direct link to GitHub repository
@@ -95,7 +95,7 @@ export async function GET(
       );
     }
 
-    // Calculate quality score breakdown if score exists
+    // Calculate trust score breakdown if score exists
     let scoreBreakdown = null;
     if (server.qualityScore !== null) {
       // Load all servers for dependency commonality calculation

@@ -1,0 +1,48 @@
+{
+  "name": "vet",
+  "slug": "safedep__vet__docs__mcp-md",
+  "description": "Protect against malicious open source packages 🤖",
+  "category": "Security",
+  "qualityScore": 48,
+  "githubUrl": "https://github.com/safedep/vet/blob/main/docs/mcp.md",
+  "programmingLanguage": "Go",
+  "gitHubOrg": "safedep",
+  "gitHubRepo": "vet",
+  "repositoryPath": "docs/mcp.md",
+  "gh_stars": 627,
+  "gh_contributors": 21,
+  "gh_issues": 92,
+  "gh_releases": true,
+  "gh_ci_cd": true,
+  "gh_latest_commit_hash": "47939fafaf2b699964821377ae6e947e69d88263",
+  "last_scraped_at": "2025-08-03T20:49:57.762Z",
+  "implementing_tools": false,
+  "implementing_prompts": false,
+  "implementing_resources": false,
+  "implementing_sampling": false,
+  "implementing_roots": false,
+  "implementing_logging": false,
+  "implementing_stdio": false,
+  "implementing_streamable_http": false,
+  "implementing_oauth2": false,
+  "evaluation_model": "gemini-2.5-flash",
+  "configForArchestra": {
+    "oauth": {
+      "provider": "github",
+      "required": true
+    },
+    "server_config": {
+      "args": [
+        "--transport",
+        "stdio"
+      ],
+      "command": "binary-name",
+      "transport": "stdio",
+      "env": {
+        "server-basic": "",
+        "server-configured": "",
+        "server-docker": ""
+      }
+    }
+  }
+}

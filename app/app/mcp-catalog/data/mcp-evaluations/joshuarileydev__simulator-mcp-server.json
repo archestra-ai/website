@@ -4,7 +4,7 @@
   "description": "MCP server from JoshuaRileyDev/simulator-mcp-server",
   "readme": "# iOS Simulator MCP Server\n\nA Model Context Protocol (MCP) server that provides programmatic control over iOS simulators. This server implements the MCP specification to expose simulator functionality through a standardized interface.\n\n## Features\n\n- List available iOS simulators\n- Boot and shutdown simulators\n- Install .app bundles on simulators\n- Launch installed apps by bundle ID\n\n## Installation\nAdd the following to your Claude Config JSON file\n```\n{\n  \"mcpServers\": {\n    \"simulator\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"y\",\n        \"@joshuarileydev/simulator-mcp-server\"\n      ]\n    }\n  }\n}\n```",
   "category": "Development",
-  "qualityScore": 48,
+  "qualityScore": 50,
   "githubUrl": "https://github.com/JoshuaRileyDev/simulator-mcp-server",
   "programmingLanguage": "JavaScript",
   "gitHubOrg": "JoshuaRileyDev",

@@ -4,7 +4,7 @@
   "description": "MCP (Model Context Protocol) server for Weaviate",
   "readme": "# Weaviate MCP Server\n\n## Instructions\n\nBuild the server:\n```\nmake build\n```\n\nRun the test client\n```\nmake run-client\n```\n\n## Tools\n\n### Insert One\nInsert an object into weaviate.\n\n**Request body:**\n```json\n{}\n```\n\n**Response body**\n```json\n{}\n```\n\n### Query\nRetrieve objects from weaviate with hybrid search.\n\n**Request body:**\n```json\n{}\n```\n\n**Response body**\n```json\n{}\n```\n",
   "category": "AI Tools",
-  "qualityScore": 46,
+  "qualityScore": 48,
   "githubUrl": "https://github.com/weaviate/mcp-server-weaviate",
   "programmingLanguage": "Go",
   "gitHubOrg": "weaviate",

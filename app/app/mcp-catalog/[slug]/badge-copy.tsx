@@ -26,7 +26,7 @@ export default function BadgeCopy({ badgeMarkdown, badgeUrl }: BadgeCopyProps) {
     <>
       <img 
         src={badgeUrl}
-        alt="MCP Quality Badge" 
+        alt="Trust Score Badge" 
         className="mb-4"
       />
       <div className="relative">

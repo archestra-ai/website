@@ -74,7 +74,7 @@ export default function ScoringExplanationCard() {
       >
         <div className="flex items-center justify-between">
           <h3 className="text-base xl:text-lg font-semibold text-blue-900">
-            How do we calculate the MCP Quality score?
+            How do we calculate the MCP Trust score?
           </h3>
           <div className="xl:hidden">
             {isExpanded ? (

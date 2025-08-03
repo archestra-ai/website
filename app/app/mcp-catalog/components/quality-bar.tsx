@@ -23,7 +23,7 @@ export function QualityBar({ score, className = "" }: QualityBarProps) {
     return (
       <div className={`w-full ${className}`}>
         <div className="flex items-center justify-between mb-1">
-          <span className="text-xs font-medium text-gray-700">Quality Score</span>
+          <span className="text-xs font-medium text-gray-700">Trust Score</span>
           <span className="text-xs text-gray-400 italic">Pending</span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
@@ -58,7 +58,7 @@ export function QualityBar({ score, className = "" }: QualityBarProps) {
   return (
     <div className={`w-full ${className}`}>
       <div className="flex items-center justify-between mb-1">
-        <span className="text-xs font-medium text-gray-700">Quality Score</span>
+        <span className="text-xs font-medium text-gray-700">Trust Score</span>
         <span className="text-xs font-semibold text-gray-900">{score}/100</span>
       </div>
       <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">

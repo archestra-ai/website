@@ -184,7 +184,7 @@ export default async function MCPDetailPage({
                 <p className="text-base sm:text-lg text-gray-600">{server.description}</p>
               </div>
 
-              {/* Quality Score */}
+              {/* Trust Score */}
               {(() => {
                 const scoreBreakdown = server.qualityScore !== null
                   ? calculateQualityScore(
@@ -202,7 +202,7 @@ export default async function MCPDetailPage({
                 ) : (
                   <Card>
                     <CardHeader>
-                      <CardTitle>MCP Quality Score</CardTitle>
+                      <CardTitle>MCP Trust Score</CardTitle>
                       <CardDescription>
                         This server is being evaluated
                       </CardDescription>
@@ -265,9 +265,6 @@ export default async function MCPDetailPage({
                   </CardContent>
                 </Card>
               )}
-
-              {/* Dependencies - Collapsible on mobile */}
-              <DependenciesCard server={server} />
 
               {/* MCP Protocol Features */}
               {server.qualityScore !== null && (
@@ -355,6 +352,9 @@ export default async function MCPDetailPage({
                   </CardContent>
                 </Card>
               )}
+
+              {/* Dependencies - Collapsible on mobile */}
+              <DependenciesCard server={server} />
 
               {/* Configuration */}
               {server.configForClients ? (
@@ -622,7 +622,7 @@ export default async function MCPDetailPage({
                 <CardHeader>
                   <CardTitle className="text-lg">Add Quality Badge</CardTitle>
                   <CardDescription>
-                    Show your MCP quality score in your README
+                    Show your MCP trust score in your README
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -633,8 +633,8 @@ export default async function MCPDetailPage({
                       : `/mcp-catalog/api/badge/quality/${server.gitHubOrg}/${server.gitHubRepo}`;
 
                     const badgeMarkdown = server.repositoryPath
-                      ? `[![MCP Quality](https://archestra.ai/mcp-catalog/api/badge/quality/${server.gitHubOrg}/${server.gitHubRepo}/${server.repositoryPath.replace(/\//g, "--")})](https://archestra.ai/mcp-catalog/${server.slug})`
-                      : `[![MCP Quality](https://archestra.ai/mcp-catalog/api/badge/quality/${server.gitHubOrg}/${server.gitHubRepo})](https://archestra.ai/mcp-catalog/${server.slug})`;
+                      ? `[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/${server.gitHubOrg}/${server.gitHubRepo}/${server.repositoryPath.replace(/\//g, "--")})](https://archestra.ai/mcp-catalog/${server.slug})`
+                      : `[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/${server.gitHubOrg}/${server.gitHubRepo})](https://archestra.ai/mcp-catalog/${server.slug})`;
 
                     return (
                       <BadgeCopy

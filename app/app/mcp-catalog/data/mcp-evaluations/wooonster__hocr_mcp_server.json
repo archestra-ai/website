@@ -4,7 +4,7 @@
   "description": "MCP server from Wooonster/hocr_mcp_server",
   "readme": "# HOCR MCP Agent\n\n### Vue Frontend\n\nStart command:\n\n```bash\ncd hocr-vue-client/\n\nnpm install\nnpm run dev\n```\n\nRequired packages:\n```bash\ncd hocr-vue-client/\n\nnpm install katex\nnpm install axios\n```\n\n### MCP Server\n\nStart command:\n\n```bash\nuvicorn mcp_server:app --reload --host 0.0.0.0 --port 8000\n````",
   "category": "AI Tools",
-  "qualityScore": 22,
+  "qualityScore": 26,
   "githubUrl": "https://github.com/Wooonster/hocr_mcp_server",
   "programmingLanguage": "Python",
   "gitHubOrg": "Wooonster",

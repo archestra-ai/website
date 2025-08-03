@@ -4,7 +4,7 @@
   "description": "MCP server for interacting with the Aseprite API",
   "readme": "# Aseprite MCP Tools\n\nA Python module that serves as an MCP server for interacting with the Aseprite API\n\nDemo where Cursor draws a cloud in aseprite using the MCP:\n\nhttps://github.com/user-attachments/assets/572edf75-ab66-4700-87ee-d7d3d196c597\n\n\n## Installation:\n```json\n{\n  \"mcpServers\": {\n      \"aseprite\": {\n          \"command\": \"/opt/homebrew/bin/uv\",\n          \"args\": [\n              \"--directory\",\n              \"/path/to/repo\",\n              \"run\",\n              \"-m\",\n              \"aseprite_mcp\"\n          ]\n      }\n  }\n}\n```\n",
   "category": "Art & Culture",
-  "qualityScore": 42,
+  "qualityScore": 44,
   "githubUrl": "https://github.com/diivi/aseprite-mcp",
   "programmingLanguage": "Python",
   "gitHubOrg": "diivi",

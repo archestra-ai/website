@@ -99,7 +99,7 @@ export async function GET(
 
   if (!server) {
     // Return a "calculating" badge instead of 404
-    const label = "MCP Quality";
+    const label = "Trust Score";
     const message = "Calculating...";
     const color = "#9f9f9f"; // gray color for calculating state
     const svg = generateBadgeSVG(label, message, color);
@@ -116,7 +116,7 @@ export async function GET(
   
   if (score === null) {
     // Return a "pending" badge for servers being evaluated
-    const label = "MCP Quality";
+    const label = "Trust Score";
     const message = "Pending";
     const color = "#9f9f9f"; // gray color for pending state
     const svg = generateBadgeSVG(label, message, color);
@@ -130,7 +130,7 @@ export async function GET(
   }
 
   const color = getColor(score);
-  const label = "MCP Quality";
+  const label = "Trust Score";
   const message = `${score}/100`;
 
   const svg = generateBadgeSVG(label, message, color);

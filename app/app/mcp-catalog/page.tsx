@@ -172,14 +172,14 @@ export default function MCPCatalogPage() {
                               ? `/mcp-catalog/api/badge/quality/${topScoredServer.gitHubOrg}/${topScoredServer.gitHubRepo}/${topScoredServer.repositoryPath.replace(/\//g, "--")}`
                               : `/mcp-catalog/api/badge/quality/${topScoredServer.gitHubOrg}/${topScoredServer.gitHubRepo}`
                           }
-                          alt="MCP Quality Badge"
+                          alt="Trust Score Badge"
                           className="h-5"
                         />
                       </a>
                     ) : (
                       <img
                         src="/mcp-catalog/api/badge/quality/YOUR-GITHUB-ORG/YOUR-REPO-NAME"
-                        alt="MCP Quality Badge"
+                        alt="Trust Score Badge"
                         className="h-5 flex-shrink-0"
                       />
                     )}
