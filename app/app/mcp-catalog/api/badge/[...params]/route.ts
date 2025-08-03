@@ -144,11 +144,14 @@ export async function GET(
 }
 
 function getColor(score: number): string {
-  if (score >= 90) return "#4c1"; // bright green
-  if (score >= 80) return "#97ca00"; // green
-  if (score >= 70) return "#dfb317"; // yellow
-  if (score >= 60) return "#fe7d37"; // orange
-  return "#e05d44"; // red
+  if (score >= 90) return "#059669"; // green-600
+  if (score >= 80) return "#10b981"; // green-500
+  if (score >= 70) return "#34d399"; // green-400
+  if (score >= 60) return "#6ee7b7"; // emerald-400
+  if (score >= 50) return "#5eead4"; // teal-400
+  if (score >= 40) return "#eab308"; // yellow-500
+  if (score >= 30) return "#f97316"; // orange-500
+  return "#ef4444"; // red-500
 }
 
 function generateBadgeSVG(

@@ -64,6 +64,7 @@ export interface MCPServer {
   gh_ci_cd: boolean;
   gh_latest_commit_hash?: string;
   last_scraped_at?: string; // ISO date string
+  evaluation_model?: string; // Model used for AI evaluation (e.g., "gemini-2.5-pro")
   // MCP Protocol Features
   implementing_tools: boolean;
   implementing_prompts: boolean;

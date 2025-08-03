@@ -329,7 +329,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
   return (
     <div className="flex gap-8">
       {/* Categories Sidebar */}
-      <div className="w-64 flex-shrink-0">
+      <div className="w-80 flex-shrink-0">
         <Card className="bg-gray-50 border-gray-200">
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
@@ -364,9 +364,9 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
               
               {/* Dependencies */}
               <div>
-                <h3 className="text-sm font-medium text-gray-700 mb-2">Main Dependencies</h3>
+                <h3 className="text-sm font-medium text-gray-700 mb-2">MCP Dependencies</h3>
                 <div className="space-y-1">
-                  {dependencies.map((dependency) => (
+                  {dependencies.slice(0, 7).map((dependency) => (
                     <button
                       key={dependency}
                       onClick={() => setSelectedDependency(dependency)}

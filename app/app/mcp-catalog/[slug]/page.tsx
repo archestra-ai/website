@@ -187,9 +187,44 @@ export default async function MCPDetailPage({
                 <CardHeader>
                   <CardTitle>MCP Quality Score</CardTitle>
                   <CardDescription>
-                    {server.qualityScore !== null
-                      ? "Based on our comprehensive evaluation criteria"
-                      : "This server is being evaluated"}
+                    <div className="flex items-center justify-between">
+                      <span>
+                        {server.qualityScore !== null
+                          ? "Based on our comprehensive evaluation criteria"
+                          : "This server is being evaluated"}
+                      </span>
+                      {server.evaluation_model !== undefined && (
+                        <div className="flex items-center gap-2 text-xs">
+                          <span className="text-gray-500">
+                            {server.evaluation_model === null
+                              ? "✨ Human evaluation"
+                              : `🤖 Evaluated by ${server.evaluation_model}`}
+                          </span>
+                          <a
+                            href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.slug}.json`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
+                            title="Fix evaluation data"
+                          >
+                            <svg
+                              className="w-3 h-3"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                              />
+                            </svg>
+                            Fix
+                          </a>
+                        </div>
+                      )}
+                    </div>
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -384,7 +419,40 @@ export default async function MCPDetailPage({
                 <CardHeader>
                   <CardTitle>Dependencies</CardTitle>
                   <CardDescription>
-                    Libraries and frameworks used by this MCP server
+                    <div className="flex items-center justify-between">
+                      <span>Libraries and frameworks used by this MCP server</span>
+                      {server.dependencies && server.evaluation_model !== undefined && (
+                        <div className="flex items-center gap-2 text-xs">
+                          <span className="text-gray-500">
+                            {server.evaluation_model === null
+                              ? "✨ Human curated"
+                              : `🤖 Analyzed by ${server.evaluation_model}`}
+                          </span>
+                          <a
+                            href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.slug}.json`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
+                            title="Fix dependencies"
+                          >
+                            <svg
+                              className="w-3 h-3"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                              />
+                            </svg>
+                            Fix
+                          </a>
+                        </div>
+                      )}
+                    </div>
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -477,9 +545,44 @@ export default async function MCPDetailPage({
                   <CardHeader>
                     <CardTitle>MCP Protocol Support</CardTitle>
                     <CardDescription>
-                      {server.implementing_tools === null
-                        ? "Protocol features have not been evaluated yet"
-                        : "Implemented MCP protocol features"}
+                      <div className="flex items-center justify-between">
+                        <span>
+                          {server.implementing_tools === null
+                            ? "Protocol features have not been evaluated yet"
+                            : "Implemented MCP protocol features"}
+                        </span>
+                        {server.implementing_tools !== null && server.evaluation_model !== undefined && (
+                          <div className="flex items-center gap-2 text-xs">
+                            <span className="text-gray-500">
+                              {server.evaluation_model === null
+                                ? "✨ Human verified"
+                                : `🤖 Detected by ${server.evaluation_model}`}
+                            </span>
+                            <a
+                              href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.slug}.json`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
+                              title="Fix protocol features"
+                            >
+                              <svg
+                                className="w-3 h-3"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                />
+                              </svg>
+                              Fix
+                            </a>
+                          </div>
+                        )}
+                      </div>
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -529,8 +632,43 @@ export default async function MCPDetailPage({
                   <CardHeader>
                     <CardTitle>Configuration</CardTitle>
                     <CardDescription>
-                      Configuration example extracted from README.md for Claude
-                      Desktop and other clients.
+                      <div className="flex items-center justify-between">
+                        <span>
+                          Configuration example extracted from README.md for Claude
+                          Desktop and other clients.
+                        </span>
+                        {server.evaluation_model !== undefined && (
+                          <div className="flex items-center gap-2 text-xs">
+                            <span className="text-gray-500">
+                              {server.evaluation_model === null
+                                ? "✨ Human provided"
+                                : `🤖 Extracted by ${server.evaluation_model}`}
+                            </span>
+                            <a
+                              href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.slug}.json`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
+                              title="Fix configuration"
+                            >
+                              <svg
+                                className="w-3 h-3"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                />
+                              </svg>
+                              Fix
+                            </a>
+                          </div>
+                        )}
+                      </div>
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -782,7 +920,7 @@ export default async function MCPDetailPage({
               <div className="space-y-3">
                 {/* Edit This Server Button */}
                 <a
-                  href={`https://github.com/archestra-ai/website/edit/main/app/data/mcp-evaluations/${server.slug}.json`}
+                  href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.slug}.json`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 w-full justify-center text-sm"
@@ -805,7 +943,7 @@ export default async function MCPDetailPage({
 
                 {/* Add New MCP Server Button */}
                 <a
-                  href="https://github.com/archestra-ai/website/edit/main/app/data/mcp-servers.json"
+                  href="https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-servers.json"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 w-full justify-center text-sm"

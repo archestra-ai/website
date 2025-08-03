@@ -79,18 +79,21 @@ function getProgrammingLanguages(evaluations: MCPServer[]): string[] {
   return ["All", ...sortedLanguages];
 }
 
-// Get top dependencies from evaluations (importance >= 8)
+// Get top MCP-related dependencies from evaluations (importance >= 8)
 function getTopDependencies(evaluations: MCPServer[]): string[] {
   const dependencyCounts = new Map<
     string,
     { count: number; totalImportance: number }
   >();
 
-  // Count dependencies and their importance
+  // Count dependencies and their importance (only MCP-related)
   for (const evaluation of evaluations) {
     if (evaluation.dependencies) {
       for (const dep of evaluation.dependencies) {
-        if (dep.importance >= 8) {
+        // Only include dependencies with "mcp" or "modelcontextprotocol" in the name
+        const depNameLower = dep.name.toLowerCase();
+        if (dep.importance >= 8 && 
+            (depNameLower.includes('mcp') || depNameLower.includes('modelcontextprotocol'))) {
           const existing = dependencyCounts.get(dep.name) || {
             count: 0,
             totalImportance: 0,

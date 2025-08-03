@@ -236,7 +236,9 @@ async function fetchRepoData(
         "pyproject.toml"
       ];
 
-      // First try to list files in the directory to find dependency files
+      // Collect ALL dependency files from root and first-level subdirectories
+      const collectedDependencyFiles: string[] = [];
+      
       try {
         const contentsUrl = repositoryPath
           ? `/repos/${owner}/${repo}/contents/${repositoryPath}`
@@ -244,25 +246,78 @@ async function fetchRepoData(
 
         const contents = await apiCall(contentsUrl);
 
-        // Find dependency files in the listing
-        const foundDepFiles = contents
+        // Find dependency files in root directory
+        const rootDepFiles = contents
           .filter((item: any) => item.type === "file" && dependencyFiles.includes(item.name))
           .map((item: any) => item.name);
 
-        // Fetch the first dependency file found
-        for (const depFile of foundDepFiles) {
+        // Fetch all dependency files from root
+        for (const depFile of rootDepFiles) {
           try {
             const depFileUrl = repositoryPath
               ? `/repos/${owner}/${repo}/contents/${repositoryPath}/${depFile}`
               : `/repos/${owner}/${repo}/contents/${depFile}`;
 
             const depFileData = await apiCall(depFileUrl);
-            rawDependencies = Buffer.from(depFileData.content, "base64").toString("utf-8");
+            const content = Buffer.from(depFileData.content, "base64").toString("utf-8");
+            collectedDependencyFiles.push(`=== ${depFile} ===\n${content}`);
             console.log(`Found dependency file: ${depFile}`);
-            break; // Use the first one found
           } catch (error) {
             // Continue to next file
           }
+        }
+
+        // Find subdirectories (first-level only)
+        const subdirectories = contents
+          .filter((item: any) => item.type === "dir")
+          .filter((item: any) => {
+            // Skip common non-source directories
+            const skipDirs = [
+              "node_modules", ".git", "vendor", "dist", "build", 
+              "out", "target", ".idea", ".vscode", "__pycache__",
+              "coverage", ".pytest_cache", ".tox", "venv", "env"
+            ];
+            return !skipDirs.includes(item.name);
+          });
+
+        // Check each subdirectory for dependency files
+        for (const subdir of subdirectories) {
+          try {
+            const subdirUrl = repositoryPath
+              ? `/repos/${owner}/${repo}/contents/${repositoryPath}/${subdir.name}`
+              : `/repos/${owner}/${repo}/contents/${subdir.name}`;
+
+            const subdirContents = await apiCall(subdirUrl);
+            
+            // Find dependency files in subdirectory
+            const subdirDepFiles = subdirContents
+              .filter((item: any) => item.type === "file" && dependencyFiles.includes(item.name))
+              .map((item: any) => item.name);
+
+            // Fetch dependency files from subdirectory
+            for (const depFile of subdirDepFiles) {
+              try {
+                const depFileUrl = repositoryPath
+                  ? `/repos/${owner}/${repo}/contents/${repositoryPath}/${subdir.name}/${depFile}`
+                  : `/repos/${owner}/${repo}/contents/${subdir.name}/${depFile}`;
+
+                const depFileData = await apiCall(depFileUrl);
+                const content = Buffer.from(depFileData.content, "base64").toString("utf-8");
+                collectedDependencyFiles.push(`=== ${subdir.name}/${depFile} ===\n${content}`);
+                console.log(`Found dependency file: ${subdir.name}/${depFile}`);
+              } catch (error) {
+                // Continue to next file
+              }
+            }
+          } catch (error) {
+            // Continue to next subdirectory
+          }
+        }
+
+        // Combine all collected dependency files
+        if (collectedDependencyFiles.length > 0) {
+          rawDependencies = collectedDependencyFiles.join("\n\n");
+          console.log(`Collected ${collectedDependencyFiles.length} dependency file(s)`);
         }
       } catch (error) {
         console.warn(`Could not list directory contents`);
@@ -395,7 +450,7 @@ function convertToGeminiSchema(jsonSchema: any): any {
 async function callLLM(
   prompt: string,
   format?: any,
-  model = "deepseek-r1:14b",
+  model = "gemini-2.5-pro",
 ): Promise<any> {
   try {
     // Check if this is a Gemini model
@@ -614,8 +669,10 @@ async function extractGitHubData(
 ): Promise<MCPServer> {
   // Skip if already exists and not forcing
   if (server.last_scraped_at && !force) {
+    console.log(`  ⏭️  GitHub Data: Skipped (last scraped: ${server.last_scraped_at})`);
     return server;
   }
+  console.log(`  🔄 GitHub Data: Fetching...`);
 
   const apiData = await fetchRepoData(
     githubInfo.owner,
@@ -654,10 +711,17 @@ async function extractCategory(
   model: string,
   force: boolean = false
 ): Promise<MCPServer> {
-  // Skip if already exists and not forcing
-  if (server.category && !force) {
+  // Skip if human evaluation (evaluation_model === null)
+  if (server.evaluation_model === null && !force) {
+    console.log(`  ⏭️  Category: Skipped (human evaluation)`);
     return server;
   }
+  // Skip if already exists and not forcing
+  if (server.category && !force) {
+    console.log(`  ⏭️  Category: Skipped (already exists: "${server.category}")`);
+    return server;
+  }
+  console.log(`  🔄 Category: Extracting...`);
 
   const content = server.readme || server.description;
   if (!content) {
@@ -678,6 +742,7 @@ Respond with JSON: {"category": "..."}`;
       return {
         ...server,
         category: result.category as any,
+        evaluation_model: model,
       };
     }
   } catch (error) {
@@ -695,10 +760,17 @@ async function extractClientConfig(
   model: string,
   force: boolean = false
 ): Promise<MCPServer> {
-  // Skip if already exists and not forcing
-  if (server.configForClients && !force) {
+  // Skip if human evaluation (evaluation_model === null)
+  if (server.evaluation_model === null && !force) {
+    console.log(`  ⏭️  Client Config: Skipped (human evaluation)`);
     return server;
   }
+  // Skip if already exists and not forcing
+  if (server.configForClients && !force) {
+    console.log(`  ⏭️  Client Config: Skipped (already exists)`);
+    return server;
+  }
+  console.log(`  🔄 Client Config: Extracting...`);
 
   const content = server.readme || server.description;
   if (!content) {
@@ -808,6 +880,7 @@ If no run command found, respond with: {"configForClients": null}`;
       return {
         ...server,
         configForClients: result.configForClients,
+        evaluation_model: model,
       };
     }
   } catch (error) {
@@ -825,10 +898,17 @@ async function extractArchestraConfig(
   model: string,
   force: boolean = false
 ): Promise<MCPServer> {
-  // Skip if already exists and not forcing
-  if (server.configForArchestra && !force) {
+  // Skip if human evaluation (evaluation_model === null)
+  if (server.evaluation_model === null && !force) {
+    console.log(`  ⏭️  Archestra Config: Skipped (human evaluation)`);
     return server;
   }
+  // Skip if already exists and not forcing
+  if (server.configForArchestra && !force) {
+    console.log(`  ⏭️  Archestra Config: Skipped (already exists)`);
+    return server;
+  }
+  console.log(`  🔄 Archestra Config: Extracting...`);
 
   const content = server.readme || server.description;
   if (!content) {
@@ -930,6 +1010,7 @@ If no configuration found, respond: {"configForArchestra": null}`;
       return {
         ...server,
         configForArchestra: result.configForArchestra,
+        evaluation_model: model,
       };
     }
   } catch (error) {
@@ -947,10 +1028,17 @@ async function extractDependencies(
   model: string,
   force: boolean = false
 ): Promise<MCPServer> {
-  // Skip if already exists and not forcing
-  if (server.dependencies && !force) {
+  // Skip if human evaluation (evaluation_model === null)
+  if (server.evaluation_model === null && !force) {
+    console.log(`  ⏭️  Dependencies: Skipped (human evaluation)`);
     return server;
   }
+  // Skip if already exists and not forcing
+  if (server.dependencies && !force) {
+    console.log(`  ⏭️  Dependencies: Skipped (already exists - ${server.dependencies.length} deps)`);
+    return server;
+  }
+  console.log(`  🔄 Dependencies: Extracting...`);
 
   const content = server.readme || server.description;
   const rawDeps = server.rawDependencies;
@@ -974,6 +1062,12 @@ Instructions:
 4. For go.mod, list the required modules
 5. For other formats, extract the production dependencies
 
+IMPORTANT - Clean up dependency names:
+- Remove "github.com/" prefix from Go modules (e.g., "github.com/mark3labs/mcp-go" → "mark3labs/mcp-go")
+- Remove version constraints (e.g., "express@^5.0.0" → "express")
+- Use the package name only, not the full URL or path
+- Keep scoped npm packages as-is (e.g., "@modelcontextprotocol/sdk")
+
 Look for these types of libraries:
 1. Main framework/library (e.g., Express, FastAPI, Hono, Gin, etc.)
 2. MCP-specific libraries (e.g., @modelcontextprotocol/sdk, mcp, fastmcp)
@@ -996,9 +1090,12 @@ Respond with JSON format:
   "dependencies": [
     {"name": "@modelcontextprotocol/sdk", "importance": 10},
     {"name": "express", "importance": 8},
+    {"name": "mark3labs/mcp-go", "importance": 9},
     {"name": "axios", "importance": 6}
   ]
 }
+
+Note: For Go modules, use "owner/repo" format WITHOUT "github.com/" prefix
 
 Importance scale (1-10):
 - 10: Main framework or core MCP library
@@ -1033,6 +1130,7 @@ If no library dependencies found, respond: {"dependencies": []}`;
       return {
         ...server,
         dependencies: result.dependencies,
+        evaluation_model: model,
       };
     }
   } catch (error) {
@@ -1050,10 +1148,17 @@ async function extractProtocolFeatures(
   model: string,
   force: boolean = false
 ): Promise<MCPServer> {
-  // Skip if already exists and not forcing
-  if (server.implementing_tools !== null && !force) {
+  // Skip if human evaluation (evaluation_model === null)
+  if (server.evaluation_model === null && !force) {
+    console.log(`  ⏭️  Protocol Features: Skipped (human evaluation)`);
     return server;
   }
+  // Skip if already exists and not forcing
+  if (server.implementing_tools !== null && !force) {
+    console.log(`  ⏭️  Protocol Features: Skipped (already exists)`);
+    return server;
+  }
+  console.log(`  🔄 Protocol Features: Extracting...`);
 
   const content = server.readme || server.description;
   if (!content) {
@@ -1138,6 +1243,7 @@ Respond with JSON format:
       implementing_stdio: result.implementing_stdio,
       implementing_streamable_http: result.implementing_streamable_http,
       implementing_oauth2: result.implementing_oauth2,
+      evaluation_model: model,
     };
   } catch (error) {
     console.warn(`Protocol analysis failed: ${error.message}`);
@@ -1153,10 +1259,13 @@ async function extractScore(
   server: MCPServer,
   force: boolean = false
 ): Promise<MCPServer> {
+  // Note: Quality score can be recalculated even for human evaluations
   // Skip if already exists and not forcing
   if (server.qualityScore !== null && !force) {
+    console.log(`  ⏭️  Quality Score: Skipped (already exists: ${server.qualityScore}/100)`);
     return server;
   }
+  console.log(`  🔄 Quality Score: Calculating...`);
 
   // Load all servers for dependency commonality calculation
   const allServers = loadServers();
@@ -1179,7 +1288,9 @@ async function evaluateSingleRepo(
 ): Promise<MCPServer> {
   try {
     if (options.showOutput !== false) {
-      console.log(`🔍 Evaluating repository: ${githubUrl}`);
+      console.log(`\n${'='.repeat(60)}`);
+      console.log(`🔍 Evaluating: ${githubUrl}`);
+      console.log(`${'='.repeat(60)}`);
     }
 
     // 1. Parse GitHub URL
@@ -1189,6 +1300,30 @@ async function evaluateSingleRepo(
 
     // 2. Load existing or fetch new data
     let server = loadMCPServerFromFile(filePath);
+    
+    if (options.showOutput !== false) {
+      if (server) {
+        console.log(`📄 Existing evaluation found: ${githubInfo.slug}.json`);
+      } else {
+        console.log(`🆕 Creating new evaluation for: ${githubInfo.slug}`);
+      }
+      console.log(`\n📋 Update Options:`);
+      console.log(`  - Force: ${options.force ? 'YES' : 'NO'}`);
+      console.log(`  - Model: ${options.model || 'gemini-2.5-pro'}`);
+      if (options.updateAll) console.log(`  - Mode: UPDATE ALL`);
+      else {
+        const updates = [];
+        if (options.updateGithub) updates.push('GitHub');
+        if (options.updateCategory) updates.push('Category');
+        if (options.updateConfigForClients) updates.push('ClientConfig');
+        if (options.updateConfigForArchestra) updates.push('ArchestraConfig');
+        if (options.updateDependencies) updates.push('Dependencies');
+        if (options.updateProtocol) updates.push('Protocol');
+        if (options.updateScore) updates.push('Score');
+        console.log(`  - Updates: ${updates.length > 0 ? updates.join(', ') : 'Fill missing only'}`);
+      }
+      console.log(`\n🚀 Processing:`);
+    }
 
     if (!server) {
       // Create new server from GitHub
@@ -1202,32 +1337,32 @@ async function evaluateSingleRepo(
 
     // 3. Apply updates based on options
     if (options.updateGithub || !server.last_scraped_at) {
-      server = await extractGitHubData(server, githubInfo, options.updateGithub || false);
+      server = await extractGitHubData(server, githubInfo, options.force || false);
     }
 
     if (options.updateCategory) {
       const categories = options.categories || extractCategories();
-      server = await extractCategory(server, categories, options.model || "deepseek-r1:14b", true);
+      server = await extractCategory(server, categories, options.model || "gemini-2.5-pro", options.force || false);
     }
 
     if (options.updateConfigForClients) {
-      server = await extractClientConfig(server, options.model || "deepseek-r1:14b", true);
+      server = await extractClientConfig(server, options.model || "gemini-2.5-pro", options.force || false);
     }
 
     if (options.updateConfigForArchestra) {
-      server = await extractArchestraConfig(server, options.model || "deepseek-r1:14b", true);
+      server = await extractArchestraConfig(server, options.model || "gemini-2.5-pro", options.force || false);
     }
 
     if (options.updateDependencies) {
-      server = await extractDependencies(server, options.model || "deepseek-r1:14b", true);
+      server = await extractDependencies(server, options.model || "gemini-2.5-pro", options.force || false);
     }
 
     if (options.updateProtocol) {
-      server = await extractProtocolFeatures(server, options.model || "deepseek-r1:14b", true);
+      server = await extractProtocolFeatures(server, options.model || "gemini-2.5-pro", options.force || false);
     }
 
     if (options.updateScore) {
-      server = await extractScore(server, true);
+      server = await extractScore(server, options.force || false);
     }
 
     // Display results if showOutput
@@ -1271,7 +1406,8 @@ async function evaluateSingleRepo(
     // 4. Save and return
     saveMCPServerToFile(server, filePath);
     if (options.showOutput !== false) {
-      console.log(`\n✅ Evaluation saved to: ${githubInfo.slug}.json`);
+      console.log(`\n✅ Evaluation completed: ${githubInfo.slug}.json`);
+      console.log(`${'='.repeat(60)}`);
     }
 
     return server;
@@ -1454,7 +1590,7 @@ Update Options:
 
 Control Options:
   --force             Force update even if data exists
-  --model <name>      LLM model to use (default: deepseek-r1:14b)
+  --model <name>      LLM model to use (default: gemini-2.5-pro)
                       Supports Ollama models and Gemini models (e.g., gemini-1.5-flash)
   --concurrency <n>   Number of parallel requests (default: 10 with token, 3 without)
   --limit <n>         Process only the first N servers
@@ -1484,7 +1620,7 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
     force: args.includes("--force"),
     model: args.includes("--model")
       ? args[args.indexOf("--model") + 1]
-      : "deepseek-r1:14b",
+      : "gemini-2.5-pro",
     concurrency: args.includes("--concurrency")
       ? parseInt(args[args.indexOf("--concurrency") + 1]) || undefined
       : undefined,
