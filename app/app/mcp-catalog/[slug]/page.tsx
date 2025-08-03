@@ -20,6 +20,8 @@ import { ArrowLeft, ExternalLink, Github, Copy, Check } from "lucide-react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import BadgeCopy from "./badge-copy";
+import QualityScoreCard from "./quality-score-card";
+import DependenciesCard from "./dependencies-card";
 import Header from "../../../components/header";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
@@ -96,7 +98,7 @@ export default async function MCPDetailPage({
           }}
         />
 
-        <div className="container relative z-10 px-4 md:px-6 py-16">
+        <div className="container relative z-10 px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
           {/* Back Button */}
           <Link
             href={backUrl}
@@ -106,14 +108,14 @@ export default async function MCPDetailPage({
             Back to Catalog
           </Link>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
             {/* Main Content */}
             <div className="lg:col-span-2 space-y-8">
               {/* Header */}
               <div>
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h1 className="text-4xl font-bold text-gray-900 mb-2">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
+                  <div className="flex-1">
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 break-words">
                       {serverName}
                     </h1>
                     <div
@@ -170,197 +172,47 @@ export default async function MCPDetailPage({
                       )}
                     </div>
                   </div>
-                  <div className="flex gap-2">
-                    <Badge variant="outline">
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="outline" className="text-xs sm:text-sm">
                       {server.programmingLanguage}
                     </Badge>
-                    <Badge variant="outline">
+                    <Badge variant="outline" className="text-xs sm:text-sm">
                       {server.category || "Uncategorized"}
                     </Badge>
                   </div>
                 </div>
-                <p className="text-lg text-gray-600">{server.description}</p>
+                <p className="text-base sm:text-lg text-gray-600">{server.description}</p>
               </div>
 
               {/* Quality Score */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>MCP Quality Score</CardTitle>
-                  <CardDescription>
-                    <div className="flex items-center justify-between">
-                      <span>
-                        {server.qualityScore !== null
-                          ? "Based on our comprehensive evaluation criteria"
-                          : "This server is being evaluated"}
-                      </span>
-                      {server.evaluation_model !== undefined && (
-                        <div className="flex items-center gap-2 text-xs">
-                          <span className="text-gray-500">
-                            {server.evaluation_model === null
-                              ? "✨ Human evaluation"
-                              : `🤖 Evaluated by ${server.evaluation_model}`}
-                          </span>
-                          <a
-                            href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.slug}.json`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
-                            title="Fix evaluation data"
-                          >
-                            <svg
-                              className="w-3 h-3"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                              />
-                            </svg>
-                            Fix
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <QualityBar score={server.qualityScore} />
-
-                  {server.qualityScore !== null &&
-                    (() => {
-                      const scoreBreakdown = calculateQualityScore(
-                        server,
-                        server.readme,
-                        undefined, // Pass all servers here if needed for dependencies scoring
-                      );
-
-                      const getScoreDescription = (
-                        score: number,
-                        maxScore: number,
-                        category: string,
-                      ) => {
-                        const percentage = (score / maxScore) * 100;
-                        if (category === "GitHub community health") {
-                          if (percentage === 100)
-                            return `Strong GitHub community (${score}/${maxScore})`;
-                          if (percentage >= 75)
-                            return `GitHub community is developing well (${score}/${maxScore})`;
-                          if (percentage >= 50)
-                            return `GitHub community is not mature yet (${score}/${maxScore})`;
-                          if (percentage >= 25)
-                            return `Limited GitHub community activity (${score}/${maxScore})`;
-                          return `Room for improvement in GitHub community`;
-                        }
-                        if (category === "documentation quality") {
-                          return `Documentation (${score}/${maxScore})`;
-                        }
-                        if (category === "dependency optimization") {
-                          // Check if dependencies have been evaluated
-                          if (!server.dependencies) {
-                            return `Dependencies not yet evaluated (${score}/${maxScore})`;
-                          }
-                          if (percentage === 100)
-                            return `Optimal dependency management (${score}/${maxScore})`;
-                          if (percentage >= 75)
-                            return `Good dependency choices (${score}/${maxScore})`;
-                          if (percentage >= 50)
-                            return `Moderate dependency usage (${score}/${maxScore})`;
-                          if (percentage >= 25)
-                            return `Heavy dependency usage (${score}/${maxScore})`;
-                          return `Too many or rare dependencies (${score}/${maxScore})`;
-                        }
-                        if (category === "badge adoption") {
-                          if (percentage > 0)
-                            return `Archestra MCP Quality badge (${score}/${maxScore})`;
-                          return `Archestra MCP Quality score badge is missing`;
-                        }
-                        if (category === "MCP protocol implementation") {
-                          // Check if protocol features have been evaluated
-                          if (server.implementing_tools === null) {
-                            return `Protocol features not yet evaluated (${score}/${maxScore})`;
-                          }
-                          if (percentage === 100)
-                            return `Full MCP protocol implementation (${score}/${maxScore})`;
-                          if (percentage >= 75)
-                            return `Most MCP protocol features implemented (${score}/${maxScore})`;
-                          if (percentage >= 50)
-                            return `Core MCP protocol features implemented (${score}/${maxScore})`;
-                          if (percentage >= 25)
-                            return `Basic MCP protocol features implemented (${score}/${maxScore})`;
-                          return `Limited MCP protocol implementation (${score}/${maxScore})`;
-                        }
-                        if (percentage === 100)
-                          return `Full ${category.toLowerCase()} (${score}/${maxScore})`;
-                        if (percentage >= 75)
-                          return `Strong ${category.toLowerCase()} (${score}/${maxScore})`;
-                        if (percentage >= 50)
-                          return `Moderate ${category.toLowerCase()} (${score}/${maxScore})`;
-                        if (percentage >= 25)
-                          return `Basic ${category.toLowerCase()} (${score}/${maxScore})`;
-                        return `Room for improvement in ${category.toLowerCase()}`;
-                      };
-
-                      return (
-                        <div className="mt-4 text-sm text-gray-600">
-                          <ul className="space-y-1">
-                            <li>
-                              •{" "}
-                              {getScoreDescription(
-                                scoreBreakdown.mcpProtocol,
-                                40,
-                                "MCP protocol implementation",
-                              )}
-                            </li>
-                            <li>
-                              •{" "}
-                              {getScoreDescription(
-                                scoreBreakdown.githubMetrics,
-                                20,
-                                "GitHub community health",
-                              )}
-                            </li>
-                            <li>
-                              •{" "}
-                              {getScoreDescription(
-                                scoreBreakdown.dependencies,
-                                20,
-                                "dependency optimization",
-                              )}
-                            </li>
-                            <li>
-                              •{" "}
-                              {getScoreDescription(
-                                scoreBreakdown.deploymentMaturity,
-                                10,
-                                "deployment maturity",
-                              )}
-                            </li>
-                            <li>
-                              •{" "}
-                              {getScoreDescription(
-                                scoreBreakdown.documentation,
-                                8,
-                                "documentation quality",
-                              )}
-                            </li>
-                            <li>
-                              •{" "}
-                              {getScoreDescription(
-                                scoreBreakdown.badgeUsage,
-                                2,
-                                "badge adoption",
-                              )}
-                            </li>
-                          </ul>
-                        </div>
-                      );
-                    })()}
-                </CardContent>
-              </Card>
+              {(() => {
+                const scoreBreakdown = server.qualityScore !== null
+                  ? calculateQualityScore(
+                      server,
+                      server.readme,
+                      undefined, // Pass all servers here if needed for dependencies scoring
+                    )
+                  : null;
+                
+                return scoreBreakdown ? (
+                  <QualityScoreCard
+                    server={server}
+                    scoreBreakdown={scoreBreakdown}
+                  />
+                ) : (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>MCP Quality Score</CardTitle>
+                      <CardDescription>
+                        This server is being evaluated
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <QualityBar score={null} />
+                    </CardContent>
+                  </Card>
+                );
+              })()}
 
               {/* GitHub Metrics */}
               {server.qualityScore !== null && (
@@ -414,130 +266,8 @@ export default async function MCPDetailPage({
                 </Card>
               )}
 
-              {/* Dependencies */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Dependencies</CardTitle>
-                  <CardDescription>
-                    <div className="flex items-center justify-between">
-                      <span>Libraries and frameworks used by this MCP server</span>
-                      {server.dependencies && server.evaluation_model !== undefined && (
-                        <div className="flex items-center gap-2 text-xs">
-                          <span className="text-gray-500">
-                            {server.evaluation_model === null
-                              ? "✨ Human curated"
-                              : `🤖 Analyzed by ${server.evaluation_model}`}
-                          </span>
-                          <a
-                            href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.slug}.json`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
-                            title="Fix dependencies"
-                          >
-                            <svg
-                              className="w-3 h-3"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                              />
-                            </svg>
-                            Fix
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  {server.dependencies && server.dependencies.length > 0 ? (
-                    (() => {
-                      // Group dependencies by importance level
-                      const mainDeps = server.dependencies.filter(d => d.importance >= 8);
-                      const mediumDeps = server.dependencies.filter(d => d.importance >= 5 && d.importance < 8);
-                      const lightDeps = server.dependencies.filter(d => d.importance < 5);
-
-                      return (
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                          {/* Main Dependencies */}
-                          {mainDeps.length > 0 && (
-                            <div>
-                              <h4 className="text-sm font-semibold text-gray-700 mb-2">Main</h4>
-                              <div className="space-y-2">
-                                {mainDeps
-                                  .sort((a, b) => b.importance - a.importance)
-                                  .map((dep, index) => (
-                                    <div
-                                      key={index}
-                                      className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-green-500 to-green-600 text-white shadow-md"
-                                      title={`Importance: ${dep.importance}/10`}
-                                    >
-                                      {dep.name}
-                                    </div>
-                                  ))}
-                              </div>
-                            </div>
-                          )}
-
-                          {/* Medium Dependencies */}
-                          {mediumDeps.length > 0 && (
-                            <div>
-                              <h4 className="text-sm font-semibold text-gray-700 mb-2">Medium</h4>
-                              <div className="space-y-2">
-                                {mediumDeps
-                                  .sort((a, b) => b.importance - a.importance)
-                                  .map((dep, index) => (
-                                    <div
-                                      key={index}
-                                      className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-gray-300 to-gray-400 text-gray-800 shadow-sm"
-                                      title={`Importance: ${dep.importance}/10`}
-                                    >
-                                      {dep.name}
-                                    </div>
-                                  ))}
-                              </div>
-                            </div>
-                          )}
-
-                          {/* Light Dependencies */}
-                          {lightDeps.length > 0 && (
-                            <div>
-                              <h4 className="text-sm font-semibold text-gray-700 mb-2">Light</h4>
-                              <div className="space-y-2">
-                                {lightDeps
-                                  .sort((a, b) => b.importance - a.importance)
-                                  .map((dep, index) => (
-                                    <div
-                                      key={index}
-                                      className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-gray-100 to-gray-200 text-gray-600 shadow-sm"
-                                      title={`Importance: ${dep.importance}/10`}
-                                    >
-                                      {dep.name}
-                                    </div>
-                                  ))}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })()
-                  ) : (
-                    <div className="text-center py-8">
-                      <div className="animate-pulse">
-                        <div className="w-12 h-12 bg-gray-200 rounded-full mx-auto mb-4"></div>
-                        <p className="text-gray-500 text-sm">Evaluating dependencies...</p>
-                        <p className="text-gray-400 text-xs mt-2">Check back soon for dependency information</p>
-                      </div>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
+              {/* Dependencies - Collapsible on mobile */}
+              <DependenciesCard server={server} />
 
               {/* MCP Protocol Features */}
               {server.qualityScore !== null && (
@@ -849,7 +579,7 @@ export default async function MCPDetailPage({
             </div>
 
             {/* Sidebar */}
-            <div className="space-y-6">
+            <div className="lg:sticky lg:top-8 space-y-6">
               {/* Links */}
               <Card>
                 <CardHeader>

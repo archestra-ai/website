@@ -11,7 +11,7 @@ import {
 import Link from "next/link";
 import { Badge } from "../../components/ui/badge";
 import { Input } from "../../components/ui/input";
-import { Search, X, ChevronUp, ChevronDown, ChevronsUpDown } from "lucide-react";
+import { Search, X, ChevronUp, ChevronDown, ChevronsUpDown, Filter, Menu } from "lucide-react";
 import { MCPServer, getMCPServerName, getMCPServerGitHubUrl } from "./data/types";
 import { QualityBar } from "./components/quality-bar";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -42,6 +42,9 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | null>(
     searchParams.get('dir') as 'asc' | 'desc' || 'desc'
   );
+  
+  // Mobile filter state
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
   
   // Track if we've auto-switched to relevance sort
   const [hasAutoSwitchedToRelevance, setHasAutoSwitchedToRelevance] = useState(false);
@@ -327,10 +330,171 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
   }, [loadMore]);
 
   return (
-    <div className="flex gap-8">
-      {/* Categories Sidebar */}
-      <div className="w-80 flex-shrink-0">
-        <Card className="bg-gray-50 border-gray-200">
+    <div className="relative">
+      {/* Mobile Filter Button */}
+      <div className="lg:hidden sticky top-0 z-30 bg-white border-b border-gray-200 px-4 py-3 mb-4">
+        <button
+          onClick={() => setShowMobileFilters(true)}
+          className="w-full flex items-center justify-between px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+        >
+          <div className="flex items-center gap-2">
+            <Filter size={18} />
+            <span className="font-medium">Filters</span>
+            {hasActiveFilters && (
+              <span className="bg-blue-500 text-white px-2 py-0.5 rounded-full text-xs font-medium">
+                {activeFilterCount}
+              </span>
+            )}
+          </div>
+          <Menu size={18} />
+        </button>
+      </div>
+
+      {/* Mobile Filter Overlay */}
+      {showMobileFilters && (
+        <div className="lg:hidden fixed inset-0 z-50 bg-gray-900 bg-opacity-50" onClick={() => setShowMobileFilters(false)}>
+          <div 
+            className="absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-xl overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="sticky top-0 bg-white border-b border-gray-200 px-4 py-3">
+              <div className="flex items-center justify-between">
+                <h2 className="text-lg font-semibold">Filters</h2>
+                <button
+                  onClick={() => setShowMobileFilters(false)}
+                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+            </div>
+            
+            {/* Mobile Filter Content */}
+            <div className="p-4 space-y-6">
+              {/* Search Input */}
+              <div>
+                <label className="text-sm font-medium text-gray-700 mb-2 block">Search</label>
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
+                  <Input
+                    type="text"
+                    placeholder="Search servers..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-9 text-sm"
+                  />
+                </div>
+              </div>
+              
+              {/* Dependencies */}
+              <div>
+                <h3 className="text-sm font-medium text-gray-700 mb-2">MCP Dependencies</h3>
+                <div className="space-y-1">
+                  {dependencies.slice(0, 7).map((dependency) => (
+                    <button
+                      key={dependency}
+                      onClick={() => setSelectedDependency(dependency)}
+                      className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
+                        selectedDependency === dependency
+                          ? "bg-green-100 text-green-800 font-medium"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`}
+                    >
+                      {dependency}
+                      <span className="float-right text-xs text-gray-500">
+                        {dependency === "All" 
+                          ? mcpServers.length 
+                          : mcpServers.filter(s => 
+                              s.dependencies && 
+                              s.dependencies.some(dep => 
+                                dep.name === dependency && dep.importance >= 8
+                              )
+                            ).length}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Programming Languages */}
+              <div>
+                <h3 className="text-sm font-medium text-gray-700 mb-2">Languages</h3>
+                <div className="space-y-1">
+                  {languages.map((language) => (
+                    <button
+                      key={language}
+                      onClick={() => setSelectedLanguage(language)}
+                      className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
+                        selectedLanguage === language
+                          ? "bg-blue-100 text-blue-800 font-medium"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`}
+                    >
+                      {language}
+                      <span className="float-right text-xs text-gray-500">
+                        {language === "All" 
+                          ? mcpServers.length 
+                          : mcpServers.filter(s => s.programmingLanguage === language).length}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Categories */}
+              <div>
+                <h3 className="text-sm font-medium text-gray-700 mb-2">Categories</h3>
+                <div className="space-y-1">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setSelectedCategory(category)}
+                      className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
+                        selectedCategory === category
+                          ? "bg-yellow-100 text-yellow-800 font-medium"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`}
+                    >
+                      {category}
+                      <span className="float-right text-xs text-gray-500">
+                        {category === "All" 
+                          ? mcpServers.length 
+                          : category === "Uncategorized"
+                          ? mcpServers.filter(s => s.category === null).length
+                          : mcpServers.filter(s => s.category === category).length}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Action Buttons */}
+              <div className="flex gap-2 pt-4 border-t">
+                <button
+                  onClick={() => {
+                    clearFilters();
+                    setShowMobileFilters(false);
+                  }}
+                  className="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-lg transition-colors"
+                >
+                  Clear All
+                </button>
+                <button
+                  onClick={() => setShowMobileFilters(false)}
+                  className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                >
+                  Apply Filters
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 px-4 sm:px-6 lg:px-0">
+        {/* Desktop Sidebar */}
+        <div className="hidden lg:block w-80 flex-shrink-0">
+          <Card className="bg-gray-50 border-gray-200">
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <CardTitle className="text-lg text-gray-900">Search & Filter</CardTitle>
@@ -451,12 +615,13 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
       {/* Server Grid */}
       <div className="flex-1" ref={serverGridRef}>
         {/* Sorting Controls */}
-        <div className="mb-6 flex justify-between items-center">
+        <div className="mb-6 flex flex-col sm:flex-row gap-3 sm:justify-between sm:items-center">
           <div className="text-sm text-gray-600">
             {sortedServers.length} servers found
           </div>
           
-          <div className="flex gap-2">
+          {/* Desktop Sort Buttons */}
+          <div className="hidden sm:flex gap-2">
             {searchQuery && (
               <button
                 onClick={() => handleSortClick('relevance')}
@@ -543,11 +708,41 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
               {sortBy !== 'updated' && <ChevronsUpDown size={14} className="opacity-40" />}
             </button>
           </div>
+          
+          {/* Mobile Sort Dropdown */}
+          <div className="sm:hidden">
+            <select
+              value={`${sortBy}-${sortDirection}`}
+              onChange={(e) => {
+                const [newSort, newDir] = e.target.value.split('-');
+                setSortBy(newSort);
+                setSortDirection(newDir as 'asc' | 'desc');
+              }}
+              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              {searchQuery && (
+                <>
+                  <option value="relevance-desc">Most Relevant</option>
+                  <option value="relevance-asc">Least Relevant</option>
+                </>
+              )}
+              <option value="quality-desc">Highest Quality</option>
+              <option value="quality-asc">Lowest Quality</option>
+              <option value="stars-desc">Most Stars</option>
+              <option value="stars-asc">Least Stars</option>
+              <option value="contributors-desc">Most Contributors</option>
+              <option value="contributors-asc">Least Contributors</option>
+              <option value="issues-desc">Most Issues</option>
+              <option value="issues-asc">Least Issues</option>
+              <option value="updated-desc">Recently Updated</option>
+              <option value="updated-asc">Least Recently Updated</option>
+            </select>
+          </div>
         </div>
         
         {sortedServers.length > 0 ? (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {sortedServers.slice(0, displayedItems).map((item) => {
                 const server = item.server;
                 const searchScore = item.searchScore;
@@ -569,13 +764,13 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
                     className="block"
                   >
                     <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
-                      <CardHeader>
-                        <div className="flex items-start justify-between mb-2">
-                          <div className="flex gap-2">
-                            <Badge variant="outline">
+                      <CardHeader className="p-4 sm:p-6">
+                        <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+                          <div className="flex flex-wrap gap-1 sm:gap-2">
+                            <Badge variant="outline" className="text-xs">
                               {server.programmingLanguage}
                             </Badge>
-                            <Badge variant="outline">
+                            <Badge variant="outline" className="text-xs">
                               {server.category || 'Uncategorized'}
                             </Badge>
                           </div>
@@ -589,7 +784,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
                             </Badge>
                           )}
                         </div>
-                        <CardTitle className="text-xl">
+                        <CardTitle className="text-xl break-words">
                           {getMCPServerName(server)}
                         </CardTitle>
                         <div className="text-sm text-gray-500 mb-2 font-mono" style={{overflowWrap: 'break-word', wordBreak: 'keep-all'}}>
@@ -607,7 +802,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
                           </CardDescription>
                         )}
                       </CardHeader>
-                      <CardContent>
+                      <CardContent className="p-4 sm:p-6 pt-0 sm:pt-0">
                         <div className="space-y-4">
                           <QualityBar score={server.qualityScore} />
                           <div className="flex flex-wrap gap-2">
@@ -681,6 +876,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
             )}
           </div>
         )}
+      </div>
       </div>
     </div>
   );

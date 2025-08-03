@@ -1,0 +1,91 @@
+{
+  "name": "tidb",
+  "slug": "c4pt0r__mcp-server-tidb",
+  "description": "mcp server for tidb",
+  "readme": "# mcp-server-tidb\n\nMCP server implementation for TiDB (serverless) database.\n\n## Prerequisites\n\n- uv (Python package installer)\n\n## Installation\n\n```\n# Clone the repository\ngit clone https://github.com/c4pt0r/mcp-server-tidb\ncd mcp-server-tidb\n\n# Install the package and dependencies using uv\nuv venv\nuv pip install -e .\n```\n\n## Configuration\n\nGo [tidbcloud.com](https://tidbcloud.com) to create a free TiDB database cluster\n\nConfiguration can be provided through environment variables, or using .env:\n- `TIDB_HOST` - TiDB host address, e.g. 'gateway01.us-east-1.prod.aws.tidbcloud.com'\n- `TIDB_PORT` - TiDB port (default: 4000)\n- `TIDB_USERNAME` - Database username, e.g.  'xxxxxxxxxx.\\<username\\>'\n- `TIDB_PASSWORD` - Database password\n- `TIDB_DATABASE` - Database name, default is test\n\n## Run with Claude Desktop\n\nConfig Claude Desktop, [HOWTO](https://modelcontextprotocol.io/quickstart/user)\n\n`claude_desktop_config.json`:\n\n```\n{\n  \"mcpServers\": {\n      \"tidb\": {\n          \"command\": \"uv\",\n          \"args\": [\n              \"--directory\",\n              \"/path/to/mcp-server-tidb\",\n              \"run\",\n              \"src/main.py\"\n          ]\n      }\n  }\n}\n```\n\n\nIf you're running mcp-server-tidb in WSL, the `claude_desktop_config.json` should look like this:\n\n```\n{\n  \"mcpServers\": {\n    \"tool-with-env-vars\": {\n      \"command\": \"wsl.exe\",\n      \"args\": [\n        \"bash\",\n        \"-c\",\n        \"/path/to/uv --directory /path/to/mcp-server-tidb run python src/main.py\"\n      ]\n    }\n  }\n}\n```\n",
+  "category": "Data",
+  "qualityScore": 40,
+  "githubUrl": "https://github.com/c4pt0r/mcp-server-tidb",
+  "programmingLanguage": "Python",
+  "gitHubOrg": "c4pt0r",
+  "gitHubRepo": "mcp-server-tidb",
+  "repositoryPath": null,
+  "gh_stars": 20,
+  "gh_contributors": 2,
+  "gh_issues": 2,
+  "gh_releases": false,
+  "gh_ci_cd": false,
+  "gh_latest_commit_hash": "080a1bf3f6d013befb1c358f80bc8c3f093ea558",
+  "last_scraped_at": "2025-08-03T19:44:43.689Z",
+  "implementing_tools": false,
+  "implementing_prompts": false,
+  "implementing_resources": true,
+  "implementing_sampling": false,
+  "implementing_roots": false,
+  "implementing_logging": false,
+  "implementing_stdio": true,
+  "implementing_streamable_http": false,
+  "implementing_oauth2": false,
+  "rawDependencies": "=== pyproject.toml ===\n[project]\nname = \"mcp-server-tidb\"\nversion = \"0.1.0\"\ndescription = \"Add your description here\"\nreadme = \"README.md\"\nrequires-python = \">=3.13\"\ndependencies = [\n    \"mcp[cli]>=1.3.0\",\n    \"pydantic>=2.10.6\",\n    \"pymysql>=1.1.1\",\n    \"python-dotenv>=1.0.1\",\n]\n",
+  "evaluation_model": "gemini-2.5-flash",
+  "configForClients": {
+    "mcpServers": {
+      "mcp-server-tidb": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/mcp-server-tidb",
+          "run",
+          "src/main.py"
+        ]
+      },
+      "mcp-server-tidb-wsl": {
+        "command": "wsl.exe",
+        "args": [
+          "bash",
+          "-c",
+          "/path/to/uv --directory /path/to/mcp-server-tidb run python src/main.py"
+        ]
+      }
+    }
+  },
+  "configForArchestra": {
+    "oauth": {
+      "provider": "null",
+      "required": false
+    },
+    "server_config": {
+      "args": [
+        "--directory",
+        "/path/to/mcp-server-tidb",
+        "run",
+        "src/main.py"
+      ],
+      "command": "uv",
+      "transport": "stdio",
+      "env": {
+        "server-basic": "",
+        "server-configured": "",
+        "server-docker": ""
+      }
+    }
+  },
+  "dependencies": [
+    {
+      "importance": 10,
+      "name": "mcp"
+    },
+    {
+      "importance": 8,
+      "name": "pydantic"
+    },
+    {
+      "importance": 9,
+      "name": "pymysql"
+    },
+    {
+      "importance": 5,
+      "name": "python-dotenv"
+    }
+  ]
+}

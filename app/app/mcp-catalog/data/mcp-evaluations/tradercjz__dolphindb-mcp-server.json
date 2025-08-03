@@ -1,0 +1,80 @@
+{
+  "name": "dolphindb",
+  "slug": "tradercjz__dolphindb-mcp-server",
+  "description": "dolphindb-mcp-server",
+  "readme": "\n\n## 🧱 安装方式\n\n### ✅ 方法一：使用 `uvx`（推荐）\n\n通过 `uvx` 安装并运行：\n\n```bash\nuvx install dolphindb-mcp-server\n```\n\n安装完成后，直接运行：\n```bash\nuvx dolphindb-mcp-server\n```\n> 📌 **注意**：`uvx` 安装方式需要通过 `uv.pack` 构建并上传到 Universe。如果你尚未上传，请参考 `uv` 文档进行打包与发布。\n\n### ✅ 方法二：从 PyPI 安装\n\n```bash\npip install dolphindb-mcp-server\n```\n安装后运行：\n```bash\ndolphindb-mcp-server\n```\n\n### ✅ 方法三：本地构建 & 安装\n\n```bash\ngit clone https://github.com/your-org/dolphindb-mcp-server.git\ncd dolphindb-mcp-server\n\n# 创建并激活虚拟环境\npython -m venv .venv\nsource .venv/bin/activate\n\n# 构建并安装\npip install build\npython -m build\npip install dist/*.whl\n```\n安装后运行：\n```bash\ndolphindb-mcp-server\n```\n\n## 🧪 测试运行\n\n运行后你可以直接使用工具，例如：\n\n```bash\ndolphindb-mcp-server\n```\n\n或（如果是 `uvx` 安装）：\n\n```bash\nuvx dolphindb-mcp-server\n```\n好的，这是转换后的 Markdown 版本：\n\n好的，这是转换后的 Markdown 版本：\n\n---\n\n## 🚀 使用方法\n\n1.  **配置环境变量（可选）**\n\n    你可以通过 `.env` 文件或系统环境变量配置 DolphinDB 的连接信息：\n\n    ```env\n    DDB_HOST=127.0.0.1\n    DDB_PORT=8848\n    DDB_USER=admin\n    DDB_PASSWD=123456\n    ```\n\n    也可以不设置，系统将使用默认值。\n\n2.  **启动服务**\n\n    ```bash\n    dolphindb-mcp-server\n    ```\n\n    该命令会启动 MCP 插件服务，供外部调用。\n\n3.  **FastMCP Agent 使用示例**\n\n    启动后，你的工具将通过 FastMCP 对外暴露以下函数接口：\n\n    *   `list_dbs()`\n    *   `list_tbs(dbName: str)`\n    *   `query_table_diskusage(database: str, tableName: str)`\n    *   `query_dolphindb(script: str)`\n\n    可通过 MCP 前端界面或对接 LLM 工具链来进行访问。\n",
+  "category": "Development",
+  "qualityScore": 51,
+  "githubUrl": "https://github.com/tradercjz/dolphindb-mcp-server",
+  "programmingLanguage": "Python",
+  "gitHubOrg": "tradercjz",
+  "gitHubRepo": "dolphindb-mcp-server",
+  "repositoryPath": null,
+  "gh_stars": 4,
+  "gh_contributors": 2,
+  "gh_issues": 0,
+  "gh_releases": false,
+  "gh_ci_cd": false,
+  "gh_latest_commit_hash": "eff1fd1bf451f72c24b1aa13c808b4b601f023a6",
+  "last_scraped_at": "2025-08-03T19:51:49.155Z",
+  "implementing_tools": true,
+  "implementing_prompts": false,
+  "implementing_resources": true,
+  "implementing_sampling": true,
+  "implementing_roots": false,
+  "implementing_logging": false,
+  "implementing_stdio": true,
+  "implementing_streamable_http": false,
+  "implementing_oauth2": false,
+  "rawDependencies": "=== pyproject.toml ===\n[project]\nname = \"dolphindb-mcp-server\"\nversion = \"0.1.0\"\ndescription = \"dolphindb mcp server\"\nreadme = \"README.md\"\nrequires-python = \">=3.12\"\ndependencies = [\n    \"dolphindb\",\n    \"httpx>=0.28.1\",\n    \"mcp>=1.1.2\",\n    \"fastapi[standard]\",\n    \"fastmcp\"\n]\n\n\n[build-system]\nrequires = [ \"hatchling\",]\nbuild-backend = \"hatchling.build\"\n\n[tool.hatch.build.targets.wheel]\npackages = [\"dolphindb_mcp_server\"]\n\n[project.scripts]\ndolphindb-mcp-server = \"dolphindb_mcp_server.server:main\"\n",
+  "evaluation_model": "gemini-2.5-flash",
+  "configForClients": {
+    "mcpServers": {
+      "dolphindb-mcp-server": {
+        "command": "dolphindb-mcp-server",
+        "args": []
+      },
+      "dolphindb-mcp-server-uvx": {
+        "command": "uvx",
+        "args": [
+          "dolphindb-mcp-server"
+        ]
+      }
+    }
+  },
+  "configForArchestra": {
+    "oauth": {},
+    "server_config": {
+      "args": [],
+      "command": "dolphindb-mcp-server",
+      "transport": "stdio",
+      "env": {
+        "server-basic": "",
+        "server-configured": "",
+        "server-docker": ""
+      }
+    }
+  },
+  "dependencies": [
+    {
+      "importance": 8,
+      "name": "dolphindb"
+    },
+    {
+      "importance": 6,
+      "name": "httpx"
+    },
+    {
+      "importance": 10,
+      "name": "mcp"
+    },
+    {
+      "importance": 10,
+      "name": "fastapi"
+    },
+    {
+      "importance": 9,
+      "name": "fastmcp"
+    }
+  ]
+}

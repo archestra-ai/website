@@ -1,16 +1,10 @@
 import { Suspense } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../../components/ui/card";
 import { MCPServer } from "./data/types";
 import { loadServers } from "./lib/server-utils";
 import MCPCatalogClient from "./client";
 import BadgeCopyMain from "./badge-copy-main";
 import Header from "../../components/header";
+import ScoringExplanationCard from "./scoring-explanation-card";
 
 // Get unique categories from evaluations, sorted by count
 function getCategories(evaluations: MCPServer[]): string[] {
@@ -151,27 +145,26 @@ export default function MCPCatalogPage() {
           }}
         />
 
-        <div className="container relative z-10 px-4 md:px-6 py-16">
+        <div className="container relative z-10 px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
           <div className="mb-12 relative">
-            <div className="flex justify-between items-start">
-              <div className="flex-1">
-                <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <div className="flex flex-col xl:flex-row gap-8 xl:gap-12 items-start">
+              <div className="flex-1 w-full">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
                   MCP Catalog
                 </h1>
-                <p className="text-lg text-gray-600 mb-6">
-                  By scoring servers on protocol adherence, development
-                  maturity, and security best practices, we provide a clear,
-                  standardized way to distinguish trustworthy tools from
-                  potential threats, helping you with the{" "}
-                  <b>agentic supply chain</b>.
+                <p className="text-base sm:text-lg text-gray-600 mb-6">
+                  What if we scraped all {mcpServers.length} MCP servers from GitHub, extracted 
+                  data about dependencies, protocol features, and community maturity, then 
+                  calculated a trustworthiness score? Well, we did exactly that—helping you 
+                  navigate the <b>agentic supply chain</b> with confidence.
                 </p>
 
-                <div className="bg-white border border-gray-200 rounded-lg p-6 mt-10 mb-6 max-w-2xl">
-                  <div className="flex items-center gap-4 mb-4">
+                <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 mt-6 sm:mt-10 mb-6 max-w-2xl">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-4">
                     {topScoredServer ? (
                       <a
                         href={`/mcp-catalog/${topScoredServer.slug}`}
-                        className="hover:opacity-80 transition-opacity"
+                        className="hover:opacity-80 transition-opacity flex-shrink-0"
                       >
                         <img
                           src={
@@ -187,7 +180,7 @@ export default function MCPCatalogPage() {
                       <img
                         src="/mcp-catalog/api/badge/quality/YOUR-GITHUB-ORG/YOUR-REPO-NAME"
                         alt="MCP Quality Badge"
-                        className="h-5"
+                        className="h-5 flex-shrink-0"
                       />
                     )}
                     <span className="text-sm text-gray-500">
@@ -199,16 +192,16 @@ export default function MCPCatalogPage() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="mt-8 flex flex-wrap gap-4">
+                <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                   {/* Add New MCP Server Button */}
                   <a
                     href="https://github.com/archestra-ai/website/edit/main/app/data/mcp-servers.json"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
+                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 text-sm sm:text-base"
                   >
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 sm:w-5 h-4 sm:h-5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -228,10 +221,10 @@ export default function MCPCatalogPage() {
                     href="https://github.com/archestra-ai/website/issues/new"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
+                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 text-sm sm:text-base"
                   >
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 sm:w-5 h-4 sm:h-5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -251,10 +244,10 @@ export default function MCPCatalogPage() {
                     href="https://github.com/archestra-ai/website/tree/main/app/app/mcp-catalog"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-3 bg-gray-800 hover:bg-gray-900 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
+                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 bg-gray-800 hover:bg-gray-900 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 text-sm sm:text-base"
                   >
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 sm:w-5 h-4 sm:h-5"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -269,95 +262,8 @@ export default function MCPCatalogPage() {
                 </div>
               </div>
 
-              <Card className="w-[600px] ml-8 bg-blue-50 border-blue-200">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-blue-900">
-                    How do we calculate the MCP Quality score?
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <div className="space-y-4 text-sm text-blue-800">
-                    <div>
-                      <div className="flex justify-between items-start mb-1">
-                        <span className="font-medium">
-                          MCP Protocol Implementation
-                        </span>
-                        <span className="font-bold">40 pts</span>
-                      </div>
-                      <p className="text-xs text-blue-600 leading-relaxed">
-                        9 core MCP features: tools, prompts, resources,
-                        sampling, roots, logging, stdio transport, HTTP
-                        transport, and OAuth2 authentication.
-                      </p>
-                    </div>
-
-                    <div>
-                      <div className="flex justify-between items-start mb-1">
-                        <span className="font-medium">GitHub Community</span>
-                        <span className="font-bold">20 pts</span>
-                      </div>
-                      <p className="text-xs text-blue-600 leading-relaxed">
-                        GitHub stars (popularity), active contributors
-                        (community engagement), and issues (development
-                        activity).
-                      </p>
-                    </div>
-
-                    <div>
-                      <div className="flex justify-between items-start mb-1">
-                        <span className="font-medium">
-                          Dependency Optimization
-                        </span>
-                        <span className="font-bold">20 pts</span>
-                      </div>
-                      <p className="text-xs text-blue-600 leading-relaxed">
-                        Minimal dependencies (≤10 is optimal) and using
-                        common libraries shared by 5+ other servers.
-                      </p>
-                    </div>
-
-                    <div>
-                      <div className="flex justify-between items-start mb-1">
-                        <span className="font-medium">
-                          Development Maturity
-                        </span>
-                        <span className="font-bold">10 pts</span>
-                      </div>
-                      <p className="text-xs text-blue-600 leading-relaxed">
-                        Automated CI/CD pipelines, semantic versioning, and
-                        comprehensive release notes.
-                      </p>
-                    </div>
-
-                    <div>
-                      <div className="flex justify-between items-start mb-1">
-                        <span className="font-medium">Documentation</span>
-                        <span className="font-bold">8 pts</span>
-                      </div>
-                      <p className="text-xs text-blue-600 leading-relaxed">
-                        Basic README completeness, usage examples, and setup
-                        instructions.
-                      </p>
-                    </div>
-
-                    <div>
-                      <div className="flex justify-between items-start mb-1">
-                        <span className="font-medium">Badge Adoption</span>
-                        <span className="font-bold">2 pts</span>
-                      </div>
-                      <p className="text-xs text-blue-600 leading-relaxed">
-                        For displaying our quality badge in your README.
-                      </p>
-                    </div>
-
-                    <div className="border-t border-blue-200 pt-3 mt-4">
-                      <p className="text-xs text-blue-600 font-medium">
-                        Total: 100 points.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              {/* Scoring Card - Now responsive and collapsible on mobile */}
+              <ScoringExplanationCard />
             </div>
           </div>
 
