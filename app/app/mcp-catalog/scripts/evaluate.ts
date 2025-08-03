@@ -68,7 +68,7 @@ function loadMCPServerFromFile(filePath: string): MCPServer | null {
  */
 function saveMCPServerToFile(server: MCPServer, filePath: string): void {
   const outputDir = path.dirname(filePath);
-  
+
   // Ensure directory exists
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
@@ -135,7 +135,7 @@ async function fetchRepoData(
   }
 
   // Helper for API calls
-  const apiCall = async (endpoint: string) => {
+  const apiCall = async (endpoint: string, returnHeaders = false) => {
     const response = await fetch(`https://api.github.com${endpoint}`, {
       headers,
     });
@@ -151,7 +151,11 @@ async function fetchRepoData(
       }
       throw new Error(`GitHub API error: ${response.status}`);
     }
-    return response.json();
+    const data = await response.json();
+    if (returnHeaders) {
+      return { data, headers: response.headers };
+    }
+    return data;
   };
 
   const maxRetries = 3;
@@ -160,18 +164,33 @@ async function fetchRepoData(
   while (retryCount <= maxRetries) {
     try {
       // Fetch all data in parallel
-      const [repoData, contributors, releases, workflows, issuesSearch] =
+      const [repoData, contributorsResponse, releases, workflows] =
         await Promise.all([
           apiCall(`/repos/${owner}/${repo}`),
-          apiCall(`/repos/${owner}/${repo}/contributors`).catch(() => []),
+          apiCall(`/repos/${owner}/${repo}/contributors?per_page=1&anon=true`, true).catch(() => ({ data: [], headers: new Headers() })),
           apiCall(`/repos/${owner}/${repo}/releases`).catch(() => []),
           apiCall(`/repos/${owner}/${repo}/actions/workflows`).catch(() => ({
             total_count: 0,
           })),
-          apiCall(
-            `/search/issues?q=repo:${owner}/${repo}+type:issue&per_page=1`,
-          ).catch(() => ({ total_count: 0 })),
         ]);
+
+      // Extract contributor count from Link header or use array length
+      let contributorsCount = 1;
+      if (contributorsResponse.headers) {
+        const linkHeader = contributorsResponse.headers.get('link');
+        if (linkHeader) {
+          // Parse the last page number from Link header
+          const lastPageMatch = linkHeader.match(/page=(\d+)>; rel="last"/);
+          if (lastPageMatch) {
+            contributorsCount = parseInt(lastPageMatch[1]);
+          } else if (Array.isArray(contributorsResponse.data)) {
+            contributorsCount = contributorsResponse.data.length;
+          }
+        } else if (Array.isArray(contributorsResponse.data)) {
+          // If no pagination, use the array length
+          contributorsCount = contributorsResponse.data.length;
+        }
+      }
 
       // Check if repository path exists
       if (repositoryPath) {
@@ -222,9 +241,9 @@ async function fetchRepoData(
         const contentsUrl = repositoryPath
           ? `/repos/${owner}/${repo}/contents/${repositoryPath}`
           : `/repos/${owner}/${repo}/contents`;
-        
+
         const contents = await apiCall(contentsUrl);
-        
+
         // Find dependency files in the listing
         const foundDepFiles = contents
           .filter((item: any) => item.type === "file" && dependencyFiles.includes(item.name))
@@ -236,7 +255,7 @@ async function fetchRepoData(
             const depFileUrl = repositoryPath
               ? `/repos/${owner}/${repo}/contents/${repositoryPath}/${depFile}`
               : `/repos/${owner}/${repo}/contents/${depFile}`;
-            
+
             const depFileData = await apiCall(depFileUrl);
             rawDependencies = Buffer.from(depFileData.content, "base64").toString("utf-8");
             console.log(`Found dependency file: ${depFile}`);
@@ -262,13 +281,11 @@ async function fetchRepoData(
         name: repoData.name,
         description: repoData.description || "",
         stargazers_count: repoData.stargazers_count,
-        total_issues_count: issuesSearch.total_count || 0,
+        total_issues_count: repoData.open_issues_count || 0,
         language: repoData.language || "Unknown",
         has_releases: Array.isArray(releases) && releases.length > 0,
         has_workflows: workflows.total_count > 0,
-        contributors_count: Array.isArray(contributors)
-          ? contributors.length
-          : 1,
+        contributors_count: contributorsCount,
         readme_content: readmeContent,
         latest_commit_hash: latestCommitHash,
         raw_dependencies: rawDependencies,
@@ -291,56 +308,209 @@ async function fetchRepoData(
 }
 
 /**
- * Call Ollama AI for analysis
+ * Convert JSON Schema to Gemini's schema format
  */
-async function callOllama(
+function convertToGeminiSchema(jsonSchema: any): any {
+  if (!jsonSchema) return undefined;
+
+  // Handle primitive types
+  if (typeof jsonSchema === 'string') {
+    return { type: jsonSchema.toUpperCase() };
+  }
+
+  // Extract type, handling various formats
+  let schemaType = jsonSchema.type;
+
+  // If type is an array (union types), get the first non-null type
+  if (Array.isArray(schemaType)) {
+    schemaType = schemaType.find(t => t !== 'null') || schemaType[0];
+  }
+
+  // Convert to uppercase if it's a string
+  const geminiType = (typeof schemaType === 'string' ? schemaType.toUpperCase() : 'OBJECT');
+
+  if (geminiType === 'OBJECT') {
+    // Handle objects with additionalProperties (dynamic keys)
+    if (jsonSchema.additionalProperties && typeof jsonSchema.additionalProperties === 'object') {
+      // For Gemini, we need to provide example properties since it doesn't support dynamic keys
+      const additionalSchema = convertToGeminiSchema(jsonSchema.additionalProperties);
+      
+      // If this object also has defined properties, include them
+      const properties: any = {};
+      if (jsonSchema.properties) {
+        for (const [key, value] of Object.entries(jsonSchema.properties)) {
+          properties[key] = convertToGeminiSchema(value);
+        }
+      }
+      
+      // Add example dynamic properties - these will be replaced with actual server names
+      properties['server-basic'] = additionalSchema;
+      properties['server-docker'] = additionalSchema;
+      properties['server-configured'] = additionalSchema;
+      
+      return {
+        type: 'OBJECT',
+        properties,
+        required: jsonSchema.required || []
+      };
+    }
+    
+    // For objects without defined properties, add minimal schema
+    if (!jsonSchema.properties || Object.keys(jsonSchema.properties).length === 0) {
+      return { 
+        type: 'OBJECT',
+        properties: {
+          '_placeholder': { type: 'STRING' }
+        }
+      };
+    }
+
+    // Convert defined properties
+    const properties: any = {};
+    for (const [key, value] of Object.entries(jsonSchema.properties)) {
+      properties[key] = convertToGeminiSchema(value);
+    }
+
+    return {
+      type: 'OBJECT',
+      properties,
+      required: jsonSchema.required || []
+    };
+  } else if (geminiType === 'ARRAY' && jsonSchema.items) {
+    return {
+      type: 'ARRAY',
+      items: convertToGeminiSchema(jsonSchema.items)
+    };
+  } else if (geminiType === 'STRING' || geminiType === 'NUMBER' || geminiType === 'BOOLEAN') {
+    return { type: geminiType };
+  }
+
+  // Default fallback
+  return { type: geminiType };
+}
+
+/**
+ * Call LLM (Ollama or Gemini) for analysis
+ */
+async function callLLM(
   prompt: string,
   format?: any,
   model = "deepseek-r1:14b",
 ): Promise<any> {
   try {
-    const response = await fetch("http://localhost:11434/api/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model,
-        prompt,
-        stream: false,
-        format: format || "json",
-        options: {
-          temperature: 0.1,
-          top_p: 0.9,
-        },
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    const responseText = data.response.trim();
-
-    // Debug logging
-    console.log("Raw Ollama response:", responseText.substring(0, 200) + "...");
-
-    try {
-      // Try to extract JSON from the response if it contains extra text
-      const jsonMatch = responseText.match(/\{[\s\S]*\}/);
-      if (jsonMatch) {
-        return JSON.parse(jsonMatch[0]);
+    // Check if this is a Gemini model
+    if (model.startsWith("gemini-")) {
+      // Call Gemini API
+      const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+      if (!apiKey) {
+        throw new Error("GEMINI_API_KEY or GOOGLE_API_KEY environment variable is required for Gemini models");
       }
-      return JSON.parse(responseText);
-    } catch (parseError) {
-      console.error("Failed to parse JSON:", responseText);
-      throw new Error(
-        `Invalid JSON response from Ollama: ${parseError.message}`,
-      );
+
+      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+      // Convert format schema to Gemini's response schema format if provided
+      let generationConfig: any = {
+        temperature: 0.1,
+        topP: 0.9,
+        candidateCount: 1,
+      };
+
+      if (format) {
+        generationConfig.responseMimeType = "application/json";
+        // Convert JSON Schema to Gemini's schema format
+        const convertedSchema = convertToGeminiSchema(format);
+        console.log("Converted schema for Gemini:", JSON.stringify(convertedSchema, null, 2));
+        generationConfig.responseSchema = convertedSchema;
+      }
+
+      const response = await fetch(geminiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{
+              text: prompt
+            }]
+          }],
+          generationConfig,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(`Gemini API error: ${response.status} - ${JSON.stringify(errorData)}`);
+      }
+
+      const data = await response.json();
+      const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+
+      if (!responseText) {
+        throw new Error("No response text from Gemini");
+      }
+
+      // Debug logging
+      console.log("Raw Gemini response:", responseText.substring(0, 200) + "...");
+
+      try {
+        // Try to extract JSON from the response if it contains extra text
+        const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          return JSON.parse(jsonMatch[0]);
+        }
+        return JSON.parse(responseText);
+      } catch (parseError) {
+        console.error("Failed to parse JSON:", responseText);
+        throw new Error(
+          `Invalid JSON response from Gemini: ${parseError.message}`,
+        );
+      }
+    } else {
+      // Call Ollama API (existing code)
+      const response = await fetch("http://localhost:11434/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model,
+          prompt,
+          stream: false,
+          format: format || "json",
+          options: {
+            temperature: 0.1,
+            top_p: 0.9,
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const responseText = data.response.trim();
+
+      // Debug logging
+      console.log("Raw Ollama response:", responseText.substring(0, 200) + "...");
+
+      try {
+        // Try to extract JSON from the response if it contains extra text
+        const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          return JSON.parse(jsonMatch[0]);
+        }
+        return JSON.parse(responseText);
+      } catch (parseError) {
+        console.error("Failed to parse JSON:", responseText);
+        throw new Error(
+          `Invalid JSON response from Ollama: ${parseError.message}`,
+        );
+      }
     }
   } catch (error) {
-    console.error("Error calling Ollama:", error);
+    console.error("Error calling LLM:", error);
     throw error;
   }
 }
@@ -452,9 +622,9 @@ async function extractGitHubData(
     githubInfo.repo,
     githubInfo.repositoryPath,
   );
-  
+
   const newServer = createNewMCPServer(githubInfo, apiData);
-  
+
   // Merge GitHub fields
   return {
     ...server,
@@ -503,7 +673,7 @@ ${content.substring(0, 8000)}
 Respond with JSON: {"category": "..."}`;
 
   try {
-    const result = await callOllama(prompt, null, model);
+    const result = await callLLM(prompt, null, model);
     if (result.category) {
       return {
         ...server,
@@ -546,32 +716,94 @@ Instructions:
 - For Docker commands: split "docker run" into command="docker" and args=["run", ...]
 - For npx: command="npx", args=["-y", "package-name"]
 - Extract environment variables from docker -e flags to env object
-- Use descriptive names: "server-name" for npx/node, "server-name-docker" for docker
+- CRITICAL: Server names MUST be derived from the actual package/image names in the content:
+  - Look for the EXACT package name in the content
+  - For scoped npm packages: "@scope/package-name" → "scope-package-name" 
+  - For docker images: extract the image name and append "-docker"
+  - For Python packages in uvx/pip: use the exact package name
+  - Transform rules:
+    * Replace @ with nothing
+    * Replace / with hyphen
+    * Keep the full package name, don't shorten it
+    * Don't use just the last part of the name
+  - Add suffixes for variants: "-docker", "-configured", "-stdio", "-with-config"
+  - NEVER use generic names like "server-basic", "server-configured", "server-docker"
+  - NEVER use single-word names like "agent", "server", "mcp"
 
-Examples:
-Docker: docker run -it --rm -e TOKEN=value image:tag
-Result: {"command": "docker", "args": ["run", "-i", "--rm", "-e", "TOKEN", "image:tag"], "env": {"TOKEN": "\${input:token}"}}
+Important: 
+- For Docker, include the full image name in args
+- Environment vars from -e flags go in both args and env
+- Create separate entries for different configurations of the same server
 
-NPX: npx -y my-server
-Result: {"command": "npx", "args": ["-y", "my-server"]}
+Examples of CORRECT output:
 
-Important: For Docker, include the image name in args. Environment vars from -e flags go in both args and env.
+If you find "mcp-server-fetch" in uvx command:
+{
+  "configForClients": {
+    "mcpServers": {
+      "mcp-server-fetch": {
+        "command": "uvx",
+        "args": ["mcp-server-fetch"]
+      }
+    }
+  }
+}
 
-Respond with JSON: {"configForClients": {"mcpServers": {"name1": {...}, "name2": {...}}}}
+If you find "@modelcontextprotocol/server-filesystem" in npx and a docker variant:
+{
+  "configForClients": {
+    "mcpServers": {
+      "filesystem-server": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/files"]
+      },
+      "filesystem-server-docker": {
+        "command": "docker",
+        "args": ["run", "-v", "/path:/data", "mcp/filesystem:latest"]
+      }
+    }
+  }
+}
+
+The keys MUST be based on the actual package/image names found in the content.
+
 If no run command found, respond with: {"configForClients": null}`;
 
-  const configFormat = {
+  // For Gemini, we need a simpler schema without additionalProperties
+  const isGemini = model.startsWith("gemini-");
+  const configFormat = isGemini ? undefined : {
     type: "object",
     properties: {
       configForClients: {
         type: ["object", "null"],
+        properties: {
+          mcpServers: {
+            type: "object",
+            additionalProperties: {
+              type: "object",
+              properties: {
+                command: { type: "string" },
+                args: {
+                  type: "array",
+                  items: { type: "string" }
+                },
+                env: {
+                  type: "object",
+                  additionalProperties: { type: "string" }
+                }
+              },
+              required: ["command", "args"]
+            }
+          }
+        },
+        required: ["mcpServers"]
       },
     },
     required: ["configForClients"],
   };
 
   try {
-    const result = await callOllama(prompt, configFormat, model);
+    const result = await callLLM(prompt, configFormat, model);
     if (result.configForClients) {
       return {
         ...server,
@@ -637,9 +869,16 @@ Respond with JSON format:
 }
 
 Examples:
-- Binary: command="./server", args=["stdio"] or command="/usr/local/bin/server"
-- NPX: command="npx", args=["-y", "package-name"]
+- Binary: command="./server", args=["--stdio"] 
+- NPX package: command="npx", args=["-y", "@org/package-name"]
+- NPX with transport: command="npx", args=["-y", "@org/package", "--transport", "stdio"]
 - Python: command="python", args=["server.py", "--stdio"]
+- Node: command="node", args=["dist/server.js", "--stdio"]
+
+IMPORTANT: 
+- Always include the full args array with all flags and parameters
+- For npx, include "-y" flag and the full package name
+- If transport is stdio, include transport flags like "--transport", "stdio" in args
 
 Rules:
 - Set oauth to null if no OAuth/authentication provider is mentioned
@@ -672,8 +911,12 @@ If no configuration found, respond: {"configForArchestra": null}`;
               transport: { type: "string" },
               command: { type: "string" },
               args: { type: "array", items: { type: "string" } },
-              env: { type: "object" },
+              env: { 
+                type: "object",
+                additionalProperties: { type: "string" }
+              },
             },
+            required: ["transport", "command", "args"]
           },
         },
       },
@@ -682,7 +925,7 @@ If no configuration found, respond: {"configForArchestra": null}`;
   };
 
   try {
-    const result = await callOllama(prompt, configFormat, model);
+    const result = await callLLM(prompt, configFormat, model);
     if (result.configForArchestra) {
       return {
         ...server,
@@ -711,7 +954,7 @@ async function extractDependencies(
 
   const content = server.readme || server.description;
   const rawDeps = server.rawDependencies;
-  
+
   if (!content && !rawDeps) {
     console.warn("No content available for dependencies analysis");
     return server;
@@ -785,7 +1028,7 @@ If no library dependencies found, respond: {"dependencies": []}`;
   };
 
   try {
-    const result = await callOllama(prompt, dependenciesFormat, model);
+    const result = await callLLM(prompt, dependenciesFormat, model);
     if (result.dependencies && result.dependencies.length > 0) {
       return {
         ...server,
@@ -881,8 +1124,8 @@ Respond with JSON format:
   };
 
   try {
-    const result = await callOllama(prompt, protocolFormat, model);
-    
+    const result = await callLLM(prompt, protocolFormat, model);
+
     // Update all protocol fields
     return {
       ...server,
@@ -918,7 +1161,7 @@ async function extractScore(
   // Load all servers for dependency commonality calculation
   const allServers = loadServers();
   const scoreBreakdown = calculateQualityScore(server, server.readme, allServers);
-  
+
   return {
     ...server,
     qualityScore: scoreBreakdown.total,
@@ -943,10 +1186,10 @@ async function evaluateSingleRepo(
     const githubInfo = parseGitHubUrl(githubUrl);
     const evaluationsDir = path.join(__dirname, "../data/mcp-evaluations");
     const filePath = path.join(evaluationsDir, `${githubInfo.slug}.json`);
-    
+
     // 2. Load existing or fetch new data
     let server = loadMCPServerFromFile(filePath);
-    
+
     if (!server) {
       // Create new server from GitHub
       const apiData = await fetchRepoData(
@@ -956,37 +1199,37 @@ async function evaluateSingleRepo(
       );
       server = createNewMCPServer(githubInfo, apiData);
     }
-    
+
     // 3. Apply updates based on options
     if (options.updateGithub || !server.last_scraped_at) {
       server = await extractGitHubData(server, githubInfo, options.updateGithub || false);
     }
-    
+
     if (options.updateCategory) {
       const categories = options.categories || extractCategories();
       server = await extractCategory(server, categories, options.model || "deepseek-r1:14b", true);
     }
-    
+
     if (options.updateConfigForClients) {
       server = await extractClientConfig(server, options.model || "deepseek-r1:14b", true);
     }
-    
+
     if (options.updateConfigForArchestra) {
       server = await extractArchestraConfig(server, options.model || "deepseek-r1:14b", true);
     }
-    
+
     if (options.updateDependencies) {
       server = await extractDependencies(server, options.model || "deepseek-r1:14b", true);
     }
-    
+
     if (options.updateProtocol) {
       server = await extractProtocolFeatures(server, options.model || "deepseek-r1:14b", true);
     }
-    
+
     if (options.updateScore) {
       server = await extractScore(server, true);
     }
-    
+
     // Display results if showOutput
     if (options.showOutput !== false && server.qualityScore !== null) {
       const allServers = loadServers();
@@ -1000,7 +1243,7 @@ async function evaluateSingleRepo(
       console.log(`  Badge Adoption: ${scoreBreakdown.badgeUsage}/2`);
       console.log(`  📊 Total Score: ${scoreBreakdown.total}/100`);
 
-      if (server.category || server.configForClients || server.configForArchestra || 
+      if (server.category || server.configForClients || server.configForArchestra ||
           server.dependencies || server.implementing_tools !== null) {
         console.log(`\n🤖 AI Analysis:`);
         if (server.category) console.log(`  Category: ${server.category}`);
@@ -1024,16 +1267,16 @@ async function evaluateSingleRepo(
         }
       }
     }
-    
+
     // 4. Save and return
     saveMCPServerToFile(server, filePath);
     if (options.showOutput !== false) {
       console.log(`\n✅ Evaluation saved to: ${githubInfo.slug}.json`);
     }
-    
+
     return server;
   } catch (error) {
-    if (error.message && (error.message.startsWith("PATH_NOT_FOUND:") || 
+    if (error.message && (error.message.startsWith("PATH_NOT_FOUND:") ||
         error.message.startsWith("REPO_NOT_FOUND:"))) {
       if (options.showOutput !== false) console.error(`❌ ${error.message}`);
       removeFromServerList(githubUrl);
@@ -1211,7 +1454,8 @@ Update Options:
 
 Control Options:
   --force             Force update even if data exists
-  --model <name>      Ollama model (default: deepseek-r1:14b)
+  --model <name>      LLM model to use (default: deepseek-r1:14b)
+                      Supports Ollama models and Gemini models (e.g., gemini-1.5-flash)
   --concurrency <n>   Number of parallel requests (default: 10 with token, 3 without)
   --limit <n>         Process only the first N servers
 
@@ -1219,8 +1463,11 @@ Examples:
   npm run evaluate https://github.com/org/repo
   npm run evaluate --github --force
   npm run evaluate --category --model llama2
+  npm run evaluate --category --model gemini-1.5-flash
   npm run evaluate --all --concurrency 20
-  npm run evaluate --dependencies --limit 10`);
+  npm run evaluate --dependencies --limit 10
+
+Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variable`);
     return;
   }
 
@@ -1266,7 +1513,7 @@ Examples:
   }
 
   let categories: string[] | undefined;
-  
+
   if (options.updateCategory) {
     categories = extractCategories();
     console.log(`✅ Found ${categories.length} categories from types.ts`);

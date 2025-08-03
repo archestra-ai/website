@@ -15,8 +15,9 @@ The MCP Catalog is an open-source, community-driven directory that helps develop
 
 ### Todo
 - Bug, only 30 contributors for each MCP server
-- Measure protocol usage
+- Split GH metrics for multi-mcp-repos
 - Validate if configs work
-- Update search.
 - Add 404.
 - Add new server button leads to 404.
+- Mobile version
+- Evaluate all servers
