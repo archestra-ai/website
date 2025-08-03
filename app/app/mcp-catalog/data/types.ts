@@ -4,6 +4,11 @@ export interface MCPTool {
   parameters?: string[];
 }
 
+export interface MCPDependency {
+  name: string; // e.g. "Node.js", "Docker", "Python", "API Key"
+  importance: number; // 1-10 scale, where 10 is absolutely critical
+}
+
 export interface MCPServer {
   slug: string;
   description: string;
@@ -42,6 +47,8 @@ export interface MCPServer {
     | "Email"
     | "CRM"
     | "Enterprise"
+    | "Job Search"
+    | "Local files"
     | null;
   qualityScore: number | null; // 0-100
   gitHubOrg: string; // e.g. "modelcontextprotocol"
@@ -81,6 +88,8 @@ export interface MCPServer {
     stability: number;
     performance: number;
   };
+  dependencies?: MCPDependency[];
+  rawDependencies?: string; // Raw content of package.json, requirements.txt, go.mod, etc.
 }
 
 // Helper function to get the display name for an MCP server

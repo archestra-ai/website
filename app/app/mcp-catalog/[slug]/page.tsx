@@ -200,6 +200,7 @@ export default async function MCPDetailPage({
                       const scoreBreakdown = calculateQualityScore(
                         server,
                         server.readme,
+                        undefined, // Pass all servers here if needed for dependencies scoring
                       );
 
                       const getScoreDescription = (
@@ -222,10 +223,40 @@ export default async function MCPDetailPage({
                         if (category === "documentation quality") {
                           return `Documentation (${score}/${maxScore})`;
                         }
+                        if (category === "dependency optimization") {
+                          // Check if dependencies have been evaluated
+                          if (!server.dependencies) {
+                            return `Dependencies not yet evaluated (${score}/${maxScore})`;
+                          }
+                          if (percentage === 100)
+                            return `Optimal dependency management (${score}/${maxScore})`;
+                          if (percentage >= 75)
+                            return `Good dependency choices (${score}/${maxScore})`;
+                          if (percentage >= 50)
+                            return `Moderate dependency usage (${score}/${maxScore})`;
+                          if (percentage >= 25)
+                            return `Heavy dependency usage (${score}/${maxScore})`;
+                          return `Too many or rare dependencies (${score}/${maxScore})`;
+                        }
                         if (category === "badge adoption") {
                           if (percentage > 0)
                             return `Archestra MCP Quality badge (${score}/${maxScore})`;
                           return `Archestra MCP Quality score badge is missing`;
+                        }
+                        if (category === "MCP protocol implementation") {
+                          // Check if protocol features have been evaluated
+                          if (server.implementing_tools === null) {
+                            return `Protocol features not yet evaluated (${score}/${maxScore})`;
+                          }
+                          if (percentage === 100)
+                            return `Full MCP protocol implementation (${score}/${maxScore})`;
+                          if (percentage >= 75)
+                            return `Most MCP protocol features implemented (${score}/${maxScore})`;
+                          if (percentage >= 50)
+                            return `Core MCP protocol features implemented (${score}/${maxScore})`;
+                          if (percentage >= 25)
+                            return `Basic MCP protocol features implemented (${score}/${maxScore})`;
+                          return `Limited MCP protocol implementation (${score}/${maxScore})`;
                         }
                         if (percentage === 100)
                           return `Full ${category.toLowerCase()} (${score}/${maxScore})`;
@@ -245,7 +276,7 @@ export default async function MCPDetailPage({
                               •{" "}
                               {getScoreDescription(
                                 scoreBreakdown.mcpProtocol,
-                                60,
+                                40,
                                 "MCP protocol implementation",
                               )}
                             </li>
@@ -255,6 +286,14 @@ export default async function MCPDetailPage({
                                 scoreBreakdown.githubMetrics,
                                 20,
                                 "GitHub community health",
+                              )}
+                            </li>
+                            <li>
+                              •{" "}
+                              {getScoreDescription(
+                                scoreBreakdown.dependencies,
+                                20,
+                                "dependency optimization",
                               )}
                             </li>
                             <li>
@@ -340,13 +379,107 @@ export default async function MCPDetailPage({
                 </Card>
               )}
 
+              {/* Dependencies */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Dependencies</CardTitle>
+                  <CardDescription>
+                    Libraries and frameworks used by this MCP server
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {server.dependencies && server.dependencies.length > 0 ? (
+                    (() => {
+                      // Group dependencies by importance level
+                      const mainDeps = server.dependencies.filter(d => d.importance >= 8);
+                      const mediumDeps = server.dependencies.filter(d => d.importance >= 5 && d.importance < 8);
+                      const lightDeps = server.dependencies.filter(d => d.importance < 5);
+
+                      return (
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                          {/* Main Dependencies */}
+                          {mainDeps.length > 0 && (
+                            <div>
+                              <h4 className="text-sm font-semibold text-gray-700 mb-2">Main</h4>
+                              <div className="space-y-2">
+                                {mainDeps
+                                  .sort((a, b) => b.importance - a.importance)
+                                  .map((dep, index) => (
+                                    <div
+                                      key={index}
+                                      className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-green-500 to-green-600 text-white shadow-md"
+                                      title={`Importance: ${dep.importance}/10`}
+                                    >
+                                      {dep.name}
+                                    </div>
+                                  ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Medium Dependencies */}
+                          {mediumDeps.length > 0 && (
+                            <div>
+                              <h4 className="text-sm font-semibold text-gray-700 mb-2">Medium</h4>
+                              <div className="space-y-2">
+                                {mediumDeps
+                                  .sort((a, b) => b.importance - a.importance)
+                                  .map((dep, index) => (
+                                    <div
+                                      key={index}
+                                      className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-gray-300 to-gray-400 text-gray-800 shadow-sm"
+                                      title={`Importance: ${dep.importance}/10`}
+                                    >
+                                      {dep.name}
+                                    </div>
+                                  ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Light Dependencies */}
+                          {lightDeps.length > 0 && (
+                            <div>
+                              <h4 className="text-sm font-semibold text-gray-700 mb-2">Light</h4>
+                              <div className="space-y-2">
+                                {lightDeps
+                                  .sort((a, b) => b.importance - a.importance)
+                                  .map((dep, index) => (
+                                    <div
+                                      key={index}
+                                      className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-gray-100 to-gray-200 text-gray-600 shadow-sm"
+                                      title={`Importance: ${dep.importance}/10`}
+                                    >
+                                      {dep.name}
+                                    </div>
+                                  ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })()
+                  ) : (
+                    <div className="text-center py-8">
+                      <div className="animate-pulse">
+                        <div className="w-12 h-12 bg-gray-200 rounded-full mx-auto mb-4"></div>
+                        <p className="text-gray-500 text-sm">Evaluating dependencies...</p>
+                        <p className="text-gray-400 text-xs mt-2">Check back soon for dependency information</p>
+                      </div>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+
               {/* MCP Protocol Features */}
               {server.qualityScore !== null && (
                 <Card>
                   <CardHeader>
                     <CardTitle>MCP Protocol Support</CardTitle>
                     <CardDescription>
-                      Implemented MCP protocol features, TBD.
+                      {server.implementing_tools === null
+                        ? "Protocol features have not been evaluated yet"
+                        : "Implemented MCP protocol features"}
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -377,7 +510,11 @@ export default async function MCPDetailPage({
                                 : "text-gray-400"
                             }
                           >
-                            {server[key as keyof MCPServer] ? "?" : "?"}
+                            {server[key as keyof MCPServer] === null
+                              ? "?"
+                              : server[key as keyof MCPServer]
+                              ? "✓"
+                              : "✗"}
                           </span>
                         </div>
                       ))}

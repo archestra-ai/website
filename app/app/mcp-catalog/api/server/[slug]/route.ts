@@ -32,10 +32,13 @@ import { calculateQualityScore } from "../../../lib/quality-calculator";
  *                       properties:
  *                         mcpProtocol:
  *                           type: integer
- *                           description: Points for MCP protocol implementation (max 60)
+ *                           description: Points for MCP protocol implementation (max 40)
  *                         githubMetrics:
  *                           type: integer
  *                           description: Points for GitHub community metrics (max 20)
+ *                         dependencies:
+ *                           type: integer
+ *                           description: Points for dependency optimization (max 20)
  *                         deploymentMaturity:
  *                           type: integer
  *                           description: Points for CI/CD and releases (max 10)
@@ -95,7 +98,9 @@ export async function GET(
     // Calculate quality score breakdown if score exists
     let scoreBreakdown = null;
     if (server.qualityScore !== null) {
-      scoreBreakdown = calculateQualityScore(server, server.readme);
+      // Load all servers for dependency commonality calculation
+      const allServers = loadServers();
+      scoreBreakdown = calculateQualityScore(server, server.readme, allServers);
     }
 
     // Return detailed server information

@@ -20,7 +20,10 @@ function getCategories(evaluations: MCPServer[]): string[] {
   // Count items per category
   for (const evaluation of evaluations) {
     if (evaluation.category) {
-      categoryCounts.set(evaluation.category, (categoryCounts.get(evaluation.category) || 0) + 1);
+      categoryCounts.set(
+        evaluation.category,
+        (categoryCounts.get(evaluation.category) || 0) + 1,
+      );
     } else {
       uncategorizedCount++;
     }
@@ -57,8 +60,8 @@ function getProgrammingLanguages(evaluations: MCPServer[]): string[] {
       evaluation.programmingLanguage !== "Unknown"
     ) {
       languageCounts.set(
-        evaluation.programmingLanguage, 
-        (languageCounts.get(evaluation.programmingLanguage) || 0) + 1
+        evaluation.programmingLanguage,
+        (languageCounts.get(evaluation.programmingLanguage) || 0) + 1,
       );
     }
   }
@@ -76,10 +79,53 @@ function getProgrammingLanguages(evaluations: MCPServer[]): string[] {
   return ["All", ...sortedLanguages];
 }
 
+// Get top dependencies from evaluations (importance >= 8)
+function getTopDependencies(evaluations: MCPServer[]): string[] {
+  const dependencyCounts = new Map<
+    string,
+    { count: number; totalImportance: number }
+  >();
+
+  // Count dependencies and their importance
+  for (const evaluation of evaluations) {
+    if (evaluation.dependencies) {
+      for (const dep of evaluation.dependencies) {
+        if (dep.importance >= 8) {
+          const existing = dependencyCounts.get(dep.name) || {
+            count: 0,
+            totalImportance: 0,
+          };
+          dependencyCounts.set(dep.name, {
+            count: existing.count + 1,
+            totalImportance: existing.totalImportance + dep.importance,
+          });
+        }
+      }
+    }
+  }
+
+  // Sort by count (descending), then by average importance
+  const sortedDependencies = Array.from(dependencyCounts.entries())
+    .sort((a, b) => {
+      if (b[1].count !== a[1].count) {
+        return b[1].count - a[1].count; // Sort by count descending
+      }
+      // If count is same, sort by average importance
+      const avgA = a[1].totalImportance / a[1].count;
+      const avgB = b[1].totalImportance / b[1].count;
+      return avgB - avgA;
+    })
+    .slice(0, 15) // Take top 15
+    .map(([dependency]) => dependency);
+
+  return ["All", ...sortedDependencies];
+}
+
 export default function MCPCatalogPage() {
   const mcpServers = loadServers();
   const categories = getCategories(mcpServers);
   const languages = getProgrammingLanguages(mcpServers);
+  const dependencies = getTopDependencies(mcpServers);
 
   // Find the highest scoring MCP server for the badge example
   const topScoredServer = mcpServers
@@ -113,7 +159,8 @@ export default function MCPCatalogPage() {
                   By scoring servers on protocol adherence, development
                   maturity, and security best practices, we provide a clear,
                   standardized way to distinguish trustworthy tools from
-                  potential threats, helping you build with confidence.
+                  potential threats, helping you with the{" "}
+                  <b>agentic supply chain</b>.
                 </p>
 
                 <div className="bg-white border border-gray-200 rounded-lg p-6 mt-10 mb-6 max-w-2xl">
@@ -196,27 +243,6 @@ export default function MCPCatalogPage() {
                     Report an Issue
                   </a>
 
-                  {/* API Documentation Button */}
-                  <a
-                    href="/mcp-catalog/api-docs"
-                    className="inline-flex items-center gap-2 px-5 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
-                    </svg>
-                    API Documentation
-                  </a>
-
                   {/* GitHub Repo Button */}
                   <a
                     href="https://github.com/archestra-ai/website/tree/main/app/app/mcp-catalog"
@@ -253,7 +279,7 @@ export default function MCPCatalogPage() {
                         <span className="font-medium">
                           MCP Protocol Implementation
                         </span>
-                        <span className="font-bold">60 pts</span>
+                        <span className="font-bold">40 pts</span>
                       </div>
                       <p className="text-xs text-blue-600 leading-relaxed">
                         9 core MCP features: tools, prompts, resources,
@@ -271,6 +297,19 @@ export default function MCPCatalogPage() {
                         GitHub stars (popularity), active contributors
                         (community engagement), and issues (development
                         activity).
+                      </p>
+                    </div>
+
+                    <div>
+                      <div className="flex justify-between items-start mb-1">
+                        <span className="font-medium">
+                          Dependency Optimization
+                        </span>
+                        <span className="font-bold">20 pts</span>
+                      </div>
+                      <p className="text-xs text-blue-600 leading-relaxed">
+                        Minimal dependencies (≤10 is optimal) and using
+                        common libraries shared by 5+ other servers.
                       </p>
                     </div>
 
@@ -324,6 +363,7 @@ export default function MCPCatalogPage() {
               mcpServers={mcpServers}
               categories={categories}
               languages={languages}
+              dependencies={dependencies}
             />
           </Suspense>
         </div>

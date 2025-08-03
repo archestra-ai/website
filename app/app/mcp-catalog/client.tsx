@@ -22,10 +22,11 @@ interface MCPCatalogClientProps {
   mcpServers: MCPServer[];
   categories: string[];
   languages: string[];
+  dependencies: string[];
 }
 
 
-export default function MCPCatalogClient({ mcpServers, categories, languages }: MCPCatalogClientProps) {
+export default function MCPCatalogClient({ mcpServers, categories, languages, dependencies }: MCPCatalogClientProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const serverGridRef = useRef<HTMLDivElement>(null);
@@ -36,6 +37,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || "");
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || "All");
   const [selectedLanguage, setSelectedLanguage] = useState(searchParams.get('language') || "All");
+  const [selectedDependency, setSelectedDependency] = useState(searchParams.get('dependency') || "All");
   const [sortBy, setSortBy] = useState(searchParams.get('sort') || "quality");
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | null>(
     searchParams.get('dir') as 'asc' | 'desc' || 'desc'
@@ -53,13 +55,14 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
   }, []);
   
   // Check if any filters are active
-  const hasActiveFilters = searchQuery !== "" || selectedCategory !== "All" || selectedLanguage !== "All";
+  const hasActiveFilters = searchQuery !== "" || selectedCategory !== "All" || selectedLanguage !== "All" || selectedDependency !== "All";
   
   // Count active filters
   const activeFilterCount = [
     searchQuery !== "",
     selectedCategory !== "All",
-    selectedLanguage !== "All"
+    selectedLanguage !== "All",
+    selectedDependency !== "All"
   ].filter(Boolean).length;
   
   // Clear all filters
@@ -67,6 +70,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
     setSearchQuery("");
     setSelectedCategory("All");
     setSelectedLanguage("All");
+    setSelectedDependency("All");
     // Reset to quality sort when clearing filters
     if (sortBy === "relevance") {
       setSortBy("quality");
@@ -124,6 +128,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
     if (searchQuery) params.set('search', searchQuery);
     if (selectedCategory !== 'All') params.set('category', selectedCategory);
     if (selectedLanguage !== 'All') params.set('language', selectedLanguage);
+    if (selectedDependency !== 'All') params.set('dependency', selectedDependency);
     if (sortBy && sortDirection) {
       params.set('sort', sortBy);
       params.set('dir', sortDirection);
@@ -131,7 +136,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
     
     const newUrl = params.toString() ? `?${params.toString()}` : '/mcp-catalog';
     router.replace(newUrl, { scroll: false });
-  }, [searchQuery, selectedCategory, selectedLanguage, sortBy, sortDirection, router]);
+  }, [searchQuery, selectedCategory, selectedLanguage, selectedDependency, sortBy, sortDirection, router]);
 
   // Calculate search relevance score for a server
   const calculateSearchRelevance = (server: MCPServer, query: string): number => {
@@ -219,7 +224,15 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
       const matchesLanguage =
         selectedLanguage === "All" || server.programmingLanguage === selectedLanguage;
       
-      return matchesSearch && matchesCategory && matchesLanguage;
+      // Filter by dependency
+      const matchesDependency =
+        selectedDependency === "All" || 
+        (server.dependencies && 
+         server.dependencies.some(dep => 
+           dep.name === selectedDependency && dep.importance >= 8
+         ));
+      
+      return matchesSearch && matchesCategory && matchesLanguage && matchesDependency;
     });
 
   // Sort filtered servers
@@ -277,7 +290,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
   // Reset displayed items when filters change
   useEffect(() => {
     setDisplayedItems(ITEMS_PER_PAGE);
-  }, [searchQuery, selectedCategory, selectedLanguage, sortBy]);
+  }, [searchQuery, selectedCategory, selectedLanguage, selectedDependency, sortBy]);
 
   // Load more items
   const loadMore = useCallback(() => {
@@ -349,27 +362,30 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
                 />
               </div>
               
-              {/* Categories */}
+              {/* Dependencies */}
               <div>
-                <h3 className="text-sm font-medium text-gray-700 mb-2">Categories</h3>
+                <h3 className="text-sm font-medium text-gray-700 mb-2">Main Dependencies</h3>
                 <div className="space-y-1">
-                  {categories.map((category) => (
+                  {dependencies.map((dependency) => (
                     <button
-                      key={category}
-                      onClick={() => setSelectedCategory(category)}
+                      key={dependency}
+                      onClick={() => setSelectedDependency(dependency)}
                       className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
-                        selectedCategory === category
-                          ? "bg-yellow-100 text-yellow-800 font-medium"
+                        selectedDependency === dependency
+                          ? "bg-green-100 text-green-800 font-medium"
                           : "text-gray-600 hover:bg-gray-100"
                       }`}
                     >
-                      {category}
+                      {dependency}
                       <span className="float-right text-xs text-gray-500">
-                        {category === "All" 
+                        {dependency === "All" 
                           ? mcpServers.length 
-                          : category === "Uncategorized"
-                          ? mcpServers.filter(s => s.category === null).length
-                          : mcpServers.filter(s => s.category === category).length}
+                          : mcpServers.filter(s => 
+                              s.dependencies && 
+                              s.dependencies.some(dep => 
+                                dep.name === dependency && dep.importance >= 8
+                              )
+                            ).length}
                       </span>
                     </button>
                   ))}
@@ -395,6 +411,33 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
                         {language === "All" 
                           ? mcpServers.length 
                           : mcpServers.filter(s => s.programmingLanguage === language).length}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Categories */}
+              <div>
+                <h3 className="text-sm font-medium text-gray-700 mb-2">Categories</h3>
+                <div className="space-y-1">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setSelectedCategory(category)}
+                      className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
+                        selectedCategory === category
+                          ? "bg-yellow-100 text-yellow-800 font-medium"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`}
+                    >
+                      {category}
+                      <span className="float-right text-xs text-gray-500">
+                        {category === "All" 
+                          ? mcpServers.length 
+                          : category === "Uncategorized"
+                          ? mcpServers.filter(s => s.category === null).length
+                          : mcpServers.filter(s => s.category === category).length}
                       </span>
                     </button>
                   ))}
@@ -514,6 +557,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
                 if (searchQuery) params.set('search', searchQuery);
                 if (selectedCategory !== 'All') params.set('category', selectedCategory);
                 if (selectedLanguage !== 'All') params.set('language', selectedLanguage);
+                if (selectedDependency !== 'All') params.set('dependency', selectedDependency);
                 if (isClient) {
                   params.set('scroll', window.scrollY.toString());
                 }
@@ -623,6 +667,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages }: 
               No servers found{searchQuery && ` matching "${searchQuery}"`}
               {selectedCategory !== "All" && ` in ${selectedCategory}`}
               {selectedLanguage !== "All" && ` using ${selectedLanguage}`}
+              {selectedDependency !== "All" && ` with ${selectedDependency}`}
             </p>
             <p className="text-gray-400 text-sm mt-2">Try searching with different keywords or filters</p>
             {hasActiveFilters && (

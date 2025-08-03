@@ -6,6 +6,7 @@ import { exec } from "child_process";
 import { promisify } from "util";
 import { MCPServer } from "../data/types";
 import { calculateQualityScore } from "../lib/quality-calculator";
+import { loadServers } from "../lib/server-utils";
 import { extractServerInfo } from "../lib/server-utils";
 
 const execAsync = promisify(exec);
@@ -27,12 +28,67 @@ interface GitHubApiResponse {
   contributors_count: number;
   readme_content?: string;
   latest_commit_hash?: string;
+  raw_dependencies?: string;
+}
+
+interface EvaluationOptions {
+  updateGithub?: boolean;
+  updateCategory?: boolean;
+  updateConfigForClients?: boolean;
+  updateConfigForArchestra?: boolean;
+  updateDependencies?: boolean;
+  updateProtocol?: boolean;
+  updateScore?: boolean;
+  updateAll?: boolean;
+  force?: boolean;
+  model?: string;
+  categories?: string[];
+  showOutput?: boolean;
+}
+
+// ============= Helper Methods =============
+
+/**
+ * Load existing evaluation from file (returns null if not exists)
+ */
+function loadMCPServerFromFile(filePath: string): MCPServer | null {
+  if (!fs.existsSync(filePath)) {
+    return null;
+  }
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch (error) {
+    console.warn(`Failed to parse ${filePath}: ${error.message}`);
+    return null;
+  }
 }
 
 /**
- * Parse GitHub URL to extract owner and repo name
+ * Save evaluation to file
  */
-function parseGitHubUrl(url: string): GitHubRepoInfo {
+function saveMCPServerToFile(server: MCPServer, filePath: string): void {
+  const outputDir = path.dirname(filePath);
+  
+  // Ensure directory exists
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
+  fs.writeFileSync(filePath, JSON.stringify(server, null, 2));
+}
+
+/**
+ * Parse GitHub URL and extract all necessary information
+ */
+function parseGitHubUrl(url: string): {
+  owner: string;
+  repo: string;
+  url: string;
+  slug: string;
+  gitHubOrg: string;
+  gitHubRepo: string;
+  repositoryPath: string | null;
+} {
   const cleanUrl = url.replace(/\/$/, ""); // Remove trailing slash
   const match = cleanUrl.match(/github\.com\/([^\/]+)\/([^\/]+)/);
 
@@ -40,10 +96,16 @@ function parseGitHubUrl(url: string): GitHubRepoInfo {
     throw new Error(`Invalid GitHub URL: ${url}`);
   }
 
+  const serverInfo = extractServerInfo(url);
+
   return {
     owner: match[1],
     repo: match[2],
     url: cleanUrl,
+    slug: serverInfo.slug,
+    gitHubOrg: serverInfo.gitHubOrg,
+    gitHubRepo: serverInfo.gitHubRepo,
+    repositoryPath: serverInfo.repositoryPath,
   };
 }
 
@@ -137,6 +199,56 @@ async function fetchRepoData(
         );
       }
 
+      // Fetch dependency files
+      let rawDependencies = "";
+      const dependencyFiles = [
+        "requirements/requirements.txt",
+        "requirements.txt",
+        "package.json",
+        "go.mod",
+        "Cargo.toml",
+        "Gemfile",
+        "pom.xml",
+        "build.gradle",
+        "composer.json",
+        "Pipfile",
+        "poetry.lock",
+        "setup.py",
+        "pyproject.toml"
+      ];
+
+      // First try to list files in the directory to find dependency files
+      try {
+        const contentsUrl = repositoryPath
+          ? `/repos/${owner}/${repo}/contents/${repositoryPath}`
+          : `/repos/${owner}/${repo}/contents`;
+        
+        const contents = await apiCall(contentsUrl);
+        
+        // Find dependency files in the listing
+        const foundDepFiles = contents
+          .filter((item: any) => item.type === "file" && dependencyFiles.includes(item.name))
+          .map((item: any) => item.name);
+
+        // Fetch the first dependency file found
+        for (const depFile of foundDepFiles) {
+          try {
+            const depFileUrl = repositoryPath
+              ? `/repos/${owner}/${repo}/contents/${repositoryPath}/${depFile}`
+              : `/repos/${owner}/${repo}/contents/${depFile}`;
+            
+            const depFileData = await apiCall(depFileUrl);
+            rawDependencies = Buffer.from(depFileData.content, "base64").toString("utf-8");
+            console.log(`Found dependency file: ${depFile}`);
+            break; // Use the first one found
+          } catch (error) {
+            // Continue to next file
+          }
+        }
+      } catch (error) {
+        console.warn(`Could not list directory contents`);
+      }
+
       // Fetch latest commit
       let latestCommitHash = "";
       try {
@@ -159,6 +271,7 @@ async function fetchRepoData(
           : 1,
         readme_content: readmeContent,
         latest_commit_hash: latestCommitHash,
+        raw_dependencies: rawDependencies,
       };
     } catch (error) {
       if (error.message === "RATE_LIMITED" && retryCount < maxRetries) {
@@ -178,98 +291,8 @@ async function fetchRepoData(
 }
 
 /**
- * Create MCPServer object from GitHub data
+ * Call Ollama AI for analysis
  */
-function createMCPServerFromGitHub(
-  repoInfo: GitHubRepoInfo,
-  apiData: GitHubApiResponse,
-  serverInfo: ReturnType<typeof extractServerInfo>,
-): MCPServer {
-  const name =
-    apiData.name
-      .replace(/-/g, " ")
-      .replace(/mcp|server/gi, "")
-      .trim() || apiData.name;
-
-  return {
-    name,
-    slug: serverInfo.slug,
-    description:
-      apiData.description ||
-      `MCP server from ${repoInfo.owner}/${repoInfo.repo}`,
-    readme: apiData.readme_content || undefined,
-    category: null,
-    qualityScore: null, // Will be calculated
-    githubUrl: repoInfo.url,
-    programmingLanguage: apiData.language,
-    framework: undefined,
-    gitHubOrg: serverInfo.gitHubOrg,
-    gitHubRepo: serverInfo.gitHubRepo,
-    repositoryPath: serverInfo.repositoryPath,
-    gh_stars: apiData.stargazers_count,
-    gh_contributors: apiData.contributors_count,
-    gh_issues: apiData.total_issues_count,
-    gh_releases: apiData.has_releases,
-    gh_ci_cd: apiData.has_workflows,
-    gh_latest_commit_hash: apiData.latest_commit_hash,
-    last_scraped_at: new Date().toISOString(),
-    implementing_tools: null,
-    implementing_prompts: null,
-    implementing_resources: null,
-    implementing_sampling: null,
-    implementing_roots: null,
-    implementing_logging: null,
-    implementing_stdio: null,
-    implementing_streamable_http: null,
-    implementing_oauth2: null,
-  };
-}
-
-/**
- * Save evaluation to file
- */
-function saveEvaluation(server: MCPServer): void {
-  const outputDir = path.join(__dirname, "..", "data", "mcp-evaluations");
-  const filename = `${server.slug}.json`;
-  const filepath = path.join(outputDir, filename);
-
-  // Ensure directory exists
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
-  }
-
-  fs.writeFileSync(filepath, JSON.stringify(server, null, 2));
-}
-
-// ============= AI Analysis Functions =============
-
-/**
- * Extract categories from the types.ts file
- */
-function extractCategories(): string[] {
-  const typesPath = path.join(__dirname, "../data/types.ts");
-  const typesContent = fs.readFileSync(typesPath, "utf-8");
-
-  // Find the category type definition
-  const categoryMatch = typesContent.match(
-    /category:\s*\n\s*\|([\s\S]*?)\s*\|\s*null;/,
-  );
-
-  if (!categoryMatch) {
-    throw new Error("Could not find category definition in types.ts");
-  }
-
-  // Extract all quoted strings from the union type
-  const categorySection = categoryMatch[1];
-  const categories = categorySection
-    .split("|")
-    .map((line) => line.trim())
-    .filter((line) => line.startsWith('"') && line.endsWith('"'))
-    .map((line) => line.slice(1, -1)); // Remove quotes
-
-  return categories;
-}
-
 async function callOllama(
   prompt: string,
   format?: any,
@@ -323,171 +346,197 @@ async function callOllama(
 }
 
 /**
- * Check if Ollama is available and model is installed
+ * Extract categories from the types.ts file
  */
-async function checkOllamaAvailable(model: string): Promise<boolean> {
-  try {
-    await fetch("http://localhost:11434/api/tags");
-    const { stdout } = await execAsync("ollama list").catch(() => ({
-      stdout: "",
-    }));
-    return stdout.includes(model);
-  } catch {
-    return false;
+function extractCategories(): string[] {
+  const typesPath = path.join(__dirname, "../data/types.ts");
+  const typesContent = fs.readFileSync(typesPath, "utf-8");
+
+  // Find the category type definition
+  const categoryMatch = typesContent.match(
+    /category:\s*\n\s*\|([\s\S]*?)\s*\|\s*null;/,
+  );
+
+  if (!categoryMatch) {
+    throw new Error("Could not find category definition in types.ts");
+  }
+
+  // Extract all quoted strings from the union type
+  const categorySection = categoryMatch[1];
+  const categories = categorySection
+    .split("|")
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith('"') && line.endsWith('"'))
+    .map((line) => line.slice(1, -1)); // Remove quotes
+
+  return categories;
+}
+
+/**
+ * Remove URL from mcp-servers.json
+ */
+function removeFromServerList(url: string): void {
+  const serversPath = path.join(__dirname, "../data/mcp-servers.json");
+  const servers: string[] = JSON.parse(fs.readFileSync(serversPath, "utf8"));
+  const filteredServers = servers.filter((s) => s !== url);
+
+  if (filteredServers.length < servers.length) {
+    fs.writeFileSync(serversPath, JSON.stringify(filteredServers, null, 2));
+    console.log(`❌ Removed invalid server: ${url}`);
   }
 }
 
 /**
- * Evaluate a single repository
+ * Create MCPServer object from GitHub data
  */
-async function evaluateSingleRepo(
-  githubUrl: string,
-  options: {
-    updateGithub?: boolean;
-    updateCategory?: boolean;
-    updateConfigForClients?: boolean;
-    updateConfigForArchestra?: boolean;
-    updateScore?: boolean;
-    model?: string;
-    categories?: string[];
-    showOutput?: boolean;
-  } = {},
+function createNewMCPServer(
+  githubInfo: ReturnType<typeof parseGitHubUrl>,
+  apiData: GitHubApiResponse,
+): MCPServer {
+  const name =
+    apiData.name
+      .replace(/-/g, " ")
+      .replace(/mcp|server/gi, "")
+      .trim() || apiData.name;
+
+  return {
+    name,
+    slug: githubInfo.slug,
+    description:
+      apiData.description ||
+      `MCP server from ${githubInfo.owner}/${githubInfo.repo}`,
+    readme: apiData.readme_content || undefined,
+    category: null,
+    qualityScore: null, // Will be calculated
+    githubUrl: githubInfo.url,
+    programmingLanguage: apiData.language,
+    framework: undefined,
+    gitHubOrg: githubInfo.gitHubOrg,
+    gitHubRepo: githubInfo.gitHubRepo,
+    repositoryPath: githubInfo.repositoryPath,
+    gh_stars: apiData.stargazers_count,
+    gh_contributors: apiData.contributors_count,
+    gh_issues: apiData.total_issues_count,
+    gh_releases: apiData.has_releases,
+    gh_ci_cd: apiData.has_workflows,
+    gh_latest_commit_hash: apiData.latest_commit_hash,
+    last_scraped_at: new Date().toISOString(),
+    implementing_tools: null,
+    implementing_prompts: null,
+    implementing_resources: null,
+    implementing_sampling: null,
+    implementing_roots: null,
+    implementing_logging: null,
+    implementing_stdio: null,
+    implementing_streamable_http: null,
+    implementing_oauth2: null,
+    rawDependencies: apiData.raw_dependencies || undefined,
+  };
+}
+
+/**
+ * Extract GitHub data for an existing server
+ */
+async function extractGitHubData(
+  server: MCPServer,
+  githubInfo: ReturnType<typeof parseGitHubUrl>,
+  force: boolean = false
 ): Promise<MCPServer> {
-  try {
-    if (options.showOutput !== false) {
-      console.log(`🔍 Evaluating repository: ${githubUrl}`);
-    }
+  // Skip if already exists and not forcing
+  if (server.last_scraped_at && !force) {
+    return server;
+  }
 
-    // Parse GitHub info
-    const repoInfo = parseGitHubUrl(githubUrl);
-    const serverInfo = extractServerInfo(githubUrl);
-    const evaluationsDir = path.join(__dirname, "../data/mcp-evaluations");
-    const filePath = path.join(evaluationsDir, `${serverInfo.slug}.json`);
+  const apiData = await fetchRepoData(
+    githubInfo.owner,
+    githubInfo.repo,
+    githubInfo.repositoryPath,
+  );
+  
+  const newServer = createNewMCPServer(githubInfo, apiData);
+  
+  // Merge GitHub fields
+  return {
+    ...server,
+    name: newServer.name,
+    description: newServer.description,
+    readme: newServer.readme,
+    programmingLanguage: newServer.programmingLanguage,
+    gh_stars: newServer.gh_stars,
+    gh_contributors: newServer.gh_contributors,
+    gh_issues: newServer.gh_issues,
+    gh_releases: newServer.gh_releases,
+    gh_ci_cd: newServer.gh_ci_cd,
+    gh_latest_commit_hash: newServer.gh_latest_commit_hash,
+    last_scraped_at: newServer.last_scraped_at,
+    rawDependencies: newServer.rawDependencies,
+  };
+}
 
-    // Load existing data or create new
-    let finalServer: MCPServer;
-    const exists = fs.existsSync(filePath);
+// ============= Core Extraction Methods =============
 
-    if (exists) {
-      finalServer = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    } else {
-      // Create new server from GitHub data
-      const apiData = await fetchRepoData(
-        repoInfo.owner,
-        repoInfo.repo,
-        serverInfo.repositoryPath,
-      );
-      finalServer = createMCPServerFromGitHub(repoInfo, apiData, serverInfo);
+/**
+ * Extract category classification using AI
+ */
+async function extractCategory(
+  server: MCPServer,
+  categories: string[],
+  model: string,
+  force: boolean = false
+): Promise<MCPServer> {
+  // Skip if already exists and not forcing
+  if (server.category && !force) {
+    return server;
+  }
 
-      // Calculate quality score for new files
-      const scoreBreakdown = calculateQualityScore(
-        finalServer,
-        apiData.readme_content,
-      );
-      finalServer.qualityScore = scoreBreakdown.total;
-    }
+  const content = server.readme || server.description;
+  if (!content) {
+    console.warn("No content available for category analysis");
+    return server;
+  }
 
-    // Update GitHub data if requested or missing
-    const needsGithubUpdate =
-      options.updateGithub ||
-      !exists ||
-      (!options.updateCategory &&
-        !options.updateConfigForClients &&
-        !finalServer.gh_latest_commit_hash);
-
-    if (needsGithubUpdate && exists) {
-      const apiData = await fetchRepoData(
-        repoInfo.owner,
-        repoInfo.repo,
-        serverInfo.repositoryPath,
-      );
-      const newServer = createMCPServerFromGitHub(
-        repoInfo,
-        apiData,
-        serverInfo,
-      );
-
-      // Calculate quality score if needed
-      if (options.updateScore || !finalServer.qualityScore) {
-        const scoreBreakdown = calculateQualityScore(
-          newServer,
-          apiData.readme_content,
-        );
-        newServer.qualityScore = scoreBreakdown.total;
-      }
-
-      // Merge GitHub fields
-      finalServer = {
-        ...finalServer,
-        name: newServer.name,
-        description: newServer.description,
-        readme: newServer.readme,
-        programmingLanguage: newServer.programmingLanguage,
-        gh_stars: newServer.gh_stars,
-        gh_contributors: newServer.gh_contributors,
-        gh_issues: newServer.gh_issues,
-        gh_releases: newServer.gh_releases,
-        gh_ci_cd: newServer.gh_ci_cd,
-        gh_latest_commit_hash: newServer.gh_latest_commit_hash,
-        last_scraped_at: newServer.last_scraped_at,
-      };
-
-      if (options.updateScore) {
-        finalServer.qualityScore = newServer.qualityScore;
-      }
-    }
-
-    // Update category if requested or missing
-    const needsCategoryUpdate =
-      options.updateCategory ||
-      (!exists && options.categories) ||
-      (!options.updateGithub &&
-        !options.updateConfigForClients &&
-        !finalServer.category &&
-        options.categories);
-
-    if (needsCategoryUpdate && options.categories) {
-      if (options.showOutput !== false)
-        console.log("Running AI analysis for category...");
-
-      const content = finalServer.readme || finalServer.description;
-      if (content) {
-        const prompt = `Analyze this MCP server and choose the most appropriate category from this list: ${options.categories.join(", ")}
+  const prompt = `Analyze this MCP server and choose the most appropriate category from this list: ${categories.join(", ")}
 
 Content:
 ${content.substring(0, 8000)}
 
 Respond with JSON: {"category": "..."}`;
 
-        try {
-          const result = await callOllama(
-            prompt,
-            null,
-            options.model || "deepseek-r1:14b",
-          );
-          if (result.category) finalServer.category = result.category as any;
-        } catch (error) {
-          console.warn(`Category analysis failed: ${error.message}`);
-        }
-      }
+  try {
+    const result = await callOllama(prompt, null, model);
+    if (result.category) {
+      return {
+        ...server,
+        category: result.category as any,
+      };
     }
+  } catch (error) {
+    console.warn(`Category analysis failed: ${error.message}`);
+  }
 
-    // Update configForClients if requested or missing
-    const needsConfigForClientsUpdate =
-      options.updateConfigForClients ||
-      (!exists && options.categories) ||
-      (!options.updateGithub &&
-        !options.updateCategory &&
-        !options.updateConfigForArchestra &&
-        !finalServer.configForClients);
+  return server;
+}
 
-    if (needsConfigForClientsUpdate) {
-      if (options.showOutput !== false)
-        console.log("Running AI analysis for client config...");
+/**
+ * Extract client configuration using AI
+ */
+async function extractClientConfig(
+  server: MCPServer,
+  model: string,
+  force: boolean = false
+): Promise<MCPServer> {
+  // Skip if already exists and not forcing
+  if (server.configForClients && !force) {
+    return server;
+  }
 
-      const content = finalServer.readme || finalServer.description;
-      if (content) {
-        const prompt = `Find the run configuration for this MCP server. Look for commands that START the server.
+  const content = server.readme || server.description;
+  if (!content) {
+    console.warn("No content available for client config analysis");
+    return server;
+  }
+
+  const prompt = `Find the run configuration for this MCP server. Look for commands that START the server.
 
 Content:
 ${content.substring(0, 8000)}
@@ -511,46 +560,51 @@ Important: For Docker, include the image name in args. Environment vars from -e 
 Respond with JSON: {"configForClients": {"mcpServers": {"name1": {...}, "name2": {...}}}}
 If no run command found, respond with: {"configForClients": null}`;
 
-        const configFormat = {
-          type: "object",
-          properties: {
-            configForClients: {
-              type: ["object", "null"],
-            },
-          },
-          required: ["configForClients"],
-        };
+  const configFormat = {
+    type: "object",
+    properties: {
+      configForClients: {
+        type: ["object", "null"],
+      },
+    },
+    required: ["configForClients"],
+  };
 
-        try {
-          const result = await callOllama(
-            prompt,
-            configFormat,
-            options.model || "deepseek-r1:14b",
-          );
-          if (result.configForClients)
-            finalServer.configForClients = result.configForClients;
-        } catch (error) {
-          console.warn(`Client config analysis failed: ${error.message}`);
-        }
-      }
+  try {
+    const result = await callOllama(prompt, configFormat, model);
+    if (result.configForClients) {
+      return {
+        ...server,
+        configForClients: result.configForClients,
+      };
     }
+  } catch (error) {
+    console.warn(`Client config analysis failed: ${error.message}`);
+  }
 
-    // Update configForArchestra if requested or missing
-    const needsConfigForArchestraUpdate =
-      options.updateConfigForArchestra ||
-      (!exists && options.categories) ||
-      (!options.updateGithub &&
-        !options.updateCategory &&
-        !options.updateConfigForClients &&
-        !finalServer.configForArchestra);
+  return server;
+}
 
-    if (needsConfigForArchestraUpdate) {
-      if (options.showOutput !== false)
-        console.log("Running AI analysis for Archestra config...");
+/**
+ * Extract Archestra configuration using AI
+ */
+async function extractArchestraConfig(
+  server: MCPServer,
+  model: string,
+  force: boolean = false
+): Promise<MCPServer> {
+  // Skip if already exists and not forcing
+  if (server.configForArchestra && !force) {
+    return server;
+  }
 
-      const content = finalServer.readme || finalServer.description;
-      if (content) {
-        const prompt = `Extract the configuration needed to run this MCP server in Archestra cloud.
+  const content = server.readme || server.description;
+  if (!content) {
+    console.warn("No content available for Archestra config analysis");
+    return server;
+  }
+
+  const prompt = `Extract the configuration needed to run this MCP server in Archestra cloud.
 
 Content:
 ${content.substring(0, 8000)}
@@ -599,106 +653,398 @@ Rules:
 
 If no configuration found, respond: {"configForArchestra": null}`;
 
-        const configFormat = {
-          type: "object",
-          properties: {
-            configForArchestra: {
-              type: ["object", "null"],
-              properties: {
-                oauth: {
-                  type: ["object", "null"],
-                  properties: {
-                    provider: { type: "string" },
-                    required: { type: "boolean" },
-                  },
-                },
-                server_config: {
-                  type: "object",
-                  properties: {
-                    transport: { type: "string" },
-                    command: { type: "string" },
-                    args: { type: "array", items: { type: "string" } },
-                    env: { type: "object" },
-                  },
-                },
-              },
+  const configFormat = {
+    type: "object",
+    properties: {
+      configForArchestra: {
+        type: ["object", "null"],
+        properties: {
+          oauth: {
+            type: ["object", "null"],
+            properties: {
+              provider: { type: "string" },
+              required: { type: "boolean" },
             },
           },
-          required: ["configForArchestra"],
-        };
+          server_config: {
+            type: "object",
+            properties: {
+              transport: { type: "string" },
+              command: { type: "string" },
+              args: { type: "array", items: { type: "string" } },
+              env: { type: "object" },
+            },
+          },
+        },
+      },
+    },
+    required: ["configForArchestra"],
+  };
 
-        try {
-          const result = await callOllama(
-            prompt,
-            configFormat,
-            options.model || "deepseek-r1:14b",
-          );
-          if (result.configForArchestra)
-            finalServer.configForArchestra = result.configForArchestra;
-        } catch (error) {
-          console.warn(`Archestra config analysis failed: ${error.message}`);
+  try {
+    const result = await callOllama(prompt, configFormat, model);
+    if (result.configForArchestra) {
+      return {
+        ...server,
+        configForArchestra: result.configForArchestra,
+      };
+    }
+  } catch (error) {
+    console.warn(`Archestra config analysis failed: ${error.message}`);
+  }
+
+  return server;
+}
+
+/**
+ * Extract dependencies using AI
+ */
+async function extractDependencies(
+  server: MCPServer,
+  model: string,
+  force: boolean = false
+): Promise<MCPServer> {
+  // Skip if already exists and not forcing
+  if (server.dependencies && !force) {
+    return server;
+  }
+
+  const content = server.readme || server.description;
+  const rawDeps = server.rawDependencies;
+  
+  if (!content && !rawDeps) {
+    console.warn("No content available for dependencies analysis");
+    return server;
+  }
+
+  const prompt = `Analyze this MCP server and identify its library dependencies.
+
+${rawDeps ? `Dependency File Content:\n${rawDeps}\n` : ""}
+
+README/Description:
+${content ? content.substring(0, 8000) : "Not available"}
+
+Instructions:
+1. If dependency file is provided (package.json, requirements.txt, etc.), extract dependencies from it FIRST
+2. For package.json, look at "dependencies" object (ignore "devDependencies")
+3. For requirements.txt, list each package
+4. For go.mod, list the required modules
+5. For other formats, extract the production dependencies
+
+Look for these types of libraries:
+1. Main framework/library (e.g., Express, FastAPI, Hono, Gin, etc.)
+2. MCP-specific libraries (e.g., @modelcontextprotocol/sdk, mcp, fastmcp)
+3. Database libraries (e.g., mongoose, prisma, sqlalchemy)
+4. API client libraries (e.g., axios, octokit, googleapis)
+5. Authentication libraries (e.g., passport, oauth2-client)
+6. Utility libraries (e.g., lodash, zod, joi)
+7. Testing libraries (only if in production dependencies)
+8. Build/bundling tools as libraries (only if required at runtime)
+
+DO NOT include:
+- Programming languages (Node.js, Python, Go, etc.)
+- Runtime environments
+- Package managers (npm, pip, cargo)
+- Operating systems
+- External services (unless it's a client library for that service)
+
+Respond with JSON format:
+{
+  "dependencies": [
+    {"name": "@modelcontextprotocol/sdk", "importance": 10},
+    {"name": "express", "importance": 8},
+    {"name": "axios", "importance": 6}
+  ]
+}
+
+Importance scale (1-10):
+- 10: Main framework or core MCP library
+- 8-9: Essential libraries for core functionality
+- 5-7: Important for specific features
+- 3-4: Utility libraries
+- 1-2: Optional or dev dependencies
+
+If no library dependencies found, respond: {"dependencies": []}`;
+
+  const dependenciesFormat = {
+    type: "object",
+    properties: {
+      dependencies: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: {
+            name: { type: "string" },
+            importance: { type: "number", minimum: 1, maximum: 10 }
+          },
+          required: ["name", "importance"]
         }
       }
+    },
+    required: ["dependencies"]
+  };
+
+  try {
+    const result = await callOllama(prompt, dependenciesFormat, model);
+    if (result.dependencies && result.dependencies.length > 0) {
+      return {
+        ...server,
+        dependencies: result.dependencies,
+      };
+    }
+  } catch (error) {
+    console.warn(`Dependencies analysis failed: ${error.message}`);
+  }
+
+  return server;
+}
+
+/**
+ * Extract protocol features using AI
+ */
+async function extractProtocolFeatures(
+  server: MCPServer,
+  model: string,
+  force: boolean = false
+): Promise<MCPServer> {
+  // Skip if already exists and not forcing
+  if (server.implementing_tools !== null && !force) {
+    return server;
+  }
+
+  const content = server.readme || server.description;
+  if (!content) {
+    console.warn("No content available for protocol analysis");
+    return server;
+  }
+
+  const prompt = `Analyze this MCP server README and code to determine which MCP protocol features are implemented.
+
+Content:
+${content.substring(0, 8000)}
+
+Look for these MCP protocol features:
+1. **Tools** - Server provides tools/functions that can be called (look for "tools", "functions", "methods", tool definitions)
+2. **Prompts** - Server provides prompt templates (look for "prompts", "templates", prompt definitions)
+3. **Resources** - Server provides resources that can be read (look for "resources", resource definitions, data access)
+4. **Sampling** - Server supports completion/sampling requests (look for "sampling", "completion", LLM integration)
+5. **Roots** - Server supports roots protocol for directory access (look for "roots", "directories", dynamic directory configuration)
+6. **Logging** - Server implements logging features (look for "logging", "log levels", structured logging)
+7. **STDIO Transport** - Server supports stdio transport (look for "stdio", command-line interface, standard input/output)
+8. **HTTP Transport** - Server supports HTTP/SSE transport (look for "http", "sse", "server-sent events", web server)
+9. **OAuth2** - Server implements OAuth2 authentication (look for "oauth", "oauth2", "authentication", "authorization")
+
+Instructions:
+- Return true if the feature is clearly implemented based on the README
+- Return false if the feature is not mentioned or not implemented
+- Look for explicit mentions, code examples, configuration options, or API documentation
+- For transports, check if the server mentions how to connect (stdio vs http)
+- For OAuth2, look for authentication setup instructions
+
+Respond with JSON format:
+{
+  "implementing_tools": true/false,
+  "implementing_prompts": true/false,
+  "implementing_resources": true/false,
+  "implementing_sampling": true/false,
+  "implementing_roots": true/false,
+  "implementing_logging": true/false,
+  "implementing_stdio": true/false,
+  "implementing_streamable_http": true/false,
+  "implementing_oauth2": true/false
+}`;
+
+  const protocolFormat = {
+    type: "object",
+    properties: {
+      implementing_tools: { type: "boolean" },
+      implementing_prompts: { type: "boolean" },
+      implementing_resources: { type: "boolean" },
+      implementing_sampling: { type: "boolean" },
+      implementing_roots: { type: "boolean" },
+      implementing_logging: { type: "boolean" },
+      implementing_stdio: { type: "boolean" },
+      implementing_streamable_http: { type: "boolean" },
+      implementing_oauth2: { type: "boolean" }
+    },
+    required: [
+      "implementing_tools",
+      "implementing_prompts",
+      "implementing_resources",
+      "implementing_sampling",
+      "implementing_roots",
+      "implementing_logging",
+      "implementing_stdio",
+      "implementing_streamable_http",
+      "implementing_oauth2"
+    ]
+  };
+
+  try {
+    const result = await callOllama(prompt, protocolFormat, model);
+    
+    // Update all protocol fields
+    return {
+      ...server,
+      implementing_tools: result.implementing_tools,
+      implementing_prompts: result.implementing_prompts,
+      implementing_resources: result.implementing_resources,
+      implementing_sampling: result.implementing_sampling,
+      implementing_roots: result.implementing_roots,
+      implementing_logging: result.implementing_logging,
+      implementing_stdio: result.implementing_stdio,
+      implementing_streamable_http: result.implementing_streamable_http,
+      implementing_oauth2: result.implementing_oauth2,
+    };
+  } catch (error) {
+    console.warn(`Protocol analysis failed: ${error.message}`);
+  }
+
+  return server;
+}
+
+/**
+ * Extract/calculate quality score
+ */
+async function extractScore(
+  server: MCPServer,
+  force: boolean = false
+): Promise<MCPServer> {
+  // Skip if already exists and not forcing
+  if (server.qualityScore !== null && !force) {
+    return server;
+  }
+
+  // Load all servers for dependency commonality calculation
+  const allServers = loadServers();
+  const scoreBreakdown = calculateQualityScore(server, server.readme, allServers);
+  
+  return {
+    ...server,
+    qualityScore: scoreBreakdown.total,
+  };
+}
+
+// ============= Main Functions =============
+
+/**
+ * Evaluate a single repository
+ */
+async function evaluateSingleRepo(
+  githubUrl: string,
+  options: EvaluationOptions = {},
+): Promise<MCPServer> {
+  try {
+    if (options.showOutput !== false) {
+      console.log(`🔍 Evaluating repository: ${githubUrl}`);
     }
 
+    // 1. Parse GitHub URL
+    const githubInfo = parseGitHubUrl(githubUrl);
+    const evaluationsDir = path.join(__dirname, "../data/mcp-evaluations");
+    const filePath = path.join(evaluationsDir, `${githubInfo.slug}.json`);
+    
+    // 2. Load existing or fetch new data
+    let server = loadMCPServerFromFile(filePath);
+    
+    if (!server) {
+      // Create new server from GitHub
+      const apiData = await fetchRepoData(
+        githubInfo.owner,
+        githubInfo.repo,
+        githubInfo.repositoryPath,
+      );
+      server = createNewMCPServer(githubInfo, apiData);
+    }
+    
+    // 3. Apply updates based on options
+    if (options.updateGithub || !server.last_scraped_at) {
+      server = await extractGitHubData(server, githubInfo, options.updateGithub || false);
+    }
+    
+    if (options.updateCategory) {
+      const categories = options.categories || extractCategories();
+      server = await extractCategory(server, categories, options.model || "deepseek-r1:14b", true);
+    }
+    
+    if (options.updateConfigForClients) {
+      server = await extractClientConfig(server, options.model || "deepseek-r1:14b", true);
+    }
+    
+    if (options.updateConfigForArchestra) {
+      server = await extractArchestraConfig(server, options.model || "deepseek-r1:14b", true);
+    }
+    
+    if (options.updateDependencies) {
+      server = await extractDependencies(server, options.model || "deepseek-r1:14b", true);
+    }
+    
+    if (options.updateProtocol) {
+      server = await extractProtocolFeatures(server, options.model || "deepseek-r1:14b", true);
+    }
+    
+    if (options.updateScore) {
+      server = await extractScore(server, true);
+    }
+    
     // Display results if showOutput
-    if (options.showOutput !== false) {
-      const scoreBreakdown = calculateQualityScore(
-        finalServer,
-        finalServer.readme,
-      );
+    if (options.showOutput !== false && server.qualityScore !== null) {
+      const allServers = loadServers();
+      const scoreBreakdown = calculateQualityScore(server, server.readme, allServers);
       console.log("\n📈 Quality Score Breakdown:");
-      console.log(
-        `  MCP Protocol Implementation: ${scoreBreakdown.mcpProtocol}/60`,
-      );
-      console.log(
-        `  GitHub Community Health: ${scoreBreakdown.githubMetrics}/20`,
-      );
-      console.log(
-        `  Deployment Maturity: ${scoreBreakdown.deploymentMaturity}/10`,
-      );
+      console.log(`  MCP Protocol Implementation: ${scoreBreakdown.mcpProtocol}/40`);
+      console.log(`  GitHub Community Health: ${scoreBreakdown.githubMetrics}/20`);
+      console.log(`  Dependency Optimization: ${scoreBreakdown.dependencies}/20`);
+      console.log(`  Deployment Maturity: ${scoreBreakdown.deploymentMaturity}/10`);
       console.log(`  Documentation Quality: ${scoreBreakdown.documentation}/8`);
       console.log(`  Badge Adoption: ${scoreBreakdown.badgeUsage}/2`);
       console.log(`  📊 Total Score: ${scoreBreakdown.total}/100`);
 
-      if (
-        finalServer.category ||
-        finalServer.configForClients ||
-        finalServer.configForArchestra
-      ) {
+      if (server.category || server.configForClients || server.configForArchestra || 
+          server.dependencies || server.implementing_tools !== null) {
         console.log(`\n🤖 AI Analysis:`);
-        if (finalServer.category)
-          console.log(`  Category: ${finalServer.category}`);
-        if (finalServer.configForClients)
-          console.log(`  Client Configuration: Available`);
-        if (finalServer.configForArchestra)
-          console.log(`  Archestra Configuration: Available`);
+        if (server.category) console.log(`  Category: ${server.category}`);
+        if (server.configForClients) console.log(`  Client Configuration: Available`);
+        if (server.configForArchestra) console.log(`  Archestra Configuration: Available`);
+        if (server.dependencies && server.dependencies.length > 0) {
+          console.log(`  Dependencies: ${server.dependencies.map(d => `${d.name}(${d.importance})`).join(', ')}`);
+        }
+        if (server.implementing_tools !== null) {
+          const protocolFeatures = [];
+          if (server.implementing_tools) protocolFeatures.push("Tools");
+          if (server.implementing_prompts) protocolFeatures.push("Prompts");
+          if (server.implementing_resources) protocolFeatures.push("Resources");
+          if (server.implementing_sampling) protocolFeatures.push("Sampling");
+          if (server.implementing_roots) protocolFeatures.push("Roots");
+          if (server.implementing_logging) protocolFeatures.push("Logging");
+          if (server.implementing_stdio) protocolFeatures.push("STDIO");
+          if (server.implementing_streamable_http) protocolFeatures.push("HTTP");
+          if (server.implementing_oauth2) protocolFeatures.push("OAuth2");
+          console.log(`  Protocol Features: ${protocolFeatures.length > 0 ? protocolFeatures.join(', ') : 'None'}`);
+        }
       }
     }
-
-    // Save evaluation
-    saveEvaluation(finalServer);
+    
+    // 4. Save and return
+    saveMCPServerToFile(server, filePath);
     if (options.showOutput !== false) {
-      console.log(`\n✅ Evaluation saved to: ${finalServer.slug}.json`);
+      console.log(`\n✅ Evaluation saved to: ${githubInfo.slug}.json`);
     }
-
-    return finalServer;
+    
+    return server;
   } catch (error) {
-    if (
-      error.message &&
-      (error.message.startsWith("PATH_NOT_FOUND:") ||
-        error.message.startsWith("REPO_NOT_FOUND:"))
-    ) {
+    if (error.message && (error.message.startsWith("PATH_NOT_FOUND:") || 
+        error.message.startsWith("REPO_NOT_FOUND:"))) {
       if (options.showOutput !== false) console.error(`❌ ${error.message}`);
       removeFromServerList(githubUrl);
       throw error;
     } else {
-      if (options.showOutput !== false)
-        console.error("❌ Evaluation failed:", error);
+      if (options.showOutput !== false) console.error("❌ Evaluation failed:", error);
       throw error;
     }
   }
 }
+
 
 /**
  * Evaluate all repositories from mcp-servers.json
@@ -709,12 +1055,15 @@ async function evaluateAllRepos(
     updateCategory?: boolean;
     updateConfigForClients?: boolean;
     updateConfigForArchestra?: boolean;
+    updateDependencies?: boolean;
+    updateProtocol?: boolean;
     updateScore?: boolean;
     updateAll?: boolean;
     force?: boolean;
     model?: string;
     concurrency?: number;
     categories?: string[];
+    limit?: number;
   } = {},
 ): Promise<void> {
   const evaluationsDir = path.join(__dirname, "../data/mcp-evaluations");
@@ -726,21 +1075,26 @@ async function evaluateAllRepos(
   }
 
   // Read all GitHub URLs
-  const githubUrls: string[] = JSON.parse(fs.readFileSync(serversPath, "utf8"));
+  let githubUrls: string[] = JSON.parse(fs.readFileSync(serversPath, "utf8"));
   const existingFiles = fs
     .readdirSync(evaluationsDir)
     .filter((f) => f.endsWith(".json"));
+
+  // Apply limit if specified
+  if (options.limit && options.limit > 0) {
+    githubUrls = githubUrls.slice(0, options.limit);
+  }
 
   // Determine concurrency based on whether we have a token
   const hasToken = !!process.env.GITHUB_TOKEN;
   const concurrency = options.concurrency || (hasToken ? 10 : 3);
 
   console.log(`📊 Batch Evaluation
-Total servers: ${githubUrls.length}
+Total servers: ${githubUrls.length}${options.limit ? ` (limited from ${JSON.parse(fs.readFileSync(serversPath, "utf8")).length})` : ""}
 Existing evaluations: ${existingFiles.length}
 Concurrency: ${concurrency} parallel requests
 Options: ${Object.entries(options)
-    .filter(([k, v]) => v && k !== "concurrency" && k !== "categories")
+    .filter(([k, v]) => v && k !== "concurrency" && k !== "categories" && k !== "limit")
     .map(([k]) => k)
     .join(", ")}\n`);
 
@@ -765,8 +1119,8 @@ Options: ${Object.entries(options)
       if (!url) return;
 
       try {
-        const serverInfo = extractServerInfo(url);
-        const filePath = path.join(evaluationsDir, `${serverInfo.slug}.json`);
+        const githubInfo = parseGitHubUrl(url);
+        const filePath = path.join(evaluationsDir, `${githubInfo.slug}.json`);
         const exists = fs.existsSync(filePath);
 
         // Skip if exists and no updates requested
@@ -776,6 +1130,8 @@ Options: ${Object.entries(options)
           !options.updateCategory &&
           !options.updateConfigForClients &&
           !options.updateConfigForArchestra &&
+          !options.updateDependencies &&
+          !options.updateProtocol &&
           !options.updateScore &&
           !options.force
         ) {
@@ -831,20 +1187,6 @@ Options: ${Object.entries(options)
 }
 
 /**
- * Remove URL from mcp-servers.json
- */
-function removeFromServerList(url: string): void {
-  const serversPath = path.join(__dirname, "../data/mcp-servers.json");
-  const servers: string[] = JSON.parse(fs.readFileSync(serversPath, "utf8"));
-  const filteredServers = servers.filter((s) => s !== url);
-
-  if (filteredServers.length < servers.length) {
-    fs.writeFileSync(serversPath, JSON.stringify(filteredServers, null, 2));
-    console.log(`❌ Removed invalid server: ${url}`);
-  }
-}
-
-/**
  * Main function
  */
 async function main() {
@@ -861,6 +1203,8 @@ Update Options:
   --category            Update category classification
   --config-for-clients  Update configuration for running the server
   --config-for-archestra Update configuration for Archestra hosting
+  --dependencies        Update library dependencies
+  --protocol            Update MCP protocol features implementation
   --score               Update quality scores
   --all                 Update everything
   (no flags)            Fill in missing data only
@@ -869,12 +1213,14 @@ Control Options:
   --force             Force update even if data exists
   --model <name>      Ollama model (default: deepseek-r1:14b)
   --concurrency <n>   Number of parallel requests (default: 10 with token, 3 without)
+  --limit <n>         Process only the first N servers
 
 Examples:
   npm run evaluate https://github.com/org/repo
   npm run evaluate --github --force
   npm run evaluate --category --model llama2
-  npm run evaluate --all --concurrency 20`);
+  npm run evaluate --all --concurrency 20
+  npm run evaluate --dependencies --limit 10`);
     return;
   }
 
@@ -884,6 +1230,8 @@ Examples:
     updateCategory: args.includes("--category"),
     updateConfigForClients: args.includes("--config-for-clients"),
     updateConfigForArchestra: args.includes("--config-for-archestra"),
+    updateDependencies: args.includes("--dependencies"),
+    updateProtocol: args.includes("--protocol"),
     updateScore: args.includes("--score"),
     updateAll: args.includes("--all"),
     force: args.includes("--force"),
@@ -893,6 +1241,9 @@ Examples:
     concurrency: args.includes("--concurrency")
       ? parseInt(args[args.indexOf("--concurrency") + 1]) || undefined
       : undefined,
+    limit: args.includes("--limit")
+      ? parseInt(args[args.indexOf("--limit") + 1]) || undefined
+      : undefined,
   };
 
   // Apply --all flag
@@ -901,6 +1252,8 @@ Examples:
     options.updateCategory = true;
     options.updateConfigForClients = true;
     options.updateConfigForArchestra = true;
+    options.updateDependencies = true;
+    options.updateProtocol = true;
     options.updateScore = true;
   }
 
@@ -913,6 +1266,11 @@ Examples:
   }
 
   let categories: string[] | undefined;
+  
+  if (options.updateCategory) {
+    categories = extractCategories();
+    console.log(`✅ Found ${categories.length} categories from types.ts`);
+  }
 
   // Single repo evaluation
   if (githubUrl) {
