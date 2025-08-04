@@ -23,6 +23,7 @@ import BadgeCopy from "./badge-copy";
 import QualityScoreCard from "./quality-score-card";
 import DependenciesCard from "./dependencies-card";
 import Header from "../../../components/header";
+import Footer from "../../../components/footer";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import rehypeHighlight from "rehype-highlight";
@@ -781,16 +782,7 @@ export default async function MCPDetailPage({
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white py-6">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center">
-            <p className="text-xs text-gray-400">
-              © 2025 Archestra.ai. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

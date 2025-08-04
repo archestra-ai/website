@@ -1,9 +1,11 @@
 import { Suspense } from "react";
+import Link from "next/link";
 import { MCPServer } from "./data/types";
 import { loadServers, countServersInRepo } from "./lib/server-utils";
 import MCPCatalogClient from "./client";
 import BadgeCopyMain from "./badge-copy-main";
 import Header from "../../components/header";
+import Footer from "../../components/footer";
 import ScoringExplanationCard from "./scoring-explanation-card";
 
 // Get unique categories from evaluations, sorted by count
@@ -226,7 +228,7 @@ export default function MCPCatalogPage() {
                 <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                   {/* Add New MCP Server Button */}
                   <a
-                    href="https://github.com/archestra-ai/website/edit/main/app/data/mcp-servers.json"
+                    href="https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-servers.json"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 text-sm sm:text-base"
@@ -311,16 +313,7 @@ export default function MCPCatalogPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white py-6">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center">
-            <p className="text-xs text-gray-400">
-              © 2025 Archestra.ai. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

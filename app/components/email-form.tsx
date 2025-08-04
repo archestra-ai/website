@@ -74,16 +74,16 @@ export function EmailForm() {
           rel="stylesheet"
         />
       </Head>
-      <div className="w-full py-8 text-center">
+      <div className="w-full">
 
-        <div className="newsletter-form-container" style={{ marginTop: 32, display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
+        <div className="newsletter-form-container" style={{ display: "flex", flexDirection: "column", alignItems: "stretch", width: "100%" }}>
           {(status === "idle" || status === "loading") && (
             <form
               ref={formRef}
               className="newsletter-form"
               action="https://app.loops.so/api/newsletter-form/cmdehe4lw18tnwy0ifkz89qqk"
               method="POST"
-              style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "100%" }}
+              style={{ display: "flex", flexDirection: "column", alignItems: "stretch", justifyContent: "center", width: "100%" }}
               onSubmit={handleSubmit}
             >
               <input
@@ -99,7 +99,6 @@ export function EmailForm() {
                   fontSize: 14,
                   margin: "0 0 10px",
                   width: "100%",
-                  maxWidth: 300,
                   minWidth: 100,
                   background: "#fff",
                   border: "1px solid #d1d5db",
@@ -124,7 +123,6 @@ export function EmailForm() {
                   letterSpacing: 1,
                   display: status === "loading" ? "none" : "flex",
                   width: "100%",
-                  maxWidth: 300,
                   whiteSpace: "normal",
                   height: 42,
                   alignItems: "center",
@@ -164,7 +162,6 @@ export function EmailForm() {
                   fontFamily: "Inter, sans-serif",
                   display: status === "loading" ? "flex" : "none",
                   width: "100%",
-                  maxWidth: 300,
                   whiteSpace: "normal",
                   height: 38,
                   alignItems: "center",
