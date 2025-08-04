@@ -75,21 +75,19 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "cli-mcp-server"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "cli-mcp-server"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

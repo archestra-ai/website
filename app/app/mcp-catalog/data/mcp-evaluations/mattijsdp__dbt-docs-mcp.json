@@ -49,26 +49,24 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "networkx,mcp[cli],rapidfuzz,dbt-core,python-decouple,sqlglot,tqdm",
+      "mcp",
+      "run",
+      "/Users/mattijs/repos/dbt-docs-mcp/src/mcp_server.py"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "--with",
-        "networkx,mcp[cli],rapidfuzz,dbt-core,python-decouple,sqlglot,tqdm",
-        "mcp",
-        "run",
-        "/Users/mattijs/repos/dbt-docs-mcp/src/mcp_server.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

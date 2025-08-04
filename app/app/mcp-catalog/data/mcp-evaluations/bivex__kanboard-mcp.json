@@ -43,19 +43,17 @@
     }
   },
   "configForArchestra": {
+    "command": "kanboard-mcp",
+    "args": [],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [],
-      "command": "kanboard-mcp",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

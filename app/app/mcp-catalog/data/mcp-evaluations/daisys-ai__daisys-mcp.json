@@ -59,19 +59,17 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "daisys-mcp"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "uvx",
+    "args": [
+      "daisys-mcp"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

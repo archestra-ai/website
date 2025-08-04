@@ -40,18 +40,16 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "--transport",
+      "http"
+    ],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "github",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--transport",
-        "http"
-      ],
-      "command": "npx",
-      "transport": "http",
-      "env": {}
     }
   },
   "dependencies": [

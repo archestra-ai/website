@@ -125,13 +125,11 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [],
-      "command": "/usr/local/bin/jira-mcp",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "/usr/local/bin/jira-mcp",
+    "args": [],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

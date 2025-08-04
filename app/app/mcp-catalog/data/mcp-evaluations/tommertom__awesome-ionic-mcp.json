@@ -40,16 +40,14 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "awesome-ionic-mcp@latest"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "awesome-ionic-mcp@latest"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

@@ -52,20 +52,18 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "ns-mcp-server"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "ns-mcp-server"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

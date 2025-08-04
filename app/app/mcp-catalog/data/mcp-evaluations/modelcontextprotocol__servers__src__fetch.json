@@ -55,15 +55,13 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "mcp-server-fetch"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "mcp-server-fetch"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

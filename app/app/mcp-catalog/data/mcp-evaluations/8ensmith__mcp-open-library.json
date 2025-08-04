@@ -48,17 +48,16 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@8enSmith/mcp-open-library"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@8enSmith/mcp-open-library"
-      ],
-      "command": "npx",
-      "transport": "stdio"
     }
   },
   "dependencies": [

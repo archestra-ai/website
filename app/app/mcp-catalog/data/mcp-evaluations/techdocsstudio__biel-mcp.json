@@ -57,17 +57,15 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://mcp.biel.ai/sse?project_slug=YOUR_PROJECT_SLUG&domain=https://your-docs-domain.com"
-      ],
-      "command": "npx",
-      "transport": "http",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-remote",
+      "https://mcp.biel.ai/sse?project_slug=YOUR_PROJECT_SLUG&domain=https://your-docs-domain.com"
+    ],
+    "env": {},
+    "transport": "http",
+    "oauth": {}
   },
   "dependencies": [
     {

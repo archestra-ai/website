@@ -51,20 +51,18 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "run",
+      "src/chess_mcp/main.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "src/chess_mcp/main.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

@@ -88,16 +88,14 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "sonarqube-mcp-server@latest"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "sonarqube-mcp-server@latest"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

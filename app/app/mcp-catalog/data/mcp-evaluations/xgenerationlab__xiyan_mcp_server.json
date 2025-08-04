@@ -29,18 +29,16 @@
   "rawDependencies": "=== pyproject.toml ===\n[project]\nname = \"xiyan_mcp_server\"\nversion = \"0.1.5.dev0\"\ndescription = \"A Model Context Protocol (MCP) server that utilizes XiyanSQL with databases. This server enables AI assistants to list tables, read data, and execute natural language queries\"\nreadme = \"README.md\"\nrequires-python = \">=3.11\"\ndependencies = [\n    \"mcp>=1.0.0\",\n    \"mysql-connector-python>=9.1.0\",\n    \"llama_index\",\n    \"sqlalchemy\",\n    \"pymysql\"\n]\n[[project.authors]]\nname = \"Zhiling Luo\"\nemail = \"godot.lzl@alibaba-inc.com\"\n\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n[project.scripts]\nmysql_mcp_server = \"xiyan_mcp_server:main\"\n\n=== requirements.txt ===\nmcp\nmysql-connector-python>=9.1.0\nsqlalchemy\nllama_index\nyaml\npandas\npymysql\n\n=== setup.py ===\nfrom setuptools import setup, find_packages\n\nsetup(\n    name='xiyan_mcp_server',  # 包的名字\n    version='0.1.5.dev0',  # 版本号\n    packages=find_packages(),  # 自动找到项目中的包\n    install_requires=[  # 必要的包依赖\n        # 'numpy',  # 示例：若有依赖包，将其列在此\n'mcp',\n'mysql-connector-python>=9.1.0',\n'sqlalchemy',\n'llama_index',\n'yaml',\n'pandas',\n'pymysql'\n    ],\n    author='Bruce Luo',  # 作者\n    author_email='godot.lzl@alibaba-inc.com',  # 作者邮箱\n    description='A MCP server of natural language interface to Database',  # 简短描述\n    long_description=open('README.md').read(),  # 从 README 文件读取详细描述\n    long_description_content_type='text/markdown',  # 描述内容类型\n    url='https://github.com/XGenerationLab/xiyan_mcp_server',  # 项目主页\n    classifiers=[\n        'Programming Language :: Python :: 3',\n        'License :: OSI Approved :: MIT License',\n        'Operating System :: OS Independent',\n    ],\n    python_requires='>=3.11',  # 支持的 Python 版本\n)\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
+    "command": "xiyan-mcp-server",
+    "args": [
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "API Key",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--transport",
-        "stdio"
-      ],
-      "command": "xiyan-mcp-server",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

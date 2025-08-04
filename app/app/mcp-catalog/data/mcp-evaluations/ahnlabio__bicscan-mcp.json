@@ -70,21 +70,19 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--from",
-        "git+https://github.com/ahnlabio/bicscan-mcp",
-        "bicscan-mcp"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/ahnlabio/bicscan-mcp",
+      "bicscan-mcp"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

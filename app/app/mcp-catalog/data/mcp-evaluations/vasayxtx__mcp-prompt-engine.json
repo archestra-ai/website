@@ -61,19 +61,17 @@
     }
   },
   "configForArchestra": {
+    "command": "mcp-prompt-engine",
+    "args": [
+      "serve",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "serve",
-        "--transport",
-        "stdio"
-      ],
-      "command": "mcp-prompt-engine",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

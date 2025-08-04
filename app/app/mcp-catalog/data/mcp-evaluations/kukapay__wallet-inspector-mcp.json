@@ -45,20 +45,18 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "run",
+      "main.py"
+    ],
+    "env": {
+      "server-basic": "DUNE_SIM_API_KEY"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "main.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "DUNE_SIM_API_KEY"
-      }
     }
   },
   "dependencies": [

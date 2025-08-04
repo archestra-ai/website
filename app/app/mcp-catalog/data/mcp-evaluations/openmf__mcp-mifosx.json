@@ -53,17 +53,15 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [],
-      "command": "./target/mcp-server-1.0.0-SNAPSHOT-runner",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "./target/mcp-server-1.0.0-SNAPSHOT-runner",
+    "args": [],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

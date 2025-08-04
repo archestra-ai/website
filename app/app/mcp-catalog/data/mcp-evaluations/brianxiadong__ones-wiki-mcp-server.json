@@ -53,23 +53,21 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-jar",
-        "target/ones-wiki-mcp-server-0.0.1-SNAPSHOT.jar",
-        "--ones.host=your-ones-host.com",
-        "--ones.email=your-email@example.com",
-        "--ones.password=your-password"
-      ],
-      "command": "java",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "java",
+    "args": [
+      "-jar",
+      "target/ones-wiki-mcp-server-0.0.1-SNAPSHOT.jar",
+      "--ones.host=your-ones-host.com",
+      "--ones.email=your-email@example.com",
+      "--ones.password=your-password"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

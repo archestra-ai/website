@@ -58,19 +58,17 @@
     }
   },
   "configForArchestra": {
+    "command": "mcp-graphql-forge",
+    "args": [],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": false
-    },
-    "server_config": {
-      "args": [],
-      "command": "mcp-graphql-forge",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

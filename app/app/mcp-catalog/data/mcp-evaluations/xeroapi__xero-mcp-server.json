@@ -64,22 +64,20 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@xeroapi/xero-mcp-server@latest"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "Xero",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@xeroapi/xero-mcp-server@latest"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

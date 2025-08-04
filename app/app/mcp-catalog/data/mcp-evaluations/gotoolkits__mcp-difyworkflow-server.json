@@ -44,20 +44,18 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-base-url",
-        "http://localhost/v1"
-      ],
-      "command": "mcp-difyworkflow-server",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "mcp-difyworkflow-server",
+    "args": [
+      "-base-url",
+      "http://localhost/v1"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

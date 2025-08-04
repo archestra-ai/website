@@ -58,22 +58,20 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "run",
+      "mcp-teams-server"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "microsoft-teams",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "mcp-teams-server"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

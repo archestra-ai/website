@@ -64,16 +64,14 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "@jetbrains/mcp-proxy"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@jetbrains/mcp-proxy"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

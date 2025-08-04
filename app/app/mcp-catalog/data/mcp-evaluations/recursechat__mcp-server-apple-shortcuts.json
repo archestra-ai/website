@@ -46,17 +46,16 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-server-apple-shortcuts"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "mcp-server-apple-shortcuts"
-      ],
-      "command": "npx",
-      "transport": "stdio"
     }
   },
   "dependencies": [

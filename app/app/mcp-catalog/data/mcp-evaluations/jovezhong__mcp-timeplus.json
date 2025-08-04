@@ -70,15 +70,13 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "mcp-timeplus"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "mcp-timeplus"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

@@ -47,20 +47,18 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "--directory",
+      "/path/to/modbus-mcp",
+      "run",
+      "modbus-mcp"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--directory",
-        "/path/to/modbus-mcp",
-        "run",
-        "modbus-mcp"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

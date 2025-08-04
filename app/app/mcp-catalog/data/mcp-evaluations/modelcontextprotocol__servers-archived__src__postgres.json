@@ -69,19 +69,17 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-postgres",
+      "postgresql://localhost/mydb"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-postgres",
-        "postgresql://localhost/mydb"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

@@ -59,16 +59,14 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-jar",
-        "MCPServer-1.0.0-runner.jar"
-      ],
-      "command": "java",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "java",
+    "args": [
+      "-jar",
+      "MCPServer-1.0.0-runner.jar"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

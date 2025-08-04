@@ -39,19 +39,17 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "/absolute/path/to/multi-ai-advisor-mcp/build/index.js"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "node",
+    "args": [
+      "/absolute/path/to/multi-ai-advisor-mcp/build/index.js"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

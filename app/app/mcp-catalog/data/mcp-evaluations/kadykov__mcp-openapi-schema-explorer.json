@@ -79,21 +79,19 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-openapi-schema-explorer@latest",
+      "<path-or-url-to-spec>",
+      "--output-format",
+      "yaml"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "mcp-openapi-schema-explorer@latest",
-        "<path-or-url-to-spec>",
-        "--output-format",
-        "yaml"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

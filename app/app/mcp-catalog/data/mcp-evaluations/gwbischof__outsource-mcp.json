@@ -61,21 +61,19 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--from",
-        "git+https://github.com/gwbischof/outsource-mcp.git",
-        "outsource-mcp"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/gwbischof/outsource-mcp.git",
+      "outsource-mcp"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

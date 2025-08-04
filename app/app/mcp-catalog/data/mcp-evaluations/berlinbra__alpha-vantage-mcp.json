@@ -78,22 +78,20 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "src/alpha_vantage_mcp/server.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "uv",
+    "args": [
+      "run",
+      "src/alpha_vantage_mcp/server.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

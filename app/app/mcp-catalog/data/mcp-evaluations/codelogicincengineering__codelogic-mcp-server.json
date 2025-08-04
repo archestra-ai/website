@@ -74,21 +74,19 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "codelogic-mcp-server@latest"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "codelogic-mcp-server@latest"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

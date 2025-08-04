@@ -39,21 +39,19 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "chatgui.py"
+    ],
+    "env": {
+      "server-basic": "AZURE_OPEN_AI_ENDPOINT",
+      "server-configured": "AZURE_OPEN_AI_API_KEY",
+      "server-docker": "AZURE_OPEN_AI_DEPLOYMENT_MODEL"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "azure",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "chatgui.py"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "AZURE_OPEN_AI_ENDPOINT",
-        "server-configured": "AZURE_OPEN_AI_API_KEY",
-        "server-docker": "AZURE_OPEN_AI_DEPLOYMENT_MODEL"
-      }
     }
   },
   "dependencies": [

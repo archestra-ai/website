@@ -41,20 +41,18 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "--directory",
+      "/absolute/path/to/crypto-whitepapers-mcp",
+      "run",
+      "crypto-whitepapers-mcp"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--directory",
-        "/absolute/path/to/crypto-whitepapers-mcp",
-        "run",
-        "crypto-whitepapers-mcp"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

@@ -48,21 +48,19 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "run",
+      "src/server.py"
+    ],
+    "env": {
+      "server-basic": "ALPACA_PAPER_API_KEY",
+      "server-configured": "ALPACA_PAPER_API_SECRET"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "alpaca",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "src/server.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "ALPACA_PAPER_API_KEY",
-        "server-configured": "ALPACA_PAPER_API_SECRET"
-      }
     }
   },
   "dependencies": [

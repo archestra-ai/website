@@ -59,15 +59,13 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "apple-notes-mcp"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "apple-notes-mcp"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

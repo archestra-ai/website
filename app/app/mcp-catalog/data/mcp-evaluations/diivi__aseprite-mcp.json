@@ -42,20 +42,19 @@
     }
   },
   "configForArchestra": {
+    "command": "/opt/homebrew/bin/uv",
+    "args": [
+      "--directory",
+      "/path/to/repo",
+      "run",
+      "-m",
+      "aseprite_mcp"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--directory",
-        "/path/to/repo",
-        "run",
-        "-m",
-        "aseprite_mcp"
-      ],
-      "command": "/opt/homebrew/bin/uv",
-      "transport": "stdio"
     }
   },
   "dependencies": [

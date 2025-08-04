@@ -37,15 +37,13 @@
     }
   },
   "configForArchestra": {
+    "command": "mcp-gopls",
+    "args": [],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [],
-      "command": "mcp-gopls",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

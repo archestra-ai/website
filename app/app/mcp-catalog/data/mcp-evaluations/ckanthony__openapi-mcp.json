@@ -78,27 +78,25 @@
     }
   },
   "configForArchestra": {
+    "command": "openapi-mcp",
+    "args": [
+      "--spec",
+      "<SPEC_URL_OR_PATH>",
+      "--api-key-env",
+      "API_KEY",
+      "--api-key-name",
+      "<KEY_NAME_IN_REQUEST>",
+      "--api-key-loc",
+      "<header|query>"
+    ],
+    "env": {
+      "server-basic": "API_KEY",
+      "server-configured": "REQUEST_HEADERS"
+    },
+    "transport": "http",
     "oauth": {
       "provider": "github",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--spec",
-        "<SPEC_URL_OR_PATH>",
-        "--api-key-env",
-        "API_KEY",
-        "--api-key-name",
-        "<KEY_NAME_IN_REQUEST>",
-        "--api-key-loc",
-        "<header|query>"
-      ],
-      "command": "openapi-mcp",
-      "transport": "http",
-      "env": {
-        "server-basic": "API_KEY",
-        "server-configured": "REQUEST_HEADERS"
-      }
     }
   },
   "dependencies": [

@@ -44,23 +44,21 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "/path/to/google-tasks-mcp/build/index.js",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "/path/to/google-tasks-mcp/build/index.js",
-        "--transport",
-        "stdio"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

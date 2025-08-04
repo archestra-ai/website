@@ -41,17 +41,15 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--from",
-        "git+https://github.com/open-strategy-partners/osp_marketing_tools@main",
-        "osp_marketing_tools"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/open-strategy-partners/osp_marketing_tools@main",
+      "osp_marketing_tools"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

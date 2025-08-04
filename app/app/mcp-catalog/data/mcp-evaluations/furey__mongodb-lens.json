@@ -29,18 +29,16 @@
   "rawDependencies": "=== package.json ===\n{\n  \"name\": \"mongodb-lens\",\n  \"version\": \"9.1.4\",\n  \"author\": \"James Furey (https://about.me/jamesfurey)\",\n  \"description\": \"MongoDB Lens: Full Featured MCP Server for MongoDB Databases\",\n  \"license\": \"MIT\",\n  \"type\": \"module\",\n  \"main\": \"mongodb-lens.js\",\n  \"bin\": {\n    \"mongodb-lens\": \"mongodb-lens.js\"\n  },\n  \"files\": [\n    \"mongodb-lens.js\",\n    \"config-create.js\",\n    \"package.json\",\n    \"README.md\",\n    \"LICENSE\"\n  ],\n  \"scripts\": {\n    \"start\": \"node mongodb-lens.js\",\n    \"start:gc\": \"node --expose-gc mongodb-lens.js\",\n    \"start:debug\": \"node --inspect mongodb-lens.js\",\n    \"start:verbose\": \"cross-env CONFIG_LOG_LEVEL=verbose node mongodb-lens.js\",\n    \"start:inspector\": \"npx -y @modelcontextprotocol/inspector node mongodb-lens\",\n    \"docker:hub:run\": \"docker run --rm -i --network=host --pull always furey/mongodb-lens\",\n    \"docker:local:build\": \"docker build -t mongodb-lens .\",\n    \"docker:local:run\": \"docker run --rm -i --network=host mongodb-lens\",\n    \"config:create\": \"node config-create.js\",\n    \"test\": \"node mongodb-lens.test.js\",\n    \"test:localhost\": \"cross-env CONFIG_MONGO_URI=mongodb://localhost:27017 node mongodb-lens.test.js\",\n    \"test:localhost:verbose\": \"cross-env DEBUG=true CONFIG_MONGO_URI=mongodb://localhost:27017 node mongodb-lens.test.js\",\n    \"test:in-memory\": \"cross-env CONFIG_MONGO_URI=mongodb-memory-server node mongodb-lens.test.js\",\n    \"test:in-memory:verbose\": \"cross-env DEBUG=true CONFIG_MONGO_URI=mongodb-memory-server node mongodb-lens.test.js\"\n  },\n  \"keywords\": [\n    \"ai\",\n    \"llm\",\n    \"mcp\",\n    \"claude\",\n    \"mongodb\",\n    \"database\",\n    \"model-context-protocol\"\n  ],\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.8.0\",\n    \"cross-env\": \"^7.0.3\",\n    \"lodash\": \"^4.17.21\",\n    \"mongodb\": \"^6.15.0\",\n    \"strip-json-comments\": \"^5.0.1\",\n    \"zod\": \"^3.24.2\"\n  },\n  \"devDependencies\": {\n    \"mongodb-memory-server\": \"^10.1.4\"\n  },\n  \"volta\": {\n    \"node\": \"22.14.0\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/furey/mongodb-lens.git\"\n  },\n  \"engines\": {\n    \"node\": \">=18.0.0\"\n  }\n}\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "mongodb-lens",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mongodb-lens",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

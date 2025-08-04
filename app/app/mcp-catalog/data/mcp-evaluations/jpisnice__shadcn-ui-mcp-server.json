@@ -105,21 +105,19 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "@jpisnice/shadcn-ui-mcp-server",
+      "--github-api-key",
+      "ghp_your_token_here",
+      "--framework",
+      "react"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "@jpisnice/shadcn-ui-mcp-server",
-        "--github-api-key",
-        "ghp_your_token_here",
-        "--framework",
-        "react"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

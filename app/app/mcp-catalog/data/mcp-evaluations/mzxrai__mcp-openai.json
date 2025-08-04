@@ -43,22 +43,20 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@mzxrai/mcp-openai@latest"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "openai",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@mzxrai/mcp-openai@latest"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

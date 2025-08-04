@@ -52,19 +52,17 @@
     }
   },
   "configForArchestra": {
+    "command": "null",
+    "args": [],
+    "env": {
+      "server-basic": "null",
+      "server-configured": "null",
+      "server-docker": "null"
+    },
+    "transport": "null",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [],
-      "command": "null",
-      "transport": "null",
-      "env": {
-        "server-basic": "null",
-        "server-configured": "null",
-        "server-docker": "null"
-      }
     }
   },
   "dependencies": [

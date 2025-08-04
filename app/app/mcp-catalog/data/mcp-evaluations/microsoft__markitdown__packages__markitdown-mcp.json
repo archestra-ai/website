@@ -87,13 +87,11 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [],
-      "command": "markitdown-mcp",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "markitdown-mcp",
+    "args": [],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

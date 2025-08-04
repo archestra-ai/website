@@ -56,22 +56,20 @@
     }
   },
   "configForArchestra": {
+    "command": "pipx",
+    "args": [
+      "run",
+      "keep-mcp"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "keep-mcp"
-      ],
-      "command": "pipx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

@@ -51,21 +51,19 @@
     }
   },
   "configForArchestra": {
+    "command": "/absolute/path/to/your/.venv/bin/python",
+    "args": [
+      "/absolute/path/to/github_graphql_mcp_server.py"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "/absolute/path/to/github_graphql_mcp_server.py"
-      ],
-      "command": "/absolute/path/to/your/.venv/bin/python",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

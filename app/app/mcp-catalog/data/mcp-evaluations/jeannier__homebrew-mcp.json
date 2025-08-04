@@ -59,18 +59,16 @@
   },
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "--directory",
-        ".",
-        "homebrew_mcp.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "run",
+      "--directory",
+      ".",
+      "homebrew_mcp.py"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

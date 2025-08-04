@@ -74,26 +74,24 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "@flowcore/platform-mcp-server",
-        "--username",
-        "<username>",
-        "--pat",
-        "<pat>",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@flowcore/platform-mcp-server",
+      "--username",
+      "<username>",
+      "--pat",
+      "<pat>",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

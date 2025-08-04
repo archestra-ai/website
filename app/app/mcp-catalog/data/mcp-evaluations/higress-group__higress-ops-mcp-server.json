@@ -40,16 +40,14 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "client.py",
-        "--stdio"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "client.py",
+      "--stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

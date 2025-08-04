@@ -27,22 +27,20 @@
   "implementing_streamable_http": false,
   "implementing_oauth2": false,
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "{server-id}",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "ENV_VAR"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "{server-id}",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "ENV_VAR"
-      }
     }
   },
   "dependencies": [

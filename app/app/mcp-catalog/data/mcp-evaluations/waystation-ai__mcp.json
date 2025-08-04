@@ -28,16 +28,15 @@
   "implementing_oauth2": true,
   "rawDependencies": "=== package.json ===\n{\n  \"name\": \"@waystation/mcp\",\n  \"version\": \"0.3.1\",\n  \"homepage\": \"https://waystation.ai/connect/mcp\",\n  \"description\": \"MCP server for WayStation\",\n  \"main\": \"index.js\",\n  \"bin\": {\n    \"mcp\": \"build/index.js\"\n  },\n  \"scripts\": {\n    \"build\": \"tsc && node -e \\\"require('fs').chmodSync('build/index.js', '755')\\\"\",\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n  },\n  \"files\": [\n    \"build\"\n  ],\n  \"keywords\": [\n    \"mcp\",\n    \"modelcontextprotocol\",\n    \"waystation\"\n  ],\n  \"author\": \"WayStation <support@waystation.ai> (https://waystation.ai)\",\n  \"license\": \"MIT\",\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.5.0\",\n    \"zod\": \"^3.24.2\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"^22.13.4\",\n    \"typescript\": \"^5.7.3\"\n  }\n}\n",
   "configForArchestra": {
+    "command": "mcp-remote",
+    "args": [
+      "https://waystation.ai/mcp"
+    ],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "waystation.ai",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "https://waystation.ai/mcp"
-      ],
-      "command": "mcp-remote",
-      "transport": "http"
     }
   },
   "dependencies": [

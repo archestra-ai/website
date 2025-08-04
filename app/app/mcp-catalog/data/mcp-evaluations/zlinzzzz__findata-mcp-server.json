@@ -59,18 +59,16 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--directory",
-        "src/findata",
-        "run",
-        "server.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "src/findata",
+      "run",
+      "server.py"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

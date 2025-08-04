@@ -59,16 +59,15 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "playwright-server"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "playwright-server"
-      ],
-      "command": "uvx",
-      "transport": "stdio"
     }
   },
   "dependencies": [

@@ -39,22 +39,20 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "dev",
-        "pearch_mcp.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "fastmcp",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "fastmcp",
+    "args": [
+      "dev",
+      "pearch_mcp.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

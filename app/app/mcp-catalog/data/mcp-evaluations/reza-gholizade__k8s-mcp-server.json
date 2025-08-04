@@ -106,22 +106,20 @@
     }
   },
   "configForArchestra": {
+    "command": "./k8s-mcp-server",
+    "args": [
+      "--mode",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "SERVER_MODE=stdio ./k8s-mcp-server",
+      "server-configured": "SERVER_MODE=stdio SERVER_PORT=9090 ./k8s-mcp-server",
+      "server-docker": "docker run -i --rm -v ~/.kube/config:/home/appuser/.kube/config:ro ginnux/k8s-mcp-server:latest --mode stdio"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--mode",
-        "stdio"
-      ],
-      "command": "./k8s-mcp-server",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "SERVER_MODE=stdio ./k8s-mcp-server",
-        "server-configured": "SERVER_MODE=stdio SERVER_PORT=9090 ./k8s-mcp-server",
-        "server-docker": "docker run -i --rm -v ~/.kube/config:/home/appuser/.kube/config:ro ginnux/k8s-mcp-server:latest --mode stdio"
-      }
     }
   },
   "dependencies": [

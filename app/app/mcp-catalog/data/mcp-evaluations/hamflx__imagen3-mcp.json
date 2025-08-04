@@ -43,17 +43,15 @@
     }
   },
   "configForArchestra": {
+    "command": "imagen3-mcp.exe",
+    "args": [],
+    "env": {
+      "server-basic": "GEMINI_API_KEY"
+    },
+    "transport": "http",
     "oauth": {
       "provider": "google",
       "required": false
-    },
-    "server_config": {
-      "args": [],
-      "command": "imagen3-mcp.exe",
-      "transport": "http",
-      "env": {
-        "server-basic": "GEMINI_API_KEY"
-      }
     }
   },
   "dependencies": [

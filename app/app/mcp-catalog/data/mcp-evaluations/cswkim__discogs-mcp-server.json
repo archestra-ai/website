@@ -89,20 +89,18 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "discogs-mcp-server"
+    ],
+    "env": {
+      "server-basic": "DISCOGS_PERSONAL_ACCESS_TOKEN"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "discogs",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "discogs-mcp-server"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "DISCOGS_PERSONAL_ACCESS_TOKEN"
-      }
     }
   },
   "dependencies": [

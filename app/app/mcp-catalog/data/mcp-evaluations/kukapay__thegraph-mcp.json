@@ -45,24 +45,22 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "--directory",
+      ".",
+      "run",
+      "main.py"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--directory",
-        ".",
-        "run",
-        "main.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

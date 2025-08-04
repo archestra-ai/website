@@ -40,15 +40,13 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "."
-      ],
-      "command": "go",
-      "transport": "http",
-      "env": {}
-    }
+    "command": "go",
+    "args": [
+      "run",
+      "."
+    ],
+    "env": {},
+    "transport": "http",
+    "oauth": {}
   }
 }

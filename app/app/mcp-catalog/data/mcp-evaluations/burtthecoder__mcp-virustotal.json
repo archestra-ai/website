@@ -49,22 +49,20 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "--experimental-modules",
+      "build/index.js",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "VIRUSTOTAL_API_KEY"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--experimental-modules",
-        "build/index.js",
-        "--transport",
-        "stdio"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "VIRUSTOTAL_API_KEY"
-      }
     }
   },
   "dependencies": [

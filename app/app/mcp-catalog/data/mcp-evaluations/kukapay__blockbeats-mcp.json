@@ -40,16 +40,14 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "dev",
-        "main.py"
-      ],
-      "command": "mcp",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "mcp",
+    "args": [
+      "dev",
+      "main.py"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

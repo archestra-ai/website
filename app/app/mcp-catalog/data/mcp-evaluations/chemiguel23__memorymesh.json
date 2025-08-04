@@ -29,17 +29,15 @@
   "rawDependencies": "=== package.json ===\n{\r\n  \"name\": \"memorymesh\",\r\n  \"version\": \"0.2.8\",\r\n  \"description\": \"An MCP server that uses a knowledge graph to store and recall structured memory for AI models\",\r\n  \"license\": \"MIT\",\r\n  \"author\": \"CheMiguel23\",\r\n  \"homepage\": \"https://github.com/CheMiguel23/memorymesh\",\r\n  \"bugs\": \"https://github.com/CheMiguel23/memorymesh/issues\",\r\n  \"type\": \"module\",\r\n  \"main\": \"dist/index.js\",\r\n  \"bin\": {\r\n    \"memorymesh\": \"./dist/index.js\"\r\n  },\r\n  \"files\": [\r\n    \"dist\"\r\n  ],\r\n  \"scripts\": {\r\n    \"build\": \"tsc && tsc-alias && shx chmod +x dist/*.js && copyfiles -u 1 src/data/schemas/*.json src/data/*.json dist/\",\r\n    \"prepare\": \"npm run build\",\r\n    \"watch\": \"tsc --watch\",\r\n    \"start\": \"ts-node --esm src/index.ts\",\r\n    \"start:claude\": \"ts-node --esm src/index.ts\",\r\n    \"start:prod\": \"node dist/index.js\"\r\n  },\r\n  \"dependencies\": {\r\n    \"@modelcontextprotocol/sdk\": \"^0.5.0\"\r\n  },\r\n  \"devDependencies\": {\r\n    \"@types/node\": \"^20.11.24\",\r\n    \"copyfiles\": \"^2.4.1\",\r\n    \"shx\": \"^0.3.4\",\r\n    \"ts-node\": \"^10.9.2\",\r\n    \"tsc-alias\": \"^1.8.8\",\r\n    \"typescript\": \"^5.3.3\"\r\n  }\r\n}",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "dist/server.js",
-        "--transport",
-        "stdio"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "dist/server.js",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

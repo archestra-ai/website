@@ -41,17 +41,15 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "mcp-obsidian",
-        "${input:vaultPath}"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-obsidian",
+      "${input:vaultPath}"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

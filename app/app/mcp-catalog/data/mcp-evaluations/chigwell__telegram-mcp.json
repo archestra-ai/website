@@ -64,23 +64,21 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "main.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "TELEGRAM_API_ID",
+      "server-configured": "TELEGRAM_API_HASH",
+      "server-docker": "TELEGRAM_SESSION_STRING"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "telegram",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "main.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "TELEGRAM_API_ID",
-        "server-configured": "TELEGRAM_API_HASH",
-        "server-docker": "TELEGRAM_SESSION_STRING"
-      }
     }
   },
   "dependencies": [

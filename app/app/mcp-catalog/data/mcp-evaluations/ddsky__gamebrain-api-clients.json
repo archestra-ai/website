@@ -41,19 +41,17 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-remote",
+      "https://api.gamebrain.co/v1/mcp?api-key=YOUR_KEY"
+    ],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://api.gamebrain.co/v1/mcp?api-key=YOUR_KEY"
-      ],
-      "command": "npx",
-      "transport": "http",
-      "env": {}
     }
   },
   "dependencies": [

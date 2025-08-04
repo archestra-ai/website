@@ -38,13 +38,11 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [],
-      "command": "/path/to/domain-lookup-mcp/domain-lookup-mcp",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "/path/to/domain-lookup-mcp/domain-lookup-mcp",
+    "args": [],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

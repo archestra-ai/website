@@ -69,26 +69,24 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "--with",
-        "mcp[cli]",
-        "mcp",
-        "run",
-        "main.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "mcp[cli]",
+      "mcp",
+      "run",
+      "main.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

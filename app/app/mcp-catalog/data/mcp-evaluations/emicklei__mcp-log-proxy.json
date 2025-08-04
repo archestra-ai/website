@@ -55,24 +55,22 @@
     }
   },
   "configForArchestra": {
+    "command": "mcp-log-proxy",
+    "args": [
+      "-command",
+      "npx @browsermcp/mcp@latest",
+      "-log",
+      "/Users/SOME-USER/Library/Logs/claude-browsermcp-proxy.log",
+      "-port",
+      "7799",
+      "-title",
+      "Claude Browser MCP"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-command",
-        "npx @browsermcp/mcp@latest",
-        "-log",
-        "/Users/SOME-USER/Library/Logs/claude-browsermcp-proxy.log",
-        "-port",
-        "7799",
-        "-title",
-        "Claude Browser MCP"
-      ],
-      "command": "mcp-log-proxy",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

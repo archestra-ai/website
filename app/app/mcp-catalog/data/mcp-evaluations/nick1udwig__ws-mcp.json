@@ -107,24 +107,22 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--refresh",
-        "ws-mcp",
-        "--command",
-        "npx -y @modelcontextprotocol/server-brave-search",
-        "--port",
-        "3003"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "uvx",
+    "args": [
+      "--refresh",
+      "ws-mcp",
+      "--command",
+      "npx -y @modelcontextprotocol/server-brave-search",
+      "--port",
+      "3003"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

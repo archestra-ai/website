@@ -39,21 +39,19 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "server.py"
+    ],
+    "env": {
+      "server-basic": "SONARQUBE_URL",
+      "server-configured": "SONARQUBE_TOKEN",
+      "server-docker": "TRANSPORT"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "sonarqube",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "server.py"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "SONARQUBE_URL",
-        "server-configured": "SONARQUBE_TOKEN",
-        "server-docker": "TRANSPORT"
-      }
     }
   },
   "dependencies": [

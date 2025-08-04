@@ -39,23 +39,21 @@
     }
   },
   "configForArchestra": {
+    "command": "npm",
+    "args": [
+      "start",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "spotify",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "start",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npm",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

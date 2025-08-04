@@ -85,18 +85,16 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-gitlab"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "gitlab",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-gitlab"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

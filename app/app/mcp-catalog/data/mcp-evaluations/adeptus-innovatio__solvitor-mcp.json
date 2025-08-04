@@ -40,20 +40,18 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--transport",
-        "stdio"
-      ],
-      "command": "solvitor-mcp",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": "SOLVITOR_API_KEY"
-      }
-    }
+    "command": "solvitor-mcp",
+    "args": [
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": "SOLVITOR_API_KEY"
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

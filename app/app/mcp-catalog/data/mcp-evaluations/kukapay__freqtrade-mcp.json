@@ -46,24 +46,22 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "--directory",
+      "/your/path/to/freqtrade-mcp",
+      "run",
+      "__main__.py"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--directory",
-        "/your/path/to/freqtrade-mcp",
-        "run",
-        "__main__.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

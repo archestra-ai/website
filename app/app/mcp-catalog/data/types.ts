@@ -9,6 +9,25 @@ export interface MCPDependency {
   importance: number; // 1-10 scale, where 10 is absolutely critical
 }
 
+export interface ServerConfig {
+  command: string;
+  args?: string[];
+  env?: Record<string, string>;
+}
+
+export interface ClientsConfig {
+  mcpServers: Record<string, ServerConfig>;
+}
+
+export interface ArchestraServerConfig extends ServerConfig {
+  oauth?: {
+    provider: string;
+    required: boolean;
+  };
+  transport: "http" | "stdio";
+  env: Record<string, string>; // Making env required for Archestra
+}
+
 export interface MCPServer {
   slug: string;
   description: string;
@@ -77,10 +96,10 @@ export interface MCPServer {
   implementing_streamable_http: boolean;
   // Authorization Support
   implementing_oauth2: boolean;
-  // Configuration for CLaude and other clients
-  configForClients?: Record<string, any> | null;
+  // Configuration for Claude and other clients
+  configForClients?: ClientsConfig | null;
   // Configuration for Archestra
-  configForArchestra?: Record<string, any> | null;
+  configForArchestra?: ArchestraServerConfig | null;
   tools?: MCPTool[];
   scoreBreakdown?: {
     codeQuality: number;

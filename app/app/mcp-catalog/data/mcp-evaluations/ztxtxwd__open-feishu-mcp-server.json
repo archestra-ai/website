@@ -52,22 +52,20 @@
     }
   },
   "configForArchestra": {
+    "command": "npm",
+    "args": [
+      "run",
+      "dev"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "http",
     "oauth": {
       "provider": "feishu",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "dev"
-      ],
-      "command": "npm",
-      "transport": "http",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

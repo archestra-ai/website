@@ -65,17 +65,16 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@agent-infra/mcp-server-browser@latest"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@agent-infra/mcp-server-browser@latest"
-      ],
-      "command": "npx",
-      "transport": "stdio"
     }
   },
   "dependencies": [

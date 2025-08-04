@@ -44,22 +44,20 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "run",
+      "wsb-analyst"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "Reddit",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "wsb-analyst"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

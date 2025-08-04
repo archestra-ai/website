@@ -43,20 +43,18 @@
     }
   },
   "configForArchestra": {
+    "command": "yutu",
+    "args": [
+      "mcp"
+    ],
+    "env": {
+      "server-configured": "YUTU_CREDENTIAL",
+      "server-docker": "YUTU_CACHE_TOKEN"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "mcp"
-      ],
-      "command": "yutu",
-      "transport": "stdio",
-      "env": {
-        "server-configured": "YUTU_CREDENTIAL",
-        "server-docker": "YUTU_CACHE_TOKEN"
-      }
     }
   },
   "dependencies": [

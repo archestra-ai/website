@@ -55,20 +55,18 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@gongrzhe/server-gmail-autoauth-mcp",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@gongrzhe/server-gmail-autoauth-mcp",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

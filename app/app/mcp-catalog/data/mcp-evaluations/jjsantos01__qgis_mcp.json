@@ -42,18 +42,16 @@
   },
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--directory",
-        "./src/qgis_mcp",
-        "run",
-        "qgis_mcp_server.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "./src/qgis_mcp",
+      "run",
+      "qgis_mcp_server.py"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

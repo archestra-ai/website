@@ -50,22 +50,20 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--directory",
-        "<path_to_mcp_server_trino>",
-        "run",
-        "mcp_server_trino"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "<path_to_mcp_server_trino>",
+      "run",
+      "mcp_server_trino"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

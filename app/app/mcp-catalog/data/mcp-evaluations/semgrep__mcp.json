@@ -111,19 +111,17 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "semgrep-mcp",
+      "-t",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "semgrep",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "semgrep-mcp",
-        "-t",
-        "stdio"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

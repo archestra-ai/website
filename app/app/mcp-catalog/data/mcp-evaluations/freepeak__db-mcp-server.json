@@ -111,20 +111,18 @@
     }
   },
   "configForArchestra": {
+    "command": "./bin/server",
+    "args": [
+      "-t",
+      "stdio",
+      "-c",
+      "config.json"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-t",
-        "stdio",
-        "-c",
-        "config.json"
-      ],
-      "command": "./bin/server",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

@@ -55,13 +55,11 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [],
-      "command": "mcp-time",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "mcp-time",
+    "args": [],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

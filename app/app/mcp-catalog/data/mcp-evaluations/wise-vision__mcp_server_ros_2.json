@@ -42,17 +42,15 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "mcp_server_ros_2",
-        "--transport",
-        "stdio"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "mcp_server_ros_2",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

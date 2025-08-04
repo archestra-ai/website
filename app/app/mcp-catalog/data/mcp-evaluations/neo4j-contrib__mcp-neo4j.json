@@ -168,16 +168,14 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--transport",
-        "stdio"
-      ],
-      "command": "mcp-neo4j-cloud-aura-api",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "mcp-neo4j-cloud-aura-api",
+    "args": [
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

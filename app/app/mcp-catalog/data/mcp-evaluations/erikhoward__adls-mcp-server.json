@@ -59,17 +59,15 @@
     }
   },
   "configForArchestra": {
+    "command": "adls2-mcp-server",
+    "args": [],
+    "env": {
+      "server-basic": "{\n    \"LOG_LEVEL\": \"INFO\",\n    \"UPLOAD_ROOT\": \"./uploads\",\n    \"DOWNLOAD_ROOT\": \"./downloads\",\n    \"AZURE_STORAGE_ACCOUNT_NAME\": \"your-azure-adls2-storage-account-name\",\n    \"READ_ONLY_MODE\": \"true\"\n}"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "azure",
       "required": true
-    },
-    "server_config": {
-      "args": [],
-      "command": "adls2-mcp-server",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "{\n    \"LOG_LEVEL\": \"INFO\",\n    \"UPLOAD_ROOT\": \"./uploads\",\n    \"DOWNLOAD_ROOT\": \"./downloads\",\n    \"AZURE_STORAGE_ACCOUNT_NAME\": \"your-azure-adls2-storage-account-name\",\n    \"READ_ONLY_MODE\": \"true\"\n}"
-      }
     }
   },
   "dependencies": [

@@ -39,19 +39,17 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-remote",
+      "https://mcp.himalayas.app/sse"
+    ],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://mcp.himalayas.app/sse"
-      ],
-      "command": "npx",
-      "transport": "http",
-      "env": {}
     }
   },
   "dependencies": [

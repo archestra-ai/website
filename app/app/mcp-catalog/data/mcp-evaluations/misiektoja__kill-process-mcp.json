@@ -43,18 +43,16 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "--directory",
-        ".",
-        "kill_process_mcp.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "run",
+      "--directory",
+      ".",
+      "kill_process_mcp.py"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

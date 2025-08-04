@@ -127,15 +127,13 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "qrcode_mcp_server.py"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "qrcode_mcp_server.py"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

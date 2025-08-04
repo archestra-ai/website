@@ -47,18 +47,16 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "-m",
+      "mcp_simple_arxiv"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-m",
-        "mcp_simple_arxiv"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

@@ -73,15 +73,13 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "mcp-server-notify"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "mcp-server-notify"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

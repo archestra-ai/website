@@ -73,20 +73,18 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "anilist-mcp"
+    ],
+    "env": {
+      "server-configured": "ANILIST_TOKEN"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "anilist",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "anilist-mcp"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-configured": "ANILIST_TOKEN"
-      }
     }
   },
   "dependencies": [

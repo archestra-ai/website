@@ -44,19 +44,17 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "alibaba-cloud-ops-mcp-server@latest"
+    ],
+    "env": {
+      "server-configured": "{\"ALIBABA_CLOUD_ACCESS_KEY_ID\":\"Your Access Key ID\",\"ALIBABA_CLOUD_ACCESS_KEY_SECRET\":\"Your Access Key SECRET\"}"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "alibaba-cloud",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "alibaba-cloud-ops-mcp-server@latest"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-configured": "{\"ALIBABA_CLOUD_ACCESS_KEY_ID\":\"Your Access Key ID\",\"ALIBABA_CLOUD_ACCESS_KEY_SECRET\":\"Your Access Key SECRET\"}"
-      }
     }
   },
   "dependencies": [

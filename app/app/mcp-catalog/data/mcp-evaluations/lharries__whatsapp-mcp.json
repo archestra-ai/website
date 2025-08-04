@@ -42,18 +42,16 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--directory",
-        "whatsapp-mcp-server",
-        "run",
-        "main.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "whatsapp-mcp-server",
+      "run",
+      "main.py"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

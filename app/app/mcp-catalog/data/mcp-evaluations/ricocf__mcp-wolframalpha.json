@@ -39,15 +39,13 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "src/core/server.py"
-      ],
-      "command": "python3",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "python3",
+    "args": [
+      "src/core/server.py"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

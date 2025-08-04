@@ -59,22 +59,20 @@
     }
   },
   "configForArchestra": {
+    "command": "metatrader-mcp-server",
+    "args": [
+      "--login",
+      "<YOUR_MT5_LOGIN>",
+      "--password",
+      "<YOUR_MT5_PASSWORD>",
+      "--server",
+      "<YOUR_MT5_SERVER>"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--login",
-        "<YOUR_MT5_LOGIN>",
-        "--password",
-        "<YOUR_MT5_PASSWORD>",
-        "--server",
-        "<YOUR_MT5_SERVER>"
-      ],
-      "command": "metatrader-mcp-server",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

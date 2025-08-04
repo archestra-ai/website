@@ -39,22 +39,20 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "mcp-remote",
+      "https://mcp-strava-oauth.<your-subdomain>.workers.dev/sse"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "http",
     "oauth": {
       "provider": "strava",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "mcp-remote",
-        "https://mcp-strava-oauth.<your-subdomain>.workers.dev/sse"
-      ],
-      "command": "npx",
-      "transport": "http",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

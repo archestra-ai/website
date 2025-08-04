@@ -76,19 +76,17 @@
     }
   },
   "configForArchestra": {
+    "command": "mcpjungle",
+    "args": [
+      "start"
+    ],
+    "env": {
+      "server-configured": "DATABASE_URL"
+    },
+    "transport": "streamable-http",
     "oauth": {
       "provider": "github",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "start"
-      ],
-      "command": "mcpjungle",
-      "transport": "streamable-http",
-      "env": {
-        "server-configured": "DATABASE_URL"
-      }
     }
   },
   "dependencies": [

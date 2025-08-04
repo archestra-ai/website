@@ -29,18 +29,16 @@
   "rawDependencies": "=== package.json ===\n{\n  \"name\": \"bifrost-mcp\",\n  \"displayName\": \"Bifrost - VSCode Dev Tools MCP Server\",\n  \"description\": \"An MCP server that exposes features of VSCode dev tools to the MCP clients\",\n  \"version\": \"0.0.14\",\n  \"publisher\": \"ConnorHallman\",\n  \"icon\": \"icon.png\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/biegehydra/csharplangmcpserver\"\n  },\n  \"engines\": {\n    \"vscode\": \"^1.93.0\"\n  },\n  \"categories\": [\n    \"Other\",\n    \"Programming Languages\",\n    \"Language Packs\"\n  ],\n  \"keywords\": [\n    \"C#\",\n    \"MCP\",\n    \"dotnet\",\n    \"AI\",\n    \"find references\"\n  ],\n  \"activationEvents\": [\n    \"onStartupFinished\"\n  ],\n  \"main\": \"./dist/extension.js\",\n  \"contributes\": {\n    \"commands\": [\n      {\n        \"command\": \"bifrost-mcp.startServer\",\n        \"title\": \"Bifrost MCP: Start Server\"\n      },\n      {\n        \"command\": \"bifrost-mcp.startServerOnPort\",\n        \"title\": \"Bifrost MCP: Start Server on Port\"\n      },\n      {\n        \"command\": \"bifrost-mcp.stopServer\",\n        \"title\": \"Bifrost MCP: Stop Server\"\n      },\n      {\n        \"command\": \"bifrost-mcp.openDebugPanel\",\n        \"title\": \"Bifrost MCP: Open Debug Panel\"\n      }\n    ]\n  },\n  \"scripts\": {\n    \"vscode:prepublish\": \"npm run package\",\n    \"compile\": \"webpack\",\n    \"watch\": \"webpack --watch\",\n    \"package\": \"webpack --mode production --devtool hidden-source-map\",\n    \"compile-tests\": \"tsc -p . --outDir out\",\n    \"watch-tests\": \"tsc -p . -w --outDir out\",\n    \"pretest\": \"npm run compile-tests && npm run compile && npm run lint\",\n    \"lint\": \"eslint src\",\n    \"test\": \"vscode-test\"\n  },\n  \"devDependencies\": {\n    \"@types/mocha\": \"^10.0.10\",\n    \"@types/node\": \"20.x\",\n    \"@types/vscode\": \"^1.93.0\",\n    \"@typescript-eslint/eslint-plugin\": \"^8.25.0\",\n    \"@typescript-eslint/parser\": \"^8.25.0\",\n    \"@vscode/test-cli\": \"^0.0.10\",\n    \"@vscode/test-electron\": \"^2.4.1\",\n    \"eslint\": \"^9.21.0\",\n    \"ts-loader\": \"^9.5.2\",\n    \"typescript\": \"^5.7.3\",\n    \"vscode-languageclient\": \"^9.0.1\",\n    \"webpack\": \"^5.98.0\",\n    \"webpack-cli\": \"^6.0.1\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.6.1\",\n    \"@types/cors\": \"^2.8.17\",\n    \"@types/express\": \"^5.0.0\",\n    \"cors\": \"^2.8.5\",\n    \"express\": \"^5.0.1\"\n  }\n}\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "supergateway",
-        "--sse",
-        "http://localhost:8008/sse"
-      ],
-      "command": "npx",
-      "transport": "http",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "supergateway",
+      "--sse",
+      "http://localhost:8008/sse"
+    ],
+    "env": {},
+    "transport": "http",
+    "oauth": {}
   },
   "dependencies": [
     {

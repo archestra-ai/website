@@ -47,26 +47,24 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "fastmcp",
+      "fastmcp",
+      "run",
+      "./server.py"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": "UNSPLASH_ACCESS_KEY"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "unsplash",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "--with",
-        "fastmcp",
-        "fastmcp",
-        "run",
-        "./server.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": "UNSPLASH_ACCESS_KEY"
-      }
     }
   },
   "dependencies": [

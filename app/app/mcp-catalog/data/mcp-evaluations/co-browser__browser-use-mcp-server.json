@@ -94,25 +94,23 @@
     }
   },
   "configForArchestra": {
+    "command": "browser-use-mcp-server",
+    "args": [
+      "run",
+      "server",
+      "--port",
+      "8000",
+      "--stdio",
+      "--proxy-port",
+      "9000"
+    ],
+    "env": {
+      "server-configured": "OPENAI_API_KEY"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "openai",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "server",
-        "--port",
-        "8000",
-        "--stdio",
-        "--proxy-port",
-        "9000"
-      ],
-      "command": "browser-use-mcp-server",
-      "transport": "stdio",
-      "env": {
-        "server-configured": "OPENAI_API_KEY"
-      }
     }
   },
   "dependencies": [

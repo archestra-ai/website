@@ -40,23 +40,21 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "src/msgraph_mcp_server/server.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "microsoft",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "src/msgraph_mcp_server/server.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

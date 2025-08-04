@@ -53,22 +53,20 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-confluent"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "http",
     "oauth": {
       "provider": "confluent",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "mcp-confluent"
-      ],
-      "command": "npx",
-      "transport": "http",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

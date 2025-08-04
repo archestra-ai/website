@@ -41,18 +41,16 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "--project",
-        "C:\\path\\to\\mcp-afl-server\\src",
-        "--no-build"
-      ],
-      "command": "dotnet",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "dotnet",
+    "args": [
+      "run",
+      "--project",
+      "C:\\path\\to\\mcp-afl-server\\src",
+      "--no-build"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

@@ -64,23 +64,21 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--directory",
-        "",
-        "run",
-        "-m",
-        "greptimedb_mcp_server.server"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "",
+      "run",
+      "-m",
+      "greptimedb_mcp_server.server"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

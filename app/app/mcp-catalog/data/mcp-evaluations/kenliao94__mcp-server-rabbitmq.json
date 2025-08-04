@@ -70,29 +70,27 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "mcp-server-rabbitmq@latest",
+      "--rabbitmq-host",
+      "<hostname ex. test.rabbit.com, localhost>",
+      "--port",
+      "<port number ex. 5672>",
+      "--username",
+      "<rabbitmq username>",
+      "--password",
+      "<rabbitmq password>",
+      "--api-port",
+      "<port number for the admin API, default to 15671>",
+      "--use-tls",
+      "<true if uses amqps, false otherwise>"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "third-party",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "mcp-server-rabbitmq@latest",
-        "--rabbitmq-host",
-        "<hostname ex. test.rabbit.com, localhost>",
-        "--port",
-        "<port number ex. 5672>",
-        "--username",
-        "<rabbitmq username>",
-        "--password",
-        "<rabbitmq password>",
-        "--api-port",
-        "<port number for the admin API, default to 15671>",
-        "--use-tls",
-        "<true if uses amqps, false otherwise>"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

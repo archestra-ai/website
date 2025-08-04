@@ -37,14 +37,13 @@
     }
   },
   "configForArchestra": {
+    "command": "mcp-server-apple-reminders",
+    "args": [],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "string",
       "required": false
-    },
-    "server_config": {
-      "args": [],
-      "command": "mcp-server-apple-reminders",
-      "transport": "stdio"
     }
   },
   "dependencies": [

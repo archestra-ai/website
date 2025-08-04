@@ -49,18 +49,16 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--python=3.10",
-        "--from",
-        "git+https://github.com/imprvhub/mcp-domain-availability",
-        "mcp-domain-availability"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "--python=3.10",
+      "--from",
+      "git+https://github.com/imprvhub/mcp-domain-availability",
+      "mcp-domain-availability"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

@@ -61,19 +61,17 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "tool",
-        "dicom-mcp",
-        "path/to/your_config.yaml",
-        "--transport",
-        "stdio"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "tool",
+      "dicom-mcp",
+      "path/to/your_config.yaml",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

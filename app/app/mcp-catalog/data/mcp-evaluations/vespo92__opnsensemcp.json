@@ -72,21 +72,19 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "dist/index.js"
+    ],
+    "env": {
+      "server-basic": "OPNSENSE_HOST",
+      "server-configured": "OPNSENSE_API_KEY",
+      "server-docker": "OPNSENSE_API_SECRET"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "dist/index.js"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "OPNSENSE_HOST",
-        "server-configured": "OPNSENSE_API_KEY",
-        "server-docker": "OPNSENSE_API_SECRET"
-      }
     }
   },
   "dependencies": [

@@ -28,17 +28,16 @@
   "implementing_oauth2": false,
   "rawDependencies": "=== package.json ===\n{\n  \"name\": \"mcpx-monorepo\",\n  \"private\": true,\n  \"workspaces\": [\n    \"packages/shared-model\",\n    \"packages/toolkit-core\",\n    \"packages/mcpx-server\",\n    \"packages/webserver\",\n    \"packages/ui\"\n  ],\n  \"scripts\": {\n    \"test\": \"npm run test --workspaces\",\n    \"test-script\": \"npm run test --workspaces\",\n    \"lint\": \"eslint \\\"packages/**/*.{ts,tsx,js}\\\"\",\n    \"typecheck\": \"tsc -b packages/*\",\n    \"build:deps\": \"npm run build --workspace=packages/shared-model && npm run build --workspace=packages/toolkit-core\",\n    \"dev:ui\": \"npm run dev --workspace=packages/ui\",\n    \"start:ui\": \"npm run dev --workspace=packages/ui\",\n    \"build:ui\": \"npm run build --workspace=packages/ui\",\n    \"install:ui\": \"npm i --workspace=packages/ui\",\n    \"dev:webserver\": \"npm run dev --workspace=packages/webserver\",\n    \"start:webserver\": \"npm run serve --workspace=packages/webserver\",\n    \"install:webserver\": \"npm i --workspace=packages/webserver\",\n    \"build:webserver\": \"npm run build --workspace=packages/webserver\",\n    \"dev:mcpx-server\": \"npm run dev --workspace=packages/mcpx-server\",\n    \"start:mcpx-server\": \"npm run serve --workspace=packages/mcpx-server\",\n    \"install:mcpx-server\": \"npm i --workspace=packages/mcpx-server\",\n    \"build:mcpx-server\": \"npm run build --workspace=packages/mcpx-server\"\n  },\n  \"devDependencies\": {\n    \"typescript\": \"^5.8.3\",\n    \"eslint\": \"^9.26.0\",\n    \"prettier\": \"3.5.3\",\n    \"@eslint/js\": \"^9.26.0\",\n    \"globals\": \"^16.0.0\",\n    \"typescript-eslint\": \"^8.31.1\"\n  }\n}\n\n\n=== demo-client/package.json ===\n{\n  \"name\": \"demo-client\",\n  \"version\": \"1.0.0\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"start:claude\": \"node --import ./loader.mjs src/mcp-client-claude.ts\",\n    \"start:gemini\": \"node --import ./loader.mjs src/mcp-client-gemini.ts\",\n    \"play\": \"node --import ./loader.mjs src/playground.ts\"\n  },\n  \"keywords\": [],\n  \"author\": \"\",\n  \"license\": \"ISC\",\n  \"dependencies\": {\n    \"@anthropic-ai/sdk\": \"^0.39.0\",\n    \"@google/genai\": \"^0.10.0\",\n    \"@modelcontextprotocol/sdk\": \"^1.12.1\",\n    \"dotenv\": \"^16.5.0\",\n    \"winston\": \"^3.17.0\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"^22.14.1\",\n    \"ts-node\": \"^10.9.2\",\n    \"typescript\": \"^5.8.3\"\n  }\n}\n\n\n=== mcpx-e2e-tests/package.json ===\n{\n  \"name\": \"mcpx-e2e-tests\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"smoke:docker\": \"ts-node --project tsconfig.json local-tests/dockerTest.ts\",\n    \"smoke:docker-dependent\": \"ts-node --project tsconfig.json local-tests/dependentTest.ts\",\n    \"smoke:network\": \"ts-node --project tsconfig.json local-tests/networkTest.ts\",\n    \"test-scenario\": \"ts-node --project tsconfig.json src/testRunner.ts\",\n    \"test-all-scenarios\": \"node run-all-scenarios.js\",\n    \"test-all-with-image\": \"node run-all-with-image.cjs\",\n    \"test:unit\": \"jest\",\n    \"test-all\": \"ts-node --project tsconfig.json src/testAll.ts\",\n    \"lint\": \"eslint . --ext .ts\",\n    \"format\": \"prettier --write .\",\n    \"prepare\": \"npx playwright install\"\n  },\n  \"devDependencies\": {\n    \"@playwright/test\": \"^1.54.1\",\n    \"@types/dockerode\": \"^3.3.42\",\n    \"@types/jest\": \"^30.0.0\",\n    \"@types/js-yaml\": \"^4.0.9\",\n    \"@typescript-eslint/eslint-plugin\": \"^5.59.0\",\n    \"@typescript-eslint/parser\": \"^5.59.0\",\n    \"ajv\": \"^8.12.0\",\n    \"dockerode\": \"^3.3.0\",\n    \"eslint\": \"^8.8.0\",\n    \"jest\": \"^30.0.5\",\n    \"js-yaml\": \"^4.1.0\",\n    \"playwright\": \"^1.35.0\",\n    \"prettier\": \"^2.8.0\",\n    \"ts-jest\": \"^29.4.0\",\n    \"ts-node\": \"^10.9.1\",\n    \"typescript\": \"^4.9.5\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.17.0\",\n    \"@playwright/mcp\": \"^0.0.32\",\n    \"axios\": \"^1.11.0\"\n  }\n}\n",
   "configForArchestra": {
+    "command": "cargo",
+    "args": [
+      "run",
+      "mcpx"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "mcpx"
-      ],
-      "command": "cargo",
-      "transport": "stdio"
     }
   },
   "dependencies": [

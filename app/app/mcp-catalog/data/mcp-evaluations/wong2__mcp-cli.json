@@ -29,20 +29,18 @@
   "rawDependencies": "=== package.json ===\n{\n  \"name\": \"@wong2/mcp-cli\",\n  \"version\": \"1.13.0\",\n  \"description\": \"A CLI inspector for the Model Context Protocol\",\n  \"bin\": {\n    \"mcp-cli\": \"src/cli.js\"\n  },\n  \"type\": \"module\",\n  \"homepage\": \"https://github.com/wong2/mcp-cli\",\n  \"files\": [\n    \"src\",\n    \"README.md\"\n  ],\n  \"scripts\": {},\n  \"keywords\": [\n    \"MCP\"\n  ],\n  \"author\": \"wong2\",\n  \"packageManager\": \"pnpm@9.14.4+sha512.c8180b3fbe4e4bca02c94234717896b5529740a6cbadf19fa78254270403ea2f27d4e1d46a08a0f56c89b63dc8ebfd3ee53326da720273794e6200fcf0d184ab\",\n  \"dependencies\": {\n    \"@json-schema-tools/traverse\": \"^1.10.4\",\n    \"@modelcontextprotocol/sdk\": \"^1.15.1\",\n    \"conf\": \"^13.1.0\",\n    \"eventsource\": \"^3.0.6\",\n    \"express\": \"^5.1.0\",\n    \"get-port\": \"^7.1.0\",\n    \"lodash-es\": \"^4.17.21\",\n    \"meow\": \"^13.2.0\",\n    \"open\": \"^10.1.2\",\n    \"prompts\": \"^2.4.2\",\n    \"uri-template\": \"^2.0.0\",\n    \"yocto-spinner\": \"^0.2.2\",\n    \"yoctocolors\": \"^2.1.1\"\n  }\n}\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@wong2/mcp-cli",
+      "node",
+      "path/to/server/index.js"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@wong2/mcp-cli",
-        "node",
-        "path/to/server/index.js"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

@@ -83,21 +83,19 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@fireflyai/firefly-mcp"
+    ],
+    "env": {
+      "server-basic": "FIREFLY_ACCESS_KEY",
+      "server-configured": "FIREFLY_SECRET_KEY"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "firefly",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@fireflyai/firefly-mcp"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "FIREFLY_ACCESS_KEY",
-        "server-configured": "FIREFLY_SECRET_KEY"
-      }
     }
   },
   "dependencies": [

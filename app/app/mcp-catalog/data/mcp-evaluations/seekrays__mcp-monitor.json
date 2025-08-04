@@ -37,13 +37,11 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [],
-      "command": "./mcp-monitor",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "./mcp-monitor",
+    "args": [],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

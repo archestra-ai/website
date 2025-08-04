@@ -48,28 +48,26 @@
     }
   },
   "configForArchestra": {
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "ED_ORG_ID",
+      "-e",
+      "ED_API_TOKEN",
+      "ghcr.io/edgedelta/edgedelta-mcp-server:latest"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "edgedelta",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "-e",
-        "ED_ORG_ID",
-        "-e",
-        "ED_API_TOKEN",
-        "ghcr.io/edgedelta/edgedelta-mcp-server:latest"
-      ],
-      "command": "docker",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

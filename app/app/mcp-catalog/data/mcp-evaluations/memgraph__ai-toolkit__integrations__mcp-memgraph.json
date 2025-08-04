@@ -110,20 +110,18 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "--with",
-        "mcp-memgraph",
-        "--python",
-        "3.13",
-        "mcp-memgraph"
-      ],
-      "command": "uv",
-      "transport": "http",
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "mcp-memgraph",
+      "--python",
+      "3.13",
+      "mcp-memgraph"
+    ],
+    "env": {},
+    "transport": "http",
+    "oauth": {}
   },
   "dependencies": [
     {

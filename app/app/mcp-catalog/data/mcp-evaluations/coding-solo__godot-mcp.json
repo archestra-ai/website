@@ -42,17 +42,15 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "/absolute/path/to/godot-mcp/build/index.js"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "/absolute/path/to/godot-mcp/build/index.js"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

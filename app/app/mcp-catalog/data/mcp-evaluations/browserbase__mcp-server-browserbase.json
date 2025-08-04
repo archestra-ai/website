@@ -108,19 +108,17 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "@browserbasehq/mcp-server-browserbase"
+    ],
+    "env": {
+      "server-basic": "{\n  \"BROWSERBASE_API_KEY\": \"\",\n  \"BROWSERBASE_PROJECT_ID\": \"\",\n  \"GEMINI_API_KEY\": \"\"\n}"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "@browserbasehq/mcp-server-browserbase"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "{\n  \"BROWSERBASE_API_KEY\": \"\",\n  \"BROWSERBASE_PROJECT_ID\": \"\",\n  \"GEMINI_API_KEY\": \"\"\n}"
-      }
     }
   },
   "dependencies": [

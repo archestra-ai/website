@@ -38,13 +38,11 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [],
-      "command": "code-to-tree",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "code-to-tree",
+    "args": [],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

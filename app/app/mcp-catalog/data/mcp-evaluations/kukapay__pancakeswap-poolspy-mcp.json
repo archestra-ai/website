@@ -52,20 +52,18 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "main.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": "THEGRAPH_API_KEY"
-      }
-    }
+    "command": "uv",
+    "args": [
+      "run",
+      "main.py"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": "THEGRAPH_API_KEY"
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

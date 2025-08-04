@@ -85,20 +85,18 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "@jinzcdev/leetcode-mcp-server",
-        "--site",
-        "global",
-        "--session",
-        "<YOUR_LEETCODE_SESSION_COOKIE>"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@jinzcdev/leetcode-mcp-server",
+      "--site",
+      "global",
+      "--session",
+      "<YOUR_LEETCODE_SESSION_COOKIE>"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

@@ -37,16 +37,14 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--transport",
-        "stdio"
-      ],
-      "command": "melrose-mcp",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "melrose-mcp",
+    "args": [
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

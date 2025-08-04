@@ -62,23 +62,21 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "--allow-net",
-        "--allow-read",
-        "--allow-env",
-        "https://deno.land/x/coin_mcp_server/main.ts"
-      ],
-      "command": "deno",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "deno",
+    "args": [
+      "run",
+      "--allow-net",
+      "--allow-read",
+      "--allow-env",
+      "https://deno.land/x/coin_mcp_server/main.ts"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

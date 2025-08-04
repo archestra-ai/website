@@ -70,26 +70,24 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "--directory",
+      "/path/to/coinmarket_service",
+      "run",
+      "coinmarket_service",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--directory",
-        "/path/to/coinmarket_service",
-        "run",
-        "coinmarket_service",
-        "--transport",
-        "stdio"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

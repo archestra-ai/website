@@ -29,14 +29,13 @@
   "rawDependencies": "=== docusaurus/package.json ===\n{\n  \"browserslist\": {\n    \"development\": [\n      \"last 3 chrome version\",\n      \"last 3 firefox version\",\n      \"last 5 safari version\"\n    ],\n    \"production\": [\n      \">0.5%\",\n      \"not dead\",\n      \"not op_mini all\"\n    ]\n  },\n  \"dependencies\": {\n    \"@docusaurus/core\": \"3.8.1\",\n    \"@docusaurus/preset-classic\": \"3.8.1\",\n    \"@mdx-js/react\": \"^3.0.0\",\n    \"clsx\": \"^2.0.0\",\n    \"prism-react-renderer\": \"^2.3.0\",\n    \"react\": \"^19.0.0\",\n    \"react-dom\": \"^19.0.0\",\n    \"unist-util-visit\": \"^2.0.3\"\n  },\n  \"devDependencies\": {\n    \"@docusaurus/module-type-aliases\": \"3.8.1\",\n    \"@docusaurus/tsconfig\": \"3.8.1\",\n    \"@docusaurus/types\": \"3.8.1\",\n    \"typescript\": \"~5.6.2\"\n  },\n  \"engines\": {\n    \"node\": \">=18.0\"\n  },\n  \"name\": \"docs\",\n  \"overrides\": {\n    \"@docusaurus/core\": {\n      \"webpack-dev-server\": \"^5.2.1\"\n    }\n  },\n  \"private\": true,\n  \"scripts\": {\n    \"build\": \"docusaurus build\",\n    \"clear\": \"docusaurus clear\",\n    \"deploy\": \"docusaurus deploy\",\n    \"docusaurus\": \"docusaurus\",\n    \"serve\": \"docusaurus serve\",\n    \"start\": \"docusaurus start\",\n    \"swizzle\": \"docusaurus swizzle\",\n    \"typecheck\": \"tsc\",\n    \"write-heading-ids\": \"docusaurus write-heading-ids\",\n    \"write-translations\": \"docusaurus write-translations\"\n  },\n  \"version\": \"0.0.0\"\n}\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "server_config": {
-      "args": [
-        "-y",
-        "@awslabs/mcp-servers"
-      ],
-      "command": "npx",
-      "transport": "stdio"
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@awslabs/mcp-servers"
+    ],
+    "env": {},
+    "transport": "stdio"
   },
   "dependencies": [
     {

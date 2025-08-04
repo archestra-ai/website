@@ -47,16 +47,14 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-m",
-        "mcp_simple_timeserver"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "-m",
+      "mcp_simple_timeserver"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

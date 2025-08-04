@@ -110,20 +110,18 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "mcp-remote",
-        "https://mcp.twelvedata.com/mcp",
-        "--header",
-        "Authorization:${AUTH_HEADER}",
-        "--header",
-        "X-OpenAPI-Key:${OPENAI_API_KEY}"
-      ],
-      "command": "npx",
-      "transport": "http",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "mcp-remote",
+      "https://mcp.twelvedata.com/mcp",
+      "--header",
+      "Authorization:${AUTH_HEADER}",
+      "--header",
+      "X-OpenAPI-Key:${OPENAI_API_KEY}"
+    ],
+    "env": {},
+    "transport": "http",
+    "oauth": {}
   },
   "dependencies": [
     {

@@ -50,21 +50,19 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "build/index.js"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "spotify",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "build/index.js"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

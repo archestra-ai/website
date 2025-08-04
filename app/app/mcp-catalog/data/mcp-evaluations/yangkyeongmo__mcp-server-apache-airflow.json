@@ -29,18 +29,16 @@
   "rawDependencies": "=== pyproject.toml ===\n[project]\nname = \"mcp-server-apache-airflow\"\nversion = \"0.2.5\"\ndescription = \"Model Context Protocol (MCP) server for Apache Airflow\"\nauthors = [\n    { name = \"Gyeongmo Yang\", email = \"me@gmyang.dev\" }\n]\ndependencies = [\n    \"httpx>=0.24.1\",\n    \"click>=8.1.7\",\n    \"mcp>=0.1.0\",\n    \"apache-airflow-client>=2.7.0,<3\",\n]\nrequires-python = \">=3.10\"\nreadme = \"README.md\"\nlicense = { text = \"MIT\" }\nclassifiers = [\n    \"Development Status :: 3 - Alpha\",\n    \"Intended Audience :: Developers\",\n    \"License :: OSI Approved :: MIT License\",\n    \"Programming Language :: Python :: 3\",\n    \"Programming Language :: Python :: 3.10\",\n    \"Programming Language :: Python :: 3.11\",\n    \"Programming Language :: Python :: 3.12\",\n    \"Topic :: Software Development :: Libraries :: Python Modules\",\n]\nkeywords = [\"mcp\", \"airflow\", \"apache-airflow\", \"model-context-protocol\"]\n\n[project.optional-dependencies]\ndev = [\n    \"build>=1.2.2.post1\",\n    \"twine>=6.1.0\",\n]\n\n[project.urls]\nHomepage = \"https://github.com/yangkyeongmo/mcp-server-apache-airflow\"\nRepository = \"https://github.com/yangkyeongmo/mcp-server-apache-airflow.git\"\n\"Bug Tracker\" = \"https://github.com/yangkyeongmo/mcp-server-apache-airflow/issues\"\n\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n[project.scripts]\nmcp-server-apache-airflow = \"src.main:main\"\n\n[tool.hatch.build.targets.wheel]\npackages = [\"src\"]\n\n[tool.hatch.build]\ninclude = [\n    \"src/**/*.py\",\n    \"README.md\",\n    \"LICENSE\",\n]\n\n[tool.ruff]\nselect = [\"E\", \"W\", \"F\", \"B\", \"I\"]\nline-length = 120\n\n[dependency-groups]\ndev = [\n    \"ruff>=0.11.0\",\n    \"pytest>=7.0.0\",\n    \"pytest-cov>=4.0.0\",\n    \"pytest-asyncio>=0.21.0\",\n]\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "apache-airflow",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--transport",
-        "stdio"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

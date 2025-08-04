@@ -42,21 +42,19 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "/path/to/postman-api-server/build/index.js"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "/path/to/postman-api-server/build/index.js"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

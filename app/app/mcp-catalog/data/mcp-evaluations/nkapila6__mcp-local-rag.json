@@ -57,18 +57,16 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--python=3.10",
-        "--from",
-        "git+https://github.com/nkapila6/mcp-local-rag",
-        "mcp-local-rag"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "--python=3.10",
+      "--from",
+      "git+https://github.com/nkapila6/mcp-local-rag",
+      "mcp-local-rag"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

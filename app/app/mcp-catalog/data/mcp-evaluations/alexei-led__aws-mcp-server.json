@@ -50,22 +50,20 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "-m",
+      "aws_mcp_server"
+    ],
+    "env": {
+      "server-basic": "{\n  \"AWS_MCP_TRANSPORT\": \"stdio\"\n}",
+      "server-configured": "{\n  \"AWS_MCP_TIMEOUT\": \"\",\n  \"AWS_MCP_MAX_OUTPUT\": \"\",\n  \"AWS_MCP_TRANSPORT\": \"stdio\",\n  \"AWS_PROFILE\": \"\",\n  \"AWS_REGION\": \"\",\n  \"AWS_MCP_SECURITY_MODE\": \"\",\n  \"AWS_MCP_SECURITY_CONFIG\": \"\"\n}",
+      "server-docker": "{\n  \"AWS_MCP_TRANSPORT\": \"stdio\"\n}"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "aws",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-m",
-        "aws_mcp_server"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "{\n  \"AWS_MCP_TRANSPORT\": \"stdio\"\n}",
-        "server-configured": "{\n  \"AWS_MCP_TIMEOUT\": \"\",\n  \"AWS_MCP_MAX_OUTPUT\": \"\",\n  \"AWS_MCP_TRANSPORT\": \"stdio\",\n  \"AWS_PROFILE\": \"\",\n  \"AWS_REGION\": \"\",\n  \"AWS_MCP_SECURITY_MODE\": \"\",\n  \"AWS_MCP_SECURITY_CONFIG\": \"\"\n}",
-        "server-docker": "{\n  \"AWS_MCP_TRANSPORT\": \"stdio\"\n}"
-      }
     }
   },
   "dependencies": [

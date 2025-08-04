@@ -75,17 +75,15 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--from",
-        "git+https://github.com/gwbischof/free-will-mcp@v0.3",
-        "free-will-mcp"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/gwbischof/free-will-mcp@v0.3",
+      "free-will-mcp"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

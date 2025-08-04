@@ -43,15 +43,13 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "<path_to_this_directory>/bluesky-context-server/index.ts"
-      ],
-      "command": "/Users/laurynas-fp/.bun/bin/bun",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "/Users/laurynas-fp/.bun/bin/bun",
+    "args": [
+      "<path_to_this_directory>/bluesky-context-server/index.ts"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

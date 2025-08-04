@@ -39,17 +39,15 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "start",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npm",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "npm",
+    "args": [
+      "start",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {
