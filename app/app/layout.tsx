@@ -4,7 +4,7 @@ import { PostHogProvider } from '../components/PostHogProvider'
 
 export const metadata: Metadata = {
   title: 'archestra.ai',
-  description: 'founded by Matvey and Ildar',
+  description: 'Solving your daily tasks with AI-agents and MCP',
   generator: 'v0.dev',
 }
 
