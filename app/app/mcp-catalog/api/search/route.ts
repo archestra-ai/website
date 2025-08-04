@@ -138,14 +138,21 @@ export async function GET(request: NextRequest) {
     const totalCount = filteredServers.length;
     const paginatedServers = filteredServers.slice(offset, offset + limit);
 
-    // Return response
-    return NextResponse.json({
+    // Return response with CORS headers
+    const response = NextResponse.json({
       servers: paginatedServers,
       totalCount,
       limit,
       offset,
       hasMore: offset + limit < totalCount,
     });
+
+    // Add CORS headers to allow access from any origin
+    response.headers.set('Access-Control-Allow-Origin', '*');
+    response.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+
+    return response;
   } catch (error) {
     console.error("Search API error:", error);
     return NextResponse.json(
@@ -153,4 +160,15 @@ export async function GET(request: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+export async function OPTIONS(request: NextRequest) {
+  const response = new NextResponse(null, { status: 200 });
+  
+  // Add CORS headers for preflight requests
+  response.headers.set('Access-Control-Allow-Origin', '*');
+  response.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+  
+  return response;
 }
