@@ -13,4 +13,4 @@ The MCP Catalog is an open-source, community-driven directory that helps develop
 - **Quality Over Quantity**: Not all MCP servers are created equal. We evaluate each server based on code quality, documentation, community support, and protocol implementation.
 - **Save Time**: Stop scrolling through endless GitHub repos. Find the right MCP server for your needs quickly.
 - **Community-Driven**: Built by the community, for the community. Anyone can contribute!
-- **Transparency**: Our scoring algorithm is open-source and clearly documented.
+- **Transparency**: Our scoring algorithm is open-source.
