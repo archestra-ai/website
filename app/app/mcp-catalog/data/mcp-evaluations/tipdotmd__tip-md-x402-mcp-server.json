@@ -63,21 +63,19 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "dist/mcp-server/src/index.js"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "http",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "dist/mcp-server/src/index.js"
-      ],
-      "command": "node",
-      "transport": "http",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

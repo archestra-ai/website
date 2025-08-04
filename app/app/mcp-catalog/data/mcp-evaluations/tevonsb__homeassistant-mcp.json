@@ -49,21 +49,19 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "dist/server.js"
+    ],
+    "env": {
+      "server-basic": "HASS_HOST",
+      "server-configured": "HASS_TOKEN",
+      "server-docker": "HASS_SOCKET_URL"
+    },
+    "transport": "http",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "dist/server.js"
-      ],
-      "command": "node",
-      "transport": "http",
-      "env": {
-        "server-basic": "HASS_HOST",
-        "server-configured": "HASS_TOKEN",
-        "server-docker": "HASS_SOCKET_URL"
-      }
     }
   },
   "dependencies": [

@@ -42,22 +42,20 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--directory",
-        "/Users/naveenkumar/Gits/locust-mcp-server",
-        "run",
-        "locust_server.py"
-      ],
-      "command": "/Users/naveenkumar/.local/bin/uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "/Users/naveenkumar/.local/bin/uv",
+    "args": [
+      "--directory",
+      "/Users/naveenkumar/Gits/locust-mcp-server",
+      "run",
+      "locust_server.py"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

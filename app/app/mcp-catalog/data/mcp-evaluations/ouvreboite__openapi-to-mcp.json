@@ -38,17 +38,15 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "https://petstore3.swagger.io/api/v3/openapi.json",
-        "--transport",
-        "stdio"
-      ],
-      "command": "openapi-to-mcp",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "openapi-to-mcp",
+    "args": [
+      "https://petstore3.swagger.io/api/v3/openapi.json",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

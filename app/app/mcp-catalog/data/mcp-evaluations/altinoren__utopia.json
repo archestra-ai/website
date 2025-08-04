@@ -40,17 +40,15 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "--project",
-        "<path_to_project_folder>/Utopia.csproj"
-      ],
-      "command": "dotnet",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "dotnet",
+    "args": [
+      "run",
+      "--project",
+      "<path_to_project_folder>/Utopia.csproj"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

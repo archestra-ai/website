@@ -59,16 +59,14 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "/path/to/allowed/directory",
-        "/another/allowed/directory"
-      ],
-      "command": "mcp-filesystem-server",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "mcp-filesystem-server",
+    "args": [
+      "/path/to/allowed/directory",
+      "/another/allowed/directory"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

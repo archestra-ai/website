@@ -39,21 +39,19 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "server.py"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "http",
     "oauth": {
       "provider": "deepseek",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "server.py"
-      ],
-      "command": "python",
-      "transport": "http",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

@@ -49,18 +49,16 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "-m",
+      "networkx_mcp"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-m",
-        "networkx_mcp"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

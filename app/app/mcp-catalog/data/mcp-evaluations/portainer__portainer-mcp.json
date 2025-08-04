@@ -75,22 +75,20 @@
     }
   },
   "configForArchestra": {
+    "command": "portainer-mcp",
+    "args": [
+      "-server",
+      "",
+      "-token",
+      "",
+      "-tools",
+      "/tmp/tools.yaml"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "portainer",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-server",
-        "",
-        "-token",
-        "",
-        "-tools",
-        "/tmp/tools.yaml"
-      ],
-      "command": "portainer-mcp",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

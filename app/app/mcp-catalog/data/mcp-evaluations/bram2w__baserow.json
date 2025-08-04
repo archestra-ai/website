@@ -54,14 +54,13 @@
     }
   },
   "configForArchestra": {
+    "command": "null",
+    "args": [],
+    "env": {},
+    "transport": "null",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [],
-      "command": "null",
-      "transport": "null"
     }
   },
   "dependencies": [

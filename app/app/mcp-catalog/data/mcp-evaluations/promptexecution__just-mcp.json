@@ -67,15 +67,13 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--stdio"
-      ],
-      "command": "just-mcp",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "just-mcp",
+    "args": [
+      "--stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

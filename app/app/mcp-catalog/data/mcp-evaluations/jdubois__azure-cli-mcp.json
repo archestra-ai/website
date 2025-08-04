@@ -54,24 +54,22 @@
     }
   },
   "configForArchestra": {
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "AZURE_CREDENTIALS",
+      "ghcr.io/jdubois/azure-cli-mcp:latest"
+    ],
+    "env": {
+      "server-configured": "AZURE_CREDENTIALS"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "azure",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "-e",
-        "AZURE_CREDENTIALS",
-        "ghcr.io/jdubois/azure-cli-mcp:latest"
-      ],
-      "command": "docker",
-      "transport": "stdio",
-      "env": {
-        "server-configured": "AZURE_CREDENTIALS"
-      }
     }
   },
   "dependencies": [

@@ -29,18 +29,16 @@
   "rawDependencies": "=== pyproject.toml ===\n[project]\nname = \"zaturn\"\nversion = \"0.2.2\"\ndescription = \"AI Data Analysis MCP & Studio\"\nauthors = [\n  {name = \"Karthik Devan\", email = \"krtdvn@gmail.com\"},\n]\nmaintainers = [\n  {name = \"Karthik Devan\", email = \"krtdvn@gmail.com\"},\n]\nreadme = \"README.md\"\nrequires-python = \">=3.11\"\ndependencies = [\n    \"clickhouse-connect>=0.8.17\",\n    \"cryptography>=44.0.2\",\n    \"duckdb>=1.2.1\",\n    \"fastmcp>=0.4.1\",\n    \"flask[async]>=3.1.1\",\n    \"function-schema>=0.4.5\",\n    \"kaleido==0.2.1\",\n    \"mistune>=3.1.3\",\n    \"openai>=1.82.1\",\n    \"openai-agents>=0.0.16\",\n    \"pandas>=2.2.3\",\n    \"pillow>=11.2.1\",\n    \"platformdirs>=4.3.7\",\n    \"plotly[express]>=6.0.1\",\n    \"psycopg2-binary>=2.9.10\",\n    \"pyarrow>=19.0.1\",\n    \"pymssql>=2.3.7\",\n    \"pymysql>=1.1.1\",\n    \"python-lsp-server>=1.12.2\",\n    \"python-slugify>=8.0.4\",\n    \"seaborn>=0.13.2\",\n    \"setuptools>=78.1.0\",\n    \"sqlalchemy>=2.0.40\",\n    \"tabulate>=0.9.0\",\n    \"tomli-w>=1.2.0\",\n    \"werkzeug>=3.1.3\",\n]\n\n[project.scripts]\nzaturn_mcp = \"zaturn.mcp:main\"\nzaturn_studio = \"zaturn.studio:main\"\n\n[project.urls]\nHomepage = \"https://github.com/kdqed/zaturn\"\nIssues = \"https://github.com/kdqed/zaturn/issues\"\n\n[build-system]\nrequires = [\n    \"setuptools>=60\",\n    \"setuptools-scm>=8.0\"\n]\nbuild-backend = \"setuptools.build_meta\"\n\n[tool.setuptools]\ninclude-package-data = false\n\n[tool.setuptools.packages.find]\nexclude = [\"docs*\", \"brand*\", \"debug*\"]\ninclude = [\"zaturn*\"]\n\n[tool.setuptools.package-data]\n\"*\" = [\"*.*\"]\n\n[dependency-groups]\ndev = []\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "@kdqed/zaturn",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@kdqed/zaturn",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

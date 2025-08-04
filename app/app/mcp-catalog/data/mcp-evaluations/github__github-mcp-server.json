@@ -47,17 +47,15 @@
     }
   },
   "configForArchestra": {
+    "command": "github-mcp-server",
+    "args": [
+      "--stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--stdio"
-      ],
-      "command": "github-mcp-server",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

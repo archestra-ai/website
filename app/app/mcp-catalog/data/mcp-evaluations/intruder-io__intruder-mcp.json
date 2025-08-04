@@ -61,24 +61,22 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "--directory",
+      "path/to/intruder-mcp/intruder_mcp",
+      "run",
+      "server.py"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "intruder",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--directory",
-        "path/to/intruder-mcp/intruder_mcp",
-        "run",
-        "server.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

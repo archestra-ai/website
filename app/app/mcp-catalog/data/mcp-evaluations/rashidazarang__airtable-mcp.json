@@ -45,24 +45,22 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "@smithery/cli",
-        "run",
-        "@rashidazarang/airtable-mcp",
-        "--token",
-        "YOUR_AIRTABLE_TOKEN",
-        "--base",
-        "YOUR_BASE_ID",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@smithery/cli",
+      "run",
+      "@rashidazarang/airtable-mcp",
+      "--token",
+      "YOUR_AIRTABLE_TOKEN",
+      "--base",
+      "YOUR_BASE_ID",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

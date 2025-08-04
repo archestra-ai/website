@@ -29,15 +29,13 @@
   "rawDependencies": "=== pyproject.toml ===\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n[project]\nname = \"mcp-nixos\"\nversion = \"1.0.1\"\ndescription = \"Model Context Protocol server for NixOS, Home Manager, and nix-darwin resources\"\nreadme = \"README.md\"\nauthors = [\n    {name = \"James Brink\", email = \"james@utensils.io\"},\n]\nrequires-python = \">=3.11\"\nlicense = {text = \"MIT\"}\nclassifiers = [\n    \"Development Status :: 4 - Beta\",\n    \"Intended Audience :: Developers\",\n    \"License :: OSI Approved :: MIT License\",\n    \"Programming Language :: Python :: 3\",\n    \"Programming Language :: Python :: 3.11\",\n    \"Programming Language :: Python :: 3.12\",\n    \"Programming Language :: Python :: 3.13\",\n]\ndependencies = [\n    \"fastmcp>=2.11.0\",\n    \"requests>=2.32.4\",\n    \"beautifulsoup4>=4.13.4\",\n]\n\n[project.optional-dependencies]\ndev = [\n    \"build>=1.2.2\",\n    \"pytest>=8.4.1\",\n    \"pytest-cov>=6.2.1\",\n    \"pytest-asyncio>=1.1.0\",\n    \"pytest-xdist>=3.6.0\",\n    \"ruff>=0.12.4\",\n    \"mypy>=1.17.0\",\n    \"types-beautifulsoup4>=4.12.0.20250516\",\n    \"types-requests>=2.32.4\",\n    \"twine>=6.0.1\",\n]\nwin = [\n    \"pywin32>=308.0\",  # Required for Windows-specific file operations and tests\n]\n\n[project.scripts]\nmcp-nixos = \"mcp_nixos.server:main\"\n\n[tool.ruff]\nline-length = 120\ntarget-version = \"py311\"\nsrc = [\"mcp_nixos\", \"tests\"]\n\n[tool.ruff.lint]\nselect = [\n    \"E\",  # pycodestyle errors\n    \"W\",  # pycodestyle warnings\n    \"F\",  # pyflakes\n    \"I\",  # isort\n    \"B\",  # flake8-bugbear\n    \"C4\", # flake8-comprehensions\n    \"UP\", # pyupgrade\n]\nignore = [\"E402\", \"E203\"]\n\n[tool.mypy]\npython_version = \"3.11\"\nstrict = true\nwarn_return_any = true\nwarn_unused_configs = true\nno_implicit_reexport = true\nnamespace_packages = true\nexplicit_package_bases = true\n\n[[tool.mypy.overrides]]\nmodule = \"tests.*\"\nignore_errors = true\n\n[tool.pytest.ini_options]\nasyncio_mode = \"auto\"\ntestpaths = [\"tests\"]\npython_files = \"test_*.py\"\naddopts = \"--cov=mcp_nixos --cov-report=term-missing\"\n\n[tool.coverage.run]\nsource = [\"mcp_nixos\"]\n\n\n=== website/package.json ===\n{\n  \"name\": \"mcp-nixos-website\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"lint\": \"next lint\",\n    \"lint:fix\": \"next lint --fix\",\n    \"type-check\": \"tsc --noEmit\",\n    \"format\": \"prettier --write \\\"**/*.{js,jsx,ts,tsx,json,md}\\\"\",\n    \"check-format\": \"prettier --check \\\"**/*.{js,jsx,ts,tsx,json,md}\\\"\"\n  },\n  \"dependencies\": {\n    \"@types/react-syntax-highlighter\": \"^15.5.13\",\n    \"next\": \"^15.2.4\",\n    \"react\": \"^18.3.1\",\n    \"react-dom\": \"^18.3.1\",\n    \"react-syntax-highlighter\": \"^15.6.1\",\n    \"rehype-pretty-code\": \"^0.14.1\",\n    \"sharp\": \"^0.33.5\",\n    \"shiki\": \"^3.2.1\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"^20.17.30\",\n    \"@types/react\": \"^18.3.20\",\n    \"@types/react-dom\": \"^18.3.6\",\n    \"@typescript-eslint/eslint-plugin\": \"^8.29.0\",\n    \"@typescript-eslint/parser\": \"^8.29.0\",\n    \"autoprefixer\": \"^10.4.21\",\n    \"eslint\": \"^8.57.1\",\n    \"eslint-config-next\": \"^15.2.4\",\n    \"eslint-plugin-react\": \"^7.37.5\",\n    \"eslint-plugin-react-hooks\": \"^5.2.0\",\n    \"postcss\": \"^8.5.3\",\n    \"prettier\": \"^3.5.3\",\n    \"prettier-plugin-tailwindcss\": \"^0.6.11\",\n    \"tailwindcss\": \"^3.4.17\",\n    \"typescript\": \"^5.8.2\"\n  },\n  \"overrides\": {\n    \"prismjs\": \"^1.30.0\"\n  }\n}\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "mcp-nixos"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "mcp-nixos"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

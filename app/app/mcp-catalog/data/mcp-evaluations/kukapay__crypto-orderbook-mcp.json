@@ -42,17 +42,16 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--directory",
-        "",
-        "run",
-        "main.py"
-      ],
-      "command": "uv",
-      "transport": "stdio"
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "",
+      "run",
+      "main.py"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

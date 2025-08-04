@@ -107,15 +107,13 @@
     }
   },
   "configForArchestra": {
+    "command": "./k8m",
+    "args": [],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "password",
       "required": false
-    },
-    "server_config": {
-      "args": [],
-      "command": "./k8m",
-      "transport": "http",
-      "env": {}
     }
   },
   "dependencies": [

@@ -42,18 +42,16 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--directory",
-        "/path/to/jmeter-mcp-server",
-        "run",
-        "jmeter_server.py"
-      ],
-      "command": "/path/to/uv",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "/path/to/uv",
+    "args": [
+      "--directory",
+      "/path/to/jmeter-mcp-server",
+      "run",
+      "jmeter_server.py"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

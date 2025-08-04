@@ -43,24 +43,22 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "biomcp-python",
+      "biomcp",
+      "run"
+    ],
+    "env": {
+      "server-basic": "CBIO_TOKEN",
+      "server-configured": "CBIO_BASE_URL"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "cbioportal",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "--with",
-        "biomcp-python",
-        "biomcp",
-        "run"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "CBIO_TOKEN",
-        "server-configured": "CBIO_BASE_URL"
-      }
     }
   },
   "dependencies": [

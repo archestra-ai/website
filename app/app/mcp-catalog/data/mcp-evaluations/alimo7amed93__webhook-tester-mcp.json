@@ -40,18 +40,16 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "Webhook-test_mcp/server.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "fastmcp",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "fastmcp",
+    "args": [
+      "run",
+      "Webhook-test_mcp/server.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

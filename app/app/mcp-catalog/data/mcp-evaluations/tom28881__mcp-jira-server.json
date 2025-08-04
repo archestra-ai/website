@@ -69,23 +69,21 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "dist/index.js",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "Jira",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "dist/index.js",
-        "--transport",
-        "stdio"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

@@ -41,19 +41,17 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "server.py"
+    ],
+    "env": {
+      "server-configured": "MCP_API_KEY"
+    },
+    "transport": "http",
     "oauth": {
       "provider": "api_key",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "server.py"
-      ],
-      "command": "python",
-      "transport": "http",
-      "env": {
-        "server-configured": "MCP_API_KEY"
-      }
     }
   },
   "dependencies": [

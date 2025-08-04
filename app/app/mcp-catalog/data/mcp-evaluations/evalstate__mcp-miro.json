@@ -50,21 +50,19 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "/path/to/mcp-miro/build/index.js",
+      "--token",
+      "",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "miro",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "/path/to/mcp-miro/build/index.js",
-        "--token",
-        "",
-        "--transport",
-        "stdio"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

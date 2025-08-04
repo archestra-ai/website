@@ -37,14 +37,13 @@
     }
   },
   "configForArchestra": {
+    "command": "./bin/mcp-nutanix",
+    "args": [],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [],
-      "command": "./bin/mcp-nutanix",
-      "transport": "stdio"
     }
   },
   "dependencies": [

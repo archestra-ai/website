@@ -66,26 +66,24 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "--with",
-        "mcp[cli]",
-        "--directory",
-        "cyberchef-api-mcp-server/cyberchef_api_mcp_server/",
-        "mcp",
-        "run",
-        "server.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "mcp[cli]",
+      "--directory",
+      "cyberchef-api-mcp-server/cyberchef_api_mcp_server/",
+      "mcp",
+      "run",
+      "server.py"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

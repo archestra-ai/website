@@ -40,17 +40,16 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@automatalabs/mcp-server-playwright"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "string",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@automatalabs/mcp-server-playwright"
-      ],
-      "command": "npx",
-      "transport": "stdio"
     }
   },
   "dependencies": [

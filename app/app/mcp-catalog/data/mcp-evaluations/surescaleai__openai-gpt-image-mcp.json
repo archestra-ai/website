@@ -66,20 +66,18 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "/absolute/path/to/dist/index.js"
+    ],
+    "env": {
+      "server-basic": "OPENAI_API_KEY",
+      "server-configured": "AZURE_OPENAI_API_KEY, AZURE_OPENAI_ENDPOINT, OPENAI_API_VERSION"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "openai",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "/absolute/path/to/dist/index.js"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "OPENAI_API_KEY",
-        "server-configured": "AZURE_OPENAI_API_KEY, AZURE_OPENAI_ENDPOINT, OPENAI_API_VERSION"
-      }
     }
   },
   "dependencies": [

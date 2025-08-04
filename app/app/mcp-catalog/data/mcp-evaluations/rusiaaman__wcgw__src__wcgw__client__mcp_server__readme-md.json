@@ -123,19 +123,18 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@claude/agent",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@claude/agent",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio"
     }
   }
 }

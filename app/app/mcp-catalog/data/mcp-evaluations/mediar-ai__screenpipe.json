@@ -37,13 +37,11 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [],
-      "command": "screenpipe",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "screenpipe",
+    "args": [],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

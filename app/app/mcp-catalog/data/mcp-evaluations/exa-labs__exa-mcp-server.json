@@ -84,23 +84,21 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "exa-mcp-server",
+      "--tools=web_search_exa,company_research,crawling,linkedin_search,deep_researcher_start,deep_researcher_check"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "exa-mcp-server",
-        "--tools=web_search_exa,company_research,crawling,linkedin_search,deep_researcher_start,deep_researcher_check"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

@@ -78,23 +78,21 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "fhir-mcp-server",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "epic",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "fhir-mcp-server",
-        "--transport",
-        "stdio"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

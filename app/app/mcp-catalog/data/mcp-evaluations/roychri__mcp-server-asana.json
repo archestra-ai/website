@@ -29,22 +29,20 @@
   "rawDependencies": "=== package.json ===\n{\n  \"name\": \"@roychri/mcp-server-asana\",\n  \"publishConfig\": {\n    \"access\": \"public\"\n  },\n  \"version\": \"1.8.0-beta.1\",\n  \"description\": \"MCP Server for Asana\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/roychri/mcp-server-asana.git\"\n  },\n  \"homepage\": \"https://github.com/roychri/mcp-server-asana?tab=readme-ov-file#mcp-server-for-asana\",\n  \"main\": \"dist/index.js\",\n  \"type\": \"module\",\n  \"bin\": {\n    \"mcp-server-asana\": \"dist/index.js\"\n  },\n  \"files\": [\n    \"dist\",\n    \"README.md\"\n  ],\n  \"scripts\": {\n    \"build\": \"node build.js\",\n    \"prepare\": \"npm run build\",\n    \"start\": \"node dist/index.js\",\n    \"dev\": \"NODE_ENV=development NODE_OPTIONS='--loader ts-node/esm' node --experimental-specifier-resolution=node src/index.ts\",\n    \"watch\": \"tsc -w\",\n    \"prepublishOnly\": \"npm run build\",\n    \"inspector\": \"npx @modelcontextprotocol/inspector dist/index.js\"\n  },\n  \"keywords\": [\n    \"asana\",\n    \"mcp\",\n    \"anthropic\"\n  ],\n  \"author\": \"Christian Roy\",\n  \"license\": \"MIT\",\n  \"devDependencies\": {\n    \"@modelcontextprotocol/inspector\": \"^0.4.0\",\n    \"@tsconfig/node20\": \"^20.1.4\",\n    \"@types/jsdom\": \"^21.1.7\",\n    \"@types/node\": \"^22.10.1\",\n    \"esbuild\": \"^0.24.0\",\n    \"esbuild-register\": \"^3.6.0\",\n    \"jsdom\": \"^26.0.0\",\n    \"ts-node\": \"^10.9.2\",\n    \"typescript\": \"^5.7.2\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.4.1\",\n    \"asana\": \"^3.0.12\"\n  }\n}\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "@roychri/mcp-server-asana",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@roychri/mcp-server-asana",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

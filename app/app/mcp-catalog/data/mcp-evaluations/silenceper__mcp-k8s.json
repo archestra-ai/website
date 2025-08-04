@@ -85,24 +85,22 @@
     }
   },
   "configForArchestra": {
+    "command": "mcp-k8s",
+    "args": [
+      "-kubeconfig",
+      "/path/to/kubeconfig",
+      "-enable-create",
+      "-enable-delete",
+      "-enable-update",
+      "-enable-list",
+      "-enable-helm-install",
+      "-enable-helm-upgrade"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-kubeconfig",
-        "/path/to/kubeconfig",
-        "-enable-create",
-        "-enable-delete",
-        "-enable-update",
-        "-enable-list",
-        "-enable-helm-install",
-        "-enable-helm-upgrade"
-      ],
-      "command": "mcp-k8s",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

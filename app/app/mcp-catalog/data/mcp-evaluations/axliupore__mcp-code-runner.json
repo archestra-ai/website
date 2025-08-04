@@ -29,18 +29,16 @@
   "rawDependencies": "=== package.json ===\n{\n  \"name\": \"mcp-code-runner\",\n  \"version\": \"0.0.1\",\n  \"author\": \"axliupore\",\n  \"license\": \"MIT\",\n  \"type\": \"module\",\n  \"bin\": {\n    \"mcp-code-runner\": \"dist/index.js\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/axliupore/map-code-runner\"\n  },\n  \"scripts\": {\n    \"build\": \"tsc && shx chmod +x dist/index.js\",\n    \"start\": \"node ./dist/index.js\",\n    \"dev\": \"tsx watch --clear-screen=false src/index.ts\"\n  },\n  \"description\": \"mcp code runner\",\n  \"devDependencies\": {\n    \"@types/node\": \"^22.14.0\",\n    \"tsx\": \"^4.19.3\",\n    \"typescript\": \"^5.8.3\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.9.0\",\n    \"@types/dockerode\": \"^3.3.37\",\n    \"dockerode\": \"^4.0.5\",\n    \"shx\": \"^0.4.0\",\n    \"zod\": \"^3.24.2\"\n  }\n}\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

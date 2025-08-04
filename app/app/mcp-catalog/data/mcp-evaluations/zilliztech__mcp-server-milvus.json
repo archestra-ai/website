@@ -95,20 +95,18 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "run",
+      "src/mcp_server_milvus/server.py",
+      "--milvus-uri",
+      "http://localhost:19530"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "src/mcp_server_milvus/server.py",
-        "--milvus-uri",
-        "http://localhost:19530"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

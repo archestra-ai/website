@@ -41,19 +41,17 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-remote",
+      "https://gtm-mcp.stape.ai/sse"
+    ],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "google",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://gtm-mcp.stape.ai/sse"
-      ],
-      "command": "npx",
-      "transport": "http",
-      "env": {}
     }
   },
   "dependencies": [

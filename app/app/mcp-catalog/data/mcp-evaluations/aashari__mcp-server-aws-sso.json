@@ -60,20 +60,18 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@aashari/mcp-server-aws-sso"
+    ],
+    "env": {
+      "server-configured": "{\n\t\"aws-sso\": {\n\t\t\"environments\": {\n\t\t\t\"AWS_REGION\": \"us-east-1\",\n\t\t\t\"AWS_SSO_START_URL\": \"https://your-sso-portal.awsapps.com/start\"\n\t\t}\n\t}\n}"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "aws",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@aashari/mcp-server-aws-sso"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-configured": "{\n\t\"aws-sso\": {\n\t\t\"environments\": {\n\t\t\t\"AWS_REGION\": \"us-east-1\",\n\t\t\t\"AWS_SSO_START_URL\": \"https://your-sso-portal.awsapps.com/start\"\n\t\t}\n\t}\n}"
-      }
     }
   },
   "dependencies": [

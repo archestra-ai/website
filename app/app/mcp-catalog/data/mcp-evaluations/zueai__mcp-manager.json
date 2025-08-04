@@ -29,24 +29,22 @@
   "rawDependencies": "=== package.json ===\n{\n\t\"name\": \"mcp-manager\",\n\t\"private\": true,\n\t\"version\": \"0.1.9\",\n\t\"main\": \"./dist-electron/main.js\",\n\t\"scripts\": {\n\t\t\"dev\": \"npm run check && vite --port 7777\",\n\t\t\"build\": \"npm run check && vite build\",\n\t\t\"lint\": \"eslint .\",\n\t\t\"preview\": \"vite preview\",\n\t\t\"check\": \"tsc --noEmit && biome check --write .\",\n\t\t\"electron:dev\": \"tsc -p electron/tsconfig.json && vite\",\n\t\t\"electron:build\": \"vite build && tsc -p electron/tsconfig.json && electron-builder --mac\",\n\t\t\"app:dir\": \"electron-builder --dir\",\n\t\t\"app:dist\": \"electron-builder\"\n\t},\n\t\"dependencies\": {\n\t\t\"lucide-react\": \"^0.468.0\",\n\t\t\"react\": \"^18.3.1\",\n\t\t\"react-dom\": \"^18.3.1\"\n\t},\n\t\"devDependencies\": {\n\t\t\"@biomejs/biome\": \"^1.9.4\",\n\t\t\"@eslint/js\": \"^9.15.0\",\n\t\t\"@types/node\": \"^22.10.1\",\n\t\t\"@types/react\": \"^18.3.12\",\n\t\t\"@types/react-dom\": \"^18.3.1\",\n\t\t\"@vitejs/plugin-react\": \"^4.3.4\",\n\t\t\"autoprefixer\": \"^10.4.20\",\n\t\t\"concurrently\": \"^8.2.2\",\n\t\t\"daisyui\": \"^4.12.14\",\n\t\t\"electron\": \"^29.1.4\",\n\t\t\"electron-builder\": \"^25.1.8\",\n\t\t\"eslint\": \"^9.15.0\",\n\t\t\"eslint-plugin-react-hooks\": \"^5.0.0\",\n\t\t\"eslint-plugin-react-refresh\": \"^0.4.14\",\n\t\t\"globals\": \"^15.12.0\",\n\t\t\"postcss\": \"^8.4.49\",\n\t\t\"tailwindcss\": \"^3.4.16\",\n\t\t\"typescript\": \"~5.6.2\",\n\t\t\"typescript-eslint\": \"^8.15.0\",\n\t\t\"vite\": \"^6.0.1\",\n\t\t\"vite-plugin-electron\": \"^0.28.3\",\n\t\t\"vite-plugin-electron-renderer\": \"^0.14.5\",\n\t\t\"wait-on\": \"^7.2.0\"\n\t},\n\t\"build\": {\n\t\t\"appId\": \"com.mcp-manager\",\n\t\t\"productName\": \"MCP Manager\",\n\t\t\"files\": [\"dist/**/*\", \"dist-electron/**/*\", \"electron/**/*\"],\n\t\t\"mac\": {\n\t\t\t\"icon\": \"public/app.png\",\n\t\t\t\"target\": [\n\t\t\t\t{\n\t\t\t\t\t\"target\": \"dmg\",\n\t\t\t\t\t\"arch\": [\"arm64\"]\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"artifactName\": \"${productName}-${version}-${arch}.${ext}\"\n\t\t},\n\t\t\"dmg\": {\n\t\t\t\"sign\": false\n\t\t}\n\t}\n}\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@anthropic/claude-mcp-server",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@anthropic/claude-mcp-server",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

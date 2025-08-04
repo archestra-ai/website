@@ -42,17 +42,15 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "python",
-        "src/ncbi_mcp_server/server.py"
-      ],
-      "command": "poetry",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "poetry",
+    "args": [
+      "run",
+      "python",
+      "src/ncbi_mcp_server/server.py"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

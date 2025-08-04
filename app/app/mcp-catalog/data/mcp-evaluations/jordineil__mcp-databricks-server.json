@@ -48,23 +48,21 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "main.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "DATABRICKS_HOST",
+      "server-configured": "DATABRICKS_TOKEN",
+      "server-docker": "DATABRICKS_HTTP_PATH"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "main.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "DATABRICKS_HOST",
-        "server-configured": "DATABRICKS_TOKEN",
-        "server-docker": "DATABRICKS_HTTP_PATH"
-      }
     }
   },
   "dependencies": [

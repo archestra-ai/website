@@ -46,24 +46,22 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "esp-rainmaker-cli",
+      "--with",
+      "mcp[cli]",
+      "mcp",
+      "run",
+      "/app/server.py"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "esp-rainmaker-cli",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "--with",
-        "esp-rainmaker-cli",
-        "--with",
-        "mcp[cli]",
-        "mcp",
-        "run",
-        "/app/server.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

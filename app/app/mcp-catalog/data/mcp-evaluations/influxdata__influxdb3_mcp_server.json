@@ -97,24 +97,22 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-influxdb",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "INFLUX_DB_INSTANCE_URL,INFLUX_DB_TOKEN,INFLUX_DB_PRODUCT_TYPE",
+      "server-configured": "INFLUX_DB_CLUSTER_ID,INFLUX_DB_ACCOUNT_ID,INFLUX_DB_MANAGEMENT_TOKEN",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-influxdb",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "INFLUX_DB_INSTANCE_URL,INFLUX_DB_TOKEN,INFLUX_DB_PRODUCT_TYPE",
-        "server-configured": "INFLUX_DB_CLUSTER_ID,INFLUX_DB_ACCOUNT_ID,INFLUX_DB_MANAGEMENT_TOKEN",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

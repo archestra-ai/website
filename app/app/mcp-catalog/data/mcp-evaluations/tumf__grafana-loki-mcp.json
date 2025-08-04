@@ -67,27 +67,25 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "grafana-loki-mcp",
+      "-u",
+      "GRAFANA_URL",
+      "-k",
+      "GRAFANA_API_KEY",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "grafana",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "grafana-loki-mcp",
-        "-u",
-        "GRAFANA_URL",
-        "-k",
-        "GRAFANA_API_KEY",
-        "--transport",
-        "stdio"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

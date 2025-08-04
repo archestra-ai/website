@@ -49,17 +49,16 @@
     }
   },
   "configForArchestra": {
+    "command": "anyquery",
+    "args": [
+      "mcp",
+      "--stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "mcp",
-        "--stdio"
-      ],
-      "command": "anyquery",
-      "transport": "stdio"
     }
   },
   "dependencies": [

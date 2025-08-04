@@ -29,16 +29,14 @@
   "rawDependencies": "=== package.json ===\n{\n  \"name\": \"vscode-mcp-server\",\n  \"icon\": \"media/logo.png\",\n  \"displayName\": \"vscode-mcp-server\",\n  \"description\": \"VS Code as a MCP server\",\n  \"version\": \"0.2.0\",\n  \"repository\": \"https://github.com/juehang/vscode-mcp-server\",\n  \"publisher\": \"JuehangQin\",\n  \"license\": \"MIT\",\n  \"engines\": {\n    \"vscode\": \"^1.99.0\"\n  },\n  \"categories\": [\n    \"Other\"\n  ],\n  \"activationEvents\": [\n    \"onStartupFinished\"\n  ],\n  \"main\": \"./out/extension.js\",\n  \"contributes\": {\n    \"configuration\": {\n      \"title\": \"MCP Server\",\n      \"properties\": {\n        \"vscode-mcp-server.port\": {\n          \"type\": \"number\",\n          \"default\": 3000,\n          \"minimum\": 1024,\n          \"maximum\": 65535,\n          \"description\": \"The port number for the MCP server\"\n        },\n        \"vscode-mcp-server.defaultEnabled\": {\n          \"type\": \"boolean\",\n          \"default\": false,\n          \"description\": \"Whether the MCP server should be enabled by default on VS Code startup\"\n        },\n        \"vscode-mcp-server.enabledTools\": {\n          \"type\": \"object\",\n          \"default\": {\n            \"file\": true,\n            \"edit\": true,\n            \"shell\": true,\n            \"diagnostics\": true,\n            \"symbol\": true\n          },\n          \"properties\": {\n            \"file\": {\n              \"type\": \"boolean\",\n              \"description\": \"Enable file operations tools (read, write, list files)\"\n            },\n            \"edit\": {\n              \"type\": \"boolean\", \n              \"description\": \"Enable file editing tools (create, edit, delete files)\"\n            },\n            \"shell\": {\n              \"type\": \"boolean\",\n              \"description\": \"Enable shell command execution tools\"\n            },\n            \"diagnostics\": {\n              \"type\": \"boolean\",\n              \"description\": \"Enable VS Code diagnostics tools\"\n            },\n            \"symbol\": {\n              \"type\": \"boolean\",\n              \"description\": \"Enable code symbol and structure analysis tools\"\n            }\n          },\n          \"description\": \"Configure which MCP tools are enabled\"\n        }\n      }\n    },\n    \"commands\": [\n      {\n        \"command\": \"vscode-mcp-server.helloWorld\",\n        \"title\": \"Hello World\"\n      },\n      {\n        \"command\": \"vscode-mcp-server.showServerInfo\",\n        \"title\": \"Show MCP Server Information\"\n      },\n      {\n        \"command\": \"vscode-mcp-server.toggleServer\",\n        \"title\": \"Toggle MCP Server\"\n      }\n    ]\n  },\n  \"scripts\": {\n    \"vscode:prepublish\": \"npm run compile\",\n    \"compile\": \"tsc -p ./\",\n    \"watch\": \"tsc -watch -p ./\",\n    \"pretest\": \"npm run compile && npm run lint\",\n    \"lint\": \"eslint src\",\n    \"test\": \"vscode-test\"\n  },\n  \"devDependencies\": {\n    \"@types/mocha\": \"^10.0.10\",\n    \"@types/node\": \"20.x\",\n    \"@types/proxyquire\": \"^1.3.28\",\n    \"@types/sinon\": \"^10.0.13\",\n    \"@types/vscode\": \"^1.99.0\",\n    \"@typescript-eslint/eslint-plugin\": \"^8.28.0\",\n    \"@typescript-eslint/parser\": \"^8.28.0\",\n    \"@vscode/test-cli\": \"^0.0.10\",\n    \"@vscode/test-electron\": \"^2.4.1\",\n    \"@vscode/vsce\": \"^3.4.2\",\n    \"eslint\": \"^9.23.0\",\n    \"proxyquire\": \"^2.1.3\",\n    \"sinon\": \"^16.1.1\",\n    \"typescript\": \"^5.8.2\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/inspector\": \"github:modelcontextprotocol/inspector\",\n    \"@modelcontextprotocol/sdk\": \"^1.10.1\",\n    \"@types/express\": \"^4.17.21\",\n    \"express\": \"^4.18.3\",\n    \"zod\": \"^3.22.4\"\n  }\n}\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "mcp-remote@next",
-        "http://localhost:3000/mcp"
-      ],
-      "command": "npx",
-      "transport": "http",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "mcp-remote@next",
+      "http://localhost:3000/mcp"
+    ],
+    "env": {},
+    "transport": "http",
+    "oauth": {}
   },
   "dependencies": [
     {

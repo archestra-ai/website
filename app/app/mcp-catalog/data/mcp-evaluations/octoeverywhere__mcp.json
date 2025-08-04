@@ -27,14 +27,13 @@
   "implementing_streamable_http": true,
   "implementing_oauth2": false,
   "configForArchestra": {
+    "command": "OctoEverywhere",
+    "args": [],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "OctoEverywhere",
       "required": true
-    },
-    "server_config": {
-      "args": [],
-      "command": "OctoEverywhere",
-      "transport": "http"
     }
   },
   "evaluation_model": "gemini-2.5-flash",

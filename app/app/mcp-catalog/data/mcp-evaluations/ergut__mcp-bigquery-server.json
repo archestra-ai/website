@@ -81,26 +81,24 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@ergut/mcp-bigquery-server",
+      "--project-id",
+      "your-project-id",
+      "--location",
+      "us-central1",
+      "--key-file",
+      "/path/to/service-account-key.json",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@ergut/mcp-bigquery-server",
-        "--project-id",
-        "your-project-id",
-        "--location",
-        "us-central1",
-        "--key-file",
-        "/path/to/service-account-key.json",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

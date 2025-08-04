@@ -58,20 +58,18 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "--directory",
+      ".",
+      "run",
+      "server.py"
+    ],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "github",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--directory",
-        ".",
-        "run",
-        "server.py"
-      ],
-      "command": "uv",
-      "transport": "http",
-      "env": {}
     }
   },
   "dependencies": [

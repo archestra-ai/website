@@ -39,17 +39,15 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "mcp_server.py"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "mcp_server.py"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

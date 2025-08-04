@@ -63,21 +63,19 @@
     }
   },
   "configForArchestra": {
+    "command": "gateway",
+    "args": [
+      "start",
+      "--connection-string",
+      "postgres://db-user:db-password@db-host/db-name?sslmode=require",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "oauth",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "start",
-        "--connection-string",
-        "postgres://db-user:db-password@db-host/db-name?sslmode=require",
-        "--transport",
-        "stdio"
-      ],
-      "command": "gateway",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

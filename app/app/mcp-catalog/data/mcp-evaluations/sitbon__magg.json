@@ -153,19 +153,17 @@
     }
   },
   "configForArchestra": {
+    "command": "magg",
+    "args": [
+      "serve"
+    ],
+    "env": {
+      "server-docker": "MAGG_PRIVATE_KEY"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "jwt",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "serve"
-      ],
-      "command": "magg",
-      "transport": "stdio",
-      "env": {
-        "server-docker": "MAGG_PRIVATE_KEY"
-      }
     }
   },
   "dependencies": [

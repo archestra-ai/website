@@ -39,19 +39,17 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "bridge/binja_mcp_bridge.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "bridge/binja_mcp_bridge.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

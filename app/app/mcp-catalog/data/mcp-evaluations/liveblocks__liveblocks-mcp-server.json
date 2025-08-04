@@ -42,19 +42,17 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "build/index.js"
+    ],
+    "env": {
+      "server-configured": "LIVEBLOCKS_SECRET_KEY"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "liveblocks",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "build/index.js"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-configured": "LIVEBLOCKS_SECRET_KEY"
-      }
     }
   },
   "dependencies": [

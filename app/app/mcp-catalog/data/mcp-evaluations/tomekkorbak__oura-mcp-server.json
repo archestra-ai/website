@@ -42,21 +42,19 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "oura-mcp-server"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "oura",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "oura-mcp-server"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

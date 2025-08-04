@@ -42,22 +42,20 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--directory",
-        "/path/to/k6-mcp-server",
-        "run",
-        "k6_server.py"
-      ],
-      "command": "/path/to/bin/uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "/path/to/bin/uv",
+    "args": [
+      "--directory",
+      "/path/to/k6-mcp-server",
+      "run",
+      "k6_server.py"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

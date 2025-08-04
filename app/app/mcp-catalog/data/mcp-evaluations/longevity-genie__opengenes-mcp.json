@@ -78,13 +78,12 @@
     }
   },
   "configForArchestra": {
-    "server_config": {
-      "args": [
-        "opengenes-mcp"
-      ],
-      "command": "uvx",
-      "transport": "stdio"
-    }
+    "command": "uvx",
+    "args": [
+      "opengenes-mcp"
+    ],
+    "env": {},
+    "transport": "stdio"
   },
   "dependencies": [
     {

@@ -149,25 +149,23 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--openapi",
-        "https://api.example.com/openapi.json",
-        "--transport",
-        "stdio",
-        "--auth-type",
-        "bearer",
-        "--bearer-env",
-        "API_TOKEN"
-      ],
-      "command": "mcp-swagger-server",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "mcp-swagger-server",
+    "args": [
+      "--openapi",
+      "https://api.example.com/openapi.json",
+      "--transport",
+      "stdio",
+      "--auth-type",
+      "bearer",
+      "--bearer-env",
+      "API_TOKEN"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   }
 }

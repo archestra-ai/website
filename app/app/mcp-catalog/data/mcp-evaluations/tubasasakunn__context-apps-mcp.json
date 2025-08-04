@@ -28,14 +28,13 @@
   "implementing_oauth2": true,
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
+    "command": "UNKNOWN",
+    "args": [],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "Apple ID",
       "required": true
-    },
-    "server_config": {
-      "args": [],
-      "command": "UNKNOWN",
-      "transport": "http"
     }
   },
   "dependencies": [

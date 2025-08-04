@@ -66,20 +66,18 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "coda-mcp@latest"
+    ],
+    "env": {
+      "server-basic": "API_KEY"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "coda",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "coda-mcp@latest"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "API_KEY"
-      }
     }
   },
   "dependencies": [

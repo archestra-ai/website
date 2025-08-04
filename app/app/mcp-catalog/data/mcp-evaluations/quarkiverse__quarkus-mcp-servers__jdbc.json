@@ -94,16 +94,14 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "jdbc@quarkiverse/quarkus-mcp-servers",
-        "[jdbc_url]"
-      ],
-      "command": "jbang",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "jbang",
+    "args": [
+      "jdbc@quarkiverse/quarkus-mcp-servers",
+      "[jdbc_url]"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

@@ -99,21 +99,19 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "yandex-tracker-mcp@latest"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "etc",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "yandex-tracker-mcp@latest"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

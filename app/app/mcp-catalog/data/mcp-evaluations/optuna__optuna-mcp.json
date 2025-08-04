@@ -61,17 +61,15 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "optuna-mcp",
-        "--storage",
-        "sqlite:///optuna.db"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "optuna-mcp",
+      "--storage",
+      "sqlite:///optuna.db"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

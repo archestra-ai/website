@@ -69,21 +69,19 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "-N",
-        "-R=node_modules",
-        "-W=node_modules",
-        "--node-modules-dir=auto",
-        "jsr:@pydantic/mcp-run-python",
-        "stdio"
-      ],
-      "command": "deno",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "deno",
+    "args": [
+      "run",
+      "-N",
+      "-R=node_modules",
+      "-W=node_modules",
+      "--node-modules-dir=auto",
+      "jsr:@pydantic/mcp-run-python",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

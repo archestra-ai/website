@@ -43,21 +43,19 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "/path/to/gitlab-mr-mcp/index.js"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "gitlab",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "/path/to/gitlab-mr-mcp/index.js"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

@@ -45,15 +45,13 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "stdio"
-      ],
-      "command": "container-use",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "container-use",
+    "args": [
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

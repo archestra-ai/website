@@ -52,22 +52,20 @@
     }
   },
   "configForArchestra": {
+    "command": "bun",
+    "args": [
+      "run",
+      "src/index.ts"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "src/index.ts"
-      ],
-      "command": "bun",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

@@ -47,19 +47,17 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "mongo-mcp",
-        "--transport",
-        "stdio",
-        "mongodb://<username>:<password>@<host>:<port>/<database>?authSource=admin"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mongo-mcp",
+      "--transport",
+      "stdio",
+      "mongodb://<username>:<password>@<host>:<port>/<database>?authSource=admin"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

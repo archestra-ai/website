@@ -43,22 +43,20 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "campertunity-mcp-server@latest",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "CAMPERTUNITY_API_KEY"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "campertunity-mcp-server@latest",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "CAMPERTUNITY_API_KEY"
-      }
     }
   },
   "dependencies": [

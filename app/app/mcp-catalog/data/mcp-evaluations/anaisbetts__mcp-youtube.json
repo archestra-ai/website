@@ -29,18 +29,16 @@
   "rawDependencies": "=== package.json ===\n{\n  \"name\": \"@anaisbetts/mcp-youtube\",\n  \"version\": \"0.6.0\",\n  \"bin\": {\n    \"mcp-youtube\": \"lib/index.mjs\"\n  },\n  \"description\": \"YouTube downloader for MCP\",\n  \"main\": \"dist/index.js\",\n  \"scripts\": {\n    \"prepublish\": \"git clean -xdf dist && bun build --target node src/index.ts --outdir dist\",\n    \"test\": \"bun test\"\n  },\n  \"author\": \"Ani Betts <anais@anaisbetts.org>\",\n  \"license\": \"MIT\",\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^0.6.0\",\n    \"rimraf\": \"^6.0.1\",\n    \"spawn-rx\": \"^4.0.0\"\n  },\n  \"devDependencies\": {\n    \"shx\": \"^0.3.4\",\n    \"bun-types\": \"latest\"\n  }\n}",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "@anaisbetts/mcp-youtube",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@anaisbetts/mcp-youtube",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

@@ -39,19 +39,17 @@
     }
   },
   "configForArchestra": {
+    "command": "./mcp-k8s-eye",
+    "args": [],
+    "env": {
+      "server-basic": "{\n  \"mcpServers\": {\n    \"k8s eye\": {\n      \"command\": \"YOUR mcp-k8s-eye PATH\",\n      \"env\": {\n        \"HOME\": \"USER HOME DIR\"\n      },\n    }\n  }\n}",
+      "server-configured": "{\n  \"mcpServers\": {\n    \"k8s eye\": {\n      \"command\": \"./mcp-k8s-eye\",\n      \"env\": {\n        \"HOME\": \"~\"\n      },\n    }\n  }\n}",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [],
-      "command": "./mcp-k8s-eye",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "{\n  \"mcpServers\": {\n    \"k8s eye\": {\n      \"command\": \"YOUR mcp-k8s-eye PATH\",\n      \"env\": {\n        \"HOME\": \"USER HOME DIR\"\n      },\n    }\n  }\n}",
-        "server-configured": "{\n  \"mcpServers\": {\n    \"k8s eye\": {\n      \"command\": \"./mcp-k8s-eye\",\n      \"env\": {\n        \"HOME\": \"~\"\n      },\n    }\n  }\n}",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

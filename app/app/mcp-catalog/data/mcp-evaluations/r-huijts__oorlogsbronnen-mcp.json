@@ -45,17 +45,16 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "oorlogsbronnen-mcp"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "oorlogsbronnen-mcp"
-      ],
-      "command": "npx",
-      "transport": "stdio"
     }
   },
   "dependencies": [

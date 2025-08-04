@@ -44,16 +44,14 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "dev"
-      ],
-      "command": "pnpm",
-      "transport": "http",
-      "env": {}
-    }
+    "command": "pnpm",
+    "args": [
+      "run",
+      "dev"
+    ],
+    "env": {},
+    "transport": "http",
+    "oauth": {}
   },
   "dependencies": [
     {

@@ -57,15 +57,13 @@
     }
   },
   "configForArchestra": {
+    "command": "./mkp",
+    "args": [],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": false
-    },
-    "server_config": {
-      "args": [],
-      "command": "./mkp",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

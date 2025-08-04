@@ -80,28 +80,26 @@
     }
   ],
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "build/index.js",
-        "--transport",
-        "stdio",
-        "--apiUrl",
-        "https://www.comet.com/opik/api",
-        "--apiKey",
-        "YOUR_API_KEY",
-        "--workspace",
-        "default",
-        "--debug",
-        "true"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "node",
+    "args": [
+      "build/index.js",
+      "--transport",
+      "stdio",
+      "--apiUrl",
+      "https://www.comet.com/opik/api",
+      "--apiKey",
+      "YOUR_API_KEY",
+      "--workspace",
+      "default",
+      "--debug",
+      "true"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   }
 }

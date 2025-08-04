@@ -72,24 +72,22 @@
     }
   },
   "configForArchestra": {
+    "command": "deno",
+    "args": [
+      "run",
+      "--allow-all",
+      "--env-file=.env",
+      "src/index.ts"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "qlik",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "--allow-all",
-        "--env-file=.env",
-        "src/index.ts"
-      ],
-      "command": "deno",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

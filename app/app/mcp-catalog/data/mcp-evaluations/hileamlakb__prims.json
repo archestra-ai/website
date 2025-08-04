@@ -47,18 +47,16 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "-m",
+      "server.main"
+    ],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-m",
-        "server.main"
-      ],
-      "command": "python",
-      "transport": "http",
-      "env": {}
     }
   },
   "dependencies": [

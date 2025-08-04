@@ -42,21 +42,19 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "C:\\Path\\To\\Your\\project\\NewsMCP\\build\\index.js"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "Marketaux",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "C:\\Path\\To\\Your\\project\\NewsMCP\\build\\index.js"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

@@ -45,15 +45,13 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "mcp-api-server.py"
-      ],
-      "command": "python",
-      "transport": "http",
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "mcp-api-server.py"
+    ],
+    "env": {},
+    "transport": "http",
+    "oauth": {}
   },
   "dependencies": [
     {

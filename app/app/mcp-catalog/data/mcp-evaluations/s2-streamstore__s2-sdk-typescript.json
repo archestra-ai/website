@@ -52,24 +52,22 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "--package",
+      "@s2-dev/streamstore",
+      "--",
+      "mcp",
+      "start",
+      "--access-token",
+      "..."
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "S2",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "--package",
-        "@s2-dev/streamstore",
-        "--",
-        "mcp",
-        "start",
-        "--access-token",
-        "..."
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

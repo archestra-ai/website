@@ -96,22 +96,20 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@rad-security/mcp-server"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "streamable",
     "oauth": {
       "provider": "rad-security",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@rad-security/mcp-server"
-      ],
-      "command": "npx",
-      "transport": "streamable",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

@@ -38,17 +38,16 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "bazi-mcp"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "github|google|slack|etc",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "bazi-mcp"
-      ],
-      "command": "npx",
-      "transport": "stdio"
     }
   },
   "dependencies": [

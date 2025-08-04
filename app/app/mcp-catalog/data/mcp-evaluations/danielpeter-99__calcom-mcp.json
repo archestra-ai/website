@@ -44,24 +44,22 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "app.py",
-        "--transport",
-        "sse",
-        "--port",
-        "8010"
-      ],
-      "command": "fastmcp",
-      "transport": "http",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "fastmcp",
+    "args": [
+      "run",
+      "app.py",
+      "--transport",
+      "sse",
+      "--port",
+      "8010"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "http",
+    "oauth": {}
   },
   "dependencies": [
     {

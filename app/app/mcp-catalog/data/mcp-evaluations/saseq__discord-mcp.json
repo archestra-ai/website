@@ -55,22 +55,20 @@
     }
   },
   "configForArchestra": {
+    "command": "java",
+    "args": [
+      "-jar",
+      "/absolute/path/to/discord-mcp-0.0.1-SNAPSHOT.jar"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "discord",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-jar",
-        "/absolute/path/to/discord-mcp-0.0.1-SNAPSHOT.jar"
-      ],
-      "command": "java",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

@@ -61,23 +61,21 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "bridge_mcp_ghidra.py",
-        "--transport",
-        "sse",
-        "--mcp-host",
-        "127.0.0.1",
-        "--mcp-port",
-        "8081",
-        "--ghidra-server",
-        "http://127.0.0.1:8080/"
-      ],
-      "command": "python",
-      "transport": "sse",
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "bridge_mcp_ghidra.py",
+      "--transport",
+      "sse",
+      "--mcp-host",
+      "127.0.0.1",
+      "--mcp-port",
+      "8081",
+      "--ghidra-server",
+      "http://127.0.0.1:8080/"
+    ],
+    "env": {},
+    "transport": "sse",
+    "oauth": {}
   },
   "dependencies": [
     {

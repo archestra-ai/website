@@ -46,23 +46,21 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "--refresh-package",
+      "webEvalAgent",
+      "--from",
+      "git+https://github.com/Operative-Sh/web-eval-agent.git",
+      "webEvalAgent"
+    ],
+    "env": {
+      "server-basic": "OPERATIVE_API_KEY"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "operative",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--refresh-package",
-        "webEvalAgent",
-        "--from",
-        "git+https://github.com/Operative-Sh/web-eval-agent.git",
-        "webEvalAgent"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "OPERATIVE_API_KEY"
-      }
     }
   },
   "dependencies": [

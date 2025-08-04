@@ -37,13 +37,11 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [],
-      "command": "piloty",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "piloty",
+    "args": [],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

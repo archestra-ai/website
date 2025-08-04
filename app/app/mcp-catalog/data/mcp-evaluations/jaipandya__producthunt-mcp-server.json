@@ -51,19 +51,17 @@
     }
   },
   "configForArchestra": {
+    "command": "product-hunt-mcp",
+    "args": [],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "product-hunt",
       "required": true
-    },
-    "server_config": {
-      "args": [],
-      "command": "product-hunt-mcp",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

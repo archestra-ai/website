@@ -42,20 +42,18 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "--directory",
+      "X:\\path\\to\\mcp-vms",
+      "run",
+      "mcp_vms.py"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--directory",
-        "X:\\path\\to\\mcp-vms",
-        "run",
-        "mcp_vms.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

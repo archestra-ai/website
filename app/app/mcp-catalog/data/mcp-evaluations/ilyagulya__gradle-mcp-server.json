@@ -40,18 +40,16 @@
     }
   },
   "configForArchestra": {
+    "command": "java",
+    "args": [
+      "-jar",
+      "/root/mcp-servers/gradle-mcp-server/gradle-mcp-server-all.jar"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-jar",
-        "/root/mcp-servers/gradle-mcp-server/gradle-mcp-server-all.jar"
-      ],
-      "command": "java",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

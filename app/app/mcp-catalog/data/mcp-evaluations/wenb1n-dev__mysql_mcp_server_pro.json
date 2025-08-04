@@ -150,21 +150,19 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "--from",
+      "mysql_mcp_server_pro",
+      "mysql_mcp_server_pro",
+      "--mode",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--from",
-        "mysql_mcp_server_pro",
-        "mysql_mcp_server_pro",
-        "--mode",
-        "stdio"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

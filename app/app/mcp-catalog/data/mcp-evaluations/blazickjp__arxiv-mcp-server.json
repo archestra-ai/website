@@ -54,23 +54,21 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "tool",
-        "run",
-        "arxiv-mcp-server",
-        "--storage-path",
-        "~/.arxiv-mcp-server/papers"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "uv",
+    "args": [
+      "tool",
+      "run",
+      "arxiv-mcp-server",
+      "--storage-path",
+      "~/.arxiv-mcp-server/papers"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

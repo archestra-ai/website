@@ -47,21 +47,19 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "src/prometheus_mcp_server/main.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "PROMETHEUS_USERNAME",
-        "server-configured": "PROMETHEUS_PASSWORD",
-        "server-docker": "PROMETHEUS_TOKEN"
-      }
-    }
+    "command": "python",
+    "args": [
+      "src/prometheus_mcp_server/main.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "PROMETHEUS_USERNAME",
+      "server-configured": "PROMETHEUS_PASSWORD",
+      "server-docker": "PROMETHEUS_TOKEN"
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

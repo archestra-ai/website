@@ -51,17 +51,15 @@
     }
   },
   "configForArchestra": {
+    "command": "sh",
+    "args": [
+      "start.sh"
+    ],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "start.sh"
-      ],
-      "command": "sh",
-      "transport": "http",
-      "env": {}
     }
   },
   "dependencies": [

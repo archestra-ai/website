@@ -45,19 +45,17 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "{ABSOLUTE PATH TO FILE HERE}/dist/index.js",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "{ABSOLUTE PATH TO FILE HERE}/dist/index.js",
-        "--transport",
-        "stdio"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

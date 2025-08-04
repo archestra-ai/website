@@ -77,16 +77,15 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "biothings-mcp"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "biothings-mcp"
-      ],
-      "command": "uvx",
-      "transport": "stdio"
     }
   },
   "dependencies": [

@@ -39,17 +39,15 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "main.py"
+    ],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "TickTick",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "main.py"
-      ],
-      "command": "python",
-      "transport": "http",
-      "env": {}
     }
   },
   "dependencies": [

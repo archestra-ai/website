@@ -125,22 +125,20 @@
     }
   },
   "configForArchestra": {
+    "command": "mcp-libsql",
+    "args": [
+      "--url",
+      "libsql://your-database.turso.io"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "turso",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--url",
-        "libsql://your-database.turso.io"
-      ],
-      "command": "mcp-libsql",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

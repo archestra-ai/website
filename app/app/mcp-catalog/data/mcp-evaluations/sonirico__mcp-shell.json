@@ -88,19 +88,17 @@
     }
   },
   "configForArchestra": {
+    "command": "mcp-shell",
+    "args": [],
+    "env": {
+      "server-basic": "MCP_SHELL_SERVER_NAME",
+      "server-configured": "MCP_SHELL_SEC_CONFIG_FILE",
+      "server-docker": "MCP_SHELL_LOG_LEVEL"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [],
-      "command": "mcp-shell",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "MCP_SHELL_SERVER_NAME",
-        "server-configured": "MCP_SHELL_SEC_CONFIG_FILE",
-        "server-docker": "MCP_SHELL_LOG_LEVEL"
-      }
     }
   },
   "dependencies": [

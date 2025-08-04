@@ -39,17 +39,16 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "metmuseum-mcp"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "metmuseum-mcp"
-      ],
-      "command": "npx",
-      "transport": "stdio"
     }
   },
   "dependencies": [
