@@ -131,7 +131,7 @@ export async function GET(
 
   const color = getColor(score);
   const label = "Trust Score";
-  const message = `${score}/100`;
+  const message = getScoreLabel(score);
 
   const svg = generateBadgeSVG(label, message, color);
 
@@ -141,6 +141,12 @@ export async function GET(
       "Cache-Control": "public, max-age=3600", // Cache for 1 hour
     },
   });
+}
+
+function getScoreLabel(score: number): string {
+  if (score >= 80) return `${score}/100`;
+  if (score >= 50) return "Good";
+  return "Developing";
 }
 
 function getColor(score: number): string {

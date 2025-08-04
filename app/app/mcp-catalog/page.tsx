@@ -175,9 +175,14 @@ export default function MCPCatalogPage() {
           <div className="mb-12 relative">
             <div className="flex flex-col xl:flex-row gap-8 xl:gap-12 items-start">
               <div className="flex-1 w-full">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                  MCP Catalog <span className="text-2xl sm:text-3xl lg:text-4xl text-gray-600">& Trust Score</span>
-                </h1>
+                <div className="flex items-center gap-3 mb-4">
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
+                    MCP Catalog <span className="text-2xl sm:text-3xl lg:text-4xl text-gray-600">& Trust Score</span>
+                  </h1>
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200">
+                    Beta
+                  </span>
+                </div>
                 <p className="text-base sm:text-lg text-gray-600 mb-6">
                   What if we scraped all {mcpServers.length} MCP servers from GitHub, extracted 
                   data about dependencies, protocol features, and community maturity, then 
