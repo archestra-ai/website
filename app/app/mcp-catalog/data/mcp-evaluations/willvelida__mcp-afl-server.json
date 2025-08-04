@@ -53,5 +53,15 @@
       "transport": "stdio",
       "env": {}
     }
-  }
+  },
+  "dependencies": [
+    {
+      "importance": 10,
+      "name": "Model Context Protocol SDK"
+    },
+    {
+      "importance": 8,
+      "name": "Squiggle API Client"
+    }
+  ]
 }

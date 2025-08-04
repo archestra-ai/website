@@ -137,6 +137,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
     if (selectedCategory !== 'All') params.set('category', selectedCategory);
     if (selectedLanguage !== 'All') params.set('language', selectedLanguage);
     if (selectedDependency !== 'All') params.set('dependency', selectedDependency);
+    if (selectedFeature !== 'All') params.set('feature', selectedFeature);
     if (sortBy && sortDirection) {
       params.set('sort', sortBy);
       params.set('dir', sortDirection);
@@ -144,7 +145,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
     
     const newUrl = params.toString() ? `?${params.toString()}` : '/mcp-catalog';
     router.replace(newUrl, { scroll: false });
-  }, [searchQuery, selectedCategory, selectedLanguage, selectedDependency, sortBy, sortDirection, router]);
+  }, [searchQuery, selectedCategory, selectedLanguage, selectedDependency, selectedFeature, sortBy, sortDirection, router]);
 
   // Calculate search relevance score for a server
   const calculateSearchRelevance = (server: MCPServer, query: string): number => {
@@ -438,7 +439,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
               <div>
                 <h3 className="text-sm font-medium text-gray-700 mb-2">MCP Features</h3>
                 <div className="space-y-1">
-                  {mcpFeatures.slice(0, 7).map((feature) => (
+                  {mcpFeatures.map((feature) => (
                     <button
                       key={feature}
                       onClick={() => setSelectedFeature(feature)}
@@ -614,7 +615,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
               <div>
                 <h3 className="text-sm font-medium text-gray-700 mb-2">MCP Features</h3>
                 <div className="space-y-1">
-                  {mcpFeatures.slice(0, 7).map((feature) => (
+                  {mcpFeatures.map((feature) => (
                     <button
                       key={feature}
                       onClick={() => setSelectedFeature(feature)}
@@ -843,6 +844,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
                 if (selectedCategory !== 'All') params.set('category', selectedCategory);
                 if (selectedLanguage !== 'All') params.set('language', selectedLanguage);
                 if (selectedDependency !== 'All') params.set('dependency', selectedDependency);
+                if (selectedFeature !== 'All') params.set('feature', selectedFeature);
                 if (isClient) {
                   params.set('scroll', window.scrollY.toString());
                 }

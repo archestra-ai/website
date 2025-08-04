@@ -68,6 +68,14 @@ export default async function MCPDetailPage({
       typeof searchParamsData.language === "string"
         ? searchParamsData.language
         : undefined;
+    const dependency =
+      typeof searchParamsData.dependency === "string"
+        ? searchParamsData.dependency
+        : undefined;
+    const feature =
+      typeof searchParamsData.feature === "string"
+        ? searchParamsData.feature
+        : undefined;
     const scroll =
       typeof searchParamsData.scroll === "string"
         ? searchParamsData.scroll
@@ -76,6 +84,8 @@ export default async function MCPDetailPage({
     if (search) catalogParams.set("search", search);
     if (category) catalogParams.set("category", category);
     if (language) catalogParams.set("language", language);
+    if (dependency) catalogParams.set("dependency", dependency);
+    if (feature) catalogParams.set("feature", feature);
     if (scroll) catalogParams.set("scroll", scroll);
 
     return catalogParams.toString()

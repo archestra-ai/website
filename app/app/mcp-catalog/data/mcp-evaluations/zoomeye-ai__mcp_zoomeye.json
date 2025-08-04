@@ -60,5 +60,56 @@
       "importance": 5,
       "name": "python-dotenv"
     }
-  ]
+  ],
+  "configForClients": {
+    "mcpServers": {
+      "mcp-server-zoomeye-python": {
+        "command": "python",
+        "args": [
+          "-m",
+          "mcp_server_zoomeye"
+        ],
+        "env": {
+          "ZOOMEYE_API_KEY": "your_api_key_here"
+        }
+      },
+      "zoomeyeteam-mcp-server-zoomeye-docker-latest": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "ZOOMEYE_API_KEY=your_api_key_here",
+          "zoomeyeteam/mcp-server-zoomeye:latest"
+        ],
+        "env": {
+          "ZOOMEYE_API_KEY": "your_api_key_here"
+        }
+      },
+      "zoomeyeteam-mcp-server-zoomeye-docker-local": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "ZOOMEYE_API_KEY=your_api_key_here",
+          "zoomeyeteam/mcp-server-zoomeye:local"
+        ],
+        "env": {
+          "ZOOMEYE_API_KEY": "your_api_key_here"
+        }
+      },
+      "mcp-server-zoomeye-uvx": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-zoomeye"
+        ],
+        "env": {
+          "ZOOMEYE_API_KEY": "your_api_key_here"
+        }
+      }
+    }
+  }
 }

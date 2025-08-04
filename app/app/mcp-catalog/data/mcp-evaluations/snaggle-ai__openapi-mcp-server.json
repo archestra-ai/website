@@ -59,5 +59,16 @@
       "importance": 4,
       "name": "chalk"
     }
-  ]
+  ],
+  "configForClients": {
+    "mcpServers": {
+      "openapi-mcp-server": {
+        "command": "npx",
+        "args": [
+          "openapi-mcp-server@latest",
+          "init"
+        ]
+      }
+    }
+  }
 }

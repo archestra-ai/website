@@ -45,5 +45,30 @@
       "importance": 4,
       "name": "concurrently"
     }
-  ]
+  ],
+  "configForClients": {
+    "mcpServers": {
+      "bitte-ai": {
+        "command": "bun",
+        "args": [
+          "run",
+          "dev:bitte-ai"
+        ]
+      },
+      "bitte-ai-start": {
+        "command": "bun",
+        "args": [
+          "run",
+          "start"
+        ]
+      },
+      "bitte-ai-dev": {
+        "command": "bun",
+        "args": [
+          "run",
+          "dev"
+        ]
+      }
+    }
+  }
 }

@@ -55,5 +55,29 @@
       "importance": 7,
       "name": "cors"
     }
-  ]
+  ],
+  "configForClients": {
+    "mcpServers": {
+      "supergateway-configured-windows": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "npx",
+          "-y",
+          "supergateway",
+          "--sse",
+          "http://localhost:8008/sse"
+        ]
+      },
+      "supergateway-configured-mac-linux": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "supergateway",
+          "--sse",
+          "http://localhost:8008/sse"
+        ]
+      }
+    }
+  }
 }

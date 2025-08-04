@@ -1,0 +1,141 @@
+{
+  "name": "wcgw",
+  "slug": "rusiaaman__wcgw__src__wcgw__client__mcp_server__readme-md",
+  "description": "Shell and coding agent on claude desktop app",
+  "category": "AI Tools",
+  "qualityScore": 41,
+  "githubUrl": "https://github.com/rusiaaman/wcgw/blob/main/src/wcgw/client/mcp_server/Readme.md",
+  "programmingLanguage": "Python",
+  "gitHubOrg": "rusiaaman",
+  "gitHubRepo": "wcgw",
+  "repositoryPath": "src/wcgw/client/mcp_server/Readme.md",
+  "gh_stars": 554,
+  "gh_contributors": 10,
+  "gh_issues": 28,
+  "gh_releases": true,
+  "gh_ci_cd": true,
+  "gh_latest_commit_hash": "02caebc4976cb6c5e4cb684865c626dea7226816",
+  "last_scraped_at": "2025-08-04T10:54:12.855Z",
+  "implementing_tools": false,
+  "implementing_prompts": false,
+  "implementing_resources": false,
+  "implementing_sampling": false,
+  "implementing_roots": false,
+  "implementing_logging": false,
+  "implementing_stdio": false,
+  "implementing_streamable_http": false,
+  "implementing_oauth2": false,
+  "evaluation_model": "gemini-2.5-flash",
+  "configForClients": {
+    "mcpServers": {
+      "modelcontextprotocol-server-filesystem": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "~/.mcp/filesystem"
+        ]
+      },
+      "modelcontextprotocol-server-filesystem-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-d",
+          "-p",
+          "8080:8080",
+          "-v",
+          "~/.mcp/filesystem:/data",
+          "mcp/server-filesystem:latest"
+        ]
+      },
+      "modelcontextprotocol-server-stdio": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-stdio"
+        ]
+      },
+      "modelcontextprotocol-server-stdio-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-d",
+          "-p",
+          "8080:8080",
+          "mcp/server-stdio:latest"
+        ]
+      },
+      "modelcontextprotocol-server-fetch": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-fetch"
+        ]
+      },
+      "modelcontextprotocol-server-fetch-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-d",
+          "-p",
+          "8080:8080",
+          "mcp/server-fetch:latest"
+        ]
+      },
+      "modelcontextprotocol-server-fetch-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-fetch",
+          "--config",
+          "config.json"
+        ]
+      },
+      "modelcontextprotocol-server-fetch-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-d",
+          "-p",
+          "8080:8080",
+          "-v",
+          "./config.json:/app/config.json",
+          "mcp/server-fetch:latest",
+          "--config",
+          "/app/config.json"
+        ]
+      },
+      "modelcontextprotocol-server-fetch-docker-env-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-d",
+          "-p",
+          "8080:8080",
+          "-e",
+          "MCP_FETCH_ALLOWED_HOSTS=example.com,another.org",
+          "mcp/server-fetch:latest"
+        ],
+        "env": {
+          "MCP_FETCH_ALLOWED_HOSTS": "example.com,another.org"
+        }
+      }
+    }
+  },
+  "configForArchestra": {
+    "oauth": {
+      "provider": "google",
+      "required": true
+    },
+    "server_config": {
+      "args": [
+        "-y",
+        "@claude/agent",
+        "--transport",
+        "stdio"
+      ],
+      "command": "npx",
+      "transport": "stdio"
+    }
+  }
+}

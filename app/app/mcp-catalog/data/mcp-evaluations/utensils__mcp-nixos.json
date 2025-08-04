@@ -80,5 +80,56 @@
       "importance": 6,
       "name": "shiki"
     }
-  ]
+  ],
+  "configForClients": {
+    "mcpServers": {
+      "nixos-uvx": {
+        "command": "uvx",
+        "args": [
+          "mcp-nixos"
+        ]
+      },
+      "nixos-nix-run": {
+        "command": "nix",
+        "args": [
+          "run",
+          "github:utensils/mcp-nixos",
+          "--"
+        ]
+      },
+      "nixos-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "ghcr.io/utensils/mcp-nixos"
+        ]
+      },
+      "nixos-local-dev": {
+        "type": "stdio",
+        "command": "uv",
+        "args": [
+          "run",
+          "--directory",
+          "/home/hackerman/Projects/mcp-nixos",
+          "mcp-nixos"
+        ]
+      },
+      "nixos-uv-run": {
+        "command": "uv",
+        "args": [
+          "run",
+          "mcp-nixos"
+        ]
+      },
+      "nixos-python-module": {
+        "command": "python",
+        "args": [
+          "-m",
+          "mcp_nixos.server"
+        ]
+      }
+    }
+  }
 }

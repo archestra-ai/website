@@ -139,5 +139,17 @@
       "importance": 2,
       "name": "spf13/pflag"
     }
-  ]
+  ],
+  "configForClients": {
+    "mcpServers": {
+      "janreges-ai-distiller-mcp": {
+        "command": "aid",
+        "args": [
+          "--mcp-server",
+          "--port",
+          "8080"
+        ]
+      }
+    }
+  }
 }

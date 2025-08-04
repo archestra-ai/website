@@ -38,5 +38,79 @@
       "command": "null",
       "transport": "null"
     }
-  }
+  },
+  "dependencies": [
+    {
+      "importance": 7,
+      "name": "@ant-design/charts"
+    },
+    {
+      "importance": 6,
+      "name": "@ant-design/icons"
+    },
+    {
+      "importance": 7,
+      "name": "@ant-design/plots"
+    },
+    {
+      "importance": 8,
+      "name": "@electron-toolkit/preload"
+    },
+    {
+      "importance": 8,
+      "name": "@electron-toolkit/utils"
+    },
+    {
+      "importance": 8,
+      "name": "ahooks"
+    },
+    {
+      "importance": 9,
+      "name": "antd"
+    },
+    {
+      "importance": 3,
+      "name": "classnames"
+    },
+    {
+      "importance": 3,
+      "name": "copy-to-clipboard"
+    },
+    {
+      "importance": 7,
+      "name": "echarts-for-react"
+    },
+    {
+      "importance": 8,
+      "name": "electron-updater"
+    },
+    {
+      "importance": 6,
+      "name": "fs-extra"
+    },
+    {
+      "importance": 5,
+      "name": "idb-keyval"
+    },
+    {
+      "importance": 5,
+      "name": "lodash"
+    },
+    {
+      "importance": 4,
+      "name": "minimist"
+    },
+    {
+      "importance": 6,
+      "name": "react-intl"
+    },
+    {
+      "importance": 9,
+      "name": "react-router-dom"
+    },
+    {
+      "importance": 8,
+      "name": "zustand"
+    }
+  ]
 }

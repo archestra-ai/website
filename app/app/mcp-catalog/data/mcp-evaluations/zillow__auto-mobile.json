@@ -91,5 +91,16 @@
       "importance": 5,
       "name": "zod-to-json-schema"
     }
-  ]
+  ],
+  "configForClients": {
+    "mcpServers": {
+      "auto-mobile": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "auto-mobile"
+        ]
+      }
+    }
+  }
 }

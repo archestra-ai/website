@@ -42,5 +42,61 @@
       "transport": "stdio",
       "env": {}
     }
-  }
+  },
+  "configForClients": {
+    "mcpServers": {
+      "mobb-bugsy-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@mobb/bugsy-server"
+        ]
+      },
+      "mobb-bugsy-server-with-config": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@mobb/bugsy-server",
+          "--config",
+          "./bugsy-config.json"
+        ]
+      },
+      "mobb-bugsy-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "mobb/bugsy-server:latest"
+        ]
+      },
+      "mobb-bugsy-server-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "BUGS_PORT=8081",
+          "-e",
+          "BUGS_LOG_LEVEL=debug",
+          "mobb/bugsy-server:latest"
+        ],
+        "env": {
+          "BUGS_PORT": "8081",
+          "BUGS_LOG_LEVEL": "debug"
+        }
+      }
+    }
+  },
+  "dependencies": [
+    {
+      "importance": 10,
+      "name": "@modelcontextprotocol/sdk"
+    },
+    {
+      "importance": 8,
+      "name": "express"
+    }
+  ]
 }

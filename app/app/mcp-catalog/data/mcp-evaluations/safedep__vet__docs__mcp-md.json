@@ -44,5 +44,23 @@
         "server-docker": ""
       }
     }
-  }
+  },
+  "dependencies": [
+    {
+      "importance": 10,
+      "name": "@modelcontextprotocol/sdk"
+    },
+    {
+      "importance": 8,
+      "name": "express"
+    },
+    {
+      "importance": 9,
+      "name": "mark3labs/mcp-go"
+    },
+    {
+      "importance": 6,
+      "name": "axios"
+    }
+  ]
 }
