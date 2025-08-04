@@ -13,13 +13,14 @@ export interface QualityScoreBreakdown {
 /**
  * Calculate MCP Protocol Implementation Score (40 points max)
  * Based on implementing various MCP protocol features
+ * If not evaluated yet, give 35 points (partial credit)
  */
 export function calculateMCPProtocolScore(server: MCPServer): number {
-  // If protocol features haven't been analyzed yet, give full points (assume the best)
+  // If protocol features haven't been analyzed yet, give partial points
   if (server.implementing_tools === null || 
       server.implementing_prompts === null ||
       server.implementing_resources === null) {
-    return 40;
+    return 35;
   }
 
   let score = 0;
@@ -49,28 +50,43 @@ export function calculateMCPProtocolScore(server: MCPServer): number {
 /**
  * Calculate GitHub Metrics Score (20 points max)
  * Progressive scoring: higher stars, contributors, and issues = higher score
+ * For multi-server repositories, metrics are divided by the number of servers
  */
-export function calculateGitHubMetricsScore(server: MCPServer): number {
+export function calculateGitHubMetricsScore(server: MCPServer, allServers?: MCPServer[]): number {
   let score = 0;
+  
+  // Check if this is a multi-server repository
+  let serverCount = 1;
+  if (allServers) {
+    serverCount = allServers.filter(
+      s => s.gitHubOrg === server.gitHubOrg && s.gitHubRepo === server.gitHubRepo
+    ).length;
+    serverCount = Math.max(1, serverCount);
+  }
+  
+  // Divide metrics by server count for multi-server repos
+  const adjustedStars = server.gh_stars / serverCount;
+  const adjustedContributors = server.gh_contributors / serverCount;
+  const adjustedIssues = server.gh_issues / serverCount;
 
   // Stars scoring (0-10 points)
   // 0-10 stars: 0 points, 11-50: 2 points, 51-100: 4 points, 101-500: 6 points, 501-1000: 8 points, >1000: 10 points
-  if (server.gh_stars > 1000) score += 10;
-  else if (server.gh_stars > 500) score += 8;
-  else if (server.gh_stars > 100) score += 6;
-  else if (server.gh_stars > 50) score += 4;
-  else if (server.gh_stars > 10) score += 2;
+  if (adjustedStars > 1000) score += 10;
+  else if (adjustedStars > 500) score += 8;
+  else if (adjustedStars > 100) score += 6;
+  else if (adjustedStars > 50) score += 4;
+  else if (adjustedStars > 10) score += 2;
 
   // Contributors scoring (0-6 points)
   // 1 contributor: 0 points, 2-3: 2 points, 4-10: 4 points, >10: 6 points
-  if (server.gh_contributors > 10) score += 6;
-  else if (server.gh_contributors >= 4) score += 4;
-  else if (server.gh_contributors >= 2) score += 2;
+  if (adjustedContributors > 10) score += 6;
+  else if (adjustedContributors >= 4) score += 4;
+  else if (adjustedContributors >= 2) score += 2;
 
   // Issues scoring (0-4 points)
   // 0-5 issues: 0 points, 6-20: 2 points, >20: 4 points
-  if (server.gh_issues > 20) score += 4;
-  else if (server.gh_issues > 5) score += 2;
+  if (adjustedIssues > 20) score += 4;
+  else if (adjustedIssues > 5) score += 2;
 
   return Math.min(score, 20);
 }
@@ -137,9 +153,9 @@ export function calculateDependenciesScore(
   server: MCPServer,
   allServers?: MCPServer[],
 ): number {
-  // If dependencies haven't been analyzed yet, give full points (assume the best)
+  // If dependencies haven't been analyzed yet, give partial points
   if (!server.dependencies) {
-    return 20;
+    return 15;
   }
   
   // If dependencies array is empty (no dependencies), that's ideal - return full points
@@ -199,7 +215,7 @@ export function calculateQualityScore(
   allServers?: MCPServer[],
 ): QualityScoreBreakdown {
   const mcpProtocol = calculateMCPProtocolScore(server);
-  const githubMetrics = calculateGitHubMetricsScore(server);
+  const githubMetrics = calculateGitHubMetricsScore(server, allServers);
   const deploymentMaturity = calculateDeploymentMaturityScore(server);
   const documentation = calculateDocumentationScore(server);
   const dependencies = calculateDependenciesScore(server, allServers);

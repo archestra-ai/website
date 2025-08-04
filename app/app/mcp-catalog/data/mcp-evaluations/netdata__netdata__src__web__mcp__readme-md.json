@@ -3,7 +3,7 @@
   "slug": "netdata__netdata__src__web__mcp__readme-md",
   "description": "The fastest path to AI-powered full stack observability, even for lean teams.",
   "category": "Monitoring",
-  "qualityScore": 50,
+  "qualityScore": 45,
   "githubUrl": "https://github.com/netdata/netdata/blob/master/src/web/mcp/README.md",
   "programmingLanguage": "C",
   "gitHubOrg": "netdata",

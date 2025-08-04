@@ -3,7 +3,7 @@
   "slug": "safedep__vet__docs__mcp-md",
   "description": "Protect against malicious open source packages 🤖",
   "category": "Security",
-  "qualityScore": 48,
+  "qualityScore": 43,
   "githubUrl": "https://github.com/safedep/vet/blob/main/docs/mcp.md",
   "programmingLanguage": "Go",
   "gitHubOrg": "safedep",

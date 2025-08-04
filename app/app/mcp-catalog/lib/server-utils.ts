@@ -216,3 +216,22 @@ export function loadServers(slug?: string): MCPServer[] {
   serversCache.set(cacheKey, sortedServers);
   return sortedServers;
 }
+
+/**
+ * Count the number of MCP servers in the same repository
+ */
+export function countServersInRepo(targetServer: MCPServer, allServers?: MCPServer[]): number {
+  // If we don't have all servers, load them
+  if (!allServers) {
+    allServers = loadServers();
+  }
+  
+  // Count servers with the same org and repo
+  const count = allServers.filter(
+    server => 
+      server.gitHubOrg === targetServer.gitHubOrg && 
+      server.gitHubRepo === targetServer.gitHubRepo
+  ).length;
+  
+  return Math.max(1, count); // Always return at least 1
+}

@@ -4,7 +4,7 @@
   "description": "Cloudbet Sports Data MCP Server",
   "readme": "# Cloudbet Sports MCP server\n\nSingle-file, minimal implementation of the [Model Context Protocol](https://modelcontextprotocol.io/introduction) (MCP) for sports data and betting tool exposure using the Cloudbet public API. This demo server follows the [MCP Server specification](https://modelcontextprotocol.io/specification/2025-03-26/server) and is designed for educational and demonstration purposes only. Please use responsibly and at your own risk.\n\n1. **Run the Server:**\n\n```sh\ngo run .\n```\n\n2. **List Tools (Describe):**\n\n```sh\ncurl -X POST http://localhost:8080/ -H \"Content-Type: application/json\" -d '{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 1,\n  \"method\": \"tools/list\",\n  \"params\": {}\n}' | jq .\n```\n\n3. **Call a Tool:**\n\n```sh\ncurl -X POST http://localhost:8080/ -H \"Content-Type: application/json\" -d '{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 2,\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"findEventsAndMarketsByCompetition\",\n    \"arguments\": {\n      \"competitionName\": \"Premier League\"\n    }\n  }\n}' | jq .\n```\n",
   "category": "Sports",
-  "qualityScore": 40,
+  "qualityScore": 35,
   "githubUrl": "https://github.com/cloudbet/sports-mcp-server",
   "programmingLanguage": "Go",
   "gitHubOrg": "cloudbet",

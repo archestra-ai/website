@@ -15,8 +15,8 @@
   "gh_issues": 0,
   "gh_releases": false,
   "gh_ci_cd": false,
-  "gh_latest_commit_hash": "2b33cbfb1551a49b4d714942f9979fcebe14fc87",
-  "last_scraped_at": "2025-08-03T20:12:01.529Z",
+  "gh_latest_commit_hash": "",
+  "last_scraped_at": "2025-08-04T09:37:18.863Z",
   "implementing_tools": true,
   "implementing_prompts": true,
   "implementing_resources": false,
@@ -26,7 +26,6 @@
   "implementing_stdio": true,
   "implementing_streamable_http": false,
   "implementing_oauth2": false,
-  "rawDependencies": "=== pyproject.toml ===\n[project]\nname = \"etf-flow-mcp\"\nversion = \"0.1.0\"\ndescription = \"An MCP server that delivers crypto ETF flow data to power AI agents' decision-making.\"\nreadme = \"README.md\"\nrequires-python = \">=3.10\"\ndependencies = [\n    \"dotenv>=0.9.9\",\n    \"mcp[cli]>=1.6.0\",\n    \"pandas>=2.2.3\",\n]\n\n[project.scripts]\netf-flow-mcp = \"etf_flow_mcp.cli:main\"\n\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForClients": {
     "mcpServers": {

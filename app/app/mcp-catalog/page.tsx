@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { MCPServer } from "./data/types";
-import { loadServers } from "./lib/server-utils";
+import { loadServers, countServersInRepo } from "./lib/server-utils";
 import MCPCatalogClient from "./client";
 import BadgeCopyMain from "./badge-copy-main";
 import Header from "../../components/header";
@@ -118,11 +118,37 @@ function getTopDependencies(evaluations: MCPServer[]): string[] {
   return ["All", ...sortedDependencies];
 }
 
+// Get MCP features that servers implement
+function getMCPFeatures(): string[] {
+  return [
+    "All",
+    "Tools",
+    "Resources", 
+    "Prompts",
+    "Sampling",
+    "Roots",
+    "Logging",
+    "STDIO Transport",
+    "Streamable HTTP",
+    "OAuth2"
+  ];
+}
+
 export default function MCPCatalogPage() {
   const mcpServers = loadServers();
   const categories = getCategories(mcpServers);
   const languages = getProgrammingLanguages(mcpServers);
   const dependencies = getTopDependencies(mcpServers);
+  const mcpFeatures = getMCPFeatures();
+  
+  // Create a map of server counts for multi-server repos
+  const serverCounts = new Map<string, number>();
+  for (const server of mcpServers) {
+    const key = `${server.gitHubOrg}/${server.gitHubRepo}`;
+    if (!serverCounts.has(key)) {
+      serverCounts.set(key, countServersInRepo(server, mcpServers));
+    }
+  }
 
   // Find the highest scoring MCP server for the badge example
   const topScoredServer = mcpServers
@@ -150,7 +176,7 @@ export default function MCPCatalogPage() {
             <div className="flex flex-col xl:flex-row gap-8 xl:gap-12 items-start">
               <div className="flex-1 w-full">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                  MCP Catalog
+                  MCP Catalog <span className="text-2xl sm:text-3xl lg:text-4xl text-gray-600">& Trust Score</span>
                 </h1>
                 <p className="text-base sm:text-lg text-gray-600 mb-6">
                   What if we scraped all {mcpServers.length} MCP servers from GitHub, extracted 
@@ -160,7 +186,7 @@ export default function MCPCatalogPage() {
                 </p>
 
                 <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 mt-6 sm:mt-10 mb-6 max-w-2xl">
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-4">
+                  <div className="flex items-center gap-3 mb-4">
                     {topScoredServer ? (
                       <a
                         href={`/mcp-catalog/${topScoredServer.slug}`}
@@ -183,7 +209,7 @@ export default function MCPCatalogPage() {
                         className="h-5 flex-shrink-0"
                       />
                     )}
-                    <span className="text-sm text-gray-500">
+                    <span className="text-sm text-gray-600">
                       ← Add the badge to your README.md
                     </span>
                   </div>
@@ -273,6 +299,8 @@ export default function MCPCatalogPage() {
               categories={categories}
               languages={languages}
               dependencies={dependencies}
+              mcpFeatures={mcpFeatures}
+              serverCounts={serverCounts}
             />
           </Suspense>
         </div>

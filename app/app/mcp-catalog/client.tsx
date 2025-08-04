@@ -23,10 +23,12 @@ interface MCPCatalogClientProps {
   categories: string[];
   languages: string[];
   dependencies: string[];
+  mcpFeatures: string[];
+  serverCounts: Map<string, number>;
 }
 
 
-export default function MCPCatalogClient({ mcpServers, categories, languages, dependencies }: MCPCatalogClientProps) {
+export default function MCPCatalogClient({ mcpServers, categories, languages, dependencies, mcpFeatures, serverCounts }: MCPCatalogClientProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const serverGridRef = useRef<HTMLDivElement>(null);
@@ -38,6 +40,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || "All");
   const [selectedLanguage, setSelectedLanguage] = useState(searchParams.get('language') || "All");
   const [selectedDependency, setSelectedDependency] = useState(searchParams.get('dependency') || "All");
+  const [selectedFeature, setSelectedFeature] = useState(searchParams.get('feature') || "All");
   const [sortBy, setSortBy] = useState(searchParams.get('sort') || "quality");
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | null>(
     searchParams.get('dir') as 'asc' | 'desc' || 'desc'
@@ -58,14 +61,15 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
   }, []);
   
   // Check if any filters are active
-  const hasActiveFilters = searchQuery !== "" || selectedCategory !== "All" || selectedLanguage !== "All" || selectedDependency !== "All";
+  const hasActiveFilters = searchQuery !== "" || selectedCategory !== "All" || selectedLanguage !== "All" || selectedDependency !== "All" || selectedFeature !== "All";
   
   // Count active filters
   const activeFilterCount = [
     searchQuery !== "",
     selectedCategory !== "All",
     selectedLanguage !== "All",
-    selectedDependency !== "All"
+    selectedDependency !== "All",
+    selectedFeature !== "All"
   ].filter(Boolean).length;
   
   // Clear all filters
@@ -74,6 +78,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
     setSelectedCategory("All");
     setSelectedLanguage("All");
     setSelectedDependency("All");
+    setSelectedFeature("All");
     // Reset to quality sort when clearing filters
     if (sortBy === "relevance") {
       setSortBy("quality");
@@ -235,7 +240,20 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
            dep.name === selectedDependency && dep.importance >= 8
          ));
       
-      return matchesSearch && matchesCategory && matchesLanguage && matchesDependency;
+      // Filter by MCP features
+      const matchesFeature =
+        selectedFeature === "All" ||
+        (selectedFeature === "Tools" && server.implementing_tools === true) ||
+        (selectedFeature === "Resources" && server.implementing_resources === true) ||
+        (selectedFeature === "Prompts" && server.implementing_prompts === true) ||
+        (selectedFeature === "Sampling" && server.implementing_sampling === true) ||
+        (selectedFeature === "Roots" && server.implementing_roots === true) ||
+        (selectedFeature === "Logging" && server.implementing_logging === true) ||
+        (selectedFeature === "STDIO Transport" && server.implementing_stdio === true) ||
+        (selectedFeature === "Streamable HTTP" && server.implementing_streamable_http === true) ||
+        (selectedFeature === "OAuth2" && server.implementing_oauth2 === true);
+      
+      return matchesSearch && matchesCategory && matchesLanguage && matchesDependency && matchesFeature;
     });
 
   // Sort filtered servers
@@ -416,6 +434,42 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
                 </div>
               </div>
               
+              {/* MCP Features */}
+              <div>
+                <h3 className="text-sm font-medium text-gray-700 mb-2">MCP Features</h3>
+                <div className="space-y-1">
+                  {mcpFeatures.slice(0, 7).map((feature) => (
+                    <button
+                      key={feature}
+                      onClick={() => setSelectedFeature(feature)}
+                      className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
+                        selectedFeature === feature
+                          ? "bg-purple-100 text-purple-800 font-medium"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`}
+                    >
+                      {feature}
+                      <span className="float-right text-xs text-gray-500">
+                        {feature === "All" 
+                          ? mcpServers.length 
+                          : mcpServers.filter(s => {
+                              if (feature === "Tools") return s.implementing_tools === true;
+                              if (feature === "Resources") return s.implementing_resources === true;
+                              if (feature === "Prompts") return s.implementing_prompts === true;
+                              if (feature === "Sampling") return s.implementing_sampling === true;
+                              if (feature === "Roots") return s.implementing_roots === true;
+                              if (feature === "Logging") return s.implementing_logging === true;
+                              if (feature === "STDIO Transport") return s.implementing_stdio === true;
+                              if (feature === "Streamable HTTP") return s.implementing_streamable_http === true;
+                              if (feature === "OAuth2") return s.implementing_oauth2 === true;
+                              return false;
+                            }).length}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
               {/* Programming Languages */}
               <div>
                 <h3 className="text-sm font-medium text-gray-700 mb-2">Languages</h3>
@@ -550,6 +604,42 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
                                 dep.name === dependency && dep.importance >= 8
                               )
                             ).length}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
+              {/* MCP Features */}
+              <div>
+                <h3 className="text-sm font-medium text-gray-700 mb-2">MCP Features</h3>
+                <div className="space-y-1">
+                  {mcpFeatures.slice(0, 7).map((feature) => (
+                    <button
+                      key={feature}
+                      onClick={() => setSelectedFeature(feature)}
+                      className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
+                        selectedFeature === feature
+                          ? "bg-purple-100 text-purple-800 font-medium"
+                          : "text-gray-600 hover:bg-gray-100"
+                      }`}
+                    >
+                      {feature}
+                      <span className="float-right text-xs text-gray-500">
+                        {feature === "All" 
+                          ? mcpServers.length 
+                          : mcpServers.filter(s => {
+                              if (feature === "Tools") return s.implementing_tools === true;
+                              if (feature === "Resources") return s.implementing_resources === true;
+                              if (feature === "Prompts") return s.implementing_prompts === true;
+                              if (feature === "Sampling") return s.implementing_sampling === true;
+                              if (feature === "Roots") return s.implementing_roots === true;
+                              if (feature === "Logging") return s.implementing_logging === true;
+                              if (feature === "STDIO Transport") return s.implementing_stdio === true;
+                              if (feature === "Streamable HTTP") return s.implementing_streamable_http === true;
+                              if (feature === "OAuth2") return s.implementing_oauth2 === true;
+                              return false;
+                            }).length}
                       </span>
                     </button>
                   ))}
@@ -808,9 +898,28 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
                           <div className="flex flex-wrap gap-2">
                             {server.qualityScore !== null ? (
                               <div className="flex items-center gap-1 text-xs text-gray-600">
-                                <span>⭐ {server.gh_stars}</span>
-                                <span>👥 {server.gh_contributors}</span>
-                                <span>📋 {server.gh_issues}</span>
+                                {(() => {
+                                  const serverCount = serverCounts.get(`${server.gitHubOrg}/${server.gitHubRepo}`) || 1;
+                                  const showDivided = serverCount > 1;
+                                  return (
+                                    <>
+                                      <span title={showDivided ? `${server.gh_stars} / ${serverCount}` : undefined}>
+                                        ⭐ {showDivided ? Math.round(server.gh_stars / serverCount) : server.gh_stars}
+                                      </span>
+                                      <span title={showDivided ? `${server.gh_contributors} / ${serverCount}` : undefined}>
+                                        👥 {showDivided ? Math.round(server.gh_contributors / serverCount) : server.gh_contributors}
+                                      </span>
+                                      <span title={showDivided ? `${server.gh_issues} / ${serverCount}` : undefined}>
+                                        📋 {showDivided ? Math.round(server.gh_issues / serverCount) : server.gh_issues}
+                                      </span>
+                                      {showDivided && (
+                                        <span className="text-amber-600 ml-1" title={`Repository contains ${serverCount} MCP servers`}>
+                                          ÷{serverCount}
+                                        </span>
+                                      )}
+                                    </>
+                                  );
+                                })()}
                               </div>
                             ) : null}
                             {server.framework && (
@@ -863,6 +972,7 @@ export default function MCPCatalogClient({ mcpServers, categories, languages, de
               {selectedCategory !== "All" && ` in ${selectedCategory}`}
               {selectedLanguage !== "All" && ` using ${selectedLanguage}`}
               {selectedDependency !== "All" && ` with ${selectedDependency}`}
+              {selectedFeature !== "All" && ` implementing ${selectedFeature}`}
             </p>
             <p className="text-gray-400 text-sm mt-2">Try searching with different keywords or filters</p>
             {hasActiveFilters && (

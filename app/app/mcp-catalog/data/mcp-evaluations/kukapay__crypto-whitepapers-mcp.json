@@ -12,11 +12,11 @@
   "repositoryPath": null,
   "gh_stars": 2,
   "gh_contributors": 1,
-  "gh_issues": 2,
+  "gh_issues": 0,
   "gh_releases": false,
   "gh_ci_cd": false,
-  "gh_latest_commit_hash": "72ffa610269b6eb9b2fe5dea15bf7b932a7ddd04",
-  "last_scraped_at": "2025-08-03T20:12:01.356Z",
+  "gh_latest_commit_hash": "",
+  "last_scraped_at": "2025-08-04T09:37:19.021Z",
   "implementing_tools": true,
   "implementing_prompts": true,
   "implementing_resources": false,
@@ -26,7 +26,6 @@
   "implementing_stdio": true,
   "implementing_streamable_http": false,
   "implementing_oauth2": false,
-  "rawDependencies": "=== pyproject.toml ===\n[project]\nname = \"crypto-whitepapers-mcp\"\nversion = \"0.1.0\"\ndescription = \"An MCP server serving as a structured knowledge base of crypto whitepapers for AI agents to access, analyze, and learn from.\"\nreadme = \"README.md\"\nrequires-python = \">=3.10\"\ndependencies = [\n    \"agno>=1.3.4\",\n    \"duckduckgo-search>=8.0.1\",\n    \"fastembed>=0.6.1\",\n    \"lancedb>=0.21.2\",\n    \"mcp[cli]>=1.6.0\",\n    \"numpy>=2.2.4\",\n    \"pandas>=2.2.3\",\n    \"pypdf>=5.4.0\",\n]\n\n[project.scripts]\ncrypto-whitepapers-mcp = \"crypto_whitepapers_mcp.cli:main\"\n\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForClients": {
     "mcpServers": {

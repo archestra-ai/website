@@ -164,7 +164,7 @@ async function fetchRepoData(
   while (retryCount <= maxRetries) {
     try {
       // Fetch all data in parallel
-      const [repoData, contributorsResponse, releases, workflows] =
+      const [repoData, contributorsResponse, releases, workflows, issuesSearchResponse] =
         await Promise.all([
           apiCall(`/repos/${owner}/${repo}`),
           apiCall(`/repos/${owner}/${repo}/contributors?per_page=1&anon=true`, true).catch(() => ({ data: [], headers: new Headers() })),
@@ -172,6 +172,8 @@ async function fetchRepoData(
           apiCall(`/repos/${owner}/${repo}/actions/workflows`).catch(() => ({
             total_count: 0,
           })),
+          // Use search API to get total issues count (open + closed)
+          apiCall(`/search/issues?q=repo:${owner}/${repo}+type:issue&per_page=1`, true).catch(() => ({ data: { total_count: 0 }, headers: new Headers() })),
         ]);
 
       // Extract contributor count from Link header or use array length
@@ -190,6 +192,15 @@ async function fetchRepoData(
           // If no pagination, use the array length
           contributorsCount = contributorsResponse.data.length;
         }
+      }
+
+      // Extract total issues count from search response
+      let totalIssuesCount = 0;
+      if (issuesSearchResponse && issuesSearchResponse.data && typeof issuesSearchResponse.data.total_count === 'number') {
+        totalIssuesCount = issuesSearchResponse.data.total_count;
+      } else {
+        // Fallback to open_issues_count if search API fails
+        totalIssuesCount = repoData.open_issues_count || 0;
       }
 
       // Check if repository path exists
@@ -336,7 +347,7 @@ async function fetchRepoData(
         name: repoData.name,
         description: repoData.description || "",
         stargazers_count: repoData.stargazers_count,
-        total_issues_count: repoData.open_issues_count || 0,
+        total_issues_count: totalIssuesCount,
         language: repoData.language || "Unknown",
         has_releases: Array.isArray(releases) && releases.length > 0,
         has_workflows: workflows.total_count > 0,

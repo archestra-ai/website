@@ -13,7 +13,7 @@ import {
   getMCPServerName,
   getMCPServerGitHubUrl,
 } from "../data/types";
-import { loadServers } from "../lib/server-utils";
+import { loadServers, countServersInRepo } from "../lib/server-utils";
 import { calculateQualityScore } from "../lib/quality-calculator";
 import { QualityBar } from "../components/quality-bar";
 import { ArrowLeft, ExternalLink, Github, Copy, Check } from "lucide-react";
@@ -48,6 +48,10 @@ export default async function MCPDetailPage({
   if (!server) {
     notFound();
   }
+  
+  // Get all servers for calculations
+  const allServers = loadServers();
+  const serverCount = countServersInRepo(server, allServers);
 
   // Build back URL with preserved state
   const backUrl = (() => {
@@ -190,7 +194,7 @@ export default async function MCPDetailPage({
                   ? calculateQualityScore(
                       server,
                       server.readme,
-                      undefined, // Pass all servers here if needed for dependencies scoring
+                      allServers,
                     )
                   : null;
                 
@@ -221,23 +225,47 @@ export default async function MCPDetailPage({
                     <CardTitle>GitHub Metrics</CardTitle>
                     <CardDescription>
                       Repository statistics and activity
+                      {serverCount > 1 && (
+                        <span className="block text-xs text-gray-500 mt-1">
+                          This repository contains {serverCount} MCP servers. Metrics shown are divided.
+                        </span>
+                      )}
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div className="flex justify-between">
                         <span>⭐ GitHub Stars:</span>
-                        <span className="font-mono">{server.gh_stars}</span>
+                        <span className="font-mono">
+                          {server.gh_stars}
+                          {serverCount > 1 && (
+                            <span className="text-gray-500 ml-1">
+                              / {serverCount} = {Math.round(server.gh_stars / serverCount)}
+                            </span>
+                          )}
+                        </span>
                       </div>
                       <div className="flex justify-between">
                         <span>👥 Contributors:</span>
                         <span className="font-mono">
                           {server.gh_contributors}
+                          {serverCount > 1 && (
+                            <span className="text-gray-500 ml-1">
+                              / {serverCount} = {Math.round(server.gh_contributors / serverCount)}
+                            </span>
+                          )}
                         </span>
                       </div>
                       <div className="flex justify-between">
                         <span>📋 Total Issues:</span>
-                        <span className="font-mono">{server.gh_issues}</span>
+                        <span className="font-mono">
+                          {server.gh_issues}
+                          {serverCount > 1 && (
+                            <span className="text-gray-500 ml-1">
+                              / {serverCount} = {Math.round(server.gh_issues / serverCount)}
+                            </span>
+                          )}
+                        </span>
                       </div>
                       <div className="flex justify-between">
                         <span>📦 Has Releases:</span>
