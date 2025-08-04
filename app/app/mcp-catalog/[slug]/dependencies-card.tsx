@@ -36,10 +36,12 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
               .map((dep, index) => (
                 <div
                   key={index}
-                  className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-green-500 to-green-600 text-white shadow-md"
-                  title={`Importance: ${dep.importance}/10`}
+                  className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-green-500 to-green-600 text-white shadow-md overflow-hidden"
+                  title={`${dep.name} - Importance: ${dep.importance}/10`}
                 >
-                  {dep.name}
+                  <div className="truncate">
+                    {dep.name}
+                  </div>
                 </div>
               ))}
           </div>
@@ -56,10 +58,12 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
               .map((dep, index) => (
                 <div
                   key={index}
-                  className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-gray-300 to-gray-400 text-gray-800 shadow-sm"
-                  title={`Importance: ${dep.importance}/10`}
+                  className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-gray-300 to-gray-400 text-gray-800 shadow-sm overflow-hidden"
+                  title={`${dep.name} - Importance: ${dep.importance}/10`}
                 >
-                  {dep.name}
+                  <div className="truncate">
+                    {dep.name}
+                  </div>
                 </div>
               ))}
           </div>
@@ -76,10 +80,12 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
               .map((dep, index) => (
                 <div
                   key={index}
-                  className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-gray-100 to-gray-200 text-gray-600 shadow-sm"
-                  title={`Importance: ${dep.importance}/10`}
+                  className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-gray-100 to-gray-200 text-gray-600 shadow-sm overflow-hidden"
+                  title={`${dep.name} - Importance: ${dep.importance}/10`}
                 >
-                  {dep.name}
+                  <div className="truncate">
+                    {dep.name}
+                  </div>
                 </div>
               ))}
           </div>
