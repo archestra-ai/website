@@ -3,7 +3,6 @@ import './globals.css'
 import { PostHogProvider } from '../components/PostHogProvider'
 
 export const metadata: Metadata = {
-<<<<<<< HEAD
   metadataBase: new URL('https://archestra.ai'),
   title: {
     default: 'Archestra | Enterprise MCP Platform for AI Agents',
@@ -59,11 +58,6 @@ export const metadata: Metadata = {
   },
   viewport: 'width=device-width, initial-scale=1',
   themeColor: '#000000',
-=======
-  title: 'archestra.ai',
-  description: 'Solving your daily tasks with AI-agents and MCP',
-  generator: 'v0.dev',
->>>>>>> refs/remotes/origin/main
 }
 
 export default function RootLayout({
