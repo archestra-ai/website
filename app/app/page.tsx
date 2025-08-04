@@ -1,7 +1,28 @@
+import { Metadata } from "next";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { Shield, Key, Lock, FileCheck, AlertTriangle, Server, Cpu, CheckCircle, Github, Star, Users, GitCommit, Construction, Monitor, MessageSquare } from "lucide-react";
 import { EmailForm } from "../components/email-form";
+
+export const metadata: Metadata = {
+  title: 'Archestra | Enterprise MCP Platform for AI Agents',
+  description: 'Enterprise-grade platform enabling non-technical users to safely leverage AI agents and MCP (Model Context Protocol) servers with security guardrails and compliance.',
+  keywords: ['MCP', 'Model Context Protocol', 'AI agents', 'enterprise AI', 'secure runtime', 'prompt injection prevention'],
+  openGraph: {
+    title: 'Archestra | Enterprise MCP Platform for AI Agents',
+    description: 'Enterprise-grade platform for safely leveraging AI agents and MCP servers with security guardrails.',
+    url: 'https://archestra.ai',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Archestra | Enterprise MCP Platform',
+    description: 'Enterprise-grade platform for safely leveraging AI agents and MCP servers',
+  },
+  alternates: {
+    canonical: 'https://archestra.ai',
+  },
+};
 
 async function getGitHubStats() {
   try {
@@ -47,8 +68,47 @@ async function getGitHubStats() {
 
 export default async function Home() {
   const githubStats = await getGitHubStats();
+  
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Archestra",
+    "alternateName": "Archestra.ai",
+    "url": "https://archestra.ai",
+    "logo": "https://archestra.ai/logo.png",
+    "description": "Enterprise-grade platform enabling non-technical users to safely leverage AI agents and MCP (Model Context Protocol) servers with security guardrails and compliance.",
+    "sameAs": [
+      "https://github.com/archestra-ai/archestra",
+      "https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg"
+    ],
+    "foundingDate": "2024",
+    "founders": [
+      {
+        "@type": "Person",
+        "name": "Matvey Kukuy",
+        "jobTitle": "CEO and Co-Founder",
+        "sameAs": "https://www.linkedin.com/in/motakuk/"
+      },
+      {
+        "@type": "Person",
+        "name": "Ildar Iskhakov",
+        "jobTitle": "CTO and Co-Founder",
+        "sameAs": "https://www.linkedin.com/in/ildari/"
+      }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "UK",
+      "addressLocality": "London"
+    }
+  };
+  
   return (
     <div className="min-h-screen flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <Header />
 
       {/* Main Content */}

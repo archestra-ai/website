@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import Link from "next/link";
+import { Metadata } from "next";
 import { MCPServer } from "./data/types";
 import { loadServers, countServersInRepo } from "./lib/server-utils";
 import MCPCatalogClient from "./client";
@@ -7,6 +8,26 @@ import BadgeCopyMain from "./badge-copy-main";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import ScoringExplanationCard from "./scoring-explanation-card";
+
+export const metadata: Metadata = {
+  title: 'MCP Server Catalog | Browse 900+ Model Context Protocol Servers',
+  description: 'Explore the comprehensive catalog of MCP servers. Find, evaluate, and integrate Model Context Protocol implementations for your AI agents.',
+  keywords: ['MCP servers', 'Model Context Protocol catalog', 'AI tools', 'MCP implementations', 'AI agent tools', 'MCP directory'],
+  openGraph: {
+    title: 'MCP Server Catalog | 900+ Model Context Protocol Servers',
+    description: 'Browse and discover MCP servers for your AI agents. Comprehensive catalog with quality scores and implementation details.',
+    url: 'https://archestra.ai/mcp-catalog',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'MCP Server Catalog | 900+ Servers',
+    description: 'Browse and discover Model Context Protocol servers for AI agents',
+  },
+  alternates: {
+    canonical: 'https://archestra.ai/mcp-catalog',
+  },
+};
 
 // Get unique categories from evaluations, sorted by count
 function getCategories(evaluations: MCPServer[]): string[] {

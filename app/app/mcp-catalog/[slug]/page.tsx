@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 import {
   Card,
   CardContent,
@@ -34,6 +35,43 @@ import ConfigSection from "./config-section";
 interface PageProps {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const servers = loadServers(slug);
+  const server = servers[0];
+  
+  if (!server) {
+    return {
+      title: 'MCP Server Not Found',
+      description: 'The requested MCP server could not be found.',
+    };
+  }
+  
+  const serverName = getMCPServerName(server);
+  const qualityScore = calculateQualityScore(server);
+  const githubUrl = getMCPServerGitHubUrl(server);
+  
+  return {
+    title: `${serverName} MCP Server | Documentation & Integration`,
+    description: server.description || `${serverName} - Model Context Protocol server. Quality score: ${qualityScore.totalScore}/100. ${server.category ? `Category: ${server.category}` : ''}`,
+    keywords: ['MCP server', serverName, 'Model Context Protocol', server.category || '', server.language || ''].filter(Boolean),
+    openGraph: {
+      title: `${serverName} MCP Server`,
+      description: server.description || `${serverName} MCP server for AI agents`,
+      url: `https://archestra.ai/mcp-catalog/${slug}`,
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary',
+      title: `${serverName} MCP Server`,
+      description: server.description || `Quality score: ${qualityScore.totalScore}/100`,
+    },
+    alternates: {
+      canonical: `https://archestra.ai/mcp-catalog/${slug}`,
+    },
+  };
 }
 
 export default async function MCPDetailPage({
