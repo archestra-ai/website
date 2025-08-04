@@ -7,7 +7,7 @@ export default function Footer() {
             © 2025 Archestra.ai. All rights reserved.
           </p>
           <p className="text-xs text-gray-400 mt-1">
-            Archestra Inc. • USA
+            Archestra Inc.
           </p>
         </div>
       </div>
