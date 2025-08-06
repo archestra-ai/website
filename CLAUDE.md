@@ -34,22 +34,22 @@ This is the Archestra.ai website - a Next.js application that hosts the MCP (Mod
 ### Directory Structure
 
 ```
-/app
-├── src/
-│   ├── app/           # Next.js app router pages
-│   │   ├── about/
-│   │   ├── blog/
-│   │   ├── mcp-catalog/
-│   │   └── state-of-mcp/
-│   ├── components/    # React components
-│   │   ├── McpServer/ # MCP catalog specific components
-│   │   └── ui/        # Reusable UI components
-│   ├── data/          # MCP catalog data
-│   │   ├── mcp-evaluations/ # Individual server evaluation JSONs
-│   │   └── mcp-servers.json # Main catalog file
-│   ├── providers/     # Context providers (PostHog, etc.)
-│   ├── utils/         # Utility functions
-│   └── constants.ts   # Global constants
+/src
+├── app/           # Next.js app router pages
+│   ├── about/
+│   ├── api/
+│   ├── blog/
+│   ├── mcp-catalog/
+│   └── state-of-mcp/
+├── components/    # React components
+│   ├── McpServer/ # MCP catalog specific components
+│   └── ui/        # Reusable UI components
+├── data/          # MCP catalog data
+│   ├── mcp-evaluations/ # Individual server evaluation JSONs
+│   └── mcp-servers.json # Main catalog file
+├── providers/     # Context providers (PostHog, etc.)
+├── utils/         # Utility functions
+└── constants.ts   # Global constants
 ├── scripts/           # Build and catalog scripts
 └── public/           # Static assets
 ```
@@ -73,8 +73,8 @@ This means you should manually run `pnpm typecheck` to check for TypeScript erro
 
 The MCP catalog is a core feature that:
 
-1. Stores server metadata in `/app/src/data/mcp-servers.json`
-2. Individual server evaluations in `/app/src/data/mcp-evaluations/*.json`
+1. Stores server metadata in `/src/data/mcp-servers.json`
+2. Individual server evaluations in `/src/data/mcp-evaluations/*.json`
 3. Provides quality scoring via `utils/qualityCalculator.ts`
 4. Generates badges at `/mcp-catalog/api/badge/quality/[org]/[repo]`
 5. Server detail pages at `/mcp-catalog/[name]`

@@ -13,8 +13,7 @@ runs:
       with:
         node-version: "24.4.1"
         cache: "pnpm"
-        cache-dependency-path: app/pnpm-lock.yaml
 
     - name: Install dependencies
       shell: bash
-      run: cd app && pnpm install --frozen-lockfile --prefer-offline
+      run: pnpm install --frozen-lockfile --prefer-offline

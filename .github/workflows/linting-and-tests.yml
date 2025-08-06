@@ -23,9 +23,6 @@ jobs:
   app-linting-formatting-and-tests:
     name: App Linting, Formatting, and Tests
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./app
     steps:
       - name: Checkout project
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -47,9 +44,6 @@ jobs:
   ensure-catalog-data-is-valid:
     name: Ensure Catalog Data is Valid
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./app
     steps:
       - name: Checkout project
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2

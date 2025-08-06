@@ -67,7 +67,7 @@ const WEBSITE_REPO_NAME = 'website';
 const DESKTOP_APP_REPO_NAME = 'archestra';
 const MAIN_BRANCH_NAME = 'main';
 
-const _MCP_CATALOG_DIRECTORY_PATH = 'app/src/data';
+const _MCP_CATALOG_DIRECTORY_PATH = 'src/data';
 const MCP_SERVERS_JSON_FILE_PATH = `${_MCP_CATALOG_DIRECTORY_PATH}/mcp-servers.json`;
 const MCP_EVALUATIONS_DIRECTORY_PATH = `${_MCP_CATALOG_DIRECTORY_PATH}/mcp-evaluations`;
 
