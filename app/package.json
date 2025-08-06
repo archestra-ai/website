@@ -14,7 +14,7 @@
   "packageManager": "pnpm@10.14.0",
   "dependencies": {
     "@anthropic-ai/dxt": "^0.2.6",
-    "@asteasolutions/zod-to-openapi": "^8.1.0",
+    "@asteasolutions/zod-to-openapi": "^7.3.4",
     "@jridgewell/gen-mapping": "^0.3.12",
     "@radix-ui/react-slot": "1.2.3",
     "@swc/helpers": "^0.5.17",
@@ -40,7 +40,7 @@
     "swagger-ui-react": "^5.27.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^4.0.15"
+    "zod": "^3.25.67"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.4",

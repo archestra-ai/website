@@ -1,7 +1,12 @@
 import { DxtManifestSchema } from '@anthropic-ai/dxt';
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
-import { z } from 'zod/v4';
+import { z } from 'zod';
 
+/**
+ * NOTE! don't remove this, this is super important to get the openapi schema export working correctly
+ *
+ * See https://github.com/asteasolutions/zod-to-openapi/blob/be536b7128925842c1d41e7ab4fb10e034e71a6e/README.md#example-2---require-syntax
+ */
 extendZodWithOpenApi(z);
 
 export const McpServerCategorySchema = z.enum([
