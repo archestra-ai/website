@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: websiteUrls.teamPhoto,
+        url: websiteUrls.teamPhotoAbsoluteUrl,
         width: 1200,
         height: 630,
         alt: `${companyAlternateName} founding team`,
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: TITLE,
     description: DESCRIPTION,
-    images: [websiteUrls.teamPhoto],
+    images: [websiteUrls.teamPhotoAbsoluteUrl],
   },
   alternates: {
     canonical: websiteUrls.about,
@@ -81,7 +81,7 @@ export default function AboutPage() {
             {/* Team Photo */}
             <div className="mb-12">
               <img
-                src="/team-photo.jpg"
+                src={websiteUrls.teamPhotoRelativeUrl}
                 alt={`${constants.company.alternateName} founding team - Joey, Ildar, and Matvey`}
                 className="w-full max-w-4xl mx-auto rounded-xl shadow-lg"
               />

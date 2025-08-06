@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     description: companyDescription,
     images: [
       {
-        url: websiteUrls.ogImage,
+        url: websiteUrls.logoAbsoluteUrl,
         width: 1200,
         height: 630,
         alt: companyTagline,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: companyTagline,
     description: companyDescription,
-    images: [websiteUrls.ogImage],
+    images: [websiteUrls.logoAbsoluteUrl],
     creator: twitterHandle,
   },
   robots: {

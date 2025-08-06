@@ -36,7 +36,7 @@ export default function Header() {
         <div className="flex items-center gap-8">
           <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <Image
-              src={websiteUrls.logo}
+              src={websiteUrls.logoRelativeUrl}
               alt={`${companyName} Logo`}
               width={40}
               height={40}
