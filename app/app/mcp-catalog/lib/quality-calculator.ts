@@ -1,49 +1,54 @@
-import { MCPServer } from "../data/types";
-
-export interface QualityScoreBreakdown {
-  mcpProtocol: number;
-  githubMetrics: number;
-  deploymentMaturity: number;
-  documentation: number;
-  dependencies: number;
-  badgeUsage: number;
-  total: number;
-}
+import {
+  ArchestraMcpServerManifest,
+  ArchestraScoreBreakdown,
+} from "../../types";
 
 /**
  * Calculate MCP Protocol Implementation Score (40 points max)
  * Based on implementing various MCP protocol features
  * If not evaluated yet, give 35 points (partial credit)
  */
-export function calculateMCPProtocolScore(server: MCPServer): number {
+export function calculateMCPProtocolScore({
+  protocol_features,
+}: ArchestraMcpServerManifest): number {
   // If protocol features haven't been analyzed yet, give partial points
-  if (server.implementing_tools === null || 
-      server.implementing_prompts === null ||
-      server.implementing_resources === null) {
+  if (Object.keys(protocol_features).length === 0) {
     return 35;
   }
 
   let score = 0;
 
+  const {
+    implementing_tools,
+    implementing_resources,
+    implementing_prompts,
+    implementing_sampling,
+    implementing_stdio,
+    implementing_streamable_http,
+    implementing_roots,
+    implementing_logging,
+    implementing_oauth2,
+  } = protocol_features;
+
   // Core features (most important) - 8 points each
-  if (server.implementing_tools) score += 8;
-  if (server.implementing_resources) score += 8;
-  
+  if (implementing_tools) score += 8;
+  if (implementing_resources) score += 8;
+
   // Secondary features - 5 points each
-  if (server.implementing_prompts) score += 5;
-  if (server.implementing_sampling) score += 5;
-  
+  if (implementing_prompts) score += 5;
+  if (implementing_sampling) score += 5;
+
   // Transport features - 4 points each (at least one required)
-  if (server.implementing_stdio) score += 4;
-  if (server.implementing_streamable_http) score += 4;
-  
+  if (implementing_stdio) score += 4;
+  if (implementing_streamable_http) score += 4;
+
   // Additional features - 3 points each
-  if (server.implementing_roots) score += 3;
-  if (server.implementing_logging) score += 3;
-  
+  if (implementing_roots) score += 3;
+  if (implementing_logging) score += 3;
+
   // Authentication - 2 points
-  if (server.implementing_oauth2) score += 2;
-  
+  if (implementing_oauth2) score += 2;
+
   return Math.min(score, 40);
 }
 
@@ -52,22 +57,27 @@ export function calculateMCPProtocolScore(server: MCPServer): number {
  * Progressive scoring: higher stars, contributors, and issues = higher score
  * For multi-server repositories, metrics are divided by the number of servers
  */
-export function calculateGitHubMetricsScore(server: MCPServer, allServers?: MCPServer[]): number {
+export function calculateGitHubMetricsScore(
+  server: ArchestraMcpServerManifest,
+  allServers?: ArchestraMcpServerManifest[]
+): number {
   let score = 0;
-  
+
   // Check if this is a multi-server repository
   let serverCount = 1;
   if (allServers) {
     serverCount = allServers.filter(
-      s => s.gitHubOrg === server.gitHubOrg && s.gitHubRepo === server.gitHubRepo
+      (s) =>
+        s.github_info.owner === server.github_info.owner &&
+        s.github_info.repo === server.github_info.repo
     ).length;
     serverCount = Math.max(1, serverCount);
   }
-  
+
   // Divide metrics by server count for multi-server repos
-  const adjustedStars = server.gh_stars / serverCount;
-  const adjustedContributors = server.gh_contributors / serverCount;
-  const adjustedIssues = server.gh_issues / serverCount;
+  const adjustedStars = server.github_info.stars / serverCount;
+  const adjustedContributors = server.github_info.contributors / serverCount;
+  const adjustedIssues = server.github_info.issues / serverCount;
 
   // Stars scoring (0-10 points)
   // 0-10 stars: 0 points, 11-50: 2 points, 51-100: 4 points, 101-500: 6 points, 501-1000: 8 points, >1000: 10 points
@@ -95,16 +105,18 @@ export function calculateGitHubMetricsScore(server: MCPServer, allServers?: MCPS
  * Calculate Deployment Maturity Score (10 points max)
  * Based on CI/CD, versioning, and release practices
  */
-export function calculateDeploymentMaturityScore(server: MCPServer): number {
+export function calculateDeploymentMaturityScore(
+  server: ArchestraMcpServerManifest
+): number {
   let score = 0;
 
   // Check for CI/CD (GitHub Actions, etc.) - 5 points
-  if (server.gh_ci_cd) {
+  if (server.github_info.ci_cd) {
     score += 5;
   }
 
   // Check for releases - 5 points
-  if (server.gh_releases) {
+  if (server.github_info.releases) {
     score += 5;
   }
 
@@ -115,7 +127,9 @@ export function calculateDeploymentMaturityScore(server: MCPServer): number {
  * Calculate Documentation Score (8 points max)
  * Based on basic documentation completeness
  */
-export function calculateDocumentationScore(server: MCPServer): number {
+export function calculateDocumentationScore(
+  server: ArchestraMcpServerManifest
+): number {
   let score = 0;
 
   // Extended documentation - has readme
@@ -131,16 +145,14 @@ export function calculateDocumentationScore(server: MCPServer): number {
  * 2 points for using our badge in README.md
  * Note: This would require checking the actual README content from GitHub
  */
-export function calculateBadgeUsageScore(
-  server: MCPServer,
-  readmeContent?: string,
-): number {
+export function calculateBadgeUsageScore(readmeContent: string | null): number {
   if (!readmeContent) {
     return 0;
   }
 
   // Check for our specific Archestra Trust Score badge pattern (accepts MCP Quality, MCP Trust, or Trust Score)
-  const archestraBadgePattern = /\[\!\[(MCP Quality|MCP Trust|Trust Score)\]\(https:\/\/archestra\.ai\/api\/badge\/quality\//i;
+  const archestraBadgePattern =
+    /\[\!\[(MCP Quality|MCP Trust|Trust Score)\]\(https:\/\/archestra\.ai\/api\/badge\/quality\//i;
 
   return archestraBadgePattern.test(readmeContent) ? 2 : 0;
 }
@@ -150,14 +162,14 @@ export function calculateBadgeUsageScore(
  * Based on dependency count and rarity of dependencies
  */
 export function calculateDependenciesScore(
-  server: MCPServer,
-  allServers?: MCPServer[],
+  server: ArchestraMcpServerManifest,
+  allServers?: ArchestraMcpServerManifest[]
 ): number {
   // If dependencies haven't been analyzed yet, give partial points
   if (!server.dependencies) {
     return 15;
   }
-  
+
   // If dependencies array is empty (no dependencies), that's ideal - return full points
   if (server.dependencies.length === 0) {
     return 20;
@@ -167,7 +179,9 @@ export function calculateDependenciesScore(
   let score = 20;
 
   // Count significant dependencies (importance >= 5)
-  const significantDeps = server.dependencies.filter(dep => dep.importance >= 5);
+  const significantDeps = server.dependencies.filter(
+    (dep) => dep.importance >= 5
+  );
   const depCount = significantDeps.length;
 
   // Penalty only if more than 10 dependencies
@@ -183,7 +197,9 @@ export function calculateDependenciesScore(
     const depFrequency = new Map<string, number>();
     for (const otherServer of allServers) {
       if (otherServer.dependencies) {
-        for (const dep of otherServer.dependencies.filter(d => d.importance >= 5)) {
+        for (const dep of otherServer.dependencies.filter(
+          (d) => d.importance >= 5
+        )) {
           depFrequency.set(dep.name, (depFrequency.get(dep.name) || 0) + 1);
         }
       }
@@ -210,16 +226,15 @@ export function calculateDependenciesScore(
  * Calculate total trust score with breakdown
  */
 export function calculateQualityScore(
-  server: MCPServer,
-  readmeContent?: string,
-  allServers?: MCPServer[],
-): QualityScoreBreakdown {
+  server: ArchestraMcpServerManifest,
+  allServers?: ArchestraMcpServerManifest[]
+): ArchestraScoreBreakdown {
   const mcpProtocol = calculateMCPProtocolScore(server);
   const githubMetrics = calculateGitHubMetricsScore(server, allServers);
   const deploymentMaturity = calculateDeploymentMaturityScore(server);
   const documentation = calculateDocumentationScore(server);
   const dependencies = calculateDependenciesScore(server, allServers);
-  const badgeUsage = calculateBadgeUsageScore(server, readmeContent);
+  const badgeUsage = calculateBadgeUsageScore(server.readme);
 
   const total =
     mcpProtocol +
@@ -230,12 +245,12 @@ export function calculateQualityScore(
     badgeUsage;
 
   return {
-    mcpProtocol,
-    githubMetrics,
-    deploymentMaturity,
-    documentation,
-    dependencies,
-    badgeUsage,
+    mcp_protocol: mcpProtocol,
+    github_metrics: githubMetrics,
+    deployment_maturity: deploymentMaturity,
+    documentation: documentation,
+    dependencies: dependencies,
+    badge_usage: badgeUsage,
     total,
   };
 }

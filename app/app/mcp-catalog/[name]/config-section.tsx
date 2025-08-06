@@ -5,11 +5,12 @@ import { Button } from "../../../components/ui/button";
 import { Copy, Check } from "lucide-react";
 import hljs from "highlight.js/lib/core";
 import json from "highlight.js/lib/languages/json";
+import { ArchestraMcpServerManifest } from "../../types";
 
 hljs.registerLanguage("json", json);
 
 interface ConfigSectionProps {
-  config: any;
+  config: ArchestraMcpServerManifest["server"];
 }
 
 export default function ConfigSection({ config }: ConfigSectionProps) {
@@ -22,7 +23,7 @@ export default function ConfigSection({ config }: ConfigSectionProps) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to copy text: ', err);
+      console.error("Failed to copy text: ", err);
     }
   };
 
@@ -37,7 +38,11 @@ export default function ConfigSection({ config }: ConfigSectionProps) {
   return (
     <div className="relative">
       <pre className="bg-gray-50 border rounded-lg p-4 text-sm pr-12 overflow-x-auto">
-        <code ref={codeRef} className="language-json hljs" style={{ background: 'transparent' }}>
+        <code
+          ref={codeRef}
+          className="language-json hljs"
+          style={{ background: "transparent" }}
+        >
           {jsonString}
         </code>
       </pre>

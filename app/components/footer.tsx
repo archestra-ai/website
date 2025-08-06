@@ -4,11 +4,9 @@ export default function Footer() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center">
           <p className="text-xs text-gray-400">
-            © 2025 Archestra.ai. All rights reserved.
+            © {new Date().getFullYear()} Archestra.ai. All rights reserved.
           </p>
-          <p className="text-xs text-gray-400 mt-1">
-            Archestra Inc.
-          </p>
+          <p className="text-xs text-gray-400 mt-1">Archestra Inc.</p>
         </div>
       </div>
     </footer>

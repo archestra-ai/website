@@ -9,19 +9,21 @@ import {
   CardTitle,
 } from "../../../components/ui/card";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { MCPServer } from "../data/types";
+import { ArchestraMcpServerManifest } from "../../types";
 
 interface DependenciesCardProps {
-  server: MCPServer;
+  server: ArchestraMcpServerManifest;
 }
 
 export default function DependenciesCard({ server }: DependenciesCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   // Group dependencies by importance level
-  const mainDeps = server.dependencies?.filter(d => d.importance >= 8) || [];
-  const mediumDeps = server.dependencies?.filter(d => d.importance >= 5 && d.importance < 8) || [];
-  const lightDeps = server.dependencies?.filter(d => d.importance < 5) || [];
+  const mainDeps = server.dependencies?.filter((d) => d.importance >= 8) || [];
+  const mediumDeps =
+    server.dependencies?.filter((d) => d.importance >= 5 && d.importance < 8) ||
+    [];
+  const lightDeps = server.dependencies?.filter((d) => d.importance < 5) || [];
   const totalDeps = (server.dependencies || []).length;
 
   const DependenciesContent = () => (
@@ -39,9 +41,7 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
                   className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-green-500 to-green-600 text-white shadow-md overflow-hidden"
                   title={`${dep.name} - Importance: ${dep.importance}/10`}
                 >
-                  <div className="truncate">
-                    {dep.name}
-                  </div>
+                  <div className="truncate">{dep.name}</div>
                 </div>
               ))}
           </div>
@@ -61,9 +61,7 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
                   className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-gray-300 to-gray-400 text-gray-800 shadow-sm overflow-hidden"
                   title={`${dep.name} - Importance: ${dep.importance}/10`}
                 >
-                  <div className="truncate">
-                    {dep.name}
-                  </div>
+                  <div className="truncate">{dep.name}</div>
                 </div>
               ))}
           </div>
@@ -83,9 +81,7 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
                   className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-gray-100 to-gray-200 text-gray-600 shadow-sm overflow-hidden"
                   title={`${dep.name} - Importance: ${dep.importance}/10`}
                 >
-                  <div className="truncate">
-                    {dep.name}
-                  </div>
+                  <div className="truncate">{dep.name}</div>
                 </div>
               ))}
           </div>
@@ -96,7 +92,7 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
 
   return (
     <Card>
-      <CardHeader 
+      <CardHeader
         className="cursor-pointer md:cursor-default"
         onClick={() => setIsExpanded(!isExpanded)}
       >
@@ -106,7 +102,7 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
           <div className="md:hidden flex items-center gap-2">
             {totalDeps > 0 && (
               <span className="text-sm text-gray-500">
-                {totalDeps} {totalDeps === 1 ? 'dependency' : 'dependencies'}
+                {totalDeps} {totalDeps === 1 ? "dependency" : "dependencies"}
               </span>
             )}
             {isExpanded ? (
@@ -127,7 +123,7 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
                     : `🤖 Analyzed by ${server.evaluation_model}`}
                 </span>
                 <a
-                  href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.slug}.json`}
+                  href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.name}.json`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
@@ -153,15 +149,19 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
           </div>
         </CardDescription>
       </CardHeader>
-      <CardContent className={!isExpanded ? 'hidden md:block' : ''}>
+      <CardContent className={!isExpanded ? "hidden md:block" : ""}>
         {server.dependencies && server.dependencies.length > 0 ? (
           <DependenciesContent />
         ) : (
           <div className="text-center py-8">
             <div className="animate-pulse">
               <div className="w-12 h-12 bg-gray-200 rounded-full mx-auto mb-4"></div>
-              <p className="text-gray-500 text-sm">Evaluating dependencies...</p>
-              <p className="text-gray-400 text-xs mt-2">Check back soon for dependency information</p>
+              <p className="text-gray-500 text-sm">
+                Evaluating dependencies...
+              </p>
+              <p className="text-gray-400 text-xs mt-2">
+                Check back soon for dependency information
+              </p>
             </div>
           </div>
         )}

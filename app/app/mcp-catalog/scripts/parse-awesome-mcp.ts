@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { MCPServer } from "../data/types";
+import { MCPServer } from "../../types";
 
 interface ParsedServer {
   name: string;
@@ -83,7 +83,7 @@ const CATEGORY_MAP: { [key: string]: string } = {
 
 async function fetchReadme(): Promise<string> {
   const response = await fetch(
-    "https://raw.githubusercontent.com/punkpeye/awesome-mcp-servers/main/README.md",
+    "https://raw.githubusercontent.com/punkpeye/awesome-mcp-servers/main/README.md"
   );
   if (!response.ok) {
     throw new Error(`Failed to fetch README: ${response.statusText}`);
@@ -111,7 +111,7 @@ function parseServers(markdown: string): ParsedServer[] {
         rawCategory = rawCategory
           .replace(
             /^[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{FE00}-\u{FE0F}\u{200D}]\s*/gu,
-            "",
+            ""
           )
           .trim();
         // Remove any remaining emoji modifiers or zero-width characters
@@ -231,7 +231,7 @@ async function main() {
     const newServers = parsedServers.map(convertToMCPServer);
 
     // Extract only GitHub URLs
-    const githubUrls = newServers.map(server => server.githubUrl);
+    const githubUrls = newServers.map((server) => server.githubUrl);
 
     // Generate JSON content
     const jsonContent = JSON.stringify(githubUrls, null, 2);

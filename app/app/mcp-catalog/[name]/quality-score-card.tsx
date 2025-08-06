@@ -10,28 +10,26 @@ import {
 } from "../../../components/ui/card";
 import { QualityBar } from "../components/quality-bar";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { MCPServer } from "../data/types";
+import {
+  ArchestraMcpServerManifest,
+  ArchestraScoreBreakdown,
+} from "../../types";
 
 interface QualityScoreCardProps {
-  server: MCPServer;
-  scoreBreakdown: {
-    mcpProtocol: number;
-    githubMetrics: number;
-    dependencies: number;
-    deploymentMaturity: number;
-    documentation: number;
-    badgeUsage: number;
-    total: number;
-  };
+  server: ArchestraMcpServerManifest;
+  scoreBreakdown: ArchestraScoreBreakdown;
 }
 
-export default function QualityScoreCard({ server, scoreBreakdown }: QualityScoreCardProps) {
+export default function QualityScoreCard({
+  server,
+  scoreBreakdown,
+}: QualityScoreCardProps) {
   const [showDetails, setShowDetails] = useState(false);
 
   const getScoreDescription = (
     score: number,
     maxScore: number,
-    category: string,
+    category: string
   ) => {
     const percentage = (score / maxScore) * 100;
     if (category === "GitHub community health") {
@@ -70,7 +68,7 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
     }
     if (category === "MCP protocol implementation") {
       // Check if protocol features have been evaluated
-      if (server.implementing_tools === null) {
+      if (server.protocol_features.implementing_tools === null) {
         return `Protocol features not yet evaluated (${score}/${maxScore})`;
       }
       if (percentage === 100)
@@ -101,7 +99,7 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
         <CardDescription>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <span>
-              {server.qualityScore !== null
+              {server.quality_score !== null
                 ? "Based on our comprehensive evaluation criteria"
                 : "This server is being evaluated"}
             </span>
@@ -113,7 +111,7 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
                     : `🤖 Evaluated by ${server.evaluation_model}`}
                 </span>
                 <a
-                  href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.slug}.json`}
+                  href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.name}.json`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
@@ -140,9 +138,9 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <QualityBar score={server.qualityScore} />
+        <QualityBar score={server.quality_score} />
 
-        {server.qualityScore !== null && (
+        {server.quality_score !== null && (
           <>
             {/* Mobile: Collapsible Details */}
             <div className="sm:hidden">
@@ -159,24 +157,24 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
                   <ChevronDown size={16} className="text-gray-500" />
                 )}
               </button>
-              
+
               {showDetails && (
                 <div className="mt-3 text-sm text-gray-600">
                   <ul className="space-y-1">
                     <li>
                       •{" "}
                       {getScoreDescription(
-                        scoreBreakdown.mcpProtocol,
+                        scoreBreakdown.mcp_protocol,
                         40,
-                        "MCP protocol implementation",
+                        "MCP protocol implementation"
                       )}
                     </li>
                     <li>
                       •{" "}
                       {getScoreDescription(
-                        scoreBreakdown.githubMetrics,
+                        scoreBreakdown.github_metrics,
                         20,
-                        "GitHub community health",
+                        "GitHub community health"
                       )}
                     </li>
                     <li>
@@ -184,15 +182,15 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
                       {getScoreDescription(
                         scoreBreakdown.dependencies,
                         20,
-                        "dependency optimization",
+                        "dependency optimization"
                       )}
                     </li>
                     <li>
                       •{" "}
                       {getScoreDescription(
-                        scoreBreakdown.deploymentMaturity,
+                        scoreBreakdown.deployment_maturity,
                         10,
-                        "deployment maturity",
+                        "deployment maturity"
                       )}
                     </li>
                     <li>
@@ -200,15 +198,15 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
                       {getScoreDescription(
                         scoreBreakdown.documentation,
                         8,
-                        "documentation quality",
+                        "documentation quality"
                       )}
                     </li>
                     <li>
                       •{" "}
                       {getScoreDescription(
-                        scoreBreakdown.badgeUsage,
+                        scoreBreakdown.badge_usage,
                         2,
-                        "badge adoption",
+                        "badge adoption"
                       )}
                     </li>
                   </ul>
@@ -222,17 +220,17 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
                 <li>
                   •{" "}
                   {getScoreDescription(
-                    scoreBreakdown.mcpProtocol,
+                    scoreBreakdown.mcp_protocol,
                     40,
-                    "MCP protocol implementation",
+                    "MCP protocol implementation"
                   )}
                 </li>
                 <li>
                   •{" "}
                   {getScoreDescription(
-                    scoreBreakdown.githubMetrics,
+                    scoreBreakdown.github_metrics,
                     20,
-                    "GitHub community health",
+                    "GitHub community health"
                   )}
                 </li>
                 <li>
@@ -240,15 +238,15 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
                   {getScoreDescription(
                     scoreBreakdown.dependencies,
                     20,
-                    "dependency optimization",
+                    "dependency optimization"
                   )}
                 </li>
                 <li>
                   •{" "}
                   {getScoreDescription(
-                    scoreBreakdown.deploymentMaturity,
+                    scoreBreakdown.deployment_maturity,
                     10,
-                    "deployment maturity",
+                    "deployment maturity"
                   )}
                 </li>
                 <li>
@@ -256,15 +254,15 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
                   {getScoreDescription(
                     scoreBreakdown.documentation,
                     8,
-                    "documentation quality",
+                    "documentation quality"
                   )}
                 </li>
                 <li>
                   •{" "}
                   {getScoreDescription(
-                    scoreBreakdown.badgeUsage,
+                    scoreBreakdown.badge_usage,
                     2,
-                    "badge adoption",
+                    "badge adoption"
                   )}
                 </li>
               </ul>

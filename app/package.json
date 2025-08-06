@@ -1,15 +1,18 @@
 {
-  "name": "my-v0-project",
+  "name": "archestra-ai-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "evaluate": "npx tsx app/mcp-catalog/scripts/evaluate.ts"
+    "typecheck": "tsc --noEmit",
+    "catalog:evaluate": "npx tsx app/mcp-catalog/scripts/evaluate.ts",
+    "catalog:validate": "npx tsx app/mcp-catalog/scripts/validate.ts"
   },
   "dependencies": {
+    "@anthropic-ai/dxt": "^0.2.6",
+    "@asteasolutions/zod-to-openapi": "^8.1.0",
     "@hookform/resolvers": "^3.9.1",
     "@jridgewell/gen-mapping": "^0.3.12",
     "@radix-ui/react-accordion": "1.2.2",
@@ -67,7 +70,8 @@
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.6",
-    "zod": "^3.24.1"
+    "zod": "^3.25.67",
+    "zod-to-json-schema": "^3.24.6"
   },
   "devDependencies": {
     "@types/node": "^22.16.5",
@@ -78,5 +82,5 @@
     "tsx": "^4.7.0",
     "typescript": "^5"
   },
-  "packageManager": "pnpm@10.6.5+sha512.cdf928fca20832cd59ec53826492b7dc25dc524d4370b6b4adbf65803d32efaa6c1c88147c0ae4e8d579a6c9eec715757b50d4fa35eea179d868eada4ed043af"
+  "packageManager": "pnpm@10.14.0"
 }

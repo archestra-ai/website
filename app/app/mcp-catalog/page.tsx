@@ -1,7 +1,6 @@
 import { Suspense } from "react";
-import Link from "next/link";
 import { Metadata } from "next";
-import { MCPServer } from "./data/types";
+import { ArchestraMcpServerManifest } from "../types";
 import { loadServers, countServersInRepo } from "./lib/server-utils";
 import MCPCatalogClient from "./client";
 import BadgeCopyMain from "./badge-copy-main";
@@ -10,27 +9,37 @@ import Footer from "../../components/footer";
 import ScoringExplanationCard from "./scoring-explanation-card";
 
 export const metadata: Metadata = {
-  title: 'MCP Server Catalog | Browse 900+ Model Context Protocol Servers',
-  description: 'Explore the comprehensive catalog of MCP servers. Find, evaluate, and integrate Model Context Protocol implementations for your AI agents.',
-  keywords: ['MCP servers', 'Model Context Protocol catalog', 'AI tools', 'MCP implementations', 'AI agent tools', 'MCP directory'],
+  title: "MCP Server Catalog | Browse 900+ Model Context Protocol Servers",
+  description:
+    "Explore the comprehensive catalog of MCP servers. Find, evaluate, and integrate Model Context Protocol implementations for your AI agents.",
+  keywords: [
+    "MCP servers",
+    "Model Context Protocol catalog",
+    "AI tools",
+    "MCP implementations",
+    "AI agent tools",
+    "MCP directory",
+  ],
   openGraph: {
-    title: 'MCP Server Catalog | 900+ Model Context Protocol Servers',
-    description: 'Browse and discover MCP servers for your AI agents. Comprehensive catalog with quality scores and implementation details.',
-    url: 'https://archestra.ai/mcp-catalog',
-    type: 'website',
+    title: "MCP Server Catalog | 900+ Model Context Protocol Servers",
+    description:
+      "Browse and discover MCP servers for your AI agents. Comprehensive catalog with quality scores and implementation details.",
+    url: "https://archestra.ai/mcp-catalog",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'MCP Server Catalog | 900+ Servers',
-    description: 'Browse and discover Model Context Protocol servers for AI agents',
+    card: "summary_large_image",
+    title: "MCP Server Catalog | 900+ Servers",
+    description:
+      "Browse and discover Model Context Protocol servers for AI agents",
   },
   alternates: {
-    canonical: 'https://archestra.ai/mcp-catalog',
+    canonical: "https://archestra.ai/mcp-catalog",
   },
 };
 
 // Get unique categories from evaluations, sorted by count
-function getCategories(evaluations: MCPServer[]): string[] {
+function getCategories(evaluations: ArchestraMcpServerManifest[]): string[] {
   const categoryCounts = new Map<string, number>();
   let uncategorizedCount = 0;
 
@@ -39,7 +48,7 @@ function getCategories(evaluations: MCPServer[]): string[] {
     if (evaluation.category) {
       categoryCounts.set(
         evaluation.category,
-        (categoryCounts.get(evaluation.category) || 0) + 1,
+        (categoryCounts.get(evaluation.category) || 0) + 1
       );
     } else {
       uncategorizedCount++;
@@ -67,7 +76,9 @@ function getCategories(evaluations: MCPServer[]): string[] {
 }
 
 // Get unique programming languages from evaluations, sorted by count
-function getProgrammingLanguages(evaluations: MCPServer[]): string[] {
+function getProgrammingLanguages(
+  evaluations: ArchestraMcpServerManifest[]
+): string[] {
   const languageCounts = new Map<string, number>();
 
   // Count items per language
@@ -78,7 +89,7 @@ function getProgrammingLanguages(evaluations: MCPServer[]): string[] {
     ) {
       languageCounts.set(
         evaluation.programmingLanguage,
-        (languageCounts.get(evaluation.programmingLanguage) || 0) + 1,
+        (languageCounts.get(evaluation.programmingLanguage) || 0) + 1
       );
     }
   }
@@ -97,7 +108,9 @@ function getProgrammingLanguages(evaluations: MCPServer[]): string[] {
 }
 
 // Get top MCP-related dependencies from evaluations (importance >= 8)
-function getTopDependencies(evaluations: MCPServer[]): string[] {
+function getTopDependencies(
+  evaluations: ArchestraMcpServerManifest[]
+): string[] {
   const dependencyCounts = new Map<
     string,
     { count: number; totalImportance: number }
@@ -109,8 +122,11 @@ function getTopDependencies(evaluations: MCPServer[]): string[] {
       for (const dep of evaluation.dependencies) {
         // Only include dependencies with "mcp" or "modelcontextprotocol" in the name
         const depNameLower = dep.name.toLowerCase();
-        if (dep.importance >= 8 && 
-            (depNameLower.includes('mcp') || depNameLower.includes('modelcontextprotocol'))) {
+        if (
+          dep.importance >= 8 &&
+          (depNameLower.includes("mcp") ||
+            depNameLower.includes("modelcontextprotocol"))
+        ) {
           const existing = dependencyCounts.get(dep.name) || {
             count: 0,
             totalImportance: 0,
@@ -146,14 +162,14 @@ function getMCPFeatures(): string[] {
   return [
     "All",
     "Tools",
-    "Resources", 
+    "Resources",
     "Prompts",
     "Sampling",
     "Roots",
     "Logging",
     "STDIO Transport",
     "Streamable HTTP",
-    "OAuth2"
+    "OAuth2",
   ];
 }
 
@@ -163,7 +179,7 @@ export default function MCPCatalogPage() {
   const languages = getProgrammingLanguages(mcpServers);
   const dependencies = getTopDependencies(mcpServers);
   const mcpFeatures = getMCPFeatures();
-  
+
   // Create a map of server counts for multi-server repos
   const serverCounts = new Map<string, number>();
   for (const server of mcpServers) {
@@ -200,30 +216,41 @@ export default function MCPCatalogPage() {
               <div className="flex-1 w-full">
                 <div className="flex items-center gap-3 mb-4">
                   <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
-                    MCP Catalog <span className="text-2xl sm:text-3xl lg:text-4xl text-gray-600">& Trust Score</span>
+                    MCP Catalog{" "}
+                    <span className="text-2xl sm:text-3xl lg:text-4xl text-gray-600">
+                      & Trust Score
+                    </span>
                   </h1>
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200">
                     Beta
                   </span>
                 </div>
                 <p className="text-base sm:text-lg text-gray-600 mb-6">
-                  What if we scraped all {mcpServers.length} MCP servers from GitHub, extracted 
-                  data about dependencies, protocol features, and community maturity, then 
-                  calculated a trustworthiness score? Well, we did exactly that—helping you 
-                  navigate the <b>agentic supply chain</b> with confidence.
+                  What if we scraped all {mcpServers.length} MCP servers from
+                  GitHub, extracted data about dependencies, protocol features,
+                  and community maturity, then calculated a trustworthiness
+                  score? Well, we did exactly that—helping you navigate the{" "}
+                  <b>agentic supply chain</b> with confidence.
                 </p>
 
                 <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 mt-6 sm:mt-10 mb-6 max-w-2xl">
                   <div className="flex items-center gap-3 mb-4">
                     {topScoredServer ? (
                       <a
-                        href={`/mcp-catalog/${topScoredServer.slug}`}
+                        href={`/mcp-catalog/${topScoredServer.name}`}
                         className="hover:opacity-80 transition-opacity flex-shrink-0"
                       >
                         <img
                           src={
                             topScoredServer.repositoryPath
-                              ? `/mcp-catalog/api/badge/quality/${topScoredServer.gitHubOrg}/${topScoredServer.gitHubRepo}/${topScoredServer.repositoryPath.replace(/\//g, "--")}`
+                              ? `/mcp-catalog/api/badge/quality/${
+                                  topScoredServer.gitHubOrg
+                                }/${
+                                  topScoredServer.gitHubRepo
+                                }/${topScoredServer.repositoryPath.replace(
+                                  /\//g,
+                                  "--"
+                                )}`
                               : `/mcp-catalog/api/badge/quality/${topScoredServer.gitHubOrg}/${topScoredServer.gitHubRepo}`
                           }
                           alt="Trust Score Badge"

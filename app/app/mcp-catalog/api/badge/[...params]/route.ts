@@ -1,100 +1,35 @@
 import { NextRequest } from "next/server";
-import { MCPServer } from "../../../data/types";
 import { loadServers } from "../../../lib/server-utils";
 
-/**
- * @swagger
- * /api/badge/quality/{org}/{repo}:
- *   get:
- *     summary: Get quality badge
- *     description: Get an SVG quality badge for an MCP server
- *     tags: [Badges]
- *     parameters:
- *       - in: path
- *         name: org
- *         required: true
- *         schema:
- *           type: string
- *         description: GitHub organization
- *         example: github
- *       - in: path
- *         name: repo
- *         required: true
- *         schema:
- *           type: string
- *         description: GitHub repository name
- *         example: github-mcp-server
- *     responses:
- *       200:
- *         description: SVG badge image
- *         content:
- *           image/svg+xml:
- *             schema:
- *               type: string
- * 
- * /api/badge/quality/{org}/{repo}/{path}:
- *   get:
- *     summary: Get quality badge for sub-path
- *     description: Get an SVG quality badge for an MCP server in a repository sub-path
- *     tags: [Badges]
- *     parameters:
- *       - in: path
- *         name: org
- *         required: true
- *         schema:
- *           type: string
- *         description: GitHub organization
- *       - in: path
- *         name: repo
- *         required: true
- *         schema:
- *           type: string
- *         description: GitHub repository name
- *       - in: path
- *         name: path
- *         required: true
- *         schema:
- *           type: string
- *         description: Repository sub-path (use -- instead of /)
- *         example: src--servers--mcp
- *     responses:
- *       200:
- *         description: SVG badge image
- *         content:
- *           image/svg+xml:
- *             schema:
- *               type: string
- */
 export async function GET(
   request: NextRequest,
-  { params }: { params: { params: string[] } },
+  { params }: { params: { params: string[] } }
 ) {
-  // Expected formats: 
+  // Expected formats:
   // /api/badge/quality/github-org/repo-name
   // /api/badge/quality/github-org/repo-name/path--to--server
   if (params.params.length < 3 || params.params[0] !== "quality") {
     return new Response(
       "Invalid format. Use: /api/badge/quality/github-org/repo-name[/path--to--server]",
-      { status: 400 },
+      { status: 400 }
     );
   }
 
   const [, githubOrg, repoName, ...pathParts] = params.params;
-  
+
   // Convert path back from URL format (-- becomes /)
-  const repositoryPath = pathParts.length > 0 ? pathParts.join('/').replace(/--/g, '/') : null;
-  
-  // Construct slug to match the format used in loadServers
-  const slug = repositoryPath 
-    ? `${githubOrg}__${repoName}__${repositoryPath.replace(/\//g, '__')}`
+  const repositoryPath =
+    pathParts.length > 0 ? pathParts.join("/").replace(/--/g, "/") : null;
+
+  // Construct name to match the format used in loadServers
+  const name = repositoryPath
+    ? `${githubOrg}__${repoName}__${repositoryPath.replace(/\//g, "__")}`
         .toLowerCase()
         .replace(/[^a-z0-9_-]/g, "-")
-    : `${githubOrg}__${repoName}`
-        .toLowerCase()
-        .replace(/[^a-z0-9_-]/g, "-");
-  
-  // Find the server by slug
-  const servers = loadServers(slug);
+    : `${githubOrg}__${repoName}`.toLowerCase().replace(/[^a-z0-9_-]/g, "-");
+
+  // Find the server by name
+  const servers = loadServers(name);
   const server = servers[0];
 
   if (!server) {
@@ -112,8 +47,8 @@ export async function GET(
     });
   }
 
-  const score = server.qualityScore;
-  
+  const score = server.quality_score;
+
   if (score === null) {
     // Return a "pending" badge for servers being evaluated
     const label = "Trust Score";
@@ -163,7 +98,7 @@ function getColor(score: number): string {
 function generateBadgeSVG(
   label: string,
   message: string,
-  color: string,
+  color: string
 ): string {
   const labelWidth = label.length * 6 + 20;
   const messageWidth = message.length * 6 + 20;
@@ -184,10 +119,18 @@ function generateBadgeSVG(
       <rect width="${totalWidth}" height="20" fill="url(#s)"/>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110">
-      <text aria-hidden="true" x="${(labelWidth / 2) * 10}" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)">${label}</text>
-      <text x="${(labelWidth / 2) * 10}" y="140" transform="scale(.1)" fill="#fff">${label}</text>
-      <text aria-hidden="true" x="${(labelWidth + messageWidth / 2) * 10}" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)">${message}</text>
-      <text x="${(labelWidth + messageWidth / 2) * 10}" y="140" transform="scale(.1)" fill="#fff">${message}</text>
+      <text aria-hidden="true" x="${
+        (labelWidth / 2) * 10
+      }" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)">${label}</text>
+      <text x="${
+        (labelWidth / 2) * 10
+      }" y="140" transform="scale(.1)" fill="#fff">${label}</text>
+      <text aria-hidden="true" x="${
+        (labelWidth + messageWidth / 2) * 10
+      }" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)">${message}</text>
+      <text x="${
+        (labelWidth + messageWidth / 2) * 10
+      }" y="140" transform="scale(.1)" fill="#fff">${message}</text>
     </g>
   </svg>`;
 }

@@ -1,76 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { loadServers } from "../../lib/server-utils";
-import { MCPServer } from "../../data/types";
 
-/**
- * @swagger
- * /api/search:
- *   get:
- *     summary: Search MCP servers
- *     description: Search for MCP servers with filtering and sorting options
- *     tags: [Search]
- *     parameters:
- *       - in: query
- *         name: q
- *         schema:
- *           type: string
- *         description: Search query to filter by name, description, or repository
- *         example: github
- *       - in: query
- *         name: category
- *         schema:
- *           type: string
- *           enum: [Aggregators, Art & Culture, Healthcare, Browser Automation, Cloud, Development, CLI Tools, Communication, Data, Logistics, Data Science, IoT, File Management, Finance, Gaming, Knowledge, Location, Marketing, Monitoring, Media, AI Tools, Search, Security, Social Media, Sports, Support, Translation, Audio, Travel, Productivity, Utilities]
- *         description: Filter by category
- *       - in: query
- *         name: language
- *         schema:
- *           type: string
- *         description: Filter by programming language
- *         example: TypeScript
- *       - in: query
- *         name: sortBy
- *         schema:
- *           type: string
- *           enum: [quality, stars, name]
- *           default: quality
- *         description: Sort results by field
- *       - in: query
- *         name: limit
- *         schema:
- *           type: integer
- *           minimum: 1
- *           maximum: 100
- *           default: 50
- *         description: Number of results to return
- *       - in: query
- *         name: offset
- *         schema:
- *           type: integer
- *           minimum: 0
- *           default: 0
- *         description: Number of results to skip
- *     responses:
- *       200:
- *         description: Successful response
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 servers:
- *                   type: array
- *                   items:
- *                     $ref: '#/components/schemas/MCPServer'
- *                 totalCount:
- *                   type: integer
- *                 limit:
- *                   type: integer
- *                 offset:
- *                   type: integer
- *                 hasMore:
- *                   type: boolean
- */
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
@@ -89,12 +19,12 @@ export async function GET(request: NextRequest) {
       // Search query filter
       if (query) {
         const searchQuery = query.toLowerCase();
-        const matchesSearch = 
+        const matchesSearch =
           server.name.toLowerCase().includes(searchQuery) ||
           server.description.toLowerCase().includes(searchQuery) ||
-          server.gitHubOrg.toLowerCase().includes(searchQuery) ||
-          server.gitHubRepo.toLowerCase().includes(searchQuery);
-        
+          server.github_info.owner.toLowerCase().includes(searchQuery) ||
+          server.github_info.repo.toLowerCase().includes(searchQuery);
+
         if (!matchesSearch) return false;
       }
 
@@ -104,7 +34,7 @@ export async function GET(request: NextRequest) {
       }
 
       // Language filter
-      if (language && server.programmingLanguage !== language) {
+      if (language && server.programming_language !== language) {
         return false;
       }
 
@@ -116,19 +46,19 @@ export async function GET(request: NextRequest) {
       switch (sortBy) {
         case "quality":
           // Sort by trust score (descending), null values last
-          if (a.qualityScore === null && b.qualityScore === null) return 0;
-          if (a.qualityScore === null) return 1;
-          if (b.qualityScore === null) return -1;
-          return b.qualityScore - a.qualityScore;
-        
+          if (a.quality_score === null && b.quality_score === null) return 0;
+          if (a.quality_score === null) return 1;
+          if (b.quality_score === null) return -1;
+          return b.quality_score - a.quality_score;
+
         case "stars":
           // Sort by GitHub stars (descending)
-          return (b.gh_stars || 0) - (a.gh_stars || 0);
-        
+          return (b.github_info.stars || 0) - (a.github_info.stars || 0);
+
         case "name":
           // Sort alphabetically by name
           return a.name.localeCompare(b.name);
-        
+
         default:
           return 0;
       }
@@ -148,9 +78,9 @@ export async function GET(request: NextRequest) {
     });
 
     // Add CORS headers to allow access from any origin
-    response.headers.set('Access-Control-Allow-Origin', '*');
-    response.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
-    response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+    response.headers.set("Access-Control-Allow-Origin", "*");
+    response.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
 
     return response;
   } catch (error) {
@@ -164,11 +94,11 @@ export async function GET(request: NextRequest) {
 
 export async function OPTIONS(request: NextRequest) {
   const response = new NextResponse(null, { status: 200 });
-  
+
   // Add CORS headers for preflight requests
-  response.headers.set('Access-Control-Allow-Origin', '*');
-  response.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
-  
+  response.headers.set("Access-Control-Allow-Origin", "*");
+  response.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
+  response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+
   return response;
 }
