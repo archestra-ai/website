@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "@jpisnice/shadcn-ui-mcp-server",
-        "--github-api-key",
-        "ghp_your_token_here",
-        "--framework",
-        "react"
-      ],
+      "args": ["@jpisnice/shadcn-ui-mcp-server", "--github-api-key", "ghp_your_token_here", "--framework", "react"],
       "env": {}
     }
   },

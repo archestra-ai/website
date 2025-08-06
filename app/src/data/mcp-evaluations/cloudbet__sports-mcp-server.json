@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "go",
-      "args": [
-        "run",
-        "."
-      ],
+      "args": ["run", "."],
       "env": {}
     }
   },

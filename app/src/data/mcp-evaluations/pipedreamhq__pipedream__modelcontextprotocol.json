@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "bun",
-      "args": [
-        "src/stdio.ts"
-      ],
+      "args": ["src/stdio.ts"],
       "env": {
         "server-basic": "PIPEDREAM_CLIENT_ID",
         "server-configured": "PIPEDREAM_CLIENT_SECRET",

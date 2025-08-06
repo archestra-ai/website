@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        ".",
-        "run",
-        "omniparser-autogui-mcp"
-      ],
+      "args": ["--directory", ".", "run", "omniparser-autogui-mcp"],
       "env": {
         "server-basic": "PYTHONIOENCODING",
         "server-configured": "OCR_LANG"

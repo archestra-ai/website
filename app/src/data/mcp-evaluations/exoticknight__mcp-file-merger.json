@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@exoticknight/mcp-file-merger",
-        "/path/to/allowed/dir",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@exoticknight/mcp-file-merger", "/path/to/allowed/dir", "--transport", "stdio"],
       "env": {}
     }
   },

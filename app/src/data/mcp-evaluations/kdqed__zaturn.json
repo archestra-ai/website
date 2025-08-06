@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@kdqed/zaturn",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@kdqed/zaturn", "--transport", "stdio"],
       "env": {}
     }
   },

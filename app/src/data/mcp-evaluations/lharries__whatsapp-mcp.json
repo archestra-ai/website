@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "whatsapp-mcp-server",
-        "run",
-        "main.py"
-      ],
+      "args": ["--directory", "whatsapp-mcp-server", "run", "main.py"],
       "env": {}
     }
   },

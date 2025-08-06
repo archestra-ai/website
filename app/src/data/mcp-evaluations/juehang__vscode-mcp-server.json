@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "mcp-remote@next",
-        "http://localhost:3000/mcp"
-      ],
+      "args": ["mcp-remote@next", "http://localhost:3000/mcp"],
       "env": {}
     }
   },

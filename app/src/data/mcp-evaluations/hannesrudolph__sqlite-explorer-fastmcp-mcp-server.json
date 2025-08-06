@@ -12,16 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "--with",
-        "fastmcp",
-        "--with",
-        "uvicorn",
-        "fastmcp",
-        "run",
-        "sqlite_explorer.py"
-      ],
+      "args": ["run", "--with", "fastmcp", "--with", "uvicorn", "fastmcp", "run", "sqlite_explorer.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

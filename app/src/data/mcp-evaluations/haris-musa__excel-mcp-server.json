@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "excel-mcp-server",
-        "stdio"
-      ],
+      "args": ["excel-mcp-server", "stdio"],
       "env": {}
     }
   },

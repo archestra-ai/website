@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/hyperb1iss/droidmind",
-        "droidmind",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["--from", "git+https://github.com/hyperb1iss/droidmind", "droidmind", "--transport", "stdio"],
       "env": {}
     }
   },

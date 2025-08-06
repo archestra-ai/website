@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/polygon-io/mcp_polygon@v0.4.0",
-        "mcp_polygon"
-      ],
+      "args": ["--from", "git+https://github.com/polygon-io/mcp_polygon@v0.4.0", "mcp_polygon"],
       "env": {
         "server-basic": "",
         "server-configured": "",

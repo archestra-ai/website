@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "python",
-        "-m",
-        "nyxdocs.server"
-      ],
+      "args": ["run", "python", "-m", "nyxdocs.server"],
       "env": {
         "server-basic": "",
         "server-configured": "",

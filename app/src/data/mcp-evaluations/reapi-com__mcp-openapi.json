@@ -12,14 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@reapi/mcp-openapi@latest",
-        "--dir",
-        "./specs",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@reapi/mcp-openapi@latest", "--dir", "./specs", "--transport", "stdio"],
       "env": {}
     }
   },

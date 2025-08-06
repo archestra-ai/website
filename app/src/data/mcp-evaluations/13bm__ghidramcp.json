@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "GhidraMCP/ghidra_server.py",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["GhidraMCP/ghidra_server.py", "--transport", "stdio"],
       "env": {}
     }
   },

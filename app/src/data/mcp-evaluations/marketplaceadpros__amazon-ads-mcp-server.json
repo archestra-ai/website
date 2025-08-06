@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@marketplaceadpros/amazon-ads-mcp-server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@marketplaceadpros/amazon-ads-mcp-server", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

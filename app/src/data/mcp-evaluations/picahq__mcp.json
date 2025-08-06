@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "@picahq/mcp"
-      ],
+      "args": ["@picahq/mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

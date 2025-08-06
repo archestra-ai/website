@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "-m",
-        "gis_mcp",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-m", "gis_mcp", "--transport", "stdio"],
       "env": {}
     }
   },

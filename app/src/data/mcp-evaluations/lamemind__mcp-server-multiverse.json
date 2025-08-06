@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@lamemind/mcp-server-multiverse@latest",
-        "./multiverse.json"
-      ],
+      "args": ["-y", "@lamemind/mcp-server-multiverse@latest", "./multiverse.json"],
       "env": {}
     }
   },

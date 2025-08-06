@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "src/server.py"
-      ],
+      "args": ["run", "src/server.py"],
       "env": {
         "server-basic": "ALPACA_PAPER_API_KEY",
         "server-configured": "ALPACA_PAPER_API_SECRET"

@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@circleci/mcp-server-circleci"
-      ],
+      "args": ["-y", "@circleci/mcp-server-circleci"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "bridge/binja_mcp_bridge.py",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["bridge/binja_mcp_bridge.py", "--transport", "stdio"],
       "env": {}
     }
   },

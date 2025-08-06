@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "tool",
-        "dicom-mcp",
-        "path/to/your_config.yaml",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["tool", "dicom-mcp", "path/to/your_config.yaml", "--transport", "stdio"],
       "env": {}
     }
   },

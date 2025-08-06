@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "mcp",
-      "args": [
-        "run",
-        "whale_tracker.py",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["run", "whale_tracker.py", "--transport", "stdio"],
       "env": {
         "server-basic": "WHALE_ALERT_API_KEY"
       }

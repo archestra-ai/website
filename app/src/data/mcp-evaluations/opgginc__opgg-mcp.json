@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "supergateway",
-        "--streamableHttp",
-        "https://mcp-api.op.gg/mcp"
-      ],
+      "args": ["-y", "supergateway", "--streamableHttp", "https://mcp-api.op.gg/mcp"],
       "env": {}
     }
   },

@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "</path/to/memcord>",
-        "run",
-        "memcord"
-      ],
+      "args": ["--directory", "</path/to/memcord>", "run", "memcord"],
       "env": {
         "server-basic": "</path/to/memcord>/src",
         "server-configured": "</path/to/memcord>/src",

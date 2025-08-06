@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "--with",
-        "biomcp-python",
-        "biomcp",
-        "run"
-      ],
+      "args": ["run", "--with", "biomcp-python", "biomcp", "run"],
       "env": {
         "server-basic": "CBIO_TOKEN",
         "server-configured": "CBIO_BASE_URL"

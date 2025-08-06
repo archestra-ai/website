@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "mcpxcodebuild",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["mcpxcodebuild", "--transport", "stdio"],
       "env": {}
     }
   },

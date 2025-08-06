@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-server-taskwarrior",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "mcp-server-taskwarrior", "--transport", "stdio"],
       "env": {}
     }
   },

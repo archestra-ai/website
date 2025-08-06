@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "magg",
-      "args": [
-        "serve"
-      ],
+      "args": ["serve"],
       "env": {
         "server-docker": "MAGG_PRIVATE_KEY"
       }

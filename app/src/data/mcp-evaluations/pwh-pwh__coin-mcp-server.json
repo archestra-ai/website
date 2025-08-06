@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "deno",
-      "args": [
-        "run",
-        "--allow-net",
-        "--allow-read",
-        "--allow-env",
-        "https://deno.land/x/coin_mcp_server/main.ts"
-      ],
+      "args": ["run", "--allow-net", "--allow-read", "--allow-env", "https://deno.land/x/coin_mcp_server/main.ts"],
       "env": {
         "server-basic": "",
         "server-configured": "",

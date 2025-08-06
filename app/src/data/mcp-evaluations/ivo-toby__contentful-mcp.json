@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@ivotoby/contentful-management-mcp-server",
-        "--http"
-      ],
+      "args": ["-y", "@ivotoby/contentful-management-mcp-server", "--http"],
       "env": {
         "server-basic": "",
         "server-configured": "",

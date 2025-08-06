@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/adhikasp/mcp-git-ingest",
-        "mcp-git-ingest",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["--from", "git+https://github.com/adhikasp/mcp-git-ingest", "mcp-git-ingest", "--transport", "stdio"],
       "env": {}
     }
   },

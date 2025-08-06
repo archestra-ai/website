@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "simple_snowflake_mcp"
-      ],
+      "args": ["simple_snowflake_mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

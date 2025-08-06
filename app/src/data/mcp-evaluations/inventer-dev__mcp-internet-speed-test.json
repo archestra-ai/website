@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "mcp-internet-speed-test"
-      ],
+      "args": ["mcp-internet-speed-test"],
       "env": {}
     }
   },

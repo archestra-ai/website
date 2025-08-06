@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@freema/mcp-design-system-extractor",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@freema/mcp-design-system-extractor", "--transport", "stdio"],
       "env": {}
     }
   },

@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "src/manim_server.py"
-      ],
+      "args": ["src/manim_server.py"],
       "env": {
         "server-configured": "MANIM_EXECUTABLE"
       }

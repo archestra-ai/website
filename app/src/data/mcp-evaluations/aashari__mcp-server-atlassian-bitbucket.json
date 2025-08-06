@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@aashari/mcp-server-atlassian-bitbucket"
-      ],
+      "args": ["-y", "@aashari/mcp-server-atlassian-bitbucket"],
       "env": {
         "server-basic": "",
         "server-configured": "",

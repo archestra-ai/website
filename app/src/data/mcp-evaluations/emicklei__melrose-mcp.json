@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "melrose-mcp",
-      "args": [
-        "--transport",
-        "stdio"
-      ],
+      "args": ["--transport", "stdio"],
       "env": {}
     }
   },

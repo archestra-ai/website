@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "editorconfig-mcp-server"
-      ],
+      "args": ["-y", "editorconfig-mcp-server"],
       "env": {}
     }
   },

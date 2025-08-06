@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@janreges/ai-distiller-mcp",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@janreges/ai-distiller-mcp", "--transport", "stdio"],
       "env": {}
     }
   },

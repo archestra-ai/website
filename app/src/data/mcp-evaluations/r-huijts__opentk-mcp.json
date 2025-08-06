@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@r-huijts/opentk-mcp"
-      ],
+      "args": ["-y", "@r-huijts/opentk-mcp"],
       "env": {}
     }
   },

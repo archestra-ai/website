@@ -12,14 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "MCP-Geo",
-        "run",
-        "geo.py",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["--directory", "MCP-Geo", "run", "geo.py", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

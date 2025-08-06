@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "bun",
-      "args": [
-        "run",
-        "dev:bitte-ai"
-      ],
+      "args": ["run", "dev:bitte-ai"],
       "env": {}
     }
   },

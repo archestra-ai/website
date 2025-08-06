@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "mcp-ai-soc",
-      "args": [
-        "--type",
-        "local",
-        "--stdio"
-      ],
+      "args": ["--type", "local", "--stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

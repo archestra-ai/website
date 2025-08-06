@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "vol_mcp_server.py",
-        "-i",
-        "<memory_image_path>"
-      ],
+      "args": ["vol_mcp_server.py", "-i", "<memory_image_path>"],
       "env": {
         "server-basic": "",
         "server-configured": "",

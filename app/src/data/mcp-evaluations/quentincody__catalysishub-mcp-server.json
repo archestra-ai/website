@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "/Users/quentincody/.env/bin/python3",
-      "args": [
-        "/Users/quentincody/catalysishub-mcp-server/catalysishub_mcp_server.py",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["/Users/quentincody/catalysishub-mcp-server/catalysishub_mcp_server.py", "--transport", "stdio"],
       "env": {}
     }
   },

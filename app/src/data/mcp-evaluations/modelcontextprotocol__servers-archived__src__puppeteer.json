@@ -12,15 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "docker",
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "--init",
-        "-e",
-        "DOCKER_CONTAINER=true",
-        "mcp/puppeteer"
-      ],
+      "args": ["run", "-i", "--rm", "--init", "-e", "DOCKER_CONTAINER=true", "mcp/puppeteer"],
       "env": {
         "server-basic": "string",
         "server-configured": "string",

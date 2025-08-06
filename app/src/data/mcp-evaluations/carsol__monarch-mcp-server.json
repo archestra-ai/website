@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "run_server.py"
-      ],
+      "args": ["run_server.py"],
       "env": {
         "server-basic": "MONARCH_EMAIL",
         "server-configured": "MONARCH_PASSWORD",

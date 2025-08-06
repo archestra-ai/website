@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/gwbischof/bluesky-social-mcp@v0.1",
-        "bluesky-social-mcp"
-      ],
+      "args": ["--from", "git+https://github.com/gwbischof/bluesky-social-mcp@v0.1", "bluesky-social-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

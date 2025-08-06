@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "octocode-mcp",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "octocode-mcp", "--transport", "stdio"],
       "env": {}
     }
   },

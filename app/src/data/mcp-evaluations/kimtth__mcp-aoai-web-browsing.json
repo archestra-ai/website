@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "chatgui.py"
-      ],
+      "args": ["chatgui.py"],
       "env": {
         "server-basic": "AZURE_OPEN_AI_ENDPOINT",
         "server-configured": "AZURE_OPEN_AI_API_KEY",

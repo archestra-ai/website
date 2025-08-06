@@ -12,14 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "--with",
-        "mcp-memgraph",
-        "--python",
-        "3.13",
-        "mcp-memgraph"
-      ],
+      "args": ["run", "--with", "mcp-memgraph", "--python", "3.13", "mcp-memgraph"],
       "env": {}
     }
   },

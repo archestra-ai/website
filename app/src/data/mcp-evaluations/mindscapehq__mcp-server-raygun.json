@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@raygun.io/mcp-server-raygun",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@raygun.io/mcp-server-raygun", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

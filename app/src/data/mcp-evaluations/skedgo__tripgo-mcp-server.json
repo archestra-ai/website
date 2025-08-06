@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://tripgo-mcp-server.skedgo-account.workers.dev/sse",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["mcp-remote", "https://tripgo-mcp-server.skedgo-account.workers.dev/sse", "--transport", "stdio"],
       "env": {}
     }
   },

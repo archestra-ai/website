@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "sonarqube-mcp-server@latest"
-      ],
+      "args": ["-y", "sonarqube-mcp-server@latest"],
       "env": {}
     }
   },

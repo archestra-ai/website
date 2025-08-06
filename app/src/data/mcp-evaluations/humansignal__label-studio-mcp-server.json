@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/HumanSignal/label-studio-mcp-server",
-        "mcp-label-studio"
-      ],
+      "args": ["--from", "git+https://github.com/HumanSignal/label-studio-mcp-server", "mcp-label-studio"],
       "env": {}
     }
   },

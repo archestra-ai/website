@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "target/release/assistant-mcp",
-      "args": [
-        "--transport",
-        "stdio"
-      ],
+      "args": ["--transport", "stdio"],
       "env": {
         "server-basic": "PINECONE_API_KEY",
         "server-configured": "PINECONE_ASSISTANT_HOST",

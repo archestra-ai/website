@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@sequa-ai/sequa-mcp@latest",
-        "https://mcp.sequa.ai/v1/setup-code-assistant"
-      ],
+      "args": ["-y", "@sequa-ai/sequa-mcp@latest", "https://mcp.sequa.ai/v1/setup-code-assistant"],
       "env": {}
     }
   },

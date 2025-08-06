@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "src/alpha_vantage_mcp/server.py",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["run", "src/alpha_vantage_mcp/server.py", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

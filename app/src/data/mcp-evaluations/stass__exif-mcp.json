@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "/path/to/exif-mcp/dist/server.js"
-      ],
+      "args": ["/path/to/exif-mcp/dist/server.js"],
       "env": {}
     }
   },

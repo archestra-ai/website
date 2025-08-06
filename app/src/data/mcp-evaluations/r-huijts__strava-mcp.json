@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "/absolute/path/to/your/strava-mcp/dist/server.js",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["/absolute/path/to/your/strava-mcp/dist/server.js", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

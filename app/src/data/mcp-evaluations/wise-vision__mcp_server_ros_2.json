@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "mcp_server_ros_2",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["mcp_server_ros_2", "--transport", "stdio"],
       "env": {}
     }
   },

@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "authenticator-mcp"
-      ],
+      "args": ["-y", "authenticator-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

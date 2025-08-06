@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "dist/server.js"
-      ],
+      "args": ["dist/server.js"],
       "env": {
         "server-basic": "HASS_HOST",
         "server-configured": "HASS_TOKEN",

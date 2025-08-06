@@ -12,14 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "",
-        "run",
-        "mcp-server-home-assistant",
-        "-v",
-        "-v"
-      ],
+      "args": ["--directory", "", "run", "mcp-server-home-assistant", "-v", "-v"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "/absolute/path/to/mcp-maigret/build/index.js",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["/absolute/path/to/mcp-maigret/build/index.js", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

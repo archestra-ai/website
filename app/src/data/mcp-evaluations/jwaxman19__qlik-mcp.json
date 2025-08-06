@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "deno",
-      "args": [
-        "run",
-        "--allow-all",
-        "--env-file=.env",
-        "src/index.ts"
-      ],
+      "args": ["run", "--allow-all", "--env-file=.env", "src/index.ts"],
       "env": {
         "server-basic": "",
         "server-configured": "",

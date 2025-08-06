@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@anaisbetts/mcp-youtube",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@anaisbetts/mcp-youtube", "--transport", "stdio"],
       "env": {}
     }
   },

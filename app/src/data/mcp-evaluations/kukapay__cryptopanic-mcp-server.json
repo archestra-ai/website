@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "your/path/to/cryptopanic-mcp-server",
-        "run",
-        "main.py"
-      ],
+      "args": ["--directory", "your/path/to/cryptopanic-mcp-server", "run", "main.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

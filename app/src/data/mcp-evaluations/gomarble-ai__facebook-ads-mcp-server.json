@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "server.py",
-        "--fb-token",
-        "YOUR_META_ACCESS_TOKEN",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["server.py", "--fb-token", "YOUR_META_ACCESS_TOKEN", "--transport", "stdio"],
       "env": {}
     }
   },

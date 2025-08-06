@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "openapi-to-mcp",
-      "args": [
-        "https://petstore3.swagger.io/api/v3/openapi.json",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["https://petstore3.swagger.io/api/v3/openapi.json", "--transport", "stdio"],
       "env": {}
     }
   },

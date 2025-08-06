@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "-m",
-        "mcp_simple_pubmed"
-      ],
+      "args": ["-m", "mcp_simple_pubmed"],
       "env": {
         "server-basic": "",
         "server-configured": "",

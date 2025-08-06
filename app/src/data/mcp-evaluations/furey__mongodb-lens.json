@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mongodb-lens",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "mongodb-lens", "--transport", "stdio"],
       "env": {}
     }
   },

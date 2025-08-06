@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "mcp-baostock-server"
-      ],
+      "args": ["run", "mcp-baostock-server"],
       "env": {}
     }
   },

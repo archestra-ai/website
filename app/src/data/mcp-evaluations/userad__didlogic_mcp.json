@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "didlogic_mcp",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["didlogic_mcp", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

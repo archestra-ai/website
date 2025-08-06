@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "/ABSOLUTE/PATH/TO/PARENT/REPO/FOLDER/src",
-        "run",
-        "jupyter_mcp_server.py"
-      ],
+      "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/REPO/FOLDER/src", "run", "jupyter_mcp_server.py"],
       "env": {}
     }
   },

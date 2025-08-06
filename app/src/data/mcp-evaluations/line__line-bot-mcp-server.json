@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "@line/line-bot-mcp-server"
-      ],
+      "args": ["@line/line-bot-mcp-server"],
       "env": {
         "server-basic": "",
         "server-configured": "",

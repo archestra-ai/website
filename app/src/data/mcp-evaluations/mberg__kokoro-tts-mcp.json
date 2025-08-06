@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "app",
-        "run",
-        "mcp-tts.py"
-      ],
+      "args": ["--directory", "app", "run", "mcp-tts.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

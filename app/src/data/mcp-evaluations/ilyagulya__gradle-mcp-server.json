@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "java",
-      "args": [
-        "-jar",
-        "/root/mcp-servers/gradle-mcp-server/gradle-mcp-server-all.jar"
-      ],
+      "args": ["-jar", "/root/mcp-servers/gradle-mcp-server/gradle-mcp-server-all.jar"],
       "env": {}
     }
   },

@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "-m",
-        "mcp_server_webcrawl",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-m", "mcp_server_webcrawl", "--transport", "stdio"],
       "env": {}
     }
   },

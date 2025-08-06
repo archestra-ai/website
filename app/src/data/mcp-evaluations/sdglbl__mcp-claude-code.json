@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@anthropic-ai/claude-code",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@anthropic-ai/claude-code", "--transport", "stdio"],
       "env": {}
     }
   },

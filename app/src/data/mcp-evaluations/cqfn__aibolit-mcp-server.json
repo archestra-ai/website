@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "aibolit-mcp-server@0.0.6",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "aibolit-mcp-server@0.0.6", "--transport", "stdio"],
       "env": {}
     }
   },

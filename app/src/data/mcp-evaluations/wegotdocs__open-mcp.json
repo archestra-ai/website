@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "{server-id}",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "{server-id}", "--transport", "stdio"],
       "env": {
         "server-basic": "ENV_VAR"
       }

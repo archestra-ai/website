@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "coda-mcp@latest"
-      ],
+      "args": ["-y", "coda-mcp@latest"],
       "env": {
         "server-basic": "API_KEY"
       }

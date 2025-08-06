@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "just-mcp",
-      "args": [
-        "--stdio"
-      ],
+      "args": ["--stdio"],
       "env": {}
     }
   },

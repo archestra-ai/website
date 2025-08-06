@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "run",
-        "wsb-analyst"
-      ],
+      "args": ["run", "wsb-analyst"],
       "env": {
         "server-basic": "",
         "server-configured": "",

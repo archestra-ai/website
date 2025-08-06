@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "./src/qgis_mcp",
-        "run",
-        "qgis_mcp_server.py"
-      ],
+      "args": ["--directory", "./src/qgis_mcp", "run", "qgis_mcp_server.py"],
       "env": {}
     }
   },

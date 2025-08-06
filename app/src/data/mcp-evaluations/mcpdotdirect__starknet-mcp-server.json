@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@mcpdotdirect/starknet-mcp-server"
-      ],
+      "args": ["-y", "@mcpdotdirect/starknet-mcp-server"],
       "env": {}
     }
   },

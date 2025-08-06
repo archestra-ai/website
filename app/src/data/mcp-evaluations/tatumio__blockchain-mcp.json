@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@tatumio/blockchain-mcp",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@tatumio/blockchain-mcp", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-openapi-schema-explorer@latest",
-        "<path-or-url-to-spec>",
-        "--output-format",
-        "yaml"
-      ],
+      "args": ["-y", "mcp-openapi-schema-explorer@latest", "<path-or-url-to-spec>", "--output-format", "yaml"],
       "env": {}
     }
   },

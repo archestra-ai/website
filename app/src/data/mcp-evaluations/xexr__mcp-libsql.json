@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "mcp-libsql",
-      "args": [
-        "--url",
-        "libsql://your-database.turso.io"
-      ],
+      "args": ["--url", "libsql://your-database.turso.io"],
       "env": {
         "server-basic": "",
         "server-configured": "",

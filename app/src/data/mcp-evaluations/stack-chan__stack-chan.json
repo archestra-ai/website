@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@stack-chan/server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@stack-chan/server", "--transport", "stdio"],
       "env": {}
     }
   },

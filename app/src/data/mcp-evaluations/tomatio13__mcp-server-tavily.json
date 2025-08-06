@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        ".",
-        "run",
-        "tavily-search"
-      ],
+      "args": ["--directory", ".", "run", "tavily-search"],
       "env": {
         "server-basic": "",
         "server-configured": "",

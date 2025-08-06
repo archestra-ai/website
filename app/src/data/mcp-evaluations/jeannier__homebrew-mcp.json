@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "--directory",
-        ".",
-        "homebrew_mcp.py"
-      ],
+      "args": ["run", "--directory", ".", "homebrew_mcp.py"],
       "env": {}
     }
   },

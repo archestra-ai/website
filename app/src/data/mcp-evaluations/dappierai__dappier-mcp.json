@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "dappier-mcp"
-      ],
+      "args": ["dappier-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

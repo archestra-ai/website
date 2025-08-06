@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "@mindpilot/mcp@latest"
-      ],
+      "args": ["@mindpilot/mcp@latest"],
       "env": {}
     }
   },

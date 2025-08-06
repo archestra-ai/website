@@ -12,14 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "/path/to/coinmarket_service",
-        "run",
-        "coinmarket_service",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["--directory", "/path/to/coinmarket_service", "run", "coinmarket_service", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "path/to/crypto-sentiment-mcp",
-        "run",
-        "main.py"
-      ],
+      "args": ["--directory", "path/to/crypto-sentiment-mcp", "run", "main.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

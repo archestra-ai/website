@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "path/to/jupiter-mcp/server/index.js"
-      ],
+      "args": ["path/to/jupiter-mcp/server/index.js"],
       "env": {
         "server-basic": "",
         "server-configured": "",

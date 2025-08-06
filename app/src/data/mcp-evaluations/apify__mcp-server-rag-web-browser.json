@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@apify/mcp-server-rag-web-browser"
-      ],
+      "args": ["-y", "@apify/mcp-server-rag-web-browser"],
       "env": {
         "server-basic": "",
         "server-configured": "",

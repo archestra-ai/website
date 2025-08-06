@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "mcp-server-ancestry",
-      "args": [
-        "--gedcom-path",
-        "path/to/your/gedcom/files",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["--gedcom-path", "path/to/your/gedcom/files", "--transport", "stdio"],
       "env": {}
     }
   },

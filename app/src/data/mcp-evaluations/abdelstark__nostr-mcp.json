@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npm",
-      "args": [
-        "start"
-      ],
+      "args": ["start"],
       "env": {
         "server-basic": "",
         "server-configured": "",

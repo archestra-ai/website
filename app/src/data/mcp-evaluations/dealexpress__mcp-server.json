@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@dealx/mcp-server"
-      ],
+      "args": ["-y", "@dealx/mcp-server"],
       "env": {
         "server-basic": "",
         "server-configured": "",

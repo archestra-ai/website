@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/adhikasp/mcp-twikit",
-        "mcp-twikit"
-      ],
+      "args": ["--from", "git+https://github.com/adhikasp/mcp-twikit", "mcp-twikit"],
       "env": {}
     }
   },

@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@anaisbetts/mcp-installer",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@anaisbetts/mcp-installer", "--transport", "stdio"],
       "env": {}
     }
   },

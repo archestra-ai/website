@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-memory",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@modelcontextprotocol/server-memory", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

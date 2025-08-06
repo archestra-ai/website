@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@aashari/mcp-server-atlassian-confluence",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@aashari/mcp-server-atlassian-confluence", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@ddukbg/github-enterprise-mcp"
-      ],
+      "args": ["-y", "@ddukbg/github-enterprise-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@openbnb/mcp-server-airbnb",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@openbnb/mcp-server-airbnb", "--transport", "stdio"],
       "env": {}
     }
   },

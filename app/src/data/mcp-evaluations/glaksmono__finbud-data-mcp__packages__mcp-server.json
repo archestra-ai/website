@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "finbud-data-mcp",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "finbud-data-mcp", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

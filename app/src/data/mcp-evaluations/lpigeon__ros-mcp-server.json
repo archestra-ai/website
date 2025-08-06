@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "ros-mcp-server",
-        "run",
-        "server.py"
-      ],
+      "args": ["--directory", "ros-mcp-server", "run", "server.py"],
       "env": {}
     }
   },

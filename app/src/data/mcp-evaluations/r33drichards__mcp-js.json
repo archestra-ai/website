@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "/usr/local/bin/mcp-v8",
-      "args": [
-        "--s3-bucket",
-        "my-archestra-bucket"
-      ],
+      "args": ["--s3-bucket", "my-archestra-bucket"],
       "env": {
         "server-basic": "",
         "server-configured": "",

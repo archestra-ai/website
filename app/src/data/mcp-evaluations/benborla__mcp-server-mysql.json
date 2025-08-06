@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@benborla29/mcp-server-mysql",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@benborla29/mcp-server-mysql", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

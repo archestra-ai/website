@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "mcpjungle",
-      "args": [
-        "start"
-      ],
+      "args": ["start"],
       "env": {
         "server-configured": "DATABASE_URL"
       }

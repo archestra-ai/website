@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "isaac_mcp/server.py"
-      ],
+      "args": ["run", "isaac_mcp/server.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

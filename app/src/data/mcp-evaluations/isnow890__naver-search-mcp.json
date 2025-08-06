@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@isnow890/naver-search-mcp"
-      ],
+      "args": ["-y", "@isnow890/naver-search-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

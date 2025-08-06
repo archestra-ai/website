@@ -12,18 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "go-mcp-mysql",
-      "args": [
-        "--host",
-        "localhost",
-        "--user",
-        "root",
-        "--pass",
-        "password",
-        "--port",
-        "3306",
-        "--db",
-        "mydb"
-      ],
+      "args": ["--host", "localhost", "--user", "root", "--pass", "password", "--port", "3306", "--db", "mydb"],
       "env": {}
     }
   },

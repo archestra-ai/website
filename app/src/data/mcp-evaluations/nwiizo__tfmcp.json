@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "tfmcp",
-      "args": [
-        "mcp"
-      ],
+      "args": ["mcp"],
       "env": {
         "server-basic": "string",
         "server-configured": "string",

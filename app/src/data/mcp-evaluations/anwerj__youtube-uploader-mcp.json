@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "youtube-uploader-mcp",
-      "args": [
-        "-client_secret_file",
-        "/absolute/path/to/client_secret.json"
-      ],
+      "args": ["-client_secret_file", "/absolute/path/to/client_secret.json"],
       "env": {}
     }
   },

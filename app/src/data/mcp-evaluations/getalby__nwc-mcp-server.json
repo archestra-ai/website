@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@getalby/nwc-mcp-server"
-      ],
+      "args": ["-y", "@getalby/nwc-mcp-server"],
       "env": {
         "server-basic": "",
         "server-configured": "",

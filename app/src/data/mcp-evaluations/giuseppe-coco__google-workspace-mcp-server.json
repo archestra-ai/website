@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "mcp_server.py"
-      ],
+      "args": ["mcp_server.py"],
       "env": {}
     }
   },

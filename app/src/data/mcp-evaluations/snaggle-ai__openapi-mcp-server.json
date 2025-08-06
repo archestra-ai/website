@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@janwilmake/openapi-mcp-server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@janwilmake/openapi-mcp-server", "--transport", "stdio"],
       "env": {}
     }
   },

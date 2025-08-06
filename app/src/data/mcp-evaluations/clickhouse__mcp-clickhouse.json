@@ -12,14 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "--with",
-        "mcp-clickhouse",
-        "--python",
-        "3.10",
-        "mcp-clickhouse"
-      ],
+      "args": ["run", "--with", "mcp-clickhouse", "--python", "3.10", "mcp-clickhouse"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "-m",
-        "fpl_mcp"
-      ],
+      "args": ["-m", "fpl_mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

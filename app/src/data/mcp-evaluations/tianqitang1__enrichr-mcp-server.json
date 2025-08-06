@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "enrichr-mcp-server",
-        "--compact",
-        "--max-terms",
-        "100"
-      ],
+      "args": ["-y", "enrichr-mcp-server", "--compact", "--max-terms", "100"],
       "env": {}
     }
   },

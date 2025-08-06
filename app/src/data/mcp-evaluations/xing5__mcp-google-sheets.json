@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "mcp-google-sheets@latest"
-      ],
+      "args": ["mcp-google-sheets@latest"],
       "env": {
         "server-basic": "",
         "server-configured": "",

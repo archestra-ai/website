@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@zxkane/mcp-server-amazon-bedrock",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@zxkane/mcp-server-amazon-bedrock", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

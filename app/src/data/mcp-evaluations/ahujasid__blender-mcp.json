@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "blender-mcp"
-      ],
+      "args": ["blender-mcp"],
       "env": {}
     }
   },

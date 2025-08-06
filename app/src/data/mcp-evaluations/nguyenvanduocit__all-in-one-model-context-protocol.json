@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "all-in-one-model-context-protocol",
-      "args": [
-        "-env",
-        "/path/to/.env"
-      ],
+      "args": ["-env", "/path/to/.env"],
       "env": {
         "server-basic": "",
         "server-configured": "",

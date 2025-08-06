@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "src/findata",
-        "run",
-        "server.py"
-      ],
+      "args": ["--directory", "src/findata", "run", "server.py"],
       "env": {}
     }
   },

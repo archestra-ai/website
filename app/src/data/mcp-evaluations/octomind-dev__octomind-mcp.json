@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@octomind/octomind-mcp@latest"
-      ],
+      "args": ["-y", "@octomind/octomind-mcp@latest"],
       "env": {
         "server-basic": "",
         "server-configured": "",

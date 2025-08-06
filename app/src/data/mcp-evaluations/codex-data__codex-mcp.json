@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@codex-data/codex-mcp"
-      ],
+      "args": ["-y", "@codex-data/codex-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

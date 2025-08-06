@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@joshuarileydev/app-store-connect-mcp-server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@joshuarileydev/app-store-connect-mcp-server", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

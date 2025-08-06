@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://mcp.himalayas.app/sse"
-      ],
+      "args": ["-y", "mcp-remote", "https://mcp.himalayas.app/sse"],
       "env": {}
     }
   },

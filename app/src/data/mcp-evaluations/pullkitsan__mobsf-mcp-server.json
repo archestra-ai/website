@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "tsx",
-        "server.ts"
-      ],
+      "args": ["tsx", "server.ts"],
       "env": {
         "server-basic": "",
         "server-configured": "",

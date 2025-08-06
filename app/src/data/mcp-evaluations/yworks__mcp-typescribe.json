@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-typescribe@latest",
-        "run-server",
-        "docs/api.json"
-      ],
+      "args": ["-y", "mcp-typescribe@latest", "run-server", "docs/api.json"],
       "env": {}
     }
   },

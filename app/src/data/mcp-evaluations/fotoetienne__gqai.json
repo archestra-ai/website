@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "gqai",
-      "args": [
-        "run",
-        "--config",
-        ".graphqlrc.yml"
-      ],
+      "args": ["run", "--config", ".graphqlrc.yml"],
       "env": {
         "server-basic": "",
         "server-configured": "",

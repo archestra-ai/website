@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@ipfind/ipfind-mcp-server"
-      ],
+      "args": ["-y", "@ipfind/ipfind-mcp-server"],
       "env": {
         "server-basic": "",
         "server-configured": "",

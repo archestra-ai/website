@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "mcp-server-sqlite",
-        "--db-path",
-        "db.sqlite"
-      ],
+      "args": ["mcp-server-sqlite", "--db-path", "db.sqlite"],
       "env": {}
     }
   },

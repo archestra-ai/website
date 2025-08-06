@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@roychri/mcp-server-asana",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@roychri/mcp-server-asana", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

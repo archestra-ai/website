@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "elasticsearch-mcp-server"
-      ],
+      "args": ["elasticsearch-mcp-server"],
       "env": {}
     }
   },

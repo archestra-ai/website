@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "qrcode_mcp_server.py"
-      ],
+      "args": ["qrcode_mcp_server.py"],
       "env": {}
     }
   },

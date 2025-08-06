@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "job-searchoor",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "job-searchoor", "--transport", "stdio"],
       "env": {}
     }
   },

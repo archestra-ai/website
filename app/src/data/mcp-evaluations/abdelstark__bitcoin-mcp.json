@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "bitcoin-mcp@latest"
-      ],
+      "args": ["-y", "bitcoin-mcp@latest"],
       "env": {}
     }
   },

@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "./k8s-mcp-server",
-      "args": [
-        "--mode",
-        "stdio"
-      ],
+      "args": ["--mode", "stdio"],
       "env": {
         "server-basic": "SERVER_MODE=stdio ./k8s-mcp-server",
         "server-configured": "SERVER_MODE=stdio SERVER_PORT=9090 ./k8s-mcp-server",

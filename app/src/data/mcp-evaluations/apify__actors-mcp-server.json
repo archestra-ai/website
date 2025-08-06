@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@apify/actors-mcp-server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@apify/actors-mcp-server", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

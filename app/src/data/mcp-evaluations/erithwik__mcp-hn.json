@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "mcp-hn",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["mcp-hn", "--transport", "stdio"],
       "env": {}
     }
   },

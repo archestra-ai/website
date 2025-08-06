@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "replicate-flux-mcp"
-      ],
+      "args": ["-y", "replicate-flux-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

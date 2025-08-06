@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "apps/mcp-server/build/index.js",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["apps/mcp-server/build/index.js", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,14 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "fastmcp",
-        "dev",
-        "src/examples/addition.ts",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "fastmcp", "dev", "src/examples/addition.ts", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

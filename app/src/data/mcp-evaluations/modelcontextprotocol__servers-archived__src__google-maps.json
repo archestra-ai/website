@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-google-maps"
-      ],
+      "args": ["-y", "@modelcontextprotocol/server-google-maps"],
       "env": {
         "server-basic": "",
         "server-configured": "",

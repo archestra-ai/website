@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@fireflyai/firefly-mcp"
-      ],
+      "args": ["-y", "@fireflyai/firefly-mcp"],
       "env": {
         "server-basic": "FIREFLY_ACCESS_KEY",
         "server-configured": "FIREFLY_SECRET_KEY"

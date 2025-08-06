@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@johnneerdael/netskope-mcp"
-      ],
+      "args": ["-y", "@johnneerdael/netskope-mcp"],
       "env": {
         "server-configured": "NETSKOPE_BASE_URL=\"https://your-tenant.goskope.com\" NETSKOPE_API_KEY=\"your-token\""
       }

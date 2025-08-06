@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "/Users/naveenkumar/.local/bin/uv",
-      "args": [
-        "--directory",
-        "/Users/naveenkumar/Gits/locust-mcp-server",
-        "run",
-        "locust_server.py"
-      ],
+      "args": ["--directory", "/Users/naveenkumar/Gits/locust-mcp-server", "run", "locust_server.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

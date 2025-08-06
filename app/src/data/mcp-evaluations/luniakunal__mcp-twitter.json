@@ -12,14 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "--with",
-        "twikit",
-        "--with",
-        "mcp",
-        "Path\\src\\tweet_service.py"
-      ],
+      "args": ["run", "--with", "twikit", "--with", "mcp", "Path\\src\\tweet_service.py"],
       "env": {}
     }
   },

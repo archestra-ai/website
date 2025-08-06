@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "semgrep-mcp",
-        "-t",
-        "stdio"
-      ],
+      "args": ["semgrep-mcp", "-t", "stdio"],
       "env": {}
     }
   },

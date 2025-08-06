@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "/path/to/vibe-check-mcp/build/index.js"
-      ],
+      "args": ["/path/to/vibe-check-mcp/build/index.js"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "pnpm",
-      "args": [
-        "dev"
-      ],
+      "args": ["dev"],
       "env": {}
     }
   },

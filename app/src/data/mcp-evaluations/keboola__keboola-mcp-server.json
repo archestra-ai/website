@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "keboola_mcp_server"
-      ],
+      "args": ["keboola_mcp_server"],
       "env": {
         "server-basic": "",
         "server-configured": "",

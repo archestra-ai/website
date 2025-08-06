@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "postgres-mcp",
-      "args": [
-        "--access-mode=unrestricted",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["--access-mode=unrestricted", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

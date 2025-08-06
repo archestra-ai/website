@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@xeroapi/xero-mcp-server@latest"
-      ],
+      "args": ["-y", "@xeroapi/xero-mcp-server@latest"],
       "env": {
         "server-basic": "",
         "server-configured": "",

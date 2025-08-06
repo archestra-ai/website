@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-obsidian",
-        "${input:vaultPath}"
-      ],
+      "args": ["-y", "mcp-obsidian", "${input:vaultPath}"],
       "env": {}
     }
   },

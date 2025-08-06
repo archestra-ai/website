@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@kimtaeyoon83/mcp-server-youtube-transcript"
-      ],
+      "args": ["-y", "@kimtaeyoon83/mcp-server-youtube-transcript"],
       "env": {}
     }
   },

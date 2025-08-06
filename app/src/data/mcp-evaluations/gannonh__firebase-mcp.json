@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@gannonh/firebase-mcp"
-      ],
+      "args": ["-y", "@gannonh/firebase-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/gwbischof/free-will-mcp@v0.3",
-        "free-will-mcp"
-      ],
+      "args": ["--from", "git+https://github.com/gwbischof/free-will-mcp@v0.3", "free-will-mcp"],
       "env": {}
     }
   },

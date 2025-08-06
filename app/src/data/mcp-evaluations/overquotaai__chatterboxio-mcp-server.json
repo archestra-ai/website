@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@OverQuotaAI/chatterboxio-mcp-server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@OverQuotaAI/chatterboxio-mcp-server", "--transport", "stdio"],
       "env": {
         "server-basic": "CHATTERBOX_API_ENDPOINT",
         "server-configured": "CHATTERBOX_API_KEY"

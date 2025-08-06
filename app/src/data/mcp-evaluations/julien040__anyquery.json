@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "anyquery",
-      "args": [
-        "mcp",
-        "--stdio"
-      ],
+      "args": ["mcp", "--stdio"],
       "env": {}
     }
   },

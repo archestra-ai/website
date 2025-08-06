@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "mcp-timeplus"
-      ],
+      "args": ["mcp-timeplus"],
       "env": {}
     }
   },

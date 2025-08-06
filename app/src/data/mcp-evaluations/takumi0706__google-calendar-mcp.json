@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@takumi0706/google-calendar-mcp@1.0.7",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@takumi0706/google-calendar-mcp@1.0.7", "--transport", "stdio"],
       "env": {}
     }
   },

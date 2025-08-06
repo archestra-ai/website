@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python3",
-      "args": [
-        "/path/to/lldb-mcp/lldb_mcp.py"
-      ],
+      "args": ["/path/to/lldb-mcp/lldb_mcp.py"],
       "env": {}
     }
   },

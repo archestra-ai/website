@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "path/to/token-minter-mcp/server/index.js"
-      ],
+      "args": ["path/to/token-minter-mcp/server/index.js"],
       "env": {
         "server-basic": "",
         "server-configured": "",

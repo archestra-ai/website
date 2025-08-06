@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "optuna-mcp",
-        "--storage",
-        "sqlite:///optuna.db"
-      ],
+      "args": ["optuna-mcp", "--storage", "sqlite:///optuna.db"],
       "env": {}
     }
   },

@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "/path/to/bin/uv",
-      "args": [
-        "--directory",
-        "/path/to/k6-mcp-server",
-        "run",
-        "k6_server.py"
-      ],
+      "args": ["--directory", "/path/to/k6-mcp-server", "run", "k6_server.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

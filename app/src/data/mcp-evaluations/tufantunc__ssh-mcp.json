@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "ssh-mcp"
-      ],
+      "args": ["-y", "ssh-mcp"],
       "env": {}
     }
   },

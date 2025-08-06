@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "mcp-neo4j-cloud-aura-api",
-      "args": [
-        "--transport",
-        "stdio"
-      ],
+      "args": ["--transport", "stdio"],
       "env": {}
     }
   },

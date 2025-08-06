@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "src/mcp_server_milvus/server.py",
-        "--milvus-uri",
-        "http://localhost:19530"
-      ],
+      "args": ["run", "src/mcp_server_milvus/server.py", "--milvus-uri", "http://localhost:19530"],
       "env": {}
     }
   },

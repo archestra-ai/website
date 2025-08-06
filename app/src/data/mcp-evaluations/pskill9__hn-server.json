@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "build/index.js"
-      ],
+      "args": ["build/index.js"],
       "env": {}
     }
   },

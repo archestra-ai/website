@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "workspace-mcp",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["workspace-mcp", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

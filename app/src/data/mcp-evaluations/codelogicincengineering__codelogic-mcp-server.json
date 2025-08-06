@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "codelogic-mcp-server@latest"
-      ],
+      "args": ["codelogic-mcp-server@latest"],
       "env": {
         "server-basic": "",
         "server-configured": "",

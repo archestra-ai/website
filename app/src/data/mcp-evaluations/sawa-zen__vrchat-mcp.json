@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "vrchat-mcp"
-      ],
+      "args": ["-y", "vrchat-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

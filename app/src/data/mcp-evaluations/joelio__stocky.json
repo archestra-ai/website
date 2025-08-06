@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "/path/to/stocky_mcp.py"
-      ],
+      "args": ["/path/to/stocky_mcp.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@strowk/mcp-k8s",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@strowk/mcp-k8s", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

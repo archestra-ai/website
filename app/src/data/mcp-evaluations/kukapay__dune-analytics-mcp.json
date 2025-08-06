@@ -12,15 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@smithery/cli",
-        "mcp",
-        "dev",
-        "main.py",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@smithery/cli", "mcp", "dev", "main.py", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

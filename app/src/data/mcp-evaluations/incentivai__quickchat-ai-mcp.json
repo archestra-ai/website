@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "quickchat-ai-mcp"
-      ],
+      "args": ["quickchat-ai-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

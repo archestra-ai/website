@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "alibaba-cloud-ops-mcp-server@latest"
-      ],
+      "args": ["alibaba-cloud-ops-mcp-server@latest"],
       "env": {
         "server-configured": "{\"ALIBABA_CLOUD_ACCESS_KEY_ID\":\"Your Access Key ID\",\"ALIBABA_CLOUD_ACCESS_KEY_SECRET\":\"Your Access Key SECRET\"}"
       }

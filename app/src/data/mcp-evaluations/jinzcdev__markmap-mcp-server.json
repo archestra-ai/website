@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@jinzcdev/markmap-mcp-server"
-      ],
+      "args": ["-y", "@jinzcdev/markmap-mcp-server"],
       "env": {
         "server-basic": "",
         "server-configured": "",

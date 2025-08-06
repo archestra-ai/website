@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "./bin/bundler_mcp",
-      "args": [
-        "--transport",
-        "stdio"
-      ],
+      "args": ["--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

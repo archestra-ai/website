@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@pulumi/mcp-server@latest",
-        "stdio"
-      ],
+      "args": ["-y", "@pulumi/mcp-server@latest", "stdio"],
       "env": {}
     }
   },

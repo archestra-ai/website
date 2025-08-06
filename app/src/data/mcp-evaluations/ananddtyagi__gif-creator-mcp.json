@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "/path/to/gif-creator-mcp/dist/index.js"
-      ],
+      "args": ["/path/to/gif-creator-mcp/dist/index.js"],
       "env": {}
     }
   },

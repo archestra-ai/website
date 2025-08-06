@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@bankless/onchain-mcp",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@bankless/onchain-mcp", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

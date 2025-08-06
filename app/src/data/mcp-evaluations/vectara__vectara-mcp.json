@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "tool",
-        "run",
-        "vectara-mcp"
-      ],
+      "args": ["tool", "run", "vectara-mcp"],
       "env": {}
     }
   },

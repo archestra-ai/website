@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "mcp-prompt-engine",
-      "args": [
-        "serve",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["serve", "--transport", "stdio"],
       "env": {}
     }
   },

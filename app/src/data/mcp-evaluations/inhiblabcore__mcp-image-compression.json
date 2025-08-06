@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@inhiblab-core/mcp-image-compression"
-      ],
+      "args": ["-y", "@inhiblab-core/mcp-image-compression"],
       "env": {}
     }
   },

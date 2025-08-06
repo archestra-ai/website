@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@wong2/mcp-cli",
-        "node",
-        "path/to/server/index.js"
-      ],
+      "args": ["-y", "@wong2/mcp-cli", "node", "path/to/server/index.js"],
       "env": {}
     }
   },

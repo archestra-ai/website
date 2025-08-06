@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "fhir-mcp-server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["fhir-mcp-server", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

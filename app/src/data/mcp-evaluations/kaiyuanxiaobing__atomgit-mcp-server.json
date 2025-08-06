@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "atomgit-mcp-server@latest"
-      ],
+      "args": ["-y", "atomgit-mcp-server@latest"],
       "env": {
         "server-basic": "",
         "server-configured": "",

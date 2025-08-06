@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "/path/to/uv",
-      "args": [
-        "--directory",
-        "/path/to/jmeter-mcp-server",
-        "run",
-        "jmeter_server.py"
-      ],
+      "args": ["--directory", "/path/to/jmeter-mcp-server", "run", "jmeter_server.py"],
       "env": {}
     }
   },

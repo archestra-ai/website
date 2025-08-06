@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-mermaid",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "mcp-mermaid", "--transport", "stdio"],
       "env": {}
     }
   },

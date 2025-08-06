@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "main.py"
-      ],
+      "args": ["run", "main.py"],
       "env": {
         "server-basic": "DUNE_SIM_API_KEY"
       }

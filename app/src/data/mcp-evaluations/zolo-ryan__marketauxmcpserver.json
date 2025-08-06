@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "C:\\Path\\To\\Your\\project\\NewsMCP\\build\\index.js"
-      ],
+      "args": ["C:\\Path\\To\\Your\\project\\NewsMCP\\build\\index.js"],
       "env": {
         "server-basic": "",
         "server-configured": "",

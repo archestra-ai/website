@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "clojars-deps-server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "clojars-deps-server", "--transport", "stdio"],
       "env": {}
     }
   },

@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "acp-mcp",
-        "http://localhost:8000"
-      ],
+      "args": ["acp-mcp", "http://localhost:8000"],
       "env": {}
     }
   },

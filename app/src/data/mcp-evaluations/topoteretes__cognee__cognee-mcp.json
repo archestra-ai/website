@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "src/server.py",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["src/server.py", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

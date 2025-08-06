@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@timlukahorstmann/mcp-weather"
-      ],
+      "args": ["-y", "@timlukahorstmann/mcp-weather"],
       "env": {
         "server-basic": "",
         "server-configured": "",

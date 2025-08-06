@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python3",
-      "args": [
-        "-u",
-        "pyats_mcp_server.py"
-      ],
+      "args": ["-u", "pyats_mcp_server.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

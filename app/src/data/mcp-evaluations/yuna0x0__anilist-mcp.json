@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "anilist-mcp"
-      ],
+      "args": ["-y", "anilist-mcp"],
       "env": {
         "server-configured": "ANILIST_TOKEN"
       }

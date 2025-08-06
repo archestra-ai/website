@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "-m",
-        "screenmonitormcp_v2.mcp_main"
-      ],
+      "args": ["-m", "screenmonitormcp_v2.mcp_main"],
       "env": {
         "server-basic": "",
         "server-configured": "",

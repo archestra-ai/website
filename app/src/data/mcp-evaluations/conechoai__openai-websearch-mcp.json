@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "openai-websearch-mcp"
-      ],
+      "args": ["openai-websearch-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "/your/path/to/freqtrade-mcp",
-        "run",
-        "__main__.py"
-      ],
+      "args": ["--directory", "/your/path/to/freqtrade-mcp", "run", "__main__.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

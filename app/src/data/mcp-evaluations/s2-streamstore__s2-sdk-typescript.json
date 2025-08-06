@@ -12,16 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "--package",
-        "@s2-dev/streamstore",
-        "--",
-        "mcp",
-        "start",
-        "--access-token",
-        "..."
-      ],
+      "args": ["-y", "--package", "@s2-dev/streamstore", "--", "mcp", "start", "--access-token", "..."],
       "env": {}
     }
   },

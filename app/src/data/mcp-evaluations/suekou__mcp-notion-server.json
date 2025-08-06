@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@suekou/mcp-notion-server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@suekou/mcp-notion-server", "--transport", "stdio"],
       "env": {
         "server-basic": "NOTION_API_TOKEN",
         "server-configured": "NOTION_MARKDOWN_CONVERSION"

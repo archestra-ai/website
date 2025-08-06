@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@llmindset/mcp-hfspace"
-      ],
+      "args": ["-y", "@llmindset/mcp-hfspace"],
       "env": {
         "server-basic": "",
         "server-configured": "",

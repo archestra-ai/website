@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "ios-simulator-mcp"
-      ],
+      "args": ["-y", "ios-simulator-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

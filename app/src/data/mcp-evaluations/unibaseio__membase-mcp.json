@@ -12,14 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "path/to/membase-mcp",
-        "run",
-        "src/membase_mcp/server.py",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["--directory", "path/to/membase-mcp", "run", "src/membase_mcp/server.py", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

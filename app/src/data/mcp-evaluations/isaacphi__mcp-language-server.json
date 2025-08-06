@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "mcp-language-server",
-      "args": [
-        "--workspace",
-        "/app",
-        "--lsp",
-        "gopls"
-      ],
+      "args": ["--workspace", "/app", "--lsp", "gopls"],
       "env": {
         "server-basic": "",
         "server-configured": "",

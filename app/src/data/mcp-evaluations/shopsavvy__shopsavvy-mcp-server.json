@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@shopsavvy/mcp-server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@shopsavvy/mcp-server", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

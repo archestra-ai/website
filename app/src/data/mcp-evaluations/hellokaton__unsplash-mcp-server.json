@@ -12,14 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "--with",
-        "fastmcp",
-        "fastmcp",
-        "run",
-        "./server.py"
-      ],
+      "args": ["run", "--with", "fastmcp", "fastmcp", "run", "./server.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

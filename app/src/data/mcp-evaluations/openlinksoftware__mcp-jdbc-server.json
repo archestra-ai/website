@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "java",
-      "args": [
-        "-jar",
-        "MCPServer-1.0.0-runner.jar"
-      ],
+      "args": ["-jar", "MCPServer-1.0.0-runner.jar"],
       "env": {}
     }
   },

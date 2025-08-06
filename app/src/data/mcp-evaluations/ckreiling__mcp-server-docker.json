@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "mcp-server-docker"
-      ],
+      "args": ["mcp-server-docker"],
       "env": {
         "server-basic": "",
         "server-configured": "",

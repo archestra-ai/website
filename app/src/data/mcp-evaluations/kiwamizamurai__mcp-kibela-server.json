@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@kiwamizamurai/mcp-kibela-server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@kiwamizamurai/mcp-kibela-server", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

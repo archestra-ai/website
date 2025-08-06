@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://gtm-mcp.stape.ai/sse"
-      ],
+      "args": ["-y", "mcp-remote", "https://gtm-mcp.stape.ai/sse"],
       "env": {}
     }
   },

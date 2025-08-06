@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@rad-security/mcp-server"
-      ],
+      "args": ["-y", "@rad-security/mcp-server"],
       "env": {
         "server-basic": "",
         "server-configured": "",

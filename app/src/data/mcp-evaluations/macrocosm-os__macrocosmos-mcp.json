@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "src",
-        "run",
-        "macrocosmos_mcp.py"
-      ],
+      "args": ["--directory", "src", "run", "macrocosmos_mcp.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

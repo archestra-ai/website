@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "/path/to/server/directory",
-        "run",
-        "firstcycling.py"
-      ],
+      "args": ["--directory", "/path/to/server/directory", "run", "firstcycling.py"],
       "env": {}
     }
   },

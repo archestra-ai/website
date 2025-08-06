@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "tool",
-        "run",
-        "arxiv-mcp-server",
-        "--storage-path",
-        "~/.arxiv-mcp-server/papers"
-      ],
+      "args": ["tool", "run", "arxiv-mcp-server", "--storage-path", "~/.arxiv-mcp-server/papers"],
       "env": {
         "server-basic": "",
         "server-configured": "",

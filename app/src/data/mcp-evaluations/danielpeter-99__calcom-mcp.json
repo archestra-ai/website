@@ -12,14 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "fastmcp",
-      "args": [
-        "run",
-        "app.py",
-        "--transport",
-        "sse",
-        "--port",
-        "8010"
-      ],
+      "args": ["run", "app.py", "--transport", "sse", "--port", "8010"],
       "env": {
         "server-basic": "",
         "server-configured": "",

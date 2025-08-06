@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/ahnlabio/bicscan-mcp",
-        "bicscan-mcp"
-      ],
+      "args": ["--from", "git+https://github.com/ahnlabio/bicscan-mcp", "bicscan-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "yutu",
-      "args": [
-        "mcp"
-      ],
+      "args": ["mcp"],
       "env": {
         "server-configured": "YUTU_CREDENTIAL",
         "server-docker": "YUTU_CACHE_TOKEN"

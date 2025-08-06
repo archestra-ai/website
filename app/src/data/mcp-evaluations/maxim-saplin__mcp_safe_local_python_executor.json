@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "",
-        "run",
-        "mcp_server.py"
-      ],
+      "args": ["--directory", "", "run", "mcp_server.py"],
       "env": {}
     }
   },

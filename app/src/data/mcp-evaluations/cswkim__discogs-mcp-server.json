@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "discogs-mcp-server"
-      ],
+      "args": ["-y", "discogs-mcp-server"],
       "env": {
         "server-basic": "DISCOGS_PERSONAL_ACCESS_TOKEN"
       }

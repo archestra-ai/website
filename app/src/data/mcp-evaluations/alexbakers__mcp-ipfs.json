@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-ipfs"
-      ],
+      "args": ["-y", "mcp-ipfs"],
       "env": {
         "server-configured": "W3_LOGIN_EMAIL"
       }

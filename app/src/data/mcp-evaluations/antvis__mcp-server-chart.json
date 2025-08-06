@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@antv/mcp-server-chart",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@antv/mcp-server-chart", "--transport", "stdio"],
       "env": {}
     }
   },

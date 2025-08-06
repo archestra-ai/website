@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "rustdocs_mcp_server",
-      "args": [
-        "tokio"
-      ],
+      "args": ["tokio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

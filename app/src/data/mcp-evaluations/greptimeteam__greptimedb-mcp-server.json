@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "",
-        "run",
-        "-m",
-        "greptimedb_mcp_server.server"
-      ],
+      "args": ["--directory", "", "run", "-m", "greptimedb_mcp_server.server"],
       "env": {
         "server-basic": "",
         "server-configured": "",

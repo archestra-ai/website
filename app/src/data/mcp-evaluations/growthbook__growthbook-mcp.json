@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@growthbook/mcp"
-      ],
+      "args": ["-y", "@growthbook/mcp"],
       "env": {
         "server-basic": "GB_API_KEY",
         "server-configured": "GB_USER",

@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@growi/mcp-server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@growi/mcp-server", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

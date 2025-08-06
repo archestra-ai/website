@@ -12,14 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "./",
-        "run",
-        "mcp_server_datavis",
-        "--output_type",
-        "png"
-      ],
+      "args": ["--directory", "./", "run", "mcp_server_datavis", "--output_type", "png"],
       "env": {}
     }
   },

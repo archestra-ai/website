@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "{ABSOLUTE PATH TO FILE HERE}/dist/index.js",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["{ABSOLUTE PATH TO FILE HERE}/dist/index.js", "--transport", "stdio"],
       "env": {}
     }
   },

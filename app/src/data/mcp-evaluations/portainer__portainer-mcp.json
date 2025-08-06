@@ -12,14 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "portainer-mcp",
-      "args": [
-        "-server",
-        "",
-        "-token",
-        "",
-        "-tools",
-        "/tmp/tools.yaml"
-      ],
+      "args": ["-server", "", "-token", "", "-tools", "/tmp/tools.yaml"],
       "env": {}
     }
   },

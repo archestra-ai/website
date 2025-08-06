@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@makehq/mcp-server"
-      ],
+      "args": ["-y", "@makehq/mcp-server"],
       "env": {
         "server-basic": "",
         "server-configured": "",

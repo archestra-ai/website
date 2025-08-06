@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "mcp-difyworkflow-server",
-      "args": [
-        "-base-url",
-        "http://localhost/v1"
-      ],
+      "args": ["-base-url", "http://localhost/v1"],
       "env": {
         "server-basic": "",
         "server-configured": "",

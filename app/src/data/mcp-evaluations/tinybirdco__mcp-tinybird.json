@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "mcp-tinybird",
-        "stdio"
-      ],
+      "args": ["mcp-tinybird", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

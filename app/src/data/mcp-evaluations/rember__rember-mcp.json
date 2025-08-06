@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@getrember/mcp",
-        "--api-key=YOUR_REMBER_API_KEY"
-      ],
+      "args": ["-y", "@getrember/mcp", "--api-key=YOUR_REMBER_API_KEY"],
       "env": {}
     }
   },

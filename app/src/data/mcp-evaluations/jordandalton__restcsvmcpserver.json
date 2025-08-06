@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "restcsv-mcp-server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["restcsv-mcp-server", "--transport", "stdio"],
       "env": {}
     }
   },

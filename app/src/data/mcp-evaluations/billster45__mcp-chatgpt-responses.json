@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "chatgpt_server.py"
-      ],
+      "args": ["run", "chatgpt_server.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

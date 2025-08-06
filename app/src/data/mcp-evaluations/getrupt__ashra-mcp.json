@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "<path/to/ashra-mcp>/build/index.js"
-      ],
+      "args": ["<path/to/ashra-mcp>/build/index.js"],
       "env": {
         "server-configured": "ASHRA_API_KEY"
       }

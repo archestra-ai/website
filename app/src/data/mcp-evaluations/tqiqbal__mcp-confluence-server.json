@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "confluence.py",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["confluence.py", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

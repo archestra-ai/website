@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "freshdesk-mcp"
-      ],
+      "args": ["freshdesk-mcp"],
       "env": {
         "server-basic": "FRESHDESK_API_KEY",
         "server-configured": "FRESHDESK_DOMAIN"

@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@tiberriver256/mcp-server-azure-devops"
-      ],
+      "args": ["-y", "@tiberriver256/mcp-server-azure-devops"],
       "env": {
         "server-basic": "",
         "server-configured": "",

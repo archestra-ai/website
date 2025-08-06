@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "/Users/laurynas-fp/.bun/bin/bun",
-      "args": [
-        "<path_to_this_directory>/bluesky-context-server/index.ts"
-      ],
+      "args": ["<path_to_this_directory>/bluesky-context-server/index.ts"],
       "env": {}
     }
   },

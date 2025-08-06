@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "mysql_mcp_server_pro",
-        "mysql_mcp_server_pro",
-        "--mode",
-        "stdio"
-      ],
+      "args": ["--from", "mysql_mcp_server_pro", "mysql_mcp_server_pro", "--mode", "stdio"],
       "env": {}
     }
   },

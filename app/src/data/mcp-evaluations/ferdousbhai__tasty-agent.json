@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "tasty-agent"
-      ],
+      "args": ["tasty-agent"],
       "env": {
         "server-basic": "",
         "server-configured": "",

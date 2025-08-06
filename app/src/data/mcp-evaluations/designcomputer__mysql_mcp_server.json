@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "mysql-mcp-server",
-        "mysql_mcp_server"
-      ],
+      "args": ["--from", "mysql-mcp-server", "mysql_mcp_server"],
       "env": {
         "server-basic": "",
         "server-configured": "",

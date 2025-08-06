@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "open-websearch@latest"
-      ],
+      "args": ["-y", "open-websearch@latest"],
       "env": {
         "server-basic": "",
         "server-configured": "",

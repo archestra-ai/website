@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "postmancer"
-      ],
+      "args": ["-y", "postmancer"],
       "env": {
         "server-basic": "",
         "server-configured": "",

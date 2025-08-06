@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "mcp-remote",
-      "args": [
-        "https://waystation.ai/mcp"
-      ],
+      "args": ["https://waystation.ai/mcp"],
       "env": {}
     }
   },

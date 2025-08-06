@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@isaacphi/mcp-gdrive"
-      ],
+      "args": ["-y", "@isaacphi/mcp-gdrive"],
       "env": {
         "server-basic": "",
         "server-configured": "",

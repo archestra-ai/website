@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "mcp-access-point",
-      "args": [
-        "-c",
-        "config.yaml"
-      ],
+      "args": ["-c", "config.yaml"],
       "env": {}
     }
   },

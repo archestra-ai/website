@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "mindmap-mcp-server",
-        "--return-type",
-        "html"
-      ],
+      "args": ["mindmap-mcp-server", "--return-type", "html"],
       "env": {}
     }
   },

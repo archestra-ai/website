@@ -12,15 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "grafana-loki-mcp",
-        "-u",
-        "GRAFANA_URL",
-        "-k",
-        "GRAFANA_API_KEY",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["grafana-loki-mcp", "-u", "GRAFANA_URL", "-k", "GRAFANA_API_KEY", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "src/prometheus_mcp_server/main.py",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["src/prometheus_mcp_server/main.py", "--transport", "stdio"],
       "env": {
         "server-basic": "PROMETHEUS_USERNAME",
         "server-configured": "PROMETHEUS_PASSWORD",

@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@k-jarzyna/mcp-miro",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@k-jarzyna/mcp-miro", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

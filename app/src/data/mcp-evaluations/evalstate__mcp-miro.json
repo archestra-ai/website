@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "/path/to/mcp-miro/build/index.js",
-        "--token",
-        "",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["/path/to/mcp-miro/build/index.js", "--token", "", "--transport", "stdio"],
       "env": {}
     }
   },

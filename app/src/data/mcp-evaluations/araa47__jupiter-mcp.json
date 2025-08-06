@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/araa47/jupiter-mcp",
-        "jupiter-mcp"
-      ],
+      "args": ["--from", "git+https://github.com/araa47/jupiter-mcp", "jupiter-mcp"],
       "env": {}
     }
   },

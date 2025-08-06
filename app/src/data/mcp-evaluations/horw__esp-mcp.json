@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "<path_to_cloned_esp-mcp_repository>",
-        "run",
-        "main.py"
-      ],
+      "args": ["--directory", "<path_to_cloned_esp-mcp_repository>", "run", "main.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "ig-mcp-server",
-      "args": [
-        "-gadget-discoverer=artifacthub"
-      ],
+      "args": ["-gadget-discoverer=artifacthub"],
       "env": {}
     }
   },

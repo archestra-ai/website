@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "/path/to/crypto-liquidations-mcp",
-        "run",
-        "main.py"
-      ],
+      "args": ["--directory", "/path/to/crypto-liquidations-mcp", "run", "main.py"],
       "env": {}
     }
   },

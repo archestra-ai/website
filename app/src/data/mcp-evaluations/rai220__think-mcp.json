@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "think-mcp",
-        "--advanced",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["think-mcp", "--advanced", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

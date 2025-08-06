@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "src/msgraph_mcp_server/server.py",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["src/msgraph_mcp_server/server.py", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

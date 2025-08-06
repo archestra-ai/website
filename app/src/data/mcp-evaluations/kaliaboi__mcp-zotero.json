@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-zotero",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "mcp-zotero", "--transport", "stdio"],
       "env": {
         "server-basic": "ZOTERO_API_KEY",
         "server-configured": "ZOTERO_USER_ID"

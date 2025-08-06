@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@4everland/hosting-mcp@latest",
-        "serve"
-      ],
+      "args": ["-y", "@4everland/hosting-mcp@latest", "serve"],
       "env": {
         "server-configured": "TOKEN"
       }

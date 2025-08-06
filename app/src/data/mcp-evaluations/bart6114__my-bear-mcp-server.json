@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "github:bart6114/my-bear-mcp-server"
-      ],
+      "args": ["github:bart6114/my-bear-mcp-server"],
       "env": {}
     }
   },

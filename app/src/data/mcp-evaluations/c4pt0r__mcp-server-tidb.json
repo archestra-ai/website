@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "/path/to/mcp-server-tidb",
-        "run",
-        "src/main.py"
-      ],
+      "args": ["--directory", "/path/to/mcp-server-tidb", "run", "src/main.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

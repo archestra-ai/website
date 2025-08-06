@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "joinly",
-      "args": [
-        "--host",
-        "0.0.0.0",
-        "--port",
-        "8000"
-      ],
+      "args": ["--host", "0.0.0.0", "--port", "8000"],
       "env": {
         "server-basic": "",
         "server-configured": "",

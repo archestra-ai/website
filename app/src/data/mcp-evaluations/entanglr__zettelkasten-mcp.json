@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "-m",
-        "zettelkasten_mcp.main"
-      ],
+      "args": ["-m", "zettelkasten_mcp.main"],
       "env": {
         "server-basic": "",
         "server-configured": "",

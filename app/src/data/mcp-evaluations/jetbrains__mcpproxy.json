@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@jetbrains/mcp-proxy"
-      ],
+      "args": ["-y", "@jetbrains/mcp-proxy"],
       "env": {}
     }
   },

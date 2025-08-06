@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@chaindead/telegram-mcp"
-      ],
+      "args": ["-y", "@chaindead/telegram-mcp"],
       "env": {}
     }
   },

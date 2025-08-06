@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "video-editor-mcp",
-        "YOURAPIKEY"
-      ],
+      "args": ["video-editor-mcp", "YOURAPIKEY"],
       "env": {
         "server-configured": "LOAD_PHOTOS_DB"
       }

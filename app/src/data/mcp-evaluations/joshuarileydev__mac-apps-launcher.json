@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "y",
-        "@joshuarileydev/mac-apps-launcher-mcp-server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["y", "@joshuarileydev/mac-apps-launcher-mcp-server", "--transport", "stdio"],
       "env": {}
     }
   },

@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "gitingestmcp@latest",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["gitingestmcp@latest", "--transport", "stdio"],
       "env": {}
     }
   },

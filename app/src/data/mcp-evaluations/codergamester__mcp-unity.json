@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@CoderGamester/mcp-unity",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@CoderGamester/mcp-unity", "--transport", "stdio"],
       "env": {}
     }
   },

@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-filesystem",
-        "${workspaceFolder}",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${workspaceFolder}", "--transport", "stdio"],
       "env": {}
     }
   },

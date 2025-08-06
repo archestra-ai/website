@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@softeria/ms-365-mcp-server"
-      ],
+      "args": ["-y", "@softeria/ms-365-mcp-server"],
       "env": {
         "server-basic": "",
         "server-configured": "",

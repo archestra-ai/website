@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "webscraping-ai-mcp",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "webscraping-ai-mcp", "--transport", "stdio"],
       "env": {}
     }
   },

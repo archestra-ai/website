@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "/path/to/modbus-mcp",
-        "run",
-        "modbus-mcp"
-      ],
+      "args": ["--directory", "/path/to/modbus-mcp", "run", "modbus-mcp"],
       "env": {}
     }
   },

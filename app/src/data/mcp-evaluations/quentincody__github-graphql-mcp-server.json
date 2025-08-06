@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "/absolute/path/to/your/.venv/bin/python",
-      "args": [
-        "/absolute/path/to/github_graphql_mcp_server.py"
-      ],
+      "args": ["/absolute/path/to/github_graphql_mcp_server.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

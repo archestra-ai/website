@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@just-every/mcp-screenshot-website-fast"
-      ],
+      "args": ["-y", "@just-every/mcp-screenshot-website-fast"],
       "env": {}
     }
   },

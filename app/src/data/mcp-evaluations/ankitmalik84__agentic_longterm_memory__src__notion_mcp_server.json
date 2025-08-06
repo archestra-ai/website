@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "-m",
-        "notion_mcp_server.api_serverV2"
-      ],
+      "args": ["-m", "notion_mcp_server.api_serverV2"],
       "env": {
         "server-basic": "NOTION_TOKEN",
         "server-configured": "HOST",

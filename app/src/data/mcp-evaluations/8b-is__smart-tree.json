@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "/usr/local/bin/st",
-      "args": [
-        "--mcp"
-      ],
+      "args": ["--mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

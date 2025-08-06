@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "main.py",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["main.py", "--transport", "stdio"],
       "env": {
         "server-basic": "DATABRICKS_HOST",
         "server-configured": "DATABRICKS_TOKEN",

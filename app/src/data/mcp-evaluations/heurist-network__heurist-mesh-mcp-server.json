@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "mesh_mcp_server",
-        "run",
-        "mesh-tool-server"
-      ],
+      "args": ["--directory", "mesh_mcp_server", "run", "mesh-tool-server"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@inoyu/mcp-unomi-server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@inoyu/mcp-unomi-server", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

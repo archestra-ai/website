@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "mcp-filesystem-server",
-      "args": [
-        "/path/to/allowed/directory",
-        "/another/allowed/directory"
-      ],
+      "args": ["/path/to/allowed/directory", "/another/allowed/directory"],
       "env": {}
     }
   },

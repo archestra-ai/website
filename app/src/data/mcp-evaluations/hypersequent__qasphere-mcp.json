@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "qasphere-mcp"
-      ],
+      "args": ["-y", "qasphere-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

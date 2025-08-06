@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "-m",
-        "networkx_mcp"
-      ],
+      "args": ["-m", "networkx_mcp"],
       "env": {}
     }
   },

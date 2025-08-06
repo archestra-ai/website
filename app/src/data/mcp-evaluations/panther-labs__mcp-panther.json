@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@panther-labs/mcp-panther",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@panther-labs/mcp-panther", "--transport", "stdio"],
       "env": {}
     }
   },

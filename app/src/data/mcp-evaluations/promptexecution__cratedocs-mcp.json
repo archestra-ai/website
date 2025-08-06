@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "cratedocs",
-      "args": [
-        "stdio"
-      ],
+      "args": ["stdio"],
       "env": {}
     }
   },

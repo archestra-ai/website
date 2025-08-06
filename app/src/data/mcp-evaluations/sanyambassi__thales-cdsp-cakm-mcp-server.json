@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "python",
-        "-m",
-        "database_tde_server"
-      ],
+      "args": ["run", "python", "-m", "database_tde_server"],
       "env": {}
     }
   },

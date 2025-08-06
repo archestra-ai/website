@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "database-mcp"
-      ],
+      "args": ["database-mcp"],
       "env": {}
     }
   },

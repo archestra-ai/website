@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://mcp.globalping.dev/sse"
-      ],
+      "args": ["mcp-remote", "https://mcp.globalping.dev/sse"],
       "env": {}
     }
   },

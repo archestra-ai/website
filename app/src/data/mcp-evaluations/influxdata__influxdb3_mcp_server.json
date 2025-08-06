@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-influxdb",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@modelcontextprotocol/server-influxdb", "--transport", "stdio"],
       "env": {
         "server-basic": "INFLUX_DB_INSTANCE_URL,INFLUX_DB_TOKEN,INFLUX_DB_PRODUCT_TYPE",
         "server-configured": "INFLUX_DB_CLUSTER_ID,INFLUX_DB_ACCOUNT_ID,INFLUX_DB_MANAGEMENT_TOKEN",

@@ -12,15 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "browser-use-mcp-server",
-      "args": [
-        "run",
-        "server",
-        "--port",
-        "8000",
-        "--stdio",
-        "--proxy-port",
-        "9000"
-      ],
+      "args": ["run", "server", "--port", "8000", "--stdio", "--proxy-port", "9000"],
       "env": {
         "server-configured": "OPENAI_API_KEY"
       }

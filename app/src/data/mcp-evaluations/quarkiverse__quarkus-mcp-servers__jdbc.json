@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "jbang",
-      "args": [
-        "jdbc@quarkiverse/quarkus-mcp-servers",
-        "[jdbc_url]"
-      ],
+      "args": ["jdbc@quarkiverse/quarkus-mcp-servers", "[jdbc_url]"],
       "env": {}
     }
   },

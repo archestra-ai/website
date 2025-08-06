@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "web3-mcp",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["web3-mcp", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

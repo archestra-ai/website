@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--index-name",
-        "{your-index-name}",
-        "--api-key",
-        "{your-secret-api-key}",
-        "mcp-pinecone"
-      ],
+      "args": ["--index-name", "{your-index-name}", "--api-key", "{your-secret-api-key}", "mcp-pinecone"],
       "env": {}
     }
   },

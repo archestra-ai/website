@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@endorhq/cli",
-        "mcp",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@endorhq/cli", "mcp", "--transport", "stdio"],
       "env": {}
     }
   },

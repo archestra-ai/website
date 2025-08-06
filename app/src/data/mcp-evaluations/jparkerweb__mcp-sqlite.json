@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-sqlite",
-        "<path-to-your-sqlite-database.db>"
-      ],
+      "args": ["-y", "mcp-sqlite", "<path-to-your-sqlite-database.db>"],
       "env": {}
     }
   },

@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@gongrzhe/server-gmail-autoauth-mcp",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@gongrzhe/server-gmail-autoauth-mcp", "--transport", "stdio"],
       "env": {}
     }
   },

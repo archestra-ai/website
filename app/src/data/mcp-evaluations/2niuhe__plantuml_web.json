@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "sh",
-      "args": [
-        "start.sh"
-      ],
+      "args": ["start.sh"],
       "env": {}
     }
   },

@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "",
-        "run",
-        "etf-flow-mcp"
-      ],
+      "args": ["--directory", "", "run", "etf-flow-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

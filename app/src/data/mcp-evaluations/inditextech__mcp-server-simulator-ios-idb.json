@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "/path/to/mcp-server-simulator-ios-idb/dist/index.js"
-      ],
+      "args": ["/path/to/mcp-server-simulator-ios-idb/dist/index.js"],
       "env": {}
     }
   },

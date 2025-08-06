@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "campertunity-mcp-server@latest",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "campertunity-mcp-server@latest", "--transport", "stdio"],
       "env": {
         "server-basic": "CAMPERTUNITY_API_KEY"
       }

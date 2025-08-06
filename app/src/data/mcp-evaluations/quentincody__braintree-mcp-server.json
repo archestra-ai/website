@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "braintree_server.py",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["braintree_server.py", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

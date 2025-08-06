@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@21st-dev/magic@latest",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@21st-dev/magic@latest", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

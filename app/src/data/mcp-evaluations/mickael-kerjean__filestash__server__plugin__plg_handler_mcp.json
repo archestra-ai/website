@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@filestash/mcp-plugin",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@filestash/mcp-plugin", "--transport", "stdio"],
       "env": {
         "server-basic": "value",
         "server-configured": "value",

@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "attio-mcp-server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "attio-mcp-server", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

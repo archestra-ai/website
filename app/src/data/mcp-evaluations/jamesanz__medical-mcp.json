@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npm",
-      "args": [
-        "start",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["start", "--transport", "stdio"],
       "env": {}
     }
   },

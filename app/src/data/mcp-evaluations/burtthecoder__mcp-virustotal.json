@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "--experimental-modules",
-        "build/index.js",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["--experimental-modules", "build/index.js", "--transport", "stdio"],
       "env": {
         "server-basic": "VIRUSTOTAL_API_KEY"
       }

@@ -12,14 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "--with",
-        "mcp-hydrolix",
-        "--python",
-        "3.13",
-        "mcp-hydrolix"
-      ],
+      "args": ["run", "--with", "mcp-hydrolix", "--python", "3.13", "mcp-hydrolix"],
       "env": {
         "server-basic": "HYDROLIX_USER",
         "server-configured": "HYDROLIX_HOST",

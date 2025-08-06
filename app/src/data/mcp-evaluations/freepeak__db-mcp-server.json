@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "./bin/server",
-      "args": [
-        "-t",
-        "stdio",
-        "-c",
-        "config.json"
-      ],
+      "args": ["-t", "stdio", "-c", "config.json"],
       "env": {}
     }
   },

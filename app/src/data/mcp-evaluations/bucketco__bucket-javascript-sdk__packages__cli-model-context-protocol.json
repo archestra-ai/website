@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@bucketco/server",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@bucketco/server", "--transport", "stdio"],
       "env": {}
     }
   },

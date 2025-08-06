@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "chroma-mcp"
-      ],
+      "args": ["chroma-mcp"],
       "env": {
         "server-basic": "CHROMA_CLIENT_TYPE",
         "server-configured": "CHROMA_DATA_DIR",

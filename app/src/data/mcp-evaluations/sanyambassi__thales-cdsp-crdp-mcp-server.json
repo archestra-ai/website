@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "dist/crdp-mcp-server.js"
-      ],
+      "args": ["dist/crdp-mcp-server.js"],
       "env": {
         "server-basic": "CRDP_SERVICE_URL",
         "server-configured": "CRDP_PROBES_URL"

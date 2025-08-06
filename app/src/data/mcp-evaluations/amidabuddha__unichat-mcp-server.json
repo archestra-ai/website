@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "unichat-mcp-server"
-      ],
+      "args": ["unichat-mcp-server"],
       "env": {
         "server-basic": "",
         "server-configured": "",

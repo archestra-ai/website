@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "/absolute/path/to/piapi-mcp-server/dist/index.js"
-      ],
+      "args": ["/absolute/path/to/piapi-mcp-server/dist/index.js"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--python=3.10",
-        "--from",
-        "git+https://github.com/nkapila6/mcp-local-rag",
-        "mcp-local-rag"
-      ],
+      "args": ["--python=3.10", "--from", "git+https://github.com/nkapila6/mcp-local-rag", "mcp-local-rag"],
       "env": {}
     }
   },

@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "pipx",
-      "args": [
-        "run",
-        "keep-mcp"
-      ],
+      "args": ["run", "keep-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

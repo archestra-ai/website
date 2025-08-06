@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "gget-mcp",
-        "stdio"
-      ],
+      "args": ["--from", "gget-mcp", "stdio"],
       "env": {}
     }
   },

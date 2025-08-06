@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "/absolute/path/to/sui-trader-mcp/index.js"
-      ],
+      "args": ["/absolute/path/to/sui-trader-mcp/index.js"],
       "env": {
         "server-basic": "",
         "server-configured": "",

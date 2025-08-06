@@ -12,11 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--env-file",
-        ".env",
-        "dbt-mcp"
-      ],
+      "args": ["--env-file", ".env", "dbt-mcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

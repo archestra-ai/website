@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "fastmcp",
-      "args": [
-        "dev",
-        "pearch_mcp.py",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["dev", "pearch_mcp.py", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

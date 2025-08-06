@@ -12,13 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "dist/index.js",
-        "--transport",
-        "stdio",
-        "--username",
-        ""
-      ],
+      "args": ["dist/index.js", "--transport", "stdio", "--username", ""],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "mcp_servers/youtube/server.py"
-      ],
+      "args": ["mcp_servers/youtube/server.py"],
       "env": {
         "server-basic": "YOUTUBE_API_KEY",
         "server-configured": "YOUTUBE_MCP_SERVER_PORT",

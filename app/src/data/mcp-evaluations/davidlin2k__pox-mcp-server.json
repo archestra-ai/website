@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "parent_of_servers_repo/servers/src/mcp_server_pox",
-        "run",
-        "server.py"
-      ],
+      "args": ["--directory", "parent_of_servers_repo/servers/src/mcp_server_pox", "run", "server.py"],
       "env": {
         "server-basic": "",
         "server-configured": "",

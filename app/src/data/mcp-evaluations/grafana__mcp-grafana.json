@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@grafana/mcp-grafana",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@grafana/mcp-grafana", "--transport", "stdio"],
       "env": {}
     }
   },

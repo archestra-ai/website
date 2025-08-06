@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "octagon-mcp@latest"
-      ],
+      "args": ["-y", "octagon-mcp@latest"],
       "env": {
         "server-basic": "",
         "server-configured": "",

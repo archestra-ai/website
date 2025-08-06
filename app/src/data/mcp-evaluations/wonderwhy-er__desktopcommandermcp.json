@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@wonderwhy-er/desktop-commander",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@wonderwhy-er/desktop-commander", "--transport", "stdio"],
       "env": {}
     }
   },

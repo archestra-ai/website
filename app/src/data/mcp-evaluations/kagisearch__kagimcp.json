@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "kagimcp"
-      ],
+      "args": ["kagimcp"],
       "env": {
         "server-basic": "",
         "server-configured": "",

@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@mzxrai/mcp-webresearch@latest"
-      ],
+      "args": ["-y", "@mzxrai/mcp-webresearch@latest"],
       "env": {}
     }
   },

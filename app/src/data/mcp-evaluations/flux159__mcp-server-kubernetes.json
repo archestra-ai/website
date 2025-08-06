@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "mcp-server-kubernetes"
-      ],
+      "args": ["mcp-server-kubernetes"],
       "env": {
         "server-configured": "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS=true"
       }

@@ -12,9 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "qiniu-mcp-server"
-      ],
+      "args": ["qiniu-mcp-server"],
       "env": {
         "server-configured": "QINIU_ACCESS_KEY,QINIU_SECRET_KEY,QINIU_REGION_NAME,QINIU_ENDPOINT_URL,QINIU_BUCKETS"
       }

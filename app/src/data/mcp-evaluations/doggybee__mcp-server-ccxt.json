@@ -12,12 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@mcpfun/mcp-server-ccxt",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["-y", "@mcpfun/mcp-server-ccxt", "--transport", "stdio"],
       "env": {
         "server-basic": "",
         "server-configured": "",

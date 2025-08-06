@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-server-apple-shortcuts"
-      ],
+      "args": ["-y", "mcp-server-apple-shortcuts"],
       "env": {}
     }
   },
