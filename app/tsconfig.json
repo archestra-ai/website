@@ -26,7 +26,7 @@
       "@components/*": ["src/components/*"],
       "@constants": ["src/constants"],
       "@hooks/*": ["src/hooks/*"],
-      "@providers": ["src/providers"],
+      "@providers/*": ["src/providers/*"],
       "@schemas": ["src/schemas"],
       "@archestra/types": ["src/types"],
       "@utils/*": ["src/utils/*"]

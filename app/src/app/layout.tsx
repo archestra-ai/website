@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 
 import constants from '@constants';
-import { PostHogProvider } from '@providers';
+import { PostHogProvider } from '@providers/PostHog';
 
 import './globals.css';
 
