@@ -117,6 +117,7 @@ registry.registerPath({
 
 export async function GET() {
   const generator = new OpenApiGeneratorV3(registry.definitions);
+
   return NextResponse.json(
     generator.generateDocument({
       openapi: '3.0.0',
