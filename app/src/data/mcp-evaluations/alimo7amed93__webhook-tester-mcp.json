@@ -32,21 +32,13 @@
     "mcpServers": {
       "webhook-tester-mcp": {
         "command": "fastmcp",
-        "args": [
-          "run",
-          "{{fullPath}}\\Webhook-test_mcp\\server.py"
-        ]
+        "args": ["run", "{{fullPath}}\\Webhook-test_mcp\\server.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "fastmcp",
-    "args": [
-      "run",
-      "Webhook-test_mcp/server.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["run", "Webhook-test_mcp/server.py", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

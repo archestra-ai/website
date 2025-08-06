@@ -31,21 +31,13 @@
     "mcpServers": {
       "mcp-access-point-with-config": {
         "command": "cargo",
-        "args": [
-          "run",
-          "--",
-          "-c",
-          "config.yaml"
-        ]
+        "args": ["run", "--", "-c", "config.yaml"]
       }
     }
   },
   "configForArchestra": {
     "command": "mcp-access-point",
-    "args": [
-      "-c",
-      "config.yaml"
-    ],
+    "args": ["-c", "config.yaml"],
     "env": {},
     "transport": "http",
     "oauth": {

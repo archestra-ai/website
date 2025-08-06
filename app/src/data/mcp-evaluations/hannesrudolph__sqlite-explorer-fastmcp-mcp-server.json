@@ -32,30 +32,14 @@
     "mcpServers": {
       "sqlite-explorer-claude-desktop": {
         "command": "fastmcp",
-        "args": [
-          "install",
-          "sqlite_explorer.py",
-          "--name",
-          "SQLite Explorer",
-          "-e",
-          "SQLITE_DB_PATH=/path/to/db"
-        ],
+        "args": ["install", "sqlite_explorer.py", "--name", "SQLite Explorer", "-e", "SQLITE_DB_PATH=/path/to/db"],
         "env": {
           "SQLITE_DB_PATH": "/path/to/db"
         }
       },
       "sqlite-explorer": {
         "command": "uv",
-        "args": [
-          "run",
-          "--with",
-          "fastmcp",
-          "--with",
-          "uvicorn",
-          "fastmcp",
-          "run",
-          "/path/to/repo/sqlite_explorer.py"
-        ],
+        "args": ["run", "--with", "fastmcp", "--with", "uvicorn", "fastmcp", "run", "/path/to/repo/sqlite_explorer.py"],
         "env": {
           "SQLITE_DB_PATH": "/path/to/your/database.db"
         }
@@ -64,16 +48,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "--with",
-      "fastmcp",
-      "--with",
-      "uvicorn",
-      "fastmcp",
-      "run",
-      "sqlite_explorer.py"
-    ],
+    "args": ["run", "--with", "fastmcp", "--with", "uvicorn", "fastmcp", "run", "sqlite_explorer.py"],
     "env": {
       "server-basic": "",
       "server-configured": "",

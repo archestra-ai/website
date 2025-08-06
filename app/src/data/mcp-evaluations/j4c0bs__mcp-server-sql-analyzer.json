@@ -32,20 +32,11 @@
     "mcpServers": {
       "mcp-server-sql-analyzer": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "git+https://github.com/j4c0bs/mcp-server-sql-analyzer.git",
-          "mcp-server-sql-analyzer"
-        ]
+        "args": ["--from", "git+https://github.com/j4c0bs/mcp-server-sql-analyzer.git", "mcp-server-sql-analyzer"]
       },
       "mcp-server-sql-analyzer-local": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/mcp-server-sql-analyzer",
-          "run",
-          "mcp-server-sql-analyzer"
-        ]
+        "args": ["--directory", "/path/to/mcp-server-sql-analyzer", "run", "mcp-server-sql-analyzer"]
       },
       "mcp-server-sql-analyzer-development": {
         "command": "npx",
@@ -62,11 +53,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "--from",
-      "git+https://github.com/j4c0bs/mcp-server-sql-analyzer.git",
-      "mcp-server-sql-analyzer"
-    ],
+    "args": ["--from", "git+https://github.com/j4c0bs/mcp-server-sql-analyzer.git", "mcp-server-sql-analyzer"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

@@ -32,10 +32,7 @@
     "mcpServers": {
       "json-mcp-filter-npx": {
         "command": "npx",
-        "args": [
-          "-y",
-          "json-mcp-filter@latest"
-        ]
+        "args": ["-y", "json-mcp-filter@latest"]
       },
       "json-mcp-filter-global": {
         "command": "json-mcp-server",
@@ -43,32 +40,21 @@
       },
       "json-mcp-filter-source-start": {
         "command": "npm",
-        "args": [
-          "run",
-          "start"
-        ]
+        "args": ["run", "start"]
       },
       "json-mcp-filter-node-path": {
         "command": "node",
-        "args": [
-          "/path/to/json-mcp-filter/build/index.js"
-        ]
+        "args": ["/path/to/json-mcp-filter/build/index.js"]
       },
       "json-mcp-filter-inspect": {
         "command": "npm",
-        "args": [
-          "run",
-          "inspect"
-        ]
+        "args": ["run", "inspect"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "json-mcp-filter@latest"
-    ],
+    "args": ["-y", "json-mcp-filter@latest"],
     "env": {},
     "transport": "stdio",
     "oauth": {

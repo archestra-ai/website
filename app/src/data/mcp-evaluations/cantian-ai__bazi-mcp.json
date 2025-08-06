@@ -31,18 +31,13 @@
     "mcpServers": {
       "cantian-ai-bazi-mcp": {
         "command": "npx",
-        "args": [
-          "bazi-mcp"
-        ]
+        "args": ["bazi-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "bazi-mcp"
-    ],
+    "args": ["-y", "bazi-mcp"],
     "env": {},
     "transport": "stdio",
     "oauth": {

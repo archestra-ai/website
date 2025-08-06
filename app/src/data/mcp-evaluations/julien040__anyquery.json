@@ -31,29 +31,17 @@
     "mcpServers": {
       "anyquery-mcp-stdio": {
         "command": "anyquery",
-        "args": [
-          "mcp",
-          "--stdio"
-        ]
+        "args": ["mcp", "--stdio"]
       },
       "anyquery-mcp-http": {
         "command": "anyquery",
-        "args": [
-          "mcp",
-          "--host",
-          "127.0.0.1",
-          "--port",
-          "8070"
-        ]
+        "args": ["mcp", "--host", "127.0.0.1", "--port", "8070"]
       }
     }
   },
   "configForArchestra": {
     "command": "anyquery",
-    "args": [
-      "mcp",
-      "--stdio"
-    ],
+    "args": ["mcp", "--stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

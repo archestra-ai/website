@@ -41,10 +41,7 @@
   },
   "configForArchestra": {
     "command": "winx-code-agent",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

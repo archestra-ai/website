@@ -60,12 +60,7 @@
       },
       "mcp-snowflake-server-uv-run": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/absolute/path/to/mcp_snowflake_server",
-          "run",
-          "mcp_snowflake_server"
-        ]
+        "args": ["--directory", "/absolute/path/to/mcp_snowflake_server", "run", "mcp_snowflake_server"]
       },
       "mcp-snowflake-server-local-config": {
         "command": "/absolute/path/to/uv",

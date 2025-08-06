@@ -28,10 +28,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "binary-name",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

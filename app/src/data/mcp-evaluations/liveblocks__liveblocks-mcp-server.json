@@ -32,9 +32,7 @@
     "mcpServers": {
       "liveblocks-mcp-server": {
         "command": "node",
-        "args": [
-          "/full/path/to/the/repo/liveblocks-mcp-server/build/index.js"
-        ],
+        "args": ["/full/path/to/the/repo/liveblocks-mcp-server/build/index.js"],
         "env": {
           "LIVEBLOCKS_SECRET_KEY": "sk_dev_Ns35f5G..."
         }
@@ -43,9 +41,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "build/index.js"
-    ],
+    "args": ["build/index.js"],
     "env": {
       "server-configured": "LIVEBLOCKS_SECRET_KEY"
     },

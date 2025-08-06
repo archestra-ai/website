@@ -32,10 +32,7 @@
     "mcpServers": {
       "yincongcyincong-victoriametrics-mcp-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@yincongcyincong/victoriametrics-mcp-server"
-        ],
+        "args": ["-y", "@yincongcyincong/victoriametrics-mcp-server"],
         "env": {
           "VM_URL": "",
           "VM_SELECT_URL": "",
@@ -44,9 +41,7 @@
       },
       "yincongcyincong-victoriametrics-mcp-server-debug": {
         "command": "node",
-        "args": [
-          "src/index.js"
-        ],
+        "args": ["src/index.js"],
         "env": {
           "VM_URL": "http://127.0.0.1:8428"
         }
@@ -55,12 +50,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@yincongcyincong/victoriametrics-mcp-server",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@yincongcyincong/victoriametrics-mcp-server", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

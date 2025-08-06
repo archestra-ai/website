@@ -30,13 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-remote",
-      "https://mcp.stape.ai/sse",
-      "--header",
-      "Authorization: ${your_stape_api_key}"
-    ],
+    "args": ["-y", "mcp-remote", "https://mcp.stape.ai/sse", "--header", "Authorization: ${your_stape_api_key}"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

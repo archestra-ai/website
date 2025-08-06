@@ -32,37 +32,21 @@
     "mcpServers": {
       "mcp-teams-server": {
         "command": "uv",
-        "args": [
-          "run",
-          "mcp-teams-server"
-        ]
+        "args": ["run", "mcp-teams-server"]
       },
       "inditextech-mcp-teams-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-it",
-          "inditextech/mcp-teams-server"
-        ]
+        "args": ["run", "-it", "inditextech/mcp-teams-server"]
       },
       "inditextech-mcp-teams-server-docker-configured": {
         "command": "docker",
-        "args": [
-          "run",
-          "--env-file",
-          ".env",
-          "-it",
-          "inditextech/mcp-teams-server"
-        ]
+        "args": ["run", "--env-file", ".env", "-it", "inditextech/mcp-teams-server"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "mcp-teams-server"
-    ],
+    "args": ["run", "mcp-teams-server"],
     "env": {
       "server-basic": "",
       "server-configured": "",

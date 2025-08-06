@@ -31,21 +31,13 @@
     "mcpServers": {
       "pearch_mcp-dev": {
         "command": "fastmcp",
-        "args": [
-          "dev",
-          "pearch_mcp.py"
-        ]
+        "args": ["dev", "pearch_mcp.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "fastmcp",
-    "args": [
-      "dev",
-      "pearch_mcp.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["dev", "pearch_mcp.py", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

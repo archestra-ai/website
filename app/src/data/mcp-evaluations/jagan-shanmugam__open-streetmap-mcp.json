@@ -32,9 +32,7 @@
     "mcpServers": {
       "osm-mcp-server": {
         "command": "uvx",
-        "args": [
-          "osm-mcp-server"
-        ]
+        "args": ["osm-mcp-server"]
       },
       "osm-mcp-server-local-run": {
         "command": "osm-mcp-server",
@@ -42,12 +40,7 @@
       },
       "osm-mcp-server-configured": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/osm-mcp-server",
-          "run",
-          "osm-mcp-server"
-        ]
+        "args": ["--directory", "/path/to/osm-mcp-server", "run", "osm-mcp-server"]
       },
       "osm-mcp-server-inspector": {
         "command": "npx",
@@ -65,9 +58,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "osm-mcp-server"
-    ],
+    "args": ["osm-mcp-server"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

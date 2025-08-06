@@ -30,12 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@anthropic-ai/claude-code",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@anthropic-ai/claude-code", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

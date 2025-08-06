@@ -32,21 +32,11 @@
     "mcpServers": {
       "fastmcp-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "fastmcp",
-          "dev",
-          "src/examples/addition.ts"
-        ]
+        "args": ["-y", "fastmcp", "dev", "src/examples/addition.ts"]
       },
       "fastmcp-inspect": {
         "command": "npx",
-        "args": [
-          "-y",
-          "fastmcp",
-          "inspect",
-          "src/examples/addition.ts"
-        ]
+        "args": ["-y", "fastmcp", "inspect", "src/examples/addition.ts"]
       },
       "fastmcp-http-stream-stateless": {
         "command": "npx",
@@ -65,12 +55,7 @@
       },
       "fastmcp-http-stream-stateless-env": {
         "command": "npx",
-        "args": [
-          "-y",
-          "fastmcp",
-          "dev",
-          "src/server.ts"
-        ],
+        "args": ["-y", "fastmcp", "dev", "src/server.ts"],
         "env": {
           "FASTMCP_STATELESS": "true"
         }
@@ -79,14 +64,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "fastmcp",
-      "dev",
-      "src/examples/addition.ts",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "fastmcp", "dev", "src/examples/addition.ts", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -28,12 +28,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@bucketco/server",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@bucketco/server", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

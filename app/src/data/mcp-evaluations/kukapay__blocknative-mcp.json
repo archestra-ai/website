@@ -32,28 +32,17 @@
     "mcpServers": {
       "blocknative-mcp-dev": {
         "command": "uv",
-        "args": [
-          "run",
-          "mcp",
-          "dev",
-          "blocknative-mcp"
-        ]
+        "args": ["run", "mcp", "dev", "blocknative-mcp"]
       },
       "blocknative-mcp": {
         "command": "uv",
-        "args": [
-          "run",
-          "blocknative-mcp"
-        ]
+        "args": ["run", "blocknative-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "blocknative-mcp"
-    ],
+    "args": ["run", "blocknative-mcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

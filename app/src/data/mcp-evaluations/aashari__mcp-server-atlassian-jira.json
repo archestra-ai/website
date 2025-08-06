@@ -32,25 +32,18 @@
     "mcpServers": {
       "aashari-mcp-server-atlassian-jira": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@aashari/mcp-server-atlassian-jira"
-        ]
+        "args": ["-y", "@aashari/mcp-server-atlassian-jira"]
       },
       "aashari-mcp-server-atlassian-jira-stdio": {
         "command": "npx",
-        "args": [
-          "@aashari/mcp-server-atlassian-jira"
-        ],
+        "args": ["@aashari/mcp-server-atlassian-jira"],
         "env": {
           "TRANSPORT_MODE": "stdio"
         }
       },
       "aashari-mcp-server-atlassian-jira-http": {
         "command": "npx",
-        "args": [
-          "@aashari/mcp-server-atlassian-jira"
-        ],
+        "args": ["@aashari/mcp-server-atlassian-jira"],
         "env": {
           "TRANSPORT_MODE": "http"
         }
@@ -59,10 +52,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@aashari/mcp-server-atlassian-jira"
-    ],
+    "args": ["-y", "@aashari/mcp-server-atlassian-jira"],
     "env": {
       "server-basic": "",
       "server-configured": "",

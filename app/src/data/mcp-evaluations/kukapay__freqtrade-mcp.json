@@ -31,12 +31,7 @@
     "mcpServers": {
       "freqtrade-mcp": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/your/path/to/freqtrade-mcp",
-          "run",
-          "__main__.py"
-        ],
+        "args": ["--directory", "/your/path/to/freqtrade-mcp", "run", "__main__.py"],
         "env": {
           "FREQTRADE_API_URL": "http://127.0.0.1:8080",
           "FREQTRADE_USERNAME": "your_username",
@@ -47,12 +42,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "/your/path/to/freqtrade-mcp",
-      "run",
-      "__main__.py"
-    ],
+    "args": ["--directory", "/your/path/to/freqtrade-mcp", "run", "__main__.py"],
     "env": {
       "server-basic": "",
       "server-configured": "",

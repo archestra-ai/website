@@ -32,15 +32,11 @@
     "mcpServers": {
       "memvid-mcp-server": {
         "command": "python",
-        "args": [
-          "server.py"
-        ]
+        "args": ["server.py"]
       },
       "memvid-mcp-server-configured": {
         "command": "python",
-        "args": [
-          "server.py"
-        ],
+        "args": ["server.py"],
         "env": {
           "PORT": "3002"
         }
@@ -49,9 +45,7 @@
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "server.py"
-    ],
+    "args": ["server.py"],
     "env": {},
     "transport": "http",
     "oauth": {}

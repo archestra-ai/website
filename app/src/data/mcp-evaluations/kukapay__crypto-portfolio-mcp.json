@@ -32,17 +32,13 @@
     "mcpServers": {
       "crypto-portfolio-mcp": {
         "command": "python",
-        "args": [
-          "path/to/crypto-portfolio-mcp/main.py"
-        ]
+        "args": ["path/to/crypto-portfolio-mcp/main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "main.py"
-    ],
+    "args": ["main.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

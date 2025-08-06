@@ -32,23 +32,13 @@
     "mcpServers": {
       "whatsapp": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "{{PATH_TO_SRC}}/whatsapp-mcp/whatsapp-mcp-server",
-          "run",
-          "main.py"
-        ]
+        "args": ["--directory", "{{PATH_TO_SRC}}/whatsapp-mcp/whatsapp-mcp-server", "run", "main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "whatsapp-mcp-server",
-      "run",
-      "main.py"
-    ],
+    "args": ["--directory", "whatsapp-mcp-server", "run", "main.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

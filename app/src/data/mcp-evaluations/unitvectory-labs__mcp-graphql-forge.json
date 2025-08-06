@@ -36,10 +36,7 @@
       },
       "mcp-graphql-forge-sse": {
         "command": "mcp-graphql-forge",
-        "args": [
-          "--sse",
-          "localhost:8080"
-        ]
+        "args": ["--sse", "localhost:8080"]
       },
       "mcp-graphql-forge-configured": {
         "command": "mcp-graphql-forge",

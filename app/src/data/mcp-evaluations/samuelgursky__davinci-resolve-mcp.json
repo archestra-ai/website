@@ -56,29 +56,21 @@
       },
       "davinci-resolve-mcp-launcher-cursor": {
         "command": "./scripts/mcp_resolve_launcher.sh",
-        "args": [
-          "--start-cursor"
-        ]
+        "args": ["--start-cursor"]
       },
       "davinci-resolve-mcp-launcher-claude": {
         "command": "./scripts/mcp_resolve_launcher.sh",
-        "args": [
-          "--start-claude"
-        ]
+        "args": ["--start-claude"]
       },
       "davinci-resolve-mcp-launcher-both": {
         "command": "./scripts/mcp_resolve_launcher.sh",
-        "args": [
-          "--start-both"
-        ]
+        "args": ["--start-both"]
       }
     }
   },
   "configForArchestra": {
     "command": "string",
-    "args": [
-      "string"
-    ],
+    "args": ["string"],
     "env": {
       "server-basic": "string",
       "server-configured": "string",

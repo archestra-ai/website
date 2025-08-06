@@ -32,29 +32,17 @@
     "mcpServers": {
       "plantuml-web-mcp-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-d",
-          "-p",
-          "8080:8080",
-          "-p",
-          "8765:8765",
-          "plantuml_web_mcp:latest"
-        ]
+        "args": ["run", "-d", "-p", "8080:8080", "-p", "8765:8765", "plantuml_web_mcp:latest"]
       },
       "plantuml-web-mcp": {
         "command": "sh",
-        "args": [
-          "start.sh"
-        ]
+        "args": ["start.sh"]
       }
     }
   },
   "configForArchestra": {
     "command": "sh",
-    "args": [
-      "start.sh"
-    ],
+    "args": ["start.sh"],
     "env": {},
     "transport": "http",
     "oauth": {

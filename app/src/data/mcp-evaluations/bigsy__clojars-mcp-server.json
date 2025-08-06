@@ -32,26 +32,17 @@
     "mcpServers": {
       "clojars-deps-server": {
         "command": "npx",
-        "args": [
-          "clojars-deps-server"
-        ]
+        "args": ["clojars-deps-server"]
       },
       "clojars-deps-server-configured": {
         "command": "node",
-        "args": [
-          "/path/to/clojars-deps-server/build/index.js"
-        ]
+        "args": ["/path/to/clojars-deps-server/build/index.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "clojars-deps-server",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "clojars-deps-server", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

@@ -32,16 +32,7 @@
     "mcpServers": {
       "mcp-gitlab-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "-e",
-          "GITLAB_PERSONAL_ACCESS_TOKEN",
-          "-e",
-          "GITLAB_API_URL",
-          "mcp/gitlab"
-        ],
+        "args": ["run", "--rm", "-i", "-e", "GITLAB_PERSONAL_ACCESS_TOKEN", "-e", "GITLAB_API_URL", "mcp/gitlab"],
         "env": {
           "GITLAB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>",
           "GITLAB_API_URL": "https://gitlab.com/api/v4"
@@ -49,10 +40,7 @@
       },
       "modelcontextprotocol-server-gitlab": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-gitlab"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-gitlab"],
         "env": {
           "GITLAB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>",
           "GITLAB_API_URL": "https://gitlab.com/api/v4"
@@ -60,10 +48,7 @@
       },
       "modelcontextprotocol-server-gitlab-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-gitlab"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-gitlab"],
         "env": {
           "GITLAB_PERSONAL_ACCESS_TOKEN": "${input:gitlab_token}",
           "GITLAB_API_URL": "${input:gitlab_url}"
@@ -71,12 +56,7 @@
       },
       "mcp-gitlab-docker-configured": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "mcp/gitlab"
-        ],
+        "args": ["run", "--rm", "-i", "mcp/gitlab"],
         "env": {
           "GITLAB_PERSONAL_ACCESS_TOKEN": "${input:gitlab_token}",
           "GITLAB_API_URL": "${input:gitlab_url}"
@@ -86,10 +66,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@modelcontextprotocol/server-gitlab"
-    ],
+    "args": ["-y", "@modelcontextprotocol/server-gitlab"],
     "env": {},
     "transport": "stdio",
     "oauth": {

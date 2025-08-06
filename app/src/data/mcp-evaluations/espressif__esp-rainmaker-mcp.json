@@ -47,16 +47,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "--with",
-      "esp-rainmaker-cli",
-      "--with",
-      "mcp[cli]",
-      "mcp",
-      "run",
-      "/app/server.py"
-    ],
+    "args": ["run", "--with", "esp-rainmaker-cli", "--with", "mcp[cli]", "mcp", "run", "/app/server.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {

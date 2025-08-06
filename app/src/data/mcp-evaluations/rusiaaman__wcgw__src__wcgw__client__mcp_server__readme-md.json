@@ -30,66 +30,31 @@
     "mcpServers": {
       "modelcontextprotocol-server-filesystem": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-filesystem",
-          "~/.mcp/filesystem"
-        ]
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "~/.mcp/filesystem"]
       },
       "modelcontextprotocol-server-filesystem-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-d",
-          "-p",
-          "8080:8080",
-          "-v",
-          "~/.mcp/filesystem:/data",
-          "mcp/server-filesystem:latest"
-        ]
+        "args": ["run", "-d", "-p", "8080:8080", "-v", "~/.mcp/filesystem:/data", "mcp/server-filesystem:latest"]
       },
       "modelcontextprotocol-server-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-stdio"
-        ]
+        "args": ["-y", "@modelcontextprotocol/server-stdio"]
       },
       "modelcontextprotocol-server-stdio-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-d",
-          "-p",
-          "8080:8080",
-          "mcp/server-stdio:latest"
-        ]
+        "args": ["run", "-d", "-p", "8080:8080", "mcp/server-stdio:latest"]
       },
       "modelcontextprotocol-server-fetch": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-fetch"
-        ]
+        "args": ["-y", "@modelcontextprotocol/server-fetch"]
       },
       "modelcontextprotocol-server-fetch-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-d",
-          "-p",
-          "8080:8080",
-          "mcp/server-fetch:latest"
-        ]
+        "args": ["run", "-d", "-p", "8080:8080", "mcp/server-fetch:latest"]
       },
       "modelcontextprotocol-server-fetch-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-fetch",
-          "--config",
-          "config.json"
-        ]
+        "args": ["-y", "@modelcontextprotocol/server-fetch", "--config", "config.json"]
       },
       "modelcontextprotocol-server-fetch-docker-configured": {
         "command": "docker",
@@ -124,12 +89,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@claude/agent",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@claude/agent", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

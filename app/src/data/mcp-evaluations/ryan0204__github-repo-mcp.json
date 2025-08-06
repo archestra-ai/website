@@ -32,42 +32,23 @@
     "mcpServers": {
       "github-repo-mcp": {
         "command": "npx",
-        "args": [
-          "github-repo-mcp"
-        ]
+        "args": ["github-repo-mcp"]
       },
       "github-repo-mcp-windows-cmd": {
         "command": "cmd",
-        "args": [
-          "/c",
-          "npx",
-          "-y",
-          "github-repo-mcp"
-        ]
+        "args": ["/c", "npx", "-y", "github-repo-mcp"]
       },
       "github-repo-mcp-wsl-cursor": {
         "command": "wsl",
-        "args": [
-          "bash",
-          "-c",
-          "cmd /c npx -y github-repo-mcp"
-        ]
+        "args": ["bash", "-c", "cmd /c npx -y github-repo-mcp"]
       },
       "github-repo-mcp-wsl-cursor-full-path": {
         "command": "wsl",
-        "args": [
-          "bash",
-          "-c",
-          "'/home/[username]/.nvm/versions/node/v20.18.0/bin/npx github-repo-mcp'"
-        ]
+        "args": ["bash", "-c", "'/home/[username]/.nvm/versions/node/v20.18.0/bin/npx github-repo-mcp'"]
       },
       "github-repo-mcp-wsl-cursor-with-token": {
         "command": "wsl",
-        "args": [
-          "bash",
-          "-c",
-          "cmd /c npx -y github-repo-mcp"
-        ],
+        "args": ["bash", "-c", "cmd /c npx -y github-repo-mcp"],
         "env": {
           "GITHUB_TOKEN": "Your_Github_Token"
         }
@@ -76,10 +57,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "github-repo-mcp"
-    ],
+    "args": ["-y", "github-repo-mcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

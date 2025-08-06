@@ -32,19 +32,13 @@
     "mcpServers": {
       "cloudbet-sports-mcp-server": {
         "command": "go",
-        "args": [
-          "run",
-          "."
-        ]
+        "args": ["run", "."]
       }
     }
   },
   "configForArchestra": {
     "command": "go",
-    "args": [
-      "run",
-      "."
-    ],
+    "args": ["run", "."],
     "env": {},
     "transport": "http",
     "oauth": {}

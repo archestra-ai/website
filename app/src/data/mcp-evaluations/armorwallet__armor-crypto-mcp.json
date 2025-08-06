@@ -32,19 +32,14 @@
     "mcpServers": {
       "armor-crypto-mcp-configured": {
         "command": "uvx",
-        "args": [
-          "armor-crypto-mcp@latest",
-          "--version"
-        ],
+        "args": ["armor-crypto-mcp@latest", "--version"],
         "env": {
           "ARMOR_API_KEY": "<PUT-YOUR-KEY-HERE>"
         }
       },
       "armor-crypto-mcp": {
         "command": "uvx",
-        "args": [
-          "armor-crypto-mcp"
-        ],
+        "args": ["armor-crypto-mcp"],
         "env": {
           "ARMOR_API_KEY": "<PUT-YOUR-KEY-HERE>"
         }
@@ -53,10 +48,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "armor-crypto-mcp@latest",
-      "--version"
-    ],
+    "args": ["armor-crypto-mcp@latest", "--version"],
     "env": {
       "server-basic": "",
       "server-configured": "",

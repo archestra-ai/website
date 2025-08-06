@@ -41,11 +41,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "build/index.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["build/index.js", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

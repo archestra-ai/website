@@ -32,35 +32,17 @@
     "mcpServers": {
       "ida-pro-mcp-sse-transport": {
         "command": "uv",
-        "args": [
-          "run",
-          "ida-pro-mcp",
-          "--transport",
-          "http://127.0.0.1:8744/sse"
-        ]
+        "args": ["run", "ida-pro-mcp", "--transport", "http://127.0.0.1:8744/sse"]
       },
       "idalib-mcp-headless": {
         "command": "uv",
-        "args": [
-          "run",
-          "idalib-mcp",
-          "--host",
-          "127.0.0.1",
-          "--port",
-          "8745",
-          "path/to/executable"
-        ]
+        "args": ["run", "idalib-mcp", "--host", "127.0.0.1", "--port", "8745", "path/to/executable"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "ida-pro-mcp",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["run", "ida-pro-mcp", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

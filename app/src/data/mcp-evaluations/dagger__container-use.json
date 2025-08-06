@@ -32,23 +32,17 @@
     "mcpServers": {
       "container-use-stdio": {
         "command": "container-use",
-        "args": [
-          "stdio"
-        ]
+        "args": ["stdio"]
       },
       "cu-stdio": {
         "command": "cu",
-        "args": [
-          "stdio"
-        ]
+        "args": ["stdio"]
       }
     }
   },
   "configForArchestra": {
     "command": "container-use",
-    "args": [
-      "stdio"
-    ],
+    "args": ["stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

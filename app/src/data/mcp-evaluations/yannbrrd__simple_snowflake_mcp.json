@@ -32,61 +32,33 @@
     "mcpServers": {
       "simple_snowflake_mcp": {
         "command": "uv",
-        "args": [
-          "--directory",
-          ".",
-          "run",
-          "simple_snowflake_mcp"
-        ]
+        "args": ["--directory", ".", "run", "simple_snowflake_mcp"]
       },
       "simple_snowflake_mcp-published": {
         "command": "uvx",
-        "args": [
-          "simple_snowflake_mcp"
-        ]
+        "args": ["simple_snowflake_mcp"]
       },
       "simple-snowflake-mcp-docker": {
         "command": "docker-compose",
-        "args": [
-          "up",
-          "-d"
-        ]
+        "args": ["up", "-d"]
       },
       "simple-snowflake-mcp-dev-docker": {
         "command": "docker-compose",
-        "args": [
-          "--profile",
-          "dev",
-          "up",
-          "simple-snowflake-mcp-dev",
-          "-d"
-        ]
+        "args": ["--profile", "dev", "up", "simple-snowflake-mcp-dev", "-d"]
       },
       "simple-snowflake-mcp-inspector": {
         "command": "npx",
-        "args": [
-          "@modelcontextprotocol/inspector",
-          "uv",
-          "--directory",
-          ".",
-          "run",
-          "simple-snowflake-mcp"
-        ]
+        "args": ["@modelcontextprotocol/inspector", "uv", "--directory", ".", "run", "simple-snowflake-mcp"]
       },
       "simple-snowflake-mcp-stdio": {
         "command": ".venv/Scripts/python.exe",
-        "args": [
-          "-m",
-          "simple_snowflake_mcp"
-        ]
+        "args": ["-m", "simple_snowflake_mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "simple_snowflake_mcp"
-    ],
+    "args": ["simple_snowflake_mcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

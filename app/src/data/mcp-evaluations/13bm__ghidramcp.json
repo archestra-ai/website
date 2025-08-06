@@ -32,19 +32,13 @@
     "mcpServers": {
       "ghidra": {
         "command": "python",
-        "args": [
-          "PATH-TO-REPO/GhidraMCP/ghidra_server.py"
-        ]
+        "args": ["PATH-TO-REPO/GhidraMCP/ghidra_server.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "GhidraMCP/ghidra_server.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["GhidraMCP/ghidra_server.py", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

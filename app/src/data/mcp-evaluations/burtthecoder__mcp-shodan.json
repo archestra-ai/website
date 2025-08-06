@@ -38,9 +38,7 @@
       },
       "burtthecoder-mcp-shodan-source": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/mcp-shodan/build/index.js"
-        ],
+        "args": ["/absolute/path/to/mcp-shodan/build/index.js"],
         "env": {
           "SHODAN_API_KEY": "your-shodan-api-key"
         }
@@ -49,10 +47,7 @@
   },
   "configForArchestra": {
     "command": "mcp-shodan",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

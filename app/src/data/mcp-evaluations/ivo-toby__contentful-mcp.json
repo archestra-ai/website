@@ -32,34 +32,21 @@
     "mcpServers": {
       "ivotoby-contentful-management-mcp-server-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev"
-        ]
+        "args": ["run", "dev"]
       },
       "ivotoby-contentful-management-mcp-server-inspect": {
         "command": "npm",
-        "args": [
-          "run",
-          "inspect"
-        ]
+        "args": ["run", "inspect"]
       },
       "ivotoby-contentful-management-mcp-server-inspect-watch": {
         "command": "npm",
-        "args": [
-          "run",
-          "inspect:watch"
-        ]
+        "args": ["run", "inspect:watch"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@ivotoby/contentful-management-mcp-server",
-      "--http"
-    ],
+    "args": ["-y", "@ivotoby/contentful-management-mcp-server", "--http"],
     "env": {
       "server-basic": "",
       "server-configured": "",

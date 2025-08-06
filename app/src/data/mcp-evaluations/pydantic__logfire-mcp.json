@@ -32,77 +32,56 @@
     "mcpServers": {
       "logfire-mcp-env": {
         "command": "uvx",
-        "args": [
-          "logfire-mcp@latest"
-        ],
+        "args": ["logfire-mcp@latest"],
         "env": {
           "LOGFIRE_READ_TOKEN": "YOUR_READ_TOKEN"
         }
       },
       "logfire-mcp-flag": {
         "command": "uvx",
-        "args": [
-          "logfire-mcp@latest",
-          "--read-token=YOUR_READ_TOKEN"
-        ]
+        "args": ["logfire-mcp@latest", "--read-token=YOUR_READ_TOKEN"]
       },
       "logfire-mcp-cursor": {
         "command": "uvx",
-        "args": [
-          "logfire-mcp@latest",
-          "--read-token=YOUR-TOKEN"
-        ]
+        "args": ["logfire-mcp@latest", "--read-token=YOUR-TOKEN"]
       },
       "logfire-mcp-claude-desktop": {
         "command": "uvx",
-        "args": [
-          "logfire-mcp@latest"
-        ],
+        "args": ["logfire-mcp@latest"],
         "env": {
           "LOGFIRE_READ_TOKEN": "YOUR_TOKEN"
         }
       },
       "logfire-mcp-cline": {
         "command": "uvx",
-        "args": [
-          "logfire-mcp@latest"
-        ],
+        "args": ["logfire-mcp@latest"],
         "env": {
           "LOGFIRE_READ_TOKEN": "YOUR_TOKEN"
         }
       },
       "logfire-mcp-vscode": {
         "command": "uvx",
-        "args": [
-          "logfire-mcp@latest"
-        ],
+        "args": ["logfire-mcp@latest"],
         "env": {
           "LOGFIRE_READ_TOKEN": "YOUR_TOKEN"
         }
       },
       "logfire-mcp-zed": {
         "command": "uvx",
-        "args": [
-          "logfire-mcp@latest"
-        ],
+        "args": ["logfire-mcp@latest"],
         "env": {
           "LOGFIRE_READ_TOKEN": "YOUR_TOKEN"
         }
       },
       "logfire-mcp-claude-code": {
         "command": "uvx",
-        "args": [
-          "logfire-mcp@latest",
-          "--read-token=YOUR_TOKEN"
-        ]
+        "args": ["logfire-mcp@latest", "--read-token=YOUR_TOKEN"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "logfire-mcp@latest"
-    ],
+    "args": ["logfire-mcp@latest"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -32,9 +32,7 @@
     "mcpServers": {
       "pythonanywhere-mcp-server": {
         "command": "uvx",
-        "args": [
-          "pythonanywhere-mcp-server"
-        ],
+        "args": ["pythonanywhere-mcp-server"],
         "env": {
           "API_TOKEN": "yourpythonanywhereapitoken",
           "LOGNAME": "yourpythonanywhereusername"
@@ -44,9 +42,7 @@
   },
   "configForArchestra": {
     "command": "string",
-    "args": [
-      "string"
-    ],
+    "args": ["string"],
     "env": {
       "server-basic": "string",
       "server-configured": "string",

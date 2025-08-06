@@ -32,39 +32,21 @@
     "mcpServers": {
       "mcp-project": {
         "command": "uv",
-        "args": [
-          "run",
-          "-m",
-          "src.main"
-        ]
+        "args": ["run", "-m", "src.main"]
       },
       "mcp-project-api-key": {
         "command": "python",
-        "args": [
-          "-m",
-          "src.main",
-          "--api-key",
-          "your_nebula_block_api_key"
-        ]
+        "args": ["-m", "src.main", "--api-key", "your_nebula_block_api_key"]
       },
       "mcp-project-configured": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "~/path/to/nebulablock_mcp",
-          "run",
-          "-m",
-          "src.main",
-          "--api-key=YOUR_API_KEY"
-        ]
+        "args": ["--directory", "~/path/to/nebulablock_mcp", "run", "-m", "src.main", "--api-key=YOUR_API_KEY"]
       }
     }
   },
   "configForArchestra": {
     "command": "string",
-    "args": [
-      "string"
-    ],
+    "args": ["string"],
     "env": {
       "server-basic": "string",
       "server-configured": "string",

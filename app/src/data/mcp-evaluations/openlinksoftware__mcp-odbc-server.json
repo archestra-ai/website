@@ -30,12 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npm",
-    "args": [
-      "run",
-      "start",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["run", "start", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

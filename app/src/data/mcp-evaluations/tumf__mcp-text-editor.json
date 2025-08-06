@@ -32,35 +32,21 @@
     "mcpServers": {
       "mcp-text-editor": {
         "command": "uvx",
-        "args": [
-          "mcp-text-editor"
-        ]
+        "args": ["mcp-text-editor"]
       },
       "mcp-text-editor-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "--mount",
-          "type=bind,src=/some/path/src,dst=/some/path/dst",
-          "mcp/text-editor"
-        ]
+        "args": ["run", "-i", "--rm", "--mount", "type=bind,src=/some/path/src,dst=/some/path/dst", "mcp/text-editor"]
       },
       "mcp-text-editor-python": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_text_editor"
-        ]
+        "args": ["-m", "mcp_text_editor"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "mcp-text-editor"
-    ],
+    "args": ["mcp-text-editor"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

@@ -38,10 +38,7 @@
   },
   "configForArchestra": {
     "command": "supabase-mcp-server",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

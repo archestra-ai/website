@@ -32,24 +32,17 @@
     "mcpServers": {
       "aim-guard-mcp": {
         "command": "npx",
-        "args": [
-          "aim-guard-mcp"
-        ]
+        "args": ["aim-guard-mcp"]
       },
       "aim-guard-mcp-stdio": {
         "command": "npx",
-        "args": [
-          "aim-guard-mcp"
-        ]
+        "args": ["aim-guard-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "aim-guard-mcp"
-    ],
+    "args": ["-y", "aim-guard-mcp"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

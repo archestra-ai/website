@@ -32,26 +32,17 @@
     "mcpServers": {
       "mcpxcodebuild-uvx": {
         "command": "uvx",
-        "args": [
-          "mcpxcodebuild"
-        ]
+        "args": ["mcpxcodebuild"]
       },
       "mcpxcodebuild-pip": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcpxcodebuild"
-        ]
+        "args": ["-m", "mcpxcodebuild"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "mcpxcodebuild",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["mcpxcodebuild", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

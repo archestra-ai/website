@@ -58,25 +58,19 @@
       },
       "ig-mcp-server-binary-artifacthub-discovery": {
         "command": "ig-mcp-server",
-        "args": [
-          "-gadget-discoverer=artifacthub"
-        ],
+        "args": ["-gadget-discoverer=artifacthub"],
         "env": {}
       },
       "ig-mcp-server-binary-specific-gadgets": {
         "command": "ig-mcp-server",
-        "args": [
-          "-gadget-images=trace_dns:latest,trace_tcp:latest"
-        ],
+        "args": ["-gadget-images=trace_dns:latest,trace_tcp:latest"],
         "env": {}
       }
     }
   },
   "configForArchestra": {
     "command": "ig-mcp-server",
-    "args": [
-      "-gadget-discoverer=artifacthub"
-    ],
+    "args": ["-gadget-discoverer=artifacthub"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

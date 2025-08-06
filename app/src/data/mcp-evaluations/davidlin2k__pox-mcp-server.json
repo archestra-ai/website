@@ -32,12 +32,7 @@
     "mcpServers": {
       "pox": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "parent_of_servers_repo/servers/src/mcp_server_pox",
-          "run",
-          "server.py"
-        ],
+        "args": ["--directory", "parent_of_servers_repo/servers/src/mcp_server_pox", "run", "server.py"],
         "env": {
           "POX_SERVER_URL": "http://localhost:8000"
         }
@@ -46,12 +41,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "parent_of_servers_repo/servers/src/mcp_server_pox",
-      "run",
-      "server.py"
-    ],
+    "args": ["--directory", "parent_of_servers_repo/servers/src/mcp_server_pox", "run", "server.py"],
     "env": {
       "server-basic": "",
       "server-configured": "",

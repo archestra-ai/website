@@ -32,19 +32,13 @@
     "mcpServers": {
       "web3-research-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "web3-research-mcp@latest"
-        ]
+        "args": ["-y", "web3-research-mcp@latest"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "web3-research-mcp@latest"
-    ],
+    "args": ["-y", "web3-research-mcp@latest"],
     "env": {},
     "transport": "stdio",
     "oauth": {

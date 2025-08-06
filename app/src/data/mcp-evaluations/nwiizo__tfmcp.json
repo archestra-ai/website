@@ -32,28 +32,18 @@
     "mcpServers": {
       "tfmcp": {
         "command": "tfmcp",
-        "args": [
-          "mcp"
-        ]
+        "args": ["mcp"]
       },
       "tfmcp-configured": {
         "command": "tfmcp",
-        "args": [
-          "mcp"
-        ],
+        "args": ["mcp"],
         "env": {
           "TERRAFORM_DIR": "/path/to/your/terraform/project"
         }
       },
       "tfmcp-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-it",
-          "tfmcp",
-          "mcp"
-        ]
+        "args": ["run", "--rm", "-it", "tfmcp", "mcp"]
       },
       "tfmcp-docker-configured": {
         "command": "docker",
@@ -76,9 +66,7 @@
   },
   "configForArchestra": {
     "command": "tfmcp",
-    "args": [
-      "mcp"
-    ],
+    "args": ["mcp"],
     "env": {
       "server-basic": "string",
       "server-configured": "string",

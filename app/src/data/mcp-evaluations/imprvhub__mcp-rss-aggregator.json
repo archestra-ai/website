@@ -32,18 +32,14 @@
     "mcpServers": {
       "mcp-rss-aggregator-configured": {
         "command": "node",
-        "args": [
-          "ABSOLUTE_PATH_TO_DIRECTORY/mcp-rss-aggregator/build/index.js"
-        ],
+        "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-rss-aggregator/build/index.js"],
         "feedsPath": "ABSOLUTE_PATH_TO_YOUR_FEEDS_FILE.opml"
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "build/index.js"
-    ],
+    "args": ["build/index.js"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

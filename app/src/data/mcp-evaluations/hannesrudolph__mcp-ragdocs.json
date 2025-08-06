@@ -32,10 +32,7 @@
     "mcpServers": {
       "hannesrudolph-mcp-ragdocs": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@hannesrudolph/mcp-ragdocs"
-        ],
+        "args": ["-y", "@hannesrudolph/mcp-ragdocs"],
         "env": {
           "OPENAI_API_KEY": "",
           "QDRANT_URL": "",
@@ -46,10 +43,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@hannesrudolph/mcp-ragdocs"
-    ],
+    "args": ["-y", "@hannesrudolph/mcp-ragdocs"],
     "env": {
       "server-basic": "",
       "server-configured": "",

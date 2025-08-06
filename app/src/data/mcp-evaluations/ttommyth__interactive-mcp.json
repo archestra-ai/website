@@ -32,54 +32,29 @@
     "mcpServers": {
       "interactive-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "interactive-mcp"
-        ]
+        "args": ["-y", "interactive-mcp"]
       },
       "interactive-mcp-versioned": {
         "command": "npx",
-        "args": [
-          "-y",
-          "interactive-mcp@1.9.0"
-        ]
+        "args": ["-y", "interactive-mcp@1.9.0"]
       },
       "interactive-mcp-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "interactive-mcp",
-          "-t",
-          "30"
-        ]
+        "args": ["-y", "interactive-mcp", "-t", "30"]
       },
       "interactive-mcp-with-config": {
         "command": "npx",
-        "args": [
-          "-y",
-          "interactive-mcp",
-          "-t",
-          "30",
-          "--disable-tools",
-          "message_complete_notification,intensive_chat"
-        ]
+        "args": ["-y", "interactive-mcp", "-t", "30", "--disable-tools", "message_complete_notification,intensive_chat"]
       },
       "interactive-mcp-dev": {
         "command": "pnpm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "interactive-mcp",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "interactive-mcp", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

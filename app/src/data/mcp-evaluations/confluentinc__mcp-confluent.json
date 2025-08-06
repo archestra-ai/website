@@ -54,10 +54,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-confluent"
-    ],
+    "args": ["-y", "mcp-confluent"],
     "env": {
       "server-basic": "",
       "server-configured": "",

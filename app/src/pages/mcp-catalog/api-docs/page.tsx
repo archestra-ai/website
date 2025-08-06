@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 export default function ApiDocsPage() {
   useEffect(() => {
@@ -22,12 +22,10 @@ export default function ApiDocsPage() {
             url: '/mcp-catalog/api/docs',
             dom_id: '#swagger-ui',
             deepLinking: true,
-            presets: [
-              (window as any).SwaggerUIBundle.presets.apis,
-            ],
-            layout: "BaseLayout"
+            presets: [(window as any).SwaggerUIBundle.presets.apis],
+            layout: 'BaseLayout',
           });
-          
+
           // Make it available globally for debugging
           (window as any).ui = ui;
         }

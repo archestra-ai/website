@@ -32,17 +32,13 @@
     "mcpServers": {
       "GsuiteMCPServer": {
         "command": "absolute-path-to-your-python-executable-in-virtual-environment",
-        "args": [
-          "<mcp_server.py-abs-path>"
-        ]
+        "args": ["<mcp_server.py-abs-path>"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "mcp_server.py"
-    ],
+    "args": ["mcp_server.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {

@@ -32,31 +32,20 @@
     "mcpServers": {
       "4everland-hosting-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@4everland/hosting-mcp@latest",
-          "serve"
-        ],
+        "args": ["-y", "@4everland/hosting-mcp@latest", "serve"],
         "env": {
           "TOKEN": "your-hosting-auth-token"
         }
       },
       "4everland-hosting-mcp-local": {
         "command": "npm",
-        "args": [
-          "run",
-          "serve"
-        ]
+        "args": ["run", "serve"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@4everland/hosting-mcp@latest",
-      "serve"
-    ],
+    "args": ["-y", "@4everland/hosting-mcp@latest", "serve"],
     "env": {
       "server-configured": "TOKEN"
     },

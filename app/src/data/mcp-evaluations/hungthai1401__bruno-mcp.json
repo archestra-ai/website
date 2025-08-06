@@ -32,19 +32,13 @@
     "mcpServers": {
       "bruno-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "bruno-mcp"
-        ]
+        "args": ["-y", "bruno-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "bruno-mcp"
-    ],
+    "args": ["-y", "bruno-mcp"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

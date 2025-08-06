@@ -32,55 +32,33 @@
     "mcpServers": {
       "biothings-mcp-stdio": {
         "command": "uvx",
-        "args": [
-          "biothings-mcp"
-        ]
+        "args": ["biothings-mcp"]
       },
       "biothings-mcp-stdio-explicit": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "biothings-mcp",
-          "stdio"
-        ]
+        "args": ["--from", "biothings-mcp", "stdio"]
       },
       "biothings-mcp-server": {
         "command": "uvx",
-        "args": [
-          "biothings-mcp",
-          "server"
-        ]
+        "args": ["biothings-mcp", "server"]
       },
       "biothings-mcp-server-port-8000": {
         "command": "uvx",
-        "args": [
-          "biothings-mcp",
-          "server",
-          "--port",
-          "8000"
-        ]
+        "args": ["biothings-mcp", "server", "--port", "8000"]
       },
       "biothings-mcp-sse": {
         "command": "uvx",
-        "args": [
-          "biothings-mcp",
-          "sse"
-        ]
+        "args": ["biothings-mcp", "sse"]
       },
       "biothings-mcp-repo": {
         "command": "uv",
-        "args": [
-          "run",
-          "server"
-        ]
+        "args": ["run", "server"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "biothings-mcp"
-    ],
+    "args": ["biothings-mcp"],
     "env": {},
     "transport": "stdio",
     "oauth": {

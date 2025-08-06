@@ -32,23 +32,13 @@
     "mcpServers": {
       "crypto-orderbook-mcp": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/absolute/path/to/crypto-orderbook-mcp",
-          "run",
-          "main.py"
-        ]
+        "args": ["--directory", "/absolute/path/to/crypto-orderbook-mcp", "run", "main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "",
-      "run",
-      "main.py"
-    ],
+    "args": ["--directory", "", "run", "main.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

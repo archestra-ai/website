@@ -43,54 +43,25 @@
       },
       "mcp-sqlite-docker-desktop": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "-v",
-          "mcp-test:/mcp",
-          "mcp/sqlite",
-          "--db-path",
-          "/mcp/test.db"
-        ]
+        "args": ["run", "--rm", "-i", "-v", "mcp-test:/mcp", "mcp/sqlite", "--db-path", "/mcp/test.db"]
       },
       "mcp-server-sqlite-uvx": {
         "command": "uvx",
-        "args": [
-          "mcp-server-sqlite",
-          "--db-path",
-          "${input:db_path}"
-        ]
+        "args": ["mcp-server-sqlite", "--db-path", "${input:db_path}"]
       },
       "mcp-sqlite-docker-vscode": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "-v",
-          "mcp-sqlite:/mcp",
-          "mcp/sqlite",
-          "--db-path",
-          "${input:db_path}"
-        ]
+        "args": ["run", "-i", "--rm", "-v", "mcp-sqlite:/mcp", "mcp/sqlite", "--db-path", "${input:db_path}"]
       },
       "mcp-server-sqlite-dev": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "src/mcp_server_sqlite/server.py:wrapper"
-        ]
+        "args": ["dev", "src/mcp_server_sqlite/server.py:wrapper"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "mcp-server-sqlite",
-      "--db-path",
-      "db.sqlite"
-    ],
+    "args": ["mcp-server-sqlite", "--db-path", "db.sqlite"],
     "env": {},
     "transport": "stdio",
     "oauth": {

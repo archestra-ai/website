@@ -31,24 +31,18 @@
     "mcpServers": {
       "openai-gpt-image-mcp": {
         "command": "node",
-        "args": [
-          "dist/index.js"
-        ]
+        "args": ["dist/index.js"]
       },
       "openai-gpt-image-mcp-configured": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/dist/index.js"
-        ],
+        "args": ["/absolute/path/to/dist/index.js"],
         "env": {
           "OPENAI_API_KEY": "sk-..."
         }
       },
       "openai-gpt-image-mcp-azure": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/dist/index.js"
-        ],
+        "args": ["/absolute/path/to/dist/index.js"],
         "env": {
           "AZURE_OPENAI_API_KEY": "sk-...",
           "AZURE_OPENAI_ENDPOINT": "my.endpoint.com",
@@ -57,19 +51,13 @@
       },
       "openai-gpt-image-mcp-with-env-file": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/dist/index.js",
-          "--env-file",
-          "./deployment/.env"
-        ]
+        "args": ["/absolute/path/to/dist/index.js", "--env-file", "./deployment/.env"]
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "/absolute/path/to/dist/index.js"
-    ],
+    "args": ["/absolute/path/to/dist/index.js"],
     "env": {
       "server-basic": "OPENAI_API_KEY",
       "server-configured": "AZURE_OPENAI_API_KEY, AZURE_OPENAI_ENDPOINT, OPENAI_API_VERSION"

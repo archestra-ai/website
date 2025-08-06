@@ -32,10 +32,7 @@
     "mcpServers": {
       "simple-pubmed": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_simple_pubmed"
-        ],
+        "args": ["-m", "mcp_simple_pubmed"],
         "env": {
           "PUBMED_EMAIL": "your-email@example.com",
           "PUBMED_API_KEY": "your-api-key"
@@ -45,10 +42,7 @@
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "-m",
-      "mcp_simple_pubmed"
-    ],
+    "args": ["-m", "mcp_simple_pubmed"],
     "env": {
       "server-basic": "",
       "server-configured": "",

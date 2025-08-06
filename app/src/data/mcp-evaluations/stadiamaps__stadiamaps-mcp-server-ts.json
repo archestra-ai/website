@@ -30,11 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "bun",
-    "args": [
-      "build/index.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["build/index.js", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

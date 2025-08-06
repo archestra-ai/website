@@ -32,29 +32,16 @@
     "mcpServers": {
       "qlik-mcp-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "--env-file",
-          ".env",
-          "qlik-mcp"
-        ]
+        "args": ["run", "--env-file", ".env", "qlik-mcp"]
       },
       "qlik-mcp-deno": {
         "command": "deno",
-        "args": [
-          "run",
-          "--allow-all",
-          "--env-file=.env",
-          "src/index.ts"
-        ],
+        "args": ["run", "--allow-all", "--env-file=.env", "src/index.ts"],
         "cwd": "/path/to/qlik-mcp"
       },
       "qlik-mcp-node": {
         "command": "npx",
-        "args": [
-          "tsx",
-          "src/index.ts"
-        ],
+        "args": ["tsx", "src/index.ts"],
         "env": {
           "QLIK_API_KEY": "your_api_key_here",
           "QLIK_BASE_URL": "your_tenant_url",
@@ -64,21 +51,13 @@
       },
       "qlik-mcp-deno-dev-task": {
         "command": "deno",
-        "args": [
-          "task",
-          "dev"
-        ]
+        "args": ["task", "dev"]
       }
     }
   },
   "configForArchestra": {
     "command": "deno",
-    "args": [
-      "run",
-      "--allow-all",
-      "--env-file=.env",
-      "src/index.ts"
-    ],
+    "args": ["run", "--allow-all", "--env-file=.env", "src/index.ts"],
     "env": {
       "server-basic": "",
       "server-configured": "",

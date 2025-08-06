@@ -32,9 +32,7 @@
     "mcpServers": {
       "qiniu-mcp-server": {
         "command": "uvx",
-        "args": [
-          "qiniu-mcp-server"
-        ],
+        "args": ["qiniu-mcp-server"],
         "env": {
           "QINIU_ACCESS_KEY": "YOUR_ACCESS_KEY",
           "QINIU_SECRET_KEY": "YOUR_SECRET_KEY",
@@ -45,33 +43,17 @@
       },
       "qiniu-mcp-server-stdio": {
         "command": "uv",
-        "args": [
-          "--directory",
-          ".",
-          "run",
-          "qiniu-mcp-server"
-        ]
+        "args": ["--directory", ".", "run", "qiniu-mcp-server"]
       },
       "qiniu-mcp-server-sse": {
         "command": "uv",
-        "args": [
-          "--directory",
-          ".",
-          "run",
-          "qiniu-mcp-server",
-          "--transport",
-          "sse",
-          "--port",
-          "8000"
-        ]
+        "args": ["--directory", ".", "run", "qiniu-mcp-server", "--transport", "sse", "--port", "8000"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "qiniu-mcp-server"
-    ],
+    "args": ["qiniu-mcp-server"],
     "env": {
       "server-configured": "QINIU_ACCESS_KEY,QINIU_SECRET_KEY,QINIU_REGION_NAME,QINIU_ENDPOINT_URL,QINIU_BUCKETS"
     },

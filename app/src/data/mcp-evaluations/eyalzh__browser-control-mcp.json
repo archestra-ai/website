@@ -32,9 +32,7 @@
     "mcpServers": {
       "browser-control": {
         "command": "node",
-        "args": [
-          "/path/to/repo/mcp-server/dist/server.js"
-        ],
+        "args": ["/path/to/repo/mcp-server/dist/server.js"],
         "env": {
           "EXTENSION_SECRET": "<secret_on_firefox_extension_options_page>",
           "EXTENSION_PORT": "8089"
@@ -63,9 +61,7 @@
   },
   "configForArchestra": {
     "command": "string",
-    "args": [
-      "string"
-    ],
+    "args": ["string"],
     "env": {
       "server-basic": "string",
       "server-configured": "string",

@@ -13,6 +13,8 @@ import {
 import { extractServerInfo, loadServers } from '@utils/catalog';
 import { calculateQualityScore } from '@utils/qualityCalculator';
 
+import { MCP_SERVERS_EVALUATIONS_DIR, MCP_SERVERS_JSON_FILE_PATH, TYPES_PATH } from './paths';
+
 interface GitHubApiResponse {
   name: string;
   description: string;
@@ -578,8 +580,7 @@ async function callLLM(prompt: string, format?: any, model = 'gemini-2.5-pro'): 
  * Extract categories from the types.ts file
  */
 function extractCategories(): string[] {
-  const typesPath = path.join(__dirname, '../data/types.ts');
-  const typesContent = fs.readFileSync(typesPath, 'utf-8');
+  const typesContent = fs.readFileSync(TYPES_PATH, 'utf-8');
 
   // Find the category type definition
   const categoryMatch = typesContent.match(/category:\s*\n\s*\|([\s\S]*?)\s*\|\s*null;/);
@@ -603,12 +604,11 @@ function extractCategories(): string[] {
  * Remove URL from mcp-servers.json
  */
 function removeFromServerList(url: string): void {
-  const serversPath = path.join(__dirname, '../data/mcp-servers.json');
-  const servers: string[] = JSON.parse(fs.readFileSync(serversPath, 'utf8'));
+  const servers: string[] = JSON.parse(fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf8'));
   const filteredServers = servers.filter((s) => s !== url);
 
   if (filteredServers.length < servers.length) {
-    fs.writeFileSync(serversPath, JSON.stringify(filteredServers, null, 2));
+    fs.writeFileSync(MCP_SERVERS_JSON_FILE_PATH, JSON.stringify(filteredServers, null, 2));
     console.log(`❌ Removed invalid server: ${url}`);
   }
 }
@@ -1191,10 +1191,9 @@ async function evaluateSingleRepo(
     // 1. Parse GitHub URL
     const githubInfo = parseGitHubUrl(githubUrl);
     const { owner, repo, path: repoPath } = githubInfo;
-    const fileName = `${owner}__${repo}.json`;
 
-    const evaluationsDir = path.join(__dirname, '../data/mcp-evaluations');
-    const filePath = path.join(evaluationsDir, fileName);
+    const fileName = `${owner}__${repo}.json`;
+    const filePath = path.join(MCP_SERVERS_EVALUATIONS_DIR, fileName);
 
     // 2. Load existing or fetch new data
     let server = loadMCPServerFromFile(filePath);
@@ -1367,17 +1366,14 @@ async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<
     limit = 0,
   } = options;
 
-  const evaluationsDir = path.join(__dirname, '../data/mcp-evaluations');
-  const serversPath = path.join(__dirname, '../data/mcp-servers.json');
-
   // Ensure evaluations directory exists
-  if (!fs.existsSync(evaluationsDir)) {
-    fs.mkdirSync(evaluationsDir, { recursive: true });
+  if (!fs.existsSync(MCP_SERVERS_EVALUATIONS_DIR)) {
+    fs.mkdirSync(MCP_SERVERS_EVALUATIONS_DIR, { recursive: true });
   }
 
   // Read all GitHub URLs
-  let githubUrls: string[] = JSON.parse(fs.readFileSync(serversPath, 'utf8'));
-  const existingFiles = fs.readdirSync(evaluationsDir).filter((f) => f.endsWith('.json'));
+  let githubUrls: string[] = JSON.parse(fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf8'));
+  const existingFiles = fs.readdirSync(MCP_SERVERS_EVALUATIONS_DIR).filter((f) => f.endsWith('.json'));
 
   // Apply limit if specified
   if (limit && limit > 0) {
@@ -1390,7 +1386,7 @@ async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<
 
   console.log(`📊 Batch Evaluation
 Total servers: ${githubUrls.length}${
-    limit ? ` (limited from ${JSON.parse(fs.readFileSync(serversPath, 'utf8')).length})` : ''
+    limit ? ` (limited from ${JSON.parse(fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf8')).length})` : ''
   }
 Existing evaluations: ${existingFiles.length}
 Concurrency: ${concurrency} parallel requests
@@ -1422,7 +1418,7 @@ Options: ${Object.entries(options)
       try {
         const githubInfo = parseGitHubUrl(url);
         const fileName = `${githubInfo.owner}__${githubInfo.repo}.json`;
-        const filePath = path.join(evaluationsDir, fileName);
+        const filePath = path.join(MCP_SERVERS_EVALUATIONS_DIR, fileName);
         const exists = fs.existsSync(filePath);
 
         // Skip if exists and no updates requested

@@ -32,28 +32,17 @@
     "mcpServers": {
       "yfmcp": {
         "command": "uvx",
-        "args": [
-          "yfmcp@latest"
-        ]
+        "args": ["yfmcp@latest"]
       },
       "narumi-yfinance-mcp-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "narumi/yfinance-mcp"
-        ]
+        "args": ["run", "-i", "--rm", "narumi/yfinance-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "yfmcp@latest",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["yfmcp@latest", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

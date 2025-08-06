@@ -38,10 +38,7 @@
   },
   "configForArchestra": {
     "command": "imagesorcery-mcp",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

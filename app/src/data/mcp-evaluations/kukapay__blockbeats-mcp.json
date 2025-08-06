@@ -32,19 +32,13 @@
     "mcpServers": {
       "kukapay-blockbeats-mcp-dev": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "main.py"
-        ]
+        "args": ["dev", "main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "mcp",
-    "args": [
-      "dev",
-      "main.py"
-    ],
+    "args": ["dev", "main.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

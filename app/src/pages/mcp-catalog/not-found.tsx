@@ -1,7 +1,7 @@
 import { Github, Home, Search } from 'lucide-react';
 import Link from 'next/link';
 
-import Header from '../../src/components/header';
+import Header from '@components/Header';
 
 export default function NotFound() {
   return (

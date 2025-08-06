@@ -32,26 +32,17 @@
     "mcpServers": {
       "mobsf-mcp-claude": {
         "command": "npx",
-        "args": [
-          "tsx",
-          "/absolute/path/to/server.ts"
-        ]
+        "args": ["tsx", "/absolute/path/to/server.ts"]
       },
       "mobsf-mcp-5ire": {
         "command": "npx",
-        "args": [
-          "tsx",
-          "C:\\Users\\Downloads\\mobsf-mcp-server\\server.js"
-        ]
+        "args": ["tsx", "C:\\Users\\Downloads\\mobsf-mcp-server\\server.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "tsx",
-      "server.ts"
-    ],
+    "args": ["tsx", "server.ts"],
     "env": {
       "server-basic": "",
       "server-configured": "",

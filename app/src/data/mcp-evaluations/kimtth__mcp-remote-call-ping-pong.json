@@ -32,23 +32,17 @@
     "mcpServers": {
       "mcp-api-server": {
         "command": "python",
-        "args": [
-          "mcp-api-server.py"
-        ]
+        "args": ["mcp-api-server.py"]
       },
       "mcp-sse-server": {
         "command": "python",
-        "args": [
-          "mcp-sse-server.py"
-        ]
+        "args": ["mcp-sse-server.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "mcp-api-server.py"
-    ],
+    "args": ["mcp-api-server.py"],
     "env": {},
     "transport": "http",
     "oauth": {}

@@ -28,12 +28,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@mobb/mcp-server",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@mobb/mcp-server", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {
@@ -45,28 +40,15 @@
     "mcpServers": {
       "mobb-bugsy-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@mobb/bugsy-server"
-        ]
+        "args": ["-y", "@mobb/bugsy-server"]
       },
       "mobb-bugsy-server-with-config": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@mobb/bugsy-server",
-          "--config",
-          "./bugsy-config.json"
-        ]
+        "args": ["-y", "@mobb/bugsy-server", "--config", "./bugsy-config.json"]
       },
       "mobb-bugsy-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8080:8080",
-          "mobb/bugsy-server:latest"
-        ]
+        "args": ["run", "-p", "8080:8080", "mobb/bugsy-server:latest"]
       },
       "mobb-bugsy-server-docker-configured": {
         "command": "docker",

@@ -32,9 +32,7 @@
     "mcpServers": {
       "inoyu-mcp-unomi-server": {
         "command": "npx",
-        "args": [
-          "@inoyu/mcp-unomi-server"
-        ],
+        "args": ["@inoyu/mcp-unomi-server"],
         "env": {
           "UNOMI_BASE_URL": "http://your-unomi-server:8181",
           "UNOMI_USERNAME": "your-username",
@@ -49,12 +47,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@inoyu/mcp-unomi-server",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@inoyu/mcp-unomi-server", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

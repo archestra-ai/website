@@ -32,21 +32,13 @@
     "mcpServers": {
       "apktool-mcp-server": {
         "command": "uv",
-        "args": [
-          "run",
-          "python",
-          "apktool_mcp_server.py"
-        ]
+        "args": ["run", "python", "apktool_mcp_server.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "apktool_mcp_server.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["apktool_mcp_server.py", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

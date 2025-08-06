@@ -32,20 +32,14 @@
     "mcpServers": {
       "getalby-mcp-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@getalby/mcp"
-        ],
+        "args": ["-y", "@getalby/mcp"],
         "env": {
           "NWC_CONNECTION_STRING": "YOUR NWC CONNECTION STRING HERE"
         }
       },
       "getalby-mcp-http": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@getalby/mcp"
-        ],
+        "args": ["-y", "@getalby/mcp"],
         "env": {
           "MODE": "HTTP",
           "NWC_CONNECTION_STRING": "YOUR NWC CONNECTION STRING HERE"
@@ -55,10 +49,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@getalby/mcp"
-    ],
+    "args": ["-y", "@getalby/mcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

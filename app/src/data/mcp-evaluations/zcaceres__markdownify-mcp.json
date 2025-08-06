@@ -32,25 +32,18 @@
     "mcpServers": {
       "markdownify-mcp": {
         "command": "pnpm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       },
       "markdownify": {
         "command": "node",
-        "args": [
-          "{ABSOLUTE PATH TO FILE HERE}/dist/index.js"
-        ],
+        "args": ["{ABSOLUTE PATH TO FILE HERE}/dist/index.js"],
         "env": {
           "UV_PATH": "/path/to/uv"
         }
       },
       "markdownify-mcp-with-config": {
         "command": "pnpm",
-        "args": [
-          "run",
-          "start"
-        ],
+        "args": ["run", "start"],
         "env": {
           "MD_SHARE_DIR": "[SOME_PATH]"
         }
@@ -59,11 +52,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "dist/index.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["dist/index.js", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

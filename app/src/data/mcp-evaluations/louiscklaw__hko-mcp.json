@@ -32,36 +32,22 @@
     "mcpServers": {
       "mcp-hko-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "inspect"
-        ]
+        "args": ["run", "inspect"]
       },
       "mcp-hko-stdio": {
         "type": "stdio",
         "command": "npx",
-        "args": [
-          "-y",
-          "github:louiscklaw/mcp-hko"
-        ]
+        "args": ["-y", "github:louiscklaw/mcp-hko"]
       },
       "mcp-hko-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "mcp-hko:latest"
-        ]
+        "args": ["run", "-i", "--rm", "mcp-hko:latest"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "github:louiscklaw/mcp-hko"
-    ],
+    "args": ["-y", "github:louiscklaw/mcp-hko"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

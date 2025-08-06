@@ -32,17 +32,11 @@
     "mcpServers": {
       "optuna-mcp": {
         "command": "uvx",
-        "args": [
-          "optuna-mcp"
-        ]
+        "args": ["optuna-mcp"]
       },
       "optuna-mcp-configured": {
         "command": "uvx",
-        "args": [
-          "optuna-mcp",
-          "--storage",
-          "sqlite:///optuna.db"
-        ]
+        "args": ["optuna-mcp", "--storage", "sqlite:///optuna.db"]
       },
       "optuna-optuna-mcp-docker": {
         "command": "docker",
@@ -62,11 +56,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "optuna-mcp",
-      "--storage",
-      "sqlite:///optuna.db"
-    ],
+    "args": ["optuna-mcp", "--storage", "sqlite:///optuna.db"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

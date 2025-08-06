@@ -32,9 +32,7 @@
     "mcpServers": {
       "OverQuotaAI-chatterboxio-mcp-server": {
         "command": "pnpm",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {
           "CHATTERBOX_API_ENDPOINT": "https://api.chatter-box.io",
           "CHATTERBOX_API_KEY": "your_api_key_here"
@@ -44,12 +42,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@OverQuotaAI/chatterboxio-mcp-server",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@OverQuotaAI/chatterboxio-mcp-server", "--transport", "stdio"],
     "env": {
       "server-basic": "CHATTERBOX_API_ENDPOINT",
       "server-configured": "CHATTERBOX_API_KEY"

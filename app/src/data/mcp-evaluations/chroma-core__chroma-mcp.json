@@ -32,19 +32,11 @@
     "mcpServers": {
       "chroma-mcp": {
         "command": "uvx",
-        "args": [
-          "chroma-mcp"
-        ]
+        "args": ["chroma-mcp"]
       },
       "chroma-mcp-persistent": {
         "command": "uvx",
-        "args": [
-          "chroma-mcp",
-          "--client-type",
-          "persistent",
-          "--data-dir",
-          "/full/path/to/your/data/directory"
-        ]
+        "args": ["chroma-mcp", "--client-type", "persistent", "--data-dir", "/full/path/to/your/data/directory"]
       },
       "chroma-mcp-cloud": {
         "command": "uvx",
@@ -80,9 +72,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "chroma-mcp"
-    ],
+    "args": ["chroma-mcp"],
     "env": {
       "server-basic": "CHROMA_CLIENT_TYPE",
       "server-configured": "CHROMA_DATA_DIR",

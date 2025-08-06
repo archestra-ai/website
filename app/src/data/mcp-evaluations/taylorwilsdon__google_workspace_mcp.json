@@ -30,11 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "workspace-mcp",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["workspace-mcp", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

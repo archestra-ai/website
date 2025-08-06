@@ -32,23 +32,13 @@
     "mcpServers": {
       "gr-mcp": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/gr-mcp",
-          "run",
-          "main.py"
-        ]
+        "args": ["--directory", "/path/to/gr-mcp", "run", "main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "/path/to/gr-mcp",
-      "run",
-      "main.py"
-    ],
+    "args": ["--directory", "/path/to/gr-mcp", "run", "main.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {

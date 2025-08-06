@@ -32,34 +32,17 @@
     "mcpServers": {
       "mcp-pinecone": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "{project_dir}",
-          "run",
-          "mcp-pinecone"
-        ]
+        "args": ["--directory", "{project_dir}", "run", "mcp-pinecone"]
       },
       "mcp-pinecone-configured": {
         "command": "uvx",
-        "args": [
-          "--index-name",
-          "{your-index-name}",
-          "--api-key",
-          "{your-secret-api-key}",
-          "mcp-pinecone"
-        ]
+        "args": ["--index-name", "{your-index-name}", "--api-key", "{your-secret-api-key}", "mcp-pinecone"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "--index-name",
-      "{your-index-name}",
-      "--api-key",
-      "{your-secret-api-key}",
-      "mcp-pinecone"
-    ],
+    "args": ["--index-name", "{your-index-name}", "--api-key", "{your-secret-api-key}", "mcp-pinecone"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

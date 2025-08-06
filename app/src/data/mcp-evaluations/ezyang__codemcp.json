@@ -32,23 +32,11 @@
     "mcpServers": {
       "codemcp": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "git+https://github.com/ezyang/codemcp@prod",
-          "codemcp",
-          "serve"
-        ]
+        "args": ["--from", "git+https://github.com/ezyang/codemcp@prod", "codemcp", "serve"]
       },
       "codemcp-port": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "git+https://github.com/ezyang/codemcp@prod",
-          "codemcp",
-          "serve",
-          "--port",
-          "1234"
-        ]
+        "args": ["--from", "git+https://github.com/ezyang/codemcp@prod", "codemcp", "serve", "--port", "1234"]
       },
       "codemcp-host": {
         "command": "uvx",
@@ -63,10 +51,7 @@
       },
       "codemcp-dev": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "codemcp/__main__.py"
-        ],
+        "args": ["dev", "codemcp/__main__.py"],
         "env": {
           "PYTHONPATH": "."
         }
@@ -75,12 +60,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "--from",
-      "git+https://github.com/ezyang/codemcp@prod",
-      "codemcp",
-      "serve"
-    ],
+    "args": ["--from", "git+https://github.com/ezyang/codemcp@prod", "codemcp", "serve"],
     "env": {},
     "transport": "http",
     "oauth": {}

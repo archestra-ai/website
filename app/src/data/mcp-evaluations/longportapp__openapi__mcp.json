@@ -82,11 +82,7 @@
       },
       "longport-mcp-sse-bind": {
         "command": "longport-mcp",
-        "args": [
-          "--sse",
-          "--bind",
-          "127.0.0.1:3000"
-        ],
+        "args": ["--sse", "--bind", "127.0.0.1:3000"],
         "env": {
           "LONGPORT_APP_KEY": "your-app-key",
           "LONGPORT_APP_SECRET": "your-app-secret",
@@ -95,9 +91,7 @@
       },
       "longport-mcp-readonly": {
         "command": "longport-mcp",
-        "args": [
-          "--readonly"
-        ],
+        "args": ["--readonly"],
         "env": {
           "LONGPORT_APP_KEY": "your-app-key",
           "LONGPORT_APP_SECRET": "your-app-secret",
@@ -106,10 +100,7 @@
       },
       "longport-mcp-logging": {
         "command": "longport-mcp",
-        "args": [
-          "--log-dir",
-          "/path/to/log/dir"
-        ],
+        "args": ["--log-dir", "/path/to/log/dir"],
         "env": {
           "LONGPORT_APP_KEY": "your-app-key",
           "LONGPORT_APP_SECRET": "your-app-secret",

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { calculateQualityScore } from '../../../../../utils/qualityCalculator';
-import { loadServers } from '../../../lib/server-utils';
+import { loadServers } from '@utils/catalog';
+import { calculateQualityScore } from '@utils/qualityCalculator';
 
 export async function GET(request: NextRequest, { params }: { params: { name: string } }) {
   try {

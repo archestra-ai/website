@@ -32,10 +32,7 @@
     "mcpServers": {
       "base-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "base-mcp@latest"
-        ],
+        "args": ["-y", "base-mcp@latest"],
         "env": {
           "COINBASE_API_KEY_NAME": "your_api_key_name",
           "COINBASE_API_PRIVATE_KEY": "your_private_key",
@@ -51,10 +48,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "base-mcp@latest"
-    ],
+    "args": ["-y", "base-mcp@latest"],
     "env": {
       "server-basic": "",
       "server-configured": "",

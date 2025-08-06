@@ -32,9 +32,7 @@
     "mcpServers": {
       "tip-md-demo": {
         "command": "node",
-        "args": [
-          "dist/mcp-server/src/index.js"
-        ],
+        "args": ["dist/mcp-server/src/index.js"],
         "cwd": "/path/to/tip-md-x402-mcp-server",
         "env": {
           "NODE_ENV": "demo"
@@ -42,9 +40,7 @@
       },
       "tip-md-x402-mcp-server-demo-npm": {
         "command": "npm",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "cwd": "/path/to/tip-md-x402-mcp-server",
         "env": {
           "NODE_ENV": "demo"
@@ -52,9 +48,7 @@
       },
       "tip-md-x402-mcp-server-production": {
         "command": "npm",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "cwd": "/path/to/tip-md-x402-mcp-server",
         "env": {
           "NODE_ENV": "production"
@@ -64,9 +58,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "dist/mcp-server/src/index.js"
-    ],
+    "args": ["dist/mcp-server/src/index.js"],
     "env": {
       "server-basic": "",
       "server-configured": "",

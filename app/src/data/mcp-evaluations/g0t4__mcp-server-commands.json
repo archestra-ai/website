@@ -32,9 +32,7 @@
     "mcpServers": {
       "mcp-server-commands": {
         "command": "npx",
-        "args": [
-          "mcp-server-commands"
-        ]
+        "args": ["mcp-server-commands"]
       },
       "mcp-server-commands-local-build": {
         "command": "/path/to/mcp-server-commands/build/index.js",
@@ -42,34 +40,17 @@
       },
       "mcp-server-commands-via-mcpo": {
         "command": "uvx",
-        "args": [
-          "mcpo",
-          "--port",
-          "3010",
-          "--api-key",
-          "supersecret",
-          "--",
-          "npx",
-          "mcp-server-commands"
-        ]
+        "args": ["mcpo", "--port", "3010", "--api-key", "supersecret", "--", "npx", "mcp-server-commands"]
       },
       "mcp-server-commands-verbose": {
         "command": "npx",
-        "args": [
-          "mcp-server-commands",
-          "--verbose"
-        ]
+        "args": ["mcp-server-commands", "--verbose"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-server-commands",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "mcp-server-commands", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

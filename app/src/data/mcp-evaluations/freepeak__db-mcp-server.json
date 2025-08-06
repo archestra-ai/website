@@ -51,59 +51,27 @@
       },
       "db-mcp-server-stdio": {
         "command": "./bin/server",
-        "args": [
-          "-t",
-          "stdio",
-          "-c",
-          "config.json"
-        ]
+        "args": ["-t", "stdio", "-c", "config.json"]
       },
       "db-mcp-server-stdio-cursor-config": {
         "command": "/path/to/db-mcp-server/server",
-        "args": [
-          "-t",
-          "stdio",
-          "-c",
-          "/path/to/config.json"
-        ]
+        "args": ["-t", "stdio", "-c", "/path/to/config.json"]
       },
       "db-mcp-server-sse": {
         "command": "./bin/server",
-        "args": [
-          "-t",
-          "sse",
-          "-c",
-          "config.json"
-        ]
+        "args": ["-t", "sse", "-c", "config.json"]
       },
       "db-mcp-server-sse-custom-host-port": {
         "command": "./bin/server",
-        "args": [
-          "-t",
-          "sse",
-          "-host",
-          "0.0.0.0",
-          "-port",
-          "8080",
-          "-c",
-          "config.json"
-        ]
+        "args": ["-t", "sse", "-host", "0.0.0.0", "-port", "8080", "-c", "config.json"]
       },
       "db-mcp-server-stdio-inline-config": {
         "command": "./bin/server",
-        "args": [
-          "-t",
-          "stdio",
-          "-db-config",
-          "{\"connections\":[...]}"
-        ]
+        "args": ["-t", "stdio", "-db-config", "{\"connections\":[...]}"]
       },
       "db-mcp-server-stdio-env-config": {
         "command": "./bin/server",
-        "args": [
-          "-t",
-          "stdio"
-        ],
+        "args": ["-t", "stdio"],
         "env": {
           "DB_CONFIG": "{\"connections\":[...]}"
         }
@@ -112,12 +80,7 @@
   },
   "configForArchestra": {
     "command": "./bin/server",
-    "args": [
-      "-t",
-      "stdio",
-      "-c",
-      "config.json"
-    ],
+    "args": ["-t", "stdio", "-c", "config.json"],
     "env": {},
     "transport": "stdio",
     "oauth": {

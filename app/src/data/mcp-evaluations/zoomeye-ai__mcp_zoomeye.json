@@ -30,9 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "mcp-server-zoomeye"
-    ],
+    "args": ["mcp-server-zoomeye"],
     "env": {
       "server-basic": "",
       "server-configured": "",
@@ -63,10 +61,7 @@
     "mcpServers": {
       "mcp-server-zoomeye-python": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_server_zoomeye"
-        ],
+        "args": ["-m", "mcp_server_zoomeye"],
         "env": {
           "ZOOMEYE_API_KEY": "your_api_key_here"
         }
@@ -101,9 +96,7 @@
       },
       "mcp-server-zoomeye-uvx": {
         "command": "uvx",
-        "args": [
-          "mcp-server-zoomeye"
-        ],
+        "args": ["mcp-server-zoomeye"],
         "env": {
           "ZOOMEYE_API_KEY": "your_api_key_here"
         }

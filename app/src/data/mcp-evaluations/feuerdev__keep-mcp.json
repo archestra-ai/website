@@ -32,10 +32,7 @@
     "mcpServers": {
       "keep-mcp-pipx": {
         "command": "pipx",
-        "args": [
-          "run",
-          "keep-mcp"
-        ],
+        "args": ["run", "keep-mcp"],
         "env": {
           "GOOGLE_EMAIL": "Your Google Email",
           "GOOGLE_MASTER_TOKEN": "Your Google Master Token - see README.md"
@@ -43,10 +40,7 @@
       },
       "keep-mcp-pipx-unsafe": {
         "command": "pipx",
-        "args": [
-          "run",
-          "keep-mcp"
-        ],
+        "args": ["run", "keep-mcp"],
         "env": {
           "GOOGLE_EMAIL": "Your Google Email",
           "GOOGLE_MASTER_TOKEN": "Your Google Master Token - see README.md",
@@ -57,10 +51,7 @@
   },
   "configForArchestra": {
     "command": "pipx",
-    "args": [
-      "run",
-      "keep-mcp"
-    ],
+    "args": ["run", "keep-mcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

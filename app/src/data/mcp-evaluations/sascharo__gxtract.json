@@ -66,16 +66,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      ".",
-      "--project",
-      ".",
-      "run",
-      "gxtract",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--directory", ".", "--project", ".", "run", "gxtract", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

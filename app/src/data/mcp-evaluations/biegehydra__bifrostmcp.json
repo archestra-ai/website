@@ -30,12 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "supergateway",
-      "--sse",
-      "http://localhost:8008/sse"
-    ],
+    "args": ["-y", "supergateway", "--sse", "http://localhost:8008/sse"],
     "env": {},
     "transport": "http",
     "oauth": {}
@@ -58,23 +53,11 @@
     "mcpServers": {
       "supergateway-configured-windows": {
         "command": "cmd",
-        "args": [
-          "/c",
-          "npx",
-          "-y",
-          "supergateway",
-          "--sse",
-          "http://localhost:8008/sse"
-        ]
+        "args": ["/c", "npx", "-y", "supergateway", "--sse", "http://localhost:8008/sse"]
       },
       "supergateway-configured-mac-linux": {
         "command": "npx",
-        "args": [
-          "-y",
-          "supergateway",
-          "--sse",
-          "http://localhost:8008/sse"
-        ]
+        "args": ["-y", "supergateway", "--sse", "http://localhost:8008/sse"]
       }
     }
   }

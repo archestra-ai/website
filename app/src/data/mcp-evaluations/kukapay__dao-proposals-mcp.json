@@ -32,23 +32,13 @@
     "mcpServers": {
       "DAO Proposals": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/dao-proposals-mcp",
-          "run",
-          "main.py"
-        ]
+        "args": ["--directory", "/path/to/dao-proposals-mcp", "run", "main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      ".",
-      "run",
-      "main.py"
-    ],
+    "args": ["--directory", ".", "run", "main.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {

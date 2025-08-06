@@ -32,12 +32,7 @@
     "mcpServers": {
       "thegraph-mcp": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "path/to/thegraph-mcp",
-          "run",
-          "main.py"
-        ],
+        "args": ["--directory", "path/to/thegraph-mcp", "run", "main.py"],
         "env": {
           "THEGRAPH_API_KEY": "your_api_key_here"
         }
@@ -46,12 +41,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      ".",
-      "run",
-      "main.py"
-    ],
+    "args": ["--directory", ".", "run", "main.py"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -32,26 +32,17 @@
     "mcpServers": {
       "mcp-v8-s3": {
         "command": "/usr/local/bin/mcp-v8",
-        "args": [
-          "--s3-bucket",
-          "my-bucket-name"
-        ]
+        "args": ["--s3-bucket", "my-bucket-name"]
       },
       "mcp-v8-directory": {
         "command": "/usr/local/bin/mcp-v8",
-        "args": [
-          "--directory-path",
-          "/tmp/mcp-v8-heaps"
-        ]
+        "args": ["--directory-path", "/tmp/mcp-v8-heaps"]
       }
     }
   },
   "configForArchestra": {
     "command": "/usr/local/bin/mcp-v8",
-    "args": [
-      "--s3-bucket",
-      "my-archestra-bucket"
-    ],
+    "args": ["--s3-bucket", "my-archestra-bucket"],
     "env": {
       "server-basic": "",
       "server-configured": "",

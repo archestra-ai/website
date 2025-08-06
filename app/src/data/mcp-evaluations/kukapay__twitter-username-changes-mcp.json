@@ -32,26 +32,17 @@
     "mcpServers": {
       "twitter-username-changes-mcp-dev": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "main.py"
-        ]
+        "args": ["dev", "main.py"]
       },
       "twitter-username-changes": {
         "command": "python",
-        "args": [
-          "/absolute/path/to/twitter-username-changes-mcp/main.py"
-        ]
+        "args": ["/absolute/path/to/twitter-username-changes-mcp/main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "main.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["main.py", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

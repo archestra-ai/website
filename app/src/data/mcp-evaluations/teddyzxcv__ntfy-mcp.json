@@ -32,15 +32,11 @@
     "mcpServers": {
       "ntfy-mcp": {
         "command": "npm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       },
       "ntfy-mcp-configured": {
         "command": "node",
-        "args": [
-          "/path/to/ntfy-mcp/build/index.js"
-        ],
+        "args": ["/path/to/ntfy-mcp/build/index.js"],
         "env": {
           "NTFY_TOPIC": "<your topic name>"
         }
@@ -49,9 +45,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "/path/to/ntfy-mcp/build/index.js"
-    ],
+    "args": ["/path/to/ntfy-mcp/build/index.js"],
     "env": {
       "server-basic": "",
       "server-configured": "",

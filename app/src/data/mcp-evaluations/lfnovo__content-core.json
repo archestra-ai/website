@@ -30,12 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "-m",
-      "content_core",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-m", "content_core", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

@@ -32,21 +32,13 @@
     "mcpServers": {
       "ch_sbb": {
         "command": "uvx",
-        "args": [
-          "odmcp",
-          "setup",
-          "ch_sbb"
-        ]
+        "args": ["odmcp", "setup", "ch_sbb"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "odmcp",
-      "setup",
-      "ch_sbb"
-    ],
+    "args": ["odmcp", "setup", "ch_sbb"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

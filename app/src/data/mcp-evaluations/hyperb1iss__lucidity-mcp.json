@@ -36,43 +36,25 @@
       },
       "lucidity-mcp-sse-configured": {
         "command": "lucidity-mcp",
-        "args": [
-          "--transport",
-          "sse",
-          "--host",
-          "127.0.0.1",
-          "--port",
-          "6969"
-        ]
+        "args": ["--transport", "sse", "--host", "127.0.0.1", "--port", "6969"]
       },
       "lucidity-mcp-debug": {
         "command": "lucidity-mcp",
-        "args": [
-          "--debug"
-        ]
+        "args": ["--debug"]
       },
       "lucidity-mcp-log-file": {
         "command": "lucidity-mcp",
-        "args": [
-          "--log-file",
-          "lucidity.log"
-        ]
+        "args": ["--log-file", "lucidity.log"]
       },
       "lucidity-mcp-sse": {
         "command": "lucidity-mcp",
-        "args": [
-          "--transport",
-          "sse"
-        ]
+        "args": ["--transport", "sse"]
       }
     }
   },
   "configForArchestra": {
     "command": "lucidity-mcp",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

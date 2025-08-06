@@ -32,29 +32,18 @@
     "mcpServers": {
       "vibe-check-mcp-server": {
         "command": "npm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       },
       "vibe-check-mcp-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-e",
-          "GEMINI_API_KEY=your_gemini_api_key",
-          "-p",
-          "3000:3000",
-          "vibe-check-mcp"
-        ],
+        "args": ["run", "-e", "GEMINI_API_KEY=your_gemini_api_key", "-p", "3000:3000", "vibe-check-mcp"],
         "env": {
           "GEMINI_API_KEY": "your_gemini_api_key"
         }
       },
       "vibe-check-mcp-with-config": {
         "command": "node",
-        "args": [
-          "/path/to/vibe-check-mcp/build/index.js"
-        ],
+        "args": ["/path/to/vibe-check-mcp/build/index.js"],
         "env": {
           "GEMINI_API_KEY": "YOUR_GEMINI_API_KEY"
         }
@@ -63,9 +52,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "/path/to/vibe-check-mcp/build/index.js"
-    ],
+    "args": ["/path/to/vibe-check-mcp/build/index.js"],
     "env": {
       "server-basic": "",
       "server-configured": "",

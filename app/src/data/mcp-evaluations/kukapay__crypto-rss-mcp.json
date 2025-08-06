@@ -31,34 +31,17 @@
     "mcpServers": {
       "crypto-rss-mcp": {
         "command": "uv",
-        "args": [
-          "run",
-          "mcp",
-          "dev",
-          "cli.py"
-        ]
+        "args": ["run", "mcp", "dev", "cli.py"]
       },
       "crypto-rss-mcp-configured": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/crypto-rss-mcp",
-          "run",
-          "crypto-rss-mcp"
-        ]
+        "args": ["--directory", "/path/to/crypto-rss-mcp", "run", "crypto-rss-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "mcp",
-      "dev",
-      "cli.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["run", "mcp", "dev", "cli.py", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

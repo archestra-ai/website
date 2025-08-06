@@ -32,23 +32,11 @@
     "mcpServers": {
       "aperag-mcp": {
         "command": "docker-compose",
-        "args": [
-          "up",
-          "-d",
-          "--pull",
-          "always"
-        ]
+        "args": ["up", "-d", "--pull", "always"]
       },
       "aperag-helm": {
         "command": "helm",
-        "args": [
-          "install",
-          "aperag",
-          "./deploy/aperag",
-          "--namespace",
-          "default",
-          "--create-namespace"
-        ]
+        "args": ["install", "aperag", "./deploy/aperag", "--namespace", "default", "--create-namespace"]
       }
     }
   },

@@ -1,7 +1,8 @@
 import * as fs from 'fs';
-import * as path from 'path';
 
 import { ArchestraMcpServerManifest } from '@archestra/types';
+
+import { MCP_SERVERS_JSON_FILE_PATH } from './paths';
 
 interface ParsedServer {
   name: string;
@@ -213,16 +214,15 @@ async function main() {
     const newServers = parsedServers.map(convertToMCPServer);
 
     // Extract only GitHub URLs
-    const githubUrls = newServers.map((server) => server.githubUrl);
+    const githubUrls = newServers.map((server) => server.github_info.url);
 
     // Generate JSON content
     const jsonContent = JSON.stringify(githubUrls, null, 2);
 
     // Write to JSON file
-    const jsonFilePath = path.join(__dirname, '../data/mcp-servers.json');
-    fs.writeFileSync(jsonFilePath, jsonContent, 'utf-8');
+    fs.writeFileSync(MCP_SERVERS_JSON_FILE_PATH, jsonContent, 'utf-8');
 
-    console.log(`Successfully updated ${jsonFilePath}`);
+    console.log(`Successfully updated ${MCP_SERVERS_JSON_FILE_PATH}`);
     console.log(`Total GitHub URLs: ${githubUrls.length}`);
   } catch (error) {
     console.error('Error:', error);

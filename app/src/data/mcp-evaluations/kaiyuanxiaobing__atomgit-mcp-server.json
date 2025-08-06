@@ -32,19 +32,14 @@
     "mcpServers": {
       "atomgit-mcp-server-stdio": {
         "command": "node",
-        "args": [
-          "/home/user/work/mcp-server-atomgit/dist/index.js"
-        ],
+        "args": ["/home/user/work/mcp-server-atomgit/dist/index.js"],
         "env": {
           "ATOMGIT_PERSONAL_ACCESS_TOKEN": "<your-atomgit-api-key-here>"
         }
       },
       "atomgit-mcp-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "atomgit-mcp-server@latest"
-        ],
+        "args": ["-y", "atomgit-mcp-server@latest"],
         "env": {
           "ATOMGIT_PERSONAL_ACCESS_TOKEN": "<your-atomgit-api-key-here>"
         }
@@ -53,10 +48,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "atomgit-mcp-server@latest"
-    ],
+    "args": ["-y", "atomgit-mcp-server@latest"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -32,19 +32,11 @@
     "mcpServers": {
       "oci-registry": {
         "command": "thv",
-        "args": [
-          "run",
-          "oci-registry"
-        ]
+        "args": ["run", "oci-registry"]
       },
       "oci-registry-with-token": {
         "command": "thv",
-        "args": [
-          "run",
-          "--secret",
-          "oci-token,target=OCI_TOKEN",
-          "oci-registry"
-        ]
+        "args": ["run", "--secret", "oci-token,target=OCI_TOKEN", "oci-registry"]
       },
       "oci-registry-with-user-pass": {
         "command": "thv",
@@ -59,18 +51,13 @@
       },
       "ocireg-mcp-configured": {
         "command": "./ocireg-mcp",
-        "args": [
-          "-port",
-          "9090"
-        ]
+        "args": ["-port", "9090"]
       }
     }
   },
   "configForArchestra": {
     "command": "string",
-    "args": [
-      "string"
-    ],
+    "args": ["string"],
     "env": {
       "server-basic": "string",
       "server-configured": "string",

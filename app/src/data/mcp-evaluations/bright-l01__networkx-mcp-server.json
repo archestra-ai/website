@@ -32,28 +32,17 @@
     "mcpServers": {
       "networkx_mcp": {
         "command": "python",
-        "args": [
-          "-m",
-          "networkx_mcp"
-        ]
+        "args": ["-m", "networkx_mcp"]
       },
       "networkx-mcp-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8000:8000",
-          "networkx-mcp-server"
-        ]
+        "args": ["run", "-p", "8000:8000", "networkx-mcp-server"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "-m",
-      "networkx_mcp"
-    ],
+    "args": ["-m", "networkx_mcp"],
     "env": {},
     "transport": "stdio",
     "oauth": {

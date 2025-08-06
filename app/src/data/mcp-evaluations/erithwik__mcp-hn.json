@@ -32,19 +32,13 @@
     "mcpServers": {
       "mcp-hn": {
         "command": "uvx",
-        "args": [
-          "mcp-hn"
-        ]
+        "args": ["mcp-hn"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "mcp-hn",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["mcp-hn", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

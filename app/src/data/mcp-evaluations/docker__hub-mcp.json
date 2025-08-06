@@ -32,34 +32,19 @@
     "mcpServers": {
       "docker-hub-mcp-server-npm-stdio": {
         "command": "npm",
-        "args": [
-          "start",
-          "--",
-          "--transport=stdio"
-        ],
+        "args": ["start", "--", "--transport=stdio"],
         "env": {}
       },
       "docker-hub-mcp-server-npm-authenticated-stdio": {
         "command": "npm",
-        "args": [
-          "start",
-          "--",
-          "--transport=stdio",
-          "--username=YOUR_DOCKER_HUB_USERNAME"
-        ],
+        "args": ["start", "--", "--transport=stdio", "--username=YOUR_DOCKER_HUB_USERNAME"],
         "env": {
           "HUB_PAT_TOKEN": "YOUR_DOCKER_HUB_PERSONAL_ACCESS_TOKEN"
         }
       },
       "modelcontextprotocol-inspector-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/inspector",
-          "node",
-          "dist/index.js",
-          "--transport=stdio"
-        ],
+        "args": ["-y", "@modelcontextprotocol/inspector", "node", "dist/index.js", "--transport=stdio"],
         "env": {}
       },
       "modelcontextprotocol-inspector-authenticated-stdio": {
@@ -91,10 +76,7 @@
       },
       "docker-hub-stdio": {
         "command": "node",
-        "args": [
-          "/FULL/PATH/TO/YOUR/docker-hub-mcp-server/dist/index.js",
-          "--transport=stdio"
-        ],
+        "args": ["/FULL/PATH/TO/YOUR/docker-hub-mcp-server/dist/index.js", "--transport=stdio"],
         "env": {}
       },
       "docker-hub-authenticated-stdio": {
@@ -112,13 +94,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "dist/index.js",
-      "--transport",
-      "stdio",
-      "--username",
-      ""
-    ],
+    "args": ["dist/index.js", "--transport", "stdio", "--username", ""],
     "env": {
       "server-basic": "",
       "server-configured": "",

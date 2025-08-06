@@ -87,10 +87,7 @@
   },
   "configForArchestra": {
     "command": "jupyter-mcp-server",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

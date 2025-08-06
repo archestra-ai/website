@@ -31,69 +31,39 @@
     "mcpServers": {
       "discogs-mcp-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "discogs-mcp-server"
-        ],
+        "args": ["-y", "discogs-mcp-server"],
         "env": {
           "DISCOGS_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>"
         }
       },
       "discogs-mcp-server-local": {
         "command": "npx",
-        "args": [
-          "tsx",
-          "/PATH/TO/YOUR/PROJECT/FOLDER/src/index.ts"
-        ],
+        "args": ["tsx", "/PATH/TO/YOUR/PROJECT/FOLDER/src/index.ts"],
         "env": {
           "DISCOGS_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>"
         }
       },
       "discogs-mcp-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "--env-file",
-          "/PATH/TO/YOUR/PROJECT/FOLDER/.env",
-          "discogs-mcp-server:latest"
-        ]
+        "args": ["run", "--rm", "-i", "--env-file", "/PATH/TO/YOUR/PROJECT/FOLDER/.env", "discogs-mcp-server:latest"]
       },
       "discogs-mcp-server-pnpm-dev": {
         "command": "pnpm",
-        "args": [
-          "run",
-          "dev"
-        ]
+        "args": ["run", "dev"]
       },
       "discogs-mcp-server-pnpm-start": {
         "command": "pnpm",
-        "args": [
-          "run",
-          "start"
-        ]
+        "args": ["run", "start"]
       },
       "discogs-mcp-server-docker-stream": {
         "command": "docker",
-        "args": [
-          "run",
-          "--env-file",
-          ".env",
-          "-p",
-          "3001:3001",
-          "discogs-mcp-server:latest",
-          "stream"
-        ]
+        "args": ["run", "--env-file", ".env", "-p", "3001:3001", "discogs-mcp-server:latest", "stream"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "discogs-mcp-server"
-    ],
+    "args": ["-y", "discogs-mcp-server"],
     "env": {
       "server-basic": "DISCOGS_PERSONAL_ACCESS_TOKEN"
     },

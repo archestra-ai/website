@@ -32,10 +32,7 @@
     "mcpServers": {
       "k8s-mcp-server-stdio": {
         "command": "./k8s-mcp-server",
-        "args": [
-          "--mode",
-          "stdio"
-        ]
+        "args": ["--mode", "stdio"]
       },
       "k8s-mcp-server-sse-env": {
         "command": "./k8s-mcp-server",
@@ -47,11 +44,7 @@
       },
       "k8s-mcp-server-readonly-sse": {
         "command": "./k8s-mcp-server",
-        "args": [
-          "--mode",
-          "sse",
-          "--read-only"
-        ]
+        "args": ["--mode", "sse", "--read-only"]
       },
       "ginnux-k8s-mcp-server-docker": {
         "command": "docker",
@@ -94,9 +87,7 @@
       },
       "ginnux-k8s-mcp-server-docker-compose": {
         "command": "docker-compose",
-        "args": [
-          "up"
-        ],
+        "args": ["up"],
         "env": {
           "KUBECONFIG": "/home/appuser/.kube/config",
           "SERVER_MODE": "sse",
@@ -107,10 +98,7 @@
   },
   "configForArchestra": {
     "command": "./k8s-mcp-server",
-    "args": [
-      "--mode",
-      "stdio"
-    ],
+    "args": ["--mode", "stdio"],
     "env": {
       "server-basic": "SERVER_MODE=stdio ./k8s-mcp-server",
       "server-configured": "SERVER_MODE=stdio SERVER_PORT=9090 ./k8s-mcp-server",

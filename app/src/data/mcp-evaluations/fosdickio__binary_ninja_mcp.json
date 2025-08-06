@@ -32,19 +32,13 @@
     "mcpServers": {
       "binary_ninja_mcp": {
         "command": "python",
-        "args": [
-          "/ABSOLUTE/PATH/TO/binary_ninja_mcp/bridge/binja_mcp_bridge.py"
-        ]
+        "args": ["/ABSOLUTE/PATH/TO/binary_ninja_mcp/bridge/binja_mcp_bridge.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "bridge/binja_mcp_bridge.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["bridge/binja_mcp_bridge.py", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

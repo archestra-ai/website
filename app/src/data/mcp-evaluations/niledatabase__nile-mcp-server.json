@@ -32,22 +32,15 @@
     "mcpServers": {
       "niledatabase-nile-mcp-server-stdio": {
         "command": "node",
-        "args": [
-          "dist/index.js"
-        ]
+        "args": ["dist/index.js"]
       },
       "niledatabase-nile-mcp-server-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev"
-        ]
+        "args": ["run", "dev"]
       },
       "niledatabase-nile-mcp-server-configured": {
         "command": "node",
-        "args": [
-          "/path/to/your/nile-mcp-server/dist/index.js"
-        ],
+        "args": ["/path/to/your/nile-mcp-server/dist/index.js"],
         "env": {
           "NILE_API_KEY": "your_api_key_here",
           "NILE_WORKSPACE_SLUG": "your_workspace_slug"
@@ -55,9 +48,7 @@
       },
       "niledatabase-nile-mcp-server-sse": {
         "command": "node",
-        "args": [
-          "dist/index.js"
-        ],
+        "args": ["dist/index.js"],
         "env": {
           "MCP_SERVER_MODE": "sse"
         }
@@ -66,11 +57,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "dist/index.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["dist/index.js", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

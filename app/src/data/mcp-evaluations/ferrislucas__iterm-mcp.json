@@ -32,19 +32,13 @@
     "mcpServers": {
       "iterm-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "iterm-mcp"
-        ]
+        "args": ["-y", "iterm-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "iterm-mcp"
-    ],
+    "args": ["-y", "iterm-mcp"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

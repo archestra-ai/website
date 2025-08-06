@@ -30,11 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "dist/server.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["dist/server.js", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

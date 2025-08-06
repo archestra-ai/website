@@ -32,11 +32,7 @@
     "mcpServers": {
       "homeassistant-mcp-docker": {
         "command": "docker",
-        "args": [
-          "compose",
-          "up",
-          "-d"
-        ],
+        "args": ["compose", "up", "-d"],
         "env": {
           "HASS_HOST": "http://homeassistant.local:8123",
           "HASS_TOKEN": "your_home_assistant_token",
@@ -50,9 +46,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "dist/server.js"
-    ],
+    "args": ["dist/server.js"],
     "env": {
       "server-basic": "HASS_HOST",
       "server-configured": "HASS_TOKEN",

@@ -32,17 +32,13 @@
     "mcpServers": {
       "bridge-rates": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/bridge-rates-mcp/index.js"
-        ]
+        "args": ["/absolute/path/to/bridge-rates-mcp/index.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "index.js"
-    ],
+    "args": ["index.js"],
     "env": {},
     "transport": "stdio",
     "oauth": {

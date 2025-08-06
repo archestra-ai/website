@@ -32,9 +32,7 @@
     "mcpServers": {
       "benborla29-mcp-server-mysql-npx-default": {
         "command": "npx",
-        "args": [
-          "@benborla29/mcp-server-mysql"
-        ],
+        "args": ["@benborla29/mcp-server-mysql"],
         "env": {
           "MYSQL_HOST": "127.0.0.1",
           "MYSQL_PORT": "3306",
@@ -48,9 +46,7 @@
       },
       "benborla29-mcp-server-mysql-local-repo-node": {
         "command": "node",
-        "args": [
-          "/full/path/to/mcp-server-mysql/dist/index.js"
-        ],
+        "args": ["/full/path/to/mcp-server-mysql/dist/index.js"],
         "env": {
           "MYSQL_HOST": "127.0.0.1",
           "MYSQL_PORT": "3306",
@@ -66,9 +62,7 @@
       },
       "benborla29-mcp-server-mysql-unix-socket": {
         "command": "npx",
-        "args": [
-          "@benborla29/mcp-server-mysql"
-        ],
+        "args": ["@benborla29/mcp-server-mysql"],
         "env": {
           "MYSQL_SOCKET_PATH": "/tmp/mysql.sock",
           "MYSQL_USER": "root",
@@ -81,9 +75,7 @@
       },
       "benborla29-mcp-server-mysql-multi-db": {
         "command": "npx",
-        "args": [
-          "@benborla29/mcp-server-mysql"
-        ],
+        "args": ["@benborla29/mcp-server-mysql"],
         "env": {
           "MYSQL_HOST": "127.0.0.1",
           "MYSQL_PORT": "3306",
@@ -94,9 +86,7 @@
       },
       "benborla29-mcp-server-mysql-advanced": {
         "command": "npx",
-        "args": [
-          "@benborla29/mcp-server-mysql"
-        ],
+        "args": ["@benborla29/mcp-server-mysql"],
         "env": {
           "MYSQL_HOST": "127.0.0.1",
           "MYSQL_PORT": "3306",
@@ -116,16 +106,12 @@
       },
       "benborla29-mcp-server-mysql-npx-troubleshoot": {
         "command": "npx",
-        "args": [
-          "@benborla29/mcp-server-mysql"
-        ],
+        "args": ["@benborla29/mcp-server-mysql"],
         "env": {}
       },
       "benborla29-mcp-server-mysql-claude-desktop-local-repo-json": {
         "command": "node",
-        "args": [
-          "/full/path/to/mcp-server-mysql/dist/index.js"
-        ],
+        "args": ["/full/path/to/mcp-server-mysql/dist/index.js"],
         "env": {
           "MYSQL_HOST": "127.0.0.1",
           "MYSQL_PORT": "3306",
@@ -143,12 +129,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@benborla29/mcp-server-mysql",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@benborla29/mcp-server-mysql", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

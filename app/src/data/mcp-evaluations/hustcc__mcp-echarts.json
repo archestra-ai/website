@@ -32,51 +32,29 @@
     "mcpServers": {
       "mcp-echarts-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-echarts"
-        ]
+        "args": ["-y", "mcp-echarts"]
       },
       "mcp-echarts-stdio-windows": {
         "command": "cmd",
-        "args": [
-          "/c",
-          "npx",
-          "-y",
-          "mcp-echarts"
-        ]
+        "args": ["/c", "npx", "-y", "mcp-echarts"]
       },
       "mcp-echarts-sse": {
         "command": "mcp-echarts",
-        "args": [
-          "-t",
-          "sse"
-        ]
+        "args": ["-t", "sse"]
       },
       "mcp-echarts-streamable": {
         "command": "mcp-echarts",
-        "args": [
-          "-t",
-          "streamable"
-        ]
+        "args": ["-t", "streamable"]
       },
       "mcp-echarts-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "start"
-        ]
+        "args": ["run", "start"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-echarts",
-      "-t",
-      "stdio"
-    ],
+    "args": ["-y", "mcp-echarts", "-t", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

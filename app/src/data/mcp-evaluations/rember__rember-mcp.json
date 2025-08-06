@@ -32,21 +32,13 @@
     "mcpServers": {
       "getrember-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@getrember/mcp",
-          "--api-key=YOUR_REMBER_API_KEY"
-        ]
+        "args": ["-y", "@getrember/mcp", "--api-key=YOUR_REMBER_API_KEY"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@getrember/mcp",
-      "--api-key=YOUR_REMBER_API_KEY"
-    ],
+    "args": ["-y", "@getrember/mcp", "--api-key=YOUR_REMBER_API_KEY"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

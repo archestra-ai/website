@@ -32,9 +32,7 @@
     "mcpServers": {
       "hiromitsusasaki-raindrop-io-mcp-server": {
         "command": "node",
-        "args": [
-          "PATH_TO_BUILD/index.js"
-        ],
+        "args": ["PATH_TO_BUILD/index.js"],
         "env": {
           "RAINDROP_TOKEN": "your_access_token_here"
         }
@@ -43,11 +41,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "dist/index.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["dist/index.js", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

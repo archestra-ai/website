@@ -30,12 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@grafana/mcp-grafana",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@grafana/mcp-grafana", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

@@ -32,24 +32,17 @@
     "mcpServers": {
       "nostr-mcp-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev"
-        ]
+        "args": ["run", "dev"]
       },
       "nostr-mcp-prod": {
         "command": "npm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       }
     }
   },
   "configForArchestra": {
     "command": "npm",
-    "args": [
-      "start"
-    ],
+    "args": ["start"],
     "env": {
       "server-basic": "",
       "server-configured": "",

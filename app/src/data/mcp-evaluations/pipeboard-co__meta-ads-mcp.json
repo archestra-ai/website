@@ -32,17 +32,13 @@
     "mcpServers": {
       "meta-ads-mcp": {
         "command": "uvx",
-        "args": [
-          "meta-ads-mcp"
-        ]
+        "args": ["meta-ads-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "meta-ads-mcp"
-    ],
+    "args": ["meta-ads-mcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

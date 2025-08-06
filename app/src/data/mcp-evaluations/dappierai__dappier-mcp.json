@@ -32,9 +32,7 @@
     "mcpServers": {
       "dappier-mcp": {
         "command": "uvx",
-        "args": [
-          "dappier-mcp"
-        ],
+        "args": ["dappier-mcp"],
         "env": {
           "DAPPIER_API_KEY": "YOUR_API_KEY_HERE"
         }
@@ -43,9 +41,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "dappier-mcp"
-    ],
+    "args": ["dappier-mcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

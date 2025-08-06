@@ -32,12 +32,7 @@
     "mcpServers": {
       "kokoro-tts-mcp-configured": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/toyourlocal/kokoro-tts-mcp",
-          "run",
-          "mcp-tts.py"
-        ],
+        "args": ["--directory", "/path/toyourlocal/kokoro-tts-mcp", "run", "mcp-tts.py"],
         "env": {
           "TTS_VOICE": "af_heart",
           "TTS_SPEED": "1.0",
@@ -52,21 +47,13 @@
       },
       "kokoro-tts-mcp-local": {
         "command": "uv",
-        "args": [
-          "run",
-          "mcp-tts.py"
-        ]
+        "args": ["run", "mcp-tts.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "app",
-      "run",
-      "mcp-tts.py"
-    ],
+    "args": ["--directory", "app", "run", "mcp-tts.py"],
     "env": {
       "server-basic": "",
       "server-configured": "",

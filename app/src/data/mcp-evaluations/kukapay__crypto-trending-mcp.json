@@ -31,21 +31,13 @@
     "mcpServers": {
       "crypto-trending": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/absolute/path/to/crypto-trending-mcp",
-          "run",
-          "main.py"
-        ]
+        "args": ["--directory", "/absolute/path/to/crypto-trending-mcp", "run", "main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "main.py"
-    ],
+    "args": ["run", "main.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {

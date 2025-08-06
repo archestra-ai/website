@@ -32,24 +32,14 @@
     "mcpServers": {
       "mcp-typescribe": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-typescribe@latest",
-          "run-server",
-          "<PATH_TO_API_DOT_JSON>"
-        ],
+        "args": ["-y", "mcp-typescribe@latest", "run-server", "<PATH_TO_API_DOT_JSON>"],
         "env": {}
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-typescribe@latest",
-      "run-server",
-      "docs/api.json"
-    ],
+    "args": ["-y", "mcp-typescribe@latest", "run-server", "docs/api.json"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

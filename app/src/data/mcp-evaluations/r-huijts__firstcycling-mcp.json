@@ -32,32 +32,17 @@
     "mcpServers": {
       "firstcycling": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/server/directory",
-          "run",
-          "firstcycling.py"
-        ]
+        "args": ["--directory", "/path/to/server/directory", "run", "firstcycling.py"]
       },
       "firstcycling-dev": {
         "command": "uv",
-        "args": [
-          "run",
-          "mcp",
-          "dev",
-          "firstcycling.py"
-        ]
+        "args": ["run", "mcp", "dev", "firstcycling.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "/path/to/server/directory",
-      "run",
-      "firstcycling.py"
-    ],
+    "args": ["--directory", "/path/to/server/directory", "run", "firstcycling.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

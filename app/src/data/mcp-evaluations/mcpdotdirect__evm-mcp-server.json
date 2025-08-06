@@ -32,70 +32,45 @@
     "mcpServers": {
       "mcpdotdirect-evm-mcp-server-npx-stdio": {
         "command": "npx",
-        "args": [
-          "@mcpdotdirect/evm-mcp-server"
-        ]
+        "args": ["@mcpdotdirect/evm-mcp-server"]
       },
       "mcpdotdirect-evm-mcp-server-npx-http": {
         "command": "npx",
-        "args": [
-          "@mcpdotdirect/evm-mcp-server",
-          "--http"
-        ]
+        "args": ["@mcpdotdirect/evm-mcp-server", "--http"]
       },
       "mcpdotdirect-evm-mcp-server-bun-stdio": {
         "command": "bun",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       },
       "mcpdotdirect-evm-mcp-server-bun-stdio-dev": {
         "command": "bun",
-        "args": [
-          "dev"
-        ]
+        "args": ["dev"]
       },
       "mcpdotdirect-evm-mcp-server-bun-http": {
         "command": "bun",
-        "args": [
-          "start:http"
-        ]
+        "args": ["start:http"]
       },
       "mcpdotdirect-evm-mcp-server-bun-http-dev": {
         "command": "bun",
-        "args": [
-          "dev:http"
-        ]
+        "args": ["dev:http"]
       },
       "mcpdotdirect-evm-mcp-server-cursor-config": {
         "command": "npx",
-        "args": [
-          "@mcpdotdirect/evm-mcp-server"
-        ]
+        "args": ["@mcpdotdirect/evm-mcp-server"]
       },
       "mcpdotdirect-evm-mcp-server-mcpjson-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@mcpdotdirect/evm-mcp-server"
-        ]
+        "args": ["-y", "@mcpdotdirect/evm-mcp-server"]
       },
       "mcpdotdirect-evm-mcp-server-mcpjson-http": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@mcpdotdirect/evm-mcp-server",
-          "--http"
-        ]
+        "args": ["-y", "@mcpdotdirect/evm-mcp-server", "--http"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@mcpdotdirect/evm-mcp-server"
-    ],
+    "args": ["-y", "@mcpdotdirect/evm-mcp-server"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

@@ -32,24 +32,11 @@
     "mcpServers": {
       "mcp-local-rag": {
         "command": "uvx",
-        "args": [
-          "--python=3.10",
-          "--from",
-          "git+https://github.com/nkapila6/mcp-local-rag",
-          "mcp-local-rag"
-        ]
+        "args": ["--python=3.10", "--from", "git+https://github.com/nkapila6/mcp-local-rag", "mcp-local-rag"]
       },
       "ghcr.io-nkapila6-mcp-local-rag-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "--init",
-          "-e",
-          "DOCKER_CONTAINER=true",
-          "ghcr.io/nkapila6/mcp-local-rag:latest"
-        ],
+        "args": ["run", "--rm", "-i", "--init", "-e", "DOCKER_CONTAINER=true", "ghcr.io/nkapila6/mcp-local-rag:latest"],
         "env": {
           "DOCKER_CONTAINER": "true"
         }
@@ -58,12 +45,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "--python=3.10",
-      "--from",
-      "git+https://github.com/nkapila6/mcp-local-rag",
-      "mcp-local-rag"
-    ],
+    "args": ["--python=3.10", "--from", "git+https://github.com/nkapila6/mcp-local-rag", "mcp-local-rag"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

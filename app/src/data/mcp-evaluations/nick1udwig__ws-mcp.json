@@ -32,90 +32,48 @@
     "mcpServers": {
       "mcp-server-fetch": {
         "command": "uvx",
-        "args": [
-          "mcp-server-fetch"
-        ]
+        "args": ["mcp-server-fetch"]
       },
       "wcgw_mcp-macos": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "wcgw@latest",
-          "--python",
-          "3.12",
-          "wcgw_mcp"
-        ]
+        "args": ["--from", "wcgw@latest", "--python", "3.12", "wcgw_mcp"]
       },
       "wcgw_mcp-linux": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "/tmp/wcgw",
-          "--with",
-          "/tmp/wcgw/src/mcp_wcgw",
-          "--python",
-          "3.12",
-          "wcgw_mcp"
-        ]
+        "args": ["--from", "/tmp/wcgw", "--with", "/tmp/wcgw/src/mcp_wcgw", "--python", "3.12", "wcgw_mcp"]
       },
       "modelcontextprotocol-server-brave-search-env-var": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-brave-search"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-brave-search"],
         "env": {
           "BRAVE_API_KEY": "YOUR_API_KEY_HERE"
         }
       },
       "modelcontextprotocol-server-brave-search-env-file": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-brave-search"
-        ]
+        "args": ["-y", "@modelcontextprotocol/server-brave-search"]
       },
       "modelcontextprotocol-server-brave-search-multiple": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-brave-search"
-        ]
+        "args": ["-y", "@modelcontextprotocol/server-brave-search"]
       },
       "mcp-server-fetch-multiple": {
         "command": "uvx",
-        "args": [
-          "mcp-server-fetch"
-        ]
+        "args": ["mcp-server-fetch"]
       },
       "wcgw-default-configured": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "wcgw@latest",
-          "--python",
-          "3.12",
-          "wcgw_mcp"
-        ]
+        "args": ["--from", "wcgw@latest", "--python", "3.12", "wcgw_mcp"]
       },
       "fetch-default-configured": {
         "command": "uvx",
-        "args": [
-          "mcp-server-fetch"
-        ]
+        "args": ["mcp-server-fetch"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "--refresh",
-      "ws-mcp",
-      "--command",
-      "npx -y @modelcontextprotocol/server-brave-search",
-      "--port",
-      "3003"
-    ],
+    "args": ["--refresh", "ws-mcp", "--command", "npx -y @modelcontextprotocol/server-brave-search", "--port", "3003"],
     "env": {
       "server-basic": "",
       "server-configured": "",

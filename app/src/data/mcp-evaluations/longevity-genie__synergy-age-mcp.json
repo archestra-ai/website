@@ -32,32 +32,21 @@
     "mcpServers": {
       "synergy-age-mcp": {
         "command": "uvx",
-        "args": [
-          "synergy-age-mcp"
-        ]
+        "args": ["synergy-age-mcp"]
       },
       "synergy-age-mcp-stdio": {
         "command": "uvx",
-        "args": [
-          "synergy-age-mcp",
-          "stdio"
-        ]
+        "args": ["synergy-age-mcp", "stdio"]
       },
       "synergy-age-mcp-server": {
         "command": "uvx",
-        "args": [
-          "synergy-age-mcp",
-          "server"
-        ]
+        "args": ["synergy-age-mcp", "server"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "synergy-age-mcp",
-      "stdio"
-    ],
+    "args": ["synergy-age-mcp", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

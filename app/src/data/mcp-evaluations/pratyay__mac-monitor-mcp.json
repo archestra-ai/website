@@ -31,17 +31,13 @@
     "mcpServers": {
       "mac-monitor-mcp": {
         "command": "python",
-        "args": [
-          "src/monitor.py"
-        ]
+        "args": ["src/monitor.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "src/monitor.py"
-    ],
+    "args": ["src/monitor.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {

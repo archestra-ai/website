@@ -32,52 +32,29 @@
     "mcpServers": {
       "antv-mcp-server-chart": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@antv/mcp-server-chart"
-        ]
+        "args": ["-y", "@antv/mcp-server-chart"]
       },
       "antv-mcp-server-chart-windows": {
         "command": "cmd",
-        "args": [
-          "/c",
-          "npx",
-          "-y",
-          "@antv/mcp-server-chart"
-        ]
+        "args": ["/c", "npx", "-y", "@antv/mcp-server-chart"]
       },
       "antv-mcp-server-chart-sse": {
         "command": "mcp-server-chart",
-        "args": [
-          "--transport",
-          "sse"
-        ]
+        "args": ["--transport", "sse"]
       },
       "antv-mcp-server-chart-streamable": {
         "command": "mcp-server-chart",
-        "args": [
-          "--transport",
-          "streamable"
-        ]
+        "args": ["--transport", "streamable"]
       },
       "antv-mcp-server-chart-docker-compose": {
         "command": "docker",
-        "args": [
-          "compose",
-          "up",
-          "-d"
-        ]
+        "args": ["compose", "up", "-d"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@antv/mcp-server-chart",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@antv/mcp-server-chart", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

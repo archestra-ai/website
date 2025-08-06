@@ -1,42 +1,42 @@
-import { z } from "zod";
-import { DxtManifestSchema } from "@anthropic-ai/dxt";
+import { DxtManifestSchema } from '@anthropic-ai/dxt';
+import { z } from 'zod';
 
 export const McpServerCategorySchema = z.enum([
-  "Aggregators",
-  "Art & Culture",
-  "Healthcare",
-  "Browser Automation",
-  "Cloud",
-  "Development",
-  "CLI Tools",
-  "Communication",
-  "Data",
-  "Logistics",
-  "Data Science",
-  "IoT",
-  "File Management",
-  "Finance",
-  "Gaming",
-  "Knowledge",
-  "Location",
-  "Marketing",
-  "Monitoring",
-  "Media",
-  "AI Tools",
-  "Search",
-  "Security",
-  "Social Media",
-  "Sports",
-  "Support",
-  "Translation",
-  "Audio",
-  "Travel",
-  "Messengers",
-  "Email",
-  "CRM",
-  "Enterprise",
-  "Job Search",
-  "Local files",
+  'Aggregators',
+  'Art & Culture',
+  'Healthcare',
+  'Browser Automation',
+  'Cloud',
+  'Development',
+  'CLI Tools',
+  'Communication',
+  'Data',
+  'Logistics',
+  'Data Science',
+  'IoT',
+  'File Management',
+  'Finance',
+  'Gaming',
+  'Knowledge',
+  'Location',
+  'Marketing',
+  'Monitoring',
+  'Media',
+  'AI Tools',
+  'Search',
+  'Security',
+  'Social Media',
+  'Sports',
+  'Support',
+  'Translation',
+  'Audio',
+  'Travel',
+  'Messengers',
+  'Email',
+  'CRM',
+  'Enterprise',
+  'Job Search',
+  'Local files',
 ]);
 
 export const MCPDependencySchema = z.object({
@@ -78,10 +78,9 @@ export const ArchestraMcpServerGitHubRepoStatsSchema = z.object({
   latest_commit_hash: z.string().nullable(),
 });
 
-export const ArchestraMcpServerFullGitHubInfoSchema =
-  ArchestraMcpServerGitHubRepoInfoSchema.merge(
-    ArchestraMcpServerGitHubRepoStatsSchema
-  );
+export const ArchestraMcpServerFullGitHubInfoSchema = ArchestraMcpServerGitHubRepoInfoSchema.merge(
+  ArchestraMcpServerGitHubRepoStatsSchema
+);
 
 export const ArchestraMcpServerProtocolFeaturesSchema = z.object({
   implementing_tools: z.boolean(),
@@ -110,7 +109,6 @@ export const ArchestraMcpServerManifestSchema = DxtManifestSchema.extend({
   raw_dependencies: z.string().nullable(),
 });
 
-export const ArchestraMcpServerManifestWithScoreBreakdownSchema =
-  ArchestraMcpServerManifestSchema.extend({
-    score_breakdown: ArchestraScoreBreakdownSchema,
-  });
+export const ArchestraMcpServerManifestWithScoreBreakdownSchema = ArchestraMcpServerManifestSchema.extend({
+  score_breakdown: ArchestraScoreBreakdownSchema,
+});

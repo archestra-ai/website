@@ -32,9 +32,7 @@
     "mcpServers": {
       "restcsv-mcp-server": {
         "command": "npx",
-        "args": [
-          "restcsv-mcp-server"
-        ],
+        "args": ["restcsv-mcp-server"],
         "env": {
           "RESTCSV_API_KEY": "<REPLACE>"
         }
@@ -43,11 +41,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "restcsv-mcp-server",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["restcsv-mcp-server", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

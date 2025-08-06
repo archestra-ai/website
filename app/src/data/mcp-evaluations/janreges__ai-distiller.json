@@ -30,12 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@janreges/ai-distiller-mcp",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@janreges/ai-distiller-mcp", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}
@@ -142,11 +137,7 @@
     "mcpServers": {
       "janreges-ai-distiller-mcp": {
         "command": "aid",
-        "args": [
-          "--mcp-server",
-          "--port",
-          "8080"
-        ]
+        "args": ["--mcp-server", "--port", "8080"]
       }
     }
   }

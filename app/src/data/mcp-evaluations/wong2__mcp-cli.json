@@ -30,12 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@wong2/mcp-cli",
-      "node",
-      "path/to/server/index.js"
-    ],
+    "args": ["-y", "@wong2/mcp-cli", "node", "path/to/server/index.js"],
     "env": {},
     "transport": "stdio",
     "oauth": {

@@ -48,38 +48,17 @@
       },
       "mcp-server-ledger-uv-configured": {
         "command": "uv",
-        "args": [
-          "run",
-          "--env-file",
-          "/path/to/your/.env",
-          "--with",
-          "mcp[cli]",
-          "mcp",
-          "run",
-          "<repo_path>/main.py"
-        ]
+        "args": ["run", "--env-file", "/path/to/your/.env", "--with", "mcp[cli]", "mcp", "run", "<repo_path>/main.py"]
       },
       "mcp-server-ledger-dev": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "main.py"
-        ]
+        "args": ["dev", "main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "--with",
-      "mcp[cli]",
-      "mcp",
-      "run",
-      "main.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["run", "--with", "mcp[cli]", "mcp", "run", "main.py", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

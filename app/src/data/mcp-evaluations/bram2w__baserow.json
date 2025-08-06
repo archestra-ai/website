@@ -32,23 +32,12 @@
     "mcpServers": {
       "baserow-baserow-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-v",
-          "baserow_data:/baserow/data",
-          "-p",
-          "80:80",
-          "-p",
-          "443:443",
-          "baserow/baserow:1.34.5"
-        ],
+        "args": ["run", "-v", "baserow_data:/baserow/data", "-p", "80:80", "-p", "443:443", "baserow/baserow:1.34.5"],
         "env": {}
       },
       "baserow-dev-script": {
         "command": "./dev.sh",
-        "args": [
-          "--build"
-        ],
+        "args": ["--build"],
         "env": {}
       }
     }

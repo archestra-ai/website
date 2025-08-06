@@ -31,22 +31,14 @@
     "mcpServers": {
       "apify-actors-mcp-server-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@apify/actors-mcp-server"
-        ]
+        "args": ["-y", "@apify/actors-mcp-server"]
       }
     }
   },
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@apify/actors-mcp-server",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@apify/actors-mcp-server", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

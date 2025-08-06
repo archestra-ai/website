@@ -43,9 +43,7 @@
       },
       "climatiq-mcp-server-utils-script": {
         "command": "python",
-        "args": [
-          "utils/run_mcp_server.py"
-        ]
+        "args": ["utils/run_mcp_server.py"]
       }
     }
   },

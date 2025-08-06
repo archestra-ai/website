@@ -30,10 +30,7 @@
   "evaluation_model": "gemini-2.5-pro",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "browser-mcp"
-    ],
+    "args": ["-y", "browser-mcp"],
     "env": {},
     "transport": "stdio",
     "oauth": {

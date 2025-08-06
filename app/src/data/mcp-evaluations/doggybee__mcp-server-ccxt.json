@@ -36,32 +36,21 @@
       },
       "mcpfun-mcp-server-ccxt": {
         "command": "npx",
-        "args": [
-          "@mcpfun/mcp-server-ccxt"
-        ]
+        "args": ["@mcpfun/mcp-server-ccxt"]
       },
       "mcp-server-ccxt-npm-start": {
         "command": "npm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       },
       "mcp-server-ccxt-node-direct": {
         "command": "node",
-        "args": [
-          "/path/to/mcp-server-ccxt/build/index.js"
-        ]
+        "args": ["/path/to/mcp-server-ccxt/build/index.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@mcpfun/mcp-server-ccxt",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@mcpfun/mcp-server-ccxt", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

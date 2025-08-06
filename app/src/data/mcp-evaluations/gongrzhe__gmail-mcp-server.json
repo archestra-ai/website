@@ -32,9 +32,7 @@
     "mcpServers": {
       "gongrzhe-server-gmail-autoauth-mcp": {
         "command": "npx",
-        "args": [
-          "@gongrzhe/server-gmail-autoauth-mcp"
-        ]
+        "args": ["@gongrzhe/server-gmail-autoauth-mcp"]
       },
       "mcp-gmail-docker": {
         "command": "docker",
@@ -56,12 +54,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@gongrzhe/server-gmail-autoauth-mcp",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@gongrzhe/server-gmail-autoauth-mcp", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

@@ -32,19 +32,13 @@
     "mcpServers": {
       "higress-ops-mcp-server-stdio": {
         "command": "uv",
-        "args": [
-          "run",
-          "client.py"
-        ]
+        "args": ["run", "client.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "client.py",
-      "--stdio"
-    ],
+    "args": ["client.py", "--stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

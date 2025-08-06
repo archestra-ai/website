@@ -32,23 +32,13 @@
     "mcpServers": {
       "unitree-go2-mcp-server": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/ABSOLUTE/PATH/TO/PARENT/FOLDER/unitree-go2-mcp-server",
-          "run",
-          "server.py"
-        ]
+        "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/FOLDER/unitree-go2-mcp-server", "run", "server.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "",
-      "run",
-      "server.py"
-    ],
+    "args": ["--directory", "", "run", "server.py"],
     "env": {
       "server-basic": "",
       "server-configured": "",

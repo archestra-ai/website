@@ -32,9 +32,7 @@
     "mcpServers": {
       "Uniswap Price": {
         "command": "node",
-        "args": [
-          "path/to/uniswap-price-mcp/index.js"
-        ],
+        "args": ["path/to/uniswap-price-mcp/index.js"],
         "env": {
           "INFURA_PROJECT_ID": "your_infura_project_id"
         }
@@ -43,11 +41,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "index.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["index.js", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

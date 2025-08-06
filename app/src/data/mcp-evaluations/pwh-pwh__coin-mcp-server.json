@@ -31,45 +31,21 @@
     "mcpServers": {
       "coin-mcp-server-local": {
         "command": "deno",
-        "args": [
-          "run",
-          "--allow-net",
-          "--allow-env",
-          "--allow-read",
-          "main.ts"
-        ]
+        "args": ["run", "--allow-net", "--allow-env", "--allow-read", "main.ts"]
       },
       "coin-mcp-server": {
         "command": "deno",
-        "args": [
-          "run",
-          "--allow-net",
-          "--allow-env",
-          "--allow-read",
-          "https://deno.land/x/coin_mcp_server/main.ts"
-        ]
+        "args": ["run", "--allow-net", "--allow-env", "--allow-read", "https://deno.land/x/coin_mcp_server/main.ts"]
       },
       "coin-mcp-configured": {
         "command": "deno",
-        "args": [
-          "run",
-          "--allow-net",
-          "--allow-read",
-          "--allow-env",
-          "https://deno.land/x/coin_mcp_server/main.ts"
-        ]
+        "args": ["run", "--allow-net", "--allow-read", "--allow-env", "https://deno.land/x/coin_mcp_server/main.ts"]
       }
     }
   },
   "configForArchestra": {
     "command": "deno",
-    "args": [
-      "run",
-      "--allow-net",
-      "--allow-read",
-      "--allow-env",
-      "https://deno.land/x/coin_mcp_server/main.ts"
-    ],
+    "args": ["run", "--allow-net", "--allow-read", "--allow-env", "https://deno.land/x/coin_mcp_server/main.ts"],
     "env": {
       "server-basic": "",
       "server-configured": "",

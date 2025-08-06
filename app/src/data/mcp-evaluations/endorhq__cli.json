@@ -31,23 +31,13 @@
     "mcpServers": {
       "endorhq-cli-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@endorhq/cli",
-          "mcp"
-        ]
+        "args": ["-y", "@endorhq/cli", "mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@endorhq/cli",
-      "mcp",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@endorhq/cli", "mcp", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

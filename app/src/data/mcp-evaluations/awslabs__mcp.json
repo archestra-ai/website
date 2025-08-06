@@ -30,10 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@awslabs/mcp-servers"
-    ],
+    "args": ["-y", "@awslabs/mcp-servers"],
     "env": {},
     "transport": "stdio"
   },
@@ -75,12 +72,7 @@
     "mcpServers": {
       "aws-documentation-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8080:8080",
-          "public.ecr.aws/aws-mcp/aws-documentation-server:latest"
-        ]
+        "args": ["run", "-p", "8080:8080", "public.ecr.aws/aws-mcp/aws-documentation-server:latest"]
       },
       "aws-bedrock-server-docker": {
         "command": "docker",

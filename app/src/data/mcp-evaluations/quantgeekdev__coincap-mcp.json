@@ -32,9 +32,7 @@
     "mcpServers": {
       "coincap-mcp": {
         "command": "npx",
-        "args": [
-          "coincap-mcp"
-        ]
+        "args": ["coincap-mcp"]
       },
       "coincap-mcp-configured": {
         "command": "/path/to/coincap-mcp/build/index.js",
@@ -44,12 +42,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "coincap-mcp",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "coincap-mcp", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

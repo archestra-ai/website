@@ -30,12 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@anaisbetts/mcp-youtube",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@anaisbetts/mcp-youtube", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

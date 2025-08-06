@@ -32,13 +32,7 @@
     "mcpServers": {
       "grafana-loki-mcp-configured": {
         "command": "uvx",
-        "args": [
-          "grafana-loki-mcp",
-          "-u",
-          "GRAFANA_URL",
-          "-k",
-          "GRAFANA_API_KEY"
-        ]
+        "args": ["grafana-loki-mcp", "-u", "GRAFANA_URL", "-k", "GRAFANA_API_KEY"]
       },
       "grafana-loki-mcp-env": {
         "command": "grafana-loki-mcp",
@@ -50,33 +44,17 @@
       },
       "grafana-loki-mcp-args": {
         "command": "grafana-loki-mcp",
-        "args": [
-          "-u",
-          "https://your-grafana-instance.com",
-          "-k",
-          "your-api-key"
-        ]
+        "args": ["-u", "https://your-grafana-instance.com", "-k", "your-api-key"]
       },
       "grafana-loki-mcp-sse": {
         "command": "grafana-loki-mcp",
-        "args": [
-          "--transport",
-          "sse"
-        ]
+        "args": ["--transport", "sse"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "grafana-loki-mcp",
-      "-u",
-      "GRAFANA_URL",
-      "-k",
-      "GRAFANA_API_KEY",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["grafana-loki-mcp", "-u", "GRAFANA_URL", "-k", "GRAFANA_API_KEY", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

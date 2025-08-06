@@ -32,9 +32,7 @@
     "mcpServers": {
       "Crypto News": {
         "command": "python",
-        "args": [
-          "path/to/crypto-news-mcp/main.py"
-        ],
+        "args": ["path/to/crypto-news-mcp/main.py"],
         "env": {
           "NEWS_API_KEY": "your_newsdata_api_key_here"
         }
@@ -43,11 +41,7 @@
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "main.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["main.py", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -32,35 +32,15 @@
     "mcpServers": {
       "ydb-mcp-uvx-anonymous": {
         "command": "uvx",
-        "args": [
-          "ydb-mcp",
-          "--ydb-endpoint",
-          "grpc://localhost:2136",
-          "--ydb-database",
-          "/local"
-        ]
+        "args": ["ydb-mcp", "--ydb-endpoint", "grpc://localhost:2136", "--ydb-database", "/local"]
       },
       "ydb-mcp-pipx-anonymous": {
         "command": "pipx",
-        "args": [
-          "run",
-          "ydb-mcp",
-          "--ydb-endpoint",
-          "grpc://localhost:2136",
-          "--ydb-database",
-          "/local"
-        ]
+        "args": ["run", "ydb-mcp", "--ydb-endpoint", "grpc://localhost:2136", "--ydb-database", "/local"]
       },
       "ydb_mcp-pip-anonymous": {
         "command": "python3",
-        "args": [
-          "-m",
-          "ydb_mcp",
-          "--ydb-endpoint",
-          "grpc://localhost:2136",
-          "--ydb-database",
-          "/local"
-        ]
+        "args": ["-m", "ydb_mcp", "--ydb-endpoint", "grpc://localhost:2136", "--ydb-database", "/local"]
       },
       "ydb-mcp-uvx-login-password": {
         "command": "uvx",
@@ -108,9 +88,7 @@
       },
       "ydb-mcp-make": {
         "command": "make",
-        "args": [
-          "run-server"
-        ],
+        "args": ["run-server"],
         "env": {
           "YDB_ENDPOINT": "grpc://localhost:2136",
           "YDB_DATABASE": "/local"
@@ -120,14 +98,7 @@
   },
   "configForArchestra": {
     "command": "python3",
-    "args": [
-      "-m",
-      "ydb_mcp",
-      "--ydb-endpoint",
-      "grpc://localhost:2136",
-      "--ydb-database",
-      "/local"
-    ],
+    "args": ["-m", "ydb_mcp", "--ydb-endpoint", "grpc://localhost:2136", "--ydb-database", "/local"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

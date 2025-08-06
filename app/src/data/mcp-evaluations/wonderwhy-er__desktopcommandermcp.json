@@ -32,21 +32,13 @@
     "mcpServers": {
       "wonderwhy-er-desktop-commander": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@wonderwhy-er/desktop-commander"
-        ]
+        "args": ["-y", "@wonderwhy-er/desktop-commander"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@wonderwhy-er/desktop-commander",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@wonderwhy-er/desktop-commander", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

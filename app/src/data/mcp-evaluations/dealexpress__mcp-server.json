@@ -32,41 +32,28 @@
     "mcpServers": {
       "dealx": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@dealx/mcp-server"
-        ],
+        "args": ["-y", "@dealx/mcp-server"],
         "env": {
           "DEALX_API_URL": "https://dealx.com.ua"
         }
       },
       "dealx-mcp-server-node": {
         "command": "node",
-        "args": [
-          "node_modules/@dealx/mcp-server/build/index.js"
-        ]
+        "args": ["node_modules/@dealx/mcp-server/build/index.js"]
       },
       "dealx-mcp-server-npx": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@dealx/mcp-server"
-        ]
+        "args": ["-y", "@dealx/mcp-server"]
       },
       "dealx-mcp-server-dev": {
         "command": "npm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@dealx/mcp-server"
-    ],
+    "args": ["-y", "@dealx/mcp-server"],
     "env": {
       "server-basic": "",
       "server-configured": "",

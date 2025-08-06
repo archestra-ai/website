@@ -32,36 +32,21 @@
     "mcpServers": {
       "gitingestmcp": {
         "command": "uvx",
-        "args": [
-          "gitingestmcp@latest"
-        ]
+        "args": ["gitingestmcp@latest"]
       },
       "gitingestmcp-github": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "git+https://github.com/narumiruna/gitingest-mcp",
-          "gitingestmcp"
-        ]
+        "args": ["--from", "git+https://github.com/narumiruna/gitingest-mcp", "gitingestmcp"]
       },
       "gitingestmcp-local": {
         "command": "uv",
-        "args": [
-          "run",
-          "--directory",
-          "/home/<user>/workspace/gitingest-mcp",
-          "gitingestmcp"
-        ]
+        "args": ["run", "--directory", "/home/<user>/workspace/gitingest-mcp", "gitingestmcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "gitingestmcp@latest",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["gitingestmcp@latest", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

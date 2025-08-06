@@ -32,24 +32,18 @@
     "mcpServers": {
       "mcp-server-simulator-ios-idb": {
         "command": "npm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       },
       "mcp-server-simulator-ios-idb-configured": {
         "command": "node",
-        "args": [
-          "/path/to/mcp-server-simulator-ios-idb/dist/index.js"
-        ],
+        "args": ["/path/to/mcp-server-simulator-ios-idb/dist/index.js"],
         "env": {}
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "/path/to/mcp-server-simulator-ios-idb/dist/index.js"
-    ],
+    "args": ["/path/to/mcp-server-simulator-ios-idb/dist/index.js"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

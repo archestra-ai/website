@@ -32,21 +32,13 @@
     "mcpServers": {
       "fastmcp": {
         "command": "fastmcp",
-        "args": [
-          "run",
-          "server.py"
-        ]
+        "args": ["run", "server.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "fastmcp",
-    "args": [
-      "run",
-      "server.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["run", "server.py", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

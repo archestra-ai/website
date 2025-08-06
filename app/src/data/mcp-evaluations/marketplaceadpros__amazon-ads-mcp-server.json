@@ -32,18 +32,14 @@
     "mcpServers": {
       "marketplaceadpros-amazon-ads-mcp-server": {
         "command": "npx",
-        "args": [
-          "@marketplaceadpros/amazon-ads-mcp-server"
-        ],
+        "args": ["@marketplaceadpros/amazon-ads-mcp-server"],
         "env": {
           "BEARER_TOKEN": "abcdefghijklmnop"
         }
       },
       "marketplaceadpros-amazon-ads-mcp-server-node-path": {
         "command": "node",
-        "args": [
-          "/path/to/amazon-ads-mcp-server/build/index.js"
-        ],
+        "args": ["/path/to/amazon-ads-mcp-server/build/index.js"],
         "env": {
           "BEARER_TOKEN": "abcdefghijklmnop"
         }
@@ -52,12 +48,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@marketplaceadpros/amazon-ads-mcp-server",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@marketplaceadpros/amazon-ads-mcp-server", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

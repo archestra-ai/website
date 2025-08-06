@@ -32,17 +32,13 @@
     "mcpServers": {
       "web-search": {
         "command": "node",
-        "args": [
-          "/path/to/web-search/build/index.js"
-        ]
+        "args": ["/path/to/web-search/build/index.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "/path/to/web-search/build/index.js"
-    ],
+    "args": ["/path/to/web-search/build/index.js"],
     "env": {},
     "transport": "stdio",
     "oauth": {

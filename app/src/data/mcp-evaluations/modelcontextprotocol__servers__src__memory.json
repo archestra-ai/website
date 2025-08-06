@@ -31,28 +31,15 @@
     "mcpServers": {
       "memory-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "-v",
-          "claude-memory:/app/dist",
-          "--rm",
-          "mcp/memory"
-        ]
+        "args": ["run", "-i", "-v", "claude-memory:/app/dist", "--rm", "mcp/memory"]
       },
       "modelcontextprotocol-server-memory": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-memory"
-        ]
+        "args": ["-y", "@modelcontextprotocol/server-memory"]
       },
       "modelcontextprotocol-server-memory-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-memory"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-memory"],
         "env": {
           "MEMORY_FILE_PATH": "/path/to/custom/memory.json"
         }
@@ -62,12 +49,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@modelcontextprotocol/server-memory",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@modelcontextprotocol/server-memory", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

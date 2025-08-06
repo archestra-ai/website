@@ -28,12 +28,7 @@
   "implementing_oauth2": false,
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "{server-id}",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "{server-id}", "--transport", "stdio"],
     "env": {
       "server-basic": "ENV_VAR"
     },

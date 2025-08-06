@@ -32,9 +32,7 @@
     "mcpServers": {
       "godot-mcp": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/godot-mcp/build/index.js"
-        ],
+        "args": ["/absolute/path/to/godot-mcp/build/index.js"],
         "env": {
           "DEBUG": "true"
         }
@@ -43,9 +41,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "/absolute/path/to/godot-mcp/build/index.js"
-    ],
+    "args": ["/absolute/path/to/godot-mcp/build/index.js"],
     "env": {},
     "transport": "stdio",
     "oauth": {

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 interface QualityBarProps {
   score: number | null;
@@ -33,25 +33,25 @@ export function QualityBar({ score }: QualityBarProps) {
   }
 
   const getColor = (score: number) => {
-    if (score >= 90) return "bg-green-600";
-    if (score >= 80) return "bg-green-500";
-    if (score >= 70) return "bg-green-400";
-    if (score >= 60) return "bg-emerald-400";
-    if (score >= 50) return "bg-teal-400";
-    if (score >= 40) return "bg-yellow-500";
-    if (score >= 30) return "bg-orange-500";
-    return "bg-red-500";
+    if (score >= 90) return 'bg-green-600';
+    if (score >= 80) return 'bg-green-500';
+    if (score >= 70) return 'bg-green-400';
+    if (score >= 60) return 'bg-emerald-400';
+    if (score >= 50) return 'bg-teal-400';
+    if (score >= 40) return 'bg-yellow-500';
+    if (score >= 30) return 'bg-orange-500';
+    return 'bg-red-500';
   };
 
   const getGlow = (score: number) => {
-    if (score >= 90) return "shadow-green-600/50";
-    if (score >= 80) return "shadow-green-500/50";
-    if (score >= 70) return "shadow-green-400/50";
-    if (score >= 60) return "shadow-emerald-400/50";
-    if (score >= 50) return "shadow-teal-400/50";
-    if (score >= 40) return "shadow-yellow-500/50";
-    if (score >= 30) return "shadow-orange-500/50";
-    return "shadow-red-500/50";
+    if (score >= 90) return 'shadow-green-600/50';
+    if (score >= 80) return 'shadow-green-500/50';
+    if (score >= 70) return 'shadow-green-400/50';
+    if (score >= 60) return 'shadow-emerald-400/50';
+    if (score >= 50) return 'shadow-teal-400/50';
+    if (score >= 40) return 'shadow-yellow-500/50';
+    if (score >= 30) return 'shadow-orange-500/50';
+    return 'shadow-red-500/50';
   };
 
   return (
@@ -62,13 +62,10 @@ export function QualityBar({ score }: QualityBarProps) {
       </div>
       <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
         <div
-          className={`h-full rounded-full transition-all duration-1000 ease-out ${getColor(
-            score
-          )} ${getGlow(score)}`}
+          className={`h-full rounded-full transition-all duration-1000 ease-out ${getColor(score)} ${getGlow(score)}`}
           style={{
             width: `${animatedScore}%`,
-            boxShadow:
-              animatedScore > 0 ? `0 0 8px var(--tw-shadow-color)` : "none",
+            boxShadow: animatedScore > 0 ? `0 0 8px var(--tw-shadow-color)` : 'none',
           }}
         />
       </div>

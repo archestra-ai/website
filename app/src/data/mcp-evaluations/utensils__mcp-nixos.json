@@ -30,9 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "mcp-nixos"
-    ],
+    "args": ["mcp-nixos"],
     "env": {},
     "transport": "stdio",
     "oauth": {}
@@ -83,50 +81,28 @@
     "mcpServers": {
       "nixos-uvx": {
         "command": "uvx",
-        "args": [
-          "mcp-nixos"
-        ]
+        "args": ["mcp-nixos"]
       },
       "nixos-nix-run": {
         "command": "nix",
-        "args": [
-          "run",
-          "github:utensils/mcp-nixos",
-          "--"
-        ]
+        "args": ["run", "github:utensils/mcp-nixos", "--"]
       },
       "nixos-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "ghcr.io/utensils/mcp-nixos"
-        ]
+        "args": ["run", "--rm", "-i", "ghcr.io/utensils/mcp-nixos"]
       },
       "nixos-local-dev": {
         "type": "stdio",
         "command": "uv",
-        "args": [
-          "run",
-          "--directory",
-          "/home/hackerman/Projects/mcp-nixos",
-          "mcp-nixos"
-        ]
+        "args": ["run", "--directory", "/home/hackerman/Projects/mcp-nixos", "mcp-nixos"]
       },
       "nixos-uv-run": {
         "command": "uv",
-        "args": [
-          "run",
-          "mcp-nixos"
-        ]
+        "args": ["run", "mcp-nixos"]
       },
       "nixos-python-module": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_nixos.server"
-        ]
+        "args": ["-m", "mcp_nixos.server"]
       }
     }
   }

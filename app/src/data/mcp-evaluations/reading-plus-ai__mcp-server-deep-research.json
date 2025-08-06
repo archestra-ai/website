@@ -32,9 +32,7 @@
     "mcpServers": {
       "mcp-server-deep-research": {
         "command": "uvx",
-        "args": [
-          "mcp-server-deep-research"
-        ]
+        "args": ["mcp-server-deep-research"]
       },
       "mcp-server-deep-research-configured": {
         "command": "uv",
@@ -49,11 +47,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "mcp-server-deep-research",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["mcp-server-deep-research", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

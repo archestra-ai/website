@@ -32,9 +32,7 @@
     "mcpServers": {
       "nocodb-configured": {
         "command": "node",
-        "args": [
-          "{working_folder}/dist/start.js"
-        ],
+        "args": ["{working_folder}/dist/start.js"],
         "env": {
           "NOCODB_URL": "https://your-nocodb-instance.com",
           "NOCODB_BASE_ID": "your_base_id_here",
@@ -43,21 +41,13 @@
       },
       "nocodb-mcp-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "nocodb-mcp-server",
-          "{NOCODB_URL}",
-          "{NOCODB_BASE_ID}",
-          "{NOCODB_API_TOKEN}"
-        ]
+        "args": ["-y", "nocodb-mcp-server", "{NOCODB_URL}", "{NOCODB_BASE_ID}", "{NOCODB_API_TOKEN}"]
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "dist/start.js"
-    ],
+    "args": ["dist/start.js"],
     "env": {
       "server-basic": "",
       "server-configured": "",

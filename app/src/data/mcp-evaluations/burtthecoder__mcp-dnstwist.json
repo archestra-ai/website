@@ -35,18 +35,13 @@
       },
       "mcp-dnstwist-from-source": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/mcp-dnstwist/build/index.js"
-        ]
+        "args": ["/absolute/path/to/mcp-dnstwist/build/index.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "mcp-dnstwist",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

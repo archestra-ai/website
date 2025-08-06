@@ -32,33 +32,15 @@
     "mcpServers": {
       "mcp-memgraph": {
         "command": "uv",
-        "args": [
-          "run",
-          "--with",
-          "mcp-memgraph",
-          "--python",
-          "3.13",
-          "mcp-memgraph"
-        ]
+        "args": ["run", "--with", "mcp-memgraph", "--python", "3.13", "mcp-memgraph"]
       },
       "mcp-memgraph-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "mcp-memgraph:latest"
-        ]
+        "args": ["run", "--rm", "mcp-memgraph:latest"]
       },
       "mcp-memgraph-docker-stdio": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "-e",
-          "MCP_TRANSPORT=stdio",
-          "mcp-memgraph:latest"
-        ],
+        "args": ["run", "--rm", "-i", "-e", "MCP_TRANSPORT=stdio", "mcp-memgraph:latest"],
         "env": {
           "MCP_TRANSPORT": "stdio"
         }
@@ -111,14 +93,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "--with",
-      "mcp-memgraph",
-      "--python",
-      "3.13",
-      "mcp-memgraph"
-    ],
+    "args": ["run", "--with", "mcp-memgraph", "--python", "3.13", "mcp-memgraph"],
     "env": {},
     "transport": "http",
     "oauth": {}

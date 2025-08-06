@@ -32,21 +32,13 @@
     "mcpServers": {
       "mcp-sqlite": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-sqlite",
-          "<path-to-your-sqlite-database.db>"
-        ]
+        "args": ["-y", "mcp-sqlite", "<path-to-your-sqlite-database.db>"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-sqlite",
-      "<path-to-your-sqlite-database.db>"
-    ],
+    "args": ["-y", "mcp-sqlite", "<path-to-your-sqlite-database.db>"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

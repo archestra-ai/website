@@ -29,10 +29,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "gk",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

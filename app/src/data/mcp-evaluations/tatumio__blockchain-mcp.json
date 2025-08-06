@@ -32,9 +32,7 @@
     "mcpServers": {
       "tatumio-blockchain-mcp-configured": {
         "command": "npx",
-        "args": [
-          "@tatumio/blockchain-mcp"
-        ],
+        "args": ["@tatumio/blockchain-mcp"],
         "env": {
           "TATUM_API_KEY": "YOUR_API_KEY"
         }
@@ -43,12 +41,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@tatumio/blockchain-mcp",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@tatumio/blockchain-mcp", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

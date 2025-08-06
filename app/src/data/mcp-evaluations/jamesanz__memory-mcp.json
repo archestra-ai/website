@@ -32,9 +32,7 @@
     "mcpServers": {
       "memory-mcp": {
         "command": "node",
-        "args": [
-          "build/index.js"
-        ],
+        "args": ["build/index.js"],
         "env": {
           "MONGODB_URI": "mongodb://localhost:27017"
         }
@@ -43,11 +41,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "build/index.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["build/index.js", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

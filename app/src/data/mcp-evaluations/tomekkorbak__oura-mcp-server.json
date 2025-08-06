@@ -32,9 +32,7 @@
     "mcpServers": {
       "oura-mcp-server": {
         "command": "uvx",
-        "args": [
-          "oura-mcp-server"
-        ],
+        "args": ["oura-mcp-server"],
         "env": {
           "OURA_API_TOKEN": "YOUR_OURA_API_TOKEN"
         }
@@ -43,9 +41,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "oura-mcp-server"
-    ],
+    "args": ["oura-mcp-server"],
     "env": {
       "server-basic": "",
       "server-configured": "",

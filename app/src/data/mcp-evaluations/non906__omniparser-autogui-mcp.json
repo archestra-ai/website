@@ -32,12 +32,7 @@
     "mcpServers": {
       "omniparser_autogui_mcp": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "D:\\CLONED_PATH\\omniparser-autogui-mcp",
-          "run",
-          "omniparser-autogui-mcp"
-        ],
+        "args": ["--directory", "D:\\CLONED_PATH\\omniparser-autogui-mcp", "run", "omniparser-autogui-mcp"],
         "env": {
           "PYTHONIOENCODING": "utf-8",
           "OCR_LANG": "en"
@@ -47,12 +42,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      ".",
-      "run",
-      "omniparser-autogui-mcp"
-    ],
+    "args": ["--directory", ".", "run", "omniparser-autogui-mcp"],
     "env": {
       "server-basic": "PYTHONIOENCODING",
       "server-configured": "OCR_LANG"

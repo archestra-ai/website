@@ -32,19 +32,13 @@
     "mcpServers": {
       "google-ads": {
         "command": "/full/path/to/your/project/.venv/bin/python",
-        "args": [
-          "/full/path/to/your/project/server.py"
-        ]
+        "args": ["/full/path/to/your/project/server.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "server.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["server.py", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

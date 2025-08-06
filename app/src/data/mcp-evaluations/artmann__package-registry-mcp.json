@@ -32,21 +32,13 @@
     "mcpServers": {
       "package-registry": {
         "command": "npx",
-        "args": [
-          "-y",
-          "package-registry-mcp"
-        ]
+        "args": ["-y", "package-registry-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "package-registry-mcp",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "package-registry-mcp", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

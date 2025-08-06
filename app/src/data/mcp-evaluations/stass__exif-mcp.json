@@ -32,36 +32,25 @@
     "mcpServers": {
       "exif-mcp": {
         "command": "node",
-        "args": [
-          "/path/to/exif-mcp/dist/server.js"
-        ]
+        "args": ["/path/to/exif-mcp/dist/server.js"]
       },
       "exif-mcp-npm-start": {
         "command": "npm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       },
       "exif-mcp-npm-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev"
-        ]
+        "args": ["run", "dev"]
       },
       "exif-mcp-stdio": {
         "command": "node",
-        "args": [
-          "dist/server.js"
-        ]
+        "args": ["dist/server.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "/path/to/exif-mcp/dist/server.js"
-    ],
+    "args": ["/path/to/exif-mcp/dist/server.js"],
     "env": {},
     "transport": "stdio",
     "oauth": {

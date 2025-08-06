@@ -32,19 +32,13 @@
     "mcpServers": {
       "executeautomation-playwright-mcp-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@executeautomation/playwright-mcp-server"
-        ]
+        "args": ["-y", "@executeautomation/playwright-mcp-server"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@executeautomation/playwright-mcp-server"
-    ],
+    "args": ["-y", "@executeautomation/playwright-mcp-server"],
     "env": {},
     "transport": "stdio",
     "oauth": {

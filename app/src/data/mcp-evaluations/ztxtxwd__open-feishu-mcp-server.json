@@ -32,17 +32,11 @@
     "mcpServers": {
       "open-feishu-mcp-server-deployed": {
         "command": "npm",
-        "args": [
-          "run",
-          "deploy"
-        ]
+        "args": ["run", "deploy"]
       },
       "open-feishu-mcp-server-local": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev"
-        ],
+        "args": ["run", "dev"],
         "env": {
           "FEISHU_APP_ID": "your_development_feishu_app_id",
           "FEISHU_APP_SECRET": "your_development_feishu_app_secret",
@@ -53,10 +47,7 @@
   },
   "configForArchestra": {
     "command": "npm",
-    "args": [
-      "run",
-      "dev"
-    ],
+    "args": ["run", "dev"],
     "env": {
       "server-basic": "",
       "server-configured": "",

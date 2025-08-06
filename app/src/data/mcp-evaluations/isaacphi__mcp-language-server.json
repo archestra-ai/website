@@ -32,12 +32,7 @@
     "mcpServers": {
       "mcp-language-server-gopls": {
         "command": "mcp-language-server",
-        "args": [
-          "--workspace",
-          "/Users/you/dev/yourproject/",
-          "--lsp",
-          "gopls"
-        ],
+        "args": ["--workspace", "/Users/you/dev/yourproject/", "--lsp", "gopls"],
         "env": {
           "PATH": "/opt/homebrew/bin:/Users/you/go/bin",
           "GOPATH": "/users/you/go",
@@ -47,34 +42,15 @@
       },
       "mcp-language-server-rust-analyzer": {
         "command": "mcp-language-server",
-        "args": [
-          "--workspace",
-          "/Users/you/dev/yourproject/",
-          "--lsp",
-          "rust-analyzer"
-        ]
+        "args": ["--workspace", "/Users/you/dev/yourproject/", "--lsp", "rust-analyzer"]
       },
       "mcp-language-server-pyright-langserver": {
         "command": "mcp-language-server",
-        "args": [
-          "--workspace",
-          "/Users/you/dev/yourproject/",
-          "--lsp",
-          "pyright-langserver",
-          "--",
-          "--stdio"
-        ]
+        "args": ["--workspace", "/Users/you/dev/yourproject/", "--lsp", "pyright-langserver", "--", "--stdio"]
       },
       "mcp-language-server-typescript-language-server": {
         "command": "mcp-language-server",
-        "args": [
-          "--workspace",
-          "/Users/you/dev/yourproject/",
-          "--lsp",
-          "typescript-language-server",
-          "--",
-          "--stdio"
-        ]
+        "args": ["--workspace", "/Users/you/dev/yourproject/", "--lsp", "typescript-language-server", "--", "--stdio"]
       },
       "mcp-language-server-clangd": {
         "command": "mcp-language-server",
@@ -91,12 +67,7 @@
   },
   "configForArchestra": {
     "command": "mcp-language-server",
-    "args": [
-      "--workspace",
-      "/app",
-      "--lsp",
-      "gopls"
-    ],
+    "args": ["--workspace", "/app", "--lsp", "gopls"],
     "env": {
       "server-basic": "",
       "server-configured": "",

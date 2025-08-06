@@ -32,9 +32,7 @@
     "mcpServers": {
       "ashra-mcp-configured": {
         "command": "node",
-        "args": [
-          "<path/to/ashra-mcp>/build/index.js"
-        ],
+        "args": ["<path/to/ashra-mcp>/build/index.js"],
         "env": {
           "ASHRA_API_KEY": "<YOUR-API-KEY>"
         }
@@ -43,9 +41,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "<path/to/ashra-mcp>/build/index.js"
-    ],
+    "args": ["<path/to/ashra-mcp>/build/index.js"],
     "env": {
       "server-configured": "ASHRA_API_KEY"
     },

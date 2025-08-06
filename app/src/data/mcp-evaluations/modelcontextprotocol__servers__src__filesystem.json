@@ -57,11 +57,7 @@
       },
       "modelcontextprotocol-server-filesystem-vscode": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-filesystem",
-          "${workspaceFolder}"
-        ]
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "${workspaceFolder}"]
       },
       "mcp-filesystem-docker-vscode": {
         "command": "docker",
@@ -79,13 +75,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@modelcontextprotocol/server-filesystem",
-      "${workspaceFolder}",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@modelcontextprotocol/server-filesystem", "${workspaceFolder}", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

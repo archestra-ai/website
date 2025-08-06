@@ -1,15 +1,11 @@
 #!/usr/bin/env tsx
 import fs from 'fs/promises';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
 import type { ArchestraMcpServerManifest } from '@archestra/types';
 import { ArchestraMcpServerManifestSchema } from '@schemas';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const MCP_EVALUATIONS_DIR = path.join(__dirname, 'mcp-evaluations');
+import { MCP_SERVERS_EVALUATIONS_DIR } from './paths';
 
 async function transformServerData(data: any): Promise<ArchestraMcpServerManifest> {
   // Start with DXT manifest fields
@@ -135,7 +131,7 @@ async function main() {
 
   try {
     // Get all JSON files in the mcp-evaluations directory
-    const files = await fs.readdir(MCP_EVALUATIONS_DIR);
+    const files = await fs.readdir(MCP_SERVERS_EVALUATIONS_DIR);
     const jsonFiles = files.filter((f) => f.endsWith('.json'));
 
     console.log(`Found ${jsonFiles.length} JSON files to process\n`);
@@ -145,7 +141,7 @@ async function main() {
 
     // Process each file
     for (const file of jsonFiles) {
-      const filePath = path.join(MCP_EVALUATIONS_DIR, file);
+      const filePath = path.join(MCP_SERVERS_EVALUATIONS_DIR, file);
       try {
         await processFile(filePath);
         successCount++;

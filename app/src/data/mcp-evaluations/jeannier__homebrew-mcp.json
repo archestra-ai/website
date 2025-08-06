@@ -31,41 +31,22 @@
     "mcpServers": {
       "homebrew-mcp-local": {
         "command": "uv",
-        "args": [
-          "run",
-          "python",
-          "homebrew_mcp.py"
-        ]
+        "args": ["run", "python", "homebrew_mcp.py"]
       },
       "homebrew-mcp-cursor": {
         "command": "uv",
-        "args": [
-          "run",
-          "--directory",
-          "~/Documents/GitHub/homebrew-mcp",
-          "homebrew_mcp.py"
-        ]
+        "args": ["run", "--directory", "~/Documents/GitHub/homebrew-mcp", "homebrew_mcp.py"]
       },
       "homebrew-mcp-claude-desktop": {
         "command": "uv",
-        "args": [
-          "run",
-          "--directory",
-          "/path/to/your/project/",
-          "homebrew_mcp.py"
-        ]
+        "args": ["run", "--directory", "/path/to/your/project/", "homebrew_mcp.py"]
       }
     }
   },
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "--directory",
-      ".",
-      "homebrew_mcp.py"
-    ],
+    "args": ["run", "--directory", ".", "homebrew_mcp.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

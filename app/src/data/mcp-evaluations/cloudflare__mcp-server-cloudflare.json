@@ -32,26 +32,17 @@
     "mcpServers": {
       "mcp-remote-observability": {
         "command": "npx",
-        "args": [
-          "mcp-remote",
-          "https://observability.mcp.cloudflare.com/sse"
-        ]
+        "args": ["mcp-remote", "https://observability.mcp.cloudflare.com/sse"]
       },
       "mcp-remote-bindings": {
         "command": "npx",
-        "args": [
-          "mcp-remote",
-          "https://bindings.mcp.cloudflare.com/sse"
-        ]
+        "args": ["mcp-remote", "https://bindings.mcp.cloudflare.com/sse"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "mcp-remote",
-      "https://observability.mcp.cloudflare.com/sse"
-    ],
+    "args": ["mcp-remote", "https://observability.mcp.cloudflare.com/sse"],
     "env": {},
     "transport": "http",
     "oauth": {

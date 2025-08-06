@@ -32,23 +32,17 @@
     "mcpServers": {
       "investor-agent": {
         "command": "uvx",
-        "args": [
-          "investor-agent"
-        ]
+        "args": ["investor-agent"]
       },
       "investor-agent-ta": {
         "command": "uvx",
-        "args": [
-          "investor-agent[ta]"
-        ]
+        "args": ["investor-agent[ta]"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "investor-agent"
-    ],
+    "args": ["investor-agent"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

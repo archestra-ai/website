@@ -42,20 +42,13 @@
       },
       "bear-mcp-server": {
         "command": "npx",
-        "args": [
-          "bear-mcp-server"
-        ]
+        "args": ["bear-mcp-server"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "bear-mcp-server",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "bear-mcp-server", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

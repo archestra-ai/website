@@ -32,30 +32,17 @@
     "mcpServers": {
       "mcp-server-mem0": {
         "command": "uv",
-        "args": [
-          "run",
-          "main.py"
-        ]
+        "args": ["run", "main.py"]
       },
       "mcp-server-mem0-configured": {
         "command": "uv",
-        "args": [
-          "run",
-          "main.py",
-          "--host",
-          "<your host>",
-          "--port",
-          "<your port>"
-        ]
+        "args": ["run", "main.py", "--host", "<your host>", "--port", "<your port>"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "main.py"
-    ],
+    "args": ["run", "main.py"],
     "env": {
       "server-basic": "",
       "server-configured": "",

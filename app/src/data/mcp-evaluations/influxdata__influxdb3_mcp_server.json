@@ -32,9 +32,7 @@
     "mcpServers": {
       "influx-mcp-standalone": {
         "command": "node",
-        "args": [
-          "/path/to/influx-mcp-standalone/build/index.js"
-        ],
+        "args": ["/path/to/influx-mcp-standalone/build/index.js"],
         "env": {
           "INFLUX_DB_INSTANCE_URL": "http://localhost:8181/",
           "INFLUX_DB_TOKEN": "<YOUR_INFLUXDB_TOKEN>",
@@ -43,10 +41,7 @@
       },
       "modelcontextprotocol-server-influxdb": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-influxdb"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-influxdb"],
         "env": {
           "INFLUX_DB_INSTANCE_URL": "http://localhost:8181/",
           "INFLUX_DB_TOKEN": "<YOUR_INFLUXDB_TOKEN>",
@@ -98,12 +93,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@modelcontextprotocol/server-influxdb",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@modelcontextprotocol/server-influxdb", "--transport", "stdio"],
     "env": {
       "server-basic": "INFLUX_DB_INSTANCE_URL,INFLUX_DB_TOKEN,INFLUX_DB_PRODUCT_TYPE",
       "server-configured": "INFLUX_DB_CLUSTER_ID,INFLUX_DB_ACCOUNT_ID,INFLUX_DB_MANAGEMENT_TOKEN",

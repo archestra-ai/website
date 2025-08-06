@@ -32,48 +32,32 @@
     "mcpServers": {
       "mcp-server-kubernetes": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-server-kubernetes"
-        ]
+        "args": ["-y", "mcp-server-kubernetes"]
       },
       "mcp-server-kubernetes-readonly": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-server-kubernetes"
-        ],
+        "args": ["-y", "mcp-server-kubernetes"],
         "env": {
           "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS": "true"
         }
       },
       "mcp-server-kubernetes-local": {
         "command": "node",
-        "args": [
-          "/path/to/your/mcp-server-kubernetes/dist/index.js"
-        ]
+        "args": ["/path/to/your/mcp-server-kubernetes/dist/index.js"]
       },
       "mcp-server-kubernetes-dev": {
         "command": "bun",
-        "args": [
-          "run",
-          "dev"
-        ]
+        "args": ["run", "dev"]
       },
       "mcp-server-kubernetes-chat-dev": {
         "command": "bun",
-        "args": [
-          "run",
-          "chat"
-        ]
+        "args": ["run", "chat"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "mcp-server-kubernetes"
-    ],
+    "args": ["mcp-server-kubernetes"],
     "env": {
       "server-configured": "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS=true"
     },

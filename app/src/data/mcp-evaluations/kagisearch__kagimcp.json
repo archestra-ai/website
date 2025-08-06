@@ -32,9 +32,7 @@
     "mcpServers": {
       "kagimcp-uvx": {
         "command": "uvx",
-        "args": [
-          "kagimcp"
-        ],
+        "args": ["kagimcp"],
         "env": {
           "KAGI_API_KEY": "YOUR_API_KEY_HERE",
           "KAGI_SUMMARIZER_ENGINE": "YOUR_ENGINE_CHOICE_HERE"
@@ -42,12 +40,7 @@
       },
       "kagimcp-uv-local": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "YOUR_KAGIMCP_PATH",
-          "run",
-          "kagimcp"
-        ],
+        "args": ["--directory", "YOUR_KAGIMCP_PATH", "run", "kagimcp"],
         "env": {
           "KAGI_API_KEY": "YOUR_API_KEY_HERE",
           "KAGI_SUMMARIZER_ENGINE": "YOUR_ENGINE_CHOICE_HERE"
@@ -57,9 +50,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "kagimcp"
-    ],
+    "args": ["kagimcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

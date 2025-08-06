@@ -32,17 +32,13 @@
     "mcpServers": {
       "tasty-agent": {
         "command": "uvx",
-        "args": [
-          "tasty-agent"
-        ]
+        "args": ["tasty-agent"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "tasty-agent"
-    ],
+    "args": ["tasty-agent"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -99,10 +99,7 @@
       },
       "k8m-go": {
         "command": "go",
-        "args": [
-          "run",
-          "main.go"
-        ]
+        "args": ["run", "main.go"]
       }
     }
   },

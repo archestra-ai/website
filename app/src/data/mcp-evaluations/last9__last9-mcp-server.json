@@ -32,10 +32,7 @@
     "mcpServers": {
       "last9-mcp-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@last9/mcp-server"
-        ]
+        "args": ["-y", "@last9/mcp-server"]
       },
       "last9-mcp-configured": {
         "command": "/opt/homebrew/bin/last9-mcp",
@@ -57,10 +54,7 @@
   },
   "configForArchestra": {
     "command": "/opt/homebrew/bin/last9-mcp",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

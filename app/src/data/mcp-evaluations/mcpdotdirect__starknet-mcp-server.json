@@ -32,16 +32,11 @@
     "mcpServers": {
       "mcpdotdirect-starknet-mcp-server-npx-stdio": {
         "command": "npx",
-        "args": [
-          "@mcpdotdirect/starknet-mcp-server"
-        ]
+        "args": ["@mcpdotdirect/starknet-mcp-server"]
       },
       "mcpdotdirect-starknet-mcp-server-npx-http": {
         "command": "npx",
-        "args": [
-          "@mcpdotdirect/starknet-mcp-server",
-          "http"
-        ]
+        "args": ["@mcpdotdirect/starknet-mcp-server", "http"]
       },
       "mcpdotdirect-starknet-mcp-server-global-stdio": {
         "command": "starknet-mcp-server",
@@ -49,59 +44,37 @@
       },
       "mcpdotdirect-starknet-mcp-server-global-http": {
         "command": "starknet-mcp-server",
-        "args": [
-          "http"
-        ]
+        "args": ["http"]
       },
       "mcpdotdirect-starknet-mcp-server-local-script-stdio": {
         "command": "npm",
-        "args": [
-          "run",
-          "starknet-mcp"
-        ]
+        "args": ["run", "starknet-mcp"]
       },
       "mcpdotdirect-starknet-mcp-server-local-script-http": {
         "command": "npm",
-        "args": [
-          "run",
-          "starknet-mcp-http"
-        ]
+        "args": ["run", "starknet-mcp-http"]
       },
       "mcpdotdirect-starknet-mcp-server-source-start-stdio": {
         "command": "npm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       },
       "mcpdotdirect-starknet-mcp-server-source-start-http": {
         "command": "npm",
-        "args": [
-          "run",
-          "start:http"
-        ]
+        "args": ["run", "start:http"]
       },
       "mcpdotdirect-starknet-mcp-server-source-dev-stdio": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev"
-        ]
+        "args": ["run", "dev"]
       },
       "mcpdotdirect-starknet-mcp-server-source-dev-http": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev:http"
-        ]
+        "args": ["run", "dev:http"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@mcpdotdirect/starknet-mcp-server"
-    ],
+    "args": ["-y", "@mcpdotdirect/starknet-mcp-server"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

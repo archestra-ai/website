@@ -32,19 +32,11 @@
     "mcpServers": {
       "membase_mcp": {
         "command": "uv",
-        "args": [
-          "run",
-          "src/membase_mcp/server.py"
-        ]
+        "args": ["run", "src/membase_mcp/server.py"]
       },
       "membase_mcp-configured": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "path/to/membase-mcp",
-          "run",
-          "src/membase_mcp/server.py"
-        ],
+        "args": ["--directory", "path/to/membase-mcp", "run", "src/membase_mcp/server.py"],
         "env": {
           "MEMBASE_ACCOUNT": "your account, 0x...",
           "MEMBASE_CONVERSATION_ID": "your conversation id, should be unique",
@@ -55,14 +47,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "path/to/membase-mcp",
-      "run",
-      "src/membase_mcp/server.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--directory", "path/to/membase-mcp", "run", "src/membase_mcp/server.py", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

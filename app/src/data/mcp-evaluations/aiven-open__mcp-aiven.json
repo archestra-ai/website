@@ -67,10 +67,7 @@
       },
       "mcp-aiven-dev": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "mcp_aiven/mcp_server.py"
-        ],
+        "args": ["dev", "mcp_aiven/mcp_server.py"],
         "env": {
           "AIVEN_BASE_URL": "https://api.aiven.io",
           "AIVEN_TOKEN": "$AIVEN_TOKEN"

@@ -32,21 +32,13 @@
     "mcpServers": {
       "joshuarileydev-mac-apps-launcher-mcp-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@joshuarileydev/mac-apps-launcher-mcp-server"
-        ]
+        "args": ["-y", "@joshuarileydev/mac-apps-launcher-mcp-server"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "y",
-      "@joshuarileydev/mac-apps-launcher-mcp-server",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["y", "@joshuarileydev/mac-apps-launcher-mcp-server", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

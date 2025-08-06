@@ -32,10 +32,7 @@
     "mcpServers": {
       "inhiblab-core-mcp-image-compression": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@inhiblab-core/mcp-image-compression"
-        ],
+        "args": ["-y", "@inhiblab-core/mcp-image-compression"],
         "env": {
           "IMAGE_COMPRESSION_DOWNLOAD_DIR": "<YOUR_DIR>"
         }
@@ -44,10 +41,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@inhiblab-core/mcp-image-compression"
-    ],
+    "args": ["-y", "@inhiblab-core/mcp-image-compression"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

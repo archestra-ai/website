@@ -32,18 +32,13 @@
     "mcpServers": {
       "fireproof-mcp-configured": {
         "command": "node",
-        "args": [
-          "/path/to/fireproof-mcp/build/index.js"
-        ]
+        "args": ["/path/to/fireproof-mcp/build/index.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "/path/to/fireproof-mcp/build/index.js",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

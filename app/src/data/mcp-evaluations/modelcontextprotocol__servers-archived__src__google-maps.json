@@ -32,46 +32,28 @@
     "mcpServers": {
       "mcp-google-maps-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "-e",
-          "GOOGLE_MAPS_API_KEY",
-          "mcp/google-maps"
-        ],
+        "args": ["run", "-i", "--rm", "-e", "GOOGLE_MAPS_API_KEY", "mcp/google-maps"],
         "env": {
           "GOOGLE_MAPS_API_KEY": "<YOUR_API_KEY>"
         }
       },
       "modelcontextprotocol-server-google-maps": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-google-maps"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-google-maps"],
         "env": {
           "GOOGLE_MAPS_API_KEY": "<YOUR_API_KEY>"
         }
       },
       "modelcontextprotocol-server-google-maps-vscode-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-google-maps"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-google-maps"],
         "env": {
           "GOOGLE_MAPS_API_KEY": "${input:maps_api_key}"
         }
       },
       "mcp-google-maps-docker-vscode-configured": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "mcp/google-maps"
-        ],
+        "args": ["run", "-i", "--rm", "mcp/google-maps"],
         "env": {
           "GOOGLE_MAPS_API_KEY": "${input:maps_api_key}"
         }
@@ -80,10 +62,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@modelcontextprotocol/server-google-maps"
-    ],
+    "args": ["-y", "@modelcontextprotocol/server-google-maps"],
     "env": {
       "server-basic": "",
       "server-configured": "",

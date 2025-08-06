@@ -32,10 +32,7 @@
     "mcpServers": {
       "unified-diff-mcp": {
         "command": "bun",
-        "args": [
-          "run",
-          "/path/to/unified-diff-mcp/src/index.ts"
-        ],
+        "args": ["run", "/path/to/unified-diff-mcp/src/index.ts"],
         "env": {
           "GITHUB_TOKEN": "your_github_token_here",
           "DEFAULT_AUTO_OPEN": "true",
@@ -44,19 +41,13 @@
       },
       "unified-diff-mcp-dev": {
         "command": "bun",
-        "args": [
-          "--watch",
-          "/path/to/unified-diff-mcp/src/index.ts"
-        ]
+        "args": ["--watch", "/path/to/unified-diff-mcp/src/index.ts"]
       }
     }
   },
   "configForArchestra": {
     "command": "bun",
-    "args": [
-      "run",
-      "src/index.ts"
-    ],
+    "args": ["run", "src/index.ts"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -32,12 +32,7 @@
     "mcpServers": {
       "mcp-gsuite-dev": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "<dir_to>/mcp-gsuite",
-          "run",
-          "mcp-gsuite"
-        ]
+        "args": ["--directory", "<dir_to>/mcp-gsuite", "run", "mcp-gsuite"]
       },
       "mcp-gsuite-dev-custom-paths": {
         "command": "uv",
@@ -77,25 +72,13 @@
       },
       "modelcontextprotocol-inspector-mcp-gsuite": {
         "command": "npx",
-        "args": [
-          "@modelcontextprotocol/inspector",
-          "uv",
-          "--directory",
-          "/path/to/mcp-gsuite",
-          "run",
-          "mcp-gsuite"
-        ]
+        "args": ["@modelcontextprotocol/inspector", "uv", "--directory", "/path/to/mcp-gsuite", "run", "mcp-gsuite"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "/app",
-      "run",
-      "mcp-gsuite"
-    ],
+    "args": ["--directory", "/app", "run", "mcp-gsuite"],
     "env": {},
     "transport": "stdio",
     "oauth": {

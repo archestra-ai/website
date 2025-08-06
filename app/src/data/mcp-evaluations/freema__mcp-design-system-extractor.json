@@ -30,12 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@freema/mcp-design-system-extractor",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@freema/mcp-design-system-extractor", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

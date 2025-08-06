@@ -32,14 +32,7 @@
     "mcpServers": {
       "github-github-mcp-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "-e",
-          "GITHUB_PERSONAL_ACCESS_TOKEN",
-          "ghcr.io/github/github-mcp-server"
-        ],
+        "args": ["run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN", "ghcr.io/github/github-mcp-server"],
         "env": {
           "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
         }
@@ -48,9 +41,7 @@
   },
   "configForArchestra": {
     "command": "github-mcp-server",
-    "args": [
-      "--stdio"
-    ],
+    "args": ["--stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

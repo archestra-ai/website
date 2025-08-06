@@ -32,9 +32,7 @@
     "mcpServers": {
       "volatility-fastapi-server": {
         "command": "uvicorn",
-        "args": [
-          "volatility_fastapi_server:app"
-        ]
+        "args": ["volatility_fastapi_server:app"]
       },
       "vol-mcp-server-configured": {
         "command": "python",
@@ -48,11 +46,7 @@
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "vol_mcp_server.py",
-      "-i",
-      "<memory_image_path>"
-    ],
+    "args": ["vol_mcp_server.py", "-i", "<memory_image_path>"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -32,25 +32,13 @@
     "mcpServers": {
       "funding-rates-mcp": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/absolute/path/to/funding-rates-mcp",
-          "run",
-          "funding-rates-mcp"
-        ]
+        "args": ["--directory", "/absolute/path/to/funding-rates-mcp", "run", "funding-rates-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "/absolute/path/to/funding-rates-mcp",
-      "run",
-      "funding-rates-mcp",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--directory", "/absolute/path/to/funding-rates-mcp", "run", "funding-rates-mcp", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

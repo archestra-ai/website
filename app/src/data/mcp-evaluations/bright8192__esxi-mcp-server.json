@@ -32,19 +32,13 @@
     "mcpServers": {
       "esxi-mcp-server": {
         "command": "python",
-        "args": [
-          "server.py",
-          "-c",
-          "config.yaml"
-        ]
+        "args": ["server.py", "-c", "config.yaml"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "server.py"
-    ],
+    "args": ["server.py"],
     "env": {
       "server-configured": "MCP_API_KEY"
     },

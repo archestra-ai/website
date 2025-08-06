@@ -32,24 +32,14 @@
     "mcpServers": {
       "memcord-desktop-config": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "</path/to/memcord>",
-          "run",
-          "memcord"
-        ],
+        "args": ["--directory", "</path/to/memcord>", "run", "memcord"],
         "env": {
           "PYTHONPATH": "</path/to/memcord/>/src"
         }
       },
       "memcord-stdio": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "</path/to/memcord>",
-          "run",
-          "memcord"
-        ],
+        "args": ["--directory", "</path/to/memcord>", "run", "memcord"],
         "env": {
           "PYTHONPATH": "</path/to/memcord>/src"
         }
@@ -58,12 +48,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "</path/to/memcord>",
-      "run",
-      "memcord"
-    ],
+    "args": ["--directory", "</path/to/memcord>", "run", "memcord"],
     "env": {
       "server-basic": "</path/to/memcord>/src",
       "server-configured": "</path/to/memcord>/src",

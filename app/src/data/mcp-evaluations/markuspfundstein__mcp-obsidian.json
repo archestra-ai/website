@@ -32,12 +32,7 @@
     "mcpServers": {
       "mcp-obsidian-unpublished": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "<dir_to>/mcp-obsidian",
-          "run",
-          "mcp-obsidian"
-        ],
+        "args": ["--directory", "<dir_to>/mcp-obsidian", "run", "mcp-obsidian"],
         "env": {
           "OBSIDIAN_API_KEY": "<your_api_key_here>",
           "OBSIDIAN_HOST": "<your_obsidian_host>",
@@ -46,9 +41,7 @@
       },
       "mcp-obsidian-published": {
         "command": "uvx",
-        "args": [
-          "mcp-obsidian"
-        ],
+        "args": ["mcp-obsidian"],
         "env": {
           "OBSIDIAN_API_KEY": "<YOUR_OBSIDIAN_API_KEY>",
           "OBSIDIAN_HOST": "<your_obsidian_host>",
@@ -59,9 +52,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "mcp-obsidian"
-    ],
+    "args": ["mcp-obsidian"],
     "env": {
       "server-basic": "",
       "server-configured": "",

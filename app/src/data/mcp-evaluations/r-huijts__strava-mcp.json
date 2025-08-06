@@ -32,19 +32,13 @@
     "mcpServers": {
       "strava-mcp-local": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/your/strava-mcp/dist/server.js"
-        ]
+        "args": ["/absolute/path/to/your/strava-mcp/dist/server.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "/absolute/path/to/your/strava-mcp/dist/server.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["/absolute/path/to/your/strava-mcp/dist/server.js", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -36,19 +36,13 @@
       },
       "ghcr.io-gbrigandi-mcp-server-wazuh-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "ghcr.io/gbrigandi/mcp-server-wazuh:latest"
-        ]
+        "args": ["run", "ghcr.io/gbrigandi/mcp-server-wazuh:latest"]
       }
     }
   },
   "configForArchestra": {
     "command": "mcp-server-wazuh",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

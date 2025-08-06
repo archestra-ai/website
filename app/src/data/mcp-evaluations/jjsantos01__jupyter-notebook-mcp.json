@@ -31,24 +31,14 @@
     "mcpServers": {
       "jupyter": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/src",
-          "run",
-          "jupyter_mcp_server.py"
-        ]
+        "args": ["--directory", "/path/to/src", "run", "jupyter_mcp_server.py"]
       }
     }
   },
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "/ABSOLUTE/PATH/TO/PARENT/REPO/FOLDER/src",
-      "run",
-      "jupyter_mcp_server.py"
-    ],
+    "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/REPO/FOLDER/src", "run", "jupyter_mcp_server.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {

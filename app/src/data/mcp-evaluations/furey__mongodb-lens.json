@@ -30,12 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mongodb-lens",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "mongodb-lens", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

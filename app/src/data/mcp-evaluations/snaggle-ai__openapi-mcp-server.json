@@ -30,12 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@janwilmake/openapi-mcp-server",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@janwilmake/openapi-mcp-server", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}
@@ -62,10 +57,7 @@
     "mcpServers": {
       "openapi-mcp-server": {
         "command": "npx",
-        "args": [
-          "openapi-mcp-server@latest",
-          "init"
-        ]
+        "args": ["openapi-mcp-server@latest", "init"]
       }
     }
   }

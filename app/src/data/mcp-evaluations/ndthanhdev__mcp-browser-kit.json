@@ -32,17 +32,13 @@
     "mcpServers": {
       "mcp-browser-kit-server": {
         "command": "npx",
-        "args": [
-          "@mcp-browser-kit/server"
-        ]
+        "args": ["@mcp-browser-kit/server"]
       }
     }
   },
   "configForArchestra": {
     "command": "string",
-    "args": [
-      "string"
-    ],
+    "args": ["string"],
     "env": {
       "server-basic": "string",
       "server-configured": "string",

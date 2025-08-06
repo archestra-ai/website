@@ -32,23 +32,11 @@
     "mcpServers": {
       "mcp-server-twelve-data-claude-utool": {
         "command": "uvx",
-        "args": [
-          "mcp-server-twelve-data@latest",
-          "-k",
-          "YOUR_TWELVE_DATA_API_KEY",
-          "-u",
-          "YOUR_OPEN_AI_APIKEY"
-        ]
+        "args": ["mcp-server-twelve-data@latest", "-k", "YOUR_TWELVE_DATA_API_KEY", "-u", "YOUR_OPEN_AI_APIKEY"]
       },
       "mcp-server-twelve-data-claude-10endpoints": {
         "command": "uvx",
-        "args": [
-          "mcp-server-twelve-data@latest",
-          "-k",
-          "YOUR_TWELVE_DATA_API_KEY",
-          "-n",
-          "10"
-        ]
+        "args": ["mcp-server-twelve-data@latest", "-k", "YOUR_TWELVE_DATA_API_KEY", "-n", "10"]
       },
       "mcp-remote-twelvedata": {
         "command": "npx",
@@ -67,31 +55,15 @@
       },
       "mcp-server-twelve-data-vscode-auto": {
         "command": "uvx",
-        "args": [
-          "mcp-server-twelve-data",
-          "-k",
-          "YOUR_TWELVE_DATA_API_KEY",
-          "-u",
-          "YOUR_OPENAI_API_KEY"
-        ]
+        "args": ["mcp-server-twelve-data", "-k", "YOUR_TWELVE_DATA_API_KEY", "-u", "YOUR_OPENAI_API_KEY"]
       },
       "mcp-server-twelve-data-vscode-manual": {
         "command": "uvx",
-        "args": [
-          "mcp-server-twelve-data",
-          "-k",
-          "YOUR_TWELVE_DATA_API_KEY",
-          "-u",
-          "YOUR_OPENAI_API_KEY"
-        ]
+        "args": ["mcp-server-twelve-data", "-k", "YOUR_TWELVE_DATA_API_KEY", "-u", "YOUR_OPENAI_API_KEY"]
       },
       "mcp-server-twelve-data-inspector": {
         "command": "uvx",
-        "args": [
-          "mcp-server-twelve-data@latest",
-          "-k",
-          "YOUR_TWELVE_DATA_API_KEY"
-        ]
+        "args": ["mcp-server-twelve-data@latest", "-k", "YOUR_TWELVE_DATA_API_KEY"]
       },
       "mcp-server-twelve-data-docker": {
         "command": "docker",

@@ -32,19 +32,13 @@
     "mcpServers": {
       "website-downloader": {
         "command": "node",
-        "args": [
-          "/path/to/website-downloader/build/index.js"
-        ]
+        "args": ["/path/to/website-downloader/build/index.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "/path/to/website-downloader/build/index.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["/path/to/website-downloader/build/index.js", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

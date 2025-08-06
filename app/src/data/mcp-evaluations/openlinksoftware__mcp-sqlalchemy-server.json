@@ -32,12 +32,7 @@
     "mcpServers": {
       "mcp-sqlalchemy-server": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/mcp-sqlalchemy-server",
-          "run",
-          "mcp-sqlalchemy-server"
-        ],
+        "args": ["--directory", "/path/to/mcp-sqlalchemy-server", "run", "mcp-sqlalchemy-server"],
         "env": {
           "ODBC_DSN": "dsn_name",
           "ODBC_USER": "username",
@@ -49,10 +44,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "mcp-sqlalchemy-server"
-    ],
+    "args": ["run", "mcp-sqlalchemy-server"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

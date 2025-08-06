@@ -32,9 +32,7 @@
     "mcpServers": {
       "smart-tree": {
         "command": "/usr/local/bin/st",
-        "args": [
-          "--mcp"
-        ],
+        "args": ["--mcp"],
         "env": {
           "AI_TOOLS": "1"
         }
@@ -43,9 +41,7 @@
   },
   "configForArchestra": {
     "command": "/usr/local/bin/st",
-    "args": [
-      "--mcp"
-    ],
+    "args": ["--mcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

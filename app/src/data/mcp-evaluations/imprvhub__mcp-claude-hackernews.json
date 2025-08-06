@@ -32,23 +32,17 @@
     "mcpServers": {
       "mcp-claude-hackernews-stdio": {
         "command": "node",
-        "args": [
-          "build/index.js"
-        ]
+        "args": ["build/index.js"]
       },
       "hackerNews": {
         "command": "node",
-        "args": [
-          "ABSOLUTE_PATH_TO_DIRECTORY/mcp-claude-hackernews/build/index.js"
-        ]
+        "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-claude-hackernews/build/index.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "build/index.js"
-    ],
+    "args": ["build/index.js"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

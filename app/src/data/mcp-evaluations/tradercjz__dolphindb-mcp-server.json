@@ -36,9 +36,7 @@
       },
       "dolphindb-mcp-server-uvx": {
         "command": "uvx",
-        "args": [
-          "dolphindb-mcp-server"
-        ]
+        "args": ["dolphindb-mcp-server"]
       }
     }
   },

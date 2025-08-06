@@ -30,10 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "bun",
-    "args": [
-      "run",
-      "dev:bitte-ai"
-    ],
+    "args": ["run", "dev:bitte-ai"],
     "env": {},
     "transport": "http",
     "oauth": {}
@@ -48,24 +45,15 @@
     "mcpServers": {
       "bitte-ai": {
         "command": "bun",
-        "args": [
-          "run",
-          "dev:bitte-ai"
-        ]
+        "args": ["run", "dev:bitte-ai"]
       },
       "bitte-ai-start": {
         "command": "bun",
-        "args": [
-          "run",
-          "start"
-        ]
+        "args": ["run", "start"]
       },
       "bitte-ai-dev": {
         "command": "bun",
-        "args": [
-          "run",
-          "dev"
-        ]
+        "args": ["run", "dev"]
       }
     }
   }

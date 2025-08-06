@@ -32,21 +32,13 @@
     "mcpServers": {
       "ticktick-mcp": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "git+https://github.com/jen6/ticktick-mcp.git",
-          "ticktick-mcp"
-        ]
+        "args": ["--from", "git+https://github.com/jen6/ticktick-mcp.git", "ticktick-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "--from",
-      "git+https://github.com/jen6/ticktick-mcp.git",
-      "ticktick-mcp"
-    ],
+    "args": ["--from", "git+https://github.com/jen6/ticktick-mcp.git", "ticktick-mcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

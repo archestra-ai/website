@@ -31,22 +31,14 @@
     "mcpServers": {
       "kukapay-dune-analytics-mcp": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "main.py"
-        ],
+        "args": ["dev", "main.py"],
         "env": {
           "DUNE_API_KEY": "your_api_key_here"
         }
       },
       "kukapay-dune-analytics-mcp-claude-install": {
         "command": "mcp",
-        "args": [
-          "install",
-          "main.py",
-          "--name",
-          "Dune Analytics"
-        ],
+        "args": ["install", "main.py", "--name", "Dune Analytics"],
         "env": {
           "DUNE_API_KEY": "your_api_key_here"
         }
@@ -55,15 +47,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@smithery/cli",
-      "mcp",
-      "dev",
-      "main.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@smithery/cli", "mcp", "dev", "main.py", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

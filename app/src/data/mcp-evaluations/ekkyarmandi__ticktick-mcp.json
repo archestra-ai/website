@@ -32,17 +32,13 @@
     "mcpServers": {
       "ticktick-mcp": {
         "command": "python",
-        "args": [
-          "main.py"
-        ]
+        "args": ["main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "main.py"
-    ],
+    "args": ["main.py"],
     "env": {},
     "transport": "http",
     "oauth": {

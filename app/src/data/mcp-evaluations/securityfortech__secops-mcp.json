@@ -32,28 +32,17 @@
     "mcpServers": {
       "secops-mcp-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-it",
-          "--rm",
-          "secops-mcp"
-        ]
+        "args": ["run", "-it", "--rm", "secops-mcp"]
       },
       "secops-mcp": {
         "command": "python",
-        "args": [
-          "main.py"
-        ]
+        "args": ["main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "main.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["main.py", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

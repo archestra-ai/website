@@ -32,12 +32,7 @@
     "mcpServers": {
       "database-tde": {
         "command": "uv",
-        "args": [
-          "run",
-          "python",
-          "-m",
-          "database_tde_server"
-        ],
+        "args": ["run", "python", "-m", "database_tde_server"],
         "cwd": "/path/to/cakm-mcp-server-sql-oracle",
         "env": {
           "DB_TDE_SERVER_NAME": "database-tde-mcp",
@@ -49,12 +44,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "python",
-      "-m",
-      "database_tde_server"
-    ],
+    "args": ["run", "python", "-m", "database_tde_server"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

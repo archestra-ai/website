@@ -31,24 +31,13 @@
     "mcpServers": {
       "kukapay-crypto-projects-mcp": {
         "command": "uv",
-        "args": [
-          "run",
-          "mcp",
-          "dev",
-          "main.py"
-        ]
+        "args": ["run", "mcp", "dev", "main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "mcp",
-      "main.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["run", "mcp", "main.py", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

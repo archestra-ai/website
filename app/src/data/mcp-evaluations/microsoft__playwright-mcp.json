@@ -32,17 +32,13 @@
     "mcpServers": {
       "playwright-mcp": {
         "command": "npx",
-        "args": [
-          "@playwright/mcp@latest"
-        ]
+        "args": ["@playwright/mcp@latest"]
       }
     }
   },
   "configForArchestra": {
     "command": "string",
-    "args": [
-      "string"
-    ],
+    "args": ["string"],
     "env": {
       "server-basic": "string",
       "server-configured": "string",

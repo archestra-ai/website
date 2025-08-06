@@ -29,12 +29,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@filestash/mcp-plugin",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@filestash/mcp-plugin", "--transport", "stdio"],
     "env": {
       "server-basic": "value",
       "server-configured": "value",

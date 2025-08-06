@@ -32,18 +32,13 @@
     "mcpServers": {
       "cross-llm-mcp": {
         "command": "npm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "dist/server.js",
-      "--stdio"
-    ],
+    "args": ["dist/server.js", "--stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

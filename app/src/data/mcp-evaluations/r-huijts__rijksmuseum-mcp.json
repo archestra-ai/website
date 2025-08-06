@@ -31,19 +31,14 @@
     "mcpServers": {
       "mcp-server-rijksmuseum": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-server-rijksmuseum"
-        ],
+        "args": ["-y", "mcp-server-rijksmuseum"],
         "env": {
           "RIJKSMUSEUM_API_KEY": "your_api_key_here"
         }
       },
       "mcp-server-rijksmuseum-configured": {
         "command": "node",
-        "args": [
-          "/path/to/rijksmuseum-server/build/index.js"
-        ],
+        "args": ["/path/to/rijksmuseum-server/build/index.js"],
         "env": {
           "RIJKSMUSEUM_API_KEY": "your_api_key_here"
         }
@@ -52,10 +47,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-server-rijksmuseum"
-    ],
+    "args": ["-y", "mcp-server-rijksmuseum"],
     "env": {
       "server-basic": "RIJKSMUSEUM_API_KEY"
     },

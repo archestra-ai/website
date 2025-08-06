@@ -32,25 +32,17 @@
     "mcpServers": {
       "braintree-server-stdio": {
         "command": "python",
-        "args": [
-          "braintree_server.py"
-        ]
+        "args": ["braintree_server.py"]
       },
       "braintree-sse-server-sse": {
         "command": "python",
-        "args": [
-          "braintree_sse_server.py"
-        ]
+        "args": ["braintree_sse_server.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "braintree_server.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["braintree_server.py", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

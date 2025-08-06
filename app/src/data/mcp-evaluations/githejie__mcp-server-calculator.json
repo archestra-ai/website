@@ -32,26 +32,17 @@
     "mcpServers": {
       "mcp-server-calculator": {
         "command": "uvx",
-        "args": [
-          "mcp-server-calculator"
-        ]
+        "args": ["mcp-server-calculator"]
       },
       "mcp_server_calculator": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_server_calculator"
-        ]
+        "args": ["-m", "mcp_server_calculator"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "mcp-server-calculator",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["mcp-server-calculator", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

@@ -32,26 +32,17 @@
     "mcpServers": {
       "simple-timeserver-mac": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_simple_timeserver"
-        ]
+        "args": ["-m", "mcp_simple_timeserver"]
       },
       "simple-timeserver-windows": {
         "command": "C:\\Users\\YOUR_USERNAME\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
-        "args": [
-          "-m",
-          "mcp_simple_timeserver"
-        ]
+        "args": ["-m", "mcp_simple_timeserver"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "-m",
-      "mcp_simple_timeserver"
-    ],
+    "args": ["-m", "mcp_simple_timeserver"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

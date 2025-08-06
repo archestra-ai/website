@@ -32,19 +32,13 @@
     "mcpServers": {
       "ethics-vibe-check": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@r-huijts/ethics-vibe-check"
-        ]
+        "args": ["-y", "@r-huijts/ethics-vibe-check"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@r-huijts/ethics-vibe-check"
-    ],
+    "args": ["-y", "@r-huijts/ethics-vibe-check"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

@@ -32,9 +32,7 @@
     "mcpServers": {
       "doordash": {
         "command": "node",
-        "args": [
-          "<thePathToYour>/build/index.js"
-        ],
+        "args": ["<thePathToYour>/build/index.js"],
         "env": [
           {
             "DOORDASH_API_KEY": "<REPLACE>"
@@ -45,9 +43,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "<thePathToYour>/build/index.js"
-    ],
+    "args": ["<thePathToYour>/build/index.js"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

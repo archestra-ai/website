@@ -32,18 +32,13 @@
     "mcpServers": {
       "prediction-markets-mcp-stdio": {
         "command": "node",
-        "args": [
-          "build/index.js"
-        ]
+        "args": ["build/index.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "build/index.js",
-      "--stdio"
-    ],
+    "args": ["build/index.js", "--stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

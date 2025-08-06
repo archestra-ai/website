@@ -32,15 +32,11 @@
     "mcpServers": {
       "roadrecon-mcp-server": {
         "command": "python",
-        "args": [
-          "roadrecon_mcp_server.py"
-        ]
+        "args": ["roadrecon_mcp_server.py"]
       },
       "roadrecon-mcp-server-configured": {
         "command": "python",
-        "args": [
-          "roadrecon_mcp_server.py"
-        ],
+        "args": ["roadrecon_mcp_server.py"],
         "env": {
           "ROADRECON_URL": "http://localhost:8080"
         }
@@ -49,11 +45,7 @@
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "roadrecon_mcp_server.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["roadrecon_mcp_server.py", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

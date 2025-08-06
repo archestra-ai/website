@@ -32,17 +32,13 @@
     "mcpServers": {
       "WolframAlphaServer": {
         "command": "python3",
-        "args": [
-          "/path/to/src/core/server.py"
-        ]
+        "args": ["/path/to/src/core/server.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python3",
-    "args": [
-      "src/core/server.py"
-    ],
+    "args": ["src/core/server.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

@@ -31,25 +31,17 @@
     "mcpServers": {
       "blender-mcp": {
         "command": "uvx",
-        "args": [
-          "blender-mcp"
-        ]
+        "args": ["blender-mcp"]
       },
       "blender-mcp-windows": {
         "command": "cmd",
-        "args": [
-          "/c",
-          "uvx",
-          "blender-mcp"
-        ]
+        "args": ["/c", "uvx", "blender-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "blender-mcp"
-    ],
+    "args": ["blender-mcp"],
     "env": {},
     "transport": "stdio",
     "oauth": {

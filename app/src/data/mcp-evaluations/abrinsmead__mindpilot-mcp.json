@@ -32,47 +32,29 @@
     "mcpServers": {
       "mindpilot-mcp": {
         "command": "npx",
-        "args": [
-          "@mindpilot/mcp@latest"
-        ]
+        "args": ["@mindpilot/mcp@latest"]
       },
       "mindpilot-mcp-disable-analytics": {
         "command": "npx",
-        "args": [
-          "@mindpilot/mcp@latest",
-          "--disable-analytics"
-        ]
+        "args": ["@mindpilot/mcp@latest", "--disable-analytics"]
       },
       "mindpilot-mcp-port-5555": {
         "command": "npx",
-        "args": [
-          "@mindpilot/mcp@latest",
-          "--port",
-          "5555"
-        ]
+        "args": ["@mindpilot/mcp@latest", "--port", "5555"]
       },
       "mindpilot-mcp-custom-data-path": {
         "command": "npx",
-        "args": [
-          "@mindpilot/mcp@latest",
-          "--data-path",
-          "/path/to/custom/location"
-        ]
+        "args": ["@mindpilot/mcp@latest", "--data-path", "/path/to/custom/location"]
       },
       "mindpilot-mcp-dev": {
         "command": "npx",
-        "args": [
-          "tsx",
-          "<path to...>/src/server/server.ts"
-        ]
+        "args": ["tsx", "<path to...>/src/server/server.ts"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "@mindpilot/mcp@latest"
-    ],
+    "args": ["@mindpilot/mcp@latest"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

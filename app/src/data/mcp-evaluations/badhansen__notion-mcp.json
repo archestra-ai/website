@@ -32,23 +32,13 @@
     "mcpServers": {
       "notion-mcp": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/Users/username/Projects/Python/notion-mcp/src",
-          "run",
-          "server.py"
-        ]
+        "args": ["--directory", "/Users/username/Projects/Python/notion-mcp/src", "run", "server.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "src",
-      "run",
-      "server.py"
-    ],
+    "args": ["--directory", "src", "run", "server.py"],
     "env": {
       "server-basic": "",
       "server-configured": "",

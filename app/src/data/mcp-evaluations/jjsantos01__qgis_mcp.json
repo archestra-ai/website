@@ -43,12 +43,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "./src/qgis_mcp",
-      "run",
-      "qgis_mcp_server.py"
-    ],
+    "args": ["--directory", "./src/qgis_mcp", "run", "qgis_mcp_server.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

@@ -32,39 +32,23 @@
     "mcpServers": {
       "simctl-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "simctl-mcp"
-        ]
+        "args": ["-y", "simctl-mcp"]
       },
       "simctl-mcp-stdio": {
         "command": "npx",
-        "args": [
-          "simctl-mcp"
-        ]
+        "args": ["simctl-mcp"]
       },
       "simctl-mcp-http": {
         "command": "npx",
-        "args": [
-          "simctl-mcp",
-          "--http"
-        ]
+        "args": ["simctl-mcp", "--http"]
       },
       "simctl-mcp-http-port-3000": {
         "command": "npx",
-        "args": [
-          "simctl-mcp",
-          "--http",
-          "--port",
-          "3000"
-        ]
+        "args": ["simctl-mcp", "--http", "--port", "3000"]
       },
       "simctl-mcp-http-env-port": {
         "command": "npx",
-        "args": [
-          "simctl-mcp",
-          "--http"
-        ],
+        "args": ["simctl-mcp", "--http"],
         "env": {
           "PORT": "3000"
         }
@@ -73,10 +57,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "simctl-mcp"
-    ],
+    "args": ["-y", "simctl-mcp"],
     "env": {},
     "transport": "stdio",
     "oauth": {

@@ -32,17 +32,11 @@
     "mcpServers": {
       "mcp-human": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-human@latest"
-        ]
+        "args": ["-y", "mcp-human@latest"]
       },
       "mcp-human-production": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-human@latest"
-        ],
+        "args": ["-y", "mcp-human@latest"],
         "env": {
           "MTURK_SANDBOX": "false"
         }
@@ -51,10 +45,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-human@latest"
-    ],
+    "args": ["-y", "mcp-human@latest"],
     "env": {
       "server-basic": "MTURK_SANDBOX",
       "server-configured": "AWS_REGION",

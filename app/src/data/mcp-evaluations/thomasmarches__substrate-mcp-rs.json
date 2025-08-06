@@ -32,10 +32,7 @@
     "mcpServers": {
       "substrate-mcp-rs-cargo": {
         "command": "cargo",
-        "args": [
-          "run",
-          "--release"
-        ]
+        "args": ["run", "--release"]
       },
       "substrate-mcp-rs-binary": {
         "command": "$PROJECT_ROOT_ABSOLUTE_PATH/target/release/substrate-mcp-rs",

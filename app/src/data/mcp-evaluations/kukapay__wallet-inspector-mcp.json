@@ -32,12 +32,7 @@
     "mcpServers": {
       "Wallet Inspector": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/wallet-inspector-mcp",
-          "run",
-          "main.py"
-        ],
+        "args": ["--directory", "/path/to/wallet-inspector-mcp", "run", "main.py"],
         "env": {
           "DUNE_SIM_API_KEY": "your_dune_sim_api_key_here"
         }
@@ -46,10 +41,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "main.py"
-    ],
+    "args": ["run", "main.py"],
     "env": {
       "server-basic": "DUNE_SIM_API_KEY"
     },

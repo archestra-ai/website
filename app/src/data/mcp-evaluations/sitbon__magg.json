@@ -31,59 +31,32 @@
     "mcpServers": {
       "magg-stdio": {
         "command": "magg",
-        "args": [
-          "serve"
-        ],
+        "args": ["serve"],
         "notes": "Runs Magg with stdio transport. Requires installation via 'uv tool install magg'."
       },
       "magg-http": {
         "command": "magg",
-        "args": [
-          "serve",
-          "--http"
-        ],
+        "args": ["serve", "--http"],
         "notes": "Runs Magg with HTTP transport. Requires installation via 'uv tool install magg'."
       },
       "magg-github-stdio": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "git+https://github.com/sitbon/magg.git",
-          "magg"
-        ],
+        "args": ["--from", "git+https://github.com/sitbon/magg.git", "magg"],
         "notes": "Runs Magg directly from GitHub with stdio transport."
       },
       "magg-github-http": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "git+https://github.com/sitbon/magg.git",
-          "magg",
-          "serve",
-          "--http"
-        ],
+        "args": ["--from", "git+https://github.com/sitbon/magg.git", "magg", "serve", "--http"],
         "notes": "Runs Magg directly from GitHub with HTTP transport."
       },
       "ghcr.io-sitbon-magg-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8000:8000",
-          "ghcr.io/sitbon/magg:latest"
-        ],
+        "args": ["run", "-p", "8000:8000", "ghcr.io/sitbon/magg:latest"],
         "notes": "Runs the production Docker image."
       },
       "ghcr.io-sitbon-magg-docker-auth-volume": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8000:8000",
-          "-v",
-          "~/.ssh/magg:/home/magg/.ssh/magg:ro",
-          "ghcr.io/sitbon/magg:latest"
-        ],
+        "args": ["run", "-p", "8000:8000", "-v", "~/.ssh/magg:/home/magg/.ssh/magg:ro", "ghcr.io/sitbon/magg:latest"],
         "notes": "Runs the production Docker image with authentication via a mounted private key."
       },
       "ghcr.io-sitbon-magg-docker-auth-env": {
@@ -103,60 +76,34 @@
       },
       "ghcr.io-sitbon-magg-docker-beta": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8000:8000",
-          "ghcr.io/sitbon/magg:beta"
-        ],
+        "args": ["run", "-p", "8000:8000", "ghcr.io/sitbon/magg:beta"],
         "notes": "Runs the beta Docker image."
       },
       "ghcr.io-sitbon-magg-docker-with-config": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8000:8000",
-          "-v",
-          "/path/to/config:/home/magg/.magg",
-          "ghcr.io/sitbon/magg:latest"
-        ],
+        "args": ["run", "-p", "8000:8000", "-v", "/path/to/config:/home/magg/.magg", "ghcr.io/sitbon/magg:latest"],
         "notes": "Runs the production Docker image with a custom config directory mounted."
       },
       "ghcr.io-sitbon-magg-docker-compose-prod": {
         "command": "docker",
-        "args": [
-          "compose",
-          "up",
-          "magg"
-        ],
+        "args": ["compose", "up", "magg"],
         "notes": "Runs the production version using Docker Compose. Requires cloning the repository first."
       },
       "ghcr.io-sitbon-magg-docker-compose-beta": {
         "command": "docker",
-        "args": [
-          "compose",
-          "up",
-          "magg-beta"
-        ],
+        "args": ["compose", "up", "magg-beta"],
         "notes": "Runs the staging/beta version using Docker Compose. Requires cloning the repository first."
       },
       "ghcr.io-sitbon-magg-docker-compose-dev": {
         "command": "docker",
-        "args": [
-          "compose",
-          "up",
-          "magg-dev"
-        ],
+        "args": ["compose", "up", "magg-dev"],
         "notes": "Runs the development version using Docker Compose. Requires cloning the repository first."
       }
     }
   },
   "configForArchestra": {
     "command": "magg",
-    "args": [
-      "serve"
-    ],
+    "args": ["serve"],
     "env": {
       "server-docker": "MAGG_PRIVATE_KEY"
     },

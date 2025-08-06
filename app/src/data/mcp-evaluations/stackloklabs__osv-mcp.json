@@ -32,10 +32,7 @@
     "mcpServers": {
       "osv": {
         "command": "thv",
-        "args": [
-          "run",
-          "osv"
-        ]
+        "args": ["run", "osv"]
       },
       "osv-mcp-server": {
         "command": "./build/osv-mcp-server",

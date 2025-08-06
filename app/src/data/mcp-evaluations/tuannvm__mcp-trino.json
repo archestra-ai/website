@@ -60,10 +60,7 @@
   },
   "configForArchestra": {
     "command": "mcp-trino",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

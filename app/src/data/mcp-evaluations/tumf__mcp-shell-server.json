@@ -32,30 +32,21 @@
     "mcpServers": {
       "mcp-shell-server-configured-published": {
         "command": "uvx",
-        "args": [
-          "mcp-shell-server"
-        ],
+        "args": ["mcp-shell-server"],
         "env": {
           "ALLOW_COMMANDS": "ls,cat,pwd,grep,wc,touch,find"
         }
       },
       "mcp-shell-server-configured-local": {
         "command": "uv",
-        "args": [
-          "--directory",
-          ".",
-          "run",
-          "mcp-shell-server"
-        ],
+        "args": ["--directory", ".", "run", "mcp-shell-server"],
         "env": {
           "ALLOW_COMMANDS": "ls,cat,pwd,grep,wc,touch,find"
         }
       },
       "mcp-shell-server-direct": {
         "command": "uvx",
-        "args": [
-          "mcp-shell-server"
-        ],
+        "args": ["mcp-shell-server"],
         "env": {
           "ALLOW_COMMANDS": "ls,cat,echo"
         }
@@ -64,11 +55,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "mcp-shell-server",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["mcp-shell-server", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

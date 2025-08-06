@@ -31,19 +31,12 @@
   "configForClients": {
     "tsgram-mcp": {
       "command": "npm",
-      "args": [
-        "run",
-        "docker:start"
-      ]
+      "args": ["run", "docker:start"]
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "dist/index.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["dist/index.js", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

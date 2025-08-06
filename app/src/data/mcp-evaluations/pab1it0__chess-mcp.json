@@ -32,32 +32,17 @@
     "mcpServers": {
       "pab1it0-chess-mcp-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "pab1it0/chess-mcp"
-        ]
+        "args": ["run", "--rm", "-i", "pab1it0/chess-mcp"]
       },
       "chess-mcp-uv": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "<full path to chess-mcp directory>",
-          "run",
-          "src/chess_mcp/main.py"
-        ]
+        "args": ["--directory", "<full path to chess-mcp directory>", "run", "src/chess_mcp/main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "src/chess_mcp/main.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["run", "src/chess_mcp/main.py", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

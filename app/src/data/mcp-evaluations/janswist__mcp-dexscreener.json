@@ -32,19 +32,13 @@
     "mcpServers": {
       "dexscreener-configured": {
         "command": "node",
-        "args": [
-          "/ABSOLUTE/PATH/TO/PARENT/FOLDER/index.js"
-        ]
+        "args": ["/ABSOLUTE/PATH/TO/PARENT/FOLDER/index.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "index.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["index.js", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

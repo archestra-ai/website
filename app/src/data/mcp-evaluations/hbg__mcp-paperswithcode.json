@@ -30,12 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@hbg/mcp-paperswithcode",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@hbg/mcp-paperswithcode", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

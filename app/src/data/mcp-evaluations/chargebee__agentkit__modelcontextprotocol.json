@@ -32,19 +32,13 @@
     "mcpServers": {
       "chargebee-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@chargebee/mcp"
-        ]
+        "args": ["-y", "@chargebee/mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@chargebee/mcp"
-    ],
+    "args": ["-y", "@chargebee/mcp"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

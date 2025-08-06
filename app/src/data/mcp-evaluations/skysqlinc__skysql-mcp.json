@@ -32,13 +32,7 @@
     "mcpServers": {
       "wong2-mcp-cli": {
         "command": "npx",
-        "args": [
-          "@wong2/mcp-cli",
-          "uv",
-          "run",
-          "python",
-          "src/mcp-server/server.py"
-        ]
+        "args": ["@wong2/mcp-cli", "uv", "run", "python", "src/mcp-server/server.py"]
       },
       "skysql-mcp-launch-sh-configured": {
         "command": "<full-path-to>/skysql-mcp/launch.sh",
@@ -58,11 +52,7 @@
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "src/mcp-server/server.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["src/mcp-server/server.py", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

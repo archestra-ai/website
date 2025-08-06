@@ -32,10 +32,7 @@
     "mcpServers": {
       "campground-search-mcp-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "campertunity-mcp-server@latest"
-        ],
+        "args": ["-y", "campertunity-mcp-server@latest"],
         "env": {
           "CAMPERTUNITY_API_KEY": "your_api_key_here"
         }
@@ -44,12 +41,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "campertunity-mcp-server@latest",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "campertunity-mcp-server@latest", "--transport", "stdio"],
     "env": {
       "server-basic": "CAMPERTUNITY_API_KEY"
     },

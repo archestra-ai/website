@@ -40,19 +40,11 @@
       },
       "biel-mcp-server-python": {
         "command": "python",
-        "args": [
-          "biel_mcp_server.py"
-        ]
+        "args": ["biel_mcp_server.py"]
       },
       "biel-mcp-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-d",
-          "-p",
-          "7832:7832",
-          "biel-mcp"
-        ]
+        "args": ["run", "-d", "-p", "7832:7832", "biel-mcp"]
       }
     }
   },

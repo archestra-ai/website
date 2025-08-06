@@ -36,14 +36,7 @@
       },
       "mcp-package-version-sse": {
         "command": "mcp-package-version",
-        "args": [
-          "--transport",
-          "sse",
-          "--port",
-          "18080",
-          "--base-url",
-          "http://localhost:18080"
-        ]
+        "args": ["--transport", "sse", "--port", "18080", "--base-url", "http://localhost:18080"]
       },
       "mcp-package-version-configured": {
         "command": "/Users/sammcj/go/bin/mcp-package-version",
@@ -51,12 +44,7 @@
       },
       "mcp-package-version-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "18080:18080",
-          "ghcr.io/sammcj/mcp-package-version:main"
-        ]
+        "args": ["run", "-p", "18080:18080", "ghcr.io/sammcj/mcp-package-version:main"]
       }
     }
   },

@@ -32,44 +32,25 @@
     "mcpServers": {
       "mcp-mermaid-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-mermaid"
-        ]
+        "args": ["-y", "mcp-mermaid"]
       },
       "mcp-mermaid-stdio-windows": {
         "command": "cmd",
-        "args": [
-          "/c",
-          "npx",
-          "-y",
-          "mcp-mermaid"
-        ]
+        "args": ["/c", "npx", "-y", "mcp-mermaid"]
       },
       "mcp-mermaid-sse": {
         "command": "mcp-mermaid",
-        "args": [
-          "-t",
-          "sse"
-        ]
+        "args": ["-t", "sse"]
       },
       "mcp-mermaid-streamable": {
         "command": "mcp-mermaid",
-        "args": [
-          "-t",
-          "streamable"
-        ]
+        "args": ["-t", "streamable"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-mermaid",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "mcp-mermaid", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

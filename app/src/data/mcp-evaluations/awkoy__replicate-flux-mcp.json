@@ -32,10 +32,7 @@
     "mcpServers": {
       "replicate-flux-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "replicate-flux-mcp"
-        ],
+        "args": ["-y", "replicate-flux-mcp"],
         "env": {
           "REPLICATE_API_TOKEN": "YOUR_TOKEN"
         }
@@ -44,10 +41,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "replicate-flux-mcp"
-    ],
+    "args": ["-y", "replicate-flux-mcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -32,19 +32,13 @@
     "mcpServers": {
       "mobile-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@mobilenext/mobile-mcp@latest"
-        ]
+        "args": ["-y", "@mobilenext/mobile-mcp@latest"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@mobilenext/mobile-mcp@latest"
-    ],
+    "args": ["-y", "@mobilenext/mobile-mcp@latest"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

@@ -32,26 +32,17 @@
     "mcpServers": {
       "mcp-security-audit": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-security-audit"
-        ]
+        "args": ["-y", "mcp-security-audit"]
       },
       "mcp-security-audit-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "/path/to/mcp-security-audit/build/index.js"
-        ]
+        "args": ["-y", "/path/to/mcp-security-audit/build/index.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-security-audit"
-    ],
+    "args": ["-y", "mcp-security-audit"],
     "env": {},
     "transport": "stdio",
     "oauth": {

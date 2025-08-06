@@ -32,9 +32,7 @@
     "mcpServers": {
       "trieve-mcp-server-configured": {
         "command": "npx",
-        "args": [
-          "trieve-mcp-server@latest"
-        ],
+        "args": ["trieve-mcp-server@latest"],
         "env": {
           "TRIEVE_API_KEY": "$TRIEVE_API_KEY",
           "TRIEVE_ORGANIZATION_ID": "$TRIEVE_ORGANIZATION_ID",
@@ -57,12 +55,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "trieve-mcp-server@latest",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "trieve-mcp-server@latest", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

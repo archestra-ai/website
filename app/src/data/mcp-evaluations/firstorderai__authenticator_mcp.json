@@ -32,40 +32,22 @@
     "mcpServers": {
       "authenticator-mcp-macos-linux-arg": {
         "command": "npx",
-        "args": [
-          "-y",
-          "authenticator-mcp",
-          "--access-token=YOUR-KEY"
-        ]
+        "args": ["-y", "authenticator-mcp", "--access-token=YOUR-KEY"]
       },
       "authenticator-mcp-macos-linux-env": {
         "command": "npx",
-        "args": [
-          "-y",
-          "authenticator-mcp"
-        ],
+        "args": ["-y", "authenticator-mcp"],
         "env": {
           "AUTHENTICATOR_ACCESS_TOKEN": "YOUR-KEY"
         }
       },
       "authenticator-mcp-windows-arg": {
         "command": "cmd",
-        "args": [
-          "/c",
-          "npx",
-          "-y",
-          "authenticator-mcp",
-          "--access-token=YOUR-KEY"
-        ]
+        "args": ["/c", "npx", "-y", "authenticator-mcp", "--access-token=YOUR-KEY"]
       },
       "authenticator-mcp-windows-env": {
         "command": "cmd",
-        "args": [
-          "/c",
-          "npx",
-          "-y",
-          "authenticator-mcp"
-        ],
+        "args": ["/c", "npx", "-y", "authenticator-mcp"],
         "env": {
           "AUTHENTICATOR_ACCESS_TOKEN": "YOUR-KEY"
         }
@@ -74,10 +56,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "authenticator-mcp"
-    ],
+    "args": ["-y", "authenticator-mcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

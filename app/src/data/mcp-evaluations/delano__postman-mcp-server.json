@@ -32,9 +32,7 @@
     "mcpServers": {
       "postman-api-server": {
         "command": "node",
-        "args": [
-          "/path/to/postman-api-server/build/index.js"
-        ],
+        "args": ["/path/to/postman-api-server/build/index.js"],
         "env": {
           "POSTMAN_API_KEY": "CHANGEME"
         }
@@ -43,9 +41,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "/path/to/postman-api-server/build/index.js"
-    ],
+    "args": ["/path/to/postman-api-server/build/index.js"],
     "env": {
       "server-basic": "",
       "server-configured": "",

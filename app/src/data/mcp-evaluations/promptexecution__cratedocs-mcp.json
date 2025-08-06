@@ -32,39 +32,19 @@
     "mcpServers": {
       "cratedocs-stdio": {
         "command": "cratedocs",
-        "args": [
-          "stdio"
-        ]
+        "args": ["stdio"]
       },
       "cratedocs-http": {
         "command": "cargo",
-        "args": [
-          "run",
-          "--bin",
-          "cratedocs",
-          "http"
-        ]
+        "args": ["run", "--bin", "cratedocs", "http"]
       },
       "cratedocs-http-custom-address": {
         "command": "cargo",
-        "args": [
-          "run",
-          "--bin",
-          "cratedocs",
-          "http",
-          "--address",
-          "0.0.0.0:3000"
-        ]
+        "args": ["run", "--bin", "cratedocs", "http", "--address", "0.0.0.0:3000"]
       },
       "cratedocs-http-debug": {
         "command": "cargo",
-        "args": [
-          "run",
-          "--bin",
-          "cratedocs",
-          "http",
-          "--debug"
-        ]
+        "args": ["run", "--bin", "cratedocs", "http", "--debug"]
       },
       "mcp-remote": {
         "command": "bunx",
@@ -82,9 +62,7 @@
   },
   "configForArchestra": {
     "command": "cratedocs",
-    "args": [
-      "stdio"
-    ],
+    "args": ["stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

@@ -38,42 +38,25 @@
       },
       "upstash-context7-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@upstash/context7-mcp"
-        ]
+        "args": ["-y", "@upstash/context7-mcp"]
       },
       "upstash-context7-mcp-latest": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@upstash/context7-mcp@latest"
-        ]
+        "args": ["-y", "@upstash/context7-mcp@latest"]
       },
       "upstash-context7-mcp-bunx": {
         "command": "bunx",
-        "args": [
-          "-y",
-          "@upstash/context7-mcp"
-        ]
+        "args": ["-y", "@upstash/context7-mcp"]
       },
       "upstash-context7-mcp-deno": {
         "command": "deno",
-        "args": [
-          "run",
-          "--allow-env=NO_DEPRECATION,TRACE_DEPRECATION",
-          "--allow-net",
-          "npm:@upstash/context7-mcp"
-        ]
+        "args": ["run", "--allow-env=NO_DEPRECATION,TRACE_DEPRECATION", "--allow-net", "npm:@upstash/context7-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@upstash/context7-mcp"
-    ],
+    "args": ["-y", "@upstash/context7-mcp"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

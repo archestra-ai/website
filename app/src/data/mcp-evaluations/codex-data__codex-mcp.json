@@ -32,35 +32,26 @@
     "mcpServers": {
       "codex-data-codex-mcp-stdio": {
         "command": "npx",
-        "args": [
-          "@codex-data/codex-mcp"
-        ],
+        "args": ["@codex-data/codex-mcp"],
         "env": {}
       },
       "codex-data-codex-mcp-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@codex-data/codex-mcp"
-        ],
+        "args": ["-y", "@codex-data/codex-mcp"],
         "env": {
           "CODEX_API_KEY": "<your-codex-api-key>"
         }
       },
       "codex-data-codex-mcp-local-configured": {
         "command": "node",
-        "args": [
-          "/path/to/codex-mcp/build/index.js"
-        ],
+        "args": ["/path/to/codex-mcp/build/index.js"],
         "env": {
           "CODEX_API_KEY": "<your-codex-api-key>"
         }
       },
       "codex-data-codex-mcp-cli-configured": {
         "command": "npx",
-        "args": [
-          "@codex-data/codex-mcp"
-        ],
+        "args": ["@codex-data/codex-mcp"],
         "env": {
           "CODEX_API_KEY": "<your-codex-api-key>"
         }
@@ -69,10 +60,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@codex-data/codex-mcp"
-    ],
+    "args": ["-y", "@codex-data/codex-mcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

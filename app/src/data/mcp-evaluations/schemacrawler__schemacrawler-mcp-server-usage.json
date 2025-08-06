@@ -31,32 +31,17 @@
     "mcpServers": {
       "schemacrawler-schemacrawler-ai-docker": {
         "command": "docker",
-        "args": [
-          "compose",
-          "-f",
-          "schemacrawler-mcpserver.yaml",
-          "up",
-          "-d"
-        ]
+        "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"]
       },
       "schemacrawler-schemacrawler-ai-docker-configured": {
         "command": "docker",
-        "args": [
-          "compose",
-          "-f",
-          "schemacrawler-mcpserver.yaml",
-          "up",
-          "-d"
-        ]
+        "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"]
       }
     }
   },
   "configForArchestra": {
     "command": "schemacrawler-ai",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

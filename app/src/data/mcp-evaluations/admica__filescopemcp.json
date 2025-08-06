@@ -32,21 +32,14 @@
     "mcpServers": {
       "FileScopeMCP-windows": {
         "command": "node",
-        "args": [
-          "<build script sets this>/mcp-server.js",
-          "--base-dir=C:/Users/admica/my/project/base"
-        ],
+        "args": ["<build script sets this>/mcp-server.js", "--base-dir=C:/Users/admica/my/project/base"],
         "transport": "stdio",
         "disabled": false,
         "alwaysAllow": []
       },
       "FileScopeMCP-linux": {
         "command": "wsl",
-        "args": [
-          "-d",
-          "Ubuntu-24.04",
-          "/home/admica/FileScopeMCP/run.sh"
-        ],
+        "args": ["-d", "Ubuntu-24.04", "/home/admica/FileScopeMCP/run.sh"],
         "transport": "stdio",
         "disabled": false,
         "alwaysAllow": []
@@ -55,12 +48,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "mcp-server.js",
-      "--base-dir=<project_base_directory>",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["mcp-server.js", "--base-dir=<project_base_directory>", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

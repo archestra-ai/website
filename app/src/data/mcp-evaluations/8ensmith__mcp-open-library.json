@@ -31,28 +31,17 @@
     "mcpServers": {
       "8enSmith-mcp-open-library": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@8enSmith/mcp-open-library"
-        ]
+        "args": ["-y", "@8enSmith/mcp-open-library"]
       },
       "mcp-open-library-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8080:8080",
-          "mcp-open-library"
-        ]
+        "args": ["run", "-p", "8080:8080", "mcp-open-library"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@8enSmith/mcp-open-library"
-    ],
+    "args": ["-y", "@8enSmith/mcp-open-library"],
     "env": {},
     "transport": "stdio",
     "oauth": {

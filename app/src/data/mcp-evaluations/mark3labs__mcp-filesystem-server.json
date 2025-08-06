@@ -31,20 +31,11 @@
   "configForClients": {
     "mcp-filesystem-server": {
       "command": "mcp-filesystem-server",
-      "args": [
-        "/path/to/allowed/directory",
-        "/another/allowed/directory"
-      ]
+      "args": ["/path/to/allowed/directory", "/another/allowed/directory"]
     },
     "ghcr.io-mark3labs-mcp-filesystem-server-latest-docker": {
       "command": "docker",
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "ghcr.io/mark3labs/mcp-filesystem-server:latest",
-        "/path/to/allowed/directory"
-      ]
+      "args": ["run", "-i", "--rm", "ghcr.io/mark3labs/mcp-filesystem-server:latest", "/path/to/allowed/directory"]
     },
     "ghcr.io-mark3labs-mcp-filesystem-server-latest-docker-configured": {
       "command": "docker",
@@ -60,10 +51,7 @@
   },
   "configForArchestra": {
     "command": "mcp-filesystem-server",
-    "args": [
-      "/path/to/allowed/directory",
-      "/another/allowed/directory"
-    ],
+    "args": ["/path/to/allowed/directory", "/another/allowed/directory"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

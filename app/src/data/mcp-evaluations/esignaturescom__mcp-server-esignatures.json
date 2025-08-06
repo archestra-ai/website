@@ -35,18 +35,11 @@
         "env": {
           "ESIGNATURES_SECRET_TOKEN": "your-esignatures-api-secret-token"
         },
-        "args": [
-          "--directory",
-          "/your-local-directories/mcp-server-esignatures",
-          "run",
-          "mcp-server-esignatures"
-        ]
+        "args": ["--directory", "/your-local-directories/mcp-server-esignatures", "run", "mcp-server-esignatures"]
       },
       "mcp-server-esignatures-published": {
         "command": "uvx",
-        "args": [
-          "mcp-server-esignatures"
-        ],
+        "args": ["mcp-server-esignatures"],
         "env": {
           "ESIGNATURES_SECRET_TOKEN": "your-esignatures-api-secret-token"
         }
@@ -55,9 +48,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "mcp-server-esignatures"
-    ],
+    "args": ["mcp-server-esignatures"],
     "env": {
       "server-basic": "",
       "server-configured": "",

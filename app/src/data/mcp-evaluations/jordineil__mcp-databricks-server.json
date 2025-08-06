@@ -32,28 +32,17 @@
     "mcpServers": {
       "databricks-mcp-server": {
         "command": "python",
-        "args": [
-          "main.py"
-        ]
+        "args": ["main.py"]
       },
       "modelcontextprotocol-inspector": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/inspector",
-          "python3",
-          "main.py"
-        ]
+        "args": ["-y", "@modelcontextprotocol/inspector", "python3", "main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "main.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["main.py", "--transport", "stdio"],
     "env": {
       "server-basic": "DATABRICKS_HOST",
       "server-configured": "DATABRICKS_TOKEN",

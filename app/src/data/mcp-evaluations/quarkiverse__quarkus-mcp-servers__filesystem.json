@@ -32,27 +32,15 @@
     "mcpServers": {
       "filesystem-quarkiverse-quarkus-mcp-servers": {
         "command": "jbang",
-        "args": [
-          "filesystem@quarkiverse/quarkus-mcp-servers",
-          "~/code/quarkiverse",
-          "~/code/jbang"
-        ]
+        "args": ["filesystem@quarkiverse/quarkus-mcp-servers", "~/code/quarkiverse", "~/code/jbang"]
       },
       "filesystem-quarkiverse-quarkus-mcp-servers-configured": {
         "command": "jbang",
-        "args": [
-          "filesystem@quarkiverse/quarkus-mcp-servers",
-          "[path1]",
-          "[path2]"
-        ]
+        "args": ["filesystem@quarkiverse/quarkus-mcp-servers", "[path1]", "[path2]"]
       },
       "mcp-server-filesystem-osx-aarch_64-configured": {
         "command": "jbang",
-        "args": [
-          "mcp-server-filesystem-osx-aarch_64",
-          "[path1]",
-          "[path2]"
-        ]
+        "args": ["mcp-server-filesystem-osx-aarch_64", "[path1]", "[path2]"]
       },
       "filesystem-quarkiverse-quarkus-mcp-servers-with-logging": {
         "command": "jbang",
@@ -68,11 +56,7 @@
   },
   "configForArchestra": {
     "command": "jbang",
-    "args": [
-      "filesystem@quarkiverse/quarkus-mcp-servers",
-      "[path1]",
-      "[path2]"
-    ],
+    "args": ["filesystem@quarkiverse/quarkus-mcp-servers", "[path1]", "[path2]"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

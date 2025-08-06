@@ -32,23 +32,13 @@
     "mcpServers": {
       "ghcr.io-joinly-ai-joinly-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8000:8000",
-          "ghcr.io/joinly-ai/joinly:latest"
-        ]
+        "args": ["run", "-p", "8000:8000", "ghcr.io/joinly-ai/joinly:latest"]
       }
     }
   },
   "configForArchestra": {
     "command": "joinly",
-    "args": [
-      "--host",
-      "0.0.0.0",
-      "--port",
-      "8000"
-    ],
+    "args": ["--host", "0.0.0.0", "--port", "8000"],
     "env": {
       "server-basic": "",
       "server-configured": "",

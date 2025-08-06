@@ -41,10 +41,7 @@
   },
   "configForArchestra": {
     "command": "solvitor-mcp",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

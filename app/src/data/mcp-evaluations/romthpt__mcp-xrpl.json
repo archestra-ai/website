@@ -32,19 +32,13 @@
     "mcpServers": {
       "RomThpt-mcp-xrpl": {
         "command": "npm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "dist/index.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["dist/index.js", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

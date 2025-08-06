@@ -32,20 +32,14 @@
     "mcpServers": {
       "finbud-data-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "finbud-data-mcp"
-        ],
+        "args": ["-y", "finbud-data-mcp"],
         "env": {
           "FINBUD_DATA_API_KEY": "My API Key"
         }
       },
       "finbud-data-mcp-with-config": {
         "command": "npx",
-        "args": [
-          "-y",
-          "finbud-data-mcp"
-        ],
+        "args": ["-y", "finbud-data-mcp"],
         "env": {
           "FINBUD_DATA_API_KEY": "My API Key",
           "FINBUD_DATA_BASE_URL": "https://data.finbud.ai/api"
@@ -55,12 +49,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "finbud-data-mcp",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "finbud-data-mcp", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

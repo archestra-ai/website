@@ -32,21 +32,13 @@
     "mcpServers": {
       "mcp-installer": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@anaisbetts/mcp-installer"
-        ]
+        "args": ["-y", "@anaisbetts/mcp-installer"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@anaisbetts/mcp-installer",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@anaisbetts/mcp-installer", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

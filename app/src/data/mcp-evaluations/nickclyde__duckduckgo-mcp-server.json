@@ -32,24 +32,17 @@
     "mcpServers": {
       "duckduckgo-mcp-server": {
         "command": "uvx",
-        "args": [
-          "duckduckgo-mcp-server"
-        ]
+        "args": ["duckduckgo-mcp-server"]
       },
       "duckduckgo-mcp-server-dev": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "server.py"
-        ]
+        "args": ["dev", "server.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "duckduckgo-mcp-server"
-    ],
+    "args": ["duckduckgo-mcp-server"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

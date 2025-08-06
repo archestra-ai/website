@@ -31,26 +31,14 @@
     "mcpServers": {
       "agent_mcp": {
         "command": "uv",
-        "args": [
-          "run",
-          "-m",
-          "agent_mcp.cli",
-          "--project-dir",
-          "/path/to/your/project"
-        ]
+        "args": ["run", "-m", "agent_mcp.cli", "--project-dir", "/path/to/your/project"]
       }
     }
   },
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "-m",
-      "agent_mcp.cli",
-      "--project-dir",
-      "/path/to/your/project"
-    ],
+    "args": ["run", "-m", "agent_mcp.cli", "--project-dir", "/path/to/your/project"],
     "env": {
       "server-basic": "",
       "server-configured": "",

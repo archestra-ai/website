@@ -32,28 +32,17 @@
     "mcpServers": {
       "rae-mpc-stdio": {
         "command": "./rae-mpc",
-        "args": [
-          "--transport",
-          "stdio"
-        ]
+        "args": ["--transport", "stdio"]
       },
       "rae-mpc-sse": {
         "command": "./rae-mpc",
-        "args": [
-          "--transport",
-          "sse",
-          "--port",
-          "8080"
-        ]
+        "args": ["--transport", "sse", "--port", "8080"]
       }
     }
   },
   "configForArchestra": {
     "command": "rae-mpc",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

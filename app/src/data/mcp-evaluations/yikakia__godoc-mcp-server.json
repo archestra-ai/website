@@ -38,10 +38,7 @@
   },
   "configForArchestra": {
     "command": "godoc-mcp-server",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

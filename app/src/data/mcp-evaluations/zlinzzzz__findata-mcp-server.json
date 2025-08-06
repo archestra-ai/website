@@ -32,12 +32,7 @@
     "mcpServers": {
       "finData-stdio": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/ABSOLUTE/PATH/TO/PARENT/FOLDER/finData-mcp-server/src/findata",
-          "run",
-          "server.py"
-        ],
+        "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/FOLDER/finData-mcp-server/src/findata", "run", "server.py"],
         "env": {
           "DATA_API_TOKEN": "",
           "PROVIDER": "tushare"
@@ -45,12 +40,7 @@
       },
       "finData-sse": {
         "command": "uv",
-        "args": [
-          "run",
-          "server.py",
-          "--transport",
-          "sse"
-        ],
+        "args": ["run", "server.py", "--transport", "sse"],
         "env": {
           "DATA_API_TOKEN": "<API Token for accessing data provider>",
           "PROVIDER": "<Specified data provider>"
@@ -60,12 +50,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "src/findata",
-      "run",
-      "server.py"
-    ],
+    "args": ["--directory", "src/findata", "run", "server.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

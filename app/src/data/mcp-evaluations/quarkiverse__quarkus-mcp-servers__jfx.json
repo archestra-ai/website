@@ -32,17 +32,13 @@
     "mcpServers": {
       "jfx": {
         "command": "jbang",
-        "args": [
-          "jfx@quarkiverse/quarkus-mcp-servers"
-        ]
+        "args": ["jfx@quarkiverse/quarkus-mcp-servers"]
       }
     }
   },
   "configForArchestra": {
     "command": "jbang",
-    "args": [
-      "jfx@quarkiverse/quarkus-mcp-servers"
-    ],
+    "args": ["jfx@quarkiverse/quarkus-mcp-servers"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

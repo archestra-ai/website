@@ -32,45 +32,29 @@
     "mcpServers": {
       "just-mcp-cargo-run": {
         "command": "cargo",
-        "args": [
-          "run",
-          "--",
-          "--stdio"
-        ]
+        "args": ["run", "--", "--stdio"]
       },
       "just-mcp-stdio": {
         "command": "just-mcp",
-        "args": [
-          "--stdio"
-        ]
+        "args": ["--stdio"]
       },
       "just-mcp-directory": {
         "command": "just-mcp",
-        "args": [
-          "--directory",
-          "/path/to/project",
-          "--stdio"
-        ]
+        "args": ["--directory", "/path/to/project", "--stdio"]
       },
       "just-mcp-claude-desktop": {
         "command": "/path/to/just-mcp",
-        "args": [
-          "--stdio"
-        ]
+        "args": ["--stdio"]
       },
       "just-mcp-just-server": {
         "command": "just",
-        "args": [
-          "server"
-        ]
+        "args": ["server"]
       }
     }
   },
   "configForArchestra": {
     "command": "just-mcp",
-    "args": [
-      "--stdio"
-    ],
+    "args": ["--stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

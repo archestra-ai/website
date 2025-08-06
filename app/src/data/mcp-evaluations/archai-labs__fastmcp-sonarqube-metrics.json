@@ -32,17 +32,13 @@
     "mcpServers": {
       "fastmcp-sonarqube-metrics-server": {
         "command": "python",
-        "args": [
-          "server.py"
-        ]
+        "args": ["server.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "server.py"
-    ],
+    "args": ["server.py"],
     "env": {
       "server-basic": "SONARQUBE_URL",
       "server-configured": "SONARQUBE_TOKEN",

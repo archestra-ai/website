@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { Github, Star } from "lucide-react";
+import { Github, Star } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export function GitHubStarButton() {
   const [stars, setStars] = useState<number | null>(null);

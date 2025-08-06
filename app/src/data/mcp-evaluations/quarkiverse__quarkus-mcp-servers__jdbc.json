@@ -32,23 +32,15 @@
     "mcpServers": {
       "jdbc": {
         "command": "jbang",
-        "args": [
-          "jdbc@quarkiverse/quarkus-mcp-servers",
-          "[jdbc_url]"
-        ]
+        "args": ["jdbc@quarkiverse/quarkus-mcp-servers", "[jdbc_url]"]
       },
       "jdbcquarkiverse-quarkus-mcp-servers-empty-h2": {
         "command": "jbang",
-        "args": [
-          "jdbc@quarkiverse/quarkus-mcp-servers"
-        ]
+        "args": ["jdbc@quarkiverse/quarkus-mcp-servers"]
       },
       "jdbcquarkiverse-quarkus-mcp-servers-oracle": {
         "command": "jbang",
-        "args": [
-          "jdbc@quarkiverse/quarkus-mcp-servers",
-          "jdbc:oracle:thin:@localhost:1521:orcl"
-        ]
+        "args": ["jdbc@quarkiverse/quarkus-mcp-servers", "jdbc:oracle:thin:@localhost:1521:orcl"]
       },
       "jdbcquarkiverse-quarkus-mcp-servers-postgresql": {
         "command": "jbang",
@@ -95,10 +87,7 @@
   },
   "configForArchestra": {
     "command": "jbang",
-    "args": [
-      "jdbc@quarkiverse/quarkus-mcp-servers",
-      "[jdbc_url]"
-    ],
+    "args": ["jdbc@quarkiverse/quarkus-mcp-servers", "[jdbc_url]"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

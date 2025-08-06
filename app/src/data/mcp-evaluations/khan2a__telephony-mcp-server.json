@@ -32,21 +32,11 @@
     "mcpServers": {
       "telephony-mcp-server-python": {
         "command": "python",
-        "args": [
-          "telephony_server.py"
-        ]
+        "args": ["telephony_server.py"]
       },
       "telephony-mcp-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "--init",
-          "-e",
-          "DOCKER_CONTAINER=true",
-          "telephony-mcp-server"
-        ],
+        "args": ["run", "-i", "--rm", "--init", "-e", "DOCKER_CONTAINER=true", "telephony-mcp-server"],
         "env": {
           "DOCKER_CONTAINER": "true"
         }
@@ -55,11 +45,7 @@
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "telephony_server.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["telephony_server.py", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

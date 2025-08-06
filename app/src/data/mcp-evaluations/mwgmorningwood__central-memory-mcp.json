@@ -32,17 +32,13 @@
     "mcpServers": {
       "modelcontextprotocol-server-memory": {
         "command": "func",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       }
     }
   },
   "configForArchestra": {
     "command": "func",
-    "args": [
-      "start"
-    ],
+    "args": ["start"],
     "env": {},
     "transport": "http",
     "oauth": {}

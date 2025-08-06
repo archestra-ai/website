@@ -32,19 +32,13 @@
     "mcpServers": {
       "spotify-mcp-server": {
         "command": "uvx",
-        "args": [
-          "spotify-mcp-server"
-        ]
+        "args": ["spotify-mcp-server"]
       }
     }
   },
   "configForArchestra": {
     "command": "npm",
-    "args": [
-      "start",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["start", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

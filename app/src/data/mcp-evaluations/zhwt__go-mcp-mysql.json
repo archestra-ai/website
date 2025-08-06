@@ -32,25 +32,11 @@
     "mcpServers": {
       "go-mcp-mysql-args": {
         "command": "go-mcp-mysql",
-        "args": [
-          "--host",
-          "localhost",
-          "--user",
-          "root",
-          "--pass",
-          "password",
-          "--port",
-          "3306",
-          "--db",
-          "mydb"
-        ]
+        "args": ["--host", "localhost", "--user", "root", "--pass", "password", "--port", "3306", "--db", "mydb"]
       },
       "go-mcp-mysql-dsn": {
         "command": "go-mcp-mysql",
-        "args": [
-          "--dsn",
-          "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local"
-        ]
+        "args": ["--dsn", "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local"]
       },
       "go-mcp-mysql-args-read-only": {
         "command": "go-mcp-mysql",
@@ -70,11 +56,7 @@
       },
       "go-mcp-mysql-dsn-read-only": {
         "command": "go-mcp-mysql",
-        "args": [
-          "--dsn",
-          "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local",
-          "--read-only"
-        ]
+        "args": ["--dsn", "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local", "--read-only"]
       },
       "go-mcp-mysql-args-with-explain-check": {
         "command": "go-mcp-mysql",
@@ -94,28 +76,13 @@
       },
       "go-mcp-mysql-dsn-with-explain-check": {
         "command": "go-mcp-mysql",
-        "args": [
-          "--dsn",
-          "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local",
-          "--with-explain-check"
-        ]
+        "args": ["--dsn", "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local", "--with-explain-check"]
       }
     }
   },
   "configForArchestra": {
     "command": "go-mcp-mysql",
-    "args": [
-      "--host",
-      "localhost",
-      "--user",
-      "root",
-      "--pass",
-      "password",
-      "--port",
-      "3306",
-      "--db",
-      "mydb"
-    ],
+    "args": ["--host", "localhost", "--user", "root", "--pass", "password", "--port", "3306", "--db", "mydb"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

@@ -32,27 +32,18 @@
     "mcpServers": {
       "aashari-mcp-server-aws-sso": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@aashari/mcp-server-aws-sso"
-        ]
+        "args": ["-y", "@aashari/mcp-server-aws-sso"]
       },
       "aashari-mcp-server-aws-sso-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@aashari/mcp-server-aws-sso"
-        ],
+        "args": ["-y", "@aashari/mcp-server-aws-sso"],
         "env": {
           "TRANSPORT_MODE": "stdio"
         }
       },
       "aashari-mcp-server-aws-sso-http": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@aashari/mcp-server-aws-sso"
-        ],
+        "args": ["-y", "@aashari/mcp-server-aws-sso"],
         "env": {
           "TRANSPORT_MODE": "http"
         }
@@ -61,10 +52,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@aashari/mcp-server-aws-sso"
-    ],
+    "args": ["-y", "@aashari/mcp-server-aws-sso"],
     "env": {
       "server-configured": "{\n\t\"aws-sso\": {\n\t\t\"environments\": {\n\t\t\t\"AWS_REGION\": \"us-east-1\",\n\t\t\t\"AWS_SSO_START_URL\": \"https://your-sso-portal.awsapps.com/start\"\n\t\t}\n\t}\n}"
     },

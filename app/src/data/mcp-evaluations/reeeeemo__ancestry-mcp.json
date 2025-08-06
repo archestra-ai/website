@@ -32,21 +32,13 @@
     "mcpServers": {
       "mcp-server-ancestry": {
         "command": "mcp-server-ancestry",
-        "args": [
-          "--gedcom-path",
-          "path/to/your/gedcom/files"
-        ]
+        "args": ["--gedcom-path", "path/to/your/gedcom/files"]
       }
     }
   },
   "configForArchestra": {
     "command": "mcp-server-ancestry",
-    "args": [
-      "--gedcom-path",
-      "path/to/your/gedcom/files",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--gedcom-path", "path/to/your/gedcom/files", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

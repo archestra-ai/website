@@ -30,12 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "auto-mobile",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "auto-mobile", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}
@@ -94,10 +89,7 @@
     "mcpServers": {
       "auto-mobile": {
         "command": "npx",
-        "args": [
-          "-y",
-          "auto-mobile"
-        ]
+        "args": ["-y", "auto-mobile"]
       }
     }
   }

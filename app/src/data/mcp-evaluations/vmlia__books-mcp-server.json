@@ -32,23 +32,13 @@
     "mcpServers": {
       "books-mcp-server-stdio": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/Enter your local project directory/books-mcp-server",
-          "run",
-          "main.py"
-        ]
+        "args": ["--directory", "/Enter your local project directory/books-mcp-server", "run", "main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "/Enter your local project directory/books-mcp-server",
-      "run",
-      "main.py"
-    ],
+    "args": ["--directory", "/Enter your local project directory/books-mcp-server", "run", "main.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {

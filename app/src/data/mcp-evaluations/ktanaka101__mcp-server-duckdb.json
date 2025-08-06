@@ -32,11 +32,7 @@
     "mcpServers": {
       "mcp-server-duckdb": {
         "command": "uvx",
-        "args": [
-          "mcp-server-duckdb",
-          "--db-path",
-          "~/mcp-server-duckdb/data/data.db"
-        ]
+        "args": ["mcp-server-duckdb", "--db-path", "~/mcp-server-duckdb/data/data.db"]
       },
       "mcp-server-duckdb-inspector": {
         "command": "npx",
@@ -55,11 +51,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "mcp-server-duckdb",
-      "--db-path",
-      "~/mcp-server-duckdb/data/data.db"
-    ],
+    "args": ["mcp-server-duckdb", "--db-path", "~/mcp-server-duckdb/data/data.db"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

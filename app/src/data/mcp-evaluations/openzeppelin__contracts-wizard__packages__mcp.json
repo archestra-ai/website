@@ -32,26 +32,17 @@
     "mcpServers": {
       "openzeppelin-contracts-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@openzeppelin/contracts-mcp"
-        ]
+        "args": ["-y", "@openzeppelin/contracts-mcp"]
       },
       "openzeppelin-contracts-mcp-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@openzeppelin/contracts-mcp"
-        ]
+        "args": ["-y", "@openzeppelin/contracts-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@openzeppelin/contracts-mcp"
-    ],
+    "args": ["-y", "@openzeppelin/contracts-mcp"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

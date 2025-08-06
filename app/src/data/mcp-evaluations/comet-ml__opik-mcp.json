@@ -32,17 +32,11 @@
     "mcpServers": {
       "comet-ml-opik-mcp-stdio": {
         "command": "npm",
-        "args": [
-          "run",
-          "start:stdio"
-        ]
+        "args": ["run", "start:stdio"]
       },
       "comet-ml-opik-mcp-sse": {
         "command": "npm",
-        "args": [
-          "run",
-          "start:sse"
-        ]
+        "args": ["run", "start:sse"]
       },
       "comet-ml-opik-mcp-cursor-integration": {
         "command": "node",

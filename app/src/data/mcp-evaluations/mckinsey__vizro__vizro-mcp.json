@@ -32,18 +32,11 @@
     "mcpServers": {
       "vizro-mcp": {
         "command": "uvx",
-        "args": [
-          "vizro-mcp"
-        ]
+        "args": ["vizro-mcp"]
       },
       "mcp-vizro-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "mcp/vizro"
-        ]
+        "args": ["run", "-i", "--rm", "mcp/vizro"]
       },
       "mcp-vizro-docker-with-config": {
         "command": "docker",
@@ -62,11 +55,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "vizro-mcp",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["vizro-mcp", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

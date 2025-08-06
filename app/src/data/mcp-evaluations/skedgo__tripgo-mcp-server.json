@@ -32,42 +32,25 @@
     "mcpServers": {
       "mcp-remote": {
         "command": "npx",
-        "args": [
-          "mcp-remote",
-          "https://tripgo-mcp-server.skedgo-account.workers.dev/sse"
-        ]
+        "args": ["mcp-remote", "https://tripgo-mcp-server.skedgo-account.workers.dev/sse"]
       },
       "mcp-remote-local-target": {
         "command": "npx",
-        "args": [
-          "mcp-remote",
-          "http://localhost:8787/sse"
-        ]
+        "args": ["mcp-remote", "http://localhost:8787/sse"]
       },
       "tripgo-mcp-server-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev:local"
-        ]
+        "args": ["run", "dev:local"]
       },
       "tripgo-mcp-server-deploy": {
         "command": "npm",
-        "args": [
-          "run",
-          "deploy"
-        ]
+        "args": ["run", "deploy"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "mcp-remote",
-      "https://tripgo-mcp-server.skedgo-account.workers.dev/sse",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["mcp-remote", "https://tripgo-mcp-server.skedgo-account.workers.dev/sse", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

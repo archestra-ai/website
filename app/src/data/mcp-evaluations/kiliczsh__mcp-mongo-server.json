@@ -32,27 +32,15 @@
     "mcpServers": {
       "mcp-mongo-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-mongo-server",
-          "mongodb://muhammed:kilic@localhost:27017/database"
-        ]
+        "args": ["-y", "mcp-mongo-server", "mongodb://muhammed:kilic@localhost:27017/database"]
       },
       "mcp-mongo-server-readonly": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-mongo-server",
-          "mongodb://muhammed:kilic@localhost:27017/database",
-          "--read-only"
-        ]
+        "args": ["-y", "mcp-mongo-server", "mongodb://muhammed:kilic@localhost:27017/database", "--read-only"]
       },
       "mcp-mongo-server-env-full": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-mongo-server"
-        ],
+        "args": ["-y", "mcp-mongo-server"],
         "env": {
           "MCP_MONGODB_URI": "mongodb://muhammed:kilic@localhost:27017/database",
           "MCP_MONGODB_READONLY": "true"
@@ -60,10 +48,7 @@
       },
       "mcp-mongo-server-env-uri": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-mongo-server"
-        ],
+        "args": ["-y", "mcp-mongo-server"],
         "env": {
           "MCP_MONGODB_URI": "mongodb://muhammed:kilic@localhost:27017/database"
         }
@@ -87,11 +72,7 @@
       },
       "github-kiliczsh-mcp-mongo-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "github:kiliczsh/mcp-mongo-server",
-          "mongodb://muhammed:kilic@localhost:27017/database"
-        ]
+        "args": ["-y", "github:kiliczsh/mcp-mongo-server", "mongodb://muhammed:kilic@localhost:27017/database"]
       },
       "github-kiliczsh-mcp-mongo-server-readonly": {
         "command": "npx",
@@ -106,10 +87,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-mongo-server"
-    ],
+    "args": ["-y", "mcp-mongo-server"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -32,21 +32,13 @@
     "mcpServers": {
       "llm-context": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "llm-context",
-          "lc-mcp"
-        ]
+        "args": ["--from", "llm-context", "lc-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "--from",
-      "llm-context",
-      "lc-mcp"
-    ],
+    "args": ["--from", "llm-context", "lc-mcp"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

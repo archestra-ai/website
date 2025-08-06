@@ -32,20 +32,14 @@
     "mcpServers": {
       "cyberchef_api_mcp_server-stdio": {
         "command": "uv",
-        "args": [
-          "run",
-          "cyberchef_api_mcp_server"
-        ],
+        "args": ["run", "cyberchef_api_mcp_server"],
         "env": {
           "CYBERCHEF_API_URL": "your-cyberchef-api-url"
         }
       },
       "cyberchef_api_mcp_server-dev": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "server.py"
-        ]
+        "args": ["dev", "server.py"]
       },
       "cyberchef_api_mcp_server-configured": {
         "command": "uv",

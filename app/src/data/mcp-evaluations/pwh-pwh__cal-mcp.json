@@ -32,24 +32,17 @@
     "mcpServers": {
       "cal-mcp": {
         "command": "bunx",
-        "args": [
-          "cal-mcp"
-        ]
+        "args": ["cal-mcp"]
       },
       "cal-mcp-stdio": {
         "command": "bun",
-        "args": [
-          "run",
-          "index.ts"
-        ]
+        "args": ["run", "index.ts"]
       }
     }
   },
   "configForArchestra": {
     "command": "bunx",
-    "args": [
-      "cal-mcp"
-    ],
+    "args": ["cal-mcp"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

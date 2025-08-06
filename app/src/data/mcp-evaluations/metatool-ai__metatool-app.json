@@ -31,31 +31,21 @@
     "mcpServers": {
       "metamcp-docker-compose": {
         "command": "docker",
-        "args": [
-          "compose",
-          "up",
-          "-d"
-        ]
+        "args": ["compose", "up", "-d"]
       },
       "metamcp-dev": {
         "command": "pnpm",
-        "args": [
-          "dev"
-        ]
+        "args": ["dev"]
       },
       "mcp-hn": {
         "command": "uvx",
-        "args": [
-          "mcp-hn"
-        ]
+        "args": ["mcp-hn"]
       }
     }
   },
   "configForArchestra": {
     "command": "pnpm",
-    "args": [
-      "dev"
-    ],
+    "args": ["dev"],
     "env": {},
     "transport": "http",
     "oauth": {

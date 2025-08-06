@@ -32,10 +32,7 @@
     "mcpServers": {
       "ipfind-mcp-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@ipfind/ipfind-mcp-server"
-        ],
+        "args": ["-y", "@ipfind/ipfind-mcp-server"],
         "env": {
           "IPFIND_API_KEY": "<API KEY GOES HERE>"
         }
@@ -44,10 +41,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@ipfind/ipfind-mcp-server"
-    ],
+    "args": ["-y", "@ipfind/ipfind-mcp-server"],
     "env": {
       "server-basic": "",
       "server-configured": "",

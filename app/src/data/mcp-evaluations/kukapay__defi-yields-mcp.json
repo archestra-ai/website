@@ -31,17 +31,13 @@
     "mcpServers": {
       "defi-yields-mcp": {
         "command": "uvx",
-        "args": [
-          "defi-yields-mcp"
-        ]
+        "args": ["defi-yields-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "defi-yields-mcp"
-    ],
+    "args": ["defi-yields-mcp"],
     "env": {},
     "transport": "stdio",
     "oauth": {

@@ -32,33 +32,21 @@
     "mcpServers": {
       "mcp-server-fetch": {
         "command": "uvx",
-        "args": [
-          "mcp-server-fetch"
-        ]
+        "args": ["mcp-server-fetch"]
       },
       "mcp-fetch-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "mcp/fetch"
-        ]
+        "args": ["run", "-i", "--rm", "mcp/fetch"]
       },
       "mcp_server_fetch": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_server_fetch"
-        ]
+        "args": ["-m", "mcp_server_fetch"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "mcp-server-fetch"
-    ],
+    "args": ["mcp-server-fetch"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

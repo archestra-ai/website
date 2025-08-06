@@ -32,27 +32,13 @@
     "mcpServers": {
       "mcp-openapi-to-mcp-adapter": {
         "command": "go",
-        "args": [
-          "run",
-          "main.go",
-          "serve",
-          "--port",
-          "8080",
-          "--host",
-          "0.0.0.0"
-        ]
+        "args": ["run", "main.go", "serve", "--port", "8080", "--host", "0.0.0.0"]
       }
     }
   },
   "configForArchestra": {
     "command": "./mcp-openapi-to-mcp-adapter",
-    "args": [
-      "serve",
-      "--port",
-      "8080",
-      "--host",
-      "0.0.0.0"
-    ],
+    "args": ["serve", "--port", "8080", "--host", "0.0.0.0"],
     "env": {},
     "transport": "http",
     "oauth": {}

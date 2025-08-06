@@ -38,10 +38,7 @@
       },
       "burtthecoder-mcp-virustotal-from-source": {
         "command": "node",
-        "args": [
-          "--experimental-modules",
-          "/absolute/path/to/mcp-virustotal/build/index.js"
-        ],
+        "args": ["--experimental-modules", "/absolute/path/to/mcp-virustotal/build/index.js"],
         "env": {
           "VIRUSTOTAL_API_KEY": "your-virustotal-api-key"
         }
@@ -50,12 +47,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "--experimental-modules",
-      "build/index.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--experimental-modules", "build/index.js", "--transport", "stdio"],
     "env": {
       "server-basic": "VIRUSTOTAL_API_KEY"
     },

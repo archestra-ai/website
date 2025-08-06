@@ -32,26 +32,17 @@
     "mcpServers": {
       "confluence-py": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "confluence.py"
-        ]
+        "args": ["dev", "confluence.py"]
       },
       "confluence-py-fallback": {
         "command": "python",
-        "args": [
-          "confluence.py"
-        ]
+        "args": ["confluence.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "confluence.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["confluence.py", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

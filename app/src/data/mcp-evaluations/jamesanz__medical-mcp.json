@@ -32,19 +32,13 @@
     "mcpServers": {
       "medical-mcp-stdio": {
         "command": "npm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       }
     }
   },
   "configForArchestra": {
     "command": "npm",
-    "args": [
-      "start",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["start", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

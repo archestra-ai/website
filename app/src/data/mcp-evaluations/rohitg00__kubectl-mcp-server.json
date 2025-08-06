@@ -32,28 +32,17 @@
     "mcpServers": {
       "kubectl-mcp-tool": {
         "command": "kubectl-mcp",
-        "args": [
-          "serve"
-        ]
+        "args": ["serve"]
       },
       "rohitghumare64-kubectl-mcp-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8081:8000",
-          "-v",
-          "$HOME/.kube:/root/.kube",
-          "rohitghumare64/kubectl-mcp-server:latest"
-        ]
+        "args": ["run", "-p", "8081:8000", "-v", "$HOME/.kube:/root/.kube", "rohitghumare64/kubectl-mcp-server:latest"]
       }
     }
   },
   "configForArchestra": {
     "command": "kubectl-mcp",
-    "args": [
-      "serve"
-    ],
+    "args": ["serve"],
     "env": {},
     "transport": "stdio",
     "oauth": {

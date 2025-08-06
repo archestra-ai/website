@@ -32,28 +32,19 @@
     "mcpServers": {
       "iplocate-mcp-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@iplocate/mcp-server"
-        ],
+        "args": ["-y", "@iplocate/mcp-server"],
         "env": {}
       },
       "iplocate-mcp-server-with-api-key": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@iplocate/mcp-server"
-        ],
+        "args": ["-y", "@iplocate/mcp-server"],
         "env": {
           "IPLOCATE_API_KEY": "your_api_key_here"
         }
       },
       "iplocate-mcp-server-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@iplocate/mcp-server"
-        ],
+        "args": ["-y", "@iplocate/mcp-server"],
         "env": {
           "IPLOCATE_API_KEY": "your_api_key_here"
         },
@@ -66,26 +57,19 @@
       },
       "iplocate-mcp-server-yarn-start": {
         "command": "yarn",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {}
       },
       "iplocate-mcp-server-yarn-dev": {
         "command": "yarn",
-        "args": [
-          "dev"
-        ],
+        "args": ["dev"],
         "env": {}
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@iplocate/mcp-server"
-    ],
+    "args": ["-y", "@iplocate/mcp-server"],
     "env": {
       "server-basic": "",
       "server-configured": "",

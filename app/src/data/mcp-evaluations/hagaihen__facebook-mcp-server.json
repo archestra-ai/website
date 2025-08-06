@@ -47,16 +47,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "--with",
-      "mcp[cli]",
-      "--with",
-      "requests",
-      "mcp",
-      "run",
-      "server.py"
-    ],
+    "args": ["run", "--with", "mcp[cli]", "--with", "requests", "mcp", "run", "server.py"],
     "env": {
       "server-basic": "",
       "server-configured": "",

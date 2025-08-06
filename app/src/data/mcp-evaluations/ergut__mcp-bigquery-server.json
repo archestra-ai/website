@@ -32,14 +32,7 @@
     "mcpServers": {
       "ergut-mcp-bigquery-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@ergut/mcp-bigquery-server",
-          "--project-id",
-          "your-project-id",
-          "--location",
-          "us-central1"
-        ]
+        "args": ["-y", "@ergut/mcp-bigquery-server", "--project-id", "your-project-id", "--location", "us-central1"]
       },
       "ergut-mcp-bigquery-server-with-config": {
         "command": "npx",

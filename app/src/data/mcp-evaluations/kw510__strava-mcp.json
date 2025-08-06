@@ -32,18 +32,13 @@
     "mcpServers": {
       "strava-mcp": {
         "command": "wrangler",
-        "args": [
-          "dev"
-        ]
+        "args": ["dev"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "mcp-remote",
-      "https://mcp-strava-oauth.<your-subdomain>.workers.dev/sse"
-    ],
+    "args": ["mcp-remote", "https://mcp-strava-oauth.<your-subdomain>.workers.dev/sse"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -32,25 +32,17 @@
     "mcpServers": {
       "content-summarizer": {
         "command": "pnpm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       },
       "content-summarizer-configured": {
         "command": "node",
-        "args": [
-          "{ABSOLUTE PATH TO FILE HERE}/dist/index.js"
-        ]
+        "args": ["{ABSOLUTE PATH TO FILE HERE}/dist/index.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "dist/index.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["dist/index.js", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

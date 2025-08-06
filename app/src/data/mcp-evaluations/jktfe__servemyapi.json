@@ -32,29 +32,21 @@
     "mcpServers": {
       "servemyapi-stdio": {
         "command": "npm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       },
       "servemyapi-http": {
         "command": "node",
-        "args": [
-          "dist/server.js"
-        ]
+        "args": ["dist/server.js"]
       },
       "servemyapi-configured": {
         "command": "node",
-        "args": [
-          "/ABSOLUTE/PATH/TO/servemyapi/dist/index.js"
-        ]
+        "args": ["/ABSOLUTE/PATH/TO/servemyapi/dist/index.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "dist/index.js"
-    ],
+    "args": ["dist/index.js"],
     "env": {},
     "transport": "stdio",
     "oauth": {

@@ -40,27 +40,17 @@
       },
       "mcpfun-mcp-server-leetcode-node-config": {
         "command": "node",
-        "args": [
-          "/path/to/dist/index.js"
-        ]
+        "args": ["/path/to/dist/index.js"]
       },
       "mcpfun-mcp-server-leetcode-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev"
-        ]
+        "args": ["run", "dev"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@mcpfun/mcp-server-leetcode",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@mcpfun/mcp-server-leetcode", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

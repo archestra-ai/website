@@ -32,31 +32,15 @@
     "mcpServers": {
       "cognee-mcp-stdio": {
         "command": "python",
-        "args": [
-          "src/server.py"
-        ]
+        "args": ["src/server.py"]
       },
       "cognee-mcp-sse": {
         "command": "python",
-        "args": [
-          "src/server.py",
-          "--transport",
-          "sse"
-        ]
+        "args": ["src/server.py", "--transport", "sse"]
       },
       "cognee-mcp-http": {
         "command": "python",
-        "args": [
-          "src/server.py",
-          "--transport",
-          "http",
-          "--host",
-          "127.0.0.1",
-          "--port",
-          "8000",
-          "--path",
-          "/mcp"
-        ]
+        "args": ["src/server.py", "--transport", "http", "--host", "127.0.0.1", "--port", "8000", "--path", "/mcp"]
       },
       "cognee-cognee-mcp-main-docker-http": {
         "command": "docker",
@@ -90,23 +74,11 @@
       },
       "cognee-cognee-mcp-main-docker-stdio": {
         "command": "docker",
-        "args": [
-          "run",
-          "--env-file",
-          "./.env",
-          "--rm",
-          "-it",
-          "cognee/cognee-mcp:main"
-        ]
+        "args": ["run", "--env-file", "./.env", "--rm", "-it", "cognee/cognee-mcp:main"]
       },
       "cognee-uv-run": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/{cognee_root_path}/cognee-mcp",
-          "run",
-          "cognee"
-        ],
+        "args": ["--directory", "/{cognee_root_path}/cognee-mcp", "run", "cognee"],
         "env": {
           "ENV": "local",
           "TOKENIZERS_PARALLELISM": "false",
@@ -121,11 +93,7 @@
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "src/server.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["src/server.py", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

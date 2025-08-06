@@ -32,27 +32,20 @@
     "mcpServers": {
       "mcp-server-opendal-with-config": {
         "command": "uvx",
-        "args": [
-          "mcp-server-opendal"
-        ],
+        "args": ["mcp-server-opendal"],
         "env": {
           "YOUR_ENV_VAR": "YOUR_ENV_VALUE"
         }
       },
       "mcp-server-opendal-uv-run": {
         "command": "uv",
-        "args": [
-          "run",
-          "mcp-server-opendal"
-        ]
+        "args": ["run", "mcp-server-opendal"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "mcp-server-opendal"
-    ],
+    "args": ["mcp-server-opendal"],
     "env": {
       "server-basic": "",
       "server-configured": "",

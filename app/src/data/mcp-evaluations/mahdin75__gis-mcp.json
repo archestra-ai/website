@@ -40,28 +40,17 @@
       },
       "gis-mcp-dev": {
         "command": "python",
-        "args": [
-          "-m",
-          "gis_mcp"
-        ]
+        "args": ["-m", "gis_mcp"]
       },
       "gis-mcp-dev-configured": {
         "command": "/path/to/gis-mcp/.venv/bin/python",
-        "args": [
-          "-m",
-          "gis_mcp"
-        ]
+        "args": ["-m", "gis_mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "-m",
-      "gis_mcp",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-m", "gis_mcp", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

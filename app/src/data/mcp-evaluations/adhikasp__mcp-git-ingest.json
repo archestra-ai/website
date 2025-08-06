@@ -32,23 +32,13 @@
     "mcpServers": {
       "mcp-git-ingest": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "git+https://github.com/adhikasp/mcp-git-ingest",
-          "mcp-git-ingest"
-        ]
+        "args": ["--from", "git+https://github.com/adhikasp/mcp-git-ingest", "mcp-git-ingest"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "--from",
-      "git+https://github.com/adhikasp/mcp-git-ingest",
-      "mcp-git-ingest",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--from", "git+https://github.com/adhikasp/mcp-git-ingest", "mcp-git-ingest", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

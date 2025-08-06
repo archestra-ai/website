@@ -42,45 +42,25 @@
       },
       "mcp-ai-soc-local-stdio-sse": {
         "command": "mcp-ai-soc",
-        "args": [
-          "--type",
-          "local",
-          "--stdio",
-          "--sse"
-        ]
+        "args": ["--type", "local", "--stdio", "--sse"]
       },
       "mcp-ai-soc-local-stdio": {
         "command": "mcp-ai-soc",
-        "args": [
-          "--type",
-          "local",
-          "--stdio"
-        ]
+        "args": ["--type", "local", "--stdio"]
       },
       "mcp-ai-soc-local-sse": {
         "command": "mcp-ai-soc",
-        "args": [
-          "--type",
-          "local",
-          "--sse"
-        ]
+        "args": ["--type", "local", "--sse"]
       },
       "mcp-ai-soc-remote": {
         "command": "mcp-ai-soc",
-        "args": [
-          "--type",
-          "remote"
-        ]
+        "args": ["--type", "remote"]
       }
     }
   },
   "configForArchestra": {
     "command": "mcp-ai-soc",
-    "args": [
-      "--type",
-      "local",
-      "--stdio"
-    ],
+    "args": ["--type", "local", "--stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

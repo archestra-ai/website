@@ -32,19 +32,13 @@
     "mcpServers": {
       "catalysishub-mcp-server-configured": {
         "command": "/Users/quentincody/.env/bin/python3",
-        "args": [
-          "/Users/quentincody/catalysishub-mcp-server/catalysishub_mcp_server.py"
-        ]
+        "args": ["/Users/quentincody/catalysishub-mcp-server/catalysishub_mcp_server.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "/Users/quentincody/.env/bin/python3",
-    "args": [
-      "/Users/quentincody/catalysishub-mcp-server/catalysishub_mcp_server.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["/Users/quentincody/catalysishub-mcp-server/catalysishub_mcp_server.py", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

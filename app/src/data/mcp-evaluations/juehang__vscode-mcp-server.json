@@ -30,10 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "mcp-remote@next",
-      "http://localhost:3000/mcp"
-    ],
+    "args": ["mcp-remote@next", "http://localhost:3000/mcp"],
     "env": {},
     "transport": "http",
     "oauth": {}

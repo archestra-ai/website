@@ -32,10 +32,7 @@
     "mcpServers": {
       "MCPServer-1.0.0-runner-configured": {
         "command": "java",
-        "args": [
-          "-jar",
-          "/path/to/mcp-jdbc-server/MCPServer-1.0.0-runner.jar"
-        ],
+        "args": ["-jar", "/path/to/mcp-jdbc-server/MCPServer-1.0.0-runner.jar"],
         "env": {
           "jdbc.url": "jdbc:virtuoso://localhost:1111",
           "jdbc.user": "username",
@@ -60,10 +57,7 @@
   },
   "configForArchestra": {
     "command": "java",
-    "args": [
-      "-jar",
-      "MCPServer-1.0.0-runner.jar"
-    ],
+    "args": ["-jar", "MCPServer-1.0.0-runner.jar"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

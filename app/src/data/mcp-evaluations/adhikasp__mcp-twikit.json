@@ -32,11 +32,7 @@
     "mcpServers": {
       "mcp-twikit": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "git+https://github.com/adhikasp/mcp-twikit",
-          "mcp-twikit"
-        ],
+        "args": ["--from", "git+https://github.com/adhikasp/mcp-twikit", "mcp-twikit"],
         "env": {
           "TWITTER_USERNAME": "@example",
           "TWITTER_EMAIL": "me@example.com",
@@ -47,11 +43,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "--from",
-      "git+https://github.com/adhikasp/mcp-twikit",
-      "mcp-twikit"
-    ],
+    "args": ["--from", "git+https://github.com/adhikasp/mcp-twikit", "mcp-twikit"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

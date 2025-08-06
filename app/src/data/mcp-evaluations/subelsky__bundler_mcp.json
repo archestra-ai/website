@@ -47,10 +47,7 @@
   },
   "configForArchestra": {
     "command": "./bin/bundler_mcp",
-    "args": [
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -32,21 +32,13 @@
     "mcpServers": {
       "pdf-tools-mcp": {
         "command": "python",
-        "args": [
-          "-m",
-          "src.main"
-        ]
+        "args": ["-m", "src.main"]
       }
     }
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "-m",
-      "src.main",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-m", "src.main", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

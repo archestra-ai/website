@@ -32,21 +32,13 @@
     "mcpServers": {
       "job-searchoor": {
         "command": "npx",
-        "args": [
-          "-y",
-          "job-searchoor"
-        ]
+        "args": ["-y", "job-searchoor"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "job-searchoor",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "job-searchoor", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

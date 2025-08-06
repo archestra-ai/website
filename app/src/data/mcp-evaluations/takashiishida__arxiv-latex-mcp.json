@@ -32,23 +32,13 @@
     "mcpServers": {
       "arxiv-latex-mcp": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/ABSOLUTE/PATH/TO/arxiv-latex-mcp",
-          "run",
-          "server/main.py"
-        ]
+        "args": ["--directory", "/ABSOLUTE/PATH/TO/arxiv-latex-mcp", "run", "server/main.py"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "/ABSOLUTE/PATH/TO/arxiv-latex-mcp",
-      "run",
-      "server/main.py"
-    ],
+    "args": ["--directory", "/ABSOLUTE/PATH/TO/arxiv-latex-mcp", "run", "server/main.py"],
     "env": {},
     "transport": "stdio",
     "oauth": {

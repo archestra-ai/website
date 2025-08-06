@@ -32,30 +32,21 @@
     "mcpServers": {
       "xcode-mcp-server": {
         "command": "npm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       },
       "xcode-mcp-server-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev"
-        ]
+        "args": ["run", "dev"]
       },
       "xcode-mcp-server-configured": {
         "command": "node",
-        "args": [
-          "/path/to/xcode-mcp-server/dist/index.js"
-        ]
+        "args": ["/path/to/xcode-mcp-server/dist/index.js"]
       }
     }
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "dist/index.js"
-    ],
+    "args": ["dist/index.js"],
     "env": {},
     "transport": "stdio",
     "oauth": {

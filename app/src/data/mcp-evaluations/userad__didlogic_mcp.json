@@ -32,19 +32,14 @@
     "mcpServers": {
       "didlogic_mcp": {
         "command": "uvx",
-        "args": [
-          "didlogic_mcp"
-        ],
+        "args": ["didlogic_mcp"],
         "env": {
           "DIDLOGIC_API_KEY": "YOUR_DIDLOGIC_KEY"
         }
       },
       "didlogic_mcp-python": {
         "command": "python",
-        "args": [
-          "-m",
-          "didlogic_mcp"
-        ],
+        "args": ["-m", "didlogic_mcp"],
         "env": {
           "DIDLOGIC_API_KEY": "YOUR_DIDLOGIC_KEY"
         }
@@ -53,11 +48,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "didlogic_mcp",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["didlogic_mcp", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -30,12 +30,7 @@
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@roychri/mcp-server-asana",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["-y", "@roychri/mcp-server-asana", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

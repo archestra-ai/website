@@ -32,12 +32,7 @@
     "mcpServers": {
       "mcp-geo": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "MCP-Geo",
-          "run",
-          "geo.py"
-        ],
+        "args": ["--directory", "MCP-Geo", "run", "geo.py"],
         "env": {
           "NOMINATIM_URL": "${NOMINATIM_URL}",
           "SCHEME": "http",
@@ -48,14 +43,7 @@
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "MCP-Geo",
-      "run",
-      "geo.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--directory", "MCP-Geo", "run", "geo.py", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -32,10 +32,7 @@
     "mcpServers": {
       "llmindset-mcp-hfspace": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@llmindset/mcp-hfspace"
-        ]
+        "args": ["-y", "@llmindset/mcp-hfspace"]
       },
       "llmindset-mcp-hfspace-configured": {
         "command": "npx",
@@ -52,10 +49,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@llmindset/mcp-hfspace"
-    ],
+    "args": ["-y", "@llmindset/mcp-hfspace"],
     "env": {
       "server-basic": "",
       "server-configured": "",

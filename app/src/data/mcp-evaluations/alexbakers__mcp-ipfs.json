@@ -32,10 +32,7 @@
     "mcpServers": {
       "mcp-ipfs": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-ipfs"
-        ],
+        "args": ["-y", "mcp-ipfs"],
         "env": {
           "W3_LOGIN_EMAIL": "your-email@example.com"
         }
@@ -60,10 +57,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-ipfs"
-    ],
+    "args": ["-y", "mcp-ipfs"],
     "env": {
       "server-configured": "W3_LOGIN_EMAIL"
     },

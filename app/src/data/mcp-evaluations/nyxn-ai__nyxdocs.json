@@ -32,23 +32,13 @@
     "mcpServers": {
       "nyxdocs": {
         "command": "uv",
-        "args": [
-          "run",
-          "python",
-          "-m",
-          "nyxdocs.server"
-        ]
+        "args": ["run", "python", "-m", "nyxdocs.server"]
       }
     }
   },
   "configForArchestra": {
     "command": "uv",
-    "args": [
-      "run",
-      "python",
-      "-m",
-      "nyxdocs.server"
-    ],
+    "args": ["run", "python", "-m", "nyxdocs.server"],
     "env": {
       "server-basic": "",
       "server-configured": "",

@@ -32,42 +32,25 @@
     "mcpServers": {
       "modelcontextprotocol-server-everything-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-everything"
-        ]
+        "args": ["-y", "@modelcontextprotocol/server-everything"]
       },
       "everything-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "mcp/everything"
-        ]
+        "args": ["run", "-i", "--rm", "mcp/everything"]
       },
       "modelcontextprotocol-server-everything-sse": {
         "command": "npm",
-        "args": [
-          "run",
-          "start:sse"
-        ]
+        "args": ["run", "start:sse"]
       },
       "modelcontextprotocol-server-everything-streamable-http": {
         "command": "npm",
-        "args": [
-          "run",
-          "start:streamableHttp"
-        ]
+        "args": ["run", "start:streamableHttp"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@modelcontextprotocol/server-everything"
-    ],
+    "args": ["-y", "@modelcontextprotocol/server-everything"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

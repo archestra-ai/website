@@ -32,21 +32,13 @@
     "mcpServers": {
       "dbt-mcp": {
         "command": "uvx",
-        "args": [
-          "--env-file",
-          "<path-to-.env-file>",
-          "dbt-mcp"
-        ]
+        "args": ["--env-file", "<path-to-.env-file>", "dbt-mcp"]
       }
     }
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "--env-file",
-      ".env",
-      "dbt-mcp"
-    ],
+    "args": ["--env-file", ".env", "dbt-mcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

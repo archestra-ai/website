@@ -32,9 +32,7 @@
     "mcpServers": {
       "bing-search-mcp": {
         "command": "uvx",
-        "args": [
-          "bing-search-mcp"
-        ],
+        "args": ["bing-search-mcp"],
         "env": {
           "BING_API_KEY": "your-bing-api-key",
           "BING_API_URL": "https://api.bing.microsoft.com/"
@@ -42,9 +40,7 @@
       },
       "bing-search-mcp-configured": {
         "command": "uvx",
-        "args": [
-          "/path/to/your/bing-search-mcp"
-        ],
+        "args": ["/path/to/your/bing-search-mcp"],
         "env": {
           "BING_API_KEY": "your-bing-api-key"
         }
@@ -53,9 +49,7 @@
   },
   "configForArchestra": {
     "command": "uvx",
-    "args": [
-      "bing-search-mcp"
-    ],
+    "args": ["bing-search-mcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

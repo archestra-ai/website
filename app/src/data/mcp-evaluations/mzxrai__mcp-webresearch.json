@@ -32,25 +32,17 @@
     "mcpServers": {
       "mcp-webresearch": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@mzxrai/mcp-webresearch@latest"
-        ]
+        "args": ["-y", "@mzxrai/mcp-webresearch@latest"]
       },
       "mcp-webresearch-dev": {
         "command": "pnpm",
-        "args": [
-          "dev"
-        ]
+        "args": ["dev"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@mzxrai/mcp-webresearch@latest"
-    ],
+    "args": ["-y", "@mzxrai/mcp-webresearch@latest"],
     "env": {},
     "transport": "stdio",
     "oauth": {}

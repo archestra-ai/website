@@ -38,9 +38,7 @@
       },
       "mcp-maigret-from-source": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/mcp-maigret/build/index.js"
-        ],
+        "args": ["/absolute/path/to/mcp-maigret/build/index.js"],
         "env": {
           "MAIGRET_REPORTS_DIR": "/path/to/reports/directory"
         }
@@ -49,11 +47,7 @@
   },
   "configForArchestra": {
     "command": "node",
-    "args": [
-      "/absolute/path/to/mcp-maigret/build/index.js",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["/absolute/path/to/mcp-maigret/build/index.js", "--transport", "stdio"],
     "env": {
       "server-basic": "",
       "server-configured": "",

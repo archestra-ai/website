@@ -32,9 +32,7 @@
     "mcpServers": {
       "stocky": {
         "command": "python",
-        "args": [
-          "/path/to/stocky_mcp.py"
-        ],
+        "args": ["/path/to/stocky_mcp.py"],
         "env": {
           "PEXELS_API_KEY": "your_pexels_key",
           "UNSPLASH_ACCESS_KEY": "your_unsplash_key"
@@ -44,9 +42,7 @@
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "/path/to/stocky_mcp.py"
-    ],
+    "args": ["/path/to/stocky_mcp.py"],
     "env": {
       "server-basic": "",
       "server-configured": "",

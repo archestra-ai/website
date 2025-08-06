@@ -32,18 +32,11 @@
     "mcpServers": {
       "mcp-prompt-engine": {
         "command": "mcp-prompt-engine",
-        "args": [
-          "serve"
-        ]
+        "args": ["serve"]
       },
       "mcp-prompt-engine-configured": {
         "command": "mcp-prompt-engine",
-        "args": [
-          "serve",
-          "--prompts",
-          "/path/to/your/prompts",
-          "--disable-json-args"
-        ]
+        "args": ["serve", "--prompts", "/path/to/your/prompts", "--disable-json-args"]
       },
       "ghcr.io-vasayxtx-mcp-prompt-engine-docker": {
         "command": "docker",
@@ -62,11 +55,7 @@
   },
   "configForArchestra": {
     "command": "mcp-prompt-engine",
-    "args": [
-      "serve",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["serve", "--transport", "stdio"],
     "env": {},
     "transport": "stdio",
     "oauth": {

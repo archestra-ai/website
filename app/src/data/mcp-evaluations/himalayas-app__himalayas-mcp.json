@@ -31,20 +31,13 @@
     "mcpServers": {
       "mcp-remote": {
         "command": "npx",
-        "args": [
-          "mcp-remote",
-          "https://mcp.himalayas.app/sse"
-        ]
+        "args": ["mcp-remote", "https://mcp.himalayas.app/sse"]
       }
     }
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-remote",
-      "https://mcp.himalayas.app/sse"
-    ],
+    "args": ["-y", "mcp-remote", "https://mcp.himalayas.app/sse"],
     "env": {},
     "transport": "http",
     "oauth": {

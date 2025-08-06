@@ -32,10 +32,7 @@
     "mcpServers": {
       "mmntm-weblate-mcp-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@mmntm/weblate-mcp"
-        ],
+        "args": ["-y", "@mmntm/weblate-mcp"],
         "env": {
           "WEBLATE_API_URL": "https://your-weblate-instance.com/api",
           "WEBLATE_API_TOKEN": "your-weblate-api-token"
@@ -43,21 +40,15 @@
       },
       "mmntm-weblate-mcp": {
         "command": "npx",
-        "args": [
-          "@mmntm/weblate-mcp"
-        ]
+        "args": ["@mmntm/weblate-mcp"]
       },
       "weblate-mcp-dev": {
         "command": "pnpm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       },
       "weblate-mcp-local": {
         "command": "node",
-        "args": [
-          "/path/to/weblate-mcp/dist/main.js"
-        ],
+        "args": ["/path/to/weblate-mcp/dist/main.js"],
         "env": {
           "WEBLATE_API_URL": "https://your-weblate-instance.com/api",
           "WEBLATE_API_TOKEN": "your-api-token"
@@ -67,10 +58,7 @@
   },
   "configForArchestra": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@mmntm/weblate-mcp"
-    ],
+    "args": ["-y", "@mmntm/weblate-mcp"],
     "env": {
       "server-basic": "",
       "server-configured": "",

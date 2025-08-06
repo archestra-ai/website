@@ -32,9 +32,7 @@
     "mcpServers": {
       "yutu": {
         "command": "yutu",
-        "args": [
-          "mcp"
-        ],
+        "args": ["mcp"],
         "env": {
           "YUTU_CREDENTIAL": "/absolute/path/to/client_secret.json",
           "YUTU_CACHE_TOKEN": "/absolute/path/to/youtube.token.json"
@@ -44,9 +42,7 @@
   },
   "configForArchestra": {
     "command": "yutu",
-    "args": [
-      "mcp"
-    ],
+    "args": ["mcp"],
     "env": {
       "server-configured": "YUTU_CREDENTIAL",
       "server-docker": "YUTU_CACHE_TOKEN"

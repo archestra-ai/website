@@ -32,10 +32,7 @@
     "mcpServers": {
       "zettelkasten_mcp": {
         "command": "python",
-        "args": [
-          "-m",
-          "zettelkasten_mcp.main"
-        ]
+        "args": ["-m", "zettelkasten_mcp.main"]
       },
       "zettelkasten_mcp-configured": {
         "command": "python",
@@ -50,10 +47,7 @@
       },
       "zettelkasten_mcp-claude-desktop": {
         "command": "/absolute/path/to/zettelkasten-mcp/.venv/bin/python",
-        "args": [
-          "-m",
-          "zettelkasten_mcp.main"
-        ],
+        "args": ["-m", "zettelkasten_mcp.main"],
         "env": {
           "ZETTELKASTEN_NOTES_DIR": "/absolute/path/to/zettelkasten-mcp/data/notes",
           "ZETTELKASTEN_DATABASE_PATH": "/absolute/path/"
@@ -63,10 +57,7 @@
   },
   "configForArchestra": {
     "command": "python",
-    "args": [
-      "-m",
-      "zettelkasten_mcp.main"
-    ],
+    "args": ["-m", "zettelkasten_mcp.main"],
     "env": {
       "server-basic": "",
       "server-configured": "",
