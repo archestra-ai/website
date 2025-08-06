@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
+import { GitHubStarButton } from "./github-star-button";
 
 export default function Header() {
   const [isReportsOpen, setIsReportsOpen] = useState(false);
@@ -26,11 +28,31 @@ export default function Header() {
         <div className="flex items-center gap-8">
           <a
             href="/"
-            className="font-mono text-2xl text-black hover:text-yellow-600 transition-colors"
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
-            archestra.ai
+            <Image
+              src="/logo.png"
+              alt="Archestra Logo"
+              width={40}
+              height={40}
+              className="object-contain"
+            />
+            <span className="font-mono text-2xl text-black hidden sm:inline">archestra.ai</span>
           </a>
           <nav className="hidden sm:flex items-center gap-6 mt-1">
+            <a
+              href="#"
+              className="text-sm text-gray-400 font-medium cursor-not-allowed"
+              onClick={(e) => e.preventDefault()}
+            >
+              Desktop App <span className="text-xs text-red-500">(Coming soon)</span>
+            </a>
+            <a
+              href="/blog"
+              className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors"
+            >
+              Blog
+            </a>
             <a
               href="/mcp-catalog"
               className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors"
@@ -77,27 +99,48 @@ export default function Header() {
           </nav>
         </div>
         
-        {/* Mobile menu */}
-        <nav className="flex sm:hidden items-center gap-3">
-          <a
-            href="/mcp-catalog"
-            className="text-sm text-gray-700 hover:text-gray-900 font-medium"
-          >
-            Catalog
-          </a>
-          <a
-            href="/state-of-mcp"
-            className="text-sm text-gray-700 hover:text-gray-900 font-medium"
-          >
-            Report
-          </a>
-          <a
-            href="/about"
-            className="text-sm text-gray-700 hover:text-gray-900 font-medium"
-          >
-            About
-          </a>
-        </nav>
+        {/* GitHub Star Button - Desktop */}
+        <div className="hidden sm:block">
+          <GitHubStarButton />
+        </div>
+        
+        {/* Mobile menu and GitHub button */}
+        <div className="flex sm:hidden items-center gap-3">
+          <nav className="flex items-center gap-3">
+            <a
+              href="#"
+              className="text-sm text-gray-400 font-medium"
+              onClick={(e) => e.preventDefault()}
+            >
+              Desktop <span className="text-[10px] text-red-500">(Soon)</span>
+            </a>
+            <a
+              href="/blog"
+              className="text-sm text-gray-700 hover:text-gray-900 font-medium"
+            >
+              Blog
+            </a>
+            <a
+              href="/mcp-catalog"
+              className="text-sm text-gray-700 hover:text-gray-900 font-medium"
+            >
+              Catalog
+            </a>
+            <a
+              href="/state-of-mcp"
+              className="text-sm text-gray-700 hover:text-gray-900 font-medium"
+            >
+              Report
+            </a>
+            <a
+              href="/about"
+              className="text-sm text-gray-700 hover:text-gray-900 font-medium"
+            >
+              About
+            </a>
+          </nav>
+          <GitHubStarButton />
+        </div>
       </div>
     </header>
   );
