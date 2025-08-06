@@ -11,17 +11,15 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "incremental": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
-
     // Allows us to use vitest imports in tests without having to explicitly import them
     "types": ["vitest/globals"],
-
     /*
      Aliasing
     */
