@@ -1,5 +1,8 @@
 import { DxtManifestSchema } from '@anthropic-ai/dxt';
-import { z } from 'zod';
+import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
+import { z } from 'zod/v4';
+
+extendZodWithOpenApi(z);
 
 export const McpServerCategorySchema = z.enum([
   'Aggregators',
