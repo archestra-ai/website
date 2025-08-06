@@ -3,8 +3,11 @@ import path from 'path';
 
 import { ArchestraMcpServerManifest } from '@archestra/types';
 
-// Path constants
-const DATA_DIR = path.join(process.cwd(), '../data');
+/**
+ * Path constants
+ * NOTE: process.cwd() will be relative to the root of the project (/app folder)
+ */
+const DATA_DIR = path.join(process.cwd(), 'src/data');
 const MCP_SERVERS_EVALUATIONS_DIR = path.join(DATA_DIR, 'mcp-evaluations');
 const MCP_SERVERS_JSON_FILE_PATH = path.join(DATA_DIR, 'mcp-servers.json');
 

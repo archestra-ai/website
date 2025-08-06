@@ -1,12 +1,16 @@
 'use client';
 
-import React from 'react';
+import constants from '@constants';
+
+const {
+  slack: { joinCommunityUrl: slackJoinCommunityUrl },
+} = constants;
 
 export function SlackButton() {
   return (
     <div style={{ width: '100%' }}>
       <a
-        href="https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg"
+        href={slackJoinCommunityUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="newsletter-form-button"

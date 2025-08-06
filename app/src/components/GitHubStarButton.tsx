@@ -3,13 +3,24 @@
 import { Github, Star } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
+import constants from '@constants';
+
+const {
+  github: {
+    archestra: {
+      orgName: githubOrgName,
+      archestra: { repoName: desktopAppRepoName, repoUrl: desktopAppRepoUrl },
+    },
+  },
+} = constants;
+
 export function GitHubStarButton() {
   const [stars, setStars] = useState<number | null>(null);
 
   useEffect(() => {
     async function fetchStars() {
       try {
-        const response = await fetch('https://api.github.com/repos/archestra-ai/archestra');
+        const response = await fetch(`https://api.github.com/repos/${githubOrgName}/${desktopAppRepoName}`);
         if (response.ok) {
           const data = await response.json();
           setStars(data.stargazers_count);
@@ -24,7 +35,7 @@ export function GitHubStarButton() {
 
   return (
     <a
-      href="https://github.com/archestra-ai/archestra"
+      href={desktopAppRepoUrl}
       target="_blank"
       rel="noopener noreferrer"
       className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-900 transition-colors"

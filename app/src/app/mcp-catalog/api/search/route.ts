@@ -16,31 +16,39 @@ export async function GET(request: NextRequest) {
     const allServers = loadServers();
 
     // Filter servers
-    let filteredServers = allServers.filter((server) => {
-      // Search query filter
-      if (query) {
-        const searchQuery = query.toLowerCase();
-        const matchesSearch =
-          server.name.toLowerCase().includes(searchQuery) ||
-          server.description.toLowerCase().includes(searchQuery) ||
-          server.github_info.owner.toLowerCase().includes(searchQuery) ||
-          server.github_info.repo.toLowerCase().includes(searchQuery);
+    let filteredServers = allServers.filter(
+      ({
+        name,
+        description,
+        github_info: { owner, repo },
+        category: serverCategory,
+        programming_language: programmingLanguage,
+      }) => {
+        // Search query filter
+        if (query) {
+          const searchQuery = query.toLowerCase();
+          const matchesSearch =
+            name.toLowerCase().includes(searchQuery) ||
+            description.toLowerCase().includes(searchQuery) ||
+            owner.toLowerCase().includes(searchQuery) ||
+            repo.toLowerCase().includes(searchQuery);
 
-        if (!matchesSearch) return false;
+          if (!matchesSearch) return false;
+        }
+
+        // Category filter
+        if (category && serverCategory !== category) {
+          return false;
+        }
+
+        // Language filter
+        if (language && programmingLanguage !== language) {
+          return false;
+        }
+
+        return true;
       }
-
-      // Category filter
-      if (category && server.category !== category) {
-        return false;
-      }
-
-      // Language filter
-      if (language && server.programming_language !== language) {
-        return false;
-      }
-
-      return true;
-    });
+    );
 
     // Sort servers
     filteredServers.sort((a, b) => {

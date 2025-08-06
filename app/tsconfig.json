@@ -24,8 +24,8 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],
+      "@constants": ["src/constants"],
       "@hooks/*": ["src/hooks/*"],
-      "@pages/*": ["src/pages/*"],
       "@providers": ["src/providers"],
       "@schemas": ["src/schemas"],
       "@archestra/types": ["src/types"],

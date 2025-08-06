@@ -12,13 +12,17 @@ import remarkGfm from 'remark-gfm';
 import { ArchestraMcpServerManifest } from '@archestra/types';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
-import BadgeCopy from '@components/McpServer/BadgeCopy';
 import ConfigSection from '@components/McpServer/ConfigSection';
 import DependenciesCard from '@components/McpServer/DependenciesCard';
 import { QualityBar } from '@components/McpServer/QualityBar';
 import QualityScoreCard from '@components/McpServer/QualityScoreCard';
+import TrustScoreBadge from '@components/TrustScoreBadge';
 import { Badge } from '@components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
+import constants, {
+  generateMcpCatalogDetailPageUrlFromServerName,
+  generateUrlToEditIndividualMcpCatalogJsonFile,
+} from '@constants';
 import { countServersInRepo, loadServers } from '@utils/catalog';
 import { getMcpServerGitHubUrl, getMcpServerName } from '@utils/github';
 import { calculateQualityScore } from '@utils/qualityCalculator';
@@ -27,6 +31,14 @@ interface PageProps {
   params: Promise<{ name: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
+
+const {
+  github: {
+    archestra: {
+      website: { newIssueUrl, editMcpCatalogJsonFileUrl, viewMcpCatalogDirectoryUrl },
+    },
+  },
+} = constants;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { name } = await params;
@@ -42,34 +54,32 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const serverName = getMcpServerName(server);
   const qualityScore = calculateQualityScore(server);
+  const mcpCatalogDetailPageUrl = generateMcpCatalogDetailPageUrlFromServerName(serverName);
+  const { category, description, programming_language: programmingLanguage } = server;
 
   return {
     title: `${serverName} MCP Server | Documentation & Integration`,
     description:
-      server.description ||
+      description ||
       `${serverName} - Model Context Protocol server. Quality score: ${
         qualityScore.total
-      }/100. ${server.category ? `Category: ${server.category}` : ''}`,
-    keywords: [
-      'MCP server',
-      serverName,
-      'Model Context Protocol',
-      server.category || '',
-      server.programming_language || '',
-    ].filter(Boolean),
+      }/100. ${category ? `Category: ${category}` : ''}`,
+    keywords: ['MCP server', serverName, 'Model Context Protocol', category || '', programmingLanguage || ''].filter(
+      Boolean
+    ),
     openGraph: {
       title: `${serverName} MCP Server`,
-      description: server.description || `${serverName} MCP server for AI agents`,
-      url: `https://archestra.ai/mcp-catalog/${name}`,
+      description: description || `${serverName} MCP server for AI agents`,
+      url: mcpCatalogDetailPageUrl,
       type: 'article',
     },
     twitter: {
       card: 'summary',
       title: `${serverName} MCP Server`,
-      description: server.description || `Quality score: ${qualityScore.total}/100`,
+      description: description || `Quality score: ${qualityScore.total}/100`,
     },
     alternates: {
-      canonical: `https://archestra.ai/mcp-catalog/${name}`,
+      canonical: mcpCatalogDetailPageUrl,
     },
   };
 }
@@ -111,6 +121,31 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
 
   const serverName = getMcpServerName(server);
   const githubUrl = getMcpServerGitHubUrl(server);
+  const {
+    github_info: {
+      owner: gitHubInfoOwner,
+      repo: gitHubInfoRepo,
+      path: gitHubInfoPath,
+      latest_commit_hash: gitHubInfoLatestCommitHash,
+      stars: gitHubInfoStars,
+      contributors: gitHubInfoContributors,
+      issues: gitHubInfoIssues,
+      releases: gitHubInfoReleases,
+      ci_cd: gitHubInfoCiCd,
+    },
+    last_scraped_at: lastScrapedAt,
+    programming_language: programmingLanguage,
+    category,
+    description,
+    quality_score: qualityScore,
+    protocol_features: protocolFeatures,
+    evaluation_model: evaluationModel,
+    server: serverConfig,
+    readme: readmeContent,
+    framework,
+  } = server;
+  const qualityScoreBreakdown = qualityScore !== null ? calculateQualityScore(server, allServers) : null;
+  const urlToEditIndividualMcpCatalogJsonFile = generateUrlToEditIndividualMcpCatalogJsonFile(serverName);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -153,37 +188,37 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                       }}
                     >
                       <span>
-                        {server.github_info.owner}/{server.github_info.repo}
+                        {gitHubInfoOwner}/{gitHubInfoRepo}
                       </span>
-                      {server.github_info.path && (
+                      {gitHubInfoPath && (
                         <>
                           <span>/</span>
-                          <span className="text-blue-600">{server.github_info.path}</span>
+                          <span className="text-blue-600">{gitHubInfoPath}</span>
                         </>
                       )}
                     </div>
 
                     {/* Commit Hash and Last Scraped */}
                     <div className="flex flex-wrap gap-4 mb-4 text-xs text-gray-500">
-                      {server.github_info.latest_commit_hash && (
+                      {gitHubInfoLatestCommitHash && (
                         <div className="flex items-center gap-1">
                           <span>🔗 Latest commit:</span>
                           <a
-                            href={`${githubUrl}/commit/${server.github_info.latest_commit_hash}`}
+                            href={`${githubUrl}/commit/${gitHubInfoLatestCommitHash}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="font-mono text-blue-600 hover:underline"
-                            title={server.github_info.latest_commit_hash}
+                            title={gitHubInfoLatestCommitHash}
                           >
-                            {server.github_info.latest_commit_hash.substring(0, 7)}
+                            {gitHubInfoLatestCommitHash.substring(0, 7)}
                           </a>
                         </div>
                       )}
-                      {server.last_scraped_at && (
+                      {lastScrapedAt && (
                         <div className="flex items-center gap-1">
                           <span>🕒 Updated:</span>
                           <span className="font-mono">
-                            {new Date(server.last_scraped_at).toLocaleDateString('en-US', {
+                            {new Date(lastScrapedAt).toLocaleDateString('en-US', {
                               year: 'numeric',
                               month: 'short',
                               day: 'numeric',
@@ -197,37 +232,33 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                   </div>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline" className="text-xs sm:text-sm">
-                      {server.programming_language}
+                      {programmingLanguage}
                     </Badge>
                     <Badge variant="outline" className="text-xs sm:text-sm">
-                      {server.category || 'Uncategorized'}
+                      {category || 'Uncategorized'}
                     </Badge>
                   </div>
                 </div>
-                <p className="text-base sm:text-lg text-gray-600">{server.description}</p>
+                <p className="text-base sm:text-lg text-gray-600">{description}</p>
               </div>
 
               {/* Trust Score */}
-              {(() => {
-                const scoreBreakdown = server.quality_score !== null ? calculateQualityScore(server, allServers) : null;
-
-                return scoreBreakdown ? (
-                  <QualityScoreCard server={server} scoreBreakdown={scoreBreakdown} />
-                ) : (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>MCP Trust Score</CardTitle>
-                      <CardDescription>This server is being evaluated</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <QualityBar score={null} />
-                    </CardContent>
-                  </Card>
-                );
-              })()}
+              {qualityScoreBreakdown ? (
+                <QualityScoreCard server={server} scoreBreakdown={qualityScoreBreakdown} />
+              ) : (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>MCP Trust Score</CardTitle>
+                    <CardDescription>This server is being evaluated</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <QualityBar score={null} />
+                  </CardContent>
+                </Card>
+              )}
 
               {/* GitHub Metrics */}
-              {server.quality_score !== null && (
+              {qualityScore !== null && (
                 <Card>
                   <CardHeader>
                     <CardTitle>GitHub Metrics</CardTitle>
@@ -245,10 +276,10 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                       <div className="flex justify-between">
                         <span>⭐ GitHub Stars:</span>
                         <span className="font-mono">
-                          {server.github_info.stars}
+                          {gitHubInfoStars}
                           {serverCount > 1 && (
                             <span className="text-gray-500 ml-1">
-                              / {serverCount} = {Math.round(server.github_info.stars / serverCount)}
+                              / {serverCount} = {Math.round(gitHubInfoStars / serverCount)}
                             </span>
                           )}
                         </span>
@@ -256,10 +287,10 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                       <div className="flex justify-between">
                         <span>👥 Contributors:</span>
                         <span className="font-mono">
-                          {server.github_info.contributors}
+                          {gitHubInfoContributors}
                           {serverCount > 1 && (
                             <span className="text-gray-500 ml-1">
-                              / {serverCount} = {Math.round(server.github_info.contributors / serverCount)}
+                              / {serverCount} = {Math.round(gitHubInfoContributors / serverCount)}
                             </span>
                           )}
                         </span>
@@ -267,24 +298,24 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                       <div className="flex justify-between">
                         <span>📋 Total Issues:</span>
                         <span className="font-mono">
-                          {server.github_info.issues}
+                          {gitHubInfoIssues}
                           {serverCount > 1 && (
                             <span className="text-gray-500 ml-1">
-                              / {serverCount} = {Math.round(server.github_info.issues / serverCount)}
+                              / {serverCount} = {Math.round(gitHubInfoIssues / serverCount)}
                             </span>
                           )}
                         </span>
                       </div>
                       <div className="flex justify-between">
                         <span>📦 Has Releases:</span>
-                        <span className={server.github_info.releases ? 'text-green-600' : 'text-gray-400'}>
-                          {server.github_info.releases ? 'Yes' : 'No'}
+                        <span className={gitHubInfoReleases ? 'text-green-600' : 'text-gray-400'}>
+                          {gitHubInfoReleases ? 'Yes' : 'No'}
                         </span>
                       </div>
                       <div className="flex justify-between">
                         <span>🔧 Has CI/CD Pipeline:</span>
-                        <span className={server.github_info.ci_cd ? 'text-green-600' : 'text-gray-400'}>
-                          {server.github_info.ci_cd ? 'Yes' : 'No'}
+                        <span className={gitHubInfoCiCd ? 'text-green-600' : 'text-gray-400'}>
+                          {gitHubInfoCiCd ? 'Yes' : 'No'}
                         </span>
                       </div>
                     </div>
@@ -293,44 +324,41 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
               )}
 
               {/* MCP Protocol Features */}
-              {server.quality_score !== null && (
+              {qualityScore !== null && (
                 <Card>
                   <CardHeader>
                     <CardTitle>MCP Protocol Support</CardTitle>
                     <CardDescription>
                       <div className="flex items-center justify-between">
                         <span>
-                          {server.protocol_features.implementing_tools === null
+                          {protocolFeatures.implementing_tools === null
                             ? 'Protocol features have not been evaluated yet'
                             : 'Implemented MCP protocol features'}
                         </span>
-                        {server.protocol_features.implementing_tools !== null &&
-                          server.evaluation_model !== undefined && (
-                            <div className="flex items-center gap-2 text-xs">
-                              <span className="text-gray-500">
-                                {server.evaluation_model === null
-                                  ? '✨ Human verified'
-                                  : `🤖 Detected by ${server.evaluation_model}`}
-                              </span>
-                              <a
-                                href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.name}.json`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
-                                title="Fix protocol features"
-                              >
-                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                                  />
-                                </svg>
-                                Fix
-                              </a>
-                            </div>
-                          )}
+                        {protocolFeatures.implementing_tools !== null && evaluationModel !== undefined && (
+                          <div className="flex items-center gap-2 text-xs">
+                            <span className="text-gray-500">
+                              {evaluationModel === null ? '✨ Human verified' : `🤖 Detected by ${evaluationModel}`}
+                            </span>
+                            <a
+                              href={urlToEditIndividualMcpCatalogJsonFile}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
+                              title="Fix protocol features"
+                            >
+                              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                />
+                              </svg>
+                              Fix
+                            </a>
+                          </div>
+                        )}
                       </div>
                     </CardDescription>
                   </CardHeader>
@@ -376,7 +404,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
               <DependenciesCard server={server} />
 
               {/* Configuration */}
-              {server.server ? (
+              {serverConfig ? (
                 <Card>
                   <CardHeader>
                     <CardTitle>Configuration</CardTitle>
@@ -385,15 +413,13 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                         <span>
                           Configuration example extracted from README.md for Claude Desktop and other clients.
                         </span>
-                        {server.evaluation_model !== undefined && (
+                        {evaluationModel !== undefined && (
                           <div className="flex items-center gap-2 text-xs">
                             <span className="text-gray-500">
-                              {server.evaluation_model === null
-                                ? '✨ Human provided'
-                                : `🤖 Extracted by ${server.evaluation_model}`}
+                              {evaluationModel === null ? '✨ Human provided' : `🤖 Extracted by ${evaluationModel}`}
                             </span>
                             <a
-                              href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.name}.json`}
+                              href={urlToEditIndividualMcpCatalogJsonFile}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
@@ -415,7 +441,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <ConfigSection config={server.server} />
+                    <ConfigSection config={serverConfig} />
                   </CardContent>
                 </Card>
               ) : (
@@ -431,13 +457,13 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                       We don't have configuration information for this MCP server yet.
                     </p>
                     <a
-                      href={`https://github.com/archestra-ai/website/issues/new?title=Add configuration for ${encodeURIComponent(
+                      href={`${newIssueUrl}?title=Add configuration for ${encodeURIComponent(
                         serverName
                       )}&body=Please add configForClients information for the MCP server: ${encodeURIComponent(
                         serverName
-                      )}%0A%0AServer: ${server.github_info.owner}/${server.github_info.repo}${
-                        server.github_info.path ? `/${server.github_info.path}` : ''
-                      }%0AName: ${server.name}%0A%0APlease provide the JSON configuration needed to run this server.`}
+                      )}%0A%0AServer: ${gitHubInfoOwner}/${gitHubInfoRepo}${
+                        gitHubInfoPath ? `/${gitHubInfoPath}` : ''
+                      }%0AName: ${serverName}%0A%0APlease provide the JSON configuration needed to run this server.`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
@@ -452,7 +478,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
               )}
 
               {/* README Content */}
-              {server.readme && (
+              {readmeContent && (
                 <Card>
                   <CardHeader>
                     <CardTitle>README.md</CardTitle>
@@ -527,7 +553,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                           strong: ({ node, ...props }) => <strong className="font-semibold text-gray-900" {...props} />,
                         }}
                       >
-                        {server.readme}
+                        {readmeContent}
                       </ReactMarkdown>
                     </div>
                   </CardContent>
@@ -559,14 +585,14 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
               </Card>
 
               {/* Framework Badge */}
-              {server.framework && (
+              {framework && (
                 <Card>
                   <CardHeader>
                     <CardTitle>Framework</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <Badge variant="secondary" className="text-sm">
-                      {server.framework}
+                      {framework}
                     </Badge>
                   </CardContent>
                 </Card>
@@ -579,25 +605,12 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                   <CardDescription>Show your MCP trust score in your README</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  {(() => {
-                    // Create badge URL that includes the path if it exists
-                    const badgeUrl = server.github_info.path
-                      ? `/mcp-catalog/api/badge/quality/${server.github_info.owner}/${
-                          server.github_info.repo
-                        }/${server.github_info.path.replace(/\//g, '--')}`
-                      : `/mcp-catalog/api/badge/quality/${server.github_info.owner}/${server.github_info.repo}`;
-
-                    const badgeMarkdown = server.github_info.path
-                      ? `[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/${
-                          server.github_info.owner
-                        }/${server.github_info.repo}/${server.github_info.path.replace(
-                          /\//g,
-                          '--'
-                        )})](https://archestra.ai/mcp-catalog/${server.name})`
-                      : `[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/${server.github_info.owner}/${server.github_info.repo})](https://archestra.ai/mcp-catalog/${server.name})`;
-
-                    return <BadgeCopy badgeMarkdown={badgeMarkdown} badgeUrl={badgeUrl} />;
-                  })()}
+                  <TrustScoreBadge
+                    githubOwner={gitHubInfoOwner}
+                    githubRepo={gitHubInfoRepo}
+                    githubPath={gitHubInfoPath}
+                    serverName={serverName}
+                  />
                 </CardContent>
               </Card>
 
@@ -605,7 +618,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
               <div className="space-y-3">
                 {/* Edit This Server Button */}
                 <a
-                  href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.name}.json`}
+                  href={urlToEditIndividualMcpCatalogJsonFile}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 w-full justify-center text-sm"
@@ -623,7 +636,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
 
                 {/* Add New MCP Server Button */}
                 <a
-                  href="https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-servers.json"
+                  href={editMcpCatalogJsonFileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 w-full justify-center text-sm"
@@ -636,11 +649,11 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
 
                 {/* Report Issue Button */}
                 <a
-                  href={`https://github.com/archestra-ai/website/issues/new?title=Issue with ${encodeURIComponent(
+                  href={`${newIssueUrl}?title=Issue with ${encodeURIComponent(
                     serverName
-                  )}&body=Server: ${server.github_info.owner}/${server.github_info.repo}${
-                    server.github_info.path ? `/${server.github_info.path}` : ''
-                  }%0AName: ${server.name}%0A%0APlease describe the issue:`}
+                  )}&body=Server: ${gitHubInfoOwner}/${gitHubInfoRepo}${
+                    gitHubInfoPath ? `/${gitHubInfoPath}` : ''
+                  }%0AName: ${serverName}%0A%0APlease describe the issue:`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-3 bg-gray-500 hover:bg-gray-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 w-full justify-center text-sm"
@@ -658,7 +671,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
 
                 {/* GitHub Repo Button */}
                 <a
-                  href="https://github.com/archestra-ai/website/tree/main/app/app/mcp-catalog"
+                  href={viewMcpCatalogDirectoryUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-3 bg-gray-800 hover:bg-gray-900 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 w-full justify-center text-sm"

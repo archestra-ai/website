@@ -4,7 +4,14 @@ import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
+import constants from '@constants';
+
 import { GitHubStarButton } from './GitHubStarButton';
+
+const {
+  company: { name: companyName },
+  website: { urls: websiteUrls },
+} = constants;
 
 export default function Header() {
   const [isReportsOpen, setIsReportsOpen] = useState(false);
@@ -28,8 +35,14 @@ export default function Header() {
       <div className="container flex items-center px-4 md:px-6 justify-between h-16">
         <div className="flex items-center gap-8">
           <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <Image src="/logo.png" alt="Archestra Logo" width={40} height={40} className="object-contain" />
-            <span className="font-mono text-2xl text-black hidden sm:inline">archestra.ai</span>
+            <Image
+              src={websiteUrls.logo}
+              alt={`${companyName} Logo`}
+              width={40}
+              height={40}
+              className="object-contain"
+            />
+            <span className="font-mono text-2xl text-black hidden sm:inline">{companyName}</span>
           </a>
           <nav className="hidden sm:flex items-center gap-6 mt-1">
             <a

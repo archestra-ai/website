@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 import { ArchestraMcpServerManifest } from '@archestra/types';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
+import { generateUrlToEditIndividualMcpCatalogJsonFile } from '@constants';
 
 interface DependenciesCardProps {
   server: ArchestraMcpServerManifest;
@@ -13,11 +14,13 @@ interface DependenciesCardProps {
 export default function DependenciesCard({ server }: DependenciesCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  const { name: serverName, dependencies, evaluation_model: evaluationModel } = server;
+
   // Group dependencies by importance level
-  const mainDeps = server.dependencies?.filter((d) => d.importance >= 8) || [];
-  const mediumDeps = server.dependencies?.filter((d) => d.importance >= 5 && d.importance < 8) || [];
-  const lightDeps = server.dependencies?.filter((d) => d.importance < 5) || [];
-  const totalDeps = (server.dependencies || []).length;
+  const mainDeps = dependencies?.filter((d) => d.importance >= 8) || [];
+  const mediumDeps = dependencies?.filter((d) => d.importance >= 5 && d.importance < 8) || [];
+  const lightDeps = dependencies?.filter((d) => d.importance < 5) || [];
+  const totalDeps = (dependencies || []).length;
 
   const DependenciesContent = () => (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -105,13 +108,13 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
         <CardDescription>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <span>Libraries and frameworks used by this MCP server</span>
-            {server.dependencies && server.evaluation_model !== undefined && (
+            {dependencies && evaluationModel !== undefined && (
               <div className="flex items-center gap-2 text-xs">
                 <span className="text-gray-500">
-                  {server.evaluation_model === null ? '✨ Human curated' : `🤖 Analyzed by ${server.evaluation_model}`}
+                  {evaluationModel === null ? '✨ Human curated' : `🤖 Analyzed by ${evaluationModel}`}
                 </span>
                 <a
-                  href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.name}.json`}
+                  href={generateUrlToEditIndividualMcpCatalogJsonFile(serverName)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
@@ -133,7 +136,7 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
         </CardDescription>
       </CardHeader>
       <CardContent className={!isExpanded ? 'hidden md:block' : ''}>
-        {server.dependencies && server.dependencies.length > 0 ? (
+        {dependencies && dependencies.length > 0 ? (
           <DependenciesContent />
         ) : (
           <div className="text-center py-8">

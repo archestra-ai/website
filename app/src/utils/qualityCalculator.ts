@@ -53,7 +53,15 @@ export function calculateMCPProtocolScore({ protocol_features }: ArchestraMcpSer
  * For multi-server repositories, metrics are divided by the number of servers
  */
 export function calculateGitHubMetricsScore(
-  server: ArchestraMcpServerManifest,
+  {
+    github_info: {
+      owner: serverGitHubOwner,
+      repo: serverGitHubRepo,
+      stars: serverGitHubStars,
+      contributors: serverGitHubContributors,
+      issues: serverGitHubIssues,
+    },
+  }: ArchestraMcpServerManifest,
   allServers?: ArchestraMcpServerManifest[]
 ): number {
   let score = 0;
@@ -62,15 +70,15 @@ export function calculateGitHubMetricsScore(
   let serverCount = 1;
   if (allServers) {
     serverCount = allServers.filter(
-      (s) => s.github_info.owner === server.github_info.owner && s.github_info.repo === server.github_info.repo
+      ({ github_info: { owner, repo } }) => owner === serverGitHubOwner && repo === serverGitHubRepo
     ).length;
     serverCount = Math.max(1, serverCount);
   }
 
   // Divide metrics by server count for multi-server repos
-  const adjustedStars = server.github_info.stars / serverCount;
-  const adjustedContributors = server.github_info.contributors / serverCount;
-  const adjustedIssues = server.github_info.issues / serverCount;
+  const adjustedStars = serverGitHubStars / serverCount;
+  const adjustedContributors = serverGitHubContributors / serverCount;
+  const adjustedIssues = serverGitHubIssues / serverCount;
 
   // Stars scoring (0-10 points)
   // 0-10 stars: 0 points, 11-50: 2 points, 51-100: 4 points, 101-500: 6 points, 501-1000: 8 points, >1000: 10 points
@@ -98,16 +106,18 @@ export function calculateGitHubMetricsScore(
  * Calculate Deployment Maturity Score (10 points max)
  * Based on CI/CD, versioning, and release practices
  */
-export function calculateDeploymentMaturityScore(server: ArchestraMcpServerManifest): number {
+export function calculateDeploymentMaturityScore({
+  github_info: { ci_cd, releases },
+}: ArchestraMcpServerManifest): number {
   let score = 0;
 
   // Check for CI/CD (GitHub Actions, etc.) - 5 points
-  if (server.github_info.ci_cd) {
+  if (ci_cd) {
     score += 5;
   }
 
   // Check for releases - 5 points
-  if (server.github_info.releases) {
+  if (releases) {
     score += 5;
   }
 
@@ -118,11 +128,11 @@ export function calculateDeploymentMaturityScore(server: ArchestraMcpServerManif
  * Calculate Documentation Score (8 points max)
  * Based on basic documentation completeness
  */
-export function calculateDocumentationScore(server: ArchestraMcpServerManifest): number {
+export function calculateDocumentationScore({ readme }: ArchestraMcpServerManifest): number {
   let score = 0;
 
   // Extended documentation - has readme
-  if (server.readme && server.readme.length > 100) {
+  if (readme && readme.length > 100) {
     score += 8;
   }
 
@@ -134,8 +144,8 @@ export function calculateDocumentationScore(server: ArchestraMcpServerManifest):
  * 2 points for using our badge in README.md
  * Note: This would require checking the actual README content from GitHub
  */
-export function calculateBadgeUsageScore(readmeContent: string | null): number {
-  if (!readmeContent) {
+export function calculateBadgeUsageScore({ readme }: ArchestraMcpServerManifest): number {
+  if (!readme) {
     return 0;
   }
 
@@ -143,7 +153,7 @@ export function calculateBadgeUsageScore(readmeContent: string | null): number {
   const archestraBadgePattern =
     /\[\!\[(MCP Quality|MCP Trust|Trust Score)\]\(https:\/\/archestra\.ai\/api\/badge\/quality\//i;
 
-  return archestraBadgePattern.test(readmeContent) ? 2 : 0;
+  return archestraBadgePattern.test(readme) ? 2 : 0;
 }
 
 /**
@@ -151,16 +161,16 @@ export function calculateBadgeUsageScore(readmeContent: string | null): number {
  * Based on dependency count and rarity of dependencies
  */
 export function calculateDependenciesScore(
-  server: ArchestraMcpServerManifest,
+  { dependencies }: ArchestraMcpServerManifest,
   allServers?: ArchestraMcpServerManifest[]
 ): number {
   // If dependencies haven't been analyzed yet, give partial points
-  if (!server.dependencies) {
+  if (!dependencies) {
     return 15;
   }
 
   // If dependencies array is empty (no dependencies), that's ideal - return full points
-  if (server.dependencies.length === 0) {
+  if (dependencies.length === 0) {
     return 20;
   }
 
@@ -168,7 +178,7 @@ export function calculateDependenciesScore(
   let score = 20;
 
   // Count significant dependencies (importance >= 5)
-  const significantDeps = server.dependencies.filter((dep) => dep.importance >= 5);
+  const significantDeps = dependencies.filter((dep) => dep.importance >= 5);
   const depCount = significantDeps.length;
 
   // Penalty only if more than 10 dependencies
@@ -219,9 +229,7 @@ export function calculateQualityScore(
   const deploymentMaturity = calculateDeploymentMaturityScore(server);
   const documentation = calculateDocumentationScore(server);
   const dependencies = calculateDependenciesScore(server, allServers);
-  const badgeUsage = calculateBadgeUsageScore(server.readme);
-
-  const total = mcpProtocol + githubMetrics + deploymentMaturity + documentation + dependencies + badgeUsage;
+  const badgeUsage = calculateBadgeUsageScore(server);
 
   return {
     mcp_protocol: mcpProtocol,
@@ -230,6 +238,6 @@ export function calculateQualityScore(
     documentation: documentation,
     dependencies: dependencies,
     badge_usage: badgeUsage,
-    total,
+    total: mcpProtocol + githubMetrics + deploymentMaturity + documentation + dependencies + badgeUsage,
   };
 }

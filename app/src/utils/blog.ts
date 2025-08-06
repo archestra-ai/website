@@ -4,8 +4,17 @@ import path from 'path';
 import readingTime from 'reading-time';
 
 import { BlogPost } from '@archestra/types';
+import constants from '@constants';
 
-const POSTS_DIRECTORY = path.join(process.cwd(), '../data/blog-content');
+/**
+ * Path constants
+ * NOTE: process.cwd() will be relative to the root of the project (/app folder)
+ */
+const POSTS_DIRECTORY = path.join(process.cwd(), 'src/data/blog-content');
+
+const {
+  company: { name: companyName },
+} = constants;
 
 export function getAllPosts(): BlogPost[] {
   const fileNames = fs.readdirSync(POSTS_DIRECTORY);
@@ -22,7 +31,7 @@ export function getAllPosts(): BlogPost[] {
         slug,
         title: data.title || slug,
         date: data.date || new Date().toISOString(),
-        author: data.author || 'Archestra Team',
+        author: data.author || `${companyName} Team`,
         excerpt: data.excerpt || content.slice(0, 200) + '...',
         content,
         readingTime: stats.text,
@@ -56,7 +65,7 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
     slug,
     title: data.title || slug,
     date: data.date || new Date().toISOString(),
-    author: data.author || 'Archestra Team',
+    author: data.author || `${companyName} Team`,
     excerpt: data.excerpt || content.slice(0, 200) + '...',
     content,
     readingTime: stats.text,

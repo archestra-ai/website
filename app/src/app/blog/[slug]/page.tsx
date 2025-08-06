@@ -10,7 +10,12 @@ import remarkGfm from 'remark-gfm';
 
 import Footer from '@components/Footer';
 import Header from '@components/Header';
+import constants from '@constants';
 import { formatDateShort, getAllPosts, getPostBySlug } from '@utils/blog';
+
+const {
+  company: { name: companyName },
+} = constants;
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -22,12 +27,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!post) {
     return {
-      title: 'Post Not Found | Archestra',
+      title: `Post Not Found | ${companyName}`,
     };
   }
 
   return {
-    title: `${post.title} | Archestra Blog`,
+    title: `${post.title} | ${companyName} Blog`,
     description: post.excerpt,
     openGraph: {
       title: post.title,

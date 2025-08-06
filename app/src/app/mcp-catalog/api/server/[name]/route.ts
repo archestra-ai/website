@@ -19,9 +19,18 @@ export async function GET(request: NextRequest, { params }: { params: { name: st
       return NextResponse.json({ error: 'Server not found' }, { status: 404 });
     }
 
+    const {
+      name: serverName,
+      quality_score: qualityScore,
+      evaluation_model: evaluationModel,
+      protocol_features: protocolFeatures,
+      dependencies,
+      github_info: { owner: gitHubInfoOwner, repo: gitHubInfoRepo, path: gitHubInfoPath },
+    } = server;
+
     // Calculate trust score breakdown if score exists
     let scoreBreakdown = null;
-    if (server.quality_score !== null) {
+    if (qualityScore !== null) {
       // Load all servers for dependency commonality calculation
       const allServers = loadServers();
       scoreBreakdown = calculateQualityScore(server, allServers);
@@ -32,15 +41,13 @@ export async function GET(request: NextRequest, { params }: { params: { name: st
       ...server,
       scoreBreakdown,
       // Add computed fields
-      githubUrl: `https://github.com/${server.github_info.owner}/${server.github_info.repo}${
-        server.github_info.path ? `/tree/main/${server.github_info.path}` : ''
-      }`,
-      badgeUrl: server.github_info.path
+      githubUrl: `https://github.com/${gitHubInfoOwner}/${gitHubInfoRepo}${gitHubInfoPath ? `/tree/main/${gitHubInfoPath}` : ''}`,
+      badgeUrl: gitHubInfoPath
         ? `https://archestra.ai/mcp-catalog/api/badge/quality/${
-            server.github_info.owner
-          }/${server.github_info.repo}/${server.github_info.path.replace(/\//g, '--')}`
-        : `https://archestra.ai/mcp-catalog/api/badge/quality/${server.github_info.owner}/${server.github_info.repo}`,
-      detailPageUrl: `https://archestra.ai/mcp-catalog/${server.name}`,
+            gitHubInfoOwner
+          }/${gitHubInfoRepo}/${gitHubInfoPath.replace(/\//g, '--')}`
+        : `https://archestra.ai/mcp-catalog/api/badge/quality/${gitHubInfoOwner}/${gitHubInfoRepo}`,
+      detailPageUrl: `https://archestra.ai/mcp-catalog/${serverName}`,
     });
   } catch (error) {
     console.error('Server API error:', error);

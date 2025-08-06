@@ -6,6 +6,11 @@ import { useState } from 'react';
 import { ArchestraMcpServerManifest, ArchestraScoreBreakdown } from '@archestra/types';
 import { QualityBar } from '@components/McpServer/QualityBar';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
+import constants, { generateUrlToEditIndividualMcpCatalogJsonFile } from '@constants';
+
+const {
+  company: { name: companyName },
+} = constants;
 
 interface QualityScoreCardProps {
   server: ArchestraMcpServerManifest;
@@ -14,6 +19,14 @@ interface QualityScoreCardProps {
 
 export default function QualityScoreCard({ server, scoreBreakdown }: QualityScoreCardProps) {
   const [showDetails, setShowDetails] = useState(false);
+
+  const {
+    name: serverName,
+    quality_score: qualityScore,
+    evaluation_model: evaluationModel,
+    protocol_features: protocolFeatures,
+    dependencies,
+  } = server;
 
   const getScoreDescription = (score: number, maxScore: number, category: string) => {
     const percentage = (score / maxScore) * 100;
@@ -29,7 +42,7 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
     }
     if (category === 'dependency optimization') {
       // Check if dependencies have been evaluated
-      if (!server.dependencies) {
+      if (!dependencies) {
         return `Dependencies not yet evaluated (${score}/${maxScore})`;
       }
       if (percentage === 100) return `Optimal dependency management (${score}/${maxScore})`;
@@ -39,12 +52,12 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
       return `Too many or rare dependencies (${score}/${maxScore})`;
     }
     if (category === 'badge adoption') {
-      if (percentage > 0) return `Archestra MCP Trust badge (${score}/${maxScore})`;
-      return `Archestra MCP Trust score badge is missing`;
+      if (percentage > 0) return `${companyName} MCP Trust badge (${score}/${maxScore})`;
+      return `${companyName} MCP Trust score badge is missing`;
     }
     if (category === 'MCP protocol implementation') {
       // Check if protocol features have been evaluated
-      if (server.protocol_features.implementing_tools === null) {
+      if (protocolFeatures.implementing_tools === null) {
         return `Protocol features not yet evaluated (${score}/${maxScore})`;
       }
       if (percentage === 100) return `Full MCP protocol implementation (${score}/${maxScore})`;
@@ -67,19 +80,17 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
         <CardDescription>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <span>
-              {server.quality_score !== null
+              {qualityScore !== null
                 ? 'Based on our comprehensive evaluation criteria'
                 : 'This server is being evaluated'}
             </span>
-            {server.evaluation_model !== undefined && (
+            {evaluationModel !== undefined && (
               <div className="flex items-center gap-2 text-xs">
                 <span className="text-gray-500">
-                  {server.evaluation_model === null
-                    ? '✨ Human evaluation'
-                    : `🤖 Evaluated by ${server.evaluation_model}`}
+                  {evaluationModel === null ? '✨ Human evaluation' : `🤖 Evaluated by ${evaluationModel}`}
                 </span>
                 <a
-                  href={`https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-evaluations/${server.name}.json`}
+                  href={generateUrlToEditIndividualMcpCatalogJsonFile(serverName)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
@@ -101,9 +112,9 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <QualityBar score={server.quality_score} />
+        <QualityBar score={qualityScore} />
 
-        {server.quality_score !== null && (
+        {qualityScore !== null && (
           <>
             {/* Mobile: Collapsible Details */}
             <div className="sm:hidden">

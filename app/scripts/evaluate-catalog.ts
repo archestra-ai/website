@@ -1493,7 +1493,7 @@ async function main() {
   if (args.includes('--help') || args.includes('-h')) {
     console.log(`🔍 MCP Server Evaluation Script
 
-Usage: npm run evaluate [options] [github-url]
+Usage: npm run evaluate-catalog [options] [github-url]
 
 Update Options:
   --github               Update GitHub data (stars, issues, README)
@@ -1514,12 +1514,12 @@ Control Options:
   --limit <n>            Process only the first N servers
 
 Examples:
-  npm run evaluate https://github.com/org/repo
-  npm run evaluate --github --force
-  npm run evaluate --category --model llama2
-  npm run evaluate --category --model gemini-1.5-flash
-  npm run evaluate --all --concurrency 20
-  npm run evaluate --dependencies --limit 10
+  npm run evaluate-catalog https://github.com/org/repo
+  npm run evaluate-catalog --github --force
+  npm run evaluate-catalog --category --model llama2
+  npm run evaluate-catalog --category --model gemini-1.5-flash
+  npm run evaluate-catalog --all --concurrency 20
+  npm run evaluate-catalog --dependencies --limit 10
 
 Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variable`);
     return;

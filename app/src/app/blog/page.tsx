@@ -4,12 +4,16 @@ import Link from 'next/link';
 
 import Footer from '@components/Footer';
 import Header from '@components/Header';
+import constants from '@constants';
 import { formatDate, getAllPosts } from '@utils/blog';
 
+const {
+  company: { name: companyName },
+} = constants;
+
 export const metadata: Metadata = {
-  title: 'Blog | Archestra',
-  description:
-    'Latest news, updates, and insights from the Archestra team about MCP, AI agents, and enterprise platforms.',
+  title: `Blog | ${companyName}`,
+  description: `Latest news, updates, and insights from the ${companyName} team about MCP, AI agents, and enterprise platforms.`,
 };
 
 export default function BlogPage() {
@@ -32,7 +36,7 @@ export default function BlogPage() {
         <div className="container relative z-10 px-4 md:px-6 py-16 max-w-7xl mx-auto">
           <div className="mb-12 text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Blog</h1>
-            <p className="text-xl text-gray-700">Latest news, updates, and insights from the Archestra team</p>
+            <p className="text-xl text-gray-700">Latest news, updates, and insights from the {companyName} team</p>
           </div>
 
           {posts.length === 0 ? (

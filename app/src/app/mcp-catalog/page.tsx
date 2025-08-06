@@ -4,37 +4,42 @@ import { Suspense } from 'react';
 import { ArchestraMcpServerManifest } from '@archestra/types';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
-import BadgeCopyMain from '@components/McpServer/BadgeCopyMain';
 import MCPCatalogClient from '@components/McpServer/MCPCatalogClient';
 import ScoringExplanationCard from '@components/McpServer/ScoringExplanationCard';
+import TrustScoreBadge from '@components/TrustScoreBadge';
+import constants from '@constants';
 import { countServersInRepo, loadServers } from '@utils/catalog';
 
+const {
+  website: { keywords: websiteKeywords, urls: websiteUrls },
+  github: {
+    archestra: {
+      website: { editMcpCatalogJsonFileUrl, newIssueUrl, viewMcpCatalogDirectoryUrl },
+    },
+  },
+} = constants;
+
+const TITLE = 'MCP Server Catalog | Browse 900+ Model Context Protocol Servers';
+const DESCRIPTION =
+  'Explore the comprehensive catalog of MCP servers. Find, evaluate, and integrate Model Context Protocol implementations for your AI agents.';
+
 export const metadata: Metadata = {
-  title: 'MCP Server Catalog | Browse 900+ Model Context Protocol Servers',
-  description:
-    'Explore the comprehensive catalog of MCP servers. Find, evaluate, and integrate Model Context Protocol implementations for your AI agents.',
-  keywords: [
-    'MCP servers',
-    'Model Context Protocol catalog',
-    'AI tools',
-    'MCP implementations',
-    'AI agent tools',
-    'MCP directory',
-  ],
+  title: TITLE,
+  description: DESCRIPTION,
+  keywords: ['MCP servers', 'Model Context Protocol catalog', ...websiteKeywords],
   openGraph: {
-    title: 'MCP Server Catalog | 900+ Model Context Protocol Servers',
-    description:
-      'Browse and discover MCP servers for your AI agents. Comprehensive catalog with quality scores and implementation details.',
-    url: 'https://archestra.ai/mcp-catalog',
+    title: TITLE,
+    description: DESCRIPTION,
+    url: websiteUrls.mcpCatalog,
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MCP Server Catalog | 900+ Servers',
-    description: 'Browse and discover Model Context Protocol servers for AI agents',
+    title: TITLE,
+    description: DESCRIPTION,
   },
   alternates: {
-    canonical: 'https://archestra.ai/mcp-catalog',
+    canonical: websiteUrls.mcpCatalog,
   },
 };
 
@@ -166,7 +171,8 @@ export default function MCPCatalogPage() {
   // Create a map of server counts for multi-server repos
   const serverCounts = new Map<string, number>();
   for (const server of mcpServers) {
-    const key = `${server.github_info.owner}/${server.github_info.repo}`;
+    const { owner, repo } = server.github_info;
+    const key = `${owner}/${repo}`;
     if (!serverCounts.has(key)) {
       serverCounts.set(key, countServersInRepo(server, mcpServers));
     }
@@ -174,7 +180,7 @@ export default function MCPCatalogPage() {
 
   // Find the highest scoring MCP server for the badge example
   const topScoredServer = mcpServers
-    .filter((server) => server.quality_score !== null)
+    .filter(({ quality_score }) => quality_score !== null)
     .sort((a, b) => b.quality_score! - a.quality_score!)[0];
 
   return (
@@ -240,14 +246,14 @@ export default function MCPCatalogPage() {
                     <span className="text-sm text-gray-600">← Add the badge to your README.md</span>
                   </div>
 
-                  <BadgeCopyMain />
+                  <TrustScoreBadge />
                 </div>
 
                 {/* Action Buttons */}
                 <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                   {/* Add New MCP Server Button */}
                   <a
-                    href="https://github.com/archestra-ai/website/edit/main/app/app/mcp-catalog/data/mcp-servers.json"
+                    href={editMcpCatalogJsonFileUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 text-sm sm:text-base"
@@ -260,7 +266,7 @@ export default function MCPCatalogPage() {
 
                   {/* Report Issue Button */}
                   <a
-                    href="https://github.com/archestra-ai/website/issues/new"
+                    href={newIssueUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 text-sm sm:text-base"
@@ -278,7 +284,7 @@ export default function MCPCatalogPage() {
 
                   {/* GitHub Repo Button */}
                   <a
-                    href="https://github.com/archestra-ai/website/tree/main/app/app/mcp-catalog"
+                    href={viewMcpCatalogDirectoryUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 bg-gray-800 hover:bg-gray-900 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 text-sm sm:text-base"

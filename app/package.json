@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "catalog:evaluate": "npx tsx app/mcp-catalog/scripts/evaluate.ts",
-    "catalog:validate": "npx tsx app/mcp-catalog/scripts/validate.ts"
+    "catalog:evaluate": "npx tsx scripts/evaluate-catalog.ts",
+    "catalog:validate": "npx tsx scripts/validate-catalog.ts"
   },
   "packageManager": "pnpm@10.14.0",
   "dependencies": {

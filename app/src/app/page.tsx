@@ -4,45 +4,60 @@ import { Metadata } from 'next';
 import { EmailForm } from '@components/EmailForm';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
+import constants from '@constants';
+
+const {
+  company: {
+    name: companyName,
+    alternateName: companyAlternateName,
+    tagline: companyTagline,
+    description: companyDescription,
+    foundingDate: companyFoundingDate,
+    address: companyAddress,
+    people: companyPeople,
+  },
+  website: { urls: websiteUrls, keywords: websiteKeywords },
+  github: {
+    archestra: {
+      orgName: githubOrgName,
+      archestra: { repoName: githubArchestraRepoName, repoUrl: githubArchestraRepoUrl },
+    },
+  },
+  slack: { joinCommunityUrl: slackJoinCommunityUrl },
+} = constants;
 
 export const metadata: Metadata = {
-  title: 'Archestra | Enterprise MCP Platform for AI Agents',
-  description:
-    'Enterprise-grade platform enabling non-technical users to safely leverage AI agents and MCP (Model Context Protocol) servers with security guardrails and compliance.',
-  keywords: [
-    'MCP',
-    'Model Context Protocol',
-    'AI agents',
-    'enterprise AI',
-    'secure runtime',
-    'prompt injection prevention',
-  ],
+  title: companyTagline,
+  description: companyDescription,
+  keywords: websiteKeywords,
   openGraph: {
-    title: 'Archestra | Enterprise MCP Platform for AI Agents',
-    description: 'Enterprise-grade platform for safely leveraging AI agents and MCP servers with security guardrails.',
-    url: 'https://archestra.ai',
+    title: companyTagline,
+    description: companyDescription,
+    url: websiteUrls.base,
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Archestra | Enterprise MCP Platform',
-    description: 'Enterprise-grade platform for safely leveraging AI agents and MCP servers',
+    title: companyTagline,
+    description: companyDescription,
   },
   alternates: {
-    canonical: 'https://archestra.ai',
+    canonical: websiteUrls.base,
   },
 };
 
 async function getGitHubStats() {
+  const githubApiUrl = `https://api.github.com/repos/${githubOrgName}/${githubArchestraRepoName}`;
+
   try {
     const [repoResponse, contributorsResponse, commitsResponse] = await Promise.all([
-      fetch('https://api.github.com/repos/archestra-ai/archestra', {
+      fetch(githubApiUrl, {
         next: { revalidate: 3600 }, // Cache for 1 hour
       }),
-      fetch('https://api.github.com/repos/archestra-ai/archestra/contributors', {
+      fetch(`${githubApiUrl}/contributors`, {
         next: { revalidate: 3600 },
       }),
-      fetch('https://api.github.com/repos/archestra-ai/archestra/commits?per_page=1', {
+      fetch(`${githubApiUrl}/commits?per_page=1`, {
         next: { revalidate: 3600 },
       }),
     ]);
@@ -81,35 +96,18 @@ export default async function Home() {
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Archestra',
-    alternateName: 'Archestra.ai',
-    url: 'https://archestra.ai',
-    logo: 'https://archestra.ai/logo.png',
-    description:
-      'Enterprise-grade platform enabling non-technical users to safely leverage AI agents and MCP (Model Context Protocol) servers with security guardrails and compliance.',
-    sameAs: [
-      'https://github.com/archestra-ai/archestra',
-      'https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg',
-    ],
-    foundingDate: '2024',
-    founders: [
-      {
-        '@type': 'Person',
-        name: 'Matvey Kukuy',
-        jobTitle: 'CEO and Co-Founder',
-        sameAs: 'https://www.linkedin.com/in/motakuk/',
-      },
-      {
-        '@type': 'Person',
-        name: 'Ildar Iskhakov',
-        jobTitle: 'CTO and Co-Founder',
-        sameAs: 'https://www.linkedin.com/in/ildari/',
-      },
-    ],
+    name: companyName,
+    alternateName: companyAlternateName,
+    url: websiteUrls.base,
+    logo: websiteUrls.logo,
+    description: companyDescription,
+    sameAs: [githubArchestraRepoUrl, slackJoinCommunityUrl],
+    foundingDate: companyFoundingDate,
+    founders: [companyPeople.matvey, companyPeople.ildar],
     address: {
       '@type': 'PostalAddress',
-      addressCountry: 'UK',
-      addressLocality: 'London',
+      addressCountry: companyAddress.addressCountry,
+      addressLocality: companyAddress.addressLocality,
     },
   };
 
@@ -132,9 +130,9 @@ export default async function Home() {
 
         <div className="container relative z-10 px-4 md:px-6 py-16 max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Archestra</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{companyName}</h1>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
-              At Archestra we're developing an enterprise-grade platform that enables non-technical users to safely
+              At {companyName} we're developing an enterprise-grade platform that enables non-technical users to safely
               leverage AI agents and MCP (Model Context Protocol) servers.
             </p>
           </div>
@@ -190,9 +188,9 @@ export default async function Home() {
                 <div className="flex-1">
                   <h3 className="font-semibold mb-1">Open Source</h3>
                   <p className="text-sm text-gray-600 mb-2">
-                    Archestra is open source, follow us on{' '}
+                    {companyName} is open source, follow us on{' '}
                     <a
-                      href="https://github.com/archestra-ai/archestra"
+                      href={githubArchestraRepoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:underline"
@@ -225,7 +223,7 @@ export default async function Home() {
                   <p className="text-sm text-gray-600">
                     Join our community on{' '}
                     <a
-                      href="https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg"
+                      href={slackJoinCommunityUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:underline"
