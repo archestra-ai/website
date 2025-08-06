@@ -2,11 +2,10 @@ import { ArrowRight, Calendar, Clock } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 
-import { BlogPost } from '@archestra/types';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 import constants from '@constants';
-import { formatDate } from '@utils/blog';
+import { formatDate, getAllPosts } from '@utils/blog';
 
 const {
   company: { name: companyName },
@@ -18,9 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  // TODO: Uncomment this when we have blog posts
-  // const posts = getAllPosts();
-  const posts: BlogPost[] = [];
+  const posts = getAllPosts();
 
   return (
     <div className="min-h-screen flex flex-col">

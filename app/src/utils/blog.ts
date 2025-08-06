@@ -1,7 +1,4 @@
-import fs from 'fs';
-import matter from 'gray-matter';
 import path from 'path';
-import readingTime from 'reading-time';
 
 import { BlogPost } from '@archestra/types';
 import constants from '@constants';
@@ -16,63 +13,71 @@ const {
   company: { name: companyName },
 } = constants;
 
+/**
+ * TODO: Uncomment this when we have blog posts
+ */
 export function getAllPosts(): BlogPost[] {
-  const fileNames = fs.readdirSync(POSTS_DIRECTORY);
-  const allPostsData = fileNames
-    .filter((fileName) => fileName.endsWith('.md'))
-    .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, '');
-      const fullPath = path.join(POSTS_DIRECTORY, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data, content } = matter(fileContents);
-      const stats = readingTime(content);
+  // const fileNames = fs.readdirSync(POSTS_DIRECTORY);
+  // const allPostsData = fileNames
+  //   .filter((fileName) => fileName.endsWith('.md'))
+  //   .map((fileName) => {
+  //     const slug = fileName.replace(/\.md$/, '');
+  //     const fullPath = path.join(POSTS_DIRECTORY, fileName);
+  //     const fileContents = fs.readFileSync(fullPath, 'utf8');
+  //     const { data, content } = matter(fileContents);
+  //     const stats = readingTime(content);
 
-      return {
-        slug,
-        title: data.title || slug,
-        date: data.date || new Date().toISOString(),
-        author: data.author || `${companyName} Team`,
-        excerpt: data.excerpt || content.slice(0, 200) + '...',
-        content,
-        readingTime: stats.text,
-        image: data.image,
-        github: data.github,
-        cta: data.cta,
-      } as BlogPost;
-    });
+  //     return {
+  //       slug,
+  //       title: data.title || slug,
+  //       date: data.date || new Date().toISOString(),
+  //       author: data.author || `${companyName} Team`,
+  //       excerpt: data.excerpt || content.slice(0, 200) + '...',
+  //       content,
+  //       readingTime: stats.text,
+  //       image: data.image,
+  //       github: data.github,
+  //       cta: data.cta,
+  //     } as BlogPost;
+  //   });
 
-  return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+  // return allPostsData.sort((a, b) => {
+  //   if (a.date < b.date) {
+  //     return 1;
+  //   } else {
+  //     return -1;
+  //   }
+  // });
+  return [];
 }
 
+/**
+ * TODO: Uncomment this when we have blog posts
+ */
 export function getPostBySlug(slug: string): BlogPost | undefined {
-  const fullPath = path.join(POSTS_DIRECTORY, `${slug}.md`);
+  // const fullPath = path.join(POSTS_DIRECTORY, `${slug}.md`);
 
-  if (!fs.existsSync(fullPath)) {
-    return undefined;
-  }
+  // if (!fs.existsSync(fullPath)) {
+  //   return undefined;
+  // }
 
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
-  const stats = readingTime(content);
+  // const fileContents = fs.readFileSync(fullPath, 'utf8');
+  // const { data, content } = matter(fileContents);
+  // const stats = readingTime(content);
 
-  return {
-    slug,
-    title: data.title || slug,
-    date: data.date || new Date().toISOString(),
-    author: data.author || `${companyName} Team`,
-    excerpt: data.excerpt || content.slice(0, 200) + '...',
-    content,
-    readingTime: stats.text,
-    image: data.image,
-    github: data.github,
-    cta: data.cta,
-  };
+  // return {
+  //   slug,
+  //   title: data.title || slug,
+  //   date: data.date || new Date().toISOString(),
+  //   author: data.author || `${companyName} Team`,
+  //   excerpt: data.excerpt || content.slice(0, 200) + '...',
+  //   content,
+  //   readingTime: stats.text,
+  //   image: data.image,
+  //   github: data.github,
+  //   cta: data.cta,
+  // };
+  return undefined;
 }
 
 export function formatDate(dateString: string): string {
