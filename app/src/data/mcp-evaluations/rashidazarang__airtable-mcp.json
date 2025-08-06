@@ -1,0 +1,122 @@
+{
+  "dxt_version": "0.1.0",
+  "name": "rashidazarang__airtable-mcp",
+  "display_name": "airtable",
+  "version": "1.0.0",
+  "description": "Airtable integration for AI-powered applications via Anthropic's Model Context Protocol (MCP). Connect your AI tools directly to Airtable for seamless data access and management.",
+  "author": {
+    "name": "rashidazarang"
+  },
+  "server": {
+    "type": "python",
+    "entry_point": "index.js",
+    "mcp_config": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli",
+        "run",
+        "@rashidazarang/airtable-mcp",
+        "--token",
+        "YOUR_AIRTABLE_TOKEN",
+        "--base",
+        "YOUR_BASE_ID",
+        "--transport",
+        "stdio"
+      ],
+      "env": {}
+    }
+  },
+  "tools": [],
+  "prompts": [],
+  "keywords": [],
+  "user_config": {},
+  "readme": "# Airtable MCP\n\n![Airtable](https://img.shields.io/badge/Airtable-18BFFF?style=for-the-badge&logo=Airtable&logoColor=white)\n[![smithery badge](https://smithery.ai/badge/@rashidazarang/airtable-mcp)](https://smithery.ai/server/@rashidazarang/airtable-mcp)\n\n> Connect your AI tools directly to Airtable. Query, create, update, and delete records using natural language. Features include base management, table operations, schema manipulation, record filtering, and data migration—all through a standardized MCP interface compatible with Claude Desktop and other Claude-powered editors.\n\n## Quick Start\n\n1. **Get Your Airtable Credentials**\n   - Get your Airtable API token from your [account page](https://airtable.com/account)\n   - Get your base ID from your Airtable base URL (format: `appi7fWMQcB3BNzPs`)\n\n2. **Configure Claude Desktop**\n   - Open `~/Library/Application Support/Claude/claude_desktop_config.json`\n   - Add the following configuration:\n   ```json\n   {\n     \"mcpServers\": {\n       \"airtable-mcp\": {\n         \"command\": \"npx\",\n         \"args\": [\n           \"@smithery/cli\",\n           \"run\",\n           \"@rashidazarang/airtable-mcp\",\n           \"--token\",\n           \"YOUR_AIRTABLE_TOKEN\",\n           \"--base\",\n           \"YOUR_BASE_ID\"\n         ]\n       }\n     }\n   }\n   ```\n   - Replace `YOUR_AIRTABLE_TOKEN` and `YOUR_BASE_ID` with your actual credentials\n   - Save and restart Claude Desktop\n\n3. **Start Using Airtable Tools**\n   - Open Claude Desktop\n   - Wait 30 seconds for the connection to establish\n   - Start using Airtable commands in natural language\n\n## Features\n\n- **Base Management**: List and select Airtable bases\n- **Table Operations**: Browse tables, fields, and records\n- **Data Access**: Read, create, update, and delete records\n- **Schema Management**: Export, compare, and update schemas\n- **Natural Language Interface**: Use plain English to interact with your Airtable data\n\n## Available Tools\n\n| Tool Name | Description | Example Usage |\n|-----------|-------------|---------------|\n| `list_bases` | List all accessible Airtable bases | \"Show me all my Airtable bases\" |\n| `list_tables` | List all tables in the current base | \"What tables are in this base?\" |\n| `list_records` | List records with optional filtering | \"Show me all records in the Projects table\" |\n| `get_record` | Get a specific record | \"Get record ABC123 from Tasks table\" |\n| `create_records` | Create new records | \"Create a new record in Contacts with name John\" |\n| `update_records` | Update existing records | \"Update status to Complete in record XYZ\" |\n| `set_base_id` | Switch to a different base | \"Switch to base appi7fWMQcB3BNzPs\" |\n\n## Troubleshooting\n\n### Common Issues\n\n1. **Connection Issues**\n   - Make sure Node.js is installed (`node -v` should show v14 or higher)\n   - Verify your API token and base ID are correct\n   - Restart Claude Desktop after configuration changes\n\n2. **JSON Parsing Errors**\n   - Double-check the JSON format in your configuration file\n   - Avoid using extra backslashes or escape characters\n   - Use the simplified configuration format shown above\n\n3. **Command Not Found**\n   - Install Node.js if not already installed\n   - Run `npm install -g npm@latest` to update npm\n   - Try running `npx @smithery/cli --version` to verify the installation\n\n### Need Help?\n\n- Check the [Issues](https://github.com/rashidazarang/airtable-mcp/issues) page\n- Join our [Discord community](https://discord.gg/your-discord)\n- Email support at support@example.com\n\n## Contributing\n\nContributions are welcome! Please feel free to submit a Pull Request.\n\n## License\n\nMIT\n\n---\n\nFor detailed setup instructions with other MCP clients, see [CLAUDE_INTEGRATION.md](./CLAUDE_INTEGRATION.md).",
+  "category": "AI Tools",
+  "quality_score": 54,
+  "config_for_archestra": {
+    "oauth": {
+      "provider": "none",
+      "required": false
+    }
+  },
+  "github_info": {
+    "owner": "rashidazarang",
+    "repo": "airtable-mcp",
+    "url": "https://github.com/rashidazarang/airtable-mcp",
+    "name": "airtable-mcp",
+    "path": null,
+    "stars": 26,
+    "contributors": 1,
+    "issues": 4,
+    "releases": true,
+    "ci_cd": true,
+    "latest_commit_hash": "b669d786eb53183869d375943a2fadc79a6c28c0"
+  },
+  "programming_language": "Python",
+  "framework": null,
+  "last_scraped_at": "2025-08-04T09:34:36.478Z",
+  "evaluation_model": "gemini-2.5-flash",
+  "protocol_features": {
+    "implementing_tools": true,
+    "implementing_prompts": false,
+    "implementing_resources": true,
+    "implementing_sampling": false,
+    "implementing_roots": false,
+    "implementing_logging": false,
+    "implementing_stdio": true,
+    "implementing_streamable_http": false,
+    "implementing_oauth2": false
+  },
+  "dependencies": [
+    {
+      "name": "mcp",
+      "importance": 10
+    },
+    {
+      "name": "@smithery/cli",
+      "importance": 9
+    },
+    {
+      "name": "airtable",
+      "importance": 8
+    },
+    {
+      "name": "airtable-python-wrapper",
+      "importance": 8
+    },
+    {
+      "name": "anthropic",
+      "importance": 7
+    },
+    {
+      "name": "websockets",
+      "importance": 7
+    },
+    {
+      "name": "pydantic",
+      "importance": 6
+    },
+    {
+      "name": "requests",
+      "importance": 5
+    },
+    {
+      "name": "dotenv",
+      "importance": 3
+    },
+    {
+      "name": "python-dotenv",
+      "importance": 3
+    },
+    {
+      "name": "argparse",
+      "importance": 3
+    },
+    {
+      "name": "typing-extensions",
+      "importance": 3
+    }
+  ],
+  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@rashidazarang/airtable-mcp\",\n  \"version\": \"1.2.2\",\n  \"description\": \"Airtable MCP for Claude Desktop - Connect directly to Airtable using natural language\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"start\": \"node index.js\",\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n  },\n  \"keywords\": [\n    \"airtable\",\n    \"mcp\",\n    \"claude\",\n    \"claude-desktop\",\n    \"anthropic\",\n    \"ai\",\n    \"database\"\n  ],\n  \"author\": \"Rashid Azarang\",\n  \"license\": \"MIT\",\n  \"dependencies\": {\n    \"@smithery/cli\": \"^1.0.0\",\n    \"airtable\": \"^0.12.2\",\n    \"dotenv\": \"^16.0.0\"\n  },\n  \"engines\": {\n    \"node\": \">=14.0.0\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/rashidazarang/airtable-mcp\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/rashidazarang/airtable-mcp/issues\"\n  },\n  \"homepage\": \"https://github.com/rashidazarang/airtable-mcp#readme\"\n}\n\n\n=== requirements.txt ===\nairtable-python-wrapper>=0.15.3\nanthropic>=0.19.1\nargparse>=1.4.0\npython-dotenv>=1.0.0\npydantic>=2.4.2\n# MCP core will be installed by Smithery during deployment\nrequests>=2.31.0\ntyping-extensions>=4.7.1\nwebsockets>=11.0.3\nmcp>=1.4.1 \n\n=== setup.py ===\n#!/usr/bin/env python3\n\nfrom setuptools import setup, find_packages\n\nwith open(\"README.md\", \"r\", encoding=\"utf-8\") as fh:\n    long_description = fh.read()\n\nwith open(\"requirements.txt\", \"r\", encoding=\"utf-8\") as req_file:\n    requirements = req_file.read().splitlines()\n\nsetup(\n    name=\"airtable-mcp\",\n    version=\"1.1.0\",\n    author=\"Rashid Azarang\",\n    author_email=\"rashidazarang@gmail.com\",\n    description=\"Airtable MCP for AI tools - updated to work with MCP SDK 1.4.1+\",\n    long_description=long_description,\n    long_description_content_type=\"text/markdown\",\n    url=\"https://github.com/rashidazarang/airtable-mcp\",\n    packages=find_packages(),\n    install_requires=requirements,\n    classifiers=[\n        \"Programming Language :: Python :: 3.10\",\n        \"License :: OSI Approved :: MIT License\",\n        \"Operating System :: OS Independent\",\n    ],\n    python_requires=\">=3.10\",\n    include_package_data=True,\n) "
+}

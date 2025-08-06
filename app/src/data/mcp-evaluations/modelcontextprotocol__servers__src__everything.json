@@ -1,0 +1,79 @@
+{
+  "dxt_version": "0.1.0",
+  "name": "modelcontextprotocol__servers__src__everything",
+  "display_name": "s",
+  "version": "1.0.0",
+  "description": "Model Context Protocol Servers",
+  "author": {
+    "name": "modelcontextprotocol"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "index.js",
+    "mcp_config": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-everything"],
+      "env": {}
+    }
+  },
+  "tools": [],
+  "prompts": [],
+  "keywords": [],
+  "user_config": {},
+  "readme": "# Everything MCP Server\n\nThis MCP server attempts to exercise all the features of the MCP protocol. It is not intended to be a useful server, but rather a test server for builders of MCP clients. It implements prompts, tools, resources, sampling, and more to showcase MCP capabilities.\n\n## Components\n\n### Tools\n\n1. `echo`\n   - Simple tool to echo back input messages\n   - Input:\n     - `message` (string): Message to echo back\n   - Returns: Text content with echoed message\n\n2. `add`\n   - Adds two numbers together\n   - Inputs:\n     - `a` (number): First number\n     - `b` (number): Second number\n   - Returns: Text result of the addition\n\n3. `longRunningOperation`\n   - Demonstrates progress notifications for long operations\n   - Inputs:\n     - `duration` (number, default: 10): Duration in seconds\n     - `steps` (number, default: 5): Number of progress steps\n   - Returns: Completion message with duration and steps\n   - Sends progress notifications during execution\n\n4. `printEnv`\n   - Prints all environment variables\n   - Useful for debugging MCP server configuration\n   - No inputs required\n   - Returns: JSON string of all environment variables\n\n5. `sampleLLM`\n   - Demonstrates LLM sampling capability using MCP sampling feature\n   - Inputs:\n     - `prompt` (string): The prompt to send to the LLM\n     - `maxTokens` (number, default: 100): Maximum tokens to generate\n   - Returns: Generated LLM response\n\n6. `getTinyImage`\n   - Returns a small test image\n   - No inputs required\n   - Returns: Base64 encoded PNG image data\n\n7. `annotatedMessage`\n   - Demonstrates how annotations can be used to provide metadata about content\n   - Inputs:\n     - `messageType` (enum: \"error\" | \"success\" | \"debug\"): Type of message to demonstrate different annotation patterns\n     - `includeImage` (boolean, default: false): Whether to include an example image\n   - Returns: Content with varying annotations:\n     - Error messages: High priority (1.0), visible to both user and assistant\n     - Success messages: Medium priority (0.7), user-focused\n     - Debug messages: Low priority (0.3), assistant-focused\n     - Optional image: Medium priority (0.5), user-focused\n   - Example annotations:\n     ```json\n     {\n       \"priority\": 1.0,\n       \"audience\": [\"user\", \"assistant\"]\n     }\n     ```\n\n8. `getResourceReference`\n   - Returns a resource reference that can be used by MCP clients\n   - Inputs:\n     - `resourceId` (number, 1-100): ID of the resource to reference\n   - Returns: A resource reference with:\n     - Text introduction\n     - Embedded resource with `type: \"resource\"`\n     - Text instruction for using the resource URI\n\n9. `startElicitation`\n   - Initiates an elicitation (interaction) within the MCP client.\n   - Inputs:\n      - `color` (string): Favorite color\n      - `number` (number, 1-100): Favorite number\n      - `pets` (enum): Favorite pet\n   - Returns: Confirmation of the elicitation demo with selection summary.\n\n10. `structuredContent`\n   - Demonstrates a tool returning structured content using the example in the specification\n   - Provides an output schema to allow testing of client SHOULD advisory to validate the result using the schema\n   - Inputs:\n     - `location` (string): A location or ZIP code, mock data is returned regardless of value\n   - Returns: a response with\n     - `structuredContent` field conformant to the output schema\n     - A backward compatible Text Content field, a SHOULD advisory in the specification\n\n### Resources\n\nThe server provides 100 test resources in two formats:\n- Even numbered resources:\n  - Plaintext format\n  - URI pattern: `test://static/resource/{even_number}`\n  - Content: Simple text description\n\n- Odd numbered resources:\n  - Binary blob format\n  - URI pattern: `test://static/resource/{odd_number}`\n  - Content: Base64 encoded binary data\n\nResource features:\n- Supports pagination (10 items per page)\n- Allows subscribing to resource updates\n- Demonstrates resource templates\n- Auto-updates subscribed resources every 5 seconds\n\n### Prompts\n\n1. `simple_prompt`\n   - Basic prompt without arguments\n   - Returns: Single message exchange\n\n2. `complex_prompt`\n   - Advanced prompt demonstrating argument handling\n   - Required arguments:\n     - `temperature` (number): Temperature setting\n   - Optional arguments:\n     - `style` (string): Output style preference\n   - Returns: Multi-turn conversation with images\n\n3. `resource_prompt`\n   - Demonstrates embedding resource references in prompts\n   - Required arguments:\n     - `resourceId` (number): ID of the resource to embed (1-100)\n   - Returns: Multi-turn conversation with an embedded resource reference\n   - Shows how to include resources directly in prompt messages\n\n### Logging\n\nThe server sends random-leveled log messages every 15 seconds, e.g.:\n\n```json\n{\n  \"method\": \"notifications/message\",\n  \"params\": {\n\t\"level\": \"info\",\n\t\"data\": \"Info-level message\"\n  }\n}\n```\n\n## Usage with Claude Desktop (uses [stdio Transport](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#stdio))\n\nAdd to your `claude_desktop_config.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"everything\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@modelcontextprotocol/server-everything\"\n      ]\n    }\n  }\n}\n```\n\n## Usage with VS Code\n\nFor quick installation, use of of the one-click install buttons below...\n\n[![Install with NPX in VS Code](https://img.shields.io/badge/VS_Code-NPM-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=everything&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-everything%22%5D%7D) [![Install with NPX in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-NPM-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=everything&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-everything%22%5D%7D&quality=insiders)\n\n[![Install with Docker in VS Code](https://img.shields.io/badge/VS_Code-Docker-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=everything&config=%7B%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22mcp%2Feverything%22%5D%7D) [![Install with Docker in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Docker-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=everything&config=%7B%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22mcp%2Feverything%22%5D%7D&quality=insiders)\n\nFor manual installation, add the following JSON block to your User Settings (JSON) file in VS Code. You can do this by pressing `Ctrl + Shift + P` and typing `Preferences: Open User Settings (JSON)`.\n\nOptionally, you can add it to a file called `.vscode/mcp.json` in your workspace. This will allow you to share the configuration with others.\n\n> Note that the `mcp` key is not needed in the `.vscode/mcp.json` file.\n\n#### NPX\n\n```json\n{\n  \"mcp\": {\n    \"servers\": {\n      \"everything\": {\n        \"command\": \"npx\",\n        \"args\": [\"-y\", \"@modelcontextprotocol/server-everything\"]\n      }\n    }\n  }\n}\n```\n\n## Running from source with [HTTP+SSE Transport](https://modelcontextprotocol.io/specification/2024-11-05/basic/transports#http-with-sse) (deprecated as of [2025-03-26](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports))\n\n```shell\ncd src/everything\nnpm install\nnpm run start:sse\n```\n\n## Run from source with [Streamable HTTP Transport](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http)\n\n```shell\ncd src/everything\nnpm install\nnpm run start:streamableHttp\n```\n\n## Running as an installed package\n### Install \n```shell\nnpm install -g @modelcontextprotocol/server-everything@latest\n````\n\n### Run the default (stdio) server\n```shell\nnpx @modelcontextprotocol/server-everything\n```\n\n### Or specify stdio explicitly\n```shell\nnpx @modelcontextprotocol/server-everything stdio\n```\n\n### Run the SSE server\n```shell\nnpx @modelcontextprotocol/server-everything sse\n```\n\n### Run the streamable HTTP server\n```shell\nnpx @modelcontextprotocol/server-everything streamableHttp\n```\n\n",
+  "category": "Development",
+  "quality_score": 95,
+  "config_for_archestra": {
+    "oauth": {
+      "provider": "none",
+      "required": false
+    }
+  },
+  "github_info": {
+    "owner": "modelcontextprotocol",
+    "repo": "servers",
+    "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/everything",
+    "name": "servers",
+    "path": "src/everything",
+    "stars": 62695,
+    "contributors": 724,
+    "issues": 348,
+    "releases": true,
+    "ci_cd": true,
+    "latest_commit_hash": "4b6ce397924982a93f8af25390b1e7d45073b282"
+  },
+  "programming_language": "TypeScript",
+  "framework": null,
+  "last_scraped_at": "2025-08-03T21:01:50.242Z",
+  "evaluation_model": "gemini-2.5-flash",
+  "protocol_features": {
+    "implementing_tools": true,
+    "implementing_prompts": true,
+    "implementing_resources": true,
+    "implementing_sampling": true,
+    "implementing_roots": false,
+    "implementing_logging": true,
+    "implementing_stdio": true,
+    "implementing_streamable_http": true,
+    "implementing_oauth2": false
+  },
+  "dependencies": [
+    {
+      "name": "@modelcontextprotocol/sdk",
+      "importance": 10
+    },
+    {
+      "name": "express",
+      "importance": 10
+    },
+    {
+      "name": "zod",
+      "importance": 4
+    },
+    {
+      "name": "zod-to-json-schema",
+      "importance": 4
+    }
+  ],
+  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@modelcontextprotocol/server-everything\",\n  \"version\": \"0.6.2\",\n  \"description\": \"MCP server that exercises all the features of the MCP protocol\",\n  \"license\": \"MIT\",\n  \"author\": \"Anthropic, PBC (https://anthropic.com)\",\n  \"homepage\": \"https://modelcontextprotocol.io\",\n  \"bugs\": \"https://github.com/modelcontextprotocol/servers/issues\",\n  \"type\": \"module\",\n  \"bin\": {\n    \"mcp-server-everything\": \"dist/index.js\"\n  },\n  \"files\": [\n    \"dist\"\n  ],\n  \"scripts\": {\n    \"build\": \"tsc && shx cp instructions.md dist/ && shx chmod +x dist/*.js\",\n    \"prepare\": \"npm run build\",\n    \"watch\": \"tsc --watch\",\n    \"start\": \"node dist/index.js\",\n    \"start:sse\": \"node dist/sse.js\",\n    \"start:streamableHttp\": \"node dist/streamableHttp.js\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.12.0\",\n    \"express\": \"^4.21.1\",\n    \"zod\": \"^3.23.8\",\n    \"zod-to-json-schema\": \"^3.23.5\"\n  },\n  \"devDependencies\": {\n    \"@types/express\": \"^5.0.0\",\n    \"shx\": \"^0.3.4\",\n    \"typescript\": \"^5.6.2\"\n  }\n}\n"
+}

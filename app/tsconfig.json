@@ -18,10 +18,24 @@
         "name": "next"
       }
     ],
+
+    // Allows us to use vitest imports in tests without having to explicitly import them
+    "types": ["vitest/globals"],
+
+    /*
+     Aliasing
+    */
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@components/*": ["src/components/*"],
+      "@constants": ["src/constants"],
+      "@hooks/*": ["src/hooks/*"],
+      "@providers/*": ["src/providers/*"],
+      "@schemas": ["src/schemas"],
+      "@archestra/types": ["src/types"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", ".next", "dist"]
 }
