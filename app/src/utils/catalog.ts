@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import { ArchestraMcpServerManifest } from '@archestra/types';
+import constants from '@constants';
 
 /**
  * Path constants
@@ -76,7 +77,7 @@ export function extractServerInfo(githubUrl: string): {
 // If no name is provided, returns all servers
 export function loadServers(name?: string): ArchestraMcpServerManifest[] {
   // Clear cache in development mode to ensure fresh data
-  if (process.env.NODE_ENV === 'development') {
+  if (constants.debug) {
     serversCache.clear();
   }
 
