@@ -29,16 +29,14 @@
   "rawDependencies": "=== package.json ===\n{\n  \"name\": \"mcp-proxy\",\n  \"private\": true,\n  \"workspaces\": [\"packages/*\", \"apps/*\"],\n  \"type\": \"module\",\n  \"packageManager\": \"bun@1.2.1\",\n  \"devDependencies\": {\n    \"@biomejs/biome\": \"^1.9.4\",\n    \"@types/bun\": \"latest\",\n    \"turbo\": \"^2.4.4\",\n    \"typescript\": \"^5.0.0\"\n  },\n  \"scripts\": {\n    \"dev\": \"turbo dev\",\n    \"build\": \"turbo build\",\n    \"start\": \"turbo start\",\n    \"check\": \"biome check\",\n    \"check:fix\": \"biome check --write\",\n    \"start:all\": \"bun run ./scripts/start-dev.ts\",\n    \"docker:up\": \"bun run ./scripts/start-all.ts\",\n    \"docker:down\": \"bun run ./scripts/docker-down.ts\"\n  },\n  \"dependencies\": {\n    \"concurrently\": \"^8.2.2\"\n  }\n}\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "dev:bitte-ai"
-      ],
-      "command": "bun",
-      "transport": "http",
-      "env": {}
-    }
+    "command": "bun",
+    "args": [
+      "run",
+      "dev:bitte-ai"
+    ],
+    "env": {},
+    "transport": "http",
+    "oauth": {}
   },
   "dependencies": [
     {

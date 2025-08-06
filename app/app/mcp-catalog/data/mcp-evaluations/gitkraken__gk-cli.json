@@ -28,18 +28,16 @@
   "implementing_oauth2": true,
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
+    "command": "gk",
+    "args": [
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--transport",
-        "stdio"
-      ],
-      "command": "gk",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

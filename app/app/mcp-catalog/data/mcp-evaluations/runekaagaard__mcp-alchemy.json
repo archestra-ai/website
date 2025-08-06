@@ -151,25 +151,23 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--from",
-        "mcp-alchemy==2025.7.9.172934",
-        "--with",
-        "psycopg2-binary",
-        "--refresh-package",
-        "mcp-alchemy",
-        "mcp-alchemy"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "mcp-alchemy==2025.7.9.172934",
+      "--with",
+      "psycopg2-binary",
+      "--refresh-package",
+      "mcp-alchemy",
+      "mcp-alchemy"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

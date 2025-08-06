@@ -29,19 +29,17 @@
   "rawDependencies": "=== pyproject.toml ===\n[project]\nname = \"reddit-summarizer-mcp\"\nversion = \"0.1.0\"\ndescription = \"Reddit summarizer mcp server\"\nreadme = \"README.md\"\nlicense = {text = \"MIT\"}\nrequires-python = \">=3.12\"\ndependencies = [\n    \"asyncpraw>=7.8.1\",\n    \"httpx>=0.28.1\",\n    \"mcp[cli]>=1.11.0\",\n    \"python-dotenv>=1.1.1\",\n]\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "server.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "reddit",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "server.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

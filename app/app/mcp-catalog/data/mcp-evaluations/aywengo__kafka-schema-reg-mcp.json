@@ -73,23 +73,21 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "kafka_schema_registry_unified_mcp.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "oauth2.1",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "kafka_schema_registry_unified_mcp.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

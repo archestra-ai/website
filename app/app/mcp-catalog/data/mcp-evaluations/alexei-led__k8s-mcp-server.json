@@ -84,28 +84,26 @@
     }
   },
   "configForArchestra": {
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-v",
+      "/Users/YOUR_USER_NAME/.kube:/home/appuser/.kube:ro",
+      "-e",
+      "K8S_CONTEXT=production-cluster",
+      "-e",
+      "K8S_NAMESPACE=my-application",
+      "-e",
+      "K8S_MCP_TIMEOUT=600",
+      "ghcr.io/alexei-led/k8s-mcp-server:latest"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "-v",
-        "/Users/YOUR_USER_NAME/.kube:/home/appuser/.kube:ro",
-        "-e",
-        "K8S_CONTEXT=production-cluster",
-        "-e",
-        "K8S_NAMESPACE=my-application",
-        "-e",
-        "K8S_MCP_TIMEOUT=600",
-        "ghcr.io/alexei-led/k8s-mcp-server:latest"
-      ],
-      "command": "docker",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

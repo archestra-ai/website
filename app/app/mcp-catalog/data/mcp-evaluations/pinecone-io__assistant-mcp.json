@@ -107,22 +107,20 @@
     }
   },
   "configForArchestra": {
+    "command": "target/release/assistant-mcp",
+    "args": [
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "PINECONE_API_KEY",
+      "server-configured": "PINECONE_ASSISTANT_HOST",
+      "server-docker": "LOG_LEVEL"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--transport",
-        "stdio"
-      ],
-      "command": "target/release/assistant-mcp",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "PINECONE_API_KEY",
-        "server-configured": "PINECONE_ASSISTANT_HOST",
-        "server-docker": "LOG_LEVEL"
-      }
     }
   },
   "dependencies": [

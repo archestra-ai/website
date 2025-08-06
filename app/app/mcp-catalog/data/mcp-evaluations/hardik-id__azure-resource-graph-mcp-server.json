@@ -42,19 +42,17 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "build/index.js"
+    ],
+    "env": {
+      "server-configured": "SUBSCRIPTION_ID"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "azure",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "build/index.js"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-configured": "SUBSCRIPTION_ID"
-      }
     }
   },
   "dependencies": [

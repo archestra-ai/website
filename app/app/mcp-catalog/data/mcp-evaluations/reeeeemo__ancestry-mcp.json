@@ -40,20 +40,18 @@
     }
   },
   "configForArchestra": {
+    "command": "mcp-server-ancestry",
+    "args": [
+      "--gedcom-path",
+      "path/to/your/gedcom/files",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--gedcom-path",
-        "path/to/your/gedcom/files",
-        "--transport",
-        "stdio"
-      ],
-      "command": "mcp-server-ancestry",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

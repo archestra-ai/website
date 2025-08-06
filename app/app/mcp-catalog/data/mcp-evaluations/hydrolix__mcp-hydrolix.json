@@ -49,24 +49,22 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "--with",
-        "mcp-hydrolix",
-        "--python",
-        "3.13",
-        "mcp-hydrolix"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "HYDROLIX_USER",
-        "server-configured": "HYDROLIX_HOST",
-        "server-docker": "HYDROLIX_PASSWORD"
-      }
-    }
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "mcp-hydrolix",
+      "--python",
+      "3.13",
+      "mcp-hydrolix"
+    ],
+    "env": {
+      "server-basic": "HYDROLIX_USER",
+      "server-configured": "HYDROLIX_HOST",
+      "server-docker": "HYDROLIX_PASSWORD"
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

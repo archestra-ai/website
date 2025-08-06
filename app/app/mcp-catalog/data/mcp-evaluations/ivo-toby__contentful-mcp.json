@@ -54,23 +54,21 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@ivotoby/contentful-management-mcp-server",
+      "--http"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "http",
     "oauth": {
       "provider": "Contentful",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@ivotoby/contentful-management-mcp-server",
-        "--http"
-      ],
-      "command": "npx",
-      "transport": "http",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

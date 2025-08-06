@@ -29,21 +29,19 @@
   "rawDependencies": "=== package.json ===\n{\n  \"name\": \"stadiamaps-mcp-server\",\n  \"version\": \"0.1.0\",\n  \"description\": \"\",\n  \"type\": \"module\",\n  \"bin\": {\n    \"mcp\": \"./build/index.js\"\n  },\n  \"scripts\": {\n    \"build\": \"tsc && chmod 755 build/index.js\",\n    \"build:examples\": \"cd examples && bun run build\",\n    \"lint\": \"prettier -c .\",\n    \"lint:fix\": \"prettier --write .\",\n    \"test\": \"vitest run\",\n    \"test:continuous\": \"vitest\",\n    \"test:ui\": \"vitest --ui\",\n    \"examples:check\": \"cd examples && tsc --noEmit\",\n    \"examples:demo\": \"cd examples && bun run start:anthropic-demo\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.16.0\",\n    \"@stadiamaps/api\": \"^8.0.1\",\n    \"zod\": \"^3.25.58\"\n  },\n  \"devDependencies\": {\n    \"@anthropic-ai/sdk\": \"^0.54.0\",\n    \"@types/node\": \"^22.15.31\",\n    \"@vitest/ui\": \"^2.1.8\",\n    \"msw\": \"^2.10.2\",\n    \"prettier\": \"3.5.3\",\n    \"typescript\": \"^5.8.3\",\n    \"vitest\": \"^2.1.8\"\n  },\n  \"files\": [\n    \"build\"\n  ]\n}\n\n\n=== examples/package.json ===\n{\n  \"name\": \"stadiamaps-mcp-examples\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"scripts\": {\n    \"build\": \"tsc\",\n    \"start:anthropic-demo\": \"bun run anthropic-sdk-demo.ts\"\n  },\n  \"dependencies\": {\n    \"@anthropic-ai/sdk\": \"^0.54.0\",\n    \"@modelcontextprotocol/sdk\": \"^1.12.1\"\n  }\n}\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "build/index.js",
-        "--transport",
-        "stdio"
-      ],
-      "command": "bun",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "bun",
+    "args": [
+      "build/index.js",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

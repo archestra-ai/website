@@ -46,20 +46,18 @@
   },
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--confCore",
-        "./configurations/beelzebub.yaml",
-        "--confServices",
-        "./configurations/services/",
-        "--transport",
-        "stdio"
-      ],
-      "command": "./beelzebub",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "./beelzebub",
+    "args": [
+      "--confCore",
+      "./configurations/beelzebub.yaml",
+      "--confServices",
+      "./configurations/services/",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

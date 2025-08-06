@@ -52,17 +52,16 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "bilibili-mcp"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "bilibili-mcp"
-      ],
-      "command": "npx",
-      "transport": "stdio"
     }
   },
   "dependencies": [

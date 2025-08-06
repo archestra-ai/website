@@ -79,21 +79,19 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "chroma-mcp"
+    ],
+    "env": {
+      "server-basic": "CHROMA_CLIENT_TYPE",
+      "server-configured": "CHROMA_DATA_DIR",
+      "server-docker": "CHROMA_TENANT"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "chroma-mcp"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "CHROMA_CLIENT_TYPE",
-        "server-configured": "CHROMA_DATA_DIR",
-        "server-docker": "CHROMA_TENANT"
-      }
     }
   },
   "dependencies": [

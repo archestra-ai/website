@@ -81,14 +81,13 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "stdio"
-      ],
-      "command": "cratedocs",
-      "transport": "stdio"
-    }
+    "command": "cratedocs",
+    "args": [
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

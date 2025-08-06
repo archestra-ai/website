@@ -29,18 +29,16 @@
   "rawDependencies": "=== package.json ===\n{\n\t\"name\": \"globalping-mcp-server\",\n\t\"version\": \"0.0.2\",\n\t\"private\": true,\n\t\"scripts\": {\n\t\t\"deploy\": \"wrangler deploy\",\n\t\t\"dev\": \"wrangler dev\",\n\t\t\"format\": \"biome format --write\",\n\t\t\"lint:fix\": \"biome lint --fix\",\n\t\t\"start\": \"wrangler dev\",\n\t\t\"cf-typegen\": \"wrangler types\"\n\t},\n\t\"devDependencies\": {\n\t\t\"@biomejs/biome\": \"^1.9.4\",\n\t\t\"@types/node\": \"^22.14.1\",\n\t\t\"marked\": \"^15.0\",\n\t\t\"typescript\": \"^5.5\",\n\t\t\"workers-mcp\": \"^0\",\n\t\t\"wrangler\": \"^4\"\n\t},\n\t\"dependencies\": {\n\t\t\"@cloudflare/workers-oauth-provider\": \"^0\",\n\t\t\"@modelcontextprotocol/sdk\": \"^1\",\n\t\t\"agents\": \"^0\",\n\t\t\"hono\": \"^4.7\",\n\t\t\"zod\": \"^3.24\"\n\t}\n}\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "mcp-remote",
+      "https://mcp.globalping.dev/sse"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "Globalping",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "mcp-remote",
-        "https://mcp.globalping.dev/sse"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

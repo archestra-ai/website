@@ -29,19 +29,18 @@
   "rawDependencies": "=== firmware/package.json ===\n{\n  \"name\": \"stack-chan\",\n  \"version\": \"0.2.1\",\n  \"description\": \"A firmware of M5Stack Stack-chan module\",\n  \"main\": \"stackchan/main.ts\",\n  \"scripts\": {\n    \"format\": \"biome format\",\n    \"format:fix\": \"npm run format -- --write\",\n    \"lint\": \"biome lint\",\n    \"lint:fix\": \"npm run lint -- --write\",\n    \"generate-speech-coqui\": \"node scripts/generate-speech-coqui.js\",\n    \"generate-speech-voicevox\": \"node scripts/generate-speech-voicevox.js\",\n    \"generate-speech-google\": \"cross-env GOOGLE_APPLICATION_CREDENTIALS=scripts/key.json node scripts/generate-speech-google.js\",\n    \"generate-apidoc\": \"typedoc --entryPointStrategy expand --plugin typedoc-plugin-markdown --out docs/api ./stackchan\",\n    \"build\": \"cross-env npm_config_target?=esp32/m5stack cross-env-shell mcconfig -d -m -p \\\\$npm_config_target -t build ./stackchan/manifest_local.json\",\n    \"bundle\": \"mcbundle -d -m ./stackchan/manifest.json\",\n    \"deploy\": \"cross-env npm_config_target?=esp32/m5stack cross-env-shell mcconfig -d -m -p \\\\$npm_config_target -t deploy ./stackchan/manifest_local.json\",\n    \"debug\": \"cross-env npm_config_target?=esp32/m5stack cross-env-shell mcconfig -d -m -p \\\\$npm_config_target ./stackchan/manifest_local.json\",\n    \"mod\": \"cross-env npm_config_target?=esp32/m5stack cross-env-shell mcrun -d -m -p \\\\$npm_config_target\",\n    \"setup\": \"xs-dev setup\",\n    \"update\": \"xs-dev update\",\n    \"doctor\": \"echo stack-chan environment info: && git rev-parse HEAD && git rev-parse --show-toplevel && xs-dev doctor\",\n    \"scan\": \"xs-dev scan\",\n    \"erase-flash\": \"esptool.py erase_flash\",\n    \"install-hook\": \"lefthook install\",\n    \"uninstall-hook\": \"lefthook uninstall\"\n  },\n  \"type\": \"module\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+ssh://git@github.com/meganetaaan/stack-chan.git\"\n  },\n  \"keywords\": [\n    \"M5Stack\",\n    \"Robot\",\n    \"Moddable\",\n    \"Kawaii\"\n  ],\n  \"author\": \"Shinya Ishikawa\",\n  \"license\": \"Apache-2.0\",\n  \"bugs\": {\n    \"url\": \"https://github.com/meganetaaan/stack-chan/issues\"\n  },\n  \"homepage\": \"https://github.com/meganetaaan/stack-chan#readme\",\n  \"private\": true,\n  \"devDependencies\": {\n    \"@biomejs/biome\": \"2.1.1\",\n    \"@ffmpeg/core\": \"^0.11.0\",\n    \"@ffmpeg/ffmpeg\": \"^0.11.6\",\n    \"@google-cloud/text-to-speech\": \"^6.1.0\",\n    \"@microsoft/tsdoc\": \"^0.15.0\",\n    \"@moddable/typings\": \"^5.7.0\",\n    \"cross-env-default\": \"^5.1.3-1\",\n    \"lefthook\": \"^1.8.2\",\n    \"node-fetch\": \"^3.3.0\",\n    \"typedoc\": \"^0.28.4\",\n    \"typedoc-plugin-markdown\": \"^4.2.7\",\n    \"typescript\": \"^5.8.3\",\n    \"web-audio-engine\": \"^0.13.4\",\n    \"xs-dev\": \"^0.37.0\",\n    \"yargs\": \"^17.6.2\"\n  }\n}\n\n\n=== web/package.json ===\n{\n  \"name\": \"stackchan-web\",\n  \"version\": \"0.1.0\",\n  \"description\": \"Stack-chan development server\",\n  \"scripts\": {\n    \"dev\": \"live-server --verbose\"\n  },\n  \"keywords\": [],\n  \"author\": \"Shinya Ishikawa\",\n  \"devDependencies\": {\n    \"live-server\": \"^1.2.2\",\n    \"prettier\": \"^3.0.0\"\n  }\n}\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@stack-chan/server",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@stack-chan/server",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio"
     }
   }
 }

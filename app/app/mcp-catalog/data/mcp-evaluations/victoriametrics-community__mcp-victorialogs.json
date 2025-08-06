@@ -109,15 +109,13 @@
     }
   },
   "configForArchestra": {
+    "command": "mcp-victorialogs",
+    "args": [],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [],
-      "command": "mcp-victorialogs",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

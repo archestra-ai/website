@@ -47,19 +47,17 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "dist/index.js",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "dist/index.js",
-        "--transport",
-        "stdio"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

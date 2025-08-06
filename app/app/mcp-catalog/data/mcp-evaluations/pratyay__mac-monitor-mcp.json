@@ -38,17 +38,15 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "src/monitor.py"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "src/monitor.py"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

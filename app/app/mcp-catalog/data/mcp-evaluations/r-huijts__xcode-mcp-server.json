@@ -52,17 +52,15 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "dist/index.js"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "dist/index.js"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

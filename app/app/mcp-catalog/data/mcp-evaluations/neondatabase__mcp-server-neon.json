@@ -71,20 +71,18 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@neondatabase/mcp-server-neon",
+      "start",
+      "<YOUR_NEON_API_KEY>"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "Neon",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@neondatabase/mcp-server-neon",
-        "start",
-        "<YOUR_NEON_API_KEY>"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

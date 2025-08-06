@@ -61,21 +61,19 @@
     }
   },
   "configForArchestra": {
+    "command": "string",
+    "args": [
+      "string"
+    ],
+    "env": {
+      "server-basic": "string",
+      "server-configured": "string",
+      "server-docker": "string"
+    },
+    "transport": "string",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "string"
-      ],
-      "command": "string",
-      "transport": "string",
-      "env": {
-        "server-basic": "string",
-        "server-configured": "string",
-        "server-docker": "string"
-      }
     }
   },
   "dependencies": [

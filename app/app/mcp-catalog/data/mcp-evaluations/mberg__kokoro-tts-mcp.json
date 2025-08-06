@@ -60,22 +60,20 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--directory",
-        "app",
-        "run",
-        "mcp-tts.py"
-      ],
-      "command": "uv",
-      "transport": "http",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "app",
+      "run",
+      "mcp-tts.py"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "http",
+    "oauth": {}
   },
   "dependencies": [
     {

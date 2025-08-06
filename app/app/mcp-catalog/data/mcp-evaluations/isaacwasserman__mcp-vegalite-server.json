@@ -55,20 +55,18 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--directory",
-        "./",
-        "run",
-        "mcp_server_datavis",
-        "--output_type",
-        "png"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "./",
+      "run",
+      "mcp_server_datavis",
+      "--output_type",
+      "png"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

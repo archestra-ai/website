@@ -48,19 +48,17 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-remote",
+      "https://mcp.prisma.io/mcp"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "Prisma Console",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://mcp.prisma.io/mcp"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

@@ -44,16 +44,14 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--transport",
-        "stdio"
-      ],
-      "command": "mcp-server-wazuh",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "mcp-server-wazuh",
+    "args": [
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

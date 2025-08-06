@@ -53,15 +53,13 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [],
-      "command": "python",
-      "transport": "http",
-      "env": {}
     }
   },
   "dependencies": [

@@ -353,12 +353,56 @@ export async function GET() {
             configForClients: { 
               type: "object", 
               nullable: true,
-              description: "Configuration for MCP clients"
+              description: "Configuration for MCP clients",
+              properties: {
+                mcpServers: {
+                  type: "object",
+                  additionalProperties: {
+                    type: "object",
+                    properties: {
+                      command: { type: "string" },
+                      args: { 
+                        type: "array",
+                        items: { type: "string" }
+                      },
+                      env: { 
+                        type: "object",
+                        additionalProperties: { type: "string" }
+                      }
+                    },
+                    required: ["command"]
+                  }
+                }
+              }
             },
             configForArchestra: { 
               type: "object", 
               nullable: true,
-              description: "Configuration specific to Archestra"
+              description: "Configuration specific to Archestra",
+              properties: {
+                command: { type: "string" },
+                args: { 
+                  type: "array",
+                  items: { type: "string" }
+                },
+                env: { 
+                  type: "object",
+                  additionalProperties: { type: "string" }
+                },
+                transport: { 
+                  type: "string",
+                  enum: ["http", "stdio"]
+                },
+                oauth: {
+                  type: "object",
+                  properties: {
+                    provider: { type: "string" },
+                    required: { type: "boolean" }
+                  },
+                  required: ["provider", "required"]
+                }
+              },
+              required: ["command", "env", "transport"]
             },
           },
           required: ["slug", "name", "description", "gitHubOrg", "gitHubRepo", "programmingLanguage"],

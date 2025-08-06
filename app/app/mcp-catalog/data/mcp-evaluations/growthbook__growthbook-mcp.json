@@ -46,20 +46,18 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "@growthbook/mcp"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "GB_API_KEY",
-        "server-configured": "GB_USER",
-        "server-docker": "GB_API_URL"
-      }
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@growthbook/mcp"
+    ],
+    "env": {
+      "server-basic": "GB_API_KEY",
+      "server-configured": "GB_USER",
+      "server-docker": "GB_API_URL"
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

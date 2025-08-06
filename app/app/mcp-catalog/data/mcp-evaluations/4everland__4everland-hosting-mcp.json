@@ -51,21 +51,19 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@4everland/hosting-mcp@latest",
+      "serve"
+    ],
+    "env": {
+      "server-configured": "TOKEN"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "4everland",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@4everland/hosting-mcp@latest",
-        "serve"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-configured": "TOKEN"
-      }
     }
   },
   "dependencies": [

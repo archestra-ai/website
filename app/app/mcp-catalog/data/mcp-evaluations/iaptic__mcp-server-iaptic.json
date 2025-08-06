@@ -75,24 +75,22 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-server-iaptic",
+      "--transport",
+      "stdio",
+      "--api-key",
+      "your-api-key-here",
+      "--app-name",
+      "your-app-name-here"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "iaptic",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "mcp-server-iaptic",
-        "--transport",
-        "stdio",
-        "--api-key",
-        "your-api-key-here",
-        "--app-name",
-        "your-app-name-here"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

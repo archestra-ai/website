@@ -68,16 +68,14 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "editorconfig-mcp-server"
-      ],
-      "command": "npx",
-      "transport": "http",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "editorconfig-mcp-server"
+    ],
+    "env": {},
+    "transport": "http",
+    "oauth": {}
   },
   "dependencies": [
     {

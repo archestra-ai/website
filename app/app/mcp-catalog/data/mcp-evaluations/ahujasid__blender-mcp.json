@@ -46,17 +46,15 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "blender-mcp"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "hyper3d",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "blender-mcp"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

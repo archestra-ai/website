@@ -29,18 +29,16 @@
   "rawDependencies": "=== pyproject.toml ===\n[build-system]\r\nrequires = [\"setuptools>=61.0\", \"wheel\"]\r\nbuild-backend = \"setuptools.build_meta\"\r\n\r\n[project]\r\nname = \"mcp-server-webcrawl\"\r\ndescription = \"MCP server for search and retrieval of web crawler content\"\r\nreadme = \"README_pypi.md\"\r\nrequires-python = \">=3.10\"\r\nauthors = [\r\n    {name = \"Ben Caulfield\"}\r\n]\r\nclassifiers = [\r\n    \"Programming Language :: Python :: 3\",\r\n    \"Operating System :: OS Independent\",\r\n    \"License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)\",\r\n]\r\ndependencies = [\r\n    \"mcp>=1.3.0\",\r\n    \"lxml>=4.6.0\",\r\n    \"Pillow>=9.0.0\",\r\n    \"aiohttp>=3.8.0\",\r\n    \"warcio>=1.7.0\",\r\n    \"ply==3.11\"\r\n]\r\ndynamic = [\"version\"]\r\n\r\n[project.scripts]\r\nmcp-server-webcrawl = \"mcp_server_webcrawl:main\"\r\n\r\n[project.urls]\r\nHomepage = \"https://pragmar.com/mcp-server-webcrawl/\"\r\n\r\n[tool.setuptools]\r\npackage-dir = {\"\" = \"src\"}\r\n\r\n[tool.setuptools.packages.find]\r\nwhere = [\"src\"]\r\ninclude = [\"mcp_server_webcrawl*\"]\r\nexclude = [\"*settings_local*\"]\r\n\r\n[tool.setuptools.dynamic]\r\nversion = {attr = \"mcp_server_webcrawl.__version__\"}\n\n=== setup.py ===\nimport re\r\nfrom setuptools import setup\r\n\r\n# remove centered image that doesn't render for pypi\r\nwith open(\"README.md\", \"r\") as src:\r\n    content = src.read()\r\nmodified_content = re.sub(r'<p align=\"center\">.*?</p>', '', content, flags=re.DOTALL)\r\nwith open(\"README_pypi.md\", \"w\") as dest:\r\n    dest.write(modified_content.strip())\r\n\r\n# set up configuration in pyproject.toml\r\nsetup()",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-m",
-        "mcp_server_webcrawl",
-        "--transport",
-        "stdio"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "-m",
+      "mcp_server_webcrawl",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

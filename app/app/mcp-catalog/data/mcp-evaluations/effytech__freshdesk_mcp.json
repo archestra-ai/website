@@ -57,18 +57,16 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "freshdesk-mcp"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "FRESHDESK_API_KEY",
-        "server-configured": "FRESHDESK_DOMAIN"
-      }
-    }
+    "command": "uvx",
+    "args": [
+      "freshdesk-mcp"
+    ],
+    "env": {
+      "server-basic": "FRESHDESK_API_KEY",
+      "server-configured": "FRESHDESK_DOMAIN"
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

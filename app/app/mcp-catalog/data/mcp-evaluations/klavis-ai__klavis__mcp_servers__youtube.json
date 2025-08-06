@@ -62,19 +62,17 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "mcp_servers/youtube/server.py"
-      ],
-      "command": "python",
-      "transport": "http",
-      "env": {
-        "server-basic": "YOUTUBE_API_KEY",
-        "server-configured": "YOUTUBE_MCP_SERVER_PORT",
-        "server-docker": "WEBSHARE_PROXY_USERNAME"
-      }
-    }
+    "command": "python",
+    "args": [
+      "mcp_servers/youtube/server.py"
+    ],
+    "env": {
+      "server-basic": "YOUTUBE_API_KEY",
+      "server-configured": "YOUTUBE_MCP_SERVER_PORT",
+      "server-docker": "WEBSHARE_PROXY_USERNAME"
+    },
+    "transport": "http",
+    "oauth": {}
   },
   "dependencies": [
     {

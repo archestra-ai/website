@@ -42,18 +42,16 @@
     }
   },
   "configForArchestra": {
+    "command": "mcp-dnstwist",
+    "args": [
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--transport",
-        "stdio"
-      ],
-      "command": "mcp-dnstwist",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

@@ -210,17 +210,15 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "elasticsearch-mcp-server"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "elasticsearch-mcp-server"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

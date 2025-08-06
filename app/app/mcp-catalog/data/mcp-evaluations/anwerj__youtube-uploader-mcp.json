@@ -40,18 +40,16 @@
     }
   },
   "configForArchestra": {
+    "command": "youtube-uploader-mcp",
+    "args": [
+      "-client_secret_file",
+      "/absolute/path/to/client_secret.json"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-client_secret_file",
-        "/absolute/path/to/client_secret.json"
-      ],
-      "command": "youtube-uploader-mcp",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

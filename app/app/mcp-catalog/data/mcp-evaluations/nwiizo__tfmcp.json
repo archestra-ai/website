@@ -75,21 +75,19 @@
     }
   },
   "configForArchestra": {
+    "command": "tfmcp",
+    "args": [
+      "mcp"
+    ],
+    "env": {
+      "server-basic": "string",
+      "server-configured": "string",
+      "server-docker": "string"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "mcp"
-      ],
-      "command": "tfmcp",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "string",
-        "server-configured": "string",
-        "server-docker": "string"
-      }
     }
   },
   "dependencies": [

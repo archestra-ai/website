@@ -79,28 +79,26 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "--directory",
+      "$REPOSITORY_DIRECTORY",
+      "run",
+      "--with-editable",
+      "$REPOSITORY_DIRECTORY",
+      "--python",
+      "3.13",
+      "mcp-aiven"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--directory",
-        "$REPOSITORY_DIRECTORY",
-        "run",
-        "--with-editable",
-        "$REPOSITORY_DIRECTORY",
-        "--python",
-        "3.13",
-        "mcp-aiven"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

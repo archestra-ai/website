@@ -46,17 +46,15 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--from",
-        "git+https://github.com/adhikasp/mcp-twikit",
-        "mcp-twikit"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/adhikasp/mcp-twikit",
+      "mcp-twikit"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

@@ -79,21 +79,19 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "quickchat-ai-mcp"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "Quickchat AI",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "quickchat-ai-mcp"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

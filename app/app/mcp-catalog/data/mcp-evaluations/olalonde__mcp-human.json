@@ -50,20 +50,18 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "mcp-human@latest"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "MTURK_SANDBOX",
-        "server-configured": "AWS_REGION",
-        "server-docker": "AWS_PROFILE"
-      }
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-human@latest"
+    ],
+    "env": {
+      "server-basic": "MTURK_SANDBOX",
+      "server-configured": "AWS_REGION",
+      "server-docker": "AWS_PROFILE"
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

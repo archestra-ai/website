@@ -47,17 +47,16 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "mcp-remote",
+      "https://observability.mcp.cloudflare.com/sse"
+    ],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "cloudflare",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "mcp-remote",
-        "https://observability.mcp.cloudflare.com/sse"
-      ],
-      "command": "npx",
-      "transport": "http"
     }
   }
 }

@@ -53,17 +53,16 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "synergy-age-mcp",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "synergy-age-mcp",
-        "stdio"
-      ],
-      "command": "uvx",
-      "transport": "stdio"
     }
   },
   "dependencies": [

@@ -39,17 +39,15 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "/Users/quentincody/catalysishub-mcp-server/catalysishub_mcp_server.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "/Users/quentincody/.env/bin/python3",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "/Users/quentincody/.env/bin/python3",
+    "args": [
+      "/Users/quentincody/catalysishub-mcp-server/catalysishub_mcp_server.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

@@ -44,23 +44,21 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "/PATH_TO_THE_PROJECT/build/index.js",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "atlassian",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "/PATH_TO_THE_PROJECT/build/index.js",
-        "--transport",
-        "stdio"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

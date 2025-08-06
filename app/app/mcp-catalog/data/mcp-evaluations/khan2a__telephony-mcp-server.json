@@ -54,23 +54,21 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "telephony_server.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "Vonage",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "telephony_server.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

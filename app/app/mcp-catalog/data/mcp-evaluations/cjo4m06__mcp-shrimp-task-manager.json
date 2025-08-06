@@ -29,18 +29,16 @@
   "rawDependencies": "=== package.json ===\n{\n  \"name\": \"mcp-shrimp-task-manager\",\n  \"version\": \"1.0.21\",\n  \"description\": \"Shrimp Task Manager is a task tool built for AI Agents, emphasizing chain-of-thought, reflection, and style consistency. It converts natural language into structured dev tasks with dependency tracking and iterative refinement, enabling agent-like developer behavior in reasoning AI systems\",\n  \"main\": \"dist/index.js\",\n  \"type\": \"module\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/cjo4m06/mcp-shrimp-task-manager\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/cjo4m06/mcp-shrimp-task-manager/issues\"\n  },\n  \"homepage\": \"https://cjo4m06.github.io/mcp-shrimp-task-manager\",\n  \"bin\": {\n    \"mcp-shrimp-task-manager\": \"./dist/index.js\"\n  },\n  \"scripts\": {\n    \"build\": \"tsc && copyfiles -u 1 \\\"src/**/*.md\\\" dist && copyfiles -u 1 \\\"src/public/**/*\\\" dist && node scripts/add-shebang.js\",\n    \"dev\": \"ts-node src/index.ts\",\n    \"start\": \"node dist/index.js\",\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n  },\n  \"keywords\": [\n    \"mcp\",\n    \"task-manager\",\n    \"agent\",\n    \"workflow\"\n  ],\n  \"author\": \"\",\n  \"license\": \"MIT\",\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.0.0\",\n    \"dotenv\": \"^16.5.0\",\n    \"express\": \"^5.1.0\",\n    \"get-port\": \"^7.1.0\",\n    \"uuid\": \"^9.0.1\",\n    \"zod\": \"^3.22.4\",\n    \"zod-to-json-schema\": \"^3.24.5\"\n  },\n  \"devDependencies\": {\n    \"@types/express\": \"^5.0.1\",\n    \"@types/node\": \"^20.8.2\",\n    \"@types/uuid\": \"^9.0.6\",\n    \"copyfiles\": \"^2.4.1\",\n    \"ts-node\": \"^10.9.2\",\n    \"typescript\": \"^5.2.2\"\n  }\n}\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--transport",
-        "stdio"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

@@ -59,20 +59,18 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-ipfs"
+    ],
+    "env": {
+      "server-configured": "W3_LOGIN_EMAIL"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "web3.storage",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "mcp-ipfs"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-configured": "W3_LOGIN_EMAIL"
-      }
     }
   },
   "dependencies": [

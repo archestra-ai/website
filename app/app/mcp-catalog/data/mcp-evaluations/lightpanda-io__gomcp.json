@@ -53,16 +53,15 @@
     }
   },
   "configForArchestra": {
+    "command": "gomcp",
+    "args": [
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "stdio"
-      ],
-      "command": "gomcp",
-      "transport": "stdio"
     }
   },
   "dependencies": [

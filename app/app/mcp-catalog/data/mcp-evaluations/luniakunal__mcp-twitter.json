@@ -50,20 +50,18 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "--with",
-        "twikit",
-        "--with",
-        "mcp",
-        "Path\\src\\tweet_service.py"
-      ],
-      "command": "uv",
-      "transport": "http",
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "twikit",
+      "--with",
+      "mcp",
+      "Path\\src\\tweet_service.py"
+    ],
+    "env": {},
+    "transport": "http",
+    "oauth": {}
   },
   "dependencies": [
     {

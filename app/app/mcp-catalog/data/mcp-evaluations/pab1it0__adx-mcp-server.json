@@ -95,22 +95,20 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "--directory",
+      "<full path to adx-mcp-server directory>",
+      "run",
+      "src/adx_mcp_server/main.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "azure",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--directory",
-        "<full path to adx-mcp-server directory>",
-        "run",
-        "src/adx_mcp_server/main.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

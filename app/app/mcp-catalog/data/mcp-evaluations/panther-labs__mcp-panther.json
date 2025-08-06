@@ -29,20 +29,18 @@
   "rawDependencies": "=== pyproject.toml ===\n[project]\nname = \"mcp-panther\"\nversion = \"2.0.0\"\ndescription = \"Panther Labs MCP Server\"\nreadme = \"README.md\"\nrequires-python = \">=3.12\"\nlicense = { text = \"Apache-2.0\" }\nauthors = [\n    { name = \"Panther Labs Inc\", email = \"pypi@runpanther.io\" }\n]\nclassifiers = [\n    \"Development Status :: 4 - Beta\",\n    \"Intended Audience :: Developers\",\n    \"Intended Audience :: System Administrators\",\n    \"Intended Audience :: Information Technology\",\n    \"License :: OSI Approved :: Apache Software License\",\n    \"Programming Language :: Python :: 3.12\",\n    \"Topic :: Security\",\n    \"Topic :: Software Development :: Libraries :: Python Modules\",\n    \"Topic :: System :: Systems Administration\",\n    \"Topic :: Scientific/Engineering :: Artificial Intelligence\",\n    \"Topic :: Utilities\",\n    \"Typing :: Typed\",\n]\nkeywords = [\"security\", \"ai\", \"mcp\", \"mcp-server\", \"panther\"]\ndependencies = [\n    \"aiohttp>=3.11.14,<4.0.0\",\n    \"gql>=3.5.2,<4.0.0\",\n    \"click>=8.1.0,<9.0.0\",\n    \"fastmcp>=2.10.0,<3.0.0\",\n    \"sqlparse>=0.4.4,<1.0.0\"\n]\n\n[project.urls]\nHomepage = \"https://github.com/panther-labs/mcp-panther\"\nRepository = \"https://github.com/panther-labs/mcp-panther.git\"\n\n[dependency-groups]\ndev = [\n    \"ruff>=0.11.2\",\n    \"pytest>=8.0.0\",\n    \"pytest-asyncio>=0.23.5\",\n    \"pytest-cov>=4.1.0\",\n    \"pytest-env>=1.1.1\",\n]\n\n[project.scripts]\nmcp-panther = \"mcp_panther.server:main\"\n\n[tool.ruff]\n# Allow autofix behavior for specified rules\nfix = true\n\ntarget-version = \"py312\"\n\n[tool.ruff.lint]\n# Enable pycodestyle (E), pyflakes (F), isort (I), pep8-naming (N), type-checking (TCH)\nselect = [\"E\", \"F\", \"I\", \"N\", \"TCH\"]\n# Ignore E402 - Module level import not at top of file\n# Ignore E501 - Line too long\nignore = [\"E402\", \"E501\"]\n\n[tool.ruff.lint.mccabe]\nmax-complexity = 10\n\n[tool.ruff.lint.per-file-ignores]\n# Ignore imported but unused in __init__.py files\n\"__init__.py\" = [\"F401\"]\n\n[tool.ruff.lint.isort]\nknown-first-party = [\"mcp_panther\"]\n\n[tool.pytest.ini_options]\n# Configure pytest\nasyncio_mode = \"auto\"\nasyncio_default_fixture_loop_scope = \"function\"\ntestpaths = [\"tests\"]\npython_files = [\"test_*.py\"]\naddopts = \"-v --cov=src/mcp_panther --cov-report=term-missing\"\npythonpath = [\"src\"]\nenv = [\n    \"PANTHER_INSTANCE_URL=https://example.com\",\n    \"PANTHER_API_TOKEN=test-token\"\n]\n\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@panther-labs/mcp-panther",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "Panther",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@panther-labs/mcp-panther",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

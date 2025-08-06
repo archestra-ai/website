@@ -65,18 +65,16 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "figma-developer-mcp",
-        "--figma-api-key=YOUR-KEY",
-        "--stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "figma-developer-mcp",
+      "--figma-api-key=YOUR-KEY",
+      "--stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

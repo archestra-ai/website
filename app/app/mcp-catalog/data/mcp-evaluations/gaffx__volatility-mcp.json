@@ -47,23 +47,21 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "vol_mcp_server.py",
+      "-i",
+      "<memory_image_path>"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "vol_mcp_server.py",
-        "-i",
-        "<memory_image_path>"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

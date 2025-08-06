@@ -93,20 +93,18 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "video-editor-mcp",
+      "YOURAPIKEY"
+    ],
+    "env": {
+      "server-configured": "LOAD_PHOTOS_DB"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "Video Jungle",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "video-editor-mcp",
-        "YOURAPIKEY"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-configured": "LOAD_PHOTOS_DB"
-      }
     }
   },
   "dependencies": [

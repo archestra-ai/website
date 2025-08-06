@@ -77,19 +77,17 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "enrichr-mcp-server",
-        "--compact",
-        "--max-terms",
-        "100"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "enrichr-mcp-server",
+      "--compact",
+      "--max-terms",
+      "100"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

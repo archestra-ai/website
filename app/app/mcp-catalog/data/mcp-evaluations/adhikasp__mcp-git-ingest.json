@@ -41,21 +41,19 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/adhikasp/mcp-git-ingest",
+      "mcp-git-ingest",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--from",
-        "git+https://github.com/adhikasp/mcp-git-ingest",
-        "mcp-git-ingest",
-        "--transport",
-        "stdio"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

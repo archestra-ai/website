@@ -40,17 +40,16 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@kimtaeyoon83/mcp-server-youtube-transcript"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@kimtaeyoon83/mcp-server-youtube-transcript"
-      ],
-      "command": "npx",
-      "transport": "stdio"
     }
   },
   "dependencies": [

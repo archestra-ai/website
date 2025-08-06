@@ -44,21 +44,19 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-m",
-        "src.mcp_server_openai.server",
-        "--transport",
-        "stdio"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "PYTHONPATH",
-        "server-configured": "OPENAI_API_KEY"
-      }
-    }
+    "command": "python",
+    "args": [
+      "-m",
+      "src.mcp_server_openai.server",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "PYTHONPATH",
+      "server-configured": "OPENAI_API_KEY"
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

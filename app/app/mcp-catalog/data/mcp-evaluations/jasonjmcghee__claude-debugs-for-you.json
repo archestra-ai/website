@@ -45,17 +45,15 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "mcp-debug.js"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "mcp-debug.js"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

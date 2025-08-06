@@ -43,23 +43,21 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@OverQuotaAI/chatterboxio-mcp-server",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "CHATTERBOX_API_ENDPOINT",
+      "server-configured": "CHATTERBOX_API_KEY"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "chatterbox",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@OverQuotaAI/chatterboxio-mcp-server",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "CHATTERBOX_API_ENDPOINT",
-        "server-configured": "CHATTERBOX_API_KEY"
-      }
     }
   },
   "dependencies": [

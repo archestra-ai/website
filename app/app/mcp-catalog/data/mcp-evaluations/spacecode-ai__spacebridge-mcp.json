@@ -62,28 +62,26 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--spacebridge-api-key",
-        "",
-        "--openai-api-key",
-        "",
-        "--org-name",
-        "",
-        "--project-name",
-        "",
-        "--project-dir",
-        ""
-      ],
-      "command": "spacebridge-mcp-server",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "spacebridge-mcp-server",
+    "args": [
+      "--spacebridge-api-key",
+      "",
+      "--openai-api-key",
+      "",
+      "--org-name",
+      "",
+      "--project-name",
+      "",
+      "--project-dir",
+      ""
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

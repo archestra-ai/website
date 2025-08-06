@@ -47,22 +47,20 @@
     }
   },
   "configForArchestra": {
+    "command": "/usr/local/bin/mcp-v8",
+    "args": [
+      "--s3-bucket",
+      "my-archestra-bucket"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "aws",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--s3-bucket",
-        "my-archestra-bucket"
-      ],
-      "command": "/usr/local/bin/mcp-v8",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

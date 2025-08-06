@@ -50,16 +50,15 @@
     }
   },
   "configForArchestra": {
+    "command": "kubectl-mcp",
+    "args": [
+      "serve"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "serve"
-      ],
-      "command": "kubectl-mcp",
-      "transport": "stdio"
     }
   },
   "dependencies": [

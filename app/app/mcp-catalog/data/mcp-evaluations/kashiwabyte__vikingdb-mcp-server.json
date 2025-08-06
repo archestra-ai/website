@@ -95,27 +95,25 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "mcp-server-vikingdb",
-        "--vikingdb-host",
-        "your host",
-        "--vikingdb-region",
-        "your region",
-        "--vikingdb-ak",
-        "your access key",
-        "--vikingdb-sk",
-        "your secret key",
-        "--collection-name",
-        "your collection name",
-        "--index-name",
-        "your index name"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "mcp-server-vikingdb",
+      "--vikingdb-host",
+      "your host",
+      "--vikingdb-region",
+      "your region",
+      "--vikingdb-ak",
+      "your access key",
+      "--vikingdb-sk",
+      "your secret key",
+      "--collection-name",
+      "your collection name",
+      "--index-name",
+      "your index name"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

@@ -46,15 +46,13 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "cal-mcp"
-      ],
-      "command": "bunx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "bunx",
+    "args": [
+      "cal-mcp"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

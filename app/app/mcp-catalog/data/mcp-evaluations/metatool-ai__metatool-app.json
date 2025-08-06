@@ -52,15 +52,14 @@
     }
   },
   "configForArchestra": {
+    "command": "pnpm",
+    "args": [
+      "dev"
+    ],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "dev"
-      ],
-      "command": "pnpm",
-      "transport": "http"
     }
   },
   "dependencies": [

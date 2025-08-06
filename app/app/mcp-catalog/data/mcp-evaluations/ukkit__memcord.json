@@ -57,22 +57,20 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--directory",
-        "</path/to/memcord>",
-        "run",
-        "memcord"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "</path/to/memcord>/src",
-        "server-configured": "</path/to/memcord>/src",
-        "server-docker": "</path/to/memcord>/src"
-      }
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "</path/to/memcord>",
+      "run",
+      "memcord"
+    ],
+    "env": {
+      "server-basic": "</path/to/memcord>/src",
+      "server-configured": "</path/to/memcord>/src",
+      "server-docker": "</path/to/memcord>/src"
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

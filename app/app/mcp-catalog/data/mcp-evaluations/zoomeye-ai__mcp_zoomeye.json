@@ -29,19 +29,17 @@
   "rawDependencies": "=== pyproject.toml ===\n[project]\nname = \"mcp-server-zoomeye\"\nversion = \"0.1.5\"\ndescription = \"A Model Context Protocol server providing tools for ZoomEye queries for LLMs\"\nreadme = \"README.md\"\nrequires-python = \">=3.10\"\nauthors = [\n    { name = \"zoomeye team\", email = \"support@zoomeye.ai\" },\n]\nkeywords = [\"zoomeye\", \"mcp\", \"llm\"]\nlicense = { text = \"MIT\" }\nclassifiers = [\n    \"Development Status :: 4 - Beta\",\n    \"Intended Audience :: Developers\",\n    \"License :: OSI Approved :: MIT License\",\n    \"Programming Language :: Python :: 3\",\n    \"Programming Language :: Python :: 3.10\",\n]\ndependencies = [\n    \"mcp>=1.0.0\",\n    \"pydantic>=2.0.0\",\n    \"requests>=2.32.3\",\n    \"python-dotenv>=1.0.0\",\n]\n\n[project.scripts]\nmcp-server-zoomeye = \"mcp_server_zoomeye:main\"\n\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n[tool.uv]\ndev-dependencies = [\n    \"pyright>=1.1.389\",\n    \"pytest>=8.3.3\",\n    \"pytest-asyncio>=0.25.3\",\n    \"ruff>=0.8.1\",\n]\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "mcp-server-zoomeye"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "uvx",
+    "args": [
+      "mcp-server-zoomeye"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

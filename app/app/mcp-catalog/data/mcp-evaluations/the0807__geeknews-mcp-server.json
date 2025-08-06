@@ -51,22 +51,20 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@smithery/cli@latest",
+      "run",
+      "@the0807/geeknews-mcp-server",
+      "--key",
+      "smithery에서 발급 받은 키"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "smithery",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@smithery/cli@latest",
-        "run",
-        "@the0807/geeknews-mcp-server",
-        "--key",
-        "smithery에서 발급 받은 키"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

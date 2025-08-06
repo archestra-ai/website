@@ -63,18 +63,16 @@
     }
   },
   "configForArchestra": {
+    "command": "./toolbox",
+    "args": [
+      "--tools-file",
+      "tools.yaml"
+    ],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "google",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--tools-file",
-        "tools.yaml"
-      ],
-      "command": "./toolbox",
-      "transport": "http",
-      "env": {}
     }
   },
   "dependencies": [

@@ -44,15 +44,13 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "<thePathToYour>/build/index.js"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "<thePathToYour>/build/index.js"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

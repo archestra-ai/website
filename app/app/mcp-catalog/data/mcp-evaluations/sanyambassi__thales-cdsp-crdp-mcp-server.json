@@ -60,20 +60,18 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "dist/crdp-mcp-server.js"
+    ],
+    "env": {
+      "server-basic": "CRDP_SERVICE_URL",
+      "server-configured": "CRDP_PROBES_URL"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "dist/crdp-mcp-server.js"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "CRDP_SERVICE_URL",
-        "server-configured": "CRDP_PROBES_URL"
-      }
     }
   },
   "dependencies": [

@@ -38,17 +38,15 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "defi-yields-mcp"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "defi-yields-mcp"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

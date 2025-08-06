@@ -57,21 +57,19 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "server.py",
+      "--fb-token",
+      "YOUR_META_ACCESS_TOKEN",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "facebook",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "server.py",
-        "--fb-token",
-        "YOUR_META_ACCESS_TOKEN",
-        "--transport",
-        "stdio"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

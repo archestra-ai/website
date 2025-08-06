@@ -119,20 +119,18 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-m",
-        "ydb_mcp",
-        "--ydb-endpoint",
-        "grpc://localhost:2136",
-        "--ydb-database",
-        "/local"
-      ],
-      "command": "python3",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "python3",
+    "args": [
+      "-m",
+      "ydb_mcp",
+      "--ydb-endpoint",
+      "grpc://localhost:2136",
+      "--ydb-database",
+      "/local"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

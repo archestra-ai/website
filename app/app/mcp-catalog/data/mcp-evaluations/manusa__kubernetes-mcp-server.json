@@ -40,17 +40,16 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "kubernetes-mcp-server@latest"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "kubernetes-mcp-server@latest"
-      ],
-      "command": "npx",
-      "transport": "stdio"
     }
   },
   "dependencies": [

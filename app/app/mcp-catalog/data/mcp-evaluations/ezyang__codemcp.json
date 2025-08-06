@@ -74,18 +74,16 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--from",
-        "git+https://github.com/ezyang/codemcp@prod",
-        "codemcp",
-        "serve"
-      ],
-      "command": "uvx",
-      "transport": "http",
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/ezyang/codemcp@prod",
+      "codemcp",
+      "serve"
+    ],
+    "env": {},
+    "transport": "http",
+    "oauth": {}
   },
   "dependencies": [
     {

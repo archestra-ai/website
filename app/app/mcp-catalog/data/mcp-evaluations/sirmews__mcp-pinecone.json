@@ -52,19 +52,17 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--index-name",
-        "{your-index-name}",
-        "--api-key",
-        "{your-secret-api-key}",
-        "mcp-pinecone"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "--index-name",
+      "{your-index-name}",
+      "--api-key",
+      "{your-secret-api-key}",
+      "mcp-pinecone"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

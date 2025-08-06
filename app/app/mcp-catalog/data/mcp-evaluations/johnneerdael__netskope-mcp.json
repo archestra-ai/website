@@ -71,20 +71,18 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@johnneerdael/netskope-mcp"
+    ],
+    "env": {
+      "server-configured": "NETSKOPE_BASE_URL=\"https://your-tenant.goskope.com\" NETSKOPE_API_KEY=\"your-token\""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "netskope",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@johnneerdael/netskope-mcp"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-configured": "NETSKOPE_BASE_URL=\"https://your-tenant.goskope.com\" NETSKOPE_API_KEY=\"your-token\""
-      }
     }
   },
   "dependencies": [

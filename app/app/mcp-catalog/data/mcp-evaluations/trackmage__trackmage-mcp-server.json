@@ -50,21 +50,19 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "index.js"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "TrackMage",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "index.js"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

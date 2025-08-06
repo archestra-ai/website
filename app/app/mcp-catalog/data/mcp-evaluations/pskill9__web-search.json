@@ -39,16 +39,15 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "/path/to/web-search/build/index.js"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "/path/to/web-search/build/index.js"
-      ],
-      "command": "node",
-      "transport": "stdio"
     }
   },
   "dependencies": [

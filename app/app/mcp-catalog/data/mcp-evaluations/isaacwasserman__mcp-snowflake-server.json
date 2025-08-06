@@ -87,39 +87,37 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "--python=3.12",
+      "mcp_snowflake_server",
+      "--account",
+      "your_account",
+      "--warehouse",
+      "your_warehouse",
+      "--user",
+      "your_user",
+      "--password",
+      "your_password",
+      "--role",
+      "your_role",
+      "--database",
+      "your_database",
+      "--schema",
+      "your_schema",
+      "--allow_write",
+      "--log_dir",
+      "/absolute/path/to/logs",
+      "--log_level",
+      "INFO",
+      "--exclude_tools",
+      "tool_name"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "snowflake",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--python=3.12",
-        "mcp_snowflake_server",
-        "--account",
-        "your_account",
-        "--warehouse",
-        "your_warehouse",
-        "--user",
-        "your_user",
-        "--password",
-        "your_password",
-        "--role",
-        "your_role",
-        "--database",
-        "your_database",
-        "--schema",
-        "your_schema",
-        "--allow_write",
-        "--log_dir",
-        "/absolute/path/to/logs",
-        "--log_level",
-        "INFO",
-        "--exclude_tools",
-        "tool_name"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

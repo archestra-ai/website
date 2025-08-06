@@ -70,19 +70,17 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "mcp-server-kubernetes"
+    ],
+    "env": {
+      "server-configured": "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS=true"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "mcp-server-kubernetes"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-configured": "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS=true"
-      }
     }
   },
   "dependencies": [

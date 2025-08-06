@@ -51,20 +51,18 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-server-rijksmuseum"
+    ],
+    "env": {
+      "server-basic": "RIJKSMUSEUM_API_KEY"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "rijksmuseum",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "mcp-server-rijksmuseum"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "RIJKSMUSEUM_API_KEY"
-      }
     }
   },
   "dependencies": [

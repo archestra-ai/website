@@ -42,24 +42,22 @@
     }
   },
   "configForArchestra": {
+    "command": "joinly",
+    "args": [
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "http",
     "oauth": {
       "provider": "openai",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--host",
-        "0.0.0.0",
-        "--port",
-        "8000"
-      ],
-      "command": "joinly",
-      "transport": "http",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

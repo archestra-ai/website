@@ -28,15 +28,13 @@
   "implementing_oauth2": false,
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
+    "command": "npx",
+    "args": [],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "api_key",
       "required": true
-    },
-    "server_config": {
-      "args": [],
-      "command": "npx",
-      "transport": "http",
-      "env": {}
     }
   },
   "dependencies": [

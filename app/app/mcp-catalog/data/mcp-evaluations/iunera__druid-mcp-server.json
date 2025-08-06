@@ -103,23 +103,21 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-Dspring.ai.mcp.server.stdio=true",
-        "-Dspring.main.web-application-type=none",
-        "-Dlogging.pattern.console=",
-        "-jar",
-        "druid-mcp-server-1.0.0.jar"
-      ],
-      "command": "java",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "java",
+    "args": [
+      "-Dspring.ai.mcp.server.stdio=true",
+      "-Dspring.main.web-application-type=none",
+      "-Dlogging.pattern.console=",
+      "-jar",
+      "druid-mcp-server-1.0.0.jar"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

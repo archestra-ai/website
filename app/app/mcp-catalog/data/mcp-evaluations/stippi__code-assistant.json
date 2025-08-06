@@ -43,21 +43,19 @@
     }
   },
   "configForArchestra": {
+    "command": "code-assistant",
+    "args": [
+      "server"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "AI Core",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "server"
-      ],
-      "command": "code-assistant",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

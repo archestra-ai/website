@@ -82,18 +82,17 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@pulumi/mcp-server@latest",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "pulumi",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@pulumi/mcp-server@latest",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio"
     }
   },
   "dependencies": [

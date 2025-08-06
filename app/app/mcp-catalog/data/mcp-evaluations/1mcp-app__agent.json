@@ -182,20 +182,18 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@1mcp/agent",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "oauth2",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@1mcp/agent",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "evaluation_model": "gemini-2.5-pro"

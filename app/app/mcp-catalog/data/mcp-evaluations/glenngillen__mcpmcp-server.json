@@ -39,18 +39,17 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-remote@latest",
+      "https://mcpmcp.io/mcp"
+    ],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "mcpmcp.io",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "mcp-remote@latest",
-        "https://mcpmcp.io/mcp"
-      ],
-      "command": "npx",
-      "transport": "http"
     }
   },
   "dependencies": [

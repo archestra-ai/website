@@ -39,23 +39,21 @@
     }
   },
   "configForArchestra": {
+    "command": "node",
+    "args": [
+      "/absolute/path/to/your/strava-mcp/dist/server.js",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "Strava",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "/absolute/path/to/your/strava-mcp/dist/server.js",
-        "--transport",
-        "stdio"
-      ],
-      "command": "node",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

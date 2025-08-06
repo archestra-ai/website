@@ -90,22 +90,20 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "--workspace",
-        "/app",
-        "--lsp",
-        "gopls"
-      ],
-      "command": "mcp-language-server",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
-    }
+    "command": "mcp-language-server",
+    "args": [
+      "--workspace",
+      "/app",
+      "--lsp",
+      "gopls"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

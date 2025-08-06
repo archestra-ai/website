@@ -109,25 +109,23 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/redis/mcp-redis.git",
+      "redis-mcp-server",
+      "--url",
+      "redis://localhost:6379/0"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--from",
-        "git+https://github.com/redis/mcp-redis.git",
-        "redis-mcp-server",
-        "--url",
-        "redis://localhost:6379/0"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

@@ -39,21 +39,19 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "meta-ads-mcp"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "meta",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "meta-ads-mcp"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

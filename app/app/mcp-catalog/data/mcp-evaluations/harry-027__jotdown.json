@@ -40,19 +40,17 @@
     }
   },
   "configForArchestra": {
+    "command": "target/release/Jotdown",
+    "args": [],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "Notion",
       "required": true
-    },
-    "server_config": {
-      "args": [],
-      "command": "target/release/Jotdown",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

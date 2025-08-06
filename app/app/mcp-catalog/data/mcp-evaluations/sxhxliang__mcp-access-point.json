@@ -41,18 +41,16 @@
     }
   },
   "configForArchestra": {
+    "command": "mcp-access-point",
+    "args": [
+      "-c",
+      "config.yaml"
+    ],
+    "env": {},
+    "transport": "http",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-c",
-        "config.yaml"
-      ],
-      "command": "mcp-access-point",
-      "transport": "http",
-      "env": {}
     }
   },
   "dependencies": [

@@ -65,23 +65,21 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/gwbischof/bluesky-social-mcp@v0.1",
+      "bluesky-social-mcp"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "bluesky",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--from",
-        "git+https://github.com/gwbischof/bluesky-social-mcp@v0.1",
-        "bluesky-social-mcp"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

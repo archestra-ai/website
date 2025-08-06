@@ -42,20 +42,18 @@
   },
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "--directory",
+      "/ABSOLUTE/PATH/TO/PARENT/REPO/FOLDER/src",
+      "run",
+      "jupyter_mcp_server.py"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "claude",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--directory",
-        "/ABSOLUTE/PATH/TO/PARENT/REPO/FOLDER/src",
-        "run",
-        "jupyter_mcp_server.py"
-      ],
-      "command": "uv",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

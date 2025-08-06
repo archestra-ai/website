@@ -48,19 +48,17 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "mcp-server-deep-research",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "mcp-server-deep-research",
-        "--transport",
-        "stdio"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

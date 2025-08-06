@@ -40,19 +40,17 @@
     }
   },
   "configForArchestra": {
+    "command": "python",
+    "args": [
+      "src/manim_server.py"
+    ],
+    "env": {
+      "server-configured": "MANIM_EXECUTABLE"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "github",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "src/manim_server.py"
-      ],
-      "command": "python",
-      "transport": "stdio",
-      "env": {
-        "server-configured": "MANIM_EXECUTABLE"
-      }
     }
   },
   "dependencies": [

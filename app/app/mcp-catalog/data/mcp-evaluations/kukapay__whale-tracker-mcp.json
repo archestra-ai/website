@@ -55,22 +55,20 @@
     }
   },
   "configForArchestra": {
+    "command": "mcp",
+    "args": [
+      "run",
+      "whale_tracker.py",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "WHALE_ALERT_API_KEY"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "null",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "whale_tracker.py",
-        "--transport",
-        "stdio"
-      ],
-      "command": "mcp",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "WHALE_ALERT_API_KEY"
-      }
     }
   },
   "dependencies": [

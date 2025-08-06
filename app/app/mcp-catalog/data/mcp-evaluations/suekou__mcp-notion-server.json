@@ -81,23 +81,21 @@
     }
   },
   "configForArchestra": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@suekou/mcp-notion-server",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "server-basic": "NOTION_API_TOKEN",
+      "server-configured": "NOTION_MARKDOWN_CONVERSION"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "notion",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-y",
-        "@suekou/mcp-notion-server",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "NOTION_API_TOKEN",
-        "server-configured": "NOTION_MARKDOWN_CONVERSION"
-      }
     }
   },
   "dependencies": [

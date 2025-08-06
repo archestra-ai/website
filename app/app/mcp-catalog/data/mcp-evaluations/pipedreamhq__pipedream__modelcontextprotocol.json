@@ -102,21 +102,19 @@
     }
   },
   "configForArchestra": {
+    "command": "bun",
+    "args": [
+      "src/stdio.ts"
+    ],
+    "env": {
+      "server-basic": "PIPEDREAM_CLIENT_ID",
+      "server-configured": "PIPEDREAM_CLIENT_SECRET",
+      "server-docker": "PIPEDREAM_PROJECT_ID"
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "pipedream",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "src/stdio.ts"
-      ],
-      "command": "bun",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "PIPEDREAM_CLIENT_ID",
-        "server-configured": "PIPEDREAM_CLIENT_SECRET",
-        "server-docker": "PIPEDREAM_PROJECT_ID"
-      }
     }
   },
   "dependencies": [

@@ -29,14 +29,13 @@
   "rawDependencies": "=== package.json ===\n{\n  \"name\": \"yueque-mcp-server\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Model Context Protocol server for Yuque API integration\",\n  \"main\": \"dist/index.js\",\n  \"bin\": {\n    \"yuque-mcp\": \"./dist/cli.js\"\n  },\n  \"files\": [\n    \"dist\",\n    \"README.md\"\n  ],\n  \"directories\": {\n    \"test\": \"test\"\n  },\n  \"scripts\": {\n    \"build\": \"tsc\",\n    \"type-check\": \"tsc --noEmit\",\n    \"start\": \"node dist/index.js\",\n    \"start:cli\": \"cross-env NODE_ENV=cli node dist/index.js\",\n    \"start:http\": \"node dist/index.js\",\n    \"dev\": \"cross-env NODE_ENV=development ts-node-dev --respawn src/index.ts\",\n    \"dev:cli\": \"cross-env NODE_ENV=development ts-node-dev --respawn src/index.ts --stdio\"\n  },\n  \"keywords\": [\n    \"yuque\",\n    \"api\",\n    \"mcp\",\n    \"server\"\n  ],\n  \"author\": \"\",\n  \"license\": \"ISC\",\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.6.1\",\n    \"@types/content-type\": \"^1.1.8\",\n    \"axios\": \"^1.8.1\",\n    \"content-type\": \"^1.0.5\",\n    \"cors\": \"^2.8.5\",\n    \"cross-env\": \"^7.0.3\",\n    \"dotenv\": \"^16.4.7\",\n    \"express\": \"^4.21.2\",\n    \"raw-body\": \"^3.0.0\",\n    \"zod\": \"^3.24.2\"\n  },\n  \"devDependencies\": {\n    \"@types/express\": \"^5.0.0\",\n    \"@types/node\": \"^22.13.9\",\n    \"nodemon\": \"^3.1.9\",\n    \"ts-node\": \"^10.9.2\",\n    \"ts-node-dev\": \"^2.0.0\",\n    \"typescript\": \"^5.8.2\"\n  }\n}\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
+    "command": "npm",
+    "args": [],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "npm",
       "required": true
-    },
-    "server_config": {
-      "args": [],
-      "command": "npm",
-      "transport": "stdio"
     }
   },
   "dependencies": [

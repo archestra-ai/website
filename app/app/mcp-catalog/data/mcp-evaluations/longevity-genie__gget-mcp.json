@@ -66,19 +66,17 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "--from",
+      "gget-mcp",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--from",
-        "gget-mcp",
-        "stdio"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {}
     }
   },
   "dependencies": [

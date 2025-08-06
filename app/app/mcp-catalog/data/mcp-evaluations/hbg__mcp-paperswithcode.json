@@ -29,18 +29,16 @@
   "rawDependencies": "=== pyproject.toml ===\n[project]\nname = \"mcp-paperswithcode\"\nversion = \"0.1.0\"\ndescription = \"Add your description here\"\nreadme = \"README.md\"\nrequires-python = \">=3.10\"\ndependencies = [\n    \"mcp[cli]>=1.4.1\",\n    \"pypdf2>=3.0.1\",\n    \"requests>=2.32.3\",\n]\n",
   "evaluation_model": "gemini-2.5-flash",
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "-y",
-        "@hbg/mcp-paperswithcode",
-        "--transport",
-        "stdio"
-      ],
-      "command": "npx",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@hbg/mcp-paperswithcode",
+      "--transport",
+      "stdio"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

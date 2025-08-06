@@ -39,22 +39,20 @@
     }
   },
   "configForArchestra": {
+    "command": "all-in-one-model-context-protocol",
+    "args": [
+      "-env",
+      "/path/to/.env"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "google",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "-env",
-        "/path/to/.env"
-      ],
-      "command": "all-in-one-model-context-protocol",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

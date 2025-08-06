@@ -42,19 +42,18 @@
     }
   },
   "configForArchestra": {
+    "command": "uv",
+    "args": [
+      "--directory",
+      "/Enter your local project directory/books-mcp-server",
+      "run",
+      "main.py"
+    ],
+    "env": {},
+    "transport": "stdio",
     "oauth": {
       "provider": "openai",
       "required": false
-    },
-    "server_config": {
-      "args": [
-        "--directory",
-        "/Enter your local project directory/books-mcp-server",
-        "run",
-        "main.py"
-      ],
-      "command": "uv",
-      "transport": "stdio"
     }
   },
   "dependencies": [

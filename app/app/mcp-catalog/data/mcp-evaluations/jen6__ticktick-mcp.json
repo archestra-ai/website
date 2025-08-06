@@ -41,23 +41,21 @@
     }
   },
   "configForArchestra": {
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/jen6/ticktick-mcp.git",
+      "ticktick-mcp"
+    ],
+    "env": {
+      "server-basic": "",
+      "server-configured": "",
+      "server-docker": ""
+    },
+    "transport": "stdio",
     "oauth": {
       "provider": "TickTick",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "--from",
-        "git+https://github.com/jen6/ticktick-mcp.git",
-        "ticktick-mcp"
-      ],
-      "command": "uvx",
-      "transport": "stdio",
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
     }
   },
   "dependencies": [

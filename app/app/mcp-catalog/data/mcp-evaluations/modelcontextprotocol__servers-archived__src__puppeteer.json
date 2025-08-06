@@ -66,27 +66,25 @@
     }
   },
   "configForArchestra": {
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "--init",
+      "-e",
+      "DOCKER_CONTAINER=true",
+      "mcp/puppeteer"
+    ],
+    "env": {
+      "server-basic": "string",
+      "server-configured": "string",
+      "server-docker": "string"
+    },
+    "transport": "string",
     "oauth": {
       "provider": "string",
       "required": true
-    },
-    "server_config": {
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "--init",
-        "-e",
-        "DOCKER_CONTAINER=true",
-        "mcp/puppeteer"
-      ],
-      "command": "docker",
-      "transport": "string",
-      "env": {
-        "server-basic": "string",
-        "server-configured": "string",
-        "server-docker": "string"
-      }
     }
   },
   "dependencies": [

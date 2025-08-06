@@ -38,15 +38,13 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "/path/to/lldb-mcp/lldb_mcp.py"
-      ],
-      "command": "python3",
-      "transport": "stdio",
-      "env": {}
-    }
+    "command": "python3",
+    "args": [
+      "/path/to/lldb-mcp/lldb_mcp.py"
+    ],
+    "env": {},
+    "transport": "stdio",
+    "oauth": {}
   },
   "dependencies": [
     {

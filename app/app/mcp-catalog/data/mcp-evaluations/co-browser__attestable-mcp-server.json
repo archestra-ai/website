@@ -58,20 +58,18 @@
     }
   },
   "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "./docker/gsc/gsc",
-        "run",
-        "-c",
-        "docker/attestable-mcp-server.config.yaml",
-        "attestable-mcp-server"
-      ],
-      "command": "uv",
-      "transport": "http",
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "run",
+      "./docker/gsc/gsc",
+      "run",
+      "-c",
+      "docker/attestable-mcp-server.config.yaml",
+      "attestable-mcp-server"
+    ],
+    "env": {},
+    "transport": "http",
+    "oauth": {}
   },
   "dependencies": [
     {
