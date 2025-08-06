@@ -9,18 +9,21 @@ This is the Archestra.ai website - a Next.js application that hosts the MCP (Mod
 ## Key Commands
 
 ### Development
+
 - `pnpm dev` - Start development server
 - `pnpm build` - Build for production
 - `pnpm start` - Start production server
 - `pnpm typecheck` - Run TypeScript type checking
 
 ### Catalog Operations
+
 - `pnpm catalog:evaluate` - Run evaluation script for MCP catalog servers
 - `pnpm catalog:validate` - Validate catalog data structure
 
 ## Architecture Overview
 
 ### Tech Stack
+
 - **Framework**: Next.js 15 with App Router
 - **Package Manager**: pnpm (v10.14.0)
 - **Styling**: Tailwind CSS with tailwindcss-animate
@@ -29,6 +32,7 @@ This is the Archestra.ai website - a Next.js application that hosts the MCP (Mod
 - **Markdown Processing**: react-markdown with rehype/remark plugins
 
 ### Directory Structure
+
 ```
 /app
 ├── src/
@@ -53,9 +57,14 @@ This is the Archestra.ai website - a Next.js application that hosts the MCP (Mod
 ### Important Configuration
 
 The project has ESLint and TypeScript build errors disabled in `next.config.mjs`:
+
 ```javascript
-eslint: { ignoreDuringBuilds: true }
-typescript: { ignoreBuildErrors: true }
+eslint: {
+  ignoreDuringBuilds: true;
+}
+typescript: {
+  ignoreBuildErrors: true;
+}
 ```
 
 This means you should manually run `pnpm typecheck` to check for TypeScript errors.
@@ -63,6 +72,7 @@ This means you should manually run `pnpm typecheck` to check for TypeScript erro
 ### MCP Catalog System
 
 The MCP catalog is a core feature that:
+
 1. Stores server metadata in `/app/src/data/mcp-servers.json`
 2. Individual server evaluations in `/app/src/data/mcp-evaluations/*.json`
 3. Provides quality scoring via `utils/qualityCalculator.ts`
@@ -79,6 +89,7 @@ The MCP catalog is a core feature that:
 ### API Routes
 
 The application includes several API routes:
+
 - Badge generation
 - Search functionality
 - Server details
@@ -93,6 +104,7 @@ The application includes several API routes:
 ## Working with the Codebase
 
 When making changes:
+
 1. Follow the existing component structure and patterns
 2. Use absolute imports with the configured path aliases (@components, @utils, etc.)
 3. Maintain the existing code style (enforced by prettier with import sorting)

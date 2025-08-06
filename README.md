@@ -1,7 +1,5 @@
 # Archestra.ai Website
 
-[![Linting and Tests](https://github.com/archestra-ai/website/actions/workflows/linting-and-tests.yml/badge.svg)](https://github.com/archestra-ai/website/actions/workflows/linting-and-tests.yml)
-
 The official website for [Archestra.ai](https://archestra.ai) - the enterprise MCP platform for AI agents. This repository hosts our main website and the comprehensive MCP (Model Context Protocol) catalog.
 
 ## 🌟 Features
