@@ -18,8 +18,18 @@
         "name": "next"
       }
     ],
+    /*
+     Aliasing
+    */
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@pages/*": ["src/pages/*"],
+      "@providers": ["src/providers"],
+      "@schemas": ["src/schemas"],
+      "@archestra/types": ["src/types"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
