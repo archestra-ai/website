@@ -5,6 +5,12 @@ const COMPANY_NAME = 'Archestra';
 const WEBSITE_BASE_URL = 'https://archestra.ai';
 const MCP_CATALOG_URL = `${WEBSITE_BASE_URL}/mcp-catalog`;
 
+const LOGO_RELATIVE_URL = '/logo.png';
+const LOGO_ABSOLUTE_URL = `${WEBSITE_BASE_URL}${LOGO_RELATIVE_URL}`;
+
+const TEAM_PHOTO_RELATIVE_URL = '/team-photo.jpg';
+const TEAM_PHOTO_ABSOLUTE_URL = `${WEBSITE_BASE_URL}${TEAM_PHOTO_RELATIVE_URL}`;
+
 const MATVEY = {
   '@type': 'Person',
   name: 'Matvey Kukuy',
@@ -100,9 +106,10 @@ export default {
     urls: {
       base: WEBSITE_BASE_URL,
       mcpCatalog: MCP_CATALOG_URL,
-      logo: '/logo.png',
-      ogImage: '/og-image.png',
-      teamPhoto: '/team-photo.jpg',
+      logoRelativeUrl: LOGO_RELATIVE_URL,
+      logoAbsoluteUrl: LOGO_ABSOLUTE_URL,
+      teamPhotoRelativeUrl: TEAM_PHOTO_RELATIVE_URL,
+      teamPhotoAbsoluteUrl: TEAM_PHOTO_ABSOLUTE_URL,
       about: `${WEBSITE_BASE_URL}/about`,
       stateOfMcp: `${WEBSITE_BASE_URL}/state-of-mcp`,
     },
@@ -139,4 +146,9 @@ export default {
   twitter: {
     handle: '@archestra_ai',
   },
+  posthog: {
+    host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+    token: process.env.NEXT_PUBLIC_POSTHOG_KEY,
+  },
+  debug: process.env.NODE_ENV === 'development',
 };

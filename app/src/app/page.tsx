@@ -1,5 +1,4 @@
 import { AlertTriangle, CheckCircle, Cpu, GitCommit, Github, MessageSquare, Monitor, Star, Users } from 'lucide-react';
-import { Metadata } from 'next';
 
 import { EmailForm } from '@components/EmailForm';
 import Footer from '@components/Footer';
@@ -10,13 +9,12 @@ const {
   company: {
     name: companyName,
     alternateName: companyAlternateName,
-    tagline: companyTagline,
     description: companyDescription,
     foundingDate: companyFoundingDate,
     address: companyAddress,
     people: companyPeople,
   },
-  website: { urls: websiteUrls, keywords: websiteKeywords },
+  website: { urls: websiteUrls },
   github: {
     archestra: {
       orgName: githubOrgName,
@@ -25,26 +23,6 @@ const {
   },
   slack: { joinCommunityUrl: slackJoinCommunityUrl },
 } = constants;
-
-export const metadata: Metadata = {
-  title: companyTagline,
-  description: companyDescription,
-  keywords: websiteKeywords,
-  openGraph: {
-    title: companyTagline,
-    description: companyDescription,
-    url: websiteUrls.base,
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: companyTagline,
-    description: companyDescription,
-  },
-  alternates: {
-    canonical: websiteUrls.base,
-  },
-};
 
 async function getGitHubStats() {
   const githubApiUrl = `https://api.github.com/repos/${githubOrgName}/${githubArchestraRepoName}`;
@@ -99,7 +77,7 @@ export default async function Home() {
     name: companyName,
     alternateName: companyAlternateName,
     url: websiteUrls.base,
-    logo: websiteUrls.logo,
+    logo: websiteUrls.logoAbsoluteUrl,
     description: companyDescription,
     sameAs: [githubArchestraRepoUrl, slackJoinCommunityUrl],
     foundingDate: companyFoundingDate,

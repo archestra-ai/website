@@ -3,7 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { loadServers } from '@utils/catalog';
 import { calculateQualityScore } from '@utils/qualityCalculator';
 
-export async function GET(request: NextRequest, { params }: { params: { name: string } }) {
+export async function GET(request: NextRequest, props: { params: Promise<{ name: string }> }) {
+  const params = await props.params;
   try {
     const { name } = params;
 

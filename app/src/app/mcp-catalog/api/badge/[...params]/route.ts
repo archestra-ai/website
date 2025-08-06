@@ -2,7 +2,8 @@ import { NextRequest } from 'next/server';
 
 import { loadServers } from '@utils/catalog';
 
-export async function GET(request: NextRequest, { params }: { params: { params: string[] } }) {
+export async function GET(request: NextRequest, props: { params: Promise<{ params: string[] }> }) {
+  const params = await props.params;
   // Expected formats:
   // /api/badge/quality/github-org/repo-name
   // /api/badge/quality/github-org/repo-name/path--to--server
