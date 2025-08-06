@@ -20,8 +20,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  app-linting-and-tests:
-    name: App Linting and Tests
+  app-linting-formatting-and-tests:
+    name: App Linting, Formatting, and Tests
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -37,6 +37,9 @@ jobs:
 
       - name: Check prettier formatting
         run: pnpm prettier --check .
+
+      - name: Run tests
+        run: pnpm test
 
       - name: Build
         run: pnpm build

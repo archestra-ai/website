@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@components/ui/card';
+import { generateMcpCatalogDetailPageUrlFromServerName } from '@constants';
 
 interface ShareButtonsProps {
   serverName: string;
@@ -12,7 +13,7 @@ interface ShareButtonsProps {
 
 export default function ShareButtons({ serverName, serverDescription, serverSlug }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
-  const shareUrl = `https://archestra.ai/mcp-catalog/${serverSlug}`;
+  const shareUrl = generateMcpCatalogDetailPageUrlFromServerName(serverSlug);
   const shareText = `Check out ${serverName} - ${serverDescription}`;
 
   const handleCopyLink = () => {

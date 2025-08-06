@@ -4,7 +4,7 @@ import { Check, Copy } from 'lucide-react';
 import { useState } from 'react';
 
 import { Button } from '@components/ui/button';
-import constants, { generateMcpCatalogDetailPageUrlFromGitHubDetails } from '@constants';
+import { generateBadgeMarkdown, generateBadgeRelativeUrl } from '@utils/trustScoreBadge';
 
 interface TrustScoreBadgeProps {
   githubOwner?: string;
@@ -12,27 +12,6 @@ interface TrustScoreBadgeProps {
   githubPath?: string | null;
   serverName?: string;
 }
-
-const BADGE_URL_BASE_PATH = '/mcp-catalog/api/badge/quality';
-
-const _determineGitHubUrlPathSuffix = (githubOwner: string, githubRepo: string, githubPath?: string | null) =>
-  githubPath ? `${githubOwner}/${githubRepo}/${githubPath.replace(/\//g, '--')}` : `${githubOwner}/${githubRepo}`;
-
-const generateBadgeRelativeUrl = (githubOwner: string, githubRepo: string, githubPath?: string | null) =>
-  `${BADGE_URL_BASE_PATH}/${_determineGitHubUrlPathSuffix(githubOwner, githubRepo, githubPath)}`;
-
-const generateBadgeMarkdown = (
-  githubOwner: string,
-  githubRepo: string,
-  githubPath?: string | null,
-  serverName?: string
-) => {
-  const badgeUrl = `${constants.website.urls.mcpCatalog}${generateBadgeRelativeUrl(githubOwner, githubRepo, githubPath)}`;
-  const linkUrl = serverName
-    ? `${constants.website.urls.mcpCatalog}/${serverName}`
-    : generateMcpCatalogDetailPageUrlFromGitHubDetails(githubOwner, githubRepo);
-  return `[![Trust Score](${badgeUrl})](${linkUrl})`;
-};
 
 const DEFAULT_BADGE_MARKDOWN = generateBadgeMarkdown('YOUR-GITHUB-ORG', 'YOUR-REPO-NAME');
 
@@ -60,9 +39,9 @@ export default function TrustScoreBadge({ githubOwner, githubRepo, githubPath, s
     <div className="space-y-3">
       {badgeRelativeUrl && <img src={badgeRelativeUrl} alt="Trust Score Badge" className="mb-4" />}
       <div className="relative">
-        <div className={badgeRelativeUrl ? 'bg-white rounded p-3 pr-12 border' : 'bg-gray-50 rounded-md p-3 pr-12'}>
-          <code className={badgeRelativeUrl ? 'text-xs' : 'font-mono text-sm text-gray-800'}>{badgeMarkdown}</code>
-        </div>
+        <pre className="bg-white p-3 rounded text-xs overflow-x-auto border pr-12">
+          <code>{badgeMarkdown}</code>
+        </pre>
         <Button
           variant="outline"
           size="sm"

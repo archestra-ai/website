@@ -52,9 +52,10 @@ export default function Header() {
             >
               Desktop App <span className="text-xs text-red-500">(Coming soon)</span>
             </a>
-            <a href="/blog" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
+            {/* TODO: Add blog back in once we have posts */}
+            {/* <a href="/blog" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
               Blog
-            </a>
+            </a> */}
             <a href="/mcp-catalog" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
               MCP Catalog
             </a>

@@ -18,6 +18,10 @@
         "name": "next"
       }
     ],
+
+    // Allows us to use vitest imports in tests without having to explicitly import them
+    "types": ["vitest/globals"],
+
     /*
      Aliasing
     */
