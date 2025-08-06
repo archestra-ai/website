@@ -145,10 +145,6 @@ A: The catalog is designed for open-source servers. For enterprise solutions, co
 **Q: How do I improve my trust score?**
 A: Focus on implementing MCP features, maintaining good documentation, having CI/CD, and managing dependencies properly.
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## 🔗 Links
 
 - [Archestra.ai](https://archestra.ai)
