@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-import { ArchestraMcpServerManifest } from '@archestra/types';
+import { ArchestraMcpServerManifest, McpServerCategory } from '@archestra/types';
 
 import { MCP_SERVERS_JSON_FILE_PATH } from './paths';
 
@@ -8,7 +8,7 @@ interface ParsedServer {
   name: string;
   githubUrl: string;
   description: string;
-  category: string;
+  category: McpServerCategory;
   languages: string[];
   deploymentScope: string[];
   operatingSystems: string[];
@@ -32,19 +32,19 @@ const EMOJI_MAP = {
     '🧪': 'Elixir',
     '🔺': 'Dart',
     '🟠': 'Swift',
-  },
+  } as Record<string, string>,
   deployment: {
     '☁️': 'cloud',
     '🏠': 'local',
-  },
+  } as Record<string, string>,
   os: {
     '🍎': 'macOS',
     '🪟': 'Windows',
     '🐧': 'Linux',
-  },
+  } as Record<string, string>,
 };
 
-const CATEGORY_MAP: { [key: string]: string } = {
+const CATEGORY_MAP: { [key: string]: McpServerCategory } = {
   Aggregators: 'Aggregators',
   'Art & Culture': 'Art & Culture',
   'Biology, Medicine and Bioinformatics': 'Healthcare',
@@ -79,8 +79,8 @@ const CATEGORY_MAP: { [key: string]: string } = {
   'Text-to-Speech': 'Audio',
   'Travel & Transportation': 'Travel',
   'Version Control': 'Development',
-  'Workplace & Productivity': 'Productivity',
-  'Other Tools and Integrations': 'Utilities',
+  'Workplace & Productivity': 'Enterprise',
+  'Other Tools and Integrations': 'Development',
 };
 
 async function fetchReadme(): Promise<string> {
@@ -95,7 +95,7 @@ function parseServers(markdown: string): ParsedServer[] {
   const servers: ParsedServer[] = [];
   const lines = markdown.split('\n');
 
-  let currentCategory = 'General';
+  let currentCategory: McpServerCategory = 'General';
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
@@ -160,13 +160,7 @@ function parseServers(markdown: string): ParsedServer[] {
   return servers;
 }
 
-function convertToMCPServer(parsed: ParsedServer, index: number): ArchestraMcpServerManifest {
-  // Generate a slug from the name
-  const slug = parsed.name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
-
+function convertToMCPServer(parsed: ParsedServer): ArchestraMcpServerManifest {
   // Determine status based on various factors
   let status: 'stable' | 'beta' | 'experimental' = 'experimental';
   if (parsed.description.toLowerCase().includes('stable') || parsed.description.toLowerCase().includes('production')) {
@@ -188,17 +182,20 @@ function convertToMCPServer(parsed: ParsedServer, index: number): ArchestraMcpSe
   if (descLower.includes('cloud')) features.push('Cloud Integration');
   if (descLower.includes('realtime') || descLower.includes('real-time')) features.push('Real-time Updates');
 
-  return {
-    name: parsed.name,
-    slug,
-    description: parsed.description,
-    category: parsed.category,
-    features: features.length > 0 ? features : ['General Purpose'],
-    status,
-    qualityScore: null,
-    githubUrl: parsed.githubUrl,
-    documentation: `${parsed.githubUrl}#readme`,
-  };
+  /**
+   * TODO: the next time this script is run it should be updated such that it returns the correct schema😅
+   */
+  // return {
+  //   name: parsed.name,
+  //   description: parsed.description,
+  //   category: parsed.category,
+  //   features: features.length > 0 ? features : ['General Purpose'],
+  //   status,
+  //   qualityScore: null,
+  //   githubUrl: parsed.githubUrl,
+  //   documentation: `${parsed.githubUrl}#readme`,
+  // };
+  return {} as ArchestraMcpServerManifest;
 }
 
 async function main() {

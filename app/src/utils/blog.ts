@@ -5,15 +5,15 @@ import readingTime from 'reading-time';
 
 import { BlogPost } from '@archestra/types';
 
-const postsDirectory = path.join(process.cwd(), 'content/blog');
+const POSTS_DIRECTORY = path.join(process.cwd(), '../data/blog-content');
 
 export function getAllPosts(): BlogPost[] {
-  const fileNames = fs.readdirSync(postsDirectory);
+  const fileNames = fs.readdirSync(POSTS_DIRECTORY);
   const allPostsData = fileNames
     .filter((fileName) => fileName.endsWith('.md'))
     .map((fileName) => {
       const slug = fileName.replace(/\.md$/, '');
-      const fullPath = path.join(postsDirectory, fileName);
+      const fullPath = path.join(POSTS_DIRECTORY, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const { data, content } = matter(fileContents);
       const stats = readingTime(content);
@@ -42,7 +42,7 @@ export function getAllPosts(): BlogPost[] {
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fullPath = path.join(POSTS_DIRECTORY, `${slug}.md`);
 
   if (!fs.existsSync(fullPath)) {
     return undefined;

@@ -37,6 +37,7 @@ export const McpServerCategorySchema = z.enum([
   'Enterprise',
   'Job Search',
   'Local files',
+  'General',
 ]);
 
 export const MCPDependencySchema = z.object({

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { loadServers } from '../../lib/server-utils';
+import { loadServers } from '@utils/catalog';
 
 export async function GET(request: NextRequest) {
   try {

@@ -3,6 +3,11 @@ import path from 'path';
 
 import { ArchestraMcpServerManifest } from '@archestra/types';
 
+// Path constants
+const DATA_DIR = path.join(process.cwd(), '../data');
+const MCP_SERVERS_EVALUATIONS_DIR = path.join(DATA_DIR, 'mcp-evaluations');
+const MCP_SERVERS_JSON_FILE_PATH = path.join(DATA_DIR, 'mcp-servers.json');
+
 // Cache for loaded servers
 const serversCache = new Map<string, ArchestraMcpServerManifest[]>();
 const CACHE_KEY_ALL = '__ALL_SERVERS__';
@@ -84,7 +89,7 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
 
   // If a specific name is requested, try to load just that evaluation file
   if (name) {
-    const evaluationPath = path.join(process.cwd(), 'app', 'mcp-catalog', 'data', 'mcp-evaluations', `${name}.json`);
+    const evaluationPath = path.join(MCP_SERVERS_EVALUATIONS_DIR, `${name}.json`);
 
     if (fs.existsSync(evaluationPath)) {
       try {
@@ -97,16 +102,14 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
     }
   } else {
     // Load all evaluations if no specific name is requested
-    const evaluationsDir = path.join(process.cwd(), 'app', 'mcp-catalog', 'data', 'mcp-evaluations');
-
-    if (fs.existsSync(evaluationsDir)) {
+    if (fs.existsSync(MCP_SERVERS_EVALUATIONS_DIR)) {
       try {
-        const files = fs.readdirSync(evaluationsDir);
+        const files = fs.readdirSync(MCP_SERVERS_EVALUATIONS_DIR);
 
         for (const file of files) {
           if (file.endsWith('.json')) {
             try {
-              const filePath = path.join(evaluationsDir, file);
+              const filePath = path.join(MCP_SERVERS_EVALUATIONS_DIR, file);
               const content = fs.readFileSync(filePath, 'utf-8');
               const evaluation = JSON.parse(content) as ArchestraMcpServerManifest;
               // Map by name instead of trying to reconstruct URL
@@ -123,10 +126,8 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
   }
 
   // Then, load servers from mcp-servers.json
-  const mcpServersPath = path.join(process.cwd(), 'app', 'mcp-catalog', 'data', 'mcp-servers.json');
-
   try {
-    const mcpServersContent = fs.readFileSync(mcpServersPath, 'utf-8');
+    const mcpServersContent = fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf-8');
     const mcpServerUrls = JSON.parse(mcpServersContent) as string[];
 
     for (const url of mcpServerUrls) {

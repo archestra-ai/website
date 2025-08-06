@@ -483,15 +483,12 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                           ),
                           p: ({ node, ...props }) => <p className="text-gray-700 leading-relaxed mb-4" {...props} />,
                           a: ({ node, ...props }) => <a className="text-blue-600 hover:underline" {...props} />,
-                          code: ({ node, inline, ...props }) =>
-                            inline ? (
-                              <code
-                                className="bg-gray-100 text-red-600 px-1.5 py-0.5 rounded text-sm font-mono"
-                                {...props}
-                              />
-                            ) : (
-                              <code {...props} />
-                            ),
+                          code: ({ node, ...props }) => (
+                            <code
+                              className="bg-gray-100 text-red-600 px-1.5 py-0.5 rounded text-sm font-mono"
+                              {...props}
+                            />
+                          ),
                           pre: ({ node, ...props }) => (
                             <pre className="bg-gray-50 border rounded-lg p-4 overflow-x-auto text-sm mb-4" {...props} />
                           ),
