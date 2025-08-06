@@ -1,5 +1,3 @@
-# archestra
+# Archestra.ai Website
 
----
-
-Built with ❤️ by the Archestra team and contributors
+The official website for [Archestra.ai](https://archestra.ai) - the enterprise MCP platform for AI agents.
