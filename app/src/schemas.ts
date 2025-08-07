@@ -116,8 +116,8 @@ export const ArchestraMcpServerManifestSchema = DxtManifestSchema.extend({
   protocol_features: ArchestraMcpServerProtocolFeaturesSchema,
   dependencies: z.array(MCPDependencySchema),
   raw_dependencies: z.string().nullable(),
-});
+}).openapi('ArchestraMcpServerManifest');
 
 export const ArchestraMcpServerManifestWithScoreBreakdownSchema = ArchestraMcpServerManifestSchema.extend({
   score_breakdown: ArchestraScoreBreakdownSchema,
-});
+}).openapi('ArchestraMcpServerManifestWithScoreBreakdown');
