@@ -86,7 +86,7 @@ export const generateMcpCatalogDetailPageUrlFromGitHubDetails = (githubOrg: stri
   generateMcpCatalogDetailPageUrlFromServerName(`${githubOrg}__${githubRepo}`);
 
 export const generateUrlToEditIndividualMcpCatalogJsonFile = (serverName: string) =>
-  `${BASE_WEBSITE_GITHUB_URL}/edit/${MAIN_BRANCH_NAME}/${_MCP_CATALOG_DIRECTORY_PATH}/${MCP_EVALUATIONS_DIRECTORY_PATH}/${serverName}.json`;
+  `${BASE_WEBSITE_GITHUB_URL}/edit/${MAIN_BRANCH_NAME}/${MCP_EVALUATIONS_DIRECTORY_PATH}/${serverName}.json`;
 
 export default {
   company: {
