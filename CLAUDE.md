@@ -15,10 +15,22 @@ This is the Archestra.ai website - a Next.js application that hosts the MCP (Mod
 - `pnpm start` - Start production server
 - `pnpm typecheck` - Run TypeScript type checking
 
+### Testing
+
+- `pnpm test` - Run all tests
+- `pnpm test --watch` - Run tests in watch mode
+- `pnpm test src/app/mcp-catalog/api/search/route.test.ts` - Run specific test file
+- `pnpm test -t "should filter servers"` - Run tests matching description
+- `pnpm test --coverage` - Run tests with coverage report
+
 ### Catalog Operations
 
 - `pnpm catalog:evaluate` - Run evaluation script for MCP catalog servers
 - `pnpm catalog:validate` - Validate catalog data structure
+
+### API Documentation
+
+- `pnpm openapi:generate` - Generate OpenAPI specification and format with prettier
 
 ## Architecture Overview
 
@@ -26,9 +38,12 @@ This is the Archestra.ai website - a Next.js application that hosts the MCP (Mod
 
 - **Framework**: Next.js 15 with App Router
 - **Package Manager**: pnpm (v10.14.0)
+- **Testing**: Vitest with React Testing Library
 - **Styling**: Tailwind CSS with tailwindcss-animate
 - **UI Components**: Custom components using Radix UI primitives
 - **Analytics**: PostHog integration
+- **API Documentation**: Swagger UI with OpenAPI 3.0
+- **Validation**: Zod schemas with zod-to-openapi
 - **Markdown Processing**: react-markdown with rehype/remark plugins
 
 ### Directory Structure
@@ -40,6 +55,8 @@ This is the Archestra.ai website - a Next.js application that hosts the MCP (Mod
 │   │   ├── about/
 │   │   ├── blog/
 │   │   ├── mcp-catalog/
+│   │   │   ├── api/   # API routes with OpenAPI generation
+│   │   │   └── api-docs/ # Swagger UI documentation
 │   │   └── state-of-mcp/
 │   ├── components/    # React components
 │   │   ├── McpServer/ # MCP catalog specific components
@@ -51,6 +68,10 @@ This is the Archestra.ai website - a Next.js application that hosts the MCP (Mod
 │   ├── utils/         # Utility functions
 │   └── constants.ts   # Global constants
 ├── scripts/           # Build and catalog scripts
+│   ├── evaluate-catalog.ts
+│   ├── validate-catalog.ts
+│   ├── generate-openapi-schema.ts
+│   └── parse-awesome-mcp.ts
 └── public/           # Static assets
 ```
 
@@ -69,6 +90,8 @@ typescript: {
 
 This means you should manually run `pnpm typecheck` to check for TypeScript errors.
 
+CORS headers are centrally configured in `next.config.mjs` for all `/mcp-catalog/api/*` routes.
+
 ### MCP Catalog System
 
 The MCP catalog is a core feature that:
@@ -79,6 +102,24 @@ The MCP catalog is a core feature that:
 4. Generates badges at `/mcp-catalog/api/badge/quality/[org]/[repo]`
 5. Server detail pages at `/mcp-catalog/[name]`
 
+### API Routes and OpenAPI Workflow
+
+The MCP Catalog API provides:
+- `/mcp-catalog/api/search` - Search servers with filtering and pagination
+- `/mcp-catalog/api/server/[name]` - Get individual server details
+- `/mcp-catalog/api/category` - List available categories
+- `/mcp-catalog/api/badge/quality/[org]/[repo]` - SVG quality badges
+- `/mcp-catalog/api/docs` - OpenAPI specification endpoint
+- `/mcp-catalog/api-docs` - Swagger UI documentation
+
+**OpenAPI Generation Workflow:**
+1. API schemas defined with Zod in `/app/src/app/mcp-catalog/api/schemas.ts`
+2. Endpoints registered in `/app/src/app/mcp-catalog/api/openapi.ts`
+3. Run `pnpm openapi:generate` to generate `/app/src/app/mcp-catalog/api/docs/openapi.json`
+4. CI validates that OpenAPI spec is up-to-date
+
+All API routes use Zod validation for request parameters and response data.
+
 ### Key Utilities
 
 - **GitHub Integration**: `utils/github.ts` - GitHub API interactions
@@ -86,14 +127,17 @@ The MCP catalog is a core feature that:
 - **Catalog Utils**: `utils/catalog.ts` - Catalog data handling
 - **Blog Utils**: `utils/blog.ts` - Blog post processing
 
-### API Routes
+### CI/CD Pipeline
 
-The application includes several API routes:
-
-- Badge generation
-- Search functionality
-- Server details
-- Documentation endpoints
+GitHub Actions workflows enforce:
+- PR title linting (conventional commits)
+- Prettier formatting
+- TypeScript type checking
+- Unit test execution
+- Production build validation
+- Catalog data validation
+- OpenAPI schema consistency
+- Security analysis with Zizmor
 
 ### Deployment Considerations
 
@@ -110,5 +154,7 @@ When making changes:
 3. Maintain the existing code style (enforced by prettier with import sorting)
 4. Test changes with `pnpm dev` before committing
 5. Run `pnpm typecheck` to catch type errors
+6. Update OpenAPI spec with `pnpm openapi:generate` when modifying API endpoints
+7. Write tests for new functionality, mock external dependencies
 
 The project uses lint-staged with prettier for automatic formatting on commit.
