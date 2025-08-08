@@ -25,5 +25,5 @@ export const generateBadgeMarkdown = (
   const linkUrl = serverName
     ? `${websiteMcpCatalogUrl}/${serverName}`
     : generateMcpCatalogDetailPageUrlFromGitHubDetails(githubOwner, githubRepo);
-  return `[![Trust Score](${badgeUrl})](${linkUrl})`;
+  return `[Trust Score](${badgeUrl})](${linkUrl})`;
 };
