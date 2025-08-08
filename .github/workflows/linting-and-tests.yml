@@ -65,6 +65,32 @@ jobs:
       - name: Validate catalog data
         run: pnpm catalog:validate
 
+  verify-no-pending-openapi-schema-changes:
+    name: Verify no pending openapi schema changes
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./app
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: true
+
+      - name: Setup environment
+        uses: ./.github/actions/setup-env
+
+      - name: Codegen
+        run: pnpm openapi:generate
+
+      - name: Check for changes
+        run: |
+          # Check both unstaged and staged changes
+          if ! git diff --exit-code || ! git diff --cached --exit-code; then
+            echo "OpenAPI schema has changes that are not committed"
+            exit 1
+          fi
+
   zizmor:
     name: Zizmor GitHub Actions static analysis
     runs-on: ubuntu-latest
