@@ -567,6 +567,7 @@
   "paths": {
     "/search": {
       "get": {
+        "operationId": "searchMcpServerCatalog",
         "summary": "Search MCP servers",
         "description": "Search for MCP servers with filtering and sorting options",
         "tags": ["Search"],
@@ -715,6 +716,7 @@
     },
     "/server/{name}": {
       "get": {
+        "operationId": "getMcpServer",
         "summary": "Get MCP server by name",
         "description": "Retrieve detailed information about a specific MCP server by its name identifier",
         "tags": ["Server"],
@@ -762,6 +764,7 @@
     },
     "/badge/quality/{org}/{repo}": {
       "get": {
+        "operationId": "getMcpServerQualityBadge",
         "summary": "Get quality badge",
         "description": "Get an SVG quality badge for an MCP server",
         "tags": ["Badges"],
@@ -820,6 +823,7 @@
     },
     "/category": {
       "get": {
+        "operationId": "getMcpServerCategories",
         "summary": "Get available categories",
         "description": "Get a list of all available MCP server categories",
         "tags": ["Categories"],

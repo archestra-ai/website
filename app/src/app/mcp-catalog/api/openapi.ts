@@ -8,6 +8,7 @@ import { ErrorResponseSchema, SearchQuerySchema, SearchResponseSchema } from './
 const registry = new OpenAPIRegistry();
 
 registry.registerPath({
+  operationId: 'searchMcpServerCatalog',
   method: 'get',
   path: '/search',
   summary: 'Search MCP servers',
@@ -29,6 +30,7 @@ registry.registerPath({
 });
 
 registry.registerPath({
+  operationId: 'getMcpServer',
   method: 'get',
   path: '/server/{name}',
   summary: 'Get MCP server by name',
@@ -60,6 +62,7 @@ registry.registerPath({
 });
 
 registry.registerPath({
+  operationId: 'getMcpServerQualityBadge',
   method: 'get',
   path: '/badge/quality/{org}/{repo}',
   summary: 'Get quality badge',
@@ -92,6 +95,7 @@ registry.registerPath({
 });
 
 registry.registerPath({
+  operationId: 'getMcpServerCategories',
   method: 'get',
   path: '/category',
   summary: 'Get available categories',
