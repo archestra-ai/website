@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit",
     "catalog:evaluate": "npx tsx scripts/evaluate-catalog.ts",
     "catalog:validate": "npx tsx scripts/validate-catalog.ts",
-    "openapi:generate": "npx tsx scripts/generate-openapi-schema.ts"
+    "openapi:generate": "npx tsx scripts/generate-openapi-schema.ts && pnpm prettier --write src/app/mcp-catalog/api/docs/openapi.json"
   },
   "packageManager": "pnpm@10.14.0",
   "dependencies": {
