@@ -22,37 +22,47 @@ export interface BlogPost {
 }
 
 export function getAllPosts(): BlogPost[] {
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames
-    .filter((fileName) => fileName.endsWith('.md'))
-    .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, '');
-      const fullPath = path.join(postsDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data, content } = matter(fileContents);
-      const stats = readingTime(content);
+  // Check if the posts directory exists
+  if (!fs.existsSync(postsDirectory)) {
+    return [];
+  }
 
-      return {
-        slug,
-        title: data.title || slug,
-        date: data.date || new Date().toISOString(),
-        author: data.author || 'Archestra Team',
-        excerpt: data.excerpt || content.slice(0, 200) + '...',
-        content,
-        readingTime: stats.text,
-        image: data.image,
-        github: data.github,
-        cta: data.cta,
-      } as BlogPost;
+  try {
+    const fileNames = fs.readdirSync(postsDirectory);
+    const allPostsData = fileNames
+      .filter((fileName) => fileName.endsWith('.md'))
+      .map((fileName) => {
+        const slug = fileName.replace(/\.md$/, '');
+        const fullPath = path.join(postsDirectory, fileName);
+        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const { data, content } = matter(fileContents);
+        const stats = readingTime(content);
+
+        return {
+          slug,
+          title: data.title || slug,
+          date: data.date || new Date().toISOString(),
+          author: data.author || 'Archestra Team',
+          excerpt: data.excerpt || content.slice(0, 200) + '...',
+          content,
+          readingTime: stats.text,
+          image: data.image,
+          github: data.github,
+          cta: data.cta,
+        } as BlogPost;
+      });
+
+    return allPostsData.sort((a, b) => {
+      if (a.date < b.date) {
+        return 1;
+      } else {
+        return -1;
+      }
     });
-
-  return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+  } catch (error) {
+    console.error('Error reading blog posts:', error);
+    return [];
+  }
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
