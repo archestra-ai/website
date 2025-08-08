@@ -2,15 +2,37 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { loadServers } from '@utils/catalog';
 
+import { SearchQuerySchema, SearchResponseSchema } from '../schemas';
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const query = searchParams.get('q') || '';
-    const category = searchParams.get('category') || '';
-    const language = searchParams.get('language') || '';
-    const limit = parseInt(searchParams.get('limit') || '50');
-    const offset = parseInt(searchParams.get('offset') || '0');
-    const sortBy = searchParams.get('sortBy') || 'quality'; // quality, stars, name
+
+    // Parse and validate query parameters
+    const validationResult = SearchQuerySchema.safeParse({
+      q: searchParams.get('q') || undefined,
+      category: searchParams.get('category') || undefined,
+      language: searchParams.get('language') || undefined,
+      limit: searchParams.get('limit') || undefined,
+      offset: searchParams.get('offset') || undefined,
+      sortBy: searchParams.get('sortBy') || undefined,
+    });
+
+    if (!validationResult.success) {
+      return NextResponse.json(
+        { error: 'Invalid query parameters', details: validationResult.error.errors },
+        { status: 400 }
+      );
+    }
+
+    const {
+      q: query = '',
+      category = '',
+      language = '',
+      limit = 20,
+      offset = 0,
+      sortBy = 'quality',
+    } = validationResult.data;
 
     // Load all servers
     const allServers = loadServers();
@@ -77,8 +99,8 @@ export async function GET(request: NextRequest) {
     const totalCount = filteredServers.length;
     const paginatedServers = filteredServers.slice(offset, offset + limit);
 
-    // Return response with CORS headers
-    const response = NextResponse.json({
+    // Validate response data
+    const responseData = SearchResponseSchema.parse({
       servers: paginatedServers,
       totalCount,
       limit,
@@ -86,25 +108,9 @@ export async function GET(request: NextRequest) {
       hasMore: offset + limit < totalCount,
     });
 
-    // Add CORS headers to allow access from any origin
-    response.headers.set('Access-Control-Allow-Origin', '*');
-    response.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
-    response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
-
-    return response;
+    return NextResponse.json(responseData);
   } catch (error) {
     console.error('Search API error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
-}
-
-export async function OPTIONS(request: NextRequest) {
-  const response = new NextResponse(null, { status: 200 });
-
-  // Add CORS headers for preflight requests
-  response.headers.set('Access-Control-Allow-Origin', '*');
-  response.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
-
-  return response;
 }
