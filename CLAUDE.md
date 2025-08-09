@@ -50,29 +50,31 @@ This is the Archestra.ai website - a Next.js application that hosts the MCP (Mod
 
 ```
 /app
-├── src/
-│   ├── app/           # Next.js app router pages
-│   │   ├── about/
-│   │   ├── blog/
-│   │   ├── mcp-catalog/
-│   │   │   ├── api/   # API routes with OpenAPI generation
-│   │   │   └── api-docs/ # Swagger UI documentation
-│   │   └── state-of-mcp/
-│   ├── components/    # React components
-│   │   ├── McpServer/ # MCP catalog specific components
-│   │   └── ui/        # Reusable UI components
-│   ├── data/          # MCP catalog data
-│   │   ├── mcp-evaluations/ # Individual server evaluation JSONs
-│   │   └── mcp-servers.json # Main catalog file
-│   ├── providers/     # Context providers (PostHog, etc.)
-│   ├── utils/         # Utility functions
-│   └── constants.ts   # Global constants
-├── scripts/           # Build and catalog scripts
-│   ├── evaluate-catalog.ts
-│   ├── validate-catalog.ts
-│   ├── generate-openapi-schema.ts
-│   └── parse-awesome-mcp.ts
-└── public/           # Static assets
+├── app/           # Next.js app router pages
+│   ├── about/
+│   ├── blog/
+│   │   ├── [slug]/    # Dynamic blog post pages
+│   │   ├── page.tsx   # Blog listing page
+│   │   └── utils.ts   # Blog utilities (reads from /content/blog)
+│   ├── mcp-catalog/
+│   │   ├── api/       # API routes with OpenAPI generation
+│   │   ├── api-docs/  # Swagger UI documentation
+│   │   ├── components/# Catalog-specific components
+│   │   ├── data/      # MCP catalog data
+│   │   │   ├── mcp-evaluations/ # Individual server evaluation JSONs
+│   │   │   └── mcp-servers.json # Main catalog file
+│   │   ├── lib/       # Catalog utilities
+│   │   │   ├── catalog.ts
+│   │   │   ├── quality-calculator/
+│   │   │   └── trust-score-badge/
+│   │   └── scripts/   # Build and catalog scripts
+│   └── state-of-mcp/
+├── components/    # Shared React components
+│   └── ui/        # Reusable UI components
+├── content/       # Content directory (gitignored)
+│   └── blog/      # Blog posts in markdown format
+├── lib/           # Global utilities
+└── public/        # Static assets
 ```
 
 ### Important Configuration
@@ -81,10 +83,10 @@ The project has ESLint and TypeScript build errors disabled in `next.config.mjs`
 
 ```javascript
 eslint: {
-  ignoreDuringBuilds: true;
+  ignoreDuringBuilds: true,
 }
 typescript: {
-  ignoreBuildErrors: true;
+  ignoreBuildErrors: true,
 }
 ```
 
@@ -96,11 +98,19 @@ CORS headers are centrally configured in `next.config.mjs` for all `/mcp-catalog
 
 The MCP catalog is a core feature that:
 
-1. Stores server metadata in `/app/src/data/mcp-servers.json`
-2. Individual server evaluations in `/app/src/data/mcp-evaluations/*.json`
-3. Provides quality scoring via `utils/qualityCalculator.ts`
+1. Stores server metadata in `/app/app/mcp-catalog/data/mcp-servers.json`
+2. Individual server evaluations in `/app/app/mcp-catalog/data/mcp-evaluations/*.json`
+3. Provides quality scoring via `app/mcp-catalog/lib/quality-calculator/index.ts`
 4. Generates badges at `/mcp-catalog/api/badge/quality/[org]/[repo]`
 5. Server detail pages at `/mcp-catalog/[name]`
+
+#### Quality Scoring Algorithm
+
+The MCP servers are scored on a 0-100 scale based on:
+- **MCP Protocol Implementation** (40 points max) - Tools, resources, prompts, sampling features
+- **GitHub Metrics** (20 points max) - Stars, contributors, issues (adjusted for multi-server repos)
+- **Documentation Quality** (20 points max)
+- **Code Quality** (20 points max)
 
 ### API Routes and OpenAPI Workflow
 
@@ -113,19 +123,21 @@ The MCP Catalog API provides:
 - `/mcp-catalog/api-docs` - Swagger UI documentation
 
 **OpenAPI Generation Workflow:**
-1. API schemas defined with Zod in `/app/src/app/mcp-catalog/api/schemas.ts`
-2. Endpoints registered in `/app/src/app/mcp-catalog/api/openapi.ts`
-3. Run `pnpm openapi:generate` to generate `/app/src/app/mcp-catalog/api/docs/openapi.json`
+1. API schemas defined with Zod in `/app/app/mcp-catalog/api/schemas.ts`
+2. Endpoints registered in `/app/app/mcp-catalog/api/openapi.ts`
+3. Run `pnpm openapi:generate` to generate `/app/app/mcp-catalog/api/docs/openapi.json`
 4. CI validates that OpenAPI spec is up-to-date
 
 All API routes use Zod validation for request parameters and response data.
 
-### Key Utilities
+### Blog System
 
-- **GitHub Integration**: `utils/github.ts` - GitHub API interactions
-- **Quality Calculator**: `utils/qualityCalculator.ts` - Scoring algorithm for MCP servers
-- **Catalog Utils**: `utils/catalog.ts` - Catalog data handling
-- **Blog Utils**: `utils/blog.ts` - Blog post processing
+The blog system:
+- Reads markdown files from `/content/blog/*.md` (content directory is gitignored)
+- Uses gray-matter for front matter parsing
+- Calculates reading time automatically
+- Supports author profiles and dates
+- Renders markdown with react-markdown and syntax highlighting
 
 ### CI/CD Pipeline
 
@@ -150,11 +162,11 @@ GitHub Actions workflows enforce:
 When making changes:
 
 1. Follow the existing component structure and patterns
-2. Use absolute imports with the configured path aliases (@components, @utils, etc.)
-3. Maintain the existing code style (enforced by prettier with import sorting)
+2. Use absolute imports with the configured path aliases (@components, @lib, @mcpCatalog, @constants)
+3. Maintain the existing code style (enforced by prettier with import sorting via @trivago plugin)
 4. Test changes with `pnpm dev` before committing
 5. Run `pnpm typecheck` to catch type errors
 6. Update OpenAPI spec with `pnpm openapi:generate` when modifying API endpoints
 7. Write tests for new functionality, mock external dependencies
-
-The project uses lint-staged with prettier for automatic formatting on commit.
+8. The project uses lint-staged with prettier for automatic formatting on commit
+9. When working with the catalog data, ensure JSON validity with `pnpm catalog:validate`
