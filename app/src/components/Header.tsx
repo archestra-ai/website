@@ -1,12 +1,11 @@
 'use client';
 
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
+import { GitHubStarButton } from '@components/GitHubStarButton';
 import constants from '@constants';
-
-import { GitHubStarButton } from './GitHubStarButton';
 
 const {
   company: { name: companyName },
@@ -15,6 +14,7 @@ const {
 
 export default function Header() {
   const [isReportsOpen, setIsReportsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function Header() {
               height={40}
               className="object-contain"
             />
-            <span className="font-mono text-2xl text-black hidden sm:inline">{companyName}</span>
+            <span className="font-mono text-2xl text-black hidden sm:inline">archestra.ai</span>
           </a>
           <nav className="hidden sm:flex items-center gap-6 mt-1">
             <a
@@ -52,10 +52,9 @@ export default function Header() {
             >
               Desktop App <span className="text-xs text-red-500">(Coming soon)</span>
             </a>
-            {/* TODO: Add blog back in once we have posts */}
-            {/* <a href="/blog" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
+            <a href="/blog" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
               Blog
-            </a> */}
+            </a>
             <a href="/mcp-catalog" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
               MCP Catalog
             </a>
@@ -95,28 +94,81 @@ export default function Header() {
           <GitHubStarButton />
         </div>
 
-        {/* Mobile menu and GitHub button */}
-        <div className="flex sm:hidden items-center gap-3">
-          <nav className="flex items-center gap-3">
-            <a href="#" className="text-sm text-gray-400 font-medium" onClick={(e) => e.preventDefault()}>
-              Desktop <span className="text-[10px] text-red-500">(Soon)</span>
+        {/* Mobile hamburger button and GitHub star */}
+        <div className="flex sm:hidden items-center gap-2">
+          <GitHubStarButton />
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu dropdown */}
+      {isMobileMenuOpen && (
+        <div className="sm:hidden border-t border-gray-200 bg-white">
+          <nav className="flex flex-col px-4 py-2">
+            <a
+              href="#"
+              className="px-3 py-2 text-sm text-gray-400 font-medium rounded-lg"
+              onClick={(e) => e.preventDefault()}
+            >
+              Desktop App <span className="text-xs text-red-500">(Coming soon)</span>
             </a>
-            <a href="/blog" className="text-sm text-gray-700 hover:text-gray-900 font-medium">
+            <a
+              href="/blog"
+              className="px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               Blog
             </a>
-            <a href="/mcp-catalog" className="text-sm text-gray-700 hover:text-gray-900 font-medium">
-              Catalog
+            <a
+              href="/mcp-catalog"
+              className="px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              MCP Catalog
             </a>
-            <a href="/state-of-mcp" className="text-sm text-gray-700 hover:text-gray-900 font-medium">
-              Report
-            </a>
-            <a href="/about" className="text-sm text-gray-700 hover:text-gray-900 font-medium">
+
+            {/* Reports Dropdown in Mobile */}
+            <div className="px-3 py-2">
+              <button
+                onClick={() => setIsReportsOpen(!isReportsOpen)}
+                className="flex items-center gap-1 text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors w-full text-left"
+              >
+                Reports
+                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isReportsOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {isReportsOpen && (
+                <div className="mt-2 ml-4">
+                  <a
+                    href="/state-of-mcp"
+                    className="block py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                    onClick={() => {
+                      setIsReportsOpen(false);
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    State of MCP Report Q3 2025
+                  </a>
+                </div>
+              )}
+            </div>
+
+            <a
+              href="/about"
+              className="px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               About
             </a>
           </nav>
-          <GitHubStarButton />
         </div>
-      </div>
+      )}
     </header>
   );
 }
