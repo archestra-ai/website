@@ -1,12 +1,21 @@
-import { Metadata } from "next";
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'State of MCP Report Q3 2025 | Industry Analysis',
-  description: 'Comprehensive analysis of 900+ MCP implementations. Evidence-based insights on Model Context Protocol ecosystem, adoption patterns, and future trajectories.',
-  keywords: ['MCP report', 'Model Context Protocol analysis', 'AI infrastructure', 'MCP ecosystem', 'industry analysis', 'AI adoption patterns'],
+  description:
+    'Comprehensive analysis of 900+ MCP implementations. Evidence-based insights on Model Context Protocol ecosystem, adoption patterns, and future trajectories.',
+  keywords: [
+    'MCP report',
+    'Model Context Protocol analysis',
+    'AI infrastructure',
+    'MCP ecosystem',
+    'industry analysis',
+    'AI adoption patterns',
+  ],
   openGraph: {
     title: 'State of MCP Report Q3 2025 | Comprehensive Industry Analysis',
-    description: 'Empirical analysis of 900+ MCP implementations with 100k+ inference calls. Get evidence-based insights on the Model Context Protocol ecosystem.',
+    description:
+      'Empirical analysis of 900+ MCP implementations with 100k+ inference calls. Get evidence-based insights on the Model Context Protocol ecosystem.',
     url: 'https://archestra.ai/state-of-mcp',
     type: 'article',
     images: [
@@ -15,7 +24,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: 'State of MCP Report Q3 2025',
-      }
+      },
     ],
   },
   twitter: {
@@ -29,10 +38,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function StateOfMCPLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function StateOfMCPLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

@@ -1,67 +1,80 @@
 {
-  "name": "afl",
-  "slug": "willvelida__mcp-afl-server",
+  "dxt_version": "0.1.0",
+  "name": "willvelida__mcp-afl-server",
+  "display_name": "mcp-afl-server",
+  "version": "1.0.0",
   "description": "This is a Model Context Protocol (MCP) server that provides AFL (Australian Football League) data from Squiggle API.",
-  "readme": "# 🏈 AFL (Australian Football League) MCP Server\n\nThis is a Model Context Protocol (MCP) server that provides AFL (Australian Football League) data from the Squiggle API. It allows you to retrieve information about past AFL games, current and past standings, team information, power rankings, tips, and projections.\n\n[![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=flat-square&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/download/dotnet/9.0)\n[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)\n[![MCP](https://img.shields.io/badge/MCP-Compatible-green.svg?style=flat-square)](https://modelcontextprotocol.io)\n\n## ✨ Features\n\nThis MCP Server offers comprehensive access to AFL data, providing tools for:\n\n- 🏆 Retrieving current AFL standings\n- 📊 Retrieving past AFL standings by round and year\n- 🎯 Retrieving results from particular games or rounds\n- 👥 Retrieving basic information about teams\n- 📅 Retrieving lists of teams who played in particular seasons\n- 🔮 Getting tips and predictions for games\n- 📈 Accessing power rankings and projected ladders\n- 🔍 Managing data sources and configurations\n\n## 📋 Prerequisites\n\n- [.NET 9.0](https://dotnet.microsoft.com/download/dotnet/9.0) or later\n- A Model Context Protocol (MCP) compatible client (e.g., Claude for Desktop)\n- Internet connection for accessing the Squiggle API\n\n## ⚡ Quick Install\n\n### 🎯 Claude Desktop Integration\n\n1. Edit the Claude for Desktop config file:\n   - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`\n   - **Windows**: `%APPDATA%\\Claude\\claude_desktop_config.json`\n\n2. Add the server configuration:\n\n```json\n{\n    \"mcpServers\": {\n        \"mcp-afl-server\": {\n            \"command\": \"dotnet\",\n            \"args\": [\n                \"run\",\n                \"--project\",\n                \"C:\\\\path\\\\to\\\\mcp-afl-server\\\\src\",\n                \"--no-build\"\n            ]\n        }\n    }\n}\n```\n\n## 🚀 What can you do with the AFL MCP Server?\n\nHere are some example prompts you can try once connected:\n\n### 🏆 Current Season Information\n\n- \"What are the current AFL standings?\"\n- \"Show me the results from Round 10, 2024\"\n- \"Get information about the Richmond Tigers\"\n- \"List all teams that played in the 2024 season\"\n\n### 📊 Historical Data\n\n- \"What were the standings after Round 15 in 2023?\"\n- \"Show me all results from Round 1, 2022\"\n- \"Get the result of a specific game\"\n\n### 🔮 Tips & Predictions\n\n- \"What are the current tips for upcoming games?\"\n- \"Show me tips for Round 5, 2024\"\n- \"Get tips for a specific game\"\n\n### 📈 Advanced Analytics\n\n- \"Show me the power rankings for Round 20, 2023\"\n- \"Get the projected ladder for Round 15, 2024\"\n- \"List all available data sources\"\n\n## 📡 Squiggle API\n\nThis server uses the Squiggle API to retrieve AFL data. The API provides comprehensive methods to fetch:\n\n- 🎯 Live scores and fixtures\n- 📊 Historical match results\n- 👥 Team information and statistics\n- 🏆 Ladder positions and standings\n- 🔮 Tips and predictions\n- 📈 Power rankings and projections\n\nPlease use the API responsibly! All information about proper usage can be found at [api.squiggle.com.au](api.squiggle.com.au).\n\n## 🛠️ MCP Tools\n\nThe server exposes the following tools through the Model Context Protocol:\n\n### 🎯 Game Information\n\n| **Tool** | **Description** |\n|:--------:|:---------------:|\n| `GetGameResult` | Gets result from a played game |\n| `GetRoundResultsByYear` | Get the results from a round of a particular year |\n\n### 🏆 Standings Information\n\n| **Tool** | **Description** |\n|:--------:|:---------------:|\n| `GetCurrentStandings` | Gets the current standings of the AFL |\n| `GetStandingsByRoundAndYear` | Get the standings for a particular round and year |\n\n### 👥 Team Information\n\n| **Tool** | **Description** |\n|:--------:|:---------------:|\n| `GetTeamInfo` | Gets information for an AFL team |\n| `GetTeamsBySeason` | Gets a list of teams who played in a particular season |\n\n### 🔮 Tips & Predictions\n\n| **Tool** | **Description** |\n|:--------:|:---------------:|\n| `GetFutureTips` | Get the tips for current and future games |\n| `GetTipsByGame` | Get the tips of a particular game |\n| `GetTipsByRoundAndYear` | Get the tips for a particular round and year |\n\n### 📈 Power Rankings & Projections\n\n| **Tool** | **Description** |\n|:--------:|:---------------:|\n| `GetPowerRankingByRoundAndYear` | Get Power Ranking by Round and Year |\n| `GetPowerRankingByRoundYearAndSource` | Get Power Ranking by Round, Year, and Model Source |\n| `GetTeamPowerRankingByRoundAndYear` | Get Power Ranking for Team by Round, Year, and Model Source |\n| `GetProjectedLadderByRoundAndYear` | Get the projected ladder for a particular round and year |\n| `GetProjectedLadderByRoundAndYearBySource` | Get the projected ladder by source for a particular round and year |\n\n### 🔍 Sources & Configuration\n\n| **Tool** | **Description** |\n|:--------:|:---------------:|\n| `GetSources` | Gets a list of sources |\n| `GetSourceById` | Gets a source |\n\n## 📜 License\n\nThis project is licensed under the [MIT License](LICENSE) - see the LICENSE file for details.\n\n## 💬 Feedback\n\nWe're building this in the open and your feedback is much appreciated! \n\n🐛 [Report a bug or request a feature](https://github.com/willvelida/mcp-afl-server/issues/new)\n\nYour input helps shape the future of the AFL MCP Server and makes it better for everyone in the AFL community.\n\n## 🏈 About AFL\n\nThe Australian Football League (AFL) is the premier professional Australian rules football competition in Australia. This server provides programmatic access to comprehensive AFL data to enhance your analysis, applications, and understanding of the game.\n\n---\n\n**Built with ❤️ for the AFL community**",
-  "category": "Sports",
-  "qualityScore": 48,
-  "githubUrl": "https://github.com/willvelida/mcp-afl-server",
-  "programmingLanguage": "C#",
-  "gitHubOrg": "willvelida",
-  "gitHubRepo": "mcp-afl-server",
-  "repositoryPath": null,
-  "gh_stars": 7,
-  "gh_contributors": 1,
-  "gh_issues": 1,
-  "gh_releases": false,
-  "gh_ci_cd": true,
-  "gh_latest_commit_hash": "aa4a4714c9a06d21b040abdfe2b79e156a6778db",
-  "last_scraped_at": "2025-08-03T20:52:06.724Z",
-  "implementing_tools": true,
-  "implementing_prompts": false,
-  "implementing_resources": true,
-  "implementing_sampling": false,
-  "implementing_roots": false,
-  "implementing_logging": false,
-  "implementing_stdio": true,
-  "implementing_streamable_http": false,
-  "implementing_oauth2": false,
-  "evaluation_model": "gemini-2.5-flash",
-  "configForClients": {
-    "mcpServers": {
-      "mcp-afl-server": {
-        "command": "dotnet",
-        "args": [
-          "run",
-          "--project",
-          "C:\\path\\to\\mcp-afl-server\\src",
-          "--no-build"
-        ]
-      }
-    }
+  "author": {
+    "name": "willvelida"
   },
-  "configForArchestra": {
-    "oauth": {},
-    "server_config": {
-      "args": [
-        "run",
-        "--project",
-        "C:\\path\\to\\mcp-afl-server\\src",
-        "--no-build"
-      ],
-      "command": "dotnet",
-      "transport": "stdio",
+  "server": {
+    "type": "binary",
+    "entry_point": "index.js",
+    "mcp_config": {
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
+  "tools": [],
+  "prompts": [],
+  "keywords": [],
+  "user_config": {},
+  "readme": "# 🏈 AFL (Australian Football League) MCP Server\n\nThis is a Model Context Protocol (MCP) server that provides AFL (Australian Football League) data from the Squiggle API. It allows you to retrieve information about past AFL games, current and past standings, team information, power rankings, tips, and projections.\n\n[![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=flat-square&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/download/dotnet/9.0)\n[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)\n[![MCP](https://img.shields.io/badge/MCP-Compatible-green.svg?style=flat-square)](https://modelcontextprotocol.io)\n\n## ✨ Features\n\nThis MCP Server offers comprehensive access to AFL data, providing tools for:\n\n- 🏆 Retrieving current AFL standings\n- 📊 Retrieving past AFL standings by round and year\n- 🎯 Retrieving results from particular games or rounds\n- 👥 Retrieving basic information about teams\n- 📅 Retrieving lists of teams who played in particular seasons\n- 🔮 Getting tips and predictions for games\n- 📈 Accessing power rankings and projected ladders\n- 🔍 Managing data sources and configurations\n\n## 📋 Prerequisites\n\n- [.NET 9.0](https://dotnet.microsoft.com/download/dotnet/9.0) or later\n- A Model Context Protocol (MCP) compatible client (e.g., Claude for Desktop)\n- Internet connection for accessing the Squiggle API\n\n## ⚡ Quick Install\n\n### 🎯 Claude Desktop Integration\n\n1. Edit the Claude for Desktop config file:\n   - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`\n   - **Windows**: `%APPDATA%\\Claude\\claude_desktop_config.json`\n\n2. Add the server configuration:\n\n```json\n{\n    \"mcpServers\": {\n        \"mcp-afl-server\": {\n            \"command\": \"dotnet\",\n            \"args\": [\n                \"run\",\n                \"--project\",\n                \"C:\\\\path\\\\to\\\\mcp-afl-server\\\\src\",\n                \"--no-build\"\n            ]\n        }\n    }\n}\n```\n\n## 🚀 What can you do with the AFL MCP Server?\n\nHere are some example prompts you can try once connected:\n\n### 🏆 Current Season Information\n\n- \"What are the current AFL standings?\"\n- \"Show me the results from Round 10, 2024\"\n- \"Get information about the Richmond Tigers\"\n- \"List all teams that played in the 2024 season\"\n\n### 📊 Historical Data\n\n- \"What were the standings after Round 15 in 2023?\"\n- \"Show me all results from Round 1, 2022\"\n- \"Get the result of a specific game\"\n\n### 🔮 Tips & Predictions\n\n- \"What are the current tips for upcoming games?\"\n- \"Show me tips for Round 5, 2024\"\n- \"Get tips for a specific game\"\n\n### 📈 Advanced Analytics\n\n- \"Show me the power rankings for Round 20, 2023\"\n- \"Get the projected ladder for Round 15, 2024\"\n- \"List all available data sources\"\n\n## 📡 Squiggle API\n\nThis server uses the Squiggle API to retrieve AFL data. The API provides comprehensive methods to fetch:\n\n- 🎯 Live scores and fixtures\n- 📊 Historical match results\n- 👥 Team information and statistics\n- 🏆 Ladder positions and standings\n- 🔮 Tips and predictions\n- 📈 Power rankings and projections\n\nPlease use the API responsibly! All information about proper usage can be found at [api.squiggle.com.au](api.squiggle.com.au).\n\n## 🛠️ MCP Tools\n\nThe server exposes the following tools through the Model Context Protocol:\n\n### 🎯 Game Information\n\n| **Tool** | **Description** |\n|:--------:|:---------------:|\n| `GetGameResult` | Gets result from a played game |\n| `GetRoundResultsByYear` | Get the results from a round of a particular year |\n\n### 🏆 Standings Information\n\n| **Tool** | **Description** |\n|:--------:|:---------------:|\n| `GetCurrentStandings` | Gets the current standings of the AFL |\n| `GetStandingsByRoundAndYear` | Get the standings for a particular round and year |\n\n### 👥 Team Information\n\n| **Tool** | **Description** |\n|:--------:|:---------------:|\n| `GetTeamInfo` | Gets information for an AFL team |\n| `GetTeamsBySeason` | Gets a list of teams who played in a particular season |\n\n### 🔮 Tips & Predictions\n\n| **Tool** | **Description** |\n|:--------:|:---------------:|\n| `GetFutureTips` | Get the tips for current and future games |\n| `GetTipsByGame` | Get the tips of a particular game |\n| `GetTipsByRoundAndYear` | Get the tips for a particular round and year |\n\n### 📈 Power Rankings & Projections\n\n| **Tool** | **Description** |\n|:--------:|:---------------:|\n| `GetPowerRankingByRoundAndYear` | Get Power Ranking by Round and Year |\n| `GetPowerRankingByRoundYearAndSource` | Get Power Ranking by Round, Year, and Model Source |\n| `GetTeamPowerRankingByRoundAndYear` | Get Power Ranking for Team by Round, Year, and Model Source |\n| `GetProjectedLadderByRoundAndYear` | Get the projected ladder for a particular round and year |\n| `GetProjectedLadderByRoundAndYearBySource` | Get the projected ladder by source for a particular round and year |\n\n### 🔍 Sources & Configuration\n\n| **Tool** | **Description** |\n|:--------:|:---------------:|\n| `GetSources` | Gets a list of sources |\n| `GetSourceById` | Gets a source |\n\n## 📜 License\n\nThis project is licensed under the [MIT License](LICENSE) - see the LICENSE file for details.\n\n## 💬 Feedback\n\nWe're building this in the open and your feedback is much appreciated! \n\n🐛 [Report a bug or request a feature](https://github.com/willvelida/mcp-afl-server/issues/new)\n\nYour input helps shape the future of the AFL MCP Server and makes it better for everyone in the AFL community.\n\n## 🏈 About AFL\n\nThe Australian Football League (AFL) is the premier professional Australian rules football competition in Australia. This server provides programmatic access to comprehensive AFL data to enhance your analysis, applications, and understanding of the game.\n\n---\n\n**Built with ❤️ for the AFL community**",
+  "category": "Sports",
+  "quality_score": 48,
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "mcp-afl-server": {
+          "command": "dotnet",
+          "args": ["run", "--project", "C:\\path\\to\\mcp-afl-server\\src", "--no-build"],
+          "env": {}
+        }
+      }
+    },
+    "oauth": {
+      "provider": null,
+      "required": false
+    }
+  },
+  "github_info": {
+    "owner": "willvelida",
+    "repo": "mcp-afl-server",
+    "url": "https://github.com/willvelida/mcp-afl-server",
+    "name": "mcp-afl-server",
+    "path": null,
+    "stars": 7,
+    "contributors": 1,
+    "issues": 1,
+    "releases": false,
+    "ci_cd": true,
+    "latest_commit_hash": "aa4a4714c9a06d21b040abdfe2b79e156a6778db"
+  },
+  "programming_language": "C#",
+  "framework": null,
+  "last_scraped_at": "2025-08-03T20:52:06.724Z",
+  "evaluation_model": "gemini-2.5-flash",
+  "protocol_features": {
+    "implementing_tools": true,
+    "implementing_prompts": false,
+    "implementing_resources": true,
+    "implementing_sampling": false,
+    "implementing_roots": false,
+    "implementing_logging": false,
+    "implementing_stdio": true,
+    "implementing_streamable_http": false,
+    "implementing_oauth2": false
+  },
   "dependencies": [
     {
-      "importance": 10,
-      "name": "Model Context Protocol SDK"
+      "name": "Model Context Protocol SDK",
+      "importance": 10
     },
     {
-      "importance": 8,
-      "name": "Squiggle API Client"
+      "name": "Squiggle API Client",
+      "importance": 8
     }
-  ]
+  ],
+  "raw_dependencies": null
 }

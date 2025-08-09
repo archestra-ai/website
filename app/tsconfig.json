@@ -18,10 +18,19 @@
         "name": "next"
       }
     ],
+    // Allows us to use vitest imports in tests without having to explicitly import them
+    "types": ["vitest/globals"],
+    /*
+     Aliasing
+    */
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@components/*": ["components/*"],
+      "@constants": ["constants"],
+      "@lib/*": ["lib/*"],
+      "@mcpCatalog/*": ["app/mcp-catalog/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", ".next", "dist"]
 }

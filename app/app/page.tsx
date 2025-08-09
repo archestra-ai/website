@@ -1,41 +1,43 @@
-import { Metadata } from "next";
-import Header from "../components/header";
-import Footer from "../components/footer";
-import { Shield, Key, Lock, FileCheck, AlertTriangle, Server, Cpu, CheckCircle, Github, Star, Users, GitCommit, Construction, Monitor, MessageSquare, Package } from "lucide-react";
-import { EmailForm } from "../components/email-form";
+import { AlertTriangle, Cpu, GitCommit, Github, MessageSquare, Monitor, Package, Star, Users } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Archestra | Enterprise MCP Platform for AI Agents',
-  description: 'Enterprise-grade platform enabling non-technical users to safely leverage AI agents and MCP (Model Context Protocol) servers with security guardrails and compliance.',
-  keywords: ['MCP', 'Model Context Protocol', 'AI agents', 'enterprise AI', 'secure runtime', 'prompt injection prevention'],
-  openGraph: {
-    title: 'Archestra | Enterprise MCP Platform for AI Agents',
-    description: 'Enterprise-grade platform for safely leveraging AI agents and MCP servers with security guardrails.',
-    url: 'https://archestra.ai',
-    type: 'website',
+import { EmailForm } from '@components/EmailForm';
+import Footer from '@components/Footer';
+import Header from '@components/Header';
+import constants from '@constants';
+
+const {
+  company: {
+    name: companyName,
+    alternateName: companyAlternateName,
+    description: companyDescription,
+    foundingDate: companyFoundingDate,
+    address: companyAddress,
+    people: companyPeople,
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Archestra | Enterprise MCP Platform',
-    description: 'Enterprise-grade platform for safely leveraging AI agents and MCP servers',
+  website: { urls: websiteUrls },
+  github: {
+    archestra: {
+      orgName: githubOrgName,
+      archestra: { repoName: githubArchestraRepoName, repoUrl: githubArchestraRepoUrl },
+    },
   },
-  alternates: {
-    canonical: 'https://archestra.ai',
-  },
-};
+  slack: { joinCommunityUrl: slackJoinCommunityUrl },
+} = constants;
 
 async function getGitHubStats() {
+  const githubApiUrl = `https://api.github.com/repos/${githubOrgName}/${githubArchestraRepoName}`;
+
   try {
     const [repoResponse, contributorsResponse, commitsResponse] = await Promise.all([
-      fetch('https://api.github.com/repos/archestra-ai/archestra', {
-        next: { revalidate: 3600 } // Cache for 1 hour
+      fetch(githubApiUrl, {
+        next: { revalidate: 3600 }, // Cache for 1 hour
       }),
-      fetch('https://api.github.com/repos/archestra-ai/archestra/contributors', {
-        next: { revalidate: 3600 }
+      fetch(`${githubApiUrl}/contributors`, {
+        next: { revalidate: 3600 },
       }),
-      fetch('https://api.github.com/repos/archestra-ai/archestra/commits?per_page=1', {
-        next: { revalidate: 3600 }
-      })
+      fetch(`${githubApiUrl}/commits?per_page=1`, {
+        next: { revalidate: 3600 },
+      }),
     ]);
 
     if (!repoResponse.ok || !contributorsResponse.ok || !commitsResponse.ok) {
@@ -44,7 +46,7 @@ async function getGitHubStats() {
 
     const repoData = await repoResponse.json();
     const contributorsData = await contributorsResponse.json();
-    
+
     // Get total commits from the Link header
     const linkHeader = commitsResponse.headers.get('Link');
     let totalCommits = 1;
@@ -58,7 +60,7 @@ async function getGitHubStats() {
     return {
       stars: repoData.stargazers_count || 0,
       contributors: contributorsData.length || 0,
-      commits: totalCommits
+      commits: totalCommits,
     };
   } catch (error) {
     console.error('Error fetching GitHub stats:', error);
@@ -68,47 +70,28 @@ async function getGitHubStats() {
 
 export default async function Home() {
   const githubStats = await getGitHubStats();
-  
+
   const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Archestra",
-    "alternateName": "Archestra.ai",
-    "url": "https://archestra.ai",
-    "logo": "https://archestra.ai/logo.png",
-    "description": "Enterprise-grade platform enabling non-technical users to safely leverage AI agents and MCP (Model Context Protocol) servers with security guardrails and compliance.",
-    "sameAs": [
-      "https://github.com/archestra-ai/archestra",
-      "https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg"
-    ],
-    "foundingDate": "2024",
-    "founders": [
-      {
-        "@type": "Person",
-        "name": "Matvey Kukuy",
-        "jobTitle": "CEO and Co-Founder",
-        "sameAs": "https://www.linkedin.com/in/motakuk/"
-      },
-      {
-        "@type": "Person",
-        "name": "Ildar Iskhakov",
-        "jobTitle": "CTO and Co-Founder",
-        "sameAs": "https://www.linkedin.com/in/ildari/"
-      }
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "UK",
-      "addressLocality": "London"
-    }
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: companyName,
+    alternateName: companyAlternateName,
+    url: websiteUrls.base,
+    logo: websiteUrls.logoAbsoluteUrl,
+    description: companyDescription,
+    sameAs: [githubArchestraRepoUrl, slackJoinCommunityUrl],
+    foundingDate: companyFoundingDate,
+    founders: [companyPeople.matvey, companyPeople.ildar],
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: companyAddress.addressCountry,
+      addressLocality: companyAddress.addressLocality,
+    },
   };
-  
+
   return (
     <div className="min-h-screen flex flex-col">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Header />
 
       {/* Main Content */}
@@ -118,18 +101,17 @@ export default async function Home() {
           className="absolute inset-0 z-0"
           style={{
             backgroundImage:
-              "linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
+              'linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px)',
+            backgroundSize: '40px 40px',
           }}
         />
 
         <div className="container relative z-10 px-4 md:px-6 py-16 max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Archestra
-            </h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{companyName}</h1>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
-              Enterprise-grade platform for non-technical users to safely run AI agents and MCP (Model Context Protocol) servers.
+              Enterprise-grade platform for non-technical users to safely run AI agents and MCP (Model Context Protocol)
+              servers.
             </p>
           </div>
 
@@ -139,7 +121,9 @@ export default async function Home() {
                 <Cpu className="h-6 w-6 text-gray-700 mt-0.5 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold mb-1">Secure runtime</h3>
-                  <p className="text-sm text-gray-600">Isolated execution environment for AI agents with sandboxing and resource controls</p>
+                  <p className="text-sm text-gray-600">
+                    Isolated execution environment for AI agents with sandboxing and resource controls
+                  </p>
                 </div>
               </div>
 
@@ -147,7 +131,9 @@ export default async function Home() {
                 <AlertTriangle className="h-6 w-6 text-gray-700 mt-0.5 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold mb-1">Prompt Injection Prevention</h3>
-                  <p className="text-sm text-gray-600">Securing the context to prevent leakage of data to the context and changing agent's behaviour</p>
+                  <p className="text-sm text-gray-600">
+                    Securing the context to prevent leakage of data to the context and changing agent's behaviour
+                  </p>
                 </div>
               </div>
 
@@ -155,7 +141,9 @@ export default async function Home() {
                 <Package className="h-6 w-6 text-gray-700 mt-0.5 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold mb-1">Supply Chain Analysis</h3>
-                  <p className="text-sm text-gray-600">AI-powered evaluation of dependencies and security vulnerabilities in MCP server packages</p>
+                  <p className="text-sm text-gray-600">
+                    AI-powered evaluation of dependencies and security vulnerabilities in MCP server packages
+                  </p>
                 </div>
               </div>
 
@@ -164,8 +152,8 @@ export default async function Home() {
                 <div className="flex-1">
                   <h3 className="font-semibold mb-1 text-blue-900">Desktop App</h3>
                   <p className="text-sm text-gray-700 mb-3">
-                    We're building the desktop app and it's currently in early alpha. Subscribe below 
-                    to get notified when it's ready.
+                    We're building the desktop app and it's currently in early alpha. Subscribe below to get notified
+                    when it's ready.
                   </p>
                   <div className="w-full max-w-lg">
                     <EmailForm />
@@ -178,7 +166,16 @@ export default async function Home() {
                 <div className="flex-1">
                   <h3 className="font-semibold mb-1">Open Source</h3>
                   <p className="text-sm text-gray-600 mb-2">
-                    Archestra is open source, follow us on <a href="https://github.com/archestra-ai/archestra" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">GitHub</a>!
+                    {companyName} is open source, follow us on{' '}
+                    <a
+                      href={githubArchestraRepoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline"
+                    >
+                      GitHub
+                    </a>
+                    !
                   </p>
                   <div className="flex gap-4 text-xs text-gray-600">
                     <span className="flex items-center gap-1">
@@ -202,14 +199,21 @@ export default async function Home() {
                 <div>
                   <h3 className="font-semibold mb-1">Slack Community</h3>
                   <p className="text-sm text-gray-600">
-                    Join our community on <a href="https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Slack</a> to discuss and collaborate!
+                    Join our community on{' '}
+                    <a
+                      href={slackJoinCommunityUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline"
+                    >
+                      Slack
+                    </a>{' '}
+                    to discuss and collaborate!
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
-
         </div>
       </main>
 

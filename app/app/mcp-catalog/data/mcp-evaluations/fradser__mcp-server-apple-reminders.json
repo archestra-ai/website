@@ -1,68 +1,88 @@
 {
-  "name": "apple reminders",
-  "slug": "fradser__mcp-server-apple-reminders",
+  "dxt_version": "0.1.0",
+  "name": "fradser__mcp-server-apple-reminders",
+  "display_name": "mcp-server-apple-reminders",
+  "version": "1.0.0",
   "description": "MCP server from FradSer/mcp-server-apple-reminders",
-  "readme": "# Apple Reminders MCP Server ![](https://img.shields.io/badge/A%20FRAD%20PRODUCT-WIP-yellow)\n\n[![Twitter Follow](https://img.shields.io/twitter/follow/FradSer?style=social)](https://twitter.com/FradSer)\n\nEnglish | [简体中文](README.zh-CN.md)\n\nA Model Context Protocol (MCP) server that provides native integration with Apple Reminders on macOS. This server allows you to interact with Apple Reminders through a standardized interface.\n\n[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/fradser-mcp-server-apple-reminders-badge.png)](https://mseep.ai/app/fradser-mcp-server-apple-reminders)\n\n## Features\n\n- List all reminders and reminder lists\n- Create new reminders with titles and optional details\n- Update existing reminders (title, notes, due date, completion status)\n- Mark reminders as complete/incomplete\n- Add notes to reminders\n- Set due dates for reminders\n- Native macOS integration\n\n## Prerequisites\n\n- Node.js 18 or later\n- macOS (required for Apple Reminders integration)\n- Xcode Command Line Tools (required for compiling Swift code)\n\n## Quick Start\n\nInstall globally via npm:\n\n```bash\nnpm install -g mcp-server-apple-reminders\n```\n\n## Configuration\n\n### Configure Cursor\n\n1. Open Cursor\n2. Open Cursor settings\n3. Click on \"MCP\" in the sidebar\n4. Click \"Add new global MCP server\"\n5. Configure the server with the following settings:\n    ```json\n    {\n      \"mcpServers\": {\n        \"apple-reminders\": {\n          \"command\": \"mcp-server-apple-reminders\",\n          \"args\": []\n        }\n      }\n    }\n    ```\n\n### Configure ChatWise\n\n1. Open ChatWise\n2. Go to Settings\n3. Navigate to the Tools section\n4. Click the \"+\" button\n5. Configure the tool with the following settings:\n   - Type: `stdio`\n   - ID: `apple-reminders`\n   - Command: `mcp-server-apple-reminders`\n   - Args: (leave empty)\n\n### Configure Claude Desktop\n\nYou need to configure Claude Desktop to recognize the Apple Reminders MCP server. There are two ways to access the configuration:\n\n#### Option 1: Through Claude Desktop UI\n\n1. Open Claude Desktop app\n2. Enable Developer Mode from the top-left menu bar\n3. Open Settings and navigate to the Developer Option\n4. Click the Edit Config button to open `claude_desktop_config.json`\n\n#### Option 2: Direct File Access\n\nFor macOS:\n```bash\ncode ~/Library/Application\\ Support/Claude/claude_desktop_config.json\n```\n\nFor Windows:\n```bash\ncode %APPDATA%\\Claude\\claude_desktop_config.json\n```\n\n### 2. Add Server Configuration\n\nAdd the following configuration to your `claude_desktop_config.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"apple-reminders\": {\n      \"command\": \"mcp-server-apple-reminders\",\n      \"args\": []\n    }\n  }\n}\n```\n\n### 3. Restart Claude Desktop\n\nFor the changes to take effect:\n\n1. Completely quit Claude Desktop (not just close the window)\n2. Start Claude Desktop again\n3. Look for the tool icon to verify the Apple Reminders server is connected\n\n## Usage Examples\n\nOnce configured, you can ask Claude to interact with your Apple Reminders. Here are some example prompts:\n\n### Creating Reminders\n```\nCreate a reminder to \"Buy groceries\" for tomorrow at 5 PM.\nAdd a reminder to \"Call mom\" with a note \"Ask about weekend plans\".\nCreate a reminder in my \"Work\" list to \"Submit report\" due next Friday.\n```\n\n\n### Update Reminders\n```\nUpdate the reminder \"Buy groceries\" with a new title \"Buy organic groceries\".\nUpdate \"Call mom\" reminder to be due today at 6 PM.\nUpdate the reminder \"Submit report\" and mark it as completed.\nChange the notes on \"Buy groceries\" to \"Don't forget milk and eggs\".\n```\n\n### Managing Reminders\n```\nShow me all my reminders.\nList all reminders in my \"Shopping\" list.\nShow my completed reminders.\n```\n\n### Working with Lists\n```\nShow all my reminder lists.\nShow reminders from my \"Work\" list.\n```\n\nThe server will:\n- Process your natural language requests\n- Interact with Apple's native Reminders app\n- Return formatted results to Claude\n- Maintain native integration with macOS\n\n## Available MCP Tools\n\nThis server provides the following MCP services for interacting with Apple Reminders:\n\n### Create Reminder\n\n`create_reminder(title: string, dueDate?: string, list?: string, note?: string, url?: string)`\n\nCreates a new reminder with the specified title and optional parameters:\n- `title`: Title of the reminder (required)\n- `dueDate`: Optional due date in format 'YYYY-MM-DD HH:mm:ss' (e.g., '2025-03-12 10:00:00')\n- `list`: Optional name of the reminders list to add to\n- `note`: Optional note text to attach to the reminder\n- `url`: Optional URL to attach to the reminder\n\nExample response:\n```json\n{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"Successfully created reminder: Buy groceries with notes\"\n    }\n  ],\n  \"isError\": false\n}\n```\n\n### Update Reminder\n\n`update_reminder(title: string, newTitle?: string, dueDate?: string, note?: string, completed?: boolean, list?: string, url?: string)`\n\nUpdates an existing reminder by title. Note: If multiple reminders have the same title, only the first one found will be updated.\n- `title`: Current title of the reminder to update (required)\n- `newTitle`: New title for the reminder (optional)\n- `dueDate`: New due date in format 'YYYY-MM-DD HH:mm:ss' (optional)\n- `note`: New note text (optional)\n- `completed`: Mark reminder as completed/uncompleted (optional)\n- `list`: Name of the list containing the reminder (recommended for accuracy)\n- `url`: New URL to attach to the reminder (optional)\n\nExample response:\n```json\n{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"Successfully updated reminder \\\"Buy groceries\\\": title to \\\"Buy organic groceries\\\", notes\"\n    }\n  ],\n  \"isError\": false\n}\n```\n\n### List Reminders\n\n`list_reminders(list?: string, showCompleted?: boolean, search?: string, dueWithin?: string)`\n\nLists all reminders or reminders from a specific list:\n- `list`: Optional name of the reminders list to show\n- `showCompleted`: Whether to show completed reminders (default: false)\n- `search`: Search for reminders containing this text in title or notes\n- `dueWithin`: Filter by due date range (\"today\", \"tomorrow\", \"this-week\", \"overdue\", \"no-date\")\n\nExample response:\n```json\n{\n  \"reminders\": [\n    {\n      \"title\": \"Buy groceries\",\n      \"list\": \"Shopping\",\n      \"isCompleted\": false,\n      \"dueDate\": \"2024-03-25 18:00:00\",\n      \"notes\": \"Don't forget milk\"\n    }\n  ],\n  \"total\": 1,\n  \"filter\": {\n    \"list\": \"Shopping\",\n    \"showCompleted\": false\n  }\n}\n```\n\n### Delete Reminder\n\n`delete_reminder(title: string, list?: string)`\n\nDeletes a reminder by title:\n- `title`: Title of the reminder to delete (required)\n- `list`: Optional name of the list containing the reminder (recommended for accuracy)\n\nExample response:\n```json\n{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"Successfully deleted reminder: Buy groceries\"\n    }\n  ],\n  \"isError\": false\n}\n```\n\n### Move Reminder\n\n`move_reminder(title: string, fromList?: string, toList: string)`\n\nMoves a reminder between lists:\n- `title`: Title of the reminder to move (required)\n- `fromList`: Optional name of the source list\n- `toList`: Name of the destination list (required)\n\nExample response:\n```json\n{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"Successfully moved reminder 'Buy groceries' to list 'Shopping'\"\n    }\n  ],\n  \"isError\": false\n}\n```\n\n### List Reminder Lists\n\n`list_reminder_lists()`\n\nReturns a list of all available reminder lists.\n\nExample response:\n```json\n{\n  \"lists\": [\n    {\n      \"id\": 1,\n      \"title\": \"Shopping\"\n    },\n    {\n      \"id\": 2,\n      \"title\": \"Work\"\n    }\n  ],\n  \"total\": 2\n}\n```\n\n## License\n\nMIT\n\n## Contributing\n\nContributions welcome! Please read the contributing guidelines first.\n\n## Development\n\n1. Install dependencies:\n```bash\nnpm install\n```\n\n2. Build the project (TypeScript and Swift binary):\n```bash\nnpm run build\n```\n\n### Project Structure\n\n```\n.\n├── src/                   # Source code directory\n│   ├── index.ts           # Main entry point\n│   ├── server/            # MCP server implementation\n│   ├── swift/             # Native Swift integration code\n│   │   ├── bin/           # Compiled Swift binaries\n│   │   └── src/           # Swift source files\n│   ├── tools/             # CLI tools and utilities\n│   ├── types/             # TypeScript type definitions\n│   └── utils/             # Helper functions and utilities\n├── dist/                  # Compiled JavaScript output\n├── node_modules/          # Node.js dependencies\n└── tests/                 # Test files and test utilities\n```\n\n### Available Scripts\n\n- `npm run build` - Build TypeScript code and Swift binary (REQUIRED before starting server)\n- `npm run dev` - TypeScript watch mode\n- `npm test` - Run test suite\n- `npm start` - Start MCP server\n- `npm run clean` - Clean build artifacts\n",
-  "category": "AI Tools",
-  "qualityScore": 63,
-  "githubUrl": "https://github.com/FradSer/mcp-server-apple-reminders",
-  "programmingLanguage": "TypeScript",
-  "gitHubOrg": "FradSer",
-  "gitHubRepo": "mcp-server-apple-reminders",
-  "repositoryPath": null,
-  "gh_stars": 97,
-  "gh_contributors": 5,
-  "gh_issues": 10,
-  "gh_releases": true,
-  "gh_ci_cd": false,
-  "gh_latest_commit_hash": "780224042d2c953c2d8ac2fc993179b46b9c1fa4",
-  "last_scraped_at": "2025-08-04T09:32:32.679Z",
-  "implementing_tools": true,
-  "implementing_prompts": false,
-  "implementing_resources": true,
-  "implementing_sampling": false,
-  "implementing_roots": false,
-  "implementing_logging": false,
-  "implementing_stdio": true,
-  "implementing_streamable_http": false,
-  "implementing_oauth2": false,
-  "rawDependencies": "=== package.json ===\n{\n  \"name\": \"mcp-server-apple-reminders\",\n  \"version\": \"0.5.1\",\n  \"description\": \"MCP server that provides native integration with Apple Reminders on macOS.\",\n  \"author\": \"Frad Lee <https://frad.me>\",\n  \"license\": \"MIT\",\n  \"homepage\": \"https://frad.me\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/fradser/mcp-server-apple-reminders.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/fradser/mcp-server-apple-reminders/issues\"\n  },\n  \"keywords\": [\n    \"mcp\",\n    \"apple\",\n    \"reminders\",\n    \"automation\"\n  ],\n  \"type\": \"module\",\n  \"main\": \"dist/index.js\",\n  \"module\": \"src/index.js\",\n  \"bin\": {\n    \"mcp-server-apple-reminders\": \"./dist/index.js\"\n  },\n  \"scripts\": {\n    \"build\": \"npm run build:swift && npm run build:ts\",\n    \"build:ts\": \"tsc\",\n    \"build:swift\": \"src/swift/build.sh && mkdir -p dist/swift/bin && cp -p src/swift/bin/GetReminders dist/swift/bin/GetReminders\",\n    \"dev\": \"tsc --watch\",\n    \"start\": \"node dist/index.js\",\n    \"test\": \"jest\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.5.0\",\n    \"arktype\": \"^2.0.4\",\n    \"moment\": \"^2.30.1\",\n    \"zod\": \"^3.24.2\"\n  },\n  \"devDependencies\": {\n    \"@types/jest\": \"^29.5.12\",\n    \"@types/moment\": \"^2.13.0\",\n    \"@types/node\": \"^20.0.0\",\n    \"jest\": \"^29.7.0\",\n    \"ts-jest\": \"^29.1.2\",\n    \"typescript\": \"^5.8.2\"\n  },\n  \"peerDependencies\": {\n    \"typescript\": \"^5.0.0\"\n  }\n}\n",
-  "evaluation_model": "gemini-2.5-pro",
-  "configForClients": {
-    "mcpServers": {
-      "mcp-server-apple-reminders": {
-        "command": "mcp-server-apple-reminders",
-        "args": []
-      }
+  "author": {
+    "name": "FradSer"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "index.js",
+    "mcp_config": {
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
-  "configForArchestra": {
-    "oauth": {
-      "provider": "string",
-      "required": false
+  "tools": [],
+  "prompts": [],
+  "keywords": [],
+  "user_config": {},
+  "readme": "# Apple Reminders MCP Server ![](https://img.shields.io/badge/A%20FRAD%20PRODUCT-WIP-yellow)\n\n[![Twitter Follow](https://img.shields.io/twitter/follow/FradSer?style=social)](https://twitter.com/FradSer)\n\nEnglish | [简体中文](README.zh-CN.md)\n\nA Model Context Protocol (MCP) server that provides native integration with Apple Reminders on macOS. This server allows you to interact with Apple Reminders through a standardized interface.\n\n[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/fradser-mcp-server-apple-reminders-badge.png)](https://mseep.ai/app/fradser-mcp-server-apple-reminders)\n\n## Features\n\n- List all reminders and reminder lists\n- Create new reminders with titles and optional details\n- Update existing reminders (title, notes, due date, completion status)\n- Mark reminders as complete/incomplete\n- Add notes to reminders\n- Set due dates for reminders\n- Native macOS integration\n\n## Prerequisites\n\n- Node.js 18 or later\n- macOS (required for Apple Reminders integration)\n- Xcode Command Line Tools (required for compiling Swift code)\n\n## Quick Start\n\nInstall globally via npm:\n\n```bash\nnpm install -g mcp-server-apple-reminders\n```\n\n## Configuration\n\n### Configure Cursor\n\n1. Open Cursor\n2. Open Cursor settings\n3. Click on \"MCP\" in the sidebar\n4. Click \"Add new global MCP server\"\n5. Configure the server with the following settings:\n    ```json\n    {\n      \"mcpServers\": {\n        \"apple-reminders\": {\n          \"command\": \"mcp-server-apple-reminders\",\n          \"args\": []\n        }\n      }\n    }\n    ```\n\n### Configure ChatWise\n\n1. Open ChatWise\n2. Go to Settings\n3. Navigate to the Tools section\n4. Click the \"+\" button\n5. Configure the tool with the following settings:\n   - Type: `stdio`\n   - ID: `apple-reminders`\n   - Command: `mcp-server-apple-reminders`\n   - Args: (leave empty)\n\n### Configure Claude Desktop\n\nYou need to configure Claude Desktop to recognize the Apple Reminders MCP server. There are two ways to access the configuration:\n\n#### Option 1: Through Claude Desktop UI\n\n1. Open Claude Desktop app\n2. Enable Developer Mode from the top-left menu bar\n3. Open Settings and navigate to the Developer Option\n4. Click the Edit Config button to open `claude_desktop_config.json`\n\n#### Option 2: Direct File Access\n\nFor macOS:\n```bash\ncode ~/Library/Application\\ Support/Claude/claude_desktop_config.json\n```\n\nFor Windows:\n```bash\ncode %APPDATA%\\Claude\\claude_desktop_config.json\n```\n\n### 2. Add Server Configuration\n\nAdd the following configuration to your `claude_desktop_config.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"apple-reminders\": {\n      \"command\": \"mcp-server-apple-reminders\",\n      \"args\": []\n    }\n  }\n}\n```\n\n### 3. Restart Claude Desktop\n\nFor the changes to take effect:\n\n1. Completely quit Claude Desktop (not just close the window)\n2. Start Claude Desktop again\n3. Look for the tool icon to verify the Apple Reminders server is connected\n\n## Usage Examples\n\nOnce configured, you can ask Claude to interact with your Apple Reminders. Here are some example prompts:\n\n### Creating Reminders\n```\nCreate a reminder to \"Buy groceries\" for tomorrow at 5 PM.\nAdd a reminder to \"Call mom\" with a note \"Ask about weekend plans\".\nCreate a reminder in my \"Work\" list to \"Submit report\" due next Friday.\n```\n\n\n### Update Reminders\n```\nUpdate the reminder \"Buy groceries\" with a new title \"Buy organic groceries\".\nUpdate \"Call mom\" reminder to be due today at 6 PM.\nUpdate the reminder \"Submit report\" and mark it as completed.\nChange the notes on \"Buy groceries\" to \"Don't forget milk and eggs\".\n```\n\n### Managing Reminders\n```\nShow me all my reminders.\nList all reminders in my \"Shopping\" list.\nShow my completed reminders.\n```\n\n### Working with Lists\n```\nShow all my reminder lists.\nShow reminders from my \"Work\" list.\n```\n\nThe server will:\n- Process your natural language requests\n- Interact with Apple's native Reminders app\n- Return formatted results to Claude\n- Maintain native integration with macOS\n\n## Available MCP Tools\n\nThis server provides the following MCP services for interacting with Apple Reminders:\n\n### Create Reminder\n\n`create_reminder(title: string, dueDate?: string, list?: string, note?: string, url?: string)`\n\nCreates a new reminder with the specified title and optional parameters:\n- `title`: Title of the reminder (required)\n- `dueDate`: Optional due date in format 'YYYY-MM-DD HH:mm:ss' (e.g., '2025-03-12 10:00:00')\n- `list`: Optional name of the reminders list to add to\n- `note`: Optional note text to attach to the reminder\n- `url`: Optional URL to attach to the reminder\n\nExample response:\n```json\n{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"Successfully created reminder: Buy groceries with notes\"\n    }\n  ],\n  \"isError\": false\n}\n```\n\n### Update Reminder\n\n`update_reminder(title: string, newTitle?: string, dueDate?: string, note?: string, completed?: boolean, list?: string, url?: string)`\n\nUpdates an existing reminder by title. Note: If multiple reminders have the same title, only the first one found will be updated.\n- `title`: Current title of the reminder to update (required)\n- `newTitle`: New title for the reminder (optional)\n- `dueDate`: New due date in format 'YYYY-MM-DD HH:mm:ss' (optional)\n- `note`: New note text (optional)\n- `completed`: Mark reminder as completed/uncompleted (optional)\n- `list`: Name of the list containing the reminder (recommended for accuracy)\n- `url`: New URL to attach to the reminder (optional)\n\nExample response:\n```json\n{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"Successfully updated reminder \\\"Buy groceries\\\": title to \\\"Buy organic groceries\\\", notes\"\n    }\n  ],\n  \"isError\": false\n}\n```\n\n### List Reminders\n\n`list_reminders(list?: string, showCompleted?: boolean, search?: string, dueWithin?: string)`\n\nLists all reminders or reminders from a specific list:\n- `list`: Optional name of the reminders list to show\n- `showCompleted`: Whether to show completed reminders (default: false)\n- `search`: Search for reminders containing this text in title or notes\n- `dueWithin`: Filter by due date range (\"today\", \"tomorrow\", \"this-week\", \"overdue\", \"no-date\")\n\nExample response:\n```json\n{\n  \"reminders\": [\n    {\n      \"title\": \"Buy groceries\",\n      \"list\": \"Shopping\",\n      \"isCompleted\": false,\n      \"dueDate\": \"2024-03-25 18:00:00\",\n      \"notes\": \"Don't forget milk\"\n    }\n  ],\n  \"total\": 1,\n  \"filter\": {\n    \"list\": \"Shopping\",\n    \"showCompleted\": false\n  }\n}\n```\n\n### Delete Reminder\n\n`delete_reminder(title: string, list?: string)`\n\nDeletes a reminder by title:\n- `title`: Title of the reminder to delete (required)\n- `list`: Optional name of the list containing the reminder (recommended for accuracy)\n\nExample response:\n```json\n{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"Successfully deleted reminder: Buy groceries\"\n    }\n  ],\n  \"isError\": false\n}\n```\n\n### Move Reminder\n\n`move_reminder(title: string, fromList?: string, toList: string)`\n\nMoves a reminder between lists:\n- `title`: Title of the reminder to move (required)\n- `fromList`: Optional name of the source list\n- `toList`: Name of the destination list (required)\n\nExample response:\n```json\n{\n  \"content\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"Successfully moved reminder 'Buy groceries' to list 'Shopping'\"\n    }\n  ],\n  \"isError\": false\n}\n```\n\n### List Reminder Lists\n\n`list_reminder_lists()`\n\nReturns a list of all available reminder lists.\n\nExample response:\n```json\n{\n  \"lists\": [\n    {\n      \"id\": 1,\n      \"title\": \"Shopping\"\n    },\n    {\n      \"id\": 2,\n      \"title\": \"Work\"\n    }\n  ],\n  \"total\": 2\n}\n```\n\n## License\n\nMIT\n\n## Contributing\n\nContributions welcome! Please read the contributing guidelines first.\n\n## Development\n\n1. Install dependencies:\n```bash\nnpm install\n```\n\n2. Build the project (TypeScript and Swift binary):\n```bash\nnpm run build\n```\n\n### Project Structure\n\n```\n.\n├── src/                   # Source code directory\n│   ├── index.ts           # Main entry point\n│   ├── server/            # MCP server implementation\n│   ├── swift/             # Native Swift integration code\n│   │   ├── bin/           # Compiled Swift binaries\n│   │   └── src/           # Swift source files\n│   ├── tools/             # CLI tools and utilities\n│   ├── types/             # TypeScript type definitions\n│   └── utils/             # Helper functions and utilities\n├── dist/                  # Compiled JavaScript output\n├── node_modules/          # Node.js dependencies\n└── tests/                 # Test files and test utilities\n```\n\n### Available Scripts\n\n- `npm run build` - Build TypeScript code and Swift binary (REQUIRED before starting server)\n- `npm run dev` - TypeScript watch mode\n- `npm test` - Run test suite\n- `npm start` - Start MCP server\n- `npm run clean` - Clean build artifacts\n",
+  "category": "AI Tools",
+  "quality_score": 63,
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "mcp-server-apple-reminders": {
+          "command": "mcp-server-apple-reminders",
+          "args": [],
+          "env": {}
+        }
+      }
     },
-    "server_config": {
-      "args": [],
-      "command": "mcp-server-apple-reminders",
-      "transport": "stdio"
+    "oauth": {
+      "provider": null,
+      "required": false
     }
+  },
+  "github_info": {
+    "owner": "FradSer",
+    "repo": "mcp-server-apple-reminders",
+    "url": "https://github.com/FradSer/mcp-server-apple-reminders",
+    "name": "mcp-server-apple-reminders",
+    "path": null,
+    "stars": 97,
+    "contributors": 5,
+    "issues": 10,
+    "releases": true,
+    "ci_cd": false,
+    "latest_commit_hash": "780224042d2c953c2d8ac2fc993179b46b9c1fa4"
+  },
+  "programming_language": "TypeScript",
+  "framework": null,
+  "last_scraped_at": "2025-08-04T09:32:32.679Z",
+  "evaluation_model": "gemini-2.5-pro",
+  "protocol_features": {
+    "implementing_tools": true,
+    "implementing_prompts": false,
+    "implementing_resources": true,
+    "implementing_sampling": false,
+    "implementing_roots": false,
+    "implementing_logging": false,
+    "implementing_stdio": true,
+    "implementing_streamable_http": false,
+    "implementing_oauth2": false
   },
   "dependencies": [
     {
-      "importance": 10,
-      "name": "@modelcontextprotocol/sdk"
+      "name": "@modelcontextprotocol/sdk",
+      "importance": 10
     },
     {
-      "importance": 4,
-      "name": "arktype"
+      "name": "arktype",
+      "importance": 4
     },
     {
-      "importance": 4,
-      "name": "moment"
+      "name": "moment",
+      "importance": 4
     },
     {
-      "importance": 4,
-      "name": "zod"
+      "name": "zod",
+      "importance": 4
     }
-  ]
+  ],
+  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"mcp-server-apple-reminders\",\n  \"version\": \"0.5.1\",\n  \"description\": \"MCP server that provides native integration with Apple Reminders on macOS.\",\n  \"author\": \"Frad Lee <https://frad.me>\",\n  \"license\": \"MIT\",\n  \"homepage\": \"https://frad.me\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/fradser/mcp-server-apple-reminders.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/fradser/mcp-server-apple-reminders/issues\"\n  },\n  \"keywords\": [\n    \"mcp\",\n    \"apple\",\n    \"reminders\",\n    \"automation\"\n  ],\n  \"type\": \"module\",\n  \"main\": \"dist/index.js\",\n  \"module\": \"src/index.js\",\n  \"bin\": {\n    \"mcp-server-apple-reminders\": \"./dist/index.js\"\n  },\n  \"scripts\": {\n    \"build\": \"npm run build:swift && npm run build:ts\",\n    \"build:ts\": \"tsc\",\n    \"build:swift\": \"src/swift/build.sh && mkdir -p dist/swift/bin && cp -p src/swift/bin/GetReminders dist/swift/bin/GetReminders\",\n    \"dev\": \"tsc --watch\",\n    \"start\": \"node dist/index.js\",\n    \"test\": \"jest\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.5.0\",\n    \"arktype\": \"^2.0.4\",\n    \"moment\": \"^2.30.1\",\n    \"zod\": \"^3.24.2\"\n  },\n  \"devDependencies\": {\n    \"@types/jest\": \"^29.5.12\",\n    \"@types/moment\": \"^2.13.0\",\n    \"@types/node\": \"^20.0.0\",\n    \"jest\": \"^29.7.0\",\n    \"ts-jest\": \"^29.1.2\",\n    \"typescript\": \"^5.8.2\"\n  },\n  \"peerDependencies\": {\n    \"typescript\": \"^5.0.0\"\n  }\n}\n"
 }
