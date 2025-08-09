@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import { Shield, Key, Lock, FileCheck, AlertTriangle, Server, Cpu, CheckCircle, Github, Star, Users, GitCommit, Construction, Monitor, MessageSquare } from "lucide-react";
+import { Shield, Key, Lock, FileCheck, AlertTriangle, Server, Cpu, CheckCircle, Github, Star, Users, GitCommit, Construction, Monitor, MessageSquare, Package } from "lucide-react";
 import { EmailForm } from "../components/email-form";
 
 export const metadata: Metadata = {
@@ -129,8 +129,7 @@ export default async function Home() {
               Archestra
             </h1>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
-              At Archestra we're developing an enterprise-grade platform that enables non-technical users 
-              to safely leverage AI agents and MCP (Model Context Protocol) servers.
+              Enterprise-grade platform for non-technical users to safely run AI agents and MCP (Model Context Protocol) servers.
             </p>
           </div>
 
@@ -153,18 +152,18 @@ export default async function Home() {
               </div>
 
               <div className="flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-200">
-                <CheckCircle className="h-6 w-6 text-gray-700 mt-0.5 flex-shrink-0" />
+                <Package className="h-6 w-6 text-gray-700 mt-0.5 flex-shrink-0" />
                 <div>
-                  <h3 className="font-semibold mb-1">Compliance with MCP Specification</h3>
-                  <p className="text-sm text-gray-600">Compatible with thousands of existing MCP servers and supports custom implementations</p>
+                  <h3 className="font-semibold mb-1">Supply Chain Analysis</h3>
+                  <p className="text-sm text-gray-600">AI-powered evaluation of dependencies and security vulnerabilities in MCP server packages</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-200">
-                <Monitor className="h-6 w-6 text-gray-700 mt-0.5 flex-shrink-0" />
+              <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border-2 border-blue-300 shadow-md">
+                <Monitor className="h-6 w-6 text-blue-600 mt-0.5 flex-shrink-0" />
                 <div className="flex-1">
-                  <h3 className="font-semibold mb-1">Desktop App</h3>
-                  <p className="text-sm text-gray-600 mb-3">
+                  <h3 className="font-semibold mb-1 text-blue-900">Desktop App</h3>
+                  <p className="text-sm text-gray-700 mb-3">
                     We're building the desktop app and it's currently in early alpha. Subscribe below 
                     to get notified when it's ready.
                   </p>
