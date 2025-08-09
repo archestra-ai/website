@@ -1,22 +1,27 @@
-import type { Metadata } from 'next'
-import './globals.css'
-import { PostHogProvider } from '../components/PostHogProvider'
+import type { Metadata, Viewport } from 'next';
+
+import { PostHogProvider } from '@components/PostHogProvider';
+import constants from '@constants';
+
+import './globals.css';
+
+const {
+  website: { urls: websiteUrls, keywords: websiteKeywords },
+  company: { name: companyName, tagline: companyTagline, description: companyDescription, people: companyPeople },
+  twitter: { handle: twitterHandle },
+} = constants;
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://archestra.ai'),
+  metadataBase: new URL(websiteUrls.base),
   title: {
-    default: 'Archestra | Enterprise MCP Platform for AI Agents',
-    template: '%s | Archestra'
+    default: companyTagline,
+    template: `%s | ${companyName}`,
   },
-  description: 'Enterprise-grade platform enabling non-technical users to safely leverage AI agents and MCP (Model Context Protocol) servers with security guardrails and compliance.',
-  keywords: ['MCP', 'Model Context Protocol', 'AI agents', 'enterprise AI', 'secure runtime', 'AI security', 'prompt injection prevention', 'AI compliance'],
-  authors: [
-    { name: 'Matvey Kukuy' },
-    { name: 'Ildar Iskhakov' },
-    { name: 'Joey Orlando' }
-  ],
-  creator: 'Archestra Inc.',
-  publisher: 'Archestra Inc.',
+  description: companyDescription,
+  keywords: websiteKeywords,
+  authors: [{ name: companyPeople.matvey.name }, { name: companyPeople.ildar.name }, { name: companyPeople.joey.name }],
+  creator: companyName,
+  publisher: companyName,
   formatDetection: {
     email: false,
     address: false,
@@ -25,25 +30,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://archestra.ai',
-    siteName: 'Archestra',
-    title: 'Archestra | Enterprise MCP Platform for AI Agents',
-    description: 'Enterprise-grade platform enabling non-technical users to safely leverage AI agents and MCP servers with security guardrails.',
+    url: websiteUrls.base,
+    siteName: companyName,
+    title: companyTagline,
+    description: companyDescription,
     images: [
       {
-        url: '/og-image.png',
+        url: websiteUrls.logoAbsoluteUrl,
         width: 1200,
         height: 630,
-        alt: 'Archestra - Enterprise MCP Platform',
-      }
+        alt: companyTagline,
+      },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Archestra | Enterprise MCP Platform for AI Agents',
-    description: 'Enterprise-grade platform for safely leveraging AI agents and MCP servers',
-    images: ['/og-image.png'],
-    creator: '@archestra_ai',
+    title: companyTagline,
+    description: companyDescription,
+    images: [websiteUrls.logoAbsoluteUrl],
+    creator: twitterHandle,
   },
   robots: {
     index: true,
@@ -56,22 +61,24 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  viewport: 'width=device-width, initial-scale=1',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
   themeColor: '#000000',
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body>
-        <PostHogProvider>
-          {children}
-        </PostHogProvider>
+        <PostHogProvider>{children}</PostHogProvider>
       </body>
     </html>
-  )
+  );
 }

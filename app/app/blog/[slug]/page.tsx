@@ -1,16 +1,22 @@
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import Header from "../../../components/header";
-import Footer from "../../../components/footer";
-import Link from "next/link";
-import { Github } from "lucide-react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import remarkBreaks from "remark-breaks";
-import rehypeHighlight from "rehype-highlight";
-import rehypeRaw from "rehype-raw";
-import { getPostBySlug, getAllPosts, formatDateShort } from "../blog-utils";
-import "highlight.js/styles/github.css";
+import 'highlight.js/styles/github.css';
+import { Github } from 'lucide-react';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import ReactMarkdown from 'react-markdown';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeRaw from 'rehype-raw';
+import remarkBreaks from 'remark-breaks';
+import remarkGfm from 'remark-gfm';
+
+import Footer from '@components/Footer';
+import Header from '@components/Header';
+import constants from '@constants';
+
+import { formatDateShort, getAllPosts, getPostBySlug } from '../utils';
+
+const {
+  company: { name: companyName },
+} = constants;
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -22,12 +28,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!post) {
     return {
-      title: 'Post Not Found | Archestra',
+      title: `Post Not Found | ${companyName}`,
     };
   }
 
   return {
-    title: `${post.title} | Archestra Blog`,
+    title: `${post.title} | ${companyName} Blog`,
     description: post.excerpt,
     openGraph: {
       title: post.title,
@@ -63,24 +69,20 @@ export default async function BlogPostPage({ params }: Props) {
           className="absolute inset-0 z-0"
           style={{
             backgroundImage:
-              "linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
+              'linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px)',
+            backgroundSize: '40px 40px',
           }}
         />
 
         <div className="container relative z-10 px-4 md:px-6 py-16 max-w-4xl mx-auto">
           <article className="text-center">
             <header className="mb-16">
-              <div className="text-blue-600 text-base mb-4">
-                {formatDateShort(post.date)}
-              </div>
+              <div className="text-blue-600 text-base mb-4">{formatDateShort(post.date)}</div>
               <h1 className="text-3xl md:text-4xl font-medium text-gray-900 mb-6 leading-tight max-w-4xl mx-auto">
                 {post.title}
               </h1>
-              
-              <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto mb-8">
-                {post.excerpt}
-              </p>
+
+              <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto mb-8">{post.excerpt}</p>
 
               {(post.github || post.cta) && (
                 <div className="flex items-center justify-center gap-4">
@@ -117,35 +119,28 @@ export default async function BlogPostPage({ params }: Props) {
                 remarkPlugins={[remarkGfm, remarkBreaks]}
                 rehypePlugins={[rehypeHighlight, rehypeRaw]}
                 components={{
-                  p: ({ node, ...props }) => (
-                    <p {...props} className="text-lg text-gray-700 leading-relaxed mb-6" />
-                  ),
+                  p: ({ node, ...props }) => <p {...props} className="text-lg text-gray-700 leading-relaxed mb-6" />,
                   h1: ({ node, ...props }) => (
                     <h1 {...props} className="text-3xl font-medium text-gray-900 mb-6 mt-10" />
                   ),
                   h2: ({ node, ...props }) => (
                     <h2 {...props} className="text-2xl font-medium text-gray-900 mb-4 mt-8" />
                   ),
-                  h3: ({ node, ...props }) => (
-                    <h3 {...props} className="text-xl font-medium text-gray-900 mb-3 mt-6" />
-                  ),
-                  ul: ({ node, ...props }) => (
-                    <ul {...props} className="list-disc list-inside mb-6 space-y-2 pl-4" />
-                  ),
+                  h3: ({ node, ...props }) => <h3 {...props} className="text-xl font-medium text-gray-900 mb-3 mt-6" />,
+                  ul: ({ node, ...props }) => <ul {...props} className="list-disc list-inside mb-6 space-y-2 pl-4" />,
                   ol: ({ node, ...props }) => (
                     <ol {...props} className="list-decimal list-inside mb-6 space-y-2 pl-4" />
                   ),
-                  li: ({ node, ...props }) => (
-                    <li {...props} className="text-lg text-gray-700 leading-relaxed" />
-                  ),
+                  li: ({ node, ...props }) => <li {...props} className="text-lg text-gray-700 leading-relaxed" />,
                   a: ({ node, ...props }) => (
                     <a {...props} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer" />
                   ),
-                  img: ({ node, ...props }) => (
-                    <img {...props} className="rounded-lg shadow-md my-8 w-full" />
-                  ),
+                  img: ({ node, ...props }) => <img {...props} className="rounded-lg shadow-md my-8 w-full" />,
                   blockquote: ({ node, ...props }) => (
-                    <blockquote {...props} className="border-l-4 border-gray-300 pl-6 my-6 text-lg text-gray-600 italic" />
+                    <blockquote
+                      {...props}
+                      className="border-l-4 border-gray-300 pl-6 my-6 text-lg text-gray-600 italic"
+                    />
                   ),
                   pre: ({ node, ...props }) => (
                     <pre {...props} className="bg-gray-50 rounded-lg p-4 overflow-x-auto my-6 text-sm" />
