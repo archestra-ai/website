@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { loadServers } from 'src/app/mcp-catalog/lib/catalog';
-import { calculateQualityScore } from 'src/app/mcp-catalog/lib/qualityCalculator';
+
+import { loadServers } from '@mcpCatalog/lib/catalog';
+import { calculateQualityScore } from '@mcpCatalog/lib/quality-calculator';
 
 export async function GET(request: NextRequest, props: { params: Promise<{ name: string }> }) {
   const params = await props.params;

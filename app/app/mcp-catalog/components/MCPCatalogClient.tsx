@@ -1,17 +1,16 @@
 'use client';
 
-import { ArchestraMcpServerManifest } from 'app/mcp-catalog/types';
 import { ChevronDown, ChevronUp, ChevronsUpDown, Filter, Menu, Search, X } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { getMcpServerName } from 'src/app/mcp-catalog/lib/github';
 
 import { Badge } from '@components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
 import { Input } from '@components/ui/input';
-
-import { QualityBar } from './QualityBar';
+import { QualityBar } from '@mcpCatalog/components/QualityBar';
+import { getMcpServerName } from '@mcpCatalog/lib/github';
+import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 const ITEMS_PER_PAGE = 30;
 

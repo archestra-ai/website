@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { loadServers } from 'src/app/mcp-catalog/lib/catalog';
 
-import { SearchQuerySchema, SearchResponseSchema } from '../schemas';
+import { SearchQuerySchema, SearchResponseSchema } from '@mcpCatalog/api/schemas';
+import { loadServers } from '@mcpCatalog/lib/catalog';
 
 export async function GET(request: NextRequest) {
   try {

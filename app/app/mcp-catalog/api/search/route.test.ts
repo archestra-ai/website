@@ -1,11 +1,12 @@
-import { ArchestraMcpServerManifest } from 'app/mcp-catalog/types';
 import { NextRequest } from 'next/server';
 import { describe, expect, it, vi } from 'vitest';
+
+import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 import { GET } from './route';
 
 // Mock loadServers to return predictable test data
-vi.mock('@utils/catalog', () => ({
+vi.mock('@mcpCatalog/lib/catalog', () => ({
   loadServers: () =>
     [
       {

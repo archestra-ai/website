@@ -1,12 +1,12 @@
 'use client';
 
-import { ArchestraMcpServerManifest, ArchestraScoreBreakdown } from 'app/mcp-catalog/types';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 
-import { QualityBar } from '@components/McpServer/QualityBar';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
 import constants, { generateUrlToEditIndividualMcpCatalogJsonFile } from '@constants';
+import { QualityBar } from '@mcpCatalog/components/QualityBar';
+import { ArchestraMcpServerManifest, ArchestraScoreBreakdown } from '@mcpCatalog/types';
 
 const {
   company: { name: companyName },

@@ -1,8 +1,8 @@
 import { OpenAPIRegistry, OpenApiGeneratorV3 } from '@asteasolutions/zod-to-openapi';
-import { ArchestraMcpServerManifestWithScoreBreakdownSchema, McpServerCategorySchema } from 'app/mcp-catalog/schemas';
 import { z } from 'zod';
 
-import { ErrorResponseSchema, SearchQuerySchema, SearchResponseSchema } from './schemas';
+import { ErrorResponseSchema, SearchQuerySchema, SearchResponseSchema } from '@mcpCatalog/api/schemas';
+import { ArchestraMcpServerManifestWithScoreBreakdownSchema, McpServerCategorySchema } from '@mcpCatalog/schemas';
 
 const registry = new OpenAPIRegistry();
 

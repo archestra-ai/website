@@ -27,7 +27,8 @@
     "paths": {
       "@components/*": ["components/*"],
       "@constants": ["constants"],
-      "@utils/*": ["utils/*"]
+      "@lib/*": ["lib/*"],
+      "@mcpCatalog/*": ["app/mcp-catalog/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

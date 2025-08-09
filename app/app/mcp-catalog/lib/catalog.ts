@@ -1,8 +1,8 @@
-import { ArchestraMcpServerManifest } from 'app/mcp-catalog/types';
 import fs from 'fs';
 import path from 'path';
 
 import constants from '@constants';
+import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 /**
  * Path constants

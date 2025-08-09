@@ -1,11 +1,11 @@
 'use client';
 
-import { ArchestraMcpServerManifest } from 'app/mcp-catalog/types';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
 import { generateUrlToEditIndividualMcpCatalogJsonFile } from '@constants';
+import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 interface DependenciesCardProps {
   server: ArchestraMcpServerManifest;

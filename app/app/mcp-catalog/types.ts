@@ -11,7 +11,7 @@ import {
   ArchestraServerConfigSchema,
   MCPDependencySchema,
   McpServerCategorySchema,
-} from './schemas';
+} from '@mcpCatalog/schemas';
 
 // Infer types from Zod schemas
 export type McpServerCategory = z.infer<typeof McpServerCategorySchema>;

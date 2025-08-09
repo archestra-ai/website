@@ -1,18 +1,22 @@
 #!/usr/bin/env tsx
+import fs from 'fs';
+import path from 'path';
+import { zodToJsonSchema } from 'zod-to-json-schema';
+
+import { extractServerInfo, loadServers } from '@mcpCatalog/lib/catalog';
+import { calculateQualityScore } from '@mcpCatalog/lib/quality-calculator';
 import {
   ArchestraMcpServerManifestSchema,
   ArchestraMcpServerProtocolFeaturesSchema,
   ArchestraServerConfigSchema,
   MCPDependencySchema,
-} from 'app/mcp-catalog/schemas';
-import { ArchestraMcpServerGitHubRepoInfo, ArchestraMcpServerManifest } from 'app/mcp-catalog/types';
-import fs from 'fs';
-import path from 'path';
-import { extractServerInfo, loadServers } from 'src/app/mcp-catalog/lib/catalog';
-import { calculateQualityScore } from 'src/app/mcp-catalog/lib/qualityCalculator';
-import { zodToJsonSchema } from 'zod-to-json-schema';
+  McpServerCategorySchema,
+} from '@mcpCatalog/schemas';
+import { ArchestraMcpServerGitHubRepoInfo, ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
-import { MCP_SERVERS_EVALUATIONS_DIR, MCP_SERVERS_JSON_FILE_PATH, TYPES_PATH } from './paths';
+import { MCP_SERVERS_EVALUATIONS_DIR, MCP_SERVERS_JSON_FILE_PATH } from './paths';
+
+const CATEGORIES = McpServerCategorySchema.options;
 
 interface GitHubApiResponse {
   name: string;
@@ -44,7 +48,6 @@ interface EvaluateSingleRepoOptions {
 
 interface EvaluateAllReposOptions extends EvaluateSingleRepoOptions {
   concurrency?: number;
-  categories?: string[];
   limit?: number;
 }
 
@@ -576,30 +579,6 @@ async function callLLM(prompt: string, format?: any, model = 'gemini-2.5-pro'): 
 }
 
 /**
- * Extract categories from the types.ts file
- */
-function extractCategories(): string[] {
-  const typesContent = fs.readFileSync(TYPES_PATH, 'utf-8');
-
-  // Find the category type definition
-  const categoryMatch = typesContent.match(/category:\s*\n\s*\|([\s\S]*?)\s*\|\s*null;/);
-
-  if (!categoryMatch) {
-    throw new Error('Could not find category definition in types.ts');
-  }
-
-  // Extract all quoted strings from the union type
-  const categorySection = categoryMatch[1];
-  const categories = categorySection
-    .split('|')
-    .map((line) => line.trim())
-    .filter((line) => line.startsWith('"') && line.endsWith('"'))
-    .map((line) => line.slice(1, -1)); // Remove quotes
-
-  return categories;
-}
-
-/**
  * Remove URL from mcp-servers.json
  */
 function removeFromServerList(url: string): void {
@@ -720,7 +699,6 @@ async function extractGitHubData(
  */
 async function extractCategory(
   server: ArchestraMcpServerManifest,
-  categories: string[],
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
@@ -742,7 +720,7 @@ async function extractCategory(
     return server;
   }
 
-  const prompt = `Analyze this MCP server and choose the most appropriate category from this list: ${categories.join(
+  const prompt = `Analyze this MCP server and choose the most appropriate category from this list: ${CATEGORIES.join(
     ', '
   )}
 
@@ -1236,8 +1214,7 @@ async function evaluateSingleRepo(
     }
 
     if (updateCategory) {
-      const categories = extractCategories();
-      server = await extractCategory(server, categories, model, force);
+      server = await extractCategory(server, model, force);
     }
 
     if (updateServerConfig) {
@@ -1349,7 +1326,6 @@ async function evaluateSingleRepo(
  */
 async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<void> {
   const {
-    showOutput = false,
     force = false,
     updateGithub = false,
     updateCategory = false,
@@ -1358,10 +1334,7 @@ async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<
     updateDependencies = false,
     updateProtocol = false,
     updateScore = false,
-    model = 'gemini-2.5-pro',
-    updateAll = false,
     concurrency: _concurrency = 10,
-    categories = [],
     limit = 0,
   } = options;
 
@@ -1390,7 +1363,7 @@ Total servers: ${githubUrls.length}${
 Existing evaluations: ${existingFiles.length}
 Concurrency: ${concurrency} parallel requests
 Options: ${Object.entries(options)
-    .filter(([k, v]) => v && k !== 'concurrency' && k !== 'categories' && k !== 'limit')
+    .filter(([k, v]) => v && k !== 'concurrency' && k !== 'limit')
     .map(([k]) => k)
     .join(', ')}\n`);
 
@@ -1561,22 +1534,12 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
    Get a token at: https://github.com/settings/tokens\n`);
   }
 
-  let categories: string[] | undefined;
-
-  if (options.updateCategory) {
-    categories = extractCategories();
-    console.log(`✅ Found ${categories.length} categories from types.ts`);
-  }
-
   // Single repo evaluation
   if (githubUrl) {
     await evaluateSingleRepo(githubUrl, options);
   } else {
     // Batch evaluation
-    await evaluateAllRepos({
-      ...options,
-      categories,
-    });
+    await evaluateAllRepos(options);
   }
 }
 

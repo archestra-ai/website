@@ -1,4 +1,3 @@
-import { ArchestraMcpServerManifest } from 'app/mcp-catalog/types';
 import 'highlight.js/styles/github.css';
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
 import { Metadata } from 'next';
@@ -9,23 +8,24 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
-import TrustScoreBadge from 'src/app/mcp-catalog/components/TrustScoreBadge';
-import { countServersInRepo, loadServers } from 'src/app/mcp-catalog/lib/catalog';
-import { getMcpServerGitHubUrl, getMcpServerName } from 'src/app/mcp-catalog/lib/github';
-import { calculateQualityScore } from 'src/app/mcp-catalog/lib/qualityCalculator';
 
 import Footer from '@components/Footer';
 import Header from '@components/Header';
-import ConfigSection from '@components/McpServer/ConfigSection';
-import DependenciesCard from '@components/McpServer/DependenciesCard';
-import { QualityBar } from '@components/McpServer/QualityBar';
-import QualityScoreCard from '@components/McpServer/QualityScoreCard';
 import { Badge } from '@components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
 import constants, {
   generateMcpCatalogDetailPageUrlFromServerName,
   generateUrlToEditIndividualMcpCatalogJsonFile,
 } from '@constants';
+import ConfigSection from '@mcpCatalog/components/ConfigSection';
+import DependenciesCard from '@mcpCatalog/components/DependenciesCard';
+import { QualityBar } from '@mcpCatalog/components/QualityBar';
+import QualityScoreCard from '@mcpCatalog/components/QualityScoreCard';
+import TrustScoreBadge from '@mcpCatalog/components/TrustScoreBadge';
+import { countServersInRepo, loadServers } from '@mcpCatalog/lib/catalog';
+import { getMcpServerGitHubUrl, getMcpServerName } from '@mcpCatalog/lib/github';
+import { calculateQualityScore } from '@mcpCatalog/lib/quality-calculator';
+import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 interface PageProps {
   params: Promise<{ name: string }>;

@@ -7,13 +7,10 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@components': path.resolve(__dirname, './src/components'),
-      '@constants': path.resolve(__dirname, './src/constants'),
-      '@hooks': path.resolve(__dirname, './src/hooks'),
-      '@providers': path.resolve(__dirname, './src/providers'),
-      '@schemas': path.resolve(__dirname, './src/schemas'),
-      '@archestra/types': path.resolve(__dirname, './src/types'),
-      '@utils': path.resolve(__dirname, './src/utils'),
+      '@components': path.resolve(__dirname, './components'),
+      '@constants': path.resolve(__dirname, './constants'),
+      '@lib': path.resolve(__dirname, './lib'),
+      '@mcpCatalog': path.resolve(__dirname, './app/mcp-catalog'),
     },
   },
   test: {

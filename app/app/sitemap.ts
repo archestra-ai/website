@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
-import { loadServers } from 'src/app/mcp-catalog/lib/catalog';
 
 import constants, { generateMcpCatalogDetailPageUrlFromServerName } from '@constants';
+import { loadServers } from '@mcpCatalog/lib/catalog';
 
 const {
   base: websiteBaseUrl,

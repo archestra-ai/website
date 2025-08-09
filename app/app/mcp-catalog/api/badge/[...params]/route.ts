@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server';
-import { loadServers } from 'src/app/mcp-catalog/lib/catalog';
+
+import { loadServers } from '@mcpCatalog/lib/catalog';
 
 export async function GET(request: NextRequest, props: { params: Promise<{ params: string[] }> }) {
   const params = await props.params;

@@ -1,14 +1,14 @@
-import { ArchestraMcpServerManifest } from 'app/mcp-catalog/types';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
-import TrustScoreBadge from 'src/app/mcp-catalog/components/TrustScoreBadge';
-import { countServersInRepo, loadServers } from 'src/app/mcp-catalog/lib/catalog';
 
 import Footer from '@components/Footer';
 import Header from '@components/Header';
-import MCPCatalogClient from '@components/McpServer/MCPCatalogClient';
-import ScoringExplanationCard from '@components/McpServer/ScoringExplanationCard';
 import constants from '@constants';
+import MCPCatalogClient from '@mcpCatalog/components/MCPCatalogClient';
+import ScoringExplanationCard from '@mcpCatalog/components/ScoringExplanationCard';
+import TrustScoreBadge from '@mcpCatalog/components/TrustScoreBadge';
+import { countServersInRepo, loadServers } from '@mcpCatalog/lib/catalog';
+import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 const {
   website: { keywords: websiteKeywords, urls: websiteUrls },

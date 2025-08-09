@@ -2,9 +2,10 @@
 
 import { Check, Copy } from 'lucide-react';
 import { useState } from 'react';
-import { generateBadgeMarkdown, generateBadgeRelativeUrl } from 'src/app/mcp-catalog/components/TrustScoreBadge/utils';
 
 import { Button } from '@components/ui/button';
+
+import { generateBadgeMarkdown, generateBadgeRelativeUrl } from './utils';
 
 interface TrustScoreBadgeProps {
   variant: 'large' | 'compact';

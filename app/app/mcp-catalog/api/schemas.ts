@@ -1,5 +1,6 @@
-import { ArchestraMcpServerManifestSchema, McpServerCategorySchema } from 'app/mcp-catalog/schemas';
 import { z } from 'zod';
+
+import { ArchestraMcpServerManifestSchema, McpServerCategorySchema } from '@mcpCatalog/schemas';
 
 export const SearchQuerySchema = z.object({
   q: z.string().optional().describe('Search query to filter by name, description, or repository'),

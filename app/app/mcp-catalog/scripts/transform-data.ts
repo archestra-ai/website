@@ -1,8 +1,9 @@
 #!/usr/bin/env tsx
-import { ArchestraMcpServerManifestSchema } from 'app/mcp-catalog/schemas';
-import type { ArchestraMcpServerManifest } from 'app/mcp-catalog/types';
 import fs from 'fs/promises';
 import path from 'path';
+
+import { ArchestraMcpServerManifestSchema } from '@mcpCatalog/schemas';
+import type { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 import { MCP_SERVERS_EVALUATIONS_DIR } from './paths';
 

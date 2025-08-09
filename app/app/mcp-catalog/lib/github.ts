@@ -1,4 +1,4 @@
-import { ArchestraMcpServerManifest } from 'app/mcp-catalog/types';
+import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 // Helper function to get the display name for an MCP server
 export function getMcpServerName({ github_info: { path, repo } }: ArchestraMcpServerManifest): string {

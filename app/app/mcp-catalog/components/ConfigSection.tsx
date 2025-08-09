@@ -1,12 +1,12 @@
 'use client';
 
-import { ArchestraMcpServerManifest } from 'app/mcp-catalog/types';
 import hljs from 'highlight.js/lib/core';
 import json from 'highlight.js/lib/languages/json';
 import { Check, Copy } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 import { Button } from '@components/ui/button';
+import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 hljs.registerLanguage('json', json);
 
