@@ -55,20 +55,6 @@
             "required": ["name"],
             "additionalProperties": false
           },
-          "repository": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "url": {
-                "type": "string",
-                "format": "uri"
-              }
-            },
-            "required": ["type", "url"],
-            "additionalProperties": false
-          },
           "homepage": {
             "type": "string",
             "format": "uri"
@@ -339,14 +325,48 @@
             "minimum": 0,
             "maximum": 100
           },
-          "config_for_archestra": {
+          "archestra_config": {
             "type": "object",
             "properties": {
+              "client_config_permutations": {
+                "type": "object",
+                "nullable": true,
+                "properties": {
+                  "mcpServers": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "properties": {
+                        "command": {
+                          "type": "string"
+                        },
+                        "args": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "env": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": ["command"],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": ["mcpServers"]
+              },
               "oauth": {
                 "type": "object",
                 "properties": {
                   "provider": {
-                    "type": "string"
+                    "type": "string",
+                    "nullable": true,
+                    "enum": ["google"]
                   },
                   "required": {
                     "type": "boolean"
@@ -355,7 +375,7 @@
                 "required": ["provider", "required"]
               }
             },
-            "required": ["oauth"]
+            "required": ["client_config_permutations", "oauth"]
           },
           "github_info": {
             "type": "object",
@@ -493,6 +513,7 @@
         "required": [
           "dxt_version",
           "name",
+          "display_name",
           "version",
           "description",
           "author",
@@ -500,7 +521,7 @@
           "readme",
           "category",
           "quality_score",
-          "config_for_archestra",
+          "archestra_config",
           "github_info",
           "programming_language",
           "framework",
