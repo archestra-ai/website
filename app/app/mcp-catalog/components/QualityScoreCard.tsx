@@ -4,8 +4,9 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
-import constants, { generateUrlToEditIndividualMcpCatalogJsonFile } from '@constants';
+import constants from '@constants';
 import { QualityBar } from '@mcpCatalog/components/QualityBar';
+import { generateUrlToIndividualMcpCatalogJsonFile } from '@mcpCatalog/lib/urls';
 import { ArchestraMcpServerManifest, ArchestraScoreBreakdown } from '@mcpCatalog/types';
 
 const {
@@ -21,7 +22,7 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
   const [showDetails, setShowDetails] = useState(false);
 
   const {
-    name: serverName,
+    name: serverId,
     quality_score: qualityScore,
     evaluation_model: evaluationModel,
     protocol_features: protocolFeatures,
@@ -90,7 +91,7 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
                   {evaluationModel === null ? '✨ Human evaluation' : `🤖 Evaluated by ${evaluationModel}`}
                 </span>
                 <a
-                  href={generateUrlToEditIndividualMcpCatalogJsonFile(serverName)}
+                  href={generateUrlToIndividualMcpCatalogJsonFile(serverId, true)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"

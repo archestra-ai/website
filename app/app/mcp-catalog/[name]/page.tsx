@@ -13,18 +13,15 @@ import Footer from '@components/Footer';
 import Header from '@components/Header';
 import { Badge } from '@components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
-import constants, {
-  generateMcpCatalogDetailPageUrlFromServerName,
-  generateUrlToEditIndividualMcpCatalogJsonFile,
-} from '@constants';
+import constants from '@constants';
 import ConfigSection from '@mcpCatalog/components/ConfigSection';
 import DependenciesCard from '@mcpCatalog/components/DependenciesCard';
 import { QualityBar } from '@mcpCatalog/components/QualityBar';
 import QualityScoreCard from '@mcpCatalog/components/QualityScoreCard';
 import TrustScoreBadge from '@mcpCatalog/components/TrustScoreBadge';
 import { countServersInRepo, loadServers } from '@mcpCatalog/lib/catalog';
-import { getMcpServerGitHubUrl, getMcpServerName } from '@mcpCatalog/lib/github';
 import { calculateQualityScore } from '@mcpCatalog/lib/quality-calculator';
+import { generateMcpCatalogDetailPageUrl, generateUrlToIndividualMcpCatalogJsonFile } from '@mcpCatalog/lib/urls';
 import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 interface PageProps {
@@ -52,10 +49,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const serverName = getMcpServerName(server);
+  const {
+    name: serverId,
+    display_name: serverName,
+    category,
+    description,
+    programming_language: programmingLanguage,
+  } = server;
+
   const qualityScore = calculateQualityScore(server);
-  const mcpCatalogDetailPageUrl = generateMcpCatalogDetailPageUrlFromServerName(serverName);
-  const { category, description, programming_language: programmingLanguage } = server;
+  const mcpCatalogDetailPageUrl = generateMcpCatalogDetailPageUrl(serverId);
+
+  let keywords = ['MCP server', 'Model Context Protocol', serverName];
+  if (category) {
+    keywords.push(category);
+  }
+
+  if (programmingLanguage) {
+    keywords.push(programmingLanguage);
+  }
 
   return {
     title: `${serverName} MCP Server | Documentation & Integration`,
@@ -64,9 +76,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `${serverName} - Model Context Protocol server. Quality score: ${
         qualityScore.total
       }/100. ${category ? `Category: ${category}` : ''}`,
-    keywords: ['MCP server', serverName, 'Model Context Protocol', category || '', programmingLanguage || ''].filter(
-      Boolean
-    ),
+    keywords,
     openGraph: {
       title: `${serverName} MCP Server`,
       description: description || `${serverName} MCP server for AI agents`,
@@ -119,20 +129,10 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
     return catalogParams.toString() ? `/mcp-catalog?${catalogParams.toString()}` : '/mcp-catalog';
   })();
 
-  const serverName = getMcpServerName(server);
-  const githubUrl = getMcpServerGitHubUrl(server);
   const {
-    github_info: {
-      owner: gitHubInfoOwner,
-      repo: gitHubInfoRepo,
-      path: gitHubInfoPath,
-      latest_commit_hash: gitHubInfoLatestCommitHash,
-      stars: gitHubInfoStars,
-      contributors: gitHubInfoContributors,
-      issues: gitHubInfoIssues,
-      releases: gitHubInfoReleases,
-      ci_cd: gitHubInfoCiCd,
-    },
+    name: serverId,
+    display_name: serverName,
+    github_info: gitHubInfo,
     last_scraped_at: lastScrapedAt,
     programming_language: programmingLanguage,
     category,
@@ -144,8 +144,21 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
     readme: readmeContent,
     framework,
   } = server;
+  const {
+    owner: gitHubInfoOwner,
+    repo: gitHubInfoRepo,
+    path: gitHubInfoPath,
+    url: gitHubRepoUrl,
+    latest_commit_hash: gitHubInfoLatestCommitHash,
+    stars: gitHubInfoStars,
+    contributors: gitHubInfoContributors,
+    issues: gitHubInfoIssues,
+    releases: gitHubInfoReleases,
+    ci_cd: gitHubInfoCiCd,
+  } = gitHubInfo;
+
   const qualityScoreBreakdown = qualityScore !== null ? calculateQualityScore(server, allServers) : null;
-  const urlToEditIndividualMcpCatalogJsonFile = generateUrlToEditIndividualMcpCatalogJsonFile(serverName);
+  const urlToEditIndividualMcpCatalogJsonFile = generateUrlToIndividualMcpCatalogJsonFile(serverId, true);
 
   const protocolFeatureKeys: { key: keyof ArchestraMcpServerManifest['protocol_features']; label: string }[] = [
     { key: 'implementing_tools', label: 'Tools' },
@@ -219,7 +232,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                         <div className="flex items-center gap-1">
                           <span>🔗 Latest commit:</span>
                           <a
-                            href={`${githubUrl}/commit/${gitHubInfoLatestCommitHash}`}
+                            href={`${gitHubRepoUrl}/commit/${gitHubInfoLatestCommitHash}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="font-mono text-blue-600 hover:underline"
@@ -562,7 +575,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <a
-                    href={githubUrl}
+                    href={gitHubRepoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors border"
@@ -597,13 +610,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                   <CardDescription>Show your MCP trust score in your README</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <TrustScoreBadge
-                    githubOwner={gitHubInfoOwner}
-                    githubRepo={gitHubInfoRepo}
-                    githubPath={gitHubInfoPath}
-                    serverName={serverName}
-                    variant="compact"
-                  />
+                  <TrustScoreBadge gitHubInfo={gitHubInfo} serverId={serverId} variant="compact" />
                 </CardContent>
               </Card>
 

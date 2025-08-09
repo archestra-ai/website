@@ -1,29 +1,24 @@
-import constants, { generateMcpCatalogDetailPageUrlFromGitHubDetails } from '@constants';
+import constants from '@constants';
+import { generateMcpCatalogDetailPageUrl } from '@mcpCatalog/lib/urls';
+import { ArchestraMcpServerGitHubRepoInfo } from '@mcpCatalog/types';
 
 const {
   website: {
-    urls: { base: websiteBaseUrl, mcpCatalog: websiteMcpCatalogUrl },
+    urls: { base: websiteBaseUrl },
   },
 } = constants;
 
-const _determineGitHubUrlPathSuffix = (githubOwner: string, githubRepo: string, githubPath?: string | null) =>
-  githubPath ? `${githubOwner}/${githubRepo}/${githubPath.replace(/\//g, '--')}` : `${githubOwner}/${githubRepo}`;
+export const generateBadgeRelativeUrl = ({ owner, repo, path }: ArchestraMcpServerGitHubRepoInfo) => {
+  let pathSuffix = `${owner}/${repo}`;
+  if (path) {
+    pathSuffix += `/${path.replace(/\//g, '--')}`;
+  }
 
-export const generateBadgeRelativeUrl = (githubOwner: string, githubRepo: string, githubPath?: string | null) =>
-  `/mcp-catalog/api/badge/quality/${_determineGitHubUrlPathSuffix(githubOwner, githubRepo, githubPath)}`;
+  return `/mcp-catalog/api/badge/quality/${pathSuffix}`;
+};
 
-export const generateBadgeAbsoluteUrl = (githubOwner: string, githubRepo: string, githubPath?: string | null) =>
-  `${websiteBaseUrl}${generateBadgeRelativeUrl(githubOwner, githubRepo, githubPath)}`;
-
-export const generateBadgeMarkdown = (
-  githubOwner: string,
-  githubRepo: string,
-  githubPath?: string | null,
-  serverName?: string
-) => {
-  const badgeUrl = generateBadgeAbsoluteUrl(githubOwner, githubRepo, githubPath);
-  const linkUrl = serverName
-    ? `${websiteMcpCatalogUrl}/${serverName}`
-    : generateMcpCatalogDetailPageUrlFromGitHubDetails(githubOwner, githubRepo);
-  return `[![Trust Score](${badgeUrl})](${linkUrl})`;
+export const generateBadgeMarkdown = (serverId: string, gitHubInfo: ArchestraMcpServerGitHubRepoInfo) => {
+  const badgeUrl = `${websiteBaseUrl}${generateBadgeRelativeUrl(gitHubInfo)}`;
+  const mcpCatalogDetailPageUrl = generateMcpCatalogDetailPageUrl(serverId);
+  return `[![Trust Score](${badgeUrl})](${mcpCatalogDetailPageUrl})`;
 };

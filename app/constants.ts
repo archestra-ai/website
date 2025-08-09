@@ -73,20 +73,11 @@ const WEBSITE_REPO_NAME = 'website';
 const DESKTOP_APP_REPO_NAME = 'archestra';
 const MAIN_BRANCH_NAME = 'main';
 
-const _MCP_CATALOG_DIRECTORY_PATH = 'app/app/mcp-catalog/data';
-const MCP_SERVERS_JSON_FILE_PATH = `${_MCP_CATALOG_DIRECTORY_PATH}/mcp-servers.json`;
-const MCP_EVALUATIONS_DIRECTORY_PATH = `${_MCP_CATALOG_DIRECTORY_PATH}/mcp-evaluations`;
-
 const BASE_GITHUB_ORG_URL = `https://github.com/${GITHUB_ORG_NAME}`;
 const BASE_WEBSITE_GITHUB_URL = `${BASE_GITHUB_ORG_URL}/${WEBSITE_REPO_NAME}`;
 
-export const generateMcpCatalogDetailPageUrlFromServerName = (serverName: string) => `${MCP_CATALOG_URL}/${serverName}`;
-
-export const generateMcpCatalogDetailPageUrlFromGitHubDetails = (githubOrg: string, githubRepo: string) =>
-  generateMcpCatalogDetailPageUrlFromServerName(`${githubOrg}__${githubRepo}`);
-
-export const generateUrlToEditIndividualMcpCatalogJsonFile = (serverName: string) =>
-  `${BASE_WEBSITE_GITHUB_URL}/edit/${MAIN_BRANCH_NAME}/${MCP_EVALUATIONS_DIRECTORY_PATH}/${serverName}.json`;
+const MCP_CATALOG_DIRECTORY_PATH = 'app/app/mcp-catalog/data';
+const MCP_CATALOG_BASE_DIRECTORY_URL = `${BASE_WEBSITE_GITHUB_URL}/tree/${MAIN_BRANCH_NAME}/${MCP_CATALOG_DIRECTORY_PATH}`;
 
 export default {
   company: {
@@ -130,9 +121,11 @@ export default {
       website: {
         repoName: WEBSITE_REPO_NAME,
         repoUrl: BASE_WEBSITE_GITHUB_URL,
+        mainBranchName: MAIN_BRANCH_NAME,
+        mcpCatalogDirectoryPath: MCP_CATALOG_DIRECTORY_PATH,
         newIssueUrl: `${BASE_WEBSITE_GITHUB_URL}/issues/new`,
-        viewMcpCatalogDirectoryUrl: `${BASE_WEBSITE_GITHUB_URL}/tree/${MAIN_BRANCH_NAME}/${MCP_EVALUATIONS_DIRECTORY_PATH}`,
-        editMcpCatalogJsonFileUrl: `${BASE_WEBSITE_GITHUB_URL}/edit/${MAIN_BRANCH_NAME}/${MCP_SERVERS_JSON_FILE_PATH}`,
+        viewMcpCatalogDirectoryUrl: MCP_CATALOG_BASE_DIRECTORY_URL,
+        editMcpCatalogJsonFileUrl: `${BASE_WEBSITE_GITHUB_URL}/edit/${MAIN_BRANCH_NAME}/${MCP_CATALOG_DIRECTORY_PATH}/mcp-servers.json`,
       },
       archestra: {
         repoName: DESKTOP_APP_REPO_NAME,

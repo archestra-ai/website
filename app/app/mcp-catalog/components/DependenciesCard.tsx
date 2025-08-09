@@ -4,7 +4,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
-import { generateUrlToEditIndividualMcpCatalogJsonFile } from '@constants';
+import { generateUrlToIndividualMcpCatalogJsonFile } from '@mcpCatalog/lib/urls';
 import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 interface DependenciesCardProps {
@@ -14,7 +14,7 @@ interface DependenciesCardProps {
 export default function DependenciesCard({ server }: DependenciesCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const { name: serverName, dependencies, evaluation_model: evaluationModel } = server;
+  const { name: serverId, dependencies, evaluation_model: evaluationModel } = server;
 
   // Group dependencies by importance level
   const mainDeps = dependencies?.filter((d) => d.importance >= 8) || [];
@@ -114,7 +114,7 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
                   {evaluationModel === null ? '✨ Human curated' : `🤖 Analyzed by ${evaluationModel}`}
                 </span>
                 <a
-                  href={generateUrlToEditIndividualMcpCatalogJsonFile(serverName)}
+                  href={generateUrlToIndividualMcpCatalogJsonFile(serverId, true)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"

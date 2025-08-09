@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
 
-import constants, { generateMcpCatalogDetailPageUrlFromServerName } from '@constants';
+import constants from '@constants';
 import { loadServers } from '@mcpCatalog/lib/catalog';
+import { generateMcpCatalogDetailPageUrl } from '@mcpCatalog/lib/urls';
 
 const {
   base: websiteBaseUrl,
@@ -44,7 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Dynamic MCP server pages
   const serverPages = servers.map((server) => ({
-    url: generateMcpCatalogDetailPageUrlFromServerName(server.name),
+    url: generateMcpCatalogDetailPageUrl(server.name),
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.6,

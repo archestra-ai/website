@@ -4,26 +4,25 @@ import { Check, Copy } from 'lucide-react';
 import { useState } from 'react';
 
 import { Button } from '@components/ui/button';
+import { ArchestraMcpServerGitHubRepoInfo } from '@mcpCatalog/types';
 
 import { generateBadgeMarkdown, generateBadgeRelativeUrl } from './utils';
 
 interface TrustScoreBadgeProps {
+  serverId?: string;
+  gitHubInfo?: ArchestraMcpServerGitHubRepoInfo;
   variant: 'large' | 'compact';
-  githubOwner?: string;
-  githubRepo?: string;
-  githubPath?: string | null;
-  serverName?: string;
 }
 
-const DEFAULT_BADGE_MARKDOWN = generateBadgeMarkdown('your-github-org', 'your-repo-name');
+const DEFAULT_BADGE_MARKDOWN = generateBadgeMarkdown('your-github-org__your-repo-name', {
+  owner: 'your-github-org',
+  repo: 'your-repo-name',
+  path: null,
+  url: 'https://github.com/your-github-org/your-repo-name',
+  name: 'your-repo-name',
+});
 
-export default function TrustScoreBadge({
-  githubOwner,
-  githubRepo,
-  githubPath,
-  serverName,
-  variant,
-}: TrustScoreBadgeProps) {
+export default function TrustScoreBadge({ gitHubInfo, serverId, variant }: TrustScoreBadgeProps) {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = async (text: string) => {
@@ -36,12 +35,8 @@ export default function TrustScoreBadge({
     }
   };
 
-  const badgeRelativeUrl =
-    githubOwner && githubRepo ? generateBadgeRelativeUrl(githubOwner, githubRepo, githubPath) : undefined;
-  const badgeMarkdown =
-    githubOwner && githubRepo && serverName
-      ? generateBadgeMarkdown(githubOwner, githubRepo, githubPath, serverName)
-      : DEFAULT_BADGE_MARKDOWN;
+  const badgeRelativeUrl = gitHubInfo ? generateBadgeRelativeUrl(gitHubInfo) : undefined;
+  const badgeMarkdown = gitHubInfo && serverId ? generateBadgeMarkdown(serverId, gitHubInfo) : DEFAULT_BADGE_MARKDOWN;
 
   const MarkdownArea = ({ children }: React.PropsWithChildren) => {
     if (variant === 'large') {

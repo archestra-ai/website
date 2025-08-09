@@ -8,7 +8,7 @@ import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
  * Path constants
  * NOTE: process.cwd() will be relative to the root of the project (/app folder)
  */
-const DATA_DIR = path.join(process.cwd(), 'src/data');
+const DATA_DIR = path.join(process.cwd(), './app/mcp-catalog/data');
 const MCP_SERVERS_EVALUATIONS_DIR = path.join(DATA_DIR, 'mcp-evaluations');
 const MCP_SERVERS_JSON_FILE_PATH = path.join(DATA_DIR, 'mcp-servers.json');
 
@@ -165,6 +165,7 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
           dxt_version: '0.1.0',
           version: '0.1.0',
           name: urlName,
+          display_name: 'Unknown',
           description: "We're evaluating this MCP server",
           author: {
             name: 'Unknown',

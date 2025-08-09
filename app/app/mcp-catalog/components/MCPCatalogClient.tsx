@@ -9,7 +9,6 @@ import { Badge } from '@components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
 import { Input } from '@components/ui/input';
 import { QualityBar } from '@mcpCatalog/components/QualityBar';
-import { getMcpServerName } from '@mcpCatalog/lib/github';
 import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 const ITEMS_PER_PAGE = 30;
@@ -164,11 +163,19 @@ export default function MCPCatalogClient({
   ]);
 
   // Calculate search relevance score for a server
-  const calculateSearchRelevance = (server: ArchestraMcpServerManifest, query: string): number => {
+  const calculateSearchRelevance = (
+    {
+      display_name: serverName,
+      description,
+      category,
+      github_info: { repo: gitHubRepo, owner: gitHubOwner, path: gitHubPath },
+      readme,
+    }: ArchestraMcpServerManifest,
+    query: string
+  ): number => {
     if (!query) return 0;
 
     const lowerQuery = query.toLowerCase();
-    const serverName = getMcpServerName(server).toLowerCase();
     let score = 0;
 
     // Exact name match (highest priority)
@@ -184,42 +191,42 @@ export default function MCPCatalogClient({
     }
 
     // Description match
-    if (server.description && server.description.toLowerCase().includes(lowerQuery)) {
+    if (description && description.toLowerCase().includes(lowerQuery)) {
       score += 30;
     }
 
     // Category match
-    if (server.category && server.category.toLowerCase().includes(lowerQuery)) {
+    if (category && category.toLowerCase().includes(lowerQuery)) {
       score += 35;
     }
 
     // Repository name match (without github.com)
-    if (server.github_info.repo.toLowerCase().includes(lowerQuery)) {
+    if (gitHubRepo.toLowerCase().includes(lowerQuery)) {
       score += 20;
     }
 
     // Organization name match
-    if (server.github_info.owner.toLowerCase().includes(lowerQuery)) {
+    if (gitHubOwner.toLowerCase().includes(lowerQuery)) {
       score += 15;
     }
 
     // URL path match (for repository paths)
-    if (server.github_info.path && server.github_info.path.toLowerCase().includes(lowerQuery)) {
+    if (gitHubPath && gitHubPath.toLowerCase().includes(lowerQuery)) {
       score += 10;
     }
 
     // README match (lowest priority)
-    if (server.readme && server.readme.toLowerCase().includes(lowerQuery)) {
+    if (readme && readme.toLowerCase().includes(lowerQuery)) {
       score += 5;
     }
 
     // Boost score for servers where the query matches multiple fields
     const matchCount = [
       serverName.includes(lowerQuery),
-      server.description && server.description.toLowerCase().includes(lowerQuery),
-      server.category && server.category.toLowerCase().includes(lowerQuery),
-      server.github_info.repo.toLowerCase().includes(lowerQuery),
-      server.github_info.owner.toLowerCase().includes(lowerQuery),
+      description && description.toLowerCase().includes(lowerQuery),
+      category && category.toLowerCase().includes(lowerQuery),
+      gitHubRepo.toLowerCase().includes(lowerQuery),
+      gitHubOwner.toLowerCase().includes(lowerQuery),
     ].filter(Boolean).length;
 
     // Add bonus for multiple field matches (indicates more relevant result)
@@ -235,40 +242,59 @@ export default function MCPCatalogClient({
       server,
       searchScore: searchQuery ? calculateSearchRelevance(server, searchQuery) : 0,
     }))
-    .filter(({ server, searchScore }) => {
-      // Filter by search
-      const matchesSearch = !searchQuery || searchScore > 0;
+    .filter(
+      ({
+        server: {
+          category,
+          programming_language,
+          dependencies,
+          protocol_features: {
+            implementing_tools,
+            implementing_resources,
+            implementing_prompts,
+            implementing_sampling,
+            implementing_roots,
+            implementing_logging,
+            implementing_stdio,
+            implementing_streamable_http,
+            implementing_oauth2,
+          },
+        },
+        searchScore,
+      }) => {
+        // Filter by search
+        const matchesSearch = !searchQuery || searchScore > 0;
 
-      // Filter by category
-      const matchesCategory =
-        selectedCategory === 'All' ||
-        (selectedCategory === 'Uncategorized' && server.category === null) ||
-        server.category === selectedCategory;
+        // Filter by category
+        const matchesCategory =
+          selectedCategory === 'All' ||
+          (selectedCategory === 'Uncategorized' && category === null) ||
+          category === selectedCategory;
 
-      // Filter by language
-      const matchesLanguage = selectedLanguage === 'All' || server.programming_language === selectedLanguage;
+        // Filter by language
+        const matchesLanguage = selectedLanguage === 'All' || programming_language === selectedLanguage;
 
-      // Filter by dependency
-      const matchesDependency =
-        selectedDependency === 'All' ||
-        (server.dependencies &&
-          server.dependencies.some((dep) => dep.name === selectedDependency && dep.importance >= 8));
+        // Filter by dependency
+        const matchesDependency =
+          selectedDependency === 'All' ||
+          (dependencies && dependencies.some((dep) => dep.name === selectedDependency && dep.importance >= 8));
 
-      // Filter by MCP features
-      const matchesFeature =
-        selectedFeature === 'All' ||
-        (selectedFeature === 'Tools' && server.protocol_features.implementing_tools === true) ||
-        (selectedFeature === 'Resources' && server.protocol_features.implementing_resources === true) ||
-        (selectedFeature === 'Prompts' && server.protocol_features.implementing_prompts === true) ||
-        (selectedFeature === 'Sampling' && server.protocol_features.implementing_sampling === true) ||
-        (selectedFeature === 'Roots' && server.protocol_features.implementing_roots === true) ||
-        (selectedFeature === 'Logging' && server.protocol_features.implementing_logging === true) ||
-        (selectedFeature === 'STDIO Transport' && server.protocol_features.implementing_stdio === true) ||
-        (selectedFeature === 'Streamable HTTP' && server.protocol_features.implementing_streamable_http === true) ||
-        (selectedFeature === 'OAuth2' && server.protocol_features.implementing_oauth2 === true);
+        // Filter by MCP features
+        const matchesFeature =
+          selectedFeature === 'All' ||
+          (selectedFeature === 'Tools' && implementing_tools === true) ||
+          (selectedFeature === 'Resources' && implementing_resources === true) ||
+          (selectedFeature === 'Prompts' && implementing_prompts === true) ||
+          (selectedFeature === 'Sampling' && implementing_sampling === true) ||
+          (selectedFeature === 'Roots' && implementing_roots === true) ||
+          (selectedFeature === 'Logging' && implementing_logging === true) ||
+          (selectedFeature === 'STDIO Transport' && implementing_stdio === true) ||
+          (selectedFeature === 'Streamable HTTP' && implementing_streamable_http === true) ||
+          (selectedFeature === 'OAuth2' && implementing_oauth2 === true);
 
-      return matchesSearch && matchesCategory && matchesLanguage && matchesDependency && matchesFeature;
-    });
+        return matchesSearch && matchesCategory && matchesLanguage && matchesDependency && matchesFeature;
+      }
+    );
 
   // Sort filtered servers
   const sortedServers = [...filteredAndScoredServers].sort((a, b) => {
@@ -850,7 +876,16 @@ export default function MCPCatalogClient({
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {sortedServers.slice(0, displayedItems).map((item) => {
-                  const server = item.server;
+                  const {
+                    name: serverId,
+                    display_name: serverName,
+                    github_info: gitHubInfo,
+                    programming_language,
+                    description,
+                    category,
+                    framework,
+                    quality_score: qualityScore,
+                  } = item.server;
                   const searchScore = item.searchScore;
 
                   // Preserve current state in the link
@@ -865,16 +900,16 @@ export default function MCPCatalogClient({
                   }
 
                   return (
-                    <Link key={server.name} href={`/mcp-catalog/${server.name}?${params.toString()}`} className="block">
+                    <Link key={serverId} href={`/mcp-catalog/${serverId}?${params.toString()}`} className="block">
                       <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
                         <CardHeader className="p-4 sm:p-6">
                           <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
                             <div className="flex flex-wrap gap-1 sm:gap-2">
                               <Badge variant="outline" className="text-xs">
-                                {server.programming_language}
+                                {programming_language}
                               </Badge>
                               <Badge variant="outline" className="text-xs">
-                                {server.category || 'Uncategorized'}
+                                {category || 'Uncategorized'}
                               </Badge>
                             </div>
                             {searchQuery && searchScore > 0 && (
@@ -887,7 +922,7 @@ export default function MCPCatalogClient({
                               </Badge>
                             )}
                           </div>
-                          <CardTitle className="text-xl break-words">{getMcpServerName(server)}</CardTitle>
+                          <CardTitle className="text-xl break-words">{serverName}</CardTitle>
                           <div
                             className="text-sm text-gray-500 mb-2 font-mono"
                             style={{
@@ -896,62 +931,49 @@ export default function MCPCatalogClient({
                             }}
                           >
                             <span>
-                              {server.github_info.owner}/{server.github_info.repo}
+                              {gitHubInfo.owner}/{gitHubInfo.repo}
                             </span>
-                            {server.github_info.path && (
+                            {gitHubInfo.path && (
                               <>
                                 <span>/</span>
-                                <span className="text-blue-600">{server.github_info.path}</span>
+                                <span className="text-blue-600">{gitHubInfo.path}</span>
                               </>
                             )}
                           </div>
-                          {server.description !== "We're evaluating this MCP server" && (
-                            <CardDescription>{server.description}</CardDescription>
+                          {description !== "We're evaluating this MCP server" && (
+                            <CardDescription>{description}</CardDescription>
                           )}
                         </CardHeader>
                         <CardContent className="p-4 sm:p-6 pt-0 sm:pt-0">
                           <div className="space-y-4">
-                            <QualityBar score={server.quality_score} />
+                            <QualityBar score={qualityScore} />
                             <div className="flex flex-wrap gap-2">
-                              {server.quality_score !== null ? (
+                              {qualityScore !== null ? (
                                 <div className="flex items-center gap-1 text-xs text-gray-600">
                                   {(() => {
-                                    const serverCount =
-                                      serverCounts.get(`${server.github_info.owner}/${server.github_info.repo}`) || 1;
+                                    const serverCount = serverCounts.get(`${gitHubInfo.owner}/${gitHubInfo.repo}`) || 1;
                                     const showDivided = serverCount > 1;
                                     return (
                                       <>
-                                        <span
-                                          title={
-                                            showDivided ? `${server.github_info.stars} / ${serverCount}` : undefined
-                                          }
-                                        >
+                                        <span title={showDivided ? `${gitHubInfo.stars} / ${serverCount}` : undefined}>
                                           ⭐{' '}
-                                          {showDivided
-                                            ? Math.round(server.github_info.stars / serverCount)
-                                            : server.github_info.stars}
+                                          {showDivided ? Math.round(gitHubInfo.stars / serverCount) : gitHubInfo.stars}
                                         </span>
                                         <span
                                           title={
-                                            showDivided
-                                              ? `${server.github_info.contributors} / ${serverCount}`
-                                              : undefined
+                                            showDivided ? `${gitHubInfo.contributors} / ${serverCount}` : undefined
                                           }
                                         >
                                           👥{' '}
                                           {showDivided
-                                            ? Math.round(server.github_info.contributors / serverCount)
-                                            : server.github_info.contributors}
+                                            ? Math.round(gitHubInfo.contributors / serverCount)
+                                            : gitHubInfo.contributors}
                                         </span>
-                                        <span
-                                          title={
-                                            showDivided ? `${server.github_info.issues} / ${serverCount}` : undefined
-                                          }
-                                        >
+                                        <span title={showDivided ? `${gitHubInfo.issues} / ${serverCount}` : undefined}>
                                           📋{' '}
                                           {showDivided
-                                            ? Math.round(server.github_info.issues / serverCount)
-                                            : server.github_info.issues}
+                                            ? Math.round(gitHubInfo.issues / serverCount)
+                                            : gitHubInfo.issues}
                                         </span>
                                         {showDivided && (
                                           <span
@@ -966,15 +988,13 @@ export default function MCPCatalogClient({
                                   })()}
                                 </div>
                               ) : null}
-                              {server.framework && (
-                                <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">
-                                  {server.framework}
-                                </span>
+                              {framework && (
+                                <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">{framework}</span>
                               )}
-                              {server.github_info.releases && (
+                              {gitHubInfo.releases && (
                                 <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">releases</span>
                               )}
-                              {server.github_info.ci_cd && (
+                              {gitHubInfo.ci_cd && (
                                 <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">ci/cd</span>
                               )}
                             </div>
