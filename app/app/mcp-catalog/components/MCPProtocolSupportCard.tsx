@@ -3,7 +3,7 @@ import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 import EvaluatedByModelInfo from './EvaluatedByModelInfo';
 
-interface MCPProtocolSupportCardProps {
+interface McpProtocolSupportCardProps {
   server: ArchestraMcpServerManifest;
 }
 
@@ -22,7 +22,7 @@ const PROTOCOL_FEATURE_KEYS: { key: keyof ArchestraMcpServerManifest['protocol_f
   { key: 'implementing_oauth2', label: 'OAuth2 Auth' },
 ];
 
-const MCPProtocolSupportCard = ({ server }: MCPProtocolSupportCardProps) => {
+const McpProtocolSupportCard = ({ server }: McpProtocolSupportCardProps) => {
   const { protocol_features: protocolFeatures } = server;
 
   return (
@@ -52,4 +52,4 @@ const MCPProtocolSupportCard = ({ server }: MCPProtocolSupportCardProps) => {
   );
 };
 
-export default MCPProtocolSupportCard;
+export default McpProtocolSupportCard;

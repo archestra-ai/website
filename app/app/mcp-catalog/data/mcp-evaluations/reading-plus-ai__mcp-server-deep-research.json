@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "reading-plus-ai__mcp-server-deep-research",
-  "display_name": "deep research",
+  "display_name": "mcp-server-deep-research",
   "version": "1.0.0",
   "description": "MCP server from reading-plus-ai/mcp-server-deep-research",
   "author": {
@@ -11,8 +11,8 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-deep-research", "--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,28 @@
   "readme": "# MCP Server for Deep Research\n\nMCP Server for Deep Research is a tool designed for conducting comprehensive research on complex topics. It helps you explore questions in depth, find relevant sources, and generate structured research reports.\n\nYour personal Research Assistant, turning research questions into comprehensive, well-cited reports.\n\n## 🚀 Try it Out\n\n[![Watch the demo](https://img.youtube.com/vi/_a7sfo5yxoI/maxresdefault.jpg)]([VIDEO_URL](https://youtu.be/_a7sfo5yxoI))\nYoutube: https://youtu.be/_a7sfo5yxoI\n\n1. **Download Claude Desktop**\n   - Get it [here](https://claude.ai/download)\n\n2. **Install and Set Up**\n   - On macOS, run the following command in your terminal:\n   ```bash\n   python setup.py\n   ```\n\n3. **Start Researching**\n   - Select the deep-research prompt template from MCP\n   - Begin your research by providing a research question\n\n## Features\n\nThe Deep Research MCP Server offers a complete research workflow:\n\n1. **Question Elaboration**\n   - Expands and clarifies your research question\n   - Identifies key terms and concepts\n   - Defines scope and parameters\n\n2. **Subquestion Generation**\n   - Creates focused subquestions that address different aspects\n   - Ensures comprehensive coverage of the main topic\n   - Provides structure for systematic research\n\n3. **Web Search Integration**\n   - Uses Claude's built-in web search capabilities\n   - Performs targeted searches for each subquestion\n   - Identifies relevant and authoritative sources\n   - Collects diverse perspectives on the topic\n\n4. **Content Analysis**\n   - Evaluates information quality and relevance\n   - Synthesizes findings from multiple sources\n   - Provides proper citations for all sources\n\n5. **Report Generation**\n   - Creates well-structured, comprehensive reports as artifacts\n   - Properly cites all sources used\n   - Presents a balanced view with evidence-based conclusions\n   - Uses appropriate formatting for clarity and readability\n\n## 📦 Components\n\n### Prompts\n- **deep-research**: Tailored for comprehensive research tasks with a structured approach\n\n## ⚙️ Modifying the Server\n\n### Claude Desktop Configurations\n- macOS: `~/Library/Application\\ Support/Claude/claude_desktop_config.json`\n- Windows: `%APPDATA%/Claude/claude_desktop_config.json`\n\n### Development (Unpublished Servers)\n```json\n\"mcpServers\": {\n  \"mcp-server-deep-research\": {\n    \"command\": \"uv\",\n    \"args\": [\n      \"--directory\",\n      \"/Users/username/repos/mcp-server-application/mcp-server-deep-research\",\n      \"run\",\n      \"mcp-server-deep-research\"\n    ]\n  }\n}\n```\n\n### Published Servers\n```json\n\"mcpServers\": {\n  \"mcp-server-deep-research\": {\n    \"command\": \"uvx\",\n    \"args\": [\n      \"mcp-server-deep-research\"\n    ]\n  }\n}\n```\n\n## 🛠️ Development\n\n### Building and Publishing\n1. **Sync Dependencies**\n   ```bash\n   uv sync\n   ```\n\n2. **Build Distributions**\n   ```bash\n   uv build\n   ```\n   Generates source and wheel distributions in the dist/ directory.\n\n3. **Publish to PyPI**\n   ```bash\n   uv publish\n   ```\n\n## 🤝 Contributing\n\nContributions are welcome! Whether you're fixing bugs, adding features, or improving documentation, your help makes this project better.\n\n## 📜 License\n\nThis project is licensed under the MIT License.\nSee the LICENSE file for details.\n",
   "category": "AI Tools",
   "quality_score": 58,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "mcp-server-deep-research": {
+          "command": "uvx",
+          "args": ["mcp-server-deep-research"],
+          "env": {}
+        },
+        "mcp-server-deep-research-configured": {
+          "command": "uv",
+          "args": [
+            "--directory",
+            "/Users/username/repos/mcp-server-application/mcp-server-deep-research",
+            "run",
+            "mcp-server-deep-research"
+          ],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "null",
+      "provider": null,
       "required": false
     }
   },

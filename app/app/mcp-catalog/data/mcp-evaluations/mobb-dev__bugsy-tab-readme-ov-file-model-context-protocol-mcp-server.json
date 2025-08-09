@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "mobb-dev__bugsy-tab-readme-ov-file-model-context-protocol-mcp-server",
-  "display_name": "bugsy",
+  "display_name": "bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
   "version": "1.0.0",
   "description": "MCP server from mobb-dev/bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@mobb/mcp-server", "--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,10 +23,46 @@
   "readme": null,
   "category": "AI Tools",
   "quality_score": 19,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "mobb-bugsy-server": {
+          "command": "npx",
+          "args": ["-y", "@mobb/bugsy-server"],
+          "env": {}
+        },
+        "mobb-bugsy-server-with-config": {
+          "command": "npx",
+          "args": ["-y", "@mobb/bugsy-server", "--config", "./bugsy-config.json"],
+          "env": {}
+        },
+        "mobb-bugsy-server-docker": {
+          "command": "docker",
+          "args": ["run", "-p", "8080:8080", "mobb/bugsy-server:latest"],
+          "env": {}
+        },
+        "mobb-bugsy-server-docker-configured": {
+          "command": "docker",
+          "args": [
+            "run",
+            "-p",
+            "8080:8080",
+            "-e",
+            "BUGS_PORT=8081",
+            "-e",
+            "BUGS_LOG_LEVEL=debug",
+            "mobb/bugsy-server:latest"
+          ],
+          "env": {
+            "BUGS_PORT": "8081",
+            "BUGS_LOG_LEVEL": "debug"
+          }
+        }
+      }
+    },
     "oauth": {
-      "provider": "github",
-      "required": true
+      "provider": null,
+      "required": false
     }
   },
   "github_info": {

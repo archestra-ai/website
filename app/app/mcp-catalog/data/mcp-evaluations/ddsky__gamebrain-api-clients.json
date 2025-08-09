@@ -1,18 +1,18 @@
 {
   "dxt_version": "0.1.0",
   "name": "ddsky__gamebrain-api-clients",
-  "display_name": "gamebrain api clients",
+  "display_name": "gamebrain-api-clients",
   "version": "1.0.0",
   "description": "MCP server from ddsky/gamebrain-api-clients",
   "author": {
     "name": "ddsky"
   },
   "server": {
-    "type": "node",
+    "type": "binary",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "https://api.gamebrain.co/v1/mcp?api-key=YOUR_KEY"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# MCP Setup\n\nRead more about setting up the [GameBrain MCP server](https://gamebrain.co/api/docs/mcp-setup). Simply get your free API key and copy this config into your MCP client:\n\n```json\n{\n  \"mcpServers\": {\n    \"gamebrain\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"mcp-remote\",\n        \"https://api.gamebrain.co/v1/mcp?api-key=YOUR_KEY\"\n      ]\n    }\n  }\n}\n```\n",
   "category": "Gaming",
   "quality_score": 12,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "mcp-remote": {
+          "command": "npx",
+          "args": ["-y", "mcp-remote", "https://api.gamebrain.co/v1/mcp?api-key=YOUR_KEY"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "null",
+      "provider": null,
       "required": false
     }
   },

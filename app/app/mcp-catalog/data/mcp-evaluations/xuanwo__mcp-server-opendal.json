@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "xuanwo__mcp-server-opendal",
-  "display_name": "opendal",
+  "display_name": "mcp-server-opendal",
   "version": "1.0.0",
   "description": "Model Context Protocol Server for Apache OpenDAL™",
   "author": {
@@ -11,13 +11,9 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-opendal"],
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
   "tools": [],
@@ -27,9 +23,25 @@
   "readme": "# Model Context Protocol Server for Apache OpenDAL™\nA Model Context Protocol (MCP) server implementation that provides access to various storage services via [Apache OpenDAL™](https://opendal.apache.org/).\n\n[![PyPI - Version](https://img.shields.io/pypi/v/mcp-server-opendal)](https://pypi.org/project/mcp-server-opendal/)\n[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mcp-server-opendal)](https://pypi.org/project/mcp-server-opendal/)\n[![Lint and Test](https://github.com/Xuanwo/mcp-server-opendal/actions/workflows/test.yml/badge.svg)](https://github.com/Xuanwo/mcp-server-opendal/actions/workflows/test.yml)\n\n## Features\n\n- Seamless access to multiple storage services including S3, Azure Blob Storage, Google Cloud Storage, and more\n- List files and directories from storage services\n- Read file contents with automatic text/binary detection\n- Environment variable based configuration\n\n## Installation\n\n```shell\npip install mcp-server-opendal\n```\n\n## Usage with Claude Desktop\n\nAdd the following to `claude_desktop_config.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"opendal\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"mcp-server-opendal\"\n      ],\n      \"env\": {\n        \"YOUR_ENV_VAR\": \"YOUR_ENV_VALUE\"\n      }\n    }\n  }\n}\n```\n\nIt requires `uv` to be installed on your machine. Check the [official documentation](https://docs.astral.sh/uv/getting-started/installation/) for installation guides.\n\n## Environment variables\n\nConfigure storage services by setting environment variables. Each service requires a prefix and specific configuration options.\n\nFor example, to configure an S3 service with alias \"mys3\":\n\n```\nOPENDAL_MYS3_TYPE=s3\nOPENDAL_MYS3_BUCKET=mybucket\nOPENDAL_MYS3_REGION=us-east-1\nOPENDAL_MYS3_ENDPOINT=http://localhost:9000\nOPENDAL_MYS3_ACCESS_KEY_ID=myaccesskey\nOPENDAL_MYS3_SECRET_ACCESS_KEY=mysecretkey\n```\n\nThen you can use tool like `read` and `list` with `mys3://path/to/file`.\n\n`mcp-server-opendal` will also load from `.env`.\n\n## Development\n\n```shell\nnpx @modelcontextprotocol/inspector \\\n  uv run mcp-server-opendal\n```\n",
   "category": "Cloud",
   "quality_score": 63,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "mcp-server-opendal-with-config": {
+          "command": "uvx",
+          "args": ["mcp-server-opendal"],
+          "env": {
+            "YOUR_ENV_VAR": "YOUR_ENV_VALUE"
+          }
+        },
+        "mcp-server-opendal-uv-run": {
+          "command": "uv",
+          "args": ["run", "mcp-server-opendal"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "null",
+      "provider": null,
       "required": false
     }
   },

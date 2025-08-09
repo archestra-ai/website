@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "currents-dev__currents-mcp",
-  "display_name": "currents",
+  "display_name": "currents-mcp",
   "version": "1.0.0",
   "description": "Currents MCP Server",
   "author": {
@@ -11,13 +11,9 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@currents/mcp"],
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
   "tools": [],
@@ -27,9 +23,20 @@
   "readme": "# Currents MCP Server\n[![smithery badge](https://smithery.ai/badge/@currents-dev/currents-mcp)](https://smithery.ai/server/@currents-dev/currents-mcp)\n\nThis is a MCP server that allows you to provide test results context to your AI agents by connecting them to Currents. Useful for asking AI to fix or optimize tests failing in CI.\n\n\n[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=currents&config=eyJuYW1lIjoiQ3VycmVudHMiLCJkZXNjcmlwdGlvbiI6IkN1cnJlbnRzIE1DUCBzZXJ2ZXIiLCJjb21tYW5kIjoibnB4IC15IEBjdXJyZW50cy9tY3BAMS4wLjIiLCJlbnYiOnsiQ1VSUkVOVFNfQVBJX0tFWSI6InlvdXItY3VycmVudHMtYXBpLWtleSJ9fQ%3D%3D)\n\n## Tools\n\n1. `get-api-config`\n\n- Get the API key and URL used to make requests to Currents API\n\n2. `get-run`\n\n- Get the run information by its ID\n\n3. `get-spec-file-attempts-and-errors`\n\n- Get the instance information about attempts and errors by its ID \n\n## Setup\n\n### API Key\n\nGet a Currents API key by following the [instructions here](https://docs.currents.dev/resources/api/api-keys).\n\n### Usage with Cursor Editor\n\n1. Go to Cursor Settings > MCP > Enable\n2. Add the following to your `mcp.json`.\n\n### NPX\n```\n{\n  \"mcpServers\": {\n    \"currents\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@currents/mcp\"\n      ],\n      \"env\": {\n        \"CURRENTS_API_KEY\": \"your-api-key\"\n      }\n    }\n  }\n}\n```\n\n### Usage with Claude Desktop\n\n#### Installing via Smithery\n\nTo install Currents Test Results Context Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@currents-dev/currents-mcp):\n\n```bash\nnpx -y @smithery/cli install @currents-dev/currents-mcp --client claude\n```\n\nAdd the following to your `claude_desktop_config.json`:\n\n#### NPX\n```\n{\n  \"mcpServers\": {\n    \"currents\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@currents/mcp\"\n      ],\n      \"env\": {\n        \"CURRENTS_API_KEY\": \"your-api-key\"\n      }\n    }\n  }\n}\n```\n\n\n### ⚠️ Notice\nBy connecting AI tools (e.g., via MCP) to Currents, you are granting them access to your API key, test results and CI metadata. It is your responsibility to vet any AI agents or services you use, and to ensure they handle your data securely.\n",
   "category": "Development",
   "quality_score": 57,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "currents-mcp": {
+          "command": "npx",
+          "args": ["-y", "@currents/mcp"],
+          "env": {
+            "CURRENTS_API_KEY": "your-api-key"
+          }
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

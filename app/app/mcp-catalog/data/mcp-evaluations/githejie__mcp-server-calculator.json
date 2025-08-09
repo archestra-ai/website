@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "githejie__mcp-server-calculator",
-  "display_name": "calculator",
+  "display_name": "mcp-server-calculator",
   "version": "1.0.0",
   "description": "A Model Context Protocol server for calculating.",
   "author": {
@@ -11,8 +11,8 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-calculator", "--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,23 @@
   "readme": "# Calculator MCP Server\n\nA Model Context Protocol server for calculating. This server enables LLMs to use calculator for precise numerical calculations.\n\n### Available Tools\n\n- `calculate` - Calculates/evaluates the given expression.\n  - `expression` (string, required): Expression to be calculated\n\n## Installation\n\n### Using uv (recommended)\n\nWhen using [`uv`](https://docs.astral.sh/uv/) no specific installation is needed. We will\nuse [`uvx`](https://docs.astral.sh/uv/guides/tools/) to directly run *mcp-server-calculator*.\n\n```bash\ncurl -LsSf https://astral.sh/uv/install.sh | sh\n```\n\n### Using PIP\n\nAlternatively you can install `mcp-server-calculator` via pip:\n\n```bash\npip install mcp-server-calculator\n```\n\nAfter installation, you can run it as a script using:\n\n```bash\npython -m mcp_server_calculator\n```\n\n## Configuration\n\n### Using uv (recommended)\n\nAdd this to your MCP client settings:\n\n```json\n\"mcpServers\": {\n  \"calculator\": {\n    \"command\": \"uvx\",\n    \"args\": [\"mcp-server-calculator\"]\n  }\n}\n```\n\n### Using PIP\n\nAlternatively add this to your MCP client settings:\n\n```json\n\"mcpServers\": {\n  \"calculator\": {\n    \"command\": \"python\",\n    \"args\": [\"-m\", \"mcp_server_calculator\"]\n  }\n}\n```\n\n## License\n\nmcp-server-calculator is licensed under the MIT License. This means you are free to use, modify, and distribute the software, subject to the terms and conditions of the MIT License. For more details, please see the LICENSE file in the project repository.\n",
   "category": "AI Tools",
   "quality_score": 49,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "mcp-server-calculator": {
+          "command": "uvx",
+          "args": ["mcp-server-calculator"],
+          "env": {}
+        },
+        "mcp_server_calculator": {
+          "command": "python",
+          "args": ["-m", "mcp_server_calculator"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "erithwik__mcp-hn",
-  "display_name": "hn",
+  "display_name": "mcp-hn",
   "version": "1.0.0",
   "description": "MCP Server for Hackernews",
   "author": {
@@ -11,8 +11,8 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-hn", "--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# Hacker News MCP Server\n\n[![smithery badge](https://smithery.ai/badge/mcp-hn)](https://smithery.ai/server/mcp-hn)\n\nA Model Context Protocol (MCP) server that provides tools for fetching information from Hacker News.\n\n<a href=\"https://glama.ai/mcp/servers/e0rco8dfgt\"><img width=\"380\" height=\"200\" src=\"https://glama.ai/mcp/servers/e0rco8dfgt/badge\" alt=\"mcp-hn MCP server\" /></a>\n\n## Tools\n\n- `get_stories` Fetching (top, new, ask_hn, show_hn) stories\n- `get_story_info` Fetching comments associated with a story\n- `search_stories` Searching for stories by query\n- `get_user_info` Fetching user info\n\n## Example Usage\n\nUse prompts like the following:\n\n```\nUser: Get the top stories of today\n  Output: Uses `get_stories` tool and returns a story about AI\nUser: What does the details of the story today that talks about the future of AI\n  Output: Uses `get_story_info` tool based on the results of the previous tool\nUser: What has the user `pg` been up to?\n  Output: Uses `get_user_info` tool and returns a summary of the user's activity\nUser: What does hackernews say about careers in AI?\n  Output: Uses `search_stories` tool and returns a summary of the comments\n```\n\nA more detailed example with the puppeteer MCP server:\n\n```\nUser: What are the top stories of today?\n  Output: Uses `get_stories` tool and returns a story about AI\nUser: Can you use the puppeteer tool to read the article about <AI> and also use the hackernews tool to view the comments and give me a summary of what the main comments are about the article?\n  Output: Uses puppeteer tool to read the article about AI and then uses the `get_story_info` hn tool to get the comments and returns a summary of the comments\n```\n\n## Quickstart\n\n### Installing via Smithery\n\nTo install Hacker News MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/mcp-hn):\n\n```bash\nnpx -y @smithery/cli install mcp-hn --client claude\n```\n\n### Claude Desktop:\n\nUpdate the following:\n\nOn MacOS: `~/Library/Application\\ Support/Claude/claude_desktop_config.json`\n\nOn Windows: `%APPDATA%/Claude/claude_desktop_config.json`\n\nWith the following for production:\n\n```json\n{\n  \"mcpServers\": {\n    \"mcp-hn\": {\n      \"command\": \"uvx\",\n      \"args\": [\"mcp-hn\"]\n    }\n  }\n}\n```\n\n\n",
   "category": "Aggregators",
   "quality_score": 51,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "mcp-hn": {
+          "command": "uvx",
+          "args": ["mcp-hn"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

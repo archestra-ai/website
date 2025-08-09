@@ -14,18 +14,18 @@ import ReportAnIssueButton from './LinkButtons/ReportAnIssueButton';
 
 hljs.registerLanguage('json', json);
 
-interface ServerConfigurationCardProps {
+interface McpClientConfigurationCardProps {
   server: ArchestraMcpServerManifest;
 }
 
-const ServerConfigurationCard = ({ server }: ServerConfigurationCardProps) => {
+const McpClientConfigurationCard = ({ server }: McpClientConfigurationCardProps) => {
   const [copied, setCopied] = useState(false);
   const codeRef = useRef<HTMLElement>(null);
 
   const {
     display_name: serverName,
     github_info: { owner: gitHubInfoOwner, repo: gitHubInfoRepo, path: gitHubInfoPath },
-    server: serverConfig,
+    archestra_config: { client_config_permutations: clientConfigPermutations },
   } = server;
 
   const copyToClipboard = async (text: string) => {
@@ -38,7 +38,7 @@ const ServerConfigurationCard = ({ server }: ServerConfigurationCardProps) => {
     }
   };
 
-  const jsonString = JSON.stringify(serverConfig, null, 2);
+  const jsonString = JSON.stringify(clientConfigPermutations, null, 2);
 
   useEffect(() => {
     if (codeRef.current) {
@@ -46,7 +46,7 @@ const ServerConfigurationCard = ({ server }: ServerConfigurationCardProps) => {
     }
   }, [jsonString]);
 
-  if (serverConfig) {
+  if (clientConfigPermutations) {
     return (
       <Card>
         <CardHeader>
@@ -102,4 +102,4 @@ const ServerConfigurationCard = ({ server }: ServerConfigurationCardProps) => {
   );
 };
 
-export default ServerConfigurationCard;
+export default McpClientConfigurationCard;

@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "higress-group__higress-ops-mcp-server",
-  "display_name": "higress ops",
+  "display_name": "higress-ops-mcp-server",
   "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server implementation that enables comprehensive configuration and management of Higress.",
   "author": {
@@ -11,8 +11,8 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "python",
-      "args": ["client.py", "--stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# Higress OPS MCP Server\n\nA Model Context Protocol (MCP) server implementation that enables comprehensive configuration and management of [Higress](https://higress.cn/). This repository also provides an MCP client built on top of [LangGraph](https://www.langchain.com/langgraph) and [LangChain MCP Adapters](https://github.com/langchain-ai/langchain-mcp-adapters), facilitating interaction with the Higress MCP Server through a well-designed agent flow architecture.\n\n## Demo\n\nhttps://github.com/user-attachments/assets/bae66b77-a158-452e-9196-98060bac0df7\n\n## Config Environment Variables\n\nCopy the `.env.example` file to `.env` and fill in the corresponding values.\n\n## Start MCP Client and MCP Server\n\nIn stdio mode, the MCP server process is started by the MCP client program. Run the following command to start the MCP client and MCP server:\n\n```python\nuv run client.py\n```\n\n## Add a new tool\n\n**Step 1: Create a new tool class or extend an existing one**\n\n- Create a new file in the tools directory if adding a completely new tool category\n- Or add your tool to an existing class if it fits an existing category\n\n```python\nfrom typing import Dict, List, Any\nfrom fastmcp import FastMCP\n\nclass YourTools:\n    def register_tools(self, mcp: FastMCP):\n        @mcp.tool()\n        async def your_tool_function(arg1: str, arg2: int) -> List[Dict]:\n            \"\"\"\n            Your tool description.\n            \n            Args:\n                arg1: Description of arg1\n                arg2: Description of arg2\n\n            Returns:\n                Description of the return value\n            \n            Raises:\n                ValueError: If the request fails\n            \"\"\"\n            # Implementation using self.higress_client to make API calls\n            return self.higress_client.your_api_method(arg1, arg2)\n```\n\n\n**Step 2: Add a new method to HigressClient if your tool needs to interact with the Higress Console API**\n\n- Add methods to utils/higress_client.py that encapsulate API calls\n- Use the existing HTTP methods (get, put, post) for actual API communication\n\n\n```python\ndef your_api_method(self, arg1: str, arg2: int) -> List[Dict]:\n    \"\"\"\n    Description of what this API method does.\n    \n    Args:\n        arg1: Description of arg1\n        arg2: Description of arg2\n        \n    Returns:\n        Response data\n        \n    Raises:\n        ValueError: If the request fails\n    \"\"\"\n    path = \"/v1/your/api/endpoint\"\n    data = {\"arg1\": arg1, \"arg2\": arg2}\n    return self.put(path, data)  # or self.get(path) or self.post(path, data)\n```\n\n**Step 3: Register your tool class in the server**\n\n- Add your tool class to the tool_classes list in server.py\n- This list is used by ToolsRegister to instantiate and register all tools\n- The ToolsRegister will automatically set logger and higress_client attributes\n\n```python\ntool_classes = [\n    CommonTools,\n    RequestBlockTools,\n    RouteTools,\n    ServiceSourceTools,\n    YourTools  # Add your tool class here\n]\n```\n\n**Step 4: Add your tool to `SENSITIVE_TOOLS` if it requires human confirmation**\n\n- Tools in this list will require human confirmation before execution\n\n```python\n# Define write operations that require human confirmation\nSENSITIVE_TOOLS = [\n    \"add_route\", \n    \"add_service_source\",\n    \"update_route\",\n    \"update_request_block_plugin\", \n    \"update_service_source\",\n    \"your_tool_function\"  # Add your tool name here if it requires confirmation\n]\n```\n",
   "category": "Enterprise",
   "quality_score": 39,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "higress-ops-mcp-server-stdio": {
+          "command": "uv",
+          "args": ["run", "client.py"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

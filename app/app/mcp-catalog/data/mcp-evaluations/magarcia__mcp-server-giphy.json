@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "magarcia__mcp-server-giphy",
-  "display_name": "giphy",
+  "display_name": "mcp-server-giphy",
   "version": "1.0.0",
   "description": "An implementation of Giphy integration with Model Context Protocol",
   "author": {
@@ -11,13 +11,9 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-server-giphy"],
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
   "tools": [],
@@ -27,10 +23,35 @@
   "readme": "# MCP Server Giphy\n\n[![CI](https://github.com/magarcia/mcp-server-giphy/actions/workflows/ci.yml/badge.svg)](https://github.com/magarcia/mcp-server-giphy/actions/workflows/ci.yml)\n[![npm version](https://img.shields.io/npm/v/mcp-server-giphy.svg)](https://www.npmjs.com/package/mcp-server-giphy)\n[![npm downloads](https://img.shields.io/npm/dm/mcp-server-giphy.svg)](https://www.npmjs.com/package/mcp-server-giphy)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n\nMCP Server for the Giphy API, enabling AI models to search, retrieve, and utilize GIFs from Giphy.\n\n### Features\n\n- **Content Filtering**: Filter results by rating (G, PG, PG-13, R) to ensure appropriate content\n- **Optimized Response Format**: Response data optimized for AI model consumption\n- **Multiple Search Methods**: Support for query-based, random, and trending GIF retrieval\n- **Comprehensive Metadata**: Each GIF comes with full metadata including dimensions, formats, and attribution\n- **Pagination Support**: Control result size and pagination for efficient API use\n\n## Tools\n\n1. `search_gifs`\n\n   - Search for GIFs on Giphy with a query string\n   - Inputs:\n     - `query` (string): Search query term or phrase\n     - `limit` (optional number): Maximum number of objects to return (default: 10, max: 50)\n     - `offset` (optional number): Results offset (default: 0)\n     - `rating` (optional string): Content rating (g, pg, pg-13, r)\n     - `lang` (optional string): Language code (default: en)\n   - Returns: Array of GIF objects with metadata\n\n2. `get_random_gif`\n\n   - Get a random GIF from Giphy, optionally filtered by tag\n   - Inputs:\n     - `tag` (optional string): Tag to limit random results\n     - `rating` (optional string): Content rating (g, pg, pg-13, r)\n   - Returns: Random GIF object with metadata\n\n3. `get_trending_gifs`\n   - Get currently trending GIFs on Giphy\n   - Inputs:\n     - `limit` (optional number): Maximum number of objects to return (default: 10, max: 50)\n     - `offset` (optional number): Results offset (default: 0)\n     - `rating` (optional string): Content rating (g, pg, pg-13, r)\n   - Returns: Array of trending GIF objects with metadata\n\n## Response Format\n\nEach GIF in the response includes:\n\n- `id`: Unique Giphy identifier\n- `title`: GIF title\n- `url`: URL to the GIF on Giphy website\n- `images`: Object containing various image formats, each with:\n  - `url`: Direct URL to the image file\n  - `width`: Image width\n  - `height`: Image height\n- Additional metadata when available\n\n## Setup\n\n### Giphy API Key\n\n[Create a Giphy API Key](https://developers.giphy.com/dashboard/?create=true):\n\n- Sign up for a Giphy Developer account\n- Create an app to get an API key\n- Choose between the free tier or paid options based on your needs\n\n### Environment Configuration\n\nCreate a `.env` file with your API key:\n\n```\nGIPHY_API_KEY=your_api_key_here\n```\n\n### Usage with Claude Desktop\n\nTo use this with Claude Desktop, add the following to your `claude_desktop_config.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"giphy\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"mcp-server-giphy\"],\n      \"env\": {\n        \"GIPHY_API_KEY\": \"<YOUR_API_KEY>\"\n      }\n    }\n  }\n}\n```\n\n## Development\n\n```bash\n# Install dependencies\nnpm install\n\n# Build the project\nnpm run build\n\n# Start the server\nnpm start\n\n# Run in development mode with hot reloading\nnpm run dev\n\n# Run tests\nnpm test\n\n# Use with MCP Inspector\nnpm run inspector\n```\n\n## License\n\nThis MCP server is licensed under the MIT License. This means you are free to use, modify, and distribute the software, subject to the terms and conditions of the MIT License. For more details, please see the LICENSE file in the project repository.\n",
   "category": "Media",
   "quality_score": 54,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "mcp-server-giphy": {
+          "command": "npx",
+          "args": ["-y", "mcp-server-giphy"],
+          "env": {
+            "GIPHY_API_KEY": "<YOUR_API_KEY>"
+          }
+        },
+        "mcp-server-giphy-npm-start": {
+          "command": "npm",
+          "args": ["start"],
+          "env": {
+            "GIPHY_API_KEY": "<YOUR_API_KEY>"
+          }
+        },
+        "mcp-server-giphy-npm-dev": {
+          "command": "npm",
+          "args": ["run", "dev"],
+          "env": {
+            "GIPHY_API_KEY": "<YOUR_API_KEY>"
+          }
+        }
+      }
+    },
     "oauth": {
-      "provider": "giphy",
-      "required": true
+      "provider": null,
+      "required": false
     }
   },
   "github_info": {

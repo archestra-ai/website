@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "cloudbet__sports-mcp-server",
-  "display_name": "sports",
+  "display_name": "sports-mcp-server",
   "version": "1.0.0",
   "description": "Cloudbet Sports Data MCP Server",
   "author": {
@@ -11,8 +11,8 @@
     "type": "binary",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "go",
-      "args": ["run", "."],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# Cloudbet Sports MCP server\n\nSingle-file, minimal implementation of the [Model Context Protocol](https://modelcontextprotocol.io/introduction) (MCP) for sports data and betting tool exposure using the Cloudbet public API. This demo server follows the [MCP Server specification](https://modelcontextprotocol.io/specification/2025-03-26/server) and is designed for educational and demonstration purposes only. Please use responsibly and at your own risk.\n\n1. **Run the Server:**\n\n```sh\ngo run .\n```\n\n2. **List Tools (Describe):**\n\n```sh\ncurl -X POST http://localhost:8080/ -H \"Content-Type: application/json\" -d '{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 1,\n  \"method\": \"tools/list\",\n  \"params\": {}\n}' | jq .\n```\n\n3. **Call a Tool:**\n\n```sh\ncurl -X POST http://localhost:8080/ -H \"Content-Type: application/json\" -d '{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 2,\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"findEventsAndMarketsByCompetition\",\n    \"arguments\": {\n      \"competitionName\": \"Premier League\"\n    }\n  }\n}' | jq .\n```\n",
   "category": "Sports",
   "quality_score": 35,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "cloudbet-sports-mcp-server": {
+          "command": "go",
+          "args": ["run", "."],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

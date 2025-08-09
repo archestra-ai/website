@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "feuerdev__keep-mcp",
-  "display_name": "keep",
+  "display_name": "keep-mcp",
   "version": "1.0.0",
   "description": "MCP server for Google Keep",
   "author": {
@@ -11,13 +11,9 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "pipx",
-      "args": ["run", "keep-mcp"],
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
   "tools": [],
@@ -27,7 +23,28 @@
   "readme": "# keep-mcp\n\nMCP server for Google Keep\n\n![keep-mcp](https://github.com/user-attachments/assets/f50c4ae6-4d35-4bb6-a494-51c67385f1b6)\n\n## How to use\n\n1. Add the MCP server to your MCP servers:\n\n```json\n  \"mcpServers\": {\n    \"keep-mcp-pipx\": {\n      \"command\": \"pipx\",\n      \"args\": [\n        \"run\",\n        \"keep-mcp\"\n      ],\n      \"env\": {\n        \"GOOGLE_EMAIL\": \"Your Google Email\",\n        \"GOOGLE_MASTER_TOKEN\": \"Your Google Master Token - see README.md\"\n      }\n    }\n  }\n```\n\n2. Add your credentials:\n* `GOOGLE_EMAIL`: Your Google account email address\n* `GOOGLE_MASTER_TOKEN`: Your Google account master token\n\nCheck https://gkeepapi.readthedocs.io/en/latest/#obtaining-a-master-token and https://github.com/simon-weber/gpsoauth?tab=readme-ov-file#alternative-flow for more information.\n\n## Features\n\n* `find`: Search for notes based on a query string\n* `create_note`: Create a new note with title and text (automatically adds keep-mcp label)\n* `update_note`: Update a note's title and text\n* `delete_note`: Mark a note for deletion\n\nBy default, all destructive and modification operations are restricted to notes that have were created by the MCP server (i.e. have the keep-mcp label). Set `UNSAFE_MODE` to `true` to bypass this restriction.\n\n```\n\"env\": {\n  ...\n  \"UNSAFE_MODE\": \"true\"\n}\n```\n\n## Publishing\n\nTo publish a new version to PyPI:\n\n1. Update the version in `pyproject.toml`\n2. Build the package:\n   ```bash\n   pipx run build\n   ```\n3. Upload to PyPI:\n   ```bash\n   pipx run twine upload --repository pypi dist/*\n   ```\n\n## Troubleshooting\n\n* If you get \"DeviceManagementRequiredOrSyncDisabled\" check https://admin.google.com/ac/devices/settings/general and turn \"Turn off mobile management (Unmanaged)\"\n",
   "category": "Knowledge",
   "quality_score": 52,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "keep-mcp-pipx": {
+          "command": "pipx",
+          "args": ["run", "keep-mcp"],
+          "env": {
+            "GOOGLE_EMAIL": "Your Google Email",
+            "GOOGLE_MASTER_TOKEN": "Your Google Master Token - see README.md"
+          }
+        },
+        "keep-mcp-pipx-unsafe": {
+          "command": "pipx",
+          "args": ["run", "keep-mcp"],
+          "env": {
+            "GOOGLE_EMAIL": "Your Google Email",
+            "GOOGLE_MASTER_TOKEN": "Your Google Master Token - see README.md",
+            "UNSAFE_MODE": "true"
+          }
+        }
+      }
+    },
     "oauth": {
       "provider": "google",
       "required": true

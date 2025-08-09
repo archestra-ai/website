@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "wooonster__hocr_mcp_server",
-  "display_name": "hocr__",
+  "display_name": "hocr_mcp_server",
   "version": "1.0.0",
   "description": "MCP server from Wooonster/hocr_mcp_server",
   "author": {
@@ -11,8 +11,8 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "uvicorn",
-      "args": ["mcp_server:app", "--reload", "--host", "0.0.0.0", "--port", "8000"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# HOCR MCP Agent\n\n### Vue Frontend\n\nStart command:\n\n```bash\ncd hocr-vue-client/\n\nnpm install\nnpm run dev\n```\n\nRequired packages:\n```bash\ncd hocr-vue-client/\n\nnpm install katex\nnpm install axios\n```\n\n### MCP Server\n\nStart command:\n\n```bash\nuvicorn mcp_server:app --reload --host 0.0.0.0 --port 8000\n````",
   "category": "AI Tools",
   "quality_score": 26,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "mcp_server": {
+          "command": "uvicorn",
+          "args": ["mcp_server:app", "--reload", "--host", "0.0.0.0", "--port", "8000"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

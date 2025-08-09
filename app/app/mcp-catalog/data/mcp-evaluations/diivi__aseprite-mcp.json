@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "diivi__aseprite-mcp",
-  "display_name": "aseprite",
+  "display_name": "aseprite-mcp",
   "version": "1.0.0",
   "description": "MCP server for interacting with the Aseprite API",
   "author": {
@@ -11,8 +11,8 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "/opt/homebrew/bin/uv",
-      "args": ["--directory", "/path/to/repo", "run", "-m", "aseprite_mcp"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# Aseprite MCP Tools\n\nA Python module that serves as an MCP server for interacting with the Aseprite API\n\nDemo where Cursor draws a cloud in aseprite using the MCP:\n\nhttps://github.com/user-attachments/assets/572edf75-ab66-4700-87ee-d7d3d196c597\n\n\n## Installation:\n```json\n{\n  \"mcpServers\": {\n      \"aseprite\": {\n          \"command\": \"/opt/homebrew/bin/uv\",\n          \"args\": [\n              \"--directory\",\n              \"/path/to/repo\",\n              \"run\",\n              \"-m\",\n              \"aseprite_mcp\"\n          ]\n      }\n  }\n}\n```\n",
   "category": "Art & Culture",
   "quality_score": 44,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "aseprite_mcp": {
+          "command": "uv",
+          "args": ["--directory", "/path/to/repo", "run", "-m", "aseprite_mcp"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "github",
+      "provider": null,
       "required": false
     }
   },

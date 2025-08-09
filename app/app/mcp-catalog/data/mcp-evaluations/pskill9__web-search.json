@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "pskill9__web-search",
-  "display_name": "web search",
+  "display_name": "web-search",
   "version": "1.0.0",
   "description": "Web search using free google search (NO API KEYS REQUIRED)",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "node",
-      "args": ["/path/to/web-search/build/index.js"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,10 +23,19 @@
   "readme": "# Web Search MCP Server\n\nA Model Context Protocol (MCP) server that enables free web searching using Google search results, with no API keys required.\n\n## Features\n\n- Search the web using Google search results\n- No API keys or authentication required\n- Returns structured results with titles, URLs, and descriptions\n- Configurable number of results per search\n\n## Installation\n\n1. Clone or download this repository\n2. Install dependencies:\n```bash\nnpm install\n```\n3. Build the server:\n```bash\nnpm run build\n```\n4. Add the server to your MCP configuration:\n\nFor VSCode (Claude Dev Extension):\n```json\n{\n  \"mcpServers\": {\n    \"web-search\": {\n      \"command\": \"node\",\n      \"args\": [\"/path/to/web-search/build/index.js\"]\n    }\n  }\n}\n```\n\nFor Claude Desktop:\n```json\n{\n  \"mcpServers\": {\n    \"web-search\": {\n      \"command\": \"node\",\n      \"args\": [\"/path/to/web-search/build/index.js\"]\n    }\n  }\n}\n```\n\n## Usage\n\nThe server provides a single tool named `search` that accepts the following parameters:\n\n```typescript\n{\n  \"query\": string,    // The search query\n  \"limit\": number     // Optional: Number of results to return (default: 5, max: 10)\n}\n```\n\nExample usage:\n```typescript\nuse_mcp_tool({\n  server_name: \"web-search\",\n  tool_name: \"search\",\n  arguments: {\n    query: \"your search query\",\n    limit: 3  // optional\n  }\n})\n```\n\nExample response:\n```json\n[\n  {\n    \"title\": \"Example Search Result\",\n    \"url\": \"https://example.com\",\n    \"description\": \"Description of the search result...\"\n  }\n]\n```\n\n## Limitations\n\nSince this tool uses web scraping of Google search results, there are some important limitations to be aware of:\n\n1. **Rate Limiting**: Google may temporarily block requests if too many searches are performed in a short time. To avoid this:\n   - Keep searches to a reasonable frequency\n   - Use the limit parameter judiciously\n   - Consider implementing delays between searches if needed\n\n2. **Result Accuracy**: \n   - The tool relies on Google's HTML structure, which may change\n   - Some results might be missing descriptions or other metadata\n   - Complex search operators may not work as expected\n\n3. **Legal Considerations**:\n   - This tool is intended for personal use\n   - Respect Google's terms of service\n   - Consider implementing appropriate rate limiting for your use case\n\n## Contributing\n\nFeel free to submit issues and enhancement requests!\n",
   "category": "Search",
   "quality_score": 46,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "web-search": {
+          "command": "node",
+          "args": ["/path/to/web-search/build/index.js"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
       "provider": "google",
-      "required": false
+      "required": true
     }
   },
   "github_info": {

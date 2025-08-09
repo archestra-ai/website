@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "weaviate__mcp-server-weaviate",
-  "display_name": "weaviate",
+  "display_name": "mcp-server-weaviate",
   "version": "1.0.0",
   "description": "MCP (Model Context Protocol) server for Weaviate",
   "author": {
@@ -11,8 +11,8 @@
     "type": "binary",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "weaviate-mcp-server",
-      "args": ["--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,10 @@
   "readme": "# Weaviate MCP Server\n\n## Instructions\n\nBuild the server:\n```\nmake build\n```\n\nRun the test client\n```\nmake run-client\n```\n\n## Tools\n\n### Insert One\nInsert an object into weaviate.\n\n**Request body:**\n```json\n{}\n```\n\n**Response body**\n```json\n{}\n```\n\n### Query\nRetrieve objects from weaviate with hybrid search.\n\n**Request body:**\n```json\n{}\n```\n\n**Response body**\n```json\n{}\n```\n",
   "category": "AI Tools",
   "quality_score": 48,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": null,
     "oauth": {
-      "provider": "null",
+      "provider": null,
       "required": false
     }
   },

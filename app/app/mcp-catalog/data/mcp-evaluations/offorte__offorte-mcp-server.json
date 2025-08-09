@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "offorte__offorte-mcp-server",
-  "display_name": "offorte",
+  "display_name": "offorte-mcp-server",
   "version": "1.0.0",
   "description": "MCP server for the Offorte API - Create & send proposals using AI",
   "author": {
@@ -11,13 +11,9 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@offorte/mcp-server"],
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
   "tools": [],
@@ -27,9 +23,45 @@
   "readme": "# Offorte MCP Server <!-- omit in toc -->\n\nMCP server for Offorte - Create & send proposals using AI.\n\nThis server acts as the bridge between AI agents and Offorte's proposal engine.\nIt enables external models to create and send proposals via Offorte.\nBuilt for automation workflows, the [MCP](https://modelcontextprotocol.io/) makes it easy to integrate proposal actions into AI tools, chat interfaces, and autonomous systems.\n\n> **Early technology**\n> Please note that MCP (Model Context Protocol) is a new approach to AI integration.\n> While powerful, it's still evolving and may occasionally produce unexpected or undesired results.\n\n## Table of Contents <!-- omit in toc -->\n\n- [About Offorte](#about-offorte)\n- [Goals \\& Coverage](#goals--coverage)\n- [Prerequisites](#prerequisites)\n- [Available Tools](#available-tools)\n- [MCP Clients](#mcp-clients)\n- [Development](#development)\n\n## About Offorte\n\nOfforte is automated proposal software which helps businesses create, send, and track beautiful interactive proposals.\nBuilt for speed, flexibility, and real-world use, it combines automation and smart workflows without sacrificing the personal touch.\n[Learn more about Offorte](https://www.offorte.com).\n\n### API <!-- omit in toc -->\n\nThe MCP server is using the Offorte Public API v2.\nRead the [API documentation](https://www.offorte.com/api-docs/) for more information.\n\n### Demo <!-- omit in toc -->\n\nExperience the future of proposals: voice-triggered, AI-powered, fully automated.\nSee how Offorte connects voice and workflow in [this real demo](https://www.offorte.com/en/blog/proposal-software/handsfree-proposal-sending-with-mcp).\n\n## Goals & Coverage\n\nThe goal of this project is too create & send proposals using AI via the protocol.\nBecause of the experimental character, the full Offorte API is not covered and its limited to the tools needed to create & send proposals.\nTools which could lead to an LLM updating and deleting stuff are not yet implemented.\nUpdate and delete commands might be added in the future, based on reallife results & user feedback.\n\n## Prerequisites\n\n- Node.js (tested with Node.js `20.x.x`)\n- Offorte API Key (see [Authentication Section](https://www.offorte.com/api-docs/authentication#api-keys) of the Offorte API Docs)\n- PNPM for development\n- `TRANSPORT_TYPE` (optional): Set to `sse` to enable Server-Sent Events (SSE) mode, or leave unset/default for `stdio` (default: `stdio`).\n\n## Available Tools\n\n### Context & Setup <!-- omit in toc -->\n\n- **get_initial_context** – **IMPORTANT:** Must be called before using any other tools to initialize context and get usage instructions\n\n### Account <!-- omit in toc -->\n\n- **get_users** – Lists all account users for the current account\n\n### Automations <!-- omit in toc -->\n\n- **get_automation_sets** – Lists automation sets which are used as an optional input to create a new proposal\n\n### Contacts <!-- omit in toc -->\n\n- **create_contact** – Create a new contact (organisation or person/individual)\n- **get_contact_details** - Get all details for a contact by id\n- **search_contact_organisations** - Search for organisations by name in the contacts\n- **search_contact_people** - Search for people by name in the contacts\n\n### Favorites <!-- omit in toc -->\n\n- **get_proposal_templates** – Lists proposal templates which are used as starting points to create new proposals\n\n### Proposals <!-- omit in toc -->\n\n- **create_proposal** – Create a new proposal\n- **get_proposal_directories** – Get all proposal directories grouped by status\n- **search_proposals** – Search for proposals by query\n- **send_proposal** – Send a proposal to its assigned contacts\n\n### Settings <!-- omit in toc -->\n\n- **get_design_templates** – Lists available design templates which are used to create new proposals\n- **get_email_templates** – Lists available email templates which are used to send proposals\n- **get_text_templates** – Lists available language text templates which are used to create new proposals\n\n## MCP Clients\n\nCurrently, this MCP server has only been tested with Claude Desktop.\nMore client examples will be added in the future.\n\n### Claude Desktop Configuration <!-- omit in toc -->\n\nFind your `claude_desktop_config.json` at `Claude > Settings > Developer > Edit Config` and depending on which option you'd like, add **JUST ONE** of the following:\n\n#### NPX <!-- omit in toc -->\n\nRunning it straight from the npm registry.\n\n```json\n{\n\t\"mcpServers\": {\n\t\t\"offorte-proposals\": {\n\t\t\t\"command\": \"npx\",\n\t\t\t\"args\": [\"-y\", \"@offorte/mcp-server\"],\n\t\t\t\"env\": {\n\t\t\t\t\"OFFORTE_ACCOUNT_NAME\": \"<YOUR_ACCOUNT_NAME>\",\n\t\t\t\t\"OFFORTE_API_KEY\": \"<YOUR_TOKEN>\"\n\t\t\t}\n\t\t}\n\t}\n}\n```\n\n#### Local Node <!-- omit in toc -->\n\nDependencies should have been installed & the project is build before you use this method (`pnpm install`).\n\n```json\n{\n\t\"mcpServers\": {\n\t\t\"offorte-proposals\": {\n\t\t\t\"command\": \"node\",\n\t\t\t\"args\": [\"/path/to/directory/offorte-mcp-server/dist/server.js\"],\n\t\t\t\"env\": {\n\t\t\t\t\"OFFORTE_ACCOUNT_NAME\": \"<YOUR_ACCOUNT_NAME>\",\n\t\t\t\t\"OFFORTE_API_KEY\": \"<YOUR_TOKEN>\"\n\t\t\t}\n\t\t}\n\t}\n}\n```\n\n## Development\n\nTo get started, clone the repository and install the dependencies.\nMake sure you have an .env file and it includes the proper values.\n\n```bash\ngit clone https://github.com/offorte/offorte-mcp-server.git\ncd offorte-mcp-server\npnpm install\npnpm dev\n```\n\n### Commands <!-- omit in toc -->\n\nCheck the NPM scripts for all commands, below is a short summary of the most important onces.\n\n| Script         | Info                                  |\n| -------------- | ------------------------------------- |\n| `pnpm build`   | Build the project for production      |\n| `pnpm start`   | Start the production server           |\n| `pnpm dev`     | Start the development server          |\n| `pnpm inspect` | Inspect the server                    |\n| `pnpm format`  | Format code using Prettier and ESLint |\n",
   "category": "AI Tools",
   "quality_score": 69,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "offorte-mcp-server-npx": {
+          "command": "npx",
+          "args": ["-y", "@offorte/mcp-server"],
+          "env": {
+            "OFFORTE_ACCOUNT_NAME": "<YOUR_ACCOUNT_NAME>",
+            "OFFORTE_API_KEY": "<YOUR_TOKEN>"
+          }
+        },
+        "offorte-mcp-server-local-node": {
+          "command": "node",
+          "args": ["/path/to/directory/offorte-mcp-server/dist/server.js"],
+          "env": {
+            "OFFORTE_ACCOUNT_NAME": "<YOUR_ACCOUNT_NAME>",
+            "OFFORTE_API_KEY": "<YOUR_TOKEN>"
+          }
+        },
+        "offorte-mcp-server-dev": {
+          "command": "pnpm",
+          "args": ["dev"],
+          "env": {
+            "OFFORTE_ACCOUNT_NAME": "<YOUR_ACCOUNT_NAME>",
+            "OFFORTE_API_KEY": "<YOUR_TOKEN>"
+          }
+        },
+        "offorte-mcp-server-start": {
+          "command": "pnpm",
+          "args": ["start"],
+          "env": {
+            "OFFORTE_ACCOUNT_NAME": "<YOUR_ACCOUNT_NAME>",
+            "OFFORTE_API_KEY": "<YOUR_TOKEN>"
+          }
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

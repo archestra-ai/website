@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "dagger__container-use",
-  "display_name": "container use",
+  "display_name": "container-use",
   "version": "1.0.0",
   "description": "Development environments for coding agents. Enable multiple agents to work safely and independently with your preferred stack.",
   "author": {
@@ -11,8 +11,8 @@
     "type": "binary",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "container-use",
-      "args": ["stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,23 @@
   "readme": "<div align=\"center\">\n  <img src=\"./docs/images/container-use.png\" align=\"center\" alt=\"Container use: Development environments for coding agents.\" />\n  <h1 align=\"center\">container-use</h2>\n  <p align=\"center\">Containerized environments for coding agents. (📦🤖) (📦🤖) (📦🤖)</p>\n  <p align=\"center\">\n    <img src=\"https://img.shields.io/badge/stability-experimental-orange.svg\" alt=\"Experimental\" />\n    <a href=\"https://opensource.org/licenses/Apache-2.0\">\n      <img src=\"https://img.shields.io/badge/License-Apache_2.0-blue.svg\">\n    </a>\n    <a href=\"https://container-use.com/discord\">\n      <img src=\"https://img.shields.io/discord/707636530424053791?logo=discord&logoColor=white&label=Discord&color=7289DA\" alt=\"Discord\">\n    </a>\n  </p>\n</div>\n\n**Container Use** lets coding agents do their work in parallel environments without getting in your way. Go from babysitting one agent at a time to enabling multiple agents to work safely and independently with your preferred stack. See the [full documentation](https://container-use.com).\n\n<p align='center'>\n    <img src='./docs/images/demo.gif' width='700' alt='container-use demo'>\n</p>\n\nIt's an open-source MCP server that works as a CLI tool with Claude Code, Cursor, and other MCP-compatible agents. Powered by [Dagger](https://dagger.io).\n\n* 📦 **Isolated Environments**: Each agent gets a fresh container in its own git branch - run multiple agents without conflicts, experiment safely, discard failures instantly.\n* 👀 **Real-time Visibility**: See complete command history and logs of what agents actually did, not just what they claim.\n* 🚁 **Direct Intervention**: Drop into any agent's terminal to see their state and take control when they get stuck.\n* 🎮 **Environment Control**: Standard git workflow - just `git checkout <branch_name>` to review any agent's work.\n* 🌎 **Universal Compatibility**: Works with any agent, model, or infrastructure - no vendor lock-in.\n\n---\n\n🦺 This project is in early development and actively evolving. Submit issues and/or reach out to us on [Discord](https://container-use.com/discord) in the #container-use channel.\n\n---\n\n## Quick Start\n\n### Install\n\n```sh\n# macOS (recommended)\nbrew install dagger/tap/container-use\n\n# All platforms\ncurl -fsSL https://raw.githubusercontent.com/dagger/container-use/main/install.sh | bash\n```\n\n### Setup with Your Agent\n\nContainer Use works with any MCP-compatible agent. The setup is always the same: **add `container-use stdio` as an MCP server**.\n\n**👉 [Complete setup guide for all agents (Cursor, Goose, VSCode, etc.)](https://container-use.com/quickstart)**\n\n**Example with Claude Code:**\n\n```sh\n# Add Container Use MCP server\ncd /path/to/repository\nclaude mcp add container-use -- container-use stdio\n\n# Add agent rules (optional)\ncurl https://raw.githubusercontent.com/dagger/container-use/main/rules/agent.md >> CLAUDE.md\n```\n\n<details>\n<summary>💡 Command Shortcut</summary>\n\nThe `container-use` command is also available as `cu` for convenience. Both commands work identically:\n- `container-use stdio` (used in documentation)\n- `cu stdio` (shortcut)\n\n</details>\n\n### Try It\n\nAsk your agent to create something:\n> Create a hello world app in python using flask\n\nYour agent will work in an isolated environment and give you URLs to view the app and explore the code!",
   "category": "Development",
   "quality_score": 52,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "container-use-stdio": {
+          "command": "container-use",
+          "args": ["stdio"],
+          "env": {}
+        },
+        "cu-stdio": {
+          "command": "cu",
+          "args": ["stdio"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

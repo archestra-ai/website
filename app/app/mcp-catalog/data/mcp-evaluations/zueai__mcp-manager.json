@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "zueai__mcp-manager",
-  "display_name": "manager",
+  "display_name": "mcp-manager",
   "version": "1.0.0",
   "description": "simple web ui to manage mcp (model context protocol) servers in the claude app",
   "author": {
@@ -11,13 +11,9 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@anthropic/claude-mcp-server", "--transport", "stdio"],
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
   "tools": [],
@@ -27,10 +23,11 @@
   "readme": "<h1 align=\"center\">MCP Manager for Claude Desktop</h1>\n\n<p align=\"center\">A desktop application to manage Model Context Protocol (MCP) servers for the Claude Desktop app on MacOS. Just follow the instructions and paste a few commands to give your Claude app instant superpowers.</p>\n\n![MCP Manager for Claude Desktop](https://assets.zue.ai/mcp-manager-hero.png)\n\n## What is MCP?\n\nThe Model Context Protocol (MCP) enables Claude to access private data, APIs, and other services to answer questions and perform actions on your behalf. Learn more about MCP at:\n\n- [modelcontextprotocol.io](https://modelcontextprotocol.io)\n- [Anthropic's MCP Announcement](https://www.anthropic.com/news/model-context-protocol)\n\n## Features\n\n- 🚀 Easy-to-use desktop interface for managing MCP servers\n- 🔒 Runs locally - your data never leaves your computer\n- ⚡️ Quick setup for popular MCP servers:\n  - Apple Notes - Access and search your Apple Notes\n  - AWS Knowledge Base - Access and query AWS Knowledge Base for information retrieval\n  - Brave Search - Search the web with Brave Search API\n  - Browserbase - Let Claude explore the web with Browserbase\n  - Cloudflare - Manage your Cloudflare workers and account resources\n  - Everart - Interface with Everart API for digital art and design tools\n  - Exa - Search the web with Exa\n  - Filesystem - Access and manage local filesystem\n  - GitHub - Access your GitHub repositories\n  - GitLab - Manage GitLab repositories and resources\n  - Google Drive - Access and search files in your Google Drive\n  - Google Maps - Access Google Maps API for location services\n  - Memory - Give Claude memory of previous conversations\n  - Obsidian - Read and search files in your Obsidian vault\n  - Perplexity - Search the web with Perplexity API\n  - PostgreSQL - Connect and interact with PostgreSQL databases\n  - Puppeteer - Automate browser interactions\n  - Sequential Thinking - Enable step-by-step reasoning\n  - Slack - Access your Slack workspace\n  - SQLite - Manage SQLite databases\n  - Todoist - Access and search your Todoist tasks\n  - YouTube Transcript - Access and search YouTube transcripts\n- 🛠 Simple configuration of environment variables and server settings\n- 📋 One-click copying of terminal commands for installation\n\n## Tech Stack\n\n- **Desktop Framework**: \n  - Electron 29.1.4 with React 18.3.1\n  - TypeScript 5.6.2\n- **Build Tool**: \n  - Vite 6.0.1\n  - Electron Builder 25.1.8\n- **UI Components**:\n  - TailwindCSS 3.4.16\n  - DaisyUI 4.12.14\n  - Lucide React 0.468.0 for icons\n  - Tiempos Font\n- **Code Quality**:\n  - Biome 1.9.4\n  - ESLint 9.15.0\n- **Package Manager**: Bun\n\n## Project Structure\n\n```plaintext\nsrc/\n├── components/ # React components\n│ ├── server-configs/ # Server-specific configuration components\n│ └── ...\n├── assets/ # Static assets and fonts\n├── App.tsx # Main application component\n├── server-configs.ts # MCP server configurations\n└── utils.ts # Utility functions\nelectron/\n├── main.ts # Electron main process\n└── tsconfig.json # TypeScript config for Electron\n```\n\n## Development\n\n1. Install dependencies:\n   ```bash\n   bun install\n   ```\n\n2. Start development:\n   ```bash\n   bun electron:dev\n   ```\n\n3. Build for MacOS:\n   ```bash\n   rm -rf dist dist-electron # When rebuilding\n   bun electron:build # Creates .dmg installer\n   ```\n\n4. Additional commands:\n   ```bash\n   bun check # Run TypeScript checks and Biome formatting\n   bun lint # Run ESLint\n   ```\n\n## Work to be done\n\nAdd preset MCPs:\n- Fetch \n- Time-related \n- Sentry \n\nContributions to resolve these are welcome!\n\n## Contributing\n\nContributions are extremely welcome! Please open a PR with new MCP servers or any other improvements to the codebase.\n\n## Disclaimer\n\nThis project is not affiliated with Anthropic. All logos are trademarks of their respective owners.\n\n## License\n\nMIT\n\n---\n<br/>\n<br/>\n<p align=\"center\">\n<a href=\"https://zue.ai#gh-light-mode-only\">\n  <img src=\"https://assets.zue.ai/logo_zue_purple.svg\" alt=\"zue logo\" width=\"200\" height=\"auto\" style=\"display: block; margin: 0 auto;\" />\n</a>\n<a href=\"https://zue.ai#gh-dark-mode-only\">\n  <img src=\"https://assets.zue.ai/logo_zue_yellow.svg\" alt=\"zue logo\" width=\"200\" height=\"auto\" style=\"display: block; margin: 0 auto;\" />\n</a>\n</p>\n\n<p align=\"center\">\n<a href=\"https://zue.ai/talk-to-us\">Contact us</a> for custom AI automation solutions and product development.\n</p>",
   "category": "AI Tools",
   "quality_score": 69,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": null,
     "oauth": {
-      "provider": "github",
-      "required": true
+      "provider": null,
+      "required": false
     }
   },
   "github_info": {

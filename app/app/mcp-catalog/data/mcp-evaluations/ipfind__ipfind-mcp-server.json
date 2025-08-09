@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "ipfind__ipfind-mcp-server",
-  "display_name": "ipfind",
+  "display_name": "ipfind-mcp-server",
   "version": "1.0.0",
   "description": "IP Find MCP Server",
   "author": {
@@ -11,13 +11,9 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@ipfind/ipfind-mcp-server"],
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
   "tools": [],
@@ -27,9 +23,20 @@
   "readme": "# IP Find MCP Server\n\nA Model Context Protocol server that enables AI assistants to use IP Find. \n\n## How It Works\n\nThe MCP server:\n\n-   Connects to your IP Find API and allows AI Assistants to get locations of IP Addresses.\n\n## Usage with Claude Desktop\n\n### Prerequisites\n\n-   NodeJS\n-   MCP Client (like Claude Desktop App)\n-   IP Find API Key\n\n### Installation\n\nTo use this server with the Claude Desktop app, add the following configuration to the \"mcpServers\" section of your `claude_desktop_config.json`:\n\n```json\n{\n    \"mcpServers\": {\n        \"ipfind\": {\n            \"command\": \"npx\",\n            \"args\": [\"-y\", \"@ipfind/ipfind-mcp-server\"],\n            \"env\": {\n                \"IPFIND_API_KEY\": \"<API KEY GOES HERE>\"\n            }\n        }\n    }\n}\n```\n\n-   `IPFIND_API_KEY` - You can generate an API key at IPfind.com.\n\n\nCertified by [MCPHub](https://mcphub.com/mcp-servers/ipfind/ipfind-mcp-server)\n",
   "category": "Location",
   "quality_score": 50,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "ipfind-mcp-server": {
+          "command": "npx",
+          "args": ["-y", "@ipfind/ipfind-mcp-server"],
+          "env": {
+            "IPFIND_API_KEY": "<API KEY GOES HERE>"
+          }
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "0xdaef0f__job-searchoor",
-  "display_name": "job searchoor",
+  "display_name": "job-searchoor",
   "version": "1.0.0",
   "description": "A simple MCP server that delivers you jobs based on your needs",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "job-searchoor", "--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# Job Searchoor MCP Server\n[![Twitter Follow](https://img.shields.io/twitter/follow/Alex?style=social)](https://x.com/0xdaef0f)\n\nAn MCP server implementation that provides job search functionality.\n\n![mc-demo](https://github.com/user-attachments/assets/87159634-5e4c-41af-ad54-4c5ef19bf9d0)\n\n## Tools\n\nget_jobs\n\nGet available jobs with filtering options\nInputs:\n\nsinceWhen (string): Since when to get available jobs. e.g., '1d' or '1w' (only days and weeks are supported)\nkeywords (string[], optional): Keywords to filter jobs by\nexcludeKeywords (string[], optional): Keywords to exclude from the jobs\nisRemote (boolean, optional): Whether to filter jobs by remote work\n\n## Usage with Claude Desktop\n\nAdd this to your claude_desktop_config.json:\n\n```json{\n\"mcpServers\": {\n    \"job-search\": {\n        \"command\": \"npx\",\n        \"args\": [\"-y\", \"job-searchoor\"]\n    }\n}\n```\n\nLicense\n\nThis MCP server is licensed under the MIT License. This means you are free to use, modify, and distribute the software, subject to the terms and conditions of the MIT License. For more details, please see the LICENSE file in the project repository.\n",
   "category": "Job Search",
   "quality_score": 36,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "job-searchoor": {
+          "command": "npx",
+          "args": ["-y", "job-searchoor"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

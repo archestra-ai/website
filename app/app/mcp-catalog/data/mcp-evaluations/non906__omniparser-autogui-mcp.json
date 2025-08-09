@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "non906__omniparser-autogui-mcp",
-  "display_name": "omniparser autogui",
+  "display_name": "omniparser-autogui-mcp",
   "version": "1.0.0",
   "description": "Automatic operation of on-screen GUI.",
   "author": {
@@ -11,12 +11,9 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", ".", "run", "omniparser-autogui-mcp"],
-      "env": {
-        "server-basic": "PYTHONIOENCODING",
-        "server-configured": "OCR_LANG"
-      }
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
   "tools": [],
@@ -26,9 +23,21 @@
   "readme": "# omniparser-autogui-mcp\n\n（[日本語版はこちら](README_ja.md)）\n\nThis is an [MCP server](https://modelcontextprotocol.io/introduction) that analyzes the screen with [OmniParser](https://github.com/microsoft/OmniParser) and automatically operates the GUI.  \nConfirmed on Windows.\n\n## License notes\n\nThis is MIT license, but Excluding submodules and sub packages.  \nOmniParser's repository is CC-BY-4.0.  \nEach OmniParser model has a different license ([reference](https://github.com/microsoft/OmniParser?tab=readme-ov-file#model-weights-license)).\n\n## Installation\n\n1. Please do the following:\n\n```\ngit clone --recursive https://github.com/NON906/omniparser-autogui-mcp.git\ncd omniparser-autogui-mcp\nuv sync\nset OCR_LANG=en\nuv run download_models.py\n```\n\n(Other than Windows, use ``export`` instead of ``set``.)  \n(If you want ``langchain_example.py`` to work, ``uv sync --extra langchain`` instead.)\n\n2. Add this to your ``claude_desktop_config.json``:\n\n```claude_desktop_config.json\n{\n  \"mcpServers\": {\n    \"omniparser_autogui_mcp\": {\n      \"command\": \"uv\",\n      \"args\": [\n        \"--directory\",\n        \"D:\\\\CLONED_PATH\\\\omniparser-autogui-mcp\",\n        \"run\",\n        \"omniparser-autogui-mcp\"\n      ],\n      \"env\": {\n        \"PYTHONIOENCODING\": \"utf-8\",\n        \"OCR_LANG\": \"en\"\n      }\n    }\n  }\n}\n```\n\n(Replace ``D:\\\\CLONED_PATH\\\\omniparser-autogui-mcp`` with the directory you cloned.)\n\n``env`` allows for the following additional configurations:\n\n- ``OMNI_PARSER_BACKEND_LOAD``  \nIf it does not work with other clients (such as [LibreChat](https://github.com/danny-avila/LibreChat)), specify ``1``.\n\n- ``TARGET_WINDOW_NAME``  \nIf you want to specify the window to operate, please specify the window name.  \nIf not specified, operates on the entire screen.\n\n- ``OMNI_PARSER_SERVER``  \nIf you want OmniParser processing to be done on another device, specify the server's address and port, such as ``127.0.0.1:8000``.  \nThe server can be started with ``uv run omniparserserver``.\n\n- ``SSE_HOST``, ``SSE_PORT``  \nIf specified, communication will be done via SSE instead of stdio.\n\n- ``SOM_MODEL_PATH``, ``CAPTION_MODEL_NAME``, ``CAPTION_MODEL_PATH``, ``OMNI_PARSER_DEVICE``, ``BOX_TRESHOLD``  \nThese are for OmniParser configuration.  \nUsually, they are not necessary.\n\n## Usage Examples\n\n- Search for \"MCP server\" in the on-screen browser.\n\netc.",
   "category": "Browser Automation",
   "quality_score": 33,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "omniparser_autogui_mcp": {
+          "command": "uv",
+          "args": ["--directory", "D:\\CLONED_PATH\\omniparser-autogui-mcp", "run", "omniparser-autogui-mcp"],
+          "env": {
+            "PYTHONIOENCODING": "utf-8",
+            "OCR_LANG": "en"
+          }
+        }
+      }
+    },
     "oauth": {
-      "provider": "null",
+      "provider": null,
       "required": false
     }
   },

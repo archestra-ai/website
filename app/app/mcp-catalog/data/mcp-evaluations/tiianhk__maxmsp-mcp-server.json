@@ -1,18 +1,18 @@
 {
   "dxt_version": "0.1.0",
   "name": "tiianhk__maxmsp-mcp-server",
-  "display_name": "MaxMSP",
+  "display_name": "MaxMSP-MCP-Server",
   "version": "1.0.0",
   "description": "MCP (Model Context Protocol) Server for Max (Max/MSP/Jitter)",
   "author": {
     "name": "tiianhk"
   },
   "server": {
-    "type": "python",
+    "type": "binary",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "python",
-      "args": ["install.py", "--client", "claude"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,28 @@
   "readme": "# MaxMSP-MCP Server\n\nThis project uses the [Model Context Protocol](https://modelcontextprotocol.io/introduction) (MCP) to let LLMs directly understand and generate Max patches.\n\n### Understand: LLM Explaining a Max Patch\n\n![img](./assets/understand.gif)\n[Video link](https://www.youtube.com/watch?v=YKXqS66zrec). Acknowledgement: the patch being explained is downloaded from [here](https://github.com/jeffThompson/MaxMSP_TeachingSketches/blob/master/02_MSP/07%20Ring%20Modulation.maxpat). Text comments in the original file are deleted.\n\n### Generate: LLM Making an FM Synth\n\n![img](./assets/generate.gif)\nCheck out the [full video](https://www.youtube.com/watch?v=Ns89YuE5-to) where you can listen to the synthesised sounds.\n\nThe LLM agent has access to the official documentation of each object, as well as objects in the current patch and subpatch windows, which helps in retrieving and explaining objects, debugging, and verifying their own actions.\n\n## Installation  \n\n### Prerequisites  \n\n - Python 3.8 or newer  \n - [uv package manager](https://github.com/astral-sh/uv)  \n - Max 9 or newer (because some of the scripts require the Javascript V8 engine), we have not tested it on Max 8 or earlier versions of Max yet.  \n\n### Installing the MCP server\n\n1. Install uv:\n```\n# On macOS and Linux:\ncurl -LsSf https://astral.sh/uv/install.sh | sh\n# On Windows:\npowershell -ExecutionPolicy ByPass -c \"irm https://astral.sh/uv/install.ps1 | iex\"\n```\n2. Clone this repository and open its directory:\n```\ngit clone https://github.com/tiianhk/MaxMSP-MCP-Server.git\ncd MaxMSP-MCP-Server\n```\n3. Start a new environment and install python dependencies:\n```\nuv venv\nuv pip install -r requirements.txt\n```\n4. Connect the MCP server to a MCP client (which hosts LLMs):\n```\n# Claude:\npython install.py --client claude\n# or Cursor:\npython install.py --client cursor\n```\nTo use other clients (check the [list](https://modelcontextprotocol.io/clients)), you need to download, mannually add the configuration file path to [here](https://github.com/tiianhk/MaxMSP-MCP-Server/blob/main/install.py#L6-L13), and connect by running `python install.py --client {your_client_name}`.\n\n### Installing to a Max patch  \n\nUse or copy from `MaxMSP_Agent/demo.maxpat`. In the first tab, click the `script npm version` message to verify that [npm](https://github.com/npm/cli) is installed. Then click `script npm install` to install the required dependencies. Switch to the second tab to access the agent. Click `script start` to initiate communication with Python. Once connected, you can interact with the LLM interface to have it explain, modify, or create Max objects within the patch.\n\n## Disclaimer\n\nThis is a third party implementation and not made by Cycling '74.\n",
   "category": "Development",
   "quality_score": 46,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "MaxMSP-MCP-Server-claude": {
+          "command": "python",
+          "args": ["install.py", "--client", "claude"],
+          "env": {}
+        },
+        "MaxMSP-MCP-Server-cursor": {
+          "command": "python",
+          "args": ["install.py", "--client", "cursor"],
+          "env": {}
+        },
+        "MaxMSP-MCP-Server-other-client": {
+          "command": "python",
+          "args": ["install.py", "--client", "{your_client_name}"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

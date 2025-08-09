@@ -69,7 +69,7 @@ export const ArchestraOauthSchema = z.object({
 });
 
 export const ArchestraConfigSchema = z.object({
-  client_config_permutations: ArchestraClientConfigPermutationsSchema,
+  client_config_permutations: ArchestraClientConfigPermutationsSchema.nullable(),
   oauth: ArchestraOauthSchema,
 });
 

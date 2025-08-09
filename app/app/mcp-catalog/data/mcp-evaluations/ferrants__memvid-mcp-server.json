@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "ferrants__memvid-mcp-server",
-  "display_name": "memvid",
+  "display_name": "memvid-mcp-server",
   "version": "1.0.0",
   "description": "A Streamable HTTP MCP Server for Memvid",
   "author": {
@@ -11,8 +11,8 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "python",
-      "args": ["server.py"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,25 @@
   "readme": "# memvid-mcp-server\n\n\nA Streamable-HTTP MCP Server that uses [memvid](https://github.com/Olow304/memvid) to encode text data into videos that can be quickly looked up with semantic search.\n\n\nSupported Actions:\n- `add_chunks`: Adds chunks to the memory video. Note: each time you add chunks, it resets the memory.mp4. Unsure if there is a way to incrementally add.\n- `search`: queries for the top-matching chunks. Returns 5 by default, but can be changed with top_k param.\n\n## Running\n\nSet up your environment:\n```bash\npython3.11 -m venv my_env\n. ./my_env/bin/activate\npip install -r requirements.txt\n```\n\nRun the server:\n```bash\npython server.py\n```\n\nWith a custom port:\n\n```bash\nPORT=3002 python server.py\n```\n\n## Connect a Client\n\nYou can connect a client to your MCP Server once it's running. Configure per the client's configuration. There is the [mcp-config.json](/mcp-config.json) that has an example configuration that looks like this:\n```json\n{\n  \"mcpServers\": {\n    \"memvid\": {\n      \"type\": \"streamable-http\",\n      \"url\": \"http://localhost:3000\"\n    }\n  }\n}\n```\n\n### Acknowledgements\n\n- Obviously the modelcontextprotocol and Anthropic teams for the MCP Specification. [https://modelcontextprotocol.io/introduction](https://modelcontextprotocol.io/introduction)\n- [HeyFerrante](https://heyferrante.com?ref=github-memvid-mcp-server) for enabling and sponsoring this project.\n",
   "category": "AI Tools",
   "quality_score": 20,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "memvid-mcp-server": {
+          "command": "python",
+          "args": ["server.py"],
+          "env": {}
+        },
+        "memvid-mcp-server-configured": {
+          "command": "python",
+          "args": ["server.py"],
+          "env": {
+            "PORT": "3002"
+          }
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

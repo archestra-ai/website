@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "pierrebrunelle__mcp-server-openai",
-  "display_name": "openai",
+  "display_name": "mcp-server-openai",
   "version": "1.0.0",
   "description": "Query OpenAI models directly from Claude using MCP protocol.",
   "author": {
@@ -11,12 +11,9 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "python",
-      "args": ["-m", "src.mcp_server_openai.server", "--transport", "stdio"],
-      "env": {
-        "server-basic": "PYTHONPATH",
-        "server-configured": "OPENAI_API_KEY"
-      }
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
   "tools": [],
@@ -26,9 +23,21 @@
   "readme": "# OpenAI MCP Server\r\n\r\nQuery OpenAI models directly from Claude using MCP protocol.\r\n\r\n![preview](preview.png)\r\n\r\n## Setup\r\n\r\nAdd to `claude_desktop_config.json`:\r\n\r\n```json\r\n{\r\n  \"mcpServers\": {\r\n    \"openai-server\": {\r\n      \"command\": \"python\",\r\n      \"args\": [\"-m\", \"src.mcp_server_openai.server\"],\r\n      \"env\": {\r\n        \"PYTHONPATH\": \"C:/path/to/your/mcp-server-openai\",\r\n        \"OPENAI_API_KEY\": \"your-key-here\"\r\n      }\r\n    }\r\n  }\r\n}\r\n```\r\n\r\n## Development\r\n```bash\r\ngit clone https://github.com/pierrebrunelle/mcp-server-openai\r\ncd mcp-server-openai\r\npip install -e .\r\n```\r\n\r\n## Testing\r\n```python\r\n# Run tests from project root\r\npytest -v test_openai.py -s\r\n\r\n# Sample test output:\r\nTesting OpenAI API call...\r\nOpenAI Response: Hello! I'm doing well, thank you for asking...\r\nPASSED\r\n```\r\n\r\n## License\r\nMIT License\r\n",
   "category": "AI Tools",
   "quality_score": 41,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "mcp-server-openai": {
+          "command": "python",
+          "args": ["-m", "src.mcp_server_openai.server"],
+          "env": {
+            "PYTHONPATH": "C:/path/to/your/mcp-server-openai",
+            "OPENAI_API_KEY": "your-key-here"
+          }
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

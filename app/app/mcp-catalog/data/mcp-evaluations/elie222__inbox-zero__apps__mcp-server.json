@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "elie222__inbox-zero__apps__mcp-server",
-  "display_name": "inbox zero",
+  "display_name": "mcp-server",
   "version": "1.0.0",
   "description": "The world's best AI personal assistant for email. Open source app to help you reach inbox zero fast.",
   "author": {
@@ -11,13 +11,9 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "node",
-      "args": ["apps/mcp-server/build/index.js", "--transport", "stdio"],
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
   "tools": [],
@@ -27,9 +23,20 @@
   "readme": "# Inbox Zero MCP Server\n\nAn MCP server to manage your inbox efficiently. Use it within Cursor, Windsurf, or Claude desktop to interact with your Inbox Zero personal assistant.\n\n## Run it locally\n\nFrom this directory:\n\n```\npnpm run build\npnpm start\n```\n\nThen use the MCP at path `apps/mcp-server/build/index.js` in Cursor or Claude Desktop. Note, use the full path.\n\nATM, you should replace the empty string with your API key (PRs welcome to improve this). You can get your API key from the `/settings` page in the web app:\n\n```js\nconst API_KEY = process.env.API_KEY || \"\";\n```\n",
   "category": "Email",
   "quality_score": 62,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "mcp-server": {
+          "command": "node",
+          "args": ["apps/mcp-server/build/index.js"],
+          "env": {
+            "API_KEY": "YOUR_API_KEY"
+          }
+        }
+      }
+    },
     "oauth": {
-      "provider": "null",
+      "provider": null,
       "required": false
     }
   },

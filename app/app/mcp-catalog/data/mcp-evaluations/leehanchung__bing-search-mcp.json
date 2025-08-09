@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "leehanchung__bing-search-mcp",
-  "display_name": "bing search",
+  "display_name": "bing-search-mcp",
   "version": "1.0.0",
   "description": "MCP Server for Bing Search API",
   "author": {
@@ -11,13 +11,9 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "uvx",
-      "args": ["bing-search-mcp"],
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
   "tools": [],
@@ -27,9 +23,28 @@
   "readme": "# Bing Search MCP Server\n\nA Model Context Protocol (MCP) server for Microsoft Bing Search API integration, allowing AI assistants to perform web, news, and image searches.\n\n[![smithery badge](https://smithery.ai/badge/@leehanchung/bing-search-mcp)](https://smithery.ai/server/@leehanchung/bing-search-mcp)\n\n![Bing Search MCP Server](assets/mcp_server_bing.png)\n\n\n## Features\n\n- Web search for general information\n- News search for recent events and timely information\n- Image search for visual content\n- Rate limiting to prevent API abuse\n- Comprehensive error handling\n\n## Requirements\n\n- Python 3.10 or higher\n- Microsoft Bing Search API key\n- MCP-compatible client (e.g., Claude Desktop, Cursor)\n\n## Installation\n\n1. Clone this repository\n2. Install dependencies:\n   ```\n   uv venv\n   source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate\n   uv pip install -e .\n   ```\n\n## Configuration\n\nSet the required environment variables:\n\n```bash\nexport BING_API_KEY=\"your-bing-api-key\"\nexport BING_API_URL=\"https://api.bing.microsoft.com/\"  # Optional\n```\n\nFor Windows:\n```cmd\nset BING_API_KEY=your-bing-api-key\nset BING_API_URL=https://api.bing.microsoft.com/\n```\n\n## Usage\n\n### Running the server\n\n```\nuvx bing-search-mcp\n```\n\n### Configuring with Claude for Desktop\n\nAdd the following to your Claude Desktop configuration file (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS or `%APPDATA%\\Claude\\claude_desktop_config.json` on Windows):\n\n```json\n{\n  \"mcpServers\": {\n    \"bing-search\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"/path/to/your/bing-search-mcp\"\n      ],\n      \"env\": {\n        \"BING_API_KEY\": \"your-bing-api-key\"\n      }\n    }\n  }\n}\n```\n![Claude Code Bing Search MCP](assets/claude_bing_search.png)\n\n## Available Tools\n\n### 1. bing_web_search\nGeneral web search for information, websites, and content.\n\n```python\nbing_web_search(query: str, count: int = 10, offset: int = 0, market: str = \"en-US\")\n```\n\n### 2. bing_news_search\nSearch for news articles and current events.\n\n```python\nbing_news_search(query: str, count: int = 10, market: str = \"en-US\", freshness: str = \"Day\")\n```\n\n### 3. bing_image_search\nSearch for images.\n\n```python\nbing_image_search(query: str, count: int = 10, market: str = \"en-US\")\n```\n\n## Getting a Bing API Key\n\n1. Visit [Microsoft Azure Portal](https://portal.azure.com/)\n2. Create or sign in to your Azure account\n3. Create a new Bing Search resource\n4. Go to the resource and find your API key in the \"Keys and Endpoint\" section\n\n## License\n\n[MIT License](LICENSE)\n",
   "category": "AI Tools",
   "quality_score": 44,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "bing-search-mcp": {
+          "command": "uvx",
+          "args": ["bing-search-mcp"],
+          "env": {
+            "BING_API_KEY": "your-bing-api-key",
+            "BING_API_URL": "https://api.bing.microsoft.com/"
+          }
+        },
+        "bing-search-mcp-configured": {
+          "command": "uvx",
+          "args": ["/path/to/your/bing-search-mcp"],
+          "env": {
+            "BING_API_KEY": "your-bing-api-key"
+          }
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

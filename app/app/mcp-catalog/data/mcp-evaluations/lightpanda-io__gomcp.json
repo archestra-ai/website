@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "lightpanda-io__gomcp",
-  "display_name": "go",
+  "display_name": "gomcp",
   "version": "1.0.0",
   "description": "Lightpanda MCP server written in Go",
   "author": {
@@ -11,8 +11,8 @@
     "type": "binary",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "gomcp",
-      "args": ["stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,28 @@
   "readme": "# Lightpanda Go MCP server\n\n`gomcp` is an [MCP server](https://modelcontextprotocol.io) written in\n[Go](https://go.dev/).\n\nIt exposes tools to interact with [Lightpanda Browser](https://lightpanda.io/)\nvia [CDP protocol](https://chromedevtools.github.io/devtools-protocol/).\n\n```mermaid\nflowchart LR;\n  A[CDP Client]-->|SSE or stdio|gomcp;\n  gomcp-->|CDP|B[Lightpanda browser];\n```\n\n## Installation\n\n### Requirements\n\n`gomcp` requires you to have already installed [Lightpanda\nBrowser](https://lightpanda.io/docs/getting-started/installation).\n\n### Build from source\n\nYou need to install [Go](https://go.dev/doc/install) to build from source.\n\nOnce you have cloned the repository, build the binary with `go build`.\n\n## Usage\n\nBy default, `gocmp` starts a local instance of Lightpanda browser.\n\nOn the first run, you need to download the binary with the command:\n```\n$ gomcp download\n```\nThe browser is stored in the user config directory.\n`$XDG_CONFIG_HOME/lightpanda-gomcp` or `HOME/.config/lightpanda-gomcp` on\nLinux, `$HOME/Library/Application Support/lightpanda-gomcp` on Macosx.\n\nYou can remove the downloaded binary with `gomcp cleanup` command.\n\nYou can connect on a remote browser with the option `--cdp`.\n```\n$ gomcp -cdp ws://127.0.0.1:9222 stdio\n```\n\n###  Configure Claude Desktop\n\nYou can configure `gomcp` as a source for your [Claude\nDesktop](https://claude.ai/download).\n\nClaude Desktop uses the\n[stdio](https://modelcontextprotocol.io/docs/concepts/transports#standard-input%2Foutput-stdio)\ntransport to connect to an MCP server.\n\nEdit the `claude_desktop_config.json` configuration file and add `gomcp` as the mcp\nserver **and restart Claude Desktop**.\n\n```json\n{\n  \"mcpServers\": {\n    \"lightpanda\": {\n      \"command\": \"/path/to/gomcp\",\n      \"args\": [\"stdio\"]\n    }\n  }\n}\n```\n\nThe model context protocol website gives a way to find\n[claude_desktop_config.json](https://modelcontextprotocol.io/quickstart/user#2-add-the-filesystem-mcp-server)\nfile.\n\n### Standard input/output (stdio)\n\nYou can start `gomcp` as a\n[stdio](https://modelcontextprotocol.io/docs/concepts/transports#standard-input%2Foutput-stdio).\n\n```\n$ ./gomcp stdio\n```\n\n### Server-Sent Events (SSE)\n\nYou can start `gomcp` as a\n[SSE](https://modelcontextprotocol.io/docs/concepts/transports#server-sent-events-sse).\n\nBy default, the server listens to the HTTP connection at `127.0.0.1:8081`.\n\n```\n$ ./gomcp sse\n2025/05/06 14:37:13 INFO server listening addr=127.0.0.1:8081\n```\n## Thanks\n\n`gomcp` is built thanks of open source projects, in particular:\n* [Go language](https://go.dev)\n* [Chromedp](https://github.com/chromedp/chromedp)\n* [JohannesKaufmann/html-to-markdown](github.com/JohannesKaufmann/html-to-markdown)\n* [Lightpanda Browser](https://github.com/lightpanda-io/browser)\n",
   "category": "AI Tools",
   "quality_score": 55,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "gomcp-stdio": {
+          "command": "/path/to/gomcp",
+          "args": ["stdio"],
+          "env": {}
+        },
+        "gomcp-remote-stdio": {
+          "command": "gomcp",
+          "args": ["-cdp", "ws://127.0.0.1:9222", "stdio"],
+          "env": {}
+        },
+        "gomcp-sse": {
+          "command": "./gomcp",
+          "args": ["sse"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "github",
+      "provider": null,
       "required": false
     }
   },

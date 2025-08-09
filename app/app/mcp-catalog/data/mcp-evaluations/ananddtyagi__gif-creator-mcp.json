@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "ananddtyagi__gif-creator-mcp",
-  "display_name": "gif creator",
+  "display_name": "gif-creator-mcp",
   "version": "1.0.0",
   "description": "MCP that allows you to take your video and turn it into a gif. ",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "node",
-      "args": ["/path/to/gif-creator-mcp/dist/index.js"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# GIF Creator MCP\n\nAn MCP (Model Context Protocol) server that converts video files to GIF animations.\n![gif-creator-demo](https://github.com/user-attachments/assets/0543d53f-8bc7-4a16-8a4b-e41ef13568c6)\n\n\n## Features\n\n- Convert any video file to GIF format\n- Customize output settings (FPS, dimensions, duration)\n- Extract specific portions of videos\n- High-quality GIF generation with optimized palette\n\n## Installation\n\n```bash\nnpm install\nnpm run build\n```\n\n## Usage\n\nRight now, Claude Desktop does not support video input. I'd recommend using a different client like [Goose](https://block.github.io/goose/) and adding it as an extension.\n\nIn Goose, you can use the Gif Creator tool by going to Advanced Settings > Extension > + Add Custom Extension > and in the command pasting:\n```\nnode /path/to/gif-creator-mcp/dist/index.js\n```\n\nI'd also increase the time out to 1000.\n\n\nFor other MCP clients, you can use the following command to start the server:\n\n```json\n{\n  \"mcpServers\": {\n    \"gif-creator\": {\n      \"command\": \"node\",\n      \"args\": [\"/path/to/gif-creator-mcp/dist/index.js\"]\n    }\n  }\n}\n```\n\n## Tools\n\n### convert_video_to_gif\n\nConverts a video file to a GIF file, saving it in the same directory as the source video.\n\n**Parameters:**\n- `video_path` (required): Path to the video file to convert\n- `fps` (optional): Frames per second for the GIF (1-30, default: 10)\n- `width` (optional): Width of the output GIF (maintains aspect ratio if height not specified)\n- `height` (optional): Height of the output GIF (maintains aspect ratio if width not specified)\n- `start_time` (optional): Start time in seconds (default: 0)\n- `duration` (optional): Duration in seconds (default: entire video)\n\n## Examples\n\n### Basic conversion\n```json\n{\n  \"video_path\": \"/path/to/video.mp4\"\n}\n```\n\n### Custom settings\n```json\n{\n  \"video_path\": \"/path/to/video.mp4\",\n  \"fps\": 15,\n  \"width\": 480,\n  \"start_time\": 5,\n  \"duration\": 10\n}\n```\n\n### Extract a specific portion\n```json\n{\n  \"video_path\": \"/path/to/long-video.mov\",\n  \"start_time\": 30,\n  \"duration\": 5,\n  \"fps\": 20\n}\n```\n\n## Requirements\n\n- Node.js\n- FFmpeg (automatically installed via @ffmpeg-installer/ffmpeg)\n\n## Notes\n\n- The output GIF is saved in the same directory as the input video\n- The filename is the same as the video file but with a .gif extension\n- Large videos may take some time to process\n- The tool uses optimized palette generation for better quality GIFs\n\n## License\n\nMIT\n",
   "category": "Media",
   "quality_score": 36,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "gif-creator": {
+          "command": "node",
+          "args": ["/path/to/gif-creator-mcp/dist/index.js"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

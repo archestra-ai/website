@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "janswist__mcp-dexscreener",
-  "display_name": "dexscreener",
+  "display_name": "mcp-dexscreener",
   "version": "1.0.0",
   "description": "Dexscreener API's MCP server - let your AI agent check any on-chain price using Dexscreener's free and open API",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "node",
-      "args": ["index.js", "--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# Dexscreener MCP server\n\nBasic MCP server for Dexscreener API based on their documentation (as of April 4th 2025): https://docs.dexscreener.com/api/reference\n\n## Project setup\n\nInstall all the dependencies\n```\nnpm run install\n```\n\nIf you are using Claude Desktop, after pulling the code open the config file `claude_desktop_config.json` in VSCode:\n- on MacOS:\n\n  ```code ~/Library/Application\\ Support/Claude/claude_desktop_config.json```\n\n- on Windows:\n\n  ```code $env:AppData\\Claude\\claude_desktop_config.json```\n- more info: https://modelcontextprotocol.io/quickstart/server\n\nIn `claude_desktop_config.json` put `dexscreener` object:\n```json\n{\n  \"mcpServers\": {\n    \"dexscreener\": {\n      \"command\": \"node\",\n      \"args\": [\n        \"/ABSOLUTE/PATH/TO/PARENT/FOLDER/index.js\"\n      ]\n    }\n  }\n}\n\n```\n\n## Running the app\n\nYou can use [Inspector](https://modelcontextprotocol.io/docs/tools/inspector) to test the MCP server without using Claude Desktop - both for SDTIO version (default) and SSE version `index-sse.js` (server-sent events - can be hosted on remote server).",
   "category": "Aggregators",
   "quality_score": 44,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "dexscreener-configured": {
+          "command": "node",
+          "args": ["/ABSOLUTE/PATH/TO/PARENT/FOLDER/index.js"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

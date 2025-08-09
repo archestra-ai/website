@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "safedep__vet__docs__mcp-md",
-  "display_name": "vet",
+  "display_name": "mcp.md",
   "version": "1.0.0",
   "description": "Protect against malicious open source packages 🤖",
   "author": {
@@ -11,13 +11,9 @@
     "type": "binary",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "binary-name",
-      "args": ["--transport", "stdio"],
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
   "tools": [],
@@ -27,10 +23,11 @@
   "readme": null,
   "category": "Security",
   "quality_score": 43,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": null,
     "oauth": {
-      "provider": "github",
-      "required": true
+      "provider": null,
+      "required": false
     }
   },
   "github_info": {

@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "fireproof-storage__mcp-database-server",
-  "display_name": "database",
+  "display_name": "mcp-database-server",
   "version": "1.0.0",
   "description": "Store and load JSON documents from LLM tool use",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "/path/to/fireproof-mcp/build/index.js",
-      "args": ["--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# Model Context Protocol and Fireproof Demo: JSON Document Server\n\nThis is a simple example of how to use a [Fireproof](https://fireproof.storage/) database in a [Model Context Protocol](https://github.com/modelcontextprotocol) server (used for plugging code and data into A.I. systems such as [Claude Desktop](https://claude.ai/download)).\n\nThis demo server implements a basic JSON document store with CRUD operations (Create, Read, Update, Delete) and the ability to query documents sorted by any field.\n\n# Installation\n\nInstall dependencies:\n\n```bash\nnpm install\nnpm build\n```\n\n## Running the Server\n\nTo use with Claude Desktop, add the server config:\n\nOn MacOS: `~/Library/Application Support/Claude/claude_desktop_config.json`\nOn Windows: `%APPDATA%/Claude/claude_desktop_config.json`\n\n```json\n{\n  \"mcpServers\": {\n    \"fireproof\": {\n      \"command\": \"/path/to/fireproof-mcp/build/index.js\"\n    }\n  }\n}\n```\n\n### Debugging\n\nSince MCP servers communicate over stdio, debugging can be challenging. We recommend using the [MCP Inspector](https://github.com/modelcontextprotocol/inspector), which is available as a package script:\n\n```bash\nnpm run inspector\n```\n\nThe Inspector will provide a URL to access debugging tools in your browser.\n\n",
   "category": "AI Tools",
   "quality_score": 46,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "fireproof-mcp-configured": {
+          "command": "node",
+          "args": ["/path/to/fireproof-mcp/build/index.js"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

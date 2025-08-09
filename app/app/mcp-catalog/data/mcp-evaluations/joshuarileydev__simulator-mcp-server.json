@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "joshuarileydev__simulator-mcp-server",
-  "display_name": "simulator",
+  "display_name": "simulator-mcp-server",
   "version": "1.0.0",
   "description": "MCP server from JoshuaRileyDev/simulator-mcp-server",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["y", "@joshuarileydev/simulator-mcp-server"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# iOS Simulator MCP Server\n\nA Model Context Protocol (MCP) server that provides programmatic control over iOS simulators. This server implements the MCP specification to expose simulator functionality through a standardized interface.\n\n## Features\n\n- List available iOS simulators\n- Boot and shutdown simulators\n- Install .app bundles on simulators\n- Launch installed apps by bundle ID\n\n## Installation\nAdd the following to your Claude Config JSON file\n```\n{\n  \"mcpServers\": {\n    \"simulator\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"y\",\n        \"@joshuarileydev/simulator-mcp-server\"\n      ]\n    }\n  }\n}\n```",
   "category": "Development",
   "quality_score": 50,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "joshuarileydev-simulator-mcp-server": {
+          "command": "npx",
+          "args": ["y", "@joshuarileydev/simulator-mcp-server"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "null",
+      "provider": null,
       "required": false
     }
   },

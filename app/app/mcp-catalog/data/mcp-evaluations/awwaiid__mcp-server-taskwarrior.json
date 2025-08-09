@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "awwaiid__mcp-server-taskwarrior",
-  "display_name": "taskwarrior",
+  "display_name": "mcp-server-taskwarrior",
   "version": "1.0.0",
   "description": "MCP Server for TaskWarrior!",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-server-taskwarrior", "--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# TaskWarrior MCP Server\n\nNode.js server implementing Model Context Protocol (MCP) for [TaskWarrior](https://taskwarrior.org/) operations.\n\n<a href=\"https://glama.ai/mcp/servers/e8w3e1su1x\">\n  <img width=\"380\" height=\"200\" src=\"https://glama.ai/mcp/servers/e8w3e1su1x/badge\" alt=\"TaskWarrior Server MCP server\" />\n</a>\n\n## Features\n\n- View pending tasks\n- Filter tasks by project and tags\n- Add new tasks with descriptions, due dates, priorities, projects and tags\n- Mark tasks as complete\n\n**Note**: This runs your local `task` binary, so TaskWarrior needs to be installed and configured!\n\n> [!WARNING]\n> This currently uses task `id` which is an unstable identifier; taskwarrior\n> sometimes renumbers tasks when new ones are added or removed. In the future\n> this should be more careful, using task UUID instead.\n\n## API\n\n### Tools\n\n- **get_next_tasks**\n  - Get a list of all pending tasks\n  - Optional filters:\n    - `project`: Filter by project name\n    - `tags`: Filter by one or more tags\n\n- **add_task**\n  - Add a new task to TaskWarrior\n  - Required:\n    - `description`: Task description text\n  - Optional:\n    - `due`: Due date (ISO timestamp)\n    - `priority`: Priority level (\"H\", \"M\", or \"L\")\n    - `project`: Project name (lowercase with dots)\n    - `tags`: Array of tags (lowercase)\n\n- **mark_task_done**\n  - Mark a task as completed\n  - Required:\n    - `identifier`: Task ID or UUID\n\n## Usage with Claude Desktop\n\nAdd this to your `claude_desktop_config.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"taskwarrior\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"mcp-server-taskwarrior\"\n      ]\n    }\n  }\n}\n```\n\n## Installation\n\n```bash\nnpm install -g mcp-server-taskwarrior\n```\n\nMake sure you have TaskWarrior (`task`) installed and configured on your system.\n\n## Example usage ideas:\n\n* What are my current work tasks?\n  * Executes: `task project:work next`\n* TODO: Call my sister (high priority)\n  * Executes: `task add priority:H Call my sister`\n* OK, I've called my sister\n  * Executes: `task done 1`\n\n## License\n\nThis MCP server is licensed under the MIT License. See the LICENSE file for details.",
   "category": "CLI Tools",
   "quality_score": 44,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "mcp-server-taskwarrior": {
+          "command": "npx",
+          "args": ["-y", "mcp-server-taskwarrior"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

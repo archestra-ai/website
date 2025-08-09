@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "dotemacs__domain-lookup-mcp",
-  "display_name": "domain lookup",
+  "display_name": "domain-lookup-mcp",
   "version": "1.0.0",
   "description": "Domain Lookup MCP",
   "author": {
@@ -11,7 +11,7 @@
     "type": "binary",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "/path/to/domain-lookup-mcp/domain-lookup-mcp",
+      "command": "unknown",
       "args": [],
       "env": {}
     }
@@ -23,9 +23,18 @@
   "readme": "# `domain-lookup-mcp`\n\nMCP server to look up domain names via rdap(1) and then whois(1).\n\n## How to use it?\n\n- Checkout the repo\n- build it: `go build ./...`\n- Point your MCP client at the binary:\n\n```javascript\n{\n  \"mcpServers\": {\n    \"domain-lookup-mcp\": {\n      \"command\": \"/path/to/domain-lookup-mcp/domain-lookup-mcp\",\n      \"args\": [],\n      \"env\": {}\n    }\n  }\n}\n```\n",
   "category": "CLI Tools",
   "quality_score": 34,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "domain-lookup-mcp": {
+          "command": "/path/to/domain-lookup-mcp/domain-lookup-mcp",
+          "args": [],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

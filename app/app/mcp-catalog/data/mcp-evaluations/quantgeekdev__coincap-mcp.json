@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "quantgeekdev__coincap-mcp",
-  "display_name": "coincap",
+  "display_name": "coincap-mcp",
   "version": "1.0.0",
   "description": "A coincap mcp server to access crypto data from coincap API",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "coincap-mcp", "--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,23 @@
   "readme": "# Coincap MCP\n\n[![smithery badge](https://smithery.ai/badge/coincap-mcp)](https://smithery.ai/server/coincap-mcp)\n\n## What does this server do?\n\nAllows you to query crypto information from coincap's public API - no API keys or registration required\n\n## 🚀 Quick Start\n\nTo get started, add this configuration to your Claude Desktop config file:\n\n**MacOS**: `~/Library/Application\\ Support/Claude/claude_desktop_config.json`  \n**Windows**: `%APPDATA%/Claude/claude_desktop_config.json`\n\n```json\n{\n  \"mcpServers\": {\n    \"mongodb\": {\n      \"command\": \"npx\",\n      \"args\": [\"coincap-mcp\"]\n    }\n  }\n}\n```\n\n### Installing via Smithery\n\nTo install Coincap for Claude Desktop automatically via [Smithery](https://smithery.ai/server/coincap-mcp):\n\n```bash\nnpx -y @smithery/cli install coincap-mcp --client claude\n```\n\n### Prerequisites\n\n- Node.js 18+\n- npx\n\nThen, launch Claude Desktop and you're ready to go!\n\n## Sample Prompts\n\n- What is the price of bitcoin?\n- What are the available crypto assets?\n- What is the market cap of ethereum?\n\n## Tools\n\n#### Bitcoin Price Tool\n\nGets price for Bitcoin specifically, it's a simple example of a primitive API call tool\n\n#### Get Crypto Price Tool\n\nGets price for any cryptocurrency available on coincap API. It's a good example of how to get mandatory parameter data for your tool calls\n\n#### List Assets\n\nGets a list of all crypto assets available in coincap API\n\n## Development - local build\n\nTo build it locally:\n\nOn MacOS: `~/Library/Application Support/Claude/claude_desktop_config.json`\nOn Windows: `%APPDATA%/Claude/claude_desktop_config.json`\n\n```json\n{\n  \"mcpServers\": {\n    \"coincap-mcp\": {\n      \"command\": \"/path/to/coincap-mcp/build/index.js\"\n    }\n  }\n}\n```\n\n## Development\n\nInstall dependencies:\n\n```bash\nnpm install\n```\n\nBuild the server:\n\n```bash\nnpm run build\n```\n\nFor development with auto-rebuild:\n\n```bash\nnpm run watch\n```\n\n## 📜 License\n\nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.\n",
   "category": "Finance",
   "quality_score": 56,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "coincap-mcp": {
+          "command": "npx",
+          "args": ["coincap-mcp"],
+          "env": {}
+        },
+        "coincap-mcp-configured": {
+          "command": "/path/to/coincap-mcp/build/index.js",
+          "args": [],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "null",
+      "provider": null,
       "required": false
     }
   },

@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "bun",
-      "args": ["run", "dev:bitte-ai"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,28 @@
   "readme": "# MCP Proxy Monorepo\n\nThis monorepo contains MCP (Model Control Protocol) servers for different services.\n\n## Server URI\n`https://mcp.bitte.ai/sse`\n\n## Add to Curser Settings\n```\n{\n  \"mcpServers\": {\n    \"bitte-ai\": {\n      \"url\": \"https://mcp.bitte.ai/sse\"\n    }\n  }\n}\n```\n\n\n## Packages\n\n- **bitte-ai**: MCP server for Bitte AI integrations\n\n## Setup\n\nTo install dependencies:\n\n```bash\nbun install\n```\n\n## Development\n\nThis project uses Turborepo for managing the monorepo workflow and Biome for code quality tools.\n\n### Build all packages\n\n```bash\nbun run build\n```\n\n### Start both services\n\n```bash\nbun run start\n```\n\n### Development mode\n\n```bash\nbun run dev\n```\n\n### Format and lint your code\n\n```bash\nbun run check\n# To fix automatically:\nbun run check:fix\n```\n\n### Run individual services\n\n```bash\n# Run bitte-ai service\nbun run dev:bitte-ai\n```\n\n## Adding a new package\n\n1. Create a new directory in the `packages` folder\n2. Add the necessary package.json, tsconfig.json, and implementation files\n3. Update the root package.json and tsconfig.json to include your new package\n\nThis project uses [Bun](https://bun.sh) as the JavaScript runtime.\n\nFor more information: [Vibestreaming Logs](https://github.com/microchipgnu/vibestream)\n\n\n",
   "category": "AI Tools",
   "quality_score": 42,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "bitte-ai": {
+          "command": "bun",
+          "args": ["run", "dev:bitte-ai"],
+          "env": {}
+        },
+        "bitte-ai-start": {
+          "command": "bun",
+          "args": ["run", "start"],
+          "env": {}
+        },
+        "bitte-ai-dev": {
+          "command": "bun",
+          "args": ["run", "dev"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

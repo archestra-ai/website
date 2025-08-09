@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "qianniuspace__mcp-security-audit",
-  "display_name": "security audit",
+  "display_name": "mcp-security-audit",
   "version": "1.0.0",
   "description": "A powerful MCP (Model Context Protocol) Server that audits npm package dependencies for security vulnerabilities. Built with remote npm registry integration for real-time security checks.",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-security-audit"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,23 @@
   "readme": "\n# Security Audit Tool\n\n[![smithery badge](https://smithery.ai/badge/@qianniuspace/mcp-security-audit)](https://smithery.ai/server/@qianniuspace/mcp-security-audit)\n[![NPM version](https://img.shields.io/npm/v/mcp-security-audit.svg)](https://www.npmjs.com/package/mcp-security-audit)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n\n<a href=\"https://glama.ai/mcp/servers/jjnmdxzmeu\">\n  <img width=\"380\" height=\"200\" src=\"https://glama.ai/mcp/servers/jjnmdxzmeu/badge\" />\n</a>\n\nA powerful MCP (Model Context Protocol) Server that audits npm package dependencies for security vulnerabilities. Built with remote npm registry integration for real-time security checks.\n\n## Features\n\n- 🔍 Real-time security vulnerability scanning\n- 🚀 Remote npm registry integration\n- 📊 Detailed vulnerability reports with severity levels\n- 🛡️ Support for multiple severity levels (critical, high, moderate, low)\n- 📦 Compatible with npm/pnpm/yarn package managers\n- 🔄 Automatic fix recommendations\n- 📋 CVSS scoring and CVE references\n\n\n\n### Installing via Smithery\n\nTo install Security Audit Tool for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@qianniuspace/mcp-security-audit):\n\n```bash\nnpx -y @smithery/cli install @qianniuspace/mcp-security-audit --client claude\n```\n\n### MCP Integration\n\n#### Option 1: Using NPX (Recommended)\n\n\n1. Add MCP configuration to Cline /Cursor:\n```json\n{\n  \"mcpServers\": {\n    \"mcp-security-audit\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"mcp-security-audit\"]\n    }\n  }\n}\n```\n\n#### Option 2: Download Source Code and Configure Manually\n\n1. Clone the repository:\n```bash\ngit clone https://github.com/qianniuspace/mcp-security-audit.git\ncd mcp-security-audit\n```\n\n2. Install dependencies and build:\n```bash\nnpm install\nnpm run build\n```\n\n3. Add MCP configuration to Cline /Cursor :\n```json\n{\n  \"mcpServers\": {\n    \"mcp-security-audit\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"/path/to/mcp-security-audit/build/index.js\"]\n    }\n  }\n}\n```\n\n\n## Configuration Screenshots\n\n### Cursor Configuration\n![Cursor Configuration](images/cursor-config.png)\n\n### Cline Configuration\n![Cline Configuration](images/cline-config.png)\n\n\n\n\n\n## API Response Format\n\nThe tool provides detailed vulnerability information including severity levels, fix recommendations, CVSS scores, and CVE references.\n\n### Response Examples\n\n#### 1. When Vulnerabilities Found (Severity-response.json)\n```json\n{\n  \"content\": [{\n    \"vulnerability\": {\n      \"packageName\": \"lodash\",\n      \"version\": \"4.17.15\",\n      \"severity\": \"high\",\n      \"description\": \"Prototype Pollution in lodash\",\n      \"cve\": \"CVE-2020-8203\",\n      \"githubAdvisoryId\": \"GHSA-p6mc-m468-83gw\",\n      \"recommendation\": \"Upgrade to version 4.17.19 or later\",\n      \"fixAvailable\": true,\n      \"fixedVersion\": \"4.17.19\",\n      \"cvss\": {\n        \"score\": 7.4,\n        \"vector\": \"CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N\"\n      },\n      \"cwe\": [\"CWE-1321\"],\n      \"url\": \"https://github.com/advisories/GHSA-p6mc-m468-83gw\"\n    },\n    \"metadata\": {\n      \"timestamp\": \"2024-04-23T10:00:00.000Z\",\n      \"packageManager\": \"npm\"\n    }\n  }]\n}\n```\n\n#### 2. When No Vulnerabilities Found (no-Severity-response.json)\n```json\n{\n  \"content\": [{\n    \"vulnerability\": null,\n    \"metadata\": {\n      \"timestamp\": \"2024-04-23T10:00:00.000Z\",\n      \"packageManager\": \"npm\",\n      \"message\": \"No known vulnerabilities found\"\n    }\n  }]\n}\n```\n\n\n## Development\n\nFor development reference, check the example response files in the `public` directory:\n- [Severity-response.json](public/Severity-response.json) : Example response when vulnerabilities are found (transformed from npm audit API response) \n- [no-Severity-response.json](public/no-Severity-response.json) : Example response when no vulnerabilities are found (transformed from npm audit API response)\n\nNote: The example responses shown above are transformed from the raw npm audit API responses to provide a more structured format. The original npm audit API responses contain additional metadata and may have a different structure.\n\n## Contributing\n\nContributions are welcome! Please read our [Contributing Guide](CODE_OF_CONDUCT.md) for details on our code of conduct and the process for submitting pull requests.\n\n## License\n\nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.\n\n## Author\n\nESX (qianniuspace@gmail.com)\n\n## Links\n\n- [GitHub Repository](https://github.com/qianniuspace/mcp-security-audit)\n- [Issue Tracker](https://github.com/qianniuspace/mcp-security-audit/issues)\n- [Changelog](CHANGELOG.md)\n```\n",
   "category": "Security",
   "quality_score": 58,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "mcp-security-audit": {
+          "command": "npx",
+          "args": ["-y", "mcp-security-audit"],
+          "env": {}
+        },
+        "mcp-security-audit-configured": {
+          "command": "npx",
+          "args": ["-y", "/path/to/mcp-security-audit/build/index.js"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "null",
+      "provider": null,
       "required": false
     }
   },

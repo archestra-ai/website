@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "rae-api-com__rae-mcp",
-  "display_name": "rae",
+  "display_name": "rae-mcp",
   "version": "1.0.0",
   "description": "MPC Server to connect your preferred model with rae-api.com",
   "author": {
@@ -11,8 +11,8 @@
     "type": "binary",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "rae-mpc",
-      "args": ["--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,23 @@
   "readme": "# RAE Model Context Protocol (MCP) Server\n\nThis repository contains an implementation of a Model Context Protocol (MCP) server for the Royal Spanish Academy (RAE) API. It allows language models to interact with RAE's dictionary and linguistic resources.\n\n## Requirements\n\n- Go 1.21+\n\n## Installation\n\n```bash\ngit clone https://github.com/rae-api-com/rae-mpc.git\ncd rae-mpc\ngo build\n```\n\n## Usage\n\n### Command Line Arguments\n\nRun the server with stdio transport (for integration with LLMs):\n\n```bash\n./rae-mpc --transport stdio\n```\n\nOr run it as an SSE server:\n\n```bash\n./rae-mpc --transport sse --port 8080\n```\n\n### Available Tools\n\nThe MCP server exposes the following tools to LLMs:\n\n1. `search` - Search RAE API for information\n   - Parameters:\n     - `query` (required): The search query\n     - `lang` (optional): Language code (default: \"es\")\n\n2. `get_word_info` - Get detailed information about a word\n   - Parameters:\n     - `word` (required): The word to look up\n     - `lang` (optional): Language code (default: \"es\")\n\n## Integration with LLMs\n\nThis MCP server can be integrated with language models that support the Model Context Protocol, allowing them to access RAE's linguistic resources for improved Spanish language capabilities.\n",
   "category": "AI Tools",
   "quality_score": 57,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "rae-mpc-stdio": {
+          "command": "./rae-mpc",
+          "args": ["--transport", "stdio"],
+          "env": {}
+        },
+        "rae-mpc-sse": {
+          "command": "./rae-mpc",
+          "args": ["--transport", "sse", "--port", "8080"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "null",
+      "provider": null,
       "required": false
     }
   },

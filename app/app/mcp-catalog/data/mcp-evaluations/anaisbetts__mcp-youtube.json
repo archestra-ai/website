@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "anaisbetts__mcp-youtube",
-  "display_name": "youtube",
+  "display_name": "mcp-youtube",
   "version": "1.0.0",
   "description": "A Model-Context Protocol Server for YouTube",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@anaisbetts/mcp-youtube", "--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,10 @@
   "readme": "# YouTube MCP Server\n\nUses `yt-dlp` to download subtitles from YouTube and connects it to claude.ai via [Model Context Protocol](https://modelcontextprotocol.io/introduction). Try it by asking Claude, \"Summarize the YouTube video <<URL>>\". Requires `yt-dlp` to be installed locally e.g. via Homebrew.\n\n### How do I get this working?\n\n1. Install `yt-dlp` (Homebrew and WinGet both work great here)\n1. Now, install this via [mcp-installer](https://github.com/anaisbetts/mcp-installer), use the name `@anaisbetts/mcp-youtube`",
   "category": "AI Tools",
   "quality_score": 69,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": null,
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

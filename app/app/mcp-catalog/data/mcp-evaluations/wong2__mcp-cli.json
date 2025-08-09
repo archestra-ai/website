@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "wong2__mcp-cli",
-  "display_name": "cli",
+  "display_name": "mcp-cli",
   "version": "1.0.0",
   "description": "A CLI inspector for the Model Context Protocol",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@wong2/mcp-cli", "node", "path/to/server/index.js"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,10 @@
   "readme": "# mcp-cli\n\nA CLI inspector for the Model Context Protocol\n\nhttps://github.com/user-attachments/assets/4cd113e9-f097-4c9d-b391-045c5f213183\n\n## Features\n\n- Run MCP servers from various sources\n- List Tools, Resources, Prompts\n- Call Tools, Read Resources, Read Prompts\n- OAuth support for SSE and Streamable HTTP servers\n\n## Usage\n\n### Run without arguments\n\n```bash\nnpx @wong2/mcp-cli\n```\n\nThis will use the config file of Claude Desktop.\n\n### Run with a config file\n\n```bash\nnpx @wong2/mcp-cli -c config.json\n```\n\nThe config file has the same format as the Claude Desktop config file.\n\n### Run servers from NPM\n\n```bash\nnpx @wong2/mcp-cli npx <package-name> <args>\n```\n\n### Run locally developed server\n\n```bash\nnpx @wong2/mcp-cli node path/to/server/index.js args...\n```\n\n### Connect to a running server over Streamable HTTP\n\n```bash\nnpx @wong2/mcp-cli --url http://localhost:8000/mcp\n```\n\n### Connect to a running server over SSE\n\n```bash\nnpx @wong2/mcp-cli --sse http://localhost:8000/sse\n```\n\n### Non-interactive mode\n\nRun a specific tool, resource, or prompt without interactive prompts:\n\n```bash\nnpx @wong2/mcp-cli [--config config.json] <command> <server-name>:<target> [--args '{}']\n```\n\nExamples:\n\n```bash\n# Call a tool without arguments\nnpx @wong2/mcp-cli -c config.json call-tool filesystem:list_files\n\n# Call a tool with arguments\nnpx @wong2/mcp-cli -c config.json call-tool filesystem:read_file --args '{\"path\": \"package.json\"}'\n\n# Read a resource\nnpx @wong2/mcp-cli -c config.json read-resource filesystem:file://system/etc/hosts\n\n# Use a prompt\nnpx @wong2/mcp-cli -c config.json get-prompt filesystem:create_summary --args '{\"text\": \"Hello world\"}'\n```\n\nThis mode is useful for scripting and automation, as it bypasses all interactive prompts and executes the specified primitive directly.\n\n### Purge stored data (OAuth tokens, etc.)\n\n```bash\nnpx @wong2/mcp-cli purge\n```\n\n## Related\n\n- [mcpservers.org](https://mcpservers.org) - A curated list of MCP servers\n",
   "category": "AI Tools",
   "quality_score": 53,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": null,
     "oauth": {
-      "provider": "null",
+      "provider": null,
       "required": false
     }
   },

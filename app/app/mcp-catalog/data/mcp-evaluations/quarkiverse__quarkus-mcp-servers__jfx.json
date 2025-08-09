@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "quarkiverse__quarkus-mcp-servers__jfx",
-  "display_name": "quarkus  s",
+  "display_name": "jfx",
   "version": "1.0.0",
   "description": "Model Context Protocol Servers in Quarkus",
   "author": {
@@ -11,8 +11,8 @@
     "type": "binary",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "jbang",
-      "args": ["jfx@quarkiverse/quarkus-mcp-servers"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# Model Context Protocol Server for JavaFX\n\nThis Model Context Protocol(MCP) server enables Large Language Models (LLMs) to make drawings using JavaFX primities.\n\nThe server is implemented using Quarkus MCP and JavaFX.\n\nInitial idea and implementation is from [@konczdev](https://gist.github.com/konczdev/5e6774d2d8640bf83baab88cb068bcc2)\n\n[![JFX Demo](images/jfx-demo.png)](https://www.youtube.com/watch?v=Wnh_-0dAaDI)\n\nSee video [here](https://www.youtube.com/watch?v=Wnh_-0dAaDI).\n\n## General Usage \n\n1. Install [jbang](https://www.jbang.dev/download/)\n2. Configure your MCP Client to run the server as `jbang jfx@quarkiverse/quarkus-mcp-servers` (see [Claude Desktop Config](#claude-desktop-config) below)\n\n## Claude Desktop Config and [mcp-cli](https://github.com/chrishayuk/mcp-cli)\n\nAdd this to your `claude_desktop_config.json` or `server_config.json` file:\n\n```json\n{\n  \"mcpServers\": {\n    \"jfx\": {\n      \"command\": \"jbang\",\n      \"args\": [\n        \"jfx@quarkiverse/quarkus-mcp-servers\"\n      ]\n    }\n  }\n}\n```\n\n## Native Image/Executable\n\nAt this moment the jfx server cannot be compiled to a native executable given the JavaFX dependencies. \n\nIt should be possible to do this using GluonFX, but that is for now left up as an exercise to the reader. If you are interested in working on this, please open issue or PR. ",
   "category": "AI Tools",
   "quality_score": 48,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "jfx": {
+          "command": "jbang",
+          "args": ["jfx@quarkiverse/quarkus-mcp-servers"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

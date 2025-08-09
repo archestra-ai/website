@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "0xshellming__mcp-summarizer",
-  "display_name": "summarizer",
+  "display_name": "mcp-summarizer",
   "version": "1.0.0",
   "description": "MCP Server for AI Summarization",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "node",
-      "args": ["dist/index.js", "--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,23 @@
   "readme": "# MCP Content Summarizer Server\n\nA Model Context Protocol (MCP) server that provides intelligent summarization capabilities for various types of content using Google's Gemini 1.5 Pro model. This server can help you generate concise summaries while maintaining key information from different content formats.\n\n<a href=\"https://3min.top\"><img width=\"380\" height=\"200\" src=\"/public/imgs/section1_en.jpg\" alt=\"MCP Content Summarizer Server\" /></a>\n\n## Powered by 3MinTop\n\nThe summarization service is powered by [3MinTop](https://3min.top), an AI-powered reading tool that helps you understand a chapter's content in just three minutes. 3MinTop transforms complex content into clear summaries, making learning efficient and helping build lasting reading habits.\n\n## Features\n\n- Universal content summarization using Google's Gemini 1.5 Pro model\n- Support for multiple content types:\n  - Plain text\n  - Web pages\n  - PDF documents\n  - EPUB books\n  - HTML content\n- Customizable summary length\n- Multi-language support\n- Smart context preservation\n- Dynamic greeting resource for testing\n\n## Getting Started\n\n1. Clone this repository\n2. Install dependencies:\n   ```\n   pnpm install\n   ```\n\n3. Build the project:\n   ```\n   pnpm run build\n   ```\n\n4. Start the server:\n   ```\n   pnpm start\n   ```\n\n## Development\n\n- Use `pnpm run dev` to start the TypeScript compiler in watch mode\n- Modify `src/index.ts` to customize server behavior or add new tools\n\n## Usage with Desktop App\n\nTo integrate this server with a desktop app, add the following to your app's server configuration:\n\n```js\n{\n  \"mcpServers\": {\n    \"content-summarizer\": {\n      \"command\": \"node\",\n      \"args\": [\n        \"{ABSOLUTE PATH TO FILE HERE}/dist/index.js\"\n      ]\n    }\n  }\n}\n```\n\n## Available Tools\n\n### summarize\n\nSummarizes content from various sources using the following parameters:\n- `content` (string | object): The input content to summarize. Can be:\n  - Text string\n  - URL for web pages\n  - Base64 encoded PDF\n  - EPUB file content\n- `type` (string): Content type (\"text\", \"url\", \"pdf\", \"epub\")\n- `maxLength` (number, optional): Maximum length of the summary in characters (default: 200)\n- `language` (string, optional): Target language for the summary (default: \"en\")\n- `focus` (string, optional): Specific aspect to focus on in the summary\n- `style` (string, optional): Summary style (\"concise\", \"detailed\", \"bullet-points\")\n\nExample usage:\n\n```typescript\n// Summarize a webpage\nconst result = await server.invoke(\"summarize\", {\n  content: \"https://example.com/article\",\n  type: \"url\",\n  maxLength: 300,\n  style: \"bullet-points\"\n});\n\n// Summarize a PDF document\nconst result = await server.invoke(\"summarize\", {\n  content: pdfBase64Content,\n  type: \"pdf\",\n  language: \"zh\",\n  style: \"detailed\"\n});\n```\n\n### greeting\n\nA dynamic resource that demonstrates basic MCP resource functionality:\n- URI format: `greeting://{name}`\n- Returns a greeting message with the provided name\n\n## Contributing\n\nContributions are welcome! Please feel free to submit a Pull Request.\n\n## License\n\nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. ",
   "category": "AI Tools",
   "quality_score": 55,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "content-summarizer": {
+          "command": "pnpm",
+          "args": ["start"],
+          "env": {}
+        },
+        "content-summarizer-configured": {
+          "command": "node",
+          "args": ["{ABSOLUTE PATH TO FILE HERE}/dist/index.js"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "netdata__netdata__src__web__mcp__readme-md",
-  "display_name": "netdata",
+  "display_name": "README.md",
   "version": "1.0.0",
   "description": "The fastest path to AI-powered full stack observability, even for lean teams.",
   "author": {
@@ -23,9 +23,10 @@
   "readme": null,
   "category": "Monitoring",
   "quality_score": 45,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": null,
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

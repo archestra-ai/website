@@ -13,7 +13,7 @@ import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 const ITEMS_PER_PAGE = 30;
 
-interface MCPCatalogClientProps {
+interface McpCatalogClientProps {
   mcpServers: ArchestraMcpServerManifest[];
   categories: string[];
   languages: string[];
@@ -22,14 +22,14 @@ interface MCPCatalogClientProps {
   serverCounts: Map<string, number>;
 }
 
-export default function MCPCatalogClient({
+export default function McpCatalogClient({
   mcpServers,
   categories,
   languages,
   dependencies,
   mcpFeatures,
   serverCounts,
-}: MCPCatalogClientProps) {
+}: McpCatalogClientProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const serverGridRef = useRef<HTMLDivElement>(null);

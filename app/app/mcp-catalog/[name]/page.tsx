@@ -13,11 +13,11 @@ import AddNewMCPServerButton from '@mcpCatalog/components/LinkButtons/AddNewMCPS
 import EditThisServerButton from '@mcpCatalog/components/LinkButtons/EditThisServerButton';
 import ReportAnIssueButton from '@mcpCatalog/components/LinkButtons/ReportAnIssueButton';
 import ViewOnGitHubButton from '@mcpCatalog/components/LinkButtons/ViewOnGitHubButton';
-import MCPProtocolSupportCard from '@mcpCatalog/components/MCPProtocolSupportCard';
+import McpClientConfigurationCard from '@mcpCatalog/components/McpClientConfigurationCard';
+import McpProtocolSupportCard from '@mcpCatalog/components/McpProtocolSupportCard';
 import QualityScoreCard from '@mcpCatalog/components/QualityScoreCard';
 import ReadMeCard from '@mcpCatalog/components/ReadMeCard';
 import ResourcesCard from '@mcpCatalog/components/ResourcesCard';
-import ServerConfigurationCard from '@mcpCatalog/components/ServerConfigurationCard';
 import ServerHeader from '@mcpCatalog/components/ServerHeader';
 import TrustScoreBadge from '@mcpCatalog/components/TrustScoreBadge';
 import TrustScoreBadgeMarkdown from '@mcpCatalog/components/TrustScoreBadgeMarkdown';
@@ -150,9 +150,9 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
               <ServerHeader server={server} />
               <QualityScoreCard server={server} scoreBreakdown={qualityScoreBreakdown} />
               <GitHubMetricsCard server={server} serverCount={serverCount} />
-              <MCPProtocolSupportCard server={server} />
+              <McpProtocolSupportCard server={server} />
               <DependenciesCard server={server} />
-              <ServerConfigurationCard server={server} />
+              <McpClientConfigurationCard server={server} />
               <ReadMeCard server={server} />
             </div>
 

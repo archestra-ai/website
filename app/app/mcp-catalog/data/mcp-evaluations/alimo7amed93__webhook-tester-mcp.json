@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "alimo7amed93__webhook-tester-mcp",
-  "display_name": "webhook tester",
+  "display_name": "webhook-tester-mcp",
   "version": "1.0.0",
   "description": "FastMCP server for managing and testing webhooks via webhook-test.com API",
   "author": {
@@ -11,8 +11,8 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "fastmcp",
-      "args": ["run", "Webhook-test_mcp/server.py", "--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# 🚀 Webhook Tester MCP Server\n\nA powerful and modular FastMCP server for interacting with webhook-test.com, designed to automate and manage Webhook tokens (URLs), inspect incoming requests, and perform analytics — all without writing custom API integrations.\n\nBuilt with the FastMCP framework to expose modular tools and resources, this project enables webhook observability and management.\n\n## 🛎️ Webhooks 101\n\nWebhooks let your app send and receive real-time updates between services. When sending, your app can POST data to a URL whenever something important happens — like a new user signup or a status change. When receiving, your app listens for incoming POST requests from other services and reacts to the events they send. This setup is way more efficient than constant polling and is perfect for triggering actions, syncing data, or keeping systems in sync.\n\n## 📦 Features & Use Cases\n\n✅ Create new webhooks\\\n✅ List all available webhooks\\\n✅ Fetch webhook's details\\\n✅ Fetch webhook payloads\\\n✅ Delete webhooks\n\n## ⚙️ Setup\n\n1. Clone the repo\n2. Install dependencies `pip install -r requirements.txt`\n3. Configure `.env`\n\n## 🔍 Testing Using Claude\n\n- Configure Claude Desktop to use the local server by editing your claude_desktop_config.json file:\n\n``` \n{\n    \"mcpServers\": {\n      \"webhook-tester-mcp\": {\n        \"command\": \"fastmcp\",\n        \"args\": [\"run\", \"{{fullPath}}\\\\Webhook-test_mcp\\\\server.py\"]\n      }\n    }\n  } \n```\n\n## 🧪 Demo testing the Server\n\n[![Watch the video](https://img.youtube.com/vi/nGRlQtRlDA4/hqdefault.jpg)](https://www.youtube.com/watch?v=nGRlQtRlDA4)\n\n## 📄 License\nThis project is licensed under the [MIT License](https://mit-license.org/).",
   "category": "Development",
   "quality_score": 52,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "webhook-tester-mcp": {
+          "command": "fastmcp",
+          "args": ["run", "{{fullPath}}\\Webhook-test_mcp\\server.py"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

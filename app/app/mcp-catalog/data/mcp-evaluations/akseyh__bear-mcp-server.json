@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "akseyh__bear-mcp-server",
-  "display_name": "bear",
+  "display_name": "bear-mcp-server",
   "version": "1.0.0",
   "description": "MCP Server integration for Bear note app",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "bear-mcp-server", "--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,29 @@
   "readme": "# Bear MCP Server\n\n[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/akseyh-bear-mcp-server-badge.png)](https://mseep.ai/app/akseyh-bear-mcp-server)\n\n[![Verified on MseeP](https://mseep.ai/badge.svg)](https://mseep.ai/app/4ba4aa63-76ae-41d7-9d41-851d9acf7013)\n\nThis project is a Model Context Protocol (MCP) server that provides access to the [Bear Notes](https://bear.app).\n\nBear stores notes on SQLite database. This MCP server runs some SQL commands to access this notes.\nhttps://bear.app/faq/where-are-bears-notes-located\n\n![Kariyer notu arama örneği](./assets/career-note-search-example.png)\n\n## Features\n\n- Read notes\n- Search notes by text\n- List all tags\n\n## Installation\n\n```bash\n# Clone the project\ngit clone https://github.com/akseyh/bear-mcp-server\n\n# Change directory\ncd bear-mcp-server\n\n# Install dependencies\nnpm install\n\n# Build the project\nnpm run build\n```\n\n## Claude Desktop Config\n\nUpdate your claude_desktop_config.json\n\n### Docker\n```json\n{\n    \"mcpServers\": {\n        \"bear\": {\n            \"command\": \"docker\",\n            \"args\": [\n                \"run\",\n                \"-v\",\n                \"/Users/[YOUR_USER_NAME]/Library/Group Containers/9K33E3U3T4.net.shinyfrog.bear/Application Data:/app/db\",\n                \"-i\",\n                \"akseyh/bear-mcp-server\"\n            ]\n        }\n    }\n}\n```\n\n### NPM\n```json\n{\n  \"mcpServers\": {\n    \"bear\": {\n      \"command\": \"npx\",\n      \"args\": [\n          \"bear-mcp-server\"\n      ]\n    }\n  }\n}\n```\n\nWhen the server is started, the following MCP tools become available:\n\n- `get_notes`: Retrieves all notes\n- `get_tags`: Lists all tags\n- `get_notes_like`: Searches for notes containing specific text\n\n## Requirements\n\n- Node.js\n- Bear note application (macOS)\n- Access to Bear database\n\n## License\n\nISC\n",
   "category": "AI Tools",
   "quality_score": 50,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "akseyh-bear-mcp-server-docker": {
+          "command": "docker",
+          "args": [
+            "run",
+            "-v",
+            "/Users/[YOUR_USER_NAME]/Library/Group Containers/9K33E3U3T4.net.shinyfrog.bear/Application Data:/app/db",
+            "-i",
+            "akseyh/bear-mcp-server"
+          ],
+          "env": {}
+        },
+        "bear-mcp-server": {
+          "command": "npx",
+          "args": ["bear-mcp-server"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "null",
+      "provider": null,
       "required": false
     }
   },

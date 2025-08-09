@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "joshuarileydev__mac-apps-launcher",
-  "display_name": "mac apps launcher",
+  "display_name": "mac-apps-launcher",
   "version": "1.0.0",
   "description": "MCP server from JoshuaRileyDev/mac-apps-launcher",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["y", "@joshuarileydev/mac-apps-launcher-mcp-server", "--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# Mac Apps Launcher MCP Server\n\nA Model Context Protocol (MCP) server for launching and managing macOS applications.\n\n## Features\n\n- List all applications installed in the `/Applications` folder\n- Launch applications by name\n- Open files with specific applications\n\n## Installation\nAdd the following to your Claude Config JSON file\n```\n{\n  \"mcpServers\": {\n    \"simulator\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"y\",\n        \"@joshuarileydev/mac-apps-launcher-mcp-server\"\n      ]\n    }\n  }\n}\n```",
   "category": "Local files",
   "quality_score": 50,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "joshuarileydev-mac-apps-launcher-mcp-server": {
+          "command": "npx",
+          "args": ["-y", "@joshuarileydev/mac-apps-launcher-mcp-server"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

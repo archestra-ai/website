@@ -817,6 +817,7 @@ Important:
 - For Docker, include the full image name in args
 - Environment vars from -e flags go in both args and env
 - Create separate entries for different configurations of the same server
+- DON'T PLACE ENV VARS AS NULL, USE A PLACEHOLDER STRING LIKE "<YOUR_API_KEY_HERE>"
 
 Examples of CORRECT output:
 

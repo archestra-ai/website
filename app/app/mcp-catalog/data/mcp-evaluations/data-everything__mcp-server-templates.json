@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "data-everything__mcp-server-templates",
-  "display_name": "templates",
+  "display_name": "mcp-server-templates",
   "version": "1.0.0",
   "description": "MCP Server Templates",
   "author": {
@@ -11,13 +11,9 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "python",
-      "args": ["server.py", "--transport", "stdio"],
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
   "tools": [],
@@ -27,9 +23,81 @@
   "readme": "# MCP Server Templates\n\nProduction-ready Model Context Protocol (MCP) server templates with a **unified deployment architecture** and **comprehensive configuration support**. Easily deploy, manage, and extend AI server templates with flexible configuration options matching commercial platform capabilities.\n\n## ⚡ Features\n\nGet ready to supercharge your MCP journey! The MCP Platform is packed with electrifying features that make server deployment a thrill ride:\n\n### 🚀 Current Features\n\n- **🖱️ One-Click Docker Deployment**: Launch MCP servers instantly with pre-built templates—no hassle, just pure speed.\n- **🔎 Smart Tool Discovery**: Automatically finds and showcases every tool your server can offer. No more guesswork!\n- **💻 Slick CLI Management**: Command-line magic for easy, powerful control over all deployments.\n- **🤝 Bring Your Own MCP Server**: Plug in your own MCP server and run it on our network—even with limited features!\n- **🐳 Effortless Docker Image Integration**: Add any existing MCP Docker image to the templates library with minimal setup and unlock all the platform’s cool benefits.\n- **⚡ Boilerplate Template Generator**: Instantly create new MCP server projects with a CLI-powered generator—kickstart your next big idea!\n- **🛠️ Multiple Ways to Set Configuration**: Flex your setup with config via JSON, YAML, environment variables, CLI config, or CLI override options—total flexibility for every workflow!\n\n### 🌈 Planned Features\n\n- **🦸 MCP Sidekick (Coming Soon)**: Your friendly AI companion, making every MCP server compatible with any AI tool or framework.\n- **🛸 Kubernetes Support**: Deploy to Kubernetes clusters with ease, scaling your MCP servers effortlessly.\n\n**Release Timeline:** All this and more dropping mid-August 2025—don’t miss out!\n\nWant the full scoop? [Check out the docs for more features & details!](docs/index.md)\n\n---\n\n## 🚀 How It Works\n\n**Architecture Overview:**\n\n```\n┌────────────┐      ┌────────────────────┐      ┌────────────────────────────┐\n│  CLI Tool  │──▶──▶│ DeploymentManager  │──▶──▶│ Backend (Docker/K8s/Mock)  │\n└────────────┘      └────────────────────┘      └────────────────────────────┘\n      │                    │                           │\n      ▼                    ▼                           ▼\n  TemplateDiscovery   Template Config           Container/Pod/Mock\n      │                    │\n      ▼                    ▼\n  ConfigMapping      Environment Variables\n```\n\n**Configuration Flow:**\n1. **Template Defaults** → 2. **Config File** → 3. **CLI Options** → 4. **Environment Variables**\n\n- **CLI Tool**: `mcp-template` with comprehensive config support\n- **DeploymentManager**: Unified interface for Docker, Kubernetes, or Mock backends\n- **TemplateDiscovery**: Auto-discovers templates with config schema validation\n- **ConfigMapping**: Generic mapping system supporting nested JSON/YAML configs\n- **Multi-source Configuration**: File-based, CLI options, and environment variables\n\n---\n## 📦 Template Structure\n\nEach template must include:\n\n- `template.json` — Metadata and config schema with environment mappings\n- `Dockerfile` — Container build instructions\n- `README.md` — Usage and description\n- (Optional) `USAGE.md`, `requirements.txt`, `src/`, `tests/`, `config/`\n\n**Example `template.json`:**\n```json\n{\n  \"name\": \"File Server MCP\",\n  \"description\": \"Secure file system access for AI assistants...\",\n  \"version\": \"1.0.0\",\n  \"author\": \"Data Everything\",\n  \"category\": \"File System\",\n  \"tags\": [\"filesystem\", \"files\", \"security\"],\n  \"docker_image\": \"dataeverything/mcp-file-server\",\n  \"docker_tag\": \"latest\",\n  \"ports\": {\n    \"8080\": 8080\n  },\n  \"command\": [\"python\", \"server.py\"],\n  \"transport\": {\n    \"default\": \"stdio\",\n    \"supported\": [\"stdio\", \"http\"],\n    \"port\": 8080\n  },\n  \"config_schema\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"allowed_directories\": {\n        \"type\": \"array\",\n        \"env_mapping\": \"MCP_ALLOWED_DIRS\",\n        \"env_separator\": \":\",\n        \"default\": [\"/data\"],\n        \"description\": \"Allowed directories for file access\"\n      },\n      \"read_only_mode\": {\n        \"type\": \"boolean\",\n        \"env_mapping\": \"MCP_READ_ONLY\",\n        \"default\": false,\n        \"description\": \"Enable read-only mode\"\n      },\n      \"log_level\": {\n        \"type\": \"string\",\n        \"env_mapping\": \"MCP_LOG_LEVEL\",\n        \"default\": \"info\",\n        \"description\": \"Logging level (debug, info, warning, error)\"\n      }\n    },\n    \"required\": [\"allowed_directories\"]\n  }\n}\n```\n\n---\n## 🛠️ CLI Usage\n\n### Basic Commands\n\n| Command | Description |\n|---------|-------------|\n| `mcp-template list` | List all deployments |\n| `mcp-template deploy <template>` | Deploy template with defaults |\n| `mcp-template deploy <template> --no-pull` | Deploy without pulling image (use local) |\n| `mcp-template status <deployment>` | View deployment status |\n| `mcp-template delete <deployment>` | Delete deployment |\n| `mcp-template create <template-id>` | Create new template |\n\n### Configuration Options\n\n**1. Check Template Configuration:**\n```bash\n# View template.json to see available config options\ncat templates/file-server/template.json\n```\n\n**2. Deploy with Config File:**\n```bash\n# JSON config file\nmcp-template deploy file-server --config-file ./config.json\n\n# YAML config file\nmcp-template deploy file-server --config-file ./config.yml\n```\n\n**3. Deploy with CLI Configuration Options:**\n\nThere are **two types** of CLI configuration:\n\n- **`--config`**: For `config_schema` properties (becomes environment variables)\n- **`--override`**: For template data modifications (modifies template structure directly)\n\n```bash\n# Configuration schema properties (recommended for server settings)\nmcp-template deploy file-server \\\n  --config read_only_mode=true \\\n  --config max_file_size=50 \\\n  --config log_level=debug\n\n# Template data overrides (for metadata, tools, custom fields)\nmcp-template deploy file-server \\\n  --override \"metadata__version=2.0.0\" \\\n  --override \"metadata__author=MyName\" \\\n  --override \"tools__0__enabled=false\"\n\n# Combined usage with custom name\nmcp-template deploy file-server \\\n  --name my-file-server \\\n  --no-pull \\\n  --config read_only_mode=true \\\n  --override \"metadata__description=Custom file server\"\n```\n\n**4. Double Underscore Notation for Nested Configuration:**\n\nBoth `--config` and `--override` support double underscore notation for nested structures:\n\n```bash\n# Config schema properties (nested configuration)\nmcp-template deploy file-server \\\n  --config security__read_only=true \\\n  --config security__max_file_size=50 \\\n  --config logging__level=debug\n\n# Template data overrides (nested modifications)\nmcp-template deploy file-server \\\n  --override \"metadata__version=2.0.0\" \\\n  --override \"config__custom_setting=value\" \\\n  --override \"tools__0__description=Modified tool\" \\\n  --override \"servers__0__config__host=remote.example.com\"\n```\n\n**5. Advanced Override Examples:**\n\n```bash\n# Array modifications with automatic type conversion\nmcp-template deploy demo \\\n  --override \"tools__0__enabled=false\" \\\n  --override \"tools__1__timeout=30.5\" \\\n  --override \"metadata__tags=[\\\"custom\\\",\\\"modified\\\"]\"\n\n# Complex nested structure creation\nmcp-template deploy demo \\\n  --override \"config__database__connection__host=localhost\" \\\n  --override \"config__database__connection__port=5432\" \\\n  --override \"config__security__enabled=true\"\n\n# JSON object overrides\nmcp-template deploy demo \\\n  --override \"metadata__custom={\\\"key\\\":\\\"value\\\",\\\"nested\\\":{\\\"prop\\\":true}}\"\n```\n\n**6. Deploy with Environment Variables:**\n```bash\nmcp-template deploy file-server \\\n  --env MCP_READ_ONLY=true \\\n  --env MCP_MAX_FILE_SIZE=50 \\\n  --env MCP_LOG_LEVEL=debug\n```\n\n**7. Mixed Configuration (precedence: env > cli > file > defaults):**\n```bash\nmcp-template deploy file-server \\\n  --config-file ./base-config.json \\\n  --config log_level=warning \\\n  --override \"metadata__version=1.5.0\" \\\n  --env MCP_READ_ONLY=true\n```\n\n### Configuration vs Override Usage Guide\n\n| Use Case | Recommended Method | Example |\n|----------|-------------------|---------|\n| Server settings (logging, security, performance) | `--config` | `--config log_level=debug` |\n| Nested server configuration | `--config` with `__` | `--config security__read_only=true` |\n| Template metadata changes | `--override` | `--override \"metadata__version=2.0.0\"` |\n| Tool modifications | `--override` | `--override \"tools__0__enabled=false\"` |\n| Custom fields addition | `--override` | `--override \"custom_field=value\"` |\n| Complex nested structures | `--override` with `__` | `--override \"config__db__host=localhost\"` |\n\n### Configuration File Examples\n\n**JSON Configuration (`config.json`):**\n```json\n{\n  \"security\": {\n    \"allowedDirs\": [\"/data\", \"/workspace\"],\n    \"readOnly\": false,\n    \"maxFileSize\": 100,\n    \"excludePatterns\": [\"**/.git/**\", \"**/node_modules/**\"]\n  },\n  \"logging\": {\n    \"level\": \"info\",\n    \"enableAudit\": true\n  },\n  \"performance\": {\n    \"maxConcurrentOperations\": 10,\n    \"timeoutMs\": 30000\n  }\n}\n```\n\n**YAML Configuration (`config.yml`):**\n```yaml\nsecurity:\n  allowedDirs:\n    - \"/data\"\n    - \"/workspace\"\n  readOnly: false\n  maxFileSize: 100\n  excludePatterns:\n    - \"**/.git/**\"\n    - \"**/node_modules/**\"\n\nlogging:\n  level: info\n  enableAudit: true\n\nperformance:\n  maxConcurrentOperations: 10\n  timeoutMs: 30000\n```\n\n---\n## 🐳 Docker Images & Backends\n\n### Supported Backends\n\n- **Docker** (default): Uses local Docker daemon or nerdctl/containerd\n- **Kubernetes**: Coming soon - will deploy to K8s clusters\n- **Mock**: For testing and development\n\n### Image Management\n\nTemplates automatically build and tag images as:\n- Format: `dataeverything/mcp-{template-name}:latest`\n- Custom images: Specify in `template.json` with `docker_image` field\n- Auto-pull: Images are pulled automatically during deployment\n\n---\n## 🏗️ Architecture & Extensibility\n\n### Core Components\n\n- **Backend Abstraction**: Easily extend with Kubernetes, cloud providers\n- **CLI + Library**: Use as command-line tool or import as Python library\n- **Platform Integration Ready**: Same codebase powers MCP Platform commercial UI\n- **Configuration System**: Generic mapping supporting any template structure\n- **Type Conversion**: Automatic conversion based on JSON schema types\n\n### Adding New Templates\n\n1. Create `templates/{name}/` directory\n2. Add `template.json` with config schema and environment mappings\n3. Add `Dockerfile` for container build\n4. Test with `mcp-template {name} --show-config`\n\n### Adding New Backends\n\n1. Inherit from base deployment service interface\n2. Implement `deploy_template()`, `list_deployments()`, etc.\n3. Register in `DeploymentManager._get_deployment_backend()`\n\n---\n## 🧪 Testing & Development\n\n### Running Tests\n\n```bash\n# Install development dependencies\npip install -r requirements-dev.txt\n\n# Run all tests\npytest\n\n# Run specific test categories\npytest tests/test_configuration.py  # Configuration system tests\npytest tests/test_deployment_*.py   # Deployment tests\npytest tests/test_all_templates.py  # Template validation tests\n```\n\n### Test Configuration Files\n\nSample configuration files are available in `examples/config/`:\n- `file-server-config.json`: Example file-server configuration\n- Additional template configs as they're added\n\n### Development Setup\n\n```bash\n# Clone and setup\ngit clone <repo-url>\ncd mcp-server-templates\npip install -e .\n\n# Run in development mode\nmcp-template list\n```\n\n### Testing\n\n```bash\n# Run all tests\nmake test\n\n# Run tests for all templates\nmake test-templates\n\n# Run tests for a specific template\nmake test-template TEMPLATE=file-server\n\n# Run unit tests only\nmake test-unit\n\n# Run integration tests\nmake test-integration\n```\n\n### Documentation\n\n```bash\n# Build documentation\nmake docs\n\n# Serve documentation locally\nmake docs-serve\n\n# Clean documentation build\nmake docs-clean\n```\n\n---\n## 📚 Documentation Hub\n\n### Core Documentation\n\n- **[Documentation Index](docs/index.md)**: Central hub for all documentation\n- **[Configuration Strategy](docs/CONFIGURATION_FINAL_RECOMMENDATIONS.md)**: Configuration design decisions\n- **[Template Development Guide](docs/template-development-guide.md)**: Creating new templates\n- **[Testing Guide](docs/TESTING.md)**: Testing strategies and tools\n\n### Template-Specific Docs\n\nEach template includes:\n- `README.md`: Overview and basic usage\n- `USAGE.md`: Detailed configuration and examples\n- `tests/`: Template-specific test suites\n\n---\n## 🚀 Getting Started\n\n### Quick Start\n\n```bash\n# 1. Install from PyPI\npip install mcp-templates\n\n# 2. List available deployments\nmcp-template list\n\n# 3. Deploy with defaults\nmcp-template deploy file-server\n\n# 4. Deploy with custom config and skip image pull\nmcp-template deploy file-server --config-file ./my-config.json --no-pull\n\n# 5. View deployment status\nmcp-template status file-server-deployment\n\n# 6. Delete when done\nmcp-template delete file-server-deployment\n```\n\n### Template Discovery\n\n```bash\n# List all available templates\nmcp-template create --help\n\n# Create new template interactively\nmcp-template create my-custom-template\n```\n\n---\n## License\n\nThis project is licensed under the **Elastic License 2.0**.\n\nYou may use, deploy, and modify it freely in your organization or personal projects.\nYou **may not** resell, rehost, or offer it as a commercial SaaS product without a commercial license.\n\nSee [LICENSE](./LICENSE) and [ATTRIBUTION](./ATTRIBUTION.md) for details.\n\n---\n## 🤝 Contributing\n\n1. Fork the repository\n2. Create a feature branch (`git checkout -b feature/amazing-feature`)\n3. Commit your changes (`git commit -m 'Add amazing feature'`)\n4. Push to the branch (`git push origin feature/amazing-feature`)\n5. Open a Pull Request\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.\n\n---\n## 📞 Support\n\n- **Issues**: [GitHub Issues](https://github.com/Data-Everything/mcp-server-templates/issues)\n- **Discussions**: [GitHub Discussions](https://github.com/Data-Everything/mcp-server-templates/discussions)\n- **Community Slack**: [Join mcp-platform workspace](https://join.slack.com/t/mcp-platform/shared_invite/zt-39z1p559j-8aWEML~IsSPwFFgr7anHRA)\n- **Documentation**: [docs/index.md](docs/index.md)\n",
   "category": "Development",
   "quality_score": 70,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "dataeverything-mcp-file-server-docker": {
+          "command": "mcp-template",
+          "args": ["deploy", "file-server"],
+          "env": {}
+        },
+        "dataeverything-mcp-file-server-docker-configured": {
+          "command": "mcp-template",
+          "args": [
+            "deploy",
+            "file-server",
+            "--config",
+            "read_only_mode=true",
+            "--config",
+            "max_file_size=50",
+            "--config",
+            "log_level=debug"
+          ],
+          "env": {
+            "MCP_READ_ONLY": "true",
+            "MCP_LOG_LEVEL": "debug"
+          }
+        },
+        "dataeverything-mcp-file-server-docker-overridden": {
+          "command": "mcp-template",
+          "args": ["deploy", "file-server", "--override", "metadata__description=Custom file server"],
+          "env": {}
+        },
+        "dataeverything-mcp-file-server-docker-env": {
+          "command": "mcp-template",
+          "args": [
+            "deploy",
+            "file-server",
+            "--env",
+            "MCP_READ_ONLY=true",
+            "--env",
+            "MCP_MAX_FILE_SIZE=50",
+            "--env",
+            "MCP_LOG_LEVEL=debug"
+          ],
+          "env": {
+            "MCP_READ_ONLY": "true",
+            "MCP_LOG_LEVEL": "debug"
+          }
+        },
+        "dataeverything-mcp-file-server-docker-with-config-file": {
+          "command": "mcp-template",
+          "args": ["deploy", "file-server", "--config-file", "./config.json"],
+          "env": {}
+        },
+        "dataeverything-mcp-file-server-docker-mixed-config": {
+          "command": "mcp-template",
+          "args": [
+            "deploy",
+            "file-server",
+            "--config-file",
+            "./base-config.json",
+            "--config",
+            "log_level=warning",
+            "--override",
+            "metadata__version=1.5.0",
+            "--env",
+            "MCP_READ_ONLY=true"
+          ],
+          "env": {
+            "MCP_READ_ONLY": "true",
+            "MCP_LOG_LEVEL": "warning"
+          }
+        }
+      }
+    },
     "oauth": {
-      "provider": "null",
+      "provider": null,
       "required": false
     }
   },

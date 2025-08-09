@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "kukapay__funding-rates-mcp",
-  "display_name": "funding rates",
+  "display_name": "funding-rates-mcp",
   "version": "1.0.0",
   "description": "An MCP server that provides real-time funding rate data across major crypto exchanges.",
   "author": {
@@ -11,15 +11,8 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "uv",
-      "args": [
-        "--directory",
-        "/absolute/path/to/funding-rates-mcp",
-        "run",
-        "funding-rates-mcp",
-        "--transport",
-        "stdio"
-      ],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -30,9 +23,18 @@
   "readme": "# Funding Rates MCP\n\nAn MCP server that provides real-time funding rate data across major crypto exchanges, enabling agents to detect arbitrage opportunities. \n\n[![Discord](https://img.shields.io/discord/1353556181251133481?cacheSeconds=3600)](https://discord.gg/aRnuu2eJ)\n![GitHub License](https://img.shields.io/github/license/kukapay/funding-rates-mcp)\n![Python Version](https://img.shields.io/badge/python-3.10+-blue)\n![Status](https://img.shields.io/badge/status-active-brightgreen.svg)\n\n## Features\n\n- **Real-Time Funding Rates**: Fetches current funding across Binance, OKX, Bybit, Bitget, Gate and CoinEx.\n- **Pivoted Table Output**: Displays symbols as rows, exchanges as columns, and includes a `Divergence` column for max funding rate difference.\n- **Claude Desktop Integration**: Runs as an MCP server for interactive queries.\n\n## Installation\n\n### Prerequisites\n- Python 3.10+\n- [uv](https://github.com/astral-sh/uv) for dependency management\n- [Claude Desktop](https://www.anthropic.com/claude) (optional, for interactive queries)\n- Git\n\n### Steps\n1. **Clone the Repository**:\n   ```bash\n   git clone https://github.com/kukapay/funding-rates-mcp.git\n   cd funding-rates-mcp\n   ```\n\n2. **Set Up Dependencies with uv**:\n   ```bash\n   uv sync\n   ```\n\n3. **Configuring Claude Desktop**：\n\n    To use with Claude Desktop:\n    1. Edit the Claude configuration file:\n       - **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`\n       - **Windows**: `%APPDATA%\\Claude\\claude_desktop_config.json`\n    2. Add the MCP server:\n       ```json\n       {\n         \"mcpServers\": {\n           \"funding-rates-mcp\": {\n             \"command\": \"uv\",\n             \"args\": [\"--directory\", \"/absolute/path/to/funding-rates-mcp\", \"run\", \"funding-rates-mcp\"]\n           }\n         }\n       }\n       ```\n    3. Restart Claude Desktop. Look for the hammer icon to confirm integration.\n\n## Usage\n    \n### Tools\n\nThe server provides the following MCP tool for querying funding rates:\n\n- **`compare_funding_rates`**:\n  - **Description**: Compares current funding rates for multiple symbols across specified exchanges, returning a pivoted Markdown table with a `Divergence` column showing the maximum funding rate difference for each symbol.\n  - **Parameters**:\n    - `symbols` (List[str]): List of trading pairs (e.g., `[\"BTC/USDT:USDT\", \"ETH/USDT:USDT\"]`). Required.\n    - `exchanges` (List[str], optional): List of exchanges to compare (e.g., `[\"binance\", \"okx\"]`). Defaults to all supported exchanges (`binance`, `okx`, `bybit`, `bitget`, `gate`, `coinex`).\n    - `params` (Dict, optional): Additional parameters for the API call. Defaults to `{}`.\n  - **Returns**: A Markdown table with symbols as rows, exchanges as columns, funding rates as values (formatted as percentages), and a `Divergence` column.\n  - **Example**: See the Examples section below.\n\n### Prompts\n\nThe server includes the following MCP prompt for generating natural language queries:\n\n- **`compare_funding_rates_prompt`**:\n  - **Description**: Generates a natural language prompt for comparing funding rates across all supported exchanges, suitable for Claude Desktop input.\n  - **Parameters**:\n    - `symbols` (List[str]): List of trading pairs (e.g., `[\"BTC/USDT:USDT\", \"ETH/USDT:USDT\"]`). Required.\n  - **Returns**: A string prompt (e.g., \"Compare the funding rates for BTC/USDT:USDT, ETH/USDT:USDT across binance, okx, bybit, bitget, gate, coinex.\").\n  - **Usage**: Used internally by Claude Desktop to interpret user queries or for testing in MCP Inspector.\n\n### Examples\n#### Compare Funding Rates\n- **Input** (in Claude Desktop):  \n  \"Compare funding rates for BTC/USDT:USDT and ETH/USDT:USDT across all exchanges.\"\n- **Output**:\n  ```\n  Current funding rates:\n\n  | Symbol\\Exchange | binance   | okx       | bybit     | bitget    | gate      | coinex    | Divergence |\n  |-----------------|-----------|-----------|-----------|-----------|-----------|-----------|------------|\n  | BTC/USDT:USDT   | 0.005161% | 0.007548% | 0.010000% | 0.002900% | -0.019200% | -0.035013% | 0.045013%  |\n  | ETH/USDT:USDT   | 0.010000% | 0.005839% | 0.010000% | 0.010000% | -0.008200% | 0.000000%  | 0.018200%  |\n  ```\n\n#### Compare Specific Exchanges\n- **Input** (in Claude Desktop):  \n  \"Compare funding rates for SOL/USDT:USDT on Binance, OKX, and Bybit.\"\n- **Output**:\n  ```\n  Current funding rates:\n\n  | Symbol\\Exchange | binance   | okx       | bybit     | Divergence |\n  |-----------------|-----------|-----------|-----------|------------|\n  | SOL/USDT:USDT   | -0.015312% | -0.003639% | -0.004467% | 0.011673%  |\n  ```\n\n## License\n\nThis project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.\n\n\n",
   "category": "Finance",
   "quality_score": 41,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "funding-rates-mcp": {
+          "command": "uv",
+          "args": ["--directory", "/absolute/path/to/funding-rates-mcp", "run", "funding-rates-mcp"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

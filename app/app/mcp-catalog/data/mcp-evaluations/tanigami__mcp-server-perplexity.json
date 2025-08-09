@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "tanigami__mcp-server-perplexity",
-  "display_name": "perplexity",
+  "display_name": "mcp-server-perplexity",
   "version": "1.0.0",
   "description": "MCP server from tanigami/mcp-server-perplexity",
   "author": {
@@ -11,13 +11,9 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-perplexity", "--transport", "stdio"],
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
   "tools": [],
@@ -27,9 +23,20 @@
   "readme": "# Perplexity MCP Server\n\n[![smithery badge](https://smithery.ai/badge/mcp-server-perplexity)](https://smithery.ai/server/mcp-server-perplexity)\n\nMCP Server for the Perplexity API.\n\n> :warning: **Limitations:**\n> - The Claude Desktop client may timeout if Perplexity processing takes too long\n> - This issue might be resolved if Claude Desktop implements support for long running operations and progress reporting in the future\n> - Implementation updates to handle these features will be made if they become available\n\n<a href=\"https://glama.ai/mcp/servers/hchfq9bydq\"><img width=\"380\" height=\"200\" src=\"https://glama.ai/mcp/servers/hchfq9bydq/badge\" alt=\"Perplexity Server MCP server\" /></a>\n\n## Components\n\n### Tools\n\n- **ask_perplexity**: Request chat completion with citations from Perplexity  \n\n## Quickstart\n\n### Install\n\n#### Claude Desktop\n\n- On macOS: `~/Library/Application\\ Support/Claude/claude_desktop_config.json`  \n- On Windows: `%APPDATA%/Claude/claude_desktop_config.json`\n\n```\n\"mcpServers\": {\n  \"Perplexity\": {\n    \"command\": \"uvx\",\n    \"args\": [\n      \"mcp-server-perplexity\"\n    ],\n    \"env\": {\n      \"PERPLEXITY_API_KEY\": \"your-perplexity-api-key\"\n    }\n  }\n}\n```\n",
   "category": "AI Tools",
   "quality_score": 51,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "mcp-server-perplexity": {
+          "command": "uvx",
+          "args": ["mcp-server-perplexity"],
+          "env": {
+            "PERPLEXITY_API_KEY": "your-perplexity-api-key"
+          }
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

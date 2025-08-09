@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "mwgmorningwood__central-memory-mcp",
-  "display_name": "Central Memory",
+  "display_name": "Central-Memory-MCP",
   "version": "1.0.0",
   "description": "A custom fork of @modelcontextprotocol/server-memory using Azure Functions MCP triggers and Table storage.",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "func",
-      "args": ["start"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# Central Memory MCP Server\n\nModel Context Protocol (MCP) memory server built with Azure Functions and TypeScript, providing persistent knowledge graph storage for AI assistants in VS Code.  \nInspired by and forked from [`@modelcontextprotocol/server-memory`](https://github.com/modelcontextprotocol/servers/tree/main/src/memory)\n\n## 🚀 Quick Start\n\n```bash\nnpm install\nfunc start\n```\n\n### VS Code Integration\n\n1. **Install recommended extensions** from `.vscode/extensions.json`\n2. **MCP configuration** is ready in `.vscode/mcp.json`\n3. **Use `#memory-test` tools** in VS Code Copilot chat\n\n> **Note**: All MCP tools now use object parameters instead of JSON strings for better type safety and ease of use.\n\n### Test the Server\n\n```bash\n# Health check\ncurl http://localhost:7071/api/health\n\n# Use in VS Code Copilot with object parameters:\n# #memory-test_create_entities\n# #memory-test_read_graph\n# #memory-test_search_entities\n```\n\n### Example Usage in VS Code Copilot\n\n```text\nCreate an entity:\n#memory-test_create_entities workspaceId=\"my-project\" entities={\"name\": \"Alice\", \"entityType\": \"Person\", \"observations\": [\"Software engineer\"]}\n\nCreate a relation:\n#memory-test_create_relations workspaceId=\"my-project\" relations={\"from\": \"Alice\", \"to\": \"React Project\", \"relationType\": \"worksOn\"}\n\nSearch entities:\n#memory-test_search_entities workspaceId=\"my-project\" name=\"Alice\"\n```\n\n## 🔧 MCP Tools\n\n**Core Operations:**\n\n- `create_entities` - Create single entity with observations\n- `create_relations` - Create single relationship between entities\n- `read_graph` - Read the entire knowledge graph\n- `search_entities` / `search_relations` - Search by name/type\n- `add_observation` - Add observations to existing entities\n- `update_entity` - Update entity observations and metadata\n- `delete_entity` - Remove entity and all its relations\n- `get_stats` - Get workspace statistics\n- `clear_memory` - Clear all workspace data\n\n**Advanced Features:**\n\n- `get_temporal_events` - Time-based activity tracking\n- `merge_entities` - Merge duplicate entities\n- `detect_duplicate_entities` - Find potential duplicates\n- `execute_batch_operations` - Batch multiple operations\n- `get_user_stats` - Get user-specific statistics\n- `search_relations_by_user` - Find relations by user\n\n## 🏗️ Architecture\n\nBuilt with:\n\n- **Azure Functions v4** with TypeScript\n- **Azure Table Storage** for persistent data (via Azurite locally)\n- **Model Context Protocol (MCP)** for VS Code integration\n- **Workspace isolation** - each project gets separate storage\n\n## � Project Structure\n\n```text\nsrc/\n├── functions/         # Azure Functions endpoints\n├── services/          # Business logic (storage, entities, relations)\n├── types/             # TypeScript definitions\n└── index.ts           # Main entry point\n```\n\n## 📚 Documentation\n\nFor detailed information, see the `.docs/` folder:\n\n- **[Architecture Guide](.docs/ARCHITECTURE.md)** - Technical design and patterns\n- **[API Reference](.docs/API.md)** - Complete endpoint documentation\n- **[Storage Guide](.docs/STORAGE.md)** - Storage configuration and workspace management\n- **[Deployment Guide](.docs/DEPLOYMENT.md)** - Production deployment options\n\n## 🔒 Production Notes\n\n- Uses Azure Table Storage with managed identity for security\n- Workspace isolation prevents data leakage between projects\n- Health endpoints for monitoring and container orchestration\n- Automatic fallback to local storage for development\n\n## 📝 License\n\nMIT License - see LICENSE file for details.\n",
   "category": "AI Tools",
   "quality_score": 56,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "modelcontextprotocol-server-memory": {
+          "command": "func",
+          "args": ["start"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

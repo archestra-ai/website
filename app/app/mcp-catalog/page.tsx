@@ -6,7 +6,7 @@ import Header from '@components/Header';
 import constants from '@constants';
 import AddNewMCPServerButton from '@mcpCatalog/components/LinkButtons/AddNewMCPServerButton';
 import ViewOnGitHubButton from '@mcpCatalog/components/LinkButtons/ViewOnGitHubButton';
-import MCPCatalogClient from '@mcpCatalog/components/MCPCatalogClient';
+import McpCatalogClient from '@mcpCatalog/components/McpCatalogClient';
 import ScoringExplanationCard from '@mcpCatalog/components/ScoringExplanationCard';
 import TrustScoreBadgeMarkdown from '@mcpCatalog/components/TrustScoreBadgeMarkdown';
 import { countServersInRepo, loadServers } from '@mcpCatalog/lib/catalog';
@@ -260,7 +260,7 @@ export default function MCPCatalogPage() {
           </div>
 
           <Suspense fallback={<div>Loading catalog...</div>}>
-            <MCPCatalogClient
+            <McpCatalogClient
               mcpServers={mcpServers}
               categories={categories}
               languages={languages}

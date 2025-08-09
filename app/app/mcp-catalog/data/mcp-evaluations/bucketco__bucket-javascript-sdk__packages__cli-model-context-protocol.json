@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "bucketco__bucket-javascript-sdk__packages__cli-model-context-protocol",
-  "display_name": "bucket javascript sdk",
+  "display_name": "cli#model-context-protocol",
   "version": "1.0.0",
   "description": "JS/TS SDKs for Bucket.co",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@bucketco/server", "--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,7 +23,8 @@
   "readme": null,
   "category": "Development",
   "quality_score": 68,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": null,
     "oauth": {
       "provider": "google",
       "required": true

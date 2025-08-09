@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "devilcoder01__weather-mcp-server",
-  "display_name": "weather",
+  "display_name": "weather-mcp-server",
   "version": "1.0.0",
   "description": "MCP server from devilcoder01/weather-mcp-server",
   "author": {
@@ -11,13 +11,9 @@
     "type": "python",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "python",
-      "args": ["main.py"],
-      "env": {
-        "server-basic": "",
-        "server-configured": "",
-        "server-docker": ""
-      }
+      "command": "unknown",
+      "args": [],
+      "env": {}
     }
   },
   "tools": [],
@@ -27,9 +23,18 @@
   "readme": "# Weather MCP Server\n\n[![smithery badge](https://smithery.ai/badge/@devilcoder01/weather-mcp-server)](https://smithery.ai/server/@devilcoder01/weather-mcp-server)\n\nA Model Context Protocol (MCP) server for weather data, built with FastAPI and the MCP framework. This server provides various weather-related tools that can be used by AI assistants to retrieve current weather conditions, forecasts, air quality data, and more.\n\n## Features\n\n- Current weather conditions\n- Weather forecasts (1-14 days)\n- Historical weather data\n- Weather alerts\n- Air quality information\n- Astronomy data (sunrise, sunset, moon phases)\n- Location search\n- Timezone information\n- Sports events\n\n## Requirements\n\n- Python 3.13+\n- [uv](https://github.com/astral-sh/uv) package manager\n- [WeatherAPI](https://www.weatherapi.com/) API key\n\n## Installation\n\n### Installing via Smithery\n\nTo install Weather Data Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@devilcoder01/weather-mcp-server):\n\n```bash\nnpx -y @smithery/cli install @devilcoder01/weather-mcp-server --client claude\n```\n\n### Manual Installation\n1. Clone this repository:\n   ```\n   git clone https://github.com/yourusername/Weather_mcp_server.git\n   cd Weather_mcp_server\n   ```\n\n2. Install dependencies using uv:\n   ```\n   uv venv\n   uv pip install -e .\n   ```\n\n3. Create a `.env` file in the project root with your WeatherAPI key:\n   ```\n   WEATHER_API_KEY=your_api_key_here\n   ```\n\n## Usage\n\nRun the server:\n\n```\npython main.py\n```\n\nThe server will start on http://localhost:8000 by default.\n\n## License\n\nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.\n",
   "category": "Data",
   "quality_score": 62,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "devilcoder01-weather-mcp-server": {
+          "command": "python",
+          "args": ["main.py"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },

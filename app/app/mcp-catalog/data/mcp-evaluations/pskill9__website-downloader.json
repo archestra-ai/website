@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "pskill9__website-downloader",
-  "display_name": "website downloader",
+  "display_name": "website-downloader",
   "version": "1.0.0",
   "description": "MCP server to download entire websites",
   "author": {
@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "node",
-      "args": ["/path/to/website-downloader/build/index.js", "--transport", "stdio"],
+      "command": "unknown",
+      "args": [],
       "env": {}
     }
   },
@@ -23,9 +23,18 @@
   "readme": "# Website Downloader MCP Server\n\nThis MCP server provides a tool to download entire websites using wget. It preserves the website structure and converts links to work locally.\n\n<a href=\"https://glama.ai/mcp/servers/egcwr79vu2\"><img width=\"380\" height=\"200\" src=\"https://glama.ai/mcp/servers/egcwr79vu2/badge\" alt=\"Google Workspace Server MCP server\" /></a>\n\n## Prerequisites\n\nThe server requires `wget` to be installed on your system.\n\n### Installing wget\n\n#### macOS\nUsing Homebrew:\n```bash\nbrew install wget\n```\n\n#### Linux (Debian/Ubuntu)\n```bash\nsudo apt-get update\nsudo apt-get install wget\n```\n\n#### Linux (Red Hat/Fedora)\n```bash\nsudo dnf install wget\n```\n\n#### Windows\n1. Using [Chocolatey](https://chocolatey.org/):\n```bash\nchoco install wget\n```\n\n2. Or download the binary from: https://eternallybored.org/misc/wget/\n   - Download the latest wget.exe\n   - Place it in a directory that's in your PATH (e.g., C:\\Windows\\System32)\n\n## Usage\n\nThe server provides a tool called `download_website` with the following parameters:\n\n- `url` (required): The URL of the website to download\n- `outputPath` (optional): The directory where the website should be downloaded. Defaults to the current directory.\n- `depth` (optional): Maximum depth level for recursive downloading. Defaults to infinite. Set to 0 for just the specified page, 1 for direct links, etc.\n\n### Example\n\n```json\n{\n  \"url\": \"https://example.com\",\n  \"outputPath\": \"/path/to/output\",\n  \"depth\": 2  // Optional: Download up to 2 levels deep\n}\n```\n\n## Features\n\nThe website downloader:\n- Downloads recursively with infinite depth\n- Includes all page requisites (CSS, images, etc.)\n- Converts links to work locally\n- Adds appropriate extensions to files\n- Restricts downloads to the same domain\n- Preserves the website structure\n\n## Installation\n\n1. Build the server:\n```bash\nnpm install\nnpm run build\n```\n\n2. Add to MCP settings:\n```json\n{\n  \"mcpServers\": {\n    \"website-downloader\": {\n      \"command\": \"node\",\n      \"args\": [\"/path/to/website-downloader/build/index.js\"]\n    }\n  }\n}\n",
   "category": "File Management",
   "quality_score": 48,
-  "config_for_archestra": {
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcpServers": {
+        "website-downloader": {
+          "command": "node",
+          "args": ["/path/to/website-downloader/build/index.js"],
+          "env": {}
+        }
+      }
+    },
     "oauth": {
-      "provider": "none",
+      "provider": null,
       "required": false
     }
   },
