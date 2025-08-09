@@ -1,5 +1,3 @@
-'use client';
-
 import constants from '@constants';
 
 const {

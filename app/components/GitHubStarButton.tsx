@@ -1,5 +1,3 @@
-'use client';
-
 import { Github, Star } from 'lucide-react';
 import { useEffect, useState } from 'react';
 

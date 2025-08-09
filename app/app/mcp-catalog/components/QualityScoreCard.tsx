@@ -6,8 +6,9 @@ import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
 import constants from '@constants';
 import { QualityBar } from '@mcpCatalog/components/QualityBar';
-import { generateUrlToIndividualMcpCatalogJsonFile } from '@mcpCatalog/lib/urls';
 import { ArchestraMcpServerManifest, ArchestraScoreBreakdown } from '@mcpCatalog/types';
+
+import EvaluatedByModelInfo from './EvaluatedByModelInfo';
 
 const {
   company: { name: companyName },
@@ -15,19 +16,13 @@ const {
 
 interface QualityScoreCardProps {
   server: ArchestraMcpServerManifest;
-  scoreBreakdown: ArchestraScoreBreakdown;
+  scoreBreakdown: ArchestraScoreBreakdown | null;
 }
 
 export default function QualityScoreCard({ server, scoreBreakdown }: QualityScoreCardProps) {
   const [showDetails, setShowDetails] = useState(false);
 
-  const {
-    name: serverId,
-    quality_score: qualityScore,
-    evaluation_model: evaluationModel,
-    protocol_features: protocolFeatures,
-    dependencies,
-  } = server;
+  const { quality_score: qualityScore, protocol_features: protocolFeatures, dependencies } = server;
 
   const getScoreDescription = (score: number, maxScore: number, category: string) => {
     const percentage = (score / maxScore) * 100;
@@ -74,6 +69,20 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
     return `Room for improvement in ${category.toLowerCase()}`;
   };
 
+  if (!scoreBreakdown) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>MCP Trust Score</CardTitle>
+          <CardDescription>This server is being evaluated</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <QualityBar score={null} />
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <Card>
       <CardHeader>
@@ -85,30 +94,7 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
                 ? 'Based on our comprehensive evaluation criteria'
                 : 'This server is being evaluated'}
             </span>
-            {evaluationModel !== undefined && (
-              <div className="flex items-center gap-2 text-xs">
-                <span className="text-gray-500">
-                  {evaluationModel === null ? '✨ Human evaluation' : `🤖 Evaluated by ${evaluationModel}`}
-                </span>
-                <a
-                  href={generateUrlToIndividualMcpCatalogJsonFile(serverId, true)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
-                  title="Fix evaluation data"
-                >
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                    />
-                  </svg>
-                  Fix
-                </a>
-              </div>
-            )}
+            <EvaluatedByModelInfo server={server} />
           </div>
         </CardDescription>
       </CardHeader>

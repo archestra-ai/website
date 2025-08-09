@@ -1,6 +1,6 @@
 import { ArchestraMcpServerGitHubRepoInfo } from '@mcpCatalog/types';
 
-import { generateBadgeMarkdown, generateBadgeRelativeUrl } from './utils';
+import { generateBadgeMarkdown, generateBadgeRelativeUrl } from './';
 
 describe('trustScoreBadge utils', () => {
   const serverId = 'modelcontextprotocol__servers__src__sqlite';
