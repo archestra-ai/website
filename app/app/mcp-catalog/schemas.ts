@@ -1,4 +1,4 @@
-import { DxtManifestSchema } from '@anthropic-ai/dxt';
+import { DxtManifestSchema, McpServerConfigSchema } from '@anthropic-ai/dxt';
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { z } from 'zod';
 
@@ -53,11 +53,24 @@ export const MCPDependencySchema = z.object({
   importance: z.number().min(1).max(10),
 });
 
-export const ArchestraServerConfigSchema = z.object({
-  oauth: z.object({
-    provider: z.string(),
-    required: z.boolean(),
-  }),
+export const ArchestraClientConfigPermutationsSchema = z.object({
+  mcpServers: z.record(z.string(), McpServerConfigSchema),
+});
+
+/**
+ * NOTE: when we are ready to add more OAuth providers, we can simply add them here
+ * and re-run the `evaluate-catalog.ts` script to have the catalog updated
+ */
+export const ArchestraSupportedOauthProvidersSchema = z.enum(['google']);
+
+export const ArchestraOauthSchema = z.object({
+  provider: ArchestraSupportedOauthProvidersSchema.nullable(),
+  required: z.boolean(),
+});
+
+export const ArchestraConfigSchema = z.object({
+  client_config_permutations: ArchestraClientConfigPermutationsSchema,
+  oauth: ArchestraOauthSchema,
 });
 
 export const ArchestraScoreBreakdownSchema = z.object({
@@ -124,7 +137,7 @@ export const ArchestraMcpServerManifestSchema = DxtManifestSchema.omit({ reposit
     readme: z.string().nullable(),
     category: McpServerCategorySchema.nullable(),
     quality_score: z.number().min(0).max(100).nullable(),
-    config_for_archestra: ArchestraServerConfigSchema,
+    archestra_config: ArchestraConfigSchema,
     github_info: ArchestraMcpServerFullGitHubInfoSchema,
     programming_language: z.string(),
     framework: z.string().nullable(),

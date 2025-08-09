@@ -31,9 +31,12 @@ function createBaseServerManifest(overrides?: Partial<ArchestraMcpServerManifest
         args: ['server/index.js'],
       },
     },
-    config_for_archestra: {
+    archestra_config: {
+      client_config_permutations: {
+        mcpServers: {},
+      },
       oauth: {
-        provider: 'github',
+        provider: null,
         required: false,
       },
     },

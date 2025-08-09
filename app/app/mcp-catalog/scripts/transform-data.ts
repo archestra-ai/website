@@ -2,19 +2,38 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-import { ArchestraMcpServerManifestSchema } from '@mcpCatalog/schemas';
-import type { ArchestraMcpServerManifest } from '@mcpCatalog/types';
+import { ArchestraMcpServerManifestSchema, ArchestraSupportedOauthProvidersSchema } from '@mcpCatalog/schemas';
+import type { ArchestraMcpServerManifest, ArchestraOauth } from '@mcpCatalog/types';
 
+import { determineMCPServerName } from './evaluate-catalog';
 import { MCP_SERVERS_EVALUATIONS_DIR } from './paths';
 
 async function transformServerData(data: any, filename: string): Promise<ArchestraMcpServerManifest> {
   try {
-    // Transform the data to match the expected schema
+    let oauthProvider: ArchestraOauth['provider'] = null;
+    let oauthRequired: boolean = false;
+
+    const oauthProviderResult = ArchestraSupportedOauthProvidersSchema.safeParse(
+      data.configForArchestra?.oauth?.provider
+    );
+
+    // https://zod.dev/basics?id=handling-errors
+    if (oauthProviderResult.success) {
+      oauthProvider = oauthProviderResult.data;
+      oauthRequired = true;
+    } else {
+      oauthProvider = null;
+    }
+
+    /**
+     * Transform the data to match the expected schema
+     *
+     * NOTE!! display_name will be calculated just afterwards once we've "assembled" the composite github related data
+     */
     const transformed: any = {
       // DXT manifest required fields
       dxt_version: data.dxt_version || '0.1.0',
       name: data.slug || data.name || filename.replace('.json', ''),
-      display_name: data.name || data.title,
       version: data.version || '1.0.0',
       description: data.description || '',
       author: {
@@ -42,10 +61,13 @@ async function transformServerData(data: any, filename: string): Promise<Archest
       readme: data.readme || null,
       category: data.category || null,
       quality_score: typeof data.qualityScore === 'number' ? data.qualityScore : null,
-      config_for_archestra: {
+      archestra_config: {
+        client_config_permutations: data.configForClients || {
+          mcpServers: {},
+        },
         oauth: {
-          provider: data.configForArchestra?.oauth?.provider || 'none',
-          required: data.configForArchestra?.oauth?.required || false,
+          provider: oauthProvider,
+          required: oauthRequired,
         },
       },
       github_info: {
@@ -81,6 +103,8 @@ async function transformServerData(data: any, filename: string): Promise<Archest
       dependencies: Array.isArray(data.dependencies) ? data.dependencies : [],
       raw_dependencies: data.rawDependencies || data.raw_dependencies || null,
     };
+
+    transformed.display_name = determineMCPServerName(transformed.github_info);
 
     // If there's a score breakdown, add it
     if (data.scoreBreakdown || data.score_breakdown) {

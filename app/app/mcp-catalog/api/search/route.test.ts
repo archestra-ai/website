@@ -28,7 +28,12 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
       category: 'AI Tools',
       programming_language: 'TypeScript',
       quality_score: 90,
-      config_for_archestra: { oauth: { provider: 'github', required: false } },
+      archestra_config: {
+        client_config_permutations: {
+          mcpServers: {},
+        },
+        oauth: { provider: null, required: false },
+      },
       github_info: {
         owner: 'test-org',
         repo: 'test-repo-1',
@@ -79,7 +84,12 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
       category: 'Development',
       programming_language: 'Python',
       quality_score: 85,
-      config_for_archestra: { oauth: { provider: 'github', required: false } },
+      archestra_config: {
+        client_config_permutations: {
+          mcpServers: {},
+        },
+        oauth: { provider: null, required: false },
+      },
       github_info: {
         owner: 'test-org',
         repo: 'test-repo-2',

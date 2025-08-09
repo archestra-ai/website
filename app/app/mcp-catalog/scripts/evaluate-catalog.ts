@@ -1,14 +1,17 @@
 #!/usr/bin/env tsx
+import { DxtManifestServerSchema, DxtUserConfigurationOptionSchema } from '@anthropic-ai/dxt';
 import fs from 'fs';
 import path from 'path';
+import z from 'zod';
 import { zodToJsonSchema } from 'zod-to-json-schema';
 
 import { extractServerInfo, loadServers } from '@mcpCatalog/lib/catalog';
 import { calculateQualityScore } from '@mcpCatalog/lib/quality-calculator';
 import {
-  ArchestraMcpServerManifestSchema,
+  ArchestraClientConfigPermutationsSchema,
   ArchestraMcpServerProtocolFeaturesSchema,
-  ArchestraServerConfigSchema,
+  ArchestraOauthSchema,
+  ArchestraSupportedOauthProvidersSchema,
   MCPDependencySchema,
   McpServerCategorySchema,
 } from '@mcpCatalog/schemas';
@@ -18,8 +21,22 @@ import { MCP_SERVERS_EVALUATIONS_DIR, MCP_SERVERS_JSON_FILE_PATH } from './paths
 
 const CATEGORIES = McpServerCategorySchema.options;
 
+const CanonicalServerAndUserConfigSchema = z.object({
+  /**
+   * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#server-configuration
+   * https://github.com/anthropics/dxt/blob/v0.2.6/src/schemas.ts#L94
+   */
+  server: DxtManifestServerSchema,
+  /**
+   * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#user-configuration
+   * https://github.com/anthropics/dxt/blob/v0.2.6/src/schemas.ts#L102-L103
+   */
+  user_config: z.record(z.string(), DxtUserConfigurationOptionSchema),
+});
+
 interface GitHubApiResponse {
   name: string;
+  owner_name: string;
   description: string;
   stargazers_count: number;
   total_issues_count: number;
@@ -35,8 +52,9 @@ interface GitHubApiResponse {
 interface EvaluateSingleRepoOptions {
   updateGithub?: boolean;
   updateCategory?: boolean;
-  updateServerConfig?: boolean;
-  updateConfigForArchestra?: boolean;
+  updateArchestraClientConfigPermutations?: boolean;
+  updateArchestraOauth?: boolean;
+  updateCanonicalServerAndUserConfig?: boolean;
   updateDependencies?: boolean;
   updateProtocol?: boolean;
   updateScore?: boolean;
@@ -113,6 +131,13 @@ function sleep(ms: number): Promise<void> {
 
 /**
  * Fetch repository data from GitHub API with retry logic
+ *
+ * https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository
+ * https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repository-contributors
+ *
+ * NOTE: is the releases, actions, and search API calls correct? Was not able to find any documentation on these:
+ * https://docs.github.com/en/rest/repos?apiVersion=2022-11-28
+ *
  */
 async function fetchRepoData(owner: string, repo: string, repositoryPath: string | null): Promise<GitHubApiResponse> {
   const token = process.env.GITHUB_TOKEN;
@@ -348,6 +373,7 @@ async function fetchRepoData(owner: string, repo: string, repositoryPath: string
 
       return {
         name: repoData.name,
+        owner_name: repoData.owner.login,
         description: repoData.description || '',
         stargazers_count: repoData.stargazers_count,
         total_issues_count: totalIssuesCount,
@@ -591,6 +617,16 @@ function removeFromServerList(url: string): void {
   }
 }
 
+export function determineMCPServerName({ path, repo }: ArchestraMcpServerGitHubRepoInfo): string {
+  if (path) {
+    // If there's a repository path, use the last part of it
+    const pathParts = path.split('/');
+    return pathParts[pathParts.length - 1];
+  }
+  // Otherwise, use the repository name
+  return repo;
+}
+
 /**
  * Create MCPServer object from GitHub data
  */
@@ -598,28 +634,20 @@ function createNewMCPServer(
   githubInfo: ArchestraMcpServerGitHubRepoInfo,
   apiData: GitHubApiResponse
 ): ArchestraMcpServerManifest {
+  /**
+   * NOTE: here we are casting the type to ArchestraMcpServerManifest, because the type is not fully defined yet
+   * some of the data will be filled in throughout the various steps of the evaluation process in this script
+   */
   return {
     dxt_version: '1.0.0',
     version: '1.0.0',
     name: githubInfo.name,
-    display_name:
-      apiData.name
-        .replace(/-/g, ' ')
-        .replace(/mcp|server/gi, '')
-        .trim() || apiData.name,
+    display_name: determineMCPServerName(githubInfo),
     description: apiData.description || `MCP server from ${githubInfo.owner}/${githubInfo.repo}`,
     author: {
-      name: 'Unknown',
-      email: 'unknown@example.com',
+      name: apiData.owner_name || 'unknown',
     },
-    server: {
-      type: 'node',
-      entry_point: 'server/index.js',
-      mcp_config: {
-        command: 'node',
-        args: ['server/index.js'],
-      },
-    },
+    server: null, // will be determined later
     readme: apiData.readme_content || null,
     category: null,
     quality_score: null, // Will be calculated
@@ -646,17 +674,12 @@ function createNewMCPServer(
       implementing_oauth2: false,
     },
     dependencies: [],
-    user_config: {},
-    config_for_archestra: {
-      oauth: {
-        required: false,
-        provider: '',
-      },
-    },
+    user_config: null, // will be determined later
+    archestra_config: null, // will be determined later
     evaluation_model: null,
     raw_dependencies: apiData.raw_dependencies || null,
     last_scraped_at: new Date().toISOString(),
-  };
+  } as unknown as ArchestraMcpServerManifest;
 }
 
 /**
@@ -746,12 +769,9 @@ Respond with JSON: {"category": "..."}`;
 }
 
 /**
- * Extract server configuration using AI
- *
- * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#server-configuration
- *
+ * Extract Archestra specific, "client configuration permutations", using AI
  */
-async function extractServerConfig(
+async function extractArchestraClientConfigPermutationsConfig(
   server: ArchestraMcpServerManifest,
   model: string,
   force: boolean = false
@@ -802,31 +822,45 @@ Examples of CORRECT output:
 
 If you find "mcp-server-fetch" in uvx command:
 {
-  "server": {
-    "type": "node",
-    "entry_point": "server/index.js",
-    "mcp_config": {
-        "command": "uvx",
-        "args": ["mcp-server-fetch"]
-      }
+  "mcpServers": {
+    "mcp-server-fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
+    }
+  }
+}
+
+If you find "@modelcontextprotocol/server-filesystem" in npx and a docker variant:
+{
+  "mcpServers": {
+    "filesystem-server": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/files"]
+    },
+    "filesystem-server-docker": {
+      "command": "docker",
+      "args": ["run", "-v", "/path:/data", "mcp/filesystem:latest"]
     }
   }
 }
 
 The keys MUST be based on the actual package/image names found in the content.
 
-If no run command found, respond with: {"server": null}`;
+If no run command found, respond with: {"mcpServers": {}}`;
 
   // For Gemini, we need a simpler schema without additionalProperties
   const isGemini = model.startsWith('gemini-');
-  const configFormat = isGemini ? undefined : zodToJsonSchema(ArchestraMcpServerManifestSchema);
+  const configFormat = isGemini ? undefined : zodToJsonSchema(ArchestraClientConfigPermutationsSchema);
 
   try {
     const result = await callLLM(prompt, configFormat, model);
-    if (result.server) {
+    if (result.mcpServers) {
       return {
         ...server,
-        server: result.server,
+        archestra_config: {
+          ...server.archestra_config,
+          client_config_permutations: result,
+        },
         evaluation_model: model,
       };
     }
@@ -838,86 +872,353 @@ If no run command found, respond with: {"server": null}`;
 }
 
 /**
- * Extract Archestra configuration using AI
+ * Extract the canonical server, and user config, configurations using AI
+ *
+ * Information in prompt was built using information from the following resources:
+ * https://github.com/anthropics/dxt/blob/v0.2.6/src/schemas.ts#L29
+ * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#server-configuration
+ * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#user-configuration
  */
-async function extractArchestraConfig(
+async function extractCanonicalServerAndUserConfigConfig(
   server: ArchestraMcpServerManifest,
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
   // Skip if human evaluation (evaluation_model === null)
   if (server.evaluation_model === null && !force) {
-    console.log(`  ⏭️  Archestra Config: Skipped (human evaluation)`);
+    console.log(`  ⏭️  Canonical Server and User Config: Skipped (human evaluation)`);
     return server;
   }
+
   // Skip if already exists and not forcing
-  if (server.config_for_archestra && !force) {
-    console.log(`  ⏭️  Archestra Config: Skipped (already exists)`);
+  if (server?.server && server?.user_config && !force) {
+    console.log(`  ⏭️  Canonical Server and User Config: Skipped (already exists)`);
     return server;
   }
-  console.log(`  🔄 Archestra Config: Extracting...`);
+  console.log(`  🔄 Canonical Server and User Config: Extracting...`);
 
   const content = server.readme || server.description;
   if (!content) {
-    console.warn('No content available for Archestra config analysis');
+    console.warn('No content available for canonical server and user config analysis');
     return server;
   }
 
-  const prompt = `Extract the configuration needed to run this MCP server in Archestra cloud.
+  const prompt = `Extract the canonical server and user config configurations for this MCP server.
+
+Content:
+${content.substring(0, 8000)}
+
+Instructions:
+- Extract the CANONICAL way to run this server. Use a docker command as the LAST resort. Have a preference towards npx, node, python, etc.
+- Additionally, for any dynamic configuration (e.g. flags, environment variables, api keys, etc.) this should go into the "user_config" object (using the format documented below)
+- For Docker commands: split "docker run" into command="docker" and args=["run", ...]
+- For npx: command="npx", args=["-y", "package-name"]
+- Extract environment variables from docker -e flags to env object
+- For Docker, include the full image name in args
+- Environment vars from -e flags go in both args and env
+
+More specific information about the data that you are extracting:
+
+Server Configuration
+
+The server object defines how to run the MCP server:
+
+Server Types
+
+1. **Python**: server.type = "python"
+   - Requires entry_point to Python file
+   - All dependencies must be bundled in the DXT
+   - Can use server/lib for packages or server/venv for full virtual environment
+   - Python runtime version specified in compatibility.runtimes.python
+
+2. **Node.js**: server.type = "node"
+   - Requires entry_point to JavaScript file
+   - All dependencies must be bundled in node_modules
+   - Node.js runtime version specified in compatibility.runtimes.node
+   - Typically includes package.json at extension root for dependency management
+
+3. **Binary**: server.type = "binary"
+   - Pre-compiled executable with all dependencies included
+   - Platform-specific binaries supported
+   - Completely self-contained (no runtime requirements)
+
+MCP Configuration
+
+The mcp_config object in the server configuration defines how the implementing app should execute the MCP server. This replaces the manual JSON configuration users currently need to write.
+
+**Python Example:**
+
+"mcp_config": {
+  "command": "python",
+  "args": ["server/main.py"],
+  "env": {
+    "PYTHONPATH": "server/lib"
+  }
+}
+
+**Node.js Example:**
+
+"mcp_config": {
+  "command": "node",
+  "args": ["$\{__dirname\}/server/index.js"],
+  "env": {}
+}
+
+**Binary Example:**
+
+"mcp_config": {
+  "command": "server/my-server",
+  "args": ["--config", "server/config.json"],
+  "env": {}
+}
+
+**Variable Substitution:**
+These pertain to any configuration that is "dynamic" and needs to be substituted with actual user-inputted values at runtime:
+
+- **$\{__dirname\}**: This variable is replaced with the absolute path to the extension's directory. This is useful for referencing files within the extension package.
+- **$\{HOME\}**: User's home directory
+- **$\{DESKTOP\}**: User's desktop directory
+- **$\{DOCUMENTS\}**: User's documents directory
+- **$\{DOWNLOADS\}**: User's downloads directory
+
+Example:
+
+"mcp_config": {
+  "command": "python",
+  "args": ["$\{__dirname\}/server/main.py"],
+  "env": {
+    "CONFIG_PATH": "$\{__dirname\}/config/settings.json"
+  }
+}
+
+This ensures that paths work correctly regardless of where the extension is installed on the user's system.
+
+- **$\{user_config\}**: Your extension can specify user-configured values that the implementing app will collect from users. Read on to learn more about user configuration.
+
+User Configuration
+
+The user_config field allows extension developers to specify configuration options that can be presented to end users through the implementing app's user interface. These configurations are collected from users and passed to the MCP server at runtime.
+
+Configuration Schema
+
+Each configuration option is defined as a key-value pair where the key is the configuration name and the value is an object with these properties:
+
+- **type**: The data type of the configuration
+  - "string": Text input
+  - "number": Numeric input
+  - "boolean": Checkbox/toggle
+  - "directory": Directory picker
+  - "file": File picker
+- **title**: Display name shown in the UI
+- **description**: Help text explaining the configuration option
+- **required**: Whether this field must be provided (default: false)
+- **default**: Default value (supports variable substitution)
+- **multiple**: For directory/file types, allow multiple selections (default: false)
+- **sensitive**: For string types, mask input and store securely (default: false)
+- **min/max**: For number types, validation constraints
+
+### Variable Substitution in User Configuration
+
+User configuration values support variable substitution in mcp_config:
+
+- **$\{user_config.KEY\}**: Replaced with the user-provided value for configuration KEY
+- Arrays (from multiple selections) are expanded as separate arguments
+- Environment variables are ideal for sensitive data
+- Command arguments work well for paths and non-sensitive options
+
+Available variables for default values:
+
+- **$\{HOME\}**: User's home directory
+- **$\{DESKTOP\}**: User's desktop directory
+- **$\{DOCUMENTS\}**: User's documents directory
+
+### Examples
+
+**Filesystem Extension with Directory Configuration:**
+
+{
+  "user_config": {
+    "allowed_directories": {
+      "type": "directory",
+      "title": "Allowed Directories",
+      "description": "Select directories the filesystem server can access",
+      "multiple": true,
+      "required": true,
+      "default": ["$\{HOME\}/Desktop", "$\{HOME\}/Documents"]
+    }
+  },
+  "server": {
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "$\{__dirname\}/server/index.js",
+        "$\{user_config.allowed_directories\}"
+      ]
+    }
+  }
+}
+
+**API Integration with Authentication:**
+
+{
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "API Key",
+      "description": "Your API key for authentication",
+      "sensitive": true,
+      "required": true
+    },
+    "base_url": {
+      "type": "string",
+      "title": "API Base URL",
+      "description": "The base URL for API requests",
+      "default": "https://api.example.com",
+      "required": false
+    }
+  },
+  "server": {
+    "mcp_config": {
+      "command": "node",
+      "args": ["server/index.js"],
+      "env": {
+        "API_KEY": "$\{user_config.api_key\}",
+        "BASE_URL": "$\{user_config.base_url\}"
+      }
+    }
+  }
+}
+
+**Database Connection Configuration:**
+
+{
+  "user_config": {
+    "database_path": {
+      "type": "file",
+      "title": "Database File",
+      "description": "Path to your SQLite database file",
+      "required": true
+    },
+    "read_only": {
+      "type": "boolean",
+      "title": "Read Only Mode",
+      "description": "Open database in read-only mode",
+      "default": true
+    },
+    "timeout": {
+      "type": "number",
+      "title": "Query Timeout (seconds)",
+      "description": "Maximum time for query execution",
+      "default": 30,
+      "min": 1,
+      "max": 300
+    }
+  },
+  "server": {
+    "mcp_config": {
+      "command": "python",
+      "args": [
+        "server/main.py",
+        "--database",
+        "$\{user_config.database_path\}",
+        "--timeout",
+        "$\{user_config.timeout\}"
+      ],
+      "env": {
+        "READ_ONLY": "$\{user_config.read_only\}"
+      }
+    }
+  }
+}
+
+### Implementation Notes
+
+- **Array Expansion**: When a configuration with multiple: true is used in args, each value is expanded as a separate argument. For example, if the user selects directories /home/user/docs and /home/user/projects, the args ["$\{user_config.allowed_directories\}"] becomes ["/home/user/docs", "/home/user/projects"]
+
+If you find no "canonical way to run the mcp server", or no user configuration related information, respond with an empty object for THAT particular missing data (but please return the other data that is present) {"server": {}, "user_config": {...data_you_found}}`;
+
+  // For Gemini, we need a simpler schema without additionalProperties
+  const isGemini = model.startsWith('gemini-');
+  const configFormat = isGemini ? undefined : zodToJsonSchema(CanonicalServerAndUserConfigSchema);
+
+  try {
+    const result = await callLLM(prompt, configFormat, model);
+    if (result) {
+      return {
+        ...server,
+        server: result.server,
+        user_config: result.user_config,
+        evaluation_model: model,
+      };
+    }
+  } catch (error: any) {
+    console.warn(`Server config analysis failed: ${error.message}`);
+  }
+
+  return server;
+}
+
+/**
+ * Extract Archestra oauth-related configuration using AI
+ */
+async function extractArchestraOauthConfig(
+  server: ArchestraMcpServerManifest,
+  model: string,
+  force: boolean = false
+): Promise<ArchestraMcpServerManifest> {
+  // Skip if human evaluation (evaluation_model === null)
+  if (server.evaluation_model === null && !force) {
+    console.log(`  ⏭️  Archestra OAuth Config: Skipped (human evaluation)`);
+    return server;
+  }
+  // Skip if already exists and not forcing
+  if (server.archestra_config?.oauth && !force) {
+    console.log(`  ⏭️  Archestra OAuth Config: Skipped (already exists)`);
+    return server;
+  }
+  console.log(`  🔄 Archestra OAuth Config: Extracting...`);
+
+  const content = server.readme || server.description;
+  if (!content) {
+    console.warn('No content available for Archestra OAuth config analysis');
+    return server;
+  }
+
+  const prompt = `Determine whether or not oauth setup is needed to configure this MCP server, before being able to run it, in Archestra cloud.
 
 Content:
 ${content.substring(0, 8000)}
 
 Look for:
-1. Native binary executables: paths like ./binary, /path/to/binary, binary-name
-2. NPX/NPM commands: npx package-name or npm run commands
-3. Python/Node scripts: python script.py, node server.js, uvx package
-4. Build instructions: "go build", "cargo build" indicate binary names
-5. Environment variables: especially those with TOKEN, KEY, SECRET in the name
-6. OAuth mentions: "OAuth", "OAuth2", "OAuth 2.0", "GitHub App", "Google OAuth", "Google Cloud", "gcp-oauth", authentication providers, "Create OAuth 2.0 Credentials", "OAuth client ID"
-7. Transport protocol: look for "stdio" command arguments or mode, http URLs
+- OAuth mentions: "OAuth", "OAuth2", "OAuth 2.0", authentication providers, "Create OAuth 2.0 Credentials", "OAuth client ID"
 
 Respond with JSON format:
 {
-  "config_for_archestra": {
-    "oauth": {
-      "provider": "github|google|slack|etc" | null,
-      "required": true | false
-    }
+  "oauth": {
+    "provider": "${ArchestraSupportedOauthProvidersSchema.options.join('|')}" | null,
+    "required": true | false
   }
 }
 
-Examples:
-- Binary: command="./server", args=["--stdio"]
-- NPX package: command="npx", args=["-y", "@org/package-name"]
-- NPX with transport: command="npx", args=["-y", "@org/package", "--transport", "stdio"]
-- Python: command="python", args=["server.py", "--stdio"]
-- Node: command="node", args=["dist/server.js", "--stdio"]
-
-IMPORTANT:
-- Always include the full args array with all flags and parameters
-- For npx, include "-y" flag and the full package name
-- If transport is stdio, include transport flags like "--transport", "stdio" in args
-
 Rules:
-- Set oauth to null if no OAuth/authentication provider is mentioned
+- Set oauth.provider to null if no OAuth/authentication provider is mentioned
 - IMPORTANT: Look for OAuth setup instructions, credential creation steps, or authentication flows as indicators
+- VERY IMPORTANT!!!!: For right now, the only supported OAuth providers are ${ArchestraSupportedOauthProvidersSchema.options.join(', ')}. If you find an OAuth provider that is not in the list, respond with null for the provider (and false for required).
 - If the README mentions creating OAuth credentials, obtaining client IDs, or authentication setup, determine the provider from context
-- Skip Docker commands - extract the native binary/script command instead
-- Always prefer "stdio" transport if available, only use "http" if stdio is not supported
-- Look for binary paths, executable names, or script commands
-- Default transport is "stdio" unless only http is available
 
-If no configuration found, respond: {"config_for_archestra": null}`;
+If no configuration found, respond: {"oauth": { "provider": null, "required": false }}`;
 
-  const configFormat = zodToJsonSchema(ArchestraServerConfigSchema);
+  const configFormat = zodToJsonSchema(ArchestraOauthSchema);
 
   try {
     const result = await callLLM(prompt, configFormat, model);
-    if (result.config_for_archestra) {
+    if (result.oauth) {
       return {
         ...server,
-        config_for_archestra: result.config_for_archestra,
+        archestra_config: {
+          ...server.archestra_config,
+          oauth: result.oauth,
+        },
         evaluation_model: model,
       };
     }
@@ -1149,8 +1450,9 @@ async function evaluateSingleRepo(
     force = false,
     updateGithub = false,
     updateCategory = false,
-    updateServerConfig = false,
-    updateConfigForArchestra = false,
+    updateArchestraClientConfigPermutations = false,
+    updateArchestraOauth = false,
+    updateCanonicalServerAndUserConfig = false,
     updateDependencies = false,
     updateProtocol = false,
     updateScore = false,
@@ -1192,8 +1494,9 @@ async function evaluateSingleRepo(
         const updates = [];
         if (updateGithub) updates.push('GitHub');
         if (updateCategory) updates.push('Category');
-        if (updateServerConfig) updates.push('ServerConfig');
-        if (updateConfigForArchestra) updates.push('ArchestraConfig');
+        if (updateArchestraClientConfigPermutations) updates.push('Archestra Client Config Permutations');
+        if (updateArchestraOauth) updates.push('Archestra Oauth');
+        if (updateCanonicalServerAndUserConfig) updates.push('Canonical Server and User Config');
         if (updateDependencies) updates.push('Dependencies');
         if (updateProtocol) updates.push('Protocol');
         if (updateScore) updates.push('Score');
@@ -1217,12 +1520,16 @@ async function evaluateSingleRepo(
       server = await extractCategory(server, model, force);
     }
 
-    if (updateServerConfig) {
-      server = await extractServerConfig(server, model, force);
+    if (updateArchestraClientConfigPermutations) {
+      server = await extractArchestraClientConfigPermutationsConfig(server, model, force);
     }
 
-    if (updateConfigForArchestra) {
-      server = await extractArchestraConfig(server, model, force);
+    if (updateArchestraOauth) {
+      server = await extractArchestraOauthConfig(server, model, force);
+    }
+
+    if (updateCanonicalServerAndUserConfig) {
+      server = await extractCanonicalServerAndUserConfigConfig(server, model, force);
     }
 
     if (updateDependencies) {
@@ -1254,14 +1561,17 @@ async function evaluateSingleRepo(
 
       if (
         server.category ||
-        server.config_for_archestra ||
+        server.archestra_config ||
+        server.user_config ||
+        server.server ||
         server.dependencies ||
         server.protocol_features.implementing_tools !== null
       ) {
         const {
           category,
           server: server_config,
-          config_for_archestra,
+          archestra_config,
+          user_config,
           protocol_features: {
             implementing_tools,
             implementing_prompts,
@@ -1280,7 +1590,8 @@ async function evaluateSingleRepo(
 
         if (category) console.log(`  Category: ${category}`);
         if (server_config) console.log(`  Server Configuration: Available`);
-        if (config_for_archestra) console.log(`  Archestra Configuration: Available`);
+        if (archestra_config) console.log(`  Archestra Configuration: Available`);
+        if (user_config) console.log(`  User Configuration: Available`);
         if (dependencies && dependencies.length > 0) {
           console.log(`  Dependencies: ${dependencies.map((d) => `${d.name}(${d.importance})`).join(', ')}`);
         }
@@ -1329,8 +1640,9 @@ async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<
     force = false,
     updateGithub = false,
     updateCategory = false,
-    updateServerConfig = false,
-    updateConfigForArchestra = false,
+    updateArchestraClientConfigPermutations = false,
+    updateArchestraOauth = false,
+    updateCanonicalServerAndUserConfig = false,
     updateDependencies = false,
     updateProtocol = false,
     updateScore = false,
@@ -1398,8 +1710,9 @@ Options: ${Object.entries(options)
           exists &&
           !updateGithub &&
           !updateCategory &&
-          !updateServerConfig &&
-          !updateConfigForArchestra &&
+          !updateArchestraClientConfigPermutations &&
+          !updateArchestraOauth &&
+          !updateCanonicalServerAndUserConfig &&
           !updateDependencies &&
           !updateProtocol &&
           !updateScore &&
@@ -1468,15 +1781,16 @@ async function main() {
 Usage: npm run evaluate-catalog [options] [github-url]
 
 Update Options:
-  --github               Update GitHub data (stars, issues, README)
-  --category             Update category classification
-  --config-for-server    Update configuration for running the server
-  --config-for-archestra Update configuration for Archestra hosting
-  --dependencies         Update library dependencies
-  --protocol             Update MCP protocol features implementation
-  --score                Update trust scores
-  --all                  Update everything
-  (no flags)             Fill in missing data only
+  --github                                 Update GitHub data (stars, issues, README)
+  --category                               Update category classification
+  --archestra-client-config-permutations   Update Archestra client config permutations
+  --archestra-oauth                        Update Archestra oauth related configurations
+  --canonical-server-and-user-config       Update canonical server and user config
+  --dependencies                           Update library dependencies
+  --protocol                               Update MCP protocol features implementation
+  --score                                  Update trust scores
+  --all                                    Update everything
+  (no flags)                               Fill in missing data only
 
 Control Options:
   --force                Force update even if data exists
@@ -1498,11 +1812,12 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
   }
 
   // Parse options
-  const options = {
+  const options: EvaluateAllReposOptions = {
     updateGithub: args.includes('--github'),
     updateCategory: args.includes('--category'),
-    updateServerConfig: args.includes('--config-for-server'),
-    updateConfigForArchestra: args.includes('--config-for-archestra'),
+    updateArchestraClientConfigPermutations: args.includes('--archestra-client-config-permutations'),
+    updateArchestraOauth: args.includes('--archestra-oauth'),
+    updateCanonicalServerAndUserConfig: args.includes('--canonical-server-and-user-config'),
     updateDependencies: args.includes('--dependencies'),
     updateProtocol: args.includes('--protocol'),
     updateScore: args.includes('--score'),
@@ -1519,8 +1834,9 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
   if (options.updateAll) {
     options.updateGithub = true;
     options.updateCategory = true;
-    options.updateServerConfig = true;
-    options.updateConfigForArchestra = true;
+    options.updateArchestraClientConfigPermutations = true;
+    options.updateArchestraOauth = true;
+    options.updateCanonicalServerAndUserConfig = true;
     options.updateDependencies = true;
     options.updateProtocol = true;
     options.updateScore = true;

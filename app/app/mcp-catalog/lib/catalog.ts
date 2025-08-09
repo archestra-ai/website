@@ -178,9 +178,12 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
               command: 'Unknown',
             },
           },
-          config_for_archestra: {
+          archestra_config: {
+            client_config_permutations: {
+              mcpServers: {},
+            },
             oauth: {
-              provider: 'Unknown',
+              provider: null,
               required: false,
             },
           },
