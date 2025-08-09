@@ -23,9 +23,6 @@ export async function GET(request: NextRequest, props: { params: Promise<{ name:
     const {
       name: serverName,
       quality_score: qualityScore,
-      evaluation_model: evaluationModel,
-      protocol_features: protocolFeatures,
-      dependencies,
       github_info: { owner: gitHubInfoOwner, repo: gitHubInfoRepo, path: gitHubInfoPath },
     } = server;
 
