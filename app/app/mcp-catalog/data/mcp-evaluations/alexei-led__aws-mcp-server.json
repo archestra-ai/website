@@ -11,10 +11,7 @@
     "type": "python",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "-m",
-        "aws_mcp_server"
-      ],
+      "args": ["-m", "aws_mcp_server"],
       "env": {
         "AWS_MCP_TIMEOUT": "${user_config.aws_mcp_timeout}",
         "AWS_MCP_MAX_OUTPUT": "${user_config.aws_mcp_max_output}",
@@ -88,21 +85,12 @@
       "mcpServers": {
         "alexei-led-aws-mcp-server-docker": {
           "command": "docker",
-          "args": [
-            "compose",
-            "-f",
-            "deploy/docker/docker-compose.yml",
-            "up",
-            "-d"
-          ],
+          "args": ["compose", "-f", "deploy/docker/docker-compose.yml", "up", "-d"],
           "env": {}
         },
         "aws_mcp_server": {
           "command": "python",
-          "args": [
-            "-m",
-            "aws_mcp_server"
-          ],
+          "args": ["-m", "aws_mcp_server"],
           "env": {}
         }
       }

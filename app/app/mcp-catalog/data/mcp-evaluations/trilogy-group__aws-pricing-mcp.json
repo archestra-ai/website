@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "src/server.py"
-      ],
+      "args": ["src/server.py"],
       "env": {}
     }
   },
@@ -28,9 +26,7 @@
       "mcpServers": {
         "aws-pricing-mcp": {
           "command": "python",
-          "args": [
-            "src/server.py"
-          ],
+          "args": ["src/server.py"],
           "env": {}
         }
       }

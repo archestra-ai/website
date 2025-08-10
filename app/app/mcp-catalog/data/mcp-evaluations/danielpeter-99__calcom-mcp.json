@@ -10,14 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "fastmcp",
-      "args": [
-        "run",
-        "app.py",
-        "--transport",
-        "sse",
-        "--port",
-        "8010"
-      ],
+      "args": ["run", "app.py", "--transport", "sse", "--port", "8010"],
       "env": {
         "CALCOM_API_KEY": "${user_config.calcom_api_key}"
       }
@@ -43,14 +36,7 @@
       "mcpServers": {
         "fastmcp": {
           "command": "fastmcp",
-          "args": [
-            "run",
-            "app.py",
-            "--transport",
-            "sse",
-            "--port",
-            "8010"
-          ],
+          "args": ["run", "app.py", "--transport", "sse", "--port", "8010"],
           "env": {}
         }
       }

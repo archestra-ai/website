@@ -20,21 +20,12 @@
       "mcpServers": {
         "mindsdb": {
           "command": "python",
-          "args": [
-            "-m",
-            "mindsdb",
-            "--api=mcp"
-          ],
+          "args": ["-m", "mindsdb", "--api=mcp"],
           "env": {}
         },
         "mindsdb-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "mindsdb/mindsdb:latest",
-            "--api=mcp"
-          ],
+          "args": ["run", "-i", "mindsdb/mindsdb:latest", "--api=mcp"],
           "env": {}
         }
       }

@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-ipfs"
-      ],
+      "args": ["-y", "mcp-ipfs"],
       "env": {
         "W3_LOGIN_EMAIL": "${user_config.w3_login_email}"
       }
@@ -39,10 +36,7 @@
       "mcpServers": {
         "mcp-ipfs": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mcp-ipfs"
-          ],
+          "args": ["-y", "mcp-ipfs"],
           "env": {
             "W3_LOGIN_EMAIL": "your-email@example.com"
           }

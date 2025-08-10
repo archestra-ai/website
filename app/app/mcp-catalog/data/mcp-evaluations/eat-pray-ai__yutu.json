@@ -11,9 +11,7 @@
     "type": "binary",
     "mcp_config": {
       "command": "yutu",
-      "args": [
-        "mcp"
-      ],
+      "args": ["mcp"],
       "env": {
         "YUTU_CREDENTIAL": "${user_config.credential_file}",
         "YUTU_CACHE_TOKEN": "${user_config.token_cache_file}"
@@ -45,9 +43,7 @@
       "mcpServers": {
         "yutu": {
           "command": "yutu",
-          "args": [
-            "mcp"
-          ],
+          "args": ["mcp"],
           "env": {
             "YUTU_CREDENTIAL": "/absolute/path/to/client_secret.json",
             "YUTU_CACHE_TOKEN": "/absolute/path/to/youtube.token.json"

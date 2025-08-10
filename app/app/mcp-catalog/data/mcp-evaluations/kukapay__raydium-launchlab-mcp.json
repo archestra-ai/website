@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/index.js"
-      ],
+      "args": ["${__dirname}/index.js"],
       "env": {
         "RPC_URL": "${user_config.rpc_url}",
         "PRIVATE_KEY": "${user_config.private_key}",
@@ -62,9 +60,7 @@
       "mcpServers": {
         "raydium-launchlab": {
           "command": "node",
-          "args": [
-            "/path/to/raydium-launchlab-mcp/index.js"
-          ],
+          "args": ["/path/to/raydium-launchlab-mcp/index.js"],
           "env": {
             "RPC_URL": "your-solana-rpc-url",
             "PRIVATE_KEY": "your-private-key-as-integer-array",

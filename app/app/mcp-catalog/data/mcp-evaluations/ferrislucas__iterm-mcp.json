@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "iterm-mcp"
-      ],
+      "args": ["-y", "iterm-mcp"],
       "env": {}
     }
   },
@@ -29,10 +26,7 @@
       "mcpServers": {
         "iterm-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "iterm-mcp"
-          ],
+          "args": ["-y", "iterm-mcp"],
           "env": {}
         }
       }

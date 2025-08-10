@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@wuye-ai/mcp-server-wuye-ai"
-      ],
+      "args": ["-y", "@wuye-ai/mcp-server-wuye-ai"],
       "env": {
         "CRIC_WUYE_AI_ACCESS_TOKEN": "${user_config.access_token}"
       }
@@ -39,10 +36,7 @@
       "mcpServers": {
         "wuye-ai-mcp-server-wuye-ai-http": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@wuye-ai/mcp-server-wuye-ai"
-          ],
+          "args": ["-y", "@wuye-ai/mcp-server-wuye-ai"],
           "env": {
             "MODE": "http",
             "PORT": "3011"
@@ -50,10 +44,7 @@
         },
         "wuye-ai-mcp-server-wuye-ai-stdio": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@wuye-ai/mcp-server-wuye-ai"
-          ],
+          "args": ["-y", "@wuye-ai/mcp-server-wuye-ai"],
           "env": {
             "CRIC_WUYE_AI_ACCESS_TOKEN": "{{您的 CRIC物业AI Access Token}}"
           }

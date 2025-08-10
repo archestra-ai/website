@@ -11,10 +11,7 @@
     "type": "node",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "memorymesh"
-      ],
+      "args": ["-y", "memorymesh"],
       "env": {}
     }
   },

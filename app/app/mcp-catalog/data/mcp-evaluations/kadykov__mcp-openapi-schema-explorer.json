@@ -46,24 +46,12 @@
       "mcpServers": {
         "mcp-openapi-schema-explorer": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mcp-openapi-schema-explorer@latest",
-            "<path-or-url-to-spec>",
-            "--output-format",
-            "yaml"
-          ],
+          "args": ["-y", "mcp-openapi-schema-explorer@latest", "<path-or-url-to-spec>", "--output-format", "yaml"],
           "env": {}
         },
         "kadykov-mcp-openapi-schema-explorer-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "kadykov/mcp-openapi-schema-explorer:latest",
-            "<remote-url-to-spec>"
-          ],
+          "args": ["run", "--rm", "-i", "kadykov/mcp-openapi-schema-explorer:latest", "<remote-url-to-spec>"],
           "env": {}
         },
         "kadykov-mcp-openapi-schema-explorer-docker-local": {
@@ -83,11 +71,7 @@
         },
         "mcp-openapi-schema-explorer-global": {
           "command": "mcp-openapi-schema-explorer",
-          "args": [
-            "<path-or-url-to-spec>",
-            "--output-format",
-            "yaml"
-          ],
+          "args": ["<path-or-url-to-spec>", "--output-format", "yaml"],
           "env": {}
         }
       }

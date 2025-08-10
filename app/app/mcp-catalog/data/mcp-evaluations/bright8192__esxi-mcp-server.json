@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "server.py"
-      ],
+      "args": ["server.py"],
       "env": {
         "VCENTER_HOST": "${user_config.vcenter_host}",
         "VCENTER_USER": "${user_config.vcenter_user}",
@@ -112,11 +110,7 @@
       "mcpServers": {
         "esxi-mcp-server": {
           "command": "python",
-          "args": [
-            "server.py",
-            "-c",
-            "config.yaml"
-          ],
+          "args": ["server.py", "-c", "config.yaml"],
           "env": {}
         }
       }

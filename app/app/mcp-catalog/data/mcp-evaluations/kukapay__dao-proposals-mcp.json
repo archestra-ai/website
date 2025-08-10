@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "main.py"
-      ],
+      "args": ["--directory", "${__dirname}", "run", "main.py"],
       "env": {}
     }
   },
@@ -31,12 +26,7 @@
       "mcpServers": {
         "DAO Proposals": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/path/to/dao-proposals-mcp",
-            "run",
-            "main.py"
-          ],
+          "args": ["--directory", "/path/to/dao-proposals-mcp", "run", "main.py"],
           "env": {}
         }
       }

@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "mcp-remote",
-        "${user_config.server_url}"
-      ],
+      "args": ["mcp-remote", "${user_config.server_url}"],
       "env": {
         "CLOUDFLARE_API_TOKEN": "${user_config.api_token}"
       }
@@ -45,18 +42,12 @@
       "mcpServers": {
         "mcp-remote-observability": {
           "command": "npx",
-          "args": [
-            "mcp-remote",
-            "https://observability.mcp.cloudflare.com/sse"
-          ],
+          "args": ["mcp-remote", "https://observability.mcp.cloudflare.com/sse"],
           "env": {}
         },
         "mcp-remote-bindings": {
           "command": "npx",
-          "args": [
-            "mcp-remote",
-            "https://bindings.mcp.cloudflare.com/sse"
-          ],
+          "args": ["mcp-remote", "https://bindings.mcp.cloudflare.com/sse"],
           "env": {}
         }
       }

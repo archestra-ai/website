@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@mcpfun/mcp-server-ccxt"
-      ],
+      "args": ["-y", "@mcpfun/mcp-server-ccxt"],
       "env": {
         "DEFAULT_EXCHANGE": "${user_config.DEFAULT_EXCHANGE}",
         "DEFAULT_MARKET_TYPE": "${user_config.DEFAULT_MARKET_TYPE}",
@@ -108,23 +105,17 @@
         },
         "mcpfun-mcp-server-ccxt": {
           "command": "npx",
-          "args": [
-            "@mcpfun/mcp-server-ccxt"
-          ],
+          "args": ["@mcpfun/mcp-server-ccxt"],
           "env": {}
         },
         "mcp-server-ccxt-npm-start": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         },
         "mcp-server-ccxt-node-direct": {
           "command": "node",
-          "args": [
-            "/path/to/mcp-server-ccxt/build/index.js"
-          ],
+          "args": ["/path/to/mcp-server-ccxt/build/index.js"],
           "env": {}
         }
       }

@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/index.js"
-      ],
+      "args": ["${__dirname}/index.js"],
       "env": {
         "INFURA_API_KEY": "${user_config.infura_api_key}"
       }
@@ -38,9 +36,7 @@
       "mcpServers": {
         "chainlink-feeds-mcp": {
           "command": "node",
-          "args": [
-            "path/to/chainlink-feeds-mcp/index.js"
-          ],
+          "args": ["path/to/chainlink-feeds-mcp/index.js"],
           "env": {
             "INFURA_API_KEY": "your_api_key_here"
           }

@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "ntfy-me-mcp"
-      ],
+      "args": ["-y", "ntfy-me-mcp"],
       "env": {
         "NTFY_TOPIC": "${user_config.ntfy_topic}",
         "NTFY_URL": "${user_config.ntfy_url}",
@@ -54,18 +51,14 @@
       "mcpServers": {
         "ntfy-me-mcp-minimal": {
           "command": "npx",
-          "args": [
-            "ntfy-me-mcp"
-          ],
+          "args": ["ntfy-me-mcp"],
           "env": {
             "NTFY_TOPIC": "your-topic-name"
           }
         },
         "ntfy-me-mcp-full-direct-token": {
           "command": "npx",
-          "args": [
-            "ntfy-me-mcp"
-          ],
+          "args": ["ntfy-me-mcp"],
           "env": {
             "NTFY_TOPIC": "your-topic-name",
             "NTFY_URL": "https://your-ntfy-server.com",
@@ -74,9 +67,7 @@
         },
         "ntfy-me-mcp-full-vscode-input": {
           "command": "npx",
-          "args": [
-            "ntfy-me-mcp"
-          ],
+          "args": ["ntfy-me-mcp"],
           "env": {
             "NTFY_TOPIC": "your-topic-name",
             "NTFY_URL": "https://your-ntfy-server.com",
@@ -106,9 +97,7 @@
         },
         "ntfy-me-mcp-local-build": {
           "command": "node",
-          "args": [
-            "dist/index.js"
-          ],
+          "args": ["dist/index.js"],
           "env": {
             "NTFY_TOPIC": "your-topic-name",
             "NTFY_URL": "https://your-ntfy-server.com",

@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/dist/index.js"
-      ],
+      "args": ["${__dirname}/dist/index.js"],
       "env": {}
     }
   },
@@ -28,16 +26,12 @@
       "mcpServers": {
         "content-summarizer": {
           "command": "pnpm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         },
         "content-summarizer-configured": {
           "command": "node",
-          "args": [
-            "{ABSOLUTE PATH TO FILE HERE}/dist/index.js"
-          ],
+          "args": ["{ABSOLUTE PATH TO FILE HERE}/dist/index.js"],
           "env": {}
         }
       }

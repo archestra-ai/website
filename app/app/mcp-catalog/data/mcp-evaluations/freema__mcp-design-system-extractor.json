@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npm",
-      "args": [
-        "run",
-        "setup"
-      ],
+      "args": ["run", "setup"],
       "env": {
         "STORYBOOK_URL": "${user_config.storybook_url}"
       }

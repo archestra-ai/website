@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "webscraping-ai-mcp"
-      ],
+      "args": ["-y", "webscraping-ai-mcp"],
       "env": {
         "WEBSCRAPING_AI_API_KEY": "${user_config.api_key}",
         "WEBSCRAPING_AI_CONCURRENCY_LIMIT": "${user_config.concurrency_limit}",
@@ -79,27 +76,19 @@
       "mcpServers": {
         "webscraping-ai-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "webscraping-ai-mcp"
-          ],
+          "args": ["-y", "webscraping-ai-mcp"],
           "env": {
             "WEBSCRAPING_AI_API_KEY": "your_api_key"
           }
         },
         "webscraping-ai-mcp-npm-start": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         },
         "webscraping-ai-mcp-cursor-config": {
           "command": "npx",
-          "args": [
-            "-y",
-            "webscraping-ai-mcp"
-          ],
+          "args": ["-y", "webscraping-ai-mcp"],
           "env": {
             "WEBSCRAPING_AI_API_KEY": "your-api-key",
             "WEBSCRAPING_AI_CONCURRENCY_LIMIT": "5"
@@ -107,20 +96,14 @@
         },
         "webscraping-ai-mcp-cursor-windows": {
           "command": "cmd",
-          "args": [
-            "/c",
-            "set WEBSCRAPING_AI_API_KEY=your-api-key && npx -y webscraping-ai-mcp"
-          ],
+          "args": ["/c", "set WEBSCRAPING_AI_API_KEY=your-api-key && npx -y webscraping-ai-mcp"],
           "env": {
             "WEBSCRAPING_AI_API_KEY": "your-api-key"
           }
         },
         "webscraping-ai-mcp-claude-desktop": {
           "command": "npx",
-          "args": [
-            "-y",
-            "webscraping-ai-mcp"
-          ],
+          "args": ["-y", "webscraping-ai-mcp"],
           "env": {
             "WEBSCRAPING_AI_API_KEY": "YOUR_API_KEY_HERE",
             "WEBSCRAPING_AI_CONCURRENCY_LIMIT": "5"

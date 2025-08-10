@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "mcp_vms.py"
-      ],
+      "args": ["--directory", "${__dirname}", "run", "mcp_vms.py"],
       "env": {
         "VMS_IMG_WIDTH": "${user_config.img_width}",
         "VMS_IMG_HEIGHT": "${user_config.img_height}",
@@ -90,12 +85,7 @@
       "mcpServers": {
         "vms": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "X:\\path\\to\\mcp-vms",
-            "run",
-            "mcp_vms.py"
-          ],
+          "args": ["--directory", "X:\\path\\to\\mcp-vms", "run", "mcp_vms.py"],
           "env": {}
         }
       }

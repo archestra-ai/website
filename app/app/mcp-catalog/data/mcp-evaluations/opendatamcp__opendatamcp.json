@@ -10,11 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "odmcp",
-        "setup",
-        "${user_config.provider_name}"
-      ],
+      "args": ["odmcp", "setup", "${user_config.provider_name}"],
       "env": {}
     }
   },
@@ -37,11 +33,7 @@
       "mcpServers": {
         "ch_sbb": {
           "command": "uvx",
-          "args": [
-            "odmcp",
-            "setup",
-            "ch_sbb"
-          ],
+          "args": ["odmcp", "setup", "ch_sbb"],
           "env": {}
         }
       }

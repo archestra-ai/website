@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "-m",
-        "notion_mcp"
-      ],
+      "args": ["-m", "notion_mcp"],
       "env": {
         "NOTION_API_KEY": "${user_config.notion_api_key}",
         "NOTION_DATABASE_ID": "${user_config.notion_database_id}"
@@ -46,18 +43,12 @@
       "mcpServers": {
         "notion_mcp": {
           "command": "python",
-          "args": [
-            "-m",
-            "notion_mcp"
-          ],
+          "args": ["-m", "notion_mcp"],
           "env": {}
         },
         "notion-todo": {
           "command": "/path/to/your/.venv/bin/python",
-          "args": [
-            "-m",
-            "notion_mcp"
-          ],
+          "args": ["-m", "notion_mcp"],
           "env": {}
         }
       }

@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "-m",
-        "zettelkasten_mcp.main"
-      ],
+      "args": ["-m", "zettelkasten_mcp.main"],
       "env": {
         "ZETTELKASTEN_NOTES_DIR": "${user_config.notes_dir}",
         "ZETTELKASTEN_DATABASE_PATH": "${user_config.database_path}"
@@ -47,10 +44,7 @@
       "mcpServers": {
         "zettelkasten_mcp": {
           "command": "python",
-          "args": [
-            "-m",
-            "zettelkasten_mcp.main"
-          ],
+          "args": ["-m", "zettelkasten_mcp.main"],
           "env": {}
         },
         "zettelkasten_mcp-configured": {
@@ -67,10 +61,7 @@
         },
         "zettelkasten_mcp-claude-desktop": {
           "command": "/absolute/path/to/zettelkasten-mcp/.venv/bin/python",
-          "args": [
-            "-m",
-            "zettelkasten_mcp.main"
-          ],
+          "args": ["-m", "zettelkasten_mcp.main"],
           "env": {
             "ZETTELKASTEN_NOTES_DIR": "/absolute/path/to/zettelkasten-mcp/data/notes",
             "ZETTELKASTEN_DATABASE_PATH": "/absolute/path/"

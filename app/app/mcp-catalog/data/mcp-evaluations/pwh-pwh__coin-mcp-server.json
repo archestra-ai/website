@@ -10,13 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "deno",
-      "args": [
-        "run",
-        "--allow-net",
-        "--allow-read",
-        "--allow-env",
-        "https://deno.land/x/coin_mcp_server/main.ts"
-      ],
+      "args": ["run", "--allow-net", "--allow-read", "--allow-env", "https://deno.land/x/coin_mcp_server/main.ts"],
       "env": {
         "BGURL": "${user_config.BGURL}",
         "StartType": "${user_config.StartType}"
@@ -49,35 +43,17 @@
       "mcpServers": {
         "coin-mcp-server-local": {
           "command": "deno",
-          "args": [
-            "run",
-            "--allow-net",
-            "--allow-env",
-            "--allow-read",
-            "main.ts"
-          ],
+          "args": ["run", "--allow-net", "--allow-env", "--allow-read", "main.ts"],
           "env": {}
         },
         "coin-mcp-server": {
           "command": "deno",
-          "args": [
-            "run",
-            "--allow-net",
-            "--allow-env",
-            "--allow-read",
-            "https://deno.land/x/coin_mcp_server/main.ts"
-          ],
+          "args": ["run", "--allow-net", "--allow-env", "--allow-read", "https://deno.land/x/coin_mcp_server/main.ts"],
           "env": {}
         },
         "coin-mcp-configured": {
           "command": "deno",
-          "args": [
-            "run",
-            "--allow-net",
-            "--allow-read",
-            "--allow-env",
-            "https://deno.land/x/coin_mcp_server/main.ts"
-          ],
+          "args": ["run", "--allow-net", "--allow-read", "--allow-env", "https://deno.land/x/coin_mcp_server/main.ts"],
           "env": {}
         }
       }

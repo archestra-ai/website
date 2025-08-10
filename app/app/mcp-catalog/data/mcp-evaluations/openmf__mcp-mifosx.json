@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "jbang",
-      "args": [
-        "--quiet",
-        "org.mifos.community.ai:mcp-server:1.0.0-SNAPSHOT:runner"
-      ],
+      "args": ["--quiet", "org.mifos.community.ai:mcp-server:1.0.0-SNAPSHOT:runner"],
       "env": {
         "MIFOSX_BASE_URL": "${user_config.mifos_base_url}",
         "MIFOSX_BASIC_AUTH_TOKEN": "${user_config.mifos_auth_token}",
@@ -54,10 +51,7 @@
       "mcpServers": {
         "org.mifos.community.ai:mcp-server:1.0.0-SNAPSHOT:runner": {
           "command": "jbang",
-          "args": [
-            "--quiet",
-            "org.mifos.community.ai:mcp-server:1.0.0-SNAPSHOT:runner"
-          ],
+          "args": ["--quiet", "org.mifos.community.ai:mcp-server:1.0.0-SNAPSHOT:runner"],
           "env": {
             "MIFOSX_BASE_URL": "https://your-fineract-instance",
             "MIFOSX_BASIC_AUTH_TOKEN": "your_api_token",

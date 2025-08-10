@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "mcp-remote@next",
-        "http://${user_config.host}:${user_config.port}/mcp"
-      ],
+      "args": ["mcp-remote@next", "http://${user_config.host}:${user_config.port}/mcp"],
       "env": {}
     }
   },

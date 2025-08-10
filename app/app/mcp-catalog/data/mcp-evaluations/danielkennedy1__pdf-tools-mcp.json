@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "-m",
-        "src.main"
-      ],
+      "args": ["-m", "src.main"],
       "env": {}
     }
   },
@@ -29,10 +26,7 @@
       "mcpServers": {
         "pdf-tools-mcp": {
           "command": "python",
-          "args": [
-            "-m",
-            "src.main"
-          ],
+          "args": ["-m", "src.main"],
           "env": {}
         }
       }

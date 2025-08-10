@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "-m",
-        "mcp_simple_timeserver"
-      ],
+      "args": ["-m", "mcp_simple_timeserver"],
       "env": {}
     }
   },
@@ -29,18 +26,12 @@
       "mcpServers": {
         "simple-timeserver-mac": {
           "command": "python",
-          "args": [
-            "-m",
-            "mcp_simple_timeserver"
-          ],
+          "args": ["-m", "mcp_simple_timeserver"],
           "env": {}
         },
         "simple-timeserver-windows": {
           "command": "C:\\Users\\YOUR_USERNAME\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
-          "args": [
-            "-m",
-            "mcp_simple_timeserver"
-          ],
+          "args": ["-m", "mcp_simple_timeserver"],
           "env": {}
         }
       }

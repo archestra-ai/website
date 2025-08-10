@@ -10,13 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "mcp-server-bigquery",
-        "--project",
-        "${user_config.project}",
-        "--location",
-        "${user_config.location}"
-      ],
+      "args": ["mcp-server-bigquery", "--project", "${user_config.project}", "--location", "${user_config.location}"],
       "env": {
         "BIGQUERY_DATASETS": "${user_config.datasets}",
         "BIGQUERY_KEY_FILE": "${user_config.key_file}"
@@ -74,13 +68,7 @@
         },
         "mcp-server-bigquery-published": {
           "command": "uvx",
-          "args": [
-            "mcp-server-bigquery",
-            "--project",
-            "{{GCP_PROJECT_ID}}",
-            "--location",
-            "{{GCP_LOCATION}}"
-          ],
+          "args": ["mcp-server-bigquery", "--project", "{{GCP_PROJECT_ID}}", "--location", "{{GCP_LOCATION}}"],
           "env": {}
         },
         "mcp-server-bigquery-inspector": {

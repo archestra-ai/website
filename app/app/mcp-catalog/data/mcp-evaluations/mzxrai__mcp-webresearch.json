@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@mzxrai/mcp-webresearch@latest"
-      ],
+      "args": ["-y", "@mzxrai/mcp-webresearch@latest"],
       "env": {}
     }
   },
@@ -29,17 +26,12 @@
       "mcpServers": {
         "mcp-webresearch": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@mzxrai/mcp-webresearch@latest"
-          ],
+          "args": ["-y", "@mzxrai/mcp-webresearch@latest"],
           "env": {}
         },
         "mcp-webresearch-dev": {
           "command": "pnpm",
-          "args": [
-            "dev"
-          ],
+          "args": ["dev"],
           "env": {}
         }
       }

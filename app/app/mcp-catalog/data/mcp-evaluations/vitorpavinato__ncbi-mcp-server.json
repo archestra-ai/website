@@ -10,11 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "poetry",
-      "args": [
-        "run",
-        "python",
-        "src/ncbi_mcp_server/server.py"
-      ],
+      "args": ["run", "python", "src/ncbi_mcp_server/server.py"],
       "cwd": "${__dirname}",
       "env": {
         "NCBI_EMAIL": "${user_config.ncbi_email}",
@@ -48,11 +44,7 @@
       "mcpServers": {
         "ncbi-literature": {
           "command": "poetry",
-          "args": [
-            "run",
-            "python",
-            "src/ncbi_mcp_server/server.py"
-          ],
+          "args": ["run", "python", "src/ncbi_mcp_server/server.py"],
           "env": {}
         }
       }

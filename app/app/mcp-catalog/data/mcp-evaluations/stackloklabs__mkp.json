@@ -11,9 +11,7 @@
     "type": "binary",
     "mcp_config": {
       "command": "task",
-      "args": [
-        "run"
-      ],
+      "args": ["run"],
       "env": {
         "KUBECONFIG": "${user_config.kubeconfig_path}",
         "MCP_PORT": "${user_config.port}"
@@ -47,25 +45,19 @@
       "mcpServers": {
         "mkp": {
           "command": "task",
-          "args": [
-            "run"
-          ],
+          "args": ["run"],
           "env": {}
         },
         "mkp-with-kubeconfig": {
           "command": "task",
-          "args": [
-            "run-with-kubeconfig"
-          ],
+          "args": ["run-with-kubeconfig"],
           "env": {
             "KUBECONFIG": "/path/to/kubeconfig"
           }
         },
         "mkp-with-port": {
           "command": "task",
-          "args": [
-            "run"
-          ],
+          "args": ["run"],
           "env": {
             "MCP_PORT": "9091"
           }

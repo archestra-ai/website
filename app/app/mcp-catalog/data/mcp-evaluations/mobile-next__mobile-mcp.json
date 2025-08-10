@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@mobilenext/mobile-mcp@latest"
-      ],
+      "args": ["-y", "@mobilenext/mobile-mcp@latest"],
       "env": {}
     }
   },
@@ -29,10 +26,7 @@
       "mcpServers": {
         "mobile-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@mobilenext/mobile-mcp@latest"
-          ],
+          "args": ["-y", "@mobilenext/mobile-mcp@latest"],
           "env": {}
         }
       }

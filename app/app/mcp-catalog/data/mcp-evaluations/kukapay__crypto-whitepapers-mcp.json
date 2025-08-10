@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "crypto-whitepapers-mcp"
-      ],
+      "args": ["--directory", "${__dirname}", "run", "crypto-whitepapers-mcp"],
       "env": {}
     }
   },
@@ -31,12 +26,7 @@
       "mcpServers": {
         "crypto-whitepapers": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/absolute/path/to/crypto-whitepapers-mcp",
-            "run",
-            "crypto-whitepapers-mcp"
-          ],
+          "args": ["--directory", "/absolute/path/to/crypto-whitepapers-mcp", "run", "crypto-whitepapers-mcp"],
           "env": {}
         }
       }

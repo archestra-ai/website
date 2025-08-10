@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "ig-mcp-server",
-      "args": [
-        "-gadget-discoverer=${user_config.gadget_discoverer}",
-        "-gadget-images=${user_config.gadget_images}"
-      ],
+      "args": ["-gadget-discoverer=${user_config.gadget_discoverer}", "-gadget-images=${user_config.gadget_images}"],
       "env": {}
     }
   },
@@ -70,16 +67,12 @@
         },
         "ig-mcp-server-binary-artifacthub-discovery": {
           "command": "ig-mcp-server",
-          "args": [
-            "-gadget-discoverer=artifacthub"
-          ],
+          "args": ["-gadget-discoverer=artifacthub"],
           "env": {}
         },
         "ig-mcp-server-binary-specific-gadgets": {
           "command": "ig-mcp-server",
-          "args": [
-            "-gadget-images=trace_dns:latest,trace_tcp:latest"
-          ],
+          "args": ["-gadget-images=trace_dns:latest,trace_tcp:latest"],
           "env": {}
         }
       }

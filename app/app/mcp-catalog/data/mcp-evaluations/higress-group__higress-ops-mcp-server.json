@@ -11,10 +11,7 @@
     "type": "python",
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "${__dirname}/client.py"
-      ],
+      "args": ["run", "${__dirname}/client.py"],
       "env": {}
     }
   },
@@ -30,10 +27,7 @@
       "mcpServers": {
         "higress-ops-mcp-server-stdio": {
           "command": "uv",
-          "args": [
-            "run",
-            "client.py"
-          ],
+          "args": ["run", "client.py"],
           "env": {}
         }
       }

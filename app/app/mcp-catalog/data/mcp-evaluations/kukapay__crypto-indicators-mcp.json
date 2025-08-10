@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/index.js"
-      ],
+      "args": ["${__dirname}/index.js"],
       "env": {
         "EXCHANGE_NAME": "${user_config.exchange_name}"
       }
@@ -38,9 +36,7 @@
       "mcpServers": {
         "crypto-indicators-mcp": {
           "command": "node",
-          "args": [
-            "path/to/crypto-indicators-mcp/index.js"
-          ],
+          "args": ["path/to/crypto-indicators-mcp/index.js"],
           "env": {
             "EXCHANGE_NAME": "binance"
           }

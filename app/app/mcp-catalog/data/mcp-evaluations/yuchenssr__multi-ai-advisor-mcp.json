@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/build/index.js"
-      ],
+      "args": ["${__dirname}/build/index.js"],
       "env": {
         "DEBUG": "${user_config.debug}",
         "OLLAMA_API_URL": "${user_config.ollama_api_url}",
@@ -78,9 +76,7 @@
       "mcpServers": {
         "YuChenSSR-multi-ai-advisor-mcp": {
           "command": "node",
-          "args": [
-            "/absolute/path/to/multi-ai-advisor-mcp/build/index.js"
-          ],
+          "args": ["/absolute/path/to/multi-ai-advisor-mcp/build/index.js"],
           "env": {}
         }
       }

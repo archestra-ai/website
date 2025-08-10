@@ -188,50 +188,27 @@
       "mcpServers": {
         "1mcp-agent-quick-start": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@1mcp/agent",
-            "--config",
-            "~/Library/Application Support/Claude/claude_desktop_config.json"
-          ],
+          "args": ["-y", "@1mcp/agent", "--config", "~/Library/Application Support/Claude/claude_desktop_config.json"],
           "env": {}
         },
         "1mcp-agent": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@1mcp/agent"
-          ],
+          "args": ["-y", "@1mcp/agent"],
           "env": {}
         },
         "1mcp-agent-stdio": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@1mcp/agent",
-            "--transport",
-            "stdio"
-          ],
+          "args": ["-y", "@1mcp/agent", "--transport", "stdio"],
           "env": {}
         },
         "1mcp-agent-reverse-proxy": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@1mcp/agent",
-            "--external-url",
-            "https://example.com"
-          ],
+          "args": ["-y", "@1mcp/agent", "--external-url", "https://example.com"],
           "env": {}
         },
         "1mcp-app-agent-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "3050:3050",
-            "ghcr.io/1mcp-app/agent"
-          ],
+          "args": ["run", "-p", "3050:3050", "ghcr.io/1mcp-app/agent"],
           "env": {}
         },
         "1mcp-app-agent-docker-with-config": {
@@ -250,13 +227,7 @@
         },
         "1mcp-app-agent-docker-stdio": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "ghcr.io/1mcp-app/agent",
-            "--transport",
-            "stdio"
-          ],
+          "args": ["run", "-i", "ghcr.io/1mcp-app/agent", "--transport", "stdio"],
           "env": {}
         },
         "1mcp-app-agent-docker-with-env": {

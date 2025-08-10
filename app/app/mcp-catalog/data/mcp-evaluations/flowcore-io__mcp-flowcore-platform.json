@@ -47,47 +47,22 @@
       "mcpServers": {
         "flowcore-platform-mcp-server": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@flowcore/platform-mcp-server",
-            "--username",
-            "<username>",
-            "--pat",
-            "<pat>"
-          ],
+          "args": ["-y", "@flowcore/platform-mcp-server", "--username", "<username>", "--pat", "<pat>"],
           "env": {}
         },
         "platform-mcp-server": {
           "command": "platform-mcp-server",
-          "args": [
-            "--username",
-            "<username>",
-            "--pat",
-            "<pat>"
-          ],
+          "args": ["--username", "<username>", "--pat", "<pat>"],
           "env": {}
         },
         "flowcore-platform-mcp-server-dev-bun": {
           "command": "bun",
-          "args": [
-            "run",
-            "src/index.ts",
-            "--username",
-            "<username>",
-            "--pat",
-            "<pat>"
-          ],
+          "args": ["run", "src/index.ts", "--username", "<username>", "--pat", "<pat>"],
           "env": {}
         },
         "flowcore-platform-mcp-server-built-node": {
           "command": "node",
-          "args": [
-            "dist/cli.js",
-            "--username",
-            "<username>",
-            "--pat",
-            "<pat>"
-          ],
+          "args": ["dist/cli.js", "--username", "<username>", "--pat", "<pat>"],
           "env": {}
         }
       }

@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@chaindead/telegram-mcp"
-      ],
+      "args": ["-y", "@chaindead/telegram-mcp"],
       "env": {
         "TG_APP_ID": "${user_config.app_id}",
         "TG_API_HASH": "${user_config.api_hash}"
@@ -47,10 +44,7 @@
       "mcpServers": {
         "chaindead-telegram-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@chaindead/telegram-mcp"
-          ],
+          "args": ["-y", "@chaindead/telegram-mcp"],
           "env": {
             "TG_APP_ID": "<your-api-id>",
             "TG_API_HASH": "<your-api-hash>"

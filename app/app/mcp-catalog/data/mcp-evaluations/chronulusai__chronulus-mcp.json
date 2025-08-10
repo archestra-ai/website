@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "chronulus-mcp"
-      ],
+      "args": ["chronulus-mcp"],
       "env": {
         "CHRONULUS_API_KEY": "${user_config.chronulus_api_key}"
       }
@@ -38,51 +36,33 @@
       "mcpServers": {
         "chronulus-mcp-python-module": {
           "command": "python",
-          "args": [
-            "-m",
-            "chronulus_mcp"
-          ],
+          "args": ["-m", "chronulus_mcp"],
           "env": {
             "CHRONULUS_API_KEY": "<YOUR_CHRONULUS_API_KEY>"
           }
         },
         "chronulus-mcp-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "CHRONULUS_API_KEY",
-            "chronulus-mcp"
-          ],
+          "args": ["run", "-i", "--rm", "-e", "CHRONULUS_API_KEY", "chronulus-mcp"],
           "env": {
             "CHRONULUS_API_KEY": "<YOUR_CHRONULUS_API_KEY>"
           }
         },
         "chronulus-mcp-uvx": {
           "command": "uvx",
-          "args": [
-            "chronulus-mcp"
-          ],
+          "args": ["chronulus-mcp"],
           "env": {
             "CHRONULUS_API_KEY": "<YOUR_CHRONULUS_API_KEY>"
           }
         },
         "modelcontextprotocol-server-filesystem": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@modelcontextprotocol/server-filesystem",
-            "/path/to/AIWorkspace"
-          ],
+          "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/AIWorkspace"],
           "env": {}
         },
         "mcp-server-fetch": {
           "command": "uvx",
-          "args": [
-            "mcp-server-fetch"
-          ],
+          "args": ["mcp-server-fetch"],
           "env": {}
         }
       }

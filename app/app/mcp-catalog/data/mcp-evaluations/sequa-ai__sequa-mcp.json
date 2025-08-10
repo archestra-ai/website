@@ -10,11 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@sequa-ai/sequa-mcp@latest",
-        "${user_config.setup_url}"
-      ],
+      "args": ["-y", "@sequa-ai/sequa-mcp@latest", "${user_config.setup_url}"],
       "env": {}
     }
   },
@@ -38,11 +34,7 @@
       "mcpServers": {
         "sequa-ai-sequa-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@sequa-ai/sequa-mcp@latest",
-            "https://mcp.sequa.ai/v1/setup-code-assistant"
-          ],
+          "args": ["-y", "@sequa-ai/sequa-mcp@latest", "https://mcp.sequa.ai/v1/setup-code-assistant"],
           "env": {}
         }
       }

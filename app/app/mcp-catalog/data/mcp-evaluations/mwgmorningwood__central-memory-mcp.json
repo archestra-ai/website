@@ -11,10 +11,7 @@
     "type": "node",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "func",
-        "start"
-      ],
+      "args": ["func", "start"],
       "env": {}
     }
   },
@@ -30,9 +27,7 @@
       "mcpServers": {
         "modelcontextprotocol-server-memory": {
           "command": "func",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         }
       }

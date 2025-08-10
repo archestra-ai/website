@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python3",
-      "args": [
-        "${__dirname}/lldb_mcp.py"
-      ],
+      "args": ["${__dirname}/lldb_mcp.py"],
       "env": {}
     }
   },
@@ -36,9 +34,7 @@
       "mcpServers": {
         "lldb-mcp": {
           "command": "python3",
-          "args": [
-            "/path/to/lldb-mcp/lldb_mcp.py"
-          ],
+          "args": ["/path/to/lldb-mcp/lldb_mcp.py"],
           "env": {}
         }
       }

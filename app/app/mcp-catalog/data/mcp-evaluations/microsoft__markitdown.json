@@ -10,14 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "docker",
-      "args": [
-        "run",
-        "--rm",
-        "-i",
-        "-v",
-        "${user_config.local_directory}:/workdir",
-        "markitdown-mcp:latest"
-      ],
+      "args": ["run", "--rm", "-i", "-v", "${user_config.local_directory}:/workdir", "markitdown-mcp:latest"],
       "env": {}
     }
   },

@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@line/line-bot-mcp-server"
-      ],
+      "args": ["-y", "@line/line-bot-mcp-server"],
       "env": {
         "CHANNEL_ACCESS_TOKEN": "${user_config.CHANNEL_ACCESS_TOKEN}",
         "DESTINATION_USER_ID": "${user_config.DESTINATION_USER_ID}"
@@ -46,9 +43,7 @@
       "mcpServers": {
         "line-line-bot-mcp-server": {
           "command": "npx",
-          "args": [
-            "@line/line-bot-mcp-server"
-          ],
+          "args": ["@line/line-bot-mcp-server"],
           "env": {
             "CHANNEL_ACCESS_TOKEN": "FILL_HERE",
             "DESTINATION_USER_ID": "FILL_HERE"

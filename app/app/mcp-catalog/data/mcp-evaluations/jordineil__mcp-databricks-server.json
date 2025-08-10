@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "${__dirname}/main.py"
-      ],
+      "args": ["${__dirname}/main.py"],
       "env": {
         "DATABRICKS_HOST": "${user_config.databricks_host}",
         "DATABRICKS_TOKEN": "${user_config.databricks_token}",
@@ -54,19 +52,12 @@
       "mcpServers": {
         "databricks-mcp-server": {
           "command": "python",
-          "args": [
-            "main.py"
-          ],
+          "args": ["main.py"],
           "env": {}
         },
         "modelcontextprotocol-inspector": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@modelcontextprotocol/inspector",
-            "python3",
-            "main.py"
-          ],
+          "args": ["-y", "@modelcontextprotocol/inspector", "python3", "main.py"],
           "env": {}
         }
       }

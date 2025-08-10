@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "auto-mobile",
-        "--project-path",
-        "${user_config.project_path}"
-      ],
+      "args": ["-y", "auto-mobile", "--project-path", "${user_config.project_path}"],
       "env": {}
     }
   },
@@ -38,10 +33,7 @@
       "mcpServers": {
         "auto-mobile": {
           "command": "npx",
-          "args": [
-            "-y",
-            "auto-mobile"
-          ],
+          "args": ["-y", "auto-mobile"],
           "env": {}
         }
       }

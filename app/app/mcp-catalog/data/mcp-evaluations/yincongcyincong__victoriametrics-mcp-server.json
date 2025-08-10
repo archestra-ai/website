@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@yincongcyincong/victoriametrics-mcp-server"
-      ],
+      "args": ["-y", "@yincongcyincong/victoriametrics-mcp-server"],
       "env": {
         "VM_URL": "${user_config.VM_URL}",
         "VM_SELECT_URL": "${user_config.VM_SELECT_URL}",
@@ -52,10 +49,7 @@
       "mcpServers": {
         "yincongcyincong-victoriametrics-mcp-server": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@yincongcyincong/victoriametrics-mcp-server"
-          ],
+          "args": ["-y", "@yincongcyincong/victoriametrics-mcp-server"],
           "env": {
             "VM_URL": "",
             "VM_SELECT_URL": "",
@@ -64,9 +58,7 @@
         },
         "yincongcyincong-victoriametrics-mcp-server-debug": {
           "command": "node",
-          "args": [
-            "src/index.js"
-          ],
+          "args": ["src/index.js"],
           "env": {
             "VM_URL": "http://127.0.0.1:8428"
           }

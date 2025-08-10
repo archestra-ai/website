@@ -10,11 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@pulumi/mcp-server@latest",
-        "stdio"
-      ],
+      "args": ["-y", "@pulumi/mcp-server@latest", "stdio"],
       "env": {}
     }
   },
@@ -30,56 +26,27 @@
       "mcpServers": {
         "pulumi-mcp-server-stdio": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@pulumi/mcp-server@latest",
-            "stdio"
-          ],
+          "args": ["-y", "@pulumi/mcp-server@latest", "stdio"],
           "env": {}
         },
         "pulumi-mcp-server-sse": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@pulumi/mcp-server@latest",
-            "sse"
-          ],
+          "args": ["-y", "@pulumi/mcp-server@latest", "sse"],
           "env": {}
         },
         "pulumi-mcp-server-docker-stdio": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "pulumi/mcp-server:latest",
-            "stdio"
-          ],
+          "args": ["run", "-i", "--rm", "pulumi/mcp-server:latest", "stdio"],
           "env": {}
         },
         "pulumi-mcp-server-docker-sse": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-p",
-            "3000:3000",
-            "pulumi/mcp-server:latest",
-            "sse"
-          ],
+          "args": ["run", "-i", "--rm", "-p", "3000:3000", "pulumi/mcp-server:latest", "sse"],
           "env": {}
         },
         "pulumi-mcp-server-docker-with-volume": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-v",
-            "~/projects/my-pulumi-app:/app/project",
-            "pulumi/mcp-server:latest"
-          ],
+          "args": ["run", "-i", "--rm", "-v", "~/projects/my-pulumi-app:/app/project", "pulumi/mcp-server:latest"],
           "env": {}
         }
       }

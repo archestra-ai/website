@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "mcp-nixos"
-      ],
+      "args": ["mcp-nixos"],
       "env": {}
     }
   },
@@ -28,54 +26,32 @@
       "mcpServers": {
         "nixos-uvx": {
           "command": "uvx",
-          "args": [
-            "mcp-nixos"
-          ],
+          "args": ["mcp-nixos"],
           "env": {}
         },
         "nixos-nix-run": {
           "command": "nix",
-          "args": [
-            "run",
-            "github:utensils/mcp-nixos",
-            "--"
-          ],
+          "args": ["run", "github:utensils/mcp-nixos", "--"],
           "env": {}
         },
         "nixos-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "ghcr.io/utensils/mcp-nixos"
-          ],
+          "args": ["run", "--rm", "-i", "ghcr.io/utensils/mcp-nixos"],
           "env": {}
         },
         "nixos-local-dev": {
           "command": "uv",
-          "args": [
-            "run",
-            "--directory",
-            "/home/hackerman/Projects/mcp-nixos",
-            "mcp-nixos"
-          ],
+          "args": ["run", "--directory", "/home/hackerman/Projects/mcp-nixos", "mcp-nixos"],
           "env": {}
         },
         "nixos-uv-run": {
           "command": "uv",
-          "args": [
-            "run",
-            "mcp-nixos"
-          ],
+          "args": ["run", "mcp-nixos"],
           "env": {}
         },
         "nixos-python-module": {
           "command": "python",
-          "args": [
-            "-m",
-            "mcp_nixos.server"
-          ],
+          "args": ["-m", "mcp_nixos.server"],
           "env": {}
         }
       }

@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "--directory",
-        "${user_config.project_path}",
-        "homebrew_mcp.py"
-      ],
+      "args": ["run", "--directory", "${user_config.project_path}", "homebrew_mcp.py"],
       "env": {}
     }
   },
@@ -39,31 +34,17 @@
       "mcpServers": {
         "homebrew-mcp-local": {
           "command": "uv",
-          "args": [
-            "run",
-            "python",
-            "homebrew_mcp.py"
-          ],
+          "args": ["run", "python", "homebrew_mcp.py"],
           "env": {}
         },
         "homebrew-mcp-cursor": {
           "command": "uv",
-          "args": [
-            "run",
-            "--directory",
-            "~/Documents/GitHub/homebrew-mcp",
-            "homebrew_mcp.py"
-          ],
+          "args": ["run", "--directory", "~/Documents/GitHub/homebrew-mcp", "homebrew_mcp.py"],
           "env": {}
         },
         "homebrew-mcp-claude-desktop": {
           "command": "uv",
-          "args": [
-            "run",
-            "--directory",
-            "/path/to/your/project/",
-            "homebrew_mcp.py"
-          ],
+          "args": ["run", "--directory", "/path/to/your/project/", "homebrew_mcp.py"],
           "env": {}
         }
       }

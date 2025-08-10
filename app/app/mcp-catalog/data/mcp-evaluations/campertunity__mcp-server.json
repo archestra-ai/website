@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "campertunity-mcp-server@latest"
-      ],
+      "args": ["-y", "campertunity-mcp-server@latest"],
       "env": {
         "CAMPERTUNITY_API_KEY": "${user_config.CAMPERTUNITY_API_KEY}"
       }
@@ -39,10 +36,7 @@
       "mcpServers": {
         "campground-search-mcp-server": {
           "command": "npx",
-          "args": [
-            "-y",
-            "campertunity-mcp-server@latest"
-          ],
+          "args": ["-y", "campertunity-mcp-server@latest"],
           "env": {
             "CAMPERTUNITY_API_KEY": "your_api_key_here"
           }

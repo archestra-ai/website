@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "yandex-tracker-mcp@latest"
-      ],
+      "args": ["yandex-tracker-mcp@latest"],
       "env": {
         "TRACKER_TOKEN": "${user_config.tracker_token}",
         "TRACKER_CLOUD_ORG_ID": "${user_config.tracker_cloud_org_id}",
@@ -52,9 +50,7 @@
       "mcpServers": {
         "yandex-tracker-mcp": {
           "command": "uvx",
-          "args": [
-            "yandex-tracker-mcp@latest"
-          ],
+          "args": ["yandex-tracker-mcp@latest"],
           "env": {
             "TRACKER_TOKEN": "your_tracker_token_here",
             "TRACKER_CLOUD_ORG_ID": "your_cloud_org_id_here",
@@ -83,9 +79,7 @@
         },
         "yandex-tracker-mcp-stdio": {
           "command": "uvx",
-          "args": [
-            "yandex-tracker-mcp@latest"
-          ],
+          "args": ["yandex-tracker-mcp@latest"],
           "env": {
             "TRACKER_TOKEN": "your_tracker_token_here",
             "TRACKER_CLOUD_ORG_ID": "your_cloud_org_id_here",

@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "@mcp-browser-kit/server"
-      ],
+      "args": ["@mcp-browser-kit/server"],
       "env": {}
     }
   },
@@ -28,9 +26,7 @@
       "mcpServers": {
         "mcp-browser-kit-server": {
           "command": "npx",
-          "args": [
-            "@mcp-browser-kit/server"
-          ],
+          "args": ["@mcp-browser-kit/server"],
           "env": {}
         }
       }

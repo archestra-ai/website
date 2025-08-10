@@ -11,11 +11,7 @@
     "type": "binary",
     "mcp_config": {
       "command": "mcp-prompt-engine",
-      "args": [
-        "serve",
-        "--prompts",
-        "${user_config.prompts_dir}"
-      ],
+      "args": ["serve", "--prompts", "${user_config.prompts_dir}"],
       "env": {}
     }
   },
@@ -46,19 +42,12 @@
       "mcpServers": {
         "mcp-prompt-engine": {
           "command": "mcp-prompt-engine",
-          "args": [
-            "serve"
-          ],
+          "args": ["serve"],
           "env": {}
         },
         "mcp-prompt-engine-configured": {
           "command": "mcp-prompt-engine",
-          "args": [
-            "serve",
-            "--prompts",
-            "/path/to/your/prompts",
-            "--disable-json-args"
-          ],
+          "args": ["serve", "--prompts", "/path/to/your/prompts", "--disable-json-args"],
           "env": {}
         },
         "ghcr.io-vasayxtx-mcp-prompt-engine-docker": {

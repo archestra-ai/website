@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/index.js"
-      ],
+      "args": ["${__dirname}/index.js"],
       "env": {
         "MORALIS_API_KEY": "${user_config.moralis_api_key}",
         "PRIVATE_KEY": "${user_config.private_key}"
@@ -46,9 +44,7 @@
       "mcpServers": {
         "token-revoke-mcp": {
           "command": "node",
-          "args": [
-            "path/to/token-revoke-mcp/index.js"
-          ],
+          "args": ["path/to/token-revoke-mcp/index.js"],
           "env": {
             "MORALIS_API_KEY": "your moralis api key",
             "PRIVATE_KEY": "your wallet private key"

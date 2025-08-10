@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "telephony_server.py"
-      ],
+      "args": ["telephony_server.py"],
       "env": {
         "VONAGE_API_KEY": "${user_config.vonage_api_key}",
         "VONAGE_API_SECRET": "${user_config.vonage_api_secret}",
@@ -91,22 +89,12 @@
       "mcpServers": {
         "telephony-mcp-server-python": {
           "command": "python",
-          "args": [
-            "telephony_server.py"
-          ],
+          "args": ["telephony_server.py"],
           "env": {}
         },
         "telephony-mcp-server-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "--init",
-            "-e",
-            "DOCKER_CONTAINER=true",
-            "telephony-mcp-server"
-          ],
+          "args": ["run", "-i", "--rm", "--init", "-e", "DOCKER_CONTAINER=true", "telephony-mcp-server"],
           "env": {
             "DOCKER_CONTAINER": "true"
           }

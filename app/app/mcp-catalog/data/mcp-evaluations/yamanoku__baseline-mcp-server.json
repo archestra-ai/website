@@ -10,11 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "deno",
-      "args": [
-        "run",
-        "--allow-net=api.webstatus.dev",
-        "jsr:@yamanoku/baseline-mcp-server"
-      ],
+      "args": ["run", "--allow-net=api.webstatus.dev", "jsr:@yamanoku/baseline-mcp-server"],
       "env": {}
     }
   },
@@ -30,20 +26,12 @@
       "mcpServers": {
         "yamanoku-baseline-mcp-server": {
           "command": "deno",
-          "args": [
-            "run",
-            "--allow-net=api.webstatus.dev",
-            "jsr:@yamanoku/baseline-mcp-server"
-          ],
+          "args": ["run", "--allow-net=api.webstatus.dev", "jsr:@yamanoku/baseline-mcp-server"],
           "env": {}
         },
         "baseline-mcp-server-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "baseline-mcp-server:latest"
-          ],
+          "args": ["run", "-i", "baseline-mcp-server:latest"],
           "env": {}
         }
       }

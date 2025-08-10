@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@apify/actors-mcp-server"
-      ],
+      "args": ["-y", "@apify/actors-mcp-server"],
       "env": {
         "APIFY_TOKEN": "${user_config.apify_token}"
       }
@@ -39,10 +36,7 @@
       "mcpServers": {
         "apify-actors-mcp-server-stdio": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@apify/actors-mcp-server"
-          ],
+          "args": ["-y", "@apify/actors-mcp-server"],
           "env": {}
         }
       }

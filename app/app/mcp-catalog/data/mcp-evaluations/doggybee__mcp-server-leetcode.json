@@ -36,17 +36,12 @@
         },
         "mcpfun-mcp-server-leetcode-node-config": {
           "command": "node",
-          "args": [
-            "/path/to/dist/index.js"
-          ],
+          "args": ["/path/to/dist/index.js"],
           "env": {}
         },
         "mcpfun-mcp-server-leetcode-dev": {
           "command": "npm",
-          "args": [
-            "run",
-            "dev"
-          ],
+          "args": ["run", "dev"],
           "env": {}
         }
       }

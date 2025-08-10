@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@octomind/octomind-mcp@latest",
-        "--port",
-        "${user_config.port}"
-      ],
+      "args": ["-y", "@octomind/octomind-mcp@latest", "--port", "${user_config.port}"],
       "env": {
         "APIKEY": "${user_config.api_key}",
         "OCTOMIND_API_URL": "${user_config.octomind_api_url}",
@@ -99,10 +94,7 @@
       "mcpServers": {
         "octomind-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@octomind/octomind-mcp@latest"
-          ],
+          "args": ["-y", "@octomind/octomind-mcp@latest"],
           "env": {
             "APIKEY": "your-api-key-here"
           }

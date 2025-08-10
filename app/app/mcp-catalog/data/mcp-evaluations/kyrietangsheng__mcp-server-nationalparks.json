@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-server-nationalparks"
-      ],
+      "args": ["-y", "mcp-server-nationalparks"],
       "env": {
         "NPS_API_KEY": "${user_config.NPS_API_KEY}"
       }
@@ -39,10 +36,7 @@
       "mcpServers": {
         "mcp-server-nationalparks": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mcp-server-nationalparks"
-          ],
+          "args": ["-y", "mcp-server-nationalparks"],
           "env": {
             "NPS_API_KEY": "YOUR_NPS_API_KEY"
           }

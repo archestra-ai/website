@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/build/index.js"
-      ],
+      "args": ["${__dirname}/build/index.js"],
       "env": {
         "MONGODB_URI": "${user_config.mongodb_uri}"
       }
@@ -39,9 +37,7 @@
       "mcpServers": {
         "memory-mcp": {
           "command": "node",
-          "args": [
-            "build/index.js"
-          ],
+          "args": ["build/index.js"],
           "env": {
             "MONGODB_URI": "mongodb://localhost:27017"
           }

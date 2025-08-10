@@ -10,13 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "--with",
-        "biomcp-python",
-        "biomcp",
-        "run"
-      ],
+      "args": ["run", "--with", "biomcp-python", "biomcp", "run"],
       "env": {
         "CBIO_TOKEN": "${user_config.cbioportal_token}",
         "CBIO_BASE_URL": "${user_config.cbioportal_base_url}",
@@ -58,13 +52,7 @@
       "mcpServers": {
         "biomcp-python": {
           "command": "uv",
-          "args": [
-            "run",
-            "--with",
-            "biomcp-python",
-            "biomcp",
-            "run"
-          ],
+          "args": ["run", "--with", "biomcp-python", "biomcp", "run"],
           "env": {}
         }
       }

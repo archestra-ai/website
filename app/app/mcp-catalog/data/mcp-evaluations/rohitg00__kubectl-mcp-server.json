@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "kubectl-mcp",
-      "args": [
-        "serve"
-      ],
+      "args": ["serve"],
       "env": {
         "KUBECONFIG": "${user_config.kubeconfig}/config"
       }
@@ -38,9 +36,7 @@
       "mcpServers": {
         "kubectl-mcp-tool": {
           "command": "kubectl-mcp",
-          "args": [
-            "serve"
-          ],
+          "args": ["serve"],
           "env": {}
         },
         "rohitghumare64-kubectl-mcp-server-docker": {

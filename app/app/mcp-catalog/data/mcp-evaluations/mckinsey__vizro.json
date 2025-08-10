@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "vizro-mcp"
-      ],
+      "args": ["vizro-mcp"],
       "env": {}
     }
   },

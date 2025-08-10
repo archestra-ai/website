@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@bldbl/mcp"
-      ],
+      "args": ["-y", "@bldbl/mcp"],
       "env": {
         "BUILDABLE_API_KEY": "${user_config.api_key}",
         "BUILDABLE_PROJECT_ID": "${user_config.project_id}",
@@ -61,10 +58,7 @@
       "mcpServers": {
         "bldbl-mcp-claude-desktop": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@bldbl/mcp"
-          ],
+          "args": ["-y", "@bldbl/mcp"],
           "env": {
             "BUILDABLE_API_KEY": "bp_your_api_key_here",
             "BUILDABLE_PROJECT_ID": "your-project-id",
@@ -73,10 +67,7 @@
         },
         "bldbl-mcp-cursor-ide": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@bldbl/mcp"
-          ],
+          "args": ["-y", "@bldbl/mcp"],
           "env": {
             "BUILDABLE_API_KEY": "bp_your_api_key_here",
             "BUILDABLE_PROJECT_ID": "your-project-id",
@@ -85,10 +76,7 @@
         },
         "bldbl-mcp-npx": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@bldbl/mcp"
-          ],
+          "args": ["-y", "@bldbl/mcp"],
           "env": {}
         },
         "bldbl-mcp-cli": {
@@ -98,10 +86,7 @@
         },
         "bldbl-mcp-frontend": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@bldbl/mcp"
-          ],
+          "args": ["-y", "@bldbl/mcp"],
           "env": {
             "BUILDABLE_API_KEY": "bp_frontend_key_here",
             "BUILDABLE_PROJECT_ID": "frontend-project-id",
@@ -110,10 +95,7 @@
         },
         "bldbl-mcp-backend": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@bldbl/mcp"
-          ],
+          "args": ["-y", "@bldbl/mcp"],
           "env": {
             "BUILDABLE_API_KEY": "bp_backend_key_here",
             "BUILDABLE_PROJECT_ID": "backend-project-id",

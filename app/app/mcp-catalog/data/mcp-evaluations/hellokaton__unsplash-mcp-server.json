@@ -10,14 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "--with",
-        "fastmcp",
-        "fastmcp",
-        "run",
-        "${__dirname}/server.py"
-      ],
+      "args": ["run", "--with", "fastmcp", "fastmcp", "run", "${__dirname}/server.py"],
       "env": {
         "UNSPLASH_ACCESS_KEY": "${user_config.UNSPLASH_ACCESS_KEY}"
       }
@@ -43,14 +36,7 @@
       "mcpServers": {
         "unsplash-mcp-server": {
           "command": "uv",
-          "args": [
-            "run",
-            "--with",
-            "fastmcp",
-            "fastmcp",
-            "run",
-            "./server.py"
-          ],
+          "args": ["run", "--with", "fastmcp", "fastmcp", "run", "./server.py"],
           "env": {
             "UNSPLASH_ACCESS_KEY": "${YOUR_ACCESS_KEY}"
           }

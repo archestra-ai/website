@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "server/main.py"
-      ],
+      "args": ["--directory", "${__dirname}", "run", "server/main.py"],
       "env": {}
     }
   },
@@ -31,12 +26,7 @@
       "mcpServers": {
         "arxiv-latex-mcp": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/ABSOLUTE/PATH/TO/arxiv-latex-mcp",
-            "run",
-            "server/main.py"
-          ],
+          "args": ["--directory", "/ABSOLUTE/PATH/TO/arxiv-latex-mcp", "run", "server/main.py"],
           "env": {}
         }
       }

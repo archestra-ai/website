@@ -11,9 +11,7 @@
     "type": "binary",
     "mcp_config": {
       "command": "/usr/local/bin/st",
-      "args": [
-        "--mcp"
-      ],
+      "args": ["--mcp"],
       "env": {
         "AI_TOOLS": "1"
       }
@@ -76,9 +74,7 @@
       "mcpServers": {
         "smart-tree": {
           "command": "/usr/local/bin/st",
-          "args": [
-            "--mcp"
-          ],
+          "args": ["--mcp"],
           "env": {
             "AI_TOOLS": "1"
           }

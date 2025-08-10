@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "tasty-agent"
-      ],
+      "args": ["tasty-agent"],
       "env": {
         "TASTYTRADE_USERNAME": "${user_config.username}",
         "TASTYTRADE_PASSWORD": "${user_config.password}",
@@ -53,9 +51,7 @@
       "mcpServers": {
         "tasty-agent": {
           "command": "uvx",
-          "args": [
-            "tasty-agent"
-          ],
+          "args": ["tasty-agent"],
           "env": {}
         }
       }

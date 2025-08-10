@@ -10,13 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "-m",
-        "agent_mcp.cli",
-        "--project-dir",
-        "${user_config.project_dir}"
-      ],
+      "args": ["run", "-m", "agent_mcp.cli", "--project-dir", "${user_config.project_dir}"],
       "env": {
         "OPENAI_API_KEY": "${user_config.OPENAI_API_KEY}"
       }
@@ -48,13 +42,7 @@
       "mcpServers": {
         "agent_mcp": {
           "command": "uv",
-          "args": [
-            "run",
-            "-m",
-            "agent_mcp.cli",
-            "--project-dir",
-            "/path/to/your/project"
-          ],
+          "args": ["run", "-m", "agent_mcp.cli", "--project-dir", "/path/to/your/project"],
           "env": {}
         }
       }

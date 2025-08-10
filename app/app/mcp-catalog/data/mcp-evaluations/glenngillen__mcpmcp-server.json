@@ -10,11 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote@latest",
-        "https://mcpmcp.io/mcp"
-      ],
+      "args": ["-y", "mcp-remote@latest", "https://mcpmcp.io/mcp"],
       "env": {}
     }
   },
@@ -30,11 +26,7 @@
       "mcpServers": {
         "mcp-remote": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mcp-remote@latest",
-            "https://mcpmcp.io/mcp"
-          ],
+          "args": ["-y", "mcp-remote@latest", "https://mcpmcp.io/mcp"],
           "env": {}
         }
       }

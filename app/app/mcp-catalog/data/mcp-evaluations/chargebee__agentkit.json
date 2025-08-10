@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@chargebee/mcp"
-      ],
+      "args": ["-y", "@chargebee/mcp"],
       "env": {}
     }
   },

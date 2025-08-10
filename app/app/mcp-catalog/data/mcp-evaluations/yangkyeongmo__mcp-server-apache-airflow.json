@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@yangkyeongmo/mcp-server-apache-airflow"
-      ],
+      "args": ["-y", "@yangkyeongmo/mcp-server-apache-airflow"],
       "env": {
         "AIRFLOW_WEBSERVER_URL": "${user_config.airflow_webserver_url}",
         "AIRFLOW_USERNAME": "${user_config.airflow_username}",

@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "docker",
-      "args": [
-        "run",
-        "-p",
-        "6270:6270",
-        "axliupore/mcp-code-runner"
-      ],
+      "args": ["run", "-p", "6270:6270", "axliupore/mcp-code-runner"],
       "env": {}
     }
   },

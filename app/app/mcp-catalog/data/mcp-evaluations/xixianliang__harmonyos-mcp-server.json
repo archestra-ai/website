@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "server.py"
-      ],
+      "args": ["--directory", "${__dirname}", "run", "server.py"],
       "env": {}
     }
   },
@@ -31,12 +26,7 @@
       "mcpServers": {
         "harmonyos-mcp-server-stdio": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "harmonyos-mcp-server",
-            "run",
-            "server.py"
-          ],
+          "args": ["--directory", "harmonyos-mcp-server", "run", "server.py"],
           "env": {}
         }
       }

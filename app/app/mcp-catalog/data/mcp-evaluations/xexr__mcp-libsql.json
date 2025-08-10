@@ -11,10 +11,7 @@
     "type": "binary",
     "mcp_config": {
       "command": "mcp-libsql",
-      "args": [
-        "--url",
-        "${user_config.database_url}"
-      ],
+      "args": ["--url", "${user_config.database_url}"],
       "env": {
         "LIBSQL_AUTH_TOKEN": "${user_config.auth_token}"
       }
@@ -46,29 +43,17 @@
       "mcpServers": {
         "xexr-mcp-libsql-quickstart": {
           "command": "mcp-libsql",
-          "args": [
-            "--url",
-            "file:///tmp/test.db",
-            "--log-mode",
-            "console"
-          ],
+          "args": ["--url", "file:///tmp/test.db", "--log-mode", "console"],
           "env": {}
         },
         "xexr-mcp-libsql-macos-global": {
           "command": "mcp-libsql",
-          "args": [
-            "--url",
-            "file:///Users/username/database.db"
-          ],
+          "args": ["--url", "file:///Users/username/database.db"],
           "env": {}
         },
         "xexr-mcp-libsql-macos-local-build": {
           "command": "node",
-          "args": [
-            "/Users/username/projects/mcp-libsql/dist/index.js",
-            "--url",
-            "file:///Users/username/database.db"
-          ],
+          "args": ["/Users/username/projects/mcp-libsql/dist/index.js", "--url", "file:///Users/username/database.db"],
           "env": {}
         },
         "xexr-mcp-libsql-macos-nvm-global": {
@@ -81,29 +66,17 @@
         },
         "xexr-mcp-libsql-linux-global": {
           "command": "mcp-libsql",
-          "args": [
-            "--url",
-            "file:///home/username/database.db"
-          ],
+          "args": ["--url", "file:///home/username/database.db"],
           "env": {}
         },
         "xexr-mcp-libsql-linux-local-build": {
           "command": "node",
-          "args": [
-            "/home/username/projects/mcp-libsql/dist/index.js",
-            "--url",
-            "file:///home/username/database.db"
-          ],
+          "args": ["/home/username/projects/mcp-libsql/dist/index.js", "--url", "file:///home/username/database.db"],
           "env": {}
         },
         "xexr-mcp-libsql-wsl2-global": {
           "command": "wsl.exe",
-          "args": [
-            "-e",
-            "bash",
-            "-c",
-            "mcp-libsql --url file:///home/username/database.db"
-          ],
+          "args": ["-e", "bash", "-c", "mcp-libsql --url file:///home/username/database.db"],
           "env": {}
         },
         "xexr-mcp-libsql-wsl2-local-build": {
@@ -118,32 +91,19 @@
         },
         "xexr-mcp-libsql-wsl2-nvm-global": {
           "command": "wsl.exe",
-          "args": [
-            "-e",
-            "bash",
-            "-c",
-            "source ~/.nvm/nvm.sh && mcp-libsql --url file:///home/username/database.db"
-          ],
+          "args": ["-e", "bash", "-c", "source ~/.nvm/nvm.sh && mcp-libsql --url file:///home/username/database.db"],
           "env": {}
         },
         "xexr-mcp-libsql-turso-env-auth": {
           "command": "mcp-libsql",
-          "args": [
-            "--url",
-            "libsql://your-database.turso.io"
-          ],
+          "args": ["--url", "libsql://your-database.turso.io"],
           "env": {
             "LIBSQL_AUTH_TOKEN": "your-turso-auth-token-here"
           }
         },
         "xexr-mcp-libsql-turso-cli-auth": {
           "command": "mcp-libsql",
-          "args": [
-            "--url",
-            "libsql://your-database.turso.io",
-            "--auth-token",
-            "your-turso-auth-token-here"
-          ],
+          "args": ["--url", "libsql://your-database.turso.io", "--auth-token", "your-turso-auth-token-here"],
           "env": {}
         }
       }

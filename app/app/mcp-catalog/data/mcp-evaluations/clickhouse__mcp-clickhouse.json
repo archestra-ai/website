@@ -11,10 +11,7 @@
     "type": "python",
     "mcp_config": {
       "command": "python3",
-      "args": [
-        "-m",
-        "mcp_clickhouse.main"
-      ],
+      "args": ["-m", "mcp_clickhouse.main"],
       "env": {
         "CLICKHOUSE_HOST": "${user_config.clickhouse_host}",
         "CLICKHOUSE_PORT": "${user_config.clickhouse_port}",
@@ -121,14 +118,7 @@
       "mcpServers": {
         "mcp-clickhouse-uv-clickhouse-placeholder": {
           "command": "uv",
-          "args": [
-            "run",
-            "--with",
-            "mcp-clickhouse",
-            "--python",
-            "3.10",
-            "mcp-clickhouse"
-          ],
+          "args": ["run", "--with", "mcp-clickhouse", "--python", "3.10", "mcp-clickhouse"],
           "env": {
             "CLICKHOUSE_HOST": "<clickhouse-host>",
             "CLICKHOUSE_PORT": "<clickhouse-port>",
@@ -142,14 +132,7 @@
         },
         "mcp-clickhouse-uv-clickhouse-playground": {
           "command": "uv",
-          "args": [
-            "run",
-            "--with",
-            "mcp-clickhouse",
-            "--python",
-            "3.10",
-            "mcp-clickhouse"
-          ],
+          "args": ["run", "--with", "mcp-clickhouse", "--python", "3.10", "mcp-clickhouse"],
           "env": {
             "CLICKHOUSE_HOST": "sql-clickhouse.clickhouse.com",
             "CLICKHOUSE_PORT": "8443",
@@ -163,14 +146,7 @@
         },
         "mcp-clickhouse-uv-chdb": {
           "command": "uv",
-          "args": [
-            "run",
-            "--with",
-            "mcp-clickhouse",
-            "--python",
-            "3.10",
-            "mcp-clickhouse"
-          ],
+          "args": ["run", "--with", "mcp-clickhouse", "--python", "3.10", "mcp-clickhouse"],
           "env": {
             "CHDB_ENABLED": "true",
             "CLICKHOUSE_ENABLED": "false",
@@ -179,14 +155,7 @@
         },
         "mcp-clickhouse-uv-both": {
           "command": "uv",
-          "args": [
-            "run",
-            "--with",
-            "mcp-clickhouse",
-            "--python",
-            "3.10",
-            "mcp-clickhouse"
-          ],
+          "args": ["run", "--with", "mcp-clickhouse", "--python", "3.10", "mcp-clickhouse"],
           "env": {
             "CLICKHOUSE_HOST": "<clickhouse-host>",
             "CLICKHOUSE_PORT": "<clickhouse-port>",
@@ -202,10 +171,7 @@
         },
         "mcp-clickhouse-python-module": {
           "command": "python3",
-          "args": [
-            "-m",
-            "mcp_clickhouse.main"
-          ],
+          "args": ["-m", "mcp_clickhouse.main"],
           "env": {
             "CLICKHOUSE_HOST": "<clickhouse-host>",
             "CLICKHOUSE_PORT": "<clickhouse-port>",
@@ -233,28 +199,19 @@
         },
         "mcp-clickhouse-dev-fastmcp": {
           "command": "fastmcp",
-          "args": [
-            "dev",
-            "mcp_clickhouse/mcp_server.py"
-          ],
+          "args": ["dev", "mcp_clickhouse/mcp_server.py"],
           "env": {}
         },
         "mcp-clickhouse-http-default-port": {
           "command": "python",
-          "args": [
-            "-m",
-            "mcp_clickhouse.main"
-          ],
+          "args": ["-m", "mcp_clickhouse.main"],
           "env": {
             "CLICKHOUSE_MCP_SERVER_TRANSPORT": "http"
           }
         },
         "mcp-clickhouse-http-custom-port": {
           "command": "python",
-          "args": [
-            "-m",
-            "mcp_clickhouse.main"
-          ],
+          "args": ["-m", "mcp_clickhouse.main"],
           "env": {
             "CLICKHOUSE_MCP_SERVER_TRANSPORT": "http",
             "CLICKHOUSE_MCP_BIND_PORT": "4200"

@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "bitcoin-mcp@latest"
-      ],
+      "args": ["-y", "bitcoin-mcp@latest"],
       "env": {
         "LNBITS_URL": "${user_config.lnbits_url}",
         "LNBITS_ADMIN_KEY": "${user_config.lnbits_admin_key}"
@@ -47,18 +44,12 @@
       "mcpServers": {
         "bitcoin-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "bitcoin-mcp@latest"
-          ],
+          "args": ["-y", "bitcoin-mcp@latest"],
           "env": {}
         },
         "bitcoin-mcp-stdio": {
           "command": "npx",
-          "args": [
-            "-y",
-            "bitcoin-mcp@latest"
-          ],
+          "args": ["-y", "bitcoin-mcp@latest"],
           "env": {}
         }
       }

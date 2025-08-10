@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@anaisbetts/mcp-youtube"
-      ],
+      "args": ["-y", "@anaisbetts/mcp-youtube"],
       "env": {}
     }
   },

@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/build/index.js"
-      ],
+      "args": ["${__dirname}/build/index.js"],
       "env": {
         "SUBSCRIPTION_ID": "${user_config.subscription_id}"
       }
@@ -38,9 +36,7 @@
       "mcpServers": {
         "azure-resource-graph-mcp-server": {
           "command": "node",
-          "args": [
-            "C:\\YOUR_WORKSPACE\\azure-resource-graph-mcp-server\\build\\index.js"
-          ],
+          "args": ["C:\\YOUR_WORKSPACE\\azure-resource-graph-mcp-server\\build\\index.js"],
           "env": {
             "SUBSCRIPTION_ID": "xxxxxx-xx-xx-xx-xxxxxx"
           }

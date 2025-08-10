@@ -11,9 +11,7 @@
     "type": "node",
     "mcp_config": {
       "command": "pnpm",
-      "args": [
-        "dev"
-      ],
+      "args": ["dev"],
       "env": {
         "APP_URL": "${user_config.app_url}"
       }
@@ -39,25 +37,17 @@
       "mcpServers": {
         "metamcp-docker-compose": {
           "command": "docker",
-          "args": [
-            "compose",
-            "up",
-            "-d"
-          ],
+          "args": ["compose", "up", "-d"],
           "env": {}
         },
         "metamcp-dev": {
           "command": "pnpm",
-          "args": [
-            "dev"
-          ],
+          "args": ["dev"],
           "env": {}
         },
         "mcp-hn": {
           "command": "uvx",
-          "args": [
-            "mcp-hn"
-          ],
+          "args": ["mcp-hn"],
           "env": {}
         }
       }

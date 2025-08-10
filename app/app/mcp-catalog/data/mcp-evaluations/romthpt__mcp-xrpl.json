@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npm",
-      "args": [
-        "start"
-      ],
+      "args": ["start"],
       "env": {
         "DEFAULT_SEED": "${user_config.default_seed}",
         "XRPL_NETWORK": "${user_config.xrpl_network}"
@@ -46,9 +44,7 @@
       "mcpServers": {
         "RomThpt-mcp-xrpl": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         }
       }

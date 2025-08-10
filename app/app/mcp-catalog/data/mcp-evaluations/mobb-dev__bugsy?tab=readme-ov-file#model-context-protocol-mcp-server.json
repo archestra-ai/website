@@ -45,10 +45,7 @@
       "description": "Select directories the filesystem server can access",
       "multiple": true,
       "required": true,
-      "default": [
-        "${HOME}/Desktop",
-        "${HOME}/Documents"
-      ]
+      "default": ["${HOME}/Desktop", "${HOME}/Documents"]
     },
     "api_key": {
       "type": "string",

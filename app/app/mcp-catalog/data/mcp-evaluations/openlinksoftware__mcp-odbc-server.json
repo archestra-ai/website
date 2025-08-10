@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "tsx",
-        "mcp-ser.ts"
-      ],
+      "args": ["tsx", "mcp-ser.ts"],
       "env": {
         "API_KEY": "${user_config.api_key}",
         "ODBC_DSN": "${user_config.odbc_dsn}",

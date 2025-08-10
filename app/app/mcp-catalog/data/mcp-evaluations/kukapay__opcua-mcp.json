@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "${__dirname}/main.py"
-      ],
+      "args": ["${__dirname}/main.py"],
       "env": {
         "OPCUA_SERVER_URL": "${user_config.opcua_server_url}"
       }
@@ -38,9 +36,7 @@
       "mcpServers": {
         "opcua-mcp": {
           "command": "python",
-          "args": [
-            "path/to/opcua_mcp/main.py"
-          ],
+          "args": ["path/to/opcua_mcp/main.py"],
           "env": {
             "OPCUA_SERVER_URL": "your-opc-ua-server-url"
           }

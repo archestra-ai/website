@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "trieve-mcp-server@latest"
-      ],
+      "args": ["-y", "trieve-mcp-server@latest"],
       "env": {
         "TRIEVE_API_KEY": "${user_config.api_key}",
         "TRIEVE_ORGANIZATION_ID": "${user_config.org_id}",

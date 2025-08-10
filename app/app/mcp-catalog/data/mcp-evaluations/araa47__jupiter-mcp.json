@@ -10,11 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/araa47/jupiter-mcp",
-        "jupiter-mcp"
-      ],
+      "args": ["--from", "git+https://github.com/araa47/jupiter-mcp", "jupiter-mcp"],
       "env": {
         "PRIVATE_KEY": "${user_config.private_key}",
         "SOLANA_RPC_URL": "${user_config.solana_rpc_url}",
@@ -64,11 +60,7 @@
       "mcpServers": {
         "jupiter-mcp": {
           "command": "uvx",
-          "args": [
-            "--from",
-            "git+https://github.com/araa47/jupiter-mcp",
-            "jupiter-mcp"
-          ],
+          "args": ["--from", "git+https://github.com/araa47/jupiter-mcp", "jupiter-mcp"],
           "env": {
             "SOLANA_RPC_URL": "https://api.mainnet-beta.solana.com",
             "PRIVATE_KEY": "${PRIVATE_KEY}",
@@ -106,11 +98,7 @@
         },
         "jupiter-mcp-direct-input": {
           "command": "uvx",
-          "args": [
-            "--from",
-            "git+https://github.com/araa47/jupiter-mcp",
-            "jupiter-mcp"
-          ],
+          "args": ["--from", "git+https://github.com/araa47/jupiter-mcp", "jupiter-mcp"],
           "env": {
             "PRIVATE_KEY": "REPLACE_THIS",
             "SOLANA_RPC_URL": "https://api.mainnet-beta.solana.com",

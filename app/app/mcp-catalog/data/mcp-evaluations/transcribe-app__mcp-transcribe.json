@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/build/index.js"
-      ],
+      "args": ["${__dirname}/build/index.js"],
       "env": {
         "MCP_INTEGRATION_URL": "${user_config.mcp_integration_url}"
       }
@@ -38,9 +36,7 @@
       "mcpServers": {
         "transcribe-local": {
           "command": "node",
-          "args": [
-            "<path-to-unpacked-dxt-location>/build/index.js"
-          ],
+          "args": ["<path-to-unpacked-dxt-location>/build/index.js"],
           "env": {
             "MCP_INTEGRATION_URL": "<your-MCP-integration-URL>"
           }

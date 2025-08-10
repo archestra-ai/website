@@ -11,9 +11,7 @@
     "type": "python",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "${__dirname}/kafka_schema_registry_unified_mcp.py"
-      ],
+      "args": ["${__dirname}/kafka_schema_registry_unified_mcp.py"],
       "env": {
         "SCHEMA_REGISTRY_URL": "${user_config.schema_registry_url}",
         "SCHEMA_REGISTRY_USER": "${user_config.schema_registry_user}",
@@ -87,29 +85,19 @@
         },
         "aywengo-kafka-schema-reg-mcp-stable-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-e",
-            "SCHEMA_REGISTRY_URL=http://localhost:8081",
-            "aywengo/kafka-schema-reg-mcp:stable"
-          ],
+          "args": ["run", "-e", "SCHEMA_REGISTRY_URL=http://localhost:8081", "aywengo/kafka-schema-reg-mcp:stable"],
           "env": {
             "SCHEMA_REGISTRY_URL": "http://localhost:8081"
           }
         },
         "kafka-schema-registry-unified-mcp-python": {
           "command": "python",
-          "args": [
-            "kafka_schema_registry_unified_mcp.py"
-          ],
+          "args": ["kafka_schema_registry_unified_mcp.py"],
           "env": {}
         },
         "kafka-schema-reg-mcp-docker-compose": {
           "command": "docker-compose",
-          "args": [
-            "up",
-            "-d"
-          ],
+          "args": ["up", "-d"],
           "env": {}
         }
       }

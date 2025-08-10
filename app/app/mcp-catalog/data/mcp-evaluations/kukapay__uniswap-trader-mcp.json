@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/server/index.js"
-      ],
+      "args": ["${__dirname}/server/index.js"],
       "env": {
         "INFURA_KEY": "${user_config.infura_key}",
         "WALLET_PRIVATE_KEY": "${user_config.wallet_private_key}"
@@ -46,9 +44,7 @@
       "mcpServers": {
         "Uniswap-Trader-MCP": {
           "command": "node",
-          "args": [
-            "path/to/uniswap-trader-mcp/server/index.js"
-          ],
+          "args": ["path/to/uniswap-trader-mcp/server/index.js"],
           "env": {
             "INFURA_KEY": "your infura key",
             "WALLET_PRIVATE_KEY": "your private key"

@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/dist/index.js"
-      ],
+      "args": ["${__dirname}/dist/index.js"],
       "env": {}
     }
   },
@@ -28,9 +26,7 @@
       "mcpServers": {
         "webpage-screenshot": {
           "command": "node",
-          "args": [
-            "~/path/to/webpage-screenshot-mcp/dist/index.js"
-          ],
+          "args": ["~/path/to/webpage-screenshot-mcp/dist/index.js"],
           "env": {}
         }
       }

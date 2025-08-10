@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://mcp.himalayas.app/sse"
-      ],
+      "args": ["mcp-remote", "https://mcp.himalayas.app/sse"],
       "env": {}
     }
   },
@@ -29,10 +26,7 @@
       "mcpServers": {
         "mcp-remote": {
           "command": "npx",
-          "args": [
-            "mcp-remote",
-            "https://mcp.himalayas.app/sse"
-          ],
+          "args": ["mcp-remote", "https://mcp.himalayas.app/sse"],
           "env": {}
         }
       }

@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "metmuseum-mcp"
-      ],
+      "args": ["-y", "metmuseum-mcp"],
       "env": {}
     }
   },
@@ -29,10 +26,7 @@
       "mcpServers": {
         "metmuseum-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "metmuseum-mcp"
-          ],
+          "args": ["-y", "metmuseum-mcp"],
           "env": {}
         }
       }

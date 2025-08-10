@@ -56,10 +56,7 @@
         },
         "ghcr.io-gbrigandi-mcp-server-wazuh-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "ghcr.io/gbrigandi/mcp-server-wazuh:latest"
-          ],
+          "args": ["run", "ghcr.io/gbrigandi/mcp-server-wazuh:latest"],
           "env": {}
         }
       }

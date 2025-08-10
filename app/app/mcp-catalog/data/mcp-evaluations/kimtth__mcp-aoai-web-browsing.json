@@ -11,9 +11,7 @@
     "type": "python",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "chatgui.py"
-      ],
+      "args": ["chatgui.py"],
       "env": {
         "AZURE_OPEN_AI_ENDPOINT": "${user_config.azure_open_ai_endpoint}",
         "AZURE_OPEN_AI_API_KEY": "${user_config.azure_open_ai_api_key}",
@@ -63,9 +61,7 @@
       "mcpServers": {
         "mcp-web-auto": {
           "command": "python",
-          "args": [
-            "chatgui.py"
-          ],
+          "args": ["chatgui.py"],
           "env": {}
         }
       }

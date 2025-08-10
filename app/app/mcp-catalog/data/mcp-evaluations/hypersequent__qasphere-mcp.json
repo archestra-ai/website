@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "qasphere-mcp"
-      ],
+      "args": ["-y", "qasphere-mcp"],
       "env": {
         "QASPHERE_TENANT_URL": "${user_config.tenant_url}",
         "QASPHERE_API_KEY": "${user_config.api_key}"
@@ -46,10 +43,7 @@
       "mcpServers": {
         "qasphere-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "qasphere-mcp"
-          ],
+          "args": ["-y", "qasphere-mcp"],
           "env": {
             "QASPHERE_TENANT_URL": "your-company.region.qasphere.com",
             "QASPHERE_API_KEY": "your-api-key"

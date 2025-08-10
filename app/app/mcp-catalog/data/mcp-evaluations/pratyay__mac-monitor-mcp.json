@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "${__dirname}/src/monitor.py"
-      ],
+      "args": ["${__dirname}/src/monitor.py"],
       "env": {}
     }
   },
@@ -28,9 +26,7 @@
       "mcpServers": {
         "mac-monitor-mcp": {
           "command": "python",
-          "args": [
-            "src/monitor.py"
-          ],
+          "args": ["src/monitor.py"],
           "env": {}
         }
       }

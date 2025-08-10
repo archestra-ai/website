@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@hbg/mcp-paperswithcode"
-      ],
+      "args": ["-y", "@hbg/mcp-paperswithcode"],
       "env": {}
     }
   },

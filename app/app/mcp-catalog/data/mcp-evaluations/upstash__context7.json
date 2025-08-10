@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@upstash/context7-mcp"
-      ]
+      "args": ["-y", "@upstash/context7-mcp"]
     }
   },
   "tools": [],
@@ -28,36 +25,22 @@
       "mcpServers": {
         "upstash-context7-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@upstash/context7-mcp"
-          ],
+          "args": ["-y", "@upstash/context7-mcp"],
           "env": {}
         },
         "upstash-context7-mcp-latest": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@upstash/context7-mcp@latest"
-          ],
+          "args": ["-y", "@upstash/context7-mcp@latest"],
           "env": {}
         },
         "upstash-context7-mcp-bunx": {
           "command": "bunx",
-          "args": [
-            "-y",
-            "@upstash/context7-mcp"
-          ],
+          "args": ["-y", "@upstash/context7-mcp"],
           "env": {}
         },
         "upstash-context7-mcp-deno": {
           "command": "deno",
-          "args": [
-            "run",
-            "--allow-env=NO_DEPRECATION,TRACE_DEPRECATION",
-            "--allow-net",
-            "npm:@upstash/context7-mcp"
-          ],
+          "args": ["run", "--allow-env=NO_DEPRECATION,TRACE_DEPRECATION", "--allow-net", "npm:@upstash/context7-mcp"],
           "env": {}
         }
       }

@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "mcp-hn"
-      ],
+      "args": ["mcp-hn"],
       "env": {}
     }
   },
@@ -28,9 +26,7 @@
       "mcpServers": {
         "mcp-hn": {
           "command": "uvx",
-          "args": [
-            "mcp-hn"
-          ],
+          "args": ["mcp-hn"],
           "env": {}
         }
       }

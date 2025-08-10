@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "editorconfig-mcp-server"
-      ],
+      "args": ["-y", "editorconfig-mcp-server"],
       "env": {
         "PORT": "${user_config.port}"
       }
@@ -44,25 +41,17 @@
         },
         "editorconfig-mcp-server-npx": {
           "command": "npx",
-          "args": [
-            "-y",
-            "editorconfig-mcp-server"
-          ],
+          "args": ["-y", "editorconfig-mcp-server"],
           "env": {}
         },
         "editorconfig-mcp-server-npm-script": {
           "command": "npm",
-          "args": [
-            "run",
-            "format-server"
-          ],
+          "args": ["run", "format-server"],
           "env": {}
         },
         "editorconfig-mcp-server-npm-start": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         },
         "editorconfig-mcp-server-port-8080": {

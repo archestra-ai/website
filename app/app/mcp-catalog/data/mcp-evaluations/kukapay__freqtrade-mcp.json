@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "__main__.py"
-      ],
+      "args": ["--directory", "${__dirname}", "run", "__main__.py"],
       "env": {
         "FREQTRADE_API_URL": "${user_config.freqtrade_api_url}",
         "FREQTRADE_USERNAME": "${user_config.freqtrade_username}",
@@ -56,12 +51,7 @@
       "mcpServers": {
         "freqtrade-mcp": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/your/path/to/freqtrade-mcp",
-            "run",
-            "__main__.py"
-          ],
+          "args": ["--directory", "/your/path/to/freqtrade-mcp", "run", "__main__.py"],
           "env": {
             "FREQTRADE_API_URL": "http://127.0.0.1:8080",
             "FREQTRADE_USERNAME": "your_username",

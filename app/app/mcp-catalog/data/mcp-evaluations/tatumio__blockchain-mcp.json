@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "@tatumio/blockchain-mcp"
-      ],
+      "args": ["@tatumio/blockchain-mcp"],
       "env": {
         "TATUM_API_KEY": "${user_config.api_key}"
       }
@@ -38,9 +36,7 @@
       "mcpServers": {
         "tatumio-blockchain-mcp-configured": {
           "command": "npx",
-          "args": [
-            "@tatumio/blockchain-mcp"
-          ],
+          "args": ["@tatumio/blockchain-mcp"],
           "env": {
             "TATUM_API_KEY": "YOUR_API_KEY"
           }

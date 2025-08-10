@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${user_config.repo_path}/src/qgis_mcp",
-        "run",
-        "qgis_mcp_server.py"
-      ],
+      "args": ["--directory", "${user_config.repo_path}/src/qgis_mcp", "run", "qgis_mcp_server.py"],
       "env": {}
     }
   },

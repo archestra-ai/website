@@ -60,20 +60,12 @@
       "mcpServers": {
         "oci-registry": {
           "command": "thv",
-          "args": [
-            "run",
-            "oci-registry"
-          ],
+          "args": ["run", "oci-registry"],
           "env": {}
         },
         "oci-registry-with-token": {
           "command": "thv",
-          "args": [
-            "run",
-            "--secret",
-            "oci-token,target=OCI_TOKEN",
-            "oci-registry"
-          ],
+          "args": ["run", "--secret", "oci-token,target=OCI_TOKEN", "oci-registry"],
           "env": {}
         },
         "oci-registry-with-user-pass": {
@@ -90,10 +82,7 @@
         },
         "ocireg-mcp-configured": {
           "command": "./ocireg-mcp",
-          "args": [
-            "-port",
-            "9090"
-          ],
+          "args": ["-port", "9090"],
           "env": {}
         }
       }

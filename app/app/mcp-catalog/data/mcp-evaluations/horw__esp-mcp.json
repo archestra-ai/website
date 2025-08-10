@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "main.py"
-      ],
+      "args": ["main.py"],
       "env": {
         "IDF_PATH": "${user_config.idf_path}"
       }
@@ -37,12 +35,7 @@
       "mcpServers": {
         "esp-mcp": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/path/to/cloned/esp-mcp",
-            "run",
-            "main.py"
-          ],
+          "args": ["--directory", "/path/to/cloned/esp-mcp", "run", "main.py"],
           "env": {
             "IDF_PATH": "/path/to/esp-idf"
           }

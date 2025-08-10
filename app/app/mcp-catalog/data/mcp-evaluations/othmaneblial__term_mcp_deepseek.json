@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "server.py"
-      ],
+      "args": ["server.py"],
       "env": {
         "DEEPSEEK_API_KEY": "${user_config.DEEPSEEK_API_KEY}"
       }
@@ -38,9 +36,7 @@
       "mcpServers": {
         "term-mcp-deepseek": {
           "command": "python",
-          "args": [
-            "server.py"
-          ],
+          "args": ["server.py"],
           "env": {}
         }
       }

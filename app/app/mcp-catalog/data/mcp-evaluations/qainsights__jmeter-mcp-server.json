@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "${user_config.uv_path}",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "jmeter_server.py"
-      ],
+      "args": ["--directory", "${__dirname}", "run", "jmeter_server.py"],
       "env": {
         "JMETER_HOME": "${user_config.jmeter_home}",
         "JMETER_JAVA_OPTS": "${user_config.jmeter_java_opts}"
@@ -55,12 +50,7 @@
       "mcpServers": {
         "jmeter": {
           "command": "/path/to/uv",
-          "args": [
-            "--directory",
-            "/path/to/jmeter-mcp-server",
-            "run",
-            "jmeter_server.py"
-          ],
+          "args": ["--directory", "/path/to/jmeter-mcp-server", "run", "jmeter_server.py"],
           "env": {}
         }
       }

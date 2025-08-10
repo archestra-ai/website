@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/build/index.js"
-      ],
+      "args": ["${__dirname}/build/index.js"],
       "env": {}
     }
   },
@@ -28,9 +26,7 @@
       "mcpServers": {
         "website-downloader": {
           "command": "node",
-          "args": [
-            "/path/to/website-downloader/build/index.js"
-          ],
+          "args": ["/path/to/website-downloader/build/index.js"],
           "env": {}
         }
       }

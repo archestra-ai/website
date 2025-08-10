@@ -11,9 +11,7 @@
     "type": "node",
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/dist/index.js"
-      ],
+      "args": ["${__dirname}/dist/index.js"],
       "env": {}
     }
   },
@@ -29,23 +27,17 @@
       "mcpServers": {
         "servemyapi-stdio": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         },
         "servemyapi-http": {
           "command": "node",
-          "args": [
-            "dist/server.js"
-          ],
+          "args": ["dist/server.js"],
           "env": {}
         },
         "servemyapi-configured": {
           "command": "node",
-          "args": [
-            "/ABSOLUTE/PATH/TO/servemyapi/dist/index.js"
-          ],
+          "args": ["/ABSOLUTE/PATH/TO/servemyapi/dist/index.js"],
           "env": {}
         }
       }

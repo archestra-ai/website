@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@tiberriver256/mcp-server-azure-devops"
-      ],
+      "args": ["-y", "@tiberriver256/mcp-server-azure-devops"],
       "env": {
         "AZURE_DEVOPS_ORG_URL": "${user_config.AZURE_DEVOPS_ORG_URL}",
         "AZURE_DEVOPS_AUTH_METHOD": "${user_config.AZURE_DEVOPS_AUTH_METHOD}",
@@ -69,10 +66,7 @@
       "mcpServers": {
         "tiberriver256-mcp-server-azure-devops-azure-identity": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@tiberriver256/mcp-server-azure-devops"
-          ],
+          "args": ["-y", "@tiberriver256/mcp-server-azure-devops"],
           "env": {
             "AZURE_DEVOPS_ORG_URL": "https://dev.azure.com/your-organization",
             "AZURE_DEVOPS_AUTH_METHOD": "azure-identity",
@@ -81,10 +75,7 @@
         },
         "tiberriver256-mcp-server-azure-devops-pat": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@tiberriver256/mcp-server-azure-devops"
-          ],
+          "args": ["-y", "@tiberriver256/mcp-server-azure-devops"],
           "env": {
             "AZURE_DEVOPS_ORG_URL": "https://dev.azure.com/your-organization",
             "AZURE_DEVOPS_AUTH_METHOD": "pat",

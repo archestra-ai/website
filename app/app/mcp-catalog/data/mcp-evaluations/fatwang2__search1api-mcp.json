@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "search1api-mcp"
-      ],
+      "args": ["-y", "search1api-mcp"],
       "env": {
         "SEARCH1API_KEY": "${user_config.api_key}"
       }
@@ -39,35 +36,26 @@
       "mcpServers": {
         "search1api-mcp": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         },
         "search1api-mcp-configured": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {
             "SEARCH1API_KEY": "your_api_key_here"
           }
         },
         "search1api-mcp-npx-configured": {
           "command": "npx",
-          "args": [
-            "-y",
-            "search1api-mcp"
-          ],
+          "args": ["-y", "search1api-mcp"],
           "env": {
             "SEARCH1API_KEY": "YOUR_SEARCH1API_KEY"
           }
         },
         "search1api-mcp-librechat-node": {
           "command": "node",
-          "args": [
-            "/app/mcp-server/search1api-mcp/build/index.js"
-          ],
+          "args": ["/app/mcp-server/search1api-mcp/build/index.js"],
           "env": {}
         }
       }

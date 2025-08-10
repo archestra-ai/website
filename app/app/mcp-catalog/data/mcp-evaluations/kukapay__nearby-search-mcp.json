@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "main.py"
-      ],
+      "args": ["--directory", "${__dirname}", "run", "main.py"],
       "env": {
         "GOOGLE_API_KEY": "${user_config.google_api_key}"
       }
@@ -41,29 +36,19 @@
       "mcpServers": {
         "nearby-search": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "path/to/nearby-search-mcp",
-            "run",
-            "main.py"
-          ],
+          "args": ["--directory", "path/to/nearby-search-mcp", "run", "main.py"],
           "env": {
             "GOOGLE_API_KEY": "your google api key"
           }
         },
         "nearby-search-dev": {
           "command": "mcp",
-          "args": [
-            "dev",
-            "main.py"
-          ],
+          "args": ["dev", "main.py"],
           "env": {}
         },
         "nearby-search-direct": {
           "command": "python",
-          "args": [
-            "main.py"
-          ],
+          "args": ["main.py"],
           "env": {}
         }
       }

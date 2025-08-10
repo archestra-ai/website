@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mongodb-lens"
-      ],
+      "args": ["-y", "mongodb-lens"],
       "env": {
         "MONGODB_URI": "${user_config.mongodb_uri}"
       }

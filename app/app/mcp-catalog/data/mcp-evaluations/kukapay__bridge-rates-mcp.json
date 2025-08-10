@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/index.js"
-      ],
+      "args": ["${__dirname}/index.js"],
       "env": {}
     }
   },
@@ -28,9 +26,7 @@
       "mcpServers": {
         "bridge-rates": {
           "command": "node",
-          "args": [
-            "/absolute/path/to/bridge-rates-mcp/index.js"
-          ],
+          "args": ["/absolute/path/to/bridge-rates-mcp/index.js"],
           "env": {}
         }
       }

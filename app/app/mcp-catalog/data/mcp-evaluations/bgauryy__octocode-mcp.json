@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "octocode-mcp"
-      ]
+      "args": ["octocode-mcp"]
     }
   },
   "tools": [],
@@ -27,9 +25,7 @@
       "mcpServers": {
         "octocode-mcp": {
           "command": "npx",
-          "args": [
-            "octocode-mcp"
-          ],
+          "args": ["octocode-mcp"],
           "env": {}
         }
       }

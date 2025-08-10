@@ -105,11 +105,7 @@
         },
         "assistant-mcp-inspector-cargo": {
           "command": "npx",
-          "args": [
-            "@modelcontextprotocol/inspector",
-            "cargo",
-            "run"
-          ],
+          "args": ["@modelcontextprotocol/inspector", "cargo", "run"],
           "env": {
             "PINECONE_API_KEY": "<YOUR_PINECONE_API_KEY_HERE>",
             "PINECONE_ASSISTANT_HOST": "<YOUR_PINECONE_ASSISTANT_HOST_HERE>"

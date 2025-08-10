@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "locust_server.py"
-      ],
+      "args": ["--directory", "${__dirname}", "run", "locust_server.py"],
       "env": {}
     }
   },
@@ -67,12 +62,7 @@
       "mcpServers": {
         "locust": {
           "command": "/Users/naveenkumar/.local/bin/uv",
-          "args": [
-            "--directory",
-            "/Users/naveenkumar/Gits/locust-mcp-server",
-            "run",
-            "locust_server.py"
-          ],
+          "args": ["--directory", "/Users/naveenkumar/Gits/locust-mcp-server", "run", "locust_server.py"],
           "env": {}
         }
       }

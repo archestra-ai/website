@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "defi-yields-mcp"
-      ],
+      "args": ["defi-yields-mcp"],
       "env": {}
     }
   },
@@ -28,9 +26,7 @@
       "mcpServers": {
         "defi-yields-mcp": {
           "command": "uvx",
-          "args": [
-            "defi-yields-mcp"
-          ],
+          "args": ["defi-yields-mcp"],
           "env": {}
         }
       }

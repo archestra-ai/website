@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/build/index.js"
-      ],
+      "args": ["${__dirname}/build/index.js"],
       "env": {
         "LANGFUSE_PUBLIC_KEY": "${user_config.langfuse_public_key}",
         "LANGFUSE_SECRET_KEY": "${user_config.langfuse_secret_key}",
@@ -54,9 +52,7 @@
       "mcpServers": {
         "langfuse-claude-desktop": {
           "command": "node",
-          "args": [
-            "<absolute-path>/build/index.js"
-          ],
+          "args": ["<absolute-path>/build/index.js"],
           "env": {
             "LANGFUSE_PUBLIC_KEY": "your-public-key",
             "LANGFUSE_SECRET_KEY": "your-secret-key",
@@ -65,9 +61,7 @@
         },
         "langfuse-cursor": {
           "command": "node",
-          "args": [
-            "absolute-path/build/index.js"
-          ],
+          "args": ["absolute-path/build/index.js"],
           "env": {
             "LANGFUSE_PUBLIC_KEY": "your-public-key",
             "LANGFUSE_SECRET_KEY": "your-secret-key",

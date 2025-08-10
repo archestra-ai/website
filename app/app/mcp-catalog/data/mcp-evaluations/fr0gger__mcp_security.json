@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${user_config.project_directory}",
-        "run",
-        "orkl"
-      ],
+      "args": ["--directory", "${user_config.project_directory}", "run", "orkl"],
       "env": {}
     }
   },
@@ -38,12 +33,7 @@
       "mcpServers": {
         "orkl": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/MyMCP/mcptest/orkl",
-            "run",
-            "orkl"
-          ],
+          "args": ["--directory", "/MyMCP/mcptest/orkl", "run", "orkl"],
           "env": {}
         }
       }

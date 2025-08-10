@@ -11,10 +11,7 @@
     "type": "node",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@confluentinc/mcp-confluent"
-      ],
+      "args": ["-y", "@confluentinc/mcp-confluent"],
       "env": {
         "HTTP_HOST": "${user_config.HTTP_HOST}",
         "HTTP_PORT": "${user_config.HTTP_PORT}",

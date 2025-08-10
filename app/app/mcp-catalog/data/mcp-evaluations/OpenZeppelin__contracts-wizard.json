@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@openzeppelin/contracts-mcp"
-      ],
+      "args": ["-y", "@openzeppelin/contracts-mcp"],
       "env": {}
     }
   },

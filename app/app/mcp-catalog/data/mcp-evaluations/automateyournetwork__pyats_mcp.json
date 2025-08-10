@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python3",
-      "args": [
-        "-u",
-        "${__dirname}/pyats_mcp_server.py"
-      ],
+      "args": ["-u", "${__dirname}/pyats_mcp_server.py"],
       "env": {
         "PYATS_TESTBED_PATH": "${user_config.testbed_path}"
       }
@@ -38,19 +35,14 @@
       "mcpServers": {
         "pyats-mcp-server-stdio": {
           "command": "python3",
-          "args": [
-            "pyats_mcp_server.py"
-          ],
+          "args": ["pyats_mcp_server.py"],
           "env": {
             "PYATS_TESTBED_PATH": "/absolute/path/to/testbed.yaml"
           }
         },
         "pyats-mcp-server-oneshot": {
           "command": "python3",
-          "args": [
-            "pyats_mcp_server.py",
-            "--oneshot"
-          ],
+          "args": ["pyats_mcp_server.py", "--oneshot"],
           "env": {
             "PYATS_TESTBED_PATH": "/absolute/path/to/testbed.yaml"
           }
@@ -89,10 +81,7 @@
         },
         "pyats-mcp-server-python-configured": {
           "command": "python3",
-          "args": [
-            "-u",
-            "/Users/johncapobianco/pyATS_MCP/pyats_mcp_server.py"
-          ],
+          "args": ["-u", "/Users/johncapobianco/pyATS_MCP/pyats_mcp_server.py"],
           "env": {
             "PYATS_TESTBED_PATH": "/Users/johncapobianco/pyATS_MCP/testbed.yaml"
           }

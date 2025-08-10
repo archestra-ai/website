@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "y",
-        "@joshuarileydev/supabase-mcp-server"
-      ],
+      "args": ["y", "@joshuarileydev/supabase-mcp-server"],
       "env": {
         "SUPABASE_API_KEY": "${user_config.supabase_api_key}"
       }
@@ -39,10 +36,7 @@
       "mcpServers": {
         "joshuarileydev-supabase-mcp-server": {
           "command": "npx",
-          "args": [
-            "y",
-            "@joshuarileydev/supabase-mcp-server"
-          ],
+          "args": ["y", "@joshuarileydev/supabase-mcp-server"],
           "env": {
             "SUPABASE_API_KEY": "API_KEY_HERE"
           }

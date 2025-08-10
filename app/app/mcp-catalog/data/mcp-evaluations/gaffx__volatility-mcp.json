@@ -10,11 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "${__dirname}/vol_mcp_server.py",
-        "-i",
-        "${user_config.memory_image}"
-      ],
+      "args": ["${__dirname}/vol_mcp_server.py", "-i", "${user_config.memory_image}"],
       "env": {}
     }
   },
@@ -37,9 +33,7 @@
       "mcpServers": {
         "volatility-fastapi-server": {
           "command": "uvicorn",
-          "args": [
-            "volatility_fastapi_server:app"
-          ],
+          "args": ["volatility_fastapi_server:app"],
           "env": {}
         },
         "vol-mcp-server-configured": {

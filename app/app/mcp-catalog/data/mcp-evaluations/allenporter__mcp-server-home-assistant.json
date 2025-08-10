@@ -10,14 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "mcp-server-home-assistant",
-        "-v",
-        "-v"
-      ],
+      "args": ["--directory", "${__dirname}", "run", "mcp-server-home-assistant", "-v", "-v"],
       "env": {
         "HOME_ASSISTANT_WEB_SOCKET_URL": "${user_config.home_assistant_websocket_url}",
         "HOME_ASSISTANT_API_TOKEN": "${user_config.home_assistant_api_token}"

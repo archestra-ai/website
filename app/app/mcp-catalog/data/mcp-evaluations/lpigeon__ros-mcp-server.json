@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "server.py"
-      ],
+      "args": ["--directory", "${__dirname}", "run", "server.py"],
       "env": {
         "LOCAL_IP": "${user_config.LOCAL_IP}",
         "ROSBRIDGE_IP": "${user_config.ROSBRIDGE_IP}",
@@ -55,12 +50,7 @@
       "mcpServers": {
         "ros-mcp-server": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/ABSOLUTE/PATH/TO/PARENT/FOLDER/ros-mcp-server",
-            "run",
-            "server.py"
-          ],
+          "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/FOLDER/ros-mcp-server", "run", "server.py"],
           "env": {}
         }
       }

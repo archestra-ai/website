@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@kimtaeyoon83/mcp-server-youtube-transcript"
-      ],
+      "args": ["-y", "@kimtaeyoon83/mcp-server-youtube-transcript"],
       "env": {}
     }
   },
@@ -29,10 +26,7 @@
       "mcpServers": {
         "kimtaeyoon83-mcp-server-youtube-transcript": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@kimtaeyoon83/mcp-server-youtube-transcript"
-          ],
+          "args": ["-y", "@kimtaeyoon83/mcp-server-youtube-transcript"],
           "env": {}
         }
       }

@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "yfmcp@latest"
-      ]
+      "args": ["yfmcp@latest"]
     }
   },
   "tools": [],
@@ -27,19 +25,12 @@
       "mcpServers": {
         "yfmcp": {
           "command": "uvx",
-          "args": [
-            "yfmcp@latest"
-          ],
+          "args": ["yfmcp@latest"],
           "env": {}
         },
         "narumi-yfinance-mcp-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "narumi/yfinance-mcp"
-          ],
+          "args": ["run", "-i", "--rm", "narumi/yfinance-mcp"],
           "env": {}
         }
       }

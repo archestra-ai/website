@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-echarts"
-      ],
+      "args": ["-y", "mcp-echarts"],
       "env": {
         "MINIO_ENDPOINT": "${user_config.MINIO_ENDPOINT}",
         "MINIO_PORT": "${user_config.MINIO_PORT}",
@@ -79,44 +76,27 @@
       "mcpServers": {
         "mcp-echarts-stdio": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mcp-echarts"
-          ],
+          "args": ["-y", "mcp-echarts"],
           "env": {}
         },
         "mcp-echarts-stdio-windows": {
           "command": "cmd",
-          "args": [
-            "/c",
-            "npx",
-            "-y",
-            "mcp-echarts"
-          ],
+          "args": ["/c", "npx", "-y", "mcp-echarts"],
           "env": {}
         },
         "mcp-echarts-sse": {
           "command": "mcp-echarts",
-          "args": [
-            "-t",
-            "sse"
-          ],
+          "args": ["-t", "sse"],
           "env": {}
         },
         "mcp-echarts-streamable": {
           "command": "mcp-echarts",
-          "args": [
-            "-t",
-            "streamable"
-          ],
+          "args": ["-t", "streamable"],
           "env": {}
         },
         "mcp-echarts-dev": {
           "command": "npm",
-          "args": [
-            "run",
-            "start"
-          ],
+          "args": ["run", "start"],
           "env": {}
         }
       }

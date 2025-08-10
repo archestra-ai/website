@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "${__dirname}/ghidra_server.py"
-      ],
+      "args": ["${__dirname}/ghidra_server.py"],
       "env": {}
     }
   },
@@ -28,9 +26,7 @@
       "mcpServers": {
         "ghidra": {
           "command": "python",
-          "args": [
-            "PATH-TO-REPO/GhidraMCP/ghidra_server.py"
-          ],
+          "args": ["PATH-TO-REPO/GhidraMCP/ghidra_server.py"],
           "env": {}
         }
       }

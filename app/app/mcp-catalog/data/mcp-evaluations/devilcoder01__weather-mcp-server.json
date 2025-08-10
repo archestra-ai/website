@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "${__dirname}/main.py"
-      ],
+      "args": ["${__dirname}/main.py"],
       "env": {
         "WEATHER_API_KEY": "${user_config.api_key}"
       }
@@ -38,9 +36,7 @@
       "mcpServers": {
         "devilcoder01-weather-mcp-server": {
           "command": "python",
-          "args": [
-            "main.py"
-          ],
+          "args": ["main.py"],
           "env": {}
         }
       }

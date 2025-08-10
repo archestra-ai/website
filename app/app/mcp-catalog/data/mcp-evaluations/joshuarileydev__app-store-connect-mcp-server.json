@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@joshuarileydev/app-store-connect-mcp-server"
-      ],
+      "args": ["-y", "@joshuarileydev/app-store-connect-mcp-server"],
       "env": {
         "APP_STORE_CONNECT_KEY_ID": "${user_config.key_id}",
         "APP_STORE_CONNECT_ISSUER_ID": "${user_config.issuer_id}",
@@ -61,10 +58,7 @@
       "mcpServers": {
         "joshuarileydev-app-store-connect-mcp-server": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@joshuarileydev/app-store-connect-mcp-server"
-          ],
+          "args": ["-y", "@joshuarileydev/app-store-connect-mcp-server"],
           "env": {
             "APP_STORE_CONNECT_KEY_ID": "YOUR_KEY_ID",
             "APP_STORE_CONNECT_ISSUER_ID": "YOUR_ISSUER_ID",
@@ -74,10 +68,7 @@
         },
         "appstore-connect-mcp-server": {
           "command": "npx",
-          "args": [
-            "-y",
-            "appstore-connect-mcp-server"
-          ],
+          "args": ["-y", "appstore-connect-mcp-server"],
           "env": {}
         }
       }

@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "mvf1-cli",
-      "args": [
-        "mcp"
-      ],
+      "args": ["mcp"],
       "env": {}
     }
   },
@@ -28,9 +26,7 @@
       "mcpServers": {
         "mvf1-stdio": {
           "command": "mvf1-cli",
-          "args": [
-            "mcp"
-          ],
+          "args": ["mcp"],
           "env": {}
         }
       }

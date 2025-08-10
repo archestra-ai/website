@@ -10,11 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/redis/mcp-redis.git",
-        "redis-mcp-server"
-      ],
+      "args": ["--from", "git+https://github.com/redis/mcp-redis.git", "redis-mcp-server"],
       "env": {
         "REDIS_HOST": "${user_config.host}",
         "REDIS_PORT": "${user_config.port}",
@@ -126,12 +122,7 @@
         },
         "redis-mcp-server-configured": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "<your_mcp_server_directory>",
-            "run",
-            "src/main.py"
-          ],
+          "args": ["--directory", "<your_mcp_server_directory>", "run", "src/main.py"],
           "env": {
             "REDIS_HOST": "<your_redis_database_hostname>",
             "REDIS_PORT": "<your_redis_database_port>",
@@ -143,15 +134,7 @@
         },
         "mcp-redis-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "--name",
-            "redis-mcp-server",
-            "-i",
-            "-e",
-            "REDIS_HOST=<redis_hostname>"
-          ],
+          "args": ["run", "--rm", "--name", "redis-mcp-server", "-i", "-e", "REDIS_HOST=<redis_hostname>"],
           "env": {
             "REDIS_HOST": "<redis_hostname>"
           }

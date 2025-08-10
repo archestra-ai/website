@@ -11,9 +11,7 @@
     "type": "python",
     "mcp_config": {
       "command": "${__dirname}/alltrails_mcp_venv/bin/python3",
-      "args": [
-        "${__dirname}/server.py"
-      ],
+      "args": ["${__dirname}/server.py"],
       "env": {}
     }
   },
@@ -29,30 +27,22 @@
       "mcpServers": {
         "alltrails-mcp-stdio": {
           "command": "python3",
-          "args": [
-            "server.py"
-          ],
+          "args": ["server.py"],
           "env": {}
         },
         "alltrails_mcp_server-venv": {
           "command": "/path/to/your/alltrails_mcp/alltrails_mcp_venv/bin/python3",
-          "args": [
-            "/path/to/your/alltrails_mcp/server.py"
-          ],
+          "args": ["/path/to/your/alltrails_mcp/server.py"],
           "env": {}
         },
         "alltrails_mcp_server-system-relative": {
           "command": "python3",
-          "args": [
-            "/path/to/your/alltrails_mcp/server.py"
-          ],
+          "args": ["/path/to/your/alltrails_mcp/server.py"],
           "env": {}
         },
         "alltrails_mcp_server-system-absolute": {
           "command": "/usr/bin/python3",
-          "args": [
-            "/path/to/your/alltrails_mcp/server.py"
-          ],
+          "args": ["/path/to/your/alltrails_mcp/server.py"],
           "env": {}
         }
       }

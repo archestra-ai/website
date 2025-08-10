@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${user_config.repo_src_path}",
-        "run",
-        "jupyter_mcp_server.py"
-      ],
+      "args": ["--directory", "${user_config.repo_src_path}", "run", "jupyter_mcp_server.py"],
       "env": {}
     }
   },
@@ -38,12 +33,7 @@
       "mcpServers": {
         "jupyter": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/path/to/src",
-            "run",
-            "jupyter_mcp_server.py"
-          ],
+          "args": ["--directory", "/path/to/src", "run", "jupyter_mcp_server.py"],
           "env": {}
         }
       }

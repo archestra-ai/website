@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "ciphertrust-mcp-server"
-      ],
+      "args": ["run", "ciphertrust-mcp-server"],
       "env": {
         "CIPHERTRUST_URL": "${user_config.ciphertrust_url}",
         "CIPHERTRUST_USER": "${user_config.ciphertrust_user}",
@@ -62,18 +59,12 @@
       "mcpServers": {
         "ciphertrust-mcp-server": {
           "command": "uv",
-          "args": [
-            "run",
-            "ciphertrust-mcp-server"
-          ],
+          "args": ["run", "ciphertrust-mcp-server"],
           "env": {}
         },
         "ciphertrust-mcp-server-configured": {
           "command": "uv",
-          "args": [
-            "run",
-            "ciphertrust-mcp-server"
-          ],
+          "args": ["run", "ciphertrust-mcp-server"],
           "env": {
             "CIPHERTRUST_URL": "https://your-ciphertrust-manager.example.com",
             "CIPHERTRUST_USER": "admin",
@@ -83,22 +74,12 @@
         },
         "ciphertrust_mcp_server": {
           "command": "uv",
-          "args": [
-            "run",
-            "python",
-            "-m",
-            "ciphertrust_mcp_server.__main__"
-          ],
+          "args": ["run", "python", "-m", "ciphertrust_mcp_server.__main__"],
           "env": {}
         },
         "ciphertrust_mcp_server-configured": {
           "command": "uv",
-          "args": [
-            "run",
-            "python",
-            "-m",
-            "ciphertrust_mcp_server.__main__"
-          ],
+          "args": ["run", "python", "-m", "ciphertrust_mcp_server.__main__"],
           "env": {
             "CIPHERTRUST_URL": "https://your-ciphertrust-manager.example.com",
             "CIPHERTRUST_USER": "admin",

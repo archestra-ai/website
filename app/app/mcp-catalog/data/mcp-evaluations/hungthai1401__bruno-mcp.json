@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "bruno-mcp"
-      ],
+      "args": ["-y", "bruno-mcp"],
       "env": {}
     }
   },
@@ -29,10 +26,7 @@
       "mcpServers": {
         "bruno-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "bruno-mcp"
-          ],
+          "args": ["-y", "bruno-mcp"],
           "env": {}
         }
       }

@@ -11,10 +11,7 @@
     "type": "node",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@pipedream/mcp"
-      ],
+      "args": ["-y", "@pipedream/mcp"],
       "env": {
         "PIPEDREAM_CLIENT_ID": "${user_config.pipedream_client_id}",
         "PIPEDREAM_CLIENT_SECRET": "${user_config.pipedream_client_secret}",

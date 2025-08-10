@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "fastmcp",
-      "args": [
-        "run",
-        "${__dirname}/server.py"
-      ],
+      "args": ["run", "${__dirname}/server.py"],
       "env": {}
     }
   },
@@ -29,10 +26,7 @@
       "mcpServers": {
         "webhook-tester-mcp": {
           "command": "fastmcp",
-          "args": [
-            "run",
-            "{{fullPath}}\\Webhook-test_mcp\\server.py"
-          ],
+          "args": ["run", "{{fullPath}}\\Webhook-test_mcp\\server.py"],
           "env": {}
         }
       }

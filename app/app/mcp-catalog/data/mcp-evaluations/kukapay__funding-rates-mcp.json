@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "funding-rates-mcp"
-      ],
+      "args": ["--directory", "${__dirname}", "run", "funding-rates-mcp"],
       "env": {}
     }
   },
@@ -31,12 +26,7 @@
       "mcpServers": {
         "funding-rates-mcp": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/absolute/path/to/funding-rates-mcp",
-            "run",
-            "funding-rates-mcp"
-          ],
+          "args": ["--directory", "/absolute/path/to/funding-rates-mcp", "run", "funding-rates-mcp"],
           "env": {}
         }
       }

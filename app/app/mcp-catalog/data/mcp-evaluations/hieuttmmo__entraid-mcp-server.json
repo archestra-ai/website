@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "fastmcp",
-      "args": [
-        "dev",
-        "${__dirname}/src/msgraph_mcp_server/server.py"
-      ],
+      "args": ["dev", "${__dirname}/src/msgraph_mcp_server/server.py"],
       "env": {
         "TENANT_ID": "${user_config.tenant_id}",
         "CLIENT_ID": "${user_config.client_id}",
@@ -55,10 +52,7 @@
       "mcpServers": {
         "msgraph-mcp-server": {
           "command": "fastmcp",
-          "args": [
-            "dev",
-            "/path/to/src/msgraph_mcp_server/server.py"
-          ],
+          "args": ["dev", "/path/to/src/msgraph_mcp_server/server.py"],
           "env": {}
         }
       }

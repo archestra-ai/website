@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "dotnet",
-      "args": [
-        "run",
-        "--project",
-        "${user_config.project_path}",
-        "--no-build"
-      ],
+      "args": ["run", "--project", "${user_config.project_path}", "--no-build"],
       "env": {}
     }
   },
@@ -38,12 +33,7 @@
       "mcpServers": {
         "mcp-afl-server": {
           "command": "dotnet",
-          "args": [
-            "run",
-            "--project",
-            "C:\\path\\to\\mcp-afl-server\\src",
-            "--no-build"
-          ],
+          "args": ["run", "--project", "C:\\path\\to\\mcp-afl-server\\src", "--no-build"],
           "env": {}
         }
       }

@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "fastmcp",
-      "args": [
-        "dev",
-        "pearch_mcp.py"
-      ],
+      "args": ["dev", "pearch_mcp.py"],
       "env": {
         "PEARCH_API_KEY": "${user_config.pearch_mcp_key}"
       }
@@ -39,10 +36,7 @@
       "mcpServers": {
         "pearch_mcp-dev": {
           "command": "fastmcp",
-          "args": [
-            "dev",
-            "pearch_mcp.py"
-          ],
+          "args": ["dev", "pearch_mcp.py"],
           "env": {}
         }
       }

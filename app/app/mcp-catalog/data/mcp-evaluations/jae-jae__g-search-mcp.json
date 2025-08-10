@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "g-search-mcp"
-      ],
+      "args": ["-y", "g-search-mcp"],
       "env": {}
     }
   },
@@ -37,19 +34,12 @@
       "mcpServers": {
         "g-search": {
           "command": "npx",
-          "args": [
-            "-y",
-            "g-search-mcp"
-          ],
+          "args": ["-y", "g-search-mcp"],
           "env": {}
         },
         "g-search-debug": {
           "command": "npx",
-          "args": [
-            "-y",
-            "g-search-mcp",
-            "--debug"
-          ],
+          "args": ["-y", "g-search-mcp", "--debug"],
           "env": {}
         }
       }

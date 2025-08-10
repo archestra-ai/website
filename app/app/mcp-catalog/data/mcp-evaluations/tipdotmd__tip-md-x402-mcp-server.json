@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/dist/mcp-server/src/index.js"
-      ],
+      "args": ["${__dirname}/dist/mcp-server/src/index.js"],
       "env": {
         "MONGODB_URI": "${user_config.mongodb_uri}",
         "CDP_API_KEY_ID": "${user_config.cdp_api_key_id}",
@@ -86,27 +84,21 @@
       "mcpServers": {
         "tip-md-demo": {
           "command": "node",
-          "args": [
-            "dist/mcp-server/src/index.js"
-          ],
+          "args": ["dist/mcp-server/src/index.js"],
           "env": {
             "NODE_ENV": "demo"
           }
         },
         "tip-md-x402-mcp-server-demo-npm": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {
             "NODE_ENV": "demo"
           }
         },
         "tip-md-x402-mcp-server-production": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {
             "NODE_ENV": "production"
           }

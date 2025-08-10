@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "${__dirname}/src/prometheus_mcp_server/main.py"
-      ],
+      "args": ["${__dirname}/src/prometheus_mcp_server/main.py"],
       "env": {
         "PYTHONPATH": "${__dirname}/src",
         "PROMETHEUS_URL": "${user_config.prometheus_url}",
@@ -68,14 +66,7 @@
       "mcpServers": {
         "prometheus-mcp-server-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "PROMETHEUS_URL",
-            "ghcr.io/pab1it0/prometheus-mcp-server:latest"
-          ],
+          "args": ["run", "-i", "--rm", "-e", "PROMETHEUS_URL", "ghcr.io/pab1it0/prometheus-mcp-server:latest"],
           "env": {
             "PROMETHEUS_URL": "<url>"
           }

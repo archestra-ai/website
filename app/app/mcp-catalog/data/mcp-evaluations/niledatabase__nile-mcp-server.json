@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/dist/index.js"
-      ],
+      "args": ["${__dirname}/dist/index.js"],
       "env": {
         "NILE_API_KEY": "${user_config.nile_api_key}",
         "NILE_WORKSPACE_SLUG": "${user_config.nile_workspace_slug}"
@@ -45,24 +43,17 @@
       "mcpServers": {
         "niledatabase-nile-mcp-server-stdio": {
           "command": "node",
-          "args": [
-            "dist/index.js"
-          ],
+          "args": ["dist/index.js"],
           "env": {}
         },
         "niledatabase-nile-mcp-server-dev": {
           "command": "npm",
-          "args": [
-            "run",
-            "dev"
-          ],
+          "args": ["run", "dev"],
           "env": {}
         },
         "niledatabase-nile-mcp-server-configured": {
           "command": "node",
-          "args": [
-            "/path/to/your/nile-mcp-server/dist/index.js"
-          ],
+          "args": ["/path/to/your/nile-mcp-server/dist/index.js"],
           "env": {
             "NILE_API_KEY": "your_api_key_here",
             "NILE_WORKSPACE_SLUG": "your_workspace_slug"
@@ -70,9 +61,7 @@
         },
         "niledatabase-nile-mcp-server-sse": {
           "command": "node",
-          "args": [
-            "dist/index.js"
-          ],
+          "args": ["dist/index.js"],
           "env": {
             "MCP_SERVER_MODE": "sse"
           }

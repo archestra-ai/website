@@ -18,9 +18,7 @@
       "description": "Select the directories that the server is allowed to access for file operations and searches.",
       "required": true,
       "multiple": true,
-      "default": [
-        "${HOME}"
-      ]
+      "default": ["${HOME}"]
     },
     "llm_model": {
       "type": "string",

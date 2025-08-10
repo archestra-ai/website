@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${user_config.install_path}",
-        "run",
-        "memcord"
-      ],
+      "args": ["--directory", "${user_config.install_path}", "run", "memcord"],
       "env": {
         "PYTHONPATH": "${user_config.install_path}/src"
       }
@@ -40,24 +35,14 @@
       "mcpServers": {
         "memcord-desktop-config": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "</path/to/memcord>",
-            "run",
-            "memcord"
-          ],
+          "args": ["--directory", "</path/to/memcord>", "run", "memcord"],
           "env": {
             "PYTHONPATH": "</path/to/memcord/>/src"
           }
         },
         "memcord-stdio": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "</path/to/memcord>",
-            "run",
-            "memcord"
-          ],
+          "args": ["--directory", "</path/to/memcord>", "run", "memcord"],
           "env": {
             "PYTHONPATH": "</path/to/memcord>/src"
           }

@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@ipfind/ipfind-mcp-server"
-      ],
+      "args": ["-y", "@ipfind/ipfind-mcp-server"],
       "env": {
         "IPFIND_API_KEY": "${user_config.ipfind_api_key}"
       }
@@ -39,10 +36,7 @@
       "mcpServers": {
         "ipfind-mcp-server": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@ipfind/ipfind-mcp-server"
-          ],
+          "args": ["-y", "@ipfind/ipfind-mcp-server"],
           "env": {
             "IPFIND_API_KEY": "<API KEY GOES HERE>"
           }

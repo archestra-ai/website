@@ -10,11 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "${__dirname}/server.py",
-        "--fb-token",
-        "${user_config.meta_access_token}"
-      ],
+      "args": ["${__dirname}/server.py", "--fb-token", "${user_config.meta_access_token}"],
       "env": {}
     }
   },
@@ -38,29 +34,17 @@
       "mcpServers": {
         "gomarble-ai-facebook-ads-mcp-server": {
           "command": "python",
-          "args": [
-            "/path/to/your/fb-ads-mcp-server/server.py",
-            "--fb-token",
-            "YOUR_META_ACCESS_TOKEN"
-          ],
+          "args": ["/path/to/your/fb-ads-mcp-server/server.py", "--fb-token", "YOUR_META_ACCESS_TOKEN"],
           "env": {}
         },
         "gomarble-ai-facebook-ads-mcp-server-venv": {
           "command": "/path/to/your/fb-ads-mcp-server/venv/bin/python",
-          "args": [
-            "/path/to/your/fb-ads-mcp-server/server.py",
-            "--fb-token",
-            "YOUR_META_ACCESS_TOKEN"
-          ],
+          "args": ["/path/to/your/fb-ads-mcp-server/server.py", "--fb-token", "YOUR_META_ACCESS_TOKEN"],
           "env": {}
         },
         "gomarble-ai-facebook-ads-mcp-server-debug": {
           "command": "python",
-          "args": [
-            "server.py",
-            "--fb-token",
-            "YOUR_META_ACCESS_TOKEN"
-          ],
+          "args": ["server.py", "--fb-token", "YOUR_META_ACCESS_TOKEN"],
           "env": {}
         }
       }

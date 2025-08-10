@@ -11,9 +11,7 @@
     "type": "python",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "server.py"
-      ],
+      "args": ["server.py"],
       "env": {
         "SONARQUBE_URL": "${user_config.sonarqube_url}",
         "SONARQUBE_TOKEN": "${user_config.sonarqube_token}",
@@ -54,9 +52,7 @@
       "mcpServers": {
         "fastmcp-sonarqube-metrics-server": {
           "command": "python",
-          "args": [
-            "server.py"
-          ],
+          "args": ["server.py"],
           "env": {}
         }
       }

@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/apps/mcp-server/build/index.js"
-      ],
+      "args": ["${__dirname}/apps/mcp-server/build/index.js"],
       "env": {
         "API_KEY": "${user_config.api_key}"
       }

@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npm",
-      "args": [
-        "run",
-        "docker:start"
-      ],
+      "args": ["run", "docker:start"],
       "env": {
         "TELEGRAM_BOT_TOKEN": "${user_config.telegram_bot_token}",
         "AUTHORIZED_CHAT_ID": "${user_config.authorized_chat_id}",

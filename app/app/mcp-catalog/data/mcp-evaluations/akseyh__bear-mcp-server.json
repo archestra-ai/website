@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "bear-mcp-server"
-      ],
+      "args": ["-y", "bear-mcp-server"],
       "env": {
         "BEAR_DB_PATH": "${user_config.bear_db_path}"
       }
@@ -50,9 +47,7 @@
         },
         "bear-mcp-server": {
           "command": "npx",
-          "args": [
-            "bear-mcp-server"
-          ],
+          "args": ["bear-mcp-server"],
           "env": {}
         }
       }

@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "mcp-filesystem-server",
-      "args": [
-        "${user_config.allowed_directories}"
-      ],
+      "args": ["${user_config.allowed_directories}"],
       "env": {}
     }
   },

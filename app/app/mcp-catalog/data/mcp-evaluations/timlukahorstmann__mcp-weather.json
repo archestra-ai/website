@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@timlukahorstmann/mcp-weather"
-      ],
+      "args": ["-y", "@timlukahorstmann/mcp-weather"],
       "env": {
         "ACCUWEATHER_API_KEY": "${user_config.api_key}"
       }
@@ -39,10 +36,7 @@
       "mcpServers": {
         "timlukahorstmann-mcp-weather": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@timlukahorstmann/mcp-weather"
-          ],
+          "args": ["-y", "@timlukahorstmann/mcp-weather"],
           "env": {
             "ACCUWEATHER_API_KEY": "your_api_key_here"
           }
@@ -71,10 +65,7 @@
         },
         "timlukahorstmann-mcp-weather-configured": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@timlukahorstmann/mcp-weather"
-          ],
+          "args": ["-y", "@timlukahorstmann/mcp-weather"],
           "env": {
             "ACCUWEATHER_API_KEY": "your_api_key_here"
           }

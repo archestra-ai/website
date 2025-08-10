@@ -10,14 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "--with",
-        "mcp[cli]",
-        "mcp",
-        "run",
-        "${__dirname}/main.py"
-      ],
+      "args": ["run", "--with", "mcp[cli]", "mcp", "run", "${__dirname}/main.py"],
       "env": {
         "LEDGER_FILE": "${user_config.ledger_file}"
       }
@@ -72,10 +65,7 @@
         },
         "mcp-server-ledger-dev": {
           "command": "mcp",
-          "args": [
-            "dev",
-            "main.py"
-          ],
+          "args": ["dev", "main.py"],
           "env": {}
         }
       }

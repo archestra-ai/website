@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/server/index.js"
-      ],
+      "args": ["${__dirname}/server/index.js"],
       "env": {
         "INFURA_KEY": "${user_config.infura_key}",
         "PRIVATE_KEY": "${user_config.private_key}"
@@ -46,9 +44,7 @@
       "mcpServers": {
         "Token-Minter-MCP": {
           "command": "node",
-          "args": [
-            "path/to/token-minter-mcp/server/index.js"
-          ],
+          "args": ["path/to/token-minter-mcp/server/index.js"],
           "env": {
             "INFURA_KEY": "your infura key",
             "PRIVATE_KEY": "your private key"

@@ -11,9 +11,7 @@
     "type": "binary",
     "mcp_config": {
       "command": "mcpjungle",
-      "args": [
-        "start"
-      ],
+      "args": ["start"],
       "env": {
         "DATABASE_URL": "${user_config.database_url}"
       }
@@ -39,27 +37,19 @@
       "mcpServers": {
         "mcpjungle-docker-compose": {
           "command": "docker-compose",
-          "args": [
-            "up",
-            "-d"
-          ],
+          "args": ["up", "-d"],
           "env": {}
         },
         "mcpjungle-stdio-docker-compose": {
           "command": "docker-compose",
-          "args": [
-            "up",
-            "-d"
-          ],
+          "args": ["up", "-d"],
           "env": {
             "MCPJUNGLE_IMAGE_TAG": "latest-stdio"
           }
         },
         "mcpjungle": {
           "command": "mcpjungle",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         },
         "mcpjungle-docker-postgres": {
@@ -76,9 +66,7 @@
         },
         "mcpjungle-postgres": {
           "command": "mcpjungle",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {
             "DATABASE_URL": "postgres://admin:root@localhost:5432/mcpjungle_db"
           }

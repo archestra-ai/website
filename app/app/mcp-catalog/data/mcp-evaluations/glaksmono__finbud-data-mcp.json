@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "finbud-data-mcp"
-      ],
+      "args": ["-y", "finbud-data-mcp"],
       "env": {
         "FINBUD_DATA_API_KEY": "${user_config.api_key}",
         "FINBUD_DATA_BASE_URL": "${user_config.base_url}"

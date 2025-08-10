@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@gannonh/firebase-mcp"
-      ],
+      "args": ["-y", "@gannonh/firebase-mcp"],
       "env": {
         "SERVICE_ACCOUNT_KEY_PATH": "${user_config.service_account_key_path}",
         "FIREBASE_STORAGE_BUCKET": "${user_config.firebase_storage_bucket}",
@@ -84,10 +81,7 @@
       "mcpServers": {
         "firebase-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@gannonh/firebase-mcp"
-          ],
+          "args": ["-y", "@gannonh/firebase-mcp"],
           "env": {
             "SERVICE_ACCOUNT_KEY_PATH": "/absolute/path/to/serviceAccountKey.json",
             "FIREBASE_STORAGE_BUCKET": "your-project-id.firebasestorage.app"
@@ -95,9 +89,7 @@
         },
         "firebase-mcp-node": {
           "command": "node",
-          "args": [
-            "/absolute/path/to/firebase-mcp/dist/index.js"
-          ],
+          "args": ["/absolute/path/to/firebase-mcp/dist/index.js"],
           "env": {
             "SERVICE_ACCOUNT_KEY_PATH": "/absolute/path/to/serviceAccountKey.json",
             "FIREBASE_STORAGE_BUCKET": "your-project-id.firebasestorage.app"
@@ -105,9 +97,7 @@
         },
         "firebase-mcp-http-node": {
           "command": "node",
-          "args": [
-            "dist/index.js"
-          ],
+          "args": ["dist/index.js"],
           "env": {
             "MCP_TRANSPORT": "http",
             "MCP_HTTP_PORT": "3000"
@@ -115,9 +105,7 @@
         },
         "firebase-mcp-http-npx": {
           "command": "npx",
-          "args": [
-            "@gannonh/firebase-mcp"
-          ],
+          "args": ["@gannonh/firebase-mcp"],
           "env": {
             "MCP_TRANSPORT": "http",
             "MCP_HTTP_PORT": "3000"

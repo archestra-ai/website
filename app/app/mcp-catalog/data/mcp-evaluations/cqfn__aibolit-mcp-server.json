@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "aibolit-mcp-server@0.0.6"
-      ],
+      "args": ["-y", "aibolit-mcp-server@0.0.6"],
       "env": {}
     }
   },
@@ -29,10 +26,7 @@
       "mcpServers": {
         "aibolit-mcp-server": {
           "command": "npx",
-          "args": [
-            "-y",
-            "aibolit-mcp-server@0.0.6"
-          ],
+          "args": ["-y", "aibolit-mcp-server@0.0.6"],
           "env": {}
         }
       }

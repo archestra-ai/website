@@ -10,11 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-filesystem",
-        "${user_config.allowed_directories}"
-      ],
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "${user_config.allowed_directories}"],
       "env": {}
     }
   },
@@ -55,9 +51,7 @@
       "description": "Select directories the filesystem server can access. The server requires at least one directory to operate if the connected client does not support the Roots protocol.",
       "required": true,
       "multiple": true,
-      "default": [
-        "${HOME}"
-      ]
+      "default": ["${HOME}"]
     }
   },
   "archestra_config": null,

@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@executeautomation/playwright-mcp-server"
-      ],
+      "args": ["-y", "@executeautomation/playwright-mcp-server"],
       "env": {}
     }
   },
@@ -29,10 +26,7 @@
       "mcpServers": {
         "executeautomation-playwright-mcp-server": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@executeautomation/playwright-mcp-server"
-          ],
+          "args": ["-y", "@executeautomation/playwright-mcp-server"],
           "env": {}
         }
       }

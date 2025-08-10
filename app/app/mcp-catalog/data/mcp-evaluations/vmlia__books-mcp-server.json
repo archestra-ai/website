@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "main.py"
-      ],
+      "args": ["--directory", "${__dirname}", "run", "main.py"],
       "env": {}
     }
   },
@@ -31,12 +26,7 @@
       "mcpServers": {
         "books-mcp-server-stdio": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/Enter your local project directory/books-mcp-server",
-            "run",
-            "main.py"
-          ],
+          "args": ["--directory", "/Enter your local project directory/books-mcp-server", "run", "main.py"],
           "env": {}
         }
       }

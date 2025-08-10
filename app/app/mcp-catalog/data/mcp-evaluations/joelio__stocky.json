@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "${__dirname}/stocky_mcp.py"
-      ],
+      "args": ["${__dirname}/stocky_mcp.py"],
       "env": {
         "PEXELS_API_KEY": "${user_config.pexels_api_key}",
         "UNSPLASH_ACCESS_KEY": "${user_config.unsplash_access_key}"
@@ -46,9 +44,7 @@
       "mcpServers": {
         "stocky": {
           "command": "python",
-          "args": [
-            "/path/to/stocky_mcp.py"
-          ],
+          "args": ["/path/to/stocky_mcp.py"],
           "env": {
             "PEXELS_API_KEY": "your_pexels_key",
             "UNSPLASH_ACCESS_KEY": "your_unsplash_key"

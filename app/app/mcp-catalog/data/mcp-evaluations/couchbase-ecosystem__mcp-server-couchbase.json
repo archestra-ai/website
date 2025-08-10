@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "couchbase-mcp-server"
-      ],
+      "args": ["couchbase-mcp-server"],
       "env": {
         "CB_CONNECTION_STRING": "${user_config.CB_CONNECTION_STRING}",
         "CB_USERNAME": "${user_config.CB_USERNAME}",
@@ -91,9 +89,7 @@
       "mcpServers": {
         "couchbase-mcp-server": {
           "command": "uvx",
-          "args": [
-            "couchbase-mcp-server"
-          ],
+          "args": ["couchbase-mcp-server"],
           "env": {
             "CB_CONNECTION_STRING": "couchbases://connection-string",
             "CB_USERNAME": "username",
@@ -103,12 +99,7 @@
         },
         "mcp-server-couchbase-configured": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "path/to/cloned/repo/mcp-server-couchbase/",
-            "run",
-            "src/mcp_server.py"
-          ],
+          "args": ["--directory", "path/to/cloned/repo/mcp-server-couchbase/", "run", "src/mcp_server.py"],
           "env": {
             "CB_CONNECTION_STRING": "couchbases://connection-string",
             "CB_USERNAME": "username",

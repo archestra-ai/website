@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "unichat-mcp-server"
-      ],
+      "args": ["unichat-mcp-server"],
       "env": {
         "UNICHAT_MODEL": "${user_config.model}",
         "UNICHAT_API_KEY": "${user_config.api_key}"
@@ -59,9 +57,7 @@
         },
         "unichat-mcp-server-published": {
           "command": "uvx",
-          "args": [
-            "unichat-mcp-server"
-          ],
+          "args": ["unichat-mcp-server"],
           "env": {
             "UNICHAT_MODEL": "SELECTED_UNICHAT_MODEL",
             "UNICHAT_API_KEY": "YOUR_UNICHAT_API_KEY"

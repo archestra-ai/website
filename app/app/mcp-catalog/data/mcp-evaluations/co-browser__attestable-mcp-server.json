@@ -53,13 +53,7 @@
         },
         "gsc-attestable-mcp-server-docker-local": {
           "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8000:8000",
-            "--rm",
-            "gsc-attestable-mcp-server"
-          ],
+          "args": ["run", "-p", "8000:8000", "--rm", "gsc-attestable-mcp-server"],
           "env": {}
         }
       }

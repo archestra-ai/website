@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "duckduckgo-mcp-server"
-      ],
+      "args": ["duckduckgo-mcp-server"],
       "env": {}
     }
   },
@@ -28,17 +26,12 @@
       "mcpServers": {
         "duckduckgo-mcp-server": {
           "command": "uvx",
-          "args": [
-            "duckduckgo-mcp-server"
-          ],
+          "args": ["duckduckgo-mcp-server"],
           "env": {}
         },
         "duckduckgo-mcp-server-dev": {
           "command": "mcp",
-          "args": [
-            "dev",
-            "server.py"
-          ],
+          "args": ["dev", "server.py"],
           "env": {}
         }
       }

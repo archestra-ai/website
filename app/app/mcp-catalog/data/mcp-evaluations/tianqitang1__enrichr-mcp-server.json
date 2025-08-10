@@ -70,51 +70,27 @@
       "mcpServers": {
         "enrichr-mcp-server": {
           "command": "npx",
-          "args": [
-            "-y",
-            "enrichr-mcp-server"
-          ],
+          "args": ["-y", "enrichr-mcp-server"],
           "env": {}
         },
         "enrichr-mcp-server-compact-100terms": {
           "command": "npx",
-          "args": [
-            "-y",
-            "enrichr-mcp-server",
-            "--compact",
-            "--max-terms",
-            "100"
-          ],
+          "args": ["-y", "enrichr-mcp-server", "--compact", "--max-terms", "100"],
           "env": {}
         },
         "enrichr-mcp-server-popular": {
           "command": "npx",
-          "args": [
-            "-y",
-            "enrichr-mcp-server",
-            "--libraries",
-            "pop"
-          ],
+          "args": ["-y", "enrichr-mcp-server", "--libraries", "pop"],
           "env": {}
         },
         "enrichr-mcp-server-pathways": {
           "command": "npx",
-          "args": [
-            "-y",
-            "enrichr-mcp-server",
-            "-l",
-            "GO_Biological_Process_2025,KEGG_2021_Human,Reactome_2022"
-          ],
+          "args": ["-y", "enrichr-mcp-server", "-l", "GO_Biological_Process_2025,KEGG_2021_Human,Reactome_2022"],
           "env": {}
         },
         "enrichr-mcp-server-disease": {
           "command": "npx",
-          "args": [
-            "-y",
-            "enrichr-mcp-server",
-            "--libraries",
-            "Human_Phenotype_Ontology,OMIM_Disease,ClinVar_2019"
-          ],
+          "args": ["-y", "enrichr-mcp-server", "--libraries", "Human_Phenotype_Ontology,OMIM_Disease,ClinVar_2019"],
           "env": {}
         }
       }

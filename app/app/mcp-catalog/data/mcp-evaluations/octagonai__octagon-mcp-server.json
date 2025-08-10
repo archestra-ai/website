@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "octagon-mcp@latest"
-      ],
+      "args": ["-y", "octagon-mcp@latest"],
       "env": {
         "OCTAGON_API_KEY": "${user_config.octagon_api_key}"
       }
@@ -39,40 +36,28 @@
       "mcpServers": {
         "octagon-mcp-server": {
           "command": "npx",
-          "args": [
-            "-y",
-            "octagon-mcp@latest"
-          ],
+          "args": ["-y", "octagon-mcp@latest"],
           "env": {
             "OCTAGON_API_KEY": "YOUR_API_KEY_HERE"
           }
         },
         "octagon-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "octagon-mcp"
-          ],
+          "args": ["-y", "octagon-mcp"],
           "env": {
             "OCTAGON_API_KEY": "your-octagon-api-key"
           }
         },
         "octagon-mcp-windows": {
           "command": "cmd",
-          "args": [
-            "/c",
-            "set OCTAGON_API_KEY=your-octagon-api-key && npx -y octagon-mcp"
-          ],
+          "args": ["/c", "set OCTAGON_API_KEY=your-octagon-api-key && npx -y octagon-mcp"],
           "env": {
             "OCTAGON_API_KEY": "your-octagon-api-key"
           }
         },
         "octagon-mcp-direct": {
           "command": "npx",
-          "args": [
-            "-y",
-            "octagon-mcp"
-          ],
+          "args": ["-y", "octagon-mcp"],
           "env": {
             "OCTAGON_API_KEY": "your_octagon_api_key"
           }

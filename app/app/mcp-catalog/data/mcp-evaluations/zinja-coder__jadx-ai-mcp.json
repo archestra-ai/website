@@ -11,9 +11,7 @@
     "type": "python",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "jadx-mcp-server/jadx_mcp.py"
-      ],
+      "args": ["jadx-mcp-server/jadx_mcp.py"],
       "env": {}
     }
   },
@@ -29,9 +27,7 @@
       "mcpServers": {
         "jadx-mcp-server": {
           "command": "python",
-          "args": [
-            "jadx_mcp.py"
-          ],
+          "args": ["jadx_mcp.py"],
           "env": {}
         }
       }

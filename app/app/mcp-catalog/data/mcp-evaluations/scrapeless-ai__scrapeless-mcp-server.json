@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "scrapeless-mcp-server"
-      ],
+      "args": ["-y", "scrapeless-mcp-server"],
       "env": {
         "SCRAPELESS_KEY": "${user_config.scrapeless_key}",
         "BROWSER_PROFILE_ID": "${user_config.browser_profile_id}",
@@ -60,10 +57,7 @@
       "mcpServers": {
         "scrapeless-mcp-server-stdio": {
           "command": "npx",
-          "args": [
-            "-y",
-            "scrapeless-mcp-server"
-          ],
+          "args": ["-y", "scrapeless-mcp-server"],
           "env": {
             "SCRAPELESS_KEY": "YOUR_SCRAPELESS_KEY"
           }

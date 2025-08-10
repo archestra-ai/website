@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "main.py"
-      ],
+      "args": ["main.py"],
       "env": {}
     }
   },
@@ -28,19 +26,12 @@
       "mcpServers": {
         "secops-mcp-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-it",
-            "--rm",
-            "secops-mcp"
-          ],
+          "args": ["run", "-it", "--rm", "secops-mcp"],
           "env": {}
         },
         "secops-mcp": {
           "command": "python",
-          "args": [
-            "main.py"
-          ],
+          "args": ["main.py"],
           "env": {}
         }
       }

@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "pluggedin-mcp"
-      ],
+      "args": ["-y", "pluggedin-mcp"],
       "env": {
         "AUTH_TOKEN": "${user_config.auth_token}"
       }

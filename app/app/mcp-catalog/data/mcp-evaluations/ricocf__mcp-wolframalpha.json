@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": [
-        "${__dirname}/src/core/server.py"
-      ],
+      "args": ["${__dirname}/src/core/server.py"],
       "env": {
         "WOLFRAM_API_KEY": "${user_config.wolfram_api_key}"
       }
@@ -38,9 +36,7 @@
       "mcpServers": {
         "WolframAlphaServer": {
           "command": "python3",
-          "args": [
-            "/path/to/src/core/server.py"
-          ],
+          "args": ["/path/to/src/core/server.py"],
           "env": {}
         }
       }

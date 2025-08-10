@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": [
-        "${__dirname}/build/index.js"
-      ],
+      "args": ["${__dirname}/build/index.js"],
       "env": {
         "GODOT_PATH": "${user_config.godot_path}",
         "DEBUG": "${user_config.debug}"
@@ -45,9 +43,7 @@
       "mcpServers": {
         "godot-mcp": {
           "command": "node",
-          "args": [
-            "/absolute/path/to/godot-mcp/build/index.js"
-          ],
+          "args": ["/absolute/path/to/godot-mcp/build/index.js"],
           "env": {
             "DEBUG": "true"
           }

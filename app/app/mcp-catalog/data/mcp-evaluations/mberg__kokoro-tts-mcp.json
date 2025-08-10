@@ -10,12 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "mcp-tts.py"
-      ],
+      "args": ["--directory", "${__dirname}", "run", "mcp-tts.py"],
       "env": {
         "AWS_ACCESS_KEY_ID": "${user_config.AWS_ACCESS_KEY_ID}",
         "AWS_SECRET_ACCESS_KEY": "${user_config.AWS_SECRET_ACCESS_KEY}",
@@ -142,12 +137,7 @@
       "mcpServers": {
         "kokoro-tts-mcp-configured": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/path/toyourlocal/kokoro-tts-mcp",
-            "run",
-            "mcp-tts.py"
-          ],
+          "args": ["--directory", "/path/toyourlocal/kokoro-tts-mcp", "run", "mcp-tts.py"],
           "env": {
             "TTS_VOICE": "af_heart",
             "TTS_SPEED": "1.0",
@@ -162,10 +152,7 @@
         },
         "kokoro-tts-mcp-local": {
           "command": "uv",
-          "args": [
-            "run",
-            "mcp-tts.py"
-          ],
+          "args": ["run", "mcp-tts.py"],
           "env": {}
         }
       }

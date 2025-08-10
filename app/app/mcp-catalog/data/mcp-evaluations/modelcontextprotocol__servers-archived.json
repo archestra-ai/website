@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-google-maps"
-      ],
+      "args": ["-y", "@modelcontextprotocol/server-google-maps"],
       "env": {
         "GOOGLE_MAPS_API_KEY": "${user_config.maps_api_key}"
       }

@@ -10,16 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "--project",
-        "${__dirname}",
-        "run",
-        "gxtract",
-        "--transport",
-        "stdio"
-      ],
+      "args": ["--directory", "${__dirname}", "--project", "${__dirname}", "run", "gxtract", "--transport", "stdio"],
       "env": {
         "GROUNDX_API_KEY": "${user_config.groundx_api_key}"
       }

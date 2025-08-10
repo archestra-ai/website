@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "mcp-server-deep-research"
-      ],
+      "args": ["mcp-server-deep-research"],
       "env": {}
     }
   },
@@ -28,9 +26,7 @@
       "mcpServers": {
         "mcp-server-deep-research": {
           "command": "uvx",
-          "args": [
-            "mcp-server-deep-research"
-          ],
+          "args": ["mcp-server-deep-research"],
           "env": {}
         },
         "mcp-server-deep-research-configured": {

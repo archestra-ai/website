@@ -10,9 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npm",
-      "args": [
-        "start"
-      ],
+      "args": ["start"],
       "env": {}
     }
   },
@@ -28,9 +26,7 @@
       "mcpServers": {
         "medical-mcp-stdio": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         }
       }

@@ -10,11 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "mcp-server-duckdb",
-        "--db-path",
-        "${user_config.db_path}"
-      ],
+      "args": ["mcp-server-duckdb", "--db-path", "${user_config.db_path}"],
       "env": {}
     }
   },
@@ -52,11 +48,7 @@
       "mcpServers": {
         "mcp-server-duckdb": {
           "command": "uvx",
-          "args": [
-            "mcp-server-duckdb",
-            "--db-path",
-            "~/mcp-server-duckdb/data/data.db"
-          ],
+          "args": ["mcp-server-duckdb", "--db-path", "~/mcp-server-duckdb/data/data.db"],
           "env": {}
         },
         "mcp-server-duckdb-inspector": {

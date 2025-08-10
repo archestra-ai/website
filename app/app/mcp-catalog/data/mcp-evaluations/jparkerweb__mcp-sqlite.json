@@ -10,11 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "mcp-sqlite",
-        "${user_config.database_path}"
-      ],
+      "args": ["-y", "mcp-sqlite", "${user_config.database_path}"],
       "env": {}
     }
   },
@@ -37,11 +33,7 @@
       "mcpServers": {
         "mcp-sqlite": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mcp-sqlite",
-            "<path-to-your-sqlite-database.db>"
-          ],
+          "args": ["-y", "mcp-sqlite", "<path-to-your-sqlite-database.db>"],
           "env": {}
         }
       }

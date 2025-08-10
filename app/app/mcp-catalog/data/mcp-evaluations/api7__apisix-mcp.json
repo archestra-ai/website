@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "apisix-mcp"
-      ],
+      "args": ["-y", "apisix-mcp"],
       "env": {
         "APISIX_SERVER_HOST": "${user_config.apisix_server_host}",
         "APISIX_SERVER_PORT": "${user_config.apisix_server_port}",
@@ -72,10 +69,7 @@
       "mcpServers": {
         "apisix-mcp-npm": {
           "command": "npx",
-          "args": [
-            "-y",
-            "apisix-mcp"
-          ],
+          "args": ["-y", "apisix-mcp"],
           "env": {
             "APISIX_SERVER_HOST": "your-apisix-server-host",
             "APISIX_SERVER_PORT": "your-apisix-server-port",
@@ -86,9 +80,7 @@
         },
         "apisix-mcp-source": {
           "command": "node",
-          "args": [
-            "your-apisix-mcp-path/dist/index.js"
-          ],
+          "args": ["your-apisix-mcp-path/dist/index.js"],
           "env": {
             "APISIX_SERVER_HOST": "your-apisix-server-host",
             "APISIX_SERVER_PORT": "your-apisix-server-port",

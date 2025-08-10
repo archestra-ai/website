@@ -10,14 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": [
-        "run",
-        "--with",
-        "mcp-memgraph",
-        "--python",
-        "3.13",
-        "mcp-memgraph"
-      ],
+      "args": ["run", "--with", "mcp-memgraph", "--python", "3.13", "mcp-memgraph"],
       "env": {
         "MEMGRAPH_URL": "${user_config.MEMGRAPH_URL}",
         "MEMGRAPH_USER": "${user_config.MEMGRAPH_USER}",
