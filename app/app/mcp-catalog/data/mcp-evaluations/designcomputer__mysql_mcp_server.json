@@ -8,18 +8,60 @@
     "name": "designcomputer"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "uvx",
+      "args": [
+        "--from",
+        "mysql-mcp-server",
+        "mysql_mcp_server"
+      ],
+      "env": {
+        "MYSQL_HOST": "${user_config.mysql_host}",
+        "MYSQL_PORT": "${user_config.mysql_port}",
+        "MYSQL_USER": "${user_config.mysql_user}",
+        "MYSQL_PASSWORD": "${user_config.mysql_password}",
+        "MYSQL_DATABASE": "${user_config.mysql_database}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "mysql_host": {
+      "type": "string",
+      "title": "MySQL Host",
+      "description": "The hostname or IP address of the MySQL database server.",
+      "required": true,
+      "default": "localhost"
+    },
+    "mysql_port": {
+      "type": "number",
+      "title": "MySQL Port",
+      "description": "The port number for the MySQL server. Defaults to 3306 if not specified.",
+      "required": false,
+      "default": 3306
+    },
+    "mysql_user": {
+      "type": "string",
+      "title": "MySQL User",
+      "description": "The username for connecting to the MySQL database.",
+      "required": true
+    },
+    "mysql_password": {
+      "type": "string",
+      "title": "MySQL Password",
+      "description": "The password for the specified MySQL user. This will be stored securely.",
+      "required": true,
+      "sensitive": true
+    },
+    "mysql_database": {
+      "type": "string",
+      "title": "MySQL Database",
+      "description": "The name of the database to connect to.",
+      "required": true
+    }
+  },
   "readme": "![Tests](https://github.com/designcomputer/mysql_mcp_server/actions/workflows/test.yml/badge.svg)\n![PyPI - Downloads](https://img.shields.io/pypi/dm/mysql-mcp-server)\n[![smithery badge](https://smithery.ai/badge/mysql-mcp-server)](https://smithery.ai/server/mysql-mcp-server)\n[![MseeP.ai Security Assessment Badge](https://mseep.net/mseep-audited.png)](https://mseep.ai/app/designcomputer-mysql-mcp-server)\n# MySQL MCP Server\nA Model Context Protocol (MCP) implementation that enables secure interaction with MySQL databases. This server component facilitates communication between AI applications (hosts/clients) and MySQL databases, making database exploration and analysis safer and more structured through a controlled interface.\n\n> **Note**: MySQL MCP Server is not designed to be used as a standalone server, but rather as a communication protocol implementation between AI applications and MySQL databases.\n\n## Features\n- List available MySQL tables as resources\n- Read table contents\n- Execute SQL queries with proper error handling\n- Secure database access through environment variables\n- Comprehensive logging\n\n## Installation\n### Manual Installation\n```bash\npip install mysql-mcp-server\n```\n\n### Installing via Smithery\nTo install MySQL MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/mysql-mcp-server):\n```bash\nnpx -y @smithery/cli install mysql-mcp-server --client claude\n```\n\n## Configuration\nSet the following environment variables:\n```bash\nMYSQL_HOST=localhost     # Database host\nMYSQL_PORT=3306         # Optional: Database port (defaults to 3306 if not specified)\nMYSQL_USER=your_username\nMYSQL_PASSWORD=your_password\nMYSQL_DATABASE=your_database\n```\n\n## Usage\n### With Claude Desktop\nAdd this to your `claude_desktop_config.json`:\n```json\n{\n  \"mcpServers\": {\n    \"mysql\": {\n      \"command\": \"uv\",\n      \"args\": [\n        \"--directory\",\n        \"path/to/mysql_mcp_server\",\n        \"run\",\n        \"mysql_mcp_server\"\n      ],\n      \"env\": {\n        \"MYSQL_HOST\": \"localhost\",\n        \"MYSQL_PORT\": \"3306\",\n        \"MYSQL_USER\": \"your_username\",\n        \"MYSQL_PASSWORD\": \"your_password\",\n        \"MYSQL_DATABASE\": \"your_database\"\n      }\n    }\n  }\n}\n```\n\n### With Visual Studio Code\nAdd this to your `mcp.json`:\n```json\n{\n  \"servers\": {\n      \"mysql\": {\n            \"type\": \"stdio\",\n            \"command\": \"uvx\",\n            \"args\": [\n                \"--from\",\n                \"mysql-mcp-server\",\n                \"mysql_mcp_server\"\n            ],\n      \"env\": {\n        \"MYSQL_HOST\": \"localhost\",\n        \"MYSQL_PORT\": \"3306\",\n        \"MYSQL_USER\": \"your_username\",\n        \"MYSQL_PASSWORD\": \"your_password\",\n        \"MYSQL_DATABASE\": \"your_database\"\n      }\n    }\n  }\n}\n```\nNote: Will need to install uv for this to work\n\n### Debugging with MCP Inspector\nWhile MySQL MCP Server isn't intended to be run standalone or directly from the command line with Python, you can use the MCP Inspector to debug it.\n\nThe MCP Inspector provides a convenient way to test and debug your MCP implementation:\n\n```bash\n# Install dependencies\npip install -r requirements.txt\n# Use the MCP Inspector for debugging (do not run directly with Python)\n```\n\nThe MySQL MCP Server is designed to be integrated with AI applications like Claude Desktop and should not be run directly as a standalone Python program.\n\n## Development\n```bash\n# Clone the repository\ngit clone https://github.com/designcomputer/mysql_mcp_server.git\ncd mysql_mcp_server\n# Create virtual environment\npython -m venv venv\nsource venv/bin/activate  # or `venv\\Scripts\\activate` on Windows\n# Install development dependencies\npip install -r requirements-dev.txt\n# Run tests\npytest\n```\n\n## Security Considerations\n- Never commit environment variables or credentials\n- Use a database user with minimal required permissions\n- Consider implementing query whitelisting for production use\n- Monitor and log all database operations\n\n## Security Best Practices\nThis MCP implementation requires database access to function. For security:\n1. **Create a dedicated MySQL user** with minimal permissions\n2. **Never use root credentials** or administrative accounts\n3. **Restrict database access** to only necessary operations\n4. **Enable logging** for audit purposes\n5. **Regular security reviews** of database access\n\nSee [MySQL Security Configuration Guide](https://github.com/designcomputer/mysql_mcp_server/blob/main/SECURITY.md) for detailed instructions on:\n- Creating a restricted MySQL user\n- Setting appropriate permissions\n- Monitoring database access\n- Security best practices\n\n⚠️ IMPORTANT: Always follow the principle of least privilege when configuring database access.\n\n## License\nMIT License - see LICENSE file for details.\n\n## Contributing\n1. Fork the repository\n2. Create your feature branch (`git checkout -b feature/amazing-feature`)\n3. Commit your changes (`git commit -m 'Add some amazing feature'`)\n4. Push to the branch (`git push origin feature/amazing-feature`)\n5. Open a Pull Request\n",
   "category": "AI Tools",
   "quality_score": 63,
@@ -28,7 +70,12 @@
       "mcpServers": {
         "mysql-mcp-server-with-config": {
           "command": "uv",
-          "args": ["--directory", "path/to/mysql_mcp_server", "run", "mysql_mcp_server"],
+          "args": [
+            "--directory",
+            "path/to/mysql_mcp_server",
+            "run",
+            "mysql_mcp_server"
+          ],
           "env": {
             "MYSQL_HOST": "localhost",
             "MYSQL_PORT": "3306",
@@ -39,7 +86,11 @@
         },
         "mysql-mcp-server-stdio-with-config": {
           "command": "uvx",
-          "args": ["--from", "mysql-mcp-server", "mysql_mcp_server"],
+          "args": [
+            "--from",
+            "mysql-mcp-server",
+            "mysql_mcp_server"
+          ],
           "env": {
             "MYSQL_HOST": "localhost",
             "MYSQL_PORT": "3306",
@@ -71,7 +122,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:33:57.883Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": false,
     "implementing_prompts": false,

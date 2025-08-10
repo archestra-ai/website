@@ -8,11 +8,11 @@
     "name": "imprvhub"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "node",
+      "args": [
+        "${__dirname}/build/index.js"
+      ],
       "env": {}
     }
   },
@@ -28,12 +28,16 @@
       "mcpServers": {
         "mcp-claude-hackernews-stdio": {
           "command": "node",
-          "args": ["build/index.js"],
+          "args": [
+            "build/index.js"
+          ],
           "env": {}
         },
         "hackerNews": {
           "command": "node",
-          "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-claude-hackernews/build/index.js"],
+          "args": [
+            "ABSOLUTE_PATH_TO_DIRECTORY/mcp-claude-hackernews/build/index.js"
+          ],
           "env": {}
         }
       }
@@ -59,7 +63,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:30:10.269Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

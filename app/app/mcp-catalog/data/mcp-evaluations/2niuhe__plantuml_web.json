@@ -8,11 +8,11 @@
     "name": "2niuhe"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "sh",
+      "args": [
+        "start.sh"
+      ],
       "env": {}
     }
   },
@@ -28,12 +28,22 @@
       "mcpServers": {
         "plantuml-web-mcp-docker": {
           "command": "docker",
-          "args": ["run", "-d", "-p", "8080:8080", "-p", "8765:8765", "plantuml_web_mcp:latest"],
+          "args": [
+            "run",
+            "-d",
+            "-p",
+            "8080:8080",
+            "-p",
+            "8765:8765",
+            "plantuml_web_mcp:latest"
+          ],
           "env": {}
         },
         "plantuml-web-mcp": {
           "command": "sh",
-          "args": ["start.sh"],
+          "args": [
+            "start.sh"
+          ],
           "env": {}
         }
       }
@@ -59,7 +69,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:55:54.983Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

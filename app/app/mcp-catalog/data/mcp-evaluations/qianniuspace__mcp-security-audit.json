@@ -8,11 +8,12 @@
     "name": "qianniuspace"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-security-audit"
+      ],
       "env": {}
     }
   },
@@ -28,12 +29,18 @@
       "mcpServers": {
         "mcp-security-audit": {
           "command": "npx",
-          "args": ["-y", "mcp-security-audit"],
+          "args": [
+            "-y",
+            "mcp-security-audit"
+          ],
           "env": {}
         },
         "mcp-security-audit-configured": {
           "command": "npx",
-          "args": ["-y", "/path/to/mcp-security-audit/build/index.js"],
+          "args": [
+            "-y",
+            "/path/to/mcp-security-audit/build/index.js"
+          ],
           "env": {}
         }
       }
@@ -59,7 +66,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:50:02.863Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

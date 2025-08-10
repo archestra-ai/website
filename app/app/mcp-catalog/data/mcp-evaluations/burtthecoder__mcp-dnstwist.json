@@ -8,10 +8,8 @@
     "name": "BurtTheCoder"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
+      "command": "mcp-dnstwist",
       "args": [],
       "env": {}
     }
@@ -33,7 +31,9 @@
         },
         "mcp-dnstwist-from-source": {
           "command": "node",
-          "args": ["/absolute/path/to/mcp-dnstwist/build/index.js"],
+          "args": [
+            "/absolute/path/to/mcp-dnstwist/build/index.js"
+          ],
           "env": {}
         }
       }
@@ -59,7 +59,7 @@
   "programming_language": "JavaScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:30:11.184Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

@@ -8,11 +8,11 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": [
+        "${__dirname}/main.py"
+      ],
       "env": {}
     }
   },
@@ -28,7 +28,9 @@
       "mcpServers": {
         "crypto-portfolio-mcp": {
           "command": "python",
-          "args": ["path/to/crypto-portfolio-mcp/main.py"],
+          "args": [
+            "path/to/crypto-portfolio-mcp/main.py"
+          ],
           "env": {}
         }
       }
@@ -54,7 +56,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:37:16.418Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

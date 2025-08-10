@@ -8,11 +8,12 @@
     "name": "mcpdotdirect"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mcpdotdirect/evm-mcp-server"
+      ],
       "env": {}
     }
   },
@@ -28,47 +29,69 @@
       "mcpServers": {
         "mcpdotdirect-evm-mcp-server-npx-stdio": {
           "command": "npx",
-          "args": ["@mcpdotdirect/evm-mcp-server"],
+          "args": [
+            "@mcpdotdirect/evm-mcp-server"
+          ],
           "env": {}
         },
         "mcpdotdirect-evm-mcp-server-npx-http": {
           "command": "npx",
-          "args": ["@mcpdotdirect/evm-mcp-server", "--http"],
+          "args": [
+            "@mcpdotdirect/evm-mcp-server",
+            "--http"
+          ],
           "env": {}
         },
         "mcpdotdirect-evm-mcp-server-bun-stdio": {
           "command": "bun",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "mcpdotdirect-evm-mcp-server-bun-stdio-dev": {
           "command": "bun",
-          "args": ["dev"],
+          "args": [
+            "dev"
+          ],
           "env": {}
         },
         "mcpdotdirect-evm-mcp-server-bun-http": {
           "command": "bun",
-          "args": ["start:http"],
+          "args": [
+            "start:http"
+          ],
           "env": {}
         },
         "mcpdotdirect-evm-mcp-server-bun-http-dev": {
           "command": "bun",
-          "args": ["dev:http"],
+          "args": [
+            "dev:http"
+          ],
           "env": {}
         },
         "mcpdotdirect-evm-mcp-server-cursor-config": {
           "command": "npx",
-          "args": ["@mcpdotdirect/evm-mcp-server"],
+          "args": [
+            "@mcpdotdirect/evm-mcp-server"
+          ],
           "env": {}
         },
         "mcpdotdirect-evm-mcp-server-mcpjson-stdio": {
           "command": "npx",
-          "args": ["-y", "@mcpdotdirect/evm-mcp-server"],
+          "args": [
+            "-y",
+            "@mcpdotdirect/evm-mcp-server"
+          ],
           "env": {}
         },
         "mcpdotdirect-evm-mcp-server-mcpjson-http": {
           "command": "npx",
-          "args": ["-y", "@mcpdotdirect/evm-mcp-server", "--http"],
+          "args": [
+            "-y",
+            "@mcpdotdirect/evm-mcp-server",
+            "--http"
+          ],
           "env": {}
         }
       }
@@ -94,7 +117,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:13:57.340Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

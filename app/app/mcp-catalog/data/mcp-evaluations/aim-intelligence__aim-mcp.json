@@ -8,11 +8,12 @@
     "name": "AIM-Intelligence"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "aim-guard-mcp"
+      ],
       "env": {}
     }
   },
@@ -28,12 +29,16 @@
       "mcpServers": {
         "aim-guard-mcp": {
           "command": "npx",
-          "args": ["aim-guard-mcp"],
+          "args": [
+            "aim-guard-mcp"
+          ],
           "env": {}
         },
         "aim-guard-mcp-stdio": {
           "command": "npx",
-          "args": ["aim-guard-mcp"],
+          "args": [
+            "aim-guard-mcp"
+          ],
           "env": {}
         }
       }
@@ -59,7 +64,7 @@
   "programming_language": "JavaScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:30:13.029Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

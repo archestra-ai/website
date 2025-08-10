@@ -8,11 +8,14 @@
     "name": "pab1it0"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uv",
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "src/chess_mcp/main.py"
+      ],
       "env": {}
     }
   },
@@ -28,12 +31,22 @@
       "mcpServers": {
         "pab1it0-chess-mcp-docker": {
           "command": "docker",
-          "args": ["run", "--rm", "-i", "pab1it0/chess-mcp"],
+          "args": [
+            "run",
+            "--rm",
+            "-i",
+            "pab1it0/chess-mcp"
+          ],
           "env": {}
         },
         "chess-mcp-uv": {
           "command": "uv",
-          "args": ["--directory", "<full path to chess-mcp directory>", "run", "src/chess_mcp/main.py"],
+          "args": [
+            "--directory",
+            "<full path to chess-mcp directory>",
+            "run",
+            "src/chess_mcp/main.py"
+          ],
           "env": {}
         }
       }
@@ -59,7 +72,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:15:48.540Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

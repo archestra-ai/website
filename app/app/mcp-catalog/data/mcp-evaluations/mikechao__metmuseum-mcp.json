@@ -8,11 +8,12 @@
     "name": "mikechao"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "metmuseum-mcp"
+      ],
       "env": {}
     }
   },
@@ -28,7 +29,10 @@
       "mcpServers": {
         "metmuseum-mcp": {
           "command": "npx",
-          "args": ["-y", "metmuseum-mcp"],
+          "args": [
+            "-y",
+            "metmuseum-mcp"
+          ],
           "env": {}
         }
       }

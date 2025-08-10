@@ -8,11 +8,13 @@
     "name": "endorhq"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "@endorhq/cli",
+        "mcp"
+      ],
       "env": {}
     }
   },
@@ -28,7 +30,11 @@
       "mcpServers": {
         "endorhq-cli-mcp": {
           "command": "npx",
-          "args": ["-y", "@endorhq/cli", "mcp"],
+          "args": [
+            "-y",
+            "@endorhq/cli",
+            "mcp"
+          ],
           "env": {}
         }
       }
@@ -54,7 +60,7 @@
   "programming_language": "Unknown",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:35:45.771Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

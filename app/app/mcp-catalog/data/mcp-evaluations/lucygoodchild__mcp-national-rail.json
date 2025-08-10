@@ -8,18 +8,36 @@
     "name": "lucygoodchild"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "node",
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
+      "env": {
+        "RTT_API_USERNAME": "${user_config.rtt_api_username}",
+        "RTT_API_PASSWORD": "${user_config.rtt_api_password}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "rtt_api_username": {
+      "type": "string",
+      "title": "RTT API Username",
+      "description": "Your Realtime Trains API username. Can be created from https://api.rtt.io/",
+      "required": true,
+      "sensitive": false
+    },
+    "rtt_api_password": {
+      "type": "string",
+      "title": "RTT API Password",
+      "description": "Your Realtime Trains API password. Can be created from https://api.rtt.io/",
+      "required": true,
+      "sensitive": true
+    }
+  },
   "readme": "[![smithery badge](https://smithery.ai/badge/@lucygoodchild/mcp-national-rail)](https://smithery.ai/server/@lucygoodchild/mcp-national-rail)\n\n# mcp-national-rail\n\nA Model Context Protocol (MCP) server to retrieve train schedules from National Rail.\n\n## Overview\n\nThis project implements a server using the Model Context Protocol (MCP) that allows AI agents to retrieve train information on National Rail trains using the Realtime Trains API. \n\nIt provides tools for:\n- get_live_departures\n- get_live_arrivals\n- get_departures_by_date\n- get_arrivals_by_date\n\n## Installation\n\nReal Time Trains API account can be created from here: https://api.rtt.io/ \n\nYou will need to note down your API Auth credentials \n\n### Installing via Smithery\n\nTo install mcp-national-rail for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@lucygoodchild/mcp-national-rail):\n\n```bash\nnpx -y @smithery/cli install @lucygoodchild/mcp-national-rail --client claude\n```\n\n### Manual Installation for Claude Desktop\n\n#### Prerequisites\n- Node.js\n\n#### Setup\n\n1. Clone this repository\n2. Install dependencies\n```bash\nnpm install\n```\n3. Build and start the project\n```bash\nnpm run build\nnpm run start\n```\n4. Add the following to your MCP client configuration (~/Library/Application Support/Claude/claude_desktop_config.json):\n```bash\n{\n  \"mcpServers\": {\n    \"mcp-national-rail\": {\n      \"command\": \"node\",\n      \"args\": [\"/path/to/mcp-national-rail/dist/index.js\"],\n      \"env\": {\n        \"RTT_API_USERNAME\": \"your_rtt_api_username\",\n        \"RTT_API_PASSWORD\": \"your_rtt_api_password\"\n      }\n    }\n  }\n}\n```\nMake sure to replace \"/path/to/mcp-national-rail/dist/index.js\" with the actual path and add your RTT API username and password which can be created from here: https://api.rtt.io/\n\n5. Restart Claude\n\n### Development\n- Create .env file based on the example file\n```bash\nRTT_API_USERNAME=your_rtt_api_username\nRTT_API_PASSWORD=your_rtt_api_password\n```\n\nRun the inspector with the following command:\n```bash\nnpx @modelcontextprotocol/inspector node dist/index.js\n```\n",
   "category": "Travel",
   "quality_score": 42,
@@ -28,7 +46,9 @@
       "mcpServers": {
         "lucygoodchild-mcp-national-rail-claude-config": {
           "command": "node",
-          "args": ["/path/to/mcp-national-rail/dist/index.js"],
+          "args": [
+            "/path/to/mcp-national-rail/dist/index.js"
+          ],
           "env": {
             "RTT_API_USERNAME": "your_rtt_api_username",
             "RTT_API_PASSWORD": "your_rtt_api_password"
@@ -36,7 +56,10 @@
         },
         "lucygoodchild-mcp-national-rail-npm-start": {
           "command": "npm",
-          "args": ["run", "start"],
+          "args": [
+            "run",
+            "start"
+          ],
           "env": {
             "RTT_API_USERNAME": "your_rtt_api_username",
             "RTT_API_PASSWORD": "your_rtt_api_password"
@@ -44,7 +67,11 @@
         },
         "lucygoodchild-mcp-national-rail-inspector": {
           "command": "npx",
-          "args": ["@modelcontextprotocol/inspector", "node", "dist/index.js"],
+          "args": [
+            "@modelcontextprotocol/inspector",
+            "node",
+            "dist/index.js"
+          ],
           "env": {
             "RTT_API_USERNAME": "your_rtt_api_username",
             "RTT_API_PASSWORD": "your_rtt_api_password"
@@ -73,7 +100,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:53:54.952Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

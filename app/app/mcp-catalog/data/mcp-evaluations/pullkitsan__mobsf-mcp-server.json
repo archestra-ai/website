@@ -8,18 +8,37 @@
     "name": "pullkitsan"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "npx",
+      "args": [
+        "tsx",
+        "${__dirname}/server.ts"
+      ],
+      "env": {
+        "MOBSF_API_KEY": "${user_config.mobsf_api_key}",
+        "MOBSF_URL": "${user_config.mobsf_url}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "mobsf_api_key": {
+      "type": "string",
+      "title": "MobSF API Key",
+      "description": "Your MobSF REST API Key.",
+      "required": true,
+      "sensitive": true
+    },
+    "mobsf_url": {
+      "type": "string",
+      "title": "MobSF Server URL",
+      "description": "The URL of your running MobSF instance.",
+      "required": true,
+      "default": "http://localhost:8000"
+    }
+  },
   "readme": "# 🛡MobSF MCP Tool\n\nThis is an MCP (Model Context Protocol) compatible tool that allows MobSF (Mobile Security Framework) to scan APK and IPA files directly via Claude, 5ire, or any MCP-capable client.\n\n\n\n# Prerequisites\n\n* MobSF should be installed( and running ) on the system. \n* Download the [MCP typescript sdk](https://github.com/modelcontextprotocol/typescript-sdk) and rename the folder to sdk.\n* npm should be installed on the system\n\n# 🚀 Features\n\n- Supports APK and IPA file scanning\n\n- Uses MobSF's REST API to:\n\n<pre>Upload files\n\nTrigger scans\n\nFetch analysis summary\n\nAutomatically filters large results like strings or secrets (to prevent output overload)\n\nMCP-compatible interface via server.ts</pre>\n\n\n# 🎞️ Installation\n\nClone the repo and install dependencies:\n\n<pre>git clone https://github.com/yourusername/mobsf-mcp.git\ncd mobsf-mcp\nnpm install </pre>\n\n# Troubleshooting\n\nGo inside mobsf server directory and run 'npx tsx server.ts'.\nInstall any missing npm dependency if any.\n\n\n# 🔐 Setup\n\nCopy the .env.example to .env:\n\n> cp .env.example .env\n\nEdit .env to include your MobSF API key:\n\n<pre>MOBSF_API_KEY=YOUR_MOBSF_API_KEY\n\nMOBSF_URL=http://localhost:8000 </pre>\n\n\n# ▶️ Run the Server\n\n* Add the configuration settings shown at the end for claude AI desktop app, it will automatically run the server.\n\n* Make sure your MobSF server is running locally at http://localhost:8000.\n\n# 🧲 Example Input\n\n* The server exposes tool **scanFile** . So,  use any MCP client to try the following prompt **scan <FILE>.apk** or **scan <FILE>.ipa**. It will scan the IPA or APK file and will analyze the report(json) for you.  \n\n\n# 📌 Notes\n\n- Only .apk and .ipa file types are supported.\n\n- This tool avoids fetching large fields like raw strings or source code dumps to keep responses fast and compliant with Claude/5ire message limits.\n\n\n# ✅ Claude Config file (Example)\n\n<pre> {\n  \"mcpServers\": {\n    \"mobsf\": {\n      \"command\": \"npx\",\n      \"args\": [\"tsx\", \"/absolute/path/to/server.ts\"]\n    }\n  }\n} </pre>\n\n# ✅ 5ire Config file example ( Windows)\n<pre>\n  {\n  \"key\": \"mobsf\",\n  \"command\": \"npx\",\n  \"args\": [\n    \"tsx\",\n    \"C:\\\\Users\\\\Downloads\\\\mobsf-mcp-server\\\\server.js\"\n  ]\n}\n</pre>\n\n",
   "category": "Security",
   "quality_score": 45,
@@ -28,12 +47,18 @@
       "mcpServers": {
         "mobsf-mcp-claude": {
           "command": "npx",
-          "args": ["tsx", "/absolute/path/to/server.ts"],
+          "args": [
+            "tsx",
+            "/absolute/path/to/server.ts"
+          ],
           "env": {}
         },
         "mobsf-mcp-5ire": {
           "command": "npx",
-          "args": ["tsx", "C:\\Users\\Downloads\\mobsf-mcp-server\\server.js"],
+          "args": [
+            "tsx",
+            "C:\\Users\\Downloads\\mobsf-mcp-server\\server.js"
+          ],
           "env": {}
         }
       }
@@ -59,7 +84,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:49:55.158Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

@@ -8,18 +8,28 @@
     "name": "devilcoder01"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "python",
+      "args": [
+        "${__dirname}/main.py"
+      ],
+      "env": {
+        "WEATHER_API_KEY": "${user_config.api_key}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "WeatherAPI API Key",
+      "description": "Your API key from https://www.weatherapi.com/",
+      "required": true,
+      "sensitive": true
+    }
+  },
   "readme": "# Weather MCP Server\n\n[![smithery badge](https://smithery.ai/badge/@devilcoder01/weather-mcp-server)](https://smithery.ai/server/@devilcoder01/weather-mcp-server)\n\nA Model Context Protocol (MCP) server for weather data, built with FastAPI and the MCP framework. This server provides various weather-related tools that can be used by AI assistants to retrieve current weather conditions, forecasts, air quality data, and more.\n\n## Features\n\n- Current weather conditions\n- Weather forecasts (1-14 days)\n- Historical weather data\n- Weather alerts\n- Air quality information\n- Astronomy data (sunrise, sunset, moon phases)\n- Location search\n- Timezone information\n- Sports events\n\n## Requirements\n\n- Python 3.13+\n- [uv](https://github.com/astral-sh/uv) package manager\n- [WeatherAPI](https://www.weatherapi.com/) API key\n\n## Installation\n\n### Installing via Smithery\n\nTo install Weather Data Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@devilcoder01/weather-mcp-server):\n\n```bash\nnpx -y @smithery/cli install @devilcoder01/weather-mcp-server --client claude\n```\n\n### Manual Installation\n1. Clone this repository:\n   ```\n   git clone https://github.com/yourusername/Weather_mcp_server.git\n   cd Weather_mcp_server\n   ```\n\n2. Install dependencies using uv:\n   ```\n   uv venv\n   uv pip install -e .\n   ```\n\n3. Create a `.env` file in the project root with your WeatherAPI key:\n   ```\n   WEATHER_API_KEY=your_api_key_here\n   ```\n\n## Usage\n\nRun the server:\n\n```\npython main.py\n```\n\nThe server will start on http://localhost:8000 by default.\n\n## License\n\nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.\n",
   "category": "Data",
   "quality_score": 62,
@@ -28,7 +38,9 @@
       "mcpServers": {
         "devilcoder01-weather-mcp-server": {
           "command": "python",
-          "args": ["main.py"],
+          "args": [
+            "main.py"
+          ],
           "env": {}
         }
       }
@@ -54,7 +66,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T21:19:30.748Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

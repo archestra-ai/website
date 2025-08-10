@@ -8,11 +8,12 @@
     "name": "jsdelivr"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://mcp.globalping.dev/sse"
+      ],
       "env": {}
     }
   },
@@ -46,7 +47,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:36:13.092Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

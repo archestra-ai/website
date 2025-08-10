@@ -9,10 +9,12 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uv",
+      "args": [
+        "run",
+        "${__dirname}/client.py"
+      ],
       "env": {}
     }
   },
@@ -28,7 +30,10 @@
       "mcpServers": {
         "higress-ops-mcp-server-stdio": {
           "command": "uv",
-          "args": ["run", "client.py"],
+          "args": [
+            "run",
+            "client.py"
+          ],
           "env": {}
         }
       }
@@ -54,7 +59,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:35:54.716Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

@@ -8,18 +8,26 @@
     "name": "wenhuwang"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
+      "command": "${__dirname}/mcp-k8s-eye",
       "args": [],
-      "env": {}
+      "env": {
+        "HOME": "${user_config.home_directory}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "home_directory": {
+      "type": "directory",
+      "title": "Home Directory",
+      "description": "The home directory containing the .kube/config file for kubectl authentication. The server uses this to locate your Kubernetes configuration.",
+      "required": true,
+      "default": "${HOME}"
+    }
+  },
   "readme": "## mcp-k8s-eye\n\nmcp-k8s-eye is a tool that can manage kubernetes cluster and analyze workload status.\n\n## Features\n\n### Core Kubernetes Operations\n- [x] Connect to a Kubernetes cluster\n- [x] **Generic Kubernetes Resources** management capabilities\n  - Support all navtie resources: Pod, Deployment, Service, StatefulSet, Ingress...\n  - Support CustomResourceDefinition resources\n  - Operations include: list, get, create, update, delete\n- [x] Pod management capabilities (exec, logs)\n- [x] Deployment management capabilities (scale)\n- [x] Describe Kubernetes resources\n- [ ] Explain Kubernetes resources\n\n\n### Diagnostics\n- [x] Pod diagnostics (analyze pod status, container status, pod resource utilization)\n- [x] Service diagnostics (analyze service selector configuration, not ready endpoints, events)\n- [x] Deployment diagnostics (analyze available replicas)\n- [x] StatefulSet diagnostics (analyze statefulset service if exists, pvc if exists, available replicas)\n- [x] CronJob diagnostics (analyze cronjob schedule, starting deadline, last schedule time)\n- [x] Ingress diagnostics (analyze ingress class configuration, related services, tls secrets)\n- [x] NetworkPolicy diagnostics (analyze networkpolicy configuration, affected pods)\n- [x] ValidatingWebhook diagnostics (analyze webhook configuration, referenced services and pods)\n- [x] MutatingWebhook diagnostics (analyze webhook configuration, referenced services and pods)\n- [x] Node diagnostics (analyze node conditions)\n- [ ] Cluster diagnostics and troubleshooting \n\n### Monitoring\n- [x] Pod, Deployment, ReplicaSet, StatefulSet, DaemonSet workload resource usage (cpu, memory)\n- [ ] Node capacity, utilization (cpu, memory)\n- [ ] Cluster capacity, utilization (cpu, memory)\n\n### Advanced Features\n- [x] Multiple transport protocols support (Stdio, SSE)\n- [x] Support multiple AI Clients\n\n\n## Tools Usage\n\n### Resource Operation Tools\n- `resource_get`: Get detailed resource information about a specific resource in a namespace\n- `resource_list`: List detailed resource information about all resources in a namespace \n- `resource_create_or_update`: Create or update a resource in a namespace\n- `resource_delete`: Delete a resource in a namespace\n- `resource_describe`: Describe a resource detailed information in a namespace\n- `deployment_scale`: Scale a deployment in a namespace\n- `pod_exec`: Execute a command in a pod in a namespace`\n- `pod_logs`: Get logs from a pod in a namespace\n\n###  Diagnostics Tools\n- `pod_analyze`: Diagnose all pods in a namespace\n- `deployment_analyze`: Diagnose all deployments in a namespace\n- `statefulset_analyze`: Diagnose all statefulsets in a namespace\n- `service_analyze`: Diagnose all services in a namespace\n- `cronjob_analyze`: Diagnose all cronjobs in a namespace\n- `ingress_analyze`: Diagnose all ingresses in a namespace\n- `networkpolicy_analyze`: Diagnose all networkpolicies in a namespace\n- `validatingwebhook_analyze`: Diagnose all validatingwebhooks\n- `mutatingwebhook_analyze`: Diagnose all mutatingwebhooks\n- `node_analyze`: Diagnose all nodes in cluster\n\n### Monitoring Tools\n- `workload_resource_usage`: Get pod/deployment/replicaset/statefulset resource usage in a namepace (cpu, memory)\n\n\n## Requirements\n- Go 1.23 or higher\n- kubectl configured\n\n## Installation\n```\n# clone the repository\ngit clone https://github.com/wenhuwang/mcp-k8s-eye.git\ncd mcp-k8s-eye\n\n# build the binary\ngo build -o mcp-k8s-eye\n```\n\n## Usage\n### Stdio mode\n```\n{\n  \"mcpServers\": {\n    \"k8s eye\": {\n      \"command\": \"YOUR mcp-k8s-eye PATH\",\n      \"env\": {\n        \"HOME\": \"USER HOME DIR\"\n      },\n    }\n  }\n}\n```\n`env.HOME` is used to set the HOME directory for kubeconfig file.\n\n### SSE mode\n1. start your mcp sse server\n2. config your mcp server\n\n```\n{\n  \"mcpServers\": {\n    \"k8s eye\": {\n      \"url\": \"http://localhost:8080/sse\",\n      \"env\": {}\n    }\n  }\n}\n```\n\n### cursor tools\n![cursor tools](./images/mcp-server-tools.png)",
   "category": "Cloud",
   "quality_score": 50,

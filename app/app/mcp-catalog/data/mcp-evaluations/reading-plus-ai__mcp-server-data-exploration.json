@@ -8,18 +8,30 @@
     "name": "reading-plus-ai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "uvx",
+      "args": [
+        "mcp-server-ds"
+      ]
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "csv_path": {
+      "type": "file",
+      "title": "CSV File Path",
+      "description": "Local path to the CSV file for data exploration.",
+      "required": true
+    },
+    "topic": {
+      "type": "string",
+      "title": "Topic of Exploration",
+      "description": "The topic of exploration for the dataset (e.g., 'Weather patterns in New York' or 'Housing prices in California').",
+      "required": true
+    }
+  },
   "readme": "# MCP Server for Data Exploration\n\nMCP Server is a versatile tool designed for interactive data exploration.\n\nYour personal Data Scientist assistant, turning complex datasets into clear, actionable insights.\n\n<a href=\"https://glama.ai/mcp/servers/hwm8j9c422\"><img width=\"380\" height=\"200\" src=\"https://glama.ai/mcp/servers/hwm8j9c422/badge\" alt=\"mcp-server-data-exploration MCP server\" /></a>\n\n## 🚀 Try it Out\n\n1. **Download Claude Desktop**\n   - Get it [here](https://claude.ai/download)\n\n2. **Install and Set Up**\n   - On macOS, run the following command in your terminal:\n   ```bash\n   python setup.py\n   ```\n\n3. **Load Templates and Tools**\n   - Once the server is running, wait for the prompt template and tools to load in Claude Desktop.\n\n4. **Start Exploring**\n   - Select the explore-data prompt template from MCP\n   - Begin your conversation by providing the required inputs:\n     - `csv_path`: Local path to the CSV file\n     - `topic`: The topic of exploration (e.g., \"Weather patterns in New York\" or \"Housing prices in California\")\n\n## Examples\n\nThese are examples of how you can use MCP Server to explore data without any human intervention.\n\n### Case 1: California Real Estate Listing Prices\n- Kaggle Dataset: [USA Real Estate Dataset](https://www.kaggle.com/datasets/ahmedshahriarsakib/usa-real-estate-dataset)\n- Size: 2,226,382 entries (178.9 MB)\n- Topic: Housing price trends in California\n\n[![Watch the video](https://img.youtube.com/vi/RQZbeuaH9Ys/hqdefault.jpg)](https://www.youtube.com/watch?v=RQZbeuaH9Ys)\n- [Data Exploration Summary](https://claude.site/artifacts/058a1593-7a14-40df-bf09-28b8c4531137)\n\n### Case 2: Weather in London\n- Kaggle Dataset: [2M+ Daily Weather History UK](https://www.kaggle.com/datasets/jakewright/2m-daily-weather-history-uk/data)\n- Size: 2,836,186 entries (169.3 MB)\n- Topic: Weather in London\n- Report: [View Report](https://claude.site/artifacts/601ea9c1-a00e-472e-9271-3efafb8edede)\n- Graphs:\n  - [London Temperature Trends](https://claude.site/artifacts/9a25bc1e-d0cf-498a-833c-5179547ee268)\n<img width=\"1622\" alt=\"Screenshot 2024-12-09 at 12 48 56 AM\" src=\"https://github.com/user-attachments/assets/9e70fe97-8af7-4221-b1e7-00197c88bb47\">\n\n  - [Temperature-Humidity Relationship by Season](https://claude.site/artifacts/32a3371c-698d-48e3-b94e-f7e88ce8093d)\n<img width=\"1623\" alt=\"Screenshot 2024-12-09 at 12 47 54 AM\" src=\"https://github.com/user-attachments/assets/f4ac60a8-30e3-4b10-b296-ba412c2922fa\">\n\n  - [Wind Direction Pattern by Season](https://claude.site/artifacts/32a3371c-698d-48e3-b94e-f7e88ce8093d)\n<img width=\"1622\" alt=\"Screenshot 2024-12-09 at 12 47 00 AM\" src=\"https://github.com/user-attachments/assets/2db01054-f948-4d2e-ba39-8de8fa59f83d\">\n\n## 📦 Components\n\n### Prompts\n- **explore-data**: Tailored for data exploration tasks\n\n### Tools\n1. **load-csv**\n   - Function: Loads a CSV file into a DataFrame\n   - Arguments:\n     - `csv_path` (string, required): Path to the CSV file\n     - `df_name` (string, optional): Name for the DataFrame. Defaults to df_1, df_2, etc., if not provided\n\n2. **run-script**\n   - Function: Executes a Python script\n   - Arguments:\n     - `script` (string, required): The script to execute\n\n## ⚙️ Modifying the Server\n\n### Claude Desktop Configurations\n- macOS: `~/Library/Application\\ Support/Claude/claude_desktop_config.json`\n- Windows: `%APPDATA%/Claude/claude_desktop_config.json`\n\n### Development (Unpublished Servers)\n```json\n\"mcpServers\": {\n  \"mcp-server-ds\": {\n    \"command\": \"uv\",\n    \"args\": [\n      \"--directory\",\n      \"/Users/username/src/mcp-server-ds\",\n      \"run\",\n      \"mcp-server-ds\"\n    ]\n  }\n}\n```\n\n### Published Servers\n```json\n\"mcpServers\": {\n  \"mcp-server-ds\": {\n    \"command\": \"uvx\",\n    \"args\": [\n      \"mcp-server-ds\"\n    ]\n  }\n}\n```\n\n## 🛠️ Development\n\n### Building and Publishing\n1. **Sync Dependencies**\n   ```bash\n   uv sync\n   ```\n\n2. **Build Distributions**\n   ```bash\n   uv build\n   ```\n   Generates source and wheel distributions in the dist/ directory.\n\n3. **Publish to PyPI**\n   ```bash\n   uv publish\n   ```\n\n## 🤝 Contributing\n\nContributions are welcome! Whether you're fixing bugs, adding features, or improving documentation, your help makes this project better.\n\n### Reporting Issues\nIf you encounter bugs or have suggestions, open an issue in the issues section. Include:\n- Steps to reproduce (if applicable)\n- Expected vs. actual behavior\n- Screenshots or error logs (if relevant)\n\n## 📜 License\n\nThis project is licensed under the MIT License.\nSee the LICENSE file for details.\n\n## 💬 Get in Touch\n\nQuestions? Feedback? Open an issue or reach out to the maintainers. Let's make this project awesome together!\n\n## About\n\nThis is an open source project run by [ReadingPlus.AI LLC](https://readingplus.ai). and open to contributions from the entire community.\n",
   "category": "Data Science",
   "quality_score": 63,
@@ -28,12 +40,19 @@
       "mcpServers": {
         "mcp-server-ds-dev": {
           "command": "uv",
-          "args": ["--directory", "/Users/username/src/mcp-server-ds", "run", "mcp-server-ds"],
+          "args": [
+            "--directory",
+            "/Users/username/src/mcp-server-ds",
+            "run",
+            "mcp-server-ds"
+          ],
           "env": {}
         },
         "mcp-server-ds-published": {
           "command": "uvx",
-          "args": ["mcp-server-ds"],
+          "args": [
+            "mcp-server-ds"
+          ],
           "env": {}
         }
       }
@@ -59,7 +78,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:36:38.534Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

@@ -9,11 +9,14 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "uvx",
+      "args": [
+        "opengenes-mcp"
+      ],
+      "env": {
+        "MCP_TRANSPORT": "stdio"
+      }
     }
   },
   "tools": [],
@@ -28,34 +31,52 @@
       "mcpServers": {
         "opengenes-mcp": {
           "command": "uvx",
-          "args": ["opengenes-mcp"],
+          "args": [
+            "opengenes-mcp"
+          ],
           "env": {
             "MCP_TRANSPORT": "stdio"
           }
         },
         "opengenes-mcp-http-stream": {
           "command": "uvx",
-          "args": ["opengenes-mcp"],
+          "args": [
+            "opengenes-mcp"
+          ],
           "env": {}
         },
         "opengenes-mcp-stdio": {
           "command": "uvx",
-          "args": ["opengenes-mcp", "stdio"],
+          "args": [
+            "opengenes-mcp",
+            "stdio"
+          ],
           "env": {}
         },
         "opengenes-mcp-server": {
           "command": "uvx",
-          "args": ["opengenes-mcp", "server"],
+          "args": [
+            "opengenes-mcp",
+            "server"
+          ],
           "env": {}
         },
         "opengenes-mcp-server-port-8000": {
           "command": "uvx",
-          "args": ["opengenes-mcp", "server", "--port", "8000"],
+          "args": [
+            "opengenes-mcp",
+            "server",
+            "--port",
+            "8000"
+          ],
           "env": {}
         },
         "opengenes-mcp-sse": {
           "command": "uvx",
-          "args": ["opengenes-mcp", "sse"],
+          "args": [
+            "opengenes-mcp",
+            "sse"
+          ],
           "env": {}
         }
       }

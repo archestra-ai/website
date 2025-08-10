@@ -8,18 +8,28 @@
     "name": "zillow"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "auto-mobile",
+        "--project-path",
+        "${user_config.project_path}"
+      ],
       "env": {}
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "project_path": {
+      "type": "directory",
+      "title": "Project Path",
+      "description": "The root directory of the mobile project for source mapping and automation.",
+      "required": true
+    }
+  },
   "readme": "# AutoMobile\n\n![AutoMobile sticker](docs/img/auto_mobile_sticker_splash.png)\n\n<a href=\"https://glama.ai/mcp/servers/@zillow/auto-mobile\">\n  <img width=\"380\" height=\"200\" src=\"https://glama.ai/mcp/servers/@zillow/auto-mobile/badge\" alt=\"AutoMobile MCP server\" />\n</a>\n\nAutoMobile is a set of tools for mobile automation. You can use it for UI testing or as a development workflow\nassistant.\n\nThe first platform supported is Android with plans to extend to iOS.\n\n## How it works\n\n- 🔧 **[Powerful MCP Server](docs/features/mcp-server/index.md)**: AutoMobile provides comprehensive [actions](docs/features/mcp-server/actions.md) through MCP\n  tool calls with a fast [observations](docs/features/mcp-server/observation.md) to drive the\n  [interaction loop](docs/features/mcp-server/interaction-loop.md).\n- 🗺️ **Source Mapping**: Combining project path config with deep view hierarchy analysis we know exactly what code is being rendered.\n- ✍️ **[Automated Test Authoring](docs/features/test-authoring/index.md)**: When used in test authoring mode AutoMobile will write tests for you. It is the only way it writes tests.\n- 🧪 **[Test Execution](docs/features/test-execution/index.md)** - Run tests locally or on CI without extra infrastructure.\n- 📱 **Device Management**: Multi-device support with emulator control and app lifecycle management.\n\nAll together you get a system that looks like this:\n\n![automobile_system_design.png](docs/img/automobile_system_design.png)\n\n## Documentation\n\n- 💻 [Installation & Getting Started](docs/installation.md) - AutoMobile is [published on npm](https://www.npmjs.com/package/auto-mobile)\n  and we have instructions for agents we've tested with.\n- 📝 [Change Log](CHANGELOG.md) - coming soon\n\n## Contributing\n\n- [Code of Conduct](CODE_OF_CONDUCT.md)\n- [Responsible disclosure & use](SECURITY.md)\n- [Contributing](.github/CONTRIBUTING.md) - coming soon\n\n# Acknowledgement \n\nBy continuing to use AutoMobile, [you acknowledge and agree to the warnings and responsible use requirements](SECURITY.md).",
   "category": "Development",
   "quality_score": 46,
@@ -28,7 +38,10 @@
       "mcpServers": {
         "auto-mobile": {
           "command": "npx",
-          "args": ["-y", "auto-mobile"],
+          "args": [
+            "-y",
+            "auto-mobile"
+          ],
           "env": {}
         }
       }
@@ -54,7 +67,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:36:35.841Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

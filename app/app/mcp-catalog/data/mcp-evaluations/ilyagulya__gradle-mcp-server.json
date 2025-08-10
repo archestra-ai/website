@@ -8,11 +8,12 @@
     "name": "IlyaGulya"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "java",
+      "args": [
+        "-jar",
+        "${HOME}/mcp-servers/gradle-mcp-server/gradle-mcp-server-all.jar"
+      ],
       "env": {}
     }
   },
@@ -28,7 +29,10 @@
       "mcpServers": {
         "gradle-mcp-server": {
           "command": "java",
-          "args": ["-jar", "<absolute_path_to_home>/mcp-servers/gradle-mcp-server/gradle-mcp-server-all.jar"],
+          "args": [
+            "-jar",
+            "<absolute_path_to_home>/mcp-servers/gradle-mcp-server/gradle-mcp-server-all.jar"
+          ],
           "env": {}
         }
       }
@@ -54,7 +58,7 @@
   "programming_language": "Kotlin",
   "framework": null,
   "last_scraped_at": "2025-08-03T19:57:25.992Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

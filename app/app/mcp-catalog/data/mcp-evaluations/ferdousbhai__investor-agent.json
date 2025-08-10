@@ -8,11 +8,11 @@
     "name": "ferdousbhai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": [
+        "investor-agent"
+      ],
       "env": {}
     }
   },
@@ -28,12 +28,16 @@
       "mcpServers": {
         "investor-agent": {
           "command": "uvx",
-          "args": ["investor-agent"],
+          "args": [
+            "investor-agent"
+          ],
           "env": {}
         },
         "investor-agent-ta": {
           "command": "uvx",
-          "args": ["investor-agent[ta]"],
+          "args": [
+            "investor-agent[ta]"
+          ],
           "env": {}
         }
       }
@@ -59,7 +63,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:37:10.983Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

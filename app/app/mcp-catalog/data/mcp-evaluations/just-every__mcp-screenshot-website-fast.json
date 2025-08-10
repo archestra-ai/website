@@ -8,11 +8,12 @@
     "name": "just-every"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "@just-every/mcp-screenshot-website-fast"
+      ],
       "env": {}
     }
   },
@@ -28,12 +29,18 @@
       "mcpServers": {
         "just-every-mcp-screenshot-website-fast": {
           "command": "npx",
-          "args": ["-y", "@just-every/mcp-screenshot-website-fast"],
+          "args": [
+            "-y",
+            "@just-every/mcp-screenshot-website-fast"
+          ],
           "env": {}
         },
         "just-every-mcp-screenshot-website-fast-dev": {
           "command": "npm",
-          "args": ["run", "serve:dev"],
+          "args": [
+            "run",
+            "serve:dev"
+          ],
           "env": {}
         }
       }
@@ -59,7 +66,7 @@
   "programming_language": "JavaScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:26:50.418Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

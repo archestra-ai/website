@@ -9,17 +9,57 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
+      "command": "mcp-shell",
       "args": [],
-      "env": {}
+      "env": {
+        "MCP_SHELL_SERVER_NAME": "${user_config.server_name}",
+        "MCP_SHELL_LOG_LEVEL": "${user_config.log_level}",
+        "MCP_SHELL_LOG_FORMAT": "${user_config.log_format}",
+        "MCP_SHELL_LOG_OUTPUT": "${user_config.log_output}",
+        "MCP_SHELL_SEC_CONFIG_FILE": "${user_config.security_config_file}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "server_name": {
+      "type": "string",
+      "title": "Server Name",
+      "description": "The name of the server, as reported by the MCP protocol.",
+      "required": false,
+      "default": "mcp-shell 🐚"
+    },
+    "log_level": {
+      "type": "string",
+      "title": "Log Level",
+      "description": "Set the logging verbosity. Options: debug, info, warn, error, fatal.",
+      "required": false,
+      "default": "info"
+    },
+    "log_format": {
+      "type": "string",
+      "title": "Log Format",
+      "description": "Set the log output format. Options: json, console.",
+      "required": false,
+      "default": "json"
+    },
+    "log_output": {
+      "type": "string",
+      "title": "Log Output",
+      "description": "Where to send logs. Options: stdout, stderr, file.",
+      "required": false,
+      "default": "stdout"
+    },
+    "security_config_file": {
+      "type": "file",
+      "title": "Security Configuration File (YAML)",
+      "description": "Path to the YAML file containing security settings like command allowlists, blocklists, and execution limits. This is the primary way to enable and configure security.",
+      "required": false
+    }
+  },
   "readme": "# mcp-shell 🐚\n\nA robust Model Context Protocol (MCP) server that provides secure shell command execution capabilities to AI assistants and other MCP clients. In other words: the brain thinks, this runs the commands.\n\n> 🧠💥🖥️ *Think of `mcp-shell` as the command-line actuator for your LLM.*\n> While language models reason about the world, `mcp-shell` is what lets them **touch it**.\n\n## What is this?\n\nThis tool creates a bridge between AI systems and your shell environment through the standardized MCP protocol. It exposes the system shell as a structured tool, enabling autonomous workflows, tool-assisted reasoning, and real-world problem solving.\n\nBuilt on top of the official MCP SDK for Go: [mark3labs/mcp-go](https://github.com/mark3labs/mcp-go).\n\nIt's written in Go, integrates directly with `mcp-go`, and provides a clean path from thought to execution. I'm aware similar projects exist — this one’s mine. It solves the problem the way I want it solved: minimal, composable, auditable.\n\nOut of the box it runs isolated via Docker, but that's just a start. The roadmap includes support for optional jailing mechanisms like `chroot`, namespaces, and syscall-level confinement — without depending on Docker for everything.\n\n## Features\n\n- **🔒 Security First**: Configurable command allowlists, blocklists, and execution constraints\n- **🐳 Docker Ready**: Lightweight Alpine-based container for secure isolation\n- **📊 Structured Responses**: JSON-formatted output with stdout, stderr, exit codes, and execution metadata\n- **🔄 Binary Data Support**: Optional base64 encoding for handling binary command output\n- **⚡ Performance Monitoring**: Execution time tracking and resource limits\n- **📋 Audit Logging**: Complete command execution audit trail with structured logging\n- **🎯 Context Aware**: Supports command execution with proper context cancellation\n- **⚙️ Environment Configuration**: Full configuration via environment variables\n\n## Security Features\n\n- **Command Validation**: Allowlist/blocklist with regex pattern matching\n- **Execution Limits**: Configurable timeouts and output size limits\n- **User Isolation**: Run commands as unprivileged users\n- **Working Directory**: Restrict execution to specific directories\n- **Audit Trail**: Complete logging of all command executions\n- **Resource Limits**: Memory and CPU usage constraints\n\n## Quick Start\n\n### Prerequisites\n\n- Go 1.23 or later\n- Unix-like system (Linux, macOS, WSL)\n- Docker (optional, for containerized deployment)\n\n### Installation\n\n```bash\ngit clone https://github.com/sonirico/mcp-shell\ncd mcp-shell\nmake install\n```\n\n### Basic Usage\n\n```bash\n# Run with default configuration (if installed system-wide)\nmcp-shell\n\n# Or run locally\nmake run\n\n# Run with security enabled (creates temporary config)\nmake run-secure\n\n# Run with custom config file\nMCP_SHELL_SEC_CONFIG_FILE=security.json mcp-shell\n\n# Run with environment overrides\nMCP_SHELL_LOG_LEVEL=debug mcp-shell\n```\n\n### Docker Deployment (Recommended)\n\n```bash\n# Build Docker image\nmake docker-build\n\n# Run in secure container\nmake docker-run-secure\n\n# Run with shell access for debugging\nmake docker-shell\n```\n\n## Configuration\n\n### Environment Variables\n\nBasic server and logging configuration via environment variables:\n\n#### Server Configuration\n\n- `MCP_SHELL_SERVER_NAME`: Server name (default: \"mcp-shell 🐚\")\n- `MCP_SHELL_VERSION`: Server version (set at compile time)\n\n#### Logging Configuration\n\n- `MCP_SHELL_LOG_LEVEL`: Log level (debug, info, warn, error, fatal)\n- `MCP_SHELL_LOG_FORMAT`: Log format (json, console)\n- `MCP_SHELL_LOG_OUTPUT`: Log output (stdout, stderr, file)\n\n#### Configuration File\n\n- `MCP_SHELL_SEC_CONFIG_FILE`: Path to YAML configuration file\n\n### Security Configuration (YAML Only)\n\nSecurity settings are configured exclusively via YAML configuration file:\n\n```bash\nexport MCP_SHELL_SEC_CONFIG_FILE=security.yaml\n```\n\nExample security configuration file:\n\n```yaml\nsecurity:\n  enabled: true\n  allowed_commands:\n    - ls\n    - cat\n    - grep\n    - find\n    - echo\n  blocked_commands:\n    - rm -rf\n    - sudo\n    - chmod\n  blocked_patterns:\n    - 'rm\\s+.*-rf.*'\n    - 'sudo\\s+.*'\n  max_execution_time: 30s\n  working_directory: /tmp/mcp-workspace\n  max_output_size: 1048576\n  audit_log: true\n```\n\n## Tool Parameters\n\n- `command` (string, required): Shell command to execute\n- `base64` (boolean, optional): Return stdout/stderr as base64-encoded strings\n\n## Response Format\n\n```json\n{\n  \"status\": \"success|error\",\n  \"exit_code\": 0,\n  \"stdout\": \"command output\",\n  \"stderr\": \"error output\", \n  \"command\": \"executed command\",\n  \"execution_time\": \"100ms\",\n  \"security_info\": {\n    \"security_enabled\": true,\n    \"working_dir\": \"/tmp/mcp-workspace\",\n    \"timeout_applied\": true\n  }\n}\n```\n\n## Integration Examples\n\n### With Claude Desktop\n\n```json\n{\n  \"mcpServers\": {\n    \"shell\": {\n      \"command\": \"docker\",\n      \"args\": [\"run\", \"--rm\", \"-i\", \"mcp-shell:latest\"],\n      \"env\": {\n        \"MCP_SHELL_SECURITY_ENABLED\": \"true\",\n        \"MCP_SHELL_LOG_LEVEL\": \"info\"\n      }\n    }\n  }\n}\n```\n\n### Production Deployment\n\n```bash\n# Build and install\nmake build\nsudo make install-bin\n\n# Set environment variables for basic config\nexport MCP_SHELL_LOG_LEVEL=info\nexport MCP_SHELL_LOG_FORMAT=json\nexport MCP_SHELL_SEC_CONFIG_FILE=/etc/mcp-shell/config.json\n\n# Security is configured in the JSON file only\n# Run service\nmcp-shell\n```\n\n## Development\n\n```bash\n# Install dependencies and dev tools\nmake install dev-tools\n\n# Format code\nmake fmt\n\n# Run tests\nmake test\n\n# Run linter\nmake lint\n\n# Build for release\nmake release\n\n# Generate config example\nmake config-example\n```\n\n## Security Considerations\n\n### ⚠️ Important Security Notes\n\n1. **Default Mode**: Runs with **full system access** when security is disabled (which is, of course, a terrible idea — unless you're into that).\n2. **Container Isolation**: Use Docker deployment for additional security layers\n3. **User Privileges**: Run as non-root user in production\n4. **Network Access**: Commands can access network unless explicitly restricted\n5. **File System**: Can read/write files based on user permissions\n\n### Recommended Production Setup\n\nCreate `security.yaml`:\n\n```yaml\nsecurity:\n  enabled: true\n  allowed_commands:\n    - ls\n    - cat\n    - head\n    - tail\n    - grep\n    - find\n    - wc\n    - sort\n    - uniq\n  blocked_patterns:\n    - 'rm\\s+.*-rf.*'\n    - 'sudo\\s+.*'\n    - 'chmod\\s+(777|666)'\n    - '>/dev/'\n    - 'curl.*\\|.*sh'\n  max_execution_time: 10s\n  working_directory: /tmp/mcp-workspace\n  max_output_size: 524288\n  audit_log: true\n```\n\nSet environment:\n```bash\nexport MCP_SHELL_SEC_CONFIG_FILE=security.yaml\nexport MCP_SHELL_LOG_LEVEL=info\nexport MCP_SHELL_LOG_FORMAT=json\n```\n\n## Contributing\n\n1. Fork the repository\n2. Create feature branch (`git checkout -b feature/amazing-feature`)\n3. Commit changes (`git commit -m 'Add amazing feature'`)\n4. Push to branch (`git push origin feature/amazing-feature`)\n5. Open Pull Request\n\nEnsure code is formatted (`make fmt`) and passes tests (`make test`).\n\n## License\n\nMIT License - See LICENSE file for details.\n",
   "category": "AI Tools",
   "quality_score": 50,
@@ -52,7 +92,12 @@
         },
         "mcp-shell-docker-secure": {
           "command": "docker",
-          "args": ["run", "--rm", "-i", "mcp-shell:latest"],
+          "args": [
+            "run",
+            "--rm",
+            "-i",
+            "mcp-shell:latest"
+          ],
           "env": {
             "MCP_SHELL_SECURITY_ENABLED": "true",
             "MCP_SHELL_LOG_LEVEL": "info"
@@ -99,7 +144,7 @@
   "programming_language": "Go",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:33:23.531Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

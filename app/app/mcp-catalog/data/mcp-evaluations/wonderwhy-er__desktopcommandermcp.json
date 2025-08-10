@@ -8,12 +8,12 @@
     "name": "wonderwhy-er"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "npx",
+      "args": [
+        "-y",
+        "@wonderwhy-er/desktop-commander"
+      ]
     }
   },
   "tools": [],
@@ -28,7 +28,10 @@
       "mcpServers": {
         "wonderwhy-er-desktop-commander": {
           "command": "npx",
-          "args": ["-y", "@wonderwhy-er/desktop-commander"],
+          "args": [
+            "-y",
+            "@wonderwhy-er/desktop-commander"
+          ],
           "env": {}
         }
       }
@@ -54,7 +57,7 @@
   "programming_language": "JavaScript",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:33:29.941Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

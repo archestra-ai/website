@@ -8,11 +8,12 @@
     "name": "JoshuaRileyDev"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "@joshuarileydev/simulator-mcp-server"
+      ],
       "env": {}
     }
   },
@@ -28,7 +29,10 @@
       "mcpServers": {
         "joshuarileydev-simulator-mcp-server": {
           "command": "npx",
-          "args": ["y", "@joshuarileydev/simulator-mcp-server"],
+          "args": [
+            "y",
+            "@joshuarileydev/simulator-mcp-server"
+          ],
           "env": {}
         }
       }
@@ -54,7 +58,7 @@
   "programming_language": "JavaScript",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:36:11.887Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

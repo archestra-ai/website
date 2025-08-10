@@ -8,12 +8,23 @@
     "name": "prisma"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "mcpServers": {
+      "Prisma-Local": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "prisma",
+          "mcp"
+        ]
+      },
+      "Prisma-Remote": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-remote",
+          "https://mcp.prisma.io/mcp"
+        ]
+      }
     }
   },
   "tools": [],
@@ -28,12 +39,20 @@
       "mcpServers": {
         "mcp-remote": {
           "command": "npx",
-          "args": ["-y", "mcp-remote", "https://mcp.prisma.io/mcp"],
+          "args": [
+            "-y",
+            "mcp-remote",
+            "https://mcp.prisma.io/mcp"
+          ],
           "env": {}
         },
         "prisma-mcp": {
           "command": "npx",
-          "args": ["-y", "prisma", "mcp"],
+          "args": [
+            "-y",
+            "prisma",
+            "mcp"
+          ],
           "env": {}
         }
       }
@@ -59,7 +78,7 @@
   "programming_language": "JavaScript",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:34:39.923Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

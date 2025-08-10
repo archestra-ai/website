@@ -8,12 +8,12 @@
     "name": "zhsama"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "npx",
+      "args": [
+        "-y",
+        "duckduckgo-mcp-server"
+      ]
     }
   },
   "tools": [],
@@ -28,12 +28,17 @@
       "mcpServers": {
         "duckduckgo-search-online": {
           "command": "npx",
-          "args": ["-y", "duckduckgo-mcp-server"],
+          "args": [
+            "-y",
+            "duckduckgo-mcp-server"
+          ],
           "env": {}
         },
         "duckduckgo-search-local": {
           "command": "node",
-          "args": ["/path/to/duckduckgo-search/build/index.js"],
+          "args": [
+            "/path/to/duckduckgo-search/build/index.js"
+          ],
           "env": {}
         }
       }
@@ -59,7 +64,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:30:10.205Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

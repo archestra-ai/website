@@ -8,11 +8,20 @@
     "name": "co-browser"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "docker",
+      "args": [
+        "run",
+        "-itp",
+        "--device=/dev/sgx_provision:/dev/sgx/provision",
+        "--device=/dev/sgx_enclave:/dev/sgx/enclave",
+        "-v",
+        "/var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket",
+        "-p",
+        "8000:8000",
+        "--rm",
+        "gsc-attestable-mcp-server"
+      ],
       "env": {}
     }
   },
@@ -44,7 +53,13 @@
         },
         "gsc-attestable-mcp-server-docker-local": {
           "command": "docker",
-          "args": ["run", "-p", "8000:8000", "--rm", "gsc-attestable-mcp-server"],
+          "args": [
+            "run",
+            "-p",
+            "8000:8000",
+            "--rm",
+            "gsc-attestable-mcp-server"
+          ],
           "env": {}
         }
       }
@@ -70,7 +85,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:48:11.643Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": false,
     "implementing_prompts": false,

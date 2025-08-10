@@ -8,11 +8,12 @@
     "name": "mzxrai"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mzxrai/mcp-webresearch@latest"
+      ],
       "env": {}
     }
   },
@@ -28,12 +29,17 @@
       "mcpServers": {
         "mcp-webresearch": {
           "command": "npx",
-          "args": ["-y", "@mzxrai/mcp-webresearch@latest"],
+          "args": [
+            "-y",
+            "@mzxrai/mcp-webresearch@latest"
+          ],
           "env": {}
         },
         "mcp-webresearch-dev": {
           "command": "pnpm",
-          "args": ["dev"],
+          "args": [
+            "dev"
+          ],
           "env": {}
         }
       }
@@ -59,7 +65,7 @@
   "programming_language": "JavaScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:26:58.548Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

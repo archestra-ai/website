@@ -8,18 +8,61 @@
     "name": "c4pt0r"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "uv",
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "src/main.py"
+      ],
+      "env": {
+        "TIDB_HOST": "${user_config.tidb_host}",
+        "TIDB_PORT": "${user_config.tidb_port}",
+        "TIDB_USERNAME": "${user_config.tidb_username}",
+        "TIDB_PASSWORD": "${user_config.tidb_password}",
+        "TIDB_DATABASE": "${user_config.tidb_database}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "tidb_host": {
+      "type": "string",
+      "title": "TiDB Host",
+      "description": "TiDB host address, e.g. 'gateway01.us-east-1.prod.aws.tidbcloud.com'",
+      "required": true
+    },
+    "tidb_port": {
+      "type": "number",
+      "title": "TiDB Port",
+      "description": "The port number for the TiDB cluster.",
+      "required": false,
+      "default": 4000
+    },
+    "tidb_username": {
+      "type": "string",
+      "title": "TiDB Username",
+      "description": "Database username, e.g. 'xxxxxxxxxx.<username>'",
+      "required": true
+    },
+    "tidb_password": {
+      "type": "string",
+      "title": "TiDB Password",
+      "description": "The password for the database user.",
+      "required": true,
+      "sensitive": true
+    },
+    "tidb_database": {
+      "type": "string",
+      "title": "TiDB Database Name",
+      "description": "The name of the database to connect to.",
+      "required": false,
+      "default": "test"
+    }
+  },
   "readme": "# mcp-server-tidb\n\nMCP server implementation for TiDB (serverless) database.\n\n## Prerequisites\n\n- uv (Python package installer)\n\n## Installation\n\n```\n# Clone the repository\ngit clone https://github.com/c4pt0r/mcp-server-tidb\ncd mcp-server-tidb\n\n# Install the package and dependencies using uv\nuv venv\nuv pip install -e .\n```\n\n## Configuration\n\nGo [tidbcloud.com](https://tidbcloud.com) to create a free TiDB database cluster\n\nConfiguration can be provided through environment variables, or using .env:\n- `TIDB_HOST` - TiDB host address, e.g. 'gateway01.us-east-1.prod.aws.tidbcloud.com'\n- `TIDB_PORT` - TiDB port (default: 4000)\n- `TIDB_USERNAME` - Database username, e.g.  'xxxxxxxxxx.\\<username\\>'\n- `TIDB_PASSWORD` - Database password\n- `TIDB_DATABASE` - Database name, default is test\n\n## Run with Claude Desktop\n\nConfig Claude Desktop, [HOWTO](https://modelcontextprotocol.io/quickstart/user)\n\n`claude_desktop_config.json`:\n\n```\n{\n  \"mcpServers\": {\n      \"tidb\": {\n          \"command\": \"uv\",\n          \"args\": [\n              \"--directory\",\n              \"/path/to/mcp-server-tidb\",\n              \"run\",\n              \"src/main.py\"\n          ]\n      }\n  }\n}\n```\n\n\nIf you're running mcp-server-tidb in WSL, the `claude_desktop_config.json` should look like this:\n\n```\n{\n  \"mcpServers\": {\n    \"tool-with-env-vars\": {\n      \"command\": \"wsl.exe\",\n      \"args\": [\n        \"bash\",\n        \"-c\",\n        \"/path/to/uv --directory /path/to/mcp-server-tidb run python src/main.py\"\n      ]\n    }\n  }\n}\n```\n",
   "category": "Data",
   "quality_score": 42,
@@ -28,12 +71,21 @@
       "mcpServers": {
         "mcp-server-tidb": {
           "command": "uv",
-          "args": ["--directory", "/path/to/mcp-server-tidb", "run", "src/main.py"],
+          "args": [
+            "--directory",
+            "/path/to/mcp-server-tidb",
+            "run",
+            "src/main.py"
+          ],
           "env": {}
         },
         "mcp-server-tidb-wsl": {
           "command": "wsl.exe",
-          "args": ["bash", "-c", "/path/to/uv --directory /path/to/mcp-server-tidb run python src/main.py"],
+          "args": [
+            "bash",
+            "-c",
+            "/path/to/uv --directory /path/to/mcp-server-tidb run python src/main.py"
+          ],
           "env": {}
         }
       }
@@ -59,7 +111,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:33:46.327Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": false,
     "implementing_prompts": false,

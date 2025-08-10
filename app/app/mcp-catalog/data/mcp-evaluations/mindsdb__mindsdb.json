@@ -7,15 +7,7 @@
   "author": {
     "name": "mindsdb"
   },
-  "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
-  },
+  "server": {},
   "tools": [],
   "prompts": [],
   "keywords": [],
@@ -28,12 +20,21 @@
       "mcpServers": {
         "mindsdb": {
           "command": "python",
-          "args": ["-m", "mindsdb", "--api=mcp"],
+          "args": [
+            "-m",
+            "mindsdb",
+            "--api=mcp"
+          ],
           "env": {}
         },
         "mindsdb-docker": {
           "command": "docker",
-          "args": ["run", "-i", "mindsdb/mindsdb:latest", "--api=mcp"],
+          "args": [
+            "run",
+            "-i",
+            "mindsdb/mindsdb:latest",
+            "--api=mcp"
+          ],
           "env": {}
         }
       }

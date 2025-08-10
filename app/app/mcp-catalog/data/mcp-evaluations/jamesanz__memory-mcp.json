@@ -8,18 +8,29 @@
     "name": "JamesANZ"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "node",
+      "args": [
+        "${__dirname}/build/index.js"
+      ],
+      "env": {
+        "MONGODB_URI": "${user_config.mongodb_uri}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "mongodb_uri": {
+      "type": "string",
+      "title": "MongoDB Connection String",
+      "description": "The connection string for the MongoDB database.",
+      "required": false,
+      "sensitive": true,
+      "default": "mongodb://localhost:27017"
+    }
+  },
   "readme": "# Memory MCP\n\nA Model Context Protocol (MCP) server for logging and retrieving memories from LLM conversations.\n\n## Features\n\n- **Save Memories**: Store memories from LLM conversations with timestamps and LLM identification\n- **Retrieve Memories**: Get all stored memories with detailed metadata\n- **Add Memories**: Append new memories without overwriting existing ones\n- **Clear Memories**: Remove all stored memories\n- **MongoDB Storage**: Persistent storage using MongoDB database\n\n## Installation\n\n1. Install dependencies:\n\n```bash\nnpm install\n```\n\n2. Build the project:\n\n```bash\nnpm run build\n```\n\n## Configuration\n\nSet the MongoDB connection string via environment variable:\n\n```bash\nexport MONGODB_URI=\"mongodb://localhost:27017\"\n```\n\nDefault: `mongodb://localhost:27017`\n\n## Usage\n\n### Available Tools\n\n1. **save-memories**: Save all memories to the database, overwriting existing ones\n   - `memories`: Array of memory strings to save\n   - `llm`: Name of the LLM (e.g., 'chatgpt', 'claude')\n   - `userId`: Optional user identifier\n\n2. **get-memories**: Retrieve all memories from the database\n   - No parameters required\n\n3. **add-memories**: Add new memories to the database without overwriting existing ones\n   - `memories`: Array of memory strings to add\n   - `llm`: Name of the LLM (e.g., 'chatgpt', 'claude')\n   - `userId`: Optional user identifier\n\n4. **clear-memories**: Clear all memories from the database\n   - No parameters required\n\n### Example Usage in LLM\n\n1. **Save all memories** (overwrites existing):\n\n   ```\n   User: \"Save all my memories from this conversation to the MCP server\"\n   LLM: [Uses save-memories tool with current conversation memories]\n   ```\n\n2. **Retrieve all memories**:\n\n   ```\n   User: \"Get all my memories from the MCP server\"\n   LLM: [Uses get-memories tool to retrieve stored memories]\n   ```\n\n3. **Add new memories** (preserves existing):\n   ```\n   User: \"Add these new memories to my existing ones\"\n   LLM: [Uses add-memories tool to append new memories]\n   ```\n\n## Database Schema\n\nMemories are stored in MongoDB with the following structure:\n\n```javascript\n{\n  _id: ObjectId,\n  memories: string[],        // Array of memory strings\n  timestamp: Date,          // When memories were saved\n  llm: string,             // LLM identifier (e.g., 'chatgpt', 'claude')\n  userId?: string          // Optional user identifier\n}\n```\n\n## Development\n\nTo run in development mode:\n\n```bash\nnpm run build\nnode build/index.js\n```\n",
   "category": "AI Tools",
   "quality_score": 46,
@@ -28,7 +39,9 @@
       "mcpServers": {
         "memory-mcp": {
           "command": "node",
-          "args": ["build/index.js"],
+          "args": [
+            "build/index.js"
+          ],
           "env": {
             "MONGODB_URI": "mongodb://localhost:27017"
           }
@@ -56,7 +69,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-04T10:21:02.449Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

@@ -8,18 +8,46 @@
     "name": "hustcc"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-mermaid",
+        "--transport",
+        "${user_config.transport}",
+        "--port",
+        "${user_config.port}",
+        "--endpoint",
+        "${user_config.endpoint}"
+      ],
       "env": {}
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "transport": {
+      "type": "string",
+      "title": "Transport Protocol",
+      "description": "Specify the transport protocol: 'stdio', 'sse', or 'streamable'.",
+      "required": false,
+      "default": "stdio"
+    },
+    "port": {
+      "type": "number",
+      "title": "Server Port",
+      "description": "Specify the port for SSE or streamable transport.",
+      "required": false,
+      "default": 3033
+    },
+    "endpoint": {
+      "type": "string",
+      "title": "Server Endpoint",
+      "description": "Specify the endpoint for the transport. Default is '/sse' for SSE and '/mcp' for streamable.",
+      "required": false
+    }
+  },
   "readme": "# <img src=\"https://mermaid.js.org/favicon.svg\" height=\"24\"/> MCP Mermaid ![](https://badge.mcpx.dev?type=server 'MCP Server')  [![build](https://github.com/hustcc/mcp-mermaid/actions/workflows/build.yml/badge.svg)](https://github.com/hustcc/mcp-mermaid/actions/workflows/build.yml) [![npm Version](https://img.shields.io/npm/v/mcp-mermaid.svg)](https://www.npmjs.com/package/mcp-mermaid) [![smithery badge](https://smithery.ai/badge/@hustcc/mcp-mermaid)](https://smithery.ai/server/@hustcc/mcp-mermaid) [![npm License](https://img.shields.io/npm/l/mcp-mermaid.svg)](https://www.npmjs.com/package/mcp-mermaid)\n\nGenerate <img src=\"https://mermaid.js.org/favicon.svg\" height=\"14\"/> [mermaid](https://mermaid.js.org/) diagram and chart with AI MCP dynamically. Also you can use <img src=\"https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*ZFK8SrovcqgAAAAAAAAAAAAAemJ7AQ/original\" height=\"14\"/> [mcp-server-chart](https://github.com/antvis/mcp-server-chart) to generate chart, graph, map.\n\n\n## ✨ Features\n\n- Fully support all features and syntax of `Mermaid`.\n- Support configuration of `backgroundColor` and `theme`, enabling large AI models to output rich style configurations.\n- Support exporting to `png`, `svg`, and `mermaid` formats, with validation for `Mermaid` to facilitate the model's multi-round output of correct syntax and graphics.\n\n<img width=\"720\" alt=\"mcp-mermaid\" src=\"https://mermaid.js.org/header.png\" />\n\n\n## 🤖 Usage\n\nTo use with `Desktop APP`, such as Claude, VSCode, Cline, Cherry Studio, and so on, add the  MCP server config below. On Mac system:\n\n```json\n{\n  \"mcpServers\": {\n    \"mcp-mermaid\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"mcp-mermaid\"\n      ]\n    }\n  }\n}\n```\n\nOn Window system:\n\n```json\n{\n  \"mcpServers\": {\n    \"mcp-mermaid\": {\n      \"command\": \"cmd\",\n      \"args\": [\n        \"/c\",\n        \"npx\",\n        \"-y\",\n        \"mcp-mermaid\"\n      ]\n    }\n  }\n}\n```\n\nAlso, you can use it on aliyun, modelscope, glama.ai, smithery.ai or others with HTTP, SSE Protocol.\n\n\n## 🚰 Run with SSE or Streamable transport\n\nInstall the package globally.\n\n```bash\nnpm install -g mcp-mermaid\n```\n\nRun the server with your preferred transport option:\n\n```bash\n# For SSE transport (default endpoint: /sse)\nmcp-mermaid -t sse\n\n# For Streamable transport with custom endpoint\nmcp-mermaid -t streamable\n```\n\nThen you can access the server at:\n- SSE transport: `http://localhost:3033/sse`\n- Streamable transport: `http://localhost:3033/mcp`\n\n\n## 🎮 CLI Options\n\nYou can also use the following CLI options when running the MCP server. Command options by run cli with `-h`.\n\n```plain\nMCP Mermaid CLI\n\nOptions:\n  --transport, -t  Specify the transport protocol: \"stdio\", \"sse\", or \"streamable\" (default: \"stdio\")\n  --port, -p       Specify the port for SSE or streamable transport (default: 3033)\n  --endpoint, -e   Specify the endpoint for the transport:\n                    - For SSE: default is \"/sse\"\n                    - For streamable: default is \"/mcp\"\n  --help, -h       Show this help message\n```\n\n\n## 🔨 Development\n\nInstall dependencies:\n\n```bash\nnpm install\n```\n\nBuild the server:\n\n```bash\nnpm run build\n```\n\nStart the MCP server:\n\n```bash\nnpm run start\n```\n\n\n## 📄 License\n\nMIT@[hustcc](https://github.com/hustcc).\n",
   "category": "AI Tools",
   "quality_score": 55,
@@ -28,22 +56,36 @@
       "mcpServers": {
         "mcp-mermaid-stdio": {
           "command": "npx",
-          "args": ["-y", "mcp-mermaid"],
+          "args": [
+            "-y",
+            "mcp-mermaid"
+          ],
           "env": {}
         },
         "mcp-mermaid-stdio-windows": {
           "command": "cmd",
-          "args": ["/c", "npx", "-y", "mcp-mermaid"],
+          "args": [
+            "/c",
+            "npx",
+            "-y",
+            "mcp-mermaid"
+          ],
           "env": {}
         },
         "mcp-mermaid-sse": {
           "command": "mcp-mermaid",
-          "args": ["-t", "sse"],
+          "args": [
+            "-t",
+            "sse"
+          ],
           "env": {}
         },
         "mcp-mermaid-streamable": {
           "command": "mcp-mermaid",
-          "args": ["-t", "streamable"],
+          "args": [
+            "-t",
+            "streamable"
+          ],
           "env": {}
         }
       }
@@ -69,7 +111,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:33:43.475Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

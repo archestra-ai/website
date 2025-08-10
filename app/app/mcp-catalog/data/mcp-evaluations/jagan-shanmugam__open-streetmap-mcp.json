@@ -8,12 +8,11 @@
     "name": "jagan-shanmugam"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "uvx",
+      "args": [
+        "osm-mcp-server"
+      ]
     }
   },
   "tools": [],
@@ -28,7 +27,9 @@
       "mcpServers": {
         "osm-mcp-server": {
           "command": "uvx",
-          "args": ["osm-mcp-server"],
+          "args": [
+            "osm-mcp-server"
+          ],
           "env": {}
         },
         "osm-mcp-server-local-run": {
@@ -38,7 +39,12 @@
         },
         "osm-mcp-server-configured": {
           "command": "uv",
-          "args": ["--directory", "/path/to/osm-mcp-server", "run", "osm-mcp-server"],
+          "args": [
+            "--directory",
+            "/path/to/osm-mcp-server",
+            "run",
+            "osm-mcp-server"
+          ],
           "env": {}
         },
         "osm-mcp-server-inspector": {
@@ -77,7 +83,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:19:14.701Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

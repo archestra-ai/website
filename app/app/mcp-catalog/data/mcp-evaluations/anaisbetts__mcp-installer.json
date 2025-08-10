@@ -8,13 +8,12 @@
     "name": "anaisbetts"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@anaisbetts/mcp-installer"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -28,7 +27,10 @@
       "mcpServers": {
         "mcp-installer": {
           "command": "npx",
-          "args": ["-y", "@anaisbetts/mcp-installer"],
+          "args": [
+            "-y",
+            "@anaisbetts/mcp-installer"
+          ],
           "env": {}
         }
       }
@@ -54,7 +56,7 @@
   "programming_language": "JavaScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:56:40.488Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

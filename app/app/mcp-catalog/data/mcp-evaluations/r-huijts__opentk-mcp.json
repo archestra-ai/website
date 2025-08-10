@@ -8,11 +8,12 @@
     "name": "r-huijts"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "@r-huijts/opentk-mcp"
+      ],
       "env": {}
     }
   },
@@ -28,22 +29,32 @@
       "mcpServers": {
         "r-huijts-opentk-mcp": {
           "command": "npx",
-          "args": ["@r-huijts/opentk-mcp"],
+          "args": [
+            "@r-huijts/opentk-mcp"
+          ],
           "env": {}
         },
         "opentk": {
           "command": "npx",
-          "args": ["-y", "@r-huijts/opentk-mcp"],
+          "args": [
+            "-y",
+            "@r-huijts/opentk-mcp"
+          ],
           "env": {}
         },
         "opentk-stdio": {
           "command": "npx",
-          "args": ["-y", "@r-huijts/opentk-mcp"],
+          "args": [
+            "-y",
+            "@r-huijts/opentk-mcp"
+          ],
           "env": {}
         },
         "opentk-local": {
           "command": "node",
-          "args": ["/absolute/path/to/your/opentk-mcp/dist/index.js"],
+          "args": [
+            "/absolute/path/to/your/opentk-mcp/dist/index.js"
+          ],
           "env": {}
         }
       }
@@ -69,7 +80,7 @@
   "programming_language": "HTML",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:27:51.182Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

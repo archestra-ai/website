@@ -8,12 +8,14 @@
     "name": "imprvhub"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "uvx",
+      "args": [
+        "--python=3.10",
+        "--from",
+        "git+https://github.com/imprvhub/mcp-domain-availability",
+        "mcp-domain-availability"
+      ]
     }
   },
   "tools": [],
@@ -38,7 +40,10 @@
         },
         "mcp-domain-availability-local": {
           "command": "uv",
-          "args": ["run", "src/mcp_domain_availability/main.py"],
+          "args": [
+            "run",
+            "src/mcp_domain_availability/main.py"
+          ],
           "env": {}
         }
       }
@@ -64,7 +69,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:30:10.732Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

@@ -9,10 +9,11 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": [
+        "${__dirname}/mcp_server.py"
+      ],
       "env": {}
     }
   },
@@ -28,7 +29,9 @@
       "mcpServers": {
         "GsuiteMCPServer": {
           "command": "absolute-path-to-your-python-executable-in-virtual-environment",
-          "args": ["<mcp_server.py-abs-path>"],
+          "args": [
+            "<mcp_server.py-abs-path>"
+          ],
           "env": {}
         }
       }
@@ -54,7 +57,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:54:54.748Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

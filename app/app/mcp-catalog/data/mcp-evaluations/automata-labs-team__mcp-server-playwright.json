@@ -8,12 +8,12 @@
     "name": "Automata-Labs-team"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "npx",
+      "args": [
+        "-y",
+        "@automatalabs/mcp-server-playwright"
+      ]
     }
   },
   "tools": [],
@@ -28,7 +28,10 @@
       "mcpServers": {
         "automatalabs-mcp-server-playwright": {
           "command": "npx",
-          "args": ["-y", "@automatalabs/mcp-server-playwright"],
+          "args": [
+            "-y",
+            "@automatalabs/mcp-server-playwright"
+          ],
           "env": {}
         }
       }

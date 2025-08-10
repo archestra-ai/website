@@ -8,18 +8,27 @@
     "name": "teddyzxcv"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "node",
+      "args": [
+        "${__dirname}/build/index.js"
+      ],
+      "env": {
+        "NTFY_TOPIC": "${user_config.ntfy_topic}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "ntfy_topic": {
+      "type": "string",
+      "title": "Ntfy Topic",
+      "description": "The name of the ntfy.sh topic to which notifications will be sent.",
+      "required": true
+    }
+  },
   "readme": "# ntfy-mcp: Your Friendly Task Completion Notifier\n\nWelcome to ntfy-mcp, the MCP server that keeps you caffeinated and informed! 🚀☕️\n\nThis handy little server integrates with the Model Context Protocol to send you delightful ntfy notifications whenever your AI assistant completes a task. Because let's face it - you deserve that tea break while your code writes itself.\n\n<a href=\"https://glama.ai/mcp/servers/@teddyzxcv/ntfy-mcp\">\n  <img width=\"380\" height=\"200\" src=\"https://glama.ai/mcp/servers/@teddyzxcv/ntfy-mcp/badge\" />\n</a>\n\n## Getting Started: The Quick Brew Guide\n\n### Step 1: Clone & Navigate\n```bash\ngit clone https://github.com/teddyzxcv/ntfy-mcp.git\ncd ntfy-mcp\n```\n\n### Step 2: Install \n```bash\nnpm install\n```\n\n### Step 3: Build \n```bash\nnpm run build\n```\n\n### Step 4: Connect\nChoose your adventure:\n\n**Manual Start:**\n```bash\nnpm start\n```\n\n**Cline Configuration:**\n```json\n\"ntfy-mcp\": {\n  \"command\": \"node\",\n  \"args\": [\n    \"/path/to/ntfy-mcp/build/index.js\"\n  ],\n  \"env\": {\n    \"NTFY_TOPIC\": \"<your topic name>\"\n  },\n  \"autoApprove\": [\n    \"notify_user\" // Highly recommended for maximum chill\n  ]\n}\n```\n\n### Step 5: Get Notified in Style\n1. Download the [ntfy app](https://ntfy.sh) on your phone\n2. Subscribe to your chosen topic\n3. Kick back and relax\n\n### Step 6: The Magic Command\nWrite a prompt like this, otherwise the function won't call \n(tried use `Custom Instructions` in cline, but they are in the ring 3, so model just forget about it)\n```\nWrite me a hello world in python, notify me when the task is done\n```\n\n### Step 7: Enjoy Your Beverage of Choice\n☕️🍵 Your notification will arrive when the task is complete. No peeking!\n\n## How It Works (The Technical Tea)\n\nThis MCP server integrates seamlessly with the Model Context Protocol, acting as your personal notification butler. When tasks are completed, it sends notifications via ntfy, keeping you informed without interrupting your flow.\n\n## Dependencies: The Secret Sauce\n\n- [@modelcontextprotocol/sdk](https://github.com/modelcontextprotocol/typescript-sdk)\n- [node-fetch](https://github.com/node-fetch/node-fetch)\n- [dotenv](https://github.com/motdotla/dotenv)\n- [zod](https://github.com/colinhacks/zod)\n\n\n\n## License\n\nThis project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.\n\n```\nCopyright 2025 Casey Hand @cyanheads\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n```\n\n---\n\nNow go forth and code with confidence, knowing your notifications are in good hands! 🎉\n",
   "category": "AI Tools",
   "quality_score": 42,
@@ -28,12 +37,16 @@
       "mcpServers": {
         "ntfy-mcp": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "ntfy-mcp-configured": {
           "command": "node",
-          "args": ["/path/to/ntfy-mcp/build/index.js"],
+          "args": [
+            "/path/to/ntfy-mcp/build/index.js"
+          ],
           "env": {
             "NTFY_TOPIC": "<your topic name>"
           }
@@ -61,7 +74,7 @@
   "programming_language": "JavaScript",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:33:38.827Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

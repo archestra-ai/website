@@ -8,18 +8,28 @@
     "name": "dave-wind"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "@davewind/mysql-mcp-server",
+        "${user_config.connection_string}"
+      ],
       "env": {}
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "connection_string": {
+      "type": "string",
+      "title": "MySQL Connection String",
+      "description": "The connection string for the MySQL database in the format mysql://user:password@host:port/database.",
+      "required": true,
+      "sensitive": true
+    }
+  },
   "readme": "# @davewind/mysql-mcp-server\n\n\nA Model Context Protocol server that provides read-only access to Mysql databases. This server enables LLMs to inspect database schemas and execute read-only queries.\n\n### Key Features\n1.Read-Only Database Access: Enforces read-only operations through SQL validation and READ ONLY transactions  \n2.Schema Discovery: Automatically identifies and exposes database table structures  \n3.SQL Query Execution: Provides a query tool that accepts and executes SELECT statements  \n4.Model Context Protocol Compliance: Implements the MCP specification for seamless integration with compatible LLMs  \n5.Simple Configuration: Easy setup with minimal configuration required  \n\n\n### Tools\n\n- **query**\n  - Execute read-only SQL queries against the connected database\n  - Input: `sql` (string): The SQL query to execute\n  - All queries are executed within a READ ONLY transaction\n\n### Resources\n\nThe server provides schema information for each table in the database:\n\n- **Table Schemas** (`mysql://user:password@localhost:3306/database`)\n  - JSON schema information for each table\n  - Includes column names and data types\n  - Automatically discovered from database metadata\n\n\n### Install\n```bash\nnpm install @davewind/mysql-mcp-server -g\n```\n\n## Configuration\nMCP settings configuration file:\n\n> recommended use\n\n```json\n{\n  \"mcpServers\": {\n    \"mysql\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@davewind/mysql-mcp-server\", \"mysql://user:password@localhost:port/database\"],\n    }\n  }\n}\n```\n\n\n\n### Test\n>  Replace mysql://user:password@localhost:port/  and npm run inspector\n```js\n  \"scripts\": {\n    \"inspector\": \"npx @modelcontextprotocol/inspector@0.10.2 build/index.js mysql://user:password@localhost:port/database\n  }\n```\n\n\n### Env\n\n```js\n\nnode v18 +\n\n```\n\n### System Architecture\n> The MySQL MCP Server acts as an intermediary between LLMs and MySQL databases, processing requests according to the Model Context Protocol.\n<p>\n  <img src=\"./docs/High-Level Architecture.png\" alt=\"\"/>\n</p>\n\n\n### Component Interaction\n<p>\n  <img src=\"./docs/component-Interaction.png\" alt=\"\"/>\n</p>\n\n\n### Component Interaction\n<p>\n  <img src=\"./docs/component-Interaction.png\" alt=\"\"/>\n</p>\n\n### Security Model\n> The MySQL MCP Server implements a strict security model to ensure that database access is read-only.\n<p>\n  <img src=\"./docs/Security Model.png\" alt=\"\"/>\n</p>\n\nSecurity measures include:\n\n1.SQL query validation to allow only SELECT statements\n2.Execution of all queries within READ ONLY transactions\n3.No support for data modification operations (INSERT, UPDATE, DELETE, etc.)\n4. No support for database schema modification (CREATE, ALTER, DROP, etc.)\n\n\n### Integration with LLMs\n> The MySQL MCP Server is designed to work with any LLM system that supports the Model Context Protocol. It communicates through JSON-RPC over stdio, following the MCP specification.\n<p>\n  <img src=\"./docs/Integration with LLMs.png\" alt=\"\"/>\n</p>\n\n\n## License\n\nMIT\n",
   "category": "AI Tools",
   "quality_score": 48,
@@ -28,7 +38,11 @@
       "mcpServers": {
         "davewind-mysql-mcp-server": {
           "command": "npx",
-          "args": ["-y", "@davewind/mysql-mcp-server", "mysql://user:password@localhost:port/database"],
+          "args": [
+            "-y",
+            "@davewind/mysql-mcp-server",
+            "mysql://user:password@localhost:port/database"
+          ],
           "env": {}
         }
       }
@@ -54,7 +68,7 @@
   "programming_language": "JavaScript",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:33:58.176Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

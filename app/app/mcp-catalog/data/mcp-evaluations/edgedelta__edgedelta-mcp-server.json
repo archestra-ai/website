@@ -8,18 +8,42 @@
     "name": "edgedelta"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "ED_ORG_ID",
+        "-e",
+        "ED_API_TOKEN",
+        "ghcr.io/edgedelta/edgedelta-mcp-server:latest"
+      ],
+      "env": {
+        "ED_API_TOKEN": "${user_config.api_token}",
+        "ED_ORG_ID": "${user_config.org_id}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "api_token": {
+      "type": "string",
+      "title": "Edge Delta API Token",
+      "description": "Your Edge Delta API token with the required scope. You can create one at https://docs.edgedelta.com/api-tokens/",
+      "required": true,
+      "sensitive": true
+    },
+    "org_id": {
+      "type": "string",
+      "title": "Edge Delta Organisation ID",
+      "description": "Your Edge Delta organisation ID. You can find it at https://docs.edgedelta.com/my-organization/",
+      "required": true
+    }
+  },
   "readme": "# Edge Delta MCP Server\n\nThe **Edge Delta MCP Server** is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction)\nserver that provides seamless integration with Edge Delta APIs, enabling advanced\nautomation and interaction capabilities for developers and tools.\n\n## Use Cases\n\n- Extract and analyse observability data from Edge Delta.\n- Build AI‑powered tools and applications that interact with Edge Delta’s platform.\n\n## Prerequisites\n\n1. **Docker Engine ≥ 20.10** installed *and running*.\n2. **Docker Buildx plug‑in** available:\n   - **macOS / Windows** – included with Docker Desktop.\n   - **Debian / Ubuntu**\n     ```bash\n     sudo apt-get update && sudo apt-get install -y docker-buildx-plugin\n     ```\n   - **Fedora / RHEL / CentOS**\n     ```bash\n     sudo dnf install -y docker-buildx-plugin   # or yum install …\n     ```\n   - **Other distros (manual fallback)**\n     ```bash\n     mkdir -p ~/.docker/cli-plugins\n     curl -sSL \\\n       https://github.com/docker/buildx/releases/latest/download/buildx-$(uname -s | tr '[:upper:]' '[:lower:]')-amd64 \\\n       -o ~/.docker/cli-plugins/docker-buildx\n     chmod +x ~/.docker/cli-plugins/docker-buildx\n     ```\n3. An **Edge Delta API token** with the required scope – [create one here](https://docs.edgedelta.com/api-tokens/).\n4. Your **Edge Delta organisation ID** – [find it here](https://docs.edgedelta.com/my-organization/).\n\n## Build (container image)\n\nFirst‑time setup (creates a multi‑platform builder and boots it):\n\n```bash\ndocker buildx create --name edgedelta-builder --use\ndocker buildx inspect --bootstrap\n```\n\nBuild the image and load it into the local Docker daemon:\n\n```bash\ndocker buildx build --load -t mcp/edgedelta .\n```\n\n> ℹ️  The `--load` flag streams the image back to your local Docker engine so you can\n> run it directly with `docker run mcp/edgedelta …`.\n\n## Installation\n\n### Usage with Cursor\n\n```json\n{\n  \"mcpServers\": {\n    \"edgedelta\": {\n      \"command\": \"docker\",\n      \"args\": [\n        \"run\",\n        \"-i\",\n        \"--rm\",\n        \"-e ED_ORG_ID\",\n        \"-e ED_API_TOKEN\",\n        \"ghcr.io/edgedelta/edgedelta-mcp-server:latest\"\n      ],\n      \"env\": {\n        \"ED_API_TOKEN\": \"<YOUR_TOKEN>\",\n        \"ED_ORG_ID\": \"<YOUR_ORG_ID>\"\n      }\n    }\n  }\n}\n```\n\n## Library Usage\n\nThe exported Go API of this module is **experimental** and may change without notice.\nIf you rely on it in production, please open an issue describing your use case so we\ncan stabilise the relevant surface.\n\n## License\n\nLicensed under the terms of the **MIT** licence. See [LICENSE](./LICENSE) for full details.\n\n",
   "category": "AI Tools",
   "quality_score": 48,
@@ -64,7 +88,7 @@
   "programming_language": "Go",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:21:25.180Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

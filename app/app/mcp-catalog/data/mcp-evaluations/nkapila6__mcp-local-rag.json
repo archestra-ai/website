@@ -8,11 +8,14 @@
     "name": "nkapila6"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": [
+        "--python=3.10",
+        "--from",
+        "git+https://github.com/nkapila6/mcp-local-rag",
+        "mcp-local-rag"
+      ],
       "env": {}
     }
   },
@@ -28,7 +31,12 @@
       "mcpServers": {
         "mcp-local-rag": {
           "command": "uvx",
-          "args": ["--python=3.10", "--from", "git+https://github.com/nkapila6/mcp-local-rag", "mcp-local-rag"],
+          "args": [
+            "--python=3.10",
+            "--from",
+            "git+https://github.com/nkapila6/mcp-local-rag",
+            "mcp-local-rag"
+          ],
           "env": {}
         },
         "ghcr.io-nkapila6-mcp-local-rag-docker": {
@@ -69,7 +77,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:27:46.425Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

@@ -9,9 +9,8 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
+      "command": "${__dirname}/target/release/developer",
       "args": [],
       "env": {}
     }
@@ -59,7 +58,7 @@
   "programming_language": "Rust",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:33:17.355Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

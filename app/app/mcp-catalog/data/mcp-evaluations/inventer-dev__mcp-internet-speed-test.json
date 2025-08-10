@@ -8,10 +8,8 @@
     "name": "inventer-dev"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
+      "command": "mcp-internet-speed-test",
       "args": [],
       "env": {}
     }
@@ -33,17 +31,33 @@
         },
         "mcp-internet-speed-test-uvx": {
           "command": "uvx",
-          "args": ["mcp-internet-speed-test"],
+          "args": [
+            "mcp-internet-speed-test"
+          ],
           "env": {}
         },
         "mcp-internet-speed-test-docker": {
           "command": "docker",
-          "args": ["run", "-it", "--rm", "-v", "$(pwd):/app", "-w", "/app", "mcp-internet-speed-test"],
+          "args": [
+            "run",
+            "-it",
+            "--rm",
+            "-v",
+            "$(pwd):/app",
+            "-w",
+            "/app",
+            "mcp-internet-speed-test"
+          ],
           "env": {}
         },
         "mcp-internet-speed-test-dev": {
           "command": "uv",
-          "args": ["run", "python", "-m", "mcp_internet_speed_test.main"],
+          "args": [
+            "run",
+            "python",
+            "-m",
+            "mcp_internet_speed_test.main"
+          ],
           "env": {}
         },
         "mcp-internet-speed-test-configured": {
@@ -53,7 +67,9 @@
         },
         "mcp-internet-speed-test-configured-uvx": {
           "command": "uvx",
-          "args": ["mcp-internet-speed-test"],
+          "args": [
+            "mcp-internet-speed-test"
+          ],
           "env": {}
         }
       }
@@ -79,7 +95,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:21:24.193Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

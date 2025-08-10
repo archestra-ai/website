@@ -8,11 +8,11 @@
     "name": "ShenghaiWang"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": [
+        "mcpxcodebuild"
+      ],
       "env": {}
     }
   },
@@ -28,12 +28,17 @@
       "mcpServers": {
         "mcpxcodebuild-uvx": {
           "command": "uvx",
-          "args": ["mcpxcodebuild"],
+          "args": [
+            "mcpxcodebuild"
+          ],
           "env": {}
         },
         "mcpxcodebuild-pip": {
           "command": "python",
-          "args": ["-m", "mcpxcodebuild"],
+          "args": [
+            "-m",
+            "mcpxcodebuild"
+          ],
           "env": {}
         }
       }
@@ -59,7 +64,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:36:29.771Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

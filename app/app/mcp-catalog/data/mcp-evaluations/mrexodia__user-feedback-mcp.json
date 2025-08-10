@@ -9,10 +9,14 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uv",
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "server.py"
+      ],
       "env": {}
     }
   },
@@ -28,17 +32,30 @@
       "mcpServers": {
         "github.com/mrexodia/user-feedback-mcp": {
           "command": "uv",
-          "args": ["--directory", "c:\\MCP\\user-feedback-mcp", "run", "server.py"],
+          "args": [
+            "--directory",
+            "c:\\MCP\\user-feedback-mcp",
+            "run",
+            "server.py"
+          ],
           "env": {}
         },
         "github.com/mrexodia/user-feedback-mcp-npm-dev": {
           "command": "npm",
-          "args": ["run", "dev"],
+          "args": [
+            "run",
+            "dev"
+          ],
           "env": {}
         },
         "github.com/mrexodia/user-feedback-mcp-fastmcp-dev": {
           "command": "uv",
-          "args": ["run", "fastmcp", "dev", "server.py"],
+          "args": [
+            "run",
+            "fastmcp",
+            "dev",
+            "server.py"
+          ],
           "env": {}
         }
       }
@@ -64,7 +81,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:36:17.449Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

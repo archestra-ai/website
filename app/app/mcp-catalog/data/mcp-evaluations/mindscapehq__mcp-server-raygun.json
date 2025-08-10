@@ -8,18 +8,36 @@
     "name": "MindscapeHQ"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "npx",
+      "args": [
+        "-y",
+        "@raygun.io/mcp-server-raygun"
+      ],
+      "env": {
+        "RAYGUN_PAT_TOKEN": "${user_config.RAYGUN_PAT_TOKEN}",
+        "SOURCEMAP_ALLOWED_DIRS": "${user_config.SOURCEMAP_ALLOWED_DIRS}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "RAYGUN_PAT_TOKEN": {
+      "type": "string",
+      "title": "Raygun PAT Token",
+      "description": "Your Personal Access Token for the Raygun API. See https://raygun.com/documentation/product-guides/raygun-api/",
+      "required": true,
+      "sensitive": true
+    },
+    "SOURCEMAP_ALLOWED_DIRS": {
+      "type": "string",
+      "title": "Allowed Source Map Directories",
+      "description": "A comma-separated list of directories that are allowed for source map operations.",
+      "required": false
+    }
+  },
   "readme": "# Raygun MCP Server\n\nMCP Server for Raygun's API V3 endpoints for interacting with your Crash Reporting and Real User Monitoring applications. This server provides comprehensive access to Raygun's API features through the Model Context Protocol.\n\n## Features\n\n### Tools\n\n#### Applications\n- `list_applications` - List all applications under your account\n- `get_application` - Get application details by identifier\n- `get_application_by_api_key` - Get application details by API key\n- `regenerate_application_api_key` - Generate a new API key for an application\n\n#### Error Management\n- `list_error_groups` - List error groups for an application\n- `get_error_group` - Get detailed information about an error group\n- `resolve_error_group` - Set error group status to resolved\n- `activate_error_group` - Set error group status to active\n- `ignore_error_group` - Set error group status to ignored\n- `permanently_ignore_error_group` - Set error group status to permanently ignored\n\n#### Deployment Management\n- `list_deployments` - List deployments for an application\n- `get_deployment` - Get deployment details by identifier\n- `delete_deployment` - Remove a deployment\n- `update_deployment` - Update deployment information\n- `reprocess_deployment_commits` - Reprocess deployment commit data\n\n#### User & Session Management\n- `list_customers` - List customers for an application\n- `list_sessions` - List user sessions for an application\n- `get_session` - Get detailed session information\n\n#### Performance Monitoring\n- `list_pages` - List monitored pages for an application\n- `get_page_metrics_time_series` - Get time-series performance metrics\n- `get_page_metrics_histogram` - Get histogram of performance metrics\n- `get_error_metrics_time_series` - Get time-series error metrics\n\n#### Source Maps\n- `list_source_maps` - List source maps for an application\n- `get_source_map` - Get source map details\n- `update_source_map` - Update source map information\n- `delete_source_map` - Remove a source map\n- `upload_source_map` - Upload a new source map\n- `delete_all_source_maps` - Remove all source maps\n\n#### Team Management\n- `list_invitations` - List pending team invitations\n- `send_invitation` - Send a new team invitation\n- `get_invitation` - Get invitation details\n- `revoke_invitation` - Revoke a pending invitation\n\n## Configuration\n\nThe server requires the following environment variables:\n\n- `RAYGUN_PAT_TOKEN` (required): Your [Raygun PAT token](https://raygun.com/documentation/product-guides/raygun-api/)\n- `SOURCEMAP_ALLOWED_DIRS` (optional): Comma-separated list of directories allowed for source map operations\n\n## Usage with Claude Desktop\n\nAdd to your `claude_desktop_config.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"raygun\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@raygun.io/mcp-server-raygun\"],\n      \"env\": {\n        \"RAYGUN_PAT_TOKEN\": \"your-pat-token-here\"\n      }\n    }\n  }\n}\n```\n\n## Development\n\nInstall dependencies:\n```bash\nnpm install\n```\n\nBuild the server:\n```bash\nnpm run build\n```\n\nFor development with auto-rebuild:\n```bash\nnpm run watch\n```\n\n## Installation\n\nTo use with Claude Desktop, add the server config:\n\nOn MacOS: `~/Library/Application Support/Claude/claude_desktop_config.json`\nOn Windows: `%APPDATA%/Claude/claude_desktop_config.json`\n\n```json\n{\n  \"mcpServers\": {\n    \"raygun\": {\n      \"command\": \"/path/to/server-raygun/build/index.js\",\n      \"env\": {\n        \"RAYGUN_PAT_TOKEN\": \"your-pat-token-ken\"\n      }\n    }\n  }\n}\n```\n\n### Debugging\n\nSince MCP servers communicate over stdio, debugging can be challenging. We recommend using the [MCP Inspector](https://github.com/modelcontextprotocol/inspector), which is available as a package script:\n\n```bash\nnpm run inspector\n```\n\nThe Inspector will provide a URL to access debugging tools in your browser.\n",
   "category": "Monitoring",
   "quality_score": 44,
@@ -28,7 +46,10 @@
       "mcpServers": {
         "raygun.io-mcp-server-raygun": {
           "command": "npx",
-          "args": ["-y", "@raygun.io/mcp-server-raygun"],
+          "args": [
+            "-y",
+            "@raygun.io/mcp-server-raygun"
+          ],
           "env": {
             "RAYGUN_PAT_TOKEN": "your-pat-token-here"
           }
@@ -63,7 +84,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:22:20.447Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

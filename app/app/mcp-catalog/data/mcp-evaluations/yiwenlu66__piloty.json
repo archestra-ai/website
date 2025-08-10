@@ -8,10 +8,9 @@
     "name": "yiwenlu66"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
+    "type": "binary",
     "mcp_config": {
-      "command": "unknown",
+      "command": "piloty",
       "args": [],
       "env": {}
     }
@@ -54,7 +53,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:36:30.368Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

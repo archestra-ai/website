@@ -8,18 +8,39 @@
     "name": "Wooonster"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": [
+        "-m",
+        "uvicorn",
+        "mcp_server:app",
+        "--host",
+        "${user_config.host}",
+        "--port",
+        "${user_config.port}"
+      ],
       "env": {}
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "host": {
+      "type": "string",
+      "title": "Host",
+      "description": "The host address for the server to bind to.",
+      "required": false,
+      "default": "0.0.0.0"
+    },
+    "port": {
+      "type": "number",
+      "title": "Port",
+      "description": "The port for the server to listen on.",
+      "required": false,
+      "default": 8000
+    }
+  },
   "readme": "# HOCR MCP Agent\n\n### Vue Frontend\n\nStart command:\n\n```bash\ncd hocr-vue-client/\n\nnpm install\nnpm run dev\n```\n\nRequired packages:\n```bash\ncd hocr-vue-client/\n\nnpm install katex\nnpm install axios\n```\n\n### MCP Server\n\nStart command:\n\n```bash\nuvicorn mcp_server:app --reload --host 0.0.0.0 --port 8000\n````",
   "category": "AI Tools",
   "quality_score": 26,
@@ -28,7 +49,14 @@
       "mcpServers": {
         "mcp_server": {
           "command": "uvicorn",
-          "args": ["mcp_server:app", "--reload", "--host", "0.0.0.0", "--port", "8000"],
+          "args": [
+            "mcp_server:app",
+            "--reload",
+            "--host",
+            "0.0.0.0",
+            "--port",
+            "8000"
+          ],
           "env": {}
         }
       }
@@ -54,7 +82,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:36:30.554Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": false,
     "implementing_prompts": false,

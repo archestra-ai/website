@@ -8,11 +8,11 @@
     "name": "tumf"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": [
+        "mcp-text-editor"
+      ],
       "env": {}
     }
   },
@@ -28,7 +28,9 @@
       "mcpServers": {
         "mcp-text-editor": {
           "command": "uvx",
-          "args": ["mcp-text-editor"],
+          "args": [
+            "mcp-text-editor"
+          ],
           "env": {}
         },
         "mcp-text-editor-docker": {
@@ -45,7 +47,10 @@
         },
         "mcp-text-editor-python": {
           "command": "python",
-          "args": ["-m", "mcp_text_editor"],
+          "args": [
+            "-m",
+            "mcp_text_editor"
+          ],
           "env": {}
         }
       }
@@ -71,7 +76,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:36:26.736Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,
