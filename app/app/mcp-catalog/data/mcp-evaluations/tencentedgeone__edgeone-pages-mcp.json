@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["edgeone-pages-mcp"],
+      "args": [
+        "-y",
+        "edgeone-pages-mcp"
+      ],
       "env": {
         "EDGEONE_PAGES_API_TOKEN": "${user_config.api_token}",
         "EDGEONE_PAGES_PROJECT_NAME": "${user_config.project_name}"
@@ -24,7 +27,7 @@
     "api_token": {
       "type": "string",
       "title": "EdgeOne Pages API Token",
-      "description": "Optional. Provide your EdgeOne Pages API token if deploying a folder or zip file to an existing project. How to obtain your API token: https://edgeone.ai/document/177158578324279296",
+      "description": "Optional. Provide your EdgeOne Pages API token if deploying a folder or zip file to an EdgeOne Pages project. How to obtain your API token: https://edgeone.ai/document/177158578324279296",
       "required": false,
       "sensitive": true,
       "default": ""
@@ -34,6 +37,7 @@
       "title": "EdgeOne Pages Project Name",
       "description": "Optional. Provide a project name to update an existing project. Leave empty to create a new EdgeOne Pages project.",
       "required": false,
+      "sensitive": false,
       "default": ""
     }
   },
@@ -45,7 +49,9 @@
       "mcpServers": {
         "edgeone-pages-mcp-server": {
           "command": "npx",
-          "args": ["edgeone-pages-mcp"],
+          "args": [
+            "edgeone-pages-mcp"
+          ],
           "env": {
             "EDGEONE_PAGES_API_TOKEN": "",
             "EDGEONE_PAGES_PROJECT_NAME": ""

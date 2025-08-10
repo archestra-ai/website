@@ -15,7 +15,7 @@
         "run",
         "@rashidazarang/airtable-mcp",
         "--token",
-        "${user_config.airtable_token}",
+        "${user_config.token}",
         "--base",
         "${user_config.base_id}"
       ],
@@ -26,7 +26,7 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "airtable_token": {
+    "token": {
       "type": "string",
       "title": "Airtable API Token",
       "description": "Your Airtable API token from your account page.",
@@ -36,7 +36,7 @@
     "base_id": {
       "type": "string",
       "title": "Airtable Base ID",
-      "description": "The ID of the Airtable base to connect to (e.g., appi7fWMQcB3BNzPs).",
+      "description": "The ID of the Airtable base to connect to (e.g., appi7fWMQcB3BNzPs). Found in your Airtable base URL.",
       "required": true,
       "sensitive": false
     }

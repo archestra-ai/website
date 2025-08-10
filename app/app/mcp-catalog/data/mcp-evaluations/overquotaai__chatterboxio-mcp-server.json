@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "pnpm",
-      "args": ["start"],
+      "args": [
+        "start"
+      ],
       "env": {
         "CHATTERBOX_API_ENDPOINT": "${user_config.api_endpoint}",
         "CHATTERBOX_API_KEY": "${user_config.api_key}"
@@ -25,13 +27,13 @@
       "type": "string",
       "title": "ChatterBox API Endpoint",
       "description": "The API endpoint for the ChatterBox service.",
-      "required": true,
+      "required": false,
       "default": "https://api.chatter-box.io"
     },
     "api_key": {
       "type": "string",
       "title": "ChatterBox API Key",
-      "description": "Your API key for ChatterBox. Get one by registering at chatter-box.io.",
+      "description": "Your API key from chatter-box.io for authentication.",
       "required": true,
       "sensitive": true
     }
@@ -44,7 +46,9 @@
       "mcpServers": {
         "OverQuotaAI-chatterboxio-mcp-server": {
           "command": "pnpm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {
             "CHATTERBOX_API_ENDPOINT": "https://api.chatter-box.io",
             "CHATTERBOX_API_KEY": "your_api_key_here"

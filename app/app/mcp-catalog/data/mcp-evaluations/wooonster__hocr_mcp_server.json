@@ -10,7 +10,15 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["-m", "uvicorn", "mcp_server:app", "--host", "${user_config.host}", "--port", "${user_config.port}"],
+      "args": [
+        "-m",
+        "uvicorn",
+        "mcp_server:app",
+        "--host",
+        "${user_config.host}",
+        "--port",
+        "${user_config.port}"
+      ],
       "env": {}
     }
   },
@@ -22,14 +30,14 @@
       "type": "string",
       "title": "Host",
       "description": "The host address for the server to bind to.",
-      "required": false,
+      "required": true,
       "default": "0.0.0.0"
     },
     "port": {
       "type": "number",
       "title": "Port",
       "description": "The port for the server to listen on.",
-      "required": false,
+      "required": true,
       "default": 8000
     }
   },
@@ -41,7 +49,14 @@
       "mcpServers": {
         "mcp_server": {
           "command": "uvicorn",
-          "args": ["mcp_server:app", "--reload", "--host", "0.0.0.0", "--port", "8000"],
+          "args": [
+            "mcp_server:app",
+            "--reload",
+            "--host",
+            "0.0.0.0",
+            "--port",
+            "8000"
+          ],
           "env": {}
         }
       }

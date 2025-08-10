@@ -8,6 +8,7 @@
     "name": "topoteretes"
   },
   "server": {
+    "type": "python",
     "mcp_config": {
       "command": "python",
       "args": [
@@ -26,7 +27,8 @@
         "EMBEDDING_PROVIDER": "${user_config.embedding_provider}",
         "EMBEDDING_MODEL": "${user_config.embedding_model}",
         "EMBEDDING_DIMENSIONS": "${user_config.embedding_dimensions}",
-        "EMBEDDING_MAX_TOKENS": "${user_config.embedding_max_tokens}"
+        "EMBEDDING_MAX_TOKENS": "${user_config.embedding_max_tokens}",
+        "TOKENIZERS_PARALLELISM": "false"
       }
     }
   },
@@ -64,56 +66,56 @@
     "llm_api_key": {
       "type": "string",
       "title": "LLM API Key",
-      "description": "Your API key for the Language Model (e.g., OpenAI).",
+      "description": "Your API key for the LLM provider (e.g., OpenAI).",
       "required": true,
       "sensitive": true
     },
     "transport": {
       "type": "string",
       "title": "Transport Protocol",
-      "description": "The transport protocol for the server. Can be 'stdio', 'sse', or 'http'.",
+      "description": "The transport protocol to use. 'http' is recommended for web deployments, 'sse' for real-time streaming, or 'stdio' for local pipe.",
       "required": false,
-      "default": "stdio"
+      "default": "http"
     },
     "host": {
       "type": "string",
-      "title": "Host Address (HTTP/SSE)",
-      "description": "The host address to bind the server to. Only used for 'http' or 'sse' transport.",
+      "title": "Host Address",
+      "description": "The host address to bind the server to (for http/sse transports).",
       "required": false,
       "default": "127.0.0.1"
     },
     "port": {
       "type": "number",
-      "title": "Port (HTTP/SSE)",
-      "description": "The port to bind the server to. Only used for 'http' or 'sse' transport.",
+      "title": "Server Port",
+      "description": "The port to run the server on (for http/sse transports).",
       "required": false,
       "default": 8000
     },
     "path": {
       "type": "string",
-      "title": "URL Path (HTTP)",
-      "description": "The URL path for the MCP server. Only used for 'http' transport.",
+      "title": "Server Path",
+      "description": "The URL path for the MCP server (for http transport).",
       "required": false,
       "default": "/mcp"
     },
     "embedding_provider": {
       "type": "string",
       "title": "Embedding Provider",
-      "description": "The provider for embeddings (e.g., 'fastembed').",
+      "description": "The provider for text embeddings.",
       "required": false,
       "default": "fastembed"
     },
     "embedding_model": {
       "type": "string",
       "title": "Embedding Model",
-      "description": "The specific embedding model to use.",
+      "description": "The specific model to use for embeddings.",
       "required": false,
       "default": "sentence-transformers/all-MiniLM-L6-v2"
     },
     "embedding_dimensions": {
       "type": "number",
       "title": "Embedding Dimensions",
-      "description": "The number of dimensions for the embedding vectors.",
+      "description": "The dimensionality of the embedding vectors.",
       "required": false,
       "default": 384
     },

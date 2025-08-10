@@ -8,9 +8,12 @@
     "name": "ahujasid"
   },
   "server": {
+    "type": "python",
     "mcp_config": {
       "command": "uvx",
-      "args": ["blender-mcp"],
+      "args": [
+        "blender-mcp"
+      ],
       "env": {
         "HYPER3D_API_KEY": "${user_config.hyper3d_api_key}"
       }
@@ -23,7 +26,7 @@
     "hyper3d_api_key": {
       "type": "string",
       "title": "Hyper3D API Key",
-      "description": "Optional API key from hyper3d.ai and fal.ai. If the daily limit on the shared free trial key is reached, you can provide your own key to continue generating models.",
+      "description": "Optional API key from hyper3d.ai and fal.ai to bypass the free trial daily limit.",
       "sensitive": true,
       "required": false
     }
@@ -36,12 +39,18 @@
       "mcpServers": {
         "blender-mcp": {
           "command": "uvx",
-          "args": ["blender-mcp"],
+          "args": [
+            "blender-mcp"
+          ],
           "env": {}
         },
         "blender-mcp-windows": {
           "command": "cmd",
-          "args": ["/c", "uvx", "blender-mcp"],
+          "args": [
+            "/c",
+            "uvx",
+            "blender-mcp"
+          ],
           "env": {}
         }
       }

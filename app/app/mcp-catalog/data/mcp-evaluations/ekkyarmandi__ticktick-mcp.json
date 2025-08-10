@@ -10,9 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["main.py"],
+      "args": [
+        "main.py"
+      ],
       "env": {
-        "TICKTICK_API_KEY": "${user_config.ticktick_api_key}"
+        "TICKTICK_API_KEY": "${user_config.api_key}"
       }
     }
   },
@@ -20,10 +22,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "ticktick_api_key": {
+    "api_key": {
       "type": "string",
       "title": "TickTick API Key",
-      "description": "Your TickTick access token. Follow the instructions in the README to obtain this by registering an app in the TickTick developer portal and authorizing it.",
+      "description": "Your TickTick access token. Create an app in the TickTick developer portal to obtain your Client ID and Secret, then follow the README instructions to generate the access token.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +38,9 @@
       "mcpServers": {
         "ticktick-mcp": {
           "command": "python",
-          "args": ["main.py"],
+          "args": [
+            "main.py"
+          ],
           "env": {}
         }
       }

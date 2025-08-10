@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/main.py"],
+      "args": [
+        "main.py"
+      ],
       "env": {
         "DATABRICKS_HOST": "${user_config.databricks_host}",
         "DATABRICKS_TOKEN": "${user_config.databricks_token}",
@@ -25,21 +27,21 @@
     "databricks_host": {
       "type": "string",
       "title": "Databricks Host",
-      "description": "Your Databricks instance URL, e.g., 'your-databricks-instance.cloud.databricks.com'. Do not include the 'https://' prefix.",
+      "description": "Your Databricks instance URL, without the 'https://' prefix (e.g., your-databricks-instance.cloud.databricks.com).",
       "required": true,
       "sensitive": false
     },
     "databricks_token": {
       "type": "string",
       "title": "Databricks Personal Access Token",
-      "description": "A personal access token generated from your Databricks user settings to authenticate API requests.",
+      "description": "Generate a personal access token from User Settings > Developer > Access tokens.",
       "required": true,
       "sensitive": true
     },
     "databricks_http_path": {
       "type": "string",
       "title": "Databricks SQL Warehouse HTTP Path",
-      "description": "The HTTP Path from the connection details of your Databricks SQL warehouse, e.g., '/sql/1.0/warehouses/your-warehouse-id'.",
+      "description": "The HTTP Path from your SQL warehouse's connection details (e.g., /sql/1.0/warehouses/your-warehouse-id).",
       "required": true,
       "sensitive": false
     }
@@ -52,12 +54,19 @@
       "mcpServers": {
         "databricks-mcp-server": {
           "command": "python",
-          "args": ["main.py"],
+          "args": [
+            "main.py"
+          ],
           "env": {}
         },
         "modelcontextprotocol-inspector": {
           "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/inspector", "python3", "main.py"],
+          "args": [
+            "-y",
+            "@modelcontextprotocol/inspector",
+            "python3",
+            "main.py"
+          ],
           "env": {}
         }
       }

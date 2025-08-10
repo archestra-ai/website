@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@timlukahorstmann/mcp-weather"],
+      "args": [
+        "-y",
+        "@timlukahorstmann/mcp-weather"
+      ],
       "env": {
         "ACCUWEATHER_API_KEY": "${user_config.api_key}"
       }
@@ -23,7 +26,7 @@
     "api_key": {
       "type": "string",
       "title": "AccuWeather API Key",
-      "description": "Your API key from the AccuWeather Developer Portal. A free tier is available.",
+      "description": "Your API key for AccuWeather. A free tier is available. Sign up at https://developer.accuweather.com/ and create an app to get your key.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +39,10 @@
       "mcpServers": {
         "timlukahorstmann-mcp-weather": {
           "command": "npx",
-          "args": ["-y", "@timlukahorstmann/mcp-weather"],
+          "args": [
+            "-y",
+            "@timlukahorstmann/mcp-weather"
+          ],
           "env": {
             "ACCUWEATHER_API_KEY": "your_api_key_here"
           }
@@ -65,7 +71,10 @@
         },
         "timlukahorstmann-mcp-weather-configured": {
           "command": "npx",
-          "args": ["-y", "@timlukahorstmann/mcp-weather"],
+          "args": [
+            "-y",
+            "@timlukahorstmann/mcp-weather"
+          ],
           "env": {
             "ACCUWEATHER_API_KEY": "your_api_key_here"
           }

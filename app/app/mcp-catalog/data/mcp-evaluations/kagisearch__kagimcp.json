@@ -10,11 +10,13 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["kagimcp"],
+      "args": [
+        "kagimcp"
+      ],
       "env": {
         "KAGI_API_KEY": "${user_config.kagi_api_key}",
         "KAGI_SUMMARIZER_ENGINE": "${user_config.kagi_summarizer_engine}",
-        "FASTMCP_LOG_LEVEL": "${user_config.log_level}"
+        "FASTMCP_LOG_LEVEL": "${user_config.fastmcp_log_level}"
       }
     }
   },
@@ -25,21 +27,21 @@
     "kagi_api_key": {
       "type": "string",
       "title": "Kagi API Key",
-      "description": "Your API key for Kagi Search. It is currently in closed beta and available upon request by reaching out to support@kagi.com.",
+      "description": "Your Kagi API key. Required for search and summarization tools. Request access from support@kagi.com.",
       "required": true,
       "sensitive": true
     },
     "kagi_summarizer_engine": {
       "type": "string",
       "title": "Kagi Summarizer Engine",
-      "description": "The summarization engine to use. Learn about the different engines at https://help.kagi.com/kagi/api/summarizer.html#summarization-engines",
+      "description": "The summarization engine to use (e.g., 'cecil', 'daphne'). Defaults to 'cecil' if not provided.",
       "required": false,
       "default": "cecil"
     },
-    "log_level": {
+    "fastmcp_log_level": {
       "type": "string",
       "title": "Log Level",
-      "description": "Adjusts the level of logging for the server. e.g., 'ERROR', 'INFO', 'DEBUG'.",
+      "description": "Adjusts the level of logging for the server (e.g., 'DEBUG', 'INFO', 'WARNING', 'ERROR').",
       "required": false
     }
   },
@@ -51,7 +53,9 @@
       "mcpServers": {
         "kagimcp-uvx": {
           "command": "uvx",
-          "args": ["kagimcp"],
+          "args": [
+            "kagimcp"
+          ],
           "env": {
             "KAGI_API_KEY": "YOUR_API_KEY_HERE",
             "KAGI_SUMMARIZER_ENGINE": "YOUR_ENGINE_CHOICE_HERE"
@@ -59,7 +63,12 @@
         },
         "kagimcp-uv-local": {
           "command": "uv",
-          "args": ["--directory", "YOUR_KAGIMCP_PATH", "run", "kagimcp"],
+          "args": [
+            "--directory",
+            "YOUR_KAGIMCP_PATH",
+            "run",
+            "kagimcp"
+          ],
           "env": {
             "KAGI_API_KEY": "YOUR_API_KEY_HERE",
             "KAGI_SUMMARIZER_ENGINE": "YOUR_ENGINE_CHOICE_HERE"

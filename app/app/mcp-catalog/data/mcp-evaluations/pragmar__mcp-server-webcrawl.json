@@ -8,7 +8,6 @@
     "name": "pragmar"
   },
   "server": {
-    "type": "python",
     "mcp_config": {
       "command": "mcp-server-webcrawl",
       "args": [],

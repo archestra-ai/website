@@ -10,12 +10,17 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "src/beeper_mcp/server.py"],
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "src/beeper_mcp/server.py"
+      ],
       "env": {
-        "BEEPER_CHAIN": "${user_config.beeper_chain}",
-        "BEEPER_ACCOUNT": "${user_config.beeper_account}",
-        "BEEPER_SECRET_KEY": "${user_config.beeper_secret_key}",
-        "BEEPER_TARGET_TOKEN": "${user_config.beeper_target_token}"
+        "BEEPER_CHAIN": "${user_config.chain}",
+        "BEEPER_ACCOUNT": "${user_config.account}",
+        "BEEPER_SECRET_KEY": "${user_config.secret_key}",
+        "BEEPER_TARGET_TOKEN": "${user_config.target_token}"
       }
     }
   },
@@ -23,29 +28,29 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "beeper_chain": {
+    "chain": {
       "type": "string",
-      "title": "Beeper Chain",
-      "description": "The BSC network to use, either 'bsc' for mainnet or 'bsc-testnet' for testnet.",
+      "title": "BSC Network",
+      "description": "The Binance Smart Chain network to use (e.g., bsc or bsc-testnet).",
       "required": true
     },
-    "beeper_account": {
+    "account": {
       "type": "string",
       "title": "Wallet Address",
       "description": "Your wallet address (e.g., 0x...).",
       "required": true
     },
-    "beeper_secret_key": {
+    "secret_key": {
       "type": "string",
       "title": "Private Key",
       "description": "Your wallet's private key. This will be stored securely.",
       "required": true,
       "sensitive": true
     },
-    "beeper_target_token": {
+    "target_token": {
       "type": "string",
       "title": "Default Token Address",
-      "description": "Optional. The default token address to use for operations.",
+      "description": "Optional: The default token address to use for operations.",
       "required": false
     }
   },
@@ -57,17 +62,31 @@
       "mcpServers": {
         "beeper_mcp-stdio": {
           "command": "uv",
-          "args": ["run", "src/beeper_mcp/server.py"],
+          "args": [
+            "run",
+            "src/beeper_mcp/server.py"
+          ],
           "env": {}
         },
         "beeper_mcp-sse": {
           "command": "uv",
-          "args": ["run", "src/beeper_mcp/server.py", "--port", "8008", "--transport=sse"],
+          "args": [
+            "run",
+            "src/beeper_mcp/server.py",
+            "--port",
+            "8008",
+            "--transport=sse"
+          ],
           "env": {}
         },
         "beeper-configured": {
           "command": "uv",
-          "args": ["--directory", "path/to/beeper-mcp", "run", "src/beeper_mcp/server.py"],
+          "args": [
+            "--directory",
+            "path/to/beeper-mcp",
+            "run",
+            "src/beeper_mcp/server.py"
+          ],
           "env": {
             "BEEPER_ACCOUNT": "your account, 0x...",
             "BEEPER_SECRET_KEY": "your private key or in .env",

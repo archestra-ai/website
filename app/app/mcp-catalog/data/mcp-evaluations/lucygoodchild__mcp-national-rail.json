@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
       "env": {
         "RTT_API_USERNAME": "${user_config.rtt_api_username}",
         "RTT_API_PASSWORD": "${user_config.rtt_api_password}"
@@ -31,7 +33,7 @@
     "rtt_api_password": {
       "type": "string",
       "title": "RTT API Password",
-      "description": "Your Realtime Trains API password. Can be created from https://api.rtt.io/",
+      "description": "Your Realtime Trains API password.",
       "required": true,
       "sensitive": true
     }
@@ -44,7 +46,9 @@
       "mcpServers": {
         "lucygoodchild-mcp-national-rail-claude-config": {
           "command": "node",
-          "args": ["/path/to/mcp-national-rail/dist/index.js"],
+          "args": [
+            "/path/to/mcp-national-rail/dist/index.js"
+          ],
           "env": {
             "RTT_API_USERNAME": "your_rtt_api_username",
             "RTT_API_PASSWORD": "your_rtt_api_password"
@@ -52,7 +56,10 @@
         },
         "lucygoodchild-mcp-national-rail-npm-start": {
           "command": "npm",
-          "args": ["run", "start"],
+          "args": [
+            "run",
+            "start"
+          ],
           "env": {
             "RTT_API_USERNAME": "your_rtt_api_username",
             "RTT_API_PASSWORD": "your_rtt_api_password"
@@ -60,7 +67,11 @@
         },
         "lucygoodchild-mcp-national-rail-inspector": {
           "command": "npx",
-          "args": ["@modelcontextprotocol/inspector", "node", "dist/index.js"],
+          "args": [
+            "@modelcontextprotocol/inspector",
+            "node",
+            "dist/index.js"
+          ],
           "env": {
             "RTT_API_USERNAME": "your_rtt_api_username",
             "RTT_API_PASSWORD": "your_rtt_api_password"

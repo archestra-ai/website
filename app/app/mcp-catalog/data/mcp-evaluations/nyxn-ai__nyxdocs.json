@@ -10,7 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["run", "python", "-m", "nyxdocs.server"],
+      "args": [
+        "run",
+        "python",
+        "-m",
+        "nyxdocs.server"
+      ],
       "env": {
         "COINGECKO_API_KEY": "${user_config.coingecko_api_key}",
         "GITHUB_TOKEN": "${user_config.github_token}",
@@ -28,7 +33,7 @@
     "coingecko_api_key": {
       "type": "string",
       "title": "CoinGecko API Key",
-      "description": "Your API key for CoinGecko to access market data and project information.",
+      "description": "Your API key for CoinGecko, used for market data and project information.",
       "required": true,
       "sensitive": true
     },
@@ -42,8 +47,9 @@
     "database_url": {
       "type": "string",
       "title": "Database URL",
-      "description": "The connection string for the database. Example: sqlite:///nyxdocs.db or postgresql://user:pass@localhost/nyxdocs",
-      "required": false,
+      "description": "Connection string for the database. Can be a local SQLite file or a PostgreSQL connection string.",
+      "required": true,
+      "sensitive": true,
       "default": "sqlite:///nyxdocs.db"
     },
     "log_level": {
@@ -56,14 +62,14 @@
     "update_interval": {
       "type": "number",
       "title": "Update Interval (seconds)",
-      "description": "The interval in seconds for checking for documentation updates.",
+      "description": "The interval in seconds for how often the server checks for documentation updates.",
       "required": false,
       "default": 3600
     },
     "max_concurrent_scrapes": {
       "type": "number",
       "title": "Max Concurrent Scrapes",
-      "description": "The maximum number of concurrent documentation scraping tasks.",
+      "description": "The maximum number of documentation sources to scrape concurrently.",
       "required": false,
       "default": 5
     }
@@ -76,7 +82,12 @@
       "mcpServers": {
         "nyxdocs": {
           "command": "uv",
-          "args": ["run", "python", "-m", "nyxdocs.server"],
+          "args": [
+            "run",
+            "python",
+            "-m",
+            "nyxdocs.server"
+          ],
           "env": {}
         }
       }

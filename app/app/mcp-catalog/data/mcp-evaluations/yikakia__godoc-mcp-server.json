@@ -8,7 +8,6 @@
     "name": "yikakia"
   },
   "server": {
-    "type": "binary",
     "mcp_config": {
       "command": "godoc-mcp-server",
       "args": [],

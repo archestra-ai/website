@@ -8,11 +8,13 @@
     "name": "LaurieWired"
   },
   "server": {
-    "type": "python",
-    "entry_point": "bridge_mcp_ghidra.py",
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/bridge_mcp_ghidra.py", "--ghidra-server", "${user_config.ghidra_server_url}"],
+      "args": [
+        "${__dirname}/bridge_mcp_ghidra.py",
+        "--ghidra-server",
+        "${user_config.ghidra_server_url}"
+      ],
       "env": {}
     }
   },
@@ -23,8 +25,8 @@
     "ghidra_server_url": {
       "type": "string",
       "title": "Ghidra Server URL",
-      "description": "The URL of the running GhidraMCP HTTP Server instance. This can be configured in Ghidra via Edit -> Tool Options -> GhidraMCP HTTP Server.",
-      "required": true,
+      "description": "The URL of the GhidraMCP HTTP Server. This can be configured in Ghidra under Edit -> Tool Options -> GhidraMCP HTTP Server.",
+      "required": false,
       "default": "http://127.0.0.1:8080/"
     }
   },
@@ -36,7 +38,11 @@
       "mcpServers": {
         "bridge-mcp-ghidra-claude": {
           "command": "python",
-          "args": ["/ABSOLUTE_PATH_TO/bridge_mcp_ghidra.py", "--ghidra-server", "http://127.0.0.1:8080/"],
+          "args": [
+            "/ABSOLUTE_PATH_TO/bridge_mcp_ghidra.py",
+            "--ghidra-server",
+            "http://127.0.0.1:8080/"
+          ],
           "env": {}
         },
         "bridge-mcp-ghidra-cline": {
@@ -56,7 +62,9 @@
         },
         "bridge-mcp-ghidra-5ire": {
           "command": "python",
-          "args": ["/ABSOLUTE_PATH_TO/bridge_mcp_ghidra.py"],
+          "args": [
+            "/ABSOLUTE_PATH_TO/bridge_mcp_ghidra.py"
+          ],
           "env": {}
         }
       }

@@ -10,10 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "mongodb-lens"],
-      "env": {
-        "MONGODB_URI": "${user_config.mongodb_uri}"
-      }
+      "args": [
+        "-y",
+        "mongodb-lens",
+        "${user_config.mongodb_uri}"
+      ],
+      "env": {}
     }
   },
   "tools": [],

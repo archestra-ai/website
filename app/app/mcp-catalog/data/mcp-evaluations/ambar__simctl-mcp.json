@@ -10,20 +10,28 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "simctl-mcp"],
-      "env": {
-        "PORT": "${user_config.port}"
-      }
+      "args": [
+        "-y",
+        "simctl-mcp"
+      ],
+      "env": {}
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
   "user_config": {
+    "http_mode": {
+      "type": "boolean",
+      "title": "HTTP Server Mode",
+      "description": "Run the server in HTTP mode instead of the default STDIO mode.",
+      "required": false,
+      "default": false
+    },
     "port": {
       "type": "number",
       "title": "HTTP Port",
-      "description": "The port for the HTTP server to listen on. The server must be started in HTTP mode for this to have an effect (e.g., by adding '--http' to the arguments).",
+      "description": "Port to use when running in HTTP Server Mode. Ignored if HTTP mode is disabled.",
       "required": false,
       "default": 8081
     }
@@ -36,27 +44,43 @@
       "mcpServers": {
         "simctl-mcp": {
           "command": "npx",
-          "args": ["-y", "simctl-mcp"],
+          "args": [
+            "-y",
+            "simctl-mcp"
+          ],
           "env": {}
         },
         "simctl-mcp-stdio": {
           "command": "npx",
-          "args": ["simctl-mcp"],
+          "args": [
+            "simctl-mcp"
+          ],
           "env": {}
         },
         "simctl-mcp-http": {
           "command": "npx",
-          "args": ["simctl-mcp", "--http"],
+          "args": [
+            "simctl-mcp",
+            "--http"
+          ],
           "env": {}
         },
         "simctl-mcp-http-port-3000": {
           "command": "npx",
-          "args": ["simctl-mcp", "--http", "--port", "3000"],
+          "args": [
+            "simctl-mcp",
+            "--http",
+            "--port",
+            "3000"
+          ],
           "env": {}
         },
         "simctl-mcp-http-env-port": {
           "command": "npx",
-          "args": ["simctl-mcp", "--http"],
+          "args": [
+            "simctl-mcp",
+            "--http"
+          ],
           "env": {
             "PORT": "3000"
           }

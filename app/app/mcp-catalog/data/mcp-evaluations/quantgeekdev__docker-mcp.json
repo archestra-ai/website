@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["docker-mcp"]
+      "args": [
+        "docker-mcp"
+      ]
     }
   },
   "tools": [],
@@ -25,12 +27,19 @@
       "mcpServers": {
         "docker-mcp": {
           "command": "uvx",
-          "args": ["docker-mcp"],
+          "args": [
+            "docker-mcp"
+          ],
           "env": {}
         },
         "docker-mcp-configured": {
           "command": "uv",
-          "args": ["--directory", "<path-to-docker-mcp>", "run", "docker-mcp"],
+          "args": [
+            "--directory",
+            "<path-to-docker-mcp>",
+            "run",
+            "docker-mcp"
+          ],
           "env": {}
         }
       }

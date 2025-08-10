@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "webscraping-ai-mcp"],
+      "args": [
+        "-y",
+        "webscraping-ai-mcp"
+      ],
       "env": {
         "WEBSCRAPING_AI_API_KEY": "${user_config.api_key}",
         "WEBSCRAPING_AI_CONCURRENCY_LIMIT": "${user_config.concurrency_limit}",
@@ -28,7 +31,7 @@
     "api_key": {
       "type": "string",
       "title": "WebScraping.AI API Key",
-      "description": "Your API key from WebScraping.AI. Required for all operations.",
+      "description": "Your API key for WebScraping.AI. Required for all operations.",
       "required": true,
       "sensitive": true
     },
@@ -42,7 +45,7 @@
     "default_proxy_type": {
       "type": "string",
       "title": "Default Proxy Type",
-      "description": "Default proxy type to use. Can be 'residential' or 'datacenter'.",
+      "description": "Default type of proxy to use (e.g., residential, datacenter).",
       "required": false,
       "default": "residential"
     },
@@ -55,15 +58,16 @@
     },
     "default_timeout": {
       "type": "number",
-      "title": "Default Page Timeout (ms)",
-      "description": "Default maximum web page retrieval time in milliseconds (max: 30000).",
+      "title": "Default Timeout (ms)",
+      "description": "Maximum web page retrieval time in milliseconds.",
       "required": false,
-      "default": 15000
+      "default": 15000,
+      "max": 30000
     },
     "default_js_timeout": {
       "type": "number",
       "title": "Default JS Timeout (ms)",
-      "description": "Default maximum JavaScript rendering time in milliseconds.",
+      "description": "Maximum JavaScript rendering time in milliseconds.",
       "required": false,
       "default": 2000
     }
@@ -76,19 +80,27 @@
       "mcpServers": {
         "webscraping-ai-mcp": {
           "command": "npx",
-          "args": ["-y", "webscraping-ai-mcp"],
+          "args": [
+            "-y",
+            "webscraping-ai-mcp"
+          ],
           "env": {
             "WEBSCRAPING_AI_API_KEY": "your_api_key"
           }
         },
         "webscraping-ai-mcp-npm-start": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "webscraping-ai-mcp-cursor-config": {
           "command": "npx",
-          "args": ["-y", "webscraping-ai-mcp"],
+          "args": [
+            "-y",
+            "webscraping-ai-mcp"
+          ],
           "env": {
             "WEBSCRAPING_AI_API_KEY": "your-api-key",
             "WEBSCRAPING_AI_CONCURRENCY_LIMIT": "5"
@@ -96,14 +108,20 @@
         },
         "webscraping-ai-mcp-cursor-windows": {
           "command": "cmd",
-          "args": ["/c", "set WEBSCRAPING_AI_API_KEY=your-api-key && npx -y webscraping-ai-mcp"],
+          "args": [
+            "/c",
+            "set WEBSCRAPING_AI_API_KEY=your-api-key && npx -y webscraping-ai-mcp"
+          ],
           "env": {
             "WEBSCRAPING_AI_API_KEY": "your-api-key"
           }
         },
         "webscraping-ai-mcp-claude-desktop": {
           "command": "npx",
-          "args": ["-y", "webscraping-ai-mcp"],
+          "args": [
+            "-y",
+            "webscraping-ai-mcp"
+          ],
           "env": {
             "WEBSCRAPING_AI_API_KEY": "YOUR_API_KEY_HERE",
             "WEBSCRAPING_AI_CONCURRENCY_LIMIT": "5"

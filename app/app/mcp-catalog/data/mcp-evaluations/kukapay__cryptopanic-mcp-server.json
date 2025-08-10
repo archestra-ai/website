@@ -10,7 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "main.py"],
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "main.py"
+      ],
       "env": {
         "CRYPTOPANIC_API_PLAN": "${user_config.api_plan}",
         "CRYPTOPANIC_API_KEY": "${user_config.api_key}"
@@ -24,8 +29,9 @@
     "api_plan": {
       "type": "string",
       "title": "CryptoPanic API Plan",
-      "description": "Your API plan from CryptoPanic.",
-      "required": true
+      "description": "Your API plan from CryptoPanic (e.g., 'free', 'basic').",
+      "required": true,
+      "sensitive": false
     },
     "api_key": {
       "type": "string",
@@ -43,7 +49,12 @@
       "mcpServers": {
         "cryptopanic-mcp-server": {
           "command": "uv",
-          "args": ["--directory", "/your/path/to/cryptopanic-mcp-server", "run", "main.py"],
+          "args": [
+            "--directory",
+            "/your/path/to/cryptopanic-mcp-server",
+            "run",
+            "main.py"
+          ],
           "env": {
             "CRYPTOPANIC_API_PLAN": "your_api_plan",
             "CRYPTOPANIC_API_KEY": "your_api_key"

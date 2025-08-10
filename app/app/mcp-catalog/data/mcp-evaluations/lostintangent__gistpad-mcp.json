@@ -10,9 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "gistpad-mcp"],
+      "args": [
+        "-y",
+        "gistpad-mcp"
+      ],
       "env": {
-        "GITHUB_TOKEN": "${user_config.GITHUB_TOKEN}"
+        "GITHUB_TOKEN": "${user_config.github_token}"
       }
     }
   },
@@ -20,38 +23,38 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "GITHUB_TOKEN": {
+    "github_token": {
       "type": "string",
       "title": "GitHub Personal Access Token",
-      "description": "A personal access token with the 'gist' scope. Create one at https://github.com/settings/tokens/new",
+      "description": "A personal access token with only the 'gist' scope is required to manage your gists. You can create one at https://github.com/settings/tokens/new.",
       "required": true,
       "sensitive": true
     },
     "include_archived": {
       "type": "boolean",
       "title": "Include Archived Gists as Resources",
-      "description": "If enabled, passes the --archived flag to include archived gists in the list of MCP resources. The `list_archived_gists` tool is always available.",
+      "description": "Expose archived gists as MCP resources (via the --archived flag). The 'list_archived_gists' tool is always available regardless of this setting.",
       "required": false,
       "default": false
     },
     "include_starred": {
       "type": "boolean",
       "title": "Include Starred Gists as Resources",
-      "description": "If enabled, passes the --starred flag to include starred gists in the list of MCP resources. The `list_starred_gists` tool is always available.",
+      "description": "Expose starred gists as MCP resources (via the --starred flag). The 'list_starred_gists' tool is always available regardless of this setting.",
       "required": false,
       "default": false
     },
-    "include_daily_notes": {
+    "include_daily": {
       "type": "boolean",
       "title": "Include Daily Notes as Resources",
-      "description": "If enabled, passes the --daily flag to include daily notes in the list of MCP resources. The `list_daily_notes` tool is always available.",
+      "description": "Expose daily notes as MCP resources (via the --daily flag). The 'list_daily_notes' tool is always available regardless of this setting.",
       "required": false,
       "default": false
     },
-    "only_markdown": {
+    "markdown_only": {
       "type": "boolean",
       "title": "Markdown Gists Only",
-      "description": "If enabled, passes the --markdown flag to filter the list of gists to only those composed of Markdown files.",
+      "description": "Filter the list of gists to only include those composed of Markdown files (via the --markdown flag).",
       "required": false,
       "default": false
     }
@@ -64,35 +67,54 @@
       "mcpServers": {
         "gistpad-mcp": {
           "command": "npx",
-          "args": ["-y", "gistpad-mcp"],
+          "args": [
+            "-y",
+            "gistpad-mcp"
+          ],
           "env": {
             "GITHUB_TOKEN": "<YOUR_PAT>"
           }
         },
         "gistpad-mcp-archived": {
           "command": "npx",
-          "args": ["-y", "gistpad-mcp", "--archived"],
+          "args": [
+            "-y",
+            "gistpad-mcp",
+            "--archived"
+          ],
           "env": {
             "GITHUB_TOKEN": "<YOUR_PAT>"
           }
         },
         "gistpad-mcp-starred": {
           "command": "npx",
-          "args": ["-y", "gistpad-mcp", "--starred"],
+          "args": [
+            "-y",
+            "gistpad-mcp",
+            "--starred"
+          ],
           "env": {
             "GITHUB_TOKEN": "<YOUR_PAT>"
           }
         },
         "gistpad-mcp-daily": {
           "command": "npx",
-          "args": ["-y", "gistpad-mcp", "--daily"],
+          "args": [
+            "-y",
+            "gistpad-mcp",
+            "--daily"
+          ],
           "env": {
             "GITHUB_TOKEN": "<YOUR_PAT>"
           }
         },
         "gistpad-mcp-markdown": {
           "command": "npx",
-          "args": ["-y", "gistpad-mcp", "--markdown"],
+          "args": [
+            "-y",
+            "gistpad-mcp",
+            "--markdown"
+          ],
           "env": {
             "GITHUB_TOKEN": "<YOUR_PAT>"
           }

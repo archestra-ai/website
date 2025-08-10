@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "awesome-ionic-mcp@latest"]
+      "args": [
+        "-y",
+        "awesome-ionic-mcp@latest"
+      ]
     }
   },
   "tools": [],
@@ -25,7 +28,10 @@
       "mcpServers": {
         "awesome-ionic-mcp": {
           "command": "npx",
-          "args": ["-y", "awesome-ionic-mcp@latest"],
+          "args": [
+            "-y",
+            "awesome-ionic-mcp@latest"
+          ],
           "env": {}
         }
       }

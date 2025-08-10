@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@fireflyai/firefly-mcp"],
+      "args": [
+        "-y",
+        "@fireflyai/firefly-mcp"
+      ],
       "env": {
         "FIREFLY_ACCESS_KEY": "${user_config.firefly_access_key}",
         "FIREFLY_SECRET_KEY": "${user_config.firefly_secret_key}"
@@ -24,14 +27,14 @@
     "firefly_access_key": {
       "type": "string",
       "title": "Firefly Access Key",
-      "description": "Your Firefly Access Key for secure communication.",
+      "description": "Your Firefly access key for secure communication.",
       "required": true,
       "sensitive": true
     },
     "firefly_secret_key": {
       "type": "string",
       "title": "Firefly Secret Key",
-      "description": "Your Firefly Secret Key for secure communication.",
+      "description": "Your Firefly secret key for secure communication.",
       "required": true,
       "sensitive": true
     }
@@ -44,12 +47,18 @@
       "mcpServers": {
         "fireflyai-firefly-mcp": {
           "command": "npx",
-          "args": ["-y", "@fireflyai/firefly-mcp"],
+          "args": [
+            "-y",
+            "@fireflyai/firefly-mcp"
+          ],
           "env": {}
         },
         "fireflyai-firefly-mcp-env-vars": {
           "command": "npx",
-          "args": ["-y", "@fireflyai/firefly-mcp"],
+          "args": [
+            "-y",
+            "@fireflyai/firefly-mcp"
+          ],
           "env": {
             "FIREFLY_ACCESS_KEY": "your_access_key",
             "FIREFLY_SECRET_KEY": "your_secret_key"
@@ -69,12 +78,21 @@
         },
         "fireflyai-firefly-mcp-sse-port": {
           "command": "npx",
-          "args": ["-y", "@fireflyai/firefly-mcp", "--sse", "--port", "6001"],
+          "args": [
+            "-y",
+            "@fireflyai/firefly-mcp",
+            "--sse",
+            "--port",
+            "6001"
+          ],
           "env": {}
         },
         "fireflyai-firefly-mcp-stdio": {
           "command": "npx",
-          "args": ["-y", "@fireflyai/firefly-mcp"],
+          "args": [
+            "-y",
+            "@fireflyai/firefly-mcp"
+          ],
           "env": {
             "FIREFLY_ACCESS_KEY": "your_access_key",
             "FIREFLY_SECRET_KEY": "your_secret_key"

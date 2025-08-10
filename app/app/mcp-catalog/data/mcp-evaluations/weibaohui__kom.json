@@ -10,7 +10,7 @@
   "server": {
     "type": "binary",
     "mcp_config": {
-      "command": "${__dirname}/kom",
+      "command": "${user_config.kom_binary_path}",
       "args": [],
       "env": {
         "KUBECONFIG": "${user_config.kubeconfig_path}"
@@ -21,10 +21,16 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
+    "kom_binary_path": {
+      "type": "file",
+      "title": "kom Binary Path",
+      "description": "Path to the compiled 'kom' executable, as described in the documentation.",
+      "required": true
+    },
     "kubeconfig_path": {
       "type": "file",
-      "title": "Kubeconfig File",
-      "description": "Path to your Kubernetes configuration file. If not provided, the server will default to the standard location (~/.kube/config).",
+      "title": "Kubeconfig Path",
+      "description": "Path to the Kubernetes configuration file. The server defaults to the standard location (~/.kube/config) if not set.",
       "required": false,
       "default": "${HOME}/.kube/config"
     }

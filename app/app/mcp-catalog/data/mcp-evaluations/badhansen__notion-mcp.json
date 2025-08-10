@@ -10,7 +10,13 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}/src", "run", "server.py"],
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "python",
+        "src/server.py"
+      ],
       "env": {
         "NOTION_TOKEN": "${user_config.NOTION_TOKEN}",
         "PAGE_ID": "${user_config.PAGE_ID}",
@@ -59,7 +65,12 @@
       "mcpServers": {
         "notion-mcp": {
           "command": "uv",
-          "args": ["--directory", "/Users/username/Projects/Python/notion-mcp/src", "run", "server.py"],
+          "args": [
+            "--directory",
+            "/Users/username/Projects/Python/notion-mcp/src",
+            "run",
+            "server.py"
+          ],
           "env": {}
         }
       }

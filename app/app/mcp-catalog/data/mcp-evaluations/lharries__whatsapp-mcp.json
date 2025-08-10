@@ -10,7 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "${user_config.uv_path}",
-      "args": ["--directory", "${user_config.server_directory}", "run", "main.py"],
+      "args": [
+        "--directory",
+        "${user_config.repo_path}/whatsapp-mcp-server",
+        "run",
+        "main.py"
+      ],
       "env": {}
     }
   },
@@ -21,13 +26,13 @@
     "uv_path": {
       "type": "file",
       "title": "Path to uv executable",
-      "description": "The absolute path to the 'uv' executable. You can find this by running 'which uv' in your terminal.",
+      "description": "The absolute path to the 'uv' Python package manager executable. Run `which uv` in your terminal to find it.",
       "required": true
     },
-    "server_directory": {
+    "repo_path": {
       "type": "directory",
-      "title": "WhatsApp MCP Server Directory",
-      "description": "The absolute path to the 'whatsapp-mcp-server' directory within the cloned project repository.",
+      "title": "WhatsApp MCP Repository Path",
+      "description": "The absolute path to the root directory where you cloned the 'whatsapp-mcp' repository.",
       "required": true
     }
   },
@@ -39,7 +44,12 @@
       "mcpServers": {
         "whatsapp": {
           "command": "uv",
-          "args": ["--directory", "{{PATH_TO_SRC}}/whatsapp-mcp/whatsapp-mcp-server", "run", "main.py"],
+          "args": [
+            "--directory",
+            "{{PATH_TO_SRC}}/whatsapp-mcp/whatsapp-mcp-server",
+            "run",
+            "main.py"
+          ],
           "env": {}
         }
       }

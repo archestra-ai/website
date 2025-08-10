@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["mcp-server-zoomeye"],
+      "args": [
+        "mcp-server-zoomeye"
+      ],
       "env": {
         "ZOOMEYE_API_KEY": "${user_config.api_key}"
       }
@@ -23,7 +25,7 @@
     "api_key": {
       "type": "string",
       "title": "ZoomEye API Key",
-      "description": "Your API key for authentication with ZoomEye. Obtain it from your profile page on https://www.zoomeye.ai.",
+      "description": "Your ZoomEye API key for authentication. Obtain it from your profile on https://www.zoomeye.ai.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +38,10 @@
       "mcpServers": {
         "mcp-server-zoomeye-python": {
           "command": "python",
-          "args": ["-m", "mcp_server_zoomeye"],
+          "args": [
+            "-m",
+            "mcp_server_zoomeye"
+          ],
           "env": {
             "ZOOMEYE_API_KEY": "your_api_key_here"
           }
@@ -71,7 +76,9 @@
         },
         "mcp-server-zoomeye-uvx": {
           "command": "uvx",
-          "args": ["mcp-server-zoomeye"],
+          "args": [
+            "mcp-server-zoomeye"
+          ],
           "env": {
             "ZOOMEYE_API_KEY": "your_api_key_here"
           }

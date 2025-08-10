@@ -8,15 +8,19 @@
     "name": "confluentinc"
   },
   "server": {
-    "type": "node",
+    "type": "binary",
     "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@confluentinc/mcp-confluent"],
+      "command": "mcp-confluent-cli",
+      "args": [
+        "deploy",
+        "--http",
+        "--sse"
+      ],
       "env": {
         "HTTP_HOST": "${user_config.HTTP_HOST}",
+        "HTTP_MCP_ENDPOINT_PATH": "${user_config.HTTP_MCP_ENDPOINT_PATH}",
         "HTTP_PORT": "${user_config.HTTP_PORT}",
         "LOG_LEVEL": "${user_config.LOG_LEVEL}",
-        "HTTP_MCP_ENDPOINT_PATH": "${user_config.HTTP_MCP_ENDPOINT_PATH}",
         "SSE_MCP_ENDPOINT_PATH": "${user_config.SSE_MCP_ENDPOINT_PATH}",
         "SSE_MCP_MESSAGE_ENDPOINT_PATH": "${user_config.SSE_MCP_MESSAGE_ENDPOINT_PATH}",
         "BOOTSTRAP_SERVERS": "${user_config.BOOTSTRAP_SERVERS}",
@@ -27,9 +31,9 @@
         "KAFKA_ENV_ID": "${user_config.KAFKA_ENV_ID}",
         "FLINK_API_KEY": "${user_config.FLINK_API_KEY}",
         "FLINK_API_SECRET": "${user_config.FLINK_API_SECRET}",
-        "FLINK_REST_ENDPOINT": "${user_config.FLINK_REST_ENDPOINT}",
         "FLINK_ENV_ID": "${user_config.FLINK_ENV_ID}",
         "FLINK_ORG_ID": "${user_config.FLINK_ORG_ID}",
+        "FLINK_REST_ENDPOINT": "${user_config.FLINK_REST_ENDPOINT}",
         "FLINK_ENV_NAME": "${user_config.FLINK_ENV_NAME}",
         "FLINK_DATABASE_NAME": "${user_config.FLINK_DATABASE_NAME}",
         "FLINK_COMPUTE_POOL_ID": "${user_config.FLINK_COMPUTE_POOL_ID}",
@@ -55,6 +59,13 @@
       "required": true,
       "default": "0.0.0.0"
     },
+    "HTTP_MCP_ENDPOINT_PATH": {
+      "type": "string",
+      "title": "HTTP MCP Endpoint Path",
+      "description": "HTTP endpoint path for MCP transport (e.g., '/mcp').",
+      "required": true,
+      "default": "/mcp"
+    },
     "HTTP_PORT": {
       "type": "number",
       "title": "HTTP Port",
@@ -68,13 +79,6 @@
       "description": "Log level for application logging (trace, debug, info, warn, error, fatal).",
       "required": true,
       "default": "info"
-    },
-    "HTTP_MCP_ENDPOINT_PATH": {
-      "type": "string",
-      "title": "HTTP MCP Endpoint Path",
-      "description": "HTTP endpoint path for MCP transport (e.g., '/mcp').",
-      "required": true,
-      "default": "/mcp"
     },
     "SSE_MCP_ENDPOINT_PATH": {
       "type": "string",
@@ -93,7 +97,7 @@
     "BOOTSTRAP_SERVERS": {
       "type": "string",
       "title": "Bootstrap Servers",
-      "description": "List of Kafka broker addresses used to establish initial connection to the Kafka cluster (e.g., pkc-v12gj.us-east4.gcp.confluent.cloud:9092).",
+      "description": "List of Kafka broker addresses used to establish initial connection to the Kafka cluster (e.g., 'pkc-abc.us-east-1.aws.confluent.cloud:9092').",
       "required": false
     },
     "KAFKA_API_KEY": {
@@ -113,7 +117,7 @@
     "KAFKA_REST_ENDPOINT": {
       "type": "string",
       "title": "Kafka REST Endpoint",
-      "description": "The REST endpoint for your Kafka cluster (e.g., https://pkc-v12gj.us-east4.gcp.confluent.cloud:443).",
+      "description": "The REST endpoint for your Kafka cluster.",
       "required": false
     },
     "KAFKA_CLUSTER_ID": {
@@ -125,7 +129,7 @@
     "KAFKA_ENV_ID": {
       "type": "string",
       "title": "Kafka Environment ID",
-      "description": "The ID of the Confluent Cloud environment containing your Kafka cluster.",
+      "description": "The Confluent Cloud environment ID where the Kafka cluster resides.",
       "required": false
     },
     "FLINK_API_KEY": {
@@ -142,34 +146,34 @@
       "required": false,
       "sensitive": true
     },
-    "FLINK_REST_ENDPOINT": {
-      "type": "string",
-      "title": "Flink REST Endpoint",
-      "description": "The REST endpoint for your Flink service (e.g., https://flink.us-east4.gcp.confluent.cloud).",
-      "required": false
-    },
     "FLINK_ENV_ID": {
       "type": "string",
       "title": "Flink Environment ID",
-      "description": "The ID of the Confluent Cloud environment containing your Flink resources.",
+      "description": "The Confluent Cloud environment ID where Flink is enabled.",
       "required": false
     },
     "FLINK_ORG_ID": {
       "type": "string",
       "title": "Flink Organization ID",
-      "description": "The ID of your Confluent Cloud organization for Flink.",
+      "description": "The Confluent Cloud organization ID for Flink.",
+      "required": false
+    },
+    "FLINK_REST_ENDPOINT": {
+      "type": "string",
+      "title": "Flink REST Endpoint",
+      "description": "The REST endpoint for Confluent Cloud Flink services.",
       "required": false
     },
     "FLINK_ENV_NAME": {
       "type": "string",
       "title": "Flink Environment Name",
-      "description": "The name of your Flink environment.",
+      "description": "The name of the Flink environment.",
       "required": false
     },
     "FLINK_DATABASE_NAME": {
       "type": "string",
       "title": "Flink Database Name",
-      "description": "The name of the database within your Flink environment.",
+      "description": "The name of the Flink database to use.",
       "required": false
     },
     "FLINK_COMPUTE_POOL_ID": {
@@ -195,14 +199,14 @@
     "CONFLUENT_CLOUD_API_KEY": {
       "type": "string",
       "title": "Confluent Cloud API Key",
-      "description": "Master API key for Confluent Cloud platform administration, enabling management of resources across your organization.",
+      "description": "Master API key for Confluent Cloud platform administration.",
       "required": false,
       "sensitive": true
     },
     "CONFLUENT_CLOUD_API_SECRET": {
       "type": "string",
       "title": "Confluent Cloud API Secret",
-      "description": "Master API secret paired with CONFLUENT_CLOUD_API_KEY for comprehensive Confluent Cloud platform administration.",
+      "description": "Master API secret for Confluent Cloud platform administration.",
       "required": false,
       "sensitive": true
     },
@@ -230,7 +234,7 @@
     "SCHEMA_REGISTRY_ENDPOINT": {
       "type": "string",
       "title": "Schema Registry Endpoint",
-      "description": "The endpoint for your Schema Registry instance (e.g., https://psrc-zv01y.northamerica-northeast2.gcp.confluent.cloud).",
+      "description": "The endpoint URL for the Schema Registry.",
       "required": false
     }
   },

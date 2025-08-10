@@ -36,21 +36,21 @@
     "pinecone_api_key": {
       "type": "string",
       "title": "Pinecone API Key",
-      "description": "Your Pinecone API key, obtained from the Pinecone Console.",
+      "description": "Your Pinecone API key, obtainable from the Pinecone Console.",
       "required": true,
       "sensitive": true
     },
     "pinecone_assistant_host": {
       "type": "string",
       "title": "Pinecone Assistant Host",
-      "description": "The API host for your Pinecone Assistant. Found in the Assistant details page in the Pinecone Console.",
+      "description": "Pinecone Assistant API host, found in the Assistant details page after creation.",
       "required": false,
       "default": "https://prod-1-data.ke.pinecone.io"
     },
     "log_level": {
       "type": "string",
       "title": "Log Level",
-      "description": "Logging level for the server.",
+      "description": "The logging level for the server.",
       "required": false,
       "default": "info"
     }
@@ -105,7 +105,11 @@
         },
         "assistant-mcp-inspector-cargo": {
           "command": "npx",
-          "args": ["@modelcontextprotocol/inspector", "cargo", "run"],
+          "args": [
+            "@modelcontextprotocol/inspector",
+            "cargo",
+            "run"
+          ],
           "env": {
             "PINECONE_API_KEY": "<YOUR_PINECONE_API_KEY_HERE>",
             "PINECONE_ASSISTANT_HOST": "<YOUR_PINECONE_ASSISTANT_HOST_HERE>"

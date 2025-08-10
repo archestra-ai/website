@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["mcp-tinybird", "stdio"],
+      "args": [
+        "mcp-tinybird",
+        "stdio"
+      ],
       "env": {
         "TB_API_URL": "${user_config.tinybird_api_url}",
         "TB_ADMIN_TOKEN": "${user_config.tinybird_admin_token}"
@@ -24,7 +27,7 @@
     "tinybird_api_url": {
       "type": "string",
       "title": "Tinybird API URL",
-      "description": "Your Tinybird API URL, found in your workspace.",
+      "description": "Your Tinybird API URL, which can be found in your Tinybird workspace.",
       "required": true,
       "sensitive": false
     },
@@ -44,7 +47,10 @@
       "mcpServers": {
         "mcp-tinybird-stdio-configured": {
           "command": "uvx",
-          "args": ["mcp-tinybird", "stdio"],
+          "args": [
+            "mcp-tinybird",
+            "stdio"
+          ],
           "env": {
             "TB_API_URL": "<TINYBIRD_API_URL>",
             "TB_ADMIN_TOKEN": "<TINYBIRD_ADMIN_TOKEN>"
@@ -52,17 +58,28 @@
         },
         "mcp-tinybird-sse": {
           "command": "uvx",
-          "args": ["mcp-tinybird", "sse"],
+          "args": [
+            "mcp-tinybird",
+            "sse"
+          ],
           "env": {}
         },
         "mcp-tinybird_local": {
           "command": "uv",
-          "args": ["--directory", "/path/to/your/mcp-tinybird", "run", "mcp-tinybird", "stdio"],
+          "args": [
+            "--directory",
+            "/path/to/your/mcp-tinybird",
+            "run",
+            "mcp-tinybird",
+            "stdio"
+          ],
           "env": {}
         },
         "mcp-tinybird": {
           "command": "uvx",
-          "args": ["mcp-tinybird"],
+          "args": [
+            "mcp-tinybird"
+          ],
           "env": {}
         },
         "modelcontextprotocol-inspector": {

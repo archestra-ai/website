@@ -11,7 +11,12 @@
     "type": "binary",
     "mcp_config": {
       "command": "${__dirname}/bin/server",
-      "args": ["-transport", "${user_config.transport}", "-addr", "${user_config.address}"],
+      "args": [
+        "-transport",
+        "${user_config.transport}",
+        "-addr",
+        "${user_config.addr}"
+      ],
       "env": {}
     }
   },
@@ -22,11 +27,11 @@
     "transport": {
       "type": "string",
       "title": "Transport Method",
-      "description": "The transport method for the MCP server. Use 'stdio' for local clients, or 'sse'/'http' for web integrations. Options: stdio, sse, http.",
+      "description": "The transport method for the MCP server. Options: stdio, sse, http.",
       "required": true,
       "default": "stdio"
     },
-    "address": {
+    "addr": {
       "type": "string",
       "title": "Server Address",
       "description": "The address and port for the server to listen on (e.g., :8080). Only used for 'sse' and 'http' transports.",
@@ -42,22 +47,32 @@
       "mcpServers": {
         "tic-tac-toe-stdio": {
           "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
-          "args": ["-transport=stdio"],
+          "args": [
+            "-transport=stdio"
+          ],
           "env": {}
         },
         "tic-tac-toe-desktop-config": {
           "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
-          "args": [""],
+          "args": [
+            ""
+          ],
           "env": {}
         },
         "tic-tac-toe-sse": {
           "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
-          "args": ["-transport=sse", "-addr=:8080"],
+          "args": [
+            "-transport=sse",
+            "-addr=:8080"
+          ],
           "env": {}
         },
         "tic-tac-toe-http": {
           "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
-          "args": ["-transport=http", "-addr=:8080"],
+          "args": [
+            "-transport=http",
+            "-addr=:8080"
+          ],
           "env": {}
         }
       }

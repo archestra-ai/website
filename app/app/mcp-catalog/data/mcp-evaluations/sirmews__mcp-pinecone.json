@@ -10,7 +10,13 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["mcp-pinecone", "--index-name", "${user_config.index_name}", "--api-key", "${user_config.api_key}"],
+      "args": [
+        "mcp-pinecone",
+        "--index-name",
+        "${user_config.index_name}",
+        "--api-key",
+        "${user_config.api_key}"
+      ],
       "env": {}
     }
   },
@@ -21,8 +27,9 @@
     "index_name": {
       "type": "string",
       "title": "Pinecone Index Name",
-      "description": "The name of your Pinecone index.",
-      "required": true
+      "description": "The name of the Pinecone index to connect to.",
+      "required": true,
+      "sensitive": false
     },
     "api_key": {
       "type": "string",
@@ -40,12 +47,23 @@
       "mcpServers": {
         "mcp-pinecone": {
           "command": "uv",
-          "args": ["--directory", "{project_dir}", "run", "mcp-pinecone"],
+          "args": [
+            "--directory",
+            "{project_dir}",
+            "run",
+            "mcp-pinecone"
+          ],
           "env": {}
         },
         "mcp-pinecone-configured": {
           "command": "uvx",
-          "args": ["--index-name", "{your-index-name}", "--api-key", "{your-secret-api-key}", "mcp-pinecone"],
+          "args": [
+            "--index-name",
+            "{your-index-name}",
+            "--api-key",
+            "{your-secret-api-key}",
+            "mcp-pinecone"
+          ],
           "env": {}
         }
       }

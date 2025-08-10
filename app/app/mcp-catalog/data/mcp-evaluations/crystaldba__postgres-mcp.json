@@ -10,9 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "postgres-mcp",
-      "args": ["--access-mode", "${user_config.access_mode}"],
+      "args": [
+        "--access-mode=${user_config.access_mode}"
+      ],
       "env": {
-        "DATABASE_URI": "${user_config.database_uri}"
+        "DATABASE_URI": "${user_config.DATABASE_URI}"
       }
     }
   },
@@ -20,17 +22,17 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "database_uri": {
+    "DATABASE_URI": {
       "type": "string",
       "title": "Database Connection URI",
-      "description": "Your Postgres database connection URI (e.g., postgresql://user:pass@host:port/dbname).",
+      "description": "Your Postgres database connection URI, e.g., postgresql://username:password@localhost:5432/dbname",
       "required": true,
       "sensitive": true
     },
     "access_mode": {
       "type": "string",
       "title": "Access Mode",
-      "description": "Set to 'unrestricted' for full read/write access (development) or 'restricted' for read-only access (production).",
+      "description": "Controls AI agent permissions. Use 'unrestricted' for full read/write access (development) or 'restricted' for read-only access (production).",
       "required": true,
       "default": "unrestricted"
     }
@@ -43,21 +45,35 @@
       "mcpServers": {
         "crystaldba-postgres-mcp-docker": {
           "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "DATABASE_URI", "crystaldba/postgres-mcp", "--access-mode=unrestricted"],
+          "args": [
+            "run",
+            "-i",
+            "--rm",
+            "-e",
+            "DATABASE_URI",
+            "crystaldba/postgres-mcp",
+            "--access-mode=unrestricted"
+          ],
           "env": {
             "DATABASE_URI": "postgresql://username:password@localhost:5432/dbname"
           }
         },
         "postgres-mcp-pipx": {
           "command": "postgres-mcp",
-          "args": ["--access-mode=unrestricted"],
+          "args": [
+            "--access-mode=unrestricted"
+          ],
           "env": {
             "DATABASE_URI": "postgresql://username:password@localhost:5432/dbname"
           }
         },
         "postgres-mcp-uv": {
           "command": "uv",
-          "args": ["run", "postgres-mcp", "--access-mode=unrestricted"],
+          "args": [
+            "run",
+            "postgres-mcp",
+            "--access-mode=unrestricted"
+          ],
           "env": {
             "DATABASE_URI": "postgresql://username:password@localhost:5432/dbname"
           }

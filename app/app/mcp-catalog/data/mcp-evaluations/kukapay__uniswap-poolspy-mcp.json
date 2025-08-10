@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "main.py"],
+      "args": [
+        "run",
+        "main.py"
+      ],
       "env": {
         "THEGRAPH_API_KEY": "${user_config.thegraph_api_key}"
       }
@@ -23,7 +26,7 @@
     "thegraph_api_key": {
       "type": "string",
       "title": "The Graph API Key",
-      "description": "Your API key from The Graph, required to query Uniswap pool data.",
+      "description": "Your API key from The Graph, required to query Uniswap subgraph data.",
       "required": true,
       "sensitive": true
     }
@@ -36,19 +39,32 @@
       "mcpServers": {
         "Uniswap-PoolSpy": {
           "command": "uv",
-          "args": ["--directory", "path/to/uniswap-poolspy-mcp", "run", "main.py"],
+          "args": [
+            "--directory",
+            "path/to/uniswap-poolspy-mcp",
+            "run",
+            "main.py"
+          ],
           "env": {
             "THEGRAPH_API_KEY": "your api key from The Graph"
           }
         },
         "Uniswap-PoolSpy-basic": {
           "command": "uv",
-          "args": ["run", "main.py"],
+          "args": [
+            "run",
+            "main.py"
+          ],
           "env": {}
         },
         "Uniswap-PoolSpy-dev": {
           "command": "uv",
-          "args": ["run", "mcp", "dev", "main.py"],
+          "args": [
+            "run",
+            "mcp",
+            "dev",
+            "main.py"
+          ],
           "env": {}
         }
       }

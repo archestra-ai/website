@@ -11,7 +11,10 @@
     "type": "binary",
     "mcp_config": {
       "command": "${__dirname}/youtube-uploader-mcp",
-      "args": ["-client_secret_file", "${user_config.client_secret_file}"],
+      "args": [
+        "-client_secret_file",
+        "${user_config.client_secret_file}"
+      ],
       "env": {}
     }
   },
@@ -21,8 +24,8 @@
   "user_config": {
     "client_secret_file": {
       "type": "file",
-      "title": "Google OAuth Client Secret File",
-      "description": "Path to your client_secret.json file obtained from the Google Developer Console. Follow the extension's setup guide for instructions.",
+      "title": "Google OAuth Client Secret",
+      "description": "The client_secret.json file obtained from the Google Developer Console for YouTube API access.",
       "required": true
     }
   },
@@ -34,7 +37,10 @@
       "mcpServers": {
         "youtube-uploader-mcp": {
           "command": "/absolute/path/to/youtube-uploader-mcp-<os>-<arch>",
-          "args": ["-client_secret_file", "/absolute/path/to/client_secret.json(See Below)"],
+          "args": [
+            "-client_secret_file",
+            "/absolute/path/to/client_secret.json(See Below)"
+          ],
           "env": {}
         }
       }

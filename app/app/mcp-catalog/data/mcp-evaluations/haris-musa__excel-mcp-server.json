@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["excel-mcp-server", "streamable-http"],
+      "args": [
+        "excel-mcp-server",
+        "streamable-http"
+      ],
       "env": {
         "EXCEL_FILES_PATH": "${user_config.excel_files_path}",
         "FASTMCP_PORT": "${user_config.port}"
@@ -24,14 +27,14 @@
     "excel_files_path": {
       "type": "directory",
       "title": "Excel Files Path",
-      "description": "The directory where the server will read and write Excel files. If not set, defaults to './excel_files'.",
+      "description": "The directory where the server will read and write Excel files. Required for HTTP/SSE transports.",
       "required": false,
       "default": "./excel_files"
     },
     "port": {
       "type": "number",
       "title": "Server Port",
-      "description": "The port the server will listen on for HTTP connections.",
+      "description": "The port the server will listen on for HTTP/SSE connections.",
       "required": false,
       "default": 8000
     }
@@ -44,22 +47,34 @@
       "mcpServers": {
         "excel-mcp-server-stdio": {
           "command": "uvx",
-          "args": ["excel-mcp-server", "stdio"],
+          "args": [
+            "excel-mcp-server",
+            "stdio"
+          ],
           "env": {}
         },
         "excel-mcp-server-sse": {
           "command": "uvx",
-          "args": ["excel-mcp-server", "sse"],
+          "args": [
+            "excel-mcp-server",
+            "sse"
+          ],
           "env": {}
         },
         "excel-mcp-server-streamable-http": {
           "command": "uvx",
-          "args": ["excel-mcp-server", "streamable-http"],
+          "args": [
+            "excel-mcp-server",
+            "streamable-http"
+          ],
           "env": {}
         },
         "excel-mcp-server-streamable-http-configured": {
           "command": "uvx",
-          "args": ["excel-mcp-server", "streamable-http"],
+          "args": [
+            "excel-mcp-server",
+            "streamable-http"
+          ],
           "env": {
             "EXCEL_FILES_PATH": "/path/to/excel_files",
             "FASTMCP_PORT": "8007"

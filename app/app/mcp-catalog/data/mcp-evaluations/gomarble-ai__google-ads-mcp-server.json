@@ -11,7 +11,9 @@
     "type": "python",
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/server.py"],
+      "args": [
+        "${__dirname}/server.py"
+      ],
       "env": {
         "GOOGLE_ADS_DEVELOPER_TOKEN": "${user_config.developer_token}",
         "GOOGLE_ADS_OAUTH_CONFIG_PATH": "${user_config.oauth_config_path}"
@@ -44,7 +46,9 @@
       "mcpServers": {
         "google-ads": {
           "command": "/full/path/to/your/project/.venv/bin/python",
-          "args": ["/full/path/to/your/project/server.py"],
+          "args": [
+            "/full/path/to/your/project/server.py"
+          ],
           "env": {}
         }
       }

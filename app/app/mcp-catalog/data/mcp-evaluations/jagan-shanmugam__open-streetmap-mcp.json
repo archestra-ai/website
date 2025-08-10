@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["osm-mcp-server"]
+      "args": [
+        "osm-mcp-server"
+      ],
+      "env": {}
     }
   },
   "tools": [],
@@ -25,7 +28,9 @@
       "mcpServers": {
         "osm-mcp-server": {
           "command": "uvx",
-          "args": ["osm-mcp-server"],
+          "args": [
+            "osm-mcp-server"
+          ],
           "env": {}
         },
         "osm-mcp-server-local-run": {
@@ -35,7 +40,12 @@
         },
         "osm-mcp-server-configured": {
           "command": "uv",
-          "args": ["--directory", "/path/to/osm-mcp-server", "run", "osm-mcp-server"],
+          "args": [
+            "--directory",
+            "/path/to/osm-mcp-server",
+            "run",
+            "osm-mcp-server"
+          ],
           "env": {}
         },
         "osm-mcp-server-inspector": {

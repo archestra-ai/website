@@ -10,7 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}/intruder_mcp", "run", "server.py"],
+      "args": [
+        "--directory",
+        "${__dirname}/intruder_mcp",
+        "run",
+        "server.py"
+      ],
       "env": {
         "INTRUDER_API_KEY": "${user_config.api_key}"
       }
@@ -23,7 +28,7 @@
     "api_key": {
       "type": "string",
       "title": "Intruder API Key",
-      "description": "Your Intruder API key. See https://developers.intruder.io/docs/creating-an-access-token to generate one.",
+      "description": "Your API key for Intruder. See https://developers.intruder.io/docs/creating-an-access-token for details.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +41,12 @@
       "mcpServers": {
         "intruder": {
           "command": "uv",
-          "args": ["--directory", "path/to/intruder-mcp/intruder_mcp", "run", "server.py"],
+          "args": [
+            "--directory",
+            "path/to/intruder-mcp/intruder_mcp",
+            "run",
+            "server.py"
+          ],
           "env": {
             "INTRUDER_API_KEY": "your-api-key"
           }

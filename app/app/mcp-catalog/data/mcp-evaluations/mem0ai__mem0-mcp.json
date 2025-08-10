@@ -9,8 +9,14 @@
   },
   "server": {
     "mcp_config": {
-      "command": "uv",
-      "args": ["run", "main.py", "--host", "${user_config.host}", "--port", "${user_config.port}"],
+      "command": "python",
+      "args": [
+        "main.py",
+        "--host",
+        "${user_config.host}",
+        "--port",
+        "${user_config.port}"
+      ],
       "env": {
         "MEM0_API_KEY": "${user_config.mem0_api_key}"
       }
@@ -29,15 +35,15 @@
     },
     "host": {
       "type": "string",
-      "title": "Server Host",
-      "description": "The host address for the MCP server to bind to.",
+      "title": "Host",
+      "description": "The host address for the server to run on.",
       "required": false,
       "default": "0.0.0.0"
     },
     "port": {
       "type": "number",
-      "title": "Server Port",
-      "description": "The port for the MCP server to listen on.",
+      "title": "Port",
+      "description": "The port for the server to listen on.",
       "required": false,
       "default": 8080
     }
@@ -50,12 +56,22 @@
       "mcpServers": {
         "mcp-server-mem0": {
           "command": "uv",
-          "args": ["run", "main.py"],
+          "args": [
+            "run",
+            "main.py"
+          ],
           "env": {}
         },
         "mcp-server-mem0-configured": {
           "command": "uv",
-          "args": ["run", "main.py", "--host", "<your host>", "--port", "<your port>"],
+          "args": [
+            "run",
+            "main.py",
+            "--host",
+            "<your host>",
+            "--port",
+            "<your port>"
+          ],
           "env": {}
         }
       }

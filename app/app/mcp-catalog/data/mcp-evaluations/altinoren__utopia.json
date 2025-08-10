@@ -10,7 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "dotnet",
-      "args": ["run", "--project", "${user_config.project_folder}/Utopia.csproj"],
+      "args": [
+        "run",
+        "--project",
+        "${user_config.project_folder}/Utopia.csproj"
+      ],
       "env": {}
     }
   },
@@ -21,7 +25,7 @@
     "project_folder": {
       "type": "directory",
       "title": "Utopia Project Folder",
-      "description": "The path to the folder containing the Utopia.csproj file.",
+      "description": "The path to the Utopia MCP Server project folder containing Utopia.csproj.",
       "required": true
     }
   },
@@ -33,7 +37,11 @@
       "mcpServers": {
         "Utopia": {
           "command": "dotnet",
-          "args": ["run", "--project", "<path_to_project_folder>/Utopia.csproj"],
+          "args": [
+            "run",
+            "--project",
+            "<path_to_project_folder>/Utopia.csproj"
+          ],
           "env": {}
         }
       }

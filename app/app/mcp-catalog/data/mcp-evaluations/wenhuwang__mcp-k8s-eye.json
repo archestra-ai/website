@@ -9,10 +9,10 @@
   },
   "server": {
     "mcp_config": {
-      "command": "${__dirname}/mcp-k8s-eye",
+      "command": "${user_config.binary_path}",
       "args": [],
       "env": {
-        "HOME": "${user_config.home_directory}"
+        "HOME": "${user_config.kube_home_dir}"
       }
     }
   },
@@ -20,10 +20,16 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "home_directory": {
+    "binary_path": {
+      "type": "file",
+      "title": "mcp-k8s-eye Binary Path",
+      "description": "The path to the compiled mcp-k8s-eye executable.",
+      "required": true
+    },
+    "kube_home_dir": {
       "type": "directory",
-      "title": "Home Directory",
-      "description": "The home directory containing the .kube/config file for kubectl authentication. The server uses this to locate your Kubernetes configuration.",
+      "title": "Kubernetes Config Home Directory",
+      "description": "The directory containing your kubeconfig file (e.g., ~/.kube). This is set as the HOME environment variable for the server.",
       "required": true,
       "default": "${HOME}"
     }

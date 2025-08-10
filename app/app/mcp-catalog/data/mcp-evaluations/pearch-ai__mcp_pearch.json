@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "fastmcp",
-      "args": ["dev", "pearch_mcp.py"],
+      "args": [
+        "dev",
+        "pearch_mcp.py"
+      ],
       "env": {
         "PEARCH_API_KEY": "${user_config.pearch_mcp_key}"
       }
@@ -23,7 +26,7 @@
     "pearch_mcp_key": {
       "type": "string",
       "title": "Pearch.ai API Key",
-      "description": "Your API key for Pearch.ai. Obtain it from the Pearch.ai Dashboard.",
+      "description": "Your API key for Pearch.ai. You can get one from your Pearch.ai Dashboard.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +39,10 @@
       "mcpServers": {
         "pearch_mcp-dev": {
           "command": "fastmcp",
-          "args": ["dev", "pearch_mcp.py"],
+          "args": [
+            "dev",
+            "pearch_mcp.py"
+          ],
           "env": {}
         }
       }

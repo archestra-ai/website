@@ -8,9 +8,13 @@
     "name": "pab1it0"
   },
   "server": {
+    "type": "python",
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "src/adx_mcp_server/main.py"],
+      "args": [
+        "run",
+        "src/adx_mcp_server/main.py"
+      ],
       "env": {
         "ADX_CLUSTER_URL": "${user_config.adx_cluster_url}",
         "ADX_DATABASE": "${user_config.adx_database}",
@@ -27,7 +31,7 @@
     "adx_cluster_url": {
       "type": "string",
       "title": "ADX Cluster URL",
-      "description": "The URL of your Azure Data Explorer cluster (e.g., https://yourcluster.region.kusto.windows.net)",
+      "description": "The URL of your Azure Data Explorer cluster (e.g., https://yourcluster.region.kusto.windows.net).",
       "required": true
     },
     "adx_database": {
@@ -38,22 +42,20 @@
     },
     "azure_tenant_id": {
       "type": "string",
-      "title": "Azure Tenant ID",
-      "description": "Optional: Your Azure Tenant ID, used for Workload Identity authentication.",
-      "required": false,
-      "sensitive": true
+      "title": "Azure Tenant ID (Optional)",
+      "description": "Your Azure Tenant ID. Required for Workload Identity authentication.",
+      "required": false
     },
     "azure_client_id": {
       "type": "string",
-      "title": "Azure Client ID",
-      "description": "Optional: Your Azure Client ID, used for Workload Identity authentication.",
-      "required": false,
-      "sensitive": true
+      "title": "Azure Client ID (Optional)",
+      "description": "The Client ID of the managed identity. Required for Workload Identity authentication.",
+      "required": false
     },
     "adx_token_file_path": {
       "type": "string",
-      "title": "ADX Token File Path",
-      "description": "Optional: Path to the Azure identity token file for Workload Identity authentication.",
+      "title": "Azure Token File Path (Optional)",
+      "description": "Path to the Azure identity token file for Workload Identity. Defaults to the standard location in AKS.",
       "required": false,
       "default": "/var/run/secrets/azure/tokens/azure-identity-token"
     }
@@ -66,7 +68,12 @@
       "mcpServers": {
         "adx-mcp-server-uv": {
           "command": "uv",
-          "args": ["--directory", "<full path to adx-mcp-server directory>", "run", "src/adx_mcp_server/main.py"],
+          "args": [
+            "--directory",
+            "<full path to adx-mcp-server directory>",
+            "run",
+            "src/adx_mcp_server/main.py"
+          ],
           "env": {
             "ADX_CLUSTER_URL": "https://yourcluster.region.kusto.windows.net",
             "ADX_DATABASE": "your_database"

@@ -7,14 +7,7 @@
   "author": {
     "name": "gitkraken"
   },
-  "server": {
-    "type": "binary",
-    "mcp_config": {
-      "command": "gk",
-      "args": [],
-      "env": {}
-    }
-  },
+  "server": {},
   "tools": [],
   "prompts": [],
   "keywords": [],

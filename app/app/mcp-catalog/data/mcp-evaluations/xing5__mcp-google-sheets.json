@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["mcp-google-sheets@latest"],
+      "args": [
+        "mcp-google-sheets@latest"
+      ],
       "env": {
         "SERVICE_ACCOUNT_PATH": "${user_config.service_account_path}",
         "DRIVE_FOLDER_ID": "${user_config.drive_folder_id}"
@@ -23,15 +25,14 @@
   "user_config": {
     "service_account_path": {
       "type": "file",
-      "title": "Service Account Key Path",
-      "description": "Path to your Google Cloud Service Account JSON key file. This is the recommended authentication method.",
-      "required": true,
-      "sensitive": true
+      "title": "Service Account Key File",
+      "description": "Path to your Google Cloud Service Account key JSON file. This is the recommended authentication method.",
+      "required": true
     },
     "drive_folder_id": {
       "type": "string",
       "title": "Google Drive Folder ID",
-      "description": "The ID of the Google Drive folder where the server will create and manage spreadsheets.",
+      "description": "The ID of the Google Drive folder where spreadsheets will be managed. The Service Account must have access to this folder.",
       "required": true
     }
   },
@@ -43,12 +44,16 @@
       "mcpServers": {
         "mcp-google-sheets": {
           "command": "uvx",
-          "args": ["mcp-google-sheets@latest"],
+          "args": [
+            "mcp-google-sheets@latest"
+          ],
           "env": {}
         },
         "mcp-google-sheets-configured": {
           "command": "uvx",
-          "args": ["mcp-google-sheets@latest"],
+          "args": [
+            "mcp-google-sheets@latest"
+          ],
           "env": {
             "SERVICE_ACCOUNT_PATH": "/path/to/your/service-account-key.json",
             "DRIVE_FOLDER_ID": "YOUR_DRIVE_FOLDER_ID"

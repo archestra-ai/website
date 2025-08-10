@@ -10,9 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["roadrecon_mcp_server.py"],
+      "args": [
+        "roadrecon_mcp_server.py"
+      ],
       "env": {
-        "ROADRECON_URL": "${user_config.ROADRECON_URL}"
+        "ROADRECON_URL": "${user_config.roadrecon_url}"
       }
     }
   },
@@ -20,10 +22,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "ROADRECON_URL": {
+    "roadrecon_url": {
       "type": "string",
       "title": "ROADRecon URL",
-      "description": "The URL of your running ROADRecon web GUI.",
+      "description": "The URL of your running ROADRecon web GUI instance.",
       "required": false,
       "default": "http://localhost:5000"
     }
@@ -36,12 +38,16 @@
       "mcpServers": {
         "roadrecon-mcp-server": {
           "command": "python",
-          "args": ["roadrecon_mcp_server.py"],
+          "args": [
+            "roadrecon_mcp_server.py"
+          ],
           "env": {}
         },
         "roadrecon-mcp-server-configured": {
           "command": "python",
-          "args": ["roadrecon_mcp_server.py"],
+          "args": [
+            "roadrecon_mcp_server.py"
+          ],
           "env": {
             "ROADRECON_URL": "http://localhost:8080"
           }

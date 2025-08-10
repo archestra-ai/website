@@ -10,11 +10,14 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "aiwen-mcp-server-geoip"],
+      "args": [
+        "-y",
+        "aiwen-mcp-server-geoip"
+      ],
       "env": {
-        "AIWEN_API_KEY": "${user_config.api_key}",
-        "IPV4_ACCURACY": "${user_config.ipv4_accuracy}",
-        "IPV6_ACCURACY": "${user_config.ipv6_accuracy}"
+        "AIWEN_API_KEY": "${user_config.AIWEN_API_KEY}",
+        "IPV4_ACCURACY": "${user_config.IPV4_ACCURACY}",
+        "IPV6_ACCURACY": "${user_config.IPV6_ACCURACY}"
       }
     }
   },
@@ -22,24 +25,24 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "api_key": {
+    "AIWEN_API_KEY": {
       "type": "string",
       "title": "Aiwen API Key",
-      "description": "Your API KEY for the Aiwen IP Location service. Get one from the official website.",
+      "description": "Your API KEY for the Aiwen IP Location service.",
       "required": true,
       "sensitive": true
     },
-    "ipv4_accuracy": {
+    "IPV4_ACCURACY": {
       "type": "string",
-      "title": "IPv4 Accuracy",
-      "description": "Location accuracy for IPv4 addresses, based on your purchased API version. Options: 'city', 'district', 'street'.",
+      "title": "IPv4 Location Accuracy",
+      "description": "Set the location accuracy for IPv4 addresses based on your purchased API version. Options: 'city' (city level), 'district' (district level), 'street' (street level).",
       "required": false,
       "default": "city"
     },
-    "ipv6_accuracy": {
+    "IPV6_ACCURACY": {
       "type": "string",
-      "title": "IPv6 Accuracy",
-      "description": "Location accuracy for IPv6 addresses, based on your purchased API version. Options: 'city', 'district', 'street'.",
+      "title": "IPv6 Location Accuracy",
+      "description": "Set the location accuracy for IPv6 addresses based on your purchased API version. Options: 'city' (city level), 'district' (district level), 'street' (street level).",
       "required": false,
       "default": "city"
     }
@@ -52,7 +55,10 @@
       "mcpServers": {
         "aiwen-mcp-server-geoip": {
           "command": "npx",
-          "args": ["-y", "aiwen-mcp-server-geoip"],
+          "args": [
+            "-y",
+            "aiwen-mcp-server-geoip"
+          ],
           "env": {
             "AIWEN_API_KEY": "xxxxxx",
             "IPV4_ACCURACY": "city",

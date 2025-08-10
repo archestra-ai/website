@@ -9,8 +9,10 @@
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "@anaisbetts/mcp-installer"],
-    "env": {}
+    "args": [
+      "-y",
+      "@anaisbetts/mcp-installer"
+    ]
   },
   "tools": [],
   "prompts": [],
@@ -24,7 +26,10 @@
       "mcpServers": {
         "mcp-installer": {
           "command": "npx",
-          "args": ["-y", "@anaisbetts/mcp-installer"],
+          "args": [
+            "-y",
+            "@anaisbetts/mcp-installer"
+          ],
           "env": {}
         }
       }

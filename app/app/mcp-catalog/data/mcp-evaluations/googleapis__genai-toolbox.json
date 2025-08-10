@@ -10,8 +10,11 @@
   "server": {
     "type": "binary",
     "mcp_config": {
-      "command": "${__dirname}/toolbox",
-      "args": ["--tools-file", "${user_config.tools_file}"],
+      "command": "toolbox",
+      "args": [
+        "--tools-file",
+        "${user_config.tools_file}"
+      ],
       "env": {}
     }
   },
@@ -29,7 +32,7 @@
     "disable_reload": {
       "type": "boolean",
       "title": "Disable Dynamic Reloading",
-      "description": "Disable dynamic reloading of the tools configuration file. The server enables this by default.",
+      "description": "If true, disables dynamic reloading of the configuration file. By default, reloading is enabled.",
       "required": false,
       "default": false
     }
@@ -42,22 +45,36 @@
       "mcpServers": {
         "toolbox": {
           "command": "./toolbox",
-          "args": ["--tools-file", "tools.yaml"],
+          "args": [
+            "--tools-file",
+            "tools.yaml"
+          ],
           "env": {}
         },
         "toolbox-no-reload": {
           "command": "./toolbox",
-          "args": ["--tools-file", "tools.yaml", "--disable-reload"],
+          "args": [
+            "--tools-file",
+            "tools.yaml",
+            "--disable-reload"
+          ],
           "env": {}
         },
         "mcp-toolbox": {
           "command": "toolbox",
-          "args": ["--tools-file", "tools.yaml"],
+          "args": [
+            "--tools-file",
+            "tools.yaml"
+          ],
           "env": {}
         },
         "mcp-toolbox-no-reload": {
           "command": "toolbox",
-          "args": ["--tools-file", "tools.yaml", "--disable-reload"],
+          "args": [
+            "--tools-file",
+            "tools.yaml",
+            "--disable-reload"
+          ],
           "env": {}
         }
       }

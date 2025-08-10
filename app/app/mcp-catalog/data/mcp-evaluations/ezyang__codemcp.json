@@ -30,14 +30,14 @@
     "port": {
       "type": "number",
       "title": "Server Port",
-      "description": "The port for the MCP server to listen on. The default is 8000.",
+      "description": "The port for the codemcp server to listen on.",
       "required": false,
       "default": 8000
     },
     "host": {
       "type": "string",
       "title": "Server Host",
-      "description": "The host IP address for the MCP server to bind to. Use a private IP (e.g., from Tailscale) for remote access. WARNING: Binding to 0.0.0.0 is extremely insecure. Defaults to 127.0.0.1.",
+      "description": "The host IP address for the codemcp server to bind to. Use a private IP (e.g., from Tailscale) for remote access. WARNING: It is extremely unlikely you want to bind to 0.0.0.0.",
       "required": false,
       "default": "127.0.0.1"
     }
@@ -50,12 +50,24 @@
       "mcpServers": {
         "codemcp": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/ezyang/codemcp@prod", "codemcp", "serve"],
+          "args": [
+            "--from",
+            "git+https://github.com/ezyang/codemcp@prod",
+            "codemcp",
+            "serve"
+          ],
           "env": {}
         },
         "codemcp-port": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/ezyang/codemcp@prod", "codemcp", "serve", "--port", "1234"],
+          "args": [
+            "--from",
+            "git+https://github.com/ezyang/codemcp@prod",
+            "codemcp",
+            "serve",
+            "--port",
+            "1234"
+          ],
           "env": {}
         },
         "codemcp-host": {
@@ -72,7 +84,10 @@
         },
         "codemcp-dev": {
           "command": "mcp",
-          "args": ["dev", "codemcp/__main__.py"],
+          "args": [
+            "dev",
+            "codemcp/__main__.py"
+          ],
           "env": {
             "PYTHONPATH": "."
           }

@@ -34,35 +34,35 @@
     "api_key": {
       "type": "string",
       "title": "OpenAI API Key",
-      "description": "Your API key for OpenAI.",
+      "description": "Your API key from OpenAI, used for agent operations.",
       "required": true,
       "sensitive": true
     },
     "chrome_path": {
       "type": "file",
       "title": "Chrome Executable Path",
-      "description": "Optional path to your Chrome/Chromium executable.",
+      "description": "Optional. The file path to your Chrome/Chromium executable.",
       "required": false
     },
     "patient_mode": {
       "type": "boolean",
       "title": "Patient Mode",
-      "description": "Set to true if API calls should wait for task completion.",
+      "description": "Set to true if API calls should wait for the browser task to complete.",
       "required": false,
       "default": false
     },
     "port": {
       "type": "number",
       "title": "Server Port",
-      "description": "The port for the server to run on.",
-      "required": false,
+      "description": "The port for the MCP server to listen on.",
+      "required": true,
       "default": 8000
     },
     "proxy_port": {
       "type": "number",
-      "title": "Proxy Port",
-      "description": "The port for the stdio proxy.",
-      "required": false,
+      "title": "Stdio Proxy Port",
+      "description": "The port for the stdio proxy to use when running in stdio mode.",
+      "required": true,
       "default": 9000
     }
   },
@@ -74,7 +74,12 @@
       "mcpServers": {
         "browser-use-mcp-server": {
           "command": "uv",
-          "args": ["run", "server", "--port", "8000"],
+          "args": [
+            "run",
+            "server",
+            "--port",
+            "8000"
+          ],
           "env": {
             "OPENAI_API_KEY": "your-api-key",
             "CHROME_PATH": "optional/path/to/chrome",
@@ -83,14 +88,28 @@
         },
         "browser-use-mcp-server-stdio-configured": {
           "command": "browser-use-mcp-server",
-          "args": ["run", "server", "--port", "8000", "--stdio", "--proxy-port", "9000"],
+          "args": [
+            "run",
+            "server",
+            "--port",
+            "8000",
+            "--stdio",
+            "--proxy-port",
+            "9000"
+          ],
           "env": {
             "OPENAI_API_KEY": "your-api-key"
           }
         },
         "browser-use-mcp-server-docker": {
           "command": "docker",
-          "args": ["run", "--rm", "-p8000:8000", "-p5900:5900", "browser-use-mcp-server"],
+          "args": [
+            "run",
+            "--rm",
+            "-p8000:8000",
+            "-p5900:5900",
+            "browser-use-mcp-server"
+          ],
           "env": {
             "OPENAI_API_KEY": "your-api-key",
             "CHROME_PATH": "optional/path/to/chrome",

@@ -8,6 +8,7 @@
     "name": "longportapp"
   },
   "server": {
+    "type": "binary",
     "mcp_config": {
       "command": "longport-mcp",
       "args": [],
@@ -53,22 +54,35 @@
       "type": "string",
       "title": "LongPort App Key",
       "description": "Your LongPort OpenAPI App Key.",
-      "sensitive": true,
-      "required": true
+      "required": true,
+      "sensitive": true
     },
     "app_secret": {
       "type": "string",
       "title": "LongPort App Secret",
       "description": "Your LongPort OpenAPI App Secret.",
-      "sensitive": true,
-      "required": true
+      "required": true,
+      "sensitive": true
     },
     "access_token": {
       "type": "string",
       "title": "LongPort Access Token",
       "description": "Your LongPort OpenAPI Access Token.",
-      "sensitive": true,
-      "required": true
+      "required": true,
+      "sensitive": true
+    },
+    "readonly": {
+      "type": "boolean",
+      "title": "Read-only Mode",
+      "description": "If enabled, the server will be prevented from submitting orders to the exchange. The server must be restarted for this to take effect.",
+      "required": false,
+      "default": false
+    },
+    "log_dir": {
+      "type": "directory",
+      "title": "Log Directory",
+      "description": "The directory where you want to store the logs. The server must be restarted for this to take effect.",
+      "required": false
     }
   },
   "archestra_config": null,

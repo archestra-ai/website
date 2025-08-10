@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "bear-mcp-server"],
+      "args": [
+        "-y",
+        "bear-mcp-server"
+      ],
       "env": {
         "BEAR_DB_PATH": "${user_config.bear_db_path}"
       }
@@ -23,7 +26,7 @@
     "bear_db_path": {
       "type": "directory",
       "title": "Bear Database Directory",
-      "description": "The path to the Bear application's database directory. See https://bear.app/faq/where-are-bears-notes-located for details.",
+      "description": "Path to the Bear application's data directory, which contains the SQLite database.",
       "required": true,
       "default": "${HOME}/Library/Group Containers/9K33E3U3T4.net.shinyfrog.bear/Application Data"
     }
@@ -47,7 +50,9 @@
         },
         "bear-mcp-server": {
           "command": "npx",
-          "args": ["bear-mcp-server"],
+          "args": [
+            "bear-mcp-server"
+          ],
           "env": {}
         }
       }

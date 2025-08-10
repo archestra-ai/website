@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["logfire-mcp@latest"],
+      "args": [
+        "logfire-mcp@latest"
+      ],
       "env": {
         "LOGFIRE_READ_TOKEN": "${user_config.read_token}"
       }
@@ -36,52 +38,71 @@
       "mcpServers": {
         "logfire-mcp-env": {
           "command": "uvx",
-          "args": ["logfire-mcp@latest"],
+          "args": [
+            "logfire-mcp@latest"
+          ],
           "env": {
             "LOGFIRE_READ_TOKEN": "YOUR_READ_TOKEN"
           }
         },
         "logfire-mcp-flag": {
           "command": "uvx",
-          "args": ["logfire-mcp@latest", "--read-token=YOUR_READ_TOKEN"],
+          "args": [
+            "logfire-mcp@latest",
+            "--read-token=YOUR_READ_TOKEN"
+          ],
           "env": {}
         },
         "logfire-mcp-cursor": {
           "command": "uvx",
-          "args": ["logfire-mcp@latest", "--read-token=YOUR-TOKEN"],
+          "args": [
+            "logfire-mcp@latest",
+            "--read-token=YOUR-TOKEN"
+          ],
           "env": {}
         },
         "logfire-mcp-claude-desktop": {
           "command": "uvx",
-          "args": ["logfire-mcp@latest"],
+          "args": [
+            "logfire-mcp@latest"
+          ],
           "env": {
             "LOGFIRE_READ_TOKEN": "YOUR_TOKEN"
           }
         },
         "logfire-mcp-cline": {
           "command": "uvx",
-          "args": ["logfire-mcp@latest"],
+          "args": [
+            "logfire-mcp@latest"
+          ],
           "env": {
             "LOGFIRE_READ_TOKEN": "YOUR_TOKEN"
           }
         },
         "logfire-mcp-vscode": {
           "command": "uvx",
-          "args": ["logfire-mcp@latest"],
+          "args": [
+            "logfire-mcp@latest"
+          ],
           "env": {
             "LOGFIRE_READ_TOKEN": "YOUR_TOKEN"
           }
         },
         "logfire-mcp-zed": {
           "command": "uvx",
-          "args": ["logfire-mcp@latest"],
+          "args": [
+            "logfire-mcp@latest"
+          ],
           "env": {
             "LOGFIRE_READ_TOKEN": "YOUR_TOKEN"
           }
         },
         "logfire-mcp-claude-code": {
           "command": "uvx",
-          "args": ["logfire-mcp@latest", "--read-token=YOUR_TOKEN"],
+          "args": [
+            "logfire-mcp@latest",
+            "--read-token=YOUR_TOKEN"
+          ],
           "env": {}
         }
       }

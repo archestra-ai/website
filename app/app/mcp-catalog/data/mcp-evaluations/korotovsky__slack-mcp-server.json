@@ -7,29 +7,58 @@
   "author": {
     "name": "korotovsky"
   },
-  "server": {},
+  "server": {
+    "type": "node",
+    "mcp_config": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "slack-mcp-server"
+      ],
+      "env": {
+        "SLACK_OAUTH_TOKEN": "${user_config.slack_oauth_token}",
+        "SLACK_USER_TOKEN": "${user_config.slack_user_token}",
+        "SLACK_COOKIE": "${user_config.slack_cookie}",
+        "SLACK_MCP_ADD_MESSAGE_TOOL": "${user_config.add_message_tool}",
+        "HTTPS_PROXY": "${user_config.proxy_url}"
+      }
+    }
+  },
   "tools": [],
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "oauth_token": {
+    "slack_oauth_token": {
       "type": "string",
       "title": "Slack OAuth Token",
-      "description": "The secure OAuth token for accessing the Slack workspace. Required if not using Stealth Mode.",
-      "required": false,
-      "sensitive": true
+      "description": "Your Slack OAuth token (e.g., xoxb-...). Required for OAuth mode. Leave empty if using Stealth Mode.",
+      "sensitive": true,
+      "required": false
     },
-    "stealth_token": {
+    "slack_user_token": {
       "type": "string",
-      "title": "Slack Stealth Token",
-      "description": "The user token (often from a 'd' cookie) for running in stealth mode without app installation. Required if not using OAuth Mode.",
-      "required": false,
-      "sensitive": true
+      "title": "Slack User Token (Stealth Mode)",
+      "description": "Your Slack user token (e.g., xoxc-...). Required for Stealth Mode. Must be used with the Slack Cookie. Leave empty if using OAuth mode.",
+      "sensitive": true,
+      "required": false
+    },
+    "slack_cookie": {
+      "type": "string",
+      "title": "Slack 'd' Cookie (Stealth Mode)",
+      "description": "The 'd' cookie value from your Slack session. Required for Stealth Mode. Must be used with the Slack User Token. Leave empty if using OAuth mode.",
+      "sensitive": true,
+      "required": false
     },
     "add_message_tool": {
       "type": "string",
-      "title": "Enable Add Message Tool",
-      "description": "Controls the 'conversations_add_message' tool, which is disabled by default. Set to a boolean 'true' to enable for all channels, or provide a comma-separated list of channel IDs (e.g., C123ABC,C456DEF) to restrict posting to specific channels. This corresponds to the SLACK_MCP_ADD_MESSAGE_TOOL environment variable.",
+      "title": "Enable/Restrict Add Message Tool",
+      "description": "Controls the 'conversations_add_message' tool, which is disabled by default. Set to 'enabled' to allow posting, or provide a comma-separated list of channel IDs to restrict posting to specific channels.",
+      "required": false
+    },
+    "proxy_url": {
+      "type": "string",
+      "title": "Proxy URL",
+      "description": "Optional URL of a proxy server to route requests through (e.g., http://user:pass@host:port).",
       "required": false
     }
   },

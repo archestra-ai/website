@@ -8,7 +8,6 @@
     "name": "cyclops-ui"
   },
   "server": {
-    "type": "binary",
     "mcp_config": {
       "command": "mcp-cyclops",
       "args": [],
@@ -28,32 +27,32 @@
     "kubeconfig_path": {
       "type": "file",
       "title": "Kubeconfig Path",
-      "description": "Path to your kubeconfig file. If not provided, the server will use the in-cluster config or the default path ($HOME/.kube/config).",
+      "description": "Path to kubeconfig file (optional, defaults to in-cluster config or $HOME/.kube/config)",
       "required": false,
       "default": "${HOME}/.kube/config"
     },
     "kube_context": {
       "type": "string",
       "title": "Kubernetes Context",
-      "description": "The Kubernetes context to use.",
+      "description": "Kubernetes context to use (optional)",
       "required": false
     },
     "module_namespace": {
       "type": "string",
       "title": "Module Namespace",
-      "description": "The namespace where Cyclops modules are stored.",
+      "description": "Namespace where modules are stored",
       "required": false
     },
     "helm_release_namespace": {
       "type": "string",
       "title": "Helm Release Namespace",
-      "description": "The namespace for Helm releases created by the modules.",
+      "description": "Namespace for Helm releases",
       "required": false
     },
     "module_target_namespace": {
       "type": "string",
       "title": "Module Target Namespace",
-      "description": "The target namespace where module resources will be deployed.",
+      "description": "Target namespace for modules",
       "required": false
     }
   },

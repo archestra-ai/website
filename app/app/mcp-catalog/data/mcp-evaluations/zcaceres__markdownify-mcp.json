@@ -10,10 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
       "env": {
-        "UV_PATH": "${user_config.uv_path}",
-        "MD_SHARE_DIR": "${user_config.md_share_dir}"
+        "UV_PATH": "${user_config.UV_PATH}",
+        "MD_SHARE_DIR": "${user_config.MD_SHARE_DIR}"
       }
     }
   },
@@ -21,16 +23,16 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "uv_path": {
-      "type": "file",
-      "title": "UV Executable Path",
-      "description": "Optional path to the 'uv' executable. If not set, the server will use the default install location.",
+    "UV_PATH": {
+      "type": "directory",
+      "title": "UV Path",
+      "description": "Path to the directory containing the 'uv' executable. If not set, the server will use the default install location.",
       "required": false
     },
-    "md_share_dir": {
+    "MD_SHARE_DIR": {
       "type": "directory",
       "title": "Markdown Share Directory",
-      "description": "Optional. Restricts the directory from which the 'get-markdown-file' tool can retrieve files.",
+      "description": "Optional. Restrict the directory from which the 'get-markdown-file' tool can retrieve files.",
       "required": false
     }
   },
@@ -42,19 +44,26 @@
       "mcpServers": {
         "markdownify-mcp": {
           "command": "pnpm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "markdownify": {
           "command": "node",
-          "args": ["{ABSOLUTE PATH TO FILE HERE}/dist/index.js"],
+          "args": [
+            "{ABSOLUTE PATH TO FILE HERE}/dist/index.js"
+          ],
           "env": {
             "UV_PATH": "/path/to/uv"
           }
         },
         "markdownify-mcp-with-config": {
           "command": "pnpm",
-          "args": ["run", "start"],
+          "args": [
+            "run",
+            "start"
+          ],
           "env": {
             "MD_SHARE_DIR": "[SOME_PATH]"
           }

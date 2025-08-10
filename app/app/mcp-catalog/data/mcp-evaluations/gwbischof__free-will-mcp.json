@@ -8,11 +8,13 @@
     "name": "gwbischof"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/gwbischof/free-will-mcp@v0.3",
+        "free-will-mcp"
+      ],
       "env": {}
     }
   },
@@ -28,27 +30,47 @@
       "mcpServers": {
         "free-will": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/gwbischof/free-will-mcp@v0.3", "free-will-mcp"],
+          "args": [
+            "--from",
+            "git+https://github.com/gwbischof/free-will-mcp@v0.3",
+            "free-will-mcp"
+          ],
           "env": {}
         },
         "free-will-local-clone": {
           "command": "uv",
-          "args": ["run", "python", "server.py"],
+          "args": [
+            "run",
+            "python",
+            "server.py"
+          ],
           "env": {}
         },
         "free-will-mcp-direct-python": {
           "command": "uv",
-          "args": ["run", "python", "server.py"],
+          "args": [
+            "run",
+            "python",
+            "server.py"
+          ],
           "env": {}
         },
         "free-will-mcp-uv-run": {
           "command": "uv",
-          "args": ["run", "free-will-mcp"],
+          "args": [
+            "run",
+            "free-will-mcp"
+          ],
           "env": {}
         },
         "mcp-dev-inspector": {
           "command": "uv",
-          "args": ["run", "mcp", "dev", "server.py"],
+          "args": [
+            "run",
+            "mcp",
+            "dev",
+            "server.py"
+          ],
           "env": {}
         }
       }
@@ -74,7 +96,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:59:18.167Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

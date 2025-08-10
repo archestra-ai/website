@@ -9,15 +9,17 @@
   },
   "server": {
     "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "MCP-Geo", "run", "geo.py"],
+      "command": "python",
+      "args": [
+        "geo.py"
+      ],
       "env": {
-        "GEOCODER_PROVIDER": "${user_config.geocoder_provider}",
-        "NOMINATIM_URL": "${user_config.nominatim_url}",
-        "SCHEME": "${user_config.scheme}",
-        "ARC_USERNAME": "${user_config.arc_username}",
-        "ARC_PASSWORD": "${user_config.arc_password}",
-        "BING_API_KEY": "${user_config.bing_api_key}"
+        "GEOCODER_PROVIDER": "${user_config.GEOCODER_PROVIDER}",
+        "NOMINATIM_URL": "${user_config.NOMINATIM_URL}",
+        "SCHEME": "${user_config.SCHEME}",
+        "ARC_USERNAME": "${user_config.ARC_USERNAME}",
+        "ARC_PASSWORD": "${user_config.ARC_PASSWORD}",
+        "BING_API_KEY": "${user_config.BING_API_KEY}"
       }
     }
   },
@@ -25,44 +27,44 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "geocoder_provider": {
+    "GEOCODER_PROVIDER": {
       "type": "string",
       "title": "Geocoder Provider",
-      "description": "The geocoding service to use. Supported values are \"nominatim\", \"arcgis\", or \"bing\".",
+      "description": "The geocoding service to use. Can be \"nominatim\", \"arcgis\", or \"bing\".",
       "required": false,
       "default": "nominatim"
     },
-    "nominatim_url": {
+    "NOMINATIM_URL": {
       "type": "string",
       "title": "Nominatim URL",
       "description": "The domain for the Nominatim service. Only used if the provider is 'nominatim'.",
       "required": false,
       "default": "nominatim.openstreetmap.org"
     },
-    "scheme": {
+    "SCHEME": {
       "type": "string",
-      "title": "URL Scheme",
-      "description": "The URL scheme to use for the geocoding service (e.g., http or https).",
+      "title": "Scheme",
+      "description": "The protocol scheme (http or https) to use for the geocoding service.",
       "required": false,
       "default": "http"
     },
-    "arc_username": {
+    "ARC_USERNAME": {
       "type": "string",
       "title": "ArcGIS Username",
-      "description": "Your username for the ArcGIS service. Used when the provider is 'arcgis'.",
+      "description": "Username for the ArcGIS service. Required if the provider is 'arcgis'.",
       "required": false
     },
-    "arc_password": {
+    "ARC_PASSWORD": {
       "type": "string",
       "title": "ArcGIS Password",
-      "description": "Your password for the ArcGIS service. Used when the provider is 'arcgis'.",
+      "description": "Password for the ArcGIS service. Required if the provider is 'arcgis'.",
       "required": false,
       "sensitive": true
     },
-    "bing_api_key": {
+    "BING_API_KEY": {
       "type": "string",
-      "title": "Bing Maps API Key",
-      "description": "Your API key for the Bing Maps service. This is required when the provider is 'bing'.",
+      "title": "Bing API Key",
+      "description": "API key for the Bing Maps service. Required if the provider is 'bing'.",
       "required": false,
       "sensitive": true
     }
@@ -75,7 +77,12 @@
       "mcpServers": {
         "mcp-geo": {
           "command": "uv",
-          "args": ["--directory", "MCP-Geo", "run", "geo.py"],
+          "args": [
+            "--directory",
+            "MCP-Geo",
+            "run",
+            "geo.py"
+          ],
           "env": {
             "NOMINATIM_URL": "${NOMINATIM_URL}",
             "SCHEME": "http",

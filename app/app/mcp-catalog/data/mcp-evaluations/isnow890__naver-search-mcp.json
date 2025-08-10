@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@isnow890/naver-search-mcp"],
+      "args": [
+        "-y",
+        "@isnow890/naver-search-mcp"
+      ],
       "env": {
         "NAVER_CLIENT_ID": "${user_config.naver_client_id}",
         "NAVER_CLIENT_SECRET": "${user_config.naver_client_secret}"
@@ -24,14 +27,14 @@
     "naver_client_id": {
       "type": "string",
       "title": "Naver Client ID",
-      "description": "Your Client ID from the Naver Developers portal.",
+      "description": "Your Naver Developers API Client ID.",
       "required": true,
       "sensitive": false
     },
     "naver_client_secret": {
       "type": "string",
       "title": "Naver Client Secret",
-      "description": "Your Client Secret from the Naver Developers portal.",
+      "description": "Your Naver Developers API Client Secret.",
       "required": true,
       "sensitive": true
     }
@@ -44,7 +47,9 @@
       "mcpServers": {
         "isnow890-naver-search-mcp": {
           "command": "npx",
-          "args": ["@isnow890/naver-search-mcp"],
+          "args": [
+            "@isnow890/naver-search-mcp"
+          ],
           "env": {
             "NAVER_CLIENT_ID": "your_client_id",
             "NAVER_CLIENT_SECRET": "your_client_secret"
@@ -52,7 +57,10 @@
         },
         "isnow890-naver-search-mcp-configured": {
           "command": "npx",
-          "args": ["-y", "@isnow890/naver-search-mcp"],
+          "args": [
+            "-y",
+            "@isnow890/naver-search-mcp"
+          ],
           "env": {
             "NAVER_CLIENT_ID": "your_client_id",
             "NAVER_CLIENT_SECRET": "your_client_secret"

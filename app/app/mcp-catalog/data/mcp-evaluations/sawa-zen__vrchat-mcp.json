@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["vrchat-mcp"],
+      "args": [
+        "vrchat-mcp"
+      ],
       "env": {
         "VRCHAT_USERNAME": "${user_config.username}",
         "VRCHAT_AUTH_TOKEN": "${user_config.auth_token}"
@@ -25,13 +27,12 @@
       "type": "string",
       "title": "VRChat Username",
       "description": "Your VRChat username for authentication.",
-      "required": true,
-      "sensitive": false
+      "required": true
     },
     "auth_token": {
       "type": "string",
       "title": "VRChat Auth Token",
-      "description": "Your VRChat authentication token. Please handle with care as it has a very long lifetime.",
+      "description": "Your VRChat authentication token. You can obtain this using the 'npx vrchat-auth-token-checker' command.",
       "required": true,
       "sensitive": true
     }
@@ -44,7 +45,9 @@
       "mcpServers": {
         "vrchat-mcp": {
           "command": "npx",
-          "args": ["vrchat-mcp"],
+          "args": [
+            "vrchat-mcp"
+          ],
           "env": {
             "VRCHAT_USERNAME": "your_username",
             "VRCHAT_AUTH_TOKEN": "your_auth_token"
@@ -52,7 +55,9 @@
         },
         "vrchat-mcp-configured": {
           "command": "npx",
-          "args": ["vrchat-mcp"],
+          "args": [
+            "vrchat-mcp"
+          ],
           "env": {
             "VRCHAT_USERNAME": "your-username",
             "VRCHAT_AUTH_TOKEN": "your-auth-token"
@@ -60,7 +65,9 @@
         },
         "vrchat-mcp-stdio": {
           "command": "node",
-          "args": ["./dist/main.js"],
+          "args": [
+            "./dist/main.js"
+          ],
           "env": {
             "VRCHAT_USERNAME": "your_username",
             "VRCHAT_AUTH_TOKEN": "your_auth_token"

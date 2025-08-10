@@ -10,9 +10,16 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["run", "--with", "fastmcp", "fastmcp", "run", "${__dirname}/server.py"],
+      "args": [
+        "run",
+        "--with",
+        "fastmcp",
+        "fastmcp",
+        "run",
+        "${__dirname}/server.py"
+      ],
       "env": {
-        "UNSPLASH_ACCESS_KEY": "${user_config.UNSPLASH_ACCESS_KEY}"
+        "UNSPLASH_ACCESS_KEY": "${user_config.unsplash_access_key}"
       }
     }
   },
@@ -20,7 +27,7 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "UNSPLASH_ACCESS_KEY": {
+    "unsplash_access_key": {
       "type": "string",
       "title": "Unsplash Access Key",
       "description": "Your Unsplash API Access Key. Create a developer account at https://unsplash.com/developers to get one.",
@@ -36,7 +43,14 @@
       "mcpServers": {
         "unsplash-mcp-server": {
           "command": "uv",
-          "args": ["run", "--with", "fastmcp", "fastmcp", "run", "./server.py"],
+          "args": [
+            "run",
+            "--with",
+            "fastmcp",
+            "fastmcp",
+            "run",
+            "./server.py"
+          ],
           "env": {
             "UNSPLASH_ACCESS_KEY": "${YOUR_ACCESS_KEY}"
           }

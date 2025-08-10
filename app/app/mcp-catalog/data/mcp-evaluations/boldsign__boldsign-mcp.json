@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@boldsign/mcp"],
+      "args": [
+        "-y",
+        "@boldsign/mcp"
+      ],
       "env": {
         "BOLDSIGN_API_KEY": "${user_config.boldsign_api_key}",
         "BOLDSIGN_API_REGION": "${user_config.boldsign_api_region}"
@@ -31,7 +34,7 @@
     "boldsign_api_region": {
       "type": "string",
       "title": "BoldSign API Region",
-      "description": "The region of your BoldSign account (US, EU, or CA).",
+      "description": "The region of your BoldSign account. Valid options are US, EU, or CA.",
       "required": false,
       "default": "US"
     }
@@ -44,7 +47,10 @@
       "mcpServers": {
         "boldsign-mcp": {
           "command": "npx",
-          "args": ["-y", "@boldsign/mcp"],
+          "args": [
+            "-y",
+            "@boldsign/mcp"
+          ],
           "env": {
             "BOLDSIGN_API_KEY": "YOUR_BOLDSIGN_API_KEY",
             "BOLDSIGN_API_REGION": "US"

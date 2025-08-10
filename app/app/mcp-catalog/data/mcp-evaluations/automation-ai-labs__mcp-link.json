@@ -10,7 +10,15 @@
   "server": {
     "mcp_config": {
       "command": "go",
-      "args": ["run", "main.go", "serve", "--port", "${user_config.port}", "--host", "${user_config.host}"],
+      "args": [
+        "run",
+        "main.go",
+        "serve",
+        "--port",
+        "${user_config.port}",
+        "--host",
+        "${user_config.host}"
+      ],
       "env": {}
     }
   },
@@ -21,16 +29,40 @@
     "port": {
       "type": "number",
       "title": "Server Port",
-      "description": "The port for the MCP server to listen on.",
-      "required": false,
+      "description": "The port to run the MCP Link server on.",
+      "required": true,
       "default": 8080
     },
     "host": {
       "type": "string",
       "title": "Server Host",
-      "description": "The host address for the MCP server to bind to.",
-      "required": false,
+      "description": "The host address to bind the MCP Link server to.",
+      "required": true,
       "default": "0.0.0.0"
+    },
+    "openapi_spec_url": {
+      "type": "string",
+      "title": "OpenAPI Specification URL",
+      "description": "URL of the OpenAPI specification file. Corresponds to the 's' query parameter.",
+      "required": true
+    },
+    "api_base_url": {
+      "type": "string",
+      "title": "Target API Base URL",
+      "description": "Base URL of the target API. Corresponds to the 'u' query parameter.",
+      "required": true
+    },
+    "auth_header": {
+      "type": "string",
+      "title": "Authentication Header Format",
+      "description": "Authentication header format, in the format of 'header-name:value-prefix'. Corresponds to the 'h' query parameter.",
+      "required": false
+    },
+    "path_filter": {
+      "type": "string",
+      "title": "Path Filter Expressions",
+      "description": "Path filter expressions to include or exclude API endpoints. Corresponds to the 'f' query parameter.",
+      "required": false
     }
   },
   "readme": "# MCP Link - Convert Any OpenAPI V3 API to MCP Server\n\n[![Join our Discord](https://img.shields.io/discord/1234567890?color=7289da&label=Discord&logo=discord&logoColor=white)](https://discord.gg/qkzfbqdSa9)\n\n## 🧩 Architecture\n\n![MCP Link](assets/diagrams.png)\n\n## 🤔 Why MCP Link?\n\nThere is a notable gap in the current AI Agent ecosystem:\n\n- Most MCP Servers are simple wrappers around Web APIs\n- Functionality interfaces may not be complete, depending on developer implementation\n- Manual creation of MCP interfaces is time-consuming and error-prone\n- Lack of standardized conversion processes\n\nMCP Link solves these issues through automation and standardization, allowing any API to easily join the AI-driven application ecosystem.\n\n\n## 🌟 Key Features\n\n- **Automatic Conversion**: Generate complete MCP Servers based on OpenAPI Schema\n- **Seamless Integration**: Make existing RESTful APIs immediately compatible with AI Agent calling standards\n- **Complete Functionality**: Ensure all API endpoints and features are correctly mapped\n- **Zero Code Modification**: Obtain MCP compatibility without modifying the original API implementation\n- **Open Standard**: Follow the MCP specification to ensure compatibility with various AI Agent frameworks\n\n\n## 🌐 Online Version\n\nTry our hosted version at [mcp-link.vercel.app](https://mcp-link.vercel.app) to quickly convert and test your APIs without installation.\n\n\n## 🚀 Quick Start\n\n### Installation\n\n```bash\n# Clone repository\ngit clone https://github.com/automation-ai-labs/mcp-link.git\ncd mcp-openapi-to-mcp-adapter\n\n# Install dependencies\ngo mod download\n```\n\n### Running\n\n```bash\n# Specify port\ngo run main.go serve --port 8080 --host 0.0.0.0\n```\n\n\n### Parameter Description\n\n- `s=` - URL of the OpenAPI specification file\n- `u=` - Base URL of the target API\n- `h=` - Authentication header format, in the format of `header-name:value-prefix`\n- `f=` - Path filter expressions to include or exclude API endpoints. Syntax:\n  - `+/path/**` - Include all endpoints under /path/\n  - `-/path/**` - Exclude all endpoints under /path/\n  - `+/users/*:GET` - Include only GET endpoints for /users/{id}\n  - Multiple filters can be separated by semicolons: `+/**:GET;-/internal/**`\n  - Wildcards: `*` matches any single path segment, `**` matches zero or more segments\n\n### Examples\n| _ | API | MCP Link URL | Authentication Method |\n|------|-----|-------------|---------|\n| ![Brave](https://img.logo.dev/brave.com) | Brave Search | https://mcp-link.vercel.app/links/brave | API Key |\n| ![DuckDuckGo](https://img.logo.dev/duckduckgo.com) | DuckDuckGo | https://mcp-link.vercel.app/links/duckduckgo | None |\n| ![Figma](https://img.logo.dev/figma.com) | Figma | https://mcp-link.vercel.app/links/figma | API Token |\n| ![GitHub](https://img.logo.dev/github.com) | GitHub | https://mcp-link.vercel.app/links/github | Bearer Token |\n| ![Home Assistant](https://img.logo.dev/home-assistant.io) | Home Assistant | https://mcp-link.vercel.app/links/homeassistant | Bearer Token |\n| ![Notion](https://img.logo.dev/notion.so) | Notion | https://mcp-link.vercel.app/links/notion | Bearer Token |\n| ![Slack](https://img.logo.dev/slack.com) | Slack | https://mcp-link.vercel.app/links/slack | Bearer Token |\n| ![Stripe](https://img.logo.dev/stripe.com) | Stripe | https://mcp-link.vercel.app/links/stripe | Bearer Token |\n| ![TMDB](https://img.logo.dev/themoviedb.org) | TMDB | https://mcp-link.vercel.app/links/tmdb | Bearer Token |\n| ![YouTube](https://img.logo.dev/youtube.com) | YouTube | https://mcp-link.vercel.app/links/youtube | Bearer Token |\n\n### Usage in AI Agents\n\n```json\n{\n  \"mcpServers\": {\n    \"@service-name\": {\n      \"url\": \"http://localhost:8080/sse?s=[OpenAPI-Spec-URL]&u=[API-Base-URL]&h=[Auth-Header]:[Value-Prefix]\"\n    }\n  }\n}\n```\n\nThese URLs allow any API with an OpenAPI specification to be immediately converted into an MCP-compatible interface accessible to AI Agents.\n\n## 📋 Future Development\n\n- **MCP Protocol OAuthflow**: Implement OAuth authentication flow support for MCP Protocol\n- **Resources Support**: Add capability to handle resource-based API interactions\n- **MIME Types**: Enhance support for various MIME types in API requests and responses\n",
@@ -41,7 +73,15 @@
       "mcpServers": {
         "mcp-openapi-to-mcp-adapter": {
           "command": "go",
-          "args": ["run", "main.go", "serve", "--port", "8080", "--host", "0.0.0.0"],
+          "args": [
+            "run",
+            "main.go",
+            "serve",
+            "--port",
+            "8080",
+            "--host",
+            "0.0.0.0"
+          ],
           "env": {}
         }
       }

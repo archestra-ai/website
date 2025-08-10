@@ -8,15 +8,16 @@
     "name": "vespo92"
   },
   "server": {
-    "type": "node",
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
       "env": {
         "OPNSENSE_HOST": "${user_config.opnsense_host}",
-        "OPNSENSE_API_KEY": "${user_config.api_key}",
-        "OPNSENSE_API_SECRET": "${user_config.api_secret}",
-        "OPNSENSE_VERIFY_SSL": "${user_config.verify_ssl}",
+        "OPNSENSE_API_KEY": "${user_config.opnsense_api_key}",
+        "OPNSENSE_API_SECRET": "${user_config.opnsense_api_secret}",
+        "OPNSENSE_VERIFY_SSL": "${user_config.opnsense_verify_ssl}",
         "IAC_ENABLED": "${user_config.iac_enabled}",
         "ENABLE_CACHE": "${user_config.enable_cache}",
         "REDIS_HOST": "${user_config.redis_host}",
@@ -32,39 +33,40 @@
       "type": "string",
       "title": "OPNsense Host",
       "description": "The hostname or IP address of your OPNsense firewall (e.g., https://192.168.1.1 or 192.168.1.1:55443).",
-      "required": true
+      "required": true,
+      "sensitive": false
     },
-    "api_key": {
+    "opnsense_api_key": {
       "type": "string",
       "title": "OPNsense API Key",
-      "description": "Your OPNsense API key.",
+      "description": "The API key generated in the OPNsense UI for an authorized user.",
       "required": true,
       "sensitive": true
     },
-    "api_secret": {
+    "opnsense_api_secret": {
       "type": "string",
       "title": "OPNsense API Secret",
-      "description": "Your OPNsense API secret.",
+      "description": "The API secret corresponding to the provided API key.",
       "required": true,
       "sensitive": true
     },
-    "verify_ssl": {
+    "opnsense_verify_ssl": {
       "type": "boolean",
-      "title": "Verify SSL Certificate",
-      "description": "Verify the SSL certificate of the OPNsense host. Disable for self-signed certificates.",
+      "title": "Verify OPNsense SSL Certificate",
+      "description": "Verify the SSL certificate of the OPNsense host. Disable if you are using a self-signed certificate.",
       "required": false,
       "default": true
     },
     "iac_enabled": {
       "type": "boolean",
-      "title": "Enable IaC",
-      "description": "Enable Infrastructure as Code capabilities.",
+      "title": "Enable IaC Features",
+      "description": "Enable Infrastructure as Code capabilities for declarative management.",
       "required": false,
       "default": true
     },
     "enable_cache": {
       "type": "boolean",
-      "title": "Enable Cache",
+      "title": "Enable Caching",
       "description": "Enable caching with Redis or PostgreSQL for improved performance.",
       "required": false,
       "default": false
@@ -72,14 +74,14 @@
     "redis_host": {
       "type": "string",
       "title": "Redis Host",
-      "description": "Hostname for the Redis cache server. Only used if caching is enabled.",
+      "description": "Hostname for the Redis cache server (only used if caching is enabled).",
       "required": false,
       "default": "localhost"
     },
     "postgres_host": {
       "type": "string",
       "title": "PostgreSQL Host",
-      "description": "Hostname for the PostgreSQL persistent cache server. Only used if caching is enabled.",
+      "description": "Hostname for the PostgreSQL persistent cache server (only used if caching is enabled).",
       "required": false,
       "default": "localhost"
     }
@@ -92,22 +94,35 @@
       "mcpServers": {
         "opnsense-mcp-stdio": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "opnsense-mcp-sse": {
           "command": "npm",
-          "args": ["run", "start:sse"],
+          "args": [
+            "run",
+            "start:sse"
+          ],
           "env": {}
         },
         "opnsense-mcp-sse-port-8080": {
           "command": "npm",
-          "args": ["run", "start:sse", "--", "--port", "8080"],
+          "args": [
+            "run",
+            "start:sse",
+            "--",
+            "--port",
+            "8080"
+          ],
           "env": {}
         },
         "opnsense-mcp-claude-desktop-configured": {
           "command": "node",
-          "args": ["dist/index.js"],
+          "args": [
+            "dist/index.js"
+          ],
           "env": {
             "OPNSENSE_HOST": "https://192.168.1.1:55443",
             "OPNSENSE_API_KEY": "your_api_key",

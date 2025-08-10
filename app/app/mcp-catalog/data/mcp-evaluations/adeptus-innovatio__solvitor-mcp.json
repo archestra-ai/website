@@ -23,7 +23,7 @@
     "solvitor_api_key": {
       "type": "string",
       "title": "Solvitor API Key",
-      "description": "Your API key for the Solvitor service. Obtain one for free at https://solvitor.xyz/developer-settings",
+      "description": "Your Solvitor API key. Obtain one for free at https://solvitor.xyz/developer-settings",
       "required": true,
       "sensitive": true
     }

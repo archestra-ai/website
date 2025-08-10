@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@last9/mcp-server"],
+      "args": [
+        "-y",
+        "@last9/mcp-server"
+      ],
       "env": {
         "LAST9_BASE_URL": "${user_config.last9_base_url}",
         "LAST9_AUTH_TOKEN": "${user_config.last9_auth_token}",
@@ -51,7 +54,10 @@
       "mcpServers": {
         "last9-mcp-server": {
           "command": "npx",
-          "args": ["-y", "@last9/mcp-server"],
+          "args": [
+            "-y",
+            "@last9/mcp-server"
+          ],
           "env": {}
         },
         "last9-mcp-configured": {

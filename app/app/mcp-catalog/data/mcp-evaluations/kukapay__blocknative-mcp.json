@@ -10,9 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["run", "blocknative-mcp"],
+      "args": [
+        "run",
+        "blocknative-mcp"
+      ],
       "env": {
-        "BLOCKNATIVE_API_KEY": "${user_config.blocknative_api_key}"
+        "BLOCKNATIVE_API_KEY": "${user_config.api_key}"
       }
     }
   },
@@ -20,10 +23,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "blocknative_api_key": {
+    "api_key": {
       "type": "string",
       "title": "Blocknative API Key",
-      "description": "Optional API key for high-frequency access. For low-frequency access, this can be left blank.",
+      "description": "Optional API key required for high-frequency API access. Low-frequency use does not require a key. Sign up at Blocknative to obtain a free API key.",
       "required": false,
       "sensitive": true
     }
@@ -36,12 +39,20 @@
       "mcpServers": {
         "blocknative-mcp-dev": {
           "command": "uv",
-          "args": ["run", "mcp", "dev", "blocknative-mcp"],
+          "args": [
+            "run",
+            "mcp",
+            "dev",
+            "blocknative-mcp"
+          ],
           "env": {}
         },
         "blocknative-mcp": {
           "command": "uv",
-          "args": ["run", "blocknative-mcp"],
+          "args": [
+            "run",
+            "blocknative-mcp"
+          ],
           "env": {}
         }
       }

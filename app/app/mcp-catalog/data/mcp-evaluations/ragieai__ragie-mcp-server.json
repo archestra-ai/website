@@ -37,13 +37,13 @@
     "partition_id": {
       "type": "string",
       "title": "Ragie Partition ID",
-      "description": "Specify the Ragie partition ID to query. This is optional.",
+      "description": "Specify the Ragie partition ID to query (optional).",
       "required": false
     },
     "tool_description": {
       "type": "string",
       "title": "Custom Tool Description",
-      "description": "Override the default tool description with custom text. This is optional.",
+      "description": "Override the default tool description with custom text (optional).",
       "required": false
     }
   },
@@ -55,21 +55,31 @@
       "mcpServers": {
         "ragieai-mcp-server-basic": {
           "command": "npx",
-          "args": ["@ragieai/mcp-server"],
+          "args": [
+            "@ragieai/mcp-server"
+          ],
           "env": {
             "RAGIE_API_KEY": "your_api_key"
           }
         },
         "ragieai-mcp-server-with-description": {
           "command": "npx",
-          "args": ["@ragieai/mcp-server", "--description", "Search the company knowledge base for information"],
+          "args": [
+            "@ragieai/mcp-server",
+            "--description",
+            "Search the company knowledge base for information"
+          ],
           "env": {
             "RAGIE_API_KEY": "your_api_key"
           }
         },
         "ragieai-mcp-server-with-partition": {
           "command": "npx",
-          "args": ["@ragieai/mcp-server", "--partition", "your_partition_id"],
+          "args": [
+            "@ragieai/mcp-server",
+            "--partition",
+            "your_partition_id"
+          ],
           "env": {
             "RAGIE_API_KEY": "your_api_key"
           }
@@ -89,14 +99,25 @@
         },
         "ragieai-mcp-server-configured": {
           "command": "npx",
-          "args": ["-y", "@ragieai/mcp-server", "--partition", "optional_partition_id"],
+          "args": [
+            "-y",
+            "@ragieai/mcp-server",
+            "--partition",
+            "optional_partition_id"
+          ],
           "env": {
             "RAGIE_API_KEY": "your_api_key"
           }
         },
         "ragieai-mcp-server-dev": {
           "command": "npm",
-          "args": ["run", "dev", "--", "--partition", "optional_partition_id"],
+          "args": [
+            "run",
+            "dev",
+            "--",
+            "--partition",
+            "optional_partition_id"
+          ],
           "env": {
             "RAGIE_API_KEY": "your_api_key"
           }

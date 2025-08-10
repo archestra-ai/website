@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["cli-mcp-server"],
+      "args": [
+        "cli-mcp-server"
+      ],
       "env": {
         "ALLOWED_DIR": "${user_config.ALLOWED_DIR}",
         "ALLOWED_COMMANDS": "${user_config.ALLOWED_COMMANDS}",
@@ -76,7 +78,12 @@
       "mcpServers": {
         "cli-mcp-server-dev": {
           "command": "uv",
-          "args": ["--directory", "<path/to/the/repo>/cli-mcp-server", "run", "cli-mcp-server"],
+          "args": [
+            "--directory",
+            "<path/to/the/repo>/cli-mcp-server",
+            "run",
+            "cli-mcp-server"
+          ],
           "env": {
             "ALLOWED_DIR": "</your/desired/dir>",
             "ALLOWED_COMMANDS": "ls,cat,pwd,echo",
@@ -88,7 +95,9 @@
         },
         "cli-mcp-server-published": {
           "command": "uvx",
-          "args": ["cli-mcp-server"],
+          "args": [
+            "cli-mcp-server"
+          ],
           "env": {
             "ALLOWED_DIR": "</your/desired/dir>",
             "ALLOWED_COMMANDS": "ls,cat,pwd,echo",

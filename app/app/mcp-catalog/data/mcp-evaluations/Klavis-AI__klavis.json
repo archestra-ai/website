@@ -1,0 +1,88 @@
+{
+  "dxt_version": "1.0.0",
+  "version": "1.0.0",
+  "name": "klavis-ai__klavis__mcp_servers__youtube",
+  "display_name": "youtube",
+  "description": "Klavis AI (YC X25):  Open Source MCP integration for AI applications",
+  "author": {
+    "name": "Klavis-AI"
+  },
+  "server": {
+    "mcp_config": {
+      "command": "python",
+      "args": [
+        "${__dirname}/server.py"
+      ],
+      "env": {
+        "YOUTUBE_API_KEY": "${user_config.youtube_api_key}",
+        "YOUTUBE_MCP_SERVER_PORT": "${user_config.port}",
+        "WEBSHARE_PROXY_USERNAME": "${user_config.proxy_username}",
+        "WEBSHARE_PROXY_PASSWORD": "${user_config.proxy_password}"
+      }
+    }
+  },
+  "readme": "# YouTube MCP Server\n\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n\nA Model Context Protocol (MCP) server that retrieves transcripts/subtitles for a given YouTube video and provides video details when transcripts are unavailable.\n\nThis server utilizes the `FastMCP` framework for handling MCP requests and the YouTube API.\n\n## Features\n\n*   Provides a simple MCP endpoint to get YouTube video transcripts.\n*   Accepts a YouTube video URL as input.\n*   Returns the transcript/subtitles when available.\n*   Falls back to video details when transcript is unavailable.\n*   Supports proxy configuration for transcript retrieval.\n*   Built with Python using `FastMCP`.\n*   Can be run easily using Docker or a standard Python environment.\n\n## Environment Variables\n\nThe following environment variables are used by the server:\n\n*   **Required**:\n    *   `YOUTUBE_API_KEY`: Your YouTube Data API key (required for fetching video details).\n\n*   **Optional**:\n    *   `YOUTUBE_MCP_SERVER_PORT`: Port for the MCP server (defaults to 5000).\n    *   `WEBSHARE_PROXY_USERNAME`: Username for Webshare proxy (optional, for circumventing regional restrictions).\n    *   `WEBSHARE_PROXY_PASSWORD`: Password for Webshare proxy (optional, for circumventing regional restrictions).\n\nFor more information on using Webshare with YouTube Transcript API, refer to: [YouTube Transcript API - Using Webshare](https://github.com/jdepoix/youtube-transcript-api?tab=readme-ov-file#using-webshare)\n\n## Running Locally\n\nYou can run this server locally using either Docker (recommended) or a Python virtual environment. The instructions assume you are in the root directory of the `klavis` project (the parent directory of `mcp_servers`).\n\n### Prerequisites\n\n*   **Docker:** If using the Docker method.\n*   **Python:** Python 3.11+ if using the virtual environment method.\n*   **`.env` File:** Create a file named `.env` in the root of the `klavis` project directory with the required environment variables.\n    ```bash\n    # Required\n    YOUTUBE_API_KEY=your_youtube_api_key_here\n    \n    # Optional\n    YOUTUBE_MCP_SERVER_PORT=5000\n    WEBSHARE_PROXY_USERNAME=your_proxy_username\n    WEBSHARE_PROXY_PASSWORD=your_proxy_password\n    ```\n\n### Using Docker (Recommended)\n\n1.  **Build the Docker Image:**\n    Open your terminal in the `mcp_servers/youtube` directory and run:\n    ```bash\n    docker build -t youtube-mcp-server .\n    ```\n    *   `-t youtube-mcp-server`: Assigns a tag (name) to the image.\n    *   `.`: Specifies the build context (the current directory, `mcp_servers/youtube`).\n\n2.  **Run the Docker Container:**\n    ```bash\n    docker run -p 5000:5000 --env-file .env youtube-mcp-server\n    ```\n    *   `-p 5000:5000`: Maps port 5000 on your host machine to port 5000 inside the container (where the server listens).\n    *   `--env-file .env`: Provides the environment variables from your `.env` file to the container.\n    *   `youtube-mcp-server`: The name of the image to run.\n\nThe server should now be running and accessible at `http://localhost:5000`.\n\n### Using Python Virtual Environment\n\n1.  **Navigate to Project Root:**\n    Ensure your terminal is in the root directory of the `klavis` project.\n\n2.  **Create Virtual Environment:**\n    ```bash\n    python -m venv venv\n    ```\n\n3.  **Activate Virtual Environment:**\n    *   **Linux/macOS:** `source venv/bin/activate`\n    *   **Windows:** `venv\\Scripts\\activate`\n\n4.  **Install Dependencies:**\n    The server relies on packages listed in `requirements.txt`:\n    ```bash\n    pip install -r mcp_servers/youtube/requirements.txt\n    ```\n\n5.  **Create `.env` File:**\n    Ensure you have created the `.env` file in the `klavis` root directory as mentioned in the prerequisites.\n\n6.  **Run the Server:**\n    ```bash\n    python mcp_servers/youtube/server.py\n    ```\n\nThe server should now be running and accessible at `http://localhost:5000`.\n\n## Usage\n\nOnce the server is running (either via Docker or Python environment), it listens for MCP requests on port 5000.\n\nYou can interact with it using an MCP client or tool. The available tool is:\n\n* `get_youtube_video_transcript`:\n  * **Description:** Retrieve the transcript/subtitles for a given YouTube video. When transcripts are unavailable, it will automatically fall back to fetching video details.\n  * **Input Parameter:** `url` (string) - The URL of the YouTube video (e.g., https://www.youtube.com/watch?v=dQw4w9WgXcQ).\n  * **Returns:** (Dict) - Contains the transcript data when available, or video details with an error message when transcript is unavailable.\n  * **Supported URL Formats:**\n    * Standard: `youtube.com/watch?v=VIDEO_ID`\n    * Short: `youtu.be/VIDEO_ID`\n    * Embedded: `youtube.com/embed/VIDEO_ID`\n    * Shorts: `youtube.com/shorts/VIDEO_ID`",
+  "category": null,
+  "quality_score": null,
+  "programming_language": "Python",
+  "framework": null,
+  "github_info": {
+    "owner": "Klavis-AI",
+    "repo": "klavis",
+    "url": "https://github.com/Klavis-AI/klavis/tree/main/mcp_servers/youtube",
+    "name": "klavis-ai__klavis__mcp_servers__youtube",
+    "path": "mcp_servers/youtube",
+    "stars": 3882,
+    "contributors": 14,
+    "issues": 16,
+    "releases": true,
+    "ci_cd": true,
+    "latest_commit_hash": "d10c4c5d957c43c5db867c20e6925d143f83bc39"
+  },
+  "protocol_features": {
+    "implementing_tools": false,
+    "implementing_prompts": false,
+    "implementing_resources": false,
+    "implementing_sampling": false,
+    "implementing_roots": false,
+    "implementing_logging": false,
+    "implementing_stdio": false,
+    "implementing_streamable_http": false,
+    "implementing_oauth2": false
+  },
+  "dependencies": [],
+  "user_config": {
+    "youtube_api_key": {
+      "type": "string",
+      "title": "YouTube API Key",
+      "description": "Your YouTube Data API key (required for fetching video details).",
+      "required": true,
+      "sensitive": true
+    },
+    "port": {
+      "type": "number",
+      "title": "MCP Server Port",
+      "description": "Port for the MCP server.",
+      "required": false,
+      "default": 5000
+    },
+    "proxy_username": {
+      "type": "string",
+      "title": "Webshare Proxy Username",
+      "description": "Username for Webshare proxy (optional, for circumventing regional restrictions).",
+      "required": false,
+      "sensitive": true
+    },
+    "proxy_password": {
+      "type": "string",
+      "title": "Webshare Proxy Password",
+      "description": "Password for Webshare proxy (optional, for circumventing regional restrictions).",
+      "required": false,
+      "sensitive": true
+    }
+  },
+  "archestra_config": null,
+  "evaluation_model": "gemini-2.5-pro",
+  "raw_dependencies": "=== requirements.txt ===\nmcp>=1.12.0\npydantic\nfastapi\nuvicorn[standard]\naiohttp\npython-dotenv\ntyping-extensions\nyoutube-transcript-api>=1.0.3",
+  "last_scraped_at": "2025-08-10T08:39:33.978Z"
+}

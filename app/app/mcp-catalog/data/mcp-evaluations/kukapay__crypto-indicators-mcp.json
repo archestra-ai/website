@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/index.js"],
+      "args": [
+        "${__dirname}/index.js"
+      ],
       "env": {
         "EXCHANGE_NAME": "${user_config.exchange_name}"
       }
@@ -23,7 +25,7 @@
     "exchange_name": {
       "type": "string",
       "title": "Exchange Name",
-      "description": "The name of the ccxt-supported exchange to use for fetching market data.",
+      "description": "The name of the ccxt-supported exchange to use for data.",
       "required": false,
       "default": "binance"
     }
@@ -36,7 +38,9 @@
       "mcpServers": {
         "crypto-indicators-mcp": {
           "command": "node",
-          "args": ["path/to/crypto-indicators-mcp/index.js"],
+          "args": [
+            "path/to/crypto-indicators-mcp/index.js"
+          ],
           "env": {
             "EXCHANGE_NAME": "binance"
           }

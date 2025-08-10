@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["server.py"],
+      "args": [
+        "server.py"
+      ],
       "env": {
         "VCENTER_HOST": "${user_config.vcenter_host}",
         "VCENTER_USER": "${user_config.vcenter_user}",
@@ -33,71 +35,71 @@
     "vcenter_host": {
       "type": "string",
       "title": "vCenter/ESXi Host",
-      "description": "The address of the vCenter or ESXi server.",
+      "description": "vCenter/ESXi server address",
       "required": true
     },
     "vcenter_user": {
       "type": "string",
       "title": "vCenter User",
-      "description": "The username for logging into the vCenter/ESXi server.",
+      "description": "Login username for the vCenter/ESXi server",
       "required": true
     },
     "vcenter_password": {
       "type": "string",
       "title": "vCenter Password",
-      "description": "The password for the vCenter/ESXi user.",
+      "description": "Login password for the vCenter/ESXi server",
       "required": true,
       "sensitive": true
     },
     "api_key": {
       "type": "string",
       "title": "API Key",
-      "description": "The API access key for authenticating requests to this server. Recommended for production.",
+      "description": "API access key for authenticating requests to this server. If not provided, authentication may be disabled.",
       "required": false,
       "sensitive": true
     },
     "datacenter": {
       "type": "string",
-      "title": "Datacenter Name (Optional)",
-      "description": "The name of the datacenter to use. If not specified, the first one found will be automatically selected.",
+      "title": "Datacenter",
+      "description": "Datacenter name. If not provided, the server will attempt to auto-select the first one it finds.",
       "required": false
     },
     "cluster": {
       "type": "string",
-      "title": "Cluster Name (Optional)",
-      "description": "The name of the cluster to use. If not specified, the first one found will be automatically selected.",
+      "title": "Cluster",
+      "description": "Cluster name. If not provided, the server will attempt to auto-select the first one it finds.",
       "required": false
     },
     "datastore": {
       "type": "string",
-      "title": "Datastore Name (Optional)",
-      "description": "The name of the datastore to use. If not specified, the largest available one will be automatically selected.",
+      "title": "Datastore",
+      "description": "Storage name. If not provided, the server will attempt to use the largest available datastore.",
       "required": false
     },
     "network": {
       "type": "string",
-      "title": "Network Name",
-      "description": "The name of the network to use for new virtual machines.",
+      "title": "Network",
+      "description": "Network name for virtual machines.",
       "required": false,
       "default": "VM Network"
     },
     "insecure": {
       "type": "boolean",
-      "title": "Skip SSL Verification",
-      "description": "If checked, SSL certificate verification for the vCenter/ESXi connection will be skipped. Recommended for testing environments only.",
+      "title": "Insecure (Skip SSL Verification)",
+      "description": "Skip SSL certificate verification when connecting to vCenter/ESXi. Recommended for testing environments only.",
       "required": false,
       "default": false
     },
     "log_file": {
       "type": "file",
-      "title": "Log File Path (Optional)",
-      "description": "Path to the log file. If not provided, logs will be sent to the console output.",
+      "title": "Log File",
+      "description": "Path to the log file. If not provided, logs are sent to the console.",
       "required": false
     },
     "log_level": {
       "type": "string",
       "title": "Log Level",
-      "description": "The logging level for the server (e.g., DEBUG, INFO, WARNING, ERROR).",
+      "description": "Set the logging level (e.g., INFO, DEBUG).",
       "required": false,
       "default": "INFO"
     }
@@ -110,7 +112,11 @@
       "mcpServers": {
         "esxi-mcp-server": {
           "command": "python",
-          "args": ["server.py", "-c", "config.yaml"],
+          "args": [
+            "server.py",
+            "-c",
+            "config.yaml"
+          ],
           "env": {}
         }
       }

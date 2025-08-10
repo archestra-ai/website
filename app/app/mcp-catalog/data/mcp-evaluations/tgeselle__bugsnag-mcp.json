@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "bugsnag-mcp-server"],
+      "args": [
+        "-y",
+        "bugsnag-mcp-server"
+      ],
       "env": {
         "BUGSNAG_API_KEY": "${user_config.bugsnag_api_key}"
       }
@@ -36,7 +39,10 @@
       "mcpServers": {
         "bugsnag-mcp-server": {
           "command": "npx",
-          "args": ["-y", "bugsnag-mcp-server"],
+          "args": [
+            "-y",
+            "bugsnag-mcp-server"
+          ],
           "env": {
             "BUGSNAG_API_KEY": "your-bugsnag-api-key"
           }

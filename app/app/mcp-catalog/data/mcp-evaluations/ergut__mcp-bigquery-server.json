@@ -36,14 +36,14 @@
     "location": {
       "type": "string",
       "title": "BigQuery Location",
-      "description": "The BigQuery location for your dataset.",
+      "description": "The BigQuery location where your datasets reside.",
       "required": false,
       "default": "us-central1"
     },
     "key_file": {
       "type": "file",
       "title": "Service Account Key File (Optional)",
-      "description": "Path to a Google Cloud service account key JSON file. If not provided, Application Default Credentials (e.g., from 'gcloud auth application-default login') will be used.",
+      "description": "Path to the JSON file for your Google Cloud service account. If not provided, Application Default Credentials will be used.",
       "required": false
     }
   },
@@ -55,7 +55,14 @@
       "mcpServers": {
         "ergut-mcp-bigquery-server": {
           "command": "npx",
-          "args": ["-y", "@ergut/mcp-bigquery-server", "--project-id", "your-project-id", "--location", "us-central1"],
+          "args": [
+            "-y",
+            "@ergut/mcp-bigquery-server",
+            "--project-id",
+            "your-project-id",
+            "--location",
+            "us-central1"
+          ],
           "env": {}
         },
         "ergut-mcp-bigquery-server-with-config": {

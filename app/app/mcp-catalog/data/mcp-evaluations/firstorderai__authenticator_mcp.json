@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "authenticator-mcp"],
+      "args": [
+        "-y",
+        "authenticator-mcp"
+      ],
       "env": {
         "AUTHENTICATOR_ACCESS_TOKEN": "${user_config.access_token}"
       }
@@ -23,7 +26,7 @@
     "access_token": {
       "type": "string",
       "title": "Authenticator App Access Token",
-      "description": "The access token generated from the Authenticator App · 2FA desktop application settings. The token is only displayed once upon creation.",
+      "description": "The access token generated from the Authenticator App · 2FA desktop application. This will only be displayed once, so be sure to copy it immediately.",
       "required": true,
       "sensitive": true
     }
@@ -36,24 +39,42 @@
       "mcpServers": {
         "authenticator-mcp-macos-linux-arg": {
           "command": "npx",
-          "args": ["-y", "authenticator-mcp", "--access-token=YOUR-KEY"],
+          "args": [
+            "-y",
+            "authenticator-mcp",
+            "--access-token=YOUR-KEY"
+          ],
           "env": {}
         },
         "authenticator-mcp-macos-linux-env": {
           "command": "npx",
-          "args": ["-y", "authenticator-mcp"],
+          "args": [
+            "-y",
+            "authenticator-mcp"
+          ],
           "env": {
             "AUTHENTICATOR_ACCESS_TOKEN": "YOUR-KEY"
           }
         },
         "authenticator-mcp-windows-arg": {
           "command": "cmd",
-          "args": ["/c", "npx", "-y", "authenticator-mcp", "--access-token=YOUR-KEY"],
+          "args": [
+            "/c",
+            "npx",
+            "-y",
+            "authenticator-mcp",
+            "--access-token=YOUR-KEY"
+          ],
           "env": {}
         },
         "authenticator-mcp-windows-env": {
           "command": "cmd",
-          "args": ["/c", "npx", "-y", "authenticator-mcp"],
+          "args": [
+            "/c",
+            "npx",
+            "-y",
+            "authenticator-mcp"
+          ],
           "env": {
             "AUTHENTICATOR_ACCESS_TOKEN": "YOUR-KEY"
           }

@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["@shopsavvy/mcp-server"],
+      "args": [
+        "@shopsavvy/mcp-server"
+      ],
       "env": {
         "SHOPSAVVY_API_KEY": "${user_config.api_key}"
       }
@@ -23,7 +25,7 @@
     "api_key": {
       "type": "string",
       "title": "ShopSavvy API Key",
-      "description": "Your API key for the ShopSavvy Data API. Get one from your dashboard at https://shopsavvy.com/data. The key starts with 'ss_live_' or 'ss_test_'.",
+      "description": "Your API key from the ShopSavvy Data dashboard. Get one at https://shopsavvy.com/data. The key starts with 'ss_live_' or 'ss_test_'.",
       "required": true,
       "sensitive": true
     }
@@ -36,21 +38,29 @@
       "mcpServers": {
         "shopsavvy-mcp-server-configured": {
           "command": "npx",
-          "args": ["@shopsavvy/mcp-server"],
+          "args": [
+            "@shopsavvy/mcp-server"
+          ],
           "env": {
             "SHOPSAVVY_API_KEY": "your_api_key_here"
           }
         },
         "shopsavvy-mcp-server-dev": {
           "command": "npm",
-          "args": ["run", "dev"],
+          "args": [
+            "run",
+            "dev"
+          ],
           "env": {
             "SHOPSAVVY_API_KEY": "your_key_here"
           }
         },
         "shopsavvy-mcp-server-inspect": {
           "command": "npm",
-          "args": ["run", "inspect"],
+          "args": [
+            "run",
+            "inspect"
+          ],
           "env": {
             "SHOPSAVVY_API_KEY": "your_key_here"
           }

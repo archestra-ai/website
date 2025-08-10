@@ -8,14 +8,15 @@
     "name": "brianxiadong"
   },
   "server": {
+    "type": "binary",
     "mcp_config": {
       "command": "java",
       "args": [
         "-jar",
         "${__dirname}/ones-wiki-mcp-server-0.0.1-SNAPSHOT.jar",
-        "--ones.host=${user_config.host}",
-        "--ones.email=${user_config.email}",
-        "--ones.password=${user_config.password}"
+        "--ones.host=${user_config.ones_host}",
+        "--ones.email=${user_config.ones_email}",
+        "--ones.password=${user_config.ones_password}"
       ],
       "env": {}
     }
@@ -24,19 +25,19 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "host": {
+    "ones_host": {
       "type": "string",
       "title": "ONES Host",
       "description": "The hostname of your ONES platform instance (e.g., your-ones-host.com).",
       "required": true
     },
-    "email": {
+    "ones_email": {
       "type": "string",
       "title": "ONES Email",
-      "description": "The email address used to log in to your ONES platform.",
+      "description": "The email address for your ONES platform account.",
       "required": true
     },
-    "password": {
+    "ones_password": {
       "type": "string",
       "title": "ONES Password",
       "description": "The password for your ONES platform account.",

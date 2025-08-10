@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["mcp-server-ds"]
+      "args": [
+        "mcp-server-ds"
+      ],
+      "env": {}
     }
   },
   "tools": [],
@@ -20,13 +23,13 @@
     "csv_path": {
       "type": "file",
       "title": "CSV File Path",
-      "description": "Local path to the CSV file for data exploration.",
+      "description": "Local path to the CSV file you want to explore.",
       "required": true
     },
     "topic": {
       "type": "string",
       "title": "Topic of Exploration",
-      "description": "The topic of exploration for the dataset (e.g., 'Weather patterns in New York' or 'Housing prices in California').",
+      "description": "The topic of exploration (e.g., \"Weather patterns in New York\" or \"Housing prices in California\").",
       "required": true
     }
   },
@@ -38,12 +41,19 @@
       "mcpServers": {
         "mcp-server-ds-dev": {
           "command": "uv",
-          "args": ["--directory", "/Users/username/src/mcp-server-ds", "run", "mcp-server-ds"],
+          "args": [
+            "--directory",
+            "/Users/username/src/mcp-server-ds",
+            "run",
+            "mcp-server-ds"
+          ],
           "env": {}
         },
         "mcp-server-ds-published": {
           "command": "uvx",
-          "args": ["mcp-server-ds"],
+          "args": [
+            "mcp-server-ds"
+          ],
           "env": {}
         }
       }

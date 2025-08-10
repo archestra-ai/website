@@ -10,7 +10,7 @@
   "server": {
     "type": "binary",
     "mcp_config": {
-      "command": "${__dirname}/server/mcp-server-thehive",
+      "command": "server/mcp-server-thehive",
       "args": [],
       "env": {
         "THEHIVE_URL": "${user_config.thehive_url}",
@@ -34,21 +34,21 @@
     "thehive_api_token": {
       "type": "string",
       "title": "TheHive API Token",
-      "description": "Your API token for TheHive authentication.",
+      "description": "Your TheHive API token for authentication.",
       "required": true,
       "sensitive": true
     },
     "verify_ssl": {
       "type": "boolean",
-      "title": "Verify SSL",
-      "description": "Whether to verify SSL certificates. It is strongly recommended to set this to true in production environments.",
+      "title": "Verify SSL Certificates",
+      "description": "Whether to verify SSL certificates. Set to false for testing with self-signed certificates (not recommended for production).",
       "required": false,
       "default": false
     },
     "rust_log": {
       "type": "string",
-      "title": "Logging Level",
-      "description": "Set the logging level for the server (e.g., debug, info, warn, error).",
+      "title": "Log Level",
+      "description": "Logging level for the server (e.g., debug, info, warn, error).",
       "required": false,
       "default": "info"
     }
@@ -61,7 +61,9 @@
       "mcpServers": {
         "mcp-server-thehive-cargo": {
           "command": "cargo",
-          "args": ["run"],
+          "args": [
+            "run"
+          ],
           "env": {
             "THEHIVE_URL": "http://localhost:9000/api",
             "THEHIVE_API_TOKEN": "your-api-token-here",

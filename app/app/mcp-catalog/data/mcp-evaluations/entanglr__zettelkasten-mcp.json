@@ -8,9 +8,13 @@
     "name": "entanglr"
   },
   "server": {
+    "type": "python",
     "mcp_config": {
       "command": "python",
-      "args": ["-m", "zettelkasten_mcp.main"],
+      "args": [
+        "-m",
+        "zettelkasten_mcp.main"
+      ],
       "env": {
         "ZETTELKASTEN_NOTES_DIR": "${user_config.notes_dir}",
         "ZETTELKASTEN_DATABASE_PATH": "${user_config.database_path}"
@@ -24,14 +28,14 @@
     "notes_dir": {
       "type": "directory",
       "title": "Notes Directory",
-      "description": "The directory where your Zettelkasten Markdown notes are stored. These files are the source of truth.",
+      "description": "The directory where your Zettelkasten markdown notes are stored. This is the source of truth.",
       "required": true,
       "default": "${__dirname}/data/notes"
     },
     "database_path": {
       "type": "file",
       "title": "Database File Path",
-      "description": "Path to the SQLite database file used for indexing. It will be automatically generated from your notes if it doesn't exist.",
+      "description": "Path to the SQLite database file used for indexing. It will be created if it doesn't exist and can be rebuilt from the notes directory.",
       "required": true,
       "default": "${__dirname}/data/db/zettelkasten.db"
     }
@@ -44,7 +48,10 @@
       "mcpServers": {
         "zettelkasten_mcp": {
           "command": "python",
-          "args": ["-m", "zettelkasten_mcp.main"],
+          "args": [
+            "-m",
+            "zettelkasten_mcp.main"
+          ],
           "env": {}
         },
         "zettelkasten_mcp-configured": {
@@ -61,7 +68,10 @@
         },
         "zettelkasten_mcp-claude-desktop": {
           "command": "/absolute/path/to/zettelkasten-mcp/.venv/bin/python",
-          "args": ["-m", "zettelkasten_mcp.main"],
+          "args": [
+            "-m",
+            "zettelkasten_mcp.main"
+          ],
           "env": {
             "ZETTELKASTEN_NOTES_DIR": "/absolute/path/to/zettelkasten-mcp/data/notes",
             "ZETTELKASTEN_DATABASE_PATH": "/absolute/path/"

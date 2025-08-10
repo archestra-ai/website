@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-google-maps"],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-google-maps"
+      ],
       "env": {
         "GOOGLE_MAPS_API_KEY": "${user_config.maps_api_key}"
       }
@@ -50,7 +53,7 @@
     "maps_api_key": {
       "type": "string",
       "title": "Google Maps API Key",
-      "description": "Your API key for authenticating with the Google Maps API.",
+      "description": "Your Google Maps API key for authentication.",
       "sensitive": true,
       "required": true
     }

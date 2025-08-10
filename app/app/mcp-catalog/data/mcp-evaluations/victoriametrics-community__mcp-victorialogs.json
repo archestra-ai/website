@@ -10,12 +10,13 @@
   "server": {
     "type": "binary",
     "mcp_config": {
-      "command": "${__dirname}/server/mcp-victorialogs",
+      "command": "${__dirname}/mcp-victorialogs",
       "args": [],
       "env": {
-        "MCP_SERVER_MODE": "stdio",
         "VL_INSTANCE_ENTRYPOINT": "${user_config.VL_INSTANCE_ENTRYPOINT}",
         "VL_INSTANCE_BEARER_TOKEN": "${user_config.VL_INSTANCE_BEARER_TOKEN}",
+        "MCP_SERVER_MODE": "${user_config.MCP_SERVER_MODE}",
+        "MCP_LISTEN_ADDR": "${user_config.MCP_LISTEN_ADDR}",
         "MCP_DISABLED_TOOLS": "${user_config.MCP_DISABLED_TOOLS}"
       }
     }
@@ -26,16 +27,30 @@
   "user_config": {
     "VL_INSTANCE_ENTRYPOINT": {
       "type": "string",
-      "title": "VictoriaLogs Instance URL",
-      "description": "The URL endpoint for your VictoriaLogs instance.",
+      "title": "VictoriaLogs Instance Entrypoint",
+      "description": "URL to your VictoriaLogs instance.",
       "required": true
     },
     "VL_INSTANCE_BEARER_TOKEN": {
       "type": "string",
       "title": "VictoriaLogs Bearer Token",
-      "description": "Authentication token for the VictoriaLogs API. Leave blank if not needed.",
+      "description": "Optional authentication token for the VictoriaLogs API.",
       "required": false,
       "sensitive": true
+    },
+    "MCP_SERVER_MODE": {
+      "type": "string",
+      "title": "Server Mode",
+      "description": "Server operation mode. Use 'stdio' for local clients, or 'sse'/'http' for network access.",
+      "required": false,
+      "default": "stdio"
+    },
+    "MCP_LISTEN_ADDR": {
+      "type": "string",
+      "title": "Listen Address",
+      "description": "Address for the SSE or HTTP server to listen on if not using 'stdio' mode.",
+      "required": false,
+      "default": "localhost:8081"
     },
     "MCP_DISABLED_TOOLS": {
       "type": "string",

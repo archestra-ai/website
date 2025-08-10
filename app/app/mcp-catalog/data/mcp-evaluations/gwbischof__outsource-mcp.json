@@ -10,7 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/gwbischof/outsource-mcp.git", "outsource-mcp"],
+      "args": [
+        "--from",
+        "git+https://github.com/gwbischof/outsource-mcp.git",
+        "outsource-mcp"
+      ],
       "env": {
         "OPENAI_API_KEY": "${user_config.OPENAI_API_KEY}",
         "ANTHROPIC_API_KEY": "${user_config.ANTHROPIC_API_KEY}",
@@ -188,7 +192,11 @@
       "mcpServers": {
         "outsource-mcp": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/gwbischof/outsource-mcp.git", "outsource-mcp"],
+          "args": [
+            "--from",
+            "git+https://github.com/gwbischof/outsource-mcp.git",
+            "outsource-mcp"
+          ],
           "env": {
             "OPENAI_API_KEY": "your-openai-key",
             "ANTHROPIC_API_KEY": "your-anthropic-key",

@@ -10,9 +10,14 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "main.py"],
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "main.py"
+      ],
       "env": {
-        "DUNE_SIM_API_KEY": "${user_config.dune_sim_api_key}"
+        "DUNE_SIM_API_KEY": "${user_config.dune_api_key}"
       }
     }
   },
@@ -20,10 +25,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "dune_sim_api_key": {
+    "dune_api_key": {
       "type": "string",
       "title": "Dune SIM API Key",
-      "description": "Your API key obtained from Dune Analytics.",
+      "description": "Your API key from Dune Analytics, required for querying onchain data.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +41,12 @@
       "mcpServers": {
         "Wallet Inspector": {
           "command": "uv",
-          "args": ["--directory", "/path/to/wallet-inspector-mcp", "run", "main.py"],
+          "args": [
+            "--directory",
+            "/path/to/wallet-inspector-mcp",
+            "run",
+            "main.py"
+          ],
           "env": {
             "DUNE_SIM_API_KEY": "your_dune_sim_api_key_here"
           }

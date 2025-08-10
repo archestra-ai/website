@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "qasphere-mcp"],
+      "args": [
+        "-y",
+        "qasphere-mcp"
+      ],
       "env": {
         "QASPHERE_TENANT_URL": "${user_config.tenant_url}",
         "QASPHERE_API_KEY": "${user_config.api_key}"
@@ -24,13 +27,13 @@
     "tenant_url": {
       "type": "string",
       "title": "QA Sphere Tenant URL",
-      "description": "Your company's QA Sphere URL (e.g., example.eu2.qasphere.com)",
+      "description": "Your company's QA Sphere URL (e.g., `example.eu2.qasphere.com`)",
       "required": true
     },
     "api_key": {
       "type": "string",
       "title": "QA Sphere API Key",
-      "description": "Create an API key in QA Sphere under Settings ⚙️ → API Keys → Add API Key.",
+      "description": "API key from QA Sphere (Settings ⚙️ → API Keys → Add API Key)",
       "required": true,
       "sensitive": true
     }
@@ -43,7 +46,10 @@
       "mcpServers": {
         "qasphere-mcp": {
           "command": "npx",
-          "args": ["-y", "qasphere-mcp"],
+          "args": [
+            "-y",
+            "qasphere-mcp"
+          ],
           "env": {
             "QASPHERE_TENANT_URL": "your-company.region.qasphere.com",
             "QASPHERE_API_KEY": "your-api-key"

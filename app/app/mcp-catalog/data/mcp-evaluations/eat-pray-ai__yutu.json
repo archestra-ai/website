@@ -11,10 +11,12 @@
     "type": "binary",
     "mcp_config": {
       "command": "yutu",
-      "args": ["mcp"],
+      "args": [
+        "mcp"
+      ],
       "env": {
         "YUTU_CREDENTIAL": "${user_config.credential_file}",
-        "YUTU_CACHE_TOKEN": "${user_config.token_cache_file}"
+        "YUTU_CACHE_TOKEN": "${user_config.token_file}"
       }
     }
   },
@@ -25,13 +27,13 @@
     "credential_file": {
       "type": "file",
       "title": "OAuth Credential File",
-      "description": "Path to the client_secret.json file downloaded from your Google Cloud Platform project.",
+      "description": "Path to the client_secret.json file downloaded from Google Cloud Platform. This is required for OAuth authentication.",
       "required": true
     },
-    "token_cache_file": {
+    "token_file": {
       "type": "file",
-      "title": "Token Cache File",
-      "description": "Path to store the youtube.token.json file after successful authentication. It will be created if it doesn't exist.",
+      "title": "YouTube Token File",
+      "description": "Path to the youtube.token.json file containing the OAuth token. It is generated after the initial authentication.",
       "required": true
     }
   },
@@ -43,7 +45,9 @@
       "mcpServers": {
         "yutu": {
           "command": "yutu",
-          "args": ["mcp"],
+          "args": [
+            "mcp"
+          ],
           "env": {
             "YUTU_CREDENTIAL": "/absolute/path/to/client_secret.json",
             "YUTU_CACHE_TOKEN": "/absolute/path/to/youtube.token.json"

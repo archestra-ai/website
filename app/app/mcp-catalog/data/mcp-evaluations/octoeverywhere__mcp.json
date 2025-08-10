@@ -15,7 +15,7 @@
     "access_token": {
       "type": "string",
       "title": "OctoEverywhere Access Token",
-      "description": "Create an OctoEverywhere account, link your 3D printer, and get your Access Token from the OctoEverywhere MCP setup page.",
+      "description": "Your personal Access Token to connect to the OctoEverywhere MCP server. You can get your token from the OctoEverywhere MCP setup page.",
       "required": true,
       "sensitive": true
     }

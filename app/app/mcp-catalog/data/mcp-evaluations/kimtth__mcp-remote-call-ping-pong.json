@@ -8,11 +8,11 @@
     "name": "kimtth"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": [
+        "mcp-api-server.py"
+      ],
       "env": {}
     }
   },
@@ -28,12 +28,16 @@
       "mcpServers": {
         "mcp-api-server": {
           "command": "python",
-          "args": ["mcp-api-server.py"],
+          "args": [
+            "mcp-api-server.py"
+          ],
           "env": {}
         },
         "mcp-sse-server": {
           "command": "python",
-          "args": ["mcp-sse-server.py"],
+          "args": [
+            "mcp-sse-server.py"
+          ],
           "env": {}
         }
       }
@@ -59,7 +63,7 @@
   "programming_language": "HTML",
   "framework": null,
   "last_scraped_at": "2025-08-03T21:01:01.929Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

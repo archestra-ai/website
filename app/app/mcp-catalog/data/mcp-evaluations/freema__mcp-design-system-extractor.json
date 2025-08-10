@@ -8,13 +8,7 @@
     "name": "freema"
   },
   "server": {
-    "mcp_config": {
-      "command": "npm",
-      "args": ["run", "setup"],
-      "env": {
-        "STORYBOOK_URL": "${user_config.storybook_url}"
-      }
-    }
+    "mcp_config": {}
   },
   "tools": [],
   "prompts": [],
@@ -23,7 +17,7 @@
     "storybook_url": {
       "type": "string",
       "title": "Storybook URL",
-      "description": "The URL of the Storybook instance to connect to.",
+      "description": "The URL of the running Storybook instance the server will connect to and extract data from.",
       "required": true,
       "default": "http://localhost:6006"
     }

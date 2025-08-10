@@ -8,10 +8,11 @@
     "name": "giuseppe-coco"
   },
   "server": {
-    "type": "python",
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/mcp_server.py"],
+      "args": [
+        "${__dirname}/mcp_server.py"
+      ],
       "env": {}
     }
   },
@@ -27,7 +28,9 @@
       "mcpServers": {
         "GsuiteMCPServer": {
           "command": "absolute-path-to-your-python-executable-in-virtual-environment",
-          "args": ["<mcp_server.py-abs-path>"],
+          "args": [
+            "<mcp_server.py-abs-path>"
+          ],
           "env": {}
         }
       }

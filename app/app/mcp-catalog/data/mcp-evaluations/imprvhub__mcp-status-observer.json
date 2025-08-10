@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/build/index.js"],
+      "args": [
+        "${__dirname}/build/index.js"
+      ],
       "env": {}
     }
   },
@@ -26,7 +28,9 @@
       "mcpServers": {
         "statusObserver": {
           "command": "node",
-          "args": ["/path/to/mcp-status-observer/build/index.js"],
+          "args": [
+            "/path/to/mcp-status-observer/build/index.js"
+          ],
           "env": {}
         }
       }

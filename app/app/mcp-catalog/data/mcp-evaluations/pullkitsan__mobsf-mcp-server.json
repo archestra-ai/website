@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["tsx", "${__dirname}/server.ts"],
+      "args": [
+        "tsx",
+        "${__dirname}/server.ts"
+      ],
       "env": {
         "MOBSF_API_KEY": "${user_config.mobsf_api_key}",
         "MOBSF_URL": "${user_config.mobsf_url}"
@@ -24,7 +27,7 @@
     "mobsf_api_key": {
       "type": "string",
       "title": "MobSF API Key",
-      "description": "Your MobSF REST API Key.",
+      "description": "Your API key for the MobSF REST API.",
       "required": true,
       "sensitive": true
     },
@@ -44,12 +47,18 @@
       "mcpServers": {
         "mobsf-mcp-claude": {
           "command": "npx",
-          "args": ["tsx", "/absolute/path/to/server.ts"],
+          "args": [
+            "tsx",
+            "/absolute/path/to/server.ts"
+          ],
           "env": {}
         },
         "mobsf-mcp-5ire": {
           "command": "npx",
-          "args": ["tsx", "C:\\Users\\Downloads\\mobsf-mcp-server\\server.js"],
+          "args": [
+            "tsx",
+            "C:\\Users\\Downloads\\mobsf-mcp-server\\server.js"
+          ],
           "env": {}
         }
       }

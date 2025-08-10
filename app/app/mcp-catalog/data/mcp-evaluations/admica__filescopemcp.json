@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/mcp-server.js", "--base-dir=${user_config.base_dir}"],
+      "args": [
+        "${__dirname}/mcp-server.js",
+        "--base-dir=${user_config.base_dir}"
+      ],
       "env": {}
     }
   },
@@ -21,7 +24,7 @@
     "base_dir": {
       "type": "directory",
       "title": "Project Base Directory",
-      "description": "The base path of the project you want FileScopeMCP to analyze.",
+      "description": "The base path of the project to be analyzed by FileScopeMCP.",
       "required": true
     }
   },
@@ -33,12 +36,19 @@
       "mcpServers": {
         "FileScopeMCP-windows": {
           "command": "node",
-          "args": ["<build script sets this>/mcp-server.js", "--base-dir=C:/Users/admica/my/project/base"],
+          "args": [
+            "<build script sets this>/mcp-server.js",
+            "--base-dir=C:/Users/admica/my/project/base"
+          ],
           "env": {}
         },
         "FileScopeMCP-linux": {
           "command": "wsl",
-          "args": ["-d", "Ubuntu-24.04", "/home/admica/FileScopeMCP/run.sh"],
+          "args": [
+            "-d",
+            "Ubuntu-24.04",
+            "/home/admica/FileScopeMCP/run.sh"
+          ],
           "env": {}
         }
       }

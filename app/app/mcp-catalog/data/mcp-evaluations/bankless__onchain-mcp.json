@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["@bankless/onchain-mcp"],
+      "args": [
+        "@bankless/onchain-mcp"
+      ],
       "env": {
         "BANKLESS_API_TOKEN": "${user_config.bankless_api_token}"
       }
@@ -23,7 +25,7 @@
     "bankless_api_token": {
       "type": "string",
       "title": "Bankless API Token",
-      "description": "Your Bankless API token for on-chain data access. See https://docs.bankless.com/bankless-api/other-services/onchain-mcp for details on how to obtain one.",
+      "description": "Your Bankless API token. For details on how to obtain your Bankless API token, head to https://docs.bankless.com/bankless-api/other-services/onchain-mcp",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +38,9 @@
       "mcpServers": {
         "bankless-onchain-mcp": {
           "command": "npx",
-          "args": ["@bankless/onchain-mcp"],
+          "args": [
+            "@bankless/onchain-mcp"
+          ],
           "env": {
             "BANKLESS_API_TOKEN": "your_api_token_here"
           }

@@ -10,9 +10,13 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/ahnlabio/bicscan-mcp", "bicscan-mcp"],
+      "args": [
+        "--from",
+        "git+https://github.com/ahnlabio/bicscan-mcp",
+        "bicscan-mcp"
+      ],
       "env": {
-        "BICSCAN_API_KEY": "${user_config.bicscan_api_key}"
+        "BICSCAN_API_KEY": "${user_config.api_key}"
       }
     }
   },
@@ -20,10 +24,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "bicscan_api_key": {
+    "api_key": {
       "type": "string",
       "title": "BICScan API Key",
-      "description": "Your free API key obtained from https://bicscan.io",
+      "description": "Your free API key from bicscan.io. Register at https://bicscan.io, go to your profile, and create an app to get a key.",
       "required": true,
       "sensitive": true
     }
@@ -36,21 +40,37 @@
       "mcpServers": {
         "bicscan-mcp-uv": {
           "command": "uv",
-          "args": ["--directory", "YOUR_BICSCAN_REPO_DIR_HERE", "run", "bicscan-mcp"],
+          "args": [
+            "--directory",
+            "YOUR_BICSCAN_REPO_DIR_HERE",
+            "run",
+            "bicscan-mcp"
+          ],
           "env": {
             "BICSCAN_API_KEY": "YOUR_BICSCAN_API_KEY_HERE"
           }
         },
         "bicscan-mcp-docker": {
           "command": "docker",
-          "args": ["run", "--rm", "--interactive", "--env", "BICSCAN_API_KEY=YOUR_BICSCAN_API_KEY_HERE", "bicscan-mcp"],
+          "args": [
+            "run",
+            "--rm",
+            "--interactive",
+            "--env",
+            "BICSCAN_API_KEY=YOUR_BICSCAN_API_KEY_HERE",
+            "bicscan-mcp"
+          ],
           "env": {
             "BICSCAN_API_KEY": "YOUR_BICSCAN_API_KEY_HERE"
           }
         },
         "bicscan-mcp-uvx": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/ahnlabio/bicscan-mcp", "bicscan-mcp"],
+          "args": [
+            "--from",
+            "git+https://github.com/ahnlabio/bicscan-mcp",
+            "bicscan-mcp"
+          ],
           "env": {
             "BICSCAN_API_KEY": "YOUR_BICSCAN_API_KEY_HERE"
           }

@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/build/index.js"],
+      "args": [
+        "${__dirname}/build/index.js"
+      ],
       "env": {
         "POSTMAN_API_KEY": "${user_config.api_key}"
       }
@@ -23,7 +25,7 @@
     "api_key": {
       "type": "string",
       "title": "Postman API Key",
-      "description": "Your API key for Postman. Generate one from your Postman Account Settings.",
+      "description": "Your API key for authentication. Visit Postman Account Settings to generate a key.",
       "sensitive": true,
       "required": true
     }
@@ -36,7 +38,9 @@
       "mcpServers": {
         "postman-api-server": {
           "command": "node",
-          "args": ["/path/to/postman-api-server/build/index.js"],
+          "args": [
+            "/path/to/postman-api-server/build/index.js"
+          ],
           "env": {
             "POSTMAN_API_KEY": "CHANGEME"
           }

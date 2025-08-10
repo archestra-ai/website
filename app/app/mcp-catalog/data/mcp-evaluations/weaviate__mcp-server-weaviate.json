@@ -11,7 +11,22 @@
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "weaviate_url": {
+      "type": "string",
+      "title": "Weaviate URL",
+      "description": "The URL of the Weaviate instance to connect to.",
+      "required": true,
+      "default": "http://localhost:8080"
+    },
+    "weaviate_api_key": {
+      "type": "string",
+      "title": "Weaviate API Key",
+      "description": "The API key for the Weaviate instance. This is often required for Weaviate Cloud Services (WCS).",
+      "required": false,
+      "sensitive": true
+    }
+  },
   "readme": "# Weaviate MCP Server\n\n## Instructions\n\nBuild the server:\n```\nmake build\n```\n\nRun the test client\n```\nmake run-client\n```\n\n## Tools\n\n### Insert One\nInsert an object into weaviate.\n\n**Request body:**\n```json\n{}\n```\n\n**Response body**\n```json\n{}\n```\n\n### Query\nRetrieve objects from weaviate with hybrid search.\n\n**Request body:**\n```json\n{}\n```\n\n**Response body**\n```json\n{}\n```\n",
   "category": "AI Tools",
   "quality_score": 48,

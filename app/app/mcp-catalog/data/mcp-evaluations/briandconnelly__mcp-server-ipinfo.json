@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["mcp-server-ipinfo"],
+      "args": [
+        "mcp-server-ipinfo"
+      ],
       "env": {
         "IPINFO_API_TOKEN": "${user_config.ipinfo_api_token}"
       }
@@ -23,7 +25,7 @@
     "ipinfo_api_token": {
       "type": "string",
       "title": "IPInfo API Token",
-      "description": "Your API token to use the ipinfo.io API. If you don't already have one, you can sign up for a free account at https://ipinfo.io/signup.",
+      "description": "Your API token for the ipinfo.io service. Sign up for a free account at https://ipinfo.io/signup to get one.",
       "required": true,
       "sensitive": true
     }
@@ -36,14 +38,20 @@
       "mcpServers": {
         "mcp-server-ipinfo": {
           "command": "uvx",
-          "args": ["mcp-server-ipinfo"],
+          "args": [
+            "mcp-server-ipinfo"
+          ],
           "env": {
             "IPINFO_API_TOKEN": "<YOUR TOKEN>"
           }
         },
         "mcp-server-ipinfo-from-git": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/briandconnelly/mcp-server-ipinfo", "mcp-server-ipinfo"],
+          "args": [
+            "--from",
+            "git+https://github.com/briandconnelly/mcp-server-ipinfo",
+            "mcp-server-ipinfo"
+          ],
           "env": {
             "IPINFO_API_TOKEN": "<YOUR TOKEN>"
           }

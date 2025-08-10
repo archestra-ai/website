@@ -20,30 +20,18 @@
         "${user_config.cloud_tenant}",
         "--database",
         "${user_config.cloud_database}",
-        "--api-key",
-        "${user_config.cloud_api_key}",
         "--host",
         "${user_config.http_host}",
         "--port",
         "${user_config.http_port}",
-        "--custom-auth-credentials",
-        "${user_config.http_custom_auth_credentials}",
         "--ssl",
         "${user_config.http_ssl}",
         "--dotenv-path",
         "${user_config.dotenv_path}"
       ],
       "env": {
-        "CHROMA_CLIENT_TYPE": "${user_config.client_type}",
-        "CHROMA_DATA_DIR": "${user_config.data_dir}",
-        "CHROMA_TENANT": "${user_config.cloud_tenant}",
-        "CHROMA_DATABASE": "${user_config.cloud_database}",
         "CHROMA_API_KEY": "${user_config.cloud_api_key}",
-        "CHROMA_HOST": "${user_config.http_host}",
-        "CHROMA_PORT": "${user_config.http_port}",
         "CHROMA_CUSTOM_AUTH_CREDENTIALS": "${user_config.http_custom_auth_credentials}",
-        "CHROMA_SSL": "${user_config.http_ssl}",
-        "CHROMA_DOTENV_PATH": "${user_config.dotenv_path}",
         "CHROMA_COHERE_API_KEY": "${user_config.cohere_api_key}",
         "CHROMA_OPENAI_API_KEY": "${user_config.openai_api_key}",
         "CHROMA_JINA_API_KEY": "${user_config.jina_api_key}",
@@ -60,98 +48,98 @@
       "type": "string",
       "title": "Client Type",
       "description": "The type of Chroma client to use. Options: 'ephemeral' (in-memory), 'persistent' (file-based), 'cloud' (Chroma Cloud), 'http' (self-hosted).",
-      "default": "ephemeral",
-      "required": true
+      "required": true,
+      "default": "ephemeral"
     },
     "data_dir": {
       "type": "directory",
       "title": "Persistent Data Directory",
-      "description": "Path for file-based storage. Required when Client Type is 'persistent'.",
+      "description": "The directory to store data. Required only if Client Type is 'persistent'.",
       "required": false
     },
     "cloud_tenant": {
       "type": "string",
       "title": "Chroma Cloud Tenant ID",
-      "description": "Your tenant ID for Chroma Cloud. Required when Client Type is 'cloud'.",
+      "description": "Your tenant ID for Chroma Cloud. Required only if Client Type is 'cloud'.",
       "required": false
     },
     "cloud_database": {
       "type": "string",
       "title": "Chroma Cloud Database Name",
-      "description": "The name of your database in Chroma Cloud. Required when Client Type is 'cloud'.",
+      "description": "The name of your database in Chroma Cloud. Required only if Client Type is 'cloud'.",
       "required": false
     },
     "cloud_api_key": {
       "type": "string",
       "title": "Chroma Cloud API Key",
-      "description": "Your API key for Chroma Cloud. Required when Client Type is 'cloud'.",
+      "description": "Your API key for Chroma Cloud. Required only if Client Type is 'cloud'.",
       "sensitive": true,
       "required": false
     },
     "http_host": {
       "type": "string",
-      "title": "Self-hosted Host",
-      "description": "The hostname or IP address of your self-hosted Chroma instance. Required when Client Type is 'http'.",
+      "title": "Self-Hosted Host",
+      "description": "The hostname or IP address of your self-hosted Chroma instance. Required only if Client Type is 'http'.",
       "required": false
     },
     "http_port": {
-      "type": "string",
-      "title": "Self-hosted Port",
-      "description": "The port number of your self-hosted Chroma instance. Required when Client Type is 'http'.",
-      "required": false
-    },
-    "http_custom_auth_credentials": {
-      "type": "string",
-      "title": "Self-hosted Custom Auth Credentials",
-      "description": "Custom authentication credentials for your self-hosted Chroma instance.",
-      "sensitive": true,
+      "type": "number",
+      "title": "Self-Hosted Port",
+      "description": "The port number of your self-hosted Chroma instance. Required only if Client Type is 'http'.",
       "required": false
     },
     "http_ssl": {
       "type": "boolean",
-      "title": "Use SSL for Self-hosted",
-      "description": "Enable SSL/TLS for the connection to your self-hosted Chroma instance.",
-      "default": false,
+      "title": "Use SSL for Self-Hosted",
+      "description": "Connect to the self-hosted Chroma instance using SSL. Used only if Client Type is 'http'.",
+      "default": true,
+      "required": false
+    },
+    "http_custom_auth_credentials": {
+      "type": "string",
+      "title": "Self-Hosted Custom Auth Credentials",
+      "description": "Custom authentication credentials for your self-hosted Chroma instance. Used only if Client Type is 'http'.",
+      "sensitive": true,
       "required": false
     },
     "dotenv_path": {
       "type": "file",
       "title": ".env File Path",
-      "description": "Optional path to a custom .env file for loading environment variables. Defaults to '.chroma_env' in the working directory.",
+      "description": "Optional path to a custom .env file for environment variables. Defaults to '.chroma_env' in the working directory.",
       "required": false
     },
     "cohere_api_key": {
       "type": "string",
       "title": "Cohere API Key",
-      "description": "API key for the Cohere embedding function.",
+      "description": "API key for the Cohere embedding function. Will be set as CHROMA_COHERE_API_KEY.",
       "sensitive": true,
       "required": false
     },
     "openai_api_key": {
       "type": "string",
       "title": "OpenAI API Key",
-      "description": "API key for the OpenAI embedding function.",
+      "description": "API key for the OpenAI embedding function. Will be set as CHROMA_OPENAI_API_KEY.",
       "sensitive": true,
       "required": false
     },
     "jina_api_key": {
       "type": "string",
       "title": "Jina API Key",
-      "description": "API key for the Jina embedding function.",
+      "description": "API key for the Jina embedding function. Will be set as CHROMA_JINA_API_KEY.",
       "sensitive": true,
       "required": false
     },
     "voyageai_api_key": {
       "type": "string",
       "title": "VoyageAI API Key",
-      "description": "API key for the VoyageAI embedding function.",
+      "description": "API key for the VoyageAI embedding function. Will be set as CHROMA_VOYAGEAI_API_KEY.",
       "sensitive": true,
       "required": false
     },
     "roboflow_api_key": {
       "type": "string",
       "title": "Roboflow API Key",
-      "description": "API key for the Roboflow embedding function.",
+      "description": "API key for the Roboflow embedding function. Will be set as CHROMA_ROBOFLOW_API_KEY.",
       "sensitive": true,
       "required": false
     }
@@ -164,12 +152,20 @@
       "mcpServers": {
         "chroma-mcp": {
           "command": "uvx",
-          "args": ["chroma-mcp"],
+          "args": [
+            "chroma-mcp"
+          ],
           "env": {}
         },
         "chroma-mcp-persistent": {
           "command": "uvx",
-          "args": ["chroma-mcp", "--client-type", "persistent", "--data-dir", "/full/path/to/your/data/directory"],
+          "args": [
+            "chroma-mcp",
+            "--client-type",
+            "persistent",
+            "--data-dir",
+            "/full/path/to/your/data/directory"
+          ],
           "env": {}
         },
         "chroma-mcp-cloud": {

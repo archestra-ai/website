@@ -11,7 +11,10 @@
     "type": "python",
     "mcp_config": {
       "command": "python",
-      "args": ["-m", "workspace_mcp.server"],
+      "args": [
+        "-m",
+        "workspace_mcp"
+      ],
       "env": {
         "GOOGLE_OAUTH_CLIENT_ID": "${user_config.GOOGLE_OAUTH_CLIENT_ID}",
         "GOOGLE_OAUTH_CLIENT_SECRET": "${user_config.GOOGLE_OAUTH_CLIENT_SECRET}",
@@ -29,34 +32,34 @@
     "GOOGLE_OAUTH_CLIENT_ID": {
       "type": "string",
       "title": "Google OAuth Client ID",
-      "description": "Client ID for your OAuth 2.0 Web Application credentials from the Google Cloud Console.",
+      "description": "OAuth client ID from your Google Cloud project.",
       "required": true,
       "sensitive": true
     },
     "GOOGLE_OAUTH_CLIENT_SECRET": {
       "type": "string",
       "title": "Google OAuth Client Secret",
-      "description": "Client Secret for your OAuth 2.0 Web Application credentials from the Google Cloud Console.",
+      "description": "OAuth client secret from your Google Cloud project.",
       "required": true,
       "sensitive": true
     },
     "USER_GOOGLE_EMAIL": {
       "type": "string",
-      "title": "Default Google Email (Optional)",
-      "description": "The default Google account email to use for authentication. If omitted, the server will prompt for an account.",
+      "title": "User Google Email (Optional)",
+      "description": "Default email for single-user authentication. If not provided, the server will prompt for it.",
       "required": false
     },
     "GOOGLE_PSE_API_KEY": {
       "type": "string",
       "title": "Google Custom Search API Key (Optional)",
-      "description": "API Key for the Google Custom Search API. Only required to use the web search tools.",
+      "description": "API key for using the Google Custom Search Engine feature.",
       "required": false,
       "sensitive": true
     },
     "GOOGLE_PSE_ENGINE_ID": {
       "type": "string",
       "title": "Google Custom Search Engine ID (Optional)",
-      "description": "Your Programmable Search Engine (PSE) ID. Only required to use the web search tools.",
+      "description": "Programmable Search Engine (PSE) ID for using the Google Custom Search feature.",
       "required": false
     }
   },

@@ -10,14 +10,18 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/redis/mcp-redis.git", "redis-mcp-server"],
+      "args": [
+        "--from",
+        "git+https://github.com/redis/mcp-redis.git",
+        "redis-mcp-server"
+      ],
       "env": {
-        "REDIS_HOST": "${user_config.host}",
-        "REDIS_PORT": "${user_config.port}",
-        "REDIS_PWD": "${user_config.password}",
-        "REDIS_SSL": "${user_config.ssl}",
-        "REDIS_CA_PATH": "${user_config.ca_path}",
-        "REDIS_CLUSTER_MODE": "${user_config.cluster_mode}"
+        "REDIS_HOST": "${user_config.redis_host}",
+        "REDIS_PORT": "${user_config.redis_port}",
+        "REDIS_PWD": "${user_config.redis_password}",
+        "REDIS_SSL": "${user_config.redis_ssl}",
+        "REDIS_CA_PATH": "${user_config.redis_ca_path}",
+        "REDIS_CLUSTER_MODE": "${user_config.redis_cluster_mode}"
       }
     }
   },
@@ -25,40 +29,41 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "host": {
+    "redis_host": {
       "type": "string",
       "title": "Redis Host",
-      "description": "The hostname of your Redis database.",
-      "required": true
+      "description": "Hostname or IP address of the Redis server.",
+      "required": true,
+      "default": "localhost"
     },
-    "port": {
+    "redis_port": {
       "type": "number",
       "title": "Redis Port",
-      "description": "The port of your Redis database.",
+      "description": "Port number for the Redis server.",
       "required": true,
       "default": 6379
     },
-    "password": {
+    "redis_password": {
       "type": "string",
       "title": "Redis Password",
-      "description": "The password for your Redis database.",
+      "description": "Password for Redis authentication. Leave blank if none.",
       "required": false,
       "sensitive": true
     },
-    "ssl": {
+    "redis_ssl": {
       "type": "boolean",
       "title": "Use SSL/TLS",
-      "description": "Enable SSL/TLS for the Redis connection.",
+      "description": "Enable SSL/TLS for the connection to Redis.",
       "required": false,
       "default": false
     },
-    "ca_path": {
+    "redis_ca_path": {
       "type": "file",
-      "title": "CA Certificate Path",
-      "description": "Path to the CA certificate file for SSL/TLS verification. Required if SSL is enabled and the certificate is not publicly trusted.",
+      "title": "SSL CA Certificate Path",
+      "description": "Path to the SSL CA certificate file. Only needed if SSL is enabled and the certificate is not in the system's trust store.",
       "required": false
     },
-    "cluster_mode": {
+    "redis_cluster_mode": {
       "type": "boolean",
       "title": "Redis Cluster Mode",
       "description": "Enable if connecting to a Redis Cluster.",
@@ -122,7 +127,12 @@
         },
         "redis-mcp-server-configured": {
           "command": "uv",
-          "args": ["--directory", "<your_mcp_server_directory>", "run", "src/main.py"],
+          "args": [
+            "--directory",
+            "<your_mcp_server_directory>",
+            "run",
+            "src/main.py"
+          ],
           "env": {
             "REDIS_HOST": "<your_redis_database_hostname>",
             "REDIS_PORT": "<your_redis_database_port>",
@@ -134,7 +144,15 @@
         },
         "mcp-redis-docker": {
           "command": "docker",
-          "args": ["run", "--rm", "--name", "redis-mcp-server", "-i", "-e", "REDIS_HOST=<redis_hostname>"],
+          "args": [
+            "run",
+            "--rm",
+            "--name",
+            "redis-mcp-server",
+            "-i",
+            "-e",
+            "REDIS_HOST=<redis_hostname>"
+          ],
           "env": {
             "REDIS_HOST": "<redis_hostname>"
           }

@@ -10,9 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["armor-crypto-mcp@latest"],
+      "args": [
+        "armor-crypto-mcp@latest",
+        "--version"
+      ],
       "env": {
-        "ARMOR_API_KEY": "${user_config.api_key}"
+        "ARMOR_API_KEY": "${user_config.ARMOR_API_KEY}"
       }
     }
   },
@@ -20,10 +23,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "api_key": {
+    "ARMOR_API_KEY": {
       "type": "string",
       "title": "Armor API Key",
-      "description": "Your API key for the Armor MCP. You can get one by owning the Armor NFT.",
+      "description": "Your API key for the Armor MCP. An Armor NFT is required to get an API Key.",
       "required": true,
       "sensitive": true
     }
@@ -36,14 +39,19 @@
       "mcpServers": {
         "armor-crypto-mcp-configured": {
           "command": "uvx",
-          "args": ["armor-crypto-mcp@latest", "--version"],
+          "args": [
+            "armor-crypto-mcp@latest",
+            "--version"
+          ],
           "env": {
             "ARMOR_API_KEY": "<PUT-YOUR-KEY-HERE>"
           }
         },
         "armor-crypto-mcp": {
           "command": "uvx",
-          "args": ["armor-crypto-mcp"],
+          "args": [
+            "armor-crypto-mcp"
+          ],
           "env": {
             "ARMOR_API_KEY": "<PUT-YOUR-KEY-HERE>"
           }

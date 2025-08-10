@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@getalby/mcp"],
+      "args": [
+        "-y",
+        "@getalby/mcp"
+      ],
       "env": {
         "NWC_CONNECTION_STRING": "${user_config.nwc_connection_string}"
       }
@@ -23,7 +26,7 @@
     "nwc_connection_string": {
       "type": "string",
       "title": "NWC Connection String",
-      "description": "Your Nostr Wallet Connect (NWC) connection string (e.g., nostr+walletconnect://...). This is used to authenticate and connect to your lightning wallet.",
+      "description": "Your Nostr Wallet Connect connection string from a compatible wallet (e.g., Alby). It starts with 'nostr+walletconnect://...'.",
       "required": true,
       "sensitive": true
     }
@@ -36,14 +39,20 @@
       "mcpServers": {
         "getalby-mcp-stdio": {
           "command": "npx",
-          "args": ["-y", "@getalby/mcp"],
+          "args": [
+            "-y",
+            "@getalby/mcp"
+          ],
           "env": {
             "NWC_CONNECTION_STRING": "YOUR NWC CONNECTION STRING HERE"
           }
         },
         "getalby-mcp-http": {
           "command": "npx",
-          "args": ["-y", "@getalby/mcp"],
+          "args": [
+            "-y",
+            "@getalby/mcp"
+          ],
           "env": {
             "MODE": "HTTP",
             "NWC_CONNECTION_STRING": "YOUR NWC CONNECTION STRING HERE"

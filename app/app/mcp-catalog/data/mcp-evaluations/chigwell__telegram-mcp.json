@@ -11,7 +11,9 @@
     "type": "python",
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/main.py"],
+      "args": [
+        "${__dirname}/main.py"
+      ],
       "env": {
         "TELEGRAM_API_ID": "${user_config.telegram_api_id}",
         "TELEGRAM_API_HASH": "${user_config.telegram_api_hash}",
@@ -62,7 +64,10 @@
       "mcpServers": {
         "telegram-mcp-docker-compose": {
           "command": "docker-compose",
-          "args": ["up", "-d"],
+          "args": [
+            "up",
+            "-d"
+          ],
           "env": {}
         },
         "telegram-mcp-docker": {

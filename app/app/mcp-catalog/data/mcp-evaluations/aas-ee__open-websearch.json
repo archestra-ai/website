@@ -11,7 +11,10 @@
     "type": "node",
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "open-websearch@latest"],
+      "args": [
+        "-y",
+        "open-websearch@latest"
+      ],
       "env": {
         "ENABLE_CORS": "${user_config.ENABLE_CORS}",
         "CORS_ORIGIN": "${user_config.CORS_ORIGIN}",
@@ -79,12 +82,16 @@
       "mcpServers": {
         "open-websearch": {
           "command": "npx",
-          "args": ["open-websearch@latest"],
+          "args": [
+            "open-websearch@latest"
+          ],
           "env": {}
         },
         "open-websearch-configured": {
           "command": "npx",
-          "args": ["open-websearch@latest"],
+          "args": [
+            "open-websearch@latest"
+          ],
           "env": {
             "DEFAULT_SEARCH_ENGINE": "duckduckgo",
             "ENABLE_CORS": "true"
@@ -92,12 +99,19 @@
         },
         "open-websearch-cross-env": {
           "command": "npx",
-          "args": ["cross-env", "DEFAULT_SEARCH_ENGINE=duckduckgo", "ENABLE_CORS=true", "open-websearch"],
+          "args": [
+            "cross-env",
+            "DEFAULT_SEARCH_ENGINE=duckduckgo",
+            "ENABLE_CORS=true",
+            "open-websearch"
+          ],
           "env": {}
         },
         "open-websearch-proxy": {
           "command": "npx",
-          "args": ["open-websearch@latest"],
+          "args": [
+            "open-websearch@latest"
+          ],
           "env": {
             "USE_PROXY": "true",
             "PROXY_URL": "http://127.0.0.1:7890"
@@ -105,7 +119,9 @@
         },
         "open-websearch-full-config": {
           "command": "npx",
-          "args": ["open-websearch@latest"],
+          "args": [
+            "open-websearch@latest"
+          ],
           "env": {
             "DEFAULT_SEARCH_ENGINE": "duckduckgo",
             "ENABLE_CORS": "true",
@@ -116,7 +132,10 @@
         },
         "open-websearch-docker-compose": {
           "command": "docker-compose",
-          "args": ["up", "-d"],
+          "args": [
+            "up",
+            "-d"
+          ],
           "env": {}
         },
         "open-web-search-docker": {

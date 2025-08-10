@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/index.js"],
+      "args": [
+        "${__dirname}/index.js"
+      ],
       "env": {
         "MR_MCP_GITLAB_TOKEN": "${user_config.gitlab_token}",
         "MR_MCP_GITLAB_HOST": "${user_config.gitlab_host}",
@@ -33,19 +35,19 @@
     "gitlab_host": {
       "type": "string",
       "title": "GitLab Host",
-      "description": "The base URL of your GitLab instance (e.g., https://gitlab.com).",
+      "description": "The hostname of your GitLab instance (e.g., gitlab.com).",
       "required": true
     },
     "min_access_level": {
       "type": "number",
-      "title": "Minimum Access Level (Optional)",
-      "description": "Optional. Filters projects the 'get_projects' tool can access by a minimum access level (e.g., 30 for Developer).",
+      "title": "Minimum Access Level",
+      "description": "Optional. Filter projects by a minimum access level. Valid levels: 10 (Guest), 20 (Reporter), 30 (Developer), 40 (Maintainer), 50 (Owner).",
       "required": false
     },
     "project_search_term": {
       "type": "string",
-      "title": "Project Search Term (Optional)",
-      "description": "Optional. A search term that should match the project path or name to filter projects.",
+      "title": "Project Search Term",
+      "description": "Optional. A search term to filter projects by path or name.",
       "required": false
     }
   },
@@ -57,7 +59,9 @@
       "mcpServers": {
         "gitlab-mr-mcp": {
           "command": "node",
-          "args": ["/path/to/gitlab-mr-mcp/index.js"],
+          "args": [
+            "/path/to/gitlab-mr-mcp/index.js"
+          ],
           "env": {
             "MR_MCP_GITLAB_TOKEN": "your_gitlab_token",
             "MR_MCP_GITLAB_HOST": "your_gitlab_host"

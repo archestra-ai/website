@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["run", "wsb-analyst"],
+      "args": [
+        "run",
+        "wsb-analyst"
+      ],
       "env": {
         "REDDIT_CLIENT_ID": "${user_config.reddit_client_id}",
         "REDDIT_CLIENT_SECRET": "${user_config.reddit_client_secret}"
@@ -24,14 +27,14 @@
     "reddit_client_id": {
       "type": "string",
       "title": "Reddit Client ID",
-      "description": "Your Reddit application's client ID. Found under the app name after creation on reddit.com/prefs/apps.",
+      "description": "The client ID for your Reddit application. Found under the app name on reddit.com/prefs/apps.",
       "required": true,
       "sensitive": false
     },
     "reddit_client_secret": {
       "type": "string",
       "title": "Reddit Client Secret",
-      "description": "Your Reddit application's client secret. Found labeled as 'secret' on reddit.com/prefs/apps.",
+      "description": "The client secret for your Reddit application. Found labeled 'secret' on reddit.com/prefs/apps.",
       "required": true,
       "sensitive": true
     }
@@ -44,7 +47,10 @@
       "mcpServers": {
         "wsb-analyst": {
           "command": "uvx",
-          "args": ["run", "wsb-analyst"],
+          "args": [
+            "run",
+            "wsb-analyst"
+          ],
           "env": {
             "REDDIT_CLIENT_ID": "your_client_id_here",
             "REDDIT_CLIENT_SECRET": "your_client_secret_here"

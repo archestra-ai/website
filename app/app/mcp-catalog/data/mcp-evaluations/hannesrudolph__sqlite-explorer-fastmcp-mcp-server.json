@@ -10,7 +10,16 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["run", "--with", "fastmcp", "--with", "uvicorn", "fastmcp", "run", "${__dirname}/sqlite_explorer.py"],
+      "args": [
+        "run",
+        "--with",
+        "fastmcp",
+        "--with",
+        "uvicorn",
+        "fastmcp",
+        "run",
+        "${__dirname}/sqlite_explorer.py"
+      ],
       "env": {
         "SQLITE_DB_PATH": "${user_config.database_path}"
       }
@@ -23,7 +32,7 @@
     "database_path": {
       "type": "file",
       "title": "SQLite Database File",
-      "description": "Full path to the SQLite database file you want to explore.",
+      "description": "Path to the SQLite database file you want to explore.",
       "required": true
     }
   },
@@ -35,7 +44,14 @@
       "mcpServers": {
         "sqlite-explorer-claude-desktop": {
           "command": "fastmcp",
-          "args": ["install", "sqlite_explorer.py", "--name", "SQLite Explorer", "-e", "SQLITE_DB_PATH=/path/to/db"],
+          "args": [
+            "install",
+            "sqlite_explorer.py",
+            "--name",
+            "SQLite Explorer",
+            "-e",
+            "SQLITE_DB_PATH=/path/to/db"
+          ],
           "env": {
             "SQLITE_DB_PATH": "/path/to/db"
           }

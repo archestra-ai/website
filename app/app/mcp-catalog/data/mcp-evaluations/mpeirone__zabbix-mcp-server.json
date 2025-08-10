@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/scripts/start_server.py"],
+      "args": [
+        "${__dirname}/scripts/start_server.py"
+      ],
       "env": {
         "ZABBIX_URL": "${user_config.zabbix_url}",
         "ZABBIX_TOKEN": "${user_config.zabbix_token}",
@@ -66,12 +68,20 @@
       "mcpServers": {
         "zabbix-mcp-server-startup": {
           "command": "uv",
-          "args": ["run", "python", "scripts/start_server.py"],
+          "args": [
+            "run",
+            "python",
+            "scripts/start_server.py"
+          ],
           "env": {}
         },
         "zabbix-mcp-server": {
           "command": "uv",
-          "args": ["run", "python", "src/zabbix_mcp_server.py"],
+          "args": [
+            "run",
+            "python",
+            "src/zabbix_mcp_server.py"
+          ],
           "env": {}
         }
       }

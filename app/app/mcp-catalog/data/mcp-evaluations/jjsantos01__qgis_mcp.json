@@ -10,7 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${user_config.repo_path}/src/qgis_mcp", "run", "qgis_mcp_server.py"],
+      "args": [
+        "--directory",
+        "${user_config.repo_path}/src/qgis_mcp",
+        "run",
+        "qgis_mcp_server.py"
+      ],
       "env": {}
     }
   },
@@ -21,7 +26,7 @@
     "repo_path": {
       "type": "directory",
       "title": "QGIS MCP Repository Path",
-      "description": "Absolute path to the cloned qgis_mcp repository folder.",
+      "description": "The absolute path to the cloned 'qgis_mcp' repository folder.",
       "required": true
     }
   },

@@ -10,13 +10,16 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["tsx", "mcp-ser.ts"],
+      "args": [
+        "tsx",
+        "${__dirname}/src/index.ts"
+      ],
       "env": {
         "API_KEY": "${user_config.api_key}",
         "ODBC_DSN": "${user_config.odbc_dsn}",
         "ODBC_USER": "${user_config.odbc_user}",
         "ODBC_PASSWORD": "${user_config.odbc_password}",
-        "ODBCINI": "${user_config.odbc_ini_path}"
+        "ODBCINI": "${user_config.odbcini}"
       }
     }
   },
@@ -27,36 +30,35 @@
     "odbc_dsn": {
       "type": "string",
       "title": "ODBC Data Source Name (DSN)",
-      "description": "The name of the ODBC Data Source to connect to, as defined in your odbc.ini file.",
+      "description": "The ODBC Data Source Name to connect to. Run 'odbcinst -q -s' to list available DSNs.",
       "required": true,
       "default": "Local Virtuoso"
     },
     "odbc_user": {
       "type": "string",
-      "title": "ODBC Username",
-      "description": "The username for authenticating with the ODBC data source.",
+      "title": "ODBC User",
+      "description": "The username for the ODBC connection.",
       "required": true,
       "default": "dba"
     },
     "odbc_password": {
       "type": "string",
       "title": "ODBC Password",
-      "description": "The password for authenticating with the ODBC data source.",
+      "description": "The password for the ODBC connection.",
       "required": true,
       "sensitive": true,
       "default": "dba"
     },
-    "odbc_ini_path": {
+    "odbcini": {
       "type": "file",
       "title": "ODBC INI File Path",
-      "description": "The full path to the odbc.ini file that contains the DSN definitions. You can find this by running 'odbcinst -j'.",
-      "required": true,
-      "default": "/Library/ODBC/odbc.ini"
+      "description": "The full path to the odbc.ini file. Run 'odbcinst -j' to find the location of this file on your system.",
+      "required": true
     },
     "api_key": {
       "type": "string",
-      "title": "LLM API Key (Optional)",
-      "description": "API Key for the target Large Language Model (LLM), used for the OpenLink AI Layer (OPAL) via ODBC. Only required if using OPAL features.",
+      "title": "LLM API Key",
+      "description": "Optional API Key for a target Large Language Model (LLM), used for the OpenLink AI Layer (OPAL) via ODBC.",
       "required": false,
       "sensitive": true
     }

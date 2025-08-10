@@ -10,14 +10,16 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["${user_config.server_command}"],
+      "args": [
+        "${user_config.server_variant}"
+      ],
       "env": {
-        "ELASTICSEARCH_HOSTS": "${user_config.elasticsearch_hosts}",
-        "ELASTICSEARCH_USERNAME": "${user_config.elasticsearch_username}",
-        "ELASTICSEARCH_PASSWORD": "${user_config.elasticsearch_password}",
-        "OPENSEARCH_HOSTS": "${user_config.opensearch_hosts}",
-        "OPENSEARCH_USERNAME": "${user_config.opensearch_username}",
-        "OPENSEARCH_PASSWORD": "${user_config.opensearch_password}"
+        "ELASTICSEARCH_HOSTS": "${user_config.hosts}",
+        "ELASTICSEARCH_USERNAME": "${user_config.username}",
+        "ELASTICSEARCH_PASSWORD": "${user_config.password}",
+        "OPENSEARCH_HOSTS": "${user_config.hosts}",
+        "OPENSEARCH_USERNAME": "${user_config.username}",
+        "OPENSEARCH_PASSWORD": "${user_config.password}"
       }
     }
   },
@@ -25,56 +27,34 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "server_command": {
+    "server_variant": {
       "type": "string",
-      "title": "Server Command",
-      "description": "The server command to run. Use 'elasticsearch-mcp-server' for Elasticsearch 8.x, 'elasticsearch-mcp-server-es7' for 7.x, 'elasticsearch-mcp-server-es9' for 9.x, or 'opensearch-mcp-server' for OpenSearch.",
+      "title": "Server Variant",
+      "description": "The server variant to run, corresponding to the target database version. Options: 'elasticsearch-mcp-server' (ES 8.x), 'elasticsearch-mcp-server-es7' (ES 7.x), 'elasticsearch-mcp-server-es9' (ES 9.x), 'opensearch-mcp-server' (OpenSearch).",
       "required": true,
       "default": "elasticsearch-mcp-server"
     },
-    "elasticsearch_hosts": {
+    "hosts": {
       "type": "string",
-      "title": "Elasticsearch Hosts (if used)",
-      "description": "The host URL for the Elasticsearch cluster (e.g., https://localhost:9200). Leave blank if using OpenSearch.",
-      "required": false,
+      "title": "Elasticsearch/OpenSearch Host",
+      "description": "The host URL for the database.",
+      "required": true,
       "default": "https://localhost:9200"
     },
-    "elasticsearch_username": {
+    "username": {
       "type": "string",
-      "title": "Elasticsearch Username (if used)",
-      "description": "The username for connecting to the Elasticsearch cluster. Leave blank if using OpenSearch.",
-      "required": false,
+      "title": "Username",
+      "description": "The username for authentication. The default for the provided Docker Compose Elasticsearch is 'elastic'. The default for OpenSearch is 'admin'.",
+      "required": true,
       "default": "elastic"
     },
-    "elasticsearch_password": {
+    "password": {
       "type": "string",
-      "title": "Elasticsearch Password (if used)",
-      "description": "The password for connecting to the Elasticsearch cluster. Leave blank if using OpenSearch.",
-      "required": false,
+      "title": "Password",
+      "description": "The password for authentication. The default for the provided Docker Compose Elasticsearch is 'test123'. The default for OpenSearch is 'admin'.",
+      "required": true,
       "sensitive": true,
       "default": "test123"
-    },
-    "opensearch_hosts": {
-      "type": "string",
-      "title": "OpenSearch Hosts (if used)",
-      "description": "The host URL for the OpenSearch cluster (e.g., https://localhost:9200). Leave blank if using Elasticsearch.",
-      "required": false,
-      "default": "https://localhost:9200"
-    },
-    "opensearch_username": {
-      "type": "string",
-      "title": "OpenSearch Username (if used)",
-      "description": "The username for connecting to the OpenSearch cluster. Leave blank if using Elasticsearch.",
-      "required": false,
-      "default": "admin"
-    },
-    "opensearch_password": {
-      "type": "string",
-      "title": "OpenSearch Password (if used)",
-      "description": "The password for connecting to the OpenSearch cluster. Leave blank if using Elasticsearch.",
-      "required": false,
-      "sensitive": true,
-      "default": "admin"
     }
   },
   "readme": "\n# Elasticsearch/OpenSearch MCP Server\n\n[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/cr7258-elasticsearch-mcp-server-badge.png)](https://mseep.ai/app/cr7258-elasticsearch-mcp-server)\n\n## Overview\n\nA Model Context Protocol (MCP) server implementation that provides Elasticsearch and OpenSearch interaction. This server enables searching documents, analyzing indices, and managing cluster through a set of tools.\n\n<a href=\"https://glama.ai/mcp/servers/b3po3delex\"><img width=\"380\" height=\"200\" src=\"https://glama.ai/mcp/servers/b3po3delex/badge\" alt=\"Elasticsearch MCP Server\" /></a>\n\n## Demo\n\nhttps://github.com/user-attachments/assets/f7409e31-fac4-4321-9c94-b0ff2ea7ff15\n\n## Features\n\n### General Operations\n\n- `general_api_request`: Perform a general HTTP API request. Use this tool for any Elasticsearch/OpenSearch API that does not have a dedicated tool.\n\n### Index Operations\n\n- `list_indices`: List all indices.\n- `get_index`: Returns information (mappings, settings, aliases) about one or more indices.\n- `create_index`: Create a new index.\n- `delete_index`: Delete an index.\n\n### Document Operations\n\n- `search_documents`: Search for documents.\n- `index_document`: Creates or updates a document in the index.\n- `get_document`: Get a document by ID.\n- `delete_document`: Delete a document by ID.\n- `delete_by_query`: Deletes documents matching the provided query.\n\n### Cluster Operations\n\n- `get_cluster_health`: Returns basic information about the health of the cluster.\n- `get_cluster_stats`: Returns high-level overview of cluster statistics.\n\n### Alias Operations\n\n- `list_aliases`: List all aliases.\n- `get_alias`: Get alias information for a specific index.\n- `put_alias`: Create or update an alias for a specific index.\n- `delete_alias`: Delete an alias for a specific index.\n\n## Configure Environment Variables\n\nCopy the `.env.example` file to `.env` and update the values accordingly.\n\n## Start Elasticsearch/OpenSearch Cluster\n\nStart the Elasticsearch/OpenSearch cluster using Docker Compose:\n\n```bash\n# For Elasticsearch\ndocker-compose -f docker-compose-elasticsearch.yml up -d\n\n# For OpenSearch\ndocker-compose -f docker-compose-opensearch.yml up -d\n```\n\nThe default Elasticsearch username is `elastic` and password is `test123`. The default OpenSearch username is `admin` and password is `admin`.\n\nYou can access Kibana/OpenSearch Dashboards from http://localhost:5601.\n\n## Stdio\n\n### Option 1: Using uvx\n\nUsing `uvx` will automatically install the package from PyPI, no need to clone the repository locally. Add the following configuration to 's config file `claude_desktop_config.json`.\n\n```json\n// For Elasticsearch\n{\n  \"mcpServers\": {\n    \"elasticsearch-mcp-server\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"elasticsearch-mcp-server\"\n      ],\n      \"env\": {\n        \"ELASTICSEARCH_HOSTS\": \"https://localhost:9200\",\n        \"ELASTICSEARCH_USERNAME\": \"elastic\",\n        \"ELASTICSEARCH_PASSWORD\": \"test123\"\n      }\n    }\n  }\n}\n\n// For OpenSearch\n{\n  \"mcpServers\": {\n    \"opensearch-mcp-server\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"opensearch-mcp-server\"\n      ],\n      \"env\": {\n        \"OPENSEARCH_HOSTS\": \"https://localhost:9200\",\n        \"OPENSEARCH_USERNAME\": \"admin\",\n        \"OPENSEARCH_PASSWORD\": \"admin\"\n      }\n    }\n  }\n}\n```\n\n### Option 2: Using uv with local development\n\nUsing `uv` requires cloning the repository locally and specifying the path to the source code. Add the following configuration to Claude Desktop's config file `claude_desktop_config.json`.\n\n```json\n// For Elasticsearch\n{\n  \"mcpServers\": {\n    \"elasticsearch-mcp-server\": {\n      \"command\": \"uv\",\n      \"args\": [\n        \"--directory\",\n        \"path/to/src/elasticsearch_mcp_server\",\n        \"run\",\n        \"elasticsearch-mcp-server\"\n      ],\n      \"env\": {\n        \"ELASTICSEARCH_HOSTS\": \"https://localhost:9200\",\n        \"ELASTICSEARCH_USERNAME\": \"elastic\",\n        \"ELASTICSEARCH_PASSWORD\": \"test123\"\n      }\n    }\n  }\n}\n\n// For OpenSearch\n{\n  \"mcpServers\": {\n    \"opensearch-mcp-server\": {\n      \"command\": \"uv\",\n      \"args\": [\n        \"--directory\",\n        \"path/to/src/elasticsearch_mcp_server\",\n        \"run\",\n        \"opensearch-mcp-server\"\n      ],\n      \"env\": {\n        \"OPENSEARCH_HOSTS\": \"https://localhost:9200\",\n        \"OPENSEARCH_USERNAME\": \"admin\",\n        \"OPENSEARCH_PASSWORD\": \"admin\"\n      }\n    }\n  }\n}\n```\n\n## SSE\n\n### Option 1: Using uvx\n\n```bash\n# export environment variables\nexport ELASTICSEARCH_HOSTS=\"https://localhost:9200\"\nexport ELASTICSEARCH_USERNAME=\"elastic\"\nexport ELASTICSEARCH_PASSWORD=\"test123\"\n\n# By default, the SSE MCP server will serve on http://127.0.0.1:8000/sse\nuvx elasticsearch-mcp-server --transport sse\n\n# The host, port, and path can be specified using the --host, --port, and --path options\nuvx elasticsearch-mcp-server --transport sse --host 0.0.0.0 --port 8000 --path /sse\n```\n\n### Option 2: Using uv\n\n```bash\n# By default, the SSE MCP server will serve on http://127.0.0.1:8000/sse\nuv run src/server.py elasticsearch-mcp-server --transport sse\n\n# The host, port, and path can be specified using the --host, --port, and --path options\nuv run src/server.py elasticsearch-mcp-server --transport sse --host 0.0.0.0 --port 8000 --path /sse\n```\n\n## Streamable HTTP\n\n### Option 1: Using uvx\n\n```bash\n# export environment variables\nexport ELASTICSEARCH_HOSTS=\"https://localhost:9200\"\nexport ELASTICSEARCH_USERNAME=\"elastic\"\nexport ELASTICSEARCH_PASSWORD=\"test123\"\n\n# By default, the Streamable HTTP MCP server will serve on http://127.0.0.1:8000/mcp\nuvx elasticsearch-mcp-server --transport streamable-http\n\n# The host, port, and path can be specified using the --host, --port, and --path options\nuvx elasticsearch-mcp-server --transport streamable-http --host 0.0.0.0 --port 8000 --path /mcp\n```\n\n### Option 2: Using uv\n\n```bash\n# By default, the Streamable HTTP MCP server will serve on http://127.0.0.1:8000/mcp\nuv run src/server.py elasticsearch-mcp-server --transport streamable-http\n\n# The host, port, and path can be specified using the --host, --port, and --path options\nuv run src/server.py elasticsearch-mcp-server --transport streamable-http --host 0.0.0.0 --port 8000 --path /mcp\n```\n\n## Compatibility\n\nThe MCP server is compatible with Elasticsearch 7.x, 8.x, and 9.x. By default, it uses the Elasticsearch 8.x client (without a suffix). To use the Elasticsearch 7.x client, run the `elasticsearch-mcp-server-es7` variant. For Elasticsearch 9.x, use `elasticsearch-mcp-server-es9`. For example:\n\n```bash\nuvx elasticsearch-mcp-server-es7\n```\n\n| MCP Server | Elasticsearch |\n| --- | --- |\n| elasticsearch-mcp-server-es7 | Elasticsearch 7.x |\n| elasticsearch-mcp-server | Elasticsearch 8.x |\n| elasticsearch-mcp-server-es9 | Elasticsearch 9.x |\n| opensearch-mcp-server | OpenSearch 1.x, 2.x, 3.x |\n\n## License\n\nThis project is licensed under the Apache License Version 2.0 - see the [LICENSE](LICENSE) file for details.\n",
@@ -85,7 +65,9 @@
       "mcpServers": {
         "elasticsearch-mcp-server-stdio-uvx": {
           "command": "uvx",
-          "args": ["elasticsearch-mcp-server"],
+          "args": [
+            "elasticsearch-mcp-server"
+          ],
           "env": {
             "ELASTICSEARCH_HOSTS": "https://localhost:9200",
             "ELASTICSEARCH_USERNAME": "elastic",
@@ -94,7 +76,9 @@
         },
         "opensearch-mcp-server-stdio-uvx": {
           "command": "uvx",
-          "args": ["opensearch-mcp-server"],
+          "args": [
+            "opensearch-mcp-server"
+          ],
           "env": {
             "OPENSEARCH_HOSTS": "https://localhost:9200",
             "OPENSEARCH_USERNAME": "admin",
@@ -103,7 +87,12 @@
         },
         "elasticsearch-mcp-server-stdio-uv-local": {
           "command": "uv",
-          "args": ["--directory", "path/to/src/elasticsearch_mcp_server", "run", "elasticsearch-mcp-server"],
+          "args": [
+            "--directory",
+            "path/to/src/elasticsearch_mcp_server",
+            "run",
+            "elasticsearch-mcp-server"
+          ],
           "env": {
             "ELASTICSEARCH_HOSTS": "https://localhost:9200",
             "ELASTICSEARCH_USERNAME": "elastic",
@@ -112,7 +101,12 @@
         },
         "opensearch-mcp-server-stdio-uv-local": {
           "command": "uv",
-          "args": ["--directory", "path/to/src/elasticsearch_mcp_server", "run", "opensearch-mcp-server"],
+          "args": [
+            "--directory",
+            "path/to/src/elasticsearch_mcp_server",
+            "run",
+            "opensearch-mcp-server"
+          ],
           "env": {
             "OPENSEARCH_HOSTS": "https://localhost:9200",
             "OPENSEARCH_USERNAME": "admin",
@@ -121,7 +115,11 @@
         },
         "elasticsearch-mcp-server-sse-uvx": {
           "command": "uvx",
-          "args": ["elasticsearch-mcp-server", "--transport", "sse"],
+          "args": [
+            "elasticsearch-mcp-server",
+            "--transport",
+            "sse"
+          ],
           "env": {
             "ELASTICSEARCH_HOSTS": "https://localhost:9200",
             "ELASTICSEARCH_USERNAME": "elastic",
@@ -149,7 +147,13 @@
         },
         "elasticsearch-mcp-server-sse-uv": {
           "command": "uv",
-          "args": ["run", "src/server.py", "elasticsearch-mcp-server", "--transport", "sse"],
+          "args": [
+            "run",
+            "src/server.py",
+            "elasticsearch-mcp-server",
+            "--transport",
+            "sse"
+          ],
           "env": {}
         },
         "elasticsearch-mcp-server-sse-uv-custom": {
@@ -171,7 +175,11 @@
         },
         "elasticsearch-mcp-server-streamable-http-uvx": {
           "command": "uvx",
-          "args": ["elasticsearch-mcp-server", "--transport", "streamable-http"],
+          "args": [
+            "elasticsearch-mcp-server",
+            "--transport",
+            "streamable-http"
+          ],
           "env": {
             "ELASTICSEARCH_HOSTS": "https://localhost:9200",
             "ELASTICSEARCH_USERNAME": "elastic",
@@ -199,7 +207,13 @@
         },
         "elasticsearch-mcp-server-streamable-http-uv": {
           "command": "uv",
-          "args": ["run", "src/server.py", "elasticsearch-mcp-server", "--transport", "streamable-http"],
+          "args": [
+            "run",
+            "src/server.py",
+            "elasticsearch-mcp-server",
+            "--transport",
+            "streamable-http"
+          ],
           "env": {}
         },
         "elasticsearch-mcp-server-streamable-http-uv-custom": {
@@ -221,7 +235,9 @@
         },
         "elasticsearch-mcp-server-es7-uvx": {
           "command": "uvx",
-          "args": ["elasticsearch-mcp-server-es7"],
+          "args": [
+            "elasticsearch-mcp-server-es7"
+          ],
           "env": {}
         }
       }

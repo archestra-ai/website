@@ -11,7 +11,12 @@
     "type": "node",
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "mcp-typescribe@latest", "run-server", "${user_config.api_json_path}"],
+      "args": [
+        "-y",
+        "mcp-typescribe@latest",
+        "run-server",
+        "${user_config.api_json_path}"
+      ],
       "env": {}
     }
   },
@@ -34,7 +39,12 @@
       "mcpServers": {
         "mcp-typescribe": {
           "command": "npx",
-          "args": ["-y", "mcp-typescribe@latest", "run-server", "<PATH_TO_API_DOT_JSON>"],
+          "args": [
+            "-y",
+            "mcp-typescribe@latest",
+            "run-server",
+            "<PATH_TO_API_DOT_JSON>"
+          ],
           "env": {}
         }
       }

@@ -8,10 +8,11 @@
     "name": "JamesANZ"
   },
   "server": {
-    "type": "node",
     "mcp_config": {
       "command": "npm",
-      "args": ["start"],
+      "args": [
+        "start"
+      ],
       "env": {
         "OPENAI_API_KEY": "${user_config.openai_api_key}",
         "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
@@ -29,42 +30,42 @@
     "openai_api_key": {
       "type": "string",
       "title": "OpenAI API Key",
-      "description": "Your API key for OpenAI/ChatGPT. Create one at the OpenAI Platform.",
-      "sensitive": true,
-      "required": true
+      "description": "Your API key for OpenAI/ChatGPT. Create one at platform.openai.com/api-keys.",
+      "required": true,
+      "sensitive": true
     },
     "anthropic_api_key": {
       "type": "string",
       "title": "Anthropic API Key",
-      "description": "Your API key for Anthropic/Claude. Create one at the Anthropic Console.",
-      "sensitive": true,
-      "required": true
+      "description": "Your API key for Anthropic/Claude. Create one at console.anthropic.com.",
+      "required": true,
+      "sensitive": true
     },
     "deepseek_api_key": {
       "type": "string",
       "title": "DeepSeek API Key",
-      "description": "Your API key for DeepSeek. Create one at the DeepSeek Platform.",
-      "sensitive": true,
-      "required": true
+      "description": "Your API key for DeepSeek. Create one at platform.deepseek.com.",
+      "required": true,
+      "sensitive": true
     },
     "default_chatgpt_model": {
       "type": "string",
       "title": "Default ChatGPT Model",
-      "description": "Default ChatGPT model to use if not specified in a request.",
+      "description": "The default ChatGPT model to use if not specified in a tool call.",
       "required": false,
       "default": "gpt-4"
     },
     "default_claude_model": {
       "type": "string",
       "title": "Default Claude Model",
-      "description": "Default Claude model to use if not specified in a request.",
+      "description": "The default Claude model to use if not specified in a tool call.",
       "required": false,
       "default": "claude-3-sonnet-20240229"
     },
     "default_deepseek_model": {
       "type": "string",
       "title": "Default DeepSeek Model",
-      "description": "Default DeepSeek model to use if not specified in a request.",
+      "description": "The default DeepSeek model to use if not specified in a tool call.",
       "required": false,
       "default": "deepseek-chat"
     }
@@ -77,7 +78,9 @@
       "mcpServers": {
         "cross-llm-mcp": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         }
       }

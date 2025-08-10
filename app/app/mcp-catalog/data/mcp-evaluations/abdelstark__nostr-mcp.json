@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "npm",
-      "args": ["start"],
+      "args": [
+        "start"
+      ],
       "env": {
         "LOG_LEVEL": "${user_config.log_level}",
         "NODE_ENV": "${user_config.node_env}",
@@ -76,12 +78,17 @@
       "mcpServers": {
         "nostr-mcp-dev": {
           "command": "npm",
-          "args": ["run", "dev"],
+          "args": [
+            "run",
+            "dev"
+          ],
           "env": {}
         },
         "nostr-mcp-prod": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         }
       }

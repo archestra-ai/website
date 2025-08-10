@@ -8,6 +8,7 @@
     "name": "sonirico"
   },
   "server": {
+    "type": "binary",
     "mcp_config": {
       "command": "mcp-stockfish",
       "args": [],
@@ -32,35 +33,35 @@
     "server_mode": {
       "type": "string",
       "title": "Server Mode",
-      "description": "The mode to run the server in ('stdio' or 'http').",
+      "description": "The mode to run the server in. Can be 'stdio' or 'http'.",
       "required": false,
       "default": "stdio"
     },
     "http_host": {
       "type": "string",
       "title": "HTTP Host",
-      "description": "HTTP host to bind to when server mode is 'http'.",
+      "description": "The host to bind the HTTP server to. Only used in 'http' mode.",
       "required": false,
       "default": "localhost"
     },
     "http_port": {
       "type": "number",
       "title": "HTTP Port",
-      "description": "HTTP port to bind to when server mode is 'http'.",
+      "description": "The port to bind the HTTP server to. Only used in 'http' mode.",
       "required": false,
       "default": 8080
     },
     "stockfish_path": {
       "type": "file",
-      "title": "Stockfish Binary Path",
-      "description": "Path to the Stockfish binary. If not provided, it must be in the system's PATH.",
+      "title": "Stockfish Path",
+      "description": "Path to the Stockfish binary executable.",
       "required": false,
       "default": "stockfish"
     },
     "max_sessions": {
       "type": "number",
       "title": "Max Concurrent Sessions",
-      "description": "Maximum number of concurrent Stockfish sessions to allow.",
+      "description": "The maximum number of concurrent Stockfish sessions.",
       "required": false,
       "default": 10
     },
@@ -81,19 +82,19 @@
     "log_level": {
       "type": "string",
       "title": "Log Level",
-      "description": "Set the logging level (e.g., debug, info, warn, error, fatal).",
+      "description": "Set the logging level. Can be: debug, info, warn, error, fatal.",
       "required": false
     },
     "log_format": {
       "type": "string",
       "title": "Log Format",
-      "description": "Set the logging format (e.g., json, console).",
+      "description": "Set the logging format. Can be: json, console.",
       "required": false
     },
     "log_output": {
       "type": "string",
       "title": "Log Output",
-      "description": "Set the logging output destination (e.g., stdout, stderr).",
+      "description": "Set the logging output destination. Can be: stdout, stderr.",
       "required": false
     }
   },

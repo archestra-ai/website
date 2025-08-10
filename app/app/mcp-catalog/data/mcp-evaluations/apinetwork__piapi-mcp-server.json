@@ -10,9 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
       "env": {
-        "PIAPI_API_KEY": "${user_config.api_key}"
+        "PIAPI_API_KEY": "${user_config.piapi_api_key}"
       }
     }
   },
@@ -20,10 +22,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "api_key": {
+    "piapi_api_key": {
       "type": "string",
       "title": "PiAPI API Key",
-      "description": "Your API key for PiAPI. Get one at piapi.ai/workspace/key",
+      "description": "Your API key for PiAPI. You can get one at piapi.ai/workspace/key.",
       "required": true,
       "sensitive": true
     }
@@ -36,14 +38,19 @@
       "mcpServers": {
         "piapi-mcp-server-configured": {
           "command": "node",
-          "args": ["/absolute/path/to/piapi-mcp-server/dist/index.js"],
+          "args": [
+            "/absolute/path/to/piapi-mcp-server/dist/index.js"
+          ],
           "env": {
             "PIAPI_API_KEY": "your_api_key_here"
           }
         },
         "piapi-mcp-server-inspect": {
           "command": "npm",
-          "args": ["run", "inspect"],
+          "args": [
+            "run",
+            "inspect"
+          ],
           "env": {
             "PIAPI_API_KEY": "your_api_key_here"
           }

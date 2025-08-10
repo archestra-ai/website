@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@iplocate/mcp-server"],
+      "args": [
+        "-y",
+        "@iplocate/mcp-server"
+      ],
       "env": {
         "IPLOCATE_API_KEY": "${user_config.api_key}"
       }
@@ -23,7 +26,7 @@
     "api_key": {
       "type": "string",
       "title": "IPLocate.io API Key",
-      "description": "Your API key from IPLocate.io. Optional, but provides a higher request limit (1,000/day).",
+      "description": "Your API key from IPLocate.io. A free key increases the request quota from 50 to 1,000 per day. Sign up at https://iplocate.io/signup.",
       "sensitive": true,
       "required": false
     }
@@ -36,19 +39,28 @@
       "mcpServers": {
         "iplocate-mcp-server": {
           "command": "npx",
-          "args": ["-y", "@iplocate/mcp-server"],
+          "args": [
+            "-y",
+            "@iplocate/mcp-server"
+          ],
           "env": {}
         },
         "iplocate-mcp-server-with-api-key": {
           "command": "npx",
-          "args": ["-y", "@iplocate/mcp-server"],
+          "args": [
+            "-y",
+            "@iplocate/mcp-server"
+          ],
           "env": {
             "IPLOCATE_API_KEY": "your_api_key_here"
           }
         },
         "iplocate-mcp-server-stdio": {
           "command": "npx",
-          "args": ["-y", "@iplocate/mcp-server"],
+          "args": [
+            "-y",
+            "@iplocate/mcp-server"
+          ],
           "env": {
             "IPLOCATE_API_KEY": "your_api_key_here"
           }
@@ -60,12 +72,16 @@
         },
         "iplocate-mcp-server-yarn-start": {
           "command": "yarn",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "iplocate-mcp-server-yarn-dev": {
           "command": "yarn",
-          "args": ["dev"],
+          "args": [
+            "dev"
+          ],
           "env": {}
         }
       }

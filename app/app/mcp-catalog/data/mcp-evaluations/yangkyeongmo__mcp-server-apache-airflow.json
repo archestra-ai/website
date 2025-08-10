@@ -10,9 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@yangkyeongmo/mcp-server-apache-airflow"],
+      "args": [
+        "-y",
+        "@yangkyeongmo/mcp-server-apache-airflow"
+      ],
       "env": {
-        "AIRFLOW_WEBSERVER_URL": "${user_config.airflow_webserver_url}",
+        "AIRFLOW_URL": "${user_config.airflow_url}",
         "AIRFLOW_USERNAME": "${user_config.airflow_username}",
         "AIRFLOW_PASSWORD": "${user_config.airflow_password}"
       }
@@ -22,12 +25,11 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "airflow_webserver_url": {
+    "airflow_url": {
       "type": "string",
-      "title": "Airflow Webserver URL",
-      "description": "The base URL of your Apache Airflow webserver.",
-      "required": true,
-      "default": "http://localhost:8080"
+      "title": "Airflow URL",
+      "description": "The base URL of your Apache Airflow webserver (e.g., http://localhost:8080).",
+      "required": true
     },
     "airflow_username": {
       "type": "string",

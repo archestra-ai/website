@@ -10,18 +10,23 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "modbus-mcp"],
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "modbus-mcp"
+      ],
       "env": {
-        "MODBUS_TYPE": "${user_config.MODBUS_TYPE}",
-        "MODBUS_HOST": "${user_config.MODBUS_HOST}",
-        "MODBUS_PORT": "${user_config.MODBUS_PORT}",
-        "MODBUS_DEFAULT_SLAVE_ID": "${user_config.MODBUS_DEFAULT_SLAVE_ID}",
-        "MODBUS_SERIAL_PORT": "${user_config.MODBUS_SERIAL_PORT}",
-        "MODBUS_BAUDRATE": "${user_config.MODBUS_BAUDRATE}",
-        "MODBUS_PARITY": "${user_config.MODBUS_PARITY}",
-        "MODBUS_STOPBITS": "${user_config.MODBUS_STOPBITS}",
-        "MODBUS_BYTESIZE": "${user_config.MODBUS_BYTESIZE}",
-        "MODBUS_TIMEOUT": "${user_config.MODBUS_TIMEOUT}"
+        "MODBUS_TYPE": "${user_config.modbus_type}",
+        "MODBUS_HOST": "${user_config.modbus_host}",
+        "MODBUS_PORT": "${user_config.modbus_port}",
+        "MODBUS_DEFAULT_SLAVE_ID": "${user_config.modbus_default_slave_id}",
+        "MODBUS_SERIAL_PORT": "${user_config.modbus_serial_port}",
+        "MODBUS_BAUDRATE": "${user_config.modbus_baudrate}",
+        "MODBUS_PARITY": "${user_config.modbus_parity}",
+        "MODBUS_STOPBITS": "${user_config.modbus_stopbits}",
+        "MODBUS_BYTESIZE": "${user_config.modbus_bytesize}",
+        "MODBUS_TIMEOUT": "${user_config.modbus_timeout}"
       }
     }
   },
@@ -29,73 +34,73 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "MODBUS_TYPE": {
+    "modbus_type": {
       "type": "string",
-      "title": "Connection Type",
-      "description": "The Modbus connection type: `tcp`, `udp`, or `serial`.",
+      "title": "Modbus Connection Type",
+      "description": "Connection type: `tcp`, `udp`, or `serial`",
       "required": true,
       "default": "tcp"
     },
-    "MODBUS_HOST": {
+    "modbus_host": {
       "type": "string",
       "title": "Modbus Host",
-      "description": "Host address for TCP/UDP connections. Required if type is `tcp` or `udp`.",
+      "description": "Host address for TCP/UDP connections. Required if type is 'tcp' or 'udp'.",
       "required": false,
       "default": "127.0.0.1"
     },
-    "MODBUS_PORT": {
+    "modbus_port": {
       "type": "number",
       "title": "Modbus Port",
-      "description": "Port for TCP/UDP connections. Required if type is `tcp` or `udp`.",
+      "description": "Port for TCP/UDP connections. Required if type is 'tcp' or 'udp'.",
       "required": false,
       "default": 502
     },
-    "MODBUS_DEFAULT_SLAVE_ID": {
+    "modbus_default_slave_id": {
       "type": "number",
       "title": "Default Slave ID",
-      "description": "The default slave ID for Modbus communications. Required if type is `tcp` or `udp`.",
+      "description": "The default slave ID for the Modbus device. Required if type is 'tcp' or 'udp'.",
       "required": false,
       "default": 1
     },
-    "MODBUS_SERIAL_PORT": {
+    "modbus_serial_port": {
       "type": "string",
-      "title": "Serial Port",
-      "description": "The serial port (e.g., `/dev/ttyUSB0`, `COM1`). Required if type is `serial`.",
+      "title": "Modbus Serial Port",
+      "description": "Serial port (e.g., `/dev/ttyUSB0`, `COM1`). Required if type is 'serial'.",
       "required": false,
       "default": "/dev/ttyUSB0"
     },
-    "MODBUS_BAUDRATE": {
+    "modbus_baudrate": {
       "type": "number",
-      "title": "Baud Rate",
-      "description": "The serial baud rate. Required if type is `serial`.",
+      "title": "Serial Baud Rate",
+      "description": "Serial baud rate. Required if type is 'serial'.",
       "required": false,
       "default": 9600
     },
-    "MODBUS_PARITY": {
+    "modbus_parity": {
       "type": "string",
-      "title": "Parity",
-      "description": "Serial parity: `N` (none), `E` (even), `O` (odd). Required if type is `serial`.",
+      "title": "Serial Parity",
+      "description": "Serial parity: `N` (none), `E` (even), `O` (odd). Required if type is 'serial'.",
       "required": false,
       "default": "N"
     },
-    "MODBUS_STOPBITS": {
+    "modbus_stopbits": {
       "type": "number",
-      "title": "Stop Bits",
-      "description": "The number of serial stop bits. Required if type is `serial`.",
+      "title": "Serial Stop Bits",
+      "description": "Serial stop bits. Required if type is 'serial'.",
       "required": false,
       "default": 1
     },
-    "MODBUS_BYTESIZE": {
+    "modbus_bytesize": {
       "type": "number",
-      "title": "Byte Size",
-      "description": "The serial byte size. Required if type is `serial`.",
+      "title": "Serial Byte Size",
+      "description": "Serial byte size. Required if type is 'serial'.",
       "required": false,
       "default": 8
     },
-    "MODBUS_TIMEOUT": {
+    "modbus_timeout": {
       "type": "number",
-      "title": "Timeout (seconds)",
-      "description": "The serial connection timeout in seconds. Required if type is `serial`.",
+      "title": "Serial Timeout",
+      "description": "Serial timeout in seconds. Required if type is 'serial'.",
       "required": false,
       "default": 1
     }
@@ -108,7 +113,12 @@
       "mcpServers": {
         "modbus-mcp-tcp-configured": {
           "command": "uv",
-          "args": ["--directory", "/path/to/modbus-mcp", "run", "modbus-mcp"],
+          "args": [
+            "--directory",
+            "/path/to/modbus-mcp",
+            "run",
+            "modbus-mcp"
+          ],
           "env": {
             "MODBUS_TYPE": "tcp",
             "MODBUS_HOST": "127.0.0.1",

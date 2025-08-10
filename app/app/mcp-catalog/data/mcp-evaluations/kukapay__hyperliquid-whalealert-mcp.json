@@ -10,9 +10,14 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "main.py"],
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "main.py"
+      ],
       "env": {
-        "COINGLASS_API_KEY": "${user_config.COINGLASS_API_KEY}"
+        "COINGLASS_API_KEY": "${user_config.coinglass_api_key}"
       }
     }
   },
@@ -20,10 +25,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "COINGLASS_API_KEY": {
+    "coinglass_api_key": {
       "type": "string",
       "title": "CoinGlass API Key",
-      "description": "Obtain from CoinGlass (required for API access).",
+      "description": "Your API key from CoinGlass, required for API access.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +41,12 @@
       "mcpServers": {
         "hyperliquid-whalealert": {
           "command": "uv",
-          "args": ["--directory", "/path/to/hyperliquid-whalealert-mcp", "run", "main.py"],
+          "args": [
+            "--directory",
+            "/path/to/hyperliquid-whalealert-mcp",
+            "run",
+            "main.py"
+          ],
           "env": {
             "COINGLASS_API_KEY": "your_api_key"
           }

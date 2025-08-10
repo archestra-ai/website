@@ -14,10 +14,12 @@
         "run",
         "-i",
         "--rm",
+        "-v",
+        "${HOME}/.mcp-atlassian:/home/app/.mcp-atlassian",
         "-e",
         "CONFLUENCE_URL",
         "-e",
-        "CONFLUENCE_USERNAME",
+        "CONfluence_USERNAME",
         "-e",
         "CONFLUENCE_API_TOKEN",
         "-e",
@@ -34,19 +36,22 @@
         "READ_ONLY_MODE",
         "-e",
         "MCP_VERBOSE",
+        "-e",
+        "ENABLED_TOOLS",
         "ghcr.io/sooperset/mcp-atlassian:latest"
       ],
       "env": {
-        "CONFLUENCE_URL": "${user_config.CONFLUENCE_URL}",
-        "CONFLUENCE_USERNAME": "${user_config.CONFLUENCE_USERNAME}",
-        "CONFLUENCE_API_TOKEN": "${user_config.CONFLUENCE_API_TOKEN}",
-        "JIRA_URL": "${user_config.JIRA_URL}",
-        "JIRA_USERNAME": "${user_config.JIRA_USERNAME}",
-        "JIRA_API_TOKEN": "${user_config.JIRA_API_TOKEN}",
-        "CONFLUENCE_SPACES_FILTER": "${user_config.CONFLUENCE_SPACES_FILTER}",
-        "JIRA_PROJECTS_FILTER": "${user_config.JIRA_PROJECTS_FILTER}",
-        "READ_ONLY_MODE": "${user_config.READ_ONLY_MODE}",
-        "MCP_VERBOSE": "${user_config.MCP_VERBOSE}"
+        "CONFLUENCE_URL": "${user_config.confluence_url}",
+        "CONFLUENCE_USERNAME": "${user_config.confluence_username}",
+        "CONFLUENCE_API_TOKEN": "${user_config.confluence_api_token}",
+        "JIRA_URL": "${user_config.jira_url}",
+        "JIRA_USERNAME": "${user_config.jira_username}",
+        "JIRA_API_TOKEN": "${user_config.jira_api_token}",
+        "CONFLUENCE_SPACES_FILTER": "${user_config.confluence_spaces_filter}",
+        "JIRA_PROJECTS_FILTER": "${user_config.jira_projects_filter}",
+        "READ_ONLY_MODE": "${user_config.read_only_mode}",
+        "MCP_VERBOSE": "${user_config.verbose_logging}",
+        "ENABLED_TOOLS": "${user_config.enabled_tools}"
       }
     }
   },
@@ -54,68 +59,74 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "CONFLUENCE_URL": {
+    "confluence_url": {
       "type": "string",
       "title": "Confluence URL",
-      "description": "URL of your Confluence instance (e.g., https://your-domain.atlassian.net). Leave blank to disable Confluence integration.",
+      "description": "URL of your Confluence instance (e.g., https://your-domain.atlassian.net). Required to use Confluence tools.",
       "required": false
     },
-    "CONFLUENCE_USERNAME": {
+    "confluence_username": {
       "type": "string",
-      "title": "Confluence Username",
-      "description": "The email address associated with your Atlassian account for Confluence.",
+      "title": "Confluence Username (Email)",
+      "description": "Your Atlassian account email address. Required for API Token authentication with Confluence.",
       "required": false
     },
-    "CONFLUENCE_API_TOKEN": {
+    "confluence_api_token": {
       "type": "string",
       "title": "Confluence API/Personal Access Token",
-      "description": "Your Confluence API token (Cloud) or Personal Access Token (Server/Data Center).",
-      "sensitive": true,
-      "required": false
+      "description": "Your Confluence API Token (for Cloud) or Personal Access Token (for Server/Data Center).",
+      "required": false,
+      "sensitive": true
     },
-    "JIRA_URL": {
+    "jira_url": {
       "type": "string",
       "title": "Jira URL",
-      "description": "URL of your Jira instance (e.g., https://your-domain.atlassian.net). Leave blank to disable Jira integration.",
+      "description": "URL of your Jira instance (e.g., https://your-domain.atlassian.net). Required to use Jira tools.",
       "required": false
     },
-    "JIRA_USERNAME": {
+    "jira_username": {
       "type": "string",
-      "title": "Jira Username",
-      "description": "The email address associated with your Atlassian account for Jira.",
+      "title": "Jira Username (Email)",
+      "description": "Your Atlassian account email address. Required for API Token authentication with Jira.",
       "required": false
     },
-    "JIRA_API_TOKEN": {
+    "jira_api_token": {
       "type": "string",
       "title": "Jira API/Personal Access Token",
-      "description": "Your Jira API token (Cloud) or Personal Access Token (Server/Data Center).",
-      "sensitive": true,
-      "required": false
+      "description": "Your Jira API Token (for Cloud) or Personal Access Token (for Server/Data Center).",
+      "required": false,
+      "sensitive": true
     },
-    "CONFLUENCE_SPACES_FILTER": {
+    "confluence_spaces_filter": {
       "type": "string",
       "title": "Confluence Spaces Filter",
-      "description": "Optional: Comma-separated list of Confluence space keys to search within (e.g., DEV,TEAM,DOC).",
+      "description": "Optional: Comma-separated list of Confluence space keys to limit access to (e.g., 'DEV,TEAM').",
       "required": false
     },
-    "JIRA_PROJECTS_FILTER": {
+    "jira_projects_filter": {
       "type": "string",
       "title": "Jira Projects Filter",
-      "description": "Optional: Comma-separated list of Jira project keys to search within (e.g., PROJ,SUPPORT).",
+      "description": "Optional: Comma-separated list of Jira project keys to limit access to (e.g., 'PROJ,SUPPORT').",
       "required": false
     },
-    "READ_ONLY_MODE": {
+    "read_only_mode": {
       "type": "boolean",
       "title": "Read-Only Mode",
-      "description": "If enabled, the server will not perform any write operations (e.g., creating pages or issues).",
+      "description": "If checked, the server will be prevented from making any changes (e.g., creating pages or issues).",
       "default": false,
       "required": false
     },
-    "MCP_VERBOSE": {
+    "verbose_logging": {
       "type": "boolean",
       "title": "Verbose Logging",
-      "description": "Enable more detailed logging for debugging purposes.",
+      "description": "Enable more detailed server logs for debugging purposes.",
       "default": false,
+      "required": false
+    },
+    "enabled_tools": {
+      "type": "string",
+      "title": "Enabled Tools",
+      "description": "Optional: Comma-separated list of specific tool names to enable (e.g., 'confluence_search,jira_get_issue'). Leave empty to enable all available tools.",
       "required": false
     }
   },

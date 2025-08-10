@@ -10,7 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["run", "python", "${__dirname}/main.py"],
+      "args": [
+        "run",
+        "python",
+        "${__dirname}/main.py"
+      ],
       "env": {
         "DATABASE_URL": "${user_config.database_url}",
         "AUTH_TOKEN": "${user_config.auth_token}"
@@ -23,15 +27,15 @@
   "user_config": {
     "database_url": {
       "type": "string",
-      "title": "Database URL",
-      "description": "PostgreSQL connection string for your TeslaMate database (e.g., postgresql://username:password@hostname:port/teslamate).",
+      "title": "TeslaMate Database URL",
+      "description": "PostgreSQL connection string for your TeslaMate database. Format: postgresql://username:password@hostname:port/teslamate",
       "required": true,
       "sensitive": true
     },
     "auth_token": {
       "type": "string",
-      "title": "Authentication Token",
-      "description": "Optional bearer token to secure the server. If set, clients must provide this token to connect.",
+      "title": "Authentication Token (Optional)",
+      "description": "A secret bearer token to secure the server for remote access. If left blank, authentication is disabled.",
       "required": false,
       "sensitive": true
     }
@@ -44,7 +48,10 @@
       "mcpServers": {
         "teslamate-mcp-docker": {
           "command": "docker-compose",
-          "args": ["up", "-d"],
+          "args": [
+            "up",
+            "-d"
+          ],
           "env": {
             "DATABASE_URL": "postgresql://username:password@hostname:port/teslamate",
             "AUTH_TOKEN": "your-secret-bearer-token-here"
@@ -52,14 +59,22 @@
         },
         "teslamate-mcp-local": {
           "command": "uv",
-          "args": ["run", "python", "main.py"],
+          "args": [
+            "run",
+            "python",
+            "main.py"
+          ],
           "env": {
             "DATABASE_URL": "postgresql://username:password@hostname:port/teslamate"
           }
         },
         "teslamate-mcp-stdio": {
           "command": "uv",
-          "args": ["run", "python", "/path/to/teslamate-mcp/main.py"],
+          "args": [
+            "run",
+            "python",
+            "/path/to/teslamate-mcp/main.py"
+          ],
           "env": {
             "DATABASE_URL": "postgresql://username:password@hostname:port/teslamate"
           }

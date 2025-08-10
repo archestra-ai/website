@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/dist/mcp-server/src/index.js"],
+      "args": [
+        "${__dirname}/dist/mcp-server/src/index.js"
+      ],
       "env": {
         "MONGODB_URI": "${user_config.mongodb_uri}",
         "CDP_API_KEY_ID": "${user_config.cdp_api_key_id}",
@@ -28,29 +30,29 @@
   "user_config": {
     "mongodb_uri": {
       "type": "string",
-      "title": "MongoDB URI",
-      "description": "Database Connection string (Required for production). Example: mongodb+srv://username:password@cluster.mongodb.net/database",
+      "title": "MongoDB Connection URI",
+      "description": "Database connection string. Required for production.",
       "required": true,
       "sensitive": true
     },
     "cdp_api_key_id": {
       "type": "string",
       "title": "CDP API Key ID",
-      "description": "Your Coinbase Developer Platform API Key ID (Required for CDP disbursement).",
+      "description": "Your Coinbase Developer Platform API Key ID. Required for CDP disbursement.",
       "required": true,
       "sensitive": false
     },
     "cdp_api_key_secret": {
       "type": "string",
       "title": "CDP API Key Secret",
-      "description": "Your Coinbase Developer Platform API Key Secret (Required for CDP disbursement).",
+      "description": "Your Coinbase Developer Platform API Key Secret. Required for CDP disbursement.",
       "required": true,
       "sensitive": true
     },
     "x402_wallet_private_key": {
       "type": "string",
       "title": "x402 Wallet Private Key",
-      "description": "Your x402 wallet private key (Required for payment collection).",
+      "description": "The private key for the x402 payment collection wallet. Required for payment collection.",
       "required": true,
       "sensitive": true
     },
@@ -64,14 +66,14 @@
     "node_env": {
       "type": "string",
       "title": "Node Environment",
-      "description": "The runtime environment for the server. Use 'demo' for testing or 'production' for live use.",
+      "description": "The runtime environment for the server.",
       "required": false,
       "default": "production"
     },
     "log_level": {
       "type": "string",
       "title": "Log Level",
-      "description": "The logging level for the server (e.g., info, debug).",
+      "description": "The verbosity of server logs (e.g., info, debug).",
       "required": false,
       "default": "info"
     }
@@ -84,21 +86,27 @@
       "mcpServers": {
         "tip-md-demo": {
           "command": "node",
-          "args": ["dist/mcp-server/src/index.js"],
+          "args": [
+            "dist/mcp-server/src/index.js"
+          ],
           "env": {
             "NODE_ENV": "demo"
           }
         },
         "tip-md-x402-mcp-server-demo-npm": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {
             "NODE_ENV": "demo"
           }
         },
         "tip-md-x402-mcp-server-production": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {
             "NODE_ENV": "production"
           }

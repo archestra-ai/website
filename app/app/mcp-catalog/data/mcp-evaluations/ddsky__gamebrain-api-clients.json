@@ -10,7 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "mcp-remote", "https://api.gamebrain.co/v1/mcp?api-key=${user_config.api_key}"],
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://api.gamebrain.co/v1/mcp?api-key=${user_config.api_key}"
+      ],
       "env": {}
     }
   },
@@ -20,8 +24,8 @@
   "user_config": {
     "api_key": {
       "type": "string",
-      "title": "API Key",
-      "description": "Your free API key for the GameBrain MCP server.",
+      "title": "GameBrain API Key",
+      "description": "Your free API key from gamebrain.co.",
       "required": true,
       "sensitive": true
     }
@@ -34,7 +38,11 @@
       "mcpServers": {
         "mcp-remote": {
           "command": "npx",
-          "args": ["-y", "mcp-remote", "https://api.gamebrain.co/v1/mcp?api-key=YOUR_KEY"],
+          "args": [
+            "-y",
+            "mcp-remote",
+            "https://api.gamebrain.co/v1/mcp?api-key=YOUR_KEY"
+          ],
           "env": {}
         }
       }

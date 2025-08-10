@@ -9,10 +9,10 @@
   },
   "server": {
     "mcp_config": {
-      "command": "server/bgg-mcp",
+      "command": "${__dirname}/build/bgg-mcp",
       "args": [],
       "env": {
-        "BGG_USERNAME": "${user_config.bgg_username}"
+        "BGG_USERNAME": "${user_config.BGG_USERNAME}"
       }
     }
   },
@@ -20,7 +20,7 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "bgg_username": {
+    "BGG_USERNAME": {
       "type": "string",
       "title": "BGG Username",
       "description": "Your BoardGameGeek username. Setting this enables the use of 'me' and 'my' in queries for your collection and profile.",

@@ -9,8 +9,11 @@
   },
   "server": {
     "mcp_config": {
-      "command": "python",
-      "args": ["main.py"],
+      "command": "mcp",
+      "args": [
+        "dev",
+        "main.py"
+      ],
       "env": {}
     }
   },
@@ -26,7 +29,10 @@
       "mcpServers": {
         "hyperliquid-info": {
           "command": "mcp",
-          "args": ["dev", "main.py"],
+          "args": [
+            "dev",
+            "main.py"
+          ],
           "env": {}
         }
       }

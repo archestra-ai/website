@@ -8,11 +8,19 @@
     "name": "QAInsights"
   },
   "server": {
+    "type": "python",
+    "entry_point": "jmeter_server.py",
     "mcp_config": {
-      "command": "${user_config.uv_path}",
-      "args": ["--directory", "${__dirname}", "run", "jmeter_server.py"],
+      "command": "${user_config.uv_command}",
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "jmeter_server.py"
+      ],
       "env": {
         "JMETER_HOME": "${user_config.jmeter_home}",
+        "JMETER_BIN": "${user_config.jmeter_home}/bin/jmeter",
         "JMETER_JAVA_OPTS": "${user_config.jmeter_java_opts}"
       }
     }
@@ -21,23 +29,23 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "uv_path": {
+    "uv_command": {
       "type": "string",
-      "title": "uv Command/Path",
-      "description": "The command or full path for the 'uv' executable, which is required to run the server. If 'uv' is in your system's PATH, the default value should work.",
+      "title": "uv Command",
+      "description": "The command to run the 'uv' package manager, which is required to start the server. Can be a full path or just 'uv' if it's in your system's PATH.",
       "required": true,
       "default": "uv"
     },
     "jmeter_home": {
       "type": "directory",
       "title": "JMeter Home Directory",
-      "description": "Path to your Apache JMeter installation directory (e.g., /path/to/apache-jmeter-5.6.3). This is required to run JMeter tests.",
+      "description": "Path to your Apache JMeter installation directory. This value will be used to set the JMETER_HOME and JMETER_BIN environment variables for the server.",
       "required": true
     },
     "jmeter_java_opts": {
       "type": "string",
       "title": "JMeter Java Options",
-      "description": "Optional Java options for running JMeter, such as memory settings (e.g., -Xms1g -Xmx2g).",
+      "description": "Optional Java options to pass to JMeter for performance tuning (e.g., -Xms1g -Xmx2g). Sets the JMETER_JAVA_OPTS environment variable.",
       "required": false,
       "default": "-Xms1g -Xmx2g"
     }
@@ -50,7 +58,12 @@
       "mcpServers": {
         "jmeter": {
           "command": "/path/to/uv",
-          "args": ["--directory", "/path/to/jmeter-mcp-server", "run", "jmeter_server.py"],
+          "args": [
+            "--directory",
+            "/path/to/jmeter-mcp-server",
+            "run",
+            "jmeter_server.py"
+          ],
           "env": {}
         }
       }

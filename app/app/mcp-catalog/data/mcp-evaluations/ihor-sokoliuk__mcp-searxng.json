@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "mcp-searxng"],
+      "args": [
+        "-y",
+        "mcp-searxng"
+      ],
       "env": {
         "SEARXNG_URL": "${user_config.searxng_url}",
         "AUTH_USERNAME": "${user_config.auth_username}",
@@ -33,7 +36,8 @@
       "type": "string",
       "title": "Auth Username",
       "description": "The username for HTTP Basic Auth if the SearXNG instance is password protected.",
-      "required": false
+      "required": false,
+      "sensitive": true
     },
     "auth_password": {
       "type": "string",
@@ -51,7 +55,10 @@
       "mcpServers": {
         "mcp-searxng-npx": {
           "command": "npx",
-          "args": ["-y", "mcp-searxng"],
+          "args": [
+            "-y",
+            "mcp-searxng"
+          ],
           "env": {
             "SEARXNG_URL": "YOUR_SEARXNG_INSTANCE_URL"
           }
@@ -65,14 +72,28 @@
         },
         "isokoliuk-mcp-searxng-docker": {
           "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "SEARXNG_URL", "isokoliuk/mcp-searxng:latest"],
+          "args": [
+            "run",
+            "-i",
+            "--rm",
+            "-e",
+            "SEARXNG_URL",
+            "isokoliuk/mcp-searxng:latest"
+          ],
           "env": {
             "SEARXNG_URL": "YOUR_SEARXNG_INSTANCE_URL"
           }
         },
         "mcp-searxng-docker": {
           "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "SEARXNG_URL", "mcp-searxng:latest"],
+          "args": [
+            "run",
+            "-i",
+            "--rm",
+            "-e",
+            "SEARXNG_URL",
+            "mcp-searxng:latest"
+          ],
           "env": {
             "SEARXNG_URL": "YOUR_SEARXNG_INSTANCE_URL"
           }

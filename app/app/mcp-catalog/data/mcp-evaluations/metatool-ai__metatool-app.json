@@ -11,9 +11,11 @@
     "type": "node",
     "mcp_config": {
       "command": "pnpm",
-      "args": ["dev"],
+      "args": [
+        "dev"
+      ],
       "env": {
-        "APP_URL": "${user_config.app_url}"
+        "APP_URL": "${user_config.APP_URL}"
       }
     }
   },
@@ -21,10 +23,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "app_url": {
+    "APP_URL": {
       "type": "string",
       "title": "Application URL",
-      "description": "The public URL of the MetaMCP instance. Used for CORS policy enforcement. Must be set to the URL you will access the UI from.",
+      "description": "The public URL of the MetaMCP instance. Used for CORS policy enforcement, so it must match the URL you use to access the server.",
       "required": true,
       "default": "http://localhost:12008"
     }
@@ -37,17 +39,25 @@
       "mcpServers": {
         "metamcp-docker-compose": {
           "command": "docker",
-          "args": ["compose", "up", "-d"],
+          "args": [
+            "compose",
+            "up",
+            "-d"
+          ],
           "env": {}
         },
         "metamcp-dev": {
           "command": "pnpm",
-          "args": ["dev"],
+          "args": [
+            "dev"
+          ],
           "env": {}
         },
         "mcp-hn": {
           "command": "uvx",
-          "args": ["mcp-hn"],
+          "args": [
+            "mcp-hn"
+          ],
           "env": {}
         }
       }

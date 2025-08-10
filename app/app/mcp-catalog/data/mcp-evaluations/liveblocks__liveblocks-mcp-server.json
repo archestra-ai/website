@@ -10,9 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/build/index.js"],
+      "args": [
+        "${__dirname}/build/index.js"
+      ],
       "env": {
-        "LIVEBLOCKS_SECRET_KEY": "${user_config.liveblocks_secret_key}"
+        "LIVEBLOCKS_SECRET_KEY": "${user_config.secret_key}"
       }
     }
   },
@@ -20,7 +22,7 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "liveblocks_secret_key": {
+    "secret_key": {
       "type": "string",
       "title": "Liveblocks Secret Key",
       "description": "Your Liveblocks secret key from a project in your dashboard.",
@@ -36,7 +38,9 @@
       "mcpServers": {
         "liveblocks-mcp-server": {
           "command": "node",
-          "args": ["/full/path/to/the/repo/liveblocks-mcp-server/build/index.js"],
+          "args": [
+            "/full/path/to/the/repo/liveblocks-mcp-server/build/index.js"
+          ],
           "env": {
             "LIVEBLOCKS_SECRET_KEY": "sk_dev_Ns35f5G..."
           }

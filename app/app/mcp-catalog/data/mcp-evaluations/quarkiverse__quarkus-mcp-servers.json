@@ -12,11 +12,7 @@
       "command": "jbang",
       "args": [
         "jdbc@quarkiverse/quarkus-mcp-servers",
-        "${user_config.jdbc_url}",
-        "-u",
-        "${user_config.username}",
-        "-p",
-        "${user_config.password}"
+        "${user_config.jdbc_url}"
       ],
       "env": {}
     }
@@ -55,20 +51,20 @@
     "jdbc_url": {
       "type": "string",
       "title": "JDBC URL",
-      "description": "The JDBC URL for the database connection. Can be a live database URL (e.g., 'jdbc:postgresql://localhost:5432/sakila') or a downloadable SQLite file using %{url} syntax (e.g., 'jdbc:sqlite:%{https://github.com/lerocha/chinook-database/raw/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite}'). Leave empty to use a default in-memory H2 database.",
+      "description": "The JDBC connection URL for the database. Can be a live database (e.g., jdbc:postgresql://user:pass@host/db), an in-memory DB, or a downloadable file (e.g., jdbc:sqlite:%{https://github.com/lerocha/chinook-database/raw/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite}). If left empty, an in-memory H2 database will be used.",
       "required": false,
-      "default": ""
+      "default": "jdbc:h2:mem:mcpdb"
     },
     "username": {
       "type": "string",
-      "title": "Database Username",
-      "description": "Optional username for database authentication.",
+      "title": "Database Username (Optional)",
+      "description": "The username for database authentication. If your JDBC URL does not support credentials, you can provide the username here to be passed via the '-u' flag.",
       "required": false
     },
     "password": {
       "type": "string",
-      "title": "Database Password",
-      "description": "Optional password for database authentication.",
+      "title": "Database Password (Optional)",
+      "description": "The password for database authentication. If your JDBC URL does not support credentials, you can provide the password here to be passed via the '-p' flag.",
       "required": false,
       "sensitive": true
     }

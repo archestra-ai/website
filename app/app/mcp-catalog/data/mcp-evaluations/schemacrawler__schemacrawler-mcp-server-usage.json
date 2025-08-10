@@ -12,21 +12,21 @@
       "command": "docker",
       "args": [
         "run",
-        "--rm",
+        "-d",
         "-p",
         "9292:9292",
         "-e",
-        "SCHEMACRAWLER_CONNECTION_URL=${user_config.connection_url}",
+        "SCHEMACRAWLER_URL=${user_config.db_url}",
         "-e",
-        "SCHEMACRAWLER_CONNECTION_USER=${user_config.database_user}",
+        "SCHEMACRAWLER_USER=${user_config.db_user}",
         "-e",
-        "SCHEMACRAWLER_CONNECTION_PASSWORD=${user_config.database_password}",
+        "SCHEMACRAWLER_PASSWORD=${user_config.db_password}",
         "schemacrawler/schemacrawler-ai:latest"
       ],
       "env": {
-        "SCHEMACRAWLER_CONNECTION_URL": "${user_config.connection_url}",
-        "SCHEMACRAWLER_CONNECTION_USER": "${user_config.database_user}",
-        "SCHEMACRAWLER_CONNECTION_PASSWORD": "${user_config.database_password}"
+        "SCHEMACRAWLER_URL": "${user_config.db_url}",
+        "SCHEMACRAWLER_USER": "${user_config.db_user}",
+        "SCHEMACRAWLER_PASSWORD": "${user_config.db_password}"
       }
     }
   },
@@ -34,23 +34,23 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "connection_url": {
+    "db_url": {
       "type": "string",
-      "title": "Database Connection URL",
-      "description": "The JDBC connection URL for your database. See SchemaCrawler documentation for examples.",
+      "title": "Database JDBC URL",
+      "description": "The JDBC connection URL for your database. Refer to the SchemaCrawler documentation for the correct format.",
       "required": true
     },
-    "database_user": {
+    "db_user": {
       "type": "string",
       "title": "Database User",
-      "description": "The username for the database connection.",
+      "description": "The username for connecting to the database.",
       "required": true
     },
-    "database_password": {
+    "db_password": {
       "type": "string",
       "title": "Database Password",
-      "description": "The password for the database connection.",
-      "required": false,
+      "description": "The password for the specified database user.",
+      "required": true,
       "sensitive": true
     }
   },
@@ -62,12 +62,24 @@
       "mcpServers": {
         "schemacrawler-schemacrawler-ai-docker": {
           "command": "docker",
-          "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
+          "args": [
+            "compose",
+            "-f",
+            "schemacrawler-mcpserver.yaml",
+            "up",
+            "-d"
+          ],
           "env": {}
         },
         "schemacrawler-schemacrawler-ai-docker-configured": {
           "command": "docker",
-          "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
+          "args": [
+            "compose",
+            "-f",
+            "schemacrawler-mcpserver.yaml",
+            "up",
+            "-d"
+          ],
           "env": {}
         }
       }

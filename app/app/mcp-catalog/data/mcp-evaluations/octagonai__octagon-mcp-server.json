@@ -10,9 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "octagon-mcp@latest"],
+      "args": [
+        "-y",
+        "octagon-mcp@latest"
+      ],
       "env": {
-        "OCTAGON_API_KEY": "${user_config.octagon_api_key}"
+        "OCTAGON_API_KEY": "${user_config.api_key}"
       }
     }
   },
@@ -20,10 +23,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "octagon_api_key": {
+    "api_key": {
       "type": "string",
       "title": "Octagon API Key",
-      "description": "Your API key for the Octagon Market Intelligence API. Sign up for a free account at https://app.octagonai.co/signup/ to generate one.",
+      "description": "Your API key for the Octagon Market Intelligence API. Sign up at https://app.octagonai.co/signup/ to get one.",
       "required": true,
       "sensitive": true
     }
@@ -36,28 +39,40 @@
       "mcpServers": {
         "octagon-mcp-server": {
           "command": "npx",
-          "args": ["-y", "octagon-mcp@latest"],
+          "args": [
+            "-y",
+            "octagon-mcp@latest"
+          ],
           "env": {
             "OCTAGON_API_KEY": "YOUR_API_KEY_HERE"
           }
         },
         "octagon-mcp": {
           "command": "npx",
-          "args": ["-y", "octagon-mcp"],
+          "args": [
+            "-y",
+            "octagon-mcp"
+          ],
           "env": {
             "OCTAGON_API_KEY": "your-octagon-api-key"
           }
         },
         "octagon-mcp-windows": {
           "command": "cmd",
-          "args": ["/c", "set OCTAGON_API_KEY=your-octagon-api-key && npx -y octagon-mcp"],
+          "args": [
+            "/c",
+            "set OCTAGON_API_KEY=your-octagon-api-key && npx -y octagon-mcp"
+          ],
           "env": {
             "OCTAGON_API_KEY": "your-octagon-api-key"
           }
         },
         "octagon-mcp-direct": {
           "command": "npx",
-          "args": ["-y", "octagon-mcp"],
+          "args": [
+            "-y",
+            "octagon-mcp"
+          ],
           "env": {
             "OCTAGON_API_KEY": "your_octagon_api_key"
           }

@@ -10,16 +10,18 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["couchbase-mcp-server"],
+      "args": [
+        "couchbase-mcp-server"
+      ],
       "env": {
-        "CB_CONNECTION_STRING": "${user_config.CB_CONNECTION_STRING}",
-        "CB_USERNAME": "${user_config.CB_USERNAME}",
-        "CB_PASSWORD": "${user_config.CB_PASSWORD}",
-        "CB_BUCKET_NAME": "${user_config.CB_BUCKET_NAME}",
-        "CB_MCP_READ_ONLY_QUERY_MODE": "${user_config.CB_MCP_READ_ONLY_QUERY_MODE}",
-        "CB_MCP_TRANSPORT": "${user_config.CB_MCP_TRANSPORT}",
-        "CB_MCP_HOST": "${user_config.CB_MCP_HOST}",
-        "CB_MCP_PORT": "${user_config.CB_MCP_PORT}"
+        "CB_CONNECTION_STRING": "${user_config.connection_string}",
+        "CB_USERNAME": "${user_config.username}",
+        "CB_PASSWORD": "${user_config.password}",
+        "CB_BUCKET_NAME": "${user_config.bucket_name}",
+        "CB_MCP_READ_ONLY_QUERY_MODE": "${user_config.read_only_query_mode}",
+        "CB_MCP_TRANSPORT": "${user_config.transport}",
+        "CB_MCP_HOST": "${user_config.host}",
+        "CB_MCP_PORT": "${user_config.port}"
       }
     }
   },
@@ -27,56 +29,59 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "CB_CONNECTION_STRING": {
+    "connection_string": {
       "type": "string",
-      "title": "Connection String",
-      "description": "Connection string to the Couchbase cluster",
-      "required": true
+      "title": "Couchbase Connection String",
+      "description": "Connection string to the Couchbase cluster.",
+      "required": true,
+      "sensitive": false
     },
-    "CB_USERNAME": {
+    "username": {
       "type": "string",
-      "title": "Username",
-      "description": "Username with bucket access",
-      "required": true
+      "title": "Couchbase Username",
+      "description": "Username with access to the specified bucket.",
+      "required": true,
+      "sensitive": false
     },
-    "CB_PASSWORD": {
+    "password": {
       "type": "string",
-      "title": "Password",
-      "description": "Password for authentication",
+      "title": "Couchbase Password",
+      "description": "Password for authentication.",
       "required": true,
       "sensitive": true
     },
-    "CB_BUCKET_NAME": {
+    "bucket_name": {
       "type": "string",
-      "title": "Bucket Name",
-      "description": "Name of the bucket to access",
-      "required": true
+      "title": "Couchbase Bucket Name",
+      "description": "Name of the bucket to access.",
+      "required": true,
+      "sensitive": false
     },
-    "CB_MCP_READ_ONLY_QUERY_MODE": {
+    "read_only_query_mode": {
       "type": "boolean",
-      "title": "Read-only Query Mode",
-      "description": "Prevent data modification queries. Note that documents can still be updated by ID.",
+      "title": "Read-Only Query Mode",
+      "description": "If enabled, prevents SQL++ queries that modify data. Documents can still be updated by ID.",
       "required": false,
       "default": true
     },
-    "CB_MCP_TRANSPORT": {
+    "transport": {
       "type": "string",
       "title": "Transport Mode",
-      "description": "Transport mode: stdio, http, sse",
+      "description": "Transport mode for the server: 'stdio', 'http', or 'sse'.",
       "required": false,
       "default": "stdio"
     },
-    "CB_MCP_HOST": {
+    "host": {
       "type": "string",
       "title": "Host",
-      "description": "Host for HTTP/SSE transport modes",
+      "description": "Host for HTTP/SSE transport modes.",
       "required": false,
       "default": "127.0.0.1"
     },
-    "CB_MCP_PORT": {
+    "port": {
       "type": "number",
       "title": "Port",
-      "description": "Port for HTTP/SSE transport modes",
+      "description": "Port for HTTP/SSE transport modes.",
       "required": false,
       "default": 8000
     }
@@ -89,7 +94,9 @@
       "mcpServers": {
         "couchbase-mcp-server": {
           "command": "uvx",
-          "args": ["couchbase-mcp-server"],
+          "args": [
+            "couchbase-mcp-server"
+          ],
           "env": {
             "CB_CONNECTION_STRING": "couchbases://connection-string",
             "CB_USERNAME": "username",
@@ -99,7 +106,12 @@
         },
         "mcp-server-couchbase-configured": {
           "command": "uv",
-          "args": ["--directory", "path/to/cloned/repo/mcp-server-couchbase/", "run", "src/mcp_server.py"],
+          "args": [
+            "--directory",
+            "path/to/cloned/repo/mcp-server-couchbase/",
+            "run",
+            "src/mcp_server.py"
+          ],
           "env": {
             "CB_CONNECTION_STRING": "couchbases://connection-string",
             "CB_USERNAME": "username",

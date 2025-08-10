@@ -10,7 +10,14 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["run", "--with", "mcp[cli]", "mcp", "run", "${__dirname}/main.py"],
+      "args": [
+        "run",
+        "--with",
+        "mcp[cli]",
+        "mcp",
+        "run",
+        "${__dirname}/main.py"
+      ],
       "env": {
         "LEDGER_FILE": "${user_config.ledger_file}"
       }
@@ -22,8 +29,8 @@
   "user_config": {
     "ledger_file": {
       "type": "file",
-      "title": "Ledger File Path",
-      "description": "The absolute path to your Ledger data file (e.g., /Users/me/Documents/finance.ledger). The server needs this to read your financial data.",
+      "title": "Ledger File",
+      "description": "Path to your Ledger CLI data file.",
       "required": true
     }
   },
@@ -65,7 +72,10 @@
         },
         "mcp-server-ledger-dev": {
           "command": "mcp",
-          "args": ["dev", "main.py"],
+          "args": [
+            "dev",
+            "main.py"
+          ],
           "env": {}
         }
       }

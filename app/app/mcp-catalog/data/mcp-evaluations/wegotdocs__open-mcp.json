@@ -12,11 +12,23 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
+    "server-id": {
+      "type": "string",
+      "title": "Server ID",
+      "description": "The identifier for the OpenMCP server to be added.",
+      "required": true
+    },
+    "config_path": {
+      "type": "file",
+      "title": "Client Configuration File Path",
+      "description": "The path to the client's configuration file (e.g., '~/Library/Application Support/Claude/claude_desktop_config.json', '.cursor/mcp.json').",
+      "required": true
+    },
     "ENV_VAR": {
       "type": "string",
-      "title": "Environment Variable",
-      "description": "Value for the environment variable required by the server, e.g., an API key.",
-      "required": true,
+      "title": "Server Environment Variable",
+      "description": "A configuration value for the server, such as an API key, passed as an environment variable. The specific variable name (e.g., 'ENV_VAR') and value depend on the server being installed.",
+      "required": false,
       "sensitive": true
     }
   },

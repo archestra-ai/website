@@ -11,7 +11,12 @@
     "type": "python",
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "server.py"],
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "server.py"
+      ],
       "env": {
         "UNITREE_ROS2_SETUP_SH_PATH": "${user_config.unitree_ros2_setup_path}",
         "LOCAL_IP": "${user_config.local_ip}",
@@ -58,7 +63,12 @@
       "mcpServers": {
         "unitree-go2-mcp-server": {
           "command": "uv",
-          "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/FOLDER/unitree-go2-mcp-server", "run", "server.py"],
+          "args": [
+            "--directory",
+            "/ABSOLUTE/PATH/TO/PARENT/FOLDER/unitree-go2-mcp-server",
+            "run",
+            "server.py"
+          ],
           "env": {}
         }
       }

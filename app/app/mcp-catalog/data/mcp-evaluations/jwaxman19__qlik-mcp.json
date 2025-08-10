@@ -10,17 +10,22 @@
   "server": {
     "mcp_config": {
       "command": "deno",
-      "args": ["run", "--allow-all", "src/index.ts"],
+      "args": [
+        "run",
+        "--allow-all",
+        "--allow-env",
+        "${__dirname}/src/index.ts"
+      ],
       "cwd": "${__dirname}",
       "env": {
-        "QLIK_API_KEY": "${user_config.api_key}",
-        "QLIK_BASE_URL": "${user_config.base_url}",
-        "QLIK_APP_ID": "${user_config.app_id}",
-        "MAX_ROWS_PER_REQUEST": "${user_config.max_rows_per_request}",
-        "MAX_TOTAL_ROWS": "${user_config.max_total_rows}",
-        "REQUEST_DELAY_MS": "${user_config.request_delay_ms}",
-        "MAX_RETRIES": "${user_config.max_retries}",
-        "RETRY_DELAY_MS": "${user_config.retry_delay_ms}"
+        "QLIK_API_KEY": "${user_config.QLIK_API_KEY}",
+        "QLIK_BASE_URL": "${user_config.QLIK_BASE_URL}",
+        "QLIK_APP_ID": "${user_config.QLIK_APP_ID}",
+        "MAX_ROWS_PER_REQUEST": "${user_config.MAX_ROWS_PER_REQUEST}",
+        "MAX_TOTAL_ROWS": "${user_config.MAX_TOTAL_ROWS}",
+        "REQUEST_DELAY_MS": "${user_config.REQUEST_DELAY_MS}",
+        "MAX_RETRIES": "${user_config.MAX_RETRIES}",
+        "RETRY_DELAY_MS": "${user_config.RETRY_DELAY_MS}"
       }
     }
   },
@@ -28,57 +33,57 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "api_key": {
+    "QLIK_API_KEY": {
       "type": "string",
       "title": "Qlik API Key",
-      "description": "Your API key for Qlik Cloud. Navigate to Settings > API keys in your tenant to create one.",
+      "description": "Your API key for Qlik Cloud. Create one in your tenant under Settings > API keys.",
       "required": true,
       "sensitive": true
     },
-    "base_url": {
+    "QLIK_BASE_URL": {
       "type": "string",
-      "title": "Qlik Base URL",
-      "description": "Your Qlik Cloud tenant URL (e.g., https://your-tenant.us.qlikcloud.com).",
+      "title": "Qlik Tenant URL",
+      "description": "The base URL for your Qlik Cloud tenant (e.g., https://your-tenant.us.qlikcloud.com).",
       "required": true
     },
-    "app_id": {
+    "QLIK_APP_ID": {
       "type": "string",
       "title": "Default Qlik App ID",
-      "description": "The default Qlik application ID to use when not specified in a tool call. This is optional.",
+      "description": "Optional. The default Qlik application ID to use when not specified in a tool call.",
       "required": false
     },
-    "max_rows_per_request": {
+    "MAX_ROWS_PER_REQUEST": {
       "type": "number",
       "title": "Max Rows Per Request",
-      "description": "Number of rows per request when fetching chart data.",
+      "description": "The number of rows to retrieve per request when fetching chart data.",
       "required": false,
       "default": 1000
     },
-    "max_total_rows": {
+    "MAX_TOTAL_ROWS": {
       "type": "number",
       "title": "Max Total Rows",
-      "description": "Maximum total rows to retrieve from a chart across all pages.",
+      "description": "The maximum total rows to retrieve from a chart in a single tool call.",
       "required": false,
       "default": 10000
     },
-    "request_delay_ms": {
+    "REQUEST_DELAY_MS": {
       "type": "number",
       "title": "Request Delay (ms)",
-      "description": "Delay in milliseconds between paged requests to avoid rate limiting.",
+      "description": "Delay in milliseconds between paginated requests to avoid rate limiting.",
       "required": false,
       "default": 100
     },
-    "max_retries": {
+    "MAX_RETRIES": {
       "type": "number",
       "title": "Max Retries",
-      "description": "Maximum number of retries for a failed API request.",
+      "description": "Maximum number of retries for a failed request.",
       "required": false,
       "default": 3
     },
-    "retry_delay_ms": {
+    "RETRY_DELAY_MS": {
       "type": "number",
       "title": "Retry Delay (ms)",
-      "description": "Delay in milliseconds before retrying a failed API request.",
+      "description": "Delay in milliseconds before retrying a failed request.",
       "required": false,
       "default": 1000
     }
@@ -91,17 +96,30 @@
       "mcpServers": {
         "qlik-mcp-docker": {
           "command": "docker",
-          "args": ["run", "--env-file", ".env", "qlik-mcp"],
+          "args": [
+            "run",
+            "--env-file",
+            ".env",
+            "qlik-mcp"
+          ],
           "env": {}
         },
         "qlik-mcp-deno": {
           "command": "deno",
-          "args": ["run", "--allow-all", "--env-file=.env", "src/index.ts"],
+          "args": [
+            "run",
+            "--allow-all",
+            "--env-file=.env",
+            "src/index.ts"
+          ],
           "env": {}
         },
         "qlik-mcp-node": {
           "command": "npx",
-          "args": ["tsx", "src/index.ts"],
+          "args": [
+            "tsx",
+            "src/index.ts"
+          ],
           "env": {
             "QLIK_API_KEY": "your_api_key_here",
             "QLIK_BASE_URL": "your_tenant_url",
@@ -110,7 +128,10 @@
         },
         "qlik-mcp-deno-dev-task": {
           "command": "deno",
-          "args": ["task", "dev"],
+          "args": [
+            "task",
+            "dev"
+          ],
           "env": {}
         }
       }

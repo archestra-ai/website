@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/apps/mcp-server/build/index.js"],
+      "args": [
+        "${__dirname}/apps/mcp-server/build/index.js"
+      ],
       "env": {
         "API_KEY": "${user_config.api_key}"
       }
@@ -50,7 +52,7 @@
     "api_key": {
       "type": "string",
       "title": "API Key",
-      "description": "Your API key for the Inbox Zero service. You can get your API key from the /settings page in the web app.",
+      "description": "Your API key from the /settings page in the web app.",
       "required": true,
       "sensitive": true
     }

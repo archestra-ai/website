@@ -15,7 +15,8 @@
         "--from",
         "git+https://github.com/imprvhub/mcp-domain-availability",
         "mcp-domain-availability"
-      ]
+      ],
+      "env": {}
     }
   },
   "tools": [],
@@ -40,7 +41,10 @@
         },
         "mcp-domain-availability-local": {
           "command": "uv",
-          "args": ["run", "src/mcp_domain_availability/main.py"],
+          "args": [
+            "run",
+            "src/mcp_domain_availability/main.py"
+          ],
           "env": {}
         }
       }

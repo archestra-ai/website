@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/build/index.js"],
+      "args": [
+        "${__dirname}/build/index.js"
+      ],
       "env": {
         "PROJECT_ROOT": "${user_config.project_root}"
       }
@@ -22,10 +24,9 @@
   "user_config": {
     "project_root": {
       "type": "directory",
-      "title": "Project Root Directory",
-      "description": "The root directory where your projects are located. The analyzer will scan for projects within this folder.",
-      "required": true,
-      "default": "${HOME}"
+      "title": "Project Root",
+      "description": "The root directory containing your projects to be analyzed.",
+      "required": true
     }
   },
   "readme": "# react-analyzer-mcp\n\nAnalyze & generate docs for React code using the Model Context Protocol. Based on [react-analyzer](https://github.com/azer/react-analyzer) library.\n\n[<img src=\"https://github.com/user-attachments/assets/615f43d7-9b81-4480-9a2a-773819223ddb\" width=\"500\" />](https://x.com/azerkoculu/status/1910071779457900866)\n\n## What it does\n\nThis tool analyzes React component files (JSX/TSX) and extracts information about components and their props.\n\n## Available Tools\n\n- **analyze-react**: Analyzes a single React component from source code\n- **analyze-project**: Generates documentation for all React components in a project folder\n- **list-projects**: Lists all projects under the root folder\n\n## Installation\n\n```bash\n# Clone the repository\ngit clone https://github.com/azer/react-analyzer-mcp.git\ncd react-analyzer-mcp\n\n# Install dependencies\nnpm install\n\n# Update PROJECT_ROOT in the index.ts file.\nvim src/index.ts\n\n# Build\nnpm run build\n```\n\n## Using with Claude\n\n1. Enable MCP server in the Claude Desktop config:\n\n```bash\n{\n    \"react-analyzer-mcp\": {\n      \"command\": \"node\",\n      \"args\": [\n        \"/Users/azer/code/sandbox/react-analyzer-mcp/build/index.js\"\n      ]\n    }\n}\n```\n\n2. Connect Claude to your MCP server using the Claude Shell.\n\n3. Use the tools directly in Claude conversations:\n\n```\nAnalyze my project's React components in the \"ui\" folder.\n```\n\nOr:\n\n```\nWhat React components do I have in my project?\n```\n\n## Examples\n\n### Analyzing a project folder:\n\nInput:\n```\nCan you analyze the components in my \"foobar\" folder?\n```\n\nOutput:\n```\n# Components\n\n## Button\n\n### Props\n\n| Prop | Type | Optional | Default |\n|------|------|----------|---------|\n| `variant` | `string` | ✓ | `primary` |\n| `size` | `string` | ✓ | `md` |\n| `onClick` | `function` | ✓ | |\n...\n```\n\n## License\n\nMIT\n",
@@ -36,7 +37,9 @@
       "mcpServers": {
         "react-analyzer-mcp": {
           "command": "node",
-          "args": ["/Users/azer/code/sandbox/react-analyzer-mcp/build/index.js"],
+          "args": [
+            "/Users/azer/code/sandbox/react-analyzer-mcp/build/index.js"
+          ],
           "env": {}
         }
       }

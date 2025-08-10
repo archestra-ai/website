@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["freshdesk-mcp"],
+      "args": [
+        "freshdesk-mcp"
+      ],
       "env": {
         "FRESHDESK_API_KEY": "${user_config.freshdesk_api_key}",
         "FRESHDESK_DOMAIN": "${user_config.freshdesk_domain}"
@@ -24,9 +26,9 @@
     "freshdesk_api_key": {
       "type": "string",
       "title": "Freshdesk API Key",
-      "description": "Your personal API key for accessing the Freshdesk API.",
-      "required": true,
-      "sensitive": true
+      "description": "Your API key for authenticating with Freshdesk. This can be generated from the Freshdesk admin panel.",
+      "sensitive": true,
+      "required": true
     },
     "freshdesk_domain": {
       "type": "string",
@@ -43,7 +45,9 @@
       "mcpServers": {
         "freshdesk-mcp": {
           "command": "uvx",
-          "args": ["freshdesk-mcp"],
+          "args": [
+            "freshdesk-mcp"
+          ],
           "env": {
             "FRESHDESK_API_KEY": "<YOUR_FRESHDESK_API_KEY>",
             "FRESHDESK_DOMAIN": "<YOUR_FRESHDESK_DOMAIN>"

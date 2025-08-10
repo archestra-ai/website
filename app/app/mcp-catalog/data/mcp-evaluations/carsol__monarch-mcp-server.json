@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/run_server.py"],
+      "args": [
+        "${__dirname}/run_server.py"
+      ],
       "env": {
         "MONARCH_EMAIL": "${user_config.monarch_email}",
         "MONARCH_PASSWORD": "${user_config.monarch_password}",
@@ -32,14 +34,14 @@
     "monarch_password": {
       "type": "string",
       "title": "Monarch Money Password",
-      "description": "Your password for your Monarch Money account.",
+      "description": "Your password for your Monarch Money account. This is stored securely.",
       "required": true,
       "sensitive": true
     },
     "monarch_mfa_secret": {
       "type": "string",
-      "title": "Monarch Money MFA Secret",
-      "description": "Your MFA secret key. Optional but recommended for accounts with 2FA enabled.",
+      "title": "Monarch MFA Secret",
+      "description": "Your MFA secret key for two-factor authentication. Optional but highly recommended.",
       "required": false,
       "sensitive": true
     }
@@ -52,12 +54,16 @@
       "mcpServers": {
         "monarch-money": {
           "command": "python",
-          "args": ["run_server.py"],
+          "args": [
+            "run_server.py"
+          ],
           "env": {}
         },
         "monarch-money-configured": {
           "command": "python",
-          "args": ["/path/to/monarch-mcp-server/run_server.py"],
+          "args": [
+            "/path/to/monarch-mcp-server/run_server.py"
+          ],
           "env": {
             "MONARCH_EMAIL": "your-email@example.com",
             "MONARCH_PASSWORD": "your-password",

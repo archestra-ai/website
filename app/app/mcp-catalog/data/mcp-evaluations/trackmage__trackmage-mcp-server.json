@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/index.js"],
+      "args": [
+        "${__dirname}/index.js"
+      ],
       "env": {
         "TRACKMAGE_CLIENT_ID": "${user_config.TRACKMAGE_CLIENT_ID}",
         "TRACKMAGE_CLIENT_SECRET": "${user_config.TRACKMAGE_CLIENT_SECRET}",
@@ -25,22 +27,23 @@
     "TRACKMAGE_CLIENT_ID": {
       "type": "string",
       "title": "TrackMage Client ID",
-      "description": "Your Client ID from the TrackMage dashboard under Settings > API KEYS.",
-      "sensitive": true,
-      "required": true
+      "description": "Your Client ID obtained from the TrackMage dashboard under Settings > API KEYS.",
+      "required": true,
+      "sensitive": true
     },
     "TRACKMAGE_CLIENT_SECRET": {
       "type": "string",
       "title": "TrackMage Client Secret",
-      "description": "Your Client Secret from the TrackMage dashboard under Settings > API KEYS.",
-      "sensitive": true,
-      "required": true
+      "description": "Your Client Secret obtained from the TrackMage dashboard under Settings > API KEYS.",
+      "required": true,
+      "sensitive": true
     },
     "TRACKMAGE_WORKSPACE_ID": {
       "type": "string",
       "title": "TrackMage Workspace ID",
       "description": "Your Workspace ID, which can be found in the URL of your TrackMage dashboard.",
-      "required": true
+      "required": true,
+      "sensitive": false
     }
   },
   "readme": "# TrackMage MCP Server - Shipment Tracking API & Logistics API Integration\n\nA Model Context Protocol (MCP) server for shipment tracking api, package monitoring, and logistics management using the TrackMage API. Supports tracking across 1600+ carriers worldwide.\n\n## Features\n\n- **Carrier Support**: Track packages across 1600+ carriers worldwide ([full list](https://trackmage.com/carriers/))\n- **Resources**: Workspaces, shipments, orders, carriers, tracking statuses\n- **Tools**: Create shipments/orders, get shipment checkpoints, carrier detection\n- **Authentication**: OAuth with client credentials\n\n## ⚠️ Data Privacy Notice\n\n**Data sharing with your LLM provider**: This MCP server provides data to whichever LLM you're using (Claude, ChatGPT, etc.). While this is the expected behavior for MCP servers, please ensure you're comfortable sharing logistics data including tracking numbers, customer emails, addresses, and shipment details with your chosen LLM provider.\n\n**Best practices:**\n- Only use with non-sensitive or test data if you have privacy concerns\n- Check your LLM provider's data handling policies\n- Consider opting out of training data programs if available\n- Ensure compliance with your organization's data policies\n\n## Prerequisites\n\n- Node.js v18+\n- TrackMage account\n\n## Getting Credentials\n\n1. Register and log into [TrackMage](https://app.trackmage.com).\n2. Go to **Settings > API KEYS**.\n3. Enter an **App Name** (e.g., \"MCP\") and **App URL** (e.g., `http://localhost:3000`).\n4. Click **Generate** and copy your **Client ID** and **Client Secret**.\n5. Note your **Workspace ID** from the dashboard URL.\n\n## Installation\n\n### Option 1: Local Setup\n\n```bash\ngit clone https://github.com/yourusername/trackmage-mcp-server.git\ncd trackmage-mcp-server\nnpm install\ncp .env.example .env\n# Edit .env with your credentials\nnpm start\n```\n\n## Configuration\n\nEdit `.env`:\n\n```\nTRACKMAGE_CLIENT_ID=your_client_id_here\nTRACKMAGE_CLIENT_SECRET=your_client_secret_here\nTRACKMAGE_WORKSPACE_ID=your_workspace_id_here\n```\n\n## Usage\n\nRun the server:\n\n```bash\nnpm start\n```\nand then use\n```\n{\n  \"mcpServers\": {\n    \"trackmage\": {\n      \"transport\": {\n        \"type\": \"http\",\n        \"host\": \"localhost\",\n        \"port\": 3000\n      }\n    }\n  }\n}\n\n```\nor using file process:\n```\n{\n  \"mcpServers\": {\n\n    \"trackmage\": {\n      \"command\": \"node\",\n      \"args\": [\"/path/to/trackmage-mcp-server/index.js\"],\n      \"env\": {\n        \"TRACKMAGE_CLIENT_ID\": \"your_client_id_here\",\n        \"TRACKMAGE_CLIENT_SECRET\": \"your_client_secret_here\",\n        \"TRACKMAGE_WORKSPACE_ID\": \"your_workspace_id_here\"\n      }\n    }\n\n  }\n}\n```\n\n### MCP Resources\n\n- `trackmage:///workspaces/{id}`\n- `trackmage:///shipments/{id}`\n- `trackmage:///orders/{id}`\n- `trackmage:///carriers/{id}`\n- `trackmage:///tracking_statuses/{id}`\n\n### MCP Tools\n\n#### Shipment Management\n\n- **`create_shipment`**: Create a new shipment\n  - Parameters: `{ trackingNumber, originCarrier?, email?, workspaceId? }`\n  - Returns: Created shipment object\n\n- **`update_shipment`**: Update an existing shipment\n  - Parameters: `{ shipmentId, trackingNumber?, originCarrier?, email?, status? }`\n  - Returns: Updated shipment object\n\n- **`list_shipments`**: List shipments from workspace\n  - Parameters: `{ workspaceId?, page?, itemsPerPage? }`\n  - Returns: Array of shipment objects\n\n- **`get_shipment_checkpoints`**: Get tracking checkpoints for a shipment\n  - Parameters: `{ shipmentId }`\n  - Returns: Array of tracking checkpoint events\n\n- **`retrack_shipments`**: Retrack multiple shipments by tracking numbers\n  - Parameters: `{ trackingNumbers: [{ number, originCarrier? }], workspaceId? }`\n  - Returns: Retracking results\n\n#### Order Management\n\n- **`create_order`**: Create a new order\n  - Parameters: `{ orderNumber, email?, workspaceId? }`\n  - Returns: Created order object\n\n- **`update_order`**: Update an existing order\n  - Parameters: `{ orderId, orderNumber?, email?, status? }`\n  - Returns: Updated order object\n\n- **`list_orders`**: List orders from workspace\n  - Parameters: `{ workspaceId?, page?, itemsPerPage? }`\n  - Returns: Array of order objects\n\n#### Carrier Management\n\n- **`list_carriers`**: List available carriers\n  - Parameters: `{ page?, itemsPerPage? }`\n  - Returns: Array of carrier objects with codes and names\n\n- **`detect_carrier`**: Detect possible carriers for a tracking number\n  - Parameters: `{ trackingNumber }`\n  - Returns: Array of possible carrier matches\n\n## Testing\n\n```bash\nnpm test\n```\n",
@@ -51,12 +54,16 @@
       "mcpServers": {
         "trackmage": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "trackmage-configured": {
           "command": "node",
-          "args": ["/path/to/trackmage-mcp-server/index.js"],
+          "args": [
+            "/path/to/trackmage-mcp-server/index.js"
+          ],
           "env": {
             "TRACKMAGE_CLIENT_ID": "your_client_id_here",
             "TRACKMAGE_CLIENT_SECRET": "your_client_secret_here",

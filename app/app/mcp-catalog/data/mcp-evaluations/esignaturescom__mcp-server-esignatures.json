@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["mcp-server-esignatures"],
+      "args": [
+        "mcp-server-esignatures"
+      ],
       "env": {
         "ESIGNATURES_SECRET_TOKEN": "${user_config.esignatures_secret_token}"
       }
@@ -23,7 +25,7 @@
     "esignatures_secret_token": {
       "type": "string",
       "title": "eSignatures Secret Token",
-      "description": "Your eSignatures API secret token for authentication.",
+      "description": "Your eSignatures API secret token. Create an account at https://esignatures.com to get one.",
       "required": true,
       "sensitive": true
     }
@@ -36,14 +38,21 @@
       "mcpServers": {
         "mcp-server-esignatures-dev": {
           "command": "uv",
-          "args": ["--directory", "/your-local-directories/mcp-server-esignatures", "run", "mcp-server-esignatures"],
+          "args": [
+            "--directory",
+            "/your-local-directories/mcp-server-esignatures",
+            "run",
+            "mcp-server-esignatures"
+          ],
           "env": {
             "ESIGNATURES_SECRET_TOKEN": "your-esignatures-api-secret-token"
           }
         },
         "mcp-server-esignatures-published": {
           "command": "uvx",
-          "args": ["mcp-server-esignatures"],
+          "args": [
+            "mcp-server-esignatures"
+          ],
           "env": {
             "ESIGNATURES_SECRET_TOKEN": "your-esignatures-api-secret-token"
           }

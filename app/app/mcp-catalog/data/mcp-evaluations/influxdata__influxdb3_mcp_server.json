@@ -10,14 +10,17 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-influxdb"],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-influxdb"
+      ],
       "env": {
-        "INFLUX_DB_INSTANCE_URL": "${user_config.instance_url}",
-        "INFLUX_DB_TOKEN": "${user_config.token}",
-        "INFLUX_DB_PRODUCT_TYPE": "${user_config.product_type}",
-        "INFLUX_DB_CLUSTER_ID": "${user_config.cluster_id}",
-        "INFLUX_DB_ACCOUNT_ID": "${user_config.account_id}",
-        "INFLUX_DB_MANAGEMENT_TOKEN": "${user_config.management_token}"
+        "INFLUX_DB_PRODUCT_TYPE": "${user_config.influx_db_product_type}",
+        "INFLUX_DB_INSTANCE_URL": "${user_config.influx_db_instance_url}",
+        "INFLUX_DB_TOKEN": "${user_config.influx_db_token}",
+        "INFLUX_DB_CLUSTER_ID": "${user_config.influx_db_cluster_id}",
+        "INFLUX_DB_ACCOUNT_ID": "${user_config.influx_db_account_id}",
+        "INFLUX_DB_MANAGEMENT_TOKEN": "${user_config.influx_db_management_token}"
       }
     }
   },
@@ -25,42 +28,41 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "product_type": {
+    "influx_db_product_type": {
       "type": "string",
       "title": "InfluxDB Product Type",
-      "description": "The type of InfluxDB instance. Must be one of: 'core', 'enterprise', or 'cloud-dedicated'.",
-      "required": true,
-      "default": "core"
+      "description": "The type of InfluxDB instance. Must be one of 'core', 'enterprise', or 'cloud-dedicated'.",
+      "required": true
     },
-    "instance_url": {
+    "influx_db_instance_url": {
       "type": "string",
       "title": "InfluxDB Instance URL",
-      "description": "URL for your InfluxDB Core or Enterprise instance (e.g., http://localhost:8181/). Required if Product Type is 'core' or 'enterprise'.",
+      "description": "The URL of your InfluxDB Core or Enterprise instance (e.g., http://localhost:8181/). Required for 'core' or 'enterprise' product types.",
       "required": false
     },
-    "token": {
+    "influx_db_token": {
       "type": "string",
       "title": "InfluxDB Token",
-      "description": "For Core/Enterprise, this is the admin/resource token. For Cloud Dedicated, this is the Database Token for query/write operations.",
+      "description": "The database token for your InfluxDB instance. For Core/Enterprise, this is the main admin token. For Cloud Dedicated, this is a Database Token for query/write operations.",
       "required": false,
       "sensitive": true
     },
-    "cluster_id": {
+    "influx_db_cluster_id": {
       "type": "string",
-      "title": "Cloud Dedicated Cluster ID",
-      "description": "Your Cluster ID for InfluxDB Cloud Dedicated. Required if Product Type is 'cloud-dedicated'.",
+      "title": "InfluxDB Cloud Dedicated Cluster ID",
+      "description": "The Cluster ID for your InfluxDB Cloud Dedicated instance. Required for 'cloud-dedicated' product type.",
       "required": false
     },
-    "account_id": {
+    "influx_db_account_id": {
       "type": "string",
-      "title": "Cloud Dedicated Account ID",
-      "description": "Your Account ID for InfluxDB Cloud Dedicated. Required for database management operations on Cloud Dedicated.",
+      "title": "InfluxDB Cloud Dedicated Account ID",
+      "description": "The Account ID for your InfluxDB Cloud Dedicated instance. Required for 'cloud-dedicated' when using a Management Token.",
       "required": false
     },
-    "management_token": {
+    "influx_db_management_token": {
       "type": "string",
-      "title": "Cloud Dedicated Management Token",
-      "description": "Your Management Token for InfluxDB Cloud Dedicated. Required for database management operations on Cloud Dedicated.",
+      "title": "InfluxDB Cloud Dedicated Management Token",
+      "description": "A Management Token for your InfluxDB Cloud Dedicated instance, used for database management operations.",
       "required": false,
       "sensitive": true
     }
@@ -73,7 +75,9 @@
       "mcpServers": {
         "influx-mcp-standalone": {
           "command": "node",
-          "args": ["/path/to/influx-mcp-standalone/build/index.js"],
+          "args": [
+            "/path/to/influx-mcp-standalone/build/index.js"
+          ],
           "env": {
             "INFLUX_DB_INSTANCE_URL": "http://localhost:8181/",
             "INFLUX_DB_TOKEN": "<YOUR_INFLUXDB_TOKEN>",
@@ -82,7 +86,10 @@
         },
         "modelcontextprotocol-server-influxdb": {
           "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-influxdb"],
+          "args": [
+            "-y",
+            "@modelcontextprotocol/server-influxdb"
+          ],
           "env": {
             "INFLUX_DB_INSTANCE_URL": "http://localhost:8181/",
             "INFLUX_DB_TOKEN": "<YOUR_INFLUXDB_TOKEN>",

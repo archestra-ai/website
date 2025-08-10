@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["src/server.py"],
+      "args": [
+        "src/server.py"
+      ],
       "env": {
         "ALPACA_PAPER_API_KEY": "${user_config.alpaca_paper_api_key}",
         "ALPACA_PAPER_API_SECRET": "${user_config.alpaca_paper_api_secret}"
@@ -24,14 +26,14 @@
     "alpaca_paper_api_key": {
       "type": "string",
       "title": "Alpaca Paper API Key",
-      "description": "Your API key for Alpaca's paper trading environment. Obtain one by creating an account at Alpaca.",
+      "description": "Your API key for the Alpaca Paper Trading service. Obtain credentials by creating an account at Alpaca.",
       "required": true,
       "sensitive": true
     },
     "alpaca_paper_api_secret": {
       "type": "string",
       "title": "Alpaca Paper API Secret",
-      "description": "Your API secret for Alpaca's paper trading environment. Obtain one by creating an account at Alpaca.",
+      "description": "Your API secret for the Alpaca Paper Trading service. Obtain credentials by creating an account at Alpaca.",
       "required": true,
       "sensitive": true
     }
@@ -44,12 +46,19 @@
       "mcpServers": {
         "laukikk-alpaca-mcp-stdio": {
           "command": "python",
-          "args": ["src/server.py"],
+          "args": [
+            "src/server.py"
+          ],
           "env": {}
         },
         "laukikk-alpaca-mcp-claude-config": {
           "command": "uv",
-          "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/FOLDER/alpaca-mcp-server", "run", "src/server.py"],
+          "args": [
+            "--directory",
+            "/ABSOLUTE/PATH/TO/PARENT/FOLDER/alpaca-mcp-server",
+            "run",
+            "src/server.py"
+          ],
           "env": {}
         }
       }

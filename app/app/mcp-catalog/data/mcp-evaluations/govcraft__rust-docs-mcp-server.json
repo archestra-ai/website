@@ -11,7 +11,11 @@
     "type": "binary",
     "mcp_config": {
       "command": "rustdocs_mcp_server",
-      "args": ["${user_config.package_id}", "--features", "${user_config.features}"],
+      "args": [
+        "${user_config.package_id}",
+        "-F",
+        "${user_config.features}"
+      ],
       "env": {
         "OPENAI_API_KEY": "${user_config.openai_api_key}"
       }
@@ -24,20 +28,20 @@
     "openai_api_key": {
       "type": "string",
       "title": "OpenAI API Key",
-      "description": "Your OpenAI API key, required for generating embeddings and summarizing documentation.",
+      "description": "Your OpenAI API Key, used for generating embeddings and summarizing documentation.",
       "required": true,
       "sensitive": true
     },
     "package_id": {
       "type": "string",
-      "title": "Rust Crate Package ID",
-      "description": "The target crate to provide documentation for. Follows Cargo's Package ID Specification (e.g., 'serde', 'tokio@^1.0').",
+      "title": "Crate Package ID",
+      "description": "The target crate to get documentation for. Follows Cargo's Package ID Specification (e.g., 'serde', 'tokio@1.0', 'reqwest@^0.12').",
       "required": true
     },
     "features": {
       "type": "string",
       "title": "Crate Features",
-      "description": "Optional comma-separated list of crate features to enable for documentation generation (e.g., 'runtime-tokio-hyper-rustls').",
+      "description": "Optional comma-separated list of crate features to enable for documentation generation (e.g., 'runtime-tokio-hyper-rustls,feat2').",
       "required": false
     }
   },
@@ -49,35 +53,49 @@
       "mcpServers": {
         "rustdocs-mcp-server-serde": {
           "command": "rustdocs_mcp_server",
-          "args": ["serde@^1.0"],
+          "args": [
+            "serde@^1.0"
+          ],
           "env": {
             "OPENAI_API_KEY": "sk-..."
           }
         },
         "rustdocs-mcp-server-reqwest": {
           "command": "rustdocs_mcp_server",
-          "args": ["reqwest@0.12.0"],
+          "args": [
+            "reqwest@0.12.0"
+          ],
           "env": {
             "OPENAI_API_KEY": "sk-..."
           }
         },
         "rustdocs-mcp-server-tokio": {
           "command": "rustdocs_mcp_server",
-          "args": ["tokio"],
+          "args": [
+            "tokio"
+          ],
           "env": {
             "OPENAI_API_KEY": "sk-..."
           }
         },
         "rustdocs-mcp-server-async-stripe-configured": {
           "command": "rustdocs_mcp_server",
-          "args": ["async-stripe@0.40", "-F", "runtime-tokio-hyper-rustls"],
+          "args": [
+            "async-stripe@0.40",
+            "-F",
+            "runtime-tokio-hyper-rustls"
+          ],
           "env": {
             "OPENAI_API_KEY": "sk-..."
           }
         },
         "rustdocs-mcp-server-some-crate-configured": {
           "command": "rustdocs_mcp_server",
-          "args": ["some-crate@1.2", "--features", "feat1,feat2"],
+          "args": [
+            "some-crate@1.2",
+            "--features",
+            "feat1,feat2"
+          ],
           "env": {
             "OPENAI_API_KEY": "sk-..."
           }

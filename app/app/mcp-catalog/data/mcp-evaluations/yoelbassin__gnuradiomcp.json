@@ -10,7 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${user_config.project_directory}", "run", "main.py"],
+      "args": [
+        "--directory",
+        "${user_config.repo_path}",
+        "run",
+        "main.py"
+      ],
       "env": {}
     }
   },
@@ -18,10 +23,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "project_directory": {
+    "repo_path": {
       "type": "directory",
-      "title": "GR-MCP Project Directory",
-      "description": "The absolute path to the cloned 'gr-mcp' repository.",
+      "title": "GR-MCP Repository Path",
+      "description": "Path to the local directory where the gr-mcp repository was cloned.",
       "required": true
     }
   },
@@ -33,7 +38,12 @@
       "mcpServers": {
         "gr-mcp": {
           "command": "uv",
-          "args": ["--directory", "/path/to/gr-mcp", "run", "main.py"],
+          "args": [
+            "--directory",
+            "/path/to/gr-mcp",
+            "run",
+            "main.py"
+          ],
           "env": {}
         }
       }

@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "mcp-server-apple-shortcuts"],
+      "args": [
+        "-y",
+        "mcp-server-apple-shortcuts"
+      ],
       "env": {}
     }
   },
@@ -26,12 +29,17 @@
       "mcpServers": {
         "mcp-server-apple-shortcuts": {
           "command": "npx",
-          "args": ["-y", "mcp-server-apple-shortcuts"],
+          "args": [
+            "-y",
+            "mcp-server-apple-shortcuts"
+          ],
           "env": {}
         },
         "mcp-server-apple-shortcuts-local-build": {
           "command": "npx",
-          "args": ["/path/to/mcp-server-apple-shortcuts/build/index.js"],
+          "args": [
+            "/path/to/mcp-server-apple-shortcuts/build/index.js"
+          ],
           "env": {}
         }
       }

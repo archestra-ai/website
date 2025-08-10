@@ -10,10 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["main.py"],
+      "args": [
+        "main.py"
+      ],
       "env": {
-        "DATABRICKS_HOST": "${user_config.DATABRICKS_HOST}",
-        "DATABRICKS_TOKEN": "${user_config.DATABRICKS_TOKEN}"
+        "DATABRICKS_HOST": "${user_config.databricks_host}",
+        "DATABRICKS_TOKEN": "${user_config.databricks_token}"
       }
     }
   },
@@ -21,17 +23,17 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "DATABRICKS_HOST": {
+    "databricks_host": {
       "type": "string",
       "title": "Databricks Host",
       "description": "Your Databricks instance URL (e.g., your-instance.cloud.databricks.com). Do not include https://.",
       "required": true,
       "sensitive": false
     },
-    "DATABRICKS_TOKEN": {
+    "databricks_token": {
       "type": "string",
       "title": "Databricks Token",
-      "description": "Your Databricks personal access token. It must have permissions to access Genie spaces and run queries.",
+      "description": "Your personal access token to authenticate with the Databricks API.",
       "required": true,
       "sensitive": true
     }
@@ -44,7 +46,9 @@
       "mcpServers": {
         "databricks-genie-mcp-server": {
           "command": "python",
-          "args": ["main.py"],
+          "args": [
+            "main.py"
+          ],
           "env": {
             "DATABRICKS_HOST": "your-databricks-instance.cloud.databricks.com",
             "DATABRICKS_TOKEN": "your-personal-access-token"

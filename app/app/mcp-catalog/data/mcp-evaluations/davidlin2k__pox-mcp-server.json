@@ -10,7 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "server.py"],
+      "args": [
+        "run",
+        "--directory",
+        "${__dirname}",
+        "server.py"
+      ],
       "env": {
         "POX_SERVER_URL": "${user_config.pox_server_url}"
       }
@@ -23,8 +28,8 @@
     "pox_server_url": {
       "type": "string",
       "title": "POX Server URL",
-      "description": "The URL of the running POX SDN controller that this server will connect to.",
-      "required": false,
+      "description": "The URL where the POX MCP server will listen for connections.",
+      "required": true,
       "default": "http://localhost:8000"
     }
   },
@@ -36,7 +41,12 @@
       "mcpServers": {
         "pox": {
           "command": "uv",
-          "args": ["--directory", "parent_of_servers_repo/servers/src/mcp_server_pox", "run", "server.py"],
+          "args": [
+            "--directory",
+            "parent_of_servers_repo/servers/src/mcp_server_pox",
+            "run",
+            "server.py"
+          ],
           "env": {
             "POX_SERVER_URL": "http://localhost:8000"
           }

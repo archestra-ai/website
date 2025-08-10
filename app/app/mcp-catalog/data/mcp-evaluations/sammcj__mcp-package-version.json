@@ -8,6 +8,7 @@
     "name": "sammcj"
   },
   "server": {
+    "type": "binary",
     "mcp_config": {
       "command": "mcp-package-version",
       "args": [
@@ -28,21 +29,21 @@
     "transport": {
       "type": "string",
       "title": "Transport Mode",
-      "description": "Transport type (stdio or sse). The default is stdio.",
+      "description": "Transport type (stdio or sse). 'stdio' is the default and recommended for local clients. 'sse' is for network access.",
       "required": false,
       "default": "stdio"
     },
     "port": {
       "type": "number",
       "title": "SSE Port",
-      "description": "Port to use for SSE transport.",
+      "description": "Port to use for SSE transport. Only used if transport mode is 'sse'.",
       "required": false,
       "default": 18080
     },
     "base_url": {
       "type": "string",
       "title": "SSE Base URL",
-      "description": "Base URL for SSE transport. The server will be available at a '/sse' suffix.",
+      "description": "Base URL for SSE transport. Only used if transport mode is 'sse'.",
       "required": false,
       "default": "http://localhost"
     }
@@ -60,7 +61,14 @@
         },
         "mcp-package-version-sse": {
           "command": "mcp-package-version",
-          "args": ["--transport", "sse", "--port", "18080", "--base-url", "http://localhost:18080"],
+          "args": [
+            "--transport",
+            "sse",
+            "--port",
+            "18080",
+            "--base-url",
+            "http://localhost:18080"
+          ],
           "env": {}
         },
         "mcp-package-version-configured": {
@@ -70,7 +78,12 @@
         },
         "mcp-package-version-docker": {
           "command": "docker",
-          "args": ["run", "-p", "18080:18080", "ghcr.io/sammcj/mcp-package-version:main"],
+          "args": [
+            "run",
+            "-p",
+            "18080:18080",
+            "ghcr.io/sammcj/mcp-package-version:main"
+          ],
           "env": {}
         }
       }

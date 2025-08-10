@@ -29,21 +29,21 @@
     "gauth_file": {
       "type": "file",
       "title": "Google OAuth Credentials File",
-      "description": "Path to the .gauth.json file containing your Google Cloud OAuth 2.0 client ID and secret. See the server documentation for instructions on how to create it.",
+      "description": "Path to the .gauth.json file containing your Google Cloud OAuth 2.0 client ID and secret. This is created in the Google Cloud Console.",
       "required": true,
       "default": "${__dirname}/.gauth.json"
     },
     "accounts_file": {
       "type": "file",
       "title": "Google Accounts File",
-      "description": "Path to the .accounts.json file that lists the Google accounts you want the server to access.",
+      "description": "Path to the .accounts.json file listing the Google accounts to use, including email and optional extra info.",
       "required": true,
       "default": "${__dirname}/.accounts.json"
     },
     "credentials_dir": {
       "type": "directory",
       "title": "OAuth Tokens Directory",
-      "description": "The directory where the server will store the generated OAuth tokens for each account after a successful login.",
+      "description": "Directory to store the generated OAuth tokens for each account after successful login.",
       "required": false,
       "default": "${__dirname}"
     }
@@ -56,7 +56,12 @@
       "mcpServers": {
         "mcp-gsuite-dev": {
           "command": "uv",
-          "args": ["--directory", "<dir_to>/mcp-gsuite", "run", "mcp-gsuite"],
+          "args": [
+            "--directory",
+            "<dir_to>/mcp-gsuite",
+            "run",
+            "mcp-gsuite"
+          ],
           "env": {}
         },
         "mcp-gsuite-dev-custom-paths": {
@@ -100,7 +105,14 @@
         },
         "modelcontextprotocol-inspector-mcp-gsuite": {
           "command": "npx",
-          "args": ["@modelcontextprotocol/inspector", "uv", "--directory", "/path/to/mcp-gsuite", "run", "mcp-gsuite"],
+          "args": [
+            "@modelcontextprotocol/inspector",
+            "uv",
+            "--directory",
+            "/path/to/mcp-gsuite",
+            "run",
+            "mcp-gsuite"
+          ],
           "env": {}
         }
       }

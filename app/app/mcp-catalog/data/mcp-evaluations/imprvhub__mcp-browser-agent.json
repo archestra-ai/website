@@ -11,7 +11,11 @@
     "type": "node",
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/dist/index.js", "--browser", "${user_config.browser}"],
+      "args": [
+        "${__dirname}/dist/index.js",
+        "--browser",
+        "${user_config.browser}"
+      ],
       "env": {}
     }
   },
@@ -21,8 +25,8 @@
   "user_config": {
     "browser": {
       "type": "string",
-      "title": "Browser Selection",
-      "description": "Select the browser to use for automation. Supported values are: chrome, firefox, msedge, webkit.",
+      "title": "Browser",
+      "description": "The browser to use for automation. Supported values: chrome, firefox, webkit, msedge.",
       "required": false,
       "default": "chrome"
     }
@@ -35,12 +39,18 @@
       "mcpServers": {
         "imprvhub-mcp-browser-agent": {
           "command": "node",
-          "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js"],
+          "args": [
+            "ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js"
+          ],
           "env": {}
         },
         "imprvhub-mcp-browser-agent-configured": {
           "command": "node",
-          "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js", "--browser", "chrome"],
+          "args": [
+            "ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js",
+            "--browser",
+            "chrome"
+          ],
           "env": {}
         }
       }

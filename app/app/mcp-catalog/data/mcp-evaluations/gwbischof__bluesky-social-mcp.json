@@ -10,10 +10,14 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/gwbischof/bluesky-social-mcp@v0.1", "bluesky-social-mcp"],
+      "args": [
+        "--from",
+        "git+https://github.com/gwbischof/bluesky-social-mcp@v0.1",
+        "bluesky-social-mcp"
+      ],
       "env": {
-        "BLUESKY_IDENTIFIER": "${user_config.identifier}",
-        "BLUESKY_APP_PASSWORD": "${user_config.app_password}"
+        "BLUESKY_IDENTIFIER": "${user_config.bluesky_identifier}",
+        "BLUESKY_APP_PASSWORD": "${user_config.bluesky_app_password}"
       }
     }
   },
@@ -21,17 +25,17 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "identifier": {
+    "bluesky_identifier": {
       "type": "string",
       "title": "Bluesky Identifier",
       "description": "Your Bluesky handle (e.g., your-handle.bsky.social).",
       "required": true,
       "sensitive": false
     },
-    "app_password": {
+    "bluesky_app_password": {
       "type": "string",
       "title": "Bluesky App Password",
-      "description": "Your Bluesky app password. You can create one at https://bsky.app/settings/app-passwords.",
+      "description": "Your Bluesky app-specific password. You can create one at https://bsky.app/settings/app-passwords.",
       "required": true,
       "sensitive": true
     }
@@ -44,7 +48,11 @@
       "mcpServers": {
         "bluesky-social": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/gwbischof/bluesky-social-mcp@v0.1", "bluesky-social-mcp"],
+          "args": [
+            "--from",
+            "git+https://github.com/gwbischof/bluesky-social-mcp@v0.1",
+            "bluesky-social-mcp"
+          ],
           "env": {
             "BLUESKY_IDENTIFIER": "your-handle.bsky.social",
             "BLUESKY_APP_PASSWORD": "your-app-password"
@@ -52,7 +60,12 @@
         },
         "bluesky-social-local-clone": {
           "command": "uv",
-          "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/FOLDER/bluesky-social-mcp", "run", "server.py"],
+          "args": [
+            "--directory",
+            "/ABSOLUTE/PATH/TO/PARENT/FOLDER/bluesky-social-mcp",
+            "run",
+            "server.py"
+          ],
           "env": {
             "BLUESKY_IDENTIFIER": "user-name.bsky.social‬",
             "BLUESKY_APP_PASSWORD": "app-password-here"
@@ -60,7 +73,10 @@
         },
         "bluesky-social-mcp": {
           "command": "uv",
-          "args": ["run", "bluesky-social-mcp"],
+          "args": [
+            "run",
+            "bluesky-social-mcp"
+          ],
           "env": {}
         }
       }

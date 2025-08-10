@@ -10,10 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/build/index.js"],
+      "args": [
+        "${__dirname}/build/index.js"
+      ],
       "env": {
         "GODOT_PATH": "${user_config.godot_path}",
-        "DEBUG": "${user_config.debug}"
+        "DEBUG": "${user_config.debug_mode}"
       }
     }
   },
@@ -24,10 +26,10 @@
     "godot_path": {
       "type": "file",
       "title": "Godot Executable Path",
-      "description": "Path to the Godot executable (overrides automatic detection).",
+      "description": "Path to the Godot executable. Overrides automatic detection if provided.",
       "required": false
     },
-    "debug": {
+    "debug_mode": {
       "type": "boolean",
       "title": "Enable Debug Logging",
       "description": "Set to true to enable detailed server-side debug logging.",
@@ -43,7 +45,9 @@
       "mcpServers": {
         "godot-mcp": {
           "command": "node",
-          "args": ["/absolute/path/to/godot-mcp/build/index.js"],
+          "args": [
+            "/absolute/path/to/godot-mcp/build/index.js"
+          ],
           "env": {
             "DEBUG": "true"
           }

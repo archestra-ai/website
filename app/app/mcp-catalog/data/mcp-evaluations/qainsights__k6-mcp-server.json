@@ -10,9 +10,14 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "k6_server.py"],
+      "args": [
+        "run",
+        "--directory",
+        "${__dirname}",
+        "k6_server.py"
+      ],
       "env": {
-        "K6_BIN": "${user_config.k6_bin_path}"
+        "K6_BIN": "${user_config.K6_BIN}"
       }
     }
   },
@@ -20,10 +25,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "k6_bin_path": {
-      "type": "file",
-      "title": "k6 Binary Path",
-      "description": "Optional path to the k6 executable. Defaults to 'k6' in the system PATH if not provided.",
+    "K6_BIN": {
+      "type": "string",
+      "title": "k6 Executable Path",
+      "description": "Path to the k6 executable. Defaults to 'k6' if not set, assuming it's in the system's PATH.",
       "required": false,
       "default": "k6"
     }
@@ -36,7 +41,12 @@
       "mcpServers": {
         "k6": {
           "command": "/path/to/bin/uv",
-          "args": ["--directory", "/path/to/k6-mcp-server", "run", "k6_server.py"],
+          "args": [
+            "--directory",
+            "/path/to/k6-mcp-server",
+            "run",
+            "k6_server.py"
+          ],
           "env": {}
         }
       }

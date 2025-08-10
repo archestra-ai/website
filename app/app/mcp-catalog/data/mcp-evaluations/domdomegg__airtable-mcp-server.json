@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "airtable-mcp-server"],
+      "args": [
+        "-y",
+        "airtable-mcp-server"
+      ],
       "env": {
         "AIRTABLE_API_KEY": "${user_config.api_key}"
       }
@@ -23,7 +26,7 @@
     "api_key": {
       "type": "string",
       "title": "Airtable Personal Access Token",
-      "description": "Your Airtable personal access token. You can create one by following the instructions in the extension's documentation. It should start with 'pat...'.",
+      "description": "Your Airtable personal access token. Required scopes are `schema.bases:read` and `data.records:read`. Write scopes are optional.",
       "sensitive": true,
       "required": true
     }
@@ -36,14 +39,20 @@
       "mcpServers": {
         "airtable-mcp-server-configured": {
           "command": "npx",
-          "args": ["-y", "airtable-mcp-server"],
+          "args": [
+            "-y",
+            "airtable-mcp-server"
+          ],
           "env": {
             "AIRTABLE_API_KEY": "pat123.abc123"
           }
         },
         "airtable-mcp-server-stdio": {
           "command": "npx",
-          "args": ["-y", "airtable-mcp-server"],
+          "args": [
+            "-y",
+            "airtable-mcp-server"
+          ],
           "env": {
             "AIRTABLE_API_KEY": "pat123.abc123"
           }

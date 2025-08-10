@@ -15,26 +15,26 @@
     "port": {
       "type": "number",
       "title": "Server Port",
-      "description": "The port for the MCP server to listen on. If not specified, it defaults to 8008. Each project should specify its own unique port to avoid conflicts.",
+      "description": "The port for the MCP server to use. If not specified, it defaults to 8008. Each project should use a unique port to avoid conflicts.",
       "required": false,
       "default": 8008
     },
     "projectName": {
       "type": "string",
       "title": "Project Name",
-      "description": "A name for the project, used to provide project information to AI assistants.",
+      "description": "A name for the project, used to create project-specific endpoints and provide information to AI assistants.",
       "required": false
     },
     "description": {
       "type": "string",
       "title": "Project Description",
-      "description": "A description of the project, which is provided to AI assistants.",
+      "description": "A description of the project that is provided to AI assistants.",
       "required": false
     },
     "path": {
       "type": "string",
       "title": "URL Path",
-      "description": "The URL path for project-specific endpoints (e.g., /my-project). If set, the SSE endpoint becomes http://localhost:<port><path>/sse.",
+      "description": "The URL path for project-specific endpoints (e.g., /my-project). The final endpoint will be http://localhost:<port><path>/sse.",
       "required": false
     }
   },
@@ -46,12 +46,24 @@
       "mcpServers": {
         "supergateway-configured-windows": {
           "command": "cmd",
-          "args": ["/c", "npx", "-y", "supergateway", "--sse", "http://localhost:8008/sse"],
+          "args": [
+            "/c",
+            "npx",
+            "-y",
+            "supergateway",
+            "--sse",
+            "http://localhost:8008/sse"
+          ],
           "env": {}
         },
         "supergateway-configured-mac-linux": {
           "command": "npx",
-          "args": ["-y", "supergateway", "--sse", "http://localhost:8008/sse"],
+          "args": [
+            "-y",
+            "supergateway",
+            "--sse",
+            "http://localhost:8008/sse"
+          ],
           "env": {}
         }
       }

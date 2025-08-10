@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["keboola_mcp_server"],
+      "args": [
+        "keboola_mcp_server"
+      ],
       "env": {
         "KBC_STORAGE_API_URL": "${user_config.kbc_storage_api_url}",
         "KBC_STORAGE_TOKEN": "${user_config.kbc_storage_token}",
@@ -25,20 +27,20 @@
     "kbc_storage_api_url": {
       "type": "string",
       "title": "Keboola API URL",
-      "description": "Your Keboola API URL, which depends on your deployment region. e.g., https://connection.keboola.com for AWS North America.",
+      "description": "Your Keboola API URL, which depends on your deployment region (e.g., https://connection.keboola.com).",
       "required": true
     },
     "kbc_storage_token": {
       "type": "string",
       "title": "Keboola Storage Token",
-      "description": "Your authentication token for Keboola. Use a master token for full project access or a custom token for limited access.",
+      "description": "Your authentication token for Keboola. Use a master token for full access or a custom token for limited access.",
       "required": true,
       "sensitive": true
     },
     "kbc_workspace_schema": {
       "type": "string",
       "title": "Keboola Workspace Schema",
-      "description": "Identifies your workspace for SQL queries. This is only required if you are using a custom storage token instead of a master token.",
+      "description": "Identifies your workspace for SQL queries. This is only required if you are using a custom storage token instead of a Master Token.",
       "required": false
     }
   },
@@ -50,7 +52,9 @@
       "mcpServers": {
         "keboola_mcp_server": {
           "command": "uvx",
-          "args": ["keboola_mcp_server"],
+          "args": [
+            "keboola_mcp_server"
+          ],
           "env": {
             "KBC_STORAGE_API_URL": "https://connection.YOUR_REGION.keboola.com",
             "KBC_STORAGE_TOKEN": "your_keboola_storage_token",

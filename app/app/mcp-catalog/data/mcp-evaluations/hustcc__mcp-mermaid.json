@@ -30,7 +30,7 @@
     "transport": {
       "type": "string",
       "title": "Transport Protocol",
-      "description": "Specify the transport protocol: 'stdio', 'sse', or 'streamable'.",
+      "description": "Specify the transport protocol: \"stdio\", \"sse\", or \"streamable\"",
       "required": false,
       "default": "stdio"
     },
@@ -44,7 +44,7 @@
     "endpoint": {
       "type": "string",
       "title": "Server Endpoint",
-      "description": "Specify the endpoint for the transport. Default is '/sse' for SSE and '/mcp' for streamable.",
+      "description": "Specify the endpoint for the transport. Defaults to '/sse' for SSE and '/mcp' for streamable.",
       "required": false
     }
   },
@@ -56,22 +56,36 @@
       "mcpServers": {
         "mcp-mermaid-stdio": {
           "command": "npx",
-          "args": ["-y", "mcp-mermaid"],
+          "args": [
+            "-y",
+            "mcp-mermaid"
+          ],
           "env": {}
         },
         "mcp-mermaid-stdio-windows": {
           "command": "cmd",
-          "args": ["/c", "npx", "-y", "mcp-mermaid"],
+          "args": [
+            "/c",
+            "npx",
+            "-y",
+            "mcp-mermaid"
+          ],
           "env": {}
         },
         "mcp-mermaid-sse": {
           "command": "mcp-mermaid",
-          "args": ["-t", "sse"],
+          "args": [
+            "-t",
+            "sse"
+          ],
           "env": {}
         },
         "mcp-mermaid-streamable": {
           "command": "mcp-mermaid",
-          "args": ["-t", "streamable"],
+          "args": [
+            "-t",
+            "streamable"
+          ],
           "env": {}
         }
       }

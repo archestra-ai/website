@@ -15,14 +15,14 @@
     "host": {
       "type": "string",
       "title": "Host",
-      "description": "The hostname or IP address for the MCP server to listen on.",
+      "description": "The hostname the MCP server will listen on.",
       "required": false,
       "default": "localhost"
     },
     "port": {
       "type": "number",
       "title": "Port",
-      "description": "The port number for the MCP server to listen on.",
+      "description": "The port the MCP server will listen on.",
       "required": false,
       "default": 8080
     }

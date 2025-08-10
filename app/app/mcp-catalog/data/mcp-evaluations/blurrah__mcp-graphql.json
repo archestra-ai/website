@@ -10,13 +10,16 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "mcp-graphql"],
+      "args": [
+        "-y",
+        "mcp-graphql"
+      ],
       "env": {
-        "ENDPOINT": "${user_config.endpoint}",
-        "HEADERS": "${user_config.headers}",
-        "ALLOW_MUTATIONS": "${user_config.allow_mutations}",
-        "NAME": "${user_config.name}",
-        "SCHEMA": "${user_config.schema}"
+        "ENDPOINT": "${user_config.ENDPOINT}",
+        "HEADERS": "${user_config.HEADERS}",
+        "ALLOW_MUTATIONS": "${user_config.ALLOW_MUTATIONS}",
+        "NAME": "${user_config.NAME}",
+        "SCHEMA": "${user_config.SCHEMA}"
       }
     }
   },
@@ -24,38 +27,38 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "endpoint": {
+    "ENDPOINT": {
       "type": "string",
       "title": "GraphQL Endpoint URL",
-      "description": "The URL of the GraphQL API endpoint.",
+      "description": "The URL of the GraphQL API endpoint the server will connect to.",
       "required": true,
       "default": "http://localhost:4000/graphql"
     },
-    "headers": {
+    "HEADERS": {
       "type": "string",
       "title": "Request Headers",
-      "description": "JSON string containing headers for requests, e.g., '{\"Authorization\":\"Bearer token123\"}'.",
+      "description": "JSON string containing headers for requests, e.g., for authentication. Example: '{\"Authorization\":\"Bearer token123\"}'",
       "required": false,
       "default": "{}"
     },
-    "allow_mutations": {
+    "ALLOW_MUTATIONS": {
       "type": "boolean",
       "title": "Allow Mutations",
       "description": "Enable mutation operations. This is disabled by default as a security measure.",
       "required": false,
       "default": false
     },
-    "name": {
+    "NAME": {
       "type": "string",
       "title": "Server Name",
-      "description": "The name to assign to the MCP server.",
+      "description": "The name to identify this MCP server.",
       "required": false,
       "default": "mcp-graphql"
     },
-    "schema": {
+    "SCHEMA": {
       "type": "string",
-      "title": "Schema Path or URL (Optional)",
-      "description": "Optional path to a local GraphQL schema file or a URL to a schema. If provided, this will be used instead of introspection.",
+      "title": "Schema Path or URL",
+      "description": "Optional path to a local GraphQL schema file or a URL to a schema file. If not provided, the server will use introspection.",
       "required": false
     }
   },
@@ -67,14 +70,18 @@
       "mcpServers": {
         "mcp-graphql": {
           "command": "npx",
-          "args": ["mcp-graphql"],
+          "args": [
+            "mcp-graphql"
+          ],
           "env": {
             "ENDPOINT": "http://localhost:3000/graphql"
           }
         },
         "mcp-graphql-with-headers": {
           "command": "npx",
-          "args": ["mcp-graphql"],
+          "args": [
+            "mcp-graphql"
+          ],
           "env": {
             "ENDPOINT": "https://api.example.com/graphql",
             "HEADERS": "{\"Authorization\":\"Bearer token123\"}"
@@ -82,7 +89,9 @@
         },
         "mcp-graphql-allow-mutations": {
           "command": "npx",
-          "args": ["mcp-graphql"],
+          "args": [
+            "mcp-graphql"
+          ],
           "env": {
             "ENDPOINT": "http://localhost:3000/graphql",
             "ALLOW_MUTATIONS": "true"
@@ -90,7 +99,9 @@
         },
         "mcp-graphql-with-local-schema": {
           "command": "npx",
-          "args": ["mcp-graphql"],
+          "args": [
+            "mcp-graphql"
+          ],
           "env": {
             "ENDPOINT": "http://localhost:3000/graphql",
             "SCHEMA": "./schema.graphql"
@@ -98,7 +109,9 @@
         },
         "mcp-graphql-with-remote-schema": {
           "command": "npx",
-          "args": ["mcp-graphql"],
+          "args": [
+            "mcp-graphql"
+          ],
           "env": {
             "ENDPOINT": "http://localhost:3000/graphql",
             "SCHEMA": "https://example.com/schema.graphql"

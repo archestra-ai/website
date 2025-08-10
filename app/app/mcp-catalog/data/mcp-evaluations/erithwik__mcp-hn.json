@@ -8,11 +8,10 @@
     "name": "erithwik"
   },
   "server": {
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-hn"],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "mcp-hn"
+    ]
   },
   "tools": [],
   "prompts": [],
@@ -26,7 +25,9 @@
       "mcpServers": {
         "mcp-hn": {
           "command": "uvx",
-          "args": ["mcp-hn"],
+          "args": [
+            "mcp-hn"
+          ],
           "env": {}
         }
       }

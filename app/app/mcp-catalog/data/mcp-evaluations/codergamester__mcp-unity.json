@@ -11,7 +11,10 @@
     "type": "node",
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@codergamester/mcp-unity"],
+      "args": [
+        "-y",
+        "@codergamester/mcp-unity"
+      ],
       "env": {}
     }
   },

@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["server.py"],
+      "args": [
+        "${__dirname}/server.py"
+      ],
       "env": {
         "PORT": "${user_config.port}"
       }
@@ -23,7 +25,7 @@
     "port": {
       "type": "number",
       "title": "Server Port",
-      "description": "The port for the MCP server to listen on.",
+      "description": "The port for the server to listen on.",
       "required": false,
       "default": 3000
     }
@@ -36,12 +38,16 @@
       "mcpServers": {
         "memvid-mcp-server": {
           "command": "python",
-          "args": ["server.py"],
+          "args": [
+            "server.py"
+          ],
           "env": {}
         },
         "memvid-mcp-server-configured": {
           "command": "python",
-          "args": ["server.py"],
+          "args": [
+            "server.py"
+          ],
           "env": {
             "PORT": "3002"
           }

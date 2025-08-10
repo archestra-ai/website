@@ -8,11 +8,12 @@
     "name": "r-huijts"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "@r-huijts/ethics-vibe-check"
+      ],
       "env": {}
     }
   },
@@ -28,7 +29,10 @@
       "mcpServers": {
         "ethics-vibe-check": {
           "command": "npx",
-          "args": ["-y", "@r-huijts/ethics-vibe-check"],
+          "args": [
+            "-y",
+            "@r-huijts/ethics-vibe-check"
+          ],
           "env": {}
         }
       }
@@ -54,7 +58,7 @@
   "programming_language": "JavaScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T21:03:32.202Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

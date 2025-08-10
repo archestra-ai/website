@@ -8,9 +8,12 @@
     "name": "kukapay"
   },
   "server": {
+    "type": "python",
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/main.py"],
+      "args": [
+        "main.py"
+      ],
       "env": {
         "DUNE_API_KEY": "${user_config.dune_api_key}"
       }
@@ -23,7 +26,7 @@
     "dune_api_key": {
       "type": "string",
       "title": "Dune API Key",
-      "description": "Your API key for Dune Analytics (get one from https://dune.com/settings/api)",
+      "description": "Your API key for Dune Analytics. You can get one from https://dune.com/settings/api",
       "required": true,
       "sensitive": true
     }
@@ -36,14 +39,22 @@
       "mcpServers": {
         "kukapay-dune-analytics-mcp": {
           "command": "mcp",
-          "args": ["dev", "main.py"],
+          "args": [
+            "dev",
+            "main.py"
+          ],
           "env": {
             "DUNE_API_KEY": "your_api_key_here"
           }
         },
         "kukapay-dune-analytics-mcp-claude-install": {
           "command": "mcp",
-          "args": ["install", "main.py", "--name", "Dune Analytics"],
+          "args": [
+            "install",
+            "main.py",
+            "--name",
+            "Dune Analytics"
+          ],
           "env": {
             "DUNE_API_KEY": "your_api_key_here"
           }

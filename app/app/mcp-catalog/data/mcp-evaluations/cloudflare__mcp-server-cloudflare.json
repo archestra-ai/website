@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["mcp-remote", "${user_config.server_url}"],
+      "args": [
+        "mcp-remote",
+        "${user_config.server_url}"
+      ],
       "env": {
         "CLOUDFLARE_API_TOKEN": "${user_config.api_token}"
       }
@@ -23,13 +26,13 @@
     "server_url": {
       "type": "string",
       "title": "Cloudflare MCP Server URL",
-      "description": "The URL of the specific Cloudflare MCP server to connect to. A full list is available in the documentation. Example: https://observability.mcp.cloudflare.com/sse",
+      "description": "The URL of the specific Cloudflare MCP server to connect to (e.g., https://observability.mcp.cloudflare.com/sse).",
       "required": true
     },
     "api_token": {
       "type": "string",
       "title": "Cloudflare API Token",
-      "description": "An API token with the required scopes for the chosen MCP server. Create one in the Cloudflare dashboard at https://dash.cloudflare.com/profile/api-tokens.",
+      "description": "Your Cloudflare API token with the necessary permissions for the selected server. Create one in the Cloudflare dashboard.",
       "required": true,
       "sensitive": true
     }
@@ -42,12 +45,18 @@
       "mcpServers": {
         "mcp-remote-observability": {
           "command": "npx",
-          "args": ["mcp-remote", "https://observability.mcp.cloudflare.com/sse"],
+          "args": [
+            "mcp-remote",
+            "https://observability.mcp.cloudflare.com/sse"
+          ],
           "env": {}
         },
         "mcp-remote-bindings": {
           "command": "npx",
-          "args": ["mcp-remote", "https://bindings.mcp.cloudflare.com/sse"],
+          "args": [
+            "mcp-remote",
+            "https://bindings.mcp.cloudflare.com/sse"
+          ],
           "env": {}
         }
       }

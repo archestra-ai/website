@@ -10,8 +10,13 @@
   "server": {
     "type": "binary",
     "mcp_config": {
-      "command": "mcp-access-point",
-      "args": ["-c", "${user_config.config_file}"],
+      "command": "cargo",
+      "args": [
+        "run",
+        "--",
+        "-c",
+        "${user_config.config_file}"
+      ],
       "env": {}
     }
   },
@@ -22,7 +27,7 @@
     "config_file": {
       "type": "file",
       "title": "Configuration File",
-      "description": "Path to the config.yaml file that defines the MCP services, upstreams, and routing rules.",
+      "description": "Path to the config.yaml file defining the MCP services, upstreams, and routing rules.",
       "required": true,
       "default": "config.yaml"
     }
@@ -35,7 +40,12 @@
       "mcpServers": {
         "mcp-access-point-with-config": {
           "command": "cargo",
-          "args": ["run", "--", "-c", "config.yaml"],
+          "args": [
+            "run",
+            "--",
+            "-c",
+            "config.yaml"
+          ],
           "env": {}
         }
       }

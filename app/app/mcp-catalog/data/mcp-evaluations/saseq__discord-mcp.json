@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["mcp-remote", "https://gitmcp.io/SaseQ/discord-mcp"],
+      "args": [
+        "mcp-remote",
+        "https://gitmcp.io/SaseQ/discord-mcp"
+      ],
       "env": {
         "DISCORD_TOKEN": "${user_config.discord_token}",
         "DISCORD_GUILD_ID": "${user_config.discord_guild_id}"
@@ -31,7 +34,7 @@
     "discord_guild_id": {
       "type": "string",
       "title": "Default Discord Server ID",
-      "description": "Optional. When provided, it sets a default Discord server (guild) ID so any tool that accepts a guildId parameter can omit it.",
+      "description": "Optional. When provided, it sets a default Discord server ID so any tool that accepts a guildId parameter can omit it.",
       "required": false
     }
   },
@@ -43,7 +46,10 @@
       "mcpServers": {
         "discord-mcp-jar": {
           "command": "java",
-          "args": ["-jar", "/absolute/path/to/discord-mcp-0.0.1-SNAPSHOT.jar"],
+          "args": [
+            "-jar",
+            "/absolute/path/to/discord-mcp-0.0.1-SNAPSHOT.jar"
+          ],
           "env": {
             "DISCORD_TOKEN": "YOUR_DISCORD_BOT_TOKEN",
             "DISCORD_GUILD_ID": "OPTIONAL_DEFAULT_SERVER_ID"
@@ -51,7 +57,10 @@
         },
         "saseq-discord-mcp-remote": {
           "command": "npx",
-          "args": ["mcp-remote", "https://gitmcp.io/SaseQ/discord-mcp"],
+          "args": [
+            "mcp-remote",
+            "https://gitmcp.io/SaseQ/discord-mcp"
+          ],
           "env": {
             "DISCORD_TOKEN": "YOUR_DISCORD_BOT_TOKEN",
             "DISCORD_GUILD_ID": "OPTIONAL_DEFAULT_SERVER_ID"

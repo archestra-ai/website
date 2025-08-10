@@ -8,14 +8,16 @@
     "name": "reza-gholizade"
   },
   "server": {
-    "type": "binary",
     "mcp_config": {
-      "command": "server/k8s-mcp-server",
+      "command": "k8s-mcp-server",
       "args": [],
       "env": {
-        "KUBECONFIG": "${user_config.kubeconfig_path}",
-        "SERVER_MODE": "${user_config.server_mode}",
-        "SERVER_PORT": "${user_config.server_port}"
+        "KUBECONFIG": "${user_config.kubeconfig}",
+        "SERVER_MODE": "${user_config.mode}",
+        "SERVER_PORT": "${user_config.port}",
+        "SERVER_READ_ONLY": "${user_config.read_only}",
+        "SERVER_NO_K8S": "${user_config.disable_k8s_tools}",
+        "SERVER_NO_HELM": "${user_config.disable_helm_tools}"
       }
     }
   },
@@ -23,45 +25,47 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "kubeconfig_path": {
+    "kubeconfig": {
       "type": "file",
-      "title": "Kubernetes Config Path",
-      "description": "Path to the Kubernetes configuration file. If not provided, the server uses the default kubeconfig location.",
+      "title": "Kubeconfig File",
+      "description": "Path to your Kubernetes config file. If not specified, the default kubeconfig location will be used.",
       "required": false,
       "default": "${HOME}/.kube/config"
     },
-    "server_mode": {
+    "mode": {
       "type": "string",
       "title": "Server Mode",
-      "description": "The communication mode for the server. Options: 'stdio', 'sse', 'streamable-http'.",
+      "description": "Communication mode for the server. Can be 'stdio', 'sse', or 'streamable-http'.",
       "required": false,
       "default": "sse"
     },
-    "server_port": {
+    "port": {
       "type": "number",
       "title": "Server Port",
-      "description": "The port for the server to listen on in 'sse' or 'streamable-http' mode.",
+      "description": "Port for 'sse' and 'streamable-http' modes.",
       "required": false,
-      "default": 8080
+      "default": 8080,
+      "min": 1024,
+      "max": 65535
     },
     "read_only": {
       "type": "boolean",
       "title": "Read-Only Mode",
-      "description": "Enable to prevent any changes to the cluster. Corresponds to the --read-only flag.",
+      "description": "Enable to prevent any changes to the cluster. Disables resource creation, deletion, and Helm modifications.",
       "required": false,
       "default": false
     },
     "disable_k8s_tools": {
       "type": "boolean",
       "title": "Disable Kubernetes Tools",
-      "description": "Disable all Kubernetes-related tools. Corresponds to the --no-k8s flag.",
+      "description": "Disable all core Kubernetes tools (list, get, describe, logs, etc.).",
       "required": false,
       "default": false
     },
     "disable_helm_tools": {
       "type": "boolean",
       "title": "Disable Helm Tools",
-      "description": "Disable all Helm-related tools. Corresponds to the --no-helm flag.",
+      "description": "Disable all Helm-related tools.",
       "required": false,
       "default": false
     }
@@ -74,7 +78,10 @@
       "mcpServers": {
         "k8s-mcp-server-stdio": {
           "command": "./k8s-mcp-server",
-          "args": ["--mode", "stdio"],
+          "args": [
+            "--mode",
+            "stdio"
+          ],
           "env": {}
         },
         "k8s-mcp-server-sse-env": {
@@ -87,7 +94,11 @@
         },
         "k8s-mcp-server-readonly-sse": {
           "command": "./k8s-mcp-server",
-          "args": ["--mode", "sse", "--read-only"],
+          "args": [
+            "--mode",
+            "sse",
+            "--read-only"
+          ],
           "env": {}
         },
         "ginnux-k8s-mcp-server-docker": {
@@ -134,7 +145,9 @@
         },
         "ginnux-k8s-mcp-server-docker-compose": {
           "command": "docker-compose",
-          "args": ["up"],
+          "args": [
+            "up"
+          ],
           "env": {
             "KUBECONFIG": "/home/appuser/.kube/config",
             "SERVER_MODE": "sse",

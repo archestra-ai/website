@@ -10,7 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "figma-developer-mcp", "--stdio"],
+      "args": [
+        "-y",
+        "figma-developer-mcp",
+        "--stdio"
+      ],
       "env": {
         "FIGMA_API_KEY": "${user_config.figma_api_key}"
       }
@@ -23,7 +27,7 @@
     "figma_api_key": {
       "type": "string",
       "title": "Figma Access Token",
-      "description": "Your personal access token for the Figma API. Instructions on how to create one can be found at https://help.figma.com/hc/en-us/articles/8085703771159-Manage-personal-access-tokens.",
+      "description": "Your personal access token for the Figma API. Instructions on how to create one can be found here: https://help.figma.com/hc/en-us/articles/8085703771159-Manage-personal-access-tokens",
       "required": true,
       "sensitive": true
     }
@@ -36,17 +40,33 @@
       "mcpServers": {
         "figma-developer-mcp-stdio-with-config": {
           "command": "npx",
-          "args": ["-y", "figma-developer-mcp", "--figma-api-key=YOUR-KEY", "--stdio"],
+          "args": [
+            "-y",
+            "figma-developer-mcp",
+            "--figma-api-key=YOUR-KEY",
+            "--stdio"
+          ],
           "env": {}
         },
         "figma-developer-mcp-stdio-with-config-windows": {
           "command": "cmd",
-          "args": ["/c", "npx", "-y", "figma-developer-mcp", "--figma-api-key=YOUR-KEY", "--stdio"],
+          "args": [
+            "/c",
+            "npx",
+            "-y",
+            "figma-developer-mcp",
+            "--figma-api-key=YOUR-KEY",
+            "--stdio"
+          ],
           "env": {}
         },
         "figma-developer-mcp-stdio-with-env": {
           "command": "npx",
-          "args": ["-y", "figma-developer-mcp", "--stdio"],
+          "args": [
+            "-y",
+            "figma-developer-mcp",
+            "--stdio"
+          ],
           "env": {
             "FIGMA_API_KEY": "YOUR-KEY",
             "PORT": "YOUR-PORT"

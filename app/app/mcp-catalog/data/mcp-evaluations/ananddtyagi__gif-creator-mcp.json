@@ -8,10 +8,11 @@
     "name": "ananddtyagi"
   },
   "server": {
-    "type": "node",
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
       "env": {}
     }
   },
@@ -27,7 +28,9 @@
       "mcpServers": {
         "gif-creator": {
           "command": "node",
-          "args": ["/path/to/gif-creator-mcp/dist/index.js"],
+          "args": [
+            "/path/to/gif-creator-mcp/dist/index.js"
+          ],
           "env": {}
         }
       }

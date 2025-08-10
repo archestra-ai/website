@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["tasty-agent"],
+      "args": [
+        "tasty-agent"
+      ],
       "env": {
         "TASTYTRADE_USERNAME": "${user_config.username}",
         "TASTYTRADE_PASSWORD": "${user_config.password}",
@@ -25,21 +27,21 @@
     "username": {
       "type": "string",
       "title": "TastyTrade Username",
-      "description": "Your username for your TastyTrade account.",
+      "description": "Your TastyTrade account username.",
       "required": true,
       "sensitive": true
     },
     "password": {
       "type": "string",
       "title": "TastyTrade Password",
-      "description": "Your password for your TastyTrade account.",
+      "description": "Your TastyTrade account password.",
       "required": true,
       "sensitive": true
     },
     "account_id": {
       "type": "string",
       "title": "TastyTrade Account ID",
-      "description": "Your specific TastyTrade account ID. This is optional and only needed if you have multiple accounts.",
+      "description": "Your specific TastyTrade account ID (optional, will use default if not provided).",
       "required": false
     }
   },
@@ -51,7 +53,9 @@
       "mcpServers": {
         "tasty-agent": {
           "command": "uvx",
-          "args": ["tasty-agent"],
+          "args": [
+            "tasty-agent"
+          ],
           "env": {}
         }
       }

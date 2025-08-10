@@ -10,11 +10,14 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@dealx/mcp-server"],
+      "args": [
+        "-y",
+        "@dealx/mcp-server"
+      ],
       "env": {
-        "DEALX_API_URL": "${user_config.dealx_api_url}",
-        "MCP_SERVER_PORT": "${user_config.mcp_server_port}",
-        "LOG_LEVEL": "${user_config.log_level}"
+        "DEALX_API_URL": "${user_config.DEALX_API_URL}",
+        "MCP_SERVER_PORT": "${user_config.MCP_SERVER_PORT}",
+        "LOG_LEVEL": "${user_config.LOG_LEVEL}"
       }
     }
   },
@@ -22,24 +25,24 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "dealx_api_url": {
+    "DEALX_API_URL": {
       "type": "string",
       "title": "DealX API URL",
-      "description": "The API endpoint for the DealX platform.",
+      "description": "The API URL for the DealX platform.",
       "required": true,
       "default": "https://dealx.com.ua"
     },
-    "mcp_server_port": {
+    "MCP_SERVER_PORT": {
       "type": "number",
       "title": "MCP Server Port",
-      "description": "Optional: Specify the port for the MCP server to listen on.",
+      "description": "Optional port for the MCP server to listen on.",
       "required": false,
       "default": 3100
     },
-    "log_level": {
+    "LOG_LEVEL": {
       "type": "string",
       "title": "Log Level",
-      "description": "Optional: Set the server's log level (e.g., debug, info, warn, error).",
+      "description": "The logging level for the server (e.g., debug, info, warn, error).",
       "required": false,
       "default": "info"
     }
@@ -52,24 +55,34 @@
       "mcpServers": {
         "dealx": {
           "command": "npx",
-          "args": ["-y", "@dealx/mcp-server"],
+          "args": [
+            "-y",
+            "@dealx/mcp-server"
+          ],
           "env": {
             "DEALX_API_URL": "https://dealx.com.ua"
           }
         },
         "dealx-mcp-server-node": {
           "command": "node",
-          "args": ["node_modules/@dealx/mcp-server/build/index.js"],
+          "args": [
+            "node_modules/@dealx/mcp-server/build/index.js"
+          ],
           "env": {}
         },
         "dealx-mcp-server-npx": {
           "command": "npx",
-          "args": ["-y", "@dealx/mcp-server"],
+          "args": [
+            "-y",
+            "@dealx/mcp-server"
+          ],
           "env": {}
         },
         "dealx-mcp-server-dev": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         }
       }

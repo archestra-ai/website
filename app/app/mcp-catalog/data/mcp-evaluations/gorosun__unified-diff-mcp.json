@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "bun",
-      "args": ["run", "${__dirname}/src/index.ts"],
+      "args": [
+        "run",
+        "${__dirname}/src/index.ts"
+      ],
       "env": {
         "GITHUB_TOKEN": "${user_config.github_token}",
         "DEFAULT_AUTO_OPEN": "${user_config.default_auto_open}",
@@ -25,21 +28,21 @@
     "github_token": {
       "type": "string",
       "title": "GitHub Token",
-      "description": "GitHub Personal Access Token with 'gist' scope. Required for sharing diffs via the 'visualize_diff_html_content' tool.",
-      "sensitive": true,
-      "required": true
+      "description": "GitHub Personal Access Token with 'gist' scope for Gist integration. If not provided, the server will fall back to creating local files.",
+      "required": false,
+      "sensitive": true
     },
     "default_auto_open": {
       "type": "boolean",
       "title": "Default Auto Open",
-      "description": "If enabled, automatically opens generated local diff files in the browser.",
+      "description": "Automatically open generated files in the browser by default.",
       "required": false,
       "default": false
     },
     "default_output_mode": {
       "type": "string",
       "title": "Default Output Mode",
-      "description": "The default output format for local files. Can be 'html' or 'image'.",
+      "description": "Default output format for local files ('html' or 'image').",
       "required": false,
       "default": "html"
     }
@@ -52,7 +55,10 @@
       "mcpServers": {
         "unified-diff-mcp": {
           "command": "bun",
-          "args": ["run", "/path/to/unified-diff-mcp/src/index.ts"],
+          "args": [
+            "run",
+            "/path/to/unified-diff-mcp/src/index.ts"
+          ],
           "env": {
             "GITHUB_TOKEN": "your_github_token_here",
             "DEFAULT_AUTO_OPEN": "true",
@@ -61,7 +67,10 @@
         },
         "unified-diff-mcp-dev": {
           "command": "bun",
-          "args": ["--watch", "/path/to/unified-diff-mcp/src/index.ts"],
+          "args": [
+            "--watch",
+            "/path/to/unified-diff-mcp/src/index.ts"
+          ],
           "env": {}
         }
       }

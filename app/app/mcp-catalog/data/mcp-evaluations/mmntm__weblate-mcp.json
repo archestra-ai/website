@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@mmntm/weblate-mcp"],
+      "args": [
+        "-y",
+        "@mmntm/weblate-mcp"
+      ],
       "env": {
         "WEBLATE_API_URL": "${user_config.weblate_api_url}",
         "WEBLATE_API_TOKEN": "${user_config.weblate_api_token}"
@@ -24,8 +27,9 @@
     "weblate_api_url": {
       "type": "string",
       "title": "Weblate API URL",
-      "description": "The full API endpoint for your Weblate instance, e.g., https://your-weblate-instance.com/api",
-      "required": true
+      "description": "The full API URL for your Weblate instance (e.g., https://your-weblate-instance.com/api).",
+      "required": true,
+      "sensitive": false
     },
     "weblate_api_token": {
       "type": "string",
@@ -43,7 +47,10 @@
       "mcpServers": {
         "mmntm-weblate-mcp-configured": {
           "command": "npx",
-          "args": ["-y", "@mmntm/weblate-mcp"],
+          "args": [
+            "-y",
+            "@mmntm/weblate-mcp"
+          ],
           "env": {
             "WEBLATE_API_URL": "https://your-weblate-instance.com/api",
             "WEBLATE_API_TOKEN": "your-weblate-api-token"
@@ -51,17 +58,23 @@
         },
         "mmntm-weblate-mcp": {
           "command": "npx",
-          "args": ["@mmntm/weblate-mcp"],
+          "args": [
+            "@mmntm/weblate-mcp"
+          ],
           "env": {}
         },
         "weblate-mcp-dev": {
           "command": "pnpm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "weblate-mcp-local": {
           "command": "node",
-          "args": ["/path/to/weblate-mcp/dist/main.js"],
+          "args": [
+            "/path/to/weblate-mcp/dist/main.js"
+          ],
           "env": {
             "WEBLATE_API_URL": "https://your-weblate-instance.com/api",
             "WEBLATE_API_TOKEN": "your-api-token"

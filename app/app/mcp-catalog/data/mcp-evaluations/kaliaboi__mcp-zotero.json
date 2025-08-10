@@ -10,10 +10,13 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "mcp-zotero"],
+      "args": [
+        "-y",
+        "mcp-zotero"
+      ],
       "env": {
-        "ZOTERO_API_KEY": "${user_config.zotero_api_key}",
-        "ZOTERO_USER_ID": "${user_config.zotero_user_id}"
+        "ZOTERO_API_KEY": "${user_config.ZOTERO_API_KEY}",
+        "ZOTERO_USER_ID": "${user_config.ZOTERO_USER_ID}"
       }
     }
   },
@@ -21,17 +24,17 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "zotero_api_key": {
+    "ZOTERO_API_KEY": {
       "type": "string",
       "title": "Zotero API Key",
-      "description": "Your Zotero API key. Create one at https://www.zotero.org/settings/keys.",
+      "description": "Your Zotero API key. Create one at https://www.zotero.org/settings/keys",
       "required": true,
       "sensitive": true
     },
-    "zotero_user_id": {
+    "ZOTERO_USER_ID": {
       "type": "string",
       "title": "Zotero User ID",
-      "description": "Your Zotero User ID, which can be found by using your API key.",
+      "description": "Your Zotero User ID. After creating an API key, you can find this by running the command: curl -H \"Zotero-API-Key: YOUR_API_KEY\" https://api.zotero.org/keys/current",
       "required": true
     }
   },
@@ -48,7 +51,10 @@
         },
         "mcp-zotero-npx": {
           "command": "npx",
-          "args": ["-y", "mcp-zotero"],
+          "args": [
+            "-y",
+            "mcp-zotero"
+          ],
           "env": {}
         },
         "mcp-zotero-configured": {

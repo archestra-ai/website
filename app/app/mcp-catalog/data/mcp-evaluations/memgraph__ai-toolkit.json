@@ -8,15 +8,23 @@
     "name": "memgraph"
   },
   "server": {
+    "type": "python",
     "mcp_config": {
       "command": "uv",
-      "args": ["run", "--with", "mcp-memgraph", "--python", "3.13", "mcp-memgraph"],
+      "args": [
+        "run",
+        "--with",
+        "mcp-memgraph",
+        "--python",
+        "3.13",
+        "mcp-memgraph"
+      ],
       "env": {
-        "MEMGRAPH_URL": "${user_config.MEMGRAPH_URL}",
-        "MEMGRAPH_USER": "${user_config.MEMGRAPH_USER}",
-        "MEMGRAPH_PASSWORD": "${user_config.MEMGRAPH_PASSWORD}",
-        "MEMGRAPH_DATABASE": "${user_config.MEMGRAPH_DATABASE}",
-        "MCP_TRANSPORT": "${user_config.MCP_TRANSPORT}"
+        "MEMGRAPH_URL": "${user_config.memgraph_url}",
+        "MEMGRAPH_USER": "${user_config.memgraph_user}",
+        "MEMGRAPH_PASSWORD": "${user_config.memgraph_password}",
+        "MEMGRAPH_DATABASE": "${user_config.memgraph_database}",
+        "MCP_TRANSPORT": "${user_config.mcp_transport}"
       }
     }
   },
@@ -51,38 +59,39 @@
   },
   "dependencies": [],
   "user_config": {
-    "MEMGRAPH_URL": {
+    "memgraph_url": {
       "type": "string",
       "title": "Memgraph URL",
       "description": "The Bolt URL of the Memgraph instance to connect to.",
-      "required": false,
+      "required": true,
       "default": "bolt://host.docker.internal:7687"
     },
-    "MEMGRAPH_USER": {
+    "memgraph_user": {
       "type": "string",
       "title": "Memgraph User",
-      "description": "The username for Memgraph authentication.",
+      "description": "The username for authentication.",
       "required": false,
       "default": "memgraph"
     },
-    "MEMGRAPH_PASSWORD": {
+    "memgraph_password": {
       "type": "string",
       "title": "Memgraph Password",
-      "description": "The password for Memgraph authentication.",
+      "description": "The password for authentication.",
       "required": false,
-      "sensitive": true
+      "sensitive": true,
+      "default": ""
     },
-    "MEMGRAPH_DATABASE": {
+    "memgraph_database": {
       "type": "string",
       "title": "Memgraph Database",
       "description": "The database name to connect to.",
       "required": false,
       "default": "memgraph"
     },
-    "MCP_TRANSPORT": {
+    "mcp_transport": {
       "type": "string",
-      "title": "MCP Transport Protocol",
-      "description": "The transport protocol to use. Options: http (default), stdio.",
+      "title": "MCP Transport",
+      "description": "The transport protocol to use. Options: http (default), stdio",
       "required": false,
       "default": "http"
     }

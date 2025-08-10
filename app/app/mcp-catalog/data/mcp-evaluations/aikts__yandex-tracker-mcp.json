@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["yandex-tracker-mcp@latest"],
+      "args": [
+        "yandex-tracker-mcp@latest"
+      ],
       "env": {
         "TRACKER_TOKEN": "${user_config.tracker_token}",
         "TRACKER_CLOUD_ORG_ID": "${user_config.tracker_cloud_org_id}",
@@ -24,21 +26,21 @@
   "user_config": {
     "tracker_token": {
       "type": "string",
-      "title": "Yandex Tracker OAuth Token",
-      "description": "Your Yandex Tracker OAuth token for authentication. Other methods like IAM tokens or Service Accounts are also supported if configured manually.",
+      "title": "Yandex Tracker Token",
+      "description": "Your Yandex Tracker OAuth token for authentication. Other methods like IAM tokens or Service Accounts are also supported but must be configured manually.",
       "required": true,
       "sensitive": true
     },
     "tracker_cloud_org_id": {
       "type": "string",
       "title": "Yandex Cloud Organization ID",
-      "description": "Your Yandex Cloud organization ID. You must provide either this or the Yandex 360 ID.",
+      "description": "Your Yandex Cloud organization ID. Provide this OR the Yandex 360 Org ID.",
       "required": false
     },
     "tracker_org_id": {
       "type": "string",
       "title": "Yandex 360 Organization ID",
-      "description": "Your Yandex 360 organization ID. You must provide either this or the Yandex Cloud ID.",
+      "description": "Your Yandex 360 organization ID. Provide this OR the Yandex Cloud Org ID.",
       "required": false
     }
   },
@@ -50,7 +52,9 @@
       "mcpServers": {
         "yandex-tracker-mcp": {
           "command": "uvx",
-          "args": ["yandex-tracker-mcp@latest"],
+          "args": [
+            "yandex-tracker-mcp@latest"
+          ],
           "env": {
             "TRACKER_TOKEN": "your_tracker_token_here",
             "TRACKER_CLOUD_ORG_ID": "your_cloud_org_id_here",
@@ -79,7 +83,9 @@
         },
         "yandex-tracker-mcp-stdio": {
           "command": "uvx",
-          "args": ["yandex-tracker-mcp@latest"],
+          "args": [
+            "yandex-tracker-mcp@latest"
+          ],
           "env": {
             "TRACKER_TOKEN": "your_tracker_token_here",
             "TRACKER_CLOUD_ORG_ID": "your_cloud_org_id_here",

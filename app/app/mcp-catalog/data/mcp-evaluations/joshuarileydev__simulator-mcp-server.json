@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@joshuarileydev/simulator-mcp-server"],
+      "args": [
+        "y",
+        "@joshuarileydev/simulator-mcp-server"
+      ],
       "env": {}
     }
   },
@@ -26,7 +29,10 @@
       "mcpServers": {
         "joshuarileydev-simulator-mcp-server": {
           "command": "npx",
-          "args": ["y", "@joshuarileydev/simulator-mcp-server"],
+          "args": [
+            "y",
+            "@joshuarileydev/simulator-mcp-server"
+          ],
           "env": {}
         }
       }

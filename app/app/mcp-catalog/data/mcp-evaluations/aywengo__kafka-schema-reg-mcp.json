@@ -11,13 +11,15 @@
     "type": "python",
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/kafka_schema_registry_unified_mcp.py"],
+      "args": [
+        "${__dirname}/kafka_schema_registry_unified_mcp.py"
+      ],
       "env": {
-        "SCHEMA_REGISTRY_URL": "${user_config.schema_registry_url}",
-        "SCHEMA_REGISTRY_USER": "${user_config.schema_registry_user}",
-        "SCHEMA_REGISTRY_PASSWORD": "${user_config.schema_registry_password}",
-        "VIEWONLY": "${user_config.viewonly}",
-        "SLIM_MODE": "${user_config.slim_mode}"
+        "SCHEMA_REGISTRY_URL": "${user_config.SCHEMA_REGISTRY_URL}",
+        "SCHEMA_REGISTRY_USER": "${user_config.SCHEMA_REGISTRY_USER}",
+        "SCHEMA_REGISTRY_PASSWORD": "${user_config.SCHEMA_REGISTRY_PASSWORD}",
+        "VIEWONLY": "${user_config.VIEWONLY}",
+        "SLIM_MODE": "${user_config.SLIM_MODE}"
       }
     }
   },
@@ -25,39 +27,37 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "schema_registry_url": {
+    "SCHEMA_REGISTRY_URL": {
       "type": "string",
       "title": "Schema Registry URL",
       "description": "The URL for the primary Schema Registry instance.",
       "required": true,
       "default": "http://localhost:8081"
     },
-    "schema_registry_user": {
+    "SCHEMA_REGISTRY_USER": {
       "type": "string",
-      "title": "Schema Registry Username",
+      "title": "Schema Registry User",
       "description": "Optional username for basic authentication.",
-      "required": false,
-      "default": ""
+      "required": false
     },
-    "schema_registry_password": {
+    "SCHEMA_REGISTRY_PASSWORD": {
       "type": "string",
       "title": "Schema Registry Password",
       "description": "Optional password for basic authentication.",
       "required": false,
-      "sensitive": true,
-      "default": ""
+      "sensitive": true
     },
-    "viewonly": {
+    "VIEWONLY": {
       "type": "boolean",
       "title": "View-Only Mode",
-      "description": "Enable read-only mode for production safety. Set to true to prevent modifications.",
+      "description": "Enable for production safety. Prevents any write or delete operations.",
       "required": false,
       "default": false
     },
-    "slim_mode": {
+    "SLIM_MODE": {
       "type": "boolean",
-      "title": "SLIM Mode",
-      "description": "Enable to reduce tool overhead from 57+ to ~9 essential tools for better LLM performance. Recommended for most use cases.",
+      "title": "Slim Mode",
+      "description": "Reduces the number of exposed tools from 57+ to ~9 essentials for better performance and lower token usage. Recommended for most users.",
       "required": false,
       "default": false
     }
@@ -85,19 +85,29 @@
         },
         "aywengo-kafka-schema-reg-mcp-stable-docker": {
           "command": "docker",
-          "args": ["run", "-e", "SCHEMA_REGISTRY_URL=http://localhost:8081", "aywengo/kafka-schema-reg-mcp:stable"],
+          "args": [
+            "run",
+            "-e",
+            "SCHEMA_REGISTRY_URL=http://localhost:8081",
+            "aywengo/kafka-schema-reg-mcp:stable"
+          ],
           "env": {
             "SCHEMA_REGISTRY_URL": "http://localhost:8081"
           }
         },
         "kafka-schema-registry-unified-mcp-python": {
           "command": "python",
-          "args": ["kafka_schema_registry_unified_mcp.py"],
+          "args": [
+            "kafka_schema_registry_unified_mcp.py"
+          ],
           "env": {}
         },
         "kafka-schema-reg-mcp-docker-compose": {
           "command": "docker-compose",
-          "args": ["up", "-d"],
+          "args": [
+            "up",
+            "-d"
+          ],
           "env": {}
         }
       }

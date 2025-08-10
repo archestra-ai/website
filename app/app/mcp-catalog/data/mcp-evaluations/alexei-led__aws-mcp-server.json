@@ -11,7 +11,10 @@
     "type": "python",
     "mcp_config": {
       "command": "python",
-      "args": ["-m", "aws_mcp_server"],
+      "args": [
+        "-m",
+        "aws_mcp_server"
+      ],
       "env": {
         "AWS_MCP_TIMEOUT": "${user_config.aws_mcp_timeout}",
         "AWS_MCP_MAX_OUTPUT": "${user_config.aws_mcp_max_output}",
@@ -30,49 +33,49 @@
     "aws_mcp_timeout": {
       "type": "number",
       "title": "Command Timeout",
-      "description": "Command execution timeout in seconds.",
+      "description": "Command execution timeout in seconds",
       "required": false,
       "default": 300
     },
     "aws_mcp_max_output": {
       "type": "number",
       "title": "Maximum Output Size",
-      "description": "Maximum output size in characters.",
+      "description": "Maximum output size in characters",
       "required": false,
       "default": 100000
     },
     "aws_mcp_transport": {
       "type": "string",
       "title": "Transport Protocol",
-      "description": "Transport protocol to use ('stdio' or 'sse').",
+      "description": "Transport protocol to use (\"stdio\" or \"sse\")",
       "required": false,
       "default": "stdio"
     },
     "aws_profile": {
       "type": "string",
       "title": "AWS Profile",
-      "description": "The AWS profile to use for authentication.",
+      "description": "AWS profile to use",
       "required": false,
       "default": "default"
     },
     "aws_region": {
       "type": "string",
       "title": "AWS Region",
-      "description": "The AWS region to target for commands.",
+      "description": "AWS region to use",
       "required": false,
       "default": "us-east-1"
     },
     "aws_mcp_security_mode": {
       "type": "string",
       "title": "Security Mode",
-      "description": "Security mode ('strict' or 'permissive').",
+      "description": "Security mode (\"strict\" or \"permissive\")",
       "required": false,
       "default": "strict"
     },
     "aws_mcp_security_config": {
       "type": "file",
       "title": "Custom Security Configuration",
-      "description": "Path to a custom security configuration file.",
+      "description": "Path to custom security configuration file",
       "required": false,
       "default": ""
     }
@@ -85,12 +88,21 @@
       "mcpServers": {
         "alexei-led-aws-mcp-server-docker": {
           "command": "docker",
-          "args": ["compose", "-f", "deploy/docker/docker-compose.yml", "up", "-d"],
+          "args": [
+            "compose",
+            "-f",
+            "deploy/docker/docker-compose.yml",
+            "up",
+            "-d"
+          ],
           "env": {}
         },
         "aws_mcp_server": {
           "command": "python",
-          "args": ["-m", "aws_mcp_server"],
+          "args": [
+            "-m",
+            "aws_mcp_server"
+          ],
           "env": {}
         }
       }

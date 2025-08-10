@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "influxdb-mcp-server"],
+      "args": [
+        "-y",
+        "influxdb-mcp-server"
+      ],
       "env": {
         "INFLUXDB_TOKEN": "${user_config.influxdb_token}",
         "INFLUXDB_URL": "${user_config.influxdb_url}",
@@ -25,21 +28,21 @@
     "influxdb_token": {
       "type": "string",
       "title": "InfluxDB Token",
-      "description": "Authentication token for the InfluxDB API",
+      "description": "Authentication token for the InfluxDB API.",
       "required": true,
       "sensitive": true
     },
     "influxdb_url": {
       "type": "string",
       "title": "InfluxDB URL",
-      "description": "URL of the InfluxDB instance",
+      "description": "URL of the InfluxDB instance.",
       "required": false,
       "default": "http://localhost:8086"
     },
     "influxdb_org": {
       "type": "string",
       "title": "InfluxDB Default Organization",
-      "description": "Default organization name for certain operations",
+      "description": "Default organization name for certain operations.",
       "required": false
     }
   },
@@ -51,7 +54,9 @@
       "mcpServers": {
         "influxdb-mcp-server": {
           "command": "npx",
-          "args": ["influxdb-mcp-server"],
+          "args": [
+            "influxdb-mcp-server"
+          ],
           "env": {
             "INFLUXDB_TOKEN": "your_token"
           }
@@ -65,14 +70,18 @@
         },
         "influxdb-mcp-server-from-source": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {
             "INFLUXDB_TOKEN": "your_token"
           }
         },
         "influxdb-mcp-server-npx-configured": {
           "command": "npx",
-          "args": ["influxdb-mcp-server"],
+          "args": [
+            "influxdb-mcp-server"
+          ],
           "env": {
             "INFLUXDB_TOKEN": "your_token",
             "INFLUXDB_URL": "http://localhost:8086",
@@ -81,7 +90,9 @@
         },
         "influxdb-mcp-server-local-path-configured": {
           "command": "node",
-          "args": ["/path/to/influxdb-mcp-server/src/index.js"],
+          "args": [
+            "/path/to/influxdb-mcp-server/src/index.js"
+          ],
           "env": {
             "INFLUXDB_TOKEN": "your_token",
             "INFLUXDB_URL": "http://localhost:8086",

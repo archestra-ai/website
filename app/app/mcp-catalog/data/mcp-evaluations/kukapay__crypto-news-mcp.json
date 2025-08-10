@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/main.py"],
+      "args": [
+        "${__dirname}/main.py"
+      ],
       "env": {
         "NEWS_API_KEY": "${user_config.news_api_key}"
       }
@@ -23,7 +25,7 @@
     "news_api_key": {
       "type": "string",
       "title": "Newsdata.io API Key",
-      "description": "Your API key for the Newsdata.io service, required to fetch news.",
+      "description": "Your API key from Newsdata.io, required to fetch news.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +38,9 @@
       "mcpServers": {
         "Crypto News": {
           "command": "python",
-          "args": ["path/to/crypto-news-mcp/main.py"],
+          "args": [
+            "path/to/crypto-news-mcp/main.py"
+          ],
           "env": {
             "NEWS_API_KEY": "your_newsdata_api_key_here"
           }

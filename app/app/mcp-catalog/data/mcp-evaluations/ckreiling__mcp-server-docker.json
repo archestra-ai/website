@@ -10,9 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["mcp-server-docker"],
+      "args": [
+        "mcp-server-docker"
+      ],
       "env": {
-        "DOCKER_HOST": "${user_config.DOCKER_HOST}"
+        "DOCKER_HOST": "${user_config.docker_host}"
       }
     }
   },
@@ -20,10 +22,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "DOCKER_HOST": {
+    "docker_host": {
       "type": "string",
-      "title": "Docker Host SSH URL",
-      "description": "Optional. The URL of a remote Docker daemon to connect to over SSH (e.g., ssh://myusername@myhost.example.com). If left blank, it will connect to the local Docker daemon.",
+      "title": "Docker Host URL",
+      "description": "The URL of the Docker host to connect to. Leave empty for the local Docker daemon. For remote connections, use an SSH URL like 'ssh://myusername@myhost.example.com'.",
       "required": false
     }
   },
@@ -35,24 +37,40 @@
       "mcpServers": {
         "mcp-server-docker": {
           "command": "uvx",
-          "args": ["mcp-server-docker"],
+          "args": [
+            "mcp-server-docker"
+          ],
           "env": {}
         },
         "mcp-server-docker-docker": {
           "command": "docker",
-          "args": ["run", "-i", "--rm", "-v", "/var/run/docker.sock:/var/run/docker.sock", "mcp-server-docker:latest"],
+          "args": [
+            "run",
+            "-i",
+            "--rm",
+            "-v",
+            "/var/run/docker.sock:/var/run/docker.sock",
+            "mcp-server-docker:latest"
+          ],
           "env": {}
         },
         "mcp-server-docker-ssh": {
           "command": "uvx",
-          "args": ["mcp-server-docker"],
+          "args": [
+            "mcp-server-docker"
+          ],
           "env": {
             "DOCKER_HOST": "ssh://myusername@myhost.example.com"
           }
         },
         "mcp-server-docker-devbox": {
           "command": "/path/to/repo/.devbox/nix/profile/default/bin/uv",
-          "args": ["--directory", "/path/to/repo/", "run", "mcp-server-docker"],
+          "args": [
+            "--directory",
+            "/path/to/repo/",
+            "run",
+            "mcp-server-docker"
+          ],
           "env": {}
         }
       }

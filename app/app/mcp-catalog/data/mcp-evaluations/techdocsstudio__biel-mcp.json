@@ -24,19 +24,19 @@
     "project_slug": {
       "type": "string",
       "title": "Project Slug",
-      "description": "Your unique project identifier from the Biel.ai platform.",
+      "description": "Your Biel.ai project slug.",
       "required": true
     },
     "domain": {
       "type": "string",
       "title": "Docs Domain",
-      "description": "The full URL where your documentation is hosted (e.g., https://your-docs-domain.com).",
+      "description": "The domain where your documentation is hosted (e.g., https://your-docs-domain.com).",
       "required": true
     },
     "api_key": {
       "type": "string",
       "title": "API Key",
-      "description": "Your Biel.ai API key. This is only required for private projects.",
+      "description": "Your Biel.ai API key. Only required for private projects.",
       "required": false,
       "sensitive": true
     }
@@ -58,12 +58,20 @@
         },
         "biel-mcp-server-python": {
           "command": "python",
-          "args": ["biel_mcp_server.py"],
+          "args": [
+            "biel_mcp_server.py"
+          ],
           "env": {}
         },
         "biel-mcp-docker": {
           "command": "docker",
-          "args": ["run", "-d", "-p", "7832:7832", "biel-mcp"],
+          "args": [
+            "run",
+            "-d",
+            "-p",
+            "7832:7832",
+            "biel-mcp"
+          ],
           "env": {}
         }
       }

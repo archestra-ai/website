@@ -10,7 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@4everland/hosting-mcp@latest", "serve"],
+      "args": [
+        "-y",
+        "@4everland/hosting-mcp@latest",
+        "serve"
+      ],
       "env": {
         "TOKEN": "${user_config.hosting_auth_token}"
       }
@@ -23,7 +27,7 @@
     "hosting_auth_token": {
       "type": "string",
       "title": "4EVERLAND Hosting Auth Token",
-      "description": "Your authentication token from the 4EVERLAND Dashboard (Hosting -> Auth Token). It will only be shown once upon creation.",
+      "description": "Your authentication token for 4EVERLAND Hosting. Log in to the 4EVERLAND Dashboard, go to Hosting -> Auth Token, and create a new token.",
       "required": true,
       "sensitive": true
     }
@@ -36,14 +40,21 @@
       "mcpServers": {
         "4everland-hosting-mcp": {
           "command": "npx",
-          "args": ["-y", "@4everland/hosting-mcp@latest", "serve"],
+          "args": [
+            "-y",
+            "@4everland/hosting-mcp@latest",
+            "serve"
+          ],
           "env": {
             "TOKEN": "your-hosting-auth-token"
           }
         },
         "4everland-hosting-mcp-local": {
           "command": "npm",
-          "args": ["run", "serve"],
+          "args": [
+            "run",
+            "serve"
+          ],
           "env": {}
         }
       }

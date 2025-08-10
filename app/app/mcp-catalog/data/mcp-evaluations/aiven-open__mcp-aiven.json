@@ -12,17 +12,17 @@
       "command": "uv",
       "args": [
         "--directory",
-        "${user_config.repository_directory}",
+        "${__dirname}",
         "run",
         "--with-editable",
-        "${user_config.repository_directory}",
+        "${__dirname}",
         "--python",
         "3.13",
         "mcp-aiven"
       ],
       "env": {
-        "AIVEN_BASE_URL": "${user_config.aiven_base_url}",
-        "AIVEN_TOKEN": "${user_config.aiven_token}"
+        "AIVEN_BASE_URL": "${user_config.base_url}",
+        "AIVEN_TOKEN": "${user_config.token}"
       }
     }
   },
@@ -30,23 +30,17 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "repository_directory": {
-      "type": "directory",
-      "title": "Repository Directory",
-      "description": "The path to the folder containing the mcp-aiven repository.",
-      "required": true
-    },
-    "aiven_token": {
+    "token": {
       "type": "string",
       "title": "Aiven Token",
-      "description": "The Aiven authentication token. See https://aiven.io/docs/platform/howto/create_authentication_token for details.",
+      "description": "Your Aiven authentication token. See https://aiven.io/docs/platform/howto/create_authentication_token for details.",
       "required": true,
       "sensitive": true
     },
-    "aiven_base_url": {
+    "base_url": {
       "type": "string",
       "title": "Aiven Base URL",
-      "description": "The Aiven API URL.",
+      "description": "The base URL for the Aiven API.",
       "required": true,
       "default": "https://api.aiven.io"
     }
@@ -94,7 +88,10 @@
         },
         "mcp-aiven-dev": {
           "command": "mcp",
-          "args": ["dev", "mcp_aiven/mcp_server.py"],
+          "args": [
+            "dev",
+            "mcp_aiven/mcp_server.py"
+          ],
           "env": {
             "AIVEN_BASE_URL": "https://api.aiven.io",
             "AIVEN_TOKEN": "$AIVEN_TOKEN"

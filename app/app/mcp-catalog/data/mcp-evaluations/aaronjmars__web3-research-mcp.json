@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "web3-research-mcp@latest"],
+      "args": [
+        "-y",
+        "web3-research-mcp@latest"
+      ],
       "env": {}
     }
   },
@@ -26,7 +29,10 @@
       "mcpServers": {
         "web3-research-mcp": {
           "command": "npx",
-          "args": ["-y", "web3-research-mcp@latest"],
+          "args": [
+            "-y",
+            "web3-research-mcp@latest"
+          ],
           "env": {}
         }
       }

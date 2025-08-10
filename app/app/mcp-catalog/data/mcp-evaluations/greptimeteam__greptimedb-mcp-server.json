@@ -9,8 +9,14 @@
   },
   "server": {
     "mcp_config": {
-      "command": "python",
-      "args": ["-m", "greptimedb_mcp_server.server"],
+      "command": "uv",
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "-m",
+        "greptimedb_mcp_server.server"
+      ],
       "env": {
         "GREPTIMEDB_HOST": "${user_config.host}",
         "GREPTIMEDB_PORT": "${user_config.port}",
@@ -27,44 +33,44 @@
   "user_config": {
     "host": {
       "type": "string",
-      "title": "Database Host",
-      "description": "Hostname or IP address of the GreptimeDB server.",
-      "required": false,
+      "title": "GreptimeDB Host",
+      "description": "The host of the GreptimeDB instance.",
+      "required": true,
       "default": "localhost"
     },
     "port": {
       "type": "number",
-      "title": "Database Port",
-      "description": "The MySQL protocol port for the GreptimeDB server.",
+      "title": "GreptimeDB Port",
+      "description": "The MySQL protocol port for GreptimeDB.",
       "required": false,
       "default": 4002
     },
     "user": {
       "type": "string",
-      "title": "Database User",
-      "description": "The username for database authentication.",
+      "title": "GreptimeDB User",
+      "description": "The username for connecting to GreptimeDB.",
       "required": false,
       "default": "root"
     },
     "password": {
       "type": "string",
-      "title": "Database Password",
-      "description": "The password for database authentication.",
+      "title": "GreptimeDB Password",
+      "description": "The password for the GreptimeDB user.",
       "required": false,
       "sensitive": true,
       "default": ""
     },
     "database": {
       "type": "string",
-      "title": "Database Name",
+      "title": "GreptimeDB Database",
       "description": "The name of the database to connect to.",
       "required": false,
       "default": "public"
     },
     "timezone": {
       "type": "string",
-      "title": "Session Time Zone",
-      "description": "The session time zone for the database connection (e.g., UTC). Uses server default if empty.",
+      "title": "Timezone",
+      "description": "The session time zone. Leave empty to use the server's default.",
       "required": false,
       "default": "UTC"
     }
@@ -77,7 +83,13 @@
       "mcpServers": {
         "greptimedb-mcp-server-with-config": {
           "command": "uv",
-          "args": ["--directory", "/path/to/greptimedb-mcp-server", "run", "-m", "greptimedb_mcp_server.server"],
+          "args": [
+            "--directory",
+            "/path/to/greptimedb-mcp-server",
+            "run",
+            "-m",
+            "greptimedb_mcp_server.server"
+          ],
           "env": {
             "GREPTIMEDB_HOST": "localhost",
             "GREPTIMEDB_PORT": "4002",

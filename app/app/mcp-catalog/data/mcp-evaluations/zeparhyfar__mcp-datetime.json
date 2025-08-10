@@ -8,11 +8,11 @@
     "name": "ZeparHyfar"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": [
+        "mcp-datetime"
+      ],
       "env": {}
     }
   },
@@ -28,12 +28,17 @@
       "mcpServers": {
         "mcp-datetime": {
           "command": "uvx",
-          "args": ["mcp-datetime"],
+          "args": [
+            "mcp-datetime"
+          ],
           "env": {}
         },
         "mcp-datetime-manual-install": {
           "command": "python",
-          "args": ["-m", "mcp_datetime"],
+          "args": [
+            "-m",
+            "mcp_datetime"
+          ],
           "env": {
             "PYTHON": "/path/to/your/python"
           }
@@ -61,7 +66,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T21:05:44.668Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/dist/server.js"],
+      "args": [
+        "${__dirname}/dist/server.js"
+      ],
       "env": {}
     }
   },
@@ -26,22 +28,31 @@
       "mcpServers": {
         "exif-mcp": {
           "command": "node",
-          "args": ["/path/to/exif-mcp/dist/server.js"],
+          "args": [
+            "/path/to/exif-mcp/dist/server.js"
+          ],
           "env": {}
         },
         "exif-mcp-npm-start": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "exif-mcp-npm-dev": {
           "command": "npm",
-          "args": ["run", "dev"],
+          "args": [
+            "run",
+            "dev"
+          ],
           "env": {}
         },
         "exif-mcp-stdio": {
           "command": "node",
-          "args": ["dist/server.js"],
+          "args": [
+            "dist/server.js"
+          ],
           "env": {}
         }
       }

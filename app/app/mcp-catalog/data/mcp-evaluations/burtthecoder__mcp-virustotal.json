@@ -12,7 +12,7 @@
       "command": "mcp-virustotal",
       "args": [],
       "env": {
-        "VIRUSTOTAL_API_KEY": "${user_config.virustotal_api_key}"
+        "VIRUSTOTAL_API_KEY": "${user_config.api_key}"
       }
     }
   },
@@ -20,10 +20,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "virustotal_api_key": {
+    "api_key": {
       "type": "string",
       "title": "VirusTotal API Key",
-      "description": "Your API key for the VirusTotal API. This is required for the server to function.",
+      "description": "Your API key for accessing the VirusTotal API.",
       "required": true,
       "sensitive": true
     }
@@ -43,7 +43,10 @@
         },
         "burtthecoder-mcp-virustotal-from-source": {
           "command": "node",
-          "args": ["--experimental-modules", "/absolute/path/to/mcp-virustotal/build/index.js"],
+          "args": [
+            "--experimental-modules",
+            "/absolute/path/to/mcp-virustotal/build/index.js"
+          ],
           "env": {
             "VIRUSTOTAL_API_KEY": "your-virustotal-api-key"
           }

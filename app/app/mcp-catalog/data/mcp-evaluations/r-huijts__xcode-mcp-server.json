@@ -14,16 +14,16 @@
         "${__dirname}/dist/index.js",
         "--projects-dir",
         "${user_config.projects_base_dir}",
+        "--allowed-paths",
+        "${user_config.allowed_paths}",
         "--port",
         "${user_config.port}",
+        "--debug",
+        "${user_config.debug}",
         "--log-level",
-        "${user_config.log_level}",
-        "--allowed-paths",
-        "${user_config.allowed_paths}"
+        "${user_config.log_level}"
       ],
-      "env": {
-        "DEBUG": "${user_config.debug}"
-      }
+      "env": {}
     }
   },
   "tools": [],
@@ -35,12 +35,12 @@
       "title": "Projects Base Directory",
       "description": "The base directory where your Xcode projects are located. This is required for the server to find and manage projects.",
       "required": true,
-      "multiple": false
+      "default": "${HOME}/Developer"
     },
     "allowed_paths": {
       "type": "directory",
       "title": "Additional Allowed Paths",
-      "description": "Select additional directories the server should have access to, besides the projects base directory.",
+      "description": "Select any additional directories the server should be allowed to access, besides the projects base directory.",
       "required": false,
       "multiple": true
     },
@@ -54,14 +54,14 @@
     "debug": {
       "type": "boolean",
       "title": "Enable Debug Logging",
-      "description": "Enable verbose debug logging for troubleshooting.",
+      "description": "Enable verbose debug logging for troubleshooting purposes.",
       "required": false,
       "default": false
     },
     "log_level": {
       "type": "string",
       "title": "Log Level",
-      "description": "Set the logging level for the server.",
+      "description": "Set the logging level for the server (e.g., info, debug, warn, error).",
       "required": false,
       "default": "info"
     }
@@ -74,17 +74,24 @@
       "mcpServers": {
         "xcode-mcp-server": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "xcode-mcp-server-dev": {
           "command": "npm",
-          "args": ["run", "dev"],
+          "args": [
+            "run",
+            "dev"
+          ],
           "env": {}
         },
         "xcode-mcp-server-configured": {
           "command": "node",
-          "args": ["/path/to/xcode-mcp-server/dist/index.js"],
+          "args": [
+            "/path/to/xcode-mcp-server/dist/index.js"
+          ],
           "env": {}
         }
       }

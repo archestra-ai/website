@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/github_graphql_mcp_server.py"],
+      "args": [
+        "${__dirname}/github_graphql_mcp_server.py"
+      ],
       "env": {
         "GITHUB_TOKEN": "${user_config.github_token}"
       }
@@ -23,7 +25,7 @@
     "github_token": {
       "type": "string",
       "title": "GitHub Personal Access Token",
-      "description": "Your GitHub Personal Access Token (PAT) required to authenticate with the GitHub GraphQL API.",
+      "description": "Your GitHub Personal Access Token (PAT) for authenticating with the GraphQL API.",
       "required": true,
       "sensitive": true
     }
@@ -36,14 +38,18 @@
       "mcpServers": {
         "github-graphql-direct": {
           "command": "python",
-          "args": ["github_graphql_mcp_server.py"],
+          "args": [
+            "github_graphql_mcp_server.py"
+          ],
           "env": {
             "GITHUB_TOKEN": "your_github_token_here"
           }
         },
         "github-graphql-configured": {
           "command": "/absolute/path/to/your/.venv/bin/python",
-          "args": ["/absolute/path/to/github_graphql_mcp_server.py"],
+          "args": [
+            "/absolute/path/to/github_graphql_mcp_server.py"
+          ],
           "env": {
             "GITHUB_TOKEN": "your_github_token_here"
           }

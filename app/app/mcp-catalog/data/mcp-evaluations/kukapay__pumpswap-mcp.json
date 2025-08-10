@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["run", "main.py"],
+      "args": [
+        "run",
+        "main.py"
+      ],
       "env": {
         "HTTPS_RPC_ENDPOINT": "${user_config.https_rpc_endpoint}",
         "BUY_SLIPPAGE": "${user_config.buy_slippage}",
@@ -27,7 +30,7 @@
     "https_rpc_endpoint": {
       "type": "string",
       "title": "Solana RPC Endpoint",
-      "description": "The Solana RPC endpoint URL for connecting to the blockchain.",
+      "description": "Solana RPC endpoint URL.",
       "required": false,
       "default": "https://api.mainnet-beta.solana.com"
     },
@@ -47,8 +50,8 @@
     },
     "swap_priority_fee": {
       "type": "number",
-      "title": "Swap Priority Fee (Lamports)",
-      "description": "Priority fee for swap transactions in lamports to speed up confirmation.",
+      "title": "Swap Priority Fee",
+      "description": "Priority fee for transactions in lamports.",
       "required": false,
       "default": 1500000
     },
@@ -68,7 +71,10 @@
       "mcpServers": {
         "pumpswap-mcp-server": {
           "command": "uv",
-          "args": ["run", "main.py"],
+          "args": [
+            "run",
+            "main.py"
+          ],
           "env": {
             "HTTPS_RPC_ENDPOINT": "https://api.mainnet-beta.solana.com",
             "BUY_SLIPPAGE": "0.3",

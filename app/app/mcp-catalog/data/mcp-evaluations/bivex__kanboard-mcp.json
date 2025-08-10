@@ -26,26 +26,26 @@
     "api_endpoint": {
       "type": "string",
       "title": "Kanboard API Endpoint",
-      "description": "The full JSON-RPC URL for your Kanboard instance (e.g., https://your-kanboard-url/jsonrpc.php).",
+      "description": "The JSON-RPC URL for your Kanboard instance (e.g., https://your-kanboard-url/jsonrpc.php).",
       "required": true
     },
     "api_key": {
       "type": "string",
       "title": "Kanboard API Key",
-      "description": "Your Kanboard API key for authentication. Leave blank if using username/password.",
+      "description": "Your Kanboard API key for authentication. Used if provided.",
       "required": false,
       "sensitive": true
     },
     "username": {
       "type": "string",
       "title": "Kanboard Username",
-      "description": "Your Kanboard username for authentication. Leave blank if using an API key.",
+      "description": "Your Kanboard username for authentication. Used if API key is not provided.",
       "required": false
     },
     "password": {
       "type": "string",
       "title": "Kanboard Password",
-      "description": "Your Kanboard password for authentication. Leave blank if using an API key.",
+      "description": "Your Kanboard password for authentication. Used if API key is not provided.",
       "required": false,
       "sensitive": true
     }

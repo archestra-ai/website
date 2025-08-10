@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
       "env": {}
     }
   },
@@ -20,8 +22,8 @@
   "user_config": {
     "gcp_oauth_keys_file": {
       "type": "file",
-      "title": "Google Cloud OAuth Keys File",
-      "description": "The downloaded JSON file containing your OAuth Client ID keys for the Google Tasks API. This will be saved as 'gcp-oauth.keys.json' in the extension's directory to enable authentication.",
+      "title": "GCP OAuth Keys File",
+      "description": "Path to the downloaded JSON file of your client's OAuth keys. The server expects this to be named 'gcp-oauth.keys.json' and placed in the extension's root directory.",
       "required": true
     }
   },
@@ -33,12 +35,18 @@
       "mcpServers": {
         "gtasks": {
           "command": "/opt/homebrew/bin/node",
-          "args": ["{ABSOLUTE PATH TO FILE HERE}/dist/index.js"],
+          "args": [
+            "{ABSOLUTE PATH TO FILE HERE}/dist/index.js"
+          ],
           "env": {}
         },
         "gtasks-auth": {
           "command": "npm",
-          "args": ["run", "start", "auth"],
+          "args": [
+            "run",
+            "start",
+            "auth"
+          ],
           "env": {}
         }
       }

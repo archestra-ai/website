@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["pythonanywhere-mcp-server"],
+      "args": [
+        "pythonanywhere-mcp-server"
+      ],
       "env": {
         "API_TOKEN": "${user_config.api_token}",
         "LOGNAME": "${user_config.username}"
@@ -24,7 +26,7 @@
     "api_token": {
       "type": "string",
       "title": "PythonAnywhere API Token",
-      "description": "Your API token from the 'API token' section of your PythonAnywhere account page.",
+      "description": "Your API token, which can be generated from the 'API token' tab on your PythonAnywhere Account page.",
       "required": true,
       "sensitive": true
     },
@@ -44,7 +46,9 @@
       "mcpServers": {
         "pythonanywhere-mcp-server": {
           "command": "uvx",
-          "args": ["pythonanywhere-mcp-server"],
+          "args": [
+            "pythonanywhere-mcp-server"
+          ],
           "env": {
             "API_TOKEN": "yourpythonanywhereapitoken",
             "LOGNAME": "yourpythonanywhereusername"

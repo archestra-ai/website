@@ -10,7 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["--from", "llm-context", "lc-mcp"],
+      "args": [
+        "--from",
+        "llm-context",
+        "lc-mcp"
+      ],
       "env": {}
     }
   },

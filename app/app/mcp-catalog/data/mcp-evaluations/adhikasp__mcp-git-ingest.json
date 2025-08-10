@@ -8,8 +8,15 @@
     "name": "adhikasp"
   },
   "server": {
-    "command": "uvx",
-    "args": ["--from", "git+https://github.com/adhikasp/mcp-git-ingest", "mcp-git-ingest"]
+    "mcp_config": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/adhikasp/mcp-git-ingest",
+        "mcp-git-ingest"
+      ],
+      "env": {}
+    }
   },
   "tools": [],
   "prompts": [],
@@ -23,7 +30,11 @@
       "mcpServers": {
         "mcp-git-ingest": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/adhikasp/mcp-git-ingest", "mcp-git-ingest"],
+          "args": [
+            "--from",
+            "git+https://github.com/adhikasp/mcp-git-ingest",
+            "mcp-git-ingest"
+          ],
           "env": {}
         }
       }

@@ -10,7 +10,14 @@
   "server": {
     "mcp_config": {
       "command": "fastmcp",
-      "args": ["run", "app.py", "--transport", "sse", "--port", "8010"],
+      "args": [
+        "run",
+        "app.py",
+        "--transport",
+        "sse",
+        "--port",
+        "8010"
+      ],
       "env": {
         "CALCOM_API_KEY": "${user_config.calcom_api_key}"
       }
@@ -23,7 +30,7 @@
     "calcom_api_key": {
       "type": "string",
       "title": "Cal.com API Key",
-      "description": "Your Cal.com v2 API key. You can get your API key from your Cal.com settings page (usually under Developer or Security settings).",
+      "description": "Your Cal.com v2 API key. You can get this from your Cal.com settings page (usually under Developer or Security settings).",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +43,14 @@
       "mcpServers": {
         "fastmcp": {
           "command": "fastmcp",
-          "args": ["run", "app.py", "--transport", "sse", "--port", "8010"],
+          "args": [
+            "run",
+            "app.py",
+            "--transport",
+            "sse",
+            "--port",
+            "8010"
+          ],
           "env": {}
         }
       }

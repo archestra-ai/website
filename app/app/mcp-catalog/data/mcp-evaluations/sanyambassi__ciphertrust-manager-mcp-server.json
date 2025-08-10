@@ -9,8 +9,11 @@
   },
   "server": {
     "mcp_config": {
-      "command": "uv",
-      "args": ["run", "ciphertrust-mcp-server"],
+      "command": "python",
+      "args": [
+        "-m",
+        "ciphertrust_mcp_server.__main__"
+      ],
       "env": {
         "CIPHERTRUST_URL": "${user_config.ciphertrust_url}",
         "CIPHERTRUST_USER": "${user_config.ciphertrust_user}",
@@ -26,27 +29,27 @@
     "ciphertrust_url": {
       "type": "string",
       "title": "CipherTrust Manager URL",
-      "description": "The URL of your CipherTrust Manager instance (e.g., https://your-ciphertrust-manager.example.com).",
+      "description": "The URL of your CipherTrust Manager instance (e.g., https://your-ciphertrust-manager.example.com)",
       "required": true
     },
     "ciphertrust_user": {
       "type": "string",
-      "title": "CipherTrust User",
+      "title": "CipherTrust Manager User",
       "description": "The username for authenticating with CipherTrust Manager.",
       "required": true,
       "default": "admin"
     },
     "ciphertrust_password": {
       "type": "string",
-      "title": "CipherTrust Password",
-      "description": "The password for the CipherTrust Manager user.",
+      "title": "CipherTrust Manager Password",
+      "description": "The password for the specified CipherTrust Manager user.",
       "required": true,
       "sensitive": true
     },
     "ciphertrust_nosslverify": {
       "type": "boolean",
       "title": "Disable SSL Verification",
-      "description": "Set to true to disable SSL certificate verification. Use with caution in non-production environments.",
+      "description": "Set to true to disable SSL certificate verification when connecting to CipherTrust Manager. Use with caution.",
       "required": false,
       "default": true
     }
@@ -59,12 +62,18 @@
       "mcpServers": {
         "ciphertrust-mcp-server": {
           "command": "uv",
-          "args": ["run", "ciphertrust-mcp-server"],
+          "args": [
+            "run",
+            "ciphertrust-mcp-server"
+          ],
           "env": {}
         },
         "ciphertrust-mcp-server-configured": {
           "command": "uv",
-          "args": ["run", "ciphertrust-mcp-server"],
+          "args": [
+            "run",
+            "ciphertrust-mcp-server"
+          ],
           "env": {
             "CIPHERTRUST_URL": "https://your-ciphertrust-manager.example.com",
             "CIPHERTRUST_USER": "admin",
@@ -74,12 +83,22 @@
         },
         "ciphertrust_mcp_server": {
           "command": "uv",
-          "args": ["run", "python", "-m", "ciphertrust_mcp_server.__main__"],
+          "args": [
+            "run",
+            "python",
+            "-m",
+            "ciphertrust_mcp_server.__main__"
+          ],
           "env": {}
         },
         "ciphertrust_mcp_server-configured": {
           "command": "uv",
-          "args": ["run", "python", "-m", "ciphertrust_mcp_server.__main__"],
+          "args": [
+            "run",
+            "python",
+            "-m",
+            "ciphertrust_mcp_server.__main__"
+          ],
           "env": {
             "CIPHERTRUST_URL": "https://your-ciphertrust-manager.example.com",
             "CIPHERTRUST_USER": "admin",

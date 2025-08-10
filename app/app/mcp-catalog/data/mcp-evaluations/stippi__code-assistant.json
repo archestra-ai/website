@@ -11,7 +11,9 @@
     "type": "binary",
     "mcp_config": {
       "command": "${user_config.executable_path}",
-      "args": ["server"],
+      "args": [
+        "server"
+      ],
       "env": {
         "PERPLEXITY_API_KEY": "${user_config.perplexity_api_key}",
         "SHELL": "${user_config.shell}"
@@ -58,7 +60,9 @@
       "mcpServers": {
         "code-assistant": {
           "command": "/Users/<username>/workspace/code-assistant/target/release/code-assistant",
-          "args": ["server"],
+          "args": [
+            "server"
+          ],
           "env": {
             "PERPLEXITY_API_KEY": "pplx-...",
             "SHELL": "/bin/zsh"

@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["codelogic-mcp-server@latest"],
+      "args": [
+        "codelogic-mcp-server@latest"
+      ],
       "env": {
         "CODELOGIC_SERVER_HOST": "${user_config.codelogic_server_host}",
         "CODELOGIC_USERNAME": "${user_config.codelogic_username}",
@@ -33,26 +35,26 @@
     "codelogic_username": {
       "type": "string",
       "title": "CodeLogic Username",
-      "description": "Your username for the CodeLogic server",
+      "description": "Your username for the CodeLogic server.",
       "required": true
     },
     "codelogic_password": {
       "type": "string",
       "title": "CodeLogic Password",
-      "description": "Your password for the CodeLogic server",
+      "description": "Your password for the CodeLogic server.",
       "required": true,
       "sensitive": true
     },
     "codelogic_workspace_name": {
       "type": "string",
       "title": "CodeLogic Workspace Name",
-      "description": "The name of your workspace in CodeLogic",
+      "description": "The name of your workspace in CodeLogic.",
       "required": true
     },
     "codelogic_debug_mode": {
       "type": "boolean",
       "title": "Enable Debug Mode",
-      "description": "Enable verbose logging for debugging purposes",
+      "description": "Enable verbose logging for debugging purposes.",
       "required": false,
       "default": true
     }
@@ -65,7 +67,12 @@
       "mcpServers": {
         "codelogic-mcp-server-uv-workaround": {
           "command": "uv",
-          "args": ["--directory", "<PATH_TO_THIS_REPO>/codelogic-mcp-server-main", "run", "codelogic-mcp-server"],
+          "args": [
+            "--directory",
+            "<PATH_TO_THIS_REPO>/codelogic-mcp-server-main",
+            "run",
+            "codelogic-mcp-server"
+          ],
           "env": {
             "CODELOGIC_SERVER_HOST": "<url to the server e.g. https://myco.app.codelogic.com>",
             "CODELOGIC_USERNAME": "<my username>",
@@ -76,7 +83,9 @@
         },
         "codelogic-mcp-server-uvx-debug": {
           "command": "uvx",
-          "args": ["codelogic-mcp-server@latest"],
+          "args": [
+            "codelogic-mcp-server@latest"
+          ],
           "env": {
             "CODELOGIC_SERVER_HOST": "<url to the server e.g. https://myco.app.codelogic.com>",
             "CODELOGIC_USERNAME": "<my username>",
@@ -87,7 +96,9 @@
         },
         "codelogic-mcp-server-uvx-no-debug": {
           "command": "uvx",
-          "args": ["codelogic-mcp-server@latest"],
+          "args": [
+            "codelogic-mcp-server@latest"
+          ],
           "env": {
             "CODELOGIC_SERVER_HOST": "<url to the server e.g. https://myco.app.codelogic.com>",
             "CODELOGIC_USERNAME": "<my username>",

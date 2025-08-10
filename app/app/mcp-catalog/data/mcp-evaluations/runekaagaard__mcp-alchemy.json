@@ -34,33 +34,34 @@
     "db_url": {
       "type": "string",
       "title": "Database URL",
-      "description": "SQLAlchemy database connection URL (e.g., 'postgresql://user:password@localhost/dbname' or 'sqlite:////path/to/database.db').",
+      "description": "The SQLAlchemy connection string for your database. E.g., 'postgresql://user:password@localhost/dbname' or 'sqlite:////absolute/path/to/database.db'.",
       "required": true,
       "sensitive": true
     },
     "db_driver": {
       "type": "string",
-      "title": "Database Driver Package (Optional)",
-      "description": "The Python package for your database driver if not built-in. Examples: 'psycopg2-binary' (PostgreSQL), 'pymysql' (MySQL), 'oracledb' (Oracle). Leave empty for SQLite.",
-      "required": false
+      "title": "Database Driver Package",
+      "description": "The required Python package for your database driver (e.g., 'psycopg2-binary' for PostgreSQL, 'pymysql' for MySQL/MariaDB). Leave this field empty if connecting to a SQLite database.",
+      "required": false,
+      "default": "psycopg2-binary"
     },
     "claude_local_files_path": {
       "type": "directory",
-      "title": "Local Files Path (Optional)",
-      "description": "Directory for saving full query result sets, enabling analysis of large datasets via claude-local-files.",
+      "title": "Claude Local Files Path",
+      "description": "Optional. Directory for saving full result sets, enabling analysis of datasets larger than the context window.",
       "required": false
     },
     "execute_query_max_chars": {
       "type": "number",
-      "title": "Max Output Length (Optional)",
-      "description": "The maximum character length for query output displayed in the chat.",
+      "title": "Max Output Length",
+      "description": "Optional. The maximum character length for query output displayed directly in the chat.",
       "required": false,
       "default": 4000
     },
     "db_engine_options": {
       "type": "string",
-      "title": "DB Engine Options (Optional)",
-      "description": "A JSON string for additional SQLAlchemy engine options, e.g., '{\"pool_size\": 5, \"pool_recycle\": 1800}'.",
+      "title": "DB Engine Options (JSON)",
+      "description": "Optional. A JSON string containing additional SQLAlchemy engine options to override defaults. E.g., '{\"pool_size\": 5, \"pool_recycle\": 1800}'.",
       "required": false
     }
   },
@@ -72,7 +73,13 @@
       "mcpServers": {
         "mcp-alchemy-sqlite": {
           "command": "uvx",
-          "args": ["--from", "mcp-alchemy==2025.7.9.172934", "--refresh-package", "mcp-alchemy", "mcp-alchemy"],
+          "args": [
+            "--from",
+            "mcp-alchemy==2025.7.9.172934",
+            "--refresh-package",
+            "mcp-alchemy",
+            "mcp-alchemy"
+          ],
           "env": {
             "DB_URL": "sqlite:////absolute/path/to/database.db"
           }
@@ -170,7 +177,14 @@
         },
         "mcp-alchemy-dev": {
           "command": "uv",
-          "args": ["run", "--directory", "/path/to/mcp-alchemy", "-m", "mcp_alchemy.server", "main"],
+          "args": [
+            "run",
+            "--directory",
+            "/path/to/mcp-alchemy",
+            "-m",
+            "mcp_alchemy.server",
+            "main"
+          ],
           "env": {
             "DB_URL": "sqlite:////absolute/path/to/database.db"
           }

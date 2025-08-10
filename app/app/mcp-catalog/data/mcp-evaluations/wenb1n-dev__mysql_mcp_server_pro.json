@@ -10,7 +10,13 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["--from", "mysql_mcp_server_pro", "mysql_mcp_server_pro", "--mode", "stdio"],
+      "args": [
+        "--from",
+        "mysql_mcp_server_pro",
+        "mysql_mcp_server_pro",
+        "--mode",
+        "stdio"
+      ],
       "env": {
         "MYSQL_HOST": "${user_config.MYSQL_HOST}",
         "MYSQL_PORT": "${user_config.MYSQL_PORT}",
@@ -35,20 +41,20 @@
     "MYSQL_PORT": {
       "type": "number",
       "title": "MySQL Port",
-      "description": "The port number of the MySQL server.",
+      "description": "The port number for the MySQL server.",
       "required": true,
       "default": 3306
     },
     "MYSQL_USER": {
       "type": "string",
       "title": "MySQL User",
-      "description": "The username for connecting to the MySQL database.",
+      "description": "The username to connect to the database.",
       "required": true
     },
     "MYSQL_PASSWORD": {
       "type": "string",
       "title": "MySQL Password",
-      "description": "The password for the specified MySQL user.",
+      "description": "The password for the specified user.",
       "required": true,
       "sensitive": true
     },
@@ -74,7 +80,12 @@
       "mcpServers": {
         "mysql-mcp-server-pro-sse": {
           "command": "mysql_mcp_server_pro",
-          "args": ["--mode", "sse", "--envfile", "/path/to/.env"],
+          "args": [
+            "--mode",
+            "sse",
+            "--envfile",
+            "/path/to/.env"
+          ],
           "env": {
             "MYSQL_HOST": "localhost",
             "MYSQL_PORT": "3306",
@@ -86,7 +97,10 @@
         },
         "mysql-mcp-server-pro-streamable-http": {
           "command": "mysql_mcp_server_pro",
-          "args": ["--envfile", "/path/to/.env"],
+          "args": [
+            "--envfile",
+            "/path/to/.env"
+          ],
           "env": {
             "MYSQL_HOST": "localhost",
             "MYSQL_PORT": "3306",
@@ -98,7 +112,10 @@
         },
         "mysql-mcp-server-pro-oauth": {
           "command": "mysql_mcp_server_pro",
-          "args": ["--oauth", "true"],
+          "args": [
+            "--oauth",
+            "true"
+          ],
           "env": {
             "MYSQL_HOST": "localhost",
             "MYSQL_PORT": "3306",
@@ -110,7 +127,13 @@
         },
         "mysql-mcp-server-pro-stdio": {
           "command": "uvx",
-          "args": ["--from", "mysql_mcp_server_pro", "mysql_mcp_server_pro", "--mode", "stdio"],
+          "args": [
+            "--from",
+            "mysql_mcp_server_pro",
+            "mysql_mcp_server_pro",
+            "--mode",
+            "stdio"
+          ],
           "env": {
             "MYSQL_HOST": "192.168.x.xxx",
             "MYSQL_PORT": "3306",
@@ -122,7 +145,11 @@
         },
         "mysql-mcp-server-pro-uv-streamable-http": {
           "command": "uv",
-          "args": ["run", "-m", "mysql_mcp_server_pro.server"],
+          "args": [
+            "run",
+            "-m",
+            "mysql_mcp_server_pro.server"
+          ],
           "env": {
             "MYSQL_HOST": "localhost",
             "MYSQL_PORT": "3306",
@@ -134,7 +161,13 @@
         },
         "mysql-mcp-server-pro-uv-streamable-http-envfile": {
           "command": "uv",
-          "args": ["run", "-m", "mysql_mcp_server_pro.server", "--envfile", "/path/to/.env"],
+          "args": [
+            "run",
+            "-m",
+            "mysql_mcp_server_pro.server",
+            "--envfile",
+            "/path/to/.env"
+          ],
           "env": {
             "MYSQL_HOST": "localhost",
             "MYSQL_PORT": "3306",
@@ -146,7 +179,13 @@
         },
         "mysql-mcp-server-pro-uv-oauth": {
           "command": "uv",
-          "args": ["run", "-m", "mysql_mcp_server_pro.server", "--oauth", "true"],
+          "args": [
+            "run",
+            "-m",
+            "mysql_mcp_server_pro.server",
+            "--oauth",
+            "true"
+          ],
           "env": {
             "MYSQL_HOST": "localhost",
             "MYSQL_PORT": "3306",

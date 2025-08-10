@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["telephony_server.py"],
+      "args": [
+        "${__dirname}/telephony_server.py"
+      ],
       "env": {
         "VONAGE_API_KEY": "${user_config.vonage_api_key}",
         "VONAGE_API_SECRET": "${user_config.vonage_api_secret}",
@@ -30,46 +32,46 @@
     "vonage_api_key": {
       "type": "string",
       "title": "Vonage API Key",
-      "description": "Your API key from the Vonage dashboard.",
+      "description": "Your Vonage API key for authentication.",
       "required": true,
       "sensitive": true
     },
     "vonage_api_secret": {
       "type": "string",
       "title": "Vonage API Secret",
-      "description": "Your API secret from the Vonage dashboard.",
+      "description": "Your Vonage API secret for authentication.",
       "required": true,
       "sensitive": true
     },
     "vonage_application_id": {
       "type": "string",
       "title": "Vonage Application ID",
-      "description": "The ID of your Vonage application enabled for Voice and Messages.",
+      "description": "The ID of your Vonage application.",
       "required": true
     },
     "vonage_private_key_path": {
       "type": "file",
-      "title": "Vonage Private Key Path",
-      "description": "Path to the private.key file associated with your Vonage application.",
+      "title": "Vonage Private Key",
+      "description": "Path to your Vonage private.key file.",
       "required": true
     },
     "vonage_lvn": {
       "type": "string",
-      "title": "Vonage Virtual Number (LVN)",
-      "description": "The Vonage virtual number to use for making calls and sending SMS.",
+      "title": "Vonage Virtual Number",
+      "description": "Your Vonage Long Virtual Number (LVN) for making calls and sending SMS.",
       "required": true
     },
     "callback_server_url": {
       "type": "string",
       "title": "Callback Server URL",
-      "description": "Publicly accessible URL for Vonage to send event callbacks. Use http://localhost:8080 for local development.",
+      "description": "Publicly accessible URL for Vonage event callbacks (e.g., an ngrok URL).",
       "required": false,
       "default": "http://localhost:8080"
     },
     "vonage_api_url": {
       "type": "string",
       "title": "Vonage API URL",
-      "description": "The base URL for the Vonage Calls API.",
+      "description": "The base URL for the Vonage Voice API.",
       "required": false,
       "default": "https://api.nexmo.com/v1/calls"
     },
@@ -89,12 +91,22 @@
       "mcpServers": {
         "telephony-mcp-server-python": {
           "command": "python",
-          "args": ["telephony_server.py"],
+          "args": [
+            "telephony_server.py"
+          ],
           "env": {}
         },
         "telephony-mcp-server-docker": {
           "command": "docker",
-          "args": ["run", "-i", "--rm", "--init", "-e", "DOCKER_CONTAINER=true", "telephony-mcp-server"],
+          "args": [
+            "run",
+            "-i",
+            "--rm",
+            "--init",
+            "-e",
+            "DOCKER_CONTAINER=true",
+            "telephony-mcp-server"
+          ],
           "env": {
             "DOCKER_CONTAINER": "true"
           }

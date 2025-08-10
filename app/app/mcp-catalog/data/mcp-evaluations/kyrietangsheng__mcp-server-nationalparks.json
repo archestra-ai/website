@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "mcp-server-nationalparks"],
+      "args": [
+        "-y",
+        "mcp-server-nationalparks"
+      ],
       "env": {
         "NPS_API_KEY": "${user_config.NPS_API_KEY}"
       }
@@ -23,7 +26,7 @@
     "NPS_API_KEY": {
       "type": "string",
       "title": "NPS API Key",
-      "description": "Your API key for the National Park Service. Get a free key from the NPS Developer Portal.",
+      "description": "Your free API key from the National Park Service Developer Portal.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +39,10 @@
       "mcpServers": {
         "mcp-server-nationalparks": {
           "command": "npx",
-          "args": ["-y", "mcp-server-nationalparks"],
+          "args": [
+            "-y",
+            "mcp-server-nationalparks"
+          ],
           "env": {
             "NPS_API_KEY": "YOUR_NPS_API_KEY"
           }

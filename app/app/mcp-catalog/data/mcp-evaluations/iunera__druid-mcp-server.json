@@ -8,6 +8,7 @@
     "name": "iunera"
   },
   "server": {
+    "type": "binary",
     "mcp_config": {
       "command": "java",
       "args": [
@@ -48,12 +49,18 @@
       "mcpServers": {
         "druid-mcp-server-jar-built": {
           "command": "java",
-          "args": ["-jar", "target/druid-mcp-server-1.0.0.jar"],
+          "args": [
+            "-jar",
+            "target/druid-mcp-server-1.0.0.jar"
+          ],
           "env": {}
         },
         "druid-mcp-server-jar-downloaded": {
           "command": "java",
-          "args": ["-jar", "druid-mcp-server-1.0.0.jar"],
+          "args": [
+            "-jar",
+            "druid-mcp-server-1.0.0.jar"
+          ],
           "env": {}
         },
         "druid-mcp-server-jar-downloaded-stdio": {

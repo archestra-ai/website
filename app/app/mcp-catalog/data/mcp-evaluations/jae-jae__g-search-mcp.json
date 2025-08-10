@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "g-search-mcp"],
+      "args": [
+        "-y",
+        "g-search-mcp"
+      ],
       "env": {}
     }
   },
@@ -21,7 +24,7 @@
     "debug": {
       "type": "boolean",
       "title": "Enable Debug Mode",
-      "description": "Run the server in debug mode (showing browser window), which corresponds to the --debug command-line flag.",
+      "description": "Run the server in debug mode, showing the browser window for all operations. This can be overridden on a per-request basis.",
       "required": false,
       "default": false
     }
@@ -34,12 +37,19 @@
       "mcpServers": {
         "g-search": {
           "command": "npx",
-          "args": ["-y", "g-search-mcp"],
+          "args": [
+            "-y",
+            "g-search-mcp"
+          ],
           "env": {}
         },
         "g-search-debug": {
           "command": "npx",
-          "args": ["-y", "g-search-mcp", "--debug"],
+          "args": [
+            "-y",
+            "g-search-mcp",
+            "--debug"
+          ],
           "env": {}
         }
       }

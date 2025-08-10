@@ -10,10 +10,13 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "bitcoin-mcp@latest"],
+      "args": [
+        "-y",
+        "bitcoin-mcp@latest"
+      ],
       "env": {
         "LNBITS_URL": "${user_config.lnbits_url}",
-        "LNBITS_ADMIN_KEY": "${user_config.lnbits_admin_key}"
+        "LNBITS_API_KEY": "${user_config.lnbits_api_key}"
       }
     }
   },
@@ -24,14 +27,14 @@
     "lnbits_url": {
       "type": "string",
       "title": "LNBits URL",
-      "description": "The URL of your LNBits instance. Required to enable Lightning Network payment features.",
+      "description": "The URL of your LNBits instance, required to enable Lightning Network features.",
       "required": false,
       "sensitive": false
     },
-    "lnbits_admin_key": {
+    "lnbits_api_key": {
       "type": "string",
-      "title": "LNBits Admin Key",
-      "description": "The admin key for your LNBits wallet. Required to enable Lightning Network payment features.",
+      "title": "LNBits API Key",
+      "description": "The API key for your LNBits wallet, required for Lightning Network features like paying invoices.",
       "required": false,
       "sensitive": true
     }
@@ -44,12 +47,18 @@
       "mcpServers": {
         "bitcoin-mcp": {
           "command": "npx",
-          "args": ["-y", "bitcoin-mcp@latest"],
+          "args": [
+            "-y",
+            "bitcoin-mcp@latest"
+          ],
           "env": {}
         },
         "bitcoin-mcp-stdio": {
           "command": "npx",
-          "args": ["-y", "bitcoin-mcp@latest"],
+          "args": [
+            "-y",
+            "bitcoin-mcp@latest"
+          ],
           "env": {}
         }
       }

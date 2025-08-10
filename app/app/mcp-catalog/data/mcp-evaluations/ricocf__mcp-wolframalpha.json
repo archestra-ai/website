@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/src/core/server.py"],
+      "args": [
+        "${__dirname}/src/core/server.py"
+      ],
       "env": {
         "WOLFRAM_API_KEY": "${user_config.wolfram_api_key}"
       }
@@ -22,8 +24,8 @@
   "user_config": {
     "wolfram_api_key": {
       "type": "string",
-      "title": "Wolfram Alpha API Key",
-      "description": "Your Wolfram Alpha AppID, required for the server to connect to the Wolfram Alpha API.",
+      "title": "Wolfram Alpha App ID",
+      "description": "Your Wolfram Alpha App ID required to interface with the API.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +38,9 @@
       "mcpServers": {
         "WolframAlphaServer": {
           "command": "python3",
-          "args": ["/path/to/src/core/server.py"],
+          "args": [
+            "/path/to/src/core/server.py"
+          ],
           "env": {}
         }
       }

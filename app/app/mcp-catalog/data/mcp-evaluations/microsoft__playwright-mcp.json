@@ -68,13 +68,13 @@
     "browser": {
       "type": "string",
       "title": "Browser",
-      "description": "Browser or chrome channel to use, possible values: chrome, firefox, webkit, msedge.",
+      "description": "Browser or chrome channel to use. Possible values: chrome, firefox, webkit, msedge.",
       "required": false
     },
     "caps": {
       "type": "string",
       "title": "Capabilities",
-      "description": "Comma-separated list of additional capabilities to enable, possible values: vision, pdf.",
+      "description": "Comma-separated list of additional capabilities to enable. Possible values: vision, pdf.",
       "required": false
     },
     "cdp_endpoint": {
@@ -85,14 +85,14 @@
     },
     "config": {
       "type": "file",
-      "title": "Configuration File",
+      "title": "Config File Path",
       "description": "Path to the configuration file.",
       "required": false
     },
     "device": {
       "type": "string",
-      "title": "Device Emulation",
-      "description": "Device to emulate, for example: \"iPhone 15\"",
+      "title": "Emulated Device",
+      "description": "Device to emulate, for example: \"iPhone 15\".",
       "required": false
     },
     "executable_path": {
@@ -104,7 +104,7 @@
     "headless": {
       "type": "boolean",
       "title": "Headless Mode",
-      "description": "Run browser in headless mode, headed by default.",
+      "description": "Run browser in headless mode. Headed is the default.",
       "required": false,
       "default": false
     },
@@ -131,14 +131,14 @@
     },
     "image_responses": {
       "type": "string",
-      "title": "Image Responses",
+      "title": "Image Responses Mode",
       "description": "Whether to send image responses to the client. Can be \"allow\" or \"omit\".",
       "required": false,
       "default": "allow"
     },
     "no_sandbox": {
       "type": "boolean",
-      "title": "Disable Sandbox",
+      "title": "No Sandbox",
       "description": "Disable the sandbox for all process types that are normally sandboxed.",
       "required": false,
       "default": false
@@ -170,7 +170,9 @@
       "mcpServers": {
         "playwright-mcp": {
           "command": "npx",
-          "args": ["@playwright/mcp@latest"],
+          "args": [
+            "@playwright/mcp@latest"
+          ],
           "env": {}
         }
       }

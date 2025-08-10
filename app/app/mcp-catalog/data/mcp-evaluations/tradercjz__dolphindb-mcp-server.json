@@ -12,10 +12,10 @@
       "command": "dolphindb-mcp-server",
       "args": [],
       "env": {
-        "DDB_HOST": "${user_config.ddb_host}",
-        "DDB_PORT": "${user_config.ddb_port}",
-        "DDB_USER": "${user_config.ddb_user}",
-        "DDB_PASSWD": "${user_config.ddb_passwd}"
+        "DDB_HOST": "${user_config.DDB_HOST}",
+        "DDB_PORT": "${user_config.DDB_PORT}",
+        "DDB_USER": "${user_config.DDB_USER}",
+        "DDB_PASSWD": "${user_config.DDB_PASSWD}"
       }
     }
   },
@@ -23,31 +23,31 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "ddb_host": {
+    "DDB_HOST": {
       "type": "string",
       "title": "DolphinDB Host",
-      "description": "The host address for the DolphinDB server.",
+      "description": "The host address for the DolphinDB connection.",
       "required": false,
       "default": "127.0.0.1"
     },
-    "ddb_port": {
+    "DDB_PORT": {
       "type": "number",
       "title": "DolphinDB Port",
-      "description": "The port number for the DolphinDB server.",
+      "description": "The port number for the DolphinDB connection.",
       "required": false,
       "default": 8848
     },
-    "ddb_user": {
+    "DDB_USER": {
       "type": "string",
       "title": "DolphinDB User",
-      "description": "The username for connecting to DolphinDB.",
+      "description": "The username for the DolphinDB connection.",
       "required": false,
       "default": "admin"
     },
-    "ddb_passwd": {
+    "DDB_PASSWD": {
       "type": "string",
       "title": "DolphinDB Password",
-      "description": "The password for the DolphinDB user.",
+      "description": "The password for the DolphinDB connection.",
       "required": false,
       "sensitive": true,
       "default": "123456"
@@ -66,7 +66,9 @@
         },
         "dolphindb-mcp-server-uvx": {
           "command": "uvx",
-          "args": ["dolphindb-mcp-server"],
+          "args": [
+            "dolphindb-mcp-server"
+          ],
           "env": {}
         }
       }

@@ -17,7 +17,7 @@
       "title": "Reddit Username",
       "description": "Your Reddit account username.",
       "required": true,
-      "sensitive": false
+      "sensitive": true
     },
     "reddit_password": {
       "type": "string",
@@ -29,14 +29,14 @@
     "reddit_client_id": {
       "type": "string",
       "title": "Reddit Client ID",
-      "description": "Your Reddit application client ID. Can be obtained from Reddit's app preferences.",
+      "description": "Your Reddit application client ID. See https://github.com/reddit-archive/reddit/wiki/OAuth2-Quick-Start-Example#first-steps for details.",
       "required": true,
       "sensitive": true
     },
     "reddit_client_secret": {
       "type": "string",
       "title": "Reddit Client Secret",
-      "description": "Your Reddit application client secret. Can be obtained from Reddit's app preferences.",
+      "description": "Your Reddit application client secret. See https://github.com/reddit-archive/reddit/wiki/OAuth2-Quick-Start-Example#first-steps for details.",
       "required": true,
       "sensitive": true
     }

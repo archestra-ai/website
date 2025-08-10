@@ -9,8 +9,10 @@
   },
   "server": {
     "mcp_config": {
-      "command": "npm",
-      "args": ["run", "inspector"],
+      "command": "node",
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
       "env": {}
     }
   },
@@ -26,12 +28,20 @@
       "mcpServers": {
         "8enSmith-mcp-open-library": {
           "command": "npx",
-          "args": ["-y", "@8enSmith/mcp-open-library"],
+          "args": [
+            "-y",
+            "@8enSmith/mcp-open-library"
+          ],
           "env": {}
         },
         "mcp-open-library-docker": {
           "command": "docker",
-          "args": ["run", "-p", "8080:8080", "mcp-open-library"],
+          "args": [
+            "run",
+            "-p",
+            "8080:8080",
+            "mcp-open-library"
+          ],
           "env": {}
         }
       }

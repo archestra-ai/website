@@ -10,7 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}/src", "run", "server.py"],
+      "args": [
+        "--directory",
+        "${__dirname}/src",
+        "run",
+        "server.py"
+      ],
       "env": {
         "IP2LOCATION_API_KEY": "${user_config.api_key}"
       }
@@ -23,7 +28,7 @@
     "api_key": {
       "type": "string",
       "title": "IP2Location.io API Key",
-      "description": "Your API key for IP2Location.io. Optional, but provides up to 50,000 queries/month. Get one from the IP2Location.io website.",
+      "description": "Your API key for IP2Location.io. Optional (allows 1,000 queries/day without a key), but a free key provides up to 50,000 queries/month.",
       "required": false,
       "sensitive": true
     }
@@ -36,7 +41,12 @@
       "mcpServers": {
         "ip2locationio": {
           "command": "uv",
-          "args": ["--directory", "/path/to/ip2locationio/src", "run", "server.py"],
+          "args": [
+            "--directory",
+            "/path/to/ip2locationio/src",
+            "run",
+            "server.py"
+          ],
           "env": {
             "IP2LOCATION_API_KEY": "<YOUR API key HERE>"
           }

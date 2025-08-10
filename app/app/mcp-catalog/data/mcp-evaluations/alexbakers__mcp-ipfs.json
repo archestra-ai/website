@@ -10,9 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "mcp-ipfs"],
+      "args": [
+        "-y",
+        "mcp-ipfs"
+      ],
       "env": {
-        "W3_LOGIN_EMAIL": "${user_config.w3_login_email}"
+        "W3_LOGIN_EMAIL": "${user_config.W3_LOGIN_EMAIL}"
       }
     }
   },
@@ -20,10 +23,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "w3_login_email": {
+    "W3_LOGIN_EMAIL": {
       "type": "string",
       "title": "W3 Login Email",
-      "description": "The email address used to log in with the w3 CLI for storacha.network. This is required for authentication.",
+      "description": "The email address used to log in to storacha.network with the `w3` CLI. This must match the email used in `w3 login`.",
       "required": true,
       "sensitive": false
     }
@@ -36,7 +39,10 @@
       "mcpServers": {
         "mcp-ipfs": {
           "command": "npx",
-          "args": ["-y", "mcp-ipfs"],
+          "args": [
+            "-y",
+            "mcp-ipfs"
+          ],
           "env": {
             "W3_LOGIN_EMAIL": "your-email@example.com"
           }

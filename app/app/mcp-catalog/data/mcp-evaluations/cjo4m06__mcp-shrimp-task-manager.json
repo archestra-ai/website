@@ -15,26 +15,26 @@
     "ENABLE_GUI": {
       "type": "boolean",
       "title": "Enable Web GUI",
-      "description": "Enable the optional web-based graphical user interface for task management. When enabled, a WebGUI.md file containing the access address will be created in your DATA_DIR.",
+      "description": "Enable the optional web-based graphical user interface for task management. Set to true to enable.",
       "required": false,
       "default": false
-    },
-    "DATA_DIR": {
-      "type": "directory",
-      "title": "Data Directory",
-      "description": "Directory for storing data files, such as the WebGUI.md file and custom prompt templates.",
-      "required": false
     },
     "WEB_PORT": {
       "type": "number",
       "title": "Web GUI Port",
-      "description": "Customizes the web port for the GUI. If not specified, an available port will be automatically selected.",
+      "description": "Customize the web port for the GUI. If not specified, an available port is automatically selected.",
+      "required": false
+    },
+    "DATA_DIR": {
+      "type": "directory",
+      "title": "Data Directory",
+      "description": "Directory for storing data, such as the WebGUI.md file and custom prompt templates.",
       "required": false
     },
     "TEMPLATES_USE": {
       "type": "string",
-      "title": "Prompt Template Language",
-      "description": "Switch the language of system prompts. Supports 'en' (English) and 'zh' (Traditional Chinese) by default, or a custom template directory name located in your DATA_DIR.",
+      "title": "Prompt Template Set",
+      "description": "Switch the language of system prompts (e.g., 'en', 'zh') or specify a custom template directory name located in the Data Directory.",
       "required": false,
       "default": "en"
     }

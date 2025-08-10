@@ -14,12 +14,12 @@
       "args": [
         "--host",
         "${user_config.host}",
-        "--port",
-        "${user_config.port}",
         "--user",
         "${user_config.user}",
         "--pass",
         "${user_config.pass}",
+        "--port",
+        "${user_config.port}",
         "--db",
         "${user_config.db}"
       ],
@@ -32,30 +32,30 @@
   "user_config": {
     "host": {
       "type": "string",
-      "title": "Host",
+      "title": "MySQL Host",
       "description": "The hostname or IP address of the MySQL server.",
       "required": true,
       "default": "localhost"
     },
     "port": {
       "type": "number",
-      "title": "Port",
+      "title": "MySQL Port",
       "description": "The port number of the MySQL server.",
       "required": true,
       "default": 3306
     },
     "user": {
       "type": "string",
-      "title": "User",
+      "title": "MySQL User",
       "description": "The username for the MySQL connection.",
       "required": true,
       "default": "root"
     },
     "pass": {
       "type": "string",
-      "title": "Password",
-      "description": "The password for the MySQL user. Leave blank if none.",
-      "required": false,
+      "title": "MySQL Password",
+      "description": "The password for the MySQL connection.",
+      "required": true,
       "sensitive": true
     },
     "db": {
@@ -66,15 +66,15 @@
     },
     "read_only": {
       "type": "boolean",
-      "title": "Read-Only Mode",
-      "description": "If enabled, only read operations (list, read_, desc_) are allowed. The server must be restarted for this to take effect.",
+      "title": "Read-only Mode",
+      "description": "If enabled, the server will run in read-only mode, and only tools beginning with list, read_, and desc_ will be available. The runner must add the --read-only flag if this is true.",
       "required": false,
       "default": false
     },
     "with_explain_check": {
       "type": "boolean",
       "title": "Enable EXPLAIN Check",
-      "description": "If enabled, the server checks the query plan with an EXPLAIN statement before executing a query. The server must be restarted for this to take effect.",
+      "description": "If enabled, the server will check the query plan with an EXPLAIN statement before executing the query. The runner must add the --with-explain-check flag if this is true.",
       "required": false,
       "default": false
     }
@@ -87,12 +87,26 @@
       "mcpServers": {
         "go-mcp-mysql-args": {
           "command": "go-mcp-mysql",
-          "args": ["--host", "localhost", "--user", "root", "--pass", "password", "--port", "3306", "--db", "mydb"],
+          "args": [
+            "--host",
+            "localhost",
+            "--user",
+            "root",
+            "--pass",
+            "password",
+            "--port",
+            "3306",
+            "--db",
+            "mydb"
+          ],
           "env": {}
         },
         "go-mcp-mysql-dsn": {
           "command": "go-mcp-mysql",
-          "args": ["--dsn", "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local"],
+          "args": [
+            "--dsn",
+            "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local"
+          ],
           "env": {}
         },
         "go-mcp-mysql-args-read-only": {
@@ -114,7 +128,11 @@
         },
         "go-mcp-mysql-dsn-read-only": {
           "command": "go-mcp-mysql",
-          "args": ["--dsn", "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local", "--read-only"],
+          "args": [
+            "--dsn",
+            "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local",
+            "--read-only"
+          ],
           "env": {}
         },
         "go-mcp-mysql-args-with-explain-check": {

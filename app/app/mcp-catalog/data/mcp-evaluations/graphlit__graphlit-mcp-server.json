@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "graphlit-mcp-server"],
+      "args": [
+        "-y",
+        "graphlit-mcp-server"
+      ],
       "env": {
         "GRAPHLIT_ORGANIZATION_ID": "${user_config.organization_id}",
         "GRAPHLIT_ENVIRONMENT_ID": "${user_config.environment_id}",
@@ -25,21 +28,21 @@
     "organization_id": {
       "type": "string",
       "title": "Graphlit Organization ID",
-      "description": "Your organization ID from the Graphlit Platform API settings dashboard.",
+      "description": "Your organization ID, found in the API settings dashboard on the Graphlit Platform.",
       "sensitive": true,
       "required": true
     },
     "environment_id": {
       "type": "string",
       "title": "Graphlit Environment ID",
-      "description": "Your environment ID from the Graphlit Platform API settings dashboard.",
+      "description": "Your environment ID, found in the API settings dashboard on the Graphlit Platform.",
       "sensitive": true,
       "required": true
     },
     "jwt_secret": {
       "type": "string",
       "title": "Graphlit JWT Secret",
-      "description": "Your JWT secret for signing tokens, from the Graphlit Platform API settings dashboard.",
+      "description": "Your JWT secret for signing the JWT token, found in the API settings dashboard on the Graphlit Platform.",
       "sensitive": true,
       "required": true
     }
@@ -52,7 +55,10 @@
       "mcpServers": {
         "graphlit-mcp-server": {
           "command": "npx",
-          "args": ["-y", "graphlit-mcp-server"],
+          "args": [
+            "-y",
+            "graphlit-mcp-server"
+          ],
           "env": {
             "GRAPHLIT_ORGANIZATION_ID": "your-organization-id",
             "GRAPHLIT_ENVIRONMENT_ID": "your-environment-id",

@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "mcp-mongo-server"],
+      "args": [
+        "-y",
+        "mcp-mongo-server"
+      ],
       "env": {
         "MCP_MONGODB_URI": "${user_config.mongodb_uri}",
         "MCP_MONGODB_READONLY": "${user_config.read_only}"
@@ -24,14 +27,14 @@
     "mongodb_uri": {
       "type": "string",
       "title": "MongoDB Connection URI",
-      "description": "The connection URI for the MongoDB database, e.g., mongodb://user:pass@host:port/database.",
+      "description": "The connection URI for your MongoDB database, e.g., mongodb://user:pass@host:port/database",
       "required": true,
       "sensitive": true
     },
     "read_only": {
       "type": "boolean",
       "title": "Read-Only Mode",
-      "description": "If true, enables read-only mode to prevent write operations. The server will use MongoDB's secondary read preference for optimal performance.",
+      "description": "Connect to the database in read-only mode to prevent any write operations.",
       "required": false,
       "default": false
     }
@@ -44,17 +47,29 @@
       "mcpServers": {
         "mcp-mongo-server": {
           "command": "npx",
-          "args": ["-y", "mcp-mongo-server", "mongodb://muhammed:kilic@localhost:27017/database"],
+          "args": [
+            "-y",
+            "mcp-mongo-server",
+            "mongodb://muhammed:kilic@localhost:27017/database"
+          ],
           "env": {}
         },
         "mcp-mongo-server-readonly": {
           "command": "npx",
-          "args": ["-y", "mcp-mongo-server", "mongodb://muhammed:kilic@localhost:27017/database", "--read-only"],
+          "args": [
+            "-y",
+            "mcp-mongo-server",
+            "mongodb://muhammed:kilic@localhost:27017/database",
+            "--read-only"
+          ],
           "env": {}
         },
         "mcp-mongo-server-env-full": {
           "command": "npx",
-          "args": ["-y", "mcp-mongo-server"],
+          "args": [
+            "-y",
+            "mcp-mongo-server"
+          ],
           "env": {
             "MCP_MONGODB_URI": "mongodb://muhammed:kilic@localhost:27017/database",
             "MCP_MONGODB_READONLY": "true"
@@ -62,7 +77,10 @@
         },
         "mcp-mongo-server-env-uri": {
           "command": "npx",
-          "args": ["-y", "mcp-mongo-server"],
+          "args": [
+            "-y",
+            "mcp-mongo-server"
+          ],
           "env": {
             "MCP_MONGODB_URI": "mongodb://muhammed:kilic@localhost:27017/database"
           }
@@ -86,7 +104,11 @@
         },
         "github-kiliczsh-mcp-mongo-server": {
           "command": "npx",
-          "args": ["-y", "github:kiliczsh/mcp-mongo-server", "mongodb://muhammed:kilic@localhost:27017/database"],
+          "args": [
+            "-y",
+            "github:kiliczsh/mcp-mongo-server",
+            "mongodb://muhammed:kilic@localhost:27017/database"
+          ],
           "env": {}
         },
         "github-kiliczsh-mcp-mongo-server-readonly": {

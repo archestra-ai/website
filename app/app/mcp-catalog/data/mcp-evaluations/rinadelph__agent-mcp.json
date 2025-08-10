@@ -8,11 +8,18 @@
     "name": "rinadelph"
   },
   "server": {
+    "type": "python",
     "mcp_config": {
       "command": "uv",
-      "args": ["run", "-m", "agent_mcp.cli", "--project-dir", "${user_config.project_dir}"],
+      "args": [
+        "run",
+        "-m",
+        "agent_mcp.cli",
+        "--project-dir",
+        "${user_config.project_dir}"
+      ],
       "env": {
-        "OPENAI_API_KEY": "${user_config.OPENAI_API_KEY}"
+        "OPENAI_API_KEY": "${user_config.openai_api_key}"
       }
     }
   },
@@ -20,17 +27,17 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "OPENAI_API_KEY": {
+    "openai_api_key": {
       "type": "string",
       "title": "OpenAI API Key",
-      "description": "Your OpenAI API key, found in the .env file.",
+      "description": "Your OpenAI API key for agent operations. This is added to the .env file.",
       "required": true,
       "sensitive": true
     },
     "project_dir": {
       "type": "directory",
       "title": "Project Directory",
-      "description": "The path to the project directory that Agent-MCP will operate on.",
+      "description": "The path to the project directory that Agent-MCP will manage.",
       "required": true
     }
   },
@@ -42,7 +49,13 @@
       "mcpServers": {
         "agent_mcp": {
           "command": "uv",
-          "args": ["run", "-m", "agent_mcp.cli", "--project-dir", "/path/to/your/project"],
+          "args": [
+            "run",
+            "-m",
+            "agent_mcp.cli",
+            "--project-dir",
+            "/path/to/your/project"
+          ],
           "env": {}
         }
       }

@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "json-mcp-filter@latest"],
+      "args": [
+        "-y",
+        "json-mcp-filter@latest"
+      ],
       "env": {}
     }
   },
@@ -26,7 +29,10 @@
       "mcpServers": {
         "json-mcp-filter-npx": {
           "command": "npx",
-          "args": ["-y", "json-mcp-filter@latest"],
+          "args": [
+            "-y",
+            "json-mcp-filter@latest"
+          ],
           "env": {}
         },
         "json-mcp-filter-global": {
@@ -36,17 +42,25 @@
         },
         "json-mcp-filter-source-start": {
           "command": "npm",
-          "args": ["run", "start"],
+          "args": [
+            "run",
+            "start"
+          ],
           "env": {}
         },
         "json-mcp-filter-node-path": {
           "command": "node",
-          "args": ["/path/to/json-mcp-filter/build/index.js"],
+          "args": [
+            "/path/to/json-mcp-filter/build/index.js"
+          ],
           "env": {}
         },
         "json-mcp-filter-inspect": {
           "command": "npm",
-          "args": ["run", "inspect"],
+          "args": [
+            "run",
+            "inspect"
+          ],
           "env": {}
         }
       }

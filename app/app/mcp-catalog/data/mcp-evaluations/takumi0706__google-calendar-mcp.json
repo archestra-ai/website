@@ -8,9 +8,13 @@
     "name": "takumi0706"
   },
   "server": {
+    "type": "node",
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@takumi0706/google-calendar-mcp@1.0.7"],
+      "args": [
+        "-y",
+        "@takumi0706/google-calendar-mcp@1.0.7"
+      ],
       "env": {
         "GOOGLE_CLIENT_ID": "${user_config.GOOGLE_CLIENT_ID}",
         "GOOGLE_CLIENT_SECRET": "${user_config.GOOGLE_CLIENT_SECRET}",
@@ -31,14 +35,14 @@
     "GOOGLE_CLIENT_ID": {
       "type": "string",
       "title": "Google Client ID",
-      "description": "Your Google Cloud Project OAuth Client ID.",
+      "description": "Your Client ID from the Google Cloud Console for OAuth2.",
       "required": true,
-      "sensitive": true
+      "sensitive": false
     },
     "GOOGLE_CLIENT_SECRET": {
       "type": "string",
       "title": "Google Client Secret",
-      "description": "Your Google Cloud Project OAuth Client Secret.",
+      "description": "Your Client Secret from the Google Cloud Console for OAuth2.",
       "required": true,
       "sensitive": true
     },
@@ -46,48 +50,48 @@
       "type": "string",
       "title": "Google Redirect URI",
       "description": "The redirect URI for the OAuth2 callback. Must match the one configured in your Google Cloud Project.",
-      "required": true,
+      "required": false,
       "default": "http://localhost:4153/oauth2callback"
     },
     "TOKEN_ENCRYPTION_KEY": {
       "type": "string",
       "title": "Token Encryption Key",
-      "description": "Optional 32-byte hex key for token encryption. It will be auto-generated if not provided.",
+      "description": "Optional 32-byte hex key for encrypting OAuth tokens. A key will be auto-generated if this is left blank.",
       "required": false,
       "sensitive": true
     },
     "AUTH_PORT": {
       "type": "number",
       "title": "Authentication Server Port",
-      "description": "Optional port for the local authentication server.",
+      "description": "The local port for the OAuth authentication server.",
       "required": false,
       "default": 4153
     },
     "AUTH_HOST": {
       "type": "string",
       "title": "Authentication Server Host",
-      "description": "Optional host for the local authentication server.",
+      "description": "The local host for the OAuth authentication server.",
       "required": false,
       "default": "localhost"
     },
     "PORT": {
       "type": "number",
       "title": "MCP Server Port",
-      "description": "Optional port for the MCP server.",
+      "description": "The port for the main MCP server to run on.",
       "required": false,
       "default": 3000
     },
     "HOST": {
       "type": "string",
       "title": "MCP Server Host",
-      "description": "Optional host for the MCP server.",
+      "description": "The host for the main MCP server to run on.",
       "required": false,
       "default": "localhost"
     },
     "USE_MANUAL_AUTH": {
       "type": "boolean",
       "title": "Use Manual Authentication",
-      "description": "Enable manual authentication flow, which is useful when localhost is not accessible (e.g., in a container).",
+      "description": "Enable manual authentication by copying/pasting a URL. Useful when running in an environment where the browser cannot be opened automatically.",
       "required": false,
       "default": false
     }
@@ -100,12 +104,18 @@
       "mcpServers": {
         "takumi0706-google-calendar-mcp": {
           "command": "npx",
-          "args": ["-y", "@takumi0706/google-calendar-mcp@1.0.7"],
+          "args": [
+            "-y",
+            "@takumi0706/google-calendar-mcp@1.0.7"
+          ],
           "env": {}
         },
         "takumi0706-google-calendar-mcp-configured": {
           "command": "npx",
-          "args": ["-y", "@takumi0706/google-calendar-mcp@1.0.7"],
+          "args": [
+            "-y",
+            "@takumi0706/google-calendar-mcp@1.0.7"
+          ],
           "env": {
             "GOOGLE_CLIENT_ID": "your_client_id",
             "GOOGLE_CLIENT_SECRET": "your_client_secret",

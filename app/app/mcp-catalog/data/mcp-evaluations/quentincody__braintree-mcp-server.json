@@ -8,10 +8,11 @@
     "name": "QuentinCody"
   },
   "server": {
-    "type": "python",
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/braintree_server.py"],
+      "args": [
+        "${__dirname}/braintree_server.py"
+      ],
       "env": {
         "BRAINTREE_MERCHANT_ID": "${user_config.braintree_merchant_id}",
         "BRAINTREE_PUBLIC_KEY": "${user_config.braintree_public_key}",
@@ -48,7 +49,7 @@
     "braintree_environment": {
       "type": "string",
       "title": "Braintree Environment",
-      "description": "The Braintree environment to use (e.g., 'sandbox' or 'production').",
+      "description": "The Braintree environment to use, either 'sandbox' or 'production'.",
       "required": true,
       "default": "sandbox"
     }
@@ -61,12 +62,16 @@
       "mcpServers": {
         "braintree-server-stdio": {
           "command": "python",
-          "args": ["braintree_server.py"],
+          "args": [
+            "braintree_server.py"
+          ],
           "env": {}
         },
         "braintree-sse-server-sse": {
           "command": "python",
-          "args": ["braintree_sse_server.py"],
+          "args": [
+            "braintree_sse_server.py"
+          ],
           "env": {}
         }
       }

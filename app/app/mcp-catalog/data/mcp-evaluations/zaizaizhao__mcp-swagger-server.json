@@ -54,12 +54,16 @@
       "mcpServers": {
         "mcp-swagger-server-cli-petstore": {
           "command": "pnpm",
-          "args": ["cli:petstore"],
+          "args": [
+            "cli:petstore"
+          ],
           "env": {}
         },
         "mcp-swagger-server-cli-github": {
           "command": "pnpm",
-          "args": ["cli:github"],
+          "args": [
+            "cli:github"
+          ],
           "env": {}
         },
         "mcp-swagger-server-petstore-streamable": {
@@ -76,17 +80,37 @@
         },
         "mcp-swagger-server-local-file-sse": {
           "command": "mcp-swagger-server",
-          "args": ["--openapi", "./swagger.json", "--transport", "sse", "--port", "3322"],
+          "args": [
+            "--openapi",
+            "./swagger.json",
+            "--transport",
+            "sse",
+            "--port",
+            "3322"
+          ],
           "env": {}
         },
         "mcp-swagger-server-remote-api-streamable": {
           "command": "mcp-swagger-server",
-          "args": ["--openapi", "https://api.example.com/openapi.json", "--transport", "streamable", "--port", "3323"],
+          "args": [
+            "--openapi",
+            "https://api.example.com/openapi.json",
+            "--transport",
+            "streamable",
+            "--port",
+            "3323"
+          ],
           "env": {}
         },
         "mcp-swagger-server-watch-stdio": {
           "command": "mcp-swagger-server",
-          "args": ["--openapi", "./api.yaml", "--transport", "stdio", "--watch"],
+          "args": [
+            "--openapi",
+            "./api.yaml",
+            "--transport",
+            "stdio",
+            "--watch"
+          ],
           "env": {}
         },
         "mcp-swagger-server-bearer-token": {
@@ -121,12 +145,20 @@
         },
         "mcp-swagger-server-with-config": {
           "command": "mcp-swagger-server",
-          "args": ["--config", "config.json"],
+          "args": [
+            "--config",
+            "config.json"
+          ],
           "env": {}
         },
         "mcp-swagger-server-claude-petstore-stdio": {
           "command": "mcp-swagger-server",
-          "args": ["--openapi", "https://petstore.swagger.io/v2/swagger.json", "--transport", "stdio"],
+          "args": [
+            "--openapi",
+            "https://petstore.swagger.io/v2/swagger.json",
+            "--transport",
+            "stdio"
+          ],
           "env": {}
         },
         "mcp-swagger-server-claude-secured-stdio": {

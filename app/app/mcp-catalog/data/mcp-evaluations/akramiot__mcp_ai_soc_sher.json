@@ -8,15 +8,16 @@
     "name": "akramIOT"
   },
   "server": {
-    "type": "python",
     "mcp_config": {
       "command": "mcp-ai-soc",
-      "args": ["--type", "remote"],
+      "args": [
+        "--type",
+        "remote"
+      ],
       "env": {
         "OPENAI_API_KEY": "${user_config.openai_api_key}",
         "MCP_DB_URI": "${user_config.db_uri}",
-        "MCP_SECURITY_ENABLE_THREAT_ANALYSIS": "${user_config.enable_threat_analysis}",
-        "MCP_API_KEY": "${user_config.mcp_api_key}"
+        "MCP_SECURITY_ENABLE_THREAT_ANALYSIS": "${user_config.enable_threat_analysis}"
       }
     }
   },
@@ -27,21 +28,14 @@
     "openai_api_key": {
       "type": "string",
       "title": "OpenAI API Key",
-      "description": "Your API key from OpenAI for Text2SQL processing.",
-      "sensitive": true,
-      "required": true
-    },
-    "mcp_api_key": {
-      "type": "string",
-      "title": "MCP Server API Key",
-      "description": "A secret key to secure the MCP server's REST API endpoint. This is sent as the 'X-API-Key' header by clients.",
-      "sensitive": true,
-      "required": true
+      "description": "Your API key from OpenAI, used for converting natural language to SQL.",
+      "required": true,
+      "sensitive": true
     },
     "db_uri": {
       "type": "string",
-      "title": "Database URI",
-      "description": "The connection URI for the target database (e.g., sqlite:///your_database.db).",
+      "title": "Database Connection URI",
+      "description": "The connection URI for the target database (e.g., 'sqlite:///your_database.db').",
       "required": true
     },
     "enable_threat_analysis": {
@@ -70,22 +64,38 @@
         },
         "mcp-ai-soc-local-stdio-sse": {
           "command": "mcp-ai-soc",
-          "args": ["--type", "local", "--stdio", "--sse"],
+          "args": [
+            "--type",
+            "local",
+            "--stdio",
+            "--sse"
+          ],
           "env": {}
         },
         "mcp-ai-soc-local-stdio": {
           "command": "mcp-ai-soc",
-          "args": ["--type", "local", "--stdio"],
+          "args": [
+            "--type",
+            "local",
+            "--stdio"
+          ],
           "env": {}
         },
         "mcp-ai-soc-local-sse": {
           "command": "mcp-ai-soc",
-          "args": ["--type", "local", "--sse"],
+          "args": [
+            "--type",
+            "local",
+            "--sse"
+          ],
           "env": {}
         },
         "mcp-ai-soc-remote": {
           "command": "mcp-ai-soc",
-          "args": ["--type", "remote"],
+          "args": [
+            "--type",
+            "remote"
+          ],
           "env": {}
         }
       }

@@ -10,7 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "firstcycling.py"],
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "firstcycling.py"
+      ],
       "env": {}
     }
   },
@@ -26,12 +31,22 @@
       "mcpServers": {
         "firstcycling": {
           "command": "uv",
-          "args": ["--directory", "/path/to/server/directory", "run", "firstcycling.py"],
+          "args": [
+            "--directory",
+            "/path/to/server/directory",
+            "run",
+            "firstcycling.py"
+          ],
           "env": {}
         },
         "firstcycling-dev": {
           "command": "uv",
-          "args": ["run", "mcp", "dev", "firstcycling.py"],
+          "args": [
+            "run",
+            "mcp",
+            "dev",
+            "firstcycling.py"
+          ],
           "env": {}
         }
       }

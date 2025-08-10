@@ -8,9 +8,8 @@
     "name": "gbrigandi"
   },
   "server": {
-    "type": "binary",
     "mcp_config": {
-      "command": "mcp-server-cortex",
+      "command": "${user_config.server_path}",
       "args": [],
       "env": {
         "CORTEX_ENDPOINT": "${user_config.cortex_endpoint}",
@@ -23,11 +22,18 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
+    "server_path": {
+      "type": "file",
+      "title": "MCP Server for Cortex Path",
+      "description": "Path to the downloaded mcp-server-cortex executable.",
+      "required": true
+    },
     "cortex_endpoint": {
       "type": "string",
       "title": "Cortex Endpoint URL",
-      "description": "The full URL to your Cortex API. Example: http://localhost:9000/api",
-      "required": true
+      "description": "The full URL to your Cortex API.",
+      "required": true,
+      "default": "http://localhost:9000/api"
     },
     "cortex_api_key": {
       "type": "string",
@@ -38,8 +44,8 @@
     },
     "rust_log": {
       "type": "string",
-      "title": "Log Level",
-      "description": "Optional: Controls the logging level for the server. Example: 'info' or 'mcp_server_cortex=debug'.",
+      "title": "Log Level (Optional)",
+      "description": "Controls the logging level for the server (e.g., 'info', 'debug', 'mcp_server_cortex=debug').",
       "required": false,
       "default": "info"
     }

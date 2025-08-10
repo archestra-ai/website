@@ -10,7 +10,13 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["@mindpilot/mcp@latest", "--port", "${user_config.port}", "--data-path", "${user_config.data_path}"],
+      "args": [
+        "@mindpilot/mcp@latest",
+        "--port",
+        "${user_config.port}",
+        "--data-path",
+        "${user_config.data_path}"
+      ],
       "env": {}
     }
   },
@@ -21,7 +27,7 @@
     "port": {
       "type": "number",
       "title": "Server Port",
-      "description": "The port for the MCP web server. The server defaults to port 4000.",
+      "description": "The port the MCP server will run on. Defaults to 4000.",
       "required": false,
       "default": 4000
     },
@@ -35,7 +41,7 @@
     "disable_analytics": {
       "type": "boolean",
       "title": "Disable Analytics",
-      "description": "If checked, anonymous usage data will not be collected. This flag is added to the command if true.",
+      "description": "If true, disables the collection of anonymous usage data. The corresponding --disable-analytics flag will be added to the command.",
       "required": false,
       "default": false
     }
@@ -48,27 +54,43 @@
       "mcpServers": {
         "mindpilot-mcp": {
           "command": "npx",
-          "args": ["@mindpilot/mcp@latest"],
+          "args": [
+            "@mindpilot/mcp@latest"
+          ],
           "env": {}
         },
         "mindpilot-mcp-disable-analytics": {
           "command": "npx",
-          "args": ["@mindpilot/mcp@latest", "--disable-analytics"],
+          "args": [
+            "@mindpilot/mcp@latest",
+            "--disable-analytics"
+          ],
           "env": {}
         },
         "mindpilot-mcp-port-5555": {
           "command": "npx",
-          "args": ["@mindpilot/mcp@latest", "--port", "5555"],
+          "args": [
+            "@mindpilot/mcp@latest",
+            "--port",
+            "5555"
+          ],
           "env": {}
         },
         "mindpilot-mcp-custom-data-path": {
           "command": "npx",
-          "args": ["@mindpilot/mcp@latest", "--data-path", "/path/to/custom/location"],
+          "args": [
+            "@mindpilot/mcp@latest",
+            "--data-path",
+            "/path/to/custom/location"
+          ],
           "env": {}
         },
         "mindpilot-mcp-dev": {
           "command": "npx",
-          "args": ["tsx", "<path to...>/src/server/server.ts"],
+          "args": [
+            "tsx",
+            "<path to...>/src/server/server.ts"
+          ],
           "env": {}
         }
       }

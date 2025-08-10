@@ -10,7 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "chatgpt_server.py"],
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "chatgpt_server.py"
+      ],
       "env": {
         "OPENAI_API_KEY": "${user_config.openai_api_key}",
         "DEFAULT_MODEL": "${user_config.default_model}",
@@ -26,28 +31,28 @@
     "openai_api_key": {
       "type": "string",
       "title": "OpenAI API Key",
-      "description": "Your API key from OpenAI to use the ChatGPT server.",
+      "description": "Your API key to use the ChatGPT server. You can find your key at https://platform.openai.com/settings/organization/api-keys.",
       "required": true,
       "sensitive": true
     },
     "default_model": {
       "type": "string",
       "title": "Default Model",
-      "description": "The default OpenAI model to use for requests.",
+      "description": "The default OpenAI model to use for requests (e.g., gpt-4o).",
       "required": false,
       "default": "gpt-4o"
     },
     "default_temperature": {
       "type": "number",
       "title": "Default Temperature",
-      "description": "The default sampling temperature for model responses (e.g., 0.7).",
+      "description": "The default sampling temperature for model responses. Higher values are more creative.",
       "required": false,
       "default": 0.7
     },
     "max_tokens": {
       "type": "number",
       "title": "Max Tokens",
-      "description": "The maximum number of tokens to generate in a response.",
+      "description": "The default maximum number of tokens for the model to generate.",
       "required": false,
       "default": 1000
     }
@@ -60,7 +65,12 @@
       "mcpServers": {
         "billster45-mcp-chatgpt-responses": {
           "command": "uv",
-          "args": ["--directory", "\\path\\to\\mcp-chatgpt-responses", "run", "chatgpt_server.py"],
+          "args": [
+            "--directory",
+            "\\path\\to\\mcp-chatgpt-responses",
+            "run",
+            "chatgpt_server.py"
+          ],
           "env": {
             "OPENAI_API_KEY": "your-api-key-here",
             "DEFAULT_MODEL": "gpt-4o",

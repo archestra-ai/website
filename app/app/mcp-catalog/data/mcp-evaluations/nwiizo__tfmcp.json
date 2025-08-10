@@ -10,17 +10,19 @@
   "server": {
     "mcp_config": {
       "command": "tfmcp",
-      "args": ["mcp"],
+      "args": [
+        "mcp"
+      ],
       "env": {
-        "TERRAFORM_DIR": "${user_config.TERRAFORM_DIR}",
-        "TFMCP_LOG_LEVEL": "${user_config.TFMCP_LOG_LEVEL}",
-        "TFMCP_DEMO_MODE": "${user_config.TFMCP_DEMO_MODE}",
-        "TFMCP_ALLOW_DANGEROUS_OPS": "${user_config.TFMCP_ALLOW_DANGEROUS_OPS}",
-        "TFMCP_ALLOW_AUTO_APPROVE": "${user_config.TFMCP_ALLOW_AUTO_APPROVE}",
-        "TFMCP_MAX_RESOURCES": "${user_config.TFMCP_MAX_RESOURCES}",
-        "TFMCP_AUDIT_ENABLED": "${user_config.TFMCP_AUDIT_ENABLED}",
-        "TFMCP_AUDIT_LOG_FILE": "${user_config.TFMCP_AUDIT_LOG_FILE}",
-        "TFMCP_AUDIT_LOG_SENSITIVE": "${user_config.TFMCP_AUDIT_LOG_SENSITIVE}"
+        "TERRAFORM_DIR": "${user_config.terraform_dir}",
+        "TFMCP_LOG_LEVEL": "${user_config.log_level}",
+        "TFMCP_DEMO_MODE": "${user_config.demo_mode}",
+        "TFMCP_ALLOW_DANGEROUS_OPS": "${user_config.allow_dangerous_ops}",
+        "TFMCP_ALLOW_AUTO_APPROVE": "${user_config.allow_auto_approve}",
+        "TFMCP_MAX_RESOURCES": "${user_config.max_resources}",
+        "TFMCP_AUDIT_ENABLED": "${user_config.audit_enabled}",
+        "TFMCP_AUDIT_LOG_FILE": "${user_config.audit_log_file}",
+        "TFMCP_AUDIT_LOG_SENSITIVE": "${user_config.audit_log_sensitive}"
       }
     }
   },
@@ -28,66 +30,66 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "TERRAFORM_DIR": {
+    "terraform_dir": {
       "type": "directory",
       "title": "Terraform Project Directory",
       "description": "Custom Terraform project directory. If not set, tfmcp will fall back to ~/terraform.",
       "required": false,
       "default": "${HOME}/terraform"
     },
-    "TFMCP_LOG_LEVEL": {
+    "log_level": {
       "type": "string",
       "title": "Log Level",
       "description": "Set to 'debug', 'info', 'warn', or 'error' to control logging verbosity.",
       "required": false,
       "default": "info"
     },
-    "TFMCP_DEMO_MODE": {
-      "type": "boolean",
-      "title": "Demo Mode",
-      "description": "Set to true to enable demo mode with additional safety features.",
-      "required": false,
-      "default": false
-    },
-    "TFMCP_ALLOW_DANGEROUS_OPS": {
+    "allow_dangerous_ops": {
       "type": "boolean",
       "title": "Allow Dangerous Operations",
-      "description": "Set to true to enable apply/destroy operations.",
+      "description": "Set to true to enable apply/destroy operations. Disabled by default.",
       "required": false,
       "default": false
     },
-    "TFMCP_ALLOW_AUTO_APPROVE": {
+    "allow_auto_approve": {
       "type": "boolean",
       "title": "Allow Auto-Approve",
-      "description": "Set to true to enable auto-approve for dangerous operations.",
+      "description": "Set to true to enable auto-approve for dangerous operations. Disabled by default.",
       "required": false,
       "default": false
     },
-    "TFMCP_MAX_RESOURCES": {
+    "max_resources": {
       "type": "number",
       "title": "Maximum Resources",
       "description": "Set the maximum number of resources that can be managed.",
       "required": false,
       "default": 50
     },
-    "TFMCP_AUDIT_ENABLED": {
+    "audit_enabled": {
       "type": "boolean",
       "title": "Enable Audit Logging",
-      "description": "Set to false to disable audit logging.",
+      "description": "Set to false to disable audit logging. Enabled by default.",
       "required": false,
       "default": true
     },
-    "TFMCP_AUDIT_LOG_FILE": {
-      "type": "file",
-      "title": "Audit Log File",
+    "audit_log_file": {
+      "type": "string",
+      "title": "Audit Log File Path",
       "description": "Custom path for the audit log file.",
       "required": false,
       "default": "${HOME}/.tfmcp/audit.log"
     },
-    "TFMCP_AUDIT_LOG_SENSITIVE": {
+    "audit_log_sensitive": {
       "type": "boolean",
       "title": "Log Sensitive Information",
-      "description": "Set to true to include sensitive information in audit logs.",
+      "description": "Set to true to include sensitive information in audit logs. Disabled by default.",
+      "required": false,
+      "default": false
+    },
+    "demo_mode": {
+      "type": "boolean",
+      "title": "Demo Mode",
+      "description": "Set to true to enable demo mode with additional safety features.",
       "required": false,
       "default": false
     }
@@ -100,19 +102,29 @@
       "mcpServers": {
         "tfmcp": {
           "command": "tfmcp",
-          "args": ["mcp"],
+          "args": [
+            "mcp"
+          ],
           "env": {}
         },
         "tfmcp-configured": {
           "command": "tfmcp",
-          "args": ["mcp"],
+          "args": [
+            "mcp"
+          ],
           "env": {
             "TERRAFORM_DIR": "/path/to/your/terraform/project"
           }
         },
         "tfmcp-docker": {
           "command": "docker",
-          "args": ["run", "--rm", "-it", "tfmcp", "mcp"],
+          "args": [
+            "run",
+            "--rm",
+            "-it",
+            "tfmcp",
+            "mcp"
+          ],
           "env": {}
         },
         "tfmcp-docker-configured": {

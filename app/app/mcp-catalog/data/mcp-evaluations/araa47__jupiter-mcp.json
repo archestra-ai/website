@@ -10,12 +10,16 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/araa47/jupiter-mcp", "jupiter-mcp"],
+      "args": [
+        "--from",
+        "git+https://github.com/araa47/jupiter-mcp",
+        "jupiter-mcp"
+      ],
       "env": {
-        "PRIVATE_KEY": "${user_config.private_key}",
-        "SOLANA_RPC_URL": "${user_config.solana_rpc_url}",
-        "SOLANA_NETWORK": "${user_config.solana_network}",
-        "REQUEST_TIMEOUT": "${user_config.request_timeout}"
+        "PRIVATE_KEY": "${user_config.PRIVATE_KEY}",
+        "SOLANA_RPC_URL": "${user_config.SOLANA_RPC_URL}",
+        "SOLANA_NETWORK": "${user_config.SOLANA_NETWORK}",
+        "REQUEST_TIMEOUT": "${user_config.REQUEST_TIMEOUT}"
       }
     }
   },
@@ -23,31 +27,31 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "private_key": {
+    "PRIVATE_KEY": {
       "type": "string",
       "title": "Private Key",
       "description": "Your base58 encoded Solana private key (e.g., from a Phantom wallet export).",
       "required": true,
       "sensitive": true
     },
-    "solana_rpc_url": {
+    "SOLANA_RPC_URL": {
       "type": "string",
       "title": "Solana RPC URL",
-      "description": "Optional. The Solana RPC endpoint to use. Override if you have a custom RPC endpoint.",
+      "description": "Optional: Override the default RPC endpoint if you have a custom one.",
       "required": false,
       "default": "https://api.mainnet-beta.solana.com"
     },
-    "solana_network": {
+    "SOLANA_NETWORK": {
       "type": "string",
       "title": "Solana Network",
-      "description": "The Solana network to use (e.g., mainnet-beta, devnet).",
+      "description": "The Solana network to connect to.",
       "required": false,
       "default": "mainnet-beta"
     },
-    "request_timeout": {
+    "REQUEST_TIMEOUT": {
       "type": "number",
       "title": "Request Timeout (seconds)",
-      "description": "Timeout for API requests in seconds.",
+      "description": "The timeout for API requests in seconds.",
       "required": false,
       "default": 30
     }
@@ -60,7 +64,11 @@
       "mcpServers": {
         "jupiter-mcp": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/araa47/jupiter-mcp", "jupiter-mcp"],
+          "args": [
+            "--from",
+            "git+https://github.com/araa47/jupiter-mcp",
+            "jupiter-mcp"
+          ],
           "env": {
             "SOLANA_RPC_URL": "https://api.mainnet-beta.solana.com",
             "PRIVATE_KEY": "${PRIVATE_KEY}",
@@ -98,7 +106,11 @@
         },
         "jupiter-mcp-direct-input": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/araa47/jupiter-mcp", "jupiter-mcp"],
+          "args": [
+            "--from",
+            "git+https://github.com/araa47/jupiter-mcp",
+            "jupiter-mcp"
+          ],
           "env": {
             "PRIVATE_KEY": "REPLACE_THIS",
             "SOLANA_RPC_URL": "https://api.mainnet-beta.solana.com",

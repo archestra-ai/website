@@ -10,7 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["synergy-age-mcp", "server", "--port", "${user_config.port}"],
+      "args": [
+        "synergy-age-mcp",
+        "server",
+        "--port",
+        "${user_config.port}"
+      ],
       "env": {}
     }
   },
@@ -34,17 +39,25 @@
       "mcpServers": {
         "synergy-age-mcp": {
           "command": "uvx",
-          "args": ["synergy-age-mcp"],
+          "args": [
+            "synergy-age-mcp"
+          ],
           "env": {}
         },
         "synergy-age-mcp-stdio": {
           "command": "uvx",
-          "args": ["synergy-age-mcp", "stdio"],
+          "args": [
+            "synergy-age-mcp",
+            "stdio"
+          ],
           "env": {}
         },
         "synergy-age-mcp-server": {
           "command": "uvx",
-          "args": ["synergy-age-mcp", "server"],
+          "args": [
+            "synergy-age-mcp",
+            "server"
+          ],
           "env": {}
         }
       }

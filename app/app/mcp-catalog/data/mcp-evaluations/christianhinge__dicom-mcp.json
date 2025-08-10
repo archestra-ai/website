@@ -10,7 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["tool", "dicom-mcp", "${user_config.config_file}"],
+      "args": [
+        "tool",
+        "dicom-mcp",
+        "${user_config.config_file}"
+      ],
       "env": {}
     }
   },
@@ -20,8 +24,8 @@
   "user_config": {
     "config_file": {
       "type": "file",
-      "title": "Configuration File",
-      "description": "Path to the dicom-mcp YAML configuration file (e.g., config.yaml) defining DICOM nodes and the calling AE title.",
+      "title": "DICOM MCP Configuration File",
+      "description": "Path to your YAML configuration file (e.g., config.yaml) that defines the DICOM nodes and calling AE title.",
       "required": true
     }
   },
@@ -33,17 +37,33 @@
       "mcpServers": {
         "dicom-mcp-tool-with-config": {
           "command": "uv",
-          "args": ["tool", "dicom-mcp", "/path/to/your_config.yaml"],
+          "args": [
+            "tool",
+            "dicom-mcp",
+            "/path/to/your_config.yaml"
+          ],
           "env": {}
         },
         "dicom-mcp-dev-run-with-config": {
           "command": "uv",
-          "args": ["--directory", "path/to/cloned/dicom-mcp", "run", "dicom-mcp", "/path/to/your_config.yaml"],
+          "args": [
+            "--directory",
+            "path/to/cloned/dicom-mcp",
+            "run",
+            "dicom-mcp",
+            "/path/to/your_config.yaml"
+          ],
           "env": {}
         },
         "dicom-mcp-stdio-with-config": {
           "command": "uv",
-          "args": ["run", "dicom-mcp", "/path/to/your_config.yaml", "--transport", "stdio"],
+          "args": [
+            "run",
+            "dicom-mcp",
+            "/path/to/your_config.yaml",
+            "--transport",
+            "stdio"
+          ],
           "env": {}
         }
       }

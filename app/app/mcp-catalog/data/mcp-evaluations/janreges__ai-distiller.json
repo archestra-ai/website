@@ -125,7 +125,11 @@
       "mcpServers": {
         "janreges-ai-distiller-mcp": {
           "command": "aid",
-          "args": ["--mcp-server", "--port", "8080"],
+          "args": [
+            "--mcp-server",
+            "--port",
+            "8080"
+          ],
           "env": {}
         }
       }

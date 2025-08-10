@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["alibaba-cloud-ops-mcp-server@latest"],
+      "args": [
+        "alibaba-cloud-ops-mcp-server@latest"
+      ],
       "env": {
         "ALIBABA_CLOUD_ACCESS_KEY_ID": "${user_config.alibaba_cloud_access_key_id}",
         "ALIBABA_CLOUD_ACCESS_KEY_SECRET": "${user_config.alibaba_cloud_access_key_secret}"
@@ -24,14 +26,14 @@
     "alibaba_cloud_access_key_id": {
       "type": "string",
       "title": "Alibaba Cloud Access Key ID",
-      "description": "Your Access Key ID for Alibaba Cloud.",
+      "description": "Your Access Key ID for authenticating with Alibaba Cloud.",
       "required": true,
-      "sensitive": true
+      "sensitive": false
     },
     "alibaba_cloud_access_key_secret": {
       "type": "string",
       "title": "Alibaba Cloud Access Key Secret",
-      "description": "Your Access Key Secret for Alibaba Cloud.",
+      "description": "Your Access Key Secret for authenticating with Alibaba Cloud.",
       "required": true,
       "sensitive": true
     }
@@ -44,7 +46,9 @@
       "mcpServers": {
         "alibaba-cloud-ops-mcp-server": {
           "command": "uvx",
-          "args": ["alibaba-cloud-ops-mcp-server@latest"],
+          "args": [
+            "alibaba-cloud-ops-mcp-server@latest"
+          ],
           "env": {
             "ALIBABA_CLOUD_ACCESS_KEY_ID": "Your Access Key ID",
             "ALIBABA_CLOUD_ACCESS_KEY_SECRET": "Your Access Key SECRET"

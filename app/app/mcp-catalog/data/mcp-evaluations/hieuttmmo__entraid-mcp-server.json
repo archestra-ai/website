@@ -9,8 +9,10 @@
   },
   "server": {
     "mcp_config": {
-      "command": "fastmcp",
-      "args": ["dev", "${__dirname}/src/msgraph_mcp_server/server.py"],
+      "command": "python",
+      "args": [
+        "${__dirname}/src/msgraph_mcp_server/server.py"
+      ],
       "env": {
         "TENANT_ID": "${user_config.tenant_id}",
         "CLIENT_ID": "${user_config.client_id}",
@@ -24,22 +26,22 @@
   "user_config": {
     "tenant_id": {
       "type": "string",
-      "title": "Azure AD Tenant ID",
-      "description": "The Tenant ID for your Azure Active Directory instance.",
+      "title": "Azure Tenant ID",
+      "description": "The Directory (tenant) ID for your Azure Active Directory instance.",
       "required": true,
       "sensitive": false
     },
     "client_id": {
       "type": "string",
       "title": "Application (Client) ID",
-      "description": "The Client ID of the Azure AD application registration used for authentication.",
+      "description": "The Application (client) ID of the Azure AD App Registration used for authentication.",
       "required": true,
       "sensitive": false
     },
     "client_secret": {
       "type": "string",
       "title": "Client Secret",
-      "description": "The client secret for the Azure AD application registration.",
+      "description": "The client secret for the Azure AD App Registration.",
       "required": true,
       "sensitive": true
     }
@@ -52,7 +54,10 @@
       "mcpServers": {
         "msgraph-mcp-server": {
           "command": "fastmcp",
-          "args": ["dev", "/path/to/src/msgraph_mcp_server/server.py"],
+          "args": [
+            "dev",
+            "/path/to/src/msgraph_mcp_server/server.py"
+          ],
           "env": {}
         }
       }

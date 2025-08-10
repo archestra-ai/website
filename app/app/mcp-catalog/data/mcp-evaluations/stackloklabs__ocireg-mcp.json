@@ -8,11 +8,14 @@
     "name": "StacklokLabs"
   },
   "server": {
+    "type": "binary",
     "mcp_config": {
-      "command": "${__dirname}/ocireg-mcp",
-      "args": [],
+      "command": "server/ocireg-mcp",
+      "args": [
+        "-port",
+        "${user_config.port}"
+      ],
       "env": {
-        "MCP_PORT": "${user_config.port}",
         "OCI_TOKEN": "${user_config.oci_token}",
         "OCI_USERNAME": "${user_config.oci_username}",
         "OCI_PASSWORD": "${user_config.oci_password}"
@@ -26,28 +29,30 @@
     "port": {
       "type": "number",
       "title": "Server Port",
-      "description": "The port number for the server to listen on. If not set, defaults to 8080.",
+      "description": "The port number for the server to listen on. Overrides the MCP_PORT environment variable.",
       "required": false,
-      "default": 8080
+      "default": 8080,
+      "min": 0,
+      "max": 65535
     },
     "oci_token": {
       "type": "string",
       "title": "OCI Bearer Token",
-      "description": "Bearer token for private OCI registry authentication. If provided, this method takes precedence over username/password.",
+      "description": "Bearer token for private OCI registry authentication. Use this OR Username/Password.",
       "required": false,
       "sensitive": true
     },
     "oci_username": {
       "type": "string",
       "title": "OCI Username",
-      "description": "Username for private OCI registry authentication. Must be used with a password. Ignored if a token is provided.",
+      "description": "Username for private OCI registry authentication. Must be used with OCI Password.",
       "required": false,
       "sensitive": false
     },
     "oci_password": {
       "type": "string",
       "title": "OCI Password",
-      "description": "Password for private OCI registry authentication. Must be used with a username. Ignored if a token is provided.",
+      "description": "Password for private OCI registry authentication. Must be used with OCI Username.",
       "required": false,
       "sensitive": true
     }
@@ -60,12 +65,20 @@
       "mcpServers": {
         "oci-registry": {
           "command": "thv",
-          "args": ["run", "oci-registry"],
+          "args": [
+            "run",
+            "oci-registry"
+          ],
           "env": {}
         },
         "oci-registry-with-token": {
           "command": "thv",
-          "args": ["run", "--secret", "oci-token,target=OCI_TOKEN", "oci-registry"],
+          "args": [
+            "run",
+            "--secret",
+            "oci-token,target=OCI_TOKEN",
+            "oci-registry"
+          ],
           "env": {}
         },
         "oci-registry-with-user-pass": {
@@ -82,7 +95,10 @@
         },
         "ocireg-mcp-configured": {
           "command": "./ocireg-mcp",
-          "args": ["-port", "9090"],
+          "args": [
+            "-port",
+            "9090"
+          ],
           "env": {}
         }
       }

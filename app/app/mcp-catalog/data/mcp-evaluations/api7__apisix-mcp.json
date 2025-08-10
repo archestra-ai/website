@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "apisix-mcp"],
+      "args": [
+        "-y",
+        "apisix-mcp"
+      ],
       "env": {
         "APISIX_SERVER_HOST": "${user_config.apisix_server_host}",
         "APISIX_SERVER_PORT": "${user_config.apisix_server_port}",
@@ -27,35 +30,35 @@
     "apisix_server_host": {
       "type": "string",
       "title": "APISIX Server Host",
-      "description": "Host that have access to your APISIX server",
+      "description": "Host that has access to your APISIX server.",
       "required": true,
       "default": "http://127.0.0.1"
     },
     "apisix_server_port": {
-      "type": "number",
+      "type": "string",
       "title": "APISIX Server Port",
-      "description": "APISIX server port",
+      "description": "The port number for the APISIX server.",
       "required": true,
-      "default": 9080
+      "default": "9080"
     },
     "apisix_admin_api_port": {
-      "type": "number",
+      "type": "string",
       "title": "APISIX Admin API Port",
-      "description": "Admin API port",
+      "description": "The port number for the APISIX Admin API.",
       "required": true,
-      "default": 9180
+      "default": "9180"
     },
     "apisix_admin_api_prefix": {
       "type": "string",
       "title": "APISIX Admin API Prefix",
-      "description": "Admin API prefix",
+      "description": "The URL prefix for the APISIX Admin API.",
       "required": true,
       "default": "/apisix/admin"
     },
     "apisix_admin_key": {
       "type": "string",
       "title": "APISIX Admin Key",
-      "description": "Admin API authentication key",
+      "description": "The authentication key for the APISIX Admin API.",
       "required": true,
       "sensitive": true,
       "default": "edd1c9f034335f136f87ad84b625c8f1"
@@ -69,7 +72,10 @@
       "mcpServers": {
         "apisix-mcp-npm": {
           "command": "npx",
-          "args": ["-y", "apisix-mcp"],
+          "args": [
+            "-y",
+            "apisix-mcp"
+          ],
           "env": {
             "APISIX_SERVER_HOST": "your-apisix-server-host",
             "APISIX_SERVER_PORT": "your-apisix-server-port",
@@ -80,7 +86,9 @@
         },
         "apisix-mcp-source": {
           "command": "node",
-          "args": ["your-apisix-mcp-path/dist/index.js"],
+          "args": [
+            "your-apisix-mcp-path/dist/index.js"
+          ],
           "env": {
             "APISIX_SERVER_HOST": "your-apisix-server-host",
             "APISIX_SERVER_PORT": "your-apisix-server-port",

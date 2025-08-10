@@ -7,13 +7,7 @@
   "author": {
     "name": "OpenDataMCP"
   },
-  "server": {
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["odmcp", "setup", "${user_config.provider_name}"],
-      "env": {}
-    }
-  },
+  "server": {},
   "tools": [],
   "prompts": [],
   "keywords": [],
@@ -21,7 +15,7 @@
     "provider_name": {
       "type": "string",
       "title": "Provider Name",
-      "description": "The name of the Open Data provider to set up (e.g., ch_sbb). Run 'uvx odmcp list' to see available providers.",
+      "description": "The name of the Open Data provider to set up, list, get info on, or remove (e.g., ch_sbb).",
       "required": true
     }
   },
@@ -33,7 +27,11 @@
       "mcpServers": {
         "ch_sbb": {
           "command": "uvx",
-          "args": ["odmcp", "setup", "ch_sbb"],
+          "args": [
+            "odmcp",
+            "setup",
+            "ch_sbb"
+          ],
           "env": {}
         }
       }

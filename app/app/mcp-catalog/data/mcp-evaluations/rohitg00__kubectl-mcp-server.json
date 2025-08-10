@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "kubectl-mcp",
-      "args": ["serve"],
+      "args": [
+        "serve"
+      ],
       "env": {
         "KUBECONFIG": "${user_config.kubeconfig}/config"
       }
@@ -23,7 +25,7 @@
     "kubeconfig": {
       "type": "directory",
       "title": "Kubeconfig Directory",
-      "description": "The path to your Kubernetes configuration directory (e.g., ~/.kube). The server needs access to this to communicate with your cluster.",
+      "description": "The path to your Kubernetes configuration directory, which the MCP server is allowed to access.",
       "required": true,
       "default": "${HOME}/.kube"
     }
@@ -36,7 +38,9 @@
       "mcpServers": {
         "kubectl-mcp-tool": {
           "command": "kubectl-mcp",
-          "args": ["serve"],
+          "args": [
+            "serve"
+          ],
           "env": {}
         },
         "rohitghumare64-kubectl-mcp-server-docker": {

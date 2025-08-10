@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@inhiblab-core/mcp-image-compression"],
+      "args": [
+        "-y",
+        "@inhiblab-core/mcp-image-compression"
+      ],
       "env": {
         "IMAGE_COMPRESSION_DOWNLOAD_DIR": "${user_config.download_dir}"
       }
@@ -36,7 +39,10 @@
       "mcpServers": {
         "inhiblab-core-mcp-image-compression": {
           "command": "npx",
-          "args": ["-y", "@inhiblab-core/mcp-image-compression"],
+          "args": [
+            "-y",
+            "@inhiblab-core/mcp-image-compression"
+          ],
           "env": {
             "IMAGE_COMPRESSION_DOWNLOAD_DIR": "<YOUR_DIR>"
           }

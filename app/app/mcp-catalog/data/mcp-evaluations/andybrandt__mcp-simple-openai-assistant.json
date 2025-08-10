@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["-m", "mcp_simple_openai_assistant"],
+      "args": [
+        "-m",
+        "mcp_simple_openai_assistant"
+      ],
       "env": {
         "OPENAI_API_KEY": "${user_config.openai_api_key}"
       }
@@ -23,7 +26,7 @@
     "openai_api_key": {
       "type": "string",
       "title": "OpenAI API Key",
-      "description": "Your OpenAI API key to use with the assistant server.",
+      "description": "Your OpenAI API key, required to interact with the assistants.",
       "required": true,
       "sensitive": true
     }
@@ -36,14 +39,20 @@
       "mcpServers": {
         "mcp-simple-openai-assistant": {
           "command": "python",
-          "args": ["-m", "mcp_simple_openai_assistant"],
+          "args": [
+            "-m",
+            "mcp_simple_openai_assistant"
+          ],
           "env": {
             "OPENAI_API_KEY": "your-api-key-here"
           }
         },
         "mcp-simple-openai-assistant-windows": {
           "command": "C:\\Users\\YOUR_USERNAME\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
-          "args": ["-m", "mcp_simple_openai_assistant"],
+          "args": [
+            "-m",
+            "mcp_simple_openai_assistant"
+          ],
           "env": {
             "OPENAI_API_KEY": "your-api-key-here"
           }

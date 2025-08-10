@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@bldbl/mcp"],
+      "args": [
+        "-y",
+        "@bldbl/mcp"
+      ],
       "env": {
         "BUILDABLE_API_KEY": "${user_config.api_key}",
         "BUILDABLE_PROJECT_ID": "${user_config.project_id}",
@@ -26,26 +29,27 @@
     "api_key": {
       "type": "string",
       "title": "Buildable API Key",
-      "description": "Your API key from Project Settings -> AI Assistants. Must start with 'bp_'.",
+      "description": "Your API key from bldbl.dev. Go to Project Settings → AI Assistants → Generate API Key.",
       "required": true,
       "sensitive": true
     },
     "project_id": {
       "type": "string",
       "title": "Buildable Project ID",
-      "description": "The ID of the target project you want the AI to work on.",
+      "description": "The ID of the target project on bldbl.dev.",
       "required": true
     },
     "ai_assistant_id": {
       "type": "string",
       "title": "AI Assistant ID",
-      "description": "A unique name for your AI assistant to track its work in the project dashboard (e.g., 'claude-desktop'). Recommended.",
-      "required": false
+      "description": "A unique identifier for your AI assistant to track its work in the project dashboard. E.g., 'claude-desktop'.",
+      "required": false,
+      "default": "my-ai-assistant"
     },
     "api_url": {
       "type": "string",
       "title": "Buildable API URL",
-      "description": "The API endpoint for Buildable. Only change this if you have a custom deployment.",
+      "description": "The API endpoint for Buildable. Only change if you have a custom deployment.",
       "required": false,
       "default": "https://bldbl.dev/api"
     }
@@ -58,7 +62,10 @@
       "mcpServers": {
         "bldbl-mcp-claude-desktop": {
           "command": "npx",
-          "args": ["-y", "@bldbl/mcp"],
+          "args": [
+            "-y",
+            "@bldbl/mcp"
+          ],
           "env": {
             "BUILDABLE_API_KEY": "bp_your_api_key_here",
             "BUILDABLE_PROJECT_ID": "your-project-id",
@@ -67,7 +74,10 @@
         },
         "bldbl-mcp-cursor-ide": {
           "command": "npx",
-          "args": ["-y", "@bldbl/mcp"],
+          "args": [
+            "-y",
+            "@bldbl/mcp"
+          ],
           "env": {
             "BUILDABLE_API_KEY": "bp_your_api_key_here",
             "BUILDABLE_PROJECT_ID": "your-project-id",
@@ -76,7 +86,10 @@
         },
         "bldbl-mcp-npx": {
           "command": "npx",
-          "args": ["-y", "@bldbl/mcp"],
+          "args": [
+            "-y",
+            "@bldbl/mcp"
+          ],
           "env": {}
         },
         "bldbl-mcp-cli": {
@@ -86,7 +99,10 @@
         },
         "bldbl-mcp-frontend": {
           "command": "npx",
-          "args": ["-y", "@bldbl/mcp"],
+          "args": [
+            "-y",
+            "@bldbl/mcp"
+          ],
           "env": {
             "BUILDABLE_API_KEY": "bp_frontend_key_here",
             "BUILDABLE_PROJECT_ID": "frontend-project-id",
@@ -95,7 +111,10 @@
         },
         "bldbl-mcp-backend": {
           "command": "npx",
-          "args": ["-y", "@bldbl/mcp"],
+          "args": [
+            "-y",
+            "@bldbl/mcp"
+          ],
           "env": {
             "BUILDABLE_API_KEY": "bp_backend_key_here",
             "BUILDABLE_PROJECT_ID": "backend-project-id",

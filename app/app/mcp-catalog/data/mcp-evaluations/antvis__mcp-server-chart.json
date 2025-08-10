@@ -10,11 +10,20 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@antv/mcp-server-chart"],
+      "args": [
+        "-y",
+        "@antv/mcp-server-chart",
+        "--transport",
+        "${user_config.transport}",
+        "--port",
+        "${user_config.port}",
+        "--endpoint",
+        "${user_config.endpoint}"
+      ],
       "env": {
-        "VIS_REQUEST_SERVER": "${user_config.VIS_REQUEST_SERVER}",
-        "SERVICE_ID": "${user_config.SERVICE_ID}",
-        "DISABLED_TOOLS": "${user_config.DISABLED_TOOLS}"
+        "VIS_REQUEST_SERVER": "${user_config.vis_request_server}",
+        "SERVICE_ID": "${user_config.service_id}",
+        "DISABLED_TOOLS": "${user_config.disabled_tools}"
       }
     }
   },
@@ -22,22 +31,42 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "VIS_REQUEST_SERVER": {
+    "transport": {
       "type": "string",
-      "title": "Private Visualization Server",
-      "description": "For private deployments, specify the URL of the visualization request server.",
+      "title": "Transport Protocol",
+      "description": "Specify the transport protocol: \"stdio\", \"sse\", or \"streamable\".",
+      "required": false,
+      "default": "stdio"
+    },
+    "port": {
+      "type": "number",
+      "title": "Server Port",
+      "description": "Specify the port for SSE or streamable transport.",
+      "required": false,
+      "default": 1122
+    },
+    "endpoint": {
+      "type": "string",
+      "title": "Transport Endpoint",
+      "description": "Specify the endpoint for the transport (e.g., /sse for SSE transport).",
       "required": false
     },
-    "SERVICE_ID": {
+    "vis_request_server": {
+      "type": "string",
+      "title": "Visualization Service URL",
+      "description": "For private deployment, specify the address of the visualization service.",
+      "required": false
+    },
+    "service_id": {
       "type": "string",
       "title": "Service ID",
-      "description": "A service ID used for generating records.",
+      "description": "Specify a service ID to generate usage records.",
       "required": false
     },
-    "DISABLED_TOOLS": {
+    "disabled_tools": {
       "type": "string",
       "title": "Disabled Tools",
-      "description": "A comma-separated list of tool names to disable (e.g., generate_pie_chart,generate_line_chart).",
+      "description": "A comma-separated list of tools to disable (e.g., generate_pie_chart,generate_line_chart).",
       "required": false
     }
   },
@@ -49,27 +78,45 @@
       "mcpServers": {
         "antv-mcp-server-chart": {
           "command": "npx",
-          "args": ["-y", "@antv/mcp-server-chart"],
+          "args": [
+            "-y",
+            "@antv/mcp-server-chart"
+          ],
           "env": {}
         },
         "antv-mcp-server-chart-windows": {
           "command": "cmd",
-          "args": ["/c", "npx", "-y", "@antv/mcp-server-chart"],
+          "args": [
+            "/c",
+            "npx",
+            "-y",
+            "@antv/mcp-server-chart"
+          ],
           "env": {}
         },
         "antv-mcp-server-chart-sse": {
           "command": "mcp-server-chart",
-          "args": ["--transport", "sse"],
+          "args": [
+            "--transport",
+            "sse"
+          ],
           "env": {}
         },
         "antv-mcp-server-chart-streamable": {
           "command": "mcp-server-chart",
-          "args": ["--transport", "streamable"],
+          "args": [
+            "--transport",
+            "streamable"
+          ],
           "env": {}
         },
         "antv-mcp-server-chart-docker-compose": {
           "command": "docker",
-          "args": ["compose", "up", "-d"],
+          "args": [
+            "compose",
+            "up",
+            "-d"
+          ],
           "env": {}
         }
       }

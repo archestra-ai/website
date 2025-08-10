@@ -19,7 +19,7 @@
         "--workspace",
         "${user_config.workspace}",
         "--debug",
-        "${user_config.debug}"
+        "${user_config.debug_mode}"
       ],
       "env": {
         "OPIK_API_BASE_URL": "${user_config.api_url}",
@@ -34,28 +34,28 @@
   "user_config": {
     "api_key": {
       "type": "string",
-      "title": "API Key",
-      "description": "Your Opik API key for authentication.",
+      "title": "Opik API Key",
+      "description": "Your API key for authenticating with the Opik platform.",
       "sensitive": true,
       "required": true
     },
     "api_url": {
       "type": "string",
-      "title": "API URL",
+      "title": "Opik API URL",
       "description": "The base URL for the Opik API.",
       "default": "https://www.comet.com/opik/api",
       "required": false
     },
     "workspace": {
       "type": "string",
-      "title": "Workspace",
+      "title": "Opik Workspace",
       "description": "The name of the Opik workspace to use.",
       "default": "default",
       "required": false
     },
-    "debug": {
+    "debug_mode": {
       "type": "boolean",
-      "title": "Debug Mode",
+      "title": "Enable Debug Mode",
       "description": "Enable verbose logging for debugging purposes.",
       "default": true,
       "required": false
@@ -69,12 +69,18 @@
       "mcpServers": {
         "comet-ml-opik-mcp-stdio": {
           "command": "npm",
-          "args": ["run", "start:stdio"],
+          "args": [
+            "run",
+            "start:stdio"
+          ],
           "env": {}
         },
         "comet-ml-opik-mcp-sse": {
           "command": "npm",
-          "args": ["run", "start:sse"],
+          "args": [
+            "run",
+            "start:sse"
+          ],
           "env": {}
         },
         "comet-ml-opik-mcp-cursor-integration": {

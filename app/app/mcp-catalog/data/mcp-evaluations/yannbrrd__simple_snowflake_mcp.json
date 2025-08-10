@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["simple_snowflake_mcp"],
+      "args": [
+        "simple_snowflake_mcp"
+      ],
       "env": {
         "SNOWFLAKE_USER": "${user_config.snowflake_user}",
         "SNOWFLAKE_PASSWORD": "${user_config.snowflake_password}",
@@ -30,7 +32,8 @@
       "type": "string",
       "title": "Snowflake User",
       "description": "Your Snowflake username.",
-      "required": true
+      "required": true,
+      "sensitive": false
     },
     "snowflake_password": {
       "type": "string",
@@ -43,7 +46,8 @@
       "type": "string",
       "title": "Snowflake Account",
       "description": "Your Snowflake account identifier.",
-      "required": true
+      "required": true,
+      "sensitive": false
     },
     "snowflake_warehouse": {
       "type": "string",
@@ -66,7 +70,7 @@
     "mcp_read_only": {
       "type": "boolean",
       "title": "Read-Only Mode",
-      "description": "Force the server to run in read-only mode (default: true).",
+      "description": "Force the server to run in read-only mode. Disallows data-modifying queries.",
       "required": false,
       "default": true
     }
@@ -79,32 +83,58 @@
       "mcpServers": {
         "simple_snowflake_mcp": {
           "command": "uv",
-          "args": ["--directory", ".", "run", "simple_snowflake_mcp"],
+          "args": [
+            "--directory",
+            ".",
+            "run",
+            "simple_snowflake_mcp"
+          ],
           "env": {}
         },
         "simple_snowflake_mcp-published": {
           "command": "uvx",
-          "args": ["simple_snowflake_mcp"],
+          "args": [
+            "simple_snowflake_mcp"
+          ],
           "env": {}
         },
         "simple-snowflake-mcp-docker": {
           "command": "docker-compose",
-          "args": ["up", "-d"],
+          "args": [
+            "up",
+            "-d"
+          ],
           "env": {}
         },
         "simple-snowflake-mcp-dev-docker": {
           "command": "docker-compose",
-          "args": ["--profile", "dev", "up", "simple-snowflake-mcp-dev", "-d"],
+          "args": [
+            "--profile",
+            "dev",
+            "up",
+            "simple-snowflake-mcp-dev",
+            "-d"
+          ],
           "env": {}
         },
         "simple-snowflake-mcp-inspector": {
           "command": "npx",
-          "args": ["@modelcontextprotocol/inspector", "uv", "--directory", ".", "run", "simple-snowflake-mcp"],
+          "args": [
+            "@modelcontextprotocol/inspector",
+            "uv",
+            "--directory",
+            ".",
+            "run",
+            "simple-snowflake-mcp"
+          ],
           "env": {}
         },
         "simple-snowflake-mcp-stdio": {
           "command": ".venv/Scripts/python.exe",
-          "args": ["-m", "simple_snowflake_mcp"],
+          "args": [
+            "-m",
+            "simple_snowflake_mcp"
+          ],
           "env": {}
         }
       }

@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/build/index.js"],
+      "args": [
+        "${__dirname}/build/index.js"
+      ],
       "env": {
         "API_KEY": "${user_config.API_KEY}"
       }
@@ -23,7 +25,7 @@
     "API_KEY": {
       "type": "string",
       "title": "Stadia Maps API Key",
-      "description": "Your free API key for Stadia Maps. Follow the directions at https://docs.stadiamaps.com/authentication/#api-keys to get your key.",
+      "description": "Your free API key from Stadia Maps. Follow the directions at https://docs.stadiamaps.com/authentication/#api-keys to get one.",
       "required": true,
       "sensitive": true
     }

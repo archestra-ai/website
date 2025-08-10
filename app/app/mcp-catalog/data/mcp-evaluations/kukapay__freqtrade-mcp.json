@@ -10,7 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "__main__.py"],
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "__main__.py"
+      ],
       "env": {
         "FREQTRADE_API_URL": "${user_config.freqtrade_api_url}",
         "FREQTRADE_USERNAME": "${user_config.freqtrade_username}",
@@ -25,20 +30,21 @@
     "freqtrade_api_url": {
       "type": "string",
       "title": "Freqtrade API URL",
-      "description": "The URL of your running Freqtrade instance's REST API.",
+      "description": "The URL of the running Freqtrade instance API, including the port (e.g., http://127.0.0.1:8080).",
       "required": true,
       "default": "http://127.0.0.1:8080"
     },
     "freqtrade_username": {
       "type": "string",
-      "title": "Freqtrade API Username",
-      "description": "The username for your Freqtrade API.",
-      "required": true
+      "title": "Freqtrade Username",
+      "description": "The username configured in your Freqtrade bot's API server settings.",
+      "required": true,
+      "default": "Freqtrader"
     },
     "freqtrade_password": {
       "type": "string",
-      "title": "Freqtrade API Password",
-      "description": "The password for your Freqtrade API.",
+      "title": "Freqtrade Password",
+      "description": "The password configured in your Freqtrade bot's API server settings.",
       "required": true,
       "sensitive": true
     }
@@ -51,7 +57,12 @@
       "mcpServers": {
         "freqtrade-mcp": {
           "command": "uv",
-          "args": ["--directory", "/your/path/to/freqtrade-mcp", "run", "__main__.py"],
+          "args": [
+            "--directory",
+            "/your/path/to/freqtrade-mcp",
+            "run",
+            "__main__.py"
+          ],
           "env": {
             "FREQTRADE_API_URL": "http://127.0.0.1:8080",
             "FREQTRADE_USERNAME": "your_username",

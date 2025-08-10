@@ -29,7 +29,7 @@
     "access_token": {
       "type": "string",
       "title": "S2 Access Token",
-      "description": "Your access token for the S2 streamstore API. Can also be set via the S2_ACCESS_TOKEN environment variable.",
+      "description": "Your access token for the streamstore API.",
       "required": true,
       "sensitive": true
     }
@@ -42,12 +42,23 @@
       "mcpServers": {
         "s2-dev-streamstore": {
           "command": "npx",
-          "args": ["-y", "--package", "@s2-dev/streamstore", "--", "mcp", "start", "--access-token", "..."],
+          "args": [
+            "-y",
+            "--package",
+            "@s2-dev/streamstore",
+            "--",
+            "mcp",
+            "start",
+            "--access-token",
+            "..."
+          ],
           "env": {}
         },
         "mcp-server": {
           "command": "./DOWNLOAD/PATH/mcp-server",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         }
       }

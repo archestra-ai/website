@@ -17,6 +17,10 @@
         "${user_config.pages}",
         "--concurrency",
         "${user_config.concurrency}",
+        "--no-robots",
+        "${user_config.no_robots}",
+        "--all-origins",
+        "${user_config.all_origins}",
         "--user-agent",
         "${user_config.user_agent}",
         "--cache-dir",
@@ -35,55 +39,56 @@
   "user_config": {
     "pages": {
       "type": "number",
-      "title": "Maximum Pages to Crawl",
-      "description": "The maximum number of pages to crawl for a single request (default: 1).",
+      "title": "Max Pages",
+      "description": "Maximum number of pages to crawl.",
       "required": false,
       "default": 1
     },
     "concurrency": {
       "type": "number",
-      "title": "Max Concurrent Requests",
-      "description": "The maximum number of concurrent requests to make when crawling (default: 3).",
+      "title": "Max Concurrency",
+      "description": "Maximum number of concurrent requests.",
       "required": false,
       "default": 3
     },
     "no_robots": {
       "type": "boolean",
       "title": "Ignore robots.txt",
-      "description": "If enabled, the server will ignore the site's robots.txt file.",
+      "description": "If enabled, the crawler will ignore the site's robots.txt file.",
       "required": false,
       "default": false
     },
     "all_origins": {
       "type": "boolean",
       "title": "Allow Cross-Origin Crawling",
-      "description": "If enabled, the crawler is allowed to follow links to different domains.",
+      "description": "If enabled, the crawler can follow links to different domains.",
       "required": false,
       "default": false
     },
     "user_agent": {
       "type": "string",
-      "title": "Custom User Agent",
-      "description": "A custom user agent string to use for all requests.",
+      "title": "User Agent",
+      "description": "Custom user agent string to use for requests.",
       "required": false
     },
     "cache_dir": {
       "type": "directory",
       "title": "Cache Directory",
-      "description": "The directory path to store cached web pages (default: .cache).",
-      "required": false
+      "description": "The directory to store cached web pages.",
+      "required": false,
+      "default": ".cache"
     },
     "timeout": {
       "type": "number",
       "title": "Request Timeout (ms)",
-      "description": "The timeout for web requests in milliseconds (default: 30000).",
+      "description": "Request timeout in milliseconds.",
       "required": false,
       "default": 30000
     },
     "output": {
       "type": "string",
-      "title": "Default Output Format",
-      "description": "The default output format for fetched content. Can be 'json', 'markdown', or 'both'.",
+      "title": "Output Format",
+      "description": "Output format for fetched content: json, markdown, or both.",
       "required": false,
       "default": "markdown"
     }
@@ -96,12 +101,18 @@
       "mcpServers": {
         "read-website-fast": {
           "command": "npx",
-          "args": ["-y", "@just-every/mcp-read-website-fast"],
+          "args": [
+            "-y",
+            "@just-every/mcp-read-website-fast"
+          ],
           "env": {}
         },
         "read-website-fast-dev-no-restart": {
           "command": "npm",
-          "args": ["run", "serve:dev"],
+          "args": [
+            "run",
+            "serve:dev"
+          ],
           "env": {}
         }
       }

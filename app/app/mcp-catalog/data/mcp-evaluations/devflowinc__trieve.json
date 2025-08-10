@@ -10,11 +10,13 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "trieve-mcp-server@latest"],
+      "args": [
+        "trieve-mcp-server@latest"
+      ],
       "env": {
-        "TRIEVE_API_KEY": "${user_config.api_key}",
-        "TRIEVE_ORGANIZATION_ID": "${user_config.org_id}",
-        "TRIEVE_DATASET_ID": "${user_config.dataset_id}"
+        "TRIEVE_API_KEY": "${user_config.trieve_api_key}",
+        "TRIEVE_ORGANIZATION_ID": "${user_config.trieve_organization_id}",
+        "TRIEVE_DATASET_ID": "${user_config.trieve_dataset_id}"
       }
     }
   },
@@ -49,23 +51,23 @@
   },
   "dependencies": [],
   "user_config": {
-    "api_key": {
+    "trieve_api_key": {
       "type": "string",
       "title": "Trieve API Key",
       "description": "Your Trieve API key from dashboard.trieve.ai",
       "required": true,
       "sensitive": true
     },
-    "org_id": {
+    "trieve_organization_id": {
       "type": "string",
       "title": "Trieve Organization ID",
       "description": "Your Trieve organization ID from dashboard.trieve.ai",
       "required": true
     },
-    "dataset_id": {
+    "trieve_dataset_id": {
       "type": "string",
       "title": "Trieve Dataset ID (Optional)",
-      "description": "Specific dataset ID to use. If not provided, all datasets in the organization will be available.",
+      "description": "Specific dataset ID to use. If not provided, datasets can be selected as attachments.",
       "required": false
     }
   },

@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@just-every/mcp-screenshot-website-fast"],
+      "args": [
+        "-y",
+        "@just-every/mcp-screenshot-website-fast"
+      ],
       "env": {}
     }
   },
@@ -26,12 +29,18 @@
       "mcpServers": {
         "just-every-mcp-screenshot-website-fast": {
           "command": "npx",
-          "args": ["-y", "@just-every/mcp-screenshot-website-fast"],
+          "args": [
+            "-y",
+            "@just-every/mcp-screenshot-website-fast"
+          ],
           "env": {}
         },
         "just-every-mcp-screenshot-website-fast-dev": {
           "command": "npm",
-          "args": ["run", "serve:dev"],
+          "args": [
+            "run",
+            "serve:dev"
+          ],
           "env": {}
         }
       }

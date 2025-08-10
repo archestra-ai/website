@@ -28,7 +28,7 @@
     "geoserver_url": {
       "type": "string",
       "title": "GeoServer URL",
-      "description": "The URL of the running GeoServer instance with the REST API enabled.",
+      "description": "The URL of the running GeoServer instance.",
       "required": true,
       "default": "http://localhost:8080/geoserver"
     },
@@ -42,7 +42,7 @@
     "geoserver_password": {
       "type": "string",
       "title": "GeoServer Password",
-      "description": "The password for authenticating with the GeoServer REST API.",
+      "description": "The password for the GeoServer user.",
       "required": true,
       "sensitive": true,
       "default": "geoserver"
@@ -78,12 +78,27 @@
         },
         "geoserver-mcp-linux": {
           "command": "/path/to/geoserver-mcp/.venv/bin/geoserver-mcp",
-          "args": ["--url", "http://localhost:8080/geoserver", "--user", "admin", "--password", "geoserver"],
+          "args": [
+            "--url",
+            "http://localhost:8080/geoserver",
+            "--user",
+            "admin",
+            "--password",
+            "geoserver"
+          ],
           "env": {}
         },
         "geoserver-mcp-linux-debug": {
           "command": "/path/to/geoserver-mcp/.venv/bin/geoserver-mcp",
-          "args": ["--url", "http://localhost:8080/geoserver", "--user", "admin", "--password", "geoserver", "--debug"],
+          "args": [
+            "--url",
+            "http://localhost:8080/geoserver",
+            "--user",
+            "admin",
+            "--password",
+            "geoserver",
+            "--debug"
+          ],
           "env": {}
         },
         "geoserver-mcp-linux-env": {
@@ -97,12 +112,27 @@
         },
         "geoserver-mcp-windows": {
           "command": "C:\\path\\to\\geoserver-mcp\\.venv\\Scripts\\geoserver-mcp",
-          "args": ["--url", "http://localhost:8080/geoserver", "--user", "admin", "--password", "geoserver"],
+          "args": [
+            "--url",
+            "http://localhost:8080/geoserver",
+            "--user",
+            "admin",
+            "--password",
+            "geoserver"
+          ],
           "env": {}
         },
         "geoserver-mcp-windows-debug": {
           "command": "C:\\path\\to\\geoserver-mcp\\.venv\\Scripts\\geoserver-mcp",
-          "args": ["--url", "http://localhost:8080/geoserver", "--user", "admin", "--password", "geoserver", "--debug"],
+          "args": [
+            "--url",
+            "http://localhost:8080/geoserver",
+            "--user",
+            "admin",
+            "--password",
+            "geoserver",
+            "--debug"
+          ],
           "env": {}
         },
         "geoserver-mcp-windows-env": {

@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/index.js"],
+      "args": [
+        "${__dirname}/index.js"
+      ],
       "env": {}
     }
   },
@@ -26,7 +28,9 @@
       "mcpServers": {
         "dexscreener-configured": {
           "command": "node",
-          "args": ["/ABSOLUTE/PATH/TO/PARENT/FOLDER/index.js"],
+          "args": [
+            "/ABSOLUTE/PATH/TO/PARENT/FOLDER/index.js"
+          ],
           "env": {}
         }
       }

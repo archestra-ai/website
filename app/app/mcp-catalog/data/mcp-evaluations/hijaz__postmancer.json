@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "postmancer"],
+      "args": [
+        "-y",
+        "postmancer"
+      ],
       "env": {
         "COLLECTIONS_PATH": "${user_config.collections_path}",
         "LOG_LEVEL": "${user_config.log_level}",
@@ -26,7 +29,7 @@
     "collections_path": {
       "type": "directory",
       "title": "Collections Path",
-      "description": "Path to store collections of API requests.",
+      "description": "Path to store collections.",
       "required": false,
       "default": "${HOME}/.postmancer"
     },
@@ -46,8 +49,8 @@
     },
     "encryption_key": {
       "type": "string",
-      "title": "Environment Variable Encryption Key",
-      "description": "Secret key used to encrypt environment variables marked as secrets. Uses a default key if not provided.",
+      "title": "Secret Variable Encryption Key",
+      "description": "Secret key used to encrypt environment variables marked as secrets. A default key is used if not provided.",
       "required": false,
       "sensitive": true
     }
@@ -60,7 +63,10 @@
       "mcpServers": {
         "postmancer": {
           "command": "npx",
-          "args": ["-y", "postmancer"],
+          "args": [
+            "-y",
+            "postmancer"
+          ],
           "env": {
             "LOG_LEVEL": "info"
           }

@@ -10,11 +10,13 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@aashari/mcp-server-aws-sso"],
+      "args": [
+        "-y",
+        "@aashari/mcp-server-aws-sso"
+      ],
       "env": {
         "AWS_SSO_START_URL": "${user_config.aws_sso_start_url}",
         "AWS_REGION": "${user_config.aws_region}",
-        "AWS_PROFILE": "${user_config.aws_profile}",
         "DEBUG": "${user_config.debug}"
       }
     }
@@ -26,28 +28,22 @@
     "aws_sso_start_url": {
       "type": "string",
       "title": "AWS SSO Start URL",
-      "description": "Your AWS SSO start URL, e.g., https://your-sso-portal.awsapps.com/start.",
+      "description": "The start URL for your AWS IAM Identity Center (e.g., https://your-sso-portal.awsapps.com/start).",
       "required": true,
       "sensitive": false
     },
     "aws_region": {
       "type": "string",
       "title": "AWS Region",
-      "description": "The AWS region where your AWS IAM Identity Center is configured, e.g., us-east-1.",
+      "description": "The AWS region where your AWS IAM Identity Center is configured (e.g., us-east-1).",
       "required": true,
-      "sensitive": false
-    },
-    "aws_profile": {
-      "type": "string",
-      "title": "AWS Profile (Optional)",
-      "description": "The AWS profile name to use from your AWS config file, if needed.",
-      "required": false,
+      "default": "us-east-1",
       "sensitive": false
     },
     "debug": {
       "type": "boolean",
       "title": "Enable Debug Mode",
-      "description": "Enable verbose debug logging for the server.",
+      "description": "Enable verbose debug logging for troubleshooting.",
       "required": false,
       "default": false
     }
@@ -60,19 +56,28 @@
       "mcpServers": {
         "aashari-mcp-server-aws-sso": {
           "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-aws-sso"],
+          "args": [
+            "-y",
+            "@aashari/mcp-server-aws-sso"
+          ],
           "env": {}
         },
         "aashari-mcp-server-aws-sso-stdio": {
           "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-aws-sso"],
+          "args": [
+            "-y",
+            "@aashari/mcp-server-aws-sso"
+          ],
           "env": {
             "TRANSPORT_MODE": "stdio"
           }
         },
         "aashari-mcp-server-aws-sso-http": {
           "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-aws-sso"],
+          "args": [
+            "-y",
+            "@aashari/mcp-server-aws-sso"
+          ],
           "env": {
             "TRANSPORT_MODE": "http"
           }

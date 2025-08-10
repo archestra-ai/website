@@ -10,11 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
+      "args": [
+        "${__dirname}/dist/index.js"
+      ],
       "env": {
         "WECHAT_APP_ID": "${user_config.wechat_app_id}",
-        "WECHAT_APP_SECRET": "${user_config.wechat_app_secret}",
-        "HOST_IMAGE_PATH": "${user_config.host_image_path}"
+        "WECHAT_APP_SECRET": "${user_config.wechat_app_secret}"
       }
     }
   },
@@ -25,22 +26,16 @@
     "wechat_app_id": {
       "type": "string",
       "title": "WeChat App ID",
-      "description": "The App ID from the WeChat Official Accounts Platform.",
+      "description": "The App ID from your WeChat Official Account platform.",
       "required": true,
       "sensitive": true
     },
     "wechat_app_secret": {
       "type": "string",
       "title": "WeChat App Secret",
-      "description": "The App Secret from the WeChat Official Accounts Platform.",
+      "description": "The App Secret from your WeChat platform.",
       "required": true,
       "sensitive": true
-    },
-    "host_image_path": {
-      "type": "directory",
-      "title": "Host Image Path",
-      "description": "The local directory containing images for your Markdown articles. The server needs access to this path to upload local images.",
-      "required": false
     }
   },
   "readme": "# 文颜 MCP Server\n\n![logo](data/wenyan-mcp.png)\n\n## Overview\n\n文颜 MCP Server 是一个基于模型上下文协议（Model Context Protocol, MCP）的服务器组件，支持将 Markdown 格式的文章发布至微信公众号草稿箱，并使用与 [文颜](https://yuzhi.tech/wenyan) 相同的主题系统进行排版。\n\nhttps://github.com/user-attachments/assets/2c355f76-f313-48a7-9c31-f0f69e5ec207\n\n使用场景：\n\n- [让AI帮你管理公众号的排版和发布](https://babyno.top/posts/2025/06/let-ai-help-you-manage-your-gzh-layout-and-publishing/)\n\n支持的主题效果预览：\n\n- [内置主题](https://yuzhi.tech/docs/wenyan/theme)\n\n## Features\n\n- 列出并选择支持的文章主题\n- 使用内置主题对 Markdown 内容排版\n- 发布文章到微信公众号草稿箱\n- 自动上传本地或网络图片\n\n---\n\n## 使用方式\n\n### 方式一：本地运行\n\n#### 编译\n\n确保已安装 [Node.js](https://nodejs.org/) 环境：\n\n```bash\ngit clone https://github.com/caol64/wenyan-mcp.git\ncd wenyan-mcp\n\nnpm install\nnpx tsc -b && npm run copy-assets\n```\n\n#### 与 MCP Client 集成\n\n在你的 MCP 配置文件中加入以下内容：\n\n```json\n{\n  \"mcpServers\": {\n    \"wenyan-mcp\": {\n      \"name\": \"公众号助手\",\n      \"command\": \"node\",\n      \"args\": [\n        \"Your/path/to/wenyan-mcp/dist/index.js\"\n      ],\n      \"env\": {\n        \"WECHAT_APP_ID\": \"your_app_id\",\n        \"WECHAT_APP_SECRET\": \"your_app_secret\"\n      }\n    }\n  }\n}\n```\n\n> 说明：\n>\n> * `WECHAT_APP_ID` 微信公众号平台的 App ID\n> * `WECHAT_APP_SECRET` 微信平台的 App Secret\n\n---\n\n### 方式二：使用 Docker 运行（推荐）\n\n适合部署到服务器环境，或与本地 AI 工具链集成。\n\n#### 构建镜像\n\n```bash\ndocker build -t wenyan-mcp .\n```\n\n#### 与 MCP Client 集成\n\n在你的 MCP 配置文件中加入以下内容：\n\n```json\n{\n  \"mcpServers\": {\n    \"wenyan-mcp\": {\n      \"name\": \"公众号助手\",\n      \"command\": \"docker\",\n      \"args\": [\n        \"run\",\n        \"--rm\",\n        \"-i\",\n        \"-v\", \"/your/host/image/path:/mnt/host-downloads\",\n        \"-e\", \"WECHAT_APP_ID=your_app_id\",\n        \"-e\", \"WECHAT_APP_SECRET=your_app_secret\",\n        \"-e\", \"HOST_IMAGE_PATH=/your/host/image/path\",\n        \"wenyan-mcp\"\n      ]\n    }\n  }\n}\n```\n\n> 说明：\n>\n> * `-v` 挂载宿主机目录，使容器内部可以访问本地图片。与环境变量`HOST_IMAGE_PATH`保持一致。你的 `Markdown` 文章内的本地图片应该都放置在该目录中，docker会自动将它们映射到容器内。容器无法读取在该目录以外的图片。\n> * `-e` 注入docker容器的环境变量：\n> * `WECHAT_APP_ID` 微信公众号平台的 App ID\n> * `WECHAT_APP_SECRET` 微信平台的 App Secret\n> * `HOST_IMAGE_PATH` 宿主机图片目录\n\n---\n\n## 微信公众号 IP 白名单\n\n请务必将服务器 IP 加入公众号平台的 IP 白名单，以确保上传接口调用成功。\n详细配置说明请参考：[https://yuzhi.tech/docs/wenyan/upload](https://yuzhi.tech/docs/wenyan/upload)\n\n---\n\n## 配置说明（Frontmatter）\n\n为了可以正确上传文章，需要在每一篇 Markdown 文章的开头添加一段`frontmatter`，提供`title`、`cover`两个字段：\n\n```md\n---\ntitle: 在本地跑一个大语言模型(2) - 给模型提供外部知识库\ncover: /Users/lei/Downloads/result_image.jpg\n---\n```\n\n* `title` 是文章标题，必填。\n* `cover` 是文章封面，支持本地路径和网络图片：\n\n  * 如果正文有至少一张图片，可省略，此时将使用其中一张作为封面；\n  * 如果正文无图片，则必须提供 cover。\n\n---\n\n## 关于图片自动上传\n\n* 支持图片路径：\n\n  * 本地路径（如：`/Users/lei/Downloads/result_image.jpg`）\n  * 网络路径（如：`https://example.com/image.jpg`）\n\n---\n\n## 示例文章格式\n\n```md\n---\ntitle: 在本地跑一个大语言模型(2) - 给模型提供外部知识库\ndescription: Make your local large language models (LLMs) smarter! This guide shows how to use LangChain and RAG to let them retrieve data from external knowledge bases, improving answer accuracy.\ncover: /Users/lei/Downloads/result_image.jpg\n---\n\n在[上一篇文章](https://babyno.top/posts/2024/02/running-a-large-language-model-locally/)中，我们展示了如何在本地运行大型语言模型。本篇将介绍如何让模型从外部知识库中检索定制数据，提升答题准确率，让它看起来更“智能”。\n\n## 准备模型\n\n访问 `Ollama` 的模型页面，搜索 `qwen`，我们使用支持中文语义的“[通义千问](https://ollama.com/library/qwen:7b)”模型进行实验。\n\n![](https://mmbiz.qpic.cn/mmbiz_jpg/Jsq9IicjScDVUjkPc6O22ZMvmaZUzof5bLDjMyLg2HeAXd0icTvlqtL7oiarSlOicTtiaiacIxpVOV1EeMKl96PhRPPw/640?wx_fmt=jpeg)\n```\n\n---\n\n## 如何调试\n\n使用 Inspector 进行简单调试：\n\n```\nnpx @modelcontextprotocol/inspector\n```\n\n启动成功出现类似提示：\n\n```\n🔗 Open inspector with token pre-filled:\n   http://localhost:6274/?MCP_PROXY_AUTH_TOKEN=761c05058aa4f84ad02280e62d7a7e52ec0430d00c4c7a61492cca59f9eac299\n   (Auto-open is disabled when authentication is enabled)\n```\n\n访问以上链接即可打开调试页面。\n\n![debug](data/1.jpg)\n\n1. 正确填写启动命令\n2. 添加环境变量\n3. 点击 Connect\n4. 选择 Tools -> List Tools\n5. 选择要调试的接口\n6. 填入参数并点击 Run Tool\n7. 查看完整参数\n\n---\n\n## 赞助\n\n如果您觉得这个项目不错，可以给我家猫咪买点罐头吃。[喂猫❤️](https://yuzhi.tech/sponsor)\n\n---\n\n## License\n\nApache License Version 2.0\n",
@@ -51,7 +46,9 @@
       "mcpServers": {
         "wenyan-mcp": {
           "command": "node",
-          "args": ["Your/path/to/wenyan-mcp/dist/index.js"],
+          "args": [
+            "Your/path/to/wenyan-mcp/dist/index.js"
+          ],
           "env": {
             "WECHAT_APP_ID": "your_app_id",
             "WECHAT_APP_SECRET": "your_app_secret"

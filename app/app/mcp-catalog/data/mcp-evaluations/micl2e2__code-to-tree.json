@@ -8,6 +8,7 @@
     "name": "micl2e2"
   },
   "server": {
+    "type": "binary",
     "mcp_config": {
       "command": "${user_config.executable_path}",
       "args": [],
@@ -20,8 +21,8 @@
   "user_config": {
     "executable_path": {
       "type": "file",
-      "title": "Path to code-to-tree Executable",
-      "description": "Specify the full path to the code-to-tree executable (e.g., C:\\path\\to\\code-to-tree.exe or /path/to/code-to-tree).",
+      "title": "code-to-tree Executable Path",
+      "description": "The absolute path to the code-to-tree binary (e.g., C:\\path\\to\\code-to-tree.exe or /path/to/code-to-tree).",
       "required": true
     }
   },

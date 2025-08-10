@@ -11,7 +11,9 @@
     "type": "binary",
     "mcp_config": {
       "command": "mcpjungle",
-      "args": ["start"],
+      "args": [
+        "start"
+      ],
       "env": {
         "DATABASE_URL": "${user_config.database_url}"
       }
@@ -23,8 +25,8 @@
   "user_config": {
     "database_url": {
       "type": "string",
-      "title": "Postgres Database URL",
-      "description": "The connection DSN for the Postgresql database. If not provided, a local SQLite database will be used in the current working directory. Example: postgres://admin:root@localhost:5432/mcpjungle_db",
+      "title": "PostgreSQL Database URL",
+      "description": "Optional DSN for a PostgreSQL database (e.g., postgres://user:pass@host:port/db). If not provided, a local SQLite database will be created and used in the current working directory.",
       "required": false,
       "sensitive": true
     }
@@ -37,19 +39,27 @@
       "mcpServers": {
         "mcpjungle-docker-compose": {
           "command": "docker-compose",
-          "args": ["up", "-d"],
+          "args": [
+            "up",
+            "-d"
+          ],
           "env": {}
         },
         "mcpjungle-stdio-docker-compose": {
           "command": "docker-compose",
-          "args": ["up", "-d"],
+          "args": [
+            "up",
+            "-d"
+          ],
           "env": {
             "MCPJUNGLE_IMAGE_TAG": "latest-stdio"
           }
         },
         "mcpjungle": {
           "command": "mcpjungle",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "mcpjungle-docker-postgres": {
@@ -66,7 +76,9 @@
         },
         "mcpjungle-postgres": {
           "command": "mcpjungle",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {
             "DATABASE_URL": "postgres://admin:root@localhost:5432/mcpjungle_db"
           }

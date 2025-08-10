@@ -10,11 +10,14 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@yincongcyincong/victoriametrics-mcp-server"],
+      "args": [
+        "-y",
+        "@yincongcyincong/victoriametrics-mcp-server"
+      ],
       "env": {
-        "VM_URL": "${user_config.VM_URL}",
-        "VM_SELECT_URL": "${user_config.VM_SELECT_URL}",
-        "VM_INSERT_URL": "${user_config.VM_INSERT_URL}"
+        "VM_URL": "${user_config.vm_url}",
+        "VM_SELECT_URL": "${user_config.vm_select_url}",
+        "VM_INSERT_URL": "${user_config.vm_insert_url}"
       }
     }
   },
@@ -22,22 +25,22 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "VM_URL": {
+    "vm_url": {
       "type": "string",
       "title": "VictoriaMetrics URL",
       "description": "The base URL for the VictoriaMetrics instance, e.g., http://127.0.0.1:8428.",
       "required": true
     },
-    "VM_SELECT_URL": {
+    "vm_select_url": {
       "type": "string",
-      "title": "VictoriaMetrics Select URL (Optional)",
-      "description": "Optional override for the VictoriaMetrics select/query endpoint. If not provided, it will be derived from the base VM_URL.",
+      "title": "VictoriaMetrics Select URL",
+      "description": "Optional. The specific URL for VictoriaMetrics query/select operations. If not provided, it may be derived from the main URL.",
       "required": false
     },
-    "VM_INSERT_URL": {
+    "vm_insert_url": {
       "type": "string",
-      "title": "VictoriaMetrics Insert URL (Optional)",
-      "description": "Optional override for the VictoriaMetrics insert/write endpoint. If not provided, it will be derived from the base VM_URL.",
+      "title": "VictoriaMetrics Insert URL",
+      "description": "Optional. The specific URL for VictoriaMetrics write/insert operations. If not provided, it may be derived from the main URL.",
       "required": false
     }
   },
@@ -49,7 +52,10 @@
       "mcpServers": {
         "yincongcyincong-victoriametrics-mcp-server": {
           "command": "npx",
-          "args": ["-y", "@yincongcyincong/victoriametrics-mcp-server"],
+          "args": [
+            "-y",
+            "@yincongcyincong/victoriametrics-mcp-server"
+          ],
           "env": {
             "VM_URL": "",
             "VM_SELECT_URL": "",
@@ -58,7 +64,9 @@
         },
         "yincongcyincong-victoriametrics-mcp-server-debug": {
           "command": "node",
-          "args": ["src/index.js"],
+          "args": [
+            "src/index.js"
+          ],
           "env": {
             "VM_URL": "http://127.0.0.1:8428"
           }

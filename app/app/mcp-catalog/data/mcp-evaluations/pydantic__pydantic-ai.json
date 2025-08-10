@@ -55,8 +55,8 @@
   "user_config": {
     "transport": {
       "type": "string",
-      "title": "MCP Transport",
-      "description": "The transport protocol to use. 'stdio' for local subprocesses, 'sse' for an HTTP server.",
+      "title": "Transport Mode",
+      "description": "The MCP transport to use. 'stdio' is suitable for running as a local subprocess. 'sse' runs the server as an HTTP server.",
       "required": true,
       "default": "stdio"
     }

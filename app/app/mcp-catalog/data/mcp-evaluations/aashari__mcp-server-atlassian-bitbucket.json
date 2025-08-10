@@ -10,13 +10,16 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@aashari/mcp-server-atlassian-bitbucket"],
+      "args": [
+        "-y",
+        "@aashari/mcp-server-atlassian-bitbucket"
+      ],
       "env": {
-        "ATLASSIAN_BITBUCKET_USERNAME": "${user_config.atlassian_bitbucket_username}",
-        "ATLASSIAN_BITBUCKET_APP_PASSWORD": "${user_config.atlassian_bitbucket_app_password}",
+        "ATLASSIAN_BITBUCKET_USERNAME": "${user_config.bitbucket_username}",
+        "ATLASSIAN_BITBUCKET_APP_PASSWORD": "${user_config.bitbucket_app_password}",
         "ATLASSIAN_USER_EMAIL": "${user_config.atlassian_user_email}",
         "ATLASSIAN_API_TOKEN": "${user_config.atlassian_api_token}",
-        "BITBUCKET_DEFAULT_WORKSPACE": "${user_config.bitbucket_default_workspace}"
+        "BITBUCKET_DEFAULT_WORKSPACE": "${user_config.default_workspace}"
       }
     }
   },
@@ -24,38 +27,38 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "atlassian_bitbucket_username": {
+    "bitbucket_username": {
       "type": "string",
       "title": "Bitbucket Username",
-      "description": "Your Bitbucket username. Required if using a Bitbucket App Password (recommended method).",
+      "description": "Your Bitbucket username. Required if using a Bitbucket App Password for authentication.",
       "required": false,
       "sensitive": false
     },
-    "atlassian_bitbucket_app_password": {
+    "bitbucket_app_password": {
       "type": "string",
-      "title": "Bitbucket App Password",
-      "description": "Your Bitbucket App Password. This is the recommended authentication method.",
+      "title": "Bitbucket App Password (Recommended)",
+      "description": "Your Bitbucket App Password. This is the recommended authentication method. Generate one from https://bitbucket.org/account/settings/app-passwords/",
       "required": false,
       "sensitive": true
     },
     "atlassian_user_email": {
       "type": "string",
       "title": "Atlassian User Email",
-      "description": "Your Atlassian account email. Required if using an Atlassian API Token.",
+      "description": "Your Atlassian user email. Required if using an Atlassian API Token for authentication.",
       "required": false,
       "sensitive": false
     },
     "atlassian_api_token": {
       "type": "string",
       "title": "Atlassian API Token",
-      "description": "Your Atlassian API Token. Alternative authentication method.",
+      "description": "Your Atlassian API Token. Alternative authentication method. Generate one from https://id.atlassian.com/manage-profile/security/api-tokens",
       "required": false,
       "sensitive": true
     },
-    "bitbucket_default_workspace": {
+    "default_workspace": {
       "type": "string",
       "title": "Default Workspace",
-      "description": "Optional. The slug for the default workspace to use when one is not explicitly provided in a command.",
+      "description": "Optional. The slug of your default Bitbucket workspace to use when one is not explicitly provided in a command.",
       "required": false,
       "sensitive": false
     }
@@ -68,19 +71,28 @@
       "mcpServers": {
         "aashari-mcp-server-atlassian-bitbucket": {
           "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-atlassian-bitbucket"],
+          "args": [
+            "-y",
+            "@aashari/mcp-server-atlassian-bitbucket"
+          ],
           "env": {}
         },
         "aashari-mcp-server-atlassian-bitbucket-stdio": {
           "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-atlassian-bitbucket"],
+          "args": [
+            "-y",
+            "@aashari/mcp-server-atlassian-bitbucket"
+          ],
           "env": {
             "TRANSPORT_MODE": "stdio"
           }
         },
         "aashari-mcp-server-atlassian-bitbucket-http": {
           "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-atlassian-bitbucket"],
+          "args": [
+            "-y",
+            "@aashari/mcp-server-atlassian-bitbucket"
+          ],
           "env": {
             "TRANSPORT_MODE": "http"
           }

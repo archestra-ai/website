@@ -28,21 +28,21 @@
     "query_api_key": {
       "type": "string",
       "title": "Query.dev API Key",
-      "description": "API key from thequery.dev, required for all server operations. Get one for free at https://thequery.dev.",
+      "description": "API key from thequery.dev, required for all operations. Get one for free at https://thequery.dev",
       "required": true,
       "sensitive": true
     },
     "supabase_project_ref": {
       "type": "string",
       "title": "Supabase Project Ref",
-      "description": "Your Supabase project reference ID (or local host:port). Defaults are for local development.",
+      "description": "Your Supabase project reference ID (e.g., 'abcdefghijklmnopqrst') or local host:port for local development.",
       "required": true,
       "default": "127.0.0.1:54322"
     },
     "supabase_db_password": {
       "type": "string",
       "title": "Supabase DB Password",
-      "description": "Your database password. Defaults are for local development.",
+      "description": "Your database password. The default value is for local Supabase development.",
       "required": true,
       "default": "postgres",
       "sensitive": true
@@ -50,21 +50,21 @@
     "supabase_region": {
       "type": "string",
       "title": "Supabase Region",
-      "description": "The AWS region where your Supabase project is hosted. MUST be correct for remote projects.",
-      "required": false,
+      "description": "The AWS region where your remote Supabase project is hosted (e.g., 'us-east-1'). This is critical for connecting to remote projects.",
+      "required": true,
       "default": "us-east-1"
     },
     "supabase_access_token": {
       "type": "string",
       "title": "Supabase Access Token (Optional)",
-      "description": "Personal access token for using the Supabase Management API.",
+      "description": "Personal access token for the Supabase Management API. Required to manage projects.",
       "required": false,
       "sensitive": true
     },
     "supabase_service_role_key": {
       "type": "string",
       "title": "Supabase Service Role Key (Optional)",
-      "description": "Service role key for using the Auth Admin SDK.",
+      "description": "Service role key for the Auth Admin SDK. Required to manage users.",
       "required": false,
       "sensitive": true
     }

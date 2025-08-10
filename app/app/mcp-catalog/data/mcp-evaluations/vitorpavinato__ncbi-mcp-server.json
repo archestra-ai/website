@@ -10,8 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "poetry",
-      "args": ["run", "python", "src/ncbi_mcp_server/server.py"],
-      "cwd": "${__dirname}",
+      "args": [
+        "run",
+        "python",
+        "src/ncbi_mcp_server/server.py"
+      ],
       "env": {
         "NCBI_EMAIL": "${user_config.ncbi_email}",
         "NCBI_API_KEY": "${user_config.ncbi_api_key}"
@@ -25,13 +28,14 @@
     "ncbi_email": {
       "type": "string",
       "title": "NCBI Email",
-      "description": "Your email address for making requests to the NCBI API. Used for identification and rate-limiting.",
-      "required": true
+      "description": "Your email address to identify your requests to NCBI, as per their usage guidelines. Required for making API requests.",
+      "required": true,
+      "sensitive": false
     },
     "ncbi_api_key": {
       "type": "string",
       "title": "NCBI API Key",
-      "description": "Your optional API key for the NCBI API. Provides a higher request rate.",
+      "description": "Your NCBI API key. Provides a higher request rate limit. Can be obtained from your NCBI account settings.",
       "required": false,
       "sensitive": true
     }
@@ -44,7 +48,11 @@
       "mcpServers": {
         "ncbi-literature": {
           "command": "poetry",
-          "args": ["run", "python", "src/ncbi_mcp_server/server.py"],
+          "args": [
+            "run",
+            "python",
+            "src/ncbi_mcp_server/server.py"
+          ],
           "env": {}
         }
       }

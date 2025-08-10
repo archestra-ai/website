@@ -8,10 +8,11 @@
     "name": "sanyambassi"
   },
   "server": {
-    "type": "node",
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/dist/crdp-mcp-server.js"],
+      "args": [
+        "${__dirname}/dist/crdp-mcp-server.js"
+      ],
       "env": {
         "CRDP_SERVICE_URL": "${user_config.crdp_service_url}",
         "CRDP_PROBES_URL": "${user_config.crdp_probes_url}",
@@ -35,20 +36,20 @@
       "type": "string",
       "title": "CRDP Probes URL",
       "description": "CRDP service endpoint for monitoring operations.",
-      "required": false,
+      "required": true,
       "default": "http://localhost:8080"
     },
     "mcp_transport": {
       "type": "string",
       "title": "MCP Transport",
-      "description": "Transport type (stdio or streamable-http).",
-      "required": false,
+      "description": "Transport type for the MCP server (e.g., 'stdio' or 'streamable-http').",
+      "required": true,
       "default": "stdio"
     },
     "mcp_port": {
       "type": "number",
       "title": "MCP Port",
-      "description": "HTTP port to use when MCP_TRANSPORT is set to streamable-http.",
+      "description": "The port for the MCP server to listen on when using the 'streamable-http' transport.",
       "required": false,
       "default": 3000
     }
@@ -61,19 +62,25 @@
       "mcpServers": {
         "crdp-stdio": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "crdp-http": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {
             "MCP_TRANSPORT": "streamable-http"
           }
         },
         "crdp-ai-assistant-config": {
           "command": "node",
-          "args": ["/path/to/your/crdp-mcp-server/dist/crdp-mcp-server.js"],
+          "args": [
+            "/path/to/your/crdp-mcp-server/dist/crdp-mcp-server.js"
+          ],
           "env": {
             "CRDP_SERVICE_URL": "http://your-crdp-server:8090",
             "CRDP_PROBES_URL": "http://your-crdp-server:8080",

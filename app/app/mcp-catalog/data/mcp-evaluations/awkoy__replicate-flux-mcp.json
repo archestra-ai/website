@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "replicate-flux-mcp"],
+      "args": [
+        "-y",
+        "replicate-flux-mcp"
+      ],
       "env": {
         "REPLICATE_API_TOKEN": "${user_config.replicate_api_token}"
       }
@@ -23,7 +26,7 @@
     "replicate_api_token": {
       "type": "string",
       "title": "Replicate API Token",
-      "description": "Your API token from Replicate.com for generating images.",
+      "description": "Your API token from Replicate. Sign up at replicate.com and create an API token in your account settings.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +39,10 @@
       "mcpServers": {
         "replicate-flux-mcp": {
           "command": "npx",
-          "args": ["-y", "replicate-flux-mcp"],
+          "args": [
+            "-y",
+            "replicate-flux-mcp"
+          ],
           "env": {
             "REPLICATE_API_TOKEN": "YOUR_TOKEN"
           }

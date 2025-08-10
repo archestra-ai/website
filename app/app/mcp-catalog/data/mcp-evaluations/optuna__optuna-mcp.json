@@ -10,7 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["optuna-mcp", "--storage", "${user_config.storage}"],
+      "args": [
+        "optuna-mcp",
+        "--storage",
+        "${user_config.storage}"
+      ],
       "env": {}
     }
   },
@@ -20,8 +24,8 @@
   "user_config": {
     "storage": {
       "type": "string",
-      "title": "Optuna Storage URI",
-      "description": "The connection URI for the Optuna storage database, used to persist optimization results. If not specified, an in-memory storage is used. Example: sqlite:///optuna.db",
+      "title": "Optuna Storage URL",
+      "description": "The storage URL for Optuna to persist study results (e.g., 'sqlite:///optuna.db'). If not provided, an in-memory storage is used.",
       "required": false,
       "default": "sqlite:///optuna.db"
     }
@@ -34,12 +38,18 @@
       "mcpServers": {
         "optuna-mcp": {
           "command": "uvx",
-          "args": ["optuna-mcp"],
+          "args": [
+            "optuna-mcp"
+          ],
           "env": {}
         },
         "optuna-mcp-configured": {
           "command": "uvx",
-          "args": ["optuna-mcp", "--storage", "sqlite:///optuna.db"],
+          "args": [
+            "optuna-mcp",
+            "--storage",
+            "sqlite:///optuna.db"
+          ],
           "env": {}
         },
         "optuna-optuna-mcp-docker": {

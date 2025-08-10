@@ -10,9 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["server.py"],
+      "args": [
+        "server.py"
+      ],
       "env": {
-        "DEEPSEEK_API_KEY": "${user_config.DEEPSEEK_API_KEY}"
+        "DEEPSEEK_API_KEY": "${user_config.deepseek_api_key}"
       }
     }
   },
@@ -20,10 +22,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "DEEPSEEK_API_KEY": {
+    "deepseek_api_key": {
       "type": "string",
       "title": "DeepSeek API Key",
-      "description": "Your valid DeepSeek API key for authentication.",
+      "description": "Your personal API key for the DeepSeek service.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +38,9 @@
       "mcpServers": {
         "term-mcp-deepseek": {
           "command": "python",
-          "args": ["server.py"],
+          "args": [
+            "server.py"
+          ],
           "env": {}
         }
       }

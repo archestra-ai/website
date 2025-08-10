@@ -10,7 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
+      "args": [
+        "${__dirname}/dist/index.js",
+        "--env-file",
+        "${user_config.env_file}"
+      ],
       "env": {
         "OPENAI_API_KEY": "${user_config.openai_api_key}",
         "AZURE_OPENAI_API_KEY": "${user_config.azure_openai_api_key}",
@@ -27,34 +31,40 @@
     "openai_api_key": {
       "type": "string",
       "title": "OpenAI API Key",
-      "description": "Your standard OpenAI API key (e.g., sk-...). Required if not using Azure.",
-      "sensitive": true,
-      "required": false
+      "description": "Your OpenAI API key. Required unless using an Azure deployment.",
+      "required": false,
+      "sensitive": true
     },
     "azure_openai_api_key": {
       "type": "string",
       "title": "Azure OpenAI API Key",
       "description": "Your Azure OpenAI API key. Required for Azure deployments.",
-      "sensitive": true,
-      "required": false
+      "required": false,
+      "sensitive": true
     },
     "azure_openai_endpoint": {
       "type": "string",
       "title": "Azure OpenAI Endpoint",
-      "description": "The endpoint for your Azure OpenAI resource (e.g., my.endpoint.com). Required for Azure deployments.",
+      "description": "Your Azure OpenAI endpoint (e.g., my.endpoint.com). Required for Azure deployments.",
       "required": false
     },
     "openai_api_version": {
       "type": "string",
-      "title": "OpenAI API Version (Azure)",
+      "title": "OpenAI API Version (for Azure)",
       "description": "The API version to use for Azure deployments.",
-      "default": "2024-12-01-preview",
+      "required": false,
+      "default": "2024-12-01-preview"
+    },
+    "env_file": {
+      "type": "file",
+      "title": "Environment File",
+      "description": "Optional path to a .env file containing configuration variables as an alternative to setting them here.",
       "required": false
     },
     "work_dir": {
       "type": "directory",
       "title": "Working Directory",
-      "description": "Optional. Directory to save large images or when file output is used. Defaults to the system's temporary directory if not set.",
+      "description": "Directory for saving large images and file outputs. If not set, defaults to the system's temporary directory (e.g., /tmp).",
       "required": false
     }
   },
@@ -66,19 +76,25 @@
       "mcpServers": {
         "openai-gpt-image-mcp": {
           "command": "node",
-          "args": ["dist/index.js"],
+          "args": [
+            "dist/index.js"
+          ],
           "env": {}
         },
         "openai-gpt-image-mcp-configured": {
           "command": "node",
-          "args": ["/absolute/path/to/dist/index.js"],
+          "args": [
+            "/absolute/path/to/dist/index.js"
+          ],
           "env": {
             "OPENAI_API_KEY": "sk-..."
           }
         },
         "openai-gpt-image-mcp-azure": {
           "command": "node",
-          "args": ["/absolute/path/to/dist/index.js"],
+          "args": [
+            "/absolute/path/to/dist/index.js"
+          ],
           "env": {
             "AZURE_OPENAI_API_KEY": "sk-...",
             "AZURE_OPENAI_ENDPOINT": "my.endpoint.com",
@@ -87,7 +103,11 @@
         },
         "openai-gpt-image-mcp-with-env-file": {
           "command": "node",
-          "args": ["/absolute/path/to/dist/index.js", "--env-file", "./deployment/.env"],
+          "args": [
+            "/absolute/path/to/dist/index.js",
+            "--env-file",
+            "./deployment/.env"
+          ],
           "env": {}
         }
       }

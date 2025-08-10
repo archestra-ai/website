@@ -10,7 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/vol_mcp_server.py", "-i", "${user_config.memory_image}"],
+      "args": [
+        "${__dirname}/vol_mcp_server.py",
+        "-i",
+        "${user_config.memory_image_path}"
+      ],
       "env": {}
     }
   },
@@ -18,9 +22,9 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "memory_image": {
+    "memory_image_path": {
       "type": "file",
-      "title": "Memory Image File",
+      "title": "Memory Image Path",
       "description": "The absolute path to the memory image file to be analyzed.",
       "required": true
     }
@@ -33,7 +37,9 @@
       "mcpServers": {
         "volatility-fastapi-server": {
           "command": "uvicorn",
-          "args": ["volatility_fastapi_server:app"],
+          "args": [
+            "volatility_fastapi_server:app"
+          ],
           "env": {}
         },
         "vol-mcp-server-configured": {

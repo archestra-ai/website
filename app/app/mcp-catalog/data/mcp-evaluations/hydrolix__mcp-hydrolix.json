@@ -10,14 +10,21 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["run", "--with", "mcp-hydrolix", "--python", "3.13", "mcp-hydrolix"],
+      "args": [
+        "run",
+        "--with",
+        "mcp-hydrolix",
+        "--python",
+        "3.13",
+        "mcp-hydrolix"
+      ],
       "env": {
-        "HYDROLIX_HOST": "${user_config.hydrolix_host}",
-        "HYDROLIX_USER": "${user_config.hydrolix_user}",
-        "HYDROLIX_PASSWORD": "${user_config.hydrolix_password}",
-        "HYDROLIX_PORT": "${user_config.hydrolix_port}",
-        "HYDROLIX_VERIFY": "${user_config.hydrolix_verify}",
-        "HYDROLIX_DATABASE": "${user_config.hydrolix_database}"
+        "HYDROLIX_HOST": "${user_config.host}",
+        "HYDROLIX_USER": "${user_config.user}",
+        "HYDROLIX_PASSWORD": "${user_config.password}",
+        "HYDROLIX_PORT": "${user_config.port}",
+        "HYDROLIX_VERIFY": "${user_config.verify}",
+        "HYDROLIX_DATABASE": "${user_config.database}"
       }
     }
   },
@@ -25,43 +32,43 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "hydrolix_host": {
+    "host": {
       "type": "string",
       "title": "Hydrolix Host",
       "description": "The hostname of your Hydrolix server",
       "required": true
     },
-    "hydrolix_user": {
+    "user": {
       "type": "string",
       "title": "Hydrolix User",
       "description": "The username for authentication",
       "required": true
     },
-    "hydrolix_password": {
+    "password": {
       "type": "string",
       "title": "Hydrolix Password",
       "description": "The password for authentication",
       "required": true,
       "sensitive": true
     },
-    "hydrolix_port": {
+    "port": {
       "type": "number",
       "title": "Hydrolix Port",
       "description": "The port number of your Hydrolix server. Usually doesn't need to be set unless using a non-standard port.",
       "required": false,
       "default": 8088
     },
-    "hydrolix_verify": {
+    "verify": {
       "type": "boolean",
       "title": "Verify SSL Certificate",
       "description": "Enable/disable SSL certificate verification. Disabling is not recommended for production.",
       "required": false,
       "default": true
     },
-    "hydrolix_database": {
+    "database": {
       "type": "string",
       "title": "Default Database",
-      "description": "Default database to use. If not set, the server's default will be used.",
+      "description": "Default database to use. If not set, the server default will be used.",
       "required": false
     }
   },
@@ -73,7 +80,14 @@
       "mcpServers": {
         "mcp-hydrolix": {
           "command": "uv",
-          "args": ["run", "--with", "mcp-hydrolix", "--python", "3.13", "mcp-hydrolix"],
+          "args": [
+            "run",
+            "--with",
+            "mcp-hydrolix",
+            "--python",
+            "3.13",
+            "mcp-hydrolix"
+          ],
           "env": {
             "HYDROLIX_HOST": "<hydrolix-host>",
             "HYDROLIX_USER": "<hydrolix-user>",

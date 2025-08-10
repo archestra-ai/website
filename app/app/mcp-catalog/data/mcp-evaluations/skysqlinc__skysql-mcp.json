@@ -12,7 +12,7 @@
       "command": "${__dirname}/launch.sh",
       "args": [],
       "env": {
-        "SKYSQL_API_KEY": "${user_config.skysql_api_key}"
+        "SKYSQL_API_KEY": "${user_config.SKYSQL_API_KEY}"
       }
     }
   },
@@ -20,10 +20,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "skysql_api_key": {
+    "SKYSQL_API_KEY": {
       "type": "string",
       "title": "SkySQL API Key",
-      "description": "Your SkySQL API key. Obtain one by signing up for free on the SkySQL website.",
+      "description": "Your SkySQL API key. Obtain one by signing up for free on SkySQL.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +36,13 @@
       "mcpServers": {
         "wong2-mcp-cli": {
           "command": "npx",
-          "args": ["@wong2/mcp-cli", "uv", "run", "python", "src/mcp-server/server.py"],
+          "args": [
+            "@wong2/mcp-cli",
+            "uv",
+            "run",
+            "python",
+            "src/mcp-server/server.py"
+          ],
           "env": {}
         },
         "skysql-mcp-launch-sh-configured": {

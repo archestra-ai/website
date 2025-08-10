@@ -18,7 +18,7 @@
         "webEvalAgent"
       ],
       "env": {
-        "OPERATIVE_API_KEY": "${user_config.OPERATIVE_API_KEY}"
+        "OPERATIVE_API_KEY": "${user_config.api_key}"
       }
     }
   },
@@ -26,7 +26,7 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "OPERATIVE_API_KEY": {
+    "api_key": {
       "type": "string",
       "title": "Operative API Key",
       "description": "Your API key from operative.sh/mcp, required to run the agent.",

@@ -10,17 +10,20 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@mcpfun/mcp-server-ccxt"],
+      "args": [
+        "-y",
+        "@mcpfun/mcp-server-ccxt"
+      ],
       "env": {
-        "DEFAULT_EXCHANGE": "${user_config.DEFAULT_EXCHANGE}",
-        "DEFAULT_MARKET_TYPE": "${user_config.DEFAULT_MARKET_TYPE}",
-        "BINANCE_API_KEY": "${user_config.BINANCE_API_KEY}",
-        "BINANCE_SECRET": "${user_config.BINANCE_SECRET}",
-        "KUCOIN_API_KEY": "${user_config.KUCOIN_API_KEY}",
-        "KUCOIN_SECRET": "${user_config.KUCOIN_SECRET}",
-        "KUCOIN_PASSPHRASE": "${user_config.KUCOIN_PASSPHRASE}",
-        "USE_PROXY": "${user_config.USE_PROXY}",
-        "PROXY_URL": "${user_config.PROXY_URL}"
+        "DEFAULT_EXCHANGE": "${user_config.default_exchange}",
+        "DEFAULT_MARKET_TYPE": "${user_config.default_market_type}",
+        "BINANCE_API_KEY": "${user_config.binance_api_key}",
+        "BINANCE_SECRET": "${user_config.binance_secret}",
+        "KUCOIN_API_KEY": "${user_config.kucoin_api_key}",
+        "KUCOIN_SECRET": "${user_config.kucoin_secret}",
+        "KUCOIN_PASSPHRASE": "${user_config.kucoin_passphrase}",
+        "USE_PROXY": "${user_config.use_proxy}",
+        "PROXY_URL": "${user_config.proxy_url}"
       }
     }
   },
@@ -28,66 +31,66 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "DEFAULT_EXCHANGE": {
+    "default_exchange": {
       "type": "string",
       "title": "Default Exchange",
-      "description": "The default exchange to use for operations (e.g., binance). Optional.",
+      "description": "The default exchange to use for commands (e.g., binance). Optional.",
       "required": false,
       "default": "binance"
     },
-    "DEFAULT_MARKET_TYPE": {
+    "default_market_type": {
       "type": "string",
       "title": "Default Market Type",
-      "description": "The default market type to use (e.g., spot, futures). Optional.",
+      "description": "The default market type to use (e.g., spot, swap). Optional.",
       "required": false,
       "default": "spot"
     },
-    "BINANCE_API_KEY": {
+    "binance_api_key": {
       "type": "string",
       "title": "Binance API Key",
-      "description": "Your API key for the Binance exchange. Required for private API tools.",
+      "description": "Your API key for the Binance exchange. Optional, required for private tools.",
       "required": false,
       "sensitive": true
     },
-    "BINANCE_SECRET": {
+    "binance_secret": {
       "type": "string",
       "title": "Binance API Secret",
-      "description": "Your API secret for the Binance exchange. Required for private API tools.",
+      "description": "Your API secret for the Binance exchange. Optional, required for private tools.",
       "required": false,
       "sensitive": true
     },
-    "KUCOIN_API_KEY": {
+    "kucoin_api_key": {
       "type": "string",
       "title": "KuCoin API Key",
-      "description": "Your API key for the KuCoin exchange. Required for private API tools.",
+      "description": "Your API key for the KuCoin exchange. Optional, required for private tools.",
       "required": false,
       "sensitive": true
     },
-    "KUCOIN_SECRET": {
+    "kucoin_secret": {
       "type": "string",
       "title": "KuCoin API Secret",
-      "description": "Your API secret for the KuCoin exchange. Required for private API tools.",
+      "description": "Your API secret for the KuCoin exchange. Optional, required for private tools.",
       "required": false,
       "sensitive": true
     },
-    "KUCOIN_PASSPHRASE": {
+    "kucoin_passphrase": {
       "type": "string",
       "title": "KuCoin Passphrase",
-      "description": "Your API passphrase for the KuCoin exchange, if required.",
+      "description": "Your API passphrase for the KuCoin exchange. Optional, required for private tools on KuCoin.",
       "required": false,
       "sensitive": true
     },
-    "USE_PROXY": {
+    "use_proxy": {
       "type": "boolean",
       "title": "Use Proxy",
-      "description": "Enable to route exchange requests through a proxy server.",
+      "description": "Enable to route exchange traffic through a proxy server. Optional.",
       "required": false,
       "default": false
     },
-    "PROXY_URL": {
+    "proxy_url": {
       "type": "string",
       "title": "Proxy URL",
-      "description": "The full URL of the proxy server, e.g., http://username:password@your-proxy-server:port. Used if 'Use Proxy' is enabled.",
+      "description": "The full URL of the proxy server (e.g., http://user:pass@host:port). Required only if 'Use Proxy' is enabled. Optional.",
       "required": false,
       "sensitive": true
     }
@@ -105,17 +108,23 @@
         },
         "mcpfun-mcp-server-ccxt": {
           "command": "npx",
-          "args": ["@mcpfun/mcp-server-ccxt"],
+          "args": [
+            "@mcpfun/mcp-server-ccxt"
+          ],
           "env": {}
         },
         "mcp-server-ccxt-npm-start": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "mcp-server-ccxt-node-direct": {
           "command": "node",
-          "args": ["/path/to/mcp-server-ccxt/build/index.js"],
+          "args": [
+            "/path/to/mcp-server-ccxt/build/index.js"
+          ],
           "env": {}
         }
       }

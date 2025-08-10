@@ -40,7 +40,7 @@
     "atlassian_site_name": {
       "type": "string",
       "title": "Atlassian Site Name",
-      "description": "Your Atlassian site name (e.g., 'your-company' for your-company.atlassian.net).",
+      "description": "Your Atlassian site name (e.g., 'your-company' from your-company.atlassian.net).",
       "required": true
     },
     "atlassian_user_email": {
@@ -51,7 +51,7 @@
     },
     "atlassian_api_token": {
       "type": "string",
-      "title": "Jira API Token",
+      "title": "Atlassian API Token",
       "description": "Your Jira API token.",
       "required": true,
       "sensitive": true
@@ -81,7 +81,13 @@
         },
         "hainanzhao-mcp-gitlab-jira-docker-persistent": {
           "command": "docker",
-          "args": ["exec", "-i", "mcp-gitlab-jira-container", "npm", "start"],
+          "args": [
+            "exec",
+            "-i",
+            "mcp-gitlab-jira-container",
+            "npm",
+            "start"
+          ],
           "env": {}
         },
         "hainanzhao-mcp-gitlab-jira-docker-onetime": {

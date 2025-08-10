@@ -10,7 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "docker",
-      "args": ["run", "-i", "--rm", "wisevision/mcp_server_ros_2"],
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "wisevision/mcp_server_ros_2"
+      ],
       "env": {}
     }
   },
@@ -26,7 +31,12 @@
       "mcpServers": {
         "wisevision-mcp_server_ros_2-docker": {
           "command": "docker",
-          "args": ["run", "-i", "--rm", "wisevision/mcp_server_ros_2"],
+          "args": [
+            "run",
+            "-i",
+            "--rm",
+            "wisevision/mcp_server_ros_2"
+          ],
           "env": {}
         }
       }

@@ -10,14 +10,26 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "main.py"],
+      "args": [
+        "--directory",
+        "${user_config.project_dir}",
+        "run",
+        "main.py"
+      ],
       "env": {}
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "project_dir": {
+      "type": "directory",
+      "title": "Project Directory",
+      "description": "The local directory where you cloned the 'books-mcp-server' repository.",
+      "required": true
+    }
+  },
   "readme": "## Get the Project and Initialize\n```\ngit clone https://github.com/VmLia/books-mcp-server.git\ncd books-mcp-server\nuv venv\n```\nif macbook or linux\n````\nsource .venv/bin/activate\n````\nif windows\n````\n.venv\\Scripts\\activate.bat\n````\n\n### Install Python Packages\n```\nuv add \"mcp[cli]\" httpx openai beautifulsoup4 lxml \n```\nIf the network is slow, you can set up a domestic mirror source.\n```\nuv add \"mcp[cli]\" httpx openai beautifulsoup4 lxml --index-url https://pypi.tuna.tsinghua.edu.cn/simple\n```\n\n## Example of Using cherry-studio\n**Method 1**: On the setting page of cherry-studio, click on the MCP server, then click \"Add Server\", and subsequently configure it on the page.\n### Type\n```\nSTDIO\n```\n### Command\n```\nuv\n```\n### Parameters\n```\n--directory\n# your project dir\nrun\nmain.py\n```\n\n**Method 2**: Use the configuration parameters\n```\n{\n  \"mcpServers\": {\n    \"books-mcp-server\": {\n      \"name\": \"books-mcp\",\n      \"type\": \"stdio\",\n      \"description\": \"\",\n      \"isActive\": true,\n      \"registryUrl\": \"\",\n      \"command\": \"uv\",\n      \"args\": [\n        \"--directory\",\n        \"/Enter your local project directory/books-mcp-server\",\n        \"run\",\n        \"main.py\"\n      ]\n    }\n  }\n}\n```",
   "category": "AI Tools",
   "quality_score": 32,
@@ -26,7 +38,12 @@
       "mcpServers": {
         "books-mcp-server-stdio": {
           "command": "uv",
-          "args": ["--directory", "/Enter your local project directory/books-mcp-server", "run", "main.py"],
+          "args": [
+            "--directory",
+            "/Enter your local project directory/books-mcp-server",
+            "run",
+            "main.py"
+          ],
           "env": {}
         }
       }

@@ -10,9 +10,16 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "mcp-server-home-assistant", "-v", "-v"],
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "mcp-server-home-assistant",
+        "-v",
+        "-v"
+      ],
       "env": {
-        "HOME_ASSISTANT_WEB_SOCKET_URL": "${user_config.home_assistant_websocket_url}",
+        "HOME_ASSISTANT_WEB_SOCKET_URL": "${user_config.home_assistant_url}",
         "HOME_ASSISTANT_API_TOKEN": "${user_config.home_assistant_api_token}"
       }
     }
@@ -21,7 +28,7 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "home_assistant_websocket_url": {
+    "home_assistant_url": {
       "type": "string",
       "title": "Home Assistant WebSocket URL",
       "description": "The WebSocket URL for your Home Assistant instance (e.g., http://localhost:8123/api/websocket).",
@@ -31,7 +38,7 @@
     "home_assistant_api_token": {
       "type": "string",
       "title": "Home Assistant API Token",
-      "description": "Your Home Assistant Long Lived Access Token.",
+      "description": "Your Long Lived Access Token for Home Assistant.",
       "required": true,
       "sensitive": true
     }

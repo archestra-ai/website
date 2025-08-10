@@ -25,7 +25,7 @@
     "mcp_port": {
       "type": "number",
       "title": "Server Port",
-      "description": "The port number to run the server on. If invalid or not set, the server will use port 8080.",
+      "description": "The port number to run the server on. Must be a valid integer between 0 and 65535.",
       "required": false,
       "default": 8080,
       "min": 0,
@@ -33,8 +33,8 @@
     },
     "mcp_transport": {
       "type": "string",
-      "title": "Server Transport Mode",
-      "description": "The transport mode for the server. Supported values: sse, streamable-http. If invalid or not set, the server will use SSE.",
+      "title": "Transport Mode",
+      "description": "The transport mode for the server. Supported values: sse, streamable-http.",
       "required": false,
       "default": "sse"
     }
@@ -47,7 +47,10 @@
       "mcpServers": {
         "osv": {
           "command": "thv",
-          "args": ["run", "osv"],
+          "args": [
+            "run",
+            "osv"
+          ],
           "env": {}
         },
         "osv-mcp-server": {

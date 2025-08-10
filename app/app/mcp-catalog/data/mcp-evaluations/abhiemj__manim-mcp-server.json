@@ -10,9 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/src/manim_server.py"],
+      "args": [
+        "${__dirname}/src/manim_server.py"
+      ],
       "env": {
-        "MANIM_EXECUTABLE": "${user_config.manim_executable_path}"
+        "MANIM_EXECUTABLE": "${user_config.manim_executable}"
       }
     }
   },
@@ -20,10 +22,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "manim_executable_path": {
+    "manim_executable": {
       "type": "file",
       "title": "Manim Executable Path",
-      "description": "The absolute path to the Manim executable file. This is often found inside your Python environment's Scripts or bin directory.",
+      "description": "The absolute path to your Manim community executable (e.g., manim.exe on Windows).",
       "required": true
     }
   },
@@ -35,7 +37,9 @@
       "mcpServers": {
         "manim-mcp-server": {
           "command": "/absolute/path/to/python",
-          "args": ["/absolute/path/to/manim-mcp-server/src/manim_server.py"],
+          "args": [
+            "/absolute/path/to/manim-mcp-server/src/manim_server.py"
+          ],
           "env": {
             "MANIM_EXECUTABLE": "/Users/[Your_username]/anaconda3/envs/manim2/Scripts/manim.exe"
           }

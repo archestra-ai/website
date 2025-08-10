@@ -10,9 +10,14 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "main.py"],
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "main.py"
+      ],
       "env": {
-        "SANTIMENT_API_KEY": "${user_config.SANTIMENT_API_KEY}"
+        "SANTIMENT_API_KEY": "${user_config.santiment_api_key}"
       }
     }
   },
@@ -20,10 +25,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "SANTIMENT_API_KEY": {
+    "santiment_api_key": {
       "type": "string",
       "title": "Santiment API Key",
-      "description": "Obtain a free or paid API key from Santiment to access cryptocurrency data.",
+      "description": "Obtain a free or paid key from Santiment (https://app.santiment.net/).",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +41,12 @@
       "mcpServers": {
         "crypto-sentiment-mcp": {
           "command": "uv",
-          "args": ["--directory", "path/to/crypto-sentiment-mcp", "run", "main.py"],
+          "args": [
+            "--directory",
+            "path/to/crypto-sentiment-mcp",
+            "run",
+            "main.py"
+          ],
           "env": {
             "SANTIMENT_API_KEY": "your_api_key_here"
           }

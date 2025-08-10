@@ -9,11 +9,11 @@
   },
   "server": {
     "mcp_config": {
-      "command": "${user_config.binstub_path}",
+      "command": "bin/bundler_mcp",
       "args": [],
       "env": {
         "BUNDLE_GEMFILE": "${user_config.gemfile_path}",
-        "BUNDLER_MCP_LOG_FILE": "${user_config.log_file_path}"
+        "BUNDLER_MCP_LOG_FILE": "${user_config.log_file}"
       }
     }
   },
@@ -21,22 +21,16 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "binstub_path": {
-      "type": "file",
-      "title": "Bundler MCP Binstub Path",
-      "description": "The absolute path to the `bundler_mcp` executable binstub, typically located in your project's 'bin' directory (e.g., /path/to/project/bin/bundler_mcp).",
-      "required": true
-    },
     "gemfile_path": {
       "type": "file",
-      "title": "Gemfile Path (Optional)",
-      "description": "Path to the project's Gemfile. If not provided, Bundler will search for it in standard locations. Corresponds to the BUNDLE_GEMFILE environment variable.",
+      "title": "Gemfile Path",
+      "description": "Path to your Gemfile. This is usually not needed if you use the binstub method, as Bundler will locate it automatically.",
       "required": false
     },
-    "log_file_path": {
+    "log_file": {
       "type": "file",
-      "title": "Log File Path (Optional)",
-      "description": "Path to a file for logging server output. Useful for troubleshooting. Corresponds to the BUNDLER_MCP_LOG_FILE environment variable.",
+      "title": "Log File Path",
+      "description": "Path to a log file for troubleshooting the server. Defaults to no logging.",
       "required": false
     }
   },

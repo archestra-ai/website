@@ -10,7 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@davewind/mysql-mcp-server", "${user_config.connection_string}"],
+      "args": [
+        "-y",
+        "@davewind/mysql-mcp-server",
+        "${user_config.connection_string}"
+      ],
       "env": {}
     }
   },
@@ -21,7 +25,7 @@
     "connection_string": {
       "type": "string",
       "title": "MySQL Connection String",
-      "description": "The connection string for the MySQL database in the format mysql://user:password@host:port/database.",
+      "description": "The connection string for the MySQL database, in the format mysql://user:password@host:port/database.",
       "required": true,
       "sensitive": true
     }
@@ -34,7 +38,11 @@
       "mcpServers": {
         "davewind-mysql-mcp-server": {
           "command": "npx",
-          "args": ["-y", "@davewind/mysql-mcp-server", "mysql://user:password@localhost:port/database"],
+          "args": [
+            "-y",
+            "@davewind/mysql-mcp-server",
+            "mysql://user:password@localhost:port/database"
+          ],
           "env": {}
         }
       }

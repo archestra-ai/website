@@ -8,9 +8,13 @@
     "name": "ztxtxwd"
   },
   "server": {
+    "type": "node",
     "mcp_config": {
       "command": "npm",
-      "args": ["run", "dev"],
+      "args": [
+        "run",
+        "dev"
+      ],
       "env": {
         "FEISHU_APP_ID": "${user_config.feishu_app_id}",
         "FEISHU_APP_SECRET": "${user_config.feishu_app_secret}",
@@ -25,21 +29,21 @@
     "feishu_app_id": {
       "type": "string",
       "title": "Feishu App ID",
-      "description": "Your Application ID from the Feishu Open Platform.",
+      "description": "Your application ID from the Feishu Open Platform.",
       "required": true,
-      "sensitive": true
+      "sensitive": false
     },
     "feishu_app_secret": {
       "type": "string",
       "title": "Feishu App Secret",
-      "description": "Your Application Secret from the Feishu Open Platform.",
+      "description": "Your application secret from the Feishu Open Platform.",
       "required": true,
       "sensitive": true
     },
     "cookie_encryption_key": {
       "type": "string",
       "title": "Cookie Encryption Key",
-      "description": "A secret key for encrypting session cookies. The documentation suggests generating one with 'openssl rand -hex 32'.",
+      "description": "A secret key for encrypting session cookies. Can be generated with 'openssl rand -hex 32'.",
       "required": true,
       "sensitive": true
     }
@@ -52,12 +56,18 @@
       "mcpServers": {
         "open-feishu-mcp-server-deployed": {
           "command": "npm",
-          "args": ["run", "deploy"],
+          "args": [
+            "run",
+            "deploy"
+          ],
           "env": {}
         },
         "open-feishu-mcp-server-local": {
           "command": "npm",
-          "args": ["run", "dev"],
+          "args": [
+            "run",
+            "dev"
+          ],
           "env": {
             "FEISHU_APP_ID": "your_development_feishu_app_id",
             "FEISHU_APP_SECRET": "your_development_feishu_app_secret",

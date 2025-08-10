@@ -7,19 +7,31 @@
   "author": {
     "name": "panther-labs"
   },
-  "server": {},
+  "server": {
+    "mcp_config": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@panther-labs/mcp-panther"
+      ],
+      "env": {
+        "PANTHER_API_TOKEN": "${user_config.api_token}",
+        "PANTHER_INSTANCE_URL": "${user_config.instance_url}"
+      }
+    }
+  },
   "tools": [],
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "panther_api_token": {
+    "api_token": {
       "type": "string",
       "title": "Panther API Token",
-      "description": "API token generated from the Panther console (Settings -> API Tokens).",
+      "description": "Your Panther API token. Create one under Settings -> API Tokens.",
       "required": true,
       "sensitive": true
     },
-    "panther_instance_url": {
+    "instance_url": {
       "type": "string",
       "title": "Panther Instance URL",
       "description": "The full URL of your Panther instance, including 'https://' (e.g., https://YOUR-PANTHER-INSTANCE.domain).",

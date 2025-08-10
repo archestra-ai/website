@@ -10,9 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "ns-mcp-server"],
+      "args": [
+        "-y",
+        "ns-mcp-server"
+      ],
       "env": {
-        "NS_API_KEY": "${user_config.api_key}"
+        "NS_API_KEY": "${user_config.ns_api_key}"
       }
     }
   },
@@ -20,10 +23,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "api_key": {
+    "ns_api_key": {
       "type": "string",
       "title": "NS API Key",
-      "description": "Your API key for the NS (Nederlandse Spoorwegen). It can be obtained from the NS API Portal at https://apiportal.ns.nl/",
+      "description": "Your NS API key. You can get an API key from the NS API Portal at https://apiportal.ns.nl/",
       "required": true,
       "sensitive": true
     }
@@ -36,14 +39,19 @@
       "mcpServers": {
         "ns-mcp-server": {
           "command": "npx",
-          "args": ["-y", "ns-mcp-server"],
+          "args": [
+            "-y",
+            "ns-mcp-server"
+          ],
           "env": {
             "NS_API_KEY": "your_api_key_here"
           }
         },
         "ns-mcp-server-local": {
           "command": "node",
-          "args": ["/path/to/ns-server/build/index.js"],
+          "args": [
+            "/path/to/ns-server/build/index.js"
+          ],
           "env": {
             "NS_API_KEY": "your_api_key_here"
           }

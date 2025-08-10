@@ -11,7 +11,10 @@
     "type": "node",
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@pipedream/mcp"],
+      "args": [
+        "-y",
+        "@pipedream/mcp"
+      ],
       "env": {
         "PIPEDREAM_CLIENT_ID": "${user_config.pipedream_client_id}",
         "PIPEDREAM_CLIENT_SECRET": "${user_config.pipedream_client_secret}",
@@ -56,7 +59,7 @@
       "title": "Pipedream Client ID",
       "description": "Your Pipedream OAuth client ID, created from your Pipedream account.",
       "required": true,
-      "sensitive": false
+      "sensitive": true
     },
     "pipedream_client_secret": {
       "type": "string",
@@ -68,16 +71,17 @@
     "pipedream_project_id": {
       "type": "string",
       "title": "Pipedream Project ID",
-      "description": "The ID of the Pipedream project where connected accounts will be stored.",
+      "description": "The Pipedream project ID where connected accounts will be stored.",
       "required": true,
       "sensitive": false
     },
     "pipedream_project_environment": {
       "type": "string",
       "title": "Pipedream Project Environment",
-      "description": "The environment within the Pipedream project to use (e.g., development, production).",
+      "description": "The environment within the Pipedream project to use (e.g., development or production).",
       "required": true,
-      "default": "development"
+      "default": "development",
+      "sensitive": false
     }
   },
   "archestra_config": null,

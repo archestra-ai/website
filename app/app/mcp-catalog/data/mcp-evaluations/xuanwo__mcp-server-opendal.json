@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["mcp-server-opendal"],
+      "args": [
+        "mcp-server-opendal"
+      ],
       "env": {
         "OPENDAL_S3_TYPE": "s3",
         "OPENDAL_S3_BUCKET": "${user_config.bucket}",
@@ -65,14 +67,19 @@
       "mcpServers": {
         "mcp-server-opendal-with-config": {
           "command": "uvx",
-          "args": ["mcp-server-opendal"],
+          "args": [
+            "mcp-server-opendal"
+          ],
           "env": {
             "YOUR_ENV_VAR": "YOUR_ENV_VALUE"
           }
         },
         "mcp-server-opendal-uv-run": {
           "command": "uv",
-          "args": ["run", "mcp-server-opendal"],
+          "args": [
+            "run",
+            "mcp-server-opendal"
+          ],
           "env": {}
         }
       }

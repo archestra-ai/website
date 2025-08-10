@@ -7,22 +7,26 @@
   "author": {
     "name": "apecloud"
   },
-  "server": {},
+  "server": {
+    "mcp_config": {
+      "command": "docker-compose",
+      "args": [
+        "up",
+        "-d",
+        "--pull",
+        "always"
+      ],
+      "env": {}
+    }
+  },
   "tools": [],
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "api_url": {
-      "type": "string",
-      "title": "ApeRAG API URL",
-      "description": "The base URL for the ApeRAG API, where the MCP endpoint is hosted.",
-      "required": true,
-      "default": "http://localhost:8000"
-    },
     "api_key": {
       "type": "string",
       "title": "ApeRAG API Key",
-      "description": "A valid API key from your ApeRAG settings to authorize requests.",
+      "description": "A valid API key from your ApeRAG settings, used for the 'Authorization: Bearer <key>' header.",
       "required": true,
       "sensitive": true
     }
@@ -35,12 +39,24 @@
       "mcpServers": {
         "aperag-mcp": {
           "command": "docker-compose",
-          "args": ["up", "-d", "--pull", "always"],
+          "args": [
+            "up",
+            "-d",
+            "--pull",
+            "always"
+          ],
           "env": {}
         },
         "aperag-helm": {
           "command": "helm",
-          "args": ["install", "aperag", "./deploy/aperag", "--namespace", "default", "--create-namespace"],
+          "args": [
+            "install",
+            "aperag",
+            "./deploy/aperag",
+            "--namespace",
+            "default",
+            "--create-namespace"
+          ],
           "env": {}
         }
       }

@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/build/index.js"],
+      "args": [
+        "${__dirname}/build/index.js"
+      ],
       "env": {
         "ASHRA_API_KEY": "${user_config.api_key}"
       }
@@ -36,7 +38,9 @@
       "mcpServers": {
         "ashra-mcp-configured": {
           "command": "node",
-          "args": ["<path/to/ashra-mcp>/build/index.js"],
+          "args": [
+            "<path/to/ashra-mcp>/build/index.js"
+          ],
           "env": {
             "ASHRA_API_KEY": "<YOUR-API-KEY>"
           }

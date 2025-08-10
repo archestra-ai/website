@@ -8,9 +8,15 @@
     "name": "heurist-network"
   },
   "server": {
+    "type": "python",
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}/mesh_mcp_server", "run", "mesh-tool-server"],
+      "args": [
+        "--directory",
+        "${__dirname}/mesh_mcp_server",
+        "run",
+        "mesh-tool-server"
+      ],
       "env": {
         "HEURIST_API_KEY": "${user_config.heurist_api_key}"
       }
@@ -23,7 +29,7 @@
     "heurist_api_key": {
       "type": "string",
       "title": "Heurist API Key",
-      "description": "Your API key for the Heurist Mesh. You can get a key at https://docs.heurist.ai/protocol-overview/credits.",
+      "description": "Your Heurist API key. You can get one from the Heurist AI website.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +42,12 @@
       "mcpServers": {
         "mesh-tool-server-stdio-configured": {
           "command": "uv",
-          "args": ["--directory", "/path/to/heurist-mesh-mcp-server/mesh_mcp_server", "run", "mesh-tool-server"],
+          "args": [
+            "--directory",
+            "/path/to/heurist-mesh-mcp-server/mesh_mcp_server",
+            "run",
+            "mesh-tool-server"
+          ],
           "env": {
             "HEURIST_API_KEY": "your-api-key-here"
           }
@@ -60,12 +71,26 @@
         },
         "mesh-tool-server-sse-uv": {
           "command": "uv",
-          "args": ["run", "mesh-tool-server", "--transport", "sse", "--port", "8000"],
+          "args": [
+            "run",
+            "mesh-tool-server",
+            "--transport",
+            "sse",
+            "--port",
+            "8000"
+          ],
           "env": {}
         },
         "mesh-tool-server-sse-docker": {
           "command": "docker",
-          "args": ["run", "-p", "8000:8000", "-e", "PORT=8000", "mesh-tool-server"],
+          "args": [
+            "run",
+            "-p",
+            "8000:8000",
+            "-e",
+            "PORT=8000",
+            "mesh-tool-server"
+          ],
           "env": {
             "PORT": "8000"
           }

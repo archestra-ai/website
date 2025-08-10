@@ -10,7 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@translated/lara-mcp", "stdio"],
+      "args": [
+        "-y",
+        "@translated/lara-mcp",
+        "http"
+      ],
       "env": {
         "LARA_API_KEY": "${user_config.lara_api_key}"
       }
@@ -23,7 +27,7 @@
     "lara_api_key": {
       "type": "string",
       "title": "Lara API Key",
-      "description": "Your API key for the Lara Translate service.",
+      "description": "Your API key for the Lara Translate API, used for authentication.",
       "required": true,
       "sensitive": true
     }
@@ -36,21 +40,37 @@
       "mcpServers": {
         "translated-lara-mcp": {
           "command": "lara-mcp",
-          "args": ["--port", "3000", "--api-key", "YOUR_LARA_API_KEY"],
+          "args": [
+            "--port",
+            "3000",
+            "--api-key",
+            "YOUR_LARA_API_KEY"
+          ],
           "env": {
             "LARA_API_KEY": "YOUR_LARA_API_KEY"
           }
         },
         "translatednet-lara-mcp-docker": {
           "command": "docker",
-          "args": ["run", "-p", "3000:3000", "-e", "LARA_API_KEY=YOUR_LARA_API_KEY", "translatednet/lara-mcp"],
+          "args": [
+            "run",
+            "-p",
+            "3000:3000",
+            "-e",
+            "LARA_API_KEY=YOUR_LARA_API_KEY",
+            "translatednet/lara-mcp"
+          ],
           "env": {
             "LARA_API_KEY": "YOUR_LARA_API_KEY"
           }
         },
         "translated-lara-mcp-stdio": {
           "command": "lara-mcp",
-          "args": ["stdio", "--api-key", "YOUR_LARA_API_KEY"],
+          "args": [
+            "stdio",
+            "--api-key",
+            "YOUR_LARA_API_KEY"
+          ],
           "env": {
             "LARA_API_KEY": "YOUR_LARA_API_KEY"
           }

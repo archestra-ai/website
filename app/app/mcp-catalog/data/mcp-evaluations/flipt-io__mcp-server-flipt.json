@@ -10,10 +10,13 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@flipt-io/mcp-server-flipt"],
+      "args": [
+        "-y",
+        "@flipt-io/mcp-server-flipt"
+      ],
       "env": {
-        "FLIPT_API_URL": "${user_config.FLIPT_API_URL}",
-        "FLIPT_API_KEY": "${user_config.FLIPT_API_KEY}"
+        "FLIPT_API_URL": "${user_config.flipt_api_url}",
+        "FLIPT_API_KEY": "${user_config.flipt_api_key}"
       }
     }
   },
@@ -21,14 +24,14 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "FLIPT_API_URL": {
+    "flipt_api_url": {
       "type": "string",
       "title": "Flipt API URL",
       "description": "The URL of the Flipt API.",
       "required": false,
       "default": "http://localhost:8080"
     },
-    "FLIPT_API_KEY": {
+    "flipt_api_key": {
       "type": "string",
       "title": "Flipt API Key",
       "description": "The API key to use for the Flipt API (optional).",
@@ -49,17 +52,28 @@
         },
         "flipt-io-mcp-server-flipt-npx": {
           "command": "npx",
-          "args": ["-y", "@flipt-io/mcp-server-flipt"],
+          "args": [
+            "-y",
+            "@flipt-io/mcp-server-flipt"
+          ],
           "env": {}
         },
         "flipt-io-mcp-server-flipt-docker": {
           "command": "docker",
-          "args": ["run", "-d", "--name", "mcp-server-flipt", "ghcr.io/flipt-io/mcp-server-flipt:latest"],
+          "args": [
+            "run",
+            "-d",
+            "--name",
+            "mcp-server-flipt",
+            "ghcr.io/flipt-io/mcp-server-flipt:latest"
+          ],
           "env": {}
         },
         "flipt-io-mcp-server-flipt-npm-start": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         }
       }

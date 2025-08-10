@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["database-mcp"],
+      "args": [
+        "database-mcp"
+      ],
       "env": {
         "DB_TYPE": "${user_config.db_type}",
         "DB_CONFIG": "${user_config.db_config}",
@@ -24,21 +26,21 @@
   "user_config": {
     "db_type": {
       "type": "string",
-      "title": "Database Type (for Single DB)",
-      "description": "The database type code for a single database connection (e.g., pg, mysql, mssql). Use this with 'Single DB JSON Config'. See documentation for all codes.",
+      "title": "Database Type (Single DB)",
+      "description": "The type code for a single database connection (e.g., pg, mysql, mssql). Use with 'Database Config JSON'. See documentation for a full list of codes. Leave empty if using 'Multiple Database Configs JSON'.",
       "required": false
     },
     "db_config": {
       "type": "string",
-      "title": "Single DB JSON Config",
-      "description": "A JSON configuration string for a single database connection. Example: {\"host\":\"localhost\",\"port\":5432,\"user\":\"user\",\"password\":\"pw\",\"dbname\":\"dbname\"}. Use this with 'Database Type'.",
+      "title": "Database Config JSON (Single DB)",
+      "description": "A JSON string with connection details for a single database (e.g., {\"host\":\"localhost\",\"user\":\"user\",\"password\":\"pw\",\"dbname\":\"dbname\"}). Use with 'Database Type'. Leave empty if using 'Multiple Database Configs JSON'.",
       "required": false,
       "sensitive": true
     },
     "db_configs": {
       "type": "string",
-      "title": "Multiple DBs JSON Config",
-      "description": "A JSON array for multiple database configurations. If provided, this overrides the single DB settings. Example: [{\"id\":\"pg_main\",\"db_type\":\"pg\",\"configuration\":{...}}, {\"id\":\"mysql_data\",\"db_type\":\"mysql\",\"configuration\":{...}}]",
+      "title": "Multiple Database Configs JSON",
+      "description": "A JSON array for connecting to multiple databases. If this is filled, the single database options (Database Type, Database Config JSON) are ignored. Example: [{\"id\":\"pg_main\",\"db_type\":\"pg\",\"configuration\":{...}}, ...]",
       "required": false,
       "sensitive": true
     }
@@ -51,7 +53,9 @@
       "mcpServers": {
         "database-mcp-uvx-single-db": {
           "command": "uvx",
-          "args": ["database-mcp"],
+          "args": [
+            "database-mcp"
+          ],
           "env": {
             "DB_TYPE": "pg",
             "DB_CONFIG": "{\"host\":\"localhost\",\"port\":5432,\"user\":\"user\",\"password\":\"pw\",\"dbname\":\"dbname\"}"
@@ -59,14 +63,21 @@
         },
         "database-mcp-uvx-multi-db": {
           "command": "uvx",
-          "args": ["database-mcp"],
+          "args": [
+            "database-mcp"
+          ],
           "env": {
             "DB_CONFIGS": "[{\"id\":\"pg_main\",\"db_type\":\"pg\",\"configuration\":{\"host\":\"localhost\",\"port\":5432,\"user\":\"user\",\"password\":\"pw\",\"dbname\":\"postgres\"},\"description\":\"PostgreSQL Database\"},{\"id\":\"mysql_data\",\"db_type\":\"mysql\",\"configuration\":{\"host\":\"localhost\",\"port\":3306,\"user\":\"root\",\"password\":\"pass\",\"database\":\"mysql\"},\"description\":\"MySQL Database\"}]"
           }
         },
         "database-mcp-pip-single-db": {
           "command": "python",
-          "args": ["-m", "database_mcp", "--repository", "path/to/git/repo"],
+          "args": [
+            "-m",
+            "database_mcp",
+            "--repository",
+            "path/to/git/repo"
+          ],
           "env": {
             "DB_TYPE": "pg",
             "DB_CONFIG": "{\"host\":\"localhost\",\"port\":5432,\"user\":\"user\",\"password\":\"pw\",\"dbname\":\"dbname\"}"
@@ -74,12 +85,17 @@
         },
         "database-mcp-production": {
           "command": "python",
-          "args": ["mcp_server.py"],
+          "args": [
+            "mcp_server.py"
+          ],
           "env": {}
         },
         "database-mcp-uv-env-single-db": {
           "command": "uv",
-          "args": ["run", "src/database_mcp/mcp_server.py"],
+          "args": [
+            "run",
+            "src/database_mcp/mcp_server.py"
+          ],
           "env": {
             "DB_TYPE": "pg",
             "DB_CONFIG": "{\"host\":\"localhost\",\"port\":5432,\"user\":\"username\",\"password\":\"password\",\"dbname\":\"database_name\"}"
@@ -87,14 +103,20 @@
         },
         "database-mcp-uv-env-multi-db": {
           "command": "uv",
-          "args": ["run", "src/database_mcp/mcp_server.py"],
+          "args": [
+            "run",
+            "src/database_mcp/mcp_server.py"
+          ],
           "env": {
             "DB_CONFIGS": "[{\"id\":\"pg_main\",\"db_type\":\"pg\",\"configuration\":{\"host\":\"localhost\",\"port\":5432,\"user\":\"username\",\"password\":\"password\",\"dbname\":\"database_name\"},\"description\":\"PostgreSQL Database\"},{\"id\":\"mysql_users\",\"db_type\":\"mysql\",\"configuration\":{\"host\":\"localhost\",\"port\":3306,\"user\":\"root\",\"password\":\"pass\",\"database\":\"mysql\"},\"description\":\"MySQL Database\"}]"
           }
         },
         "database-mcp-uv-env-multi-db-auto-id": {
           "command": "uv",
-          "args": ["run", "src/database_mcp/mcp_server.py"],
+          "args": [
+            "run",
+            "src/database_mcp/mcp_server.py"
+          ],
           "env": {
             "DB_CONFIGS": "[{\"db_type\":\"pg\",\"configuration\":{\"host\":\"localhost\",\"port\":5432,\"user\":\"username\",\"password\":\"password\",\"dbname\":\"database_name\"},\"description\":\"PostgreSQL Database\"},{\"db_type\":\"mysql\",\"configuration\":{\"host\":\"localhost\",\"port\":3306,\"user\":\"root\",\"password\":\"pass\",\"database\":\"mysql\"},\"description\":\"MySQL Database\"}]"
           }

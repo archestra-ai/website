@@ -86,27 +86,48 @@
       "mcpServers": {
         "serena-mcp-server": {
           "command": "python",
-          "args": ["-m", "serena.mcp_server"],
+          "args": [
+            "-m",
+            "serena.mcp_server"
+          ],
           "env": {}
         },
         "serena-mcp-server-sse": {
           "command": "python",
-          "args": ["-m", "serena.mcp_server", "--sse"],
+          "args": [
+            "-m",
+            "serena.mcp_server",
+            "--sse"
+          ],
           "env": {}
         },
         "serena-mcp-server-with-config": {
           "command": "python",
-          "args": ["-m", "serena.mcp_server", "--config", "/path/to/config.json"],
+          "args": [
+            "-m",
+            "serena.mcp_server",
+            "--config",
+            "/path/to/config.json"
+          ],
           "env": {}
         },
         "serena": {
           "command": "uvx",
-          "args": ["serena"],
+          "args": [
+            "serena"
+          ],
           "env": {}
         },
         "serena-docker": {
           "command": "docker",
-          "args": ["run", "-p", "8000:8000", "-v", "$(pwd):/app", "serena:latest"],
+          "args": [
+            "run",
+            "-p",
+            "8000:8000",
+            "-v",
+            "$(pwd):/app",
+            "serena:latest"
+          ],
           "env": {}
         }
       }

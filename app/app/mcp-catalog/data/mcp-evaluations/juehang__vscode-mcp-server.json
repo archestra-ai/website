@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["mcp-remote@next", "http://${user_config.host}:${user_config.port}/mcp"],
+      "args": [
+        "mcp-remote@next",
+        "http://${user_config.hostname}:${user_config.port}/mcp"
+      ],
       "env": {}
     }
   },
@@ -18,17 +21,17 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "host": {
+    "hostname": {
       "type": "string",
-      "title": "Server Host",
-      "description": "The host on which the VS Code MCP server is listening.",
+      "title": "Server Hostname",
+      "description": "The hostname where the VS Code MCP server is running.",
       "required": false,
       "default": "localhost"
     },
     "port": {
       "type": "number",
       "title": "Server Port",
-      "description": "The port on which the VS Code MCP server is listening. The document mentions this is configurable.",
+      "description": "The port number the VS Code MCP server is listening on.",
       "required": false,
       "default": 3000
     }

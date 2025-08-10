@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "agentql-mcp"],
+      "args": [
+        "-y",
+        "agentql-mcp"
+      ],
       "env": {
         "AGENTQL_API_KEY": "${user_config.api_key}"
       }
@@ -23,7 +26,7 @@
     "api_key": {
       "type": "string",
       "title": "AgentQL API Key",
-      "description": "Your API key from the AgentQL Dev Portal.",
+      "description": "Your API key for AgentQL. Get one from the AgentQL Dev Portal.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +39,10 @@
       "mcpServers": {
         "agentql": {
           "command": "npx",
-          "args": ["-y", "agentql-mcp"],
+          "args": [
+            "-y",
+            "agentql-mcp"
+          ],
           "env": {
             "AGENTQL_API_KEY": "YOUR_API_KEY"
           }

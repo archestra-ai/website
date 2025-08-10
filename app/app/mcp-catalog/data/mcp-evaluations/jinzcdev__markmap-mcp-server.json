@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@jinzcdev/markmap-mcp-server"],
+      "args": [
+        "-y",
+        "@jinzcdev/markmap-mcp-server"
+      ],
       "env": {
         "MARKMAP_DIR": "${user_config.output_directory}"
       }
@@ -23,7 +26,7 @@
     "output_directory": {
       "type": "directory",
       "title": "Output Directory",
-      "description": "Specify the output directory for generated mind maps. If not provided, a system temporary directory will be used.",
+      "description": "Specify the output directory for mind maps. Defaults to the system temporary directory.",
       "required": false
     }
   },
@@ -35,24 +38,37 @@
       "mcpServers": {
         "jinzcdev-markmap-mcp-server": {
           "command": "npx",
-          "args": ["-y", "@jinzcdev/markmap-mcp-server"],
+          "args": [
+            "-y",
+            "@jinzcdev/markmap-mcp-server"
+          ],
           "env": {}
         },
         "jinzcdev-markmap-mcp-server-with-output": {
           "command": "npx",
-          "args": ["-y", "@jinzcdev/markmap-mcp-server", "--output", "/path/to/output/directory"],
+          "args": [
+            "-y",
+            "@jinzcdev/markmap-mcp-server",
+            "--output",
+            "/path/to/output/directory"
+          ],
           "env": {}
         },
         "jinzcdev-markmap-mcp-server-stdio": {
           "command": "npx",
-          "args": ["-y", "@jinzcdev/markmap-mcp-server"],
+          "args": [
+            "-y",
+            "@jinzcdev/markmap-mcp-server"
+          ],
           "env": {
             "MARKMAP_DIR": "/path/to/output/directory"
           }
         },
         "jinzcdev-markmap-mcp-server-local": {
           "command": "node",
-          "args": ["build/index.js"],
+          "args": [
+            "build/index.js"
+          ],
           "env": {}
         }
       }

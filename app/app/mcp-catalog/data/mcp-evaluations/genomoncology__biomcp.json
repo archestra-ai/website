@@ -10,11 +10,17 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["run", "--with", "biomcp-python", "biomcp", "run"],
+      "args": [
+        "run",
+        "--with",
+        "biomcp-python",
+        "biomcp",
+        "run"
+      ],
       "env": {
-        "CBIO_TOKEN": "${user_config.cbioportal_token}",
-        "CBIO_BASE_URL": "${user_config.cbioportal_base_url}",
-        "BIOMCP_USE_CONNECTION_POOL": "${user_config.use_connection_pool}"
+        "CBIO_TOKEN": "${user_config.CBIO_TOKEN}",
+        "CBIO_BASE_URL": "${user_config.CBIO_BASE_URL}",
+        "BIOMCP_USE_CONNECTION_POOL": "${user_config.BIOMCP_USE_CONNECTION_POOL}"
       }
     }
   },
@@ -22,24 +28,24 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "cbioportal_token": {
+    "CBIO_TOKEN": {
       "type": "string",
       "title": "cBioPortal API Token",
       "description": "Optional API token for authenticated access to cBioPortal.",
       "required": false,
       "sensitive": true
     },
-    "cbioportal_base_url": {
+    "CBIO_BASE_URL": {
       "type": "string",
       "title": "cBioPortal Base URL",
-      "description": "Custom API endpoint for cBioPortal. Defaults to the public API.",
+      "description": "Custom API endpoint for cBioPortal.",
       "required": false,
       "default": "https://www.cbioportal.org/api"
     },
-    "use_connection_pool": {
+    "BIOMCP_USE_CONNECTION_POOL": {
       "type": "boolean",
       "title": "Use Connection Pooling",
-      "description": "Enable HTTP connection pooling for performance. Recommended to leave enabled.",
+      "description": "Enable HTTP connection pooling for performance tuning (default: true).",
       "required": false,
       "default": true
     }
@@ -52,7 +58,13 @@
       "mcpServers": {
         "biomcp-python": {
           "command": "uv",
-          "args": ["run", "--with", "biomcp-python", "biomcp", "run"],
+          "args": [
+            "run",
+            "--with",
+            "biomcp-python",
+            "biomcp",
+            "run"
+          ],
           "env": {}
         }
       }

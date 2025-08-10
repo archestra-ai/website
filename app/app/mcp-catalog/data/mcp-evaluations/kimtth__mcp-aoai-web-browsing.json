@@ -11,7 +11,9 @@
     "type": "python",
     "mcp_config": {
       "command": "python",
-      "args": ["chatgui.py"],
+      "args": [
+        "chatgui.py"
+      ],
       "env": {
         "AZURE_OPEN_AI_ENDPOINT": "${user_config.azure_open_ai_endpoint}",
         "AZURE_OPEN_AI_API_KEY": "${user_config.azure_open_ai_api_key}",
@@ -27,28 +29,28 @@
     "azure_open_ai_endpoint": {
       "type": "string",
       "title": "Azure OpenAI Endpoint",
-      "description": "The endpoint URL for your Azure OpenAI service.",
+      "description": "The endpoint URL for your Azure OpenAI resource.",
       "required": true,
       "sensitive": false
     },
     "azure_open_ai_api_key": {
       "type": "string",
       "title": "Azure OpenAI API Key",
-      "description": "The API key for your Azure OpenAI service.",
+      "description": "The API key for your Azure OpenAI resource.",
       "required": true,
       "sensitive": true
     },
     "azure_open_ai_deployment_model": {
       "type": "string",
       "title": "Azure OpenAI Deployment Model",
-      "description": "The name of the deployment model to use in Azure OpenAI.",
+      "description": "The name of the deployment model to use.",
       "required": true,
       "sensitive": false
     },
     "azure_open_ai_api_version": {
       "type": "string",
       "title": "Azure OpenAI API Version",
-      "description": "The API version for Azure OpenAI (e.g., 2023-05-15).",
+      "description": "The API version for Azure OpenAI (e.g., '2024-02-01').",
       "required": true,
       "sensitive": false
     }
@@ -61,7 +63,9 @@
       "mcpServers": {
         "mcp-web-auto": {
           "command": "python",
-          "args": ["chatgui.py"],
+          "args": [
+            "chatgui.py"
+          ],
           "env": {}
         }
       }

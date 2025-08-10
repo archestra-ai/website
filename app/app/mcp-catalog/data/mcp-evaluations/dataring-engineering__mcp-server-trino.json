@@ -10,14 +10,19 @@
   "server": {
     "mcp_config": {
       "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "mcp_server_trino"],
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "mcp_server_trino"
+      ],
       "env": {
-        "TRINO_HOST": "${user_config.trino_host}",
-        "TRINO_PORT": "${user_config.trino_port}",
-        "TRINO_USER": "${user_config.trino_user}",
-        "TRINO_PASSWORD": "${user_config.trino_password}",
-        "TRINO_CATALOG": "${user_config.trino_catalog}",
-        "TRINO_SCHEMA": "${user_config.trino_schema}"
+        "TRINO_HOST": "${user_config.host}",
+        "TRINO_PORT": "${user_config.port}",
+        "TRINO_USER": "${user_config.user}",
+        "TRINO_PASSWORD": "${user_config.password}",
+        "TRINO_CATALOG": "${user_config.catalog}",
+        "TRINO_SCHEMA": "${user_config.schema}"
       }
     }
   },
@@ -25,43 +30,43 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "trino_host": {
+    "host": {
       "type": "string",
       "title": "Trino Host",
-      "description": "Trino server hostname or IP.",
+      "description": "Trino server hostname or IP",
       "required": false,
       "default": "localhost"
     },
-    "trino_port": {
+    "port": {
       "type": "number",
       "title": "Trino Port",
-      "description": "Trino server port.",
+      "description": "Trino server port",
       "required": false,
       "default": 8080
     },
-    "trino_user": {
+    "user": {
       "type": "string",
       "title": "Trino User",
-      "description": "Trino user name.",
+      "description": "Trino user name",
       "required": true
     },
-    "trino_password": {
+    "password": {
       "type": "string",
       "title": "Trino Password",
-      "description": "Trino password (optional, depends on your authentication setup).",
+      "description": "Trino password (optional, depends on your authentication setup)",
       "required": false,
       "sensitive": true
     },
-    "trino_catalog": {
+    "catalog": {
       "type": "string",
       "title": "Trino Catalog",
-      "description": "Default catalog to use (e.g., `hive`, `tpch`, `postgresql`, etc.).",
+      "description": "Default catalog to use (e.g., `hive`, `tpch`, `postgresql`, etc.)",
       "required": true
     },
-    "trino_schema": {
+    "schema": {
       "type": "string",
       "title": "Trino Schema",
-      "description": "Default schema to use (e.g., `default`, `public`, etc.).",
+      "description": "Default schema to use (e.g., `default`, `public`, etc.)",
       "required": true
     }
   },
@@ -73,7 +78,12 @@
       "mcpServers": {
         "mcp_server_trino": {
           "command": "uv",
-          "args": ["--directory", "<path_to_mcp_server_trino>", "run", "mcp_server_trino"],
+          "args": [
+            "--directory",
+            "<path_to_mcp_server_trino>",
+            "run",
+            "mcp_server_trino"
+          ],
           "env": {
             "TRINO_HOST": "<host>",
             "TRINO_PORT": "<port>",

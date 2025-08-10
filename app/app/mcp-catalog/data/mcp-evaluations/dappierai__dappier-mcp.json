@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["dappier-mcp"],
+      "args": [
+        "dappier-mcp"
+      ],
       "env": {
         "DAPPIER_API_KEY": "${user_config.api_key}"
       }
@@ -36,7 +38,9 @@
       "mcpServers": {
         "dappier-mcp": {
           "command": "uvx",
-          "args": ["dappier-mcp"],
+          "args": [
+            "dappier-mcp"
+          ],
           "env": {
             "DAPPIER_API_KEY": "YOUR_API_KEY_HERE"
           }

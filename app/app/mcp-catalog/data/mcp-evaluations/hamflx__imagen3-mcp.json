@@ -8,6 +8,7 @@
     "name": "hamflx"
   },
   "server": {
+    "type": "binary",
     "mcp_config": {
       "command": "server/imagen3-mcp",
       "args": [],
@@ -33,14 +34,14 @@
     },
     "base_url": {
       "type": "string",
-      "title": "Base URL (Proxy)",
-      "description": "Optional proxy URL for the Google API, e.g., https://your-proxy.com",
+      "title": "Proxy Base URL",
+      "description": "Optional proxy URL for the Gemini API, e.g., https://your-proxy.com.",
       "required": false
     },
     "server_listen_addr": {
       "type": "string",
       "title": "Server Listen Address",
-      "description": "The IP address the server listens on.",
+      "description": "The IP address the server listens on. Use 0.0.0.0 to listen on all interfaces.",
       "required": false,
       "default": "127.0.0.1"
     },
@@ -54,7 +55,7 @@
     "image_resource_server_addr": {
       "type": "string",
       "title": "Image Resource Server Address",
-      "description": "The server address used in the image URLs. Useful if the server runs in a container or remote machine.",
+      "description": "The server address used in image URLs. Useful if the server runs in a container or remote machine.",
       "required": false,
       "default": "127.0.0.1"
     }

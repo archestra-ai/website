@@ -8,12 +8,15 @@
     "name": "keturiosakys"
   },
   "server": {
+    "type": "node",
     "mcp_config": {
       "command": "bun",
-      "args": ["${__dirname}/index.ts"],
+      "args": [
+        "${__dirname}/index.ts"
+      ],
       "env": {
-        "BLUESKY_APP_KEY": "${user_config.app_key}",
-        "BLUESKY_IDENTIFIER": "${user_config.identifier}"
+        "BLUESKY_IDENTIFIER": "${user_config.bluesky_identifier}",
+        "BLUESKY_APP_KEY": "${user_config.bluesky_app_key}"
       }
     }
   },
@@ -21,19 +24,18 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "app_key": {
-      "type": "string",
-      "title": "Bluesky App Key",
-      "description": "The app key (app password) for your Bluesky account.",
-      "required": true,
-      "sensitive": true
-    },
-    "identifier": {
+    "bluesky_identifier": {
       "type": "string",
       "title": "Bluesky Identifier",
-      "description": "The identifier (handle) for your Bluesky account.",
+      "description": "Your Bluesky handle or DID (e.g., @username.bsky.social).",
+      "required": true
+    },
+    "bluesky_app_key": {
+      "type": "string",
+      "title": "Bluesky App Password",
+      "description": "Your Bluesky App Password. You can create one in your Bluesky settings under 'App Passwords'.",
       "required": true,
-      "sensitive": false
+      "sensitive": true
     }
   },
   "readme": "# Bluesky Context Server\n[![smithery badge](https://smithery.ai/badge/bluesky-context-server)](https://smithery.ai/server/bluesky-context-server)\n\nA simple MCP server that can enable MCP clients to query Bluesky instances.\n\n## Usage\n\n### Installing via Smithery\n\nTo install Bluesky Context Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@laulauland/bluesky-context-server):\n\n```bash\nnpx -y @smithery/cli install @laulauland/bluesky-context-server --client claude\n```\n\n### Installing manually\n1. Place the code somewhere on your computer.\n2. Configure your Claude Desktop app to use the MCP server.\n\n```json\n// ~/Library/Application Support/Claude/config.json\n{\n\t\"mcpServers\": {\n\t\t\"bluesky\": {\n\t\t\t\"command\": \"/Users/laurynas-fp/.bun/bin/bun\",\n\t\t\t\"args\": [\n\t\t\t\t\"<path_to_this_directory>/bluesky-context-server/index.ts\"\n\t\t\t],\n\t\t\t\"env\": {\n\t\t\t\t\"BLUESKY_APP_KEY\": \"\",\n\t\t\t\t\"BLUESKY_IDENTIFIER\": \"\"\n\t\t\t}\n\t\t}\n\t}\n}\n```\n",
@@ -44,7 +46,9 @@
       "mcpServers": {
         "laulauland-bluesky-context-server": {
           "command": "/Users/laurynas-fp/.bun/bin/bun",
-          "args": ["<path_to_this_directory>/bluesky-context-server/index.ts"],
+          "args": [
+            "<path_to_this_directory>/bluesky-context-server/index.ts"
+          ],
           "env": {
             "BLUESKY_APP_KEY": "",
             "BLUESKY_IDENTIFIER": ""

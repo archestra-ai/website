@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@jetbrains/mcp-proxy"],
+      "args": [
+        "-y",
+        "@jetbrains/mcp-proxy"
+      ],
       "env": {
         "IDE_PORT": "${user_config.ide_port}",
         "HOST": "${user_config.host}",
@@ -23,9 +26,9 @@
   "keywords": [],
   "user_config": {
     "ide_port": {
-      "type": "string",
+      "type": "number",
       "title": "IDE Port",
-      "description": "The port of the specific IDE's built-in webserver. Use this if you are running multiple IDEs and want to connect to a specific one.",
+      "description": "If you're running multiple IDEs, specify the port of the IDE's built-in webserver to connect to a specific one.",
       "required": false
     },
     "host": {
@@ -38,7 +41,7 @@
     "log_enabled": {
       "type": "boolean",
       "title": "Enable Logging",
-      "description": "Set to true to enable logging for the MCP server.",
+      "description": "Enable logging for the MCP server.",
       "required": false,
       "default": false
     }
@@ -51,12 +54,18 @@
       "mcpServers": {
         "jetbrains-mcp-proxy": {
           "command": "npx",
-          "args": ["-y", "@jetbrains/mcp-proxy"],
+          "args": [
+            "-y",
+            "@jetbrains/mcp-proxy"
+          ],
           "env": {}
         },
         "jetbrains-mcp-proxy-configured": {
           "command": "npx",
-          "args": ["-y", "@jetbrains/mcp-proxy"],
+          "args": [
+            "-y",
+            "@jetbrains/mcp-proxy"
+          ],
           "env": {
             "IDE_PORT": "<port of IDE's built-in webserver>",
             "HOST": "<host/address of IDE's built-in webserver>",
@@ -65,7 +74,10 @@
         },
         "jetbrains-mcp-proxy-external-client": {
           "command": "sh",
-          "args": ["-c", "IDE_PORT=YOUR_IDEA_PORT HOST=YOUR_IDEA_LAN_IP npx -y @jetbrains/mcp-proxy"],
+          "args": [
+            "-c",
+            "IDE_PORT=YOUR_IDEA_PORT HOST=YOUR_IDEA_LAN_IP npx -y @jetbrains/mcp-proxy"
+          ],
           "env": {
             "IDE_PORT": "YOUR_IDEA_PORT",
             "HOST": "YOUR_IDEA_LAN_IP"

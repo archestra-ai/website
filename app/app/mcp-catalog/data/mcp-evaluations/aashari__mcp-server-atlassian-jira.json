@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "@aashari/mcp-server-atlassian-jira"],
+      "args": [
+        "-y",
+        "@aashari/mcp-server-atlassian-jira"
+      ],
       "env": {
         "ATLASSIAN_SITE_NAME": "${user_config.atlassian_site_name}",
         "ATLASSIAN_USER_EMAIL": "${user_config.atlassian_user_email}",
@@ -31,13 +34,13 @@
     "atlassian_user_email": {
       "type": "string",
       "title": "Atlassian User Email",
-      "description": "Your Atlassian account email address.",
+      "description": "Your Atlassian account email.",
       "required": true
     },
     "atlassian_api_token": {
       "type": "string",
       "title": "Atlassian API Token",
-      "description": "Your personal Atlassian API token. You can create one at https://id.atlassian.com/manage-profile/security/api-tokens",
+      "description": "Your Atlassian API token. You can create one at https://id.atlassian.com/manage-profile/security/api-tokens",
       "required": true,
       "sensitive": true
     }
@@ -50,19 +53,26 @@
       "mcpServers": {
         "aashari-mcp-server-atlassian-jira": {
           "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-atlassian-jira"],
+          "args": [
+            "-y",
+            "@aashari/mcp-server-atlassian-jira"
+          ],
           "env": {}
         },
         "aashari-mcp-server-atlassian-jira-stdio": {
           "command": "npx",
-          "args": ["@aashari/mcp-server-atlassian-jira"],
+          "args": [
+            "@aashari/mcp-server-atlassian-jira"
+          ],
           "env": {
             "TRANSPORT_MODE": "stdio"
           }
         },
         "aashari-mcp-server-atlassian-jira-http": {
           "command": "npx",
-          "args": ["@aashari/mcp-server-atlassian-jira"],
+          "args": [
+            "@aashari/mcp-server-atlassian-jira"
+          ],
           "env": {
             "TRANSPORT_MODE": "http"
           }

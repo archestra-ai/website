@@ -12,10 +12,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "unique_mcp_url": {
+    "mcp_url": {
       "type": "string",
-      "title": "Unique MCP URL",
-      "description": "Your unique, pre-authenticated WayStation MCP URL from your user dashboard at https://waystation.ai/dashboard.",
+      "title": "WayStation MCP URL",
+      "description": "Your unique, preauthenticated MCP URL from the WayStation dashboard (e.g., https://waystation.ai/mcp/<user_unique_id>).",
       "required": true,
       "sensitive": true
     }

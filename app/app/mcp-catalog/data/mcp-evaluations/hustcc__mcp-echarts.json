@@ -10,14 +10,17 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "mcp-echarts"],
+      "args": [
+        "-y",
+        "mcp-echarts"
+      ],
       "env": {
-        "MINIO_ENDPOINT": "${user_config.MINIO_ENDPOINT}",
-        "MINIO_PORT": "${user_config.MINIO_PORT}",
-        "MINIO_USE_SSL": "${user_config.MINIO_USE_SSL}",
-        "MINIO_ACCESS_KEY": "${user_config.MINIO_ACCESS_KEY}",
-        "MINIO_SECRET_KEY": "${user_config.MINIO_SECRET_KEY}",
-        "MINIO_BUCKET_NAME": "${user_config.MINIO_BUCKET_NAME}"
+        "MINIO_ENDPOINT": "${user_config.minio_endpoint}",
+        "MINIO_PORT": "${user_config.minio_port}",
+        "MINIO_USE_SSL": "${user_config.minio_use_ssl}",
+        "MINIO_ACCESS_KEY": "${user_config.minio_access_key}",
+        "MINIO_SECRET_KEY": "${user_config.minio_secret_key}",
+        "MINIO_BUCKET_NAME": "${user_config.minio_bucket_name}"
       }
     }
   },
@@ -25,45 +28,47 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "MINIO_ENDPOINT": {
+    "minio_endpoint": {
       "type": "string",
       "title": "MinIO Endpoint",
-      "description": "The endpoint (hostname or IP address) of the MinIO server. Optional.",
+      "description": "The endpoint/hostname of the MinIO server. This feature is optional; leave blank to disable.",
       "required": false,
       "default": "localhost"
     },
-    "MINIO_PORT": {
+    "minio_port": {
       "type": "number",
       "title": "MinIO Port",
-      "description": "The port number for the MinIO server. Optional.",
+      "description": "The port number for the MinIO server.",
       "required": false,
       "default": 9000
     },
-    "MINIO_USE_SSL": {
+    "minio_use_ssl": {
       "type": "boolean",
       "title": "Use SSL for MinIO",
-      "description": "Whether to use a secure SSL/TLS connection for MinIO. Optional.",
+      "description": "Whether to use a secure connection (HTTPS) for the MinIO server.",
       "required": false,
       "default": false
     },
-    "MINIO_ACCESS_KEY": {
+    "minio_access_key": {
       "type": "string",
       "title": "MinIO Access Key",
-      "description": "The access key for MinIO authentication. Optional.",
+      "description": "The access key for MinIO authentication.",
       "required": false,
-      "sensitive": true
+      "sensitive": true,
+      "default": "minioadmin"
     },
-    "MINIO_SECRET_KEY": {
+    "minio_secret_key": {
       "type": "string",
       "title": "MinIO Secret Key",
-      "description": "The secret key for MinIO authentication. Optional.",
+      "description": "The secret key for MinIO authentication.",
       "required": false,
-      "sensitive": true
+      "sensitive": true,
+      "default": "minioadmin"
     },
-    "MINIO_BUCKET_NAME": {
+    "minio_bucket_name": {
       "type": "string",
       "title": "MinIO Bucket Name",
-      "description": "The name of the bucket in MinIO to store charts. Optional.",
+      "description": "The name of the bucket in MinIO to store charts.",
       "required": false,
       "default": "mcp-echarts"
     }
@@ -76,27 +81,44 @@
       "mcpServers": {
         "mcp-echarts-stdio": {
           "command": "npx",
-          "args": ["-y", "mcp-echarts"],
+          "args": [
+            "-y",
+            "mcp-echarts"
+          ],
           "env": {}
         },
         "mcp-echarts-stdio-windows": {
           "command": "cmd",
-          "args": ["/c", "npx", "-y", "mcp-echarts"],
+          "args": [
+            "/c",
+            "npx",
+            "-y",
+            "mcp-echarts"
+          ],
           "env": {}
         },
         "mcp-echarts-sse": {
           "command": "mcp-echarts",
-          "args": ["-t", "sse"],
+          "args": [
+            "-t",
+            "sse"
+          ],
           "env": {}
         },
         "mcp-echarts-streamable": {
           "command": "mcp-echarts",
-          "args": ["-t", "streamable"],
+          "args": [
+            "-t",
+            "streamable"
+          ],
           "env": {}
         },
         "mcp-echarts-dev": {
           "command": "npm",
-          "args": ["run", "start"],
+          "args": [
+            "run",
+            "start"
+          ],
           "env": {}
         }
       }

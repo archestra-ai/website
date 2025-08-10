@@ -10,11 +10,13 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["daisys-mcp"],
+      "args": [
+        "daisys-mcp"
+      ],
       "env": {
         "DAISYS_EMAIL": "${user_config.daisys_email}",
         "DAISYS_PASSWORD": "${user_config.daisys_password}",
-        "DAISYS_BASE_STORAGE_PATH": "${user_config.base_storage_path}"
+        "DAISYS_BASE_STORAGE_PATH": "${user_config.storage_path}"
       }
     }
   },
@@ -25,20 +27,20 @@
     "daisys_email": {
       "type": "string",
       "title": "Daisys Email",
-      "description": "Your Daisys account email.",
+      "description": "Your email for your Daisys account.",
       "required": true,
       "sensitive": false
     },
     "daisys_password": {
       "type": "string",
       "title": "Daisys Password",
-      "description": "Your Daisys account password.",
+      "description": "Your password for your Daisys account.",
       "required": true,
       "sensitive": true
     },
-    "base_storage_path": {
+    "storage_path": {
       "type": "directory",
-      "title": "Base Storage Path",
+      "title": "Audio Storage Path",
       "description": "Path where you want to store your audio files.",
       "required": true
     }
@@ -51,7 +53,9 @@
       "mcpServers": {
         "daisys-mcp": {
           "command": "uvx",
-          "args": ["daisys-mcp"],
+          "args": [
+            "daisys-mcp"
+          ],
           "env": {
             "DAISYS_EMAIL": "{Your Daisys Email}",
             "DAISYS_PASSWORD": "{Your Daisys Password}",
@@ -60,7 +64,13 @@
         },
         "daisys-mcp-from-source": {
           "command": "uv",
-          "args": ["--directory", "{installation_path}/daisys-mcp", "run", "-m", "daisys_mcp.server"],
+          "args": [
+            "--directory",
+            "{installation_path}/daisys-mcp",
+            "run",
+            "-m",
+            "daisys_mcp.server"
+          ],
           "env": {
             "DAISYS_EMAIL": "{Your Daisys Email}",
             "DAISYS_PASSWORD": "{Your Daisys Password}",

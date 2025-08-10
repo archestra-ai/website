@@ -10,7 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "coincap-mcp"],
+      "args": [
+        "-y",
+        "coincap-mcp"
+      ],
       "env": {}
     }
   },
@@ -26,7 +29,9 @@
       "mcpServers": {
         "coincap-mcp": {
           "command": "npx",
-          "args": ["coincap-mcp"],
+          "args": [
+            "coincap-mcp"
+          ],
           "env": {}
         },
         "coincap-mcp-configured": {

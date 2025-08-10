@@ -10,12 +10,15 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["-m", "notion_mcp_server.api_serverV2"],
+      "args": [
+        "-m",
+        "notion_mcp_server.api_serverV2"
+      ],
       "env": {
         "NOTION_TOKEN": "${user_config.notion_token}",
         "HOST": "${user_config.host}",
         "PORT": "${user_config.port}",
-        "DEBUG": "${user_config.debug_mode}",
+        "DEBUG": "${user_config.debug}",
         "MAX_PAGE_SIZE": "${user_config.max_page_size}",
         "DEFAULT_PAGE_SIZE": "${user_config.default_page_size}",
         "MAX_CONTENT_LENGTH": "${user_config.max_content_length}",
@@ -59,42 +62,42 @@
     "notion_token": {
       "type": "string",
       "title": "Notion Integration Token",
-      "description": "Your Notion integration token. Must start with 'ntn_'. You can create one from https://www.notion.so/my-integrations.",
+      "description": "Your Notion integration token, which starts with 'ntn_'. Create one at https://www.notion.so/profile/integrations.",
       "required": true,
       "sensitive": true
     },
     "host": {
       "type": "string",
       "title": "Server Host",
-      "description": "The host address for the server to listen on.",
+      "description": "The host address the server will bind to.",
       "required": false,
       "default": "0.0.0.0"
     },
     "port": {
       "type": "number",
       "title": "Server Port",
-      "description": "The port for the server to listen on.",
+      "description": "The port the server will listen on.",
       "required": false,
       "default": 8081
     },
-    "debug_mode": {
+    "debug": {
       "type": "boolean",
-      "title": "Enable Debug Mode",
-      "description": "Run the server in debug mode for more verbose output.",
+      "title": "Debug Mode",
+      "description": "Enable or disable debug mode for the server.",
       "required": false,
       "default": false
     },
     "max_page_size": {
       "type": "number",
       "title": "Maximum Page Size",
-      "description": "The maximum number of items to return in a paginated response (e.g., in search results).",
+      "description": "The maximum number of items to return in a single paginated response.",
       "required": false,
       "default": 100
     },
     "default_page_size": {
       "type": "number",
       "title": "Default Page Size",
-      "description": "The default number of items to return in a paginated response if not specified by the user.",
+      "description": "The default number of items to return in a paginated response if not specified.",
       "required": false,
       "default": 20
     },
@@ -107,15 +110,15 @@
     },
     "enable_analytics": {
       "type": "boolean",
-      "title": "Enable Analytics Features",
-      "description": "Enable or disable the analytics endpoints.",
+      "title": "Enable Analytics",
+      "description": "Enable or disable the analytics features and endpoints.",
       "required": false,
       "default": true
     },
     "enable_bulk_operations": {
       "type": "boolean",
       "title": "Enable Bulk Operations",
-      "description": "Enable or disable the bulk operation endpoints.",
+      "description": "Enable or disable the bulk operations features and endpoints.",
       "required": false,
       "default": true
     },

@@ -8,10 +8,12 @@
     "name": "snaggle-ai"
   },
   "server": {
-    "type": "node",
     "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/index.js"],
+      "command": "npx",
+      "args": [
+        "openapi-mcp-server@latest",
+        "init"
+      ],
       "env": {}
     }
   },
@@ -27,7 +29,10 @@
       "mcpServers": {
         "openapi-mcp-server": {
           "command": "npx",
-          "args": ["openapi-mcp-server@latest", "init"],
+          "args": [
+            "openapi-mcp-server@latest",
+            "init"
+          ],
           "env": {}
         }
       }

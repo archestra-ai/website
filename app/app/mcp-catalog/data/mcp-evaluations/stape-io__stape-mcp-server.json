@@ -27,7 +27,7 @@
     "stape_api_key": {
       "type": "string",
       "title": "Stape API Key",
-      "description": "Your API key from your Stape account.",
+      "description": "Get the API key from your Stape account.",
       "required": true,
       "sensitive": true
     }

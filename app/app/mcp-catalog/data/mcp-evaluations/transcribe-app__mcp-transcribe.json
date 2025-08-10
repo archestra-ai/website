@@ -10,9 +10,11 @@
   "server": {
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/build/index.js"],
+      "args": [
+        "${__dirname}/build/index.js"
+      ],
       "env": {
-        "MCP_INTEGRATION_URL": "${user_config.mcp_integration_url}"
+        "MCP_INTEGRATION_URL": "${user_config.MCP_INTEGRATION_URL}"
       }
     }
   },
@@ -20,10 +22,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "mcp_integration_url": {
+    "MCP_INTEGRATION_URL": {
       "type": "string",
       "title": "MCP Integration URL",
-      "description": "Your private URL from the Transcribe Automation popup. Sign in to the Transcribe online editor to get it.",
+      "description": "Your private MCP integration URL from the Transcribe.com Automation popup.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +38,9 @@
       "mcpServers": {
         "transcribe-local": {
           "command": "node",
-          "args": ["<path-to-unpacked-dxt-location>/build/index.js"],
+          "args": [
+            "<path-to-unpacked-dxt-location>/build/index.js"
+          ],
           "env": {
             "MCP_INTEGRATION_URL": "<your-MCP-integration-URL>"
           }

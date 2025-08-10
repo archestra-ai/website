@@ -10,9 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["y", "@joshuarileydev/supabase-mcp-server"],
+      "args": [
+        "y",
+        "@joshuarileydev/supabase-mcp-server"
+      ],
       "env": {
-        "SUPABASE_API_KEY": "${user_config.supabase_api_key}"
+        "SUPABASE_API_KEY": "${user_config.api_key}"
       }
     }
   },
@@ -20,10 +23,10 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "supabase_api_key": {
+    "api_key": {
       "type": "string",
       "title": "Supabase API Key",
-      "description": "Your Supabase Management API Key. This allows the server to manage your Supabase projects and organizations.",
+      "description": "Your Supabase Management API key.",
       "required": true,
       "sensitive": true
     }
@@ -36,7 +39,10 @@
       "mcpServers": {
         "joshuarileydev-supabase-mcp-server": {
           "command": "npx",
-          "args": ["y", "@joshuarileydev/supabase-mcp-server"],
+          "args": [
+            "y",
+            "@joshuarileydev/supabase-mcp-server"
+          ],
           "env": {
             "SUPABASE_API_KEY": "API_KEY_HERE"
           }

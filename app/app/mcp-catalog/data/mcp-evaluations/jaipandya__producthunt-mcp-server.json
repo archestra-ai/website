@@ -22,8 +22,8 @@
   "user_config": {
     "product_hunt_token": {
       "type": "string",
-      "title": "Product Hunt Token",
-      "description": "Your Product Hunt Developer Token. Create a new application in the API Dashboard to get one.",
+      "title": "Product Hunt API Token",
+      "description": "Your Developer Token from the Product Hunt API Dashboard.",
       "required": true,
       "sensitive": true
     }
@@ -43,7 +43,14 @@
         },
         "product-hunt-mcp-docker": {
           "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "PRODUCT_HUNT_TOKEN=your_token_here", "product-hunt-mcp"],
+          "args": [
+            "run",
+            "-i",
+            "--rm",
+            "-e",
+            "PRODUCT_HUNT_TOKEN=your_token_here",
+            "product-hunt-mcp"
+          ],
           "env": {}
         }
       }

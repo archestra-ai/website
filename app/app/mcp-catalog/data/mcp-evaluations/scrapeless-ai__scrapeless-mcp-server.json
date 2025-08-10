@@ -10,9 +10,12 @@
   "server": {
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "scrapeless-mcp-server"],
+      "args": [
+        "-y",
+        "scrapeless-mcp-server"
+      ],
       "env": {
-        "SCRAPELESS_KEY": "${user_config.scrapeless_key}",
+        "SCRAPELESS_KEY": "${user_config.api_key}",
         "BROWSER_PROFILE_ID": "${user_config.browser_profile_id}",
         "BROWSER_PROFILE_PERSIST": "${user_config.browser_profile_persist}",
         "BROWSER_SESSION_TTL": "${user_config.browser_session_ttl}"
@@ -23,7 +26,7 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "scrapeless_key": {
+    "api_key": {
       "type": "string",
       "title": "Scrapeless API Key",
       "description": "Your API key from the Scrapeless Dashboard. A free trial is available.",
@@ -57,7 +60,10 @@
       "mcpServers": {
         "scrapeless-mcp-server-stdio": {
           "command": "npx",
-          "args": ["-y", "scrapeless-mcp-server"],
+          "args": [
+            "-y",
+            "scrapeless-mcp-server"
+          ],
           "env": {
             "SCRAPELESS_KEY": "YOUR_SCRAPELESS_KEY"
           }

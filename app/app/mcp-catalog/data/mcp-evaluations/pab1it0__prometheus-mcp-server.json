@@ -10,9 +10,10 @@
   "server": {
     "mcp_config": {
       "command": "python",
-      "args": ["${__dirname}/src/prometheus_mcp_server/main.py"],
+      "args": [
+        "${__dirname}/src/prometheus_mcp_server/main.py"
+      ],
       "env": {
-        "PYTHONPATH": "${__dirname}/src",
         "PROMETHEUS_URL": "${user_config.prometheus_url}",
         "PROMETHEUS_USERNAME": "${user_config.prometheus_username}",
         "PROMETHEUS_PASSWORD": "${user_config.prometheus_password}",
@@ -28,33 +29,33 @@
     "prometheus_url": {
       "type": "string",
       "title": "Prometheus URL",
-      "description": "The URL of your Prometheus server (e.g., http://localhost:9090).",
+      "description": "The URL of your Prometheus server (e.g., http://your-prometheus-server:9090)",
       "required": true
     },
     "prometheus_username": {
       "type": "string",
       "title": "Prometheus Username",
-      "description": "Username for basic authentication (optional).",
+      "description": "Optional username for basic authentication with your Prometheus server.",
       "required": false
     },
     "prometheus_password": {
       "type": "string",
       "title": "Prometheus Password",
-      "description": "Password for basic authentication (optional).",
+      "description": "Optional password for basic authentication with your Prometheus server.",
       "required": false,
       "sensitive": true
     },
     "prometheus_token": {
       "type": "string",
       "title": "Prometheus Bearer Token",
-      "description": "Bearer token for authentication (optional).",
+      "description": "Optional bearer token for authentication with your Prometheus server.",
       "required": false,
       "sensitive": true
     },
     "org_id": {
       "type": "string",
       "title": "Organization ID",
-      "description": "Organization ID for multi-tenant setups like Cortex, Mimir, or Thanos (optional).",
+      "description": "Optional Organization ID for multi-tenant setups like Cortex, Mimir, or Thanos.",
       "required": false
     }
   },
@@ -66,7 +67,14 @@
       "mcpServers": {
         "prometheus-mcp-server-docker": {
           "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "PROMETHEUS_URL", "ghcr.io/pab1it0/prometheus-mcp-server:latest"],
+          "args": [
+            "run",
+            "-i",
+            "--rm",
+            "-e",
+            "PROMETHEUS_URL",
+            "ghcr.io/pab1it0/prometheus-mcp-server:latest"
+          ],
           "env": {
             "PROMETHEUS_URL": "<url>"
           }

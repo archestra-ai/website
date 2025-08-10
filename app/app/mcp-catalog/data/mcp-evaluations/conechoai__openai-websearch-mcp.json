@@ -10,7 +10,9 @@
   "server": {
     "mcp_config": {
       "command": "uvx",
-      "args": ["openai-websearch-mcp"],
+      "args": [
+        "openai-websearch-mcp"
+      ],
       "env": {
         "OPENAI_API_KEY": "${user_config.openai_api_key}"
       }
@@ -36,14 +38,19 @@
       "mcpServers": {
         "openai-websearch-mcp-uvx": {
           "command": "uvx",
-          "args": ["openai-websearch-mcp"],
+          "args": [
+            "openai-websearch-mcp"
+          ],
           "env": {
             "OPENAI_API_KEY": "your-api-key-here"
           }
         },
         "openai-websearch-mcp-python": {
           "command": "python",
-          "args": ["-m", "openai_websearch_mcp"],
+          "args": [
+            "-m",
+            "openai_websearch_mcp"
+          ],
           "env": {
             "OPENAI_API_KEY": "your-api-key-here"
           }
