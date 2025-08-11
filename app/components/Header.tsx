@@ -14,13 +14,20 @@ const {
 
 export default function Header() {
   const [isReportsOpen, setIsReportsOpen] = useState(false);
+  const [isProductOpen, setIsProductOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileProductOpen, setIsMobileProductOpen] = useState(true);
+  const [isMobileReportsOpen, setIsMobileReportsOpen] = useState(true);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const productDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsReportsOpen(false);
+      }
+      if (productDropdownRef.current && !productDropdownRef.current.contains(event.target as Node)) {
+        setIsProductOpen(false);
       }
     }
 
@@ -42,16 +49,47 @@ export default function Header() {
               height={40}
               className="object-contain"
             />
-            <span className="font-mono text-2xl text-black hidden sm:inline">archestra.ai</span>
+            <span className="font-mono text-2xl text-black hidden lg:inline">archestra.ai</span>
           </a>
-          <nav className="hidden sm:flex items-center gap-6 mt-1">
-            <a
-              href="#"
-              className="text-sm text-gray-400 font-medium cursor-not-allowed"
-              onClick={(e) => e.preventDefault()}
-            >
-              Desktop App <span className="text-xs text-red-500">(Coming soon)</span>
-            </a>
+          <nav className="hidden lg:flex items-center gap-6 mt-1">
+            {/* Product Dropdown */}
+            <div className="relative" ref={productDropdownRef}>
+              <button
+                onClick={() => setIsProductOpen(!isProductOpen)}
+                className="flex items-center gap-1 text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors"
+              >
+                Product
+                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isProductOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {isProductOpen && (
+                <div className="absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                  <a
+                    href="#"
+                    className="block px-4 py-3 text-sm text-gray-400 hover:bg-gray-50 transition-colors rounded-lg cursor-not-allowed"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsProductOpen(false);
+                    }}
+                  >
+                    <div className="font-medium">Desktop App</div>
+                    <div className="text-xs text-red-500 mt-0.5">Coming soon</div>
+                  </a>
+                  <a
+                    href="#"
+                    className="block px-4 py-3 text-sm text-gray-400 hover:bg-gray-50 transition-colors rounded-lg cursor-not-allowed"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsProductOpen(false);
+                    }}
+                  >
+                    <div className="font-medium">Enterprise Platform</div>
+                    <div className="text-xs text-red-500 mt-0.5">Coming soon</div>
+                  </a>
+                </div>
+              )}
+            </div>
+
             <a href="/blog" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
               Blog
             </a>
@@ -90,12 +128,12 @@ export default function Header() {
         </div>
 
         {/* GitHub Star Button - Desktop */}
-        <div className="hidden sm:block">
+        <div className="hidden lg:block">
           <GitHubStarButton />
         </div>
 
         {/* Mobile hamburger button and GitHub star */}
-        <div className="flex sm:hidden items-center gap-2">
+        <div className="flex lg:hidden items-center gap-2">
           <GitHubStarButton />
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -109,15 +147,42 @@ export default function Header() {
 
       {/* Mobile menu dropdown */}
       {isMobileMenuOpen && (
-        <div className="sm:hidden border-t border-gray-200 bg-white">
+        <div className="lg:hidden border-t border-gray-200 bg-white">
           <nav className="flex flex-col px-4 py-2">
-            <a
-              href="#"
-              className="px-3 py-2 text-sm text-gray-400 font-medium rounded-lg"
-              onClick={(e) => e.preventDefault()}
-            >
-              Desktop App <span className="text-xs text-red-500">(Coming soon)</span>
-            </a>
+            {/* Product Dropdown in Mobile */}
+            <div className="px-3 py-2">
+              <button
+                onClick={() => setIsMobileProductOpen(!isMobileProductOpen)}
+                className="flex items-center gap-1 text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors w-full text-left"
+              >
+                Product
+                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isMobileProductOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {isMobileProductOpen && (
+                <div className="mt-2 ml-4">
+                  <a
+                    href="#"
+                    className="block py-2 text-sm text-gray-400 cursor-not-allowed"
+                    onClick={(e) => {
+                      e.preventDefault();
+                    }}
+                  >
+                    Desktop App <span className="text-xs text-red-500">(Coming soon)</span>
+                  </a>
+                  <a
+                    href="#"
+                    className="block py-2 text-sm text-gray-400 cursor-not-allowed"
+                    onClick={(e) => {
+                      e.preventDefault();
+                    }}
+                  >
+                    Enterprise Platform <span className="text-xs text-red-500">(Coming soon)</span>
+                  </a>
+                </div>
+              )}
+            </div>
+
             <a
               href="/blog"
               className="px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium rounded-lg transition-colors"
@@ -136,20 +201,19 @@ export default function Header() {
             {/* Reports Dropdown in Mobile */}
             <div className="px-3 py-2">
               <button
-                onClick={() => setIsReportsOpen(!isReportsOpen)}
+                onClick={() => setIsMobileReportsOpen(!isMobileReportsOpen)}
                 className="flex items-center gap-1 text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors w-full text-left"
               >
                 Reports
-                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isReportsOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isMobileReportsOpen ? 'rotate-180' : ''}`} />
               </button>
 
-              {isReportsOpen && (
+              {isMobileReportsOpen && (
                 <div className="mt-2 ml-4">
                   <a
                     href="/state-of-mcp"
                     className="block py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
                     onClick={() => {
-                      setIsReportsOpen(false);
                       setIsMobileMenuOpen(false);
                     }}
                   >
