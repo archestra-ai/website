@@ -8,11 +8,11 @@
     "name": "dagger"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "container-use",
+      "args": [
+        "stdio"
+      ],
       "env": {}
     }
   },
@@ -28,12 +28,16 @@
       "mcpServers": {
         "container-use-stdio": {
           "command": "container-use",
-          "args": ["stdio"],
+          "args": [
+            "stdio"
+          ],
           "env": {}
         },
         "cu-stdio": {
           "command": "cu",
-          "args": ["stdio"],
+          "args": [
+            "stdio"
+          ],
           "env": {}
         }
       }
@@ -59,7 +63,7 @@
   "programming_language": "Go",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:33:13.782Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": false,
     "implementing_prompts": false,

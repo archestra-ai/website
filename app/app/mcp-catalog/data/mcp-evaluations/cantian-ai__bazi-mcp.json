@@ -8,11 +8,12 @@
     "name": "cantian-ai"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "bazi-mcp"
+      ],
       "env": {}
     }
   },
@@ -28,7 +29,9 @@
       "mcpServers": {
         "cantian-ai-bazi-mcp": {
           "command": "npx",
-          "args": ["bazi-mcp"],
+          "args": [
+            "bazi-mcp"
+          ],
           "env": {}
         }
       }

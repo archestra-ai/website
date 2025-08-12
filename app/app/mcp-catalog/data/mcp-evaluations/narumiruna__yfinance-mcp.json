@@ -8,12 +8,11 @@
     "name": "narumiruna"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "uvx",
+      "args": [
+        "yfmcp@latest"
+      ]
     }
   },
   "tools": [],
@@ -28,12 +27,19 @@
       "mcpServers": {
         "yfmcp": {
           "command": "uvx",
-          "args": ["yfmcp@latest"],
+          "args": [
+            "yfmcp@latest"
+          ],
           "env": {}
         },
         "narumi-yfinance-mcp-docker": {
           "command": "docker",
-          "args": ["run", "-i", "--rm", "narumi/yfinance-mcp"],
+          "args": [
+            "run",
+            "-i",
+            "--rm",
+            "narumi/yfinance-mcp"
+          ],
           "env": {}
         }
       }
@@ -59,7 +65,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:13:55.977Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

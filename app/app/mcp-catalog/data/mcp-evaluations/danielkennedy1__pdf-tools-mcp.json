@@ -8,11 +8,12 @@
     "name": "danielkennedy1"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": [
+        "-m",
+        "src.main"
+      ],
       "env": {}
     }
   },
@@ -28,7 +29,10 @@
       "mcpServers": {
         "pdf-tools-mcp": {
           "command": "python",
-          "args": ["-m", "src.main"],
+          "args": [
+            "-m",
+            "src.main"
+          ],
           "env": {}
         }
       }
@@ -54,7 +58,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:58:29.158Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

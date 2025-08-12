@@ -8,11 +8,11 @@
     "name": "blackwhite084"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": [
+        "playwright-server"
+      ],
       "env": {}
     }
   },
@@ -38,7 +38,9 @@
         },
         "playwright-server": {
           "command": "uvx",
-          "args": ["playwright-server"],
+          "args": [
+            "playwright-server"
+          ],
           "env": {}
         },
         "playwright-server-debug": {

@@ -9,17 +9,125 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "openapi-to-mcp",
+      "args": [
+        "${user_config.open_api_spec}",
+        "--tool-naming-strategy",
+        "${user_config.tool_naming_strategy}",
+        "--host-override",
+        "${user_config.host_override}",
+        "--bearer-token",
+        "${user_config.bearer_token}",
+        "--oauth-2-grant-type",
+        "${user_config.oauth_2_grant_type}",
+        "--oauth-2-token-url",
+        "${user_config.oauth_2_token_url}",
+        "--oauth-2-client-id",
+        "${user_config.oauth_2_client_id}",
+        "--oauth-2-client-secret",
+        "${user_config.oauth_2_client_secret}",
+        "--oauth-2-refresh-token",
+        "${user_config.oauth_2_refresh_token}",
+        "--oauth-2-username",
+        "${user_config.oauth_2_username}",
+        "--oauth-2-password",
+        "${user_config.oauth_2_password}",
+        "--instructions",
+        "${user_config.instructions}"
+      ],
       "env": {}
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "open_api_spec": {
+      "type": "string",
+      "title": "OpenAPI Specification",
+      "description": "URL or local file path to the OpenAPI specification (JSON or YAML).",
+      "required": true
+    },
+    "tool_naming_strategy": {
+      "type": "string",
+      "title": "Tool Naming Strategy",
+      "description": "How the tool name should be computed. Options: extension, extension_or_operationid_or_verbandpath, operationid, verbandpath.",
+      "required": false,
+      "default": "extension_or_operationid_or_verbandpath"
+    },
+    "host_override": {
+      "type": "string",
+      "title": "Host Override",
+      "description": "Override the host to be used for API calls.",
+      "required": false
+    },
+    "bearer_token": {
+      "type": "string",
+      "title": "Bearer Token",
+      "description": "Bearer token for API authentication. Will be sent in the 'Authorization: Bearer {token}' header.",
+      "required": false,
+      "sensitive": true
+    },
+    "oauth_2_grant_type": {
+      "type": "string",
+      "title": "OAuth2 Grant Type",
+      "description": "The OAuth2 flow to be used. Options: client_credentials, password, refresh_token.",
+      "required": false
+    },
+    "oauth_2_token_url": {
+      "type": "string",
+      "title": "OAuth2 Token URL",
+      "description": "OAuth2 token endpoint URL. Overrides the one in the OpenAPI spec.",
+      "required": false
+    },
+    "oauth_2_client_id": {
+      "type": "string",
+      "title": "OAuth2 Client ID",
+      "description": "Client ID for the 'client_credentials' grant type.",
+      "required": false
+    },
+    "oauth_2_client_secret": {
+      "type": "string",
+      "title": "OAuth2 Client Secret",
+      "description": "Client secret for the 'client_credentials' grant type.",
+      "required": false,
+      "sensitive": true
+    },
+    "oauth_2_refresh_token": {
+      "type": "string",
+      "title": "OAuth2 Refresh Token",
+      "description": "Refresh token for the 'refresh_token' grant type.",
+      "required": false,
+      "sensitive": true
+    },
+    "oauth_2_username": {
+      "type": "string",
+      "title": "OAuth2 Username",
+      "description": "Username for the 'password' grant type.",
+      "required": false
+    },
+    "oauth_2_password": {
+      "type": "string",
+      "title": "OAuth2 Password",
+      "description": "Password for the 'password' grant type.",
+      "required": false,
+      "sensitive": true
+    },
+    "instructions": {
+      "type": "string",
+      "title": "MCP Instructions",
+      "description": "Textual instructions to be advertised by the server during the initialize handshake.",
+      "required": false
+    },
+    "verbose": {
+      "type": "boolean",
+      "title": "Verbose Logging",
+      "description": "Log more information to stderr. If true, the implementing application should add the --verbose flag to the command arguments.",
+      "required": false,
+      "default": false
+    }
+  },
   "readme": "[![.NET Build](https://github.com/ouvreboite/openapi-to-mcp/actions/workflows/build_and_test.yml/badge.svg)](https://github.com/ouvreboite/openapi-to-mcp/actions/workflows/build_and_test.yml)\n[![NuGet](https://img.shields.io/nuget/dt/openapi-to-mcp?logo=nuget&label=NuGet&)](https://www.nuget.org/packages/openapi-to-mcp)\n\n# openapi-to-mcp\n\nUse your OpenAPI specification to expose your API's endpoints as strongly typed tools.\n\nBasic example for https://petstore3.swagger.io/ 🎉\n\n```json\n{\n  \"mcpServers\": {\n    \"petstore\": {\n      \"command\": \"openapi-to-mcp\",\n        \"args\": [\n          \"https://petstore3.swagger.io/api/v3/openapi.json\"\n        ]\n    }\n  }\n}\n```\n\nMore complex example, using Github's API:\n```\n{\n    \"mcpServers\": {\n        \"github\": {\n            \"command\": \"openapi-to-mcp\",\n            \"args\": [\n                \"https://raw.githubusercontent.com/github/rest-api-description/refs/heads/main/descriptions/api.github.com/api.github.com.yaml\",\n                \"--bearer-token\",\n                \"github_pat_xxxxxx\",\n                \"--tool-naming-strategy\",\n                \"verbandpath\"\n            ]\n        }\n    }\n}\n```\n\nThis example use the bearer token auth (with a Github [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)) and force the tool naming strategy to \"verb and path\", as Github's operation ids are not valid tool names.\n\n![Github demo](github_demo.gif)\n\n## Install\n\nAs a Nuget tool: [openapi-to-mcp](https://www.nuget.org/packages/openapi-to-mcp)\n```sh\ndotnet tool install --global openapi-to-mcp\n```\nOr download the executables from the [releases](https://github.com/ouvreboite/openapi-to-mcp/releases)\n\n## Usage\n\n\n```bash\nUsage:\n  openapi-to-mcp <open-api> [options]\n\nArguments:\n  <open-api>  You OpenAPI specification (URL or file) [required]\n\nOptions:\n  -t, --tool-naming-strategy <extension|extension_or_operationid_or_verbandpath|operationid|verbandpath>  How the tool name should be computed [default: extension_or_operationid_or_verbandpath]\n  -h, --host-override                                                                                     Host override\n  -b, --bearer-token                                                                                      Bearer token\n  -o2, --oauth-2-grant-type <client_credentials|password|refresh_token>                                   OAuth2 flow to be used\n  -o2_tu, --oauth-2-token-url                                                                             OAuth2 token endpoint URL (override the one defined in your OpenAPI for your chosen OAuth2 flow)\n  -o2_ci, --oauth-2-client-id                                                                             OAuth2 client id (for the client_credentials grant_type)\n  -o2_cs, --oauth-2-client-secret                                                                         OAuth2 client secret (for the client_credentials grant_type)\n  -o2_rt, --oauth-2-refresh-token                                                                         OAuth2 refresh token (for the refresh_token grant_type)\n  -o2_un, --oauth-2-username                                                                              OAuth2 username (for the password grant_type)\n  -o2_pw, --oauth-2-password                                                                              OAuth2 password (for the password grant_type)\n  -i, --instructions                                                                                      MCP instruction to be advertised by the server\n  --verbose                                                                                               Log more info (in sdterr) [default: False]\n  -?, -h, --help                                                                                          Show help and usage information\n  --version                                                                                               Show version information\n```\n\n## OpenAPI support\n\n- Currently, OpenAPI 2.0 and 3.0 are supported. \n  - 3.1 is not (at least not until [microsoft/OpenAPI.NET](https://github.com/microsoft/OpenAPI.NET) supports it)\n- Specifications can be JSON/YAML and local (file) or remote (URL)\n- Only local $refs are supported\n\n### OpenAPI custom extensions\n\nA set of custom extensions is available to customize how your API should be exposed:\n- `info.x-mcp-instructions` (string): Textual instructions exposed by the MCP server during the initialize handshake\n- `operation.x-mcp-tool-name` (string): Custom tool name\n- `operation.x-mcp-tool-description` (string): Custom tool description\n- `operation.x-mcp-tool-enabled` (boolean): Enabled/disabled a specific operation (enabled by default)\n\n## MCP features\n\nOnly STDIO transport is currently supported.\n\n### Tools\nOperations (\"endpoints\") from your OpenAPI specification are translated to MCP [tools](https://modelcontextprotocol.io/docs/concepts/tools)\n- All path/query/JSON body parameters are exposed (using their JSON schema)\n- Response is returned as-is\n- By default, the tool name is computed using first the `operation.x-mcp-tool-name` extension, then the [operation.operationId](https://swagger.io/docs/specification/v3_0/paths-and-operations/#operationid) and then `{httpMethod}_{escaped_path}`\n  - The tool naming strategy can be defined via the `--tool-naming-strategy` option.\n  - ⚠️Tools are discarded if their name don't match `^[a-zA-Z0-9_-]{1,64}$`\n- Tools description are extracted as follows: `operation.x-mcp-tool-description` ?? `operation.description` ?? `path.description`\n\n### Tool call and host\n\nWhen a tool is called, the MCP server will call the underlying endpoint. To determine which host to call a combination of parameters are used:\n- the `--host-override` option\n- your specification first [server](https://swagger.io/docs/specification/v3_0/api-host-and-base-path/)'s URL if it's an absolute URL\n- the host of the remote OpenAPI provided\n- otherwise, an error is thrown\n\nFor example running `openapi-to-mcp https://petstore3.swagger.io/api/v3/openapi.json`:\n- https://petstore3.swagger.io/api/v3/openapi.json defines a server, but its URL is relative (/api/v3)\n- so the host of the specification's own URL is used: https://petstore3.swagger.io and the relative path of the server is appended to it\n\n## Authorization\n\n### Bearer token\n\nA token can be provided as option `--bearer-token`. It'll be provided to all calls as the `Authorization: Bearer {token}` header.\nIt'll also be provided when fetching a remote specification.\n\n### OAuth2\n\nClientCredentials, RefreshToken, Password are supported.\nIf your OpenAPI specification declare [securitySchemes](https://swagger.io/docs/specification/v3_0/authentication/oauth2/) for those flows, the corresponding `tokenUrl` will be used.\n\n## How to publish\n\nCreate a new tag/release 🤷",
   "category": "Development",
   "quality_score": 57,
@@ -28,7 +136,9 @@
       "mcpServers": {
         "openapi-to-mcp": {
           "command": "openapi-to-mcp",
-          "args": ["https://petstore3.swagger.io/api/v3/openapi.json"],
+          "args": [
+            "https://petstore3.swagger.io/api/v3/openapi.json"
+          ],
           "env": {}
         }
       }
@@ -54,7 +164,7 @@
   "programming_language": "C#",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:33:13.465Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

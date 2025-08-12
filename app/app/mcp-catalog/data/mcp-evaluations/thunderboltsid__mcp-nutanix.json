@@ -9,9 +9,8 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
+      "command": "${__dirname}/bin/mcp-nutanix",
       "args": [],
       "env": {}
     }

@@ -8,11 +8,13 @@
     "name": "yamanoku"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "deno",
+      "args": [
+        "run",
+        "--allow-net=api.webstatus.dev",
+        "jsr:@yamanoku/baseline-mcp-server"
+      ],
       "env": {}
     }
   },
@@ -28,12 +30,20 @@
       "mcpServers": {
         "yamanoku-baseline-mcp-server": {
           "command": "deno",
-          "args": ["run", "--allow-net=api.webstatus.dev", "jsr:@yamanoku/baseline-mcp-server"],
+          "args": [
+            "run",
+            "--allow-net=api.webstatus.dev",
+            "jsr:@yamanoku/baseline-mcp-server"
+          ],
           "env": {}
         },
         "baseline-mcp-server-docker": {
           "command": "docker",
-          "args": ["run", "-i", "baseline-mcp-server:latest"],
+          "args": [
+            "run",
+            "-i",
+            "baseline-mcp-server:latest"
+          ],
           "env": {}
         }
       }
@@ -59,7 +69,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:29:15.498Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

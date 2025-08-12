@@ -8,11 +8,11 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": [
+        "main.py"
+      ],
       "env": {}
     }
   },
@@ -28,12 +28,17 @@
       "mcpServers": {
         "cointelegraph-mcp-server-dev": {
           "command": "mcp",
-          "args": ["dev", "main.py"],
+          "args": [
+            "dev",
+            "main.py"
+          ],
           "env": {}
         },
         "cointelegraph-mcp-server-prod": {
           "command": "python",
-          "args": ["main.py"],
+          "args": [
+            "main.py"
+          ],
           "env": {}
         }
       }
@@ -59,7 +64,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:37:16.442Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

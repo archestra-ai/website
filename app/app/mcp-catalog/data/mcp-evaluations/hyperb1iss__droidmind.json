@@ -8,11 +8,15 @@
     "name": "hyperb1iss"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/hyperb1iss/droidmind",
+        "droidmind",
+        "--transport",
+        "stdio"
+      ],
       "env": {}
     }
   },
@@ -28,17 +32,29 @@
       "mcpServers": {
         "droidmind-uvx-stdio": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/hyperb1iss/droidmind", "droidmind", "--transport", "stdio"],
+          "args": [
+            "--from",
+            "git+https://github.com/hyperb1iss/droidmind",
+            "droidmind",
+            "--transport",
+            "stdio"
+          ],
           "env": {}
         },
         "droidmind-stdio": {
           "command": "droidmind",
-          "args": ["--transport", "stdio"],
+          "args": [
+            "--transport",
+            "stdio"
+          ],
           "env": {}
         },
         "droidmind-sse": {
           "command": "droidmind",
-          "args": ["--transport", "sse"],
+          "args": [
+            "--transport",
+            "sse"
+          ],
           "env": {}
         }
       }
@@ -64,7 +80,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:35:52.780Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

@@ -9,17 +9,46 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "uv",
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "jvm-mcp-server"
+      ],
+      "env": {
+        "ARTHAS_SSH_HOST": "${user_config.arthas_ssh_host}",
+        "ARTHAS_SSH_PORT": "${user_config.arthas_ssh_port}",
+        "ARTHAS_SSH_PASSWORD": "${user_config.arthas_ssh_password}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "arthas_ssh_host": {
+      "type": "string",
+      "title": "Remote SSH Host",
+      "description": "The remote host to connect to for monitoring, in user@hostname format. Leave blank for local monitoring.",
+      "required": false
+    },
+    "arthas_ssh_port": {
+      "type": "number",
+      "title": "Remote SSH Port",
+      "description": "The SSH port for the remote host.",
+      "required": false,
+      "default": 22
+    },
+    "arthas_ssh_password": {
+      "type": "string",
+      "title": "Remote SSH Password",
+      "description": "The password for SSH password-based authentication. Leave blank if using key-based authentication.",
+      "required": false,
+      "sensitive": true
+    }
+  },
   "readme": "[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/xzq-xu-jvm-mcp-server-badge.png)](https://mseep.ai/app/xzq-xu-jvm-mcp-server)\n\n# JVM MCP Server\n\n[English](README.md) | [中文](README_zh.md)\n\nA JVM monitoring MCP server implementation based on Arthas, providing a simple and easy-to-use Python interface for monitoring and analyzing Java processes.\n\n## Features\n\n- Automatic download and management of Arthas tools\n- Support for local and remote Java process monitoring\n- Java process list querying\n- Real-time JVM thread information\n- JVM memory usage monitoring\n- Thread stack trace information\n- Class loading information querying\n- Support for class and method decompilation\n- Method call monitoring\n- Dynamic log level adjustment\n- AI-driven JVM performance analysis\n\n## System Requirements\n\n- Python 3.10+\n- Java Runtime Environment (JRE) 8+\n- Network connection (for downloading Arthas)\n- SSH access to target server (if using remote mode)\n\n## Installation and Environment Setup\n\n### 1. Install uv tool\n\n```bash\n## linux shell\ncurl -LsSf https://astral.sh/uv/install.sh | sh\n## or install using pip\npip install uv\n## or install using pipx (if you have pipx installed)\npipx install uv \n## windows powershell\npowershell -ExecutionPolicy ByPass -c \"irm https://astral.sh/uv/install.ps1 | iex\"\n```\n\n### 2. Clone the project\n\n```bash\ngit clone https://github.com/xzq-xu/jvm-mcp-server.git\ncd jvm-mcp-server\n```\n\n### 3. Initialize project environment using uv\n\n```bash\n# Create virtual environment\nuv venv\n# Sync project dependencies\nuv sync\n```\n\n### 4. Configure environment variables (Optional, for remote connections)\n\nCreate a `.env` file and add the following configurations:\n\n```bash\n# Linux/Mac\nARTHAS_SSH_HOST=user@remote-host\nARTHAS_SSH_PORT=22  # Optional, default is 22\nARTHAS_SSH_PASSWORD=your-password  # If using password authentication\n\n# Windows PowerShell\n$env:ARTHAS_SSH_HOST=\"user@remote-host\"\n$env:ARTHAS_SSH_PORT=\"22\"  # Optional, default is 22\n$env:ARTHAS_SSH_PASSWORD=\"your-password\"  # If using password authentication\n```\n\n## Quick Start\n\n1. Start the server using uv:\n\n```bash\n# Start in local mode\nuv run jvm-mcp-server\n\n# Start with environment file (if remote connection is configured)\nuv run --env-file .env jvm-mcp-server\n\n# Start in a specific directory (if needed)\nuv --directory /path/to/project run --env-file .env jvm-mcp-server\n```\n\n2. Use in Python code:\n\n```python\nfrom jvm_mcp_server import JvmMcpServer\n\nserver = JvmMcpServer()\nserver.run()\n```\n\n3. Using MCP tools:\n\nUsing configuration file:\n```json \n{\n    \"mcpServers\": {\n      \"jvm-mcp-server\": {\n        \"command\": \"uv\",\n        \"args\": [\n          \"--directory\",\n          \"/path/to/jvm-mcp-server\",\n          \"run\",\n          \"--env-file\",\n          \"/path/to/jvm-mcp-server/.env\",\n          \"jvm-mcp-server\"\n        ]\n      }\n    }\n}\n```\nWithout using configuration file, it will read system environment variables, if not present it will monitor local threads:\n```json \n{\n    \"mcpServers\": {\n      \"jvm-mcp-server\": {\n        \"command\": \"uv\",\n        \"args\": [\n          \"--directory\",\n          \"/path/to/jvm-mcp-server\",\n          \"run\",\n          \"jvm-mcp-server\"\n        ]\n      }\n    }\n}\n```\n\n## Available Tools\n\n[Available Tools List](./doc/available_tools.md)\n\n## Important Notes\n\n1. Ensure Java is installed in the runtime environment\n2. Arthas tool will be automatically downloaded on first run (arthas will be downloaded to home directory, can be downloaded in advance and named as arthas-boot.jar)\n3. Requires access permissions to target Java process\n4. Remote mode requires SSH access and appropriate user permissions\n5. Recommended for use in development environment, production use should be carefully evaluated\n\n## Feedback\n\nIf you encounter any issues, please submit an Issue or Pull Request.\n\n## License\n\n[MIT License](./LICENSE) ",
   "category": "Monitoring",
   "quality_score": 57,
@@ -40,22 +69,42 @@
         },
         "jvm-mcp-server-no-env": {
           "command": "uv",
-          "args": ["--directory", "/path/to/jvm-mcp-server", "run", "jvm-mcp-server"],
+          "args": [
+            "--directory",
+            "/path/to/jvm-mcp-server",
+            "run",
+            "jvm-mcp-server"
+          ],
           "env": {}
         },
         "jvm-mcp-server-cli-basic": {
           "command": "uv",
-          "args": ["run", "jvm-mcp-server"],
+          "args": [
+            "run",
+            "jvm-mcp-server"
+          ],
           "env": {}
         },
         "jvm-mcp-server-cli-with-env-file": {
           "command": "uv",
-          "args": ["run", "--env-file", ".env", "jvm-mcp-server"],
+          "args": [
+            "run",
+            "--env-file",
+            ".env",
+            "jvm-mcp-server"
+          ],
           "env": {}
         },
         "jvm-mcp-server-cli-generic-directory-env-file": {
           "command": "uv",
-          "args": ["--directory", "/path/to/project", "run", "--env-file", ".env", "jvm-mcp-server"],
+          "args": [
+            "--directory",
+            "/path/to/project",
+            "run",
+            "--env-file",
+            ".env",
+            "jvm-mcp-server"
+          ],
           "env": {}
         }
       }
@@ -81,7 +130,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:36:31.165Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

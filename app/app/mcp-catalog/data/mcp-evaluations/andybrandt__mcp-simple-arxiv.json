@@ -8,11 +8,12 @@
     "name": "andybrandt"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp_simple_arxiv"
+      ],
       "env": {}
     }
   },
@@ -28,12 +29,18 @@
       "mcpServers": {
         "mcp-simple-arxiv-stdio": {
           "command": "python",
-          "args": ["-m", "mcp_simple_arxiv"],
+          "args": [
+            "-m",
+            "mcp_simple_arxiv"
+          ],
           "env": {}
         },
         "mcp-simple-arxiv-stdio-windows-absolute-path": {
           "command": "C:\\Users\\YOUR_USERNAME\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
-          "args": ["-m", "mcp_simple_arxiv"],
+          "args": [
+            "-m",
+            "mcp_simple_arxiv"
+          ],
           "env": {}
         }
       }
@@ -59,7 +66,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:24:18.312Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

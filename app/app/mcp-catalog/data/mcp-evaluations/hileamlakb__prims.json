@@ -8,11 +8,12 @@
     "name": "hileamlakB"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": [
+        "-m",
+        "server.main"
+      ],
       "env": {}
     }
   },
@@ -28,12 +29,18 @@
       "mcpServers": {
         "prims": {
           "command": "python",
-          "args": ["-m", "server.main"],
+          "args": [
+            "-m",
+            "server.main"
+          ],
           "env": {}
         },
         "prims-docker": {
           "command": "docker",
-          "args": ["run", "prims-docker"],
+          "args": [
+            "run",
+            "prims-docker"
+          ],
           "env": {}
         }
       }
@@ -59,7 +66,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:33:14.244Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

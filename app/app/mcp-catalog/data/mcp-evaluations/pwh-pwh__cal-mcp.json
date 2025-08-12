@@ -8,11 +8,11 @@
     "name": "pwh-pwh"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "bunx",
+      "args": [
+        "cal-mcp"
+      ],
       "env": {}
     }
   },
@@ -28,12 +28,17 @@
       "mcpServers": {
         "cal-mcp": {
           "command": "bunx",
-          "args": ["cal-mcp"],
+          "args": [
+            "cal-mcp"
+          ],
           "env": {}
         },
         "cal-mcp-stdio": {
           "command": "bun",
-          "args": ["run", "index.ts"],
+          "args": [
+            "run",
+            "index.ts"
+          ],
           "env": {}
         }
       }
@@ -59,7 +64,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T21:03:28.132Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

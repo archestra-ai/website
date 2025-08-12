@@ -8,11 +8,13 @@
     "name": "j4c0bs"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/j4c0bs/mcp-server-sql-analyzer.git",
+        "mcp-server-sql-analyzer"
+      ],
       "env": {}
     }
   },
@@ -28,12 +30,21 @@
       "mcpServers": {
         "mcp-server-sql-analyzer": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/j4c0bs/mcp-server-sql-analyzer.git", "mcp-server-sql-analyzer"],
+          "args": [
+            "--from",
+            "git+https://github.com/j4c0bs/mcp-server-sql-analyzer.git",
+            "mcp-server-sql-analyzer"
+          ],
           "env": {}
         },
         "mcp-server-sql-analyzer-local": {
           "command": "uv",
-          "args": ["--directory", "/path/to/mcp-server-sql-analyzer", "run", "mcp-server-sql-analyzer"],
+          "args": [
+            "--directory",
+            "/path/to/mcp-server-sql-analyzer",
+            "run",
+            "mcp-server-sql-analyzer"
+          ],
           "env": {}
         },
         "mcp-server-sql-analyzer-development": {
@@ -71,7 +82,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:36:05.272Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

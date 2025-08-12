@@ -8,10 +8,8 @@
     "name": "FradSer"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
+      "command": "mcp-server-apple-reminders",
       "args": [],
       "env": {}
     }

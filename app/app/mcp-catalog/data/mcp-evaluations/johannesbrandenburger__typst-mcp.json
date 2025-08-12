@@ -8,11 +8,11 @@
     "name": "johannesbrandenburger"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": [
+        "server.py"
+      ],
       "env": {}
     }
   },
@@ -28,12 +28,17 @@
       "mcpServers": {
         "typst-mcp-server": {
           "command": "python",
-          "args": ["server.py"],
+          "args": [
+            "server.py"
+          ],
           "env": {}
         },
         "typst-mcp-server-mcp-install": {
           "command": "mcp",
-          "args": ["install", "server.py"],
+          "args": [
+            "install",
+            "server.py"
+          ],
           "env": {}
         }
       }
@@ -59,7 +64,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T21:00:04.190Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

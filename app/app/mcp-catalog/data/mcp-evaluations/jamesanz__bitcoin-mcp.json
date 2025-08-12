@@ -9,10 +9,11 @@
   },
   "server": {
     "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "node",
+      "args": [
+        "${__dirname}/build/index.js"
+      ],
       "env": {}
     }
   },
@@ -28,7 +29,9 @@
       "mcpServers": {
         "bitcoin-mcp-stdio": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         }
       }
@@ -54,7 +57,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-04T10:19:16.417Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

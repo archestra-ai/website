@@ -8,11 +8,12 @@
     "name": "jlowin"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "fastmcp",
+      "args": [
+        "run",
+        "server.py"
+      ],
       "env": {}
     }
   },
@@ -28,7 +29,10 @@
       "mcpServers": {
         "fastmcp": {
           "command": "fastmcp",
-          "args": ["run", "server.py"],
+          "args": [
+            "run",
+            "server.py"
+          ],
           "env": {}
         }
       }
@@ -54,7 +58,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T21:05:45.440Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

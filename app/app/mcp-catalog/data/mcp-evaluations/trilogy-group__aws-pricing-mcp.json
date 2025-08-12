@@ -8,11 +8,11 @@
     "name": "trilogy-group"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": [
+        "src/server.py"
+      ],
       "env": {}
     }
   },
@@ -28,7 +28,9 @@
       "mcpServers": {
         "aws-pricing-mcp": {
           "command": "python",
-          "args": ["src/server.py"],
+          "args": [
+            "src/server.py"
+          ],
           "env": {}
         }
       }

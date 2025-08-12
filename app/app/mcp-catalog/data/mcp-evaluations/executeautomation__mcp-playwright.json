@@ -8,11 +8,12 @@
     "name": "executeautomation"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "@executeautomation/playwright-mcp-server"
+      ],
       "env": {}
     }
   },
@@ -28,7 +29,10 @@
       "mcpServers": {
         "executeautomation-playwright-mcp-server": {
           "command": "npx",
-          "args": ["-y", "@executeautomation/playwright-mcp-server"],
+          "args": [
+            "-y",
+            "@executeautomation/playwright-mcp-server"
+          ],
           "env": {}
         }
       }

@@ -8,10 +8,8 @@
     "name": "mahdin75"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
+      "command": "${HOME}/.venv/bin/gis-mcp",
       "args": [],
       "env": {}
     }
@@ -38,12 +36,18 @@
         },
         "gis-mcp-dev": {
           "command": "python",
-          "args": ["-m", "gis_mcp"],
+          "args": [
+            "-m",
+            "gis_mcp"
+          ],
           "env": {}
         },
         "gis-mcp-dev-configured": {
           "command": "/path/to/gis-mcp/.venv/bin/python",
-          "args": ["-m", "gis_mcp"],
+          "args": [
+            "-m",
+            "gis_mcp"
+          ],
           "env": {}
         }
       }
@@ -69,7 +73,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:20:06.106Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

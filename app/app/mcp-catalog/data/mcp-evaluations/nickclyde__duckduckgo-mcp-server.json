@@ -8,11 +8,11 @@
     "name": "nickclyde"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": [
+        "duckduckgo-mcp-server"
+      ],
       "env": {}
     }
   },
@@ -28,12 +28,17 @@
       "mcpServers": {
         "duckduckgo-mcp-server": {
           "command": "uvx",
-          "args": ["duckduckgo-mcp-server"],
+          "args": [
+            "duckduckgo-mcp-server"
+          ],
           "env": {}
         },
         "duckduckgo-mcp-server-dev": {
           "command": "mcp",
-          "args": ["dev", "server.py"],
+          "args": [
+            "dev",
+            "server.py"
+          ],
           "env": {}
         }
       }
@@ -59,7 +64,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:26:58.912Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

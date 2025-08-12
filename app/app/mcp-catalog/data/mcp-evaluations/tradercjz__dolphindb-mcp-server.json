@@ -8,18 +8,51 @@
     "name": "tradercjz"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
+      "command": "dolphindb-mcp-server",
       "args": [],
-      "env": {}
+      "env": {
+        "DDB_HOST": "${user_config.DDB_HOST}",
+        "DDB_PORT": "${user_config.DDB_PORT}",
+        "DDB_USER": "${user_config.DDB_USER}",
+        "DDB_PASSWD": "${user_config.DDB_PASSWD}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "DDB_HOST": {
+      "type": "string",
+      "title": "DolphinDB Host",
+      "description": "The host address for the DolphinDB connection.",
+      "required": false,
+      "default": "127.0.0.1"
+    },
+    "DDB_PORT": {
+      "type": "number",
+      "title": "DolphinDB Port",
+      "description": "The port number for the DolphinDB connection.",
+      "required": false,
+      "default": 8848
+    },
+    "DDB_USER": {
+      "type": "string",
+      "title": "DolphinDB User",
+      "description": "The username for the DolphinDB connection.",
+      "required": false,
+      "default": "admin"
+    },
+    "DDB_PASSWD": {
+      "type": "string",
+      "title": "DolphinDB Password",
+      "description": "The password for the DolphinDB connection.",
+      "required": false,
+      "sensitive": true,
+      "default": "123456"
+    }
+  },
   "readme": "\n\n## 🧱 安装方式\n\n### ✅ 方法一：使用 `uvx`（推荐）\n\n通过 `uvx` 安装并运行：\n\n```bash\nuvx install dolphindb-mcp-server\n```\n\n安装完成后，直接运行：\n```bash\nuvx dolphindb-mcp-server\n```\n> 📌 **注意**：`uvx` 安装方式需要通过 `uv.pack` 构建并上传到 Universe。如果你尚未上传，请参考 `uv` 文档进行打包与发布。\n\n### ✅ 方法二：从 PyPI 安装\n\n```bash\npip install dolphindb-mcp-server\n```\n安装后运行：\n```bash\ndolphindb-mcp-server\n```\n\n### ✅ 方法三：本地构建 & 安装\n\n```bash\ngit clone https://github.com/your-org/dolphindb-mcp-server.git\ncd dolphindb-mcp-server\n\n# 创建并激活虚拟环境\npython -m venv .venv\nsource .venv/bin/activate\n\n# 构建并安装\npip install build\npython -m build\npip install dist/*.whl\n```\n安装后运行：\n```bash\ndolphindb-mcp-server\n```\n\n## 🧪 测试运行\n\n运行后你可以直接使用工具，例如：\n\n```bash\ndolphindb-mcp-server\n```\n\n或（如果是 `uvx` 安装）：\n\n```bash\nuvx dolphindb-mcp-server\n```\n好的，这是转换后的 Markdown 版本：\n\n好的，这是转换后的 Markdown 版本：\n\n---\n\n## 🚀 使用方法\n\n1.  **配置环境变量（可选）**\n\n    你可以通过 `.env` 文件或系统环境变量配置 DolphinDB 的连接信息：\n\n    ```env\n    DDB_HOST=127.0.0.1\n    DDB_PORT=8848\n    DDB_USER=admin\n    DDB_PASSWD=123456\n    ```\n\n    也可以不设置，系统将使用默认值。\n\n2.  **启动服务**\n\n    ```bash\n    dolphindb-mcp-server\n    ```\n\n    该命令会启动 MCP 插件服务，供外部调用。\n\n3.  **FastMCP Agent 使用示例**\n\n    启动后，你的工具将通过 FastMCP 对外暴露以下函数接口：\n\n    *   `list_dbs()`\n    *   `list_tbs(dbName: str)`\n    *   `query_table_diskusage(database: str, tableName: str)`\n    *   `query_dolphindb(script: str)`\n\n    可通过 MCP 前端界面或对接 LLM 工具链来进行访问。\n",
   "category": "Development",
   "quality_score": 53,
@@ -33,7 +66,9 @@
         },
         "dolphindb-mcp-server-uvx": {
           "command": "uvx",
-          "args": ["dolphindb-mcp-server"],
+          "args": [
+            "dolphindb-mcp-server"
+          ],
           "env": {}
         }
       }
@@ -59,7 +94,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:34:44.332Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

@@ -8,11 +8,12 @@
     "name": "manusa"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "kubernetes-mcp-server@latest"
+      ],
       "env": {}
     }
   },
@@ -28,7 +29,10 @@
       "mcpServers": {
         "kubernetes-mcp-server": {
           "command": "npx",
-          "args": ["-y", "kubernetes-mcp-server@latest"],
+          "args": [
+            "-y",
+            "kubernetes-mcp-server@latest"
+          ],
           "env": {}
         }
       }

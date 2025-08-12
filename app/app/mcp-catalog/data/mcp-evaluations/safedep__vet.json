@@ -1,0 +1,46 @@
+{
+  "dxt_version": "1.0.0",
+  "version": "1.0.0",
+  "name": "safedep__vet__docs__mcp.md",
+  "display_name": "mcp.md",
+  "description": "Protect against malicious open source packages 🤖",
+  "author": {
+    "name": "safedep"
+  },
+  "server": {},
+  "readme": null,
+  "category": null,
+  "quality_score": null,
+  "programming_language": "Go",
+  "framework": null,
+  "github_info": {
+    "owner": "safedep",
+    "repo": "vet",
+    "url": "https://github.com/safedep/vet/blob/main/docs/mcp.md",
+    "name": "safedep__vet__docs__mcp.md",
+    "path": "docs/mcp.md",
+    "stars": 652,
+    "contributors": 21,
+    "issues": 181,
+    "releases": true,
+    "ci_cd": true,
+    "latest_commit_hash": "47939fafaf2b699964821377ae6e947e69d88263"
+  },
+  "protocol_features": {
+    "implementing_tools": false,
+    "implementing_prompts": false,
+    "implementing_resources": false,
+    "implementing_sampling": false,
+    "implementing_roots": false,
+    "implementing_logging": false,
+    "implementing_stdio": false,
+    "implementing_streamable_http": false,
+    "implementing_oauth2": false
+  },
+  "dependencies": [],
+  "user_config": {},
+  "archestra_config": null,
+  "evaluation_model": "gemini-2.5-pro",
+  "raw_dependencies": null,
+  "last_scraped_at": "2025-08-10T01:36:31.534Z"
+}

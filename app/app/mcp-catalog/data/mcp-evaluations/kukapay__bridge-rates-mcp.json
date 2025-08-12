@@ -8,11 +8,11 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "node",
+      "args": [
+        "${__dirname}/index.js"
+      ],
       "env": {}
     }
   },
@@ -28,7 +28,9 @@
       "mcpServers": {
         "bridge-rates": {
           "command": "node",
-          "args": ["/absolute/path/to/bridge-rates-mcp/index.js"],
+          "args": [
+            "/absolute/path/to/bridge-rates-mcp/index.js"
+          ],
           "env": {}
         }
       }
@@ -54,7 +56,7 @@
   "programming_language": "JavaScript",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:37:13.774Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

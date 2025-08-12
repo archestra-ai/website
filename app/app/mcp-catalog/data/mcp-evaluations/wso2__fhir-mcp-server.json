@@ -28,27 +28,49 @@
       "mcpServers": {
         "fhir-mcp-server-uvx-disable-auth": {
           "command": "uvx",
-          "args": ["fhir-mcp-server", "--disable-auth"],
+          "args": [
+            "fhir-mcp-server",
+            "--disable-auth"
+          ],
           "env": {}
         },
         "fhir-mcp-server-uvx": {
           "command": "uvx",
-          "args": ["fhir-mcp-server"],
+          "args": [
+            "fhir-mcp-server"
+          ],
           "env": {}
         },
         "fhir-mcp-server-uv-run": {
           "command": "uv",
-          "args": ["run", "fhir-mcp-server"],
+          "args": [
+            "run",
+            "fhir-mcp-server"
+          ],
           "env": {}
         },
         "fhir-mcp-server-docker": {
           "command": "docker",
-          "args": ["run", "--env-file", ".env", "-p", "8000:8000", "fhir-mcp-server"],
+          "args": [
+            "run",
+            "--env-file",
+            ".env",
+            "-p",
+            "8000:8000",
+            "fhir-mcp-server"
+          ],
           "env": {}
         },
         "fhir-mcp-server-stdio": {
           "command": "uv",
-          "args": ["--directory", "/path/to/fhir-mcp-server", "run", "fhir-mcp-server", "--transport", "stdio"],
+          "args": [
+            "--directory",
+            "/path/to/fhir-mcp-server",
+            "run",
+            "fhir-mcp-server",
+            "--transport",
+            "stdio"
+          ],
           "env": {
             "FHIR_SERVER_ACCESS_TOKEN": "Your FHIR Access Token"
           }

@@ -8,11 +8,12 @@
     "name": "artmann"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "package-registry-mcp"
+      ],
       "env": {}
     }
   },
@@ -28,7 +29,10 @@
       "mcpServers": {
         "package-registry": {
           "command": "npx",
-          "args": ["-y", "package-registry-mcp"],
+          "args": [
+            "-y",
+            "package-registry-mcp"
+          ],
           "env": {}
         }
       }
@@ -54,7 +58,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:35:14.121Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

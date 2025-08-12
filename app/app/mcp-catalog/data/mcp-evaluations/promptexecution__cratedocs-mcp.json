@@ -9,10 +9,11 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "cratedocs",
+      "args": [
+        "stdio"
+      ],
       "env": {}
     }
   },
@@ -28,22 +29,42 @@
       "mcpServers": {
         "cratedocs-stdio": {
           "command": "cratedocs",
-          "args": ["stdio"],
+          "args": [
+            "stdio"
+          ],
           "env": {}
         },
         "cratedocs-http": {
           "command": "cargo",
-          "args": ["run", "--bin", "cratedocs", "http"],
+          "args": [
+            "run",
+            "--bin",
+            "cratedocs",
+            "http"
+          ],
           "env": {}
         },
         "cratedocs-http-custom-address": {
           "command": "cargo",
-          "args": ["run", "--bin", "cratedocs", "http", "--address", "0.0.0.0:3000"],
+          "args": [
+            "run",
+            "--bin",
+            "cratedocs",
+            "http",
+            "--address",
+            "0.0.0.0:3000"
+          ],
           "env": {}
         },
         "cratedocs-http-debug": {
           "command": "cargo",
-          "args": ["run", "--bin", "cratedocs", "http", "--debug"],
+          "args": [
+            "run",
+            "--bin",
+            "cratedocs",
+            "http",
+            "--debug"
+          ],
           "env": {}
         },
         "mcp-remote": {
@@ -82,7 +103,7 @@
   "programming_language": "Rust",
   "framework": null,
   "last_scraped_at": "2025-08-03T21:18:53.999Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

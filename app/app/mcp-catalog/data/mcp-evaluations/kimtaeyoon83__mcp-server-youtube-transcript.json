@@ -8,11 +8,12 @@
     "name": "kimtaeyoon83"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "@kimtaeyoon83/mcp-server-youtube-transcript"
+      ],
       "env": {}
     }
   },
@@ -28,7 +29,10 @@
       "mcpServers": {
         "kimtaeyoon83-mcp-server-youtube-transcript": {
           "command": "npx",
-          "args": ["-y", "@kimtaeyoon83/mcp-server-youtube-transcript"],
+          "args": [
+            "-y",
+            "@kimtaeyoon83/mcp-server-youtube-transcript"
+          ],
           "env": {}
         }
       }

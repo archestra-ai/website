@@ -8,11 +8,11 @@
     "name": "githejie"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": [
+        "mcp-server-calculator"
+      ],
       "env": {}
     }
   },
@@ -28,12 +28,17 @@
       "mcpServers": {
         "mcp-server-calculator": {
           "command": "uvx",
-          "args": ["mcp-server-calculator"],
+          "args": [
+            "mcp-server-calculator"
+          ],
           "env": {}
         },
         "mcp_server_calculator": {
           "command": "python",
-          "args": ["-m", "mcp_server_calculator"],
+          "args": [
+            "-m",
+            "mcp_server_calculator"
+          ],
           "env": {}
         }
       }
@@ -59,7 +64,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:59:18.764Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

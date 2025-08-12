@@ -1,0 +1,105 @@
+{
+  "dxt_version": "1.0.0",
+  "version": "1.0.0",
+  "name": "mobb-dev__bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
+  "display_name": "bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
+  "description": "MCP server from mobb-dev/bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
+  "author": {
+    "name": "mobb-dev"
+  },
+  "server": {
+    "type": "node",
+    "mcp_config": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mobb/bugsy-server"
+      ],
+      "env": {
+        "PORT": "${user_config.port}",
+        "ROOT": "${user_config.root_directory}",
+        "ALLOW_LIST": "${user_config.allow_list}",
+        "DENY_LIST": "${user_config.deny_list}",
+        "READ_ONLY": "${user_config.read_only}",
+        "API_KEY": "${user_config.api_key}"
+      }
+    }
+  },
+  "readme": null,
+  "category": null,
+  "quality_score": null,
+  "programming_language": "TypeScript",
+  "framework": null,
+  "github_info": {
+    "owner": "mobb-dev",
+    "repo": "bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
+    "url": "https://github.com/mobb-dev/bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
+    "name": "mobb-dev__bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
+    "path": null,
+    "stars": 56,
+    "contributors": 1,
+    "issues": 0,
+    "releases": false,
+    "ci_cd": false,
+    "latest_commit_hash": null
+  },
+  "protocol_features": {
+    "implementing_tools": false,
+    "implementing_prompts": false,
+    "implementing_resources": false,
+    "implementing_sampling": false,
+    "implementing_roots": false,
+    "implementing_logging": false,
+    "implementing_stdio": false,
+    "implementing_streamable_http": false,
+    "implementing_oauth2": false
+  },
+  "dependencies": [],
+  "user_config": {
+    "port": {
+      "type": "number",
+      "title": "Port",
+      "description": "The port to run the server on.",
+      "required": false,
+      "default": 8000
+    },
+    "root_directory": {
+      "type": "directory",
+      "title": "Root Directory",
+      "description": "The root directory to serve files from.",
+      "required": false,
+      "default": "${HOME}"
+    },
+    "allow_list": {
+      "type": "string",
+      "title": "Allow List",
+      "description": "A comma-separated list of glob patterns to allow access to. If not provided, all files are accessible.",
+      "required": false
+    },
+    "deny_list": {
+      "type": "string",
+      "title": "Deny List",
+      "description": "A comma-separated list of glob patterns to deny access to.",
+      "required": false,
+      "default": "**/node_modules/**,**/.*/**"
+    },
+    "read_only": {
+      "type": "boolean",
+      "title": "Read-only Mode",
+      "description": "Run the server in read-only mode.",
+      "required": false,
+      "default": false
+    },
+    "api_key": {
+      "type": "string",
+      "title": "API Key",
+      "description": "An API key to protect the server. If not provided, the server is unprotected.",
+      "required": false,
+      "sensitive": true
+    }
+  },
+  "archestra_config": null,
+  "evaluation_model": "gemini-2.5-pro",
+  "raw_dependencies": null,
+  "last_scraped_at": "2025-08-10T01:35:36.381Z"
+}

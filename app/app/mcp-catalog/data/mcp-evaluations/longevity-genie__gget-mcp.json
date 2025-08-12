@@ -28,22 +28,39 @@
       "mcpServers": {
         "gget-mcp": {
           "command": "uvx",
-          "args": ["--from", "gget-mcp", "stdio"],
+          "args": [
+            "--from",
+            "gget-mcp",
+            "stdio"
+          ],
           "env": {}
         },
         "gget-mcp-http": {
           "command": "uvx",
-          "args": ["--from", "gget-mcp", "server"],
+          "args": [
+            "--from",
+            "gget-mcp",
+            "server"
+          ],
           "env": {}
         },
         "gget-mcp-stdio-local": {
           "command": "uvx",
-          "args": ["--from", "gget-mcp", "stdio", "--output-dir", "./gget_output"],
+          "args": [
+            "--from",
+            "gget-mcp",
+            "stdio",
+            "--output-dir",
+            "./gget_output"
+          ],
           "env": {}
         },
         "gget-mcp-sse": {
           "command": "uvx",
-          "args": ["gget-mcp", "server-sse"],
+          "args": [
+            "gget-mcp",
+            "server-sse"
+          ],
           "env": {}
         }
       }

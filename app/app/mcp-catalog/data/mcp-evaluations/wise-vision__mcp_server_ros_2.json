@@ -8,11 +8,14 @@
     "name": "wise-vision"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "wisevision/mcp_server_ros_2"
+      ],
       "env": {}
     }
   },
@@ -28,7 +31,12 @@
       "mcpServers": {
         "wisevision-mcp_server_ros_2-docker": {
           "command": "docker",
-          "args": ["run", "-i", "--rm", "wisevision/mcp_server_ros_2"],
+          "args": [
+            "run",
+            "-i",
+            "--rm",
+            "wisevision/mcp_server_ros_2"
+          ],
           "env": {}
         }
       }
@@ -54,7 +62,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T10:15:07.201Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

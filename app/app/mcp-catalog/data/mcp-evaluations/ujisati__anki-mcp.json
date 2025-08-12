@@ -8,11 +8,12 @@
     "name": "ujisati"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uv",
+      "args": [
+        "run",
+        "anki-mcp"
+      ],
       "env": {}
     }
   },
@@ -28,12 +29,20 @@
       "mcpServers": {
         "anki-mcp": {
           "command": "uv",
-          "args": ["run", "anki-mcp"],
+          "args": [
+            "run",
+            "anki-mcp"
+          ],
           "env": {}
         },
         "anki-mcp-with-directory": {
           "command": "uv",
-          "args": ["--directory", "/ABSOLUTE/PATH/TO/anki-mcp", "run", "anki-mcp"],
+          "args": [
+            "--directory",
+            "/ABSOLUTE/PATH/TO/anki-mcp",
+            "run",
+            "anki-mcp"
+          ],
           "env": {}
         }
       }
@@ -59,7 +68,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T21:05:43.596Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

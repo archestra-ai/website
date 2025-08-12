@@ -8,11 +8,12 @@
     "name": "Bigsy"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "clojars-deps-server"
+      ],
       "env": {}
     }
   },
@@ -28,12 +29,16 @@
       "mcpServers": {
         "clojars-deps-server": {
           "command": "npx",
-          "args": ["clojars-deps-server"],
+          "args": [
+            "clojars-deps-server"
+          ],
           "env": {}
         },
         "clojars-deps-server-configured": {
           "command": "node",
-          "args": ["/path/to/clojars-deps-server/build/index.js"],
+          "args": [
+            "/path/to/clojars-deps-server/build/index.js"
+          ],
           "env": {}
         }
       }
@@ -59,7 +64,7 @@
   "programming_language": "JavaScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:24:21.716Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

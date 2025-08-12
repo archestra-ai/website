@@ -8,11 +8,14 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uv",
+      "args": [
+        "--directory",
+        "${__dirname}",
+        "run",
+        "main.py"
+      ],
       "env": {}
     }
   },
@@ -28,7 +31,12 @@
       "mcpServers": {
         "DAO Proposals": {
           "command": "uv",
-          "args": ["--directory", "/path/to/dao-proposals-mcp", "run", "main.py"],
+          "args": [
+            "--directory",
+            "/path/to/dao-proposals-mcp",
+            "run",
+            "main.py"
+          ],
           "env": {}
         }
       }
@@ -54,7 +62,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T10:18:02.402Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,
