@@ -49,7 +49,7 @@ export default function Header() {
               height={40}
               className="object-contain"
             />
-            <span className="font-mono text-2xl text-black hidden lg:inline">archestra.ai</span>
+            <span className="font-mono text-2xl text-black hidden lg:inline">Archestra.AI</span>
           </a>
           <nav className="hidden lg:flex items-center gap-6 mt-1">
             {/* Product Dropdown */}
