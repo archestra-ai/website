@@ -28,7 +28,12 @@
       "mcpServers": {
         "cryptopanic-mcp-server": {
           "command": "uv",
-          "args": ["--directory", "/your/path/to/cryptopanic-mcp-server", "run", "main.py"],
+          "args": [
+            "--directory",
+            "/your/path/to/cryptopanic-mcp-server",
+            "run",
+            "main.py"
+          ],
           "env": {
             "CRYPTOPANIC_API_PLAN": "your_api_plan",
             "CRYPTOPANIC_API_KEY": "your_api_key"

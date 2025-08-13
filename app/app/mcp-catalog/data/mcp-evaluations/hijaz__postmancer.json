@@ -28,7 +28,10 @@
       "mcpServers": {
         "postmancer": {
           "command": "npx",
-          "args": ["-y", "postmancer"],
+          "args": [
+            "-y",
+            "postmancer"
+          ],
           "env": {
             "LOG_LEVEL": "info"
           }

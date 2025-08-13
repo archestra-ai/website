@@ -28,17 +28,24 @@
       "mcpServers": {
         "bilibili-mcp": {
           "command": "npx",
-          "args": ["bilibili-mcp"],
+          "args": [
+            "bilibili-mcp"
+          ],
           "env": {}
         },
         "bilibili-mcp-bun": {
           "command": "bun",
-          "args": ["index.ts"],
+          "args": [
+            "index.ts"
+          ],
           "env": {}
         },
         "bilibili-mcp-npm": {
           "command": "npm",
-          "args": ["run", "start"],
+          "args": [
+            "run",
+            "start"
+          ],
           "env": {}
         }
       }

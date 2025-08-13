@@ -28,12 +28,16 @@
       "mcpServers": {
         "memvid-mcp-server": {
           "command": "python",
-          "args": ["server.py"],
+          "args": [
+            "server.py"
+          ],
           "env": {}
         },
         "memvid-mcp-server-configured": {
           "command": "python",
-          "args": ["server.py"],
+          "args": [
+            "server.py"
+          ],
           "env": {
             "PORT": "3002"
           }

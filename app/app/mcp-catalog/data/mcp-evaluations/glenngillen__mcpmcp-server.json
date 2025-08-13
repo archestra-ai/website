@@ -28,8 +28,11 @@
       "mcpServers": {
         "mcp-remote": {
           "command": "npx",
-          "args": ["-y", "mcp-remote@latest", "https://mcpmcp.io/mcp"],
-          "env": {}
+          "args": [
+            "-y",
+            "mcp-remote@latest",
+            "https://mcpmcp.io/mcp"
+          ]
         }
       }
     },

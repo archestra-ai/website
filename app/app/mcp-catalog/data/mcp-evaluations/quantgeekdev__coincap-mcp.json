@@ -28,7 +28,9 @@
       "mcpServers": {
         "coincap-mcp": {
           "command": "npx",
-          "args": ["coincap-mcp"],
+          "args": [
+            "coincap-mcp"
+          ],
           "env": {}
         },
         "coincap-mcp-configured": {

@@ -28,7 +28,12 @@
       "mcpServers": {
         "ip2locationio": {
           "command": "uv",
-          "args": ["--directory", "/path/to/ip2locationio/src", "run", "server.py"],
+          "args": [
+            "--directory",
+            "/path/to/ip2locationio/src",
+            "run",
+            "server.py"
+          ],
           "env": {
             "IP2LOCATION_API_KEY": "<YOUR API key HERE>"
           }

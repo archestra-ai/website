@@ -28,7 +28,9 @@
       "mcpServers": {
         "restcsv-mcp-server": {
           "command": "npx",
-          "args": ["restcsv-mcp-server"],
+          "args": [
+            "restcsv-mcp-server"
+          ],
           "env": {
             "RESTCSV_API_KEY": "<REPLACE>"
           }

@@ -28,21 +28,33 @@
       "mcpServers": {
         "coda-mcp": {
           "command": "npx",
-          "args": ["-y", "coda-mcp@latest"],
+          "args": [
+            "-y",
+            "coda-mcp@latest"
+          ],
           "env": {
             "API_KEY": "..."
           }
         },
         "reaperberri-coda-mcp-docker": {
           "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "API_KEY", "reaperberri/coda-mcp:latest"],
+          "args": [
+            "run",
+            "-i",
+            "--rm",
+            "-e",
+            "API_KEY",
+            "reaperberri/coda-mcp:latest"
+          ],
           "env": {
             "API_KEY": "..."
           }
         },
         "coda-mcp-stdio": {
           "command": "node",
-          "args": ["dist/index.js"],
+          "args": [
+            "dist/index.js"
+          ],
           "env": {
             "API_KEY": "..."
           }

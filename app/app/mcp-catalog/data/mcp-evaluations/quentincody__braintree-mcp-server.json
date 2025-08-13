@@ -28,12 +28,16 @@
       "mcpServers": {
         "braintree-server-stdio": {
           "command": "python",
-          "args": ["braintree_server.py"],
+          "args": [
+            "braintree_server.py"
+          ],
           "env": {}
         },
         "braintree-sse-server-sse": {
           "command": "python",
-          "args": ["braintree_sse_server.py"],
+          "args": [
+            "braintree_sse_server.py"
+          ],
           "env": {}
         }
       }

@@ -26,30 +26,39 @@
   "archestra_config": {
     "client_config_permutations": {
       "mcpServers": {
-        "1mcp-agent-quick-start": {
-          "command": "npx",
-          "args": ["-y", "@1mcp/agent", "--config", "~/Library/Application Support/Claude/claude_desktop_config.json"],
-          "env": {}
-        },
         "1mcp-agent": {
           "command": "npx",
-          "args": ["-y", "@1mcp/agent"],
-          "env": {}
+          "args": [
+            "-y",
+            "@1mcp/agent"
+          ]
+        },
+        "1mcp-agent-with-config": {
+          "command": "npx",
+          "args": [
+            "-y",
+            "@1mcp/agent",
+            "--config",
+            "~/Library/Application Support/Claude/claude_desktop_config.json"
+          ]
         },
         "1mcp-agent-stdio": {
           "command": "npx",
-          "args": ["-y", "@1mcp/agent", "--transport", "stdio"],
-          "env": {}
-        },
-        "1mcp-agent-reverse-proxy": {
-          "command": "npx",
-          "args": ["-y", "@1mcp/agent", "--external-url", "https://example.com"],
-          "env": {}
+          "args": [
+            "-y",
+            "@1mcp/agent",
+            "--transport",
+            "stdio"
+          ]
         },
         "1mcp-app-agent-docker": {
           "command": "docker",
-          "args": ["run", "-p", "3050:3050", "ghcr.io/1mcp-app/agent"],
-          "env": {}
+          "args": [
+            "run",
+            "-p",
+            "3050:3050",
+            "ghcr.io/1mcp-app/agent"
+          ]
         },
         "1mcp-app-agent-docker-with-config": {
           "command": "docker",
@@ -62,13 +71,17 @@
             "ghcr.io/1mcp-app/agent",
             "--config",
             "/config.json"
-          ],
-          "env": {}
+          ]
         },
         "1mcp-app-agent-docker-stdio": {
           "command": "docker",
-          "args": ["run", "-i", "ghcr.io/1mcp-app/agent", "--transport", "stdio"],
-          "env": {}
+          "args": [
+            "run",
+            "-i",
+            "ghcr.io/1mcp-app/agent",
+            "--transport",
+            "stdio"
+          ]
         },
         "1mcp-app-agent-docker-with-env": {
           "command": "docker",
@@ -87,7 +100,7 @@
             "ONE_MCP_TAGS": "network,filesystem"
           }
         },
-        "1mcp-app-agent-docker-reverse-proxy": {
+        "1mcp-app-agent-docker-proxy": {
           "command": "docker",
           "args": [
             "run",

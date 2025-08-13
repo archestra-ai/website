@@ -28,7 +28,10 @@
       "mcpServers": {
         "ros-general": {
           "command": "uv",
-          "args": ["run", "ros-general.py"],
+          "args": [
+            "run",
+            "ros-general.py"
+          ],
           "env": {}
         },
         "ros-general-configured": {
@@ -45,7 +48,9 @@
         },
         "socket-server": {
           "command": "python3",
-          "args": ["socket_server.py"],
+          "args": [
+            "socket_server.py"
+          ],
           "env": {}
         }
       }

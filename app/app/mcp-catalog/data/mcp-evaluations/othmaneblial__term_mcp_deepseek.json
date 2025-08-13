@@ -28,7 +28,9 @@
       "mcpServers": {
         "term-mcp-deepseek": {
           "command": "python",
-          "args": ["server.py"],
+          "args": [
+            "server.py"
+          ],
           "env": {}
         }
       }

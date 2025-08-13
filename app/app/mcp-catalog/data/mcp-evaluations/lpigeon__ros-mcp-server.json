@@ -28,7 +28,12 @@
       "mcpServers": {
         "ros-mcp-server": {
           "command": "uv",
-          "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/FOLDER/ros-mcp-server", "run", "server.py"],
+          "args": [
+            "--directory",
+            "/ABSOLUTE/PATH/TO/PARENT/FOLDER/ros-mcp-server",
+            "run",
+            "server.py"
+          ],
           "env": {}
         }
       }

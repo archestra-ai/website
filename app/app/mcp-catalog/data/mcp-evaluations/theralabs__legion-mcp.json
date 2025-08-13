@@ -28,7 +28,9 @@
       "mcpServers": {
         "database-mcp-uvx-single-db": {
           "command": "uvx",
-          "args": ["database-mcp"],
+          "args": [
+            "database-mcp"
+          ],
           "env": {
             "DB_TYPE": "pg",
             "DB_CONFIG": "{\"host\":\"localhost\",\"port\":5432,\"user\":\"user\",\"password\":\"pw\",\"dbname\":\"dbname\"}"
@@ -36,14 +38,21 @@
         },
         "database-mcp-uvx-multi-db": {
           "command": "uvx",
-          "args": ["database-mcp"],
+          "args": [
+            "database-mcp"
+          ],
           "env": {
             "DB_CONFIGS": "[{\"id\":\"pg_main\",\"db_type\":\"pg\",\"configuration\":{\"host\":\"localhost\",\"port\":5432,\"user\":\"user\",\"password\":\"pw\",\"dbname\":\"postgres\"},\"description\":\"PostgreSQL Database\"},{\"id\":\"mysql_data\",\"db_type\":\"mysql\",\"configuration\":{\"host\":\"localhost\",\"port\":3306,\"user\":\"root\",\"password\":\"pass\",\"database\":\"mysql\"},\"description\":\"MySQL Database\"}]"
           }
         },
         "database-mcp-pip-single-db": {
           "command": "python",
-          "args": ["-m", "database_mcp", "--repository", "path/to/git/repo"],
+          "args": [
+            "-m",
+            "database_mcp",
+            "--repository",
+            "path/to/git/repo"
+          ],
           "env": {
             "DB_TYPE": "pg",
             "DB_CONFIG": "{\"host\":\"localhost\",\"port\":5432,\"user\":\"user\",\"password\":\"pw\",\"dbname\":\"dbname\"}"
@@ -51,12 +60,17 @@
         },
         "database-mcp-production": {
           "command": "python",
-          "args": ["mcp_server.py"],
+          "args": [
+            "mcp_server.py"
+          ],
           "env": {}
         },
         "database-mcp-uv-env-single-db": {
           "command": "uv",
-          "args": ["run", "src/database_mcp/mcp_server.py"],
+          "args": [
+            "run",
+            "src/database_mcp/mcp_server.py"
+          ],
           "env": {
             "DB_TYPE": "pg",
             "DB_CONFIG": "{\"host\":\"localhost\",\"port\":5432,\"user\":\"username\",\"password\":\"password\",\"dbname\":\"database_name\"}"
@@ -64,14 +78,20 @@
         },
         "database-mcp-uv-env-multi-db": {
           "command": "uv",
-          "args": ["run", "src/database_mcp/mcp_server.py"],
+          "args": [
+            "run",
+            "src/database_mcp/mcp_server.py"
+          ],
           "env": {
             "DB_CONFIGS": "[{\"id\":\"pg_main\",\"db_type\":\"pg\",\"configuration\":{\"host\":\"localhost\",\"port\":5432,\"user\":\"username\",\"password\":\"password\",\"dbname\":\"database_name\"},\"description\":\"PostgreSQL Database\"},{\"id\":\"mysql_users\",\"db_type\":\"mysql\",\"configuration\":{\"host\":\"localhost\",\"port\":3306,\"user\":\"root\",\"password\":\"pass\",\"database\":\"mysql\"},\"description\":\"MySQL Database\"}]"
           }
         },
         "database-mcp-uv-env-multi-db-auto-id": {
           "command": "uv",
-          "args": ["run", "src/database_mcp/mcp_server.py"],
+          "args": [
+            "run",
+            "src/database_mcp/mcp_server.py"
+          ],
           "env": {
             "DB_CONFIGS": "[{\"db_type\":\"pg\",\"configuration\":{\"host\":\"localhost\",\"port\":5432,\"user\":\"username\",\"password\":\"password\",\"dbname\":\"database_name\"},\"description\":\"PostgreSQL Database\"},{\"db_type\":\"mysql\",\"configuration\":{\"host\":\"localhost\",\"port\":3306,\"user\":\"root\",\"password\":\"pass\",\"database\":\"mysql\"},\"description\":\"MySQL Database\"}]"
           }

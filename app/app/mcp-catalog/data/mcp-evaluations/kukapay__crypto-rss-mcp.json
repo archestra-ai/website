@@ -28,12 +28,22 @@
       "mcpServers": {
         "crypto-rss-mcp": {
           "command": "uv",
-          "args": ["run", "mcp", "dev", "cli.py"],
+          "args": [
+            "run",
+            "mcp",
+            "dev",
+            "cli.py"
+          ],
           "env": {}
         },
         "crypto-rss-mcp-configured": {
           "command": "uv",
-          "args": ["--directory", "/path/to/crypto-rss-mcp", "run", "crypto-rss-mcp"],
+          "args": [
+            "--directory",
+            "/path/to/crypto-rss-mcp",
+            "run",
+            "crypto-rss-mcp"
+          ],
           "env": {}
         }
       }

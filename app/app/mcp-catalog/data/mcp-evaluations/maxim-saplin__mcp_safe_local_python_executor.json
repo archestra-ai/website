@@ -28,12 +28,20 @@
       "mcpServers": {
         "mcp-safe-local-python-executor-manual": {
           "command": "uv",
-          "args": ["run", "mcp_server.py"],
+          "args": [
+            "run",
+            "mcp_server.py"
+          ],
           "env": {}
         },
         "safe-local-python-executor": {
           "command": "uv",
-          "args": ["--directory", "/path/to/mcp_local_python_executor/", "run", "mcp_server.py"],
+          "args": [
+            "--directory",
+            "/path/to/mcp_local_python_executor/",
+            "run",
+            "mcp_server.py"
+          ],
           "env": {}
         }
       }

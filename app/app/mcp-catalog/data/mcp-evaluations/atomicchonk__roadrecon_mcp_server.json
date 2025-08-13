@@ -28,12 +28,16 @@
       "mcpServers": {
         "roadrecon-mcp-server": {
           "command": "python",
-          "args": ["roadrecon_mcp_server.py"],
+          "args": [
+            "roadrecon_mcp_server.py"
+          ],
           "env": {}
         },
         "roadrecon-mcp-server-configured": {
           "command": "python",
-          "args": ["roadrecon_mcp_server.py"],
+          "args": [
+            "roadrecon_mcp_server.py"
+          ],
           "env": {
             "ROADRECON_URL": "http://localhost:8080"
           }

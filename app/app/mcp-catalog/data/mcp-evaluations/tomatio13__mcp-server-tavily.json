@@ -28,7 +28,12 @@
       "mcpServers": {
         "tavily-search": {
           "command": "uv",
-          "args": ["--directory", "C:\\your_path\\mcp-server-tavily", "run", "tavily-search"],
+          "args": [
+            "--directory",
+            "C:\\your_path\\mcp-server-tavily",
+            "run",
+            "tavily-search"
+          ],
           "env": {
             "TAVILY_API_KEY": "YOUR_TAVILY_API_KEY",
             "PYTHONIOENCODING": "utf-8"
@@ -44,7 +49,11 @@
         },
         "tavily-search-server-docker-compose": {
           "command": "docker",
-          "args": ["compose", "up", "-d"],
+          "args": [
+            "compose",
+            "up",
+            "-d"
+          ],
           "env": {}
         }
       }

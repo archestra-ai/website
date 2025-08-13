@@ -28,7 +28,9 @@
       "mcpServers": {
         "pythonanywhere-mcp-server": {
           "command": "uvx",
-          "args": ["pythonanywhere-mcp-server"],
+          "args": [
+            "pythonanywhere-mcp-server"
+          ],
           "env": {
             "API_TOKEN": "yourpythonanywhereapitoken",
             "LOGNAME": "yourpythonanywhereusername"

@@ -28,7 +28,9 @@
       "mcpServers": {
         "meta-ads-mcp": {
           "command": "uvx",
-          "args": ["meta-ads-mcp"],
+          "args": [
+            "meta-ads-mcp"
+          ],
           "env": {}
         }
       }

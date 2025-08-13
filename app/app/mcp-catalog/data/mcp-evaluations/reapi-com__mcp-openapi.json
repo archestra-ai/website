@@ -28,12 +28,22 @@
       "mcpServers": {
         "reapi-mcp-openapi-project-config": {
           "command": "npx",
-          "args": ["-y", "@reapi/mcp-openapi@latest", "--dir", "./specs"],
+          "args": [
+            "-y",
+            "@reapi/mcp-openapi@latest",
+            "--dir",
+            "./specs"
+          ],
           "env": {}
         },
         "reapi-mcp-openapi-global-config": {
           "command": "npx",
-          "args": ["-y", "@reapi/mcp-openapi@latest", "--dir", "/path/to/your/specs"],
+          "args": [
+            "-y",
+            "@reapi/mcp-openapi@latest",
+            "--dir",
+            "/path/to/your/specs"
+          ],
           "env": {}
         }
       }

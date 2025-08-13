@@ -28,7 +28,9 @@
       "mcpServers": {
         "influx-mcp-standalone": {
           "command": "node",
-          "args": ["/path/to/influx-mcp-standalone/build/index.js"],
+          "args": [
+            "/path/to/influx-mcp-standalone/build/index.js"
+          ],
           "env": {
             "INFLUX_DB_INSTANCE_URL": "http://localhost:8181/",
             "INFLUX_DB_TOKEN": "<YOUR_INFLUXDB_TOKEN>",
@@ -37,7 +39,10 @@
         },
         "modelcontextprotocol-server-influxdb": {
           "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-influxdb"],
+          "args": [
+            "-y",
+            "@modelcontextprotocol/server-influxdb"
+          ],
           "env": {
             "INFLUX_DB_INSTANCE_URL": "http://localhost:8181/",
             "INFLUX_DB_TOKEN": "<YOUR_INFLUXDB_TOKEN>",

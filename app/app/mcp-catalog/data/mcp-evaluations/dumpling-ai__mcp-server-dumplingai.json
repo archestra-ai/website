@@ -28,14 +28,20 @@
       "mcpServers": {
         "mcp-server-dumplingai": {
           "command": "npx",
-          "args": ["-y", "mcp-server-dumplingai"],
+          "args": [
+            "-y",
+            "mcp-server-dumplingai"
+          ],
           "env": {
             "DUMPLING_API_KEY": "your_api_key"
           }
         },
         "mcp-server-dumplingai-cursor": {
           "command": "npx",
-          "args": ["-y", "mcp-server-dumplingai"],
+          "args": [
+            "-y",
+            "mcp-server-dumplingai"
+          ],
           "env": {
             "DUMPLING_API_KEY": "<your-api-key>"
           }

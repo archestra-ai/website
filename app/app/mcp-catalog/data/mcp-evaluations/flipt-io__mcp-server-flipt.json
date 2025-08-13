@@ -33,17 +33,28 @@
         },
         "flipt-io-mcp-server-flipt-npx": {
           "command": "npx",
-          "args": ["-y", "@flipt-io/mcp-server-flipt"],
+          "args": [
+            "-y",
+            "@flipt-io/mcp-server-flipt"
+          ],
           "env": {}
         },
         "flipt-io-mcp-server-flipt-docker": {
           "command": "docker",
-          "args": ["run", "-d", "--name", "mcp-server-flipt", "ghcr.io/flipt-io/mcp-server-flipt:latest"],
+          "args": [
+            "run",
+            "-d",
+            "--name",
+            "mcp-server-flipt",
+            "ghcr.io/flipt-io/mcp-server-flipt:latest"
+          ],
           "env": {}
         },
         "flipt-io-mcp-server-flipt-npm-start": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         }
       }

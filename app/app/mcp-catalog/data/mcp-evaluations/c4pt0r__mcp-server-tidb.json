@@ -28,12 +28,21 @@
       "mcpServers": {
         "mcp-server-tidb": {
           "command": "uv",
-          "args": ["--directory", "/path/to/mcp-server-tidb", "run", "src/main.py"],
+          "args": [
+            "--directory",
+            "/path/to/mcp-server-tidb",
+            "run",
+            "src/main.py"
+          ],
           "env": {}
         },
         "mcp-server-tidb-wsl": {
           "command": "wsl.exe",
-          "args": ["bash", "-c", "/path/to/uv --directory /path/to/mcp-server-tidb run python src/main.py"],
+          "args": [
+            "bash",
+            "-c",
+            "/path/to/uv --directory /path/to/mcp-server-tidb run python src/main.py"
+          ],
           "env": {}
         }
       }

@@ -28,7 +28,10 @@
       "mcpServers": {
         "agentql": {
           "command": "npx",
-          "args": ["-y", "agentql-mcp"],
+          "args": [
+            "-y",
+            "agentql-mcp"
+          ],
           "env": {
             "AGENTQL_API_KEY": "YOUR_API_KEY"
           }

@@ -28,14 +28,18 @@
       "mcpServers": {
         "mcp-graphql": {
           "command": "npx",
-          "args": ["mcp-graphql"],
+          "args": [
+            "mcp-graphql"
+          ],
           "env": {
             "ENDPOINT": "http://localhost:3000/graphql"
           }
         },
         "mcp-graphql-with-headers": {
           "command": "npx",
-          "args": ["mcp-graphql"],
+          "args": [
+            "mcp-graphql"
+          ],
           "env": {
             "ENDPOINT": "https://api.example.com/graphql",
             "HEADERS": "{\"Authorization\":\"Bearer token123\"}"
@@ -43,7 +47,9 @@
         },
         "mcp-graphql-allow-mutations": {
           "command": "npx",
-          "args": ["mcp-graphql"],
+          "args": [
+            "mcp-graphql"
+          ],
           "env": {
             "ENDPOINT": "http://localhost:3000/graphql",
             "ALLOW_MUTATIONS": "true"
@@ -51,7 +57,9 @@
         },
         "mcp-graphql-with-local-schema": {
           "command": "npx",
-          "args": ["mcp-graphql"],
+          "args": [
+            "mcp-graphql"
+          ],
           "env": {
             "ENDPOINT": "http://localhost:3000/graphql",
             "SCHEMA": "./schema.graphql"
@@ -59,7 +67,9 @@
         },
         "mcp-graphql-with-remote-schema": {
           "command": "npx",
-          "args": ["mcp-graphql"],
+          "args": [
+            "mcp-graphql"
+          ],
           "env": {
             "ENDPOINT": "http://localhost:3000/graphql",
             "SCHEMA": "https://example.com/schema.graphql"

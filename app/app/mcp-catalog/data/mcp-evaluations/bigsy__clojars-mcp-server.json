@@ -28,12 +28,16 @@
       "mcpServers": {
         "clojars-deps-server": {
           "command": "npx",
-          "args": ["clojars-deps-server"],
+          "args": [
+            "clojars-deps-server"
+          ],
           "env": {}
         },
         "clojars-deps-server-configured": {
           "command": "node",
-          "args": ["/path/to/clojars-deps-server/build/index.js"],
+          "args": [
+            "/path/to/clojars-deps-server/build/index.js"
+          ],
           "env": {}
         }
       }

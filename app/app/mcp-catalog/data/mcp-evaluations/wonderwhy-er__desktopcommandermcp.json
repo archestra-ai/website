@@ -28,7 +28,10 @@
       "mcpServers": {
         "wonderwhy-er-desktop-commander": {
           "command": "npx",
-          "args": ["-y", "@wonderwhy-er/desktop-commander"],
+          "args": [
+            "-y",
+            "@wonderwhy-er/desktop-commander"
+          ],
           "env": {}
         }
       }

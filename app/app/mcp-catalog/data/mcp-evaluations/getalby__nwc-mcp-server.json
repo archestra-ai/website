@@ -28,14 +28,20 @@
       "mcpServers": {
         "getalby-nwc-mcp-server": {
           "command": "npx",
-          "args": ["-y", "@getalby/nwc-mcp-server"],
+          "args": [
+            "-y",
+            "@getalby/nwc-mcp-server"
+          ],
           "env": {
             "NWC_CONNECTION_STRING": "YOUR NWC CONNECTION STRING HERE"
           }
         },
         "getalby-nwc-mcp-server-http": {
           "command": "npx",
-          "args": ["-y", "@getalby/nwc-mcp-server"],
+          "args": [
+            "-y",
+            "@getalby/nwc-mcp-server"
+          ],
           "env": {
             "MODE": "HTTP",
             "NWC_CONNECTION_STRING": "YOUR NWC CONNECTION STRING HERE"

@@ -28,12 +28,20 @@
       "mcpServers": {
         "blocknative-mcp-dev": {
           "command": "uv",
-          "args": ["run", "mcp", "dev", "blocknative-mcp"],
+          "args": [
+            "run",
+            "mcp",
+            "dev",
+            "blocknative-mcp"
+          ],
           "env": {}
         },
         "blocknative-mcp": {
           "command": "uv",
-          "args": ["run", "blocknative-mcp"],
+          "args": [
+            "run",
+            "blocknative-mcp"
+          ],
           "env": {}
         }
       }

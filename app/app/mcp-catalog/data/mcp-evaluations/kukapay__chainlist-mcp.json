@@ -28,7 +28,12 @@
       "mcpServers": {
         "Chainlist MCP": {
           "command": "uv",
-          "args": ["--directory", "/path/to/chainlist-mcp", "run", "main.py"],
+          "args": [
+            "--directory",
+            "/path/to/chainlist-mcp",
+            "run",
+            "main.py"
+          ],
           "env": {}
         }
       }

@@ -28,7 +28,9 @@
       "mcpServers": {
         "binance-alpha-mcp": {
           "command": "node",
-          "args": ["/absolute/path/to/binance-alpha-mcp/index.js"],
+          "args": [
+            "/absolute/path/to/binance-alpha-mcp/index.js"
+          ],
           "env": {
             "WS_ENDPOINT": "your_ws_endpoint_url",
             "RPC_ENDPOINT": "your_rpc_endpoint_url"

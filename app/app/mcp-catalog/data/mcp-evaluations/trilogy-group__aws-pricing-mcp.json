@@ -28,7 +28,9 @@
       "mcpServers": {
         "aws-pricing-mcp": {
           "command": "python",
-          "args": ["src/server.py"],
+          "args": [
+            "src/server.py"
+          ],
           "env": {}
         }
       }

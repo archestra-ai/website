@@ -28,27 +28,41 @@
       "mcpServers": {
         "just-mcp-cargo-run": {
           "command": "cargo",
-          "args": ["run", "--", "--stdio"],
+          "args": [
+            "run",
+            "--",
+            "--stdio"
+          ],
           "env": {}
         },
         "just-mcp-stdio": {
           "command": "just-mcp",
-          "args": ["--stdio"],
+          "args": [
+            "--stdio"
+          ],
           "env": {}
         },
         "just-mcp-directory": {
           "command": "just-mcp",
-          "args": ["--directory", "/path/to/project", "--stdio"],
+          "args": [
+            "--directory",
+            "/path/to/project",
+            "--stdio"
+          ],
           "env": {}
         },
         "just-mcp-claude-desktop": {
           "command": "/path/to/just-mcp",
-          "args": ["--stdio"],
+          "args": [
+            "--stdio"
+          ],
           "env": {}
         },
         "just-mcp-just-server": {
           "command": "just",
-          "args": ["server"],
+          "args": [
+            "server"
+          ],
           "env": {}
         }
       }

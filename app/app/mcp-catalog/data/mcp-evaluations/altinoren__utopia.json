@@ -28,7 +28,11 @@
       "mcpServers": {
         "Utopia": {
           "command": "dotnet",
-          "args": ["run", "--project", "<path_to_project_folder>/Utopia.csproj"],
+          "args": [
+            "run",
+            "--project",
+            "<path_to_project_folder>/Utopia.csproj"
+          ],
           "env": {}
         }
       }

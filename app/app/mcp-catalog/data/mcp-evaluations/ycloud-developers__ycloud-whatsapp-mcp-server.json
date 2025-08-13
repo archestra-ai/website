@@ -28,7 +28,9 @@
       "mcpServers": {
         "ycloud-whatsapp": {
           "command": "node",
-          "args": ["path/to/ycloud-whatsapp-mcp-server/build/index.js"],
+          "args": [
+            "path/to/ycloud-whatsapp-mcp-server/build/index.js"
+          ],
           "env": {
             "API_BASE_URL": "https://api.ycloud.com/v2",
             "API_HEADERS": "X-API-Key:your-api-key-here"
@@ -36,7 +38,9 @@
         },
         "ycloud-whatsapp-direct-run": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {
             "API_BASE_URL": "https://api.ycloud.com/v2",
             "API_HEADERS": "X-API-Key:your-api-key-here"

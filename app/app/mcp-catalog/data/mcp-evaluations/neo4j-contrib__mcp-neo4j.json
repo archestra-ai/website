@@ -33,12 +33,24 @@
         },
         "mcp-neo4j-cypher-http": {
           "command": "mcp-neo4j-cypher",
-          "args": ["--transport", "http"],
+          "args": [
+            "--transport",
+            "http"
+          ],
           "env": {}
         },
         "mcp-neo4j-cypher-http-configured": {
           "command": "mcp-neo4j-cypher",
-          "args": ["--transport", "http", "--host", "0.0.0.0", "--port", "8080", "--path", "/api/mcp/"],
+          "args": [
+            "--transport",
+            "http",
+            "--host",
+            "0.0.0.0",
+            "--port",
+            "8080",
+            "--path",
+            "/api/mcp/"
+          ],
           "env": {}
         },
         "mcp-neo4j-cypher-http-env": {
@@ -58,12 +70,24 @@
         },
         "mcp-neo4j-memory-http": {
           "command": "mcp-neo4j-memory",
-          "args": ["--transport", "http"],
+          "args": [
+            "--transport",
+            "http"
+          ],
           "env": {}
         },
         "mcp-neo4j-memory-http-configured": {
           "command": "mcp-neo4j-memory",
-          "args": ["--transport", "http", "--host", "0.0.0.0", "--port", "8080", "--path", "/api/mcp/"],
+          "args": [
+            "--transport",
+            "http",
+            "--host",
+            "0.0.0.0",
+            "--port",
+            "8080",
+            "--path",
+            "/api/mcp/"
+          ],
           "env": {}
         },
         "mcp-neo4j-memory-http-env": {
@@ -83,12 +107,24 @@
         },
         "mcp-neo4j-cloud-aura-api-http": {
           "command": "mcp-neo4j-cloud-aura-api",
-          "args": ["--transport", "http"],
+          "args": [
+            "--transport",
+            "http"
+          ],
           "env": {}
         },
         "mcp-neo4j-cloud-aura-api-http-configured": {
           "command": "mcp-neo4j-cloud-aura-api",
-          "args": ["--transport", "http", "--host", "0.0.0.0", "--port", "8080", "--path", "/api/mcp/"],
+          "args": [
+            "--transport",
+            "http",
+            "--host",
+            "0.0.0.0",
+            "--port",
+            "8080",
+            "--path",
+            "/api/mcp/"
+          ],
           "env": {}
         },
         "mcp-neo4j-cloud-aura-api-http-env": {
@@ -108,12 +144,24 @@
         },
         "mcp-neo4j-data-modeling-http": {
           "command": "mcp-neo4j-data-modeling",
-          "args": ["--transport", "http"],
+          "args": [
+            "--transport",
+            "http"
+          ],
           "env": {}
         },
         "mcp-neo4j-data-modeling-http-configured": {
           "command": "mcp-neo4j-data-modeling",
-          "args": ["--transport", "http", "--host", "0.0.0.0", "--port", "8080", "--path", "/api/mcp/"],
+          "args": [
+            "--transport",
+            "http",
+            "--host",
+            "0.0.0.0",
+            "--port",
+            "8080",
+            "--path",
+            "/api/mcp/"
+          ],
           "env": {}
         },
         "mcp-neo4j-data-modeling-http-env": {

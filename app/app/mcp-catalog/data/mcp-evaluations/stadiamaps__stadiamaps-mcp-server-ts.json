@@ -24,7 +24,9 @@
   "category": "Location",
   "quality_score": 40,
   "archestra_config": {
-    "client_config_permutations": null,
+    "client_config_permutations": {
+      "mcpServers": {}
+    },
     "oauth": {
       "provider": null,
       "required": false
@@ -46,7 +48,7 @@
   "programming_language": "TypeScript",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:20:15.441Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

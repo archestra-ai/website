@@ -24,7 +24,9 @@
   "category": "Aggregators",
   "quality_score": 57,
   "archestra_config": {
-    "client_config_permutations": null,
+    "client_config_permutations": {
+      "mcpServers": {}
+    },
     "oauth": {
       "provider": null,
       "required": false

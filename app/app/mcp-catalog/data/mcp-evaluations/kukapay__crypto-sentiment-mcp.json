@@ -28,7 +28,12 @@
       "mcpServers": {
         "crypto-sentiment-mcp": {
           "command": "uv",
-          "args": ["--directory", "path/to/crypto-sentiment-mcp", "run", "main.py"],
+          "args": [
+            "--directory",
+            "path/to/crypto-sentiment-mcp",
+            "run",
+            "main.py"
+          ],
           "env": {
             "SANTIMENT_API_KEY": "your_api_key_here"
           }

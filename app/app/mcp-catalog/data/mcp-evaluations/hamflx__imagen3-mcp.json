@@ -27,7 +27,7 @@
     "client_config_permutations": {
       "mcpServers": {
         "imagen3-mcp": {
-          "command": "/path/to/imagen3-mcp.exe",
+          "command": "imagen3-mcp.exe",
           "args": [],
           "env": {
             "GEMINI_API_KEY": "<GEMINI_API_KEY>",

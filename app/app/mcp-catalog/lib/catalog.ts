@@ -161,32 +161,24 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
         }
       } else {
         // Create a placeholder entry for servers without evaluation
+        // Determine display name: use the last part of the path if it exists, otherwise use the repo name
+        const displayName = repositoryPath 
+          ? repositoryPath.split('/').pop() || gitHubRepo
+          : gitHubRepo;
+        
         const server: ArchestraMcpServerManifest = {
           dxt_version: '0.1.0',
           version: '0.1.0',
           name: urlName,
-          display_name: 'Unknown',
+          display_name: displayName,
           description: "We're evaluating this MCP server",
           author: {
-            name: 'Unknown',
+            name: gitHubOrg,
             email: 'Unknown',
           },
-          server: {
-            type: 'binary',
-            entry_point: 'Unknown',
-            mcp_config: {
-              command: 'Unknown',
-            },
-          },
-          archestra_config: {
-            client_config_permutations: {
-              mcpServers: {},
-            },
-            oauth: {
-              provider: null,
-              required: false,
-            },
-          },
+          server: null,
+          archestra_config: null,
+          user_config: null,
           category: null,
           quality_score: null,
           github_info: {

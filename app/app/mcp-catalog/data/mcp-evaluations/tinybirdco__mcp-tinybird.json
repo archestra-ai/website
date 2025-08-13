@@ -28,7 +28,10 @@
       "mcpServers": {
         "mcp-tinybird-stdio-configured": {
           "command": "uvx",
-          "args": ["mcp-tinybird", "stdio"],
+          "args": [
+            "mcp-tinybird",
+            "stdio"
+          ],
           "env": {
             "TB_API_URL": "<TINYBIRD_API_URL>",
             "TB_ADMIN_TOKEN": "<TINYBIRD_ADMIN_TOKEN>"
@@ -36,17 +39,28 @@
         },
         "mcp-tinybird-sse": {
           "command": "uvx",
-          "args": ["mcp-tinybird", "sse"],
+          "args": [
+            "mcp-tinybird",
+            "sse"
+          ],
           "env": {}
         },
         "mcp-tinybird_local": {
           "command": "uv",
-          "args": ["--directory", "/path/to/your/mcp-tinybird", "run", "mcp-tinybird", "stdio"],
+          "args": [
+            "--directory",
+            "/path/to/your/mcp-tinybird",
+            "run",
+            "mcp-tinybird",
+            "stdio"
+          ],
           "env": {}
         },
         "mcp-tinybird": {
           "command": "uvx",
-          "args": ["mcp-tinybird"],
+          "args": [
+            "mcp-tinybird"
+          ],
           "env": {}
         },
         "modelcontextprotocol-inspector": {

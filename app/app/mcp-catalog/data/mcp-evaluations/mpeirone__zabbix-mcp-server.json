@@ -28,12 +28,20 @@
       "mcpServers": {
         "zabbix-mcp-server-startup": {
           "command": "uv",
-          "args": ["run", "python", "scripts/start_server.py"],
+          "args": [
+            "run",
+            "python",
+            "scripts/start_server.py"
+          ],
           "env": {}
         },
         "zabbix-mcp-server": {
           "command": "uv",
-          "args": ["run", "python", "src/zabbix_mcp_server.py"],
+          "args": [
+            "run",
+            "python",
+            "src/zabbix_mcp_server.py"
+          ],
           "env": {}
         }
       }

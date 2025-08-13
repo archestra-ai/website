@@ -28,27 +28,47 @@
       "mcpServers": {
         "free-will": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/gwbischof/free-will-mcp@v0.3", "free-will-mcp"],
+          "args": [
+            "--from",
+            "git+https://github.com/gwbischof/free-will-mcp@v0.3",
+            "free-will-mcp"
+          ],
           "env": {}
         },
         "free-will-local-clone": {
           "command": "uv",
-          "args": ["run", "python", "server.py"],
+          "args": [
+            "run",
+            "python",
+            "server.py"
+          ],
           "env": {}
         },
         "free-will-mcp-direct-python": {
           "command": "uv",
-          "args": ["run", "python", "server.py"],
+          "args": [
+            "run",
+            "python",
+            "server.py"
+          ],
           "env": {}
         },
         "free-will-mcp-uv-run": {
           "command": "uv",
-          "args": ["run", "free-will-mcp"],
+          "args": [
+            "run",
+            "free-will-mcp"
+          ],
           "env": {}
         },
         "mcp-dev-inspector": {
           "command": "uv",
-          "args": ["run", "mcp", "dev", "server.py"],
+          "args": [
+            "run",
+            "mcp",
+            "dev",
+            "server.py"
+          ],
           "env": {}
         }
       }

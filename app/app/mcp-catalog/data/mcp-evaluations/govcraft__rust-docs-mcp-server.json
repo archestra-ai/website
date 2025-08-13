@@ -28,35 +28,49 @@
       "mcpServers": {
         "rustdocs-mcp-server-serde": {
           "command": "rustdocs_mcp_server",
-          "args": ["serde@^1.0"],
+          "args": [
+            "serde@^1.0"
+          ],
           "env": {
             "OPENAI_API_KEY": "sk-..."
           }
         },
         "rustdocs-mcp-server-reqwest": {
           "command": "rustdocs_mcp_server",
-          "args": ["reqwest@0.12.0"],
+          "args": [
+            "reqwest@0.12.0"
+          ],
           "env": {
             "OPENAI_API_KEY": "sk-..."
           }
         },
         "rustdocs-mcp-server-tokio": {
           "command": "rustdocs_mcp_server",
-          "args": ["tokio"],
+          "args": [
+            "tokio"
+          ],
           "env": {
             "OPENAI_API_KEY": "sk-..."
           }
         },
         "rustdocs-mcp-server-async-stripe-configured": {
           "command": "rustdocs_mcp_server",
-          "args": ["async-stripe@0.40", "-F", "runtime-tokio-hyper-rustls"],
+          "args": [
+            "async-stripe@0.40",
+            "-F",
+            "runtime-tokio-hyper-rustls"
+          ],
           "env": {
             "OPENAI_API_KEY": "sk-..."
           }
         },
         "rustdocs-mcp-server-some-crate-configured": {
           "command": "rustdocs_mcp_server",
-          "args": ["some-crate@1.2", "--features", "feat1,feat2"],
+          "args": [
+            "some-crate@1.2",
+            "--features",
+            "feat1,feat2"
+          ],
           "env": {
             "OPENAI_API_KEY": "sk-..."
           }

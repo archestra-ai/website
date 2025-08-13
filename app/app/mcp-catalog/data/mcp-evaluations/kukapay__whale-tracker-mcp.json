@@ -28,17 +28,27 @@
       "mcpServers": {
         "kukapay-whale-tracker-mcp-dev": {
           "command": "mcp",
-          "args": ["dev", "whale_tracker.py", "--with-editable", "."],
+          "args": [
+            "dev",
+            "whale_tracker.py",
+            "--with-editable",
+            "."
+          ],
           "env": {}
         },
         "kukapay-whale-tracker-mcp-python": {
           "command": "python",
-          "args": ["whale_tracker.py"],
+          "args": [
+            "whale_tracker.py"
+          ],
           "env": {}
         },
         "kukapay-whale-tracker-mcp-mcp-run": {
           "command": "mcp",
-          "args": ["run", "whale_tracker.py"],
+          "args": [
+            "run",
+            "whale_tracker.py"
+          ],
           "env": {}
         }
       }

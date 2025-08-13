@@ -28,7 +28,12 @@
       "mcpServers": {
         "intruder": {
           "command": "uv",
-          "args": ["--directory", "path/to/intruder-mcp/intruder_mcp", "run", "server.py"],
+          "args": [
+            "--directory",
+            "path/to/intruder-mcp/intruder_mcp",
+            "run",
+            "server.py"
+          ],
           "env": {
             "INTRUDER_API_KEY": "your-api-key"
           }

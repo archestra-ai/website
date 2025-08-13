@@ -28,7 +28,9 @@
       "mcpServers": {
         "react-analyzer-mcp": {
           "command": "node",
-          "args": ["/Users/azer/code/sandbox/react-analyzer-mcp/build/index.js"],
+          "args": [
+            "/Users/azer/code/sandbox/react-analyzer-mcp/build/index.js"
+          ],
           "env": {}
         }
       }

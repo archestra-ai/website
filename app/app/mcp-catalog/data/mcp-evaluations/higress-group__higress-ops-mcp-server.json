@@ -28,7 +28,10 @@
       "mcpServers": {
         "higress-ops-mcp-server-stdio": {
           "command": "uv",
-          "args": ["run", "client.py"],
+          "args": [
+            "run",
+            "client.py"
+          ],
           "env": {}
         }
       }

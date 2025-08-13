@@ -28,7 +28,9 @@
       "mcpServers": {
         "quickchat-ai-mcp-configured": {
           "command": "uvx",
-          "args": ["quickchat-ai-mcp"],
+          "args": [
+            "quickchat-ai-mcp"
+          ],
           "env": {
             "SCENARIO_ID": "< QUICKCHAT AI SCENARIO ID >",
             "API_KEY": "< QUICKCHAT AI API KEY >"
@@ -36,14 +38,21 @@
         },
         "quickchat-ai-mcp-public": {
           "command": "uvx",
-          "args": ["quickchat-ai-mcp"],
+          "args": [
+            "quickchat-ai-mcp"
+          ],
           "env": {
             "SCENARIO_ID": "< QUICKCHAT AI SCENARIO ID >"
           }
         },
         "quickchat-ai-mcp-dev-inspector": {
           "command": "uv",
-          "args": ["run", "mcp", "dev", "src/__main__.py"],
+          "args": [
+            "run",
+            "mcp",
+            "dev",
+            "src/__main__.py"
+          ],
           "env": {}
         },
         "quickchat-ai-mcp-dev-client-configured": {

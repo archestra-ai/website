@@ -28,7 +28,10 @@
       "mcpServers": {
         "sonarqube-mcp-server-token-auth": {
           "command": "npx",
-          "args": ["-y", "sonarqube-mcp-server@latest"],
+          "args": [
+            "-y",
+            "sonarqube-mcp-server@latest"
+          ],
           "env": {
             "SONARQUBE_URL": "https://sonarcloud.io",
             "SONARQUBE_TOKEN": "your-token-here",
@@ -37,7 +40,10 @@
         },
         "sonarqube-mcp-server-basic-auth": {
           "command": "npx",
-          "args": ["-y", "sonarqube-mcp-server@latest"],
+          "args": [
+            "-y",
+            "sonarqube-mcp-server@latest"
+          ],
           "env": {
             "SONARQUBE_URL": "https://your-sonarqube.com",
             "SONARQUBE_USERNAME": "your-username",
@@ -46,7 +52,10 @@
         },
         "sonarqube-mcp-server-passcode-auth": {
           "command": "npx",
-          "args": ["-y", "sonarqube-mcp-server@latest"],
+          "args": [
+            "-y",
+            "sonarqube-mcp-server@latest"
+          ],
           "env": {
             "SONARQUBE_URL": "https://your-sonarqube.com",
             "SONARQUBE_PASSCODE": "your-system-passcode"

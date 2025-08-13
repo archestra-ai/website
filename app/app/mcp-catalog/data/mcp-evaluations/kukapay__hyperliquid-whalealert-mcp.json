@@ -28,7 +28,12 @@
       "mcpServers": {
         "hyperliquid-whalealert": {
           "command": "uv",
-          "args": ["--directory", "/path/to/hyperliquid-whalealert-mcp", "run", "main.py"],
+          "args": [
+            "--directory",
+            "/path/to/hyperliquid-whalealert-mcp",
+            "run",
+            "main.py"
+          ],
           "env": {
             "COINGLASS_API_KEY": "your_api_key"
           }

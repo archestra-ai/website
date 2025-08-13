@@ -28,7 +28,9 @@
       "mcpServers": {
         "RomThpt-mcp-xrpl": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         }
       }

@@ -28,7 +28,9 @@
       "mcpServers": {
         "newsmcp": {
           "command": "node",
-          "args": ["C:\\Path\\To\\Your\\project\\NewsMCP\\build\\index.js"],
+          "args": [
+            "C:\\Path\\To\\Your\\project\\NewsMCP\\build\\index.js"
+          ],
           "env": {
             "MARKETAUX_API_KEY": "Your-API-TOKEN"
           }

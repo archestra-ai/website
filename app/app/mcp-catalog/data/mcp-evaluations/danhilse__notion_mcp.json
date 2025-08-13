@@ -28,12 +28,18 @@
       "mcpServers": {
         "notion_mcp": {
           "command": "python",
-          "args": ["-m", "notion_mcp"],
+          "args": [
+            "-m",
+            "notion_mcp"
+          ],
           "env": {}
         },
         "notion-todo": {
           "command": "/path/to/your/.venv/bin/python",
-          "args": ["-m", "notion_mcp"],
+          "args": [
+            "-m",
+            "notion_mcp"
+          ],
           "env": {}
         }
       }

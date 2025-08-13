@@ -28,7 +28,9 @@
       "mcpServers": {
         "daisys-mcp": {
           "command": "uvx",
-          "args": ["daisys-mcp"],
+          "args": [
+            "daisys-mcp"
+          ],
           "env": {
             "DAISYS_EMAIL": "{Your Daisys Email}",
             "DAISYS_PASSWORD": "{Your Daisys Password}",
@@ -37,7 +39,13 @@
         },
         "daisys-mcp-from-source": {
           "command": "uv",
-          "args": ["--directory", "{installation_path}/daisys-mcp", "run", "-m", "daisys_mcp.server"],
+          "args": [
+            "--directory",
+            "{installation_path}/daisys-mcp",
+            "run",
+            "-m",
+            "daisys_mcp.server"
+          ],
           "env": {
             "DAISYS_EMAIL": "{Your Daisys Email}",
             "DAISYS_PASSWORD": "{Your Daisys Password}",

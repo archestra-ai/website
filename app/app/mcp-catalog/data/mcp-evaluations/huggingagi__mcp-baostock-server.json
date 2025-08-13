@@ -28,7 +28,10 @@
       "mcpServers": {
         "mcp-baostock-server": {
           "command": "uv",
-          "args": ["run", "mcp-baostock-server"],
+          "args": [
+            "run",
+            "mcp-baostock-server"
+          ],
           "env": {}
         }
       }

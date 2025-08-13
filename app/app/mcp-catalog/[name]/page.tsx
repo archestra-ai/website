@@ -12,7 +12,6 @@ import GitHubMetricsCard from '@mcpCatalog/components/GitHubMetricsCard';
 import AddNewMCPServerButton from '@mcpCatalog/components/LinkButtons/AddNewMCPServerButton';
 import EditThisServerButton from '@mcpCatalog/components/LinkButtons/EditThisServerButton';
 import ReportAnIssueButton from '@mcpCatalog/components/LinkButtons/ReportAnIssueButton';
-import ViewOnGitHubButton from '@mcpCatalog/components/LinkButtons/ViewOnGitHubButton';
 import McpClientConfigurationCard from '@mcpCatalog/components/McpClientConfigurationCard';
 import McpProtocolSupportCard from '@mcpCatalog/components/McpProtocolSupportCard';
 import QualityScoreCard from '@mcpCatalog/components/QualityScoreCard';
@@ -153,7 +152,10 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
               <McpProtocolSupportCard server={server} />
               <DependenciesCard server={server} />
               <McpClientConfigurationCard server={server} />
-              <ReadMeCard server={server} />
+              {/* ReadMeCard moved to bottom on mobile, stays here on desktop */}
+              <div className="hidden lg:block">
+                <ReadMeCard server={server} />
+              </div>
             </div>
 
             <div className="lg:sticky lg:top-8 space-y-6">
@@ -185,9 +187,13 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                   }%0AName: ${serverName}%0A%0APlease describe the issue:`}
                   fullWidth
                 />
-                <ViewOnGitHubButton fullWidth />
               </div>
             </div>
+          </div>
+          
+          {/* ReadMeCard shown at bottom on mobile only */}
+          <div className="lg:hidden mt-8">
+            <ReadMeCard server={server} />
           </div>
         </div>
       </main>

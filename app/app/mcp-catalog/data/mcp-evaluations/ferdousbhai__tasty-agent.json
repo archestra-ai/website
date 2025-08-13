@@ -28,7 +28,9 @@
       "mcpServers": {
         "tasty-agent": {
           "command": "uvx",
-          "args": ["tasty-agent"],
+          "args": [
+            "tasty-agent"
+          ],
           "env": {}
         }
       }

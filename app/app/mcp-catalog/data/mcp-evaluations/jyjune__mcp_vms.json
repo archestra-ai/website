@@ -28,7 +28,12 @@
       "mcpServers": {
         "vms": {
           "command": "uv",
-          "args": ["--directory", "X:\\path\\to\\mcp-vms", "run", "mcp_vms.py"],
+          "args": [
+            "--directory",
+            "X:\\path\\to\\mcp-vms",
+            "run",
+            "mcp_vms.py"
+          ],
           "env": {}
         }
       }

@@ -28,12 +28,24 @@
       "mcpServers": {
         "mcp-recon-docker": {
           "command": "docker",
-          "args": ["run", "--rm", "-i", "mcp/recon"],
+          "args": [
+            "run",
+            "--rm",
+            "-i",
+            "mcp/recon"
+          ],
           "env": {}
         },
         "mcp-recon-docker-with-env-file": {
           "command": "docker",
-          "args": ["run", "--rm", "-i", "--env-file", "/Users/yourname/.config/mcp-recon.env", "mcp/recon"],
+          "args": [
+            "run",
+            "--rm",
+            "-i",
+            "--env-file",
+            "/Users/yourname/.config/mcp-recon.env",
+            "mcp/recon"
+          ],
           "env": {
             "PDCP_API_KEY": "your_projectdiscovery_api_key"
           }

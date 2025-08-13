@@ -28,17 +28,25 @@
       "mcpServers": {
         "my-bear-mcp-server": {
           "command": "npx",
-          "args": ["github:bart6114/my-bear-mcp-server"],
+          "args": [
+            "github:bart6114/my-bear-mcp-server"
+          ],
           "env": {}
         },
         "my-bear-mcp-server-npm-start": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "my-bear-mcp-server-configured": {
           "command": "npx",
-          "args": ["github:bart6114/my-bear-mcp-server", "--db-path", "/path/to/your/database.sqlite"],
+          "args": [
+            "github:bart6114/my-bear-mcp-server",
+            "--db-path",
+            "/path/to/your/database.sqlite"
+          ],
           "env": {}
         }
       }

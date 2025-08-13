@@ -33,17 +33,23 @@
         },
         "mcpfun-mcp-server-ccxt": {
           "command": "npx",
-          "args": ["@mcpfun/mcp-server-ccxt"],
+          "args": [
+            "@mcpfun/mcp-server-ccxt"
+          ],
           "env": {}
         },
         "mcp-server-ccxt-npm-start": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "mcp-server-ccxt-node-direct": {
           "command": "node",
-          "args": ["/path/to/mcp-server-ccxt/build/index.js"],
+          "args": [
+            "/path/to/mcp-server-ccxt/build/index.js"
+          ],
           "env": {}
         }
       }

@@ -28,22 +28,28 @@
       "mcpServers": {
         "mcpjungle-docker-compose": {
           "command": "docker-compose",
-          "args": ["up", "-d"],
-          "env": {}
+          "args": [
+            "up",
+            "-d"
+          ]
         },
         "mcpjungle-stdio-docker-compose": {
           "command": "docker-compose",
-          "args": ["up", "-d"],
+          "args": [
+            "up",
+            "-d"
+          ],
           "env": {
             "MCPJUNGLE_IMAGE_TAG": "latest-stdio"
           }
         },
         "mcpjungle": {
           "command": "mcpjungle",
-          "args": ["start"],
-          "env": {}
+          "args": [
+            "start"
+          ]
         },
-        "mcpjungle-docker-postgres": {
+        "mcpjungle-mcpjungle-docker-configured": {
           "command": "docker",
           "args": [
             "run",
@@ -55,9 +61,11 @@
             "DATABASE_URL": "postgres://admin:root@localhost:5432/mcpjungle_db"
           }
         },
-        "mcpjungle-postgres": {
+        "mcpjungle-configured": {
           "command": "mcpjungle",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {
             "DATABASE_URL": "postgres://admin:root@localhost:5432/mcpjungle_db"
           }

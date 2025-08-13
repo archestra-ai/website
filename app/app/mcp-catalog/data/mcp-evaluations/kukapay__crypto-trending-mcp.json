@@ -28,7 +28,12 @@
       "mcpServers": {
         "crypto-trending": {
           "command": "uv",
-          "args": ["--directory", "/absolute/path/to/crypto-trending-mcp", "run", "main.py"],
+          "args": [
+            "--directory",
+            "/absolute/path/to/crypto-trending-mcp",
+            "run",
+            "main.py"
+          ],
           "env": {}
         }
       }

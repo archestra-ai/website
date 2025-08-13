@@ -28,7 +28,9 @@
       "mcpServers": {
         "WolframAlphaServer": {
           "command": "python3",
-          "args": ["/path/to/src/core/server.py"],
+          "args": [
+            "/path/to/src/core/server.py"
+          ],
           "env": {}
         }
       }

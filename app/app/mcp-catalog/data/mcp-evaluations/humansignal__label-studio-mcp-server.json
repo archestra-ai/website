@@ -28,7 +28,11 @@
       "mcpServers": {
         "mcp-label-studio": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/HumanSignal/label-studio-mcp-server", "mcp-label-studio"],
+          "args": [
+            "--from",
+            "git+https://github.com/HumanSignal/label-studio-mcp-server",
+            "mcp-label-studio"
+          ],
           "env": {
             "LABEL_STUDIO_API_KEY": "your_actual_api_key_here",
             "LABEL_STUDIO_URL": "http://localhost:8080"
@@ -36,7 +40,12 @@
         },
         "label-studio-mcp": {
           "command": "uv",
-          "args": ["--directory", "/path/to/your/label-studio-mcp-server", "run", "label-studio-mcp.py"],
+          "args": [
+            "--directory",
+            "/path/to/your/label-studio-mcp-server",
+            "run",
+            "label-studio-mcp.py"
+          ],
           "env": {
             "LABEL_STUDIO_API_KEY": "your_actual_api_key_here",
             "LABEL_STUDIO_URL": "http://localhost:8080"
