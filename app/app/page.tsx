@@ -152,7 +152,7 @@ export default async function Home() {
               <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border-2 border-blue-300 shadow-md">
                 <Monitor className="h-6 w-6 text-blue-600 mt-0.5 flex-shrink-0" />
                 <div className="flex-1">
-                  <h3 className="font-semibold mb-1 text-blue-900">Desktop App</h3>
+                  <h3 className="font-semibold mb-1 text-blue-900">Personal Desktop App</h3>
                   <div className="mb-4">
                     <img
                       src="/screenshot.png"
@@ -172,7 +172,7 @@ export default async function Home() {
               <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border-2 border-green-300 shadow-md">
                 <Package className="h-6 w-6 text-green-600 mt-0.5 flex-shrink-0" />
                 <div className="flex-1">
-                  <h3 className="font-semibold mb-1 text-green-900">Enterprise Platform</h3>
+                  <h3 className="font-semibold mb-1 text-green-900">Multi-Tenant Enterprise Platform</h3>
                   <p className="text-sm text-gray-700 mb-3">
                     Deploy and manage AI-to-Data connectors at scale with enterprise-grade security, compliance, and governance features. Get notified on launch.
                   </p>
