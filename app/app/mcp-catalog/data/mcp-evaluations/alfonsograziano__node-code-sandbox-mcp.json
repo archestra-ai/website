@@ -52,7 +52,10 @@
         },
         "node-code-sandbox-mcp": {
           "command": "npx",
-          "args": ["-y", "node-code-sandbox-mcp"],
+          "args": [
+            "-y",
+            "node-code-sandbox-mcp"
+          ],
           "env": {
             "FILES_DIR": "/Users/alfonsograziano/Desktop/node-sandbox",
             "SANDBOX_MEMORY_LIMIT": "512m",

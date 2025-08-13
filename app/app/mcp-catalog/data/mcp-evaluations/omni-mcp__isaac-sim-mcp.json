@@ -28,12 +28,20 @@
       "mcpServers": {
         "isaac-sim-mcp": {
           "command": "uv",
-          "args": ["run", "/home/ubuntu/Documents/isaac-sim-mcp/isaac_mcp/server.py"],
+          "args": [
+            "run",
+            "/home/ubuntu/Documents/isaac-sim-mcp/isaac_mcp/server.py"
+          ],
           "env": {}
         },
         "isaac-sim-mcp-dev": {
           "command": "uv",
-          "args": ["run", "mcp", "dev", "~/Documents/isaac-sim-mcp/isaac_mcp/server.py"],
+          "args": [
+            "run",
+            "mcp",
+            "dev",
+            "~/Documents/isaac-sim-mcp/isaac_mcp/server.py"
+          ],
           "env": {}
         }
       }

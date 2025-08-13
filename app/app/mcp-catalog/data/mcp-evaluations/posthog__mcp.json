@@ -28,7 +28,10 @@
       "mcpServers": {
         "posthog-mcp-dev": {
           "command": "pnpm",
-          "args": ["run", "dev"],
+          "args": [
+            "run",
+            "dev"
+          ],
           "env": {
             "POSTHOG_BASE_URL": "https://eu.posthog.com",
             "INKEEP_API_KEY": "..."

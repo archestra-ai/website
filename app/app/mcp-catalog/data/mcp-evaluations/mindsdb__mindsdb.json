@@ -25,18 +25,7 @@
   "quality_score": 68,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mindsdb": {
-          "command": "python",
-          "args": ["-m", "mindsdb", "--api=mcp"],
-          "env": {}
-        },
-        "mindsdb-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "mindsdb/mindsdb:latest", "--api=mcp"],
-          "env": {}
-        }
-      }
+      "mcpServers": {}
     },
     "oauth": {
       "provider": null,

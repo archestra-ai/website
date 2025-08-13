@@ -28,35 +28,54 @@
       "mcpServers": {
         "gistpad-mcp": {
           "command": "npx",
-          "args": ["-y", "gistpad-mcp"],
+          "args": [
+            "-y",
+            "gistpad-mcp"
+          ],
           "env": {
             "GITHUB_TOKEN": "<YOUR_PAT>"
           }
         },
         "gistpad-mcp-archived": {
           "command": "npx",
-          "args": ["-y", "gistpad-mcp", "--archived"],
+          "args": [
+            "-y",
+            "gistpad-mcp",
+            "--archived"
+          ],
           "env": {
             "GITHUB_TOKEN": "<YOUR_PAT>"
           }
         },
         "gistpad-mcp-starred": {
           "command": "npx",
-          "args": ["-y", "gistpad-mcp", "--starred"],
+          "args": [
+            "-y",
+            "gistpad-mcp",
+            "--starred"
+          ],
           "env": {
             "GITHUB_TOKEN": "<YOUR_PAT>"
           }
         },
         "gistpad-mcp-daily": {
           "command": "npx",
-          "args": ["-y", "gistpad-mcp", "--daily"],
+          "args": [
+            "-y",
+            "gistpad-mcp",
+            "--daily"
+          ],
           "env": {
             "GITHUB_TOKEN": "<YOUR_PAT>"
           }
         },
         "gistpad-mcp-markdown": {
           "command": "npx",
-          "args": ["-y", "gistpad-mcp", "--markdown"],
+          "args": [
+            "-y",
+            "gistpad-mcp",
+            "--markdown"
+          ],
           "env": {
             "GITHUB_TOKEN": "<YOUR_PAT>"
           }

@@ -49,7 +49,7 @@ export default function Header() {
               height={40}
               className="object-contain"
             />
-            <span className="font-mono text-2xl text-black hidden lg:inline">archestra.ai</span>
+            <span className="font-mono text-2xl text-black hidden lg:inline">Archestra.AI</span>
           </a>
           <nav className="hidden lg:flex items-center gap-6 mt-1">
             {/* Product Dropdown */}
@@ -72,7 +72,7 @@ export default function Header() {
                       setIsProductOpen(false);
                     }}
                   >
-                    <div className="font-medium">Desktop App</div>
+                    <div className="font-medium">Personal Desktop App</div>
                     <div className="text-xs text-red-500 mt-0.5">Coming soon</div>
                   </a>
                   <a
@@ -83,7 +83,7 @@ export default function Header() {
                       setIsProductOpen(false);
                     }}
                   >
-                    <div className="font-medium">Enterprise Platform</div>
+                    <div className="font-medium">Multi-Tenant Enterprise Platform</div>
                     <div className="text-xs text-red-500 mt-0.5">Coming soon</div>
                   </a>
                 </div>
@@ -168,7 +168,7 @@ export default function Header() {
                       e.preventDefault();
                     }}
                   >
-                    Desktop App <span className="text-xs text-red-500">(Coming soon)</span>
+                    Personal Desktop App <span className="text-xs text-red-500">(Coming soon)</span>
                   </a>
                   <a
                     href="#"
@@ -177,7 +177,7 @@ export default function Header() {
                       e.preventDefault();
                     }}
                   >
-                    Enterprise Platform <span className="text-xs text-red-500">(Coming soon)</span>
+                    Multi-Tenant Enterprise Platform <span className="text-xs text-red-500">(Coming soon)</span>
                   </a>
                 </div>
               )}

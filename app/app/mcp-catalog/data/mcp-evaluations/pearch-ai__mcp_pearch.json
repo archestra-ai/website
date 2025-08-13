@@ -28,7 +28,10 @@
       "mcpServers": {
         "pearch_mcp-dev": {
           "command": "fastmcp",
-          "args": ["dev", "pearch_mcp.py"],
+          "args": [
+            "dev",
+            "pearch_mcp.py"
+          ],
           "env": {}
         }
       }

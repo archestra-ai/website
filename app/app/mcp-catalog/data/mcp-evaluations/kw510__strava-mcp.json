@@ -28,7 +28,9 @@
       "mcpServers": {
         "strava-mcp": {
           "command": "wrangler",
-          "args": ["dev"],
+          "args": [
+            "dev"
+          ],
           "env": {}
         }
       }

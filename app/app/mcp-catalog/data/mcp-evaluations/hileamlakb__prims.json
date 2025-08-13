@@ -28,12 +28,18 @@
       "mcpServers": {
         "prims": {
           "command": "python",
-          "args": ["-m", "server.main"],
+          "args": [
+            "-m",
+            "server.main"
+          ],
           "env": {}
         },
         "prims-docker": {
           "command": "docker",
-          "args": ["run", "prims-docker"],
+          "args": [
+            "run",
+            "prims-docker"
+          ],
           "env": {}
         }
       }

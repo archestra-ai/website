@@ -55,7 +55,25 @@ export default function ScoringExplanationCard() {
         </div>
       ))}
       <div className="border-t border-blue-200 pt-3 mt-4">
-        <p className="text-xs text-blue-600 font-medium">Total: 100 points.</p>
+        <div className="flex items-center justify-between">
+          <p className="text-xs text-blue-600 font-medium">Total: 100 points.</p>
+          <a
+            href="https://github.com/archestra-ai/website/blob/main/app/app/mcp-catalog/scripts/evaluate-catalog.ts"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-2 py-1 text-xs font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 transition-colors"
+          >
+            <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+              />
+            </svg>
+            Review Evaluation Script, it's Open Source!
+          </a>
+        </div>
       </div>
     </div>
   );

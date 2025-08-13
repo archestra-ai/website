@@ -28,7 +28,12 @@
       "mcpServers": {
         "mcp_server_trino": {
           "command": "uv",
-          "args": ["--directory", "<path_to_mcp_server_trino>", "run", "mcp_server_trino"],
+          "args": [
+            "--directory",
+            "<path_to_mcp_server_trino>",
+            "run",
+            "mcp_server_trino"
+          ],
           "env": {
             "TRINO_HOST": "<host>",
             "TRINO_PORT": "<port>",

@@ -28,7 +28,9 @@
       "mcpServers": {
         "hiromitsusasaki-raindrop-io-mcp-server": {
           "command": "node",
-          "args": ["PATH_TO_BUILD/index.js"],
+          "args": [
+            "PATH_TO_BUILD/index.js"
+          ],
           "env": {
             "RAINDROP_TOKEN": "your_access_token_here"
           }

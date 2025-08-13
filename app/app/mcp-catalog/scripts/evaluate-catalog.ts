@@ -781,6 +781,16 @@ async function extractArchestraClientConfigPermutationsConfig(
     console.log(`  ⏭️  Server Config: Skipped (human evaluation)`);
     return server;
   }
+  // Skip if already exists and not forcing
+  // Check if client_config_permutations exists AND has actual server configurations
+  if (
+    server.archestra_config?.client_config_permutations?.mcpServers &&
+    Object.keys(server.archestra_config.client_config_permutations.mcpServers).length > 0 &&
+    !force
+  ) {
+    console.log(`  ⏭️  Server Config: Skipped (already exists)`);
+    return server;
+  }
   console.log(`  🔄 Server Config: Extracting...`);
 
   const content = server.readme || server.description;
@@ -855,7 +865,8 @@ If no run command found, respond with: {"mcpServers": {}}`;
 
   try {
     const result = await callLLM(prompt, configFormat, model);
-    if (result.mcpServers) {
+    // Only save if mcpServers exists AND has actual content
+    if (result.mcpServers && Object.keys(result.mcpServers).length > 0) {
       return {
         ...server,
         archestra_config: {
@@ -864,6 +875,8 @@ If no run command found, respond with: {"mcpServers": {}}`;
         },
         evaluation_model: model,
       };
+    } else {
+      console.log(`  ⚠️  Server Config: No configurations found in README`);
     }
   } catch (error: any) {
     console.warn(`Server config analysis failed: ${error.message}`);
@@ -1244,7 +1257,7 @@ async function extractDependencies(
     return server;
   }
   // Skip if already exists and not forcing
-  if (server.dependencies && !force) {
+  if (server.dependencies && server.dependencies.length > 0 && !force) {
     console.log(`  ⏭️  Dependencies: Skipped (already exists - ${server.dependencies.length} deps)`);
     return server;
   }
@@ -1348,7 +1361,8 @@ async function extractProtocolFeatures(
     return server;
   }
   // Skip if already exists and not forcing
-  if (Object.keys(server.protocol_features).length > 0 && !force) {
+  // Check if protocol features have been evaluated (implementing_tools will be boolean if evaluated)
+  if (server.protocol_features.implementing_tools !== undefined && !force) {
     console.log(`  ⏭️  Protocol Features: Skipped (already exists)`);
     return server;
   }
@@ -1513,35 +1527,50 @@ async function evaluateSingleRepo(
     }
 
     // 3. Apply updates based on options
-    if (updateGithub || !server.last_scraped_at) {
+    // Determine if any specific update was requested
+    const hasSpecificUpdates = updateGithub || updateCategory || updateArchestraClientConfigPermutations || 
+      updateArchestraOauth || updateCanonicalServerAndUserConfig || updateDependencies || 
+      updateProtocol || updateScore;
+    
+    // If force is true and specific updates are requested, ONLY do those updates
+    // Otherwise, fill in missing data
+    const shouldUpdateMissing = !force || !hasSpecificUpdates;
+
+    if (updateGithub || (shouldUpdateMissing && !server.last_scraped_at)) {
       server = await extractGitHubData(server, githubInfo, force);
     }
 
-    if (updateCategory) {
+    if (updateCategory || (shouldUpdateMissing && !server.category)) {
       server = await extractCategory(server, model, force);
     }
 
-    if (updateArchestraClientConfigPermutations) {
+    if (
+      updateArchestraClientConfigPermutations ||
+      (shouldUpdateMissing && (
+        !server.archestra_config?.client_config_permutations?.mcpServers ||
+        Object.keys(server.archestra_config?.client_config_permutations?.mcpServers || {}).length === 0
+      ))
+    ) {
       server = await extractArchestraClientConfigPermutationsConfig(server, model, force);
     }
 
-    if (updateArchestraOauth) {
+    if (updateArchestraOauth || (shouldUpdateMissing && !server.archestra_config?.oauth)) {
       server = await extractArchestraOauthConfig(server, model, force);
     }
 
-    if (updateCanonicalServerAndUserConfig) {
+    if (updateCanonicalServerAndUserConfig || (shouldUpdateMissing && (!server.server || !server.user_config))) {
       server = await extractCanonicalServerAndUserConfigConfig(server, model, force);
     }
 
-    if (updateDependencies) {
+    if (updateDependencies || (shouldUpdateMissing && (!server.dependencies || server.dependencies.length === 0))) {
       server = await extractDependencies(server, model, force);
     }
 
-    if (updateProtocol) {
+    if (updateProtocol || (shouldUpdateMissing && server.protocol_features.implementing_tools === undefined)) {
       server = await extractProtocolFeatures(server, model, force);
     }
 
-    if (updateScore) {
+    if (updateScore || (shouldUpdateMissing && (server.quality_score === null || server.quality_score === undefined))) {
       server = await extractScore(server, force);
     }
 
@@ -1790,11 +1819,11 @@ Update Options:
   --dependencies                           Update library dependencies
   --protocol                               Update MCP protocol features implementation
   --score                                  Update trust scores
-  --all                                    Update everything
+  --all                                    Fill all missing data (respects existing data unless --force)
   (no flags)                               Fill in missing data only
 
 Control Options:
-  --force                Force update even if data exists
+  --force                Force update even if data already exists (overwrites existing data)
   --model <name>         LLM model to use (default: gemini-2.5-pro)
                          Supports Ollama models and Gemini models (e.g., gemini-1.5-flash)
   --concurrency <n>      Number of parallel requests (default: 10 with token, 3 without)
@@ -1833,6 +1862,8 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
 
   // Apply --all flag
   if (options.updateAll) {
+    // When --all is used, we still want to respect existing data unless --force is used
+    // These flags will be used to check if we should update missing data
     options.updateGithub = true;
     options.updateCategory = true;
     options.updateArchestraClientConfigPermutations = true;

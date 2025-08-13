@@ -28,7 +28,9 @@
       "mcpServers": {
         "transcribe-local": {
           "command": "node",
-          "args": ["<path-to-unpacked-dxt-location>/build/index.js"],
+          "args": [
+            "<path-to-unpacked-dxt-location>/build/index.js"
+          ],
           "env": {
             "MCP_INTEGRATION_URL": "<your-MCP-integration-URL>"
           }

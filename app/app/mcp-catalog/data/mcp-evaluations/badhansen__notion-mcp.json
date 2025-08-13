@@ -28,7 +28,12 @@
       "mcpServers": {
         "notion-mcp": {
           "command": "uv",
-          "args": ["--directory", "/Users/username/Projects/Python/notion-mcp/src", "run", "server.py"],
+          "args": [
+            "--directory",
+            "/Users/username/Projects/Python/notion-mcp/src",
+            "run",
+            "server.py"
+          ],
           "env": {}
         }
       }

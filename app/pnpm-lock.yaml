@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@anthropic-ai/dxt':
-        specifier: ^0.2.6
-        version: 0.2.6
       '@asteasolutions/zod-to-openapi':
         specifier: ^7.3.4
         version: 7.3.4(zod@3.25.76)
@@ -81,6 +78,9 @@ importers:
         specifier: ^3.24.6
         version: 3.24.6(zod@3.25.76)
     devDependencies:
+      '@anthropic-ai/dxt':
+        specifier: ^0.2.6
+        version: 0.2.6
       '@testing-library/jest-dom':
         specifier: ^6.6.4
         version: 6.6.4

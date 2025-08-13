@@ -28,7 +28,9 @@
       "mcpServers": {
         "mac-messages-mcp-uvx": {
           "command": "uvx",
-          "args": ["mac-messages-mcp"],
+          "args": [
+            "mac-messages-mcp"
+          ],
           "env": {}
         },
         "mac-messages-mcp-cli": {

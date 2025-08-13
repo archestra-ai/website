@@ -28,7 +28,10 @@
       "mcpServers": {
         "browserbasehq-mcp": {
           "command": "npx",
-          "args": ["-y", "@browserbasehq/mcp"],
+          "args": [
+            "-y",
+            "@browserbasehq/mcp"
+          ],
           "env": {
             "BROWSERBASE_API_KEY": "",
             "BROWSERBASE_PROJECT_ID": "",
@@ -37,7 +40,10 @@
         },
         "browserbasehq-mcp-server-browserbase": {
           "command": "npx",
-          "args": ["-y", "@browserbasehq/mcp-server-browserbase"],
+          "args": [
+            "-y",
+            "@browserbasehq/mcp-server-browserbase"
+          ],
           "env": {
             "BROWSERBASE_API_KEY": "",
             "BROWSERBASE_PROJECT_ID": "",
@@ -46,7 +52,9 @@
         },
         "browserbasehq-mcp-server-browserbase-stdio": {
           "command": "node",
-          "args": ["/path/to/mcp-server-browserbase/cli.js"],
+          "args": [
+            "/path/to/mcp-server-browserbase/cli.js"
+          ],
           "env": {
             "BROWSERBASE_API_KEY": "",
             "BROWSERBASE_PROJECT_ID": "",
@@ -55,7 +63,11 @@
         },
         "browserbasehq-mcp-server-browserbase-proxies-configured": {
           "command": "npx",
-          "args": ["-y", "@browserbasehq/mcp-server-browserbase", "--proxies"],
+          "args": [
+            "-y",
+            "@browserbasehq/mcp-server-browserbase",
+            "--proxies"
+          ],
           "env": {
             "BROWSERBASE_API_KEY": "",
             "BROWSERBASE_PROJECT_ID": "",
@@ -64,7 +76,11 @@
         },
         "browserbasehq-mcp-server-browserbase-advanced-stealth-configured": {
           "command": "npx",
-          "args": ["-y", "@browserbasehq/mcp-server-browserbase", "--advancedStealth"],
+          "args": [
+            "-y",
+            "@browserbasehq/mcp-server-browserbase",
+            "--advancedStealth"
+          ],
           "env": {
             "BROWSERBASE_API_KEY": "",
             "BROWSERBASE_PROJECT_ID": "",
@@ -73,7 +89,12 @@
         },
         "browserbasehq-mcp-server-browserbase-context-configured": {
           "command": "npx",
-          "args": ["-y", "@browserbasehq/mcp-server-browserbase", "--contextId", "<YOUR_CONTEXT_ID>"],
+          "args": [
+            "-y",
+            "@browserbasehq/mcp-server-browserbase",
+            "--contextId",
+            "<YOUR_CONTEXT_ID>"
+          ],
           "env": {
             "BROWSERBASE_API_KEY": "",
             "BROWSERBASE_PROJECT_ID": "",

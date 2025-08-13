@@ -28,7 +28,12 @@
       "mcpServers": {
         "billster45-mcp-chatgpt-responses": {
           "command": "uv",
-          "args": ["--directory", "\\path\\to\\mcp-chatgpt-responses", "run", "chatgpt_server.py"],
+          "args": [
+            "--directory",
+            "\\path\\to\\mcp-chatgpt-responses",
+            "run",
+            "chatgpt_server.py"
+          ],
           "env": {
             "OPENAI_API_KEY": "your-api-key-here",
             "DEFAULT_MODEL": "gpt-4o",

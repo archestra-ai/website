@@ -24,7 +24,9 @@
   "category": "Social Media",
   "quality_score": 48,
   "archestra_config": {
-    "client_config_permutations": null,
+    "client_config_permutations": {
+      "mcpServers": {}
+    },
     "oauth": {
       "provider": null,
       "required": false
@@ -46,7 +48,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:51:12.245Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

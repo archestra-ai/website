@@ -28,7 +28,10 @@
       "mcpServers": {
         "kiwamizamurai-mcp-kibela-server": {
           "command": "npx",
-          "args": ["-y", "@kiwamizamurai/mcp-kibela-server"],
+          "args": [
+            "-y",
+            "@kiwamizamurai/mcp-kibela-server"
+          ],
           "env": {
             "KIBELA_TEAM": "YOUR_TEAM_NAME",
             "KIBELA_TOKEN": "YOUR_TOKEN"
@@ -53,7 +56,9 @@
         },
         "kiwamizamurai-mcp-kibela-server-local-path": {
           "command": "node",
-          "args": ["path/to/mcp-kibela-server/dist/src/index.js"],
+          "args": [
+            "path/to/mcp-kibela-server/dist/src/index.js"
+          ],
           "env": {
             "KIBELA_TEAM": "YOUR_TEAM_NAME",
             "KIBELA_TOKEN": "YOUR_TOKEN"
@@ -61,7 +66,9 @@
         },
         "kiwamizamurai-mcp-kibela-server-local-dev": {
           "command": "node",
-          "args": ["./dist/src/index.js"],
+          "args": [
+            "./dist/src/index.js"
+          ],
           "env": {
             "KIBELA_TEAM": "YOUR_TEAM_NAME",
             "KIBELA_TOKEN": "YOUR_TOKEN"
@@ -69,7 +76,16 @@
         },
         "mcp-kibela-server-docker-local-build": {
           "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "KIBELA_TEAM", "-e", "KIBELA_TOKEN", "mcp-kibela-server"],
+          "args": [
+            "run",
+            "-i",
+            "--rm",
+            "-e",
+            "KIBELA_TEAM",
+            "-e",
+            "KIBELA_TOKEN",
+            "mcp-kibela-server"
+          ],
           "env": {
             "KIBELA_TEAM": "YOUR_TEAM_NAME",
             "KIBELA_TOKEN": "YOUR_TOKEN"

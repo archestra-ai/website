@@ -28,7 +28,11 @@
       "mcpServers": {
         "vectara-mcp": {
           "command": "uv",
-          "args": ["tool", "run", "vectara-mcp"],
+          "args": [
+            "tool",
+            "run",
+            "vectara-mcp"
+          ],
           "env": {}
         }
       }

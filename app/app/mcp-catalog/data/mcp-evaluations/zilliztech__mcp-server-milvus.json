@@ -28,12 +28,20 @@
       "mcpServers": {
         "mcp-server-milvus-stdio": {
           "command": "uv",
-          "args": ["run", "src/mcp_server_milvus/server.py", "--milvus-uri", "http://localhost:19530"],
+          "args": [
+            "run",
+            "src/mcp_server_milvus/server.py",
+            "--milvus-uri",
+            "http://localhost:19530"
+          ],
           "env": {}
         },
         "mcp-server-milvus-stdio-env": {
           "command": "uv",
-          "args": ["run", "src/mcp_server_milvus/server.py"],
+          "args": [
+            "run",
+            "src/mcp_server_milvus/server.py"
+          ],
           "env": {}
         },
         "mcp-server-milvus-sse": {

@@ -28,19 +28,30 @@
       "mcpServers": {
         "picahq-mcp": {
           "command": "npx",
-          "args": ["-y", "@picahq/mcp"],
+          "args": [
+            "-y",
+            "@picahq/mcp"
+          ],
           "env": {}
         },
         "picahq-mcp-configured": {
           "command": "npx",
-          "args": ["-y", "@picahq/mcp"],
+          "args": [
+            "-y",
+            "@picahq/mcp"
+          ],
           "env": {
             "PICA_SECRET": "your-pica-secret-key"
           }
         },
         "pica-mcp-server-docker": {
           "command": "docker",
-          "args": ["run", "-e", "PICA_SECRET=your_pica_secret_key", "pica-mcp-server"],
+          "args": [
+            "run",
+            "-e",
+            "PICA_SECRET=your_pica_secret_key",
+            "pica-mcp-server"
+          ],
           "env": {
             "PICA_SECRET": "your_pica_secret_key"
           }

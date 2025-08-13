@@ -28,7 +28,12 @@
       "mcpServers": {
         "harmonyos-mcp-server-stdio": {
           "command": "uv",
-          "args": ["--directory", "harmonyos-mcp-server", "run", "server.py"],
+          "args": [
+            "--directory",
+            "harmonyos-mcp-server",
+            "run",
+            "server.py"
+          ],
           "env": {}
         }
       }

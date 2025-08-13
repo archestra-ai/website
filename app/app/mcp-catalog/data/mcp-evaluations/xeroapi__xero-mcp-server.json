@@ -28,7 +28,10 @@
       "mcpServers": {
         "xeroapi-xero-mcp-server-npx-custom-connections": {
           "command": "npx",
-          "args": ["-y", "@xeroapi/xero-mcp-server@latest"],
+          "args": [
+            "-y",
+            "@xeroapi/xero-mcp-server@latest"
+          ],
           "env": {
             "XERO_CLIENT_ID": "your_client_id_here",
             "XERO_CLIENT_SECRET": "your_client_secret_here"
@@ -36,14 +39,19 @@
         },
         "xeroapi-xero-mcp-server-npx-bearer-token": {
           "command": "npx",
-          "args": ["-y", "@xeroapi/xero-mcp-server@latest"],
+          "args": [
+            "-y",
+            "@xeroapi/xero-mcp-server@latest"
+          ],
           "env": {
             "XERO_CLIENT_BEARER_TOKEN": "your_bearer_token"
           }
         },
         "xero-mcp-server-local-dev": {
           "command": "node",
-          "args": ["insert-your-file-path-here/xero-mcp-server/dist/index.js"],
+          "args": [
+            "insert-your-file-path-here/xero-mcp-server/dist/index.js"
+          ],
           "env": {
             "XERO_CLIENT_ID": "your_client_id_here",
             "XERO_CLIENT_SECRET": "your_client_secret_here"

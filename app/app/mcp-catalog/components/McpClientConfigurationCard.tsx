@@ -25,8 +25,13 @@ const McpClientConfigurationCard = ({ server }: McpClientConfigurationCardProps)
   const {
     display_name: serverName,
     github_info: { owner: gitHubInfoOwner, repo: gitHubInfoRepo, path: gitHubInfoPath },
-    archestra_config: { client_config_permutations: clientConfigPermutations },
   } = server;
+
+  const clientConfigPermutations = server.archestra_config?.client_config_permutations;
+  
+  // Check if config exists and has actual server configurations
+  const hasValidConfig = clientConfigPermutations?.mcpServers && 
+    Object.keys(clientConfigPermutations.mcpServers).length > 0;
 
   const copyToClipboard = async (text: string) => {
     try {
@@ -38,15 +43,15 @@ const McpClientConfigurationCard = ({ server }: McpClientConfigurationCardProps)
     }
   };
 
-  const jsonString = JSON.stringify(clientConfigPermutations, null, 2);
+  const jsonString = hasValidConfig ? JSON.stringify(clientConfigPermutations, null, 2) : '';
 
   useEffect(() => {
-    if (codeRef.current) {
+    if (codeRef.current && jsonString) {
       hljs.highlightElement(codeRef.current);
     }
   }, [jsonString]);
 
-  if (clientConfigPermutations) {
+  if (hasValidConfig) {
     return (
       <Card>
         <CardHeader>

@@ -28,13 +28,20 @@
       "mcpServers": {
         "anyquery-mcp-stdio": {
           "command": "anyquery",
-          "args": ["mcp", "--stdio"],
-          "env": {}
+          "args": [
+            "mcp",
+            "--stdio"
+          ]
         },
-        "anyquery-mcp-http": {
+        "anyquery-mcp": {
           "command": "anyquery",
-          "args": ["mcp", "--host", "127.0.0.1", "--port", "8070"],
-          "env": {}
+          "args": [
+            "mcp",
+            "--host",
+            "127.0.0.1",
+            "--port",
+            "8070"
+          ]
         }
       }
     },

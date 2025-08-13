@@ -28,12 +28,18 @@
       "mcpServers": {
         "gtasks": {
           "command": "/opt/homebrew/bin/node",
-          "args": ["{ABSOLUTE PATH TO FILE HERE}/dist/index.js"],
+          "args": [
+            "{ABSOLUTE PATH TO FILE HERE}/dist/index.js"
+          ],
           "env": {}
         },
         "gtasks-auth": {
           "command": "npm",
-          "args": ["run", "start", "auth"],
+          "args": [
+            "run",
+            "start",
+            "auth"
+          ],
           "env": {}
         }
       }

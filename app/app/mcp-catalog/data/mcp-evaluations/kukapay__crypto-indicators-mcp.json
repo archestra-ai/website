@@ -28,7 +28,9 @@
       "mcpServers": {
         "crypto-indicators-mcp": {
           "command": "node",
-          "args": ["path/to/crypto-indicators-mcp/index.js"],
+          "args": [
+            "path/to/crypto-indicators-mcp/index.js"
+          ],
           "env": {
             "EXCHANGE_NAME": "binance"
           }

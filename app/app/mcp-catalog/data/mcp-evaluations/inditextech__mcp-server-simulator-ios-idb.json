@@ -28,12 +28,16 @@
       "mcpServers": {
         "mcp-server-simulator-ios-idb": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         },
         "mcp-server-simulator-ios-idb-configured": {
           "command": "node",
-          "args": ["/path/to/mcp-server-simulator-ios-idb/dist/index.js"],
+          "args": [
+            "/path/to/mcp-server-simulator-ios-idb/dist/index.js"
+          ],
           "env": {}
         }
       }

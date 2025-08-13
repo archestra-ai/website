@@ -24,7 +24,34 @@
   "category": "AI Tools",
   "quality_score": 56,
   "archestra_config": {
-    "client_config_permutations": null,
+    "client_config_permutations": {
+      "mcpServers": {
+        "content-core-ccore": {
+          "command": "uvx",
+          "args": [
+            "--from",
+            "content-core",
+            "ccore"
+          ]
+        },
+        "content-core-cclean": {
+          "command": "uvx",
+          "args": [
+            "--from",
+            "content-core",
+            "cclean"
+          ]
+        },
+        "content-core-csum": {
+          "command": "uvx",
+          "args": [
+            "--from",
+            "content-core",
+            "csum"
+          ]
+        }
+      }
+    },
     "oauth": {
       "provider": null,
       "required": false
@@ -46,7 +73,7 @@
   "programming_language": "Jupyter Notebook",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:26:54.394Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

@@ -28,7 +28,11 @@
       "mcpServers": {
         "endorhq-cli-mcp": {
           "command": "npx",
-          "args": ["-y", "@endorhq/cli", "mcp"],
+          "args": [
+            "-y",
+            "@endorhq/cli",
+            "mcp"
+          ],
           "env": {}
         }
       }

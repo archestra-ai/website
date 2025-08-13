@@ -28,17 +28,33 @@
       "mcpServers": {
         "figma-developer-mcp-stdio-with-config": {
           "command": "npx",
-          "args": ["-y", "figma-developer-mcp", "--figma-api-key=YOUR-KEY", "--stdio"],
+          "args": [
+            "-y",
+            "figma-developer-mcp",
+            "--figma-api-key=YOUR-KEY",
+            "--stdio"
+          ],
           "env": {}
         },
         "figma-developer-mcp-stdio-with-config-windows": {
           "command": "cmd",
-          "args": ["/c", "npx", "-y", "figma-developer-mcp", "--figma-api-key=YOUR-KEY", "--stdio"],
+          "args": [
+            "/c",
+            "npx",
+            "-y",
+            "figma-developer-mcp",
+            "--figma-api-key=YOUR-KEY",
+            "--stdio"
+          ],
           "env": {}
         },
         "figma-developer-mcp-stdio-with-env": {
           "command": "npx",
-          "args": ["-y", "figma-developer-mcp", "--stdio"],
+          "args": [
+            "-y",
+            "figma-developer-mcp",
+            "--stdio"
+          ],
           "env": {
             "FIGMA_API_KEY": "YOUR-KEY",
             "PORT": "YOUR-PORT"

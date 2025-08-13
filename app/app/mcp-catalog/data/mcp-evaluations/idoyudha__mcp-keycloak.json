@@ -28,7 +28,9 @@
       "mcpServers": {
         "mcp-keycloak": {
           "command": "uvx",
-          "args": ["mcp-keycloak"],
+          "args": [
+            "mcp-keycloak"
+          ],
           "env": {
             "SERVER_URL": "https://your-keycloak.com",
             "USERNAME": "admin",
@@ -38,7 +40,14 @@
         },
         "mcp-keycloak-local": {
           "command": "uv",
-          "args": ["--directory", "/path/to/mcp-keycloak", "run", "python", "-m", "src"],
+          "args": [
+            "--directory",
+            "/path/to/mcp-keycloak",
+            "run",
+            "python",
+            "-m",
+            "src"
+          ],
           "env": {
             "SERVER_URL": "https://your-keycloak.com",
             "USERNAME": "admin",
@@ -48,7 +57,10 @@
         },
         "mcp-keycloak-direct": {
           "command": "python",
-          "args": ["-m", "src.main"],
+          "args": [
+            "-m",
+            "src.main"
+          ],
           "env": {}
         }
       }

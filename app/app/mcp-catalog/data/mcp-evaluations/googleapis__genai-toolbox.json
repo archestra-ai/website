@@ -28,22 +28,36 @@
       "mcpServers": {
         "toolbox": {
           "command": "./toolbox",
-          "args": ["--tools-file", "tools.yaml"],
+          "args": [
+            "--tools-file",
+            "tools.yaml"
+          ],
           "env": {}
         },
         "toolbox-no-reload": {
           "command": "./toolbox",
-          "args": ["--tools-file", "tools.yaml", "--disable-reload"],
+          "args": [
+            "--tools-file",
+            "tools.yaml",
+            "--disable-reload"
+          ],
           "env": {}
         },
         "mcp-toolbox": {
           "command": "toolbox",
-          "args": ["--tools-file", "tools.yaml"],
+          "args": [
+            "--tools-file",
+            "tools.yaml"
+          ],
           "env": {}
         },
         "mcp-toolbox-no-reload": {
           "command": "toolbox",
-          "args": ["--tools-file", "tools.yaml", "--disable-reload"],
+          "args": [
+            "--tools-file",
+            "tools.yaml",
+            "--disable-reload"
+          ],
           "env": {}
         }
       }

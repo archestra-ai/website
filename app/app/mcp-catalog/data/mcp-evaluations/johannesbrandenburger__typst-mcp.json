@@ -28,12 +28,17 @@
       "mcpServers": {
         "typst-mcp-server": {
           "command": "python",
-          "args": ["server.py"],
+          "args": [
+            "server.py"
+          ],
           "env": {}
         },
         "typst-mcp-server-mcp-install": {
           "command": "mcp",
-          "args": ["install", "server.py"],
+          "args": [
+            "install",
+            "server.py"
+          ],
           "env": {}
         }
       }

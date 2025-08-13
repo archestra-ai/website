@@ -28,12 +28,18 @@
       "mcpServers": {
         "takumi0706-google-calendar-mcp": {
           "command": "npx",
-          "args": ["-y", "@takumi0706/google-calendar-mcp@1.0.7"],
+          "args": [
+            "-y",
+            "@takumi0706/google-calendar-mcp@1.0.7"
+          ],
           "env": {}
         },
         "takumi0706-google-calendar-mcp-configured": {
           "command": "npx",
-          "args": ["-y", "@takumi0706/google-calendar-mcp@1.0.7"],
+          "args": [
+            "-y",
+            "@takumi0706/google-calendar-mcp@1.0.7"
+          ],
           "env": {
             "GOOGLE_CLIENT_ID": "your_client_id",
             "GOOGLE_CLIENT_SECRET": "your_client_secret",

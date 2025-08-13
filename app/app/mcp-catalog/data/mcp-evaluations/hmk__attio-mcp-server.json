@@ -28,14 +28,22 @@
       "mcpServers": {
         "attio-mcp-server": {
           "command": "npx",
-          "args": ["-y", "attio-mcp-server"],
+          "args": [
+            "-y",
+            "attio-mcp-server"
+          ],
           "env": {
             "ATTIO_API_KEY": "YOUR_ATTIO_API_KEY"
           }
         },
         "attio-mcp-server-inspector": {
           "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/inspector", "node", "PATH_TO_YOUR_CLONED_REPO/dist/index.js"],
+          "args": [
+            "-y",
+            "@modelcontextprotocol/inspector",
+            "node",
+            "PATH_TO_YOUR_CLONED_REPO/dist/index.js"
+          ],
           "env": {
             "ATTIO_API_KEY": "YOUR_ATTIO_API_KEY"
           }

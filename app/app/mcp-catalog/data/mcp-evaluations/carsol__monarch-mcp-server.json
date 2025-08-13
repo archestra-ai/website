@@ -28,12 +28,16 @@
       "mcpServers": {
         "monarch-money": {
           "command": "python",
-          "args": ["run_server.py"],
+          "args": [
+            "run_server.py"
+          ],
           "env": {}
         },
         "monarch-money-configured": {
           "command": "python",
-          "args": ["/path/to/monarch-mcp-server/run_server.py"],
+          "args": [
+            "/path/to/monarch-mcp-server/run_server.py"
+          ],
           "env": {
             "MONARCH_EMAIL": "your-email@example.com",
             "MONARCH_PASSWORD": "your-password",

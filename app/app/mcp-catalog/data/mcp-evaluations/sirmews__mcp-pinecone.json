@@ -28,12 +28,23 @@
       "mcpServers": {
         "mcp-pinecone": {
           "command": "uv",
-          "args": ["--directory", "{project_dir}", "run", "mcp-pinecone"],
+          "args": [
+            "--directory",
+            "{project_dir}",
+            "run",
+            "mcp-pinecone"
+          ],
           "env": {}
         },
         "mcp-pinecone-configured": {
           "command": "uvx",
-          "args": ["--index-name", "{your-index-name}", "--api-key", "{your-secret-api-key}", "mcp-pinecone"],
+          "args": [
+            "--index-name",
+            "{your-index-name}",
+            "--api-key",
+            "{your-secret-api-key}",
+            "mcp-pinecone"
+          ],
           "env": {}
         }
       }

@@ -28,7 +28,14 @@
       "mcpServers": {
         "fastmcp": {
           "command": "fastmcp",
-          "args": ["run", "app.py", "--transport", "sse", "--port", "8010"],
+          "args": [
+            "run",
+            "app.py",
+            "--transport",
+            "sse",
+            "--port",
+            "8010"
+          ],
           "env": {}
         }
       }

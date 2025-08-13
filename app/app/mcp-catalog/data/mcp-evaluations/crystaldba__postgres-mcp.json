@@ -28,21 +28,35 @@
       "mcpServers": {
         "crystaldba-postgres-mcp-docker": {
           "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "DATABASE_URI", "crystaldba/postgres-mcp", "--access-mode=unrestricted"],
+          "args": [
+            "run",
+            "-i",
+            "--rm",
+            "-e",
+            "DATABASE_URI",
+            "crystaldba/postgres-mcp",
+            "--access-mode=unrestricted"
+          ],
           "env": {
             "DATABASE_URI": "postgresql://username:password@localhost:5432/dbname"
           }
         },
         "postgres-mcp-pipx": {
           "command": "postgres-mcp",
-          "args": ["--access-mode=unrestricted"],
+          "args": [
+            "--access-mode=unrestricted"
+          ],
           "env": {
             "DATABASE_URI": "postgresql://username:password@localhost:5432/dbname"
           }
         },
         "postgres-mcp-uv": {
           "command": "uv",
-          "args": ["run", "postgres-mcp", "--access-mode=unrestricted"],
+          "args": [
+            "run",
+            "postgres-mcp",
+            "--access-mode=unrestricted"
+          ],
           "env": {
             "DATABASE_URI": "postgresql://username:password@localhost:5432/dbname"
           }

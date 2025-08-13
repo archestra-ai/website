@@ -28,7 +28,10 @@
       "mcpServers": {
         "isaacphi-mcp-gdrive": {
           "command": "npx",
-          "args": ["-y", "@isaacphi/mcp-gdrive"],
+          "args": [
+            "-y",
+            "@isaacphi/mcp-gdrive"
+          ],
           "env": {
             "CLIENT_ID": "<CLIENT_ID>",
             "CLIENT_SECRET": "<CLIENT_SECRET>",
@@ -37,7 +40,9 @@
         },
         "isaacphi-mcp-gdrive-local": {
           "command": "node",
-          "args": ["./dist/index.js"],
+          "args": [
+            "./dist/index.js"
+          ],
           "env": {
             "CLIENT_ID": "<CLIENT_ID>",
             "CLIENT_SECRET": "<CLIENT_SECRET>",

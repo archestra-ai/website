@@ -28,7 +28,9 @@
       "mcpServers": {
         "databricks-genie-mcp-server": {
           "command": "python",
-          "args": ["main.py"],
+          "args": [
+            "main.py"
+          ],
           "env": {
             "DATABRICKS_HOST": "your-databricks-instance.cloud.databricks.com",
             "DATABRICKS_TOKEN": "your-personal-access-token"

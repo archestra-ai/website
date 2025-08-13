@@ -28,7 +28,13 @@
       "mcpServers": {
         "wong2-mcp-cli": {
           "command": "npx",
-          "args": ["@wong2/mcp-cli", "uv", "run", "python", "src/mcp-server/server.py"],
+          "args": [
+            "@wong2/mcp-cli",
+            "uv",
+            "run",
+            "python",
+            "src/mcp-server/server.py"
+          ],
           "env": {}
         },
         "skysql-mcp-launch-sh-configured": {

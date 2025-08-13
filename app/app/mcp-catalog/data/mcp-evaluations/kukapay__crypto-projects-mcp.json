@@ -28,7 +28,12 @@
       "mcpServers": {
         "kukapay-crypto-projects-mcp": {
           "command": "uv",
-          "args": ["run", "mcp", "dev", "main.py"],
+          "args": [
+            "run",
+            "mcp",
+            "dev",
+            "main.py"
+          ],
           "env": {}
         }
       }

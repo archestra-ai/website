@@ -28,19 +28,28 @@
       "mcpServers": {
         "aashari-mcp-server-aws-sso": {
           "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-aws-sso"],
+          "args": [
+            "-y",
+            "@aashari/mcp-server-aws-sso"
+          ],
           "env": {}
         },
         "aashari-mcp-server-aws-sso-stdio": {
           "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-aws-sso"],
+          "args": [
+            "-y",
+            "@aashari/mcp-server-aws-sso"
+          ],
           "env": {
             "TRANSPORT_MODE": "stdio"
           }
         },
         "aashari-mcp-server-aws-sso-http": {
           "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-aws-sso"],
+          "args": [
+            "-y",
+            "@aashari/mcp-server-aws-sso"
+          ],
           "env": {
             "TRANSPORT_MODE": "http"
           }

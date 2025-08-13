@@ -76,7 +76,8 @@ const MAIN_BRANCH_NAME = 'main';
 const BASE_GITHUB_ORG_URL = `https://github.com/${GITHUB_ORG_NAME}`;
 const BASE_WEBSITE_GITHUB_URL = `${BASE_GITHUB_ORG_URL}/${WEBSITE_REPO_NAME}`;
 
-const MCP_CATALOG_DIRECTORY_PATH = 'app/app/mcp-catalog/data';
+const MCP_CATALOG_DATA_DIRECTORY_PATH = 'app/app/mcp-catalog/data';
+const MCP_CATALOG_DIRECTORY_PATH = 'app/app/mcp-catalog';
 const MCP_CATALOG_BASE_DIRECTORY_URL = `${BASE_WEBSITE_GITHUB_URL}/tree/${MAIN_BRANCH_NAME}/${MCP_CATALOG_DIRECTORY_PATH}`;
 
 export default {
@@ -125,7 +126,7 @@ export default {
         mcpCatalogDirectoryPath: MCP_CATALOG_DIRECTORY_PATH,
         newIssueUrl: `${BASE_WEBSITE_GITHUB_URL}/issues/new`,
         viewMcpCatalogDirectoryUrl: MCP_CATALOG_BASE_DIRECTORY_URL,
-        editMcpCatalogJsonFileUrl: `${BASE_WEBSITE_GITHUB_URL}/edit/${MAIN_BRANCH_NAME}/${MCP_CATALOG_DIRECTORY_PATH}/mcp-servers.json`,
+        editMcpCatalogJsonFileUrl: `${BASE_WEBSITE_GITHUB_URL}/edit/${MAIN_BRANCH_NAME}/${MCP_CATALOG_DATA_DIRECTORY_PATH}/mcp-servers.json`,
       },
       archestra: {
         repoName: DESKTOP_APP_REPO_NAME,

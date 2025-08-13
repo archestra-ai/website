@@ -28,7 +28,10 @@
       "mcpServers": {
         "openapi-mcp-server": {
           "command": "npx",
-          "args": ["openapi-mcp-server@latest", "init"],
+          "args": [
+            "openapi-mcp-server@latest",
+            "init"
+          ],
           "env": {}
         }
       }

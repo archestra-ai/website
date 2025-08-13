@@ -28,14 +28,18 @@
       "mcpServers": {
         "nyt": {
           "command": "node",
-          "args": ["path/to/your/build/index.js"],
+          "args": [
+            "path/to/your/build/index.js"
+          ],
           "env": {
             "NYTIMES_API_KEY": "your_api_key_here"
           }
         },
         "nyt-stdio": {
           "command": "node",
-          "args": ["build/index.js"],
+          "args": [
+            "build/index.js"
+          ],
           "env": {
             "NYTIMES_API_KEY": "your_api_key_here"
           }

@@ -24,7 +24,9 @@
   "category": "Browser Automation",
   "quality_score": 54,
   "archestra_config": {
-    "client_config_permutations": null,
+    "client_config_permutations": {
+      "mcpServers": {}
+    },
     "oauth": {
       "provider": "google",
       "required": true

@@ -28,7 +28,12 @@
       "mcpServers": {
         "macrocosmos-configured": {
           "command": "uv",
-          "args": ["--directory", "/full_path_to_repo/macrocosmos_mcp/src/", "run", "macrocosmos_mcp.py"],
+          "args": [
+            "--directory",
+            "/full_path_to_repo/macrocosmos_mcp/src/",
+            "run",
+            "macrocosmos_mcp.py"
+          ],
           "env": {
             "MC_API": ""
           }

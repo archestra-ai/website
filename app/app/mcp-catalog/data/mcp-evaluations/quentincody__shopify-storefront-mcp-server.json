@@ -28,7 +28,10 @@
       "mcpServers": {
         "shopify_storefront_mcp_server": {
           "command": "python",
-          "args": ["-m", "shopify_storefront_mcp_server"],
+          "args": [
+            "-m",
+            "shopify_storefront_mcp_server"
+          ],
           "env": {}
         }
       }

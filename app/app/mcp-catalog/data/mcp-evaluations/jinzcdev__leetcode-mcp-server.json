@@ -28,7 +28,12 @@
       "mcpServers": {
         "jinzcdev-leetcode-mcp-server-npx-global": {
           "command": "npx",
-          "args": ["-y", "@jinzcdev/leetcode-mcp-server", "--site", "global"],
+          "args": [
+            "-y",
+            "@jinzcdev/leetcode-mcp-server",
+            "--site",
+            "global"
+          ],
           "env": {}
         },
         "jinzcdev-leetcode-mcp-server-npx-authenticated": {
@@ -45,12 +50,19 @@
         },
         "jinzcdev-leetcode-mcp-server-node-build": {
           "command": "node",
-          "args": ["build/index.js", "--site", "global"],
+          "args": [
+            "build/index.js",
+            "--site",
+            "global"
+          ],
           "env": {}
         },
         "jinzcdev-leetcode-mcp-server-stdio-env-config": {
           "command": "npx",
-          "args": ["-y", "@jinzcdev/leetcode-mcp-server"],
+          "args": [
+            "-y",
+            "@jinzcdev/leetcode-mcp-server"
+          ],
           "env": {
             "LEETCODE_SITE": "global",
             "LEETCODE_SESSION": "<YOUR_LEETCODE_SESSION_COOKIE>"

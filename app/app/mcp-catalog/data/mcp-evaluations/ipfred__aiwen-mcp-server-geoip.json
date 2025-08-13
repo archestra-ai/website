@@ -28,7 +28,10 @@
       "mcpServers": {
         "aiwen-mcp-server-geoip": {
           "command": "npx",
-          "args": ["-y", "aiwen-mcp-server-geoip"],
+          "args": [
+            "-y",
+            "aiwen-mcp-server-geoip"
+          ],
           "env": {
             "AIWEN_API_KEY": "xxxxxx",
             "IPV4_ACCURACY": "city",

@@ -28,19 +28,29 @@
       "mcpServers": {
         "tfmcp": {
           "command": "tfmcp",
-          "args": ["mcp"],
+          "args": [
+            "mcp"
+          ],
           "env": {}
         },
         "tfmcp-configured": {
           "command": "tfmcp",
-          "args": ["mcp"],
+          "args": [
+            "mcp"
+          ],
           "env": {
             "TERRAFORM_DIR": "/path/to/your/terraform/project"
           }
         },
         "tfmcp-docker": {
           "command": "docker",
-          "args": ["run", "--rm", "-it", "tfmcp", "mcp"],
+          "args": [
+            "run",
+            "--rm",
+            "-it",
+            "tfmcp",
+            "mcp"
+          ],
           "env": {}
         },
         "tfmcp-docker-configured": {

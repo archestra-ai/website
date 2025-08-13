@@ -28,7 +28,9 @@
       "mcpServers": {
         "freshdesk-mcp": {
           "command": "uvx",
-          "args": ["freshdesk-mcp"],
+          "args": [
+            "freshdesk-mcp"
+          ],
           "env": {
             "FRESHDESK_API_KEY": "<YOUR_FRESHDESK_API_KEY>",
             "FRESHDESK_DOMAIN": "<YOUR_FRESHDESK_DOMAIN>"

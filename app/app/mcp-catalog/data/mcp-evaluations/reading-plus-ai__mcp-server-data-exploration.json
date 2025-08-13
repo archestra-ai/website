@@ -28,12 +28,19 @@
       "mcpServers": {
         "mcp-server-ds-dev": {
           "command": "uv",
-          "args": ["--directory", "/Users/username/src/mcp-server-ds", "run", "mcp-server-ds"],
+          "args": [
+            "--directory",
+            "/Users/username/src/mcp-server-ds",
+            "run",
+            "mcp-server-ds"
+          ],
           "env": {}
         },
         "mcp-server-ds-published": {
           "command": "uvx",
-          "args": ["mcp-server-ds"],
+          "args": [
+            "mcp-server-ds"
+          ],
           "env": {}
         }
       }

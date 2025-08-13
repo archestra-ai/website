@@ -12,7 +12,6 @@ import GitHubMetricsCard from '@mcpCatalog/components/GitHubMetricsCard';
 import AddNewMCPServerButton from '@mcpCatalog/components/LinkButtons/AddNewMCPServerButton';
 import EditThisServerButton from '@mcpCatalog/components/LinkButtons/EditThisServerButton';
 import ReportAnIssueButton from '@mcpCatalog/components/LinkButtons/ReportAnIssueButton';
-import ViewOnGitHubButton from '@mcpCatalog/components/LinkButtons/ViewOnGitHubButton';
 import McpClientConfigurationCard from '@mcpCatalog/components/McpClientConfigurationCard';
 import McpProtocolSupportCard from '@mcpCatalog/components/McpProtocolSupportCard';
 import QualityScoreCard from '@mcpCatalog/components/QualityScoreCard';
@@ -98,9 +97,8 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
     notFound();
   }
 
-  // Get all servers for calculations
-  const allServers = loadServers();
-  const serverCount = countServersInRepo(server, allServers);
+  // Count servers in the same repo (optimized - only loads same repo servers)
+  const serverCount = countServersInRepo(server);
 
   // Build back URL with preserved state
   const backUrl = (() => {
@@ -124,7 +122,8 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
 
   const { name: serverId, display_name: serverName, github_info: gitHubInfo, quality_score: qualityScore } = server;
   const { owner: gitHubInfoOwner, repo: gitHubInfoRepo, path: gitHubInfoPath } = gitHubInfo;
-  const qualityScoreBreakdown = qualityScore !== null ? calculateQualityScore(server, allServers) : null;
+  // Calculate quality score without all servers (we'll update this client-side if needed)
+  const qualityScoreBreakdown = qualityScore !== null ? calculateQualityScore(server) : null;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -153,7 +152,10 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
               <McpProtocolSupportCard server={server} />
               <DependenciesCard server={server} />
               <McpClientConfigurationCard server={server} />
-              <ReadMeCard server={server} />
+              {/* ReadMeCard moved to bottom on mobile, stays here on desktop */}
+              <div className="hidden lg:block">
+                <ReadMeCard server={server} />
+              </div>
             </div>
 
             <div className="lg:sticky lg:top-8 space-y-6">
@@ -185,9 +187,13 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                   }%0AName: ${serverName}%0A%0APlease describe the issue:`}
                   fullWidth
                 />
-                <ViewOnGitHubButton fullWidth />
               </div>
             </div>
+          </div>
+          
+          {/* ReadMeCard shown at bottom on mobile only */}
+          <div className="lg:hidden mt-8">
+            <ReadMeCard server={server} />
           </div>
         </div>
       </main>

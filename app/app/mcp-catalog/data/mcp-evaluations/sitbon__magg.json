@@ -28,72 +28,112 @@
       "mcpServers": {
         "magg-stdio": {
           "command": "magg",
-          "args": ["serve"],
-          "env": {}
+          "args": [
+            "serve"
+          ]
         },
         "magg-http": {
           "command": "magg",
-          "args": ["serve", "--http"],
-          "env": {}
+          "args": [
+            "serve",
+            "--http"
+          ]
         },
-        "magg-github-stdio": {
+        "magg-uvx-stdio": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/sitbon/magg.git", "magg"],
-          "env": {}
+          "args": [
+            "--from",
+            "git+https://github.com/sitbon/magg.git",
+            "magg"
+          ]
         },
-        "magg-github-http": {
+        "magg-uvx-http": {
           "command": "uvx",
-          "args": ["--from", "git+https://github.com/sitbon/magg.git", "magg", "serve", "--http"],
-          "env": {}
+          "args": [
+            "--from",
+            "git+https://github.com/sitbon/magg.git",
+            "magg",
+            "serve",
+            "--http"
+          ]
         },
-        "ghcr.io-sitbon-magg-docker": {
+        "sitbon-magg-docker": {
           "command": "docker",
-          "args": ["run", "-p", "8000:8000", "ghcr.io/sitbon/magg:latest"],
-          "env": {}
+          "args": [
+            "run",
+            "-p",
+            "8000:8000",
+            "ghcr.io/sitbon/magg:latest"
+          ]
         },
-        "ghcr.io-sitbon-magg-docker-auth-volume": {
+        "sitbon-magg-docker-auth-volume": {
           "command": "docker",
-          "args": ["run", "-p", "8000:8000", "-v", "~/.ssh/magg:/home/magg/.ssh/magg:ro", "ghcr.io/sitbon/magg:latest"],
-          "env": {}
+          "args": [
+            "run",
+            "-p",
+            "8000:8000",
+            "-v",
+            "~/.ssh/magg:/home/magg/.ssh/magg:ro",
+            "ghcr.io/sitbon/magg:latest"
+          ]
         },
-        "ghcr.io-sitbon-magg-docker-auth-env": {
+        "sitbon-magg-docker-auth-env": {
           "command": "docker",
           "args": [
             "run",
             "-p",
             "8000:8000",
             "-e",
-            "MAGG_PRIVATE_KEY=$(cat ~/.ssh/magg/magg.key)",
+            "MAGG_PRIVATE_KEY=<YOUR_PRIVATE_KEY_HERE>",
             "ghcr.io/sitbon/magg:latest"
           ],
           "env": {
-            "MAGG_PRIVATE_KEY": "$(cat ~/.ssh/magg/magg.key)"
+            "MAGG_PRIVATE_KEY": "<YOUR_PRIVATE_KEY_HERE>"
           }
         },
-        "ghcr.io-sitbon-magg-docker-beta": {
+        "sitbon-magg-docker-beta": {
           "command": "docker",
-          "args": ["run", "-p", "8000:8000", "ghcr.io/sitbon/magg:beta"],
-          "env": {}
+          "args": [
+            "run",
+            "-p",
+            "8000:8000",
+            "ghcr.io/sitbon/magg:beta"
+          ]
         },
-        "ghcr.io-sitbon-magg-docker-with-config": {
+        "sitbon-magg-docker-with-config": {
           "command": "docker",
-          "args": ["run", "-p", "8000:8000", "-v", "/path/to/config:/home/magg/.magg", "ghcr.io/sitbon/magg:latest"],
-          "env": {}
+          "args": [
+            "run",
+            "-p",
+            "8000:8000",
+            "-v",
+            "/path/to/config:/home/magg/.magg",
+            "ghcr.io/sitbon/magg:latest"
+          ]
         },
-        "ghcr.io-sitbon-magg-docker-compose-prod": {
+        "sitbon-magg-compose": {
           "command": "docker",
-          "args": ["compose", "up", "magg"],
-          "env": {}
+          "args": [
+            "compose",
+            "up",
+            "magg"
+          ]
         },
-        "ghcr.io-sitbon-magg-docker-compose-beta": {
+        "sitbon-magg-compose-beta": {
           "command": "docker",
-          "args": ["compose", "up", "magg-beta"],
-          "env": {}
+          "args": [
+            "compose",
+            "up",
+            "magg-beta"
+          ]
         },
-        "ghcr.io-sitbon-magg-docker-compose-dev": {
+        "sitbon-magg-compose-dev": {
           "command": "docker",
-          "args": ["compose", "up", "magg-dev"],
-          "env": {}
+          "args": [
+            "compose",
+            "up",
+            "magg-dev"
+          ]
         }
       }
     },

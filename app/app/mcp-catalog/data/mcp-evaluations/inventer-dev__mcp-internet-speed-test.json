@@ -33,17 +33,33 @@
         },
         "mcp-internet-speed-test-uvx": {
           "command": "uvx",
-          "args": ["mcp-internet-speed-test"],
+          "args": [
+            "mcp-internet-speed-test"
+          ],
           "env": {}
         },
         "mcp-internet-speed-test-docker": {
           "command": "docker",
-          "args": ["run", "-it", "--rm", "-v", "$(pwd):/app", "-w", "/app", "mcp-internet-speed-test"],
+          "args": [
+            "run",
+            "-it",
+            "--rm",
+            "-v",
+            "$(pwd):/app",
+            "-w",
+            "/app",
+            "mcp-internet-speed-test"
+          ],
           "env": {}
         },
         "mcp-internet-speed-test-dev": {
           "command": "uv",
-          "args": ["run", "python", "-m", "mcp_internet_speed_test.main"],
+          "args": [
+            "run",
+            "python",
+            "-m",
+            "mcp_internet_speed_test.main"
+          ],
           "env": {}
         },
         "mcp-internet-speed-test-configured": {
@@ -53,7 +69,9 @@
         },
         "mcp-internet-speed-test-configured-uvx": {
           "command": "uvx",
-          "args": ["mcp-internet-speed-test"],
+          "args": [
+            "mcp-internet-speed-test"
+          ],
           "env": {}
         }
       }

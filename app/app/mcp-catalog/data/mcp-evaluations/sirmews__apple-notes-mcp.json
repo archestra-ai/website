@@ -28,17 +28,31 @@
       "mcpServers": {
         "apple-notes-mcp-dev": {
           "command": "uv",
-          "args": ["--directory", "{project_dir}", "run", "apple-notes-mcp"],
+          "args": [
+            "--directory",
+            "{project_dir}",
+            "run",
+            "apple-notes-mcp"
+          ],
           "env": {}
         },
         "apple-notes-mcp-published": {
           "command": "uvx",
-          "args": ["apple-notes-mcp"],
+          "args": [
+            "apple-notes-mcp"
+          ],
           "env": {}
         },
         "apple-notes-mcp-debug": {
           "command": "npx",
-          "args": ["@modelcontextprotocol/inspector", "uv", "--directory", "{project_dir}", "run", "apple-notes-mcp"],
+          "args": [
+            "@modelcontextprotocol/inspector",
+            "uv",
+            "--directory",
+            "{project_dir}",
+            "run",
+            "apple-notes-mcp"
+          ],
           "env": {}
         }
       }

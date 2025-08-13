@@ -28,7 +28,9 @@
       "mcpServers": {
         "mcp-chess": {
           "command": "uvx",
-          "args": ["mcp-chess"],
+          "args": [
+            "mcp-chess"
+          ],
           "env": {}
         }
       }

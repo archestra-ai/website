@@ -28,7 +28,12 @@
       "mcpServers": {
         "crypto-orderbook-mcp": {
           "command": "uv",
-          "args": ["--directory", "/absolute/path/to/crypto-orderbook-mcp", "run", "main.py"],
+          "args": [
+            "--directory",
+            "/absolute/path/to/crypto-orderbook-mcp",
+            "run",
+            "main.py"
+          ],
           "env": {}
         }
       }

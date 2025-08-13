@@ -28,7 +28,9 @@
       "mcpServers": {
         "openapi-to-mcp": {
           "command": "openapi-to-mcp",
-          "args": ["https://petstore3.swagger.io/api/v3/openapi.json"],
+          "args": [
+            "https://petstore3.swagger.io/api/v3/openapi.json"
+          ],
           "env": {}
         }
       }

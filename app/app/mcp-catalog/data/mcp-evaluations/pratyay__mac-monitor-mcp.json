@@ -28,7 +28,9 @@
       "mcpServers": {
         "mac-monitor-mcp": {
           "command": "python",
-          "args": ["src/monitor.py"],
+          "args": [
+            "src/monitor.py"
+          ],
           "env": {}
         }
       }

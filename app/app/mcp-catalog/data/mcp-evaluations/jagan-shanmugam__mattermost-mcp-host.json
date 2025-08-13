@@ -24,7 +24,14 @@
   "category": "AI Tools",
   "quality_score": 55,
   "archestra_config": {
-    "client_config_permutations": null,
+    "client_config_permutations": {
+      "mcpServers": {
+        "mattermost-mcp-host": {
+          "command": "mattermost-mcp-host",
+          "args": []
+        }
+      }
+    },
     "oauth": {
       "provider": null,
       "required": false
@@ -46,7 +53,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-04T09:33:35.899Z",
-  "evaluation_model": "gemini-2.5-flash",
+  "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

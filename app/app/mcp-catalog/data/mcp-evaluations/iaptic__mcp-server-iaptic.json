@@ -28,27 +28,49 @@
       "mcpServers": {
         "mcp-server-iaptic": {
           "command": "npx",
-          "args": ["mcp-server-iaptic", "--api-key", "YOUR_API_KEY", "--app-name", "YOUR_APP_NAME"],
+          "args": [
+            "mcp-server-iaptic",
+            "--api-key",
+            "YOUR_API_KEY",
+            "--app-name",
+            "YOUR_APP_NAME"
+          ],
           "env": {}
         },
         "mcp-server-iaptic-global": {
           "command": "mcp-server-iaptic",
-          "args": ["--api-key", "YOUR_API_KEY", "--app-name", "YOUR_APP_NAME"],
+          "args": [
+            "--api-key",
+            "YOUR_API_KEY",
+            "--app-name",
+            "YOUR_APP_NAME"
+          ],
           "env": {}
         },
         "mcp-server-iaptic-configured": {
           "command": "npx",
-          "args": ["mcp-server-iaptic", "--api-key", "your-api-key-here", "--app-name", "your-app-name-here"],
+          "args": [
+            "mcp-server-iaptic",
+            "--api-key",
+            "your-api-key-here",
+            "--app-name",
+            "your-app-name-here"
+          ],
           "env": {}
         },
         "mcp-server-iaptic-dev": {
           "command": "npm",
-          "args": ["run", "dev"],
+          "args": [
+            "run",
+            "dev"
+          ],
           "env": {}
         },
         "mcp-server-iaptic-prod": {
           "command": "npm",
-          "args": ["start"],
+          "args": [
+            "start"
+          ],
           "env": {}
         }
       }
