@@ -4,6 +4,7 @@ import { EmailForm } from '@components/EmailForm';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 import constants from '@constants';
+import { loadServers } from '@mcpCatalog/lib/catalog';
 
 const {
   company: {
@@ -70,6 +71,8 @@ async function getGitHubStats() {
 
 export default async function Home() {
   const githubStats = await getGitHubStats();
+  const mcpServers = loadServers();
+  const serverCount = mcpServers.length;
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -108,10 +111,9 @@ export default async function Home() {
 
         <div className="container relative z-10 px-4 md:px-6 py-16 max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{companyName}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Agents 🤝 Enterprise Data</h1>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
-              Enterprise-grade platform for non-technical users to safely run AI agents and MCP (Model Context Protocol)
-              servers.
+              Build powerful, safe, interconnected AI agents without the technical overhead.
             </p>
           </div>
 
@@ -120,9 +122,9 @@ export default async function Home() {
               <div className="flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-200">
                 <Cpu className="h-6 w-6 text-gray-700 mt-0.5 flex-shrink-0" />
                 <div>
-                  <h3 className="font-semibold mb-1">Secure runtime</h3>
+                  <h3 className="font-semibold mb-1">Secure MCP Runtime</h3>
                   <p className="text-sm text-gray-600">
-                    Isolated execution environment for AI agents with sandboxing and resource controls
+                    Isolated execution environment for any of {serverCount} Open Source MCP Servers with sandboxing and resource controls
                   </p>
                 </div>
               </div>
@@ -151,9 +153,28 @@ export default async function Home() {
                 <Monitor className="h-6 w-6 text-blue-600 mt-0.5 flex-shrink-0" />
                 <div className="flex-1">
                   <h3 className="font-semibold mb-1 text-blue-900">Desktop App</h3>
+                  <div className="mb-4">
+                    <img
+                      src="/screenshot.png"
+                      alt="Archestra Autonomous Agents Interface"
+                      className="w-full rounded-lg shadow-lg border border-gray-200"
+                    />
+                  </div>
                   <p className="text-sm text-gray-700 mb-3">
-                    We're building the desktop app and it's currently in early alpha. Subscribe below to get notified
-                    when it's ready.
+                    Subscribe below to get notified of the public release.
+                  </p>
+                  <div className="w-full max-w-lg">
+                    <EmailForm />
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border-2 border-green-300 shadow-md">
+                <Package className="h-6 w-6 text-green-600 mt-0.5 flex-shrink-0" />
+                <div className="flex-1">
+                  <h3 className="font-semibold mb-1 text-green-900">Enterprise Platform</h3>
+                  <p className="text-sm text-gray-700 mb-3">
+                    Deploy and manage AI-to-Data connectors at scale with enterprise-grade security, compliance, and governance features. Get notified on launch.
                   </p>
                   <div className="w-full max-w-lg">
                     <EmailForm />
