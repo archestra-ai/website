@@ -97,9 +97,8 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
     notFound();
   }
 
-  // Get all servers for calculations
-  const allServers = loadServers();
-  const serverCount = countServersInRepo(server, allServers);
+  // Count servers in the same repo (optimized - only loads same repo servers)
+  const serverCount = countServersInRepo(server);
 
   // Build back URL with preserved state
   const backUrl = (() => {
@@ -123,7 +122,8 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
 
   const { name: serverId, display_name: serverName, github_info: gitHubInfo, quality_score: qualityScore } = server;
   const { owner: gitHubInfoOwner, repo: gitHubInfoRepo, path: gitHubInfoPath } = gitHubInfo;
-  const qualityScoreBreakdown = qualityScore !== null ? calculateQualityScore(server, allServers) : null;
+  // Calculate quality score without all servers (we'll update this client-side if needed)
+  const qualityScoreBreakdown = qualityScore !== null ? calculateQualityScore(server) : null;
 
   return (
     <div className="min-h-screen flex flex-col">

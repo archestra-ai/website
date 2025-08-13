@@ -253,23 +253,72 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
 }
 
 /**
+ * Load only servers from the same repository as the target server
+ */
+export function loadServersFromSameRepo(targetServer: ArchestraMcpServerManifest): ArchestraMcpServerManifest[] {
+  const { owner, repo } = targetServer.github_info;
+  const cacheKey = `repo_${owner}_${repo}`;
+  
+  // Check cache first
+  const cached = serversCache.get(cacheKey);
+  if (cached) {
+    return cached;
+  }
+  
+  const servers: ArchestraMcpServerManifest[] = [];
+  
+  // Load mcp-servers.json to find all URLs from the same repo
+  try {
+    const mcpServersContent = fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf-8');
+    const mcpServerUrls = JSON.parse(mcpServersContent) as string[];
+    
+    for (const url of mcpServerUrls) {
+      const { gitHubOrg, gitHubRepo, name: urlName } = extractServerInfo(url);
+      
+      // Skip if not from the same repo
+      if (gitHubOrg !== owner || gitHubRepo !== repo) {
+        continue;
+      }
+      
+      // Try to load the evaluation file for this server
+      const evaluationPath = path.join(MCP_SERVERS_EVALUATIONS_DIR, `${urlName}.json`);
+      if (fs.existsSync(evaluationPath)) {
+        try {
+          const content = fs.readFileSync(evaluationPath, 'utf-8');
+          const evaluation = JSON.parse(content) as ArchestraMcpServerManifest;
+          servers.push(evaluation);
+        } catch (error) {
+          console.warn(`Failed to load evaluation file for ${urlName}:`, error);
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Failed to load servers from same repo:', error);
+  }
+  
+  // Cache and return
+  serversCache.set(cacheKey, servers);
+  return servers;
+}
+
+/**
  * Count the number of MCP servers in the same repository
  */
 export function countServersInRepo(
   targetServer: ArchestraMcpServerManifest,
   allServers?: ArchestraMcpServerManifest[]
 ): number {
-  // If we don't have all servers, load them
-  if (!allServers) {
-    allServers = loadServers();
+  // If allServers is provided, use it (for backward compatibility)
+  if (allServers) {
+    const count = allServers.filter(
+      (server) =>
+        server.github_info.owner === targetServer.github_info.owner &&
+        server.github_info.repo === targetServer.github_info.repo
+    ).length;
+    return Math.max(1, count);
   }
-
-  // Count servers with the same org and repo
-  const count = allServers.filter(
-    (server) =>
-      server.github_info.owner === targetServer.github_info.owner &&
-      server.github_info.repo === targetServer.github_info.repo
-  ).length;
-
-  return Math.max(1, count); // Always return at least 1
+  
+  // Otherwise, load only servers from the same repo (much faster)
+  const sameRepoServers = loadServersFromSameRepo(targetServer);
+  return Math.max(1, sameRepoServers.length);
 }
