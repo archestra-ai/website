@@ -46,21 +46,12 @@ export default function BlogPage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {posts.map(({ slug, title, date, readingTime, excerpt, image }) => (
+              {posts.map(({ slug, title, date, readingTime, excerpt }) => (
                 <article
                   key={slug}
                   className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow flex flex-col"
                 >
                   <Link href={`/blog/${slug}`} className="flex flex-col h-full">
-                    <div className="aspect-video relative overflow-hidden bg-gray-100">
-                      {image ? (
-                        <img src={image} alt={title} className="w-full h-full object-cover" />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                          <span className="text-white text-4xl font-bold opacity-20">{companyName}</span>
-                        </div>
-                      )}
-                    </div>
                     <div className="p-6 flex flex-col flex-grow">
                       <h2 className="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors line-clamp-2">
                         {title}
