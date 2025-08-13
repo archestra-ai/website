@@ -6,8 +6,8 @@ import { ArchestraMcpServerManifest, ArchestraScoreBreakdown } from '@mcpCatalog
  * If not evaluated yet, give 35 points (partial credit)
  */
 export function calculateMCPProtocolScore({ protocol_features }: ArchestraMcpServerManifest): number {
-  // If protocol features haven't been analyzed yet, give partial points
-  if (Object.keys(protocol_features).length === 0) {
+  // If protocol features haven't been analyzed yet or is undefined, give partial points
+  if (!protocol_features || Object.keys(protocol_features).length === 0) {
     return 35;
   }
 

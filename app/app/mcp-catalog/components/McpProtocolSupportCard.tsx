@@ -25,6 +25,21 @@ const PROTOCOL_FEATURE_KEYS: { key: keyof ArchestraMcpServerManifest['protocol_f
 const McpProtocolSupportCard = ({ server }: McpProtocolSupportCardProps) => {
   const { protocol_features: protocolFeatures } = server;
 
+  // If protocol features haven't been evaluated yet, show a message
+  if (!protocolFeatures) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>MCP Protocol Support</CardTitle>
+          <CardDescription>Protocol features not yet evaluated</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-gray-500">This server's protocol features are being evaluated.</p>
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <Card>
       <CardHeader>

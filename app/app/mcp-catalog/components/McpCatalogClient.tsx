@@ -248,17 +248,7 @@ export default function McpCatalogClient({
           category,
           programming_language,
           dependencies,
-          protocol_features: {
-            implementing_tools,
-            implementing_resources,
-            implementing_prompts,
-            implementing_sampling,
-            implementing_roots,
-            implementing_logging,
-            implementing_stdio,
-            implementing_streamable_http,
-            implementing_oauth2,
-          },
+          protocol_features,
         },
         searchScore,
       }) => {
@@ -282,15 +272,15 @@ export default function McpCatalogClient({
         // Filter by MCP features
         const matchesFeature =
           selectedFeature === 'All' ||
-          (selectedFeature === 'Tools' && implementing_tools === true) ||
-          (selectedFeature === 'Resources' && implementing_resources === true) ||
-          (selectedFeature === 'Prompts' && implementing_prompts === true) ||
-          (selectedFeature === 'Sampling' && implementing_sampling === true) ||
-          (selectedFeature === 'Roots' && implementing_roots === true) ||
-          (selectedFeature === 'Logging' && implementing_logging === true) ||
-          (selectedFeature === 'STDIO Transport' && implementing_stdio === true) ||
-          (selectedFeature === 'Streamable HTTP' && implementing_streamable_http === true) ||
-          (selectedFeature === 'OAuth2' && implementing_oauth2 === true);
+          (selectedFeature === 'Tools' && protocol_features?.implementing_tools === true) ||
+          (selectedFeature === 'Resources' && protocol_features?.implementing_resources === true) ||
+          (selectedFeature === 'Prompts' && protocol_features?.implementing_prompts === true) ||
+          (selectedFeature === 'Sampling' && protocol_features?.implementing_sampling === true) ||
+          (selectedFeature === 'Roots' && protocol_features?.implementing_roots === true) ||
+          (selectedFeature === 'Logging' && protocol_features?.implementing_logging === true) ||
+          (selectedFeature === 'STDIO Transport' && protocol_features?.implementing_stdio === true) ||
+          (selectedFeature === 'Streamable HTTP' && protocol_features?.implementing_streamable_http === true) ||
+          (selectedFeature === 'OAuth2' && protocol_features?.implementing_oauth2 === true);
 
         return matchesSearch && matchesCategory && matchesLanguage && matchesDependency && matchesFeature;
       }
@@ -495,16 +485,16 @@ export default function McpCatalogClient({
                         {feature === 'All'
                           ? mcpServers.length
                           : mcpServers.filter((s) => {
-                              if (feature === 'Tools') return s.protocol_features.implementing_tools === true;
-                              if (feature === 'Resources') return s.protocol_features.implementing_resources === true;
-                              if (feature === 'Prompts') return s.protocol_features.implementing_prompts === true;
-                              if (feature === 'Sampling') return s.protocol_features.implementing_sampling === true;
-                              if (feature === 'Roots') return s.protocol_features.implementing_roots === true;
-                              if (feature === 'Logging') return s.protocol_features.implementing_logging === true;
-                              if (feature === 'STDIO Transport') return s.protocol_features.implementing_stdio === true;
+                              if (feature === 'Tools') return s.protocol_features?.implementing_tools === true;
+                              if (feature === 'Resources') return s.protocol_features?.implementing_resources === true;
+                              if (feature === 'Prompts') return s.protocol_features?.implementing_prompts === true;
+                              if (feature === 'Sampling') return s.protocol_features?.implementing_sampling === true;
+                              if (feature === 'Roots') return s.protocol_features?.implementing_roots === true;
+                              if (feature === 'Logging') return s.protocol_features?.implementing_logging === true;
+                              if (feature === 'STDIO Transport') return s.protocol_features?.implementing_stdio === true;
                               if (feature === 'Streamable HTTP')
-                                return s.protocol_features.implementing_streamable_http === true;
-                              if (feature === 'OAuth2') return s.protocol_features.implementing_oauth2 === true;
+                                return s.protocol_features?.implementing_streamable_http === true;
+                              if (feature === 'OAuth2') return s.protocol_features?.implementing_oauth2 === true;
                               return false;
                             }).length}
                       </span>
@@ -671,17 +661,17 @@ export default function McpCatalogClient({
                           {feature === 'All'
                             ? mcpServers.length
                             : mcpServers.filter((s) => {
-                                if (feature === 'Tools') return s.protocol_features.implementing_tools === true;
-                                if (feature === 'Resources') return s.protocol_features.implementing_resources === true;
-                                if (feature === 'Prompts') return s.protocol_features.implementing_prompts === true;
-                                if (feature === 'Sampling') return s.protocol_features.implementing_sampling === true;
-                                if (feature === 'Roots') return s.protocol_features.implementing_roots === true;
-                                if (feature === 'Logging') return s.protocol_features.implementing_logging === true;
+                                if (feature === 'Tools') return s.protocol_features?.implementing_tools === true;
+                                if (feature === 'Resources') return s.protocol_features?.implementing_resources === true;
+                                if (feature === 'Prompts') return s.protocol_features?.implementing_prompts === true;
+                                if (feature === 'Sampling') return s.protocol_features?.implementing_sampling === true;
+                                if (feature === 'Roots') return s.protocol_features?.implementing_roots === true;
+                                if (feature === 'Logging') return s.protocol_features?.implementing_logging === true;
                                 if (feature === 'STDIO Transport')
-                                  return s.protocol_features.implementing_stdio === true;
+                                  return s.protocol_features?.implementing_stdio === true;
                                 if (feature === 'Streamable HTTP')
-                                  return s.protocol_features.implementing_streamable_http === true;
-                                if (feature === 'OAuth2') return s.protocol_features.implementing_oauth2 === true;
+                                  return s.protocol_features?.implementing_streamable_http === true;
+                                if (feature === 'OAuth2') return s.protocol_features?.implementing_oauth2 === true;
                                 return false;
                               }).length}
                         </span>

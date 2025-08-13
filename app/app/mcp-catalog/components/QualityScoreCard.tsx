@@ -53,7 +53,7 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
     }
     if (category === 'MCP protocol implementation') {
       // Check if protocol features have been evaluated
-      if (protocolFeatures.implementing_tools === null) {
+      if (!protocolFeatures || protocolFeatures.implementing_tools === null) {
         return `Protocol features not yet evaluated (${score}/${maxScore})`;
       }
       if (percentage === 100) return `Full MCP protocol implementation (${score}/${maxScore})`;

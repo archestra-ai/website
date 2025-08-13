@@ -124,7 +124,7 @@ export default async function Home() {
                 <div>
                   <h3 className="font-semibold mb-1">Secure MCP Runtime</h3>
                   <p className="text-sm text-gray-600">
-                    Isolated execution environment for any of {serverCount} Open Source MCP Servers with sandboxing and resource controls
+                    Isolated execution environment for {serverCount} Open Source MCP Servers with sandboxing and resource controls
                   </p>
                 </div>
               </div>

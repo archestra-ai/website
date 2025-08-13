@@ -1362,7 +1362,7 @@ async function extractProtocolFeatures(
   }
   // Skip if already exists and not forcing
   // Check if protocol features have been evaluated (implementing_tools will be boolean if evaluated)
-  if (server.protocol_features.implementing_tools !== undefined && !force) {
+  if (server.protocol_features?.implementing_tools !== undefined && !force) {
     console.log(`  ⏭️  Protocol Features: Skipped (already exists)`);
     return server;
   }
@@ -1566,7 +1566,7 @@ async function evaluateSingleRepo(
       server = await extractDependencies(server, model, force);
     }
 
-    if (updateProtocol || (shouldUpdateMissing && server.protocol_features.implementing_tools === undefined)) {
+    if (updateProtocol || (shouldUpdateMissing && server.protocol_features?.implementing_tools === undefined)) {
       server = await extractProtocolFeatures(server, model, force);
     }
 
@@ -1595,7 +1595,7 @@ async function evaluateSingleRepo(
         server.user_config ||
         server.server ||
         server.dependencies ||
-        server.protocol_features.implementing_tools !== null
+        server.protocol_features?.implementing_tools !== null
       ) {
         const {
           category,
