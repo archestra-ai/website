@@ -5,7 +5,7 @@ import readingTime from 'reading-time';
 
 import { BlogPost } from './types';
 
-const postsDirectory = path.join(process.cwd(), 'content/blog');
+const postsDirectory = path.join(process.cwd(), 'app/blog/content');
 
 export function getAllPosts(): BlogPost[] {
   // Check if the posts directory exists
@@ -29,7 +29,7 @@ export function getAllPosts(): BlogPost[] {
           title: data.title || slug,
           date: data.date || new Date().toISOString(),
           author: data.author || 'Archestra Team',
-          excerpt: data.excerpt || content.slice(0, 200) + '...',
+          excerpt: data.description || data.excerpt || content.slice(0, 200) + '...',
           content,
           readingTime: stats.text,
           image: data.image,
@@ -67,7 +67,7 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
     title: data.title || slug,
     date: data.date || new Date().toISOString(),
     author: data.author || 'Archestra Team',
-    excerpt: data.excerpt || content.slice(0, 200) + '...',
+    excerpt: data.description || data.excerpt || content.slice(0, 200) + '...',
     content,
     readingTime: stats.text,
     image: data.image,
