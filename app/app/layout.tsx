@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata, Viewport } from 'next';
 
 import { PostHogProvider } from '@components/PostHogProvider';
@@ -78,6 +79,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <PostHogProvider>{children}</PostHogProvider>
+        <GoogleAnalytics gaId="G-XYZ" />
       </body>
     </html>
   );
