@@ -79,7 +79,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <PostHogProvider>{children}</PostHogProvider>
-        <GoogleAnalytics gaId="G-XYZ" />
+        <GoogleAnalytics gaId={constants.googleAnalytics.measurementId} />
       </body>
     </html>
   );
