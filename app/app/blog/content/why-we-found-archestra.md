@@ -1,5 +1,5 @@
 ---
-title: 'Why?'
+title: 'Why We Found Archestra'
 date: '2025-01-11'
 author: 'Matvey Kukuy, CEO'
 description: "Why can't an AI draft 150 personalized emails to investors for my new startup?"
