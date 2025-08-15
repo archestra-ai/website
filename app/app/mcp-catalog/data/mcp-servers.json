@@ -863,5 +863,6 @@
   "https://github.com/imprvhub/mcp-claude-spotify",
   "https://github.com/jlowin/fastmcp",
   "https://github.com/idoyudha/mcp-keycloak",
-  "https://github.com/thingsboard/thingsboard-mcp"
+  "https://github.com/thingsboard/thingsboard-mcp",
+  "https://github.com/elastic/mcp-server-elasticsearch"
 ]

@@ -1329,7 +1329,11 @@ Importance scale (1-10):
 
 If no library dependencies found, respond: {"dependencies": []}`;
 
-  const dependenciesFormat = zodToJsonSchema(MCPDependencySchema);
+  // Create a schema for the expected response format with dependencies array
+  const DependenciesResponseSchema = z.object({
+    dependencies: z.array(MCPDependencySchema)
+  });
+  const dependenciesFormat = zodToJsonSchema(DependenciesResponseSchema);
 
   try {
     const result = await callLLM(prompt, dependenciesFormat, model);
@@ -1416,9 +1420,10 @@ Respond with JSON format:
     const result = await callLLM(prompt, protocolFormat, model);
 
     // Update all protocol fields
+    // The result IS the protocol features object directly
     return {
       ...server,
-      protocol_features: result.protocol_features,
+      protocol_features: result,
       evaluation_model: model,
     };
   } catch (error: any) {
