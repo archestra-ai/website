@@ -8,6 +8,8 @@
     "name": "upstash"
   },
   "server": {
+    "type": "node",
+    "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
       "args": [
@@ -15,9 +17,7 @@
         "@upstash/context7-mcp"
       ],
       "env": {}
-    },
-    "type": "node",
-    "entry_point": "unknown"
+    }
   },
   "tools": [],
   "prompts": [],
@@ -65,7 +65,7 @@
     "url": "https://github.com/upstash/context7",
     "name": "upstash__context7",
     "path": null,
-    "stars": 25836,
+    "stars": 25837,
     "contributors": 71,
     "issues": 415,
     "releases": true,
@@ -74,7 +74,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-15T20:04:34.229Z",
+  "last_scraped_at": "2025-08-15T20:10:35.002Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_logging": false,
@@ -97,7 +97,7 @@
       "name": "commander"
     },
     {
-      "importance": 7,
+      "importance": 6,
       "name": "zod"
     }
   ],
