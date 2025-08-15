@@ -176,7 +176,15 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
             name: gitHubOrg,
             email: 'Unknown',
           },
-          server: null,
+          server: {
+            type: 'node',
+            entry_point: 'unknown',
+            mcp_config: {
+              command: 'unknown',
+              args: [],
+              env: {}
+            }
+          },
           archestra_config: null,
           user_config: null,
           category: null,

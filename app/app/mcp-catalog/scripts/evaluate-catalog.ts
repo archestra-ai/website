@@ -1158,9 +1158,40 @@ If you find no "canonical way to run the mcp server", or no user configuration r
   try {
     const result = await callLLM(prompt, configFormat, model);
     if (result) {
+      // Ensure server object has required fields with defaults if missing
+      let serverConfig = result.server;
+      if (serverConfig && Object.keys(serverConfig).length > 0) {
+        // Add default type and entry_point if missing
+        if (!serverConfig.type) {
+          serverConfig.type = 'node'; // Default to node
+        }
+        if (!serverConfig.entry_point) {
+          serverConfig.entry_point = 'unknown'; // Default entry point
+        }
+        // Ensure mcp_config exists
+        if (!serverConfig.mcp_config) {
+          serverConfig.mcp_config = {
+            command: 'unknown',
+            args: [],
+            env: {}
+          };
+        }
+      } else {
+        // If server is empty or missing, provide a complete default
+        serverConfig = {
+          type: 'node',
+          entry_point: 'unknown',
+          mcp_config: {
+            command: 'unknown',
+            args: [],
+            env: {}
+          }
+        };
+      }
+      
       return {
         ...server,
-        server: result.server,
+        server: serverConfig,
         user_config: result.user_config,
         evaluation_model: model,
       };
