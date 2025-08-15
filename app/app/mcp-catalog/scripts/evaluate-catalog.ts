@@ -922,11 +922,20 @@ async function extractCanonicalServerAndUserConfigConfig(
 Content:
 ${content.substring(0, 8000)}
 
+IMPORTANT: You MUST return a JSON object with BOTH "server" and "user_config" fields. The "server" object MUST include:
+1. "type": REQUIRED - Must be either "python", "node", or "binary" 
+2. "entry_point": REQUIRED - The main file to execute (e.g., "index.js", "main.py", or binary name)
+3. "mcp_config": REQUIRED - Object with "command", "args", and "env" fields
+
 Instructions:
+- Determine the server type based on the runtime:
+  * If it uses npx, npm, node, or has package.json → type="node", entry_point="index.js" (or main file)
+  * If it uses python, pip, or has requirements.txt → type="python", entry_point="main.py" (or main file)  
+  * If it's a compiled executable → type="binary", entry_point=<binary name>
 - Extract the CANONICAL way to run this server. Use a docker command as the LAST resort. Have a preference towards npx, node, python, etc.
 - Additionally, for any dynamic configuration (e.g. flags, environment variables, api keys, etc.) this should go into the "user_config" object (using the format documented below)
 - For Docker commands: split "docker run" into command="docker" and args=["run", ...]
-- For npx: command="npx", args=["-y", "package-name"]
+- For npx: command="npx", args=["-y", "package-name"], type="node", entry_point="index.js"
 - Extract environment variables from docker -e flags to env object
 - For Docker, include the full image name in args
 - Environment vars from -e flags go in both args and env
@@ -1149,7 +1158,21 @@ Available variables for default values:
 
 - **Array Expansion**: When a configuration with multiple: true is used in args, each value is expanded as a separate argument. For example, if the user selects directories /home/user/docs and /home/user/projects, the args ["$\{user_config.allowed_directories\}"] becomes ["/home/user/docs", "/home/user/projects"]
 
-If you find no "canonical way to run the mcp server", or no user configuration related information, respond with an empty object for THAT particular missing data (but please return the other data that is present) {"server": {}, "user_config": {...data_you_found}}`;
+EXAMPLE RESPONSE for an npx-based MCP server:
+{
+  "server": {
+    "type": "node",
+    "entry_point": "index.js",
+    "mcp_config": {
+      "command": "npx",
+      "args": ["-y", "@example/mcp-server"],
+      "env": {}
+    }
+  },
+  "user_config": {}
+}
+
+REMEMBER: The "server" object MUST ALWAYS include "type", "entry_point", and "mcp_config" fields. Never omit these required fields.`;
 
   // For Gemini, we need a simpler schema without additionalProperties
   const isGemini = model.startsWith('gemini-');
@@ -1157,11 +1180,18 @@ If you find no "canonical way to run the mcp server", or no user configuration r
 
   try {
     const result = await callLLM(prompt, configFormat, model);
-    if (result) {
+    if (result && result.server) {
+      // Validate that server has required fields
+      if (!result.server.type || !result.server.entry_point || !result.server.mcp_config) {
+        console.warn(`Server config missing required fields: type=${result.server.type}, entry_point=${result.server.entry_point}, mcp_config=${!!result.server.mcp_config}`);
+        // If critical fields are missing, log the issue but still use what we got
+        // The improved prompt should prevent this from happening
+      }
+      
       return {
         ...server,
         server: result.server,
-        user_config: result.user_config,
+        user_config: result.user_config || {},
         evaluation_model: model,
       };
     }
