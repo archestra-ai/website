@@ -21,7 +21,7 @@
       }
     }
   },
-  "server_overriden": {
+  "server_overridden": {
     "type": "node",
     "entry_point": "slack-mcp-server",
     "mcp_config": {
@@ -72,7 +72,7 @@
       "required": false
     }
   },
-  "user_config_overriden": {
+  "user_config_overridden": {
     "slack_mcp_xoxc_token": {
       "type": "string",
       "title": "Slack 'xoxc' Token (Stealth Mode)",

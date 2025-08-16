@@ -19,7 +19,7 @@
       "env": {}
     }
   },
-  "server_overriden": {
+  "server_overridden": {
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
