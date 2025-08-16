@@ -29,7 +29,7 @@ export async function GET(request: NextRequest, props: { params: Promise<{ param
 
   if (!server) {
     // Return a "calculating" badge instead of 404
-    const label = 'Trust Score';
+    const label = 'Archestra Score';
     const message = 'Calculating...';
     const color = '#9f9f9f'; // gray color for calculating state
     const svg = generateBadgeSVG(label, message, color);
@@ -46,7 +46,7 @@ export async function GET(request: NextRequest, props: { params: Promise<{ param
 
   if (score === null) {
     // Return a "pending" badge for servers being evaluated
-    const label = 'Trust Score';
+    const label = 'Archestra Score';
     const message = 'Pending';
     const color = '#9f9f9f'; // gray color for pending state
     const svg = generateBadgeSVG(label, message, color);
@@ -60,7 +60,7 @@ export async function GET(request: NextRequest, props: { params: Promise<{ param
   }
 
   const color = getColor(score);
-  const label = 'Trust Score';
+  const label = 'Archestra Score';
   const message = getScoreLabel(score);
 
   const svg = generateBadgeSVG(label, message, color);
@@ -91,9 +91,10 @@ function getColor(score: number): string {
 }
 
 function generateBadgeSVG(label: string, message: string, color: string): string {
-  const labelWidth = label.length * 6 + 20;
-  const messageWidth = message.length * 6 + 20;
-  const totalWidth = labelWidth + messageWidth;
+  const logoWidth = 18;
+  const labelWidth = label.length * 6 + 15;
+  const messageWidth = message.length * 6 + 15;
+  const totalWidth = logoWidth + labelWidth + messageWidth;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${totalWidth}" height="20" role="img" aria-label="${label}: ${message}">
     <title>${label}: ${message}</title>
@@ -105,19 +106,24 @@ function generateBadgeSVG(label: string, message: string, color: string): string
       <rect width="${totalWidth}" height="20" rx="3" fill="#fff"/>
     </clipPath>
     <g clip-path="url(#r)">
-      <rect width="${labelWidth}" height="20" fill="#555"/>
-      <rect x="${labelWidth}" width="${messageWidth}" height="20" fill="${color}"/>
+      <rect width="${logoWidth + labelWidth}" height="20" fill="#555"/>
+      <rect x="${logoWidth + labelWidth}" width="${messageWidth}" height="20" fill="${color}"/>
       <rect width="${totalWidth}" height="20" fill="url(#s)"/>
+    </g>
+    <!-- Archestra Logo - only white elements, scaled 1.5x -->
+    <g transform="translate(-2, -2) scale(1.5, 1.5)">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 11.5C8.1 11.5 8.6 11.1 8.9 10.5L10.4 7C10.8 6.1 10.1 5 9.1 5C8.5 5 8 5.4 7.7 6L6.2 9.5C5.8 10.4 6.5 11.5 7.5 11.5Z" fill="white"/>
+      <ellipse cx="12.5" cy="9.5" rx="1.8" ry="1.7" fill="white"/>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110">
       <text aria-hidden="true" x="${
-        (labelWidth / 2) * 10
+        (logoWidth + labelWidth / 2) * 10
       }" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)">${label}</text>
-      <text x="${(labelWidth / 2) * 10}" y="140" transform="scale(.1)" fill="#fff">${label}</text>
+      <text x="${(logoWidth + labelWidth / 2) * 10}" y="140" transform="scale(.1)" fill="#fff">${label}</text>
       <text aria-hidden="true" x="${
-        (labelWidth + messageWidth / 2) * 10
+        (logoWidth + labelWidth + messageWidth / 2) * 10
       }" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)">${message}</text>
-      <text x="${(labelWidth + messageWidth / 2) * 10}" y="140" transform="scale(.1)" fill="#fff">${message}</text>
+      <text x="${(logoWidth + labelWidth + messageWidth / 2) * 10}" y="140" transform="scale(.1)" fill="#fff">${message}</text>
     </g>
   </svg>`;
 }
