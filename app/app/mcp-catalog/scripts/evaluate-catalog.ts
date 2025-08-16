@@ -823,6 +823,20 @@ Instructions:
   - NEVER use generic names like "server-basic", "server-configured", "server-docker"
   - NEVER use single-word names like "agent", "server", "mcp"
 
+CRITICAL FOR ENVIRONMENT VARIABLES:
+- Extract ALL environment variables that appear in the README
+- Look for environment variables in:
+  * Tables with columns like "Variable", "Environment Variable", "Env Var", etc.
+  * Code blocks showing export commands or .env files
+  * Installation/configuration documentation sections
+  * Environment variable reference sections
+- Include EVERY SINGLE environment variable mentioned
+- DO NOT rename or transform environment variable names
+- Examples:
+  * If README shows "SLACK_MCP_XOXC_TOKEN", use exactly "SLACK_MCP_XOXC_TOKEN"
+  * If README shows "OPENAI_API_KEY", use exactly "OPENAI_API_KEY"
+- IMPORTANT: If you see a table of environment variables, include ALL of them
+
 Important:
 - For Docker, include the full image name in args
 - Environment vars from -e flags go in both args and env
@@ -939,6 +953,31 @@ Instructions:
 - Extract environment variables from docker -e flags to env object
 - For Docker, include the full image name in args
 - Environment vars from -e flags go in both args and env
+
+CRITICAL FOR ENVIRONMENT VARIABLES:
+- You MUST extract ALL environment variables that appear in the README
+- Look for environment variables in:
+  * Tables with columns like "Variable", "Environment Variable", "Env Var", etc.
+  * Code blocks showing export commands or .env files
+  * Installation/configuration documentation sections
+  * Environment variable reference sections
+- Extract EVERY SINGLE environment variable mentioned, including:
+  * Authentication tokens (API keys, OAuth tokens, etc.)
+  * Configuration settings (ports, hosts, URLs)
+  * Feature flags (enable/disable features)
+  * File paths (cache files, certificates, etc.)
+  * Logging and debug settings
+- DO NOT rename or transform environment variable names
+- Include ALL env vars in the server.mcp_config.env section
+- For each env var, create a corresponding user_config entry
+- Examples:
+  * If README shows "SLACK_MCP_XOXC_TOKEN", use exactly "SLACK_MCP_XOXC_TOKEN" (not SLACK_APP_TOKEN)
+  * If README shows "OPENAI_API_KEY", use exactly "OPENAI_API_KEY" (not API_KEY)
+- For the user_config keys, use lowercase with underscores version of the env var name
+  * SLACK_MCP_XOXC_TOKEN → slack_mcp_xoxc_token
+  * SLACK_MCP_PORT → slack_mcp_port
+  * OPENAI_API_KEY → openai_api_key
+- IMPORTANT: If you see a table of environment variables, include EVERY SINGLE ONE in the configuration
 
 More specific information about the data that you are extracting:
 
@@ -1172,7 +1211,42 @@ EXAMPLE RESPONSE for an npx-based MCP server:
   "user_config": {}
 }
 
-REMEMBER: The "server" object MUST ALWAYS include "type", "entry_point", and "mcp_config" fields. Never omit these required fields.`;
+EXAMPLE RESPONSE for a server with environment variables:
+{
+  "server": {
+    "type": "binary",
+    "entry_point": "slack-mcp-server",
+    "mcp_config": {
+      "command": "./slack-mcp-server",
+      "args": [],
+      "env": {
+        "SLACK_MCP_XOXC_TOKEN": "$\{user_config.slack_mcp_xoxc_token\}",
+        "SLACK_MCP_XOXD_TOKEN": "$\{user_config.slack_mcp_xoxd_token\}"
+      }
+    }
+  },
+  "user_config": {
+    "slack_mcp_xoxc_token": {
+      "type": "string",
+      "title": "Slack Browser Token",
+      "description": "Slack browser token (xoxc-...)",
+      "sensitive": true,
+      "required": false
+    },
+    "slack_mcp_xoxd_token": {
+      "type": "string",
+      "title": "Slack Browser Cookie 'd'",
+      "description": "Slack browser cookie 'd' (xoxd-...)",
+      "sensitive": true,
+      "required": false
+    }
+  }
+}
+
+REMEMBER: 
+1. The "server" object MUST ALWAYS include "type", "entry_point", and "mcp_config" fields. Never omit these required fields.
+2. Use the EXACT environment variable names from the README (don't rename them).
+3. For user_config keys, use lowercase with underscores version of the env var name.`;
 
   // For Gemini, we need a simpler schema without additionalProperties
   const isGemini = model.startsWith('gemini-');
