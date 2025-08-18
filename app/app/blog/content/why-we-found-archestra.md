@@ -19,7 +19,7 @@ My human process while writing emails isn't so different from what an AI agent 
 
 But here's the catch: AI is almost useless if it can only read data. To be truly helpful, it needs to **write** data—send those emails. And obviously emails aren't enough, I'm talking about creating the calendar events, updating the database, issuing invoices, updating the CRM...
 
-And that's where the real trouble begins. And I'm not speaking about the risk of making someone laugh because your EMail will sound dumb. I'm speaking about real-world security issues, autonomous agents, able to write data, bring: [agents being tricked into leaking a database](https://simonwillison.net/2025/Jul/6/supabase-mcp-lethal-trifecta/), to [exposing private GitHub repositories](https://simonwillison.net/2025/May/26/github-mcp-exploited/).
+And that's where the real trouble begins. And I'm not speaking about the risk of making someone laugh because your EMail will sound dumb. I'm talking about real-world security issues, such as autonomous agents that can write data, which can lead to [agents being tricked into leaking a database](https://simonwillison.net/2025/Jul/6/supabase-mcp-lethal-trifecta/) or [exposing private GitHub repositories](https://simonwillison.net/2025/May/26/github-mcp-exploited/).
 
 ![More access — more risk!](/blog/03.jpg)
 
