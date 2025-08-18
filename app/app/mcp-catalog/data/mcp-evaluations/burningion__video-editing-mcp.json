@@ -102,18 +102,18 @@
     "owner": "burningion",
     "repo": "video-editing-mcp",
     "url": "https://github.com/burningion/video-editing-mcp",
-    "name": "video-editing-mcp",
+    "name": "burningion__video-editing-mcp",
     "path": null,
-    "stars": 194,
+    "stars": 202,
     "contributors": 3,
     "issues": 0,
     "releases": false,
     "ci_cd": false,
-    "latest_commit_hash": "4baf121d7197ce0930fef977dc1886309aa0ca64"
+    "latest_commit_hash": "966f6e98d8974997085d2fbdfb5b82bd72300f2a"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:32:11.402Z",
+  "last_scraped_at": "2025-08-18T14:25:55.376Z",
   "evaluation_model": null,
   "protocol_features": {
     "implementing_tools": true,
@@ -184,5 +184,5 @@
       "importance": 5
     }
   ],
-  "raw_dependencies": "=== pyproject.toml ===\n[project]\nname = \"video-editor-mcp\"\nversion = \"0.1.47\"\ndescription = \"Video Jungle MCP Server for Adding, Analysing, Searching, and Editing Videos\"\nreadme = \"README.md\"\nrequires-python = \">=3.11\"\ndependencies = [\n \"einops>=0.8.0\",\n \"manim>=0.18.1\",\n \"mcp>=1.6.0\",\n \"numpy>=2.2.2\",\n \"opentimelineio>=0.17.0\",\n \"osxphotos>=0.69.2\",\n \"pillow>=11.0.0\",\n \"requests>=2.32.3\",\n \"thefuzz>=0.22.1\",\n \"timm>=1.0.12\",\n \"torch==2.5.1\",\n \"torchvision==0.20.1\",\n \"transformers[torch]==4.47.1\",\n \"videojungle>=0.1.66\",\n]\nhomepage = \"https://github.com/burningion/video-editing-mcp\"\n\n[[project.authors]]\nname = \"Kirk Kaiser\"\nemail = \"kirk@zothcorp.com\"\n\n[build-system]\nrequires = [ \"hatchling\",]\nbuild-backend = \"hatchling.build\"\n\n[tool.uv.workspace]\nmembers = [\"tools\"]\n\n[dependency-groups]\ndev = [\n    \"ipykernel>=6.29.5\",\n    \"mcp[cli]>=1.6.0\",\n    \"pre-commit>=4.0.1\",\n    \"ruff>=0.8.4\",\n]\n\n[project.scripts]\nvideo-editor-mcp = \"video_editor_mcp:main\"\n\n[project.urls]\nHomepage = \"https://github.com/burningion/video-editing-mcp\"\nIssues = \"https://github.com/burningion/video-editing-mcp/issues\"\n\n[tool.uv.sources]\ntorch = [\n    { index = \"pytorch-cpu\" },\n]\ntorchvision = [\n    { index = \"pytorch-cpu\" },\n]\ntorchaudio = [\n    { index = \"pytorch-cpu\" },\n]\n\n[[tool.uv.index]]\nname = \"pytorch-cpu\"\nurl = \"https://download.pytorch.org/whl/cpu\"\nexplicit = true\n\n[tool.uv]\nconstraint-dependencies = [\n    \"pyglet==2.1.6\",\n]\n\n\n=== tools/pyproject.toml ===\n[project]\nname = \"viewer\"\nversion = \"0.1.0\"\ndescription = \"Add your description here\"\nreadme = \"README.md\"\nrequires-python = \">=3.11\"\ndependencies = []\n\n[[project.authors]]\nname = \"Kirk Kaiser\"\nemail = \"kirk@zothcorp.com\"\n\n[build-system]\nrequires = [ \"hatchling\",]\nbuild-backend = \"hatchling.build\"\n\n[project.scripts]\nviewer = \"viewer.viewer:main\"\n"
+  "raw_dependencies": "=== pyproject.toml ===\n[project]\nname = \"video-editor-mcp\"\nversion = \"0.1.51\"\ndescription = \"Video Jungle MCP Server for Adding, Analysing, Searching, and Editing Videos\"\nreadme = \"README.md\"\nrequires-python = \">=3.11\"\ndependencies = [\n \"einops>=0.8.0\",\n \"manim>=0.18.1\",\n \"mcp>=1.6.0\",\n \"numpy>=2.2.2\",\n \"opentimelineio>=0.17.0\",\n \"osxphotos>=0.69.2\",\n \"pillow>=11.0.0\",\n \"requests>=2.32.3\",\n \"thefuzz>=0.22.1\",\n \"timm>=1.0.12\",\n \"torch==2.5.1\",\n \"torchvision==0.20.1\",\n \"transformers[torch]==4.47.1\",\n \"videojungle>=0.1.77\",\n]\nhomepage = \"https://github.com/burningion/video-editing-mcp\"\n\n[[project.authors]]\nname = \"Kirk Kaiser\"\nemail = \"kirk@zothcorp.com\"\n\n[build-system]\nrequires = [ \"hatchling\",]\nbuild-backend = \"hatchling.build\"\n\n[tool.uv.workspace]\nmembers = [\"tools\"]\n\n[dependency-groups]\ndev = [\n    \"ipykernel>=6.29.5\",\n    \"mcp[cli]>=1.6.0\",\n    \"pre-commit>=4.0.1\",\n    \"ruff>=0.8.4\",\n]\n\n[project.scripts]\nvideo-editor-mcp = \"video_editor_mcp:main\"\n\n[project.urls]\nHomepage = \"https://github.com/burningion/video-editing-mcp\"\nIssues = \"https://github.com/burningion/video-editing-mcp/issues\"\n\n[tool.uv.sources]\ntorch = [\n    { index = \"pytorch-cpu\" },\n]\ntorchvision = [\n    { index = \"pytorch-cpu\" },\n]\ntorchaudio = [\n    { index = \"pytorch-cpu\" },\n]\n\n[[tool.uv.index]]\nname = \"pytorch-cpu\"\nurl = \"https://download.pytorch.org/whl/cpu\"\nexplicit = true\n\n[tool.uv]\nconstraint-dependencies = [\n    \"pyglet==2.1.6\",\n]\n\n\n=== tools/pyproject.toml ===\n[project]\nname = \"viewer\"\nversion = \"0.1.0\"\ndescription = \"Add your description here\"\nreadme = \"README.md\"\nrequires-python = \">=3.11\"\ndependencies = []\n\n[[project.authors]]\nname = \"Kirk Kaiser\"\nemail = \"kirk@zothcorp.com\"\n\n[build-system]\nrequires = [ \"hatchling\",]\nbuild-backend = \"hatchling.build\"\n\n[project.scripts]\nviewer = \"viewer.viewer:main\"\n"
 }

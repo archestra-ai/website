@@ -178,7 +178,10 @@ async function fetchRepoData(owner: string, repo: string, repositoryPath: string
     try {
       // Fetch all data in parallel
       const [repoData, contributorsResponse, releases, workflows, issuesSearchResponse] = await Promise.all([
-        apiCall(`/repos/${owner}/${repo}`),
+        apiCall(`/repos/${owner}/${repo}`).catch((error) => {
+          // If the main repo API fails, we can't continue
+          throw error;
+        }),
         apiCall(`/repos/${owner}/${repo}/contributors?per_page=1&anon=true`, true).catch(() => ({
           data: [],
           headers: new Headers(),
@@ -188,6 +191,7 @@ async function fetchRepoData(owner: string, repo: string, repositoryPath: string
           total_count: 0,
         })),
         // Use search API to get total issues count (open + closed)
+        // Note: We use + for spaces in the query string, and don't encode : or /
         apiCall(`/search/issues?q=repo:${owner}/${repo}+type:issue&per_page=1`, true).catch(() => ({
           data: { total_count: 0 },
           headers: new Headers(),
@@ -220,8 +224,10 @@ async function fetchRepoData(owner: string, repo: string, repositoryPath: string
         typeof issuesSearchResponse.data.total_count === 'number'
       ) {
         totalIssuesCount = issuesSearchResponse.data.total_count;
+        console.log(`Found ${totalIssuesCount} total issues for ${owner}/${repo}`);
       } else {
         // Fallback to open_issues_count if search API fails
+        console.log(`Search API failed for ${owner}/${repo}, falling back to open_issues_count`);
         totalIssuesCount = repoData.open_issues_count || 0;
       }
 

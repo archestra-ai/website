@@ -98,18 +98,18 @@
     "owner": "cswkim",
     "repo": "discogs-mcp-server",
     "url": "https://github.com/cswkim/discogs-mcp-server",
-    "name": "discogs-mcp-server",
+    "name": "cswkim__discogs-mcp-server",
     "path": null,
-    "stars": 36,
+    "stars": 42,
     "contributors": 2,
-    "issues": 2,
+    "issues": 0,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "bab40f860d0375b9a4f48f32a8a63053aa9f4e52"
+    "latest_commit_hash": "bb833447fb5c0150e20e0c304f7f6e23d5148005"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:32:22.013Z",
+  "last_scraped_at": "2025-08-18T14:25:55.512Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
@@ -140,5 +140,5 @@
       "importance": 4
     }
   ],
-  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"discogs-mcp-server\",\n  \"version\": \"0.4.2\",\n  \"description\": \"MCP server for Discogs\",\n  \"license\": \"MIT\",\n  \"author\": \"Christopher Kim <hi@cswkim.dev>\",\n  \"type\": \"module\",\n  \"main\": \"dist/index.js\",\n  \"module\": \"dist/index.js\",\n  \"files\": [\n    \"dist\",\n    \"LICENSE\",\n    \"README.md\"\n  ],\n  \"bin\": {\n    \"discogs-mcp-server\": \"dist/index.js\"\n  },\n  \"repository\": {\n    \"url\": \"https://github.com/cswkim/discogs-mcp-server\"\n  },\n  \"bugs\": \"https://github.com/cswkim/discogs-mcp-server/issues\",\n  \"keywords\": [\n    \"Discogs\",\n    \"MCP\"\n  ],\n  \"scripts\": {\n    \"build\": \"tsup\",\n    \"build:watch\": \"pnpm build --watch\",\n    \"postbuild\": \"shx chmod +x dist/*.js\",\n    \"start\": \"cross-env NODE_ENV=production node dist/index.js\",\n    \"dev\": \"tsx watch src/index.ts\",\n    \"dev:stdio\": \"pnpm run dev stdio\",\n    \"dev:stream\": \"pnpm run dev stream\",\n    \"format\": \"prettier --check .\",\n    \"format:fix\": \"prettier --write .\",\n    \"lint\": \"eslint . --ext .js,.ts,.jsx,.tsx\",\n    \"lint:fix\": \"eslint . --ext .js,.ts,.jsx,.tsx --fix\",\n    \"inspect\": \"npx @modelcontextprotocol/inspector npx tsx src/index.ts\",\n    \"test\": \"vitest run\",\n    \"test:coverage\": \"vitest run --coverage\",\n    \"test:ui\": \"vitest --ui\",\n    \"test:watch\": \"vitest watch\",\n    \"version:check\": \"node .github/scripts/check-version.js\",\n    \"version:sync\": \"node scripts/sync-version.js\",\n    \"changeset:version\": \"changeset version && pnpm version:sync && git add --all\",\n    \"changeset:tag\": \"changeset tag\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.12.0\",\n    \"dotenv\": \"^17.0.0\",\n    \"fastmcp\": \"^3.0.0\",\n    \"zod\": \"^4.0.5\"\n  },\n  \"devDependencies\": {\n    \"@changesets/cli\": \"^2.28.1\",\n    \"@eslint/js\": \"^9.24.0\",\n    \"@svitejs/changesets-changelog-github-compact\": \"^1.2.0\",\n    \"@types/node\": \"^24.0.3\",\n    \"@typescript-eslint/eslint-plugin\": \"^8.29.0\",\n    \"@typescript-eslint/parser\": \"^8.29.0\",\n    \"@vitest/coverage-v8\": \"^3.1.1\",\n    \"cross-env\": \"^7.0.3\",\n    \"eslint\": \"^9.24.0\",\n    \"eslint-config-prettier\": \"^10.1.1\",\n    \"eslint-plugin-prettier\": \"^5.2.6\",\n    \"get-port-please\": \"^3.1.2\",\n    \"prettier\": \"^3.5.3\",\n    \"shx\": \"^0.4.0\",\n    \"tsup\": \"^8.4.0\",\n    \"tsx\": \"^4.19.3\",\n    \"typescript\": \"^5.8.3\",\n    \"typescript-eslint\": \"^8.29.0\",\n    \"vitest\": \"^3.1.1\"\n  }\n}\n"
+  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"discogs-mcp-server\",\n  \"version\": \"0.4.2\",\n  \"description\": \"MCP server for Discogs\",\n  \"license\": \"MIT\",\n  \"author\": \"Christopher Kim <hi@cswkim.dev>\",\n  \"type\": \"module\",\n  \"main\": \"dist/index.js\",\n  \"module\": \"dist/index.js\",\n  \"files\": [\n    \"dist\",\n    \"LICENSE\",\n    \"README.md\"\n  ],\n  \"bin\": {\n    \"discogs-mcp-server\": \"dist/index.js\"\n  },\n  \"repository\": {\n    \"url\": \"https://github.com/cswkim/discogs-mcp-server\"\n  },\n  \"bugs\": \"https://github.com/cswkim/discogs-mcp-server/issues\",\n  \"keywords\": [\n    \"Discogs\",\n    \"MCP\"\n  ],\n  \"scripts\": {\n    \"build\": \"tsup\",\n    \"build:watch\": \"pnpm build --watch\",\n    \"postbuild\": \"shx chmod +x dist/*.js\",\n    \"start\": \"cross-env NODE_ENV=production node dist/index.js\",\n    \"dev\": \"tsx watch src/index.ts\",\n    \"dev:stdio\": \"pnpm run dev stdio\",\n    \"dev:stream\": \"pnpm run dev stream\",\n    \"format\": \"prettier --check .\",\n    \"format:fix\": \"prettier --write .\",\n    \"lint\": \"eslint . --ext .js,.ts,.jsx,.tsx\",\n    \"lint:fix\": \"eslint . --ext .js,.ts,.jsx,.tsx --fix\",\n    \"inspect\": \"npx @modelcontextprotocol/inspector npx tsx src/index.ts\",\n    \"test\": \"vitest run\",\n    \"test:coverage\": \"vitest run --coverage\",\n    \"test:ui\": \"vitest --ui\",\n    \"test:watch\": \"vitest watch\",\n    \"version:check\": \"node .github/scripts/check-version.js\",\n    \"version:sync\": \"node scripts/sync-version.js\",\n    \"changeset:version\": \"changeset version && pnpm version:sync && git add --all\",\n    \"changeset:tag\": \"changeset tag\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.12.0\",\n    \"dotenv\": \"^17.0.0\",\n    \"fastmcp\": \"^3.0.0\",\n    \"zod\": \"^4.0.5\"\n  },\n  \"devDependencies\": {\n    \"@changesets/cli\": \"^2.28.1\",\n    \"@eslint/js\": \"^9.24.0\",\n    \"@svitejs/changesets-changelog-github-compact\": \"^1.2.0\",\n    \"@types/node\": \"^24.0.3\",\n    \"@typescript-eslint/eslint-plugin\": \"^8.29.0\",\n    \"@typescript-eslint/parser\": \"^8.29.0\",\n    \"@vitest/coverage-v8\": \"^3.1.1\",\n    \"cross-env\": \"^10.0.0\",\n    \"eslint\": \"^9.24.0\",\n    \"eslint-config-prettier\": \"^10.1.1\",\n    \"eslint-plugin-prettier\": \"^5.2.6\",\n    \"get-port-please\": \"^3.1.2\",\n    \"prettier\": \"^3.5.3\",\n    \"shx\": \"^0.4.0\",\n    \"tsup\": \"^8.4.0\",\n    \"tsx\": \"^4.19.3\",\n    \"typescript\": \"^5.8.3\",\n    \"typescript-eslint\": \"^8.29.0\",\n    \"vitest\": \"^3.1.1\"\n  }\n}\n"
 }
