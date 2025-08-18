@@ -1,6 +1,6 @@
 ---
 title: 'Announcing $3.3M Pre-Seed'
-date: '2025-01-14'
+date: '2025-08-14'
 author: 'Archestra Team'
 description: 'Archestra raises $3.3m pre-seed funding to build the security-first platform that enables enterprises to safely leverage AI agents and MCP'
 ---
