@@ -7,7 +7,7 @@ description: 'Archestra raises $3.3m pre-seed funding to build the security-firs
 
 Today we are delighted to unveil Archestra and announce that we have raised $3.3m in pre-seed funding from a range of prestigious VCs and angels. Founded with urgency by engineers passionate about the future of AI, Archestra is on track to reshape AI in the enterprise.
 
-**PRESS RELEASE: 14th January 2025, London** - [Archestra](https://www.archestra.ai/), a platform which enables companies to securely use AI agents and connect them to internal data sources safely, has raised $3.3m pre-seed funding in a round led by [Concept Ventures](https://www.conceptventures.vc/).
+**PRESS RELEASE: 14th August 2025, London** - [Archestra](https://www.archestra.ai/), a platform which enables companies to securely use AI agents and connect them to internal data sources safely, has raised $3.3m pre-seed funding in a round led by [Concept Ventures](https://www.conceptventures.vc/).
 
 The over-subscribed raise closed in less than two weeks. Led by [Concept Ventures](https://www.conceptventures.vc/), the round was joined by [Zero Prime Ventures](https://zeroprime.vc/), [Celero Ventures](https://www.celeroventures.com/), [RTP Global](https://rtp.vc/) and [Aloniq](https://www.aloniq.com/). Angels include: [Max Hauser](https://uk.linkedin.com/in/hausermax) (Managing Director & Partner BCG), [Maxim Konovalov](https://www.linkedin.com/in/maxim/) (Nginx co-founder), [Konstantin Vinogradov](https://uk.linkedin.com/in/kvinogradov) (GP at Runa Capital), [Stephen Whitworth](https://uk.linkedin.com/in/stephenwhitworth) (CEO of incident.io), and [Luke Harries](https://uk.linkedin.com/in/luke-harries) (Elevenlabs).
 
