@@ -545,9 +545,22 @@ async function callLLM(prompt: string, format?: any, model = 'gemini-2.5-pro'): 
       }
 
       const data = await response.json();
+      
+      // Check for API errors in response
+      if (data.error) {
+        throw new Error(`Gemini API error: ${data.error.message || JSON.stringify(data.error)}`);
+      }
+      
+      // Check if candidates array is empty (could indicate content filtering)
+      if (!data.candidates || data.candidates.length === 0) {
+        console.error('Gemini response has no candidates:', JSON.stringify(data).substring(0, 500));
+        throw new Error('Gemini returned no candidates (possible content filtering or rate limit)');
+      }
+      
       const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
 
       if (!responseText) {
+        console.error('Gemini response structure:', JSON.stringify(data).substring(0, 500));
         throw new Error('No response text from Gemini');
       }
 
