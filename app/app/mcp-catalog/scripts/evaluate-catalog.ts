@@ -1265,11 +1265,13 @@ REMEMBER:
     if (result && result.server) {
       // Validate that server has required fields
       if (!result.server.type || !result.server.entry_point || !result.server.mcp_config) {
-        console.warn(`Server config missing required fields: type=${result.server.type}, entry_point=${result.server.entry_point}, mcp_config=${!!result.server.mcp_config}`);
+        console.warn(
+          `Server config missing required fields: type=${result.server.type}, entry_point=${result.server.entry_point}, mcp_config=${!!result.server.mcp_config}`
+        );
         // If critical fields are missing, log the issue but still use what we got
         // The improved prompt should prevent this from happening
       }
-      
+
       return {
         ...server,
         server: result.server,
@@ -1443,7 +1445,7 @@ If no library dependencies found, respond: {"dependencies": []}`;
 
   // Create a schema for the expected response format with dependencies array
   const DependenciesResponseSchema = z.object({
-    dependencies: z.array(MCPDependencySchema)
+    dependencies: z.array(MCPDependencySchema),
   });
   const dependenciesFormat = zodToJsonSchema(DependenciesResponseSchema);
 
@@ -1645,10 +1647,16 @@ async function evaluateSingleRepo(
 
     // 3. Apply updates based on options
     // Determine if any specific update was requested
-    const hasSpecificUpdates = updateGithub || updateCategory || updateArchestraClientConfigPermutations || 
-      updateArchestraOauth || updateCanonicalServerAndUserConfig || updateDependencies || 
-      updateProtocol || updateScore;
-    
+    const hasSpecificUpdates =
+      updateGithub ||
+      updateCategory ||
+      updateArchestraClientConfigPermutations ||
+      updateArchestraOauth ||
+      updateCanonicalServerAndUserConfig ||
+      updateDependencies ||
+      updateProtocol ||
+      updateScore;
+
     // If force is true and specific updates are requested, ONLY do those updates
     // Otherwise, fill in missing data
     const shouldUpdateMissing = !force || !hasSpecificUpdates;
@@ -1663,10 +1671,9 @@ async function evaluateSingleRepo(
 
     if (
       updateArchestraClientConfigPermutations ||
-      (shouldUpdateMissing && (
-        !server.archestra_config?.client_config_permutations?.mcpServers ||
-        Object.keys(server.archestra_config?.client_config_permutations?.mcpServers || {}).length === 0
-      ))
+      (shouldUpdateMissing &&
+        (!server.archestra_config?.client_config_permutations?.mcpServers ||
+          Object.keys(server.archestra_config?.client_config_permutations?.mcpServers || {}).length === 0))
     ) {
       server = await extractArchestraClientConfigPermutationsConfig(server, model, force);
     }
@@ -1810,7 +1817,7 @@ async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<
   // Filter to only missing servers if --missing-only flag is set
   if (missingOnly) {
     const originalCount = githubUrls.length;
-    githubUrls = githubUrls.filter(url => {
+    githubUrls = githubUrls.filter((url) => {
       const githubInfo = parseGitHubUrl(url);
       const fileName = `${githubInfo.owner}__${githubInfo.repo}.json`;
       const filePath = path.join(MCP_SERVERS_EVALUATIONS_DIR, fileName);
@@ -2040,7 +2047,7 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
     // Batch evaluation
     await evaluateAllRepos(options);
   }
-  
+
   // Format all evaluation files with prettier
   formatEvaluationFiles();
 }
