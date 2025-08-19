@@ -733,8 +733,8 @@ async function extractCategory(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  // Skip if human evaluation (evaluation_model === null)
-  if (server.evaluation_model === null && !force) {
+  // Skip if human evaluation (evaluation_model === null AND category already exists)
+  if (server.evaluation_model === null && server.category && !force) {
     console.log(`  ⏭️  Category: Skipped (human evaluation)`);
     return server;
   }
@@ -784,8 +784,8 @@ async function extractArchestraClientConfigPermutationsConfig(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  // Skip if human evaluation (evaluation_model === null)
-  if (server.evaluation_model === null && !force) {
+  // Skip if human evaluation (evaluation_model === null AND server config already exists)
+  if (server.evaluation_model === null && server.server && !force) {
     console.log(`  ⏭️  Server Config: Skipped (human evaluation)`);
     return server;
   }
@@ -920,8 +920,8 @@ async function extractCanonicalServerAndUserConfigConfig(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  // Skip if human evaluation (evaluation_model === null)
-  if (server.evaluation_model === null && !force) {
+  // Skip if human evaluation (evaluation_model === null AND configs already exist)
+  if (server.evaluation_model === null && server.server && server.user_config && !force) {
     console.log(`  ⏭️  Canonical Server and User Config: Skipped (human evaluation)`);
     return server;
   }
@@ -1294,8 +1294,8 @@ async function extractArchestraOauthConfig(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  // Skip if human evaluation (evaluation_model === null)
-  if (server.evaluation_model === null && !force) {
+  // Skip if human evaluation (evaluation_model === null AND archestra_config already exists)
+  if (server.evaluation_model === null && server.archestra_config && !force) {
     console.log(`  ⏭️  Archestra OAuth Config: Skipped (human evaluation)`);
     return server;
   }
@@ -1365,8 +1365,8 @@ async function extractDependencies(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  // Skip if human evaluation (evaluation_model === null)
-  if (server.evaluation_model === null && !force) {
+  // Skip if human evaluation (evaluation_model === null AND dependencies already exist)
+  if (server.evaluation_model === null && server.dependencies && server.dependencies.length > 0 && !force) {
     console.log(`  ⏭️  Dependencies: Skipped (human evaluation)`);
     return server;
   }
@@ -1473,8 +1473,10 @@ async function extractProtocolFeatures(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  // Skip if human evaluation (evaluation_model === null)
-  if (server.evaluation_model === null && !force) {
+  // Skip if human evaluation (evaluation_model === null AND protocol features already evaluated)
+  // Check if at least one protocol feature is true (indicating it's been evaluated)
+  const hasProtocolFeatures = Object.values(server.protocol_features || {}).some((v) => v === true);
+  if (server.evaluation_model === null && hasProtocolFeatures && !force) {
     console.log(`  ⏭️  Protocol Features: Skipped (human evaluation)`);
     return server;
   }
