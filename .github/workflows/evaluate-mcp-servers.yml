@@ -3,7 +3,7 @@ name: Evaluate MCP Servers
 on:
   push:
     paths:
-      - "app/app/mcp-catalog/data/mcp-servers.json"
+      - "app/mcp-catalog/data/mcp-servers.json"
   workflow_dispatch:
     inputs:
       force:
@@ -14,7 +14,7 @@ on:
       concurrency:
         description: "Number of parallel requests"
         required: false
-        default: "5"
+        default: "1"
         type: string
 
 jobs:
@@ -104,7 +104,7 @@ jobs:
           if git diff --quiet && git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git add app/mcp-catalog/data/mcp-evaluations/*.json
+            git add app/app/mcp-catalog/data/mcp-evaluations/*.json
             
             # Create commit message
             if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
