@@ -21,6 +21,8 @@ jobs:
   evaluate:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    permissions:
+      contents: write  # Allow the workflow to push commits
 
     steps:
       - name: Checkout repository
