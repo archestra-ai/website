@@ -497,16 +497,16 @@ async function callLLM(prompt: string, format?: any, model = 'gemini-2.5-pro'): 
   // Add retry logic for transient failures
   const maxRetries = 3;
   let lastError: any;
-  
+
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       if (attempt > 1) {
         // Wait before retry (exponential backoff)
         const delay = Math.min(1000 * Math.pow(2, attempt - 1), 10000);
         console.log(`  ⏳ Retrying LLM call (attempt ${attempt}/${maxRetries}) after ${delay}ms...`);
-        await new Promise(resolve => setTimeout(resolve, delay));
+        await new Promise((resolve) => setTimeout(resolve, delay));
       }
-      
+
       // Check if this is a Gemini model
       if (model.startsWith('gemini-')) {
         // Call Gemini API
@@ -557,18 +557,18 @@ async function callLLM(prompt: string, format?: any, model = 'gemini-2.5-pro'): 
         }
 
         const data = await response.json();
-        
+
         // Check for API errors in response
         if (data.error) {
           throw new Error(`Gemini API error: ${data.error.message || JSON.stringify(data.error)}`);
         }
-        
+
         // Check if candidates array is empty (could indicate content filtering)
         if (!data.candidates || data.candidates.length === 0) {
           console.error('Gemini response has no candidates:', JSON.stringify(data).substring(0, 500));
           throw new Error('Gemini returned no candidates (possible content filtering or rate limit)');
         }
-        
+
         const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
 
         if (!responseText) {
@@ -634,14 +634,14 @@ async function callLLM(prompt: string, format?: any, model = 'gemini-2.5-pro'): 
     } catch (error: any) {
       lastError = error;
       console.error(`LLM call attempt ${attempt} failed:`, error.message);
-      
+
       // If it's not the last attempt, continue to retry
       if (attempt < maxRetries) {
         continue;
       }
     }
   }
-  
+
   // All retries exhausted, throw the last error
   console.error('All LLM call attempts failed');
   throw lastError;
@@ -1849,14 +1849,14 @@ async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<
 
   // Read all GitHub URLs
   let allUrls: string[] = JSON.parse(fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf8'));
-  
+
   // Filter out non-GitHub URLs (e.g., GitLab)
   let githubUrls = allUrls.filter((url) => url.includes('github.com'));
-  
+
   if (githubUrls.length < allUrls.length) {
     console.log(`⚠️  Skipping ${allUrls.length - githubUrls.length} non-GitHub URLs (GitLab, etc.)`);
   }
-  
+
   const existingFiles = fs.readdirSync(MCP_SERVERS_EVALUATIONS_DIR).filter((f) => f.endsWith('.json'));
 
   // Filter to only missing servers if --missing-only flag is set
