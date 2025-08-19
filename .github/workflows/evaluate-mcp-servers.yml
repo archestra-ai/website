@@ -3,7 +3,7 @@ name: Evaluate MCP Servers
 on:
   push:
     paths:
-      - "app/mcp-catalog/data/mcp-servers.json"
+      - "app/app/mcp-catalog/data/mcp-servers.json"
   workflow_dispatch:
     inputs:
       force:
