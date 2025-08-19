@@ -71,7 +71,20 @@ jobs:
         run: |
           # Check both unstaged and staged changes
           if ! git diff --exit-code || ! git diff --cached --exit-code; then
-            echo "OpenAPI schema has changes that are not committed"
+            echo "❌ OpenAPI schema has uncommitted changes!"
+            echo ""
+            echo "The OpenAPI schema is out of sync with the API implementation."
+            echo "To fix this, run the following commands locally:"
+            echo ""
+            echo "  cd app"
+            echo "  npm run openapi:generate"
+            echo "  git add app/mcp-catalog/api/docs/openapi.json"
+            echo "  git commit -m 'chore: update OpenAPI schema'"
+            echo ""
+            echo "Then push your changes."
+            echo ""
+            echo "Changes detected:"
+            git diff --name-only
             exit 1
           fi
 
