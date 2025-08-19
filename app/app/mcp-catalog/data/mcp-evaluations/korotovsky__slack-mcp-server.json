@@ -11,15 +11,31 @@
     "type": "binary",
     "entry_point": "slack-mcp-server",
     "mcp_config": {
-      "command": "${__dirname}/server/slack-mcp-server",
+      "command": "./slack-mcp-server",
       "args": [],
       "env": {
-        "SLACK_APP_TOKEN": "${user_config.slack_app_token}",
-        "SLACK_BOT_TOKEN": "${user_config.slack_bot_token}",
-        "SLACK_USER_TOKEN": "${user_config.slack_user_token}",
-        "SLACK_COOKIE_D": "${user_config.slack_cookie_d}",
-        "SLACK_MCP_ADD_MESSAGE_TOOL": "${user_config.add_message_tool}",
-        "HTTPS_PROXY": "${user_config.https_proxy}"
+        "SLACK_MCP_XOXC_TOKEN": "${user_config.slack_mcp_xoxc_token}",
+        "SLACK_MCP_XOXD_TOKEN": "${user_config.slack_mcp_xoxd_token}",
+        "SLACK_MCP_OAUTH_TOKEN": "${user_config.slack_mcp_oauth_token}",
+        "SLACK_MCP_ADD_MESSAGE_TOOL": "${user_config.slack_mcp_add_message_tool}"
+      }
+    }
+  },
+  "server_overridden": {
+    "type": "node",
+    "entry_point": "slack-mcp-server",
+    "mcp_config": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "slack-mcp-server@latest",
+        "--transport",
+        "stdio"
+      ],
+      "env": {
+        "SLACK_MCP_XOXC_TOKEN": "${user_config.slack_mcp_xoxc_token}",
+        "SLACK_MCP_XOXD_TOKEN": "${user_config.slack_mcp_xoxd_token}",
+        "SLACK_MCP_ADD_MESSAGE_TOOL": "${user_config.slack_mcp_add_message_tool}"
       }
     }
   },
@@ -27,44 +43,60 @@
   "prompts": [],
   "keywords": [],
   "user_config": {
-    "slack_app_token": {
+    "slack_mcp_xoxc_token": {
       "type": "string",
-      "title": "Slack App-Level Token (OAuth Mode)",
-      "description": "Your Slack App-Level Token (starts with xapp-). Required for OAuth mode. Provide this along with the Bot Token.",
+      "title": "Slack 'xoxc' Token (Stealth Mode)",
+      "description": "Slack browser token (starts with 'xoxc-') for stealth mode authentication. Required if not using OAuth mode.",
+      "sensitive": true,
+      "required": false
+    },
+    "slack_mcp_xoxd_token": {
+      "type": "string",
+      "title": "Slack 'd' Cookie (Stealth Mode)",
+      "description": "Slack browser cookie 'd' (starts with 'xoxd-') for stealth mode authentication. Required if not using OAuth mode.",
+      "sensitive": true,
+      "required": false
+    },
+    "slack_mcp_oauth_token": {
+      "type": "string",
+      "title": "Slack OAuth Token",
+      "description": "Slack OAuth token (e.g., starts with 'xoxb-') for secure access. Required if not using stealth mode.",
+      "sensitive": true,
+      "required": false
+    },
+    "slack_mcp_add_message_tool": {
+      "type": "string",
+      "title": "Enable Add Message Tool",
+      "description": "Set to 'true' to enable posting messages, or provide a comma-separated list of channel IDs to restrict posting to specific channels. Disabled by default.",
+      "required": false
+    }
+  },
+  "user_config_overridden": {
+    "slack_mcp_xoxc_token": {
+      "type": "string",
+      "title": "Slack 'xoxc' Token (Stealth Mode)",
+      "description": "Slack browser token (starts with xoxc-) for operating in stealth mode. One of the authentication methods must be provided.",
+      "sensitive": true,
+      "required": false
+    },
+    "slack_mcp_xoxd_token": {
+      "type": "string",
+      "title": "Slack 'd' Cookie (Stealth Mode)",
+      "description": "Slack browser cookie 'd' (starts with xoxd-) for operating in stealth mode. Used in conjunction with the 'xoxc' token.",
       "sensitive": true,
       "required": false
     },
     "slack_bot_token": {
       "type": "string",
-      "title": "Slack Bot User OAuth Token (OAuth Mode)",
-      "description": "Your Slack Bot User OAuth Token (starts with xoxb-). Required for OAuth mode. Provide this along with the App-Level Token.",
+      "title": "Slack Bot Token (OAuth Mode)",
+      "description": "Slack OAuth bot token (starts with xoxb-) for operating in OAuth mode. One of the authentication methods must be provided.",
       "sensitive": true,
       "required": false
     },
-    "slack_user_token": {
+    "slack_mcp_add_message_tool": {
       "type": "string",
-      "title": "Slack User Token (Stealth Mode)",
-      "description": "Your Slack User Token (starts with xoxp-). Required for Stealth mode. Can be extracted from your browser's network requests. Provide this along with the 'd' Cookie.",
-      "sensitive": true,
-      "required": false
-    },
-    "slack_cookie_d": {
-      "type": "string",
-      "title": "Slack 'd' Cookie (Stealth Mode)",
-      "description": "The value of the 'd' cookie from your Slack session. Required for Stealth mode. Can be extracted from your browser's cookies. Provide this along with the User Token.",
-      "sensitive": true,
-      "required": false
-    },
-    "add_message_tool": {
-      "type": "string",
-      "title": "Enable Add Message Tool",
+      "title": "Enable 'add_message' Tool",
       "description": "Set to 'true' to enable posting messages, or provide a comma-separated list of channel IDs to restrict posting to specific channels. Disabled by default for safety.",
-      "required": false
-    },
-    "https_proxy": {
-      "type": "string",
-      "title": "HTTPS Proxy URL",
-      "description": "Optional URL for an HTTPS proxy to route outgoing requests through (e.g., http://user:pass@host:port).",
       "required": false
     }
   },
@@ -86,7 +118,7 @@
     "url": "https://github.com/korotovsky/slack-mcp-server",
     "name": "korotovsky__slack-mcp-server",
     "path": null,
-    "stars": 502,
+    "stars": 503,
     "contributors": 13,
     "issues": 40,
     "releases": true,
@@ -95,7 +127,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-08-15T20:14:59.508Z",
+  "last_scraped_at": "2025-08-16T22:15:16.067Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_logging": false,
@@ -127,31 +159,27 @@
     },
     {
       "importance": 7,
-      "name": "uber-go/zap"
+      "name": "refraction-networking/utls"
+    },
+    {
+      "importance": 7,
+      "name": "ngrok/ngrok/v2"
     },
     {
       "importance": 6,
       "name": "openai/openai-go"
     },
     {
-      "importance": 6,
-      "name": "ngrok/v2"
+      "importance": 5,
+      "name": "uber-go/zap"
     },
     {
-      "importance": 5,
+      "importance": 4,
       "name": "gocarina/gocsv"
     },
     {
-      "importance": 4,
+      "importance": 3,
       "name": "google/uuid"
-    },
-    {
-      "importance": 4,
-      "name": "x/net"
-    },
-    {
-      "importance": 2,
-      "name": "stretchr/testify"
     }
   ],
   "raw_dependencies": "=== go.mod ===\nmodule github.com/korotovsky/slack-mcp-server\n\ngo 1.24.4\n\nrequire (\n\tgithub.com/gocarina/gocsv v0.0.0-20240520201108-78e41c74b4b1\n\tgithub.com/google/uuid v1.6.0\n\tgithub.com/mark3labs/mcp-go v0.31.0\n\tgithub.com/mattn/go-isatty v0.0.20\n\tgithub.com/openai/openai-go v1.11.0\n\tgithub.com/refraction-networking/utls v1.8.0\n\tgithub.com/rusq/slack v0.9.6-0.20250408103104-dd80d1b6337f\n\tgithub.com/rusq/slackauth v0.6.1\n\tgithub.com/rusq/slackdump/v3 v3.1.6\n\tgithub.com/rusq/tagops v0.1.1\n\tgithub.com/slack-go/slack v0.17.1\n\tgithub.com/stretchr/testify v1.10.0\n\tgithub.com/takara2314/slack-go-util v0.2.0\n\tgo.uber.org/zap v1.27.0\n\tgolang.ngrok.com/ngrok/v2 v2.0.0\n\tgolang.org/x/net v0.40.0\n\tgolang.org/x/sync v0.14.0\n\tgolang.org/x/time v0.12.0\n)\n\nrequire (\n\tgithub.com/MercuryEngineering/CookieMonster v0.0.0-20180304172713-1584578b3403 // indirect\n\tgithub.com/andybalholm/brotli v1.0.6 // indirect\n\tgithub.com/atotto/clipboard v0.1.4 // indirect\n\tgithub.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect\n\tgithub.com/catppuccin/go v0.3.0 // indirect\n\tgithub.com/charmbracelet/bubbles v0.21.0 // indirect\n\tgithub.com/charmbracelet/bubbletea v1.3.5 // indirect\n\tgithub.com/charmbracelet/colorprofile v0.3.1 // indirect\n\tgithub.com/charmbracelet/huh v0.7.0 // indirect\n\tgithub.com/charmbracelet/huh/spinner v0.0.0-20250519092748-d6f1597485e0 // indirect\n\tgithub.com/charmbracelet/lipgloss v1.1.0 // indirect\n\tgithub.com/charmbracelet/x/ansi v0.9.2 // indirect\n\tgithub.com/charmbracelet/x/cellbuf v0.0.13 // indirect\n\tgithub.com/charmbracelet/x/exp/strings v0.0.0-20250520193441-8304e91a28cb // indirect\n\tgithub.com/charmbracelet/x/term v0.2.1 // indirect\n\tgithub.com/davecgh/go-spew v1.1.1 // indirect\n\tgithub.com/deckarep/golang-set/v2 v2.8.0 // indirect\n\tgithub.com/dustin/go-humanize v1.0.1 // indirect\n\tgithub.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f // indirect\n\tgithub.com/fatih/color v1.18.0 // indirect\n\tgithub.com/go-jose/go-jose/v3 v3.0.4 // indirect\n\tgithub.com/go-rod/rod v0.116.2 // indirect\n\tgithub.com/go-stack/stack v1.8.1 // indirect\n\tgithub.com/google/go-cmp v0.6.0 // indirect\n\tgithub.com/gorilla/websocket v1.5.3 // indirect\n\tgithub.com/inconshreveable/log15 v3.0.0-testing.5+incompatible // indirect\n\tgithub.com/inconshreveable/log15/v3 v3.0.0-testing.5 // indirect\n\tgithub.com/joho/godotenv v1.5.1 // indirect\n\tgithub.com/jpillora/backoff v1.0.0 // indirect\n\tgithub.com/klauspost/compress v1.17.4 // indirect\n\tgithub.com/lucasb-eyer/go-colorful v1.2.0 // indirect\n\tgithub.com/mattn/go-colorable v0.1.14 // indirect\n\tgithub.com/mattn/go-localereader v0.0.1 // indirect\n\tgithub.com/mattn/go-runewidth v0.0.16 // indirect\n\tgithub.com/mitchellh/hashstructure/v2 v2.0.2 // indirect\n\tgithub.com/muesli/ansi v0.0.0-20230316100256-276c6243b2f6 // indirect\n\tgithub.com/muesli/cancelreader v0.2.2 // indirect\n\tgithub.com/muesli/termenv v0.16.0 // indirect\n\tgithub.com/playwright-community/playwright-go v0.5200.0 // indirect\n\tgithub.com/pmezard/go-difflib v1.0.0 // indirect\n\tgithub.com/rivo/uniseg v0.4.7 // indirect\n\tgithub.com/rogpeppe/go-internal v1.14.1 // indirect\n\tgithub.com/rusq/chttp v1.1.0 // indirect\n\tgithub.com/rusq/fsadapter v1.1.0 // indirect\n\tgithub.com/spf13/cast v1.7.1 // indirect\n\tgithub.com/tidwall/gjson v1.17.0 // indirect\n\tgithub.com/tidwall/match v1.1.1 // indirect\n\tgithub.com/tidwall/pretty v1.2.1 // indirect\n\tgithub.com/tidwall/sjson v1.2.5 // indirect\n\tgithub.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect\n\tgithub.com/yosida95/uritemplate/v3 v3.0.2 // indirect\n\tgithub.com/ysmood/fetchup v0.3.0 // indirect\n\tgithub.com/ysmood/goob v0.4.0 // indirect\n\tgithub.com/ysmood/got v0.40.0 // indirect\n\tgithub.com/ysmood/gson v0.7.3 // indirect\n\tgithub.com/ysmood/leakless v0.9.0 // indirect\n\tgithub.com/yuin/goldmark v1.7.12 // indirect\n\tgo.uber.org/multierr v1.11.0 // indirect\n\tgolang.ngrok.com/muxado/v2 v2.0.1 // indirect\n\tgolang.org/x/crypto v0.38.0 // indirect\n\tgolang.org/x/sys v0.33.0 // indirect\n\tgolang.org/x/term v0.32.0 // indirect\n\tgolang.org/x/text v0.25.0 // indirect\n\tgoogle.golang.org/protobuf v1.35.1 // indirect\n\tgopkg.in/yaml.v3 v3.0.1 // indirect\n)\n"

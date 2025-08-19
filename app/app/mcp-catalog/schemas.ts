@@ -1,4 +1,4 @@
-import { DxtManifestSchema, McpServerConfigSchema } from '@anthropic-ai/dxt';
+import { DxtManifestSchema, DxtManifestServerSchema, DxtUserConfigurationOptionSchema, McpServerConfigSchema } from '@anthropic-ai/dxt';
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { z } from 'zod';
 
@@ -146,6 +146,8 @@ export const ArchestraMcpServerManifestSchema = DxtManifestSchema.omit({ reposit
     protocol_features: ArchestraMcpServerProtocolFeaturesSchema,
     dependencies: z.array(MCPDependencySchema),
     raw_dependencies: z.string().nullable(),
+    server_overridden: DxtManifestServerSchema.optional(),
+    user_config_overridden: z.record(z.string(), DxtUserConfigurationOptionSchema).optional(),
   })
   .openapi('ArchestraMcpServerManifest');
 
