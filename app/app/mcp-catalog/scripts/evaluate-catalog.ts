@@ -67,6 +67,7 @@ interface EvaluateSingleRepoOptions {
 interface EvaluateAllReposOptions extends EvaluateSingleRepoOptions {
   concurrency?: number;
   limit?: number;
+  missingOnly?: boolean;
 }
 
 // ============= Helper Methods =============
@@ -1791,6 +1792,7 @@ async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<
     updateDependencies = false,
     updateProtocol = false,
     updateScore = false,
+    missingOnly = false,
     concurrency: _concurrency = 10,
     limit = 0,
   } = options;
@@ -1803,6 +1805,18 @@ async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<
   // Read all GitHub URLs
   let githubUrls: string[] = JSON.parse(fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf8'));
   const existingFiles = fs.readdirSync(MCP_SERVERS_EVALUATIONS_DIR).filter((f) => f.endsWith('.json'));
+
+  // Filter to only missing servers if --missing-only flag is set
+  if (missingOnly) {
+    const originalCount = githubUrls.length;
+    githubUrls = githubUrls.filter(url => {
+      const githubInfo = parseGitHubUrl(url);
+      const fileName = `${githubInfo.owner}__${githubInfo.repo}.json`;
+      const filePath = path.join(MCP_SERVERS_EVALUATIONS_DIR, fileName);
+      return !fs.existsSync(filePath);
+    });
+    console.log(`Filtering to missing servers only: ${githubUrls.length} of ${originalCount} servers need evaluation`);
+  }
 
   // Apply limit if specified
   if (limit && limit > 0) {
@@ -1939,6 +1953,7 @@ Update Options:
 
 Control Options:
   --force                Force update even if data already exists (overwrites existing data)
+  --missing-only         Only process servers that don't have evaluation files
   --model <name>         LLM model to use (default: gemini-2.5-pro)
                          Supports Ollama models and Gemini models (e.g., gemini-1.5-flash)
   --concurrency <n>      Number of parallel requests (default: 10 with token, 3 without)
@@ -1951,6 +1966,8 @@ Examples:
   npm run evaluate-catalog --category --model gemini-1.5-flash
   npm run evaluate-catalog --all --concurrency 20
   npm run evaluate-catalog --dependencies --limit 10
+  npm run evaluate-catalog --missing-only --all
+  npm run evaluate-catalog --missing-only --all --concurrency 5
 
 Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variable`);
     return;
@@ -1968,6 +1985,7 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
     updateScore: args.includes('--score'),
     updateAll: args.includes('--all'),
     force: args.includes('--force'),
+    missingOnly: args.includes('--missing-only'),
     model: args.includes('--model') ? args[args.indexOf('--model') + 1] : 'gemini-2.5-pro',
     concurrency: args.includes('--concurrency')
       ? parseInt(args[args.indexOf('--concurrency') + 1]) || undefined
