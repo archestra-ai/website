@@ -123,12 +123,21 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
+          # Show git status for debugging
+          echo "=== Git status before adding files ==="
+          git status
+          
+          # Add evaluation files
+          git add app/app/mcp-catalog/data/mcp-evaluations/*.json
+          
+          # Show what will be committed
+          echo "=== Git status after adding files ==="
+          git status
+          
           # Check for changes
-          if git diff --quiet && git diff --staged --quiet; then
+          if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git add app/app/mcp-catalog/data/mcp-evaluations/*.json
-            
             # Create commit message
             if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
               COMMIT_MSG="chore: force re-evaluate all MCP servers"
