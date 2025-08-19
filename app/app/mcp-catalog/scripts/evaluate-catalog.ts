@@ -509,126 +509,127 @@ async function callLLM(prompt: string, format?: any, model = 'gemini-2.5-pro'): 
       
       // Check if this is a Gemini model
       if (model.startsWith('gemini-')) {
-      // Call Gemini API
-      const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
-      if (!apiKey) {
-        throw new Error('GEMINI_API_KEY or GOOGLE_API_KEY environment variable is required for Gemini models');
-      }
-
-      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-
-      // Convert format schema to Gemini's response schema format if provided
-      let generationConfig: any = {
-        temperature: 0.1,
-        topP: 0.9,
-        candidateCount: 1,
-      };
-
-      if (format) {
-        generationConfig.responseMimeType = 'application/json';
-        // Convert JSON Schema to Gemini's schema format
-        const convertedSchema = convertToGeminiSchema(format);
-        console.log('Converted schema for Gemini:', JSON.stringify(convertedSchema, null, 2));
-        generationConfig.responseSchema = convertedSchema;
-      }
-
-      const response = await fetch(geminiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          contents: [
-            {
-              parts: [
-                {
-                  text: prompt,
-                },
-              ],
-            },
-          ],
-          generationConfig,
-        }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(`Gemini API error: ${response.status} - ${JSON.stringify(errorData)}`);
-      }
-
-      const data = await response.json();
-      
-      // Check for API errors in response
-      if (data.error) {
-        throw new Error(`Gemini API error: ${data.error.message || JSON.stringify(data.error)}`);
-      }
-      
-      // Check if candidates array is empty (could indicate content filtering)
-      if (!data.candidates || data.candidates.length === 0) {
-        console.error('Gemini response has no candidates:', JSON.stringify(data).substring(0, 500));
-        throw new Error('Gemini returned no candidates (possible content filtering or rate limit)');
-      }
-      
-      const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
-
-      if (!responseText) {
-        console.error('Gemini response structure:', JSON.stringify(data).substring(0, 500));
-        throw new Error('No response text from Gemini');
-      }
-
-      // Debug logging
-      console.log('Raw Gemini response:', responseText.substring(0, 200) + '...');
-
-      try {
-        // Try to extract JSON from the response if it contains extra text
-        const jsonMatch = responseText.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-          return JSON.parse(jsonMatch[0]);
+        // Call Gemini API
+        const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+        if (!apiKey) {
+          throw new Error('GEMINI_API_KEY or GOOGLE_API_KEY environment variable is required for Gemini models');
         }
-        return JSON.parse(responseText);
-      } catch (parseError: any) {
-        console.error('Failed to parse JSON:', responseText);
-        throw new Error(`Invalid JSON response from Gemini: ${parseError.message}`);
-      }
-    } else {
-      // Call Ollama API (existing code)
-      const response = await fetch('http://localhost:11434/api/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model,
-          prompt,
-          stream: false,
-          format: format || 'json',
-          options: {
-            temperature: 0.1,
-            top_p: 0.9,
+
+        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+        // Convert format schema to Gemini's response schema format if provided
+        let generationConfig: any = {
+          temperature: 0.1,
+          topP: 0.9,
+          candidateCount: 1,
+        };
+
+        if (format) {
+          generationConfig.responseMimeType = 'application/json';
+          // Convert JSON Schema to Gemini's schema format
+          const convertedSchema = convertToGeminiSchema(format);
+          console.log('Converted schema for Gemini:', JSON.stringify(convertedSchema, null, 2));
+          generationConfig.responseSchema = convertedSchema;
+        }
+
+        const response = await fetch(geminiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
           },
-        }),
-      });
+          body: JSON.stringify({
+            contents: [
+              {
+                parts: [
+                  {
+                    text: prompt,
+                  },
+                ],
+              },
+            ],
+            generationConfig,
+          }),
+        });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      const responseText = data.response.trim();
-
-      // Debug logging
-      console.log('Raw Ollama response:', responseText.substring(0, 200) + '...');
-
-      try {
-        // Try to extract JSON from the response if it contains extra text
-        const jsonMatch = responseText.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-          return JSON.parse(jsonMatch[0]);
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(`Gemini API error: ${response.status} - ${JSON.stringify(errorData)}`);
         }
-        return JSON.parse(responseText);
-      } catch (parseError: any) {
-        console.error('Failed to parse JSON:', responseText);
-        throw new Error(`Invalid JSON response from Ollama: ${parseError.message}`);
+
+        const data = await response.json();
+        
+        // Check for API errors in response
+        if (data.error) {
+          throw new Error(`Gemini API error: ${data.error.message || JSON.stringify(data.error)}`);
+        }
+        
+        // Check if candidates array is empty (could indicate content filtering)
+        if (!data.candidates || data.candidates.length === 0) {
+          console.error('Gemini response has no candidates:', JSON.stringify(data).substring(0, 500));
+          throw new Error('Gemini returned no candidates (possible content filtering or rate limit)');
+        }
+        
+        const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+
+        if (!responseText) {
+          console.error('Gemini response structure:', JSON.stringify(data).substring(0, 500));
+          throw new Error('No response text from Gemini');
+        }
+
+        // Debug logging
+        console.log('Raw Gemini response:', responseText.substring(0, 200) + '...');
+
+        try {
+          // Try to extract JSON from the response if it contains extra text
+          const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            return JSON.parse(jsonMatch[0]);
+          }
+          return JSON.parse(responseText);
+        } catch (parseError: any) {
+          console.error('Failed to parse JSON:', responseText);
+          throw new Error(`Invalid JSON response from Gemini: ${parseError.message}`);
+        }
+      } else {
+        // Call Ollama API (existing code)
+        const response = await fetch('http://localhost:11434/api/generate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model,
+            prompt,
+            stream: false,
+            format: format || 'json',
+            options: {
+              temperature: 0.1,
+              top_p: 0.9,
+            },
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const responseText = data.response.trim();
+
+        // Debug logging
+        console.log('Raw Ollama response:', responseText.substring(0, 200) + '...');
+
+        try {
+          // Try to extract JSON from the response if it contains extra text
+          const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            return JSON.parse(jsonMatch[0]);
+          }
+          return JSON.parse(responseText);
+        } catch (parseError: any) {
+          console.error('Failed to parse JSON:', responseText);
+          throw new Error(`Invalid JSON response from Ollama: ${parseError.message}`);
+        }
       }
     } catch (error: any) {
       lastError = error;
