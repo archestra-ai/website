@@ -28,14 +28,7 @@
       "mcpServers": {
         "metatrader-mcp-server": {
           "command": "metatrader-mcp-server",
-          "args": [
-            "--login",
-            "<YOUR_MT5_LOGIN>",
-            "--password",
-            "<YOUR_MT5_PASSWORD>",
-            "--server",
-            "<YOUR_MT5_SERVER>"
-          ],
+          "args": ["--login", "<YOUR_MT5_LOGIN>", "--password", "<YOUR_MT5_PASSWORD>", "--server", "<YOUR_MT5_SERVER>"],
           "env": {}
         },
         "metatrader-http-server": {

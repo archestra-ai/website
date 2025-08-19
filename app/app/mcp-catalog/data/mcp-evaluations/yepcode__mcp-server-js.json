@@ -28,20 +28,14 @@
       "mcpServers": {
         "yepcode-mcp-server": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@yepcode/mcp-server"
-          ],
+          "args": ["-y", "@yepcode/mcp-server"],
           "env": {
             "YEPCODE_API_TOKEN": "your_api_token_here"
           }
         },
         "yepcode-mcp-server-with-options": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@yepcode/mcp-server"
-          ],
+          "args": ["-y", "@yepcode/mcp-server"],
           "env": {
             "YEPCODE_API_TOKEN": "your_api_token_here",
             "YEPCODE_MCP_OPTIONS": "disableRunCodeTool,runCodeCleanup"
@@ -49,13 +43,7 @@
         },
         "yepcode-mcp-server-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-d",
-            "-e",
-            "YEPCODE_API_TOKEN=your_api_token_here",
-            "yepcode/mcp-server"
-          ],
+          "args": ["run", "-d", "-e", "YEPCODE_API_TOKEN=your_api_token_here", "yepcode/mcp-server"],
           "env": {
             "YEPCODE_API_TOKEN": "your_api_token_here"
           }

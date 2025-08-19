@@ -28,16 +28,7 @@
       "mcpServers": {
         "twitter-mcp": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "Path\\src\\",
-            "run",
-            "--with",
-            "twikit",
-            "--with",
-            "mcp",
-            "tweet_service.py"
-          ],
+          "args": ["--directory", "Path\\src\\", "run", "--with", "twikit", "--with", "mcp", "tweet_service.py"],
           "env": {
             "COOKIES_PATH": "Path\\cookies.json",
             "ENV_FILE": ".env"

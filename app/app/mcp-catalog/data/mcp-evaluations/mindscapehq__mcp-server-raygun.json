@@ -28,10 +28,7 @@
       "mcpServers": {
         "raygun.io-mcp-server-raygun": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@raygun.io/mcp-server-raygun"
-          ],
+          "args": ["-y", "@raygun.io/mcp-server-raygun"],
           "env": {
             "RAYGUN_PAT_TOKEN": "your-pat-token-here"
           }

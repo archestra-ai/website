@@ -28,19 +28,14 @@
       "mcpServers": {
         "k-jarzyna-mcp-miro": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@k-jarzyna/mcp-miro"
-          ],
+          "args": ["-y", "@k-jarzyna/mcp-miro"],
           "env": {
             "MIRO_ACCESS_TOKEN": "your_miro_access_token"
           }
         },
         "k-jarzyna-mcp-miro-node": {
           "command": "node",
-          "args": [
-            "build/index.js"
-          ],
+          "args": ["build/index.js"],
           "env": {
             "MIRO_ACCESS_TOKEN": "your_miro_access_token"
           }

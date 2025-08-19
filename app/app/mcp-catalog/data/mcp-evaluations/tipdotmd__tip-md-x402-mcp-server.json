@@ -28,27 +28,21 @@
       "mcpServers": {
         "tip-md-demo": {
           "command": "node",
-          "args": [
-            "dist/mcp-server/src/index.js"
-          ],
+          "args": ["dist/mcp-server/src/index.js"],
           "env": {
             "NODE_ENV": "demo"
           }
         },
         "tip-md-x402-mcp-server-demo-npm": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {
             "NODE_ENV": "demo"
           }
         },
         "tip-md-x402-mcp-server-production": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {
             "NODE_ENV": "production"
           }

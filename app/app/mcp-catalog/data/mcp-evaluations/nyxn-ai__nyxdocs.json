@@ -28,12 +28,7 @@
       "mcpServers": {
         "nyxdocs": {
           "command": "uv",
-          "args": [
-            "run",
-            "python",
-            "-m",
-            "nyxdocs.server"
-          ],
+          "args": ["run", "python", "-m", "nyxdocs.server"],
           "env": {}
         }
       }

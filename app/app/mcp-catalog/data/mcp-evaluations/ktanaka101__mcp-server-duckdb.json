@@ -28,11 +28,7 @@
       "mcpServers": {
         "mcp-server-duckdb": {
           "command": "uvx",
-          "args": [
-            "mcp-server-duckdb",
-            "--db-path",
-            "~/mcp-server-duckdb/data/data.db"
-          ],
+          "args": ["mcp-server-duckdb", "--db-path", "~/mcp-server-duckdb/data/data.db"],
           "env": {}
         },
         "mcp-server-duckdb-inspector": {

@@ -28,17 +28,12 @@
       "mcpServers": {
         "nostr-mcp-dev": {
           "command": "npm",
-          "args": [
-            "run",
-            "dev"
-          ],
+          "args": ["run", "dev"],
           "env": {}
         },
         "nostr-mcp-prod": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         }
       }

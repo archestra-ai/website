@@ -28,9 +28,7 @@
       "mcpServers": {
         "mcp-hn": {
           "command": "uvx",
-          "args": [
-            "mcp-hn"
-          ],
+          "args": ["mcp-hn"],
           "env": {}
         }
       }

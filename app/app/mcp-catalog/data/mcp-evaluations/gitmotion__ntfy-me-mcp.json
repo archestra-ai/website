@@ -28,18 +28,14 @@
       "mcpServers": {
         "ntfy-me-mcp-minimal": {
           "command": "npx",
-          "args": [
-            "ntfy-me-mcp"
-          ],
+          "args": ["ntfy-me-mcp"],
           "env": {
             "NTFY_TOPIC": "your-topic-name"
           }
         },
         "ntfy-me-mcp-full-direct-token": {
           "command": "npx",
-          "args": [
-            "ntfy-me-mcp"
-          ],
+          "args": ["ntfy-me-mcp"],
           "env": {
             "NTFY_TOPIC": "your-topic-name",
             "NTFY_URL": "https://your-ntfy-server.com",
@@ -48,9 +44,7 @@
         },
         "ntfy-me-mcp-full-vscode-input": {
           "command": "npx",
-          "args": [
-            "ntfy-me-mcp"
-          ],
+          "args": ["ntfy-me-mcp"],
           "env": {
             "NTFY_TOPIC": "your-topic-name",
             "NTFY_URL": "https://your-ntfy-server.com",
@@ -80,9 +74,7 @@
         },
         "ntfy-me-mcp-local-build": {
           "command": "node",
-          "args": [
-            "dist/index.js"
-          ],
+          "args": ["dist/index.js"],
           "env": {
             "NTFY_TOPIC": "your-topic-name",
             "NTFY_URL": "https://your-ntfy-server.com",

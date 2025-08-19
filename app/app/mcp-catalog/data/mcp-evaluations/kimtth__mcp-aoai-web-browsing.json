@@ -28,9 +28,7 @@
       "mcpServers": {
         "mcp-web-auto": {
           "command": "python",
-          "args": [
-            "chatgui.py"
-          ],
+          "args": ["chatgui.py"],
           "env": {}
         }
       }

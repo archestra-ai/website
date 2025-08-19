@@ -28,20 +28,14 @@
       "mcpServers": {
         "roychri-mcp-server-asana": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@roychri/mcp-server-asana"
-          ],
+          "args": ["-y", "@roychri/mcp-server-asana"],
           "env": {
             "ASANA_ACCESS_TOKEN": "<YOUR_ASANA_ACCESS_TOKEN>"
           }
         },
         "roychri-mcp-server-asana-readonly": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@roychri/mcp-server-asana"
-          ],
+          "args": ["-y", "@roychri/mcp-server-asana"],
           "env": {
             "ASANA_ACCESS_TOKEN": "<YOUR_ASANA_ACCESS_TOKEN>",
             "READ_ONLY_MODE": "true"

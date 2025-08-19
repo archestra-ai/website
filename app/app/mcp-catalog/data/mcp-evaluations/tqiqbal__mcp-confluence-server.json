@@ -28,17 +28,12 @@
       "mcpServers": {
         "confluence-py": {
           "command": "mcp",
-          "args": [
-            "dev",
-            "confluence.py"
-          ],
+          "args": ["dev", "confluence.py"],
           "env": {}
         },
         "confluence-py-fallback": {
           "command": "python",
-          "args": [
-            "confluence.py"
-          ],
+          "args": ["confluence.py"],
           "env": {}
         }
       }

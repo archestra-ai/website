@@ -28,31 +28,17 @@
       "mcpServers": {
         "beeper_mcp-stdio": {
           "command": "uv",
-          "args": [
-            "run",
-            "src/beeper_mcp/server.py"
-          ],
+          "args": ["run", "src/beeper_mcp/server.py"],
           "env": {}
         },
         "beeper_mcp-sse": {
           "command": "uv",
-          "args": [
-            "run",
-            "src/beeper_mcp/server.py",
-            "--port",
-            "8008",
-            "--transport=sse"
-          ],
+          "args": ["run", "src/beeper_mcp/server.py", "--port", "8008", "--transport=sse"],
           "env": {}
         },
         "beeper-configured": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "path/to/beeper-mcp",
-            "run",
-            "src/beeper_mcp/server.py"
-          ],
+          "args": ["--directory", "path/to/beeper-mcp", "run", "src/beeper_mcp/server.py"],
           "env": {
             "BEEPER_ACCOUNT": "your account, 0x...",
             "BEEPER_SECRET_KEY": "your private key or in .env",

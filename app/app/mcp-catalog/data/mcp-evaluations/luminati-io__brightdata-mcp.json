@@ -28,18 +28,14 @@
       "mcpServers": {
         "brightdata-mcp": {
           "command": "npx",
-          "args": [
-            "@brightdata/mcp"
-          ],
+          "args": ["@brightdata/mcp"],
           "env": {
             "API_TOKEN": "<insert-your-api-token-here>"
           }
         },
         "brightdata-mcp-configured": {
           "command": "npx",
-          "args": [
-            "@brightdata/mcp"
-          ],
+          "args": ["@brightdata/mcp"],
           "env": {
             "API_TOKEN": "<insert-your-api-token-here>",
             "RATE_LIMIT": "<optional if you want to change rate limit format: limit/time+unit, e.g., 100/1h, 50/30m, 10/5s>",

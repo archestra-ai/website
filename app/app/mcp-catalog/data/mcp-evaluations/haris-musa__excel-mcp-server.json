@@ -28,34 +28,22 @@
       "mcpServers": {
         "excel-mcp-server-stdio": {
           "command": "uvx",
-          "args": [
-            "excel-mcp-server",
-            "stdio"
-          ],
+          "args": ["excel-mcp-server", "stdio"],
           "env": {}
         },
         "excel-mcp-server-sse": {
           "command": "uvx",
-          "args": [
-            "excel-mcp-server",
-            "sse"
-          ],
+          "args": ["excel-mcp-server", "sse"],
           "env": {}
         },
         "excel-mcp-server-streamable-http": {
           "command": "uvx",
-          "args": [
-            "excel-mcp-server",
-            "streamable-http"
-          ],
+          "args": ["excel-mcp-server", "streamable-http"],
           "env": {}
         },
         "excel-mcp-server-streamable-http-configured": {
           "command": "uvx",
-          "args": [
-            "excel-mcp-server",
-            "streamable-http"
-          ],
+          "args": ["excel-mcp-server", "streamable-http"],
           "env": {
             "EXCEL_FILES_PATH": "/path/to/excel_files",
             "FASTMCP_PORT": "8007"

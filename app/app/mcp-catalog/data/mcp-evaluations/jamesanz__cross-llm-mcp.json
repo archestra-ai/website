@@ -28,9 +28,7 @@
       "mcpServers": {
         "cross-llm-mcp": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         }
       }

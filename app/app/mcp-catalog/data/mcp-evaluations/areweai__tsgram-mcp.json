@@ -28,10 +28,7 @@
       "mcpServers": {
         "tsgram-mcp": {
           "command": "npm",
-          "args": [
-            "run",
-            "docker:start"
-          ],
+          "args": ["run", "docker:start"],
           "env": {
             "TELEGRAM_BOT_TOKEN": "your_bot_token_here",
             "AUTHORIZED_CHAT_ID": "123456789",
@@ -41,10 +38,7 @@
         },
         "tsgram-mcp-dashboard": {
           "command": "npm",
-          "args": [
-            "run",
-            "dashboard"
-          ]
+          "args": ["run", "dashboard"]
         }
       }
     },

@@ -28,10 +28,7 @@
       "mcpServers": {
         "mcp-installer": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@anaisbetts/mcp-installer"
-          ],
+          "args": ["-y", "@anaisbetts/mcp-installer"],
           "env": {}
         }
       }

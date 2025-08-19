@@ -28,18 +28,12 @@
       "mcpServers": {
         "mobsf-mcp-claude": {
           "command": "npx",
-          "args": [
-            "tsx",
-            "/absolute/path/to/server.ts"
-          ],
+          "args": ["tsx", "/absolute/path/to/server.ts"],
           "env": {}
         },
         "mobsf-mcp-5ire": {
           "command": "npx",
-          "args": [
-            "tsx",
-            "C:\\Users\\Downloads\\mobsf-mcp-server\\server.js"
-          ],
+          "args": ["tsx", "C:\\Users\\Downloads\\mobsf-mcp-server\\server.js"],
           "env": {}
         }
       }

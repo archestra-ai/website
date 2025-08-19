@@ -33,10 +33,7 @@
         },
         "mcp-zotero-npx": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mcp-zotero"
-          ],
+          "args": ["-y", "mcp-zotero"],
           "env": {}
         },
         "mcp-zotero-configured": {

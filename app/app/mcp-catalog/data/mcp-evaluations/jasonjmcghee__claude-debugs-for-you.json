@@ -28,9 +28,7 @@
       "mcpServers": {
         "mcp-debug-js-stdio": {
           "command": "node",
-          "args": [
-            "/path/to/mcp-debug.js"
-          ],
+          "args": ["/path/to/mcp-debug.js"],
           "env": {}
         },
         "jasonmcghee-claude-debugs-for-you-stdio": {

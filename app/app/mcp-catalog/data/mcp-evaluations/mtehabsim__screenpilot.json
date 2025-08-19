@@ -28,9 +28,7 @@
       "mcpServers": {
         "device-controll": {
           "command": "pathToEnv\\venv\\Scripts\\python.exe",
-          "args": [
-            "pathToProject\\ScreenPilot\\main.py"
-          ],
+          "args": ["pathToProject\\ScreenPilot\\main.py"],
           "env": {}
         }
       }

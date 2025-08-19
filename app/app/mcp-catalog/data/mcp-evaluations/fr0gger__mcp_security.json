@@ -28,12 +28,7 @@
       "mcpServers": {
         "orkl": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/MyMCP/mcptest/orkl",
-            "run",
-            "orkl"
-          ],
+          "args": ["--directory", "/MyMCP/mcptest/orkl", "run", "orkl"],
           "env": {}
         }
       }

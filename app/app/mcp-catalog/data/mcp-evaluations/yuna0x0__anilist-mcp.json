@@ -28,42 +28,24 @@
       "mcpServers": {
         "anilist-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "anilist-mcp"
-          ],
+          "args": ["-y", "anilist-mcp"],
           "env": {}
         },
         "anilist-mcp-configured": {
           "command": "npx",
-          "args": [
-            "-y",
-            "anilist-mcp"
-          ],
+          "args": ["-y", "anilist-mcp"],
           "env": {
             "ANILIST_TOKEN": "your_api_token"
           }
         },
         "yuna0x0-anilist-mcp-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "yuna0x0/anilist-mcp"
-          ],
+          "args": ["run", "--rm", "-i", "yuna0x0/anilist-mcp"],
           "env": {}
         },
         "yuna0x0-anilist-mcp-docker-configured": {
           "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "-e",
-            "ANILIST_TOKEN=your_api_token",
-            "yuna0x0/anilist-mcp"
-          ],
+          "args": ["run", "--rm", "-i", "-e", "ANILIST_TOKEN=your_api_token", "yuna0x0/anilist-mcp"],
           "env": {
             "ANILIST_TOKEN": "your_api_token"
           }

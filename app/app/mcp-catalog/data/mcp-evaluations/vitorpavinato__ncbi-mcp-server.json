@@ -28,11 +28,7 @@
       "mcpServers": {
         "ncbi-literature": {
           "command": "poetry",
-          "args": [
-            "run",
-            "python",
-            "src/ncbi_mcp_server/server.py"
-          ],
+          "args": ["run", "python", "src/ncbi_mcp_server/server.py"],
           "env": {}
         }
       }

@@ -28,34 +28,24 @@
       "mcpServers": {
         "dealx": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@dealx/mcp-server"
-          ],
+          "args": ["-y", "@dealx/mcp-server"],
           "env": {
             "DEALX_API_URL": "https://dealx.com.ua"
           }
         },
         "dealx-mcp-server-node": {
           "command": "node",
-          "args": [
-            "node_modules/@dealx/mcp-server/build/index.js"
-          ],
+          "args": ["node_modules/@dealx/mcp-server/build/index.js"],
           "env": {}
         },
         "dealx-mcp-server-npx": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@dealx/mcp-server"
-          ],
+          "args": ["-y", "@dealx/mcp-server"],
           "env": {}
         },
         "dealx-mcp-server-dev": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         }
       }

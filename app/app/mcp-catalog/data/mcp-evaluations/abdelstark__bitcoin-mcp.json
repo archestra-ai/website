@@ -28,18 +28,12 @@
       "mcpServers": {
         "bitcoin-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "bitcoin-mcp@latest"
-          ],
+          "args": ["-y", "bitcoin-mcp@latest"],
           "env": {}
         },
         "bitcoin-mcp-stdio": {
           "command": "npx",
-          "args": [
-            "-y",
-            "bitcoin-mcp@latest"
-          ],
+          "args": ["-y", "bitcoin-mcp@latest"],
           "env": {}
         }
       }

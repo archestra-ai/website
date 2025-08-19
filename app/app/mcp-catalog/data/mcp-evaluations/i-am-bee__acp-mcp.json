@@ -28,40 +28,22 @@
       "mcpServers": {
         "acp-mcp": {
           "command": "uvx",
-          "args": [
-            "acp-mcp",
-            "http://localhost:8000"
-          ],
+          "args": ["acp-mcp", "http://localhost:8000"],
           "env": {}
         },
         "ghcr.io-i-am-bee-acp-mcp-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "ghcr.io/i-am-bee/acp-mcp",
-            "http://host.docker.internal:8000"
-          ],
+          "args": ["run", "-i", "--rm", "ghcr.io/i-am-bee/acp-mcp", "http://host.docker.internal:8000"],
           "env": {}
         },
         "acp-mcp-configured": {
           "command": "uvx",
-          "args": [
-            "acp-mcp",
-            "http://localhost:8000"
-          ],
+          "args": ["acp-mcp", "http://localhost:8000"],
           "env": {}
         },
         "ghcr.io-i-am-bee-acp-mcp-docker-configured": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "ghcr.io/i-am-bee/acp-mcp",
-            "http://host.docker.internal:8000"
-          ],
+          "args": ["run", "-i", "--rm", "ghcr.io/i-am-bee/acp-mcp", "http://host.docker.internal:8000"],
           "env": {}
         }
       }

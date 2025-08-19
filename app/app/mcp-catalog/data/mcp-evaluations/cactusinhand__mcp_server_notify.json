@@ -28,46 +28,27 @@
       "mcpServers": {
         "mcp-server-notify-python": {
           "command": "python",
-          "args": [
-            "-m",
-            "mcp_server_notify"
-          ],
+          "args": ["-m", "mcp_server_notify"],
           "env": {}
         },
         "mcp-server-notify-python-debug": {
           "command": "python",
-          "args": [
-            "-m",
-            "mcp_server_notify",
-            "--debug"
-          ],
+          "args": ["-m", "mcp_server_notify", "--debug"],
           "env": {}
         },
         "mcp-server-notify-python-debug-logfile": {
           "command": "python",
-          "args": [
-            "-m",
-            "mcp_server_notify",
-            "--debug",
-            "--log-file=path/to/logfile.log"
-          ],
+          "args": ["-m", "mcp_server_notify", "--debug", "--log-file=path/to/logfile.log"],
           "env": {}
         },
         "mcp-server-notify-uv-configured": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "path/to/your/mcp_server_notify project",
-            "run",
-            "mcp-server-notify"
-          ],
+          "args": ["--directory", "path/to/your/mcp_server_notify project", "run", "mcp-server-notify"],
           "env": {}
         },
         "mcp-server-notify-uvx": {
           "command": "uvx",
-          "args": [
-            "mcp-server-notify"
-          ],
+          "args": ["mcp-server-notify"],
           "env": {}
         }
       }

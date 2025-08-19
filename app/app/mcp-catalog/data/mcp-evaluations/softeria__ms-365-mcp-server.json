@@ -28,37 +28,22 @@
       "mcpServers": {
         "softeria-ms-365-mcp-server": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@softeria/ms-365-mcp-server"
-          ],
+          "args": ["-y", "@softeria/ms-365-mcp-server"],
           "env": {}
         },
         "softeria-ms-365-mcp-server-org-mode": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@softeria/ms-365-mcp-server",
-            "--org-mode"
-          ],
+          "args": ["-y", "@softeria/ms-365-mcp-server", "--org-mode"],
           "env": {}
         },
         "softeria-ms-365-mcp-server-http": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@softeria/ms-365-mcp-server",
-            "--http",
-            "3000"
-          ],
+          "args": ["-y", "@softeria/ms-365-mcp-server", "--http", "3000"],
           "env": {}
         },
         "softeria-ms-365-mcp-server-byot": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@softeria/ms-365-mcp-server"
-          ],
+          "args": ["-y", "@softeria/ms-365-mcp-server"],
           "env": {
             "MS365_MCP_OAUTH_TOKEN": "your_oauth_token"
           }

@@ -28,9 +28,7 @@
       "mcpServers": {
         "KS-GEN-AI-confluence-mcp-server-configured": {
           "command": "node",
-          "args": [
-            "/PATH_TO_THE_PROJECT/build/index.js"
-          ],
+          "args": ["/PATH_TO_THE_PROJECT/build/index.js"],
           "env": {
             "CONFLUENCE_URL": "https://XXXXXXXX.atlassian.net/wiki",
             "CONFLUENCE_API_MAIL": "Your email",

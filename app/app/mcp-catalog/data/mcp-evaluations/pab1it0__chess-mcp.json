@@ -28,22 +28,12 @@
       "mcpServers": {
         "pab1it0-chess-mcp-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "pab1it0/chess-mcp"
-          ],
+          "args": ["run", "--rm", "-i", "pab1it0/chess-mcp"],
           "env": {}
         },
         "chess-mcp-uv": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "<full path to chess-mcp directory>",
-            "run",
-            "src/chess_mcp/main.py"
-          ],
+          "args": ["--directory", "<full path to chess-mcp directory>", "run", "src/chess_mcp/main.py"],
           "env": {}
         }
       }

@@ -28,10 +28,7 @@
       "mcpServers": {
         "anaisbetts-mcp-youtube": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@anaisbetts/mcp-youtube"
-          ]
+          "args": ["-y", "@anaisbetts/mcp-youtube"]
         }
       }
     },

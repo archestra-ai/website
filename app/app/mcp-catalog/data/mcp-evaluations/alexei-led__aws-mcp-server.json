@@ -28,21 +28,12 @@
       "mcpServers": {
         "alexei-led-aws-mcp-server-docker": {
           "command": "docker",
-          "args": [
-            "compose",
-            "-f",
-            "deploy/docker/docker-compose.yml",
-            "up",
-            "-d"
-          ],
+          "args": ["compose", "-f", "deploy/docker/docker-compose.yml", "up", "-d"],
           "env": {}
         },
         "aws_mcp_server": {
           "command": "python",
-          "args": [
-            "-m",
-            "aws_mcp_server"
-          ],
+          "args": ["-m", "aws_mcp_server"],
           "env": {}
         }
       }

@@ -28,11 +28,7 @@
       "mcpServers": {
         "esxi-mcp-server": {
           "command": "python",
-          "args": [
-            "server.py",
-            "-c",
-            "config.yaml"
-          ],
+          "args": ["server.py", "-c", "config.yaml"],
           "env": {}
         }
       }

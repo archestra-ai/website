@@ -10,10 +10,7 @@
   "server": {
     "mcp_config": {
       "command": "java",
-      "args": [
-        "-jar",
-        "${__dirname}/server/thingsboard-mcp-server-1.0.0.jar"
-      ],
+      "args": ["-jar", "${__dirname}/server/thingsboard-mcp-server-1.0.0.jar"],
       "env": {
         "THINGSBOARD_URL": "${user_config.thingsboard_url}",
         "THINGSBOARD_USERNAME": "${user_config.username}",
@@ -113,10 +110,7 @@
         },
         "thingsboard-mcp-server-stdio": {
           "command": "java",
-          "args": [
-            "-jar",
-            "./target/thingsboard-mcp-server-1.0.0.jar"
-          ],
+          "args": ["-jar", "./target/thingsboard-mcp-server-1.0.0.jar"],
           "env": {
             "THINGSBOARD_URL": "<YOUR_THINGSBOARD_URL>",
             "THINGSBOARD_USERNAME": "<YOUR_USERNAME>",

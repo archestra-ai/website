@@ -28,9 +28,7 @@
       "mcpServers": {
         "isnow890-naver-search-mcp": {
           "command": "npx",
-          "args": [
-            "@isnow890/naver-search-mcp"
-          ],
+          "args": ["@isnow890/naver-search-mcp"],
           "env": {
             "NAVER_CLIENT_ID": "your_client_id",
             "NAVER_CLIENT_SECRET": "your_client_secret"
@@ -38,10 +36,7 @@
         },
         "isnow890-naver-search-mcp-configured": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@isnow890/naver-search-mcp"
-          ],
+          "args": ["-y", "@isnow890/naver-search-mcp"],
           "env": {
             "NAVER_CLIENT_ID": "your_client_id",
             "NAVER_CLIENT_SECRET": "your_client_secret"

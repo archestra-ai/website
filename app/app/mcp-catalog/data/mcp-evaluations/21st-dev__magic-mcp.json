@@ -28,19 +28,12 @@
       "mcpServers": {
         "21st-dev-magic-configured": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@21st-dev/magic@latest",
-            "API_KEY=\"your-api-key\""
-          ],
+          "args": ["-y", "@21st-dev/magic@latest", "API_KEY=\"your-api-key\""],
           "env": {}
         },
         "21st-dev-magic-with-env": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@21st-dev/magic@latest"
-          ],
+          "args": ["-y", "@21st-dev/magic@latest"],
           "env": {
             "API_KEY": "${input:apiKey}"
           }

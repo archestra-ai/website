@@ -28,12 +28,7 @@
       "mcpServers": {
         "kukapay-crypto-feargreed-mcp": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/your/path/to/crypto-feargreed-mcp",
-            "run",
-            "main.py"
-          ],
+          "args": ["--directory", "/your/path/to/crypto-feargreed-mcp", "run", "main.py"],
           "env": {}
         }
       }

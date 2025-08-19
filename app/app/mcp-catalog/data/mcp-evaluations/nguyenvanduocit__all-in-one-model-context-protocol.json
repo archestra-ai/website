@@ -28,10 +28,7 @@
       "mcpServers": {
         "nguyenvanduocit-all-in-one-model-context-protocol-with-config": {
           "command": "all-in-one-model-context-protocol",
-          "args": [
-            "-env",
-            "/path/to/.env"
-          ],
+          "args": ["-env", "/path/to/.env"],
           "env": {}
         }
       }

@@ -28,9 +28,7 @@
       "mcpServers": {
         "sui-trader": {
           "command": "node",
-          "args": [
-            "/absolute/path/to/sui-trader-mcp/index.js"
-          ],
+          "args": ["/absolute/path/to/sui-trader-mcp/index.js"],
           "env": {
             "PRIVATE_KEY": "your_private_key"
           }

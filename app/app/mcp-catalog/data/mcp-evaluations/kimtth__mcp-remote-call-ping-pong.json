@@ -28,16 +28,12 @@
       "mcpServers": {
         "mcp-api-server": {
           "command": "python",
-          "args": [
-            "mcp-api-server.py"
-          ],
+          "args": ["mcp-api-server.py"],
           "env": {}
         },
         "mcp-sse-server": {
           "command": "python",
-          "args": [
-            "mcp-sse-server.py"
-          ],
+          "args": ["mcp-sse-server.py"],
           "env": {}
         }
       }

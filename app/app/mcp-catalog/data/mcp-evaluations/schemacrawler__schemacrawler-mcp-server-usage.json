@@ -28,24 +28,12 @@
       "mcpServers": {
         "schemacrawler-schemacrawler-ai-docker": {
           "command": "docker",
-          "args": [
-            "compose",
-            "-f",
-            "schemacrawler-mcpserver.yaml",
-            "up",
-            "-d"
-          ],
+          "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
           "env": {}
         },
         "schemacrawler-schemacrawler-ai-docker-configured": {
           "command": "docker",
-          "args": [
-            "compose",
-            "-f",
-            "schemacrawler-mcpserver.yaml",
-            "up",
-            "-d"
-          ],
+          "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
           "env": {}
         }
       }

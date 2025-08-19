@@ -28,9 +28,7 @@
       "mcpServers": {
         "code-assistant": {
           "command": "/Users/<username>/workspace/code-assistant/target/release/code-assistant",
-          "args": [
-            "server"
-          ],
+          "args": ["server"],
           "env": {
             "PERPLEXITY_API_KEY": "pplx-...",
             "SHELL": "/bin/zsh"

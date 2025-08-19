@@ -28,24 +28,12 @@
       "mcpServers": {
         "codemcp": {
           "command": "uvx",
-          "args": [
-            "--from",
-            "git+https://github.com/ezyang/codemcp@prod",
-            "codemcp",
-            "serve"
-          ],
+          "args": ["--from", "git+https://github.com/ezyang/codemcp@prod", "codemcp", "serve"],
           "env": {}
         },
         "codemcp-port": {
           "command": "uvx",
-          "args": [
-            "--from",
-            "git+https://github.com/ezyang/codemcp@prod",
-            "codemcp",
-            "serve",
-            "--port",
-            "1234"
-          ],
+          "args": ["--from", "git+https://github.com/ezyang/codemcp@prod", "codemcp", "serve", "--port", "1234"],
           "env": {}
         },
         "codemcp-host": {
@@ -62,10 +50,7 @@
         },
         "codemcp-dev": {
           "command": "mcp",
-          "args": [
-            "dev",
-            "codemcp/__main__.py"
-          ],
+          "args": ["dev", "codemcp/__main__.py"],
           "env": {
             "PYTHONPATH": "."
           }

@@ -28,23 +28,15 @@
       "mcpServers": {
         "metamcp-docker": {
           "command": "docker",
-          "args": [
-            "compose",
-            "up",
-            "-d"
-          ]
+          "args": ["compose", "up", "-d"]
         },
         "metamcp": {
           "command": "pnpm",
-          "args": [
-            "dev"
-          ]
+          "args": ["dev"]
         },
         "mcp-hn": {
           "command": "uvx",
-          "args": [
-            "mcp-hn"
-          ]
+          "args": ["mcp-hn"]
         }
       }
     },

@@ -28,17 +28,12 @@
       "mcpServers": {
         "mcpdotdirect-starknet-mcp-server-npx-stdio": {
           "command": "npx",
-          "args": [
-            "@mcpdotdirect/starknet-mcp-server"
-          ],
+          "args": ["@mcpdotdirect/starknet-mcp-server"],
           "env": {}
         },
         "mcpdotdirect-starknet-mcp-server-npx-http": {
           "command": "npx",
-          "args": [
-            "@mcpdotdirect/starknet-mcp-server",
-            "http"
-          ],
+          "args": ["@mcpdotdirect/starknet-mcp-server", "http"],
           "env": {}
         },
         "mcpdotdirect-starknet-mcp-server-global-stdio": {
@@ -48,56 +43,37 @@
         },
         "mcpdotdirect-starknet-mcp-server-global-http": {
           "command": "starknet-mcp-server",
-          "args": [
-            "http"
-          ],
+          "args": ["http"],
           "env": {}
         },
         "mcpdotdirect-starknet-mcp-server-local-script-stdio": {
           "command": "npm",
-          "args": [
-            "run",
-            "starknet-mcp"
-          ],
+          "args": ["run", "starknet-mcp"],
           "env": {}
         },
         "mcpdotdirect-starknet-mcp-server-local-script-http": {
           "command": "npm",
-          "args": [
-            "run",
-            "starknet-mcp-http"
-          ],
+          "args": ["run", "starknet-mcp-http"],
           "env": {}
         },
         "mcpdotdirect-starknet-mcp-server-source-start-stdio": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         },
         "mcpdotdirect-starknet-mcp-server-source-start-http": {
           "command": "npm",
-          "args": [
-            "run",
-            "start:http"
-          ],
+          "args": ["run", "start:http"],
           "env": {}
         },
         "mcpdotdirect-starknet-mcp-server-source-dev-stdio": {
           "command": "npm",
-          "args": [
-            "run",
-            "dev"
-          ],
+          "args": ["run", "dev"],
           "env": {}
         },
         "mcpdotdirect-starknet-mcp-server-source-dev-http": {
           "command": "npm",
-          "args": [
-            "run",
-            "dev:http"
-          ],
+          "args": ["run", "dev:http"],
           "env": {}
         }
       }

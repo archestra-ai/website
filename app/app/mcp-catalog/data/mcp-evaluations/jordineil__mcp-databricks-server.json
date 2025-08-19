@@ -28,19 +28,12 @@
       "mcpServers": {
         "databricks-mcp-server": {
           "command": "python",
-          "args": [
-            "main.py"
-          ],
+          "args": ["main.py"],
           "env": {}
         },
         "modelcontextprotocol-inspector": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@modelcontextprotocol/inspector",
-            "python3",
-            "main.py"
-          ],
+          "args": ["-y", "@modelcontextprotocol/inspector", "python3", "main.py"],
           "env": {}
         }
       }

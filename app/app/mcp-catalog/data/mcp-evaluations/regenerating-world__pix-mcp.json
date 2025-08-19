@@ -28,27 +28,21 @@
       "mcpServers": {
         "pix-mcp-stdio": {
           "command": "npx",
-          "args": [
-            "pix-mcp"
-          ],
+          "args": ["pix-mcp"],
           "env": {
             "MCP_MODE": "stdio"
           }
         },
         "pix-mcp-http": {
           "command": "npx",
-          "args": [
-            "pix-mcp"
-          ],
+          "args": ["pix-mcp"],
           "env": {
             "MCP_MODE": "http"
           }
         },
         "pix-mcp-manual-deployment-http": {
           "command": "node",
-          "args": [
-            "dist/index.js"
-          ],
+          "args": ["dist/index.js"],
           "env": {
             "MCP_MODE": "http",
             "NODE_ENV": "production"

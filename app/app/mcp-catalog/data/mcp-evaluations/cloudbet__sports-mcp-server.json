@@ -28,10 +28,7 @@
       "mcpServers": {
         "cloudbet-sports-mcp-server": {
           "command": "go",
-          "args": [
-            "run",
-            "."
-          ],
+          "args": ["run", "."],
           "env": {}
         }
       }

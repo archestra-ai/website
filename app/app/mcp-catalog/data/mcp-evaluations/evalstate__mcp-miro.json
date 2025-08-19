@@ -28,18 +28,12 @@
       "mcpServers": {
         "mcp-miro-with-token": {
           "command": "node",
-          "args": [
-            "/path/to/mcp-miro/build/index.js",
-            "--token",
-            "MIRO-OAUTH-KEY"
-          ],
+          "args": ["/path/to/mcp-miro/build/index.js", "--token", "MIRO-OAUTH-KEY"],
           "env": {}
         },
         "mcp-miro-with-env": {
           "command": "node",
-          "args": [
-            "/path/to/mcp-miro/build/index.js"
-          ],
+          "args": ["/path/to/mcp-miro/build/index.js"],
           "env": {
             "MIRO_OAUTH_KEY": "YOUR_MIRO_OAUTH_KEY"
           }

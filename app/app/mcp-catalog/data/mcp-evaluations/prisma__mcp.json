@@ -28,20 +28,12 @@
       "mcpServers": {
         "mcp-remote": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mcp-remote",
-            "https://mcp.prisma.io/mcp"
-          ],
+          "args": ["-y", "mcp-remote", "https://mcp.prisma.io/mcp"],
           "env": {}
         },
         "prisma-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "prisma",
-            "mcp"
-          ],
+          "args": ["-y", "prisma", "mcp"],
           "env": {}
         }
       }

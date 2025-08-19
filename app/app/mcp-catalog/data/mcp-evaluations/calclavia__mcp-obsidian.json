@@ -28,11 +28,7 @@
       "mcpServers": {
         "mcp-obsidian": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mcp-obsidian",
-            "${input:vaultPath}"
-          ],
+          "args": ["-y", "mcp-obsidian", "${input:vaultPath}"],
           "env": {}
         }
       }

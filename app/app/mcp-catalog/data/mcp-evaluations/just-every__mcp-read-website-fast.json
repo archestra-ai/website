@@ -28,18 +28,12 @@
       "mcpServers": {
         "read-website-fast": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@just-every/mcp-read-website-fast"
-          ],
+          "args": ["-y", "@just-every/mcp-read-website-fast"],
           "env": {}
         },
         "read-website-fast-dev-no-restart": {
           "command": "npm",
-          "args": [
-            "run",
-            "serve:dev"
-          ],
+          "args": ["run", "serve:dev"],
           "env": {}
         }
       }

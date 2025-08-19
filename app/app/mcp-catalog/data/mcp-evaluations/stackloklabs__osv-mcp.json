@@ -28,10 +28,7 @@
       "mcpServers": {
         "osv": {
           "command": "thv",
-          "args": [
-            "run",
-            "osv"
-          ],
+          "args": ["run", "osv"],
           "env": {}
         },
         "osv-mcp-server": {

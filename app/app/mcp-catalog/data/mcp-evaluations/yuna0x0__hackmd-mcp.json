@@ -28,22 +28,14 @@
       "mcpServers": {
         "hackmd-mcp-configured": {
           "command": "npx",
-          "args": [
-            "-y",
-            "hackmd-mcp"
-          ],
+          "args": ["-y", "hackmd-mcp"],
           "env": {
             "HACKMD_API_TOKEN": "your_api_token"
           }
         },
         "yuna0x0-hackmd-mcp-docker-configured": {
           "command": "docker",
-          "args": [
-            "run",
-            "-e",
-            "HACKMD_API_TOKEN=your_api_token",
-            "yuna0x0/hackmd-mcp"
-          ],
+          "args": ["run", "-e", "HACKMD_API_TOKEN=your_api_token", "yuna0x0/hackmd-mcp"],
           "env": {
             "HACKMD_API_TOKEN": "your_api_token"
           }

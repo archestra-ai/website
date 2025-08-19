@@ -28,63 +28,49 @@
       "mcpServers": {
         "nexus-mcp": {
           "command": "npx",
-          "args": [
-            "nexus-mcp"
-          ],
+          "args": ["nexus-mcp"],
           "env": {
             "OPENROUTER_API_KEY": "your-api-key-here"
           }
         },
         "nexus-mcp-configured": {
           "command": "npx",
-          "args": [
-            "nexus-mcp"
-          ],
+          "args": ["nexus-mcp"],
           "env": {
             "OPENROUTER_API_KEY": "your-key"
           }
         },
         "nexus-mcp-npm-start": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {
             "OPENROUTER_API_KEY": "your-api-key-here"
           }
         },
         "nexus-mcp-claude-with-config": {
           "command": "npx",
-          "args": [
-            "nexus-mcp"
-          ],
+          "args": ["nexus-mcp"],
           "env": {
             "OPENROUTER_API_KEY": "your-api-key-here"
           }
         },
         "nexus-mcp-cursor-with-config": {
           "command": "npx",
-          "args": [
-            "nexus-mcp"
-          ],
+          "args": ["nexus-mcp"],
           "env": {
             "OPENROUTER_API_KEY": "your-api-key-here"
           }
         },
         "nexus-mcp-other-client-with-config": {
           "command": "npx",
-          "args": [
-            "nexus-mcp"
-          ],
+          "args": ["nexus-mcp"],
           "env": {
             "OPENROUTER_API_KEY": "your-api-key-here"
           }
         },
         "nexus-mcp-local-node-path": {
           "command": "node",
-          "args": [
-            "/path/to/nexus-mcp/dist/cli.js"
-          ],
+          "args": ["/path/to/nexus-mcp/dist/cli.js"],
           "env": {
             "OPENROUTER_API_KEY": "your-api-key-here"
           }

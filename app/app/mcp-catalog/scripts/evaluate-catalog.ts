@@ -1,5 +1,6 @@
 #!/usr/bin/env tsx
 import { DxtManifestServerSchema, DxtUserConfigurationOptionSchema } from '@anthropic-ai/dxt';
+import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import z from 'zod';
@@ -1928,6 +1929,23 @@ Options: ${Object.entries(options)
 }
 
 /**
+ * Format JSON files with prettier
+ */
+function formatEvaluationFiles(): void {
+  try {
+    console.log('\n📝 Formatting evaluation files with prettier...');
+    execSync(`npx prettier --write "${MCP_SERVERS_EVALUATIONS_DIR}/*.json"`, {
+      stdio: 'inherit',
+      cwd: path.resolve(MCP_SERVERS_EVALUATIONS_DIR, '../../..'), // Go back to app directory
+    });
+    console.log('✅ Formatting complete');
+  } catch (error) {
+    console.warn('⚠️  Failed to format files with prettier:', error);
+    // Don't fail the whole process if prettier fails
+  }
+}
+
+/**
  * Main function
  */
 async function main() {
@@ -2022,6 +2040,9 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
     // Batch evaluation
     await evaluateAllRepos(options);
   }
+  
+  // Format all evaluation files with prettier
+  formatEvaluationFiles();
 }
 
 // Run the script

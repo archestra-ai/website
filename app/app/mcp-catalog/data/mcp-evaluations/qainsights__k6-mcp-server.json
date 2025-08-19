@@ -28,12 +28,7 @@
       "mcpServers": {
         "k6": {
           "command": "/path/to/bin/uv",
-          "args": [
-            "--directory",
-            "/path/to/k6-mcp-server",
-            "run",
-            "k6_server.py"
-          ],
+          "args": ["--directory", "/path/to/k6-mcp-server", "run", "k6_server.py"],
           "env": {}
         }
       }

@@ -28,9 +28,7 @@
       "mcpServers": {
         "odoo": {
           "command": "uvx",
-          "args": [
-            "mcp-server-odoo"
-          ],
+          "args": ["mcp-server-odoo"],
           "env": {
             "ODOO_URL": "https://your-odoo-instance.com",
             "ODOO_API_KEY": "your-api-key-here",
@@ -48,15 +46,7 @@
         },
         "mcp-server-odoo-streamable-http-args": {
           "command": "uvx",
-          "args": [
-            "mcp-server-odoo",
-            "--transport",
-            "streamable-http",
-            "--host",
-            "0.0.0.0",
-            "--port",
-            "8000"
-          ],
+          "args": ["mcp-server-odoo", "--transport", "streamable-http", "--host", "0.0.0.0", "--port", "8000"],
           "env": {
             "ODOO_URL": "https://your-odoo-instance.com",
             "ODOO_API_KEY": "your-api-key-here",
@@ -65,9 +55,7 @@
         },
         "mcp-server-odoo-streamable-http-env": {
           "command": "uvx",
-          "args": [
-            "mcp-server-odoo"
-          ],
+          "args": ["mcp-server-odoo"],
           "env": {
             "ODOO_MCP_TRANSPORT": "streamable-http",
             "ODOO_MCP_HOST": "0.0.0.0",
@@ -79,13 +67,7 @@
         },
         "odoo-remote": {
           "command": "uvx",
-          "args": [
-            "mcp-server-odoo",
-            "--transport",
-            "streamable-http",
-            "--port",
-            "8080"
-          ],
+          "args": ["mcp-server-odoo", "--transport", "streamable-http", "--port", "8080"],
           "env": {
             "ODOO_URL": "https://your-odoo-instance.com",
             "ODOO_API_KEY": "your-api-key-here",

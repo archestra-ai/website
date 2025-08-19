@@ -28,9 +28,7 @@
       "mcpServers": {
         "cantian-ai-bazi-mcp": {
           "command": "npx",
-          "args": [
-            "bazi-mcp"
-          ],
+          "args": ["bazi-mcp"],
           "env": {}
         }
       }

@@ -28,27 +28,15 @@
       "mcpServers": {
         "content-core-ccore": {
           "command": "uvx",
-          "args": [
-            "--from",
-            "content-core",
-            "ccore"
-          ]
+          "args": ["--from", "content-core", "ccore"]
         },
         "content-core-cclean": {
           "command": "uvx",
-          "args": [
-            "--from",
-            "content-core",
-            "cclean"
-          ]
+          "args": ["--from", "content-core", "cclean"]
         },
         "content-core-csum": {
           "command": "uvx",
-          "args": [
-            "--from",
-            "content-core",
-            "csum"
-          ]
+          "args": ["--from", "content-core", "csum"]
         }
       }
     },

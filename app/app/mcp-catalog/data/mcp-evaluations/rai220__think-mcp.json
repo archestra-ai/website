@@ -28,17 +28,12 @@
       "mcpServers": {
         "think-mcp": {
           "command": "uvx",
-          "args": [
-            "think-mcp"
-          ],
+          "args": ["think-mcp"],
           "env": {}
         },
         "think-mcp-configured": {
           "command": "uvx",
-          "args": [
-            "think-mcp",
-            "--advanced"
-          ],
+          "args": ["think-mcp", "--advanced"],
           "env": {
             "TAVILY_API_KEY": "... YOUR TAVILY API KEY HERE ..."
           }

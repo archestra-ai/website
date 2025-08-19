@@ -28,17 +28,12 @@
       "mcpServers": {
         "duckduckgo-search-online": {
           "command": "npx",
-          "args": [
-            "-y",
-            "duckduckgo-mcp-server"
-          ],
+          "args": ["-y", "duckduckgo-mcp-server"],
           "env": {}
         },
         "duckduckgo-search-local": {
           "command": "node",
-          "args": [
-            "/path/to/duckduckgo-search/build/index.js"
-          ],
+          "args": ["/path/to/duckduckgo-search/build/index.js"],
           "env": {}
         }
       }

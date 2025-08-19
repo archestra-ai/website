@@ -28,10 +28,7 @@
       "mcpServers": {
         "hyperliquid-info": {
           "command": "mcp",
-          "args": [
-            "dev",
-            "main.py"
-          ],
+          "args": ["dev", "main.py"],
           "env": {}
         }
       }

@@ -28,9 +28,7 @@
       "mcpServers": {
         "devilcoder01-weather-mcp-server": {
           "command": "python",
-          "args": [
-            "main.py"
-          ],
+          "args": ["main.py"],
           "env": {}
         }
       }

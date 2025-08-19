@@ -28,9 +28,7 @@
       "mcpServers": {
         "zapcap-mcp-server": {
           "command": "uvx",
-          "args": [
-            "zapcap-mcp-server"
-          ],
+          "args": ["zapcap-mcp-server"],
           "env": {
             "ZAPCAP_API_KEY": "your_api_key_here"
           }

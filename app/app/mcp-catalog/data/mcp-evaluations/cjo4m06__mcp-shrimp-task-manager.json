@@ -28,17 +28,11 @@
       "mcpServers": {
         "cjo4m06-mcp-shrimp-task-manager": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@cjo4m06/mcp-shrimp-task-manager"
-          ]
+          "args": ["-y", "@cjo4m06/mcp-shrimp-task-manager"]
         },
         "cjo4m06-mcp-shrimp-task-manager-configured": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@cjo4m06/mcp-shrimp-task-manager"
-          ],
+          "args": ["-y", "@cjo4m06/mcp-shrimp-task-manager"],
           "env": {
             "ENABLE_GUI": "true",
             "WEB_PORT": "<YOUR_PORT_HERE>",

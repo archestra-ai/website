@@ -28,12 +28,7 @@
       "mcpServers": {
         "mongodb-lens": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mongodb-lens",
-            "--uri",
-            "mongodb://localhost:27017/mydatabase"
-          ]
+          "args": ["-y", "mongodb-lens", "--uri", "mongodb://localhost:27017/mydatabase"]
         },
         "mongodb-lens-docker": {
           "command": "docker",

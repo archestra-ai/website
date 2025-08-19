@@ -28,10 +28,7 @@
       "mcpServers": {
         "automatalabs-mcp-server-playwright": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@automatalabs/mcp-server-playwright"
-          ],
+          "args": ["-y", "@automatalabs/mcp-server-playwright"],
           "env": {}
         }
       }

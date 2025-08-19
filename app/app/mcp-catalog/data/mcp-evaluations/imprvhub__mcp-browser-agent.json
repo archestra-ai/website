@@ -28,18 +28,12 @@
       "mcpServers": {
         "imprvhub-mcp-browser-agent": {
           "command": "node",
-          "args": [
-            "ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js"
-          ],
+          "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js"],
           "env": {}
         },
         "imprvhub-mcp-browser-agent-configured": {
           "command": "node",
-          "args": [
-            "ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js",
-            "--browser",
-            "chrome"
-          ],
+          "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js", "--browser", "chrome"],
           "env": {}
         }
       }

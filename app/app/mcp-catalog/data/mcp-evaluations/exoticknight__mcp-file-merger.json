@@ -28,11 +28,7 @@
       "mcpServers": {
         "file-merger": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@exoticknight/mcp-file-merger",
-            "/path/to/allowed/dir"
-          ],
+          "args": ["-y", "@exoticknight/mcp-file-merger", "/path/to/allowed/dir"],
           "env": {}
         }
       }

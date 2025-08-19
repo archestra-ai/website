@@ -28,22 +28,14 @@
       "mcpServers": {
         "PancakeSwap-PoolSpy": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "path/to/pancakeswap-poolspy-mcp",
-            "run",
-            "main.py"
-          ],
+          "args": ["--directory", "path/to/pancakeswap-poolspy-mcp", "run", "main.py"],
           "env": {
             "THEGRAPH_API_KEY": "your api key from The Graph"
           }
         },
         "PancakeSwap-PoolSpy-dev": {
           "command": "mcp",
-          "args": [
-            "dev",
-            "main.py"
-          ],
+          "args": ["dev", "main.py"],
           "env": {}
         }
       }

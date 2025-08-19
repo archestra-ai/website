@@ -28,10 +28,7 @@
       "mcpServers": {
         "job-searchoor": {
           "command": "npx",
-          "args": [
-            "-y",
-            "job-searchoor"
-          ],
+          "args": ["-y", "job-searchoor"],
           "env": {}
         }
       }

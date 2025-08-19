@@ -28,12 +28,7 @@
       "mcpServers": {
         "jupyter": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/path/to/src",
-            "run",
-            "jupyter_mcp_server.py"
-          ],
+          "args": ["--directory", "/path/to/src", "run", "jupyter_mcp_server.py"],
           "env": {}
         }
       }

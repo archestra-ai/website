@@ -28,10 +28,7 @@
       "mcpServers": {
         "crypto-pegmon-mcp": {
           "command": "uv",
-          "args": [
-            "run",
-            "main.py"
-          ],
+          "args": ["run", "main.py"],
           "env": {}
         }
       }

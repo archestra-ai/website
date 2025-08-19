@@ -28,12 +28,7 @@
       "mcpServers": {
         "kill-process-mcp": {
           "command": "uv",
-          "args": [
-            "run",
-            "--directory",
-            "/path/to/kill-process-mcp",
-            "kill_process_mcp.py"
-          ],
+          "args": ["run", "--directory", "/path/to/kill-process-mcp", "kill_process_mcp.py"],
           "env": {}
         }
       }

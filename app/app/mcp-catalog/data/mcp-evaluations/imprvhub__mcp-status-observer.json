@@ -28,9 +28,7 @@
       "mcpServers": {
         "statusObserver": {
           "command": "node",
-          "args": [
-            "/path/to/mcp-status-observer/build/index.js"
-          ],
+          "args": ["/path/to/mcp-status-observer/build/index.js"],
           "env": {}
         }
       }

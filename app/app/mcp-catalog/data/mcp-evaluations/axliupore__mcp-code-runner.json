@@ -28,10 +28,7 @@
       "mcpServers": {
         "axliupore-mcp-code-runner": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@axliupore/mcp-code-runner"
-          ]
+          "args": ["-y", "@axliupore/mcp-code-runner"]
         }
       }
     },

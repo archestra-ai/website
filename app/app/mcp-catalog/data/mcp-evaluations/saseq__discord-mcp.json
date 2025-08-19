@@ -28,10 +28,7 @@
       "mcpServers": {
         "discord-mcp-jar": {
           "command": "java",
-          "args": [
-            "-jar",
-            "/absolute/path/to/discord-mcp-0.0.1-SNAPSHOT.jar"
-          ],
+          "args": ["-jar", "/absolute/path/to/discord-mcp-0.0.1-SNAPSHOT.jar"],
           "env": {
             "DISCORD_TOKEN": "YOUR_DISCORD_BOT_TOKEN",
             "DISCORD_GUILD_ID": "OPTIONAL_DEFAULT_SERVER_ID"
@@ -39,10 +36,7 @@
         },
         "saseq-discord-mcp-remote": {
           "command": "npx",
-          "args": [
-            "mcp-remote",
-            "https://gitmcp.io/SaseQ/discord-mcp"
-          ],
+          "args": ["mcp-remote", "https://gitmcp.io/SaseQ/discord-mcp"],
           "env": {
             "DISCORD_TOKEN": "YOUR_DISCORD_BOT_TOKEN",
             "DISCORD_GUILD_ID": "OPTIONAL_DEFAULT_SERVER_ID"

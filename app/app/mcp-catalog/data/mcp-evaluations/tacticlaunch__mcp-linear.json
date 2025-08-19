@@ -28,20 +28,14 @@
       "mcpServers": {
         "tacticlaunch-mcp-linear": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@tacticlaunch/mcp-linear"
-          ],
+          "args": ["-y", "@tacticlaunch/mcp-linear"],
           "env": {
             "LINEAR_API_TOKEN": "<YOUR_TOKEN>"
           }
         },
         "tacticlaunch-mcp-linear-token-arg": {
           "command": "mcp-linear",
-          "args": [
-            "--token",
-            "YOUR_LINEAR_API_TOKEN"
-          ],
+          "args": ["--token", "YOUR_LINEAR_API_TOKEN"],
           "env": {}
         },
         "tacticlaunch-mcp-linear-env-var": {

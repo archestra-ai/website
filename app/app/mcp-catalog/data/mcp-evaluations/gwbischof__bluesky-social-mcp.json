@@ -28,11 +28,7 @@
       "mcpServers": {
         "bluesky-social": {
           "command": "uvx",
-          "args": [
-            "--from",
-            "git+https://github.com/gwbischof/bluesky-social-mcp@v0.1",
-            "bluesky-social-mcp"
-          ],
+          "args": ["--from", "git+https://github.com/gwbischof/bluesky-social-mcp@v0.1", "bluesky-social-mcp"],
           "env": {
             "BLUESKY_IDENTIFIER": "your-handle.bsky.social",
             "BLUESKY_APP_PASSWORD": "your-app-password"
@@ -40,12 +36,7 @@
         },
         "bluesky-social-local-clone": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/ABSOLUTE/PATH/TO/PARENT/FOLDER/bluesky-social-mcp",
-            "run",
-            "server.py"
-          ],
+          "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/FOLDER/bluesky-social-mcp", "run", "server.py"],
           "env": {
             "BLUESKY_IDENTIFIER": "user-name.bsky.social‬",
             "BLUESKY_APP_PASSWORD": "app-password-here"
@@ -53,10 +44,7 @@
         },
         "bluesky-social-mcp": {
           "command": "uv",
-          "args": [
-            "run",
-            "bluesky-social-mcp"
-          ],
+          "args": ["run", "bluesky-social-mcp"],
           "env": {}
         }
       }

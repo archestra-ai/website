@@ -28,22 +28,12 @@
       "mcpServers": {
         "telephony-mcp-server-python": {
           "command": "python",
-          "args": [
-            "telephony_server.py"
-          ],
+          "args": ["telephony_server.py"],
           "env": {}
         },
         "telephony-mcp-server-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "--init",
-            "-e",
-            "DOCKER_CONTAINER=true",
-            "telephony-mcp-server"
-          ],
+          "args": ["run", "-i", "--rm", "--init", "-e", "DOCKER_CONTAINER=true", "telephony-mcp-server"],
           "env": {
             "DOCKER_CONTAINER": "true"
           }

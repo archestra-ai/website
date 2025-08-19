@@ -28,37 +28,21 @@
       "mcpServers": {
         "translated-lara-mcp": {
           "command": "lara-mcp",
-          "args": [
-            "--port",
-            "3000",
-            "--api-key",
-            "YOUR_LARA_API_KEY"
-          ],
+          "args": ["--port", "3000", "--api-key", "YOUR_LARA_API_KEY"],
           "env": {
             "LARA_API_KEY": "YOUR_LARA_API_KEY"
           }
         },
         "translatednet-lara-mcp-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "3000:3000",
-            "-e",
-            "LARA_API_KEY=YOUR_LARA_API_KEY",
-            "translatednet/lara-mcp"
-          ],
+          "args": ["run", "-p", "3000:3000", "-e", "LARA_API_KEY=YOUR_LARA_API_KEY", "translatednet/lara-mcp"],
           "env": {
             "LARA_API_KEY": "YOUR_LARA_API_KEY"
           }
         },
         "translated-lara-mcp-stdio": {
           "command": "lara-mcp",
-          "args": [
-            "stdio",
-            "--api-key",
-            "YOUR_LARA_API_KEY"
-          ],
+          "args": ["stdio", "--api-key", "YOUR_LARA_API_KEY"],
           "env": {
             "LARA_API_KEY": "YOUR_LARA_API_KEY"
           }

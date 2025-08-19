@@ -28,9 +28,7 @@
       "mcpServers": {
         "webpage-screenshot": {
           "command": "node",
-          "args": [
-            "~/path/to/webpage-screenshot-mcp/dist/index.js"
-          ],
+          "args": ["~/path/to/webpage-screenshot-mcp/dist/index.js"],
           "env": {}
         }
       }
