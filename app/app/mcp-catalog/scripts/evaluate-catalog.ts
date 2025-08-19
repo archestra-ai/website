@@ -494,9 +494,21 @@ function convertToGeminiSchema(jsonSchema: any): any {
  * Call LLM (Ollama or Gemini) for analysis
  */
 async function callLLM(prompt: string, format?: any, model = 'gemini-2.5-pro'): Promise<any> {
-  try {
-    // Check if this is a Gemini model
-    if (model.startsWith('gemini-')) {
+  // Add retry logic for transient failures
+  const maxRetries = 3;
+  let lastError: any;
+  
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      if (attempt > 1) {
+        // Wait before retry (exponential backoff)
+        const delay = Math.min(1000 * Math.pow(2, attempt - 1), 10000);
+        console.log(`  ⏳ Retrying LLM call (attempt ${attempt}/${maxRetries}) after ${delay}ms...`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+      }
+      
+      // Check if this is a Gemini model
+      if (model.startsWith('gemini-')) {
       // Call Gemini API
       const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
       if (!apiKey) {
@@ -618,11 +630,20 @@ async function callLLM(prompt: string, format?: any, model = 'gemini-2.5-pro'): 
         console.error('Failed to parse JSON:', responseText);
         throw new Error(`Invalid JSON response from Ollama: ${parseError.message}`);
       }
+    } catch (error: any) {
+      lastError = error;
+      console.error(`LLM call attempt ${attempt} failed:`, error.message);
+      
+      // If it's not the last attempt, continue to retry
+      if (attempt < maxRetries) {
+        continue;
+      }
     }
-  } catch (error) {
-    console.error('Error calling LLM:', error);
-    throw error;
   }
+  
+  // All retries exhausted, throw the last error
+  console.error('All LLM call attempts failed');
+  throw lastError;
 }
 
 /**
