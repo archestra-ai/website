@@ -55,18 +55,18 @@
     "owner": "8enSmith",
     "repo": "mcp-open-library",
     "url": "https://github.com/8enSmith/mcp-open-library",
-    "name": "mcp-open-library",
+    "name": "8ensmith__mcp-open-library",
     "path": null,
-    "stars": 26,
+    "stars": 29,
     "contributors": 3,
-    "issues": 2,
+    "issues": 0,
     "releases": false,
     "ci_cd": true,
-    "latest_commit_hash": "b5d4327476839b45d77560dec11ea2df49297f6b"
+    "latest_commit_hash": "48f3e8c01ceb50d422b0f804ec5bbcbd0a75df34"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:32:04.773Z",
+  "last_scraped_at": "2025-08-18T14:25:50.477Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

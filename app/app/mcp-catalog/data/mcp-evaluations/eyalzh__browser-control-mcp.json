@@ -66,18 +66,18 @@
     "owner": "eyalzh",
     "repo": "browser-control-mcp",
     "url": "https://github.com/eyalzh/browser-control-mcp",
-    "name": "browser-control-mcp",
+    "name": "eyalzh__browser-control-mcp",
     "path": null,
-    "stars": 93,
+    "stars": 111,
     "contributors": 2,
-    "issues": 7,
+    "issues": 0,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "3fb8786eccd273b2e2cf7391fb961209d0b1f61c"
+    "latest_commit_hash": "6f33d8508831c007c6ca7b9707bb35612de62d68"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:32:33.631Z",
+  "last_scraped_at": "2025-08-18T14:26:00.685Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
