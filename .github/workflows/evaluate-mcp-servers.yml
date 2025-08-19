@@ -1,0 +1,122 @@
+name: Evaluate MCP Servers
+
+on:
+  push:
+    paths:
+      - "app/mcp-catalog/data/mcp-servers.json"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Force re-evaluation of all servers"
+        required: false
+        default: false
+        type: boolean
+      concurrency:
+        description: "Number of parallel requests"
+        required: false
+        default: "5"
+        type: string
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pnpm-store
+            app/node_modules
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('app/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      - name: Install dependencies
+        working-directory: ./app
+        run: pnpm install --frozen-lockfile
+
+      - name: Run evaluation script
+        working-directory: ./app
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          # Determine evaluation mode
+          if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
+            echo "Running forced evaluation of all servers..."
+            npm run catalog:evaluate -- --all --force --concurrency ${{ github.event.inputs.concurrency || '5' }}
+          else
+            echo "Evaluating only missing servers..."
+            npm run catalog:evaluate -- --missing-only --all --concurrency ${{ github.event.inputs.concurrency || '5' }}
+          fi
+
+      - name: Generate evaluation report
+        if: always()
+        working-directory: ./app
+        run: |
+          echo "## 📊 MCP Server Evaluation Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Count statistics
+          TOTAL_SERVERS=$(cat app/mcp-catalog/data/mcp-servers.json | jq 'length')
+          TOTAL_EVALS=$(ls app/mcp-catalog/data/mcp-evaluations/*.json 2>/dev/null | wc -l || echo "0")
+          MISSING=$((TOTAL_SERVERS - TOTAL_EVALS))
+
+          echo "### Statistics" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total servers:** $TOTAL_SERVERS" >> $GITHUB_STEP_SUMMARY
+          echo "- **Evaluated servers:** $TOTAL_EVALS" >> $GITHUB_STEP_SUMMARY
+          echo "- **Missing evaluations:** $MISSING" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # List servers with quality scores
+          echo "### Top Servers by Quality Score" >> $GITHUB_STEP_SUMMARY
+          echo "| Server | Score | Category |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|----------|" >> $GITHUB_STEP_SUMMARY
+
+          for file in app/mcp-catalog/data/mcp-evaluations/*.json; do
+            if [ -f "$file" ]; then
+              jq -r '[.display_name // .name, .quality_score // "N/A", .category // "N/A"] | @tsv' "$file"
+            fi
+          done | sort -t$'\t' -k2 -rn | head -10 | while IFS=$'\t' read -r name score category; do
+            echo "| $name | $score | $category |" >> $GITHUB_STEP_SUMMARY
+          done
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          # Check for changes
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git add app/mcp-catalog/data/mcp-evaluations/*.json
+            
+            # Create commit message
+            if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
+              COMMIT_MSG="chore: force re-evaluate all MCP servers"
+            else
+              COMMIT_MSG="chore: evaluate missing MCP servers"
+            fi
+            
+            git commit -m "$COMMIT_MSG
+            
+            Triggered by: ${{ github.event_name }}
+            Workflow: ${{ github.workflow }} #${{ github.run_number }}"
+            
+            git push
+          fi
