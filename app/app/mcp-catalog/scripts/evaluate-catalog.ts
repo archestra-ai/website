@@ -1811,7 +1811,15 @@ async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<
   }
 
   // Read all GitHub URLs
-  let githubUrls: string[] = JSON.parse(fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf8'));
+  let allUrls: string[] = JSON.parse(fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf8'));
+  
+  // Filter out non-GitHub URLs (e.g., GitLab)
+  let githubUrls = allUrls.filter((url) => url.includes('github.com'));
+  
+  if (githubUrls.length < allUrls.length) {
+    console.log(`⚠️  Skipping ${allUrls.length - githubUrls.length} non-GitHub URLs (GitLab, etc.)`);
+  }
+  
   const existingFiles = fs.readdirSync(MCP_SERVERS_EVALUATIONS_DIR).filter((f) => f.endsWith('.json'));
 
   // Filter to only missing servers if --missing-only flag is set
@@ -2032,7 +2040,7 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
     options.updateScore = true;
   }
 
-  const githubUrl = args.find((arg) => arg.includes('github.com'));
+  const url = args.find((arg) => arg.includes('://') || arg.includes('github.com'));
 
   // Check GitHub token
   if (!process.env.GITHUB_TOKEN) {
@@ -2041,8 +2049,13 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
   }
 
   // Single repo evaluation
-  if (githubUrl) {
-    await evaluateSingleRepo(githubUrl, options);
+  if (url) {
+    if (!url.includes('github.com')) {
+      console.log(`⚠️  Skipping non-GitHub URL: ${url}`);
+      console.log('   This script only supports GitHub repositories.');
+      return;
+    }
+    await evaluateSingleRepo(url, options);
   } else {
     // Batch evaluation
     await evaluateAllRepos(options);
