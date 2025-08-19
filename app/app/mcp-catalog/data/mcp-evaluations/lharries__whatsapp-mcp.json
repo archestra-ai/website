@@ -28,12 +28,7 @@
       "mcpServers": {
         "whatsapp": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "{{PATH_TO_SRC}}/whatsapp-mcp/whatsapp-mcp-server",
-            "run",
-            "main.py"
-          ],
+          "args": ["--directory", "{{PATH_TO_SRC}}/whatsapp-mcp/whatsapp-mcp-server", "run", "main.py"],
           "env": {}
         }
       }

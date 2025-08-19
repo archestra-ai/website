@@ -28,12 +28,7 @@
       "mcpServers": {
         "database-tde": {
           "command": "uv",
-          "args": [
-            "run",
-            "python",
-            "-m",
-            "database_tde_server"
-          ],
+          "args": ["run", "python", "-m", "database_tde_server"],
           "env": {
             "DB_TDE_SERVER_NAME": "database-tde-mcp",
             "DB_TDE_LOG_LEVEL": "INFO",

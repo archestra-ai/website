@@ -28,10 +28,7 @@
       "mcpServers": {
         "llmindset-mcp-hfspace": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@llmindset/mcp-hfspace"
-          ],
+          "args": ["-y", "@llmindset/mcp-hfspace"],
           "env": {}
         },
         "llmindset-mcp-hfspace-configured": {

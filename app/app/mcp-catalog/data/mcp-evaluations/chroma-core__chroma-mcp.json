@@ -28,20 +28,12 @@
       "mcpServers": {
         "chroma-mcp": {
           "command": "uvx",
-          "args": [
-            "chroma-mcp"
-          ],
+          "args": ["chroma-mcp"],
           "env": {}
         },
         "chroma-mcp-persistent": {
           "command": "uvx",
-          "args": [
-            "chroma-mcp",
-            "--client-type",
-            "persistent",
-            "--data-dir",
-            "/full/path/to/your/data/directory"
-          ],
+          "args": ["chroma-mcp", "--client-type", "persistent", "--data-dir", "/full/path/to/your/data/directory"],
           "env": {}
         },
         "chroma-mcp-cloud": {

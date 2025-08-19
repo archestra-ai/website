@@ -195,7 +195,7 @@ describe('GET /api/badge/[...params]', () => {
     expect(response.headers.get('Cache-Control')).toBe('public, max-age=3600');
 
     const svg = await response.text();
-    expect(svg).toContain('Trust Score');
+    expect(svg).toContain('Archestra Score');
     expect(svg).toContain('95/100');
     expect(svg).toContain('#059669'); // green-600 color
   });
@@ -210,7 +210,7 @@ describe('GET /api/badge/[...params]', () => {
     expect(response.headers.get('Content-Type')).toBe('image/svg+xml');
 
     const svg = await response.text();
-    expect(svg).toContain('Trust Score');
+    expect(svg).toContain('Archestra Score');
     expect(svg).toContain('Good');
     expect(svg).toContain('#5eead4'); // teal-400 color
   });
@@ -226,7 +226,7 @@ describe('GET /api/badge/[...params]', () => {
     expect(response.headers.get('Cache-Control')).toBe('public, max-age=300');
 
     const svg = await response.text();
-    expect(svg).toContain('Trust Score');
+    expect(svg).toContain('Archestra Score');
     expect(svg).toContain('Pending');
     expect(svg).toContain('#9f9f9f'); // gray color
   });
@@ -242,7 +242,7 @@ describe('GET /api/badge/[...params]', () => {
     expect(response.headers.get('Cache-Control')).toBe('public, max-age=300');
 
     const svg = await response.text();
-    expect(svg).toContain('Trust Score');
+    expect(svg).toContain('Archestra Score');
     expect(svg).toContain('Calculating...');
     expect(svg).toContain('#9f9f9f'); // gray color
   });

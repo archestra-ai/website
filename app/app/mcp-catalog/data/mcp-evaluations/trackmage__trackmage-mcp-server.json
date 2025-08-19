@@ -28,16 +28,12 @@
       "mcpServers": {
         "trackmage": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         },
         "trackmage-configured": {
           "command": "node",
-          "args": [
-            "/path/to/trackmage-mcp-server/index.js"
-          ],
+          "args": ["/path/to/trackmage-mcp-server/index.js"],
           "env": {
             "TRACKMAGE_CLIENT_ID": "your_client_id_here",
             "TRACKMAGE_CLIENT_SECRET": "your_client_secret_here",

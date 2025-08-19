@@ -28,11 +28,7 @@
       "mcpServers": {
         "dbt-mcp": {
           "command": "uvx",
-          "args": [
-            "--env-file",
-            "<path-to-.env-file>",
-            "dbt-mcp"
-          ],
+          "args": ["--env-file", "<path-to-.env-file>", "dbt-mcp"],
           "env": {}
         }
       }

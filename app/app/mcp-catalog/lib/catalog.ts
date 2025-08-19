@@ -178,10 +178,8 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
       } else {
         // Create a placeholder entry for servers without evaluation
         // Determine display name: use the last part of the path if it exists, otherwise use the repo name
-        const displayName = repositoryPath 
-          ? repositoryPath.split('/').pop() || gitHubRepo
-          : gitHubRepo;
-        
+        const displayName = repositoryPath ? repositoryPath.split('/').pop() || gitHubRepo : gitHubRepo;
+
         const server: ArchestraMcpServerManifest = {
           dxt_version: '0.1.0',
           version: '0.1.0',
@@ -198,8 +196,8 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
             mcp_config: {
               command: 'unknown',
               args: [],
-              env: {}
-            }
+              env: {},
+            },
           },
           archestra_config: null,
           user_config: null,
@@ -282,28 +280,28 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
 export function loadServersFromSameRepo(targetServer: ArchestraMcpServerManifest): ArchestraMcpServerManifest[] {
   const { owner, repo } = targetServer.github_info;
   const cacheKey = `repo_${owner}_${repo}`;
-  
+
   // Check cache first
   const cached = serversCache.get(cacheKey);
   if (cached) {
     return cached;
   }
-  
+
   const servers: ArchestraMcpServerManifest[] = [];
-  
+
   // Load mcp-servers.json to find all URLs from the same repo
   try {
     const mcpServersContent = fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf-8');
     const mcpServerUrls = JSON.parse(mcpServersContent) as string[];
-    
+
     for (const url of mcpServerUrls) {
       const { gitHubOrg, gitHubRepo, name: urlName } = extractServerInfo(url);
-      
+
       // Skip if not from the same repo
       if (gitHubOrg !== owner || gitHubRepo !== repo) {
         continue;
       }
-      
+
       // Try to load the evaluation file for this server
       const evaluationPath = path.join(MCP_SERVERS_EVALUATIONS_DIR, `${urlName}.json`);
       if (fs.existsSync(evaluationPath)) {
@@ -327,7 +325,7 @@ export function loadServersFromSameRepo(targetServer: ArchestraMcpServerManifest
   } catch (error) {
     console.error('Failed to load servers from same repo:', error);
   }
-  
+
   // Cache and return
   serversCache.set(cacheKey, servers);
   return servers;
@@ -349,7 +347,7 @@ export function countServersInRepo(
     ).length;
     return Math.max(1, count);
   }
-  
+
   // Otherwise, load only servers from the same repo (much faster)
   const sameRepoServers = loadServersFromSameRepo(targetServer);
   return Math.max(1, sameRepoServers.length);

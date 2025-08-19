@@ -28,9 +28,7 @@
       "mcpServers": {
         "bridge-rates": {
           "command": "node",
-          "args": [
-            "/absolute/path/to/bridge-rates-mcp/index.js"
-          ],
+          "args": ["/absolute/path/to/bridge-rates-mcp/index.js"],
           "env": {}
         }
       }

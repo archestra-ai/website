@@ -28,9 +28,7 @@
       "mcpServers": {
         "spotify-mcp-server": {
           "command": "uvx",
-          "args": [
-            "spotify-mcp-server"
-          ],
+          "args": ["spotify-mcp-server"],
           "env": {}
         }
       }

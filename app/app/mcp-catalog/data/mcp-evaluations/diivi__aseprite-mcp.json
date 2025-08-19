@@ -28,13 +28,7 @@
       "mcpServers": {
         "aseprite_mcp": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/path/to/repo",
-            "run",
-            "-m",
-            "aseprite_mcp"
-          ],
+          "args": ["--directory", "/path/to/repo", "run", "-m", "aseprite_mcp"],
           "env": {}
         }
       }

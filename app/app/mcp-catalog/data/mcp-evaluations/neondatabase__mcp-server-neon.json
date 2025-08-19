@@ -28,44 +28,22 @@
       "mcpServers": {
         "mcp-remote": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mcp-remote",
-            "https://mcp.neon.tech/mcp"
-          ],
+          "args": ["-y", "mcp-remote", "https://mcp.neon.tech/mcp"],
           "env": {}
         },
         "neondatabase-mcp-server-neon": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@neondatabase/mcp-server-neon",
-            "start",
-            "<YOUR_NEON_API_KEY>"
-          ],
+          "args": ["-y", "@neondatabase/mcp-server-neon", "start", "<YOUR_NEON_API_KEY>"],
           "env": {}
         },
         "neondatabase-mcp-server-neon-cmd": {
           "command": "cmd",
-          "args": [
-            "/c",
-            "npx",
-            "-y",
-            "@neondatabase/mcp-server-neon",
-            "start",
-            "<YOUR_NEON_API_KEY>"
-          ],
+          "args": ["/c", "npx", "-y", "@neondatabase/mcp-server-neon", "start", "<YOUR_NEON_API_KEY>"],
           "env": {}
         },
         "neondatabase-mcp-server-neon-wsl": {
           "command": "wsl",
-          "args": [
-            "npx",
-            "-y",
-            "@neondatabase/mcp-server-neon",
-            "start",
-            "<YOUR_NEON_API_KEY>"
-          ],
+          "args": ["npx", "-y", "@neondatabase/mcp-server-neon", "start", "<YOUR_NEON_API_KEY>"],
           "env": {}
         }
       }

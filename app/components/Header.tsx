@@ -156,7 +156,9 @@ export default function Header() {
                 className="flex items-center gap-1 text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors w-full text-left"
               >
                 Product
-                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isMobileProductOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown
+                  className={`h-3.5 w-3.5 transition-transform ${isMobileProductOpen ? 'rotate-180' : ''}`}
+                />
               </button>
 
               {isMobileProductOpen && (
@@ -205,7 +207,9 @@ export default function Header() {
                 className="flex items-center gap-1 text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors w-full text-left"
               >
                 Reports
-                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isMobileReportsOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown
+                  className={`h-3.5 w-3.5 transition-transform ${isMobileReportsOpen ? 'rotate-180' : ''}`}
+                />
               </button>
 
               {isMobileReportsOpen && (

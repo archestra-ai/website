@@ -28,9 +28,7 @@
       "mcpServers": {
         "mcp-timeplus": {
           "command": "uvx",
-          "args": [
-            "mcp-timeplus"
-          ],
+          "args": ["mcp-timeplus"],
           "env": {
             "TIMEPLUS_HOST": "<timeplus-host>",
             "TIMEPLUS_PORT": "<timeplus-port>",
@@ -46,10 +44,7 @@
         },
         "mcp-timeplus-dev": {
           "command": "mcp",
-          "args": [
-            "dev",
-            "mcp_timeplus/mcp_server.py"
-          ],
+          "args": ["dev", "mcp_timeplus/mcp_server.py"],
           "env": {
             "TIMEPLUS_HOST": "localhost",
             "TIMEPLUS_PORT": "8123",

@@ -28,19 +28,12 @@
       "mcpServers": {
         "laukikk-alpaca-mcp-stdio": {
           "command": "python",
-          "args": [
-            "src/server.py"
-          ],
+          "args": ["src/server.py"],
           "env": {}
         },
         "laukikk-alpaca-mcp-claude-config": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/ABSOLUTE/PATH/TO/PARENT/FOLDER/alpaca-mcp-server",
-            "run",
-            "src/server.py"
-          ],
+          "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/FOLDER/alpaca-mcp-server", "run", "src/server.py"],
           "env": {}
         }
       }

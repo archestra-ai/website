@@ -28,10 +28,7 @@
       "mcpServers": {
         "package-registry": {
           "command": "npx",
-          "args": [
-            "-y",
-            "package-registry-mcp"
-          ],
+          "args": ["-y", "package-registry-mcp"],
           "env": {}
         }
       }

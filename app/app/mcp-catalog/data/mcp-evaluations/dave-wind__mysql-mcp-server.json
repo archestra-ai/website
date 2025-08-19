@@ -28,11 +28,7 @@
       "mcpServers": {
         "davewind-mysql-mcp-server": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@davewind/mysql-mcp-server",
-            "mysql://user:password@localhost:port/database"
-          ],
+          "args": ["-y", "@davewind/mysql-mcp-server", "mysql://user:password@localhost:port/database"],
           "env": {}
         }
       }

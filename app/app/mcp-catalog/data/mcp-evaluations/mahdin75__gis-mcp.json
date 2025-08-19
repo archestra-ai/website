@@ -38,18 +38,12 @@
         },
         "gis-mcp-dev": {
           "command": "python",
-          "args": [
-            "-m",
-            "gis_mcp"
-          ],
+          "args": ["-m", "gis_mcp"],
           "env": {}
         },
         "gis-mcp-dev-configured": {
           "command": "/path/to/gis-mcp/.venv/bin/python",
-          "args": [
-            "-m",
-            "gis_mcp"
-          ],
+          "args": ["-m", "gis_mcp"],
           "env": {}
         }
       }

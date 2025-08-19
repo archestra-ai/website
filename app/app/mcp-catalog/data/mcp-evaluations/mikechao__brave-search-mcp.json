@@ -28,46 +28,28 @@
       "mcpServers": {
         "brave-search-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "brave-search-mcp"
-          ],
+          "args": ["-y", "brave-search-mcp"],
           "env": {
             "BRAVE_API_KEY": "YOUR API KEY HERE"
           }
         },
         "brave-search-mcp-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "BRAVE_API_KEY",
-            "brave-search-mcp"
-          ],
+          "args": ["run", "-i", "--rm", "-e", "BRAVE_API_KEY", "brave-search-mcp"],
           "env": {
             "BRAVE_API_KEY": "YOUR API KEY HERE"
           }
         },
         "brave-search-mcp-librechat": {
           "command": "sh",
-          "args": [
-            "-c",
-            "BRAVE_API_KEY=API KEY npx -y brave-search-mcp"
-          ],
+          "args": ["-c", "BRAVE_API_KEY=API KEY npx -y brave-search-mcp"],
           "env": {
             "BRAVE_API_KEY": "API KEY"
           }
         },
         "brave-search-mcp-windows-cmd": {
           "command": "cmd",
-          "args": [
-            "/c",
-            "npx",
-            "-y",
-            "brave-search-mcp"
-          ],
+          "args": ["/c", "npx", "-y", "brave-search-mcp"],
           "env": {
             "BRAVE_API_KEY": "YOUR_API_KEY_HERE"
           }

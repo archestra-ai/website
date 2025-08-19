@@ -28,16 +28,12 @@
       "mcpServers": {
         "investor-agent": {
           "command": "uvx",
-          "args": [
-            "investor-agent"
-          ],
+          "args": ["investor-agent"],
           "env": {}
         },
         "investor-agent-ta": {
           "command": "uvx",
-          "args": [
-            "investor-agent[ta]"
-          ],
+          "args": ["investor-agent[ta]"],
           "env": {}
         }
       }

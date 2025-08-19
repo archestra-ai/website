@@ -28,13 +28,7 @@
       "mcpServers": {
         "greptimedb-mcp-server-with-config": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/path/to/greptimedb-mcp-server",
-            "run",
-            "-m",
-            "greptimedb_mcp_server.server"
-          ],
+          "args": ["--directory", "/path/to/greptimedb-mcp-server", "run", "-m", "greptimedb_mcp_server.server"],
           "env": {
             "GREPTIMEDB_HOST": "localhost",
             "GREPTIMEDB_PORT": "4002",

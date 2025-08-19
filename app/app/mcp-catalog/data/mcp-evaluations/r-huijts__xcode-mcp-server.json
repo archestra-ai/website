@@ -28,24 +28,17 @@
       "mcpServers": {
         "xcode-mcp-server": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {}
         },
         "xcode-mcp-server-dev": {
           "command": "npm",
-          "args": [
-            "run",
-            "dev"
-          ],
+          "args": ["run", "dev"],
           "env": {}
         },
         "xcode-mcp-server-configured": {
           "command": "node",
-          "args": [
-            "/path/to/xcode-mcp-server/dist/index.js"
-          ],
+          "args": ["/path/to/xcode-mcp-server/dist/index.js"],
           "env": {}
         }
       }

@@ -28,12 +28,7 @@
       "mcpServers": {
         "modbus-mcp-tcp-configured": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/path/to/modbus-mcp",
-            "run",
-            "modbus-mcp"
-          ],
+          "args": ["--directory", "/path/to/modbus-mcp", "run", "modbus-mcp"],
           "env": {
             "MODBUS_TYPE": "tcp",
             "MODBUS_HOST": "127.0.0.1",

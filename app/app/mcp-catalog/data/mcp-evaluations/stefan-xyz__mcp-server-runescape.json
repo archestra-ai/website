@@ -28,17 +28,12 @@
       "mcpServers": {
         "mcp-server-runescape": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mcp-server-runescape"
-          ],
+          "args": ["-y", "mcp-server-runescape"],
           "env": {}
         },
         "mcp-server-runescape-node": {
           "command": "node",
-          "args": [
-            "/Users/path/to/mcp-server-runescape/src/server.js"
-          ],
+          "args": ["/Users/path/to/mcp-server-runescape/src/server.js"],
           "env": {}
         }
       }

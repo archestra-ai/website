@@ -28,18 +28,12 @@
       "mcpServers": {
         "mcp-security-audit": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mcp-security-audit"
-          ],
+          "args": ["-y", "mcp-security-audit"],
           "env": {}
         },
         "mcp-security-audit-configured": {
           "command": "npx",
-          "args": [
-            "-y",
-            "/path/to/mcp-security-audit/build/index.js"
-          ],
+          "args": ["-y", "/path/to/mcp-security-audit/build/index.js"],
           "env": {}
         }
       }

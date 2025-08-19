@@ -28,10 +28,7 @@
       "mcpServers": {
         "zxkane-mcp-server-amazon-bedrock": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@zxkane/mcp-server-amazon-bedrock"
-          ],
+          "args": ["-y", "@zxkane/mcp-server-amazon-bedrock"],
           "env": {
             "AWS_PROFILE": "your_profile_name",
             "AWS_ACCESS_KEY_ID": "your_access_key",

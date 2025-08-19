@@ -33,18 +33,12 @@
         },
         "melrose-mcp-configured": {
           "command": "/Users/SOME-USER/go/bin/melrose-mcp",
-          "args": [
-            "-log",
-            "/Users/SOME-USER/Library/Logs/claude-melrose.log"
-          ],
+          "args": ["-log", "/Users/SOME-USER/Library/Logs/claude-melrose.log"],
           "env": {}
         },
         "browsermcp-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@browsermcp/mcp@latest"
-          ],
+          "args": ["-y", "@browsermcp/mcp@latest"],
           "env": {}
         },
         "melrose-mcp-stdio": {

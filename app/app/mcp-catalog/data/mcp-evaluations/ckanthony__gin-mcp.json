@@ -28,10 +28,7 @@
       "mcpServers": {
         "gin-mcp": {
           "command": "go",
-          "args": [
-            "run",
-            "."
-          ],
+          "args": ["run", "."],
           "env": {}
         }
       }

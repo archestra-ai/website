@@ -28,12 +28,7 @@
       "mcpServers": {
         "codelogic-mcp-server-uv-workaround": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "<PATH_TO_THIS_REPO>/codelogic-mcp-server-main",
-            "run",
-            "codelogic-mcp-server"
-          ],
+          "args": ["--directory", "<PATH_TO_THIS_REPO>/codelogic-mcp-server-main", "run", "codelogic-mcp-server"],
           "env": {
             "CODELOGIC_SERVER_HOST": "<url to the server e.g. https://myco.app.codelogic.com>",
             "CODELOGIC_USERNAME": "<my username>",
@@ -44,9 +39,7 @@
         },
         "codelogic-mcp-server-uvx-debug": {
           "command": "uvx",
-          "args": [
-            "codelogic-mcp-server@latest"
-          ],
+          "args": ["codelogic-mcp-server@latest"],
           "env": {
             "CODELOGIC_SERVER_HOST": "<url to the server e.g. https://myco.app.codelogic.com>",
             "CODELOGIC_USERNAME": "<my username>",
@@ -57,9 +50,7 @@
         },
         "codelogic-mcp-server-uvx-no-debug": {
           "command": "uvx",
-          "args": [
-            "codelogic-mcp-server@latest"
-          ],
+          "args": ["codelogic-mcp-server@latest"],
           "env": {
             "CODELOGIC_SERVER_HOST": "<url to the server e.g. https://myco.app.codelogic.com>",
             "CODELOGIC_USERNAME": "<my username>",

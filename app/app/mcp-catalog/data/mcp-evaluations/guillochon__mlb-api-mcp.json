@@ -28,68 +28,34 @@
       "mcpServers": {
         "mlb-api-mcp-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8000:8000",
-            "mlb-api-mcp"
-          ],
+          "args": ["run", "-p", "8000:8000", "mlb-api-mcp"],
           "env": {}
         },
         "mlb-api-mcp-docker-timezone": {
           "command": "docker",
-          "args": [
-            "run",
-            "-e",
-            "TZ=America/New_York",
-            "-p",
-            "8000:8000",
-            "mlb-api-mcp"
-          ],
+          "args": ["run", "-e", "TZ=America/New_York", "-p", "8000:8000", "mlb-api-mcp"],
           "env": {
             "TZ": "America/New_York"
           }
         },
         "mlb-api-mcp-docker-detached": {
           "command": "docker",
-          "args": [
-            "run",
-            "-d",
-            "-p",
-            "8000:8000",
-            "--name",
-            "mlb-api-server",
-            "mlb-api-mcp"
-          ],
+          "args": ["run", "-d", "-p", "8000:8000", "--name", "mlb-api-server", "mlb-api-mcp"],
           "env": {}
         },
         "mlb-api-mcp-docker-custom-port": {
           "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "3000:8000",
-            "mlb-api-mcp"
-          ],
+          "args": ["run", "-p", "3000:8000", "mlb-api-mcp"],
           "env": {}
         },
         "mlb-api-mcp-stdio": {
           "command": "uv",
-          "args": [
-            "run",
-            "python",
-            "main.py"
-          ],
+          "args": ["run", "python", "main.py"],
           "env": {}
         },
         "mlb-api-mcp-http": {
           "command": "uv",
-          "args": [
-            "run",
-            "python",
-            "main.py",
-            "--http"
-          ],
+          "args": ["run", "python", "main.py", "--http"],
           "env": {}
         }
       }

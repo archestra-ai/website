@@ -28,16 +28,12 @@
       "mcpServers": {
         "imprvhub-mcp-claude-spotify-manual": {
           "command": "node",
-          "args": [
-            "build/index.js"
-          ],
+          "args": ["build/index.js"],
           "env": {}
         },
         "imprvhub-mcp-claude-spotify-configured": {
           "command": "node",
-          "args": [
-            "ABSOLUTE_PATH_TO_DIRECTORY/mcp-claude-spotify/build/index.js"
-          ],
+          "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-claude-spotify/build/index.js"],
           "env": {
             "SPOTIFY_CLIENT_ID": "your_client_id_here",
             "SPOTIFY_CLIENT_SECRET": "your_client_secret_here"

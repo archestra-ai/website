@@ -28,25 +28,17 @@
       "mcpServers": {
         "gomcp-stdio": {
           "command": "/path/to/gomcp",
-          "args": [
-            "stdio"
-          ],
+          "args": ["stdio"],
           "env": {}
         },
         "gomcp-remote-stdio": {
           "command": "gomcp",
-          "args": [
-            "-cdp",
-            "ws://127.0.0.1:9222",
-            "stdio"
-          ],
+          "args": ["-cdp", "ws://127.0.0.1:9222", "stdio"],
           "env": {}
         },
         "gomcp-sse": {
           "command": "./gomcp",
-          "args": [
-            "sse"
-          ],
+          "args": ["sse"],
           "env": {}
         }
       }

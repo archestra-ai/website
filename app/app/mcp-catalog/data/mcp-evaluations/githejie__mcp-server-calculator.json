@@ -28,17 +28,12 @@
       "mcpServers": {
         "mcp-server-calculator": {
           "command": "uvx",
-          "args": [
-            "mcp-server-calculator"
-          ],
+          "args": ["mcp-server-calculator"],
           "env": {}
         },
         "mcp_server_calculator": {
           "command": "python",
-          "args": [
-            "-m",
-            "mcp_server_calculator"
-          ],
+          "args": ["-m", "mcp_server_calculator"],
           "env": {}
         }
       }

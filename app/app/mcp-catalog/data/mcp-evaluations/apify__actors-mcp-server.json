@@ -28,10 +28,7 @@
       "mcpServers": {
         "apify-actors-mcp-server-stdio": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@apify/actors-mcp-server"
-          ],
+          "args": ["-y", "@apify/actors-mcp-server"],
           "env": {}
         }
       }

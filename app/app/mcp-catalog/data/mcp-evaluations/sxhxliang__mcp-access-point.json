@@ -28,12 +28,7 @@
       "mcpServers": {
         "mcp-access-point-with-config": {
           "command": "cargo",
-          "args": [
-            "run",
-            "--",
-            "-c",
-            "config.yaml"
-          ],
+          "args": ["run", "--", "-c", "config.yaml"],
           "env": {}
         }
       }

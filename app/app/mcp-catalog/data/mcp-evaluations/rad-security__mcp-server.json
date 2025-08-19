@@ -33,10 +33,7 @@
         },
         "rad-security-mcp-server-npx-configured": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@rad-security/mcp-server"
-          ],
+          "args": ["-y", "@rad-security/mcp-server"],
           "env": {
             "RAD_SECURITY_ACCESS_KEY_ID": "<your-access-key-id>",
             "RAD_SECURITY_SECRET_KEY": "<your-secret-key>",

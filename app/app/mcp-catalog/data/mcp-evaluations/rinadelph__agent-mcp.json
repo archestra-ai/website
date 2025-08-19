@@ -28,13 +28,7 @@
       "mcpServers": {
         "agent_mcp": {
           "command": "uv",
-          "args": [
-            "run",
-            "-m",
-            "agent_mcp.cli",
-            "--project-dir",
-            "/path/to/your/project"
-          ],
+          "args": ["run", "-m", "agent_mcp.cli", "--project-dir", "/path/to/your/project"],
           "env": {}
         }
       }

@@ -28,17 +28,12 @@
       "mcpServers": {
         "cal-mcp": {
           "command": "bunx",
-          "args": [
-            "cal-mcp"
-          ],
+          "args": ["cal-mcp"],
           "env": {}
         },
         "cal-mcp-stdio": {
           "command": "bun",
-          "args": [
-            "run",
-            "index.ts"
-          ],
+          "args": ["run", "index.ts"],
           "env": {}
         }
       }

@@ -190,7 +190,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
               </div>
             </div>
           </div>
-          
+
           {/* ReadMeCard shown at bottom on mobile only */}
           <div className="lg:hidden mt-8">
             <ReadMeCard server={server} />

@@ -124,7 +124,8 @@ export default async function Home() {
                 <div>
                   <h3 className="font-semibold mb-1">Secure MCP Runtime</h3>
                   <p className="text-sm text-gray-600">
-                    Isolated execution environment for {serverCount} Open Source MCP Servers with sandboxing and resource controls
+                    Isolated execution environment for {serverCount} Open Source MCP Servers with sandboxing and
+                    resource controls
                   </p>
                 </div>
               </div>
@@ -160,9 +161,7 @@ export default async function Home() {
                       className="w-full rounded-lg shadow-lg border border-gray-200"
                     />
                   </div>
-                  <p className="text-sm text-gray-700 mb-3">
-                    Subscribe below to get notified of the public release.
-                  </p>
+                  <p className="text-sm text-gray-700 mb-3">Subscribe below to get notified of the public release.</p>
                   <div className="w-full max-w-lg">
                     <EmailForm />
                   </div>
@@ -174,7 +173,8 @@ export default async function Home() {
                 <div className="flex-1">
                   <h3 className="font-semibold mb-1 text-green-900">Multi-Tenant Enterprise Platform</h3>
                   <p className="text-sm text-gray-700 mb-3">
-                    Deploy and manage AI-to-Data connectors at scale with enterprise-grade security, compliance, and governance features. Get notified on launch.
+                    Deploy and manage AI-to-Data connectors at scale with enterprise-grade security, compliance, and
+                    governance features. Get notified on launch.
                   </p>
                   <div className="w-full max-w-lg">
                     <EmailForm />

@@ -28,12 +28,7 @@
       "mcpServers": {
         "ghcr.io-joinly-ai-joinly-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8000:8000",
-            "ghcr.io/joinly-ai/joinly:latest"
-          ],
+          "args": ["run", "-p", "8000:8000", "ghcr.io/joinly-ai/joinly:latest"],
           "env": {}
         }
       }

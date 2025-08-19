@@ -28,10 +28,7 @@
       "mcpServers": {
         "hannesrudolph-mcp-ragdocs": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@hannesrudolph/mcp-ragdocs"
-          ],
+          "args": ["-y", "@hannesrudolph/mcp-ragdocs"],
           "env": {
             "OPENAI_API_KEY": "",
             "QDRANT_URL": "",

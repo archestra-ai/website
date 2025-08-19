@@ -28,9 +28,7 @@
       "mcpServers": {
         "mcp-gsheets": {
           "command": "node",
-          "args": [
-            "/absolute/path/to/mcp-gsheets/dist/index.js"
-          ],
+          "args": ["/absolute/path/to/mcp-gsheets/dist/index.js"],
           "env": {
             "GOOGLE_PROJECT_ID": "your-project-id",
             "GOOGLE_APPLICATION_CREDENTIALS": "/absolute/path/to/service-account-key.json"
@@ -38,9 +36,7 @@
         },
         "mcp-gsheets-json-auth": {
           "command": "node",
-          "args": [
-            "/absolute/path/to/mcp-gsheets/dist/index.js"
-          ],
+          "args": ["/absolute/path/to/mcp-gsheets/dist/index.js"],
           "env": {
             "GOOGLE_PROJECT_ID": "your-project-id",
             "GOOGLE_SERVICE_ACCOUNT_KEY": "{\"type\":\"service_account\",\"project_id\":\"your-project\",\"private_key_id\":\"...\",\"private_key\":\"-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----\\n\",\"client_email\":\"...@....iam.gserviceaccount.com\",\"client_id\":\"...\",\"auth_uri\":\"https://accounts.google.com/o/oauth2/auth\",\"token_uri\":\"https://oauth2.googleapis.com/token\",\"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\",\"client_x509_cert_url\":\"...\"}"
@@ -48,33 +44,22 @@
         },
         "mcp-gsheets-dev": {
           "command": "npm",
-          "args": [
-            "run",
-            "dev"
-          ],
+          "args": ["run", "dev"],
           "env": {}
         },
         "mcp-gsheets-inspector": {
           "command": "npm",
-          "args": [
-            "run",
-            "inspector"
-          ],
+          "args": ["run", "inspector"],
           "env": {}
         },
         "mcp-gsheets-inspector-dev": {
           "command": "npm",
-          "args": [
-            "run",
-            "inspector:dev"
-          ],
+          "args": ["run", "inspector:dev"],
           "env": {}
         },
         "mcp-gsheets-task-dev": {
           "command": "task",
-          "args": [
-            "dev"
-          ],
+          "args": ["dev"],
           "env": {}
         }
       }

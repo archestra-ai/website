@@ -28,9 +28,7 @@
       "mcpServers": {
         "line-line-bot-mcp-server": {
           "command": "npx",
-          "args": [
-            "@line/line-bot-mcp-server"
-          ],
+          "args": ["@line/line-bot-mcp-server"],
           "env": {
             "CHANNEL_ACCESS_TOKEN": "FILL_HERE",
             "DESTINATION_USER_ID": "FILL_HERE"

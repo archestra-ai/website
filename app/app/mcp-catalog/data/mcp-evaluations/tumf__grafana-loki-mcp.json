@@ -28,13 +28,7 @@
       "mcpServers": {
         "grafana-loki-mcp-configured": {
           "command": "uvx",
-          "args": [
-            "grafana-loki-mcp",
-            "-u",
-            "GRAFANA_URL",
-            "-k",
-            "GRAFANA_API_KEY"
-          ],
+          "args": ["grafana-loki-mcp", "-u", "GRAFANA_URL", "-k", "GRAFANA_API_KEY"],
           "env": {}
         },
         "grafana-loki-mcp-env": {
@@ -47,20 +41,12 @@
         },
         "grafana-loki-mcp-args": {
           "command": "grafana-loki-mcp",
-          "args": [
-            "-u",
-            "https://your-grafana-instance.com",
-            "-k",
-            "your-api-key"
-          ],
+          "args": ["-u", "https://your-grafana-instance.com", "-k", "your-api-key"],
           "env": {}
         },
         "grafana-loki-mcp-sse": {
           "command": "grafana-loki-mcp",
-          "args": [
-            "--transport",
-            "sse"
-          ],
+          "args": ["--transport", "sse"],
           "env": {}
         }
       }

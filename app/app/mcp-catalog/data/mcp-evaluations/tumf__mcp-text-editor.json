@@ -28,9 +28,7 @@
       "mcpServers": {
         "mcp-text-editor": {
           "command": "uvx",
-          "args": [
-            "mcp-text-editor"
-          ],
+          "args": ["mcp-text-editor"],
           "env": {}
         },
         "mcp-text-editor-docker": {
@@ -47,10 +45,7 @@
         },
         "mcp-text-editor-python": {
           "command": "python",
-          "args": [
-            "-m",
-            "mcp_text_editor"
-          ],
+          "args": ["-m", "mcp_text_editor"],
           "env": {}
         }
       }

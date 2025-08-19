@@ -28,14 +28,7 @@
       "mcpServers": {
         "prometheus-mcp-server-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "PROMETHEUS_URL",
-            "ghcr.io/pab1it0/prometheus-mcp-server:latest"
-          ],
+          "args": ["run", "-i", "--rm", "-e", "PROMETHEUS_URL", "ghcr.io/pab1it0/prometheus-mcp-server:latest"],
           "env": {
             "PROMETHEUS_URL": "<url>"
           }

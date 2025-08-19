@@ -81,7 +81,7 @@ export default async function BlogPostPage({ params }: Props) {
               <h1 className="text-3xl md:text-4xl font-medium text-gray-900 mb-6 leading-tight max-w-4xl mx-auto">
                 {post.title}
               </h1>
-              
+
               <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto mb-8">{post.excerpt}</p>
 
               {(post.github || post.cta) && (
@@ -162,7 +162,7 @@ export default async function BlogPostPage({ params }: Props) {
                 {post.content}
               </ReactMarkdown>
             </div>
-            
+
             <div className="max-w-3xl mx-auto mt-12 pt-8 border-t border-gray-200">
               <div className="text-left">
                 <p className="text-gray-600 text-sm">Written by</p>

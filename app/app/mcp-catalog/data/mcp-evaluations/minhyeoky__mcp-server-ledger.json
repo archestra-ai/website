@@ -58,10 +58,7 @@
         },
         "mcp-server-ledger-dev": {
           "command": "mcp",
-          "args": [
-            "dev",
-            "main.py"
-          ],
+          "args": ["dev", "main.py"],
           "env": {}
         }
       }

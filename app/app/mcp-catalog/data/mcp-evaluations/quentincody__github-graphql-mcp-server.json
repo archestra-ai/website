@@ -28,18 +28,14 @@
       "mcpServers": {
         "github-graphql-direct": {
           "command": "python",
-          "args": [
-            "github_graphql_mcp_server.py"
-          ],
+          "args": ["github_graphql_mcp_server.py"],
           "env": {
             "GITHUB_TOKEN": "your_github_token_here"
           }
         },
         "github-graphql-configured": {
           "command": "/absolute/path/to/your/.venv/bin/python",
-          "args": [
-            "/absolute/path/to/github_graphql_mcp_server.py"
-          ],
+          "args": ["/absolute/path/to/github_graphql_mcp_server.py"],
           "env": {
             "GITHUB_TOKEN": "your_github_token_here"
           }

@@ -181,7 +181,9 @@ export default function AboutPage() {
             <div className="space-y-8">
               {/* VCs Section */}
               <div>
-                <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider text-center mb-6">Venture Capital Partners</p>
+                <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider text-center mb-6">
+                  Venture Capital Partners
+                </p>
                 <div className="flex flex-wrap justify-center gap-2">
                   {/* Lead Investor - Concept Ventures */}
                   <a
@@ -191,19 +193,16 @@ export default function AboutPage() {
                     className="rounded-lg px-4 py-3 flex flex-col items-center justify-center hover:opacity-90 transition-opacity flex-shrink-0 relative overflow-hidden"
                     style={{ backgroundColor: '#2069f7' }}
                   >
-                    <div className="absolute top-4 -left-6 bg-white text-black text-xs font-bold px-7 py-1 transform -rotate-45 shadow-sm" style={{ lineHeight: '1' }}>
+                    <div
+                      className="absolute top-4 -left-6 bg-white text-black text-xs font-bold px-7 py-1 transform -rotate-45 shadow-sm"
+                      style={{ lineHeight: '1' }}
+                    >
                       Leading
                     </div>
-                    <Image
-                      src="/logo_concept.svg"
-                      alt="Concept Ventures"
-                      width={80}
-                      height={27}
-                      className="h-auto"
-                    />
+                    <Image src="/logo_concept.svg" alt="Concept Ventures" width={80} height={27} className="h-auto" />
                     <p className="text-white text-center mt-2 text-sm font-medium">Concept Ventures</p>
                   </a>
-                  
+
                   <a
                     href="https://zeroprime.vc/"
                     target="_blank"
@@ -220,38 +219,26 @@ export default function AboutPage() {
                     />
                     <p className="text-white text-center mt-2 text-sm font-medium">Zero Prime Ventures</p>
                   </a>
-                  
+
                   <a
                     href="https://www.celeroventures.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors flex flex-col items-center justify-center flex-shrink-0"
                   >
-                    <Image
-                      src="/logo_celero.png"
-                      alt="Celero Ventures"
-                      width={80}
-                      height={27}
-                      className="h-auto"
-                    />
+                    <Image src="/logo_celero.png" alt="Celero Ventures" width={80} height={27} className="h-auto" />
                     <p className="text-gray-700 text-center mt-2 text-sm font-medium">Celero Ventures</p>
                   </a>
-                  
+
                   <a
                     href="https://rtp.vc/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors flex items-center justify-center flex-shrink-0"
                   >
-                    <Image
-                      src="/logo_rtp.svg"
-                      alt="RTP Global"
-                      width={120}
-                      height={40}
-                      className="h-auto"
-                    />
+                    <Image src="/logo_rtp.svg" alt="RTP Global" width={120} height={40} className="h-auto" />
                   </a>
-                  
+
                   <a
                     href="https://www.aloniq.com/"
                     target="_blank"
@@ -259,20 +246,16 @@ export default function AboutPage() {
                     className="bg-white rounded-lg px-4 border border-gray-200 hover:border-gray-400 transition-colors flex items-center justify-center flex-shrink-0"
                     style={{ paddingTop: '26px', paddingBottom: '26px' }}
                   >
-                    <Image
-                      src="/logo_aloniq.svg"
-                      alt="Aloniq"
-                      width={120}
-                      height={40}
-                      className="h-auto"
-                    />
+                    <Image src="/logo_aloniq.svg" alt="Aloniq" width={120} height={40} className="h-auto" />
                   </a>
                 </div>
               </div>
 
               {/* Angel Investors */}
               <div>
-                <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider text-center mb-4">Angel Investors</p>
+                <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider text-center mb-4">
+                  Angel Investors
+                </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
                   <div className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-300 transition-colors">
                     <div className="flex items-center justify-between">

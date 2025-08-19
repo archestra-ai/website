@@ -28,12 +28,7 @@
       "mcpServers": {
         "supabase-mcp-server-supabase-default": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@supabase/mcp-server-supabase@latest",
-            "--read-only",
-            "--project-ref=<project-ref>"
-          ],
+          "args": ["-y", "@supabase/mcp-server-supabase@latest", "--read-only", "--project-ref=<project-ref>"],
           "env": {
             "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
           }
@@ -54,46 +49,28 @@
         },
         "supabase-mcp-server-supabase-windows-wsl": {
           "command": "wsl",
-          "args": [
-            "npx",
-            "-y",
-            "@supabase/mcp-server-supabase@latest",
-            "--read-only",
-            "--project-ref=<project-ref>"
-          ],
+          "args": ["npx", "-y", "@supabase/mcp-server-supabase@latest", "--read-only", "--project-ref=<project-ref>"],
           "env": {
             "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
           }
         },
         "supabase-mcp-server-supabase-project-scoped": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@supabase/mcp-server-supabase@latest",
-            "--project-ref=<project-ref>"
-          ],
+          "args": ["-y", "@supabase/mcp-server-supabase@latest", "--project-ref=<project-ref>"],
           "env": {
             "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
           }
         },
         "supabase-mcp-server-supabase-read-only": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@supabase/mcp-server-supabase@latest",
-            "--read-only"
-          ],
+          "args": ["-y", "@supabase/mcp-server-supabase@latest", "--read-only"],
           "env": {
             "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
           }
         },
         "supabase-mcp-server-supabase-features": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@supabase/mcp-server-supabase@latest",
-            "--features=database,docs"
-          ],
+          "args": ["-y", "@supabase/mcp-server-supabase@latest", "--features=database,docs"],
           "env": {
             "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
           }

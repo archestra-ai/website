@@ -28,10 +28,7 @@
       "mcpServers": {
         "substrate-mcp-rs-cargo": {
           "command": "cargo",
-          "args": [
-            "run",
-            "--release"
-          ],
+          "args": ["run", "--release"],
           "env": {}
         },
         "substrate-mcp-rs-binary": {

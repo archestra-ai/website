@@ -28,16 +28,12 @@
       "mcpServers": {
         "aim-guard-mcp": {
           "command": "npx",
-          "args": [
-            "aim-guard-mcp"
-          ],
+          "args": ["aim-guard-mcp"],
           "env": {}
         },
         "aim-guard-mcp-stdio": {
           "command": "npx",
-          "args": [
-            "aim-guard-mcp"
-          ],
+          "args": ["aim-guard-mcp"],
           "env": {}
         }
       }

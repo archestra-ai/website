@@ -28,10 +28,7 @@
       "mcpServers": {
         "currents-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@currents/mcp"
-          ],
+          "args": ["-y", "@currents/mcp"],
           "env": {
             "CURRENTS_API_KEY": "your-api-key"
           }

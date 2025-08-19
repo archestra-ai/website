@@ -28,19 +28,12 @@
       "mcpServers": {
         "FileScopeMCP-windows": {
           "command": "node",
-          "args": [
-            "<build script sets this>/mcp-server.js",
-            "--base-dir=C:/Users/admica/my/project/base"
-          ],
+          "args": ["<build script sets this>/mcp-server.js", "--base-dir=C:/Users/admica/my/project/base"],
           "env": {}
         },
         "FileScopeMCP-linux": {
           "command": "wsl",
-          "args": [
-            "-d",
-            "Ubuntu-24.04",
-            "/home/admica/FileScopeMCP/run.sh"
-          ],
+          "args": ["-d", "Ubuntu-24.04", "/home/admica/FileScopeMCP/run.sh"],
           "env": {}
         }
       }

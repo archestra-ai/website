@@ -28,10 +28,7 @@
       "mcpServers": {
         "auto-mobile": {
           "command": "npx",
-          "args": [
-            "-y",
-            "auto-mobile"
-          ],
+          "args": ["-y", "auto-mobile"],
           "env": {}
         }
       }

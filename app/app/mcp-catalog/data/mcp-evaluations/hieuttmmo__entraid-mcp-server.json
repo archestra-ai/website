@@ -28,10 +28,7 @@
       "mcpServers": {
         "msgraph-mcp-server": {
           "command": "fastmcp",
-          "args": [
-            "dev",
-            "/path/to/src/msgraph_mcp_server/server.py"
-          ],
+          "args": ["dev", "/path/to/src/msgraph_mcp_server/server.py"],
           "env": {}
         }
       }

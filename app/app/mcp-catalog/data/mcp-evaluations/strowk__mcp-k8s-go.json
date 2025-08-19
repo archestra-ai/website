@@ -28,9 +28,7 @@
       "mcpServers": {
         "strowk-mcp-k8s": {
           "command": "npx",
-          "args": [
-            "@strowk/mcp-k8s"
-          ],
+          "args": ["@strowk/mcp-k8s"],
           "env": {}
         },
         "mcp-k8s": {
@@ -40,10 +38,7 @@
         },
         "mcp-k8s-configured": {
           "command": "mcp-k8s",
-          "args": [
-            "--allowed-contexts=dev,prod",
-            "--readonly"
-          ],
+          "args": ["--allowed-contexts=dev,prod", "--readonly"],
           "env": {}
         },
         "mcp-k8s-go": {
@@ -53,14 +48,7 @@
         },
         "mcpk8s-server-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "-v",
-            "~/.kube/config:/home/nonroot/.kube/config",
-            "--rm",
-            "mcpk8s/server:latest"
-          ],
+          "args": ["run", "-i", "-v", "~/.kube/config:/home/nonroot/.kube/config", "--rm", "mcpk8s/server:latest"],
           "env": {}
         }
       }

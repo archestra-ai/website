@@ -28,10 +28,7 @@
       "mcpServers": {
         "fastmcp": {
           "command": "fastmcp",
-          "args": [
-            "run",
-            "server.py"
-          ],
+          "args": ["run", "server.py"],
           "env": {}
         }
       }

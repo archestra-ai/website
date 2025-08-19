@@ -28,29 +28,21 @@
       "mcpServers": {
         "mcp-server-giphy": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mcp-server-giphy"
-          ],
+          "args": ["-y", "mcp-server-giphy"],
           "env": {
             "GIPHY_API_KEY": "<YOUR_API_KEY>"
           }
         },
         "mcp-server-giphy-npm-start": {
           "command": "npm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {
             "GIPHY_API_KEY": "<YOUR_API_KEY>"
           }
         },
         "mcp-server-giphy-npm-dev": {
           "command": "npm",
-          "args": [
-            "run",
-            "dev"
-          ],
+          "args": ["run", "dev"],
           "env": {
             "GIPHY_API_KEY": "<YOUR_API_KEY>"
           }

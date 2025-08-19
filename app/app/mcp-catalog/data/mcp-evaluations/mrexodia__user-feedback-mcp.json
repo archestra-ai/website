@@ -28,30 +28,17 @@
       "mcpServers": {
         "github.com/mrexodia/user-feedback-mcp": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "c:\\MCP\\user-feedback-mcp",
-            "run",
-            "server.py"
-          ],
+          "args": ["--directory", "c:\\MCP\\user-feedback-mcp", "run", "server.py"],
           "env": {}
         },
         "github.com/mrexodia/user-feedback-mcp-npm-dev": {
           "command": "npm",
-          "args": [
-            "run",
-            "dev"
-          ],
+          "args": ["run", "dev"],
           "env": {}
         },
         "github.com/mrexodia/user-feedback-mcp-fastmcp-dev": {
           "command": "uv",
-          "args": [
-            "run",
-            "fastmcp",
-            "dev",
-            "server.py"
-          ],
+          "args": ["run", "fastmcp", "dev", "server.py"],
           "env": {}
         }
       }

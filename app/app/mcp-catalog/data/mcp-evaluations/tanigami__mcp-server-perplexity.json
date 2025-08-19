@@ -28,9 +28,7 @@
       "mcpServers": {
         "mcp-server-perplexity": {
           "command": "uvx",
-          "args": [
-            "mcp-server-perplexity"
-          ],
+          "args": ["mcp-server-perplexity"],
           "env": {
             "PERPLEXITY_API_KEY": "your-perplexity-api-key"
           }

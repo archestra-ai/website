@@ -28,12 +28,7 @@
       "mcpServers": {
         "etf-flow-mcp": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/absolute/path/to/etf-flow-mcp",
-            "run",
-            "etf-flow-mcp"
-          ],
+          "args": ["--directory", "/absolute/path/to/etf-flow-mcp", "run", "etf-flow-mcp"],
           "env": {
             "COINGLASS_API_KEY": "your_coinglass_api_key_here"
           }

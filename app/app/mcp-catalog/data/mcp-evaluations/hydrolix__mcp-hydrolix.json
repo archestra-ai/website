@@ -28,14 +28,7 @@
       "mcpServers": {
         "mcp-hydrolix": {
           "command": "uv",
-          "args": [
-            "run",
-            "--with",
-            "mcp-hydrolix",
-            "--python",
-            "3.13",
-            "mcp-hydrolix"
-          ],
+          "args": ["run", "--with", "mcp-hydrolix", "--python", "3.13", "mcp-hydrolix"],
           "env": {
             "HYDROLIX_HOST": "<hydrolix-host>",
             "HYDROLIX_USER": "<hydrolix-user>",

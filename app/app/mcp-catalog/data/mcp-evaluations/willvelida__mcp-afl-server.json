@@ -28,12 +28,7 @@
       "mcpServers": {
         "mcp-afl-server": {
           "command": "dotnet",
-          "args": [
-            "run",
-            "--project",
-            "C:\\path\\to\\mcp-afl-server\\src",
-            "--no-build"
-          ],
+          "args": ["run", "--project", "C:\\path\\to\\mcp-afl-server\\src", "--no-build"],
           "env": {}
         }
       }

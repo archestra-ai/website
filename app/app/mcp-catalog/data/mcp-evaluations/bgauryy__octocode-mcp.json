@@ -28,9 +28,7 @@
       "mcpServers": {
         "octocode-mcp": {
           "command": "npx",
-          "args": [
-            "octocode-mcp"
-          ],
+          "args": ["octocode-mcp"],
           "env": {}
         }
       }

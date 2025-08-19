@@ -28,9 +28,7 @@
       "mcpServers": {
         "chainlink-feeds-mcp": {
           "command": "node",
-          "args": [
-            "path/to/chainlink-feeds-mcp/index.js"
-          ],
+          "args": ["path/to/chainlink-feeds-mcp/index.js"],
           "env": {
             "INFURA_API_KEY": "your_api_key_here"
           }

@@ -1,4 +1,9 @@
-import { DxtManifestSchema, DxtManifestServerSchema, DxtUserConfigurationOptionSchema, McpServerConfigSchema } from '@anthropic-ai/dxt';
+import {
+  DxtManifestSchema,
+  DxtManifestServerSchema,
+  DxtUserConfigurationOptionSchema,
+  McpServerConfigSchema,
+} from '@anthropic-ai/dxt';
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { z } from 'zod';
 

@@ -28,10 +28,7 @@
       "mcpServers": {
         "pdf-tools-mcp": {
           "command": "python",
-          "args": [
-            "-m",
-            "src.main"
-          ],
+          "args": ["-m", "src.main"],
           "env": {}
         }
       }

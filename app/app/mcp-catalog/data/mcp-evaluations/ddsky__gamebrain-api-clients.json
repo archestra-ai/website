@@ -28,11 +28,7 @@
       "mcpServers": {
         "mcp-remote": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mcp-remote",
-            "https://api.gamebrain.co/v1/mcp?api-key=YOUR_KEY"
-          ],
+          "args": ["-y", "mcp-remote", "https://api.gamebrain.co/v1/mcp?api-key=YOUR_KEY"],
           "env": {}
         }
       }

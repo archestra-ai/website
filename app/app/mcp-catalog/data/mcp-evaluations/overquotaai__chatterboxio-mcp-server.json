@@ -28,9 +28,7 @@
       "mcpServers": {
         "OverQuotaAI-chatterboxio-mcp-server": {
           "command": "pnpm",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {
             "CHATTERBOX_API_ENDPOINT": "https://api.chatter-box.io",
             "CHATTERBOX_API_KEY": "your_api_key_here"

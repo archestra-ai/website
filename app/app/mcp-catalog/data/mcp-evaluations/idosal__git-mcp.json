@@ -28,10 +28,7 @@
       "mcpServers": {
         "mcp-remote": {
           "command": "npx",
-          "args": [
-            "mcp-remote",
-            "https://gitmcp.io/{owner}/{repo}"
-          ],
+          "args": ["mcp-remote", "https://gitmcp.io/{owner}/{repo}"],
           "env": {}
         }
       }

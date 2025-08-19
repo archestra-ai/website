@@ -28,9 +28,7 @@
       "mcpServers": {
         "mcp-pandoc": {
           "command": "uvx",
-          "args": [
-            "mcp-pandoc"
-          ],
+          "args": ["mcp-pandoc"],
           "env": {}
         }
       }

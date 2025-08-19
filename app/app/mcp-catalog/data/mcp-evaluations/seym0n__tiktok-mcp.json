@@ -28,9 +28,7 @@
       "mcpServers": {
         "tiktok-mcp": {
           "command": "node",
-          "args": [
-            "path\\build\\index.js"
-          ],
+          "args": ["path\\build\\index.js"],
           "env": {
             "TIKNEURON_MCP_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
           }

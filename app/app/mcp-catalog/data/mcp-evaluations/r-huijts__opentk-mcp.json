@@ -28,32 +28,22 @@
       "mcpServers": {
         "r-huijts-opentk-mcp": {
           "command": "npx",
-          "args": [
-            "@r-huijts/opentk-mcp"
-          ],
+          "args": ["@r-huijts/opentk-mcp"],
           "env": {}
         },
         "opentk": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@r-huijts/opentk-mcp"
-          ],
+          "args": ["-y", "@r-huijts/opentk-mcp"],
           "env": {}
         },
         "opentk-stdio": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@r-huijts/opentk-mcp"
-          ],
+          "args": ["-y", "@r-huijts/opentk-mcp"],
           "env": {}
         },
         "opentk-local": {
           "command": "node",
-          "args": [
-            "/absolute/path/to/your/opentk-mcp/dist/index.js"
-          ],
+          "args": ["/absolute/path/to/your/opentk-mcp/dist/index.js"],
           "env": {}
         }
       }

@@ -28,9 +28,7 @@
       "mcpServers": {
         "mcp-server-commands": {
           "command": "npx",
-          "args": [
-            "mcp-server-commands"
-          ],
+          "args": ["mcp-server-commands"],
           "env": {}
         },
         "mcp-server-commands-local-build": {
@@ -40,24 +38,12 @@
         },
         "mcp-server-commands-via-mcpo": {
           "command": "uvx",
-          "args": [
-            "mcpo",
-            "--port",
-            "3010",
-            "--api-key",
-            "supersecret",
-            "--",
-            "npx",
-            "mcp-server-commands"
-          ],
+          "args": ["mcpo", "--port", "3010", "--api-key", "supersecret", "--", "npx", "mcp-server-commands"],
           "env": {}
         },
         "mcp-server-commands-verbose": {
           "command": "npx",
-          "args": [
-            "mcp-server-commands",
-            "--verbose"
-          ],
+          "args": ["mcp-server-commands", "--verbose"],
           "env": {}
         }
       }

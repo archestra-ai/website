@@ -39,9 +39,7 @@
         },
         "bear-mcp-server": {
           "command": "npx",
-          "args": [
-            "bear-mcp-server"
-          ],
+          "args": ["bear-mcp-server"],
           "env": {}
         }
       }

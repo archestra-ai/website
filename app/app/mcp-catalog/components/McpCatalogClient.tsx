@@ -242,49 +242,39 @@ export default function McpCatalogClient({
       server,
       searchScore: searchQuery ? calculateSearchRelevance(server, searchQuery) : 0,
     }))
-    .filter(
-      ({
-        server: {
-          category,
-          programming_language,
-          dependencies,
-          protocol_features,
-        },
-        searchScore,
-      }) => {
-        // Filter by search
-        const matchesSearch = !searchQuery || searchScore > 0;
+    .filter(({ server: { category, programming_language, dependencies, protocol_features }, searchScore }) => {
+      // Filter by search
+      const matchesSearch = !searchQuery || searchScore > 0;
 
-        // Filter by category
-        const matchesCategory =
-          selectedCategory === 'All' ||
-          (selectedCategory === 'Uncategorized' && category === null) ||
-          category === selectedCategory;
+      // Filter by category
+      const matchesCategory =
+        selectedCategory === 'All' ||
+        (selectedCategory === 'Uncategorized' && category === null) ||
+        category === selectedCategory;
 
-        // Filter by language
-        const matchesLanguage = selectedLanguage === 'All' || programming_language === selectedLanguage;
+      // Filter by language
+      const matchesLanguage = selectedLanguage === 'All' || programming_language === selectedLanguage;
 
-        // Filter by dependency
-        const matchesDependency =
-          selectedDependency === 'All' ||
-          (dependencies && dependencies.some((dep) => dep.name === selectedDependency && dep.importance >= 8));
+      // Filter by dependency
+      const matchesDependency =
+        selectedDependency === 'All' ||
+        (dependencies && dependencies.some((dep) => dep.name === selectedDependency && dep.importance >= 8));
 
-        // Filter by MCP features
-        const matchesFeature =
-          selectedFeature === 'All' ||
-          (selectedFeature === 'Tools' && protocol_features?.implementing_tools === true) ||
-          (selectedFeature === 'Resources' && protocol_features?.implementing_resources === true) ||
-          (selectedFeature === 'Prompts' && protocol_features?.implementing_prompts === true) ||
-          (selectedFeature === 'Sampling' && protocol_features?.implementing_sampling === true) ||
-          (selectedFeature === 'Roots' && protocol_features?.implementing_roots === true) ||
-          (selectedFeature === 'Logging' && protocol_features?.implementing_logging === true) ||
-          (selectedFeature === 'STDIO Transport' && protocol_features?.implementing_stdio === true) ||
-          (selectedFeature === 'Streamable HTTP' && protocol_features?.implementing_streamable_http === true) ||
-          (selectedFeature === 'OAuth2' && protocol_features?.implementing_oauth2 === true);
+      // Filter by MCP features
+      const matchesFeature =
+        selectedFeature === 'All' ||
+        (selectedFeature === 'Tools' && protocol_features?.implementing_tools === true) ||
+        (selectedFeature === 'Resources' && protocol_features?.implementing_resources === true) ||
+        (selectedFeature === 'Prompts' && protocol_features?.implementing_prompts === true) ||
+        (selectedFeature === 'Sampling' && protocol_features?.implementing_sampling === true) ||
+        (selectedFeature === 'Roots' && protocol_features?.implementing_roots === true) ||
+        (selectedFeature === 'Logging' && protocol_features?.implementing_logging === true) ||
+        (selectedFeature === 'STDIO Transport' && protocol_features?.implementing_stdio === true) ||
+        (selectedFeature === 'Streamable HTTP' && protocol_features?.implementing_streamable_http === true) ||
+        (selectedFeature === 'OAuth2' && protocol_features?.implementing_oauth2 === true);
 
-        return matchesSearch && matchesCategory && matchesLanguage && matchesDependency && matchesFeature;
-      }
-    );
+      return matchesSearch && matchesCategory && matchesLanguage && matchesDependency && matchesFeature;
+    });
 
   // Sort filtered servers
   const sortedServers = [...filteredAndScoredServers].sort((a, b) => {
@@ -491,7 +481,8 @@ export default function McpCatalogClient({
                               if (feature === 'Sampling') return s.protocol_features?.implementing_sampling === true;
                               if (feature === 'Roots') return s.protocol_features?.implementing_roots === true;
                               if (feature === 'Logging') return s.protocol_features?.implementing_logging === true;
-                              if (feature === 'STDIO Transport') return s.protocol_features?.implementing_stdio === true;
+                              if (feature === 'STDIO Transport')
+                                return s.protocol_features?.implementing_stdio === true;
                               if (feature === 'Streamable HTTP')
                                 return s.protocol_features?.implementing_streamable_http === true;
                               if (feature === 'OAuth2') return s.protocol_features?.implementing_oauth2 === true;
@@ -662,7 +653,8 @@ export default function McpCatalogClient({
                             ? mcpServers.length
                             : mcpServers.filter((s) => {
                                 if (feature === 'Tools') return s.protocol_features?.implementing_tools === true;
-                                if (feature === 'Resources') return s.protocol_features?.implementing_resources === true;
+                                if (feature === 'Resources')
+                                  return s.protocol_features?.implementing_resources === true;
                                 if (feature === 'Prompts') return s.protocol_features?.implementing_prompts === true;
                                 if (feature === 'Sampling') return s.protocol_features?.implementing_sampling === true;
                                 if (feature === 'Roots') return s.protocol_features?.implementing_roots === true;

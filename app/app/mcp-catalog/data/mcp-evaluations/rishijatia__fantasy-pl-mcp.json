@@ -33,18 +33,12 @@
         },
         "fpl-mcp-python-module": {
           "command": "python",
-          "args": [
-            "-m",
-            "fpl_mcp"
-          ],
+          "args": ["-m", "fpl_mcp"],
           "env": {}
         },
         "fpl-mcp-claude-desktop-python-module": {
           "command": "python",
-          "args": [
-            "-m",
-            "fpl_mcp"
-          ],
+          "args": ["-m", "fpl_mcp"],
           "env": {}
         },
         "fpl-mcp-claude-desktop-full-path": {
@@ -54,21 +48,12 @@
         },
         "fpl-mcp-mcp-dev": {
           "command": "mcp",
-          "args": [
-            "dev",
-            "-m",
-            "fpl_mcp"
-          ],
+          "args": ["dev", "-m", "fpl_mcp"],
           "env": {}
         },
         "modelcontextprotocol-inspector-fpl-mcp": {
           "command": "npx",
-          "args": [
-            "@modelcontextprotocol/inspector",
-            "python",
-            "-m",
-            "fpl_mcp"
-          ],
+          "args": ["@modelcontextprotocol/inspector", "python", "-m", "fpl_mcp"],
           "env": {}
         }
       }

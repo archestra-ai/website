@@ -28,9 +28,7 @@
       "mcpServers": {
         "catalysishub-mcp-server-configured": {
           "command": "/Users/quentincody/.env/bin/python3",
-          "args": [
-            "/Users/quentincody/catalysishub-mcp-server/catalysishub_mcp_server.py"
-          ],
+          "args": ["/Users/quentincody/catalysishub-mcp-server/catalysishub_mcp_server.py"],
           "env": {}
         }
       }

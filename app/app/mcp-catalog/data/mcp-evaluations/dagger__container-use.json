@@ -28,16 +28,12 @@
       "mcpServers": {
         "container-use-stdio": {
           "command": "container-use",
-          "args": [
-            "stdio"
-          ],
+          "args": ["stdio"],
           "env": {}
         },
         "cu-stdio": {
           "command": "cu",
-          "args": [
-            "stdio"
-          ],
+          "args": ["stdio"],
           "env": {}
         }
       }

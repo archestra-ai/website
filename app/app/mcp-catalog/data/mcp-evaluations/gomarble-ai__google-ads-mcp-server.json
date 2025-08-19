@@ -28,9 +28,7 @@
       "mcpServers": {
         "google-ads": {
           "command": "/full/path/to/your/project/.venv/bin/python",
-          "args": [
-            "/full/path/to/your/project/server.py"
-          ],
+          "args": ["/full/path/to/your/project/server.py"],
           "env": {}
         }
       }

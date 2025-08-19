@@ -28,34 +28,22 @@
       "mcpServers": {
         "openbnb-mcp-server-airbnb": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@openbnb/mcp-server-airbnb"
-          ],
+          "args": ["-y", "@openbnb/mcp-server-airbnb"],
           "env": {}
         },
         "openbnb-mcp-server-airbnb-ignore-robots-txt": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@openbnb/mcp-server-airbnb",
-            "--ignore-robots-txt"
-          ],
+          "args": ["-y", "@openbnb/mcp-server-airbnb", "--ignore-robots-txt"],
           "env": {}
         },
         "openbnb-mcp-server-airbnb-node-direct": {
           "command": "node",
-          "args": [
-            "dist/index.js"
-          ],
+          "args": ["dist/index.js"],
           "env": {}
         },
         "openbnb-mcp-server-airbnb-node-direct-ignore-robots-txt": {
           "command": "node",
-          "args": [
-            "dist/index.js",
-            "--ignore-robots-txt"
-          ],
+          "args": ["dist/index.js", "--ignore-robots-txt"],
           "env": {}
         }
       }

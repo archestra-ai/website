@@ -28,9 +28,7 @@
       "mcpServers": {
         "volatility-fastapi-server": {
           "command": "uvicorn",
-          "args": [
-            "volatility_fastapi_server:app"
-          ],
+          "args": ["volatility_fastapi_server:app"],
           "env": {}
         },
         "vol-mcp-server-configured": {

@@ -28,10 +28,7 @@
       "mcpServers": {
         "graphlit-mcp-server": {
           "command": "npx",
-          "args": [
-            "-y",
-            "graphlit-mcp-server"
-          ],
+          "args": ["-y", "graphlit-mcp-server"],
           "env": {
             "GRAPHLIT_ORGANIZATION_ID": "your-organization-id",
             "GRAPHLIT_ENVIRONMENT_ID": "your-environment-id",

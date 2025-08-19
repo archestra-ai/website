@@ -28,10 +28,7 @@
       "mcpServers": {
         "youtube-uploader-mcp": {
           "command": "/absolute/path/to/youtube-uploader-mcp-<os>-<arch>",
-          "args": [
-            "-client_secret_file",
-            "/absolute/path/to/client_secret.json(See Below)"
-          ],
+          "args": ["-client_secret_file", "/absolute/path/to/client_secret.json(See Below)"],
           "env": {}
         }
       }

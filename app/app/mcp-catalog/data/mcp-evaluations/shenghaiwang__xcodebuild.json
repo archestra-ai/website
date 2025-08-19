@@ -28,17 +28,12 @@
       "mcpServers": {
         "mcpxcodebuild-uvx": {
           "command": "uvx",
-          "args": [
-            "mcpxcodebuild"
-          ],
+          "args": ["mcpxcodebuild"],
           "env": {}
         },
         "mcpxcodebuild-pip": {
           "command": "python",
-          "args": [
-            "-m",
-            "mcpxcodebuild"
-          ],
+          "args": ["-m", "mcpxcodebuild"],
           "env": {}
         }
       }

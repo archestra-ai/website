@@ -28,9 +28,7 @@
       "mcpServers": {
         "keboola_mcp_server": {
           "command": "uvx",
-          "args": [
-            "keboola_mcp_server"
-          ],
+          "args": ["keboola_mcp_server"],
           "env": {
             "KBC_STORAGE_API_URL": "https://connection.YOUR_REGION.keboola.com",
             "KBC_STORAGE_TOKEN": "your_keboola_storage_token",
