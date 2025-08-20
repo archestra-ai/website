@@ -9,14 +9,14 @@ export default function Footer() {
   return (
     <footer className="border-t border-gray-200 bg-white py-6">
       <div className="container px-4 md:px-6">
-        <div className="flex items-center justify-between">
-          <div className="flex flex-col">
+        <div className="flex flex-col sm:flex-row items-center sm:justify-between gap-4">
+          <div className="flex flex-col text-center sm:text-left">
             <p className="text-xs text-gray-400">
               © {new Date().getFullYear()} {companyAlternateName}. All rights reserved.
             </p>
             <p className="text-xs text-gray-400 mt-1">{companyName} Inc.</p>
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
             <Image
               src="/cncf.png"
               alt="CNCF Logo"

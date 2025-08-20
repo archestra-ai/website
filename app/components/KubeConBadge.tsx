@@ -26,12 +26,12 @@ export default function KubeConBadge() {
   if (!isVisible || isDismissed) return null;
 
   return (
-    <div className="fixed bottom-20 right-6 z-50 animate-in slide-in-from-bottom-5 duration-500">
+    <div className="fixed bottom-20 right-2 sm:right-6 z-50 animate-in slide-in-from-bottom-5 duration-500">
       <a
         href="https://calendly.com/motakuk/meet-archestra-at-kubecon-north-america-2025"
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative flex items-center gap-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-4 rounded-xl shadow-2xl hover:shadow-3xl transition-all hover:scale-105 max-w-md"
+        className="group relative flex items-center gap-2 sm:gap-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 sm:px-6 py-3 sm:py-4 rounded-xl shadow-2xl hover:shadow-3xl transition-all hover:scale-105 max-w-[90vw] sm:max-w-md"
       >
         <button
           onClick={(e) => {
@@ -49,14 +49,14 @@ export default function KubeConBadge() {
           <img
             src="/kcna25-white.svg"
             alt="KubeCon NA 2025"
-            className="h-14 w-auto"
+            className="h-10 sm:h-14 w-auto"
           />
         </div>
         
         <div className="flex flex-col">
-          <span className="text-sm font-semibold opacity-90">Meet us at KubeCon NA 2025</span>
-          <span className="text-lg font-bold">November 10-13</span>
-          <span className="text-sm opacity-90">Atlanta, Georgia</span>
+          <span className="text-xs sm:text-sm font-semibold opacity-90">Meet us at KubeCon NA 2025</span>
+          <span className="text-sm sm:text-lg font-bold">November 10-13</span>
+          <span className="text-xs sm:text-sm opacity-90">Atlanta, Georgia</span>
           <span className="text-xs mt-1 underline group-hover:no-underline">Schedule a meeting →</span>
         </div>
       </a>
