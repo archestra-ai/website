@@ -6,7 +6,9 @@ description: 'Archestra has joined the Cloud Native Computing Foundation (CNCF) 
 image: '/blog/pixelated-modern-abstract-pattern.png'
 ---
 
-Today, we're excited to share that Archestra has officially joined the Cloud Native Computing Foundation (CNCF) as a Silver Member and The Linux Foundation. This partnership represents a crucial step forward in our mission to build enterprise-grade infrastructure for AI agents through open collaboration and innovation.
+I have been a long-time fan of Open Source, building and maintaining open source projects like [Grafana OnCall](https://github.com/grafana/oncall), or supporting such a great initiative as [Open Source Endowment](https://endowment.dev/). That's why I believe that planting the right OSS DNA in the company from the first day is crucial.
+
+Today, I'm excited to share that Archestra has officially joined the Cloud Native Computing Foundation (CNCF) as a Silver Member and The Linux Foundation. This partnership represents a crucial step forward in our mission to build enterprise-grade infrastructure for AI agents through open collaboration and innovation.
 
 ## Our Commitment to Open Source
 
