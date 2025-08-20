@@ -39,11 +39,9 @@ export function getAllPosts(): BlogPost[] {
       });
 
     return allPostsData.sort((a, b) => {
-      if (a.date < b.date) {
-        return 1;
-      } else {
-        return -1;
-      }
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      return dateB - dateA; // Sort in descending order (newest first)
     });
   } catch (error) {
     console.error('Error reading blog posts:', error);

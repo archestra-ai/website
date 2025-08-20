@@ -84,6 +84,16 @@ export default async function BlogPostPage({ params }: Props) {
 
               <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto mb-8">{post.excerpt}</p>
 
+              {post.image && (
+                <div className="mb-8 max-w-4xl mx-auto">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full rounded-lg shadow-lg"
+                  />
+                </div>
+              )}
+
               {(post.github || post.cta) && (
                 <div className="flex items-center justify-center gap-4">
                   {post.github && (
