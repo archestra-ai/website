@@ -22,13 +22,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     permissions:
-      contents: write  # Allow the workflow to push commits
+      contents: write # Allow the workflow to push commits
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all history for proper diff comparison
+          fetch-depth: 0 # Fetch all history for proper diff comparison
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -128,14 +128,14 @@ jobs:
           # Show git status for debugging
           echo "=== Git status before adding files ==="
           git status
-          
+
           # Add evaluation files
           git add app/app/mcp-catalog/data/mcp-evaluations/*.json
-          
+
           # Show what will be committed
           echo "=== Git status after adding files ==="
           git status
-          
+
           # Check for changes
           if git diff --cached --quiet; then
             echo "No changes to commit"

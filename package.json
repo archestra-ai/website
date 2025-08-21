@@ -1,6 +1,10 @@
 {
-	"dependencies": {
-		"recharts": "^3.1.2",
-		"@vercel/kv": "^3.0.0"
-	}
+  "dependencies": {
+    "@vercel/kv": "^3.0.0",
+    "prettier": "^3.6.2",
+    "recharts": "^3.1.2"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2"
+  }
 }

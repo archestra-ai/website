@@ -44,15 +44,11 @@ export default function KubeConBadge() {
         >
           <X className="h-4 w-4" />
         </button>
-        
+
         <div className="flex-shrink-0">
-          <img
-            src="/kcna25-white.svg"
-            alt="KubeCon NA 2025"
-            className="h-10 sm:h-14 w-auto"
-          />
+          <img src="/kcna25-white.svg" alt="KubeCon NA 2025" className="h-10 sm:h-14 w-auto" />
         </div>
-        
+
         <div className="flex flex-col">
           <span className="text-xs sm:text-sm font-semibold opacity-90">Meet us at KubeCon NA 2025</span>
           <span className="text-sm sm:text-lg font-bold">November 10-13</span>
