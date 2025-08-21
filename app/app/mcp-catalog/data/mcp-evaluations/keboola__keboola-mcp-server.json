@@ -75,8 +75,8 @@
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
-    "implementing_prompts": false,
-    "implementing_resources": true,
+    "implementing_prompts": true,
+    "implementing_resources": false,
     "implementing_sampling": false,
     "implementing_roots": false,
     "implementing_logging": false,

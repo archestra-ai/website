@@ -1,7 +1,7 @@
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata, Viewport } from 'next';
 
-import { PostHogProvider } from '@components/PostHogProvider';
+import KubeConBadge from '@components/KubeConBadge';
 import constants from '@constants';
 
 import './globals.css';
@@ -78,7 +78,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <PostHogProvider>{children}</PostHogProvider>
+        {children}
+        <KubeConBadge />
         <GoogleAnalytics gaId={constants.googleAnalytics.measurementId} />
       </body>
     </html>

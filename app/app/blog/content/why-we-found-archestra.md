@@ -3,6 +3,7 @@ title: 'Why We Founded Archestra'
 date: '2025-08-11'
 author: 'Matvey Kukuy, CEO'
 description: "Why can't an AI draft 150 personalized emails to investors for my new startup?"
+image: '/blog/02.jpg'
 ---
 
 A while back, I reached out to Ildar and Joey—two of the best engineers I know with a simple question. It sounded naive, and I thought the answer would be easy.

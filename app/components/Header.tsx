@@ -2,6 +2,7 @@
 
 import { ChevronDown, Menu, X } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 import { GitHubStarButton } from '@components/GitHubStarButton';
@@ -41,7 +42,7 @@ export default function Header() {
     <header className="border-b border-gray-200 bg-white">
       <div className="container flex items-center px-4 md:px-6 justify-between h-16">
         <div className="flex items-center gap-8">
-          <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <Image
               src={websiteUrls.logoRelativeUrl}
               alt={`${companyName} Logo`}
@@ -50,7 +51,7 @@ export default function Header() {
               className="object-contain"
             />
             <span className="font-mono text-2xl text-black hidden lg:inline">Archestra.AI</span>
-          </a>
+          </Link>
           <nav className="hidden lg:flex items-center gap-6 mt-1">
             {/* Product Dropdown */}
             <div className="relative" ref={productDropdownRef}>
@@ -90,12 +91,12 @@ export default function Header() {
               )}
             </div>
 
-            <a href="/blog" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
+            <Link href="/blog" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
               Blog
-            </a>
-            <a href="/mcp-catalog" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
+            </Link>
+            <Link href="/mcp-catalog" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
               MCP Catalog
-            </a>
+            </Link>
 
             {/* Reports Dropdown */}
             <div className="relative" ref={dropdownRef}>
@@ -109,21 +110,21 @@ export default function Header() {
 
               {isReportsOpen && (
                 <div className="absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
-                  <a
+                  <Link
                     href="/state-of-mcp"
                     className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors rounded-lg"
                     onClick={() => setIsReportsOpen(false)}
                   >
                     <div className="font-medium">State of MCP Report Q3 2025</div>
                     <div className="text-xs text-gray-500 mt-0.5">Comprehensive analysis of the MCP ecosystem</div>
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
 
-            <a href="/about" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
+            <Link href="/about" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
               About
-            </a>
+            </Link>
           </nav>
         </div>
 
@@ -185,20 +186,20 @@ export default function Header() {
               )}
             </div>
 
-            <a
+            <Link
               href="/blog"
               className="px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Blog
-            </a>
-            <a
+            </Link>
+            <Link
               href="/mcp-catalog"
               className="px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               MCP Catalog
-            </a>
+            </Link>
 
             {/* Reports Dropdown in Mobile */}
             <div className="px-3 py-2">
@@ -214,7 +215,7 @@ export default function Header() {
 
               {isMobileReportsOpen && (
                 <div className="mt-2 ml-4">
-                  <a
+                  <Link
                     href="/state-of-mcp"
                     className="block py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
                     onClick={() => {
@@ -222,18 +223,18 @@ export default function Header() {
                     }}
                   >
                     State of MCP Report Q3 2025
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
 
-            <a
+            <Link
               href="/about"
               className="px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               About
-            </a>
+            </Link>
           </nav>
         </div>
       )}

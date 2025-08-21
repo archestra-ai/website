@@ -123,7 +123,7 @@ export default {
         repoName: WEBSITE_REPO_NAME,
         repoUrl: BASE_WEBSITE_GITHUB_URL,
         mainBranchName: MAIN_BRANCH_NAME,
-        mcpCatalogDirectoryPath: MCP_CATALOG_DIRECTORY_PATH,
+        mcpCatalogDirectoryPath: MCP_CATALOG_DATA_DIRECTORY_PATH,
         newIssueUrl: `${BASE_WEBSITE_GITHUB_URL}/issues/new`,
         viewMcpCatalogDirectoryUrl: MCP_CATALOG_BASE_DIRECTORY_URL,
         editMcpCatalogJsonFileUrl: `${BASE_WEBSITE_GITHUB_URL}/edit/${MAIN_BRANCH_NAME}/${MCP_CATALOG_DATA_DIRECTORY_PATH}/mcp-servers.json`,
@@ -139,10 +139,6 @@ export default {
   },
   twitter: {
     handle: '@archestra_ai',
-  },
-  posthog: {
-    host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-    token: process.env.NEXT_PUBLIC_POSTHOG_KEY,
   },
   googleAnalytics: {
     measurementId: 'G-ZMQMSHJV9F',
