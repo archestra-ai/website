@@ -1,5 +1,5 @@
-import { kv } from '@vercel/kv';
 import { NextResponse } from 'next/server';
+import { createClient } from 'redis';
 
 import constants from '@constants';
 
@@ -12,12 +12,16 @@ const {
   },
 } = constants;
 
-const KV_KEY = 'github-stars-history';
+const REDIS_KEY = 'github-stars-history';
 
 interface StarDataPoint {
   date: string;
   stars: number;
 }
+
+// Create Redis client - will automatically use REDIS_URL on Vercel
+const redis = createClient();
+redis.on('error', (err) => console.error('Redis Client Error', err));
 
 async function fetchCurrentStars(): Promise<number> {
   const githubApiUrl = `https://api.github.com/repos/${githubOrgName}/${githubArchestraRepoName}`;
@@ -45,54 +49,58 @@ async function fetchCurrentStars(): Promise<number> {
 export async function GET() {
   try {
     const today = new Date().toISOString().split('T')[0];
+    console.log(`GitHub Stars API called for date: ${today}`);
     
     // Initialize history array
     let history: StarDataPoint[] = [];
     
-    // Check if KV is configured
-    if (!process.env.KV_URL) {
-      // If KV is not configured, fetch current stars and return today's data point
+    try {
+      // Connect to Redis
+      await redis.connect();
+      console.log('Redis connected, checking for stored data...');
+      
+      // Get history from Redis
+      const storedData = await redis.get(REDIS_KEY);
+      if (storedData) {
+        history = JSON.parse(storedData) as StarDataPoint[];
+        console.log(`Found ${history.length} historical data points in Redis`);
+      } else {
+        console.log('No historical data found in Redis');
+      }
+      
+      // Check if we already have today's data
+      const todayIndex = history.findIndex(point => point.date === today);
+      console.log(`Today's data exists: ${todayIndex >= 0}`);
+      
+      if (todayIndex >= 0) {
+        // We already have today's data, no need to fetch from GitHub
+        console.log(`Using cached star data for today: ${history[todayIndex].stars} stars`);
+      } else {
+        // We don't have today's data, fetch from GitHub
+        console.log('Fetching fresh star data from GitHub');
+        const currentStars = await fetchCurrentStars();
+        
+        // Add new entry for today
+        history.push({ date: today, stars: currentStars });
+        
+        // Sort by date
+        history.sort((a, b) => a.date.localeCompare(b.date));
+
+        // Save updated history to Redis
+        await redis.set(REDIS_KEY, JSON.stringify(history));
+        console.log('Updated history saved to Redis');
+      }
+      
+      // Disconnect from Redis
+      await redis.disconnect();
+    } catch (redisError) {
+      console.error('Redis error (falling back to direct fetch):', redisError);
+      // If Redis fails, just fetch current data
       const currentStars = await fetchCurrentStars();
       history = [{
         date: today,
         stars: currentStars
       }];
-      return NextResponse.json({ history });
-    }
-
-    // Get history from KV
-    try {
-      const storedHistory = await kv.get<StarDataPoint[]>(KV_KEY);
-      if (storedHistory) {
-        history = storedHistory;
-      }
-    } catch (kvError) {
-      console.error('Error reading from KV:', kvError);
-    }
-
-    // Check if we already have today's data
-    const todayIndex = history.findIndex(point => point.date === today);
-    
-    if (todayIndex >= 0) {
-      // We already have today's data, no need to fetch from GitHub
-      console.log('Using cached star data for today');
-    } else {
-      // We don't have today's data, fetch from GitHub
-      console.log('Fetching fresh star data from GitHub');
-      const currentStars = await fetchCurrentStars();
-      
-      // Add new entry for today
-      history.push({ date: today, stars: currentStars });
-      
-      // Sort by date
-      history.sort((a, b) => a.date.localeCompare(b.date));
-
-      // Save updated history to KV
-      try {
-        await kv.set(KV_KEY, history);
-      } catch (kvError) {
-        console.error('Error writing to KV:', kvError);
-      }
     }
 
     return NextResponse.json({ history });
