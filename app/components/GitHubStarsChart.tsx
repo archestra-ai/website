@@ -64,7 +64,7 @@ export default function GitHubStarsChart() {
   };
 
   // Format the data for the chart
-  const chartData = data.map(point => ({
+  const chartData = data.map((point) => ({
     ...point,
     displayDate: formatDate(point.date),
   }));
@@ -73,47 +73,44 @@ export default function GitHubStarsChart() {
     <div className="w-full">
       <h4 className="text-xs font-medium text-gray-600 mb-2">Star History</h4>
       <ResponsiveContainer width="100%" height={200}>
-        <AreaChart
-          data={chartData}
-          margin={{ top: 5, right: 5, left: 5, bottom: 5 }}
-        >
+        <AreaChart data={chartData} margin={{ top: 5, right: 5, left: 5, bottom: 5 }}>
           <defs>
             <linearGradient id="colorStars" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
-              <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+              <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3} />
+              <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-          <XAxis 
-            dataKey="displayDate" 
+          <XAxis
+            dataKey="displayDate"
             tick={{ fontSize: 10, fill: '#6b7280' }}
             tickLine={false}
             axisLine={{ stroke: '#e5e7eb' }}
             interval="preserveStartEnd"
           />
-          <YAxis 
+          <YAxis
             tick={{ fontSize: 10, fill: '#6b7280' }}
             tickLine={false}
             axisLine={{ stroke: '#e5e7eb' }}
             width={35}
           />
-          <Tooltip 
-            contentStyle={{ 
-              backgroundColor: 'white', 
+          <Tooltip
+            contentStyle={{
+              backgroundColor: 'white',
               border: '1px solid #e5e7eb',
               borderRadius: '6px',
-              fontSize: '12px'
+              fontSize: '12px',
             }}
             labelFormatter={(value) => `Date: ${value}`}
             formatter={(value: number) => [`${value} stars`, 'Stars']}
           />
-          <Area 
-            type="monotone" 
-            dataKey="stars" 
-            stroke="#3b82f6" 
+          <Area
+            type="monotone"
+            dataKey="stars"
+            stroke="#3b82f6"
             strokeWidth={2}
-            fillOpacity={1} 
-            fill="url(#colorStars)" 
+            fillOpacity={1}
+            fill="url(#colorStars)"
           />
         </AreaChart>
       </ResponsiveContainer>
