@@ -44,8 +44,6 @@ async function fetchCurrentStars(): Promise<number> {
 
 export async function GET() {
   try {
-    // Get current stars
-    const currentStars = await fetchCurrentStars();
     const today = new Date().toISOString().split('T')[0];
     
     // Initialize history array
@@ -53,7 +51,8 @@ export async function GET() {
     
     // Check if KV is configured
     if (!process.env.KV_URL) {
-      // If KV is not configured, just return today's data point
+      // If KV is not configured, fetch current stars and return today's data point
+      const currentStars = await fetchCurrentStars();
       history = [{
         date: today,
         stars: currentStars
@@ -75,21 +74,25 @@ export async function GET() {
     const todayIndex = history.findIndex(point => point.date === today);
     
     if (todayIndex >= 0) {
-      // Update today's entry
-      history[todayIndex].stars = currentStars;
+      // We already have today's data, no need to fetch from GitHub
+      console.log('Using cached star data for today');
     } else {
+      // We don't have today's data, fetch from GitHub
+      console.log('Fetching fresh star data from GitHub');
+      const currentStars = await fetchCurrentStars();
+      
       // Add new entry for today
       history.push({ date: today, stars: currentStars });
-    }
+      
+      // Sort by date
+      history.sort((a, b) => a.date.localeCompare(b.date));
 
-    // Sort by date
-    history.sort((a, b) => a.date.localeCompare(b.date));
-
-    // Save updated history to KV (no limit on history)
-    try {
-      await kv.set(KV_KEY, history);
-    } catch (kvError) {
-      console.error('Error writing to KV:', kvError);
+      // Save updated history to KV
+      try {
+        await kv.set(KV_KEY, history);
+      } catch (kvError) {
+        console.error('Error writing to KV:', kvError);
+      }
     }
 
     return NextResponse.json({ history });
