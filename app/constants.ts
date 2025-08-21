@@ -140,10 +140,6 @@ export default {
   twitter: {
     handle: '@archestra_ai',
   },
-  posthog: {
-    host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-    token: process.env.NEXT_PUBLIC_POSTHOG_KEY,
-  },
   googleAnalytics: {
     measurementId: 'G-ZMQMSHJV9F',
   },
