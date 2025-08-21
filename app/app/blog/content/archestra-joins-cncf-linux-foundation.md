@@ -1,7 +1,7 @@
 ---
 title: 'Joining the CNCF and The Linux Foundation'
 date: 2025-08-20
-author: 'Matvey Kukuy (CEO)'
+author: 'Matvey Kukuy, CEO'
 description: 'Archestra has joined the Cloud Native Computing Foundation (CNCF) and The Linux Foundation to reinforces our commitment to open-source.'
 image: '/blog/pixelated-modern-abstract-pattern.png'
 ---

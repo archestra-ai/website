@@ -124,6 +124,11 @@ export default async function BlogPostPage({ params }: Props) {
               )}
             </header>
 
+            <div className="max-w-3xl mx-auto mb-8 text-left">
+              <p className="text-gray-600 text-sm">Written by</p>
+              <p className="text-gray-900 font-medium">{post.author}</p>
+            </div>
+
             <div className="max-w-3xl mx-auto text-left">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm, remarkBreaks]}
@@ -171,13 +176,6 @@ export default async function BlogPostPage({ params }: Props) {
               >
                 {post.content}
               </ReactMarkdown>
-            </div>
-
-            <div className="max-w-3xl mx-auto mt-12 pt-8 border-t border-gray-200">
-              <div className="text-left">
-                <p className="text-gray-600 text-sm">Written by</p>
-                <p className="text-gray-900 font-medium">{post.author}</p>
-              </div>
             </div>
           </article>
         </div>
