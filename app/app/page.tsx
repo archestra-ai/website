@@ -2,6 +2,7 @@ import { AlertTriangle, Cpu, GitCommit, Github, MessageSquare, Monitor, Package,
 
 import { EmailForm } from '@components/EmailForm';
 import Footer from '@components/Footer';
+import GitHubStarsChart from '@components/GitHubStarsChart';
 import Header from '@components/Header';
 import constants from '@constants';
 import { loadServers } from '@mcpCatalog/lib/catalog';
@@ -198,7 +199,7 @@ export default async function Home() {
                     </a>
                     !
                   </p>
-                  <div className="flex gap-4 text-xs text-gray-600">
+                  <div className="flex gap-4 text-xs text-gray-600 mb-3">
                     <span className="flex items-center gap-1">
                       <Star className="h-3 w-3" />
                       {githubStats.stars} stars
@@ -212,6 +213,7 @@ export default async function Home() {
                       {githubStats.commits} commits
                     </span>
                   </div>
+                  <GitHubStarsChart />
                 </div>
               </div>
 
