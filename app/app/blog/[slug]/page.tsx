@@ -86,11 +86,7 @@ export default async function BlogPostPage({ params }: Props) {
 
               {post.image && (
                 <div className="mb-8 max-w-4xl mx-auto">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full rounded-lg shadow-lg"
-                  />
+                  <img src={post.image} alt={post.title} className="w-full rounded-lg shadow-lg" />
                 </div>
               )}
 

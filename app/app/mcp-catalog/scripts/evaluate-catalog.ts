@@ -494,122 +494,157 @@ function convertToGeminiSchema(jsonSchema: any): any {
  * Call LLM (Ollama or Gemini) for analysis
  */
 async function callLLM(prompt: string, format?: any, model = 'gemini-2.5-pro'): Promise<any> {
-  try {
-    // Check if this is a Gemini model
-    if (model.startsWith('gemini-')) {
-      // Call Gemini API
-      const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
-      if (!apiKey) {
-        throw new Error('GEMINI_API_KEY or GOOGLE_API_KEY environment variable is required for Gemini models');
+  // Add retry logic for transient failures
+  const maxRetries = 3;
+  let lastError: any;
+
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      if (attempt > 1) {
+        // Wait before retry (exponential backoff)
+        const delay = Math.min(1000 * Math.pow(2, attempt - 1), 10000);
+        console.log(`  ⏳ Retrying LLM call (attempt ${attempt}/${maxRetries}) after ${delay}ms...`);
+        await new Promise((resolve) => setTimeout(resolve, delay));
       }
 
-      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-
-      // Convert format schema to Gemini's response schema format if provided
-      let generationConfig: any = {
-        temperature: 0.1,
-        topP: 0.9,
-        candidateCount: 1,
-      };
-
-      if (format) {
-        generationConfig.responseMimeType = 'application/json';
-        // Convert JSON Schema to Gemini's schema format
-        const convertedSchema = convertToGeminiSchema(format);
-        console.log('Converted schema for Gemini:', JSON.stringify(convertedSchema, null, 2));
-        generationConfig.responseSchema = convertedSchema;
-      }
-
-      const response = await fetch(geminiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          contents: [
-            {
-              parts: [
-                {
-                  text: prompt,
-                },
-              ],
-            },
-          ],
-          generationConfig,
-        }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(`Gemini API error: ${response.status} - ${JSON.stringify(errorData)}`);
-      }
-
-      const data = await response.json();
-      const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
-
-      if (!responseText) {
-        throw new Error('No response text from Gemini');
-      }
-
-      // Debug logging
-      console.log('Raw Gemini response:', responseText.substring(0, 200) + '...');
-
-      try {
-        // Try to extract JSON from the response if it contains extra text
-        const jsonMatch = responseText.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-          return JSON.parse(jsonMatch[0]);
+      // Check if this is a Gemini model
+      if (model.startsWith('gemini-')) {
+        // Call Gemini API
+        const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
+        if (!apiKey) {
+          throw new Error('GEMINI_API_KEY or GOOGLE_API_KEY environment variable is required for Gemini models');
         }
-        return JSON.parse(responseText);
-      } catch (parseError: any) {
-        console.error('Failed to parse JSON:', responseText);
-        throw new Error(`Invalid JSON response from Gemini: ${parseError.message}`);
-      }
-    } else {
-      // Call Ollama API (existing code)
-      const response = await fetch('http://localhost:11434/api/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model,
-          prompt,
-          stream: false,
-          format: format || 'json',
-          options: {
-            temperature: 0.1,
-            top_p: 0.9,
+
+        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+        // Convert format schema to Gemini's response schema format if provided
+        let generationConfig: any = {
+          temperature: 0.1,
+          topP: 0.9,
+          candidateCount: 1,
+        };
+
+        if (format) {
+          generationConfig.responseMimeType = 'application/json';
+          // Convert JSON Schema to Gemini's schema format
+          const convertedSchema = convertToGeminiSchema(format);
+          console.log('Converted schema for Gemini:', JSON.stringify(convertedSchema, null, 2));
+          generationConfig.responseSchema = convertedSchema;
+        }
+
+        const response = await fetch(geminiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
           },
-        }),
-      });
+          body: JSON.stringify({
+            contents: [
+              {
+                parts: [
+                  {
+                    text: prompt,
+                  },
+                ],
+              },
+            ],
+            generationConfig,
+          }),
+        });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      const responseText = data.response.trim();
-
-      // Debug logging
-      console.log('Raw Ollama response:', responseText.substring(0, 200) + '...');
-
-      try {
-        // Try to extract JSON from the response if it contains extra text
-        const jsonMatch = responseText.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-          return JSON.parse(jsonMatch[0]);
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(`Gemini API error: ${response.status} - ${JSON.stringify(errorData)}`);
         }
-        return JSON.parse(responseText);
-      } catch (parseError: any) {
-        console.error('Failed to parse JSON:', responseText);
-        throw new Error(`Invalid JSON response from Ollama: ${parseError.message}`);
+
+        const data = await response.json();
+
+        // Check for API errors in response
+        if (data.error) {
+          throw new Error(`Gemini API error: ${data.error.message || JSON.stringify(data.error)}`);
+        }
+
+        // Check if candidates array is empty (could indicate content filtering)
+        if (!data.candidates || data.candidates.length === 0) {
+          console.error('Gemini response has no candidates:', JSON.stringify(data).substring(0, 500));
+          throw new Error('Gemini returned no candidates (possible content filtering or rate limit)');
+        }
+
+        const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+
+        if (!responseText) {
+          console.error('Gemini response structure:', JSON.stringify(data).substring(0, 500));
+          throw new Error('No response text from Gemini');
+        }
+
+        // Debug logging
+        console.log('Raw Gemini response:', responseText.substring(0, 200) + '...');
+
+        try {
+          // Try to extract JSON from the response if it contains extra text
+          const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            return JSON.parse(jsonMatch[0]);
+          }
+          return JSON.parse(responseText);
+        } catch (parseError: any) {
+          console.error('Failed to parse JSON:', responseText);
+          throw new Error(`Invalid JSON response from Gemini: ${parseError.message}`);
+        }
+      } else {
+        // Call Ollama API (existing code)
+        const response = await fetch('http://localhost:11434/api/generate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model,
+            prompt,
+            stream: false,
+            format: format || 'json',
+            options: {
+              temperature: 0.1,
+              top_p: 0.9,
+            },
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const responseText = data.response.trim();
+
+        // Debug logging
+        console.log('Raw Ollama response:', responseText.substring(0, 200) + '...');
+
+        try {
+          // Try to extract JSON from the response if it contains extra text
+          const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            return JSON.parse(jsonMatch[0]);
+          }
+          return JSON.parse(responseText);
+        } catch (parseError: any) {
+          console.error('Failed to parse JSON:', responseText);
+          throw new Error(`Invalid JSON response from Ollama: ${parseError.message}`);
+        }
+      }
+    } catch (error: any) {
+      lastError = error;
+      console.error(`LLM call attempt ${attempt} failed:`, error.message);
+
+      // If it's not the last attempt, continue to retry
+      if (attempt < maxRetries) {
+        continue;
       }
     }
-  } catch (error) {
-    console.error('Error calling LLM:', error);
-    throw error;
   }
+
+  // All retries exhausted, throw the last error
+  console.error('All LLM call attempts failed');
+  throw lastError;
 }
 
 /**
@@ -733,8 +768,8 @@ async function extractCategory(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  // Skip if human evaluation (evaluation_model === null)
-  if (server.evaluation_model === null && !force) {
+  // Skip if human evaluation (evaluation_model === null AND category already exists)
+  if (server.evaluation_model === null && server.category && !force) {
     console.log(`  ⏭️  Category: Skipped (human evaluation)`);
     return server;
   }
@@ -784,8 +819,8 @@ async function extractArchestraClientConfigPermutationsConfig(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  // Skip if human evaluation (evaluation_model === null)
-  if (server.evaluation_model === null && !force) {
+  // Skip if human evaluation (evaluation_model === null AND server config already exists)
+  if (server.evaluation_model === null && server.server && !force) {
     console.log(`  ⏭️  Server Config: Skipped (human evaluation)`);
     return server;
   }
@@ -920,8 +955,8 @@ async function extractCanonicalServerAndUserConfigConfig(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  // Skip if human evaluation (evaluation_model === null)
-  if (server.evaluation_model === null && !force) {
+  // Skip if human evaluation (evaluation_model === null AND configs already exist)
+  if (server.evaluation_model === null && server.server && server.user_config && !force) {
     console.log(`  ⏭️  Canonical Server and User Config: Skipped (human evaluation)`);
     return server;
   }
@@ -1294,8 +1329,8 @@ async function extractArchestraOauthConfig(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  // Skip if human evaluation (evaluation_model === null)
-  if (server.evaluation_model === null && !force) {
+  // Skip if human evaluation (evaluation_model === null AND archestra_config already exists)
+  if (server.evaluation_model === null && server.archestra_config && !force) {
     console.log(`  ⏭️  Archestra OAuth Config: Skipped (human evaluation)`);
     return server;
   }
@@ -1365,8 +1400,8 @@ async function extractDependencies(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  // Skip if human evaluation (evaluation_model === null)
-  if (server.evaluation_model === null && !force) {
+  // Skip if human evaluation (evaluation_model === null AND dependencies already exist)
+  if (server.evaluation_model === null && server.dependencies && server.dependencies.length > 0 && !force) {
     console.log(`  ⏭️  Dependencies: Skipped (human evaluation)`);
     return server;
   }
@@ -1473,8 +1508,10 @@ async function extractProtocolFeatures(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  // Skip if human evaluation (evaluation_model === null)
-  if (server.evaluation_model === null && !force) {
+  // Skip if human evaluation (evaluation_model === null AND protocol features already evaluated)
+  // Check if at least one protocol feature is true (indicating it's been evaluated)
+  const hasProtocolFeatures = Object.values(server.protocol_features || {}).some((v) => v === true);
+  if (server.evaluation_model === null && hasProtocolFeatures && !force) {
     console.log(`  ⏭️  Protocol Features: Skipped (human evaluation)`);
     return server;
   }
@@ -1811,7 +1848,15 @@ async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<
   }
 
   // Read all GitHub URLs
-  let githubUrls: string[] = JSON.parse(fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf8'));
+  let allUrls: string[] = JSON.parse(fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf8'));
+
+  // Filter out non-GitHub URLs (e.g., GitLab)
+  let githubUrls = allUrls.filter((url) => url.includes('github.com'));
+
+  if (githubUrls.length < allUrls.length) {
+    console.log(`⚠️  Skipping ${allUrls.length - githubUrls.length} non-GitHub URLs (GitLab, etc.)`);
+  }
+
   const existingFiles = fs.readdirSync(MCP_SERVERS_EVALUATIONS_DIR).filter((f) => f.endsWith('.json'));
 
   // Filter to only missing servers if --missing-only flag is set
@@ -2032,7 +2077,7 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
     options.updateScore = true;
   }
 
-  const githubUrl = args.find((arg) => arg.includes('github.com'));
+  const url = args.find((arg) => arg.includes('://') || arg.includes('github.com'));
 
   // Check GitHub token
   if (!process.env.GITHUB_TOKEN) {
@@ -2041,8 +2086,13 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
   }
 
   // Single repo evaluation
-  if (githubUrl) {
-    await evaluateSingleRepo(githubUrl, options);
+  if (url) {
+    if (!url.includes('github.com')) {
+      console.log(`⚠️  Skipping non-GitHub URL: ${url}`);
+      console.log('   This script only supports GitHub repositories.');
+      return;
+    }
+    await evaluateSingleRepo(url, options);
   } else {
     // Batch evaluation
     await evaluateAllRepos(options);

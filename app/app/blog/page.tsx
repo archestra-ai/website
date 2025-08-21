@@ -54,11 +54,7 @@ export default function BlogPage() {
                   <Link href={`/blog/${slug}`} className="flex flex-col h-full">
                     {image && (
                       <div className="aspect-video relative overflow-hidden bg-gray-100">
-                        <img
-                          src={image}
-                          alt={title}
-                          className="w-full h-full object-cover"
-                        />
+                        <img src={image} alt={title} className="w-full h-full object-cover" />
                       </div>
                     )}
                     <div className="p-6 flex flex-col flex-grow">

@@ -94,7 +94,10 @@ export default function Header() {
             <Link href="/blog" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
               Blog
             </Link>
-            <Link href="/mcp-catalog" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
+            <Link
+              href="/mcp-catalog"
+              className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors"
+            >
               MCP Catalog
             </Link>
 

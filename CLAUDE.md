@@ -107,6 +107,7 @@ The MCP catalog is a core feature that:
 #### Quality Scoring Algorithm
 
 The MCP servers are scored on a 0-100 scale based on:
+
 - **MCP Protocol Implementation** (40 points max) - Tools, resources, prompts, sampling features
 - **GitHub Metrics** (20 points max) - Stars, contributors, issues (adjusted for multi-server repos)
 - **Documentation Quality** (20 points max)
@@ -115,6 +116,7 @@ The MCP servers are scored on a 0-100 scale based on:
 ### API Routes and OpenAPI Workflow
 
 The MCP Catalog API provides:
+
 - `/mcp-catalog/api/search` - Search servers with filtering and pagination
 - `/mcp-catalog/api/server/[name]` - Get individual server details
 - `/mcp-catalog/api/category` - List available categories
@@ -123,6 +125,7 @@ The MCP Catalog API provides:
 - `/mcp-catalog/api-docs` - Swagger UI documentation
 
 **OpenAPI Generation Workflow:**
+
 1. API schemas defined with Zod in `/app/app/mcp-catalog/api/schemas.ts`
 2. Endpoints registered in `/app/app/mcp-catalog/api/openapi.ts`
 3. Run `pnpm openapi:generate` to generate `/app/app/mcp-catalog/api/docs/openapi.json`
@@ -133,6 +136,7 @@ All API routes use Zod validation for request parameters and response data.
 ### Blog System
 
 The blog system:
+
 - Reads markdown files from `/content/blog/*.md` (content directory is gitignored)
 - Uses gray-matter for front matter parsing
 - Calculates reading time automatically
@@ -142,6 +146,7 @@ The blog system:
 ### CI/CD Pipeline
 
 GitHub Actions workflows enforce:
+
 - PR title linting (conventional commits)
 - Prettier formatting
 - TypeScript type checking

@@ -21,10 +21,14 @@ jobs:
   evaluate:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    permissions:
+      contents: write # Allow the workflow to push commits
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for proper diff comparison
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -59,6 +63,27 @@ jobs:
           if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
             echo "Running forced evaluation of all servers..."
             npm run catalog:evaluate -- --all --force --concurrency ${{ github.event.inputs.concurrency || '5' }}
+          elif [[ "${{ github.event_name }}" == "push" ]]; then
+            echo "Detecting newly added servers from git diff..."
+            
+            # Get the diff of mcp-servers.json
+            git diff HEAD~1 HEAD -- app/mcp-catalog/data/mcp-servers.json > diff.txt || true
+            
+            # Extract only added URLs (lines starting with +)
+            grep '^+  "https://github.com' diff.txt | sed 's/^+  "//' | sed 's/",$//' | sed 's/"$//' > new_servers.txt || true
+            
+            if [ -s new_servers.txt ]; then
+              echo "Found $(wc -l < new_servers.txt) new servers to evaluate:"
+              cat new_servers.txt
+              
+              # Evaluate each new server
+              while IFS= read -r url; do
+                echo "Evaluating: $url"
+                npm run catalog:evaluate -- "$url" --all || echo "Failed to evaluate $url"
+              done < new_servers.txt
+            else
+              echo "No new servers found in this commit"
+            fi
           else
             echo "Evaluating only missing servers..."
             npm run catalog:evaluate -- --missing-only --all --concurrency ${{ github.event.inputs.concurrency || '5' }}
@@ -100,15 +125,27 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
+          # Show git status for debugging
+          echo "=== Git status before adding files ==="
+          git status
+
+          # Add evaluation files
+          git add app/app/mcp-catalog/data/mcp-evaluations/*.json
+
+          # Show what will be committed
+          echo "=== Git status after adding files ==="
+          git status
+
           # Check for changes
-          if git diff --quiet && git diff --staged --quiet; then
+          if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git add app/app/mcp-catalog/data/mcp-evaluations/*.json
-            
             # Create commit message
             if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
               COMMIT_MSG="chore: force re-evaluate all MCP servers"
+            elif [[ "${{ github.event_name }}" == "push" ]] && [ -f app/new_servers.txt ] && [ -s app/new_servers.txt ]; then
+              NEW_COUNT=$(wc -l < app/new_servers.txt)
+              COMMIT_MSG="chore: evaluate $NEW_COUNT newly added MCP server(s)"
             else
               COMMIT_MSG="chore: evaluate missing MCP servers"
             fi

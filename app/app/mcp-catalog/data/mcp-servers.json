@@ -113,7 +113,6 @@
   "https://github.com/juehang/vscode-mcp-server",
   "https://github.com/micl2e2/code-to-tree",
   "https://github.com/oraios/serena",
-  "https://github.com.mcas.ms/pdavis68/RepoMapper",
   "https://github.com/rinadelph/Agent-MCP",
   "https://github.com/stippi/code-assistant",
   "https://github.com/tiianhk/MaxMSP-MCP-Server",
@@ -867,5 +866,6 @@
   "https://github.com/thingsboard/thingsboard-mcp",
   "https://github.com/elastic/mcp-server-elasticsearch",
   "https://github.com/stickerdaniel/linkedin-mcp-server",
-  "https://github.com/awslabs/mcp"
+  "https://github.com/awslabs/mcp",
+  "https://github.com/firecrawl/firecrawl-mcp-server"
 ]
