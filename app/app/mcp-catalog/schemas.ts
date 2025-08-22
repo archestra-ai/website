@@ -66,16 +66,21 @@ export const ArchestraClientConfigPermutationsSchema = z.object({
  * NOTE: when we are ready to add more OAuth providers, we can simply add them here
  * and re-run the `evaluate-catalog.ts` script to have the catalog updated
  */
-export const ArchestraSupportedOauthProvidersSchema = z.enum(['google']);
+export const ArchestraSupportedOauthProvidersSchema = z.enum(['google', 'slack']);
 
 export const ArchestraOauthSchema = z.object({
   provider: ArchestraSupportedOauthProvidersSchema.nullable(),
   required: z.boolean(),
 });
 
+export const ArchestraBrowserBasedSchema = z.object({
+  required: z.boolean(),
+});
+
 export const ArchestraConfigSchema = z.object({
   client_config_permutations: ArchestraClientConfigPermutationsSchema.nullable(),
   oauth: ArchestraOauthSchema,
+  browser_based: ArchestraBrowserBasedSchema.optional(),
 });
 
 export const ArchestraScoreBreakdownSchema = z.object({
