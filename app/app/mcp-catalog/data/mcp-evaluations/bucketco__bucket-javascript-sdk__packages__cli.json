@@ -44,13 +44,13 @@
     "latest_commit_hash": "c84de685346c3c6fe22cc5369bab8081872a0eaf"
   },
   "protocol_features": {
-    "implementing_tools": false,
-    "implementing_prompts": false,
+    "implementing_tools": true,
+    "implementing_prompts": true,
     "implementing_resources": false,
     "implementing_sampling": false,
     "implementing_roots": false,
-    "implementing_logging": false,
-    "implementing_stdio": false,
+    "implementing_logging": true,
+    "implementing_stdio": true,
     "implementing_streamable_http": false,
     "implementing_oauth2": false
   },
