@@ -1,4 +1,5 @@
-import { AlertTriangle, Cpu, GitCommit, Github, MessageSquare, Monitor, Package, Star, Users } from 'lucide-react';
+import { AlertTriangle, Cpu, GitCommit, Github, MessageSquare, Monitor, Package, Star, Users, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 import { EmailForm } from '@components/EmailForm';
 import Footer from '@components/Footer';
@@ -172,13 +173,18 @@ export default async function Home() {
               <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border-2 border-green-300 shadow-md">
                 <Package className="h-6 w-6 text-green-600 mt-0.5 flex-shrink-0" />
                 <div className="flex-1">
-                  <h3 className="font-semibold mb-1 text-green-900">Multi-Tenant Enterprise Platform</h3>
+                  <h3 className="font-semibold mb-1 text-green-900">Multi-Tenant Enterprise MCP Platform</h3>
                   <p className="text-sm text-gray-700 mb-3">
                     Deploy and manage AI-to-Data connectors at scale with enterprise-grade security, compliance, and
-                    governance features. Get notified on launch.
+                    governance features.
                   </p>
                   <div className="w-full max-w-lg">
-                    <EmailForm />
+                    <Link 
+                      href="/enterprise-platform"
+                      className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium text-sm"
+                    >
+                      Book a Demo <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
                   </div>
                 </div>
               </div>
