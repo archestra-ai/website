@@ -88,6 +88,24 @@ export async function GET() {
         console.log('No historical data found in Redis');
       }
 
+      // If we have less than 2 data points, add the seed data
+      if (history.length < 2) {
+        console.log('Less than 2 data points found, adding seed data');
+        const seedDate = '2024-08-05';
+        // Only add if it doesn't already exist
+        if (!history.find(point => point.date === seedDate)) {
+          history.push({
+            date: seedDate,
+            stars: 3
+          });
+          // Sort by date
+          history.sort((a, b) => a.date.localeCompare(b.date));
+          // Save the seed data to Redis
+          await redisClient.set(REDIS_KEY, JSON.stringify(history));
+          console.log('Seed data added to Redis');
+        }
+      }
+
       // Check if we already have today's data
       const todayIndex = history.findIndex((point) => point.date === today);
       console.log(`Today's data exists: ${todayIndex >= 0}`);
