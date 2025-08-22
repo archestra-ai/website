@@ -684,7 +684,7 @@ function createNewMCPServer(
   return {
     dxt_version: '1.0.0',
     version: '1.0.0',
-    name: githubInfo.name,
+    name: githubInfo.name.replace(/#/g, '-'), // Sanitize # to - for filesystem compatibility
     display_name: determineMCPServerName(githubInfo),
     description: apiData.description || `MCP server from ${githubInfo.owner}/${githubInfo.repo}`,
     author: {
@@ -1642,7 +1642,9 @@ async function evaluateSingleRepo(
     const githubInfo = parseGitHubUrl(githubUrl);
     const { owner, repo, path: repoPath } = githubInfo;
 
-    const fileName = `${owner}__${repo}.json`;
+    // Sanitize the name by replacing # with - for filesystem compatibility
+    const sanitizedName = githubInfo.name.replace(/#/g, '-');
+    const fileName = `${sanitizedName}.json`;
     const filePath = path.join(MCP_SERVERS_EVALUATIONS_DIR, fileName);
 
     // 2. Load existing or fetch new data
@@ -1806,7 +1808,7 @@ async function evaluateSingleRepo(
     // 4. Save and return
     saveMCPServerToFile(server, filePath);
     if (showOutput) {
-      console.log(`\n✅ Evaluation completed: ${githubInfo.name}.json`);
+      console.log(`\n✅ Evaluation completed: ${githubInfo.name.replace(/#/g, '-')}.json`);
       console.log(`${'='.repeat(60)}`);
     }
 
@@ -1864,7 +1866,8 @@ async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<
     const originalCount = githubUrls.length;
     githubUrls = githubUrls.filter((url) => {
       const githubInfo = parseGitHubUrl(url);
-      const fileName = `${githubInfo.owner}__${githubInfo.repo}.json`;
+      const sanitizedName = githubInfo.name.replace(/#/g, '-');
+      const fileName = `${sanitizedName}.json`;
       const filePath = path.join(MCP_SERVERS_EVALUATIONS_DIR, fileName);
       return !fs.existsSync(filePath);
     });
@@ -1913,7 +1916,8 @@ Options: ${Object.entries(options)
 
       try {
         const githubInfo = parseGitHubUrl(url);
-        const fileName = `${githubInfo.owner}__${githubInfo.repo}.json`;
+        const sanitizedName = githubInfo.name.replace(/#/g, '-');
+        const fileName = `${sanitizedName}.json`;
         const filePath = path.join(MCP_SERVERS_EVALUATIONS_DIR, fileName);
         const exists = fs.existsSync(filePath);
 
