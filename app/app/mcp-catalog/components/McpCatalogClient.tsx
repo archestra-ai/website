@@ -9,6 +9,7 @@ import { Badge } from '@components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
 import { Input } from '@components/ui/input';
 import { QualityBar } from '@mcpCatalog/components/QualityBar';
+import McpServerImage from '@mcpCatalog/components/McpServerImage';
 import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 const ITEMS_PER_PAGE = 30;
@@ -904,23 +905,33 @@ export default function McpCatalogClient({
                               </Badge>
                             )}
                           </div>
-                          <CardTitle className="text-xl break-words">{serverName}</CardTitle>
-                          <div
-                            className="text-sm text-gray-500 mb-2 font-mono"
-                            style={{
-                              overflowWrap: 'break-word',
-                              wordBreak: 'keep-all',
-                            }}
-                          >
-                            <span>
-                              {gitHubInfo.owner}/{gitHubInfo.repo}
-                            </span>
-                            {gitHubInfo.path && (
-                              <>
-                                <span>/</span>
-                                <span className="text-blue-600">{gitHubInfo.path}</span>
-                              </>
-                            )}
+                          <div className="flex items-start gap-3 mb-2">
+                            <McpServerImage 
+                              server={item.server} 
+                              width={48} 
+                              height={48} 
+                              className="flex-shrink-0"
+                            />
+                            <div className="flex-1 min-w-0">
+                              <CardTitle className="text-xl break-words">{serverName}</CardTitle>
+                              <div
+                                className="text-sm text-gray-500 mb-2 font-mono"
+                                style={{
+                                  overflowWrap: 'break-word',
+                                  wordBreak: 'keep-all',
+                                }}
+                              >
+                                <span>
+                                  {gitHubInfo.owner}/{gitHubInfo.repo}
+                                </span>
+                                {gitHubInfo.path && (
+                                  <>
+                                    <span>/</span>
+                                    <span className="text-blue-600">{gitHubInfo.path}</span>
+                                  </>
+                                )}
+                              </div>
+                            </div>
                           </div>
                           {description !== "We're evaluating this MCP server" && (
                             <CardDescription>{description}</CardDescription>
