@@ -20,8 +20,28 @@ interface StarDataPoint {
 }
 
 // Create Redis client - will automatically use REDIS_URL on Vercel
-const redis = createClient();
-redis.on('error', (err) => console.error('Redis Client Error', err));
+let redis: ReturnType<typeof createClient> | null = null;
+
+async function getRedisClient() {
+  // Check if REDIS_URL is configured
+  if (!process.env.REDIS_URL && !process.env.KV_URL) {
+    throw new Error('No Redis/KV URL configured');
+  }
+  
+  if (!redis) {
+    redis = createClient({
+      url: process.env.REDIS_URL || process.env.KV_URL
+    });
+    redis.on('error', (err) => console.error('Redis Client Error', err));
+  }
+  
+  // Check if already connected
+  if (!redis.isOpen) {
+    await redis.connect();
+  }
+  
+  return redis;
+}
 
 async function fetchCurrentStars(): Promise<number> {
   const githubApiUrl = `https://api.github.com/repos/${githubOrgName}/${githubArchestraRepoName}`;
@@ -55,17 +75,35 @@ export async function GET() {
     let history: StarDataPoint[] = [];
 
     try {
-      // Connect to Redis
-      await redis.connect();
+      // Get Redis client
+      const redisClient = await getRedisClient();
       console.log('Redis connected, checking for stored data...');
 
       // Get history from Redis
-      const storedData = await redis.get(REDIS_KEY);
+      const storedData = await redisClient.get(REDIS_KEY);
       if (storedData) {
         history = JSON.parse(storedData) as StarDataPoint[];
         console.log(`Found ${history.length} historical data points in Redis`);
       } else {
         console.log('No historical data found in Redis');
+      }
+
+      // If we have less than 2 data points, add the seed data
+      if (history.length < 2) {
+        console.log('Less than 2 data points found, adding seed data');
+        const seedDate = '2024-08-05';
+        // Only add if it doesn't already exist
+        if (!history.find(point => point.date === seedDate)) {
+          history.push({
+            date: seedDate,
+            stars: 3
+          });
+          // Sort by date
+          history.sort((a, b) => a.date.localeCompare(b.date));
+          // Save the seed data to Redis
+          await redisClient.set(REDIS_KEY, JSON.stringify(history));
+          console.log('Seed data added to Redis');
+        }
       }
 
       // Check if we already have today's data
@@ -87,12 +125,12 @@ export async function GET() {
         history.sort((a, b) => a.date.localeCompare(b.date));
 
         // Save updated history to Redis
-        await redis.set(REDIS_KEY, JSON.stringify(history));
+        await redisClient.set(REDIS_KEY, JSON.stringify(history));
         console.log('Updated history saved to Redis');
       }
 
-      // Disconnect from Redis
-      await redis.disconnect();
+      // Don't disconnect in serverless environment - connection will be reused
+      // await redisClient.disconnect();
     } catch (redisError) {
       console.error('Redis error (falling back to direct fetch):', redisError);
       // If Redis fails, just fetch current data

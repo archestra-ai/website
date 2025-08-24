@@ -76,17 +76,14 @@ export default function Header() {
                     <div className="font-medium">Personal Desktop App</div>
                     <div className="text-xs text-red-500 mt-0.5">Coming soon</div>
                   </a>
-                  <a
-                    href="#"
-                    className="block px-4 py-3 text-sm text-gray-400 hover:bg-gray-50 transition-colors rounded-lg cursor-not-allowed"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setIsProductOpen(false);
-                    }}
+                  <Link
+                    href="/enterprise-platform"
+                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
+                    onClick={() => setIsProductOpen(false)}
                   >
-                    <div className="font-medium">Multi-Tenant Enterprise Platform</div>
-                    <div className="text-xs text-red-500 mt-0.5">Coming soon</div>
-                  </a>
+                    <div className="font-medium">Multi-Tenant Enterprise MCP Platform</div>
+                    <div className="text-xs text-green-600 mt-0.5">Book a Demo</div>
+                  </Link>
                 </div>
               )}
             </div>
@@ -176,15 +173,13 @@ export default function Header() {
                   >
                     Personal Desktop App <span className="text-xs text-red-500">(Coming soon)</span>
                   </a>
-                  <a
-                    href="#"
-                    className="block py-2 text-sm text-gray-400 cursor-not-allowed"
-                    onClick={(e) => {
-                      e.preventDefault();
-                    }}
+                  <Link
+                    href="/enterprise-platform"
+                    className="block py-2 text-sm text-gray-700 hover:text-gray-900"
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    Multi-Tenant Enterprise Platform <span className="text-xs text-red-500">(Coming soon)</span>
-                  </a>
+                    Multi-Tenant Enterprise MCP Platform <span className="text-xs text-green-600">(Book a Demo)</span>
+                  </Link>
                 </div>
               )}
             </div>

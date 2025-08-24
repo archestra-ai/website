@@ -103,8 +103,11 @@
       "mcpServers": {}
     },
     "oauth": {
-      "provider": null,
-      "required": false
+      "provider": "slack",
+      "required": true
+    },
+    "browser_based": {
+      "required": true
     }
   },
   "github_info": {
