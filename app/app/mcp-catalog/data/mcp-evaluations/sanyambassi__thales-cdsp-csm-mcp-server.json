@@ -40,14 +40,14 @@
     "latest_commit_hash": "936c1085edc179165edafcf758f95c2401c5a4df"
   },
   "protocol_features": {
-    "implementing_tools": false,
-    "implementing_prompts": false,
+    "implementing_tools": true,
+    "implementing_prompts": true,
     "implementing_resources": false,
     "implementing_sampling": false,
     "implementing_roots": false,
-    "implementing_logging": false,
-    "implementing_stdio": false,
-    "implementing_streamable_http": false,
+    "implementing_logging": true,
+    "implementing_stdio": true,
+    "implementing_streamable_http": true,
     "implementing_oauth2": false
   },
   "dependencies": [
