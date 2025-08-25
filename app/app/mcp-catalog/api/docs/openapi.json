@@ -366,16 +366,25 @@
                   "provider": {
                     "type": "string",
                     "nullable": true,
-                    "enum": ["google"]
+                    "enum": ["google", "slack"]
                   },
                   "required": {
                     "type": "boolean"
                   }
                 },
                 "required": ["provider", "required"]
+              },
+              "browser_based": {
+                "type": "object",
+                "properties": {
+                  "required": {
+                    "type": "boolean"
+                  }
+                },
+                "required": ["required"]
               }
             },
-            "required": ["client_config_permutations", "oauth"]
+            "required": ["client_config_permutations", "oauth", "browser_based"]
           },
           "github_info": {
             "type": "object",
