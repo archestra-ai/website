@@ -1,5 +1,5 @@
 import 'highlight.js/styles/github.css';
-import { ChevronLeft, ChevronRight, Clock } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Clock, Edit } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -78,9 +78,16 @@ export default async function DocPage({ params }: Props) {
         />
 
         <div className="container relative z-10 px-4 md:px-6 py-8 max-w-7xl mx-auto">
-          <div className="flex gap-8">
-            {/* Sidebar */}
+          {/* Mobile Menu - Outside of flex container */}
+          <div className="lg:hidden -mx-4 -mt-8 mb-4">
             <DocsSidebar categories={categories} />
+          </div>
+
+          <div className="lg:flex gap-8">
+            {/* Desktop Sidebar */}
+            <div className="hidden lg:block">
+              <DocsSidebar categories={categories} />
+            </div>
 
             {/* Main Content */}
             <article className="flex-1 min-w-0">
@@ -106,7 +113,18 @@ export default async function DocPage({ params }: Props) {
                 <div className="flex-1 min-w-0">
                   {/* Header */}
                   <header className="mb-8 pb-8 border-b border-gray-200">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-4">{doc.title}</h1>
+                    <div className="flex items-start justify-between">
+                      <h1 className="text-4xl font-bold text-gray-900 mb-4">{doc.title}</h1>
+                      <a
+                        href={`https://github.com/archestra-ai/website/edit/main/app/app/docs/content/${doc.slug}.md`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors"
+                      >
+                        <Edit className="h-4 w-4" />
+                        <span>Edit on GitHub</span>
+                      </a>
+                    </div>
                     
                     <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
                       <span className="flex items-center gap-1">
