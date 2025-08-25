@@ -17,7 +17,7 @@ concurrency:
   # We group both by ref_name (available when CI is triggered by a push to a branch/tag)
   # and head_ref (available when CI is triggered by a PR).
   group: "on-pull-requests-${{ github.ref_name }}-${{ github.head_ref }}"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   linting-and-tests:
