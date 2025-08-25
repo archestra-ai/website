@@ -91,6 +91,9 @@ export default function Header() {
             <Link href="/blog" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
               Blog
             </Link>
+            <Link href="/docs" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
+              Docs
+            </Link>
             <Link
               href="/mcp-catalog"
               className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors"
@@ -190,6 +193,13 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Blog
+            </Link>
+            <Link
+              href="/docs"
+              className="px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Docs
             </Link>
             <Link
               href="/mcp-catalog"

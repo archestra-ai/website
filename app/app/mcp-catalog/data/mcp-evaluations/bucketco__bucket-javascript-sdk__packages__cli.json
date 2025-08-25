@@ -134,7 +134,13 @@
       "default": "https://app.bucket.co/api"
     }
   },
-  "archestra_config": null,
+  "archestra_config": {
+    "oauth": {
+      "provider": null,
+      "required": false
+    },
+    "client_config_permutations": null
+  },
   "evaluation_model": "gemini-2.5-pro",
   "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@bucketco/cli\",\n  \"version\": \"2.0.1\",\n  \"packageManager\": \"yarn@4.1.1\",\n  \"description\": \"CLI for Bucket service\",\n  \"main\": \"./dist/index.js\",\n  \"type\": \"module\",\n  \"license\": \"MIT\",\n  \"author\": \"Bucket.\",\n  \"homepage\": \"https://docs.bucket.co/\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/bucketco/bucket-javascript-sdk.git\"\n  },\n  \"publishConfig\": {\n    \"access\": \"public\"\n  },\n  \"engines\": {\n    \"node\": \">=18.0.0\"\n  },\n  \"bin\": {\n    \"bucket\": \"./dist/index.js\"\n  },\n  \"files\": [\n    \"dist\",\n    \"schema.json\"\n  ],\n  \"exports\": {\n    \".\": \"./dist/index.js\"\n  },\n  \"scripts\": {\n    \"build\": \"tsc && shx chmod +x dist/index.js\",\n    \"bucket\": \"yarn build && ./dist/index.js\",\n    \"test\": \"vitest -c vite.config.js\",\n    \"test:ci\": \"vitest run -c vite.config.js --reporter=default --reporter=junit --outputFile=junit.xml\",\n    \"coverage\": \"vitest run --coverage\",\n    \"lint\": \"eslint .\",\n    \"lint:ci\": \"eslint --output-file eslint-report.json --format json .\",\n    \"prettier\": \"prettier --check .\",\n    \"format\": \"yarn lint --fix && yarn prettier --write\",\n    \"preversion\": \"yarn lint && yarn prettier && yarn vitest run -c vite.config.js && yarn build\"\n  },\n  \"dependencies\": {\n    \"@inquirer/prompts\": \"^5.3.8\",\n    \"ajv\": \"^8.17.1\",\n    \"chalk\": \"^5.3.0\",\n    \"change-case\": \"^5.4.4\",\n    \"commander\": \"^12.1.0\",\n    \"comment-json\": \"^4.2.5\",\n    \"express\": \"^4.21.2\",\n    \"fast-deep-equal\": \"^3.1.3\",\n    \"find-up\": \"^7.0.0\",\n    \"open\": \"^10.1.0\",\n    \"ora\": \"^8.1.0\",\n    \"semver\": \"^7.7.2\",\n    \"slug\": \"^10.0.0\",\n    \"zod\": \"^3.24.2\"\n  },\n  \"devDependencies\": {\n    \"@bucketco/eslint-config\": \"workspace:^\",\n    \"@bucketco/tsconfig\": \"workspace:^\",\n    \"@types/express\": \"^5.0.0\",\n    \"@types/node\": \"^22.5.1\",\n    \"@types/semver\": \"^7.7.0\",\n    \"@types/slug\": \"^5.0.9\",\n    \"eslint\": \"^9.21.0\",\n    \"prettier\": \"^3.5.2\",\n    \"shx\": \"^0.3.4\",\n    \"typescript\": \"^5.5.4\",\n    \"vitest\": \"^3.0.8\"\n  }\n}\n",
   "last_scraped_at": "2025-08-22T13:21:52.669Z"

@@ -106,6 +106,10 @@
     }
   },
   "archestra_config": {
+    "oauth": {
+      "provider": null,
+      "required": false
+    },
     "client_config_permutations": {
       "mcpServers": {
         "thales-cdsp-csm-mcp-server-stdio": {

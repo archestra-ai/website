@@ -384,7 +384,7 @@
                 "required": ["required"]
               }
             },
-            "required": ["client_config_permutations", "oauth", "browser_based"]
+            "required": ["client_config_permutations", "oauth"]
           },
           "github_info": {
             "type": "object",
