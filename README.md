@@ -18,3 +18,4 @@ The official website for [Archestra.AI](https://archestra.ai) - the enterprise M
    ```
 
 3. Open [http://localhost:3000](http://localhost:3000) in your browser
+
