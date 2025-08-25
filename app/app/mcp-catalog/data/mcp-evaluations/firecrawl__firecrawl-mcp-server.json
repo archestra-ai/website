@@ -146,6 +146,10 @@
     }
   },
   "archestra_config": {
+    "oauth": {
+      "provider": null,
+      "required": false
+    },
     "client_config_permutations": {
       "mcpServers": {
         "firecrawl-mcp": {
