@@ -1,6 +1,6 @@
 'use client';
 
-import { Book, FileText, Code, Layers, Settings, Menu, X } from 'lucide-react';
+import { Book, Code, FileText, Layers, Menu, Settings, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -14,10 +14,10 @@ interface DocsSidebarProps {
 const categoryIcons: Record<string, React.ReactNode> = {
   'Getting Started': <Book className="h-4 w-4" />,
   'API Reference': <Code className="h-4 w-4" />,
-  'Guides': <FileText className="h-4 w-4" />,
-  'Examples': <Layers className="h-4 w-4" />,
-  'Advanced': <Settings className="h-4 w-4" />,
-  'Reference': <FileText className="h-4 w-4" />,
+  Guides: <FileText className="h-4 w-4" />,
+  Examples: <Layers className="h-4 w-4" />,
+  Advanced: <Settings className="h-4 w-4" />,
+  Reference: <FileText className="h-4 w-4" />,
 };
 
 export default function DocsSidebar({ categories }: DocsSidebarProps) {
@@ -36,7 +36,7 @@ export default function DocsSidebar({ categories }: DocsSidebarProps) {
   };
 
   const isActiveCategory = (category: DocCategory) => {
-    return category.docs.some(doc => isActiveDoc(doc.slug));
+    return category.docs.some((doc) => isActiveDoc(doc.slug));
   };
 
   return (
@@ -50,18 +50,16 @@ export default function DocsSidebar({ categories }: DocsSidebarProps) {
             aria-label="Toggle menu"
           >
             <span className="text-sm font-medium text-gray-700">Documentation Menu</span>
-            {isMobileMenuOpen ? (
-              <X className="h-5 w-5 text-gray-700" />
-            ) : (
-              <Menu className="h-5 w-5 text-gray-700" />
-            )}
+            {isMobileMenuOpen ? <X className="h-5 w-5 text-gray-700" /> : <Menu className="h-5 w-5 text-gray-700" />}
           </button>
-          
+
           {/* Mobile Dropdown Menu */}
-          <div className={`
+          <div
+            className={`
             ${isMobileMenuOpen ? 'block' : 'hidden'}
             bg-white border-t border-gray-100 max-h-[60vh] overflow-y-auto
-          `}>
+          `}
+          >
             <nav className="py-2">
               {/* Mobile Categories */}
               {categories.map((category) => {
@@ -69,9 +67,11 @@ export default function DocsSidebar({ categories }: DocsSidebarProps) {
 
                 return (
                   <div key={category.slug} className="">
-                    <div className={`flex items-center gap-2 px-4 py-2 text-sm font-medium ${
-                      isActive ? 'text-gray-900 bg-gray-50' : 'text-gray-700'
-                    }`}>
+                    <div
+                      className={`flex items-center gap-2 px-4 py-2 text-sm font-medium ${
+                        isActive ? 'text-gray-900 bg-gray-50' : 'text-gray-700'
+                      }`}
+                    >
                       {categoryIcons[category.name] || <FileText className="h-4 w-4" />}
                       <span>{category.name}</span>
                     </div>
@@ -79,7 +79,7 @@ export default function DocsSidebar({ categories }: DocsSidebarProps) {
                     <div className="">
                       {category.docs.map((doc) => {
                         const isDocActive = isActiveDoc(doc.slug);
-                        
+
                         return (
                           <Link
                             key={doc.slug}
@@ -114,9 +114,11 @@ export default function DocsSidebar({ categories }: DocsSidebarProps) {
 
               return (
                 <div key={category.slug} className="space-y-1">
-                  <div className={`flex items-center gap-2 px-3 py-2 text-sm font-medium ${
-                    isActive ? 'text-gray-900' : 'text-gray-700'
-                  }`}>
+                  <div
+                    className={`flex items-center gap-2 px-3 py-2 text-sm font-medium ${
+                      isActive ? 'text-gray-900' : 'text-gray-700'
+                    }`}
+                  >
                     {categoryIcons[category.name] || <FileText className="h-4 w-4" />}
                     <span>{category.name}</span>
                   </div>
@@ -124,7 +126,7 @@ export default function DocsSidebar({ categories }: DocsSidebarProps) {
                   <div className="ml-6 space-y-1">
                     {category.docs.map((doc) => {
                       const isDocActive = isActiveDoc(doc.slug);
-                      
+
                       return (
                         <Link
                           key={doc.slug}
