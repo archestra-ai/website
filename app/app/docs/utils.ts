@@ -7,14 +7,7 @@ import { DocCategory, DocFrontMatter, DocNavItem, DocPage, TableOfContentsItem }
 
 const docsDirectory = path.join(process.cwd(), 'app/docs/content');
 
-const categoryOrder = [
-  'Getting Started',
-  'API Reference',
-  'Guides',
-  'Examples',
-  'Advanced',
-  'Reference',
-];
+const categoryOrder = ['Getting Started', 'API Reference', 'Guides', 'Examples', 'Advanced', 'Reference'];
 
 export function getAllDocs(): DocPage[] {
   if (!fs.existsSync(docsDirectory)) {
@@ -183,7 +176,9 @@ export function searchDocs(query: string): DocPage[] {
     .map((doc) => {
       const titleMatch = searchTerms.filter((term) => doc.title.toLowerCase().includes(term)).length;
       const contentMatch = searchTerms.filter((term) => doc.content.toLowerCase().includes(term)).length;
-      const descriptionMatch = doc.description ? searchTerms.filter((term) => doc.description!.toLowerCase().includes(term)).length : 0;
+      const descriptionMatch = doc.description
+        ? searchTerms.filter((term) => doc.description!.toLowerCase().includes(term)).length
+        : 0;
 
       const score = titleMatch * 10 + descriptionMatch * 5 + contentMatch;
 

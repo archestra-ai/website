@@ -15,8 +15,8 @@ import Header from '@components/Header';
 import constants from '@constants';
 
 import DocsSidebar from '../components/DocsSidebar';
-import { getDocBySlug, formatLastUpdated, generateTableOfContents, getAllDocs, getDocsByCategory } from '../utils';
 import { TableOfContentsItem } from '../types';
+import { formatLastUpdated, generateTableOfContents, getAllDocs, getDocBySlug, getDocsByCategory } from '../utils';
 
 const {
   company: { name: companyName },
@@ -125,7 +125,7 @@ export default async function DocPage({ params }: Props) {
                         <span>Edit on GitHub</span>
                       </a>
                     </div>
-                    
+
                     <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
                       <span className="flex items-center gap-1">
                         <Clock className="h-4 w-4" />
@@ -156,15 +156,27 @@ export default async function DocPage({ params }: Props) {
                             {children}
                           </h3>
                         ),
-                        ul: ({ node, ...props }) => <ul {...props} className="list-disc list-inside mb-4 space-y-2 pl-4" />,
-                        ol: ({ node, ...props }) => <ol {...props} className="list-decimal list-inside mb-4 space-y-2 pl-4" />,
+                        ul: ({ node, ...props }) => (
+                          <ul {...props} className="list-disc list-inside mb-4 space-y-2 pl-4" />
+                        ),
+                        ol: ({ node, ...props }) => (
+                          <ol {...props} className="list-decimal list-inside mb-4 space-y-2 pl-4" />
+                        ),
                         li: ({ node, ...props }) => <li {...props} className="text-gray-700 leading-relaxed" />,
                         a: ({ node, ...props }) => (
-                          <a {...props} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer" />
+                          <a
+                            {...props}
+                            className="text-blue-600 hover:underline"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          />
                         ),
                         img: ({ node, ...props }) => <img {...props} className="rounded-lg shadow-md my-6 w-full" />,
                         blockquote: ({ node, ...props }) => (
-                          <blockquote {...props} className="border-l-4 border-blue-500 pl-4 my-4 text-gray-600 italic" />
+                          <blockquote
+                            {...props}
+                            className="border-l-4 border-blue-500 pl-4 my-4 text-gray-600 italic"
+                          />
                         ),
                         pre: ({ node, children, ...props }) => (
                           <pre {...props} className="bg-gray-50 rounded-lg p-4 overflow-x-auto text-sm my-6">
@@ -188,11 +200,12 @@ export default async function DocPage({ params }: Props) {
                             <table {...props} className="min-w-full divide-y divide-gray-200" />
                           </div>
                         ),
-                        thead: ({ node, ...props }) => (
-                          <thead {...props} className="bg-gray-50" />
-                        ),
+                        thead: ({ node, ...props }) => <thead {...props} className="bg-gray-50" />,
                         th: ({ node, ...props }) => (
-                          <th {...props} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" />
+                          <th
+                            {...props}
+                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          />
                         ),
                         td: ({ node, ...props }) => (
                           <td {...props} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900" />
@@ -207,15 +220,22 @@ export default async function DocPage({ params }: Props) {
                               danger: 'bg-red-50 border-red-200 text-red-900',
                               success: 'bg-green-50 border-green-200 text-green-900',
                             };
-                            
+
                             return (
-                              <div className={`p-4 my-4 border-l-4 rounded-r-lg ${styles[type as keyof typeof styles] || styles.info}`} {...props}>
+                              <div
+                                className={`p-4 my-4 border-l-4 rounded-r-lg ${styles[type as keyof typeof styles] || styles.info}`}
+                                {...props}
+                              >
                                 {children}
                               </div>
                             );
                           }
-                          
-                          return <div className={className} {...props}>{children}</div>;
+
+                          return (
+                            <div className={className} {...props}>
+                              {children}
+                            </div>
+                          );
                         },
                       }}
                     >
@@ -241,7 +261,7 @@ export default async function DocPage({ params }: Props) {
                         ) : (
                           <div />
                         )}
-                        
+
                         {doc.navigation.next && (
                           <Link
                             href={`/docs/${doc.navigation.next.slug}`}
@@ -263,7 +283,9 @@ export default async function DocPage({ params }: Props) {
                 {toc.length > 0 && (
                   <aside className="hidden xl:block w-64 flex-shrink-0">
                     <div className="sticky top-20">
-                      <h3 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wider">On this page</h3>
+                      <h3 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wider">
+                        On this page
+                      </h3>
                       <nav className="space-y-1">
                         {toc.map((item) => (
                           <a
