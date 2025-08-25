@@ -199,8 +199,14 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
               env: {},
             },
           },
-          archestra_config: null,
-          user_config: null,
+          archestra_config: {
+            client_config_permutations: null,
+            oauth: {
+              provider: null,
+              required: false,
+            },
+          },
+          user_config: {},
           category: null,
           quality_score: null,
           github_info: {
