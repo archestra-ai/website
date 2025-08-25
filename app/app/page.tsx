@@ -1,4 +1,15 @@
-import { AlertTriangle, Cpu, GitCommit, Github, MessageSquare, Monitor, Package, Star, Users, ArrowRight } from 'lucide-react';
+import {
+  AlertTriangle,
+  ArrowRight,
+  Cpu,
+  GitCommit,
+  Github,
+  MessageSquare,
+  Monitor,
+  Package,
+  Star,
+  Users,
+} from 'lucide-react';
 import Link from 'next/link';
 
 import { EmailForm } from '@components/EmailForm';
@@ -179,7 +190,7 @@ export default async function Home() {
                     governance features.
                   </p>
                   <div className="w-full max-w-lg">
-                    <Link 
+                    <Link
                       href="/enterprise-platform"
                       className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium text-sm"
                     >
