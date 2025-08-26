@@ -1,0 +1,358 @@
+{
+  "lastAnalyzed": "2025-08-26T23:30:33.947Z",
+  "totalServers": 866,
+  "summary": {
+    "officialCount": 43,
+    "corporateCount": 121,
+    "communityCount": 690,
+    "unclearCount": 12
+  },
+  "officialServers": [
+    {
+      "url": "https://github.com/aliyun/alibaba-cloud-ops-mcp-server",
+      "companyName": "Alibaba Cloud",
+      "orgName": "aliyun",
+      "confidence": "high",
+      "reasoning": "Official Alibaba Cloud organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/aliyun/alibabacloud-tablestore-mcp-server",
+      "companyName": "Alibaba Cloud",
+      "orgName": "aliyun",
+      "confidence": "high",
+      "reasoning": "Official Alibaba Cloud organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/awslabs/mcp",
+      "companyName": "Amazon",
+      "orgName": "awslabs",
+      "confidence": "medium",
+      "reasoning": "Official Amazon organization"
+    },
+    {
+      "url": "https://github.com/apify/mcp-server-rag-web-browser",
+      "companyName": "Apify",
+      "orgName": "apify",
+      "confidence": "medium",
+      "reasoning": "Official Apify organization"
+    },
+    {
+      "url": "https://github.com/apify/actors-mcp-server",
+      "companyName": "Apify",
+      "orgName": "apify",
+      "confidence": "medium",
+      "reasoning": "Official Apify organization"
+    },
+    {
+      "url": "https://github.com/browserbase/mcp-server-browserbase",
+      "companyName": "Browserbase",
+      "orgName": "browserbase",
+      "confidence": "high",
+      "reasoning": "Official Browserbase organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/bytedance/UI-TARS-desktop/tree/main/packages/agent-infra/mcp-servers/browser",
+      "companyName": "ByteDance",
+      "orgName": "bytedance",
+      "confidence": "medium",
+      "reasoning": "Official ByteDance organization"
+    },
+    {
+      "url": "https://github.com/chroma-core/chroma-mcp",
+      "companyName": "Chroma",
+      "orgName": "chroma-core",
+      "confidence": "high",
+      "reasoning": "Official Chroma organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/ClickHouse/mcp-clickhouse",
+      "companyName": "ClickHouse",
+      "orgName": "ClickHouse",
+      "confidence": "high",
+      "reasoning": "Official ClickHouse organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/cloudflare/mcp-server-cloudflare",
+      "companyName": "Cloudflare",
+      "orgName": "cloudflare",
+      "confidence": "high",
+      "reasoning": "Official Cloudflare organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/confluentinc/mcp-confluent",
+      "companyName": "Confluent",
+      "orgName": "confluentinc",
+      "confidence": "high",
+      "reasoning": "Official Confluent organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/dbt-labs/dbt-mcp",
+      "companyName": "dbt Labs",
+      "orgName": "dbt-labs",
+      "confidence": "high",
+      "reasoning": "Official dbt Labs organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/docker/hub-mcp",
+      "companyName": "Docker",
+      "orgName": "docker",
+      "confidence": "medium",
+      "reasoning": "Official Docker organization"
+    },
+    {
+      "url": "https://github.com/elastic/mcp-server-elasticsearch",
+      "companyName": "Elastic",
+      "orgName": "elastic",
+      "confidence": "high",
+      "reasoning": "Official Elastic organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/firecrawl/firecrawl-mcp-server",
+      "companyName": "Firecrawl",
+      "orgName": "firecrawl",
+      "confidence": "high",
+      "reasoning": "Official Firecrawl organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/github/github-mcp-server",
+      "companyName": "GitHub",
+      "orgName": "github",
+      "confidence": "high",
+      "reasoning": "Official GitHub organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/googleapis/genai-toolbox",
+      "companyName": "Google",
+      "orgName": "googleapis",
+      "confidence": "medium",
+      "reasoning": "Official Google organization"
+    },
+    {
+      "url": "https://github.com/grafana/mcp-grafana",
+      "companyName": "Grafana",
+      "orgName": "grafana",
+      "confidence": "high",
+      "reasoning": "Official Grafana organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/influxdata/influxdb3_mcp_server",
+      "companyName": "InfluxData",
+      "orgName": "influxdata",
+      "confidence": "medium",
+      "reasoning": "Official InfluxData organization"
+    },
+    {
+      "url": "https://github.com/JetBrains/mcpProxy",
+      "companyName": "JetBrains",
+      "orgName": "JetBrains",
+      "confidence": "medium",
+      "reasoning": "Official JetBrains organization"
+    },
+    {
+      "url": "https://github.com/langfuse/mcp-server-langfuse",
+      "companyName": "Langfuse",
+      "orgName": "langfuse",
+      "confidence": "high",
+      "reasoning": "Official Langfuse organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/line/line-bot-mcp-server",
+      "companyName": "LINE",
+      "orgName": "line",
+      "confidence": "high",
+      "reasoning": "Official LINE organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/microsoft/playwright-mcp",
+      "companyName": "Microsoft",
+      "orgName": "microsoft",
+      "confidence": "medium",
+      "reasoning": "Official Microsoft organization"
+    },
+    {
+      "url": "https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp",
+      "companyName": "Microsoft",
+      "orgName": "microsoft",
+      "confidence": "medium",
+      "reasoning": "Official Microsoft organization"
+    },
+    {
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+      "companyName": "Model Context Protocol",
+      "orgName": "modelcontextprotocol",
+      "confidence": "medium",
+      "reasoning": "Official Model Context Protocol organization"
+    },
+    {
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
+      "companyName": "Model Context Protocol",
+      "orgName": "modelcontextprotocol",
+      "confidence": "medium",
+      "reasoning": "Official Model Context Protocol organization"
+    },
+    {
+      "url": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/google-maps",
+      "companyName": "Model Context Protocol",
+      "orgName": "modelcontextprotocol",
+      "confidence": "medium",
+      "reasoning": "Official Model Context Protocol organization"
+    },
+    {
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
+      "companyName": "Model Context Protocol",
+      "orgName": "modelcontextprotocol",
+      "confidence": "medium",
+      "reasoning": "Official Model Context Protocol organization"
+    },
+    {
+      "url": "https://github.com/modelcontextprotocol/servers/tree/main/src/git",
+      "companyName": "Model Context Protocol",
+      "orgName": "modelcontextprotocol",
+      "confidence": "medium",
+      "reasoning": "Official Model Context Protocol organization"
+    },
+    {
+      "url": "https://github.com/neo4j-contrib/mcp-neo4j",
+      "companyName": "Neo4j",
+      "orgName": "neo4j-contrib",
+      "confidence": "high",
+      "reasoning": "Official Neo4j organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/neondatabase/mcp-server-neon",
+      "companyName": "Neon",
+      "orgName": "neondatabase",
+      "confidence": "high",
+      "reasoning": "Official Neon organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/makenotion/notion-mcp-server",
+      "companyName": "Notion",
+      "orgName": "makenotion",
+      "confidence": "high",
+      "reasoning": "Official Notion organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/optuna/optuna-mcp",
+      "companyName": "Optuna",
+      "orgName": "optuna",
+      "confidence": "high",
+      "reasoning": "Official Optuna organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/pinecone-io/assistant-mcp",
+      "companyName": "Pinecone",
+      "orgName": "pinecone-io",
+      "confidence": "medium",
+      "reasoning": "Official Pinecone organization"
+    },
+    {
+      "url": "https://github.com/posthog/mcp",
+      "companyName": "PostHog",
+      "orgName": "posthog",
+      "confidence": "medium",
+      "reasoning": "Official PostHog organization"
+    },
+    {
+      "url": "https://github.com/prisma/mcp",
+      "companyName": "Prisma",
+      "orgName": "prisma",
+      "confidence": "medium",
+      "reasoning": "Official Prisma organization"
+    },
+    {
+      "url": "https://github.com/qdrant/mcp-server-qdrant",
+      "companyName": "Qdrant",
+      "orgName": "qdrant",
+      "confidence": "high",
+      "reasoning": "Official Qdrant organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/redis/mcp-redis-cloud",
+      "companyName": "Redis",
+      "orgName": "redis",
+      "confidence": "high",
+      "reasoning": "Official Redis organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/redis/mcp-redis",
+      "companyName": "Redis",
+      "orgName": "redis",
+      "confidence": "high",
+      "reasoning": "Official Redis organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/Shopify/dev-mcp",
+      "companyName": "Shopify",
+      "orgName": "Shopify",
+      "confidence": "medium",
+      "reasoning": "Official Shopify organization"
+    },
+    {
+      "url": "https://github.com/supabase-community/supabase-mcp",
+      "companyName": "Supabase",
+      "orgName": "supabase-community",
+      "confidence": "high",
+      "reasoning": "Official Supabase organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/weaviate/mcp-server-weaviate",
+      "companyName": "Weaviate",
+      "orgName": "weaviate",
+      "confidence": "high",
+      "reasoning": "Official Weaviate organization with matching repository pattern"
+    },
+    {
+      "url": "https://github.com/zilliztech/mcp-server-milvus",
+      "companyName": "Zilliz",
+      "orgName": "zilliztech",
+      "confidence": "medium",
+      "reasoning": "Official Zilliz organization"
+    }
+  ],
+  "officialUrls": [
+    "https://github.com/aliyun/alibaba-cloud-ops-mcp-server",
+    "https://github.com/aliyun/alibabacloud-tablestore-mcp-server",
+    "https://github.com/awslabs/mcp",
+    "https://github.com/apify/mcp-server-rag-web-browser",
+    "https://github.com/apify/actors-mcp-server",
+    "https://github.com/browserbase/mcp-server-browserbase",
+    "https://github.com/bytedance/UI-TARS-desktop/tree/main/packages/agent-infra/mcp-servers/browser",
+    "https://github.com/chroma-core/chroma-mcp",
+    "https://github.com/ClickHouse/mcp-clickhouse",
+    "https://github.com/cloudflare/mcp-server-cloudflare",
+    "https://github.com/confluentinc/mcp-confluent",
+    "https://github.com/dbt-labs/dbt-mcp",
+    "https://github.com/docker/hub-mcp",
+    "https://github.com/elastic/mcp-server-elasticsearch",
+    "https://github.com/firecrawl/firecrawl-mcp-server",
+    "https://github.com/github/github-mcp-server",
+    "https://github.com/googleapis/genai-toolbox",
+    "https://github.com/grafana/mcp-grafana",
+    "https://github.com/influxdata/influxdb3_mcp_server",
+    "https://github.com/JetBrains/mcpProxy",
+    "https://github.com/langfuse/mcp-server-langfuse",
+    "https://github.com/line/line-bot-mcp-server",
+    "https://github.com/microsoft/playwright-mcp",
+    "https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp",
+    "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+    "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
+    "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/google-maps",
+    "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
+    "https://github.com/modelcontextprotocol/servers/tree/main/src/git",
+    "https://github.com/neo4j-contrib/mcp-neo4j",
+    "https://github.com/neondatabase/mcp-server-neon",
+    "https://github.com/makenotion/notion-mcp-server",
+    "https://github.com/optuna/optuna-mcp",
+    "https://github.com/pinecone-io/assistant-mcp",
+    "https://github.com/posthog/mcp",
+    "https://github.com/prisma/mcp",
+    "https://github.com/qdrant/mcp-server-qdrant",
+    "https://github.com/redis/mcp-redis-cloud",
+    "https://github.com/redis/mcp-redis",
+    "https://github.com/Shopify/dev-mcp",
+    "https://github.com/supabase-community/supabase-mcp",
+    "https://github.com/weaviate/mcp-server-weaviate",
+    "https://github.com/zilliztech/mcp-server-milvus"
+  ]
+}

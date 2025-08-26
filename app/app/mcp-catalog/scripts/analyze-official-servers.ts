@@ -3,29 +3,24 @@
 /**
  * MCP Official Servers Analysis Script
  * 
- * This script analyzes the MCP servers catalog to identify and report on official servers.
+ * This script analyzes the MCP servers catalog to identify official servers
+ * and generates data files used by the web application.
  * Run with: tsx app/mcp-catalog/scripts/analyze-official-servers.ts
  */
 
 import fs from 'fs';
-import path from 'path';
-import { analyzeAllServers, generateDetailedReport, type AnalysisReport } from '../lib/official-server-detector';
+import { analyzeAllServers, type AnalysisReport } from '../lib/official-server-detector';
+import { MCP_SERVERS_JSON_FILE_PATH } from './paths';
 
-const SERVERS_JSON_PATH = path.join(__dirname, '../data/mcp-servers.json');
-const REPORTS_DIR = path.join(__dirname, '../../../docs/analysis');
-
-function ensureDirectoryExists(dirPath: string) {
-  if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true });
-  }
-}
+// Output path following existing pattern
+const OFFICIAL_SERVERS_DATA_PATH = MCP_SERVERS_JSON_FILE_PATH.replace('mcp-servers.json', 'official-servers.json');
 
 async function main() {
   try {
     console.log('🔍 Loading MCP servers catalog...');
     
     // Read the servers JSON file
-    const serversJson = fs.readFileSync(SERVERS_JSON_PATH, 'utf-8');
+    const serversJson = fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf-8');
     const serverUrls: string[] = JSON.parse(serversJson);
     
     console.log(`📊 Analyzing ${serverUrls.length} servers...`);
@@ -40,8 +35,8 @@ async function main() {
     console.log(`- 👥 Community: ${analysis.summary.communityCount} (${((analysis.summary.communityCount / analysis.totalServers) * 100).toFixed(1)}%)`);
     console.log(`- ❓ Unclear: ${analysis.summary.unclearCount} (${((analysis.summary.unclearCount / analysis.totalServers) * 100).toFixed(1)}%)`);
     
-    // Show top official servers
-    console.log('\n🏆 Top Official Servers:');
+    // Show top official companies
+    console.log('\n🏆 Top Official Companies:');
     const officialByCompany = analysis.official.reduce((acc, server) => {
       const company = server.companyName || 'Unknown';
       if (!acc[company]) acc[company] = [];
@@ -56,32 +51,27 @@ async function main() {
         console.log(`  - ${company}: ${servers.length} server${servers.length > 1 ? 's' : ''}`);
       });
     
-    // Generate detailed report
-    console.log('\n📝 Generating detailed report...');
-    const detailedReport = generateDetailedReport(analysis);
+    // Prepare data for web application use
+    const officialServersData = {
+      lastAnalyzed: new Date().toISOString(),
+      totalServers: analysis.totalServers,
+      summary: analysis.summary,
+      officialServers: analysis.official.map(server => ({
+        url: server.url,
+        companyName: server.companyName,
+        orgName: server.orgName,
+        confidence: server.confidence,
+        reasoning: server.reasoning
+      })),
+      // Quick lookup for the catalog UI
+      officialUrls: analysis.official.map(s => s.url)
+    };
     
-    // Ensure reports directory exists
-    ensureDirectoryExists(REPORTS_DIR);
+    // Save official servers data for web app consumption
+    fs.writeFileSync(OFFICIAL_SERVERS_DATA_PATH, JSON.stringify(officialServersData, null, 2));
     
-    // Save reports
-    const timestamp = new Date().toISOString().slice(0, 10);
-    const reportPath = path.join(REPORTS_DIR, `official-servers-analysis-${timestamp}.md`);
-    const summaryPath = path.join(REPORTS_DIR, 'official-servers-summary.json');
-    
-    fs.writeFileSync(reportPath, detailedReport);
-    fs.writeFileSync(summaryPath, JSON.stringify(analysis, null, 2));
-    
-    console.log(`\n✅ Reports saved:`);
-    console.log(`   📄 Detailed report: ${reportPath}`);
-    console.log(`   📊 JSON summary: ${summaryPath}`);
-    
-    // Export official servers list for easy access
-    const officialUrlsPath = path.join(REPORTS_DIR, 'official-servers-urls.json');
-    const officialUrls = analysis.official.map(s => s.url);
-    fs.writeFileSync(officialUrlsPath, JSON.stringify(officialUrls, null, 2));
-    
-    console.log(`   🔗 Official URLs list: ${officialUrlsPath}`);
-    
+    console.log(`\n✅ Official servers data saved to: ${OFFICIAL_SERVERS_DATA_PATH}`);
+    console.log(`📊 Ready for web application integration`);
     console.log('\n🎉 Analysis complete!');
     
   } catch (error) {
