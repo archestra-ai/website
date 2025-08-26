@@ -14,6 +14,7 @@ This is the Archestra.ai website - a Next.js application that hosts the MCP (Mod
 - `pnpm build` - Build for production
 - `pnpm start` - Start production server
 - `pnpm typecheck` - Run TypeScript type checking
+- `pnpm prettier --write .` - Format all files with Prettier
 
 ### Testing
 
@@ -31,6 +32,7 @@ This is the Archestra.ai website - a Next.js application that hosts the MCP (Mod
 ### API Documentation
 
 - `pnpm openapi:generate` - Generate OpenAPI specification and format with prettier
+  - **IMPORTANT**: Run this command whenever you modify API endpoints, schemas, or documentation in the MCP catalog API to regenerate the OpenAPI schema
 
 ## Architecture Overview
 
