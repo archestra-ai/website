@@ -756,6 +756,8 @@
   "https://github.com/awkoy/replicate-flux-mcp",
   "https://github.com/awwaiid/mcp-server-taskwarrior",
   "https://github.com/Azure/azure-mcp",
+  "https://github.com/Badhansen/notion-mcp",
+  "https://github.com/ankitmalik84/Agentic_Longterm_Memory/tree/main/src/notion_mcp_server",
   "https://github.com/bart6114/my-bear-mcp-server/",
   "https://github.com/billster45/mcp-chatgpt-responses",
   "https://github.com/blurrah/mcp-graphql",
@@ -764,6 +766,7 @@
   "https://github.com/calclavia/mcp-obsidian",
   "https://github.com/caol64/wenyan-mcp",
   "https://github.com/chrishayuk/mcp-cli",
+  "https://github.com/danhilse/notion_mcp",
   "https://github.com/danielkennedy1/pdf-tools-mcp",
   "https://github.com/dotemacs/domain-lookup-mcp",
   "https://github.com/ekkyarmandi/ticktick-mcp",
@@ -837,6 +840,7 @@
   "https://github.com/Shopify/dev-mcp",
   "https://github.com/sirmews/apple-notes-mcp",
   "https://github.com/sooperset/mcp-atlassian",
+  "https://github.com/suekou/mcp-notion-server",
   "https://github.com/tacticlaunch/mcp-linear",
   "https://github.com/tanigami/mcp-server-perplexity",
   "https://github.com/tevonsb/homeassistant-mcp",
@@ -864,11 +868,5 @@
   "https://github.com/sanyambassi/thales-cdsp-csm-mcp-server",
   "https://github.com/bucketco/bucket-javascript-sdk/tree/main/packages/cli",
   "https://github.com/FosterG4/mcpsaver",
-  "https://github.com/makenotion/notion-mcp-server",
-  "https://github.com/Badhansen/notion-mcp",
-  "https://github.com/ankitmalik84/Agentic_Longterm_Memory/tree/main/src/notion_mcp_server",
-  "https://github.com/danhilse/notion_mcp",
-  "https://github.com/sirmews/apple-notes-mcp",
-  "https://github.com/sooperset/mcp-atlassian",
-  "https://github.com/suekou/mcp-notion-server"
+  "https://github.com/makenotion/notion-mcp-server"
 ]
