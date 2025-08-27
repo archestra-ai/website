@@ -83,6 +83,10 @@
     }
   },
   "archestra_config": {
+    "oauth": {
+      "provider": null,
+      "required": false
+    },
     "client_config_permutations": {
       "mcpServers": {
         "stickerdaniel-linkedin-mcp-server-docker": {

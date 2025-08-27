@@ -6,6 +6,7 @@ on:
       - opened
       - edited
       - synchronize
+      - reopened
   # You can use the merge_group event to trigger your GitHub Actions workflow when
   # a pull request is added to a merge queue
   # https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue#triggering-merge-group-checks-with-github-actions
@@ -16,7 +17,7 @@ concurrency:
   # We group both by ref_name (available when CI is triggered by a push to a branch/tag)
   # and head_ref (available when CI is triggered by a PR).
   group: "on-pull-requests-${{ github.ref_name }}-${{ github.head_ref }}"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   linting-and-tests:
