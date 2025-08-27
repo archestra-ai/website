@@ -65,6 +65,7 @@ Available commands:
 - `pnpm build` - Build the application for production
 - `pnpm test` - Run tests
 - `pnpm lint` - Run linting
+- `pnpm db:studio` - Open Drizzle Studio GUI to view and manage the database
 
 ## Getting Help
 
