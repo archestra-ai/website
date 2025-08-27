@@ -1,0 +1,133 @@
+{
+    "dxt_version": "0.1.0",
+    "name": "fosterg4__mcpsaver",
+    "display_name": "mcpsaver",
+    "version": "1.2.2",
+    "description": "MCP server for optimizing code references and reducing token usage through smart caching and AST parsing",
+    "author": {
+        "name": "fosterg4"
+    },
+    "server": {
+        "type": "node",
+        "entry_point": "dist/index-stdio.js",
+        "mcp_config": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@fosterg4/mcpsaver"
+            ],
+            "env": {}
+        }
+    },
+    "tools": [
+        {
+            "name": "extract_code_context",
+            "description": "Extract minimal/contextual code and related symbols/imports for a file.",
+            "parameters": {
+                "filePath": "string",
+                "targetSymbols": "string[]?",
+                "includeImports": "boolean?",
+                "maxTokens": "number?"
+            }
+        },
+        {
+            "name": "get_cached_context",
+            "description": "Retrieve previously cached extraction for a file.",
+            "parameters": {
+                "filePath": "string",
+                "cacheKey": "string?"
+            }
+        },
+        {
+            "name": "analyze_code_diff",
+            "description": "Analyze diff between old and new content for a file to produce focused context.",
+            "parameters": {
+                "filePath": "string",
+                "oldContent": "string",
+                "newContent": "string"
+            }
+        },
+        {
+            "name": "optimize_imports",
+            "description": "Analyze and optimize import statements based on used symbols.",
+            "parameters": {
+                "filePath": "string",
+                "usedSymbols": "string[]"
+            }
+        },
+        {
+            "name": "get_config",
+            "description": "Get current runtime configuration or a specific section.",
+            "parameters": {
+                "section": "string?"
+            }
+        },
+        {
+            "name": "update_config",
+            "description": "Merge and apply partial configuration updates at runtime.",
+            "parameters": {
+                "config": "object"
+            }
+        },
+        {
+            "name": "reset_config",
+            "description": "Reset configuration to built-in defaults.",
+            "parameters": {}
+        }
+    ],
+    "prompts": [],
+    "keywords": [
+        "mcp",
+        "mcpsaver",
+        "code-analysis",
+        "ast",
+        "token-optimization"
+    ],
+    "user_config": {
+        "logging": {
+            "level": "info",
+            "enableFileLogging": false
+        },
+        "cache": {
+            "enablePersistence": false
+        },
+        "extraction": {
+            "strategy": "contextual",
+            "maxTokens": 2000
+        },
+        "performance": {
+            "timeoutMs": 30000
+        },
+        "security": {
+            "allowedPaths": [],
+            "blockedPaths": [
+                "node_modules/**",
+                ".git/**",
+                "**/*.log"
+            ]
+        }
+    },
+    "readme": "MCPSaver — an MCP server that extracts minimal, contextual, or full code context, optimizes imports, and caches results to reduce tokens. Provides config introspection and updates at runtime.",
+    "category": "AI Tools",
+    "quality_score": 0,
+    "protocol_features": {
+        "implementing_tools": true,
+        "implementing_prompts": true,
+        "implementing_resources": true,
+        "implementing_sampling": false,
+        "implementing_roots": true,
+        "implementing_stdio": true,
+        "implementing_streamable_http": true
+    },
+    "dependencies": [
+        {
+            "name": "@modelcontextprotocol/sdk",
+            "importance": 10
+        },
+        {
+            "name": "tree-sitter",
+            "importance": 8
+        }
+    ],
+    "raw_dependencies": "dependencies:\n- @babel/parser@^7.28.3\n- @babel/traverse@^7.28.3\n- @babel/types@^7.28.2\n- @fosterg4/mcpsaver@^1.2.2\n- @modelcontextprotocol/sdk@^1.17.4\n- acorn@^8.15.0\n- acorn-typescript@^1.4.13\n- fast-diff@^1.3.0\n- lru-cache@^11.1.0\n- pnpm@^10.15.0\n- python-ast@^0.1.0\n- tree-sitter@^0.25.0\n- tree-sitter-bash-mcpsaver@0.25.2\n- tree-sitter-c-mcpsaver@0.24.3\n- tree-sitter-c-sharp-mcpsaver@0.23.3\n- tree-sitter-cpp-mcpsaver@0.23.8\n- tree-sitter-css-mcpsaver@0.23.4\n- tree-sitter-embedded-template-mcpsaver@0.23.4\n- tree-sitter-go-mcpsaver@0.23.6\n- tree-sitter-haskell-mcpsaver@0.23.3\n- tree-sitter-html-mcpsaver@0.23.4\n- tree-sitter-java-mcpsaver@0.23.7\n- tree-sitter-javascript-mcpsaver@0.23.3\n- tree-sitter-jsdoc-mcpsaver@0.23.4\n- tree-sitter-json-mcpsaver@0.24.10\n- tree-sitter-julia-mcpsaver@0.23.3\n- tree-sitter-ocaml-mcpsaver@0.25.2\n- tree-sitter-php-mcpsaver@0.24.4\n- tree-sitter-python-mcpsaver@0.23.9\n- tree-sitter-ql-mcpsaver@0.23.3\n- tree-sitter-regex-mcpsaver@0.24.5\n- tree-sitter-ruby-mcpsaver@0.23.3\n- tree-sitter-rust-mcpsaver@0.24.2\n- tree-sitter-scala-mcpsaver@0.24.2\n- tree-sitter-typescript-mcpsaver@0.23.5\n\ndevDependencies:\n- @eslint/js@^9.34.0\n- @types/jest@^30.0.0\n- @types/node@^24.3.0\n- @typescript-eslint/eslint-plugin@^8.41.0\n- @typescript-eslint/parser@^8.41.0\n- eslint@^9.34.0\n- globals@^16.3.0\n- jest@^30.0.5\n- prettier@^3.6.2\n- ts-jest@^29.4.1\n- tsx@^4.20.5\n- typescript@^5.9.2"
+}
