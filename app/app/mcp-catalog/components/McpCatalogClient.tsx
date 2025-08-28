@@ -281,17 +281,9 @@ export default function McpCatalogClient({
   const sortedServers = [...filteredAndScoredServers].sort((a, b) => {
     if (sortDirection === null) return 0;
 
+    let result = 0;
     const serverA = a.server;
     const serverB = b.server;
-
-    // First priority: Official servers (those with custom image_url) should appear first
-    const isOfficialA = !!serverA.image_url;
-    const isOfficialB = !!serverB.image_url;
-    
-    if (isOfficialA && !isOfficialB) return -1;
-    if (!isOfficialA && isOfficialB) return 1;
-
-    let result = 0;
 
     switch (sortBy) {
       case 'relevance':
