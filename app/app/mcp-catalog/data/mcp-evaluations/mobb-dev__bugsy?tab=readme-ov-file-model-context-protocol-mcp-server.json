@@ -1,0 +1,89 @@
+{
+  "dxt_version": "1.0.0",
+  "version": "1.0.0",
+  "name": "mobb-dev__bugsy?tab=readme-ov-file-model-context-protocol-mcp-server",
+  "display_name": "bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
+  "description": "MCP server from mobb-dev/bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
+  "author": {
+    "name": "mobb-dev"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["server/index.js"],
+      "env": {
+        "API_KEY": "${user_config.api_key}",
+        "BASE_URL": "${user_config.base_url}"
+      }
+    }
+  },
+  "readme": null,
+  "category": "AI Tools",
+  "quality_score": 24,
+  "programming_language": "TypeScript",
+  "framework": null,
+  "github_info": {
+    "owner": "mobb-dev",
+    "repo": "bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
+    "url": "https://github.com/mobb-dev/bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
+    "name": "mobb-dev__bugsy?tab=readme-ov-file#model-context-protocol-mcp-server",
+    "path": null,
+    "stars": 58,
+    "contributors": 1,
+    "issues": 0,
+    "releases": false,
+    "ci_cd": false,
+    "latest_commit_hash": null
+  },
+  "protocol_features": {
+    "implementing_tools": false,
+    "implementing_prompts": false,
+    "implementing_resources": false,
+    "implementing_sampling": false,
+    "implementing_roots": false,
+    "implementing_logging": false,
+    "implementing_stdio": false,
+    "implementing_streamable_http": false,
+    "implementing_oauth2": false
+  },
+  "dependencies": [
+    {
+      "name": "@modelcontextprotocol/sdk",
+      "importance": 10
+    },
+    {
+      "name": "express",
+      "importance": 8
+    },
+    {
+      "name": "mark3labs/mcp-go",
+      "importance": 9
+    },
+    {
+      "name": "axios",
+      "importance": 6
+    }
+  ],
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "API Key",
+      "description": "Your API key for authentication",
+      "sensitive": true,
+      "required": true
+    },
+    "base_url": {
+      "type": "string",
+      "title": "API Base URL",
+      "description": "The base URL for API requests",
+      "default": "https://api.example.com",
+      "required": false
+    }
+  },
+  "archestra_config": null,
+  "evaluation_model": "gemini-2.5-flash",
+  "raw_dependencies": null,
+  "last_scraped_at": "2025-08-28T16:13:10.007Z"
+}
