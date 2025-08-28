@@ -66,7 +66,7 @@ export const ArchestraClientConfigPermutationsSchema = z.object({
  * NOTE: when we are ready to add more OAuth providers, we can simply add them here
  * and re-run the `evaluate-catalog.ts` script to have the catalog updated
  */
-export const ArchestraSupportedOauthProvidersSchema = z.enum(['google', 'slack']);
+export const ArchestraSupportedOauthProvidersSchema = z.enum(['google', 'slack', 'linkedin']);
 
 export const ArchestraOauthSchema = z.object({
   provider: ArchestraSupportedOauthProvidersSchema.nullable(),
@@ -157,6 +157,7 @@ export const ArchestraMcpServerManifestSchema = DxtManifestSchema.omit({ reposit
     dependencies: z.array(MCPDependencySchema),
     raw_dependencies: z.string().nullable(),
     server_overridden: DxtManifestServerSchema.optional(),
+    server_docker: z.any().optional(),
     user_config_overridden: z.record(z.string(), DxtUserConfigurationOptionSchema).optional(),
   })
   .openapi('ArchestraMcpServerManifest');
