@@ -325,6 +325,11 @@
             "minimum": 0,
             "maximum": 100
           },
+          "image_url": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri"
+          },
           "archestra_config": {
             "type": "object",
             "properties": {
@@ -384,7 +389,7 @@
                 "required": ["required"]
               }
             },
-            "required": ["client_config_permutations", "oauth", "browser_based"]
+            "required": ["client_config_permutations", "oauth"]
           },
           "github_info": {
             "type": "object",

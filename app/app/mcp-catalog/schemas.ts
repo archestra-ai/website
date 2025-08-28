@@ -147,6 +147,13 @@ export const ArchestraMcpServerManifestSchema = DxtManifestSchema.omit({ reposit
     readme: z.string().nullable(),
     category: McpServerCategorySchema.nullable(),
     quality_score: z.number().min(0).max(100).nullable(),
+    
+    /**
+     * Optional custom image URL for the server (e.g., from official integrations)
+     * Takes precedence over automatic GitHub-based image fetching
+     */
+    image_url: z.string().url().nullable().optional(),
+    
     archestra_config: ArchestraConfigSchema,
     github_info: ArchestraMcpServerFullGitHubInfoSchema,
     programming_language: z.string(),

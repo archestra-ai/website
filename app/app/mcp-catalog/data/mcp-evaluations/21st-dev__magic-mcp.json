@@ -28,12 +28,19 @@
       "mcpServers": {
         "21st-dev-magic-configured": {
           "command": "npx",
-          "args": ["-y", "@21st-dev/magic@latest", "API_KEY=\"your-api-key\""],
+          "args": [
+            "-y",
+            "@21st-dev/magic@latest",
+            "API_KEY=\"your-api-key\""
+          ],
           "env": {}
         },
         "21st-dev-magic-with-env": {
           "command": "npx",
-          "args": ["-y", "@21st-dev/magic@latest"],
+          "args": [
+            "-y",
+            "@21st-dev/magic@latest"
+          ],
           "env": {
             "API_KEY": "${input:apiKey}"
           }
@@ -91,5 +98,6 @@
       "importance": 6
     }
   ],
-  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@21st-dev/magic\",\n  \"version\": \"0.1.0\",\n  \"type\": \"module\",\n  \"description\": \"Magic MCP UI builder by 21st.dev\",\n  \"homepage\": \"https://21st.dev/magic\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/21st-dev/magic-mcp.git\"\n  },\n  \"bin\": {\n    \"magic\": \"dist/index.js\"\n  },\n  \"files\": [\n    \"dist\"\n  ],\n  \"keywords\": [\n    \"mcp\",\n    \"model-context-protocol\",\n    \"ai\",\n    \"UI\",\n    \"frontend\",\n    \"21st.dev\",\n    \"21\",\n    \"magic\"\n  ],\n  \"main\": \"dist/index.js\",\n  \"scripts\": {\n    \"build\": \"tsc && shx chmod +x dist/*.js\",\n    \"build:prod\": \"npm run build && npm run test\",\n    \"debug\": \"npm run build && npx @modelcontextprotocol/inspector node dist/index.js DEBUG=true\",\n    \"start\": \"node dist/index.js\",\n    \"prepare\": \"npm run build:prod\",\n    \"dev\": \"nodemon --watch src --ext ts,json --exec \\\"npm run build\\\"\",\n    \"publish-patch\": \"npm version patch && npm run build:prod && npm publish --access public\",\n    \"test\": \"jest\"\n  },\n  \"author\": \"serafim@21st.dev\",\n  \"license\": \"ISC\",\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.8.0\",\n    \"@types/cors\": \"^2.8.17\",\n    \"@types/express\": \"^5.0.0\",\n    \"cors\": \"^2.8.5\",\n    \"open\": \"^10.1.0\",\n    \"zod\": \"^3.24.2\"\n  },\n  \"devDependencies\": {\n    \"@types/axios\": \"^0.9.36\",\n    \"@types/jest\": \"^29.5.14\",\n    \"@types/node\": \"^22.13.4\",\n    \"@types/react\": \"^19.0.12\",\n    \"jest\": \"^29.7.0\",\n    \"nodemon\": \"^3.1.9\",\n    \"shx\": \"^0.3.4\",\n    \"ts-jest\": \"^29.1.2\",\n    \"typescript\": \"^5.8.2\"\n  },\n  \"engines\": {\n    \"node\": \">=18.0.0\"\n  }\n}\n"
+  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@21st-dev/magic\",\n  \"version\": \"0.1.0\",\n  \"type\": \"module\",\n  \"description\": \"Magic MCP UI builder by 21st.dev\",\n  \"homepage\": \"https://21st.dev/magic\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/21st-dev/magic-mcp.git\"\n  },\n  \"bin\": {\n    \"magic\": \"dist/index.js\"\n  },\n  \"files\": [\n    \"dist\"\n  ],\n  \"keywords\": [\n    \"mcp\",\n    \"model-context-protocol\",\n    \"ai\",\n    \"UI\",\n    \"frontend\",\n    \"21st.dev\",\n    \"21\",\n    \"magic\"\n  ],\n  \"main\": \"dist/index.js\",\n  \"scripts\": {\n    \"build\": \"tsc && shx chmod +x dist/*.js\",\n    \"build:prod\": \"npm run build && npm run test\",\n    \"debug\": \"npm run build && npx @modelcontextprotocol/inspector node dist/index.js DEBUG=true\",\n    \"start\": \"node dist/index.js\",\n    \"prepare\": \"npm run build:prod\",\n    \"dev\": \"nodemon --watch src --ext ts,json --exec \\\"npm run build\\\"\",\n    \"publish-patch\": \"npm version patch && npm run build:prod && npm publish --access public\",\n    \"test\": \"jest\"\n  },\n  \"author\": \"serafim@21st.dev\",\n  \"license\": \"ISC\",\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.8.0\",\n    \"@types/cors\": \"^2.8.17\",\n    \"@types/express\": \"^5.0.0\",\n    \"cors\": \"^2.8.5\",\n    \"open\": \"^10.1.0\",\n    \"zod\": \"^3.24.2\"\n  },\n  \"devDependencies\": {\n    \"@types/axios\": \"^0.9.36\",\n    \"@types/jest\": \"^29.5.14\",\n    \"@types/node\": \"^22.13.4\",\n    \"@types/react\": \"^19.0.12\",\n    \"jest\": \"^29.7.0\",\n    \"nodemon\": \"^3.1.9\",\n    \"shx\": \"^0.3.4\",\n    \"ts-jest\": \"^29.1.2\",\n    \"typescript\": \"^5.8.2\"\n  },\n  \"engines\": {\n    \"node\": \">=18.0.0\"\n  }\n}\n",
+  "image_url": "https://www.21st.dev/favicon.ico"
 }

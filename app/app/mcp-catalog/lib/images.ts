@@ -2,8 +2,14 @@ import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 /**
  * Generate the image URL for an MCP server by attempting to fetch from the GitHub repository
+ * If a custom image_url is provided in the manifest, use that instead
  */
 export function getMcpServerImageUrl(server: ArchestraMcpServerManifest): string {
+  // If there's a custom image URL specified, use that first
+  if (server.image_url) {
+    return server.image_url;
+  }
+  
   const { owner, repo, path } = server.github_info;
   
   // Try different common image locations in the GitHub repository
@@ -20,8 +26,15 @@ export function getMcpServerImageUrl(server: ArchestraMcpServerManifest): string
 
 /**
  * Generate fallback image URLs to try if the primary image fails
+ * If a custom image_url is provided, don't return any fallbacks (trust the custom URL)
  */
 export function getMcpServerImageFallbacks(server: ArchestraMcpServerManifest): string[] {
+  // If there's a custom image URL, don't provide fallbacks
+  // This ensures we trust the official image source
+  if (server.image_url) {
+    return [];
+  }
+  
   const { owner, repo, path } = server.github_info;
   const baseUrl = `https://raw.githubusercontent.com/${owner}/${repo}/main`;
   
@@ -63,10 +76,15 @@ export function getMcpServerImageAlt(server: ArchestraMcpServerManifest): string
  * Check if a server likely has an image by checking common conventions
  */
 export function serverLikelyHasImage(server: ArchestraMcpServerManifest): boolean {
+  // If there's a custom image URL, it definitely has an image
+  if (server.image_url) {
+    return true;
+  }
+  
   // This could be extended with actual HTTP checks, but for now we'll assume
   // servers from certain popular organizations or with certain characteristics
   // are more likely to have images
-  const { owner, repo } = server.github_info;
+  const { owner } = server.github_info;
   
   // Popular organizations that typically have good branding
   const wellKnownOrgs = [

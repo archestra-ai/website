@@ -28,12 +28,18 @@
       "mcpServers": {
         "mcp-remote-observability": {
           "command": "npx",
-          "args": ["mcp-remote", "https://observability.mcp.cloudflare.com/sse"],
+          "args": [
+            "mcp-remote",
+            "https://observability.mcp.cloudflare.com/sse"
+          ],
           "env": {}
         },
         "mcp-remote-bindings": {
           "command": "npx",
-          "args": ["mcp-remote", "https://bindings.mcp.cloudflare.com/sse"],
+          "args": [
+            "mcp-remote",
+            "https://bindings.mcp.cloudflare.com/sse"
+          ],
           "env": {}
         }
       }
@@ -72,5 +78,6 @@
     "implementing_oauth2": false
   },
   "dependencies": [],
-  "raw_dependencies": "=== package.json ===\n{\n\t\"name\": \"@cloudflare/mcp-server-cloudflare\",\n\t\"version\": \"1.0.0\",\n\t\"description\": \"Monorepo for Cloudflare MCP servers\",\n\t\"private\": true,\n\t\"license\": \"Apache-2.0\",\n\t\"author\": \"Cloudflare, Inc. (https://cloudflare.com)\",\n\t\"homepage\": \"https://github.com/cloudflare/mcp-server-cloudflare\",\n\t\"bugs\": \"https://github.com/cloudflare/mcp-server-cloudflare/issues\",\n\t\"type\": \"module\",\n\t\"sideEffects\": false,\n\t\"scripts\": {\n\t\t\"changeset:new\": \"run-changeset-new\",\n\t\t\"check:deps\": \"syncpack lint\",\n\t\t\"check:format\": \"prettier . --check --cache --ignore-unknown\",\n\t\t\"check:turbo\": \"run-turbo check\",\n\t\t\"types\": \"run-turbo types\",\n\t\t\"test:ci\": \"run-vitest-ci\",\n\t\t\"test\": \"vitest run --passWithNoTests\",\n\t\t\"fix:format\": \"prettier . --write --cache --ignore-unknown\",\n\t\t\"fix:deps\": \"run-fix-deps\",\n\t\t\"test:watch\": \"vitest\",\n\t\t\"eval:ci\": \"run-turbo eval:ci\",\n\t\t\"eval:dev\": \"run-turbo eval:dev\",\n\t\t\"update-deps\": \"syncpack update\"\n\t},\n\t\"devDependencies\": {\n\t\t\"@changesets/cli\": \"2.28.1\",\n\t\t\"@cloudflare/vitest-pool-workers\": \"0.8.14\",\n\t\t\"@ianvs/prettier-plugin-sort-imports\": \"4.4.1\",\n\t\t\"@repo/eslint-config\": \"workspace:*\",\n\t\t\"@repo/tools\": \"workspace:*\",\n\t\t\"@repo/typescript-config\": \"workspace:*\",\n\t\t\"@vitest/ui\": \"3.0.9\",\n\t\t\"prettier\": \"3.5.3\",\n\t\t\"syncpack\": \"13.0.3\",\n\t\t\"turbo\": \"2.5.0\",\n\t\t\"typescript\": \"5.5.4\",\n\t\t\"vitest\": \"3.0.9\"\n\t},\n\t\"packageManager\": \"pnpm@10.8.0\",\n\t\"pnpm\": {\n\t\t\"onlyBuiltDependencies\": [\n\t\t\t\"esbuild\",\n\t\t\t\"sharp\",\n\t\t\t\"workerd\"\n\t\t],\n\t\t\"overrides\": {\n\t\t\t\"esbuild\": \"0.25.1\"\n\t\t}\n\t}\n}\n"
+  "raw_dependencies": "=== package.json ===\n{\n\t\"name\": \"@cloudflare/mcp-server-cloudflare\",\n\t\"version\": \"1.0.0\",\n\t\"description\": \"Monorepo for Cloudflare MCP servers\",\n\t\"private\": true,\n\t\"license\": \"Apache-2.0\",\n\t\"author\": \"Cloudflare, Inc. (https://cloudflare.com)\",\n\t\"homepage\": \"https://github.com/cloudflare/mcp-server-cloudflare\",\n\t\"bugs\": \"https://github.com/cloudflare/mcp-server-cloudflare/issues\",\n\t\"type\": \"module\",\n\t\"sideEffects\": false,\n\t\"scripts\": {\n\t\t\"changeset:new\": \"run-changeset-new\",\n\t\t\"check:deps\": \"syncpack lint\",\n\t\t\"check:format\": \"prettier . --check --cache --ignore-unknown\",\n\t\t\"check:turbo\": \"run-turbo check\",\n\t\t\"types\": \"run-turbo types\",\n\t\t\"test:ci\": \"run-vitest-ci\",\n\t\t\"test\": \"vitest run --passWithNoTests\",\n\t\t\"fix:format\": \"prettier . --write --cache --ignore-unknown\",\n\t\t\"fix:deps\": \"run-fix-deps\",\n\t\t\"test:watch\": \"vitest\",\n\t\t\"eval:ci\": \"run-turbo eval:ci\",\n\t\t\"eval:dev\": \"run-turbo eval:dev\",\n\t\t\"update-deps\": \"syncpack update\"\n\t},\n\t\"devDependencies\": {\n\t\t\"@changesets/cli\": \"2.28.1\",\n\t\t\"@cloudflare/vitest-pool-workers\": \"0.8.14\",\n\t\t\"@ianvs/prettier-plugin-sort-imports\": \"4.4.1\",\n\t\t\"@repo/eslint-config\": \"workspace:*\",\n\t\t\"@repo/tools\": \"workspace:*\",\n\t\t\"@repo/typescript-config\": \"workspace:*\",\n\t\t\"@vitest/ui\": \"3.0.9\",\n\t\t\"prettier\": \"3.5.3\",\n\t\t\"syncpack\": \"13.0.3\",\n\t\t\"turbo\": \"2.5.0\",\n\t\t\"typescript\": \"5.5.4\",\n\t\t\"vitest\": \"3.0.9\"\n\t},\n\t\"packageManager\": \"pnpm@10.8.0\",\n\t\"pnpm\": {\n\t\t\"onlyBuiltDependencies\": [\n\t\t\t\"esbuild\",\n\t\t\t\"sharp\",\n\t\t\t\"workerd\"\n\t\t],\n\t\t\"overrides\": {\n\t\t\t\"esbuild\": \"0.25.1\"\n\t\t}\n\t}\n}\n",
+  "image_url": "https://cdn.simpleicons.org/cloudflare"
 }
