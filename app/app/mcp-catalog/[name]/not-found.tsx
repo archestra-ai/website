@@ -7,7 +7,7 @@ import constants from '@constants';
 const {
   github: {
     archestra: {
-      website: { newIssueUrl },
+      archestra: { newIssueUrl },
     },
   },
 } = constants;

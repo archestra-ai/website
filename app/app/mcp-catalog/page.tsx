@@ -3,17 +3,16 @@ import { Suspense } from 'react';
 
 import Footer from '@components/Footer';
 import Header from '@components/Header';
+import AddNewMCPServerButton from '@components/LinkButtons/AddNewMCPServerButton';
+import ViewOnGitHubButton from '@components/LinkButtons/ViewOnGitHubButton';
+import McpCatalogClient from '@components/McpCatalogClient';
+import ScoringExplanationCard from '@components/ScoringExplanationCard';
+import TrustScoreBadgeMarkdown from '@components/TrustScoreBadgeMarkdown';
 import constants from '@constants';
-import AddNewMCPServerButton from '@mcpCatalog/components/LinkButtons/AddNewMCPServerButton';
-import ViewOnGitHubButton from '@mcpCatalog/components/LinkButtons/ViewOnGitHubButton';
-import McpCatalogClient from '@mcpCatalog/components/McpCatalogClient';
-import ScoringExplanationCard from '@mcpCatalog/components/ScoringExplanationCard';
-import TrustScoreBadgeMarkdown from '@mcpCatalog/components/TrustScoreBadgeMarkdown';
-import { countServersInRepo, loadServers } from '@mcpCatalog/lib/catalog';
-import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
+import { ArchestraMcpServerManifest } from '@lib/types';
 
-import ReportAnIssueButton from './components/LinkButtons/ReportAnIssueButton';
-import TrustScoreBadge from './components/TrustScoreBadge';
+import ReportAnIssueButton from '../../components/LinkButtons/ReportAnIssueButton';
+import TrustScoreBadge from '../../components/TrustScoreBadge';
 
 const {
   website: { keywords: websiteKeywords, urls: websiteUrls },
