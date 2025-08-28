@@ -1,7 +1,7 @@
 ---
 title: OAuth Providers
-category: Development
-order: 2
+category: Supporting Your MCP Server
+order: 3
 tags: [development, setup, quickstart]
 lastUpdated: 2025-01-25
 ---
@@ -266,3 +266,29 @@ jiraProvider: OAuthProviderDefinition = {
   },
 };
 ```
+
+## Debugging and Cleanup
+
+When developing and testing OAuth providers, you may need to inspect or clean up containers.
+
+### Container Management Commands
+
+List all containers (including stopped ones):
+
+```bash
+./desktop_app/resources/bin/mac/arm64/podman-remote-static-v5.5.2 container ls --all
+```
+
+Remove all containers (force removal):
+
+```bash
+./desktop_app/resources/bin/mac/arm64/podman-remote-static-v5.5.2 rm -a -f
+```
+
+Access a running container for debugging:
+
+```bash
+./desktop_app/resources/bin/mac/arm64/podman-remote-static-v5.5.2 exec -it 2ccf5745b083 sh
+```
+
+Replace `2ccf5745b083` with your actual container ID from the `container ls` command.

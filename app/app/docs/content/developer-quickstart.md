@@ -2,8 +2,6 @@
 title: Quickstart
 category: Development
 order: 1
-tags: [development, setup, quickstart]
-lastUpdated: 2025-01-25
 ---
 
 > **Note:** The development environment currently supports **macOS only**. Windows and Linux support is coming soon.
