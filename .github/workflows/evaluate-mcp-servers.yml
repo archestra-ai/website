@@ -208,9 +208,7 @@ jobs:
               --title "$PR_TITLE" \
               --body "$PR_BODY" \
               --base main \
-              --head "$BRANCH_NAME" \
-              --label "automated" \
-              --label "mcp-evaluation" || echo "PR creation failed or already exists"
+              --head "$BRANCH_NAME" || echo "PR creation failed or already exists"
               
           else
             echo "Not on main branch - committing directly"
