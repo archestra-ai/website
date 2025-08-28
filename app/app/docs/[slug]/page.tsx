@@ -3,17 +3,12 @@ import { ChevronLeft, ChevronRight, Clock, Edit } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeRaw from 'rehype-raw';
-import rehypeSlug from 'rehype-slug';
-import remarkBreaks from 'remark-breaks';
-import remarkGfm from 'remark-gfm';
 
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 import constants from '@constants';
 
+import DocContent from '../components/DocContent';
 import DocsSidebar from '../components/DocsSidebar';
 import { TableOfContentsItem } from '../types';
 import { formatLastUpdated, generateTableOfContents, getAllDocs, getDocBySlug, getDocsByCategory } from '../utils';
@@ -135,113 +130,7 @@ export default async function DocPage({ params }: Props) {
                   </header>
 
                   {/* Content */}
-                  <div className="prose prose-lg max-w-none">
-                    <ReactMarkdown
-                      remarkPlugins={[remarkGfm, remarkBreaks]}
-                      rehypePlugins={[rehypeHighlight, rehypeRaw, rehypeSlug]}
-                      components={{
-                        p: ({ node, ...props }) => <p {...props} className="text-gray-700 leading-relaxed mb-4" />,
-                        h1: ({ node, children, ...props }) => (
-                          <h1 {...props} className="text-3xl font-bold text-gray-900 mb-6 mt-10">
-                            {children}
-                          </h1>
-                        ),
-                        h2: ({ node, children, ...props }) => (
-                          <h2 {...props} className="text-2xl font-bold text-gray-900 mb-4 mt-8">
-                            {children}
-                          </h2>
-                        ),
-                        h3: ({ node, children, ...props }) => (
-                          <h3 {...props} className="text-xl font-bold text-gray-900 mb-3 mt-6">
-                            {children}
-                          </h3>
-                        ),
-                        ul: ({ node, ...props }) => (
-                          <ul {...props} className="list-disc list-inside mb-4 space-y-2 pl-4" />
-                        ),
-                        ol: ({ node, ...props }) => (
-                          <ol {...props} className="list-decimal list-inside mb-4 space-y-2 pl-4" />
-                        ),
-                        li: ({ node, ...props }) => <li {...props} className="text-gray-700 leading-relaxed" />,
-                        a: ({ node, ...props }) => (
-                          <a
-                            {...props}
-                            className="text-blue-600 hover:underline"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          />
-                        ),
-                        img: ({ node, ...props }) => <img {...props} className="rounded-lg shadow-md my-6 w-full" />,
-                        blockquote: ({ node, ...props }) => (
-                          <blockquote
-                            {...props}
-                            className="border-l-4 border-blue-500 pl-4 my-4 text-gray-600 italic"
-                          />
-                        ),
-                        pre: ({ node, children, ...props }) => (
-                          <pre {...props} className="bg-gray-50 rounded-lg p-4 overflow-x-auto text-sm my-6">
-                            {children}
-                          </pre>
-                        ),
-                        code: ({ node, className, children, ...props }) => {
-                          const match = /language-(\w+)/.exec(className || '');
-                          return match ? (
-                            <code className={className} {...props}>
-                              {children}
-                            </code>
-                          ) : (
-                            <code className="bg-gray-100 px-1 py-0.5 rounded text-sm font-mono" {...props}>
-                              {children}
-                            </code>
-                          );
-                        },
-                        table: ({ node, ...props }) => (
-                          <div className="overflow-x-auto my-6">
-                            <table {...props} className="min-w-full divide-y divide-gray-200" />
-                          </div>
-                        ),
-                        thead: ({ node, ...props }) => <thead {...props} className="bg-gray-50" />,
-                        th: ({ node, ...props }) => (
-                          <th
-                            {...props}
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                          />
-                        ),
-                        td: ({ node, ...props }) => (
-                          <td {...props} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900" />
-                        ),
-                        // Custom components for callouts
-                        div: ({ node, className, children, ...props }) => {
-                          if (className?.includes('callout')) {
-                            const type = className.split('-')[1] || 'info';
-                            const styles = {
-                              info: 'bg-blue-50 border-blue-200 text-blue-900',
-                              warning: 'bg-yellow-50 border-yellow-200 text-yellow-900',
-                              danger: 'bg-red-50 border-red-200 text-red-900',
-                              success: 'bg-green-50 border-green-200 text-green-900',
-                            };
-
-                            return (
-                              <div
-                                className={`p-4 my-4 border-l-4 rounded-r-lg ${styles[type as keyof typeof styles] || styles.info}`}
-                                {...props}
-                              >
-                                {children}
-                              </div>
-                            );
-                          }
-
-                          return (
-                            <div className={className} {...props}>
-                              {children}
-                            </div>
-                          );
-                        },
-                      }}
-                    >
-                      {doc.content}
-                    </ReactMarkdown>
-                  </div>
+                  <DocContent content={doc.content} />
 
                   {/* Navigation */}
                   {doc.navigation && (
