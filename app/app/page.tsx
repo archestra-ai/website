@@ -17,7 +17,6 @@ import Footer from '@components/Footer';
 import GitHubStarsChart from '@components/GitHubStarsChart';
 import Header from '@components/Header';
 import constants from '@constants';
-import { loadServers } from '@mcpCatalog/lib/catalog';
 
 const {
   company: {

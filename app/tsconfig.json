@@ -25,10 +25,10 @@
     */
     "baseUrl": ".",
     "paths": {
+      "@archestra/types": ["lib/types.ts"],
       "@components/*": ["components/*"],
       "@constants": ["constants"],
-      "@lib/*": ["lib/*"],
-      "@mcpCatalog/*": ["app/mcp-catalog/*"]
+      "@lib/*": ["lib/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

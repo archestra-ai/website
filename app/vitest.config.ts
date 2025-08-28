@@ -10,7 +10,6 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './components'),
       '@constants': path.resolve(__dirname, './constants'),
       '@lib': path.resolve(__dirname, './lib'),
-      '@mcpCatalog': path.resolve(__dirname, './app/mcp-catalog'),
     },
   },
   test: {
