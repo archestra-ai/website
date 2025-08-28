@@ -2,7 +2,6 @@
 title: Desktop
 category: Getting Started
 order: 1
-lastUpdated: 2025-01-25
 ---
 
 ## Archestra Desktop is Under Development
