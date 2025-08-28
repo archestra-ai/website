@@ -866,5 +866,7 @@
   "https://github.com/awslabs/mcp",
   "https://github.com/firecrawl/firecrawl-mcp-server",
   "https://github.com/sanyambassi/thales-cdsp-csm-mcp-server",
-  "https://github.com/bucketco/bucket-javascript-sdk/tree/main/packages/cli"
+  "https://github.com/bucketco/bucket-javascript-sdk/tree/main/packages/cli",
+  "https://github.com/FosterG4/mcpsaver",
+  "https://github.com/makenotion/notion-mcp-server"
 ]

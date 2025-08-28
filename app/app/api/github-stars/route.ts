@@ -27,19 +27,19 @@ async function getRedisClient() {
   if (!process.env.REDIS_URL && !process.env.KV_URL) {
     throw new Error('No Redis/KV URL configured');
   }
-  
+
   if (!redis) {
     redis = createClient({
-      url: process.env.REDIS_URL || process.env.KV_URL
+      url: process.env.REDIS_URL || process.env.KV_URL,
     });
     redis.on('error', (err) => console.error('Redis Client Error', err));
   }
-  
+
   // Check if already connected
   if (!redis.isOpen) {
     await redis.connect();
   }
-  
+
   return redis;
 }
 
@@ -93,10 +93,10 @@ export async function GET() {
         console.log('Less than 2 data points found, adding seed data');
         const seedDate = '2024-08-05';
         // Only add if it doesn't already exist
-        if (!history.find(point => point.date === seedDate)) {
+        if (!history.find((point) => point.date === seedDate)) {
           history.push({
             date: seedDate,
-            stars: 3
+            stars: 3,
           });
           // Sort by date
           history.sort((a, b) => a.date.localeCompare(b.date));

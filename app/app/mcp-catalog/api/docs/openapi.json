@@ -371,7 +371,7 @@
                   "provider": {
                     "type": "string",
                     "nullable": true,
-                    "enum": ["google", "slack"]
+                    "enum": ["google", "slack", "linkedin"]
                   },
                   "required": {
                     "type": "boolean"
@@ -582,6 +582,9 @@
             },
             "required": ["type", "entry_point", "mcp_config"],
             "additionalProperties": false
+          },
+          "server_docker": {
+            "nullable": true
           },
           "user_config_overridden": {
             "type": "object",
