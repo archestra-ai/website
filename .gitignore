@@ -29,3 +29,5 @@ next-env.d.ts
 
 .claude/settings.local.json
 .DS_Store
+
+.idea
