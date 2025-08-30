@@ -10,14 +10,14 @@ import { extractServerInfo, loadServers } from '@mcpCatalog/lib/catalog';
 import { calculateQualityScore } from '@mcpCatalog/lib/quality-calculator';
 import {
   ArchestraClientConfigPermutationsSchema,
-  ArchestraMcpServerProtocolFeaturesSchema,
   ArchestraOauthSchema,
   ArchestraSupportedOauthProvidersSchema,
   MCPDependencySchema,
-  McpServerCategorySchema,
+  McpServerCategorySchema
 } from '@mcpCatalog/schemas';
 import { ArchestraMcpServerGitHubRepoInfo, ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
+import { extractProtocolFeaturesFromUrl } from './mcp-features';
 import { MCP_SERVERS_EVALUATIONS_DIR, MCP_SERVERS_JSON_FILE_PATH } from './paths';
 
 const CATEGORIES = McpServerCategorySchema.options;
@@ -377,7 +377,7 @@ async function fetchRepoData(owner: string, repo: string, repositoryPath: string
       try {
         const commits = await apiCall(`/repos/${owner}/${repo}/commits?per_page=1`);
         if (commits[0]) latestCommitHash = commits[0].sha;
-      } catch {}
+      } catch { }
 
       return {
         name: repoData.name,
@@ -1501,7 +1501,8 @@ If no library dependencies found, respond: {"dependencies": []}`;
 }
 
 /**
- * Extract protocol features using AI
+ * Extract protocol features using pattern-based analysis (replaces AI-based approach)
+ * Uses mcp-features.ts for reliable pattern matching instead of LLM calls
  */
 async function extractProtocolFeatures(
   server: ArchestraMcpServerManifest,
@@ -1521,64 +1522,27 @@ async function extractProtocolFeatures(
     console.log(`  ⏭️  Protocol Features: Skipped (already exists)`);
     return server;
   }
-  console.log(`  🔄 Protocol Features: Extracting...`);
-
-  const content = server.readme || server.description;
-  if (!content) {
-    console.warn('No content available for protocol analysis');
-    return server;
-  }
-
-  const prompt = `Analyze this MCP server README and code to determine which MCP protocol features are implemented.
-
-Content:
-${content.substring(0, 8000)}
-
-Look for these MCP protocol features:
-1. **Tools** - Server provides tools/functions that can be called (look for "tools", "functions", "methods", tool definitions)
-2. **Prompts** - Server provides prompt templates (look for "prompts", "templates", prompt definitions)
-3. **Resources** - Server provides resources that can be read (look for "resources", resource definitions, data access)
-4. **Sampling** - Server supports completion/sampling requests (look for "sampling", "completion", LLM integration)
-5. **Roots** - Server supports roots protocol for directory access (look for "roots", "directories", dynamic directory configuration)
-6. **Logging** - Server implements logging features (look for "logging", "log levels", structured logging)
-7. **STDIO Transport** - Server supports stdio transport (look for "stdio", command-line interface, standard input/output)
-8. **HTTP Transport** - Server supports HTTP/SSE transport (look for "http", "sse", "server-sent events", web server)
-9. **OAuth2** - Server implements OAuth2 authentication (look for "oauth", "oauth2", "authentication", "authorization")
-
-Instructions:
-- Return true if the feature is clearly implemented based on the README
-- Return false if the feature is not mentioned or not implemented
-- Look for explicit mentions, code examples, configuration options, or API documentation
-- For transports, check if the server mentions how to connect (stdio vs http)
-- For OAuth2, look for authentication setup instructions
-
-Respond with JSON format:
-{
-  "implementing_tools": true/false,
-  "implementing_prompts": true/false,
-  "implementing_resources": true/false,
-  "implementing_sampling": true/false,
-  "implementing_roots": true/false,
-  "implementing_logging": true/false,
-  "implementing_stdio": true/false,
-  "implementing_streamable_http": true/false,
-  "implementing_oauth2": true/false
-}`;
-
-  const protocolFormat = zodToJsonSchema(ArchestraMcpServerProtocolFeaturesSchema);
 
   try {
-    const result = await callLLM(prompt, protocolFormat, model);
+    // Get the GitHub URL from the server's github_info
+    const githubUrl = server.github_info?.url;
+    if (!githubUrl) {
+      console.warn('No GitHub URL available for protocol analysis');
+      return server;
+    }
+
+    // Use the pattern-based analysis from mcp-features.ts
+    const protocolFeatures = await extractProtocolFeaturesFromUrl(githubUrl, server.github_info?.path || null);
 
     // Update all protocol fields
-    // The result IS the protocol features object directly
     return {
       ...server,
-      protocol_features: result,
-      evaluation_model: model,
+      protocol_features: protocolFeatures,
+      evaluation_model: 'pattern-based-analysis', // Indicate this was done with pattern matching, not AI
     };
   } catch (error: any) {
-    console.warn(`Protocol analysis failed: ${error.message}`);
+    console.error(`❌ Protocol analysis failed:`, error);
+    console.error(`❌ Error stack:`, error.stack);
   }
 
   return server;
@@ -1801,6 +1765,7 @@ async function evaluateSingleRepo(
           if (implementing_streamable_http) protocolFeatures.push('HTTP');
           if (implementing_oauth2) protocolFeatures.push('OAuth2');
           console.log(`  Protocol Features: ${protocolFeatures.length > 0 ? protocolFeatures.join(', ') : 'None'}`);
+
         }
       }
     }
@@ -1884,15 +1849,14 @@ async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<
   const concurrency = _concurrency || (hasToken ? 10 : 3);
 
   console.log(`📊 Batch Evaluation
-Total servers: ${githubUrls.length}${
-    limit ? ` (limited from ${JSON.parse(fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf8')).length})` : ''
-  }
+Total servers: ${githubUrls.length}${limit ? ` (limited from ${JSON.parse(fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf8')).length})` : ''
+    }
 Existing evaluations: ${existingFiles.length}
 Concurrency: ${concurrency} parallel requests
 Options: ${Object.entries(options)
-    .filter(([k, v]) => v && k !== 'concurrency' && k !== 'limit')
-    .map(([k]) => k)
-    .join(', ')}\n`);
+      .filter(([k, v]) => v && k !== 'concurrency' && k !== 'limit')
+      .map(([k]) => k)
+      .join(', ')}\n`);
 
   const stats = { processed: 0, updated: 0, created: 0, failed: 0, removed: 0 };
   const startTime = Date.now();
@@ -2020,7 +1984,7 @@ Update Options:
   --archestra-oauth                        Update Archestra oauth related configurations
   --canonical-server-and-user-config       Update canonical server and user config
   --dependencies                           Update library dependencies
-  --protocol                               Update MCP protocol features implementation
+  --protocol                               Update MCP protocol features implementation (uses pattern-based analysis)
   --score                                  Update trust scores
   --all                                    Fill all missing data (respects existing data unless --force)
   (no flags)                               Fill in missing data only
@@ -2043,7 +2007,9 @@ Examples:
   npm run evaluate-catalog --missing-only --all
   npm run evaluate-catalog --missing-only --all --concurrency 5
 
-Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variable`);
+Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variable
+
+Protocol Features: Now uses pattern-based analysis (mcp-features.ts) instead of AI for more reliable detection`);
     return;
   }
 
@@ -2115,3 +2081,4 @@ if (require.main === module) {
 }
 
 export { evaluateAllRepos, evaluateSingleRepo };
+
