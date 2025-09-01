@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import CookieSettingsLink from '@components/CookieSettingsLink';
 import constants from '@constants';
 
 const {
@@ -16,6 +17,9 @@ export default function Footer() {
               © {new Date().getFullYear()} {companyAlternateName}. All rights reserved.
             </p>
             <p className="text-xs text-gray-400 mt-1">{companyName} Inc.</p>
+            <div className="mt-2">
+              <CookieSettingsLink />
+            </div>
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
             <Image src="/cncf.png" alt="CNCF Logo" width={150} height={60} />
