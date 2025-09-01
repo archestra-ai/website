@@ -15,7 +15,7 @@ import Link from 'next/link';
 import { EmailForm } from '@components/EmailForm';
 import Footer from '@components/Footer';
 import GitHubStarsChart from '@components/GitHubStarsChart';
-import Header from '@components/Header';
+import HeaderWithBanner from '@components/HeaderWithBanner';
 import constants from '@constants';
 import { loadServers } from '@mcpCatalog/lib/catalog';
 
@@ -108,7 +108,7 @@ export default async function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <Header />
+      <HeaderWithBanner />
 
       {/* Main Content */}
       <main className="flex-1 relative flex flex-col">
