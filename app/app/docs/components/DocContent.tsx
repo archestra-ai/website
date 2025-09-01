@@ -1,16 +1,62 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import rehypeSlug from 'rehype-slug';
 import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
-import { Link as LinkIcon } from 'lucide-react';
+import { Link as LinkIcon, Copy, Check } from 'lucide-react';
+import { Button } from '@components/ui/button';
 
 interface DocContentProps {
   content: string;
+}
+
+interface CodeBlockProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+function CodeBlock({ children, className }: CodeBlockProps) {
+  const [copied, setCopied] = useState(false);
+  
+  const extractText = (node: React.ReactNode): string => {
+    if (typeof node === 'string') return node;
+    if (Array.isArray(node)) return node.map(extractText).join('');
+    if (node && typeof node === 'object' && 'props' in node) {
+      return extractText((node as any).props.children);
+    }
+    return '';
+  };
+
+  const copyToClipboard = async () => {
+    try {
+      const text = extractText(children);
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  };
+
+  return (
+    <div className="relative group">
+      <pre className={className || "bg-gray-50 rounded-lg p-4 overflow-x-auto text-sm my-6"}>
+        {children}
+      </pre>
+      <Button
+        variant="outline"
+        size="sm"
+        className="absolute top-2 right-2 h-7 w-7 p-0 bg-white hover:bg-gray-50 opacity-0 group-hover:opacity-100 transition-opacity"
+        onClick={copyToClipboard}
+      >
+        {copied ? <Check className="h-3 w-3 text-green-600" /> : <Copy className="h-3 w-3" />}
+      </Button>
+    </div>
+  );
 }
 
 export default function DocContent({ content }: DocContentProps) {
@@ -145,9 +191,9 @@ export default function DocContent({ content }: DocContentProps) {
             />
           ),
           pre: ({ node, children, ...props }) => (
-            <pre {...props} className="bg-gray-50 rounded-lg p-4 overflow-x-auto text-sm my-6">
+            <CodeBlock {...props}>
               {children}
-            </pre>
+            </CodeBlock>
           ),
           code: ({ node, className, children, ...props }) => {
             const match = /language-(\w+)/.exec(className || '');

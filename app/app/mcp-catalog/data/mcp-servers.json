@@ -1,4 +1,5 @@
 [
+  "https://github.com/Linked-API/linkedapi-mcp",
   "https://github.com/1mcp-app/agent",
   "https://github.com/duaraghav8/MCPJungle",
   "https://github.com/glenngillen/mcpmcp-server",
@@ -869,5 +870,6 @@
   "https://github.com/sanyambassi/thales-cdsp-csm-mcp-server",
   "https://github.com/bucketco/bucket-javascript-sdk/tree/main/packages/cli",
   "https://github.com/FosterG4/mcpsaver",
-  "https://github.com/makenotion/notion-mcp-server"
+  "https://github.com/makenotion/notion-mcp-server",
+  "https://github.com/cbcoutinho/nextcloud-mcp-server"
 ]
