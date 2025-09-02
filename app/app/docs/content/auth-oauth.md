@@ -22,11 +22,68 @@ Desktop App (PKCE) → OAuth Proxy (Secrets) → Provider API
 
 The desktop app never sees OAuth client secrets - they're kept secure in the OAuth proxy.
 
-## Step 1: OAuth Proxy Setup
+## Developer Environment Quickstart
+
+1. Clone the repo
+```bash
+git clone https://github.com/archestra/archestra.git
+```
+2. Set up and start the **OAuth proxy**
+```bash
+cd oauth_proxy
+cp .env.example .env
+npm install
+npm start
+ngrok http 8080  # Optionally use ngrok for https tunneling, as Slack requires
+```
+3. Start the **Desktop app**
+> Note: Make sure OAUTH_PROXY_URL in .env points to the local OAuth proxy's URL http://localhost:8080 or https://ngrok.com/abc123
+```bash
+cd desktop_app
+npm install
+npm start
+```
+4. Desktop app should start automatically. You can now test your OAuth provider
+
+## Adding a New OAuth Provider
+
+### Step 1: Add an MCP Server to Local Developer Catalog
+
+Instead of running the remote catalog, you can copy the catalog file from the remote catalog to the local catalog `desktop_app/src/ui/catalog_local/`, or create a new catalog file for your MCP server.
+
+Example local catalog file:
+
+```json
+// desktop_app/src/ui/catalog_local/my-test-server.json
+{
+  "dxt_version": "0.1.0",
+  "name": "my_company__test_mcp_server",
+  "display_name": "Test MCP Server",
+  "version": "1.0.0",
+  "description": "A test MCP server for development",
+  "category": "Development",
+  "archestra_config": {
+    "oauth": {
+      "provider": "jira",
+      "required": true
+    }
+  },
+  "server": {
+    "type": "python",
+    "entry_point": "index.py",
+    "mcp_config": {
+      "command": "python",
+      "args": ["index.py"]
+    }
+  }
+}
+```
+
+### Step 2: OAuth Proxy Setup
 
 The OAuth proxy is a separate service that handles the secure parts of OAuth.
 
-### 1.1 Add Your OAuth Credentials
+#### 2.1 Add Your OAuth Credentials
 
 First, add your OAuth app credentials to the proxy's environment:
 
@@ -36,7 +93,7 @@ JIRA_CLIENT_ID=your-client-id-from-jira
 JIRA_CLIENT_SECRET=your-client-secret-from-jira
 ```
 
-### 1.2 Configure the Provider
+#### 2.2 Configure the Provider
 
 Add your provider configuration to tell the proxy how to talk to your OAuth service:
 
@@ -51,7 +108,7 @@ providers: {
 }
 ```
 
-### 1.3 Register the Provider
+#### 2.3 Register the Provider
 
 Most providers work with the base OAuth class. Just register it:
 
@@ -88,11 +145,11 @@ export class JiraOAuthProvider extends OAuthProvider {
 }
 ```
 
-## Step 2: Desktop App Integration
+### Step 3: Desktop App Integration
 
 Now configure the desktop app to use your OAuth provider.
 
-### 2.1 Create Provider Definition
+#### 3.1 Create Provider Definition
 
 Create a new file for your provider:
 
@@ -121,7 +178,7 @@ export const jiraProvider: OAuthProviderDefinition = {
 };
 ```
 
-### 2.2 Export and Register
+#### 3.2 Export and Register
 
 Export your provider and add it to the registry:
 
@@ -136,29 +193,9 @@ export { jiraProvider } from './jira';
 oauthProviders['jira'] = jiraProvider;
 ```
 
-## Step 3: Connect to MCP Server Catalog
+### Step 4: Connect to MCP Server Catalog
 
-MCP servers specify which OAuth provider they need in their catalog manifest:
-
-```json
-{
-  "name": "company__jira-mcp-server",
-  "display_name": "Jira MCP Server",
-  "archestra_config": {
-    "oauth": {
-      "provider": "jira", // Must match your provider name exactly
-      "required": true // OAuth required for installation
-    }
-  },
-  "user_config": {
-    "jira_url": {
-      "type": "string",
-      "required": true,
-      "description": "Your Jira instance URL (e.g., company.atlassian.net)"
-    }
-  }
-}
-```
+Don't forget to move your server from local_catalog to https://github.com/archestra/website
 
 When users install this MCP server:
 
