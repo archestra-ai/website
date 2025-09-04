@@ -14,6 +14,7 @@ interface DocsSidebarProps {
 const categoryIcons: Record<string, React.ReactNode> = {
   'Getting Started': <Book className="h-4 w-4" />,
   'API Reference': <Code className="h-4 w-4" />,
+  'Development': <Code className="h-4 w-4" />,
   Guides: <FileText className="h-4 w-4" />,
   Examples: <Layers className="h-4 w-4" />,
   Advanced: <Settings className="h-4 w-4" />,
@@ -36,7 +37,15 @@ export default function DocsSidebar({ categories }: DocsSidebarProps) {
   };
 
   const isActiveCategory = (category: DocCategory) => {
-    return category.docs.some((doc) => isActiveDoc(doc.slug));
+    // Check direct docs
+    const hasActiveDirectDoc = category.docs.some((doc) => isActiveDoc(doc.slug));
+    
+    // Check subcategory docs
+    const hasActiveSubcategoryDoc = category.subcategories?.some((subcategory) =>
+      subcategory.docs.some((doc) => isActiveDoc(doc.slug))
+    );
+    
+    return hasActiveDirectDoc || hasActiveSubcategoryDoc;
   };
 
   return (
@@ -77,6 +86,7 @@ export default function DocsSidebar({ categories }: DocsSidebarProps) {
                     </div>
 
                     <div className="">
+                      {/* Direct docs */}
                       {category.docs.map((doc) => {
                         const isDocActive = isActiveDoc(doc.slug);
 
@@ -95,6 +105,37 @@ export default function DocsSidebar({ categories }: DocsSidebarProps) {
                           </Link>
                         );
                       })}
+                      
+                      {/* Subcategories */}
+                      {category.subcategories?.map((subcategory) => (
+                        <div key={subcategory.name} className="mt-4">
+                          <div className="pl-10 pr-4 py-1 flex items-center gap-2">
+                            <span className="text-gray-400">——</span>
+                            <span className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                              {subcategory.name}
+                            </span>
+                            <span className="text-gray-400">——</span>
+                          </div>
+                          {subcategory.docs.map((doc) => {
+                            const isDocActive = isActiveDoc(doc.slug);
+
+                            return (
+                              <Link
+                                key={doc.slug}
+                                href={`/docs/${doc.slug}`}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className={`block pl-10 pr-4 py-2 text-sm transition-colors ${
+                                  isDocActive
+                                    ? 'bg-blue-50 text-blue-700 font-medium'
+                                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                                }`}
+                              >
+                                {doc.title}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      ))}
                     </div>
                   </div>
                 );
@@ -124,6 +165,7 @@ export default function DocsSidebar({ categories }: DocsSidebarProps) {
                   </div>
 
                   <div className="ml-6 space-y-1">
+                    {/* Direct docs */}
                     {category.docs.map((doc) => {
                       const isDocActive = isActiveDoc(doc.slug);
 
@@ -141,6 +183,38 @@ export default function DocsSidebar({ categories }: DocsSidebarProps) {
                         </Link>
                       );
                     })}
+                    
+                    {/* Subcategories */}
+                    {category.subcategories?.map((subcategory) => (
+                      <div key={subcategory.name} className="mt-4">
+                        <div className="px-3 py-1 flex items-center gap-2">
+                          <span className="text-gray-400 text-xs">——</span>
+                          <span className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                            {subcategory.name}
+                          </span>
+                          <span className="text-gray-400 text-xs">——</span>
+                        </div>
+                        <div className="space-y-1">
+                          {subcategory.docs.map((doc) => {
+                            const isDocActive = isActiveDoc(doc.slug);
+
+                            return (
+                              <Link
+                                key={doc.slug}
+                                href={`/docs/${doc.slug}`}
+                                className={`block px-3 py-1.5 text-sm rounded-md transition-colors ${
+                                  isDocActive
+                                    ? 'bg-blue-50 text-blue-700 font-medium'
+                                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                                }`}
+                              >
+                                {doc.title}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               );

@@ -1,9 +1,8 @@
 ---
-title: OAuth Providers
-category: Supporting Your MCP Server
-order: 2
-tags: [development, setup, quickstart]
-lastUpdated: 2025-01-25
+title: Authentication with OAuth
+category: Development
+subcategory: MCP Authentication
+order: 6
 ---
 
 This guide shows you how to add OAuth providers (like Jira, LinkedIn, MS Teams) to Archestra using standard OAuth 2.0 flows with PKCE security.
@@ -13,7 +12,9 @@ This guide shows you how to add OAuth providers (like Jira, LinkedIn, MS Teams) 
 Archestra uses a secure two-tier OAuth system with automatic endpoint discovery:
 
 ```
-Desktop App (Discovery + PKCE) → OAuth Proxy (Secret Injection) → Provider API
+Desktop App (Discovery + PKCE) →
+  OAuth Proxy (Secret Injection) →
+    Provider API
 ```
 
 **How it works:**

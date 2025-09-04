@@ -3,7 +3,7 @@ import matter from 'gray-matter';
 import path from 'path';
 import readingTime from 'reading-time';
 
-import { DocCategory, DocFrontMatter, DocNavItem, DocPage, TableOfContentsItem } from './types';
+import { DocCategory, DocFrontMatter, DocNavItem, DocPage, DocSubcategory, TableOfContentsItem } from './types';
 
 const docsDirectory = path.join(process.cwd(), 'app/docs/content');
 
@@ -30,6 +30,7 @@ export function getAllDocs(): DocPage[] {
           slug,
           title: frontMatter.title || slug,
           category: frontMatter.category || 'General',
+          subcategory: frontMatter.subcategory,
           order: frontMatter.order || 999,
           description: frontMatter.description,
           content,
@@ -65,6 +66,7 @@ export function getDocBySlug(slug: string): DocPage | undefined {
     slug,
     title: frontMatter.title || slug,
     category: frontMatter.category || 'General',
+    subcategory: frontMatter.subcategory,
     order: frontMatter.order || 999,
     description: frontMatter.description,
     content,
@@ -93,12 +95,38 @@ export function getDocsByCategory(): DocCategory[] {
   });
 
   const categories: DocCategory[] = Array.from(categoryMap.entries())
-    .map(([name, docs]) => ({
-      name,
-      slug: name.toLowerCase().replace(/\s+/g, '-'),
-      docs: docs.sort((a, b) => a.order - b.order),
-      order: getCategoryOrder(name),
-    }))
+    .map(([name, categoryDocs]) => {
+      // Group docs by subcategory
+      const subcategoryMap = new Map<string | undefined, DocPage[]>();
+      const directDocs: DocPage[] = [];
+      
+      categoryDocs.forEach((doc) => {
+        if (doc.subcategory) {
+          if (!subcategoryMap.has(doc.subcategory)) {
+            subcategoryMap.set(doc.subcategory, []);
+          }
+          subcategoryMap.get(doc.subcategory)!.push(doc);
+        } else {
+          directDocs.push(doc);
+        }
+      });
+
+      // Create subcategories array
+      const subcategories: DocSubcategory[] = Array.from(subcategoryMap.entries())
+        .filter(([key]) => key !== undefined)
+        .map(([name, docs]) => ({
+          name: name!,
+          docs: docs.sort((a, b) => a.order - b.order),
+        }));
+
+      return {
+        name,
+        slug: name.toLowerCase().replace(/\s+/g, '-'),
+        docs: directDocs.sort((a, b) => a.order - b.order),
+        subcategories: subcategories.length > 0 ? subcategories : undefined,
+        order: getCategoryOrder(name),
+      };
+    })
     .sort((a, b) => a.order - b.order);
 
   return categories;

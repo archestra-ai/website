@@ -44,12 +44,16 @@ function CodeBlock({ children, className }: CodeBlockProps) {
   };
 
   return (
-    <div className="relative group">
-      <pre className={className || 'bg-gray-50 rounded-lg p-4 overflow-x-auto text-sm my-6'}>{children}</pre>
+    <div className="relative group my-6">
+      <div className="overflow-x-auto rounded-lg bg-gray-50">
+        <pre className={className || "p-4 text-sm whitespace-pre"}>
+          {children}
+        </pre>
+      </div>
       <Button
         variant="outline"
         size="sm"
-        className="absolute top-2 right-2 h-7 w-7 p-0 bg-white hover:bg-gray-50 opacity-0 group-hover:opacity-100 transition-opacity"
+        className="absolute top-2 right-2 h-7 w-7 p-0 bg-white hover:bg-gray-50 opacity-0 group-hover:opacity-100 transition-opacity z-10"
         onClick={copyToClipboard}
       >
         {copied ? <Check className="h-3 w-3 text-green-600" /> : <Copy className="h-3 w-3" />}
@@ -173,8 +177,12 @@ export default function DocContent({ content }: DocContentProps) {
               </h3>
             );
           },
-          ul: ({ node, ...props }) => <ul {...props} className="list-disc list-inside mb-4 space-y-2 pl-4" />,
-          ol: ({ node, ...props }) => <ol {...props} className="list-decimal list-inside mb-4 space-y-2 pl-4" />,
+          ul: ({ node, ...props }) => (
+            <ul {...props} className="list-disc list-outside mb-4 space-y-2 ml-6" />
+          ),
+          ol: ({ node, ...props }) => (
+            <ol {...props} className="list-decimal list-outside mb-4 space-y-2 ml-6" />
+          ),
           li: ({ node, ...props }) => <li {...props} className="text-gray-700 leading-relaxed" />,
           a: ({ node, ...props }) => (
             <a {...props} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer" />
@@ -188,12 +196,14 @@ export default function DocContent({ content }: DocContentProps) {
           pre: ({ node, children, ...props }) => <CodeBlock {...props}>{children}</CodeBlock>,
           code: ({ node, className, children, ...props }) => {
             const match = /language-(\w+)/.exec(className || '');
+            // Code inside a pre block (code fence)
             return match ? (
-              <code className={className} {...props}>
+              <code {...props}>
                 {children}
               </code>
             ) : (
-              <code className="bg-gray-100 px-1 py-0.5 rounded text-sm font-mono" {...props}>
+              // Inline code
+              <code className="bg-gray-100 px-1 py-0.5 rounded text-sm font-mono break-all" {...props}>
                 {children}
               </code>
             );

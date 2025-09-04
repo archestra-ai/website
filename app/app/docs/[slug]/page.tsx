@@ -86,21 +86,28 @@ export default async function DocPage({ params }: Props) {
 
             {/* Main Content */}
             <article className="flex-1 min-w-0">
-              {/* Breadcrumb */}
+              {/* Breadcrumb with Edit */}
               <nav className="mb-6 text-sm">
-                <ol className="flex items-center space-x-2 text-gray-600">
-                  <li>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-x-2 text-gray-600">
                     <Link href="/docs" className="hover:text-blue-600 transition-colors">
                       Docs
                     </Link>
-                  </li>
-                  <li>/</li>
-                  <li>
+                    <span>/</span>
                     <span className="text-gray-500">{doc.category}</span>
-                  </li>
-                  <li>/</li>
-                  <li className="text-gray-900 font-medium">{doc.title}</li>
-                </ol>
+                    <span>/</span>
+                    <span className="text-gray-900 font-medium">{doc.title}</span>
+                  </div>
+                  <a
+                    href={`https://github.com/archestra-ai/website/edit/main/app/app/docs/content/${doc.slug}.md`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors sm:ml-4 -ml-2 sm:ml-0 px-2 py-1 hover:bg-gray-50 rounded-lg"
+                  >
+                    <Edit className="h-3.5 w-3.5" />
+                    <span>Edit on GitHub</span>
+                  </a>
+                </div>
               </nav>
 
               <div className="flex gap-8">
@@ -108,18 +115,7 @@ export default async function DocPage({ params }: Props) {
                 <div className="flex-1 min-w-0">
                   {/* Header */}
                   <header className="mb-8 pb-8 border-b border-gray-200">
-                    <div className="flex items-start justify-between">
-                      <h1 className="text-4xl font-bold text-gray-900 mb-4">{doc.title}</h1>
-                      <a
-                        href={`https://github.com/archestra-ai/website/edit/main/app/app/docs/content/${doc.slug}.md`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors"
-                      >
-                        <Edit className="h-4 w-4" />
-                        <span>Edit on GitHub</span>
-                      </a>
-                    </div>
+                    <h1 className="text-4xl font-bold text-gray-900 mb-4">{doc.title}</h1>
 
                     <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
                       <span className="flex items-center gap-1">
