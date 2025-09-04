@@ -86,8 +86,8 @@
           }
         }
       }
-    }
-    ,"oauth": {
+    },
+    "oauth": {
       "provider": null,
       "required": false
     }

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 
-import GDPRConsentPanel from '@components/GDPRConsentPanel';
 import ConditionalAnalytics from '@components/ConditionalAnalytics';
+import GDPRConsentPanel from '@components/GDPRConsentPanel';
 import constants from '@constants';
 
 import './globals.css';

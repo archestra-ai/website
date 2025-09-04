@@ -154,8 +154,8 @@
           "args": ["run", "start:http"]
         }
       }
-    }
-    ,"oauth": {
+    },
+    "oauth": {
       "provider": null,
       "required": false
     }

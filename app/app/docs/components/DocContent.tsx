@@ -1,5 +1,6 @@
 'use client';
 
+import { Check, Copy, Link as LinkIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
@@ -7,7 +8,7 @@ import rehypeRaw from 'rehype-raw';
 import rehypeSlug from 'rehype-slug';
 import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
-import { Link as LinkIcon, Copy, Check } from 'lucide-react';
+
 import { Button } from '@components/ui/button';
 
 interface DocContentProps {
@@ -21,7 +22,7 @@ interface CodeBlockProps {
 
 function CodeBlock({ children, className }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
-  
+
   const extractText = (node: React.ReactNode): string => {
     if (typeof node === 'string') return node;
     if (Array.isArray(node)) return node.map(extractText).join('');
@@ -44,9 +45,7 @@ function CodeBlock({ children, className }: CodeBlockProps) {
 
   return (
     <div className="relative group">
-      <pre className={className || "bg-gray-50 rounded-lg p-4 overflow-x-auto text-sm my-6"}>
-        {children}
-      </pre>
+      <pre className={className || 'bg-gray-50 rounded-lg p-4 overflow-x-auto text-sm my-6'}>{children}</pre>
       <Button
         variant="outline"
         size="sm"
@@ -83,7 +82,7 @@ export default function DocContent({ content }: DocContentProps) {
       const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        // Add highlight effect  
+        // Add highlight effect
         element.classList.add('bg-yellow-100', 'transition-all', 'duration-300');
         setTimeout(() => {
           element.classList.remove('bg-yellow-100');
@@ -139,7 +138,10 @@ export default function DocContent({ content }: DocContentProps) {
           h2: ({ node, children, ...props }) => {
             const id = props.id || '';
             return (
-              <h2 {...props} className="text-2xl font-bold text-gray-900 mb-4 mt-8 group relative scroll-mt-20 transition-colors">
+              <h2
+                {...props}
+                className="text-2xl font-bold text-gray-900 mb-4 mt-8 group relative scroll-mt-20 transition-colors"
+              >
                 <a
                   href={`#${id}`}
                   className="absolute -left-8 top-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
@@ -155,7 +157,10 @@ export default function DocContent({ content }: DocContentProps) {
           h3: ({ node, children, ...props }) => {
             const id = props.id || '';
             return (
-              <h3 {...props} className="text-xl font-bold text-gray-900 mb-3 mt-6 group relative scroll-mt-20 transition-colors">
+              <h3
+                {...props}
+                className="text-xl font-bold text-gray-900 mb-3 mt-6 group relative scroll-mt-20 transition-colors"
+              >
                 <a
                   href={`#${id}`}
                   className="absolute -left-8 top-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
@@ -168,33 +173,19 @@ export default function DocContent({ content }: DocContentProps) {
               </h3>
             );
           },
-          ul: ({ node, ...props }) => (
-            <ul {...props} className="list-disc list-inside mb-4 space-y-2 pl-4" />
-          ),
-          ol: ({ node, ...props }) => (
-            <ol {...props} className="list-decimal list-inside mb-4 space-y-2 pl-4" />
-          ),
+          ul: ({ node, ...props }) => <ul {...props} className="list-disc list-inside mb-4 space-y-2 pl-4" />,
+          ol: ({ node, ...props }) => <ol {...props} className="list-decimal list-inside mb-4 space-y-2 pl-4" />,
           li: ({ node, ...props }) => <li {...props} className="text-gray-700 leading-relaxed" />,
           a: ({ node, ...props }) => (
-            <a
-              {...props}
-              className="text-blue-600 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            />
+            <a {...props} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer" />
           ),
-          img: ({ node, ...props }) => <img {...props} className="rounded-lg shadow-md my-6 w-full max-w-2xl mx-auto" />,
+          img: ({ node, ...props }) => (
+            <img {...props} className="rounded-lg shadow-md my-6 w-full max-w-2xl mx-auto" />
+          ),
           blockquote: ({ node, ...props }) => (
-            <blockquote
-              {...props}
-              className="border-l-4 border-blue-500 pl-4 my-4 text-gray-600 italic"
-            />
+            <blockquote {...props} className="border-l-4 border-blue-500 pl-4 my-4 text-gray-600 italic" />
           ),
-          pre: ({ node, children, ...props }) => (
-            <CodeBlock {...props}>
-              {children}
-            </CodeBlock>
-          ),
+          pre: ({ node, children, ...props }) => <CodeBlock {...props}>{children}</CodeBlock>,
           code: ({ node, className, children, ...props }) => {
             const match = /language-(\w+)/.exec(className || '');
             return match ? (
@@ -214,14 +205,9 @@ export default function DocContent({ content }: DocContentProps) {
           ),
           thead: ({ node, ...props }) => <thead {...props} className="bg-gray-50" />,
           th: ({ node, ...props }) => (
-            <th
-              {...props}
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-            />
+            <th {...props} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" />
           ),
-          td: ({ node, ...props }) => (
-            <td {...props} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900" />
-          ),
+          td: ({ node, ...props }) => <td {...props} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900" />,
           // Custom components for callouts
           div: ({ node, className, children, ...props }) => {
             if (className?.includes('callout')) {

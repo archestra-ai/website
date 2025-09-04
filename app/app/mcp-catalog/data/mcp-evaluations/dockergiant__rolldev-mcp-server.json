@@ -68,8 +68,8 @@
           "args": ["run", "dev"]
         }
       }
-    }
-    ,"oauth": {
+    },
+    "oauth": {
       "provider": null,
       "required": false
     }

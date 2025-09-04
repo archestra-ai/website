@@ -17,11 +17,13 @@ Desktop App (Discovery + PKCE) → OAuth Proxy (Secret Injection) → Provider A
 ```
 
 **How it works:**
+
 1. **Desktop App** performs OAuth discovery, manages provider-specific logic, initiates PKCE flows, and stores tokens as environment variables for MCP servers
-2. **OAuth Proxy** acts as a generic service that injects client secrets into token requests for any endpoint specified by the desktop app  
+2. **OAuth Proxy** acts as a generic service that injects client secrets into token requests for any endpoint specified by the desktop app
 3. **Provider** is the external OAuth service (Google, Slack, Jira, etc.)
 
 **Security benefits:**
+
 - Desktop app never sees OAuth client secrets - they're kept secure in the OAuth proxy
 - All OAuth complexity is handled by the desktop app
 - The proxy is a simple ~400-line generic service
@@ -29,12 +31,14 @@ Desktop App (Discovery + PKCE) → OAuth Proxy (Secret Injection) → Provider A
 ### OAuth Discovery (RFC 8414)
 
 The desktop app automatically discovers OAuth endpoints using standard `.well-known` endpoints:
+
 - `/.well-known/oauth-authorization-server` (preferred)
 - `/.well-known/openid_configuration` (fallback)
 
 ## Developer Quickstart
 
 1. Clone the repository and set up the OAuth proxy:
+
 ```bash
 git clone https://github.com/archestra-ai/archestra
 cd oauth_proxy
@@ -44,11 +48,13 @@ pnpm start
 ```
 
 2. (Optional) Set up HTTPS tunneling for providers that require it:
+
 ```bash
 ngrok http 8080  # Some providers like Slack require HTTPS
 ```
 
 3. Start the desktop application:
+
 ```bash
 cd desktop_app
 # Make sure OAUTH_PROXY_URL in .env points to your proxy URL
@@ -60,8 +66,9 @@ pnpm start
 4. The desktop app will start automatically. OAuth discovery works automatically for supported providers.
 
 Try it with an existing OAuth provider:
+
 1. Open Connectors
-2. Find a server with OAuth (like Google MCP)  
+2. Find a server with OAuth (like Google MCP)
 3. Click "Install (OAuth)"
 4. Complete the OAuth flow in your browser
 5. Navigate to Servers and find your installed MCP server
@@ -72,10 +79,10 @@ Here's how to add a new OAuth provider to Archestra using Jira as an example:
 
 ### 1. Create a local MCP server for testing
 
- Find the MCP server JSON in the catalog, e.g. https://github.com/archestra-ai/website/blob/main/app/app/mcp-catalog/data/mcp-evaluations/korotovsky__slack-mcp-server.json
+Find the MCP server JSON in the catalog, e.g. https://github.com/archestra-ai/website/blob/main/app/app/mcp-catalog/data/mcp-evaluations/korotovsky__slack-mcp-server.json
 
- Copy the file (or create a new one) to `desktop_app/src/ui/catalog_local`. The MCP server will appear on the "Connections" page with a purple "Developer" tag, allowing you to modify and work with it without running the catalog
- 
+Copy the file (or create a new one) to `desktop_app/src/ui/catalog_local`. The MCP server will appear on the "Connections" page with a purple "Developer" tag, allowing you to modify and work with it without running the catalog
+
 ### 2. Configure the OAuth proxy
 
 The OAuth proxy injects client secrets into token requests for any endpoint specified by the desktop app.
@@ -193,7 +200,7 @@ export {
 When users install your MCP server:
 
 1. The UI detects `oauth.required: true` and `provider: "jira"`
-2. Desktop app performs OAuth discovery for Jira's endpoints  
+2. Desktop app performs OAuth discovery for Jira's endpoints
 3. Starts the OAuth flow with discovered or fallback endpoints
 4. OAuth proxy receives the discovered `token_endpoint` and makes the token exchange
 5. After successful authentication, tokens are stored and passed to the MCP server as environment variables
@@ -245,16 +252,19 @@ authorizationParams: {
 ### Container management commands
 
 List all containers (including stopped ones):
+
 ```bash
 ./desktop_app/resources/bin/mac/arm64/podman-remote-static-v5.5.2 container ls --all
 ```
 
 Remove all containers (force removal):
+
 ```bash
 ./desktop_app/resources/bin/mac/arm64/podman-remote-static-v5.5.2 rm -a -f
 ```
 
 Access a running container for debugging:
+
 ```bash
 ./desktop_app/resources/bin/mac/arm64/podman-remote-static-v5.5.2 exec -it CONTAINER_ID sh
 ```
