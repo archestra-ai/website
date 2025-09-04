@@ -31,4 +31,4 @@ However, we ask that you use these tools responsibly. We sometimes have to rejec
 2.  Code that doesn't follow the existing patterns and conventions of the project.
 3.  Noticeable signs of rushed or un-reviewed AI generation.
 
-From our perspective, carefully reviewing such a contribution can take longer than implementing the feature ourselves. For this reason, we may close the pull request. If this happens to you, please don't be discouraged. We kindly ask you to rework your changes and open a new pull request when you're ready.
+From our perspective, carefully reviewing such a contribution can take longer than implementing the feature ourselves. For this reason, we may close the pull request. If this happens to you, please don't be discouraged. We kindly ask you to rework your changes and re-open the pull request when you're ready.
