@@ -78,7 +78,13 @@
       "default": "/bin/bash"
     }
   },
-  "archestra_config": null,
+  "archestra_config": {
+    "client_config_permutations": null,
+    "oauth": {
+      "provider": null,
+      "required": false
+    }
+  },
   "evaluation_model": "gemini-2.5-flash",
   "raw_dependencies": null,
   "last_scraped_at": "2025-08-28T19:53:22.116Z"

@@ -102,7 +102,7 @@ export default function GitHubStarsChart() {
             tickLine={false}
             axisLine={{ stroke: '#e5e7eb' }}
             tickFormatter={formatXAxisTick}
-            ticks={chartData.map(d => d.timestamp)}
+            ticks={chartData.map((d) => d.timestamp)}
           />
           <YAxis
             tick={{ fontSize: 10, fill: '#6b7280' }}

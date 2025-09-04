@@ -2,6 +2,7 @@
 
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { useEffect, useState } from 'react';
+
 import { gdprConsentStore } from '@lib/gdpr-consent-store';
 
 interface ConditionalAnalyticsProps {
@@ -19,7 +20,7 @@ export default function ConditionalAnalytics({ gaId }: ConditionalAnalyticsProps
     checkConsent();
 
     const unsubscribe = gdprConsentStore.subscribe(checkConsent);
-    
+
     window.addEventListener('storage', checkConsent);
 
     return () => {

@@ -20,20 +20,20 @@ export const gdprConsentStore = {
   subscribe(listener: () => void) {
     listeners.push(listener);
     return () => {
-      listeners = listeners.filter(l => l !== listener);
+      listeners = listeners.filter((l) => l !== listener);
     };
   },
-  
+
   openPanel() {
-    listeners.forEach(listener => listener());
+    listeners.forEach((listener) => listener());
   },
 
   getConsent(): StoredConsent | null {
     if (typeof window === 'undefined') return null;
-    
+
     const stored = localStorage.getItem(CONSENT_STORAGE_KEY);
     if (!stored) return null;
-    
+
     try {
       return JSON.parse(stored);
     } catch {
@@ -59,5 +59,5 @@ export const gdprConsentStore = {
   hasPreferencesConsent(): boolean {
     const consent = this.getConsent();
     return consent?.settings?.preferences === true;
-  }
+  },
 };
