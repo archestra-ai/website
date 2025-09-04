@@ -8,7 +8,7 @@ lastUpdated: 2025-01-25
   
 ## Developer Quickstart
 
-> **Note**: This guide covers development in the Archestra desktop application, not this website repository.
+This guide covers how to add authentication to mcp server using built-in browser, by extracting tokens and cookies from the service
 
 Clone the repository and start the app:
 ```bash
