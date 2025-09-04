@@ -44,6 +44,8 @@ npm install
 npm start
 ```
 4. Desktop app should start automatically. You can now test your OAuth provider
+5. You can try to install slack mcp with browser-based tokens or try oauth installation if you have the correct tokens in the .env file
+6. Once you successfully installed the mcp server, all the configurations should appear in the `mcp_servers` table in the database (which can be accessed with `pnpm db:studio`)
 
 ## Adding a New OAuth Provider
 
