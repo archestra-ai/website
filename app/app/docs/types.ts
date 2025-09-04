@@ -2,6 +2,7 @@ export interface DocPage {
   slug: string;
   title: string;
   category: string;
+  subcategory?: string;
   order: number;
   description?: string;
   content: string;
@@ -25,6 +26,12 @@ export interface DocCategory {
   description?: string;
   order: number;
   docs: DocPage[];
+  subcategories?: DocSubcategory[];
+}
+
+export interface DocSubcategory {
+  name: string;
+  docs: DocPage[];
 }
 
 export interface TableOfContentsItem {
@@ -36,6 +43,7 @@ export interface TableOfContentsItem {
 export interface DocFrontMatter {
   title: string;
   category: string;
+  subcategory?: string;
   order?: number;
   description?: string;
   lastUpdated?: string;
