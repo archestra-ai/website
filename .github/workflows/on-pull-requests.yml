@@ -26,6 +26,7 @@ jobs:
     if: github.actor != 'github-actions[bot]'
     permissions:
       contents: read
+      security-events: write
       id-token: write # Required for Workload Identity Federation
     uses: ./.github/workflows/linting-and-tests.yml
     secrets: inherit
