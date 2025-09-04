@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+
 import { CONSENT_STORAGE_KEY, CONSENT_VERSION, ConsentSettings, gdprConsentStore } from '@lib/gdpr-consent-store';
 
 export default function GDPRConsentPanel() {
@@ -87,8 +88,8 @@ export default function GDPRConsentPanel() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex-1">
               <p className="text-sm text-gray-600 dark:text-gray-300">
-                We use cookies to enhance your browsing experience and analyze our traffic. 
-                By clicking "Accept All", you consent to our use of cookies.
+                We use cookies to enhance your browsing experience and analyze our traffic. By clicking "Accept All",
+                you consent to our use of cookies.
               </p>
             </div>
             <div className="flex gap-3">

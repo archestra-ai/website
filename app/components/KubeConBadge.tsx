@@ -36,9 +36,7 @@ export default function KubeConBadge() {
           <span className="text-xs sm:text-sm font-medium">
             Meet us at KubeCon NA 2025 • November 10-13 • Atlanta, Georgia
           </span>
-          <span className="text-xs sm:text-sm underline hover:no-underline">
-            Schedule a meeting →
-          </span>
+          <span className="text-xs sm:text-sm underline hover:no-underline">Schedule a meeting →</span>
         </div>
       </a>
       <button
