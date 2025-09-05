@@ -43,7 +43,7 @@
     "url": "https://github.com/glenngillen/mcpmcp-server",
     "name": "glenngillen__mcpmcp-server",
     "path": null,
-    "stars": 15,
+    "stars": 17,
     "contributors": 1,
     "issues": 0,
     "releases": false,
@@ -52,7 +52,7 @@
   },
   "programming_language": "Unknown",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:25:44.929Z",
+  "last_scraped_at": "2025-09-05T19:23:28.083Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": false,

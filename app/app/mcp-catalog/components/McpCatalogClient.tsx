@@ -867,8 +867,10 @@ export default function McpCatalogClient({
                     category,
                     framework,
                     quality_score: qualityScore,
+                    readme,
                   } = item.server;
                   const searchScore = item.searchScore;
+                  const hasArchestraBadge = readme && readme.toLowerCase().includes('archestra.ai');
 
                   // Preserve current state in the link
                   const params = new URLSearchParams();
@@ -883,7 +885,12 @@ export default function McpCatalogClient({
 
                   return (
                     <Link key={serverId} href={`/mcp-catalog/${serverId}?${params.toString()}`} className="block">
-                      <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
+                      <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full relative overflow-hidden">
+                        {hasArchestraBadge && (
+                          <div className="absolute top-10 -right-12 bg-purple-600 text-white text-[10px] font-semibold px-12 py-1.5 transform rotate-45 shadow-sm z-10 text-center" style={{ width: '200px' }}>
+                            Supporting catalog
+                          </div>
+                        )}
                         <CardHeader className="p-4 sm:p-6">
                           <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
                             <div className="flex flex-wrap gap-1 sm:gap-2">

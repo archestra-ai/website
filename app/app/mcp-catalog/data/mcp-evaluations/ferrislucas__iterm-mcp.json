@@ -42,18 +42,18 @@
     "owner": "ferrislucas",
     "repo": "iterm-mcp",
     "url": "https://github.com/ferrislucas/iterm-mcp",
-    "name": "iterm-mcp",
+    "name": "ferrislucas__iterm-mcp",
     "path": null,
-    "stars": 405,
+    "stars": 438,
     "contributors": 6,
-    "issues": 11,
+    "issues": 12,
     "releases": true,
     "ci_cd": false,
-    "latest_commit_hash": "90fb0977e16c019d2aaabd6f1f8fe1de7da9798e"
+    "latest_commit_hash": "40ef538278d2994292b84517538e6720830e8d6c"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:33:23.589Z",
+  "last_scraped_at": "2025-09-05T19:24:34.475Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

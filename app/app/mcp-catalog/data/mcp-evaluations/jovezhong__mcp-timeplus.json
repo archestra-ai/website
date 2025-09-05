@@ -69,7 +69,7 @@
     "owner": "jovezhong",
     "repo": "mcp-timeplus",
     "url": "https://github.com/jovezhong/mcp-timeplus",
-    "name": "mcp-timeplus",
+    "name": "jovezhong__mcp-timeplus",
     "path": null,
     "stars": 10,
     "contributors": 7,
@@ -80,7 +80,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:34:20.927Z",
+  "last_scraped_at": "2025-09-05T19:26:04.435Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

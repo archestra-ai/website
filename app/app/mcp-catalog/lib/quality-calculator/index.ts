@@ -149,11 +149,8 @@ export function calculateBadgeUsageScore({ readme }: ArchestraMcpServerManifest)
     return 0;
   }
 
-  // Check for our specific Archestra Trust Score badge pattern (accepts MCP Quality, MCP Trust, or Trust Score)
-  const archestraBadgePattern =
-    /\[\!\[(MCP Quality|MCP Trust|Trust Score)\]\(https:\/\/archestra\.ai\/api\/badge\/quality\//i;
-
-  return archestraBadgePattern.test(readme) ? 2 : 0;
+  // Check for any Archestra mention in the README
+  return readme.toLowerCase().includes('archestra') ? 2 : 0;
 }
 
 /**

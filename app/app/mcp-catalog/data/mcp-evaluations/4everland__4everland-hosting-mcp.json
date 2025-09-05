@@ -49,7 +49,7 @@
     "owner": "4everland",
     "repo": "4everland-hosting-mcp",
     "url": "https://github.com/4everland/4everland-hosting-mcp",
-    "name": "4everland-hosting-mcp",
+    "name": "4everland__4everland-hosting-mcp",
     "path": null,
     "stars": 0,
     "contributors": 1,
@@ -60,7 +60,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:32:41.595Z",
+  "last_scraped_at": "2025-09-05T19:23:47.006Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

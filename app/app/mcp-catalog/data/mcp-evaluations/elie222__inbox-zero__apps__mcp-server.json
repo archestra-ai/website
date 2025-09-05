@@ -44,18 +44,18 @@
     "owner": "elie222",
     "repo": "inbox-zero",
     "url": "https://github.com/elie222/inbox-zero/tree/main/apps/mcp-server",
-    "name": "inbox-zero",
+    "name": "elie222__inbox-zero__apps__mcp-server",
     "path": "apps/mcp-server",
-    "stars": 8457,
+    "stars": 8719,
     "contributors": 43,
-    "issues": 153,
+    "issues": 171,
     "releases": false,
     "ci_cd": true,
-    "latest_commit_hash": "fcbca06fd22244bfceaceb292c98adf2cee63cfc"
+    "latest_commit_hash": "db4a60a38855e6632b9f8bce385676bf78e43dec"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:33:33.389Z",
+  "last_scraped_at": "2025-09-05T19:24:56.338Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,
@@ -78,5 +78,5 @@
       "importance": 6
     }
   ],
-  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@inbox-zero/mcp-server\",\n  \"version\": \"0.0.1\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"bin\": {\n    \"inbox-zero-ai\": \"./build/index.js\"\n  },\n  \"scripts\": {\n    \"start\": \"node build/index.js\",\n    \"build\": \"tsc && node -e \\\"require('fs').chmodSync('build/index.js', '755')\\\"\"\n  },\n  \"files\": [\n    \"build\"\n  ],\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"1.12.1\",\n    \"zod\": \"3.25.46\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"22.15.29\",\n    \"typescript\": \"5.8.3\"\n  }\n}\n"
+  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@inbox-zero/mcp-server\",\n  \"version\": \"0.0.1\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"bin\": {\n    \"inbox-zero-ai\": \"./build/index.js\"\n  },\n  \"scripts\": {\n    \"start\": \"node build/index.js\",\n    \"build\": \"tsc && node -e \\\"require('fs').chmodSync('build/index.js', '755')\\\"\"\n  },\n  \"files\": [\n    \"build\"\n  ],\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"1.17.4\",\n    \"zod\": \"3.25.46\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"24.3.0\",\n    \"typescript\": \"5.9.2\"\n  }\n}\n"
 }

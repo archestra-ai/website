@@ -44,7 +44,7 @@
     "url": "https://github.com/executeautomation/mcp-playwright",
     "name": "executeautomation__mcp-playwright",
     "path": null,
-    "stars": 4579,
+    "stars": 4707,
     "contributors": 29,
     "issues": 0,
     "releases": false,
@@ -53,7 +53,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:26:00.424Z",
+  "last_scraped_at": "2025-09-05T19:23:44.442Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

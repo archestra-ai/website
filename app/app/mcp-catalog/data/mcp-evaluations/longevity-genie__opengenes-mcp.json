@@ -71,16 +71,16 @@
     "url": "https://github.com/longevity-genie/opengenes-mcp",
     "name": "longevity-genie__opengenes-mcp",
     "path": null,
-    "stars": 9,
+    "stars": 10,
     "contributors": 1,
     "issues": 0,
     "releases": false,
     "ci_cd": true,
-    "latest_commit_hash": "44da33fb444bd71827526b19fade19efb4e6dca5"
+    "latest_commit_hash": "f31491c8966687ef781a00a1374c18b48529d3d7"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:25:57.598Z",
+  "last_scraped_at": "2025-09-05T19:23:41.837Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

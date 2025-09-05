@@ -13,6 +13,7 @@ import { countServersInRepo, loadServers } from '@mcpCatalog/lib/catalog';
 import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 import ReportAnIssueButton from './components/LinkButtons/ReportAnIssueButton';
+import RotatingServerDisplay from './components/RotatingServerDisplay';
 import TrustScoreBadge from './components/TrustScoreBadge';
 
 const {
@@ -161,12 +162,20 @@ function getMCPFeatures(): string[] {
   ];
 }
 
+// Count servers with Archestra mention in their README
+function countServersWithArchestraBadge(servers: ArchestraMcpServerManifest[]): number {
+  return servers.filter(server => 
+    server.readme && server.readme.toLowerCase().includes('archestra.ai')
+  ).length;
+}
+
 export default function MCPCatalogPage() {
   const mcpServers = loadServers();
   const categories = getCategories(mcpServers);
   const languages = getProgrammingLanguages(mcpServers);
   const dependencies = getTopDependencies(mcpServers);
   const mcpFeatures = getMCPFeatures();
+  const serversWithBadge = countServersWithArchestraBadge(mcpServers);
 
   // Create a map of server counts for multi-server repos
   const serverCounts = new Map<string, number>();
@@ -219,9 +228,11 @@ export default function MCPCatalogPage() {
                   </span>
                 </div>
                 <p className="text-base sm:text-lg text-gray-600 mb-6">
-                  What if we scraped all {mcpServers.length} MCP servers from GitHub, extracted data about dependencies,
-                  protocol features, and community maturity, then calculated a trustworthiness score? Well, we did
-                  exactly that—helping you navigate the <b>agentic supply chain</b> with confidence.
+                  {mcpServers.length} MCP servers ranked by implementation quality.
+                  <br/><br/>
+                  1) <a href="https://github.com/archestra-ai/website/tree/main/app/app/mcp-catalog/data/mcp-evaluations" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Catalog data</a> and <a href="https://github.com/archestra-ai/website/blob/main/app/app/mcp-catalog/scripts/evaluate-catalog.ts" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">evaluation script</a> are open source.<br/>
+                  2) Official servers equally compete with community servers.<br/>
+                  3) Supported by <RotatingServerDisplay servers={mcpServers} />
                 </p>
 
                 <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 mt-6 sm:mt-10 mb-6 max-w-2xl">

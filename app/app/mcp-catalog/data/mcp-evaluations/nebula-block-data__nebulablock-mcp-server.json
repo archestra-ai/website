@@ -52,7 +52,7 @@
     "owner": "Nebula-Block-Data",
     "repo": "nebulablock-mcp-server",
     "url": "https://github.com/Nebula-Block-Data/nebulablock-mcp-server",
-    "name": "nebulablock-mcp-server",
+    "name": "nebula-block-data__nebulablock-mcp-server",
     "path": null,
     "stars": 1,
     "contributors": 3,
@@ -63,7 +63,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:32:48.270Z",
+  "last_scraped_at": "2025-09-05T19:23:52.739Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

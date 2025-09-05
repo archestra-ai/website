@@ -65,7 +65,7 @@
     "url": "https://github.com/SureScaleAI/openai-gpt-image-mcp",
     "name": "surescaleai__openai-gpt-image-mcp",
     "path": null,
-    "stars": 64,
+    "stars": 70,
     "contributors": 2,
     "issues": 1,
     "releases": false,
@@ -74,7 +74,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:25:45.509Z",
+  "last_scraped_at": "2025-09-05T19:23:29.504Z",
   "evaluation_model": null,
   "protocol_features": {
     "implementing_tools": true,

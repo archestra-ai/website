@@ -49,7 +49,7 @@
     "owner": "ferrants",
     "repo": "memvid-mcp-server",
     "url": "https://github.com/ferrants/memvid-mcp-server",
-    "name": "memvid-mcp-server",
+    "name": "ferrants__memvid-mcp-server",
     "path": null,
     "stars": 4,
     "contributors": 1,
@@ -60,7 +60,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:33:55.702Z",
+  "last_scraped_at": "2025-09-05T19:25:44.396Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

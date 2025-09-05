@@ -52,18 +52,18 @@
     "owner": "tiianhk",
     "repo": "MaxMSP-MCP-Server",
     "url": "https://github.com/tiianhk/MaxMSP-MCP-Server",
-    "name": "MaxMSP-MCP-Server",
+    "name": "tiianhk__maxmsp-mcp-server",
     "path": null,
-    "stars": 66,
+    "stars": 83,
     "contributors": 4,
-    "issues": 2,
+    "issues": 5,
     "releases": false,
     "ci_cd": true,
-    "latest_commit_hash": "e95592f58f1a7a0181e135d3b4a5d4bbeca53485"
+    "latest_commit_hash": "f31a9d4681173dfef974773708852d6d1dedd26a"
   },
   "programming_language": "Max",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:33:17.531Z",
+  "last_scraped_at": "2025-09-05T19:24:37.943Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
