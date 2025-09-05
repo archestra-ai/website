@@ -1,3 +1,5 @@
+import { UAParser } from 'ua-parser-js';
+
 export type Platform = 'windows' | 'macos' | 'linux' | 'unknown';
 export type Architecture = 'x64' | 'arm64' | 'unknown';
 export type LinuxDistro = 'deb' | 'rpm' | 'unknown';
@@ -20,63 +22,84 @@ export function detectPlatform(): PlatformInfo {
     };
   }
 
-  const userAgent = window.navigator.userAgent.toLowerCase();
-  const platform = window.navigator.platform?.toLowerCase() || '';
+  const parser = new UAParser();
+  const result = parser.getResult();
 
-  // Detect architecture
-  let architecture: Architecture = 'x64';
-  if (userAgent.includes('arm') || userAgent.includes('aarch64')) {
+  const os = result.os.name?.toLowerCase() || '';
+  const cpuArch = result.cpu.architecture?.toLowerCase() || '';
+
+  // Map CPU architecture
+  let architecture: Architecture = 'unknown';
+  if (cpuArch.includes('arm64') || cpuArch.includes('aarch64')) {
     architecture = 'arm64';
-  } else if (platform.includes('arm')) {
-    architecture = 'arm64';
+  } else if (cpuArch.includes('amd64') || cpuArch.includes('x86_64') || cpuArch.includes('x64')) {
+    architecture = 'x64';
+  } else if (cpuArch === '' && os.includes('mac')) {
+    // UAParser often can't detect Apple Silicon, but if we're on Mac and no arch detected,
+    // we should check for Apple Silicon indicators
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    if (userAgent.includes('arm') || (navigator as any).userAgentData?.architecture === 'arm64') {
+      architecture = 'arm64';
+    } else {
+      // Default to x64 for Mac if we can't detect
+      architecture = 'x64';
+    }
   }
 
-  // Detect OS
-  if (platform.startsWith('win') || userAgent.includes('windows')) {
+  // Detect OS and return appropriate patterns
+  if (os.includes('windows')) {
     return {
       platform: 'windows',
       architecture,
       displayName: 'Windows',
-      filePatterns: [
-        architecture === 'arm64' ? 'win32-arm64' : 'win32-x64',
-        'windows.exe',
-        '.exe'
-      ],
+      filePatterns: [architecture === 'arm64' ? 'win32-arm64' : 'win32-x64', '.zip', '.exe'],
     };
   }
 
-  if (platform.startsWith('mac') || userAgent.includes('mac')) {
-    // Check if it's Apple Silicon
-    const isAppleSilicon =
-      architecture === 'arm64' ||
-      ((navigator as any).userAgentData?.platform === 'macOS' &&
-        (navigator as any).userAgentData?.architecture === 'arm64');
-
+  if (os.includes('mac')) {
     return {
       platform: 'macos',
-      architecture: isAppleSilicon ? 'arm64' : 'x64',
+      architecture,
       displayName: 'macOS',
       filePatterns: [
-        isAppleSilicon ? 'darwin-arm64' : 'darwin-x64',
+        // For Mac, always try darwin-arm64 first since Intel Macs can run ARM builds via Rosetta
+        'darwin-arm64',
+        'darwin-x64',
+        '.zip',
         '.dmg',
       ],
     };
   }
 
-  if (platform.includes('linux') || userAgent.includes('linux')) {
+  if (
+    os.includes('linux') ||
+    os.includes('ubuntu') ||
+    os.includes('debian') ||
+    os.includes('fedora') ||
+    os.includes('centos')
+  ) {
     // Try to detect Linux distribution
     let linuxDistro: LinuxDistro = 'unknown';
+    const userAgent = window.navigator.userAgent.toLowerCase();
 
-    // Check for Ubuntu/Debian
-    if (userAgent.includes('ubuntu') || userAgent.includes('debian')) {
+    if (
+      os.includes('ubuntu') ||
+      os.includes('debian') ||
+      userAgent.includes('ubuntu') ||
+      userAgent.includes('debian')
+    ) {
       linuxDistro = 'deb';
-    }
-    // Check for Fedora/RedHat/CentOS
-    else if (userAgent.includes('fedora') || userAgent.includes('redhat') || userAgent.includes('centos')) {
+    } else if (
+      os.includes('fedora') ||
+      os.includes('centos') ||
+      os.includes('redhat') ||
+      userAgent.includes('fedora') ||
+      userAgent.includes('redhat') ||
+      userAgent.includes('centos')
+    ) {
       linuxDistro = 'rpm';
-    }
-    // Default to deb for unknown distros
-    else {
+    } else {
+      // Default to deb for unknown distros
       linuxDistro = 'deb';
     }
 
@@ -90,7 +113,7 @@ export function detectPlatform(): PlatformInfo {
       displayName: 'Linux',
       filePatterns:
         linuxDistro === 'deb'
-          ? [`.${archString}.deb`, '.deb']
+          ? [`_${archString}.deb`, `.${archString}.deb`, '.deb']
           : [`.${rpmArchString}.rpm`, '.rpm'],
     };
   }

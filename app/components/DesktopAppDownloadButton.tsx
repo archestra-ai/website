@@ -59,7 +59,7 @@ const DesktopAppDownloadButton = () => {
 
     console.log('Release assets:', release.assets);
     console.log('Platform info:', platformInfo);
-    
+
     const matchingAsset = findMatchingAsset(release, platformInfo);
     console.log('Matching asset:', matchingAsset);
 
