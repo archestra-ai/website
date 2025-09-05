@@ -120,7 +120,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="bg-white py-16">
+        <section className="bg-white py-4">
           <div className="container px-4 md:px-6 max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="flex flex-col items-center text-center p-6">
@@ -151,7 +151,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="relative py-16">
+        <section className="relative pt-4">
           <div
             className="absolute inset-0 z-0"
             style={{
@@ -181,9 +181,7 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Community Section - Checkered Background */}
-        <section className="relative py-16">
-          {/* Grid Background */}
+        <section className="relative py-4">
           <div
             className="absolute inset-0 z-0"
             style={{
@@ -193,7 +191,7 @@ export default async function Home() {
             }}
           />
 
-          <div className="container relative z-10 px-4 md:px-6 max-w-4xl mx-auto space-y-4">
+          <div className="container relative z-10 px-4 md:px-6 max-w-4xl mx-auto space-y-2">
             <div className="flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-200">
               <Github className="h-6 w-6 text-gray-700 mt-0.5 flex-shrink-0" />
               <div className="flex-1">
