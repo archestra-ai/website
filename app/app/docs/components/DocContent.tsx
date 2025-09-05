@@ -46,9 +46,7 @@ function CodeBlock({ children, className }: CodeBlockProps) {
   return (
     <div className="relative group my-6">
       <div className="overflow-x-auto rounded-lg bg-gray-50">
-        <pre className={className || "p-4 text-sm whitespace-pre"}>
-          {children}
-        </pre>
+        <pre className={className || 'p-4 text-sm whitespace-pre'}>{children}</pre>
       </div>
       <Button
         variant="outline"
@@ -177,12 +175,8 @@ export default function DocContent({ content }: DocContentProps) {
               </h3>
             );
           },
-          ul: ({ node, ...props }) => (
-            <ul {...props} className="list-disc list-outside mb-4 space-y-2 ml-6" />
-          ),
-          ol: ({ node, ...props }) => (
-            <ol {...props} className="list-decimal list-outside mb-4 space-y-2 ml-6" />
-          ),
+          ul: ({ node, ...props }) => <ul {...props} className="list-disc list-outside mb-4 space-y-2 ml-6" />,
+          ol: ({ node, ...props }) => <ol {...props} className="list-decimal list-outside mb-4 space-y-2 ml-6" />,
           li: ({ node, ...props }) => <li {...props} className="text-gray-700 leading-relaxed" />,
           a: ({ node, ...props }) => (
             <a {...props} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer" />
@@ -198,9 +192,7 @@ export default function DocContent({ content }: DocContentProps) {
             const match = /language-(\w+)/.exec(className || '');
             // Code inside a pre block (code fence)
             return match ? (
-              <code {...props}>
-                {children}
-              </code>
+              <code {...props}>{children}</code>
             ) : (
               // Inline code
               <code className="bg-gray-100 px-1 py-0.5 rounded text-sm font-mono break-all" {...props}>
