@@ -180,6 +180,10 @@ export default function MCPCatalogPage() {
   // Create a map of server counts for multi-server repos
   const serverCounts = new Map<string, number>();
   for (const server of mcpServers) {
+    // Skip remote servers that don't have github_info
+    if (!server.github_info) {
+      continue;
+    }
     const { owner, repo } = server.github_info;
     const key = `${owner}/${repo}`;
     if (!serverCounts.has(key)) {
@@ -187,9 +191,9 @@ export default function MCPCatalogPage() {
     }
   }
 
-  // Find the highest scoring MCP server for the badge example
+  // Find the highest scoring MCP server with GitHub info for the badge example
   const topScoredServer = mcpServers
-    .filter(({ quality_score }) => quality_score !== null)
+    .filter(({ quality_score, github_info }) => quality_score !== null && github_info !== undefined)
     .sort((a, b) => b.quality_score! - a.quality_score!)[0];
 
   const exampleBadgeServerId = 'your-github-org__your-repo-name';

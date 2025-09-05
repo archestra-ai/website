@@ -1,0 +1,18 @@
+{
+  "name": "hubspot__remote-mcp",
+  "display_name": "HubSpot MCP",
+  "version": "1.0.0",
+  "description": "Remote MCP server for HubSpot - CRM, marketing, and sales platform",
+  "remote_url": "https://mcp.hubspot.com/anthropic",
+  "tools": [],
+  "prompts": [],
+  "user_config": {},
+  "readme": null,
+  "category": "CRM",
+  "quality_score": null,
+  "archestra_config": null,
+  "framework": null,
+  "last_scraped_at": "2025-09-05T19:30:23.066Z",
+  "evaluation_model": null,
+  "raw_dependencies": null
+}

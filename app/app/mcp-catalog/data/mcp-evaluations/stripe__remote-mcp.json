@@ -1,0 +1,18 @@
+{
+  "name": "stripe__remote-mcp",
+  "display_name": "Stripe MCP",
+  "version": "1.0.0",
+  "description": "Remote MCP server for Stripe - payment infrastructure for the internet",
+  "remote_url": "https://mcp.stripe.com",
+  "tools": [],
+  "prompts": [],
+  "user_config": {},
+  "readme": null,
+  "category": "Finance",
+  "quality_score": null,
+  "archestra_config": null,
+  "framework": null,
+  "last_scraped_at": "2025-09-05T19:30:23.066Z",
+  "evaluation_model": null,
+  "raw_dependencies": null
+}

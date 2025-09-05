@@ -53,24 +53,29 @@ export function calculateMCPProtocolScore({ protocol_features }: ArchestraMcpSer
  * For multi-server repositories, metrics are divided by the number of servers
  */
 export function calculateGitHubMetricsScore(
-  {
-    github_info: {
-      owner: serverGitHubOwner,
-      repo: serverGitHubRepo,
-      stars: serverGitHubStars,
-      contributors: serverGitHubContributors,
-      issues: serverGitHubIssues,
-    },
-  }: ArchestraMcpServerManifest,
+  server: ArchestraMcpServerManifest,
   allServers?: ArchestraMcpServerManifest[]
 ): number {
+  // Remote servers don't have GitHub metrics
+  if (!server.github_info) {
+    return 0;
+  }
+
+  const {
+    owner: serverGitHubOwner,
+    repo: serverGitHubRepo,
+    stars: serverGitHubStars,
+    contributors: serverGitHubContributors,
+    issues: serverGitHubIssues,
+  } = server.github_info;
+
   let score = 0;
 
   // Check if this is a multi-server repository
   let serverCount = 1;
   if (allServers) {
     serverCount = allServers.filter(
-      ({ github_info: { owner, repo } }) => owner === serverGitHubOwner && repo === serverGitHubRepo
+      (s) => s.github_info && s.github_info.owner === serverGitHubOwner && s.github_info.repo === serverGitHubRepo
     ).length;
     serverCount = Math.max(1, serverCount);
   }
@@ -106,9 +111,13 @@ export function calculateGitHubMetricsScore(
  * Calculate Deployment Maturity Score (10 points max)
  * Based on CI/CD, versioning, and release practices
  */
-export function calculateDeploymentMaturityScore({
-  github_info: { ci_cd, releases },
-}: ArchestraMcpServerManifest): number {
+export function calculateDeploymentMaturityScore(server: ArchestraMcpServerManifest): number {
+  // Remote servers don't have GitHub deployment info
+  if (!server.github_info) {
+    return 0;
+  }
+
+  const { ci_cd, releases } = server.github_info;
   let score = 0;
 
   // Check for CI/CD (GitHub Actions, etc.) - 5 points
@@ -221,6 +230,19 @@ export function calculateQualityScore(
   server: ArchestraMcpServerManifest,
   allServers?: ArchestraMcpServerManifest[]
 ): ArchestraScoreBreakdown {
+  // Remote servers get a fixed high score of 75
+  if (server.remote_url && !server.github_info) {
+    return {
+      mcp_protocol: 30,
+      github_metrics: 15,
+      deployment_maturity: 8,
+      documentation: 6,
+      dependencies: 15,
+      badge_usage: 1,
+      total: 75,
+    };
+  }
+
   const mcpProtocol = calculateMCPProtocolScore(server);
   const githubMetrics = calculateGitHubMetricsScore(server, allServers);
   const deploymentMaturity = calculateDeploymentMaturityScore(server);

@@ -1,0 +1,18 @@
+{
+  "name": "intercom__remote-mcp",
+  "display_name": "Intercom MCP",
+  "version": "1.0.0",
+  "description": "Remote MCP server for Intercom - customer messaging and support platform",
+  "remote_url": "https://mcp.intercom.com/mcp",
+  "tools": [],
+  "prompts": [],
+  "user_config": {},
+  "readme": null,
+  "category": "Support",
+  "quality_score": null,
+  "archestra_config": null,
+  "framework": null,
+  "last_scraped_at": "2025-09-05T19:30:23.066Z",
+  "evaluation_model": null,
+  "raw_dependencies": null
+}

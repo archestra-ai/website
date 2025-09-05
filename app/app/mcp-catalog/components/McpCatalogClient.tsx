@@ -168,7 +168,7 @@ export default function McpCatalogClient({
       display_name: serverName,
       description,
       category,
-      github_info: { repo: gitHubRepo, owner: gitHubOwner, path: gitHubPath },
+      github_info,
       readme,
     }: ArchestraMcpServerManifest,
     query: string
@@ -200,19 +200,24 @@ export default function McpCatalogClient({
       score += 35;
     }
 
-    // Repository name match (without github.com)
-    if (gitHubRepo.toLowerCase().includes(lowerQuery)) {
-      score += 20;
-    }
+    // For GitHub servers, check repo/owner/path
+    if (github_info) {
+      const { repo: gitHubRepo, owner: gitHubOwner, path: gitHubPath } = github_info;
+      
+      // Repository name match (without github.com)
+      if (gitHubRepo.toLowerCase().includes(lowerQuery)) {
+        score += 20;
+      }
 
-    // Organization name match
-    if (gitHubOwner.toLowerCase().includes(lowerQuery)) {
-      score += 15;
-    }
+      // Organization name match
+      if (gitHubOwner.toLowerCase().includes(lowerQuery)) {
+        score += 15;
+      }
 
-    // URL path match (for repository paths)
-    if (gitHubPath && gitHubPath.toLowerCase().includes(lowerQuery)) {
-      score += 10;
+      // URL path match (for repository paths)
+      if (gitHubPath && gitHubPath.toLowerCase().includes(lowerQuery)) {
+        score += 10;
+      }
     }
 
     // README match (lowest priority)
@@ -221,13 +226,21 @@ export default function McpCatalogClient({
     }
 
     // Boost score for servers where the query matches multiple fields
-    const matchCount = [
+    const matchFields = [
       serverName.includes(lowerQuery),
       description && description.toLowerCase().includes(lowerQuery),
       category && category.toLowerCase().includes(lowerQuery),
-      gitHubRepo.toLowerCase().includes(lowerQuery),
-      gitHubOwner.toLowerCase().includes(lowerQuery),
-    ].filter(Boolean).length;
+    ];
+    
+    // Add GitHub-specific matches if github_info exists
+    if (github_info) {
+      matchFields.push(
+        github_info.repo.toLowerCase().includes(lowerQuery),
+        github_info.owner.toLowerCase().includes(lowerQuery)
+      );
+    }
+    
+    const matchCount = matchFields.filter(Boolean).length;
 
     // Add bonus for multiple field matches (indicates more relevant result)
     if (matchCount > 1) {
@@ -298,18 +311,18 @@ export default function McpCatalogClient({
         break;
 
       case 'stars':
-        // Sort by GitHub stars
-        result = (serverA.github_info.stars || 0) - (serverB.github_info.stars || 0);
+        // Sort by GitHub stars (remote servers without github_info get 0)
+        result = (serverA.github_info?.stars || 0) - (serverB.github_info?.stars || 0);
         break;
 
       case 'contributors':
-        // Sort by contributors
-        result = (serverA.github_info.contributors || 0) - (serverB.github_info.contributors || 0);
+        // Sort by contributors (remote servers without github_info get 0)
+        result = (serverA.github_info?.contributors || 0) - (serverB.github_info?.contributors || 0);
         break;
 
       case 'issues':
-        // Sort by issues
-        result = (serverA.github_info.issues || 0) - (serverB.github_info.issues || 0);
+        // Sort by issues (remote servers without github_info get 0)
+        result = (serverA.github_info?.issues || 0) - (serverB.github_info?.issues || 0);
         break;
 
       case 'updated':
@@ -912,23 +925,25 @@ export default function McpCatalogClient({
                             )}
                           </div>
                           <CardTitle className="text-xl break-words">{serverName}</CardTitle>
-                          <div
-                            className="text-sm text-gray-500 mb-2 font-mono"
-                            style={{
-                              overflowWrap: 'break-word',
-                              wordBreak: 'keep-all',
-                            }}
-                          >
-                            <span>
-                              {gitHubInfo.owner}/{gitHubInfo.repo}
-                            </span>
-                            {gitHubInfo.path && (
-                              <>
-                                <span>/</span>
-                                <span className="text-blue-600">{gitHubInfo.path}</span>
-                              </>
-                            )}
-                          </div>
+                          {gitHubInfo && (
+                            <div
+                              className="text-sm text-gray-500 mb-2 font-mono"
+                              style={{
+                                overflowWrap: 'break-word',
+                                wordBreak: 'keep-all',
+                              }}
+                            >
+                              <span>
+                                {gitHubInfo.owner}/{gitHubInfo.repo}
+                              </span>
+                              {gitHubInfo.path && (
+                                <>
+                                  <span>/</span>
+                                  <span className="text-blue-600">{gitHubInfo.path}</span>
+                                </>
+                              )}
+                            </div>
+                          )}
                           {description !== "We're evaluating this MCP server" && (
                             <CardDescription>{description}</CardDescription>
                           )}
@@ -937,7 +952,7 @@ export default function McpCatalogClient({
                           <div className="space-y-4">
                             <QualityBar score={qualityScore} />
                             <div className="flex flex-wrap gap-2">
-                              {qualityScore !== null ? (
+                              {qualityScore !== null && gitHubInfo ? (
                                 <div className="flex items-center gap-1 text-xs text-gray-600">
                                   {(() => {
                                     const serverCount = serverCounts.get(`${gitHubInfo.owner}/${gitHubInfo.repo}`) || 1;
@@ -980,10 +995,10 @@ export default function McpCatalogClient({
                               {framework && (
                                 <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">{framework}</span>
                               )}
-                              {gitHubInfo.releases && (
+                              {gitHubInfo?.releases && (
                                 <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">releases</span>
                               )}
-                              {gitHubInfo.ci_cd && (
+                              {gitHubInfo?.ci_cd && (
                                 <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">ci/cd</span>
                               )}
                             </div>
