@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 
+import DesktopAppDownloadButton from '@components/DesktopAppDownloadButton';
 import { EmailForm } from '@components/EmailForm';
 import Footer from '@components/Footer';
 import GitHubStarsChart from '@components/GitHubStarsChart';
@@ -174,8 +175,13 @@ export default async function Home() {
                       className="w-full rounded-lg shadow-lg border border-gray-200"
                     />
                   </div>
-                  <p className="text-sm text-gray-700 mb-3">Subscribe below to get notified of the public release.</p>
-                  <div className="w-full max-w-lg">
+                  <div className="mb-4 flex justify-center">
+                    <DesktopAppDownloadButton />
+                  </div>
+                  <p className="text-sm text-gray-700 mb-3 text-center">
+                    Or subscribe below to get notified of updates.
+                  </p>
+                  <div className="w-full max-w-lg mx-auto">
                     <EmailForm />
                   </div>
                 </div>
