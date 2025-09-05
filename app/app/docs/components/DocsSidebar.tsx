@@ -14,7 +14,7 @@ interface DocsSidebarProps {
 const categoryIcons: Record<string, React.ReactNode> = {
   'Getting Started': <Book className="h-4 w-4" />,
   'API Reference': <Code className="h-4 w-4" />,
-  'Development': <Code className="h-4 w-4" />,
+  Development: <Code className="h-4 w-4" />,
   Guides: <FileText className="h-4 w-4" />,
   Examples: <Layers className="h-4 w-4" />,
   Advanced: <Settings className="h-4 w-4" />,
@@ -39,12 +39,12 @@ export default function DocsSidebar({ categories }: DocsSidebarProps) {
   const isActiveCategory = (category: DocCategory) => {
     // Check direct docs
     const hasActiveDirectDoc = category.docs.some((doc) => isActiveDoc(doc.slug));
-    
+
     // Check subcategory docs
     const hasActiveSubcategoryDoc = category.subcategories?.some((subcategory) =>
       subcategory.docs.some((doc) => isActiveDoc(doc.slug))
     );
-    
+
     return hasActiveDirectDoc || hasActiveSubcategoryDoc;
   };
 
@@ -105,7 +105,7 @@ export default function DocsSidebar({ categories }: DocsSidebarProps) {
                           </Link>
                         );
                       })}
-                      
+
                       {/* Subcategories */}
                       {category.subcategories?.map((subcategory) => (
                         <div key={subcategory.name} className="mt-4">
@@ -183,7 +183,7 @@ export default function DocsSidebar({ categories }: DocsSidebarProps) {
                         </Link>
                       );
                     })}
-                    
+
                     {/* Subcategories */}
                     {category.subcategories?.map((subcategory) => (
                       <div key={subcategory.name} className="mt-4">
