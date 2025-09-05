@@ -13,7 +13,6 @@ import {
 import Link from 'next/link';
 
 import DesktopAppDownloadButton from '@components/DesktopAppDownloadButton';
-import { EmailForm } from '@components/EmailForm';
 import Footer from '@components/Footer';
 import GitHubStarsChart from '@components/GitHubStarsChart';
 import HeaderWithBanner from '@components/HeaderWithBanner';
@@ -177,12 +176,6 @@ export default async function Home() {
                   </div>
                   <div className="mb-4 flex justify-center">
                     <DesktopAppDownloadButton />
-                  </div>
-                  <p className="text-sm text-gray-700 mb-3 text-center">
-                    Or subscribe below to get notified of updates.
-                  </p>
-                  <div className="w-full max-w-lg mx-auto">
-                    <EmailForm />
                   </div>
                 </div>
               </div>

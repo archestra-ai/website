@@ -37,7 +37,11 @@ export function detectPlatform(): PlatformInfo {
       platform: 'windows',
       architecture,
       displayName: 'Windows',
-      filePatterns: [architecture === 'arm64' ? 'windows-arm64.exe' : 'windows-x64.exe', 'windows.exe', '.exe'],
+      filePatterns: [
+        architecture === 'arm64' ? 'win32-arm64' : 'win32-x64',
+        'windows.exe',
+        '.exe'
+      ],
     };
   }
 
@@ -53,10 +57,7 @@ export function detectPlatform(): PlatformInfo {
       architecture: isAppleSilicon ? 'arm64' : 'x64',
       displayName: 'macOS',
       filePatterns: [
-        isAppleSilicon ? 'darwin-arm64.dmg' : 'darwin-x64.dmg',
-        isAppleSilicon ? 'macos-arm64.dmg' : 'macos-x64.dmg',
-        'darwin.dmg',
-        'macos.dmg',
+        isAppleSilicon ? 'darwin-arm64' : 'darwin-x64',
         '.dmg',
       ],
     };
@@ -80,6 +81,7 @@ export function detectPlatform(): PlatformInfo {
     }
 
     const archString = architecture === 'arm64' ? 'arm64' : 'amd64';
+    const rpmArchString = architecture === 'arm64' ? 'arm64' : 'x86_64';
 
     return {
       platform: 'linux',
@@ -88,8 +90,8 @@ export function detectPlatform(): PlatformInfo {
       displayName: 'Linux',
       filePatterns:
         linuxDistro === 'deb'
-          ? [`linux-${archString}.deb`, `linux_${archString}.deb`, 'linux.deb', '.deb']
-          : [`linux-${architecture}.rpm`, `linux_${architecture}.rpm`, 'linux.rpm', '.rpm'],
+          ? [`.${archString}.deb`, '.deb']
+          : [`.${rpmArchString}.rpm`, '.rpm'],
     };
   }
 

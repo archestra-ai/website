@@ -52,15 +52,21 @@ const DesktopAppDownloadButton = () => {
   const handleDownload = () => {
     if (!release || !platformInfo) {
       // Fallback to releases page
+      console.log('No release or platform info available');
       window.open(`${desktopAppRepoUrl}/releases`, '_blank');
       return;
     }
 
+    console.log('Release assets:', release.assets);
+    console.log('Platform info:', platformInfo);
+    
     const matchingAsset = findMatchingAsset(release, platformInfo);
+    console.log('Matching asset:', matchingAsset);
 
-    if (matchingAsset) {
+    if (matchingAsset && matchingAsset.browser_download_url) {
       setDownloading(true);
       // Start download
+      console.log('Downloading from:', matchingAsset.browser_download_url);
       window.location.href = matchingAsset.browser_download_url;
 
       // Reset downloading state after a delay
@@ -69,6 +75,7 @@ const DesktopAppDownloadButton = () => {
       }, 3000);
     } else {
       // No matching asset, open releases page
+      console.log('No matching asset found, opening releases page');
       window.open(`${desktopAppRepoUrl}/releases`, '_blank');
     }
   };

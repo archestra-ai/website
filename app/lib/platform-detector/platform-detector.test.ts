@@ -20,7 +20,7 @@ describe('platform-detector', () => {
       expect(result.platform).toBe('windows');
       expect(result.architecture).toBe('x64');
       expect(result.displayName).toBe('Windows');
-      expect(result.filePatterns).toContain('windows-x64.exe');
+      expect(result.filePatterns).toContain('win32-x64');
       expect(result.filePatterns).toContain('.exe');
     });
 
@@ -37,7 +37,7 @@ describe('platform-detector', () => {
       expect(result.platform).toBe('macos');
       expect(result.architecture).toBe('x64');
       expect(result.displayName).toBe('macOS');
-      expect(result.filePatterns).toContain('darwin-x64.dmg');
+      expect(result.filePatterns).toContain('darwin-x64');
       expect(result.filePatterns).toContain('.dmg');
     });
 
@@ -58,7 +58,7 @@ describe('platform-detector', () => {
       expect(result.platform).toBe('macos');
       expect(result.architecture).toBe('arm64');
       expect(result.displayName).toBe('macOS');
-      expect(result.filePatterns).toContain('darwin-arm64.dmg');
+      expect(result.filePatterns).toContain('darwin-arm64');
       expect(result.filePatterns).toContain('.dmg');
     });
 
@@ -76,7 +76,7 @@ describe('platform-detector', () => {
       expect(result.architecture).toBe('x64');
       expect(result.displayName).toBe('Linux');
       expect(result.linuxDistro).toBe('deb');
-      expect(result.filePatterns).toContain('linux-amd64.deb');
+      expect(result.filePatterns).toContain('.amd64.deb');
       expect(result.filePatterns).toContain('.deb');
     });
 
@@ -94,7 +94,7 @@ describe('platform-detector', () => {
       expect(result.architecture).toBe('arm64');
       expect(result.displayName).toBe('Linux');
       expect(result.linuxDistro).toBe('rpm');
-      expect(result.filePatterns).toContain('linux-arm64.rpm');
+      expect(result.filePatterns).toContain('.arm64.rpm');
       expect(result.filePatterns).toContain('.rpm');
     });
 
@@ -133,31 +133,31 @@ describe('platform-detector', () => {
     });
 
     it('should match full name patterns', () => {
-      expect(matchAssetToPattern('archestra-windows-x64.exe', ['windows-x64.exe'])).toBe(true);
-      expect(matchAssetToPattern('archestra-darwin-arm64.dmg', ['darwin-arm64.dmg'])).toBe(true);
-      expect(matchAssetToPattern('archestra-linux-amd64.deb', ['linux-amd64.deb'])).toBe(true);
+      expect(matchAssetToPattern('Archestra-win32-x64-0.0.1-alpha.zip', ['win32-x64'])).toBe(true);
+      expect(matchAssetToPattern('Archestra-darwin-arm64-0.0.1-alpha.zip', ['darwin-arm64'])).toBe(true);
+      expect(matchAssetToPattern('Archestra-0.0.1.alpha-1.amd64.deb', ['.amd64.deb'])).toBe(true);
     });
 
     it('should match partial name patterns', () => {
       expect(matchAssetToPattern('archestra-windows.exe', ['windows.exe'])).toBe(true);
-      expect(matchAssetToPattern('archestra-macos.dmg', ['macos.dmg'])).toBe(true);
+      expect(matchAssetToPattern('Archestra-0.0.1.alpha-1.x86_64.rpm', ['x86_64'])).toBe(true);
     });
 
     it('should be case-insensitive', () => {
-      expect(matchAssetToPattern('Archestra-Windows-X64.EXE', ['windows-x64.exe'])).toBe(true);
+      expect(matchAssetToPattern('Archestra-Win32-X64-0.0.1.zip', ['win32-x64'])).toBe(true);
       expect(matchAssetToPattern('ARCHESTRA.DMG', ['.dmg'])).toBe(true);
     });
 
     it('should not match incorrect patterns', () => {
       expect(matchAssetToPattern('archestra.exe', ['.dmg'])).toBe(false);
-      expect(matchAssetToPattern('archestra-linux.deb', ['windows-x64.exe'])).toBe(false);
+      expect(matchAssetToPattern('archestra-linux.deb', ['win32-x64'])).toBe(false);
       expect(matchAssetToPattern('archestra.zip', ['.exe', '.dmg', '.deb'])).toBe(false);
     });
 
     it('should try multiple patterns in order', () => {
-      const patterns = ['darwin-arm64.dmg', 'darwin-x64.dmg', '.dmg'];
-      expect(matchAssetToPattern('archestra-darwin-arm64.dmg', patterns)).toBe(true);
-      expect(matchAssetToPattern('archestra-darwin-x64.dmg', patterns)).toBe(true);
+      const patterns = ['darwin-arm64', 'darwin-x64', '.dmg'];
+      expect(matchAssetToPattern('Archestra-darwin-arm64-0.0.1-alpha.zip', patterns)).toBe(true);
+      expect(matchAssetToPattern('Archestra-darwin-x64-0.0.1-alpha.zip', patterns)).toBe(true);
       expect(matchAssetToPattern('archestra.dmg', patterns)).toBe(true);
     });
   });
