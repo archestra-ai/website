@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
+import DesktopAppNavItem from '@components/DesktopAppNavItem';
 import { GitHubStarButton } from '@components/GitHubStarButton';
 import constants from '@constants';
 
@@ -65,17 +66,7 @@ export default function Header() {
 
               {isProductOpen && (
                 <div className="absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
-                  <a
-                    href="#"
-                    className="block px-4 py-3 text-sm text-gray-400 hover:bg-gray-50 transition-colors rounded-lg cursor-not-allowed"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setIsProductOpen(false);
-                    }}
-                  >
-                    <div className="font-medium">Personal Desktop App</div>
-                    <div className="text-xs text-red-500 mt-0.5">Coming soon</div>
-                  </a>
+                  <DesktopAppNavItem onClose={() => setIsProductOpen(false)} />
                   <Link
                     href="/enterprise-platform"
                     className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors rounded-lg"
@@ -167,15 +158,9 @@ export default function Header() {
 
               {isMobileProductOpen && (
                 <div className="mt-2 ml-4">
-                  <a
-                    href="#"
-                    className="block py-2 text-sm text-gray-400 cursor-not-allowed"
-                    onClick={(e) => {
-                      e.preventDefault();
-                    }}
-                  >
-                    Personal Desktop App <span className="text-xs text-red-500">(Coming soon)</span>
-                  </a>
+                  <div onClick={() => setIsMobileMenuOpen(false)}>
+                    <DesktopAppNavItem />
+                  </div>
                   <Link
                     href="/enterprise-platform"
                     className="block py-2 text-sm text-gray-700 hover:text-gray-900"
