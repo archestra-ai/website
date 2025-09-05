@@ -6,18 +6,21 @@ interface GitHubMetricsCardProps {
   serverCount: number;
 }
 
-const GitHubMetricsCard = ({
-  server: {
-    github_info: {
-      stars: gitHubInfoStars,
-      contributors: gitHubInfoContributors,
-      issues: gitHubInfoIssues,
-      releases: gitHubInfoReleases,
-      ci_cd: gitHubInfoCiCd,
-    },
-  },
-  serverCount,
-}: GitHubMetricsCardProps) => (
+const GitHubMetricsCard = ({ server, serverCount }: GitHubMetricsCardProps) => {
+  // This component should only be rendered for GitHub servers
+  if (!server.github_info) {
+    return null;
+  }
+
+  const {
+    stars: gitHubInfoStars,
+    contributors: gitHubInfoContributors,
+    issues: gitHubInfoIssues,
+    releases: gitHubInfoReleases,
+    ci_cd: gitHubInfoCiCd,
+  } = server.github_info;
+
+  return (
   <Card>
     <CardHeader>
       <CardTitle>GitHub Metrics</CardTitle>
@@ -78,6 +81,7 @@ const GitHubMetricsCard = ({
       </div>
     </CardContent>
   </Card>
-);
+  );
+};
 
 export default GitHubMetricsCard;

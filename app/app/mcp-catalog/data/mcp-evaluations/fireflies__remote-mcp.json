@@ -1,0 +1,18 @@
+{
+  "name": "fireflies__remote-mcp",
+  "display_name": "Fireflies MCP",
+  "version": "1.0.0",
+  "description": "Remote MCP server for Fireflies - AI meeting assistant and transcription",
+  "remote_url": "https://api.fireflies.ai/mcp",
+  "tools": [],
+  "prompts": [],
+  "user_config": {},
+  "readme": null,
+  "category": "Communication",
+  "quality_score": null,
+  "archestra_config": null,
+  "framework": null,
+  "last_scraped_at": "2025-09-05T19:30:23.066Z",
+  "evaluation_model": null,
+  "raw_dependencies": null
+}

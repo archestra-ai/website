@@ -113,7 +113,7 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
         </CardDescription>
       </CardHeader>
       <CardContent className={!isExpanded ? 'hidden md:block' : ''}>
-        {dependencies.length > 0 ? (
+        {dependencies && dependencies.length > 0 ? (
           <DependenciesContent />
         ) : (
           <div className="text-center py-8">

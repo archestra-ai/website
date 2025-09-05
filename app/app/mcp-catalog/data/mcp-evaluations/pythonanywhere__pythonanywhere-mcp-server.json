@@ -45,18 +45,18 @@
     "owner": "pythonanywhere",
     "repo": "pythonanywhere-mcp-server",
     "url": "https://github.com/pythonanywhere/pythonanywhere-mcp-server",
-    "name": "pythonanywhere-mcp-server",
+    "name": "pythonanywhere__pythonanywhere-mcp-server",
     "path": null,
-    "stars": 5,
+    "stars": 7,
     "contributors": 4,
     "issues": 0,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "36a773f6b08798aa84dc81f3f0bdac5200260684"
+    "latest_commit_hash": "596de06d440bcf1eac8b3ce062f5a846993dedda"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:33:01.676Z",
+  "last_scraped_at": "2025-09-05T19:23:59.587Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

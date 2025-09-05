@@ -47,18 +47,18 @@
     "owner": "OpenZeppelin",
     "repo": "contracts-wizard",
     "url": "https://github.com/OpenZeppelin/contracts-wizard/tree/master/packages/mcp",
-    "name": "contracts-wizard",
+    "name": "openzeppelin__contracts-wizard__packages__mcp",
     "path": "packages/mcp",
-    "stars": 263,
-    "contributors": 44,
-    "issues": 106,
+    "stars": 272,
+    "contributors": 45,
+    "issues": 112,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "bebe0108f0c8a08afe706362d21de1dc8ad35ef8"
+    "latest_commit_hash": "41d5c74d3aa3734a02b7b88c959634bb42fa6d20"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T10:13:09.635Z",
+  "last_scraped_at": "2025-09-05T19:28:04.726Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
@@ -97,5 +97,5 @@
       "importance": 8
     }
   ],
-  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@openzeppelin/contracts-mcp\",\n  \"version\": \"0.0.6\",\n  \"description\": \"OpenZeppelin Contracts MCP Server\",\n  \"license\": \"AGPL-3.0-only\",\n  \"repository\": \"https://github.com/OpenZeppelin/contracts-wizard\",\n  \"main\": \"dist/index.js\",\n  \"bin\": {\n    \"contracts-mcp\": \"dist/index.js\"\n  },\n  \"ts:main\": \"src/index.ts\",\n  \"files\": [\n    \"LICENSE\",\n    \"NOTICE\",\n    \"/dist\",\n    \"/src\",\n    \"!**/*.test.*\"\n  ],\n  \"scripts\": {\n    \"prepare\": \"tsc\",\n    \"watch\": \"tsc --watch\",\n    \"test\": \"ava\",\n    \"test:update-snapshots\": \"ava --update-snapshots\",\n    \"test:watch\": \"ava --watch\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.11.1\",\n    \"@openzeppelin/wizard-common\": \"^0.0.2\",\n    \"@openzeppelin/wizard\": \"^0.6.0\",\n    \"@openzeppelin/wizard-stylus\": \"^0.2.0\",\n    \"@openzeppelin/wizard-stellar\": \"^0.4.2\",\n    \"@openzeppelin/wizard-cairo\": \"^2.0.0\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"^20.0.0\",\n    \"typescript\": \"^5.0.0\",\n    \"ava\": \"^6.0.0\",\n    \"ts-node\": \"^10.4.0\"\n  }\n}\n"
+  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@openzeppelin/contracts-mcp\",\n  \"version\": \"0.1.0\",\n  \"description\": \"OpenZeppelin Contracts MCP Server\",\n  \"license\": \"AGPL-3.0-only\",\n  \"repository\": \"https://github.com/OpenZeppelin/contracts-wizard\",\n  \"main\": \"dist/index.js\",\n  \"types\": \"dist/index.d.ts\",\n  \"bin\": {\n    \"contracts-mcp\": \"dist/cli.js\"\n  },\n  \"ts:main\": \"src/index.ts\",\n  \"files\": [\n    \"LICENSE\",\n    \"NOTICE\",\n    \"/dist\",\n    \"/src\",\n    \"!**/*.test.*\"\n  ],\n  \"scripts\": {\n    \"prepare\": \"tsc\",\n    \"watch\": \"tsc --watch\",\n    \"test\": \"ava\",\n    \"test:update-snapshots\": \"ava --update-snapshots\",\n    \"test:watch\": \"ava --watch\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.11.1\",\n    \"@openzeppelin/wizard-common\": \"^0.1.0\",\n    \"@openzeppelin/wizard\": \"^0.7.1\",\n    \"@openzeppelin/wizard-stylus\": \"^0.2.0\",\n    \"@openzeppelin/wizard-stellar\": \"^0.4.2\",\n    \"@openzeppelin/wizard-cairo\": \"^2.0.0\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"^20.0.0\",\n    \"typescript\": \"^5.0.0\",\n    \"ava\": \"^6.0.0\",\n    \"ts-node\": \"^10.4.0\"\n  }\n}"
 }

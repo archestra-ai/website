@@ -17,6 +17,8 @@ export const generateMcpCatalogDetailPageUrl = (serverId: string) => `${mcpCatal
 export const generateUrlToIndividualMcpCatalogJsonFile = (serverId: string, edit: boolean) =>
   `${repoUrl}/${edit ? 'edit' : 'tree'}/${mainBranchName}/${mcpCatalogDirectoryPath}/mcp-evaluations/${serverId}.json`;
 
-export const getUrlToLatestGitHubCommit = ({
-  github_info: { owner, repo, latest_commit_hash },
-}: ArchestraMcpServerManifest) => `https://github.com/${owner}/${repo}/commit/${latest_commit_hash}`;
+export const getUrlToLatestGitHubCommit = (server: ArchestraMcpServerManifest) => {
+  if (!server.github_info) return '#';
+  const { owner, repo, latest_commit_hash } = server.github_info;
+  return `https://github.com/${owner}/${repo}/commit/${latest_commit_hash}`;
+};

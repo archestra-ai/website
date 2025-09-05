@@ -57,18 +57,18 @@
     "owner": "hmk",
     "repo": "box-mcp-server",
     "url": "https://github.com/hmk/box-mcp-server",
-    "name": "box-mcp-server",
+    "name": "hmk__box-mcp-server",
     "path": null,
-    "stars": 8,
+    "stars": 10,
     "contributors": 2,
-    "issues": 0,
+    "issues": 3,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "a30279fa0b4ab8560aef4c8d34f8beb2b53a19b7"
+    "latest_commit_hash": "209245e0c6ba50014306a23dc18b6200b99a0e9f"
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:36:58.859Z",
+  "last_scraped_at": "2025-09-05T19:30:20.760Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,

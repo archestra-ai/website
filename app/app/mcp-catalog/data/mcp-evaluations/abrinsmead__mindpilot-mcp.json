@@ -62,18 +62,18 @@
     "owner": "abrinsmead",
     "repo": "mindpilot-mcp",
     "url": "https://github.com/abrinsmead/mindpilot-mcp",
-    "name": "mindpilot-mcp",
+    "name": "abrinsmead__mindpilot-mcp",
     "path": null,
-    "stars": 12,
+    "stars": 31,
     "contributors": 2,
-    "issues": 8,
+    "issues": 12,
     "releases": false,
     "ci_cd": false,
-    "latest_commit_hash": "ec1d0c9f67665a7376faa434f0be3da0c28589d1"
+    "latest_commit_hash": "d2f6dd888f496b256d960b7640d1fb926bfea9a7"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T10:09:15.104Z",
+  "last_scraped_at": "2025-09-05T19:27:00.045Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
@@ -112,5 +112,5 @@
       "importance": 5
     }
   ],
-  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@mindpilot/mcp\",\n  \"version\": \"0.3.6\",\n  \"publishConfig\": {\n    \"access\": \"public\"\n  },\n  \"description\": \"See through your agent's eyes. Visualize legacy code, architect new systems, understand everything.\",\n  \"type\": \"module\",\n  \"main\": \"dist/mcp/server.js\",\n  \"files\": [\n    \"dist/\"\n  ],\n  \"bin\": {\n    \"mindpilot-mcp\": \"dist/mcp/server.js\"\n  },\n  \"scripts\": {\n    \"build\": \"npm run build:client && npm run build:server\",\n    \"build:client\": \"cd src/client && npm run build\",\n    \"build:server\": \"tsc\",\n    \"build:dxt\": \"npm run clean:dxt && npm run build && cp dxt/manifest.json . && cp dxt/.dxtignore . && npx dxt pack && rm -f manifest.json .dxtignore && mv mindpilot-*.dxt dxt/\",\n    \"clean:dxt\": \"rm -f dxt/*.dxt && rm -rf dxt/mindpilot.dxt/\",\n    \"dev\": \"NODE_ENV=development concurrently \\\"tsx src/http/server.ts\\\" \\\"cd src/client && npm run dev\\\"\",\n    \"start\": \"NODE_ENV=production node dist/http/server.js\",\n    \"start:mcp\": \"NODE_ENV=production node dist/mcp/server.js\",\n    \"prepare\": \"npm run build\",\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n  },\n  \"keywords\": [\n    \"mcp\",\n    \"mermaid\",\n    \"diagram\",\n    \"rendering\",\n    \"model-context-protocol\"\n  ],\n  \"author\": \"Alex Brinsmead\",\n  \"license\": \"MIT\",\n  \"dependencies\": {\n    \"@fastify/static\": \"^7.0.0\",\n    \"@modelcontextprotocol/sdk\": \"^1.0.0\",\n    \"fastify\": \"^4.26.0\",\n    \"mermaid\": \"11.6.0\",\n    \"open\": \"^9.1.0\",\n    \"posthog-js\": \"^1.257.0\"\n  },\n  \"devDependencies\": {\n    \"@anthropic-ai/dxt\": \"^0.1.0\",\n    \"@types/node\": \"^20.0.0\",\n    \"@types/ws\": \"^8.18.1\",\n    \"concurrently\": \"^9.1.2\",\n    \"tsx\": \"^4.6.0\",\n    \"typescript\": \"^5.3.0\"\n  },\n  \"engines\": {\n    \"node\": \">=20.0.0\"\n  },\n  \"workspaces\": [\n    \"src/client\"\n  ]\n}\n"
+  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@mindpilot/mcp\",\n  \"version\": \"0.5.0\",\n  \"publishConfig\": {\n    \"access\": \"public\"\n  },\n  \"description\": \"See through your agent's eyes. Visualize legacy code, architect new systems, understand everything.\",\n  \"type\": \"module\",\n  \"main\": \"dist/mcp/server.js\",\n  \"files\": [\n    \"dist/\"\n  ],\n  \"bin\": {\n    \"mindpilot-mcp\": \"dist/mcp/server.js\"\n  },\n  \"scripts\": {\n    \"build\": \"npm run build:client && npm run build:server\",\n    \"build:client\": \"cd src/client && npm run build\",\n    \"build:server\": \"tsc\",\n    \"build:dxt\": \"npm run clean:dxt && npm run build && cp dxt/manifest.json . && cp dxt/.dxtignore . && npx dxt pack && rm -f manifest.json .dxtignore && mv mindpilot-*.dxt dxt/\",\n    \"clean:dxt\": \"rm -f dxt/*.dxt && rm -rf dxt/mindpilot.dxt/\",\n    \"dev\": \"NODE_ENV=development concurrently \\\"tsx src/http/server.ts\\\" \\\"cd src/client && npm run dev\\\"\",\n    \"start\": \"NODE_ENV=production node dist/http/server.js\",\n    \"start:mcp\": \"NODE_ENV=production node dist/mcp/server.js\",\n    \"prepare\": \"npm run build\",\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n  },\n  \"keywords\": [\n    \"mcp\",\n    \"mermaid\",\n    \"diagram\",\n    \"rendering\",\n    \"model-context-protocol\"\n  ],\n  \"author\": \"Alex Brinsmead\",\n  \"license\": \"MIT\",\n  \"dependencies\": {\n    \"@fastify/static\": \"^7.0.0\",\n    \"@modelcontextprotocol/sdk\": \"^1.0.0\",\n    \"fastify\": \"^4.26.0\",\n    \"mermaid\": \"11.6.0\",\n    \"open\": \"^9.1.0\",\n    \"posthog-js\": \"^1.257.0\"\n  },\n  \"devDependencies\": {\n    \"@anthropic-ai/dxt\": \"^0.1.0\",\n    \"@types/node\": \"^20.0.0\",\n    \"@types/ws\": \"^8.18.1\",\n    \"concurrently\": \"^9.1.2\",\n    \"tsx\": \"^4.6.0\",\n    \"typescript\": \"^5.3.0\"\n  },\n  \"engines\": {\n    \"node\": \">=20.0.0\"\n  },\n  \"workspaces\": [\n    \"src/client\"\n  ]\n}\n"
 }

@@ -120,8 +120,10 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
     return catalogParams.toString() ? `/mcp-catalog?${catalogParams.toString()}` : '/mcp-catalog';
   })();
 
-  const { name: serverId, display_name: serverName, github_info: gitHubInfo, quality_score: qualityScore } = server;
-  const { owner: gitHubInfoOwner, repo: gitHubInfoRepo, path: gitHubInfoPath } = gitHubInfo;
+  const { name: serverId, display_name: serverName, github_info: gitHubInfo, quality_score: qualityScore, remote_url } = server;
+  const gitHubInfoOwner = gitHubInfo?.owner;
+  const gitHubInfoRepo = gitHubInfo?.repo;
+  const gitHubInfoPath = gitHubInfo?.path;
   // Calculate quality score without all servers (we'll update this client-side if needed)
   const qualityScoreBreakdown = qualityScore !== null ? calculateQualityScore(server) : null;
 
@@ -163,18 +165,20 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
 
               <FrameworkCard server={server} />
 
-              <Card className="bg-gray-50">
-                <CardHeader>
-                  <CardTitle className="text-lg">Add Quality Badge</CardTitle>
-                  <CardDescription>Show your MCP trust score in your README</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="mb-4">
-                    <TrustScoreBadge gitHubInfo={gitHubInfo} />
-                  </div>
-                  <TrustScoreBadgeMarkdown serverId={serverId} gitHubInfo={gitHubInfo} variant="compact" />
-                </CardContent>
-              </Card>
+              {gitHubInfo && (
+                <Card className="bg-gray-50">
+                  <CardHeader>
+                    <CardTitle className="text-lg">Add Quality Badge</CardTitle>
+                    <CardDescription>Show your MCP trust score in your README</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="mb-4">
+                      <TrustScoreBadge gitHubInfo={gitHubInfo} />
+                    </div>
+                    <TrustScoreBadgeMarkdown serverId={serverId} gitHubInfo={gitHubInfo} variant="compact" />
+                  </CardContent>
+                </Card>
+              )}
 
               <div className="space-y-3">
                 <EditThisServerButton serverId={serverId} fullWidth />
@@ -182,8 +186,10 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                 <ReportAnIssueButton
                   issueUrlParams={`title=Issue with ${encodeURIComponent(
                     serverName
-                  )}&body=Server: ${gitHubInfoOwner}/${gitHubInfoRepo}${
-                    gitHubInfoPath ? `/${gitHubInfoPath}` : ''
+                  )}&body=Server: ${
+                    gitHubInfo 
+                      ? `${gitHubInfoOwner}/${gitHubInfoRepo}${gitHubInfoPath ? `/${gitHubInfoPath}` : ''}` 
+                      : remote_url || serverName
                   }%0AName: ${serverName}%0A%0APlease describe the issue:`}
                   fullWidth
                 />

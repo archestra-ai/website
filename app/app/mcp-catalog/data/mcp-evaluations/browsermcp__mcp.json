@@ -38,7 +38,7 @@
     "url": "https://github.com/browsermcp/mcp",
     "name": "browsermcp__mcp",
     "path": null,
-    "stars": 3714,
+    "stars": 4094,
     "contributors": 1,
     "issues": 0,
     "releases": false,
@@ -47,7 +47,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:26:00.077Z",
+  "last_scraped_at": "2025-09-05T19:23:43.953Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

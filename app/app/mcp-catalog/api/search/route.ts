@@ -40,19 +40,26 @@ export async function GET(request: NextRequest) {
     let filteredServers = allServers.filter(
       ({
         name,
+        display_name,
         description,
-        github_info: { owner, repo },
+        github_info,
         category: serverCategory,
         programming_language: programmingLanguage,
       }) => {
         // Search query filter
         if (query) {
           const searchQuery = query.toLowerCase();
-          const matchesSearch =
+          let matchesSearch = 
             name.toLowerCase().includes(searchQuery) ||
-            description.toLowerCase().includes(searchQuery) ||
-            owner.toLowerCase().includes(searchQuery) ||
-            repo.toLowerCase().includes(searchQuery);
+            display_name.toLowerCase().includes(searchQuery) ||
+            description.toLowerCase().includes(searchQuery);
+          
+          // For GitHub servers, also search in owner/repo
+          if (github_info) {
+            matchesSearch = matchesSearch ||
+              github_info.owner.toLowerCase().includes(searchQuery) ||
+              github_info.repo.toLowerCase().includes(searchQuery);
+          }
 
           if (!matchesSearch) return false;
         }
@@ -83,7 +90,10 @@ export async function GET(request: NextRequest) {
 
         case 'stars':
           // Sort by GitHub stars (descending)
-          return (b.github_info.stars || 0) - (a.github_info.stars || 0);
+          // Remote servers without github_info are sorted last
+          const aStars = a.github_info?.stars || 0;
+          const bStars = b.github_info?.stars || 0;
+          return bStars - aStars;
 
         case 'name':
           // Sort alphabetically by name

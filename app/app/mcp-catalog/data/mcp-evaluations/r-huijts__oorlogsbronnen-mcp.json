@@ -51,14 +51,14 @@
     "path": null,
     "stars": 11,
     "contributors": 1,
-    "issues": 0,
+    "issues": 2,
     "releases": false,
     "ci_cd": false,
     "latest_commit_hash": "52d981ccd3d730a89f87f5d185e7ef4a5ca3253d"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:25:55.190Z",
+  "last_scraped_at": "2025-09-05T19:23:38.585Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

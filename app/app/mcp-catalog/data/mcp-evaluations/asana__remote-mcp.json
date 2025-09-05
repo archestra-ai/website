@@ -1,0 +1,18 @@
+{
+  "name": "asana__remote-mcp",
+  "display_name": "Asana MCP",
+  "version": "1.0.0",
+  "description": "Remote MCP server for Asana - work management and team collaboration",
+  "remote_url": "https://mcp.asana.com/sse",
+  "tools": [],
+  "prompts": [],
+  "user_config": {},
+  "readme": null,
+  "category": "Enterprise",
+  "quality_score": null,
+  "archestra_config": null,
+  "framework": null,
+  "last_scraped_at": "2025-09-05T19:30:23.066Z",
+  "evaluation_model": null,
+  "raw_dependencies": null
+}

@@ -1,0 +1,18 @@
+{
+  "name": "square__remote-mcp",
+  "display_name": "Square MCP",
+  "version": "1.0.0",
+  "description": "Remote MCP server for Square - payment processing and business solutions",
+  "remote_url": "https://mcp.squareup.com/sse",
+  "tools": [],
+  "prompts": [],
+  "user_config": {},
+  "readme": null,
+  "category": "Finance",
+  "quality_score": null,
+  "archestra_config": null,
+  "framework": null,
+  "last_scraped_at": "2025-09-05T19:30:23.066Z",
+  "evaluation_model": null,
+  "raw_dependencies": null
+}

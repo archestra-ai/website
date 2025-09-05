@@ -42,18 +42,18 @@
     "owner": "sequa-ai",
     "repo": "sequa-mcp",
     "url": "https://github.com/sequa-ai/sequa-mcp",
-    "name": "sequa-mcp",
+    "name": "sequa-ai__sequa-mcp",
     "path": null,
-    "stars": 1,
+    "stars": 5,
     "contributors": 1,
     "issues": 0,
     "releases": false,
     "ci_cd": true,
-    "latest_commit_hash": "2ad7ec740fe29c5e8b2ef128365c59c2722c7014"
+    "latest_commit_hash": "aa343a5013d274c88eca48be703531ea8d621195"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T10:13:40.768Z",
+  "last_scraped_at": "2025-09-05T19:28:21.176Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,
@@ -80,5 +80,5 @@
       "importance": 5
     }
   ],
-  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@sequa-ai/sequa-mcp\",\n  \"version\": \"1.0.12\",\n  \"description\": \"A proxy for the Model Context Protocol (MCP) that connects local STDIO with remote MCP servers\",\n  \"keywords\": [\"mcp\", \"model-context-protocol\", \"proxy\", \"ai\", \"sequa\"],\n  \"author\": \"Sequa AI GmbH\",\n  \"license\": \"MIT\",\n  \"private\": false,\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/sequa-ai/sequa-mcp\"\n  },\n  \"homepage\": \"https://github.com/sequa-ai/sequa-mcp#readme\",\n  \"bugs\": {\n    \"url\": \"https://github.com/sequa-ai/sequa-mcp/issues\"\n  },\n  \"engines\": {\n    \"node\": \">=18.0.0\"\n  },\n  \"type\": \"module\",\n  \"files\": [\n    \"dist/**/*\",\n    \"README.md\",\n    \"LICENSE\"\n  ],\n  \"main\": \"dist/index.js\",\n  \"bin\": {\n    \"sequa-mcp\": \"dist/index.js\"\n  },\n  \"scripts\": {\n    \"start\": \"DEBUG=true node dist/index.js\",\n    \"build\": \"tsc\",\n    \"clean\": \"rm -rf dist\",\n    \"lint\": \"eslint \\\"src/**/*.ts\\\" --fix\",\n    \"prebuild\": \"npm run clean\",\n    \"prepublishOnly\": \"npm run build\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.15.0\",\n    \"express\": \"^5.1.0\",\n    \"open\": \"^10.1.0\"\n  },\n  \"devDependencies\": {\n    \"@types/express\": \"^5.0.3\",\n    \"@types/node\": \"^24.0.10\",\n    \"@typescript-eslint/eslint-plugin\": \"^8.36.0\",\n    \"@typescript-eslint/parser\": \"^8.36.0\",\n    \"eslint\": \"^8.57.1\",\n    \"eslint-config-prettier\": \"^10.1.5\",\n    \"eslint-plugin-prettier\": \"^5.5.1\",\n    \"eslint-plugin-simple-import-sort\": \"^12.1.1\",\n    \"eslint-plugin-unused-imports\": \"^4.1.4\",\n    \"prettier\": \"^3.6.2\",\n    \"typescript\": \"^5.8.2\"\n  }\n}\n"
+  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@sequa-ai/sequa-mcp\",\n  \"version\": \"1.0.13\",\n  \"description\": \"A proxy for the Model Context Protocol (MCP) that connects local STDIO with remote MCP servers\",\n  \"keywords\": [\"mcp\", \"model-context-protocol\", \"proxy\", \"ai\", \"sequa\"],\n  \"author\": \"Sequa AI GmbH\",\n  \"license\": \"MIT\",\n  \"private\": false,\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/sequa-ai/sequa-mcp\"\n  },\n  \"homepage\": \"https://github.com/sequa-ai/sequa-mcp#readme\",\n  \"bugs\": {\n    \"url\": \"https://github.com/sequa-ai/sequa-mcp/issues\"\n  },\n  \"engines\": {\n    \"node\": \">=18.0.0\"\n  },\n  \"type\": \"module\",\n  \"files\": [\n    \"dist/**/*\",\n    \"README.md\",\n    \"LICENSE\"\n  ],\n  \"main\": \"dist/index.js\",\n  \"bin\": {\n    \"sequa-mcp\": \"dist/index.js\"\n  },\n  \"scripts\": {\n    \"start\": \"DEBUG=true node dist/index.js\",\n    \"build\": \"tsc\",\n    \"clean\": \"rm -rf dist\",\n    \"lint\": \"eslint \\\"src/**/*.ts\\\" --fix\",\n    \"prebuild\": \"npm run clean\",\n    \"prepublishOnly\": \"npm run build\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.15.0\",\n    \"express\": \"^5.1.0\",\n    \"open\": \"^10.1.0\"\n  },\n  \"devDependencies\": {\n    \"@types/express\": \"^5.0.3\",\n    \"@types/node\": \"^24.0.10\",\n    \"@typescript-eslint/eslint-plugin\": \"^8.36.0\",\n    \"@typescript-eslint/parser\": \"^8.36.0\",\n    \"eslint\": \"^8.57.1\",\n    \"eslint-config-prettier\": \"^10.1.5\",\n    \"eslint-plugin-prettier\": \"^5.5.1\",\n    \"eslint-plugin-simple-import-sort\": \"^12.1.1\",\n    \"eslint-plugin-unused-imports\": \"^4.1.4\",\n    \"prettier\": \"^3.6.2\",\n    \"typescript\": \"^5.8.2\"\n  }\n}\n"
 }

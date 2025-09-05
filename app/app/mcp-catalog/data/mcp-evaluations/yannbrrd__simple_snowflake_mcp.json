@@ -67,7 +67,7 @@
     "owner": "YannBrrd",
     "repo": "simple_snowflake_mcp",
     "url": "https://github.com/YannBrrd/simple_snowflake_mcp",
-    "name": "simple_snowflake_mcp",
+    "name": "yannbrrd__simple_snowflake_mcp",
     "path": null,
     "stars": 5,
     "contributors": 3,
@@ -78,7 +78,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:34:21.021Z",
+  "last_scraped_at": "2025-09-05T19:25:58.684Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

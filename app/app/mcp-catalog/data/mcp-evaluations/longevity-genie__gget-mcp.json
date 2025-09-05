@@ -59,7 +59,7 @@
     "url": "https://github.com/longevity-genie/gget-mcp",
     "name": "longevity-genie__gget-mcp",
     "path": null,
-    "stars": 8,
+    "stars": 9,
     "contributors": 2,
     "issues": 0,
     "releases": false,
@@ -68,7 +68,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:25:57.696Z",
+  "last_scraped_at": "2025-09-05T19:23:41.927Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

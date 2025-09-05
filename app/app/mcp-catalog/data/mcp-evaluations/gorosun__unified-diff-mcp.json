@@ -51,7 +51,7 @@
     "owner": "gorosun",
     "repo": "unified-diff-mcp",
     "url": "https://github.com/gorosun/unified-diff-mcp",
-    "name": "unified-diff-mcp",
+    "name": "gorosun__unified-diff-mcp",
     "path": null,
     "stars": 5,
     "contributors": 3,
@@ -62,7 +62,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:35:39.536Z",
+  "last_scraped_at": "2025-09-05T19:27:25.977Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

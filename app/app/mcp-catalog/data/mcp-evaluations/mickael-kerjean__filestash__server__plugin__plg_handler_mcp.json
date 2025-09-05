@@ -3,7 +3,7 @@
   "name": "mickael-kerjean__filestash__server__plugin__plg_handler_mcp",
   "display_name": "plg_handler_mcp",
   "version": "1.0.0",
-  "description": ":file_folder: A file manager / web client for SFTP, S3, FTP, WebDAV, Git, Minio, LDAP, CalDAV, CardDAV, Mysql, Backblaze, ...",
+  "description": ":file_folder: The Dropbox like web client for SFTP, S3, FTP, WebDAV, Git, Minio, LDAP, CalDAV, CardDAV, Mysql, Backblaze, ...",
   "author": {
     "name": "mickael-kerjean"
   },
@@ -22,7 +22,7 @@
   "user_config": {},
   "readme": "This is a MCP plugin acting as an interface for AI agent to do stuff on a remote storage you have configured in Filestash, be it a FTP server, SFTP, S3, WebDAV, SMB, GIT, NFS, ....\n\ndemo server: https://demo.filestash.app/sse\nrelease note: https://www.filestash.app/2025/04/01/mcp-feature/\n",
   "category": "AI Tools",
-  "quality_score": 72,
+  "quality_score": 76,
   "archestra_config": {
     "client_config_permutations": null,
     "oauth": {
@@ -34,18 +34,18 @@
     "owner": "mickael-kerjean",
     "repo": "filestash",
     "url": "https://github.com/mickael-kerjean/filestash/tree/master/server/plugin/plg_handler_mcp",
-    "name": "filestash",
+    "name": "mickael-kerjean__filestash__server__plugin__plg_handler_mcp",
     "path": "server/plugin/plg_handler_mcp",
-    "stars": 11956,
+    "stars": 12557,
     "contributors": 77,
-    "issues": 0,
+    "issues": 633,
     "releases": false,
     "ci_cd": true,
-    "latest_commit_hash": "8076de59b3e9c8203845c8ed6a2fa290b0c13842"
+    "latest_commit_hash": "10503f8deedb61c400963dcb344b1f1f712d70ac"
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:36:59.160Z",
+  "last_scraped_at": "2025-09-05T19:30:21.058Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

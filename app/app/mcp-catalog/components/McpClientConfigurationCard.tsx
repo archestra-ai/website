@@ -24,8 +24,13 @@ const McpClientConfigurationCard = ({ server }: McpClientConfigurationCardProps)
 
   const {
     display_name: serverName,
-    github_info: { owner: gitHubInfoOwner, repo: gitHubInfoRepo, path: gitHubInfoPath },
+    github_info,
+    remote_url,
   } = server;
+
+  const gitHubInfoOwner = github_info?.owner;
+  const gitHubInfoRepo = github_info?.repo;
+  const gitHubInfoPath = github_info?.path;
 
   const clientConfigPermutations = server.archestra_config?.client_config_permutations;
 
@@ -98,8 +103,10 @@ const McpClientConfigurationCard = ({ server }: McpClientConfigurationCardProps)
             serverName
           )}&body=Please add configForClients information for the MCP server: ${encodeURIComponent(
             serverName
-          )}%0A%0AServer: ${gitHubInfoOwner}/${gitHubInfoRepo}${
-            gitHubInfoPath ? `/${gitHubInfoPath}` : ''
+          )}%0A%0AServer: ${
+            github_info 
+              ? `${gitHubInfoOwner}/${gitHubInfoRepo}${gitHubInfoPath ? `/${gitHubInfoPath}` : ''}` 
+              : remote_url || serverName
           }%0AName: ${serverName}%0A%0APlease provide the JSON configuration needed to run this server.`}
         />
       </CardContent>
