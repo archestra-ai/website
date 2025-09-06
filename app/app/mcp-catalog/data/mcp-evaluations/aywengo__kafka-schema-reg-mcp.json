@@ -84,13 +84,13 @@
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
-    "implementing_prompts": false,
+    "implementing_prompts": true,
     "implementing_resources": true,
     "implementing_sampling": false,
-    "implementing_roots": false,
+    "implementing_roots": true,
     "implementing_logging": false,
     "implementing_stdio": true,
-    "implementing_streamable_http": false,
+    "implementing_streamable_http": true,
     "implementing_oauth2": true
   },
   "dependencies": [

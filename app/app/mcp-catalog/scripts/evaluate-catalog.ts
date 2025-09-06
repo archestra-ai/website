@@ -980,7 +980,7 @@ Content:
 ${content.substring(0, 8000)}
 
 IMPORTANT: You MUST return a JSON object with BOTH "server" and "user_config" fields. The "server" object MUST include:
-1. "type": REQUIRED - Must be either "python", "node", or "binary" 
+1. "type": REQUIRED - Must be either "python", "node", "binary" or "docker"
 2. "entry_point": REQUIRED - The main file to execute (e.g., "index.js", "main.py", or binary name)
 3. "mcp_config": REQUIRED - Object with "command", "args", and "env" fields
 

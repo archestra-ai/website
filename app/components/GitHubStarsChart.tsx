@@ -63,11 +63,24 @@ export default function GitHubStarsChart() {
     return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   };
 
-  // Format the data for the chart
+  // Format the data for the chart with timestamps for proper time scaling
   const chartData = data.map((point) => ({
     ...point,
+    timestamp: new Date(point.date).getTime(),
     displayDate: formatDate(point.date),
   }));
+
+  // Format timestamp for X-axis display
+  const formatXAxisTick = (timestamp: number) => {
+    const date = new Date(timestamp);
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  };
+
+  // Format timestamp for tooltip
+  const formatTooltipLabel = (timestamp: number) => {
+    const date = new Date(timestamp);
+    return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  };
 
   return (
     <div className="w-full">
@@ -82,11 +95,14 @@ export default function GitHubStarsChart() {
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
           <XAxis
-            dataKey="displayDate"
+            dataKey="timestamp"
+            type="number"
+            domain={['dataMin', 'dataMax']}
             tick={{ fontSize: 10, fill: '#6b7280' }}
             tickLine={false}
             axisLine={{ stroke: '#e5e7eb' }}
-            interval="preserveStartEnd"
+            tickFormatter={formatXAxisTick}
+            ticks={chartData.map((d) => d.timestamp)}
           />
           <YAxis
             tick={{ fontSize: 10, fill: '#6b7280' }}
@@ -101,7 +117,7 @@ export default function GitHubStarsChart() {
               borderRadius: '6px',
               fontSize: '12px',
             }}
-            labelFormatter={(value) => `Date: ${value}`}
+            labelFormatter={formatTooltipLabel}
             formatter={(value: number) => [`${value} stars`, 'Stars']}
           />
           <Area

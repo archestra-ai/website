@@ -2,6 +2,7 @@
   
   # Archestra AI Official Website
 
+
   **Enterprise MCP platform for AI agents.**
 
   
@@ -52,4 +53,4 @@ We welcome contributions from the community! [Contribution guidelines](https://w
   <a href="https://www.archestra.ai/blog/archestra-joins-cncf-linux-foundation"><img src="https://raw.githubusercontent.com/archestra-ai/archestra/main/desktop_app/public/images/linux-foundation-logo.png" height="50" alt="Linux Foundation" /></a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://www.archestra.ai/blog/archestra-joins-cncf-linux-foundation"><img src="https://raw.githubusercontent.com/archestra-ai/archestra/main/desktop_app/public/images/cncf-logo.png" height="50" alt="CNCF" /></a>
-</div>
+  </div>
