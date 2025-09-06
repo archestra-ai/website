@@ -1,4 +1,5 @@
 import { Badge } from '@components/ui/badge';
+import McpServerImage from '@mcpCatalog/components/McpServerImage';
 import { getUrlToLatestGitHubCommit } from '@mcpCatalog/lib/urls';
 import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
@@ -25,7 +26,15 @@ const ServerHeader = ({ server }: ServerHeaderProps) => {
     <div>
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
         <div className="flex-1">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 break-words">{serverName}</h1>
+          <div className="flex items-start gap-4 mb-2">
+            <McpServerImage 
+              server={server}
+              width={64}
+              height={64}
+              className="rounded-lg flex-shrink-0"
+            />
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 break-words flex-1">{serverName}</h1>
+          </div>
           <div
             className="text-sm text-gray-500 mb-4 font-mono"
             style={{
