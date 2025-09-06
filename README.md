@@ -27,7 +27,7 @@ This repository contains the source code for [Archestra.AI](https://archestra.ai
 1. Clone the repository
 ```bash
 git clone https://github.com/archestra-ai/website.git
-cd app
+cd website
 ```
 
 2. Install dependencies
