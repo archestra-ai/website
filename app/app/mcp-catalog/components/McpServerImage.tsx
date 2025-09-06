@@ -23,7 +23,6 @@ export default function McpServerImage({
 }: McpServerImageProps) {
     const [currentImageUrl, setCurrentImageUrl] = useState<string | null>(null);
     const [imageError, setImageError] = useState(false);
-    // const [imageLoading, setImageLoading] = useState(true); // Commented out for now
     const [fallbackIndex, setFallbackIndex] = useState(-1);
 
     const primaryImageUrl = getMcpServerImageUrl(server);
@@ -38,7 +37,6 @@ export default function McpServerImage({
     }, [primaryImageUrl]);
 
     const handleImageLoad = () => {
-        // setImageLoading(false); // Commented out for now
     };
 
     const handleImageError = () => {
@@ -50,21 +48,8 @@ export default function McpServerImage({
         } else {
             // All URLs failed, show fallback icon
             setImageError(true);
-            // setImageLoading(false); // Commented out for now
         }
     };
-
-    // Commented out loading state for now to avoid stuck loading
-    // if (imageLoading) {
-    //     return (
-    //         <div
-    //             className={`bg-gray-200 animate-pulse rounded-lg flex items-center justify-center ${className}`}
-    //             style={{ width, height }}
-    //         >
-    //             <div className="w-6 h-6 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin"></div>
-    //         </div>
-    //     );
-    // }
 
     // Show fallback icon if image failed to load
     if (imageError) {
