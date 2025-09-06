@@ -9,6 +9,7 @@ import { Badge } from '@components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
 import { Input } from '@components/ui/input';
 import { QualityBar } from '@mcpCatalog/components/QualityBar';
+import McpServerImage from '@mcpCatalog/components/McpServerImage';
 import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 const ITEMS_PER_PAGE = 30;
@@ -904,7 +905,15 @@ export default function McpCatalogClient({
                               </Badge>
                             )}
                           </div>
-                          <CardTitle className="text-xl break-words">{serverName}</CardTitle>
+                          <div className="flex items-start gap-3 mb-2">
+                            <McpServerImage 
+                              server={item.server}
+                              width={32}
+                              height={32}
+                              className="rounded flex-shrink-0"
+                            />
+                            <CardTitle className="text-xl break-words flex-1">{serverName}</CardTitle>
+                          </div>
                           <div
                             className="text-sm text-gray-500 mb-2 font-mono"
                             style={{
