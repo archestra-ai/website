@@ -1,7 +1,7 @@
-import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata, Viewport } from 'next';
 
-import KubeConBadge from '@components/KubeConBadge';
+import ConditionalAnalytics from '@components/ConditionalAnalytics';
+import GDPRConsentPanel from '@components/GDPRConsentPanel';
 import constants from '@constants';
 
 import './globals.css';
@@ -79,8 +79,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
-        <KubeConBadge />
-        <GoogleAnalytics gaId={constants.googleAnalytics.measurementId} />
+        <GDPRConsentPanel />
+        <ConditionalAnalytics gaId={constants.googleAnalytics.measurementId} />
       </body>
     </html>
   );
