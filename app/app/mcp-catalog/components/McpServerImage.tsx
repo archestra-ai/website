@@ -33,7 +33,7 @@ export default function McpServerImage({
     // Initialize with the primary image URL
     useEffect(() => {
         setCurrentImageUrl(primaryImageUrl);
-        setFallbackIndex(0);
+        setFallbackIndex(-1); // -1 because we start with primary image (index 0 in allUrls)
     }, [primaryImageUrl]);
 
 
