@@ -44,7 +44,7 @@ The application will be available at `http://localhost:3000`.
 
 ## 🤝 Contributing
 
-We welcome contributions from the community! [Contribution guideline](https://www.archestra.ai/docs/contributing).
+We welcome contributions from the community! [Contribution guidelines](https://www.archestra.ai/docs/contributing).
 
 <div align="center">
   <br />
