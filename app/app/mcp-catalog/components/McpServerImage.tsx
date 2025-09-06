@@ -36,8 +36,6 @@ export default function McpServerImage({
         setFallbackIndex(0);
     }, [primaryImageUrl]);
 
-    const handleImageLoad = () => {
-    };
 
     const handleImageError = () => {
         const nextIndex = fallbackIndex + 1;
@@ -97,7 +95,6 @@ export default function McpServerImage({
             height={height}
             className={`rounded-lg object-cover ${className}`}
             priority={priority}
-            onLoad={handleImageLoad}
             onError={handleImageError}
         />
     );
