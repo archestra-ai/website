@@ -32,6 +32,7 @@ cd website
 
 2. Install dependencies
 ```bash
+cd app
 pnpm install
 ```
 
