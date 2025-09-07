@@ -1691,7 +1691,7 @@ async function evaluateSingleRepo(
     }
 
     // 3. Apply updates based on options
-    
+
     // If readmeOnly is true, only update GitHub data (which includes README)
     if (readmeOnly) {
       server = await extractGitHubData(server, githubInfo, true);
@@ -1744,7 +1744,10 @@ async function evaluateSingleRepo(
         server = await extractProtocolFeatures(server, model, force);
       }
 
-      if (updateScore || (shouldUpdateMissing && (server.quality_score === null || server.quality_score === undefined))) {
+      if (
+        updateScore ||
+        (shouldUpdateMissing && (server.quality_score === null || server.quality_score === undefined))
+      ) {
         server = await extractScore(server, force);
       }
     }
