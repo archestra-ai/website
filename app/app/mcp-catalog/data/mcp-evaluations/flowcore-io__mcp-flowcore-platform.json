@@ -68,7 +68,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:26:48.744Z",
+  "last_scraped_at": "2025-09-07T22:15:26.584Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,

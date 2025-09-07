@@ -53,7 +53,7 @@
     "url": "https://github.com/ukkit/memcord",
     "name": "ukkit__memcord",
     "path": null,
-    "stars": 9,
+    "stars": 10,
     "contributors": 2,
     "issues": 0,
     "releases": false,
@@ -62,7 +62,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:28:00.630Z",
+  "last_scraped_at": "2025-09-07T22:16:25.805Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

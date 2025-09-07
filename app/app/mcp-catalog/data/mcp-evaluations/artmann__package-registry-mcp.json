@@ -44,7 +44,7 @@
     "url": "https://github.com/artmann/package-registry-mcp",
     "name": "artmann__package-registry-mcp",
     "path": null,
-    "stars": 20,
+    "stars": 21,
     "contributors": 1,
     "issues": 0,
     "releases": true,
@@ -53,7 +53,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:27:04.417Z",
+  "last_scraped_at": "2025-09-07T22:15:38.319Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

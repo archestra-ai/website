@@ -71,14 +71,14 @@
     "path": null,
     "stars": 45,
     "contributors": 5,
-    "issues": 1,
+    "issues": 0,
     "releases": true,
     "ci_cd": true,
     "latest_commit_hash": "fa9a3476178c2bb4bfec2e17cc4a7eebaab71015"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:28:01.202Z",
+  "last_scraped_at": "2025-09-07T22:16:23.868Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,

@@ -38,16 +38,16 @@
     "url": "https://github.com/aymericzip/intlayer",
     "name": "aymericzip__intlayer",
     "path": null,
-    "stars": 301,
+    "stars": 304,
     "contributors": 21,
-    "issues": 79,
+    "issues": 0,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "0a2fed0ba45df96b9dac63f573c1c06bde9e167a"
+    "latest_commit_hash": "46c3b8d6281677f5b6511bf5e655bb70c9743fb0"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:24:36.046Z",
+  "last_scraped_at": "2025-09-07T22:13:08.733Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": false,

@@ -64,7 +64,7 @@
     "url": "https://github.com/hustcc/mcp-echarts",
     "name": "hustcc__mcp-echarts",
     "path": null,
-    "stars": 72,
+    "stars": 73,
     "contributors": 8,
     "issues": 0,
     "releases": true,
@@ -73,7 +73,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:25:16.137Z",
+  "last_scraped_at": "2025-09-07T22:13:47.231Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

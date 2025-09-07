@@ -28,19 +28,14 @@
       "mcpServers": {
         "mcp-server-rijksmuseum": {
           "command": "npx",
-          "args": [
-            "-y",
-            "mcp-server-rijksmuseum"
-          ],
+          "args": ["-y", "mcp-server-rijksmuseum"],
           "env": {
             "RIJKSMUSEUM_API_KEY": "your_api_key_here"
           }
         },
         "mcp-server-rijksmuseum-configured": {
           "command": "node",
-          "args": [
-            "/path/to/rijksmuseum-server/build/index.js"
-          ],
+          "args": ["/path/to/rijksmuseum-server/build/index.js"],
           "env": {
             "RIJKSMUSEUM_API_KEY": "your_api_key_here"
           }
@@ -67,7 +62,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:37.863Z",
+  "last_scraped_at": "2025-09-07T22:12:15.450Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

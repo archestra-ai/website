@@ -75,7 +75,7 @@
     "url": "https://github.com/MladenSU/cli-mcp-server",
     "name": "mladensu__cli-mcp-server",
     "path": null,
-    "stars": 141,
+    "stars": 142,
     "contributors": 4,
     "issues": 7,
     "releases": false,
@@ -84,7 +84,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:24:47.371Z",
+  "last_scraped_at": "2025-09-07T22:13:10.812Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

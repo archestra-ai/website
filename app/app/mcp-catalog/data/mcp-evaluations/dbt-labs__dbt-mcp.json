@@ -44,7 +44,7 @@
     "url": "https://github.com/dbt-labs/dbt-mcp",
     "name": "dbt-labs__dbt-mcp",
     "path": null,
-    "stars": 368,
+    "stars": 369,
     "contributors": 22,
     "issues": 53,
     "releases": true,
@@ -53,7 +53,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:26:49.844Z",
+  "last_scraped_at": "2025-09-07T22:15:27.623Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

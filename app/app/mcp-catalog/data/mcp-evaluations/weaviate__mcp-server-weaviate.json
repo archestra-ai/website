@@ -38,7 +38,7 @@
     "url": "https://github.com/weaviate/mcp-server-weaviate",
     "name": "weaviate__mcp-server-weaviate",
     "path": null,
-    "stars": 149,
+    "stars": 150,
     "contributors": 1,
     "issues": 0,
     "releases": false,
@@ -47,7 +47,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:26:36.931Z",
+  "last_scraped_at": "2025-09-07T22:15:08.613Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

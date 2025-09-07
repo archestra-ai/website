@@ -64,7 +64,7 @@
     "url": "https://github.com/antvis/mcp-server-chart",
     "name": "antvis__mcp-server-chart",
     "path": null,
-    "stars": 2680,
+    "stars": 2703,
     "contributors": 14,
     "issues": 0,
     "releases": true,
@@ -73,7 +73,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:25:19.068Z",
+  "last_scraped_at": "2025-09-07T22:13:44.739Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

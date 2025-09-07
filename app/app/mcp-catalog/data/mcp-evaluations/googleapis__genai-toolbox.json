@@ -59,7 +59,7 @@
     "url": "https://github.com/googleapis/genai-toolbox",
     "name": "googleapis__genai-toolbox",
     "path": null,
-    "stars": 10234,
+    "stars": 10261,
     "contributors": 57,
     "issues": 228,
     "releases": true,
@@ -68,7 +68,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:25:57.077Z",
+  "last_scraped_at": "2025-09-07T22:14:23.196Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

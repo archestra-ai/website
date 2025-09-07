@@ -54,7 +54,7 @@
     "url": "https://github.com/InditexTech/mcp-teams-server",
     "name": "inditextech__mcp-teams-server",
     "path": null,
-    "stars": 308,
+    "stars": 309,
     "contributors": 3,
     "issues": 2,
     "releases": true,
@@ -63,7 +63,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:24:57.684Z",
+  "last_scraped_at": "2025-09-07T22:13:27.015Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

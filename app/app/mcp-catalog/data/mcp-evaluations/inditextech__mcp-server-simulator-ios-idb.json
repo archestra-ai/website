@@ -49,7 +49,7 @@
     "url": "https://github.com/InditexTech/mcp-server-simulator-ios-idb",
     "name": "inditextech__mcp-server-simulator-ios-idb",
     "path": null,
-    "stars": 237,
+    "stars": 238,
     "contributors": 7,
     "issues": 0,
     "releases": true,
@@ -58,7 +58,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:27:36.333Z",
+  "last_scraped_at": "2025-09-07T22:16:04.441Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

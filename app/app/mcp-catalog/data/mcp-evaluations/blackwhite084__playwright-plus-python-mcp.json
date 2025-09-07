@@ -66,7 +66,7 @@
     "url": "https://github.com/blackwhite084/playwright-plus-python-mcp",
     "name": "blackwhite084__playwright-plus-python-mcp",
     "path": null,
-    "stars": 148,
+    "stars": 149,
     "contributors": 2,
     "issues": 0,
     "releases": false,
@@ -75,7 +75,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:43.576Z",
+  "last_scraped_at": "2025-09-07T22:12:20.301Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

@@ -28,52 +28,29 @@
       "mcpServers": {
         "video-editor-mcp": {
           "command": "uv",
-          "args": [
-            "run",
-            "video-editor-mcp",
-            "YOURAPIKEY"
-          ],
+          "args": ["run", "video-editor-mcp", "YOURAPIKEY"],
           "env": {}
         },
         "video-editor-mcp-with-photos": {
           "command": "uv",
-          "args": [
-            "run",
-            "video-editor-mcp",
-            "YOURAPIKEY"
-          ],
+          "args": ["run", "video-editor-mcp", "YOURAPIKEY"],
           "env": {
             "LOAD_PHOTOS_DB": "1"
           }
         },
         "video-editor-mcp-published": {
           "command": "uvx",
-          "args": [
-            "video-editor-mcp",
-            "YOURAPIKEY"
-          ],
+          "args": ["video-editor-mcp", "YOURAPIKEY"],
           "env": {}
         },
         "video-editor-mcp-dev": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/Users/YOURDIRECTORY/video-editor-mcp",
-            "run",
-            "video-editor-mcp",
-            "YOURAPIKEY"
-          ],
+          "args": ["--directory", "/Users/YOURDIRECTORY/video-editor-mcp", "run", "video-editor-mcp", "YOURAPIKEY"],
           "env": {}
         },
         "video-editor-mcp-dev-with-photos": {
           "command": "uv",
-          "args": [
-            "--directory",
-            "/Users/<PATH_TO>/video-jungle-mcp",
-            "run",
-            "video-editor-mcp",
-            "<YOURAPIKEY>"
-          ],
+          "args": ["--directory", "/Users/<PATH_TO>/video-jungle-mcp", "run", "video-editor-mcp", "<YOURAPIKEY>"],
           "env": {
             "LOAD_PHOTOS_DB": "1"
           }
@@ -104,7 +81,7 @@
     "url": "https://github.com/burningion/video-editing-mcp",
     "name": "burningion__video-editing-mcp",
     "path": null,
-    "stars": 209,
+    "stars": 210,
     "contributors": 3,
     "issues": 2,
     "releases": false,
@@ -113,7 +90,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:35.394Z",
+  "last_scraped_at": "2025-09-07T22:12:12.675Z",
   "evaluation_model": null,
   "protocol_features": {
     "implementing_tools": true,

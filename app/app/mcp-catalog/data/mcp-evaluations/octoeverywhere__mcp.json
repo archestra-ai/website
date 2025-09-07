@@ -38,7 +38,7 @@
     "url": "https://github.com/OctoEverywhere/mcp",
     "name": "octoeverywhere__mcp",
     "path": null,
-    "stars": 8,
+    "stars": 9,
     "contributors": 1,
     "issues": 0,
     "releases": false,
@@ -47,7 +47,7 @@
   },
   "programming_language": "Unknown",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:37.619Z",
+  "last_scraped_at": "2025-09-07T22:12:14.862Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

@@ -61,7 +61,7 @@
     "url": "https://github.com/ckreiling/mcp-server-docker",
     "name": "ckreiling__mcp-server-docker",
     "path": null,
-    "stars": 594,
+    "stars": 595,
     "contributors": 3,
     "issues": 8,
     "releases": false,
@@ -70,7 +70,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:27:07.373Z",
+  "last_scraped_at": "2025-09-07T22:15:38.277Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -22,7 +22,13 @@ interface QualityScoreCardProps {
 export default function QualityScoreCard({ server, scoreBreakdown }: QualityScoreCardProps) {
   const [showDetails, setShowDetails] = useState(false);
 
-  const { quality_score: qualityScore, protocol_features: protocolFeatures, dependencies, remote_url: remoteUrl, github_info: githubInfo } = server;
+  const {
+    quality_score: qualityScore,
+    protocol_features: protocolFeatures,
+    dependencies,
+    remote_url: remoteUrl,
+    github_info: githubInfo,
+  } = server;
   const isRemoteServer = remoteUrl && !githubInfo;
 
   const getScoreDescription = (score: number, maxScore: number, category: string) => {
@@ -91,11 +97,11 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
         <CardDescription>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <span>
-              {isRemoteServer 
+              {isRemoteServer
                 ? 'Remote server evaluation'
                 : qualityScore !== null
-                ? 'Based on our comprehensive evaluation criteria'
-                : 'This server is being evaluated'}
+                  ? 'Based on our comprehensive evaluation criteria'
+                  : 'This server is being evaluated'}
             </span>
             {!isRemoteServer && <EvaluatedByModelInfo server={server} />}
           </div>
@@ -110,8 +116,8 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
               // Remote server explanation
               <div className="mt-4 text-sm text-gray-600">
                 <p>
-                  Remote servers are difficult to evaluate automatically as we cannot analyze their source code 
-                  or implementation details. However, these are typically production-ready services from established 
+                  Remote servers are difficult to evaluate automatically as we cannot analyze their source code or
+                  implementation details. However, these are typically production-ready services from established
                   providers, so we assign them a high trust score of 80/100.
                 </p>
               </div>

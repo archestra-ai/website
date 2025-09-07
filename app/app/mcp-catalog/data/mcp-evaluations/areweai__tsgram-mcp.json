@@ -53,7 +53,7 @@
     "url": "https://github.com/areweai/tsgram-mcp",
     "name": "areweai__tsgram-mcp",
     "path": null,
-    "stars": 83,
+    "stars": 84,
     "contributors": 2,
     "issues": 0,
     "releases": false,
@@ -62,7 +62,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:24:50.106Z",
+  "last_scraped_at": "2025-09-07T22:13:17.160Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

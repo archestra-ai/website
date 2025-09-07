@@ -58,7 +58,7 @@
     "url": "https://github.com/mark3labs/mcp-filesystem-server",
     "name": "mark3labs__mcp-filesystem-server",
     "path": null,
-    "stars": 504,
+    "stars": 505,
     "contributors": 7,
     "issues": 25,
     "releases": true,
@@ -67,7 +67,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:30:20.855Z",
+  "last_scraped_at": "2025-09-07T22:17:45.102Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

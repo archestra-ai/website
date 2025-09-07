@@ -85,7 +85,7 @@
     "url": "https://github.com/mamertofabian/mcp-everything-search",
     "name": "mamertofabian__mcp-everything-search",
     "path": null,
-    "stars": 236,
+    "stars": 237,
     "contributors": 2,
     "issues": 9,
     "releases": true,
@@ -94,7 +94,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:30:20.700Z",
+  "last_scraped_at": "2025-09-07T22:17:41.987Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

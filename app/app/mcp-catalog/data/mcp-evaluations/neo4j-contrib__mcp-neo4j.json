@@ -139,16 +139,16 @@
     "url": "https://github.com/neo4j-contrib/mcp-neo4j",
     "name": "neo4j-contrib__mcp-neo4j",
     "path": null,
-    "stars": 668,
+    "stars": 673,
     "contributors": 11,
-    "issues": 0,
+    "issues": 51,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "f5c3111281921736427140d5adc927e020bf9b94"
+    "latest_commit_hash": "04e36b72b634ac1468633c7afc89507021325003"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:26:10.390Z",
+  "last_scraped_at": "2025-09-07T22:14:36.828Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

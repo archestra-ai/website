@@ -44,7 +44,7 @@
     "url": "https://github.com/FradSer/mcp-server-apple-reminders",
     "name": "fradser__mcp-server-apple-reminders",
     "path": null,
-    "stars": 103,
+    "stars": 104,
     "contributors": 5,
     "issues": 0,
     "releases": true,
@@ -53,7 +53,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:43.889Z",
+  "last_scraped_at": "2025-09-07T22:12:20.988Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

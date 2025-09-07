@@ -38,16 +38,16 @@
     "url": "https://github.com/mindsdb/mindsdb",
     "name": "mindsdb__mindsdb",
     "path": null,
-    "stars": 35526,
+    "stars": 35549,
     "contributors": 878,
-    "issues": 4312,
+    "issues": 4314,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "7ea161a50d0146cb4994cd3211f89e1031b33add"
+    "latest_commit_hash": "b3e68364b62dd8cfe1e21fa238260645db906703"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:31.689Z",
+  "last_scraped_at": "2025-09-07T22:12:09.608Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

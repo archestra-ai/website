@@ -61,16 +61,16 @@
     "url": "https://github.com/bytedance/UI-TARS-desktop/tree/main/packages/agent-infra/mcp-servers/browser",
     "name": "bytedance__ui-tars-desktop__packages__agent-infra__mcp-servers__browser",
     "path": "packages/agent-infra/mcp-servers/browser",
-    "stars": 18276,
+    "stars": 18315,
     "contributors": 38,
     "issues": 0,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "3a7d2397275767d3acc0c200d26944e11c6c7f10"
+    "latest_commit_hash": "cbe3894db31bc73406b44727e03c44b10127eb4a"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:41.767Z",
+  "last_scraped_at": "2025-09-07T22:12:18.685Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

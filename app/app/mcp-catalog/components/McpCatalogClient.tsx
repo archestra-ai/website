@@ -170,13 +170,7 @@ export default function McpCatalogClient({
 
   // Calculate search relevance score for a server
   const calculateSearchRelevance = (
-    {
-      display_name: serverName,
-      description,
-      category,
-      github_info,
-      readme,
-    }: ArchestraMcpServerManifest,
+    { display_name: serverName, description, category, github_info, readme }: ArchestraMcpServerManifest,
     query: string
   ): number => {
     if (!query) return 0;
@@ -209,7 +203,7 @@ export default function McpCatalogClient({
     // For GitHub servers, check repo/owner/path
     if (github_info) {
       const { repo: gitHubRepo, owner: gitHubOwner, path: gitHubPath } = github_info;
-      
+
       // Repository name match (without github.com)
       if (gitHubRepo.toLowerCase().includes(lowerQuery)) {
         score += 20;
@@ -237,7 +231,7 @@ export default function McpCatalogClient({
       description && description.toLowerCase().includes(lowerQuery),
       category && category.toLowerCase().includes(lowerQuery),
     ];
-    
+
     // Add GitHub-specific matches if github_info exists
     if (github_info) {
       matchFields.push(
@@ -245,7 +239,7 @@ export default function McpCatalogClient({
         github_info.owner.toLowerCase().includes(lowerQuery)
       );
     }
-    
+
     const matchCount = matchFields.filter(Boolean).length;
 
     // Add bonus for multiple field matches (indicates more relevant result)
@@ -261,45 +255,54 @@ export default function McpCatalogClient({
       server,
       searchScore: searchQuery ? calculateSearchRelevance(server, searchQuery) : 0,
     }))
-    .filter(({ server: { category, programming_language, dependencies, protocol_features, remote_url }, searchScore }) => {
-      // Filter by search
-      const matchesSearch = !searchQuery || searchScore > 0;
+    .filter(
+      ({ server: { category, programming_language, dependencies, protocol_features, remote_url }, searchScore }) => {
+        // Filter by search
+        const matchesSearch = !searchQuery || searchScore > 0;
 
-      // Filter by category
-      const matchesCategory =
-        selectedCategory === 'All' ||
-        (selectedCategory === 'Uncategorized' && category === null) ||
-        category === selectedCategory;
+        // Filter by category
+        const matchesCategory =
+          selectedCategory === 'All' ||
+          (selectedCategory === 'Uncategorized' && category === null) ||
+          category === selectedCategory;
 
-      // Filter by language
-      const matchesLanguage = selectedLanguage === 'All' || programming_language === selectedLanguage;
+        // Filter by language
+        const matchesLanguage = selectedLanguage === 'All' || programming_language === selectedLanguage;
 
-      // Filter by dependency
-      const matchesDependency =
-        selectedDependency === 'All' ||
-        (dependencies && dependencies.some((dep) => dep.name === selectedDependency && dep.importance >= 8));
+        // Filter by dependency
+        const matchesDependency =
+          selectedDependency === 'All' ||
+          (dependencies && dependencies.some((dep) => dep.name === selectedDependency && dep.importance >= 8));
 
-      // Filter by MCP features
-      const matchesFeature =
-        selectedFeature === 'All' ||
-        (selectedFeature === 'Tools' && protocol_features?.implementing_tools === true) ||
-        (selectedFeature === 'Resources' && protocol_features?.implementing_resources === true) ||
-        (selectedFeature === 'Prompts' && protocol_features?.implementing_prompts === true) ||
-        (selectedFeature === 'Sampling' && protocol_features?.implementing_sampling === true) ||
-        (selectedFeature === 'Roots' && protocol_features?.implementing_roots === true) ||
-        (selectedFeature === 'Logging' && protocol_features?.implementing_logging === true) ||
-        (selectedFeature === 'STDIO Transport' && protocol_features?.implementing_stdio === true) ||
-        (selectedFeature === 'Streamable HTTP' && protocol_features?.implementing_streamable_http === true) ||
-        (selectedFeature === 'OAuth2' && protocol_features?.implementing_oauth2 === true);
+        // Filter by MCP features
+        const matchesFeature =
+          selectedFeature === 'All' ||
+          (selectedFeature === 'Tools' && protocol_features?.implementing_tools === true) ||
+          (selectedFeature === 'Resources' && protocol_features?.implementing_resources === true) ||
+          (selectedFeature === 'Prompts' && protocol_features?.implementing_prompts === true) ||
+          (selectedFeature === 'Sampling' && protocol_features?.implementing_sampling === true) ||
+          (selectedFeature === 'Roots' && protocol_features?.implementing_roots === true) ||
+          (selectedFeature === 'Logging' && protocol_features?.implementing_logging === true) ||
+          (selectedFeature === 'STDIO Transport' && protocol_features?.implementing_stdio === true) ||
+          (selectedFeature === 'Streamable HTTP' && protocol_features?.implementing_streamable_http === true) ||
+          (selectedFeature === 'OAuth2' && protocol_features?.implementing_oauth2 === true);
 
-      // Filter by server type
-      const matchesServerType =
-        selectedServerType === 'All' ||
-        (selectedServerType === 'Remote' && remote_url !== undefined && remote_url !== null) ||
-        (selectedServerType === 'Self-hosted' && (remote_url === undefined || remote_url === null));
+        // Filter by server type
+        const matchesServerType =
+          selectedServerType === 'All' ||
+          (selectedServerType === 'Remote' && remote_url !== undefined && remote_url !== null) ||
+          (selectedServerType === 'Self-hosted' && (remote_url === undefined || remote_url === null));
 
-      return matchesSearch && matchesCategory && matchesLanguage && matchesDependency && matchesFeature && matchesServerType;
-    });
+        return (
+          matchesSearch &&
+          matchesCategory &&
+          matchesLanguage &&
+          matchesDependency &&
+          matchesFeature &&
+          matchesServerType
+        );
+      }
+    );
 
   // Sort filtered servers
   const sortedServers = [...filteredAndScoredServers].sort((a, b) => {
@@ -969,7 +972,10 @@ export default function McpCatalogClient({
                     <Link key={serverId} href={`/mcp-catalog/${serverId}?${params.toString()}`} className="block">
                       <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full relative overflow-hidden">
                         {hasArchestraBadge && (
-                          <div className="absolute top-10 -right-12 bg-purple-600 text-white text-[10px] font-semibold px-12 py-1.5 transform rotate-45 shadow-sm z-10 text-center" style={{ width: '200px' }}>
+                          <div
+                            className="absolute top-10 -right-12 bg-purple-600 text-white text-[10px] font-semibold px-12 py-1.5 transform rotate-45 shadow-sm z-10 text-center"
+                            style={{ width: '200px' }}
+                          >
                             Supporting catalog
                           </div>
                         )}

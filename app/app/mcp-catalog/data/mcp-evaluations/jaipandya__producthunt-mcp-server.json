@@ -53,14 +53,14 @@
     "path": null,
     "stars": 31,
     "contributors": 1,
-    "issues": 0,
+    "issues": 1,
     "releases": false,
     "ci_cd": true,
     "latest_commit_hash": "fdfff827eec0904a0139e1fbdbe71ad13232c1c5"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:25:05.541Z",
+  "last_scraped_at": "2025-09-07T22:13:35.822Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

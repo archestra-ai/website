@@ -62,16 +62,16 @@
     "url": "https://github.com/keboola/keboola-mcp-server",
     "name": "keboola__keboola-mcp-server",
     "path": null,
-    "stars": 68,
+    "stars": 69,
     "contributors": 24,
     "issues": 0,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "2bb1d4dfd151068fd0167fa36d29d1abf77eb173"
+    "latest_commit_hash": "37e4cdcb06e6c2c4ad04442b1ee3f814bb6df02c"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:26:51.865Z",
+  "last_scraped_at": "2025-09-07T22:15:25.868Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

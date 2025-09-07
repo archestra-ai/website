@@ -49,14 +49,14 @@
     "path": null,
     "stars": 92,
     "contributors": 7,
-    "issues": 8,
+    "issues": 0,
     "releases": true,
     "ci_cd": true,
     "latest_commit_hash": "51a2e32e0fe542dfbfd2f99a0127ee3e1d88f6d1"
   },
   "programming_language": "Rust",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:24:37.788Z",
+  "last_scraped_at": "2025-09-07T22:12:59.679Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

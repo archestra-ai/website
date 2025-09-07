@@ -74,7 +74,7 @@
     "url": "https://github.com/Govcraft/rust-docs-mcp-server",
     "name": "govcraft__rust-docs-mcp-server",
     "path": null,
-    "stars": 183,
+    "stars": 182,
     "contributors": 4,
     "issues": 0,
     "releases": true,
@@ -83,7 +83,7 @@
   },
   "programming_language": "Rust",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:27:25.899Z",
+  "last_scraped_at": "2025-09-07T22:16:00.326Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

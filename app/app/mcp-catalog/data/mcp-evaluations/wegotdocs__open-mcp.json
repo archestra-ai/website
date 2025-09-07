@@ -38,7 +38,7 @@
     "url": "https://github.com/wegotdocs/open-mcp",
     "name": "wegotdocs__open-mcp",
     "path": null,
-    "stars": 255,
+    "stars": 257,
     "contributors": 2,
     "issues": 3,
     "releases": false,
@@ -47,7 +47,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:35.022Z",
+  "last_scraped_at": "2025-09-07T22:12:12.396Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

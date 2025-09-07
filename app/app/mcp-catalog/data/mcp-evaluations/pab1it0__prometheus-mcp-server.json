@@ -3,7 +3,7 @@
   "name": "pab1it0__prometheus-mcp-server",
   "display_name": "prometheus-mcp-server",
   "version": "1.0.0",
-  "description": "A Model Context Protocol (MCP) server that enables AI assistants to query and analyze Prometheus metrics through standardized interfaces.",
+  "description": "A Model Context Protocol (MCP) server that enables AI agents and LLMs to query and analyze Prometheus metrics through standardized interfaces.",
   "author": {
     "name": "pab1it0"
   },
@@ -46,7 +46,7 @@
     "url": "https://github.com/pab1it0/prometheus-mcp-server",
     "name": "pab1it0__prometheus-mcp-server",
     "path": null,
-    "stars": 200,
+    "stars": 201,
     "contributors": 7,
     "issues": 0,
     "releases": true,
@@ -55,7 +55,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:26:17.820Z",
+  "last_scraped_at": "2025-09-07T22:14:49.217Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -28,26 +28,18 @@
       "mcpServers": {
         "mcpjungle-docker-compose": {
           "command": "docker-compose",
-          "args": [
-            "up",
-            "-d"
-          ]
+          "args": ["up", "-d"]
         },
         "mcpjungle-stdio-docker-compose": {
           "command": "docker-compose",
-          "args": [
-            "up",
-            "-d"
-          ],
+          "args": ["up", "-d"],
           "env": {
             "MCPJUNGLE_IMAGE_TAG": "latest-stdio"
           }
         },
         "mcpjungle": {
           "command": "mcpjungle",
-          "args": [
-            "start"
-          ]
+          "args": ["start"]
         },
         "mcpjungle-mcpjungle-docker-configured": {
           "command": "docker",
@@ -63,9 +55,7 @@
         },
         "mcpjungle-configured": {
           "command": "mcpjungle",
-          "args": [
-            "start"
-          ],
+          "args": ["start"],
           "env": {
             "DATABASE_URL": "postgres://admin:root@localhost:5432/mcpjungle_db"
           }
@@ -83,7 +73,7 @@
     "url": "https://github.com/duaraghav8/MCPJungle",
     "name": "duaraghav8__mcpjungle",
     "path": null,
-    "stars": 437,
+    "stars": 443,
     "contributors": 5,
     "issues": 0,
     "releases": true,
@@ -92,7 +82,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:32.833Z",
+  "last_scraped_at": "2025-09-07T22:12:10.420Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

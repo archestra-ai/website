@@ -132,7 +132,7 @@
     "url": "https://github.com/zaizaizhao/mcp-swagger-server",
     "name": "zaizaizhao__mcp-swagger-server",
     "path": null,
-    "stars": 23,
+    "stars": 25,
     "contributors": 2,
     "issues": 0,
     "releases": true,
@@ -141,7 +141,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:28:47.047Z",
+  "last_scraped_at": "2025-09-07T22:17:07.806Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

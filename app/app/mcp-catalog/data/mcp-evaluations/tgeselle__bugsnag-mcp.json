@@ -48,14 +48,14 @@
     "path": null,
     "stars": 16,
     "contributors": 1,
-    "issues": 0,
+    "issues": 1,
     "releases": false,
     "ci_cd": true,
     "latest_commit_hash": "784d46b39d191d77eee13cad4c207a9a536c96d0"
   },
   "programming_language": "API Blueprint",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:28:27.633Z",
+  "last_scraped_at": "2025-09-07T22:16:54.554Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -38,16 +38,16 @@
     "url": "https://github.com/DataEval/dingo",
     "name": "dataeval__dingo",
     "path": null,
-    "stars": 436,
+    "stars": 439,
     "contributors": 15,
     "issues": 0,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "3a9c2004609778b77b4c8b5ce2fed9a6b9b3ea5b"
+    "latest_commit_hash": "098af6d9f8e15062fc624523bf22f1235b3e8cc8"
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:28:59.358Z",
+  "last_scraped_at": "2025-09-07T22:17:23.290Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

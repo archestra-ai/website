@@ -63,7 +63,7 @@
     "url": "https://github.com/yuna0x0/anilist-mcp",
     "name": "yuna0x0__anilist-mcp",
     "path": null,
-    "stars": 52,
+    "stars": 53,
     "contributors": 2,
     "issues": 0,
     "releases": true,
@@ -72,7 +72,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:41.180Z",
+  "last_scraped_at": "2025-09-07T22:12:17.998Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

@@ -28,30 +28,17 @@
       "mcpServers": {
         "mcgravity": {
           "command": "./mcgravity",
-          "args": [
-            "http://mcp1.example.com",
-            "http://mcp2.example.com"
-          ],
+          "args": ["http://mcp1.example.com", "http://mcp2.example.com"],
           "env": {}
         },
         "mcgravity-configured": {
           "command": "./mcgravity",
-          "args": [
-            "--host",
-            "0.0.0.0",
-            "--port",
-            "4000",
-            "http://mcp1.example.com",
-            "http://mcp2.example.com"
-          ],
+          "args": ["--host", "0.0.0.0", "--port", "4000", "http://mcp1.example.com", "http://mcp2.example.com"],
           "env": {}
         },
         "mcgravity-with-config": {
           "command": "./mcgravity",
-          "args": [
-            "--config",
-            "config.yaml"
-          ],
+          "args": ["--config", "config.yaml"],
           "env": {}
         },
         "tigranbs-mcgravity-docker": {
@@ -103,7 +90,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:35.864Z",
+  "last_scraped_at": "2025-09-07T22:12:12.857Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": false,

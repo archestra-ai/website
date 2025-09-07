@@ -28,10 +28,7 @@
       "mcpServers": {
         "dataeverything-mcp-file-server-docker": {
           "command": "mcp-template",
-          "args": [
-            "deploy",
-            "file-server"
-          ],
+          "args": ["deploy", "file-server"],
           "env": {}
         },
         "dataeverything-mcp-file-server-docker-configured": {
@@ -53,12 +50,7 @@
         },
         "dataeverything-mcp-file-server-docker-overridden": {
           "command": "mcp-template",
-          "args": [
-            "deploy",
-            "file-server",
-            "--override",
-            "metadata__description=Custom file server"
-          ],
+          "args": ["deploy", "file-server", "--override", "metadata__description=Custom file server"],
           "env": {}
         },
         "dataeverything-mcp-file-server-docker-env": {
@@ -80,12 +72,7 @@
         },
         "dataeverything-mcp-file-server-docker-with-config-file": {
           "command": "mcp-template",
-          "args": [
-            "deploy",
-            "file-server",
-            "--config-file",
-            "./config.json"
-          ],
+          "args": ["deploy", "file-server", "--config-file", "./config.json"],
           "env": {}
         },
         "dataeverything-mcp-file-server-docker-mixed-config": {
@@ -129,7 +116,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:36.253Z",
+  "last_scraped_at": "2025-09-07T22:12:13.296Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

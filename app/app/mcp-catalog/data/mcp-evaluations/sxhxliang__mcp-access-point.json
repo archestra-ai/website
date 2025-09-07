@@ -28,12 +28,7 @@
       "mcpServers": {
         "mcp-access-point-with-config": {
           "command": "cargo",
-          "args": [
-            "run",
-            "--",
-            "-c",
-            "config.yaml"
-          ],
+          "args": ["run", "--", "-c", "config.yaml"],
           "env": {}
         }
       }
@@ -49,16 +44,16 @@
     "url": "https://github.com/sxhxliang/mcp-access-point",
     "name": "sxhxliang__mcp-access-point",
     "path": null,
-    "stars": 120,
+    "stars": 121,
     "contributors": 4,
     "issues": 11,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "9c7d59ff647952a06bd8fb20c994e5f58297254c"
+    "latest_commit_hash": "b7fed6077e4f8fe45078b2032d73fe521960198e"
   },
   "programming_language": "Rust",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:30.033Z",
+  "last_scraped_at": "2025-09-07T22:12:07.593Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

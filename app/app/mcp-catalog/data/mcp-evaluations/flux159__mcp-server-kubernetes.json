@@ -66,7 +66,7 @@
     "url": "https://github.com/Flux159/mcp-server-kubernetes",
     "name": "flux159__mcp-server-kubernetes",
     "path": null,
-    "stars": 1040,
+    "stars": 1041,
     "contributors": 30,
     "issues": 0,
     "releases": true,
@@ -75,7 +75,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:53.310Z",
+  "last_scraped_at": "2025-09-07T22:12:29.306Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

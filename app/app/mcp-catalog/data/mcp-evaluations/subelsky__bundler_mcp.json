@@ -55,13 +55,13 @@
     "stars": 18,
     "contributors": 1,
     "issues": 0,
-    "releases": false,
-    "ci_cd": false,
+    "releases": true,
+    "ci_cd": true,
     "latest_commit_hash": "a9b35ff2745bccbe8f1997a2f3f9a1d196e7623b"
   },
   "programming_language": "Ruby",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:29:57.643Z",
+  "last_scraped_at": "2025-09-07T22:17:33.029Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

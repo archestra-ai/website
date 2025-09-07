@@ -46,7 +46,7 @@
     "url": "https://github.com/gabrielmaialva33/winx-code-agent",
     "name": "gabrielmaialva33__winx-code-agent",
     "path": null,
-    "stars": 15,
+    "stars": 16,
     "contributors": 2,
     "issues": 0,
     "releases": true,
@@ -55,7 +55,7 @@
   },
   "programming_language": "Rust",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:24:23.256Z",
+  "last_scraped_at": "2025-09-07T22:12:57.431Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

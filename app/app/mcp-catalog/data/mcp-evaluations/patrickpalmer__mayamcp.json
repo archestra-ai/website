@@ -28,9 +28,7 @@
       "mcpServers": {
         "MayaMCP": {
           "command": "[FULL PATH TO MayaMCP PROJECT]/.venv/Scripts/python.exe",
-          "args": [
-            "[FULL PATH TO MayaMCP PROJECT]/src/maya_mcp_server.py"
-          ],
+          "args": ["[FULL PATH TO MayaMCP PROJECT]/src/maya_mcp_server.py"],
           "env": {}
         }
       }
@@ -46,7 +44,7 @@
     "url": "https://github.com/PatrickPalmer/MayaMCP",
     "name": "patrickpalmer__mayamcp",
     "path": null,
-    "stars": 24,
+    "stars": 25,
     "contributors": 2,
     "issues": 3,
     "releases": true,
@@ -55,7 +53,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:38.154Z",
+  "last_scraped_at": "2025-09-07T22:12:15.339Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

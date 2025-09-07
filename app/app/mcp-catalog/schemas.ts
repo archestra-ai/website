@@ -126,75 +126,78 @@ export const ArchestraMcpServerProtocolFeaturesSchema = z.object({
   implementing_oauth2: z.boolean(),
 });
 
-const ArchestraMcpServerManifestBase = DxtManifestSchema.omit({ repository: true })
-  .extend({
-    /**
-     * Machine-readable name (used for CLI, APIs)
-     *
-     * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#field-definitions
-     */
-    name: z.string(),
+const ArchestraMcpServerManifestBase = DxtManifestSchema.omit({ repository: true }).extend({
+  /**
+   * Machine-readable name (used for CLI, APIs)
+   *
+   * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#field-definitions
+   */
+  name: z.string(),
 
-    /**
-     * Human-friendly name for UI display
-     *
-     * `display_name` in `DxtManifestSchema` is marked as optional, here we make it required
-     *
-     * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#field-definitions
-     */
-    display_name: z.string(),
+  /**
+   * Human-friendly name for UI display
+   *
+   * `display_name` in `DxtManifestSchema` is marked as optional, here we make it required
+   *
+   * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#field-definitions
+   */
+  display_name: z.string(),
 
-    /**
-     * URL for remote MCP servers. If set, this server is treated as remote.
-     * Remote servers are accessed via HTTP/WebSocket instead of being installed locally.
-     */
-    remote_url: z.string().url().optional(),
+  /**
+   * URL for remote MCP servers. If set, this server is treated as remote.
+   * Remote servers are accessed via HTTP/WebSocket instead of being installed locally.
+   */
+  remote_url: z.string().url().optional(),
 
-    /**
-     * Documentation URL for remote MCP servers. Optional field that provides
-     * a link to the remote server's documentation or setup instructions.
-     */
-    remote_mcp_docs_url: z.string().url().optional(),
+  /**
+   * Documentation URL for remote MCP servers. Optional field that provides
+   * a link to the remote server's documentation or setup instructions.
+   */
+  remote_mcp_docs_url: z.string().url().optional(),
 
-    readme: z.string().nullable(),
-    category: McpServerCategorySchema.nullable(),
-    quality_score: z.number().min(0).max(100).nullable(),
-    archestra_config: ArchestraConfigSchema.optional(),
-    github_info: ArchestraMcpServerFullGitHubInfoSchema.optional(),
-    programming_language: z.string().optional(),
-    framework: z.string().nullable(),
-    last_scraped_at: z.string().nullable(),
-    evaluation_model: z.string().nullable(),
-    protocol_features: ArchestraMcpServerProtocolFeaturesSchema.optional(),
-    dependencies: z.array(MCPDependencySchema).optional(),
-    raw_dependencies: z.string().nullable(),
-    server_overridden: DxtManifestServerSchema.optional(),
-    server_docker: z.any().optional(),
-    user_config_overridden: z.record(z.string(), DxtUserConfigurationOptionSchema).optional(),
-  });
+  readme: z.string().nullable(),
+  category: McpServerCategorySchema.nullable(),
+  quality_score: z.number().min(0).max(100).nullable(),
+  archestra_config: ArchestraConfigSchema.optional(),
+  github_info: ArchestraMcpServerFullGitHubInfoSchema.optional(),
+  programming_language: z.string().optional(),
+  framework: z.string().nullable(),
+  last_scraped_at: z.string().nullable(),
+  evaluation_model: z.string().nullable(),
+  protocol_features: ArchestraMcpServerProtocolFeaturesSchema.optional(),
+  dependencies: z.array(MCPDependencySchema).optional(),
+  raw_dependencies: z.string().nullable(),
+  server_overridden: DxtManifestServerSchema.optional(),
+  server_docker: z.any().optional(),
+  user_config_overridden: z.record(z.string(), DxtUserConfigurationOptionSchema).optional(),
+});
 
-export const ArchestraMcpServerManifestSchema = ArchestraMcpServerManifestBase
-  .refine((data) => {
+export const ArchestraMcpServerManifestSchema = ArchestraMcpServerManifestBase.refine(
+  (data) => {
     // Local servers (no remote_url) require github_info and programming_language
     if (!data.remote_url && (!data.github_info || !data.programming_language)) {
       return false;
     }
     return true;
-  }, {
-    message: "Local servers require github_info and programming_language"
-  })
-  .openapi('ArchestraMcpServerManifest');
+  },
+  {
+    message: 'Local servers require github_info and programming_language',
+  }
+).openapi('ArchestraMcpServerManifest');
 
 export const ArchestraMcpServerManifestWithScoreBreakdownSchema = ArchestraMcpServerManifestBase.extend({
   score_breakdown: ArchestraScoreBreakdownSchema,
 })
-  .refine((data) => {
-    // Local servers (no remote_url) require github_info and programming_language
-    if (!data.remote_url && (!data.github_info || !data.programming_language)) {
-      return false;
+  .refine(
+    (data) => {
+      // Local servers (no remote_url) require github_info and programming_language
+      if (!data.remote_url && (!data.github_info || !data.programming_language)) {
+        return false;
+      }
+      return true;
+    },
+    {
+      message: 'Local servers require github_info and programming_language',
     }
-    return true;
-  }, {
-    message: "Local servers require github_info and programming_language"
-  })
+  )
   .openapi('ArchestraMcpServerManifestWithScoreBreakdown');

@@ -44,7 +44,7 @@
     "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
     "name": "wonderwhy-er__desktopcommandermcp",
     "path": null,
-    "stars": 4395,
+    "stars": 4408,
     "contributors": 18,
     "issues": 107,
     "releases": true,
@@ -53,7 +53,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:24:42.595Z",
+  "last_scraped_at": "2025-09-07T22:13:18.960Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

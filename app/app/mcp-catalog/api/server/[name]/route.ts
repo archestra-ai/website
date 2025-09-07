@@ -20,12 +20,8 @@ export async function GET(request: NextRequest, props: { params: Promise<{ name:
       return NextResponse.json({ error: 'Server not found' }, { status: 404 });
     }
 
-    const {
-      name: serverName,
-      quality_score: qualityScore,
-      github_info,
-    } = server;
-    
+    const { name: serverName, quality_score: qualityScore, github_info } = server;
+
     const gitHubInfoOwner = github_info?.owner;
     const gitHubInfoRepo = github_info?.repo;
     const gitHubInfoPath = github_info?.path;

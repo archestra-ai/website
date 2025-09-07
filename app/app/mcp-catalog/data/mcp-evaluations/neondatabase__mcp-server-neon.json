@@ -59,7 +59,7 @@
     "url": "https://github.com/neondatabase/mcp-server-neon",
     "name": "neondatabase__mcp-server-neon",
     "path": null,
-    "stars": 447,
+    "stars": 448,
     "contributors": 13,
     "issues": 0,
     "releases": false,
@@ -68,7 +68,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:26:15.089Z",
+  "last_scraped_at": "2025-09-07T22:14:41.120Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

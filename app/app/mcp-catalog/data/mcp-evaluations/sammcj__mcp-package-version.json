@@ -61,14 +61,14 @@
     "path": null,
     "stars": 113,
     "contributors": 5,
-    "issues": 0,
+    "issues": 4,
     "releases": true,
     "ci_cd": true,
     "latest_commit_hash": "223d406fa1a8338459452eab1299bc65c976e280"
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:28:18.480Z",
+  "last_scraped_at": "2025-09-07T22:16:39.589Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

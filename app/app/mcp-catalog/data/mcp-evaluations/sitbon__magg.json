@@ -28,54 +28,27 @@
       "mcpServers": {
         "magg-stdio": {
           "command": "magg",
-          "args": [
-            "serve"
-          ]
+          "args": ["serve"]
         },
         "magg-http": {
           "command": "magg",
-          "args": [
-            "serve",
-            "--http"
-          ]
+          "args": ["serve", "--http"]
         },
         "magg-uvx-stdio": {
           "command": "uvx",
-          "args": [
-            "--from",
-            "git+https://github.com/sitbon/magg.git",
-            "magg"
-          ]
+          "args": ["--from", "git+https://github.com/sitbon/magg.git", "magg"]
         },
         "magg-uvx-http": {
           "command": "uvx",
-          "args": [
-            "--from",
-            "git+https://github.com/sitbon/magg.git",
-            "magg",
-            "serve",
-            "--http"
-          ]
+          "args": ["--from", "git+https://github.com/sitbon/magg.git", "magg", "serve", "--http"]
         },
         "sitbon-magg-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8000:8000",
-            "ghcr.io/sitbon/magg:latest"
-          ]
+          "args": ["run", "-p", "8000:8000", "ghcr.io/sitbon/magg:latest"]
         },
         "sitbon-magg-docker-auth-volume": {
           "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8000:8000",
-            "-v",
-            "~/.ssh/magg:/home/magg/.ssh/magg:ro",
-            "ghcr.io/sitbon/magg:latest"
-          ]
+          "args": ["run", "-p", "8000:8000", "-v", "~/.ssh/magg:/home/magg/.ssh/magg:ro", "ghcr.io/sitbon/magg:latest"]
         },
         "sitbon-magg-docker-auth-env": {
           "command": "docker",
@@ -93,47 +66,23 @@
         },
         "sitbon-magg-docker-beta": {
           "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8000:8000",
-            "ghcr.io/sitbon/magg:beta"
-          ]
+          "args": ["run", "-p", "8000:8000", "ghcr.io/sitbon/magg:beta"]
         },
         "sitbon-magg-docker-with-config": {
           "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8000:8000",
-            "-v",
-            "/path/to/config:/home/magg/.magg",
-            "ghcr.io/sitbon/magg:latest"
-          ]
+          "args": ["run", "-p", "8000:8000", "-v", "/path/to/config:/home/magg/.magg", "ghcr.io/sitbon/magg:latest"]
         },
         "sitbon-magg-compose": {
           "command": "docker",
-          "args": [
-            "compose",
-            "up",
-            "magg"
-          ]
+          "args": ["compose", "up", "magg"]
         },
         "sitbon-magg-compose-beta": {
           "command": "docker",
-          "args": [
-            "compose",
-            "up",
-            "magg-beta"
-          ]
+          "args": ["compose", "up", "magg-beta"]
         },
         "sitbon-magg-compose-dev": {
           "command": "docker",
-          "args": [
-            "compose",
-            "up",
-            "magg-dev"
-          ]
+          "args": ["compose", "up", "magg-dev"]
         }
       }
     },
@@ -148,7 +97,7 @@
     "url": "https://github.com/sitbon/magg",
     "name": "sitbon__magg",
     "path": null,
-    "stars": 65,
+    "stars": 67,
     "contributors": 1,
     "issues": 0,
     "releases": true,
@@ -157,7 +106,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:30.036Z",
+  "last_scraped_at": "2025-09-07T22:12:08.260Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

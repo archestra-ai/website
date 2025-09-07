@@ -52,7 +52,7 @@
     "url": "https://github.com/Operative-Sh/web-eval-agent",
     "name": "operative-sh__web-eval-agent",
     "path": null,
-    "stars": 1175,
+    "stars": 1177,
     "contributors": 6,
     "issues": 0,
     "releases": false,
@@ -61,7 +61,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:47.499Z",
+  "last_scraped_at": "2025-09-07T22:12:24.041Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

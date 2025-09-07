@@ -28,20 +28,12 @@
       "mcpServers": {
         "isaac-sim-mcp": {
           "command": "uv",
-          "args": [
-            "run",
-            "/home/ubuntu/Documents/isaac-sim-mcp/isaac_mcp/server.py"
-          ],
+          "args": ["run", "/home/ubuntu/Documents/isaac-sim-mcp/isaac_mcp/server.py"],
           "env": {}
         },
         "isaac-sim-mcp-dev": {
           "command": "uv",
-          "args": [
-            "run",
-            "mcp",
-            "dev",
-            "~/Documents/isaac-sim-mcp/isaac_mcp/server.py"
-          ],
+          "args": ["run", "mcp", "dev", "~/Documents/isaac-sim-mcp/isaac_mcp/server.py"],
           "env": {}
         }
       }
@@ -66,7 +58,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:38.256Z",
+  "last_scraped_at": "2025-09-07T22:12:15.430Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

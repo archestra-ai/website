@@ -44,7 +44,7 @@
     "url": "https://github.com/genomoncology/biomcp",
     "name": "genomoncology__biomcp",
     "path": null,
-    "stars": 280,
+    "stars": 283,
     "contributors": 7,
     "issues": 0,
     "releases": true,
@@ -53,7 +53,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:42.262Z",
+  "last_scraped_at": "2025-09-07T22:12:19.077Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

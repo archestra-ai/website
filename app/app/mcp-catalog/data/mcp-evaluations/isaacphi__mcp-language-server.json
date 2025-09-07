@@ -83,7 +83,7 @@
     "url": "https://github.com/isaacphi/mcp-language-server",
     "name": "isaacphi__mcp-language-server",
     "path": null,
-    "stars": 1055,
+    "stars": 1061,
     "contributors": 4,
     "issues": 0,
     "releases": true,
@@ -92,7 +92,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:27:35.323Z",
+  "last_scraped_at": "2025-09-07T22:16:08.604Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

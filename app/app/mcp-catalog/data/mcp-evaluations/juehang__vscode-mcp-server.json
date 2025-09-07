@@ -43,7 +43,7 @@
     "url": "https://github.com/juehang/vscode-mcp-server",
     "name": "juehang__vscode-mcp-server",
     "path": null,
-    "stars": 227,
+    "stars": 228,
     "contributors": 1,
     "issues": 0,
     "releases": true,
@@ -52,7 +52,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:24:22.430Z",
+  "last_scraped_at": "2025-09-07T22:12:52.947Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

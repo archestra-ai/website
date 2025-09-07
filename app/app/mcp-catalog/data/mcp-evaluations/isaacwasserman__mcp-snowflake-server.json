@@ -91,7 +91,7 @@
     "url": "https://github.com/isaacwasserman/mcp-snowflake-server",
     "name": "isaacwasserman__mcp-snowflake-server",
     "path": null,
-    "stars": 162,
+    "stars": 164,
     "contributors": 9,
     "issues": 17,
     "releases": true,
@@ -100,7 +100,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:25:54.455Z",
+  "last_scraped_at": "2025-09-07T22:14:27.929Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

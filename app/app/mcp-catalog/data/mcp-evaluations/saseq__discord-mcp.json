@@ -55,7 +55,7 @@
     "url": "https://github.com/SaseQ/discord-mcp",
     "name": "saseq__discord-mcp",
     "path": null,
-    "stars": 61,
+    "stars": 63,
     "contributors": 5,
     "issues": 0,
     "releases": false,
@@ -64,7 +64,7 @@
   },
   "programming_language": "Java",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:25:15.277Z",
+  "last_scraped_at": "2025-09-07T22:13:39.650Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

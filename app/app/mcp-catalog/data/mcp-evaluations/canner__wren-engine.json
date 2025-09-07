@@ -40,14 +40,14 @@
     "path": null,
     "stars": 430,
     "contributors": 22,
-    "issues": 292,
+    "issues": 0,
     "releases": true,
     "ci_cd": true,
     "latest_commit_hash": "b08706dc6e002fc0d2426e62737fa6c08c2fe07a"
   },
   "programming_language": "Java",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:25:41.685Z",
+  "last_scraped_at": "2025-09-07T22:14:03.590Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

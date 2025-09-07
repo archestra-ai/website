@@ -32,11 +32,11 @@ export function extractServerInfo(url: string): {
 } {
   try {
     const cleanUrl = url.replace(/\/$/, ''); // Remove trailing slash
-    
+
     // Check if this is a GitHub URL
     if (cleanUrl.includes('github.com') || cleanUrl.includes('gitlab.com')) {
       const parts = cleanUrl.split('/');
-      
+
       // Ensure we have enough parts for a GitHub URL
       if (parts.length < 5) {
         console.warn(`Invalid GitHub URL format: ${url}`);
@@ -71,16 +71,16 @@ export function extractServerInfo(url: string): {
       // Extract domain and create a name from it
       const urlObj = new URL(cleanUrl);
       const hostname = urlObj.hostname;
-      
+
       // Extract the main domain name (remove www, subdomain variations)
       let domain = hostname.replace(/^(www\.|mcp\.|api\.)/, '');
       // Get the main part of the domain (e.g., "huggingface" from "huggingface.co")
       const domainParts = domain.split('.');
       const mainDomain = domainParts[0];
-      
+
       // Generate consistent name for remote MCPs
       const name = `${mainDomain}__remote-mcp`.toLowerCase();
-      
+
       return {
         gitHubOrg: mainDomain,
         gitHubRepo: 'remote-mcp',
@@ -215,7 +215,7 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
         if (isRemote) {
           // For remote MCPs, create a simplified placeholder
           const displayName = gitHubOrg.charAt(0).toUpperCase() + gitHubOrg.slice(1) + ' MCP';
-          
+
           const server: ArchestraMcpServerManifest = {
             dxt_version: '0.1.0',
             version: '0.1.0',
@@ -349,11 +349,15 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
   // Sort: evaluated servers first (by trust score), then unevaluated servers
   const sortedServers = servers.sort((a, b) => {
     // Get names for comparison - use display_name for remote servers without github_info
-    const nameA = a.github_info 
-      ? (a.github_info.path ? a.github_info.path.split('/').pop() || a.github_info.repo : a.github_info.repo)
+    const nameA = a.github_info
+      ? a.github_info.path
+        ? a.github_info.path.split('/').pop() || a.github_info.repo
+        : a.github_info.repo
       : a.display_name;
-    const nameB = b.github_info 
-      ? (b.github_info.path ? b.github_info.path.split('/').pop() || b.github_info.repo : b.github_info.repo)
+    const nameB = b.github_info
+      ? b.github_info.path
+        ? b.github_info.path.split('/').pop() || b.github_info.repo
+        : b.github_info.repo
       : b.display_name;
 
     // Evaluated servers come first
@@ -389,7 +393,7 @@ export function loadServersFromSameRepo(targetServer: ArchestraMcpServerManifest
   if (!targetServer.github_info) {
     return [];
   }
-  
+
   const { owner, repo } = targetServer.github_info;
   const cacheKey = `repo_${owner}_${repo}`;
 

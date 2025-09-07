@@ -109,7 +109,7 @@
     "url": "https://github.com/TheRaLabs/legion-mcp",
     "name": "theralabs__legion-mcp",
     "path": null,
-    "stars": 65,
+    "stars": 66,
     "contributors": 1,
     "issues": 0,
     "releases": true,
@@ -118,7 +118,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:26:29.037Z",
+  "last_scraped_at": "2025-09-07T22:14:59.815Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

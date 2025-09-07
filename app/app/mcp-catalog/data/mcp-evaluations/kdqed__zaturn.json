@@ -40,14 +40,14 @@
     "path": null,
     "stars": 57,
     "contributors": 2,
-    "issues": 4,
+    "issues": 0,
     "releases": false,
     "ci_cd": false,
     "latest_commit_hash": "ef671fd5e274cc0de322f7aa3f1902efb88ed49c"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:28:52.971Z",
+  "last_scraped_at": "2025-09-07T22:17:26.670Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

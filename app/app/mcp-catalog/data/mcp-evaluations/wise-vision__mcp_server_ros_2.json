@@ -44,7 +44,7 @@
     "url": "https://github.com/wise-vision/mcp_server_ros_2",
     "name": "wise-vision__mcp_server_ros_2",
     "path": null,
-    "stars": 33,
+    "stars": 34,
     "contributors": 3,
     "issues": 0,
     "releases": true,
@@ -53,7 +53,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:28:37.792Z",
+  "last_scraped_at": "2025-09-07T22:17:03.912Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -46,7 +46,7 @@
     "url": "https://github.com/delano/postman-mcp-server",
     "name": "delano__postman-mcp-server",
     "path": null,
-    "stars": 129,
+    "stars": 130,
     "contributors": 4,
     "issues": 0,
     "releases": true,
@@ -55,7 +55,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:27:10.759Z",
+  "last_scraped_at": "2025-09-07T22:15:52.066Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -52,7 +52,7 @@
     "url": "https://github.com/xing5/mcp-google-sheets",
     "name": "xing5__mcp-google-sheets",
     "path": null,
-    "stars": 378,
+    "stars": 381,
     "contributors": 8,
     "issues": 0,
     "releases": true,
@@ -61,7 +61,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:26:32.920Z",
+  "last_scraped_at": "2025-09-07T22:15:09.349Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -38,7 +38,7 @@
     "url": "https://github.com/SDGLBL/mcp-claude-code",
     "name": "sdglbl__mcp-claude-code",
     "path": null,
-    "stars": 259,
+    "stars": 258,
     "contributors": 4,
     "issues": 17,
     "releases": true,
@@ -47,7 +47,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:28:18.569Z",
+  "last_scraped_at": "2025-09-07T22:16:39.615Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

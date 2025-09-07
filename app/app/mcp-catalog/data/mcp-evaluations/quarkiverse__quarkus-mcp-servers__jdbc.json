@@ -102,14 +102,14 @@
     "path": "jdbc",
     "stars": 166,
     "contributors": 9,
-    "issues": 0,
+    "issues": 23,
     "releases": true,
     "ci_cd": true,
     "latest_commit_hash": "d2c1caad14f71ba3995394ff2ae1e2971bad7125"
   },
   "programming_language": "Java",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:26:22.974Z",
+  "last_scraped_at": "2025-09-07T22:14:49.646Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

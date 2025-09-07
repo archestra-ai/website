@@ -51,7 +51,7 @@
     "url": "https://github.com/21st-dev/magic-mcp",
     "name": "21st-dev__magic-mcp",
     "path": null,
-    "stars": 3541,
+    "stars": 3562,
     "contributors": 6,
     "issues": 21,
     "releases": false,
@@ -60,7 +60,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:26:50.575Z",
+  "last_scraped_at": "2025-09-07T22:15:23.698Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

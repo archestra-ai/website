@@ -54,7 +54,7 @@
     "url": "https://github.com/hyperb1iss/droidmind",
     "name": "hyperb1iss__droidmind",
     "path": null,
-    "stars": 230,
+    "stars": 228,
     "contributors": 1,
     "issues": 0,
     "releases": true,
@@ -63,7 +63,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:27:41.714Z",
+  "last_scraped_at": "2025-09-07T22:16:04.140Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

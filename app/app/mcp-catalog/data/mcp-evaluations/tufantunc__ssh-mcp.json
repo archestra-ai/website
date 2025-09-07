@@ -54,7 +54,7 @@
     "url": "https://github.com/tufantunc/ssh-mcp",
     "name": "tufantunc__ssh-mcp",
     "path": null,
-    "stars": 78,
+    "stars": 82,
     "contributors": 2,
     "issues": 2,
     "releases": true,
@@ -63,7 +63,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:24:47.031Z",
+  "last_scraped_at": "2025-09-07T22:13:10.539Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -46,16 +46,16 @@
     "url": "https://github.com/elie222/inbox-zero/tree/main/apps/mcp-server",
     "name": "elie222__inbox-zero__apps__mcp-server",
     "path": "apps/mcp-server",
-    "stars": 8719,
+    "stars": 8736,
     "contributors": 43,
-    "issues": 171,
+    "issues": 172,
     "releases": false,
     "ci_cd": true,
-    "latest_commit_hash": "db4a60a38855e6632b9f8bce385676bf78e43dec"
+    "latest_commit_hash": "4b8e34f9a10e9d7d6fe7efb5132939d41e606b45"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:24:56.338Z",
+  "last_scraped_at": "2025-09-07T22:13:20.737Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,

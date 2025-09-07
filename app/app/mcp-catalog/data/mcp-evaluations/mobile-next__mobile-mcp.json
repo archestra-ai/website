@@ -44,16 +44,16 @@
     "url": "https://github.com/mobile-next/mobile-mcp",
     "name": "mobile-next__mobile-mcp",
     "path": null,
-    "stars": 1955,
+    "stars": 1966,
     "contributors": 15,
-    "issues": 107,
+    "issues": 0,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "66789d5fe83b80ea8b15a5419e81821aea6c8fe6"
+    "latest_commit_hash": "e29290561834b5d1f2e782c6cc1e4a4e3ba41263"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:28:01.089Z",
+  "last_scraped_at": "2025-09-07T22:16:22.536Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

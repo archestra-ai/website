@@ -44,7 +44,7 @@
     "url": "https://github.com/hloiseaufcms/mcp-gopls",
     "name": "hloiseaufcms__mcp-gopls",
     "path": null,
-    "stars": 39,
+    "stars": 40,
     "contributors": 2,
     "issues": 0,
     "releases": false,
@@ -53,7 +53,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:27:26.673Z",
+  "last_scraped_at": "2025-09-07T22:15:59.721Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

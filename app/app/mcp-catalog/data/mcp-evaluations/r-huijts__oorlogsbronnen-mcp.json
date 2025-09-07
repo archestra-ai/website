@@ -28,17 +28,12 @@
       "mcpServers": {
         "oorlogsbronnen-mcp": {
           "command": "npx",
-          "args": [
-            "-y",
-            "oorlogsbronnen-mcp"
-          ],
+          "args": ["-y", "oorlogsbronnen-mcp"],
           "env": {}
         },
         "oorlogsbronnen-mcp-configured": {
           "command": "node",
-          "args": [
-            "/absolute/path/to/oorlogsbronnen-mcp/dist/mcp-server.js"
-          ],
+          "args": ["/absolute/path/to/oorlogsbronnen-mcp/dist/mcp-server.js"],
           "env": {}
         }
       }
@@ -63,7 +58,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:38.585Z",
+  "last_scraped_at": "2025-09-07T22:12:15.689Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

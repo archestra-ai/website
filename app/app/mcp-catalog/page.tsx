@@ -169,9 +169,7 @@ function getServerTypes(): string[] {
 
 // Count servers with Archestra mention in their README
 function countServersWithArchestraBadge(servers: ArchestraMcpServerManifest[]): number {
-  return servers.filter(server => 
-    server.readme && server.readme.toLowerCase().includes('archestra.ai')
-  ).length;
+  return servers.filter((server) => server.readme && server.readme.toLowerCase().includes('archestra.ai')).length;
 }
 
 export default function MCPCatalogPage() {
@@ -239,9 +237,30 @@ export default function MCPCatalogPage() {
                 </div>
                 <p className="text-base sm:text-lg text-gray-600 mb-6">
                   {mcpServers.length} MCP servers ranked by implementation quality.
-                  <br/><br/>
-                  1) <a href="https://github.com/archestra-ai/website/tree/main/app/app/mcp-catalog/data/mcp-evaluations" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Catalog data</a> and <a href="https://github.com/archestra-ai/website/blob/main/app/app/mcp-catalog/scripts/evaluate-catalog.ts" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">evaluation script</a> are open source.<br/>
-                  2) Official servers equally compete with community servers.<br/>
+                  <br />
+                  <br />
+                  1){' '}
+                  <a
+                    href="https://github.com/archestra-ai/website/tree/main/app/app/mcp-catalog/data/mcp-evaluations"
+                    className="text-blue-600 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Catalog data
+                  </a>{' '}
+                  and{' '}
+                  <a
+                    href="https://github.com/archestra-ai/website/blob/main/app/app/mcp-catalog/scripts/evaluate-catalog.ts"
+                    className="text-blue-600 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    evaluation script
+                  </a>{' '}
+                  are open source.
+                  <br />
+                  2) Official servers equally compete with community servers.
+                  <br />
                   3) Supported by <RotatingServerDisplay servers={mcpServers} />
                 </p>
 

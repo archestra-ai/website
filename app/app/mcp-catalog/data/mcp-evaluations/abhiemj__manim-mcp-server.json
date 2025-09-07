@@ -28,9 +28,7 @@
       "mcpServers": {
         "manim-mcp-server": {
           "command": "/absolute/path/to/python",
-          "args": [
-            "/absolute/path/to/manim-mcp-server/src/manim_server.py"
-          ],
+          "args": ["/absolute/path/to/manim-mcp-server/src/manim_server.py"],
           "env": {
             "MANIM_EXECUTABLE": "/Users/[Your_username]/anaconda3/envs/manim2/Scripts/manim.exe"
           }
@@ -48,7 +46,7 @@
     "url": "https://github.com/abhiemj/manim-mcp-server",
     "name": "abhiemj__manim-mcp-server",
     "path": null,
-    "stars": 457,
+    "stars": 459,
     "contributors": 1,
     "issues": 2,
     "releases": false,
@@ -57,7 +55,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:34.884Z",
+  "last_scraped_at": "2025-09-07T22:12:11.802Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

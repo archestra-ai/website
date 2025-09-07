@@ -46,14 +46,14 @@
     "path": null,
     "stars": 46,
     "contributors": 1,
-    "issues": 3,
+    "issues": 0,
     "releases": false,
     "ci_cd": false,
     "latest_commit_hash": "f16cfd12741df1de4a097d30d427a93a0958d610"
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:27:47.323Z",
+  "last_scraped_at": "2025-09-07T22:16:16.402Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

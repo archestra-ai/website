@@ -52,7 +52,7 @@
     "url": "https://github.com/cjo4m06/mcp-shrimp-task-manager",
     "name": "cjo4m06__mcp-shrimp-task-manager",
     "path": null,
-    "stars": 1682,
+    "stars": 1684,
     "contributors": 9,
     "issues": 66,
     "releases": false,
@@ -61,7 +61,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:27:08.336Z",
+  "last_scraped_at": "2025-09-07T22:15:39.502Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

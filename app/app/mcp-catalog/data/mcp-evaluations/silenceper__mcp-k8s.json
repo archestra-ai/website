@@ -88,7 +88,7 @@
     "url": "https://github.com/silenceper/mcp-k8s",
     "name": "silenceper__mcp-k8s",
     "path": null,
-    "stars": 124,
+    "stars": 123,
     "contributors": 5,
     "issues": 0,
     "releases": true,
@@ -97,7 +97,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:24:03.874Z",
+  "last_scraped_at": "2025-09-07T22:12:35.552Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

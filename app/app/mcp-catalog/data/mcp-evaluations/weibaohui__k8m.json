@@ -113,7 +113,7 @@
     "url": "https://github.com/weibaohui/k8m",
     "name": "weibaohui__k8m",
     "path": null,
-    "stars": 635,
+    "stars": 639,
     "contributors": 14,
     "issues": 0,
     "releases": true,
@@ -122,7 +122,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:24:13.816Z",
+  "last_scraped_at": "2025-09-07T22:12:42.126Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

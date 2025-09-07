@@ -68,7 +68,7 @@
     "url": "https://github.com/ezyang/codemcp",
     "name": "ezyang__codemcp",
     "path": null,
-    "stars": 1547,
+    "stars": 1548,
     "contributors": 9,
     "issues": 0,
     "releases": true,
@@ -77,7 +77,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:24:29.110Z",
+  "last_scraped_at": "2025-09-07T22:12:50.507Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -49,7 +49,7 @@
     "url": "https://github.com/cloudflare/mcp-server-cloudflare",
     "name": "cloudflare__mcp-server-cloudflare",
     "path": null,
-    "stars": 2919,
+    "stars": 2922,
     "contributors": 29,
     "issues": 0,
     "releases": true,
@@ -58,7 +58,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:23:50.789Z",
+  "last_scraped_at": "2025-09-07T22:12:26.995Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

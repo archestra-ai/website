@@ -85,7 +85,7 @@
     "url": "https://github.com/ckanthony/openapi-mcp",
     "name": "ckanthony__openapi-mcp",
     "path": null,
-    "stars": 131,
+    "stars": 132,
     "contributors": 1,
     "issues": 0,
     "releases": false,
@@ -94,7 +94,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:24:10.683Z",
+  "last_scraped_at": "2025-09-07T22:12:41.524Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

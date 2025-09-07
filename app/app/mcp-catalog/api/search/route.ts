@@ -49,14 +49,15 @@ export async function GET(request: NextRequest) {
         // Search query filter
         if (query) {
           const searchQuery = query.toLowerCase();
-          let matchesSearch = 
+          let matchesSearch =
             name.toLowerCase().includes(searchQuery) ||
             display_name.toLowerCase().includes(searchQuery) ||
             description.toLowerCase().includes(searchQuery);
-          
+
           // For GitHub servers, also search in owner/repo
           if (github_info) {
-            matchesSearch = matchesSearch ||
+            matchesSearch =
+              matchesSearch ||
               github_info.owner.toLowerCase().includes(searchQuery) ||
               github_info.repo.toLowerCase().includes(searchQuery);
           }

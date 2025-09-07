@@ -59,7 +59,7 @@
     "url": "https://github.com/hustcc/mcp-mermaid",
     "name": "hustcc__mcp-mermaid",
     "path": null,
-    "stars": 164,
+    "stars": 166,
     "contributors": 5,
     "issues": 0,
     "releases": false,
@@ -68,7 +68,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:25:20.106Z",
+  "last_scraped_at": "2025-09-07T22:13:42.435Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

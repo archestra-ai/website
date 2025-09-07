@@ -36,7 +36,7 @@
     "url": "https://github.com/mickael-kerjean/filestash/tree/master/server/plugin/plg_handler_mcp",
     "name": "mickael-kerjean__filestash__server__plugin__plg_handler_mcp",
     "path": "server/plugin/plg_handler_mcp",
-    "stars": 12557,
+    "stars": 12590,
     "contributors": 77,
     "issues": 633,
     "releases": false,
@@ -45,7 +45,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:30:21.058Z",
+  "last_scraped_at": "2025-09-07T22:17:45.384Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

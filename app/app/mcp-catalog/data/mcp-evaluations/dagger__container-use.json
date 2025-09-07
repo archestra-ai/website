@@ -49,7 +49,7 @@
     "url": "https://github.com/dagger/container-use",
     "name": "dagger__container-use",
     "path": null,
-    "stars": 2963,
+    "stars": 2977,
     "contributors": 30,
     "issues": 0,
     "releases": true,
@@ -58,7 +58,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:24:22.870Z",
+  "last_scraped_at": "2025-09-07T22:12:51.912Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,

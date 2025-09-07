@@ -44,7 +44,7 @@
     "url": "https://github.com/alexander-zuev/supabase-mcp-server",
     "name": "alexander-zuev__supabase-mcp-server",
     "path": null,
-    "stars": 786,
+    "stars": 785,
     "contributors": 2,
     "issues": 0,
     "releases": true,
@@ -53,7 +53,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:25:24.492Z",
+  "last_scraped_at": "2025-09-07T22:13:57.118Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

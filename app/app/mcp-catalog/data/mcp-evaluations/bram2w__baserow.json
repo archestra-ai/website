@@ -49,7 +49,7 @@
     "url": "https://github.com/bram2w/baserow",
     "name": "bram2w__baserow",
     "path": null,
-    "stars": 2861,
+    "stars": 2865,
     "contributors": 83,
     "issues": 0,
     "releases": false,
@@ -58,7 +58,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:25:32.836Z",
+  "last_scraped_at": "2025-09-07T22:13:56.413Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

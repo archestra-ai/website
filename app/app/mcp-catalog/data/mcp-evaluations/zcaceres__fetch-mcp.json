@@ -49,7 +49,7 @@
     "url": "https://github.com/zcaceres/fetch-mcp",
     "name": "zcaceres__fetch-mcp",
     "path": null,
-    "stars": 581,
+    "stars": 585,
     "contributors": 5,
     "issues": 0,
     "releases": false,
@@ -58,7 +58,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-05T19:28:45.875Z",
+  "last_scraped_at": "2025-09-07T22:17:11.492Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
