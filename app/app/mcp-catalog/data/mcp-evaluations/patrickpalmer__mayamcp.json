@@ -28,7 +28,9 @@
       "mcpServers": {
         "MayaMCP": {
           "command": "[FULL PATH TO MayaMCP PROJECT]/.venv/Scripts/python.exe",
-          "args": ["[FULL PATH TO MayaMCP PROJECT]/src/maya_mcp_server.py"],
+          "args": [
+            "[FULL PATH TO MayaMCP PROJECT]/src/maya_mcp_server.py"
+          ],
           "env": {}
         }
       }

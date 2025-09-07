@@ -16,7 +16,7 @@ export default function RotatingServerDisplay({ servers }: RotatingServerDisplay
   const serversWithBadge = useMemo(() => {
     return servers
       .filter(server => server.readme && server.readme.toLowerCase().includes('archestra.ai'))
-      .sort((a, b) => (b.github_info.stars || 0) - (a.github_info.stars || 0));
+      .sort((a, b) => (b.github_info?.stars || 0) - (a.github_info?.stars || 0));
   }, [servers]);
   
   const count = serversWithBadge.length;
@@ -25,7 +25,7 @@ export default function RotatingServerDisplay({ servers }: RotatingServerDisplay
     if (count === 0) return;
     
     const currentServer = serversWithBadge[currentIndex];
-    const stars = currentServer.github_info.stars;
+    const stars = currentServer.github_info?.stars;
     const formattedStars = stars ? (stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : stars.toString()) : '0';
     const displayName = currentServer.display_name || currentServer.name;
     const fullText = `${displayName} (${formattedStars}⭐️)`;

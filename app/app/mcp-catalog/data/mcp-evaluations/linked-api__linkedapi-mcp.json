@@ -12,7 +12,10 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": ["-y", "linkedapi-mcp"],
+      "args": [
+        "-y",
+        "linkedapi-mcp"
+      ],
       "env": {}
     }
   },

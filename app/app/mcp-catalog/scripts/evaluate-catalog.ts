@@ -927,6 +927,7 @@ If no run command found, respond with: {"mcpServers": {}}`;
       return {
         ...server,
         archestra_config: {
+          oauth: server.archestra_config?.oauth || { provider: null, required: false },
           ...server.archestra_config,
           client_config_permutations: result,
         },
@@ -1379,6 +1380,7 @@ If no configuration found, respond: {"oauth": { "provider": null, "required": fa
       return {
         ...server,
         archestra_config: {
+          client_config_permutations: server.archestra_config?.client_config_permutations || null,
           ...server.archestra_config,
           oauth: result.oauth,
         },
@@ -1775,7 +1777,7 @@ async function evaluateSingleRepo(
             implementing_stdio,
             implementing_streamable_http,
             implementing_oauth2,
-          },
+          } = {},
           dependencies,
         } = server;
 
@@ -1852,11 +1854,26 @@ async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<
   // Read all GitHub URLs
   let allUrls: string[] = JSON.parse(fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf8'));
 
-  // Filter out non-GitHub URLs (e.g., GitLab)
+  // Filter out non-GitHub URLs (e.g., GitLab, remote servers)
   let githubUrls = allUrls.filter((url) => url.includes('github.com'));
+  
+  // Also filter out remote servers (URLs starting with http:// or https:// but not GitHub)
+  const remoteServers = allUrls.filter(url => 
+    (url.startsWith('http://') || url.startsWith('https://')) && !url.includes('github.com')
+  );
 
   if (githubUrls.length < allUrls.length) {
-    console.log(`⚠️  Skipping ${allUrls.length - githubUrls.length} non-GitHub URLs (GitLab, etc.)`);
+    const nonGitHubCount = allUrls.length - githubUrls.length;
+    const remoteCount = remoteServers.length;
+    const otherCount = nonGitHubCount - remoteCount;
+    
+    console.log(`⚠️  Skipping ${nonGitHubCount} non-GitHub URLs:`);
+    if (remoteCount > 0) {
+      console.log(`   - ${remoteCount} remote MCP servers`);
+    }
+    if (otherCount > 0) {
+      console.log(`   - ${otherCount} other repositories (GitLab, etc.)`);
+    }
   }
 
   const existingFiles = fs.readdirSync(MCP_SERVERS_EVALUATIONS_DIR).filter((f) => f.endsWith('.json'));
@@ -2092,8 +2109,14 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
   // Single repo evaluation
   if (url) {
     if (!url.includes('github.com')) {
-      console.log(`⚠️  Skipping non-GitHub URL: ${url}`);
-      console.log('   This script only supports GitHub repositories.');
+      const isRemoteServer = url.startsWith('http://') || url.startsWith('https://');
+      if (isRemoteServer) {
+        console.log(`⚠️  Skipping remote MCP server: ${url}`);
+        console.log('   Remote servers are evaluated separately with fixed scores.');
+      } else {
+        console.log(`⚠️  Skipping non-GitHub URL: ${url}`);
+        console.log('   This script only supports GitHub repositories.');
+      }
       return;
     }
     await evaluateSingleRepo(url, options);

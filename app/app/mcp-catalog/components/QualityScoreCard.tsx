@@ -22,7 +22,8 @@ interface QualityScoreCardProps {
 export default function QualityScoreCard({ server, scoreBreakdown }: QualityScoreCardProps) {
   const [showDetails, setShowDetails] = useState(false);
 
-  const { quality_score: qualityScore, protocol_features: protocolFeatures, dependencies } = server;
+  const { quality_score: qualityScore, protocol_features: protocolFeatures, dependencies, remote_url: remoteUrl, github_info: githubInfo } = server;
+  const isRemoteServer = remoteUrl && !githubInfo;
 
   const getScoreDescription = (score: number, maxScore: number, category: string) => {
     const percentage = (score / maxScore) * 100;
@@ -90,11 +91,13 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
         <CardDescription>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <span>
-              {qualityScore !== null
+              {isRemoteServer 
+                ? 'Remote server evaluation'
+                : qualityScore !== null
                 ? 'Based on our comprehensive evaluation criteria'
                 : 'This server is being evaluated'}
             </span>
-            <EvaluatedByModelInfo server={server} />
+            {!isRemoteServer && <EvaluatedByModelInfo server={server} />}
           </div>
         </CardDescription>
       </CardHeader>
@@ -103,22 +106,47 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
 
         {qualityScore !== null && (
           <>
-            {/* Mobile: Collapsible Details */}
-            <div className="sm:hidden">
-              <button
-                onClick={() => setShowDetails(!showDetails)}
-                className="mt-4 w-full flex items-center justify-between px-3 py-2 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
-              >
-                <span className="text-sm font-medium text-gray-700">Score Details</span>
-                {showDetails ? (
-                  <ChevronUp size={16} className="text-gray-500" />
-                ) : (
-                  <ChevronDown size={16} className="text-gray-500" />
-                )}
-              </button>
+            {isRemoteServer ? (
+              // Remote server explanation
+              <div className="mt-4 text-sm text-gray-600">
+                <p>
+                  Remote servers are difficult to evaluate automatically as we cannot analyze their source code 
+                  or implementation details. However, these are typically production-ready services from established 
+                  providers, so we assign them a high trust score of 80/100.
+                </p>
+              </div>
+            ) : (
+              <>
+                {/* Mobile: Collapsible Details */}
+                <div className="sm:hidden">
+                  <button
+                    onClick={() => setShowDetails(!showDetails)}
+                    className="mt-4 w-full flex items-center justify-between px-3 py-2 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
+                  >
+                    <span className="text-sm font-medium text-gray-700">Score Details</span>
+                    {showDetails ? (
+                      <ChevronUp size={16} className="text-gray-500" />
+                    ) : (
+                      <ChevronDown size={16} className="text-gray-500" />
+                    )}
+                  </button>
 
-              {showDetails && (
-                <div className="mt-3 text-sm text-gray-600">
+                  {showDetails && (
+                    <div className="mt-3 text-sm text-gray-600">
+                      <ul className="space-y-1">
+                        <li>• {getScoreDescription(scoreBreakdown.mcp_protocol, 40, 'MCP protocol implementation')}</li>
+                        <li>• {getScoreDescription(scoreBreakdown.github_metrics, 20, 'GitHub community health')}</li>
+                        <li>• {getScoreDescription(scoreBreakdown.dependencies, 20, 'dependency optimization')}</li>
+                        <li>• {getScoreDescription(scoreBreakdown.deployment_maturity, 10, 'deployment maturity')}</li>
+                        <li>• {getScoreDescription(scoreBreakdown.documentation, 8, 'documentation quality')}</li>
+                        <li>• {getScoreDescription(scoreBreakdown.badge_usage, 2, 'badge adoption')}</li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+
+                {/* Desktop: Always Show Details */}
+                <div className="hidden sm:block mt-4 text-sm text-gray-600">
                   <ul className="space-y-1">
                     <li>• {getScoreDescription(scoreBreakdown.mcp_protocol, 40, 'MCP protocol implementation')}</li>
                     <li>• {getScoreDescription(scoreBreakdown.github_metrics, 20, 'GitHub community health')}</li>
@@ -128,20 +156,8 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
                     <li>• {getScoreDescription(scoreBreakdown.badge_usage, 2, 'badge adoption')}</li>
                   </ul>
                 </div>
-              )}
-            </div>
-
-            {/* Desktop: Always Show Details */}
-            <div className="hidden sm:block mt-4 text-sm text-gray-600">
-              <ul className="space-y-1">
-                <li>• {getScoreDescription(scoreBreakdown.mcp_protocol, 40, 'MCP protocol implementation')}</li>
-                <li>• {getScoreDescription(scoreBreakdown.github_metrics, 20, 'GitHub community health')}</li>
-                <li>• {getScoreDescription(scoreBreakdown.dependencies, 20, 'dependency optimization')}</li>
-                <li>• {getScoreDescription(scoreBreakdown.deployment_maturity, 10, 'deployment maturity')}</li>
-                <li>• {getScoreDescription(scoreBreakdown.documentation, 8, 'documentation quality')}</li>
-                <li>• {getScoreDescription(scoreBreakdown.badge_usage, 2, 'badge adoption')}</li>
-              </ul>
-            </div>
+              </>
+            )}
           </>
         )}
       </CardContent>

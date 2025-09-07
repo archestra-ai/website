@@ -162,6 +162,11 @@ function getMCPFeatures(): string[] {
   ];
 }
 
+// Get server types (Remote vs Self-hosted)
+function getServerTypes(): string[] {
+  return ['All', 'Remote', 'Self-hosted'];
+}
+
 // Count servers with Archestra mention in their README
 function countServersWithArchestraBadge(servers: ArchestraMcpServerManifest[]): number {
   return servers.filter(server => 
@@ -175,6 +180,7 @@ export default function MCPCatalogPage() {
   const languages = getProgrammingLanguages(mcpServers);
   const dependencies = getTopDependencies(mcpServers);
   const mcpFeatures = getMCPFeatures();
+  const serverTypes = getServerTypes();
   const serversWithBadge = countServersWithArchestraBadge(mcpServers);
 
   // Create a map of server counts for multi-server repos
@@ -241,12 +247,12 @@ export default function MCPCatalogPage() {
 
                 <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 mt-6 sm:mt-10 mb-6 max-w-2xl">
                   <div className="flex items-center gap-3 mb-4">
-                    {topScoredServer ? (
+                    {topScoredServer && topScoredServer.github_info ? (
                       <a
                         href={`/mcp-catalog/${topScoredServer.name}`}
                         className="hover:opacity-80 transition-opacity flex-shrink-0"
                       >
-                        <TrustScoreBadge gitHubInfo={topScoredServer?.github_info} />
+                        <TrustScoreBadge gitHubInfo={topScoredServer.github_info} />
                       </a>
                     ) : (
                       <TrustScoreBadge gitHubInfo={exampleBadgeGitHubInfo} />
@@ -281,6 +287,7 @@ export default function MCPCatalogPage() {
               languages={languages}
               dependencies={dependencies}
               mcpFeatures={mcpFeatures}
+              serverTypes={serverTypes}
               serverCounts={serverCounts}
             />
           </Suspense>

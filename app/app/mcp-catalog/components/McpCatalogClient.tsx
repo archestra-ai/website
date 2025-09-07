@@ -19,6 +19,7 @@ interface McpCatalogClientProps {
   languages: string[];
   dependencies: string[];
   mcpFeatures: string[];
+  serverTypes: string[];
   serverCounts: Map<string, number>;
 }
 
@@ -28,6 +29,7 @@ export default function McpCatalogClient({
   languages,
   dependencies,
   mcpFeatures,
+  serverTypes,
   serverCounts,
 }: McpCatalogClientProps) {
   const searchParams = useSearchParams();
@@ -42,6 +44,7 @@ export default function McpCatalogClient({
   const [selectedLanguage, setSelectedLanguage] = useState(searchParams.get('language') || 'All');
   const [selectedDependency, setSelectedDependency] = useState(searchParams.get('dependency') || 'All');
   const [selectedFeature, setSelectedFeature] = useState(searchParams.get('feature') || 'All');
+  const [selectedServerType, setSelectedServerType] = useState(searchParams.get('serverType') || 'All');
   const [sortBy, setSortBy] = useState(searchParams.get('sort') || 'quality');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | null>(
     (searchParams.get('dir') as 'asc' | 'desc') || 'desc'
@@ -67,7 +70,8 @@ export default function McpCatalogClient({
     selectedCategory !== 'All' ||
     selectedLanguage !== 'All' ||
     selectedDependency !== 'All' ||
-    selectedFeature !== 'All';
+    selectedFeature !== 'All' ||
+    selectedServerType !== 'All';
 
   // Count active filters
   const activeFilterCount = [
@@ -76,6 +80,7 @@ export default function McpCatalogClient({
     selectedLanguage !== 'All',
     selectedDependency !== 'All',
     selectedFeature !== 'All',
+    selectedServerType !== 'All',
   ].filter(Boolean).length;
 
   // Clear all filters
@@ -85,6 +90,7 @@ export default function McpCatalogClient({
     setSelectedLanguage('All');
     setSelectedDependency('All');
     setSelectedFeature('All');
+    setSelectedServerType('All');
     // Reset to quality sort when clearing filters
     if (sortBy === 'relevance') {
       setSortBy('quality');
@@ -255,7 +261,7 @@ export default function McpCatalogClient({
       server,
       searchScore: searchQuery ? calculateSearchRelevance(server, searchQuery) : 0,
     }))
-    .filter(({ server: { category, programming_language, dependencies, protocol_features }, searchScore }) => {
+    .filter(({ server: { category, programming_language, dependencies, protocol_features, remote_url }, searchScore }) => {
       // Filter by search
       const matchesSearch = !searchQuery || searchScore > 0;
 
@@ -286,7 +292,13 @@ export default function McpCatalogClient({
         (selectedFeature === 'Streamable HTTP' && protocol_features?.implementing_streamable_http === true) ||
         (selectedFeature === 'OAuth2' && protocol_features?.implementing_oauth2 === true);
 
-      return matchesSearch && matchesCategory && matchesLanguage && matchesDependency && matchesFeature;
+      // Filter by server type
+      const matchesServerType =
+        selectedServerType === 'All' ||
+        (selectedServerType === 'Remote' && remote_url !== undefined && remote_url !== null) ||
+        (selectedServerType === 'Self-hosted' && (remote_url === undefined || remote_url === null));
+
+      return matchesSearch && matchesCategory && matchesLanguage && matchesDependency && matchesFeature && matchesServerType;
     });
 
   // Sort filtered servers
@@ -437,6 +449,33 @@ export default function McpCatalogClient({
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-9 text-sm"
                   />
+                </div>
+              </div>
+
+              {/* Server Type */}
+              <div>
+                <h3 className="text-sm font-medium text-gray-700 mb-2">Server Type</h3>
+                <div className="space-y-1">
+                  {serverTypes.map((serverType) => (
+                    <button
+                      key={serverType}
+                      onClick={() => setSelectedServerType(serverType)}
+                      className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
+                        selectedServerType === serverType
+                          ? 'bg-indigo-100 text-indigo-800 font-medium'
+                          : 'text-gray-600 hover:bg-gray-100'
+                      }`}
+                    >
+                      {serverType}
+                      <span className="float-right text-xs text-gray-500">
+                        {serverType === 'All'
+                          ? mcpServers.length
+                          : serverType === 'Remote'
+                            ? mcpServers.filter((s) => s.remote_url !== undefined && s.remote_url !== null).length
+                            : mcpServers.filter((s) => s.remote_url === undefined || s.remote_url === null).length}
+                      </span>
+                    </button>
+                  ))}
                 </div>
               </div>
 
@@ -615,6 +654,33 @@ export default function McpCatalogClient({
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-9 text-sm"
                   />
+                </div>
+
+                {/* Server Type */}
+                <div>
+                  <h3 className="text-sm font-medium text-gray-700 mb-2">Server Type</h3>
+                  <div className="space-y-1">
+                    {serverTypes.map((serverType) => (
+                      <button
+                        key={serverType}
+                        onClick={() => setSelectedServerType(serverType)}
+                        className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
+                          selectedServerType === serverType
+                            ? 'bg-indigo-100 text-indigo-800 font-medium'
+                            : 'text-gray-600 hover:bg-gray-100'
+                        }`}
+                      >
+                        {serverType}
+                        <span className="float-right text-xs text-gray-500">
+                          {serverType === 'All'
+                            ? mcpServers.length
+                            : serverType === 'Remote'
+                              ? mcpServers.filter((s) => s.remote_url !== undefined && s.remote_url !== null).length
+                              : mcpServers.filter((s) => s.remote_url === undefined || s.remote_url === null).length}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Dependencies */}
@@ -881,9 +947,11 @@ export default function McpCatalogClient({
                     framework,
                     quality_score: qualityScore,
                     readme,
+                    remote_url: remoteUrl,
                   } = item.server;
                   const searchScore = item.searchScore;
                   const hasArchestraBadge = readme && readme.toLowerCase().includes('archestra.ai');
+                  const isRemoteServer = remoteUrl && !gitHubInfo;
 
                   // Preserve current state in the link
                   const params = new URLSearchParams();
@@ -892,6 +960,7 @@ export default function McpCatalogClient({
                   if (selectedLanguage !== 'All') params.set('language', selectedLanguage);
                   if (selectedDependency !== 'All') params.set('dependency', selectedDependency);
                   if (selectedFeature !== 'All') params.set('feature', selectedFeature);
+                  if (selectedServerType !== 'All') params.set('serverType', selectedServerType);
                   if (isClient) {
                     params.set('scroll', window.scrollY.toString());
                   }
@@ -907,9 +976,15 @@ export default function McpCatalogClient({
                         <CardHeader className="p-4 sm:p-6">
                           <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
                             <div className="flex flex-wrap gap-1 sm:gap-2">
-                              <Badge variant="outline" className="text-xs">
-                                {programming_language}
-                              </Badge>
+                              {isRemoteServer ? (
+                                <Badge className="bg-blue-100 text-blue-800 border-blue-200 text-xs">
+                                  Remote Server
+                                </Badge>
+                              ) : (
+                                <Badge variant="outline" className="text-xs">
+                                  {programming_language}
+                                </Badge>
+                              )}
                               <Badge variant="outline" className="text-xs">
                                 {category || 'Uncategorized'}
                               </Badge>

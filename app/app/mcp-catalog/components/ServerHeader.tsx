@@ -89,9 +89,15 @@ const ServerHeader = ({ server }: ServerHeaderProps) => {
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Badge variant="outline" className="text-xs sm:text-sm">
-            {programmingLanguage}
-          </Badge>
+          {remote_url && !github_info ? (
+            <Badge className="bg-blue-100 text-blue-800 border-blue-200 text-xs sm:text-sm">
+              Remote Server
+            </Badge>
+          ) : (
+            <Badge variant="outline" className="text-xs sm:text-sm">
+              {programmingLanguage}
+            </Badge>
+          )}
           <Badge variant="outline" className="text-xs sm:text-sm">
             {category || 'Uncategorized'}
           </Badge>

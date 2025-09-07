@@ -211,7 +211,9 @@ async function main() {
     const newServers = parsedServers.map(convertToMCPServer);
 
     // Extract only GitHub URLs
-    const githubUrls = newServers.map((server) => server.github_info.url);
+    const githubUrls = newServers
+      .filter((server) => server.github_info)
+      .map((server) => server.github_info!.url);
 
     // Generate JSON content
     const jsonContent = JSON.stringify(githubUrls, null, 2);

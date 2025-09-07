@@ -228,7 +228,7 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
               email: 'Unknown',
             },
             server: {
-              type: 'remote',
+              type: 'binary' as const,
               entry_point: remoteUrl || '',
               mcp_config: {
                 command: 'remote',
@@ -465,6 +465,7 @@ export function countServersInRepo(
     const count = allServers.filter(
       (server) =>
         server.github_info &&
+        targetServer.github_info &&
         server.github_info.owner === targetServer.github_info.owner &&
         server.github_info.repo === targetServer.github_info.repo
     ).length;

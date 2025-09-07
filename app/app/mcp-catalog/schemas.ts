@@ -150,6 +150,12 @@ const ArchestraMcpServerManifestBase = DxtManifestSchema.omit({ repository: true
      */
     remote_url: z.string().url().optional(),
 
+    /**
+     * Documentation URL for remote MCP servers. Optional field that provides
+     * a link to the remote server's documentation or setup instructions.
+     */
+    remote_mcp_docs_url: z.string().url().optional(),
+
     readme: z.string().nullable(),
     category: McpServerCategorySchema.nullable(),
     quality_score: z.number().min(0).max(100).nullable(),

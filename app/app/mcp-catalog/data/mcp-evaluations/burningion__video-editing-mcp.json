@@ -28,29 +28,52 @@
       "mcpServers": {
         "video-editor-mcp": {
           "command": "uv",
-          "args": ["run", "video-editor-mcp", "YOURAPIKEY"],
+          "args": [
+            "run",
+            "video-editor-mcp",
+            "YOURAPIKEY"
+          ],
           "env": {}
         },
         "video-editor-mcp-with-photos": {
           "command": "uv",
-          "args": ["run", "video-editor-mcp", "YOURAPIKEY"],
+          "args": [
+            "run",
+            "video-editor-mcp",
+            "YOURAPIKEY"
+          ],
           "env": {
             "LOAD_PHOTOS_DB": "1"
           }
         },
         "video-editor-mcp-published": {
           "command": "uvx",
-          "args": ["video-editor-mcp", "YOURAPIKEY"],
+          "args": [
+            "video-editor-mcp",
+            "YOURAPIKEY"
+          ],
           "env": {}
         },
         "video-editor-mcp-dev": {
           "command": "uv",
-          "args": ["--directory", "/Users/YOURDIRECTORY/video-editor-mcp", "run", "video-editor-mcp", "YOURAPIKEY"],
+          "args": [
+            "--directory",
+            "/Users/YOURDIRECTORY/video-editor-mcp",
+            "run",
+            "video-editor-mcp",
+            "YOURAPIKEY"
+          ],
           "env": {}
         },
         "video-editor-mcp-dev-with-photos": {
           "command": "uv",
-          "args": ["--directory", "/Users/<PATH_TO>/video-jungle-mcp", "run", "video-editor-mcp", "<YOURAPIKEY>"],
+          "args": [
+            "--directory",
+            "/Users/<PATH_TO>/video-jungle-mcp",
+            "run",
+            "video-editor-mcp",
+            "<YOURAPIKEY>"
+          ],
           "env": {
             "LOAD_PHOTOS_DB": "1"
           }

@@ -28,7 +28,10 @@
       "mcpServers": {
         "pipedream-mcp": {
           "command": "npx",
-          "args": ["-y", "@pipedream/mcp"],
+          "args": [
+            "-y",
+            "@pipedream/mcp"
+          ],
           "env": {
             "PIPEDREAM_CLIENT_ID": "your_client_id",
             "PIPEDREAM_CLIENT_SECRET": "your_client_secret",
@@ -58,7 +61,9 @@
         },
         "pipedream-mcp-http": {
           "command": "pnpm",
-          "args": ["dev:http"],
+          "args": [
+            "dev:http"
+          ],
           "env": {
             "PIPEDREAM_CLIENT_ID": "your_client_id",
             "PIPEDREAM_CLIENT_SECRET": "your_client_secret",
@@ -68,7 +73,9 @@
         },
         "pipedream-mcp-http-debug": {
           "command": "pnpm",
-          "args": ["dev:http"],
+          "args": [
+            "dev:http"
+          ],
           "env": {
             "PD_SDK_DEBUG": "true",
             "PIPEDREAM_CLIENT_ID": "your_client_id",
@@ -79,7 +86,9 @@
         },
         "pipedream-mcp-stdio": {
           "command": "bun",
-          "args": ["src/stdio.ts"],
+          "args": [
+            "src/stdio.ts"
+          ],
           "env": {
             "PIPEDREAM_CLIENT_ID": "your_client_id",
             "PIPEDREAM_CLIENT_SECRET": "your_client_secret",

@@ -277,6 +277,10 @@
             "type": "string",
             "format": "uri"
           },
+          "remote_mcp_docs_url": {
+            "type": "string",
+            "format": "uri"
+          },
           "readme": {
             "type": "string",
             "nullable": true
@@ -919,6 +923,10 @@
             }
           },
           "remote_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "remote_mcp_docs_url": {
             "type": "string",
             "format": "uri"
           },

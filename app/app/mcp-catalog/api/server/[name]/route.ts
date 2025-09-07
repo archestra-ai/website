@@ -23,8 +23,12 @@ export async function GET(request: NextRequest, props: { params: Promise<{ name:
     const {
       name: serverName,
       quality_score: qualityScore,
-      github_info: { owner: gitHubInfoOwner, repo: gitHubInfoRepo, path: gitHubInfoPath },
+      github_info,
     } = server;
+    
+    const gitHubInfoOwner = github_info?.owner;
+    const gitHubInfoRepo = github_info?.repo;
+    const gitHubInfoPath = github_info?.path;
 
     // Calculate trust score breakdown if score exists
     let scoreBreakdown = null;
