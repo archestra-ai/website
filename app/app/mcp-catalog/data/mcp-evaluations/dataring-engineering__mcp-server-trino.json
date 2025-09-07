@@ -49,7 +49,7 @@
     "owner": "Dataring-engineering",
     "repo": "mcp-server-trino",
     "url": "https://github.com/Dataring-engineering/mcp-server-trino",
-    "name": "mcp-server-trino",
+    "name": "dataring-engineering__mcp-server-trino",
     "path": null,
     "stars": 17,
     "contributors": 1,
@@ -60,7 +60,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:34:00.356Z",
+  "last_scraped_at": "2025-09-07T22:14:06.376Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

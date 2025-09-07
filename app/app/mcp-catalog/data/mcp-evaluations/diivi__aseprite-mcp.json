@@ -20,9 +20,9 @@
   "prompts": [],
   "keywords": [],
   "user_config": {},
-  "readme": "# Aseprite MCP Tools\n\nA Python module that serves as an MCP server for interacting with the Aseprite API\n\nDemo where Cursor draws a cloud in aseprite using the MCP:\n\nhttps://github.com/user-attachments/assets/572edf75-ab66-4700-87ee-d7d3d196c597\n\n\n## Installation:\n```json\n{\n  \"mcpServers\": {\n      \"aseprite\": {\n          \"command\": \"/opt/homebrew/bin/uv\",\n          \"args\": [\n              \"--directory\",\n              \"/path/to/repo\",\n              \"run\",\n              \"-m\",\n              \"aseprite_mcp\"\n          ]\n      }\n  }\n}\n```\n",
+  "readme": "# Aseprite MCP Tools\n\nA Python module that serves as an MCP server for interacting with the Aseprite API\n\nDemo where Cursor draws a cloud in aseprite using the MCP:\n\nhttps://github.com/user-attachments/assets/572edf75-ab66-4700-87ee-d7d3d196c597\n\n## Docker Usage\n\n### Quick Start\n\nBuild and run the Docker image:\n```bash\ndocker build -t aseprite-mcp:latest .\ndocker run -it --rm aseprite-mcp:latest\n```\n\nOr use the provided build scripts:\n- **Linux/macOS**: `chmod +x build-docker.sh && ./build-docker.sh`\n- **Windows**: `.\\build-docker.ps1`\n\n### Using Docker Compose\n```bash\n# Production\ndocker-compose up aseprite-mcp\n\n# Development mode\ndocker-compose --profile dev up aseprite-mcp-dev\n```\n\nSee [DOCKER.md](DOCKER.md) for detailed Docker setup instructions.\n\n### Optional: Install Aseprite via Steam\n\nTo have the container install Aseprite via SteamCMD at startup, provide Steam credentials:\n\n```powershell\n# Create a .env with STEAM_USERNAME/STEAM_PASSWORD (and optional STEAM_GUARD_CODE)\n# Then\ndocker run --rm -i --env-file .env aseprite-mcp:latest\n```\n\nIf installed, the binary will be at `/opt/steamapps/common/Aseprite/aseprite` and `ASEPRITE_PATH` will be picked up automatically.\n\n## Local Installation\n\n### Prerequisites\n- Python 3.13+\n- `uv` package manager\n\n### Installation:\n```json\n{\n  \"mcpServers\": {\n      \"aseprite\": {\n          \"command\": \"/opt/homebrew/bin/uv\",\n          \"args\": [\n              \"--directory\",\n              \"/path/to/repo\",\n              \"run\",\n              \"-m\",\n              \"aseprite_mcp\"\n          ]\n      }\n  }\n}\n```\n",
   "category": "Art & Culture",
-  "quality_score": 44,
+  "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
       "mcpServers": {
@@ -44,16 +44,16 @@
     "url": "https://github.com/diivi/aseprite-mcp",
     "name": "diivi__aseprite-mcp",
     "path": null,
-    "stars": 75,
-    "contributors": 1,
-    "issues": 0,
+    "stars": 82,
+    "contributors": 2,
+    "issues": 2,
     "releases": false,
-    "ci_cd": false,
-    "latest_commit_hash": "739e3f48a5c30432a14db5a81931716f1ccdec18"
+    "ci_cd": true,
+    "latest_commit_hash": "c8b8bab4b7870e7a651ce0fb35aba411bfc17d09"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:25:54.962Z",
+  "last_scraped_at": "2025-09-07T22:12:15.951Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

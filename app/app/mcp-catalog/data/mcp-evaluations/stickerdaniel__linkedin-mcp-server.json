@@ -91,7 +91,7 @@
   },
   "archestra_config": {
     "oauth": {
-      "provider": null,
+      "provider": "linkedin",
       "required": false
     },
     "client_config_permutations": {
@@ -128,10 +128,6 @@
           }
         }
       }
-    },
-    "oauth": {
-      "provider": "linkedin",
-      "required": false
     },
     "browser_based": {
       "required": true
