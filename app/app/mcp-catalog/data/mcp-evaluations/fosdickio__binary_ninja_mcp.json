@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "bridge/binja_mcp_bridge.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": ["${__dirname}/bridge/binja_mcp_bridge.py"],
       "env": {}
     }
   },

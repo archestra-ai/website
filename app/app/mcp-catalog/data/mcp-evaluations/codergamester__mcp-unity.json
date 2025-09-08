@@ -8,11 +8,11 @@
     "name": "CoderGamester"
   },
   "server": {
-    "type": "binary",
+    "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": ["-y", "@codergamester/mcp-unity"],
       "env": {}
     }
   },
@@ -48,7 +48,7 @@
   "programming_language": "C#",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:15:46.897Z",
-  "evaluation_model": "gemini-2.5-pro",
+  "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

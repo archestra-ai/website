@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "__main__.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": ["-m", "mcp_simple_arxiv"],
       "env": {}
     }
   },

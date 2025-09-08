@@ -9,17 +9,32 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "__main__.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": ["-m", "mcp_server_notify", "--debug", "${user_config.debug}", "--log-file", "${user_config.log_file}"],
       "env": {}
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "debug": {
+      "type": "boolean",
+      "title": "Enable Debug Mode",
+      "description": "Enable verbose logging for debugging purposes.",
+      "default": false,
+      "required": false
+    },
+    "log_file": {
+      "type": "file",
+      "title": "Log File Path",
+      "description": "Path to the file where server logs will be written.",
+      "required": false,
+      "default": ""
+    }
+  },
   "readme": "[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/cactusinhand-mcp-server-notify-badge.png)](https://mseep.ai/app/cactusinhand-mcp-server-notify) [![PyPI version](https://badge.fury.io/py/mcp-server-notify.svg)](https://badge.fury.io/py/mcp-server-notify)\n\n# 📢 MCP Notify Server\n\n[English](README.md) | [中文](README.zh.md)\n\nA MCP server that send desktop notifications with sound effect when agent tasks are completed.\n\n## 🥩 Features\n\n- Send system desktop notifications after agent tasks completion\n- Play alert sounds to grab user attention, with sound file inside.\n- Cross-platform support (Windows, macOS, Linux)\n- Based on standard MCP protocol, integrates with various LLM clients\n\n## ⏬ Installation\n\n### Install using [uv](https://docs.astral.sh/uv/) package manager\n\n```bash\ngit clone https://github.com/Cactusinhand/mcp_server_notify.git\ncd mcp_server_notify\n\nuv venv\nsource .venv/Scripts/activate\n\nuv pip install mcp-server-notify\n# or\npip install mcp-server-notify\n```\n\nAfter installation, call the module directly to check if installation was successful:\n```bash\npython -m mcp_server_notify\n```\nThis module accepts ` --debug ` or `--file ` option, we can use it like:\n```shell\npython -m mcp_server_notify --debug\npython -m mcp_server_notify --debug --log-file=path/to/logfile.log\n```\n\n## ⚠️❕ Special requirements\n\n** We use [Apprise](https://github.com/caronc/apprise) API for our Desktop notification deliver，so we need to install some special requirements in our Desktop **\n\n**Windows**\n```shell\n# windows:// minimum requirements\npip install pywin32\n```\n\n**macOS**\n```shell\n# Make sure terminal-notifier is installed into your system\nbrew install terminal-notifier\n```\n\n## 📚 Usage\n\n### Using with Claude Desktop:\n\nFind the configuration file `claude_desktop_config.json`\n```json\n{\n    \"mcpServers\": {\n        \"NotificationServer\": {\n            \"command\": \"uv\",\n            \"args\": [\n              \"--directory\",\n              \"path/to/your/mcp_server_notify project\",\n              \"run\",\n              \"mcp-server-notify\",\n            ]\n        }\n    }\n}\n```\n\nIf installed globally, you can also use the python command:\n```json\n{\n    \"mcpServers\": {\n        \"NotificationServer\": {\n            \"command\": \"python\",\n            \"args\": [\n              \"-m\",\n              \"mcp_server_notify\",\n            ]\n        }\n    }\n}\n```\n\n### ⚡️ Using with Cursor:\nFind the configuration file `~/.cursor/mcp.json` or `your_project/.cursor/mcp.json`\n```json\n{\n    \"mcpServers\": {\n        \"NotificationServer\": {\n            \"command\": \"uv\",\n            \"args\": [\n              \"--directory\",\n              \"path/to/your/mcp_server_notify project\",\n              \"run\",\n              \"mcp-server-notify\",\n            ]\n        }\n    }\n}\n```\n\nAfter configuration, simply add a prompt like `finally, send me a notification when task finished.` at the end of your task input to the AI to trigger notifications.\n\nIn Cursor, you can add this prompt as a rule in `Cursor Settings` -> `Rules` so you don't have to type it manually each time.\n\n### ⚡️ Using with VSCode + Copilot:\n1.\tInstall the service manager [uv/uvx](https://docs.astral.sh/uv/):\n`pip install uv`\n2.\t Add the service to VSCode settings:\n\n     Windows `%APPDATA%\\Code\\User\\settings.json`  \nmacOS `$HOME/Library/Application\\ Support/Code/User/settings.json`  \nLinux `$HOME/.config/Code/User/settings.json`  \n\n\t ```json\n\t \"mcp\": {\n         \"servers\": {\n             \"notifier\": {\n                 \"command\": \"uvx\",\n                 \"args\": [\n                     \"mcp-server-notify\"\n                 ],\n                 \"env\": {}\n             }\n         }\n\t }\n\t ```\n3.\tMake sure you are using the latest VSCode version — it automatically runs MCP services\n4.\tOpen VSCode → enable Copilot → switch to agent mode.\n5.\tType # → you will see the #send_notification option.\n6.\tAsk the agent: run #send_notification (it will handle the notification automatically).\n7.\tNow the Copilot in agent mode can send desktop notifications.\n\n\n\n### 🐳 Running with Docker\n\nCurrently not available due to environment compatibility issues.\nIf Docker containers need to trigger host notifications regardless of whether the host OS is Windows, macOS, or Linux, the solution becomes much more complex, and direct use of native notifications is usually not feasible.\n\nMain issues:\n1. OS-specific notification systems\nEach operating system (Windows, macOS, Linux) has its unique notification mechanism.\n\n2. Docker isolation\nThe isolation of Docker containers limits their ability to access host operating system resources directly.\n\n3. Dependency management\nNeed to handle different notification libraries and dependencies for each operating system.\n\n## 🧾 License\n\nMIT\n\n## 💻 Contributions\n\nIssues and pull requests are welcome!\n",
   "category": "AI Tools",
   "quality_score": 39,

@@ -8,10 +8,10 @@
     "name": "yiwenlu66"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
+    "type": "binary",
+    "entry_point": "piloty",
     "mcp_config": {
-      "command": "unknown",
+      "command": "piloty",
       "args": [],
       "env": {}
     }

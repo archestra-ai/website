@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "main.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": ["defi-yields-mcp"],
       "env": {}
     }
   },

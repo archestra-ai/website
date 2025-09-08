@@ -12,13 +12,7 @@
     "entry_point": "anyquery",
     "mcp_config": {
       "command": "anyquery",
-      "args": [
-        "mcp",
-        "--host",
-        "${user_config.host}",
-        "--port",
-        "${user_config.port}"
-      ],
+      "args": ["mcp", "--host", "${user_config.host}", "--port", "${user_config.port}"],
       "env": {}
     }
   },
@@ -49,20 +43,11 @@
       "mcpServers": {
         "anyquery-mcp-stdio": {
           "command": "anyquery",
-          "args": [
-            "mcp",
-            "--stdio"
-          ]
+          "args": ["mcp", "--stdio"]
         },
         "anyquery-mcp": {
           "command": "anyquery",
-          "args": [
-            "mcp",
-            "--host",
-            "127.0.0.1",
-            "--port",
-            "8070"
-          ]
+          "args": ["mcp", "--host", "127.0.0.1", "--port", "8070"]
         }
       }
     },

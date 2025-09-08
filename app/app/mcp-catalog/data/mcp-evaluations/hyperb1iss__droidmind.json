@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "droidmind",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/hyperb1iss/droidmind", "droidmind", "--transport", "stdio"],
       "env": {}
     }
   },

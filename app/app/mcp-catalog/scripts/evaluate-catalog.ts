@@ -2120,3 +2120,4 @@ if (require.main === module) {
 }
 
 export { evaluateAllRepos, evaluateSingleRepo };
+('');

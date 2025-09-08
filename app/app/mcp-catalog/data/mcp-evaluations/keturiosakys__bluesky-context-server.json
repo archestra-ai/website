@@ -9,17 +9,34 @@
   },
   "server": {
     "type": "node",
-    "entry_point": "index.js",
+    "entry_point": "index.ts",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "bun",
+      "args": ["${__dirname}/index.ts"],
+      "env": {
+        "BLUESKY_APP_KEY": "${user_config.bluesky_app_key}",
+        "BLUESKY_IDENTIFIER": "${user_config.bluesky_identifier}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "bluesky_app_key": {
+      "type": "string",
+      "title": "Bluesky App Key",
+      "description": "Your Bluesky application password (app key) for authentication.",
+      "sensitive": true,
+      "required": true
+    },
+    "bluesky_identifier": {
+      "type": "string",
+      "title": "Bluesky Identifier",
+      "description": "Your Bluesky handle or email address for authentication.",
+      "required": true
+    }
+  },
   "readme": "# Bluesky Context Server\n[![smithery badge](https://smithery.ai/badge/bluesky-context-server)](https://smithery.ai/server/bluesky-context-server)\n\nA simple MCP server that can enable MCP clients to query Bluesky instances.\n\n## Usage\n\n### Installing via Smithery\n\nTo install Bluesky Context Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@laulauland/bluesky-context-server):\n\n```bash\nnpx -y @smithery/cli install @laulauland/bluesky-context-server --client claude\n```\n\n### Installing manually\n1. Place the code somewhere on your computer.\n2. Configure your Claude Desktop app to use the MCP server.\n\n```json\n// ~/Library/Application Support/Claude/config.json\n{\n\t\"mcpServers\": {\n\t\t\"bluesky\": {\n\t\t\t\"command\": \"/Users/laurynas-fp/.bun/bin/bun\",\n\t\t\t\"args\": [\n\t\t\t\t\"<path_to_this_directory>/bluesky-context-server/index.ts\"\n\t\t\t],\n\t\t\t\"env\": {\n\t\t\t\t\"BLUESKY_APP_KEY\": \"\",\n\t\t\t\t\"BLUESKY_IDENTIFIER\": \"\"\n\t\t\t}\n\t\t}\n\t}\n}\n```\n",
   "category": "Social Media",
   "quality_score": 50,

@@ -8,11 +8,22 @@
     "name": "co-browser"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
+    "type": "binary",
+    "entry_point": "attestable-mcp-server",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "docker",
+      "args": [
+        "run",
+        "-itp",
+        "--device=/dev/sgx_provision:/dev/sgx/provision",
+        "--device=/dev/sgx_enclave:/dev/sgx/enclave",
+        "-v",
+        "/var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket",
+        "-p",
+        "8000:8000",
+        "--rm",
+        "gsc-attestable-mcp-server"
+      ],
       "env": {}
     }
   },

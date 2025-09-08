@@ -9,9 +9,9 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "imagesorcery-mcp",
     "mcp_config": {
-      "command": "unknown",
+      "command": "imagesorcery-mcp",
       "args": [],
       "env": {}
     }

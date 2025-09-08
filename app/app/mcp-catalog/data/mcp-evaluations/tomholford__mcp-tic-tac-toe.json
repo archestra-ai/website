@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
+    "entry_point": "server",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "${__dirname}/bin/server",
+      "args": ["-transport=stdio"],
       "env": {}
     }
   },

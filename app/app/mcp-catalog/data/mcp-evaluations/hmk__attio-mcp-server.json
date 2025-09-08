@@ -11,15 +11,25 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "npx",
+      "args": ["attio-mcp-server"],
+      "env": {
+        "ATTIO_API_KEY": "${user_config.attio_api_key}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "attio_api_key": {
+      "type": "string",
+      "title": "Attio API Key",
+      "description": "Your Attio API key. This is expected to be a bearer token, obtainable from the API Explorer or via OAuth.",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# attio-mcp-server\n\nThis is an MCP server for [Attio](https://attio.com/), the AI-native CRM. It allows mcp clients (like Claude) to connect to the Attio API.\n\n#### Current Capabilities\n\n- [x] reading company records\n- [x] reading company notes\n- [x] writing company notes\n- [ ] other activities\n\n## Usage\n\nYou will need:\n\n- `ATTIO_API_KEY` \n\nThis is expected to be a *bearer token* which means you can get one through the [API Explorer](https://developers.attio.com/reference/get_v2-objects) on the right hand side or configure OAuth and retrieve one throught the Attio API.\n\n\n### Claude Desktop Configuration\n\n```json\n{\n  \"mcpServers\": {\n    \"attio\": {\n      \"command\": \"npx\",\n      \"args\": [\"attio-mcp-server\"],\n      \"env\": {\n        \"ATTIO_API_KEY\": \"YOUR_ATTIO_API_KEY\"\n      }\n    }\n  }\n}\n```\n## Development\n\n### Prerequisites\n\nBefore you begin, ensure you have the following installed:\n\n- Node.js (recommended v22 or higher)\n- npm\n- git\n- dotenv\n\n### Setting up Development Environment\n\nTo set up the development environment, follow these steps:\n\n1. Fork the repository\n\n   - Click the \"Fork\" button in the top-right corner of this repository\n   - This creates your own copy of the repository under your Github acocunt\n\n1. Clone Your Fork:\n\n   ```sh\n   git clone https://github.com/YOUR_USERNAME/attio-mcp-server.git\n   cd attio-mcp-server\n   ```\n\n1. Add Upstream Remote\n   ```sh\n   git remote add upstream https://github.com/hmk/attio-mcp-server.git\n   ```\n\n1. Copy the dotenv file\n    ```sh\n    cp .env.template .env\n    ```\n\n1. Install dependencies:\n\n   ```sh\n   npm install\n   ```\n\n1. Run watch to keep index.js updated:\n\n   ```sh\n   npm run build:watch\n   ```\n\n1. Start the model context protocol development server:\n\n   ```sh\n   dotenv npx @modelcontextprotocol/inspector node PATH_TO_YOUR_CLONED_REPO/dist/index.js\n   ```\n\n1. If the development server did not load the environment variable correctly, set the `ATTIO_API_KEY` on the left-hand side of the mcp inspector.",
   "category": "CRM",
   "quality_score": 59,

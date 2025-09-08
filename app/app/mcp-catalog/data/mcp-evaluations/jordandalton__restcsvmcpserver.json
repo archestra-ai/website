@@ -11,15 +11,25 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "npx",
+      "args": ["restcsv-mcp-server"],
+      "env": {
+        "RESTCSV_API_KEY": "${user_config.restcsv_api_key}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "restcsv_api_key": {
+      "type": "string",
+      "title": "RestCSV API Key",
+      "description": "Your API key for RestCSV.com",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# REST CSV MCP Server\n\nThis was generated using [mcpgen](https://mcpgen.jordandalton.com/).\n\nTo build the MCP server, run:\n\n```\nnpm install && npm run build\n```\n\nThis will compile the typescript files and produce a build directory plus it will output the json you can copy/paste into your MCP client (Claude Desktop, Windsurf, Cursor, etc.)\n\nIf all things go well, this will produce an output similar to this:\n\n```json\n{\n  \"mcpServers\": {\n    \"my-mcp\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"restcsv-mcp-server\"\n      ],\n      \"env\": {\n        \"RESTCSV_API_KEY\": \"<REPLACE>\"\n      }\n    }\n  }\n}\n```\n\n## Register an account at RestCSV.com](https://restcsv.com/)\n\n## Sharing\n\nIf you have found value in this service please share it on social media. You can tag me [@jordandalton](https://x.com/jordankdalton) on X, or [jdcarnivore](https://www.reddit.com/user/jdcarnivore) on Reddit.",
   "category": "Data",
   "quality_score": 40,

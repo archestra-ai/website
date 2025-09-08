@@ -9,17 +9,31 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
+    "entry_point": "rae-mpc",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "./rae-mpc",
+      "args": ["--transport", "${user_config.transport}", "--port", "${user_config.port}"],
       "env": {}
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "transport": {
+      "type": "string",
+      "title": "Server Transport Protocol",
+      "description": "The communication protocol for the MCP server. Use 'stdio' for integration with LLMs or 'sse' to run as an HTTP SSE server.",
+      "required": true,
+      "default": "stdio"
+    },
+    "port": {
+      "type": "number",
+      "title": "SSE Server Port",
+      "description": "The port number for the SSE server. This field is required if 'Server Transport Protocol' is set to 'sse'.",
+      "required": false
+    }
+  },
   "readme": "# RAE Model Context Protocol (MCP) Server\n\nThis repository contains an implementation of a Model Context Protocol (MCP) server for the Royal Spanish Academy (RAE) API. It allows language models to interact with RAE's dictionary and linguistic resources.\n\n## Requirements\n\n- Go 1.21+\n\n## Installation\n\n```bash\ngit clone https://github.com/rae-api-com/rae-mpc.git\ncd rae-mpc\ngo build\n```\n\n## Usage\n\n### Command Line Arguments\n\nRun the server with stdio transport (for integration with LLMs):\n\n```bash\n./rae-mpc --transport stdio\n```\n\nOr run it as an SSE server:\n\n```bash\n./rae-mpc --transport sse --port 8080\n```\n\n### Available Tools\n\nThe MCP server exposes the following tools to LLMs:\n\n1. `search` - Search RAE API for information\n   - Parameters:\n     - `query` (required): The search query\n     - `lang` (optional): Language code (default: \"es\")\n\n2. `get_word_info` - Get detailed information about a word\n   - Parameters:\n     - `word` (required): The word to look up\n     - `lang` (optional): Language code (default: \"es\")\n\n## Integration with LLMs\n\nThis MCP server can be integrated with language models that support the Model Context Protocol, allowing them to access RAE's linguistic resources for improved Spanish language capabilities.\n",
   "category": "AI Tools",
   "quality_score": 57,

@@ -12,10 +12,7 @@
     "entry_point": "main.py",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "-m",
-        "mindsdb"
-      ],
+      "args": ["-m", "mindsdb"],
       "env": {}
     }
   },

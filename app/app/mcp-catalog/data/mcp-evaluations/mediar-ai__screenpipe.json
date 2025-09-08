@@ -8,10 +8,10 @@
     "name": "mediar-ai"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
+    "type": "binary",
+    "entry_point": "screenpipe",
     "mcp_config": {
-      "command": "unknown",
+      "command": "screenpipe",
       "args": [],
       "env": {}
     }

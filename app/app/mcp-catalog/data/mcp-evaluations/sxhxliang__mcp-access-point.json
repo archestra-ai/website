@@ -12,10 +12,7 @@
     "entry_point": "mcp-access-point",
     "mcp_config": {
       "command": "${__dirname}/mcp-access-point",
-      "args": [
-        "-c",
-        "${user_config.config_file}"
-      ],
+      "args": ["-c", "${user_config.config_file}"],
       "env": {}
     }
   },
@@ -39,12 +36,7 @@
       "mcpServers": {
         "mcp-access-point-with-config": {
           "command": "cargo",
-          "args": [
-            "run",
-            "--",
-            "-c",
-            "config.yaml"
-          ],
+          "args": ["run", "--", "-c", "config.yaml"],
           "env": {}
         }
       }

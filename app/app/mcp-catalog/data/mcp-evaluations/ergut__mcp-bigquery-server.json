@@ -11,15 +11,47 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "@ergut/mcp-bigquery-server",
+        "--project-id",
+        "${user_config.project_id}",
+        "--location",
+        "${user_config.location}",
+        "--key-file",
+        "${user_config.key_file}"
+      ],
       "env": {}
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "project_id": {
+      "type": "string",
+      "title": "Google Cloud Project ID",
+      "description": "Your Google Cloud project ID where BigQuery is enabled.",
+      "required": true,
+      "sensitive": false
+    },
+    "location": {
+      "type": "string",
+      "title": "BigQuery Location",
+      "description": "The BigQuery dataset location (e.g., us-central1, europe-west1).",
+      "required": false,
+      "default": "us-central1",
+      "sensitive": false
+    },
+    "key_file": {
+      "type": "file",
+      "title": "Service Account Key File",
+      "description": "Path to your Google Cloud service account key JSON file. Leave blank to use gcloud CLI authentication.",
+      "required": false,
+      "sensitive": true
+    }
+  },
   "readme": "# BigQuery MCP Server\n[![smithery badge](https://smithery.ai/badge/@ergut/mcp-bigquery-server)](https://smithery.ai/protocol/@ergut/mcp-bigquery-server)\n<div align=\"center\">\n  <img src=\"assets/mcp-bigquery-server-logo.png\" alt=\"BigQuery MCP Server Logo\" width=\"400\"/>\n</div>\n\n## What is this? 🤔\n\nThis is a server that lets your LLMs (like Claude) talk directly to your BigQuery data! Think of it as a friendly translator that sits between your AI assistant and your database, making sure they can chat securely and efficiently.\n\n### Quick Example\n```text\nYou: \"What were our top 10 customers last month?\"\nClaude: *queries your BigQuery database and gives you the answer in plain English*\n```\n\nNo more writing SQL queries by hand - just chat naturally with your data!\n\n## How Does It Work? 🛠️\n\nThis server uses the Model Context Protocol (MCP), which is like a universal translator for AI-database communication. While MCP is designed to work with any AI model, right now it's available as a developer preview in Claude Desktop.\n\nHere's all you need to do:\n1. Set up authentication (see below)\n2. Add your project details to Claude Desktop's config file\n3. Start chatting with your BigQuery data naturally!\n\n### What Can It Do? 📊\n\n- Run SQL queries by just asking questions in plain English\n- Access both tables and materialized views in your datasets\n- Explore dataset schemas with clear labeling of resource types (tables vs views)\n- Analyze data within safe limits (1GB query limit by default)\n- Keep your data secure (read-only access)\n\n## Quick Start 🚀\n\n### Prerequisites\n- Node.js 14 or higher\n- Google Cloud project with BigQuery enabled\n- Either Google Cloud CLI installed or a service account key file\n- Claude Desktop (currently the only supported LLM interface)\n\n### Option 1: Quick Install via Smithery (Recommended)\nTo install BigQuery MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/protocol/@ergut/mcp-bigquery-server), run this command in your terminal:\n\n```bash\nnpx @smithery/cli install @ergut/mcp-bigquery-server --client claude\n```\nThe installer will prompt you for:\n\n- Your Google Cloud project ID\n- BigQuery location (defaults to us-central1)\n\nOnce configured, Smithery will automatically update your Claude Desktop configuration and restart the application.\n\n### Option 2: Manual Setup\nIf you prefer manual configuration or need more control:\n\n1. **Authenticate with Google Cloud** (choose one method):\n   - Using Google Cloud CLI (great for development):\n     ```bash\n     gcloud auth application-default login\n     ```\n   - Using a service account (recommended for production):\n     ```bash\n     # Save your service account key file and use --key-file parameter\n     # Remember to keep your service account key file secure and never commit it to version control\n     ```\n\n2. **Add to your Claude Desktop config**\n   Add this to your `claude_desktop_config.json`:\n\n   - Basic configuration:\n     ```json\n     {\n       \"mcpServers\": {\n         \"bigquery\": {\n           \"command\": \"npx\",\n           \"args\": [\n             \"-y\",\n             \"@ergut/mcp-bigquery-server\",\n             \"--project-id\",\n             \"your-project-id\",\n             \"--location\",\n             \"us-central1\"\n           ]\n         }\n       }\n     }\n     ```\n\n   - With service account:\n     ```json\n     {\n       \"mcpServers\": {\n         \"bigquery\": {\n           \"command\": \"npx\",\n           \"args\": [\n             \"-y\",\n             \"@ergut/mcp-bigquery-server\",\n             \"--project-id\",\n             \"your-project-id\",\n             \"--location\",\n             \"us-central1\",\n             \"--key-file\",\n             \"/path/to/service-account-key.json\"\n           ]\n         }\n       }\n     }\n     ```\n     \n\n3. **Start chatting!** \n   Open Claude Desktop and start asking questions about your data.\n\n### Command Line Arguments\n\nThe server accepts the following arguments:\n- `--project-id`: (Required) Your Google Cloud project ID\n- `--location`: (Optional) BigQuery location, defaults to 'us-central1'\n- `--key-file`: (Optional) Path to service account key JSON file\n\nExample using service account:\n```bash\nnpx @ergut/mcp-bigquery-server --project-id your-project-id --location europe-west1 --key-file /path/to/key.json\n```\n\n### Permissions Needed\n\nYou'll need one of these:\n- `roles/bigquery.user` (recommended)\n- OR both:\n  - `roles/bigquery.dataViewer`\n  - `roles/bigquery.jobUser`\n\n## Developer Setup (Optional) 🔧\n\nWant to customize or contribute? Here's how to set it up locally:\n\n```bash\n# Clone and install\ngit clone https://github.com/ergut/mcp-bigquery-server\ncd mcp-bigquery-server\nnpm install\n\n# Build\nnpm run build\n```\n\nThen update your Claude Desktop config to point to your local build:\n```json\n{\n  \"mcpServers\": {\n    \"bigquery\": {\n      \"command\": \"node\",\n      \"args\": [\n        \"/path/to/your/clone/mcp-bigquery-server/dist/index.js\",\n        \"--project-id\",\n        \"your-project-id\",\n        \"--location\",\n        \"us-central1\",\n        \"--key-file\",\n        \"/path/to/service-account-key.json\"\n      ]\n    }\n  }\n}\n```\n\n## Current Limitations ⚠️\n\n- MCP support is currently only available in Claude Desktop (developer preview)\n- Connections are limited to local MCP servers running on the same machine\n- Queries are read-only with a 1GB processing limit\n- While both tables and views are supported, some complex view types might have limitations\n\n## Support & Resources 💬\n\n- 🐛 [Report issues](https://github.com/ergut/mcp-bigquery-server/issues)\n- 💡 [Feature requests](https://github.com/ergut/mcp-bigquery-server/issues)\n- 📖 [Documentation](https://github.com/ergut/mcp-bigquery-server)\n\n## License 📝\n\nMIT License - See [LICENSE](LICENSE) file for details.\n\n## Author ✍️ \n\nSalih Ergüt\n\n## Sponsorship\n\nThis project is proudly sponsored by:\n\n<div align=\"center\">\n  <a href=\"https://www.oredata.com\">\n    <img src=\"assets/oredata-logo-nobg.png\" alt=\"OREDATA\" width=\"300\"/>\n  </a>\n</div>\n\n## Version History 📋\n\nSee [CHANGELOG.md](CHANGELOG.md) for updates and version history.",
   "category": "AI Tools",
   "quality_score": 66,

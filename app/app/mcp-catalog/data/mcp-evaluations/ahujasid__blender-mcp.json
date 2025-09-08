@@ -12,9 +12,7 @@
     "entry_point": "src/blender_mcp/server.py",
     "mcp_config": {
       "command": "uvx",
-      "args": [
-        "blender-mcp"
-      ],
+      "args": ["blender-mcp"],
       "env": {}
     }
   },
@@ -30,18 +28,12 @@
       "mcpServers": {
         "blender-mcp": {
           "command": "uvx",
-          "args": [
-            "blender-mcp"
-          ],
+          "args": ["blender-mcp"],
           "env": {}
         },
         "blender-mcp-windows": {
           "command": "cmd",
-          "args": [
-            "/c",
-            "uvx",
-            "blender-mcp"
-          ],
+          "args": ["/c", "uvx", "blender-mcp"],
           "env": {}
         }
       }

@@ -8,18 +8,46 @@
     "name": "recursechat"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
+    "type": "python",
+    "entry_point": "main.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "python",
+      "args": ["${__dirname}/server/main.py"],
+      "env": {
+        "APPLE_SHORTCUTS_API_KEY": "${user_config.apple_shortcuts_api_key}",
+        "MCP_SERVER_PORT": "${user_config.mcp_server_port}",
+        "SHORTCUTS_DATA_DIR": "${user_config.shortcuts_data_dir}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "apple_shortcuts_api_key": {
+      "type": "string",
+      "title": "Apple Shortcuts API Key",
+      "description": "API key required for authenticating with Apple Shortcuts services.",
+      "sensitive": true,
+      "required": true
+    },
+    "mcp_server_port": {
+      "type": "number",
+      "title": "Server Port",
+      "description": "The network port on which the MCP server will listen for incoming connections.",
+      "default": 8080,
+      "required": false,
+      "min": 1024,
+      "max": 65535
+    },
+    "shortcuts_data_dir": {
+      "type": "directory",
+      "title": "Shortcuts Data Directory",
+      "description": "The directory where the server will store configuration and data related to Apple Shortcuts.",
+      "default": "${HOME}/.mcp-apple-shortcuts",
+      "required": false
+    }
+  },
   "readme": null,
   "category": "AI Tools",
   "quality_score": 40,
@@ -59,7 +87,7 @@
   "programming_language": "JavaScript",
   "framework": null,
   "last_scraped_at": "2025-08-18T14:26:01.737Z",
-  "evaluation_model": "gemini-2.5-pro",
+  "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

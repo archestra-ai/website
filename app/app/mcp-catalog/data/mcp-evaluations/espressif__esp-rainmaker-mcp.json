@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "server.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uv",
+      "args": ["run", "--with", "esp-rainmaker-cli", "--with", "mcp[cli]", "mcp", "run", "${__dirname}/server.py"],
       "env": {}
     }
   },

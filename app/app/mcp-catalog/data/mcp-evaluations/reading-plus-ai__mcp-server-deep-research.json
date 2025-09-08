@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "mcp-server-deep-research",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": ["mcp-server-deep-research"],
       "env": {}
     }
   },

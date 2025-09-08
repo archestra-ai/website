@@ -12,9 +12,7 @@
     "entry_point": "main.py",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "${__dirname}/main.py"
-      ],
+      "args": ["${__dirname}/main.py"],
       "env": {}
     }
   },
@@ -30,13 +28,7 @@
       "mcpServers": {
         "biomcp-python": {
           "command": "uv",
-          "args": [
-            "run",
-            "--with",
-            "biomcp-python",
-            "biomcp",
-            "run"
-          ],
+          "args": ["run", "--with", "biomcp-python", "biomcp", "run"],
           "env": {}
         }
       }

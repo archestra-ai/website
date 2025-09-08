@@ -11,15 +11,25 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "npm",
+      "args": ["run", "dev:local"],
+      "env": {
+        "API_KEY": "${user_config.api_key}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "API Key",
+      "description": "Your API key for the TripGo API.",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# TripGo MCP Server\n\nThe is a remote MCP server that wraps the TripGo API and provides the following tools:\n\n- `tripgo-locations`: Retrieve transport-related locations\n- `tripgo-departures`: Departures from a specific public transport stop\n- `tripgo-routing`: Mixed and multi-modal trip planning\n- `tripgo-get-trip-url`: Get the URL of a trip previously calculated using the `tripgo-routing` tool\n\nThe MCP server is deployed on Cloudflare Workers.\n\n## Connect directly to remove MCP\n\nThe MCP server is deployed on Cloudflare Workers. You can connect to it directly using the URL `https://tripgo-mcp-server.skedgo-account.workers.dev/sse`.\n\n## Connect Claude Desktop to public MCP server\n\nYou can also connect to your remote MCP server from *local* MCP clients, by using the [mcp-remote proxy](https://www.npmjs.com/package/mcp-remote).\n\nTo connect to your MCP server from Claude Desktop, follow [Anthropic's Quickstart](https://modelcontextprotocol.io/quickstart/user) and within Claude Desktop go to Settings > Developer > Edit Config.\n\nUse with this configuration:\n\n```json\n{\n  \"mcpServers\": {\n    \"TripGo\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"mcp-remote\",\n        \"https://tripgo-mcp-server.skedgo-account.workers.dev/sse\"\n      ]\n    }\n  }\n}\n```\n\nRestart Claude and you should see the tools become available.\n\n## Development\n\n- Create a copy of `.env.example` and rename it to `.env` and set an API key\n- Install dependencies with `npm install`\n- Start the server with `npm run dev:local`\n\nThe configure Claude:\n\n```json\n{\n  \"mcpServers\": {\n    \"calculator\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"mcp-remote\",\n        \"http://localhost:8787/sse\"\n      ]\n    }\n  }\n}\n```\n\nRestart Claude and you should see the tools become available.\n\n## Deployment\n\nThis is deployed locally currently, run:\n\n```bash\nnpm install\nnpm run deploy\n```\n",
   "category": "Travel",
   "quality_score": 36,

@@ -8,11 +8,11 @@
     "name": "lfnovo"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
+    "type": "python",
+    "entry_point": "mcp_server.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": ["${__dirname}/content_core/mcp_server.py"],
       "env": {}
     }
   },
@@ -61,7 +61,7 @@
   "programming_language": "Jupyter Notebook",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:26:54.394Z",
-  "evaluation_model": "gemini-2.5-pro",
+  "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

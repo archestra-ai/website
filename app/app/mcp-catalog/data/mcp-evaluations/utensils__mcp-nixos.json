@@ -8,11 +8,11 @@
     "name": "utensils"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
+    "type": "python",
+    "entry_point": "mcp_nixos/server.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": ["${__dirname}/mcp_nixos/server.py"],
       "env": {}
     }
   },

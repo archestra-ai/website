@@ -12,10 +12,7 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@1mcp/agent"
-      ],
+      "args": ["-y", "@1mcp/agent"],
       "env": {
         "ONE_MCP_TRANSPORT": "${user_config.one_mcp_transport}",
         "ONE_MCP_CONFIG": "${user_config.one_mcp_config}",
@@ -110,37 +107,19 @@
       "mcpServers": {
         "1mcp-agent": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@1mcp/agent"
-          ]
+          "args": ["-y", "@1mcp/agent"]
         },
         "1mcp-agent-with-config": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@1mcp/agent",
-            "--config",
-            "~/Library/Application Support/Claude/claude_desktop_config.json"
-          ]
+          "args": ["-y", "@1mcp/agent", "--config", "~/Library/Application Support/Claude/claude_desktop_config.json"]
         },
         "1mcp-agent-stdio": {
           "command": "npx",
-          "args": [
-            "-y",
-            "@1mcp/agent",
-            "--transport",
-            "stdio"
-          ]
+          "args": ["-y", "@1mcp/agent", "--transport", "stdio"]
         },
         "1mcp-app-agent-docker": {
           "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "3050:3050",
-            "ghcr.io/1mcp-app/agent"
-          ]
+          "args": ["run", "-p", "3050:3050", "ghcr.io/1mcp-app/agent"]
         },
         "1mcp-app-agent-docker-with-config": {
           "command": "docker",
@@ -157,13 +136,7 @@
         },
         "1mcp-app-agent-docker-stdio": {
           "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "ghcr.io/1mcp-app/agent",
-            "--transport",
-            "stdio"
-          ]
+          "args": ["run", "-i", "ghcr.io/1mcp-app/agent", "--transport", "stdio"]
         },
         "1mcp-app-agent-docker-with-env": {
           "command": "docker",

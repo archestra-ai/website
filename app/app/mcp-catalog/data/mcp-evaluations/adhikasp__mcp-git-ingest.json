@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "main.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/adhikasp/mcp-git-ingest", "mcp-git-ingest"],
       "env": {}
     }
   },

@@ -9,9 +9,9 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
+    "entry_point": "developer",
     "mcp_config": {
-      "command": "unknown",
+      "command": "${__dirname}/target/release/developer",
       "args": [],
       "env": {}
     }

@@ -12,11 +12,7 @@
     "entry_point": "scripts/mcp_resolve_launcher.sh",
     "mcp_config": {
       "command": "${__dirname}/scripts/mcp_resolve_launcher.sh",
-      "args": [
-        "--start-cursor",
-        "--project",
-        "${user_config.project_name}"
-      ],
+      "args": ["--start-cursor", "--project", "${user_config.project_name}"],
       "env": {
         "RESOLVE_SCRIPT_API": "${user_config.resolve_script_api}",
         "RESOLVE_SCRIPT_LIB": "${user_config.resolve_script_lib}",
@@ -85,23 +81,17 @@
         },
         "davinci-resolve-mcp-launcher-cursor": {
           "command": "./scripts/mcp_resolve_launcher.sh",
-          "args": [
-            "--start-cursor"
-          ],
+          "args": ["--start-cursor"],
           "env": {}
         },
         "davinci-resolve-mcp-launcher-claude": {
           "command": "./scripts/mcp_resolve_launcher.sh",
-          "args": [
-            "--start-claude"
-          ],
+          "args": ["--start-claude"],
           "env": {}
         },
         "davinci-resolve-mcp-launcher-both": {
           "command": "./scripts/mcp_resolve_launcher.sh",
-          "args": [
-            "--start-both"
-          ],
+          "args": ["--start-both"],
           "env": {}
         }
       }

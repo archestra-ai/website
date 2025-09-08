@@ -12,10 +12,7 @@
     "entry_point": "lunar/mcpx",
     "mcp_config": {
       "command": "docker",
-      "args": [
-        "run",
-        "lunar/mcpx"
-      ],
+      "args": ["run", "lunar/mcpx"],
       "env": {}
     }
   },

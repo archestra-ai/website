@@ -8,11 +8,11 @@
     "name": "bram2w"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
+    "type": "docker",
+    "entry_point": "baserow/baserow:1.34.5",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "docker",
+      "args": ["run", "-v", "baserow_data:/baserow/data", "-p", "80:80", "-p", "443:443", "baserow/baserow:1.34.5"],
       "env": {}
     }
   },

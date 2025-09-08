@@ -9,10 +9,15 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "src/mcp_domain_availability/main.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": [
+        "--python=3.10",
+        "--from",
+        "git+https://github.com/imprvhub/mcp-domain-availability",
+        "mcp-domain-availability"
+      ],
       "env": {}
     }
   },

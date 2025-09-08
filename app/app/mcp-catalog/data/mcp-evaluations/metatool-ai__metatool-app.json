@@ -12,11 +12,7 @@
     "entry_point": "docker-compose.yml",
     "mcp_config": {
       "command": "docker",
-      "args": [
-        "compose",
-        "up",
-        "-d"
-      ],
+      "args": ["compose", "up", "-d"],
       "env": {
         "APP_URL": "${user_config.app_url}"
       }
@@ -42,23 +38,15 @@
       "mcpServers": {
         "metamcp-docker": {
           "command": "docker",
-          "args": [
-            "compose",
-            "up",
-            "-d"
-          ]
+          "args": ["compose", "up", "-d"]
         },
         "metamcp": {
           "command": "pnpm",
-          "args": [
-            "dev"
-          ]
+          "args": ["dev"]
         },
         "mcp-hn": {
           "command": "uvx",
-          "args": [
-            "mcp-hn"
-          ]
+          "args": ["mcp-hn"]
         }
       }
     },

@@ -9,9 +9,9 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
+    "entry_point": "mcp-monitor",
     "mcp_config": {
-      "command": "unknown",
+      "command": "./mcp-monitor",
       "args": [],
       "env": {}
     }

@@ -12,9 +12,7 @@
     "entry_point": "main.py",
     "mcp_config": {
       "command": "python",
-      "args": [
-        "${__dirname}/server/main.py"
-      ],
+      "args": ["${__dirname}/server/main.py"],
       "env": {}
     }
   },
@@ -30,9 +28,7 @@
       "mcpServers": {
         "web-search": {
           "command": "node",
-          "args": [
-            "/path/to/web-search/build/index.js"
-          ],
+          "args": ["/path/to/web-search/build/index.js"],
           "env": {}
         }
       }
