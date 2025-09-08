@@ -52,18 +52,18 @@
     "owner": "narumiruna",
     "repo": "gitingest-mcp",
     "url": "https://github.com/narumiruna/gitingest-mcp",
-    "name": "gitingest-mcp",
+    "name": "narumiruna__gitingest-mcp",
     "path": null,
-    "stars": 4,
-    "contributors": 2,
+    "stars": 7,
+    "contributors": 3,
     "issues": 0,
     "releases": false,
     "ci_cd": true,
-    "latest_commit_hash": "9a01cedfa2bd5e96d234e3969a8247e65c369e61"
+    "latest_commit_hash": "7cfcd87ea3a932a14430c285b1caaffac98ebd9e"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:36:18.018Z",
+  "last_scraped_at": "2025-09-07T22:16:24.578Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -1,0 +1,19 @@
+{
+  "name": "atlassian__remote-mcp",
+  "display_name": "Atlassian MCP",
+  "version": "1.0.0",
+  "description": "Remote MCP server for Atlassian - Jira, Confluence, and team collaboration tools",
+  "remote_url": "https://mcp.atlassian.com/v1/sse",
+  "remote_mcp_docs_url": "https://www.atlassian.com/platform/remote-mcp-server",
+  "tools": [],
+  "prompts": [],
+  "user_config": {},
+  "readme": null,
+  "category": "Enterprise",
+  "quality_score": 80,
+  "archestra_config": null,
+  "framework": null,
+  "last_scraped_at": "2025-09-05T19:30:23.066Z",
+  "evaluation_model": null,
+  "raw_dependencies": null
+}

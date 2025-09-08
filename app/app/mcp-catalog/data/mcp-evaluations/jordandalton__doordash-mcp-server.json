@@ -22,7 +22,7 @@
   "user_config": {},
   "readme": "# MCP Server Guide\n\nTo build the MCP server, run:\n\n```\nnpm install && npm run build\n```\n\nThis will compile the typescript files and produce a build directory plus it will output the json you can copy/paste into your MCP client (Claude Desktop, Windsurf, Cursor, etc.)\n\nIf all things go well, this will produce an output similar to this:\n\n```json\n{\n  \"mcpServers\": {\n    \"doordash\": {\n      \"command\": \"node\",\n      \"args\": [\n        \"<thePathToYour>/build/index.js\"\n      ],\n      \"env\": [\n        {\n          \"DOORDASH_API_KEY\": \"<REPLACE>\"\n        }\n      ]\n    }\n  }\n}\n```\n\n## Support & Feedback\nIf things do not compile, or you have more advanced needs, please reach out to me at, jordan@daltonsolutions.com.\n\n## Sharing\n\nIf you have found value in this service please share it on social media. You can tag me [@jordandalton](https://x.com/jordankdalton) on X, or [jdcarnivore](https://www.reddit.com/user/jdcarnivore) on Reddit.",
   "category": "Development",
-  "quality_score": 30,
+  "quality_score": 32,
   "archestra_config": {
     "client_config_permutations": {
       "mcpServers": {
@@ -44,18 +44,18 @@
     "owner": "JordanDalton",
     "repo": "DoorDash-MCP-Server",
     "url": "https://github.com/JordanDalton/DoorDash-MCP-Server",
-    "name": "DoorDash-MCP-Server",
+    "name": "jordandalton__doordash-mcp-server",
     "path": null,
-    "stars": 9,
+    "stars": 11,
     "contributors": 1,
-    "issues": 1,
+    "issues": 0,
     "releases": false,
     "ci_cd": false,
     "latest_commit_hash": "3343c732ea7a2b5e958cb88ab657a69f18d9f324"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:36:33.128Z",
+  "last_scraped_at": "2025-09-07T22:17:11.562Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,

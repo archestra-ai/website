@@ -13,6 +13,7 @@ import { countServersInRepo, loadServers } from '@mcpCatalog/lib/catalog';
 import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
 import ReportAnIssueButton from './components/LinkButtons/ReportAnIssueButton';
+import RotatingServerDisplay from './components/RotatingServerDisplay';
 import TrustScoreBadge from './components/TrustScoreBadge';
 
 const {
@@ -161,16 +162,32 @@ function getMCPFeatures(): string[] {
   ];
 }
 
+// Get server types (Remote vs Self-hosted)
+function getServerTypes(): string[] {
+  return ['All', 'Remote', 'Self-hosted'];
+}
+
+// Count servers with Archestra mention in their README
+function countServersWithArchestraBadge(servers: ArchestraMcpServerManifest[]): number {
+  return servers.filter((server) => server.readme && server.readme.toLowerCase().includes('archestra.ai')).length;
+}
+
 export default function MCPCatalogPage() {
   const mcpServers = loadServers();
   const categories = getCategories(mcpServers);
   const languages = getProgrammingLanguages(mcpServers);
   const dependencies = getTopDependencies(mcpServers);
   const mcpFeatures = getMCPFeatures();
+  const serverTypes = getServerTypes();
+  const serversWithBadge = countServersWithArchestraBadge(mcpServers);
 
   // Create a map of server counts for multi-server repos
   const serverCounts = new Map<string, number>();
   for (const server of mcpServers) {
+    // Skip remote servers that don't have github_info
+    if (!server.github_info) {
+      continue;
+    }
     const { owner, repo } = server.github_info;
     const key = `${owner}/${repo}`;
     if (!serverCounts.has(key)) {
@@ -178,9 +195,9 @@ export default function MCPCatalogPage() {
     }
   }
 
-  // Find the highest scoring MCP server for the badge example
+  // Find the highest scoring MCP server with GitHub info for the badge example
   const topScoredServer = mcpServers
-    .filter(({ quality_score }) => quality_score !== null)
+    .filter(({ quality_score, github_info }) => quality_score !== null && github_info !== undefined)
     .sort((a, b) => b.quality_score! - a.quality_score!)[0];
 
   const exampleBadgeServerId = 'your-github-org__your-repo-name';
@@ -219,19 +236,42 @@ export default function MCPCatalogPage() {
                   </span>
                 </div>
                 <p className="text-base sm:text-lg text-gray-600 mb-6">
-                  What if we scraped all {mcpServers.length} MCP servers from GitHub, extracted data about dependencies,
-                  protocol features, and community maturity, then calculated a trustworthiness score? Well, we did
-                  exactly that—helping you navigate the <b>agentic supply chain</b> with confidence.
+                  {mcpServers.length} MCP servers ranked by implementation quality.
+                  <br />
+                  <br />
+                  1){' '}
+                  <a
+                    href="https://github.com/archestra-ai/website/tree/main/app/app/mcp-catalog/data/mcp-evaluations"
+                    className="text-blue-600 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Catalog data
+                  </a>{' '}
+                  and{' '}
+                  <a
+                    href="https://github.com/archestra-ai/website/blob/main/app/app/mcp-catalog/scripts/evaluate-catalog.ts"
+                    className="text-blue-600 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    evaluation script
+                  </a>{' '}
+                  are open source.
+                  <br />
+                  2) Official servers equally compete with community servers.
+                  <br />
+                  3) Supported by <RotatingServerDisplay servers={mcpServers} />
                 </p>
 
                 <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 mt-6 sm:mt-10 mb-6 max-w-2xl">
                   <div className="flex items-center gap-3 mb-4">
-                    {topScoredServer ? (
+                    {topScoredServer && topScoredServer.github_info ? (
                       <a
                         href={`/mcp-catalog/${topScoredServer.name}`}
                         className="hover:opacity-80 transition-opacity flex-shrink-0"
                       >
-                        <TrustScoreBadge gitHubInfo={topScoredServer?.github_info} />
+                        <TrustScoreBadge gitHubInfo={topScoredServer.github_info} />
                       </a>
                     ) : (
                       <TrustScoreBadge gitHubInfo={exampleBadgeGitHubInfo} />
@@ -266,6 +306,7 @@ export default function MCPCatalogPage() {
               languages={languages}
               dependencies={dependencies}
               mcpFeatures={mcpFeatures}
+              serverTypes={serverTypes}
               serverCounts={serverCounts}
             />
           </Suspense>

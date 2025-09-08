@@ -108,6 +108,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
     const language = typeof searchParamsData.language === 'string' ? searchParamsData.language : undefined;
     const dependency = typeof searchParamsData.dependency === 'string' ? searchParamsData.dependency : undefined;
     const feature = typeof searchParamsData.feature === 'string' ? searchParamsData.feature : undefined;
+    const serverType = typeof searchParamsData.serverType === 'string' ? searchParamsData.serverType : undefined;
     const scroll = typeof searchParamsData.scroll === 'string' ? searchParamsData.scroll : undefined;
 
     if (search) catalogParams.set('search', search);
@@ -115,15 +116,26 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
     if (language) catalogParams.set('language', language);
     if (dependency) catalogParams.set('dependency', dependency);
     if (feature) catalogParams.set('feature', feature);
+    if (serverType) catalogParams.set('serverType', serverType);
     if (scroll) catalogParams.set('scroll', scroll);
 
     return catalogParams.toString() ? `/mcp-catalog?${catalogParams.toString()}` : '/mcp-catalog';
   })();
 
-  const { name: serverId, display_name: serverName, github_info: gitHubInfo, quality_score: qualityScore } = server;
-  const { owner: gitHubInfoOwner, repo: gitHubInfoRepo, path: gitHubInfoPath } = gitHubInfo;
+  const {
+    name: serverId,
+    display_name: serverName,
+    github_info: gitHubInfo,
+    quality_score: qualityScore,
+    remote_url,
+  } = server;
+  const gitHubInfoOwner = gitHubInfo?.owner;
+  const gitHubInfoRepo = gitHubInfo?.repo;
+  const gitHubInfoPath = gitHubInfo?.path;
   // Calculate quality score without all servers (we'll update this client-side if needed)
-  const qualityScoreBreakdown = qualityScore !== null ? calculateQualityScore(server) : null;
+  // For remote servers, always calculate the score since it's a fixed value
+  const qualityScoreBreakdown =
+    qualityScore !== null || (remote_url && !gitHubInfo) ? calculateQualityScore(server) : null;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -148,10 +160,35 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
             <div className="lg:col-span-2 space-y-8">
               <ServerHeader server={server} />
               <QualityScoreCard server={server} scoreBreakdown={qualityScoreBreakdown} />
+
+              {/* Remote Server Info Card */}
+              {remote_url && !gitHubInfo && (
+                <Card className="bg-blue-50 border-blue-200">
+                  <CardHeader>
+                    <CardTitle className="text-blue-900">Remote MCP Server</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-blue-800">
+                      This is a remote MCP server that can be accessed directly via its endpoint URL. Remote servers are
+                      hosted and maintained by their providers, offering direct integration without requiring local
+                      installation or source code access.
+                    </p>
+                    <p className="text-blue-800 mt-2">
+                      <strong>Endpoint:</strong> <code className="bg-blue-100 px-2 py-1 rounded">{remote_url}</code>
+                    </p>
+                  </CardContent>
+                </Card>
+              )}
+
               <GitHubMetricsCard server={server} serverCount={serverCount} />
-              <McpProtocolSupportCard server={server} />
-              <DependenciesCard server={server} />
+              {/* Show configuration for all servers, but hide other sections for remote servers */}
               <McpClientConfigurationCard server={server} />
+              {!(remote_url && !gitHubInfo) && (
+                <>
+                  <McpProtocolSupportCard server={server} />
+                  <DependenciesCard server={server} />
+                </>
+              )}
               {/* ReadMeCard moved to bottom on mobile, stays here on desktop */}
               <div className="hidden lg:block">
                 <ReadMeCard server={server} />
@@ -163,27 +200,29 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
 
               <FrameworkCard server={server} />
 
-              <Card className="bg-gray-50">
-                <CardHeader>
-                  <CardTitle className="text-lg">Add Quality Badge</CardTitle>
-                  <CardDescription>Show your MCP trust score in your README</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="mb-4">
-                    <TrustScoreBadge gitHubInfo={gitHubInfo} />
-                  </div>
-                  <TrustScoreBadgeMarkdown serverId={serverId} gitHubInfo={gitHubInfo} variant="compact" />
-                </CardContent>
-              </Card>
+              {gitHubInfo && (
+                <Card className="bg-gray-50">
+                  <CardHeader>
+                    <CardTitle className="text-lg">Add Quality Badge</CardTitle>
+                    <CardDescription>Show your MCP trust score in your README</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="mb-4">
+                      <TrustScoreBadge gitHubInfo={gitHubInfo} />
+                    </div>
+                    <TrustScoreBadgeMarkdown serverId={serverId} gitHubInfo={gitHubInfo} variant="compact" />
+                  </CardContent>
+                </Card>
+              )}
 
               <div className="space-y-3">
                 <EditThisServerButton serverId={serverId} fullWidth />
                 <AddNewMCPServerButton color="grey" fullWidth />
                 <ReportAnIssueButton
-                  issueUrlParams={`title=Issue with ${encodeURIComponent(
-                    serverName
-                  )}&body=Server: ${gitHubInfoOwner}/${gitHubInfoRepo}${
-                    gitHubInfoPath ? `/${gitHubInfoPath}` : ''
+                  issueUrlParams={`title=Issue with ${encodeURIComponent(serverName)}&body=Server: ${
+                    gitHubInfo
+                      ? `${gitHubInfoOwner}/${gitHubInfoRepo}${gitHubInfoPath ? `/${gitHubInfoPath}` : ''}`
+                      : remote_url || serverName
                   }%0AName: ${serverName}%0A%0APlease describe the issue:`}
                   fullWidth
                 />

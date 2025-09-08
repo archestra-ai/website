@@ -45,7 +45,7 @@
     "owner": "Hypersequent",
     "repo": "qasphere-mcp",
     "url": "https://github.com/Hypersequent/qasphere-mcp",
-    "name": "qasphere-mcp",
+    "name": "hypersequent__qasphere-mcp",
     "path": null,
     "stars": 13,
     "contributors": 3,
@@ -56,7 +56,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:35:59.352Z",
+  "last_scraped_at": "2025-09-07T22:16:04.314Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

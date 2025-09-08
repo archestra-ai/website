@@ -20,7 +20,7 @@
   "prompts": [],
   "keywords": [],
   "user_config": {},
-  "readme": "[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/exoticknight-mcp-file-merger-badge.png)](https://mseep.ai/app/exoticknight-mcp-file-merger)\n\n# File Merger MCP Server\n\nSimple utility to combine multiple files into one. Fast, secure, and easy to use.\n\n<a href=\"https://glama.ai/mcp/servers/@exoticknight/mcp-file-merger\">\n  <img width=\"380\" height=\"200\" src=\"https://glama.ai/mcp/servers/@exoticknight/mcp-file-merger/badge\" alt=\"File Merger Server MCP server\" />\n</a>\n\n## Features\n\n- **Simple** - Merge any number of files with a single command\n- **Fast** - Efficiently combines files of any size\n- **Secure** - Only accesses directories you allow\n- **Detailed** - Reports file sizes and merge summary\n\n## API\n\n### Tools\n\n- **merge_files**\n  - Inputs:\n    - `inputPaths` (string[]): Files to merge\n    - `outputPath` (string): Output file location\n  - Returns:\n    - Success message with merge details\n\n- **list_allowed_directories**\n  - Lists directories the server can access\n\n## Usage with Claude Desktop\n\nAdd to your `claude_desktop_config.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"file-merger\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@exoticknight/mcp-file-merger\",\n        \"/path/to/allowed/dir\"\n      ]\n    }\n  }\n}\n```\n\n## Installation\n\n```bash\n# Clone and install\ngit clone https://github.com/exoticknight/mcp-file-merger.git\ncd mcp-file-merger\nnpm install\nnpm run build\n```\n\n## License\n\nApache License 2.0",
+  "readme": "[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/exoticknight-mcp-file-merger-badge.png)](https://mseep.ai/app/exoticknight-mcp-file-merger)\n\n[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/exoticknight/mcp-file-merger)](https://archestra.ai/mcp-catalog/exoticknight__mcp-file-merger)\n\n# File Merger MCP Server\n\nSimple utility to combine multiple files into one. Fast, secure, and easy to use.\n\n<a href=\"https://glama.ai/mcp/servers/@exoticknight/mcp-file-merger\">\n  <img width=\"380\" height=\"200\" src=\"https://glama.ai/mcp/servers/@exoticknight/mcp-file-merger/badge\" alt=\"File Merger Server MCP server\" />\n</a>\n\n## Features\n\n- **Simple** - Merge any number of files with a single command\n- **Fast** - Efficiently combines files of any size\n- **Secure** - Only accesses directories you allow\n- **Detailed** - Reports file sizes and merge summary\n\n## API\n\n### Tools\n\n- **merge_files**\n  - Inputs:\n    - `inputPaths` (string[]): Files to merge\n    - `outputPath` (string): Output file location\n  - Returns:\n    - Success message with merge details\n\n- **list_allowed_directories**\n  - Lists directories the server can access\n\n## Usage with Claude Desktop\n\nAdd to your `claude_desktop_config.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"file-merger\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@exoticknight/mcp-file-merger\",\n        \"/path/to/allowed/dir\"\n      ]\n    }\n  }\n}\n```\n\n## Installation\n\n```bash\n# Clone and install\ngit clone https://github.com/exoticknight/mcp-file-merger.git\ncd mcp-file-merger\nnpm install\nnpm run build\n```\n\n## License\n\nApache License 2.0",
   "category": "File Management",
   "quality_score": 55,
   "archestra_config": {
@@ -42,18 +42,18 @@
     "owner": "exoticknight",
     "repo": "mcp-file-merger",
     "url": "https://github.com/exoticknight/mcp-file-merger",
-    "name": "mcp-file-merger",
+    "name": "exoticknight__mcp-file-merger",
     "path": null,
-    "stars": 19,
-    "contributors": 3,
-    "issues": 0,
+    "stars": 22,
+    "contributors": 4,
+    "issues": 1,
     "releases": false,
     "ci_cd": false,
-    "latest_commit_hash": "991dfcb9025ae0a819b0f30114c0d42fc0ea1887"
+    "latest_commit_hash": "e160b8bc6fc86fab5f3171c9d906bd3eeb837a52"
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:36:49.044Z",
+  "last_scraped_at": "2025-09-07T22:17:41.802Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

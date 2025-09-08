@@ -7,19 +7,19 @@ interface McpProtocolSupportCardProps {
   server: ArchestraMcpServerManifest;
 }
 
-const PROTOCOL_FEATURE_KEYS: { key: keyof ArchestraMcpServerManifest['protocol_features']; label: string }[] = [
-  { key: 'implementing_tools', label: 'Tools' },
-  { key: 'implementing_prompts', label: 'Prompts' },
-  { key: 'implementing_resources', label: 'Resources' },
-  { key: 'implementing_sampling', label: 'Sampling' },
-  { key: 'implementing_roots', label: 'Roots' },
-  { key: 'implementing_logging', label: 'Logging' },
-  { key: 'implementing_stdio', label: 'STDIO Transport' },
+const PROTOCOL_FEATURE_KEYS = [
+  { key: 'implementing_tools' as const, label: 'Tools' },
+  { key: 'implementing_prompts' as const, label: 'Prompts' },
+  { key: 'implementing_resources' as const, label: 'Resources' },
+  { key: 'implementing_sampling' as const, label: 'Sampling' },
+  { key: 'implementing_roots' as const, label: 'Roots' },
+  { key: 'implementing_logging' as const, label: 'Logging' },
+  { key: 'implementing_stdio' as const, label: 'STDIO Transport' },
   {
-    key: 'implementing_streamable_http',
+    key: 'implementing_streamable_http' as const,
     label: 'HTTP Transport',
   },
-  { key: 'implementing_oauth2', label: 'OAuth2 Auth' },
+  { key: 'implementing_oauth2' as const, label: 'OAuth2 Auth' },
 ];
 
 const McpProtocolSupportCard = ({ server }: McpProtocolSupportCardProps) => {

@@ -42,18 +42,18 @@
     "owner": "zillow",
     "repo": "auto-mobile",
     "url": "https://github.com/zillow/auto-mobile",
-    "name": "auto-mobile",
+    "name": "zillow__auto-mobile",
     "path": null,
-    "stars": 41,
+    "stars": 50,
     "contributors": 8,
     "issues": 0,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "aa798a5eccd0efeb9a456430f6b526cb13747c22"
+    "latest_commit_hash": "902ba31d03d3f02afe8582e6397a25463b7267fc"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:36:35.841Z",
+  "last_scraped_at": "2025-09-07T22:17:14.862Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

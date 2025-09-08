@@ -54,16 +54,16 @@
     "url": "https://github.com/longevity-genie/synergy-age-mcp",
     "name": "longevity-genie__synergy-age-mcp",
     "path": null,
-    "stars": 7,
+    "stars": 8,
     "contributors": 1,
     "issues": 0,
     "releases": false,
     "ci_cd": true,
-    "latest_commit_hash": "1814beed06008ac035c3e7bc9d323e7037355684"
+    "latest_commit_hash": "af1f1fc909e780dcd97f3675af30cfe67dd048ad"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:25:58.148Z",
+  "last_scraped_at": "2025-09-07T22:12:18.837Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

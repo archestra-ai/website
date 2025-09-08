@@ -42,7 +42,7 @@
     "owner": "dave-wind",
     "repo": "mysql-mcp-server",
     "url": "https://github.com/dave-wind/mysql-mcp-server",
-    "name": "mysql-mcp-server",
+    "name": "dave-wind__mysql-mcp-server",
     "path": null,
     "stars": 9,
     "contributors": 2,
@@ -53,7 +53,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:33:58.176Z",
+  "last_scraped_at": "2025-09-07T22:14:06.022Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

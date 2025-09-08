@@ -54,7 +54,7 @@
     "url": "https://github.com/34892002/bilibili-mcp-js",
     "name": "34892002__bilibili-mcp-js",
     "path": null,
-    "stars": 114,
+    "stars": 116,
     "contributors": 1,
     "issues": 0,
     "releases": false,
@@ -63,7 +63,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:26:00.039Z",
+  "last_scraped_at": "2025-09-07T22:12:18.721Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
