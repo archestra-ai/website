@@ -83,16 +83,16 @@
     "url": "https://github.com/cswkim/discogs-mcp-server",
     "name": "cswkim__discogs-mcp-server",
     "path": null,
-    "stars": 42,
+    "stars": 46,
     "contributors": 2,
-    "issues": 0,
+    "issues": 2,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "bb833447fb5c0150e20e0c304f7f6e23d5148005"
+    "latest_commit_hash": "68d344db4f60601e509874100c945b2bf9d7c89f"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:25:55.512Z",
+  "last_scraped_at": "2025-09-07T22:12:15.958Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

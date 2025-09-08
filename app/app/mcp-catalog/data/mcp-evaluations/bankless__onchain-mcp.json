@@ -54,18 +54,18 @@
     "owner": "Bankless",
     "repo": "onchain-mcp",
     "url": "https://github.com/Bankless/onchain-mcp",
-    "name": "onchain-mcp",
+    "name": "bankless__onchain-mcp",
     "path": null,
-    "stars": 57,
+    "stars": 64,
     "contributors": 2,
     "issues": 0,
     "releases": false,
     "ci_cd": true,
-    "latest_commit_hash": "5a0f10947e717c7988c7e75c7edd92544985fdf4"
+    "latest_commit_hash": null
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:37:05.561Z",
+  "last_scraped_at": "2025-09-07T22:18:08.113Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
@@ -104,5 +104,5 @@
       "importance": 4
     }
   ],
-  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@bankless/onchain-mcp\",\n  \"version\": \"1.0.6\",\n  \"description\": \"MCP server for using Bankless Onchain\",\n  \"license\": \"MIT\",\n  \"author\": \"Bankless Engineering (https://bankless.com)\",\n  \"homepage\": \"https://bankless.com\",\n  \"bugs\": \"https://github.com/Bankless/onchain-mcp/issues\",\n  \"bin\": {\n    \"onchain-mcp\": \"dist/index.js\"\n  },\n  \"main\": \"dist/src/index.js\",\n  \"files\": [\n    \"dist\"\n  ],\n  \"scripts\": {\n    \"build\": \"rm -rf dist/ && tsc && shx chmod +x dist/*.js\",\n    \"prepare\": \"npm run build\",\n    \"debug\": \"npx @modelcontextprotocol/inspector node dist/index.js\",\n    \"watch\": \"tsc --watch\",\n    \"test\": \"vitest run\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"1.7.0\",\n    \"@types/node\": \"^22\",\n    \"@types/node-fetch\": \"^2.6.12\",\n    \"axios\": \"^1.8.3\",\n    \"node-fetch\": \"^3.3.2\",\n    \"universal-user-agent\": \"^7.0.2\",\n    \"zod\": \"^3.24.2\",\n    \"zod-to-json-schema\": \"^3.24.2\"\n  },\n  \"devDependencies\": {\n    \"@types/jest\": \"^29.5.14\",\n    \"shx\": \"^0.3.4\",\n    \"ts-node\": \"^10.9.2\",\n    \"typescript\": \"^5.8.2\",\n    \"vitest\": \"^3.0.8\"\n  }\n}\n"
+  "raw_dependencies": null
 }

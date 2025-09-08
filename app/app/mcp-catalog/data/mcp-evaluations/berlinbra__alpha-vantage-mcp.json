@@ -78,18 +78,18 @@
     "owner": "berlinbra",
     "repo": "alpha-vantage-mcp",
     "url": "https://github.com/berlinbra/alpha-vantage-mcp",
-    "name": "alpha-vantage-mcp",
+    "name": "berlinbra__alpha-vantage-mcp",
     "path": null,
-    "stars": 63,
+    "stars": 71,
     "contributors": 5,
     "issues": 0,
     "releases": false,
     "ci_cd": false,
-    "latest_commit_hash": "3b395bd572ae79e5db9f34696186bc4a2dd0861d"
+    "latest_commit_hash": null
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:37:09.995Z",
+  "last_scraped_at": "2025-09-07T22:18:07.834Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
@@ -112,5 +112,5 @@
       "importance": 10
     }
   ],
-  "raw_dependencies": "=== pyproject.toml ===\n[project]\nname = \"alpha-vantage-mcp\"\nversion = \"0.1.0\"\ndescription = \"Add your description here\"\nreadme = \"README.md\"\nrequires-python = \">=3.12\"\ndependencies = [\n    \"httpx>=0.28.1\",\n    \"mcp>=1.1.2\",\n]\n\n[build-system]\nrequires = [ \"hatchling\",]\nbuild-backend = \"hatchling.build\"\n\n[project.scripts]\nalpha-vantage-mcp = \"alpha_vantage_mcp:main\"\n\n[[project.authors]]\nname = \"berlinbra\"\nemail = \"BMBpsn@gmail.com\""
+  "raw_dependencies": null
 }

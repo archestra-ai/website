@@ -70,18 +70,18 @@
     "owner": "arrismo",
     "repo": "kaggle-mcp",
     "url": "https://github.com/arrismo/kaggle-mcp",
-    "name": "kaggle-mcp",
+    "name": "arrismo__kaggle-mcp",
     "path": null,
-    "stars": 19,
+    "stars": 21,
     "contributors": 1,
-    "issues": 7,
+    "issues": 0,
     "releases": false,
     "ci_cd": false,
-    "latest_commit_hash": "3c78ec40da315d5967488c1d0f9f2c7d1d5c2421"
+    "latest_commit_hash": "3584f0449db65ba345dbb3ef060290d4938dad73"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:36:33.518Z",
+  "last_scraped_at": "2025-09-07T22:17:17.560Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

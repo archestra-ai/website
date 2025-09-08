@@ -66,18 +66,18 @@
     "owner": "picahq",
     "repo": "mcp",
     "url": "https://github.com/picahq/mcp",
-    "name": "mcp",
+    "name": "picahq__mcp",
     "path": null,
-    "stars": 7,
+    "stars": 8,
     "contributors": 2,
     "issues": 0,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "a2498b4353bf89e9cfae4da3cda4a39dd0cf4f2f"
+    "latest_commit_hash": "095adf85622c10f4864d84408c599299298643f6"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:36:18.518Z",
+  "last_scraped_at": "2025-09-07T22:16:35.785Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
@@ -120,5 +120,5 @@
       "importance": 7
     }
   ],
-  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@picahq/mcp\",\n  \"version\": \"1.0.0\",\n  \"description\": \"A Model Context Protocol Server for Pica\",\n  \"type\": \"module\",\n  \"bin\": {\n    \"mcp\": \"./build/index.js\"\n  },\n  \"files\": [\n    \"build\"\n  ],\n  \"scripts\": {\n    \"build\": \"tsc && node -e \\\"require('fs').chmodSync('build/index.js', '755')\\\"\",\n    \"prepare\": \"npm run build\",\n    \"watch\": \"tsc --watch\",\n    \"inspector\": \"npx @modelcontextprotocol/inspector build/index.js\",\n    \"http\": \"npm run build && node build/index.js\",\n    \"http:dev\": \"npm run build && nodemon build/index.js\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.12.1\",\n    \"@vercel/mcp-adapter\": \"^0.9.1\",\n    \"axios\": \"^1.10.0\",\n    \"cors\": \"^2.8.5\",\n    \"express\": \"^5.1.0\",\n    \"form-data\": \"^4.0.3\",\n    \"zod\": \"^3.23.0\"\n  },\n  \"devDependencies\": {\n    \"@types/cors\": \"^2.8.19\",\n    \"@types/express\": \"^5.0.3\",\n    \"@types/node\": \"^22.0.0\",\n    \"nodemon\": \"^3.1.10\",\n    \"typescript\": \"^5.6.0\"\n  },\n  \"author\": {\n    \"name\": \"Pica\",\n    \"email\": \"support@picaos.com\",\n    \"url\": \"https://picaos.com\"\n  },\n  \"license\": \"GPL-3.0\"\n}"
+  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@picahq/mcp\",\n  \"version\": \"1.0.3\",\n  \"description\": \"A Model Context Protocol Server for Pica\",\n  \"type\": \"module\",\n  \"bin\": {\n    \"mcp\": \"./build/index.js\"\n  },\n  \"files\": [\n    \"build\"\n  ],\n  \"scripts\": {\n    \"build\": \"tsc && node -e \\\"require('fs').chmodSync('build/index.js', '755')\\\"\",\n    \"prepare\": \"npm run build\",\n    \"watch\": \"tsc --watch\",\n    \"inspector\": \"npx @modelcontextprotocol/inspector build/index.js\",\n    \"http\": \"npm run build && node build/index.js\",\n    \"http:dev\": \"npm run build && nodemon build/index.js\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.12.1\",\n    \"@vercel/mcp-adapter\": \"^0.9.1\",\n    \"axios\": \"^1.10.0\",\n    \"cors\": \"^2.8.5\",\n    \"express\": \"^5.1.0\",\n    \"form-data\": \"^4.0.3\",\n    \"zod\": \"^3.23.0\"\n  },\n  \"devDependencies\": {\n    \"@types/cors\": \"^2.8.19\",\n    \"@types/express\": \"^5.0.3\",\n    \"@types/node\": \"^22.0.0\",\n    \"nodemon\": \"^3.1.10\",\n    \"typescript\": \"^5.6.0\"\n  },\n  \"author\": {\n    \"name\": \"Pica\",\n    \"email\": \"support@picaos.com\",\n    \"url\": \"https://picaos.com\"\n  },\n  \"license\": \"GPL-3.0\"\n}"
 }

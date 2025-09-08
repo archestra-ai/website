@@ -1,0 +1,19 @@
+{
+  "name": "invideo__remote-mcp",
+  "display_name": "InVideo MCP",
+  "version": "1.0.0",
+  "description": "Remote MCP server for InVideo - AI-powered video creation platform",
+  "remote_url": "https://mcp.invideo.io/sse",
+  "remote_mcp_docs_url": "https://invideo.io/ai/mcp",
+  "tools": [],
+  "prompts": [],
+  "user_config": {},
+  "readme": null,
+  "category": "Media",
+  "quality_score": 80,
+  "archestra_config": null,
+  "framework": null,
+  "last_scraped_at": "2025-09-05T19:30:23.066Z",
+  "evaluation_model": null,
+  "raw_dependencies": null
+}

@@ -113,7 +113,7 @@
     "owner": "sergehuber",
     "repo": "inoyu-mcp-unomi-server",
     "url": "https://github.com/sergehuber/inoyu-mcp-unomi-server",
-    "name": "inoyu-mcp-unomi-server",
+    "name": "sergehuber__inoyu-mcp-unomi-server",
     "path": null,
     "stars": 6,
     "contributors": 1,
@@ -124,7 +124,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:33:43.160Z",
+  "last_scraped_at": "2025-09-07T22:13:53.124Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

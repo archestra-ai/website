@@ -106,7 +106,7 @@
     "url": "https://github.com/co-browser/browser-use-mcp-server",
     "name": "co-browser__browser-use-mcp-server",
     "path": null,
-    "stars": 694,
+    "stars": 728,
     "contributors": 7,
     "issues": 0,
     "releases": true,
@@ -115,7 +115,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:26:00.473Z",
+  "last_scraped_at": "2025-09-07T22:12:21.216Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

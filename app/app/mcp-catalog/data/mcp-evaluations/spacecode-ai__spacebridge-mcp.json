@@ -123,7 +123,7 @@
     "owner": "spacecode-ai",
     "repo": "SpaceBridge-MCP",
     "url": "https://github.com/spacecode-ai/SpaceBridge-MCP",
-    "name": "SpaceBridge-MCP",
+    "name": "spacecode-ai__spacebridge-mcp",
     "path": null,
     "stars": 5,
     "contributors": 2,
@@ -134,7 +134,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:36:27.496Z",
+  "last_scraped_at": "2025-09-07T22:16:54.906Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

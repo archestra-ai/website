@@ -73,18 +73,18 @@
     "owner": "Codex-Data",
     "repo": "codex-mcp",
     "url": "https://github.com/Codex-Data/codex-mcp",
-    "name": "codex-mcp",
+    "name": "codex-data__codex-mcp",
     "path": null,
-    "stars": 12,
-    "contributors": 1,
+    "stars": 16,
+    "contributors": 0,
     "issues": 0,
-    "releases": true,
+    "releases": false,
     "ci_cd": true,
-    "latest_commit_hash": "d31ebf35eef28d8f3bd57ad63fb13b9470849cbd"
+    "latest_commit_hash": null
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:37:10.939Z",
+  "last_scraped_at": "2025-09-07T22:18:06.809Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,
@@ -111,5 +111,5 @@
       "importance": 6
     }
   ],
-  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@codex-data/codex-mcp\",\n  \"module\": \"src/index.ts\",\n  \"type\": \"module\",\n  \"version\": \"0.1.3\",\n  \"description\": \"Model Context Protocol (MCP) server for fetching blockchain data from Codex.io\",\n  \"bin\": {\n    \"codex-mcp\": \"./bin/cli.js\"\n  },\n  \"main\": \"build/index.js\",\n  \"files\": [\n    \"build/\",\n    \"bin/\",\n    \"README.md\",\n    \"LICENSE\"\n  ],\n  \"scripts\": {\n    \"build\": \"tsc\",\n    \"start\": \"node --env-file=.env build/index.js\",\n    \"dev\": \"tsx watch --env-file=.env src/index.ts\",\n    \"lint\": \"eslint --ext .ts src\",\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n  },\n  \"keywords\": [\n    \"mcp\",\n    \"model-context-protocol\",\n    \"evm\",\n    \"blockchain\",\n    \"ethereum\",\n    \"solana\",\n    \"web3\",\n    \"smart-contracts\",\n    \"ai\",\n    \"agent\"\n  ],\n  \"author\": \"Codex\",\n  \"homepage\": \"https://docs.codex.io\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/codex-data/codex-mcp\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/codex-data/codex-mcp/issues\"\n  },\n  \"license\": \"ISC\",\n  \"packageManager\": \"pnpm@10.7.0\",\n  \"engines\": {\n    \"node\": \">=20.0.0\"\n  },\n  \"devDependencies\": {\n    \"@eslint/js\": \"^9.23.0\",\n    \"@types/node\": \"^22.13.14\",\n    \"eslint\": \"^9.23.0\",\n    \"globals\": \"^16.0.0\",\n    \"tsx\": \"^4.19.3\",\n    \"typescript\": \"^5.8.2\",\n    \"typescript-eslint\": \"^8.29.0\"\n  },\n  \"dependencies\": {\n    \"@codex-data/sdk\": \"^1.0.5\",\n    \"@modelcontextprotocol/sdk\": \"^1.8.0\",\n    \"zod\": \"^3.24.2\"\n  }\n}\n"
+  "raw_dependencies": null
 }

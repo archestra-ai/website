@@ -16,6 +16,11 @@ on:
         required: false
         default: "1"
         type: string
+      model:
+        description: "AI model to use for evaluation"
+        required: false
+        default: "gemini-2.5-flash"
+        type: string
 
 jobs:
   evaluate:
@@ -59,11 +64,16 @@ jobs:
         working-directory: ./app
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          AI_MODEL: ${{ github.event.inputs.model || 'gemini-2.5-flash' }}
         run: |
+          # Set the model parameter
+          MODEL_PARAM="--model ${{ github.event.inputs.model || 'gemini-2.5-flash' }}"
+          echo "Using AI model: ${{ github.event.inputs.model || 'gemini-2.5-flash' }}"
+          
           # Determine evaluation mode
           if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
             echo "Running forced evaluation of all servers..."
-            npm run catalog:evaluate -- --all --force --concurrency ${{ github.event.inputs.concurrency || '5' }}
+            npm run catalog:evaluate -- --all --force --concurrency ${{ github.event.inputs.concurrency || '5' }} $MODEL_PARAM
           elif [[ "${{ github.event_name }}" == "push" ]]; then
             echo "Detecting newly added servers from git diff..."
             
@@ -80,14 +90,14 @@ jobs:
               # Evaluate each new server
               while IFS= read -r url; do
                 echo "Evaluating: $url"
-                npm run catalog:evaluate -- "$url" --all || echo "Failed to evaluate $url"
+                npm run catalog:evaluate -- "$url" --all $MODEL_PARAM || echo "Failed to evaluate $url"
               done < new_servers.txt
             else
               echo "No new servers found in this commit"
             fi
           else
             echo "Evaluating only missing servers..."
-            npm run catalog:evaluate -- --missing-only --all --concurrency ${{ github.event.inputs.concurrency || '5' }}
+            npm run catalog:evaluate -- --missing-only --all --concurrency ${{ github.event.inputs.concurrency || '5' }} $MODEL_PARAM
           fi
 
       - name: Generate evaluation report
@@ -198,9 +208,7 @@ jobs:
               --title "$PR_TITLE" \
               --body "$PR_BODY" \
               --base main \
-              --head "$BRANCH_NAME" \
-              --label "automated" \
-              --label "mcp-evaluation" || echo "PR creation failed or already exists"
+              --head "$BRANCH_NAME" || echo "PR creation failed or already exists"
               
           else
             echo "Not on main branch - committing directly"

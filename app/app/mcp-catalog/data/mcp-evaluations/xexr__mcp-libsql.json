@@ -140,7 +140,7 @@
     "owner": "Xexr",
     "repo": "mcp-libsql",
     "url": "https://github.com/Xexr/mcp-libsql",
-    "name": "mcp-libsql",
+    "name": "xexr__mcp-libsql",
     "path": null,
     "stars": 13,
     "contributors": 1,
@@ -151,7 +151,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:34:44.453Z",
+  "last_scraped_at": "2025-09-07T22:15:18.013Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

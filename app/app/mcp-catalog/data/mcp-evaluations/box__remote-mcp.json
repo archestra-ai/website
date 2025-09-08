@@ -1,0 +1,19 @@
+{
+  "name": "box__remote-mcp",
+  "display_name": "Box MCP",
+  "version": "1.0.0",
+  "description": "Remote MCP server for Box - cloud content management and file sharing",
+  "remote_url": "https://mcp.box.com/",
+  "remote_mcp_docs_url": "https://box.dev/guides/box-mcp/remote/",
+  "tools": [],
+  "prompts": [],
+  "user_config": {},
+  "readme": null,
+  "category": "File Management",
+  "quality_score": 80,
+  "archestra_config": null,
+  "framework": null,
+  "last_scraped_at": "2025-09-05T19:30:23.066Z",
+  "evaluation_model": null,
+  "raw_dependencies": null
+}

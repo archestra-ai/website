@@ -3,17 +3,12 @@ import { ChevronLeft, ChevronRight, Clock, Edit } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeRaw from 'rehype-raw';
-import rehypeSlug from 'rehype-slug';
-import remarkBreaks from 'remark-breaks';
-import remarkGfm from 'remark-gfm';
 
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 import constants from '@constants';
 
+import DocContent from '../components/DocContent';
 import DocsSidebar from '../components/DocsSidebar';
 import { TableOfContentsItem } from '../types';
 import { formatLastUpdated, generateTableOfContents, getAllDocs, getDocBySlug, getDocsByCategory } from '../utils';
@@ -91,21 +86,28 @@ export default async function DocPage({ params }: Props) {
 
             {/* Main Content */}
             <article className="flex-1 min-w-0">
-              {/* Breadcrumb */}
+              {/* Breadcrumb with Edit */}
               <nav className="mb-6 text-sm">
-                <ol className="flex items-center space-x-2 text-gray-600">
-                  <li>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-x-2 text-gray-600">
                     <Link href="/docs" className="hover:text-blue-600 transition-colors">
                       Docs
                     </Link>
-                  </li>
-                  <li>/</li>
-                  <li>
+                    <span>/</span>
                     <span className="text-gray-500">{doc.category}</span>
-                  </li>
-                  <li>/</li>
-                  <li className="text-gray-900 font-medium">{doc.title}</li>
-                </ol>
+                    <span>/</span>
+                    <span className="text-gray-900 font-medium">{doc.title}</span>
+                  </div>
+                  <a
+                    href={`https://github.com/archestra-ai/website/edit/main/app/app/docs/content/${doc.slug}.md`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors sm:ml-4 -ml-2 sm:ml-0 px-2 py-1 hover:bg-gray-50 rounded-lg"
+                  >
+                    <Edit className="h-3.5 w-3.5" />
+                    <span>Edit on GitHub</span>
+                  </a>
+                </div>
               </nav>
 
               <div className="flex gap-8">
@@ -113,18 +115,7 @@ export default async function DocPage({ params }: Props) {
                 <div className="flex-1 min-w-0">
                   {/* Header */}
                   <header className="mb-8 pb-8 border-b border-gray-200">
-                    <div className="flex items-start justify-between">
-                      <h1 className="text-4xl font-bold text-gray-900 mb-4">{doc.title}</h1>
-                      <a
-                        href={`https://github.com/archestra-ai/website/edit/main/app/app/docs/content/${doc.slug}.md`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors"
-                      >
-                        <Edit className="h-4 w-4" />
-                        <span>Edit on GitHub</span>
-                      </a>
-                    </div>
+                    <h1 className="text-4xl font-bold text-gray-900 mb-4">{doc.title}</h1>
 
                     <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
                       <span className="flex items-center gap-1">
@@ -135,113 +126,7 @@ export default async function DocPage({ params }: Props) {
                   </header>
 
                   {/* Content */}
-                  <div className="prose prose-lg max-w-none">
-                    <ReactMarkdown
-                      remarkPlugins={[remarkGfm, remarkBreaks]}
-                      rehypePlugins={[rehypeHighlight, rehypeRaw, rehypeSlug]}
-                      components={{
-                        p: ({ node, ...props }) => <p {...props} className="text-gray-700 leading-relaxed mb-4" />,
-                        h1: ({ node, children, ...props }) => (
-                          <h1 {...props} className="text-3xl font-bold text-gray-900 mb-6 mt-10">
-                            {children}
-                          </h1>
-                        ),
-                        h2: ({ node, children, ...props }) => (
-                          <h2 {...props} className="text-2xl font-bold text-gray-900 mb-4 mt-8">
-                            {children}
-                          </h2>
-                        ),
-                        h3: ({ node, children, ...props }) => (
-                          <h3 {...props} className="text-xl font-bold text-gray-900 mb-3 mt-6">
-                            {children}
-                          </h3>
-                        ),
-                        ul: ({ node, ...props }) => (
-                          <ul {...props} className="list-disc list-inside mb-4 space-y-2 pl-4" />
-                        ),
-                        ol: ({ node, ...props }) => (
-                          <ol {...props} className="list-decimal list-inside mb-4 space-y-2 pl-4" />
-                        ),
-                        li: ({ node, ...props }) => <li {...props} className="text-gray-700 leading-relaxed" />,
-                        a: ({ node, ...props }) => (
-                          <a
-                            {...props}
-                            className="text-blue-600 hover:underline"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          />
-                        ),
-                        img: ({ node, ...props }) => <img {...props} className="rounded-lg shadow-md my-6 w-full" />,
-                        blockquote: ({ node, ...props }) => (
-                          <blockquote
-                            {...props}
-                            className="border-l-4 border-blue-500 pl-4 my-4 text-gray-600 italic"
-                          />
-                        ),
-                        pre: ({ node, children, ...props }) => (
-                          <pre {...props} className="bg-gray-50 rounded-lg p-4 overflow-x-auto text-sm my-6">
-                            {children}
-                          </pre>
-                        ),
-                        code: ({ node, className, children, ...props }) => {
-                          const match = /language-(\w+)/.exec(className || '');
-                          return match ? (
-                            <code className={className} {...props}>
-                              {children}
-                            </code>
-                          ) : (
-                            <code className="bg-gray-100 px-1 py-0.5 rounded text-sm font-mono" {...props}>
-                              {children}
-                            </code>
-                          );
-                        },
-                        table: ({ node, ...props }) => (
-                          <div className="overflow-x-auto my-6">
-                            <table {...props} className="min-w-full divide-y divide-gray-200" />
-                          </div>
-                        ),
-                        thead: ({ node, ...props }) => <thead {...props} className="bg-gray-50" />,
-                        th: ({ node, ...props }) => (
-                          <th
-                            {...props}
-                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                          />
-                        ),
-                        td: ({ node, ...props }) => (
-                          <td {...props} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900" />
-                        ),
-                        // Custom components for callouts
-                        div: ({ node, className, children, ...props }) => {
-                          if (className?.includes('callout')) {
-                            const type = className.split('-')[1] || 'info';
-                            const styles = {
-                              info: 'bg-blue-50 border-blue-200 text-blue-900',
-                              warning: 'bg-yellow-50 border-yellow-200 text-yellow-900',
-                              danger: 'bg-red-50 border-red-200 text-red-900',
-                              success: 'bg-green-50 border-green-200 text-green-900',
-                            };
-
-                            return (
-                              <div
-                                className={`p-4 my-4 border-l-4 rounded-r-lg ${styles[type as keyof typeof styles] || styles.info}`}
-                                {...props}
-                              >
-                                {children}
-                              </div>
-                            );
-                          }
-
-                          return (
-                            <div className={className} {...props}>
-                              {children}
-                            </div>
-                          );
-                        },
-                      }}
-                    >
-                      {doc.content}
-                    </ReactMarkdown>
-                  </div>
+                  <DocContent content={doc.content} />
 
                   {/* Navigation */}
                   {doc.navigation && (

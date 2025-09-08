@@ -1,293 +1,273 @@
 ---
-title: OAuth Providers
+title: Authentication with OAuth
 category: Development
-order: 2
-tags: [development, setup, quickstart]
-lastUpdated: 2025-01-25
+subcategory: MCP Authentication
+order: 6
 ---
 
-This guide helps you add OAuth providers (Jira, LinkedIn, MS Teams, etc.) to Archestra.
+This guide shows you how to add OAuth providers (like Jira, LinkedIn, MS Teams) to Archestra using standard OAuth 2.0 flows with PKCE security.
 
-## Architecture
+## Architecture Overview
+
+Archestra uses a secure two-tier OAuth system with automatic endpoint discovery:
 
 ```
-Desktop App (PKCE) → OAuth Proxy (Secrets) → Provider API
+Desktop App (Discovery + PKCE) →
+  OAuth Proxy (Secret Injection) →
+    Provider API
 ```
 
-- **Desktop App**: Initiates OAuth, stores tokens as env vars
-- **OAuth Proxy**: Holds client secrets, exchanges codes for tokens
-- **Provider**: External OAuth service
+**How it works:**
 
-## Step 1: OAuth Proxy Setup
+1. **Desktop App** performs OAuth discovery, manages provider-specific logic, initiates PKCE flows, and stores tokens as environment variables for MCP servers
+2. **OAuth Proxy** acts as a generic service that injects client secrets into token requests for any endpoint specified by the desktop app
+3. **Provider** is the external OAuth service (Google, Slack, Jira, etc.)
 
-### 1.1 Add Credentials
+**Security benefits:**
+
+- Desktop app never sees OAuth client secrets - they're kept secure in the OAuth proxy
+- All OAuth complexity is handled by the desktop app
+- The proxy is a simple ~400-line generic service
+
+### OAuth Discovery (RFC 8414)
+
+The desktop app automatically discovers OAuth endpoints using standard `.well-known` endpoints:
+
+- `/.well-known/oauth-authorization-server` (preferred)
+- `/.well-known/openid_configuration` (fallback)
+
+## Developer Quickstart
+
+1. Clone the repository and set up the OAuth proxy:
+
+```bash
+git clone https://github.com/archestra-ai/archestra
+cd oauth_proxy
+cp .env.example .env
+pnpm install
+pnpm start
+```
+
+2. (Optional) Set up HTTPS tunneling for providers that require it:
+
+```bash
+ngrok http 8080  # Some providers like Slack require HTTPS
+```
+
+3. Start the desktop application:
+
+```bash
+cd desktop_app
+# Make sure OAUTH_PROXY_URL in .env points to your proxy URL
+# http://localhost:8080 or https://your-ngrok-url.ngrok.io
+pnpm install
+pnpm start
+```
+
+4. The desktop app will start automatically. OAuth discovery works automatically for supported providers.
+
+Try it with an existing OAuth provider:
+
+1. Open Connectors
+2. Find a server with OAuth (like Google MCP)
+3. Click "Install (OAuth)"
+4. Complete the OAuth flow in your browser
+5. Navigate to Servers and find your installed MCP server
+
+## Add a new OAuth provider
+
+Here's how to add a new OAuth provider to Archestra using Jira as an example:
+
+### 1. Create a local MCP server for testing
+
+Find the MCP server JSON in the catalog, e.g. https://github.com/archestra-ai/website/blob/main/app/app/mcp-catalog/data/mcp-evaluations/korotovsky__slack-mcp-server.json
+
+Copy the file (or create a new one) to `desktop_app/src/ui/catalog_local`. The MCP server will appear on the "Connections" page with a purple "Developer" tag, allowing you to modify and work with it without running the catalog
+
+### 2. Configure the OAuth proxy
+
+The OAuth proxy injects client secrets into token requests for any endpoint specified by the desktop app.
+
+#### Add provider to allowlist
+
+> **Note**: The OAuth proxy validates endpoints against a provider allowlist to prevent SSRF attacks.
+
+Add your provider to the OAuth proxy's provider configuration:
+
+```javascript
+// oauth_proxy/src/config/providers.js
+export const TRUSTED_PROVIDERS = {
+  google: ['oauth2.googleapis.com', 'accounts.google.com'],
+  slack: ['slack.com', 'api.slack.com'],
+  jira: ['auth.atlassian.com'], // Add your new provider
+  // ... other providers
+};
+```
+
+#### Add your OAuth credentials
+
+Add your OAuth app credentials to the proxy's environment (use pattern `PROVIDER_CLIENT_ID` and `PROVIDER_CLIENT_SECRET`):
 
 ```bash
 # oauth_proxy/.env
-JIRA_CLIENT_ID=your-client-id
-JIRA_CLIENT_SECRET=your-client-secret
+JIRA_CLIENT_ID=your-client-id-from-jira
+JIRA_CLIENT_SECRET=your-client-secret-from-jira
 ```
 
-### 1.2 Create Provider Class
+> **Note**: The provider name in the allowlist must match the provider name used in your MCP server catalog configuration. The proxy will only accept token endpoints from the allowed hostnames for each provider, preventing SSRF attacks.
 
-```javascript
-// oauth_proxy/src/providers/jira.js
-import { OAuthProvider } from './base.js';
+### 3. Create desktop app provider definition
 
-export class JiraOAuthProvider extends OAuthProvider {
-  // Most providers work with base class
-  // Only override for special cases:
+All OAuth logic is handled in the desktop app.
 
-  // Non-standard token response
-  async exchangeCode(params) {
-    const response = await super.exchangeCode(params);
-    // Transform if needed
-    return response;
-  }
+#### Create the provider definition
 
-  // No refresh tokens
-  async refreshToken(params) {
-    throw new Error('Jira tokens do not expire');
-  }
-}
-```
-
-### 1.3 Register Provider
-
-```javascript
-// oauth_proxy/src/config/index.js
-providers: {
-  jira: {
-    clientId: process.env.JIRA_CLIENT_ID,
-    clientSecret: process.env.JIRA_CLIENT_SECRET,
-    tokenEndpoint: 'https://auth.atlassian.com/oauth/token',
-  }
-}
-
-// oauth_proxy/src/providers/index.js
-import { JiraOAuthProvider } from './jira.js';
-
-if (config.providers.jira.clientId) {
-  providers.set('jira', new JiraOAuthProvider(config.providers.jira));
-}
-```
-
-## Step 2: Desktop App Integration
-
-### 2.1 Add Provider Definition
+Create a new file for your provider with OAuth discovery configuration:
 
 ```typescript
-// desktop_app/src/backend/config/oauth-providers.ts
-jira: {
-  name: 'jira',
-  authorizationUrl: 'https://auth.atlassian.com/authorize',
-  scopes: ['read:jira-user', 'write:jira-work'],
-  usePKCE: true,
-  clientId: 'your-public-client-id',
+// desktop_app/src/backend/server/plugins/oauth/providers/jira.ts
+import { OAuthProviderDefinition } from '../provider-interface';
 
-  // Map tokens to env vars
+export const jiraProvider: OAuthProviderDefinition = {
+  name: 'jira',
+  scopes: ['read:jira-user', 'write:jira-work'], // Permissions your MCP server needs
+  usePKCE: true, // Use PKCE for security (recommended)
+  clientId: 'your-public-client-id', // Public client ID (not secret!)
+
+  // Map OAuth tokens to environment variable names
+  // These will be available to your MCP server
   tokenEnvVarPattern: {
     accessToken: 'JIRA_ACCESS_TOKEN',
     refreshToken: 'JIRA_REFRESH_TOKEN',
+    expiryDate: 'JIRA_TOKEN_EXPIRY',
+  },
+
+  // Additional authorization parameters
+  authorizationParams: {
+    audience: 'api.atlassian.com', // API audience
+    prompt: 'consent', // Always show consent screen
+    access_type: 'offline', // Request refresh token
+  },
+
+  // OAuth discovery configuration
+  discoveryConfig: {
+    baseUrl: 'https://auth.atlassian.com',
+    enabled: true,
+    fallbackEndpoints: {
+      authorization: 'https://auth.atlassian.com/authorize',
+      token: 'https://auth.atlassian.com/oauth/token',
+      revocation: 'https://auth.atlassian.com/oauth/revoke',
+    },
   },
 
   metadata: {
     displayName: 'Jira',
+    documentationUrl: 'https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/',
     supportsRefresh: true,
-  }
+    notes: 'Uses OAuth discovery with fallback endpoints. Supports automatic endpoint discovery per RFC 8414.',
+  },
+};
+```
+
+#### Register the provider
+
+Add your provider to the registry:
+
+```typescript
+// desktop_app/src/backend/server/plugins/oauth/providers.ts
+import { jiraProvider } from './providers/jira';
+
+export const oauthProviders: OAuthProviderRegistry = {
+  google: googleProvider,
+  slack: slackProvider,
+  'slack-browser': slackBrowserProvider,
+  'linkedin-browser': linkedinBrowserProvider,
+  jira: jiraProvider, // Add your new provider
+};
+```
+
+Also export it from the index:
+
+```typescript
+// desktop_app/src/backend/server/plugins/oauth/index.ts
+export {
+  // ... existing exports
+  jiraProvider,
+} from './providers';
+```
+
+### 4. Test the OAuth flow
+
+When users install your MCP server:
+
+1. The UI detects `oauth.required: true` and `provider: "jira"`
+2. Desktop app performs OAuth discovery for Jira's endpoints
+3. Starts the OAuth flow with discovered or fallback endpoints
+4. OAuth proxy receives the discovered `token_endpoint` and makes the token exchange
+5. After successful authentication, tokens are stored and passed to the MCP server as environment variables
+
+You're all set! Your MCP server should now appear in Settings → Servers with OAuth authentication working.
+
+## Advanced Configuration
+
+### File-based credentials
+
+Some MCP servers need credentials written to a file instead of environment variables:
+
+```typescript
+// In your provider definition
+tokenHandler: async (tokens, serverId) => {
+  // Create a credentials file format your MCP server expects
+  const credentials = {
+    type: 'authorized_user',
+    access_token: tokens.access_token,
+    refresh_token: tokens.refresh_token,
+    expiry: tokens.expires_at,
+  };
+
+  // Write to a specific path in the container
+  await writeFileToContainer(serverId, '/home/appuser/.jira/credentials.json', JSON.stringify(credentials, null, 2));
+
+  // Don't return env vars since we're using a file
+  return {};
+};
+```
+
+### Provider-specific token parameters
+
+The desktop app can pass provider-specific parameters to the OAuth proxy:
+
+```typescript
+// Desktop app automatically includes provider-specific authorization parameters
+// in the token exchange request to the OAuth proxy
+
+authorizationParams: {
+  audience: 'api.atlassian.com',
+  prompt: 'consent',
+  access_type: 'offline',
 }
 ```
 
-### 2.2 Update Schema (if needed)
+## Debugging and Cleanup
 
-```typescript
-// Only if adding new provider type
-// desktop_app/src/backend/models/mcpServer/index.ts
-oauthProvider: z.enum(['google', 'slack', 'slack-browser', 'jira']).optional();
-```
+### Container management commands
 
-## Step 3: Test
+List all containers (including stopped ones):
 
 ```bash
-# Terminal 1
-cd oauth_proxy && npm run dev
-
-# Terminal 2
-cd desktop_app && pnpm start
+./desktop_app/resources/bin/mac/arm64/podman-remote-static-v5.5.2 container ls --all
 ```
 
-1. Go to Connectors page
-2. Install MCP server using your provider
-3. Complete OAuth flow
-4. Verify tokens in database
+Remove all containers (force removal):
 
-## Special Cases
-
-### Browser Authentication (No OAuth)
-
-For providers where you extract tokens from their web UI:
-
-```typescript
-// desktop_app/src/backend/config/oauth-providers.ts
-'jira-browser': {
-  name: 'jira-browser',
-  authorizationUrl: '',
-  scopes: [],
-  usePKCE: false,
-  clientId: 'browser-auth',
-
-  tokenEnvVarPattern: {
-    accessToken: 'JIRA_ACCESS_TOKEN',
-  },
-
-  browserAuthConfig: {
-    enabled: true,
-    loginUrl: 'https://jira.com/login',
-
-    navigationRules: (url) => url.includes('jira.com'),
-
-    extractTokens: async (window) => {
-      const { webContents, session } = window;
-      const url = webContents.getURL();
-
-      // Only on dashboard
-      if (!url.includes('/dashboard')) return null;
-
-      // Get from localStorage
-      const token = await webContents.executeJavaScript(
-        `localStorage.getItem('auth_token')`
-      );
-
-      // Get from cookies
-      const cookies = await session.cookies.get({ name: 'session' });
-
-      if (token) {
-        return { access_token: token };
-      }
-      return null;
-    }
-  }
-}
+```bash
+./desktop_app/resources/bin/mac/arm64/podman-remote-static-v5.5.2 rm -a -f
 ```
 
-### File-Based Credentials
+Access a running container for debugging:
 
-For providers needing credential files instead of env vars:
-
-```typescript
-jira: {
-  // ... standard config ...
-
-  tokenHandler: async (tokens, serverId) => {
-    const creds = {
-      type: 'authorized_user',
-      access_token: tokens.access_token,
-      refresh_token: tokens.refresh_token,
-    };
-
-    // Write to container
-    await writeFileToContainer(serverId, '/home/appuser/.jira/credentials.json', JSON.stringify(creds, null, 2));
-  };
-}
+```bash
+./desktop_app/resources/bin/mac/arm64/podman-remote-static-v5.5.2 exec -it CONTAINER_ID sh
 ```
 
-### Custom Auth Parameters
-
-```typescript
-jira: {
-  // ... standard config ...
-
-  authorizationParams: {
-    audience: 'api.atlassian.com',
-    prompt: 'consent',
-  }
-}
-```
-
-## Connecting Providers to MCP Servers
-
-### MCP Server Catalog Integration
-
-MCP servers specify OAuth requirements in their catalog manifest:
-
-```json
-// Example: catalog entry for Jira MCP server
-{
-  "name": "company__jira-mcp-server",
-  "display_name": "Jira MCP Server",
-  "archestra_config": {
-    "oauth": {
-      "provider": "jira", // Must match provider name from oauth-providers.ts
-      "required": true // OAuth required for installation
-    }
-  },
-  "user_config": {
-    "jira_url": {
-      "type": "string",
-      "required": true,
-      "description": "Your Jira instance URL"
-    }
-  }
-}
-```
-
-### How It Works
-
-1. **Catalog defines provider**: `archestra_config.oauth.provider` specifies which OAuth provider to use
-2. **UI detects OAuth**: Connectors page reads `archestra_config.oauth` from manifest
-3. **Installation triggers OAuth**:
-   ```typescript
-   // Automatic in connectors.tsx
-   const provider = mcpServer.archestra_config.oauth?.provider;
-   if (mcpServer.archestra_config.oauth?.required) {
-     startOAuthFlow(provider);
-   }
-   ```
-4. **Tokens stored**: After OAuth, tokens saved to DB and added as env vars to MCP server
-
-### Adding Your Provider to Catalog
-
-1. Update catalog manifest:
-
-   ```json
-   {
-     "archestra_config": {
-       "oauth": {
-         "provider": "yourprovider",
-         "required": true
-       }
-     }
-   }
-   ```
-
-2. Provider name must match exactly between:
-   - OAuth proxy: `providers.set('yourprovider', ...)`
-   - Desktop app: `oauthProviders['yourprovider'] = {...}`
-   - Catalog: `"provider": "yourprovider"`
-
-### Browser Auth in Catalog
-
-For browser-based auth, catalog specifies the base provider:
-
-```json
-{
-  "archestra_config": {
-    "oauth": {
-      "provider": "slack", // Base provider name
-      "required": false
-    },
-    "browser_based": {
-      "required": false // Allows browser auth option
-    }
-  }
-}
-```
-
-UI automatically maps to browser provider when needed:
-
-```typescript
-// connectors.tsx handles this mapping
-oauthProvider: useBrowserAuth && provider === 'slack'
-  ? 'slack-browser' // Maps to browser auth provider
-  : provider;
-```
+Replace `CONTAINER_ID` with your actual container ID from the `container ls` command.

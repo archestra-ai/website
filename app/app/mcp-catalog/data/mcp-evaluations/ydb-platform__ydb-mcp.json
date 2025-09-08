@@ -197,18 +197,18 @@
     "owner": "ydb-platform",
     "repo": "ydb-mcp",
     "url": "https://github.com/ydb-platform/ydb-mcp",
-    "name": "ydb-mcp",
+    "name": "ydb-platform__ydb-mcp",
     "path": null,
-    "stars": 21,
-    "contributors": 4,
+    "stars": 22,
+    "contributors": 5,
     "issues": 0,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "cecbbe1b66ea3ab1e4c5ce4987a2f9ecc1763e4c"
+    "latest_commit_hash": "3caf43ad5f9e3240738f5f0364ce350dc638fc2b"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:34:55.457Z",
+  "last_scraped_at": "2025-09-07T22:15:09.555Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
@@ -231,5 +231,5 @@
       "importance": 10
     }
   ],
-  "raw_dependencies": "=== pyproject.toml ===\n[build-system]\nrequires = [\"setuptools>=42\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"ydb-mcp\"\nversion = \"0.1.4\"  # AUTOVERSION\ndescription = \"Model Context Protocol server for YDB DBMS\"\nreadme = \"README.md\"\nauthors = [\n    {name = \"YDB MCP Team\", email = \"info@ydb.tech\"}\n]\nlicense = {text = \"Apache 2.0\"}\nrequires-python = \">=3.10\"\nclassifiers = [\n    \"Development Status :: 3 - Alpha\",\n    \"Intended Audience :: Developers\",\n    \"Programming Language :: Python :: 3\",\n    \"Programming Language :: Python :: 3.10\",\n    \"Programming Language :: Python :: 3.11\",\n    \"Programming Language :: Python :: 3.12\",\n]\ndependencies = [\n    \"ydb>=3.21.0\",\n    \"mcp>=1.6.0\",\n]\n\n[project.optional-dependencies]\ndev = [\n    \"pytest>=7.3.1\",\n    \"pytest-asyncio>=0.21.0\",\n    \"pytest-cov>=4.1.0\",\n    \"pytest-assume>=2.4.3\",\n    \"mypy>=1.3.0\",\n    \"ruff>=0.11.0\",\n    \"docker>=7.0.0\",\n]\n\n[project.scripts]\nydb-mcp = \"ydb_mcp.__main__:main\"\n\n[tool.ruff]\nline-length = 121\ntarget-version = \"py310\"\n\n[tool.ruff.lint]\nselect = [\n  \"E\",    # pycodestyle\n  \"F\",    # pyflakes\n  \"I\",    # isort\n  # TODO: extend with more rules\n]\n\n[tool.mypy]\npython_version = \"3.10\"\nwarn_return_any = true\nwarn_unused_configs = true\n\n[[tool.mypy.overrides]]\nmodule = \"ydb.*\"\nignore_missing_imports = true\n\n=== requirements.txt ===\nydb>=3.21.0\nmcp>=1.6.0"
+  "raw_dependencies": "=== pyproject.toml ===\n[build-system]\nrequires = [\"setuptools>=42\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"ydb-mcp\"\nversion = \"0.1.6\"  # AUTOVERSION\ndescription = \"Model Context Protocol server for YDB DBMS\"\nreadme = \"README.md\"\nauthors = [\n    {name = \"YDB MCP Team\", email = \"info@ydb.tech\"}\n]\nlicense = {text = \"Apache 2.0\"}\nrequires-python = \">=3.10\"\nclassifiers = [\n    \"Development Status :: 3 - Alpha\",\n    \"Intended Audience :: Developers\",\n    \"Programming Language :: Python :: 3\",\n    \"Programming Language :: Python :: 3.10\",\n    \"Programming Language :: Python :: 3.11\",\n    \"Programming Language :: Python :: 3.12\",\n]\ndependencies = [\n    \"ydb>=3.21.0\",\n    \"mcp>=1.6.0\",\n]\n\n[project.optional-dependencies]\ndev = [\n    \"pytest>=7.3.1\",\n    \"pytest-asyncio>=0.21.0\",\n    \"pytest-cov>=4.1.0\",\n    \"pytest-assume>=2.4.3\",\n    \"mypy>=1.3.0\",\n    \"ruff>=0.11.0\",\n    \"docker>=7.0.0\",\n]\n\n[project.scripts]\nydb-mcp = \"ydb_mcp.__main__:main\"\n\n[tool.ruff]\nline-length = 121\ntarget-version = \"py310\"\n\n[tool.ruff.lint]\nselect = [\n  \"E\",    # pycodestyle\n  \"F\",    # pyflakes\n  \"I\",    # isort\n  # TODO: extend with more rules\n]\n\n[tool.mypy]\npython_version = \"3.10\"\nwarn_return_any = true\nwarn_unused_configs = true\n\n[[tool.mypy.overrides]]\nmodule = \"ydb.*\"\nignore_missing_imports = true\n\n=== requirements.txt ===\nydb>=3.21.9\nmcp==1.12.4\n"
 }

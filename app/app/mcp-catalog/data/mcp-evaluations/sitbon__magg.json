@@ -107,7 +107,7 @@
     "url": "https://github.com/sitbon/magg",
     "name": "sitbon__magg",
     "path": null,
-    "stars": 53,
+    "stars": 67,
     "contributors": 1,
     "issues": 0,
     "releases": true,
@@ -116,7 +116,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:25:47.074Z",
+  "last_scraped_at": "2025-09-07T22:12:08.260Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

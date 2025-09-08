@@ -132,7 +132,7 @@
     "owner": "jwaxman19",
     "repo": "qlik-mcp",
     "url": "https://github.com/jwaxman19/qlik-mcp",
-    "name": "qlik-mcp",
+    "name": "jwaxman19__qlik-mcp",
     "path": null,
     "stars": 5,
     "contributors": 2,
@@ -143,7 +143,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:34:57.550Z",
+  "last_scraped_at": "2025-09-07T22:15:23.599Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -61,18 +61,18 @@
     "owner": "armorwallet",
     "repo": "armor-crypto-mcp",
     "url": "https://github.com/armorwallet/armor-crypto-mcp",
-    "name": "armor-crypto-mcp",
+    "name": "armorwallet__armor-crypto-mcp",
     "path": null,
-    "stars": 193,
-    "contributors": 6,
+    "stars": 186,
+    "contributors": 0,
     "issues": 0,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "c026c00b2f3fd40594e31f642d68aa92e742e013"
+    "latest_commit_hash": null
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:37:06.090Z",
+  "last_scraped_at": "2025-09-07T22:18:08.013Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
@@ -107,5 +107,5 @@
       "importance": 4
     }
   ],
-  "raw_dependencies": "=== pyproject.toml ===\n[project]\nname = \"armor-crypto-mcp\"\nversion = \"0.2.1\"\ndescription = \"MCP to interface with multiple blockchains, staking, DeFi, swap, bridging, wallet management, DCA, Limit Orders, Coin Lookup, Tracking and more\"\nreadme = \"README.md\"\nrequires-python = \">=3.11\"\ndependencies = [\n \"mcp>=1.1.0\",\n \"python-dotenv>=1.0.0\",\n \"requests>=2.31.0\",\n \"uvicorn>=0.32.1\",\n \"httpx\"\n]\n[[project.authors]]\nname = \"Armor Wallet\"\nemail = \"info@armorwallet.ai\"\n\n[build-system]\nrequires = [ \"hatchling\",]\nbuild-backend = \"hatchling.build\"\n\n[project.scripts]\narmor-crypto-mcp = \"armor_crypto_mcp.armor_mcp:main\"\n\n=== requirements.txt ===\npython-dotenv>=1.0.0\nrequests>=2.31.0\nmcp>=1.0.0\nuvicorn>=0.32.1\nhttpx"
+  "raw_dependencies": null
 }
