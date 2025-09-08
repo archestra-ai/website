@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
+    "entry_point": "mcp-prompt-engine",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "mcp-prompt-engine",
+      "args": ["serve", "--prompts", "${__dirname}/prompts"],
       "env": {}
     }
   },

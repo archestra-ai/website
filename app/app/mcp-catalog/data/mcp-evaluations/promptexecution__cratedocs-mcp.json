@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
+    "entry_point": "cratedocs",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "cratedocs",
+      "args": ["stdio"],
       "env": {}
     }
   },

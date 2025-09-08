@@ -8,11 +8,11 @@
     "name": "tubasasakunn"
   },
   "server": {
-    "type": "binary",
+    "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "node",
+      "args": ["${__dirname}/index.js"],
       "env": {}
     }
   },
@@ -48,7 +48,7 @@
   "programming_language": "Unknown",
   "framework": null,
   "last_scraped_at": "2025-08-04T10:50:46.902Z",
-  "evaluation_model": "gemini-2.5-pro",
+  "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

@@ -8,11 +8,11 @@
     "name": "glenngillen"
   },
   "server": {
-    "type": "binary",
+    "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": ["-y", "mcp-remote@latest", "https://mcpmcp.io/mcp"],
       "env": {}
     }
   },

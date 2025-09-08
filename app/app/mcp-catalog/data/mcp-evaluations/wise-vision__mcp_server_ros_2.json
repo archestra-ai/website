@@ -8,11 +8,11 @@
     "name": "wise-vision"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
+    "type": "docker",
+    "entry_point": "main.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "wisevision/mcp_server_ros_2"],
       "env": {}
     }
   },

@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
+    "entry_point": "gradle-mcp-server-all.jar",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "java",
+      "args": ["-jar", "${HOME}/mcp-servers/gradle-mcp-server/gradle-mcp-server-all.jar"],
       "env": {}
     }
   },

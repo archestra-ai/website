@@ -9,17 +9,67 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "geo.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "uv",
+      "args": ["--directory", "${__dirname}/MCP-Geo", "run", "geo.py"],
+      "env": {
+        "GEOCODER_PROVIDER": "${user_config.geocoder_provider}",
+        "NOMINATIM_URL": "${user_config.nominatim_url}",
+        "SCHEME": "${user_config.scheme}",
+        "ARC_USERNAME": "${user_config.arc_username}",
+        "ARC_PASSWORD": "${user_config.arc_password}",
+        "BING_API_KEY": "${user_config.bing_api_key}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "geocoder_provider": {
+      "type": "string",
+      "title": "Geocoder Provider",
+      "description": "\"nominatim\", \"arcgis\", or \"bing\"",
+      "default": "nominatim",
+      "required": false
+    },
+    "nominatim_url": {
+      "type": "string",
+      "title": "Nominatim URL",
+      "description": "Domain for Nominatim",
+      "default": "nominatim.openstreetmap.org",
+      "required": false
+    },
+    "scheme": {
+      "type": "string",
+      "title": "Scheme",
+      "description": "http/https",
+      "default": "http",
+      "required": false
+    },
+    "arc_username": {
+      "type": "string",
+      "title": "ArcGIS Username",
+      "description": "ArcGIS username",
+      "sensitive": true,
+      "required": false
+    },
+    "arc_password": {
+      "type": "string",
+      "title": "ArcGIS Password",
+      "description": "ArcGIS password",
+      "sensitive": true,
+      "required": false
+    },
+    "bing_api_key": {
+      "type": "string",
+      "title": "Bing Maps API Key",
+      "description": "Your Bing Maps key.",
+      "sensitive": true,
+      "required": false
+    }
+  },
   "readme": "# MCP-Geo\nGeocoding MCP server with GeoPY!\n\n\n<a href=\"https://glama.ai/mcp/servers/ujss4qy5fs\">\n  <img width=\"380\" height=\"200\" src=\"https://glama.ai/mcp/servers/ujss4qy5fs/badge?v=1\" />\n</a>\n\n## 📋 System Requirements\n\n\n- Python 3.6+\n\n## 📦 Dependencies\n\nInstall all required dependencies:\n\n```bash\n# Using uv\nuv sync\n```\n\n### Required Packages\n- **fastmcp**: Framework for building Model Context Protocol servers\n- **geoPy**: Python library for accessing and geocoding/reverse geocoding locations.\n\n\nAll dependencies are specified in `requirements.txt` for easy installation.\n\n## 📑 Table of Contents\n- [System Requirements](#-system-requirements)\n- [Dependencies](#-dependencies)\n- [MCP Tools](#%EF%B8%8F-mcp-tools)\n- [Getting Started](#-getting-started)\n- [Installation Options](#-installation-options)\n  - [Claude Desktop](#option-1-install-for-claude-desktop)\n  - [Elsewhere](#option-2-install-elsewhere)\n- [Safety Features](#-safety-features)\n- [Development Documentation](#-development-documentation)\n- [Environment Variables](#%EF%B8%8F-environment-variables)\n\n## 🛠️ MCP Tools\n\nThis MCP server provides the following geocoding tools to Large Language Models (LLMs):\n\n### geocode_location\n\n- Takes a user-provided address or place name and returns the best match’s latitude, longitude, and formatted address.\n\n- Handles errors gracefully and returns None if the location is not found or if an error occurs.\n\n### reverse_geocode\n\n- Takes a latitude and longitude and returns the nearest address.\n- Useful for finding descriptive information about a point on the map.\n\n### geocode_with_details\n\n- Similar to geocode_location but returns additional data such as bounding boxes and more detailed address info, if supported by the geocoder.\n\n### geocode_multiple_locations\n\n- Accepts a list of address strings and returns a list of geocoding results (lat/lon/address) for each address.\n- Rate-limited to avoid hitting geocoding service quotas.\n\n### reverse_geocode_multiple_locations\n\n- Accepts a list of [lat, lon] pairs to perform reverse geocoding for each.\n- Returns a list of dictionaries containing lat, lon, and address or None for unsuccessful lookups, also rate-limited.\n\n### distance_between_addresses\n\n- Calculate the distance between two addresses or place names.\n- accepts 2 addresses and a unit of measurement (miles/kilometer)\n- Returns the distance in the specified unit, or None if either address could not be geocoded.\n\n### distance_between_coords\n\n- Calculate the distance between two lat/lon pairs.\n- accepts 2 pairs of latitude and longitude and a unit of measurement (kilometer/miles)\n- Returns the distance in the specified unit.\n\n\n## 🚀 Getting Started\n\nClone the repository:\n\n```bash\ngit clone https://github.com/webcoderz/MCP-Geo.git\ncd MCP-Geo\n```\n\n\n## 📦 Installation Options\n\nYou can install this MCP server in either Claude Desktop or elsewhere. Choose the option that best suits your needs.\n\n### Option 1: Install for Claude Desktop\n\nInstall using FastMCP:\n\n```bash\nfastmcp install geo.py --name \"MCP Geo\"\n```\n\n### Option 2: Install elsewhere\n\nTo use this server anywhere else:\n\n\n1. Add the following configuration to the settings file:\n\n```json\n{\n    \"mcp-geo\": {\n        \"command\": \"uv\",\n        \"args\": [\n          \"--directory\",\n          \"MCP-Geo\",\n          \"run\",\n          \"geo.py\"\n        ],\n        \"env\": {\n        \"NOMINATIM_URL\": \"${NOMINATIM_URL}\",\n        \"SCHEME\": \"http\",\n        \"GEOCODER_PROVIDER\": \"nominatim\"\n        }\n    }\n}\n```\n\n\n🔒 Safety Features\n\t•\tRate Limiting: Each geocoding call is rate-limited (e.g., 1-second delay) to avoid excessive requests that violate usage limits.\n\t•\tError Handling: Catches geopy exceptions (timeouts, service errors) and returns safe None results instead of crashing.\n\n📚 Development Documentation\n\nIf you’d like to extend or modify this server:\n\t•\tCheck geo.py for how each tool is implemented and how geopy is integrated.\n\t•\tAdjust environment variables to switch providers (Nominatim, ArcGIS, Bing, etc.).\n\t•\tLook at geopy’s official docs for advanced usage like bounding boxes, language settings, or advanced data extraction.\n\n⚙️ Environment Variables\n\nConfigure the server using environment variables:\n\n| Variable             | Description                              | Default            |\n |----------------------|------------------------------------------|--------------------|\n| `GEOCODER_PROVIDER` (optional)   | \"nominatim\", \"arcgis\", or \"bing\"     | nominatim          |\n| `NOMINATIM_URL` (optional)       | Domain for Nominatim | nominatim.openstreetmap.org       |\n| `SCHEME` (optional)              | http/https    | http               |\n| `ARC_USERNAME` (optional for ArcGIS)        | ArcGIS username            | None               |\n| `ARC_PASSWORD` (optional for ArcGIS)        | ArcGIS password      | None               |\n| `BING_API_KEY` (required for Bing)        | Your Bing Maps key.      | None               |\n\nThese can be set in your shell or in the MCP settings file for your environment. If more are needed just edit geo.py and add them in to whichever geocoder you are using.\n",
   "category": "Location",
   "quality_score": 51,

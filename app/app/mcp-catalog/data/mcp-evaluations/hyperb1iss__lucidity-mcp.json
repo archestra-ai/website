@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "lucidity_mcp/cli.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": ["${__dirname}/lucidity_mcp/cli.py", "--transport", "sse", "--host", "127.0.0.1", "--port", "6969"],
       "env": {}
     }
   },

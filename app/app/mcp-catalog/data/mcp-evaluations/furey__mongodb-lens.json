@@ -8,11 +8,11 @@
     "name": "furey"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
+    "type": "docker",
+    "entry_point": "furey/mongodb-lens",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "docker",
+      "args": ["run", "furey/mongodb-lens"],
       "env": {}
     }
   },

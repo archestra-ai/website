@@ -9,17 +9,71 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "mcp-server-rabbitmq",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uvx",
+      "args": [
+        "mcp-server-rabbitmq@latest",
+        "--rabbitmq-host",
+        "${user_config.rabbitmq_host}",
+        "--port",
+        "${user_config.port}",
+        "--username",
+        "${user_config.username}",
+        "--password",
+        "${user_config.password}",
+        "--api-port",
+        "${user_config.api_port}",
+        "--use-tls",
+        "${user_config.use_tls}"
+      ],
       "env": {}
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "rabbitmq_host": {
+      "type": "string",
+      "title": "RabbitMQ Host",
+      "description": "Hostname of the RabbitMQ server (e.g., test.rabbit.com, localhost)",
+      "required": true
+    },
+    "port": {
+      "type": "number",
+      "title": "RabbitMQ Port",
+      "description": "Port number for RabbitMQ connection (e.g., 5672)",
+      "required": true
+    },
+    "username": {
+      "type": "string",
+      "title": "RabbitMQ Username",
+      "description": "Username for RabbitMQ authentication",
+      "sensitive": true,
+      "required": true
+    },
+    "password": {
+      "type": "string",
+      "title": "RabbitMQ Password",
+      "description": "Password for RabbitMQ authentication",
+      "sensitive": true,
+      "required": true
+    },
+    "api_port": {
+      "type": "number",
+      "title": "RabbitMQ API Port",
+      "description": "Port number for the RabbitMQ admin API (defaults to 15671)",
+      "default": 15671,
+      "required": false
+    },
+    "use_tls": {
+      "type": "boolean",
+      "title": "Use TLS",
+      "description": "Set to true if using AMQPS, false otherwise",
+      "required": false
+    }
+  },
   "readme": "# RabbitMQ MCP Server\n[![smithery badge](https://smithery.ai/badge/@kenliao94/mcp-server-rabbitmq)](https://smithery.ai/server/@kenliao94/mcp-server-rabbitmq)\n\nA [Model Context Protocol](https://www.anthropic.com/news/model-context-protocol) server implementation for RabbitMQ operation.\n\n## Features\n\n### Manage your RabbitMQ message brokers using AI agent\nThis MCP servers wraps admin APIs of a RabbitMQ broker as MCP tools. It also uses Pika to interact with RabbitMQ to operate at the message level. You can also specify a different RabbitMQ broker that you want to connect to mid-conversation (default is configured during server initialization).\n\n### Supports streamable HTTP with FastMCP's `BearerAuthProvider`\nYou can start a remote RabbitMQ MCP server by configuring your own IdP and 3rd party authorization provider.\n\n### Seamless integration with MCP clients\nThe package is available on PyPI, you can use uvx without having to fork and build the MCP server locally first.\n\n\n## Installation\n\n### Smithery\n\nTo install RabbitMQ MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@kenliao94/mcp-server-rabbitmq):\n\n```bash\nnpx -y @smithery/cli install @kenliao94/mcp-server-rabbitmq --client claude\n```\n\n### Try it online\nhttps://smithery.ai/server/@kenliao94/mcp-server-rabbitmq\n\n\n### PyPI\n\nhttps://pypi.org/project/mcp-server-rabbitmq/\n\nUse uvx directly in your MCP client config\n\n```json\n{\n    \"mcpServers\": {\n      \"rabbitmq\": {\n        \"command\": \"uvx\",\n        \"args\": [\n            \"mcp-server-rabbitmq@latest\",\n            \"--rabbitmq-host\",\n            \"<hostname ex. test.rabbit.com, localhost>\",\n            \"--port\",\n            \"<port number ex. 5672>\",\n            \"--username\",\n            \"<rabbitmq username>\",\n            \"--password\",\n            \"<rabbitmq password>\",\n            \"--api-port\",\n            \"<port number for the admin API, default to 15671>\"\n            \"--use-tls\",\n            \"<true if uses amqps, false otherwise>\"\n        ]\n      }\n    }\n}\n```\n\n### From source\n1. Clone this repository.\n\n```json\n{\n    \"mcpServers\": {\n      \"rabbitmq\": {\n        \"command\": \"uv\",\n        \"args\": [\n            \"--directory\",\n            \"/path/to/repo/mcp-server-rabbitmq\",\n            \"run\",\n            \"mcp-server-rabbitmq\",\n            \"--rabbitmq-host\",\n            \"<hostname ex. test.rabbit.com, localhost>\",\n            \"--port\",\n            \"<port number ex. 5672>\",\n            \"--username\",\n            \"<rabbitmq username>\",\n            \"--password\",\n            \"<rabbitmq password>\",\n            \"--use-tls\",\n            \"<true if uses amqps, false otherwise>\"\n        ]\n      }\n    }\n}\n```\n\n## Roadmap\n1. Full feature parity with `rabbitmqadmin`\n1. Support RabbitMQ OAuth instead of basic authentication\n\n\n## Development\n\n### Setup Development Environment\n\n```bash\n# Clone the repository\ngit clone https://github.com/kenliao94/mcp-server-rabbitmq.git\ncd mcp-server-rabbitmq\n\n# Install pre-commit hooks\npre-commit install\n```\n\n### Running Tests\n\n```bash\npytest\n```\n\n### Code Quality\n\nThis project uses ruff for linting and formatting:\n\n```bash\n# Run linter\nruff check .\n\n# Run formatter\nruff format .\n```\n\n## License\n\nThis project is licensed under the Apache License 2.0 - see the LICENSE file for details.\n",
   "category": "Communication",
   "quality_score": 53,

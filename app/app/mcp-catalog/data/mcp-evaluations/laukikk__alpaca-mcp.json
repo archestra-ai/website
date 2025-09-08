@@ -9,17 +9,35 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "src/server.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "uv",
+      "args": ["--directory", "${__dirname}", "run", "src/server.py"],
+      "env": {
+        "ALPACA_PAPER_API_KEY": "${user_config.alpaca_paper_api_key}",
+        "ALPACA_PAPER_API_SECRET": "${user_config.alpaca_paper_api_secret}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "alpaca_paper_api_key": {
+      "type": "string",
+      "title": "Alpaca Paper API Key",
+      "description": "Your Alpaca Paper Trading API key",
+      "sensitive": true,
+      "required": true
+    },
+    "alpaca_paper_api_secret": {
+      "type": "string",
+      "title": "Alpaca Paper API Secret",
+      "description": "Your Alpaca Paper Trading API secret",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# Alpaca Trading MCP Server\n\n[![smithery badge](https://smithery.ai/badge/@laukikk/alpaca-mcp)](https://smithery.ai/server/@laukikk/alpaca-mcp)\n\nA Model Context Protocol (MCP) server that provides an interface to the Alpaca trading API, allowing you to manage your stock and crypto portfolio, place trades, and access market data.\n\n## Features\n\n- **Account Management**: View account details, balances, and portfolio status\n- **Trading**: Place market, limit, stop, and stop-limit orders\n- **Portfolio Management**: View positions, calculate performance, and close positions\n- **Market Data**: Access real-time quotes and historical price data\n- **Asset Information**: Get details about tradable assets\n\n## Installation\n\n### Installing via Smithery\n\nTo install Alpaca Trading MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@laukikk/alpaca-mcp):\n\n```bash\nnpx -y @smithery/cli install @laukikk/alpaca-mcp --client claude\n```\n\n### Manual Installation\n1. Clone this repository\n2. Install dependencies:\n\n```bash\npip install -e .\n```\n\nOr using uv:\n\n```bash\nuv pip install -e .\n```\n\n## Configuration\n\n1. Copy the `.env.example` file to `.env`:\n\n```bash\ncp .env.example .env\n```\n\n2. Add your Alpaca Paper Trading API credentials to the `.env` file:\n\n```\nALPACA_PAPER_API_KEY = \"your-api-key\"\nALPACA_PAPER_API_SECRET = \"your-api-secret\"\n```\n\nYou can obtain these credentials by creating an account at [Alpaca](https://app.alpaca.markets/signup).\n\n## Usage\n\nRun the MCP server:\n\n```bash\npython src/server.py\n```\n\nThe server will start and be available for MCP clients to connect to.\n\n## Testing with Claude for Desktop\n\n### Configuration:\n\nOpen your Claude for Desktop App configuration in a text editor. Create the file if it doesn't exist.\n\n- Windows: `%APPDATA%\\Claude\\claude_desktop_config.json`\n- Mac: `~/Library/Application\\ Support/Claude/claude_desktop_config.json`\n\n\nAdd the Alpaca MCP server configuration:\n\n```json\n{\n    \"mcpServers\": {\n        \"alpaca\": {\n            \"command\": \"uv\",\n            \"args\": [\n                \"--directory\",\n                \"/ABSOLUTE/PATH/TO/PARENT/FOLDER/alpaca-mcp-server\",\n                \"run\",\n                \"src/server.py\"\n            ]\n        }\n    }\n}\n```\n[MCP For Server Developers: Quickstart](https://modelcontextprotocol.io/quickstart/server)\n\n## Available Resources\n\nThe server provides the following resources:\n\n- `account://info` - Get current account information\n- `positions://all` - Get all current positions\n- `positions://{symbol}` - Get position details for a specific symbol\n- `orders://recent/{limit}` - Get most recent orders with specified limit\n- `market://{symbol}/quote` - Get current market quote for a specific symbol\n- `market://{symbol}/bars/{timeframe}` - Get historical price bars for a symbol with specified timeframe\n- `assets://list` - List tradable assets available on Alpaca\n- `assets://{symbol}` - Get detailed asset information by symbol\n\n## Available Tools\n\nThe server provides the following tools:\n\n- `get_account_info_tool` - Get current account information\n- `place_market_order` - Place a market order to buy or sell a stock\n- `place_limit_order` - Place a limit order to buy or sell a stock at a specified price\n- `place_stop_order` - Place a stop order to buy or sell a stock when it reaches a specified price\n- `place_stop_limit_order` - Place a stop-limit order combining stop and limit order features\n- `cancel_order` - Cancel an open order by its ID\n- `close_position` - Close an open position for a specific symbol\n- `get_portfolio_summary` - Get a comprehensive summary of the portfolio\n",
   "category": "Finance",
   "quality_score": 50,

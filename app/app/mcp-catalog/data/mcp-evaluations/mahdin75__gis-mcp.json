@@ -9,9 +9,9 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "gis-mcp",
     "mcp_config": {
-      "command": "unknown",
+      "command": "gis-mcp",
       "args": [],
       "env": {}
     }

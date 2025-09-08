@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
+    "entry_point": "jbang",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "jbang",
+      "args": ["jfx@quarkiverse/quarkus-mcp-servers"],
       "env": {}
     }
   },

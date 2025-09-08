@@ -9,17 +9,43 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
+    "entry_point": "assistant-mcp",
     "mcp_config": {
-      "command": "unknown",
+      "command": "${__dirname}/server/assistant-mcp",
       "args": [],
-      "env": {}
+      "env": {
+        "PINECONE_API_KEY": "${user_config.pinecone_api_key}",
+        "PINECONE_ASSISTANT_HOST": "${user_config.pinecone_assistant_host}",
+        "LOG_LEVEL": "${user_config.log_level}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "pinecone_api_key": {
+      "type": "string",
+      "title": "Pinecone API Key",
+      "description": "Your Pinecone API key",
+      "sensitive": true,
+      "required": true
+    },
+    "pinecone_assistant_host": {
+      "type": "string",
+      "title": "Pinecone Assistant API Host",
+      "description": "Pinecone Assistant API host",
+      "required": false,
+      "default": "https://prod-1-data.ke.pinecone.io"
+    },
+    "log_level": {
+      "type": "string",
+      "title": "Logging Level",
+      "description": "Logging level for the server",
+      "required": false,
+      "default": "info"
+    }
+  },
   "readme": "# Pinecone Assistant MCP Server\n\nAn MCP server implementation for retrieving information from Pinecone Assistant.\n\n## Features\n\n- Retrieves information from Pinecone Assistant\n- Supports multiple results retrieval with a configurable number of results\n\n## Prerequisites\n\n- Docker installed on your system\n- Pinecone API key - obtain from the [Pinecone Console](https://app.pinecone.io)\n- Pinecone Assistant API host - after creating an Assistant (e.g. in Pinecone Console), you can find the host in the Assistant details page\n\n## Building with Docker\n\nTo build the Docker image:\n\n```sh\ndocker build -t pinecone/assistant-mcp .\n```\n\n## Running with Docker\n\nRun the server with your Pinecone API key:\n\n```sh\ndocker run -i --rm \\\n  -e PINECONE_API_KEY=<YOUR_PINECONE_API_KEY_HERE> \\\n  -e PINECONE_ASSISTANT_HOST=<YOUR_PINECONE_ASSISTANT_HOST_HERE> \\\n  pinecone/assistant-mcp\n```\n\n### Environment Variables\n\n- `PINECONE_API_KEY` (required): Your Pinecone API key\n- `PINECONE_ASSISTANT_HOST` (optional): Pinecone Assistant API host (default: https://prod-1-data.ke.pinecone.io)\n- `LOG_LEVEL` (optional): Logging level (default: info)\n\n## Usage with Claude Desktop\n\nAdd this to your `claude_desktop_config.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"pinecone-assistant\": {\n      \"command\": \"docker\",\n      \"args\": [\n        \"run\", \n        \"-i\", \n        \"--rm\", \n        \"-e\", \n        \"PINECONE_API_KEY\", \n        \"-e\", \n        \"PINECONE_ASSISTANT_HOST\", \n        \"pinecone/assistant-mcp\"\n      ],\n      \"env\": {\n        \"PINECONE_API_KEY\": \"<YOUR_PINECONE_API_KEY_HERE>\",\n        \"PINECONE_ASSISTANT_HOST\": \"<YOUR_PINECONE_ASSISTANT_HOST_HERE>\"\n      }\n    }\n  }\n}\n```\n\n## Building from Source\n\nIf you prefer to build from source without Docker:\n\n1. Make sure you have Rust installed (https://rustup.rs/)\n2. Clone this repository\n3. Run `cargo build --release`\n4. The binary will be available at `target/release/assistant-mcp`\n\n### Testing with the inspector\n```sh\nexport PINECONE_API_KEY=<YOUR_PINECONE_API_KEY_HERE>\nexport PINECONE_ASSISTANT_HOST=<YOUR_PINECONE_ASSISTANT_HOST_HERE>\n# Run the inspector alone\nnpx @modelcontextprotocol/inspector cargo run\n# Or run with Docker directly through the inspector\nnpx @modelcontextprotocol/inspector -- docker run -i --rm -e PINECONE_API_KEY -e PINECONE_ASSISTANT_HOST pinecone/assistant-mcp\n```\n\n## License\n\nThis project is licensed under the terms specified in the LICENSE file.\n",
   "category": "AI Tools",
   "quality_score": 54,

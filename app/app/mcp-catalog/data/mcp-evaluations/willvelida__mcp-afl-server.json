@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
+    "entry_point": "dotnet",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "dotnet",
+      "args": ["run", "--project", "${__dirname}/src", "--no-build"],
       "env": {}
     }
   },

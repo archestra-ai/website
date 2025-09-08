@@ -9,17 +9,27 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
+    "entry_point": "st",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "/usr/local/bin/st",
+      "args": ["--mcp"],
+      "env": {
+        "AI_TOOLS": "${user_config.ai_tools}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "ai_tools": {
+      "type": "boolean",
+      "title": "Enable AI Tools",
+      "description": "Enables AI-driven optimizations and features for Smart Tree, such as auto-detection of AI callers.",
+      "default": true,
+      "required": false
+    }
+  },
   "readme": "# 🌳 Smart Tree - Lightning Fast Directory Visualization\n\n[![Version](https://img.shields.io/badge/version-4.8.8-blue)](https://github.com/8b-is/smart-tree)\n[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)\n[![Performance](https://img.shields.io/badge/speed-10--24x%20faster-brightgreen)](TERMINAL_EXAMPLES.md)\n[![CO2 Saved](https://img.shields.io/badge/CO2-saving%20the%20planet-success)](TERMINAL_EXAMPLES.md#environment-impact)\n[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/8b-is/smart-tree)](https://archestra.ai/mcp-catalog/8b-is__smart-tree)\n\n> **Smart Tree** is a blazingly fast, AI-friendly directory visualization tool that's 10-24x faster than traditional `tree`. Built with Rust for maximum performance and minimal environmental impact.\n\n## ✨ Key Features\n\n- **⚡ Lightning Fast**: 10-24x faster than traditional tree commands\n- **🤖 AI-Optimized**: Multiple output formats designed for LLM consumption\n- **🗜️ Quantum Compression**: Up to 10x output size reduction\n- **🔍 Smart Search**: Content search with line numbers and context\n- **📡 MCP Server**: 30+ tools for AI assistants via Model Context Protocol\n- **🌍 Eco-Friendly**: Saves CO2 with every scan through efficiency\n\n## 🚀 Quick Start\n\n```bash\n# Install Smart Tree\ncurl -sSL https://raw.githubusercontent.com/8b-is/smart-tree/main/scripts/install.sh | bash\n\n# Basic usage\nst                          # Classic tree view of current directory\nst --mode ai --compress     # AI-optimized compressed output\nst --search \"TODO\"          # Search for TODOs in all files\nst --mode quantum src/      # Quantum compression for massive codebases\n```\n\n## 📦 Installation Options\n\n### Homebrew (macOS/Linux)\n```bash\nbrew install --HEAD 8b-is/smart-tree/smart-tree\n```\n\n### From Source\n```bash\ngit clone https://github.com/8b-is/smart-tree.git\ncd smart-tree\ncargo build --release\nsudo cp target/release/st /usr/local/bin/\n```\n\n### For AI Assistants (Claude Desktop)\n```bash\nst --mcp-config >> ~/Library/Application\\ Support/Claude/claude_desktop_config.json\n```\n\n## 🎯 Common Use Cases\n\n### For Developers\n```bash\nst --mode classic --depth 3     # Quick project overview\nst --search \"function\" src/     # Find all functions\nst --mode stats                 # Project statistics\nst --mode git-status            # See git changes in tree\n```\n\n### For AI/LLMs\n```bash\nst --mode ai --compress          # Optimized for token efficiency\nst --mode quantum-semantic       # Semantic code understanding\nst --mode summary-ai             # Ultra-compressed summaries\n```\n\n### For Large Codebases\n```bash\nst --stream /huge/project        # Stream output for massive directories\nst --mode quantum --compress     # Maximum compression (100x reduction)\n```\n\n## 📊 Output Formats\n\n| Format | Description | Best For |\n|--------|-------------|----------|\n| `classic` | Traditional tree with emojis | Human viewing |\n| `ai` | Hexadecimal with compression | AI assistants |\n| `quantum` | Binary wave compression | Huge directories |\n| `quantum-semantic` | Semantic grouping | Code analysis |\n| `summary-ai` | Compressed summaries | Quick overviews |\n| `json` | Standard JSON | Data processing |\n| `stats` | Directory statistics | Project metrics |\n\nSee [TERMINAL_EXAMPLES.md](TERMINAL_EXAMPLES.md) for beautiful output examples!\n\n## 🛠️ MCP Server (AI Tools)\n\nSmart Tree includes 30+ MCP tools for AI assistants:\n\n```bash\n# Start MCP server\nst --mcp\n\n# List available tools\nst --mcp-tools\n\n# Popular tools:\n- quick_tree: 3-level overview with 10x compression\n- project_overview: Comprehensive project analysis  \n- search_in_files: Content search with line numbers\n- smart_edit: AST-aware code editing (90% token reduction)\n- semantic_analysis: Wave-based code understanding\n```\n\n## 🌍 Environmental Impact\n\nEvery Smart Tree scan saves energy and reduces CO2 emissions:\n\n- **10-24x faster** = Less CPU time\n- **Less CPU time** = Less energy consumption  \n- **Less energy** = Lower carbon footprint\n- **Your impact**: ~12g CO2 saved per 1000 scans\n\n## 📚 Documentation\n\n- [TERMINAL_EXAMPLES.md](TERMINAL_EXAMPLES.md) - Beautiful terminal output examples\n- [CLAUDE.md](CLAUDE.md) - Development guide for AI assistants\n- [docs/](docs/) - Additional documentation\n- [scripts/manage.sh](scripts/manage.sh) - Colorful project management\n\n## 🤝 Contributing\n\nWe welcome contributions! Smart Tree is developed by a unique partnership:\n- **Hue** (Human) - Vision and direction\n- **Aye** (AI) - Implementation and optimization\n- **Trish** (from Accounting) - Keeping us organized with style\n\n## 📈 Version History\n\nCurrent version: **v4.8.8**\n\nRecent improvements:\n- v4.8.8: Code formatting, linting, and maintenance updates by Claude\n- v4.8.7: Moved Marqant to Crate\n- v4.8.4: Automatic version management system\n- v4.8.3: Fixed MCP schema validation\n- v4.8.2: Local feedback fallback when API is offline\n- v4.8.1: Simplified tool requests API\n\nSee [CHANGELOG.md](CHANGELOG.md) for full history.\n\n## 🎉 Fun Facts\n\n- Smart Tree processes **670,000+ files per second**\n- Written in **100% Rust** for safety and speed\n- Includes **40+ emoji mappings** for file types\n- Has saved approximately **1.2 tons of CO2** globally\n- Features comments from \"The Cheet\" (our musical code narrator)\n\n## 📄 License\n\nMIT License - See [LICENSE](LICENSE) for details.\n\n---\n\n**Smart Tree** - Making directories beautiful and saving the planet, one scan at a time! 🌳\n\n*Developed with ❤️ by the 8b.is team*\n",
   "category": "AI Tools",
   "quality_score": 44,

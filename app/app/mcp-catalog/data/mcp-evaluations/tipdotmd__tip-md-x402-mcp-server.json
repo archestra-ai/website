@@ -8,18 +8,78 @@
     "name": "tipdotmd"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
+    "type": "node",
+    "entry_point": "dist/mcp-server/src/index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "node",
+      "args": ["${__dirname}/dist/mcp-server/src/index.js"],
+      "env": {
+        "MONGODB_URI": "${user_config.mongodb_uri}",
+        "CDP_API_KEY_ID": "${user_config.cdp_api_key_id}",
+        "CDP_API_KEY_SECRET": "${user_config.cdp_api_key_secret}",
+        "X402_WALLET_PRIVATE_KEY": "${user_config.x402_wallet_private_key}",
+        "PORT": "${user_config.port}",
+        "NODE_ENV": "${user_config.node_env}",
+        "LOG_LEVEL": "${user_config.log_level}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "mongodb_uri": {
+      "type": "string",
+      "title": "MongoDB URI",
+      "description": "Connection string for the MongoDB database. Required for production.",
+      "sensitive": true,
+      "required": true
+    },
+    "cdp_api_key_id": {
+      "type": "string",
+      "title": "Coinbase Developer Platform API Key ID",
+      "description": "Your API Key ID for Coinbase Developer Platform (CDP) disbursement. Required for production.",
+      "sensitive": true,
+      "required": true
+    },
+    "cdp_api_key_secret": {
+      "type": "string",
+      "title": "Coinbase Developer Platform API Key Secret",
+      "description": "Your API Key Secret for Coinbase Developer Platform (CDP) disbursement. Required for production.",
+      "sensitive": true,
+      "required": true
+    },
+    "x402_wallet_private_key": {
+      "type": "string",
+      "title": "x402 Wallet Private Key",
+      "description": "Private key for the x402 payment collection wallet. Required for production.",
+      "sensitive": true,
+      "required": true
+    },
+    "port": {
+      "type": "number",
+      "title": "Server Port",
+      "description": "The port on which the MCP server will listen.",
+      "default": 3000,
+      "required": false,
+      "min": 1,
+      "max": 65535
+    },
+    "node_env": {
+      "type": "string",
+      "title": "Node Environment",
+      "description": "Sets the Node.js environment. Use 'production' for full integration or 'demo' for simulation mode.",
+      "default": "production",
+      "required": false
+    },
+    "log_level": {
+      "type": "string",
+      "title": "Log Level",
+      "description": "Sets the logging verbosity (e.g., 'info', 'debug', 'warn', 'error').",
+      "default": "info",
+      "required": false
+    }
+  },
   "readme": "# [tip.md](https://tip.md) x402 + CDP MCP Server\n\n> **🏆 Hackathon Entry**: Transform any AI agent into a payment-enabled tipping agent using x402 payment collection with CDP automatic disbursement.\n\n## 🌟 About tip.md\n\n**tip.md** is a platform that allows developers to receive cryptocurrency tips directly to their wallets via a simple button embeddable in GitHub READMEs, websites, or any markdown content. It supports:\n\n- **Multiple Blockchains**: Ethereum, Base,Solana, and Bitcoin Lightning Network\n- **Direct-to-Wallet Payments**: Tips go straight to your wallet, no custody\n- **Simple Integration**: One button, works everywhere markdown is supported\n- **4% Platform Fee**: Transparent pricing, we only make money if you do\n- **Client-Side Security**: All transactions processed securely in the browser\n\nThis MCP server extends tip.md's functionality by enabling **any AI agent** to facilitate crypto tipping through the innovative x402 + CDP integration.\n\n## 🚀 Quick Demo (No Setup Required)\n\n**For Judges & Evaluators**: Experience the x402 + CDP tipping flow instantly:\n\n```bash\ngit clone https://github.com/xR0am/tip-md-x402-mcp-server.git\ncd tip-md-x402-mcp-server\nnpm install\nNODE_ENV=demo npm start\n```\n\n**⚠️ Important**: The server running alone shows logs, but to see the **demo payment functionality**, you need to connect it to an MCP client (see [Testing with MCP Clients](#testing-with-mcp-clients) below).\n\n## 🎯 What This Does\n\n**Core Innovation**: ANY AI agent + this MCP = instant payment-enabled agent\n\n- **x402 Payment Collection**: Users pay from dedicated wallets using the x402 payment protocol (Money IN)\n- **CDP Automatic Disbursement**: Backend automatically splits payments (96% recipient, 4% platform) via Coinbase Wallet API (Money OUT)\n- **MCP Tool Integration**: Works with Claude, ChatGPT, Cursor, or any MCP-compatible agent\n- **True Composability**: Transform existing AI workflows into payment-enabled experiences\n\n### 🔄 The Complete Flow\n\n1. **User: \"Check balance\"** → Agent: *\"47.50 USDC available for tipping\"*\n2. **User asks AI agent**: \"Tip @username 5 USDC\"\n3. **x402 Payment Collection**: Agent generates payment request, user pays from dedicated wallet\n4. **CDP Automatic Disbursement**: Backend splits payment and sends to recipient + platform\n5. **AI Confirms**: \"✅ Sent 5 USDC to @username\"\n\n## Architecture: True x402 → CDP Flow\n\n### User Payment Flow\n```\nUser → Dedicated Tipping Wallet → x402 Payment Collection → CDP Agent Wallet → CDP Disburses to Recipient (96%) + Platform (4%)\n```\n\n## 📋 Available MCP Tools\n\nThis MCP server exposes **7 tools** that any AI agent can use:\n\n### **💰 x402 + CDP Payment Tools (Hackathon Innovation)**\n- **`mcp_tip_md_tip_user_x402`**: Send USDC tips using x402 payment protocol with CDP automatic disbursement\n- **`mcp_tip_md_check_tipping_balance`**: Check/create your dedicated x402 tipping wallet balance and info\n\n### **🔧 Wallet Management Tools**  \n- **`mcp_tip_md_export_tipping_wallet`**: Export your tipping wallet private key (security sensitive)\n- **`mcp_tip_md_withdraw_tipping_funds`**: Withdraw USDC from your tipping wallet to any address\n\n### **🔍 User & Network Tools**\n- **`mcp_tip_md_get_user_wallet_types`**: Check recipient's supported cryptocurrencies and wallet types\n- **`mcp_tip_md_crypto_tipping`**: Manual crypto tipping information for agents with wallet to instruct (Ethereum, Base, Solana - no x402/CDP flow)\n\n### **🏥 System Tools**\n- **`mcp_tip_md_ping`**: Health check endpoint\n\n## 🧪 Testing with MCP Clients\n\nTo see the **actual demo payment functionality**, you need to connect the MCP server to a compatible client:\n\n### Cursor IDE Setup\n\n1. **Edit your MCP configuration** (`~/.cursor/mcp.json`):\n```json\n{\n  \"mcpServers\": {\n    \"tip-md-demo\": {\n      \"command\": \"node\",\n      \"args\": [\"dist/mcp-server/src/index.js\"],\n      \"cwd\": \"/path/to/tip-md-x402-mcp-server\",\n      \"env\": {\n        \"NODE_ENV\": \"demo\"\n      }\n    }\n  }\n}\n```\n\n2. **Restart Cursor** and look for the 🔨 tools icon\n\n3. **Test the demo**:\n   - Type: \"Tip user johndoe 5 USDC using base blockchain\"\n   - Watch the x402 + CDP simulation in action!\n\n### Claude Desktop Setup\n\n1. **Install Supergateway** (bridges our HTTP transport to stdio):\n```bash\nnpm install -g supergateway\n```\n\n2. **Configure Claude Desktop** (`~/Library/Application Support/Claude/claude_desktop_config.json`):\n```json\n{\n  \"mcpServers\": {\n    \"tip-md-demo\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"supergateway\",\n        \"--httpStream\",\n        \"http://localhost:3000/mcp\",\n        \"--outputTransport\",\n        \"stdio\"\n      ]\n    }\n  }\n}\n```\n\n3. **Start the MCP server** in demo mode:\n```bash\nNODE_ENV=demo npm start\n```\n\n4. **Restart Claude Desktop** and test with: \"Show me available tip.md tools\"\n\n### Other MCP Clients\n\nFor clients supporting HTTP-stream transport:\n- **Endpoint**: `http://localhost:3000/mcp` (when running locally)\n- **Transport**: HTTP-stream\n- **Environment**: Set `NODE_ENV=demo` for simulation mode\n\n## 🛠️ Production Integration (Requires Setup)\n\nFor full integration with the tip.md platform:\n\n### Environment Variables\n\nCreate a `.env` file:\n\n```bash\n# Database Connection (Required for production)\nMONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/database\n\n# Coinbase Developer Platform (Required for CDP disbursement)\nCDP_API_KEY_ID=your_cdp_api_key_id\nCDP_API_KEY_SECRET=your_cdp_api_key_secret\n\n# x402 Configuration (Required for payment collection)\nX402_WALLET_PRIVATE_KEY=your_x402_wallet_private_key\n\n# Optional Configuration\nPORT=3000\nNODE_ENV=production\nLOG_LEVEL=info\n```\n\n### Production Deployment\n\n```bash\nnpm install\nnpm run build\nnpm start\n```\n\n## 🏗️ Technical Architecture\n\n### x402 Payment Collection\n- **Dedicated Wallets**: Each user gets a unique payment wallet\n- **Protocol Compliance**: Full x402 specification implementation\n  \n### CDP Automatic Disbursement  \n- **Smart Splitting**: 96% to recipient, 4% to platform\n- **Instant Settlement**: Automated via Coinbase Developer Platform\n\n### MCP Integration\n- **Universal Compatibility**: Works with any MCP-compatible AI agent\n- **Structured Responses**: Rich JSON responses for seamless integration\n- **Error Handling**: Graceful fallbacks and detailed error messages\n\n## 🎖️ Hackathon Submission Details\n\n**Challenge**: Coinbase x402 + CDP Integration\n**Innovation**: Universal AI agent payment enablement\n**Demo Mode**: `NODE_ENV=demo npm start`\n**Repository**: https://github.com/xR0am/tip-md-x402-mcp-server\n\n### Key Differentiators\n\n1. **Universal Agent Integration**: Any MCP client becomes payment-enabled\n2. **Complete Payment Flow**: x402 collection + CDP disbursement in one solution\n3. **Zero-Setup Demo**: Judges can evaluate immediately\n4. **Production-Ready**: Already integrated with tip.md platform\n\n## 📚 Learn More\n\n- **tip.md Platform**: https://tip.md\n- **MCP Protocol**: https://modelcontextprotocol.io\n- **x402 Specification**: https://docs.coinbase.com/x402\n- **Coinbase CDP**: https://docs.cdp.coinbase.com\n\n## 🤝 Support\n\nFor questions about this hackathon entry:\n- **Issues**: Open a GitHub issue\n- **Email**: support@tip.md\n- **Demo Problems**: Ensure you're testing through an MCP client, not just the server logs\n\n---\n\n**Built for the Coinbase x402 + CDP Hackathon** 🏆\n",
   "category": "AI Tools",
   "quality_score": 32,

@@ -9,9 +9,9 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
+    "entry_point": "mcp-server-wazuh",
     "mcp_config": {
-      "command": "unknown",
+      "command": "./mcp-server-wazuh",
       "args": [],
       "env": {}
     }

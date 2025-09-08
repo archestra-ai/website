@@ -8,11 +8,11 @@
     "name": "pskill9"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
+    "type": "python",
+    "entry_point": "main.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "python",
+      "args": ["${__dirname}/server/main.py"],
       "env": {}
     }
   },

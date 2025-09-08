@@ -957,17 +957,22 @@ async function extractCanonicalServerAndUserConfigConfig(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  // Skip if human evaluation (evaluation_model === null AND configs already exist)
-  if (server.evaluation_model === null && server.server && server.user_config && !force) {
-    console.log(`  ⏭️  Canonical Server and User Config: Skipped (human evaluation)`);
-    return server;
+  if (server.server.mcp_config.command === 'unknown') {
+    console.log(`  ⏭️  Canonical Server and User Config: Evaluating as command is currently unknown`);
+  } else {
+    // Skip if human evaluation (evaluation_model === null AND configs already exist)
+    if (server.evaluation_model === null && server.server && server.user_config && !force) {
+      console.log(`  ⏭️  Canonical Server and User Config: Skipped (human evaluation)`);
+      return server;
+    }
+
+    // Skip if already exists and not forcing
+    if (server?.server && server?.user_config && !force) {
+      console.log(`  ⏭️  Canonical Server and User Config: Skipped (already exists)`);
+      return server;
+    }
   }
 
-  // Skip if already exists and not forcing
-  if (server?.server && server?.user_config && !force) {
-    console.log(`  ⏭️  Canonical Server and User Config: Skipped (already exists)`);
-    return server;
-  }
   console.log(`  🔄 Canonical Server and User Config: Extracting...`);
 
   const content = server.readme || server.description;
@@ -2170,3 +2175,4 @@ if (require.main === module) {
 }
 
 export { evaluateAllRepos, evaluateSingleRepo };
+('');

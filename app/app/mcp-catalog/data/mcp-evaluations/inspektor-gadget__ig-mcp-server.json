@@ -9,17 +9,42 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
+    "entry_point": "ig-mcp-server",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "ig-mcp-server",
+      "args": ["${user_config.gadget_config_arg}"],
+      "env": {
+        "KUBECONFIG": "${user_config.kubeconfig_path}",
+        "READ_ONLY": "${user_config.read_only}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "kubeconfig_path": {
+      "type": "file",
+      "title": "Kubeconfig File Path",
+      "description": "Path to your Kubernetes kubeconfig file.",
+      "required": true,
+      "default": "${HOME}/.kube/config"
+    },
+    "gadget_config_arg": {
+      "type": "string",
+      "title": "Gadget Discovery Configuration",
+      "description": "Configure gadget discovery. Use '-gadget-discoverer=artifacthub' for automatic discovery or '-gadget-images=trace_dns:latest,trace_tcp:latest' for specific images.",
+      "required": false,
+      "default": "-gadget-discoverer=artifacthub"
+    },
+    "read_only": {
+      "type": "boolean",
+      "title": "Read-Only Mode",
+      "description": "If enabled, deployment and undeployment of Inspektor Gadget will be skipped.",
+      "required": false,
+      "default": false
+    }
+  },
   "readme": "[![GitHub Release](https://img.shields.io/github/v/release/inspektor-gadget/ig-mcp-server)](https://github.com/inspektor-gadget/ig-mcp-server/releases)\n[![License](https://img.shields.io/github/license/inspektor-gadget/ig-mcp-server)](LICENSE)\n[![Slack](https://img.shields.io/badge/slack-%23inspektor--gadget-brightgreen)](https://kubernetes.slack.com/channels/inspektor-gadget)\n[![Go Report Card](https://goreportcard.com/badge/github.com/inspektor-gadget/ig-mcp-server)](https://goreportcard.com/report/github.com/inspektor-gadget/ig-mcp-server)\n[![Examples](https://img.shields.io/badge/examples-view-orange)](examples/README.md)\n[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/inspektor-gadget/ig-mcp-server)\n\n# Inspektor Gadget MCP Server\n\nAI-powered debugging and inspection for Kubernetes clusters using Inspektor Gadget.\n\nhttps://github.com/user-attachments/assets/86367982-c0aa-455c-ac9e-ca43348899df\n\n## Features\n\n- AI-powered interface for Kubernetes troubleshooting and monitoring\n- One-click Inspektor Gadget deployment and removal\n- Intelligent output summarization and analysis\n- Automatic gadget discovery from Artifact Hub\n\n## Quick Start\n\n1. Ensure you have Docker and a valid `kubeconfig` file\n2. Configure the MCP server in VS Code (see [INSTALL.md](INSTALL.md))\n3. Start using AI commands in VS Code Copilot Chat\n4. Try: \"Show me DNS traffic\" or \"Deploy Inspektor Gadget\"\n5. Head to [examples](examples/README.md) for detailed examples.\n\n## Installation\n\nYou can use the following commands to quickly configure the Inspektor Gadget MCP server using either Docker or a binary in your VS Code settings.\n\n### Docker\n\n<summary>\n  <details>\n    <summary>Install Inspektor Gadget MCP Server - Artifact Hub Discovery</summary>\n    <pre><code>code --add-mcp '{\n  \"name\": \"inspektor-gadget\",\n  \"command\": \"docker\",\n  \"args\": [\n    \"run\",\n    \"-i\",\n    \"--rm\",\n    \"--mount\",\n    \"type=bind,src=${env:HOME}/.kube/config,dst=/kubeconfig\",\n    \"ghcr.io/inspektor-gadget/ig-mcp-server:latest\",\n    \"-gadget-discoverer=artifacthub\"\n  ]\n}'</code></pre>\n  </details>\n<details>\n    <summary>Install Inspektor Gadget MCP Server - Specific Gadgets</summary>\n    <pre><code>code --add-mcp '{\n  \"name\": \"inspektor-gadget\",\n  \"command\": \"docker\",\n  \"args\": [\n    \"run\",\n    \"-i\",\n    \"--rm\",\n    \"--mount\",\n    \"type=bind,src=${env:HOME}/.kube/config,dst=/kubeconfig\",\n    \"ghcr.io/inspektor-gadget/ig-mcp-server:latest\",\n    \"-gadget-images=trace_dns:latest,trace_tcp:latest,snapshot_process:latest,snapshot_socket:latest\"\n  ]\n}'</code></pre>\n  </details>\n</summary>\n\n### Binary\n\nYou can head to the [Releases](https://github.com/inspektor-gadget/ig-mcp-server/releases) page and download the latest binary for your platform:\n\n<summary>\n  <details>\n    <summary>Linux</summary>\n    <pre><code>MCP_VERSION=$(curl -s https://api.github.com/repos/inspektor-gadget/ig-mcp-server/releases/latest | jq -r .tag_name)\nMCP_ARCH=amd64\ncurl -sL https://github.com/inspektor-gadget/ig-mcp-server/releases/download/${MCP_VERSION}/ig-mcp-server-linux-${MCP_ARCH}.tar.gz | sudo tar -C /usr/local/bin -xzf - ig-mcp-server\n</code></pre>\n  </details>\n  <details>\n    <summary>macOS</summary>\n    <pre><code>MCP_VERSION=$(curl -s https://api.github.com/repos/inspektor-gadget/ig-mcp-server/releases/latest | jq -r .tag_name)\nMCP_ARCH=arm64\ncurl -sL https://github.com/inspektor-gadget/ig-mcp-server/releases/download/${MCP_VERSION}/ig-mcp-server-darwin-${MCP_ARCH}.tar.gz | sudo tar -C /usr/local/bin -xzf - ig-mcp-server\n</code></pre>\n  </details>\n  <details>\n    <summary>Windows</summary>\n    <pre><code>$MCP_VERSION = (curl.exe -s https://api.github.com/repos/inspektor-gadget/ig-mcp-server/releases/latest | ConvertFrom-Json).tag_name\n$MCP_ARCH = \"amd64\"\ncurl.exe -L \"https://github.com/inspektor-gadget/ig-mcp-server/releases/download/$MCP_VERSION/ig-mcp-server-windows-$MCP_ARCH.tar.gz\" -o \"ig-mcp-server.tar.gz\"\n$destPath = \"C:\\Program Files\\ig-mcp-server\"\nif (-Not (Test-Path $destPath -PathType Container)) { mkdir $destPath}\ntar.exe -xzf \"ig-mcp-server.tar.gz\" -C \"$destPath\"\nrm ig-mcp-server.tar.gz\nWrite-Host \"✅ Extracted to $destPath\"\nWrite-Host \"👉 Please add '$destPath' to your PATH environment variable manually.\"\n</code></pre>\n  </details>\n</summary>\n\nAfter downloading, you can run the following command to add it to your VS Code MCP configuration.\n\n<summary>\n  <details>\n    <summary>Install Inspektor Gadget MCP Server - Artifact Hub Discovery</summary>\n    <pre><code>code --add-mcp '{\n  \"name\": \"inspektor-gadget\",\n  \"command\": \"ig-mcp-server\",\n  \"args\": [\n    \"-gadget-discoverer=artifacthub\"\n  ]\n}'</code></pre>\n  </details>\n<details>\n    <summary>Install Inspektor Gadget MCP Server - Specific Gadgets</summary>\n    <pre><code>code --add-mcp '{\n    \"name\": \"inspektor-gadget\",\n    \"command\": \"ig-mcp-server\",\n    \"args\": [\n      \"-gadget-images=trace_dns:latest,trace_tcp:latest\"\n    ]\n}'</code></pre>\n    </details>\n</summary>\n\n## Available Tools\n\n### Management Tools\n- **is_inspektor_gadget_deployed**: Checks if Inspektor Gadget is deployed in your cluster\n- **deploy_inspektor_gadget**: Installs Inspektor Gadget in your cluster (skipped if `-read-only` is set)\n- **undeploy_inspektor_gadget**: Removes Inspektor Gadget from your cluster (skipped if `-read-only` is set)\n\n### Lifecycle Tools\n\n- **stop-gadget**: Stops a background running gadget\n- **get-results**: Retrieves results from a background running gadget\n- **wait**: Waits for a gadget to finish running\n\n### Dynamic Tools\n\nEach gadget is registered as its own MCP tool (e.g., `trace_dns`, `trace_tcp`, etc.) and supports running gadgets in foreground mode, which is useful for debugging/development and also in background mode for observability.\n\nAlso, You can control which gadgets are available by configuring the MCP server with the `-gadget-discoverer` or `-gadget-images` options, allowing you to limit the tools to only those you need.\n\n#### Gadget Discovery\n\nGadget discovery allows controlling which gadgets are available for use. You can choose between two methods:\n\n- **Automatic**: Uses Artifact Hub (`-gadget-discoverer=artifacthub`)\n- **Manual**: Specify gadgets directly (`-gadget-images=trace_dns:latest`)\n\n![Gadget Tools](media/gadget-tools.png)\n\nSee [INSTALL.md](INSTALL.md) for configuration options.\n\n## Security Notes\n\n- Requires read-only access to your kubeconfig file\n- Needs network access for Artifact Hub discovery\n- See [security guide](SECURITY.md) for setting up server with minimal permissions\n\n## Resources\n\n- 📖 [Documentation](https://inspektor-gadget.io/docs/)\n- 🔍 [Examples](examples/README.md)\n- 🐛 [Issues](https://github.com/inspektor-gadget/ig-mcp-server/issues)\n- 💬 [Slack](https://kubernetes.slack.com/channels/inspektor-gadget)\n- 🌐 [Website](https://inspektor-gadget.io/)\n- 📋 [Troubleshooting](TROUBLESHOOTING.md)\n- 🔒 [Security Guide](SECURITY.md)\n\n## Related Projects\n\n- [Inspektor Gadget](https://github.com/inspektor-gadget/inspektor-gadget) - Kubernetes debugging tool\n- [MCP Specification](https://spec.modelcontextprotocol.io/) - Model Context Protocol\n\n## License\n\nApache License 2.0 - see [LICENSE](LICENSE) for details.\n",
   "category": "Development",
   "quality_score": 64,

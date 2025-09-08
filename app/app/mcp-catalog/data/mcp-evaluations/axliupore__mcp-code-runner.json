@@ -8,11 +8,11 @@
     "name": "axliupore"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
+    "type": "docker",
+    "entry_point": "axliupore/mcp-code-runner",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "docker",
+      "args": ["run", "axliupore/mcp-code-runner"],
       "env": {}
     }
   },

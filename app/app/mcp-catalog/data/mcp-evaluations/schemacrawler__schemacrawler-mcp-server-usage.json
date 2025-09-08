@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "binary",
-    "entry_point": "index.js",
+    "entry_point": "docker",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "docker",
+      "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
       "env": {}
     }
   },

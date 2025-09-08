@@ -9,17 +9,107 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "__main__.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+      "command": "python3",
+      "args": [
+        "-m",
+        "ydb_mcp",
+        "--ydb-auth-mode",
+        "${user_config.ydb_auth_mode}",
+        "--ydb-login",
+        "${user_config.ydb_login}",
+        "--ydb-password",
+        "${user_config.ydb_password}",
+        "--ydb-access-token",
+        "${user_config.ydb_access_token}",
+        "--ydb-sa-key-file",
+        "${user_config.ydb_sa_key_file}"
+      ],
+      "env": {
+        "YDB_ENDPOINT": "${user_config.ydb_endpoint}",
+        "YDB_DATABASE": "${user_config.ydb_database}",
+        "MCP_HOST": "${user_config.mcp_host}",
+        "MCP_PORT": "${user_config.mcp_port}",
+        "LOG_LEVEL": "${user_config.log_level}"
+      }
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "ydb_endpoint": {
+      "type": "string",
+      "title": "YDB Endpoint",
+      "description": "Endpoint for the YDB database connection.",
+      "default": "grpc://localhost:2136",
+      "required": false
+    },
+    "ydb_database": {
+      "type": "string",
+      "title": "YDB Database",
+      "description": "Path to the YDB database.",
+      "default": "/local",
+      "required": false
+    },
+    "mcp_host": {
+      "type": "string",
+      "title": "MCP Server Host",
+      "description": "Host address for the MCP server.",
+      "default": "127.0.0.1",
+      "required": false
+    },
+    "mcp_port": {
+      "type": "number",
+      "title": "MCP Server Port",
+      "description": "Port for the MCP server.",
+      "default": 8989,
+      "required": false
+    },
+    "log_level": {
+      "type": "string",
+      "title": "Log Level",
+      "description": "Control test output verbosity (DEBUG, INFO, WARNING, ERROR).",
+      "default": "WARNING",
+      "required": false
+    },
+    "ydb_auth_mode": {
+      "type": "string",
+      "title": "YDB Authentication Mode",
+      "description": "Authentication mode for YDB (anonymous, login-password, access-token, service-account).",
+      "default": "anonymous",
+      "required": false
+    },
+    "ydb_login": {
+      "type": "string",
+      "title": "YDB Login",
+      "description": "Username for login/password authentication.",
+      "sensitive": true,
+      "required": false
+    },
+    "ydb_password": {
+      "type": "string",
+      "title": "YDB Password",
+      "description": "Password for login/password authentication.",
+      "sensitive": true,
+      "required": false
+    },
+    "ydb_access_token": {
+      "type": "string",
+      "title": "YDB Access Token",
+      "description": "Access token for token authentication.",
+      "sensitive": true,
+      "required": false
+    },
+    "ydb_sa_key_file": {
+      "type": "file",
+      "title": "YDB Service Account Key File",
+      "description": "Path to the service account key file for authentication.",
+      "default": "${HOME}/sa_key.json",
+      "required": false
+    }
+  },
   "readme": "# YDB MCP\n---\n[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/ydb-platform/ydb-mcp/blob/main/LICENSE)\n[![PyPI version](https://badge.fury.io/py/ydb-mcp.svg)](https://badge.fury.io/py/ydb-mcp)\n\n[Model Context Protocol server](https://modelcontextprotocol.io/) for [YDB](https://ydb.tech). It allows to work with YDB databases from any [LLM](https://en.wikipedia.org/wiki/Large_language_model) that supports MCP. This integration enables AI-powered database operations and natural language interactions with your YDB instances.\n\n<a href=\"https://glama.ai/mcp/servers/@ydb-platform/ydb-mcp\">\n  <img width=\"380\" height=\"200\" src=\"https://glama.ai/mcp/servers/@ydb-platform/ydb-mcp/badge\" alt=\"YDB MCP server\" />\n</a>\n\n## Usage\n\n### Via uvx\n\n[uvx](https://docs.astral.sh/uv/concepts/tools/), which is an allias for `uv run tool`, allows you to run various python applications without explicitly installing them. Below are examples of how to configure YDB MCP using `uvx`.\n\n#### Example: Using Anonymous Authentication\n\n```json\n{\n  \"mcpServers\": {\n    \"ydb\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"ydb-mcp\",\n        \"--ydb-endpoint\", \"grpc://localhost:2136\",\n        \"--ydb-database\", \"/local\"\n      ]\n    }\n  }\n}\n```\n\n### Via pipx\n\n[pipx](https://pipx.pypa.io/stable/) allows you to run various applications from PyPI without explicitly installing each one. However, it must be [installed](https://pipx.pypa.io/stable/#install-pipx) first. Below are examples of how to configure YDB MCP using `pipx`.\n\n#### Example: Using Anonymous Authentication\n\n```json\n{\n  \"mcpServers\": {\n    \"ydb\": {\n      \"command\": \"pipx\",\n      \"args\": [\n        \"run\", \"ydb-mcp\",\n        \"--ydb-endpoint\", \"grpc://localhost:2136\",\n        \"--ydb-database\", \"/local\"\n      ]\n    }\n  }\n}\n```\n\n### Via pip\n\nYDB MCP can be installed using `pip`, [Python's package installer](https://pypi.org/project/pip/). The package is [available on PyPI](https://pypi.org/project/ydb-mcp/) and includes all necessary dependencies.\n\n```bash\npip install ydb-mcp\n```\n\nTo get started with YDB MCP, you'll need to configure your MCP client to communicate with the YDB instance. Below are example configuration files that you can customize according to your setup and then put into MCP client's settings. Path to the Python interpreter might also need to be adjusted to the correct virtual environment that has the `ydb-mcp` package installed.\n\n#### Example: Using Anonymous Authentication\n\n```json\n{\n  \"mcpServers\": {\n    \"ydb\": {\n      \"command\": \"python3\",\n      \"args\": [\n        \"-m\", \"ydb_mcp\",\n        \"--ydb-endpoint\", \"grpc://localhost:2136\",\n        \"--ydb-database\", \"/local\"\n      ]\n    }\n  }\n}\n```\n\n### Authentication\n\nRegardless of the usage method (`uvx`, `pipx` or `pip`), you can configure authentication for your YDB installation. To do this, pass special command line arguments.\n\n#### Using Login/Password Authentication\n\nTo use login/password authentication, specify the `--ydb-auth-mode`, `--ydb-login`, and `--ydb-password` arguments:\n\n```json\n{\n  \"mcpServers\": {\n    \"ydb\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"ydb-mcp\",\n        \"--ydb-endpoint\", \"grpc://localhost:2136\",\n        \"--ydb-database\", \"/local\",\n        \"--ydb-auth-mode\", \"login-password\",\n        \"--ydb-login\", \"<your-username>\",\n        \"--ydb-password\", \"<your-password>\"\n      ]\n    }\n  }\n}\n```\n\n#### Using Access Token Authentication\n\nTo use access token authentication, specify the `--ydb-auth-mode` and `--ydb-access-token` arguments:\n\n```json\n{\n  \"mcpServers\": {\n    \"ydb\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"ydb-mcp\",\n        \"--ydb-endpoint\", \"grpc://localhost:2136\",\n        \"--ydb-database\", \"/local\",\n        \"--ydb-auth-mode\", \"access-token\",\n        \"--ydb-access-token\", \"qwerty123\"\n      ]\n    }\n  }\n}\n```\n\n#### Using Service Account Authentication\n\nTo use service account authentication, specify the `--ydb-auth-mode` and `--ydb-sa-key-file` arguments:\n\n```json\n{\n  \"mcpServers\": {\n    \"ydb\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"ydb-mcp\",\n        \"--ydb-endpoint\", \"grpc://localhost:2136\",\n        \"--ydb-database\", \"/local\",\n        \"--ydb-auth-mode\", \"service-account\",\n        \"--ydb-sa-key-file\", \"~/sa_key.json\"\n      ]\n    }\n  }\n}\n```\n\n## Available Tools\n\nYDB MCP provides the following tools for interacting with YDB databases:\n\n- `ydb_query`: Run a SQL query against a YDB database\n  - Parameters:\n    - `sql`: SQL query string to execute\n\n- `ydb_query_with_params`: Run a parameterized SQL query with JSON parameters\n  - Parameters:\n    - `sql`: SQL query string with parameter placeholders\n    - `params`: JSON string containing parameter values\n\n- `ydb_list_directory`: List directory contents in YDB\n  - Parameters:\n    - `path`: YDB directory path to list\n\n- `ydb_describe_path`: Get detailed information about a YDB path (table, directory, etc.)\n  - Parameters:\n    - `path`: YDB path to describe\n\n- `ydb_status`: Get the current status of the YDB connection\n\n## Development\n\nThe project uses [Make](https://www.gnu.org/software/make/) as its primary development tool, providing a consistent interface for common development tasks.\n\n### Available Make Commands\n\nThe project includes a comprehensive Makefile with various commands for development tasks. Each command is designed to streamline the development workflow and ensure code quality:\n\n- `make all`: Run clean, lint, and test in sequence (default target)\n- `make clean`: Remove all build artifacts and temporary files\n- `make test`: Run all tests using pytest\n  - Can be configured with environment variables:\n    - `LOG_LEVEL` (default: WARNING) - Control test output verbosity (DEBUG, INFO, WARNING, ERROR)\n- `make unit-tests`: Run only unit tests with verbose output\n  - Can be configured with environment variables:\n    - `LOG_LEVEL` (default: WARNING) - Control test output verbosity (DEBUG, INFO, WARNING, ERROR)\n- `make integration-tests`: Run only integration tests with verbose output\n  - Can be configured with environment variables:\n    - `YDB_ENDPOINT` (default: grpc://localhost:2136)\n    - `YDB_DATABASE` (default: /local)\n    - `MCP_HOST` (default: 127.0.0.1)\n    - `MCP_PORT` (default: 8989)\n    - `LOG_LEVEL` (default: WARNING) - Control test output verbosity (DEBUG, INFO, WARNING, ERROR)\n- `make run-server`: Start the YDB MCP server\n  - Can be configured with environment variables:\n    - `YDB_ENDPOINT` (default: grpc://localhost:2136)\n    - `YDB_DATABASE` (default: /local)\n  - Additional arguments can be passed using `ARGS=\"your args\"`\n- `make lint`: Run all linting checks (flake8, mypy, black, isort)\n- `make format`: Format code using black and isort\n- `make install`: Install the package in development mode\n- `make dev`: Install the package in development mode with all development dependencies\n\n### Test Verbosity Control\n\nBy default, tests run with minimal output (WARNING level) to keep the output clean. You can control the verbosity of test output using the `LOG_LEVEL` environment variable:\n\n```bash\n# Run all tests with debug output\nmake test LOG_LEVEL=DEBUG\n\n# Run integration tests with info output\nmake integration-tests LOG_LEVEL=INFO\n\n# Run unit tests with warning output (default)\nmake unit-tests LOG_LEVEL=WARNING\n```\n\nAvailable log levels:\n- `DEBUG`: Show all debug messages, useful for detailed test flow\n- `INFO`: Show informational messages and above\n- `WARNING`: Show only warnings and errors (default)\n- `ERROR`: Show only error messages",
   "category": "AI Tools",
   "quality_score": 60,

@@ -9,9 +9,9 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "mcp_internet_speed_test/main.py",
     "mcp_config": {
-      "command": "unknown",
+      "command": "mcp-internet-speed-test",
       "args": [],
       "env": {}
     }

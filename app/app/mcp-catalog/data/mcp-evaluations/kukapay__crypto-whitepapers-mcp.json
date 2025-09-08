@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "python",
-    "entry_point": "index.js",
+    "entry_point": "crypto_whitepapers_mcp/__main__.py",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "uv",
+      "args": ["--directory", "${__dirname}", "run", "crypto-whitepapers-mcp"],
       "env": {}
     }
   },

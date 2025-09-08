@@ -11,15 +11,30 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": ["mcp-server-iaptic", "--api-key", "${user_config.api_key}", "--app-name", "${user_config.app_name}"],
       "env": {}
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "Iaptic API Key",
+      "description": "Your API key for interacting with the Iaptic API.",
+      "sensitive": true,
+      "required": true
+    },
+    "app_name": {
+      "type": "string",
+      "title": "Iaptic App Name",
+      "description": "The name of your Iaptic application.",
+      "sensitive": false,
+      "required": true
+    }
+  },
   "readme": "# MCP Server for Iaptic\n[![smithery badge](https://smithery.ai/badge/mcp-server-iaptic)](https://smithery.ai/server/mcp-server-iaptic)\n\nA Model Context Protocol server for interacting with the [Iaptic API](https://www.iaptic.com). This server allows Claude or other AIs to interact with your Iaptic data to answer questions about your customers, purchases, transactions, and statistics.\n\n## Installation\n\n### Installing via Smithery\n\nTo install Iaptic for Claude Desktop automatically via [Smithery](https://smithery.ai/server/mcp-server-iaptic):\n\n```bash\nnpx -y @smithery/cli install mcp-server-iaptic --client claude\n```\n\n### Manual Installation\n```bash\n# Run directly with npx\nnpx mcp-server-iaptic --api-key YOUR_API_KEY --app-name YOUR_APP_NAME\n\n# Or install globally\nnpm install -g mcp-server-iaptic\nmcp-server-iaptic --api-key YOUR_API_KEY --app-name YOUR_APP_NAME\n```\n\n## Usage with Claude Desktop\n\nAdd to your Claude Desktop configuration file:\n\n```json\n{\n  \"iaptic\": {\n    \"command\": \"npx\",\n    \"args\": [\n      \"mcp-server-iaptic\",\n      \"--api-key\", \"your-api-key-here\",\n      \"--app-name\", \"your-app-name-here\"\n    ]\n  }\n}\n```\n\n## Available Tools\n\n### Customers\n- `customer_list`: List customers\n- `customer_get`: Get customer details by ID\n\n### Purchases\n- `purchase_list`: List purchases\n  - `limit`: Maximum number of purchases to return (default: 100, max: 1000)\n  - `offset`: Number of purchases to skip for pagination\n  - `startdate`: Filter purchases after this date (ISO format, e.g. 2024-01-01)\n  - `enddate`: Filter purchases before this date (ISO format, e.g. 2024-12-31)\n  - `customerId`: Filter by customer ID\n- `purchase_get`: Get purchase details by ID\n\n### Transactions\n- `transaction_list`: List transactions with pagination and date filtering\n  - `limit`: Maximum number of transactions to return (default: 100, max: 1000)\n  - `offset`: Number of transactions to skip for pagination\n  - `startdate`: Filter transactions after this date (ISO format, e.g. 2024-01-01)\n  - `enddate`: Filter transactions before this date (ISO format, e.g. 2024-12-31)\n  - `purchaseId`: Filter by purchase ID\n- `transaction_get`: Get transaction details by ID\n\n### Statistics\n- `stats_get`: Get general statistics about transactions and revenue\n- `stats_app`: Get app-specific statistics\n\n### Events\n- `event_list`: List recent events with pagination and date filtering\n  - `limit`: Maximum number of events to return (default: 100)\n  - `offset`: Number of events to skip for pagination\n  - `startdate`: Filter events after this date (ISO format, e.g. 2024-01-01)\n  - `enddate`: Filter events before this date (ISO format, e.g. 2024-12-31)\n\n### App Management\n- `iaptic_switch_app`: Switch to a different Iaptic app\n  - `appName`: Name of the app to switch to\n  - `apiKey`: API key for the app\n- `iaptic_reset_app`: Reset to the default Iaptic app\n- `iaptic_current_app`: Get information about the currently active app\n\n## Development\n\n```bash\n# Install dependencies\nnpm install\n\n# Run in development mode\nnpm run dev\n\n# Build for production\nnpm run build\n\n# Run production build\nnpm start\n```\n\n## Requirements\n\n- Node.js >= 18\n- An Iaptic account with API credentials\n\n## License\n\nMIT \n",
   "category": "CRM",
   "quality_score": 50,

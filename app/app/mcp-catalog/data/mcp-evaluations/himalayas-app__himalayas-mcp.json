@@ -8,11 +8,11 @@
     "name": "Himalayas-App"
   },
   "server": {
-    "type": "binary",
+    "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": ["mcp-remote", "https://mcp.himalayas.app/sse"],
       "env": {}
     }
   },

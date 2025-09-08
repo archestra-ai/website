@@ -9,10 +9,10 @@
   },
   "server": {
     "type": "node",
-    "entry_point": "index.js",
+    "entry_point": "index.ts",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "bunx",
+      "args": ["cal-mcp"],
       "env": {}
     }
   },

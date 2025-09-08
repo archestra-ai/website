@@ -11,8 +11,8 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "bun",
+      "args": ["${__dirname}/packages/bitte-ai/index.js"],
       "env": {}
     }
   },
