@@ -8,14 +8,12 @@
     "name": "ferrants"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["server.py"],
-      "env": {
-        "PORT": "${user_config.port}"
-      }
+    "command": "python",
+    "args": [
+      "server.py"
+    ],
+    "env": {
+      "PORT": "${user_config.port}"
     }
   },
   "tools": [],
@@ -35,18 +33,20 @@
   "quality_score": 20,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "memvid-mcp-server": {
-          "command": "python",
-          "args": ["server.py"],
-          "env": {}
-        },
-        "memvid-mcp-server-configured": {
-          "command": "python",
-          "args": ["server.py"],
-          "env": {
-            "PORT": "3002"
-          }
+      "memvid-mcp-server": {
+        "command": "python",
+        "args": [
+          "server.py"
+        ],
+        "env": {}
+      },
+      "memvid-mcp-server-configured": {
+        "command": "python",
+        "args": [
+          "server.py"
+        ],
+        "env": {
+          "PORT": "3002"
         }
       }
     },

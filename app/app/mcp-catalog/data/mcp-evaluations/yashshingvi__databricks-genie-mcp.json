@@ -8,15 +8,13 @@
     "name": "yashshingvi"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/main.py"],
-      "env": {
-        "DATABRICKS_HOST": "${user_config.databricks_host}",
-        "DATABRICKS_TOKEN": "${user_config.databricks_token}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/main.py"
+    ],
+    "env": {
+      "DATABRICKS_HOST": "${user_config.databricks_host}",
+      "DATABRICKS_TOKEN": "${user_config.databricks_token}"
     }
   },
   "tools": [],
@@ -43,14 +41,14 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "databricks-genie-mcp-server": {
-          "command": "python",
-          "args": ["main.py"],
-          "env": {
-            "DATABRICKS_HOST": "your-databricks-instance.cloud.databricks.com",
-            "DATABRICKS_TOKEN": "your-personal-access-token"
-          }
+      "databricks-genie-mcp-server": {
+        "command": "python",
+        "args": [
+          "main.py"
+        ],
+        "env": {
+          "DATABRICKS_HOST": "your-databricks-instance.cloud.databricks.com",
+          "DATABRICKS_TOKEN": "your-personal-access-token"
         }
       }
     },

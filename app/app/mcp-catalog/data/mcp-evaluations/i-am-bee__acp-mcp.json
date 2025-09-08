@@ -8,13 +8,12 @@
     "name": "i-am-bee"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["acp-mcp", "${user_config.acp_server_url}"],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "acp-mcp",
+      "${user_config.acp_server_url}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,27 +32,43 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "acp-mcp": {
-          "command": "uvx",
-          "args": ["acp-mcp", "http://localhost:8000"],
-          "env": {}
-        },
-        "ghcr.io-i-am-bee-acp-mcp-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "ghcr.io/i-am-bee/acp-mcp", "http://host.docker.internal:8000"],
-          "env": {}
-        },
-        "acp-mcp-configured": {
-          "command": "uvx",
-          "args": ["acp-mcp", "http://localhost:8000"],
-          "env": {}
-        },
-        "ghcr.io-i-am-bee-acp-mcp-docker-configured": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "ghcr.io/i-am-bee/acp-mcp", "http://host.docker.internal:8000"],
-          "env": {}
-        }
+      "acp-mcp": {
+        "command": "uvx",
+        "args": [
+          "acp-mcp",
+          "http://localhost:8000"
+        ],
+        "env": {}
+      },
+      "ghcr.io-i-am-bee-acp-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "ghcr.io/i-am-bee/acp-mcp",
+          "http://host.docker.internal:8000"
+        ],
+        "env": {}
+      },
+      "acp-mcp-configured": {
+        "command": "uvx",
+        "args": [
+          "acp-mcp",
+          "http://localhost:8000"
+        ],
+        "env": {}
+      },
+      "ghcr.io-i-am-bee-acp-mcp-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "ghcr.io/i-am-bee/acp-mcp",
+          "http://host.docker.internal:8000"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,15 +8,14 @@
     "name": "getAlby"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@getalby/mcp"],
-      "env": {
-        "NWC_CONNECTION_STRING": "${user_config.nwc_connection_string}",
-        "MODE": "${user_config.mode}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@getalby/mcp"
+    ],
+    "env": {
+      "NWC_CONNECTION_STRING": "${user_config.nwc_connection_string}",
+      "MODE": "${user_config.mode}"
     }
   },
   "tools": [],
@@ -43,21 +42,25 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "getalby-mcp-stdio": {
-          "command": "npx",
-          "args": ["-y", "@getalby/mcp"],
-          "env": {
-            "NWC_CONNECTION_STRING": "YOUR NWC CONNECTION STRING HERE"
-          }
-        },
-        "getalby-mcp-http": {
-          "command": "npx",
-          "args": ["-y", "@getalby/mcp"],
-          "env": {
-            "MODE": "HTTP",
-            "NWC_CONNECTION_STRING": "YOUR NWC CONNECTION STRING HERE"
-          }
+      "getalby-mcp-stdio": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@getalby/mcp"
+        ],
+        "env": {
+          "NWC_CONNECTION_STRING": "YOUR NWC CONNECTION STRING HERE"
+        }
+      },
+      "getalby-mcp-http": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@getalby/mcp"
+        ],
+        "env": {
+          "MODE": "HTTP",
+          "NWC_CONNECTION_STRING": "YOUR NWC CONNECTION STRING HERE"
         }
       }
     },

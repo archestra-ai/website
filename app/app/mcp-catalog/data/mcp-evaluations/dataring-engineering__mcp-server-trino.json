@@ -8,19 +8,20 @@
     "name": "Dataring-engineering"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp_server_trino",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "mcp_server_trino"],
-      "env": {
-        "TRINO_HOST": "${user_config.trino_host}",
-        "TRINO_PORT": "${user_config.trino_port}",
-        "TRINO_USER": "${user_config.trino_user}",
-        "TRINO_PASSWORD": "${user_config.trino_password}",
-        "TRINO_CATALOG": "${user_config.trino_catalog}",
-        "TRINO_SCHEMA": "${user_config.trino_schema}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "mcp_server_trino"
+    ],
+    "env": {
+      "TRINO_HOST": "${user_config.trino_host}",
+      "TRINO_PORT": "${user_config.trino_port}",
+      "TRINO_USER": "${user_config.trino_user}",
+      "TRINO_PASSWORD": "${user_config.trino_password}",
+      "TRINO_CATALOG": "${user_config.trino_catalog}",
+      "TRINO_SCHEMA": "${user_config.trino_schema}"
     }
   },
   "tools": [],
@@ -72,18 +73,21 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp_server_trino": {
-          "command": "uv",
-          "args": ["--directory", "<path_to_mcp_server_trino>", "run", "mcp_server_trino"],
-          "env": {
-            "TRINO_HOST": "<host>",
-            "TRINO_PORT": "<port>",
-            "TRINO_USER": "<user>",
-            "TRINO_PASSWORD": "<password>",
-            "TRINO_CATALOG": "<catalog>",
-            "TRINO_SCHEMA": "<schema>"
-          }
+      "mcp_server_trino": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "<path_to_mcp_server_trino>",
+          "run",
+          "mcp_server_trino"
+        ],
+        "env": {
+          "TRINO_HOST": "<host>",
+          "TRINO_PORT": "<port>",
+          "TRINO_USER": "<user>",
+          "TRINO_PASSWORD": "<password>",
+          "TRINO_CATALOG": "<catalog>",
+          "TRINO_SCHEMA": "<schema>"
         }
       }
     },

@@ -8,14 +8,12 @@
     "name": "abhiemj"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/manim_server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/src/manim_server.py"],
-      "env": {
-        "MANIM_EXECUTABLE": "${user_config.manim_executable}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/src/manim_server.py"
+    ],
+    "env": {
+      "MANIM_EXECUTABLE": "${user_config.manim_executable}"
     }
   },
   "tools": [],
@@ -34,13 +32,13 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "manim-mcp-server": {
-          "command": "/absolute/path/to/python",
-          "args": ["/absolute/path/to/manim-mcp-server/src/manim_server.py"],
-          "env": {
-            "MANIM_EXECUTABLE": "/Users/[Your_username]/anaconda3/envs/manim2/Scripts/manim.exe"
-          }
+      "manim-mcp-server": {
+        "command": "/absolute/path/to/python",
+        "args": [
+          "/absolute/path/to/manim-mcp-server/src/manim_server.py"
+        ],
+        "env": {
+          "MANIM_EXECUTABLE": "/Users/[Your_username]/anaconda3/envs/manim2/Scripts/manim.exe"
         }
       }
     },

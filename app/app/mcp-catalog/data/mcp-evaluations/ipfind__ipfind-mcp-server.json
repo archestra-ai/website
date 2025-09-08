@@ -8,14 +8,13 @@
     "name": "ipfind"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@ipfind/ipfind-mcp-server"],
-      "env": {
-        "IPFIND_API_KEY": "${user_config.ipfind_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@ipfind/ipfind-mcp-server"
+    ],
+    "env": {
+      "IPFIND_API_KEY": "${user_config.ipfind_api_key}"
     }
   },
   "tools": [],
@@ -35,13 +34,14 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ipfind-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "@ipfind/ipfind-mcp-server"],
-          "env": {
-            "IPFIND_API_KEY": "<API KEY GOES HERE>"
-          }
+      "ipfind-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@ipfind/ipfind-mcp-server"
+        ],
+        "env": {
+          "IPFIND_API_KEY": "<API KEY GOES HERE>"
         }
       }
     },

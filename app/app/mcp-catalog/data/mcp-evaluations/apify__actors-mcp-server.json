@@ -8,14 +8,13 @@
     "name": "apify"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@apify/actors-mcp-server"],
-      "env": {
-        "APIFY_TOKEN": "${user_config.apify_token}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@apify/actors-mcp-server"
+    ],
+    "env": {
+      "APIFY_TOKEN": "${user_config.apify_token}"
     }
   },
   "tools": [],
@@ -35,12 +34,13 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "apify-actors-mcp-server-stdio": {
-          "command": "npx",
-          "args": ["-y", "@apify/actors-mcp-server"],
-          "env": {}
-        }
+      "apify-actors-mcp-server-stdio": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@apify/actors-mcp-server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

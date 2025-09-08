@@ -8,22 +8,21 @@
     "name": "takumi0706"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@takumi0706/google-calendar-mcp@1.0.7"],
-      "env": {
-        "GOOGLE_CLIENT_ID": "${user_config.google_client_id}",
-        "GOOGLE_CLIENT_SECRET": "${user_config.google_client_secret}",
-        "GOOGLE_REDIRECT_URI": "${user_config.google_redirect_uri}",
-        "TOKEN_ENCRYPTION_KEY": "${user_config.token_encryption_key}",
-        "AUTH_PORT": "${user_config.auth_port}",
-        "AUTH_HOST": "${user_config.auth_host}",
-        "PORT": "${user_config.port}",
-        "HOST": "${user_config.host}",
-        "USE_MANUAL_AUTH": "${user_config.use_manual_auth}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@takumi0706/google-calendar-mcp@1.0.7"
+    ],
+    "env": {
+      "GOOGLE_CLIENT_ID": "${user_config.google_client_id}",
+      "GOOGLE_CLIENT_SECRET": "${user_config.google_client_secret}",
+      "GOOGLE_REDIRECT_URI": "${user_config.google_redirect_uri}",
+      "TOKEN_ENCRYPTION_KEY": "${user_config.token_encryption_key}",
+      "AUTH_PORT": "${user_config.auth_port}",
+      "AUTH_HOST": "${user_config.auth_host}",
+      "PORT": "${user_config.port}",
+      "HOST": "${user_config.host}",
+      "USE_MANUAL_AUTH": "${user_config.use_manual_auth}"
     }
   },
   "tools": [],
@@ -105,26 +104,30 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "takumi0706-google-calendar-mcp": {
-          "command": "npx",
-          "args": ["-y", "@takumi0706/google-calendar-mcp@1.0.7"],
-          "env": {}
-        },
-        "takumi0706-google-calendar-mcp-configured": {
-          "command": "npx",
-          "args": ["-y", "@takumi0706/google-calendar-mcp@1.0.7"],
-          "env": {
-            "GOOGLE_CLIENT_ID": "your_client_id",
-            "GOOGLE_CLIENT_SECRET": "your_client_secret",
-            "GOOGLE_REDIRECT_URI": "http://localhost:4153/oauth2callback",
-            "TOKEN_ENCRYPTION_KEY": "32-byte-hex-key",
-            "AUTH_PORT": "4153",
-            "AUTH_HOST": "localhost",
-            "PORT": "3000",
-            "HOST": "localhost",
-            "USE_MANUAL_AUTH": "true"
-          }
+      "takumi0706-google-calendar-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@takumi0706/google-calendar-mcp@1.0.7"
+        ],
+        "env": {}
+      },
+      "takumi0706-google-calendar-mcp-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@takumi0706/google-calendar-mcp@1.0.7"
+        ],
+        "env": {
+          "GOOGLE_CLIENT_ID": "your_client_id",
+          "GOOGLE_CLIENT_SECRET": "your_client_secret",
+          "GOOGLE_REDIRECT_URI": "http://localhost:4153/oauth2callback",
+          "TOKEN_ENCRYPTION_KEY": "32-byte-hex-key",
+          "AUTH_PORT": "4153",
+          "AUTH_HOST": "localhost",
+          "PORT": "3000",
+          "HOST": "localhost",
+          "USE_MANUAL_AUTH": "true"
         }
       }
     },

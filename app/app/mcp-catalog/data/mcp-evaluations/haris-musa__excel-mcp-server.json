@@ -8,15 +8,14 @@
     "name": "haris-musa"
   },
   "server": {
-    "type": "python",
-    "entry_point": "excel-mcp-server",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["excel-mcp-server", "stdio"],
-      "env": {
-        "EXCEL_FILES_PATH": "${user_config.excel_files_path}",
-        "FASTMCP_PORT": "${user_config.fastmcp_port}"
-      }
+    "command": "uvx",
+    "args": [
+      "excel-mcp-server",
+      "stdio"
+    ],
+    "env": {
+      "EXCEL_FILES_PATH": "${user_config.excel_files_path}",
+      "FASTMCP_PORT": "${user_config.fastmcp_port}"
     }
   },
   "tools": [],
@@ -45,29 +44,39 @@
   "quality_score": 66,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "excel-mcp-server-stdio": {
-          "command": "uvx",
-          "args": ["excel-mcp-server", "stdio"],
-          "env": {}
-        },
-        "excel-mcp-server-sse": {
-          "command": "uvx",
-          "args": ["excel-mcp-server", "sse"],
-          "env": {}
-        },
-        "excel-mcp-server-streamable-http": {
-          "command": "uvx",
-          "args": ["excel-mcp-server", "streamable-http"],
-          "env": {}
-        },
-        "excel-mcp-server-streamable-http-configured": {
-          "command": "uvx",
-          "args": ["excel-mcp-server", "streamable-http"],
-          "env": {
-            "EXCEL_FILES_PATH": "/path/to/excel_files",
-            "FASTMCP_PORT": "8007"
-          }
+      "excel-mcp-server-stdio": {
+        "command": "uvx",
+        "args": [
+          "excel-mcp-server",
+          "stdio"
+        ],
+        "env": {}
+      },
+      "excel-mcp-server-sse": {
+        "command": "uvx",
+        "args": [
+          "excel-mcp-server",
+          "sse"
+        ],
+        "env": {}
+      },
+      "excel-mcp-server-streamable-http": {
+        "command": "uvx",
+        "args": [
+          "excel-mcp-server",
+          "streamable-http"
+        ],
+        "env": {}
+      },
+      "excel-mcp-server-streamable-http-configured": {
+        "command": "uvx",
+        "args": [
+          "excel-mcp-server",
+          "streamable-http"
+        ],
+        "env": {
+          "EXCEL_FILES_PATH": "/path/to/excel_files",
+          "FASTMCP_PORT": "8007"
         }
       }
     },

@@ -8,14 +8,10 @@
     "name": "Harry-027"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "Jotdown",
-    "mcp_config": {
-      "command": "${__dirname}/target/release/Jotdown",
-      "args": [],
-      "env": {
-        "NOTION_TOKEN": "${user_config.notion_token}"
-      }
+    "command": "${__dirname}/target/release/Jotdown",
+    "args": [],
+    "env": {
+      "NOTION_TOKEN": "${user_config.notion_token}"
     }
   },
   "tools": [],
@@ -35,13 +31,11 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "Jotdown": {
-          "command": "/path_to_repo/Jotdown/target/release/Jotdown",
-          "args": [],
-          "env": {
-            "NOTION_TOKEN": "your_notion_intergration_token"
-          }
+      "Jotdown": {
+        "command": "/path_to_repo/Jotdown/target/release/Jotdown",
+        "args": [],
+        "env": {
+          "NOTION_TOKEN": "your_notion_intergration_token"
         }
       }
     },

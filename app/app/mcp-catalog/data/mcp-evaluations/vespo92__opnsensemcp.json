@@ -8,21 +8,19 @@
     "name": "vespo92"
   },
   "server": {
-    "type": "node",
-    "entry_point": "dist/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
-      "env": {
-        "OPNSENSE_HOST": "${user_config.opnsense_host}",
-        "OPNSENSE_API_KEY": "${user_config.opnsense_api_key}",
-        "OPNSENSE_API_SECRET": "${user_config.opnsense_api_secret}",
-        "IAC_ENABLED": "${user_config.iac_enabled}",
-        "ENABLE_CACHE": "${user_config.enable_cache}",
-        "REDIS_HOST": "${user_config.redis_host}",
-        "POSTGRES_HOST": "${user_config.postgres_host}",
-        "OPNSENSE_VERIFY_SSL": "${user_config.opnsense_verify_ssl}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/index.js"
+    ],
+    "env": {
+      "OPNSENSE_HOST": "${user_config.opnsense_host}",
+      "OPNSENSE_API_KEY": "${user_config.opnsense_api_key}",
+      "OPNSENSE_API_SECRET": "${user_config.opnsense_api_secret}",
+      "IAC_ENABLED": "${user_config.iac_enabled}",
+      "ENABLE_CACHE": "${user_config.enable_cache}",
+      "REDIS_HOST": "${user_config.redis_host}",
+      "POSTGRES_HOST": "${user_config.postgres_host}",
+      "OPNSENSE_VERIFY_SSL": "${user_config.opnsense_verify_ssl}"
     }
   },
   "tools": [],
@@ -90,31 +88,42 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "opnsense-mcp-stdio": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        },
-        "opnsense-mcp-sse": {
-          "command": "npm",
-          "args": ["run", "start:sse"],
-          "env": {}
-        },
-        "opnsense-mcp-sse-port-8080": {
-          "command": "npm",
-          "args": ["run", "start:sse", "--", "--port", "8080"],
-          "env": {}
-        },
-        "opnsense-mcp-claude-desktop-configured": {
-          "command": "node",
-          "args": ["dist/index.js"],
-          "env": {
-            "OPNSENSE_HOST": "https://192.168.1.1:55443",
-            "OPNSENSE_API_KEY": "your_api_key",
-            "OPNSENSE_API_SECRET": "your_api_secret",
-            "OPNSENSE_VERIFY_SSL": "true"
-          }
+      "opnsense-mcp-stdio": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {}
+      },
+      "opnsense-mcp-sse": {
+        "command": "npm",
+        "args": [
+          "run",
+          "start:sse"
+        ],
+        "env": {}
+      },
+      "opnsense-mcp-sse-port-8080": {
+        "command": "npm",
+        "args": [
+          "run",
+          "start:sse",
+          "--",
+          "--port",
+          "8080"
+        ],
+        "env": {}
+      },
+      "opnsense-mcp-claude-desktop-configured": {
+        "command": "node",
+        "args": [
+          "dist/index.js"
+        ],
+        "env": {
+          "OPNSENSE_HOST": "https://192.168.1.1:55443",
+          "OPNSENSE_API_KEY": "your_api_key",
+          "OPNSENSE_API_SECRET": "your_api_secret",
+          "OPNSENSE_VERIFY_SSL": "true"
         }
       }
     },

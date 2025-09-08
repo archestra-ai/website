@@ -8,13 +8,11 @@
     "name": "imprvhub"
   },
   "server": {
-    "type": "node",
-    "entry_point": "build/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,19 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-claude-hackernews-stdio": {
-          "command": "node",
-          "args": ["build/index.js"],
-          "env": {}
-        },
-        "hackerNews": {
-          "command": "node",
-          "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-claude-hackernews/build/index.js"],
-          "env": {}
-        }
+      "mcp-claude-hackernews-stdio": {
+        "command": "node",
+        "args": [
+          "build/index.js"
+        ],
+        "env": {}
+      },
+      "hackerNews": {
+        "command": "node",
+        "args": [
+          "ABSOLUTE_PATH_TO_DIRECTORY/mcp-claude-hackernews/build/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

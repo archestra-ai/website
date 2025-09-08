@@ -8,15 +8,13 @@
     "name": "kw510"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "wrangler",
-      "args": ["dev"],
-      "env": {
-        "STRAVA_CLIENT_ID": "${user_config.strava_client_id}",
-        "STRAVA_CLIENT_SECRET": "${user_config.strava_client_secret}"
-      }
+    "command": "wrangler",
+    "args": [
+      "dev"
+    ],
+    "env": {
+      "STRAVA_CLIENT_ID": "${user_config.strava_client_id}",
+      "STRAVA_CLIENT_SECRET": "${user_config.strava_client_secret}"
     }
   },
   "tools": [],
@@ -43,12 +41,12 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "strava-mcp": {
-          "command": "wrangler",
-          "args": ["dev"],
-          "env": {}
-        }
+      "strava-mcp": {
+        "command": "wrangler",
+        "args": [
+          "dev"
+        ],
+        "env": {}
       }
     },
     "oauth": {

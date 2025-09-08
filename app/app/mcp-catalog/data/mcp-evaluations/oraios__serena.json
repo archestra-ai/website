@@ -8,32 +8,28 @@
     "name": "oraios"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": [
-        "serena-mcp-server",
-        "--port",
-        "${user_config.port}",
-        "--host",
-        "${user_config.host}",
-        "--log-level",
-        "${user_config.log_level}",
-        "--project-root",
-        "${user_config.project_root}",
-        "--language-server-path",
-        "${user_config.language_server_path}",
-        "--language-server-args",
-        "${user_config.language_server_args}",
-        "--config-file",
-        "${user_config.config_file}"
-      ],
-      "env": {
-        "OPENAI_API_KEY": "${user_config.openai_api_key}",
-        "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
-        "SERENA_DISABLE_INDEXING": "${user_config.disable_indexing}"
-      }
+    "command": "uvx",
+    "args": [
+      "serena-mcp-server",
+      "--port",
+      "${user_config.port}",
+      "--host",
+      "${user_config.host}",
+      "--log-level",
+      "${user_config.log_level}",
+      "--project-root",
+      "${user_config.project_root}",
+      "--language-server-path",
+      "${user_config.language_server_path}",
+      "--language-server-args",
+      "${user_config.language_server_args}",
+      "--config-file",
+      "${user_config.config_file}"
+    ],
+    "env": {
+      "OPENAI_API_KEY": "${user_config.openai_api_key}",
+      "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
+      "SERENA_DISABLE_INDEXING": "${user_config.disable_indexing}"
     }
   },
   "tools": [],
@@ -111,32 +107,51 @@
   "quality_score": 85,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "serena-mcp-server": {
-          "command": "python",
-          "args": ["-m", "serena.mcp_server"],
-          "env": {}
-        },
-        "serena-mcp-server-sse": {
-          "command": "python",
-          "args": ["-m", "serena.mcp_server", "--sse"],
-          "env": {}
-        },
-        "serena-mcp-server-with-config": {
-          "command": "python",
-          "args": ["-m", "serena.mcp_server", "--config", "/path/to/config.json"],
-          "env": {}
-        },
-        "serena": {
-          "command": "uvx",
-          "args": ["serena"],
-          "env": {}
-        },
-        "serena-docker": {
-          "command": "docker",
-          "args": ["run", "-p", "8000:8000", "-v", "$(pwd):/app", "serena:latest"],
-          "env": {}
-        }
+      "serena-mcp-server": {
+        "command": "python",
+        "args": [
+          "-m",
+          "serena.mcp_server"
+        ],
+        "env": {}
+      },
+      "serena-mcp-server-sse": {
+        "command": "python",
+        "args": [
+          "-m",
+          "serena.mcp_server",
+          "--sse"
+        ],
+        "env": {}
+      },
+      "serena-mcp-server-with-config": {
+        "command": "python",
+        "args": [
+          "-m",
+          "serena.mcp_server",
+          "--config",
+          "/path/to/config.json"
+        ],
+        "env": {}
+      },
+      "serena": {
+        "command": "uvx",
+        "args": [
+          "serena"
+        ],
+        "env": {}
+      },
+      "serena-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8000:8000",
+          "-v",
+          "$(pwd):/app",
+          "serena:latest"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,15 +8,15 @@
     "name": "ktanaka101"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp-server-duckdb",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-duckdb", "--db-path", "${user_config.db_path}"],
-      "env": {
-        "READ_ONLY": "${user_config.readonly}",
-        "KEEP_CONNECTION": "${user_config.keep_connection}"
-      }
+    "command": "uvx",
+    "args": [
+      "mcp-server-duckdb",
+      "--db-path",
+      "${user_config.db_path}"
+    ],
+    "env": {
+      "READ_ONLY": "${user_config.readonly}",
+      "KEEP_CONNECTION": "${user_config.keep_connection}"
     }
   },
   "tools": [],
@@ -50,26 +50,28 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-duckdb": {
-          "command": "uvx",
-          "args": ["mcp-server-duckdb", "--db-path", "~/mcp-server-duckdb/data/data.db"],
-          "env": {}
-        },
-        "mcp-server-duckdb-inspector": {
-          "command": "npx",
-          "args": [
-            "@modelcontextprotocol/inspector",
-            "uv",
-            "--directory",
-            "~/codes/mcp-server-duckdb",
-            "run",
-            "mcp-server-duckdb",
-            "--db-path",
-            "~/mcp-server-duckdb/data/data.db"
-          ],
-          "env": {}
-        }
+      "mcp-server-duckdb": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-duckdb",
+          "--db-path",
+          "~/mcp-server-duckdb/data/data.db"
+        ],
+        "env": {}
+      },
+      "mcp-server-duckdb-inspector": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "uv",
+          "--directory",
+          "~/codes/mcp-server-duckdb",
+          "run",
+          "mcp-server-duckdb",
+          "--db-path",
+          "~/mcp-server-duckdb/data/data.db"
+        ],
+        "env": {}
       }
     },
     "oauth": {

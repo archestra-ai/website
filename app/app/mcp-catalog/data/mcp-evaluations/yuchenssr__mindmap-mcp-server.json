@@ -8,13 +8,13 @@
     "name": "YuChenSSR"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mindmap_mcp_server/server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/mindmap_mcp_server/server.py", "--return-type", "${user_config.return_type}"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "${__dirname}/mindmap_mcp_server/server.py",
+      "--return-type",
+      "${user_config.return_type}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,32 +33,53 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mindmap-mcp-server-html": {
-          "command": "uvx",
-          "args": ["mindmap-mcp-server", "--return-type", "html"],
-          "env": {}
-        },
-        "mindmap-mcp-server-filepath": {
-          "command": "uvx",
-          "args": ["mindmap-mcp-server", "--return-type", "filePath"],
-          "env": {}
-        },
-        "mindmap-mcp-server-python-html": {
-          "command": "python",
-          "args": ["/path/to/your/mindmap_mcp_server/server.py", "--return-type", "html"],
-          "env": {}
-        },
-        "mindmap-mcp-server-python-filepath": {
-          "command": "python",
-          "args": ["/path/to/your/mindmap_mcp_server/server.py", "--return-type", "filePath"],
-          "env": {}
-        },
-        "ychen94-mindmap-converter-mcp-docker": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "-v", "/path/to/output/folder:/output", "ychen94/mindmap-converter-mcp:latest"],
-          "env": {}
-        }
+      "mindmap-mcp-server-html": {
+        "command": "uvx",
+        "args": [
+          "mindmap-mcp-server",
+          "--return-type",
+          "html"
+        ],
+        "env": {}
+      },
+      "mindmap-mcp-server-filepath": {
+        "command": "uvx",
+        "args": [
+          "mindmap-mcp-server",
+          "--return-type",
+          "filePath"
+        ],
+        "env": {}
+      },
+      "mindmap-mcp-server-python-html": {
+        "command": "python",
+        "args": [
+          "/path/to/your/mindmap_mcp_server/server.py",
+          "--return-type",
+          "html"
+        ],
+        "env": {}
+      },
+      "mindmap-mcp-server-python-filepath": {
+        "command": "python",
+        "args": [
+          "/path/to/your/mindmap_mcp_server/server.py",
+          "--return-type",
+          "filePath"
+        ],
+        "env": {}
+      },
+      "ychen94-mindmap-converter-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "-v",
+          "/path/to/output/folder:/output",
+          "ychen94/mindmap-converter-mcp:latest"
+        ],
+        "env": {}
       }
     },
     "oauth": {

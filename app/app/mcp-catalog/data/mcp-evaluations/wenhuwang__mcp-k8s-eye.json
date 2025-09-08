@@ -8,14 +8,10 @@
     "name": "wenhuwang"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-k8s-eye",
-    "mcp_config": {
-      "command": "${__dirname}/mcp-k8s-eye",
-      "args": [],
-      "env": {
-        "HOME": "${user_config.home}"
-      }
+    "command": "${__dirname}/mcp-k8s-eye",
+    "args": [],
+    "env": {
+      "HOME": "${user_config.home}"
     }
   },
   "tools": [],
@@ -35,13 +31,11 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-k8s-eye": {
-          "command": "mcp-k8s-eye",
-          "args": [],
-          "env": {
-            "HOME": "USER_HOME_DIR"
-          }
+      "mcp-k8s-eye": {
+        "command": "mcp-k8s-eye",
+        "args": [],
+        "env": {
+          "HOME": "USER_HOME_DIR"
         }
       }
     },

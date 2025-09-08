@@ -8,16 +8,15 @@
     "name": "yincongcyincong"
   },
   "server": {
-    "type": "node",
-    "entry_point": "src/index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@yincongcyincong/victoriametrics-mcp-server"],
-      "env": {
-        "VM_URL": "${user_config.vm_url}",
-        "VM_SELECT_URL": "${user_config.vm_select_url}",
-        "VM_INSERT_URL": "${user_config.vm_insert_url}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@yincongcyincong/victoriametrics-mcp-server"
+    ],
+    "env": {
+      "VM_URL": "${user_config.vm_url}",
+      "VM_SELECT_URL": "${user_config.vm_select_url}",
+      "VM_INSERT_URL": "${user_config.vm_insert_url}"
     }
   },
   "tools": [],
@@ -49,22 +48,25 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "yincongcyincong-victoriametrics-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "@yincongcyincong/victoriametrics-mcp-server"],
-          "env": {
-            "VM_URL": "",
-            "VM_SELECT_URL": "",
-            "VM_INSERT_URL": ""
-          }
-        },
-        "yincongcyincong-victoriametrics-mcp-server-debug": {
-          "command": "node",
-          "args": ["src/index.js"],
-          "env": {
-            "VM_URL": "http://127.0.0.1:8428"
-          }
+      "yincongcyincong-victoriametrics-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@yincongcyincong/victoriametrics-mcp-server"
+        ],
+        "env": {
+          "VM_URL": "",
+          "VM_SELECT_URL": "",
+          "VM_INSERT_URL": ""
+        }
+      },
+      "yincongcyincong-victoriametrics-mcp-server-debug": {
+        "command": "node",
+        "args": [
+          "src/index.js"
+        ],
+        "env": {
+          "VM_URL": "http://127.0.0.1:8428"
         }
       }
     },

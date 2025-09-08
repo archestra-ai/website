@@ -8,15 +8,14 @@
     "name": "andybrandt"
   },
   "server": {
-    "type": "python",
-    "entry_point": "__main__.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "mcp_simple_pubmed"],
-      "env": {
-        "PUBMED_EMAIL": "${user_config.pubmed_email}",
-        "PUBMED_API_KEY": "${user_config.pubmed_api_key}"
-      }
+    "command": "python",
+    "args": [
+      "-m",
+      "mcp_simple_pubmed"
+    ],
+    "env": {
+      "PUBMED_EMAIL": "${user_config.pubmed_email}",
+      "PUBMED_API_KEY": "${user_config.pubmed_api_key}"
     }
   },
   "tools": [],
@@ -42,14 +41,15 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "simple-pubmed": {
-          "command": "python",
-          "args": ["-m", "mcp_simple_pubmed"],
-          "env": {
-            "PUBMED_EMAIL": "your-email@example.com",
-            "PUBMED_API_KEY": "your-api-key"
-          }
+      "simple-pubmed": {
+        "command": "python",
+        "args": [
+          "-m",
+          "mcp_simple_pubmed"
+        ],
+        "env": {
+          "PUBMED_EMAIL": "your-email@example.com",
+          "PUBMED_API_KEY": "your-api-key"
         }
       }
     },

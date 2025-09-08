@@ -8,19 +8,17 @@
     "name": "MladenSU"
   },
   "server": {
-    "type": "python",
-    "entry_point": "cli-mcp-server",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["cli-mcp-server"],
-      "env": {
-        "ALLOWED_DIR": "${user_config.allowed_dir}",
-        "ALLOWED_COMMANDS": "${user_config.allowed_commands}",
-        "ALLOWED_FLAGS": "${user_config.allowed_flags}",
-        "MAX_COMMAND_LENGTH": "${user_config.max_command_length}",
-        "COMMAND_TIMEOUT": "${user_config.command_timeout}",
-        "ALLOW_SHELL_OPERATORS": "${user_config.allow_shell_operators}"
-      }
+    "command": "uvx",
+    "args": [
+      "cli-mcp-server"
+    ],
+    "env": {
+      "ALLOWED_DIR": "${user_config.allowed_dir}",
+      "ALLOWED_COMMANDS": "${user_config.allowed_commands}",
+      "ALLOWED_FLAGS": "${user_config.allowed_flags}",
+      "MAX_COMMAND_LENGTH": "${user_config.max_command_length}",
+      "COMMAND_TIMEOUT": "${user_config.command_timeout}",
+      "ALLOW_SHELL_OPERATORS": "${user_config.allow_shell_operators}"
     }
   },
   "tools": [],
@@ -76,43 +74,48 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "cli-mcp-server-dev": {
-          "command": "uv",
-          "args": ["--directory", "<path/to/the/repo>/cli-mcp-server", "run", "cli-mcp-server"],
-          "env": {
-            "ALLOWED_DIR": "</your/desired/dir>",
-            "ALLOWED_COMMANDS": "ls,cat,pwd,echo",
-            "ALLOWED_FLAGS": "-l,-a,--help,--version",
-            "MAX_COMMAND_LENGTH": "1024",
-            "COMMAND_TIMEOUT": "30",
-            "ALLOW_SHELL_OPERATORS": "false"
-          }
-        },
-        "cli-mcp-server-published": {
-          "command": "uvx",
-          "args": ["cli-mcp-server"],
-          "env": {
-            "ALLOWED_DIR": "</your/desired/dir>",
-            "ALLOWED_COMMANDS": "ls,cat,pwd,echo",
-            "ALLOWED_FLAGS": "-l,-a,--help,--version",
-            "MAX_COMMAND_LENGTH": "1024",
-            "COMMAND_TIMEOUT": "30",
-            "ALLOW_SHELL_OPERATORS": "false"
-          }
-        },
-        "cli-mcp-server-inspector": {
-          "command": "npx",
-          "args": [
-            "@modelcontextprotocol/inspector",
-            "uv",
-            "--directory",
-            "{{your source code local directory}}/cli-mcp-server",
-            "run",
-            "cli-mcp-server"
-          ],
-          "env": {}
+      "cli-mcp-server-dev": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "<path/to/the/repo>/cli-mcp-server",
+          "run",
+          "cli-mcp-server"
+        ],
+        "env": {
+          "ALLOWED_DIR": "</your/desired/dir>",
+          "ALLOWED_COMMANDS": "ls,cat,pwd,echo",
+          "ALLOWED_FLAGS": "-l,-a,--help,--version",
+          "MAX_COMMAND_LENGTH": "1024",
+          "COMMAND_TIMEOUT": "30",
+          "ALLOW_SHELL_OPERATORS": "false"
         }
+      },
+      "cli-mcp-server-published": {
+        "command": "uvx",
+        "args": [
+          "cli-mcp-server"
+        ],
+        "env": {
+          "ALLOWED_DIR": "</your/desired/dir>",
+          "ALLOWED_COMMANDS": "ls,cat,pwd,echo",
+          "ALLOWED_FLAGS": "-l,-a,--help,--version",
+          "MAX_COMMAND_LENGTH": "1024",
+          "COMMAND_TIMEOUT": "30",
+          "ALLOW_SHELL_OPERATORS": "false"
+        }
+      },
+      "cli-mcp-server-inspector": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "uv",
+          "--directory",
+          "{{your source code local directory}}/cli-mcp-server",
+          "run",
+          "cli-mcp-server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

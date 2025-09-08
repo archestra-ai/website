@@ -8,20 +8,19 @@
     "name": "Data-Everything"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcpt",
-    "mcp_config": {
-      "command": "mcpt",
-      "args": ["deploy", "${user_config.template_name}"],
-      "env": {
-        "GITLAB_TOKEN": "${user_config.gitlab_token}",
-        "API_KEY": "${user_config.api_key}",
-        "ALLOWED_DIRS": "${user_config.allowed_dirs}",
-        "LOG_LEVEL": "${user_config.log_level}",
-        "READ_ONLY": "${user_config.read_only}",
-        "MAX_FILE_SIZE": "${user_config.max_file_size}",
-        "READ_ONLY_MODE": "${user_config.read_only_mode}"
-      }
+    "command": "mcpt",
+    "args": [
+      "deploy",
+      "${user_config.template_name}"
+    ],
+    "env": {
+      "GITLAB_TOKEN": "${user_config.gitlab_token}",
+      "API_KEY": "${user_config.api_key}",
+      "ALLOWED_DIRS": "${user_config.allowed_dirs}",
+      "LOG_LEVEL": "${user_config.log_level}",
+      "READ_ONLY": "${user_config.read_only}",
+      "MAX_FILE_SIZE": "${user_config.max_file_size}",
+      "READ_ONLY_MODE": "${user_config.read_only_mode}"
     }
   },
   "tools": [],
@@ -89,74 +88,85 @@
   "quality_score": 74,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "dataeverything-mcp-file-server-docker": {
-          "command": "mcp-template",
-          "args": ["deploy", "file-server"],
-          "env": {}
-        },
-        "dataeverything-mcp-file-server-docker-configured": {
-          "command": "mcp-template",
-          "args": [
-            "deploy",
-            "file-server",
-            "--config",
-            "read_only_mode=true",
-            "--config",
-            "max_file_size=50",
-            "--config",
-            "log_level=debug"
-          ],
-          "env": {
-            "MCP_READ_ONLY": "true",
-            "MCP_LOG_LEVEL": "debug"
-          }
-        },
-        "dataeverything-mcp-file-server-docker-overridden": {
-          "command": "mcp-template",
-          "args": ["deploy", "file-server", "--override", "metadata__description=Custom file server"],
-          "env": {}
-        },
-        "dataeverything-mcp-file-server-docker-env": {
-          "command": "mcp-template",
-          "args": [
-            "deploy",
-            "file-server",
-            "--env",
-            "MCP_READ_ONLY=true",
-            "--env",
-            "MCP_MAX_FILE_SIZE=50",
-            "--env",
-            "MCP_LOG_LEVEL=debug"
-          ],
-          "env": {
-            "MCP_READ_ONLY": "true",
-            "MCP_LOG_LEVEL": "debug"
-          }
-        },
-        "dataeverything-mcp-file-server-docker-with-config-file": {
-          "command": "mcp-template",
-          "args": ["deploy", "file-server", "--config-file", "./config.json"],
-          "env": {}
-        },
-        "dataeverything-mcp-file-server-docker-mixed-config": {
-          "command": "mcp-template",
-          "args": [
-            "deploy",
-            "file-server",
-            "--config-file",
-            "./base-config.json",
-            "--config",
-            "log_level=warning",
-            "--override",
-            "metadata__version=1.5.0",
-            "--env",
-            "MCP_READ_ONLY=true"
-          ],
-          "env": {
-            "MCP_READ_ONLY": "true",
-            "MCP_LOG_LEVEL": "warning"
-          }
+      "dataeverything-mcp-file-server-docker": {
+        "command": "mcp-template",
+        "args": [
+          "deploy",
+          "file-server"
+        ],
+        "env": {}
+      },
+      "dataeverything-mcp-file-server-docker-configured": {
+        "command": "mcp-template",
+        "args": [
+          "deploy",
+          "file-server",
+          "--config",
+          "read_only_mode=true",
+          "--config",
+          "max_file_size=50",
+          "--config",
+          "log_level=debug"
+        ],
+        "env": {
+          "MCP_READ_ONLY": "true",
+          "MCP_LOG_LEVEL": "debug"
+        }
+      },
+      "dataeverything-mcp-file-server-docker-overridden": {
+        "command": "mcp-template",
+        "args": [
+          "deploy",
+          "file-server",
+          "--override",
+          "metadata__description=Custom file server"
+        ],
+        "env": {}
+      },
+      "dataeverything-mcp-file-server-docker-env": {
+        "command": "mcp-template",
+        "args": [
+          "deploy",
+          "file-server",
+          "--env",
+          "MCP_READ_ONLY=true",
+          "--env",
+          "MCP_MAX_FILE_SIZE=50",
+          "--env",
+          "MCP_LOG_LEVEL=debug"
+        ],
+        "env": {
+          "MCP_READ_ONLY": "true",
+          "MCP_LOG_LEVEL": "debug"
+        }
+      },
+      "dataeverything-mcp-file-server-docker-with-config-file": {
+        "command": "mcp-template",
+        "args": [
+          "deploy",
+          "file-server",
+          "--config-file",
+          "./config.json"
+        ],
+        "env": {}
+      },
+      "dataeverything-mcp-file-server-docker-mixed-config": {
+        "command": "mcp-template",
+        "args": [
+          "deploy",
+          "file-server",
+          "--config-file",
+          "./base-config.json",
+          "--config",
+          "log_level=warning",
+          "--override",
+          "metadata__version=1.5.0",
+          "--env",
+          "MCP_READ_ONLY=true"
+        ],
+        "env": {
+          "MCP_READ_ONLY": "true",
+          "MCP_LOG_LEVEL": "warning"
         }
       }
     },

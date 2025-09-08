@@ -8,15 +8,14 @@
     "name": "danhilse"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/notion_mcp/__main__.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "notion_mcp"],
-      "env": {
-        "NOTION_API_KEY": "${user_config.notion_api_key}",
-        "NOTION_DATABASE_ID": "${user_config.notion_database_id}"
-      }
+    "command": "python",
+    "args": [
+      "-m",
+      "notion_mcp"
+    ],
+    "env": {
+      "NOTION_API_KEY": "${user_config.notion_api_key}",
+      "NOTION_DATABASE_ID": "${user_config.notion_database_id}"
     }
   },
   "tools": [],
@@ -42,17 +41,21 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "notion_mcp": {
-          "command": "python",
-          "args": ["-m", "notion_mcp"],
-          "env": {}
-        },
-        "notion-todo": {
-          "command": "/path/to/your/.venv/bin/python",
-          "args": ["-m", "notion_mcp"],
-          "env": {}
-        }
+      "notion_mcp": {
+        "command": "python",
+        "args": [
+          "-m",
+          "notion_mcp"
+        ],
+        "env": {}
+      },
+      "notion-todo": {
+        "command": "/path/to/your/.venv/bin/python",
+        "args": [
+          "-m",
+          "notion_mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

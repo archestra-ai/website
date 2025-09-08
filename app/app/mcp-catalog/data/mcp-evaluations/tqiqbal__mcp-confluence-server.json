@@ -8,16 +8,15 @@
     "name": "tqiqbal"
   },
   "server": {
-    "type": "python",
-    "entry_point": "confluence.py",
-    "mcp_config": {
-      "command": "mcp",
-      "args": ["dev", "confluence.py"],
-      "env": {
-        "CONFLUENCE_API_BASE": "${user_config.confluence_api_base}",
-        "CONFLUENCE_USERNAME": "${user_config.confluence_username}",
-        "CONFLUENCE_PASSWORD": "${user_config.confluence_password}"
-      }
+    "command": "mcp",
+    "args": [
+      "dev",
+      "confluence.py"
+    ],
+    "env": {
+      "CONFLUENCE_API_BASE": "${user_config.confluence_api_base}",
+      "CONFLUENCE_USERNAME": "${user_config.confluence_username}",
+      "CONFLUENCE_PASSWORD": "${user_config.confluence_password}"
     }
   },
   "tools": [],
@@ -52,17 +51,20 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "confluence-py": {
-          "command": "mcp",
-          "args": ["dev", "confluence.py"],
-          "env": {}
-        },
-        "confluence-py-fallback": {
-          "command": "python",
-          "args": ["confluence.py"],
-          "env": {}
-        }
+      "confluence-py": {
+        "command": "mcp",
+        "args": [
+          "dev",
+          "confluence.py"
+        ],
+        "env": {}
+      },
+      "confluence-py-fallback": {
+        "command": "python",
+        "args": [
+          "confluence.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

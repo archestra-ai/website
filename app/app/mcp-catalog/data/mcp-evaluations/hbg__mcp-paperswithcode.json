@@ -8,13 +8,12 @@
     "name": "hbg"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@hbg/mcp-paperswithcode"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@hbg/mcp-paperswithcode"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,9 +23,7 @@
   "category": "AI Tools",
   "quality_score": 42,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

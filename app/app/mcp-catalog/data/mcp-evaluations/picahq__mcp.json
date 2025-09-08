@@ -8,14 +8,13 @@
     "name": "picahq"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@picahq/mcp"],
-      "env": {
-        "PICA_SECRET": "${user_config.pica_secret}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@picahq/mcp"
+    ],
+    "env": {
+      "PICA_SECRET": "${user_config.pica_secret}"
     }
   },
   "tools": [],
@@ -35,25 +34,34 @@
   "quality_score": 65,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "picahq-mcp": {
-          "command": "npx",
-          "args": ["-y", "@picahq/mcp"],
-          "env": {}
-        },
-        "picahq-mcp-configured": {
-          "command": "npx",
-          "args": ["-y", "@picahq/mcp"],
-          "env": {
-            "PICA_SECRET": "your-pica-secret-key"
-          }
-        },
-        "pica-mcp-server-docker": {
-          "command": "docker",
-          "args": ["run", "-e", "PICA_SECRET=your_pica_secret_key", "pica-mcp-server"],
-          "env": {
-            "PICA_SECRET": "your_pica_secret_key"
-          }
+      "picahq-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@picahq/mcp"
+        ],
+        "env": {}
+      },
+      "picahq-mcp-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@picahq/mcp"
+        ],
+        "env": {
+          "PICA_SECRET": "your-pica-secret-key"
+        }
+      },
+      "pica-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-e",
+          "PICA_SECRET=your_pica_secret_key",
+          "pica-mcp-server"
+        ],
+        "env": {
+          "PICA_SECRET": "your_pica_secret_key"
         }
       }
     },

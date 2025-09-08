@@ -8,18 +8,17 @@
     "name": "zaizaizhao"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-swagger-server"],
-      "env": {
-        "MCP_PORT": "${user_config.mcp_port}",
-        "MCP_TRANSPORT": "${user_config.mcp_transport}",
-        "MCP_OPENAPI_URL": "${user_config.mcp_openapi_url}",
-        "MCP_AUTH_TYPE": "${user_config.mcp_auth_type}",
-        "API_TOKEN": "${user_config.api_token}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-swagger-server"
+    ],
+    "env": {
+      "MCP_PORT": "${user_config.mcp_port}",
+      "MCP_TRANSPORT": "${user_config.mcp_transport}",
+      "MCP_OPENAPI_URL": "${user_config.mcp_openapi_url}",
+      "MCP_AUTH_TYPE": "${user_config.mcp_auth_type}",
+      "API_TOKEN": "${user_config.api_token}"
     }
   },
   "tools": [],
@@ -93,99 +92,129 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-swagger-server-cli-petstore": {
-          "command": "pnpm",
-          "args": ["cli:petstore"],
-          "env": {}
-        },
-        "mcp-swagger-server-cli-github": {
-          "command": "pnpm",
-          "args": ["cli:github"],
-          "env": {}
-        },
-        "mcp-swagger-server-petstore-streamable": {
-          "command": "mcp-swagger-server",
-          "args": [
-            "--openapi",
-            "https://petstore.swagger.io/v2/swagger.json",
-            "--transport",
-            "streamable",
-            "--port",
-            "3322"
-          ],
-          "env": {}
-        },
-        "mcp-swagger-server-local-file-sse": {
-          "command": "mcp-swagger-server",
-          "args": ["--openapi", "./swagger.json", "--transport", "sse", "--port", "3322"],
-          "env": {}
-        },
-        "mcp-swagger-server-remote-api-streamable": {
-          "command": "mcp-swagger-server",
-          "args": ["--openapi", "https://api.example.com/openapi.json", "--transport", "streamable", "--port", "3323"],
-          "env": {}
-        },
-        "mcp-swagger-server-watch-stdio": {
-          "command": "mcp-swagger-server",
-          "args": ["--openapi", "./api.yaml", "--transport", "stdio", "--watch"],
-          "env": {}
-        },
-        "mcp-swagger-server-bearer-token": {
-          "command": "mcp-swagger-server",
-          "args": [
-            "--openapi",
-            "https://api.example.com/openapi.json",
-            "--auth-type",
-            "bearer",
-            "--bearer-token",
-            "your-token-here",
-            "--transport",
-            "sse",
-            "--port",
-            "3322"
-          ],
-          "env": {}
-        },
-        "mcp-swagger-server-bearer-env": {
-          "command": "mcp-swagger-server",
-          "args": [
-            "--auth-type",
-            "bearer",
-            "--bearer-env",
-            "API_TOKEN",
-            "--openapi",
-            "https://api.example.com/openapi.json"
-          ],
-          "env": {
-            "API_TOKEN": "your-token-here"
-          }
-        },
-        "mcp-swagger-server-with-config": {
-          "command": "mcp-swagger-server",
-          "args": ["--config", "config.json"],
-          "env": {}
-        },
-        "mcp-swagger-server-claude-petstore-stdio": {
-          "command": "mcp-swagger-server",
-          "args": ["--openapi", "https://petstore.swagger.io/v2/swagger.json", "--transport", "stdio"],
-          "env": {}
-        },
-        "mcp-swagger-server-claude-secured-stdio": {
-          "command": "mcp-swagger-server",
-          "args": [
-            "--openapi",
-            "https://api.example.com/openapi.json",
-            "--transport",
-            "stdio",
-            "--auth-type",
-            "bearer",
-            "--bearer-env",
-            "API_TOKEN"
-          ],
-          "env": {
-            "API_TOKEN": "your-bearer-token-here"
-          }
+      "mcp-swagger-server-cli-petstore": {
+        "command": "pnpm",
+        "args": [
+          "cli:petstore"
+        ],
+        "env": {}
+      },
+      "mcp-swagger-server-cli-github": {
+        "command": "pnpm",
+        "args": [
+          "cli:github"
+        ],
+        "env": {}
+      },
+      "mcp-swagger-server-petstore-streamable": {
+        "command": "mcp-swagger-server",
+        "args": [
+          "--openapi",
+          "https://petstore.swagger.io/v2/swagger.json",
+          "--transport",
+          "streamable",
+          "--port",
+          "3322"
+        ],
+        "env": {}
+      },
+      "mcp-swagger-server-local-file-sse": {
+        "command": "mcp-swagger-server",
+        "args": [
+          "--openapi",
+          "./swagger.json",
+          "--transport",
+          "sse",
+          "--port",
+          "3322"
+        ],
+        "env": {}
+      },
+      "mcp-swagger-server-remote-api-streamable": {
+        "command": "mcp-swagger-server",
+        "args": [
+          "--openapi",
+          "https://api.example.com/openapi.json",
+          "--transport",
+          "streamable",
+          "--port",
+          "3323"
+        ],
+        "env": {}
+      },
+      "mcp-swagger-server-watch-stdio": {
+        "command": "mcp-swagger-server",
+        "args": [
+          "--openapi",
+          "./api.yaml",
+          "--transport",
+          "stdio",
+          "--watch"
+        ],
+        "env": {}
+      },
+      "mcp-swagger-server-bearer-token": {
+        "command": "mcp-swagger-server",
+        "args": [
+          "--openapi",
+          "https://api.example.com/openapi.json",
+          "--auth-type",
+          "bearer",
+          "--bearer-token",
+          "your-token-here",
+          "--transport",
+          "sse",
+          "--port",
+          "3322"
+        ],
+        "env": {}
+      },
+      "mcp-swagger-server-bearer-env": {
+        "command": "mcp-swagger-server",
+        "args": [
+          "--auth-type",
+          "bearer",
+          "--bearer-env",
+          "API_TOKEN",
+          "--openapi",
+          "https://api.example.com/openapi.json"
+        ],
+        "env": {
+          "API_TOKEN": "your-token-here"
+        }
+      },
+      "mcp-swagger-server-with-config": {
+        "command": "mcp-swagger-server",
+        "args": [
+          "--config",
+          "config.json"
+        ],
+        "env": {}
+      },
+      "mcp-swagger-server-claude-petstore-stdio": {
+        "command": "mcp-swagger-server",
+        "args": [
+          "--openapi",
+          "https://petstore.swagger.io/v2/swagger.json",
+          "--transport",
+          "stdio"
+        ],
+        "env": {}
+      },
+      "mcp-swagger-server-claude-secured-stdio": {
+        "command": "mcp-swagger-server",
+        "args": [
+          "--openapi",
+          "https://api.example.com/openapi.json",
+          "--transport",
+          "stdio",
+          "--auth-type",
+          "bearer",
+          "--bearer-env",
+          "API_TOKEN"
+        ],
+        "env": {
+          "API_TOKEN": "your-bearer-token-here"
         }
       }
     },

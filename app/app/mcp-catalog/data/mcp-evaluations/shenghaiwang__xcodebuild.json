@@ -8,13 +8,11 @@
     "name": "ShenghaiWang"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcpxcodebuild"],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "mcpxcodebuild"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,20 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcpxcodebuild-uvx": {
-          "command": "uvx",
-          "args": ["mcpxcodebuild"],
-          "env": {}
-        },
-        "mcpxcodebuild-pip": {
-          "command": "python",
-          "args": ["-m", "mcpxcodebuild"],
-          "env": {}
-        }
+      "mcpxcodebuild-uvx": {
+        "command": "uvx",
+        "args": [
+          "mcpxcodebuild"
+        ],
+        "env": {}
+      },
+      "mcpxcodebuild-pip": {
+        "command": "python",
+        "args": [
+          "-m",
+          "mcpxcodebuild"
+        ],
+        "env": {}
       }
     },
     "oauth": {

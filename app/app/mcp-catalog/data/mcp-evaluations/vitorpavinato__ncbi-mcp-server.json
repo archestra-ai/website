@@ -8,15 +8,15 @@
     "name": "vitorpavinato"
   },
   "server": {
-    "type": "python",
-    "entry_point": "${__dirname}/src/ncbi_mcp_server/server.py",
-    "mcp_config": {
-      "command": "poetry",
-      "args": ["run", "python", "${__dirname}/src/ncbi_mcp_server/server.py"],
-      "env": {
-        "NCBI_EMAIL": "${user_config.ncbi_email}",
-        "NCBI_API_KEY": "${user_config.ncbi_api_key}"
-      }
+    "command": "poetry",
+    "args": [
+      "run",
+      "python",
+      "${__dirname}/src/ncbi_mcp_server/server.py"
+    ],
+    "env": {
+      "NCBI_EMAIL": "${user_config.ncbi_email}",
+      "NCBI_API_KEY": "${user_config.ncbi_api_key}"
     }
   },
   "tools": [],
@@ -43,12 +43,14 @@
   "quality_score": 23,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ncbi-literature": {
-          "command": "poetry",
-          "args": ["run", "python", "src/ncbi_mcp_server/server.py"],
-          "env": {}
-        }
+      "ncbi-literature": {
+        "command": "poetry",
+        "args": [
+          "run",
+          "python",
+          "src/ncbi_mcp_server/server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

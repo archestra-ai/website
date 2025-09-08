@@ -8,13 +8,9 @@
     "name": "dotemacs"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "domain-lookup-mcp",
-    "mcp_config": {
-      "command": "${__dirname}/domain-lookup-mcp",
-      "args": [],
-      "env": {}
-    }
+    "command": "${__dirname}/domain-lookup-mcp",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 34,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "domain-lookup-mcp": {
-          "command": "/path/to/domain-lookup-mcp/domain-lookup-mcp",
-          "args": [],
-          "env": {}
-        }
+      "domain-lookup-mcp": {
+        "command": "/path/to/domain-lookup-mcp/domain-lookup-mcp",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

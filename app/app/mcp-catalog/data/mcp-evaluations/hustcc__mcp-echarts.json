@@ -8,19 +8,18 @@
     "name": "hustcc"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-echarts"],
-      "env": {
-        "MINIO_ENDPOINT": "${user_config.minio_endpoint}",
-        "MINIO_PORT": "${user_config.minio_port}",
-        "MINIO_USE_SSL": "${user_config.minio_use_ssl}",
-        "MINIO_ACCESS_KEY": "${user_config.minio_access_key}",
-        "MINIO_SECRET_KEY": "${user_config.minio_secret_key}",
-        "MINIO_BUCKET_NAME": "${user_config.minio_bucket_name}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-echarts"
+    ],
+    "env": {
+      "MINIO_ENDPOINT": "${user_config.minio_endpoint}",
+      "MINIO_PORT": "${user_config.minio_port}",
+      "MINIO_USE_SSL": "${user_config.minio_use_ssl}",
+      "MINIO_ACCESS_KEY": "${user_config.minio_access_key}",
+      "MINIO_SECRET_KEY": "${user_config.minio_secret_key}",
+      "MINIO_BUCKET_NAME": "${user_config.minio_bucket_name}"
     }
   },
   "tools": [],
@@ -75,32 +74,47 @@
   "quality_score": 66,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-echarts-stdio": {
-          "command": "npx",
-          "args": ["-y", "mcp-echarts"],
-          "env": {}
-        },
-        "mcp-echarts-stdio-windows": {
-          "command": "cmd",
-          "args": ["/c", "npx", "-y", "mcp-echarts"],
-          "env": {}
-        },
-        "mcp-echarts-sse": {
-          "command": "mcp-echarts",
-          "args": ["-t", "sse"],
-          "env": {}
-        },
-        "mcp-echarts-streamable": {
-          "command": "mcp-echarts",
-          "args": ["-t", "streamable"],
-          "env": {}
-        },
-        "mcp-echarts-dev": {
-          "command": "npm",
-          "args": ["run", "start"],
-          "env": {}
-        }
+      "mcp-echarts-stdio": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-echarts"
+        ],
+        "env": {}
+      },
+      "mcp-echarts-stdio-windows": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "npx",
+          "-y",
+          "mcp-echarts"
+        ],
+        "env": {}
+      },
+      "mcp-echarts-sse": {
+        "command": "mcp-echarts",
+        "args": [
+          "-t",
+          "sse"
+        ],
+        "env": {}
+      },
+      "mcp-echarts-streamable": {
+        "command": "mcp-echarts",
+        "args": [
+          "-t",
+          "streamable"
+        ],
+        "env": {}
+      },
+      "mcp-echarts-dev": {
+        "command": "npm",
+        "args": [
+          "run",
+          "start"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,17 +8,15 @@
     "name": "sanyambassi"
   },
   "server": {
-    "type": "node",
-    "entry_point": "crdp-mcp-server.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/crdp-mcp-server.js"],
-      "env": {
-        "CRDP_SERVICE_URL": "${user_config.crdp_service_url}",
-        "CRDP_PROBES_URL": "${user_config.crdp_probes_url}",
-        "MCP_TRANSPORT": "${user_config.mcp_transport}",
-        "MCP_PORT": "${user_config.mcp_port}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/crdp-mcp-server.js"
+    ],
+    "env": {
+      "CRDP_SERVICE_URL": "${user_config.crdp_service_url}",
+      "CRDP_PROBES_URL": "${user_config.crdp_probes_url}",
+      "MCP_TRANSPORT": "${user_config.mcp_transport}",
+      "MCP_PORT": "${user_config.mcp_port}"
     }
   },
   "tools": [],
@@ -59,27 +57,31 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "crdp-stdio": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        },
-        "crdp-http": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {
-            "MCP_TRANSPORT": "streamable-http"
-          }
-        },
-        "crdp-ai-assistant-config": {
-          "command": "node",
-          "args": ["/path/to/your/crdp-mcp-server/dist/crdp-mcp-server.js"],
-          "env": {
-            "CRDP_SERVICE_URL": "http://your-crdp-server:8090",
-            "CRDP_PROBES_URL": "http://your-crdp-server:8080",
-            "MCP_TRANSPORT": "stdio"
-          }
+      "crdp-stdio": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {}
+      },
+      "crdp-http": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {
+          "MCP_TRANSPORT": "streamable-http"
+        }
+      },
+      "crdp-ai-assistant-config": {
+        "command": "node",
+        "args": [
+          "/path/to/your/crdp-mcp-server/dist/crdp-mcp-server.js"
+        ],
+        "env": {
+          "CRDP_SERVICE_URL": "http://your-crdp-server:8090",
+          "CRDP_PROBES_URL": "http://your-crdp-server:8080",
+          "MCP_TRANSPORT": "stdio"
         }
       }
     },

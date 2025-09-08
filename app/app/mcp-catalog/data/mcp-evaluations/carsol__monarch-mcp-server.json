@@ -8,16 +8,14 @@
     "name": "carsol"
   },
   "server": {
-    "type": "python",
-    "entry_point": "run_server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/run_server.py"],
-      "env": {
-        "MONARCH_EMAIL": "${user_config.monarch_email}",
-        "MONARCH_PASSWORD": "${user_config.monarch_password}",
-        "MONARCH_MFA_SECRET": "${user_config.monarch_mfa_secret}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/run_server.py"
+    ],
+    "env": {
+      "MONARCH_EMAIL": "${user_config.monarch_email}",
+      "MONARCH_PASSWORD": "${user_config.monarch_password}",
+      "MONARCH_MFA_SECRET": "${user_config.monarch_mfa_secret}"
     }
   },
   "tools": [],
@@ -50,20 +48,22 @@
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "monarch-money": {
-          "command": "python",
-          "args": ["run_server.py"],
-          "env": {}
-        },
-        "monarch-money-configured": {
-          "command": "python",
-          "args": ["/path/to/monarch-mcp-server/run_server.py"],
-          "env": {
-            "MONARCH_EMAIL": "your-email@example.com",
-            "MONARCH_PASSWORD": "your-password",
-            "MONARCH_MFA_SECRET": "your-mfa-secret"
-          }
+      "monarch-money": {
+        "command": "python",
+        "args": [
+          "run_server.py"
+        ],
+        "env": {}
+      },
+      "monarch-money-configured": {
+        "command": "python",
+        "args": [
+          "/path/to/monarch-mcp-server/run_server.py"
+        ],
+        "env": {
+          "MONARCH_EMAIL": "your-email@example.com",
+          "MONARCH_PASSWORD": "your-password",
+          "MONARCH_MFA_SECRET": "your-mfa-secret"
         }
       }
     },

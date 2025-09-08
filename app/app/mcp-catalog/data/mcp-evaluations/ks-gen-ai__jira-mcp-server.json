@@ -8,16 +8,14 @@
     "name": "KS-GEN-AI"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "JIRA_URL": "${user_config.jira_url}",
-        "JIRA_API_MAIL": "${user_config.jira_api_mail}",
-        "JIRA_API_KEY": "${user_config.jira_api_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "JIRA_URL": "${user_config.jira_url}",
+      "JIRA_API_MAIL": "${user_config.jira_api_mail}",
+      "JIRA_API_KEY": "${user_config.jira_api_key}"
     }
   },
   "tools": [],
@@ -54,15 +52,15 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "Jira communication server": {
-          "command": "node",
-          "args": ["/PATH_TO_THE_PROJECT/build/index.js"],
-          "env": {
-            "JIRA_URL": "https://XXXXXXXX.atlassian.net",
-            "JIRA_API_MAIL": "Your email",
-            "JIRA_API_KEY": "KEY_FROM : https://id.atlassian.com/manage-profile/security/api-tokens"
-          }
+      "Jira communication server": {
+        "command": "node",
+        "args": [
+          "/PATH_TO_THE_PROJECT/build/index.js"
+        ],
+        "env": {
+          "JIRA_URL": "https://XXXXXXXX.atlassian.net",
+          "JIRA_API_MAIL": "Your email",
+          "JIRA_API_KEY": "KEY_FROM : https://id.atlassian.com/manage-profile/security/api-tokens"
         }
       }
     },

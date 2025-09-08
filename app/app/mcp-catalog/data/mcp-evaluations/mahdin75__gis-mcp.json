@@ -8,13 +8,9 @@
     "name": "mahdin75"
   },
   "server": {
-    "type": "python",
-    "entry_point": "gis-mcp",
-    "mcp_config": {
-      "command": "gis-mcp",
-      "args": [],
-      "env": {}
-    }
+    "command": "gis-mcp",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,27 +21,31 @@
   "quality_score": 41,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "gis-mcp": {
-          "command": "gis-mcp",
-          "args": [],
-          "env": {}
-        },
-        "gis-mcp-configured": {
-          "command": "/home/YourUsername/.venv/bin/gis-mcp",
-          "args": [],
-          "env": {}
-        },
-        "gis-mcp-dev": {
-          "command": "python",
-          "args": ["-m", "gis_mcp"],
-          "env": {}
-        },
-        "gis-mcp-dev-configured": {
-          "command": "/path/to/gis-mcp/.venv/bin/python",
-          "args": ["-m", "gis_mcp"],
-          "env": {}
-        }
+      "gis-mcp": {
+        "command": "gis-mcp",
+        "args": [],
+        "env": {}
+      },
+      "gis-mcp-configured": {
+        "command": "/home/YourUsername/.venv/bin/gis-mcp",
+        "args": [],
+        "env": {}
+      },
+      "gis-mcp-dev": {
+        "command": "python",
+        "args": [
+          "-m",
+          "gis_mcp"
+        ],
+        "env": {}
+      },
+      "gis-mcp-dev-configured": {
+        "command": "/path/to/gis-mcp/.venv/bin/python",
+        "args": [
+          "-m",
+          "gis_mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

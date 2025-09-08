@@ -8,14 +8,13 @@
     "name": "TimLukaHorstmann"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@timlukahorstmann/mcp-weather"],
-      "env": {
-        "ACCUWEATHER_API_KEY": "${user_config.accuweather_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@timlukahorstmann/mcp-weather"
+    ],
+    "env": {
+      "ACCUWEATHER_API_KEY": "${user_config.accuweather_api_key}"
     }
   },
   "tools": [],
@@ -35,42 +34,46 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "timlukahorstmann-mcp-weather": {
-          "command": "npx",
-          "args": ["-y", "@timlukahorstmann/mcp-weather"],
-          "env": {
-            "ACCUWEATHER_API_KEY": "your_api_key_here"
-          }
-        },
-        "supergateway-stdio": {
-          "command": "npx",
-          "args": [
-            "-y",
-            "supergateway",
-            "--stdio",
-            "npx -y @timlukahorstmann/mcp-weather",
-            "--port",
-            "4004",
-            "--baseUrl",
-            "http://127.0.0.1:4004",
-            "--ssePath",
-            "/messages",
-            "--messagePath",
-            "/message",
-            "--cors",
-            "*"
-          ],
-          "env": {
-            "ACCUWEATHER_API_KEY": "$ACCUWEATHER_API_KEY"
-          }
-        },
-        "timlukahorstmann-mcp-weather-configured": {
-          "command": "npx",
-          "args": ["-y", "@timlukahorstmann/mcp-weather"],
-          "env": {
-            "ACCUWEATHER_API_KEY": "your_api_key_here"
-          }
+      "timlukahorstmann-mcp-weather": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@timlukahorstmann/mcp-weather"
+        ],
+        "env": {
+          "ACCUWEATHER_API_KEY": "your_api_key_here"
+        }
+      },
+      "supergateway-stdio": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "supergateway",
+          "--stdio",
+          "npx -y @timlukahorstmann/mcp-weather",
+          "--port",
+          "4004",
+          "--baseUrl",
+          "http://127.0.0.1:4004",
+          "--ssePath",
+          "/messages",
+          "--messagePath",
+          "/message",
+          "--cors",
+          "*"
+        ],
+        "env": {
+          "ACCUWEATHER_API_KEY": "$ACCUWEATHER_API_KEY"
+        }
+      },
+      "timlukahorstmann-mcp-weather-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@timlukahorstmann/mcp-weather"
+        ],
+        "env": {
+          "ACCUWEATHER_API_KEY": "your_api_key_here"
         }
       }
     },

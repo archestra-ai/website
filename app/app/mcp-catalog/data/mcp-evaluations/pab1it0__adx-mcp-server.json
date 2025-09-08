@@ -8,18 +8,17 @@
     "name": "pab1it0"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/adx_mcp_server/main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "src/adx_mcp_server/main.py"],
-      "env": {
-        "ADX_CLUSTER_URL": "${user_config.adx_cluster_url}",
-        "ADX_DATABASE": "${user_config.adx_database}",
-        "AZURE_TENANT_ID": "${user_config.azure_tenant_id}",
-        "AZURE_CLIENT_ID": "${user_config.azure_client_id}",
-        "ADX_TOKEN_FILE_PATH": "${user_config.adx_token_file_path}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "src/adx_mcp_server/main.py"
+    ],
+    "env": {
+      "ADX_CLUSTER_URL": "${user_config.adx_cluster_url}",
+      "ADX_DATABASE": "${user_config.adx_database}",
+      "AZURE_TENANT_ID": "${user_config.azure_tenant_id}",
+      "AZURE_CLIENT_ID": "${user_config.azure_client_id}",
+      "ADX_TOKEN_FILE_PATH": "${user_config.adx_token_file_path}"
     }
   },
   "tools": [],
@@ -68,63 +67,66 @@
   "quality_score": 67,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "adx-mcp-server-uv": {
-          "command": "uv",
-          "args": ["--directory", "<full path to adx-mcp-server directory>", "run", "src/adx_mcp_server/main.py"],
-          "env": {
-            "ADX_CLUSTER_URL": "https://yourcluster.region.kusto.windows.net",
-            "ADX_DATABASE": "your_database"
-          }
-        },
-        "adx-mcp-server-docker-cli": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-it",
-            "--rm",
-            "-e",
-            "ADX_CLUSTER_URL=https://yourcluster.region.kusto.windows.net",
-            "-e",
-            "ADX_DATABASE=your_database",
-            "-e",
-            "AZURE_TENANT_ID=your_tenant_id",
-            "-e",
-            "AZURE_CLIENT_ID=your_client_id",
-            "adx-mcp-server"
-          ],
-          "env": {
-            "ADX_CLUSTER_URL": "https://yourcluster.region.kusto.windows.net",
-            "ADX_DATABASE": "your_database",
-            "AZURE_TENANT_ID": "your_tenant_id",
-            "AZURE_CLIENT_ID": "your_client_id"
-          }
-        },
-        "adx-mcp-server-docker-claude-desktop": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "-e",
-            "ADX_CLUSTER_URL",
-            "-e",
-            "ADX_DATABASE",
-            "-e",
-            "AZURE_TENANT_ID",
-            "-e",
-            "AZURE_CLIENT_ID",
-            "-e",
-            "ADX_TOKEN_FILE_PATH",
-            "adx-mcp-server"
-          ],
-          "env": {
-            "ADX_CLUSTER_URL": "https://yourcluster.region.kusto.windows.net",
-            "ADX_DATABASE": "your_database",
-            "AZURE_TENANT_ID": "your_tenant_id",
-            "AZURE_CLIENT_ID": "your_client_id",
-            "ADX_TOKEN_FILE_PATH": "/var/run/secrets/azure/tokens/azure-identity-token"
-          }
+      "adx-mcp-server-uv": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "<full path to adx-mcp-server directory>",
+          "run",
+          "src/adx_mcp_server/main.py"
+        ],
+        "env": {
+          "ADX_CLUSTER_URL": "https://yourcluster.region.kusto.windows.net",
+          "ADX_DATABASE": "your_database"
+        }
+      },
+      "adx-mcp-server-docker-cli": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-it",
+          "--rm",
+          "-e",
+          "ADX_CLUSTER_URL=https://yourcluster.region.kusto.windows.net",
+          "-e",
+          "ADX_DATABASE=your_database",
+          "-e",
+          "AZURE_TENANT_ID=your_tenant_id",
+          "-e",
+          "AZURE_CLIENT_ID=your_client_id",
+          "adx-mcp-server"
+        ],
+        "env": {
+          "ADX_CLUSTER_URL": "https://yourcluster.region.kusto.windows.net",
+          "ADX_DATABASE": "your_database",
+          "AZURE_TENANT_ID": "your_tenant_id",
+          "AZURE_CLIENT_ID": "your_client_id"
+        }
+      },
+      "adx-mcp-server-docker-claude-desktop": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "-e",
+          "ADX_CLUSTER_URL",
+          "-e",
+          "ADX_DATABASE",
+          "-e",
+          "AZURE_TENANT_ID",
+          "-e",
+          "AZURE_CLIENT_ID",
+          "-e",
+          "ADX_TOKEN_FILE_PATH",
+          "adx-mcp-server"
+        ],
+        "env": {
+          "ADX_CLUSTER_URL": "https://yourcluster.region.kusto.windows.net",
+          "ADX_DATABASE": "your_database",
+          "AZURE_TENANT_ID": "your_tenant_id",
+          "AZURE_CLIENT_ID": "your_client_id",
+          "ADX_TOKEN_FILE_PATH": "/var/run/secrets/azure/tokens/azure-identity-token"
         }
       }
     },

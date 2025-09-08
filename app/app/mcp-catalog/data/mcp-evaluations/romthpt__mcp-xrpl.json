@@ -8,15 +8,13 @@
     "name": "RomThpt"
   },
   "server": {
-    "type": "node",
-    "entry_point": "server/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/server/index.js"],
-      "env": {
-        "DEFAULT_SEED": "${user_config.default_seed}",
-        "XRPL_NETWORK": "${user_config.xrpl_network}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/server/index.js"
+    ],
+    "env": {
+      "DEFAULT_SEED": "${user_config.default_seed}",
+      "XRPL_NETWORK": "${user_config.xrpl_network}"
     }
   },
   "tools": [],
@@ -43,12 +41,12 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "RomThpt-mcp-xrpl": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        }
+      "RomThpt-mcp-xrpl": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {}
       }
     },
     "oauth": {

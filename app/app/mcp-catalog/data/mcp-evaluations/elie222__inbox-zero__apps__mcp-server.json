@@ -8,14 +8,12 @@
     "name": "elie222"
   },
   "server": {
-    "type": "node",
-    "entry_point": "apps/mcp-server/build/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/apps/mcp-server/build/index.js"],
-      "env": {
-        "API_KEY": "${user_config.api_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/apps/mcp-server/build/index.js"
+    ],
+    "env": {
+      "API_KEY": "${user_config.api_key}"
     }
   },
   "tools": [],
@@ -35,13 +33,13 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server": {
-          "command": "node",
-          "args": ["apps/mcp-server/build/index.js"],
-          "env": {
-            "API_KEY": "YOUR_API_KEY"
-          }
+      "mcp-server": {
+        "command": "node",
+        "args": [
+          "apps/mcp-server/build/index.js"
+        ],
+        "env": {
+          "API_KEY": "YOUR_API_KEY"
         }
       }
     },

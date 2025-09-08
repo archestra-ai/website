@@ -8,15 +8,13 @@
     "name": "sawa-zen"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["vrchat-mcp"],
-      "env": {
-        "VRCHAT_USERNAME": "${user_config.vrchat_username}",
-        "VRCHAT_AUTH_TOKEN": "${user_config.vrchat_auth_token}"
-      }
+    "command": "npx",
+    "args": [
+      "vrchat-mcp"
+    ],
+    "env": {
+      "VRCHAT_USERNAME": "${user_config.vrchat_username}",
+      "VRCHAT_AUTH_TOKEN": "${user_config.vrchat_auth_token}"
     }
   },
   "tools": [],
@@ -43,30 +41,34 @@
   "quality_score": 43,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "vrchat-mcp": {
-          "command": "npx",
-          "args": ["vrchat-mcp"],
-          "env": {
-            "VRCHAT_USERNAME": "your_username",
-            "VRCHAT_AUTH_TOKEN": "your_auth_token"
-          }
-        },
-        "vrchat-mcp-configured": {
-          "command": "npx",
-          "args": ["vrchat-mcp"],
-          "env": {
-            "VRCHAT_USERNAME": "your-username",
-            "VRCHAT_AUTH_TOKEN": "your-auth-token"
-          }
-        },
-        "vrchat-mcp-stdio": {
-          "command": "node",
-          "args": ["./dist/main.js"],
-          "env": {
-            "VRCHAT_USERNAME": "your_username",
-            "VRCHAT_AUTH_TOKEN": "your_auth_token"
-          }
+      "vrchat-mcp": {
+        "command": "npx",
+        "args": [
+          "vrchat-mcp"
+        ],
+        "env": {
+          "VRCHAT_USERNAME": "your_username",
+          "VRCHAT_AUTH_TOKEN": "your_auth_token"
+        }
+      },
+      "vrchat-mcp-configured": {
+        "command": "npx",
+        "args": [
+          "vrchat-mcp"
+        ],
+        "env": {
+          "VRCHAT_USERNAME": "your-username",
+          "VRCHAT_AUTH_TOKEN": "your-auth-token"
+        }
+      },
+      "vrchat-mcp-stdio": {
+        "command": "node",
+        "args": [
+          "./dist/main.js"
+        ],
+        "env": {
+          "VRCHAT_USERNAME": "your_username",
+          "VRCHAT_AUTH_TOKEN": "your_auth_token"
         }
       }
     },

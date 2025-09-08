@@ -8,14 +8,13 @@
     "name": "Bankless"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@bankless/onchain-mcp"],
-      "env": {
-        "BANKLESS_API_TOKEN": "${user_config.bankless_api_token}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@bankless/onchain-mcp"
+    ],
+    "env": {
+      "BANKLESS_API_TOKEN": "${user_config.bankless_api_token}"
     }
   },
   "tools": [],
@@ -35,13 +34,13 @@
   "quality_score": 69,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "bankless-onchain-mcp": {
-          "command": "npx",
-          "args": ["@bankless/onchain-mcp"],
-          "env": {
-            "BANKLESS_API_TOKEN": "your_api_token_here"
-          }
+      "bankless-onchain-mcp": {
+        "command": "npx",
+        "args": [
+          "@bankless/onchain-mcp"
+        ],
+        "env": {
+          "BANKLESS_API_TOKEN": "your_api_token_here"
         }
       }
     },

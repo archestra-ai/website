@@ -8,22 +8,20 @@
     "name": "ArchAI-Labs"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/server.py"],
-      "env": {
-        "SONARQUBE_URL": "${user_config.sonarqube_url}",
-        "SONARQUBE_TOKEN": "${user_config.sonarqube_token}",
-        "TRANSPORT": "${user_config.transport}",
-        "GEMINI_API_KEY": "${user_config.gemini_api_key}",
-        "GEMINI_MODEL": "${user_config.gemini_model}",
-        "AZURE_OPENAI_API_KEY": "${user_config.azure_openai_api_key}",
-        "AZURE_OPENAI_ENDPOINT": "${user_config.azure_openai_endpoint}",
-        "AZURE_DEPLOYMENT": "${user_config.azure_deployment}",
-        "AZURE_API_VERSION": "${user_config.azure_api_version}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/server.py"
+    ],
+    "env": {
+      "SONARQUBE_URL": "${user_config.sonarqube_url}",
+      "SONARQUBE_TOKEN": "${user_config.sonarqube_token}",
+      "TRANSPORT": "${user_config.transport}",
+      "GEMINI_API_KEY": "${user_config.gemini_api_key}",
+      "GEMINI_MODEL": "${user_config.gemini_model}",
+      "AZURE_OPENAI_API_KEY": "${user_config.azure_openai_api_key}",
+      "AZURE_OPENAI_ENDPOINT": "${user_config.azure_openai_endpoint}",
+      "AZURE_DEPLOYMENT": "${user_config.azure_deployment}",
+      "AZURE_API_VERSION": "${user_config.azure_api_version}"
     }
   },
   "tools": [],
@@ -100,12 +98,12 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "fastmcp-sonarqube-metrics-server": {
-          "command": "python",
-          "args": ["server.py"],
-          "env": {}
-        }
+      "fastmcp-sonarqube-metrics-server": {
+        "command": "python",
+        "args": [
+          "server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

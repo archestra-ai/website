@@ -8,13 +8,14 @@
     "name": "OpenDataMCP"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/odmcp/__main__.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "odmcp", "--provider", "${user_config.provider_name}"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "-m",
+      "odmcp",
+      "--provider",
+      "${user_config.provider_name}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,12 +34,14 @@
   "quality_score": 64,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ch_sbb": {
-          "command": "uvx",
-          "args": ["odmcp", "setup", "ch_sbb"],
-          "env": {}
-        }
+      "ch_sbb": {
+        "command": "uvx",
+        "args": [
+          "odmcp",
+          "setup",
+          "ch_sbb"
+        ],
+        "env": {}
       }
     },
     "oauth": {

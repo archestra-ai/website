@@ -8,14 +8,13 @@
     "name": "OctagonAI"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "octagon-deep-research-mcp@latest"],
-      "env": {
-        "OCTAGON_API_KEY": "${user_config.octagon_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "octagon-deep-research-mcp@latest"
+    ],
+    "env": {
+      "OCTAGON_API_KEY": "${user_config.octagon_api_key}"
     }
   },
   "tools": [],
@@ -35,20 +34,24 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "octagon-deep-research-mcp": {
-          "command": "npx",
-          "args": ["-y", "octagon-deep-research-mcp"],
-          "env": {
-            "OCTAGON_API_KEY": "your-octagon-api-key"
-          }
-        },
-        "octagon-deep-research-mcp-configured": {
-          "command": "npx",
-          "args": ["-y", "octagon-deep-research-mcp@latest"],
-          "env": {
-            "OCTAGON_API_KEY": "YOUR_API_KEY_HERE"
-          }
+      "octagon-deep-research-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "octagon-deep-research-mcp"
+        ],
+        "env": {
+          "OCTAGON_API_KEY": "your-octagon-api-key"
+        }
+      },
+      "octagon-deep-research-mcp-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "octagon-deep-research-mcp@latest"
+        ],
+        "env": {
+          "OCTAGON_API_KEY": "YOUR_API_KEY_HERE"
         }
       }
     },

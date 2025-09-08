@@ -8,13 +8,11 @@
     "name": "zcaceres"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/index.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,19 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "fetch": {
-          "command": "node",
-          "args": ["{ABSOLUTE PATH TO FILE HERE}/dist/index.js"],
-          "env": {}
-        },
-        "fetch-stdio": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        }
+      "fetch": {
+        "command": "node",
+        "args": [
+          "{ABSOLUTE PATH TO FILE HERE}/dist/index.js"
+        ],
+        "env": {}
+      },
+      "fetch-stdio": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {}
       }
     },
     "oauth": {

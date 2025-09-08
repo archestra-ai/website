@@ -8,19 +8,20 @@
     "name": "webcoderz"
   },
   "server": {
-    "type": "python",
-    "entry_point": "geo.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}/MCP-Geo", "run", "geo.py"],
-      "env": {
-        "GEOCODER_PROVIDER": "${user_config.geocoder_provider}",
-        "NOMINATIM_URL": "${user_config.nominatim_url}",
-        "SCHEME": "${user_config.scheme}",
-        "ARC_USERNAME": "${user_config.arc_username}",
-        "ARC_PASSWORD": "${user_config.arc_password}",
-        "BING_API_KEY": "${user_config.bing_api_key}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}/MCP-Geo",
+      "run",
+      "geo.py"
+    ],
+    "env": {
+      "GEOCODER_PROVIDER": "${user_config.geocoder_provider}",
+      "NOMINATIM_URL": "${user_config.nominatim_url}",
+      "SCHEME": "${user_config.scheme}",
+      "ARC_USERNAME": "${user_config.arc_username}",
+      "ARC_PASSWORD": "${user_config.arc_password}",
+      "BING_API_KEY": "${user_config.bing_api_key}"
     }
   },
   "tools": [],
@@ -75,15 +76,18 @@
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-geo": {
-          "command": "uv",
-          "args": ["--directory", "MCP-Geo", "run", "geo.py"],
-          "env": {
-            "NOMINATIM_URL": "${NOMINATIM_URL}",
-            "SCHEME": "http",
-            "GEOCODER_PROVIDER": "nominatim"
-          }
+      "mcp-geo": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "MCP-Geo",
+          "run",
+          "geo.py"
+        ],
+        "env": {
+          "NOMINATIM_URL": "${NOMINATIM_URL}",
+          "SCHEME": "http",
+          "GEOCODER_PROVIDER": "nominatim"
         }
       }
     },

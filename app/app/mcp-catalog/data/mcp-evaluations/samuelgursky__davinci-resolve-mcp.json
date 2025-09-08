@@ -8,16 +8,16 @@
     "name": "samuelgursky"
   },
   "server": {
-    "type": "python",
-    "entry_point": "scripts/mcp_resolve_launcher.sh",
-    "mcp_config": {
-      "command": "${__dirname}/scripts/mcp_resolve_launcher.sh",
-      "args": ["--start-cursor", "--project", "${user_config.project_name}"],
-      "env": {
-        "RESOLVE_SCRIPT_API": "${user_config.resolve_script_api}",
-        "RESOLVE_SCRIPT_LIB": "${user_config.resolve_script_lib}",
-        "PYTHONPATH": "${user_config.resolve_script_api}/Modules/"
-      }
+    "command": "${__dirname}/scripts/mcp_resolve_launcher.sh",
+    "args": [
+      "--start-cursor",
+      "--project",
+      "${user_config.project_name}"
+    ],
+    "env": {
+      "RESOLVE_SCRIPT_API": "${user_config.resolve_script_api}",
+      "RESOLVE_SCRIPT_LIB": "${user_config.resolve_script_lib}",
+      "PYTHONPATH": "${user_config.resolve_script_api}/Modules/"
     }
   },
   "tools": [],
@@ -48,52 +48,56 @@
   "quality_score": 59,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "davinci-resolve-mcp-install-macos": {
-          "command": "./install.sh",
-          "args": [],
-          "env": {}
-        },
-        "davinci-resolve-mcp-install-windows": {
-          "command": "install.bat",
-          "args": [],
-          "env": {}
-        },
-        "davinci-resolve-mcp-quickstart-windows": {
-          "command": "run-now.bat",
-          "args": [],
-          "env": {}
-        },
-        "davinci-resolve-mcp-quickstart-macos": {
-          "command": "./run-now.sh",
-          "args": [],
-          "env": {}
-        },
-        "davinci-resolve-mcp-cursor-start-macos": {
-          "command": "./scripts/mcp_resolve-cursor_start",
-          "args": [],
-          "env": {}
-        },
-        "davinci-resolve-mcp-claude-start-macos": {
-          "command": "./scripts/mcp_resolve-claude_start",
-          "args": [],
-          "env": {}
-        },
-        "davinci-resolve-mcp-launcher-cursor": {
-          "command": "./scripts/mcp_resolve_launcher.sh",
-          "args": ["--start-cursor"],
-          "env": {}
-        },
-        "davinci-resolve-mcp-launcher-claude": {
-          "command": "./scripts/mcp_resolve_launcher.sh",
-          "args": ["--start-claude"],
-          "env": {}
-        },
-        "davinci-resolve-mcp-launcher-both": {
-          "command": "./scripts/mcp_resolve_launcher.sh",
-          "args": ["--start-both"],
-          "env": {}
-        }
+      "davinci-resolve-mcp-install-macos": {
+        "command": "./install.sh",
+        "args": [],
+        "env": {}
+      },
+      "davinci-resolve-mcp-install-windows": {
+        "command": "install.bat",
+        "args": [],
+        "env": {}
+      },
+      "davinci-resolve-mcp-quickstart-windows": {
+        "command": "run-now.bat",
+        "args": [],
+        "env": {}
+      },
+      "davinci-resolve-mcp-quickstart-macos": {
+        "command": "./run-now.sh",
+        "args": [],
+        "env": {}
+      },
+      "davinci-resolve-mcp-cursor-start-macos": {
+        "command": "./scripts/mcp_resolve-cursor_start",
+        "args": [],
+        "env": {}
+      },
+      "davinci-resolve-mcp-claude-start-macos": {
+        "command": "./scripts/mcp_resolve-claude_start",
+        "args": [],
+        "env": {}
+      },
+      "davinci-resolve-mcp-launcher-cursor": {
+        "command": "./scripts/mcp_resolve_launcher.sh",
+        "args": [
+          "--start-cursor"
+        ],
+        "env": {}
+      },
+      "davinci-resolve-mcp-launcher-claude": {
+        "command": "./scripts/mcp_resolve_launcher.sh",
+        "args": [
+          "--start-claude"
+        ],
+        "env": {}
+      },
+      "davinci-resolve-mcp-launcher-both": {
+        "command": "./scripts/mcp_resolve_launcher.sh",
+        "args": [
+          "--start-both"
+        ],
+        "env": {}
       }
     },
     "oauth": {

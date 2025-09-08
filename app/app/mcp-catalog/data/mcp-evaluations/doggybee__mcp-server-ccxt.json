@@ -8,24 +8,23 @@
     "name": "doggybee"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@mcpfun/mcp-server-ccxt"],
-      "env": {
-        "DEFAULT_EXCHANGE": "${user_config.default_exchange}",
-        "DEFAULT_MARKET_TYPE": "${user_config.default_market_type}",
-        "BINANCE_API_KEY": "${user_config.binance_api_key}",
-        "BINANCE_SECRET": "${user_config.binance_secret}",
-        "KUCOIN_API_KEY": "${user_config.kucoin_api_key}",
-        "KUCOIN_SECRET": "${user_config.kucoin_secret}",
-        "KUCOIN_PASSPHRASE": "${user_config.kucoin_passphrase}",
-        "USE_PROXY": "${user_config.use_proxy}",
-        "PROXY_URL": "${user_config.proxy_url}",
-        "PROXY_USERNAME": "${user_config.proxy_username}",
-        "PROXY_PASSWORD": "${user_config.proxy_password}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@mcpfun/mcp-server-ccxt"
+    ],
+    "env": {
+      "DEFAULT_EXCHANGE": "${user_config.default_exchange}",
+      "DEFAULT_MARKET_TYPE": "${user_config.default_market_type}",
+      "BINANCE_API_KEY": "${user_config.binance_api_key}",
+      "BINANCE_SECRET": "${user_config.binance_secret}",
+      "KUCOIN_API_KEY": "${user_config.kucoin_api_key}",
+      "KUCOIN_SECRET": "${user_config.kucoin_secret}",
+      "KUCOIN_PASSPHRASE": "${user_config.kucoin_passphrase}",
+      "USE_PROXY": "${user_config.use_proxy}",
+      "PROXY_URL": "${user_config.proxy_url}",
+      "PROXY_USERNAME": "${user_config.proxy_username}",
+      "PROXY_PASSWORD": "${user_config.proxy_password}"
     }
   },
   "tools": [],
@@ -115,27 +114,31 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-ccxt": {
-          "command": "mcp-server-ccxt",
-          "args": [],
-          "env": {}
-        },
-        "mcpfun-mcp-server-ccxt": {
-          "command": "npx",
-          "args": ["@mcpfun/mcp-server-ccxt"],
-          "env": {}
-        },
-        "mcp-server-ccxt-npm-start": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        },
-        "mcp-server-ccxt-node-direct": {
-          "command": "node",
-          "args": ["/path/to/mcp-server-ccxt/build/index.js"],
-          "env": {}
-        }
+      "mcp-server-ccxt": {
+        "command": "mcp-server-ccxt",
+        "args": [],
+        "env": {}
+      },
+      "mcpfun-mcp-server-ccxt": {
+        "command": "npx",
+        "args": [
+          "@mcpfun/mcp-server-ccxt"
+        ],
+        "env": {}
+      },
+      "mcp-server-ccxt-npm-start": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {}
+      },
+      "mcp-server-ccxt-node-direct": {
+        "command": "node",
+        "args": [
+          "/path/to/mcp-server-ccxt/build/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

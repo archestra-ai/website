@@ -8,20 +8,19 @@
     "name": "YannBrrd"
   },
   "server": {
-    "type": "python",
-    "entry_point": "simple_snowflake_mcp/__main__.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "simple_snowflake_mcp"],
-      "env": {
-        "SNOWFLAKE_USER": "${user_config.snowflake_user}",
-        "SNOWFLAKE_PASSWORD": "${user_config.snowflake_password}",
-        "SNOWFLAKE_ACCOUNT": "${user_config.snowflake_account}",
-        "SNOWFLAKE_WAREHOUSE": "${user_config.snowflake_warehouse}",
-        "SNOWFLAKE_DATABASE": "${user_config.snowflake_database}",
-        "SNOWFLAKE_SCHEMA": "${user_config.snowflake_schema}",
-        "MCP_READ_ONLY": "${user_config.mcp_read_only}"
-      }
+    "command": "python",
+    "args": [
+      "-m",
+      "simple_snowflake_mcp"
+    ],
+    "env": {
+      "SNOWFLAKE_USER": "${user_config.snowflake_user}",
+      "SNOWFLAKE_PASSWORD": "${user_config.snowflake_password}",
+      "SNOWFLAKE_ACCOUNT": "${user_config.snowflake_account}",
+      "SNOWFLAKE_WAREHOUSE": "${user_config.snowflake_warehouse}",
+      "SNOWFLAKE_DATABASE": "${user_config.snowflake_database}",
+      "SNOWFLAKE_SCHEMA": "${user_config.snowflake_schema}",
+      "MCP_READ_ONLY": "${user_config.mcp_read_only}"
     }
   },
   "tools": [],
@@ -83,37 +82,61 @@
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "simple_snowflake_mcp": {
-          "command": "uv",
-          "args": ["--directory", ".", "run", "simple_snowflake_mcp"],
-          "env": {}
-        },
-        "simple_snowflake_mcp-published": {
-          "command": "uvx",
-          "args": ["simple_snowflake_mcp"],
-          "env": {}
-        },
-        "simple-snowflake-mcp-docker": {
-          "command": "docker-compose",
-          "args": ["up", "-d"],
-          "env": {}
-        },
-        "simple-snowflake-mcp-dev-docker": {
-          "command": "docker-compose",
-          "args": ["--profile", "dev", "up", "simple-snowflake-mcp-dev", "-d"],
-          "env": {}
-        },
-        "simple-snowflake-mcp-inspector": {
-          "command": "npx",
-          "args": ["@modelcontextprotocol/inspector", "uv", "--directory", ".", "run", "simple-snowflake-mcp"],
-          "env": {}
-        },
-        "simple-snowflake-mcp-stdio": {
-          "command": ".venv/Scripts/python.exe",
-          "args": ["-m", "simple_snowflake_mcp"],
-          "env": {}
-        }
+      "simple_snowflake_mcp": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          ".",
+          "run",
+          "simple_snowflake_mcp"
+        ],
+        "env": {}
+      },
+      "simple_snowflake_mcp-published": {
+        "command": "uvx",
+        "args": [
+          "simple_snowflake_mcp"
+        ],
+        "env": {}
+      },
+      "simple-snowflake-mcp-docker": {
+        "command": "docker-compose",
+        "args": [
+          "up",
+          "-d"
+        ],
+        "env": {}
+      },
+      "simple-snowflake-mcp-dev-docker": {
+        "command": "docker-compose",
+        "args": [
+          "--profile",
+          "dev",
+          "up",
+          "simple-snowflake-mcp-dev",
+          "-d"
+        ],
+        "env": {}
+      },
+      "simple-snowflake-mcp-inspector": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "uv",
+          "--directory",
+          ".",
+          "run",
+          "simple-snowflake-mcp"
+        ],
+        "env": {}
+      },
+      "simple-snowflake-mcp-stdio": {
+        "command": ".venv/Scripts/python.exe",
+        "args": [
+          "-m",
+          "simple_snowflake_mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

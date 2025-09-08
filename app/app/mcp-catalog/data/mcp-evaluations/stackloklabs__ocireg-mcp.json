@@ -8,16 +8,15 @@
     "name": "StacklokLabs"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "ocireg-mcp",
-    "mcp_config": {
-      "command": "./ocireg-mcp",
-      "args": ["-port", "${user_config.mcp_port}"],
-      "env": {
-        "OCI_TOKEN": "${user_config.oci_token}",
-        "OCI_USERNAME": "${user_config.oci_username}",
-        "OCI_PASSWORD": "${user_config.oci_password}"
-      }
+    "command": "./ocireg-mcp",
+    "args": [
+      "-port",
+      "${user_config.mcp_port}"
+    ],
+    "env": {
+      "OCI_TOKEN": "${user_config.oci_token}",
+      "OCI_USERNAME": "${user_config.oci_username}",
+      "OCI_PASSWORD": "${user_config.oci_password}"
     }
   },
   "tools": [],
@@ -60,34 +59,43 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "oci-registry": {
-          "command": "thv",
-          "args": ["run", "oci-registry"],
-          "env": {}
-        },
-        "oci-registry-with-token": {
-          "command": "thv",
-          "args": ["run", "--secret", "oci-token,target=OCI_TOKEN", "oci-registry"],
-          "env": {}
-        },
-        "oci-registry-with-user-pass": {
-          "command": "thv",
-          "args": [
-            "run",
-            "--secret",
-            "oci-username,target=OCI_USERNAME",
-            "--secret",
-            "oci-password,target=OCI_PASSWORD",
-            "oci-registry"
-          ],
-          "env": {}
-        },
-        "ocireg-mcp-configured": {
-          "command": "./ocireg-mcp",
-          "args": ["-port", "9090"],
-          "env": {}
-        }
+      "oci-registry": {
+        "command": "thv",
+        "args": [
+          "run",
+          "oci-registry"
+        ],
+        "env": {}
+      },
+      "oci-registry-with-token": {
+        "command": "thv",
+        "args": [
+          "run",
+          "--secret",
+          "oci-token,target=OCI_TOKEN",
+          "oci-registry"
+        ],
+        "env": {}
+      },
+      "oci-registry-with-user-pass": {
+        "command": "thv",
+        "args": [
+          "run",
+          "--secret",
+          "oci-username,target=OCI_USERNAME",
+          "--secret",
+          "oci-password,target=OCI_PASSWORD",
+          "oci-registry"
+        ],
+        "env": {}
+      },
+      "ocireg-mcp-configured": {
+        "command": "./ocireg-mcp",
+        "args": [
+          "-port",
+          "9090"
+        ],
+        "env": {}
       }
     },
     "oauth": {

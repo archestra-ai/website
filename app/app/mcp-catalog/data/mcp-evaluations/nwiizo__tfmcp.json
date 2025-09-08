@@ -8,23 +8,21 @@
     "name": "nwiizo"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "tfmcp",
-    "mcp_config": {
-      "command": "tfmcp",
-      "args": ["mcp"],
-      "env": {
-        "HOME": "${HOME}",
-        "TERRAFORM_DIR": "${user_config.terraform_dir}",
-        "TFMCP_LOG_LEVEL": "${user_config.tfmcp_log_level}",
-        "TFMCP_DEMO_MODE": "${user_config.tfmcp_demo_mode}",
-        "TFMCP_ALLOW_DANGEROUS_OPS": "${user_config.tfmcp_allow_dangerous_ops}",
-        "TFMCP_ALLOW_AUTO_APPROVE": "${user_config.tfmcp_allow_auto_approve}",
-        "TFMCP_MAX_RESOURCES": "${user_config.tfmcp_max_resources}",
-        "TFMCP_AUDIT_ENABLED": "${user_config.tfmcp_audit_enabled}",
-        "TFMCP_AUDIT_LOG_FILE": "${user_config.tfmcp_audit_log_file}",
-        "TFMCP_AUDIT_LOG_SENSITIVE": "${user_config.tfmcp_audit_log_sensitive}"
-      }
+    "command": "tfmcp",
+    "args": [
+      "mcp"
+    ],
+    "env": {
+      "HOME": "${HOME}",
+      "TERRAFORM_DIR": "${user_config.terraform_dir}",
+      "TFMCP_LOG_LEVEL": "${user_config.tfmcp_log_level}",
+      "TFMCP_DEMO_MODE": "${user_config.tfmcp_demo_mode}",
+      "TFMCP_ALLOW_DANGEROUS_OPS": "${user_config.tfmcp_allow_dangerous_ops}",
+      "TFMCP_ALLOW_AUTO_APPROVE": "${user_config.tfmcp_allow_auto_approve}",
+      "TFMCP_MAX_RESOURCES": "${user_config.tfmcp_max_resources}",
+      "TFMCP_AUDIT_ENABLED": "${user_config.tfmcp_audit_enabled}",
+      "TFMCP_AUDIT_LOG_FILE": "${user_config.tfmcp_audit_log_file}",
+      "TFMCP_AUDIT_LOG_SENSITIVE": "${user_config.tfmcp_audit_log_sensitive}"
     }
   },
   "tools": [],
@@ -101,40 +99,48 @@
   "quality_score": 71,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "tfmcp": {
-          "command": "tfmcp",
-          "args": ["mcp"],
-          "env": {}
-        },
-        "tfmcp-configured": {
-          "command": "tfmcp",
-          "args": ["mcp"],
-          "env": {
-            "TERRAFORM_DIR": "/path/to/your/terraform/project"
-          }
-        },
-        "tfmcp-docker": {
-          "command": "docker",
-          "args": ["run", "--rm", "-it", "tfmcp", "mcp"],
-          "env": {}
-        },
-        "tfmcp-docker-configured": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-it",
-            "-v",
-            "/path/to/your/terraform:/app/terraform",
-            "tfmcp",
-            "mcp",
-            "--dir",
-            "/app/terraform"
-          ],
-          "env": {
-            "TERRAFORM_DIR": "/app/terraform"
-          }
+      "tfmcp": {
+        "command": "tfmcp",
+        "args": [
+          "mcp"
+        ],
+        "env": {}
+      },
+      "tfmcp-configured": {
+        "command": "tfmcp",
+        "args": [
+          "mcp"
+        ],
+        "env": {
+          "TERRAFORM_DIR": "/path/to/your/terraform/project"
+        }
+      },
+      "tfmcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-it",
+          "tfmcp",
+          "mcp"
+        ],
+        "env": {}
+      },
+      "tfmcp-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-it",
+          "-v",
+          "/path/to/your/terraform:/app/terraform",
+          "tfmcp",
+          "mcp",
+          "--dir",
+          "/app/terraform"
+        ],
+        "env": {
+          "TERRAFORM_DIR": "/app/terraform"
         }
       }
     },

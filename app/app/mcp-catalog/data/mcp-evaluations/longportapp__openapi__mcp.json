@@ -8,23 +8,19 @@
     "name": "longportapp"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "longport-mcp",
-    "mcp_config": {
-      "command": "/usr/local/bin/longport-mcp",
-      "args": [
-        "${user_config.enable_sse_server ? '--sse' : ''}",
-        "${user_config.enable_sse_server && user_config.sse_bind_address ? '--bind' : ''}",
-        "${user_config.enable_sse_server && user_config.sse_bind_address ? user_config.sse_bind_address : ''}",
-        "${user_config.readonly_mode ? '--readonly' : ''}",
-        "${user_config.log_directory ? '--log-dir' : ''}",
-        "${user_config.log_directory ? user_config.log_directory : ''}"
-      ],
-      "env": {
-        "LONGPORT_APP_KEY": "${user_config.longport_app_key}",
-        "LONGPORT_APP_SECRET": "${user_config.longport_app_secret}",
-        "LONGPORT_ACCESS_TOKEN": "${user_config.longport_access_token}"
-      }
+    "command": "/usr/local/bin/longport-mcp",
+    "args": [
+      "${user_config.enable_sse_server ? '--sse' : ''}",
+      "${user_config.enable_sse_server && user_config.sse_bind_address ? '--bind' : ''}",
+      "${user_config.enable_sse_server && user_config.sse_bind_address ? user_config.sse_bind_address : ''}",
+      "${user_config.readonly_mode ? '--readonly' : ''}",
+      "${user_config.log_directory ? '--log-dir' : ''}",
+      "${user_config.log_directory ? user_config.log_directory : ''}"
+    ],
+    "env": {
+      "LONGPORT_APP_KEY": "${user_config.longport_app_key}",
+      "LONGPORT_APP_SECRET": "${user_config.longport_app_secret}",
+      "LONGPORT_ACCESS_TOKEN": "${user_config.longport_access_token}"
     }
   },
   "tools": [],
@@ -85,83 +81,90 @@
   "quality_score": 77,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "longport-mcp-env-prefix": {
-          "command": "env",
-          "args": [
-            "LONGPORT_APP_KEY=your-app-key",
-            "LONGPORT_APP_SECRET=your-app-secret",
-            "LONGPORT_ACCESS_TOKEN=your-access-token",
-            "longport-mcp"
-          ],
-          "env": {
-            "LONGPORT_APP_KEY": "your-app-key",
-            "LONGPORT_APP_SECRET": "your-app-secret",
-            "LONGPORT_ACCESS_TOKEN": "your-access-token"
-          }
-        },
-        "longport-mcp-windows-cmd-prefix": {
-          "command": "cmd",
-          "args": [
-            "/c",
-            "set LONGPORT_APP_KEY=your-app-key && set LONGPORT_APP_SECRET=your-app-secret && set LONGPORT_ACCESS_TOKEN=your-access-token && longport-mcp"
-          ],
-          "env": {
-            "LONGPORT_APP_KEY": "your-app-key",
-            "LONGPORT_APP_SECRET": "your-app-secret",
-            "LONGPORT_ACCESS_TOKEN": "your-access-token"
-          }
-        },
-        "longport-mcp-with-config": {
-          "command": "/usr/local/bin/longport-mcp",
-          "args": [],
-          "env": {
-            "LONGPORT_APP_KEY": "your-app-key",
-            "LONGPORT_APP_SECRET": "your-app-secret",
-            "LONGPORT_ACCESS_TOKEN": "your-access-token"
-          }
-        },
-        "longport-mcp-sse": {
-          "command": "env",
-          "args": [
-            "LONGPORT_APP_KEY=your-app-key",
-            "LONGPORT_APP_SECRET=your-app-secret",
-            "LONGPORT_ACCESS_TOKEN=your-access-token",
-            "longport-mcp",
-            "--sse"
-          ],
-          "env": {
-            "LONGPORT_APP_KEY": "your-app-key",
-            "LONGPORT_APP_SECRET": "your-app-secret",
-            "LONGPORT_ACCESS_TOKEN": "your-access-token"
-          }
-        },
-        "longport-mcp-sse-bind": {
-          "command": "longport-mcp",
-          "args": ["--sse", "--bind", "127.0.0.1:3000"],
-          "env": {
-            "LONGPORT_APP_KEY": "your-app-key",
-            "LONGPORT_APP_SECRET": "your-app-secret",
-            "LONGPORT_ACCESS_TOKEN": "your-access-token"
-          }
-        },
-        "longport-mcp-readonly": {
-          "command": "longport-mcp",
-          "args": ["--readonly"],
-          "env": {
-            "LONGPORT_APP_KEY": "your-app-key",
-            "LONGPORT_APP_SECRET": "your-app-secret",
-            "LONGPORT_ACCESS_TOKEN": "your-access-token"
-          }
-        },
-        "longport-mcp-logging": {
-          "command": "longport-mcp",
-          "args": ["--log-dir", "/path/to/log/dir"],
-          "env": {
-            "LONGPORT_APP_KEY": "your-app-key",
-            "LONGPORT_APP_SECRET": "your-app-secret",
-            "LONGPORT_ACCESS_TOKEN": "your-access-token"
-          }
+      "longport-mcp-env-prefix": {
+        "command": "env",
+        "args": [
+          "LONGPORT_APP_KEY=your-app-key",
+          "LONGPORT_APP_SECRET=your-app-secret",
+          "LONGPORT_ACCESS_TOKEN=your-access-token",
+          "longport-mcp"
+        ],
+        "env": {
+          "LONGPORT_APP_KEY": "your-app-key",
+          "LONGPORT_APP_SECRET": "your-app-secret",
+          "LONGPORT_ACCESS_TOKEN": "your-access-token"
+        }
+      },
+      "longport-mcp-windows-cmd-prefix": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "set LONGPORT_APP_KEY=your-app-key && set LONGPORT_APP_SECRET=your-app-secret && set LONGPORT_ACCESS_TOKEN=your-access-token && longport-mcp"
+        ],
+        "env": {
+          "LONGPORT_APP_KEY": "your-app-key",
+          "LONGPORT_APP_SECRET": "your-app-secret",
+          "LONGPORT_ACCESS_TOKEN": "your-access-token"
+        }
+      },
+      "longport-mcp-with-config": {
+        "command": "/usr/local/bin/longport-mcp",
+        "args": [],
+        "env": {
+          "LONGPORT_APP_KEY": "your-app-key",
+          "LONGPORT_APP_SECRET": "your-app-secret",
+          "LONGPORT_ACCESS_TOKEN": "your-access-token"
+        }
+      },
+      "longport-mcp-sse": {
+        "command": "env",
+        "args": [
+          "LONGPORT_APP_KEY=your-app-key",
+          "LONGPORT_APP_SECRET=your-app-secret",
+          "LONGPORT_ACCESS_TOKEN=your-access-token",
+          "longport-mcp",
+          "--sse"
+        ],
+        "env": {
+          "LONGPORT_APP_KEY": "your-app-key",
+          "LONGPORT_APP_SECRET": "your-app-secret",
+          "LONGPORT_ACCESS_TOKEN": "your-access-token"
+        }
+      },
+      "longport-mcp-sse-bind": {
+        "command": "longport-mcp",
+        "args": [
+          "--sse",
+          "--bind",
+          "127.0.0.1:3000"
+        ],
+        "env": {
+          "LONGPORT_APP_KEY": "your-app-key",
+          "LONGPORT_APP_SECRET": "your-app-secret",
+          "LONGPORT_ACCESS_TOKEN": "your-access-token"
+        }
+      },
+      "longport-mcp-readonly": {
+        "command": "longport-mcp",
+        "args": [
+          "--readonly"
+        ],
+        "env": {
+          "LONGPORT_APP_KEY": "your-app-key",
+          "LONGPORT_APP_SECRET": "your-app-secret",
+          "LONGPORT_ACCESS_TOKEN": "your-access-token"
+        }
+      },
+      "longport-mcp-logging": {
+        "command": "longport-mcp",
+        "args": [
+          "--log-dir",
+          "/path/to/log/dir"
+        ],
+        "env": {
+          "LONGPORT_APP_KEY": "your-app-key",
+          "LONGPORT_APP_SECRET": "your-app-secret",
+          "LONGPORT_ACCESS_TOKEN": "your-access-token"
         }
       }
     },

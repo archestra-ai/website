@@ -8,16 +8,17 @@
     "name": "joinly-ai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "docker",
-      "args": ["run", "-p", "8000:8000", "ghcr.io/joinly-ai/joinly:latest"],
-      "env": {
-        "JOINLY_LLM_MODEL": "${user_config.joinly_llm_model}",
-        "JOINLY_LLM_PROVIDER": "${user_config.joinly_llm_provider}",
-        "OPENAI_API_KEY": "${user_config.openai_api_key}"
-      }
+    "command": "docker",
+    "args": [
+      "run",
+      "-p",
+      "8000:8000",
+      "ghcr.io/joinly-ai/joinly:latest"
+    ],
+    "env": {
+      "JOINLY_LLM_MODEL": "${user_config.joinly_llm_model}",
+      "JOINLY_LLM_PROVIDER": "${user_config.joinly_llm_provider}",
+      "OPENAI_API_KEY": "${user_config.openai_api_key}"
     }
   },
   "tools": [],
@@ -51,12 +52,15 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ghcr.io-joinly-ai-joinly-docker": {
-          "command": "docker",
-          "args": ["run", "-p", "8000:8000", "ghcr.io/joinly-ai/joinly:latest"],
-          "env": {}
-        }
+      "ghcr.io-joinly-ai-joinly-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8000:8000",
+          "ghcr.io/joinly-ai/joinly:latest"
+        ],
+        "env": {}
       }
     },
     "oauth": {

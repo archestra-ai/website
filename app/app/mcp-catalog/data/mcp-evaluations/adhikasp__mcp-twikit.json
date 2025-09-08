@@ -8,16 +8,16 @@
     "name": "adhikasp"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp-twikit",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["--from", "git+https://github.com/adhikasp/mcp-twikit", "mcp-twikit"],
-      "env": {
-        "TWITTER_USERNAME": "${user_config.twitter_username}",
-        "TWITTER_EMAIL": "${user_config.twitter_email}",
-        "TWITTER_PASSWORD": "${user_config.twitter_password}"
-      }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/adhikasp/mcp-twikit",
+      "mcp-twikit"
+    ],
+    "env": {
+      "TWITTER_USERNAME": "${user_config.twitter_username}",
+      "TWITTER_EMAIL": "${user_config.twitter_email}",
+      "TWITTER_PASSWORD": "${user_config.twitter_password}"
     }
   },
   "tools": [],
@@ -51,15 +51,17 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-twikit": {
-          "command": "uvx",
-          "args": ["--from", "git+https://github.com/adhikasp/mcp-twikit", "mcp-twikit"],
-          "env": {
-            "TWITTER_USERNAME": "@example",
-            "TWITTER_EMAIL": "me@example.com",
-            "TWITTER_PASSWORD": "secret"
-          }
+      "mcp-twikit": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/adhikasp/mcp-twikit",
+          "mcp-twikit"
+        ],
+        "env": {
+          "TWITTER_USERNAME": "@example",
+          "TWITTER_EMAIL": "me@example.com",
+          "TWITTER_PASSWORD": "secret"
         }
       }
     },

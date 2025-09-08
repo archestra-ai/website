@@ -8,16 +8,15 @@
     "name": "r-huijts"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-server-rijksmuseum"],
-      "env": {
-        "RIJKSMUSEUM_API_KEY": "${user_config.rijksmuseum_api_key}",
-        "PORT": "${user_config.port}",
-        "LOG_LEVEL": "${user_config.log_level}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-server-rijksmuseum"
+    ],
+    "env": {
+      "RIJKSMUSEUM_API_KEY": "${user_config.rijksmuseum_api_key}",
+      "PORT": "${user_config.port}",
+      "LOG_LEVEL": "${user_config.log_level}"
     }
   },
   "tools": [],
@@ -51,20 +50,23 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-rijksmuseum": {
-          "command": "npx",
-          "args": ["-y", "mcp-server-rijksmuseum"],
-          "env": {
-            "RIJKSMUSEUM_API_KEY": "your_api_key_here"
-          }
-        },
-        "mcp-server-rijksmuseum-configured": {
-          "command": "node",
-          "args": ["/path/to/rijksmuseum-server/build/index.js"],
-          "env": {
-            "RIJKSMUSEUM_API_KEY": "your_api_key_here"
-          }
+      "mcp-server-rijksmuseum": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-server-rijksmuseum"
+        ],
+        "env": {
+          "RIJKSMUSEUM_API_KEY": "your_api_key_here"
+        }
+      },
+      "mcp-server-rijksmuseum-configured": {
+        "command": "node",
+        "args": [
+          "/path/to/rijksmuseum-server/build/index.js"
+        ],
+        "env": {
+          "RIJKSMUSEUM_API_KEY": "your_api_key_here"
         }
       }
     },

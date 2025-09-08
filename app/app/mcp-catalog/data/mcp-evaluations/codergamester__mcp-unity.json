@@ -8,13 +8,12 @@
     "name": "CoderGamester"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@codergamester/mcp-unity"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@codergamester/mcp-unity"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,9 +23,7 @@
   "category": "Gaming",
   "quality_score": 59,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

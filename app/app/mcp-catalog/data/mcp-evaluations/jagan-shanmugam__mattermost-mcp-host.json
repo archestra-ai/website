@@ -8,28 +8,26 @@
     "name": "jagan-shanmugam"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/mattermost_mcp_host/main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/src/mattermost_mcp_host/main.py"],
-      "env": {
-        "MATTERMOST_URL": "${user_config.mattermost_url}",
-        "MATTERMOST_TOKEN": "${user_config.mattermost_token}",
-        "MATTERMOST_TEAM_NAME": "${user_config.mattermost_team_name}",
-        "MATTERMOST_CHANNEL_NAME": "${user_config.mattermost_channel_name}",
-        "MATTERMOST_CHANNEL_ID": "${user_config.mattermost_channel_id}",
-        "DEFAULT_PROVIDER": "${user_config.default_provider}",
-        "AZURE_OPENAI_ENDPOINT": "${user_config.azure_openai_endpoint}",
-        "AZURE_OPENAI_API_KEY": "${user_config.azure_openai_api_key}",
-        "AZURE_OPENAI_DEPLOYMENT": "${user_config.azure_openai_deployment}",
-        "AZURE_OPENAI_API_VERSION": "${user_config.azure_openai_api_version}",
-        "OPENAI_API_KEY": "${user_config.openai_api_key}",
-        "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
-        "GOOGLE_API_KEY": "${user_config.google_api_key}",
-        "COMMAND_PREFIX": "${user_config.command_prefix}",
-        "TAVILY_API_KEY": "${user_config.tavily_api_key}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/src/mattermost_mcp_host/main.py"
+    ],
+    "env": {
+      "MATTERMOST_URL": "${user_config.mattermost_url}",
+      "MATTERMOST_TOKEN": "${user_config.mattermost_token}",
+      "MATTERMOST_TEAM_NAME": "${user_config.mattermost_team_name}",
+      "MATTERMOST_CHANNEL_NAME": "${user_config.mattermost_channel_name}",
+      "MATTERMOST_CHANNEL_ID": "${user_config.mattermost_channel_id}",
+      "DEFAULT_PROVIDER": "${user_config.default_provider}",
+      "AZURE_OPENAI_ENDPOINT": "${user_config.azure_openai_endpoint}",
+      "AZURE_OPENAI_API_KEY": "${user_config.azure_openai_api_key}",
+      "AZURE_OPENAI_DEPLOYMENT": "${user_config.azure_openai_deployment}",
+      "AZURE_OPENAI_API_VERSION": "${user_config.azure_openai_api_version}",
+      "OPENAI_API_KEY": "${user_config.openai_api_key}",
+      "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
+      "GOOGLE_API_KEY": "${user_config.google_api_key}",
+      "COMMAND_PREFIX": "${user_config.command_prefix}",
+      "TAVILY_API_KEY": "${user_config.tavily_api_key}"
     }
   },
   "tools": [],
@@ -140,11 +138,9 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mattermost-mcp-host": {
-          "command": "mattermost-mcp-host",
-          "args": []
-        }
+      "mattermost-mcp-host": {
+        "command": "mattermost-mcp-host",
+        "args": []
       }
     },
     "oauth": {

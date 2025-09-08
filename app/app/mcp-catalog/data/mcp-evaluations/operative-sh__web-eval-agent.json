@@ -8,13 +8,12 @@
     "name": "Operative-Sh"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@mcp/server"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@mcp/server"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,19 +24,17 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "web-eval-agent": {
-          "command": "uvx",
-          "args": [
-            "--refresh-package",
-            "webEvalAgent",
-            "--from",
-            "git+https://github.com/Operative-Sh/web-eval-agent.git",
-            "webEvalAgent"
-          ],
-          "env": {
-            "OPERATIVE_API_KEY": "<YOUR_KEY>"
-          }
+      "web-eval-agent": {
+        "command": "uvx",
+        "args": [
+          "--refresh-package",
+          "webEvalAgent",
+          "--from",
+          "git+https://github.com/Operative-Sh/web-eval-agent.git",
+          "webEvalAgent"
+        ],
+        "env": {
+          "OPERATIVE_API_KEY": "<YOUR_KEY>"
         }
       }
     },

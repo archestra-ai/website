@@ -8,28 +8,26 @@
     "name": "chroma-core"
   },
   "server": {
-    "type": "python",
-    "entry_point": "chroma-mcp",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["chroma-mcp"],
-      "env": {
-        "CHROMA_CLIENT_TYPE": "${user_config.chroma_client_type}",
-        "CHROMA_DATA_DIR": "${user_config.chroma_data_dir}",
-        "CHROMA_TENANT": "${user_config.chroma_tenant}",
-        "CHROMA_DATABASE": "${user_config.chroma_database}",
-        "CHROMA_API_KEY": "${user_config.chroma_api_key}",
-        "CHROMA_HOST": "${user_config.chroma_host}",
-        "CHROMA_PORT": "${user_config.chroma_port}",
-        "CHROMA_CUSTOM_AUTH_CREDENTIALS": "${user_config.chroma_custom_auth_credentials}",
-        "CHROMA_SSL": "${user_config.chroma_ssl}",
-        "CHROMA_DOTENV_PATH": "${user_config.chroma_dotenv_path}",
-        "CHROMA_COHERE_API_KEY": "${user_config.chroma_cohere_api_key}",
-        "CHROMA_OPENAI_API_KEY": "${user_config.chroma_openai_api_key}",
-        "CHROMA_JINA_API_KEY": "${user_config.chroma_jina_api_key}",
-        "CHROMA_VOYAGEAI_API_KEY": "${user_config.chroma_voyageai_api_key}",
-        "CHROMA_ROBOFLOW_API_KEY": "${user_config.chroma_roboflow_api_key}"
-      }
+    "command": "uvx",
+    "args": [
+      "chroma-mcp"
+    ],
+    "env": {
+      "CHROMA_CLIENT_TYPE": "${user_config.chroma_client_type}",
+      "CHROMA_DATA_DIR": "${user_config.chroma_data_dir}",
+      "CHROMA_TENANT": "${user_config.chroma_tenant}",
+      "CHROMA_DATABASE": "${user_config.chroma_database}",
+      "CHROMA_API_KEY": "${user_config.chroma_api_key}",
+      "CHROMA_HOST": "${user_config.chroma_host}",
+      "CHROMA_PORT": "${user_config.chroma_port}",
+      "CHROMA_CUSTOM_AUTH_CREDENTIALS": "${user_config.chroma_custom_auth_credentials}",
+      "CHROMA_SSL": "${user_config.chroma_ssl}",
+      "CHROMA_DOTENV_PATH": "${user_config.chroma_dotenv_path}",
+      "CHROMA_COHERE_API_KEY": "${user_config.chroma_cohere_api_key}",
+      "CHROMA_OPENAI_API_KEY": "${user_config.chroma_openai_api_key}",
+      "CHROMA_JINA_API_KEY": "${user_config.chroma_jina_api_key}",
+      "CHROMA_VOYAGEAI_API_KEY": "${user_config.chroma_voyageai_api_key}",
+      "CHROMA_ROBOFLOW_API_KEY": "${user_config.chroma_roboflow_api_key}"
     }
   },
   "tools": [],
@@ -142,49 +140,55 @@
   "quality_score": 68,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "chroma-mcp": {
-          "command": "uvx",
-          "args": ["chroma-mcp"],
-          "env": {}
-        },
-        "chroma-mcp-persistent": {
-          "command": "uvx",
-          "args": ["chroma-mcp", "--client-type", "persistent", "--data-dir", "/full/path/to/your/data/directory"],
-          "env": {}
-        },
-        "chroma-mcp-cloud": {
-          "command": "uvx",
-          "args": [
-            "chroma-mcp",
-            "--client-type",
-            "cloud",
-            "--tenant",
-            "your-tenant-id",
-            "--database",
-            "your-database-name",
-            "--api-key",
-            "your-api-key"
-          ],
-          "env": {}
-        },
-        "chroma-mcp-http": {
-          "command": "uvx",
-          "args": [
-            "chroma-mcp",
-            "--client-type",
-            "http",
-            "--host",
-            "your-host",
-            "--port",
-            "your-port",
-            "--custom-auth-credentials",
-            "your-custom-auth-credentials",
-            "--ssl",
-            "true"
-          ],
-          "env": {}
-        }
+      "chroma-mcp": {
+        "command": "uvx",
+        "args": [
+          "chroma-mcp"
+        ],
+        "env": {}
+      },
+      "chroma-mcp-persistent": {
+        "command": "uvx",
+        "args": [
+          "chroma-mcp",
+          "--client-type",
+          "persistent",
+          "--data-dir",
+          "/full/path/to/your/data/directory"
+        ],
+        "env": {}
+      },
+      "chroma-mcp-cloud": {
+        "command": "uvx",
+        "args": [
+          "chroma-mcp",
+          "--client-type",
+          "cloud",
+          "--tenant",
+          "your-tenant-id",
+          "--database",
+          "your-database-name",
+          "--api-key",
+          "your-api-key"
+        ],
+        "env": {}
+      },
+      "chroma-mcp-http": {
+        "command": "uvx",
+        "args": [
+          "chroma-mcp",
+          "--client-type",
+          "http",
+          "--host",
+          "your-host",
+          "--port",
+          "your-port",
+          "--custom-auth-credentials",
+          "your-custom-auth-credentials",
+          "--ssl",
+          "true"
+        ],
+        "env": {}
       }
     },
     "oauth": {

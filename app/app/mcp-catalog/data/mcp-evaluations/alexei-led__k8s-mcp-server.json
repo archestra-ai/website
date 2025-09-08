@@ -8,34 +8,30 @@
     "name": "alexei-led"
   },
   "server": {
-    "type": "docker",
-    "entry_point": "ghcr.io/alexei-led/k8s-mcp-server:latest",
-    "mcp_config": {
-      "command": "docker",
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "-v",
-        "${user_config.kube_config_dir}:/home/appuser/.kube:ro",
-        "-v",
-        "${user_config.aws_config_dir}:/home/appuser/.aws:ro",
-        "-e",
-        "K8S_CONTEXT=${user_config.k8s_context}",
-        "-e",
-        "K8S_NAMESPACE=${user_config.k8s_namespace}",
-        "-e",
-        "K8S_MCP_TIMEOUT=${user_config.k8s_mcp_timeout}",
-        "-e",
-        "AWS_PROFILE=${user_config.aws_profile}",
-        "ghcr.io/alexei-led/k8s-mcp-server:latest"
-      ],
-      "env": {
-        "K8S_CONTEXT": "${user_config.k8s_context}",
-        "K8S_NAMESPACE": "${user_config.k8s_namespace}",
-        "K8S_MCP_TIMEOUT": "${user_config.k8s_mcp_timeout}",
-        "AWS_PROFILE": "${user_config.aws_profile}"
-      }
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-v",
+      "${user_config.kube_config_dir}:/home/appuser/.kube:ro",
+      "-v",
+      "${user_config.aws_config_dir}:/home/appuser/.aws:ro",
+      "-e",
+      "K8S_CONTEXT=${user_config.k8s_context}",
+      "-e",
+      "K8S_NAMESPACE=${user_config.k8s_namespace}",
+      "-e",
+      "K8S_MCP_TIMEOUT=${user_config.k8s_mcp_timeout}",
+      "-e",
+      "AWS_PROFILE=${user_config.aws_profile}",
+      "ghcr.io/alexei-led/k8s-mcp-server:latest"
+    ],
+    "env": {
+      "K8S_CONTEXT": "${user_config.k8s_context}",
+      "K8S_NAMESPACE": "${user_config.k8s_namespace}",
+      "K8S_MCP_TIMEOUT": "${user_config.k8s_mcp_timeout}",
+      "AWS_PROFILE": "${user_config.aws_profile}"
     }
   },
   "tools": [],
@@ -88,58 +84,56 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "alexei-led-k8s-mcp-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-v",
-            "/Users/YOUR_USER_NAME/.kube:/home/appuser/.kube:ro",
-            "ghcr.io/alexei-led/k8s-mcp-server:latest"
-          ],
-          "env": {}
-        },
-        "alexei-led-k8s-mcp-server-docker-configured": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-v",
-            "/Users/YOUR_USER_NAME/.kube:/home/appuser/.kube:ro",
-            "-e",
-            "K8S_CONTEXT=production-cluster",
-            "-e",
-            "K8S_NAMESPACE=my-application",
-            "-e",
-            "K8S_MCP_TIMEOUT=600",
-            "ghcr.io/alexei-led/k8s-mcp-server:latest"
-          ],
-          "env": {
-            "K8S_CONTEXT": "production-cluster",
-            "K8S_NAMESPACE": "my-application",
-            "K8S_MCP_TIMEOUT": "600"
-          }
-        },
-        "alexei-led-k8s-mcp-server-docker-aws": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-v",
-            "/Users/YOUR_USER_NAME/.kube:/home/appuser/.kube:ro",
-            "-v",
-            "/Users/YOUR_USER_NAME/.aws:/home/appuser/.aws:ro",
-            "-e",
-            "AWS_PROFILE=production",
-            "ghcr.io/alexei-led/k8s-mcp-server:latest"
-          ],
-          "env": {
-            "AWS_PROFILE": "production"
-          }
+      "alexei-led-k8s-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-v",
+          "/Users/YOUR_USER_NAME/.kube:/home/appuser/.kube:ro",
+          "ghcr.io/alexei-led/k8s-mcp-server:latest"
+        ],
+        "env": {}
+      },
+      "alexei-led-k8s-mcp-server-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-v",
+          "/Users/YOUR_USER_NAME/.kube:/home/appuser/.kube:ro",
+          "-e",
+          "K8S_CONTEXT=production-cluster",
+          "-e",
+          "K8S_NAMESPACE=my-application",
+          "-e",
+          "K8S_MCP_TIMEOUT=600",
+          "ghcr.io/alexei-led/k8s-mcp-server:latest"
+        ],
+        "env": {
+          "K8S_CONTEXT": "production-cluster",
+          "K8S_NAMESPACE": "my-application",
+          "K8S_MCP_TIMEOUT": "600"
+        }
+      },
+      "alexei-led-k8s-mcp-server-docker-aws": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-v",
+          "/Users/YOUR_USER_NAME/.kube:/home/appuser/.kube:ro",
+          "-v",
+          "/Users/YOUR_USER_NAME/.aws:/home/appuser/.aws:ro",
+          "-e",
+          "AWS_PROFILE=production",
+          "ghcr.io/alexei-led/k8s-mcp-server:latest"
+        ],
+        "env": {
+          "AWS_PROFILE": "production"
         }
       }
     },

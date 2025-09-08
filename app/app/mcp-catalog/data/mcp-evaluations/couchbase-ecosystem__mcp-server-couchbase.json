@@ -8,21 +8,19 @@
     "name": "Couchbase-Ecosystem"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/mcp_server.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["couchbase-mcp-server"],
-      "env": {
-        "CB_CONNECTION_STRING": "${user_config.cb_connection_string}",
-        "CB_USERNAME": "${user_config.cb_username}",
-        "CB_PASSWORD": "${user_config.cb_password}",
-        "CB_BUCKET_NAME": "${user_config.cb_bucket_name}",
-        "CB_MCP_READ_ONLY_QUERY_MODE": "${user_config.cb_mcp_read_only_query_mode}",
-        "CB_MCP_TRANSPORT": "${user_config.cb_mcp_transport}",
-        "CB_MCP_HOST": "${user_config.cb_mcp_host}",
-        "CB_MCP_PORT": "${user_config.cb_mcp_port}"
-      }
+    "command": "uvx",
+    "args": [
+      "couchbase-mcp-server"
+    ],
+    "env": {
+      "CB_CONNECTION_STRING": "${user_config.cb_connection_string}",
+      "CB_USERNAME": "${user_config.cb_username}",
+      "CB_PASSWORD": "${user_config.cb_password}",
+      "CB_BUCKET_NAME": "${user_config.cb_bucket_name}",
+      "CB_MCP_READ_ONLY_QUERY_MODE": "${user_config.cb_mcp_read_only_query_mode}",
+      "CB_MCP_TRANSPORT": "${user_config.cb_mcp_transport}",
+      "CB_MCP_HOST": "${user_config.cb_mcp_host}",
+      "CB_MCP_PORT": "${user_config.cb_mcp_port}"
     }
   },
   "tools": [],
@@ -88,26 +86,31 @@
   "quality_score": 69,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "couchbase-mcp-server": {
-          "command": "uvx",
-          "args": ["couchbase-mcp-server"],
-          "env": {
-            "CB_CONNECTION_STRING": "couchbases://connection-string",
-            "CB_USERNAME": "username",
-            "CB_PASSWORD": "password",
-            "CB_BUCKET_NAME": "bucket_name"
-          }
-        },
-        "mcp-server-couchbase-configured": {
-          "command": "uv",
-          "args": ["--directory", "path/to/cloned/repo/mcp-server-couchbase/", "run", "src/mcp_server.py"],
-          "env": {
-            "CB_CONNECTION_STRING": "couchbases://connection-string",
-            "CB_USERNAME": "username",
-            "CB_PASSWORD": "password",
-            "CB_BUCKET_NAME": "bucket_name"
-          }
+      "couchbase-mcp-server": {
+        "command": "uvx",
+        "args": [
+          "couchbase-mcp-server"
+        ],
+        "env": {
+          "CB_CONNECTION_STRING": "couchbases://connection-string",
+          "CB_USERNAME": "username",
+          "CB_PASSWORD": "password",
+          "CB_BUCKET_NAME": "bucket_name"
+        }
+      },
+      "mcp-server-couchbase-configured": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "path/to/cloned/repo/mcp-server-couchbase/",
+          "run",
+          "src/mcp_server.py"
+        ],
+        "env": {
+          "CB_CONNECTION_STRING": "couchbases://connection-string",
+          "CB_USERNAME": "username",
+          "CB_PASSWORD": "password",
+          "CB_BUCKET_NAME": "bucket_name"
         }
       }
     },

@@ -8,13 +8,14 @@
     "name": "lharries"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "${user_config.uv_executable_path}",
-      "args": ["--directory", "${user_config.whatsapp_mcp_server_directory}", "run", "main.py"],
-      "env": {}
-    }
+    "command": "${user_config.uv_executable_path}",
+    "args": [
+      "--directory",
+      "${user_config.whatsapp_mcp_server_directory}",
+      "run",
+      "main.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -38,12 +39,15 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "whatsapp": {
-          "command": "uv",
-          "args": ["--directory", "{{PATH_TO_SRC}}/whatsapp-mcp/whatsapp-mcp-server", "run", "main.py"],
-          "env": {}
-        }
+      "whatsapp": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "{{PATH_TO_SRC}}/whatsapp-mcp/whatsapp-mcp-server",
+          "run",
+          "main.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

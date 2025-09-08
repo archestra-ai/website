@@ -8,14 +8,13 @@
     "name": "neilberkman"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "editorconfig-mcp-server"],
-      "env": {
-        "PORT": "${user_config.port}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "editorconfig-mcp-server"
+    ],
+    "env": {
+      "PORT": "${user_config.port}"
     }
   },
   "tools": [],
@@ -37,33 +36,39 @@
   "quality_score": 37,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "editorconfig-mcp-server": {
-          "command": "editorconfig-mcp-server",
-          "args": [],
-          "env": {}
-        },
-        "editorconfig-mcp-server-npx": {
-          "command": "npx",
-          "args": ["-y", "editorconfig-mcp-server"],
-          "env": {}
-        },
-        "editorconfig-mcp-server-npm-script": {
-          "command": "npm",
-          "args": ["run", "format-server"],
-          "env": {}
-        },
-        "editorconfig-mcp-server-npm-start": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        },
-        "editorconfig-mcp-server-port-8080": {
-          "command": "editorconfig-mcp-server",
-          "args": [],
-          "env": {
-            "PORT": "8080"
-          }
+      "editorconfig-mcp-server": {
+        "command": "editorconfig-mcp-server",
+        "args": [],
+        "env": {}
+      },
+      "editorconfig-mcp-server-npx": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "editorconfig-mcp-server"
+        ],
+        "env": {}
+      },
+      "editorconfig-mcp-server-npm-script": {
+        "command": "npm",
+        "args": [
+          "run",
+          "format-server"
+        ],
+        "env": {}
+      },
+      "editorconfig-mcp-server-npm-start": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {}
+      },
+      "editorconfig-mcp-server-port-8080": {
+        "command": "editorconfig-mcp-server",
+        "args": [],
+        "env": {
+          "PORT": "8080"
         }
       }
     },

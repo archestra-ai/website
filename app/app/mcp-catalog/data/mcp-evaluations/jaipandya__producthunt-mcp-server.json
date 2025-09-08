@@ -8,14 +8,10 @@
     "name": "jaipandya"
   },
   "server": {
-    "type": "python",
-    "entry_point": "product-hunt-mcp",
-    "mcp_config": {
-      "command": "product-hunt-mcp",
-      "args": [],
-      "env": {
-        "PRODUCT_HUNT_TOKEN": "${user_config.product_hunt_token}"
-      }
+    "command": "product-hunt-mcp",
+    "args": [],
+    "env": {
+      "PRODUCT_HUNT_TOKEN": "${user_config.product_hunt_token}"
     }
   },
   "tools": [],
@@ -35,19 +31,24 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "product-hunt-mcp": {
-          "command": "product-hunt-mcp",
-          "args": [],
-          "env": {
-            "PRODUCT_HUNT_TOKEN": "your_token_here"
-          }
-        },
-        "product-hunt-mcp-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "PRODUCT_HUNT_TOKEN=your_token_here", "product-hunt-mcp"],
-          "env": {}
+      "product-hunt-mcp": {
+        "command": "product-hunt-mcp",
+        "args": [],
+        "env": {
+          "PRODUCT_HUNT_TOKEN": "your_token_here"
         }
+      },
+      "product-hunt-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "PRODUCT_HUNT_TOKEN=your_token_here",
+          "product-hunt-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

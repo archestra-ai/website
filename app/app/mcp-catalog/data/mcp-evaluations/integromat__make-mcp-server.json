@@ -8,16 +8,15 @@
     "name": "integromat"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@makehq/mcp-server"],
-      "env": {
-        "MAKE_API_KEY": "${user_config.make_api_key}",
-        "MAKE_ZONE": "${user_config.make_zone}",
-        "MAKE_TEAM": "${user_config.make_team}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@makehq/mcp-server"
+    ],
+    "env": {
+      "MAKE_API_KEY": "${user_config.make_api_key}",
+      "MAKE_ZONE": "${user_config.make_zone}",
+      "MAKE_TEAM": "${user_config.make_team}"
     }
   },
   "tools": [],
@@ -49,15 +48,16 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "makehq-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "@makehq/mcp-server"],
-          "env": {
-            "MAKE_API_KEY": "<your-api-key>",
-            "MAKE_ZONE": "<your-zone>",
-            "MAKE_TEAM": "<your-team-id>"
-          }
+      "makehq-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@makehq/mcp-server"
+        ],
+        "env": {
+          "MAKE_API_KEY": "<your-api-key>",
+          "MAKE_ZONE": "<your-zone>",
+          "MAKE_TEAM": "<your-team-id>"
         }
       }
     },

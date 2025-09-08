@@ -8,15 +8,14 @@
     "name": "flowcore-io"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@flowcore/platform-mcp-server"],
-      "env": {
-        "USERNAME": "${user_config.username}",
-        "PAT": "${user_config.pat}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@flowcore/platform-mcp-server"
+    ],
+    "env": {
+      "USERNAME": "${user_config.username}",
+      "PAT": "${user_config.pat}"
     }
   },
   "tools": [],
@@ -42,27 +41,50 @@
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "flowcore-platform-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "@flowcore/platform-mcp-server", "--username", "<username>", "--pat", "<pat>"],
-          "env": {}
-        },
-        "platform-mcp-server": {
-          "command": "platform-mcp-server",
-          "args": ["--username", "<username>", "--pat", "<pat>"],
-          "env": {}
-        },
-        "flowcore-platform-mcp-server-dev-bun": {
-          "command": "bun",
-          "args": ["run", "src/index.ts", "--username", "<username>", "--pat", "<pat>"],
-          "env": {}
-        },
-        "flowcore-platform-mcp-server-built-node": {
-          "command": "node",
-          "args": ["dist/cli.js", "--username", "<username>", "--pat", "<pat>"],
-          "env": {}
-        }
+      "flowcore-platform-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@flowcore/platform-mcp-server",
+          "--username",
+          "<username>",
+          "--pat",
+          "<pat>"
+        ],
+        "env": {}
+      },
+      "platform-mcp-server": {
+        "command": "platform-mcp-server",
+        "args": [
+          "--username",
+          "<username>",
+          "--pat",
+          "<pat>"
+        ],
+        "env": {}
+      },
+      "flowcore-platform-mcp-server-dev-bun": {
+        "command": "bun",
+        "args": [
+          "run",
+          "src/index.ts",
+          "--username",
+          "<username>",
+          "--pat",
+          "<pat>"
+        ],
+        "env": {}
+      },
+      "flowcore-platform-mcp-server-built-node": {
+        "command": "node",
+        "args": [
+          "dist/cli.js",
+          "--username",
+          "<username>",
+          "--pat",
+          "<pat>"
+        ],
+        "env": {}
       }
     },
     "oauth": {

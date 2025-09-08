@@ -8,14 +8,15 @@
     "name": "anjor"
   },
   "server": {
-    "type": "python",
-    "entry_point": "coinmarket_service",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "coinmarket_service"],
-      "env": {
-        "COINMARKET_API_KEY": "${user_config.coinmarket_api_key}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "coinmarket_service"
+    ],
+    "env": {
+      "COINMARKET_API_KEY": "${user_config.coinmarket_api_key}"
     }
   },
   "tools": [],
@@ -35,27 +36,41 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "coinmarket_service": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/coinmarket_service", "run", "coinmarket_service"],
-          "env": {
-            "COINMARKET_API_KEY": "<insert api key>"
-          }
-        },
-        "coinmarket-service-docker": {
-          "command": "docker",
-          "args": ["run", "-e", "COINMARKET_API_KEY=your_api_key_here", "coinmarket-service"],
-          "env": {
-            "COINMARKET_API_KEY": "your_api_key_here"
-          }
-        },
-        "coinmarket-service-docker-configured": {
-          "command": "docker",
-          "args": ["run", "--rm", "-e", "COINMARKET_API_KEY=<insert api key>", "coinmarket-service"],
-          "env": {
-            "COINMARKET_API_KEY": "<insert api key>"
-          }
+      "coinmarket_service": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/coinmarket_service",
+          "run",
+          "coinmarket_service"
+        ],
+        "env": {
+          "COINMARKET_API_KEY": "<insert api key>"
+        }
+      },
+      "coinmarket-service-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-e",
+          "COINMARKET_API_KEY=your_api_key_here",
+          "coinmarket-service"
+        ],
+        "env": {
+          "COINMARKET_API_KEY": "your_api_key_here"
+        }
+      },
+      "coinmarket-service-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-e",
+          "COINMARKET_API_KEY=<insert api key>",
+          "coinmarket-service"
+        ],
+        "env": {
+          "COINMARKET_API_KEY": "<insert api key>"
         }
       }
     },

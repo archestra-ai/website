@@ -8,30 +8,31 @@
     "name": "mberg"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp-tts.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "mcp-tts.py"],
-      "env": {
-        "TTS_VOICE": "${user_config.tts_voice}",
-        "TTS_SPEED": "${user_config.tts_speed}",
-        "TTS_LANGUAGE": "${user_config.tts_language}",
-        "AWS_ACCESS_KEY_ID": "${user_config.aws_access_key_id}",
-        "AWS_SECRET_ACCESS_KEY": "${user_config.aws_secret_access_key}",
-        "AWS_REGION": "${user_config.aws_region}",
-        "AWS_S3_FOLDER": "${user_config.aws_s3_folder}",
-        "S3_ENABLED": "${user_config.s3_enabled}",
-        "MP3_FOLDER": "${user_config.mp3_folder}",
-        "AWS_S3_BUCKET_NAME": "${user_config.aws_s3_bucket_name}",
-        "AWS_S3_ENDPOINT_URL": "${user_config.aws_s3_endpoint_url}",
-        "MCP_HOST": "${user_config.mcp_host}",
-        "MCP_PORT": "${user_config.mcp_port}",
-        "MCP_CLIENT_HOST": "${user_config.mcp_client_host}",
-        "DEBUG": "${user_config.debug}",
-        "MP3_RETENTION_DAYS": "${user_config.mp3_retention_days}",
-        "DELETE_LOCAL_AFTER_S3_UPLOAD": "${user_config.delete_local_after_s3_upload}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "mcp-tts.py"
+    ],
+    "env": {
+      "TTS_VOICE": "${user_config.tts_voice}",
+      "TTS_SPEED": "${user_config.tts_speed}",
+      "TTS_LANGUAGE": "${user_config.tts_language}",
+      "AWS_ACCESS_KEY_ID": "${user_config.aws_access_key_id}",
+      "AWS_SECRET_ACCESS_KEY": "${user_config.aws_secret_access_key}",
+      "AWS_REGION": "${user_config.aws_region}",
+      "AWS_S3_FOLDER": "${user_config.aws_s3_folder}",
+      "S3_ENABLED": "${user_config.s3_enabled}",
+      "MP3_FOLDER": "${user_config.mp3_folder}",
+      "AWS_S3_BUCKET_NAME": "${user_config.aws_s3_bucket_name}",
+      "AWS_S3_ENDPOINT_URL": "${user_config.aws_s3_endpoint_url}",
+      "MCP_HOST": "${user_config.mcp_host}",
+      "MCP_PORT": "${user_config.mcp_port}",
+      "MCP_CLIENT_HOST": "${user_config.mcp_client_host}",
+      "DEBUG": "${user_config.debug}",
+      "MP3_RETENTION_DAYS": "${user_config.mp3_retention_days}",
+      "DELETE_LOCAL_AFTER_S3_UPLOAD": "${user_config.delete_local_after_s3_upload}"
     }
   },
   "tools": [],
@@ -163,27 +164,33 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kokoro-tts-mcp-configured": {
-          "command": "uv",
-          "args": ["--directory", "/path/toyourlocal/kokoro-tts-mcp", "run", "mcp-tts.py"],
-          "env": {
-            "TTS_VOICE": "af_heart",
-            "TTS_SPEED": "1.0",
-            "TTS_LANGUAGE": "en-us",
-            "AWS_ACCESS_KEY_ID": "",
-            "AWS_SECRET_ACCESS_KEY": "",
-            "AWS_REGION": "us-east-1",
-            "AWS_S3_FOLDER": "mp3",
-            "S3_ENABLED": "true",
-            "MP3_FOLDER": "/path/to/mp3"
-          }
-        },
-        "kokoro-tts-mcp-local": {
-          "command": "uv",
-          "args": ["run", "mcp-tts.py"],
-          "env": {}
+      "kokoro-tts-mcp-configured": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/toyourlocal/kokoro-tts-mcp",
+          "run",
+          "mcp-tts.py"
+        ],
+        "env": {
+          "TTS_VOICE": "af_heart",
+          "TTS_SPEED": "1.0",
+          "TTS_LANGUAGE": "en-us",
+          "AWS_ACCESS_KEY_ID": "",
+          "AWS_SECRET_ACCESS_KEY": "",
+          "AWS_REGION": "us-east-1",
+          "AWS_S3_FOLDER": "mp3",
+          "S3_ENABLED": "true",
+          "MP3_FOLDER": "/path/to/mp3"
         }
+      },
+      "kokoro-tts-mcp-local": {
+        "command": "uv",
+        "args": [
+          "run",
+          "mcp-tts.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

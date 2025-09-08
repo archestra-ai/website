@@ -8,15 +8,14 @@
     "name": "isnow890"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@isnow890/naver-search-mcp"],
-      "env": {
-        "NAVER_CLIENT_ID": "${user_config.naver_client_id}",
-        "NAVER_CLIENT_SECRET": "${user_config.naver_client_secret}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@isnow890/naver-search-mcp"
+    ],
+    "env": {
+      "NAVER_CLIENT_ID": "${user_config.naver_client_id}",
+      "NAVER_CLIENT_SECRET": "${user_config.naver_client_secret}"
     }
   },
   "tools": [],
@@ -43,39 +42,42 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "isnow890-naver-search-mcp": {
-          "command": "npx",
-          "args": ["@isnow890/naver-search-mcp"],
-          "env": {
-            "NAVER_CLIENT_ID": "your_client_id",
-            "NAVER_CLIENT_SECRET": "your_client_secret"
-          }
-        },
-        "isnow890-naver-search-mcp-configured": {
-          "command": "npx",
-          "args": ["-y", "@isnow890/naver-search-mcp"],
-          "env": {
-            "NAVER_CLIENT_ID": "your_client_id",
-            "NAVER_CLIENT_SECRET": "your_client_secret"
-          }
-        },
-        "mcp-naver-search-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "NAVER_CLIENT_ID=your_client_id",
-            "-e",
-            "NAVER_CLIENT_SECRET=your_client_secret",
-            "mcp/naver-search"
-          ],
-          "env": {
-            "NAVER_CLIENT_ID": "your_client_id",
-            "NAVER_CLIENT_SECRET": "your_client_secret"
-          }
+      "isnow890-naver-search-mcp": {
+        "command": "npx",
+        "args": [
+          "@isnow890/naver-search-mcp"
+        ],
+        "env": {
+          "NAVER_CLIENT_ID": "your_client_id",
+          "NAVER_CLIENT_SECRET": "your_client_secret"
+        }
+      },
+      "isnow890-naver-search-mcp-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@isnow890/naver-search-mcp"
+        ],
+        "env": {
+          "NAVER_CLIENT_ID": "your_client_id",
+          "NAVER_CLIENT_SECRET": "your_client_secret"
+        }
+      },
+      "mcp-naver-search-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "NAVER_CLIENT_ID=your_client_id",
+          "-e",
+          "NAVER_CLIENT_SECRET=your_client_secret",
+          "mcp/naver-search"
+        ],
+        "env": {
+          "NAVER_CLIENT_ID": "your_client_id",
+          "NAVER_CLIENT_SECRET": "your_client_secret"
         }
       }
     },

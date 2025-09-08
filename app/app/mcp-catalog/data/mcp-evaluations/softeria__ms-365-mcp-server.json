@@ -8,22 +8,18 @@
     "name": "softeria"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@softeria/ms-365-mcp-server",
-        "${user_config.enable_org_mode}",
-        "${user_config.enable_auth_tools}"
-      ],
-      "env": {
-        "MS365_MCP_CLIENT_ID": "${user_config.ms365_mcp_client_id}",
-        "MS365_MCP_CLIENT_SECRET": "${user_config.ms365_mcp_client_secret}",
-        "MS365_MCP_TENANT_ID": "${user_config.ms365_mcp_tenant_id}",
-        "MS365_MCP_OAUTH_TOKEN": "${user_config.ms365_mcp_oauth_token}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@softeria/ms-365-mcp-server",
+      "${user_config.enable_org_mode}",
+      "${user_config.enable_auth_tools}"
+    ],
+    "env": {
+      "MS365_MCP_CLIENT_ID": "${user_config.ms365_mcp_client_id}",
+      "MS365_MCP_CLIENT_SECRET": "${user_config.ms365_mcp_client_secret}",
+      "MS365_MCP_TENANT_ID": "${user_config.ms365_mcp_tenant_id}",
+      "MS365_MCP_OAUTH_TOKEN": "${user_config.ms365_mcp_oauth_token}"
     }
   },
   "tools": [],
@@ -79,28 +75,41 @@
   "quality_score": 64,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "softeria-ms-365-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "@softeria/ms-365-mcp-server"],
-          "env": {}
-        },
-        "softeria-ms-365-mcp-server-org-mode": {
-          "command": "npx",
-          "args": ["-y", "@softeria/ms-365-mcp-server", "--org-mode"],
-          "env": {}
-        },
-        "softeria-ms-365-mcp-server-http": {
-          "command": "npx",
-          "args": ["-y", "@softeria/ms-365-mcp-server", "--http", "3000"],
-          "env": {}
-        },
-        "softeria-ms-365-mcp-server-byot": {
-          "command": "npx",
-          "args": ["-y", "@softeria/ms-365-mcp-server"],
-          "env": {
-            "MS365_MCP_OAUTH_TOKEN": "your_oauth_token"
-          }
+      "softeria-ms-365-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@softeria/ms-365-mcp-server"
+        ],
+        "env": {}
+      },
+      "softeria-ms-365-mcp-server-org-mode": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@softeria/ms-365-mcp-server",
+          "--org-mode"
+        ],
+        "env": {}
+      },
+      "softeria-ms-365-mcp-server-http": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@softeria/ms-365-mcp-server",
+          "--http",
+          "3000"
+        ],
+        "env": {}
+      },
+      "softeria-ms-365-mcp-server-byot": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@softeria/ms-365-mcp-server"
+        ],
+        "env": {
+          "MS365_MCP_OAUTH_TOKEN": "your_oauth_token"
         }
       }
     },

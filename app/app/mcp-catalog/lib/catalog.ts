@@ -228,13 +228,9 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
               email: 'Unknown',
             },
             server: {
-              type: 'binary' as const,
-              entry_point: remoteUrl || '',
-              mcp_config: {
-                command: 'remote',
-                args: [],
-                env: {},
-              },
+              command: 'remote',
+              args: [],
+              env: {},
             },
             archestra_config: {
               client_config_permutations: null,
@@ -283,13 +279,9 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
               email: 'Unknown',
             },
             server: {
-              type: 'node',
-              entry_point: 'unknown',
-              mcp_config: {
-                command: 'unknown',
-                args: [],
-                env: {},
-              },
+              command: 'unknown',
+              args: [],
+              env: {},
             },
             archestra_config: {
               client_config_permutations: null,

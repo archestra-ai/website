@@ -8,21 +8,19 @@
     "name": "tom28881"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
-      "env": {
-        "JIRA_HOST": "${user_config.jira_host}",
-        "JIRA_EMAIL": "${user_config.jira_email}",
-        "JIRA_API_TOKEN": "${user_config.jira_api_token}",
-        "JIRA_DEFAULT_PROJECT": "${user_config.jira_default_project}",
-        "AUTO_CREATE_TEST_TICKETS": "${user_config.auto_create_test_tickets}",
-        "JIRA_FIELD_STORY_POINTS": "${user_config.jira_field_story_points}",
-        "JIRA_FIELD_ACCEPTANCE_CRITERIA": "${user_config.jira_field_acceptance_criteria}",
-        "JIRA_FIELD_EPIC_LINK": "${user_config.jira_field_epic_link}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/index.js"
+    ],
+    "env": {
+      "JIRA_HOST": "${user_config.jira_host}",
+      "JIRA_EMAIL": "${user_config.jira_email}",
+      "JIRA_API_TOKEN": "${user_config.jira_api_token}",
+      "JIRA_DEFAULT_PROJECT": "${user_config.jira_default_project}",
+      "AUTO_CREATE_TEST_TICKETS": "${user_config.auto_create_test_tickets}",
+      "JIRA_FIELD_STORY_POINTS": "${user_config.jira_field_story_points}",
+      "JIRA_FIELD_ACCEPTANCE_CRITERIA": "${user_config.jira_field_acceptance_criteria}",
+      "JIRA_FIELD_EPIC_LINK": "${user_config.jira_field_epic_link}"
     }
   },
   "tools": [],
@@ -87,36 +85,40 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-jira-server-configured-exported": {
-          "command": "node",
-          "args": ["/absolute/path/to/mcp-jira-server/dist/index.js"],
-          "env": {
-            "JIRA_HOST": "https://your-company.atlassian.net",
-            "JIRA_EMAIL": "your-email@company.com",
-            "JIRA_API_TOKEN": "your-api-token",
-            "JIRA_DEFAULT_PROJECT": "PROJ"
-          }
-        },
-        "mcp-jira-server-env-file": {
-          "command": "node",
-          "args": ["dist/index.js"],
-          "env": {}
-        },
-        "mcp-jira-server-run-script": {
-          "command": "./run.sh",
-          "args": [],
-          "env": {}
-        },
-        "mcp-jira-server-configured-settings": {
-          "command": "node",
-          "args": ["/absolute/path/to/mcp-jira-server/dist/index.js"],
-          "env": {
-            "JIRA_HOST": "https://your-company.atlassian.net",
-            "JIRA_EMAIL": "your-email@company.com",
-            "JIRA_API_TOKEN": "your-api-token",
-            "JIRA_DEFAULT_PROJECT": "PROJ"
-          }
+      "mcp-jira-server-configured-exported": {
+        "command": "node",
+        "args": [
+          "/absolute/path/to/mcp-jira-server/dist/index.js"
+        ],
+        "env": {
+          "JIRA_HOST": "https://your-company.atlassian.net",
+          "JIRA_EMAIL": "your-email@company.com",
+          "JIRA_API_TOKEN": "your-api-token",
+          "JIRA_DEFAULT_PROJECT": "PROJ"
+        }
+      },
+      "mcp-jira-server-env-file": {
+        "command": "node",
+        "args": [
+          "dist/index.js"
+        ],
+        "env": {}
+      },
+      "mcp-jira-server-run-script": {
+        "command": "./run.sh",
+        "args": [],
+        "env": {}
+      },
+      "mcp-jira-server-configured-settings": {
+        "command": "node",
+        "args": [
+          "/absolute/path/to/mcp-jira-server/dist/index.js"
+        ],
+        "env": {
+          "JIRA_HOST": "https://your-company.atlassian.net",
+          "JIRA_EMAIL": "your-email@company.com",
+          "JIRA_API_TOKEN": "your-api-token",
+          "JIRA_DEFAULT_PROJECT": "PROJ"
         }
       }
     },

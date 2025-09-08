@@ -8,17 +8,15 @@
     "name": "areweai"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npm",
-      "args": ["start"],
-      "env": {
-        "TELEGRAM_BOT_TOKEN": "${user_config.telegram_bot_token}",
-        "AUTHORIZED_CHAT_ID": "${user_config.authorized_chat_id}",
-        "OPENROUTER_API_KEY": "${user_config.openrouter_api_key}",
-        "OPENAI_API_KEY": "${user_config.openai_api_key}"
-      }
+    "command": "npm",
+    "args": [
+      "start"
+    ],
+    "env": {
+      "TELEGRAM_BOT_TOKEN": "${user_config.telegram_bot_token}",
+      "AUTHORIZED_CHAT_ID": "${user_config.authorized_chat_id}",
+      "OPENROUTER_API_KEY": "${user_config.openrouter_api_key}",
+      "OPENAI_API_KEY": "${user_config.openai_api_key}"
     }
   },
   "tools": [],
@@ -59,21 +57,25 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "tsgram-mcp": {
-          "command": "npm",
-          "args": ["run", "docker:start"],
-          "env": {
-            "TELEGRAM_BOT_TOKEN": "your_bot_token_here",
-            "AUTHORIZED_CHAT_ID": "123456789",
-            "OPENROUTER_API_KEY": "your_openrouter_key",
-            "OPENAI_API_KEY": "your_openai_key"
-          }
-        },
-        "tsgram-mcp-dashboard": {
-          "command": "npm",
-          "args": ["run", "dashboard"]
+      "tsgram-mcp": {
+        "command": "npm",
+        "args": [
+          "run",
+          "docker:start"
+        ],
+        "env": {
+          "TELEGRAM_BOT_TOKEN": "your_bot_token_here",
+          "AUTHORIZED_CHAT_ID": "123456789",
+          "OPENROUTER_API_KEY": "your_openrouter_key",
+          "OPENAI_API_KEY": "your_openai_key"
         }
+      },
+      "tsgram-mcp-dashboard": {
+        "command": "npm",
+        "args": [
+          "run",
+          "dashboard"
+        ]
       }
     },
     "oauth": {

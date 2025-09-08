@@ -8,14 +8,12 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/main.py"],
-      "env": {
-        "SOLSNIFFER_API_KEY": "${user_config.solsniffer_api_key}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/main.py"
+    ],
+    "env": {
+      "SOLSNIFFER_API_KEY": "${user_config.solsniffer_api_key}"
     }
   },
   "tools": [],
@@ -35,13 +33,13 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "rug-check-mcp": {
-          "command": "python",
-          "args": ["path/to/rug-check-mcp/main.py"],
-          "env": {
-            "SOLSNIFFER_API_KEY": "your_solsniffer_api_key_here"
-          }
+      "rug-check-mcp": {
+        "command": "python",
+        "args": [
+          "path/to/rug-check-mcp/main.py"
+        ],
+        "env": {
+          "SOLSNIFFER_API_KEY": "your_solsniffer_api_key_here"
         }
       }
     },

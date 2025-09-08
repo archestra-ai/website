@@ -8,13 +8,11 @@
     "name": "aliyun"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/server/main.py"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "${__dirname}/server/main.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,9 +22,7 @@
   "category": "AI Tools",
   "quality_score": 37,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

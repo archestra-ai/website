@@ -8,14 +8,12 @@
     "name": "QuentinCody"
   },
   "server": {
-    "type": "python",
-    "entry_point": "github_graphql_mcp_server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/github_graphql_mcp_server.py"],
-      "env": {
-        "GITHUB_TOKEN": "${user_config.github_token}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/github_graphql_mcp_server.py"
+    ],
+    "env": {
+      "GITHUB_TOKEN": "${user_config.github_token}"
     }
   },
   "tools": [],
@@ -35,20 +33,22 @@
   "quality_score": 43,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "github-graphql-direct": {
-          "command": "python",
-          "args": ["github_graphql_mcp_server.py"],
-          "env": {
-            "GITHUB_TOKEN": "your_github_token_here"
-          }
-        },
-        "github-graphql-configured": {
-          "command": "/absolute/path/to/your/.venv/bin/python",
-          "args": ["/absolute/path/to/github_graphql_mcp_server.py"],
-          "env": {
-            "GITHUB_TOKEN": "your_github_token_here"
-          }
+      "github-graphql-direct": {
+        "command": "python",
+        "args": [
+          "github_graphql_mcp_server.py"
+        ],
+        "env": {
+          "GITHUB_TOKEN": "your_github_token_here"
+        }
+      },
+      "github-graphql-configured": {
+        "command": "/absolute/path/to/your/.venv/bin/python",
+        "args": [
+          "/absolute/path/to/github_graphql_mcp_server.py"
+        ],
+        "env": {
+          "GITHUB_TOKEN": "your_github_token_here"
         }
       }
     },

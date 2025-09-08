@@ -8,15 +8,13 @@
     "name": "amidabuddha"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["unichat-mcp-server"],
-      "env": {
-        "UNICHAT_MODEL": "${user_config.unichat_model}",
-        "UNICHAT_API_KEY": "${user_config.unichat_api_key}"
-      }
+    "command": "uvx",
+    "args": [
+      "unichat-mcp-server"
+    ],
+    "env": {
+      "UNICHAT_MODEL": "${user_config.unichat_model}",
+      "UNICHAT_API_KEY": "${user_config.unichat_api_key}"
     }
   },
   "tools": [],
@@ -43,40 +41,40 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "unichat-mcp-server-dev": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "{{your source code local directory}}/unichat-mcp-server",
-            "run",
-            "unichat-mcp-server"
-          ],
-          "env": {
-            "UNICHAT_MODEL": "SELECTED_UNICHAT_MODEL",
-            "UNICHAT_API_KEY": "YOUR_UNICHAT_API_KEY"
-          }
-        },
-        "unichat-mcp-server-published": {
-          "command": "uvx",
-          "args": ["unichat-mcp-server"],
-          "env": {
-            "UNICHAT_MODEL": "SELECTED_UNICHAT_MODEL",
-            "UNICHAT_API_KEY": "YOUR_UNICHAT_API_KEY"
-          }
-        },
-        "modelcontextprotocol-inspector": {
-          "command": "npx",
-          "args": [
-            "@modelcontextprotocol/inspector",
-            "uv",
-            "--directory",
-            "{{your source code local directory}}/unichat-mcp-server",
-            "run",
-            "unichat-mcp-server"
-          ],
-          "env": {}
+      "unichat-mcp-server-dev": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "{{your source code local directory}}/unichat-mcp-server",
+          "run",
+          "unichat-mcp-server"
+        ],
+        "env": {
+          "UNICHAT_MODEL": "SELECTED_UNICHAT_MODEL",
+          "UNICHAT_API_KEY": "YOUR_UNICHAT_API_KEY"
         }
+      },
+      "unichat-mcp-server-published": {
+        "command": "uvx",
+        "args": [
+          "unichat-mcp-server"
+        ],
+        "env": {
+          "UNICHAT_MODEL": "SELECTED_UNICHAT_MODEL",
+          "UNICHAT_API_KEY": "YOUR_UNICHAT_API_KEY"
+        }
+      },
+      "modelcontextprotocol-inspector": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "uv",
+          "--directory",
+          "{{your source code local directory}}/unichat-mcp-server",
+          "run",
+          "unichat-mcp-server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

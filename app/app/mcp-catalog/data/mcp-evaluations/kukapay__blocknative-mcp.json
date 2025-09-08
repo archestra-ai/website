@@ -8,14 +8,13 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "${__dirname}/blocknative_mcp/__main__.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "blocknative_mcp"],
-      "env": {
-        "BLOCKNATIVE_API_KEY": "${user_config.blocknative_api_key}"
-      }
+    "command": "python",
+    "args": [
+      "-m",
+      "blocknative_mcp"
+    ],
+    "env": {
+      "BLOCKNATIVE_API_KEY": "${user_config.blocknative_api_key}"
     }
   },
   "tools": [],
@@ -35,17 +34,23 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "blocknative-mcp-dev": {
-          "command": "uv",
-          "args": ["run", "mcp", "dev", "blocknative-mcp"],
-          "env": {}
-        },
-        "blocknative-mcp": {
-          "command": "uv",
-          "args": ["run", "blocknative-mcp"],
-          "env": {}
-        }
+      "blocknative-mcp-dev": {
+        "command": "uv",
+        "args": [
+          "run",
+          "mcp",
+          "dev",
+          "blocknative-mcp"
+        ],
+        "env": {}
+      },
+      "blocknative-mcp": {
+        "command": "uv",
+        "args": [
+          "run",
+          "blocknative-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

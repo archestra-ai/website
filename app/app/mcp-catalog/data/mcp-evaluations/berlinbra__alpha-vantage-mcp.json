@@ -8,14 +8,13 @@
     "name": "berlinbra"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/alpha_vantage_mcp/server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "src/alpha_vantage_mcp/server.py"],
-      "env": {
-        "ALPHA_VANTAGE_API_KEY": "${user_config.alpha_vantage_api_key}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "src/alpha_vantage_mcp/server.py"
+    ],
+    "env": {
+      "ALPHA_VANTAGE_API_KEY": "${user_config.alpha_vantage_api_key}"
     }
   },
   "tools": [],
@@ -35,38 +34,50 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-alpha-vantage-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "-e", "ALPHA_VANTAGE_API_KEY", "mcp/alpha-vantage"],
-          "env": {
-            "ALPHA_VANTAGE_API_KEY": "REPLACE_API_KEY"
-          }
-        },
-        "alpha-vantage-mcp-with-config": {
-          "command": "uv",
-          "args": ["--directory", "/Users/{INSERT_USER}/YOUR/PATH/TO/alpha-vantage-mcp", "run", "alpha-vantage-mcp"],
-          "env": {
-            "ALPHA_VANTAGE_API_KEY": "<insert api key>"
-          }
-        },
-        "alpha-vantage-mcp-uv-run": {
-          "command": "uv",
-          "args": ["run", "src/alpha_vantage_mcp/server.py"],
-          "env": {}
-        },
-        "alpha-vantage-mcp-with-inspector": {
-          "command": "npx",
-          "args": [
-            "@modelcontextprotocol/inspector",
-            "uv",
-            "--directory",
-            "/Users/{INSERT_USER}/YOUR/PATH/TO/alpha-vantage-mcp",
-            "run",
-            "src/alpha_vantage_mcp/server.py"
-          ],
-          "env": {}
+      "mcp-alpha-vantage-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "-e",
+          "ALPHA_VANTAGE_API_KEY",
+          "mcp/alpha-vantage"
+        ],
+        "env": {
+          "ALPHA_VANTAGE_API_KEY": "REPLACE_API_KEY"
         }
+      },
+      "alpha-vantage-mcp-with-config": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/Users/{INSERT_USER}/YOUR/PATH/TO/alpha-vantage-mcp",
+          "run",
+          "alpha-vantage-mcp"
+        ],
+        "env": {
+          "ALPHA_VANTAGE_API_KEY": "<insert api key>"
+        }
+      },
+      "alpha-vantage-mcp-uv-run": {
+        "command": "uv",
+        "args": [
+          "run",
+          "src/alpha_vantage_mcp/server.py"
+        ],
+        "env": {}
+      },
+      "alpha-vantage-mcp-with-inspector": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "uv",
+          "--directory",
+          "/Users/{INSERT_USER}/YOUR/PATH/TO/alpha-vantage-mcp",
+          "run",
+          "src/alpha_vantage_mcp/server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,11 @@
     "name": "juehang"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/index.js"],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/index.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,11 +23,12 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "vscode-mcp-server": {
-          "command": "npx",
-          "args": ["mcp-remote@next", "http://localhost:3000/mcp"]
-        }
+      "vscode-mcp-server": {
+        "command": "npx",
+        "args": [
+          "mcp-remote@next",
+          "http://localhost:3000/mcp"
+        ]
       }
     },
     "oauth": {

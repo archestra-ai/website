@@ -8,13 +8,13 @@
     "name": "imprvhub"
   },
   "server": {
-    "type": "node",
-    "entry_point": "build/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js", "--feeds-path", "${user_config.feeds_path}"],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js",
+      "--feeds-path",
+      "${user_config.feeds_path}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,12 +33,12 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-rss-aggregator-configured": {
-          "command": "node",
-          "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-rss-aggregator/build/index.js"],
-          "env": {}
-        }
+      "mcp-rss-aggregator-configured": {
+        "command": "node",
+        "args": [
+          "ABSOLUTE_PATH_TO_DIRECTORY/mcp-rss-aggregator/build/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

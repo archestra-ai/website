@@ -8,16 +8,12 @@
     "name": "gbrigandi"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-server-cortex",
-    "mcp_config": {
-      "command": "mcp-server-cortex",
-      "args": [],
-      "env": {
-        "CORTEX_ENDPOINT": "${user_config.cortex_endpoint}",
-        "CORTEX_API_KEY": "${user_config.cortex_api_key}",
-        "RUST_LOG": "${user_config.rust_log}"
-      }
+    "command": "mcp-server-cortex",
+    "args": [],
+    "env": {
+      "CORTEX_ENDPOINT": "${user_config.cortex_endpoint}",
+      "CORTEX_API_KEY": "${user_config.cortex_api_key}",
+      "RUST_LOG": "${user_config.rust_log}"
     }
   },
   "tools": [],
@@ -53,14 +49,12 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-cortex-configured": {
-          "command": "/opt/mcp-servers/mcp-server-cortex",
-          "args": [],
-          "env": {
-            "CORTEX_ENDPOINT": "http://your-cortex-instance:9000/api",
-            "CORTEX_API_KEY": "your_cortex_api_key_here"
-          }
+      "mcp-server-cortex-configured": {
+        "command": "/opt/mcp-servers/mcp-server-cortex",
+        "args": [],
+        "env": {
+          "CORTEX_ENDPOINT": "http://your-cortex-instance:9000/api",
+          "CORTEX_API_KEY": "your_cortex_api_key_here"
         }
       }
     },

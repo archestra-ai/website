@@ -8,13 +8,15 @@
     "name": "sirmews"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-pinecone", "--index-name", "${user_config.index_name}", "--api-key", "${user_config.api_key}"],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "mcp-pinecone",
+      "--index-name",
+      "${user_config.index_name}",
+      "--api-key",
+      "${user_config.api_key}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -39,17 +41,26 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-pinecone": {
-          "command": "uv",
-          "args": ["--directory", "{project_dir}", "run", "mcp-pinecone"],
-          "env": {}
-        },
-        "mcp-pinecone-configured": {
-          "command": "uvx",
-          "args": ["--index-name", "{your-index-name}", "--api-key", "{your-secret-api-key}", "mcp-pinecone"],
-          "env": {}
-        }
+      "mcp-pinecone": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "{project_dir}",
+          "run",
+          "mcp-pinecone"
+        ],
+        "env": {}
+      },
+      "mcp-pinecone-configured": {
+        "command": "uvx",
+        "args": [
+          "--index-name",
+          "{your-index-name}",
+          "--api-key",
+          "{your-secret-api-key}",
+          "mcp-pinecone"
+        ],
+        "env": {}
       }
     },
     "oauth": {

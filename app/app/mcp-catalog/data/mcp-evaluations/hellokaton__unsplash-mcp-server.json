@@ -8,14 +8,17 @@
     "name": "hellokaton"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "--with", "fastmcp", "fastmcp", "run", "./server.py"],
-      "env": {
-        "UNSPLASH_ACCESS_KEY": "${user_config.unsplash_access_key}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "fastmcp",
+      "fastmcp",
+      "run",
+      "./server.py"
+    ],
+    "env": {
+      "UNSPLASH_ACCESS_KEY": "${user_config.unsplash_access_key}"
     }
   },
   "tools": [],
@@ -35,13 +38,18 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "unsplash-mcp-server": {
-          "command": "uv",
-          "args": ["run", "--with", "fastmcp", "fastmcp", "run", "./server.py"],
-          "env": {
-            "UNSPLASH_ACCESS_KEY": "${YOUR_ACCESS_KEY}"
-          }
+      "unsplash-mcp-server": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--with",
+          "fastmcp",
+          "fastmcp",
+          "run",
+          "./server.py"
+        ],
+        "env": {
+          "UNSPLASH_ACCESS_KEY": "${YOUR_ACCESS_KEY}"
         }
       }
     },

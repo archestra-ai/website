@@ -8,34 +8,30 @@
     "name": "datalayer"
   },
   "server": {
-    "type": "docker",
-    "entry_point": "jupyter-mcp-server",
-    "mcp_config": {
-      "command": "docker",
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "-e",
-        "DOCUMENT_URL",
-        "-e",
-        "DOCUMENT_TOKEN",
-        "-e",
-        "DOCUMENT_ID",
-        "-e",
-        "RUNTIME_URL",
-        "-e",
-        "RUNTIME_TOKEN",
-        "--network=host",
-        "datalayer/jupyter-mcp-server:latest"
-      ],
-      "env": {
-        "DOCUMENT_URL": "${user_config.document_url}",
-        "DOCUMENT_TOKEN": "${user_config.document_token}",
-        "DOCUMENT_ID": "${user_config.document_id}",
-        "RUNTIME_URL": "${user_config.runtime_url}",
-        "RUNTIME_TOKEN": "${user_config.runtime_token}"
-      }
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "DOCUMENT_URL",
+      "-e",
+      "DOCUMENT_TOKEN",
+      "-e",
+      "DOCUMENT_ID",
+      "-e",
+      "RUNTIME_URL",
+      "-e",
+      "RUNTIME_TOKEN",
+      "--network=host",
+      "datalayer/jupyter-mcp-server:latest"
+    ],
+    "env": {
+      "DOCUMENT_URL": "${user_config.document_url}",
+      "DOCUMENT_TOKEN": "${user_config.document_token}",
+      "DOCUMENT_ID": "${user_config.document_id}",
+      "RUNTIME_URL": "${user_config.runtime_url}",
+      "RUNTIME_TOKEN": "${user_config.runtime_token}"
     }
   },
   "tools": [],
@@ -85,59 +81,57 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "datalayer-jupyter-mcp-server-docker-macos-windows": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "DOCUMENT_URL",
-            "-e",
-            "DOCUMENT_TOKEN",
-            "-e",
-            "DOCUMENT_ID",
-            "-e",
-            "RUNTIME_URL",
-            "-e",
-            "RUNTIME_TOKEN",
-            "datalayer/jupyter-mcp-server:latest"
-          ],
-          "env": {
-            "DOCUMENT_URL": "http://host.docker.internal:8888",
-            "DOCUMENT_TOKEN": "MY_TOKEN",
-            "DOCUMENT_ID": "notebook.ipynb",
-            "RUNTIME_URL": "http://host.docker.internal:8888",
-            "RUNTIME_TOKEN": "MY_TOKEN"
-          }
-        },
-        "datalayer-jupyter-mcp-server-docker-linux": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "DOCUMENT_URL",
-            "-e",
-            "DOCUMENT_TOKEN",
-            "-e",
-            "DOCUMENT_ID",
-            "-e",
-            "RUNTIME_URL",
-            "-e",
-            "RUNTIME_TOKEN",
-            "--network=host",
-            "datalayer/jupyter-mcp-server:latest"
-          ],
-          "env": {
-            "DOCUMENT_URL": "http://localhost:8888",
-            "DOCUMENT_TOKEN": "MY_TOKEN",
-            "DOCUMENT_ID": "notebook.ipynb",
-            "RUNTIME_URL": "http://localhost:8888",
-            "RUNTIME_TOKEN": "MY_TOKEN"
-          }
+      "datalayer-jupyter-mcp-server-docker-macos-windows": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "DOCUMENT_URL",
+          "-e",
+          "DOCUMENT_TOKEN",
+          "-e",
+          "DOCUMENT_ID",
+          "-e",
+          "RUNTIME_URL",
+          "-e",
+          "RUNTIME_TOKEN",
+          "datalayer/jupyter-mcp-server:latest"
+        ],
+        "env": {
+          "DOCUMENT_URL": "http://host.docker.internal:8888",
+          "DOCUMENT_TOKEN": "MY_TOKEN",
+          "DOCUMENT_ID": "notebook.ipynb",
+          "RUNTIME_URL": "http://host.docker.internal:8888",
+          "RUNTIME_TOKEN": "MY_TOKEN"
+        }
+      },
+      "datalayer-jupyter-mcp-server-docker-linux": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "DOCUMENT_URL",
+          "-e",
+          "DOCUMENT_TOKEN",
+          "-e",
+          "DOCUMENT_ID",
+          "-e",
+          "RUNTIME_URL",
+          "-e",
+          "RUNTIME_TOKEN",
+          "--network=host",
+          "datalayer/jupyter-mcp-server:latest"
+        ],
+        "env": {
+          "DOCUMENT_URL": "http://localhost:8888",
+          "DOCUMENT_TOKEN": "MY_TOKEN",
+          "DOCUMENT_ID": "notebook.ipynb",
+          "RUNTIME_URL": "http://localhost:8888",
+          "RUNTIME_TOKEN": "MY_TOKEN"
         }
       }
     },

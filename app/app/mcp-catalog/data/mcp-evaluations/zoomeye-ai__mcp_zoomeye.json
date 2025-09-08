@@ -8,14 +8,12 @@
     "name": "zoomeye-ai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp-server-zoomeye",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-zoomeye"],
-      "env": {
-        "ZOOMEYE_API_KEY": "${user_config.zoomeye_api_key}"
-      }
+    "command": "uvx",
+    "args": [
+      "mcp-server-zoomeye"
+    ],
+    "env": {
+      "ZOOMEYE_API_KEY": "${user_config.zoomeye_api_key}"
     }
   },
   "tools": [],
@@ -35,48 +33,51 @@
   "quality_score": 67,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-zoomeye-python": {
-          "command": "python",
-          "args": ["-m", "mcp_server_zoomeye"],
-          "env": {
-            "ZOOMEYE_API_KEY": "your_api_key_here"
-          }
-        },
-        "zoomeyeteam-mcp-server-zoomeye-docker-latest": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "ZOOMEYE_API_KEY=your_api_key_here",
-            "zoomeyeteam/mcp-server-zoomeye:latest"
-          ],
-          "env": {
-            "ZOOMEYE_API_KEY": "your_api_key_here"
-          }
-        },
-        "zoomeyeteam-mcp-server-zoomeye-docker-local": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "ZOOMEYE_API_KEY=your_api_key_here",
-            "zoomeyeteam/mcp-server-zoomeye:local"
-          ],
-          "env": {
-            "ZOOMEYE_API_KEY": "your_api_key_here"
-          }
-        },
-        "mcp-server-zoomeye-uvx": {
-          "command": "uvx",
-          "args": ["mcp-server-zoomeye"],
-          "env": {
-            "ZOOMEYE_API_KEY": "your_api_key_here"
-          }
+      "mcp-server-zoomeye-python": {
+        "command": "python",
+        "args": [
+          "-m",
+          "mcp_server_zoomeye"
+        ],
+        "env": {
+          "ZOOMEYE_API_KEY": "your_api_key_here"
+        }
+      },
+      "zoomeyeteam-mcp-server-zoomeye-docker-latest": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "ZOOMEYE_API_KEY=your_api_key_here",
+          "zoomeyeteam/mcp-server-zoomeye:latest"
+        ],
+        "env": {
+          "ZOOMEYE_API_KEY": "your_api_key_here"
+        }
+      },
+      "zoomeyeteam-mcp-server-zoomeye-docker-local": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "ZOOMEYE_API_KEY=your_api_key_here",
+          "zoomeyeteam/mcp-server-zoomeye:local"
+        ],
+        "env": {
+          "ZOOMEYE_API_KEY": "your_api_key_here"
+        }
+      },
+      "mcp-server-zoomeye-uvx": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-zoomeye"
+        ],
+        "env": {
+          "ZOOMEYE_API_KEY": "your_api_key_here"
         }
       }
     },

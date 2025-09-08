@@ -8,14 +8,12 @@
     "name": "chatmcp"
   },
   "server": {
-    "type": "node",
-    "entry_point": "build/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "CHAT_DB_PATH": "${user_config.chat_db_path}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "CHAT_DB_PATH": "${user_config.chat_db_path}"
     }
   },
   "tools": [],
@@ -35,13 +33,13 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-chatsum": {
-          "command": "path-to/bin/node",
-          "args": ["path-to/mcp-server-chatsum/build/index.js"],
-          "env": {
-            "CHAT_DB_PATH": "path-to/mcp-server-chatsum/chatbot/data/chat.db"
-          }
+      "mcp-server-chatsum": {
+        "command": "path-to/bin/node",
+        "args": [
+          "path-to/mcp-server-chatsum/build/index.js"
+        ],
+        "env": {
+          "CHAT_DB_PATH": "path-to/mcp-server-chatsum/chatbot/data/chat.db"
         }
       }
     },

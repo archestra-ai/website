@@ -8,15 +8,13 @@
     "name": "ricocf"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/core/server.py",
-    "mcp_config": {
-      "command": "python3",
-      "args": ["${__dirname}/src/core/server.py"],
-      "env": {
-        "WOLFRAM_API_KEY": "${user_config.wolfram_api_key}",
-        "GeminiAPI": "${user_config.gemini_api}"
-      }
+    "command": "python3",
+    "args": [
+      "${__dirname}/src/core/server.py"
+    ],
+    "env": {
+      "WOLFRAM_API_KEY": "${user_config.wolfram_api_key}",
+      "GeminiAPI": "${user_config.gemini_api}"
     }
   },
   "tools": [],
@@ -43,12 +41,12 @@
   "quality_score": 24,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "WolframAlphaServer": {
-          "command": "python3",
-          "args": ["/path/to/src/core/server.py"],
-          "env": {}
-        }
+      "WolframAlphaServer": {
+        "command": "python3",
+        "args": [
+          "/path/to/src/core/server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

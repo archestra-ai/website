@@ -8,14 +8,10 @@
     "name": "wowinter13"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "solscan-mcp",
-    "mcp_config": {
-      "command": "${HOME}/.cargo/bin/solscan-mcp",
-      "args": [],
-      "env": {
-        "SOLSCAN_API_KEY": "${user_config.solscan_api_key}"
-      }
+    "command": "${HOME}/.cargo/bin/solscan-mcp",
+    "args": [],
+    "env": {
+      "SOLSCAN_API_KEY": "${user_config.solscan_api_key}"
     }
   },
   "tools": [],
@@ -35,13 +31,11 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "solscan-mcp": {
-          "command": "/Users/$username/.cargo/bin/solscan-mcp",
-          "args": [],
-          "env": {
-            "SOLSCAN_API_KEY": "your_solscan_api_key"
-          }
+      "solscan-mcp": {
+        "command": "/Users/$username/.cargo/bin/solscan-mcp",
+        "args": [],
+        "env": {
+          "SOLSCAN_API_KEY": "your_solscan_api_key"
         }
       }
     },

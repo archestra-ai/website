@@ -8,25 +8,21 @@
     "name": "FreePeak"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "bin/server",
-    "mcp_config": {
-      "command": "bin/server",
-      "args": [
-        "-t",
-        "${user_config.transport_mode}",
-        "-c",
-        "${user_config.config_path}",
-        "-host",
-        "${user_config.host}",
-        "-port",
-        "${user_config.port}"
-      ],
-      "env": {
-        "TRANSPORT_MODE": "${user_config.transport_mode}",
-        "CONFIG_PATH": "${user_config.config_path}",
-        "DB_CONFIG": "${user_config.db_config}"
-      }
+    "command": "bin/server",
+    "args": [
+      "-t",
+      "${user_config.transport_mode}",
+      "-c",
+      "${user_config.config_path}",
+      "-host",
+      "${user_config.host}",
+      "-port",
+      "${user_config.port}"
+    ],
+    "env": {
+      "TRANSPORT_MODE": "${user_config.transport_mode}",
+      "CONFIG_PATH": "${user_config.config_path}",
+      "DB_CONFIG": "${user_config.db_config}"
     }
   },
   "tools": [],
@@ -76,57 +72,87 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "freepeak-db-mcp-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "9092:9092",
-            "-v",
-            "$(pwd)/config.json:/app/my-config.json",
-            "-e",
-            "TRANSPORT_MODE=sse",
-            "-e",
-            "CONFIG_PATH=/app/my-config.json",
-            "freepeak/db-mcp-server"
-          ],
-          "env": {
-            "TRANSPORT_MODE": "sse",
-            "CONFIG_PATH": "/app/my-config.json"
-          }
-        },
-        "db-mcp-server-stdio": {
-          "command": "./bin/server",
-          "args": ["-t", "stdio", "-c", "config.json"],
-          "env": {}
-        },
-        "db-mcp-server-stdio-cursor-config": {
-          "command": "/path/to/db-mcp-server/server",
-          "args": ["-t", "stdio", "-c", "/path/to/config.json"],
-          "env": {}
-        },
-        "db-mcp-server-sse": {
-          "command": "./bin/server",
-          "args": ["-t", "sse", "-c", "config.json"],
-          "env": {}
-        },
-        "db-mcp-server-sse-custom-host-port": {
-          "command": "./bin/server",
-          "args": ["-t", "sse", "-host", "0.0.0.0", "-port", "8080", "-c", "config.json"],
-          "env": {}
-        },
-        "db-mcp-server-stdio-inline-config": {
-          "command": "./bin/server",
-          "args": ["-t", "stdio", "-db-config", "{\"connections\":[...]}"],
-          "env": {}
-        },
-        "db-mcp-server-stdio-env-config": {
-          "command": "./bin/server",
-          "args": ["-t", "stdio"],
-          "env": {
-            "DB_CONFIG": "{\"connections\":[...]}"
-          }
+      "freepeak-db-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "9092:9092",
+          "-v",
+          "$(pwd)/config.json:/app/my-config.json",
+          "-e",
+          "TRANSPORT_MODE=sse",
+          "-e",
+          "CONFIG_PATH=/app/my-config.json",
+          "freepeak/db-mcp-server"
+        ],
+        "env": {
+          "TRANSPORT_MODE": "sse",
+          "CONFIG_PATH": "/app/my-config.json"
+        }
+      },
+      "db-mcp-server-stdio": {
+        "command": "./bin/server",
+        "args": [
+          "-t",
+          "stdio",
+          "-c",
+          "config.json"
+        ],
+        "env": {}
+      },
+      "db-mcp-server-stdio-cursor-config": {
+        "command": "/path/to/db-mcp-server/server",
+        "args": [
+          "-t",
+          "stdio",
+          "-c",
+          "/path/to/config.json"
+        ],
+        "env": {}
+      },
+      "db-mcp-server-sse": {
+        "command": "./bin/server",
+        "args": [
+          "-t",
+          "sse",
+          "-c",
+          "config.json"
+        ],
+        "env": {}
+      },
+      "db-mcp-server-sse-custom-host-port": {
+        "command": "./bin/server",
+        "args": [
+          "-t",
+          "sse",
+          "-host",
+          "0.0.0.0",
+          "-port",
+          "8080",
+          "-c",
+          "config.json"
+        ],
+        "env": {}
+      },
+      "db-mcp-server-stdio-inline-config": {
+        "command": "./bin/server",
+        "args": [
+          "-t",
+          "stdio",
+          "-db-config",
+          "{\"connections\":[...]}"
+        ],
+        "env": {}
+      },
+      "db-mcp-server-stdio-env-config": {
+        "command": "./bin/server",
+        "args": [
+          "-t",
+          "stdio"
+        ],
+        "env": {
+          "DB_CONFIG": "{\"connections\":[...]}"
         }
       }
     },

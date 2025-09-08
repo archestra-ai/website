@@ -8,13 +8,13 @@
     "name": "evalstate"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js", "--token", "${user_config.miro_oauth_key}"],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js",
+      "--token",
+      "${user_config.miro_oauth_key}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,18 +33,22 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-miro-with-token": {
-          "command": "node",
-          "args": ["/path/to/mcp-miro/build/index.js", "--token", "MIRO-OAUTH-KEY"],
-          "env": {}
-        },
-        "mcp-miro-with-env": {
-          "command": "node",
-          "args": ["/path/to/mcp-miro/build/index.js"],
-          "env": {
-            "MIRO_OAUTH_KEY": "YOUR_MIRO_OAUTH_KEY"
-          }
+      "mcp-miro-with-token": {
+        "command": "node",
+        "args": [
+          "/path/to/mcp-miro/build/index.js",
+          "--token",
+          "MIRO-OAUTH-KEY"
+        ],
+        "env": {}
+      },
+      "mcp-miro-with-env": {
+        "command": "node",
+        "args": [
+          "/path/to/mcp-miro/build/index.js"
+        ],
+        "env": {
+          "MIRO_OAUTH_KEY": "YOUR_MIRO_OAUTH_KEY"
         }
       }
     },

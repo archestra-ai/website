@@ -8,13 +8,9 @@
     "name": "yiwenlu66"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "piloty",
-    "mcp_config": {
-      "command": "piloty",
-      "args": [],
-      "env": {}
-    }
+    "command": "piloty",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 43,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "piloty": {
-          "command": "piloty",
-          "args": [],
-          "env": {}
-        }
+      "piloty": {
+        "command": "piloty",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

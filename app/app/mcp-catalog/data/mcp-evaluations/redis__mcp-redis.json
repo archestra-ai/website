@@ -8,19 +8,18 @@
     "name": "redis"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "src/main.py"],
-      "env": {
-        "REDIS_HOST": "${user_config.redis_host}",
-        "REDIS_PORT": "${user_config.redis_port}",
-        "REDIS_PWD": "${user_config.redis_pwd}",
-        "REDIS_SSL": "${user_config.redis_ssl}",
-        "REDIS_CA_PATH": "${user_config.redis_ca_path}",
-        "REDIS_CLUSTER_MODE": "${user_config.redis_cluster_mode}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "src/main.py"
+    ],
+    "env": {
+      "REDIS_HOST": "${user_config.redis_host}",
+      "REDIS_PORT": "${user_config.redis_port}",
+      "REDIS_PWD": "${user_config.redis_pwd}",
+      "REDIS_SSL": "${user_config.redis_ssl}",
+      "REDIS_CA_PATH": "${user_config.redis_ca_path}",
+      "REDIS_CLUSTER_MODE": "${user_config.redis_cluster_mode}"
     }
   },
   "tools": [],
@@ -74,73 +73,84 @@
   "quality_score": 65,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "redis-mcp-server-stdio-0-2-0": {
-          "command": "uvx",
-          "args": [
-            "--from",
-            "git+https://github.com/redis/mcp-redis.git@0.2.0",
-            "redis-mcp-server",
-            "--url",
-            "redis://localhost:6379/0"
-          ],
-          "env": {}
-        },
-        "redis-mcp-server-stdio-url": {
-          "command": "uvx",
-          "args": [
-            "--from",
-            "git+https://github.com/redis/mcp-redis.git",
-            "redis-mcp-server",
-            "--url",
-            "redis://localhost:6379/0"
-          ],
-          "env": {}
-        },
-        "redis-mcp-server-stdio-ssl": {
-          "command": "uvx",
-          "args": [
-            "--from",
-            "git+https://github.com/redis/mcp-redis.git",
-            "redis-mcp-server",
-            "--url",
-            "rediss://<USERNAME>:<PASSWORD>@<HOST>:<PORT>?ssl_cert_reqs=required&ssl_ca_certs=<PATH_TO_CERT>"
-          ],
-          "env": {}
-        },
-        "redis-mcp-server-stdio-params": {
-          "command": "uvx",
-          "args": [
-            "--from",
-            "git+https://github.com/redis/mcp-redis.git",
-            "redis-mcp-server",
-            "--host",
-            "localhost",
-            "--port",
-            "6379",
-            "--password",
-            "mypassword"
-          ],
-          "env": {}
-        },
-        "redis-mcp-server-configured": {
-          "command": "uv",
-          "args": ["--directory", "<your_mcp_server_directory>", "run", "src/main.py"],
-          "env": {
-            "REDIS_HOST": "<your_redis_database_hostname>",
-            "REDIS_PORT": "<your_redis_database_port>",
-            "REDIS_PWD": "<your_redis_database_password>",
-            "REDIS_SSL": "True|False",
-            "REDIS_CA_PATH": "<your_redis_ca_path>",
-            "REDIS_CLUSTER_MODE": "True|False"
-          }
-        },
-        "mcp-redis-docker": {
-          "command": "docker",
-          "args": ["run", "--rm", "--name", "redis-mcp-server", "-i", "-e", "REDIS_HOST=<redis_hostname>"],
-          "env": {
-            "REDIS_HOST": "<redis_hostname>"
-          }
+      "redis-mcp-server-stdio-0-2-0": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/redis/mcp-redis.git@0.2.0",
+          "redis-mcp-server",
+          "--url",
+          "redis://localhost:6379/0"
+        ],
+        "env": {}
+      },
+      "redis-mcp-server-stdio-url": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/redis/mcp-redis.git",
+          "redis-mcp-server",
+          "--url",
+          "redis://localhost:6379/0"
+        ],
+        "env": {}
+      },
+      "redis-mcp-server-stdio-ssl": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/redis/mcp-redis.git",
+          "redis-mcp-server",
+          "--url",
+          "rediss://<USERNAME>:<PASSWORD>@<HOST>:<PORT>?ssl_cert_reqs=required&ssl_ca_certs=<PATH_TO_CERT>"
+        ],
+        "env": {}
+      },
+      "redis-mcp-server-stdio-params": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/redis/mcp-redis.git",
+          "redis-mcp-server",
+          "--host",
+          "localhost",
+          "--port",
+          "6379",
+          "--password",
+          "mypassword"
+        ],
+        "env": {}
+      },
+      "redis-mcp-server-configured": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "<your_mcp_server_directory>",
+          "run",
+          "src/main.py"
+        ],
+        "env": {
+          "REDIS_HOST": "<your_redis_database_hostname>",
+          "REDIS_PORT": "<your_redis_database_port>",
+          "REDIS_PWD": "<your_redis_database_password>",
+          "REDIS_SSL": "True|False",
+          "REDIS_CA_PATH": "<your_redis_ca_path>",
+          "REDIS_CLUSTER_MODE": "True|False"
+        }
+      },
+      "mcp-redis-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "--name",
+          "redis-mcp-server",
+          "-i",
+          "-e",
+          "REDIS_HOST=<redis_hostname>"
+        ],
+        "env": {
+          "REDIS_HOST": "<redis_hostname>"
         }
       }
     },

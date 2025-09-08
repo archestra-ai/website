@@ -8,14 +8,13 @@
     "name": "joshuayoes"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "ios-simulator-mcp"],
-      "env": {
-        "IOS_SIMULATOR_MCP_FILTERED_TOOLS": "${user_config.ios_simulator_mcp_filtered_tools}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "ios-simulator-mcp"
+    ],
+    "env": {
+      "IOS_SIMULATOR_MCP_FILTERED_TOOLS": "${user_config.ios_simulator_mcp_filtered_tools}"
     }
   },
   "tools": [],
@@ -35,17 +34,20 @@
   "quality_score": 70,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ios-simulator-mcp": {
-          "command": "npx",
-          "args": ["-y", "ios-simulator-mcp"],
-          "env": {}
-        },
-        "ios-simulator-mcp-local-dev": {
-          "command": "node",
-          "args": ["/full/path/to/your/ios-simulator-mcp/build/index.js"],
-          "env": {}
-        }
+      "ios-simulator-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "ios-simulator-mcp"
+        ],
+        "env": {}
+      },
+      "ios-simulator-mcp-local-dev": {
+        "command": "node",
+        "args": [
+          "/full/path/to/your/ios-simulator-mcp/build/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,14 +8,13 @@
     "name": "yuna0x0"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "anilist-mcp"],
-      "env": {
-        "ANILIST_TOKEN": "${user_config.anilist_token}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "anilist-mcp"
+    ],
+    "env": {
+      "ANILIST_TOKEN": "${user_config.anilist_token}"
     }
   },
   "tools": [],
@@ -35,30 +34,46 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "anilist-mcp": {
-          "command": "npx",
-          "args": ["-y", "anilist-mcp"],
-          "env": {}
-        },
-        "anilist-mcp-configured": {
-          "command": "npx",
-          "args": ["-y", "anilist-mcp"],
-          "env": {
-            "ANILIST_TOKEN": "your_api_token"
-          }
-        },
-        "yuna0x0-anilist-mcp-docker": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "yuna0x0/anilist-mcp"],
-          "env": {}
-        },
-        "yuna0x0-anilist-mcp-docker-configured": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "-e", "ANILIST_TOKEN=your_api_token", "yuna0x0/anilist-mcp"],
-          "env": {
-            "ANILIST_TOKEN": "your_api_token"
-          }
+      "anilist-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "anilist-mcp"
+        ],
+        "env": {}
+      },
+      "anilist-mcp-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "anilist-mcp"
+        ],
+        "env": {
+          "ANILIST_TOKEN": "your_api_token"
+        }
+      },
+      "yuna0x0-anilist-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "yuna0x0/anilist-mcp"
+        ],
+        "env": {}
+      },
+      "yuna0x0-anilist-mcp-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "-e",
+          "ANILIST_TOKEN=your_api_token",
+          "yuna0x0/anilist-mcp"
+        ],
+        "env": {
+          "ANILIST_TOKEN": "your_api_token"
         }
       }
     },

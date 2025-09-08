@@ -8,14 +8,13 @@
     "name": "alchemyplatform"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@alchemy/mcp-server"],
-      "env": {
-        "ALCHEMY_API_KEY": "${user_config.alchemy_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@alchemy/mcp-server"
+    ],
+    "env": {
+      "ALCHEMY_API_KEY": "${user_config.alchemy_api_key}"
     }
   },
   "tools": [],
@@ -35,24 +34,29 @@
   "quality_score": 66,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "alchemy-mcp-server-configured": {
-          "command": "npx",
-          "args": ["-y", "@alchemy/mcp-server"],
-          "env": {
-            "ALCHEMY_API_KEY": "YOUR_API_KEY"
-          }
-        },
-        "alchemy-mcp-dev": {
-          "command": "pnpm",
-          "args": ["dev"],
-          "env": {}
-        },
-        "alchemy-mcp-start": {
-          "command": "pnpm",
-          "args": ["start"],
-          "env": {}
+      "alchemy-mcp-server-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@alchemy/mcp-server"
+        ],
+        "env": {
+          "ALCHEMY_API_KEY": "YOUR_API_KEY"
         }
+      },
+      "alchemy-mcp-dev": {
+        "command": "pnpm",
+        "args": [
+          "dev"
+        ],
+        "env": {}
+      },
+      "alchemy-mcp-start": {
+        "command": "pnpm",
+        "args": [
+          "start"
+        ],
+        "env": {}
       }
     },
     "oauth": {

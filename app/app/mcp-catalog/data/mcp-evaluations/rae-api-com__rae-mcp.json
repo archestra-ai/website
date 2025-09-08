@@ -8,13 +8,14 @@
     "name": "rae-api-com"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "rae-mpc",
-    "mcp_config": {
-      "command": "./rae-mpc",
-      "args": ["--transport", "${user_config.transport}", "--port", "${user_config.port}"],
-      "env": {}
-    }
+    "command": "./rae-mpc",
+    "args": [
+      "--transport",
+      "${user_config.transport}",
+      "--port",
+      "${user_config.port}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -39,17 +40,23 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "rae-mpc-stdio": {
-          "command": "./rae-mpc",
-          "args": ["--transport", "stdio"],
-          "env": {}
-        },
-        "rae-mpc-sse": {
-          "command": "./rae-mpc",
-          "args": ["--transport", "sse", "--port", "8080"],
-          "env": {}
-        }
+      "rae-mpc-stdio": {
+        "command": "./rae-mpc",
+        "args": [
+          "--transport",
+          "stdio"
+        ],
+        "env": {}
+      },
+      "rae-mpc-sse": {
+        "command": "./rae-mpc",
+        "args": [
+          "--transport",
+          "sse",
+          "--port",
+          "8080"
+        ],
+        "env": {}
       }
     },
     "oauth": {

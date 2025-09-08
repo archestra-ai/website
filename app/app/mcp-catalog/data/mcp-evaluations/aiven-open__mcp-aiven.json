@@ -8,24 +8,20 @@
     "name": "Aiven-Open"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp-aiven",
-    "mcp_config": {
-      "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "--with-editable",
-        "${__dirname}",
-        "--python",
-        "3.13",
-        "mcp-aiven"
-      ],
-      "env": {
-        "AIVEN_BASE_URL": "${user_config.aiven_base_url}",
-        "AIVEN_TOKEN": "${user_config.aiven_token}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "--with-editable",
+      "${__dirname}",
+      "--python",
+      "3.13",
+      "mcp-aiven"
+    ],
+    "env": {
+      "AIVEN_BASE_URL": "${user_config.aiven_base_url}",
+      "AIVEN_TOKEN": "${user_config.aiven_token}"
     }
   },
   "tools": [],
@@ -52,49 +48,50 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-aiven": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "$REPOSITORY_DIRECTORY",
-            "run",
-            "--with-editable",
-            "$REPOSITORY_DIRECTORY",
-            "--python",
-            "3.13",
-            "mcp-aiven"
-          ],
-          "env": {
-            "AIVEN_BASE_URL": "https://api.aiven.io",
-            "AIVEN_TOKEN": "$AIVEN_TOKEN"
-          }
-        },
-        "mcp-aiven-cursor": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "$REPOSITORY_DIRECTORY",
-            "run",
-            "--with-editable",
-            "$REPOSITORY_DIRECTORY",
-            "--python",
-            "3.13",
-            "mcp-aiven"
-          ],
-          "env": {
-            "AIVEN_BASE_URL": "https://api.aiven.io",
-            "AIVEN_PROJECT_NAME": "$AIVEN_PROJECT_NAME",
-            "AIVEN_TOKEN": "$AIVEN_TOKEN"
-          }
-        },
-        "mcp-aiven-dev": {
-          "command": "mcp",
-          "args": ["dev", "mcp_aiven/mcp_server.py"],
-          "env": {
-            "AIVEN_BASE_URL": "https://api.aiven.io",
-            "AIVEN_TOKEN": "$AIVEN_TOKEN"
-          }
+      "mcp-aiven": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "$REPOSITORY_DIRECTORY",
+          "run",
+          "--with-editable",
+          "$REPOSITORY_DIRECTORY",
+          "--python",
+          "3.13",
+          "mcp-aiven"
+        ],
+        "env": {
+          "AIVEN_BASE_URL": "https://api.aiven.io",
+          "AIVEN_TOKEN": "$AIVEN_TOKEN"
+        }
+      },
+      "mcp-aiven-cursor": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "$REPOSITORY_DIRECTORY",
+          "run",
+          "--with-editable",
+          "$REPOSITORY_DIRECTORY",
+          "--python",
+          "3.13",
+          "mcp-aiven"
+        ],
+        "env": {
+          "AIVEN_BASE_URL": "https://api.aiven.io",
+          "AIVEN_PROJECT_NAME": "$AIVEN_PROJECT_NAME",
+          "AIVEN_TOKEN": "$AIVEN_TOKEN"
+        }
+      },
+      "mcp-aiven-dev": {
+        "command": "mcp",
+        "args": [
+          "dev",
+          "mcp_aiven/mcp_server.py"
+        ],
+        "env": {
+          "AIVEN_BASE_URL": "https://api.aiven.io",
+          "AIVEN_TOKEN": "$AIVEN_TOKEN"
         }
       }
     },

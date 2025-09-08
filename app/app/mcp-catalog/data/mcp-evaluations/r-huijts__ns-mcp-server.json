@@ -8,14 +8,13 @@
     "name": "r-huijts"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "ns-mcp-server"],
-      "env": {
-        "NS_API_KEY": "${user_config.ns_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "ns-mcp-server"
+    ],
+    "env": {
+      "NS_API_KEY": "${user_config.ns_api_key}"
     }
   },
   "tools": [],
@@ -35,20 +34,23 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ns-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "ns-mcp-server"],
-          "env": {
-            "NS_API_KEY": "your_api_key_here"
-          }
-        },
-        "ns-mcp-server-local": {
-          "command": "node",
-          "args": ["/path/to/ns-server/build/index.js"],
-          "env": {
-            "NS_API_KEY": "your_api_key_here"
-          }
+      "ns-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "ns-mcp-server"
+        ],
+        "env": {
+          "NS_API_KEY": "your_api_key_here"
+        }
+      },
+      "ns-mcp-server-local": {
+        "command": "node",
+        "args": [
+          "/path/to/ns-server/build/index.js"
+        ],
+        "env": {
+          "NS_API_KEY": "your_api_key_here"
         }
       }
     },

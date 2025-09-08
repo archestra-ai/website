@@ -8,16 +8,15 @@
     "name": "ihor-sokoliuk"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-searxng"],
-      "env": {
-        "SEARXNG_URL": "${user_config.searxng_url}",
-        "AUTH_USERNAME": "${user_config.auth_username}",
-        "AUTH_PASSWORD": "${user_config.auth_password}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-searxng"
+    ],
+    "env": {
+      "SEARXNG_URL": "${user_config.searxng_url}",
+      "AUTH_USERNAME": "${user_config.auth_username}",
+      "AUTH_PASSWORD": "${user_config.auth_password}"
     }
   },
   "tools": [],
@@ -51,34 +50,49 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-searxng-npx": {
-          "command": "npx",
-          "args": ["-y", "mcp-searxng"],
-          "env": {
-            "SEARXNG_URL": "YOUR_SEARXNG_INSTANCE_URL"
-          }
-        },
-        "mcp-searxng-npm-direct": {
-          "command": "mcp-searxng",
-          "args": [],
-          "env": {
-            "SEARXNG_URL": "YOUR_SEARXNG_INSTANCE_URL"
-          }
-        },
-        "isokoliuk-mcp-searxng-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "SEARXNG_URL", "isokoliuk/mcp-searxng:latest"],
-          "env": {
-            "SEARXNG_URL": "YOUR_SEARXNG_INSTANCE_URL"
-          }
-        },
-        "mcp-searxng-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "SEARXNG_URL", "mcp-searxng:latest"],
-          "env": {
-            "SEARXNG_URL": "YOUR_SEARXNG_INSTANCE_URL"
-          }
+      "mcp-searxng-npx": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-searxng"
+        ],
+        "env": {
+          "SEARXNG_URL": "YOUR_SEARXNG_INSTANCE_URL"
+        }
+      },
+      "mcp-searxng-npm-direct": {
+        "command": "mcp-searxng",
+        "args": [],
+        "env": {
+          "SEARXNG_URL": "YOUR_SEARXNG_INSTANCE_URL"
+        }
+      },
+      "isokoliuk-mcp-searxng-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "SEARXNG_URL",
+          "isokoliuk/mcp-searxng:latest"
+        ],
+        "env": {
+          "SEARXNG_URL": "YOUR_SEARXNG_INSTANCE_URL"
+        }
+      },
+      "mcp-searxng-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "SEARXNG_URL",
+          "mcp-searxng:latest"
+        ],
+        "env": {
+          "SEARXNG_URL": "YOUR_SEARXNG_INSTANCE_URL"
         }
       }
     },

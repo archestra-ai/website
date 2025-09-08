@@ -8,13 +8,11 @@
     "name": "lfnovo"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp_server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/content_core/mcp_server.py"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "${__dirname}/content_core/mcp_server.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,19 +23,29 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "content-core-ccore": {
-          "command": "uvx",
-          "args": ["--from", "content-core", "ccore"]
-        },
-        "content-core-cclean": {
-          "command": "uvx",
-          "args": ["--from", "content-core", "cclean"]
-        },
-        "content-core-csum": {
-          "command": "uvx",
-          "args": ["--from", "content-core", "csum"]
-        }
+      "content-core-ccore": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "content-core",
+          "ccore"
+        ]
+      },
+      "content-core-cclean": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "content-core",
+          "cclean"
+        ]
+      },
+      "content-core-csum": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "content-core",
+          "csum"
+        ]
       }
     },
     "oauth": {

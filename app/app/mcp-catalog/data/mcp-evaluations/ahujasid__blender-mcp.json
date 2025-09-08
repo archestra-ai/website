@@ -8,13 +8,11 @@
     "name": "ahujasid"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/blender_mcp/server.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["blender-mcp"],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "blender-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,21 @@
   "quality_score": 68,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "blender-mcp": {
-          "command": "uvx",
-          "args": ["blender-mcp"],
-          "env": {}
-        },
-        "blender-mcp-windows": {
-          "command": "cmd",
-          "args": ["/c", "uvx", "blender-mcp"],
-          "env": {}
-        }
+      "blender-mcp": {
+        "command": "uvx",
+        "args": [
+          "blender-mcp"
+        ],
+        "env": {}
+      },
+      "blender-mcp-windows": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "uvx",
+          "blender-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

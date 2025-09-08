@@ -8,21 +8,21 @@
     "name": "jwaxman19"
   },
   "server": {
-    "type": "node",
-    "entry_point": "src/index.ts",
-    "mcp_config": {
-      "command": "deno",
-      "args": ["run", "--allow-all", "${__dirname}/src/index.ts"],
-      "env": {
-        "QLIK_API_KEY": "${user_config.qlik_api_key}",
-        "QLIK_BASE_URL": "${user_config.qlik_base_url}",
-        "QLIK_APP_ID": "${user_config.qlik_app_id}",
-        "MAX_ROWS_PER_REQUEST": "${user_config.max_rows_per_request}",
-        "MAX_TOTAL_ROWS": "${user_config.max_total_rows}",
-        "REQUEST_DELAY_MS": "${user_config.request_delay_ms}",
-        "MAX_RETRIES": "${user_config.max_retries}",
-        "RETRY_DELAY_MS": "${user_config.retry_delay_ms}"
-      }
+    "command": "deno",
+    "args": [
+      "run",
+      "--allow-all",
+      "${__dirname}/src/index.ts"
+    ],
+    "env": {
+      "QLIK_API_KEY": "${user_config.qlik_api_key}",
+      "QLIK_BASE_URL": "${user_config.qlik_base_url}",
+      "QLIK_APP_ID": "${user_config.qlik_app_id}",
+      "MAX_ROWS_PER_REQUEST": "${user_config.max_rows_per_request}",
+      "MAX_TOTAL_ROWS": "${user_config.max_total_rows}",
+      "REQUEST_DELAY_MS": "${user_config.request_delay_ms}",
+      "MAX_RETRIES": "${user_config.max_retries}",
+      "RETRY_DELAY_MS": "${user_config.retry_delay_ms}"
     }
   },
   "tools": [],
@@ -96,31 +96,45 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "qlik-mcp-docker": {
-          "command": "docker",
-          "args": ["run", "--env-file", ".env", "qlik-mcp"],
-          "env": {}
-        },
-        "qlik-mcp-deno": {
-          "command": "deno",
-          "args": ["run", "--allow-all", "--env-file=.env", "src/index.ts"],
-          "env": {}
-        },
-        "qlik-mcp-node": {
-          "command": "npx",
-          "args": ["tsx", "src/index.ts"],
-          "env": {
-            "QLIK_API_KEY": "your_api_key_here",
-            "QLIK_BASE_URL": "your_tenant_url",
-            "QLIK_APP_ID": "your_default_app_id"
-          }
-        },
-        "qlik-mcp-deno-dev-task": {
-          "command": "deno",
-          "args": ["task", "dev"],
-          "env": {}
+      "qlik-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--env-file",
+          ".env",
+          "qlik-mcp"
+        ],
+        "env": {}
+      },
+      "qlik-mcp-deno": {
+        "command": "deno",
+        "args": [
+          "run",
+          "--allow-all",
+          "--env-file=.env",
+          "src/index.ts"
+        ],
+        "env": {}
+      },
+      "qlik-mcp-node": {
+        "command": "npx",
+        "args": [
+          "tsx",
+          "src/index.ts"
+        ],
+        "env": {
+          "QLIK_API_KEY": "your_api_key_here",
+          "QLIK_BASE_URL": "your_tenant_url",
+          "QLIK_APP_ID": "your_default_app_id"
         }
+      },
+      "qlik-mcp-deno-dev-task": {
+        "command": "deno",
+        "args": [
+          "task",
+          "dev"
+        ],
+        "env": {}
       }
     },
     "oauth": {

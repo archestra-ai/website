@@ -8,14 +8,13 @@
     "name": "kaiyuanxiaobing"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "atomgit-mcp-server@latest"],
-      "env": {
-        "ATOMGIT_PERSONAL_ACCESS_TOKEN": "${user_config.atomgit_personal_access_token}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "atomgit-mcp-server@latest"
+    ],
+    "env": {
+      "ATOMGIT_PERSONAL_ACCESS_TOKEN": "${user_config.atomgit_personal_access_token}"
     }
   },
   "tools": [],
@@ -35,20 +34,23 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "atomgit-mcp-server-stdio": {
-          "command": "node",
-          "args": ["/home/user/work/mcp-server-atomgit/dist/index.js"],
-          "env": {
-            "ATOMGIT_PERSONAL_ACCESS_TOKEN": "<your-atomgit-api-key-here>"
-          }
-        },
-        "atomgit-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "atomgit-mcp-server@latest"],
-          "env": {
-            "ATOMGIT_PERSONAL_ACCESS_TOKEN": "<your-atomgit-api-key-here>"
-          }
+      "atomgit-mcp-server-stdio": {
+        "command": "node",
+        "args": [
+          "/home/user/work/mcp-server-atomgit/dist/index.js"
+        ],
+        "env": {
+          "ATOMGIT_PERSONAL_ACCESS_TOKEN": "<your-atomgit-api-key-here>"
+        }
+      },
+      "atomgit-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "atomgit-mcp-server@latest"
+        ],
+        "env": {
+          "ATOMGIT_PERSONAL_ACCESS_TOKEN": "<your-atomgit-api-key-here>"
         }
       }
     },

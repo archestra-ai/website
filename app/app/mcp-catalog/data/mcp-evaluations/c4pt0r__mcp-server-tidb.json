@@ -8,18 +8,19 @@
     "name": "c4pt0r"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "src/main.py"],
-      "env": {
-        "TIDB_HOST": "${user_config.tidb_host}",
-        "TIDB_PORT": "${user_config.tidb_port}",
-        "TIDB_USERNAME": "${user_config.tidb_username}",
-        "TIDB_PASSWORD": "${user_config.tidb_password}",
-        "TIDB_DATABASE": "${user_config.tidb_database}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "src/main.py"
+    ],
+    "env": {
+      "TIDB_HOST": "${user_config.tidb_host}",
+      "TIDB_PORT": "${user_config.tidb_port}",
+      "TIDB_USERNAME": "${user_config.tidb_username}",
+      "TIDB_PASSWORD": "${user_config.tidb_password}",
+      "TIDB_DATABASE": "${user_config.tidb_database}"
     }
   },
   "tools": [],
@@ -65,17 +66,24 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-tidb": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/mcp-server-tidb", "run", "src/main.py"],
-          "env": {}
-        },
-        "mcp-server-tidb-wsl": {
-          "command": "wsl.exe",
-          "args": ["bash", "-c", "/path/to/uv --directory /path/to/mcp-server-tidb run python src/main.py"],
-          "env": {}
-        }
+      "mcp-server-tidb": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/mcp-server-tidb",
+          "run",
+          "src/main.py"
+        ],
+        "env": {}
+      },
+      "mcp-server-tidb-wsl": {
+        "command": "wsl.exe",
+        "args": [
+          "bash",
+          "-c",
+          "/path/to/uv --directory /path/to/mcp-server-tidb run python src/main.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

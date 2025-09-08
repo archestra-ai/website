@@ -8,16 +8,17 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "__main__.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "__main__.py"],
-      "env": {
-        "FREQTRADE_API_URL": "${user_config.freqtrade_api_url}",
-        "FREQTRADE_USERNAME": "${user_config.freqtrade_username}",
-        "FREQTRADE_PASSWORD": "${user_config.freqtrade_password}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "__main__.py"
+    ],
+    "env": {
+      "FREQTRADE_API_URL": "${user_config.freqtrade_api_url}",
+      "FREQTRADE_USERNAME": "${user_config.freqtrade_username}",
+      "FREQTRADE_PASSWORD": "${user_config.freqtrade_password}"
     }
   },
   "tools": [],
@@ -51,15 +52,18 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "freqtrade-mcp": {
-          "command": "uv",
-          "args": ["--directory", "/your/path/to/freqtrade-mcp", "run", "__main__.py"],
-          "env": {
-            "FREQTRADE_API_URL": "http://127.0.0.1:8080",
-            "FREQTRADE_USERNAME": "your_username",
-            "FREQTRADE_PASSWORD": "your_password"
-          }
+      "freqtrade-mcp": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/your/path/to/freqtrade-mcp",
+          "run",
+          "__main__.py"
+        ],
+        "env": {
+          "FREQTRADE_API_URL": "http://127.0.0.1:8080",
+          "FREQTRADE_USERNAME": "your_username",
+          "FREQTRADE_PASSWORD": "your_password"
         }
       }
     },

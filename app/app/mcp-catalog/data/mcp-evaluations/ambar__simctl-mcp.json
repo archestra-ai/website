@@ -8,14 +8,13 @@
     "name": "ambar"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "simctl-mcp"],
-      "env": {
-        "PORT": "${user_config.port}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "simctl-mcp"
+    ],
+    "env": {
+      "PORT": "${user_config.port}"
     }
   },
   "tools": [],
@@ -35,33 +34,47 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "simctl-mcp": {
-          "command": "npx",
-          "args": ["-y", "simctl-mcp"],
-          "env": {}
-        },
-        "simctl-mcp-stdio": {
-          "command": "npx",
-          "args": ["simctl-mcp"],
-          "env": {}
-        },
-        "simctl-mcp-http": {
-          "command": "npx",
-          "args": ["simctl-mcp", "--http"],
-          "env": {}
-        },
-        "simctl-mcp-http-port-3000": {
-          "command": "npx",
-          "args": ["simctl-mcp", "--http", "--port", "3000"],
-          "env": {}
-        },
-        "simctl-mcp-http-env-port": {
-          "command": "npx",
-          "args": ["simctl-mcp", "--http"],
-          "env": {
-            "PORT": "3000"
-          }
+      "simctl-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "simctl-mcp"
+        ],
+        "env": {}
+      },
+      "simctl-mcp-stdio": {
+        "command": "npx",
+        "args": [
+          "simctl-mcp"
+        ],
+        "env": {}
+      },
+      "simctl-mcp-http": {
+        "command": "npx",
+        "args": [
+          "simctl-mcp",
+          "--http"
+        ],
+        "env": {}
+      },
+      "simctl-mcp-http-port-3000": {
+        "command": "npx",
+        "args": [
+          "simctl-mcp",
+          "--http",
+          "--port",
+          "3000"
+        ],
+        "env": {}
+      },
+      "simctl-mcp-http-env-port": {
+        "command": "npx",
+        "args": [
+          "simctl-mcp",
+          "--http"
+        ],
+        "env": {
+          "PORT": "3000"
         }
       }
     },

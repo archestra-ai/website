@@ -8,29 +8,25 @@
     "name": "nguyenvanduocit"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "all-in-one-model-context-protocol",
-    "mcp_config": {
-      "command": "all-in-one-model-context-protocol",
-      "args": [],
-      "env": {
-        "ENABLE_TOOLS": "${user_config.enable_tools}",
-        "QDRANT_HOST": "${user_config.qdrant_host}",
-        "ATLASSIAN_HOST": "${user_config.atlassian_host}",
-        "ATLASSIAN_EMAIL": "${user_config.atlassian_email}",
-        "GITLAB_HOST": "${user_config.gitlab_host}",
-        "GITLAB_TOKEN": "${user_config.gitlab_token}",
-        "BRAVE_API_KEY": "${user_config.brave_api_key}",
-        "ATLASSIAN_TOKEN": "${user_config.atlassian_token}",
-        "GOOGLE_AI_API_KEY": "${user_config.google_ai_api_key}",
-        "PROXY_URL": "${user_config.proxy_url}",
-        "OPENAI_API_KEY": "${user_config.openai_api_key}",
-        "DEEPSEEK_API_KEY": "${user_config.deepseek_api_key}",
-        "QDRANT_PORT": "${user_config.qdrant_port}",
-        "GOOGLE_TOKEN_FILE": "${user_config.google_token_file}",
-        "GOOGLE_CREDENTIALS_FILE": "${user_config.google_credentials_file}",
-        "QDRANT_API_KEY": "${user_config.qdrant_api_key}"
-      }
+    "command": "all-in-one-model-context-protocol",
+    "args": [],
+    "env": {
+      "ENABLE_TOOLS": "${user_config.enable_tools}",
+      "QDRANT_HOST": "${user_config.qdrant_host}",
+      "ATLASSIAN_HOST": "${user_config.atlassian_host}",
+      "ATLASSIAN_EMAIL": "${user_config.atlassian_email}",
+      "GITLAB_HOST": "${user_config.gitlab_host}",
+      "GITLAB_TOKEN": "${user_config.gitlab_token}",
+      "BRAVE_API_KEY": "${user_config.brave_api_key}",
+      "ATLASSIAN_TOKEN": "${user_config.atlassian_token}",
+      "GOOGLE_AI_API_KEY": "${user_config.google_ai_api_key}",
+      "PROXY_URL": "${user_config.proxy_url}",
+      "OPENAI_API_KEY": "${user_config.openai_api_key}",
+      "DEEPSEEK_API_KEY": "${user_config.deepseek_api_key}",
+      "QDRANT_PORT": "${user_config.qdrant_port}",
+      "GOOGLE_TOKEN_FILE": "${user_config.google_token_file}",
+      "GOOGLE_CREDENTIALS_FILE": "${user_config.google_credentials_file}",
+      "QDRANT_API_KEY": "${user_config.qdrant_api_key}"
     }
   },
   "tools": [],
@@ -149,12 +145,13 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "nguyenvanduocit-all-in-one-model-context-protocol-with-config": {
-          "command": "all-in-one-model-context-protocol",
-          "args": ["-env", "/path/to/.env"],
-          "env": {}
-        }
+      "nguyenvanduocit-all-in-one-model-context-protocol-with-config": {
+        "command": "all-in-one-model-context-protocol",
+        "args": [
+          "-env",
+          "/path/to/.env"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,12 @@
     "name": "mindsdb"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "mindsdb"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "-m",
+      "mindsdb"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,9 +23,7 @@
   "category": "AI Tools",
   "quality_score": 68,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

@@ -8,22 +8,21 @@
     "name": "Tiberriver256"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@tiberriver256/mcp-server-azure-devops"],
-      "env": {
-        "AZURE_DEVOPS_ORG_URL": "${user_config.azure_devops_org_url}",
-        "AZURE_DEVOPS_AUTH_METHOD": "${user_config.azure_devops_auth_method}",
-        "AZURE_DEVOPS_PAT": "${user_config.azure_devops_pat}",
-        "AZURE_DEVOPS_DEFAULT_PROJECT": "${user_config.azure_devops_default_project}",
-        "AZURE_DEVOPS_API_VERSION": "${user_config.azure_devops_api_version}",
-        "AZURE_TENANT_ID": "${user_config.azure_tenant_id}",
-        "AZURE_CLIENT_ID": "${user_config.azure_client_id}",
-        "AZURE_CLIENT_SECRET": "${user_config.azure_client_secret}",
-        "LOG_LEVEL": "${user_config.log_level}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@tiberriver256/mcp-server-azure-devops"
+    ],
+    "env": {
+      "AZURE_DEVOPS_ORG_URL": "${user_config.azure_devops_org_url}",
+      "AZURE_DEVOPS_AUTH_METHOD": "${user_config.azure_devops_auth_method}",
+      "AZURE_DEVOPS_PAT": "${user_config.azure_devops_pat}",
+      "AZURE_DEVOPS_DEFAULT_PROJECT": "${user_config.azure_devops_default_project}",
+      "AZURE_DEVOPS_API_VERSION": "${user_config.azure_devops_api_version}",
+      "AZURE_TENANT_ID": "${user_config.azure_tenant_id}",
+      "AZURE_CLIENT_ID": "${user_config.azure_client_id}",
+      "AZURE_CLIENT_SECRET": "${user_config.azure_client_secret}",
+      "LOG_LEVEL": "${user_config.log_level}"
     }
   },
   "tools": [],
@@ -101,25 +100,29 @@
   "quality_score": 73,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "tiberriver256-mcp-server-azure-devops-azure-identity": {
-          "command": "npx",
-          "args": ["-y", "@tiberriver256/mcp-server-azure-devops"],
-          "env": {
-            "AZURE_DEVOPS_ORG_URL": "https://dev.azure.com/your-organization",
-            "AZURE_DEVOPS_AUTH_METHOD": "azure-identity",
-            "AZURE_DEVOPS_DEFAULT_PROJECT": "your-project-name"
-          }
-        },
-        "tiberriver256-mcp-server-azure-devops-pat": {
-          "command": "npx",
-          "args": ["-y", "@tiberriver256/mcp-server-azure-devops"],
-          "env": {
-            "AZURE_DEVOPS_ORG_URL": "https://dev.azure.com/your-organization",
-            "AZURE_DEVOPS_AUTH_METHOD": "pat",
-            "AZURE_DEVOPS_PAT": "<YOUR_PAT>",
-            "AZURE_DEVOPS_DEFAULT_PROJECT": "your-project-name"
-          }
+      "tiberriver256-mcp-server-azure-devops-azure-identity": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@tiberriver256/mcp-server-azure-devops"
+        ],
+        "env": {
+          "AZURE_DEVOPS_ORG_URL": "https://dev.azure.com/your-organization",
+          "AZURE_DEVOPS_AUTH_METHOD": "azure-identity",
+          "AZURE_DEVOPS_DEFAULT_PROJECT": "your-project-name"
+        }
+      },
+      "tiberriver256-mcp-server-azure-devops-pat": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@tiberriver256/mcp-server-azure-devops"
+        ],
+        "env": {
+          "AZURE_DEVOPS_ORG_URL": "https://dev.azure.com/your-organization",
+          "AZURE_DEVOPS_AUTH_METHOD": "pat",
+          "AZURE_DEVOPS_PAT": "<YOUR_PAT>",
+          "AZURE_DEVOPS_DEFAULT_PROJECT": "your-project-name"
         }
       }
     },

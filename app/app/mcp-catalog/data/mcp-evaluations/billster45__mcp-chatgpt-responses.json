@@ -8,17 +8,18 @@
     "name": "billster45"
   },
   "server": {
-    "type": "python",
-    "entry_point": "chatgpt_server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "chatgpt_server.py"],
-      "env": {
-        "OPENAI_API_KEY": "${user_config.openai_api_key}",
-        "DEFAULT_MODEL": "${user_config.default_model}",
-        "DEFAULT_TEMPERATURE": "${user_config.default_temperature}",
-        "MAX_TOKENS": "${user_config.max_tokens}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "chatgpt_server.py"
+    ],
+    "env": {
+      "OPENAI_API_KEY": "${user_config.openai_api_key}",
+      "DEFAULT_MODEL": "${user_config.default_model}",
+      "DEFAULT_TEMPERATURE": "${user_config.default_temperature}",
+      "MAX_TOKENS": "${user_config.max_tokens}"
     }
   },
   "tools": [],
@@ -62,16 +63,19 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "billster45-mcp-chatgpt-responses": {
-          "command": "uv",
-          "args": ["--directory", "\\path\\to\\mcp-chatgpt-responses", "run", "chatgpt_server.py"],
-          "env": {
-            "OPENAI_API_KEY": "your-api-key-here",
-            "DEFAULT_MODEL": "gpt-4o",
-            "DEFAULT_TEMPERATURE": "0.7",
-            "MAX_TOKENS": "1000"
-          }
+      "billster45-mcp-chatgpt-responses": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "\\path\\to\\mcp-chatgpt-responses",
+          "run",
+          "chatgpt_server.py"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "your-api-key-here",
+          "DEFAULT_MODEL": "gpt-4o",
+          "DEFAULT_TEMPERATURE": "0.7",
+          "MAX_TOKENS": "1000"
         }
       }
     },

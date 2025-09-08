@@ -8,14 +8,17 @@
     "name": "Danielpeter-99"
   },
   "server": {
-    "type": "python",
-    "entry_point": "app.py",
-    "mcp_config": {
-      "command": "fastmcp",
-      "args": ["run", "app.py", "--transport", "sse", "--port", "8010"],
-      "env": {
-        "CALCOM_API_KEY": "${user_config.calcom_api_key}"
-      }
+    "command": "fastmcp",
+    "args": [
+      "run",
+      "app.py",
+      "--transport",
+      "sse",
+      "--port",
+      "8010"
+    ],
+    "env": {
+      "CALCOM_API_KEY": "${user_config.calcom_api_key}"
     }
   },
   "tools": [],
@@ -35,12 +38,17 @@
   "quality_score": 43,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "fastmcp": {
-          "command": "fastmcp",
-          "args": ["run", "app.py", "--transport", "sse", "--port", "8010"],
-          "env": {}
-        }
+      "fastmcp": {
+        "command": "fastmcp",
+        "args": [
+          "run",
+          "app.py",
+          "--transport",
+          "sse",
+          "--port",
+          "8010"
+        ],
+        "env": {}
       }
     },
     "oauth": {

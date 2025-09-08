@@ -8,15 +8,14 @@
     "name": "MindscapeHQ"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@raygun.io/mcp-server-raygun"],
-      "env": {
-        "RAYGUN_PAT_TOKEN": "${user_config.raygun_pat_token}",
-        "SOURCEMAP_ALLOWED_DIRS": "${user_config.sourcemap_allowed_dirs}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@raygun.io/mcp-server-raygun"
+    ],
+    "env": {
+      "RAYGUN_PAT_TOKEN": "${user_config.raygun_pat_token}",
+      "SOURCEMAP_ALLOWED_DIRS": "${user_config.sourcemap_allowed_dirs}"
     }
   },
   "tools": [],
@@ -42,20 +41,21 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "raygun.io-mcp-server-raygun": {
-          "command": "npx",
-          "args": ["-y", "@raygun.io/mcp-server-raygun"],
-          "env": {
-            "RAYGUN_PAT_TOKEN": "your-pat-token-here"
-          }
-        },
-        "raygun.io-mcp-server-raygun-installed": {
-          "command": "/path/to/server-raygun/build/index.js",
-          "args": [],
-          "env": {
-            "RAYGUN_PAT_TOKEN": "your-pat-token-ken"
-          }
+      "raygun.io-mcp-server-raygun": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@raygun.io/mcp-server-raygun"
+        ],
+        "env": {
+          "RAYGUN_PAT_TOKEN": "your-pat-token-here"
+        }
+      },
+      "raygun.io-mcp-server-raygun-installed": {
+        "command": "/path/to/server-raygun/build/index.js",
+        "args": [],
+        "env": {
+          "RAYGUN_PAT_TOKEN": "your-pat-token-ken"
         }
       }
     },

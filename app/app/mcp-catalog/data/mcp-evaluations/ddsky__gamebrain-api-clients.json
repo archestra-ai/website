@@ -8,13 +8,13 @@
     "name": "ddsky"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "https://api.gamebrain.co/v1/mcp?api-key=${user_config.api_key}"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-remote",
+      "https://api.gamebrain.co/v1/mcp?api-key=${user_config.api_key}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,12 +33,14 @@
   "quality_score": 12,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-remote": {
-          "command": "npx",
-          "args": ["-y", "mcp-remote", "https://api.gamebrain.co/v1/mcp?api-key=YOUR_KEY"],
-          "env": {}
-        }
+      "mcp-remote": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-remote",
+          "https://api.gamebrain.co/v1/mcp?api-key=YOUR_KEY"
+        ],
+        "env": {}
       }
     },
     "oauth": {

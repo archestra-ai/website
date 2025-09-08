@@ -8,15 +8,15 @@
     "name": "HumanSignal"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp-label-studio",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["--from", "git+https://github.com/HumanSignal/label-studio-mcp-server", "mcp-label-studio"],
-      "env": {
-        "LABEL_STUDIO_API_KEY": "${user_config.label_studio_api_key}",
-        "LABEL_STUDIO_URL": "${user_config.label_studio_url}"
-      }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/HumanSignal/label-studio-mcp-server",
+      "mcp-label-studio"
+    ],
+    "env": {
+      "LABEL_STUDIO_API_KEY": "${user_config.label_studio_api_key}",
+      "LABEL_STUDIO_URL": "${user_config.label_studio_url}"
     }
   },
   "tools": [],
@@ -43,22 +43,29 @@
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-label-studio": {
-          "command": "uvx",
-          "args": ["--from", "git+https://github.com/HumanSignal/label-studio-mcp-server", "mcp-label-studio"],
-          "env": {
-            "LABEL_STUDIO_API_KEY": "your_actual_api_key_here",
-            "LABEL_STUDIO_URL": "http://localhost:8080"
-          }
-        },
-        "label-studio-mcp": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/your/label-studio-mcp-server", "run", "label-studio-mcp.py"],
-          "env": {
-            "LABEL_STUDIO_API_KEY": "your_actual_api_key_here",
-            "LABEL_STUDIO_URL": "http://localhost:8080"
-          }
+      "mcp-label-studio": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/HumanSignal/label-studio-mcp-server",
+          "mcp-label-studio"
+        ],
+        "env": {
+          "LABEL_STUDIO_API_KEY": "your_actual_api_key_here",
+          "LABEL_STUDIO_URL": "http://localhost:8080"
+        }
+      },
+      "label-studio-mcp": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/your/label-studio-mcp-server",
+          "run",
+          "label-studio-mcp.py"
+        ],
+        "env": {
+          "LABEL_STUDIO_API_KEY": "your_actual_api_key_here",
+          "LABEL_STUDIO_URL": "http://localhost:8080"
         }
       }
     },

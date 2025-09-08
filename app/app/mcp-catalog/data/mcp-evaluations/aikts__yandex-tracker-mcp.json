@@ -8,21 +8,19 @@
     "name": "aikts"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["yandex-tracker-mcp@latest"],
-      "env": {
-        "TRACKER_TOKEN": "${user_config.tracker_token}",
-        "TRACKER_IAM_TOKEN": "${user_config.tracker_iam_token}",
-        "TRACKER_SA_KEY_ID": "${user_config.tracker_sa_key_id}",
-        "TRACKER_SA_SERVICE_ACCOUNT_ID": "${user_config.tracker_sa_service_account_id}",
-        "TRACKER_SA_PRIVATE_KEY": "${user_config.tracker_sa_private_key}",
-        "TRACKER_CLOUD_ORG_ID": "${user_config.tracker_cloud_org_id}",
-        "TRACKER_ORG_ID": "${user_config.tracker_org_id}",
-        "TRANSPORT": "${user_config.transport}"
-      }
+    "command": "uvx",
+    "args": [
+      "yandex-tracker-mcp@latest"
+    ],
+    "env": {
+      "TRACKER_TOKEN": "${user_config.tracker_token}",
+      "TRACKER_IAM_TOKEN": "${user_config.tracker_iam_token}",
+      "TRACKER_SA_KEY_ID": "${user_config.tracker_sa_key_id}",
+      "TRACKER_SA_SERVICE_ACCOUNT_ID": "${user_config.tracker_sa_service_account_id}",
+      "TRACKER_SA_PRIVATE_KEY": "${user_config.tracker_sa_private_key}",
+      "TRACKER_CLOUD_ORG_ID": "${user_config.tracker_cloud_org_id}",
+      "TRACKER_ORG_ID": "${user_config.tracker_org_id}",
+      "TRANSPORT": "${user_config.transport}"
     }
   },
   "tools": [],
@@ -89,68 +87,70 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "yandex-tracker-mcp": {
-          "command": "uvx",
-          "args": ["yandex-tracker-mcp@latest"],
-          "env": {
-            "TRACKER_TOKEN": "your_tracker_token_here",
-            "TRACKER_CLOUD_ORG_ID": "your_cloud_org_id_here",
-            "TRACKER_ORG_ID": "your_org_id_here"
-          }
-        },
-        "yandex-tracker-mcp-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "-e",
-            "TRACKER_TOKEN",
-            "-e",
-            "TRACKER_CLOUD_ORG_ID",
-            "-e",
-            "TRACKER_ORG_ID",
-            "ghcr.io/aikts/yandex-tracker-mcp:latest"
-          ],
-          "env": {
-            "TRACKER_TOKEN": "your_tracker_token_here",
-            "TRACKER_CLOUD_ORG_ID": "your_cloud_org_id_here",
-            "TRACKER_ORG_ID": "your_org_id_here"
-          }
-        },
-        "yandex-tracker-mcp-stdio": {
-          "command": "uvx",
-          "args": ["yandex-tracker-mcp@latest"],
-          "env": {
-            "TRACKER_TOKEN": "your_tracker_token_here",
-            "TRACKER_CLOUD_ORG_ID": "your_cloud_org_id_here",
-            "TRACKER_ORG_ID": "your_org_id_here",
-            "TRANSPORT": "stdio"
-          }
-        },
-        "yandex-tracker-mcp-docker-stdio": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "-e",
-            "TRACKER_TOKEN",
-            "-e",
-            "TRACKER_CLOUD_ORG_ID",
-            "-e",
-            "TRACKER_ORG_ID",
-            "-e",
-            "TRANSPORT",
-            "ghcr.io/aikts/yandex-tracker-mcp:latest"
-          ],
-          "env": {
-            "TRACKER_TOKEN": "your_tracker_token_here",
-            "TRACKER_CLOUD_ORG_ID": "your_cloud_org_id_here",
-            "TRACKER_ORG_ID": "your_org_id_here",
-            "TRANSPORT": "stdio"
-          }
+      "yandex-tracker-mcp": {
+        "command": "uvx",
+        "args": [
+          "yandex-tracker-mcp@latest"
+        ],
+        "env": {
+          "TRACKER_TOKEN": "your_tracker_token_here",
+          "TRACKER_CLOUD_ORG_ID": "your_cloud_org_id_here",
+          "TRACKER_ORG_ID": "your_org_id_here"
+        }
+      },
+      "yandex-tracker-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "-e",
+          "TRACKER_TOKEN",
+          "-e",
+          "TRACKER_CLOUD_ORG_ID",
+          "-e",
+          "TRACKER_ORG_ID",
+          "ghcr.io/aikts/yandex-tracker-mcp:latest"
+        ],
+        "env": {
+          "TRACKER_TOKEN": "your_tracker_token_here",
+          "TRACKER_CLOUD_ORG_ID": "your_cloud_org_id_here",
+          "TRACKER_ORG_ID": "your_org_id_here"
+        }
+      },
+      "yandex-tracker-mcp-stdio": {
+        "command": "uvx",
+        "args": [
+          "yandex-tracker-mcp@latest"
+        ],
+        "env": {
+          "TRACKER_TOKEN": "your_tracker_token_here",
+          "TRACKER_CLOUD_ORG_ID": "your_cloud_org_id_here",
+          "TRACKER_ORG_ID": "your_org_id_here",
+          "TRANSPORT": "stdio"
+        }
+      },
+      "yandex-tracker-mcp-docker-stdio": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "-e",
+          "TRACKER_TOKEN",
+          "-e",
+          "TRACKER_CLOUD_ORG_ID",
+          "-e",
+          "TRACKER_ORG_ID",
+          "-e",
+          "TRANSPORT",
+          "ghcr.io/aikts/yandex-tracker-mcp:latest"
+        ],
+        "env": {
+          "TRACKER_TOKEN": "your_tracker_token_here",
+          "TRACKER_CLOUD_ORG_ID": "your_cloud_org_id_here",
+          "TRACKER_ORG_ID": "your_org_id_here",
+          "TRANSPORT": "stdio"
         }
       }
     },

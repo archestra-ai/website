@@ -8,22 +8,18 @@
     "name": "portainer"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "portainer-mcp",
-    "mcp_config": {
-      "command": "${__dirname}/portainer-mcp",
-      "args": [
-        "-server",
-        "${user_config.server_address}",
-        "-token",
-        "${user_config.api_token}",
-        "-tools",
-        "${user_config.tools_file_path}"
-      ],
-      "env": {
-        "PORTAINER_MCP_DISABLE_VERSION_CHECK": "${user_config.disable_version_check}",
-        "PORTAINER_MCP_READ_ONLY": "${user_config.read_only_mode}"
-      }
+    "command": "${__dirname}/portainer-mcp",
+    "args": [
+      "-server",
+      "${user_config.server_address}",
+      "-token",
+      "${user_config.api_token}",
+      "-tools",
+      "${user_config.tools_file_path}"
+    ],
+    "env": {
+      "PORTAINER_MCP_DISABLE_VERSION_CHECK": "${user_config.disable_version_check}",
+      "PORTAINER_MCP_READ_ONLY": "${user_config.read_only_mode}"
     }
   },
   "tools": [],
@@ -71,27 +67,51 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "portainer-mcp": {
-          "command": "/path/to/portainer-mcp",
-          "args": ["-server", "[IP]:[PORT]", "-token", "[TOKEN]", "-tools", "/tmp/tools.yaml"],
-          "env": {}
-        },
-        "portainer-mcp-disable-version-check": {
-          "command": "/path/to/portainer-mcp",
-          "args": ["-server", "[IP]:[PORT]", "-token", "[TOKEN]", "-disable-version-check"],
-          "env": {}
-        },
-        "portainer-mcp-custom-tools": {
-          "command": "/path/to/portainer-mcp",
-          "args": ["-server", "[IP]:[PORT]", "-token", "[TOKEN]", "-tools", "/path/to/custom/tools.yaml"],
-          "env": {}
-        },
-        "portainer-mcp-read-only": {
-          "command": "/path/to/portainer-mcp",
-          "args": ["-server", "[IP]:[PORT]", "-token", "[TOKEN]", "-read-only"],
-          "env": {}
-        }
+      "portainer-mcp": {
+        "command": "/path/to/portainer-mcp",
+        "args": [
+          "-server",
+          "[IP]:[PORT]",
+          "-token",
+          "[TOKEN]",
+          "-tools",
+          "/tmp/tools.yaml"
+        ],
+        "env": {}
+      },
+      "portainer-mcp-disable-version-check": {
+        "command": "/path/to/portainer-mcp",
+        "args": [
+          "-server",
+          "[IP]:[PORT]",
+          "-token",
+          "[TOKEN]",
+          "-disable-version-check"
+        ],
+        "env": {}
+      },
+      "portainer-mcp-custom-tools": {
+        "command": "/path/to/portainer-mcp",
+        "args": [
+          "-server",
+          "[IP]:[PORT]",
+          "-token",
+          "[TOKEN]",
+          "-tools",
+          "/path/to/custom/tools.yaml"
+        ],
+        "env": {}
+      },
+      "portainer-mcp-read-only": {
+        "command": "/path/to/portainer-mcp",
+        "args": [
+          "-server",
+          "[IP]:[PORT]",
+          "-token",
+          "[TOKEN]",
+          "-read-only"
+        ],
+        "env": {}
       }
     },
     "oauth": {

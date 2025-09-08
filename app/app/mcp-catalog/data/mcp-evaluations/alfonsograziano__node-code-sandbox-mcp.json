@@ -8,16 +8,15 @@
     "name": "alfonsograziano"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "node-code-sandbox-mcp"],
-      "env": {
-        "FILES_DIR": "${user_config.files_dir}",
-        "SANDBOX_MEMORY_LIMIT": "${user_config.sandbox_memory_limit}",
-        "SANDBOX_CPU_LIMIT": "${user_config.sandbox_cpu_limit}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "node-code-sandbox-mcp"
+    ],
+    "env": {
+      "FILES_DIR": "${user_config.files_dir}",
+      "SANDBOX_MEMORY_LIMIT": "${user_config.sandbox_memory_limit}",
+      "SANDBOX_CPU_LIMIT": "${user_config.sandbox_cpu_limit}"
     }
   },
   "tools": [],
@@ -51,101 +50,102 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-node-code-sandbox-docker-claude": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-v",
-            "/var/run/docker.sock:/var/run/docker.sock",
-            "-v",
-            "$HOME/Desktop/sandbox-output:/root",
-            "-e",
-            "FILES_DIR=$HOME/Desktop/sandbox-output",
-            "-e",
-            "SANDBOX_MEMORY_LIMIT=512m",
-            "-e",
-            "SANDBOX_CPU_LIMIT=0.75",
-            "mcp/node-code-sandbox"
-          ],
-          "env": {
-            "FILES_DIR": "$HOME/Desktop/sandbox-output",
-            "SANDBOX_MEMORY_LIMIT": "512m",
-            "SANDBOX_CPU_LIMIT": "0.75"
-          }
-        },
-        "node-code-sandbox-mcp": {
-          "command": "npx",
-          "args": ["-y", "node-code-sandbox-mcp"],
-          "env": {
-            "FILES_DIR": "/Users/alfonsograziano/Desktop/node-sandbox",
-            "SANDBOX_MEMORY_LIMIT": "512m",
-            "SANDBOX_CPU_LIMIT": "0.75"
-          }
-        },
-        "mcp-node-code-sandbox-docker-stdio": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-it",
-            "-v",
-            "/var/run/docker.sock:/var/run/docker.sock",
-            "-v",
-            "$HOME/Desktop/sandbox-output:/root",
-            "-e",
-            "FILES_DIR=$HOME/Desktop/sandbox-output",
-            "-e",
-            "SANDBOX_MEMORY_LIMIT=512m",
-            "-e",
-            "SANDBOX_CPU_LIMIT=0.5",
-            "mcp/node-code-sandbox",
-            "stdio"
-          ],
-          "env": {
-            "FILES_DIR": "$HOME/Desktop/sandbox-output",
-            "SANDBOX_MEMORY_LIMIT": "512m",
-            "SANDBOX_CPU_LIMIT": "0.5"
-          }
-        },
-        "alfonsograziano-node-code-sandbox-mcp-docker-stdio": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-it",
-            "-v",
-            "/var/run/docker.sock:/var/run/docker.sock",
-            "alfonsograziano/node-code-sandbox-mcp",
-            "stdio"
-          ],
-          "env": {}
-        },
-        "mcp-node-code-sandbox-docker-vscode": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-v",
-            "/var/run/docker.sock:/var/run/docker.sock",
-            "-v",
-            "$HOME/Desktop/sandbox-output:/root",
-            "-e",
-            "FILES_DIR=$HOME/Desktop/sandbox-output",
-            "-e",
-            "SANDBOX_MEMORY_LIMIT=512m",
-            "-e",
-            "SANDBOX_CPU_LIMIT=1",
-            "mcp/node-code-sandbox"
-          ],
-          "env": {
-            "FILES_DIR": "$HOME/Desktop/sandbox-output",
-            "SANDBOX_MEMORY_LIMIT": "512m",
-            "SANDBOX_CPU_LIMIT": "1"
-          }
+      "mcp-node-code-sandbox-docker-claude": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-v",
+          "/var/run/docker.sock:/var/run/docker.sock",
+          "-v",
+          "$HOME/Desktop/sandbox-output:/root",
+          "-e",
+          "FILES_DIR=$HOME/Desktop/sandbox-output",
+          "-e",
+          "SANDBOX_MEMORY_LIMIT=512m",
+          "-e",
+          "SANDBOX_CPU_LIMIT=0.75",
+          "mcp/node-code-sandbox"
+        ],
+        "env": {
+          "FILES_DIR": "$HOME/Desktop/sandbox-output",
+          "SANDBOX_MEMORY_LIMIT": "512m",
+          "SANDBOX_CPU_LIMIT": "0.75"
+        }
+      },
+      "node-code-sandbox-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "node-code-sandbox-mcp"
+        ],
+        "env": {
+          "FILES_DIR": "/Users/alfonsograziano/Desktop/node-sandbox",
+          "SANDBOX_MEMORY_LIMIT": "512m",
+          "SANDBOX_CPU_LIMIT": "0.75"
+        }
+      },
+      "mcp-node-code-sandbox-docker-stdio": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-it",
+          "-v",
+          "/var/run/docker.sock:/var/run/docker.sock",
+          "-v",
+          "$HOME/Desktop/sandbox-output:/root",
+          "-e",
+          "FILES_DIR=$HOME/Desktop/sandbox-output",
+          "-e",
+          "SANDBOX_MEMORY_LIMIT=512m",
+          "-e",
+          "SANDBOX_CPU_LIMIT=0.5",
+          "mcp/node-code-sandbox",
+          "stdio"
+        ],
+        "env": {
+          "FILES_DIR": "$HOME/Desktop/sandbox-output",
+          "SANDBOX_MEMORY_LIMIT": "512m",
+          "SANDBOX_CPU_LIMIT": "0.5"
+        }
+      },
+      "alfonsograziano-node-code-sandbox-mcp-docker-stdio": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-it",
+          "-v",
+          "/var/run/docker.sock:/var/run/docker.sock",
+          "alfonsograziano/node-code-sandbox-mcp",
+          "stdio"
+        ],
+        "env": {}
+      },
+      "mcp-node-code-sandbox-docker-vscode": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-v",
+          "/var/run/docker.sock:/var/run/docker.sock",
+          "-v",
+          "$HOME/Desktop/sandbox-output:/root",
+          "-e",
+          "FILES_DIR=$HOME/Desktop/sandbox-output",
+          "-e",
+          "SANDBOX_MEMORY_LIMIT=512m",
+          "-e",
+          "SANDBOX_CPU_LIMIT=1",
+          "mcp/node-code-sandbox"
+        ],
+        "env": {
+          "FILES_DIR": "$HOME/Desktop/sandbox-output",
+          "SANDBOX_MEMORY_LIMIT": "512m",
+          "SANDBOX_CPU_LIMIT": "1"
         }
       }
     },

@@ -8,13 +8,12 @@
     "name": "wong2"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@wong2/mcp-cli"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@wong2/mcp-cli"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,9 +23,7 @@
   "category": "AI Tools",
   "quality_score": 53,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

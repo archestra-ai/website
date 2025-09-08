@@ -8,13 +8,12 @@
     "name": "Bright-L01"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/networkx_mcp/__main__.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "networkx_mcp"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "-m",
+      "networkx_mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +24,23 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "networkx_mcp": {
-          "command": "python",
-          "args": ["-m", "networkx_mcp"],
-          "env": {}
-        },
-        "networkx-mcp-server-docker": {
-          "command": "docker",
-          "args": ["run", "-p", "8000:8000", "networkx-mcp-server"],
-          "env": {}
-        }
+      "networkx_mcp": {
+        "command": "python",
+        "args": [
+          "-m",
+          "networkx_mcp"
+        ],
+        "env": {}
+      },
+      "networkx-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8000:8000",
+          "networkx-mcp-server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

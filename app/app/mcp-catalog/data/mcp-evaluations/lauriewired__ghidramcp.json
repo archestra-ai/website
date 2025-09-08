@@ -8,23 +8,19 @@
     "name": "LaurieWired"
   },
   "server": {
-    "type": "python",
-    "entry_point": "bridge_mcp_ghidra.py",
-    "mcp_config": {
-      "command": "python",
-      "args": [
-        "${__dirname}/bridge_mcp_ghidra.py",
-        "--transport",
-        "${user_config.transport}",
-        "--mcp-host",
-        "${user_config.mcp_host}",
-        "--mcp-port",
-        "${user_config.mcp_port}",
-        "--ghidra-server",
-        "${user_config.ghidra_server}"
-      ],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "${__dirname}/bridge_mcp_ghidra.py",
+      "--transport",
+      "${user_config.transport}",
+      "--mcp-host",
+      "${user_config.mcp_host}",
+      "--mcp-port",
+      "${user_config.mcp_port}",
+      "--ghidra-server",
+      "${user_config.ghidra_server}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -66,32 +62,36 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "bridge-mcp-ghidra-claude": {
-          "command": "python",
-          "args": ["/ABSOLUTE_PATH_TO/bridge_mcp_ghidra.py", "--ghidra-server", "http://127.0.0.1:8080/"],
-          "env": {}
-        },
-        "bridge-mcp-ghidra-cline": {
-          "command": "python",
-          "args": [
-            "bridge_mcp_ghidra.py",
-            "--transport",
-            "sse",
-            "--mcp-host",
-            "127.0.0.1",
-            "--mcp-port",
-            "8081",
-            "--ghidra-server",
-            "http://127.0.0.1:8080/"
-          ],
-          "env": {}
-        },
-        "bridge-mcp-ghidra-5ire": {
-          "command": "python",
-          "args": ["/ABSOLUTE_PATH_TO/bridge_mcp_ghidra.py"],
-          "env": {}
-        }
+      "bridge-mcp-ghidra-claude": {
+        "command": "python",
+        "args": [
+          "/ABSOLUTE_PATH_TO/bridge_mcp_ghidra.py",
+          "--ghidra-server",
+          "http://127.0.0.1:8080/"
+        ],
+        "env": {}
+      },
+      "bridge-mcp-ghidra-cline": {
+        "command": "python",
+        "args": [
+          "bridge_mcp_ghidra.py",
+          "--transport",
+          "sse",
+          "--mcp-host",
+          "127.0.0.1",
+          "--mcp-port",
+          "8081",
+          "--ghidra-server",
+          "http://127.0.0.1:8080/"
+        ],
+        "env": {}
+      },
+      "bridge-mcp-ghidra-5ire": {
+        "command": "python",
+        "args": [
+          "/ABSOLUTE_PATH_TO/bridge_mcp_ghidra.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,18 +8,14 @@
     "name": "grafana"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "grafana-mcp-server",
-    "mcp_config": {
-      "command": "./grafana-mcp-server",
-      "args": [
-        "--disable-oncall",
-        "${user_config.disable_oncall}",
-        "--disable-navigation",
-        "${user_config.disable_navigation}"
-      ],
-      "env": {}
-    }
+    "command": "./grafana-mcp-server",
+    "args": [
+      "--disable-oncall",
+      "${user_config.disable_oncall}",
+      "--disable-navigation",
+      "${user_config.disable_navigation}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -42,9 +38,7 @@
   "category": "Monitoring",
   "quality_score": 64,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

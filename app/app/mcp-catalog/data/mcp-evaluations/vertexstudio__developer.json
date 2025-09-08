@@ -8,13 +8,9 @@
     "name": "VertexStudio"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "developer",
-    "mcp_config": {
-      "command": "${__dirname}/target/release/developer",
-      "args": [],
-      "env": {}
-    }
+    "command": "${__dirname}/target/release/developer",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 22,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "developer-release": {
-          "command": "/path/to/your/developer/target/release/developer",
-          "args": [],
-          "env": {}
-        },
-        "developer-debug": {
-          "command": "/path/to/your/developer/target/debug/developer",
-          "args": [],
-          "env": {}
-        }
+      "developer-release": {
+        "command": "/path/to/your/developer/target/release/developer",
+        "args": [],
+        "env": {}
+      },
+      "developer-debug": {
+        "command": "/path/to/your/developer/target/debug/developer",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

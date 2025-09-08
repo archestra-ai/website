@@ -8,13 +8,11 @@
     "name": "zinja-coder"
   },
   "server": {
-    "type": "python",
-    "entry_point": "jadx-mcp-server/jadx_mcp.py",
-    "mcp_config": {
-      "command": "${__dirname}/jadx-mcp-server/.venv/bin/python",
-      "args": ["${__dirname}/jadx-mcp-server/jadx_mcp.py"],
-      "env": {}
-    }
+    "command": "${__dirname}/jadx-mcp-server/.venv/bin/python",
+    "args": [
+      "${__dirname}/jadx-mcp-server/jadx_mcp.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,12 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "jadx-mcp-server": {
-          "command": "python",
-          "args": ["jadx_mcp.py"],
-          "env": {}
-        }
+      "jadx-mcp-server": {
+        "command": "python",
+        "args": [
+          "jadx_mcp.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

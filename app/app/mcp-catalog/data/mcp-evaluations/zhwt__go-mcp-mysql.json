@@ -8,26 +8,22 @@
     "name": "Zhwt"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "go-mcp-mysql",
-    "mcp_config": {
-      "command": "${__dirname}/server/go-mcp-mysql",
-      "args": [
-        "--host",
-        "${user_config.host}",
-        "--port",
-        "${user_config.port}",
-        "--user",
-        "${user_config.user}",
-        "--pass",
-        "${user_config.pass}",
-        "--db",
-        "${user_config.db}",
-        "${user_config.read_only ? '--read-only' : ''}",
-        "${user_config.disable_explain_check ? '--with-explain-check' : ''}"
-      ],
-      "env": {}
-    }
+    "command": "${__dirname}/server/go-mcp-mysql",
+    "args": [
+      "--host",
+      "${user_config.host}",
+      "--port",
+      "${user_config.port}",
+      "--user",
+      "${user_config.user}",
+      "--pass",
+      "${user_config.pass}",
+      "--db",
+      "${user_config.db}",
+      "${user_config.read_only ? '--read-only' : ''}",
+      "${user_config.disable_explain_check ? '--with-explain-check' : ''}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -88,65 +84,81 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "go-mcp-mysql-args": {
-          "command": "go-mcp-mysql",
-          "args": ["--host", "localhost", "--user", "root", "--pass", "password", "--port", "3306", "--db", "mydb"],
-          "env": {}
-        },
-        "go-mcp-mysql-dsn": {
-          "command": "go-mcp-mysql",
-          "args": ["--dsn", "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local"],
-          "env": {}
-        },
-        "go-mcp-mysql-args-read-only": {
-          "command": "go-mcp-mysql",
-          "args": [
-            "--host",
-            "localhost",
-            "--user",
-            "root",
-            "--pass",
-            "password",
-            "--port",
-            "3306",
-            "--db",
-            "mydb",
-            "--read-only"
-          ],
-          "env": {}
-        },
-        "go-mcp-mysql-dsn-read-only": {
-          "command": "go-mcp-mysql",
-          "args": ["--dsn", "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local", "--read-only"],
-          "env": {}
-        },
-        "go-mcp-mysql-args-with-explain-check": {
-          "command": "go-mcp-mysql",
-          "args": [
-            "--host",
-            "localhost",
-            "--user",
-            "root",
-            "--pass",
-            "password",
-            "--port",
-            "3306",
-            "--db",
-            "mydb",
-            "--with-explain-check"
-          ],
-          "env": {}
-        },
-        "go-mcp-mysql-dsn-with-explain-check": {
-          "command": "go-mcp-mysql",
-          "args": [
-            "--dsn",
-            "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local",
-            "--with-explain-check"
-          ],
-          "env": {}
-        }
+      "go-mcp-mysql-args": {
+        "command": "go-mcp-mysql",
+        "args": [
+          "--host",
+          "localhost",
+          "--user",
+          "root",
+          "--pass",
+          "password",
+          "--port",
+          "3306",
+          "--db",
+          "mydb"
+        ],
+        "env": {}
+      },
+      "go-mcp-mysql-dsn": {
+        "command": "go-mcp-mysql",
+        "args": [
+          "--dsn",
+          "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local"
+        ],
+        "env": {}
+      },
+      "go-mcp-mysql-args-read-only": {
+        "command": "go-mcp-mysql",
+        "args": [
+          "--host",
+          "localhost",
+          "--user",
+          "root",
+          "--pass",
+          "password",
+          "--port",
+          "3306",
+          "--db",
+          "mydb",
+          "--read-only"
+        ],
+        "env": {}
+      },
+      "go-mcp-mysql-dsn-read-only": {
+        "command": "go-mcp-mysql",
+        "args": [
+          "--dsn",
+          "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local",
+          "--read-only"
+        ],
+        "env": {}
+      },
+      "go-mcp-mysql-args-with-explain-check": {
+        "command": "go-mcp-mysql",
+        "args": [
+          "--host",
+          "localhost",
+          "--user",
+          "root",
+          "--pass",
+          "password",
+          "--port",
+          "3306",
+          "--db",
+          "mydb",
+          "--with-explain-check"
+        ],
+        "env": {}
+      },
+      "go-mcp-mysql-dsn-with-explain-check": {
+        "command": "go-mcp-mysql",
+        "args": [
+          "--dsn",
+          "username:password@tcp(localhost:3306)/mydb?parseTime=true&loc=Local",
+          "--with-explain-check"
+        ],
+        "env": {}
       }
     },
     "oauth": {

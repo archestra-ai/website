@@ -8,24 +8,22 @@
     "name": "bright8192"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server/server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/server/server.py"],
-      "env": {
-        "VCENTER_HOST": "${user_config.vcenter_host}",
-        "VCENTER_USER": "${user_config.vcenter_user}",
-        "VCENTER_PASSWORD": "${user_config.vcenter_password}",
-        "VCENTER_DATACENTER": "${user_config.vcenter_datacenter}",
-        "VCENTER_CLUSTER": "${user_config.vcenter_cluster}",
-        "VCENTER_DATASTORE": "${user_config.vcenter_datastore}",
-        "VCENTER_NETWORK": "${user_config.vcenter_network}",
-        "VCENTER_INSECURE": "${user_config.vcenter_insecure}",
-        "MCP_API_KEY": "${user_config.mcp_api_key}",
-        "MCP_LOG_FILE": "${user_config.mcp_log_file}",
-        "MCP_LOG_LEVEL": "${user_config.mcp_log_level}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/server/server.py"
+    ],
+    "env": {
+      "VCENTER_HOST": "${user_config.vcenter_host}",
+      "VCENTER_USER": "${user_config.vcenter_user}",
+      "VCENTER_PASSWORD": "${user_config.vcenter_password}",
+      "VCENTER_DATACENTER": "${user_config.vcenter_datacenter}",
+      "VCENTER_CLUSTER": "${user_config.vcenter_cluster}",
+      "VCENTER_DATASTORE": "${user_config.vcenter_datastore}",
+      "VCENTER_NETWORK": "${user_config.vcenter_network}",
+      "VCENTER_INSECURE": "${user_config.vcenter_insecure}",
+      "MCP_API_KEY": "${user_config.mcp_api_key}",
+      "MCP_LOG_FILE": "${user_config.mcp_log_file}",
+      "MCP_LOG_LEVEL": "${user_config.mcp_log_level}"
     }
   },
   "tools": [],
@@ -110,12 +108,14 @@
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "esxi-mcp-server": {
-          "command": "python",
-          "args": ["server.py", "-c", "config.yaml"],
-          "env": {}
-        }
+      "esxi-mcp-server": {
+        "command": "python",
+        "args": [
+          "server.py",
+          "-c",
+          "config.yaml"
+        ],
+        "env": {}
       }
     },
     "oauth": {

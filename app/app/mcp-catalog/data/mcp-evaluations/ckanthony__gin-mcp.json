@@ -8,13 +8,12 @@
     "name": "ckanthony"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "main.go",
-    "mcp_config": {
-      "command": "go",
-      "args": ["run", "main.go"],
-      "env": {}
-    }
+    "command": "go",
+    "args": [
+      "run",
+      "main.go"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,13 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "gin-mcp": {
-          "command": "go",
-          "args": ["run", "."],
-          "env": {}
-        }
+      "gin-mcp": {
+        "command": "go",
+        "args": [
+          "run",
+          "."
+        ],
+        "env": {}
       }
     },
     "oauth": {

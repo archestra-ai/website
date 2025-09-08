@@ -8,13 +8,12 @@
     "name": "r-huijts"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@r-huijts/ethics-vibe-check"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@r-huijts/ethics-vibe-check"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -54,12 +53,13 @@
   "quality_score": 43,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ethics-vibe-check": {
-          "command": "npx",
-          "args": ["-y", "@r-huijts/ethics-vibe-check"],
-          "env": {}
-        }
+      "ethics-vibe-check": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@r-huijts/ethics-vibe-check"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,17 +8,13 @@
     "name": "dave-wind"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@davewind/mysql-mcp-server",
-        "mysql://${user_config.mysql_user}:${user_config.mysql_password}@${user_config.mysql_host}:${user_config.mysql_port}/${user_config.mysql_database}"
-      ],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@davewind/mysql-mcp-server",
+      "mysql://${user_config.mysql_user}:${user_config.mysql_password}@${user_config.mysql_host}:${user_config.mysql_port}/${user_config.mysql_database}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -63,12 +59,14 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "davewind-mysql-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "@davewind/mysql-mcp-server", "mysql://user:password@localhost:port/database"],
-          "env": {}
-        }
+      "davewind-mysql-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@davewind/mysql-mcp-server",
+          "mysql://user:password@localhost:port/database"
+        ],
+        "env": {}
       }
     },
     "oauth": {

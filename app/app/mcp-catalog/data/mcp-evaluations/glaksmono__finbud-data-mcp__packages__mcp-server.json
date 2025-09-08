@@ -8,15 +8,14 @@
     "name": "glaksmono"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "finbud-data-mcp"],
-      "env": {
-        "FINBUD_DATA_API_KEY": "${user_config.finbud_data_api_key}",
-        "FINBUD_DATA_BASE_URL": "${user_config.finbud_data_base_url}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "finbud-data-mcp"
+    ],
+    "env": {
+      "FINBUD_DATA_API_KEY": "${user_config.finbud_data_api_key}",
+      "FINBUD_DATA_BASE_URL": "${user_config.finbud_data_base_url}"
     }
   },
   "tools": [],
@@ -43,21 +42,25 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "finbud-data-mcp": {
-          "command": "npx",
-          "args": ["-y", "finbud-data-mcp"],
-          "env": {
-            "FINBUD_DATA_API_KEY": "My API Key"
-          }
-        },
-        "finbud-data-mcp-with-config": {
-          "command": "npx",
-          "args": ["-y", "finbud-data-mcp"],
-          "env": {
-            "FINBUD_DATA_API_KEY": "My API Key",
-            "FINBUD_DATA_BASE_URL": "https://data.finbud.ai/api"
-          }
+      "finbud-data-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "finbud-data-mcp"
+        ],
+        "env": {
+          "FINBUD_DATA_API_KEY": "My API Key"
+        }
+      },
+      "finbud-data-mcp-with-config": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "finbud-data-mcp"
+        ],
+        "env": {
+          "FINBUD_DATA_API_KEY": "My API Key",
+          "FINBUD_DATA_BASE_URL": "https://data.finbud.ai/api"
         }
       }
     },

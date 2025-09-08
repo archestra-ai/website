@@ -8,42 +8,40 @@
     "name": "aywengo"
   },
   "server": {
-    "type": "python",
-    "entry_point": "kafka_schema_registry_unified_mcp.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/kafka_schema_registry_unified_mcp.py"],
-      "env": {
-        "SCHEMA_REGISTRY_URL": "${user_config.schema_registry_url}",
-        "SCHEMA_REGISTRY_USER": "${user_config.schema_registry_user}",
-        "SCHEMA_REGISTRY_PASSWORD": "${user_config.schema_registry_password}",
-        "VIEWONLY": "${user_config.viewonly}",
-        "SLIM_MODE": "${user_config.slim_mode}",
-        "SCHEMA_REGISTRY_NAME_1": "${user_config.schema_registry_name_1}",
-        "SCHEMA_REGISTRY_URL_1": "${user_config.schema_registry_url_1}",
-        "VIEWONLY_1": "${user_config.viewonly_1}",
-        "SCHEMA_REGISTRY_NAME_2": "${user_config.schema_registry_name_2}",
-        "SCHEMA_REGISTRY_URL_2": "${user_config.schema_registry_url_2}",
-        "VIEWONLY_2": "${user_config.viewonly_2}",
-        "SCHEMA_REGISTRY_NAME_3": "${user_config.schema_registry_name_3}",
-        "SCHEMA_REGISTRY_URL_3": "${user_config.schema_registry_url_3}",
-        "VIEWONLY_3": "${user_config.viewonly_3}",
-        "SCHEMA_REGISTRY_NAME_4": "${user_config.schema_registry_name_4}",
-        "SCHEMA_REGISTRY_URL_4": "${user_config.schema_registry_url_4}",
-        "VIEWONLY_4": "${user_config.viewonly_4}",
-        "SCHEMA_REGISTRY_NAME_5": "${user_config.schema_registry_name_5}",
-        "SCHEMA_REGISTRY_URL_5": "${user_config.schema_registry_url_5}",
-        "VIEWONLY_5": "${user_config.viewonly_5}",
-        "SCHEMA_REGISTRY_NAME_6": "${user_config.schema_registry_name_6}",
-        "SCHEMA_REGISTRY_URL_6": "${user_config.schema_registry_url_6}",
-        "VIEWONLY_6": "${user_config.viewonly_6}",
-        "SCHEMA_REGISTRY_NAME_7": "${user_config.schema_registry_name_7}",
-        "SCHEMA_REGISTRY_URL_7": "${user_config.schema_registry_url_7}",
-        "VIEWONLY_7": "${user_config.viewonly_7}",
-        "SCHEMA_REGISTRY_NAME_8": "${user_config.schema_registry_name_8}",
-        "SCHEMA_REGISTRY_URL_8": "${user_config.schema_registry_url_8}",
-        "VIEWONLY_8": "${user_config.viewonly_8}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/kafka_schema_registry_unified_mcp.py"
+    ],
+    "env": {
+      "SCHEMA_REGISTRY_URL": "${user_config.schema_registry_url}",
+      "SCHEMA_REGISTRY_USER": "${user_config.schema_registry_user}",
+      "SCHEMA_REGISTRY_PASSWORD": "${user_config.schema_registry_password}",
+      "VIEWONLY": "${user_config.viewonly}",
+      "SLIM_MODE": "${user_config.slim_mode}",
+      "SCHEMA_REGISTRY_NAME_1": "${user_config.schema_registry_name_1}",
+      "SCHEMA_REGISTRY_URL_1": "${user_config.schema_registry_url_1}",
+      "VIEWONLY_1": "${user_config.viewonly_1}",
+      "SCHEMA_REGISTRY_NAME_2": "${user_config.schema_registry_name_2}",
+      "SCHEMA_REGISTRY_URL_2": "${user_config.schema_registry_url_2}",
+      "VIEWONLY_2": "${user_config.viewonly_2}",
+      "SCHEMA_REGISTRY_NAME_3": "${user_config.schema_registry_name_3}",
+      "SCHEMA_REGISTRY_URL_3": "${user_config.schema_registry_url_3}",
+      "VIEWONLY_3": "${user_config.viewonly_3}",
+      "SCHEMA_REGISTRY_NAME_4": "${user_config.schema_registry_name_4}",
+      "SCHEMA_REGISTRY_URL_4": "${user_config.schema_registry_url_4}",
+      "VIEWONLY_4": "${user_config.viewonly_4}",
+      "SCHEMA_REGISTRY_NAME_5": "${user_config.schema_registry_name_5}",
+      "SCHEMA_REGISTRY_URL_5": "${user_config.schema_registry_url_5}",
+      "VIEWONLY_5": "${user_config.viewonly_5}",
+      "SCHEMA_REGISTRY_NAME_6": "${user_config.schema_registry_name_6}",
+      "SCHEMA_REGISTRY_URL_6": "${user_config.schema_registry_url_6}",
+      "VIEWONLY_6": "${user_config.viewonly_6}",
+      "SCHEMA_REGISTRY_NAME_7": "${user_config.schema_registry_name_7}",
+      "SCHEMA_REGISTRY_URL_7": "${user_config.schema_registry_url_7}",
+      "VIEWONLY_7": "${user_config.viewonly_7}",
+      "SCHEMA_REGISTRY_NAME_8": "${user_config.schema_registry_name_8}",
+      "SCHEMA_REGISTRY_URL_8": "${user_config.schema_registry_url_8}",
+      "VIEWONLY_8": "${user_config.viewonly_8}"
     }
   },
   "tools": [],
@@ -259,39 +257,47 @@
   "quality_score": 80,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "aywengo-kafka-schema-reg-mcp-stable-slim-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-e",
-            "SCHEMA_REGISTRY_URL=http://localhost:8081",
-            "-e",
-            "SLIM_MODE=true",
-            "aywengo/kafka-schema-reg-mcp:stable"
-          ],
-          "env": {
-            "SCHEMA_REGISTRY_URL": "http://localhost:8081",
-            "SLIM_MODE": "true"
-          }
-        },
-        "aywengo-kafka-schema-reg-mcp-stable-docker": {
-          "command": "docker",
-          "args": ["run", "-e", "SCHEMA_REGISTRY_URL=http://localhost:8081", "aywengo/kafka-schema-reg-mcp:stable"],
-          "env": {
-            "SCHEMA_REGISTRY_URL": "http://localhost:8081"
-          }
-        },
-        "kafka-schema-registry-unified-mcp-python": {
-          "command": "python",
-          "args": ["kafka_schema_registry_unified_mcp.py"],
-          "env": {}
-        },
-        "kafka-schema-reg-mcp-docker-compose": {
-          "command": "docker-compose",
-          "args": ["up", "-d"],
-          "env": {}
+      "aywengo-kafka-schema-reg-mcp-stable-slim-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-e",
+          "SCHEMA_REGISTRY_URL=http://localhost:8081",
+          "-e",
+          "SLIM_MODE=true",
+          "aywengo/kafka-schema-reg-mcp:stable"
+        ],
+        "env": {
+          "SCHEMA_REGISTRY_URL": "http://localhost:8081",
+          "SLIM_MODE": "true"
         }
+      },
+      "aywengo-kafka-schema-reg-mcp-stable-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-e",
+          "SCHEMA_REGISTRY_URL=http://localhost:8081",
+          "aywengo/kafka-schema-reg-mcp:stable"
+        ],
+        "env": {
+          "SCHEMA_REGISTRY_URL": "http://localhost:8081"
+        }
+      },
+      "kafka-schema-registry-unified-mcp-python": {
+        "command": "python",
+        "args": [
+          "kafka_schema_registry_unified_mcp.py"
+        ],
+        "env": {}
+      },
+      "kafka-schema-reg-mcp-docker-compose": {
+        "command": "docker-compose",
+        "args": [
+          "up",
+          "-d"
+        ],
+        "env": {}
       }
     },
     "oauth": {

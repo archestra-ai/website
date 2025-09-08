@@ -8,16 +8,14 @@
     "name": "cr7258"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/server.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["elasticsearch-mcp-server"],
-      "env": {
-        "ELASTICSEARCH_HOSTS": "${user_config.elasticsearch_hosts}",
-        "ELASTICSEARCH_USERNAME": "${user_config.elasticsearch_username}",
-        "ELASTICSEARCH_PASSWORD": "${user_config.elasticsearch_password}"
-      }
+    "command": "uvx",
+    "args": [
+      "elasticsearch-mcp-server"
+    ],
+    "env": {
+      "ELASTICSEARCH_HOSTS": "${user_config.elasticsearch_hosts}",
+      "ELASTICSEARCH_USERNAME": "${user_config.elasticsearch_username}",
+      "ELASTICSEARCH_PASSWORD": "${user_config.elasticsearch_password}"
     }
   },
   "tools": [],
@@ -54,148 +52,182 @@
   "quality_score": 64,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "elasticsearch-mcp-server-stdio-uvx": {
-          "command": "uvx",
-          "args": ["elasticsearch-mcp-server"],
-          "env": {
-            "ELASTICSEARCH_HOSTS": "https://localhost:9200",
-            "ELASTICSEARCH_USERNAME": "elastic",
-            "ELASTICSEARCH_PASSWORD": "test123"
-          }
-        },
-        "opensearch-mcp-server-stdio-uvx": {
-          "command": "uvx",
-          "args": ["opensearch-mcp-server"],
-          "env": {
-            "OPENSEARCH_HOSTS": "https://localhost:9200",
-            "OPENSEARCH_USERNAME": "admin",
-            "OPENSEARCH_PASSWORD": "admin"
-          }
-        },
-        "elasticsearch-mcp-server-stdio-uv-local": {
-          "command": "uv",
-          "args": ["--directory", "path/to/src/elasticsearch_mcp_server", "run", "elasticsearch-mcp-server"],
-          "env": {
-            "ELASTICSEARCH_HOSTS": "https://localhost:9200",
-            "ELASTICSEARCH_USERNAME": "elastic",
-            "ELASTICSEARCH_PASSWORD": "test123"
-          }
-        },
-        "opensearch-mcp-server-stdio-uv-local": {
-          "command": "uv",
-          "args": ["--directory", "path/to/src/elasticsearch_mcp_server", "run", "opensearch-mcp-server"],
-          "env": {
-            "OPENSEARCH_HOSTS": "https://localhost:9200",
-            "OPENSEARCH_USERNAME": "admin",
-            "OPENSEARCH_PASSWORD": "admin"
-          }
-        },
-        "elasticsearch-mcp-server-sse-uvx": {
-          "command": "uvx",
-          "args": ["elasticsearch-mcp-server", "--transport", "sse"],
-          "env": {
-            "ELASTICSEARCH_HOSTS": "https://localhost:9200",
-            "ELASTICSEARCH_USERNAME": "elastic",
-            "ELASTICSEARCH_PASSWORD": "test123"
-          }
-        },
-        "elasticsearch-mcp-server-sse-uvx-custom": {
-          "command": "uvx",
-          "args": [
-            "elasticsearch-mcp-server",
-            "--transport",
-            "sse",
-            "--host",
-            "0.0.0.0",
-            "--port",
-            "8000",
-            "--path",
-            "/sse"
-          ],
-          "env": {
-            "ELASTICSEARCH_HOSTS": "https://localhost:9200",
-            "ELASTICSEARCH_USERNAME": "elastic",
-            "ELASTICSEARCH_PASSWORD": "test123"
-          }
-        },
-        "elasticsearch-mcp-server-sse-uv": {
-          "command": "uv",
-          "args": ["run", "src/server.py", "elasticsearch-mcp-server", "--transport", "sse"],
-          "env": {}
-        },
-        "elasticsearch-mcp-server-sse-uv-custom": {
-          "command": "uv",
-          "args": [
-            "run",
-            "src/server.py",
-            "elasticsearch-mcp-server",
-            "--transport",
-            "sse",
-            "--host",
-            "0.0.0.0",
-            "--port",
-            "8000",
-            "--path",
-            "/sse"
-          ],
-          "env": {}
-        },
-        "elasticsearch-mcp-server-streamable-http-uvx": {
-          "command": "uvx",
-          "args": ["elasticsearch-mcp-server", "--transport", "streamable-http"],
-          "env": {
-            "ELASTICSEARCH_HOSTS": "https://localhost:9200",
-            "ELASTICSEARCH_USERNAME": "elastic",
-            "ELASTICSEARCH_PASSWORD": "test123"
-          }
-        },
-        "elasticsearch-mcp-server-streamable-http-uvx-custom": {
-          "command": "uvx",
-          "args": [
-            "elasticsearch-mcp-server",
-            "--transport",
-            "streamable-http",
-            "--host",
-            "0.0.0.0",
-            "--port",
-            "8000",
-            "--path",
-            "/mcp"
-          ],
-          "env": {
-            "ELASTICSEARCH_HOSTS": "https://localhost:9200",
-            "ELASTICSEARCH_USERNAME": "elastic",
-            "ELASTICSEARCH_PASSWORD": "test123"
-          }
-        },
-        "elasticsearch-mcp-server-streamable-http-uv": {
-          "command": "uv",
-          "args": ["run", "src/server.py", "elasticsearch-mcp-server", "--transport", "streamable-http"],
-          "env": {}
-        },
-        "elasticsearch-mcp-server-streamable-http-uv-custom": {
-          "command": "uv",
-          "args": [
-            "run",
-            "src/server.py",
-            "elasticsearch-mcp-server",
-            "--transport",
-            "streamable-http",
-            "--host",
-            "0.0.0.0",
-            "--port",
-            "8000",
-            "--path",
-            "/mcp"
-          ],
-          "env": {}
-        },
-        "elasticsearch-mcp-server-es7-uvx": {
-          "command": "uvx",
-          "args": ["elasticsearch-mcp-server-es7"],
-          "env": {}
+      "elasticsearch-mcp-server-stdio-uvx": {
+        "command": "uvx",
+        "args": [
+          "elasticsearch-mcp-server"
+        ],
+        "env": {
+          "ELASTICSEARCH_HOSTS": "https://localhost:9200",
+          "ELASTICSEARCH_USERNAME": "elastic",
+          "ELASTICSEARCH_PASSWORD": "test123"
         }
+      },
+      "opensearch-mcp-server-stdio-uvx": {
+        "command": "uvx",
+        "args": [
+          "opensearch-mcp-server"
+        ],
+        "env": {
+          "OPENSEARCH_HOSTS": "https://localhost:9200",
+          "OPENSEARCH_USERNAME": "admin",
+          "OPENSEARCH_PASSWORD": "admin"
+        }
+      },
+      "elasticsearch-mcp-server-stdio-uv-local": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "path/to/src/elasticsearch_mcp_server",
+          "run",
+          "elasticsearch-mcp-server"
+        ],
+        "env": {
+          "ELASTICSEARCH_HOSTS": "https://localhost:9200",
+          "ELASTICSEARCH_USERNAME": "elastic",
+          "ELASTICSEARCH_PASSWORD": "test123"
+        }
+      },
+      "opensearch-mcp-server-stdio-uv-local": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "path/to/src/elasticsearch_mcp_server",
+          "run",
+          "opensearch-mcp-server"
+        ],
+        "env": {
+          "OPENSEARCH_HOSTS": "https://localhost:9200",
+          "OPENSEARCH_USERNAME": "admin",
+          "OPENSEARCH_PASSWORD": "admin"
+        }
+      },
+      "elasticsearch-mcp-server-sse-uvx": {
+        "command": "uvx",
+        "args": [
+          "elasticsearch-mcp-server",
+          "--transport",
+          "sse"
+        ],
+        "env": {
+          "ELASTICSEARCH_HOSTS": "https://localhost:9200",
+          "ELASTICSEARCH_USERNAME": "elastic",
+          "ELASTICSEARCH_PASSWORD": "test123"
+        }
+      },
+      "elasticsearch-mcp-server-sse-uvx-custom": {
+        "command": "uvx",
+        "args": [
+          "elasticsearch-mcp-server",
+          "--transport",
+          "sse",
+          "--host",
+          "0.0.0.0",
+          "--port",
+          "8000",
+          "--path",
+          "/sse"
+        ],
+        "env": {
+          "ELASTICSEARCH_HOSTS": "https://localhost:9200",
+          "ELASTICSEARCH_USERNAME": "elastic",
+          "ELASTICSEARCH_PASSWORD": "test123"
+        }
+      },
+      "elasticsearch-mcp-server-sse-uv": {
+        "command": "uv",
+        "args": [
+          "run",
+          "src/server.py",
+          "elasticsearch-mcp-server",
+          "--transport",
+          "sse"
+        ],
+        "env": {}
+      },
+      "elasticsearch-mcp-server-sse-uv-custom": {
+        "command": "uv",
+        "args": [
+          "run",
+          "src/server.py",
+          "elasticsearch-mcp-server",
+          "--transport",
+          "sse",
+          "--host",
+          "0.0.0.0",
+          "--port",
+          "8000",
+          "--path",
+          "/sse"
+        ],
+        "env": {}
+      },
+      "elasticsearch-mcp-server-streamable-http-uvx": {
+        "command": "uvx",
+        "args": [
+          "elasticsearch-mcp-server",
+          "--transport",
+          "streamable-http"
+        ],
+        "env": {
+          "ELASTICSEARCH_HOSTS": "https://localhost:9200",
+          "ELASTICSEARCH_USERNAME": "elastic",
+          "ELASTICSEARCH_PASSWORD": "test123"
+        }
+      },
+      "elasticsearch-mcp-server-streamable-http-uvx-custom": {
+        "command": "uvx",
+        "args": [
+          "elasticsearch-mcp-server",
+          "--transport",
+          "streamable-http",
+          "--host",
+          "0.0.0.0",
+          "--port",
+          "8000",
+          "--path",
+          "/mcp"
+        ],
+        "env": {
+          "ELASTICSEARCH_HOSTS": "https://localhost:9200",
+          "ELASTICSEARCH_USERNAME": "elastic",
+          "ELASTICSEARCH_PASSWORD": "test123"
+        }
+      },
+      "elasticsearch-mcp-server-streamable-http-uv": {
+        "command": "uv",
+        "args": [
+          "run",
+          "src/server.py",
+          "elasticsearch-mcp-server",
+          "--transport",
+          "streamable-http"
+        ],
+        "env": {}
+      },
+      "elasticsearch-mcp-server-streamable-http-uv-custom": {
+        "command": "uv",
+        "args": [
+          "run",
+          "src/server.py",
+          "elasticsearch-mcp-server",
+          "--transport",
+          "streamable-http",
+          "--host",
+          "0.0.0.0",
+          "--port",
+          "8000",
+          "--path",
+          "/mcp"
+        ],
+        "env": {}
+      },
+      "elasticsearch-mcp-server-es7-uvx": {
+        "command": "uvx",
+        "args": [
+          "elasticsearch-mcp-server-es7"
+        ],
+        "env": {}
       }
     },
     "oauth": {

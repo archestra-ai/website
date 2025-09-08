@@ -8,14 +8,12 @@
     "name": "anaisbetts"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["@anaisbetts/mcp-installer"],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "${user_config.github_personal_access_token}"
-      }
+    "command": "npx",
+    "args": [
+      "@anaisbetts/mcp-installer"
+    ],
+    "env": {
+      "GITHUB_PERSONAL_ACCESS_TOKEN": "${user_config.github_personal_access_token}"
     }
   },
   "tools": [],
@@ -35,12 +33,13 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-installer": {
-          "command": "npx",
-          "args": ["-y", "@anaisbetts/mcp-installer"],
-          "env": {}
-        }
+      "mcp-installer": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@anaisbetts/mcp-installer"
+        ],
+        "env": {}
       }
     },
     "oauth": {

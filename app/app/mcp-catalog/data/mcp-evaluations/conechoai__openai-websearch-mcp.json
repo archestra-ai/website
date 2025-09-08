@@ -8,14 +8,13 @@
     "name": "ConechoAI"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "openai_websearch_mcp"],
-      "env": {
-        "OPENAI_API_KEY": "${user_config.openai_api_key}"
-      }
+    "command": "python",
+    "args": [
+      "-m",
+      "openai_websearch_mcp"
+    ],
+    "env": {
+      "OPENAI_API_KEY": "${user_config.openai_api_key}"
     }
   },
   "tools": [],
@@ -35,20 +34,23 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "openai-websearch-mcp-uvx": {
-          "command": "uvx",
-          "args": ["openai-websearch-mcp"],
-          "env": {
-            "OPENAI_API_KEY": "your-api-key-here"
-          }
-        },
-        "openai-websearch-mcp-python": {
-          "command": "python",
-          "args": ["-m", "openai_websearch_mcp"],
-          "env": {
-            "OPENAI_API_KEY": "your-api-key-here"
-          }
+      "openai-websearch-mcp-uvx": {
+        "command": "uvx",
+        "args": [
+          "openai-websearch-mcp"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "your-api-key-here"
+        }
+      },
+      "openai-websearch-mcp-python": {
+        "command": "python",
+        "args": [
+          "-m",
+          "openai_websearch_mcp"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "your-api-key-here"
         }
       }
     },

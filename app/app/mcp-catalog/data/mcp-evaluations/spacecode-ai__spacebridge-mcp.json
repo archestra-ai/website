@@ -8,20 +8,16 @@
     "name": "spacecode-ai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "spacebridge-mcp-server",
-    "mcp_config": {
-      "command": "spacebridge-mcp-server",
-      "args": [],
-      "env": {
-        "SPACEBRIDGE_API_KEY": "${user_config.spacebridge_api_key}",
-        "SPACEBRIDGE_ORG_NAME": "${user_config.spacebridge_org_name}",
-        "SPACEBRIDGE_PROJECT_NAME": "${user_config.spacebridge_project_name}",
-        "OPENAI_API_KEY": "${user_config.openai_api_key}",
-        "DUPLICATE_SIMILARITY_THRESHOLD": "${user_config.duplicate_similarity_threshold}",
-        "OPENAI_API_BASE": "${user_config.openai_api_base}",
-        "OPENAI_MODEL": "${user_config.openai_model}"
-      }
+    "command": "spacebridge-mcp-server",
+    "args": [],
+    "env": {
+      "SPACEBRIDGE_API_KEY": "${user_config.spacebridge_api_key}",
+      "SPACEBRIDGE_ORG_NAME": "${user_config.spacebridge_org_name}",
+      "SPACEBRIDGE_PROJECT_NAME": "${user_config.spacebridge_project_name}",
+      "OPENAI_API_KEY": "${user_config.openai_api_key}",
+      "DUPLICATE_SIMILARITY_THRESHOLD": "${user_config.duplicate_similarity_threshold}",
+      "OPENAI_API_BASE": "${user_config.openai_api_base}",
+      "OPENAI_MODEL": "${user_config.openai_model}"
     }
   },
   "tools": [],
@@ -82,35 +78,33 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "spacebridge-mcp-server-stdio": {
-          "command": "spacebridge-mcp-server",
-          "args": [],
-          "env": {}
-        },
-        "spacebridge-mcp-server-configured": {
-          "command": "spacebridge-mcp-server",
-          "args": [
-            "--spacebridge-api-key",
-            "YOUR_SB_KEY",
-            "--openai-api-key",
-            "YOUR_OPENAI_KEY",
-            "--org-name",
-            "YOUR_ORG",
-            "--project-name",
-            "YOUR_PROJECT"
-          ],
-          "env": {}
-        },
-        "spacebridge-mcp-server-env-configured": {
-          "command": "spacebridge-mcp-server",
-          "args": [],
-          "env": {
-            "SPACEBRIDGE_API_KEY": "YOUR_SB_KEY",
-            "OPENAI_API_KEY": "YOUR_OPENAI_KEY",
-            "SPACEBRIDGE_ORG_NAME": "YOUR_ORG",
-            "SPACEBRIDGE_PROJECT_NAME": "YOUR_PROJECT"
-          }
+      "spacebridge-mcp-server-stdio": {
+        "command": "spacebridge-mcp-server",
+        "args": [],
+        "env": {}
+      },
+      "spacebridge-mcp-server-configured": {
+        "command": "spacebridge-mcp-server",
+        "args": [
+          "--spacebridge-api-key",
+          "YOUR_SB_KEY",
+          "--openai-api-key",
+          "YOUR_OPENAI_KEY",
+          "--org-name",
+          "YOUR_ORG",
+          "--project-name",
+          "YOUR_PROJECT"
+        ],
+        "env": {}
+      },
+      "spacebridge-mcp-server-env-configured": {
+        "command": "spacebridge-mcp-server",
+        "args": [],
+        "env": {
+          "SPACEBRIDGE_API_KEY": "YOUR_SB_KEY",
+          "OPENAI_API_KEY": "YOUR_OPENAI_KEY",
+          "SPACEBRIDGE_ORG_NAME": "YOUR_ORG",
+          "SPACEBRIDGE_PROJECT_NAME": "YOUR_PROJECT"
         }
       }
     },

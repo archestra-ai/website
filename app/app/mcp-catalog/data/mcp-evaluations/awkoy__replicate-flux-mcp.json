@@ -8,14 +8,13 @@
     "name": "awkoy"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "replicate-flux-mcp"],
-      "env": {
-        "REPLICATE_API_TOKEN": "${user_config.replicate_api_token}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "replicate-flux-mcp"
+    ],
+    "env": {
+      "REPLICATE_API_TOKEN": "${user_config.replicate_api_token}"
     }
   },
   "tools": [],
@@ -35,13 +34,14 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "replicate-flux-mcp": {
-          "command": "npx",
-          "args": ["-y", "replicate-flux-mcp"],
-          "env": {
-            "REPLICATE_API_TOKEN": "YOUR_TOKEN"
-          }
+      "replicate-flux-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "replicate-flux-mcp"
+        ],
+        "env": {
+          "REPLICATE_API_TOKEN": "YOUR_TOKEN"
         }
       }
     },

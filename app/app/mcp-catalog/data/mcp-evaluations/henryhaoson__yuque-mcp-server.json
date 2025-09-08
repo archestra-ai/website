@@ -8,13 +8,11 @@
     "name": "HenryHaoson"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/server/index.js"],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/server/index.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,9 +22,7 @@
   "category": "Development",
   "quality_score": 33,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

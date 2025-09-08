@@ -8,15 +8,11 @@
     "name": "mrjoshuak"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "godoc-mcp",
-    "mcp_config": {
-      "command": "${__dirname}/server/godoc-mcp",
-      "args": [],
-      "env": {
-        "GOPATH": "${user_config.gopath}",
-        "GOMODCACHE": "${user_config.gomodcache}"
-      }
+    "command": "${__dirname}/server/godoc-mcp",
+    "args": [],
+    "env": {
+      "GOPATH": "${user_config.gopath}",
+      "GOMODCACHE": "${user_config.gomodcache}"
     }
   },
   "tools": [],
@@ -43,14 +39,12 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "godoc-mcp": {
-          "command": "/path/to/godoc-mcp",
-          "args": [],
-          "env": {
-            "GOPATH": "/path/to/go",
-            "GOMODCACHE": "/path/to/go/pkg/mod"
-          }
+      "godoc-mcp": {
+        "command": "/path/to/godoc-mcp",
+        "args": [],
+        "env": {
+          "GOPATH": "/path/to/go",
+          "GOMODCACHE": "/path/to/go/pkg/mod"
         }
       }
     },

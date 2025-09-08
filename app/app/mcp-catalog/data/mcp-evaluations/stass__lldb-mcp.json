@@ -8,13 +8,12 @@
     "name": "stass"
   },
   "server": {
-    "type": "python",
-    "entry_point": "lldb_mcp.py",
-    "mcp_config": {
-      "command": "python3",
-      "args": ["${__dirname}/lldb_mcp.py", "${user_config.debug_mode}"],
-      "env": {}
-    }
+    "command": "python3",
+    "args": [
+      "${__dirname}/lldb_mcp.py",
+      "${user_config.debug_mode}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,12 +32,12 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "lldb-mcp": {
-          "command": "python3",
-          "args": ["/path/to/lldb-mcp/lldb_mcp.py"],
-          "env": {}
-        }
+      "lldb-mcp": {
+        "command": "python3",
+        "args": [
+          "/path/to/lldb-mcp/lldb_mcp.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

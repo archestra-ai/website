@@ -8,15 +8,11 @@
     "name": "UnitVectorY-Labs"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-graphql-forge",
-    "mcp_config": {
-      "command": "./mcp-graphql-forge",
-      "args": [],
-      "env": {
-        "FORGE_CONFIG": "${user_config.forge_config}",
-        "FORGE_DEBUG": "${user_config.forge_debug}"
-      }
+    "command": "./mcp-graphql-forge",
+    "args": [],
+    "env": {
+      "FORGE_CONFIG": "${user_config.forge_config}",
+      "FORGE_DEBUG": "${user_config.forge_debug}"
     }
   },
   "tools": [],
@@ -43,30 +39,31 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-graphql-forge": {
-          "command": "mcp-graphql-forge",
-          "args": [],
-          "env": {}
-        },
-        "mcp-graphql-forge-sse": {
-          "command": "mcp-graphql-forge",
-          "args": ["--sse", "localhost:8080"],
-          "env": {}
-        },
-        "mcp-graphql-forge-configured": {
-          "command": "mcp-graphql-forge",
-          "args": [],
-          "env": {
-            "FORGE_CONFIG": "/path/to/your/config"
-          }
-        },
-        "mcp-graphql-forge-debug": {
-          "command": "mcp-graphql-forge",
-          "args": [],
-          "env": {
-            "FORGE_DEBUG": "true"
-          }
+      "mcp-graphql-forge": {
+        "command": "mcp-graphql-forge",
+        "args": [],
+        "env": {}
+      },
+      "mcp-graphql-forge-sse": {
+        "command": "mcp-graphql-forge",
+        "args": [
+          "--sse",
+          "localhost:8080"
+        ],
+        "env": {}
+      },
+      "mcp-graphql-forge-configured": {
+        "command": "mcp-graphql-forge",
+        "args": [],
+        "env": {
+          "FORGE_CONFIG": "/path/to/your/config"
+        }
+      },
+      "mcp-graphql-forge-debug": {
+        "command": "mcp-graphql-forge",
+        "args": [],
+        "env": {
+          "FORGE_DEBUG": "true"
         }
       }
     },

@@ -8,16 +8,15 @@
     "name": "akramIOT"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-ai-soc",
-    "mcp_config": {
-      "command": "mcp-ai-soc",
-      "args": ["--type", "local"],
-      "env": {
-        "OPENAI_API_KEY": "${user_config.openai_api_key}",
-        "MCP_DB_URI": "${user_config.mcp_db_uri}",
-        "MCP_SECURITY_ENABLE_THREAT_ANALYSIS": "${user_config.mcp_security_enable_threat_analysis}"
-      }
+    "command": "mcp-ai-soc",
+    "args": [
+      "--type",
+      "local"
+    ],
+    "env": {
+      "OPENAI_API_KEY": "${user_config.openai_api_key}",
+      "MCP_DB_URI": "${user_config.mcp_db_uri}",
+      "MCP_SECURITY_ENABLE_THREAT_ANALYSIS": "${user_config.mcp_security_enable_threat_analysis}"
     }
   },
   "tools": [],
@@ -52,37 +51,51 @@
   "quality_score": 59,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-ai-soc-sher-local-python": {
-          "command": "python",
-          "args": [
-            "-c",
-            "import os; os.environ[\"OPENAI_API_KEY\"] = \"your-api-key-here\"; from mcp_ai_soc_sher.local import LocalMCPServer; server = LocalMCPServer(); server.start()"
-          ],
-          "env": {
-            "OPENAI_API_KEY": "your-api-key-here"
-          }
-        },
-        "mcp-ai-soc-local-stdio-sse": {
-          "command": "mcp-ai-soc",
-          "args": ["--type", "local", "--stdio", "--sse"],
-          "env": {}
-        },
-        "mcp-ai-soc-local-stdio": {
-          "command": "mcp-ai-soc",
-          "args": ["--type", "local", "--stdio"],
-          "env": {}
-        },
-        "mcp-ai-soc-local-sse": {
-          "command": "mcp-ai-soc",
-          "args": ["--type", "local", "--sse"],
-          "env": {}
-        },
-        "mcp-ai-soc-remote": {
-          "command": "mcp-ai-soc",
-          "args": ["--type", "remote"],
-          "env": {}
+      "mcp-ai-soc-sher-local-python": {
+        "command": "python",
+        "args": [
+          "-c",
+          "import os; os.environ[\"OPENAI_API_KEY\"] = \"your-api-key-here\"; from mcp_ai_soc_sher.local import LocalMCPServer; server = LocalMCPServer(); server.start()"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "your-api-key-here"
         }
+      },
+      "mcp-ai-soc-local-stdio-sse": {
+        "command": "mcp-ai-soc",
+        "args": [
+          "--type",
+          "local",
+          "--stdio",
+          "--sse"
+        ],
+        "env": {}
+      },
+      "mcp-ai-soc-local-stdio": {
+        "command": "mcp-ai-soc",
+        "args": [
+          "--type",
+          "local",
+          "--stdio"
+        ],
+        "env": {}
+      },
+      "mcp-ai-soc-local-sse": {
+        "command": "mcp-ai-soc",
+        "args": [
+          "--type",
+          "local",
+          "--sse"
+        ],
+        "env": {}
+      },
+      "mcp-ai-soc-remote": {
+        "command": "mcp-ai-soc",
+        "args": [
+          "--type",
+          "remote"
+        ],
+        "env": {}
       }
     },
     "oauth": {

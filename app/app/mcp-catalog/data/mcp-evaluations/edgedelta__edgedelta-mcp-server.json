@@ -8,24 +8,20 @@
     "name": "edgedelta"
   },
   "server": {
-    "type": "docker",
-    "entry_point": "edgedelta-mcp-server",
-    "mcp_config": {
-      "command": "docker",
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "-e",
-        "ED_ORG_ID",
-        "-e",
-        "ED_API_TOKEN",
-        "ghcr.io/edgedelta/edgedelta-mcp-server:latest"
-      ],
-      "env": {
-        "ED_API_TOKEN": "${user_config.ed_api_token}",
-        "ED_ORG_ID": "${user_config.ed_org_id}"
-      }
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "ED_ORG_ID",
+      "-e",
+      "ED_API_TOKEN",
+      "ghcr.io/edgedelta/edgedelta-mcp-server:latest"
+    ],
+    "env": {
+      "ED_API_TOKEN": "${user_config.ed_api_token}",
+      "ED_ORG_ID": "${user_config.ed_org_id}"
     }
   },
   "tools": [],
@@ -52,21 +48,19 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "edgedelta-mcp-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e ED_ORG_ID",
-            "-e ED_API_TOKEN",
-            "ghcr.io/edgedelta/edgedelta-mcp-server:latest"
-          ],
-          "env": {
-            "ED_API_TOKEN": "<YOUR_TOKEN>",
-            "ED_ORG_ID": "<YOUR_ORG_ID>"
-          }
+      "edgedelta-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e ED_ORG_ID",
+          "-e ED_API_TOKEN",
+          "ghcr.io/edgedelta/edgedelta-mcp-server:latest"
+        ],
+        "env": {
+          "ED_API_TOKEN": "<YOUR_TOKEN>",
+          "ED_ORG_ID": "<YOUR_ORG_ID>"
         }
       }
     },

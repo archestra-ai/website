@@ -8,20 +8,18 @@
     "name": "wso2"
   },
   "server": {
-    "type": "python",
-    "entry_point": "fhir-mcp-server",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["fhir-mcp-server"],
-      "env": {
-        "FHIR_SERVER_BASE_URL": "${user_config.fhir_server_base_url}",
-        "FHIR_SERVER_CLIENT_ID": "${user_config.fhir_server_client_id}",
-        "FHIR_SERVER_CLIENT_SECRET": "${user_config.fhir_server_client_secret}",
-        "FHIR_SERVER_SCOPES": "${user_config.fhir_server_scopes}",
-        "FHIR_MCP_HOST": "${user_config.fhir_mcp_host}",
-        "FHIR_MCP_PORT": "${user_config.fhir_mcp_port}",
-        "FHIR_SERVER_ACCESS_TOKEN": "${user_config.fhir_server_access_token}"
-      }
+    "command": "uvx",
+    "args": [
+      "fhir-mcp-server"
+    ],
+    "env": {
+      "FHIR_SERVER_BASE_URL": "${user_config.fhir_server_base_url}",
+      "FHIR_SERVER_CLIENT_ID": "${user_config.fhir_server_client_id}",
+      "FHIR_SERVER_CLIENT_SECRET": "${user_config.fhir_server_client_secret}",
+      "FHIR_SERVER_SCOPES": "${user_config.fhir_server_scopes}",
+      "FHIR_MCP_HOST": "${user_config.fhir_mcp_host}",
+      "FHIR_MCP_PORT": "${user_config.fhir_mcp_port}",
+      "FHIR_SERVER_ACCESS_TOKEN": "${user_config.fhir_server_access_token}"
     }
   },
   "tools": [],
@@ -80,33 +78,53 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "fhir-mcp-server-uvx-disable-auth": {
-          "command": "uvx",
-          "args": ["fhir-mcp-server", "--disable-auth"],
-          "env": {}
-        },
-        "fhir-mcp-server-uvx": {
-          "command": "uvx",
-          "args": ["fhir-mcp-server"],
-          "env": {}
-        },
-        "fhir-mcp-server-uv-run": {
-          "command": "uv",
-          "args": ["run", "fhir-mcp-server"],
-          "env": {}
-        },
-        "fhir-mcp-server-docker": {
-          "command": "docker",
-          "args": ["run", "--env-file", ".env", "-p", "8000:8000", "fhir-mcp-server"],
-          "env": {}
-        },
-        "fhir-mcp-server-stdio": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/fhir-mcp-server", "run", "fhir-mcp-server", "--transport", "stdio"],
-          "env": {
-            "FHIR_SERVER_ACCESS_TOKEN": "Your FHIR Access Token"
-          }
+      "fhir-mcp-server-uvx-disable-auth": {
+        "command": "uvx",
+        "args": [
+          "fhir-mcp-server",
+          "--disable-auth"
+        ],
+        "env": {}
+      },
+      "fhir-mcp-server-uvx": {
+        "command": "uvx",
+        "args": [
+          "fhir-mcp-server"
+        ],
+        "env": {}
+      },
+      "fhir-mcp-server-uv-run": {
+        "command": "uv",
+        "args": [
+          "run",
+          "fhir-mcp-server"
+        ],
+        "env": {}
+      },
+      "fhir-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--env-file",
+          ".env",
+          "-p",
+          "8000:8000",
+          "fhir-mcp-server"
+        ],
+        "env": {}
+      },
+      "fhir-mcp-server-stdio": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/fhir-mcp-server",
+          "run",
+          "fhir-mcp-server",
+          "--transport",
+          "stdio"
+        ],
+        "env": {
+          "FHIR_SERVER_ACCESS_TOKEN": "Your FHIR Access Token"
         }
       }
     },

@@ -8,22 +8,18 @@
     "name": "supabase-community"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@supabase/mcp-server-supabase@latest",
-        "--project-ref",
-        "${user_config.project_ref}",
-        "--features",
-        "${user_config.features}"
-      ],
-      "env": {
-        "SUPABASE_ACCESS_TOKEN": "${user_config.supabase_access_token}",
-        "SUPABASE_READ_ONLY": "${user_config.read_only}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@supabase/mcp-server-supabase@latest",
+      "--project-ref",
+      "${user_config.project_ref}",
+      "--features",
+      "${user_config.features}"
+    ],
+    "env": {
+      "SUPABASE_ACCESS_TOKEN": "${user_config.supabase_access_token}",
+      "SUPABASE_READ_ONLY": "${user_config.read_only}"
     }
   },
   "tools": [],
@@ -63,55 +59,76 @@
   "quality_score": 66,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "supabase-mcp-server-supabase-default": {
-          "command": "npx",
-          "args": ["-y", "@supabase/mcp-server-supabase@latest", "--read-only", "--project-ref=<project-ref>"],
-          "env": {
-            "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
-          }
-        },
-        "supabase-mcp-server-supabase-windows-cmd": {
-          "command": "cmd",
-          "args": [
-            "/c",
-            "npx",
-            "-y",
-            "@supabase/mcp-server-supabase@latest",
-            "--read-only",
-            "--project-ref=<project-ref>"
-          ],
-          "env": {
-            "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
-          }
-        },
-        "supabase-mcp-server-supabase-windows-wsl": {
-          "command": "wsl",
-          "args": ["npx", "-y", "@supabase/mcp-server-supabase@latest", "--read-only", "--project-ref=<project-ref>"],
-          "env": {
-            "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
-          }
-        },
-        "supabase-mcp-server-supabase-project-scoped": {
-          "command": "npx",
-          "args": ["-y", "@supabase/mcp-server-supabase@latest", "--project-ref=<project-ref>"],
-          "env": {
-            "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
-          }
-        },
-        "supabase-mcp-server-supabase-read-only": {
-          "command": "npx",
-          "args": ["-y", "@supabase/mcp-server-supabase@latest", "--read-only"],
-          "env": {
-            "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
-          }
-        },
-        "supabase-mcp-server-supabase-features": {
-          "command": "npx",
-          "args": ["-y", "@supabase/mcp-server-supabase@latest", "--features=database,docs"],
-          "env": {
-            "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
-          }
+      "supabase-mcp-server-supabase-default": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@supabase/mcp-server-supabase@latest",
+          "--read-only",
+          "--project-ref=<project-ref>"
+        ],
+        "env": {
+          "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
+        }
+      },
+      "supabase-mcp-server-supabase-windows-cmd": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "npx",
+          "-y",
+          "@supabase/mcp-server-supabase@latest",
+          "--read-only",
+          "--project-ref=<project-ref>"
+        ],
+        "env": {
+          "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
+        }
+      },
+      "supabase-mcp-server-supabase-windows-wsl": {
+        "command": "wsl",
+        "args": [
+          "npx",
+          "-y",
+          "@supabase/mcp-server-supabase@latest",
+          "--read-only",
+          "--project-ref=<project-ref>"
+        ],
+        "env": {
+          "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
+        }
+      },
+      "supabase-mcp-server-supabase-project-scoped": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@supabase/mcp-server-supabase@latest",
+          "--project-ref=<project-ref>"
+        ],
+        "env": {
+          "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
+        }
+      },
+      "supabase-mcp-server-supabase-read-only": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@supabase/mcp-server-supabase@latest",
+          "--read-only"
+        ],
+        "env": {
+          "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
+        }
+      },
+      "supabase-mcp-server-supabase-features": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@supabase/mcp-server-supabase@latest",
+          "--features=database,docs"
+        ],
+        "env": {
+          "SUPABASE_ACCESS_TOKEN": "<personal-access-token>"
         }
       }
     },

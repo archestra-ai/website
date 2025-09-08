@@ -8,14 +8,13 @@
     "name": "executeautomation"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@executeautomation/playwright-mcp-server"],
-      "env": {
-        "OPENAI_API_KEY": "${user_config.openai_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@executeautomation/playwright-mcp-server"
+    ],
+    "env": {
+      "OPENAI_API_KEY": "${user_config.openai_api_key}"
     }
   },
   "tools": [],
@@ -35,12 +34,13 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "executeautomation-playwright-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "@executeautomation/playwright-mcp-server"],
-          "env": {}
-        }
+      "executeautomation-playwright-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@executeautomation/playwright-mcp-server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,17 +8,16 @@
     "name": "gitmotion"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "ntfy-me-mcp"],
-      "env": {
-        "NTFY_TOPIC": "${user_config.ntfy_topic}",
-        "NTFY_URL": "${user_config.ntfy_url}",
-        "NTFY_TOKEN": "${user_config.ntfy_token}",
-        "PROTECTED_TOPIC": "${user_config.protected_topic}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "ntfy-me-mcp"
+    ],
+    "env": {
+      "NTFY_TOPIC": "${user_config.ntfy_topic}",
+      "NTFY_URL": "${user_config.ntfy_url}",
+      "NTFY_TOKEN": "${user_config.ntfy_token}",
+      "PROTECTED_TOPIC": "${user_config.protected_topic}"
     }
   },
   "tools": [],
@@ -61,61 +60,67 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ntfy-me-mcp-minimal": {
-          "command": "npx",
-          "args": ["ntfy-me-mcp"],
-          "env": {
-            "NTFY_TOPIC": "your-topic-name"
-          }
-        },
-        "ntfy-me-mcp-full-direct-token": {
-          "command": "npx",
-          "args": ["ntfy-me-mcp"],
-          "env": {
-            "NTFY_TOPIC": "your-topic-name",
-            "NTFY_URL": "https://your-ntfy-server.com",
-            "NTFY_TOKEN": "your-auth-token"
-          }
-        },
-        "ntfy-me-mcp-full-vscode-input": {
-          "command": "npx",
-          "args": ["ntfy-me-mcp"],
-          "env": {
-            "NTFY_TOPIC": "your-topic-name",
-            "NTFY_URL": "https://your-ntfy-server.com",
-            "NTFY_TOKEN": "${input:ntfy_token}",
-            "PROTECTED_TOPIC": "true"
-          }
-        },
-        "gitmotion-ntfy-me-mcp-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "NTFY_TOPIC",
-            "-e",
-            "NTFY_URL",
-            "-e",
-            "NTFY_TOKEN",
-            "gitmotion/ntfy-me-mcp:latest"
-          ],
-          "env": {
-            "NTFY_TOPIC": "your-topic-name",
-            "NTFY_URL": "https://your-ntfy-server.com",
-            "NTFY_TOKEN": "your-auth-token"
-          }
-        },
-        "ntfy-me-mcp-local-build": {
-          "command": "node",
-          "args": ["dist/index.js"],
-          "env": {
-            "NTFY_TOPIC": "your-topic-name",
-            "NTFY_URL": "https://your-ntfy-server.com",
-            "NTFY_TOKEN": "your-auth-token"
-          }
+      "ntfy-me-mcp-minimal": {
+        "command": "npx",
+        "args": [
+          "ntfy-me-mcp"
+        ],
+        "env": {
+          "NTFY_TOPIC": "your-topic-name"
+        }
+      },
+      "ntfy-me-mcp-full-direct-token": {
+        "command": "npx",
+        "args": [
+          "ntfy-me-mcp"
+        ],
+        "env": {
+          "NTFY_TOPIC": "your-topic-name",
+          "NTFY_URL": "https://your-ntfy-server.com",
+          "NTFY_TOKEN": "your-auth-token"
+        }
+      },
+      "ntfy-me-mcp-full-vscode-input": {
+        "command": "npx",
+        "args": [
+          "ntfy-me-mcp"
+        ],
+        "env": {
+          "NTFY_TOPIC": "your-topic-name",
+          "NTFY_URL": "https://your-ntfy-server.com",
+          "NTFY_TOKEN": "${input:ntfy_token}",
+          "PROTECTED_TOPIC": "true"
+        }
+      },
+      "gitmotion-ntfy-me-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "NTFY_TOPIC",
+          "-e",
+          "NTFY_URL",
+          "-e",
+          "NTFY_TOKEN",
+          "gitmotion/ntfy-me-mcp:latest"
+        ],
+        "env": {
+          "NTFY_TOPIC": "your-topic-name",
+          "NTFY_URL": "https://your-ntfy-server.com",
+          "NTFY_TOKEN": "your-auth-token"
+        }
+      },
+      "ntfy-me-mcp-local-build": {
+        "command": "node",
+        "args": [
+          "dist/index.js"
+        ],
+        "env": {
+          "NTFY_TOPIC": "your-topic-name",
+          "NTFY_URL": "https://your-ntfy-server.com",
+          "NTFY_TOKEN": "your-auth-token"
         }
       }
     },

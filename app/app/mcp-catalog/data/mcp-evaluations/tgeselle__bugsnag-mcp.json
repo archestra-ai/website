@@ -8,14 +8,13 @@
     "name": "tgeselle"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "bugsnag-mcp-server"],
-      "env": {
-        "BUGSNAG_API_KEY": "${user_config.bugsnag_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "bugsnag-mcp-server"
+    ],
+    "env": {
+      "BUGSNAG_API_KEY": "${user_config.bugsnag_api_key}"
     }
   },
   "tools": [],
@@ -35,13 +34,14 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "bugsnag-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "bugsnag-mcp-server"],
-          "env": {
-            "BUGSNAG_API_KEY": "your-bugsnag-api-key"
-          }
+      "bugsnag-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "bugsnag-mcp-server"
+        ],
+        "env": {
+          "BUGSNAG_API_KEY": "your-bugsnag-api-key"
         }
       }
     },

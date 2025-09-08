@@ -8,16 +8,14 @@
     "name": "xing5"
   },
   "server": {
-    "type": "python",
-    "entry_point": "__main__.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-google-sheets@latest"],
-      "env": {
-        "SERVICE_ACCOUNT_PATH": "${user_config.service_account_path}",
-        "DRIVE_FOLDER_ID": "${user_config.drive_folder_id}",
-        "CREDENTIALS_CONFIG": "${user_config.credentials_config}"
-      }
+    "command": "uvx",
+    "args": [
+      "mcp-google-sheets@latest"
+    ],
+    "env": {
+      "SERVICE_ACCOUNT_PATH": "${user_config.service_account_path}",
+      "DRIVE_FOLDER_ID": "${user_config.drive_folder_id}",
+      "CREDENTIALS_CONFIG": "${user_config.credentials_config}"
     }
   },
   "tools": [],
@@ -51,19 +49,21 @@
   "quality_score": 73,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-google-sheets": {
-          "command": "uvx",
-          "args": ["mcp-google-sheets@latest"],
-          "env": {}
-        },
-        "mcp-google-sheets-configured": {
-          "command": "uvx",
-          "args": ["mcp-google-sheets@latest"],
-          "env": {
-            "SERVICE_ACCOUNT_PATH": "/path/to/your/service-account-key.json",
-            "DRIVE_FOLDER_ID": "YOUR_DRIVE_FOLDER_ID"
-          }
+      "mcp-google-sheets": {
+        "command": "uvx",
+        "args": [
+          "mcp-google-sheets@latest"
+        ],
+        "env": {}
+      },
+      "mcp-google-sheets-configured": {
+        "command": "uvx",
+        "args": [
+          "mcp-google-sheets@latest"
+        ],
+        "env": {
+          "SERVICE_ACCOUNT_PATH": "/path/to/your/service-account-key.json",
+          "DRIVE_FOLDER_ID": "YOUR_DRIVE_FOLDER_ID"
         }
       }
     },

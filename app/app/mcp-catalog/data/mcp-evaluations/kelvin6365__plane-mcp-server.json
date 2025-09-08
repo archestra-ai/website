@@ -8,15 +8,13 @@
     "name": "kelvin6365"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "PLANE_API_KEY": "${user_config.plane_api_key}",
-        "PLANE_WORKSPACE_SLUG": "${user_config.plane_workspace_slug}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "PLANE_API_KEY": "${user_config.plane_api_key}",
+      "PLANE_WORKSPACE_SLUG": "${user_config.plane_workspace_slug}"
     }
   },
   "tools": [],
@@ -43,14 +41,14 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kelvin6365-plane-mcp-server-configured": {
-          "command": "node",
-          "args": ["path/to/plane-mcp-server/build/index.js"],
-          "env": {
-            "PLANE_API_KEY": "your_plane_api_key_here",
-            "PLANE_WORKSPACE_SLUG": "your_workspace_slug_here"
-          }
+      "kelvin6365-plane-mcp-server-configured": {
+        "command": "node",
+        "args": [
+          "path/to/plane-mcp-server/build/index.js"
+        ],
+        "env": {
+          "PLANE_API_KEY": "your_plane_api_key_here",
+          "PLANE_WORKSPACE_SLUG": "your_workspace_slug_here"
         }
       }
     },

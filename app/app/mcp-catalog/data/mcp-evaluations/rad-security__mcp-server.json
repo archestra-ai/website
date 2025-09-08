@@ -8,16 +8,15 @@
     "name": "rad-security"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@rad-security/mcp-server"],
-      "env": {
-        "RAD_SECURITY_ACCESS_KEY_ID": "${user_config.rad_security_access_key_id}",
-        "RAD_SECURITY_SECRET_KEY": "${user_config.rad_security_secret_key}",
-        "RAD_SECURITY_ACCOUNT_ID": "${user_config.rad_security_account_id}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@rad-security/mcp-server"
+    ],
+    "env": {
+      "RAD_SECURITY_ACCESS_KEY_ID": "${user_config.rad_security_access_key_id}",
+      "RAD_SECURITY_SECRET_KEY": "${user_config.rad_security_secret_key}",
+      "RAD_SECURITY_ACCOUNT_ID": "${user_config.rad_security_account_id}"
     }
   },
   "tools": [],
@@ -51,66 +50,67 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "rad-security-mcp-server-start-script": {
-          "command": "./start.sh",
-          "args": [],
-          "env": {}
-        },
-        "rad-security-mcp-server-npx-configured": {
-          "command": "npx",
-          "args": ["-y", "@rad-security/mcp-server"],
-          "env": {
-            "RAD_SECURITY_ACCESS_KEY_ID": "<your-access-key-id>",
-            "RAD_SECURITY_SECRET_KEY": "<your-secret-key>",
-            "RAD_SECURITY_ACCOUNT_ID": "<your-account-id>"
-          }
-        },
-        "rad-security-mcp-server-docker-streamable": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-e",
-            "TRANSPORT_TYPE=streamable",
-            "-e",
-            "RAD_SECURITY_ACCESS_KEY_ID=your_access_key",
-            "-e",
-            "RAD_SECURITY_SECRET_KEY=your_secret_key",
-            "-e",
-            "RAD_SECURITY_ACCOUNT_ID=your_account_id",
-            "-p",
-            "3000:3000",
-            "rad-security/mcp-server"
-          ],
-          "env": {
-            "TRANSPORT_TYPE": "streamable",
-            "RAD_SECURITY_ACCESS_KEY_ID": "your_access_key",
-            "RAD_SECURITY_SECRET_KEY": "your_secret_key",
-            "RAD_SECURITY_ACCOUNT_ID": "your_account_id"
-          }
-        },
-        "rad-security-mcp-server-docker-sse": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-e",
-            "TRANSPORT_TYPE=sse",
-            "-e",
-            "RAD_SECURITY_ACCESS_KEY_ID=your_access_key",
-            "-e",
-            "RAD_SECURITY_SECRET_KEY=your_secret_key",
-            "-e",
-            "RAD_SECURITY_ACCOUNT_ID=your_account_id",
-            "-p",
-            "3000:3000",
-            "rad-security/mcp-server"
-          ],
-          "env": {
-            "TRANSPORT_TYPE": "sse",
-            "RAD_SECURITY_ACCESS_KEY_ID": "your_access_key",
-            "RAD_SECURITY_SECRET_KEY": "your_secret_key",
-            "RAD_SECURITY_ACCOUNT_ID": "your_account_id"
-          }
+      "rad-security-mcp-server-start-script": {
+        "command": "./start.sh",
+        "args": [],
+        "env": {}
+      },
+      "rad-security-mcp-server-npx-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@rad-security/mcp-server"
+        ],
+        "env": {
+          "RAD_SECURITY_ACCESS_KEY_ID": "<your-access-key-id>",
+          "RAD_SECURITY_SECRET_KEY": "<your-secret-key>",
+          "RAD_SECURITY_ACCOUNT_ID": "<your-account-id>"
+        }
+      },
+      "rad-security-mcp-server-docker-streamable": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-e",
+          "TRANSPORT_TYPE=streamable",
+          "-e",
+          "RAD_SECURITY_ACCESS_KEY_ID=your_access_key",
+          "-e",
+          "RAD_SECURITY_SECRET_KEY=your_secret_key",
+          "-e",
+          "RAD_SECURITY_ACCOUNT_ID=your_account_id",
+          "-p",
+          "3000:3000",
+          "rad-security/mcp-server"
+        ],
+        "env": {
+          "TRANSPORT_TYPE": "streamable",
+          "RAD_SECURITY_ACCESS_KEY_ID": "your_access_key",
+          "RAD_SECURITY_SECRET_KEY": "your_secret_key",
+          "RAD_SECURITY_ACCOUNT_ID": "your_account_id"
+        }
+      },
+      "rad-security-mcp-server-docker-sse": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-e",
+          "TRANSPORT_TYPE=sse",
+          "-e",
+          "RAD_SECURITY_ACCESS_KEY_ID=your_access_key",
+          "-e",
+          "RAD_SECURITY_SECRET_KEY=your_secret_key",
+          "-e",
+          "RAD_SECURITY_ACCOUNT_ID=your_account_id",
+          "-p",
+          "3000:3000",
+          "rad-security/mcp-server"
+        ],
+        "env": {
+          "TRANSPORT_TYPE": "sse",
+          "RAD_SECURITY_ACCESS_KEY_ID": "your_access_key",
+          "RAD_SECURITY_SECRET_KEY": "your_secret_key",
+          "RAD_SECURITY_ACCOUNT_ID": "your_account_id"
         }
       }
     },

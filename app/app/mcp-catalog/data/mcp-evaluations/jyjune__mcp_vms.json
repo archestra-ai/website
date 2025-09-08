@@ -8,20 +8,21 @@
     "name": "jyjune"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp_vms.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "mcp_vms.py"],
-      "env": {
-        "VMS_IMG_WIDTH": "${user_config.vms_img_width}",
-        "VMS_IMG_HEIGHT": "${user_config.vms_img_height}",
-        "VMS_PIXEL_FORMAT": "${user_config.vms_pixel_format}",
-        "VMS_URL": "${user_config.vms_url}",
-        "VMS_PORT": "${user_config.vms_port}",
-        "VMS_ACCESS_ID": "${user_config.vms_access_id}",
-        "VMS_ACCESS_PW": "${user_config.vms_access_pw}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "mcp_vms.py"
+    ],
+    "env": {
+      "VMS_IMG_WIDTH": "${user_config.vms_img_width}",
+      "VMS_IMG_HEIGHT": "${user_config.vms_img_height}",
+      "VMS_PIXEL_FORMAT": "${user_config.vms_pixel_format}",
+      "VMS_URL": "${user_config.vms_url}",
+      "VMS_PORT": "${user_config.vms_port}",
+      "VMS_ACCESS_ID": "${user_config.vms_access_id}",
+      "VMS_ACCESS_PW": "${user_config.vms_access_pw}"
     }
   },
   "tools": [],
@@ -85,12 +86,15 @@
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "vms": {
-          "command": "uv",
-          "args": ["--directory", "X:\\path\\to\\mcp-vms", "run", "mcp_vms.py"],
-          "env": {}
-        }
+      "vms": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "X:\\path\\to\\mcp-vms",
+          "run",
+          "mcp_vms.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

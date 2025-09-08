@@ -8,16 +8,14 @@
     "name": "djalal"
   },
   "server": {
-    "type": "node",
-    "entry_point": "dist/src/server.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/src/server.js"],
-      "env": {
-        "API_KEY": "${user_config.api_key}",
-        "PORT": "${user_config.port}",
-        "VERBOSE_MODE": "${user_config.verbose_mode}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/src/server.js"
+    ],
+    "env": {
+      "API_KEY": "${user_config.api_key}",
+      "PORT": "${user_config.port}",
+      "VERBOSE_MODE": "${user_config.verbose_mode}"
     }
   },
   "tools": [],
@@ -50,40 +48,43 @@
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "quran-mcp-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "--init",
-            "-e",
-            "API_KEY=your_api_key_if_needed",
-            "-e",
-            "VERBOSE_MODE=true",
-            "quran-mcp-server"
-          ],
-          "env": {
-            "API_KEY": "your_api_key_if_needed",
-            "VERBOSE_MODE": "true"
-          }
-        },
-        "quran-mcp-server-node": {
-          "command": "node",
-          "args": ["/path/to/quran-mcp-server/dist/src/server.js"],
-          "env": {
-            "API_KEY": "your_api_key_if_needed",
-            "VERBOSE_MODE": "true"
-          }
-        },
-        "quran-mcp-server-dev": {
-          "command": "npx",
-          "args": ["ts-node", "/path/to/quran-mcp-server/src/server.ts"],
-          "env": {
-            "API_KEY": "your_api_key_if_needed",
-            "VERBOSE_MODE": "true"
-          }
+      "quran-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "--init",
+          "-e",
+          "API_KEY=your_api_key_if_needed",
+          "-e",
+          "VERBOSE_MODE=true",
+          "quran-mcp-server"
+        ],
+        "env": {
+          "API_KEY": "your_api_key_if_needed",
+          "VERBOSE_MODE": "true"
+        }
+      },
+      "quran-mcp-server-node": {
+        "command": "node",
+        "args": [
+          "/path/to/quran-mcp-server/dist/src/server.js"
+        ],
+        "env": {
+          "API_KEY": "your_api_key_if_needed",
+          "VERBOSE_MODE": "true"
+        }
+      },
+      "quran-mcp-server-dev": {
+        "command": "npx",
+        "args": [
+          "ts-node",
+          "/path/to/quran-mcp-server/src/server.ts"
+        ],
+        "env": {
+          "API_KEY": "your_api_key_if_needed",
+          "VERBOSE_MODE": "true"
         }
       }
     },

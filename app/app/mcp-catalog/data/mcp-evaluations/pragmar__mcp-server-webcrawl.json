@@ -8,14 +8,12 @@
     "name": "pragmar"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp_server_webcrawl/cli.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/server/lib/mcp_server_webcrawl/cli.py"],
-      "env": {
-        "PYTHONPATH": "${__dirname}/server/lib"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/server/lib/mcp_server_webcrawl/cli.py"
+    ],
+    "env": {
+      "PYTHONPATH": "${__dirname}/server/lib"
     }
   },
   "tools": [],
@@ -26,9 +24,7 @@
   "category": "AI Tools",
   "quality_score": 54,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

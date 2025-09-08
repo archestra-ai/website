@@ -8,15 +8,20 @@
     "name": "HagaiHen"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "--with", "mcp[cli]", "--with", "requests", "mcp", "run", "${__dirname}/server.py"],
-      "env": {
-        "FACEBOOK_ACCESS_TOKEN": "${user_config.facebook_access_token}",
-        "FACEBOOK_PAGE_ID": "${user_config.facebook_page_id}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "mcp[cli]",
+      "--with",
+      "requests",
+      "mcp",
+      "run",
+      "${__dirname}/server.py"
+    ],
+    "env": {
+      "FACEBOOK_ACCESS_TOKEN": "${user_config.facebook_access_token}",
+      "FACEBOOK_PAGE_ID": "${user_config.facebook_page_id}"
     }
   },
   "tools": [],
@@ -43,21 +48,19 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "FacebookMCP": {
-          "command": "uv",
-          "args": [
-            "run",
-            "--with",
-            "mcp[cli]",
-            "--with",
-            "requests",
-            "mcp",
-            "run",
-            "/path/to/facebook-mcp-server/server.py"
-          ],
-          "env": {}
-        }
+      "FacebookMCP": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--with",
+          "mcp[cli]",
+          "--with",
+          "requests",
+          "mcp",
+          "run",
+          "/path/to/facebook-mcp-server/server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

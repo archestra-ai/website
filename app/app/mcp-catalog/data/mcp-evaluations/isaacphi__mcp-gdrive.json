@@ -8,16 +8,15 @@
     "name": "isaacphi"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@isaacphi/mcp-gdrive"],
-      "env": {
-        "GDRIVE_CREDS_DIR": "${user_config.gdrive_creds_dir}",
-        "CLIENT_ID": "${user_config.client_id}",
-        "CLIENT_SECRET": "${user_config.client_secret}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@isaacphi/mcp-gdrive"
+    ],
+    "env": {
+      "GDRIVE_CREDS_DIR": "${user_config.gdrive_creds_dir}",
+      "CLIENT_ID": "${user_config.client_id}",
+      "CLIENT_SECRET": "${user_config.client_secret}"
     }
   },
   "tools": [],
@@ -51,24 +50,27 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "isaacphi-mcp-gdrive": {
-          "command": "npx",
-          "args": ["-y", "@isaacphi/mcp-gdrive"],
-          "env": {
-            "CLIENT_ID": "<CLIENT_ID>",
-            "CLIENT_SECRET": "<CLIENT_SECRET>",
-            "GDRIVE_CREDS_DIR": "/path/to/config/directory"
-          }
-        },
-        "isaacphi-mcp-gdrive-local": {
-          "command": "node",
-          "args": ["./dist/index.js"],
-          "env": {
-            "CLIENT_ID": "<CLIENT_ID>",
-            "CLIENT_SECRET": "<CLIENT_SECRET>",
-            "GDRIVE_CREDS_DIR": "/path/to/config/directory"
-          }
+      "isaacphi-mcp-gdrive": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@isaacphi/mcp-gdrive"
+        ],
+        "env": {
+          "CLIENT_ID": "<CLIENT_ID>",
+          "CLIENT_SECRET": "<CLIENT_SECRET>",
+          "GDRIVE_CREDS_DIR": "/path/to/config/directory"
+        }
+      },
+      "isaacphi-mcp-gdrive-local": {
+        "command": "node",
+        "args": [
+          "./dist/index.js"
+        ],
+        "env": {
+          "CLIENT_ID": "<CLIENT_ID>",
+          "CLIENT_SECRET": "<CLIENT_SECRET>",
+          "GDRIVE_CREDS_DIR": "/path/to/config/directory"
         }
       }
     },

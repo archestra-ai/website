@@ -8,13 +8,13 @@
     "name": "rember"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@getrember/mcp", "--api-key=${user_config.rember_api_key}"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@getrember/mcp",
+      "--api-key=${user_config.rember_api_key}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,12 +33,14 @@
   "quality_score": 35,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "getrember-mcp": {
-          "command": "npx",
-          "args": ["-y", "@getrember/mcp", "--api-key=YOUR_REMBER_API_KEY"],
-          "env": {}
-        }
+      "getrember-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@getrember/mcp",
+          "--api-key=YOUR_REMBER_API_KEY"
+        ],
+        "env": {}
       }
     },
     "oauth": {

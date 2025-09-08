@@ -8,15 +8,11 @@
     "name": "StacklokLabs"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mkp",
-    "mcp_config": {
-      "command": "./mkp",
-      "args": [],
-      "env": {
-        "KUBECONFIG": "${user_config.kubeconfig}",
-        "MCP_PORT": "${user_config.mcp_port}"
-      }
+    "command": "./mkp",
+    "args": [],
+    "env": {
+      "KUBECONFIG": "${user_config.kubeconfig}",
+      "MCP_PORT": "${user_config.mcp_port}"
     }
   },
   "tools": [],
@@ -42,25 +38,29 @@
   "quality_score": 67,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mkp": {
-          "command": "task",
-          "args": ["run"],
-          "env": {}
-        },
-        "mkp-with-kubeconfig": {
-          "command": "task",
-          "args": ["run-with-kubeconfig"],
-          "env": {
-            "KUBECONFIG": "/path/to/kubeconfig"
-          }
-        },
-        "mkp-with-port": {
-          "command": "task",
-          "args": ["run"],
-          "env": {
-            "MCP_PORT": "9091"
-          }
+      "mkp": {
+        "command": "task",
+        "args": [
+          "run"
+        ],
+        "env": {}
+      },
+      "mkp-with-kubeconfig": {
+        "command": "task",
+        "args": [
+          "run-with-kubeconfig"
+        ],
+        "env": {
+          "KUBECONFIG": "/path/to/kubeconfig"
+        }
+      },
+      "mkp-with-port": {
+        "command": "task",
+        "args": [
+          "run"
+        ],
+        "env": {
+          "MCP_PORT": "9091"
         }
       }
     },

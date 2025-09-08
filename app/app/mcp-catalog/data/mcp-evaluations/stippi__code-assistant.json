@@ -8,19 +8,17 @@
     "name": "stippi"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "code-assistant",
-    "mcp_config": {
-      "command": "${__dirname}/target/release/code-assistant",
-      "args": ["server"],
-      "env": {
-        "PERPLEXITY_API_KEY": "${user_config.perplexity_api_key}",
-        "SHELL": "${user_config.shell}",
-        "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
-        "OPENAI_API_KEY": "${user_config.openai_api_key}",
-        "GOOGLE_API_KEY": "${user_config.google_api_key}",
-        "OPENROUTER_API_KEY": "${user_config.openrouter_api_key}"
-      }
+    "command": "${__dirname}/target/release/code-assistant",
+    "args": [
+      "server"
+    ],
+    "env": {
+      "PERPLEXITY_API_KEY": "${user_config.perplexity_api_key}",
+      "SHELL": "${user_config.shell}",
+      "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
+      "OPENAI_API_KEY": "${user_config.openai_api_key}",
+      "GOOGLE_API_KEY": "${user_config.google_api_key}",
+      "OPENROUTER_API_KEY": "${user_config.openrouter_api_key}"
     }
   },
   "tools": [],
@@ -76,14 +74,14 @@
   "quality_score": 72,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "code-assistant": {
-          "command": "/Users/<username>/workspace/code-assistant/target/release/code-assistant",
-          "args": ["server"],
-          "env": {
-            "PERPLEXITY_API_KEY": "pplx-...",
-            "SHELL": "/bin/zsh"
-          }
+      "code-assistant": {
+        "command": "/Users/<username>/workspace/code-assistant/target/release/code-assistant",
+        "args": [
+          "server"
+        ],
+        "env": {
+          "PERPLEXITY_API_KEY": "pplx-...",
+          "SHELL": "/bin/zsh"
         }
       }
     },

@@ -8,19 +8,18 @@
     "name": "zenml-io"
   },
   "server": {
-    "type": "python",
-    "entry_point": "zenml_server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "${__dirname}/zenml_server.py"],
-      "env": {
-        "LOGLEVEL": "INFO",
-        "NO_COLOR": "1",
-        "PYTHONUNBUFFERED": "1",
-        "PYTHONIOENCODING": "UTF-8",
-        "ZENML_STORE_URL": "${user_config.zenml_store_url}",
-        "ZENML_STORE_API_KEY": "${user_config.zenml_store_api_key}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "${__dirname}/zenml_server.py"
+    ],
+    "env": {
+      "LOGLEVEL": "INFO",
+      "NO_COLOR": "1",
+      "PYTHONUNBUFFERED": "1",
+      "PYTHONIOENCODING": "UTF-8",
+      "ZENML_STORE_URL": "${user_config.zenml_store_url}",
+      "ZENML_STORE_API_KEY": "${user_config.zenml_store_api_key}"
     }
   },
   "tools": [],
@@ -48,18 +47,19 @@
   "quality_score": 66,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "zenml": {
-          "command": "/usr/local/bin/uv",
-          "args": ["run", "path/to/server/zenml_server.py"],
-          "env": {
-            "LOGLEVEL": "INFO",
-            "NO_COLOR": "1",
-            "PYTHONUNBUFFERED": "1",
-            "PYTHONIOENCODING": "UTF-8",
-            "ZENML_STORE_URL": "https://your-zenml-server-goes-here.com",
-            "ZENML_STORE_API_KEY": "your-api-key-here"
-          }
+      "zenml": {
+        "command": "/usr/local/bin/uv",
+        "args": [
+          "run",
+          "path/to/server/zenml_server.py"
+        ],
+        "env": {
+          "LOGLEVEL": "INFO",
+          "NO_COLOR": "1",
+          "PYTHONUNBUFFERED": "1",
+          "PYTHONIOENCODING": "UTF-8",
+          "ZENML_STORE_URL": "https://your-zenml-server-goes-here.com",
+          "ZENML_STORE_API_KEY": "your-api-key-here"
         }
       }
     },

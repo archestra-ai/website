@@ -8,14 +8,12 @@
     "name": "tomekkorbak"
   },
   "server": {
-    "type": "python",
-    "entry_point": "oura-mcp-server",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["oura-mcp-server"],
-      "env": {
-        "OURA_API_TOKEN": "${user_config.oura_api_token}"
-      }
+    "command": "uvx",
+    "args": [
+      "oura-mcp-server"
+    ],
+    "env": {
+      "OURA_API_TOKEN": "${user_config.oura_api_token}"
     }
   },
   "tools": [],
@@ -35,13 +33,13 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "oura-mcp-server": {
-          "command": "uvx",
-          "args": ["oura-mcp-server"],
-          "env": {
-            "OURA_API_TOKEN": "YOUR_OURA_API_TOKEN"
-          }
+      "oura-mcp-server": {
+        "command": "uvx",
+        "args": [
+          "oura-mcp-server"
+        ],
+        "env": {
+          "OURA_API_TOKEN": "YOUR_OURA_API_TOKEN"
         }
       }
     },

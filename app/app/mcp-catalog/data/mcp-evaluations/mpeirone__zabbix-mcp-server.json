@@ -8,18 +8,16 @@
     "name": "mpeirone"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/zabbix_mcp_server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/src/zabbix_mcp_server.py"],
-      "env": {
-        "ZABBIX_URL": "${user_config.zabbix_url}",
-        "ZABBIX_TOKEN": "${user_config.zabbix_token}",
-        "ZABBIX_USER": "${user_config.zabbix_user}",
-        "ZABBIX_PASSWORD": "${user_config.zabbix_password}",
-        "READ_ONLY": "${user_config.read_only}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/src/zabbix_mcp_server.py"
+    ],
+    "env": {
+      "ZABBIX_URL": "${user_config.zabbix_url}",
+      "ZABBIX_TOKEN": "${user_config.zabbix_token}",
+      "ZABBIX_USER": "${user_config.zabbix_user}",
+      "ZABBIX_PASSWORD": "${user_config.zabbix_password}",
+      "READ_ONLY": "${user_config.read_only}"
     }
   },
   "tools": [],
@@ -65,17 +63,23 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "zabbix-mcp-server-startup": {
-          "command": "uv",
-          "args": ["run", "python", "scripts/start_server.py"],
-          "env": {}
-        },
-        "zabbix-mcp-server": {
-          "command": "uv",
-          "args": ["run", "python", "src/zabbix_mcp_server.py"],
-          "env": {}
-        }
+      "zabbix-mcp-server-startup": {
+        "command": "uv",
+        "args": [
+          "run",
+          "python",
+          "scripts/start_server.py"
+        ],
+        "env": {}
+      },
+      "zabbix-mcp-server": {
+        "command": "uv",
+        "args": [
+          "run",
+          "python",
+          "src/zabbix_mcp_server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,15 @@
     "name": "julien040"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "anyquery",
-    "mcp_config": {
-      "command": "anyquery",
-      "args": ["mcp", "--host", "${user_config.host}", "--port", "${user_config.port}"],
-      "env": {}
-    }
+    "command": "anyquery",
+    "args": [
+      "mcp",
+      "--host",
+      "${user_config.host}",
+      "--port",
+      "${user_config.port}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -40,15 +42,22 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "anyquery-mcp-stdio": {
-          "command": "anyquery",
-          "args": ["mcp", "--stdio"]
-        },
-        "anyquery-mcp": {
-          "command": "anyquery",
-          "args": ["mcp", "--host", "127.0.0.1", "--port", "8070"]
-        }
+      "anyquery-mcp-stdio": {
+        "command": "anyquery",
+        "args": [
+          "mcp",
+          "--stdio"
+        ]
+      },
+      "anyquery-mcp": {
+        "command": "anyquery",
+        "args": [
+          "mcp",
+          "--host",
+          "127.0.0.1",
+          "--port",
+          "8070"
+        ]
       }
     },
     "oauth": {

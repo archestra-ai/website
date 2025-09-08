@@ -8,18 +8,16 @@
     "name": "hmk"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["box-mcp-server"],
-      "env": {
-        "BOX_USER_ID": "${user_config.box_user_id}",
-        "BOX_JWT_BASE64": "${user_config.box_jwt_base64}",
-        "BOX_JWT_CONFIG_PATH": "${user_config.box_jwt_config_path}",
-        "BOX_JWT": "${user_config.box_jwt}",
-        "BOX_DEV_TOKEN": "${user_config.box_dev_token}"
-      }
+    "command": "npx",
+    "args": [
+      "box-mcp-server"
+    ],
+    "env": {
+      "BOX_USER_ID": "${user_config.box_user_id}",
+      "BOX_JWT_BASE64": "${user_config.box_jwt_base64}",
+      "BOX_JWT_CONFIG_PATH": "${user_config.box_jwt_config_path}",
+      "BOX_JWT": "${user_config.box_jwt}",
+      "BOX_DEV_TOKEN": "${user_config.box_dev_token}"
     }
   },
   "tools": [],
@@ -67,27 +65,31 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "box-mcp-server-jwt-configured": {
-          "command": "npx",
-          "args": ["box-mcp-server"],
-          "env": {
-            "BOX_JWT_BASE64": "YOUR_BASE64_ENCODED_JWT",
-            "BOX_USER_ID": "123456"
-          }
-        },
-        "box-mcp-server-dev-token-configured": {
-          "command": "npx",
-          "args": ["box-mcp-server"],
-          "env": {
-            "BOX_DEV_TOKEN": "YOUR_DEV_TOKEN_GOES_HERE"
-          }
-        },
-        "box-mcp-server-node-dev": {
-          "command": "node",
-          "args": ["PATH_TO_YOUR_CLONED_REPO/dist/index.js"],
-          "env": {}
+      "box-mcp-server-jwt-configured": {
+        "command": "npx",
+        "args": [
+          "box-mcp-server"
+        ],
+        "env": {
+          "BOX_JWT_BASE64": "YOUR_BASE64_ENCODED_JWT",
+          "BOX_USER_ID": "123456"
         }
+      },
+      "box-mcp-server-dev-token-configured": {
+        "command": "npx",
+        "args": [
+          "box-mcp-server"
+        ],
+        "env": {
+          "BOX_DEV_TOKEN": "YOUR_DEV_TOKEN_GOES_HERE"
+        }
+      },
+      "box-mcp-server-node-dev": {
+        "command": "node",
+        "args": [
+          "PATH_TO_YOUR_CLONED_REPO/dist/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

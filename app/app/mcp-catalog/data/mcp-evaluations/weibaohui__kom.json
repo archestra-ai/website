@@ -8,14 +8,10 @@
     "name": "weibaohui"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "kom",
-    "mcp_config": {
-      "command": "${__dirname}/kom",
-      "args": [],
-      "env": {
-        "KUBECONFIG": "${user_config.kubeconfig}"
-      }
+    "command": "${__dirname}/kom",
+    "args": [],
+    "env": {
+      "KUBECONFIG": "${user_config.kubeconfig}"
     }
   },
   "tools": [],
@@ -35,13 +31,11 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kom": {
-          "command": "path/to/kom",
-          "args": [],
-          "env": {
-            "KUBECONFIG": "/path/to/your/.kube/config"
-          }
+      "kom": {
+        "command": "path/to/kom",
+        "args": [],
+        "env": {
+          "KUBECONFIG": "/path/to/your/.kube/config"
         }
       }
     },

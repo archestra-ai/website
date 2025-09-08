@@ -8,19 +8,20 @@
     "name": "nyxn-ai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "nyxdocs/server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "python", "-m", "nyxdocs.server"],
-      "env": {
-        "COINGECKO_API_KEY": "${user_config.coingecko_api_key}",
-        "GITHUB_TOKEN": "${user_config.github_token}",
-        "DATABASE_URL": "${user_config.database_url}",
-        "LOG_LEVEL": "${user_config.log_level}",
-        "UPDATE_INTERVAL": "${user_config.update_interval}",
-        "MAX_CONCURRENT_SCRAPES": "${user_config.max_concurrent_scrapes}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "python",
+      "-m",
+      "nyxdocs.server"
+    ],
+    "env": {
+      "COINGECKO_API_KEY": "${user_config.coingecko_api_key}",
+      "GITHUB_TOKEN": "${user_config.github_token}",
+      "DATABASE_URL": "${user_config.database_url}",
+      "LOG_LEVEL": "${user_config.log_level}",
+      "UPDATE_INTERVAL": "${user_config.update_interval}",
+      "MAX_CONCURRENT_SCRAPES": "${user_config.max_concurrent_scrapes}"
     }
   },
   "tools": [],
@@ -77,12 +78,15 @@
   "quality_score": 35,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "nyxdocs": {
-          "command": "uv",
-          "args": ["run", "python", "-m", "nyxdocs.server"],
-          "env": {}
-        }
+      "nyxdocs": {
+        "command": "uv",
+        "args": [
+          "run",
+          "python",
+          "-m",
+          "nyxdocs.server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,11 @@
     "name": "PatrickPalmer"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/maya_mcp_server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/src/maya_mcp_server.py"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "${__dirname}/src/maya_mcp_server.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,12 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "MayaMCP": {
-          "command": "[FULL PATH TO MayaMCP PROJECT]/.venv/Scripts/python.exe",
-          "args": ["[FULL PATH TO MayaMCP PROJECT]/src/maya_mcp_server.py"],
-          "env": {}
-        }
+      "MayaMCP": {
+        "command": "[FULL PATH TO MayaMCP PROJECT]/.venv/Scripts/python.exe",
+        "args": [
+          "[FULL PATH TO MayaMCP PROJECT]/src/maya_mcp_server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

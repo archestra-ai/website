@@ -17,7 +17,7 @@ let concurrency = 10; // Default concurrency level
 interface AuditResult {
   serverName: string;
   fileName: string;
-  configType: 'server' | 'server_docker' | 'docker_permutation' | 'none';
+  configType: 'server' | 'server_docker' | 'none';
   dockerPermutationKey?: string;
   installSuccess: boolean;
   logsRetrieved: boolean;
@@ -107,7 +107,7 @@ async function readEvaluationFiles(): Promise<{ fileName: string; data: Archestr
 // Extract server configuration from evaluation data
 function extractServerConfig(data: ArchestraMcpServerManifest): {
   config: McpServerConfig | null;
-  type: 'server' | 'server_docker' | 'docker_permutation' | 'none';
+  type: 'server' | 'server_docker' | 'none';
   dockerPermutationKey?: string;
 } {
   // Check for server_docker first (rare case)
@@ -116,23 +116,8 @@ function extractServerConfig(data: ArchestraMcpServerManifest): {
   }
 
   // Check for standard server config
-  if (data.server?.mcp_config) {
-    return { config: data.server.mcp_config, type: 'server' };
-  }
-
-  // Check for docker permutations in archestra_config
-  if (data.archestra_config?.client_config_permutations?.mcpServers) {
-    const mcpServers = data.archestra_config.client_config_permutations.mcpServers;
-    // Look for keys ending with '-docker'
-    for (const [key, value] of Object.entries(mcpServers)) {
-      if (key.endsWith('-docker') && value) {
-        return {
-          config: value,
-          type: 'docker_permutation',
-          dockerPermutationKey: key,
-        };
-      }
-    }
+  if (data.server) {
+    return { config: data.server, type: 'server' };
   }
 
   return { config: null, type: 'none' };

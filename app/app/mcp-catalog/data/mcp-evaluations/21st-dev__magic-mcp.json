@@ -8,14 +8,13 @@
     "name": "21st-dev"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@21st-dev/magic@latest"],
-      "env": {
-        "API_KEY": "${user_config.api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@21st-dev/magic@latest"
+    ],
+    "env": {
+      "API_KEY": "${user_config.api_key}"
     }
   },
   "tools": [],
@@ -35,18 +34,23 @@
   "quality_score": 79,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "21st-dev-magic-configured": {
-          "command": "npx",
-          "args": ["-y", "@21st-dev/magic@latest", "API_KEY=\"your-api-key\""],
-          "env": {}
-        },
-        "21st-dev-magic-with-env": {
-          "command": "npx",
-          "args": ["-y", "@21st-dev/magic@latest"],
-          "env": {
-            "API_KEY": "${input:apiKey}"
-          }
+      "21st-dev-magic-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@21st-dev/magic@latest",
+          "API_KEY=\"your-api-key\""
+        ],
+        "env": {}
+      },
+      "21st-dev-magic-with-env": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@21st-dev/magic@latest"
+        ],
+        "env": {
+          "API_KEY": "${input:apiKey}"
         }
       }
     },

@@ -8,14 +8,12 @@
     "name": "mbailey"
   },
   "server": {
-    "type": "python",
-    "entry_point": "voice_mode/__main__.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["voice-mode"],
-      "env": {
-        "OPENAI_API_KEY": "${user_config.openai_api_key}"
-      }
+    "command": "uvx",
+    "args": [
+      "voice-mode"
+    ],
+    "env": {
+      "OPENAI_API_KEY": "${user_config.openai_api_key}"
     }
   },
   "tools": [],
@@ -35,23 +33,28 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "voice-mode": {
-          "command": "uvx",
-          "args": ["voice-mode"],
-          "env": {}
-        },
-        "voicemode-nix": {
-          "command": "nix",
-          "args": ["run", "github:mbailey/voicemode"],
-          "env": {}
-        },
-        "voice-mode-with-openai-key": {
-          "command": "uvx",
-          "args": ["voice-mode"],
-          "env": {
-            "OPENAI_API_KEY": "your-openai-key"
-          }
+      "voice-mode": {
+        "command": "uvx",
+        "args": [
+          "voice-mode"
+        ],
+        "env": {}
+      },
+      "voicemode-nix": {
+        "command": "nix",
+        "args": [
+          "run",
+          "github:mbailey/voicemode"
+        ],
+        "env": {}
+      },
+      "voice-mode-with-openai-key": {
+        "command": "uvx",
+        "args": [
+          "voice-mode"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "your-openai-key"
         }
       }
     },

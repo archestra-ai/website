@@ -8,21 +8,19 @@
     "name": "khan2a"
   },
   "server": {
-    "type": "python",
-    "entry_point": "telephony_server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["telephony_server.py"],
-      "env": {
-        "VONAGE_API_KEY": "${user_config.vonage_api_key}",
-        "VONAGE_API_SECRET": "${user_config.vonage_api_secret}",
-        "VONAGE_APPLICATION_ID": "${user_config.vonage_application_id}",
-        "VONAGE_PRIVATE_KEY_PATH": "${user_config.vonage_private_key_path}",
-        "VONAGE_LVN": "${user_config.vonage_lvn}",
-        "VONAGE_API_URL": "${user_config.vonage_api_url}",
-        "VONAGE_SMS_URL": "${user_config.vonage_sms_url}",
-        "CALLBACK_SERVER_URL": "${user_config.callback_server_url}"
-      }
+    "command": "python",
+    "args": [
+      "telephony_server.py"
+    ],
+    "env": {
+      "VONAGE_API_KEY": "${user_config.vonage_api_key}",
+      "VONAGE_API_SECRET": "${user_config.vonage_api_secret}",
+      "VONAGE_APPLICATION_ID": "${user_config.vonage_application_id}",
+      "VONAGE_PRIVATE_KEY_PATH": "${user_config.vonage_private_key_path}",
+      "VONAGE_LVN": "${user_config.vonage_lvn}",
+      "VONAGE_API_URL": "${user_config.vonage_api_url}",
+      "VONAGE_SMS_URL": "${user_config.vonage_sms_url}",
+      "CALLBACK_SERVER_URL": "${user_config.callback_server_url}"
     }
   },
   "tools": [],
@@ -94,18 +92,26 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "telephony-mcp-server-python": {
-          "command": "python",
-          "args": ["telephony_server.py"],
-          "env": {}
-        },
-        "telephony-mcp-server-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "--init", "-e", "DOCKER_CONTAINER=true", "telephony-mcp-server"],
-          "env": {
-            "DOCKER_CONTAINER": "true"
-          }
+      "telephony-mcp-server-python": {
+        "command": "python",
+        "args": [
+          "telephony_server.py"
+        ],
+        "env": {}
+      },
+      "telephony-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "--init",
+          "-e",
+          "DOCKER_CONTAINER=true",
+          "telephony-mcp-server"
+        ],
+        "env": {
+          "DOCKER_CONTAINER": "true"
         }
       }
     },

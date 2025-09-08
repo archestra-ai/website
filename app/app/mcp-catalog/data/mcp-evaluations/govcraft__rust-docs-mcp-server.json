@@ -8,14 +8,14 @@
     "name": "Govcraft"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "rustdocs_mcp_server",
-    "mcp_config": {
-      "command": "rustdocs_mcp_server",
-      "args": ["${user_config.crate_package_id}", "--features", "${user_config.crate_features}"],
-      "env": {
-        "OPENAI_API_KEY": "${user_config.openai_api_key}"
-      }
+    "command": "rustdocs_mcp_server",
+    "args": [
+      "${user_config.crate_package_id}",
+      "--features",
+      "${user_config.crate_features}"
+    ],
+    "env": {
+      "OPENAI_API_KEY": "${user_config.openai_api_key}"
     }
   },
   "tools": [],
@@ -47,41 +47,53 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "rustdocs-mcp-server-serde": {
-          "command": "rustdocs_mcp_server",
-          "args": ["serde@^1.0"],
-          "env": {
-            "OPENAI_API_KEY": "sk-..."
-          }
-        },
-        "rustdocs-mcp-server-reqwest": {
-          "command": "rustdocs_mcp_server",
-          "args": ["reqwest@0.12.0"],
-          "env": {
-            "OPENAI_API_KEY": "sk-..."
-          }
-        },
-        "rustdocs-mcp-server-tokio": {
-          "command": "rustdocs_mcp_server",
-          "args": ["tokio"],
-          "env": {
-            "OPENAI_API_KEY": "sk-..."
-          }
-        },
-        "rustdocs-mcp-server-async-stripe-configured": {
-          "command": "rustdocs_mcp_server",
-          "args": ["async-stripe@0.40", "-F", "runtime-tokio-hyper-rustls"],
-          "env": {
-            "OPENAI_API_KEY": "sk-..."
-          }
-        },
-        "rustdocs-mcp-server-some-crate-configured": {
-          "command": "rustdocs_mcp_server",
-          "args": ["some-crate@1.2", "--features", "feat1,feat2"],
-          "env": {
-            "OPENAI_API_KEY": "sk-..."
-          }
+      "rustdocs-mcp-server-serde": {
+        "command": "rustdocs_mcp_server",
+        "args": [
+          "serde@^1.0"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "sk-..."
+        }
+      },
+      "rustdocs-mcp-server-reqwest": {
+        "command": "rustdocs_mcp_server",
+        "args": [
+          "reqwest@0.12.0"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "sk-..."
+        }
+      },
+      "rustdocs-mcp-server-tokio": {
+        "command": "rustdocs_mcp_server",
+        "args": [
+          "tokio"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "sk-..."
+        }
+      },
+      "rustdocs-mcp-server-async-stripe-configured": {
+        "command": "rustdocs_mcp_server",
+        "args": [
+          "async-stripe@0.40",
+          "-F",
+          "runtime-tokio-hyper-rustls"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "sk-..."
+        }
+      },
+      "rustdocs-mcp-server-some-crate-configured": {
+        "command": "rustdocs_mcp_server",
+        "args": [
+          "some-crate@1.2",
+          "--features",
+          "feat1,feat2"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "sk-..."
         }
       }
     },

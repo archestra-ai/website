@@ -8,33 +8,33 @@
     "name": "gwbischof"
   },
   "server": {
-    "type": "python",
-    "entry_point": "outsource-mcp",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["--from", "git+https://github.com/gwbischof/outsource-mcp.git", "outsource-mcp"],
-      "env": {
-        "OPENAI_API_KEY": "${user_config.openai_api_key}",
-        "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
-        "GOOGLE_API_KEY": "${user_config.google_api_key}",
-        "GROQ_API_KEY": "${user_config.groq_api_key}",
-        "DEEPSEEK_API_KEY": "${user_config.deepseek_api_key}",
-        "XAI_API_KEY": "${user_config.xai_api_key}",
-        "PERPLEXITY_API_KEY": "${user_config.perplexity_api_key}",
-        "COHERE_API_KEY": "${user_config.cohere_api_key}",
-        "FIREWORKS_API_KEY": "${user_config.fireworks_api_key}",
-        "HUGGINGFACE_API_KEY": "${user_config.huggingface_api_key}",
-        "MISTRAL_API_KEY": "${user_config.mistral_api_key}",
-        "NVIDIA_API_KEY": "${user_config.nvidia_api_key}",
-        "OLLAMA_HOST": "${user_config.ollama_host}",
-        "OPENROUTER_API_KEY": "${user_config.openrouter_api_key}",
-        "TOGETHER_API_KEY": "${user_config.together_api_key}",
-        "CEREBRAS_API_KEY": "${user_config.cerebras_api_key}",
-        "DEEPINFRA_API_KEY": "${user_config.deepinfra_api_key}",
-        "SAMBANOVA_API_KEY": "${user_config.sambanova_api_key}",
-        "IBM_WATSONX_API_KEY": "${user_config.ibm_watsonx_api_key}",
-        "LLAMA_API_KEY": "${user_config.llama_api_key}"
-      }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/gwbischof/outsource-mcp.git",
+      "outsource-mcp"
+    ],
+    "env": {
+      "OPENAI_API_KEY": "${user_config.openai_api_key}",
+      "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
+      "GOOGLE_API_KEY": "${user_config.google_api_key}",
+      "GROQ_API_KEY": "${user_config.groq_api_key}",
+      "DEEPSEEK_API_KEY": "${user_config.deepseek_api_key}",
+      "XAI_API_KEY": "${user_config.xai_api_key}",
+      "PERPLEXITY_API_KEY": "${user_config.perplexity_api_key}",
+      "COHERE_API_KEY": "${user_config.cohere_api_key}",
+      "FIREWORKS_API_KEY": "${user_config.fireworks_api_key}",
+      "HUGGINGFACE_API_KEY": "${user_config.huggingface_api_key}",
+      "MISTRAL_API_KEY": "${user_config.mistral_api_key}",
+      "NVIDIA_API_KEY": "${user_config.nvidia_api_key}",
+      "OLLAMA_HOST": "${user_config.ollama_host}",
+      "OPENROUTER_API_KEY": "${user_config.openrouter_api_key}",
+      "TOGETHER_API_KEY": "${user_config.together_api_key}",
+      "CEREBRAS_API_KEY": "${user_config.cerebras_api_key}",
+      "DEEPINFRA_API_KEY": "${user_config.deepinfra_api_key}",
+      "SAMBANOVA_API_KEY": "${user_config.sambanova_api_key}",
+      "IBM_WATSONX_API_KEY": "${user_config.ibm_watsonx_api_key}",
+      "LLAMA_API_KEY": "${user_config.llama_api_key}"
     }
   },
   "tools": [],
@@ -188,30 +188,32 @@
   "quality_score": 27,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "outsource-mcp": {
-          "command": "uvx",
-          "args": ["--from", "git+https://github.com/gwbischof/outsource-mcp.git", "outsource-mcp"],
-          "env": {
-            "OPENAI_API_KEY": "your-openai-key",
-            "ANTHROPIC_API_KEY": "your-anthropic-key",
-            "GOOGLE_API_KEY": "your-google-key",
-            "GROQ_API_KEY": "your-groq-key",
-            "DEEPSEEK_API_KEY": "your-deepseek-key",
-            "XAI_API_KEY": "your-xai-key",
-            "PERPLEXITY_API_KEY": "your-perplexity-key",
-            "COHERE_API_KEY": "your-cohere-key",
-            "FIREWORKS_API_KEY": "your-fireworks-key",
-            "HUGGINGFACE_API_KEY": "your-huggingface-key",
-            "MISTRAL_API_KEY": "your-mistral-key",
-            "NVIDIA_API_KEY": "your-nvidia-key",
-            "OLLAMA_HOST": "http://localhost:11434",
-            "OPENROUTER_API_KEY": "your-openrouter-key",
-            "TOGETHER_API_KEY": "your-together-key",
-            "CEREBRAS_API_KEY": "your-cerebras-key",
-            "DEEPINFRA_API_KEY": "your-deepinfra-key",
-            "SAMBANOVA_API_KEY": "your-sambanova-key"
-          }
+      "outsource-mcp": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/gwbischof/outsource-mcp.git",
+          "outsource-mcp"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "your-openai-key",
+          "ANTHROPIC_API_KEY": "your-anthropic-key",
+          "GOOGLE_API_KEY": "your-google-key",
+          "GROQ_API_KEY": "your-groq-key",
+          "DEEPSEEK_API_KEY": "your-deepseek-key",
+          "XAI_API_KEY": "your-xai-key",
+          "PERPLEXITY_API_KEY": "your-perplexity-key",
+          "COHERE_API_KEY": "your-cohere-key",
+          "FIREWORKS_API_KEY": "your-fireworks-key",
+          "HUGGINGFACE_API_KEY": "your-huggingface-key",
+          "MISTRAL_API_KEY": "your-mistral-key",
+          "NVIDIA_API_KEY": "your-nvidia-key",
+          "OLLAMA_HOST": "http://localhost:11434",
+          "OPENROUTER_API_KEY": "your-openrouter-key",
+          "TOGETHER_API_KEY": "your-together-key",
+          "CEREBRAS_API_KEY": "your-cerebras-key",
+          "DEEPINFRA_API_KEY": "your-deepinfra-key",
+          "SAMBANOVA_API_KEY": "your-sambanova-key"
         }
       }
     },

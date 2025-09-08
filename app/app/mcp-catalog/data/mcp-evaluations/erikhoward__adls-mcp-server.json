@@ -8,19 +8,15 @@
     "name": "erikhoward"
   },
   "server": {
-    "type": "python",
-    "entry_point": "adls2-mcp-server",
-    "mcp_config": {
-      "command": "adls2-mcp-server",
-      "args": [],
-      "env": {
-        "LOG_LEVEL": "${user_config.log_level}",
-        "UPLOAD_ROOT": "${user_config.upload_root}",
-        "DOWNLOAD_ROOT": "${user_config.download_root}",
-        "AZURE_STORAGE_ACCOUNT_NAME": "${user_config.azure_storage_account_name}",
-        "AZURE_STORAGE_ACCOUNT_KEY": "${user_config.azure_storage_account_key}",
-        "READ_ONLY_MODE": "${user_config.read_only_mode}"
-      }
+    "command": "adls2-mcp-server",
+    "args": [],
+    "env": {
+      "LOG_LEVEL": "${user_config.log_level}",
+      "UPLOAD_ROOT": "${user_config.upload_root}",
+      "DOWNLOAD_ROOT": "${user_config.download_root}",
+      "AZURE_STORAGE_ACCOUNT_NAME": "${user_config.azure_storage_account_name}",
+      "AZURE_STORAGE_ACCOUNT_KEY": "${user_config.azure_storage_account_key}",
+      "READ_ONLY_MODE": "${user_config.read_only_mode}"
     }
   },
   "tools": [],
@@ -74,28 +70,31 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "adls2-mcp-server": {
-          "command": "adls2-mcp-server",
-          "args": [],
-          "env": {
-            "LOG_LEVEL": "DEBUG",
-            "UPLOAD_ROOT": "/path/to/store/uploads",
-            "DOWNLOAD_ROOT": "/path/to/store/downloads",
-            "AZURE_STORAGE_ACCOUNT_NAME": "your-azure-adls2-storage-account-name",
-            "READ_ONLY_MODE": "false"
-          }
-        },
-        "adls2-mcp-server-configured": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/adls2-mcp-server/repo", "run", "adls2-mcp-server"],
-          "env": {
-            "LOG_LEVEL": "DEBUG",
-            "UPLOAD_ROOT": "/path/to/store/uploads",
-            "DOWNLOAD_ROOT": "/path/to/store/downloads",
-            "AZURE_STORAGE_ACCOUNT_NAME": "your-azure-adls2-storage-account-name",
-            "READ_ONLY_MODE": "false"
-          }
+      "adls2-mcp-server": {
+        "command": "adls2-mcp-server",
+        "args": [],
+        "env": {
+          "LOG_LEVEL": "DEBUG",
+          "UPLOAD_ROOT": "/path/to/store/uploads",
+          "DOWNLOAD_ROOT": "/path/to/store/downloads",
+          "AZURE_STORAGE_ACCOUNT_NAME": "your-azure-adls2-storage-account-name",
+          "READ_ONLY_MODE": "false"
+        }
+      },
+      "adls2-mcp-server-configured": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/adls2-mcp-server/repo",
+          "run",
+          "adls2-mcp-server"
+        ],
+        "env": {
+          "LOG_LEVEL": "DEBUG",
+          "UPLOAD_ROOT": "/path/to/store/uploads",
+          "DOWNLOAD_ROOT": "/path/to/store/downloads",
+          "AZURE_STORAGE_ACCOUNT_NAME": "your-azure-adls2-storage-account-name",
+          "READ_ONLY_MODE": "false"
         }
       }
     },

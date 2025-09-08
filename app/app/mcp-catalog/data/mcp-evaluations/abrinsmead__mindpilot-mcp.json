@@ -8,21 +8,17 @@
     "name": "abrinsmead"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@mindpilot/mcp@latest",
-        "--port",
-        "${user_config.port}",
-        "--data-path",
-        "${user_config.data_path}"
-      ],
-      "env": {
-        "MIND_PILOT_DISABLE_ANALYTICS": "${user_config.disable_analytics}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@mindpilot/mcp@latest",
+      "--port",
+      "${user_config.port}",
+      "--data-path",
+      "${user_config.data_path}"
+    ],
+    "env": {
+      "MIND_PILOT_DISABLE_ANALYTICS": "${user_config.disable_analytics}"
     }
   },
   "tools": [],
@@ -58,32 +54,46 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mindpilot-mcp": {
-          "command": "npx",
-          "args": ["@mindpilot/mcp@latest"],
-          "env": {}
-        },
-        "mindpilot-mcp-disable-analytics": {
-          "command": "npx",
-          "args": ["@mindpilot/mcp@latest", "--disable-analytics"],
-          "env": {}
-        },
-        "mindpilot-mcp-port-5555": {
-          "command": "npx",
-          "args": ["@mindpilot/mcp@latest", "--port", "5555"],
-          "env": {}
-        },
-        "mindpilot-mcp-custom-data-path": {
-          "command": "npx",
-          "args": ["@mindpilot/mcp@latest", "--data-path", "/path/to/custom/location"],
-          "env": {}
-        },
-        "mindpilot-mcp-dev": {
-          "command": "npx",
-          "args": ["tsx", "<path to...>/src/server/server.ts"],
-          "env": {}
-        }
+      "mindpilot-mcp": {
+        "command": "npx",
+        "args": [
+          "@mindpilot/mcp@latest"
+        ],
+        "env": {}
+      },
+      "mindpilot-mcp-disable-analytics": {
+        "command": "npx",
+        "args": [
+          "@mindpilot/mcp@latest",
+          "--disable-analytics"
+        ],
+        "env": {}
+      },
+      "mindpilot-mcp-port-5555": {
+        "command": "npx",
+        "args": [
+          "@mindpilot/mcp@latest",
+          "--port",
+          "5555"
+        ],
+        "env": {}
+      },
+      "mindpilot-mcp-custom-data-path": {
+        "command": "npx",
+        "args": [
+          "@mindpilot/mcp@latest",
+          "--data-path",
+          "/path/to/custom/location"
+        ],
+        "env": {}
+      },
+      "mindpilot-mcp-dev": {
+        "command": "npx",
+        "args": [
+          "tsx",
+          "<path to...>/src/server/server.ts"
+        ],
+        "env": {}
       }
     },
     "oauth": {

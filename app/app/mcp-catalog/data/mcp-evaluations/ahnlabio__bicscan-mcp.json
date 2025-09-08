@@ -8,14 +8,14 @@
     "name": "ahnlabio"
   },
   "server": {
-    "type": "python",
-    "entry_point": "bicscan-mcp",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["--from", "git+https://github.com/ahnlabio/bicscan-mcp", "bicscan-mcp"],
-      "env": {
-        "BICSCAN_API_KEY": "${user_config.bicscan_api_key}"
-      }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/ahnlabio/bicscan-mcp",
+      "bicscan-mcp"
+    ],
+    "env": {
+      "BICSCAN_API_KEY": "${user_config.bicscan_api_key}"
     }
   },
   "tools": [],
@@ -35,27 +35,41 @@
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "bicscan-mcp-uv": {
-          "command": "uv",
-          "args": ["--directory", "YOUR_BICSCAN_REPO_DIR_HERE", "run", "bicscan-mcp"],
-          "env": {
-            "BICSCAN_API_KEY": "YOUR_BICSCAN_API_KEY_HERE"
-          }
-        },
-        "bicscan-mcp-docker": {
-          "command": "docker",
-          "args": ["run", "--rm", "--interactive", "--env", "BICSCAN_API_KEY=YOUR_BICSCAN_API_KEY_HERE", "bicscan-mcp"],
-          "env": {
-            "BICSCAN_API_KEY": "YOUR_BICSCAN_API_KEY_HERE"
-          }
-        },
-        "bicscan-mcp-uvx": {
-          "command": "uvx",
-          "args": ["--from", "git+https://github.com/ahnlabio/bicscan-mcp", "bicscan-mcp"],
-          "env": {
-            "BICSCAN_API_KEY": "YOUR_BICSCAN_API_KEY_HERE"
-          }
+      "bicscan-mcp-uv": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "YOUR_BICSCAN_REPO_DIR_HERE",
+          "run",
+          "bicscan-mcp"
+        ],
+        "env": {
+          "BICSCAN_API_KEY": "YOUR_BICSCAN_API_KEY_HERE"
+        }
+      },
+      "bicscan-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "--interactive",
+          "--env",
+          "BICSCAN_API_KEY=YOUR_BICSCAN_API_KEY_HERE",
+          "bicscan-mcp"
+        ],
+        "env": {
+          "BICSCAN_API_KEY": "YOUR_BICSCAN_API_KEY_HERE"
+        }
+      },
+      "bicscan-mcp-uvx": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/ahnlabio/bicscan-mcp",
+          "bicscan-mcp"
+        ],
+        "env": {
+          "BICSCAN_API_KEY": "YOUR_BICSCAN_API_KEY_HERE"
         }
       }
     },

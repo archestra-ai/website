@@ -8,14 +8,12 @@
     "name": "liveblocks"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "LIVEBLOCKS_SECRET_KEY": "${user_config.liveblocks_secret_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "LIVEBLOCKS_SECRET_KEY": "${user_config.liveblocks_secret_key}"
     }
   },
   "tools": [],
@@ -35,13 +33,13 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "liveblocks-mcp-server": {
-          "command": "node",
-          "args": ["/full/path/to/the/repo/liveblocks-mcp-server/build/index.js"],
-          "env": {
-            "LIVEBLOCKS_SECRET_KEY": "sk_dev_Ns35f5G..."
-          }
+      "liveblocks-mcp-server": {
+        "command": "node",
+        "args": [
+          "/full/path/to/the/repo/liveblocks-mcp-server/build/index.js"
+        ],
+        "env": {
+          "LIVEBLOCKS_SECRET_KEY": "sk_dev_Ns35f5G..."
         }
       }
     },

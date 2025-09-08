@@ -8,19 +8,17 @@
     "name": "idoyudha"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-keycloak"],
-      "env": {
-        "SERVER_URL": "${user_config.server_url}",
-        "USERNAME": "${user_config.username}",
-        "PASSWORD": "${user_config.password}",
-        "REALM_NAME": "${user_config.realm_name}",
-        "CLIENT_ID": "${user_config.client_id}",
-        "CLIENT_SECRET": "${user_config.client_secret}"
-      }
+    "command": "uvx",
+    "args": [
+      "mcp-keycloak"
+    ],
+    "env": {
+      "SERVER_URL": "${user_config.server_url}",
+      "USERNAME": "${user_config.username}",
+      "PASSWORD": "${user_config.password}",
+      "REALM_NAME": "${user_config.realm_name}",
+      "CLIENT_ID": "${user_config.client_id}",
+      "CLIENT_SECRET": "${user_config.client_secret}"
     }
   },
   "tools": [],
@@ -75,32 +73,42 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-keycloak": {
-          "command": "uvx",
-          "args": ["mcp-keycloak"],
-          "env": {
-            "SERVER_URL": "https://your-keycloak.com",
-            "USERNAME": "admin",
-            "PASSWORD": "admin-password",
-            "REALM_NAME": "your-realm"
-          }
-        },
-        "mcp-keycloak-local": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/mcp-keycloak", "run", "python", "-m", "src"],
-          "env": {
-            "SERVER_URL": "https://your-keycloak.com",
-            "USERNAME": "admin",
-            "PASSWORD": "admin-password",
-            "REALM_NAME": "your-realm"
-          }
-        },
-        "mcp-keycloak-direct": {
-          "command": "python",
-          "args": ["-m", "src.main"],
-          "env": {}
+      "mcp-keycloak": {
+        "command": "uvx",
+        "args": [
+          "mcp-keycloak"
+        ],
+        "env": {
+          "SERVER_URL": "https://your-keycloak.com",
+          "USERNAME": "admin",
+          "PASSWORD": "admin-password",
+          "REALM_NAME": "your-realm"
         }
+      },
+      "mcp-keycloak-local": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/mcp-keycloak",
+          "run",
+          "python",
+          "-m",
+          "src"
+        ],
+        "env": {
+          "SERVER_URL": "https://your-keycloak.com",
+          "USERNAME": "admin",
+          "PASSWORD": "admin-password",
+          "REALM_NAME": "your-realm"
+        }
+      },
+      "mcp-keycloak-direct": {
+        "command": "python",
+        "args": [
+          "-m",
+          "src.main"
+        ],
+        "env": {}
       }
     },
     "oauth": {

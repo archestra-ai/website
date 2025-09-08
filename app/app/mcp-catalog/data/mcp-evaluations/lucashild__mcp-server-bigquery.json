@@ -8,17 +8,15 @@
     "name": "LucasHild"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-bigquery"],
-      "env": {
-        "BIGQUERY_PROJECT": "${user_config.bigquery_project}",
-        "BIGQUERY_LOCATION": "${user_config.bigquery_location}",
-        "BIGQUERY_DATASETS": "${user_config.bigquery_datasets}",
-        "BIGQUERY_KEY_FILE": "${user_config.bigquery_key_file}"
-      }
+    "command": "uvx",
+    "args": [
+      "mcp-server-bigquery"
+    ],
+    "env": {
+      "BIGQUERY_PROJECT": "${user_config.bigquery_project}",
+      "BIGQUERY_LOCATION": "${user_config.bigquery_location}",
+      "BIGQUERY_DATASETS": "${user_config.bigquery_datasets}",
+      "BIGQUERY_KEY_FILE": "${user_config.bigquery_key_file}"
     }
   },
   "tools": [],
@@ -59,38 +57,42 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-bigquery-development": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "{{PATH_TO_REPO}}",
-            "run",
-            "mcp-server-bigquery",
-            "--project",
-            "{{GCP_PROJECT_ID}}",
-            "--location",
-            "{{GCP_LOCATION}}"
-          ],
-          "env": {}
-        },
-        "mcp-server-bigquery-published": {
-          "command": "uvx",
-          "args": ["mcp-server-bigquery", "--project", "{{GCP_PROJECT_ID}}", "--location", "{{GCP_LOCATION}}"],
-          "env": {}
-        },
-        "mcp-server-bigquery-inspector": {
-          "command": "npx",
-          "args": [
-            "@modelcontextprotocol/inspector",
-            "uv",
-            "--directory",
-            "{{PATH_TO_REPO}}",
-            "run",
-            "mcp-server-bigquery"
-          ],
-          "env": {}
-        }
+      "mcp-server-bigquery-development": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "{{PATH_TO_REPO}}",
+          "run",
+          "mcp-server-bigquery",
+          "--project",
+          "{{GCP_PROJECT_ID}}",
+          "--location",
+          "{{GCP_LOCATION}}"
+        ],
+        "env": {}
+      },
+      "mcp-server-bigquery-published": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-bigquery",
+          "--project",
+          "{{GCP_PROJECT_ID}}",
+          "--location",
+          "{{GCP_LOCATION}}"
+        ],
+        "env": {}
+      },
+      "mcp-server-bigquery-inspector": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "uv",
+          "--directory",
+          "{{PATH_TO_REPO}}",
+          "run",
+          "mcp-server-bigquery"
+        ],
+        "env": {}
       }
     },
     "oauth": {

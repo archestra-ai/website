@@ -8,15 +8,13 @@
     "name": "aliyun"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["alibaba-cloud-ops-mcp-server@latest"],
-      "env": {
-        "ALIBABA_CLOUD_ACCESS_KEY_ID": "${user_config.alibaba_cloud_access_key_id}",
-        "ALIBABA_CLOUD_ACCESS_KEY_SECRET": "${user_config.alibaba_cloud_access_key_secret}"
-      }
+    "command": "uvx",
+    "args": [
+      "alibaba-cloud-ops-mcp-server@latest"
+    ],
+    "env": {
+      "ALIBABA_CLOUD_ACCESS_KEY_ID": "${user_config.alibaba_cloud_access_key_id}",
+      "ALIBABA_CLOUD_ACCESS_KEY_SECRET": "${user_config.alibaba_cloud_access_key_secret}"
     }
   },
   "tools": [],
@@ -43,14 +41,14 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "alibaba-cloud-ops-mcp-server": {
-          "command": "uvx",
-          "args": ["alibaba-cloud-ops-mcp-server@latest"],
-          "env": {
-            "ALIBABA_CLOUD_ACCESS_KEY_ID": "Your Access Key ID",
-            "ALIBABA_CLOUD_ACCESS_KEY_SECRET": "Your Access Key SECRET"
-          }
+      "alibaba-cloud-ops-mcp-server": {
+        "command": "uvx",
+        "args": [
+          "alibaba-cloud-ops-mcp-server@latest"
+        ],
+        "env": {
+          "ALIBABA_CLOUD_ACCESS_KEY_ID": "Your Access Key ID",
+          "ALIBABA_CLOUD_ACCESS_KEY_SECRET": "Your Access Key SECRET"
         }
       }
     },

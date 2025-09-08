@@ -8,14 +8,12 @@
     "name": "JamesANZ"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "MONGODB_URI": "${user_config.mongodb_uri}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "MONGODB_URI": "${user_config.mongodb_uri}"
     }
   },
   "tools": [],
@@ -36,13 +34,13 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "memory-mcp": {
-          "command": "node",
-          "args": ["build/index.js"],
-          "env": {
-            "MONGODB_URI": "mongodb://localhost:27017"
-          }
+      "memory-mcp": {
+        "command": "node",
+        "args": [
+          "build/index.js"
+        ],
+        "env": {
+          "MONGODB_URI": "mongodb://localhost:27017"
         }
       }
     },

@@ -8,13 +8,11 @@
     "name": "erithwik"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-hn"],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "mcp-hn"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,12 @@
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-hn": {
-          "command": "uvx",
-          "args": ["mcp-hn"],
-          "env": {}
-        }
+      "mcp-hn": {
+        "command": "uvx",
+        "args": [
+          "mcp-hn"
+        ],
+        "env": {}
       }
     },
     "oauth": {

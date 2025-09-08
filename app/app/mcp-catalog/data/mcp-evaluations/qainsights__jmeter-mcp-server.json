@@ -8,16 +8,17 @@
     "name": "QAInsights"
   },
   "server": {
-    "type": "python",
-    "entry_point": "jmeter_server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "jmeter_server.py"],
-      "env": {
-        "JMETER_HOME": "${user_config.jmeter_home}",
-        "JMETER_BIN": "${user_config.jmeter_bin}",
-        "JMETER_JAVA_OPTS": "${user_config.jmeter_java_opts}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "jmeter_server.py"
+    ],
+    "env": {
+      "JMETER_HOME": "${user_config.jmeter_home}",
+      "JMETER_BIN": "${user_config.jmeter_bin}",
+      "JMETER_JAVA_OPTS": "${user_config.jmeter_java_opts}"
     }
   },
   "tools": [],
@@ -50,12 +51,15 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "jmeter": {
-          "command": "/path/to/uv",
-          "args": ["--directory", "/path/to/jmeter-mcp-server", "run", "jmeter_server.py"],
-          "env": {}
-        }
+      "jmeter": {
+        "command": "/path/to/uv",
+        "args": [
+          "--directory",
+          "/path/to/jmeter-mcp-server",
+          "run",
+          "jmeter_server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

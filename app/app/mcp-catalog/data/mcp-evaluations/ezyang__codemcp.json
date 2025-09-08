@@ -8,13 +8,17 @@
     "name": "ezyang"
   },
   "server": {
-    "type": "python",
-    "entry_point": "codemcp/__main__.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "codemcp", "serve", "--port", "${user_config.port}", "--host", "${user_config.host}"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "-m",
+      "codemcp",
+      "serve",
+      "--port",
+      "${user_config.port}",
+      "--host",
+      "${user_config.host}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -40,35 +44,48 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "codemcp": {
-          "command": "uvx",
-          "args": ["--from", "git+https://github.com/ezyang/codemcp@prod", "codemcp", "serve"],
-          "env": {}
-        },
-        "codemcp-port": {
-          "command": "uvx",
-          "args": ["--from", "git+https://github.com/ezyang/codemcp@prod", "codemcp", "serve", "--port", "1234"],
-          "env": {}
-        },
-        "codemcp-host": {
-          "command": "uvx",
-          "args": [
-            "--from",
-            "git+https://github.com/ezyang/codemcp@prod",
-            "codemcp",
-            "serve",
-            "--host",
-            "100.101.102.103"
-          ],
-          "env": {}
-        },
-        "codemcp-dev": {
-          "command": "mcp",
-          "args": ["dev", "codemcp/__main__.py"],
-          "env": {
-            "PYTHONPATH": "."
-          }
+      "codemcp": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/ezyang/codemcp@prod",
+          "codemcp",
+          "serve"
+        ],
+        "env": {}
+      },
+      "codemcp-port": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/ezyang/codemcp@prod",
+          "codemcp",
+          "serve",
+          "--port",
+          "1234"
+        ],
+        "env": {}
+      },
+      "codemcp-host": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/ezyang/codemcp@prod",
+          "codemcp",
+          "serve",
+          "--host",
+          "100.101.102.103"
+        ],
+        "env": {}
+      },
+      "codemcp-dev": {
+        "command": "mcp",
+        "args": [
+          "dev",
+          "codemcp/__main__.py"
+        ],
+        "env": {
+          "PYTHONPATH": "."
         }
       }
     },

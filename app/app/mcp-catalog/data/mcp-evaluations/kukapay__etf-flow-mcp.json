@@ -8,14 +8,15 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "cli.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "etf-flow-mcp"],
-      "env": {
-        "COINGLASS_API_KEY": "${user_config.coinglass_api_key}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "etf-flow-mcp"
+    ],
+    "env": {
+      "COINGLASS_API_KEY": "${user_config.coinglass_api_key}"
     }
   },
   "tools": [],
@@ -35,13 +36,16 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "etf-flow-mcp": {
-          "command": "uv",
-          "args": ["--directory", "/absolute/path/to/etf-flow-mcp", "run", "etf-flow-mcp"],
-          "env": {
-            "COINGLASS_API_KEY": "your_coinglass_api_key_here"
-          }
+      "etf-flow-mcp": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/absolute/path/to/etf-flow-mcp",
+          "run",
+          "etf-flow-mcp"
+        ],
+        "env": {
+          "COINGLASS_API_KEY": "your_coinglass_api_key_here"
         }
       }
     },

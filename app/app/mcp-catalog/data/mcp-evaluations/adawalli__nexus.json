@@ -8,19 +8,18 @@
     "name": "adawalli"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "nexus-mcp"],
-      "env": {
-        "OPENROUTER_API_KEY": "${user_config.openrouter_api_key}",
-        "NODE_ENV": "${user_config.node_env}",
-        "LOG_LEVEL": "${user_config.log_level}",
-        "OPENROUTER_TIMEOUT_MS": "${user_config.openrouter_timeout_ms}",
-        "OPENROUTER_MAX_RETRIES": "${user_config.openrouter_max_retries}",
-        "OPENROUTER_BASE_URL": "${user_config.openrouter_base_url}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "nexus-mcp"
+    ],
+    "env": {
+      "OPENROUTER_API_KEY": "${user_config.openrouter_api_key}",
+      "NODE_ENV": "${user_config.node_env}",
+      "LOG_LEVEL": "${user_config.log_level}",
+      "OPENROUTER_TIMEOUT_MS": "${user_config.openrouter_timeout_ms}",
+      "OPENROUTER_MAX_RETRIES": "${user_config.openrouter_max_retries}",
+      "OPENROUTER_BASE_URL": "${user_config.openrouter_base_url}"
     }
   },
   "tools": [],
@@ -77,55 +76,67 @@
   "quality_score": 59,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "nexus-mcp": {
-          "command": "npx",
-          "args": ["nexus-mcp"],
-          "env": {
-            "OPENROUTER_API_KEY": "your-api-key-here"
-          }
-        },
-        "nexus-mcp-configured": {
-          "command": "npx",
-          "args": ["nexus-mcp"],
-          "env": {
-            "OPENROUTER_API_KEY": "your-key"
-          }
-        },
-        "nexus-mcp-npm-start": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {
-            "OPENROUTER_API_KEY": "your-api-key-here"
-          }
-        },
-        "nexus-mcp-claude-with-config": {
-          "command": "npx",
-          "args": ["nexus-mcp"],
-          "env": {
-            "OPENROUTER_API_KEY": "your-api-key-here"
-          }
-        },
-        "nexus-mcp-cursor-with-config": {
-          "command": "npx",
-          "args": ["nexus-mcp"],
-          "env": {
-            "OPENROUTER_API_KEY": "your-api-key-here"
-          }
-        },
-        "nexus-mcp-other-client-with-config": {
-          "command": "npx",
-          "args": ["nexus-mcp"],
-          "env": {
-            "OPENROUTER_API_KEY": "your-api-key-here"
-          }
-        },
-        "nexus-mcp-local-node-path": {
-          "command": "node",
-          "args": ["/path/to/nexus-mcp/dist/cli.js"],
-          "env": {
-            "OPENROUTER_API_KEY": "your-api-key-here"
-          }
+      "nexus-mcp": {
+        "command": "npx",
+        "args": [
+          "nexus-mcp"
+        ],
+        "env": {
+          "OPENROUTER_API_KEY": "your-api-key-here"
+        }
+      },
+      "nexus-mcp-configured": {
+        "command": "npx",
+        "args": [
+          "nexus-mcp"
+        ],
+        "env": {
+          "OPENROUTER_API_KEY": "your-key"
+        }
+      },
+      "nexus-mcp-npm-start": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {
+          "OPENROUTER_API_KEY": "your-api-key-here"
+        }
+      },
+      "nexus-mcp-claude-with-config": {
+        "command": "npx",
+        "args": [
+          "nexus-mcp"
+        ],
+        "env": {
+          "OPENROUTER_API_KEY": "your-api-key-here"
+        }
+      },
+      "nexus-mcp-cursor-with-config": {
+        "command": "npx",
+        "args": [
+          "nexus-mcp"
+        ],
+        "env": {
+          "OPENROUTER_API_KEY": "your-api-key-here"
+        }
+      },
+      "nexus-mcp-other-client-with-config": {
+        "command": "npx",
+        "args": [
+          "nexus-mcp"
+        ],
+        "env": {
+          "OPENROUTER_API_KEY": "your-api-key-here"
+        }
+      },
+      "nexus-mcp-local-node-path": {
+        "command": "node",
+        "args": [
+          "/path/to/nexus-mcp/dist/cli.js"
+        ],
+        "env": {
+          "OPENROUTER_API_KEY": "your-api-key-here"
         }
       }
     },

@@ -8,16 +8,15 @@
     "name": "gorosun"
   },
   "server": {
-    "type": "node",
-    "entry_point": "src/index.ts",
-    "mcp_config": {
-      "command": "bun",
-      "args": ["run", "${__dirname}/src/index.ts"],
-      "env": {
-        "GITHUB_TOKEN": "${user_config.github_token}",
-        "DEFAULT_AUTO_OPEN": "${user_config.default_auto_open}",
-        "DEFAULT_OUTPUT_MODE": "${user_config.default_output_mode}"
-      }
+    "command": "bun",
+    "args": [
+      "run",
+      "${__dirname}/src/index.ts"
+    ],
+    "env": {
+      "GITHUB_TOKEN": "${user_config.github_token}",
+      "DEFAULT_AUTO_OPEN": "${user_config.default_auto_open}",
+      "DEFAULT_OUTPUT_MODE": "${user_config.default_output_mode}"
     }
   },
   "tools": [],
@@ -51,21 +50,25 @@
   "quality_score": 43,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "unified-diff-mcp": {
-          "command": "bun",
-          "args": ["run", "/path/to/unified-diff-mcp/src/index.ts"],
-          "env": {
-            "GITHUB_TOKEN": "your_github_token_here",
-            "DEFAULT_AUTO_OPEN": "true",
-            "DEFAULT_OUTPUT_MODE": "html"
-          }
-        },
-        "unified-diff-mcp-dev": {
-          "command": "bun",
-          "args": ["--watch", "/path/to/unified-diff-mcp/src/index.ts"],
-          "env": {}
+      "unified-diff-mcp": {
+        "command": "bun",
+        "args": [
+          "run",
+          "/path/to/unified-diff-mcp/src/index.ts"
+        ],
+        "env": {
+          "GITHUB_TOKEN": "your_github_token_here",
+          "DEFAULT_AUTO_OPEN": "true",
+          "DEFAULT_OUTPUT_MODE": "html"
         }
+      },
+      "unified-diff-mcp-dev": {
+        "command": "bun",
+        "args": [
+          "--watch",
+          "/path/to/unified-diff-mcp/src/index.ts"
+        ],
+        "env": {}
       }
     },
     "oauth": {

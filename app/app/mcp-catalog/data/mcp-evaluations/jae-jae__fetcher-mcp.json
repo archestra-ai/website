@@ -8,14 +8,13 @@
     "name": "jae-jae"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "fetcher-mcp"],
-      "env": {
-        "NODE_ENV": "${user_config.node_env}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "fetcher-mcp"
+    ],
+    "env": {
+      "NODE_ENV": "${user_config.node_env}"
     }
   },
   "tools": [],
@@ -35,38 +34,61 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "fetcher-mcp": {
-          "command": "npx",
-          "args": ["-y", "fetcher-mcp"],
-          "env": {}
-        },
-        "fetcher-mcp-http": {
-          "command": "npx",
-          "args": ["-y", "fetcher-mcp", "--log", "--transport=http", "--host=0.0.0.0", "--port=3000"],
-          "env": {}
-        },
-        "fetcher-mcp-debug": {
-          "command": "npx",
-          "args": ["-y", "fetcher-mcp", "--debug"],
-          "env": {}
-        },
-        "fetcher": {
-          "command": "npx",
-          "args": ["-y", "fetcher-mcp"],
-          "env": {}
-        },
-        "fetcher-mcp-docker": {
-          "command": "docker",
-          "args": ["run", "-p", "3000:3000", "ghcr.io/jae-jae/fetcher-mcp:latest"],
-          "env": {}
-        },
-        "fetcher-mcp-docker-compose": {
-          "command": "docker-compose",
-          "args": ["up", "-d"],
-          "env": {
-            "NODE_ENV": "production"
-          }
+      "fetcher-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "fetcher-mcp"
+        ],
+        "env": {}
+      },
+      "fetcher-mcp-http": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "fetcher-mcp",
+          "--log",
+          "--transport=http",
+          "--host=0.0.0.0",
+          "--port=3000"
+        ],
+        "env": {}
+      },
+      "fetcher-mcp-debug": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "fetcher-mcp",
+          "--debug"
+        ],
+        "env": {}
+      },
+      "fetcher": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "fetcher-mcp"
+        ],
+        "env": {}
+      },
+      "fetcher-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "3000:3000",
+          "ghcr.io/jae-jae/fetcher-mcp:latest"
+        ],
+        "env": {}
+      },
+      "fetcher-mcp-docker-compose": {
+        "command": "docker-compose",
+        "args": [
+          "up",
+          "-d"
+        ],
+        "env": {
+          "NODE_ENV": "production"
         }
       }
     },

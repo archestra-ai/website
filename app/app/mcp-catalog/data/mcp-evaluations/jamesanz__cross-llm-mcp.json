@@ -8,19 +8,17 @@
     "name": "JamesANZ"
   },
   "server": {
-    "type": "node",
-    "entry_point": "dist/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
-      "env": {
-        "OPENAI_API_KEY": "${user_config.openai_api_key}",
-        "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
-        "DEEPSEEK_API_KEY": "${user_config.deepseek_api_key}",
-        "DEFAULT_CHATGPT_MODEL": "${user_config.default_chatgpt_model}",
-        "DEFAULT_CLAUDE_MODEL": "${user_config.default_claude_model}",
-        "DEFAULT_DEEPSEEK_MODEL": "${user_config.default_deepseek_model}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/index.js"
+    ],
+    "env": {
+      "OPENAI_API_KEY": "${user_config.openai_api_key}",
+      "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
+      "DEEPSEEK_API_KEY": "${user_config.deepseek_api_key}",
+      "DEFAULT_CHATGPT_MODEL": "${user_config.default_chatgpt_model}",
+      "DEFAULT_CLAUDE_MODEL": "${user_config.default_claude_model}",
+      "DEFAULT_DEEPSEEK_MODEL": "${user_config.default_deepseek_model}"
     }
   },
   "tools": [],
@@ -75,12 +73,12 @@
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "cross-llm-mcp": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        }
+      "cross-llm-mcp": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {}
       }
     },
     "oauth": {

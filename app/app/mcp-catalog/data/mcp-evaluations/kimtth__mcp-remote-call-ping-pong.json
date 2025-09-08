@@ -8,13 +8,11 @@
     "name": "kimtth"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp-api-server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/mcp-api-server.py"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "${__dirname}/mcp-api-server.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,19 @@
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-api-server": {
-          "command": "python",
-          "args": ["mcp-api-server.py"],
-          "env": {}
-        },
-        "mcp-sse-server": {
-          "command": "python",
-          "args": ["mcp-sse-server.py"],
-          "env": {}
-        }
+      "mcp-api-server": {
+        "command": "python",
+        "args": [
+          "mcp-api-server.py"
+        ],
+        "env": {}
+      },
+      "mcp-sse-server": {
+        "command": "python",
+        "args": [
+          "mcp-sse-server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

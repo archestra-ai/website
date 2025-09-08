@@ -8,17 +8,18 @@
     "name": "lpigeon"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "server.py"],
-      "env": {
-        "UNITREE_ROS2_SETUP_SH_PATH": "${user_config.unitree_ros2_setup_sh_path}",
-        "LOCAL_IP": "${user_config.local_ip}",
-        "ROSBRIDGE_IP": "${user_config.rosbridge_ip}",
-        "ROSBRIDGE_PORT": "${user_config.rosbridge_port}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "server.py"
+    ],
+    "env": {
+      "UNITREE_ROS2_SETUP_SH_PATH": "${user_config.unitree_ros2_setup_sh_path}",
+      "LOCAL_IP": "${user_config.local_ip}",
+      "ROSBRIDGE_IP": "${user_config.rosbridge_ip}",
+      "ROSBRIDGE_PORT": "${user_config.rosbridge_port}"
     }
   },
   "tools": [],
@@ -58,12 +59,15 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "unitree-go2-mcp-server": {
-          "command": "uv",
-          "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/FOLDER/unitree-go2-mcp-server", "run", "server.py"],
-          "env": {}
-        }
+      "unitree-go2-mcp-server": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/ABSOLUTE/PATH/TO/PARENT/FOLDER/unitree-go2-mcp-server",
+          "run",
+          "server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

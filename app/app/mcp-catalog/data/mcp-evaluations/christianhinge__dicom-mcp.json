@@ -8,13 +8,13 @@
     "name": "ChristianHinge"
   },
   "server": {
-    "type": "python",
-    "entry_point": "dicom-mcp",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["tool", "dicom-mcp", "${user_config.config_file_path}"],
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "tool",
+      "dicom-mcp",
+      "${user_config.config_file_path}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -32,22 +32,36 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "dicom-mcp-tool-with-config": {
-          "command": "uv",
-          "args": ["tool", "dicom-mcp", "/path/to/your_config.yaml"],
-          "env": {}
-        },
-        "dicom-mcp-dev-run-with-config": {
-          "command": "uv",
-          "args": ["--directory", "path/to/cloned/dicom-mcp", "run", "dicom-mcp", "/path/to/your_config.yaml"],
-          "env": {}
-        },
-        "dicom-mcp-stdio-with-config": {
-          "command": "uv",
-          "args": ["run", "dicom-mcp", "/path/to/your_config.yaml", "--transport", "stdio"],
-          "env": {}
-        }
+      "dicom-mcp-tool-with-config": {
+        "command": "uv",
+        "args": [
+          "tool",
+          "dicom-mcp",
+          "/path/to/your_config.yaml"
+        ],
+        "env": {}
+      },
+      "dicom-mcp-dev-run-with-config": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "path/to/cloned/dicom-mcp",
+          "run",
+          "dicom-mcp",
+          "/path/to/your_config.yaml"
+        ],
+        "env": {}
+      },
+      "dicom-mcp-stdio-with-config": {
+        "command": "uv",
+        "args": [
+          "run",
+          "dicom-mcp",
+          "/path/to/your_config.yaml",
+          "--transport",
+          "stdio"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,14 +8,15 @@
     "name": "rinadelph"
   },
   "server": {
-    "type": "python",
-    "entry_point": "agent_mcp/cli.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "agent_mcp.cli", "--project-dir", "${user_config.project_dir}"],
-      "env": {
-        "OPENAI_API_KEY": "${user_config.openai_api_key}"
-      }
+    "command": "python",
+    "args": [
+      "-m",
+      "agent_mcp.cli",
+      "--project-dir",
+      "${user_config.project_dir}"
+    ],
+    "env": {
+      "OPENAI_API_KEY": "${user_config.openai_api_key}"
     }
   },
   "tools": [],
@@ -41,12 +42,16 @@
   "quality_score": 89,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "agent_mcp": {
-          "command": "uv",
-          "args": ["run", "-m", "agent_mcp.cli", "--project-dir", "/path/to/your/project"],
-          "env": {}
-        }
+      "agent_mcp": {
+        "command": "uv",
+        "args": [
+          "run",
+          "-m",
+          "agent_mcp.cli",
+          "--project-dir",
+          "/path/to/your/project"
+        ],
+        "env": {}
       }
     },
     "oauth": {

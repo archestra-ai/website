@@ -8,13 +8,9 @@
     "name": "IvanMurzak"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-server",
-    "mcp_config": {
-      "command": "${__dirname}/server/mcp-server",
-      "args": [],
-      "env": {}
-    }
+    "command": "${__dirname}/server/mcp-server",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,9 +20,7 @@
   "category": "AI Tools",
   "quality_score": 64,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

@@ -8,18 +8,14 @@
     "name": "modelcontextprotocol"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": [
-        "mcp-server-fetch",
-        "--ignore-robots-txt=${user_config.ignore_robots_txt}",
-        "--user-agent=${user_config.user_agent}",
-        "--proxy-url=${user_config.proxy_url}"
-      ],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "mcp-server-fetch",
+      "--ignore-robots-txt=${user_config.ignore_robots_txt}",
+      "--user-agent=${user_config.user_agent}",
+      "--proxy-url=${user_config.proxy_url}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -51,22 +47,30 @@
   "quality_score": 69,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-fetch": {
-          "command": "uvx",
-          "args": ["mcp-server-fetch"],
-          "env": {}
-        },
-        "mcp-fetch-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "mcp/fetch"],
-          "env": {}
-        },
-        "mcp_server_fetch": {
-          "command": "python",
-          "args": ["-m", "mcp_server_fetch"],
-          "env": {}
-        }
+      "mcp-server-fetch": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-fetch"
+        ],
+        "env": {}
+      },
+      "mcp-fetch-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "mcp/fetch"
+        ],
+        "env": {}
+      },
+      "mcp_server_fetch": {
+        "command": "python",
+        "args": [
+          "-m",
+          "mcp_server_fetch"
+        ],
+        "env": {}
       }
     },
     "oauth": {

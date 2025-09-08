@@ -8,16 +8,16 @@
     "name": "evalstate"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@llmindset/mcp-hfspace", "${user_config.spaces}"],
-      "env": {
-        "MCP_HF_WORK_DIR": "${user_config.mcp_hf_work_dir}",
-        "HF_TOKEN": "${user_config.hf_token}",
-        "CLAUDE_DESKTOP_MODE": "${user_config.claude_desktop_mode}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@llmindset/mcp-hfspace",
+      "${user_config.spaces}"
+    ],
+    "env": {
+      "MCP_HF_WORK_DIR": "${user_config.mcp_hf_work_dir}",
+      "HF_TOKEN": "${user_config.hf_token}",
+      "CLAUDE_DESKTOP_MODE": "${user_config.claude_desktop_mode}"
     }
   },
   "tools": [],
@@ -52,7 +52,9 @@
       "description": "A list of Hugging Face spaces to connect to. mcp-hfspace will find the most appropriate endpoint.",
       "multiple": true,
       "required": false,
-      "default": ["black-forest-labs/FLUX.1-schnell"],
+      "default": [
+        "black-forest-labs/FLUX.1-schnell"
+      ],
       "sensitive": false
     }
   },
@@ -61,24 +63,25 @@
   "quality_score": 76,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "llmindset-mcp-hfspace": {
-          "command": "npx",
-          "args": ["-y", "@llmindset/mcp-hfspace"],
-          "env": {}
-        },
-        "llmindset-mcp-hfspace-configured": {
-          "command": "npx",
-          "args": [
-            "-y",
-            "@llmindset/mcp-hfspace",
-            "--work-dir=/Users/evalstate/mcp-store",
-            "shuttleai/shuttle-jaguar",
-            "styletts2/styletts2",
-            "Qwen/QVQ-72B-preview"
-          ],
-          "env": {}
-        }
+      "llmindset-mcp-hfspace": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@llmindset/mcp-hfspace"
+        ],
+        "env": {}
+      },
+      "llmindset-mcp-hfspace-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@llmindset/mcp-hfspace",
+          "--work-dir=/Users/evalstate/mcp-store",
+          "shuttleai/shuttle-jaguar",
+          "styletts2/styletts2",
+          "Qwen/QVQ-72B-preview"
+        ],
+        "env": {}
       }
     },
     "oauth": {

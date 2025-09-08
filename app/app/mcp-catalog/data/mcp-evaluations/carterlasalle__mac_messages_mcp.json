@@ -8,13 +8,11 @@
     "name": "carterlasalle"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mac-messages-mcp",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mac-messages-mcp"],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "mac-messages-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,17 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mac-messages-mcp-uvx": {
-          "command": "uvx",
-          "args": ["mac-messages-mcp"],
-          "env": {}
-        },
-        "mac-messages-mcp-cli": {
-          "command": "mac-messages-mcp",
-          "args": [],
-          "env": {}
-        }
+      "mac-messages-mcp-uvx": {
+        "command": "uvx",
+        "args": [
+          "mac-messages-mcp"
+        ],
+        "env": {}
+      },
+      "mac-messages-mcp-cli": {
+        "command": "mac-messages-mcp",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

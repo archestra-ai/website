@@ -8,15 +8,15 @@
     "name": "vectara"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["tool", "run", "vectara-mcp"],
-      "env": {
-        "VECTARA_API_KEY": "${user_config.vectara_api_key}",
-        "VECTARA_CORPUS_KEYS": "${user_config.vectara_corpus_keys}"
-      }
+    "command": "uv",
+    "args": [
+      "tool",
+      "run",
+      "vectara-mcp"
+    ],
+    "env": {
+      "VECTARA_API_KEY": "${user_config.vectara_api_key}",
+      "VECTARA_CORPUS_KEYS": "${user_config.vectara_corpus_keys}"
     }
   },
   "tools": [],
@@ -42,12 +42,14 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "vectara-mcp": {
-          "command": "uv",
-          "args": ["tool", "run", "vectara-mcp"],
-          "env": {}
-        }
+      "vectara-mcp": {
+        "command": "uv",
+        "args": [
+          "tool",
+          "run",
+          "vectara-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

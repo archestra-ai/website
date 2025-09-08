@@ -8,14 +8,12 @@
     "name": "pipeboard-co"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["meta-ads-mcp"],
-      "env": {
-        "PIPEBOARD_API_TOKEN": "${user_config.pipeboard_api_token}"
-      }
+    "command": "uvx",
+    "args": [
+      "meta-ads-mcp"
+    ],
+    "env": {
+      "PIPEBOARD_API_TOKEN": "${user_config.pipeboard_api_token}"
     }
   },
   "tools": [],
@@ -35,12 +33,12 @@
   "quality_score": 65,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "meta-ads-mcp": {
-          "command": "uvx",
-          "args": ["meta-ads-mcp"],
-          "env": {}
-        }
+      "meta-ads-mcp": {
+        "command": "uvx",
+        "args": [
+          "meta-ads-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,14 +8,12 @@
     "name": "ChanMeng666"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
-      "env": {
-        "SERP_API_KEY": "${user_config.serp_api_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/index.js"
+    ],
+    "env": {
+      "SERP_API_KEY": "${user_config.serp_api_key}"
     }
   },
   "tools": [],
@@ -35,20 +33,22 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "google-news": {
-          "command": "node",
-          "args": ["dist/index.js"],
-          "env": {
-            "SERP_API_KEY": "your-api-key"
-          }
-        },
-        "chanmeng666-google-news-server": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {
-            "SERP_API_KEY": "your-api-key"
-          }
+      "google-news": {
+        "command": "node",
+        "args": [
+          "dist/index.js"
+        ],
+        "env": {
+          "SERP_API_KEY": "your-api-key"
+        }
+      },
+      "chanmeng666-google-news-server": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {
+          "SERP_API_KEY": "your-api-key"
         }
       }
     },

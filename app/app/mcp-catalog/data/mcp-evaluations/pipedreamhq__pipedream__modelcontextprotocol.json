@@ -8,18 +8,17 @@
     "name": "PipedreamHQ"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@pipedream/mcp"],
-      "env": {
-        "PIPEDREAM_CLIENT_ID": "${user_config.pipedream_client_id}",
-        "PIPEDREAM_CLIENT_SECRET": "${user_config.pipedream_client_secret}",
-        "PIPEDREAM_PROJECT_ID": "${user_config.pipedream_project_id}",
-        "PIPEDREAM_PROJECT_ENVIRONMENT": "${user_config.pipedream_project_environment}",
-        "PD_SDK_DEBUG": "${user_config.pd_sdk_debug}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@pipedream/mcp"
+    ],
+    "env": {
+      "PIPEDREAM_CLIENT_ID": "${user_config.pipedream_client_id}",
+      "PIPEDREAM_CLIENT_SECRET": "${user_config.pipedream_client_secret}",
+      "PIPEDREAM_PROJECT_ID": "${user_config.pipedream_project_id}",
+      "PIPEDREAM_PROJECT_ENVIRONMENT": "${user_config.pipedream_project_environment}",
+      "PD_SDK_DEBUG": "${user_config.pd_sdk_debug}"
     }
   },
   "tools": [],
@@ -67,67 +66,74 @@
   "quality_score": 68,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "pipedream-mcp": {
-          "command": "npx",
-          "args": ["-y", "@pipedream/mcp"],
-          "env": {
-            "PIPEDREAM_CLIENT_ID": "your_client_id",
-            "PIPEDREAM_CLIENT_SECRET": "your_client_secret",
-            "PIPEDREAM_PROJECT_ID": "your_project_id",
-            "PIPEDREAM_PROJECT_ENVIRONMENT": "development"
-          }
-        },
-        "pipedream-connect-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-d",
-            "--name",
-            "pd-mcp",
-            "-p",
-            "3010:3010",
-            "--env-file",
-            ".env",
-            "pipedream-connect:latest"
-          ],
-          "env": {
-            "PIPEDREAM_CLIENT_ID": "your_client_id",
-            "PIPEDREAM_CLIENT_SECRET": "your_client_secret",
-            "PIPEDREAM_PROJECT_ID": "your_project_id",
-            "PIPEDREAM_PROJECT_ENVIRONMENT": "development"
-          }
-        },
-        "pipedream-mcp-http": {
-          "command": "pnpm",
-          "args": ["dev:http"],
-          "env": {
-            "PIPEDREAM_CLIENT_ID": "your_client_id",
-            "PIPEDREAM_CLIENT_SECRET": "your_client_secret",
-            "PIPEDREAM_PROJECT_ID": "your_project_id",
-            "PIPEDREAM_PROJECT_ENVIRONMENT": "development"
-          }
-        },
-        "pipedream-mcp-http-debug": {
-          "command": "pnpm",
-          "args": ["dev:http"],
-          "env": {
-            "PD_SDK_DEBUG": "true",
-            "PIPEDREAM_CLIENT_ID": "your_client_id",
-            "PIPEDREAM_CLIENT_SECRET": "your_client_secret",
-            "PIPEDREAM_PROJECT_ID": "your_project_id",
-            "PIPEDREAM_PROJECT_ENVIRONMENT": "development"
-          }
-        },
-        "pipedream-mcp-stdio": {
-          "command": "bun",
-          "args": ["src/stdio.ts"],
-          "env": {
-            "PIPEDREAM_CLIENT_ID": "your_client_id",
-            "PIPEDREAM_CLIENT_SECRET": "your_client_secret",
-            "PIPEDREAM_PROJECT_ID": "your_project_id",
-            "PIPEDREAM_PROJECT_ENVIRONMENT": "development"
-          }
+      "pipedream-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@pipedream/mcp"
+        ],
+        "env": {
+          "PIPEDREAM_CLIENT_ID": "your_client_id",
+          "PIPEDREAM_CLIENT_SECRET": "your_client_secret",
+          "PIPEDREAM_PROJECT_ID": "your_project_id",
+          "PIPEDREAM_PROJECT_ENVIRONMENT": "development"
+        }
+      },
+      "pipedream-connect-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-d",
+          "--name",
+          "pd-mcp",
+          "-p",
+          "3010:3010",
+          "--env-file",
+          ".env",
+          "pipedream-connect:latest"
+        ],
+        "env": {
+          "PIPEDREAM_CLIENT_ID": "your_client_id",
+          "PIPEDREAM_CLIENT_SECRET": "your_client_secret",
+          "PIPEDREAM_PROJECT_ID": "your_project_id",
+          "PIPEDREAM_PROJECT_ENVIRONMENT": "development"
+        }
+      },
+      "pipedream-mcp-http": {
+        "command": "pnpm",
+        "args": [
+          "dev:http"
+        ],
+        "env": {
+          "PIPEDREAM_CLIENT_ID": "your_client_id",
+          "PIPEDREAM_CLIENT_SECRET": "your_client_secret",
+          "PIPEDREAM_PROJECT_ID": "your_project_id",
+          "PIPEDREAM_PROJECT_ENVIRONMENT": "development"
+        }
+      },
+      "pipedream-mcp-http-debug": {
+        "command": "pnpm",
+        "args": [
+          "dev:http"
+        ],
+        "env": {
+          "PD_SDK_DEBUG": "true",
+          "PIPEDREAM_CLIENT_ID": "your_client_id",
+          "PIPEDREAM_CLIENT_SECRET": "your_client_secret",
+          "PIPEDREAM_PROJECT_ID": "your_project_id",
+          "PIPEDREAM_PROJECT_ENVIRONMENT": "development"
+        }
+      },
+      "pipedream-mcp-stdio": {
+        "command": "bun",
+        "args": [
+          "src/stdio.ts"
+        ],
+        "env": {
+          "PIPEDREAM_CLIENT_ID": "your_client_id",
+          "PIPEDREAM_CLIENT_SECRET": "your_client_secret",
+          "PIPEDREAM_PROJECT_ID": "your_project_id",
+          "PIPEDREAM_PROJECT_ENVIRONMENT": "development"
         }
       }
     },

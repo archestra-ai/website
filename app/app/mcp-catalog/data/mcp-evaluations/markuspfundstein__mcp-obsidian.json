@@ -8,16 +8,14 @@
     "name": "MarkusPfundstein"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-obsidian"],
-      "env": {
-        "OBSIDIAN_API_KEY": "${user_config.obsidian_api_key}",
-        "OBSIDIAN_HOST": "${user_config.obsidian_host}",
-        "OBSIDIAN_PORT": "${user_config.obsidian_port}"
-      }
+    "command": "uvx",
+    "args": [
+      "mcp-obsidian"
+    ],
+    "env": {
+      "OBSIDIAN_API_KEY": "${user_config.obsidian_api_key}",
+      "OBSIDIAN_HOST": "${user_config.obsidian_host}",
+      "OBSIDIAN_PORT": "${user_config.obsidian_port}"
     }
   },
   "tools": [],
@@ -51,24 +49,29 @@
   "quality_score": 79,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-obsidian-unpublished": {
-          "command": "uv",
-          "args": ["--directory", "<dir_to>/mcp-obsidian", "run", "mcp-obsidian"],
-          "env": {
-            "OBSIDIAN_API_KEY": "<your_api_key_here>",
-            "OBSIDIAN_HOST": "<your_obsidian_host>",
-            "OBSIDIAN_PORT": "<your_obsidian_port>"
-          }
-        },
-        "mcp-obsidian-published": {
-          "command": "uvx",
-          "args": ["mcp-obsidian"],
-          "env": {
-            "OBSIDIAN_API_KEY": "<YOUR_OBSIDIAN_API_KEY>",
-            "OBSIDIAN_HOST": "<your_obsidian_host>",
-            "OBSIDIAN_PORT": "<your_obsidian_port>"
-          }
+      "mcp-obsidian-unpublished": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "<dir_to>/mcp-obsidian",
+          "run",
+          "mcp-obsidian"
+        ],
+        "env": {
+          "OBSIDIAN_API_KEY": "<your_api_key_here>",
+          "OBSIDIAN_HOST": "<your_obsidian_host>",
+          "OBSIDIAN_PORT": "<your_obsidian_port>"
+        }
+      },
+      "mcp-obsidian-published": {
+        "command": "uvx",
+        "args": [
+          "mcp-obsidian"
+        ],
+        "env": {
+          "OBSIDIAN_API_KEY": "<YOUR_OBSIDIAN_API_KEY>",
+          "OBSIDIAN_HOST": "<your_obsidian_host>",
+          "OBSIDIAN_PORT": "<your_obsidian_port>"
         }
       }
     },

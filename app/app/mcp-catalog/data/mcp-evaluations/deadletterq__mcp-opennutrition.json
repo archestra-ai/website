@@ -8,13 +8,11 @@
     "name": "deadletterq"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,15 +23,13 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-opennutrition": {
-          "command": "node",
-          "args": [
-            "/Users/YOUR.USERNAME/.nvm/versions/node/v20.19.0/bin/node",
-            "/ABSOLUTE/PATH/TO/PARENT/FOLDER/mcp-opennutrition/build/index.js"
-          ],
-          "env": {}
-        }
+      "mcp-opennutrition": {
+        "command": "node",
+        "args": [
+          "/Users/YOUR.USERNAME/.nvm/versions/node/v20.19.0/bin/node",
+          "/ABSOLUTE/PATH/TO/PARENT/FOLDER/mcp-opennutrition/build/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

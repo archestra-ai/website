@@ -8,13 +8,11 @@
     "name": "pwh-pwh"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.ts",
-    "mcp_config": {
-      "command": "bunx",
-      "args": ["cal-mcp"],
-      "env": {}
-    }
+    "command": "bunx",
+    "args": [
+      "cal-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,20 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "cal-mcp": {
-          "command": "bunx",
-          "args": ["cal-mcp"],
-          "env": {}
-        },
-        "cal-mcp-stdio": {
-          "command": "bun",
-          "args": ["run", "index.ts"],
-          "env": {}
-        }
+      "cal-mcp": {
+        "command": "bunx",
+        "args": [
+          "cal-mcp"
+        ],
+        "env": {}
+      },
+      "cal-mcp-stdio": {
+        "command": "bun",
+        "args": [
+          "run",
+          "index.ts"
+        ],
+        "env": {}
       }
     },
     "oauth": {

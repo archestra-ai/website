@@ -8,16 +8,12 @@
     "name": "jtang613"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "GhidrAssistMCPServer",
-    "mcp_config": {
-      "command": "./GhidrAssistMCPServer",
-      "args": [],
-      "env": {
-        "MCP_SERVER_HOST": "${user_config.mcp_server_host}",
-        "MCP_SERVER_PORT": "${user_config.mcp_server_port}",
-        "MCP_SERVER_ENABLED": "${user_config.mcp_server_enabled}"
-      }
+    "command": "./GhidrAssistMCPServer",
+    "args": [],
+    "env": {
+      "MCP_SERVER_HOST": "${user_config.mcp_server_host}",
+      "MCP_SERVER_PORT": "${user_config.mcp_server_port}",
+      "MCP_SERVER_ENABLED": "${user_config.mcp_server_enabled}"
     }
   },
   "tools": [],

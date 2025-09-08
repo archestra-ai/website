@@ -8,15 +8,13 @@
     "name": "giuseppe-coco"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp_server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/mcp_server.py"],
-      "env": {
-        "GOOGLE_CLIENT_SECRETS_FILE": "${user_config.google_client_secrets_file}",
-        "GOOGLE_TOKEN_FILE": "${user_config.google_token_file}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/mcp_server.py"
+    ],
+    "env": {
+      "GOOGLE_CLIENT_SECRETS_FILE": "${user_config.google_client_secrets_file}",
+      "GOOGLE_TOKEN_FILE": "${user_config.google_token_file}"
     }
   },
   "tools": [],
@@ -43,12 +41,12 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "GsuiteMCPServer": {
-          "command": "absolute-path-to-your-python-executable-in-virtual-environment",
-          "args": ["<mcp_server.py-abs-path>"],
-          "env": {}
-        }
+      "GsuiteMCPServer": {
+        "command": "absolute-path-to-your-python-executable-in-virtual-environment",
+        "args": [
+          "<mcp_server.py-abs-path>"
+        ],
+        "env": {}
       }
     },
     "oauth": {

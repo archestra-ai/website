@@ -8,14 +8,17 @@
     "name": "mem0ai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "main.py", "--host", "${user_config.host}", "--port", "${user_config.port}"],
-      "env": {
-        "MEM0_API_KEY": "${user_config.mem0_api_key}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "main.py",
+      "--host",
+      "${user_config.host}",
+      "--port",
+      "${user_config.port}"
+    ],
+    "env": {
+      "MEM0_API_KEY": "${user_config.mem0_api_key}"
     }
   },
   "tools": [],
@@ -51,17 +54,25 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-mem0": {
-          "command": "uv",
-          "args": ["run", "main.py"],
-          "env": {}
-        },
-        "mcp-server-mem0-configured": {
-          "command": "uv",
-          "args": ["run", "main.py", "--host", "<your host>", "--port", "<your port>"],
-          "env": {}
-        }
+      "mcp-server-mem0": {
+        "command": "uv",
+        "args": [
+          "run",
+          "main.py"
+        ],
+        "env": {}
+      },
+      "mcp-server-mem0-configured": {
+        "command": "uv",
+        "args": [
+          "run",
+          "main.py",
+          "--host",
+          "<your host>",
+          "--port",
+          "<your port>"
+        ],
+        "env": {}
       }
     },
     "oauth": {

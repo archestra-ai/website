@@ -8,14 +8,13 @@
     "name": "alexbakers"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-ipfs"],
-      "env": {
-        "W3_LOGIN_EMAIL": "${user_config.w3_login_email}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-ipfs"
+    ],
+    "env": {
+      "W3_LOGIN_EMAIL": "${user_config.w3_login_email}"
     }
   },
   "tools": [],
@@ -35,29 +34,30 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-ipfs": {
-          "command": "npx",
-          "args": ["-y", "mcp-ipfs"],
-          "env": {
-            "W3_LOGIN_EMAIL": "your-email@example.com"
-          }
-        },
-        "alexbakers-mcp-ipfs-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-v",
-            "/path/to/your/project:/path/to/your/project",
-            "-e",
-            "W3_LOGIN_EMAIL",
-            "alexbakers/mcp-ipfs"
-          ],
-          "env": {
-            "W3_LOGIN_EMAIL": "your-email@example.com"
-          }
+      "mcp-ipfs": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-ipfs"
+        ],
+        "env": {
+          "W3_LOGIN_EMAIL": "your-email@example.com"
+        }
+      },
+      "alexbakers-mcp-ipfs-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-v",
+          "/path/to/your/project:/path/to/your/project",
+          "-e",
+          "W3_LOGIN_EMAIL",
+          "alexbakers/mcp-ipfs"
+        ],
+        "env": {
+          "W3_LOGIN_EMAIL": "your-email@example.com"
         }
       }
     },

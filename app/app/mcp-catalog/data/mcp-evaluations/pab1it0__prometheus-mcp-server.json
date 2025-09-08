@@ -8,33 +8,29 @@
     "name": "pab1it0"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/prometheus_mcp_server/main.py",
-    "mcp_config": {
-      "command": "docker",
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "-e",
-        "PROMETHEUS_URL",
-        "-e",
-        "PROMETHEUS_USERNAME",
-        "-e",
-        "PROMETHEUS_PASSWORD",
-        "-e",
-        "PROMETHEUS_TOKEN",
-        "-e",
-        "ORG_ID",
-        "ghcr.io/pab1it0/prometheus-mcp-server:latest"
-      ],
-      "env": {
-        "PROMETHEUS_URL": "${user_config.prometheus_url}",
-        "PROMETHEUS_USERNAME": "${user_config.prometheus_username}",
-        "PROMETHEUS_PASSWORD": "${user_config.prometheus_password}",
-        "PROMETHEUS_TOKEN": "${user_config.prometheus_token}",
-        "ORG_ID": "${user_config.org_id}"
-      }
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "PROMETHEUS_URL",
+      "-e",
+      "PROMETHEUS_USERNAME",
+      "-e",
+      "PROMETHEUS_PASSWORD",
+      "-e",
+      "PROMETHEUS_TOKEN",
+      "-e",
+      "ORG_ID",
+      "ghcr.io/pab1it0/prometheus-mcp-server:latest"
+    ],
+    "env": {
+      "PROMETHEUS_URL": "${user_config.prometheus_url}",
+      "PROMETHEUS_USERNAME": "${user_config.prometheus_username}",
+      "PROMETHEUS_PASSWORD": "${user_config.prometheus_password}",
+      "PROMETHEUS_TOKEN": "${user_config.prometheus_token}",
+      "ORG_ID": "${user_config.org_id}"
     }
   },
   "tools": [],
@@ -82,13 +78,18 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "prometheus-mcp-server-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "PROMETHEUS_URL", "ghcr.io/pab1it0/prometheus-mcp-server:latest"],
-          "env": {
-            "PROMETHEUS_URL": "<url>"
-          }
+      "prometheus-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "PROMETHEUS_URL",
+          "ghcr.io/pab1it0/prometheus-mcp-server:latest"
+        ],
+        "env": {
+          "PROMETHEUS_URL": "<url>"
         }
       }
     },

@@ -8,16 +8,15 @@
     "name": "antvis"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@antv/mcp-server-chart"],
-      "env": {
-        "VIS_REQUEST_SERVER": "${user_config.vis_request_server}",
-        "SERVICE_ID": "${user_config.service_id}",
-        "DISABLED_TOOLS": "${user_config.disabled_tools}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@antv/mcp-server-chart"
+    ],
+    "env": {
+      "VIS_REQUEST_SERVER": "${user_config.vis_request_server}",
+      "SERVICE_ID": "${user_config.service_id}",
+      "DISABLED_TOOLS": "${user_config.disabled_tools}"
     }
   },
   "tools": [],
@@ -51,32 +50,48 @@
   "quality_score": 72,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "antv-mcp-server-chart": {
-          "command": "npx",
-          "args": ["-y", "@antv/mcp-server-chart"],
-          "env": {}
-        },
-        "antv-mcp-server-chart-windows": {
-          "command": "cmd",
-          "args": ["/c", "npx", "-y", "@antv/mcp-server-chart"],
-          "env": {}
-        },
-        "antv-mcp-server-chart-sse": {
-          "command": "mcp-server-chart",
-          "args": ["--transport", "sse"],
-          "env": {}
-        },
-        "antv-mcp-server-chart-streamable": {
-          "command": "mcp-server-chart",
-          "args": ["--transport", "streamable"],
-          "env": {}
-        },
-        "antv-mcp-server-chart-docker-compose": {
-          "command": "docker",
-          "args": ["compose", "up", "-d"],
-          "env": {}
-        }
+      "antv-mcp-server-chart": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@antv/mcp-server-chart"
+        ],
+        "env": {}
+      },
+      "antv-mcp-server-chart-windows": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "npx",
+          "-y",
+          "@antv/mcp-server-chart"
+        ],
+        "env": {}
+      },
+      "antv-mcp-server-chart-sse": {
+        "command": "mcp-server-chart",
+        "args": [
+          "--transport",
+          "sse"
+        ],
+        "env": {}
+      },
+      "antv-mcp-server-chart-streamable": {
+        "command": "mcp-server-chart",
+        "args": [
+          "--transport",
+          "streamable"
+        ],
+        "env": {}
+      },
+      "antv-mcp-server-chart-docker-compose": {
+        "command": "docker",
+        "args": [
+          "compose",
+          "up",
+          "-d"
+        ],
+        "env": {}
       }
     },
     "oauth": {

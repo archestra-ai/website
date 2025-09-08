@@ -8,21 +8,17 @@
     "name": "twelvedata"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp_server_twelve_data",
-    "mcp_config": {
-      "command": "uvx",
-      "args": [
-        "mcp-server-twelve-data",
-        "-k",
-        "${user_config.twelve_data_api_key}",
-        "-u",
-        "${user_config.openai_api_key}"
-      ],
-      "env": {
-        "AUTH_HEADER": "${user_config.auth_header}",
-        "OPENAI_API_KEY": "${user_config.openai_api_key}"
-      }
+    "command": "uvx",
+    "args": [
+      "mcp-server-twelve-data",
+      "-k",
+      "${user_config.twelve_data_api_key}",
+      "-u",
+      "${user_config.openai_api_key}"
+    ],
+    "env": {
+      "AUTH_HEADER": "${user_config.auth_header}",
+      "OPENAI_API_KEY": "${user_config.openai_api_key}"
     }
   },
   "tools": [],
@@ -63,62 +59,88 @@
   "quality_score": 59,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-twelve-data-claude-utool": {
-          "command": "uvx",
-          "args": ["mcp-server-twelve-data@latest", "-k", "YOUR_TWELVE_DATA_API_KEY", "-u", "YOUR_OPEN_AI_APIKEY"],
-          "env": {}
-        },
-        "mcp-server-twelve-data-claude-10endpoints": {
-          "command": "uvx",
-          "args": ["mcp-server-twelve-data@latest", "-k", "YOUR_TWELVE_DATA_API_KEY", "-n", "10"],
-          "env": {}
-        },
-        "mcp-remote-twelvedata": {
-          "command": "npx",
-          "args": [
-            "mcp-remote",
-            "https://mcp.twelvedata.com/mcp",
-            "--header",
-            "Authorization:${AUTH_HEADER}",
-            "--header",
-            "X-OpenAPI-Key:${OPENAI_API_KEY}"
-          ],
-          "env": {
-            "AUTH_HEADER": "apikey YOUR_TWELVE_DATA_API_KEY",
-            "OPENAI_API_KEY": "YOUR_OPENAI_API_KEY"
-          }
-        },
-        "mcp-server-twelve-data-vscode-auto": {
-          "command": "uvx",
-          "args": ["mcp-server-twelve-data", "-k", "YOUR_TWELVE_DATA_API_KEY", "-u", "YOUR_OPENAI_API_KEY"],
-          "env": {}
-        },
-        "mcp-server-twelve-data-vscode-manual": {
-          "command": "uvx",
-          "args": ["mcp-server-twelve-data", "-k", "YOUR_TWELVE_DATA_API_KEY", "-u", "YOUR_OPENAI_API_KEY"],
-          "env": {}
-        },
-        "mcp-server-twelve-data-inspector": {
-          "command": "uvx",
-          "args": ["mcp-server-twelve-data@latest", "-k", "YOUR_TWELVE_DATA_API_KEY"],
-          "env": {}
-        },
-        "mcp-server-twelve-data-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "mcp-server-twelve-data",
-            "-k",
-            "YOUR_TWELVE_DATA_API_KEY",
-            "-u",
-            "YOUR_OPEN_AI_API_KEY",
-            "-t",
-            "streamable-http"
-          ],
-          "env": {}
+      "mcp-server-twelve-data-claude-utool": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-twelve-data@latest",
+          "-k",
+          "YOUR_TWELVE_DATA_API_KEY",
+          "-u",
+          "YOUR_OPEN_AI_APIKEY"
+        ],
+        "env": {}
+      },
+      "mcp-server-twelve-data-claude-10endpoints": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-twelve-data@latest",
+          "-k",
+          "YOUR_TWELVE_DATA_API_KEY",
+          "-n",
+          "10"
+        ],
+        "env": {}
+      },
+      "mcp-remote-twelvedata": {
+        "command": "npx",
+        "args": [
+          "mcp-remote",
+          "https://mcp.twelvedata.com/mcp",
+          "--header",
+          "Authorization:${AUTH_HEADER}",
+          "--header",
+          "X-OpenAPI-Key:${OPENAI_API_KEY}"
+        ],
+        "env": {
+          "AUTH_HEADER": "apikey YOUR_TWELVE_DATA_API_KEY",
+          "OPENAI_API_KEY": "YOUR_OPENAI_API_KEY"
         }
+      },
+      "mcp-server-twelve-data-vscode-auto": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-twelve-data",
+          "-k",
+          "YOUR_TWELVE_DATA_API_KEY",
+          "-u",
+          "YOUR_OPENAI_API_KEY"
+        ],
+        "env": {}
+      },
+      "mcp-server-twelve-data-vscode-manual": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-twelve-data",
+          "-k",
+          "YOUR_TWELVE_DATA_API_KEY",
+          "-u",
+          "YOUR_OPENAI_API_KEY"
+        ],
+        "env": {}
+      },
+      "mcp-server-twelve-data-inspector": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-twelve-data@latest",
+          "-k",
+          "YOUR_TWELVE_DATA_API_KEY"
+        ],
+        "env": {}
+      },
+      "mcp-server-twelve-data-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "mcp-server-twelve-data",
+          "-k",
+          "YOUR_TWELVE_DATA_API_KEY",
+          "-u",
+          "YOUR_OPEN_AI_API_KEY",
+          "-t",
+          "streamable-http"
+        ],
+        "env": {}
       }
     },
     "oauth": {

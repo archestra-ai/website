@@ -8,30 +8,27 @@
     "name": "korotovsky"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "slack-mcp-server",
-    "mcp_config": {
-      "command": "./slack-mcp-server",
-      "args": [],
-      "env": {
-        "SLACK_MCP_XOXC_TOKEN": "${user_config.slack_mcp_xoxc_token}",
-        "SLACK_MCP_XOXD_TOKEN": "${user_config.slack_mcp_xoxd_token}",
-        "SLACK_MCP_OAUTH_TOKEN": "${user_config.slack_mcp_oauth_token}",
-        "SLACK_MCP_ADD_MESSAGE_TOOL": "${user_config.slack_mcp_add_message_tool}"
-      }
+    "command": "./slack-mcp-server",
+    "args": [],
+    "env": {
+      "SLACK_MCP_XOXC_TOKEN": "${user_config.slack_mcp_xoxc_token}",
+      "SLACK_MCP_XOXD_TOKEN": "${user_config.slack_mcp_xoxd_token}",
+      "SLACK_MCP_OAUTH_TOKEN": "${user_config.slack_mcp_oauth_token}",
+      "SLACK_MCP_ADD_MESSAGE_TOOL": "${user_config.slack_mcp_add_message_tool}"
     }
   },
   "server_overridden": {
-    "type": "node",
-    "entry_point": "slack-mcp-server",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "slack-mcp-server@latest", "--transport", "stdio"],
-      "env": {
-        "SLACK_MCP_XOXC_TOKEN": "${user_config.slack_mcp_xoxc_token}",
-        "SLACK_MCP_XOXD_TOKEN": "${user_config.slack_mcp_xoxd_token}",
-        "SLACK_MCP_ADD_MESSAGE_TOOL": "${user_config.slack_mcp_add_message_tool}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "slack-mcp-server@latest",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "SLACK_MCP_XOXC_TOKEN": "${user_config.slack_mcp_xoxc_token}",
+      "SLACK_MCP_XOXD_TOKEN": "${user_config.slack_mcp_xoxd_token}",
+      "SLACK_MCP_ADD_MESSAGE_TOOL": "${user_config.slack_mcp_add_message_tool}"
     }
   },
   "tools": [],
@@ -99,9 +96,7 @@
   "category": "AI Tools",
   "quality_score": 70,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": "slack",
       "required": true

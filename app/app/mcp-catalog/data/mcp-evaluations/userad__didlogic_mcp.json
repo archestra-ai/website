@@ -8,14 +8,12 @@
     "name": "UserAd"
   },
   "server": {
-    "type": "python",
-    "entry_point": "didlogic_mcp",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["didlogic_mcp"],
-      "env": {
-        "DIDLOGIC_API_KEY": "${user_config.didlogic_api_key}"
-      }
+    "command": "uvx",
+    "args": [
+      "didlogic_mcp"
+    ],
+    "env": {
+      "DIDLOGIC_API_KEY": "${user_config.didlogic_api_key}"
     }
   },
   "tools": [],
@@ -35,20 +33,23 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "didlogic_mcp": {
-          "command": "uvx",
-          "args": ["didlogic_mcp"],
-          "env": {
-            "DIDLOGIC_API_KEY": "YOUR_DIDLOGIC_KEY"
-          }
-        },
-        "didlogic_mcp-python": {
-          "command": "python",
-          "args": ["-m", "didlogic_mcp"],
-          "env": {
-            "DIDLOGIC_API_KEY": "YOUR_DIDLOGIC_KEY"
-          }
+      "didlogic_mcp": {
+        "command": "uvx",
+        "args": [
+          "didlogic_mcp"
+        ],
+        "env": {
+          "DIDLOGIC_API_KEY": "YOUR_DIDLOGIC_KEY"
+        }
+      },
+      "didlogic_mcp-python": {
+        "command": "python",
+        "args": [
+          "-m",
+          "didlogic_mcp"
+        ],
+        "env": {
+          "DIDLOGIC_API_KEY": "YOUR_DIDLOGIC_KEY"
         }
       }
     },

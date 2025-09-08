@@ -8,13 +8,12 @@
     "name": "Azure"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "azure-mcp-server"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "azure-mcp-server"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,9 +23,7 @@
   "category": "AI Tools",
   "quality_score": 73,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

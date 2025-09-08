@@ -8,13 +8,13 @@
     "name": "promptexecution"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "just-mcp",
-    "mcp_config": {
-      "command": "${__dirname}/just-mcp",
-      "args": ["--stdio", "--directory", "${user_config.project_directory}"],
-      "env": {}
-    }
+    "command": "${__dirname}/just-mcp",
+    "args": [
+      "--stdio",
+      "--directory",
+      "${user_config.project_directory}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,32 +33,44 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "just-mcp-cargo-run": {
-          "command": "cargo",
-          "args": ["run", "--", "--stdio"],
-          "env": {}
-        },
-        "just-mcp-stdio": {
-          "command": "just-mcp",
-          "args": ["--stdio"],
-          "env": {}
-        },
-        "just-mcp-directory": {
-          "command": "just-mcp",
-          "args": ["--directory", "/path/to/project", "--stdio"],
-          "env": {}
-        },
-        "just-mcp-claude-desktop": {
-          "command": "/path/to/just-mcp",
-          "args": ["--stdio"],
-          "env": {}
-        },
-        "just-mcp-just-server": {
-          "command": "just",
-          "args": ["server"],
-          "env": {}
-        }
+      "just-mcp-cargo-run": {
+        "command": "cargo",
+        "args": [
+          "run",
+          "--",
+          "--stdio"
+        ],
+        "env": {}
+      },
+      "just-mcp-stdio": {
+        "command": "just-mcp",
+        "args": [
+          "--stdio"
+        ],
+        "env": {}
+      },
+      "just-mcp-directory": {
+        "command": "just-mcp",
+        "args": [
+          "--directory",
+          "/path/to/project",
+          "--stdio"
+        ],
+        "env": {}
+      },
+      "just-mcp-claude-desktop": {
+        "command": "/path/to/just-mcp",
+        "args": [
+          "--stdio"
+        ],
+        "env": {}
+      },
+      "just-mcp-just-server": {
+        "command": "just",
+        "args": [
+          "server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

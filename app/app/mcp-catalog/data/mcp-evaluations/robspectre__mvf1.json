@@ -8,13 +8,11 @@
     "name": "RobSpectre"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mvf1-cli",
-    "mcp_config": {
-      "command": "mvf1-cli",
-      "args": ["mcp"],
-      "env": {}
-    }
+    "command": "mvf1-cli",
+    "args": [
+      "mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,12 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mvf1-stdio": {
-          "command": "mvf1-cli",
-          "args": ["mcp"],
-          "env": {}
-        }
+      "mvf1-stdio": {
+        "command": "mvf1-cli",
+        "args": [
+          "mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,12 @@
     "name": "r-huijts"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@r-huijts/opentk-mcp"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@r-huijts/opentk-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,27 +24,35 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "r-huijts-opentk-mcp": {
-          "command": "npx",
-          "args": ["@r-huijts/opentk-mcp"],
-          "env": {}
-        },
-        "opentk": {
-          "command": "npx",
-          "args": ["-y", "@r-huijts/opentk-mcp"],
-          "env": {}
-        },
-        "opentk-stdio": {
-          "command": "npx",
-          "args": ["-y", "@r-huijts/opentk-mcp"],
-          "env": {}
-        },
-        "opentk-local": {
-          "command": "node",
-          "args": ["/absolute/path/to/your/opentk-mcp/dist/index.js"],
-          "env": {}
-        }
+      "r-huijts-opentk-mcp": {
+        "command": "npx",
+        "args": [
+          "@r-huijts/opentk-mcp"
+        ],
+        "env": {}
+      },
+      "opentk": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@r-huijts/opentk-mcp"
+        ],
+        "env": {}
+      },
+      "opentk-stdio": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@r-huijts/opentk-mcp"
+        ],
+        "env": {}
+      },
+      "opentk-local": {
+        "command": "node",
+        "args": [
+          "/absolute/path/to/your/opentk-mcp/dist/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

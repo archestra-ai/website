@@ -8,17 +8,18 @@
     "name": "OpenLinkSoftware"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp_sqlalchemy_server/__main__.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "mcp-sqlalchemy-server"],
-      "env": {
-        "ODBC_DSN": "${user_config.odbc_dsn}",
-        "ODBC_USER": "${user_config.odbc_user}",
-        "ODBC_PASSWORD": "${user_config.odbc_password}",
-        "API_KEY": "${user_config.api_key}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "mcp-sqlalchemy-server"
+    ],
+    "env": {
+      "ODBC_DSN": "${user_config.odbc_dsn}",
+      "ODBC_USER": "${user_config.odbc_user}",
+      "ODBC_PASSWORD": "${user_config.odbc_password}",
+      "API_KEY": "${user_config.api_key}"
     }
   },
   "tools": [],
@@ -61,16 +62,19 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-sqlalchemy-server": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/mcp-sqlalchemy-server", "run", "mcp-sqlalchemy-server"],
-          "env": {
-            "ODBC_DSN": "dsn_name",
-            "ODBC_USER": "username",
-            "ODBC_PASSWORD": "password",
-            "API_KEY": "sk-xxx"
-          }
+      "mcp-sqlalchemy-server": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/mcp-sqlalchemy-server",
+          "run",
+          "mcp-sqlalchemy-server"
+        ],
+        "env": {
+          "ODBC_DSN": "dsn_name",
+          "ODBC_USER": "username",
+          "ODBC_PASSWORD": "password",
+          "API_KEY": "sk-xxx"
         }
       }
     },

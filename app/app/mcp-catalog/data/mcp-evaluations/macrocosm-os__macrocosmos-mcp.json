@@ -8,14 +8,15 @@
     "name": "macrocosm-os"
   },
   "server": {
-    "type": "python",
-    "entry_point": "macrocosmos_mcp.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "macrocosmos_mcp.py"],
-      "env": {
-        "MC_API": "${user_config.mc_api}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "macrocosmos_mcp.py"
+    ],
+    "env": {
+      "MC_API": "${user_config.mc_api}"
     }
   },
   "tools": [],
@@ -35,13 +36,16 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "macrocosmos-configured": {
-          "command": "uv",
-          "args": ["--directory", "/full_path_to_repo/macrocosmos_mcp/src/", "run", "macrocosmos_mcp.py"],
-          "env": {
-            "MC_API": ""
-          }
+      "macrocosmos-configured": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/full_path_to_repo/macrocosmos_mcp/src/",
+          "run",
+          "macrocosmos_mcp.py"
+        ],
+        "env": {
+          "MC_API": ""
         }
       }
     },

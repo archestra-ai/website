@@ -8,31 +8,27 @@
     "name": "isaacwasserman"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp_snowflake_server",
-    "mcp_config": {
-      "command": "uvx",
-      "args": [
-        "--python=3.12",
-        "mcp_snowflake_server",
-        "{{#if user_config.allow_write}}--allow-write{{/if}}",
-        "{{#if user_config.log_directory}}--log-dir{{/if}}",
-        "{{#if user_config.log_directory}}${user_config.log_directory}{{/if}}",
-        "{{#if user_config.log_level}}--log-level{{/if}}",
-        "{{#if user_config.log_level}}${user_config.log_level}{{/if}}",
-        "{{#if user_config.exclude_tools}}--exclude-tools{{/if}}",
-        "{{#if user_config.exclude_tools}}${user_config.exclude_tools}{{/if}}"
-      ],
-      "env": {
-        "SNOWFLAKE_USER": "${user_config.snowflake_user}",
-        "SNOWFLAKE_ACCOUNT": "${user_config.snowflake_account}",
-        "SNOWFLAKE_ROLE": "${user_config.snowflake_role}",
-        "SNOWFLAKE_DATABASE": "${user_config.snowflake_database}",
-        "SNOWFLAKE_SCHEMA": "${user_config.snowflake_schema}",
-        "SNOWFLAKE_WAREHOUSE": "${user_config.snowflake_warehouse}",
-        "SNOWFLAKE_PASSWORD": "${user_config.snowflake_password}",
-        "SNOWFLAKE_AUTHENTICATOR": "${user_config.snowflake_authenticator}"
-      }
+    "command": "uvx",
+    "args": [
+      "--python=3.12",
+      "mcp_snowflake_server",
+      "{{#if user_config.allow_write}}--allow-write{{/if}}",
+      "{{#if user_config.log_directory}}--log-dir{{/if}}",
+      "{{#if user_config.log_directory}}${user_config.log_directory}{{/if}}",
+      "{{#if user_config.log_level}}--log-level{{/if}}",
+      "{{#if user_config.log_level}}${user_config.log_level}{{/if}}",
+      "{{#if user_config.exclude_tools}}--exclude-tools{{/if}}",
+      "{{#if user_config.exclude_tools}}${user_config.exclude_tools}{{/if}}"
+    ],
+    "env": {
+      "SNOWFLAKE_USER": "${user_config.snowflake_user}",
+      "SNOWFLAKE_ACCOUNT": "${user_config.snowflake_account}",
+      "SNOWFLAKE_ROLE": "${user_config.snowflake_role}",
+      "SNOWFLAKE_DATABASE": "${user_config.snowflake_database}",
+      "SNOWFLAKE_SCHEMA": "${user_config.snowflake_schema}",
+      "SNOWFLAKE_WAREHOUSE": "${user_config.snowflake_warehouse}",
+      "SNOWFLAKE_PASSWORD": "${user_config.snowflake_password}",
+      "SNOWFLAKE_AUTHENTICATOR": "${user_config.snowflake_authenticator}"
     }
   },
   "tools": [],
@@ -122,59 +118,62 @@
   "quality_score": 67,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-snowflake-server-uvx": {
-          "command": "uvx",
-          "args": [
-            "--python=3.12",
-            "mcp_snowflake_server",
-            "--account",
-            "your_account",
-            "--warehouse",
-            "your_warehouse",
-            "--user",
-            "your_user",
-            "--password",
-            "your_password",
-            "--role",
-            "your_role",
-            "--database",
-            "your_database",
-            "--schema",
-            "your_schema",
-            "--allow_write",
-            "--log_dir",
-            "/absolute/path/to/logs",
-            "--log_level",
-            "INFO",
-            "--exclude_tools",
-            "{tool_name}"
-          ],
-          "env": {}
-        },
-        "mcp-snowflake-server-uv-run": {
-          "command": "uv",
-          "args": ["--directory", "/absolute/path/to/mcp_snowflake_server", "run", "mcp_snowflake_server"],
-          "env": {}
-        },
-        "mcp-snowflake-server-local-config": {
-          "command": "/absolute/path/to/uv",
-          "args": [
-            "--python=3.12",
-            "--directory",
-            "/absolute/path/to/mcp_snowflake_server",
-            "run",
-            "mcp_snowflake_server",
-            "--allow_write",
-            "--log_dir",
-            "/absolute/path/to/logs",
-            "--log_level",
-            "INFO",
-            "--exclude_tools",
-            "{tool_name}"
-          ],
-          "env": {}
-        }
+      "mcp-snowflake-server-uvx": {
+        "command": "uvx",
+        "args": [
+          "--python=3.12",
+          "mcp_snowflake_server",
+          "--account",
+          "your_account",
+          "--warehouse",
+          "your_warehouse",
+          "--user",
+          "your_user",
+          "--password",
+          "your_password",
+          "--role",
+          "your_role",
+          "--database",
+          "your_database",
+          "--schema",
+          "your_schema",
+          "--allow_write",
+          "--log_dir",
+          "/absolute/path/to/logs",
+          "--log_level",
+          "INFO",
+          "--exclude_tools",
+          "{tool_name}"
+        ],
+        "env": {}
+      },
+      "mcp-snowflake-server-uv-run": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/absolute/path/to/mcp_snowflake_server",
+          "run",
+          "mcp_snowflake_server"
+        ],
+        "env": {}
+      },
+      "mcp-snowflake-server-local-config": {
+        "command": "/absolute/path/to/uv",
+        "args": [
+          "--python=3.12",
+          "--directory",
+          "/absolute/path/to/mcp_snowflake_server",
+          "run",
+          "mcp_snowflake_server",
+          "--allow_write",
+          "--log_dir",
+          "/absolute/path/to/logs",
+          "--log_level",
+          "INFO",
+          "--exclude_tools",
+          "{tool_name}"
+        ],
+        "env": {}
       }
     },
     "oauth": {

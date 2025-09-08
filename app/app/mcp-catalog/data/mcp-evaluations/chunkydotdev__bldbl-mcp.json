@@ -8,17 +8,16 @@
     "name": "chunkydotdev"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@bldbl/mcp"],
-      "env": {
-        "BUILDABLE_API_KEY": "${user_config.buildable_api_key}",
-        "BUILDABLE_PROJECT_ID": "${user_config.buildable_project_id}",
-        "BUILDABLE_AI_ASSISTANT_ID": "${user_config.buildable_ai_assistant_id}",
-        "BUILDABLE_API_URL": "${user_config.buildable_api_url}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@bldbl/mcp"
+    ],
+    "env": {
+      "BUILDABLE_API_KEY": "${user_config.buildable_api_key}",
+      "BUILDABLE_PROJECT_ID": "${user_config.buildable_project_id}",
+      "BUILDABLE_AI_ASSISTANT_ID": "${user_config.buildable_ai_assistant_id}",
+      "BUILDABLE_API_URL": "${user_config.buildable_api_url}"
     }
   },
   "tools": [],
@@ -61,52 +60,65 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "bldbl-mcp-claude-desktop": {
-          "command": "npx",
-          "args": ["-y", "@bldbl/mcp"],
-          "env": {
-            "BUILDABLE_API_KEY": "bp_your_api_key_here",
-            "BUILDABLE_PROJECT_ID": "your-project-id",
-            "BUILDABLE_AI_ASSISTANT_ID": "claude-desktop"
-          }
-        },
-        "bldbl-mcp-cursor-ide": {
-          "command": "npx",
-          "args": ["-y", "@bldbl/mcp"],
-          "env": {
-            "BUILDABLE_API_KEY": "bp_your_api_key_here",
-            "BUILDABLE_PROJECT_ID": "your-project-id",
-            "BUILDABLE_AI_ASSISTANT_ID": "cursor-ide"
-          }
-        },
-        "bldbl-mcp-npx": {
-          "command": "npx",
-          "args": ["-y", "@bldbl/mcp"],
-          "env": {}
-        },
-        "bldbl-mcp-cli": {
-          "command": "bldbl",
-          "args": [],
-          "env": {}
-        },
-        "bldbl-mcp-frontend": {
-          "command": "npx",
-          "args": ["-y", "@bldbl/mcp"],
-          "env": {
-            "BUILDABLE_API_KEY": "bp_frontend_key_here",
-            "BUILDABLE_PROJECT_ID": "frontend-project-id",
-            "BUILDABLE_AI_ASSISTANT_ID": "claude-frontend"
-          }
-        },
-        "bldbl-mcp-backend": {
-          "command": "npx",
-          "args": ["-y", "@bldbl/mcp"],
-          "env": {
-            "BUILDABLE_API_KEY": "bp_backend_key_here",
-            "BUILDABLE_PROJECT_ID": "backend-project-id",
-            "BUILDABLE_AI_ASSISTANT_ID": "claude-backend"
-          }
+      "bldbl-mcp-claude-desktop": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@bldbl/mcp"
+        ],
+        "env": {
+          "BUILDABLE_API_KEY": "bp_your_api_key_here",
+          "BUILDABLE_PROJECT_ID": "your-project-id",
+          "BUILDABLE_AI_ASSISTANT_ID": "claude-desktop"
+        }
+      },
+      "bldbl-mcp-cursor-ide": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@bldbl/mcp"
+        ],
+        "env": {
+          "BUILDABLE_API_KEY": "bp_your_api_key_here",
+          "BUILDABLE_PROJECT_ID": "your-project-id",
+          "BUILDABLE_AI_ASSISTANT_ID": "cursor-ide"
+        }
+      },
+      "bldbl-mcp-npx": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@bldbl/mcp"
+        ],
+        "env": {}
+      },
+      "bldbl-mcp-cli": {
+        "command": "bldbl",
+        "args": [],
+        "env": {}
+      },
+      "bldbl-mcp-frontend": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@bldbl/mcp"
+        ],
+        "env": {
+          "BUILDABLE_API_KEY": "bp_frontend_key_here",
+          "BUILDABLE_PROJECT_ID": "frontend-project-id",
+          "BUILDABLE_AI_ASSISTANT_ID": "claude-frontend"
+        }
+      },
+      "bldbl-mcp-backend": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@bldbl/mcp"
+        ],
+        "env": {
+          "BUILDABLE_API_KEY": "bp_backend_key_here",
+          "BUILDABLE_PROJECT_ID": "backend-project-id",
+          "BUILDABLE_AI_ASSISTANT_ID": "claude-backend"
         }
       }
     },

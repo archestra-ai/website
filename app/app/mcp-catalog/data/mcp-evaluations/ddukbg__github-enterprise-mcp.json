@@ -8,17 +8,16 @@
     "name": "ddukbg"
   },
   "server": {
-    "type": "node",
-    "entry_point": "dist/index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@ddukbg/github-enterprise-mcp"],
-      "env": {
-        "GITHUB_TOKEN": "${user_config.github_token}",
-        "GITHUB_ENTERPRISE_URL": "${user_config.github_enterprise_url}",
-        "DEBUG": "${user_config.debug}",
-        "LANGUAGE": "${user_config.language}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@ddukbg/github-enterprise-mcp"
+    ],
+    "env": {
+      "GITHUB_TOKEN": "${user_config.github_token}",
+      "GITHUB_ENTERPRISE_URL": "${user_config.github_enterprise_url}",
+      "DEBUG": "${user_config.debug}",
+      "LANGUAGE": "${user_config.language}"
     }
   },
   "tools": [],
@@ -59,125 +58,143 @@
   "quality_score": 69,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "github-enterprise-mcp-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "3000:3000",
-            "-e",
-            "GITHUB_TOKEN=\"your_github_token\"",
-            "-e",
-            "GITHUB_ENTERPRISE_URL=\"https://github.your-company.com/api/v3\"",
-            "-e",
-            "DEBUG=true",
-            "github-enterprise-mcp"
-          ],
-          "env": {
-            "GITHUB_TOKEN": "your_github_token",
-            "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3",
-            "DEBUG": "true"
-          }
-        },
-        "github-enterprise-mcp-docker-override": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "3000:3000",
-            "-e",
-            "GITHUB_TOKEN=\"your_github_token\"",
-            "-e",
-            "GITHUB_ENTERPRISE_URL=\"https://github.your-company.com/api/v3\"",
-            "-e",
-            "DEBUG=true",
-            "github-enterprise-mcp",
-            "node",
-            "dist/index.js",
-            "--transport",
-            "http",
-            "--debug"
-          ],
-          "env": {
-            "GITHUB_TOKEN": "your_github_token",
-            "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3",
-            "DEBUG": "true"
-          }
-        },
-        "github-enterprise-mcp-docker-compose": {
-          "command": "docker-compose",
-          "args": ["up", "-d"],
-          "env": {
-            "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3",
-            "GITHUB_TOKEN": "your_github_token",
-            "DEBUG": "true"
-          }
-        },
-        "github-enterprise-mcp-dev": {
-          "command": "npm",
-          "args": ["run", "dev"],
-          "env": {
-            "GITHUB_TOKEN": "your_github_token",
-            "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3"
-          }
-        },
-        "github-enterprise-mcp-node-http": {
-          "command": "node",
-          "args": ["dist/index.js", "--transport", "http", "--debug"],
-          "env": {
-            "GITHUB_TOKEN": "your_github_token",
-            "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3"
-          }
-        },
-        "github-enterprise-mcp-node-http-cursor": {
-          "command": "node",
-          "args": ["dist/index.js", "--transport", "http"],
-          "env": {
-            "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3",
-            "GITHUB_TOKEN": "your_github_token"
-          }
-        },
-        "github-enterprise-mcp-global": {
-          "command": "github-enterprise-mcp",
-          "args": ["--transport=http", "--debug"],
-          "env": {
-            "GITHUB_TOKEN": "your_github_token",
-            "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3"
-          }
-        },
-        "ddukbg-github-enterprise-mcp-npx": {
-          "command": "npx",
-          "args": [
-            "@ddukbg/github-enterprise-mcp",
-            "--token=your_github_token",
-            "--github-enterprise-url=https://github.your-company.com/api/v3"
-          ],
-          "env": {
-            "GITHUB_TOKEN": "your_github_token",
-            "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3"
-          }
-        },
-        "ddukbg-github-enterprise-mcp-npx-claude": {
-          "command": "npx",
-          "args": [
-            "-y",
-            "@ddukbg/github-enterprise-mcp",
-            "--token=YOUR_GITHUB_TOKEN",
-            "--github-enterprise-url=YOUR_GITHUB_ENTERPRISE_URL"
-          ],
-          "env": {
-            "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN",
-            "GITHUB_ENTERPRISE_URL": "YOUR_GITHUB_ENTERPRISE_URL"
-          }
-        },
-        "ddukbg-github-enterprise-mcp-npx-cursor": {
-          "command": "npx",
-          "args": ["@ddukbg/github-enterprise-mcp"],
-          "env": {
-            "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3",
-            "GITHUB_TOKEN": "your_github_token"
-          }
+      "github-enterprise-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "3000:3000",
+          "-e",
+          "GITHUB_TOKEN=\"your_github_token\"",
+          "-e",
+          "GITHUB_ENTERPRISE_URL=\"https://github.your-company.com/api/v3\"",
+          "-e",
+          "DEBUG=true",
+          "github-enterprise-mcp"
+        ],
+        "env": {
+          "GITHUB_TOKEN": "your_github_token",
+          "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3",
+          "DEBUG": "true"
+        }
+      },
+      "github-enterprise-mcp-docker-override": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "3000:3000",
+          "-e",
+          "GITHUB_TOKEN=\"your_github_token\"",
+          "-e",
+          "GITHUB_ENTERPRISE_URL=\"https://github.your-company.com/api/v3\"",
+          "-e",
+          "DEBUG=true",
+          "github-enterprise-mcp",
+          "node",
+          "dist/index.js",
+          "--transport",
+          "http",
+          "--debug"
+        ],
+        "env": {
+          "GITHUB_TOKEN": "your_github_token",
+          "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3",
+          "DEBUG": "true"
+        }
+      },
+      "github-enterprise-mcp-docker-compose": {
+        "command": "docker-compose",
+        "args": [
+          "up",
+          "-d"
+        ],
+        "env": {
+          "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3",
+          "GITHUB_TOKEN": "your_github_token",
+          "DEBUG": "true"
+        }
+      },
+      "github-enterprise-mcp-dev": {
+        "command": "npm",
+        "args": [
+          "run",
+          "dev"
+        ],
+        "env": {
+          "GITHUB_TOKEN": "your_github_token",
+          "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3"
+        }
+      },
+      "github-enterprise-mcp-node-http": {
+        "command": "node",
+        "args": [
+          "dist/index.js",
+          "--transport",
+          "http",
+          "--debug"
+        ],
+        "env": {
+          "GITHUB_TOKEN": "your_github_token",
+          "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3"
+        }
+      },
+      "github-enterprise-mcp-node-http-cursor": {
+        "command": "node",
+        "args": [
+          "dist/index.js",
+          "--transport",
+          "http"
+        ],
+        "env": {
+          "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3",
+          "GITHUB_TOKEN": "your_github_token"
+        }
+      },
+      "github-enterprise-mcp-global": {
+        "command": "github-enterprise-mcp",
+        "args": [
+          "--transport=http",
+          "--debug"
+        ],
+        "env": {
+          "GITHUB_TOKEN": "your_github_token",
+          "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3"
+        }
+      },
+      "ddukbg-github-enterprise-mcp-npx": {
+        "command": "npx",
+        "args": [
+          "@ddukbg/github-enterprise-mcp",
+          "--token=your_github_token",
+          "--github-enterprise-url=https://github.your-company.com/api/v3"
+        ],
+        "env": {
+          "GITHUB_TOKEN": "your_github_token",
+          "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3"
+        }
+      },
+      "ddukbg-github-enterprise-mcp-npx-claude": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@ddukbg/github-enterprise-mcp",
+          "--token=YOUR_GITHUB_TOKEN",
+          "--github-enterprise-url=YOUR_GITHUB_ENTERPRISE_URL"
+        ],
+        "env": {
+          "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN",
+          "GITHUB_ENTERPRISE_URL": "YOUR_GITHUB_ENTERPRISE_URL"
+        }
+      },
+      "ddukbg-github-enterprise-mcp-npx-cursor": {
+        "command": "npx",
+        "args": [
+          "@ddukbg/github-enterprise-mcp"
+        ],
+        "env": {
+          "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3",
+          "GITHUB_TOKEN": "your_github_token"
         }
       }
     },

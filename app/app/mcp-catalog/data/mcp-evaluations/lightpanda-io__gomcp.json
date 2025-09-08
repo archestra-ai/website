@@ -8,13 +8,9 @@
     "name": "lightpanda-io"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "lightpanda-mcp-server",
-    "mcp_config": {
-      "command": "./lightpanda-mcp-server",
-      "args": [],
-      "env": {}
-    }
+    "command": "./lightpanda-mcp-server",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,22 +21,28 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "gomcp-stdio": {
-          "command": "/path/to/gomcp",
-          "args": ["stdio"],
-          "env": {}
-        },
-        "gomcp-remote-stdio": {
-          "command": "gomcp",
-          "args": ["-cdp", "ws://127.0.0.1:9222", "stdio"],
-          "env": {}
-        },
-        "gomcp-sse": {
-          "command": "./gomcp",
-          "args": ["sse"],
-          "env": {}
-        }
+      "gomcp-stdio": {
+        "command": "/path/to/gomcp",
+        "args": [
+          "stdio"
+        ],
+        "env": {}
+      },
+      "gomcp-remote-stdio": {
+        "command": "gomcp",
+        "args": [
+          "-cdp",
+          "ws://127.0.0.1:9222",
+          "stdio"
+        ],
+        "env": {}
+      },
+      "gomcp-sse": {
+        "command": "./gomcp",
+        "args": [
+          "sse"
+        ],
+        "env": {}
       }
     },
     "oauth": {

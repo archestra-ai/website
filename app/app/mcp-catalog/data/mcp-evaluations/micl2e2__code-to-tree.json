@@ -8,13 +8,9 @@
     "name": "micl2e2"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "code-to-tree",
-    "mcp_config": {
-      "command": "${user_config.code_to_tree_path}",
-      "args": [],
-      "env": {}
-    }
+    "command": "${user_config.code_to_tree_path}",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -32,17 +28,15 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "code-to-tree-windows": {
-          "command": "C:\\path\\to\\code-to-tree.exe",
-          "args": [],
-          "env": {}
-        },
-        "code-to-tree-macos": {
-          "command": "/path/to/code-to-tree",
-          "args": [],
-          "env": {}
-        }
+      "code-to-tree-windows": {
+        "command": "C:\\path\\to\\code-to-tree.exe",
+        "args": [],
+        "env": {}
+      },
+      "code-to-tree-macos": {
+        "command": "/path/to/code-to-tree",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,17 +8,16 @@
     "name": "growthbook"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@growthbook/mcp"],
-      "env": {
-        "GB_API_KEY": "${user_config.gb_api_key}",
-        "GB_USER": "${user_config.gb_user}",
-        "GB_API_URL": "${user_config.gb_api_url}",
-        "GB_APP_ORIGIN": "${user_config.gb_app_origin}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@growthbook/mcp"
+    ],
+    "env": {
+      "GB_API_KEY": "${user_config.gb_api_key}",
+      "GB_USER": "${user_config.gb_user}",
+      "GB_API_URL": "${user_config.gb_api_url}",
+      "GB_APP_ORIGIN": "${user_config.gb_app_origin}"
     }
   },
   "tools": [],
@@ -61,16 +60,17 @@
   "quality_score": 59,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "growthbook-mcp": {
-          "command": "npx",
-          "args": ["-y", "@growthbook/mcp"],
-          "env": {
-            "GB_API_KEY": "YOUR_API_KEY",
-            "GB_API_URL": "YOUR_API_URL",
-            "GB_APP_ORIGIN": "YOUR_APP_ORIGIN",
-            "GB_USER": "YOUR_NAME"
-          }
+      "growthbook-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@growthbook/mcp"
+        ],
+        "env": {
+          "GB_API_KEY": "YOUR_API_KEY",
+          "GB_API_URL": "YOUR_API_URL",
+          "GB_APP_ORIGIN": "YOUR_APP_ORIGIN",
+          "GB_USER": "YOUR_NAME"
         }
       }
     },

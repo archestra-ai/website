@@ -8,13 +8,13 @@
     "name": "longevity-genie"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["biothings-mcp", "--output-dir", "${user_config.output_dir}"],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "biothings-mcp",
+      "--output-dir",
+      "${user_config.output_dir}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -32,37 +32,55 @@
   "quality_score": 43,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "biothings-mcp-stdio": {
-          "command": "uvx",
-          "args": ["biothings-mcp"],
-          "env": {}
-        },
-        "biothings-mcp-stdio-explicit": {
-          "command": "uvx",
-          "args": ["--from", "biothings-mcp", "stdio"],
-          "env": {}
-        },
-        "biothings-mcp-server": {
-          "command": "uvx",
-          "args": ["biothings-mcp", "server"],
-          "env": {}
-        },
-        "biothings-mcp-server-port-8000": {
-          "command": "uvx",
-          "args": ["biothings-mcp", "server", "--port", "8000"],
-          "env": {}
-        },
-        "biothings-mcp-sse": {
-          "command": "uvx",
-          "args": ["biothings-mcp", "sse"],
-          "env": {}
-        },
-        "biothings-mcp-repo": {
-          "command": "uv",
-          "args": ["run", "server"],
-          "env": {}
-        }
+      "biothings-mcp-stdio": {
+        "command": "uvx",
+        "args": [
+          "biothings-mcp"
+        ],
+        "env": {}
+      },
+      "biothings-mcp-stdio-explicit": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "biothings-mcp",
+          "stdio"
+        ],
+        "env": {}
+      },
+      "biothings-mcp-server": {
+        "command": "uvx",
+        "args": [
+          "biothings-mcp",
+          "server"
+        ],
+        "env": {}
+      },
+      "biothings-mcp-server-port-8000": {
+        "command": "uvx",
+        "args": [
+          "biothings-mcp",
+          "server",
+          "--port",
+          "8000"
+        ],
+        "env": {}
+      },
+      "biothings-mcp-sse": {
+        "command": "uvx",
+        "args": [
+          "biothings-mcp",
+          "sse"
+        ],
+        "env": {}
+      },
+      "biothings-mcp-repo": {
+        "command": "uv",
+        "args": [
+          "run",
+          "server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

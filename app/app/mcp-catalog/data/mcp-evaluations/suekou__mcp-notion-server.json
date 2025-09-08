@@ -8,15 +8,14 @@
     "name": "suekou"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@suekou/mcp-notion-server"],
-      "env": {
-        "NOTION_API_TOKEN": "${user_config.notion_api_token}",
-        "NOTION_MARKDOWN_CONVERSION": "${user_config.notion_markdown_conversion}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@suekou/mcp-notion-server"
+    ],
+    "env": {
+      "NOTION_API_TOKEN": "${user_config.notion_api_token}",
+      "NOTION_MARKDOWN_CONVERSION": "${user_config.notion_markdown_conversion}"
     }
   },
   "tools": [],
@@ -43,45 +42,53 @@
   "quality_score": 67,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "suekou-mcp-notion-server": {
-          "command": "npx",
-          "args": ["-y", "@suekou/mcp-notion-server"],
-          "env": {
-            "NOTION_API_TOKEN": "your-integration-token"
-          }
-        },
-        "suekou-mcp-notion-server-markdown-conversion": {
-          "command": "npx",
-          "args": ["-y", "@suekou/mcp-notion-server"],
-          "env": {
-            "NOTION_API_TOKEN": "your-integration-token",
-            "NOTION_MARKDOWN_CONVERSION": "true"
-          }
-        },
-        "suekou-mcp-notion-server-local-build": {
-          "command": "node",
-          "args": ["your-built-file-path"],
-          "env": {
-            "NOTION_API_TOKEN": "your-integration-token"
-          }
-        },
-        "suekou-mcp-notion-server-local-build-markdown-conversion": {
-          "command": "node",
-          "args": ["your-built-file-path"],
-          "env": {
-            "NOTION_API_TOKEN": "your-integration-token",
-            "NOTION_MARKDOWN_CONVERSION": "true"
-          }
-        },
-        "suekou-mcp-notion-server-local-build-readonly-tools": {
-          "command": "node",
-          "args": [
-            "build/index.js",
-            "--enabledTools=notion_retrieve_block,notion_retrieve_block_children,notion_retrieve_page,notion_query_database,notion_retrieve_database,notion_search,notion_list_all_users,notion_retrieve_user,notion_retrieve_bot_user,notion_retrieve_comments"
-          ],
-          "env": {}
+      "suekou-mcp-notion-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@suekou/mcp-notion-server"
+        ],
+        "env": {
+          "NOTION_API_TOKEN": "your-integration-token"
         }
+      },
+      "suekou-mcp-notion-server-markdown-conversion": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@suekou/mcp-notion-server"
+        ],
+        "env": {
+          "NOTION_API_TOKEN": "your-integration-token",
+          "NOTION_MARKDOWN_CONVERSION": "true"
+        }
+      },
+      "suekou-mcp-notion-server-local-build": {
+        "command": "node",
+        "args": [
+          "your-built-file-path"
+        ],
+        "env": {
+          "NOTION_API_TOKEN": "your-integration-token"
+        }
+      },
+      "suekou-mcp-notion-server-local-build-markdown-conversion": {
+        "command": "node",
+        "args": [
+          "your-built-file-path"
+        ],
+        "env": {
+          "NOTION_API_TOKEN": "your-integration-token",
+          "NOTION_MARKDOWN_CONVERSION": "true"
+        }
+      },
+      "suekou-mcp-notion-server-local-build-readonly-tools": {
+        "command": "node",
+        "args": [
+          "build/index.js",
+          "--enabledTools=notion_retrieve_block,notion_retrieve_block_children,notion_retrieve_page,notion_query_database,notion_retrieve_database,notion_search,notion_list_all_users,notion_retrieve_user,notion_retrieve_bot_user,notion_retrieve_comments"
+        ],
+        "env": {}
       }
     },
     "oauth": {

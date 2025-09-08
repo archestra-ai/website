@@ -8,14 +8,13 @@
     "name": "mzxrai"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@mzxrai/mcp-openai@latest"],
-      "env": {
-        "OPENAI_API_KEY": "${user_config.openai_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@mzxrai/mcp-openai@latest"
+    ],
+    "env": {
+      "OPENAI_API_KEY": "${user_config.openai_api_key}"
     }
   },
   "tools": [],
@@ -35,13 +34,14 @@
   "quality_score": 64,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mzxrai-mcp-openai": {
-          "command": "npx",
-          "args": ["-y", "@mzxrai/mcp-openai@latest"],
-          "env": {
-            "OPENAI_API_KEY": "your-api-key-here (get one from https://platform.openai.com/api-keys)"
-          }
+      "mzxrai-mcp-openai": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@mzxrai/mcp-openai@latest"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "your-api-key-here (get one from https://platform.openai.com/api-keys)"
         }
       }
     },

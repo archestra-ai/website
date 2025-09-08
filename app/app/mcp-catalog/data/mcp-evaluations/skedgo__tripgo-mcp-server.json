@@ -8,14 +8,13 @@
     "name": "skedgo"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npm",
-      "args": ["run", "dev:local"],
-      "env": {
-        "API_KEY": "${user_config.api_key}"
-      }
+    "command": "npm",
+    "args": [
+      "run",
+      "dev:local"
+    ],
+    "env": {
+      "API_KEY": "${user_config.api_key}"
     }
   },
   "tools": [],
@@ -35,27 +34,37 @@
   "quality_score": 36,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-remote": {
-          "command": "npx",
-          "args": ["mcp-remote", "https://tripgo-mcp-server.skedgo-account.workers.dev/sse"],
-          "env": {}
-        },
-        "mcp-remote-local-target": {
-          "command": "npx",
-          "args": ["mcp-remote", "http://localhost:8787/sse"],
-          "env": {}
-        },
-        "tripgo-mcp-server-dev": {
-          "command": "npm",
-          "args": ["run", "dev:local"],
-          "env": {}
-        },
-        "tripgo-mcp-server-deploy": {
-          "command": "npm",
-          "args": ["run", "deploy"],
-          "env": {}
-        }
+      "mcp-remote": {
+        "command": "npx",
+        "args": [
+          "mcp-remote",
+          "https://tripgo-mcp-server.skedgo-account.workers.dev/sse"
+        ],
+        "env": {}
+      },
+      "mcp-remote-local-target": {
+        "command": "npx",
+        "args": [
+          "mcp-remote",
+          "http://localhost:8787/sse"
+        ],
+        "env": {}
+      },
+      "tripgo-mcp-server-dev": {
+        "command": "npm",
+        "args": [
+          "run",
+          "dev:local"
+        ],
+        "env": {}
+      },
+      "tripgo-mcp-server-deploy": {
+        "command": "npm",
+        "args": [
+          "run",
+          "deploy"
+        ],
+        "env": {}
       }
     },
     "oauth": {

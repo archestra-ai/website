@@ -8,19 +8,17 @@
     "name": "AbdelStark"
   },
   "server": {
-    "type": "node",
-    "entry_point": "src/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/src/index.js"],
-      "env": {
-        "LOG_LEVEL": "${user_config.log_level}",
-        "NODE_ENV": "${user_config.node_env}",
-        "NOSTR_RELAYS": "${user_config.nostr_relays}",
-        "NOSTR_NSEC_KEY": "${user_config.nostr_nsec_key}",
-        "SERVER_MODE": "${user_config.server_mode}",
-        "PORT": "${user_config.port}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/src/index.js"
+    ],
+    "env": {
+      "LOG_LEVEL": "${user_config.log_level}",
+      "NODE_ENV": "${user_config.node_env}",
+      "NOSTR_RELAYS": "${user_config.nostr_relays}",
+      "NOSTR_NSEC_KEY": "${user_config.nostr_nsec_key}",
+      "SERVER_MODE": "${user_config.server_mode}",
+      "PORT": "${user_config.port}"
     }
   },
   "tools": [],
@@ -75,17 +73,20 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "nostr-mcp-dev": {
-          "command": "npm",
-          "args": ["run", "dev"],
-          "env": {}
-        },
-        "nostr-mcp-prod": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        }
+      "nostr-mcp-dev": {
+        "command": "npm",
+        "args": [
+          "run",
+          "dev"
+        ],
+        "env": {}
+      },
+      "nostr-mcp-prod": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {}
       }
     },
     "oauth": {

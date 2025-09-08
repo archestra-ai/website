@@ -8,20 +8,16 @@
     "name": "ariadng"
   },
   "server": {
-    "type": "python",
-    "entry_point": "metatrader-mcp-server",
-    "mcp_config": {
-      "command": "metatrader-mcp-server",
-      "args": [
-        "--login",
-        "${user_config.login}",
-        "--password",
-        "${user_config.password}",
-        "--server",
-        "${user_config.server}"
-      ],
-      "env": {}
-    }
+    "command": "metatrader-mcp-server",
+    "args": [
+      "--login",
+      "${user_config.login}",
+      "--password",
+      "${user_config.password}",
+      "--server",
+      "${user_config.server}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -54,28 +50,33 @@
   "quality_score": 59,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "metatrader-mcp-server": {
-          "command": "metatrader-mcp-server",
-          "args": ["--login", "<YOUR_MT5_LOGIN>", "--password", "<YOUR_MT5_PASSWORD>", "--server", "<YOUR_MT5_SERVER>"],
-          "env": {}
-        },
-        "metatrader-http-server": {
-          "command": "metatrader-http-server",
-          "args": [
-            "--login",
-            "<YOUR_MT5_LOGIN>",
-            "--password",
-            "<YOUR_MT5_PASSWORD>",
-            "--server",
-            "<YOUR_MT5_SERVER>",
-            "--host",
-            "0.0.0.0",
-            "--port",
-            "8000"
-          ],
-          "env": {}
-        }
+      "metatrader-mcp-server": {
+        "command": "metatrader-mcp-server",
+        "args": [
+          "--login",
+          "<YOUR_MT5_LOGIN>",
+          "--password",
+          "<YOUR_MT5_PASSWORD>",
+          "--server",
+          "<YOUR_MT5_SERVER>"
+        ],
+        "env": {}
+      },
+      "metatrader-http-server": {
+        "command": "metatrader-http-server",
+        "args": [
+          "--login",
+          "<YOUR_MT5_LOGIN>",
+          "--password",
+          "<YOUR_MT5_PASSWORD>",
+          "--server",
+          "<YOUR_MT5_SERVER>",
+          "--host",
+          "0.0.0.0",
+          "--port",
+          "8000"
+        ],
+        "env": {}
       }
     },
     "oauth": {

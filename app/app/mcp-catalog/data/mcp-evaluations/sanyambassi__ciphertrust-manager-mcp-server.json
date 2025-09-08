@@ -8,17 +8,16 @@
     "name": "sanyambassi"
   },
   "server": {
-    "type": "python",
-    "entry_point": "ciphertrust_mcp_server/__main__.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "ciphertrust_mcp_server.__main__"],
-      "env": {
-        "CIPHERTRUST_URL": "${user_config.ciphertrust_url}",
-        "CIPHERTRUST_USER": "${user_config.ciphertrust_user}",
-        "CIPHERTRUST_PASSWORD": "${user_config.ciphertrust_password}",
-        "CIPHERTRUST_NOSSLVERIFY": "${user_config.ciphertrust_nosslverify}"
-      }
+    "command": "python",
+    "args": [
+      "-m",
+      "ciphertrust_mcp_server.__main__"
+    ],
+    "env": {
+      "CIPHERTRUST_URL": "${user_config.ciphertrust_url}",
+      "CIPHERTRUST_USER": "${user_config.ciphertrust_user}",
+      "CIPHERTRUST_PASSWORD": "${user_config.ciphertrust_password}",
+      "CIPHERTRUST_NOSSLVERIFY": "${user_config.ciphertrust_nosslverify}"
     }
   },
   "tools": [],
@@ -57,46 +56,60 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ciphertrust-mcp-server": {
-          "command": "uv",
-          "args": ["run", "ciphertrust-mcp-server"],
-          "env": {}
-        },
-        "ciphertrust-mcp-server-configured": {
-          "command": "uv",
-          "args": ["run", "ciphertrust-mcp-server"],
-          "env": {
-            "CIPHERTRUST_URL": "https://your-ciphertrust-manager.example.com",
-            "CIPHERTRUST_USER": "admin",
-            "CIPHERTRUST_PASSWORD": "your-password-here",
-            "CIPHERTRUST_NOSSLVERIFY": "true"
-          }
-        },
-        "ciphertrust_mcp_server": {
-          "command": "uv",
-          "args": ["run", "python", "-m", "ciphertrust_mcp_server.__main__"],
-          "env": {}
-        },
-        "ciphertrust_mcp_server-configured": {
-          "command": "uv",
-          "args": ["run", "python", "-m", "ciphertrust_mcp_server.__main__"],
-          "env": {
-            "CIPHERTRUST_URL": "https://your-ciphertrust-manager.example.com",
-            "CIPHERTRUST_USER": "admin",
-            "CIPHERTRUST_PASSWORD": "your-password-here",
-            "CIPHERTRUST_NOSSLVERIFY": "true"
-          }
-        },
-        "ciphertrust-mcp-server-cursor": {
-          "command": "ciphertrust-mcp-server",
-          "args": [],
-          "env": {
-            "CIPHERTRUST_URL": "https://your-ciphertrust-manager.example.com",
-            "CIPHERTRUST_USER": "admin",
-            "CIPHERTRUST_PASSWORD": "your-password-here",
-            "CIPHERTRUST_NOSSLVERIFY": "true"
-          }
+      "ciphertrust-mcp-server": {
+        "command": "uv",
+        "args": [
+          "run",
+          "ciphertrust-mcp-server"
+        ],
+        "env": {}
+      },
+      "ciphertrust-mcp-server-configured": {
+        "command": "uv",
+        "args": [
+          "run",
+          "ciphertrust-mcp-server"
+        ],
+        "env": {
+          "CIPHERTRUST_URL": "https://your-ciphertrust-manager.example.com",
+          "CIPHERTRUST_USER": "admin",
+          "CIPHERTRUST_PASSWORD": "your-password-here",
+          "CIPHERTRUST_NOSSLVERIFY": "true"
+        }
+      },
+      "ciphertrust_mcp_server": {
+        "command": "uv",
+        "args": [
+          "run",
+          "python",
+          "-m",
+          "ciphertrust_mcp_server.__main__"
+        ],
+        "env": {}
+      },
+      "ciphertrust_mcp_server-configured": {
+        "command": "uv",
+        "args": [
+          "run",
+          "python",
+          "-m",
+          "ciphertrust_mcp_server.__main__"
+        ],
+        "env": {
+          "CIPHERTRUST_URL": "https://your-ciphertrust-manager.example.com",
+          "CIPHERTRUST_USER": "admin",
+          "CIPHERTRUST_PASSWORD": "your-password-here",
+          "CIPHERTRUST_NOSSLVERIFY": "true"
+        }
+      },
+      "ciphertrust-mcp-server-cursor": {
+        "command": "ciphertrust-mcp-server",
+        "args": [],
+        "env": {
+          "CIPHERTRUST_URL": "https://your-ciphertrust-manager.example.com",
+          "CIPHERTRUST_USER": "admin",
+          "CIPHERTRUST_PASSWORD": "your-password-here",
+          "CIPHERTRUST_NOSSLVERIFY": "true"
         }
       }
     },

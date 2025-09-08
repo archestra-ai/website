@@ -8,17 +8,19 @@
     "name": "runekaagaard"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp_alchemy.server:main",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["--from", "mcp-alchemy==2025.7.9.172934", "--refresh-package", "mcp-alchemy", "mcp-alchemy"],
-      "env": {
-        "DB_URL": "${user_config.db_url}",
-        "CLAUDE_LOCAL_FILES_PATH": "${user_config.claude_local_files_path}",
-        "EXECUTE_QUERY_MAX_CHARS": "${user_config.execute_query_max_chars}",
-        "DB_ENGINE_OPTIONS": "${user_config.db_engine_options}"
-      }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "mcp-alchemy==2025.7.9.172934",
+      "--refresh-package",
+      "mcp-alchemy",
+      "mcp-alchemy"
+    ],
+    "env": {
+      "DB_URL": "${user_config.db_url}",
+      "CLAUDE_LOCAL_FILES_PATH": "${user_config.claude_local_files_path}",
+      "EXECUTE_QUERY_MAX_CHARS": "${user_config.execute_query_max_chars}",
+      "DB_ENGINE_OPTIONS": "${user_config.db_engine_options}"
     }
   },
   "tools": [],
@@ -58,111 +60,122 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-alchemy-sqlite": {
-          "command": "uvx",
-          "args": ["--from", "mcp-alchemy==2025.7.9.172934", "--refresh-package", "mcp-alchemy", "mcp-alchemy"],
-          "env": {
-            "DB_URL": "sqlite:////absolute/path/to/database.db"
-          }
-        },
-        "mcp-alchemy-postgresql": {
-          "command": "uvx",
-          "args": [
-            "--from",
-            "mcp-alchemy==2025.7.9.172934",
-            "--with",
-            "psycopg2-binary",
-            "--refresh-package",
-            "mcp-alchemy",
-            "mcp-alchemy"
-          ],
-          "env": {
-            "DB_URL": "postgresql://user:password@localhost/dbname"
-          }
-        },
-        "mcp-alchemy-mysql-mariadb": {
-          "command": "uvx",
-          "args": [
-            "--from",
-            "mcp-alchemy==2025.7.9.172934",
-            "--with",
-            "pymysql",
-            "--refresh-package",
-            "mcp-alchemy",
-            "mcp-alchemy"
-          ],
-          "env": {
-            "DB_URL": "mysql+pymysql://user:password@localhost/dbname"
-          }
-        },
-        "mcp-alchemy-mssql": {
-          "command": "uvx",
-          "args": [
-            "--from",
-            "mcp-alchemy==2025.7.9.172934",
-            "--with",
-            "pymssql",
-            "--refresh-package",
-            "mcp-alchemy",
-            "mcp-alchemy"
-          ],
-          "env": {
-            "DB_URL": "mssql+pymssql://user:password@localhost/dbname"
-          }
-        },
-        "mcp-alchemy-oracle": {
-          "command": "uvx",
-          "args": [
-            "--from",
-            "mcp-alchemy==2025.7.9.172934",
-            "--with",
-            "oracledb",
-            "--refresh-package",
-            "mcp-alchemy",
-            "mcp-alchemy"
-          ],
-          "env": {
-            "DB_URL": "oracle+oracledb://user:password@localhost/dbname"
-          }
-        },
-        "mcp-alchemy-cratedb": {
-          "command": "uvx",
-          "args": [
-            "--from",
-            "mcp-alchemy==2025.7.9.172934",
-            "--with",
-            "sqlalchemy-cratedb>=0.42.0.dev1",
-            "--refresh-package",
-            "mcp-alchemy",
-            "mcp-alchemy"
-          ],
-          "env": {
-            "DB_URL": "crate://user:password@localhost:4200/?schema=testdrive"
-          }
-        },
-        "mcp-alchemy-vertica": {
-          "command": "uvx",
-          "args": [
-            "--from",
-            "mcp-alchemy==2025.7.9.172934",
-            "--with",
-            "vertica-python",
-            "--refresh-package",
-            "mcp-alchemy",
-            "mcp-alchemy"
-          ],
-          "env": {
-            "DB_URL": "vertica+vertica_python://user:password@localhost:5433/dbname",
-            "DB_ENGINE_OPTIONS": "{\"connect_args\": {\"ssl\": false}}"
-          }
-        },
-        "mcp-alchemy-dev": {
-          "command": "uv",
-          "args": ["run", "--directory", "/path/to/mcp-alchemy", "-m", "mcp_alchemy.server", "main"],
-          "env": {
-            "DB_URL": "sqlite:////absolute/path/to/database.db"
-          }
+      "mcp-alchemy-sqlite": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "mcp-alchemy==2025.7.9.172934",
+          "--refresh-package",
+          "mcp-alchemy",
+          "mcp-alchemy"
+        ],
+        "env": {
+          "DB_URL": "sqlite:////absolute/path/to/database.db"
+        }
+      },
+      "mcp-alchemy-postgresql": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "mcp-alchemy==2025.7.9.172934",
+          "--with",
+          "psycopg2-binary",
+          "--refresh-package",
+          "mcp-alchemy",
+          "mcp-alchemy"
+        ],
+        "env": {
+          "DB_URL": "postgresql://user:password@localhost/dbname"
+        }
+      },
+      "mcp-alchemy-mysql-mariadb": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "mcp-alchemy==2025.7.9.172934",
+          "--with",
+          "pymysql",
+          "--refresh-package",
+          "mcp-alchemy",
+          "mcp-alchemy"
+        ],
+        "env": {
+          "DB_URL": "mysql+pymysql://user:password@localhost/dbname"
+        }
+      },
+      "mcp-alchemy-mssql": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "mcp-alchemy==2025.7.9.172934",
+          "--with",
+          "pymssql",
+          "--refresh-package",
+          "mcp-alchemy",
+          "mcp-alchemy"
+        ],
+        "env": {
+          "DB_URL": "mssql+pymssql://user:password@localhost/dbname"
+        }
+      },
+      "mcp-alchemy-oracle": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "mcp-alchemy==2025.7.9.172934",
+          "--with",
+          "oracledb",
+          "--refresh-package",
+          "mcp-alchemy",
+          "mcp-alchemy"
+        ],
+        "env": {
+          "DB_URL": "oracle+oracledb://user:password@localhost/dbname"
+        }
+      },
+      "mcp-alchemy-cratedb": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "mcp-alchemy==2025.7.9.172934",
+          "--with",
+          "sqlalchemy-cratedb>=0.42.0.dev1",
+          "--refresh-package",
+          "mcp-alchemy",
+          "mcp-alchemy"
+        ],
+        "env": {
+          "DB_URL": "crate://user:password@localhost:4200/?schema=testdrive"
+        }
+      },
+      "mcp-alchemy-vertica": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "mcp-alchemy==2025.7.9.172934",
+          "--with",
+          "vertica-python",
+          "--refresh-package",
+          "mcp-alchemy",
+          "mcp-alchemy"
+        ],
+        "env": {
+          "DB_URL": "vertica+vertica_python://user:password@localhost:5433/dbname",
+          "DB_ENGINE_OPTIONS": "{\"connect_args\": {\"ssl\": false}}"
+        }
+      },
+      "mcp-alchemy-dev": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--directory",
+          "/path/to/mcp-alchemy",
+          "-m",
+          "mcp_alchemy.server",
+          "main"
+        ],
+        "env": {
+          "DB_URL": "sqlite:////absolute/path/to/database.db"
         }
       }
     },

@@ -8,13 +8,12 @@
     "name": "diivi"
   },
   "server": {
-    "type": "python",
-    "entry_point": "aseprite_mcp",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "aseprite_mcp"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "-m",
+      "aseprite_mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,16 @@
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "aseprite_mcp": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/repo", "run", "-m", "aseprite_mcp"],
-          "env": {}
-        }
+      "aseprite_mcp": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/repo",
+          "run",
+          "-m",
+          "aseprite_mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

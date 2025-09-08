@@ -8,18 +8,16 @@
     "name": "chrishayuk"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp_cli/__main__.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/mcp_cli/__main__.py"],
-      "env": {
-        "LLM_PROVIDER": "${user_config.llm_provider}",
-        "LLM_MODEL": "${user_config.llm_model}",
-        "OPENAI_API_KEY": "${user_config.openai_api_key}",
-        "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
-        "MCP_TOOL_TIMEOUT": "${user_config.mcp_tool_timeout}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/mcp_cli/__main__.py"
+    ],
+    "env": {
+      "LLM_PROVIDER": "${user_config.llm_provider}",
+      "LLM_MODEL": "${user_config.llm_model}",
+      "OPENAI_API_KEY": "${user_config.openai_api_key}",
+      "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
+      "MCP_TOOL_TIMEOUT": "${user_config.mcp_tool_timeout}"
     }
   },
   "tools": [],

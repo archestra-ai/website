@@ -8,16 +8,14 @@
     "name": "freema"
   },
   "server": {
-    "type": "node",
-    "entry_point": "dist/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
-      "env": {
-        "GOOGLE_PROJECT_ID": "${user_config.google_project_id}",
-        "GOOGLE_APPLICATION_CREDENTIALS": "${user_config.google_application_credentials}",
-        "GOOGLE_SERVICE_ACCOUNT_KEY": "${user_config.google_service_account_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/index.js"
+    ],
+    "env": {
+      "GOOGLE_PROJECT_ID": "${user_config.google_project_id}",
+      "GOOGLE_APPLICATION_CREDENTIALS": "${user_config.google_application_credentials}",
+      "GOOGLE_SERVICE_ACCOUNT_KEY": "${user_config.google_service_account_key}"
     }
   },
   "tools": [],
@@ -51,43 +49,56 @@
   "quality_score": 64,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-gsheets": {
-          "command": "node",
-          "args": ["/absolute/path/to/mcp-gsheets/dist/index.js"],
-          "env": {
-            "GOOGLE_PROJECT_ID": "your-project-id",
-            "GOOGLE_APPLICATION_CREDENTIALS": "/absolute/path/to/service-account-key.json"
-          }
-        },
-        "mcp-gsheets-json-auth": {
-          "command": "node",
-          "args": ["/absolute/path/to/mcp-gsheets/dist/index.js"],
-          "env": {
-            "GOOGLE_PROJECT_ID": "your-project-id",
-            "GOOGLE_SERVICE_ACCOUNT_KEY": "{\"type\":\"service_account\",\"project_id\":\"your-project\",\"private_key_id\":\"...\",\"private_key\":\"-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----\\n\",\"client_email\":\"...@....iam.gserviceaccount.com\",\"client_id\":\"...\",\"auth_uri\":\"https://accounts.google.com/o/oauth2/auth\",\"token_uri\":\"https://oauth2.googleapis.com/token\",\"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\",\"client_x509_cert_url\":\"...\"}"
-          }
-        },
-        "mcp-gsheets-dev": {
-          "command": "npm",
-          "args": ["run", "dev"],
-          "env": {}
-        },
-        "mcp-gsheets-inspector": {
-          "command": "npm",
-          "args": ["run", "inspector"],
-          "env": {}
-        },
-        "mcp-gsheets-inspector-dev": {
-          "command": "npm",
-          "args": ["run", "inspector:dev"],
-          "env": {}
-        },
-        "mcp-gsheets-task-dev": {
-          "command": "task",
-          "args": ["dev"],
-          "env": {}
+      "mcp-gsheets": {
+        "command": "node",
+        "args": [
+          "/absolute/path/to/mcp-gsheets/dist/index.js"
+        ],
+        "env": {
+          "GOOGLE_PROJECT_ID": "your-project-id",
+          "GOOGLE_APPLICATION_CREDENTIALS": "/absolute/path/to/service-account-key.json"
         }
+      },
+      "mcp-gsheets-json-auth": {
+        "command": "node",
+        "args": [
+          "/absolute/path/to/mcp-gsheets/dist/index.js"
+        ],
+        "env": {
+          "GOOGLE_PROJECT_ID": "your-project-id",
+          "GOOGLE_SERVICE_ACCOUNT_KEY": "{\"type\":\"service_account\",\"project_id\":\"your-project\",\"private_key_id\":\"...\",\"private_key\":\"-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----\\n\",\"client_email\":\"...@....iam.gserviceaccount.com\",\"client_id\":\"...\",\"auth_uri\":\"https://accounts.google.com/o/oauth2/auth\",\"token_uri\":\"https://oauth2.googleapis.com/token\",\"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\",\"client_x509_cert_url\":\"...\"}"
+        }
+      },
+      "mcp-gsheets-dev": {
+        "command": "npm",
+        "args": [
+          "run",
+          "dev"
+        ],
+        "env": {}
+      },
+      "mcp-gsheets-inspector": {
+        "command": "npm",
+        "args": [
+          "run",
+          "inspector"
+        ],
+        "env": {}
+      },
+      "mcp-gsheets-inspector-dev": {
+        "command": "npm",
+        "args": [
+          "run",
+          "inspector:dev"
+        ],
+        "env": {}
+      },
+      "mcp-gsheets-task-dev": {
+        "command": "task",
+        "args": [
+          "dev"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,17 +8,17 @@
     "name": "araa47"
   },
   "server": {
-    "type": "python",
-    "entry_point": "run_server.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["--from", "git+https://github.com/araa47/jupiter-mcp", "jupiter-mcp"],
-      "env": {
-        "SOLANA_RPC_URL": "${user_config.solana_rpc_url}",
-        "PRIVATE_KEY": "${user_config.private_key}",
-        "SOLANA_NETWORK": "${user_config.solana_network}",
-        "REQUEST_TIMEOUT": "${user_config.request_timeout}"
-      }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/araa47/jupiter-mcp",
+      "jupiter-mcp"
+    ],
+    "env": {
+      "SOLANA_RPC_URL": "${user_config.solana_rpc_url}",
+      "PRIVATE_KEY": "${user_config.private_key}",
+      "SOLANA_NETWORK": "${user_config.solana_network}",
+      "REQUEST_TIMEOUT": "${user_config.request_timeout}"
     }
   },
   "tools": [],
@@ -61,54 +61,60 @@
   "quality_score": 41,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "jupiter-mcp": {
-          "command": "uvx",
-          "args": ["--from", "git+https://github.com/araa47/jupiter-mcp", "jupiter-mcp"],
-          "env": {
-            "SOLANA_RPC_URL": "https://api.mainnet-beta.solana.com",
-            "PRIVATE_KEY": "${PRIVATE_KEY}",
-            "SOLANA_NETWORK": "mainnet-beta",
-            "REQUEST_TIMEOUT": "30"
-          }
-        },
-        "jupiter-mcp-env-file": {
-          "command": "npx",
-          "args": [
-            "envmcp",
-            "--env-file",
-            "${ENV_FILE_PATH}",
-            "uvx",
-            "--from",
-            "git+https://github.com/araa47/jupiter-mcp",
-            "jupiter-mcp"
-          ],
-          "env": {
-            "ENV_FILE_PATH": ".env"
-          }
-        },
-        "jupiter-mcp-env-file-manual-path": {
-          "command": "npx",
-          "args": [
-            "envmcp",
-            "--env-file",
-            "/path/to/your/.env",
-            "uvx",
-            "--from",
-            "git+https://github.com/araa47/jupiter-mcp",
-            "jupiter-mcp"
-          ],
-          "env": {}
-        },
-        "jupiter-mcp-direct-input": {
-          "command": "uvx",
-          "args": ["--from", "git+https://github.com/araa47/jupiter-mcp", "jupiter-mcp"],
-          "env": {
-            "PRIVATE_KEY": "REPLACE_THIS",
-            "SOLANA_RPC_URL": "https://api.mainnet-beta.solana.com",
-            "SOLANA_NETWORK": "mainnet-beta",
-            "REQUEST_TIMEOUT": "30"
-          }
+      "jupiter-mcp": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/araa47/jupiter-mcp",
+          "jupiter-mcp"
+        ],
+        "env": {
+          "SOLANA_RPC_URL": "https://api.mainnet-beta.solana.com",
+          "PRIVATE_KEY": "${PRIVATE_KEY}",
+          "SOLANA_NETWORK": "mainnet-beta",
+          "REQUEST_TIMEOUT": "30"
+        }
+      },
+      "jupiter-mcp-env-file": {
+        "command": "npx",
+        "args": [
+          "envmcp",
+          "--env-file",
+          "${ENV_FILE_PATH}",
+          "uvx",
+          "--from",
+          "git+https://github.com/araa47/jupiter-mcp",
+          "jupiter-mcp"
+        ],
+        "env": {
+          "ENV_FILE_PATH": ".env"
+        }
+      },
+      "jupiter-mcp-env-file-manual-path": {
+        "command": "npx",
+        "args": [
+          "envmcp",
+          "--env-file",
+          "/path/to/your/.env",
+          "uvx",
+          "--from",
+          "git+https://github.com/araa47/jupiter-mcp",
+          "jupiter-mcp"
+        ],
+        "env": {}
+      },
+      "jupiter-mcp-direct-input": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/araa47/jupiter-mcp",
+          "jupiter-mcp"
+        ],
+        "env": {
+          "PRIVATE_KEY": "REPLACE_THIS",
+          "SOLANA_RPC_URL": "https://api.mainnet-beta.solana.com",
+          "SOLANA_NETWORK": "mainnet-beta",
+          "REQUEST_TIMEOUT": "30"
         }
       }
     },

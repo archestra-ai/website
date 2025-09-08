@@ -8,15 +8,13 @@
     "name": "Coding-Solo"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "DEBUG": "${user_config.debug}",
-        "GODOT_PATH": "${user_config.godot_path}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "DEBUG": "${user_config.debug}",
+      "GODOT_PATH": "${user_config.godot_path}"
     }
   },
   "tools": [],
@@ -43,13 +41,13 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "godot-mcp": {
-          "command": "node",
-          "args": ["/absolute/path/to/godot-mcp/build/index.js"],
-          "env": {
-            "DEBUG": "true"
-          }
+      "godot-mcp": {
+        "command": "node",
+        "args": [
+          "/absolute/path/to/godot-mcp/build/index.js"
+        ],
+        "env": {
+          "DEBUG": "true"
         }
       }
     },

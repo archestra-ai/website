@@ -8,14 +8,15 @@
     "name": "davidlin2k"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "server.py"],
-      "env": {
-        "POX_SERVER_URL": "${user_config.pox_server_url}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "server.py"
+    ],
+    "env": {
+      "POX_SERVER_URL": "${user_config.pox_server_url}"
     }
   },
   "tools": [],
@@ -35,13 +36,16 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "pox": {
-          "command": "uv",
-          "args": ["--directory", "parent_of_servers_repo/servers/src/mcp_server_pox", "run", "server.py"],
-          "env": {
-            "POX_SERVER_URL": "http://localhost:8000"
-          }
+      "pox": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "parent_of_servers_repo/servers/src/mcp_server_pox",
+          "run",
+          "server.py"
+        ],
+        "env": {
+          "POX_SERVER_URL": "http://localhost:8000"
         }
       }
     },

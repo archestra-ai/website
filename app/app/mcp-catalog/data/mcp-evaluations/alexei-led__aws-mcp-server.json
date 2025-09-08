@@ -8,20 +8,18 @@
     "name": "alexei-led"
   },
   "server": {
-    "type": "python",
-    "entry_point": "aws_mcp_server/main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/aws_mcp_server/main.py"],
-      "env": {
-        "AWS_MCP_TIMEOUT": "${user_config.aws_mcp_timeout}",
-        "AWS_MCP_MAX_OUTPUT": "${user_config.aws_mcp_max_output}",
-        "AWS_MCP_TRANSPORT": "${user_config.aws_mcp_transport}",
-        "AWS_PROFILE": "${user_config.aws_profile}",
-        "AWS_REGION": "${user_config.aws_region}",
-        "AWS_MCP_SECURITY_MODE": "${user_config.aws_mcp_security_mode}",
-        "AWS_MCP_SECURITY_CONFIG": "${user_config.aws_mcp_security_config}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/aws_mcp_server/main.py"
+    ],
+    "env": {
+      "AWS_MCP_TIMEOUT": "${user_config.aws_mcp_timeout}",
+      "AWS_MCP_MAX_OUTPUT": "${user_config.aws_mcp_max_output}",
+      "AWS_MCP_TRANSPORT": "${user_config.aws_mcp_transport}",
+      "AWS_PROFILE": "${user_config.aws_profile}",
+      "AWS_REGION": "${user_config.aws_region}",
+      "AWS_MCP_SECURITY_MODE": "${user_config.aws_mcp_security_mode}",
+      "AWS_MCP_SECURITY_CONFIG": "${user_config.aws_mcp_security_config}"
     }
   },
   "tools": [],
@@ -83,17 +81,24 @@
   "quality_score": 73,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "alexei-led-aws-mcp-server-docker": {
-          "command": "docker",
-          "args": ["compose", "-f", "deploy/docker/docker-compose.yml", "up", "-d"],
-          "env": {}
-        },
-        "aws_mcp_server": {
-          "command": "python",
-          "args": ["-m", "aws_mcp_server"],
-          "env": {}
-        }
+      "alexei-led-aws-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "compose",
+          "-f",
+          "deploy/docker/docker-compose.yml",
+          "up",
+          "-d"
+        ],
+        "env": {}
+      },
+      "aws_mcp_server": {
+        "command": "python",
+        "args": [
+          "-m",
+          "aws_mcp_server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

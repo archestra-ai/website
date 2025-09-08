@@ -8,31 +8,27 @@
     "name": "ckanthony"
   },
   "server": {
-    "type": "docker",
-    "entry_point": "openapi-mcp",
-    "mcp_config": {
-      "command": "docker",
-      "args": [
-        "run",
-        "--rm",
-        "-p",
-        "8080:8080",
-        "ckanthony/openapi-mcp:latest",
-        "--spec",
-        "https://petstore.swagger.io/v2/swagger.json",
-        "--api-key-env",
-        "SOME_API_KEY",
-        "--api-key-name",
-        "api_key",
-        "--api-key-loc",
-        "header"
-      ],
-      "env": {
-        "API_KEY": "${user_config.api_key}",
-        "SOME_API_KEY": "${user_config.some_api_key}",
-        "WEATHERBIT_API_KEY": "${user_config.weatherbit_api_key}",
-        "REQUEST_HEADERS": "${user_config.request_headers}"
-      }
+    "command": "docker",
+    "args": [
+      "run",
+      "--rm",
+      "-p",
+      "8080:8080",
+      "ckanthony/openapi-mcp:latest",
+      "--spec",
+      "https://petstore.swagger.io/v2/swagger.json",
+      "--api-key-env",
+      "SOME_API_KEY",
+      "--api-key-name",
+      "api_key",
+      "--api-key-loc",
+      "header"
+    ],
+    "env": {
+      "API_KEY": "${user_config.api_key}",
+      "SOME_API_KEY": "${user_config.some_api_key}",
+      "WEATHERBIT_API_KEY": "${user_config.weatherbit_api_key}",
+      "REQUEST_HEADERS": "${user_config.request_headers}"
     }
   },
   "tools": [],
@@ -74,52 +70,50 @@
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ckanthony-openapi-mcp-docker-local": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "--rm",
-            "-v",
-            "$(pwd)/my-api:/app/spec",
-            "--env-file",
-            "$(pwd)/my-api/.env",
-            "ckanthony/openapi-mcp:latest",
-            "--spec",
-            "/app/spec/openapi.json",
-            "--api-key-env",
-            "API_KEY",
-            "--api-key-name",
-            "X-API-Key",
-            "--api-key-loc",
-            "header"
-          ],
-          "env": {}
-        },
-        "ckanthony-openapi-mcp-docker-remote": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "--rm",
-            "-e",
-            "SOME_API_KEY=your_actual_key",
-            "ckanthony/openapi-mcp:latest",
-            "--spec",
-            "https://petstore.swagger.io/v2/swagger.json",
-            "--api-key-env",
-            "SOME_API_KEY",
-            "--api-key-name",
-            "api_key",
-            "--api-key-loc",
-            "header"
-          ],
-          "env": {
-            "SOME_API_KEY": "your_actual_key"
-          }
+      "ckanthony-openapi-mcp-docker-local": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "--rm",
+          "-v",
+          "$(pwd)/my-api:/app/spec",
+          "--env-file",
+          "$(pwd)/my-api/.env",
+          "ckanthony/openapi-mcp:latest",
+          "--spec",
+          "/app/spec/openapi.json",
+          "--api-key-env",
+          "API_KEY",
+          "--api-key-name",
+          "X-API-Key",
+          "--api-key-loc",
+          "header"
+        ],
+        "env": {}
+      },
+      "ckanthony-openapi-mcp-docker-remote": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "--rm",
+          "-e",
+          "SOME_API_KEY=your_actual_key",
+          "ckanthony/openapi-mcp:latest",
+          "--spec",
+          "https://petstore.swagger.io/v2/swagger.json",
+          "--api-key-env",
+          "SOME_API_KEY",
+          "--api-key-name",
+          "api_key",
+          "--api-key-loc",
+          "header"
+        ],
+        "env": {
+          "SOME_API_KEY": "your_actual_key"
         }
       }
     },

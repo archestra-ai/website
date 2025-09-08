@@ -8,14 +8,12 @@
     "name": "Seym0n"
   },
   "server": {
-    "type": "node",
-    "entry_point": "build/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "TIKNEURON_MCP_API_KEY": "${user_config.tikneuron_mcp_api_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "TIKNEURON_MCP_API_KEY": "${user_config.tikneuron_mcp_api_key}"
     }
   },
   "tools": [],
@@ -35,13 +33,13 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "tiktok-mcp": {
-          "command": "node",
-          "args": ["path\\build\\index.js"],
-          "env": {
-            "TIKNEURON_MCP_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-          }
+      "tiktok-mcp": {
+        "command": "node",
+        "args": [
+          "path\\build\\index.js"
+        ],
+        "env": {
+          "TIKNEURON_MCP_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
         }
       }
     },

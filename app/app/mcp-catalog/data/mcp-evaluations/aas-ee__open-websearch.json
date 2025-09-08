@@ -8,19 +8,18 @@
     "name": "Aas-ee"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "open-websearch@latest"],
-      "env": {
-        "ENABLE_CORS": "${user_config.enable_cors}",
-        "CORS_ORIGIN": "${user_config.cors_origin}",
-        "DEFAULT_SEARCH_ENGINE": "${user_config.default_search_engine}",
-        "USE_PROXY": "${user_config.use_proxy}",
-        "PROXY_URL": "${user_config.proxy_url}",
-        "PORT": "${user_config.port}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "open-websearch@latest"
+    ],
+    "env": {
+      "ENABLE_CORS": "${user_config.enable_cors}",
+      "CORS_ORIGIN": "${user_config.cors_origin}",
+      "DEFAULT_SEARCH_ENGINE": "${user_config.default_search_engine}",
+      "USE_PROXY": "${user_config.use_proxy}",
+      "PROXY_URL": "${user_config.proxy_url}",
+      "PORT": "${user_config.port}"
     }
   },
   "tools": [],
@@ -77,68 +76,82 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "open-websearch": {
-          "command": "npx",
-          "args": ["open-websearch@latest"],
-          "env": {}
-        },
-        "open-websearch-configured": {
-          "command": "npx",
-          "args": ["open-websearch@latest"],
-          "env": {
-            "DEFAULT_SEARCH_ENGINE": "duckduckgo",
-            "ENABLE_CORS": "true"
-          }
-        },
-        "open-websearch-cross-env": {
-          "command": "npx",
-          "args": ["cross-env", "DEFAULT_SEARCH_ENGINE=duckduckgo", "ENABLE_CORS=true", "open-websearch"],
-          "env": {}
-        },
-        "open-websearch-proxy": {
-          "command": "npx",
-          "args": ["open-websearch@latest"],
-          "env": {
-            "USE_PROXY": "true",
-            "PROXY_URL": "http://127.0.0.1:7890"
-          }
-        },
-        "open-websearch-full-config": {
-          "command": "npx",
-          "args": ["open-websearch@latest"],
-          "env": {
-            "DEFAULT_SEARCH_ENGINE": "duckduckgo",
-            "ENABLE_CORS": "true",
-            "USE_PROXY": "true",
-            "PROXY_URL": "http://127.0.0.1:7890",
-            "PORT": "8080"
-          }
-        },
-        "open-websearch-docker-compose": {
-          "command": "docker-compose",
-          "args": ["up", "-d"],
-          "env": {}
-        },
-        "open-web-search-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-d",
-            "--name",
-            "web-search",
-            "-p",
-            "3000:3000",
-            "-e",
-            "ENABLE_CORS=true",
-            "-e",
-            "CORS_ORIGIN=*",
-            "ghcr.io/aas-ee/open-web-search:latest"
-          ],
-          "env": {
-            "ENABLE_CORS": "true",
-            "CORS_ORIGIN": "*"
-          }
+      "open-websearch": {
+        "command": "npx",
+        "args": [
+          "open-websearch@latest"
+        ],
+        "env": {}
+      },
+      "open-websearch-configured": {
+        "command": "npx",
+        "args": [
+          "open-websearch@latest"
+        ],
+        "env": {
+          "DEFAULT_SEARCH_ENGINE": "duckduckgo",
+          "ENABLE_CORS": "true"
+        }
+      },
+      "open-websearch-cross-env": {
+        "command": "npx",
+        "args": [
+          "cross-env",
+          "DEFAULT_SEARCH_ENGINE=duckduckgo",
+          "ENABLE_CORS=true",
+          "open-websearch"
+        ],
+        "env": {}
+      },
+      "open-websearch-proxy": {
+        "command": "npx",
+        "args": [
+          "open-websearch@latest"
+        ],
+        "env": {
+          "USE_PROXY": "true",
+          "PROXY_URL": "http://127.0.0.1:7890"
+        }
+      },
+      "open-websearch-full-config": {
+        "command": "npx",
+        "args": [
+          "open-websearch@latest"
+        ],
+        "env": {
+          "DEFAULT_SEARCH_ENGINE": "duckduckgo",
+          "ENABLE_CORS": "true",
+          "USE_PROXY": "true",
+          "PROXY_URL": "http://127.0.0.1:7890",
+          "PORT": "8080"
+        }
+      },
+      "open-websearch-docker-compose": {
+        "command": "docker-compose",
+        "args": [
+          "up",
+          "-d"
+        ],
+        "env": {}
+      },
+      "open-web-search-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-d",
+          "--name",
+          "web-search",
+          "-p",
+          "3000:3000",
+          "-e",
+          "ENABLE_CORS=true",
+          "-e",
+          "CORS_ORIGIN=*",
+          "ghcr.io/aas-ee/open-web-search:latest"
+        ],
+        "env": {
+          "ENABLE_CORS": "true",
+          "CORS_ORIGIN": "*"
         }
       }
     },

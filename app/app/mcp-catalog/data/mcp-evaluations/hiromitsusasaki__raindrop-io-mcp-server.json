@@ -8,14 +8,12 @@
     "name": "hiromitsusasaki"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/index.js"],
-      "env": {
-        "RAINDROP_TOKEN": "${user_config.raindrop_token}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/index.js"
+    ],
+    "env": {
+      "RAINDROP_TOKEN": "${user_config.raindrop_token}"
     }
   },
   "tools": [],
@@ -35,13 +33,13 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "hiromitsusasaki-raindrop-io-mcp-server": {
-          "command": "node",
-          "args": ["PATH_TO_BUILD/index.js"],
-          "env": {
-            "RAINDROP_TOKEN": "your_access_token_here"
-          }
+      "hiromitsusasaki-raindrop-io-mcp-server": {
+        "command": "node",
+        "args": [
+          "PATH_TO_BUILD/index.js"
+        ],
+        "env": {
+          "RAINDROP_TOKEN": "your_access_token_here"
         }
       }
     },

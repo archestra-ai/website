@@ -8,15 +8,13 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/server/index.js"],
-      "env": {
-        "SOLANA_RPC_URL": "${user_config.solana_rpc_url}",
-        "PRIVATE_KEY": "${user_config.private_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/server/index.js"
+    ],
+    "env": {
+      "SOLANA_RPC_URL": "${user_config.solana_rpc_url}",
+      "PRIVATE_KEY": "${user_config.private_key}"
     }
   },
   "tools": [],
@@ -43,14 +41,14 @@
   "quality_score": 36,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "Jupiter-MCP": {
-          "command": "node",
-          "args": ["path/to/jupiter-mcp/server/index.js"],
-          "env": {
-            "SOLANA_RPC_URL": "solana rpc url you can access",
-            "PRIVATE_KEY": "your private key"
-          }
+      "Jupiter-MCP": {
+        "command": "node",
+        "args": [
+          "path/to/jupiter-mcp/server/index.js"
+        ],
+        "env": {
+          "SOLANA_RPC_URL": "solana rpc url you can access",
+          "PRIVATE_KEY": "your private key"
         }
       }
     },

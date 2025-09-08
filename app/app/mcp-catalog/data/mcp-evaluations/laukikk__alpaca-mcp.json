@@ -8,15 +8,16 @@
     "name": "laukikk"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "src/server.py"],
-      "env": {
-        "ALPACA_PAPER_API_KEY": "${user_config.alpaca_paper_api_key}",
-        "ALPACA_PAPER_API_SECRET": "${user_config.alpaca_paper_api_secret}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "src/server.py"
+    ],
+    "env": {
+      "ALPACA_PAPER_API_KEY": "${user_config.alpaca_paper_api_key}",
+      "ALPACA_PAPER_API_SECRET": "${user_config.alpaca_paper_api_secret}"
     }
   },
   "tools": [],
@@ -43,17 +44,22 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "laukikk-alpaca-mcp-stdio": {
-          "command": "python",
-          "args": ["src/server.py"],
-          "env": {}
-        },
-        "laukikk-alpaca-mcp-claude-config": {
-          "command": "uv",
-          "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/FOLDER/alpaca-mcp-server", "run", "src/server.py"],
-          "env": {}
-        }
+      "laukikk-alpaca-mcp-stdio": {
+        "command": "python",
+        "args": [
+          "src/server.py"
+        ],
+        "env": {}
+      },
+      "laukikk-alpaca-mcp-claude-config": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/ABSOLUTE/PATH/TO/PARENT/FOLDER/alpaca-mcp-server",
+          "run",
+          "src/server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

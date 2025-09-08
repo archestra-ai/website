@@ -8,18 +8,14 @@
     "name": "HainanZhao"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "mcp-gitlab-jira",
-      "args": [],
-      "env": {
-        "GITLAB_URL": "${user_config.gitlab_url}",
-        "GITLAB_ACCESS_TOKEN": "${user_config.gitlab_access_token}",
-        "ATLASSIAN_SITE_NAME": "${user_config.atlassian_site_name}",
-        "ATLASSIAN_USER_EMAIL": "${user_config.atlassian_user_email}",
-        "ATLASSIAN_API_TOKEN": "${user_config.atlassian_api_token}"
-      }
+    "command": "mcp-gitlab-jira",
+    "args": [],
+    "env": {
+      "GITLAB_URL": "${user_config.gitlab_url}",
+      "GITLAB_ACCESS_TOKEN": "${user_config.gitlab_access_token}",
+      "ATLASSIAN_SITE_NAME": "${user_config.atlassian_site_name}",
+      "ATLASSIAN_USER_EMAIL": "${user_config.atlassian_user_email}",
+      "ATLASSIAN_API_TOKEN": "${user_config.atlassian_api_token}"
     }
   },
   "tools": [],
@@ -69,48 +65,52 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-gitlab-jira-stdio": {
-          "command": "mcp-gitlab-jira",
-          "args": [],
-          "env": {}
-        },
-        "mcp-gitlab-jira-configured": {
-          "command": "mcp-gitlab-jira",
-          "args": [],
-          "env": {
-            "GITLAB_URL": "https://your-gitlab-instance.com",
-            "GITLAB_ACCESS_TOKEN": "your-personal-access-token",
-            "ATLASSIAN_SITE_NAME": "your-atlassian-site-name",
-            "ATLASSIAN_USER_EMAIL": "your-email@example.com",
-            "ATLASSIAN_API_TOKEN": "your-jira-api-token"
-          }
-        },
-        "hainanzhao-mcp-gitlab-jira-docker-persistent": {
-          "command": "docker",
-          "args": ["exec", "-i", "mcp-gitlab-jira-container", "npm", "start"],
-          "env": {}
-        },
-        "hainanzhao-mcp-gitlab-jira-docker-onetime": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "-e",
-            "GITLAB_URL=https://your-gitlab-instance.com",
-            "-e",
-            "GITLAB_ACCESS_TOKEN=your-personal-access-token",
-            "-e",
-            "ATLASSIAN_SITE_NAME=your-atlassian-site-name",
-            "-e",
-            "ATLASSIAN_USER_EMAIL=your-email@example.com",
-            "-e",
-            "ATLASSIAN_API_TOKEN=your-jira-api-token",
-            "hainanzhao/mcp-gitlab-jira:latest"
-          ],
-          "env": {}
+      "mcp-gitlab-jira-stdio": {
+        "command": "mcp-gitlab-jira",
+        "args": [],
+        "env": {}
+      },
+      "mcp-gitlab-jira-configured": {
+        "command": "mcp-gitlab-jira",
+        "args": [],
+        "env": {
+          "GITLAB_URL": "https://your-gitlab-instance.com",
+          "GITLAB_ACCESS_TOKEN": "your-personal-access-token",
+          "ATLASSIAN_SITE_NAME": "your-atlassian-site-name",
+          "ATLASSIAN_USER_EMAIL": "your-email@example.com",
+          "ATLASSIAN_API_TOKEN": "your-jira-api-token"
         }
+      },
+      "hainanzhao-mcp-gitlab-jira-docker-persistent": {
+        "command": "docker",
+        "args": [
+          "exec",
+          "-i",
+          "mcp-gitlab-jira-container",
+          "npm",
+          "start"
+        ],
+        "env": {}
+      },
+      "hainanzhao-mcp-gitlab-jira-docker-onetime": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "-e",
+          "GITLAB_URL=https://your-gitlab-instance.com",
+          "-e",
+          "GITLAB_ACCESS_TOKEN=your-personal-access-token",
+          "-e",
+          "ATLASSIAN_SITE_NAME=your-atlassian-site-name",
+          "-e",
+          "ATLASSIAN_USER_EMAIL=your-email@example.com",
+          "-e",
+          "ATLASSIAN_API_TOKEN=your-jira-api-token",
+          "hainanzhao/mcp-gitlab-jira:latest"
+        ],
+        "env": {}
       }
     },
     "oauth": {

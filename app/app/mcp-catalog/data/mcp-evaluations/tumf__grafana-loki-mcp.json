@@ -8,15 +8,15 @@
     "name": "tumf"
   },
   "server": {
-    "type": "python",
-    "entry_point": "grafana-loki-mcp",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["grafana-loki-mcp", "--transport", "${user_config.transport}"],
-      "env": {
-        "GRAFANA_URL": "${user_config.grafana_url}",
-        "GRAFANA_API_KEY": "${user_config.grafana_api_key}"
-      }
+    "command": "uvx",
+    "args": [
+      "grafana-loki-mcp",
+      "--transport",
+      "${user_config.transport}"
+    ],
+    "env": {
+      "GRAFANA_URL": "${user_config.grafana_url}",
+      "GRAFANA_API_KEY": "${user_config.grafana_api_key}"
     }
   },
   "tools": [],
@@ -49,30 +49,42 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "grafana-loki-mcp-configured": {
-          "command": "uvx",
-          "args": ["grafana-loki-mcp", "-u", "GRAFANA_URL", "-k", "GRAFANA_API_KEY"],
-          "env": {}
-        },
-        "grafana-loki-mcp-env": {
-          "command": "grafana-loki-mcp",
-          "args": [],
-          "env": {
-            "GRAFANA_URL": "https://your-grafana-instance.com",
-            "GRAFANA_API_KEY": "your-api-key"
-          }
-        },
-        "grafana-loki-mcp-args": {
-          "command": "grafana-loki-mcp",
-          "args": ["-u", "https://your-grafana-instance.com", "-k", "your-api-key"],
-          "env": {}
-        },
-        "grafana-loki-mcp-sse": {
-          "command": "grafana-loki-mcp",
-          "args": ["--transport", "sse"],
-          "env": {}
+      "grafana-loki-mcp-configured": {
+        "command": "uvx",
+        "args": [
+          "grafana-loki-mcp",
+          "-u",
+          "GRAFANA_URL",
+          "-k",
+          "GRAFANA_API_KEY"
+        ],
+        "env": {}
+      },
+      "grafana-loki-mcp-env": {
+        "command": "grafana-loki-mcp",
+        "args": [],
+        "env": {
+          "GRAFANA_URL": "https://your-grafana-instance.com",
+          "GRAFANA_API_KEY": "your-api-key"
         }
+      },
+      "grafana-loki-mcp-args": {
+        "command": "grafana-loki-mcp",
+        "args": [
+          "-u",
+          "https://your-grafana-instance.com",
+          "-k",
+          "your-api-key"
+        ],
+        "env": {}
+      },
+      "grafana-loki-mcp-sse": {
+        "command": "grafana-loki-mcp",
+        "args": [
+          "--transport",
+          "sse"
+        ],
+        "env": {}
       }
     },
     "oauth": {

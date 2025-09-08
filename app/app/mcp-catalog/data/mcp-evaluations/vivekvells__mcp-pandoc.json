@@ -8,13 +8,11 @@
     "name": "vivekVells"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-pandoc"],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "mcp-pandoc"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,12 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-pandoc": {
-          "command": "uvx",
-          "args": ["mcp-pandoc"],
-          "env": {}
-        }
+      "mcp-pandoc": {
+        "command": "uvx",
+        "args": [
+          "mcp-pandoc"
+        ],
+        "env": {}
       }
     },
     "oauth": {

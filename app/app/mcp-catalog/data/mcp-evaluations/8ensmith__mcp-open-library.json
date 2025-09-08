@@ -8,13 +8,12 @@
     "name": "8enSmith"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@8enSmith/mcp-open-library"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@8enSmith/mcp-open-library"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +24,23 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "8enSmith-mcp-open-library": {
-          "command": "npx",
-          "args": ["-y", "@8enSmith/mcp-open-library"],
-          "env": {}
-        },
-        "mcp-open-library-docker": {
-          "command": "docker",
-          "args": ["run", "-p", "8080:8080", "mcp-open-library"],
-          "env": {}
-        }
+      "8enSmith-mcp-open-library": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@8enSmith/mcp-open-library"
+        ],
+        "env": {}
+      },
+      "mcp-open-library-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "mcp-open-library"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,14 +8,12 @@
     "name": "atomicchonk"
   },
   "server": {
-    "type": "python",
-    "entry_point": "roadrecon_mcp_server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/roadrecon_mcp_server.py"],
-      "env": {
-        "ROADRECON_URL": "${user_config.roadrecon_url}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/roadrecon_mcp_server.py"
+    ],
+    "env": {
+      "ROADRECON_URL": "${user_config.roadrecon_url}"
     }
   },
   "tools": [],
@@ -35,18 +33,20 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "roadrecon-mcp-server": {
-          "command": "python",
-          "args": ["roadrecon_mcp_server.py"],
-          "env": {}
-        },
-        "roadrecon-mcp-server-configured": {
-          "command": "python",
-          "args": ["roadrecon_mcp_server.py"],
-          "env": {
-            "ROADRECON_URL": "http://localhost:8080"
-          }
+      "roadrecon-mcp-server": {
+        "command": "python",
+        "args": [
+          "roadrecon_mcp_server.py"
+        ],
+        "env": {}
+      },
+      "roadrecon-mcp-server-configured": {
+        "command": "python",
+        "args": [
+          "roadrecon_mcp_server.py"
+        ],
+        "env": {
+          "ROADRECON_URL": "http://localhost:8080"
         }
       }
     },

@@ -8,13 +8,14 @@
     "name": "willvelida"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "dotnet",
-    "mcp_config": {
-      "command": "dotnet",
-      "args": ["run", "--project", "${__dirname}/src", "--no-build"],
-      "env": {}
-    }
+    "command": "dotnet",
+    "args": [
+      "run",
+      "--project",
+      "${__dirname}/src",
+      "--no-build"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +26,15 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-afl-server": {
-          "command": "dotnet",
-          "args": ["run", "--project", "C:\\path\\to\\mcp-afl-server\\src", "--no-build"],
-          "env": {}
-        }
+      "mcp-afl-server": {
+        "command": "dotnet",
+        "args": [
+          "run",
+          "--project",
+          "C:\\path\\to\\mcp-afl-server\\src",
+          "--no-build"
+        ],
+        "env": {}
       }
     },
     "oauth": {

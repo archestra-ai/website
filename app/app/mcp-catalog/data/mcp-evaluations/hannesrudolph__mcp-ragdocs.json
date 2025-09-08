@@ -8,16 +8,15 @@
     "name": "hannesrudolph"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@hannesrudolph/mcp-ragdocs"],
-      "env": {
-        "OPENAI_API_KEY": "${user_config.openai_api_key}",
-        "QDRANT_URL": "${user_config.qdrant_url}",
-        "QDRANT_API_KEY": "${user_config.qdrant_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@hannesrudolph/mcp-ragdocs"
+    ],
+    "env": {
+      "OPENAI_API_KEY": "${user_config.openai_api_key}",
+      "QDRANT_URL": "${user_config.qdrant_url}",
+      "QDRANT_API_KEY": "${user_config.qdrant_api_key}"
     }
   },
   "tools": [],
@@ -51,15 +50,16 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "hannesrudolph-mcp-ragdocs": {
-          "command": "npx",
-          "args": ["-y", "@hannesrudolph/mcp-ragdocs"],
-          "env": {
-            "OPENAI_API_KEY": "",
-            "QDRANT_URL": "",
-            "QDRANT_API_KEY": ""
-          }
+      "hannesrudolph-mcp-ragdocs": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@hannesrudolph/mcp-ragdocs"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "",
+          "QDRANT_URL": "",
+          "QDRANT_API_KEY": ""
         }
       }
     },

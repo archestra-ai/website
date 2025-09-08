@@ -8,16 +8,14 @@
     "name": "langfuse"
   },
   "server": {
-    "type": "node",
-    "entry_point": "build/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "LANGFUSE_PUBLIC_KEY": "${user_config.langfuse_public_key}",
-        "LANGFUSE_SECRET_KEY": "${user_config.langfuse_secret_key}",
-        "LANGFUSE_BASEURL": "${user_config.langfuse_baseurl}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "LANGFUSE_PUBLIC_KEY": "${user_config.langfuse_public_key}",
+      "LANGFUSE_SECRET_KEY": "${user_config.langfuse_secret_key}",
+      "LANGFUSE_BASEURL": "${user_config.langfuse_baseurl}"
     }
   },
   "tools": [],
@@ -51,24 +49,26 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "langfuse-claude-desktop": {
-          "command": "node",
-          "args": ["<absolute-path>/build/index.js"],
-          "env": {
-            "LANGFUSE_PUBLIC_KEY": "your-public-key",
-            "LANGFUSE_SECRET_KEY": "your-secret-key",
-            "LANGFUSE_BASEURL": "https://cloud.langfuse.com"
-          }
-        },
-        "langfuse-cursor": {
-          "command": "node",
-          "args": ["absolute-path/build/index.js"],
-          "env": {
-            "LANGFUSE_PUBLIC_KEY": "your-public-key",
-            "LANGFUSE_SECRET_KEY": "your-secret-key",
-            "LANGFUSE_BASEURL": "https://cloud.langfuse.com"
-          }
+      "langfuse-claude-desktop": {
+        "command": "node",
+        "args": [
+          "<absolute-path>/build/index.js"
+        ],
+        "env": {
+          "LANGFUSE_PUBLIC_KEY": "your-public-key",
+          "LANGFUSE_SECRET_KEY": "your-secret-key",
+          "LANGFUSE_BASEURL": "https://cloud.langfuse.com"
+        }
+      },
+      "langfuse-cursor": {
+        "command": "node",
+        "args": [
+          "absolute-path/build/index.js"
+        ],
+        "env": {
+          "LANGFUSE_PUBLIC_KEY": "your-public-key",
+          "LANGFUSE_SECRET_KEY": "your-secret-key",
+          "LANGFUSE_BASEURL": "https://cloud.langfuse.com"
         }
       }
     },

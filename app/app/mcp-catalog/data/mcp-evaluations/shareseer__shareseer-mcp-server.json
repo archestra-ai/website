@@ -8,14 +8,12 @@
     "name": "shareseer"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/server/index.js"],
-      "env": {
-        "API_KEY": "${user_config.api_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/server/index.js"
+    ],
+    "env": {
+      "API_KEY": "${user_config.api_key}"
     }
   },
   "tools": [],

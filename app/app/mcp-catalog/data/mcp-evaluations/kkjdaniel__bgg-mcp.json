@@ -8,14 +8,10 @@
     "name": "kkjdaniel"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "bgg-mcp",
-    "mcp_config": {
-      "command": "${__dirname}/build/bgg-mcp",
-      "args": [],
-      "env": {
-        "BGG_USERNAME": "${user_config.bgg_username}"
-      }
+    "command": "${__dirname}/build/bgg-mcp",
+    "args": [],
+    "env": {
+      "BGG_USERNAME": "${user_config.bgg_username}"
     }
   },
   "tools": [],
@@ -35,18 +31,16 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kkjdaniel-bgg-mcp": {
-          "command": "path/to/build/bgg-mcp",
-          "args": [],
-          "env": {}
-        },
-        "kkjdaniel-bgg-mcp-configured": {
-          "command": "path/to/build/bgg-mcp",
-          "args": [],
-          "env": {
-            "BGG_USERNAME": "your_bgg_username"
-          }
+      "kkjdaniel-bgg-mcp": {
+        "command": "path/to/build/bgg-mcp",
+        "args": [],
+        "env": {}
+      },
+      "kkjdaniel-bgg-mcp-configured": {
+        "command": "path/to/build/bgg-mcp",
+        "args": [],
+        "env": {
+          "BGG_USERNAME": "your_bgg_username"
         }
       }
     },

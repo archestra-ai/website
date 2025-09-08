@@ -8,14 +8,12 @@
     "name": "devilcoder01"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server/main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/server/main.py"],
-      "env": {
-        "WEATHER_API_KEY": "${user_config.weather_api_key}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/server/main.py"
+    ],
+    "env": {
+      "WEATHER_API_KEY": "${user_config.weather_api_key}"
     }
   },
   "tools": [],
@@ -35,12 +33,12 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "devilcoder01-weather-mcp-server": {
-          "command": "python",
-          "args": ["main.py"],
-          "env": {}
-        }
+      "devilcoder01-weather-mcp-server": {
+        "command": "python",
+        "args": [
+          "main.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

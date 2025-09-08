@@ -8,15 +8,14 @@
     "name": "pullkitsan"
   },
   "server": {
-    "type": "node",
-    "entry_point": "server.ts",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["tsx", "${__dirname}/server.ts"],
-      "env": {
-        "MOBSF_API_KEY": "${user_config.mobsf_api_key}",
-        "MOBSF_URL": "${user_config.mobsf_url}"
-      }
+    "command": "npx",
+    "args": [
+      "tsx",
+      "${__dirname}/server.ts"
+    ],
+    "env": {
+      "MOBSF_API_KEY": "${user_config.mobsf_api_key}",
+      "MOBSF_URL": "${user_config.mobsf_url}"
     }
   },
   "tools": [],
@@ -43,17 +42,21 @@
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mobsf-mcp-claude": {
-          "command": "npx",
-          "args": ["tsx", "/absolute/path/to/server.ts"],
-          "env": {}
-        },
-        "mobsf-mcp-5ire": {
-          "command": "npx",
-          "args": ["tsx", "C:\\Users\\Downloads\\mobsf-mcp-server\\server.js"],
-          "env": {}
-        }
+      "mobsf-mcp-claude": {
+        "command": "npx",
+        "args": [
+          "tsx",
+          "/absolute/path/to/server.ts"
+        ],
+        "env": {}
+      },
+      "mobsf-mcp-5ire": {
+        "command": "npx",
+        "args": [
+          "tsx",
+          "C:\\Users\\Downloads\\mobsf-mcp-server\\server.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

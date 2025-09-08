@@ -8,13 +8,11 @@
     "name": "waystation-ai"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-remote-proxy",
-    "mcp_config": {
-      "command": "mcp-remote-proxy",
-      "args": ["https://waystation.ai/mcp/${user_config.user_unique_id}"],
-      "env": {}
-    }
+    "command": "mcp-remote-proxy",
+    "args": [
+      "https://waystation.ai/mcp/${user_config.user_unique_id}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -32,9 +30,7 @@
   "category": "Aggregators",
   "quality_score": 57,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

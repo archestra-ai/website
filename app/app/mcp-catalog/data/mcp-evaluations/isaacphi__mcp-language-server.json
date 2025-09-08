@@ -8,24 +8,20 @@
     "name": "isaacphi"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-language-server",
-    "mcp_config": {
-      "command": "mcp-language-server",
-      "args": [
-        "--workspace",
-        "${user_config.workspace_directory}",
-        "--lsp",
-        "${user_config.lsp_command}",
-        "--",
-        "${user_config.lsp_args}"
-      ],
-      "env": {
-        "PATH": "${user_config.path}",
-        "GOPATH": "${user_config.gopath}",
-        "GOCACHE": "${user_config.gocache}",
-        "GOMODCACHE": "${user_config.gomodcache}"
-      }
+    "command": "mcp-language-server",
+    "args": [
+      "--workspace",
+      "${user_config.workspace_directory}",
+      "--lsp",
+      "${user_config.lsp_command}",
+      "--",
+      "${user_config.lsp_args}"
+    ],
+    "env": {
+      "PATH": "${user_config.path}",
+      "GOPATH": "${user_config.gopath}",
+      "GOCACHE": "${user_config.gocache}",
+      "GOMODCACHE": "${user_config.gomodcache}"
     }
   },
   "tools": [],
@@ -88,51 +84,66 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-language-server-gopls": {
-          "command": "mcp-language-server",
-          "args": ["--workspace", "/Users/you/dev/yourproject/", "--lsp", "gopls"],
-          "env": {
-            "PATH": "/opt/homebrew/bin:/Users/you/go/bin",
-            "GOPATH": "/users/you/go",
-            "GOCACHE": "/users/you/Library/Caches/go-build",
-            "GOMODCACHE": "/Users/you/go/pkg/mod"
-          }
-        },
-        "mcp-language-server-rust-analyzer": {
-          "command": "mcp-language-server",
-          "args": ["--workspace", "/Users/you/dev/yourproject/", "--lsp", "rust-analyzer"],
-          "env": {}
-        },
-        "mcp-language-server-pyright-langserver": {
-          "command": "mcp-language-server",
-          "args": ["--workspace", "/Users/you/dev/yourproject/", "--lsp", "pyright-langserver", "--", "--stdio"],
-          "env": {}
-        },
-        "mcp-language-server-typescript-language-server": {
-          "command": "mcp-language-server",
-          "args": [
-            "--workspace",
-            "/Users/you/dev/yourproject/",
-            "--lsp",
-            "typescript-language-server",
-            "--",
-            "--stdio"
-          ],
-          "env": {}
-        },
-        "mcp-language-server-clangd": {
-          "command": "mcp-language-server",
-          "args": [
-            "--workspace",
-            "/Users/you/dev/yourproject/",
-            "--lsp",
-            "/path/to/your/clangd_binary",
-            "--",
-            "--compile-commands-dir=/path/to/yourproject/build_or_compile_commands_dir"
-          ],
-          "env": {}
+      "mcp-language-server-gopls": {
+        "command": "mcp-language-server",
+        "args": [
+          "--workspace",
+          "/Users/you/dev/yourproject/",
+          "--lsp",
+          "gopls"
+        ],
+        "env": {
+          "PATH": "/opt/homebrew/bin:/Users/you/go/bin",
+          "GOPATH": "/users/you/go",
+          "GOCACHE": "/users/you/Library/Caches/go-build",
+          "GOMODCACHE": "/Users/you/go/pkg/mod"
         }
+      },
+      "mcp-language-server-rust-analyzer": {
+        "command": "mcp-language-server",
+        "args": [
+          "--workspace",
+          "/Users/you/dev/yourproject/",
+          "--lsp",
+          "rust-analyzer"
+        ],
+        "env": {}
+      },
+      "mcp-language-server-pyright-langserver": {
+        "command": "mcp-language-server",
+        "args": [
+          "--workspace",
+          "/Users/you/dev/yourproject/",
+          "--lsp",
+          "pyright-langserver",
+          "--",
+          "--stdio"
+        ],
+        "env": {}
+      },
+      "mcp-language-server-typescript-language-server": {
+        "command": "mcp-language-server",
+        "args": [
+          "--workspace",
+          "/Users/you/dev/yourproject/",
+          "--lsp",
+          "typescript-language-server",
+          "--",
+          "--stdio"
+        ],
+        "env": {}
+      },
+      "mcp-language-server-clangd": {
+        "command": "mcp-language-server",
+        "args": [
+          "--workspace",
+          "/Users/you/dev/yourproject/",
+          "--lsp",
+          "/path/to/your/clangd_binary",
+          "--",
+          "--compile-commands-dir=/path/to/yourproject/build_or_compile_commands_dir"
+        ],
+        "env": {}
       }
     },
     "oauth": {

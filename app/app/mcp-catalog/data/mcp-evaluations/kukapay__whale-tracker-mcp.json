@@ -8,14 +8,13 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "whale_tracker.py",
-    "mcp_config": {
-      "command": "mcp",
-      "args": ["run", "whale_tracker.py"],
-      "env": {
-        "WHALE_ALERT_API_KEY": "${user_config.whale_alert_api_key}"
-      }
+    "command": "mcp",
+    "args": [
+      "run",
+      "whale_tracker.py"
+    ],
+    "env": {
+      "WHALE_ALERT_API_KEY": "${user_config.whale_alert_api_key}"
     }
   },
   "tools": [],
@@ -35,22 +34,30 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kukapay-whale-tracker-mcp-dev": {
-          "command": "mcp",
-          "args": ["dev", "whale_tracker.py", "--with-editable", "."],
-          "env": {}
-        },
-        "kukapay-whale-tracker-mcp-python": {
-          "command": "python",
-          "args": ["whale_tracker.py"],
-          "env": {}
-        },
-        "kukapay-whale-tracker-mcp-mcp-run": {
-          "command": "mcp",
-          "args": ["run", "whale_tracker.py"],
-          "env": {}
-        }
+      "kukapay-whale-tracker-mcp-dev": {
+        "command": "mcp",
+        "args": [
+          "dev",
+          "whale_tracker.py",
+          "--with-editable",
+          "."
+        ],
+        "env": {}
+      },
+      "kukapay-whale-tracker-mcp-python": {
+        "command": "python",
+        "args": [
+          "whale_tracker.py"
+        ],
+        "env": {}
+      },
+      "kukapay-whale-tracker-mcp-mcp-run": {
+        "command": "mcp",
+        "args": [
+          "run",
+          "whale_tracker.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

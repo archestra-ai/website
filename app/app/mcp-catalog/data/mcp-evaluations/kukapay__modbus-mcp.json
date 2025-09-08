@@ -8,23 +8,24 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "modbus-mcp"],
-      "env": {
-        "MODBUS_TYPE": "${user_config.modbus_type}",
-        "MODBUS_HOST": "${user_config.modbus_host}",
-        "MODBUS_PORT": "${user_config.modbus_port}",
-        "MODBUS_DEFAULT_SLAVE_ID": "${user_config.modbus_default_slave_id}",
-        "MODBUS_SERIAL_PORT": "${user_config.modbus_serial_port}",
-        "MODBUS_BAUDRATE": "${user_config.modbus_baudrate}",
-        "MODBUS_PARITY": "${user_config.modbus_parity}",
-        "MODBUS_STOPBITS": "${user_config.modbus_stopbits}",
-        "MODBUS_BYTESIZE": "${user_config.modbus_bytesize}",
-        "MODBUS_TIMEOUT": "${user_config.modbus_timeout}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "modbus-mcp"
+    ],
+    "env": {
+      "MODBUS_TYPE": "${user_config.modbus_type}",
+      "MODBUS_HOST": "${user_config.modbus_host}",
+      "MODBUS_PORT": "${user_config.modbus_port}",
+      "MODBUS_DEFAULT_SLAVE_ID": "${user_config.modbus_default_slave_id}",
+      "MODBUS_SERIAL_PORT": "${user_config.modbus_serial_port}",
+      "MODBUS_BAUDRATE": "${user_config.modbus_baudrate}",
+      "MODBUS_PARITY": "${user_config.modbus_parity}",
+      "MODBUS_STOPBITS": "${user_config.modbus_stopbits}",
+      "MODBUS_BYTESIZE": "${user_config.modbus_bytesize}",
+      "MODBUS_TIMEOUT": "${user_config.modbus_timeout}"
     }
   },
   "tools": [],
@@ -107,15 +108,18 @@
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "modbus-mcp-tcp-configured": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/modbus-mcp", "run", "modbus-mcp"],
-          "env": {
-            "MODBUS_TYPE": "tcp",
-            "MODBUS_HOST": "127.0.0.1",
-            "MODBUS_PORT": "502"
-          }
+      "modbus-mcp-tcp-configured": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/modbus-mcp",
+          "run",
+          "modbus-mcp"
+        ],
+        "env": {
+          "MODBUS_TYPE": "tcp",
+          "MODBUS_HOST": "127.0.0.1",
+          "MODBUS_PORT": "502"
         }
       }
     },

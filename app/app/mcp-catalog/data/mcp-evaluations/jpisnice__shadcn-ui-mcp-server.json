@@ -8,15 +8,14 @@
     "name": "Jpisnice"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@jpisnice/shadcn-ui-mcp-server"],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "${user_config.github_personal_access_token}",
-        "FRAMEWORK": "${user_config.framework}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@jpisnice/shadcn-ui-mcp-server"
+    ],
+    "env": {
+      "GITHUB_PERSONAL_ACCESS_TOKEN": "${user_config.github_personal_access_token}",
+      "FRAMEWORK": "${user_config.framework}"
     }
   },
   "tools": [],
@@ -43,58 +42,76 @@
   "quality_score": 82,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "jpisnice-shadcn-ui-mcp-server": {
-          "command": "npx",
-          "args": ["@jpisnice/shadcn-ui-mcp-server"],
-          "env": {}
-        },
-        "jpisnice-shadcn-ui-mcp-server-github-token": {
-          "command": "npx",
-          "args": ["@jpisnice/shadcn-ui-mcp-server", "--github-api-key", "ghp_your_token_here"],
-          "env": {}
-        },
-        "jpisnice-shadcn-ui-mcp-server-env-github-token": {
-          "command": "npx",
-          "args": ["@jpisnice/shadcn-ui-mcp-server"],
-          "env": {
-            "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_your_token_here"
-          }
-        },
-        "jpisnice-shadcn-ui-mcp-server-svelte": {
-          "command": "npx",
-          "args": ["@jpisnice/shadcn-ui-mcp-server", "--framework", "svelte"],
-          "env": {}
-        },
-        "jpisnice-shadcn-ui-mcp-server-svelte-github-token": {
-          "command": "npx",
-          "args": [
-            "@jpisnice/shadcn-ui-mcp-server",
-            "--framework",
-            "svelte",
-            "--github-api-key",
-            "ghp_your_token_here"
-          ],
-          "env": {}
-        },
-        "jpisnice-shadcn-ui-mcp-server-env-svelte": {
-          "command": "npx",
-          "args": ["@jpisnice/shadcn-ui-mcp-server"],
-          "env": {
-            "FRAMEWORK": "svelte"
-          }
-        },
-        "jpisnice-shadcn-ui-mcp-server-react": {
-          "command": "npx",
-          "args": ["@jpisnice/shadcn-ui-mcp-server", "--framework", "react"],
-          "env": {}
-        },
-        "jpisnice-shadcn-ui-mcp-server-env-react": {
-          "command": "npx",
-          "args": ["@jpisnice/shadcn-ui-mcp-server"],
-          "env": {
-            "FRAMEWORK": "react"
-          }
+      "jpisnice-shadcn-ui-mcp-server": {
+        "command": "npx",
+        "args": [
+          "@jpisnice/shadcn-ui-mcp-server"
+        ],
+        "env": {}
+      },
+      "jpisnice-shadcn-ui-mcp-server-github-token": {
+        "command": "npx",
+        "args": [
+          "@jpisnice/shadcn-ui-mcp-server",
+          "--github-api-key",
+          "ghp_your_token_here"
+        ],
+        "env": {}
+      },
+      "jpisnice-shadcn-ui-mcp-server-env-github-token": {
+        "command": "npx",
+        "args": [
+          "@jpisnice/shadcn-ui-mcp-server"
+        ],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_your_token_here"
+        }
+      },
+      "jpisnice-shadcn-ui-mcp-server-svelte": {
+        "command": "npx",
+        "args": [
+          "@jpisnice/shadcn-ui-mcp-server",
+          "--framework",
+          "svelte"
+        ],
+        "env": {}
+      },
+      "jpisnice-shadcn-ui-mcp-server-svelte-github-token": {
+        "command": "npx",
+        "args": [
+          "@jpisnice/shadcn-ui-mcp-server",
+          "--framework",
+          "svelte",
+          "--github-api-key",
+          "ghp_your_token_here"
+        ],
+        "env": {}
+      },
+      "jpisnice-shadcn-ui-mcp-server-env-svelte": {
+        "command": "npx",
+        "args": [
+          "@jpisnice/shadcn-ui-mcp-server"
+        ],
+        "env": {
+          "FRAMEWORK": "svelte"
+        }
+      },
+      "jpisnice-shadcn-ui-mcp-server-react": {
+        "command": "npx",
+        "args": [
+          "@jpisnice/shadcn-ui-mcp-server",
+          "--framework",
+          "react"
+        ],
+        "env": {}
+      },
+      "jpisnice-shadcn-ui-mcp-server-env-react": {
+        "command": "npx",
+        "args": [
+          "@jpisnice/shadcn-ui-mcp-server"
+        ],
+        "env": {
+          "FRAMEWORK": "react"
         }
       }
     },

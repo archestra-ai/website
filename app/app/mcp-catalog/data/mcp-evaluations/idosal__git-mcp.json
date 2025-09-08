@@ -8,13 +8,13 @@
     "name": "idosal"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "https://gitmcp.io/${user_config.github_owner}/${user_config.github_repo}"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-remote",
+      "https://gitmcp.io/${user_config.github_owner}/${user_config.github_repo}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -38,12 +38,13 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-remote": {
-          "command": "npx",
-          "args": ["mcp-remote", "https://gitmcp.io/{owner}/{repo}"],
-          "env": {}
-        }
+      "mcp-remote": {
+        "command": "npx",
+        "args": [
+          "mcp-remote",
+          "https://gitmcp.io/{owner}/{repo}"
+        ],
+        "env": {}
       }
     },
     "oauth": {

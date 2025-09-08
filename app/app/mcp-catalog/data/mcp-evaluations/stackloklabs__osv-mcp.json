@@ -8,15 +8,11 @@
     "name": "StacklokLabs"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "osv-mcp-server",
-    "mcp_config": {
-      "command": "${__dirname}/server/osv-mcp-server",
-      "args": [],
-      "env": {
-        "MCP_PORT": "${user_config.mcp_port}",
-        "MCP_TRANSPORT": "${user_config.mcp_transport}"
-      }
+    "command": "${__dirname}/server/osv-mcp-server",
+    "args": [],
+    "env": {
+      "MCP_PORT": "${user_config.mcp_port}",
+      "MCP_TRANSPORT": "${user_config.mcp_transport}"
     }
   },
   "tools": [],
@@ -45,23 +41,24 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "osv": {
-          "command": "thv",
-          "args": ["run", "osv"],
-          "env": {}
-        },
-        "osv-mcp-server": {
-          "command": "./build/osv-mcp-server",
-          "args": [],
-          "env": {}
-        },
-        "osv-mcp-server-configured": {
-          "command": "./build/osv-mcp-server",
-          "args": [],
-          "env": {
-            "MCP_PORT": "3000"
-          }
+      "osv": {
+        "command": "thv",
+        "args": [
+          "run",
+          "osv"
+        ],
+        "env": {}
+      },
+      "osv-mcp-server": {
+        "command": "./build/osv-mcp-server",
+        "args": [],
+        "env": {}
+      },
+      "osv-mcp-server-configured": {
+        "command": "./build/osv-mcp-server",
+        "args": [],
+        "env": {
+          "MCP_PORT": "3000"
         }
       }
     },

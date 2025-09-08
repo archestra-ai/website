@@ -8,14 +8,10 @@
     "name": "Adeptus-Innovatio"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "solvitor-mcp",
-    "mcp_config": {
-      "command": "solvitor-mcp",
-      "args": [],
-      "env": {
-        "SOLVITOR_API_KEY": "${user_config.solvitor_api_key}"
-      }
+    "command": "solvitor-mcp",
+    "args": [],
+    "env": {
+      "SOLVITOR_API_KEY": "${user_config.solvitor_api_key}"
     }
   },
   "tools": [],
@@ -35,13 +31,11 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "solvitor-mcp": {
-          "command": "/Users/$username/.cargo/bin/solvitor-mcp",
-          "args": [],
-          "env": {
-            "SOLVITOR_API_KEY": "your_solvitor_api_key"
-          }
+      "solvitor-mcp": {
+        "command": "/Users/$username/.cargo/bin/solvitor-mcp",
+        "args": [],
+        "env": {
+          "SOLVITOR_API_KEY": "your_solvitor_api_key"
         }
       }
     },

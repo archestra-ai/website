@@ -1,9 +1,4 @@
-import {
-  DxtManifestSchema,
-  DxtManifestServerSchema,
-  DxtUserConfigurationOptionSchema,
-  McpServerConfigSchema,
-} from '@anthropic-ai/dxt';
+import { DxtManifestSchema, DxtUserConfigurationOptionSchema, McpServerConfigSchema } from '@anthropic-ai/dxt';
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { z } from 'zod';
 
@@ -58,9 +53,7 @@ export const MCPDependencySchema = z.object({
   importance: z.number().min(1).max(10),
 });
 
-export const ArchestraClientConfigPermutationsSchema = z.object({
-  mcpServers: z.record(z.string(), McpServerConfigSchema),
-});
+export const ArchestraClientConfigPermutationsSchema = z.record(z.string(), McpServerConfigSchema);
 
 /**
  * NOTE: when we are ready to add more OAuth providers, we can simply add them here
@@ -167,8 +160,21 @@ const ArchestraMcpServerManifestBase = DxtManifestSchema.omit({ repository: true
   protocol_features: ArchestraMcpServerProtocolFeaturesSchema.optional(),
   dependencies: z.array(MCPDependencySchema).optional(),
   raw_dependencies: z.string().nullable(),
-  server_overridden: DxtManifestServerSchema.optional(),
+
+  /**
+   * NOTE: for server, we override the `server` field from `DxtManifestSchema` as this contains
+   * `type` and `entry_point` fields which are not needed for our purposes
+   */
+  server: McpServerConfigSchema,
+  /**
+   * TODO: `server_overriden` should not exist.. it should be "merged" into `server`
+   */
+  server_overridden: McpServerConfigSchema.optional(),
+  /**
+   * TODO: `server_docker` should not exist.. it should be "merged" into `server`
+   */
   server_docker: z.any().optional(),
+
   user_config_overridden: z.record(z.string(), DxtUserConfigurationOptionSchema).optional(),
 });
 

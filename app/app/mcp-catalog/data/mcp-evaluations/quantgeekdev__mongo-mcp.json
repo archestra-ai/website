@@ -8,13 +8,12 @@
     "name": "QuantGeekDev"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["mongo-mcp", "${user_config.mongodb_connection_url}"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "mongo-mcp",
+      "${user_config.mongodb_connection_url}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,17 +32,21 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mongo-mcp": {
-          "command": "npx",
-          "args": ["mongo-mcp", "mongodb://<username>:<password>@<host>:<port>/<database>?authSource=admin"],
-          "env": {}
-        },
-        "mongo-mcp-local-dev": {
-          "command": "node",
-          "args": ["dist/index.js", "mongodb://root:example@localhost:27017/test?authSource=admin"],
-          "env": {}
-        }
+      "mongo-mcp": {
+        "command": "npx",
+        "args": [
+          "mongo-mcp",
+          "mongodb://<username>:<password>@<host>:<port>/<database>?authSource=admin"
+        ],
+        "env": {}
+      },
+      "mongo-mcp-local-dev": {
+        "command": "node",
+        "args": [
+          "dist/index.js",
+          "mongodb://root:example@localhost:27017/test?authSource=admin"
+        ],
+        "env": {}
       }
     },
     "oauth": {

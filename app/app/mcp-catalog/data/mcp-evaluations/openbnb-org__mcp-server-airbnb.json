@@ -8,13 +8,13 @@
     "name": "openbnb-org"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@openbnb/mcp-server-airbnb", "${user_config.ignore_robots_txt}"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@openbnb/mcp-server-airbnb",
+      "${user_config.ignore_robots_txt}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,27 +33,37 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "openbnb-mcp-server-airbnb": {
-          "command": "npx",
-          "args": ["-y", "@openbnb/mcp-server-airbnb"],
-          "env": {}
-        },
-        "openbnb-mcp-server-airbnb-ignore-robots-txt": {
-          "command": "npx",
-          "args": ["-y", "@openbnb/mcp-server-airbnb", "--ignore-robots-txt"],
-          "env": {}
-        },
-        "openbnb-mcp-server-airbnb-node-direct": {
-          "command": "node",
-          "args": ["dist/index.js"],
-          "env": {}
-        },
-        "openbnb-mcp-server-airbnb-node-direct-ignore-robots-txt": {
-          "command": "node",
-          "args": ["dist/index.js", "--ignore-robots-txt"],
-          "env": {}
-        }
+      "openbnb-mcp-server-airbnb": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@openbnb/mcp-server-airbnb"
+        ],
+        "env": {}
+      },
+      "openbnb-mcp-server-airbnb-ignore-robots-txt": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@openbnb/mcp-server-airbnb",
+          "--ignore-robots-txt"
+        ],
+        "env": {}
+      },
+      "openbnb-mcp-server-airbnb-node-direct": {
+        "command": "node",
+        "args": [
+          "dist/index.js"
+        ],
+        "env": {}
+      },
+      "openbnb-mcp-server-airbnb-node-direct-ignore-robots-txt": {
+        "command": "node",
+        "args": [
+          "dist/index.js",
+          "--ignore-robots-txt"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,14 +8,12 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/main.py"],
-      "env": {
-        "NEWS_API_KEY": "${user_config.news_api_key}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/main.py"
+    ],
+    "env": {
+      "NEWS_API_KEY": "${user_config.news_api_key}"
     }
   },
   "tools": [],
@@ -35,13 +33,13 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "Crypto News": {
-          "command": "python",
-          "args": ["path/to/crypto-news-mcp/main.py"],
-          "env": {
-            "NEWS_API_KEY": "your_newsdata_api_key_here"
-          }
+      "Crypto News": {
+        "command": "python",
+        "args": [
+          "path/to/crypto-news-mcp/main.py"
+        ],
+        "env": {
+          "NEWS_API_KEY": "your_newsdata_api_key_here"
         }
       }
     },

@@ -8,18 +8,16 @@
     "name": "OpenLinkSoftware"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/index.js"],
-      "env": {
-        "API_KEY": "${user_config.api_key}",
-        "ODBC_DSN": "${user_config.odbc_dsn}",
-        "ODBC_USER": "${user_config.odbc_user}",
-        "ODBC_PASSWORD": "${user_config.odbc_password}",
-        "ODBCINI": "${user_config.odbcini}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/index.js"
+    ],
+    "env": {
+      "API_KEY": "${user_config.api_key}",
+      "ODBC_DSN": "${user_config.odbc_dsn}",
+      "ODBC_USER": "${user_config.odbc_user}",
+      "ODBC_PASSWORD": "${user_config.odbc_password}",
+      "ODBCINI": "${user_config.odbcini}"
     }
   },
   "tools": [],
@@ -70,9 +68,7 @@
   "category": "AI Tools",
   "quality_score": 53,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

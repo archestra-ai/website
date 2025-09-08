@@ -8,15 +8,14 @@
     "name": "Hypersequent"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "qasphere-mcp"],
-      "env": {
-        "QASPHERE_TENANT_URL": "${user_config.qasphere_tenant_url}",
-        "QASPHERE_API_KEY": "${user_config.qasphere_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "qasphere-mcp"
+    ],
+    "env": {
+      "QASPHERE_TENANT_URL": "${user_config.qasphere_tenant_url}",
+      "QASPHERE_API_KEY": "${user_config.qasphere_api_key}"
     }
   },
   "tools": [],
@@ -44,14 +43,15 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "qasphere-mcp": {
-          "command": "npx",
-          "args": ["-y", "qasphere-mcp"],
-          "env": {
-            "QASPHERE_TENANT_URL": "your-company.region.qasphere.com",
-            "QASPHERE_API_KEY": "your-api-key"
-          }
+      "qasphere-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "qasphere-mcp"
+        ],
+        "env": {
+          "QASPHERE_TENANT_URL": "your-company.region.qasphere.com",
+          "QASPHERE_API_KEY": "your-api-key"
         }
       }
     },

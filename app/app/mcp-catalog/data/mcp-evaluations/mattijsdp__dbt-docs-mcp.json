@@ -8,23 +8,19 @@
     "name": "mattijsdp"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/mcp_server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": [
-        "run",
-        "--with",
-        "networkx,mcp[cli],rapidfuzz,dbt-core,python-decouple,sqlglot,tqdm",
-        "mcp",
-        "run",
-        "${__dirname}/src/mcp_server.py"
-      ],
-      "env": {
-        "MANIFEST_PATH": "${user_config.manifest_path}",
-        "SCHEMA_MAPPING_PATH": "${user_config.schema_mapping_path}",
-        "MANIFEST_CL_PATH": "${user_config.manifest_cl_path}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "networkx,mcp[cli],rapidfuzz,dbt-core,python-decouple,sqlglot,tqdm",
+      "mcp",
+      "run",
+      "${__dirname}/src/mcp_server.py"
+    ],
+    "env": {
+      "MANIFEST_PATH": "${user_config.manifest_path}",
+      "SCHEMA_MAPPING_PATH": "${user_config.schema_mapping_path}",
+      "MANIFEST_CL_PATH": "${user_config.manifest_cl_path}"
     }
   },
   "tools": [],
@@ -58,22 +54,20 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "dbt-docs-mcp": {
-          "command": "uv",
-          "args": [
-            "run",
-            "--with",
-            "networkx,mcp[cli],rapidfuzz,dbt-core,python-decouple,sqlglot,tqdm",
-            "mcp",
-            "run",
-            "/Users/mattijs/repos/dbt-docs-mcp/src/mcp_server.py"
-          ],
-          "env": {
-            "MANIFEST_PATH": "/Users/mattijs/repos/dbt-docs-mcp/inputs/manifest.json",
-            "SCHEMA_MAPPING_PATH": "/Users/mattijs/repos/dbt-docs-mcp/outputs/schema_mapping.json",
-            "MANIFEST_CL_PATH": "/Users/mattijs/repos/dbt-docs-mcp/outputs/manifest_column_lineage.json"
-          }
+      "dbt-docs-mcp": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--with",
+          "networkx,mcp[cli],rapidfuzz,dbt-core,python-decouple,sqlglot,tqdm",
+          "mcp",
+          "run",
+          "/Users/mattijs/repos/dbt-docs-mcp/src/mcp_server.py"
+        ],
+        "env": {
+          "MANIFEST_PATH": "/Users/mattijs/repos/dbt-docs-mcp/inputs/manifest.json",
+          "SCHEMA_MAPPING_PATH": "/Users/mattijs/repos/dbt-docs-mcp/outputs/schema_mapping.json",
+          "MANIFEST_CL_PATH": "/Users/mattijs/repos/dbt-docs-mcp/outputs/manifest_column_lineage.json"
         }
       }
     },

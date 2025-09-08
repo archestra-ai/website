@@ -8,17 +8,15 @@
     "name": "tradercjz"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["dolphindb-mcp-server"],
-      "env": {
-        "DDB_HOST": "${user_config.ddb_host}",
-        "DDB_PORT": "${user_config.ddb_port}",
-        "DDB_USER": "${user_config.ddb_user}",
-        "DDB_PASSWD": "${user_config.ddb_passwd}"
-      }
+    "command": "uvx",
+    "args": [
+      "dolphindb-mcp-server"
+    ],
+    "env": {
+      "DDB_HOST": "${user_config.ddb_host}",
+      "DDB_PORT": "${user_config.ddb_port}",
+      "DDB_USER": "${user_config.ddb_user}",
+      "DDB_PASSWD": "${user_config.ddb_passwd}"
     }
   },
   "tools": [],
@@ -60,17 +58,17 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "dolphindb-mcp-server": {
-          "command": "dolphindb-mcp-server",
-          "args": [],
-          "env": {}
-        },
-        "dolphindb-mcp-server-uvx": {
-          "command": "uvx",
-          "args": ["dolphindb-mcp-server"],
-          "env": {}
-        }
+      "dolphindb-mcp-server": {
+        "command": "dolphindb-mcp-server",
+        "args": [],
+        "env": {}
+      },
+      "dolphindb-mcp-server-uvx": {
+        "command": "uvx",
+        "args": [
+          "dolphindb-mcp-server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

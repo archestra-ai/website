@@ -8,14 +8,14 @@
     "name": "cloudflare"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "${user_config.mcp_server_url}"],
-      "env": {
-        "CLOUDFLARE_API_TOKEN": "${user_config.cloudflare_api_token}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-remote",
+      "${user_config.mcp_server_url}"
+    ],
+    "env": {
+      "CLOUDFLARE_API_TOKEN": "${user_config.cloudflare_api_token}"
     }
   },
   "tools": [],
@@ -41,17 +41,21 @@
   "quality_score": 78,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-remote-observability": {
-          "command": "npx",
-          "args": ["mcp-remote", "https://observability.mcp.cloudflare.com/sse"],
-          "env": {}
-        },
-        "mcp-remote-bindings": {
-          "command": "npx",
-          "args": ["mcp-remote", "https://bindings.mcp.cloudflare.com/sse"],
-          "env": {}
-        }
+      "mcp-remote-observability": {
+        "command": "npx",
+        "args": [
+          "mcp-remote",
+          "https://observability.mcp.cloudflare.com/sse"
+        ],
+        "env": {}
+      },
+      "mcp-remote-bindings": {
+        "command": "npx",
+        "args": [
+          "mcp-remote",
+          "https://bindings.mcp.cloudflare.com/sse"
+        ],
+        "env": {}
       }
     },
     "oauth": {

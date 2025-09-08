@@ -8,13 +8,12 @@
     "name": "kehvinbehvin"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "json-mcp-filter@latest"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "json-mcp-filter@latest"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,32 +24,41 @@
   "quality_score": 43,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "json-mcp-filter-npx": {
-          "command": "npx",
-          "args": ["-y", "json-mcp-filter@latest"],
-          "env": {}
-        },
-        "json-mcp-filter-global": {
-          "command": "json-mcp-server",
-          "args": [],
-          "env": {}
-        },
-        "json-mcp-filter-source-start": {
-          "command": "npm",
-          "args": ["run", "start"],
-          "env": {}
-        },
-        "json-mcp-filter-node-path": {
-          "command": "node",
-          "args": ["/path/to/json-mcp-filter/build/index.js"],
-          "env": {}
-        },
-        "json-mcp-filter-inspect": {
-          "command": "npm",
-          "args": ["run", "inspect"],
-          "env": {}
-        }
+      "json-mcp-filter-npx": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "json-mcp-filter@latest"
+        ],
+        "env": {}
+      },
+      "json-mcp-filter-global": {
+        "command": "json-mcp-server",
+        "args": [],
+        "env": {}
+      },
+      "json-mcp-filter-source-start": {
+        "command": "npm",
+        "args": [
+          "run",
+          "start"
+        ],
+        "env": {}
+      },
+      "json-mcp-filter-node-path": {
+        "command": "node",
+        "args": [
+          "/path/to/json-mcp-filter/build/index.js"
+        ],
+        "env": {}
+      },
+      "json-mcp-filter-inspect": {
+        "command": "npm",
+        "args": [
+          "run",
+          "inspect"
+        ],
+        "env": {}
       }
     },
     "oauth": {

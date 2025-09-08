@@ -8,13 +8,12 @@
     "name": "zhsama"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "duckduckgo-mcp-server"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "duckduckgo-mcp-server"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +24,20 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "duckduckgo-search-online": {
-          "command": "npx",
-          "args": ["-y", "duckduckgo-mcp-server"],
-          "env": {}
-        },
-        "duckduckgo-search-local": {
-          "command": "node",
-          "args": ["/path/to/duckduckgo-search/build/index.js"],
-          "env": {}
-        }
+      "duckduckgo-search-online": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "duckduckgo-mcp-server"
+        ],
+        "env": {}
+      },
+      "duckduckgo-search-local": {
+        "command": "node",
+        "args": [
+          "/path/to/duckduckgo-search/build/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

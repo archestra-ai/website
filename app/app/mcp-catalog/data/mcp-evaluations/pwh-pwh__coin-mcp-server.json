@@ -8,14 +8,16 @@
     "name": "pwh-pwh"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "deno",
-    "mcp_config": {
-      "command": "deno",
-      "args": ["run", "--allow-net", "--allow-read", "--allow-env", "https://deno.land/x/coin_mcp_server/main.ts"],
-      "env": {
-        "BGURL": "${user_config.bgurl}"
-      }
+    "command": "deno",
+    "args": [
+      "run",
+      "--allow-net",
+      "--allow-read",
+      "--allow-env",
+      "https://deno.land/x/coin_mcp_server/main.ts"
+    ],
+    "env": {
+      "BGURL": "${user_config.bgurl}"
     }
   },
   "tools": [],
@@ -35,22 +37,38 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "coin-mcp-server-local": {
-          "command": "deno",
-          "args": ["run", "--allow-net", "--allow-env", "--allow-read", "main.ts"],
-          "env": {}
-        },
-        "coin-mcp-server": {
-          "command": "deno",
-          "args": ["run", "--allow-net", "--allow-env", "--allow-read", "https://deno.land/x/coin_mcp_server/main.ts"],
-          "env": {}
-        },
-        "coin-mcp-configured": {
-          "command": "deno",
-          "args": ["run", "--allow-net", "--allow-read", "--allow-env", "https://deno.land/x/coin_mcp_server/main.ts"],
-          "env": {}
-        }
+      "coin-mcp-server-local": {
+        "command": "deno",
+        "args": [
+          "run",
+          "--allow-net",
+          "--allow-env",
+          "--allow-read",
+          "main.ts"
+        ],
+        "env": {}
+      },
+      "coin-mcp-server": {
+        "command": "deno",
+        "args": [
+          "run",
+          "--allow-net",
+          "--allow-env",
+          "--allow-read",
+          "https://deno.land/x/coin_mcp_server/main.ts"
+        ],
+        "env": {}
+      },
+      "coin-mcp-configured": {
+        "command": "deno",
+        "args": [
+          "run",
+          "--allow-net",
+          "--allow-read",
+          "--allow-env",
+          "https://deno.land/x/coin_mcp_server/main.ts"
+        ],
+        "env": {}
       }
     },
     "oauth": {

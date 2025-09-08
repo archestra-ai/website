@@ -8,18 +8,17 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "${__dirname}/main.py"],
-      "env": {
-        "HTTPS_RPC_ENDPOINT": "${user_config.https_rpc_endpoint}",
-        "BUY_SLIPPAGE": "${user_config.buy_slippage}",
-        "SELL_SLIPPAGE": "${user_config.sell_slippage}",
-        "SWAP_PRIORITY_FEE": "${user_config.swap_priority_fee}",
-        "PRIVATE_KEY": "${user_config.private_key}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "${__dirname}/main.py"
+    ],
+    "env": {
+      "HTTPS_RPC_ENDPOINT": "${user_config.https_rpc_endpoint}",
+      "BUY_SLIPPAGE": "${user_config.buy_slippage}",
+      "SELL_SLIPPAGE": "${user_config.sell_slippage}",
+      "SWAP_PRIORITY_FEE": "${user_config.swap_priority_fee}",
+      "PRIVATE_KEY": "${user_config.private_key}"
     }
   },
   "tools": [],
@@ -76,17 +75,18 @@
   "quality_score": 38,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "pumpswap-mcp-server": {
-          "command": "uv",
-          "args": ["run", "main.py"],
-          "env": {
-            "HTTPS_RPC_ENDPOINT": "https://api.mainnet-beta.solana.com",
-            "BUY_SLIPPAGE": "0.3",
-            "SELL_SLIPPAGE": "0.1",
-            "SWAP_PRIORITY_FEE": "1500000",
-            "PRIVATE_KEY": "your-solana-private-key"
-          }
+      "pumpswap-mcp-server": {
+        "command": "uv",
+        "args": [
+          "run",
+          "main.py"
+        ],
+        "env": {
+          "HTTPS_RPC_ENDPOINT": "https://api.mainnet-beta.solana.com",
+          "BUY_SLIPPAGE": "0.3",
+          "SELL_SLIPPAGE": "0.1",
+          "SWAP_PRIORITY_FEE": "1500000",
+          "PRIVATE_KEY": "your-solana-private-key"
         }
       }
     },

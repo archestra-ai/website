@@ -8,13 +8,9 @@
     "name": "sunriseapps"
   },
   "server": {
-    "type": "python",
-    "entry_point": "imagesorcery-mcp",
-    "mcp_config": {
-      "command": "imagesorcery-mcp",
-      "args": [],
-      "env": {}
-    }
+    "command": "imagesorcery-mcp",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "imagesorcery-mcp": {
-          "command": "/full/path/to/venv/bin/imagesorcery-mcp",
-          "args": [],
-          "env": {}
-        }
+      "imagesorcery-mcp": {
+        "command": "/full/path/to/venv/bin/imagesorcery-mcp",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

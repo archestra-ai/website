@@ -8,18 +8,16 @@
     "name": "r-huijts"
   },
   "server": {
-    "type": "node",
-    "entry_point": "dist/server.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/server.js"],
-      "env": {
-        "STRAVA_CLIENT_ID": "${user_config.strava_client_id}",
-        "STRAVA_CLIENT_SECRET": "${user_config.strava_client_secret}",
-        "STRAVA_ACCESS_TOKEN": "${user_config.strava_access_token}",
-        "STRAVA_REFRESH_TOKEN": "${user_config.strava_refresh_token}",
-        "ROUTE_EXPORT_PATH": "${user_config.route_export_path}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/server.js"
+    ],
+    "env": {
+      "STRAVA_CLIENT_ID": "${user_config.strava_client_id}",
+      "STRAVA_CLIENT_SECRET": "${user_config.strava_client_secret}",
+      "STRAVA_ACCESS_TOKEN": "${user_config.strava_access_token}",
+      "STRAVA_REFRESH_TOKEN": "${user_config.strava_refresh_token}",
+      "ROUTE_EXPORT_PATH": "${user_config.route_export_path}"
     }
   },
   "tools": [],
@@ -66,12 +64,12 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "strava-mcp-local": {
-          "command": "node",
-          "args": ["/absolute/path/to/your/strava-mcp/dist/server.js"],
-          "env": {}
-        }
+      "strava-mcp-local": {
+        "command": "node",
+        "args": [
+          "/absolute/path/to/your/strava-mcp/dist/server.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,14 @@
     "name": "jjsantos01"
   },
   "server": {
-    "type": "python",
-    "entry_point": "jupyter_mcp_server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${user_config.src_path}", "run", "jupyter_mcp_server.py"],
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${user_config.src_path}",
+      "run",
+      "jupyter_mcp_server.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,12 +34,15 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "jupyter": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/src", "run", "jupyter_mcp_server.py"],
-          "env": {}
-        }
+      "jupyter": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/src",
+          "run",
+          "jupyter_mcp_server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

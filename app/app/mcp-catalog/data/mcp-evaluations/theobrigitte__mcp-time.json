@@ -8,20 +8,16 @@
     "name": "TheoBrigitte"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-time",
-    "mcp_config": {
-      "command": "mcp-time",
-      "args": [
-        "-t",
-        "${user_config.transport}",
-        "--address",
-        "${user_config.address}",
-        "--log-file",
-        "${user_config.log_file}"
-      ],
-      "env": {}
-    }
+    "command": "mcp-time",
+    "args": [
+      "-t",
+      "${user_config.transport}",
+      "--address",
+      "${user_config.address}",
+      "--log-file",
+      "${user_config.log_file}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -53,22 +49,30 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "theo01-mcp-time-docker": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "theo01/mcp-time:latest"],
-          "env": {}
-        },
-        "mcp-time-stdio": {
-          "command": "mcp-time",
-          "args": [],
-          "env": {}
-        },
-        "mcp-time-stream": {
-          "command": "mcp-time",
-          "args": ["--transport", "stream", "--address", "http://localhost:8080/mcp"],
-          "env": {}
-        }
+      "theo01-mcp-time-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "theo01/mcp-time:latest"
+        ],
+        "env": {}
+      },
+      "mcp-time-stdio": {
+        "command": "mcp-time",
+        "args": [],
+        "env": {}
+      },
+      "mcp-time-stream": {
+        "command": "mcp-time",
+        "args": [
+          "--transport",
+          "stream",
+          "--address",
+          "http://localhost:8080/mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,20 +8,19 @@
     "name": "aashari"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@aashari/mcp-server-aws-sso"],
-      "env": {
-        "AWS_REGION": "${user_config.aws_region}",
-        "AWS_SSO_START_URL": "${user_config.aws_sso_start_url}",
-        "DEBUG": "${user_config.debug}",
-        "TRANSPORT_MODE": "${user_config.transport_mode}",
-        "PORT": "${user_config.port}",
-        "AWS_SSO_REGION": "${user_config.aws_sso_region}",
-        "AWS_PROFILE": "${user_config.aws_profile}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@aashari/mcp-server-aws-sso"
+    ],
+    "env": {
+      "AWS_REGION": "${user_config.aws_region}",
+      "AWS_SSO_START_URL": "${user_config.aws_sso_start_url}",
+      "DEBUG": "${user_config.debug}",
+      "TRANSPORT_MODE": "${user_config.transport_mode}",
+      "PORT": "${user_config.port}",
+      "AWS_SSO_REGION": "${user_config.aws_sso_region}",
+      "AWS_PROFILE": "${user_config.aws_profile}"
     }
   },
   "tools": [],
@@ -83,25 +82,32 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "aashari-mcp-server-aws-sso": {
-          "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-aws-sso"],
-          "env": {}
-        },
-        "aashari-mcp-server-aws-sso-stdio": {
-          "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-aws-sso"],
-          "env": {
-            "TRANSPORT_MODE": "stdio"
-          }
-        },
-        "aashari-mcp-server-aws-sso-http": {
-          "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-aws-sso"],
-          "env": {
-            "TRANSPORT_MODE": "http"
-          }
+      "aashari-mcp-server-aws-sso": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@aashari/mcp-server-aws-sso"
+        ],
+        "env": {}
+      },
+      "aashari-mcp-server-aws-sso-stdio": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@aashari/mcp-server-aws-sso"
+        ],
+        "env": {
+          "TRANSPORT_MODE": "stdio"
+        }
+      },
+      "aashari-mcp-server-aws-sso-http": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@aashari/mcp-server-aws-sso"
+        ],
+        "env": {
+          "TRANSPORT_MODE": "http"
         }
       }
     },

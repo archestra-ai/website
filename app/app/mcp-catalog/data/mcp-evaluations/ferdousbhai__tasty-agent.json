@@ -8,16 +8,14 @@
     "name": "ferdousbhai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["tasty-agent"],
-      "env": {
-        "TASTYTRADE_USERNAME": "${user_config.tastytrade_username}",
-        "TASTYTRADE_PASSWORD": "${user_config.tastytrade_password}",
-        "TASTYTRADE_ACCOUNT_ID": "${user_config.tastytrade_account_id}"
-      }
+    "command": "uvx",
+    "args": [
+      "tasty-agent"
+    ],
+    "env": {
+      "TASTYTRADE_USERNAME": "${user_config.tastytrade_username}",
+      "TASTYTRADE_PASSWORD": "${user_config.tastytrade_password}",
+      "TASTYTRADE_ACCOUNT_ID": "${user_config.tastytrade_account_id}"
     }
   },
   "tools": [],
@@ -51,12 +49,12 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "tasty-agent": {
-          "command": "uvx",
-          "args": ["tasty-agent"],
-          "env": {}
-        }
+      "tasty-agent": {
+        "command": "uvx",
+        "args": [
+          "tasty-agent"
+        ],
+        "env": {}
       }
     },
     "oauth": {

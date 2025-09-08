@@ -8,19 +8,15 @@
     "name": "alexander-zuev"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "supabase-mcp-server",
-    "mcp_config": {
-      "command": "supabase-mcp-server",
-      "args": [],
-      "env": {
-        "SUPABASE_PROJECT_REF": "${user_config.supabase_project_ref}",
-        "SUPABASE_DB_PASSWORD": "${user_config.supabase_db_password}",
-        "SUPABASE_REGION": "${user_config.supabase_region}",
-        "SUPABASE_ACCESS_TOKEN": "${user_config.supabase_access_token}",
-        "SUPABASE_SERVICE_ROLE_KEY": "${user_config.supabase_service_role_key}",
-        "QUERY_API_KEY": "${user_config.query_api_key}"
-      }
+    "command": "supabase-mcp-server",
+    "args": [],
+    "env": {
+      "SUPABASE_PROJECT_REF": "${user_config.supabase_project_ref}",
+      "SUPABASE_DB_PASSWORD": "${user_config.supabase_db_password}",
+      "SUPABASE_REGION": "${user_config.supabase_region}",
+      "SUPABASE_ACCESS_TOKEN": "${user_config.supabase_access_token}",
+      "SUPABASE_SERVICE_ROLE_KEY": "${user_config.supabase_service_role_key}",
+      "QUERY_API_KEY": "${user_config.query_api_key}"
     }
   },
   "tools": [],
@@ -78,12 +74,10 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "supabase-mcp-server": {
-          "command": "supabase-mcp-server",
-          "args": [],
-          "env": {}
-        }
+      "supabase-mcp-server": {
+        "command": "supabase-mcp-server",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

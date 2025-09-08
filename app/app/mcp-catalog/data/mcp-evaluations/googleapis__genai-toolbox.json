@@ -8,13 +8,12 @@
     "name": "googleapis"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "toolbox",
-    "mcp_config": {
-      "command": "./toolbox",
-      "args": ["--tools-file", "${user_config.tools_file}"],
-      "env": {}
-    }
+    "command": "./toolbox",
+    "args": [
+      "--tools-file",
+      "${user_config.tools_file}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,27 +32,39 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "toolbox": {
-          "command": "./toolbox",
-          "args": ["--tools-file", "tools.yaml"],
-          "env": {}
-        },
-        "toolbox-no-reload": {
-          "command": "./toolbox",
-          "args": ["--tools-file", "tools.yaml", "--disable-reload"],
-          "env": {}
-        },
-        "mcp-toolbox": {
-          "command": "toolbox",
-          "args": ["--tools-file", "tools.yaml"],
-          "env": {}
-        },
-        "mcp-toolbox-no-reload": {
-          "command": "toolbox",
-          "args": ["--tools-file", "tools.yaml", "--disable-reload"],
-          "env": {}
-        }
+      "toolbox": {
+        "command": "./toolbox",
+        "args": [
+          "--tools-file",
+          "tools.yaml"
+        ],
+        "env": {}
+      },
+      "toolbox-no-reload": {
+        "command": "./toolbox",
+        "args": [
+          "--tools-file",
+          "tools.yaml",
+          "--disable-reload"
+        ],
+        "env": {}
+      },
+      "mcp-toolbox": {
+        "command": "toolbox",
+        "args": [
+          "--tools-file",
+          "tools.yaml"
+        ],
+        "env": {}
+      },
+      "mcp-toolbox-no-reload": {
+        "command": "toolbox",
+        "args": [
+          "--tools-file",
+          "tools.yaml",
+          "--disable-reload"
+        ],
+        "env": {}
       }
     },
     "oauth": {

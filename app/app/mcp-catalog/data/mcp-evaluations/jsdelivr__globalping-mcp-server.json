@@ -8,15 +8,13 @@
     "name": "jsdelivr"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/server/index.js"],
-      "env": {
-        "GLOBALPING_CLIENT_ID": "${user_config.globalping_client_id}",
-        "OAUTH_KV": "${user_config.oauth_kv}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/server/index.js"
+    ],
+    "env": {
+      "GLOBALPING_CLIENT_ID": "${user_config.globalping_client_id}",
+      "OAUTH_KV": "${user_config.oauth_kv}"
     }
   },
   "tools": [],

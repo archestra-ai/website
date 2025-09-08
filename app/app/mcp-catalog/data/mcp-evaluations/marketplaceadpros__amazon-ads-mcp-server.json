@@ -8,14 +8,13 @@
     "name": "MarketplaceAdPros"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@marketplaceadpros/amazon-ads-mcp-server"],
-      "env": {
-        "BEARER_TOKEN": "${user_config.bearer_token}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@marketplaceadpros/amazon-ads-mcp-server"
+    ],
+    "env": {
+      "BEARER_TOKEN": "${user_config.bearer_token}"
     }
   },
   "tools": [],
@@ -35,20 +34,22 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "marketplaceadpros-amazon-ads-mcp-server": {
-          "command": "npx",
-          "args": ["@marketplaceadpros/amazon-ads-mcp-server"],
-          "env": {
-            "BEARER_TOKEN": "abcdefghijklmnop"
-          }
-        },
-        "marketplaceadpros-amazon-ads-mcp-server-node-path": {
-          "command": "node",
-          "args": ["/path/to/amazon-ads-mcp-server/build/index.js"],
-          "env": {
-            "BEARER_TOKEN": "abcdefghijklmnop"
-          }
+      "marketplaceadpros-amazon-ads-mcp-server": {
+        "command": "npx",
+        "args": [
+          "@marketplaceadpros/amazon-ads-mcp-server"
+        ],
+        "env": {
+          "BEARER_TOKEN": "abcdefghijklmnop"
+        }
+      },
+      "marketplaceadpros-amazon-ads-mcp-server-node-path": {
+        "command": "node",
+        "args": [
+          "/path/to/amazon-ads-mcp-server/build/index.js"
+        ],
+        "env": {
+          "BEARER_TOKEN": "abcdefghijklmnop"
         }
       }
     },

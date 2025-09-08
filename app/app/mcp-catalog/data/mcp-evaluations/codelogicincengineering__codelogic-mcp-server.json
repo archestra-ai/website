@@ -8,18 +8,16 @@
     "name": "CodeLogicIncEngineering"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["codelogic-mcp-server@latest"],
-      "env": {
-        "CODELOGIC_SERVER_HOST": "${user_config.codelogic_server_host}",
-        "CODELOGIC_USERNAME": "${user_config.codelogic_username}",
-        "CODELOGIC_PASSWORD": "${user_config.codelogic_password}",
-        "CODELOGIC_WORKSPACE_NAME": "${user_config.codelogic_workspace_name}",
-        "CODELOGIC_DEBUG_MODE": "${user_config.codelogic_debug_mode}"
-      }
+    "command": "uvx",
+    "args": [
+      "codelogic-mcp-server@latest"
+    ],
+    "env": {
+      "CODELOGIC_SERVER_HOST": "${user_config.codelogic_server_host}",
+      "CODELOGIC_USERNAME": "${user_config.codelogic_username}",
+      "CODELOGIC_PASSWORD": "${user_config.codelogic_password}",
+      "CODELOGIC_WORKSPACE_NAME": "${user_config.codelogic_workspace_name}",
+      "CODELOGIC_DEBUG_MODE": "${user_config.codelogic_debug_mode}"
     }
   },
   "tools": [],
@@ -68,38 +66,45 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "codelogic-mcp-server-uv-workaround": {
-          "command": "uv",
-          "args": ["--directory", "<PATH_TO_THIS_REPO>/codelogic-mcp-server-main", "run", "codelogic-mcp-server"],
-          "env": {
-            "CODELOGIC_SERVER_HOST": "<url to the server e.g. https://myco.app.codelogic.com>",
-            "CODELOGIC_USERNAME": "<my username>",
-            "CODELOGIC_PASSWORD": "<my password>",
-            "CODELOGIC_MV_NAME": "<my workspace>",
-            "CODELOGIC_DEBUG_MODE": "true"
-          }
-        },
-        "codelogic-mcp-server-uvx-debug": {
-          "command": "uvx",
-          "args": ["codelogic-mcp-server@latest"],
-          "env": {
-            "CODELOGIC_SERVER_HOST": "<url to the server e.g. https://myco.app.codelogic.com>",
-            "CODELOGIC_USERNAME": "<my username>",
-            "CODELOGIC_PASSWORD": "<my password>",
-            "CODELOGIC_WORKSPACE_NAME": "<my workspace>",
-            "CODELOGIC_DEBUG_MODE": "true"
-          }
-        },
-        "codelogic-mcp-server-uvx-no-debug": {
-          "command": "uvx",
-          "args": ["codelogic-mcp-server@latest"],
-          "env": {
-            "CODELOGIC_SERVER_HOST": "<url to the server e.g. https://myco.app.codelogic.com>",
-            "CODELOGIC_USERNAME": "<my username>",
-            "CODELOGIC_PASSWORD": "<my password>",
-            "CODELOGIC_WORKSPACE_NAME": "<my workspace>"
-          }
+      "codelogic-mcp-server-uv-workaround": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "<PATH_TO_THIS_REPO>/codelogic-mcp-server-main",
+          "run",
+          "codelogic-mcp-server"
+        ],
+        "env": {
+          "CODELOGIC_SERVER_HOST": "<url to the server e.g. https://myco.app.codelogic.com>",
+          "CODELOGIC_USERNAME": "<my username>",
+          "CODELOGIC_PASSWORD": "<my password>",
+          "CODELOGIC_MV_NAME": "<my workspace>",
+          "CODELOGIC_DEBUG_MODE": "true"
+        }
+      },
+      "codelogic-mcp-server-uvx-debug": {
+        "command": "uvx",
+        "args": [
+          "codelogic-mcp-server@latest"
+        ],
+        "env": {
+          "CODELOGIC_SERVER_HOST": "<url to the server e.g. https://myco.app.codelogic.com>",
+          "CODELOGIC_USERNAME": "<my username>",
+          "CODELOGIC_PASSWORD": "<my password>",
+          "CODELOGIC_WORKSPACE_NAME": "<my workspace>",
+          "CODELOGIC_DEBUG_MODE": "true"
+        }
+      },
+      "codelogic-mcp-server-uvx-no-debug": {
+        "command": "uvx",
+        "args": [
+          "codelogic-mcp-server@latest"
+        ],
+        "env": {
+          "CODELOGIC_SERVER_HOST": "<url to the server e.g. https://myco.app.codelogic.com>",
+          "CODELOGIC_USERNAME": "<my username>",
+          "CODELOGIC_PASSWORD": "<my password>",
+          "CODELOGIC_WORKSPACE_NAME": "<my workspace>"
         }
       }
     },

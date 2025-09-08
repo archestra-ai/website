@@ -8,16 +8,16 @@
     "name": "polygon-io"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp_polygon",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["--from", "git+https://github.com/polygon-io/mcp_polygon@v0.4.0", "mcp_polygon"],
-      "env": {
-        "POLYGON_API_KEY": "${user_config.polygon_api_key}",
-        "HOME": "${user_config.home}",
-        "MCP_TRANSPORT": "${user_config.mcp_transport}"
-      }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/polygon-io/mcp_polygon@v0.4.0",
+      "mcp_polygon"
+    ],
+    "env": {
+      "POLYGON_API_KEY": "${user_config.polygon_api_key}",
+      "HOME": "${user_config.home}",
+      "MCP_TRANSPORT": "${user_config.mcp_transport}"
     }
   },
   "tools": [],
@@ -51,50 +51,63 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp_polygon-desktop-configured": {
-          "command": "uvx",
-          "args": ["--from", "git+https://github.com/polygon-io/mcp_polygon@v0.4.0", "mcp_polygon"],
-          "env": {
-            "POLYGON_API_KEY": "<your_api_key_here>",
-            "HOME": "<your_home_directory>"
-          }
-        },
-        "mcp_polygon-streamable-http": {
-          "command": "uv",
-          "args": ["run", "entrypoint.py"],
-          "env": {
-            "MCP_TRANSPORT": "streamable-http",
-            "POLYGON_API_KEY": "<your_api_key_here>"
-          }
-        },
-        "mcp_polygon-local": {
-          "command": "uv",
-          "args": ["run", "mcp_polygon"],
-          "env": {
-            "POLYGON_API_KEY": "your_api_key_here"
-          }
-        },
-        "mcp_polygon-local-desktop-configured": {
-          "command": "uv",
-          "args": ["run", "--with", "/your/path/mcp_polygon", "mcp_polygon"],
-          "env": {
-            "POLYGON_API_KEY": "your_api_key_here",
-            "HOME": "/Users/danny"
-          }
-        },
-        "modelcontextprotocol-inspector": {
-          "command": "npx",
-          "args": [
-            "@modelcontextprotocol/inspector",
-            "uv",
-            "--directory",
-            "/path/to/mcp_polygon",
-            "run",
-            "mcp_polygon"
-          ],
-          "env": {}
+      "mcp_polygon-desktop-configured": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/polygon-io/mcp_polygon@v0.4.0",
+          "mcp_polygon"
+        ],
+        "env": {
+          "POLYGON_API_KEY": "<your_api_key_here>",
+          "HOME": "<your_home_directory>"
         }
+      },
+      "mcp_polygon-streamable-http": {
+        "command": "uv",
+        "args": [
+          "run",
+          "entrypoint.py"
+        ],
+        "env": {
+          "MCP_TRANSPORT": "streamable-http",
+          "POLYGON_API_KEY": "<your_api_key_here>"
+        }
+      },
+      "mcp_polygon-local": {
+        "command": "uv",
+        "args": [
+          "run",
+          "mcp_polygon"
+        ],
+        "env": {
+          "POLYGON_API_KEY": "your_api_key_here"
+        }
+      },
+      "mcp_polygon-local-desktop-configured": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--with",
+          "/your/path/mcp_polygon",
+          "mcp_polygon"
+        ],
+        "env": {
+          "POLYGON_API_KEY": "your_api_key_here",
+          "HOME": "/Users/danny"
+        }
+      },
+      "modelcontextprotocol-inspector": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "uv",
+          "--directory",
+          "/path/to/mcp_polygon",
+          "run",
+          "mcp_polygon"
+        ],
+        "env": {}
       }
     },
     "oauth": {

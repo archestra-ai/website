@@ -8,16 +8,14 @@
     "name": "devflowinc"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["trieve-mcp-server@latest"],
-      "env": {
-        "TRIEVE_API_KEY": "${user_config.trieve_api_key}",
-        "TRIEVE_ORGANIZATION_ID": "${user_config.trieve_organization_id}",
-        "TRIEVE_DATASET_ID": "${user_config.trieve_dataset_id}"
-      }
+    "command": "npx",
+    "args": [
+      "trieve-mcp-server@latest"
+    ],
+    "env": {
+      "TRIEVE_API_KEY": "${user_config.trieve_api_key}",
+      "TRIEVE_ORGANIZATION_ID": "${user_config.trieve_organization_id}",
+      "TRIEVE_DATASET_ID": "${user_config.trieve_dataset_id}"
     }
   },
   "tools": [],
@@ -51,29 +49,29 @@
   "quality_score": 72,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "trieve-mcp-server-configured": {
-          "command": "npx",
-          "args": ["trieve-mcp-server@latest"],
-          "env": {
-            "TRIEVE_API_KEY": "$TRIEVE_API_KEY",
-            "TRIEVE_ORGANIZATION_ID": "$TRIEVE_ORGANIZATION_ID",
-            "TRIEVE_DATASET_ID": "$TRIEVE_DATASET_ID"
-          }
-        },
-        "trieve-mcp-server-with-args": {
-          "command": "npx",
-          "args": [
-            "trieve-mcp-server",
-            "--api-key",
-            "<your-api-key>",
-            "--org-id",
-            "<your-org-id>",
-            "--dataset-id",
-            "<dataset-id>"
-          ],
-          "env": {}
+      "trieve-mcp-server-configured": {
+        "command": "npx",
+        "args": [
+          "trieve-mcp-server@latest"
+        ],
+        "env": {
+          "TRIEVE_API_KEY": "$TRIEVE_API_KEY",
+          "TRIEVE_ORGANIZATION_ID": "$TRIEVE_ORGANIZATION_ID",
+          "TRIEVE_DATASET_ID": "$TRIEVE_DATASET_ID"
         }
+      },
+      "trieve-mcp-server-with-args": {
+        "command": "npx",
+        "args": [
+          "trieve-mcp-server",
+          "--api-key",
+          "<your-api-key>",
+          "--org-id",
+          "<your-org-id>",
+          "--dataset-id",
+          "<dataset-id>"
+        ],
+        "env": {}
       }
     },
     "oauth": {

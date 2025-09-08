@@ -8,29 +8,27 @@
     "name": "qdrant"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp-server-qdrant",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-qdrant"],
-      "env": {
-        "QDRANT_URL": "${user_config.qdrant_url}",
-        "QDRANT_API_KEY": "${user_config.qdrant_api_key}",
-        "COLLECTION_NAME": "${user_config.collection_name}",
-        "QDRANT_LOCAL_PATH": "${user_config.qdrant_local_path}",
-        "EMBEDDING_PROVIDER": "${user_config.embedding_provider}",
-        "EMBEDDING_MODEL": "${user_config.embedding_model}",
-        "TOOL_STORE_DESCRIPTION": "${user_config.tool_store_description}",
-        "TOOL_FIND_DESCRIPTION": "${user_config.tool_find_description}",
-        "FASTMCP_DEBUG": "${user_config.fastmcp_debug}",
-        "FASTMCP_LOG_LEVEL": "${user_config.fastmcp_log_level}",
-        "FASTMCP_HOST": "${user_config.fastmcp_host}",
-        "FASTMCP_PORT": "${user_config.fastmcp_port}",
-        "FASTMCP_WARN_ON_DUPLICATE_RESOURCES": "${user_config.fastmcp_warn_on_duplicate_resources}",
-        "FASTMCP_WARN_ON_DUPLICATE_TOOLS": "${user_config.fastmcp_warn_on_duplicate_tools}",
-        "FASTMCP_WARN_ON_DUPLICATE_PROMPTS": "${user_config.fastmcp_warn_on_duplicate_prompts}",
-        "FASTMCP_DEPENDENCIES": "${user_config.fastmcp_dependencies}"
-      }
+    "command": "uvx",
+    "args": [
+      "mcp-server-qdrant"
+    ],
+    "env": {
+      "QDRANT_URL": "${user_config.qdrant_url}",
+      "QDRANT_API_KEY": "${user_config.qdrant_api_key}",
+      "COLLECTION_NAME": "${user_config.collection_name}",
+      "QDRANT_LOCAL_PATH": "${user_config.qdrant_local_path}",
+      "EMBEDDING_PROVIDER": "${user_config.embedding_provider}",
+      "EMBEDDING_MODEL": "${user_config.embedding_model}",
+      "TOOL_STORE_DESCRIPTION": "${user_config.tool_store_description}",
+      "TOOL_FIND_DESCRIPTION": "${user_config.tool_find_description}",
+      "FASTMCP_DEBUG": "${user_config.fastmcp_debug}",
+      "FASTMCP_LOG_LEVEL": "${user_config.fastmcp_log_level}",
+      "FASTMCP_HOST": "${user_config.fastmcp_host}",
+      "FASTMCP_PORT": "${user_config.fastmcp_port}",
+      "FASTMCP_WARN_ON_DUPLICATE_RESOURCES": "${user_config.fastmcp_warn_on_duplicate_resources}",
+      "FASTMCP_WARN_ON_DUPLICATE_TOOLS": "${user_config.fastmcp_warn_on_duplicate_tools}",
+      "FASTMCP_WARN_ON_DUPLICATE_PROMPTS": "${user_config.fastmcp_warn_on_duplicate_prompts}",
+      "FASTMCP_DEPENDENCIES": "${user_config.fastmcp_dependencies}"
     }
   },
   "tools": [],
@@ -150,73 +148,85 @@
   "quality_score": 78,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-qdrant": {
-          "command": "uvx",
-          "args": ["mcp-server-qdrant"],
-          "env": {
-            "QDRANT_URL": "http://localhost:6333",
-            "COLLECTION_NAME": "my-collection",
-            "EMBEDDING_MODEL": "sentence-transformers/all-MiniLM-L6-v2"
-          }
-        },
-        "mcp-server-qdrant-sse": {
-          "command": "uvx",
-          "args": ["mcp-server-qdrant", "--transport", "sse"],
-          "env": {
-            "QDRANT_URL": "http://localhost:6333",
-            "COLLECTION_NAME": "my-collection"
-          }
-        },
-        "mcp-server-qdrant-sse-custom-port": {
-          "command": "uvx",
-          "args": ["mcp-server-qdrant", "--transport", "sse"],
-          "env": {
-            "QDRANT_URL": "http://localhost:6333",
-            "COLLECTION_NAME": "my-collection",
-            "FASTMCP_PORT": "1234"
-          }
-        },
-        "mcp-server-qdrant-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8000:8000",
-            "-e",
-            "FASTMCP_HOST=\"0.0.0.0\"",
-            "-e",
-            "QDRANT_URL=\"http://your-qdrant-server:6333\"",
-            "-e",
-            "QDRANT_API_KEY=\"your-api-key\"",
-            "-e",
-            "COLLECTION_NAME=\"your-collection\"",
-            "mcp-server-qdrant"
-          ],
-          "env": {
-            "FASTMCP_HOST": "0.0.0.0",
-            "QDRANT_URL": "http://your-qdrant-server:6333",
-            "QDRANT_API_KEY": "your-api-key",
-            "COLLECTION_NAME": "your-collection"
-          }
-        },
-        "mcp-server-qdrant-claude-remote": {
-          "command": "uvx",
-          "args": ["mcp-server-qdrant"],
-          "env": {
-            "QDRANT_URL": "https://xyz-example.eu-central.aws.cloud.qdrant.io:6333",
-            "QDRANT_API_KEY": "your_api_key",
-            "COLLECTION_NAME": "your-collection-name",
-            "EMBEDDING_MODEL": "sentence-transformers/all-MiniLM-L6-v2"
-          }
-        },
-        "mcp-server-qdrant-claude-local": {
-          "command": "uvx",
-          "args": ["mcp-server-qdrant"],
-          "env": {
-            "QDRANT_LOCAL_PATH": "/path/to/qdrant/database",
-            "COLLECTION_NAME": "your-collection-"
-          }
+      "mcp-server-qdrant": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-qdrant"
+        ],
+        "env": {
+          "QDRANT_URL": "http://localhost:6333",
+          "COLLECTION_NAME": "my-collection",
+          "EMBEDDING_MODEL": "sentence-transformers/all-MiniLM-L6-v2"
+        }
+      },
+      "mcp-server-qdrant-sse": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-qdrant",
+          "--transport",
+          "sse"
+        ],
+        "env": {
+          "QDRANT_URL": "http://localhost:6333",
+          "COLLECTION_NAME": "my-collection"
+        }
+      },
+      "mcp-server-qdrant-sse-custom-port": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-qdrant",
+          "--transport",
+          "sse"
+        ],
+        "env": {
+          "QDRANT_URL": "http://localhost:6333",
+          "COLLECTION_NAME": "my-collection",
+          "FASTMCP_PORT": "1234"
+        }
+      },
+      "mcp-server-qdrant-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8000:8000",
+          "-e",
+          "FASTMCP_HOST=\"0.0.0.0\"",
+          "-e",
+          "QDRANT_URL=\"http://your-qdrant-server:6333\"",
+          "-e",
+          "QDRANT_API_KEY=\"your-api-key\"",
+          "-e",
+          "COLLECTION_NAME=\"your-collection\"",
+          "mcp-server-qdrant"
+        ],
+        "env": {
+          "FASTMCP_HOST": "0.0.0.0",
+          "QDRANT_URL": "http://your-qdrant-server:6333",
+          "QDRANT_API_KEY": "your-api-key",
+          "COLLECTION_NAME": "your-collection"
+        }
+      },
+      "mcp-server-qdrant-claude-remote": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-qdrant"
+        ],
+        "env": {
+          "QDRANT_URL": "https://xyz-example.eu-central.aws.cloud.qdrant.io:6333",
+          "QDRANT_API_KEY": "your_api_key",
+          "COLLECTION_NAME": "your-collection-name",
+          "EMBEDDING_MODEL": "sentence-transformers/all-MiniLM-L6-v2"
+        }
+      },
+      "mcp-server-qdrant-claude-local": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-qdrant"
+        ],
+        "env": {
+          "QDRANT_LOCAL_PATH": "/path/to/qdrant/database",
+          "COLLECTION_NAME": "your-collection-"
         }
       }
     },

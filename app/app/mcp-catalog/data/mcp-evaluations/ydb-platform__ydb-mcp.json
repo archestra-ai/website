@@ -8,31 +8,27 @@
     "name": "ydb-platform"
   },
   "server": {
-    "type": "python",
-    "entry_point": "__main__.py",
-    "mcp_config": {
-      "command": "python3",
-      "args": [
-        "-m",
-        "ydb_mcp",
-        "--ydb-auth-mode",
-        "${user_config.ydb_auth_mode}",
-        "--ydb-login",
-        "${user_config.ydb_login}",
-        "--ydb-password",
-        "${user_config.ydb_password}",
-        "--ydb-access-token",
-        "${user_config.ydb_access_token}",
-        "--ydb-sa-key-file",
-        "${user_config.ydb_sa_key_file}"
-      ],
-      "env": {
-        "YDB_ENDPOINT": "${user_config.ydb_endpoint}",
-        "YDB_DATABASE": "${user_config.ydb_database}",
-        "MCP_HOST": "${user_config.mcp_host}",
-        "MCP_PORT": "${user_config.mcp_port}",
-        "LOG_LEVEL": "${user_config.log_level}"
-      }
+    "command": "python3",
+    "args": [
+      "-m",
+      "ydb_mcp",
+      "--ydb-auth-mode",
+      "${user_config.ydb_auth_mode}",
+      "--ydb-login",
+      "${user_config.ydb_login}",
+      "--ydb-password",
+      "${user_config.ydb_password}",
+      "--ydb-access-token",
+      "${user_config.ydb_access_token}",
+      "--ydb-sa-key-file",
+      "${user_config.ydb_sa_key_file}"
+    ],
+    "env": {
+      "YDB_ENDPOINT": "${user_config.ydb_endpoint}",
+      "YDB_DATABASE": "${user_config.ydb_database}",
+      "MCP_HOST": "${user_config.mcp_host}",
+      "MCP_PORT": "${user_config.mcp_port}",
+      "LOG_LEVEL": "${user_config.log_level}"
     }
   },
   "tools": [],
@@ -115,76 +111,96 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ydb-mcp-uvx-anonymous": {
-          "command": "uvx",
-          "args": ["ydb-mcp", "--ydb-endpoint", "grpc://localhost:2136", "--ydb-database", "/local"],
-          "env": {}
-        },
-        "ydb-mcp-pipx-anonymous": {
-          "command": "pipx",
-          "args": ["run", "ydb-mcp", "--ydb-endpoint", "grpc://localhost:2136", "--ydb-database", "/local"],
-          "env": {}
-        },
-        "ydb_mcp-pip-anonymous": {
-          "command": "python3",
-          "args": ["-m", "ydb_mcp", "--ydb-endpoint", "grpc://localhost:2136", "--ydb-database", "/local"],
-          "env": {}
-        },
-        "ydb-mcp-uvx-login-password": {
-          "command": "uvx",
-          "args": [
-            "ydb-mcp",
-            "--ydb-endpoint",
-            "grpc://localhost:2136",
-            "--ydb-database",
-            "/local",
-            "--ydb-auth-mode",
-            "login-password",
-            "--ydb-login",
-            "<your-username>",
-            "--ydb-password",
-            "<your-password>"
-          ],
-          "env": {}
-        },
-        "ydb-mcp-uvx-access-token": {
-          "command": "uvx",
-          "args": [
-            "ydb-mcp",
-            "--ydb-endpoint",
-            "grpc://localhost:2136",
-            "--ydb-database",
-            "/local",
-            "--ydb-auth-mode",
-            "access-token",
-            "--ydb-access-token",
-            "qwerty123"
-          ],
-          "env": {}
-        },
-        "ydb-mcp-uvx-service-account": {
-          "command": "uvx",
-          "args": [
-            "ydb-mcp",
-            "--ydb-endpoint",
-            "grpc://localhost:2136",
-            "--ydb-database",
-            "/local",
-            "--ydb-auth-mode",
-            "service-account",
-            "--ydb-sa-key-file",
-            "~/sa_key.json"
-          ],
-          "env": {}
-        },
-        "ydb-mcp-make": {
-          "command": "make",
-          "args": ["run-server"],
-          "env": {
-            "YDB_ENDPOINT": "grpc://localhost:2136",
-            "YDB_DATABASE": "/local"
-          }
+      "ydb-mcp-uvx-anonymous": {
+        "command": "uvx",
+        "args": [
+          "ydb-mcp",
+          "--ydb-endpoint",
+          "grpc://localhost:2136",
+          "--ydb-database",
+          "/local"
+        ],
+        "env": {}
+      },
+      "ydb-mcp-pipx-anonymous": {
+        "command": "pipx",
+        "args": [
+          "run",
+          "ydb-mcp",
+          "--ydb-endpoint",
+          "grpc://localhost:2136",
+          "--ydb-database",
+          "/local"
+        ],
+        "env": {}
+      },
+      "ydb_mcp-pip-anonymous": {
+        "command": "python3",
+        "args": [
+          "-m",
+          "ydb_mcp",
+          "--ydb-endpoint",
+          "grpc://localhost:2136",
+          "--ydb-database",
+          "/local"
+        ],
+        "env": {}
+      },
+      "ydb-mcp-uvx-login-password": {
+        "command": "uvx",
+        "args": [
+          "ydb-mcp",
+          "--ydb-endpoint",
+          "grpc://localhost:2136",
+          "--ydb-database",
+          "/local",
+          "--ydb-auth-mode",
+          "login-password",
+          "--ydb-login",
+          "<your-username>",
+          "--ydb-password",
+          "<your-password>"
+        ],
+        "env": {}
+      },
+      "ydb-mcp-uvx-access-token": {
+        "command": "uvx",
+        "args": [
+          "ydb-mcp",
+          "--ydb-endpoint",
+          "grpc://localhost:2136",
+          "--ydb-database",
+          "/local",
+          "--ydb-auth-mode",
+          "access-token",
+          "--ydb-access-token",
+          "qwerty123"
+        ],
+        "env": {}
+      },
+      "ydb-mcp-uvx-service-account": {
+        "command": "uvx",
+        "args": [
+          "ydb-mcp",
+          "--ydb-endpoint",
+          "grpc://localhost:2136",
+          "--ydb-database",
+          "/local",
+          "--ydb-auth-mode",
+          "service-account",
+          "--ydb-sa-key-file",
+          "~/sa_key.json"
+        ],
+        "env": {}
+      },
+      "ydb-mcp-make": {
+        "command": "make",
+        "args": [
+          "run-server"
+        ],
+        "env": {
+          "YDB_ENDPOINT": "grpc://localhost:2136",
+          "YDB_DATABASE": "/local"
         }
       }
     },

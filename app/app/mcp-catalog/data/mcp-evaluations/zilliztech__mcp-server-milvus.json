@@ -8,14 +8,15 @@
     "name": "zilliztech"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}/src/mcp_server_milvus", "run", "server.py"],
-      "env": {
-        "MILVUS_URI": "${user_config.milvus_uri}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}/src/mcp_server_milvus",
+      "run",
+      "server.py"
+    ],
+    "env": {
+      "MILVUS_URI": "${user_config.milvus_uri}"
     }
   },
   "tools": [],
@@ -51,67 +52,73 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-milvus-stdio": {
-          "command": "uv",
-          "args": ["run", "src/mcp_server_milvus/server.py", "--milvus-uri", "http://localhost:19530"],
-          "env": {}
-        },
-        "mcp-server-milvus-stdio-env": {
-          "command": "uv",
-          "args": ["run", "src/mcp_server_milvus/server.py"],
-          "env": {}
-        },
-        "mcp-server-milvus-sse": {
-          "command": "uv",
-          "args": [
-            "run",
-            "src/mcp_server_milvus/server.py",
-            "--sse",
-            "--milvus-uri",
-            "http://localhost:19530",
-            "--port",
-            "8000"
-          ],
-          "env": {}
-        },
-        "mcp-server-milvus-claude-desktop-stdio-config": {
-          "command": "/PATH/TO/uv",
-          "args": [
-            "--directory",
-            "/path/to/mcp-server-milvus/src/mcp_server_milvus",
-            "run",
-            "server.py",
-            "--milvus-uri",
-            "http://localhost:19530"
-          ],
-          "env": {}
-        },
-        "mcp-server-milvus-cursor-stdio-config": {
-          "command": "/PATH/TO/uv",
-          "args": [
-            "--directory",
-            "/path/to/mcp-server-milvus/src/mcp_server_milvus",
-            "run",
-            "server.py",
-            "--milvus-uri",
-            "http://127.0.0.1:19530"
-          ],
-          "env": {}
-        },
-        "mcp-server-milvus-cursor-sse-manual-start": {
-          "command": "uv",
-          "args": [
-            "run",
-            "src/mcp_server_milvus/server.py",
-            "--sse",
-            "--milvus-uri",
-            "http://your_sse_host",
-            "--port",
-            "port"
-          ],
-          "env": {}
-        }
+      "mcp-server-milvus-stdio": {
+        "command": "uv",
+        "args": [
+          "run",
+          "src/mcp_server_milvus/server.py",
+          "--milvus-uri",
+          "http://localhost:19530"
+        ],
+        "env": {}
+      },
+      "mcp-server-milvus-stdio-env": {
+        "command": "uv",
+        "args": [
+          "run",
+          "src/mcp_server_milvus/server.py"
+        ],
+        "env": {}
+      },
+      "mcp-server-milvus-sse": {
+        "command": "uv",
+        "args": [
+          "run",
+          "src/mcp_server_milvus/server.py",
+          "--sse",
+          "--milvus-uri",
+          "http://localhost:19530",
+          "--port",
+          "8000"
+        ],
+        "env": {}
+      },
+      "mcp-server-milvus-claude-desktop-stdio-config": {
+        "command": "/PATH/TO/uv",
+        "args": [
+          "--directory",
+          "/path/to/mcp-server-milvus/src/mcp_server_milvus",
+          "run",
+          "server.py",
+          "--milvus-uri",
+          "http://localhost:19530"
+        ],
+        "env": {}
+      },
+      "mcp-server-milvus-cursor-stdio-config": {
+        "command": "/PATH/TO/uv",
+        "args": [
+          "--directory",
+          "/path/to/mcp-server-milvus/src/mcp_server_milvus",
+          "run",
+          "server.py",
+          "--milvus-uri",
+          "http://127.0.0.1:19530"
+        ],
+        "env": {}
+      },
+      "mcp-server-milvus-cursor-sse-manual-start": {
+        "command": "uv",
+        "args": [
+          "run",
+          "src/mcp_server_milvus/server.py",
+          "--sse",
+          "--milvus-uri",
+          "http://your_sse_host",
+          "--port",
+          "port"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,12 @@
     "name": "Tommertom"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "awesome-ionic-mcp@latest"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "awesome-ionic-mcp@latest"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,13 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "awesome-ionic-mcp": {
-          "command": "npx",
-          "args": ["-y", "awesome-ionic-mcp@latest"],
-          "env": {}
-        }
+      "awesome-ionic-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "awesome-ionic-mcp@latest"
+        ],
+        "env": {}
       }
     },
     "oauth": {

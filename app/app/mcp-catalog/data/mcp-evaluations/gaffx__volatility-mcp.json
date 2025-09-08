@@ -8,14 +8,14 @@
     "name": "Gaffx"
   },
   "server": {
-    "type": "python",
-    "entry_point": "vol_mcp_server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/vol_mcp_server.py", "-i", "${user_config.memory_image_path}"],
-      "env": {
-        "VOLATILITY_BIN": "${user_config.volatility_bin}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/vol_mcp_server.py",
+      "-i",
+      "${user_config.memory_image_path}"
+    ],
+    "env": {
+      "VOLATILITY_BIN": "${user_config.volatility_bin}"
     }
   },
   "tools": [],
@@ -40,21 +40,21 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "volatility-fastapi-server": {
-          "command": "uvicorn",
-          "args": ["volatility_fastapi_server:app"],
-          "env": {}
-        },
-        "vol-mcp-server-configured": {
-          "command": "python",
-          "args": [
-            "/ABSOLUTE_PATH_TO_MCP-SERVER/vol_mcp_server.py",
-            "-i",
-            "/ABSOLUTE_PATH_TO_MEMORY_IMAGE/<memory_image>"
-          ],
-          "env": {}
-        }
+      "volatility-fastapi-server": {
+        "command": "uvicorn",
+        "args": [
+          "volatility_fastapi_server:app"
+        ],
+        "env": {}
+      },
+      "vol-mcp-server-configured": {
+        "command": "python",
+        "args": [
+          "/ABSOLUTE_PATH_TO_MCP-SERVER/vol_mcp_server.py",
+          "-i",
+          "/ABSOLUTE_PATH_TO_MEMORY_IMAGE/<memory_image>"
+        ],
+        "env": {}
       }
     },
     "oauth": {

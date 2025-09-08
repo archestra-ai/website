@@ -8,13 +8,14 @@
     "name": "r-huijts"
   },
   "server": {
-    "type": "python",
-    "entry_point": "firstcycling.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "firstcycling.py"],
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "firstcycling.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +26,25 @@
   "quality_score": 32,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "firstcycling": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/server/directory", "run", "firstcycling.py"],
-          "env": {}
-        },
-        "firstcycling-dev": {
-          "command": "uv",
-          "args": ["run", "mcp", "dev", "firstcycling.py"],
-          "env": {}
-        }
+      "firstcycling": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/server/directory",
+          "run",
+          "firstcycling.py"
+        ],
+        "env": {}
+      },
+      "firstcycling-dev": {
+        "command": "uv",
+        "args": [
+          "run",
+          "mcp",
+          "dev",
+          "firstcycling.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,21 +8,19 @@
     "name": "ivnvxd"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp_server_odoo/cli.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-odoo"],
-      "env": {
-        "ODOO_URL": "${user_config.odoo_url}",
-        "ODOO_API_KEY": "${user_config.odoo_api_key}",
-        "ODOO_USER": "${user_config.odoo_user}",
-        "ODOO_PASSWORD": "${user_config.odoo_password}",
-        "ODOO_DB": "${user_config.odoo_db}",
-        "ODOO_MCP_TRANSPORT": "${user_config.odoo_mcp_transport}",
-        "ODOO_MCP_HOST": "${user_config.odoo_mcp_host}",
-        "ODOO_MCP_PORT": "${user_config.odoo_mcp_port}"
-      }
+    "command": "uvx",
+    "args": [
+      "mcp-server-odoo"
+    ],
+    "env": {
+      "ODOO_URL": "${user_config.odoo_url}",
+      "ODOO_API_KEY": "${user_config.odoo_api_key}",
+      "ODOO_USER": "${user_config.odoo_user}",
+      "ODOO_PASSWORD": "${user_config.odoo_password}",
+      "ODOO_DB": "${user_config.odoo_db}",
+      "ODOO_MCP_TRANSPORT": "${user_config.odoo_mcp_transport}",
+      "ODOO_MCP_HOST": "${user_config.odoo_mcp_host}",
+      "ODOO_MCP_PORT": "${user_config.odoo_mcp_port}"
     }
   },
   "tools": [],
@@ -90,54 +88,70 @@
   "quality_score": 68,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "odoo": {
-          "command": "uvx",
-          "args": ["mcp-server-odoo"],
-          "env": {
-            "ODOO_URL": "https://your-odoo-instance.com",
-            "ODOO_API_KEY": "your-api-key-here",
-            "ODOO_DB": "your-database-name"
-          }
-        },
-        "mcp-server-odoo-pip": {
-          "command": "mcp-server-odoo",
-          "args": [],
-          "env": {
-            "ODOO_URL": "https://your-odoo-instance.com",
-            "ODOO_API_KEY": "your-api-key-here",
-            "ODOO_DB": "your-database-name"
-          }
-        },
-        "mcp-server-odoo-streamable-http-args": {
-          "command": "uvx",
-          "args": ["mcp-server-odoo", "--transport", "streamable-http", "--host", "0.0.0.0", "--port", "8000"],
-          "env": {
-            "ODOO_URL": "https://your-odoo-instance.com",
-            "ODOO_API_KEY": "your-api-key-here",
-            "ODOO_DB": "your-database-name"
-          }
-        },
-        "mcp-server-odoo-streamable-http-env": {
-          "command": "uvx",
-          "args": ["mcp-server-odoo"],
-          "env": {
-            "ODOO_MCP_TRANSPORT": "streamable-http",
-            "ODOO_MCP_HOST": "0.0.0.0",
-            "ODOO_MCP_PORT": "8000",
-            "ODOO_URL": "https://your-odoo-instance.com",
-            "ODOO_API_KEY": "your-api-key-here",
-            "ODOO_DB": "your-database-name"
-          }
-        },
-        "odoo-remote": {
-          "command": "uvx",
-          "args": ["mcp-server-odoo", "--transport", "streamable-http", "--port", "8080"],
-          "env": {
-            "ODOO_URL": "https://your-odoo-instance.com",
-            "ODOO_API_KEY": "your-api-key-here",
-            "ODOO_DB": "your-database-name"
-          }
+      "odoo": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-odoo"
+        ],
+        "env": {
+          "ODOO_URL": "https://your-odoo-instance.com",
+          "ODOO_API_KEY": "your-api-key-here",
+          "ODOO_DB": "your-database-name"
+        }
+      },
+      "mcp-server-odoo-pip": {
+        "command": "mcp-server-odoo",
+        "args": [],
+        "env": {
+          "ODOO_URL": "https://your-odoo-instance.com",
+          "ODOO_API_KEY": "your-api-key-here",
+          "ODOO_DB": "your-database-name"
+        }
+      },
+      "mcp-server-odoo-streamable-http-args": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-odoo",
+          "--transport",
+          "streamable-http",
+          "--host",
+          "0.0.0.0",
+          "--port",
+          "8000"
+        ],
+        "env": {
+          "ODOO_URL": "https://your-odoo-instance.com",
+          "ODOO_API_KEY": "your-api-key-here",
+          "ODOO_DB": "your-database-name"
+        }
+      },
+      "mcp-server-odoo-streamable-http-env": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-odoo"
+        ],
+        "env": {
+          "ODOO_MCP_TRANSPORT": "streamable-http",
+          "ODOO_MCP_HOST": "0.0.0.0",
+          "ODOO_MCP_PORT": "8000",
+          "ODOO_URL": "https://your-odoo-instance.com",
+          "ODOO_API_KEY": "your-api-key-here",
+          "ODOO_DB": "your-database-name"
+        }
+      },
+      "odoo-remote": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-odoo",
+          "--transport",
+          "streamable-http",
+          "--port",
+          "8080"
+        ],
+        "env": {
+          "ODOO_URL": "https://your-odoo-instance.com",
+          "ODOO_API_KEY": "your-api-key-here",
+          "ODOO_DB": "your-database-name"
         }
       }
     },

@@ -8,14 +8,17 @@
     "name": "github"
   },
   "server": {
-    "type": "docker",
-    "entry_point": "ghcr.io/github/github-mcp-server",
-    "mcp_config": {
-      "command": "docker",
-      "args": ["run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN", "ghcr.io/github/github-mcp-server"],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "${user_config.github_personal_access_token}"
-      }
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "-e",
+      "GITHUB_PERSONAL_ACCESS_TOKEN",
+      "ghcr.io/github/github-mcp-server"
+    ],
+    "env": {
+      "GITHUB_PERSONAL_ACCESS_TOKEN": "${user_config.github_personal_access_token}"
     }
   },
   "tools": [],
@@ -35,13 +38,18 @@
   "quality_score": 70,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "github-github-mcp-server-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN", "ghcr.io/github/github-mcp-server"],
-          "env": {
-            "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
-          }
+      "github-github-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "GITHUB_PERSONAL_ACCESS_TOKEN",
+          "ghcr.io/github/github-mcp-server"
+        ],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
         }
       }
     },

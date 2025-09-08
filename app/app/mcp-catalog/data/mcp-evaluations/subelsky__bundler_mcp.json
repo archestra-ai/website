@@ -8,15 +8,11 @@
     "name": "subelsky"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "bundler_mcp",
-    "mcp_config": {
-      "command": "${__dirname}/bin/bundler_mcp",
-      "args": [],
-      "env": {
-        "BUNDLE_GEMFILE": "${user_config.bundle_gemfile}",
-        "BUNDLER_MCP_LOG_FILE": "${user_config.bundler_mcp_log_file}"
-      }
+    "command": "${__dirname}/bin/bundler_mcp",
+    "args": [],
+    "env": {
+      "BUNDLE_GEMFILE": "${user_config.bundle_gemfile}",
+      "BUNDLER_MCP_LOG_FILE": "${user_config.bundler_mcp_log_file}"
     }
   },
   "tools": [],
@@ -41,19 +37,17 @@
   "quality_score": 43,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "bundler-mcp": {
-          "command": "/Users/mike/my_project/bin/bundler_mcp",
-          "args": [],
-          "env": {}
-        },
-        "bundler-mcp-configured": {
-          "command": "/Users/mike/my_project/bin/bundler_mcp",
-          "args": [],
-          "env": {
-            "BUNDLER_MCP_LOG_FILE": "/Users/mike/my_project/log/mcp.log",
-            "BUNDLE_GEMFILE": "/Users/mike/my_project/subdir/Gemfile"
-          }
+      "bundler-mcp": {
+        "command": "/Users/mike/my_project/bin/bundler_mcp",
+        "args": [],
+        "env": {}
+      },
+      "bundler-mcp-configured": {
+        "command": "/Users/mike/my_project/bin/bundler_mcp",
+        "args": [],
+        "env": {
+          "BUNDLER_MCP_LOG_FILE": "/Users/mike/my_project/log/mcp.log",
+          "BUNDLE_GEMFILE": "/Users/mike/my_project/subdir/Gemfile"
         }
       }
     },

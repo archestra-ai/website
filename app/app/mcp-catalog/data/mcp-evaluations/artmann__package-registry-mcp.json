@@ -8,13 +8,12 @@
     "name": "artmann"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "package-registry-mcp"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "package-registry-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,13 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "package-registry": {
-          "command": "npx",
-          "args": ["-y", "package-registry-mcp"],
-          "env": {}
-        }
+      "package-registry": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "package-registry-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

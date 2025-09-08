@@ -8,16 +8,15 @@
     "name": "offorte"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@offorte/mcp-server"],
-      "env": {
-        "OFFORTE_ACCOUNT_NAME": "${user_config.offorte_account_name}",
-        "OFFORTE_API_KEY": "${user_config.offorte_api_key}",
-        "TRANSPORT_TYPE": "${user_config.transport_type}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@offorte/mcp-server"
+    ],
+    "env": {
+      "OFFORTE_ACCOUNT_NAME": "${user_config.offorte_account_name}",
+      "OFFORTE_API_KEY": "${user_config.offorte_api_key}",
+      "TRANSPORT_TYPE": "${user_config.transport_type}"
     }
   },
   "tools": [],
@@ -51,38 +50,45 @@
   "quality_score": 69,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "offorte-mcp-server-npx": {
-          "command": "npx",
-          "args": ["-y", "@offorte/mcp-server"],
-          "env": {
-            "OFFORTE_ACCOUNT_NAME": "<YOUR_ACCOUNT_NAME>",
-            "OFFORTE_API_KEY": "<YOUR_TOKEN>"
-          }
-        },
-        "offorte-mcp-server-local-node": {
-          "command": "node",
-          "args": ["/path/to/directory/offorte-mcp-server/dist/server.js"],
-          "env": {
-            "OFFORTE_ACCOUNT_NAME": "<YOUR_ACCOUNT_NAME>",
-            "OFFORTE_API_KEY": "<YOUR_TOKEN>"
-          }
-        },
-        "offorte-mcp-server-dev": {
-          "command": "pnpm",
-          "args": ["dev"],
-          "env": {
-            "OFFORTE_ACCOUNT_NAME": "<YOUR_ACCOUNT_NAME>",
-            "OFFORTE_API_KEY": "<YOUR_TOKEN>"
-          }
-        },
-        "offorte-mcp-server-start": {
-          "command": "pnpm",
-          "args": ["start"],
-          "env": {
-            "OFFORTE_ACCOUNT_NAME": "<YOUR_ACCOUNT_NAME>",
-            "OFFORTE_API_KEY": "<YOUR_TOKEN>"
-          }
+      "offorte-mcp-server-npx": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@offorte/mcp-server"
+        ],
+        "env": {
+          "OFFORTE_ACCOUNT_NAME": "<YOUR_ACCOUNT_NAME>",
+          "OFFORTE_API_KEY": "<YOUR_TOKEN>"
+        }
+      },
+      "offorte-mcp-server-local-node": {
+        "command": "node",
+        "args": [
+          "/path/to/directory/offorte-mcp-server/dist/server.js"
+        ],
+        "env": {
+          "OFFORTE_ACCOUNT_NAME": "<YOUR_ACCOUNT_NAME>",
+          "OFFORTE_API_KEY": "<YOUR_TOKEN>"
+        }
+      },
+      "offorte-mcp-server-dev": {
+        "command": "pnpm",
+        "args": [
+          "dev"
+        ],
+        "env": {
+          "OFFORTE_ACCOUNT_NAME": "<YOUR_ACCOUNT_NAME>",
+          "OFFORTE_API_KEY": "<YOUR_TOKEN>"
+        }
+      },
+      "offorte-mcp-server-start": {
+        "command": "pnpm",
+        "args": [
+          "start"
+        ],
+        "env": {
+          "OFFORTE_ACCOUNT_NAME": "<YOUR_ACCOUNT_NAME>",
+          "OFFORTE_API_KEY": "<YOUR_TOKEN>"
         }
       }
     },

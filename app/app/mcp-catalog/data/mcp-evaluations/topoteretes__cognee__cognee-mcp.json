@@ -8,30 +8,26 @@
     "name": "topoteretes"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": [
-        "src/server.py",
-        "--transport",
-        "${user_config.transport}",
-        "--host",
-        "${user_config.host}",
-        "--port",
-        "${user_config.port}",
-        "--path",
-        "${user_config.path}"
-      ],
-      "env": {
-        "LLM_API_KEY": "${user_config.llm_api_key}",
-        "ENV": "${user_config.env}",
-        "TOKENIZERS_PARALLELISM": "${user_config.tokenizers_parallelism}",
-        "EMBEDDING_PROVIDER": "${user_config.embedding_provider}",
-        "EMBEDDING_MODEL": "${user_config.embedding_model}",
-        "EMBEDDING_DIMENSIONS": "${user_config.embedding_dimensions}",
-        "EMBEDDING_MAX_TOKENS": "${user_config.embedding_max_tokens}"
-      }
+    "command": "python",
+    "args": [
+      "src/server.py",
+      "--transport",
+      "${user_config.transport}",
+      "--host",
+      "${user_config.host}",
+      "--port",
+      "${user_config.port}",
+      "--path",
+      "${user_config.path}"
+    ],
+    "env": {
+      "LLM_API_KEY": "${user_config.llm_api_key}",
+      "ENV": "${user_config.env}",
+      "TOKENIZERS_PARALLELISM": "${user_config.tokenizers_parallelism}",
+      "EMBEDDING_PROVIDER": "${user_config.embedding_provider}",
+      "EMBEDDING_MODEL": "${user_config.embedding_model}",
+      "EMBEDDING_DIMENSIONS": "${user_config.embedding_dimensions}",
+      "EMBEDDING_MAX_TOKENS": "${user_config.embedding_max_tokens}"
     }
   },
   "tools": [],
@@ -123,71 +119,97 @@
   "quality_score": 86,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "cognee-mcp-stdio": {
-          "command": "python",
-          "args": ["src/server.py"],
-          "env": {}
-        },
-        "cognee-mcp-sse": {
-          "command": "python",
-          "args": ["src/server.py", "--transport", "sse"],
-          "env": {}
-        },
-        "cognee-mcp-http": {
-          "command": "python",
-          "args": ["src/server.py", "--transport", "http", "--host", "127.0.0.1", "--port", "8000", "--path", "/mcp"],
-          "env": {}
-        },
-        "cognee-cognee-mcp-main-docker-http": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--env-file",
-            "./.env",
-            "-p",
-            "8000:8000",
-            "--rm",
-            "-it",
-            "cognee/cognee-mcp:main",
-            "--transport",
-            "http"
-          ],
-          "env": {}
-        },
-        "cognee-cognee-mcp-main-docker-sse": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--env-file",
-            "./.env",
-            "-p",
-            "8000:8000",
-            "--rm",
-            "-it",
-            "cognee/cognee-mcp:main",
-            "--transport",
-            "sse"
-          ],
-          "env": {}
-        },
-        "cognee-cognee-mcp-main-docker-stdio": {
-          "command": "docker",
-          "args": ["run", "--env-file", "./.env", "--rm", "-it", "cognee/cognee-mcp:main"],
-          "env": {}
-        },
-        "cognee-uv-run": {
-          "command": "uv",
-          "args": ["--directory", "/{cognee_root_path}/cognee-mcp", "run", "cognee"],
-          "env": {
-            "ENV": "local",
-            "TOKENIZERS_PARALLELISM": "false",
-            "EMBEDDING_PROVIDER": "fastembed",
-            "EMBEDDING_MODEL": "sentence-transformers/all-MiniLM-L6-v2",
-            "EMBEDDING_DIMENSIONS": "384",
-            "EMBEDDING_MAX_TOKENS": "256",
-            "LLM_API_KEY": "your-OpenAI-API-key"
-          }
+      "cognee-mcp-stdio": {
+        "command": "python",
+        "args": [
+          "src/server.py"
+        ],
+        "env": {}
+      },
+      "cognee-mcp-sse": {
+        "command": "python",
+        "args": [
+          "src/server.py",
+          "--transport",
+          "sse"
+        ],
+        "env": {}
+      },
+      "cognee-mcp-http": {
+        "command": "python",
+        "args": [
+          "src/server.py",
+          "--transport",
+          "http",
+          "--host",
+          "127.0.0.1",
+          "--port",
+          "8000",
+          "--path",
+          "/mcp"
+        ],
+        "env": {}
+      },
+      "cognee-cognee-mcp-main-docker-http": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--env-file",
+          "./.env",
+          "-p",
+          "8000:8000",
+          "--rm",
+          "-it",
+          "cognee/cognee-mcp:main",
+          "--transport",
+          "http"
+        ],
+        "env": {}
+      },
+      "cognee-cognee-mcp-main-docker-sse": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--env-file",
+          "./.env",
+          "-p",
+          "8000:8000",
+          "--rm",
+          "-it",
+          "cognee/cognee-mcp:main",
+          "--transport",
+          "sse"
+        ],
+        "env": {}
+      },
+      "cognee-cognee-mcp-main-docker-stdio": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--env-file",
+          "./.env",
+          "--rm",
+          "-it",
+          "cognee/cognee-mcp:main"
+        ],
+        "env": {}
+      },
+      "cognee-uv-run": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/{cognee_root_path}/cognee-mcp",
+          "run",
+          "cognee"
+        ],
+        "env": {
+          "ENV": "local",
+          "TOKENIZERS_PARALLELISM": "false",
+          "EMBEDDING_PROVIDER": "fastembed",
+          "EMBEDDING_MODEL": "sentence-transformers/all-MiniLM-L6-v2",
+          "EMBEDDING_DIMENSIONS": "384",
+          "EMBEDDING_MAX_TOKENS": "256",
+          "LLM_API_KEY": "your-OpenAI-API-key"
         }
       }
     },

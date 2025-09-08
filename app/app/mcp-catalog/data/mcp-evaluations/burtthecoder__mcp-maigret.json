@@ -8,14 +8,12 @@
     "name": "BurtTheCoder"
   },
   "server": {
-    "type": "node",
-    "entry_point": "build/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "MAIGRET_REPORTS_DIR": "${user_config.maigret_reports_dir}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "MAIGRET_REPORTS_DIR": "${user_config.maigret_reports_dir}"
     }
   },
   "tools": [],
@@ -35,20 +33,20 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-maigret": {
-          "command": "mcp-maigret",
-          "args": [],
-          "env": {
-            "MAIGRET_REPORTS_DIR": "/path/to/reports/directory"
-          }
-        },
-        "mcp-maigret-from-source": {
-          "command": "node",
-          "args": ["/absolute/path/to/mcp-maigret/build/index.js"],
-          "env": {
-            "MAIGRET_REPORTS_DIR": "/path/to/reports/directory"
-          }
+      "mcp-maigret": {
+        "command": "mcp-maigret",
+        "args": [],
+        "env": {
+          "MAIGRET_REPORTS_DIR": "/path/to/reports/directory"
+        }
+      },
+      "mcp-maigret-from-source": {
+        "command": "node",
+        "args": [
+          "/absolute/path/to/mcp-maigret/build/index.js"
+        ],
+        "env": {
+          "MAIGRET_REPORTS_DIR": "/path/to/reports/directory"
         }
       }
     },

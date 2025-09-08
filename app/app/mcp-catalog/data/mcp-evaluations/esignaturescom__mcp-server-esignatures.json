@@ -8,14 +8,12 @@
     "name": "esignaturescom"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp-server-esignatures",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-esignatures"],
-      "env": {
-        "ESIGNATURES_SECRET_TOKEN": "${user_config.esignatures_secret_token}"
-      }
+    "command": "uvx",
+    "args": [
+      "mcp-server-esignatures"
+    ],
+    "env": {
+      "ESIGNATURES_SECRET_TOKEN": "${user_config.esignatures_secret_token}"
     }
   },
   "tools": [],
@@ -35,20 +33,25 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-esignatures-dev": {
-          "command": "uv",
-          "args": ["--directory", "/your-local-directories/mcp-server-esignatures", "run", "mcp-server-esignatures"],
-          "env": {
-            "ESIGNATURES_SECRET_TOKEN": "your-esignatures-api-secret-token"
-          }
-        },
-        "mcp-server-esignatures-published": {
-          "command": "uvx",
-          "args": ["mcp-server-esignatures"],
-          "env": {
-            "ESIGNATURES_SECRET_TOKEN": "your-esignatures-api-secret-token"
-          }
+      "mcp-server-esignatures-dev": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/your-local-directories/mcp-server-esignatures",
+          "run",
+          "mcp-server-esignatures"
+        ],
+        "env": {
+          "ESIGNATURES_SECRET_TOKEN": "your-esignatures-api-secret-token"
+        }
+      },
+      "mcp-server-esignatures-published": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-esignatures"
+        ],
+        "env": {
+          "ESIGNATURES_SECRET_TOKEN": "your-esignatures-api-secret-token"
         }
       }
     },

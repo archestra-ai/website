@@ -8,15 +8,14 @@
     "name": "redis"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["--experimental-fetch", "${__dirname}/dist/index.js"],
-      "env": {
-        "API_KEY": "${user_config.api_key}",
-        "SECRET_KEY": "${user_config.secret_key}"
-      }
+    "command": "node",
+    "args": [
+      "--experimental-fetch",
+      "${__dirname}/dist/index.js"
+    ],
+    "env": {
+      "API_KEY": "${user_config.api_key}",
+      "SECRET_KEY": "${user_config.secret_key}"
     }
   },
   "tools": [],
@@ -43,31 +42,32 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-redis-cloud": {
-          "command": "node",
-          "args": ["--experimental-fetch", "<absolute_path_to_project_root>/dist/index.js"],
-          "env": {
-            "API_KEY": "<redis_cloud_api_key>",
-            "SECRET_KEY": "<redis_cloud_api_secret_key>"
-          }
-        },
-        "mcp-redis-cloud-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "API_KEY=<your_redis_cloud_api_key>",
-            "-e",
-            "SECRET_KEY=<your_redis_cloud_api_secret_key>",
-            "mcp/redis-cloud"
-          ],
-          "env": {
-            "API_KEY": "<your_redis_cloud_api_key>",
-            "SECRET_KEY": "<your_redis_cloud_api_secret_key>"
-          }
+      "mcp-redis-cloud": {
+        "command": "node",
+        "args": [
+          "--experimental-fetch",
+          "<absolute_path_to_project_root>/dist/index.js"
+        ],
+        "env": {
+          "API_KEY": "<redis_cloud_api_key>",
+          "SECRET_KEY": "<redis_cloud_api_secret_key>"
+        }
+      },
+      "mcp-redis-cloud-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "API_KEY=<your_redis_cloud_api_key>",
+          "-e",
+          "SECRET_KEY=<your_redis_cloud_api_secret_key>",
+          "mcp/redis-cloud"
+        ],
+        "env": {
+          "API_KEY": "<your_redis_cloud_api_key>",
+          "SECRET_KEY": "<your_redis_cloud_api_secret_key>"
         }
       }
     },

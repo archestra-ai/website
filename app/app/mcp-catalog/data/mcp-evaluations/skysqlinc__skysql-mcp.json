@@ -8,14 +8,12 @@
     "name": "skysqlinc"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/mcp-server/server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/src/mcp-server/server.py"],
-      "env": {
-        "SKYSQL_API_KEY": "${user_config.skysql_api_key}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/src/mcp-server/server.py"
+    ],
+    "env": {
+      "SKYSQL_API_KEY": "${user_config.skysql_api_key}"
     }
   },
   "tools": [],
@@ -35,25 +33,29 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "wong2-mcp-cli": {
-          "command": "npx",
-          "args": ["@wong2/mcp-cli", "uv", "run", "python", "src/mcp-server/server.py"],
-          "env": {}
-        },
-        "skysql-mcp-launch-sh-configured": {
-          "command": "<full-path-to>/skysql-mcp/launch.sh",
-          "args": [],
-          "env": {
-            "SKYSQL_API_KEY": "<your_skysql_api_key_here>"
-          }
-        },
-        "skysql-mcp-launch-bat-configured": {
-          "command": "<full-path-to>\\skysql-mcp\\launch.bat",
-          "args": [],
-          "env": {
-            "SKYSQL_API_KEY": "<your_skysql_api_key_here>"
-          }
+      "wong2-mcp-cli": {
+        "command": "npx",
+        "args": [
+          "@wong2/mcp-cli",
+          "uv",
+          "run",
+          "python",
+          "src/mcp-server/server.py"
+        ],
+        "env": {}
+      },
+      "skysql-mcp-launch-sh-configured": {
+        "command": "<full-path-to>/skysql-mcp/launch.sh",
+        "args": [],
+        "env": {
+          "SKYSQL_API_KEY": "<your_skysql_api_key_here>"
+        }
+      },
+      "skysql-mcp-launch-bat-configured": {
+        "command": "<full-path-to>\\skysql-mcp\\launch.bat",
+        "args": [],
+        "env": {
+          "SKYSQL_API_KEY": "<your_skysql_api_key_here>"
         }
       }
     },

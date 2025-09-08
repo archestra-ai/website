@@ -8,13 +8,12 @@
     "name": "mcpdotdirect"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@mcpdotdirect/evm-mcp-server"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@mcpdotdirect/evm-mcp-server"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,52 +24,72 @@
   "quality_score": 70,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcpdotdirect-evm-mcp-server-npx-stdio": {
-          "command": "npx",
-          "args": ["@mcpdotdirect/evm-mcp-server"],
-          "env": {}
-        },
-        "mcpdotdirect-evm-mcp-server-npx-http": {
-          "command": "npx",
-          "args": ["@mcpdotdirect/evm-mcp-server", "--http"],
-          "env": {}
-        },
-        "mcpdotdirect-evm-mcp-server-bun-stdio": {
-          "command": "bun",
-          "args": ["start"],
-          "env": {}
-        },
-        "mcpdotdirect-evm-mcp-server-bun-stdio-dev": {
-          "command": "bun",
-          "args": ["dev"],
-          "env": {}
-        },
-        "mcpdotdirect-evm-mcp-server-bun-http": {
-          "command": "bun",
-          "args": ["start:http"],
-          "env": {}
-        },
-        "mcpdotdirect-evm-mcp-server-bun-http-dev": {
-          "command": "bun",
-          "args": ["dev:http"],
-          "env": {}
-        },
-        "mcpdotdirect-evm-mcp-server-cursor-config": {
-          "command": "npx",
-          "args": ["@mcpdotdirect/evm-mcp-server"],
-          "env": {}
-        },
-        "mcpdotdirect-evm-mcp-server-mcpjson-stdio": {
-          "command": "npx",
-          "args": ["-y", "@mcpdotdirect/evm-mcp-server"],
-          "env": {}
-        },
-        "mcpdotdirect-evm-mcp-server-mcpjson-http": {
-          "command": "npx",
-          "args": ["-y", "@mcpdotdirect/evm-mcp-server", "--http"],
-          "env": {}
-        }
+      "mcpdotdirect-evm-mcp-server-npx-stdio": {
+        "command": "npx",
+        "args": [
+          "@mcpdotdirect/evm-mcp-server"
+        ],
+        "env": {}
+      },
+      "mcpdotdirect-evm-mcp-server-npx-http": {
+        "command": "npx",
+        "args": [
+          "@mcpdotdirect/evm-mcp-server",
+          "--http"
+        ],
+        "env": {}
+      },
+      "mcpdotdirect-evm-mcp-server-bun-stdio": {
+        "command": "bun",
+        "args": [
+          "start"
+        ],
+        "env": {}
+      },
+      "mcpdotdirect-evm-mcp-server-bun-stdio-dev": {
+        "command": "bun",
+        "args": [
+          "dev"
+        ],
+        "env": {}
+      },
+      "mcpdotdirect-evm-mcp-server-bun-http": {
+        "command": "bun",
+        "args": [
+          "start:http"
+        ],
+        "env": {}
+      },
+      "mcpdotdirect-evm-mcp-server-bun-http-dev": {
+        "command": "bun",
+        "args": [
+          "dev:http"
+        ],
+        "env": {}
+      },
+      "mcpdotdirect-evm-mcp-server-cursor-config": {
+        "command": "npx",
+        "args": [
+          "@mcpdotdirect/evm-mcp-server"
+        ],
+        "env": {}
+      },
+      "mcpdotdirect-evm-mcp-server-mcpjson-stdio": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@mcpdotdirect/evm-mcp-server"
+        ],
+        "env": {}
+      },
+      "mcpdotdirect-evm-mcp-server-mcpjson-http": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@mcpdotdirect/evm-mcp-server",
+          "--http"
+        ],
+        "env": {}
       }
     },
     "oauth": {

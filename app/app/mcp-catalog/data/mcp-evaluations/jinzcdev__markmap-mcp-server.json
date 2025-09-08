@@ -8,14 +8,13 @@
     "name": "jinzcdev"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@jinzcdev/markmap-mcp-server"],
-      "env": {
-        "MARKMAP_DIR": "${user_config.markmap_dir}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@jinzcdev/markmap-mcp-server"
+    ],
+    "env": {
+      "MARKMAP_DIR": "${user_config.markmap_dir}"
     }
   },
   "tools": [],
@@ -35,29 +34,40 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "jinzcdev-markmap-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "@jinzcdev/markmap-mcp-server"],
-          "env": {}
-        },
-        "jinzcdev-markmap-mcp-server-with-output": {
-          "command": "npx",
-          "args": ["-y", "@jinzcdev/markmap-mcp-server", "--output", "/path/to/output/directory"],
-          "env": {}
-        },
-        "jinzcdev-markmap-mcp-server-stdio": {
-          "command": "npx",
-          "args": ["-y", "@jinzcdev/markmap-mcp-server"],
-          "env": {
-            "MARKMAP_DIR": "/path/to/output/directory"
-          }
-        },
-        "jinzcdev-markmap-mcp-server-local": {
-          "command": "node",
-          "args": ["build/index.js"],
-          "env": {}
+      "jinzcdev-markmap-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@jinzcdev/markmap-mcp-server"
+        ],
+        "env": {}
+      },
+      "jinzcdev-markmap-mcp-server-with-output": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@jinzcdev/markmap-mcp-server",
+          "--output",
+          "/path/to/output/directory"
+        ],
+        "env": {}
+      },
+      "jinzcdev-markmap-mcp-server-stdio": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@jinzcdev/markmap-mcp-server"
+        ],
+        "env": {
+          "MARKMAP_DIR": "/path/to/output/directory"
         }
+      },
+      "jinzcdev-markmap-mcp-server-local": {
+        "command": "node",
+        "args": [
+          "build/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

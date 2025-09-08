@@ -8,15 +8,13 @@
     "name": "leehanchung"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["bing-search-mcp"],
-      "env": {
-        "BING_API_KEY": "${user_config.bing_api_key}",
-        "BING_API_URL": "${user_config.bing_api_url}"
-      }
+    "command": "uvx",
+    "args": [
+      "bing-search-mcp"
+    ],
+    "env": {
+      "BING_API_KEY": "${user_config.bing_api_key}",
+      "BING_API_URL": "${user_config.bing_api_url}"
     }
   },
   "tools": [],
@@ -44,21 +42,23 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "bing-search-mcp": {
-          "command": "uvx",
-          "args": ["bing-search-mcp"],
-          "env": {
-            "BING_API_KEY": "your-bing-api-key",
-            "BING_API_URL": "https://api.bing.microsoft.com/"
-          }
-        },
-        "bing-search-mcp-configured": {
-          "command": "uvx",
-          "args": ["/path/to/your/bing-search-mcp"],
-          "env": {
-            "BING_API_KEY": "your-bing-api-key"
-          }
+      "bing-search-mcp": {
+        "command": "uvx",
+        "args": [
+          "bing-search-mcp"
+        ],
+        "env": {
+          "BING_API_KEY": "your-bing-api-key",
+          "BING_API_URL": "https://api.bing.microsoft.com/"
+        }
+      },
+      "bing-search-mcp-configured": {
+        "command": "uvx",
+        "args": [
+          "/path/to/your/bing-search-mcp"
+        ],
+        "env": {
+          "BING_API_KEY": "your-bing-api-key"
         }
       }
     },

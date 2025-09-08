@@ -8,14 +8,13 @@
     "name": "BurtTheCoder"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["--experimental-modules", "${__dirname}/build/index.js"],
-      "env": {
-        "VIRUSTOTAL_API_KEY": "${user_config.virustotal_api_key}"
-      }
+    "command": "node",
+    "args": [
+      "--experimental-modules",
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "VIRUSTOTAL_API_KEY": "${user_config.virustotal_api_key}"
     }
   },
   "tools": [],
@@ -35,20 +34,21 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "burtthecoder-mcp-virustotal": {
-          "command": "mcp-virustotal",
-          "args": [],
-          "env": {
-            "VIRUSTOTAL_API_KEY": "your-virustotal-api-key"
-          }
-        },
-        "burtthecoder-mcp-virustotal-from-source": {
-          "command": "node",
-          "args": ["--experimental-modules", "/absolute/path/to/mcp-virustotal/build/index.js"],
-          "env": {
-            "VIRUSTOTAL_API_KEY": "your-virustotal-api-key"
-          }
+      "burtthecoder-mcp-virustotal": {
+        "command": "mcp-virustotal",
+        "args": [],
+        "env": {
+          "VIRUSTOTAL_API_KEY": "your-virustotal-api-key"
+        }
+      },
+      "burtthecoder-mcp-virustotal-from-source": {
+        "command": "node",
+        "args": [
+          "--experimental-modules",
+          "/absolute/path/to/mcp-virustotal/build/index.js"
+        ],
+        "env": {
+          "VIRUSTOTAL_API_KEY": "your-virustotal-api-key"
         }
       }
     },

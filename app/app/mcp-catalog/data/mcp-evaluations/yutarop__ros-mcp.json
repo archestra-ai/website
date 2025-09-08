@@ -8,22 +8,18 @@
     "name": "Yutarop"
   },
   "server": {
-    "type": "python",
-    "entry_point": "ros-general.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "bash",
-        "-c",
-        "source /opt/ros/humble/setup.bash && python3 ${__dirname}/ros-general.py"
-      ],
-      "env": {
-        "ROS_LOG_DIR": "/tmp",
-        "ROS_DOMAIN_ID": "${user_config.ros_domain_id}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "bash",
+      "-c",
+      "source /opt/ros/humble/setup.bash && python3 ${__dirname}/ros-general.py"
+    ],
+    "env": {
+      "ROS_LOG_DIR": "/tmp",
+      "ROS_DOMAIN_ID": "${user_config.ros_domain_id}"
     }
   },
   "tools": [],
@@ -43,29 +39,32 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ros-general": {
-          "command": "uv",
-          "args": ["run", "ros-general.py"],
-          "env": {}
-        },
-        "ros-general-configured": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "/ABSOLUTE/PATH/TO/PARENT/FOLDER/ros-mcp",
-            "run",
-            "bash",
-            "-c",
-            "export ROS_LOG_DIR=/tmp && export ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-YOUR_ROS_DOMAIN_ID} && source /opt/ros/humble/setup.bash && python3 /ABSOLUTE/PATH/TO/PARENT/FOLDER/ros-mcp/ros-general.py"
-          ],
-          "env": {}
-        },
-        "socket-server": {
-          "command": "python3",
-          "args": ["socket_server.py"],
-          "env": {}
-        }
+      "ros-general": {
+        "command": "uv",
+        "args": [
+          "run",
+          "ros-general.py"
+        ],
+        "env": {}
+      },
+      "ros-general-configured": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/ABSOLUTE/PATH/TO/PARENT/FOLDER/ros-mcp",
+          "run",
+          "bash",
+          "-c",
+          "export ROS_LOG_DIR=/tmp && export ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-YOUR_ROS_DOMAIN_ID} && source /opt/ros/humble/setup.bash && python3 /ABSOLUTE/PATH/TO/PARENT/FOLDER/ros-mcp/ros-general.py"
+        ],
+        "env": {}
+      },
+      "socket-server": {
+        "command": "python3",
+        "args": [
+          "socket_server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

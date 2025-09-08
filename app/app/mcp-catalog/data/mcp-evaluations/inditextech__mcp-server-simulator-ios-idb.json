@@ -8,13 +8,11 @@
     "name": "InditexTech"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/index.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,19 @@
   "quality_score": 68,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-simulator-ios-idb": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        },
-        "mcp-server-simulator-ios-idb-configured": {
-          "command": "node",
-          "args": ["/path/to/mcp-server-simulator-ios-idb/dist/index.js"],
-          "env": {}
-        }
+      "mcp-server-simulator-ios-idb": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {}
+      },
+      "mcp-server-simulator-ios-idb-configured": {
+        "command": "node",
+        "args": [
+          "/path/to/mcp-server-simulator-ios-idb/dist/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

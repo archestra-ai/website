@@ -8,14 +8,13 @@
     "name": "tacticlaunch"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@tacticlaunch/mcp-linear"],
-      "env": {
-        "LINEAR_API_TOKEN": "${user_config.linear_api_token}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@tacticlaunch/mcp-linear"
+    ],
+    "env": {
+      "LINEAR_API_TOKEN": "${user_config.linear_api_token}"
     }
   },
   "tools": [],
@@ -35,25 +34,29 @@
   "quality_score": 65,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "tacticlaunch-mcp-linear": {
-          "command": "npx",
-          "args": ["-y", "@tacticlaunch/mcp-linear"],
-          "env": {
-            "LINEAR_API_TOKEN": "<YOUR_TOKEN>"
-          }
-        },
-        "tacticlaunch-mcp-linear-token-arg": {
-          "command": "mcp-linear",
-          "args": ["--token", "YOUR_LINEAR_API_TOKEN"],
-          "env": {}
-        },
-        "tacticlaunch-mcp-linear-env-var": {
-          "command": "mcp-linear",
-          "args": [],
-          "env": {
-            "LINEAR_API_TOKEN": "YOUR_LINEAR_API_TOKEN"
-          }
+      "tacticlaunch-mcp-linear": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@tacticlaunch/mcp-linear"
+        ],
+        "env": {
+          "LINEAR_API_TOKEN": "<YOUR_TOKEN>"
+        }
+      },
+      "tacticlaunch-mcp-linear-token-arg": {
+        "command": "mcp-linear",
+        "args": [
+          "--token",
+          "YOUR_LINEAR_API_TOKEN"
+        ],
+        "env": {}
+      },
+      "tacticlaunch-mcp-linear-env-var": {
+        "command": "mcp-linear",
+        "args": [],
+        "env": {
+          "LINEAR_API_TOKEN": "YOUR_LINEAR_API_TOKEN"
         }
       }
     },

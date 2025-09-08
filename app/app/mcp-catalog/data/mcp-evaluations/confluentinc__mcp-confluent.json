@@ -8,41 +8,40 @@
     "name": "confluentinc"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@confluentinc/mcp-confluent"],
-      "env": {
-        "HTTP_HOST": "${user_config.http_host}",
-        "HTTP_MCP_ENDPOINT_PATH": "${user_config.http_mcp_endpoint_path}",
-        "HTTP_PORT": "${user_config.http_port}",
-        "LOG_LEVEL": "${user_config.log_level}",
-        "SSE_MCP_ENDPOINT_PATH": "${user_config.sse_mcp_endpoint_path}",
-        "SSE_MCP_MESSAGE_ENDPOINT_PATH": "${user_config.sse_mcp_message_endpoint_path}",
-        "BOOTSTRAP_SERVERS": "${user_config.bootstrap_servers}",
-        "CONFLUENT_CLOUD_API_KEY": "${user_config.confluent_cloud_api_key}",
-        "CONFLUENT_CLOUD_API_SECRET": "${user_config.confluent_cloud_api_secret}",
-        "CONFLUENT_CLOUD_REST_ENDPOINT": "${user_config.confluent_cloud_rest_endpoint}",
-        "FLINK_API_KEY": "${user_config.flink_api_key}",
-        "FLINK_API_SECRET": "${user_config.flink_api_secret}",
-        "KAFKA_API_KEY": "${user_config.kafka_api_key}",
-        "KAFKA_API_SECRET": "${user_config.kafka_api_secret}",
-        "KAFKA_REST_ENDPOINT": "${user_config.kafka_rest_endpoint}",
-        "KAFKA_CLUSTER_ID": "${user_config.kafka_cluster_id}",
-        "KAFKA_ENV_ID": "${user_config.kafka_env_id}",
-        "FLINK_ENV_ID": "${user_config.flink_env_id}",
-        "FLINK_ORG_ID": "${user_config.flink_org_id}",
-        "FLINK_REST_ENDPOINT": "${user_config.flink_rest_endpoint}",
-        "FLINK_ENV_NAME": "${user_config.flink_env_name}",
-        "FLINK_DATABASE_NAME": "${user_config.flink_database_name}",
-        "FLINK_COMPUTE_POOL_ID": "${user_config.flink_compute_pool_id}",
-        "TABLEFLOW_API_KEY": "${user_config.tableflow_api_key}",
-        "TABLEFLOW_API_SECRET": "${user_config.tableflow_api_secret}",
-        "SCHEMA_REGISTRY_API_KEY": "${user_config.schema_registry_api_key}",
-        "SCHEMA_REGISTRY_API_SECRET": "${user_config.schema_registry_api_secret}",
-        "SCHEMA_REGISTRY_ENDPOINT": "${user_config.schema_registry_endpoint}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@confluentinc/mcp-confluent"
+    ],
+    "env": {
+      "HTTP_HOST": "${user_config.http_host}",
+      "HTTP_MCP_ENDPOINT_PATH": "${user_config.http_mcp_endpoint_path}",
+      "HTTP_PORT": "${user_config.http_port}",
+      "LOG_LEVEL": "${user_config.log_level}",
+      "SSE_MCP_ENDPOINT_PATH": "${user_config.sse_mcp_endpoint_path}",
+      "SSE_MCP_MESSAGE_ENDPOINT_PATH": "${user_config.sse_mcp_message_endpoint_path}",
+      "BOOTSTRAP_SERVERS": "${user_config.bootstrap_servers}",
+      "CONFLUENT_CLOUD_API_KEY": "${user_config.confluent_cloud_api_key}",
+      "CONFLUENT_CLOUD_API_SECRET": "${user_config.confluent_cloud_api_secret}",
+      "CONFLUENT_CLOUD_REST_ENDPOINT": "${user_config.confluent_cloud_rest_endpoint}",
+      "FLINK_API_KEY": "${user_config.flink_api_key}",
+      "FLINK_API_SECRET": "${user_config.flink_api_secret}",
+      "KAFKA_API_KEY": "${user_config.kafka_api_key}",
+      "KAFKA_API_SECRET": "${user_config.kafka_api_secret}",
+      "KAFKA_REST_ENDPOINT": "${user_config.kafka_rest_endpoint}",
+      "KAFKA_CLUSTER_ID": "${user_config.kafka_cluster_id}",
+      "KAFKA_ENV_ID": "${user_config.kafka_env_id}",
+      "FLINK_ENV_ID": "${user_config.flink_env_id}",
+      "FLINK_ORG_ID": "${user_config.flink_org_id}",
+      "FLINK_REST_ENDPOINT": "${user_config.flink_rest_endpoint}",
+      "FLINK_ENV_NAME": "${user_config.flink_env_name}",
+      "FLINK_DATABASE_NAME": "${user_config.flink_database_name}",
+      "FLINK_COMPUTE_POOL_ID": "${user_config.flink_compute_pool_id}",
+      "TABLEFLOW_API_KEY": "${user_config.tableflow_api_key}",
+      "TABLEFLOW_API_SECRET": "${user_config.tableflow_api_secret}",
+      "SCHEMA_REGISTRY_API_KEY": "${user_config.schema_registry_api_key}",
+      "SCHEMA_REGISTRY_API_SECRET": "${user_config.schema_registry_api_secret}",
+      "SCHEMA_REGISTRY_ENDPOINT": "${user_config.schema_registry_endpoint}"
     }
   },
   "tools": [],
@@ -241,26 +240,24 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-confluent-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "BOOTSTRAP_SERVERS=\"your_bootstrap_servers\"",
-            "-e",
-            "KAFKA_API_KEY=\"your_api_key\"",
-            "-e",
-            "KAFKA_API_SECRET=\"your_api_secret\"",
-            "mcp-confluent"
-          ],
-          "env": {
-            "BOOTSTRAP_SERVERS": "your_bootstrap_servers",
-            "KAFKA_API_KEY": "your_api_key",
-            "KAFKA_API_SECRET": "your_api_secret"
-          }
+      "mcp-confluent-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "BOOTSTRAP_SERVERS=\"your_bootstrap_servers\"",
+          "-e",
+          "KAFKA_API_KEY=\"your_api_key\"",
+          "-e",
+          "KAFKA_API_SECRET=\"your_api_secret\"",
+          "mcp-confluent"
+        ],
+        "env": {
+          "BOOTSTRAP_SERVERS": "your_bootstrap_servers",
+          "KAFKA_API_KEY": "your_api_key",
+          "KAFKA_API_SECRET": "your_api_secret"
         }
       }
     },

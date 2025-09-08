@@ -8,13 +8,9 @@
     "name": "emicklei"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "melrose-mcp",
-    "mcp_config": {
-      "command": "${user_config.melrose_mcp_path}",
-      "args": [],
-      "env": {}
-    }
+    "command": "${user_config.melrose_mcp_path}",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,12 +29,10 @@
   "quality_score": 30,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "melrōse": {
-          "command": "melrose-mcp",
-          "args": [],
-          "env": {}
-        }
+      "melrōse": {
+        "command": "melrose-mcp",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

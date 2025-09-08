@@ -8,23 +8,19 @@
     "name": "sonirico"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-stockfish",
-    "mcp_config": {
-      "command": "mcp-stockfish",
-      "args": [],
-      "env": {
-        "MCP_STOCKFISH_SERVER_MODE": "${user_config.mcp_stockfish_server_mode}",
-        "MCP_STOCKFISH_HTTP_HOST": "${user_config.mcp_stockfish_http_host}",
-        "MCP_STOCKFISH_HTTP_PORT": "${user_config.mcp_stockfish_http_port}",
-        "MCP_STOCKFISH_PATH": "${user_config.mcp_stockfish_path}",
-        "MCP_STOCKFISH_MAX_SESSIONS": "${user_config.mcp_stockfish_max_sessions}",
-        "MCP_STOCKFISH_SESSION_TIMEOUT": "${user_config.mcp_stockfish_session_timeout}",
-        "MCP_STOCKFISH_COMMAND_TIMEOUT": "${user_config.mcp_stockfish_command_timeout}",
-        "MCP_STOCKFISH_LOG_LEVEL": "${user_config.mcp_stockfish_log_level}",
-        "MCP_STOCKFISH_LOG_FORMAT": "${user_config.mcp_stockfish_log_format}",
-        "MCP_STOCKFISH_LOG_OUTPUT": "${user_config.mcp_stockfish_log_output}"
-      }
+    "command": "mcp-stockfish",
+    "args": [],
+    "env": {
+      "MCP_STOCKFISH_SERVER_MODE": "${user_config.mcp_stockfish_server_mode}",
+      "MCP_STOCKFISH_HTTP_HOST": "${user_config.mcp_stockfish_http_host}",
+      "MCP_STOCKFISH_HTTP_PORT": "${user_config.mcp_stockfish_http_port}",
+      "MCP_STOCKFISH_PATH": "${user_config.mcp_stockfish_path}",
+      "MCP_STOCKFISH_MAX_SESSIONS": "${user_config.mcp_stockfish_max_sessions}",
+      "MCP_STOCKFISH_SESSION_TIMEOUT": "${user_config.mcp_stockfish_session_timeout}",
+      "MCP_STOCKFISH_COMMAND_TIMEOUT": "${user_config.mcp_stockfish_command_timeout}",
+      "MCP_STOCKFISH_LOG_LEVEL": "${user_config.mcp_stockfish_log_level}",
+      "MCP_STOCKFISH_LOG_FORMAT": "${user_config.mcp_stockfish_log_format}",
+      "MCP_STOCKFISH_LOG_OUTPUT": "${user_config.mcp_stockfish_log_output}"
     }
   },
   "tools": [],
@@ -107,32 +103,30 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-stockfish-stdio": {
-          "command": "mcp-stockfish",
-          "args": [],
-          "env": {}
-        },
-        "mcp-stockfish-custom-path": {
-          "command": "mcp-stockfish",
-          "args": [],
-          "env": {
-            "MCP_STOCKFISH_PATH": "/your/special/stockfish"
-          }
-        },
-        "mcp-stockfish-http": {
-          "command": "mcp-stockfish",
-          "args": [],
-          "env": {
-            "MCP_STOCKFISH_SERVER_MODE": "http"
-          }
-        },
-        "mcp-stockfish-log-info": {
-          "command": "mcp-stockfish",
-          "args": [],
-          "env": {
-            "MCP_STOCKFISH_LOG_LEVEL": "info"
-          }
+      "mcp-stockfish-stdio": {
+        "command": "mcp-stockfish",
+        "args": [],
+        "env": {}
+      },
+      "mcp-stockfish-custom-path": {
+        "command": "mcp-stockfish",
+        "args": [],
+        "env": {
+          "MCP_STOCKFISH_PATH": "/your/special/stockfish"
+        }
+      },
+      "mcp-stockfish-http": {
+        "command": "mcp-stockfish",
+        "args": [],
+        "env": {
+          "MCP_STOCKFISH_SERVER_MODE": "http"
+        }
+      },
+      "mcp-stockfish-log-info": {
+        "command": "mcp-stockfish",
+        "args": [],
+        "env": {
+          "MCP_STOCKFISH_LOG_LEVEL": "info"
         }
       }
     },

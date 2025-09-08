@@ -8,43 +8,39 @@
     "name": "browserbase"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@browserbasehq/mcp-server-browserbase",
-        "--proxies",
-        "${user_config.proxies}",
-        "--advancedStealth",
-        "${user_config.advanced_stealth}",
-        "--keepAlive",
-        "${user_config.keep_alive}",
-        "--contextId",
-        "${user_config.context_id}",
-        "--persist",
-        "${user_config.persist}",
-        "--port",
-        "${user_config.port}",
-        "--host",
-        "${user_config.host}",
-        "--cookies",
-        "${user_config.cookies}",
-        "--browserWidth",
-        "${user_config.browser_width}",
-        "--browserHeight",
-        "${user_config.browser_height}",
-        "--modelName",
-        "${user_config.model_name}",
-        "--modelApiKey",
-        "${user_config.model_api_key}"
-      ],
-      "env": {
-        "BROWSERBASE_API_KEY": "${user_config.browserbase_api_key}",
-        "BROWSERBASE_PROJECT_ID": "${user_config.browserbase_project_id}",
-        "GEMINI_API_KEY": "${user_config.gemini_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@browserbasehq/mcp-server-browserbase",
+      "--proxies",
+      "${user_config.proxies}",
+      "--advancedStealth",
+      "${user_config.advanced_stealth}",
+      "--keepAlive",
+      "${user_config.keep_alive}",
+      "--contextId",
+      "${user_config.context_id}",
+      "--persist",
+      "${user_config.persist}",
+      "--port",
+      "${user_config.port}",
+      "--host",
+      "${user_config.host}",
+      "--cookies",
+      "${user_config.cookies}",
+      "--browserWidth",
+      "${user_config.browser_width}",
+      "--browserHeight",
+      "${user_config.browser_height}",
+      "--modelName",
+      "${user_config.model_name}",
+      "--modelApiKey",
+      "${user_config.model_api_key}"
+    ],
+    "env": {
+      "BROWSERBASE_API_KEY": "${user_config.browserbase_api_key}",
+      "BROWSERBASE_PROJECT_ID": "${user_config.browserbase_project_id}",
+      "GEMINI_API_KEY": "${user_config.gemini_api_key}"
     }
   },
   "tools": [],
@@ -158,60 +154,79 @@
   "quality_score": 65,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "browserbasehq-mcp": {
-          "command": "npx",
-          "args": ["-y", "@browserbasehq/mcp"],
-          "env": {
-            "BROWSERBASE_API_KEY": "",
-            "BROWSERBASE_PROJECT_ID": "",
-            "GEMINI_API_KEY": ""
-          }
-        },
-        "browserbasehq-mcp-server-browserbase": {
-          "command": "npx",
-          "args": ["-y", "@browserbasehq/mcp-server-browserbase"],
-          "env": {
-            "BROWSERBASE_API_KEY": "",
-            "BROWSERBASE_PROJECT_ID": "",
-            "GEMINI_API_KEY": ""
-          }
-        },
-        "browserbasehq-mcp-server-browserbase-stdio": {
-          "command": "node",
-          "args": ["/path/to/mcp-server-browserbase/cli.js"],
-          "env": {
-            "BROWSERBASE_API_KEY": "",
-            "BROWSERBASE_PROJECT_ID": "",
-            "GEMINI_API_KEY": ""
-          }
-        },
-        "browserbasehq-mcp-server-browserbase-proxies-configured": {
-          "command": "npx",
-          "args": ["-y", "@browserbasehq/mcp-server-browserbase", "--proxies"],
-          "env": {
-            "BROWSERBASE_API_KEY": "",
-            "BROWSERBASE_PROJECT_ID": "",
-            "GEMINI_API_KEY": ""
-          }
-        },
-        "browserbasehq-mcp-server-browserbase-advanced-stealth-configured": {
-          "command": "npx",
-          "args": ["-y", "@browserbasehq/mcp-server-browserbase", "--advancedStealth"],
-          "env": {
-            "BROWSERBASE_API_KEY": "",
-            "BROWSERBASE_PROJECT_ID": "",
-            "GEMINI_API_KEY": ""
-          }
-        },
-        "browserbasehq-mcp-server-browserbase-context-configured": {
-          "command": "npx",
-          "args": ["-y", "@browserbasehq/mcp-server-browserbase", "--contextId", "<YOUR_CONTEXT_ID>"],
-          "env": {
-            "BROWSERBASE_API_KEY": "",
-            "BROWSERBASE_PROJECT_ID": "",
-            "GEMINI_API_KEY": ""
-          }
+      "browserbasehq-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@browserbasehq/mcp"
+        ],
+        "env": {
+          "BROWSERBASE_API_KEY": "",
+          "BROWSERBASE_PROJECT_ID": "",
+          "GEMINI_API_KEY": ""
+        }
+      },
+      "browserbasehq-mcp-server-browserbase": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@browserbasehq/mcp-server-browserbase"
+        ],
+        "env": {
+          "BROWSERBASE_API_KEY": "",
+          "BROWSERBASE_PROJECT_ID": "",
+          "GEMINI_API_KEY": ""
+        }
+      },
+      "browserbasehq-mcp-server-browserbase-stdio": {
+        "command": "node",
+        "args": [
+          "/path/to/mcp-server-browserbase/cli.js"
+        ],
+        "env": {
+          "BROWSERBASE_API_KEY": "",
+          "BROWSERBASE_PROJECT_ID": "",
+          "GEMINI_API_KEY": ""
+        }
+      },
+      "browserbasehq-mcp-server-browserbase-proxies-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@browserbasehq/mcp-server-browserbase",
+          "--proxies"
+        ],
+        "env": {
+          "BROWSERBASE_API_KEY": "",
+          "BROWSERBASE_PROJECT_ID": "",
+          "GEMINI_API_KEY": ""
+        }
+      },
+      "browserbasehq-mcp-server-browserbase-advanced-stealth-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@browserbasehq/mcp-server-browserbase",
+          "--advancedStealth"
+        ],
+        "env": {
+          "BROWSERBASE_API_KEY": "",
+          "BROWSERBASE_PROJECT_ID": "",
+          "GEMINI_API_KEY": ""
+        }
+      },
+      "browserbasehq-mcp-server-browserbase-context-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@browserbasehq/mcp-server-browserbase",
+          "--contextId",
+          "<YOUR_CONTEXT_ID>"
+        ],
+        "env": {
+          "BROWSERBASE_API_KEY": "",
+          "BROWSERBASE_PROJECT_ID": "",
+          "GEMINI_API_KEY": ""
         }
       }
     },

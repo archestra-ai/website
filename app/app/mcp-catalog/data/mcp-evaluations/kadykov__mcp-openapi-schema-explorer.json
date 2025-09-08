@@ -8,19 +8,15 @@
     "name": "kadykov"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-openapi-schema-explorer@latest",
-        "${user_config.path_or_url_to_spec}",
-        "--output-format",
-        "${user_config.output_format}"
-      ],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-openapi-schema-explorer@latest",
+      "${user_config.path_or_url_to_spec}",
+      "--output-format",
+      "${user_config.output_format}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -45,37 +41,51 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-openapi-schema-explorer": {
-          "command": "npx",
-          "args": ["-y", "mcp-openapi-schema-explorer@latest", "<path-or-url-to-spec>", "--output-format", "yaml"],
-          "env": {}
-        },
-        "kadykov-mcp-openapi-schema-explorer-docker": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "kadykov/mcp-openapi-schema-explorer:latest", "<remote-url-to-spec>"],
-          "env": {}
-        },
-        "kadykov-mcp-openapi-schema-explorer-docker-local": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "-v",
-            "/full/host/path/to/spec.yaml:/spec/api.yaml",
-            "kadykov/mcp-openapi-schema-explorer:latest",
-            "/spec/api.yaml",
-            "--output-format",
-            "yaml"
-          ],
-          "env": {}
-        },
-        "mcp-openapi-schema-explorer-global": {
-          "command": "mcp-openapi-schema-explorer",
-          "args": ["<path-or-url-to-spec>", "--output-format", "yaml"],
-          "env": {}
-        }
+      "mcp-openapi-schema-explorer": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-openapi-schema-explorer@latest",
+          "<path-or-url-to-spec>",
+          "--output-format",
+          "yaml"
+        ],
+        "env": {}
+      },
+      "kadykov-mcp-openapi-schema-explorer-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "kadykov/mcp-openapi-schema-explorer:latest",
+          "<remote-url-to-spec>"
+        ],
+        "env": {}
+      },
+      "kadykov-mcp-openapi-schema-explorer-docker-local": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "-v",
+          "/full/host/path/to/spec.yaml:/spec/api.yaml",
+          "kadykov/mcp-openapi-schema-explorer:latest",
+          "/spec/api.yaml",
+          "--output-format",
+          "yaml"
+        ],
+        "env": {}
+      },
+      "mcp-openapi-schema-explorer-global": {
+        "command": "mcp-openapi-schema-explorer",
+        "args": [
+          "<path-or-url-to-spec>",
+          "--output-format",
+          "yaml"
+        ],
+        "env": {}
       }
     },
     "oauth": {

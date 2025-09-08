@@ -8,14 +8,13 @@
     "name": "automateyournetwork"
   },
   "server": {
-    "type": "python",
-    "entry_point": "pyats_mcp_server.py",
-    "mcp_config": {
-      "command": "python3",
-      "args": ["-u", "${__dirname}/pyats_mcp_server.py"],
-      "env": {
-        "PYATS_TESTBED_PATH": "${user_config.pyats_testbed_path}"
-      }
+    "command": "python3",
+    "args": [
+      "-u",
+      "${__dirname}/pyats_mcp_server.py"
+    ],
+    "env": {
+      "PYATS_TESTBED_PATH": "${user_config.pyats_testbed_path}"
     }
   },
   "tools": [],
@@ -34,59 +33,65 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "pyats-mcp-server-stdio": {
-          "command": "python3",
-          "args": ["pyats_mcp_server.py"],
-          "env": {
-            "PYATS_TESTBED_PATH": "/absolute/path/to/testbed.yaml"
-          }
-        },
-        "pyats-mcp-server-oneshot": {
-          "command": "python3",
-          "args": ["pyats_mcp_server.py", "--oneshot"],
-          "env": {
-            "PYATS_TESTBED_PATH": "/absolute/path/to/testbed.yaml"
-          }
-        },
-        "pyats-mcp-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "PYATS_TESTBED_PATH=/app/testbed.yaml",
-            "-v",
-            "/your/testbed/folder:/app",
-            "pyats-mcp-server"
-          ],
-          "env": {
-            "PYATS_TESTBED_PATH": "/app/testbed.yaml"
-          }
-        },
-        "pyats-mcp-server-docker-configured": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "PYATS_TESTBED_PATH",
-            "-v",
-            "/absolute/path/to/testbed/folder:/app",
-            "pyats-mcp-server"
-          ],
-          "env": {
-            "PYATS_TESTBED_PATH": "/app/testbed.yaml"
-          }
-        },
-        "pyats-mcp-server-python-configured": {
-          "command": "python3",
-          "args": ["-u", "/Users/johncapobianco/pyATS_MCP/pyats_mcp_server.py"],
-          "env": {
-            "PYATS_TESTBED_PATH": "/Users/johncapobianco/pyATS_MCP/testbed.yaml"
-          }
+      "pyats-mcp-server-stdio": {
+        "command": "python3",
+        "args": [
+          "pyats_mcp_server.py"
+        ],
+        "env": {
+          "PYATS_TESTBED_PATH": "/absolute/path/to/testbed.yaml"
+        }
+      },
+      "pyats-mcp-server-oneshot": {
+        "command": "python3",
+        "args": [
+          "pyats_mcp_server.py",
+          "--oneshot"
+        ],
+        "env": {
+          "PYATS_TESTBED_PATH": "/absolute/path/to/testbed.yaml"
+        }
+      },
+      "pyats-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "PYATS_TESTBED_PATH=/app/testbed.yaml",
+          "-v",
+          "/your/testbed/folder:/app",
+          "pyats-mcp-server"
+        ],
+        "env": {
+          "PYATS_TESTBED_PATH": "/app/testbed.yaml"
+        }
+      },
+      "pyats-mcp-server-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "PYATS_TESTBED_PATH",
+          "-v",
+          "/absolute/path/to/testbed/folder:/app",
+          "pyats-mcp-server"
+        ],
+        "env": {
+          "PYATS_TESTBED_PATH": "/app/testbed.yaml"
+        }
+      },
+      "pyats-mcp-server-python-configured": {
+        "command": "python3",
+        "args": [
+          "-u",
+          "/Users/johncapobianco/pyATS_MCP/pyats_mcp_server.py"
+        ],
+        "env": {
+          "PYATS_TESTBED_PATH": "/Users/johncapobianco/pyATS_MCP/testbed.yaml"
         }
       }
     },

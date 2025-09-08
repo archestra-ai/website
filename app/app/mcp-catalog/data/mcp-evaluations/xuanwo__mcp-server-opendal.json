@@ -8,19 +8,17 @@
     "name": "Xuanwo"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp-server-opendal",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-opendal"],
-      "env": {
-        "OPENDAL_MYS3_TYPE": "${user_config.opendal_mys3_type}",
-        "OPENDAL_MYS3_BUCKET": "${user_config.opendal_mys3_bucket}",
-        "OPENDAL_MYS3_REGION": "${user_config.opendal_mys3_region}",
-        "OPENDAL_MYS3_ENDPOINT": "${user_config.opendal_mys3_endpoint}",
-        "OPENDAL_MYS3_ACCESS_KEY_ID": "${user_config.opendal_mys3_access_key_id}",
-        "OPENDAL_MYS3_SECRET_ACCESS_KEY": "${user_config.opendal_mys3_secret_access_key}"
-      }
+    "command": "uvx",
+    "args": [
+      "mcp-server-opendal"
+    ],
+    "env": {
+      "OPENDAL_MYS3_TYPE": "${user_config.opendal_mys3_type}",
+      "OPENDAL_MYS3_BUCKET": "${user_config.opendal_mys3_bucket}",
+      "OPENDAL_MYS3_REGION": "${user_config.opendal_mys3_region}",
+      "OPENDAL_MYS3_ENDPOINT": "${user_config.opendal_mys3_endpoint}",
+      "OPENDAL_MYS3_ACCESS_KEY_ID": "${user_config.opendal_mys3_access_key_id}",
+      "OPENDAL_MYS3_SECRET_ACCESS_KEY": "${user_config.opendal_mys3_secret_access_key}"
     }
   },
   "tools": [],
@@ -72,19 +70,22 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-opendal-with-config": {
-          "command": "uvx",
-          "args": ["mcp-server-opendal"],
-          "env": {
-            "YOUR_ENV_VAR": "YOUR_ENV_VALUE"
-          }
-        },
-        "mcp-server-opendal-uv-run": {
-          "command": "uv",
-          "args": ["run", "mcp-server-opendal"],
-          "env": {}
+      "mcp-server-opendal-with-config": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-opendal"
+        ],
+        "env": {
+          "YOUR_ENV_VAR": "YOUR_ENV_VALUE"
         }
+      },
+      "mcp-server-opendal-uv-run": {
+        "command": "uv",
+        "args": [
+          "run",
+          "mcp-server-opendal"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,15 +8,13 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "node",
-    "entry_point": "server/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/server/index.js"],
-      "env": {
-        "INFURA_KEY": "${user_config.infura_key}",
-        "WALLET_PRIVATE_KEY": "${user_config.wallet_private_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/server/index.js"
+    ],
+    "env": {
+      "INFURA_KEY": "${user_config.infura_key}",
+      "WALLET_PRIVATE_KEY": "${user_config.wallet_private_key}"
     }
   },
   "tools": [],
@@ -43,14 +41,14 @@
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "Uniswap-Trader-MCP": {
-          "command": "node",
-          "args": ["path/to/uniswap-trader-mcp/server/index.js"],
-          "env": {
-            "INFURA_KEY": "your infura key",
-            "WALLET_PRIVATE_KEY": "your private key"
-          }
+      "Uniswap-Trader-MCP": {
+        "command": "node",
+        "args": [
+          "path/to/uniswap-trader-mcp/server/index.js"
+        ],
+        "env": {
+          "INFURA_KEY": "your infura key",
+          "WALLET_PRIVATE_KEY": "your private key"
         }
       }
     },

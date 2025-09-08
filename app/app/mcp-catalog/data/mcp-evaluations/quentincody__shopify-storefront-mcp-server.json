@@ -8,17 +8,16 @@
     "name": "QuentinCody"
   },
   "server": {
-    "type": "python",
-    "entry_point": "shopify_storefront_mcp_server",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "shopify_storefront_mcp_server"],
-      "env": {
-        "SHOPIFY_STOREFRONT_ACCESS_TOKEN": "${user_config.shopify_storefront_access_token}",
-        "SHOPIFY_STORE_NAME": "${user_config.shopify_store_name}",
-        "SHOPIFY_API_VERSION": "${user_config.shopify_api_version}",
-        "SHOPIFY_BUYER_IP": "${user_config.shopify_buyer_ip}"
-      }
+    "command": "python",
+    "args": [
+      "-m",
+      "shopify_storefront_mcp_server"
+    ],
+    "env": {
+      "SHOPIFY_STOREFRONT_ACCESS_TOKEN": "${user_config.shopify_storefront_access_token}",
+      "SHOPIFY_STORE_NAME": "${user_config.shopify_store_name}",
+      "SHOPIFY_API_VERSION": "${user_config.shopify_api_version}",
+      "SHOPIFY_BUYER_IP": "${user_config.shopify_buyer_ip}"
     }
   },
   "tools": [],
@@ -58,12 +57,13 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "shopify_storefront_mcp_server": {
-          "command": "python",
-          "args": ["-m", "shopify_storefront_mcp_server"],
-          "env": {}
-        }
+      "shopify_storefront_mcp_server": {
+        "command": "python",
+        "args": [
+          "-m",
+          "shopify_storefront_mcp_server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

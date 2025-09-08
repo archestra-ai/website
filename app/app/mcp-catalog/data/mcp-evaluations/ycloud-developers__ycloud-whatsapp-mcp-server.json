@@ -8,16 +8,14 @@
     "name": "YCloud-Developers"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "API_BASE_URL": "${user_config.api_base_url}",
-        "OPENAPI_SPEC_PATH": "${user_config.openapi_spec_path}",
-        "API_HEADERS": "X-API-Key:${user_config.ycloud_api_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "API_BASE_URL": "${user_config.api_base_url}",
+      "OPENAPI_SPEC_PATH": "${user_config.openapi_spec_path}",
+      "API_HEADERS": "X-API-Key:${user_config.ycloud_api_key}"
     }
   },
   "tools": [],
@@ -51,22 +49,24 @@
   "quality_score": 39,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ycloud-whatsapp": {
-          "command": "node",
-          "args": ["path/to/ycloud-whatsapp-mcp-server/build/index.js"],
-          "env": {
-            "API_BASE_URL": "https://api.ycloud.com/v2",
-            "API_HEADERS": "X-API-Key:your-api-key-here"
-          }
-        },
-        "ycloud-whatsapp-direct-run": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {
-            "API_BASE_URL": "https://api.ycloud.com/v2",
-            "API_HEADERS": "X-API-Key:your-api-key-here"
-          }
+      "ycloud-whatsapp": {
+        "command": "node",
+        "args": [
+          "path/to/ycloud-whatsapp-mcp-server/build/index.js"
+        ],
+        "env": {
+          "API_BASE_URL": "https://api.ycloud.com/v2",
+          "API_HEADERS": "X-API-Key:your-api-key-here"
+        }
+      },
+      "ycloud-whatsapp-direct-run": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {
+          "API_BASE_URL": "https://api.ycloud.com/v2",
+          "API_HEADERS": "X-API-Key:your-api-key-here"
         }
       }
     },

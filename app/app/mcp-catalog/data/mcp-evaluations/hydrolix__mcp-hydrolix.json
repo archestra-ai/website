@@ -8,19 +8,22 @@
     "name": "hydrolix"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "--with", "mcp-hydrolix", "--python", "3.13", "mcp-hydrolix"],
-      "env": {
-        "HYDROLIX_HOST": "${user_config.hydrolix_host}",
-        "HYDROLIX_USER": "${user_config.hydrolix_user}",
-        "HYDROLIX_PASSWORD": "${user_config.hydrolix_password}",
-        "HYDROLIX_PORT": "${user_config.hydrolix_port}",
-        "HYDROLIX_VERIFY": "${user_config.hydrolix_verify}",
-        "HYDROLIX_DATABASE": "${user_config.hydrolix_database}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "mcp-hydrolix",
+      "--python",
+      "3.13",
+      "mcp-hydrolix"
+    ],
+    "env": {
+      "HYDROLIX_HOST": "${user_config.hydrolix_host}",
+      "HYDROLIX_USER": "${user_config.hydrolix_user}",
+      "HYDROLIX_PASSWORD": "${user_config.hydrolix_password}",
+      "HYDROLIX_PORT": "${user_config.hydrolix_port}",
+      "HYDROLIX_VERIFY": "${user_config.hydrolix_verify}",
+      "HYDROLIX_DATABASE": "${user_config.hydrolix_database}"
     }
   },
   "tools": [],
@@ -75,15 +78,20 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-hydrolix": {
-          "command": "uv",
-          "args": ["run", "--with", "mcp-hydrolix", "--python", "3.13", "mcp-hydrolix"],
-          "env": {
-            "HYDROLIX_HOST": "<hydrolix-host>",
-            "HYDROLIX_USER": "<hydrolix-user>",
-            "HYDROLIX_PASSWORD": "<hydrolix-password>"
-          }
+      "mcp-hydrolix": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--with",
+          "mcp-hydrolix",
+          "--python",
+          "3.13",
+          "mcp-hydrolix"
+        ],
+        "env": {
+          "HYDROLIX_HOST": "<hydrolix-host>",
+          "HYDROLIX_USER": "<hydrolix-user>",
+          "HYDROLIX_PASSWORD": "<hydrolix-password>"
         }
       }
     },

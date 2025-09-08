@@ -8,18 +8,17 @@
     "name": "api7"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "apisix-mcp"],
-      "env": {
-        "APISIX_SERVER_HOST": "${user_config.apisix_server_host}",
-        "APISIX_SERVER_PORT": "${user_config.apisix_server_port}",
-        "APISIX_ADMIN_API_PORT": "${user_config.apisix_admin_api_port}",
-        "APISIX_ADMIN_API_PREFIX": "${user_config.apisix_admin_api_prefix}",
-        "APISIX_ADMIN_KEY": "${user_config.apisix_admin_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "apisix-mcp"
+    ],
+    "env": {
+      "APISIX_SERVER_HOST": "${user_config.apisix_server_host}",
+      "APISIX_SERVER_PORT": "${user_config.apisix_server_port}",
+      "APISIX_ADMIN_API_PORT": "${user_config.apisix_admin_api_port}",
+      "APISIX_ADMIN_API_PREFIX": "${user_config.apisix_admin_api_prefix}",
+      "APISIX_ADMIN_KEY": "${user_config.apisix_admin_key}"
     }
   },
   "tools": [],
@@ -72,28 +71,31 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "apisix-mcp-npm": {
-          "command": "npx",
-          "args": ["-y", "apisix-mcp"],
-          "env": {
-            "APISIX_SERVER_HOST": "your-apisix-server-host",
-            "APISIX_SERVER_PORT": "your-apisix-server-port",
-            "APISIX_ADMIN_API_PORT": "your-apisix-admin-api-port",
-            "APISIX_ADMIN_API_PREFIX": "your-apisix-admin-api-prefix",
-            "APISIX_ADMIN_KEY": "your-apisix-api-key"
-          }
-        },
-        "apisix-mcp-source": {
-          "command": "node",
-          "args": ["your-apisix-mcp-path/dist/index.js"],
-          "env": {
-            "APISIX_SERVER_HOST": "your-apisix-server-host",
-            "APISIX_SERVER_PORT": "your-apisix-server-port",
-            "APISIX_ADMIN_API_PORT": "your-apisix-admin-api-port",
-            "APISIX_ADMIN_API_PREFIX": "your-apisix-admin-api-prefix",
-            "APISIX_ADMIN_KEY": "your-apisix-api-key"
-          }
+      "apisix-mcp-npm": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "apisix-mcp"
+        ],
+        "env": {
+          "APISIX_SERVER_HOST": "your-apisix-server-host",
+          "APISIX_SERVER_PORT": "your-apisix-server-port",
+          "APISIX_ADMIN_API_PORT": "your-apisix-admin-api-port",
+          "APISIX_ADMIN_API_PREFIX": "your-apisix-admin-api-prefix",
+          "APISIX_ADMIN_KEY": "your-apisix-api-key"
+        }
+      },
+      "apisix-mcp-source": {
+        "command": "node",
+        "args": [
+          "your-apisix-mcp-path/dist/index.js"
+        ],
+        "env": {
+          "APISIX_SERVER_HOST": "your-apisix-server-host",
+          "APISIX_SERVER_PORT": "your-apisix-server-port",
+          "APISIX_ADMIN_API_PORT": "your-apisix-admin-api-port",
+          "APISIX_ADMIN_API_PREFIX": "your-apisix-admin-api-prefix",
+          "APISIX_ADMIN_KEY": "your-apisix-api-key"
         }
       }
     },

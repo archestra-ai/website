@@ -8,14 +8,13 @@
     "name": "mikechao"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "brave-search-mcp"],
-      "env": {
-        "BRAVE_API_KEY": "${user_config.brave_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "brave-search-mcp"
+    ],
+    "env": {
+      "BRAVE_API_KEY": "${user_config.brave_api_key}"
     }
   },
   "tools": [],
@@ -35,34 +34,50 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "brave-search-mcp": {
-          "command": "npx",
-          "args": ["-y", "brave-search-mcp"],
-          "env": {
-            "BRAVE_API_KEY": "YOUR API KEY HERE"
-          }
-        },
-        "brave-search-mcp-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "BRAVE_API_KEY", "brave-search-mcp"],
-          "env": {
-            "BRAVE_API_KEY": "YOUR API KEY HERE"
-          }
-        },
-        "brave-search-mcp-librechat": {
-          "command": "sh",
-          "args": ["-c", "BRAVE_API_KEY=API KEY npx -y brave-search-mcp"],
-          "env": {
-            "BRAVE_API_KEY": "API KEY"
-          }
-        },
-        "brave-search-mcp-windows-cmd": {
-          "command": "cmd",
-          "args": ["/c", "npx", "-y", "brave-search-mcp"],
-          "env": {
-            "BRAVE_API_KEY": "YOUR_API_KEY_HERE"
-          }
+      "brave-search-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "brave-search-mcp"
+        ],
+        "env": {
+          "BRAVE_API_KEY": "YOUR API KEY HERE"
+        }
+      },
+      "brave-search-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "BRAVE_API_KEY",
+          "brave-search-mcp"
+        ],
+        "env": {
+          "BRAVE_API_KEY": "YOUR API KEY HERE"
+        }
+      },
+      "brave-search-mcp-librechat": {
+        "command": "sh",
+        "args": [
+          "-c",
+          "BRAVE_API_KEY=API KEY npx -y brave-search-mcp"
+        ],
+        "env": {
+          "BRAVE_API_KEY": "API KEY"
+        }
+      },
+      "brave-search-mcp-windows-cmd": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "npx",
+          "-y",
+          "brave-search-mcp"
+        ],
+        "env": {
+          "BRAVE_API_KEY": "YOUR_API_KEY_HERE"
         }
       }
     },

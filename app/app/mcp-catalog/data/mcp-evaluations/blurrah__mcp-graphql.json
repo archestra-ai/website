@@ -8,18 +8,16 @@
     "name": "blurrah"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["mcp-graphql"],
-      "env": {
-        "ENDPOINT": "${user_config.endpoint}",
-        "HEADERS": "${user_config.headers}",
-        "ALLOW_MUTATIONS": "${user_config.allow_mutations}",
-        "NAME": "${user_config.name}",
-        "SCHEMA": "${user_config.schema}"
-      }
+    "command": "npx",
+    "args": [
+      "mcp-graphql"
+    ],
+    "env": {
+      "ENDPOINT": "${user_config.endpoint}",
+      "HEADERS": "${user_config.headers}",
+      "ALLOW_MUTATIONS": "${user_config.allow_mutations}",
+      "NAME": "${user_config.name}",
+      "SCHEMA": "${user_config.schema}"
     }
   },
   "tools": [],
@@ -67,45 +65,53 @@
   "quality_score": 70,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-graphql": {
-          "command": "npx",
-          "args": ["mcp-graphql"],
-          "env": {
-            "ENDPOINT": "http://localhost:3000/graphql"
-          }
-        },
-        "mcp-graphql-with-headers": {
-          "command": "npx",
-          "args": ["mcp-graphql"],
-          "env": {
-            "ENDPOINT": "https://api.example.com/graphql",
-            "HEADERS": "{\"Authorization\":\"Bearer token123\"}"
-          }
-        },
-        "mcp-graphql-allow-mutations": {
-          "command": "npx",
-          "args": ["mcp-graphql"],
-          "env": {
-            "ENDPOINT": "http://localhost:3000/graphql",
-            "ALLOW_MUTATIONS": "true"
-          }
-        },
-        "mcp-graphql-with-local-schema": {
-          "command": "npx",
-          "args": ["mcp-graphql"],
-          "env": {
-            "ENDPOINT": "http://localhost:3000/graphql",
-            "SCHEMA": "./schema.graphql"
-          }
-        },
-        "mcp-graphql-with-remote-schema": {
-          "command": "npx",
-          "args": ["mcp-graphql"],
-          "env": {
-            "ENDPOINT": "http://localhost:3000/graphql",
-            "SCHEMA": "https://example.com/schema.graphql"
-          }
+      "mcp-graphql": {
+        "command": "npx",
+        "args": [
+          "mcp-graphql"
+        ],
+        "env": {
+          "ENDPOINT": "http://localhost:3000/graphql"
+        }
+      },
+      "mcp-graphql-with-headers": {
+        "command": "npx",
+        "args": [
+          "mcp-graphql"
+        ],
+        "env": {
+          "ENDPOINT": "https://api.example.com/graphql",
+          "HEADERS": "{\"Authorization\":\"Bearer token123\"}"
+        }
+      },
+      "mcp-graphql-allow-mutations": {
+        "command": "npx",
+        "args": [
+          "mcp-graphql"
+        ],
+        "env": {
+          "ENDPOINT": "http://localhost:3000/graphql",
+          "ALLOW_MUTATIONS": "true"
+        }
+      },
+      "mcp-graphql-with-local-schema": {
+        "command": "npx",
+        "args": [
+          "mcp-graphql"
+        ],
+        "env": {
+          "ENDPOINT": "http://localhost:3000/graphql",
+          "SCHEMA": "./schema.graphql"
+        }
+      },
+      "mcp-graphql-with-remote-schema": {
+        "command": "npx",
+        "args": [
+          "mcp-graphql"
+        ],
+        "env": {
+          "ENDPOINT": "http://localhost:3000/graphql",
+          "SCHEMA": "https://example.com/schema.graphql"
         }
       }
     },

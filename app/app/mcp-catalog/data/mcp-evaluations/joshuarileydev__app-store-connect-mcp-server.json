@@ -8,17 +8,16 @@
     "name": "JoshuaRileyDev"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@joshuarileydev/app-store-connect-mcp-server"],
-      "env": {
-        "APP_STORE_CONNECT_KEY_ID": "${user_config.app_store_connect_key_id}",
-        "APP_STORE_CONNECT_ISSUER_ID": "${user_config.app_store_connect_issuer_id}",
-        "APP_STORE_CONNECT_P8_PATH": "${user_config.app_store_connect_p8_path}",
-        "APP_STORE_CONNECT_VENDOR_NUMBER": "${user_config.app_store_connect_vendor_number}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@joshuarileydev/app-store-connect-mcp-server"
+    ],
+    "env": {
+      "APP_STORE_CONNECT_KEY_ID": "${user_config.app_store_connect_key_id}",
+      "APP_STORE_CONNECT_ISSUER_ID": "${user_config.app_store_connect_issuer_id}",
+      "APP_STORE_CONNECT_P8_PATH": "${user_config.app_store_connect_p8_path}",
+      "APP_STORE_CONNECT_VENDOR_NUMBER": "${user_config.app_store_connect_vendor_number}"
     }
   },
   "tools": [],
@@ -59,22 +58,26 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "joshuarileydev-app-store-connect-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "@joshuarileydev/app-store-connect-mcp-server"],
-          "env": {
-            "APP_STORE_CONNECT_KEY_ID": "YOUR_KEY_ID",
-            "APP_STORE_CONNECT_ISSUER_ID": "YOUR_ISSUER_ID",
-            "APP_STORE_CONNECT_P8_PATH": "/path/to/your/auth-key.p8",
-            "APP_STORE_CONNECT_VENDOR_NUMBER": "YOUR_VENDOR_NUMBER_OPTIONAL"
-          }
-        },
-        "appstore-connect-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "appstore-connect-mcp-server"],
-          "env": {}
+      "joshuarileydev-app-store-connect-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@joshuarileydev/app-store-connect-mcp-server"
+        ],
+        "env": {
+          "APP_STORE_CONNECT_KEY_ID": "YOUR_KEY_ID",
+          "APP_STORE_CONNECT_ISSUER_ID": "YOUR_ISSUER_ID",
+          "APP_STORE_CONNECT_P8_PATH": "/path/to/your/auth-key.p8",
+          "APP_STORE_CONNECT_VENDOR_NUMBER": "YOUR_VENDOR_NUMBER_OPTIONAL"
         }
+      },
+      "appstore-connect-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "appstore-connect-mcp-server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

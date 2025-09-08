@@ -8,20 +8,19 @@
     "name": "aashari"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@aashari/mcp-server-atlassian-jira"],
-      "env": {
-        "ATLASSIAN_SITE_NAME": "${user_config.atlassian_site_name}",
-        "ATLASSIAN_USER_EMAIL": "${user_config.atlassian_user_email}",
-        "ATLASSIAN_API_TOKEN": "${user_config.atlassian_api_token}",
-        "TRANSPORT_MODE": "${user_config.transport_mode}",
-        "PORT": "${user_config.port}",
-        "DEBUG": "${user_config.debug}",
-        "ATLASSIAN_JIRA_URL": "${user_config.atlassian_jira_url}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@aashari/mcp-server-atlassian-jira"
+    ],
+    "env": {
+      "ATLASSIAN_SITE_NAME": "${user_config.atlassian_site_name}",
+      "ATLASSIAN_USER_EMAIL": "${user_config.atlassian_user_email}",
+      "ATLASSIAN_API_TOKEN": "${user_config.atlassian_api_token}",
+      "TRANSPORT_MODE": "${user_config.transport_mode}",
+      "PORT": "${user_config.port}",
+      "DEBUG": "${user_config.debug}",
+      "ATLASSIAN_JIRA_URL": "${user_config.atlassian_jira_url}"
     }
   },
   "tools": [],
@@ -86,25 +85,30 @@
   "quality_score": 71,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "aashari-mcp-server-atlassian-jira": {
-          "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-atlassian-jira"],
-          "env": {}
-        },
-        "aashari-mcp-server-atlassian-jira-stdio": {
-          "command": "npx",
-          "args": ["@aashari/mcp-server-atlassian-jira"],
-          "env": {
-            "TRANSPORT_MODE": "stdio"
-          }
-        },
-        "aashari-mcp-server-atlassian-jira-http": {
-          "command": "npx",
-          "args": ["@aashari/mcp-server-atlassian-jira"],
-          "env": {
-            "TRANSPORT_MODE": "http"
-          }
+      "aashari-mcp-server-atlassian-jira": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@aashari/mcp-server-atlassian-jira"
+        ],
+        "env": {}
+      },
+      "aashari-mcp-server-atlassian-jira-stdio": {
+        "command": "npx",
+        "args": [
+          "@aashari/mcp-server-atlassian-jira"
+        ],
+        "env": {
+          "TRANSPORT_MODE": "stdio"
+        }
+      },
+      "aashari-mcp-server-atlassian-jira-http": {
+        "command": "npx",
+        "args": [
+          "@aashari/mcp-server-atlassian-jira"
+        ],
+        "env": {
+          "TRANSPORT_MODE": "http"
         }
       }
     },

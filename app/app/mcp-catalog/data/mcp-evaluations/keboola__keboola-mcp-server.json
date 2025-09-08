@@ -8,16 +8,14 @@
     "name": "keboola"
   },
   "server": {
-    "type": "python",
-    "entry_point": "keboola_mcp_server",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["keboola_mcp_server"],
-      "env": {
-        "KBC_STORAGE_API_URL": "${user_config.kbc_storage_api_url}",
-        "KBC_STORAGE_TOKEN": "${user_config.kbc_storage_token}",
-        "KBC_WORKSPACE_SCHEMA": "${user_config.kbc_workspace_schema}"
-      }
+    "command": "uvx",
+    "args": [
+      "keboola_mcp_server"
+    ],
+    "env": {
+      "KBC_STORAGE_API_URL": "${user_config.kbc_storage_api_url}",
+      "KBC_STORAGE_TOKEN": "${user_config.kbc_storage_token}",
+      "KBC_WORKSPACE_SCHEMA": "${user_config.kbc_workspace_schema}"
     }
   },
   "tools": [],
@@ -49,29 +47,29 @@
   "quality_score": 69,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "keboola_mcp_server": {
-          "command": "uvx",
-          "args": ["keboola_mcp_server"],
-          "env": {
-            "KBC_STORAGE_API_URL": "https://connection.YOUR_REGION.keboola.com",
-            "KBC_STORAGE_TOKEN": "your_keboola_storage_token",
-            "KBC_WORKSPACE_SCHEMA": "your_workspace_schema"
-          }
-        },
-        "keboola_mcp_server-wsl": {
-          "command": "wsl.exe",
-          "args": [
-            "bash",
-            "-c '",
-            "export KBC_STORAGE_API_URL=https://connection.YOUR_REGION.keboola.com &&",
-            "export KBC_STORAGE_TOKEN=your_keboola_storage_token &&",
-            "export KBC"
-          ],
-          "env": {
-            "KBC_STORAGE_API_URL": "https://connection.YOUR_REGION.keboola.com",
-            "KBC_STORAGE_TOKEN": "your_keboola_storage_token"
-          }
+      "keboola_mcp_server": {
+        "command": "uvx",
+        "args": [
+          "keboola_mcp_server"
+        ],
+        "env": {
+          "KBC_STORAGE_API_URL": "https://connection.YOUR_REGION.keboola.com",
+          "KBC_STORAGE_TOKEN": "your_keboola_storage_token",
+          "KBC_WORKSPACE_SCHEMA": "your_workspace_schema"
+        }
+      },
+      "keboola_mcp_server-wsl": {
+        "command": "wsl.exe",
+        "args": [
+          "bash",
+          "-c '",
+          "export KBC_STORAGE_API_URL=https://connection.YOUR_REGION.keboola.com &&",
+          "export KBC_STORAGE_TOKEN=your_keboola_storage_token &&",
+          "export KBC"
+        ],
+        "env": {
+          "KBC_STORAGE_API_URL": "https://connection.YOUR_REGION.keboola.com",
+          "KBC_STORAGE_TOKEN": "your_keboola_storage_token"
         }
       }
     },

@@ -8,14 +8,12 @@
     "name": "Zolo-Ryan"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "MARKETAUX_API_KEY": "${user_config.marketaux_api_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "MARKETAUX_API_KEY": "${user_config.marketaux_api_key}"
     }
   },
   "tools": [],
@@ -35,13 +33,13 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "newsmcp": {
-          "command": "node",
-          "args": ["C:\\Path\\To\\Your\\project\\NewsMCP\\build\\index.js"],
-          "env": {
-            "MARKETAUX_API_KEY": "Your-API-TOKEN"
-          }
+      "newsmcp": {
+        "command": "node",
+        "args": [
+          "C:\\Path\\To\\Your\\project\\NewsMCP\\build\\index.js"
+        ],
+        "env": {
+          "MARKETAUX_API_KEY": "Your-API-TOKEN"
         }
       }
     },

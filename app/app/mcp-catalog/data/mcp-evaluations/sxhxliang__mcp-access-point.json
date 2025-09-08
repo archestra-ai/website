@@ -8,13 +8,12 @@
     "name": "sxhxliang"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-access-point",
-    "mcp_config": {
-      "command": "${__dirname}/mcp-access-point",
-      "args": ["-c", "${user_config.config_file}"],
-      "env": {}
-    }
+    "command": "${__dirname}/mcp-access-point",
+    "args": [
+      "-c",
+      "${user_config.config_file}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,12 +32,15 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-access-point-with-config": {
-          "command": "cargo",
-          "args": ["run", "--", "-c", "config.yaml"],
-          "env": {}
-        }
+      "mcp-access-point-with-config": {
+        "command": "cargo",
+        "args": [
+          "run",
+          "--",
+          "-c",
+          "config.yaml"
+        ],
+        "env": {}
       }
     },
     "oauth": {

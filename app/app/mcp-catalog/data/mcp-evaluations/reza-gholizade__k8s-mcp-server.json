@@ -8,19 +8,15 @@
     "name": "reza-gholizade"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "k8s-mcp-server",
-    "mcp_config": {
-      "command": "${__dirname}/k8s-mcp-server",
-      "args": [],
-      "env": {
-        "SERVER_MODE": "${user_config.server_mode}",
-        "SERVER_PORT": "${user_config.server_port}",
-        "KUBECONFIG": "${user_config.kubeconfig}",
-        "READ_ONLY": "${user_config.read_only}",
-        "NO_K8S": "${user_config.no_k8s}",
-        "NO_HELM": "${user_config.no_helm}"
-      }
+    "command": "${__dirname}/k8s-mcp-server",
+    "args": [],
+    "env": {
+      "SERVER_MODE": "${user_config.server_mode}",
+      "SERVER_PORT": "${user_config.server_port}",
+      "KUBECONFIG": "${user_config.kubeconfig}",
+      "READ_ONLY": "${user_config.read_only}",
+      "NO_K8S": "${user_config.no_k8s}",
+      "NO_HELM": "${user_config.no_helm}"
     }
   },
   "tools": [],
@@ -77,75 +73,82 @@
   "quality_score": 66,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "k8s-mcp-server-stdio": {
-          "command": "./k8s-mcp-server",
-          "args": ["--mode", "stdio"],
-          "env": {}
-        },
-        "k8s-mcp-server-sse-env": {
-          "command": "./k8s-mcp-server",
-          "args": [],
-          "env": {
-            "SERVER_MODE": "sse",
-            "SERVER_PORT": "9090"
-          }
-        },
-        "k8s-mcp-server-readonly-sse": {
-          "command": "./k8s-mcp-server",
-          "args": ["--mode", "sse", "--read-only"],
-          "env": {}
-        },
-        "ginnux-k8s-mcp-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-v",
-            "~/.kube/config:/home/appuser/.kube/config:ro",
-            "ginnux/k8s-mcp-server:latest"
-          ],
-          "env": {}
-        },
-        "ginnux-k8s-mcp-server-docker-stdio": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-v",
-            "~/.kube/config:/home/appuser/.kube/config:ro",
-            "ginnux/k8s-mcp-server:latest",
-            "--mode",
-            "stdio"
-          ],
-          "env": {}
-        },
-        "ginnux-k8s-mcp-server-docker-streamable-http-port-9090": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "9090:9090",
-            "-v",
-            "~/.kube/config:/home/appuser/.kube/config:ro",
-            "ginnux/k8s-mcp-server:latest",
-            "--mode",
-            "streamable-http",
-            "--port",
-            "9090"
-          ],
-          "env": {}
-        },
-        "ginnux-k8s-mcp-server-docker-compose": {
-          "command": "docker-compose",
-          "args": ["up"],
-          "env": {
-            "KUBECONFIG": "/home/appuser/.kube/config",
-            "SERVER_MODE": "sse",
-            "SERVER_PORT": "8"
-          }
+      "k8s-mcp-server-stdio": {
+        "command": "./k8s-mcp-server",
+        "args": [
+          "--mode",
+          "stdio"
+        ],
+        "env": {}
+      },
+      "k8s-mcp-server-sse-env": {
+        "command": "./k8s-mcp-server",
+        "args": [],
+        "env": {
+          "SERVER_MODE": "sse",
+          "SERVER_PORT": "9090"
+        }
+      },
+      "k8s-mcp-server-readonly-sse": {
+        "command": "./k8s-mcp-server",
+        "args": [
+          "--mode",
+          "sse",
+          "--read-only"
+        ],
+        "env": {}
+      },
+      "ginnux-k8s-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-v",
+          "~/.kube/config:/home/appuser/.kube/config:ro",
+          "ginnux/k8s-mcp-server:latest"
+        ],
+        "env": {}
+      },
+      "ginnux-k8s-mcp-server-docker-stdio": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-v",
+          "~/.kube/config:/home/appuser/.kube/config:ro",
+          "ginnux/k8s-mcp-server:latest",
+          "--mode",
+          "stdio"
+        ],
+        "env": {}
+      },
+      "ginnux-k8s-mcp-server-docker-streamable-http-port-9090": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "9090:9090",
+          "-v",
+          "~/.kube/config:/home/appuser/.kube/config:ro",
+          "ginnux/k8s-mcp-server:latest",
+          "--mode",
+          "streamable-http",
+          "--port",
+          "9090"
+        ],
+        "env": {}
+      },
+      "ginnux-k8s-mcp-server-docker-compose": {
+        "command": "docker-compose",
+        "args": [
+          "up"
+        ],
+        "env": {
+          "KUBECONFIG": "/home/appuser/.kube/config",
+          "SERVER_MODE": "sse",
+          "SERVER_PORT": "8"
         }
       }
     },

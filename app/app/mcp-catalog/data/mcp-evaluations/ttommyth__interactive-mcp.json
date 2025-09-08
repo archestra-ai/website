@@ -8,20 +8,16 @@
     "name": "ttommyth"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "interactive-mcp",
-        "-t",
-        "${user_config.timeout}",
-        "--disable-tools",
-        "${user_config.disable_tools}"
-      ],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "interactive-mcp",
+      "-t",
+      "${user_config.timeout}",
+      "--disable-tools",
+      "${user_config.disable_tools}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -47,39 +43,50 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "interactive-mcp": {
-          "command": "npx",
-          "args": ["-y", "interactive-mcp"],
-          "env": {}
-        },
-        "interactive-mcp-versioned": {
-          "command": "npx",
-          "args": ["-y", "interactive-mcp@1.9.0"],
-          "env": {}
-        },
-        "interactive-mcp-configured": {
-          "command": "npx",
-          "args": ["-y", "interactive-mcp", "-t", "30"],
-          "env": {}
-        },
-        "interactive-mcp-with-config": {
-          "command": "npx",
-          "args": [
-            "-y",
-            "interactive-mcp",
-            "-t",
-            "30",
-            "--disable-tools",
-            "message_complete_notification,intensive_chat"
-          ],
-          "env": {}
-        },
-        "interactive-mcp-dev": {
-          "command": "pnpm",
-          "args": ["start"],
-          "env": {}
-        }
+      "interactive-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "interactive-mcp"
+        ],
+        "env": {}
+      },
+      "interactive-mcp-versioned": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "interactive-mcp@1.9.0"
+        ],
+        "env": {}
+      },
+      "interactive-mcp-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "interactive-mcp",
+          "-t",
+          "30"
+        ],
+        "env": {}
+      },
+      "interactive-mcp-with-config": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "interactive-mcp",
+          "-t",
+          "30",
+          "--disable-tools",
+          "message_complete_notification,intensive_chat"
+        ],
+        "env": {}
+      },
+      "interactive-mcp-dev": {
+        "command": "pnpm",
+        "args": [
+          "start"
+        ],
+        "env": {}
       }
     },
     "oauth": {

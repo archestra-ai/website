@@ -8,15 +8,13 @@
     "name": "Rai220"
   },
   "server": {
-    "type": "python",
-    "entry_point": "__main__.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["think-mcp"],
-      "env": {
-        "ADVANCED_MODE": "${user_config.advanced_mode}",
-        "TAVILY_API_KEY": "${user_config.tavily_api_key}"
-      }
+    "command": "uvx",
+    "args": [
+      "think-mcp"
+    ],
+    "env": {
+      "ADVANCED_MODE": "${user_config.advanced_mode}",
+      "TAVILY_API_KEY": "${user_config.tavily_api_key}"
     }
   },
   "tools": [],
@@ -43,18 +41,21 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "think-mcp": {
-          "command": "uvx",
-          "args": ["think-mcp"],
-          "env": {}
-        },
-        "think-mcp-configured": {
-          "command": "uvx",
-          "args": ["think-mcp", "--advanced"],
-          "env": {
-            "TAVILY_API_KEY": "... YOUR TAVILY API KEY HERE ..."
-          }
+      "think-mcp": {
+        "command": "uvx",
+        "args": [
+          "think-mcp"
+        ],
+        "env": {}
+      },
+      "think-mcp-configured": {
+        "command": "uvx",
+        "args": [
+          "think-mcp",
+          "--advanced"
+        ],
+        "env": {
+          "TAVILY_API_KEY": "... YOUR TAVILY API KEY HERE ..."
         }
       }
     },

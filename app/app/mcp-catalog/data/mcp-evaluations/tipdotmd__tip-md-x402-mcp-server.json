@@ -8,20 +8,18 @@
     "name": "tipdotmd"
   },
   "server": {
-    "type": "node",
-    "entry_point": "dist/mcp-server/src/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/mcp-server/src/index.js"],
-      "env": {
-        "MONGODB_URI": "${user_config.mongodb_uri}",
-        "CDP_API_KEY_ID": "${user_config.cdp_api_key_id}",
-        "CDP_API_KEY_SECRET": "${user_config.cdp_api_key_secret}",
-        "X402_WALLET_PRIVATE_KEY": "${user_config.x402_wallet_private_key}",
-        "PORT": "${user_config.port}",
-        "NODE_ENV": "${user_config.node_env}",
-        "LOG_LEVEL": "${user_config.log_level}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/mcp-server/src/index.js"
+    ],
+    "env": {
+      "MONGODB_URI": "${user_config.mongodb_uri}",
+      "CDP_API_KEY_ID": "${user_config.cdp_api_key_id}",
+      "CDP_API_KEY_SECRET": "${user_config.cdp_api_key_secret}",
+      "X402_WALLET_PRIVATE_KEY": "${user_config.x402_wallet_private_key}",
+      "PORT": "${user_config.port}",
+      "NODE_ENV": "${user_config.node_env}",
+      "LOG_LEVEL": "${user_config.log_level}"
     }
   },
   "tools": [],
@@ -85,27 +83,31 @@
   "quality_score": 32,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "tip-md-demo": {
-          "command": "node",
-          "args": ["dist/mcp-server/src/index.js"],
-          "env": {
-            "NODE_ENV": "demo"
-          }
-        },
-        "tip-md-x402-mcp-server-demo-npm": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {
-            "NODE_ENV": "demo"
-          }
-        },
-        "tip-md-x402-mcp-server-production": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {
-            "NODE_ENV": "production"
-          }
+      "tip-md-demo": {
+        "command": "node",
+        "args": [
+          "dist/mcp-server/src/index.js"
+        ],
+        "env": {
+          "NODE_ENV": "demo"
+        }
+      },
+      "tip-md-x402-mcp-server-demo-npm": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {
+          "NODE_ENV": "demo"
+        }
+      },
+      "tip-md-x402-mcp-server-production": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {
+          "NODE_ENV": "production"
         }
       }
     },

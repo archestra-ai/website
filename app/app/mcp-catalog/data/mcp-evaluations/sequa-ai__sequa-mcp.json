@@ -8,13 +8,13 @@
     "name": "sequa-ai"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@sequa-ai/sequa-mcp@latest", "${user_config.sequa_mcp_url}"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@sequa-ai/sequa-mcp@latest",
+      "${user_config.sequa_mcp_url}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,12 +33,14 @@
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "sequa-ai-sequa-mcp": {
-          "command": "npx",
-          "args": ["-y", "@sequa-ai/sequa-mcp@latest", "https://mcp.sequa.ai/v1/setup-code-assistant"],
-          "env": {}
-        }
+      "sequa-ai-sequa-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@sequa-ai/sequa-mcp@latest",
+          "https://mcp.sequa.ai/v1/setup-code-assistant"
+        ],
+        "env": {}
       }
     },
     "oauth": {

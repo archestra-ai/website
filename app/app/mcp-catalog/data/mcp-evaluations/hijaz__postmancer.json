@@ -8,17 +8,16 @@
     "name": "hijaz"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "postmancer"],
-      "env": {
-        "COLLECTIONS_PATH": "${user_config.collections_path}",
-        "LOG_LEVEL": "${user_config.log_level}",
-        "POSTMANCER_ENCRYPTION_KEY": "${user_config.postmancer_encryption_key}",
-        "ENCRYPTION_KEY": "${user_config.encryption_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "postmancer"
+    ],
+    "env": {
+      "COLLECTIONS_PATH": "${user_config.collections_path}",
+      "LOG_LEVEL": "${user_config.log_level}",
+      "POSTMANCER_ENCRYPTION_KEY": "${user_config.postmancer_encryption_key}",
+      "ENCRYPTION_KEY": "${user_config.encryption_key}"
     }
   },
   "tools": [],
@@ -59,26 +58,27 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "postmancer": {
-          "command": "npx",
-          "args": ["-y", "postmancer"],
-          "env": {
-            "LOG_LEVEL": "info"
-          }
-        },
-        "postmancer-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "--mount",
-            "type=bind,src=/path/to/collections,dst=/data/collections",
-            "postmancer"
-          ],
-          "env": {}
+      "postmancer": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "postmancer"
+        ],
+        "env": {
+          "LOG_LEVEL": "info"
         }
+      },
+      "postmancer-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "--mount",
+          "type=bind,src=/path/to/collections,dst=/data/collections",
+          "postmancer"
+        ],
+        "env": {}
       }
     },
     "oauth": {

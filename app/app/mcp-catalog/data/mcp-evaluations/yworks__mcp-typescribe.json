@@ -8,13 +8,14 @@
     "name": "yWorks"
   },
   "server": {
-    "type": "node",
-    "entry_point": "dist/mcp-server/cli.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-typescribe@latest", "run-server", "${user_config.api_json_path}"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-typescribe@latest",
+      "run-server",
+      "${user_config.api_json_path}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -32,12 +33,15 @@
   "quality_score": 34,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-typescribe": {
-          "command": "npx",
-          "args": ["-y", "mcp-typescribe@latest", "run-server", "<PATH_TO_API_DOT_JSON>"],
-          "env": {}
-        }
+      "mcp-typescribe": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-typescribe@latest",
+          "run-server",
+          "<PATH_TO_API_DOT_JSON>"
+        ],
+        "env": {}
       }
     },
     "oauth": {

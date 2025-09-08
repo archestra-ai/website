@@ -8,14 +8,12 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/index.js"],
-      "env": {
-        "PRIVATE_KEY": "${user_config.private_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/index.js"
+    ],
+    "env": {
+      "PRIVATE_KEY": "${user_config.private_key}"
     }
   },
   "tools": [],
@@ -35,13 +33,13 @@
   "quality_score": 36,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "sui-trader": {
-          "command": "node",
-          "args": ["/absolute/path/to/sui-trader-mcp/index.js"],
-          "env": {
-            "PRIVATE_KEY": "your_private_key"
-          }
+      "sui-trader": {
+        "command": "node",
+        "args": [
+          "/absolute/path/to/sui-trader-mcp/index.js"
+        ],
+        "env": {
+          "PRIVATE_KEY": "your_private_key"
         }
       }
     },

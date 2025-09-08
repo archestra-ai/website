@@ -8,17 +8,18 @@
     "name": "Badhansen"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}/src", "run", "server.py"],
-      "env": {
-        "NOTION_TOKEN": "${user_config.notion_token}",
-        "PAGE_ID": "${user_config.page_id}",
-        "NOTION_VERSION": "${user_config.notion_version}",
-        "NOTION_BASE_URL": "${user_config.notion_base_url}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}/src",
+      "run",
+      "server.py"
+    ],
+    "env": {
+      "NOTION_TOKEN": "${user_config.notion_token}",
+      "PAGE_ID": "${user_config.page_id}",
+      "NOTION_VERSION": "${user_config.notion_version}",
+      "NOTION_BASE_URL": "${user_config.notion_base_url}"
     }
   },
   "tools": [],
@@ -59,12 +60,15 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "notion-mcp": {
-          "command": "uv",
-          "args": ["--directory", "/Users/username/Projects/Python/notion-mcp/src", "run", "server.py"],
-          "env": {}
-        }
+      "notion-mcp": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/Users/username/Projects/Python/notion-mcp/src",
+          "run",
+          "server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

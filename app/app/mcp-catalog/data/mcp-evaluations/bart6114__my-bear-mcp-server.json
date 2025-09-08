@@ -8,13 +8,14 @@
     "name": "bart6114"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "github:bart6114/my-bear-mcp-server", "--db-path", "${user_config.db_path}"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "github:bart6114/my-bear-mcp-server",
+      "--db-path",
+      "${user_config.db_path}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -32,22 +33,28 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "my-bear-mcp-server": {
-          "command": "npx",
-          "args": ["github:bart6114/my-bear-mcp-server"],
-          "env": {}
-        },
-        "my-bear-mcp-server-npm-start": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        },
-        "my-bear-mcp-server-configured": {
-          "command": "npx",
-          "args": ["github:bart6114/my-bear-mcp-server", "--db-path", "/path/to/your/database.sqlite"],
-          "env": {}
-        }
+      "my-bear-mcp-server": {
+        "command": "npx",
+        "args": [
+          "github:bart6114/my-bear-mcp-server"
+        ],
+        "env": {}
+      },
+      "my-bear-mcp-server-npm-start": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {}
+      },
+      "my-bear-mcp-server-configured": {
+        "command": "npx",
+        "args": [
+          "github:bart6114/my-bear-mcp-server",
+          "--db-path",
+          "/path/to/your/database.sqlite"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,28 +8,28 @@
     "name": "dbt-labs"
   },
   "server": {
-    "type": "python",
-    "entry_point": "dbt_mcp/main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["--env-file", "${user_config.env_file_path}", "dbt-mcp"],
-      "env": {
-        "DISABLE_DBT_CLI": "${user_config.disable_dbt_cli}",
-        "DISABLE_SEMANTIC_LAYER": "${user_config.disable_semantic_layer}",
-        "DISABLE_DISCOVERY": "${user_config.disable_discovery}",
-        "DISABLE_SQL": "${user_config.disable_sql}",
-        "DISABLE_TOOLS": "${user_config.disable_tools}",
-        "DBT_HOST": "${user_config.dbt_host}",
-        "MULTICELL_ACCOUNT_PREFIX": "${user_config.multicell_account_prefix}",
-        "DBT_TOKEN": "${user_config.dbt_token}",
-        "DBT_PROD_ENV_ID": "${user_config.dbt_prod_env_id}",
-        "DBT_DEV_ENV_ID": "${user_config.dbt_dev_env_id}",
-        "DBT_USER_ID": "${user_config.dbt_user_id}",
-        "DBT_PROJECT_DIR": "${user_config.dbt_project_dir}",
-        "DBT_PATH": "${user_config.dbt_path}",
-        "DBT_CLI_TIMEOUT": "${user_config.dbt_cli_timeout}",
-        "DBT_WARN_ERROR_OPTIONS": "${user_config.dbt_warn_error_options}"
-      }
+    "command": "uvx",
+    "args": [
+      "--env-file",
+      "${user_config.env_file_path}",
+      "dbt-mcp"
+    ],
+    "env": {
+      "DISABLE_DBT_CLI": "${user_config.disable_dbt_cli}",
+      "DISABLE_SEMANTIC_LAYER": "${user_config.disable_semantic_layer}",
+      "DISABLE_DISCOVERY": "${user_config.disable_discovery}",
+      "DISABLE_SQL": "${user_config.disable_sql}",
+      "DISABLE_TOOLS": "${user_config.disable_tools}",
+      "DBT_HOST": "${user_config.dbt_host}",
+      "MULTICELL_ACCOUNT_PREFIX": "${user_config.multicell_account_prefix}",
+      "DBT_TOKEN": "${user_config.dbt_token}",
+      "DBT_PROD_ENV_ID": "${user_config.dbt_prod_env_id}",
+      "DBT_DEV_ENV_ID": "${user_config.dbt_dev_env_id}",
+      "DBT_USER_ID": "${user_config.dbt_user_id}",
+      "DBT_PROJECT_DIR": "${user_config.dbt_project_dir}",
+      "DBT_PATH": "${user_config.dbt_path}",
+      "DBT_CLI_TIMEOUT": "${user_config.dbt_cli_timeout}",
+      "DBT_WARN_ERROR_OPTIONS": "${user_config.dbt_warn_error_options}"
     }
   },
   "tools": [],
@@ -148,12 +148,14 @@
   "quality_score": 73,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "dbt-mcp": {
-          "command": "uvx",
-          "args": ["--env-file", "<path-to-.env-file>", "dbt-mcp"],
-          "env": {}
-        }
+      "dbt-mcp": {
+        "command": "uvx",
+        "args": [
+          "--env-file",
+          "<path-to-.env-file>",
+          "dbt-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,20 +8,16 @@
     "name": "sammcj"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-package-version",
-    "mcp_config": {
-      "command": "${__dirname}/server/mcp-package-version",
-      "args": [
-        "--transport",
-        "${user_config.transport}",
-        "--port",
-        "${user_config.port}",
-        "--base-url",
-        "${user_config.base_url}"
-      ],
-      "env": {}
-    }
+    "command": "${__dirname}/server/mcp-package-version",
+    "args": [
+      "--transport",
+      "${user_config.transport}",
+      "--port",
+      "${user_config.port}",
+      "--base-url",
+      "${user_config.base_url}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -56,27 +52,37 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-package-version-stdio": {
-          "command": "mcp-package-version",
-          "args": [],
-          "env": {}
-        },
-        "mcp-package-version-sse": {
-          "command": "mcp-package-version",
-          "args": ["--transport", "sse", "--port", "18080", "--base-url", "http://localhost:18080"],
-          "env": {}
-        },
-        "mcp-package-version-configured": {
-          "command": "/Users/sammcj/go/bin/mcp-package-version",
-          "args": [],
-          "env": {}
-        },
-        "mcp-package-version-docker": {
-          "command": "docker",
-          "args": ["run", "-p", "18080:18080", "ghcr.io/sammcj/mcp-package-version:main"],
-          "env": {}
-        }
+      "mcp-package-version-stdio": {
+        "command": "mcp-package-version",
+        "args": [],
+        "env": {}
+      },
+      "mcp-package-version-sse": {
+        "command": "mcp-package-version",
+        "args": [
+          "--transport",
+          "sse",
+          "--port",
+          "18080",
+          "--base-url",
+          "http://localhost:18080"
+        ],
+        "env": {}
+      },
+      "mcp-package-version-configured": {
+        "command": "/Users/sammcj/go/bin/mcp-package-version",
+        "args": [],
+        "env": {}
+      },
+      "mcp-package-version-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "18080:18080",
+          "ghcr.io/sammcj/mcp-package-version:main"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,13 @@
     "name": "exoticknight"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@exoticknight/mcp-file-merger", "${user_config.allowed_directories}"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@exoticknight/mcp-file-merger",
+      "${user_config.allowed_directories}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,12 +33,14 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "file-merger": {
-          "command": "npx",
-          "args": ["-y", "@exoticknight/mcp-file-merger", "/path/to/allowed/dir"],
-          "env": {}
-        }
+      "file-merger": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@exoticknight/mcp-file-merger",
+          "/path/to/allowed/dir"
+        ],
+        "env": {}
       }
     },
     "oauth": {

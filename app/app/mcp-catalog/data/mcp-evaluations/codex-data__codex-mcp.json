@@ -8,14 +8,13 @@
     "name": "Codex-Data"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@codex-data/codex-mcp"],
-      "env": {
-        "CODEX_API_KEY": "${user_config.codex_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@codex-data/codex-mcp"
+    ],
+    "env": {
+      "CODEX_API_KEY": "${user_config.codex_api_key}"
     }
   },
   "tools": [],
@@ -35,32 +34,39 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "codex-data-codex-mcp-stdio": {
-          "command": "npx",
-          "args": ["@codex-data/codex-mcp"],
-          "env": {}
-        },
-        "codex-data-codex-mcp-configured": {
-          "command": "npx",
-          "args": ["-y", "@codex-data/codex-mcp"],
-          "env": {
-            "CODEX_API_KEY": "<your-codex-api-key>"
-          }
-        },
-        "codex-data-codex-mcp-local-configured": {
-          "command": "node",
-          "args": ["/path/to/codex-mcp/build/index.js"],
-          "env": {
-            "CODEX_API_KEY": "<your-codex-api-key>"
-          }
-        },
-        "codex-data-codex-mcp-cli-configured": {
-          "command": "npx",
-          "args": ["@codex-data/codex-mcp"],
-          "env": {
-            "CODEX_API_KEY": "<your-codex-api-key>"
-          }
+      "codex-data-codex-mcp-stdio": {
+        "command": "npx",
+        "args": [
+          "@codex-data/codex-mcp"
+        ],
+        "env": {}
+      },
+      "codex-data-codex-mcp-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@codex-data/codex-mcp"
+        ],
+        "env": {
+          "CODEX_API_KEY": "<your-codex-api-key>"
+        }
+      },
+      "codex-data-codex-mcp-local-configured": {
+        "command": "node",
+        "args": [
+          "/path/to/codex-mcp/build/index.js"
+        ],
+        "env": {
+          "CODEX_API_KEY": "<your-codex-api-key>"
+        }
+      },
+      "codex-data-codex-mcp-cli-configured": {
+        "command": "npx",
+        "args": [
+          "@codex-data/codex-mcp"
+        ],
+        "env": {
+          "CODEX_API_KEY": "<your-codex-api-key>"
         }
       }
     },

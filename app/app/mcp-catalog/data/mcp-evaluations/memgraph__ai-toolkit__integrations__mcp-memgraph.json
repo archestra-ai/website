@@ -8,18 +8,21 @@
     "name": "memgraph"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp-memgraph",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "--with", "mcp-memgraph", "--python", "3.13", "mcp-memgraph"],
-      "env": {
-        "MEMGRAPH_URL": "${user_config.memgraph_url}",
-        "MEMGRAPH_USER": "${user_config.memgraph_user}",
-        "MEMGRAPH_PASSWORD": "${user_config.memgraph_password}",
-        "MEMGRAPH_DATABASE": "${user_config.memgraph_database}",
-        "MCP_TRANSPORT": "${user_config.mcp_transport}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "mcp-memgraph",
+      "--python",
+      "3.13",
+      "mcp-memgraph"
+    ],
+    "env": {
+      "MEMGRAPH_URL": "${user_config.memgraph_url}",
+      "MEMGRAPH_USER": "${user_config.memgraph_user}",
+      "MEMGRAPH_PASSWORD": "${user_config.memgraph_password}",
+      "MEMGRAPH_DATABASE": "${user_config.memgraph_database}",
+      "MCP_TRANSPORT": "${user_config.mcp_transport}"
     }
   },
   "tools": [],
@@ -68,67 +71,83 @@
   "quality_score": 64,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-memgraph": {
-          "command": "uv",
-          "args": ["run", "--with", "mcp-memgraph", "--python", "3.13", "mcp-memgraph"],
-          "env": {}
-        },
-        "mcp-memgraph-docker": {
-          "command": "docker",
-          "args": ["run", "--rm", "mcp-memgraph:latest"],
-          "env": {}
-        },
-        "mcp-memgraph-docker-stdio": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "-e", "MCP_TRANSPORT=stdio", "mcp-memgraph:latest"],
-          "env": {
-            "MCP_TRANSPORT": "stdio"
-          }
-        },
-        "mcp-memgraph-docker-configured": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-p",
-            "8000:8000",
-            "-e",
-            "MEMGRAPH_URL=bolt://memgraph:7687",
-            "-e",
-            "MEMGRAPH_USER=myuser",
-            "-e",
-            "MEMGRAPH_PASSWORD=password",
-            "mcp-memgraph:latest"
-          ],
-          "env": {
-            "MEMGRAPH_URL": "bolt://memgraph:7687",
-            "MEMGRAPH_USER": "myuser",
-            "MEMGRAPH_PASSWORD": "password"
-          }
-        },
-        "mcp-memgraph-docker-stdio-configured": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "-e",
-            "MCP_TRANSPORT=stdio",
-            "-e",
-            "MEMGRAPH_URL=bolt://memgraph:7687",
-            "-e",
-            "MEMGRAPH_USER=myuser",
-            "-e",
-            "MEMGRAPH_PASSWORD=mypassword",
-            "mcp-memgraph:latest"
-          ],
-          "env": {
-            "MCP_TRANSPORT": "stdio",
-            "MEMGRAPH_URL": "bolt://memgraph:7687",
-            "MEMGRAPH_USER": "myuser",
-            "MEMGRAPH_PASSWORD": "mypassword"
-          }
+      "mcp-memgraph": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--with",
+          "mcp-memgraph",
+          "--python",
+          "3.13",
+          "mcp-memgraph"
+        ],
+        "env": {}
+      },
+      "mcp-memgraph-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "mcp-memgraph:latest"
+        ],
+        "env": {}
+      },
+      "mcp-memgraph-docker-stdio": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "-e",
+          "MCP_TRANSPORT=stdio",
+          "mcp-memgraph:latest"
+        ],
+        "env": {
+          "MCP_TRANSPORT": "stdio"
+        }
+      },
+      "mcp-memgraph-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-p",
+          "8000:8000",
+          "-e",
+          "MEMGRAPH_URL=bolt://memgraph:7687",
+          "-e",
+          "MEMGRAPH_USER=myuser",
+          "-e",
+          "MEMGRAPH_PASSWORD=password",
+          "mcp-memgraph:latest"
+        ],
+        "env": {
+          "MEMGRAPH_URL": "bolt://memgraph:7687",
+          "MEMGRAPH_USER": "myuser",
+          "MEMGRAPH_PASSWORD": "password"
+        }
+      },
+      "mcp-memgraph-docker-stdio-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "-e",
+          "MCP_TRANSPORT=stdio",
+          "-e",
+          "MEMGRAPH_URL=bolt://memgraph:7687",
+          "-e",
+          "MEMGRAPH_USER=myuser",
+          "-e",
+          "MEMGRAPH_PASSWORD=mypassword",
+          "mcp-memgraph:latest"
+        ],
+        "env": {
+          "MCP_TRANSPORT": "stdio",
+          "MEMGRAPH_URL": "bolt://memgraph:7687",
+          "MEMGRAPH_USER": "myuser",
+          "MEMGRAPH_PASSWORD": "mypassword"
         }
       }
     },

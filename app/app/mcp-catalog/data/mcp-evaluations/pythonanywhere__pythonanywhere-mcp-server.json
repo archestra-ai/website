@@ -8,15 +8,13 @@
     "name": "pythonanywhere"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["pythonanywhere-mcp-server"],
-      "env": {
-        "API_TOKEN": "${user_config.api_token}",
-        "LOGNAME": "${user_config.logname}"
-      }
+    "command": "uvx",
+    "args": [
+      "pythonanywhere-mcp-server"
+    ],
+    "env": {
+      "API_TOKEN": "${user_config.api_token}",
+      "LOGNAME": "${user_config.logname}"
     }
   },
   "tools": [],
@@ -43,14 +41,14 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "pythonanywhere-mcp-server": {
-          "command": "uvx",
-          "args": ["pythonanywhere-mcp-server"],
-          "env": {
-            "API_TOKEN": "yourpythonanywhereapitoken",
-            "LOGNAME": "yourpythonanywhereusername"
-          }
+      "pythonanywhere-mcp-server": {
+        "command": "uvx",
+        "args": [
+          "pythonanywhere-mcp-server"
+        ],
+        "env": {
+          "API_TOKEN": "yourpythonanywhereapitoken",
+          "LOGNAME": "yourpythonanywhereusername"
         }
       }
     },

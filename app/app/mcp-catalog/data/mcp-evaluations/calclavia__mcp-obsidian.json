@@ -8,13 +8,13 @@
     "name": "calclavia"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-obsidian", "${user_config.vault_path}"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-obsidian",
+      "${user_config.vault_path}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -32,12 +32,14 @@
   "quality_score": 67,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-obsidian": {
-          "command": "npx",
-          "args": ["-y", "mcp-obsidian", "${input:vaultPath}"],
-          "env": {}
-        }
+      "mcp-obsidian": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-obsidian",
+          "${input:vaultPath}"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,14 @@
     "name": "longevity-genie"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["synergy-age-mcp", "server", "--port", "${user_config.port}"],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "synergy-age-mcp",
+      "server",
+      "--port",
+      "${user_config.port}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,22 +34,28 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "synergy-age-mcp": {
-          "command": "uvx",
-          "args": ["synergy-age-mcp"],
-          "env": {}
-        },
-        "synergy-age-mcp-stdio": {
-          "command": "uvx",
-          "args": ["synergy-age-mcp", "stdio"],
-          "env": {}
-        },
-        "synergy-age-mcp-server": {
-          "command": "uvx",
-          "args": ["synergy-age-mcp", "server"],
-          "env": {}
-        }
+      "synergy-age-mcp": {
+        "command": "uvx",
+        "args": [
+          "synergy-age-mcp"
+        ],
+        "env": {}
+      },
+      "synergy-age-mcp-stdio": {
+        "command": "uvx",
+        "args": [
+          "synergy-age-mcp",
+          "stdio"
+        ],
+        "env": {}
+      },
+      "synergy-age-mcp-server": {
+        "command": "uvx",
+        "args": [
+          "synergy-age-mcp",
+          "server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

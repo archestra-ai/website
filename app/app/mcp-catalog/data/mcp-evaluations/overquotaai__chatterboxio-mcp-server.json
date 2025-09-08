@@ -8,15 +8,13 @@
     "name": "OverQuotaAI"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "pnpm",
-      "args": ["start"],
-      "env": {
-        "CHATTERBOX_API_ENDPOINT": "${user_config.chatterbox_api_endpoint}",
-        "CHATTERBOX_API_KEY": "${user_config.chatterbox_api_key}"
-      }
+    "command": "pnpm",
+    "args": [
+      "start"
+    ],
+    "env": {
+      "CHATTERBOX_API_ENDPOINT": "${user_config.chatterbox_api_endpoint}",
+      "CHATTERBOX_API_KEY": "${user_config.chatterbox_api_key}"
     }
   },
   "tools": [],
@@ -44,14 +42,14 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "OverQuotaAI-chatterboxio-mcp-server": {
-          "command": "pnpm",
-          "args": ["start"],
-          "env": {
-            "CHATTERBOX_API_ENDPOINT": "https://api.chatter-box.io",
-            "CHATTERBOX_API_KEY": "your_api_key_here"
-          }
+      "OverQuotaAI-chatterboxio-mcp-server": {
+        "command": "pnpm",
+        "args": [
+          "start"
+        ],
+        "env": {
+          "CHATTERBOX_API_ENDPOINT": "https://api.chatter-box.io",
+          "CHATTERBOX_API_KEY": "your_api_key_here"
         }
       }
     },

@@ -8,15 +8,13 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/index.js"],
-      "env": {
-        "WS_ENDPOINT": "${user_config.ws_endpoint}",
-        "RPC_ENDPOINT": "${user_config.rpc_endpoint}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/index.js"
+    ],
+    "env": {
+      "WS_ENDPOINT": "${user_config.ws_endpoint}",
+      "RPC_ENDPOINT": "${user_config.rpc_endpoint}"
     }
   },
   "tools": [],
@@ -41,14 +39,14 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "binance-alpha-mcp": {
-          "command": "node",
-          "args": ["/absolute/path/to/binance-alpha-mcp/index.js"],
-          "env": {
-            "WS_ENDPOINT": "your_ws_endpoint_url",
-            "RPC_ENDPOINT": "your_rpc_endpoint_url"
-          }
+      "binance-alpha-mcp": {
+        "command": "node",
+        "args": [
+          "/absolute/path/to/binance-alpha-mcp/index.js"
+        ],
+        "env": {
+          "WS_ENDPOINT": "your_ws_endpoint_url",
+          "RPC_ENDPOINT": "your_rpc_endpoint_url"
         }
       }
     },

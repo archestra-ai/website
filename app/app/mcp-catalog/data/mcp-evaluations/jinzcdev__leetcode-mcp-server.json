@@ -8,15 +8,14 @@
     "name": "jinzcdev"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@jinzcdev/leetcode-mcp-server"],
-      "env": {
-        "LEETCODE_SITE": "${user_config.leetcode_site}",
-        "LEETCODE_SESSION": "${user_config.leetcode_session}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@jinzcdev/leetcode-mcp-server"
+    ],
+    "env": {
+      "LEETCODE_SITE": "${user_config.leetcode_site}",
+      "LEETCODE_SESSION": "${user_config.leetcode_session}"
     }
   },
   "tools": [],
@@ -43,49 +42,59 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "jinzcdev-leetcode-mcp-server-npx-global": {
-          "command": "npx",
-          "args": ["-y", "@jinzcdev/leetcode-mcp-server", "--site", "global"],
-          "env": {}
-        },
-        "jinzcdev-leetcode-mcp-server-npx-authenticated": {
-          "command": "npx",
-          "args": [
-            "-y",
-            "@jinzcdev/leetcode-mcp-server",
-            "--site",
-            "global",
-            "--session",
-            "<YOUR_LEETCODE_SESSION_COOKIE>"
-          ],
-          "env": {}
-        },
-        "jinzcdev-leetcode-mcp-server-node-build": {
-          "command": "node",
-          "args": ["build/index.js", "--site", "global"],
-          "env": {}
-        },
-        "jinzcdev-leetcode-mcp-server-stdio-env-config": {
-          "command": "npx",
-          "args": ["-y", "@jinzcdev/leetcode-mcp-server"],
-          "env": {
-            "LEETCODE_SITE": "global",
-            "LEETCODE_SESSION": "<YOUR_LEETCODE_SESSION_COOKIE>"
-          }
-        },
-        "jinzcdev-leetcode-mcp-server-stdio-args-config": {
-          "command": "npx",
-          "args": [
-            "-y",
-            "@jinzcdev/leetcode-mcp-server",
-            "--site",
-            "global",
-            "--session",
-            "<YOUR_LEETCODE_SESSION_COOKIE>"
-          ],
-          "env": {}
+      "jinzcdev-leetcode-mcp-server-npx-global": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@jinzcdev/leetcode-mcp-server",
+          "--site",
+          "global"
+        ],
+        "env": {}
+      },
+      "jinzcdev-leetcode-mcp-server-npx-authenticated": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@jinzcdev/leetcode-mcp-server",
+          "--site",
+          "global",
+          "--session",
+          "<YOUR_LEETCODE_SESSION_COOKIE>"
+        ],
+        "env": {}
+      },
+      "jinzcdev-leetcode-mcp-server-node-build": {
+        "command": "node",
+        "args": [
+          "build/index.js",
+          "--site",
+          "global"
+        ],
+        "env": {}
+      },
+      "jinzcdev-leetcode-mcp-server-stdio-env-config": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@jinzcdev/leetcode-mcp-server"
+        ],
+        "env": {
+          "LEETCODE_SITE": "global",
+          "LEETCODE_SESSION": "<YOUR_LEETCODE_SESSION_COOKIE>"
         }
+      },
+      "jinzcdev-leetcode-mcp-server-stdio-args-config": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@jinzcdev/leetcode-mcp-server",
+          "--site",
+          "global",
+          "--session",
+          "<YOUR_LEETCODE_SESSION_COOKIE>"
+        ],
+        "env": {}
       }
     },
     "oauth": {

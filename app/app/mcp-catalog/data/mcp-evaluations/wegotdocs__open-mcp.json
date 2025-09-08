@@ -8,14 +8,13 @@
     "name": "wegotdocs"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@open-mcp/{server-id}"],
-      "env": {
-        "ENV_VAR": "${user_config.env_var}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@open-mcp/{server-id}"
+    ],
+    "env": {
+      "ENV_VAR": "${user_config.env_var}"
     }
   },
   "tools": [],
@@ -34,9 +33,7 @@
   "category": "AI Tools",
   "quality_score": 51,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

@@ -8,13 +8,11 @@
     "name": "securityfortech"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/main.py"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "${__dirname}/main.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,22 @@
   "quality_score": 36,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "secops-mcp-docker": {
-          "command": "docker",
-          "args": ["run", "-it", "--rm", "secops-mcp"],
-          "env": {}
-        },
-        "secops-mcp": {
-          "command": "python",
-          "args": ["main.py"],
-          "env": {}
-        }
+      "secops-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-it",
+          "--rm",
+          "secops-mcp"
+        ],
+        "env": {}
+      },
+      "secops-mcp": {
+        "command": "python",
+        "args": [
+          "main.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

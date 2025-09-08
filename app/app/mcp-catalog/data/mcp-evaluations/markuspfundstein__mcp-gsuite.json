@@ -8,22 +8,18 @@
     "name": "MarkusPfundstein"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp-gsuite",
-    "mcp_config": {
-      "command": "uv",
-      "args": [
-        "run",
-        "mcp-gsuite",
-        "--gauth-file",
-        "${user_config.gauth_file}",
-        "--accounts-file",
-        "${user_config.accounts_file}",
-        "--credentials-dir",
-        "${user_config.credentials_dir}"
-      ],
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "run",
+      "mcp-gsuite",
+      "--gauth-file",
+      "${user_config.gauth_file}",
+      "--accounts-file",
+      "${user_config.accounts_file}",
+      "--credentials-dir",
+      "${user_config.credentials_dir}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -56,56 +52,66 @@
   "quality_score": 64,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-gsuite-dev": {
-          "command": "uv",
-          "args": ["--directory", "<dir_to>/mcp-gsuite", "run", "mcp-gsuite"],
-          "env": {}
-        },
-        "mcp-gsuite-dev-custom-paths": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "<dir_to>/mcp-gsuite",
-            "run",
-            "mcp-gsuite",
-            "--accounts-file",
-            "/path/to/custom/.accounts.json",
-            "--credentials-dir",
-            "/path/to/custom/credentials"
-          ],
-          "env": {}
-        },
-        "mcp-gsuite-published-custom-paths": {
-          "command": "uvx",
-          "args": [
-            "mcp-gsuite",
-            "--accounts-file",
-            "/path/to/custom/.accounts.json",
-            "--credentials-dir",
-            "/path/to/custom/credentials"
-          ],
-          "env": {}
-        },
-        "mcp-gsuite-cli-full-config": {
-          "command": "uv",
-          "args": [
-            "run",
-            "mcp-gsuite",
-            "--gauth-file",
-            "/path/to/custom/.gauth.json",
-            "--accounts-file",
-            "/path/to/custom/.accounts.json",
-            "--credentials-dir",
-            "/path/to/custom/credentials"
-          ],
-          "env": {}
-        },
-        "modelcontextprotocol-inspector-mcp-gsuite": {
-          "command": "npx",
-          "args": ["@modelcontextprotocol/inspector", "uv", "--directory", "/path/to/mcp-gsuite", "run", "mcp-gsuite"],
-          "env": {}
-        }
+      "mcp-gsuite-dev": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "<dir_to>/mcp-gsuite",
+          "run",
+          "mcp-gsuite"
+        ],
+        "env": {}
+      },
+      "mcp-gsuite-dev-custom-paths": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "<dir_to>/mcp-gsuite",
+          "run",
+          "mcp-gsuite",
+          "--accounts-file",
+          "/path/to/custom/.accounts.json",
+          "--credentials-dir",
+          "/path/to/custom/credentials"
+        ],
+        "env": {}
+      },
+      "mcp-gsuite-published-custom-paths": {
+        "command": "uvx",
+        "args": [
+          "mcp-gsuite",
+          "--accounts-file",
+          "/path/to/custom/.accounts.json",
+          "--credentials-dir",
+          "/path/to/custom/credentials"
+        ],
+        "env": {}
+      },
+      "mcp-gsuite-cli-full-config": {
+        "command": "uv",
+        "args": [
+          "run",
+          "mcp-gsuite",
+          "--gauth-file",
+          "/path/to/custom/.gauth.json",
+          "--accounts-file",
+          "/path/to/custom/.accounts.json",
+          "--credentials-dir",
+          "/path/to/custom/credentials"
+        ],
+        "env": {}
+      },
+      "modelcontextprotocol-inspector-mcp-gsuite": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "uv",
+          "--directory",
+          "/path/to/mcp-gsuite",
+          "run",
+          "mcp-gsuite"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,17 +8,13 @@
     "name": "neo4j-contrib"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-neo4j-cypher",
-    "mcp_config": {
-      "command": "mcp-neo4j-cypher",
-      "args": [],
-      "env": {
-        "NEO4J_TRANSPORT": "${user_config.neo4j_transport}",
-        "NEO4J_MCP_SERVER_HOST": "${user_config.neo4j_mcp_server_host}",
-        "NEO4J_MCP_SERVER_PORT": "${user_config.neo4j_mcp_server_port}",
-        "NEO4J_MCP_SERVER_PATH": "${user_config.neo4j_mcp_server_path}"
-      }
+    "command": "mcp-neo4j-cypher",
+    "args": [],
+    "env": {
+      "NEO4J_TRANSPORT": "${user_config.neo4j_transport}",
+      "NEO4J_MCP_SERVER_HOST": "${user_config.neo4j_mcp_server_host}",
+      "NEO4J_MCP_SERVER_PORT": "${user_config.neo4j_mcp_server_port}",
+      "NEO4J_MCP_SERVER_PATH": "${user_config.neo4j_mcp_server_path}"
     }
   },
   "tools": [],
@@ -59,106 +55,152 @@
   "quality_score": 74,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-neo4j-cypher-stdio": {
-          "command": "mcp-neo4j-cypher",
-          "args": [],
-          "env": {}
-        },
-        "mcp-neo4j-cypher-http": {
-          "command": "mcp-neo4j-cypher",
-          "args": ["--transport", "http"],
-          "env": {}
-        },
-        "mcp-neo4j-cypher-http-configured": {
-          "command": "mcp-neo4j-cypher",
-          "args": ["--transport", "http", "--host", "0.0.0.0", "--port", "8080", "--path", "/api/mcp/"],
-          "env": {}
-        },
-        "mcp-neo4j-cypher-http-env": {
-          "command": "mcp-neo4j-cypher",
-          "args": [],
-          "env": {
-            "NEO4J_TRANSPORT": "http",
-            "NEO4J_MCP_SERVER_HOST": "0.0.0.0",
-            "NEO4J_MCP_SERVER_PORT": "8080",
-            "NEO4J_MCP_SERVER_PATH": "/api/mcp/"
-          }
-        },
-        "mcp-neo4j-memory-stdio": {
-          "command": "mcp-neo4j-memory",
-          "args": [],
-          "env": {}
-        },
-        "mcp-neo4j-memory-http": {
-          "command": "mcp-neo4j-memory",
-          "args": ["--transport", "http"],
-          "env": {}
-        },
-        "mcp-neo4j-memory-http-configured": {
-          "command": "mcp-neo4j-memory",
-          "args": ["--transport", "http", "--host", "0.0.0.0", "--port", "8080", "--path", "/api/mcp/"],
-          "env": {}
-        },
-        "mcp-neo4j-memory-http-env": {
-          "command": "mcp-neo4j-memory",
-          "args": [],
-          "env": {
-            "NEO4J_TRANSPORT": "http",
-            "NEO4J_MCP_SERVER_HOST": "0.0.0.0",
-            "NEO4J_MCP_SERVER_PORT": "8080",
-            "NEO4J_MCP_SERVER_PATH": "/api/mcp/"
-          }
-        },
-        "mcp-neo4j-cloud-aura-api-stdio": {
-          "command": "mcp-neo4j-cloud-aura-api",
-          "args": [],
-          "env": {}
-        },
-        "mcp-neo4j-cloud-aura-api-http": {
-          "command": "mcp-neo4j-cloud-aura-api",
-          "args": ["--transport", "http"],
-          "env": {}
-        },
-        "mcp-neo4j-cloud-aura-api-http-configured": {
-          "command": "mcp-neo4j-cloud-aura-api",
-          "args": ["--transport", "http", "--host", "0.0.0.0", "--port", "8080", "--path", "/api/mcp/"],
-          "env": {}
-        },
-        "mcp-neo4j-cloud-aura-api-http-env": {
-          "command": "mcp-neo4j-cloud-aura-api",
-          "args": [],
-          "env": {
-            "NEO4J_TRANSPORT": "http",
-            "NEO4J_MCP_SERVER_HOST": "0.0.0.0",
-            "NEO4J_MCP_SERVER_PORT": "8080",
-            "NEO4J_MCP_SERVER_PATH": "/api/mcp/"
-          }
-        },
-        "mcp-neo4j-data-modeling-stdio": {
-          "command": "mcp-neo4j-data-modeling",
-          "args": [],
-          "env": {}
-        },
-        "mcp-neo4j-data-modeling-http": {
-          "command": "mcp-neo4j-data-modeling",
-          "args": ["--transport", "http"],
-          "env": {}
-        },
-        "mcp-neo4j-data-modeling-http-configured": {
-          "command": "mcp-neo4j-data-modeling",
-          "args": ["--transport", "http", "--host", "0.0.0.0", "--port", "8080", "--path", "/api/mcp/"],
-          "env": {}
-        },
-        "mcp-neo4j-data-modeling-http-env": {
-          "command": "mcp-neo4j-data-modeling",
-          "args": [],
-          "env": {
-            "NEO4J_TRANSPORT": "http",
-            "NEO4J_MCP_SERVER_HOST": "0.0.0.0",
-            "NEO4J_MCP_SERVER_PORT": "8080",
-            "NEO4J_MCP_SERVER_PATH": "/api/mcp/"
-          }
+      "mcp-neo4j-cypher-stdio": {
+        "command": "mcp-neo4j-cypher",
+        "args": [],
+        "env": {}
+      },
+      "mcp-neo4j-cypher-http": {
+        "command": "mcp-neo4j-cypher",
+        "args": [
+          "--transport",
+          "http"
+        ],
+        "env": {}
+      },
+      "mcp-neo4j-cypher-http-configured": {
+        "command": "mcp-neo4j-cypher",
+        "args": [
+          "--transport",
+          "http",
+          "--host",
+          "0.0.0.0",
+          "--port",
+          "8080",
+          "--path",
+          "/api/mcp/"
+        ],
+        "env": {}
+      },
+      "mcp-neo4j-cypher-http-env": {
+        "command": "mcp-neo4j-cypher",
+        "args": [],
+        "env": {
+          "NEO4J_TRANSPORT": "http",
+          "NEO4J_MCP_SERVER_HOST": "0.0.0.0",
+          "NEO4J_MCP_SERVER_PORT": "8080",
+          "NEO4J_MCP_SERVER_PATH": "/api/mcp/"
+        }
+      },
+      "mcp-neo4j-memory-stdio": {
+        "command": "mcp-neo4j-memory",
+        "args": [],
+        "env": {}
+      },
+      "mcp-neo4j-memory-http": {
+        "command": "mcp-neo4j-memory",
+        "args": [
+          "--transport",
+          "http"
+        ],
+        "env": {}
+      },
+      "mcp-neo4j-memory-http-configured": {
+        "command": "mcp-neo4j-memory",
+        "args": [
+          "--transport",
+          "http",
+          "--host",
+          "0.0.0.0",
+          "--port",
+          "8080",
+          "--path",
+          "/api/mcp/"
+        ],
+        "env": {}
+      },
+      "mcp-neo4j-memory-http-env": {
+        "command": "mcp-neo4j-memory",
+        "args": [],
+        "env": {
+          "NEO4J_TRANSPORT": "http",
+          "NEO4J_MCP_SERVER_HOST": "0.0.0.0",
+          "NEO4J_MCP_SERVER_PORT": "8080",
+          "NEO4J_MCP_SERVER_PATH": "/api/mcp/"
+        }
+      },
+      "mcp-neo4j-cloud-aura-api-stdio": {
+        "command": "mcp-neo4j-cloud-aura-api",
+        "args": [],
+        "env": {}
+      },
+      "mcp-neo4j-cloud-aura-api-http": {
+        "command": "mcp-neo4j-cloud-aura-api",
+        "args": [
+          "--transport",
+          "http"
+        ],
+        "env": {}
+      },
+      "mcp-neo4j-cloud-aura-api-http-configured": {
+        "command": "mcp-neo4j-cloud-aura-api",
+        "args": [
+          "--transport",
+          "http",
+          "--host",
+          "0.0.0.0",
+          "--port",
+          "8080",
+          "--path",
+          "/api/mcp/"
+        ],
+        "env": {}
+      },
+      "mcp-neo4j-cloud-aura-api-http-env": {
+        "command": "mcp-neo4j-cloud-aura-api",
+        "args": [],
+        "env": {
+          "NEO4J_TRANSPORT": "http",
+          "NEO4J_MCP_SERVER_HOST": "0.0.0.0",
+          "NEO4J_MCP_SERVER_PORT": "8080",
+          "NEO4J_MCP_SERVER_PATH": "/api/mcp/"
+        }
+      },
+      "mcp-neo4j-data-modeling-stdio": {
+        "command": "mcp-neo4j-data-modeling",
+        "args": [],
+        "env": {}
+      },
+      "mcp-neo4j-data-modeling-http": {
+        "command": "mcp-neo4j-data-modeling",
+        "args": [
+          "--transport",
+          "http"
+        ],
+        "env": {}
+      },
+      "mcp-neo4j-data-modeling-http-configured": {
+        "command": "mcp-neo4j-data-modeling",
+        "args": [
+          "--transport",
+          "http",
+          "--host",
+          "0.0.0.0",
+          "--port",
+          "8080",
+          "--path",
+          "/api/mcp/"
+        ],
+        "env": {}
+      },
+      "mcp-neo4j-data-modeling-http-env": {
+        "command": "mcp-neo4j-data-modeling",
+        "args": [],
+        "env": {
+          "NEO4J_TRANSPORT": "http",
+          "NEO4J_MCP_SERVER_HOST": "0.0.0.0",
+          "NEO4J_MCP_SERVER_PORT": "8080",
+          "NEO4J_MCP_SERVER_PATH": "/api/mcp/"
         }
       }
     },

@@ -8,17 +8,16 @@
     "name": "zxkane"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@zxkane/mcp-server-amazon-bedrock"],
-      "env": {
-        "AWS_PROFILE": "${user_config.aws_profile}",
-        "AWS_ACCESS_KEY_ID": "${user_config.aws_access_key_id}",
-        "AWS_SECRET_ACCESS_KEY": "${user_config.aws_secret_access_key}",
-        "AWS_REGION": "${user_config.aws_region}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@zxkane/mcp-server-amazon-bedrock"
+    ],
+    "env": {
+      "AWS_PROFILE": "${user_config.aws_profile}",
+      "AWS_ACCESS_KEY_ID": "${user_config.aws_access_key_id}",
+      "AWS_SECRET_ACCESS_KEY": "${user_config.aws_secret_access_key}",
+      "AWS_REGION": "${user_config.aws_region}"
     }
   },
   "tools": [],
@@ -58,16 +57,17 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "zxkane-mcp-server-amazon-bedrock": {
-          "command": "npx",
-          "args": ["-y", "@zxkane/mcp-server-amazon-bedrock"],
-          "env": {
-            "AWS_PROFILE": "your_profile_name",
-            "AWS_ACCESS_KEY_ID": "your_access_key",
-            "AWS_SECRET_ACCESS_KEY": "your_secret_key",
-            "AWS_REGION": "us-east-1"
-          }
+      "zxkane-mcp-server-amazon-bedrock": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@zxkane/mcp-server-amazon-bedrock"
+        ],
+        "env": {
+          "AWS_PROFILE": "your_profile_name",
+          "AWS_ACCESS_KEY_ID": "your_access_key",
+          "AWS_SECRET_ACCESS_KEY": "your_secret_key",
+          "AWS_REGION": "us-east-1"
         }
       }
     },

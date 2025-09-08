@@ -8,20 +8,16 @@
     "name": "isaacwasserman"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp_server_datavis/__main__.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "mcp_server_datavis",
-        "--output_type",
-        "${user_config.output_type}"
-      ],
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "mcp_server_datavis",
+      "--output_type",
+      "${user_config.output_type}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -40,31 +36,29 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp_server_datavis-png": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "/absolute/path/to/mcp-datavis-server",
-            "run",
-            "mcp_server_datavis",
-            "--output_type",
-            "png"
-          ],
-          "env": {}
-        },
-        "mcp_server_datavis-text": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "/absolute/path/to/mcp-datavis-server",
-            "run",
-            "mcp_server_datavis",
-            "--output_type",
-            "text"
-          ],
-          "env": {}
-        }
+      "mcp_server_datavis-png": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/absolute/path/to/mcp-datavis-server",
+          "run",
+          "mcp_server_datavis",
+          "--output_type",
+          "png"
+        ],
+        "env": {}
+      },
+      "mcp_server_datavis-text": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/absolute/path/to/mcp-datavis-server",
+          "run",
+          "mcp_server_datavis",
+          "--output_type",
+          "text"
+        ],
+        "env": {}
       }
     },
     "oauth": {

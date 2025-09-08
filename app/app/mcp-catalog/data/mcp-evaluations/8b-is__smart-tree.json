@@ -8,14 +8,12 @@
     "name": "8b-is"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "st",
-    "mcp_config": {
-      "command": "/usr/local/bin/st",
-      "args": ["--mcp"],
-      "env": {
-        "AI_TOOLS": "${user_config.ai_tools}"
-      }
+    "command": "/usr/local/bin/st",
+    "args": [
+      "--mcp"
+    ],
+    "env": {
+      "AI_TOOLS": "${user_config.ai_tools}"
     }
   },
   "tools": [],
@@ -35,13 +33,13 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "smart-tree": {
-          "command": "/usr/local/bin/st",
-          "args": ["--mcp"],
-          "env": {
-            "AI_TOOLS": "1"
-          }
+      "smart-tree": {
+        "command": "/usr/local/bin/st",
+        "args": [
+          "--mcp"
+        ],
+        "env": {
+          "AI_TOOLS": "1"
         }
       }
     },

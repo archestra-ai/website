@@ -8,14 +8,10 @@
     "name": "gabrielmaialva33"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "winx-code-agent",
-    "mcp_config": {
-      "command": "server/winx-code-agent",
-      "args": [],
-      "env": {
-        "RUST_LOG": "${user_config.rust_log}"
-      }
+    "command": "server/winx-code-agent",
+    "args": [],
+    "env": {
+      "RUST_LOG": "${user_config.rust_log}"
     }
   },
   "tools": [],
@@ -35,13 +31,11 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "winx": {
-          "command": "/path/to/winx-code-agent",
-          "args": [],
-          "env": {
-            "RUST_LOG": "info"
-          }
+      "winx": {
+        "command": "/path/to/winx-code-agent",
+        "args": [],
+        "env": {
+          "RUST_LOG": "info"
         }
       }
     },

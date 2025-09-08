@@ -8,15 +8,13 @@
     "name": "line"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["@line/line-bot-mcp-server"],
-      "env": {
-        "CHANNEL_ACCESS_TOKEN": "${user_config.channel_access_token}",
-        "DESTINATION_USER_ID": "${user_config.destination_user_id}"
-      }
+    "command": "npx",
+    "args": [
+      "@line/line-bot-mcp-server"
+    ],
+    "env": {
+      "CHANNEL_ACCESS_TOKEN": "${user_config.channel_access_token}",
+      "DESTINATION_USER_ID": "${user_config.destination_user_id}"
     }
   },
   "tools": [],
@@ -43,31 +41,31 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "line-line-bot-mcp-server": {
-          "command": "npx",
-          "args": ["@line/line-bot-mcp-server"],
-          "env": {
-            "CHANNEL_ACCESS_TOKEN": "FILL_HERE",
-            "DESTINATION_USER_ID": "FILL_HERE"
-          }
-        },
-        "line-line-bot-mcp-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "CHANNEL_ACCESS_TOKEN",
-            "-e",
-            "DESTINATION_USER_ID",
-            "line/line-bot-mcp-server"
-          ],
-          "env": {
-            "CHANNEL_ACCESS_TOKEN": "FILL_HERE",
-            "DESTINATION_USER_ID": "FILL_HERE"
-          }
+      "line-line-bot-mcp-server": {
+        "command": "npx",
+        "args": [
+          "@line/line-bot-mcp-server"
+        ],
+        "env": {
+          "CHANNEL_ACCESS_TOKEN": "FILL_HERE",
+          "DESTINATION_USER_ID": "FILL_HERE"
+        }
+      },
+      "line-line-bot-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "CHANNEL_ACCESS_TOKEN",
+          "-e",
+          "DESTINATION_USER_ID",
+          "line/line-bot-mcp-server"
+        ],
+        "env": {
+          "CHANNEL_ACCESS_TOKEN": "FILL_HERE",
+          "DESTINATION_USER_ID": "FILL_HERE"
         }
       }
     },

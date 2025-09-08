@@ -8,16 +8,16 @@
     "name": "comet-ml"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js", "--debug", "${user_config.opik_debug}"],
-      "env": {
-        "OPIK_API_BASE_URL": "${user_config.opik_api_base_url}",
-        "OPIK_API_KEY": "${user_config.opik_api_key}",
-        "OPIK_WORKSPACE_NAME": "${user_config.opik_workspace_name}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js",
+      "--debug",
+      "${user_config.opik_debug}"
+    ],
+    "env": {
+      "OPIK_API_BASE_URL": "${user_config.opik_api_base_url}",
+      "OPIK_API_KEY": "${user_config.opik_api_key}",
+      "OPIK_WORKSPACE_NAME": "${user_config.opik_workspace_name}"
     }
   },
   "tools": [],
@@ -61,35 +61,39 @@
   "quality_score": 67,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "comet-ml-opik-mcp-stdio": {
-          "command": "npm",
-          "args": ["run", "start:stdio"],
-          "env": {}
-        },
-        "comet-ml-opik-mcp-sse": {
-          "command": "npm",
-          "args": ["run", "start:sse"],
-          "env": {}
-        },
-        "comet-ml-opik-mcp-cursor-integration": {
-          "command": "node",
-          "args": [
-            "build/index.js",
-            "--apiUrl",
-            "https://www.comet.com/opik/api",
-            "--apiKey",
-            "YOUR_API_KEY",
-            "--workspace",
-            "default",
-            "--debug",
-            "true"
-          ],
-          "env": {
-            "OPIK_API_BASE_URL": "https://www.comet.com/opik/api",
-            "OPIK_API_KEY": "YOUR_API_KEY",
-            "OPIK_WORKSPACE_NAME": "default"
-          }
+      "comet-ml-opik-mcp-stdio": {
+        "command": "npm",
+        "args": [
+          "run",
+          "start:stdio"
+        ],
+        "env": {}
+      },
+      "comet-ml-opik-mcp-sse": {
+        "command": "npm",
+        "args": [
+          "run",
+          "start:sse"
+        ],
+        "env": {}
+      },
+      "comet-ml-opik-mcp-cursor-integration": {
+        "command": "node",
+        "args": [
+          "build/index.js",
+          "--apiUrl",
+          "https://www.comet.com/opik/api",
+          "--apiKey",
+          "YOUR_API_KEY",
+          "--workspace",
+          "default",
+          "--debug",
+          "true"
+        ],
+        "env": {
+          "OPIK_API_BASE_URL": "https://www.comet.com/opik/api",
+          "OPIK_API_KEY": "YOUR_API_KEY",
+          "OPIK_WORKSPACE_NAME": "default"
         }
       }
     },

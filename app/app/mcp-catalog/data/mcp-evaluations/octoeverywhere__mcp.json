@@ -8,13 +8,9 @@
     "name": "OctoEverywhere"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "cloud-service",
-    "mcp_config": {
-      "command": "",
-      "args": [],
-      "env": {}
-    }
+    "command": "",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -39,9 +35,7 @@
   "category": "AI Tools",
   "quality_score": 48,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

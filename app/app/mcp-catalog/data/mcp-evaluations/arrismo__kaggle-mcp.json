@@ -8,15 +8,13 @@
     "name": "arrismo"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/server.py"],
-      "env": {
-        "KAGGLE_USERNAME": "${user_config.kaggle_username}",
-        "KAGGLE_KEY": "${user_config.kaggle_key}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/server.py"
+    ],
+    "env": {
+      "KAGGLE_USERNAME": "${user_config.kaggle_username}",
+      "KAGGLE_KEY": "${user_config.kaggle_key}"
     }
   },
   "tools": [],
@@ -43,22 +41,30 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kaggle-mcp": {
-          "command": "uv",
-          "args": ["run", "kaggle-mcp"],
-          "env": {}
-        },
-        "kaggle-mcp-test-docker": {
-          "command": "docker",
-          "args": ["run", "--rm", "-it", "--env-file", ".env", "kaggle-mcp-test"],
-          "env": {}
-        },
-        "kaggle-mcp-configured": {
-          "command": "kaggle-mcp",
-          "args": [],
-          "env": {}
-        }
+      "kaggle-mcp": {
+        "command": "uv",
+        "args": [
+          "run",
+          "kaggle-mcp"
+        ],
+        "env": {}
+      },
+      "kaggle-mcp-test-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-it",
+          "--env-file",
+          ".env",
+          "kaggle-mcp-test"
+        ],
+        "env": {}
+      },
+      "kaggle-mcp-configured": {
+        "command": "kaggle-mcp",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

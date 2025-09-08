@@ -8,13 +8,12 @@
     "name": "alimo7amed93"
   },
   "server": {
-    "type": "python",
-    "entry_point": "Webhook-test_mcp/server.py",
-    "mcp_config": {
-      "command": "fastmcp",
-      "args": ["run", "${__dirname}/Webhook-test_mcp/server.py"],
-      "env": {}
-    }
+    "command": "fastmcp",
+    "args": [
+      "run",
+      "${__dirname}/Webhook-test_mcp/server.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,13 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "webhook-tester-mcp": {
-          "command": "fastmcp",
-          "args": ["run", "{{fullPath}}\\Webhook-test_mcp\\server.py"],
-          "env": {}
-        }
+      "webhook-tester-mcp": {
+        "command": "fastmcp",
+        "args": [
+          "run",
+          "{{fullPath}}\\Webhook-test_mcp\\server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,15 +8,11 @@
     "name": "panther-labs"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "panther-mcp-server",
-    "mcp_config": {
-      "command": "./panther-mcp-server",
-      "args": [],
-      "env": {
-        "PANTHER_API_TOKEN": "${user_config.panther_api_token}",
-        "PANTHER_BASE_URL": "${user_config.panther_base_url}"
-      }
+    "command": "./panther-mcp-server",
+    "args": [],
+    "env": {
+      "PANTHER_API_TOKEN": "${user_config.panther_api_token}",
+      "PANTHER_BASE_URL": "${user_config.panther_base_url}"
     }
   },
   "tools": [],
@@ -41,9 +37,7 @@
   "category": "Security",
   "quality_score": 74,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

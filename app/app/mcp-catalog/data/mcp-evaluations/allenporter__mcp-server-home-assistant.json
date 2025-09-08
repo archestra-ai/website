@@ -8,15 +8,16 @@
     "name": "allenporter"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp-server-home-assistant",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "mcp-server-home-assistant", "-v", "-v"],
-      "env": {
-        "HOME_ASSISTANT_WEB_SOCKET_URL": "${user_config.home_assistant_web_socket_url}",
-        "HOME_ASSISTANT_API_TOKEN": "${user_config.home_assistant_api_token}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "mcp-server-home-assistant",
+      "-v",
+      "-v"
+    ],
+    "env": {
+      "HOME_ASSISTANT_WEB_SOCKET_URL": "${user_config.home_assistant_web_socket_url}",
+      "HOME_ASSISTANT_API_TOKEN": "${user_config.home_assistant_api_token}"
     }
   },
   "tools": [],
@@ -43,21 +44,19 @@
   "quality_score": 65,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-home-assistant": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "/Users/allen/Development/mcp-server-home-assistant",
-            "run",
-            "mcp-server-home-assistant",
-            "-v",
-            "-v"
-          ],
-          "env": {
-            "HOME_ASSISTANT_WEB_SOCKET_URL": "http://localhost:8123/api/websocket",
-            "HOME_ASSISTANT_API_TOKEN": "byJhbVci0iJIUzI1ii1sInR5cCI6IkpXVCJ9....."
-          }
+      "mcp-server-home-assistant": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/Users/allen/Development/mcp-server-home-assistant",
+          "run",
+          "mcp-server-home-assistant",
+          "-v",
+          "-v"
+        ],
+        "env": {
+          "HOME_ASSISTANT_WEB_SOCKET_URL": "http://localhost:8123/api/websocket",
+          "HOME_ASSISTANT_API_TOKEN": "byJhbVci0iJIUzI1ii1sInR5cCI6IkpXVCJ9....."
         }
       }
     },

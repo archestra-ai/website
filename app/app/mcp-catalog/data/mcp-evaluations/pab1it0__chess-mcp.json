@@ -8,14 +8,15 @@
     "name": "pab1it0"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/chess_mcp/main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "src/chess_mcp/main.py"],
-      "env": {
-        "NO_UV": "${user_config.no_uv}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "src/chess_mcp/main.py"
+    ],
+    "env": {
+      "NO_UV": "${user_config.no_uv}"
     }
   },
   "tools": [],
@@ -35,17 +36,25 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "pab1it0-chess-mcp-docker": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "pab1it0/chess-mcp"],
-          "env": {}
-        },
-        "chess-mcp-uv": {
-          "command": "uv",
-          "args": ["--directory", "<full path to chess-mcp directory>", "run", "src/chess_mcp/main.py"],
-          "env": {}
-        }
+      "pab1it0-chess-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "pab1it0/chess-mcp"
+        ],
+        "env": {}
+      },
+      "chess-mcp-uv": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "<full path to chess-mcp directory>",
+          "run",
+          "src/chess_mcp/main.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

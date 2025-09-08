@@ -8,16 +8,17 @@
     "name": "xzq-xu"
   },
   "server": {
-    "type": "python",
-    "entry_point": "jvm_mcp_server/__main__.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "jvm-mcp-server"],
-      "env": {
-        "ARTHAS_SSH_HOST": "${user_config.arthas_ssh_host}",
-        "ARTHAS_SSH_PORT": "${user_config.arthas_ssh_port}",
-        "ARTHAS_SSH_PASSWORD": "${user_config.arthas_ssh_password}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "jvm-mcp-server"
+    ],
+    "env": {
+      "ARTHAS_SSH_HOST": "${user_config.arthas_ssh_host}",
+      "ARTHAS_SSH_PORT": "${user_config.arthas_ssh_port}",
+      "ARTHAS_SSH_PASSWORD": "${user_config.arthas_ssh_password}"
     }
   },
   "tools": [],
@@ -50,39 +51,57 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "jvm-mcp-server": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "/path/to/jvm-mcp-server",
-            "run",
-            "--env-file",
-            "/path/to/jvm-mcp-server/.env",
-            "jvm-mcp-server"
-          ],
-          "env": {}
-        },
-        "jvm-mcp-server-no-env": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/jvm-mcp-server", "run", "jvm-mcp-server"],
-          "env": {}
-        },
-        "jvm-mcp-server-cli-basic": {
-          "command": "uv",
-          "args": ["run", "jvm-mcp-server"],
-          "env": {}
-        },
-        "jvm-mcp-server-cli-with-env-file": {
-          "command": "uv",
-          "args": ["run", "--env-file", ".env", "jvm-mcp-server"],
-          "env": {}
-        },
-        "jvm-mcp-server-cli-generic-directory-env-file": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/project", "run", "--env-file", ".env", "jvm-mcp-server"],
-          "env": {}
-        }
+      "jvm-mcp-server": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/jvm-mcp-server",
+          "run",
+          "--env-file",
+          "/path/to/jvm-mcp-server/.env",
+          "jvm-mcp-server"
+        ],
+        "env": {}
+      },
+      "jvm-mcp-server-no-env": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/jvm-mcp-server",
+          "run",
+          "jvm-mcp-server"
+        ],
+        "env": {}
+      },
+      "jvm-mcp-server-cli-basic": {
+        "command": "uv",
+        "args": [
+          "run",
+          "jvm-mcp-server"
+        ],
+        "env": {}
+      },
+      "jvm-mcp-server-cli-with-env-file": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--env-file",
+          ".env",
+          "jvm-mcp-server"
+        ],
+        "env": {}
+      },
+      "jvm-mcp-server-cli-generic-directory-env-file": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/project",
+          "run",
+          "--env-file",
+          ".env",
+          "jvm-mcp-server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

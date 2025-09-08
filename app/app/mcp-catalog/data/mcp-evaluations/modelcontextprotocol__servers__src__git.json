@@ -8,13 +8,13 @@
     "name": "modelcontextprotocol"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-git", "--repository", "${user_config.repo_path}"],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "mcp-server-git",
+      "--repository",
+      "${user_config.repo_path}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,37 +33,63 @@
   "quality_score": 71,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-git": {
-          "command": "uvx",
-          "args": ["mcp-server-git"],
-          "env": {}
-        },
-        "mcp-server-git-configured": {
-          "command": "uvx",
-          "args": ["mcp-server-git", "--repository", "path/to/git/repo"],
-          "env": {}
-        },
-        "mcp_server_git": {
-          "command": "python",
-          "args": ["-m", "mcp_server_git"],
-          "env": {}
-        },
-        "mcp_server_git-configured": {
-          "command": "python",
-          "args": ["-m", "mcp_server_git", "--repository", "path/to/git/repo"],
-          "env": {}
-        },
-        "mcp-git-docker-claude-desktop": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "--mount", "type=bind,src=/Users/username,dst=/Users/username", "mcp/git"],
-          "env": {}
-        },
-        "mcp-git-docker-vscode": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "--mount", "type=bind,src=${workspaceFolder},dst=/workspace", "mcp/git"],
-          "env": {}
-        }
+      "mcp-server-git": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-git"
+        ],
+        "env": {}
+      },
+      "mcp-server-git-configured": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-git",
+          "--repository",
+          "path/to/git/repo"
+        ],
+        "env": {}
+      },
+      "mcp_server_git": {
+        "command": "python",
+        "args": [
+          "-m",
+          "mcp_server_git"
+        ],
+        "env": {}
+      },
+      "mcp_server_git-configured": {
+        "command": "python",
+        "args": [
+          "-m",
+          "mcp_server_git",
+          "--repository",
+          "path/to/git/repo"
+        ],
+        "env": {}
+      },
+      "mcp-git-docker-claude-desktop": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "--mount",
+          "type=bind,src=/Users/username,dst=/Users/username",
+          "mcp/git"
+        ],
+        "env": {}
+      },
+      "mcp-git-docker-vscode": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "--mount",
+          "type=bind,src=${workspaceFolder},dst=/workspace",
+          "mcp/git"
+        ],
+        "env": {}
       }
     },
     "oauth": {

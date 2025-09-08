@@ -8,14 +8,12 @@
     "name": "bogdan01m"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["zapcap-mcp-server"],
-      "env": {
-        "ZAPCAP_API_KEY": "${user_config.zapcap_api_key}"
-      }
+    "command": "uvx",
+    "args": [
+      "zapcap-mcp-server"
+    ],
+    "env": {
+      "ZAPCAP_API_KEY": "${user_config.zapcap_api_key}"
     }
   },
   "tools": [],
@@ -35,32 +33,32 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "zapcap-mcp-server": {
-          "command": "uvx",
-          "args": ["zapcap-mcp-server"],
-          "env": {
-            "ZAPCAP_API_KEY": "your_api_key_here"
-          }
-        },
-        "bogdan01m-zapcap-mcp-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "--init",
-            "-i",
-            "--net=host",
-            "-v",
-            "/home/$USER:/host/home/$USER",
-            "-e",
-            "ZAPCAP_API_KEY=your_api_key_here",
-            "bogdan01m/zapcap-mcp-server:latest"
-          ],
-          "env": {
-            "DOCKER_CLI_HINTS": "false",
-            "ZAPCAP_API_KEY": "your_api_key_here"
-          }
+      "zapcap-mcp-server": {
+        "command": "uvx",
+        "args": [
+          "zapcap-mcp-server"
+        ],
+        "env": {
+          "ZAPCAP_API_KEY": "your_api_key_here"
+        }
+      },
+      "bogdan01m-zapcap-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "--init",
+          "-i",
+          "--net=host",
+          "-v",
+          "/home/$USER:/host/home/$USER",
+          "-e",
+          "ZAPCAP_API_KEY=your_api_key_here",
+          "bogdan01m/zapcap-mcp-server:latest"
+        ],
+        "env": {
+          "DOCKER_CLI_HINTS": "false",
+          "ZAPCAP_API_KEY": "your_api_key_here"
         }
       }
     },

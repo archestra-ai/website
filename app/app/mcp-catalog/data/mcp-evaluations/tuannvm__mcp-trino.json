@@ -8,18 +8,14 @@
     "name": "tuannvm"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-trino",
-    "mcp_config": {
-      "command": "mcp-trino",
-      "args": [],
-      "env": {
-        "TRINO_HOST": "${user_config.trino_host}",
-        "TRINO_PORT": "${user_config.trino_port}",
-        "TRINO_USER": "${user_config.trino_user}",
-        "TRINO_PASSWORD": "${user_config.trino_password}",
-        "TRINO_SCHEME": "${user_config.trino_scheme}"
-      }
+    "command": "mcp-trino",
+    "args": [],
+    "env": {
+      "TRINO_HOST": "${user_config.trino_host}",
+      "TRINO_PORT": "${user_config.trino_port}",
+      "TRINO_USER": "${user_config.trino_user}",
+      "TRINO_PASSWORD": "${user_config.trino_password}",
+      "TRINO_SCHEME": "${user_config.trino_scheme}"
     }
   },
   "tools": [],
@@ -68,32 +64,30 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-trino-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "-e",
-            "TRINO_HOST=<HOST>",
-            "-e",
-            "TRINO_PORT=<PORT>",
-            "-e",
-            "TRINO_USER=<USERNAME>",
-            "-e",
-            "TRINO_PASSWORD=<PASSWORD>",
-            "-e",
-            "TRINO_SCHEME=http",
-            "ghcr.io/tuannvm/mcp-trino:latest"
-          ],
-          "env": {
-            "TRINO_HOST": "<HOST>",
-            "TRINO_PORT": "<PORT>",
-            "TRINO_USER": "<USERNAME>",
-            "TRINO_PASSWORD": "<PASSWORD>",
-            "TRINO_SCHEME": "http"
-          }
+      "mcp-trino-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "-e",
+          "TRINO_HOST=<HOST>",
+          "-e",
+          "TRINO_PORT=<PORT>",
+          "-e",
+          "TRINO_USER=<USERNAME>",
+          "-e",
+          "TRINO_PASSWORD=<PASSWORD>",
+          "-e",
+          "TRINO_SCHEME=http",
+          "ghcr.io/tuannvm/mcp-trino:latest"
+        ],
+        "env": {
+          "TRINO_HOST": "<HOST>",
+          "TRINO_PORT": "<PORT>",
+          "TRINO_USER": "<USERNAME>",
+          "TRINO_PASSWORD": "<PASSWORD>",
+          "TRINO_SCHEME": "http"
         }
       }
     },

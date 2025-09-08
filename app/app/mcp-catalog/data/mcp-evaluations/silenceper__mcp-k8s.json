@@ -8,40 +8,36 @@
     "name": "silenceper"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-k8s",
-    "mcp_config": {
-      "command": "${__dirname}/bin/mcp-k8s",
-      "args": [
-        "-kubeconfig",
-        "${user_config.kubeconfig_path}",
-        "-enable-create",
-        "${user_config.enable_create}",
-        "-enable-delete",
-        "${user_config.enable_delete}",
-        "-enable-update",
-        "${user_config.enable_update}",
-        "-enable-list",
-        "${user_config.enable_list}",
-        "-enable-helm-install",
-        "${user_config.enable_helm_install}",
-        "-enable-helm-upgrade",
-        "${user_config.enable_helm_upgrade}",
-        "-enable-helm-uninstall",
-        "${user_config.enable_helm_uninstall}",
-        "-enable-helm-add-repo",
-        "${user_config.enable_helm_add_repo}",
-        "-enable-helm-remove-repo",
-        "${user_config.enable_helm_remove_repo}",
-        "-transport",
-        "${user_config.transport_mode}",
-        "-port",
-        "${user_config.http_port}",
-        "-host",
-        "${user_config.http_host}"
-      ],
-      "env": {}
-    }
+    "command": "${__dirname}/bin/mcp-k8s",
+    "args": [
+      "-kubeconfig",
+      "${user_config.kubeconfig_path}",
+      "-enable-create",
+      "${user_config.enable_create}",
+      "-enable-delete",
+      "${user_config.enable_delete}",
+      "-enable-update",
+      "${user_config.enable_update}",
+      "-enable-list",
+      "${user_config.enable_list}",
+      "-enable-helm-install",
+      "${user_config.enable_helm_install}",
+      "-enable-helm-upgrade",
+      "${user_config.enable_helm_upgrade}",
+      "-enable-helm-uninstall",
+      "${user_config.enable_helm_uninstall}",
+      "-enable-helm-add-repo",
+      "${user_config.enable_helm_add_repo}",
+      "-enable-helm-remove-repo",
+      "${user_config.enable_helm_remove_repo}",
+      "-transport",
+      "${user_config.transport_mode}",
+      "-port",
+      "${user_config.http_port}",
+      "-host",
+      "${user_config.http_host}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -112,8 +108,7 @@
       "type": "string",
       "title": "Transport Mode",
       "description": "Communication mode for the MCP server (stdio or sse).",
-      "default": "stdio",
-      "options": ["stdio", "sse"]
+      "default": "stdio"
     },
     "http_port": {
       "type": "number",
@@ -135,56 +130,61 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-k8s-stdio-configured": {
-          "command": "/path/to/mcp-k8s",
-          "args": [
-            "-kubeconfig",
-            "/path/to/kubeconfig",
-            "-enable-create",
-            "-enable-delete",
-            "-enable-update",
-            "-enable-list",
-            "-enable-helm-install",
-            "-enable-helm-upgrade"
-          ],
-          "env": {}
-        },
-        "mcp-k8s-sse": {
-          "command": "./bin/mcp-k8s",
-          "args": [
-            "-kubeconfig=/path/to/kubeconfig",
-            "-transport=sse",
-            "-port=8080",
-            "-host=localhost",
-            "-enable-create",
-            "-enable-delete",
-            "-enable-list",
-            "-enable-update",
-            "-enable-helm-install"
-          ],
-          "env": {}
-        },
-        "mcp-k8s-docker-sse": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-p",
-            "8080:8080",
-            "-i",
-            "-v",
-            "~/.kube/config:/root/.kube/config",
-            "ghcr.io/silenceper/mcp-k8s:latest",
-            "-transport=sse"
-          ],
-          "env": {}
-        },
-        "mcp-k8s-docker-stdio": {
-          "command": "docker",
-          "args": ["run", "-i", "-v", "~/.kube/config:/root/.kube/config", "--rm", "ghcr.io/silenceper/mcp-k8s:latest"],
-          "env": {}
-        }
+      "mcp-k8s-stdio-configured": {
+        "command": "/path/to/mcp-k8s",
+        "args": [
+          "-kubeconfig",
+          "/path/to/kubeconfig",
+          "-enable-create",
+          "-enable-delete",
+          "-enable-update",
+          "-enable-list",
+          "-enable-helm-install",
+          "-enable-helm-upgrade"
+        ],
+        "env": {}
+      },
+      "mcp-k8s-sse": {
+        "command": "./bin/mcp-k8s",
+        "args": [
+          "-kubeconfig=/path/to/kubeconfig",
+          "-transport=sse",
+          "-port=8080",
+          "-host=localhost",
+          "-enable-create",
+          "-enable-delete",
+          "-enable-list",
+          "-enable-update",
+          "-enable-helm-install"
+        ],
+        "env": {}
+      },
+      "mcp-k8s-docker-sse": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-p",
+          "8080:8080",
+          "-i",
+          "-v",
+          "~/.kube/config:/root/.kube/config",
+          "ghcr.io/silenceper/mcp-k8s:latest",
+          "-transport=sse"
+        ],
+        "env": {}
+      },
+      "mcp-k8s-docker-stdio": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "-v",
+          "~/.kube/config:/root/.kube/config",
+          "--rm",
+          "ghcr.io/silenceper/mcp-k8s:latest"
+        ],
+        "env": {}
       }
     },
     "oauth": {

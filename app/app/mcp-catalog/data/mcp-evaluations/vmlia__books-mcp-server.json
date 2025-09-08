@@ -8,13 +8,12 @@
     "name": "VmLia"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "main.py"],
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "run",
+      "main.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,15 @@
   "quality_score": 32,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "books-mcp-server-stdio": {
-          "command": "uv",
-          "args": ["--directory", "/Enter your local project directory/books-mcp-server", "run", "main.py"],
-          "env": {}
-        }
+      "books-mcp-server-stdio": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/Enter your local project directory/books-mcp-server",
+          "run",
+          "main.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

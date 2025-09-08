@@ -8,15 +8,14 @@
     "name": "ferdousbhai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["run", "wsb-analyst"],
-      "env": {
-        "REDDIT_CLIENT_ID": "${user_config.reddit_client_id}",
-        "REDDIT_CLIENT_SECRET": "${user_config.reddit_client_secret}"
-      }
+    "command": "uvx",
+    "args": [
+      "run",
+      "wsb-analyst"
+    ],
+    "env": {
+      "REDDIT_CLIENT_ID": "${user_config.reddit_client_id}",
+      "REDDIT_CLIENT_SECRET": "${user_config.reddit_client_secret}"
     }
   },
   "tools": [],
@@ -43,14 +42,15 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "wsb-analyst": {
-          "command": "uvx",
-          "args": ["run", "wsb-analyst"],
-          "env": {
-            "REDDIT_CLIENT_ID": "your_client_id_here",
-            "REDDIT_CLIENT_SECRET": "your_client_secret_here"
-          }
+      "wsb-analyst": {
+        "command": "uvx",
+        "args": [
+          "run",
+          "wsb-analyst"
+        ],
+        "env": {
+          "REDDIT_CLIENT_ID": "your_client_id_here",
+          "REDDIT_CLIENT_SECRET": "your_client_secret_here"
         }
       }
     },

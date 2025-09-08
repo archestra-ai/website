@@ -8,22 +8,18 @@
     "name": "hustcc"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-mermaid",
-        "--transport",
-        "${user_config.transport}",
-        "--port",
-        "${user_config.port}",
-        "--endpoint",
-        "${user_config.endpoint}"
-      ],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-mermaid",
+      "--transport",
+      "${user_config.transport}",
+      "--port",
+      "${user_config.port}",
+      "--endpoint",
+      "${user_config.endpoint}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -58,27 +54,39 @@
   "quality_score": 59,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-mermaid-stdio": {
-          "command": "npx",
-          "args": ["-y", "mcp-mermaid"],
-          "env": {}
-        },
-        "mcp-mermaid-stdio-windows": {
-          "command": "cmd",
-          "args": ["/c", "npx", "-y", "mcp-mermaid"],
-          "env": {}
-        },
-        "mcp-mermaid-sse": {
-          "command": "mcp-mermaid",
-          "args": ["-t", "sse"],
-          "env": {}
-        },
-        "mcp-mermaid-streamable": {
-          "command": "mcp-mermaid",
-          "args": ["-t", "streamable"],
-          "env": {}
-        }
+      "mcp-mermaid-stdio": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-mermaid"
+        ],
+        "env": {}
+      },
+      "mcp-mermaid-stdio-windows": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "npx",
+          "-y",
+          "mcp-mermaid"
+        ],
+        "env": {}
+      },
+      "mcp-mermaid-sse": {
+        "command": "mcp-mermaid",
+        "args": [
+          "-t",
+          "sse"
+        ],
+        "env": {}
+      },
+      "mcp-mermaid-streamable": {
+        "command": "mcp-mermaid",
+        "args": [
+          "-t",
+          "streamable"
+        ],
+        "env": {}
       }
     },
     "oauth": {

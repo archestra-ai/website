@@ -8,41 +8,37 @@
     "name": "bytedance"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@agent-infra/mcp-server-browser@latest",
-        "--browser",
-        "${user_config.browser}",
-        "--cdp-endpoint",
-        "${user_config.cdp_endpoint}",
-        "--ws-endpoint",
-        "${user_config.ws_endpoint}",
-        "--executable-path",
-        "${user_config.executable_path}",
-        "--host",
-        "${user_config.host}",
-        "--port",
-        "${user_config.port}",
-        "--proxy-bypass",
-        "${user_config.proxy_bypass}",
-        "--proxy-server",
-        "${user_config.proxy_server}",
-        "--user-agent",
-        "${user_config.user_agent}",
-        "--user-data-dir",
-        "${user_config.user_data_dir}",
-        "--viewport-size",
-        "${user_config.viewport_size}",
-        "--output-dir",
-        "${user_config.output_dir}"
-      ],
-      "env": {
-        "DISPLAY": "${user_config.display}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@agent-infra/mcp-server-browser@latest",
+      "--browser",
+      "${user_config.browser}",
+      "--cdp-endpoint",
+      "${user_config.cdp_endpoint}",
+      "--ws-endpoint",
+      "${user_config.ws_endpoint}",
+      "--executable-path",
+      "${user_config.executable_path}",
+      "--host",
+      "${user_config.host}",
+      "--port",
+      "${user_config.port}",
+      "--proxy-bypass",
+      "${user_config.proxy_bypass}",
+      "--proxy-server",
+      "${user_config.proxy_server}",
+      "--user-agent",
+      "${user_config.user_agent}",
+      "--user-data-dir",
+      "${user_config.user_data_dir}",
+      "--viewport-size",
+      "${user_config.viewport_size}",
+      "--output-dir",
+      "${user_config.output_dir}"
+    ],
+    "env": {
+      "DISPLAY": "${user_config.display}"
     }
   },
   "tools": [],
@@ -148,29 +144,40 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "agent-infra-mcp-server-browser": {
-          "command": "npx",
-          "args": ["@agent-infra/mcp-server-browser@latest"],
-          "env": {}
-        },
-        "agent-infra-mcp-server-browser-remote": {
-          "command": "npx",
-          "args": ["@agent-infra/mcp-server-browser", "--port", "8089"],
-          "env": {}
-        },
-        "agent-infra-mcp-server-browser-remote-display": {
-          "command": "npx",
-          "args": ["@agent-infra/mcp-server-browser", "--port", "8089"],
-          "env": {
-            "DISPLAY": ":0"
-          }
-        },
-        "agent-infra-mcp-server-browser-vision": {
-          "command": "npx",
-          "args": ["@agent-infra/mcp-server-browser@latest", "--vision"],
-          "env": {}
+      "agent-infra-mcp-server-browser": {
+        "command": "npx",
+        "args": [
+          "@agent-infra/mcp-server-browser@latest"
+        ],
+        "env": {}
+      },
+      "agent-infra-mcp-server-browser-remote": {
+        "command": "npx",
+        "args": [
+          "@agent-infra/mcp-server-browser",
+          "--port",
+          "8089"
+        ],
+        "env": {}
+      },
+      "agent-infra-mcp-server-browser-remote-display": {
+        "command": "npx",
+        "args": [
+          "@agent-infra/mcp-server-browser",
+          "--port",
+          "8089"
+        ],
+        "env": {
+          "DISPLAY": ":0"
         }
+      },
+      "agent-infra-mcp-server-browser-vision": {
+        "command": "npx",
+        "args": [
+          "@agent-infra/mcp-server-browser@latest",
+          "--vision"
+        ],
+        "env": {}
       }
     },
     "oauth": {

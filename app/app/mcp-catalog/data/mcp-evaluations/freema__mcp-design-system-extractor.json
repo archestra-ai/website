@@ -8,14 +8,13 @@
     "name": "freema"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@freema/mcp-design-system-extractor"],
-      "env": {
-        "STORYBOOK_URL": "${user_config.storybook_url}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@freema/mcp-design-system-extractor"
+    ],
+    "env": {
+      "STORYBOOK_URL": "${user_config.storybook_url}"
     }
   },
   "tools": [],

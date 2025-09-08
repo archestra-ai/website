@@ -8,13 +8,11 @@
     "name": "0xshellming"
   },
   "server": {
-    "type": "node",
-    "entry_point": "dist/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/index.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,19 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "content-summarizer": {
-          "command": "pnpm",
-          "args": ["start"],
-          "env": {}
-        },
-        "content-summarizer-configured": {
-          "command": "node",
-          "args": ["{ABSOLUTE PATH TO FILE HERE}/dist/index.js"],
-          "env": {}
-        }
+      "content-summarizer": {
+        "command": "pnpm",
+        "args": [
+          "start"
+        ],
+        "env": {}
+      },
+      "content-summarizer-configured": {
+        "command": "node",
+        "args": [
+          "{ABSOLUTE PATH TO FILE HERE}/dist/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,28 +8,26 @@
     "name": "weibaohui"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "k8m",
-    "mcp_config": {
-      "command": "./k8m",
-      "args": ["--in-cluster=${user_config.in_cluster}"],
-      "env": {
-        "PORT": "${user_config.port}",
-        "KUBECONFIG": "${user_config.kubeconfig}",
-        "ANY_SELECT": "${user_config.any_select}",
-        "LOGIN_TYPE": "${user_config.login_type}",
-        "ENABLE_TEMP_ADMIN": "${user_config.enable_temp_admin}",
-        "ADMIN_USERNAME": "${user_config.admin_username}",
-        "ADMIN_PASSWORD": "${user_config.admin_password}",
-        "DEBUG": "${user_config.debug}",
-        "LOG_V": "${user_config.log_v}",
-        "JWT_TOKEN_SECRET": "${user_config.jwt_token_secret}",
-        "KUBECTL_SHELL_IMAGE": "${user_config.kubectl_shell_image}",
-        "NODE_SHELL_IMAGE": "${user_config.node_shell_image}",
-        "IMAGE_PULL_TIMEOUT": "${user_config.image_pull_timeout}",
-        "CONNECT_CLUSTER": "${user_config.connect_cluster}",
-        "PRINT_CONFIG": "${user_config.print_config}"
-      }
+    "command": "./k8m",
+    "args": [
+      "--in-cluster=${user_config.in_cluster}"
+    ],
+    "env": {
+      "PORT": "${user_config.port}",
+      "KUBECONFIG": "${user_config.kubeconfig}",
+      "ANY_SELECT": "${user_config.any_select}",
+      "LOGIN_TYPE": "${user_config.login_type}",
+      "ENABLE_TEMP_ADMIN": "${user_config.enable_temp_admin}",
+      "ADMIN_USERNAME": "${user_config.admin_username}",
+      "ADMIN_PASSWORD": "${user_config.admin_password}",
+      "DEBUG": "${user_config.debug}",
+      "LOG_V": "${user_config.log_v}",
+      "JWT_TOKEN_SECRET": "${user_config.jwt_token_secret}",
+      "KUBECTL_SHELL_IMAGE": "${user_config.kubectl_shell_image}",
+      "NODE_SHELL_IMAGE": "${user_config.node_shell_image}",
+      "IMAGE_PULL_TIMEOUT": "${user_config.image_pull_timeout}",
+      "CONNECT_CLUSTER": "${user_config.connect_cluster}",
+      "PRINT_CONFIG": "${user_config.print_config}"
     }
   },
   "tools": [],
@@ -154,81 +152,82 @@
   "quality_score": 64,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "k8m": {
-          "command": "./k8m",
-          "args": [],
-          "env": {}
-        },
-        "k8m-configured": {
-          "command": "./k8m",
-          "args": [
-            "--in-cluster",
-            "--jwt-token-secret",
-            "your-secret-key",
-            "--kubeconfig",
-            "/root/.kube/config",
-            "--kubectl-shell-image",
-            "bitnami/kubectl:latest",
-            "--log-v",
-            "2",
-            "--login-type",
-            "password",
-            "--image-pull-timeout",
-            "30",
-            "--node-shell-image",
-            "alpine:latest",
-            "--port",
-            "3618",
-            "--v",
-            "2"
-          ],
-          "env": {}
-        },
-        "k8m-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--name",
-            "k8m",
-            "--restart",
-            "always",
-            "-p",
-            "3618:3618",
-            "-e",
-            "TZ=Asia/Shanghai",
-            "-v",
-            "./data:/app/data",
-            "registry.cn-hangzhou.aliyuncs.com/minik8m/k8m"
-          ],
-          "env": {
-            "TZ": "Asia/Shanghai"
-          }
-        },
-        "k8m-env-defaults": {
-          "command": "./k8m",
-          "args": [],
-          "env": {
-            "PORT": "3618",
-            "KUBECONFIG": "~/.kube/config",
-            "ANY_SELECT": "true",
-            "LOGIN_TYPE": "password",
-            "ENABLE_TEMP_ADMIN": "false",
-            "DEBUG": "false",
-            "LOG_V": "2",
-            "JWT_TOKEN_SECRET": "your-secret-key",
-            "KUBECTL_SHELL_IMAGE": "bitnami/kubectl:latest",
-            "NODE_SHELL_IMAGE": "alpine:latest",
-            "IMAGE_PULL_TIMEOUT": "30",
-            "CONNECT_CLUSTER": "false",
-            "PRINT_CONFIG": "false"
-          }
-        },
-        "k8m-go": {
-          "command": "go",
-          "args": ["run", "main.go"],
-          "env": {}
+      "k8m": {
+        "command": "./k8m",
+        "args": [],
+        "env": {}
+      },
+      "k8m-configured": {
+        "command": "./k8m",
+        "args": [
+          "--in-cluster",
+          "--jwt-token-secret",
+          "your-secret-key",
+          "--kubeconfig",
+          "/root/.kube/config",
+          "--kubectl-shell-image",
+          "bitnami/kubectl:latest",
+          "--log-v",
+          "2",
+          "--login-type",
+          "password",
+          "--image-pull-timeout",
+          "30",
+          "--node-shell-image",
+          "alpine:latest",
+          "--port",
+          "3618",
+          "--v",
+          "2"
+        ],
+        "env": {}
+      },
+      "k8m-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--name",
+          "k8m",
+          "--restart",
+          "always",
+          "-p",
+          "3618:3618",
+          "-e",
+          "TZ=Asia/Shanghai",
+          "-v",
+          "./data:/app/data",
+          "registry.cn-hangzhou.aliyuncs.com/minik8m/k8m"
+        ],
+        "env": {
+          "TZ": "Asia/Shanghai"
         }
+      },
+      "k8m-env-defaults": {
+        "command": "./k8m",
+        "args": [],
+        "env": {
+          "PORT": "3618",
+          "KUBECONFIG": "~/.kube/config",
+          "ANY_SELECT": "true",
+          "LOGIN_TYPE": "password",
+          "ENABLE_TEMP_ADMIN": "false",
+          "DEBUG": "false",
+          "LOG_V": "2",
+          "JWT_TOKEN_SECRET": "your-secret-key",
+          "KUBECTL_SHELL_IMAGE": "bitnami/kubectl:latest",
+          "NODE_SHELL_IMAGE": "alpine:latest",
+          "IMAGE_PULL_TIMEOUT": "30",
+          "CONNECT_CLUSTER": "false",
+          "PRINT_CONFIG": "false"
+        }
+      },
+      "k8m-go": {
+        "command": "go",
+        "args": [
+          "run",
+          "main.go"
+        ],
+        "env": {}
       }
     },
     "oauth": {

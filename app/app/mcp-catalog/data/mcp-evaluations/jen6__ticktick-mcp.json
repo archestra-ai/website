@@ -8,18 +8,18 @@
     "name": "jen6"
   },
   "server": {
-    "type": "python",
-    "entry_point": "ticktick-mcp",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["--from", "git+https://github.com/jen6/ticktick-mcp.git", "ticktick-mcp"],
-      "env": {
-        "TICKTICK_CLIENT_ID": "${user_config.ticktick_client_id}",
-        "TICKTICK_CLIENT_SECRET": "${user_config.ticktick_client_secret}",
-        "TICKTICK_REDIRECT_URI": "${user_config.ticktick_redirect_uri}",
-        "TICKTICK_USERNAME": "${user_config.ticktick_username}",
-        "TICKTICK_PASSWORD": "${user_config.ticktick_password}"
-      }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/jen6/ticktick-mcp.git",
+      "ticktick-mcp"
+    ],
+    "env": {
+      "TICKTICK_CLIENT_ID": "${user_config.ticktick_client_id}",
+      "TICKTICK_CLIENT_SECRET": "${user_config.ticktick_client_secret}",
+      "TICKTICK_REDIRECT_URI": "${user_config.ticktick_redirect_uri}",
+      "TICKTICK_USERNAME": "${user_config.ticktick_username}",
+      "TICKTICK_PASSWORD": "${user_config.ticktick_password}"
     }
   },
   "tools": [],
@@ -67,12 +67,14 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ticktick-mcp": {
-          "command": "uvx",
-          "args": ["--from", "git+https://github.com/jen6/ticktick-mcp.git", "ticktick-mcp"],
-          "env": {}
-        }
+      "ticktick-mcp": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/jen6/ticktick-mcp.git",
+          "ticktick-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

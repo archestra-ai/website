@@ -8,13 +8,14 @@
     "name": "fr0gger"
   },
   "server": {
-    "type": "python",
-    "entry_point": "__main__.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "orkl"],
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "orkl"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +26,15 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "orkl": {
-          "command": "uv",
-          "args": ["--directory", "/MyMCP/mcptest/orkl", "run", "orkl"],
-          "env": {}
-        }
+      "orkl": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/MyMCP/mcptest/orkl",
+          "run",
+          "orkl"
+        ],
+        "env": {}
       }
     },
     "oauth": {

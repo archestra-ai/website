@@ -8,14 +8,12 @@
     "name": "transcribe-app"
   },
   "server": {
-    "type": "node",
-    "entry_point": "build/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "MCP_INTEGRATION_URL": "${user_config.mcp_integration_url}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "MCP_INTEGRATION_URL": "${user_config.mcp_integration_url}"
     }
   },
   "tools": [],
@@ -35,13 +33,13 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "transcribe-local": {
-          "command": "node",
-          "args": ["<path-to-unpacked-dxt-location>/build/index.js"],
-          "env": {
-            "MCP_INTEGRATION_URL": "<your-MCP-integration-URL>"
-          }
+      "transcribe-local": {
+        "command": "node",
+        "args": [
+          "<path-to-unpacked-dxt-location>/build/index.js"
+        ],
+        "env": {
+          "MCP_INTEGRATION_URL": "<your-MCP-integration-URL>"
         }
       }
     },

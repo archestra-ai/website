@@ -8,14 +8,12 @@
     "name": "ekkyarmandi"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/main.py"],
-      "env": {
-        "TICKTICK_API_KEY": "${user_config.ticktick_api_key}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/main.py"
+    ],
+    "env": {
+      "TICKTICK_API_KEY": "${user_config.ticktick_api_key}"
     }
   },
   "tools": [],
@@ -35,12 +33,12 @@
   "quality_score": 24,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ticktick-mcp": {
-          "command": "python",
-          "args": ["main.py"],
-          "env": {}
-        }
+      "ticktick-mcp": {
+        "command": "python",
+        "args": [
+          "main.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

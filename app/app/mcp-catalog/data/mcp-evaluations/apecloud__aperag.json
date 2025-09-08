@@ -8,15 +8,19 @@
     "name": "apecloud"
   },
   "server": {
-    "type": "python",
-    "entry_point": "app/main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"],
-      "env": {
-        "API_KEY": "${user_config.api_key}",
-        "DOCRAY_HOST": "${user_config.docray_host}"
-      }
+    "command": "python",
+    "args": [
+      "-m",
+      "uvicorn",
+      "app.main:app",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000"
+    ],
+    "env": {
+      "API_KEY": "${user_config.api_key}",
+      "DOCRAY_HOST": "${user_config.docray_host}"
     }
   },
   "tools": [],
@@ -43,17 +47,27 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "aperag-mcp": {
-          "command": "docker-compose",
-          "args": ["up", "-d", "--pull", "always"],
-          "env": {}
-        },
-        "aperag-helm": {
-          "command": "helm",
-          "args": ["install", "aperag", "./deploy/aperag", "--namespace", "default", "--create-namespace"],
-          "env": {}
-        }
+      "aperag-mcp": {
+        "command": "docker-compose",
+        "args": [
+          "up",
+          "-d",
+          "--pull",
+          "always"
+        ],
+        "env": {}
+      },
+      "aperag-helm": {
+        "command": "helm",
+        "args": [
+          "install",
+          "aperag",
+          "./deploy/aperag",
+          "--namespace",
+          "default",
+          "--create-namespace"
+        ],
+        "env": {}
       }
     },
     "oauth": {

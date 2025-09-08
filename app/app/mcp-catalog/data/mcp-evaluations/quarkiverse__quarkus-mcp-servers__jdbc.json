@@ -8,20 +8,16 @@
     "name": "quarkiverse"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "jbang",
-    "mcp_config": {
-      "command": "jbang",
-      "args": [
-        "jdbc@quarkiverse/quarkus-mcp-servers",
-        "${user_config.jdbc_url}",
-        "-u",
-        "${user_config.username}",
-        "-p",
-        "${user_config.password}"
-      ],
-      "env": {}
-    }
+    "command": "jbang",
+    "args": [
+      "jdbc@quarkiverse/quarkus-mcp-servers",
+      "${user_config.jdbc_url}",
+      "-u",
+      "${user_config.username}",
+      "-p",
+      "${user_config.password}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -54,68 +50,74 @@
   "quality_score": 67,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "jdbc": {
-          "command": "jbang",
-          "args": ["jdbc@quarkiverse/quarkus-mcp-servers", "[jdbc_url]"],
-          "env": {}
-        },
-        "jdbcquarkiverse-quarkus-mcp-servers-empty-h2": {
-          "command": "jbang",
-          "args": ["jdbc@quarkiverse/quarkus-mcp-servers"],
-          "env": {}
-        },
-        "jdbcquarkiverse-quarkus-mcp-servers-oracle": {
-          "command": "jbang",
-          "args": ["jdbc@quarkiverse/quarkus-mcp-servers", "jdbc:oracle:thin:@localhost:1521:orcl"],
-          "env": {}
-        },
-        "jdbcquarkiverse-quarkus-mcp-servers-postgresql": {
-          "command": "jbang",
-          "args": [
-            "jdbc@quarkiverse/quarkus-mcp-servers",
-            "jdbc:postgresql://localhost:5432/sakila",
-            "-u",
-            "sakila",
-            "-p",
-            "p_ssW0rd"
-          ],
-          "env": {}
-        },
-        "jdbcquarkiverse-quarkus-mcp-servers-chinook": {
-          "command": "jbang",
-          "args": [
-            "jdbc@quarkiverse/quarkus-mcp-servers",
-            "jdbc:sqlite:%{https://github.com/lerocha/chinook-database/raw/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite}"
-          ],
-          "env": {}
-        },
-        "jdbcquarkiverse-quarkus-mcp-servers-northwind": {
-          "command": "jbang",
-          "args": [
-            "jdbc@quarkiverse/quarkus-mcp-servers",
-            "jdbc:sqlite:%{https://github.com/jpwhite3/northwind-SQLite3/raw/refs/heads/main/dist/northwind.db}"
-          ],
-          "env": {}
-        },
-        "jdbcquarkiverse-quarkus-mcp-servers-netflix": {
-          "command": "jbang",
-          "args": [
-            "jdbc@quarkiverse/quarkus-mcp-servers",
-            "jdbc:sqlite:%{https://github.com/lerocha/netflixdb/releases/download/v1.0.0/netflixdb.sqlite}"
-          ],
-          "env": {}
-        },
-        "jdbcquarkiverse-quarkus-mcp-servers-with-logging": {
-          "command": "jbang",
-          "args": [
-            "-Dquarkus.log.file.enable=true",
-            "-Dquarkus.log.file.path=${user.home}/mcp-jdbc.log",
-            "jdbc@quarkiverse/quarkus-mcp-servers",
-            "jdbc:h2:mem:testdb"
-          ],
-          "env": {}
-        }
+      "jdbc": {
+        "command": "jbang",
+        "args": [
+          "jdbc@quarkiverse/quarkus-mcp-servers",
+          "[jdbc_url]"
+        ],
+        "env": {}
+      },
+      "jdbcquarkiverse-quarkus-mcp-servers-empty-h2": {
+        "command": "jbang",
+        "args": [
+          "jdbc@quarkiverse/quarkus-mcp-servers"
+        ],
+        "env": {}
+      },
+      "jdbcquarkiverse-quarkus-mcp-servers-oracle": {
+        "command": "jbang",
+        "args": [
+          "jdbc@quarkiverse/quarkus-mcp-servers",
+          "jdbc:oracle:thin:@localhost:1521:orcl"
+        ],
+        "env": {}
+      },
+      "jdbcquarkiverse-quarkus-mcp-servers-postgresql": {
+        "command": "jbang",
+        "args": [
+          "jdbc@quarkiverse/quarkus-mcp-servers",
+          "jdbc:postgresql://localhost:5432/sakila",
+          "-u",
+          "sakila",
+          "-p",
+          "p_ssW0rd"
+        ],
+        "env": {}
+      },
+      "jdbcquarkiverse-quarkus-mcp-servers-chinook": {
+        "command": "jbang",
+        "args": [
+          "jdbc@quarkiverse/quarkus-mcp-servers",
+          "jdbc:sqlite:%{https://github.com/lerocha/chinook-database/raw/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite}"
+        ],
+        "env": {}
+      },
+      "jdbcquarkiverse-quarkus-mcp-servers-northwind": {
+        "command": "jbang",
+        "args": [
+          "jdbc@quarkiverse/quarkus-mcp-servers",
+          "jdbc:sqlite:%{https://github.com/jpwhite3/northwind-SQLite3/raw/refs/heads/main/dist/northwind.db}"
+        ],
+        "env": {}
+      },
+      "jdbcquarkiverse-quarkus-mcp-servers-netflix": {
+        "command": "jbang",
+        "args": [
+          "jdbc@quarkiverse/quarkus-mcp-servers",
+          "jdbc:sqlite:%{https://github.com/lerocha/netflixdb/releases/download/v1.0.0/netflixdb.sqlite}"
+        ],
+        "env": {}
+      },
+      "jdbcquarkiverse-quarkus-mcp-servers-with-logging": {
+        "command": "jbang",
+        "args": [
+          "-Dquarkus.log.file.enable=true",
+          "-Dquarkus.log.file.path=${user.home}/mcp-jdbc.log",
+          "jdbc@quarkiverse/quarkus-mcp-servers",
+          "jdbc:h2:mem:testdb"
+        ],
+        "env": {}
       }
     },
     "oauth": {

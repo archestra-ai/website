@@ -8,20 +8,16 @@
     "name": "sonirico"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-shell",
-    "mcp_config": {
-      "command": "mcp-shell",
-      "args": [],
-      "env": {
-        "MCP_SHELL_SERVER_NAME": "${user_config.mcp_shell_server_name}",
-        "MCP_SHELL_VERSION": "${user_config.mcp_shell_version}",
-        "MCP_SHELL_LOG_LEVEL": "${user_config.mcp_shell_log_level}",
-        "MCP_SHELL_LOG_FORMAT": "${user_config.mcp_shell_log_format}",
-        "MCP_SHELL_LOG_OUTPUT": "${user_config.mcp_shell_log_output}",
-        "MCP_SHELL_SEC_CONFIG_FILE": "${user_config.mcp_shell_sec_config_file}",
-        "MCP_SHELL_SECURITY_ENABLED": "${user_config.mcp_shell_security_enabled}"
-      }
+    "command": "mcp-shell",
+    "args": [],
+    "env": {
+      "MCP_SHELL_SERVER_NAME": "${user_config.mcp_shell_server_name}",
+      "MCP_SHELL_VERSION": "${user_config.mcp_shell_version}",
+      "MCP_SHELL_LOG_LEVEL": "${user_config.mcp_shell_log_level}",
+      "MCP_SHELL_LOG_FORMAT": "${user_config.mcp_shell_log_format}",
+      "MCP_SHELL_LOG_OUTPUT": "${user_config.mcp_shell_log_output}",
+      "MCP_SHELL_SEC_CONFIG_FILE": "${user_config.mcp_shell_sec_config_file}",
+      "MCP_SHELL_SECURITY_ENABLED": "${user_config.mcp_shell_security_enabled}"
     }
   },
   "tools": [],
@@ -81,56 +77,59 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-shell": {
-          "command": "mcp-shell",
-          "args": [],
-          "env": {}
-        },
-        "mcp-shell-secure": {
-          "command": "mcp-shell",
-          "args": [],
-          "env": {}
-        },
-        "mcp-shell-custom-config-file": {
-          "command": "mcp-shell",
-          "args": [],
-          "env": {
-            "MCP_SHELL_SEC_CONFIG_FILE": "security.json"
-          }
-        },
-        "mcp-shell-debug-logging": {
-          "command": "mcp-shell",
-          "args": [],
-          "env": {
-            "MCP_SHELL_LOG_LEVEL": "debug"
-          }
-        },
-        "mcp-shell-docker-secure": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "mcp-shell:latest"],
-          "env": {
-            "MCP_SHELL_SECURITY_ENABLED": "true",
-            "MCP_SHELL_LOG_LEVEL": "info"
-          }
-        },
-        "mcp-shell-production-json-config": {
-          "command": "mcp-shell",
-          "args": [],
-          "env": {
-            "MCP_SHELL_LOG_LEVEL": "info",
-            "MCP_SHELL_LOG_FORMAT": "json",
-            "MCP_SHELL_SEC_CONFIG_FILE": "/etc/mcp-shell/config.json"
-          }
-        },
-        "mcp-shell-production-yaml-config": {
-          "command": "mcp-shell",
-          "args": [],
-          "env": {
-            "MCP_SHELL_SEC_CONFIG_FILE": "security.yaml",
-            "MCP_SHELL_LOG_LEVEL": "info",
-            "MCP_SHELL_LOG_FORMAT": "json"
-          }
+      "mcp-shell": {
+        "command": "mcp-shell",
+        "args": [],
+        "env": {}
+      },
+      "mcp-shell-secure": {
+        "command": "mcp-shell",
+        "args": [],
+        "env": {}
+      },
+      "mcp-shell-custom-config-file": {
+        "command": "mcp-shell",
+        "args": [],
+        "env": {
+          "MCP_SHELL_SEC_CONFIG_FILE": "security.json"
+        }
+      },
+      "mcp-shell-debug-logging": {
+        "command": "mcp-shell",
+        "args": [],
+        "env": {
+          "MCP_SHELL_LOG_LEVEL": "debug"
+        }
+      },
+      "mcp-shell-docker-secure": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "mcp-shell:latest"
+        ],
+        "env": {
+          "MCP_SHELL_SECURITY_ENABLED": "true",
+          "MCP_SHELL_LOG_LEVEL": "info"
+        }
+      },
+      "mcp-shell-production-json-config": {
+        "command": "mcp-shell",
+        "args": [],
+        "env": {
+          "MCP_SHELL_LOG_LEVEL": "info",
+          "MCP_SHELL_LOG_FORMAT": "json",
+          "MCP_SHELL_SEC_CONFIG_FILE": "/etc/mcp-shell/config.json"
+        }
+      },
+      "mcp-shell-production-yaml-config": {
+        "command": "mcp-shell",
+        "args": [],
+        "env": {
+          "MCP_SHELL_SEC_CONFIG_FILE": "security.yaml",
+          "MCP_SHELL_LOG_LEVEL": "info",
+          "MCP_SHELL_LOG_FORMAT": "json"
         }
       }
     },

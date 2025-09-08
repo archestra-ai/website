@@ -8,13 +8,13 @@
     "name": "gomarble-ai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/server.py", "--fb-token", "${user_config.fb_token}"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "${__dirname}/server.py",
+      "--fb-token",
+      "${user_config.fb_token}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,22 +33,32 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "gomarble-ai-facebook-ads-mcp-server": {
-          "command": "python",
-          "args": ["/path/to/your/fb-ads-mcp-server/server.py", "--fb-token", "YOUR_META_ACCESS_TOKEN"],
-          "env": {}
-        },
-        "gomarble-ai-facebook-ads-mcp-server-venv": {
-          "command": "/path/to/your/fb-ads-mcp-server/venv/bin/python",
-          "args": ["/path/to/your/fb-ads-mcp-server/server.py", "--fb-token", "YOUR_META_ACCESS_TOKEN"],
-          "env": {}
-        },
-        "gomarble-ai-facebook-ads-mcp-server-debug": {
-          "command": "python",
-          "args": ["server.py", "--fb-token", "YOUR_META_ACCESS_TOKEN"],
-          "env": {}
-        }
+      "gomarble-ai-facebook-ads-mcp-server": {
+        "command": "python",
+        "args": [
+          "/path/to/your/fb-ads-mcp-server/server.py",
+          "--fb-token",
+          "YOUR_META_ACCESS_TOKEN"
+        ],
+        "env": {}
+      },
+      "gomarble-ai-facebook-ads-mcp-server-venv": {
+        "command": "/path/to/your/fb-ads-mcp-server/venv/bin/python",
+        "args": [
+          "/path/to/your/fb-ads-mcp-server/server.py",
+          "--fb-token",
+          "YOUR_META_ACCESS_TOKEN"
+        ],
+        "env": {}
+      },
+      "gomarble-ai-facebook-ads-mcp-server-debug": {
+        "command": "python",
+        "args": [
+          "server.py",
+          "--fb-token",
+          "YOUR_META_ACCESS_TOKEN"
+        ],
+        "env": {}
       }
     },
     "oauth": {

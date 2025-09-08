@@ -8,18 +8,18 @@
     "name": "designcomputer"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mysql_mcp_server",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["--from", "mysql-mcp-server", "mysql_mcp_server"],
-      "env": {
-        "MYSQL_HOST": "${user_config.mysql_host}",
-        "MYSQL_PORT": "${user_config.mysql_port}",
-        "MYSQL_USER": "${user_config.mysql_user}",
-        "MYSQL_PASSWORD": "${user_config.mysql_password}",
-        "MYSQL_DATABASE": "${user_config.mysql_database}"
-      }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "mysql-mcp-server",
+      "mysql_mcp_server"
+    ],
+    "env": {
+      "MYSQL_HOST": "${user_config.mysql_host}",
+      "MYSQL_PORT": "${user_config.mysql_port}",
+      "MYSQL_USER": "${user_config.mysql_user}",
+      "MYSQL_PASSWORD": "${user_config.mysql_password}",
+      "MYSQL_DATABASE": "${user_config.mysql_database}"
     }
   },
   "tools": [],
@@ -69,28 +69,35 @@
   "quality_score": 67,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mysql-mcp-server-with-config": {
-          "command": "uv",
-          "args": ["--directory", "path/to/mysql_mcp_server", "run", "mysql_mcp_server"],
-          "env": {
-            "MYSQL_HOST": "localhost",
-            "MYSQL_PORT": "3306",
-            "MYSQL_USER": "your_username",
-            "MYSQL_PASSWORD": "your_password",
-            "MYSQL_DATABASE": "your_database"
-          }
-        },
-        "mysql-mcp-server-stdio-with-config": {
-          "command": "uvx",
-          "args": ["--from", "mysql-mcp-server", "mysql_mcp_server"],
-          "env": {
-            "MYSQL_HOST": "localhost",
-            "MYSQL_PORT": "3306",
-            "MYSQL_USER": "your_username",
-            "MYSQL_PASSWORD": "your_password",
-            "MYSQL_DATABASE": "your_database"
-          }
+      "mysql-mcp-server-with-config": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "path/to/mysql_mcp_server",
+          "run",
+          "mysql_mcp_server"
+        ],
+        "env": {
+          "MYSQL_HOST": "localhost",
+          "MYSQL_PORT": "3306",
+          "MYSQL_USER": "your_username",
+          "MYSQL_PASSWORD": "your_password",
+          "MYSQL_DATABASE": "your_database"
+        }
+      },
+      "mysql-mcp-server-stdio-with-config": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "mysql-mcp-server",
+          "mysql_mcp_server"
+        ],
+        "env": {
+          "MYSQL_HOST": "localhost",
+          "MYSQL_PORT": "3306",
+          "MYSQL_USER": "your_username",
+          "MYSQL_PASSWORD": "your_password",
+          "MYSQL_DATABASE": "your_database"
         }
       }
     },

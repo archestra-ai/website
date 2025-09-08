@@ -8,14 +8,13 @@
     "name": "magarcia"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-server-giphy"],
-      "env": {
-        "GIPHY_API_KEY": "${user_config.giphy_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-server-giphy"
+    ],
+    "env": {
+      "GIPHY_API_KEY": "${user_config.giphy_api_key}"
     }
   },
   "tools": [],
@@ -35,27 +34,33 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-giphy": {
-          "command": "npx",
-          "args": ["-y", "mcp-server-giphy"],
-          "env": {
-            "GIPHY_API_KEY": "<YOUR_API_KEY>"
-          }
-        },
-        "mcp-server-giphy-npm-start": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {
-            "GIPHY_API_KEY": "<YOUR_API_KEY>"
-          }
-        },
-        "mcp-server-giphy-npm-dev": {
-          "command": "npm",
-          "args": ["run", "dev"],
-          "env": {
-            "GIPHY_API_KEY": "<YOUR_API_KEY>"
-          }
+      "mcp-server-giphy": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-server-giphy"
+        ],
+        "env": {
+          "GIPHY_API_KEY": "<YOUR_API_KEY>"
+        }
+      },
+      "mcp-server-giphy-npm-start": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {
+          "GIPHY_API_KEY": "<YOUR_API_KEY>"
+        }
+      },
+      "mcp-server-giphy-npm-dev": {
+        "command": "npm",
+        "args": [
+          "run",
+          "dev"
+        ],
+        "env": {
+          "GIPHY_API_KEY": "<YOUR_API_KEY>"
         }
       }
     },

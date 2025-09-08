@@ -8,14 +8,10 @@
     "name": "hannesrudolph"
   },
   "server": {
-    "type": "python",
-    "entry_point": "imessage-query-server.py",
-    "mcp_config": {
-      "command": "${__dirname}/imessage-query-server.py",
-      "args": [],
-      "env": {
-        "SQLITE_DB_PATH": "${user_config.sqlite_db_path}"
-      }
+    "command": "${__dirname}/imessage-query-server.py",
+    "args": [],
+    "env": {
+      "SQLITE_DB_PATH": "${user_config.sqlite_db_path}"
     }
   },
   "tools": [],
@@ -35,12 +31,10 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "imessage-query": {
-          "command": "/full/path/to/imessage-query-server.py",
-          "args": [],
-          "env": {}
-        }
+      "imessage-query": {
+        "command": "/full/path/to/imessage-query-server.py",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

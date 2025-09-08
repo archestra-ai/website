@@ -8,14 +8,14 @@
     "name": "rohitg00"
   },
   "server": {
-    "type": "python",
-    "entry_point": "kubectl_mcp_tool",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "kubectl_mcp_tool", "serve"],
-      "env": {
-        "KUBECONFIG": "${user_config.kubeconfig}"
-      }
+    "command": "python",
+    "args": [
+      "-m",
+      "kubectl_mcp_tool",
+      "serve"
+    ],
+    "env": {
+      "KUBECONFIG": "${user_config.kubeconfig}"
     }
   },
   "tools": [],
@@ -36,24 +36,24 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kubectl-mcp-tool": {
-          "command": "kubectl-mcp",
-          "args": ["serve"],
-          "env": {}
-        },
-        "rohitghumare64-kubectl-mcp-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8081:8000",
-            "-v",
-            "$HOME/.kube:/root/.kube",
-            "rohitghumare64/kubectl-mcp-server:latest"
-          ],
-          "env": {}
-        }
+      "kubectl-mcp-tool": {
+        "command": "kubectl-mcp",
+        "args": [
+          "serve"
+        ],
+        "env": {}
+      },
+      "rohitghumare64-kubectl-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8081:8000",
+          "-v",
+          "$HOME/.kube:/root/.kube",
+          "rohitghumare64/kubectl-mcp-server:latest"
+        ],
+        "env": {}
       }
     },
     "oauth": {

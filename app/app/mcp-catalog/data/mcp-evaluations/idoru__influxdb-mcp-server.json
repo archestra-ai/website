@@ -8,16 +8,15 @@
     "name": "idoru"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "influxdb-mcp-server"],
-      "env": {
-        "INFLUXDB_TOKEN": "${user_config.influxdb_token}",
-        "INFLUXDB_URL": "${user_config.influxdb_url}",
-        "INFLUXDB_ORG": "${user_config.influxdb_org}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "influxdb-mcp-server"
+    ],
+    "env": {
+      "INFLUXDB_TOKEN": "${user_config.influxdb_token}",
+      "INFLUXDB_URL": "${user_config.influxdb_url}",
+      "INFLUXDB_ORG": "${user_config.influxdb_org}"
     }
   },
   "tools": [],
@@ -50,45 +49,51 @@
   "quality_score": 72,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "influxdb-mcp-server": {
-          "command": "npx",
-          "args": ["influxdb-mcp-server"],
-          "env": {
-            "INFLUXDB_TOKEN": "your_token"
-          }
-        },
-        "influxdb-mcp-server-global": {
-          "command": "influxdb-mcp-server",
-          "args": [],
-          "env": {
-            "INFLUXDB_TOKEN": "your_token"
-          }
-        },
-        "influxdb-mcp-server-from-source": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {
-            "INFLUXDB_TOKEN": "your_token"
-          }
-        },
-        "influxdb-mcp-server-npx-configured": {
-          "command": "npx",
-          "args": ["influxdb-mcp-server"],
-          "env": {
-            "INFLUXDB_TOKEN": "your_token",
-            "INFLUXDB_URL": "http://localhost:8086",
-            "INFLUXDB_ORG": "your_org"
-          }
-        },
-        "influxdb-mcp-server-local-path-configured": {
-          "command": "node",
-          "args": ["/path/to/influxdb-mcp-server/src/index.js"],
-          "env": {
-            "INFLUXDB_TOKEN": "your_token",
-            "INFLUXDB_URL": "http://localhost:8086",
-            "INFLUXDB_ORG": "your_org"
-          }
+      "influxdb-mcp-server": {
+        "command": "npx",
+        "args": [
+          "influxdb-mcp-server"
+        ],
+        "env": {
+          "INFLUXDB_TOKEN": "your_token"
+        }
+      },
+      "influxdb-mcp-server-global": {
+        "command": "influxdb-mcp-server",
+        "args": [],
+        "env": {
+          "INFLUXDB_TOKEN": "your_token"
+        }
+      },
+      "influxdb-mcp-server-from-source": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {
+          "INFLUXDB_TOKEN": "your_token"
+        }
+      },
+      "influxdb-mcp-server-npx-configured": {
+        "command": "npx",
+        "args": [
+          "influxdb-mcp-server"
+        ],
+        "env": {
+          "INFLUXDB_TOKEN": "your_token",
+          "INFLUXDB_URL": "http://localhost:8086",
+          "INFLUXDB_ORG": "your_org"
+        }
+      },
+      "influxdb-mcp-server-local-path-configured": {
+        "command": "node",
+        "args": [
+          "/path/to/influxdb-mcp-server/src/index.js"
+        ],
+        "env": {
+          "INFLUXDB_TOKEN": "your_token",
+          "INFLUXDB_URL": "http://localhost:8086",
+          "INFLUXDB_ORG": "your_org"
         }
       }
     },

@@ -8,19 +8,18 @@
     "name": "influxdata"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-influxdb"],
-      "env": {
-        "INFLUX_DB_INSTANCE_URL": "${user_config.influx_db_instance_url}",
-        "INFLUX_DB_TOKEN": "${user_config.influx_db_token}",
-        "INFLUX_DB_PRODUCT_TYPE": "${user_config.influx_db_product_type}",
-        "INFLUX_DB_CLUSTER_ID": "${user_config.influx_db_cluster_id}",
-        "INFLUX_DB_ACCOUNT_ID": "${user_config.influx_db_account_id}",
-        "INFLUX_DB_MANAGEMENT_TOKEN": "${user_config.influx_db_management_token}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-influxdb"
+    ],
+    "env": {
+      "INFLUX_DB_INSTANCE_URL": "${user_config.influx_db_instance_url}",
+      "INFLUX_DB_TOKEN": "${user_config.influx_db_token}",
+      "INFLUX_DB_PRODUCT_TYPE": "${user_config.influx_db_product_type}",
+      "INFLUX_DB_CLUSTER_ID": "${user_config.influx_db_cluster_id}",
+      "INFLUX_DB_ACCOUNT_ID": "${user_config.influx_db_account_id}",
+      "INFLUX_DB_MANAGEMENT_TOKEN": "${user_config.influx_db_management_token}"
     }
   },
   "tools": [],
@@ -77,65 +76,68 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "influx-mcp-standalone": {
-          "command": "node",
-          "args": ["/path/to/influx-mcp-standalone/build/index.js"],
-          "env": {
-            "INFLUX_DB_INSTANCE_URL": "http://localhost:8181/",
-            "INFLUX_DB_TOKEN": "<YOUR_INFLUXDB_TOKEN>",
-            "INFLUX_DB_PRODUCT_TYPE": "core"
-          }
-        },
-        "modelcontextprotocol-server-influxdb": {
-          "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-influxdb"],
-          "env": {
-            "INFLUX_DB_INSTANCE_URL": "http://localhost:8181/",
-            "INFLUX_DB_TOKEN": "<YOUR_INFLUXDB_TOKEN>",
-            "INFLUX_DB_PRODUCT_TYPE": "core"
-          }
-        },
-        "mcp-influxdb-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "-e",
-            "INFLUX_DB_INSTANCE_URL",
-            "-e",
-            "INFLUX_DB_TOKEN",
-            "-e",
-            "INFLUX_DB_PRODUCT_TYPE",
-            "mcp/influxdb"
-          ],
-          "env": {
-            "INFLUX_DB_INSTANCE_URL": "http://remote-influxdb-host:8181/",
-            "INFLUX_DB_TOKEN": "<YOUR_INFLUXDB_TOKEN>",
-            "INFLUX_DB_PRODUCT_TYPE": "core"
-          }
-        },
-        "influxdb-mcp-server-docker-host-gateway": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "--add-host=host.docker.internal:host-gateway",
-            "-e",
-            "INFLUX_DB_INSTANCE_URL",
-            "-e",
-            "INFLUX_DB_TOKEN",
-            "-e",
-            "INFLUX_DB_PRODUCT_TYPE",
-            "influxdb-mcp-server"
-          ],
-          "env": {
-            "INFLUX_DB_INSTANCE_URL": "http://host.docker.internal:8181/",
-            "INFLUX_DB_TOKEN": "<YOUR_INFLUXDB_TOKEN>",
-            "INFLUX_DB_PRODUCT_TYPE": "enterprise"
-          }
+      "influx-mcp-standalone": {
+        "command": "node",
+        "args": [
+          "/path/to/influx-mcp-standalone/build/index.js"
+        ],
+        "env": {
+          "INFLUX_DB_INSTANCE_URL": "http://localhost:8181/",
+          "INFLUX_DB_TOKEN": "<YOUR_INFLUXDB_TOKEN>",
+          "INFLUX_DB_PRODUCT_TYPE": "core"
+        }
+      },
+      "modelcontextprotocol-server-influxdb": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-influxdb"
+        ],
+        "env": {
+          "INFLUX_DB_INSTANCE_URL": "http://localhost:8181/",
+          "INFLUX_DB_TOKEN": "<YOUR_INFLUXDB_TOKEN>",
+          "INFLUX_DB_PRODUCT_TYPE": "core"
+        }
+      },
+      "mcp-influxdb-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "-e",
+          "INFLUX_DB_INSTANCE_URL",
+          "-e",
+          "INFLUX_DB_TOKEN",
+          "-e",
+          "INFLUX_DB_PRODUCT_TYPE",
+          "mcp/influxdb"
+        ],
+        "env": {
+          "INFLUX_DB_INSTANCE_URL": "http://remote-influxdb-host:8181/",
+          "INFLUX_DB_TOKEN": "<YOUR_INFLUXDB_TOKEN>",
+          "INFLUX_DB_PRODUCT_TYPE": "core"
+        }
+      },
+      "influxdb-mcp-server-docker-host-gateway": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "--add-host=host.docker.internal:host-gateway",
+          "-e",
+          "INFLUX_DB_INSTANCE_URL",
+          "-e",
+          "INFLUX_DB_TOKEN",
+          "-e",
+          "INFLUX_DB_PRODUCT_TYPE",
+          "influxdb-mcp-server"
+        ],
+        "env": {
+          "INFLUX_DB_INSTANCE_URL": "http://host.docker.internal:8181/",
+          "INFLUX_DB_TOKEN": "<YOUR_INFLUXDB_TOKEN>",
+          "INFLUX_DB_PRODUCT_TYPE": "enterprise"
         }
       }
     },

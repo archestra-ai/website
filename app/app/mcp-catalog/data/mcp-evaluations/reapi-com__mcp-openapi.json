@@ -8,13 +8,14 @@
     "name": "ReAPI-com"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@reapi/mcp-openapi@latest", "--dir", "${user_config.specs_directory}"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@reapi/mcp-openapi@latest",
+      "--dir",
+      "${user_config.specs_directory}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,17 +34,25 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "reapi-mcp-openapi-project-config": {
-          "command": "npx",
-          "args": ["-y", "@reapi/mcp-openapi@latest", "--dir", "./specs"],
-          "env": {}
-        },
-        "reapi-mcp-openapi-global-config": {
-          "command": "npx",
-          "args": ["-y", "@reapi/mcp-openapi@latest", "--dir", "/path/to/your/specs"],
-          "env": {}
-        }
+      "reapi-mcp-openapi-project-config": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@reapi/mcp-openapi@latest",
+          "--dir",
+          "./specs"
+        ],
+        "env": {}
+      },
+      "reapi-mcp-openapi-global-config": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@reapi/mcp-openapi@latest",
+          "--dir",
+          "/path/to/your/specs"
+        ],
+        "env": {}
       }
     },
     "oauth": {

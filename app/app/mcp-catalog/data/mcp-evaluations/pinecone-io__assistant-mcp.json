@@ -8,16 +8,12 @@
     "name": "pinecone-io"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "assistant-mcp",
-    "mcp_config": {
-      "command": "${__dirname}/server/assistant-mcp",
-      "args": [],
-      "env": {
-        "PINECONE_API_KEY": "${user_config.pinecone_api_key}",
-        "PINECONE_ASSISTANT_HOST": "${user_config.pinecone_assistant_host}",
-        "LOG_LEVEL": "${user_config.log_level}"
-      }
+    "command": "${__dirname}/server/assistant-mcp",
+    "args": [],
+    "env": {
+      "PINECONE_API_KEY": "${user_config.pinecone_api_key}",
+      "PINECONE_ASSISTANT_HOST": "${user_config.pinecone_assistant_host}",
+      "LOG_LEVEL": "${user_config.log_level}"
     }
   },
   "tools": [],
@@ -51,76 +47,78 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "pinecone-assistant-mcp-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "PINECONE_API_KEY=<YOUR_PINECONE_API_KEY_HERE>",
-            "-e",
-            "PINECONE_ASSISTANT_HOST=<YOUR_PINE_ASSISTANT_HOST_HERE>",
-            "pinecone/assistant-mcp"
-          ],
-          "env": {
-            "PINECONE_API_KEY": "<YOUR_PINECONE_API_KEY_HERE>",
-            "PINECONE_ASSISTANT_HOST": "<YOUR_PINE_ASSISTANT_HOST_HERE>"
-          }
-        },
-        "pinecone-assistant": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "PINECONE_API_KEY",
-            "-e",
-            "PINECONE_ASSISTANT_HOST",
-            "pinecone/assistant-mcp"
-          ],
-          "env": {
-            "PINECONE_API_KEY": "<YOUR_PINECONE_API_KEY_HERE>",
-            "PINECONE_ASSISTANT_HOST": "<YOUR_PINECONE_ASSISTANT_HOST_HERE>"
-          }
-        },
-        "assistant-mcp-source": {
-          "command": "./target/release/assistant-mcp",
-          "args": [],
-          "env": {
-            "PINECONE_API_KEY": "<YOUR_PINECONE_API_KEY_HERE>",
-            "PINECONE_ASSISTANT_HOST": "<YOUR_PINECONE_ASSISTANT_HOST_HERE>"
-          }
-        },
-        "assistant-mcp-inspector-cargo": {
-          "command": "npx",
-          "args": ["@modelcontextprotocol/inspector", "cargo", "run"],
-          "env": {
-            "PINECONE_API_KEY": "<YOUR_PINECONE_API_KEY_HERE>",
-            "PINECONE_ASSISTANT_HOST": "<YOUR_PINECONE_ASSISTANT_HOST_HERE>"
-          }
-        },
-        "pinecone-assistant-mcp-inspector-docker": {
-          "command": "npx",
-          "args": [
-            "@modelcontextprotocol/inspector",
-            "--",
-            "docker",
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "PINECONE_API_KEY",
-            "-e",
-            "PINECONE_ASSISTANT_HOST",
-            "pinecone/assistant-mcp"
-          ],
-          "env": {
-            "PINECONE_API_KEY": "<YOUR_PINECONE_API_KEY_HERE>",
-            "PINECONE_ASSISTANT_HOST": "<YOUR_PINECONE_ASSISTANT_HOST_HERE>"
-          }
+      "pinecone-assistant-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "PINECONE_API_KEY=<YOUR_PINECONE_API_KEY_HERE>",
+          "-e",
+          "PINECONE_ASSISTANT_HOST=<YOUR_PINE_ASSISTANT_HOST_HERE>",
+          "pinecone/assistant-mcp"
+        ],
+        "env": {
+          "PINECONE_API_KEY": "<YOUR_PINECONE_API_KEY_HERE>",
+          "PINECONE_ASSISTANT_HOST": "<YOUR_PINE_ASSISTANT_HOST_HERE>"
+        }
+      },
+      "pinecone-assistant": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "PINECONE_API_KEY",
+          "-e",
+          "PINECONE_ASSISTANT_HOST",
+          "pinecone/assistant-mcp"
+        ],
+        "env": {
+          "PINECONE_API_KEY": "<YOUR_PINECONE_API_KEY_HERE>",
+          "PINECONE_ASSISTANT_HOST": "<YOUR_PINECONE_ASSISTANT_HOST_HERE>"
+        }
+      },
+      "assistant-mcp-source": {
+        "command": "./target/release/assistant-mcp",
+        "args": [],
+        "env": {
+          "PINECONE_API_KEY": "<YOUR_PINECONE_API_KEY_HERE>",
+          "PINECONE_ASSISTANT_HOST": "<YOUR_PINECONE_ASSISTANT_HOST_HERE>"
+        }
+      },
+      "assistant-mcp-inspector-cargo": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "cargo",
+          "run"
+        ],
+        "env": {
+          "PINECONE_API_KEY": "<YOUR_PINECONE_API_KEY_HERE>",
+          "PINECONE_ASSISTANT_HOST": "<YOUR_PINECONE_ASSISTANT_HOST_HERE>"
+        }
+      },
+      "pinecone-assistant-mcp-inspector-docker": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "--",
+          "docker",
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "PINECONE_API_KEY",
+          "-e",
+          "PINECONE_ASSISTANT_HOST",
+          "pinecone/assistant-mcp"
+        ],
+        "env": {
+          "PINECONE_API_KEY": "<YOUR_PINECONE_API_KEY_HERE>",
+          "PINECONE_ASSISTANT_HOST": "<YOUR_PINECONE_ASSISTANT_HOST_HERE>"
         }
       }
     },

@@ -8,13 +8,9 @@
     "name": "GongRzhe"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,27 +21,27 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "gongrzhe-server-gmail-autoauth-mcp": {
-          "command": "npx",
-          "args": ["@gongrzhe/server-gmail-autoauth-mcp"],
-          "env": {}
-        },
-        "mcp-gmail-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-v",
-            "mcp-gmail:/gmail-server",
-            "-e",
-            "GMAIL_CREDENTIALS_PATH=/gmail-server/credentials.json",
-            "mcp/gmail"
-          ],
-          "env": {
-            "GMAIL_CREDENTIALS_PATH": "/gmail-server/credentials.json"
-          }
+      "gongrzhe-server-gmail-autoauth-mcp": {
+        "command": "npx",
+        "args": [
+          "@gongrzhe/server-gmail-autoauth-mcp"
+        ],
+        "env": {}
+      },
+      "mcp-gmail-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-v",
+          "mcp-gmail:/gmail-server",
+          "-e",
+          "GMAIL_CREDENTIALS_PATH=/gmail-server/credentials.json",
+          "mcp/gmail"
+        ],
+        "env": {
+          "GMAIL_CREDENTIALS_PATH": "/gmail-server/credentials.json"
         }
       }
     },

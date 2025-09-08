@@ -8,14 +8,13 @@
     "name": "tinyfish-io"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "agentql-mcp"],
-      "env": {
-        "AGENTQL_API_KEY": "${user_config.agentql_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "agentql-mcp"
+    ],
+    "env": {
+      "AGENTQL_API_KEY": "${user_config.agentql_api_key}"
     }
   },
   "tools": [],
@@ -35,20 +34,21 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "agentql": {
-          "command": "npx",
-          "args": ["-y", "agentql-mcp"],
-          "env": {
-            "AGENTQL_API_KEY": "YOUR_API_KEY"
-          }
-        },
-        "agentql-dev": {
-          "command": "/path/to/agentql-mcp/dist/index.js",
-          "args": [],
-          "env": {
-            "AGENTQL_API_KEY": "YOUR_API_KEY"
-          }
+      "agentql": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "agentql-mcp"
+        ],
+        "env": {
+          "AGENTQL_API_KEY": "YOUR_API_KEY"
+        }
+      },
+      "agentql-dev": {
+        "command": "/path/to/agentql-mcp/dist/index.js",
+        "args": [],
+        "env": {
+          "AGENTQL_API_KEY": "YOUR_API_KEY"
         }
       }
     },

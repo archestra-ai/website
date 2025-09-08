@@ -8,16 +8,12 @@
     "name": "openMF"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-server-1.0.0-SNAPSHOT-runner",
-    "mcp_config": {
-      "command": "${__dirname}/target/mcp-server-1.0.0-SNAPSHOT-runner",
-      "args": [],
-      "env": {
-        "MIFOSX_BASE_URL": "${user_config.mifosx_base_url}",
-        "MIFOSX_BASIC_AUTH_TOKEN": "${user_config.mifosx_basic_auth_token}",
-        "MIFOS_TENANT_ID": "${user_config.mifos_tenant_id}"
-      }
+    "command": "${__dirname}/target/mcp-server-1.0.0-SNAPSHOT-runner",
+    "args": [],
+    "env": {
+      "MIFOSX_BASE_URL": "${user_config.mifosx_base_url}",
+      "MIFOSX_BASIC_AUTH_TOKEN": "${user_config.mifosx_basic_auth_token}",
+      "MIFOS_TENANT_ID": "${user_config.mifos_tenant_id}"
     }
   },
   "tools": [],
@@ -50,24 +46,25 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "org.mifos.community.ai:mcp-server:1.0.0-SNAPSHOT:runner": {
-          "command": "jbang",
-          "args": ["--quiet", "org.mifos.community.ai:mcp-server:1.0.0-SNAPSHOT:runner"],
-          "env": {
-            "MIFOSX_BASE_URL": "https://your-fineract-instance",
-            "MIFOSX_BASIC_AUTH_TOKEN": "your_api_token",
-            "MIFOS_TENANT_ID": "default"
-          }
-        },
-        "mcp-server-1.0.0-SNAPSHOT-runner": {
-          "command": "./target/mcp-server-1.0.0-SNAPSHOT-runner",
-          "args": [],
-          "env": {
-            "MIFOSX_BASE_URL": "https://your-fineract-instance",
-            "MIFOSX_BASIC_AUTH_TOKEN": "your_api_token",
-            "MIFOS_TENANT_ID": "default"
-          }
+      "org.mifos.community.ai:mcp-server:1.0.0-SNAPSHOT:runner": {
+        "command": "jbang",
+        "args": [
+          "--quiet",
+          "org.mifos.community.ai:mcp-server:1.0.0-SNAPSHOT:runner"
+        ],
+        "env": {
+          "MIFOSX_BASE_URL": "https://your-fineract-instance",
+          "MIFOSX_BASIC_AUTH_TOKEN": "your_api_token",
+          "MIFOS_TENANT_ID": "default"
+        }
+      },
+      "mcp-server-1.0.0-SNAPSHOT-runner": {
+        "command": "./target/mcp-server-1.0.0-SNAPSHOT-runner",
+        "args": [],
+        "env": {
+          "MIFOSX_BASE_URL": "https://your-fineract-instance",
+          "MIFOSX_BASIC_AUTH_TOKEN": "your_api_token",
+          "MIFOS_TENANT_ID": "default"
         }
       }
     },

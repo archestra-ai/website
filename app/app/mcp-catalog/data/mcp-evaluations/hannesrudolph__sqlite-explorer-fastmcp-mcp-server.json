@@ -8,14 +8,19 @@
     "name": "hannesrudolph"
   },
   "server": {
-    "type": "python",
-    "entry_point": "sqlite_explorer.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "--with", "fastmcp", "--with", "uvicorn", "fastmcp", "run", "${__dirname}/sqlite_explorer.py"],
-      "env": {
-        "SQLITE_DB_PATH": "${user_config.sqlite_db_path}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "fastmcp",
+      "--with",
+      "uvicorn",
+      "fastmcp",
+      "run",
+      "${__dirname}/sqlite_explorer.py"
+    ],
+    "env": {
+      "SQLITE_DB_PATH": "${user_config.sqlite_db_path}"
     }
   },
   "tools": [],
@@ -34,29 +39,34 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "sqlite-explorer-claude-desktop": {
-          "command": "fastmcp",
-          "args": ["install", "sqlite_explorer.py", "--name", "SQLite Explorer", "-e", "SQLITE_DB_PATH=/path/to/db"],
-          "env": {
-            "SQLITE_DB_PATH": "/path/to/db"
-          }
-        },
-        "sqlite-explorer": {
-          "command": "uv",
-          "args": [
-            "run",
-            "--with",
-            "fastmcp",
-            "--with",
-            "uvicorn",
-            "fastmcp",
-            "run",
-            "/path/to/repo/sqlite_explorer.py"
-          ],
-          "env": {
-            "SQLITE_DB_PATH": "/path/to/your/database.db"
-          }
+      "sqlite-explorer-claude-desktop": {
+        "command": "fastmcp",
+        "args": [
+          "install",
+          "sqlite_explorer.py",
+          "--name",
+          "SQLite Explorer",
+          "-e",
+          "SQLITE_DB_PATH=/path/to/db"
+        ],
+        "env": {
+          "SQLITE_DB_PATH": "/path/to/db"
+        }
+      },
+      "sqlite-explorer": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--with",
+          "fastmcp",
+          "--with",
+          "uvicorn",
+          "fastmcp",
+          "run",
+          "/path/to/repo/sqlite_explorer.py"
+        ],
+        "env": {
+          "SQLITE_DB_PATH": "/path/to/your/database.db"
         }
       }
     },

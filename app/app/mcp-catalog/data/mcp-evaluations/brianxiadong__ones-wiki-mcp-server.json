@@ -8,16 +8,15 @@
     "name": "brianxiadong"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "ones-wiki-mcp-server-0.0.1-SNAPSHOT.jar",
-    "mcp_config": {
-      "command": "java",
-      "args": ["-jar", "${__dirname}/ones-wiki-mcp-server-0.0.1-SNAPSHOT.jar"],
-      "env": {
-        "ONES_HOST": "${user_config.ones_host}",
-        "ONES_EMAIL": "${user_config.ones_email}",
-        "ONES_PASSWORD": "${user_config.ones_password}"
-      }
+    "command": "java",
+    "args": [
+      "-jar",
+      "${__dirname}/ones-wiki-mcp-server-0.0.1-SNAPSHOT.jar"
+    ],
+    "env": {
+      "ONES_HOST": "${user_config.ones_host}",
+      "ONES_EMAIL": "${user_config.ones_email}",
+      "ONES_PASSWORD": "${user_config.ones_password}"
     }
   },
   "tools": [],
@@ -51,29 +50,27 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ones-wiki-mcp-server-cli-configured": {
-          "command": "java",
-          "args": [
-            "-jar",
-            "target/ones-wiki-mcp-server-0.0.1-SNAPSHOT.jar",
-            "--ones.host=your-ones-host.com",
-            "--ones.email=your-email@example.com",
-            "--ones.password=your-password"
-          ],
-          "env": {}
-        },
-        "ones-wiki-mcp-server-client-config-example": {
-          "command": "java",
-          "args": [
-            "-jar",
-            "/path/to/ones-wiki-mcp-server-0.0.1-SNAPSHOT.jar",
-            "--ones.host=your-ones-host.com",
-            "--ones.email=your-email@example.com",
-            "--ones.password=your-password"
-          ],
-          "env": {}
-        }
+      "ones-wiki-mcp-server-cli-configured": {
+        "command": "java",
+        "args": [
+          "-jar",
+          "target/ones-wiki-mcp-server-0.0.1-SNAPSHOT.jar",
+          "--ones.host=your-ones-host.com",
+          "--ones.email=your-email@example.com",
+          "--ones.password=your-password"
+        ],
+        "env": {}
+      },
+      "ones-wiki-mcp-server-client-config-example": {
+        "command": "java",
+        "args": [
+          "-jar",
+          "/path/to/ones-wiki-mcp-server-0.0.1-SNAPSHOT.jar",
+          "--ones.host=your-ones-host.com",
+          "--ones.email=your-email@example.com",
+          "--ones.password=your-password"
+        ],
+        "env": {}
       }
     },
     "oauth": {

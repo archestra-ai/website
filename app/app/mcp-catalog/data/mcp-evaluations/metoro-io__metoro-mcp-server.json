@@ -8,15 +8,11 @@
     "name": "metoro-io"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "metoro-mcp-server",
-    "mcp_config": {
-      "command": "./metoro-mcp-server",
-      "args": [],
-      "env": {
-        "METORO_AUTH_TOKEN": "${user_config.metoro_auth_token}",
-        "METORO_API_URL": "${user_config.metoro_api_url}"
-      }
+    "command": "./metoro-mcp-server",
+    "args": [],
+    "env": {
+      "METORO_AUTH_TOKEN": "${user_config.metoro_auth_token}",
+      "METORO_API_URL": "${user_config.metoro_api_url}"
     }
   },
   "tools": [],
@@ -43,22 +39,20 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "metoro-mcp-server-configured": {
-          "command": "metoro-mcp-server",
-          "args": [],
-          "env": {
-            "METORO_AUTH_TOKEN": "<your auth token>",
-            "METORO_API_URL": "https://us-east.metoro.io"
-          }
-        },
-        "metoro-mcp-server-demo": {
-          "command": "metoro-mcp-server",
-          "args": [],
-          "env": {
-            "METORO_AUTH_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcklkIjoiOThlZDU1M2QtYzY4ZC00MDRhLWFhZjItNDM2ODllNWJiMGUzIiwiZW1haWwiOiJ0ZXN0QGNocmlzYmF0dGFyYmVlLmNvbSIsImV4cCI6MTgyMTI0NzIzN30.7G6alDpcZh_OThYj293Jce5rjeOBqAhOlANR_Fl5auw",
-            "METORO_API_URL": "https://demo.us-east.metoro.io"
-          }
+      "metoro-mcp-server-configured": {
+        "command": "metoro-mcp-server",
+        "args": [],
+        "env": {
+          "METORO_AUTH_TOKEN": "<your auth token>",
+          "METORO_API_URL": "https://us-east.metoro.io"
+        }
+      },
+      "metoro-mcp-server-demo": {
+        "command": "metoro-mcp-server",
+        "args": [],
+        "env": {
+          "METORO_AUTH_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcklkIjoiOThlZDU1M2QtYzY4ZC00MDRhLWFhZjItNDM2ODllNWJiMGUzIiwiZW1haWwiOiJ0ZXN0QGNocmlzYmF0dGFyYmVlLmNvbSIsImV4cCI6MTgyMTI0NzIzN30.7G6alDpcZh_OThYj293Jce5rjeOBqAhOlANR_Fl5auw",
+          "METORO_API_URL": "https://demo.us-east.metoro.io"
         }
       }
     },

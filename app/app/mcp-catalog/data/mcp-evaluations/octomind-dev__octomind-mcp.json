@@ -8,19 +8,20 @@
     "name": "OctoMind-dev"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@octomind/octomind-mcp@latest", "--port", "${user_config.port}"],
-      "env": {
-        "APIKEY": "${user_config.apikey}",
-        "OCTOMIND_API_URL": "${user_config.octomind_api_url}",
-        "REDIS_URL": "${user_config.redis_url}",
-        "SESSION_EXPIRATION_SECONDS": "${user_config.session_expiration_seconds}",
-        "LOG_FILENAME": "${user_config.log_filename}",
-        "LOG_LEVEL": "${user_config.log_level}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@octomind/octomind-mcp@latest",
+      "--port",
+      "${user_config.port}"
+    ],
+    "env": {
+      "APIKEY": "${user_config.apikey}",
+      "OCTOMIND_API_URL": "${user_config.octomind_api_url}",
+      "REDIS_URL": "${user_config.redis_url}",
+      "SESSION_EXPIRATION_SECONDS": "${user_config.session_expiration_seconds}",
+      "LOG_FILENAME": "${user_config.log_filename}",
+      "LOG_LEVEL": "${user_config.log_level}"
     }
   },
   "tools": [],
@@ -79,13 +80,14 @@
   "quality_score": 76,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "octomind-mcp": {
-          "command": "npx",
-          "args": ["-y", "@octomind/octomind-mcp@latest"],
-          "env": {
-            "APIKEY": "your-api-key-here"
-          }
+      "octomind-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@octomind/octomind-mcp@latest"
+        ],
+        "env": {
+          "APIKEY": "your-api-key-here"
         }
       }
     },

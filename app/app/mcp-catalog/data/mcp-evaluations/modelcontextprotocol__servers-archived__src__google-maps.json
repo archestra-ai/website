@@ -8,14 +8,13 @@
     "name": "modelcontextprotocol"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-google-maps"],
-      "env": {
-        "GOOGLE_MAPS_API_KEY": "${user_config.google_maps_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-google-maps"
+    ],
+    "env": {
+      "GOOGLE_MAPS_API_KEY": "${user_config.google_maps_api_key}"
     }
   },
   "tools": [],
@@ -35,34 +34,50 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-google-maps-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "GOOGLE_MAPS_API_KEY", "mcp/google-maps"],
-          "env": {
-            "GOOGLE_MAPS_API_KEY": "<YOUR_API_KEY>"
-          }
-        },
-        "modelcontextprotocol-server-google-maps": {
-          "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-google-maps"],
-          "env": {
-            "GOOGLE_MAPS_API_KEY": "<YOUR_API_KEY>"
-          }
-        },
-        "modelcontextprotocol-server-google-maps-vscode-configured": {
-          "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-google-maps"],
-          "env": {
-            "GOOGLE_MAPS_API_KEY": "${input:maps_api_key}"
-          }
-        },
-        "mcp-google-maps-docker-vscode-configured": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "mcp/google-maps"],
-          "env": {
-            "GOOGLE_MAPS_API_KEY": "${input:maps_api_key}"
-          }
+      "mcp-google-maps-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "GOOGLE_MAPS_API_KEY",
+          "mcp/google-maps"
+        ],
+        "env": {
+          "GOOGLE_MAPS_API_KEY": "<YOUR_API_KEY>"
+        }
+      },
+      "modelcontextprotocol-server-google-maps": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-google-maps"
+        ],
+        "env": {
+          "GOOGLE_MAPS_API_KEY": "<YOUR_API_KEY>"
+        }
+      },
+      "modelcontextprotocol-server-google-maps-vscode-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-google-maps"
+        ],
+        "env": {
+          "GOOGLE_MAPS_API_KEY": "${input:maps_api_key}"
+        }
+      },
+      "mcp-google-maps-docker-vscode-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "mcp/google-maps"
+        ],
+        "env": {
+          "GOOGLE_MAPS_API_KEY": "${input:maps_api_key}"
         }
       }
     },

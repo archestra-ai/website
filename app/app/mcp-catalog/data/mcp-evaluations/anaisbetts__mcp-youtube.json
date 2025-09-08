@@ -8,13 +8,12 @@
     "name": "anaisbetts"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@anaisbetts/mcp-youtube"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@anaisbetts/mcp-youtube"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,11 +24,12 @@
   "quality_score": 69,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "anaisbetts-mcp-youtube": {
-          "command": "npx",
-          "args": ["-y", "@anaisbetts/mcp-youtube"]
-        }
+      "anaisbetts-mcp-youtube": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@anaisbetts/mcp-youtube"
+        ]
       }
     },
     "oauth": {

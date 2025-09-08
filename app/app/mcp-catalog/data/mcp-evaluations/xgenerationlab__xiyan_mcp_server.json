@@ -8,13 +8,13 @@
     "name": "XGenerationLab"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/main.py", "--config", "${config_file_path}"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "${__dirname}/main.py",
+      "--config",
+      "${config_file_path}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -101,9 +101,7 @@
   "category": "AI Tools",
   "quality_score": 74,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

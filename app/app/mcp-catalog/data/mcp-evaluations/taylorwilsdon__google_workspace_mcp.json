@@ -8,29 +8,25 @@
     "name": "taylorwilsdon"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server/main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/server/main.py"],
-      "env": {
-        "GOOGLE_OAUTH_CLIENT_ID": "${user_config.google_oauth_client_id}",
-        "GOOGLE_OAUTH_CLIENT_SECRET": "${user_config.google_oauth_client_secret}",
-        "USER_GOOGLE_EMAIL": "${user_config.user_google_email}",
-        "GOOGLE_PSE_API_KEY": "${user_config.google_pse_api_key}",
-        "GOOGLE_PSE_ENGINE_ID": "${user_config.google_pse_engine_id}",
-        "OAUTHLIB_INSECURE_TRANSPORT": "${user_config.oauthlib_insecure_transport}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/server/main.py"
+    ],
+    "env": {
+      "GOOGLE_OAUTH_CLIENT_ID": "${user_config.google_oauth_client_id}",
+      "GOOGLE_OAUTH_CLIENT_SECRET": "${user_config.google_oauth_client_secret}",
+      "USER_GOOGLE_EMAIL": "${user_config.user_google_email}",
+      "GOOGLE_PSE_API_KEY": "${user_config.google_pse_api_key}",
+      "GOOGLE_PSE_ENGINE_ID": "${user_config.google_pse_engine_id}",
+      "OAUTHLIB_INSECURE_TRANSPORT": "${user_config.oauthlib_insecure_transport}"
     }
   },
   "server_overridden": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["workspace-mcp"],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "workspace-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -84,9 +80,7 @@
   "category": "Development",
   "quality_score": 71,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": "google",
       "required": true

@@ -8,14 +8,12 @@
     "name": "briandconnelly"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-ipinfo"],
-      "env": {
-        "IPINFO_API_TOKEN": "${user_config.ipinfo_api_token}"
-      }
+    "command": "uvx",
+    "args": [
+      "mcp-server-ipinfo"
+    ],
+    "env": {
+      "IPINFO_API_TOKEN": "${user_config.ipinfo_api_token}"
     }
   },
   "tools": [],
@@ -35,20 +33,24 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-ipinfo": {
-          "command": "uvx",
-          "args": ["mcp-server-ipinfo"],
-          "env": {
-            "IPINFO_API_TOKEN": "<YOUR TOKEN>"
-          }
-        },
-        "mcp-server-ipinfo-from-git": {
-          "command": "uvx",
-          "args": ["--from", "git+https://github.com/briandconnelly/mcp-server-ipinfo", "mcp-server-ipinfo"],
-          "env": {
-            "IPINFO_API_TOKEN": "<YOUR TOKEN>"
-          }
+      "mcp-server-ipinfo": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-ipinfo"
+        ],
+        "env": {
+          "IPINFO_API_TOKEN": "<YOUR TOKEN>"
+        }
+      },
+      "mcp-server-ipinfo-from-git": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/briandconnelly/mcp-server-ipinfo",
+          "mcp-server-ipinfo"
+        ],
+        "env": {
+          "IPINFO_API_TOKEN": "<YOUR TOKEN>"
         }
       }
     },

@@ -8,13 +8,12 @@
     "name": "aymericzip"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "intlayer"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "intlayer"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,9 +23,7 @@
   "category": "Development",
   "quality_score": 69,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

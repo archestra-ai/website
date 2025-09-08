@@ -8,13 +8,12 @@
     "name": "FradSer"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-server-apple-reminders"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-server-apple-reminders"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,10 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-apple-reminders": {
-          "command": "mcp-server-apple-reminders",
-          "args": [],
-          "env": {}
-        }
+      "mcp-server-apple-reminders": {
+        "command": "mcp-server-apple-reminders",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

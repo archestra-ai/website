@@ -8,14 +8,12 @@
     "name": "armorwallet"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["armor-crypto-mcp@latest"],
-      "env": {
-        "ARMOR_API_KEY": "${user_config.armor_api_key}"
-      }
+    "command": "uvx",
+    "args": [
+      "armor-crypto-mcp@latest"
+    ],
+    "env": {
+      "ARMOR_API_KEY": "${user_config.armor_api_key}"
     }
   },
   "tools": [],
@@ -35,20 +33,23 @@
   "quality_score": 73,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "armor-crypto-mcp-configured": {
-          "command": "uvx",
-          "args": ["armor-crypto-mcp@latest", "--version"],
-          "env": {
-            "ARMOR_API_KEY": "<PUT-YOUR-KEY-HERE>"
-          }
-        },
-        "armor-crypto-mcp": {
-          "command": "uvx",
-          "args": ["armor-crypto-mcp"],
-          "env": {
-            "ARMOR_API_KEY": "<PUT-YOUR-KEY-HERE>"
-          }
+      "armor-crypto-mcp-configured": {
+        "command": "uvx",
+        "args": [
+          "armor-crypto-mcp@latest",
+          "--version"
+        ],
+        "env": {
+          "ARMOR_API_KEY": "<PUT-YOUR-KEY-HERE>"
+        }
+      },
+      "armor-crypto-mcp": {
+        "command": "uvx",
+        "args": [
+          "armor-crypto-mcp"
+        ],
+        "env": {
+          "ARMOR_API_KEY": "<PUT-YOUR-KEY-HERE>"
         }
       }
     },

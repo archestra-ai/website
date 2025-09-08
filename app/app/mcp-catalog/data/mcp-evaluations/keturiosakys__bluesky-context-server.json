@@ -8,15 +8,13 @@
     "name": "keturiosakys"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.ts",
-    "mcp_config": {
-      "command": "bun",
-      "args": ["${__dirname}/index.ts"],
-      "env": {
-        "BLUESKY_APP_KEY": "${user_config.bluesky_app_key}",
-        "BLUESKY_IDENTIFIER": "${user_config.bluesky_identifier}"
-      }
+    "command": "bun",
+    "args": [
+      "${__dirname}/index.ts"
+    ],
+    "env": {
+      "BLUESKY_APP_KEY": "${user_config.bluesky_app_key}",
+      "BLUESKY_IDENTIFIER": "${user_config.bluesky_identifier}"
     }
   },
   "tools": [],
@@ -42,14 +40,14 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "laulauland-bluesky-context-server": {
-          "command": "/Users/laurynas-fp/.bun/bin/bun",
-          "args": ["<path_to_this_directory>/bluesky-context-server/index.ts"],
-          "env": {
-            "BLUESKY_APP_KEY": "",
-            "BLUESKY_IDENTIFIER": ""
-          }
+      "laulauland-bluesky-context-server": {
+        "command": "/Users/laurynas-fp/.bun/bin/bun",
+        "args": [
+          "<path_to_this_directory>/bluesky-context-server/index.ts"
+        ],
+        "env": {
+          "BLUESKY_APP_KEY": "",
+          "BLUESKY_IDENTIFIER": ""
         }
       }
     },

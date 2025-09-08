@@ -8,14 +8,12 @@
     "name": "mamertofabian"
   },
   "server": {
-    "type": "python",
-    "entry_point": "__main__.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-everything-search"],
-      "env": {
-        "EVERYTHING_SDK_PATH": "${user_config.everything_sdk_path}"
-      }
+    "command": "uvx",
+    "args": [
+      "mcp-server-everything-search"
+    ],
+    "env": {
+      "EVERYTHING_SDK_PATH": "${user_config.everything_sdk_path}"
     }
   },
   "tools": [],
@@ -35,52 +33,66 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-everything-search-pip-module": {
-          "command": "python",
-          "args": ["-m", "mcp_server_everything_search"],
-          "env": {}
-        },
-        "mcp-server-everything-search-windows-uvx-configured": {
-          "command": "uvx",
-          "args": ["mcp-server-everything-search"],
-          "env": {
-            "EVERYTHING_SDK_PATH": "path/to/Everything-SDK/dll/Everything64.dll"
-          }
-        },
-        "mcp-server-everything-search-windows-pip-configured": {
-          "command": "python",
-          "args": ["-m", "mcp_server_everything_search"],
-          "env": {
-            "EVERYTHING_SDK_PATH": "path/to/Everything-SDK/dll/Everything64.dll"
-          }
-        },
-        "mcp-server-everything-search-linux-macos-uvx": {
-          "command": "uvx",
-          "args": ["mcp-server-everything-search"],
-          "env": {}
-        },
-        "mcp-server-everything-search-linux-macos-pip": {
-          "command": "python",
-          "args": ["-m", "mcp_server_everything_search"],
-          "env": {}
-        },
-        "mcp-server-everything-search-uv-run": {
-          "command": "uv",
-          "args": ["run", "mcp-server-everything-search"],
-          "env": {}
-        },
-        "mcp-server-everything-search-dev-uv-configured": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "/path/to/mcp-everything-search/src/mcp_server_everything_search",
-            "run",
-            "mcp-server-everything-search"
-          ],
-          "env": {
-            "EVERYTHING_SDK_PATH": "path/to/Everything-SDK/dll/Everything64.dll"
-          }
+      "mcp-server-everything-search-pip-module": {
+        "command": "python",
+        "args": [
+          "-m",
+          "mcp_server_everything_search"
+        ],
+        "env": {}
+      },
+      "mcp-server-everything-search-windows-uvx-configured": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-everything-search"
+        ],
+        "env": {
+          "EVERYTHING_SDK_PATH": "path/to/Everything-SDK/dll/Everything64.dll"
+        }
+      },
+      "mcp-server-everything-search-windows-pip-configured": {
+        "command": "python",
+        "args": [
+          "-m",
+          "mcp_server_everything_search"
+        ],
+        "env": {
+          "EVERYTHING_SDK_PATH": "path/to/Everything-SDK/dll/Everything64.dll"
+        }
+      },
+      "mcp-server-everything-search-linux-macos-uvx": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-everything-search"
+        ],
+        "env": {}
+      },
+      "mcp-server-everything-search-linux-macos-pip": {
+        "command": "python",
+        "args": [
+          "-m",
+          "mcp_server_everything_search"
+        ],
+        "env": {}
+      },
+      "mcp-server-everything-search-uv-run": {
+        "command": "uv",
+        "args": [
+          "run",
+          "mcp-server-everything-search"
+        ],
+        "env": {}
+      },
+      "mcp-server-everything-search-dev-uv-configured": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/mcp-everything-search/src/mcp_server_everything_search",
+          "run",
+          "mcp-server-everything-search"
+        ],
+        "env": {
+          "EVERYTHING_SDK_PATH": "path/to/Everything-SDK/dll/Everything64.dll"
         }
       }
     },

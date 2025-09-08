@@ -8,30 +8,26 @@
     "name": "KashiwaByte"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": [
-        "--directory",
-        "${__dirname}",
-        "run",
-        "mcp-server-vikingdb",
-        "--vikingdb-host",
-        "${user_config.vikingdb_host}",
-        "--vikingdb-region",
-        "${user_config.vikingdb_region}",
-        "--vikingdb-ak",
-        "${user_config.vikingdb_ak}",
-        "--vikingdb-sk",
-        "${user_config.vikingdb_sk}",
-        "--collection-name",
-        "${user_config.collection_name}",
-        "--index-name",
-        "${user_config.index_name}"
-      ],
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "mcp-server-vikingdb",
+      "--vikingdb-host",
+      "${user_config.vikingdb_host}",
+      "--vikingdb-region",
+      "${user_config.vikingdb_region}",
+      "--vikingdb-ak",
+      "${user_config.vikingdb_ak}",
+      "--vikingdb-sk",
+      "${user_config.vikingdb_sk}",
+      "--collection-name",
+      "${user_config.collection_name}",
+      "--index-name",
+      "${user_config.index_name}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -85,72 +81,70 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-vikingdb-development": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "dir to mcp-server-vikingdb",
-            "run",
-            "mcp-server-vikingdb",
-            "--vikingdb-host",
-            "your host",
-            "--vikingdb-region",
-            "your region",
-            "--vikingdb-ak",
-            "your access key",
-            "--vikingdb-sk",
-            "your secret key",
-            "--collection-name",
-            "your collection name",
-            "--index-name",
-            "your index name"
-          ],
-          "env": {}
-        },
-        "mcp-server-vikingdb-published": {
-          "command": "uvx",
-          "args": [
-            "mcp-server-vikingdb",
-            "--vikingdb-host",
-            "your host",
-            "--vikingdb-region",
-            "your region",
-            "--vikingdb-ak",
-            "your access key",
-            "--vikingdb-sk",
-            "your secret key",
-            "--collection-name",
-            "your collection name",
-            "--index-name",
-            "your index name"
-          ],
-          "env": {}
-        },
-        "mcp-server-vikingdb-debug-inspector": {
-          "command": "npx",
-          "args": [
-            "@modelcontextprotocol/inspector",
-            "uv",
-            "--directory",
-            "dir_to_mcp_server_vikingdb",
-            "run",
-            "mcp-server-vikingdb",
-            "--vikingdb-host",
-            "your_host",
-            "--vikingdb-region",
-            "your_region",
-            "--vikingdb-ak",
-            "your_access_key",
-            "--vikingdb-sk",
-            "your_secret_key",
-            "--collection-name",
-            "your_collection_name",
-            "--index-name",
-            "your_index_name"
-          ],
-          "env": {}
-        }
+      "mcp-server-vikingdb-development": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "dir to mcp-server-vikingdb",
+          "run",
+          "mcp-server-vikingdb",
+          "--vikingdb-host",
+          "your host",
+          "--vikingdb-region",
+          "your region",
+          "--vikingdb-ak",
+          "your access key",
+          "--vikingdb-sk",
+          "your secret key",
+          "--collection-name",
+          "your collection name",
+          "--index-name",
+          "your index name"
+        ],
+        "env": {}
+      },
+      "mcp-server-vikingdb-published": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-vikingdb",
+          "--vikingdb-host",
+          "your host",
+          "--vikingdb-region",
+          "your region",
+          "--vikingdb-ak",
+          "your access key",
+          "--vikingdb-sk",
+          "your secret key",
+          "--collection-name",
+          "your collection name",
+          "--index-name",
+          "your index name"
+        ],
+        "env": {}
+      },
+      "mcp-server-vikingdb-debug-inspector": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "uv",
+          "--directory",
+          "dir_to_mcp_server_vikingdb",
+          "run",
+          "mcp-server-vikingdb",
+          "--vikingdb-host",
+          "your_host",
+          "--vikingdb-region",
+          "your_region",
+          "--vikingdb-ak",
+          "your_access_key",
+          "--vikingdb-sk",
+          "your_secret_key",
+          "--collection-name",
+          "your_collection_name",
+          "--index-name",
+          "your_index_name"
+        ],
+        "env": {}
       }
     },
     "oauth": {

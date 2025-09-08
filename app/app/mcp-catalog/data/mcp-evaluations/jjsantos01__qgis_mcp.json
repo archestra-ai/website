@@ -8,13 +8,14 @@
     "name": "jjsantos01"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/qgis_mcp/qgis_mcp_server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${user_config.qgis_mcp_repo_path}/src/qgis_mcp", "run", "qgis_mcp_server.py"],
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${user_config.qgis_mcp_repo_path}/src/qgis_mcp",
+      "run",
+      "qgis_mcp_server.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -32,17 +33,15 @@
   "quality_score": 59,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "qgis-mcp": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "/ABSOLUTE/PATH/TO/PARENT/REPO/FOLDER/qgis_mcp/src/qgis_mcp",
-            "run",
-            "qgis_mcp_server.py"
-          ],
-          "env": {}
-        }
+      "qgis-mcp": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/ABSOLUTE/PATH/TO/PARENT/REPO/FOLDER/qgis_mcp/src/qgis_mcp",
+          "run",
+          "qgis_mcp_server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

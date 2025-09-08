@@ -8,13 +8,11 @@
     "name": "2niuhe"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/main.py"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "${__dirname}/main.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,25 @@
   "quality_score": 38,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "plantuml-web-mcp-docker": {
-          "command": "docker",
-          "args": ["run", "-d", "-p", "8080:8080", "-p", "8765:8765", "plantuml_web_mcp:latest"],
-          "env": {}
-        },
-        "plantuml-web-mcp": {
-          "command": "sh",
-          "args": ["start.sh"],
-          "env": {}
-        }
+      "plantuml-web-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-d",
+          "-p",
+          "8080:8080",
+          "-p",
+          "8765:8765",
+          "plantuml_web_mcp:latest"
+        ],
+        "env": {}
+      },
+      "plantuml-web-mcp": {
+        "command": "sh",
+        "args": [
+          "start.sh"
+        ],
+        "env": {}
       }
     },
     "oauth": {

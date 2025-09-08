@@ -8,16 +8,14 @@
     "name": "ztxtxwd"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/index.js"],
-      "env": {
-        "FEISHU_APP_ID": "${user_config.feishu_app_id}",
-        "FEISHU_APP_SECRET": "${user_config.feishu_app_secret}",
-        "COOKIE_ENCRYPTION_KEY": "${user_config.cookie_encryption_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/index.js"
+    ],
+    "env": {
+      "FEISHU_APP_ID": "${user_config.feishu_app_id}",
+      "FEISHU_APP_SECRET": "${user_config.feishu_app_secret}",
+      "COOKIE_ENCRYPTION_KEY": "${user_config.cookie_encryption_key}"
     }
   },
   "tools": [],
@@ -51,20 +49,24 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "open-feishu-mcp-server-deployed": {
-          "command": "npm",
-          "args": ["run", "deploy"],
-          "env": {}
-        },
-        "open-feishu-mcp-server-local": {
-          "command": "npm",
-          "args": ["run", "dev"],
-          "env": {
-            "FEISHU_APP_ID": "your_development_feishu_app_id",
-            "FEISHU_APP_SECRET": "your_development_feishu_app_secret",
-            "COOKIE_ENCRYPTION_KEY": "any_random_string_here"
-          }
+      "open-feishu-mcp-server-deployed": {
+        "command": "npm",
+        "args": [
+          "run",
+          "deploy"
+        ],
+        "env": {}
+      },
+      "open-feishu-mcp-server-local": {
+        "command": "npm",
+        "args": [
+          "run",
+          "dev"
+        ],
+        "env": {
+          "FEISHU_APP_ID": "your_development_feishu_app_id",
+          "FEISHU_APP_SECRET": "your_development_feishu_app_secret",
+          "COOKIE_ENCRYPTION_KEY": "any_random_string_here"
         }
       }
     },

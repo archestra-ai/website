@@ -8,22 +8,18 @@
     "name": "nkapila6"
   },
   "server": {
-    "type": "docker",
-    "entry_point": "mcp-local-rag",
-    "mcp_config": {
-      "command": "docker",
-      "args": [
-        "run",
-        "--rm",
-        "-i",
-        "--init",
-        "-e",
-        "DOCKER_CONTAINER=${user_config.docker_container}",
-        "ghcr.io/nkapila6/mcp-local-rag:latest"
-      ],
-      "env": {
-        "DOCKER_CONTAINER": "${user_config.docker_container}"
-      }
+    "command": "docker",
+    "args": [
+      "run",
+      "--rm",
+      "-i",
+      "--init",
+      "-e",
+      "DOCKER_CONTAINER=${user_config.docker_container}",
+      "ghcr.io/nkapila6/mcp-local-rag:latest"
+    ],
+    "env": {
+      "DOCKER_CONTAINER": "${user_config.docker_container}"
     }
   },
   "tools": [],
@@ -43,26 +39,29 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-local-rag": {
-          "command": "uvx",
-          "args": ["--python=3.10", "--from", "git+https://github.com/nkapila6/mcp-local-rag", "mcp-local-rag"],
-          "env": {}
-        },
-        "ghcr.io-nkapila6-mcp-local-rag-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "--init",
-            "-e",
-            "DOCKER_CONTAINER=true",
-            "ghcr.io/nkapila6/mcp-local-rag:latest"
-          ],
-          "env": {
-            "DOCKER_CONTAINER": "true"
-          }
+      "mcp-local-rag": {
+        "command": "uvx",
+        "args": [
+          "--python=3.10",
+          "--from",
+          "git+https://github.com/nkapila6/mcp-local-rag",
+          "mcp-local-rag"
+        ],
+        "env": {}
+      },
+      "ghcr.io-nkapila6-mcp-local-rag-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "--init",
+          "-e",
+          "DOCKER_CONTAINER=true",
+          "ghcr.io/nkapila6/mcp-local-rag:latest"
+        ],
+        "env": {
+          "DOCKER_CONTAINER": "true"
         }
       }
     },

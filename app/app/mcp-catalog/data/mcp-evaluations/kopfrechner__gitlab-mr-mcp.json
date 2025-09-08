@@ -8,17 +8,15 @@
     "name": "kopfrechner"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/index.js"],
-      "env": {
-        "MR_MCP_GITLAB_TOKEN": "${user_config.mr_mcp_gitlab_token}",
-        "MR_MCP_GITLAB_HOST": "${user_config.mr_mcp_gitlab_host}",
-        "MR_MCP_MIN_ACCESS_LEVEL": "${user_config.mr_mcp_min_access_level}",
-        "MR_MCP_PROJECT_SEARCH_TERM": "${user_config.mr_mcp_project_search_term}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/index.js"
+    ],
+    "env": {
+      "MR_MCP_GITLAB_TOKEN": "${user_config.mr_mcp_gitlab_token}",
+      "MR_MCP_GITLAB_HOST": "${user_config.mr_mcp_gitlab_host}",
+      "MR_MCP_MIN_ACCESS_LEVEL": "${user_config.mr_mcp_min_access_level}",
+      "MR_MCP_PROJECT_SEARCH_TERM": "${user_config.mr_mcp_project_search_term}"
     }
   },
   "tools": [],
@@ -59,14 +57,14 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "gitlab-mr-mcp": {
-          "command": "node",
-          "args": ["/path/to/gitlab-mr-mcp/index.js"],
-          "env": {
-            "MR_MCP_GITLAB_TOKEN": "your_gitlab_token",
-            "MR_MCP_GITLAB_HOST": "your_gitlab_host"
-          }
+      "gitlab-mr-mcp": {
+        "command": "node",
+        "args": [
+          "/path/to/gitlab-mr-mcp/index.js"
+        ],
+        "env": {
+          "MR_MCP_GITLAB_TOKEN": "your_gitlab_token",
+          "MR_MCP_GITLAB_HOST": "your_gitlab_host"
         }
       }
     },

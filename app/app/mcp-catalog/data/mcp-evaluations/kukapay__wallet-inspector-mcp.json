@@ -8,14 +8,15 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "main.py"],
-      "env": {
-        "DUNE_SIM_API_KEY": "${user_config.dune_sim_api_key}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "main.py"
+    ],
+    "env": {
+      "DUNE_SIM_API_KEY": "${user_config.dune_sim_api_key}"
     }
   },
   "tools": [],
@@ -35,13 +36,16 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "Wallet Inspector": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/wallet-inspector-mcp", "run", "main.py"],
-          "env": {
-            "DUNE_SIM_API_KEY": "your_dune_sim_api_key_here"
-          }
+      "Wallet Inspector": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/wallet-inspector-mcp",
+          "run",
+          "main.py"
+        ],
+        "env": {
+          "DUNE_SIM_API_KEY": "your_dune_sim_api_key_here"
         }
       }
     },

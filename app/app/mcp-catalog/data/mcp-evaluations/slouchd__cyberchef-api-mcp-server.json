@@ -8,23 +8,19 @@
     "name": "slouchd"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": [
-        "run",
-        "--with",
-        "mcp[cli]",
-        "--directory",
-        "cyberchef-api-mcp-server/cyberchef_api_mcp_server/",
-        "mcp",
-        "run",
-        "server.py"
-      ],
-      "env": {
-        "CYBERCHEF_API_URL": "${user_config.cyberchef_api_url}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "mcp[cli]",
+      "--directory",
+      "cyberchef-api-mcp-server/cyberchef_api_mcp_server/",
+      "mcp",
+      "run",
+      "server.py"
+    ],
+    "env": {
+      "CYBERCHEF_API_URL": "${user_config.cyberchef_api_url}"
     }
   },
   "tools": [],
@@ -43,34 +39,38 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "cyberchef_api_mcp_server-stdio": {
-          "command": "uv",
-          "args": ["run", "cyberchef_api_mcp_server"],
-          "env": {
-            "CYBERCHEF_API_URL": "your-cyberchef-api-url"
-          }
-        },
-        "cyberchef_api_mcp_server-dev": {
-          "command": "mcp",
-          "args": ["dev", "server.py"],
-          "env": {}
-        },
-        "cyberchef_api_mcp_server-configured": {
-          "command": "uv",
-          "args": [
-            "run",
-            "--with",
-            "mcp[cli]",
-            "--directory",
-            "cyberchef-api-mcp-server/cyberchef_api_mcp_server/",
-            "mcp",
-            "run",
-            "server.py"
-          ],
-          "env": {
-            "CYBERCHEF_API_URL": "your-cyberchef-api-url"
-          }
+      "cyberchef_api_mcp_server-stdio": {
+        "command": "uv",
+        "args": [
+          "run",
+          "cyberchef_api_mcp_server"
+        ],
+        "env": {
+          "CYBERCHEF_API_URL": "your-cyberchef-api-url"
+        }
+      },
+      "cyberchef_api_mcp_server-dev": {
+        "command": "mcp",
+        "args": [
+          "dev",
+          "server.py"
+        ],
+        "env": {}
+      },
+      "cyberchef_api_mcp_server-configured": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--with",
+          "mcp[cli]",
+          "--directory",
+          "cyberchef-api-mcp-server/cyberchef_api_mcp_server/",
+          "mcp",
+          "run",
+          "server.py"
+        ],
+        "env": {
+          "CYBERCHEF_API_URL": "your-cyberchef-api-url"
         }
       }
     },

@@ -8,16 +8,15 @@
     "name": "feuerdev"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "pipx",
-      "args": ["run", "keep-mcp"],
-      "env": {
-        "GOOGLE_EMAIL": "${user_config.google_email}",
-        "GOOGLE_MASTER_TOKEN": "${user_config.google_master_token}",
-        "UNSAFE_MODE": "${user_config.unsafe_mode}"
-      }
+    "command": "pipx",
+    "args": [
+      "run",
+      "keep-mcp"
+    ],
+    "env": {
+      "GOOGLE_EMAIL": "${user_config.google_email}",
+      "GOOGLE_MASTER_TOKEN": "${user_config.google_master_token}",
+      "UNSAFE_MODE": "${user_config.unsafe_mode}"
     }
   },
   "tools": [],
@@ -50,23 +49,27 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "keep-mcp-pipx": {
-          "command": "pipx",
-          "args": ["run", "keep-mcp"],
-          "env": {
-            "GOOGLE_EMAIL": "Your Google Email",
-            "GOOGLE_MASTER_TOKEN": "Your Google Master Token - see README.md"
-          }
-        },
-        "keep-mcp-pipx-unsafe": {
-          "command": "pipx",
-          "args": ["run", "keep-mcp"],
-          "env": {
-            "GOOGLE_EMAIL": "Your Google Email",
-            "GOOGLE_MASTER_TOKEN": "Your Google Master Token - see README.md",
-            "UNSAFE_MODE": "true"
-          }
+      "keep-mcp-pipx": {
+        "command": "pipx",
+        "args": [
+          "run",
+          "keep-mcp"
+        ],
+        "env": {
+          "GOOGLE_EMAIL": "Your Google Email",
+          "GOOGLE_MASTER_TOKEN": "Your Google Master Token - see README.md"
+        }
+      },
+      "keep-mcp-pipx-unsafe": {
+        "command": "pipx",
+        "args": [
+          "run",
+          "keep-mcp"
+        ],
+        "env": {
+          "GOOGLE_EMAIL": "Your Google Email",
+          "GOOGLE_MASTER_TOKEN": "Your Google Master Token - see README.md",
+          "UNSAFE_MODE": "true"
         }
       }
     },

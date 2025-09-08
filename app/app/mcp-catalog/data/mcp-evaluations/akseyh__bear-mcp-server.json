@@ -8,14 +8,12 @@
     "name": "akseyh"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["bear-mcp-server"],
-      "env": {
-        "BEAR_DB_PATH": "${user_config.bear_db_path}"
-      }
+    "command": "npx",
+    "args": [
+      "bear-mcp-server"
+    ],
+    "env": {
+      "BEAR_DB_PATH": "${user_config.bear_db_path}"
     }
   },
   "tools": [],
@@ -35,23 +33,23 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "akseyh-bear-mcp-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-v",
-            "/Users/[YOUR_USER_NAME]/Library/Group Containers/9K33E3U3T4.net.shinyfrog.bear/Application Data:/app/db",
-            "-i",
-            "akseyh/bear-mcp-server"
-          ],
-          "env": {}
-        },
-        "bear-mcp-server": {
-          "command": "npx",
-          "args": ["bear-mcp-server"],
-          "env": {}
-        }
+      "akseyh-bear-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-v",
+          "/Users/[YOUR_USER_NAME]/Library/Group Containers/9K33E3U3T4.net.shinyfrog.bear/Application Data:/app/db",
+          "-i",
+          "akseyh/bear-mcp-server"
+        ],
+        "env": {}
+      },
+      "bear-mcp-server": {
+        "command": "npx",
+        "args": [
+          "bear-mcp-server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,16 +8,15 @@
     "name": "rishijatia"
   },
   "server": {
-    "type": "python",
-    "entry_point": "fpl_mcp/__main__.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "fpl_mcp"],
-      "env": {
-        "FPL_EMAIL": "${user_config.fpl_email}",
-        "FPL_PASSWORD": "${user_config.fpl_password}",
-        "FPL_TEAM_ID": "${user_config.fpl_team_id}"
-      }
+    "command": "python",
+    "args": [
+      "-m",
+      "fpl_mcp"
+    ],
+    "env": {
+      "FPL_EMAIL": "${user_config.fpl_email}",
+      "FPL_PASSWORD": "${user_config.fpl_password}",
+      "FPL_TEAM_ID": "${user_config.fpl_team_id}"
     }
   },
   "tools": [],
@@ -50,37 +49,50 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "fpl-mcp": {
-          "command": "fpl-mcp",
-          "args": [],
-          "env": {}
-        },
-        "fpl-mcp-python-module": {
-          "command": "python",
-          "args": ["-m", "fpl_mcp"],
-          "env": {}
-        },
-        "fpl-mcp-claude-desktop-python-module": {
-          "command": "python",
-          "args": ["-m", "fpl_mcp"],
-          "env": {}
-        },
-        "fpl-mcp-claude-desktop-full-path": {
-          "command": "/full/path/to/your/venv/bin/fpl-mcp",
-          "args": [],
-          "env": {}
-        },
-        "fpl-mcp-mcp-dev": {
-          "command": "mcp",
-          "args": ["dev", "-m", "fpl_mcp"],
-          "env": {}
-        },
-        "modelcontextprotocol-inspector-fpl-mcp": {
-          "command": "npx",
-          "args": ["@modelcontextprotocol/inspector", "python", "-m", "fpl_mcp"],
-          "env": {}
-        }
+      "fpl-mcp": {
+        "command": "fpl-mcp",
+        "args": [],
+        "env": {}
+      },
+      "fpl-mcp-python-module": {
+        "command": "python",
+        "args": [
+          "-m",
+          "fpl_mcp"
+        ],
+        "env": {}
+      },
+      "fpl-mcp-claude-desktop-python-module": {
+        "command": "python",
+        "args": [
+          "-m",
+          "fpl_mcp"
+        ],
+        "env": {}
+      },
+      "fpl-mcp-claude-desktop-full-path": {
+        "command": "/full/path/to/your/venv/bin/fpl-mcp",
+        "args": [],
+        "env": {}
+      },
+      "fpl-mcp-mcp-dev": {
+        "command": "mcp",
+        "args": [
+          "dev",
+          "-m",
+          "fpl_mcp"
+        ],
+        "env": {}
+      },
+      "modelcontextprotocol-inspector-fpl-mcp": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "python",
+          "-m",
+          "fpl_mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

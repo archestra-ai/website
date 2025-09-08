@@ -8,16 +8,20 @@
     "name": "co-browser"
   },
   "server": {
-    "type": "python",
-    "entry_point": "browser-use-mcp-server",
-    "mcp_config": {
-      "command": "browser-use-mcp-server",
-      "args": ["run", "server", "--port", "8000", "--stdio", "--proxy-port", "9000"],
-      "env": {
-        "OPENAI_API_KEY": "${user_config.openai_api_key}",
-        "CHROME_PATH": "${user_config.chrome_path}",
-        "PATIENT": "${user_config.patient}"
-      }
+    "command": "browser-use-mcp-server",
+    "args": [
+      "run",
+      "server",
+      "--port",
+      "8000",
+      "--stdio",
+      "--proxy-port",
+      "9000"
+    ],
+    "env": {
+      "OPENAI_API_KEY": "${user_config.openai_api_key}",
+      "CHROME_PATH": "${user_config.chrome_path}",
+      "PATIENT": "${user_config.patient}"
     }
   },
   "tools": [],
@@ -50,48 +54,65 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "browser-use-mcp-server": {
-          "command": "uv",
-          "args": ["run", "server", "--port", "8000"],
-          "env": {
-            "OPENAI_API_KEY": "your-api-key",
-            "CHROME_PATH": "optional/path/to/chrome",
-            "PATIENT": "false"
-          }
-        },
-        "browser-use-mcp-server-stdio-configured": {
-          "command": "browser-use-mcp-server",
-          "args": ["run", "server", "--port", "8000", "--stdio", "--proxy-port", "9000"],
-          "env": {
-            "OPENAI_API_KEY": "your-api-key"
-          }
-        },
-        "browser-use-mcp-server-docker": {
-          "command": "docker",
-          "args": ["run", "--rm", "-p8000:8000", "-p5900:5900", "browser-use-mcp-server"],
-          "env": {
-            "OPENAI_API_KEY": "your-api-key",
-            "CHROME_PATH": "optional/path/to/chrome",
-            "PATIENT": "false"
-          }
-        },
-        "browser-use-mcp-server-docker-custom-vnc": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-p8000:8000",
-            "-p5900:5900",
-            "-v",
-            "$(pwd)/vnc_password.txt:/run/secrets/vnc_password:ro",
-            "browser-use-mcp-server"
-          ],
-          "env": {
-            "OPENAI_API_KEY": "your-api-key",
-            "CHROME_PATH": "optional/path/to/chrome",
-            "PATIENT": "false"
-          }
+      "browser-use-mcp-server": {
+        "command": "uv",
+        "args": [
+          "run",
+          "server",
+          "--port",
+          "8000"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "your-api-key",
+          "CHROME_PATH": "optional/path/to/chrome",
+          "PATIENT": "false"
+        }
+      },
+      "browser-use-mcp-server-stdio-configured": {
+        "command": "browser-use-mcp-server",
+        "args": [
+          "run",
+          "server",
+          "--port",
+          "8000",
+          "--stdio",
+          "--proxy-port",
+          "9000"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "your-api-key"
+        }
+      },
+      "browser-use-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-p8000:8000",
+          "-p5900:5900",
+          "browser-use-mcp-server"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "your-api-key",
+          "CHROME_PATH": "optional/path/to/chrome",
+          "PATIENT": "false"
+        }
+      },
+      "browser-use-mcp-server-docker-custom-vnc": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-p8000:8000",
+          "-p5900:5900",
+          "-v",
+          "$(pwd)/vnc_password.txt:/run/secrets/vnc_password:ro",
+          "browser-use-mcp-server"
+        ],
+        "env": {
+          "OPENAI_API_KEY": "your-api-key",
+          "CHROME_PATH": "optional/path/to/chrome",
+          "PATIENT": "false"
         }
       }
     },

@@ -8,16 +8,14 @@
     "name": "daisys-ai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "daisys_mcp/server.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["daisys-mcp"],
-      "env": {
-        "DAISYS_EMAIL": "${user_config.daisys_email}",
-        "DAISYS_PASSWORD": "${user_config.daisys_password}",
-        "DAISYS_BASE_STORAGE_PATH": "${user_config.daisys_base_storage_path}"
-      }
+    "command": "uvx",
+    "args": [
+      "daisys-mcp"
+    ],
+    "env": {
+      "DAISYS_EMAIL": "${user_config.daisys_email}",
+      "DAISYS_PASSWORD": "${user_config.daisys_password}",
+      "DAISYS_BASE_STORAGE_PATH": "${user_config.daisys_base_storage_path}"
     }
   },
   "tools": [],
@@ -50,24 +48,30 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "daisys-mcp": {
-          "command": "uvx",
-          "args": ["daisys-mcp"],
-          "env": {
-            "DAISYS_EMAIL": "{Your Daisys Email}",
-            "DAISYS_PASSWORD": "{Your Daisys Password}",
-            "DAISYS_BASE_STORAGE_PATH": "{Path where you want to store your audio files}"
-          }
-        },
-        "daisys-mcp-from-source": {
-          "command": "uv",
-          "args": ["--directory", "{installation_path}/daisys-mcp", "run", "-m", "daisys_mcp.server"],
-          "env": {
-            "DAISYS_EMAIL": "{Your Daisys Email}",
-            "DAISYS_PASSWORD": "{Your Daisys Password}",
-            "DAISYS_BASE_STORAGE_PATH": "{Path where you want to store your audio files}"
-          }
+      "daisys-mcp": {
+        "command": "uvx",
+        "args": [
+          "daisys-mcp"
+        ],
+        "env": {
+          "DAISYS_EMAIL": "{Your Daisys Email}",
+          "DAISYS_PASSWORD": "{Your Daisys Password}",
+          "DAISYS_BASE_STORAGE_PATH": "{Path where you want to store your audio files}"
+        }
+      },
+      "daisys-mcp-from-source": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "{installation_path}/daisys-mcp",
+          "run",
+          "-m",
+          "daisys_mcp.server"
+        ],
+        "env": {
+          "DAISYS_EMAIL": "{Your Daisys Email}",
+          "DAISYS_PASSWORD": "{Your Daisys Password}",
+          "DAISYS_BASE_STORAGE_PATH": "{Path where you want to store your audio files}"
         }
       }
     },

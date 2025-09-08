@@ -8,14 +8,12 @@
     "name": "tanigami"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-perplexity"],
-      "env": {
-        "PERPLEXITY_API_KEY": "${user_config.perplexity_api_key}"
-      }
+    "command": "uvx",
+    "args": [
+      "mcp-server-perplexity"
+    ],
+    "env": {
+      "PERPLEXITY_API_KEY": "${user_config.perplexity_api_key}"
     }
   },
   "tools": [],
@@ -35,13 +33,13 @@
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-perplexity": {
-          "command": "uvx",
-          "args": ["mcp-server-perplexity"],
-          "env": {
-            "PERPLEXITY_API_KEY": "your-perplexity-api-key"
-          }
+      "mcp-server-perplexity": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-perplexity"
+        ],
+        "env": {
+          "PERPLEXITY_API_KEY": "your-perplexity-api-key"
         }
       }
     },

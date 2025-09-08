@@ -8,19 +8,18 @@
     "name": "sapientpants"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "sonarqube-mcp-server@latest"],
-      "env": {
-        "SONARQUBE_URL": "${user_config.sonarqube_url}",
-        "SONARQUBE_TOKEN": "${user_config.sonarqube_token}",
-        "SONARQUBE_ORGANIZATION": "${user_config.sonarqube_organization}",
-        "SONARQUBE_USERNAME": "${user_config.sonarqube_username}",
-        "SONARQUBE_PASSWORD": "${user_config.sonarqube_password}",
-        "SONARQUBE_PASSCODE": "${user_config.sonarqube_passcode}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "sonarqube-mcp-server@latest"
+    ],
+    "env": {
+      "SONARQUBE_URL": "${user_config.sonarqube_url}",
+      "SONARQUBE_TOKEN": "${user_config.sonarqube_token}",
+      "SONARQUBE_ORGANIZATION": "${user_config.sonarqube_organization}",
+      "SONARQUBE_USERNAME": "${user_config.sonarqube_username}",
+      "SONARQUBE_PASSWORD": "${user_config.sonarqube_password}",
+      "SONARQUBE_PASSCODE": "${user_config.sonarqube_passcode}"
     }
   },
   "tools": [],
@@ -74,52 +73,59 @@
   "quality_score": 72,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "sonarqube-mcp-server-token-auth": {
-          "command": "npx",
-          "args": ["-y", "sonarqube-mcp-server@latest"],
-          "env": {
-            "SONARQUBE_URL": "https://sonarcloud.io",
-            "SONARQUBE_TOKEN": "your-token-here",
-            "SONARQUBE_ORGANIZATION": "your-org (for SonarCloud)"
-          }
-        },
-        "sonarqube-mcp-server-basic-auth": {
-          "command": "npx",
-          "args": ["-y", "sonarqube-mcp-server@latest"],
-          "env": {
-            "SONARQUBE_URL": "https://your-sonarqube.com",
-            "SONARQUBE_USERNAME": "your-username",
-            "SONARQUBE_PASSWORD": "your-password"
-          }
-        },
-        "sonarqube-mcp-server-passcode-auth": {
-          "command": "npx",
-          "args": ["-y", "sonarqube-mcp-server@latest"],
-          "env": {
-            "SONARQUBE_URL": "https://your-sonarqube.com",
-            "SONARQUBE_PASSCODE": "your-system-passcode"
-          }
-        },
-        "sapientpants-sonarqube-mcp-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "SONARQUBE_URL",
-            "-e",
-            "SONARQUBE_TOKEN",
-            "-e",
-            "SONARQUBE_ORGANIZATION",
-            "sapientpants/sonarqube-mcp-server:latest"
-          ],
-          "env": {
-            "SONARQUBE_URL": "https://sonarqube.example.com",
-            "SONARQUBE_TOKEN": "your-sonarqube-token",
-            "SONARQUBE_ORGANIZATION": "your-organization-key"
-          }
+      "sonarqube-mcp-server-token-auth": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "sonarqube-mcp-server@latest"
+        ],
+        "env": {
+          "SONARQUBE_URL": "https://sonarcloud.io",
+          "SONARQUBE_TOKEN": "your-token-here",
+          "SONARQUBE_ORGANIZATION": "your-org (for SonarCloud)"
+        }
+      },
+      "sonarqube-mcp-server-basic-auth": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "sonarqube-mcp-server@latest"
+        ],
+        "env": {
+          "SONARQUBE_URL": "https://your-sonarqube.com",
+          "SONARQUBE_USERNAME": "your-username",
+          "SONARQUBE_PASSWORD": "your-password"
+        }
+      },
+      "sonarqube-mcp-server-passcode-auth": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "sonarqube-mcp-server@latest"
+        ],
+        "env": {
+          "SONARQUBE_URL": "https://your-sonarqube.com",
+          "SONARQUBE_PASSCODE": "your-system-passcode"
+        }
+      },
+      "sapientpants-sonarqube-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "SONARQUBE_URL",
+          "-e",
+          "SONARQUBE_TOKEN",
+          "-e",
+          "SONARQUBE_ORGANIZATION",
+          "sapientpants/sonarqube-mcp-server:latest"
+        ],
+        "env": {
+          "SONARQUBE_URL": "https://sonarqube.example.com",
+          "SONARQUBE_TOKEN": "your-sonarqube-token",
+          "SONARQUBE_ORGANIZATION": "your-organization-key"
         }
       }
     },

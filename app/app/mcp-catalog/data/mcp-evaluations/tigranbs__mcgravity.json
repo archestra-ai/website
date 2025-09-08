@@ -8,25 +8,21 @@
     "name": "tigranbs"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcgravity",
-    "mcp_config": {
-      "command": "${__dirname}/mcgravity",
-      "args": [
-        "--host",
-        "${user_config.host}",
-        "--port",
-        "${user_config.port}",
-        "--config",
-        "${user_config.config_file}",
-        "--mcp-version",
-        "${user_config.mcp_version}",
-        "--mcp-name",
-        "${user_config.mcp_name}",
-        "${user_config.mcp_server_addresses}"
-      ],
-      "env": {}
-    }
+    "command": "${__dirname}/mcgravity",
+    "args": [
+      "--host",
+      "${user_config.host}",
+      "--port",
+      "${user_config.port}",
+      "--config",
+      "${user_config.config_file}",
+      "--mcp-version",
+      "${user_config.mcp_version}",
+      "--mcp-name",
+      "${user_config.mcp_name}",
+      "${user_config.mcp_server_addresses}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -80,49 +76,60 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcgravity": {
-          "command": "./mcgravity",
-          "args": ["http://mcp1.example.com", "http://mcp2.example.com"],
-          "env": {}
-        },
-        "mcgravity-configured": {
-          "command": "./mcgravity",
-          "args": ["--host", "0.0.0.0", "--port", "4000", "http://mcp1.example.com", "http://mcp2.example.com"],
-          "env": {}
-        },
-        "mcgravity-with-config": {
-          "command": "./mcgravity",
-          "args": ["--config", "config.yaml"],
-          "env": {}
-        },
-        "tigranbs-mcgravity-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "3001:3001",
-            "tigranbs/mcgravity",
-            "http://mcp1.example.com",
-            "http://mcp2.example.com"
-          ],
-          "env": {}
-        },
-        "tigranbs-mcgravity-docker-configured": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "4000:4000",
-            "tigranbs/mcgravity",
-            "--host",
-            "0.0.0.0",
-            "--port",
-            "4000",
-            "http://mcp1.example.com"
-          ],
-          "env": {}
-        }
+      "mcgravity": {
+        "command": "./mcgravity",
+        "args": [
+          "http://mcp1.example.com",
+          "http://mcp2.example.com"
+        ],
+        "env": {}
+      },
+      "mcgravity-configured": {
+        "command": "./mcgravity",
+        "args": [
+          "--host",
+          "0.0.0.0",
+          "--port",
+          "4000",
+          "http://mcp1.example.com",
+          "http://mcp2.example.com"
+        ],
+        "env": {}
+      },
+      "mcgravity-with-config": {
+        "command": "./mcgravity",
+        "args": [
+          "--config",
+          "config.yaml"
+        ],
+        "env": {}
+      },
+      "tigranbs-mcgravity-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "3001:3001",
+          "tigranbs/mcgravity",
+          "http://mcp1.example.com",
+          "http://mcp2.example.com"
+        ],
+        "env": {}
+      },
+      "tigranbs-mcgravity-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "4000:4000",
+          "tigranbs/mcgravity",
+          "--host",
+          "0.0.0.0",
+          "--port",
+          "4000",
+          "http://mcp1.example.com"
+        ],
+        "env": {}
       }
     },
     "oauth": {

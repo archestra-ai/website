@@ -8,14 +8,13 @@
     "name": "Dumpling-AI"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-server-dumplingai"],
-      "env": {
-        "DUMPLING_API_KEY": "${user_config.dumpling_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-server-dumplingai"
+    ],
+    "env": {
+      "DUMPLING_API_KEY": "${user_config.dumpling_api_key}"
     }
   },
   "tools": [],
@@ -35,20 +34,24 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-dumplingai": {
-          "command": "npx",
-          "args": ["-y", "mcp-server-dumplingai"],
-          "env": {
-            "DUMPLING_API_KEY": "your_api_key"
-          }
-        },
-        "mcp-server-dumplingai-cursor": {
-          "command": "npx",
-          "args": ["-y", "mcp-server-dumplingai"],
-          "env": {
-            "DUMPLING_API_KEY": "<your-api-key>"
-          }
+      "mcp-server-dumplingai": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-server-dumplingai"
+        ],
+        "env": {
+          "DUMPLING_API_KEY": "your_api_key"
+        }
+      },
+      "mcp-server-dumplingai-cursor": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-server-dumplingai"
+        ],
+        "env": {
+          "DUMPLING_API_KEY": "<your-api-key>"
         }
       }
     },

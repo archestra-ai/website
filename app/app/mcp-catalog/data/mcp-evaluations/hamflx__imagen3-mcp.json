@@ -8,18 +8,14 @@
     "name": "hamflx"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "imagen3-mcp.exe",
-    "mcp_config": {
-      "command": "${__dirname}/imagen3-mcp.exe",
-      "args": [],
-      "env": {
-        "GEMINI_API_KEY": "${user_config.gemini_api_key}",
-        "BASE_URL": "${user_config.base_url}",
-        "SERVER_LISTEN_ADDR": "${user_config.server_listen_addr}",
-        "SERVER_PORT": "${user_config.server_port}",
-        "IMAGE_RESOURCE_SERVER_ADDR": "${user_config.image_resource_server_addr}"
-      }
+    "command": "${__dirname}/imagen3-mcp.exe",
+    "args": [],
+    "env": {
+      "GEMINI_API_KEY": "${user_config.gemini_api_key}",
+      "BASE_URL": "${user_config.base_url}",
+      "SERVER_LISTEN_ADDR": "${user_config.server_listen_addr}",
+      "SERVER_PORT": "${user_config.server_port}",
+      "IMAGE_RESOURCE_SERVER_ADDR": "${user_config.image_resource_server_addr}"
     }
   },
   "tools": [],
@@ -66,17 +62,15 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "imagen3-mcp": {
-          "command": "imagen3-mcp.exe",
-          "args": [],
-          "env": {
-            "GEMINI_API_KEY": "<GEMINI_API_KEY>",
-            "BASE_URL": "<PROXY_URL>",
-            "SERVER_LISTEN_ADDR": "127.0.0.1",
-            "SERVER_PORT": "9981",
-            "IMAGE_RESOURCE_SERVER_ADDR": "127.0.0.1"
-          }
+      "imagen3-mcp": {
+        "command": "imagen3-mcp.exe",
+        "args": [],
+        "env": {
+          "GEMINI_API_KEY": "<GEMINI_API_KEY>",
+          "BASE_URL": "<PROXY_URL>",
+          "SERVER_LISTEN_ADDR": "127.0.0.1",
+          "SERVER_PORT": "9981",
+          "IMAGE_RESOURCE_SERVER_ADDR": "127.0.0.1"
         }
       }
     },

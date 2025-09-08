@@ -8,14 +8,12 @@
     "name": "Jktfe"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
-      "env": {
-        "PORT": "${user_config.port}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/index.js"
+    ],
+    "env": {
+      "PORT": "${user_config.port}"
     }
   },
   "tools": [],
@@ -35,22 +33,26 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "servemyapi-stdio": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        },
-        "servemyapi-http": {
-          "command": "node",
-          "args": ["dist/server.js"],
-          "env": {}
-        },
-        "servemyapi-configured": {
-          "command": "node",
-          "args": ["/ABSOLUTE/PATH/TO/servemyapi/dist/index.js"],
-          "env": {}
-        }
+      "servemyapi-stdio": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {}
+      },
+      "servemyapi-http": {
+        "command": "node",
+        "args": [
+          "dist/server.js"
+        ],
+        "env": {}
+      },
+      "servemyapi-configured": {
+        "command": "node",
+        "args": [
+          "/ABSOLUTE/PATH/TO/servemyapi/dist/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

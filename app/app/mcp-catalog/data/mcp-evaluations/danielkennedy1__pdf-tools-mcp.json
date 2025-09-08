@@ -8,13 +8,12 @@
     "name": "danielkennedy1"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["-m", "src.main"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "-m",
+      "src.main"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,13 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "pdf-tools-mcp": {
-          "command": "python",
-          "args": ["-m", "src.main"],
-          "env": {}
-        }
+      "pdf-tools-mcp": {
+        "command": "python",
+        "args": [
+          "-m",
+          "src.main"
+        ],
+        "env": {}
       }
     },
     "oauth": {

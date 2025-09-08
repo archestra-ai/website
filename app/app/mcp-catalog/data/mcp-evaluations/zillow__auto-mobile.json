@@ -8,13 +8,12 @@
     "name": "zillow"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "auto-mobile"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "auto-mobile"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,13 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "auto-mobile": {
-          "command": "npx",
-          "args": ["-y", "auto-mobile"],
-          "env": {}
-        }
+      "auto-mobile": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "auto-mobile"
+        ],
+        "env": {}
       }
     },
     "oauth": {

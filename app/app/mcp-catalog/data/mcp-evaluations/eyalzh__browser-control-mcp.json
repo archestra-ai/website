@@ -8,15 +8,13 @@
     "name": "eyalzh"
   },
   "server": {
-    "type": "node",
-    "entry_point": "mcp-server/dist/server.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/mcp-server/dist/server.js"],
-      "env": {
-        "EXTENSION_SECRET": "${user_config.extension_secret}",
-        "EXTENSION_PORT": "${user_config.extension_port}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/mcp-server/dist/server.js"
+    ],
+    "env": {
+      "EXTENSION_SECRET": "${user_config.extension_secret}",
+      "EXTENSION_PORT": "${user_config.extension_port}"
     }
   },
   "tools": [],
@@ -43,33 +41,33 @@
   "quality_score": 65,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "browser-control": {
-          "command": "node",
-          "args": ["/path/to/repo/mcp-server/dist/server.js"],
-          "env": {
-            "EXTENSION_SECRET": "<secret_on_firefox_extension_options_page>",
-            "EXTENSION_PORT": "8089"
-          }
-        },
-        "browser-control-mcp-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "-p",
-            "127.0.0.1:8089:8089",
-            "-e",
-            "EXTENSION_SECRET=<secret_from_extension>",
-            "-e",
-            "CONTAINERIZED=true",
-            "browser-control-mcp"
-          ],
-          "env": {
-            "EXTENSION_SECRET": "<secret_from_extension>",
-            "CONTAINERIZED": "true"
-          }
+      "browser-control": {
+        "command": "node",
+        "args": [
+          "/path/to/repo/mcp-server/dist/server.js"
+        ],
+        "env": {
+          "EXTENSION_SECRET": "<secret_on_firefox_extension_options_page>",
+          "EXTENSION_PORT": "8089"
+        }
+      },
+      "browser-control-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "-p",
+          "127.0.0.1:8089:8089",
+          "-e",
+          "EXTENSION_SECRET=<secret_from_extension>",
+          "-e",
+          "CONTAINERIZED=true",
+          "browser-control-mcp"
+        ],
+        "env": {
+          "EXTENSION_SECRET": "<secret_from_extension>",
+          "CONTAINERIZED": "true"
         }
       }
     },

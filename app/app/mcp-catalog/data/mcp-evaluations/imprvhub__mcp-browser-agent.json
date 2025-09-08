@@ -8,13 +8,13 @@
     "name": "imprvhub"
   },
   "server": {
-    "type": "node",
-    "entry_point": "dist/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/index.js", "--browser", "${user_config.browser_type}"],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/index.js",
+      "--browser",
+      "${user_config.browser_type}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,17 +33,21 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "imprvhub-mcp-browser-agent": {
-          "command": "node",
-          "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js"],
-          "env": {}
-        },
-        "imprvhub-mcp-browser-agent-configured": {
-          "command": "node",
-          "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js", "--browser", "chrome"],
-          "env": {}
-        }
+      "imprvhub-mcp-browser-agent": {
+        "command": "node",
+        "args": [
+          "ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js"
+        ],
+        "env": {}
+      },
+      "imprvhub-mcp-browser-agent-configured": {
+        "command": "node",
+        "args": [
+          "ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js",
+          "--browser",
+          "chrome"
+        ],
+        "env": {}
       }
     },
     "oauth": {

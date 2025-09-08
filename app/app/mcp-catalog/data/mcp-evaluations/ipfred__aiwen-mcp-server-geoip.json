@@ -8,16 +8,15 @@
     "name": "ipfred"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "aiwen-mcp-server-geoip"],
-      "env": {
-        "AIWEN_API_KEY": "${user_config.aiwen_api_key}",
-        "IPV4_ACCURACY": "${user_config.ipv4_accuracy}",
-        "IPV6_ACCURACY": "${user_config.ipv6_accuracy}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "aiwen-mcp-server-geoip"
+    ],
+    "env": {
+      "AIWEN_API_KEY": "${user_config.aiwen_api_key}",
+      "IPV4_ACCURACY": "${user_config.ipv4_accuracy}",
+      "IPV6_ACCURACY": "${user_config.ipv6_accuracy}"
     }
   },
   "tools": [],
@@ -51,15 +50,16 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "aiwen-mcp-server-geoip": {
-          "command": "npx",
-          "args": ["-y", "aiwen-mcp-server-geoip"],
-          "env": {
-            "AIWEN_API_KEY": "xxxxxx",
-            "IPV4_ACCURACY": "city",
-            "IPV6_ACCURACY": "city"
-          }
+      "aiwen-mcp-server-geoip": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "aiwen-mcp-server-geoip"
+        ],
+        "env": {
+          "AIWEN_API_KEY": "xxxxxx",
+          "IPV4_ACCURACY": "city",
+          "IPV6_ACCURACY": "city"
         }
       }
     },

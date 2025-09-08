@@ -8,14 +8,13 @@
     "name": "strowk"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-k8s-go",
-    "mcp_config": {
-      "command": "mcp-k8s-go",
-      "args": ["--allowed-contexts=${user_config.allowed_contexts}", "${user_config.readonly}"],
-      "env": {
-        "KUBECONFIG": "${user_config.kubeconfig}"
-      }
+    "command": "mcp-k8s-go",
+    "args": [
+      "--allowed-contexts=${user_config.allowed_contexts}",
+      "${user_config.readonly}"
+    ],
+    "env": {
+      "KUBECONFIG": "${user_config.kubeconfig}"
     }
   },
   "tools": [],
@@ -49,32 +48,42 @@
   "quality_score": 69,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "strowk-mcp-k8s": {
-          "command": "npx",
-          "args": ["@strowk/mcp-k8s"],
-          "env": {}
-        },
-        "mcp-k8s": {
-          "command": "mcp-k8s",
-          "args": [],
-          "env": {}
-        },
-        "mcp-k8s-configured": {
-          "command": "mcp-k8s",
-          "args": ["--allowed-contexts=dev,prod", "--readonly"],
-          "env": {}
-        },
-        "mcp-k8s-go": {
-          "command": "mcp-k8s-go",
-          "args": [],
-          "env": {}
-        },
-        "mcpk8s-server-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "-v", "~/.kube/config:/home/nonroot/.kube/config", "--rm", "mcpk8s/server:latest"],
-          "env": {}
-        }
+      "strowk-mcp-k8s": {
+        "command": "npx",
+        "args": [
+          "@strowk/mcp-k8s"
+        ],
+        "env": {}
+      },
+      "mcp-k8s": {
+        "command": "mcp-k8s",
+        "args": [],
+        "env": {}
+      },
+      "mcp-k8s-configured": {
+        "command": "mcp-k8s",
+        "args": [
+          "--allowed-contexts=dev,prod",
+          "--readonly"
+        ],
+        "env": {}
+      },
+      "mcp-k8s-go": {
+        "command": "mcp-k8s-go",
+        "args": [],
+        "env": {}
+      },
+      "mcpk8s-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "-v",
+          "~/.kube/config:/home/nonroot/.kube/config",
+          "--rm",
+          "mcpk8s/server:latest"
+        ],
+        "env": {}
       }
     },
     "oauth": {

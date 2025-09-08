@@ -8,15 +8,14 @@
     "name": "johnneerdael"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@johnneerdael/netskope-mcp"],
-      "env": {
-        "NETSKOPE_BASE_URL": "${user_config.netskope_base_url}",
-        "NETSKOPE_API_KEY": "${user_config.netskope_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@johnneerdael/netskope-mcp"
+    ],
+    "env": {
+      "NETSKOPE_BASE_URL": "${user_config.netskope_base_url}",
+      "NETSKOPE_API_KEY": "${user_config.netskope_api_key}"
     }
   },
   "tools": [],
@@ -45,40 +44,43 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "johnneerdael-netskope-mcp-wsl": {
-          "command": "wsl.exe",
-          "args": [
-            "bash",
-            "-c",
-            "source ~/.nvm/nvm.sh && NETSKOPE_BASE_URL=https://your-tenant.goskope.com NETSKOPE_API_KEY=your-token npx -y @johnneerdael/netskope-mcp"
-          ],
-          "env": {}
-        },
-        "johnneerdael-netskope-mcp-wsl-local": {
-          "command": "wsl.exe",
-          "args": [
-            "bash",
-            "-c",
-            "cd /path/to/netskope-mcp && NETSKOPE_BASE_URL=https://your-tenant.goskope.com NETSKOPE_API_KEY=your-token node dist/cli.js"
-          ],
-          "env": {}
-        },
-        "johnneerdael-netskope-mcp": {
-          "command": "npx",
-          "args": ["-y", "@johnneerdael/netskope-mcp"],
-          "env": {
-            "NETSKOPE_BASE_URL": "https://your-tenant.goskope.com",
-            "NETSKOPE_API_KEY": "your-token"
-          }
-        },
-        "johnneerdael-netskope-mcp-local": {
-          "command": "node",
-          "args": ["dist/cli.js"],
-          "env": {
-            "NETSKOPE_BASE_URL": "https://your-tenant.goskope.com",
-            "NETSKOPE_API_KEY": "your-token"
-          }
+      "johnneerdael-netskope-mcp-wsl": {
+        "command": "wsl.exe",
+        "args": [
+          "bash",
+          "-c",
+          "source ~/.nvm/nvm.sh && NETSKOPE_BASE_URL=https://your-tenant.goskope.com NETSKOPE_API_KEY=your-token npx -y @johnneerdael/netskope-mcp"
+        ],
+        "env": {}
+      },
+      "johnneerdael-netskope-mcp-wsl-local": {
+        "command": "wsl.exe",
+        "args": [
+          "bash",
+          "-c",
+          "cd /path/to/netskope-mcp && NETSKOPE_BASE_URL=https://your-tenant.goskope.com NETSKOPE_API_KEY=your-token node dist/cli.js"
+        ],
+        "env": {}
+      },
+      "johnneerdael-netskope-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@johnneerdael/netskope-mcp"
+        ],
+        "env": {
+          "NETSKOPE_BASE_URL": "https://your-tenant.goskope.com",
+          "NETSKOPE_API_KEY": "your-token"
+        }
+      },
+      "johnneerdael-netskope-mcp-local": {
+        "command": "node",
+        "args": [
+          "dist/cli.js"
+        ],
+        "env": {
+          "NETSKOPE_BASE_URL": "https://your-tenant.goskope.com",
+          "NETSKOPE_API_KEY": "your-token"
         }
       }
     },

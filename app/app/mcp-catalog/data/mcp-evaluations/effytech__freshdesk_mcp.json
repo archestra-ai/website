@@ -8,15 +8,13 @@
     "name": "effytech"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["freshdesk-mcp"],
-      "env": {
-        "FRESHDESK_API_KEY": "${user_config.freshdesk_api_key}",
-        "FRESHDESK_DOMAIN": "${user_config.freshdesk_domain}"
-      }
+    "command": "uvx",
+    "args": [
+      "freshdesk-mcp"
+    ],
+    "env": {
+      "FRESHDESK_API_KEY": "${user_config.freshdesk_api_key}",
+      "FRESHDESK_DOMAIN": "${user_config.freshdesk_domain}"
     }
   },
   "tools": [],
@@ -43,28 +41,28 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "freshdesk-mcp": {
-          "command": "uvx",
-          "args": ["freshdesk-mcp"],
-          "env": {
-            "FRESHDESK_API_KEY": "<YOUR_FRESHDESK_API_KEY>",
-            "FRESHDESK_DOMAIN": "<YOUR_FRESHDESK_DOMAIN>"
-          }
-        },
-        "freshdesk-mcp-manual": {
-          "command": "uvx",
-          "args": [
-            "freshdesk-mcp",
-            "--env",
-            "FRESHDESK_API_KEY=<your_api_key>",
-            "--env",
-            "FRESHDESK_DOMAIN=<your_domain>"
-          ],
-          "env": {
-            "FRESHDESK_API_KEY": "<your_api_key>",
-            "FRESHDESK_DOMAIN": "<your_domain>"
-          }
+      "freshdesk-mcp": {
+        "command": "uvx",
+        "args": [
+          "freshdesk-mcp"
+        ],
+        "env": {
+          "FRESHDESK_API_KEY": "<YOUR_FRESHDESK_API_KEY>",
+          "FRESHDESK_DOMAIN": "<YOUR_FRESHDESK_DOMAIN>"
+        }
+      },
+      "freshdesk-mcp-manual": {
+        "command": "uvx",
+        "args": [
+          "freshdesk-mcp",
+          "--env",
+          "FRESHDESK_API_KEY=<your_api_key>",
+          "--env",
+          "FRESHDESK_DOMAIN=<your_domain>"
+        ],
+        "env": {
+          "FRESHDESK_API_KEY": "<your_api_key>",
+          "FRESHDESK_DOMAIN": "<your_domain>"
         }
       }
     },

@@ -8,14 +8,12 @@
     "name": "ac3xx"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "KAGI_API_KEY": "${user_config.kagi_api_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "KAGI_API_KEY": "${user_config.kagi_api_key}"
     }
   },
   "tools": [],
@@ -35,13 +33,11 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kagi-server": {
-          "command": "/path/to/kagi-server/build/index.js",
-          "args": [],
-          "env": {
-            "KAGI_API_KEY": "your_api_key_here"
-          }
+      "kagi-server": {
+        "command": "/path/to/kagi-server/build/index.js",
+        "args": [],
+        "env": {
+          "KAGI_API_KEY": "your_api_key_here"
         }
       }
     },

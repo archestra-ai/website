@@ -8,15 +8,15 @@
     "name": "gwbischof"
   },
   "server": {
-    "type": "python",
-    "entry_point": "bluesky-social-mcp",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["--from", "git+https://github.com/gwbischof/bluesky-social-mcp@v0.1", "bluesky-social-mcp"],
-      "env": {
-        "BLUESKY_IDENTIFIER": "${user_config.bluesky_identifier}",
-        "BLUESKY_APP_PASSWORD": "${user_config.bluesky_app_password}"
-      }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/gwbischof/bluesky-social-mcp@v0.1",
+      "bluesky-social-mcp"
+    ],
+    "env": {
+      "BLUESKY_IDENTIFIER": "${user_config.bluesky_identifier}",
+      "BLUESKY_APP_PASSWORD": "${user_config.bluesky_app_password}"
     }
   },
   "tools": [],
@@ -45,28 +45,38 @@
   "quality_score": 36,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "bluesky-social": {
-          "command": "uvx",
-          "args": ["--from", "git+https://github.com/gwbischof/bluesky-social-mcp@v0.1", "bluesky-social-mcp"],
-          "env": {
-            "BLUESKY_IDENTIFIER": "your-handle.bsky.social",
-            "BLUESKY_APP_PASSWORD": "your-app-password"
-          }
-        },
-        "bluesky-social-local-clone": {
-          "command": "uv",
-          "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/FOLDER/bluesky-social-mcp", "run", "server.py"],
-          "env": {
-            "BLUESKY_IDENTIFIER": "user-name.bsky.social‬",
-            "BLUESKY_APP_PASSWORD": "app-password-here"
-          }
-        },
-        "bluesky-social-mcp": {
-          "command": "uv",
-          "args": ["run", "bluesky-social-mcp"],
-          "env": {}
+      "bluesky-social": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/gwbischof/bluesky-social-mcp@v0.1",
+          "bluesky-social-mcp"
+        ],
+        "env": {
+          "BLUESKY_IDENTIFIER": "your-handle.bsky.social",
+          "BLUESKY_APP_PASSWORD": "your-app-password"
         }
+      },
+      "bluesky-social-local-clone": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/ABSOLUTE/PATH/TO/PARENT/FOLDER/bluesky-social-mcp",
+          "run",
+          "server.py"
+        ],
+        "env": {
+          "BLUESKY_IDENTIFIER": "user-name.bsky.social‬",
+          "BLUESKY_APP_PASSWORD": "app-password-here"
+        }
+      },
+      "bluesky-social-mcp": {
+        "command": "uv",
+        "args": [
+          "run",
+          "bluesky-social-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

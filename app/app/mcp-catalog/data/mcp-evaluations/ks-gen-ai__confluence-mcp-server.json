@@ -8,16 +8,14 @@
     "name": "KS-GEN-AI"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "CONFLUENCE_URL": "${user_config.confluence_url}",
-        "CONFLUENCE_API_MAIL": "${user_config.confluence_api_mail}",
-        "CONFLUENCE_API_KEY": "${user_config.confluence_api_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "CONFLUENCE_URL": "${user_config.confluence_url}",
+      "CONFLUENCE_API_MAIL": "${user_config.confluence_api_mail}",
+      "CONFLUENCE_API_KEY": "${user_config.confluence_api_key}"
     }
   },
   "tools": [],
@@ -53,15 +51,15 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "KS-GEN-AI-confluence-mcp-server-configured": {
-          "command": "node",
-          "args": ["/PATH_TO_THE_PROJECT/build/index.js"],
-          "env": {
-            "CONFLUENCE_URL": "https://XXXXXXXX.atlassian.net/wiki",
-            "CONFLUENCE_API_MAIL": "Your email",
-            "CONFLUENCE_API_KEY": "KEY_FROM: https://id.atlassian.com/manage-profile/security/api-tokens"
-          }
+      "KS-GEN-AI-confluence-mcp-server-configured": {
+        "command": "node",
+        "args": [
+          "/PATH_TO_THE_PROJECT/build/index.js"
+        ],
+        "env": {
+          "CONFLUENCE_URL": "https://XXXXXXXX.atlassian.net/wiki",
+          "CONFLUENCE_API_MAIL": "Your email",
+          "CONFLUENCE_API_KEY": "KEY_FROM: https://id.atlassian.com/manage-profile/security/api-tokens"
         }
       }
     },

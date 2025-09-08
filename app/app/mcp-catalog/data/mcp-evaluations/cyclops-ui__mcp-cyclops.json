@@ -8,18 +8,14 @@
     "name": "cyclops-ui"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-cyclops",
-    "mcp_config": {
-      "command": "mcp-cyclops",
-      "args": [],
-      "env": {
-        "KUBECONFIG": "${user_config.kubeconfig}",
-        "CYCLOPS_KUBE_CONTEXT": "${user_config.cyclops_kube_context}",
-        "CYCLOPS_MODULE_NAMESPACE": "${user_config.cyclops_module_namespace}",
-        "CYCLOPS_HELM_RELEASE_NAMESPACE": "${user_config.cyclops_helm_release_namespace}",
-        "CYCLOPS_MODULE_TARGET_NAMESPACE": "${user_config.cyclops_module_target_namespace}"
-      }
+    "command": "mcp-cyclops",
+    "args": [],
+    "env": {
+      "KUBECONFIG": "${user_config.kubeconfig}",
+      "CYCLOPS_KUBE_CONTEXT": "${user_config.cyclops_kube_context}",
+      "CYCLOPS_MODULE_NAMESPACE": "${user_config.cyclops_module_namespace}",
+      "CYCLOPS_HELM_RELEASE_NAMESPACE": "${user_config.cyclops_helm_release_namespace}",
+      "CYCLOPS_MODULE_TARGET_NAMESPACE": "${user_config.cyclops_module_target_namespace}"
     }
   },
   "tools": [],
@@ -63,18 +59,16 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-cyclops": {
-          "command": "mcp-cyclops",
-          "args": [],
-          "env": {}
-        },
-        "mcp-cyclops-configured": {
-          "command": "mcp-cyclops",
-          "args": [],
-          "env": {
-            "KUBECONFIG": "/path/to/your/kubeconfig"
-          }
+      "mcp-cyclops": {
+        "command": "mcp-cyclops",
+        "args": [],
+        "env": {}
+      },
+      "mcp-cyclops-configured": {
+        "command": "mcp-cyclops",
+        "args": [],
+        "env": {
+          "KUBECONFIG": "/path/to/your/kubeconfig"
         }
       }
     },

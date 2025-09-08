@@ -8,14 +8,17 @@
     "name": "minhyeoky"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "--with", "mcp[cli]", "mcp", "run", "${__dirname}/main.py"],
-      "env": {
-        "LEDGER_FILE": "${user_config.ledger_file}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "--with",
+      "mcp[cli]",
+      "mcp",
+      "run",
+      "${__dirname}/main.py"
+    ],
+    "env": {
+      "LEDGER_FILE": "${user_config.ledger_file}"
     }
   },
   "tools": [],
@@ -34,42 +37,43 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "minhyeoky-mcp-ledger-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-v",
-            "/path/to/your/ledger/file.ledger:/main.ledger",
-            "-e",
-            "LEDGER_FILE=/main.ledger",
-            "-i",
-            "--rm",
-            "minhyeoky/mcp-ledger"
-          ],
-          "env": {
-            "LEDGER_FILE": "/main.ledger"
-          }
-        },
-        "mcp-server-ledger-uv-configured": {
-          "command": "uv",
-          "args": [
-            "run",
-            "--env-file",
-            "/path/to/your/.env",
-            "--with",
-            "mcp[cli]",
-            "mcp",
-            "run",
-            "<repo_path>/main.py"
-          ],
-          "env": {}
-        },
-        "mcp-server-ledger-dev": {
-          "command": "mcp",
-          "args": ["dev", "main.py"],
-          "env": {}
+      "minhyeoky-mcp-ledger-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-v",
+          "/path/to/your/ledger/file.ledger:/main.ledger",
+          "-e",
+          "LEDGER_FILE=/main.ledger",
+          "-i",
+          "--rm",
+          "minhyeoky/mcp-ledger"
+        ],
+        "env": {
+          "LEDGER_FILE": "/main.ledger"
         }
+      },
+      "mcp-server-ledger-uv-configured": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--env-file",
+          "/path/to/your/.env",
+          "--with",
+          "mcp[cli]",
+          "mcp",
+          "run",
+          "<repo_path>/main.py"
+        ],
+        "env": {}
+      },
+      "mcp-server-ledger-dev": {
+        "command": "mcp",
+        "args": [
+          "dev",
+          "main.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

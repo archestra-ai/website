@@ -8,14 +8,12 @@
     "name": "ckreiling"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["mcp-server-docker"],
-      "env": {
-        "DOCKER_HOST": "${user_config.docker_host}"
-      }
+    "command": "uvx",
+    "args": [
+      "mcp-server-docker"
+    ],
+    "env": {
+      "DOCKER_HOST": "${user_config.docker_host}"
     }
   },
   "tools": [],
@@ -35,29 +33,43 @@
   "quality_score": 66,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-docker": {
-          "command": "uvx",
-          "args": ["mcp-server-docker"],
-          "env": {}
-        },
-        "mcp-server-docker-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "-v", "/var/run/docker.sock:/var/run/docker.sock", "mcp-server-docker:latest"],
-          "env": {}
-        },
-        "mcp-server-docker-ssh": {
-          "command": "uvx",
-          "args": ["mcp-server-docker"],
-          "env": {
-            "DOCKER_HOST": "ssh://myusername@myhost.example.com"
-          }
-        },
-        "mcp-server-docker-devbox": {
-          "command": "/path/to/repo/.devbox/nix/profile/default/bin/uv",
-          "args": ["--directory", "/path/to/repo/", "run", "mcp-server-docker"],
-          "env": {}
+      "mcp-server-docker": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-docker"
+        ],
+        "env": {}
+      },
+      "mcp-server-docker-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-v",
+          "/var/run/docker.sock:/var/run/docker.sock",
+          "mcp-server-docker:latest"
+        ],
+        "env": {}
+      },
+      "mcp-server-docker-ssh": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-docker"
+        ],
+        "env": {
+          "DOCKER_HOST": "ssh://myusername@myhost.example.com"
         }
+      },
+      "mcp-server-docker-devbox": {
+        "command": "/path/to/repo/.devbox/nix/profile/default/bin/uv",
+        "args": [
+          "--directory",
+          "/path/to/repo/",
+          "run",
+          "mcp-server-docker"
+        ],
+        "env": {}
       }
     },
     "oauth": {

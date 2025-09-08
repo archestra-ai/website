@@ -8,14 +8,12 @@
     "name": "DappierAI"
   },
   "server": {
-    "type": "python",
-    "entry_point": "__main__.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["dappier-mcp"],
-      "env": {
-        "DAPPIER_API_KEY": "${user_config.dappier_api_key}"
-      }
+    "command": "uvx",
+    "args": [
+      "dappier-mcp"
+    ],
+    "env": {
+      "DAPPIER_API_KEY": "${user_config.dappier_api_key}"
     }
   },
   "tools": [],
@@ -35,13 +33,13 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "dappier-mcp": {
-          "command": "uvx",
-          "args": ["dappier-mcp"],
-          "env": {
-            "DAPPIER_API_KEY": "YOUR_API_KEY_HERE"
-          }
+      "dappier-mcp": {
+        "command": "uvx",
+        "args": [
+          "dappier-mcp"
+        ],
+        "env": {
+          "DAPPIER_API_KEY": "YOUR_API_KEY_HERE"
         }
       }
     },

@@ -8,16 +8,17 @@
     "name": "unibaseio"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/membase_mcp/server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "src/membase_mcp/server.py"],
-      "env": {
-        "MEMBASE_ACCOUNT": "${user_config.membase_account}",
-        "MEMBASE_CONVERSATION_ID": "${user_config.membase_conversation_id}",
-        "MEMBASE_ID": "${user_config.membase_id}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "src/membase_mcp/server.py"
+    ],
+    "env": {
+      "MEMBASE_ACCOUNT": "${user_config.membase_account}",
+      "MEMBASE_CONVERSATION_ID": "${user_config.membase_conversation_id}",
+      "MEMBASE_ID": "${user_config.membase_id}"
     }
   },
   "tools": [],
@@ -51,20 +52,26 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "membase_mcp": {
-          "command": "uv",
-          "args": ["run", "src/membase_mcp/server.py"],
-          "env": {}
-        },
-        "membase_mcp-configured": {
-          "command": "uv",
-          "args": ["--directory", "path/to/membase-mcp", "run", "src/membase_mcp/server.py"],
-          "env": {
-            "MEMBASE_ACCOUNT": "your account, 0x...",
-            "MEMBASE_CONVERSATION_ID": "your conversation id, should be unique",
-            "MEMBASE_ID": "your sub account, any string"
-          }
+      "membase_mcp": {
+        "command": "uv",
+        "args": [
+          "run",
+          "src/membase_mcp/server.py"
+        ],
+        "env": {}
+      },
+      "membase_mcp-configured": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "path/to/membase-mcp",
+          "run",
+          "src/membase_mcp/server.py"
+        ],
+        "env": {
+          "MEMBASE_ACCOUNT": "your account, 0x...",
+          "MEMBASE_CONVERSATION_ID": "your conversation id, should be unique",
+          "MEMBASE_ID": "your sub account, any string"
         }
       }
     },

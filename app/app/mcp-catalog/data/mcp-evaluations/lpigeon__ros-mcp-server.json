@@ -8,16 +8,17 @@
     "name": "lpigeon"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "server.py"],
-      "env": {
-        "LOCAL_IP": "${user_config.local_ip}",
-        "ROSBRIDGE_IP": "${user_config.rosbridge_ip}",
-        "ROSBRIDGE_PORT": "${user_config.rosbridge_port}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "server.py"
+    ],
+    "env": {
+      "LOCAL_IP": "${user_config.local_ip}",
+      "ROSBRIDGE_IP": "${user_config.rosbridge_ip}",
+      "ROSBRIDGE_PORT": "${user_config.rosbridge_port}"
     }
   },
   "tools": [],
@@ -49,12 +50,15 @@
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ros-mcp-server": {
-          "command": "uv",
-          "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/FOLDER/ros-mcp-server", "run", "server.py"],
-          "env": {}
-        }
+      "ros-mcp-server": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/ABSOLUTE/PATH/TO/PARENT/FOLDER/ros-mcp-server",
+          "run",
+          "server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

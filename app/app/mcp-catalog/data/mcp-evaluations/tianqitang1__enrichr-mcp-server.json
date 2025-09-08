@@ -8,17 +8,16 @@
     "name": "tianqitang1"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "enrichr-mcp-server"],
-      "env": {
-        "ENRICHR_LIBRARIES": "${user_config.enrichr_libraries}",
-        "ENRICHR_MAX_TERMS": "${user_config.enrichr_max_terms}",
-        "ENRICHR_FORMAT": "${user_config.enrichr_format}",
-        "ENRICHR_OUTPUT_FILE": "${user_config.enrichr_output_file}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "enrichr-mcp-server"
+    ],
+    "env": {
+      "ENRICHR_LIBRARIES": "${user_config.enrichr_libraries}",
+      "ENRICHR_MAX_TERMS": "${user_config.enrichr_max_terms}",
+      "ENRICHR_FORMAT": "${user_config.enrichr_format}",
+      "ENRICHR_OUTPUT_FILE": "${user_config.enrichr_output_file}"
     }
   },
   "tools": [],
@@ -59,32 +58,54 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "enrichr-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "enrichr-mcp-server"],
-          "env": {}
-        },
-        "enrichr-mcp-server-compact-100terms": {
-          "command": "npx",
-          "args": ["-y", "enrichr-mcp-server", "--compact", "--max-terms", "100"],
-          "env": {}
-        },
-        "enrichr-mcp-server-popular": {
-          "command": "npx",
-          "args": ["-y", "enrichr-mcp-server", "--libraries", "pop"],
-          "env": {}
-        },
-        "enrichr-mcp-server-pathways": {
-          "command": "npx",
-          "args": ["-y", "enrichr-mcp-server", "-l", "GO_Biological_Process_2025,KEGG_2021_Human,Reactome_2022"],
-          "env": {}
-        },
-        "enrichr-mcp-server-disease": {
-          "command": "npx",
-          "args": ["-y", "enrichr-mcp-server", "--libraries", "Human_Phenotype_Ontology,OMIM_Disease,ClinVar_2019"],
-          "env": {}
-        }
+      "enrichr-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "enrichr-mcp-server"
+        ],
+        "env": {}
+      },
+      "enrichr-mcp-server-compact-100terms": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "enrichr-mcp-server",
+          "--compact",
+          "--max-terms",
+          "100"
+        ],
+        "env": {}
+      },
+      "enrichr-mcp-server-popular": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "enrichr-mcp-server",
+          "--libraries",
+          "pop"
+        ],
+        "env": {}
+      },
+      "enrichr-mcp-server-pathways": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "enrichr-mcp-server",
+          "-l",
+          "GO_Biological_Process_2025,KEGG_2021_Human,Reactome_2022"
+        ],
+        "env": {}
+      },
+      "enrichr-mcp-server-disease": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "enrichr-mcp-server",
+          "--libraries",
+          "Human_Phenotype_Ontology,OMIM_Disease,ClinVar_2019"
+        ],
+        "env": {}
       }
     },
     "oauth": {

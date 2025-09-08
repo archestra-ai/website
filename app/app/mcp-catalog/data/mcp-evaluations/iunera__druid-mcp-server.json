@@ -8,21 +8,17 @@
     "name": "iunera"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "druid-mcp-server-1.0.0.jar",
-    "mcp_config": {
-      "command": "java",
-      "args": [
-        "-Dspring.ai.mcp.server.stdio=true",
-        "-Dspring.main.web-application-type=none",
-        "-Dlogging.pattern.console=",
-        "-jar",
-        "${__dirname}/druid-mcp-server-1.0.0.jar"
-      ],
-      "env": {
-        "DRUID_BROKER_URL": "${user_config.druid_broker_url}",
-        "DRUID_COORDINATOR_URL": "${user_config.druid_coordinator_url}"
-      }
+    "command": "java",
+    "args": [
+      "-Dspring.ai.mcp.server.stdio=true",
+      "-Dspring.main.web-application-type=none",
+      "-Dlogging.pattern.console=",
+      "-jar",
+      "${__dirname}/druid-mcp-server-1.0.0.jar"
+    ],
+    "env": {
+      "DRUID_BROKER_URL": "${user_config.druid_broker_url}",
+      "DRUID_COORDINATOR_URL": "${user_config.druid_coordinator_url}"
     }
   },
   "tools": [],
@@ -47,70 +43,74 @@
   "quality_score": 73,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "druid-mcp-server-jar-built": {
-          "command": "java",
-          "args": ["-jar", "target/druid-mcp-server-1.0.0.jar"],
-          "env": {}
-        },
-        "druid-mcp-server-jar-downloaded": {
-          "command": "java",
-          "args": ["-jar", "druid-mcp-server-1.0.0.jar"],
-          "env": {}
-        },
-        "druid-mcp-server-jar-downloaded-stdio": {
-          "command": "java",
-          "args": [
-            "-Dspring.ai.mcp.server.stdio=true",
-            "-Dspring.main.web-application-type=none",
-            "-Dlogging.pattern.console=",
-            "-jar",
-            "druid-mcp-server-1.0.0.jar"
-          ],
-          "env": {}
-        },
-        "iunera-druid-mcp-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "DRUID_BROKER_URL=http://your-druid-broker:8082",
-            "-e",
-            "DRUID_COORDINATOR_URL=http://your-druid-coordinator:8081",
-            "iunera/druid-mcp-server:latest"
-          ],
-          "env": {
-            "DRUID_BROKER_URL": "http://your-druid-broker:8082",
-            "DRUID_COORDINATOR_URL": "http://your-druid-coordinator:8081"
-          }
-        },
-        "iunera-druid-mcp-server-docker-stdio": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "-e",
-            "SPRING_AI_MCP_SERVER_STDIO=true",
-            "-e",
-            "SPRING_MAIN_WEB_APPLICATION_TYPE=none",
-            "-e",
-            "LOGGING_PATTERN_CONSOLE=",
-            "-e",
-            "DRUID_BROKER_URL=http://your-druid-broker:8082",
-            "-e",
-            "DRUID_COORDINATOR_URL=http://your-druid-coordinator:8081",
-            "iunera/druid-mcp-server:latest"
-          ],
-          "env": {
-            "SPRING_AI_MCP_SERVER_STDIO": "true",
-            "SPRING_MAIN_WEB_APPLICATION_TYPE": "none",
-            "LOGGING_PATTERN_CONSOLE": "",
-            "DRUID_BROKER_URL": "http://your-druid-broker:8082",
-            "DRUID_COORDINATOR_URL": "http://your-druid-coordinator:8081"
-          }
+      "druid-mcp-server-jar-built": {
+        "command": "java",
+        "args": [
+          "-jar",
+          "target/druid-mcp-server-1.0.0.jar"
+        ],
+        "env": {}
+      },
+      "druid-mcp-server-jar-downloaded": {
+        "command": "java",
+        "args": [
+          "-jar",
+          "druid-mcp-server-1.0.0.jar"
+        ],
+        "env": {}
+      },
+      "druid-mcp-server-jar-downloaded-stdio": {
+        "command": "java",
+        "args": [
+          "-Dspring.ai.mcp.server.stdio=true",
+          "-Dspring.main.web-application-type=none",
+          "-Dlogging.pattern.console=",
+          "-jar",
+          "druid-mcp-server-1.0.0.jar"
+        ],
+        "env": {}
+      },
+      "iunera-druid-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "DRUID_BROKER_URL=http://your-druid-broker:8082",
+          "-e",
+          "DRUID_COORDINATOR_URL=http://your-druid-coordinator:8081",
+          "iunera/druid-mcp-server:latest"
+        ],
+        "env": {
+          "DRUID_BROKER_URL": "http://your-druid-broker:8082",
+          "DRUID_COORDINATOR_URL": "http://your-druid-coordinator:8081"
+        }
+      },
+      "iunera-druid-mcp-server-docker-stdio": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "-e",
+          "SPRING_AI_MCP_SERVER_STDIO=true",
+          "-e",
+          "SPRING_MAIN_WEB_APPLICATION_TYPE=none",
+          "-e",
+          "LOGGING_PATTERN_CONSOLE=",
+          "-e",
+          "DRUID_BROKER_URL=http://your-druid-broker:8082",
+          "-e",
+          "DRUID_COORDINATOR_URL=http://your-druid-coordinator:8081",
+          "iunera/druid-mcp-server:latest"
+        ],
+        "env": {
+          "SPRING_AI_MCP_SERVER_STDIO": "true",
+          "SPRING_MAIN_WEB_APPLICATION_TYPE": "none",
+          "LOGGING_PATTERN_CONSOLE": "",
+          "DRUID_BROKER_URL": "http://your-druid-broker:8082",
+          "DRUID_COORDINATOR_URL": "http://your-druid-coordinator:8081"
         }
       }
     },

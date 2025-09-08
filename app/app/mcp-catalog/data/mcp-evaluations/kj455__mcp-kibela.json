@@ -8,15 +8,14 @@
     "name": "kj455"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@kj455/mcp-kibela"],
-      "env": {
-        "KIBELA_TEAM": "${user_config.kibela_team}",
-        "KIBELA_TOKEN": "${user_config.kibela_token}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@kj455/mcp-kibela"
+    ],
+    "env": {
+      "KIBELA_TEAM": "${user_config.kibela_team}",
+      "KIBELA_TOKEN": "${user_config.kibela_token}"
     }
   },
   "tools": [],
@@ -43,28 +42,46 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kj455-mcp-kibela-docker-hardcoded-env": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "KIBELA_TEAM", "-e", "KIBELA_TOKEN", "ghcr.io/kj455/mcp-kibela:latest"],
-          "env": {
-            "KIBELA_TEAM": "your-team-name from https://[team-name].kibe.la",
-            "KIBELA_TOKEN": "your-token"
-          }
-        },
-        "kj455-mcp-kibela-docker-configured": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "KIBELA_TEAM", "-e", "KIBELA_TOKEN", "ghcr.io/kj455/mcp-kibela:latest"],
-          "env": {
-            "KIBELA_TEAM": "${input:kibela_team}",
-            "KIBELA_TOKEN": "${input:kibela_token}"
-          }
-        },
-        "kj455-mcp-kibela-node-stdio": {
-          "command": "node",
-          "args": ["/path/to/mcp-kibela/dist/index.js"],
-          "env": {}
+      "kj455-mcp-kibela-docker-hardcoded-env": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "KIBELA_TEAM",
+          "-e",
+          "KIBELA_TOKEN",
+          "ghcr.io/kj455/mcp-kibela:latest"
+        ],
+        "env": {
+          "KIBELA_TEAM": "your-team-name from https://[team-name].kibe.la",
+          "KIBELA_TOKEN": "your-token"
         }
+      },
+      "kj455-mcp-kibela-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "KIBELA_TEAM",
+          "-e",
+          "KIBELA_TOKEN",
+          "ghcr.io/kj455/mcp-kibela:latest"
+        ],
+        "env": {
+          "KIBELA_TEAM": "${input:kibela_team}",
+          "KIBELA_TOKEN": "${input:kibela_token}"
+        }
+      },
+      "kj455-mcp-kibela-node-stdio": {
+        "command": "node",
+        "args": [
+          "/path/to/mcp-kibela/dist/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

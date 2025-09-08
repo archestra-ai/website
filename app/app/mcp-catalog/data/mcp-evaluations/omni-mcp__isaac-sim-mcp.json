@@ -8,16 +8,15 @@
     "name": "omni-mcp"
   },
   "server": {
-    "type": "python",
-    "entry_point": "isaac_mcp/server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "${__dirname}/isaac_mcp/server.py"],
-      "env": {
-        "BEAVER3D_MODEL": "${user_config.beaver3d_model}",
-        "ARK_API_KEY": "${user_config.ark_api_key}",
-        "NVIDIA_API_KEY": "${user_config.nvidia_api_key}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "${__dirname}/isaac_mcp/server.py"
+    ],
+    "env": {
+      "BEAVER3D_MODEL": "${user_config.beaver3d_model}",
+      "ARK_API_KEY": "${user_config.ark_api_key}",
+      "NVIDIA_API_KEY": "${user_config.nvidia_api_key}"
     }
   },
   "tools": [],
@@ -50,17 +49,23 @@
   "quality_score": 65,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "isaac-sim-mcp": {
-          "command": "uv",
-          "args": ["run", "/home/ubuntu/Documents/isaac-sim-mcp/isaac_mcp/server.py"],
-          "env": {}
-        },
-        "isaac-sim-mcp-dev": {
-          "command": "uv",
-          "args": ["run", "mcp", "dev", "~/Documents/isaac-sim-mcp/isaac_mcp/server.py"],
-          "env": {}
-        }
+      "isaac-sim-mcp": {
+        "command": "uv",
+        "args": [
+          "run",
+          "/home/ubuntu/Documents/isaac-sim-mcp/isaac_mcp/server.py"
+        ],
+        "env": {}
+      },
+      "isaac-sim-mcp-dev": {
+        "command": "uv",
+        "args": [
+          "run",
+          "mcp",
+          "dev",
+          "~/Documents/isaac-sim-mcp/isaac_mcp/server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

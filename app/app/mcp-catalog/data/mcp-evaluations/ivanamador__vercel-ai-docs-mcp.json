@@ -8,14 +8,12 @@
     "name": "IvanAmador"
   },
   "server": {
-    "type": "node",
-    "entry_point": "main.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/main.js"],
-      "env": {
-        "GOOGLE_GENERATIVE_AI_API_KEY": "${user_config.google_generative_ai_api_key}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/main.js"
+    ],
+    "env": {
+      "GOOGLE_GENERATIVE_AI_API_KEY": "${user_config.google_generative_ai_api_key}"
     }
   },
   "tools": [],
@@ -35,18 +33,21 @@
   "quality_score": 37,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "vercel-ai-docs-npm-start": {
-          "command": "npm",
-          "args": ["run", "start"],
-          "env": {}
-        },
-        "vercel-ai-docs": {
-          "command": "node",
-          "args": ["ABSOLUTE_PATH_TO_PROJECT/dist/main.js"],
-          "env": {
-            "GOOGLE_GENERATIVE_AI_API_KEY": "your-google-api-key-here"
-          }
+      "vercel-ai-docs-npm-start": {
+        "command": "npm",
+        "args": [
+          "run",
+          "start"
+        ],
+        "env": {}
+      },
+      "vercel-ai-docs": {
+        "command": "node",
+        "args": [
+          "ABSOLUTE_PATH_TO_PROJECT/dist/main.js"
+        ],
+        "env": {
+          "GOOGLE_GENERATIVE_AI_API_KEY": "your-google-api-key-here"
         }
       }
     },

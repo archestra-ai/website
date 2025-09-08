@@ -8,14 +8,10 @@
     "name": "opslevel"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "opslevel-mcp",
-    "mcp_config": {
-      "command": "opslevel-mcp",
-      "args": [],
-      "env": {
-        "OPSLEVEL_API_TOKEN": "${user_config.opslevel_api_token}"
-      }
+    "command": "opslevel-mcp",
+    "args": [],
+    "env": {
+      "OPSLEVEL_API_TOKEN": "${user_config.opslevel_api_token}"
     }
   },
   "tools": [],
@@ -35,20 +31,25 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "opslevel": {
-          "command": "opslevel-mcp",
-          "args": [],
-          "env": {
-            "OPSLEVEL_API_TOKEN": "XXXXXX"
-          }
-        },
-        "public-ecr-aws-opslevel-mcp-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "OPSLEVEL_API_TOKEN", "public.ecr.aws/opslevel/mcp:latest"],
-          "env": {
-            "OPSLEVEL_API_TOKEN": "XXXXXX"
-          }
+      "opslevel": {
+        "command": "opslevel-mcp",
+        "args": [],
+        "env": {
+          "OPSLEVEL_API_TOKEN": "XXXXXX"
+        }
+      },
+      "public-ecr-aws-opslevel-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "OPSLEVEL_API_TOKEN",
+          "public.ecr.aws/opslevel/mcp:latest"
+        ],
+        "env": {
+          "OPSLEVEL_API_TOKEN": "XXXXXX"
         }
       }
     },

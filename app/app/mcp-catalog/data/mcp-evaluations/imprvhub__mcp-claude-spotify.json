@@ -8,15 +8,13 @@
     "name": "imprvhub"
   },
   "server": {
-    "type": "node",
-    "entry_point": "build/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "SPOTIFY_CLIENT_ID": "${user_config.spotify_client_id}",
-        "SPOTIFY_CLIENT_SECRET": "${user_config.spotify_client_secret}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "SPOTIFY_CLIENT_ID": "${user_config.spotify_client_id}",
+      "SPOTIFY_CLIENT_SECRET": "${user_config.spotify_client_secret}"
     }
   },
   "tools": [],
@@ -43,19 +41,21 @@
   "quality_score": 59,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "imprvhub-mcp-claude-spotify-manual": {
-          "command": "node",
-          "args": ["build/index.js"],
-          "env": {}
-        },
-        "imprvhub-mcp-claude-spotify-configured": {
-          "command": "node",
-          "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-claude-spotify/build/index.js"],
-          "env": {
-            "SPOTIFY_CLIENT_ID": "your_client_id_here",
-            "SPOTIFY_CLIENT_SECRET": "your_client_secret_here"
-          }
+      "imprvhub-mcp-claude-spotify-manual": {
+        "command": "node",
+        "args": [
+          "build/index.js"
+        ],
+        "env": {}
+      },
+      "imprvhub-mcp-claude-spotify-configured": {
+        "command": "node",
+        "args": [
+          "ABSOLUTE_PATH_TO_DIRECTORY/mcp-claude-spotify/build/index.js"
+        ],
+        "env": {
+          "SPOTIFY_CLIENT_ID": "your_client_id_here",
+          "SPOTIFY_CLIENT_SECRET": "your_client_secret_here"
         }
       }
     },

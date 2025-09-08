@@ -8,18 +8,16 @@
     "name": "hardik-id"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "SUBSCRIPTION_ID": "${user_config.subscription_id}",
-        "AZURE_SUBSCRIPTION_ID": "${user_config.azure_subscription_id}",
-        "AZURE_TENANT_ID": "${user_config.azure_tenant_id}",
-        "AZURE_CLIENT_ID": "${user_config.azure_client_id}",
-        "AZURE_CLIENT_SECRET": "${user_config.azure_client_secret}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "SUBSCRIPTION_ID": "${user_config.subscription_id}",
+      "AZURE_SUBSCRIPTION_ID": "${user_config.azure_subscription_id}",
+      "AZURE_TENANT_ID": "${user_config.azure_tenant_id}",
+      "AZURE_CLIENT_ID": "${user_config.azure_client_id}",
+      "AZURE_CLIENT_SECRET": "${user_config.azure_client_secret}"
     }
   },
   "tools": [],
@@ -67,13 +65,13 @@
   "quality_score": 43,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "azure-resource-graph-mcp-server": {
-          "command": "node",
-          "args": ["C:\\YOUR_WORKSPACE\\azure-resource-graph-mcp-server\\build\\index.js"],
-          "env": {
-            "SUBSCRIPTION_ID": "xxxxxx-xx-xx-xx-xxxxxx"
-          }
+      "azure-resource-graph-mcp-server": {
+        "command": "node",
+        "args": [
+          "C:\\YOUR_WORKSPACE\\azure-resource-graph-mcp-server\\build\\index.js"
+        ],
+        "env": {
+          "SUBSCRIPTION_ID": "xxxxxx-xx-xx-xx-xxxxxx"
         }
       }
     },

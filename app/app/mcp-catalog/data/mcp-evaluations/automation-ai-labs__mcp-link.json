@@ -8,13 +8,17 @@
     "name": "automation-ai-labs"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "main.go",
-    "mcp_config": {
-      "command": "go",
-      "args": ["run", "main.go", "serve", "--port", "${user_config.port}", "--host", "${user_config.host}"],
-      "env": {}
-    }
+    "command": "go",
+    "args": [
+      "run",
+      "main.go",
+      "serve",
+      "--port",
+      "${user_config.port}",
+      "--host",
+      "${user_config.host}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -40,12 +44,18 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-openapi-to-mcp-adapter": {
-          "command": "go",
-          "args": ["run", "main.go", "serve", "--port", "8080", "--host", "0.0.0.0"],
-          "env": {}
-        }
+      "mcp-openapi-to-mcp-adapter": {
+        "command": "go",
+        "args": [
+          "run",
+          "main.go",
+          "serve",
+          "--port",
+          "8080",
+          "--host",
+          "0.0.0.0"
+        ],
+        "env": {}
       }
     },
     "oauth": {

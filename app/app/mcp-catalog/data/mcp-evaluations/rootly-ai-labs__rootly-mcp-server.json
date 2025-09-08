@@ -8,14 +8,16 @@
     "name": "Rootly-AI-Labs"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/rootly_mcp_server/server.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["tool", "run", "--from", "rootly-mcp-server", "rootly-mcp-server"],
-      "env": {
-        "ROOTLY_API_TOKEN": "${user_config.rootly_api_token}"
-      }
+    "command": "uv",
+    "args": [
+      "tool",
+      "run",
+      "--from",
+      "rootly-mcp-server",
+      "rootly-mcp-server"
+    ],
+    "env": {
+      "ROOTLY_API_TOKEN": "${user_config.rootly_api_token}"
     }
   },
   "tools": [],
@@ -35,34 +37,53 @@
   "quality_score": 65,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "rootly-mcp-server-uv-tool-run": {
-          "command": "uv",
-          "args": ["tool", "run", "--from", "rootly-mcp-server", "rootly-mcp-server"],
-          "env": {
-            "ROOTLY_API_TOKEN": "<YOUR_ROOTLY_API_TOKEN>"
-          }
-        },
-        "rootly-mcp-server-uvx": {
-          "command": "uvx",
-          "args": ["--from", "rootly-mcp-server", "rootly-mcp-server"],
-          "env": {
-            "ROOTLY_API_TOKEN": "<YOUR_ROOTLY_API_TOKEN>"
-          }
-        },
-        "rootly-mcp-server-local-clone": {
-          "command": "uv",
-          "args": ["run", "--directory", "/path/to/rootly-mcp-server", "rootly-mcp-server"],
-          "env": {
-            "ROOTLY_API_TOKEN": "<YOUR_ROOTLY_API_TOKEN>"
-          }
-        },
-        "mcp-remote-hosted": {
-          "command": "npx",
-          "args": ["-y", "mcp-remote", "https://mcp.rootly.com/sse", "--header", "Authorization:${ROOTLY_AUTH_HEADER}"],
-          "env": {
-            "ROOTLY_AUTH_HEADER": "Bearer <YOUR_ROOTLY_API_TOKEN>"
-          }
+      "rootly-mcp-server-uv-tool-run": {
+        "command": "uv",
+        "args": [
+          "tool",
+          "run",
+          "--from",
+          "rootly-mcp-server",
+          "rootly-mcp-server"
+        ],
+        "env": {
+          "ROOTLY_API_TOKEN": "<YOUR_ROOTLY_API_TOKEN>"
+        }
+      },
+      "rootly-mcp-server-uvx": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "rootly-mcp-server",
+          "rootly-mcp-server"
+        ],
+        "env": {
+          "ROOTLY_API_TOKEN": "<YOUR_ROOTLY_API_TOKEN>"
+        }
+      },
+      "rootly-mcp-server-local-clone": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--directory",
+          "/path/to/rootly-mcp-server",
+          "rootly-mcp-server"
+        ],
+        "env": {
+          "ROOTLY_API_TOKEN": "<YOUR_ROOTLY_API_TOKEN>"
+        }
+      },
+      "mcp-remote-hosted": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-remote",
+          "https://mcp.rootly.com/sse",
+          "--header",
+          "Authorization:${ROOTLY_AUTH_HEADER}"
+        ],
+        "env": {
+          "ROOTLY_AUTH_HEADER": "Bearer <YOUR_ROOTLY_API_TOKEN>"
         }
       }
     },

@@ -8,20 +8,16 @@
     "name": "the0807"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@smithery/cli@latest",
-        "run",
-        "@the0807/geeknews-mcp-server",
-        "--key",
-        "${user_config.smithery_key}"
-      ],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@smithery/cli@latest",
+      "run",
+      "@the0807/geeknews-mcp-server",
+      "--key",
+      "${user_config.smithery_key}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -40,24 +36,25 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "the0807-geeknews-mcp-server-configured": {
-          "command": "npx",
-          "args": [
-            "-y",
-            "@smithery/cli@latest",
-            "run",
-            "@the0807/geeknews-mcp-server",
-            "--key",
-            "smithery에서 발급 받은 키"
-          ],
-          "env": {}
-        },
-        "geeknews-mcp-server-dev": {
-          "command": "mcp",
-          "args": ["dev", "main.py"],
-          "env": {}
-        }
+      "the0807-geeknews-mcp-server-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@smithery/cli@latest",
+          "run",
+          "@the0807/geeknews-mcp-server",
+          "--key",
+          "smithery에서 발급 받은 키"
+        ],
+        "env": {}
+      },
+      "geeknews-mcp-server-dev": {
+        "command": "mcp",
+        "args": [
+          "dev",
+          "main.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

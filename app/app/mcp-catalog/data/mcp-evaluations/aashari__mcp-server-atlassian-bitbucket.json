@@ -8,22 +8,21 @@
     "name": "aashari"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@aashari/mcp-server-atlassian-bitbucket"],
-      "env": {
-        "TRANSPORT_MODE": "${user_config.transport_mode}",
-        "PORT": "${user_config.port}",
-        "DEBUG": "${user_config.debug}",
-        "ATLASSIAN_BITBUCKET_USERNAME": "${user_config.atlassian_bitbucket_username}",
-        "ATLASSIAN_BITBUCKET_APP_PASSWORD": "${user_config.atlassian_bitbucket_app_password}",
-        "ATLASSIAN_API_TOKEN": "${user_config.atlassian_api_token}",
-        "BITBUCKET_DEFAULT_WORKSPACE": "${user_config.bitbucket_default_workspace}",
-        "ATLASSIAN_SITE_NAME": "${user_config.atlassian_site_name}",
-        "ATLASSIAN_USER_EMAIL": "${user_config.atlassian_user_email}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@aashari/mcp-server-atlassian-bitbucket"
+    ],
+    "env": {
+      "TRANSPORT_MODE": "${user_config.transport_mode}",
+      "PORT": "${user_config.port}",
+      "DEBUG": "${user_config.debug}",
+      "ATLASSIAN_BITBUCKET_USERNAME": "${user_config.atlassian_bitbucket_username}",
+      "ATLASSIAN_BITBUCKET_APP_PASSWORD": "${user_config.atlassian_bitbucket_app_password}",
+      "ATLASSIAN_API_TOKEN": "${user_config.atlassian_api_token}",
+      "BITBUCKET_DEFAULT_WORKSPACE": "${user_config.bitbucket_default_workspace}",
+      "ATLASSIAN_SITE_NAME": "${user_config.atlassian_site_name}",
+      "ATLASSIAN_USER_EMAIL": "${user_config.atlassian_user_email}"
     }
   },
   "tools": [],
@@ -105,25 +104,32 @@
   "quality_score": 77,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "aashari-mcp-server-atlassian-bitbucket": {
-          "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-atlassian-bitbucket"],
-          "env": {}
-        },
-        "aashari-mcp-server-atlassian-bitbucket-stdio": {
-          "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-atlassian-bitbucket"],
-          "env": {
-            "TRANSPORT_MODE": "stdio"
-          }
-        },
-        "aashari-mcp-server-atlassian-bitbucket-http": {
-          "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-atlassian-bitbucket"],
-          "env": {
-            "TRANSPORT_MODE": "http"
-          }
+      "aashari-mcp-server-atlassian-bitbucket": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@aashari/mcp-server-atlassian-bitbucket"
+        ],
+        "env": {}
+      },
+      "aashari-mcp-server-atlassian-bitbucket-stdio": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@aashari/mcp-server-atlassian-bitbucket"
+        ],
+        "env": {
+          "TRANSPORT_MODE": "stdio"
+        }
+      },
+      "aashari-mcp-server-atlassian-bitbucket-http": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@aashari/mcp-server-atlassian-bitbucket"
+        ],
+        "env": {
+          "TRANSPORT_MODE": "http"
         }
       }
     },

@@ -8,14 +8,13 @@
     "name": "modelcontextprotocol"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory"],
-      "env": {
-        "MEMORY_FILE_PATH": "${user_config.memory_file_path}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-memory"
+    ],
+    "env": {
+      "MEMORY_FILE_PATH": "${user_config.memory_file_path}"
     }
   },
   "tools": [],
@@ -35,23 +34,34 @@
   "quality_score": 78,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "memory-server-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "-v", "claude-memory:/app/dist", "--rm", "mcp/memory"],
-          "env": {}
-        },
-        "modelcontextprotocol-server-memory": {
-          "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-memory"],
-          "env": {}
-        },
-        "modelcontextprotocol-server-memory-configured": {
-          "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-memory"],
-          "env": {
-            "MEMORY_FILE_PATH": "/path/to/custom/memory.json"
-          }
+      "memory-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "-v",
+          "claude-memory:/app/dist",
+          "--rm",
+          "mcp/memory"
+        ],
+        "env": {}
+      },
+      "modelcontextprotocol-server-memory": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-memory"
+        ],
+        "env": {}
+      },
+      "modelcontextprotocol-server-memory-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-memory"
+        ],
+        "env": {
+          "MEMORY_FILE_PATH": "/path/to/custom/memory.json"
         }
       }
     },

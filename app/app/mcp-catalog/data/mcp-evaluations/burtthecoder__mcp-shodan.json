@@ -8,14 +8,13 @@
     "name": "BurtTheCoder"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@burtthecoder/mcp-shodan"],
-      "env": {
-        "SHODAN_API_KEY": "${user_config.shodan_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@burtthecoder/mcp-shodan"
+    ],
+    "env": {
+      "SHODAN_API_KEY": "${user_config.shodan_api_key}"
     }
   },
   "tools": [],
@@ -35,20 +34,20 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "burtthecoder-mcp-shodan-global": {
-          "command": "mcp-shodan",
-          "args": [],
-          "env": {
-            "SHODAN_API_KEY": "your-shodan-api-key"
-          }
-        },
-        "burtthecoder-mcp-shodan-source": {
-          "command": "node",
-          "args": ["/absolute/path/to/mcp-shodan/build/index.js"],
-          "env": {
-            "SHODAN_API_KEY": "your-shodan-api-key"
-          }
+      "burtthecoder-mcp-shodan-global": {
+        "command": "mcp-shodan",
+        "args": [],
+        "env": {
+          "SHODAN_API_KEY": "your-shodan-api-key"
+        }
+      },
+      "burtthecoder-mcp-shodan-source": {
+        "command": "node",
+        "args": [
+          "/absolute/path/to/mcp-shodan/build/index.js"
+        ],
+        "env": {
+          "SHODAN_API_KEY": "your-shodan-api-key"
         }
       }
     },

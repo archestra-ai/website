@@ -8,18 +8,16 @@
     "name": "marcelmarais"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/main.py"],
-      "env": {
-        "SPOTIPY_CLIENT_ID": "${user_config.spotipy_client_id}",
-        "SPOTIPY_CLIENT_SECRET": "${user_config.spotipy_client_secret}",
-        "SPOTIPY_REDIRECT_URI": "${user_config.spotipy_redirect_uri}",
-        "SPOTIPY_SCOPE": "${user_config.spotipy_scope}",
-        "SPOTIPY_CACHE_PATH": "${user_config.spotipy_cache_path}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/main.py"
+    ],
+    "env": {
+      "SPOTIPY_CLIENT_ID": "${user_config.spotipy_client_id}",
+      "SPOTIPY_CLIENT_SECRET": "${user_config.spotipy_client_secret}",
+      "SPOTIPY_REDIRECT_URI": "${user_config.spotipy_redirect_uri}",
+      "SPOTIPY_SCOPE": "${user_config.spotipy_scope}",
+      "SPOTIPY_CACHE_PATH": "${user_config.spotipy_cache_path}"
     }
   },
   "tools": [],
@@ -67,12 +65,12 @@
   "quality_score": 59,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "spotify-mcp-server": {
-          "command": "uvx",
-          "args": ["spotify-mcp-server"],
-          "env": {}
-        }
+      "spotify-mcp-server": {
+        "command": "uvx",
+        "args": [
+          "spotify-mcp-server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

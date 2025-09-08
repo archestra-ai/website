@@ -8,16 +8,15 @@
     "name": "posthog"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "pnpm",
-      "args": ["run", "dev"],
-      "env": {
-        "POSTHOG_AUTH_HEADER": "Bearer ${user_config.posthog_api_key}",
-        "POSTHOG_BASE_URL": "${user_config.posthog_base_url}",
-        "INKEEP_API_KEY": "${user_config.inkeep_api_key}"
-      }
+    "command": "pnpm",
+    "args": [
+      "run",
+      "dev"
+    ],
+    "env": {
+      "POSTHOG_AUTH_HEADER": "Bearer ${user_config.posthog_api_key}",
+      "POSTHOG_BASE_URL": "${user_config.posthog_base_url}",
+      "INKEEP_API_KEY": "${user_config.inkeep_api_key}"
     }
   },
   "tools": [],
@@ -51,14 +50,15 @@
   "quality_score": 69,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "posthog-mcp-dev": {
-          "command": "pnpm",
-          "args": ["run", "dev"],
-          "env": {
-            "POSTHOG_BASE_URL": "https://eu.posthog.com",
-            "INKEEP_API_KEY": "..."
-          }
+      "posthog-mcp-dev": {
+        "command": "pnpm",
+        "args": [
+          "run",
+          "dev"
+        ],
+        "env": {
+          "POSTHOG_BASE_URL": "https://eu.posthog.com",
+          "INKEEP_API_KEY": "..."
         }
       }
     },

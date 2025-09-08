@@ -8,17 +8,13 @@
     "name": "gbrigandi"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-server-thehive",
-    "mcp_config": {
-      "command": "${__dirname}/mcp-server-thehive",
-      "args": [],
-      "env": {
-        "THEHIVE_URL": "${user_config.thehive_url}",
-        "THEHIVE_API_TOKEN": "${user_config.thehive_api_token}",
-        "VERIFY_SSL": "${user_config.verify_ssl}",
-        "RUST_LOG": "${user_config.rust_log}"
-      }
+    "command": "${__dirname}/mcp-server-thehive",
+    "args": [],
+    "env": {
+      "THEHIVE_URL": "${user_config.thehive_url}",
+      "THEHIVE_API_TOKEN": "${user_config.thehive_api_token}",
+      "VERIFY_SSL": "${user_config.verify_ssl}",
+      "RUST_LOG": "${user_config.rust_log}"
     }
   },
   "tools": [],
@@ -59,36 +55,36 @@
   "quality_score": 41,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-thehive-cargo": {
-          "command": "cargo",
-          "args": ["run"],
-          "env": {
-            "THEHIVE_URL": "http://localhost:9000/api",
-            "THEHIVE_API_TOKEN": "your-api-token-here",
-            "VERIFY_SSL": "false",
-            "RUST_LOG": "info"
-          }
-        },
-        "mcp-server-thehive-binary": {
-          "command": "./target/release/mcp-server-thehive",
-          "args": [],
-          "env": {
-            "THEHIVE_URL": "http://localhost:9000/api",
-            "THEHIVE_API_TOKEN": "your-api-token-here",
-            "VERIFY_SSL": "false",
-            "RUST_LOG": "info"
-          }
-        },
-        "mcp-server-thehive-client-example": {
-          "command": "/path/to/mcp-server-thehive",
-          "args": [],
-          "env": {
-            "THEHIVE_URL": "https://your-thehive-instance.com:9000/api",
-            "THEHIVE_API_TOKEN": "your-api-token-here",
-            "VERIFY_SSL": "true",
-            "RUST_LOG": "info"
-          }
+      "mcp-server-thehive-cargo": {
+        "command": "cargo",
+        "args": [
+          "run"
+        ],
+        "env": {
+          "THEHIVE_URL": "http://localhost:9000/api",
+          "THEHIVE_API_TOKEN": "your-api-token-here",
+          "VERIFY_SSL": "false",
+          "RUST_LOG": "info"
+        }
+      },
+      "mcp-server-thehive-binary": {
+        "command": "./target/release/mcp-server-thehive",
+        "args": [],
+        "env": {
+          "THEHIVE_URL": "http://localhost:9000/api",
+          "THEHIVE_API_TOKEN": "your-api-token-here",
+          "VERIFY_SSL": "false",
+          "RUST_LOG": "info"
+        }
+      },
+      "mcp-server-thehive-client-example": {
+        "command": "/path/to/mcp-server-thehive",
+        "args": [],
+        "env": {
+          "THEHIVE_URL": "https://your-thehive-instance.com:9000/api",
+          "THEHIVE_API_TOKEN": "your-api-token-here",
+          "VERIFY_SSL": "true",
+          "RUST_LOG": "info"
         }
       }
     },

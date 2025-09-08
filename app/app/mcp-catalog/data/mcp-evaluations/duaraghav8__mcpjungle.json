@@ -8,14 +8,12 @@
     "name": "duaraghav8"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcpjungle",
-    "mcp_config": {
-      "command": "mcpjungle",
-      "args": ["start"],
-      "env": {
-        "DATABASE_URL": "${user_config.database_url}"
-      }
+    "command": "mcpjungle",
+    "args": [
+      "start"
+    ],
+    "env": {
+      "DATABASE_URL": "${user_config.database_url}"
     }
   },
   "tools": [],
@@ -35,40 +33,48 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcpjungle-docker-compose": {
-          "command": "docker-compose",
-          "args": ["up", "-d"]
-        },
-        "mcpjungle-stdio-docker-compose": {
-          "command": "docker-compose",
-          "args": ["up", "-d"],
-          "env": {
-            "MCPJUNGLE_IMAGE_TAG": "latest-stdio"
-          }
-        },
-        "mcpjungle": {
-          "command": "mcpjungle",
-          "args": ["start"]
-        },
-        "mcpjungle-mcpjungle-docker-configured": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-e",
-            "DATABASE_URL=postgres://admin:root@localhost:5432/mcpjungle_db",
-            "mcpjungle/mcpjungle:latest"
-          ],
-          "env": {
-            "DATABASE_URL": "postgres://admin:root@localhost:5432/mcpjungle_db"
-          }
-        },
-        "mcpjungle-configured": {
-          "command": "mcpjungle",
-          "args": ["start"],
-          "env": {
-            "DATABASE_URL": "postgres://admin:root@localhost:5432/mcpjungle_db"
-          }
+      "mcpjungle-docker-compose": {
+        "command": "docker-compose",
+        "args": [
+          "up",
+          "-d"
+        ]
+      },
+      "mcpjungle-stdio-docker-compose": {
+        "command": "docker-compose",
+        "args": [
+          "up",
+          "-d"
+        ],
+        "env": {
+          "MCPJUNGLE_IMAGE_TAG": "latest-stdio"
+        }
+      },
+      "mcpjungle": {
+        "command": "mcpjungle",
+        "args": [
+          "start"
+        ]
+      },
+      "mcpjungle-mcpjungle-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-e",
+          "DATABASE_URL=postgres://admin:root@localhost:5432/mcpjungle_db",
+          "mcpjungle/mcpjungle:latest"
+        ],
+        "env": {
+          "DATABASE_URL": "postgres://admin:root@localhost:5432/mcpjungle_db"
+        }
+      },
+      "mcpjungle-configured": {
+        "command": "mcpjungle",
+        "args": [
+          "start"
+        ],
+        "env": {
+          "DATABASE_URL": "postgres://admin:root@localhost:5432/mcpjungle_db"
         }
       }
     },

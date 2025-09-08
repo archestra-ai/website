@@ -8,15 +8,13 @@
     "name": "MonadsAG"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/server/main.py"],
-      "env": {
-        "CAPSULECRM_API_KEY": "${user_config.capsulecrm_api_key}",
-        "LOG_LEVEL": "${user_config.log_level}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/server/main.py"
+    ],
+    "env": {
+      "CAPSULECRM_API_KEY": "${user_config.capsulecrm_api_key}",
+      "LOG_LEVEL": "${user_config.log_level}"
     }
   },
   "tools": [],
@@ -42,9 +40,7 @@
   "category": "CRM",
   "quality_score": 51,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

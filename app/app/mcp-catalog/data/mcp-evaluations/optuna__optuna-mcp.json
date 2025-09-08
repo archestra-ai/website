@@ -8,13 +8,13 @@
     "name": "optuna"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["optuna-mcp", "--storage", "${user_config.storage}"],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "optuna-mcp",
+      "--storage",
+      "${user_config.storage}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,32 +33,36 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "optuna-mcp": {
-          "command": "uvx",
-          "args": ["optuna-mcp"],
-          "env": {}
-        },
-        "optuna-mcp-configured": {
-          "command": "uvx",
-          "args": ["optuna-mcp", "--storage", "sqlite:///optuna.db"],
-          "env": {}
-        },
-        "optuna-optuna-mcp-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "--net=host",
-            "-v",
-            "/PATH/TO/LOCAL/DIRECTORY/WHICH/INCLUDES/DB/FILE:/app/workspace",
-            "optuna/optuna-mcp:latest",
-            "--storage",
-            "sqlite:////app/workspace/optuna.db"
-          ],
-          "env": {}
-        }
+      "optuna-mcp": {
+        "command": "uvx",
+        "args": [
+          "optuna-mcp"
+        ],
+        "env": {}
+      },
+      "optuna-mcp-configured": {
+        "command": "uvx",
+        "args": [
+          "optuna-mcp",
+          "--storage",
+          "sqlite:///optuna.db"
+        ],
+        "env": {}
+      },
+      "optuna-optuna-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "--net=host",
+          "-v",
+          "/PATH/TO/LOCAL/DIRECTORY/WHICH/INCLUDES/DB/FILE:/app/workspace",
+          "optuna/optuna-mcp:latest",
+          "--storage",
+          "sqlite:////app/workspace/optuna.db"
+        ],
+        "env": {}
       }
     },
     "oauth": {

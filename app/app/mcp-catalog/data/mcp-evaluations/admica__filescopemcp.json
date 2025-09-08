@@ -8,13 +8,12 @@
     "name": "admica"
   },
   "server": {
-    "type": "node",
-    "entry_point": "mcp-server.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/mcp-server.js", "--base-dir=${user_config.base_directory}"],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/mcp-server.js",
+      "--base-dir=${user_config.base_directory}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -32,17 +31,22 @@
   "quality_score": 69,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "FileScopeMCP-windows": {
-          "command": "node",
-          "args": ["<build script sets this>/mcp-server.js", "--base-dir=C:/Users/admica/my/project/base"],
-          "env": {}
-        },
-        "FileScopeMCP-linux": {
-          "command": "wsl",
-          "args": ["-d", "Ubuntu-24.04", "/home/admica/FileScopeMCP/run.sh"],
-          "env": {}
-        }
+      "FileScopeMCP-windows": {
+        "command": "node",
+        "args": [
+          "<build script sets this>/mcp-server.js",
+          "--base-dir=C:/Users/admica/my/project/base"
+        ],
+        "env": {}
+      },
+      "FileScopeMCP-linux": {
+        "command": "wsl",
+        "args": [
+          "-d",
+          "Ubuntu-24.04",
+          "/home/admica/FileScopeMCP/run.sh"
+        ],
+        "env": {}
       }
     },
     "oauth": {

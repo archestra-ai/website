@@ -8,15 +8,13 @@
     "name": "growilabs"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["@growi/mcp-server"],
-      "env": {
-        "GROWI_BASE_URL": "${user_config.growi_base_url}",
-        "GROWI_API_TOKEN": "${user_config.growi_api_token}"
-      }
+    "command": "npx",
+    "args": [
+      "@growi/mcp-server"
+    ],
+    "env": {
+      "GROWI_BASE_URL": "${user_config.growi_base_url}",
+      "GROWI_API_TOKEN": "${user_config.growi_api_token}"
     }
   },
   "tools": [],
@@ -43,38 +41,44 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "growi-mcp-server-npx-configured": {
-          "command": "npx",
-          "args": ["@growi/mcp-server"],
-          "env": {
-            "GROWI_BASE_URL": "https://your-growi-instance.com",
-            "GROWI_API_TOKEN": "your_growi_api_token"
-          }
-        },
-        "growi-mcp-server-pnpm-dev-cli": {
-          "command": "pnpm",
-          "args": ["dev:cli"],
-          "env": {
-            "GROWI_BASE_URL": "https://your-growi-instance.com",
-            "GROWI_API_TOKEN": "your_growi_api_token"
-          }
-        },
-        "growi-mcp-server-pnpm-dev-inspect": {
-          "command": "pnpm",
-          "args": ["dev:inspect"],
-          "env": {
-            "GROWI_BASE_URL": "https://your-growi-instance.com",
-            "GROWI_API_TOKEN": "your_growi_api_token"
-          }
-        },
-        "growi-mcp-server-pnpm-start": {
-          "command": "pnpm",
-          "args": ["start"],
-          "env": {
-            "GROWI_BASE_URL": "https://your-growi-instance.com",
-            "GROWI_API_TOKEN": "your_growi_api_token"
-          }
+      "growi-mcp-server-npx-configured": {
+        "command": "npx",
+        "args": [
+          "@growi/mcp-server"
+        ],
+        "env": {
+          "GROWI_BASE_URL": "https://your-growi-instance.com",
+          "GROWI_API_TOKEN": "your_growi_api_token"
+        }
+      },
+      "growi-mcp-server-pnpm-dev-cli": {
+        "command": "pnpm",
+        "args": [
+          "dev:cli"
+        ],
+        "env": {
+          "GROWI_BASE_URL": "https://your-growi-instance.com",
+          "GROWI_API_TOKEN": "your_growi_api_token"
+        }
+      },
+      "growi-mcp-server-pnpm-dev-inspect": {
+        "command": "pnpm",
+        "args": [
+          "dev:inspect"
+        ],
+        "env": {
+          "GROWI_BASE_URL": "https://your-growi-instance.com",
+          "GROWI_API_TOKEN": "your_growi_api_token"
+        }
+      },
+      "growi-mcp-server-pnpm-start": {
+        "command": "pnpm",
+        "args": [
+          "start"
+        ],
+        "env": {
+          "GROWI_BASE_URL": "https://your-growi-instance.com",
+          "GROWI_API_TOKEN": "your_growi_api_token"
         }
       }
     },

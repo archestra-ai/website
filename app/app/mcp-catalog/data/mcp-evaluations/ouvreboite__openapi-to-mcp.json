@@ -8,39 +8,35 @@
     "name": "ouvreboite"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "openapi-to-mcp",
-    "mcp_config": {
-      "command": "openapi-to-mcp",
-      "args": [
-        "${user_config.open_api}",
-        "--tool-naming-strategy",
-        "${user_config.tool_naming_strategy}",
-        "--host-override",
-        "${user_config.host_override}",
-        "--bearer-token",
-        "${user_config.bearer_token}",
-        "--oauth-2-grant-type",
-        "${user_config.oauth_2_grant_type}",
-        "--oauth-2-token-url",
-        "${user_config.oauth_2_token_url}",
-        "--oauth-2-client-id",
-        "${user_config.oauth_2_client_id}",
-        "--oauth-2-client-secret",
-        "${user_config.oauth_2_client_secret}",
-        "--oauth-2-refresh-token",
-        "${user_config.oauth_2_refresh_token}",
-        "--oauth-2-username",
-        "${user_config.oauth_2_username}",
-        "--oauth-2-password",
-        "${user_config.oauth_2_password}",
-        "--instructions",
-        "${user_config.instructions}",
-        "--verbose",
-        "${user_config.verbose}"
-      ],
-      "env": {}
-    }
+    "command": "openapi-to-mcp",
+    "args": [
+      "${user_config.open_api}",
+      "--tool-naming-strategy",
+      "${user_config.tool_naming_strategy}",
+      "--host-override",
+      "${user_config.host_override}",
+      "--bearer-token",
+      "${user_config.bearer_token}",
+      "--oauth-2-grant-type",
+      "${user_config.oauth_2_grant_type}",
+      "--oauth-2-token-url",
+      "${user_config.oauth_2_token_url}",
+      "--oauth-2-client-id",
+      "${user_config.oauth_2_client_id}",
+      "--oauth-2-client-secret",
+      "${user_config.oauth_2_client_secret}",
+      "--oauth-2-refresh-token",
+      "${user_config.oauth_2_refresh_token}",
+      "--oauth-2-username",
+      "${user_config.oauth_2_username}",
+      "--oauth-2-password",
+      "${user_config.oauth_2_password}",
+      "--instructions",
+      "${user_config.instructions}",
+      "--verbose",
+      "${user_config.verbose}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -137,12 +133,12 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "openapi-to-mcp": {
-          "command": "openapi-to-mcp",
-          "args": ["https://petstore3.swagger.io/api/v3/openapi.json"],
-          "env": {}
-        }
+      "openapi-to-mcp": {
+        "command": "openapi-to-mcp",
+        "args": [
+          "https://petstore3.swagger.io/api/v3/openapi.json"
+        ],
+        "env": {}
       }
     },
     "oauth": {

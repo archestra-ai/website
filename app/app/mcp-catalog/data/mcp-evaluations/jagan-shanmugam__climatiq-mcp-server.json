@@ -8,14 +8,10 @@
     "name": "jagan-shanmugam"
   },
   "server": {
-    "type": "python",
-    "entry_point": "climatiq-mcp-server",
-    "mcp_config": {
-      "command": "climatiq-mcp-server",
-      "args": [],
-      "env": {
-        "CLIMATIQ_API_KEY": "${user_config.climatiq_api_key}"
-      }
+    "command": "climatiq-mcp-server",
+    "args": [],
+    "env": {
+      "CLIMATIQ_API_KEY": "${user_config.climatiq_api_key}"
     }
   },
   "tools": [],
@@ -35,24 +31,24 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "climatiq-mcp-server": {
-          "command": "climatiq-mcp-server",
-          "args": [],
-          "env": {}
-        },
-        "climatiq-mcp-server-configured": {
-          "command": "climatiq-mcp-server",
-          "args": [],
-          "env": {
-            "CLIMATIQ_API_KEY": "your_climatiq_api_key"
-          }
-        },
-        "climatiq-mcp-server-utils-script": {
-          "command": "python",
-          "args": ["utils/run_mcp_server.py"],
-          "env": {}
+      "climatiq-mcp-server": {
+        "command": "climatiq-mcp-server",
+        "args": [],
+        "env": {}
+      },
+      "climatiq-mcp-server-configured": {
+        "command": "climatiq-mcp-server",
+        "args": [],
+        "env": {
+          "CLIMATIQ_API_KEY": "your_climatiq_api_key"
         }
+      },
+      "climatiq-mcp-server-utils-script": {
+        "command": "python",
+        "args": [
+          "utils/run_mcp_server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

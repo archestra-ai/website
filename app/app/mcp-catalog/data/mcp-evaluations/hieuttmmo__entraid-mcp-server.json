@@ -8,16 +8,14 @@
     "name": "hieuttmmo"
   },
   "server": {
-    "type": "python",
-    "entry_point": "msgraph_mcp_server/server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/msgraph_mcp_server/server.py"],
-      "env": {
-        "TENANT_ID": "${user_config.tenant_id}",
-        "CLIENT_ID": "${user_config.client_id}",
-        "CLIENT_SECRET": "${user_config.client_secret}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/msgraph_mcp_server/server.py"
+    ],
+    "env": {
+      "TENANT_ID": "${user_config.tenant_id}",
+      "CLIENT_ID": "${user_config.client_id}",
+      "CLIENT_SECRET": "${user_config.client_secret}"
     }
   },
   "tools": [],
@@ -51,12 +49,13 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "msgraph-mcp-server": {
-          "command": "fastmcp",
-          "args": ["dev", "/path/to/src/msgraph_mcp_server/server.py"],
-          "env": {}
-        }
+      "msgraph-mcp-server": {
+        "command": "fastmcp",
+        "args": [
+          "dev",
+          "/path/to/src/msgraph_mcp_server/server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

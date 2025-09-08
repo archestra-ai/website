@@ -8,13 +8,12 @@
     "name": "reeeeemo"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp-server-ancestry",
-    "mcp_config": {
-      "command": "mcp-server-ancestry",
-      "args": ["--gedcom-path", "${user_config.gedcom_path}"],
-      "env": {}
-    }
+    "command": "mcp-server-ancestry",
+    "args": [
+      "--gedcom-path",
+      "${user_config.gedcom_path}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,12 +32,13 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-ancestry": {
-          "command": "mcp-server-ancestry",
-          "args": ["--gedcom-path", "path/to/your/gedcom/files"],
-          "env": {}
-        }
+      "mcp-server-ancestry": {
+        "command": "mcp-server-ancestry",
+        "args": [
+          "--gedcom-path",
+          "path/to/your/gedcom/files"
+        ],
+        "env": {}
       }
     },
     "oauth": {

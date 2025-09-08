@@ -8,22 +8,18 @@
     "name": "ergut"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@ergut/mcp-bigquery-server",
-        "--project-id",
-        "${user_config.project_id}",
-        "--location",
-        "${user_config.location}",
-        "--key-file",
-        "${user_config.key_file}"
-      ],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@ergut/mcp-bigquery-server",
+      "--project-id",
+      "${user_config.project_id}",
+      "--location",
+      "${user_config.location}",
+      "--key-file",
+      "${user_config.key_file}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -57,52 +53,57 @@
   "quality_score": 68,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ergut-mcp-bigquery-server": {
-          "command": "npx",
-          "args": ["-y", "@ergut/mcp-bigquery-server", "--project-id", "your-project-id", "--location", "us-central1"],
-          "env": {}
-        },
-        "ergut-mcp-bigquery-server-with-config": {
-          "command": "npx",
-          "args": [
-            "-y",
-            "@ergut/mcp-bigquery-server",
-            "--project-id",
-            "your-project-id",
-            "--location",
-            "us-central1",
-            "--key-file",
-            "/path/to/service-account-key.json"
-          ],
-          "env": {}
-        },
-        "ergut-mcp-bigquery-server-cli-configured": {
-          "command": "npx",
-          "args": [
-            "@ergut/mcp-bigquery-server",
-            "--project-id",
-            "your-project-id",
-            "--location",
-            "europe-west1",
-            "--key-file",
-            "/path/to/key.json"
-          ],
-          "env": {}
-        },
-        "ergut-mcp-bigquery-server-local-dev": {
-          "command": "node",
-          "args": [
-            "/path/to/your/clone/mcp-bigquery-server/dist/index.js",
-            "--project-id",
-            "your-project-id",
-            "--location",
-            "us-central1",
-            "--key-file",
-            "/path/to/service-account-key.json"
-          ],
-          "env": {}
-        }
+      "ergut-mcp-bigquery-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@ergut/mcp-bigquery-server",
+          "--project-id",
+          "your-project-id",
+          "--location",
+          "us-central1"
+        ],
+        "env": {}
+      },
+      "ergut-mcp-bigquery-server-with-config": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@ergut/mcp-bigquery-server",
+          "--project-id",
+          "your-project-id",
+          "--location",
+          "us-central1",
+          "--key-file",
+          "/path/to/service-account-key.json"
+        ],
+        "env": {}
+      },
+      "ergut-mcp-bigquery-server-cli-configured": {
+        "command": "npx",
+        "args": [
+          "@ergut/mcp-bigquery-server",
+          "--project-id",
+          "your-project-id",
+          "--location",
+          "europe-west1",
+          "--key-file",
+          "/path/to/key.json"
+        ],
+        "env": {}
+      },
+      "ergut-mcp-bigquery-server-local-dev": {
+        "command": "node",
+        "args": [
+          "/path/to/your/clone/mcp-bigquery-server/dist/index.js",
+          "--project-id",
+          "your-project-id",
+          "--location",
+          "us-central1",
+          "--key-file",
+          "/path/to/service-account-key.json"
+        ],
+        "env": {}
       }
     },
     "oauth": {

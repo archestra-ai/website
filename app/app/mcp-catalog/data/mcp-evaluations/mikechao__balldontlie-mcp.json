@@ -8,14 +8,13 @@
     "name": "mikechao"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "balldontlie-mcp"],
-      "env": {
-        "BALLDONTLIE_API_KEY": "${user_config.balldontlie_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "balldontlie-mcp"
+    ],
+    "env": {
+      "BALLDONTLIE_API_KEY": "${user_config.balldontlie_api_key}"
     }
   },
   "tools": [],
@@ -35,20 +34,24 @@
   "quality_score": 64,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "balldontlie-mcp": {
-          "command": "npx",
-          "args": ["-y", "balldontlie-mcp"],
-          "env": {
-            "BALLDONTLIE_API_KEY": "YOUR API KEY HERE"
-          }
-        },
-        "balldontlie-mcp-sh": {
-          "command": "sh",
-          "args": ["-c", "BALLDONTLIE_API_KEY=your-api-key-here npx -y balldontlie-mcp"],
-          "env": {
-            "BALLDONTLIE_API_KEY": "your-api-key-here"
-          }
+      "balldontlie-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "balldontlie-mcp"
+        ],
+        "env": {
+          "BALLDONTLIE_API_KEY": "YOUR API KEY HERE"
+        }
+      },
+      "balldontlie-mcp-sh": {
+        "command": "sh",
+        "args": [
+          "-c",
+          "BALLDONTLIE_API_KEY=your-api-key-here npx -y balldontlie-mcp"
+        ],
+        "env": {
+          "BALLDONTLIE_API_KEY": "your-api-key-here"
         }
       }
     },

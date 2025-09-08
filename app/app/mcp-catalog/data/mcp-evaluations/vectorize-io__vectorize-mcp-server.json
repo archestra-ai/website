@@ -8,16 +8,15 @@
     "name": "vectorize-io"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@vectorize-io/vectorize-mcp-server@latest"],
-      "env": {
-        "VECTORIZE_ORG_ID": "${user_config.org_id}",
-        "VECTORIZE_TOKEN": "${user_config.token}",
-        "VECTORIZE_PIPELINE_ID": "${user_config.pipeline_id}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@vectorize-io/vectorize-mcp-server@latest"
+    ],
+    "env": {
+      "VECTORIZE_ORG_ID": "${user_config.org_id}",
+      "VECTORIZE_TOKEN": "${user_config.token}",
+      "VECTORIZE_PIPELINE_ID": "${user_config.pipeline_id}"
     }
   },
   "tools": [],
@@ -51,24 +50,28 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "vectorize-io-vectorize-mcp-server-with-inputs": {
-          "command": "npx",
-          "args": ["-y", "@vectorize-io/vectorize-mcp-server@latest"],
-          "env": {
-            "VECTORIZE_ORG_ID": "${input:org_id}",
-            "VECTORIZE_TOKEN": "${input:token}",
-            "VECTORIZE_PIPELINE_ID": "${input:pipeline_id}"
-          }
-        },
-        "vectorize-io-vectorize-mcp-server-configured": {
-          "command": "npx",
-          "args": ["-y", "@vectorize-io/vectorize-mcp-server@latest"],
-          "env": {
-            "VECTORIZE_ORG_ID": "your-org-id",
-            "VECTORIZE_TOKEN": "your-token",
-            "VECTORIZE_PIPELINE_ID": "your-pipeline-id"
-          }
+      "vectorize-io-vectorize-mcp-server-with-inputs": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@vectorize-io/vectorize-mcp-server@latest"
+        ],
+        "env": {
+          "VECTORIZE_ORG_ID": "${input:org_id}",
+          "VECTORIZE_TOKEN": "${input:token}",
+          "VECTORIZE_PIPELINE_ID": "${input:pipeline_id}"
+        }
+      },
+      "vectorize-io-vectorize-mcp-server-configured": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@vectorize-io/vectorize-mcp-server@latest"
+        ],
+        "env": {
+          "VECTORIZE_ORG_ID": "your-org-id",
+          "VECTORIZE_TOKEN": "your-token",
+          "VECTORIZE_PIPELINE_ID": "your-pipeline-id"
         }
       }
     },

@@ -8,13 +8,13 @@
     "name": "jparkerweb"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-sqlite", "${user_config.database_path}"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-sqlite",
+      "${user_config.database_path}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -32,12 +32,14 @@
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-sqlite": {
-          "command": "npx",
-          "args": ["-y", "mcp-sqlite", "<path-to-your-sqlite-database.db>"],
-          "env": {}
-        }
+      "mcp-sqlite": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-sqlite",
+          "<path-to-your-sqlite-database.db>"
+        ],
+        "env": {}
       }
     },
     "oauth": {

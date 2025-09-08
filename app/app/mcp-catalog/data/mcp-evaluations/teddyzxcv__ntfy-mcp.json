@@ -8,14 +8,12 @@
     "name": "teddyzxcv"
   },
   "server": {
-    "type": "node",
-    "entry_point": "build/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/build/index.js"],
-      "env": {
-        "NTFY_TOPIC": "${user_config.ntfy_topic}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {
+      "NTFY_TOPIC": "${user_config.ntfy_topic}"
     }
   },
   "tools": [],
@@ -35,18 +33,20 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ntfy-mcp": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        },
-        "ntfy-mcp-configured": {
-          "command": "node",
-          "args": ["/path/to/ntfy-mcp/build/index.js"],
-          "env": {
-            "NTFY_TOPIC": "<your topic name>"
-          }
+      "ntfy-mcp": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {}
+      },
+      "ntfy-mcp-configured": {
+        "command": "node",
+        "args": [
+          "/path/to/ntfy-mcp/build/index.js"
+        ],
+        "env": {
+          "NTFY_TOPIC": "<your topic name>"
         }
       }
     },

@@ -8,14 +8,17 @@
     "name": "nickpending"
   },
   "server": {
-    "type": "docker",
-    "entry_point": "mcp/recon",
-    "mcp_config": {
-      "command": "docker",
-      "args": ["run", "--rm", "-i", "-e", "PDCP_API_KEY=${user_config.pdcp_api_key}", "mcp/recon"],
-      "env": {
-        "PDCP_API_KEY": "${user_config.pdcp_api_key}"
-      }
+    "command": "docker",
+    "args": [
+      "run",
+      "--rm",
+      "-i",
+      "-e",
+      "PDCP_API_KEY=${user_config.pdcp_api_key}",
+      "mcp/recon"
+    ],
+    "env": {
+      "PDCP_API_KEY": "${user_config.pdcp_api_key}"
     }
   },
   "tools": [],
@@ -35,18 +38,28 @@
   "quality_score": 39,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-recon-docker": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "mcp/recon"],
-          "env": {}
-        },
-        "mcp-recon-docker-with-env-file": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "--env-file", "/Users/yourname/.config/mcp-recon.env", "mcp/recon"],
-          "env": {
-            "PDCP_API_KEY": "your_projectdiscovery_api_key"
-          }
+      "mcp-recon-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "mcp/recon"
+        ],
+        "env": {}
+      },
+      "mcp-recon-docker-with-env-file": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "--env-file",
+          "/Users/yourname/.config/mcp-recon.env",
+          "mcp/recon"
+        ],
+        "env": {
+          "PDCP_API_KEY": "your_projectdiscovery_api_key"
         }
       }
     },

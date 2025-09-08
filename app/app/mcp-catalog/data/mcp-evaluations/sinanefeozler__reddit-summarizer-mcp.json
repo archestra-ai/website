@@ -8,17 +8,15 @@
     "name": "sinanefeozler"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/main.py"],
-      "env": {
-        "REDDIT_USERNAME": "${user_config.reddit_username}",
-        "REDDIT_PASSWORD": "${user_config.reddit_password}",
-        "REDDIT_CLIENT_ID": "${user_config.reddit_client_id}",
-        "REDDIT_CLIENT_SECRET": "${user_config.reddit_client_secret}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/main.py"
+    ],
+    "env": {
+      "REDDIT_USERNAME": "${user_config.reddit_username}",
+      "REDDIT_PASSWORD": "${user_config.reddit_password}",
+      "REDDIT_CLIENT_ID": "${user_config.reddit_client_id}",
+      "REDDIT_CLIENT_SECRET": "${user_config.reddit_client_secret}"
     }
   },
   "tools": [],
@@ -58,9 +56,7 @@
   "category": "Social Media",
   "quality_score": 48,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

@@ -8,17 +8,13 @@
     "name": "bivex"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "kanboard-mcp",
-    "mcp_config": {
-      "command": "${__dirname}/server/kanboard-mcp",
-      "args": [],
-      "env": {
-        "KANBOARD_API_ENDPOINT": "${user_config.kanboard_api_endpoint}",
-        "KANBOARD_API_KEY": "${user_config.kanboard_api_key}",
-        "KANBOARD_USERNAME": "${user_config.kanboard_username}",
-        "KANBOARD_PASSWORD": "${user_config.kanboard_password}"
-      }
+    "command": "${__dirname}/server/kanboard-mcp",
+    "args": [],
+    "env": {
+      "KANBOARD_API_ENDPOINT": "${user_config.kanboard_api_endpoint}",
+      "KANBOARD_API_KEY": "${user_config.kanboard_api_key}",
+      "KANBOARD_USERNAME": "${user_config.kanboard_username}",
+      "KANBOARD_PASSWORD": "${user_config.kanboard_password}"
     }
   },
   "tools": [],
@@ -63,16 +59,14 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kanboard-mcp-server": {
-          "command": "/path/to/your/kanboard-mcp",
-          "args": [],
-          "env": {
-            "KANBOARD_API_ENDPOINT": "https://your-kanboard-url/jsonrpc.php",
-            "KANBOARD_API_KEY": "your-kanboard-api-key",
-            "KANBOARD_USERNAME": "your-kanboard-username",
-            "KANBOARD_PASSWORD": "your-kanboard-password"
-          }
+      "kanboard-mcp-server": {
+        "command": "/path/to/your/kanboard-mcp",
+        "args": [],
+        "env": {
+          "KANBOARD_API_ENDPOINT": "https://your-kanboard-url/jsonrpc.php",
+          "KANBOARD_API_KEY": "your-kanboard-api-key",
+          "KANBOARD_USERNAME": "your-kanboard-username",
+          "KANBOARD_PASSWORD": "your-kanboard-password"
         }
       }
     },

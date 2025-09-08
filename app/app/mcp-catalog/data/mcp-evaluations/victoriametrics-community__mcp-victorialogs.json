@@ -8,18 +8,14 @@
     "name": "VictoriaMetrics-Community"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-victorialogs",
-    "mcp_config": {
-      "command": "mcp-victorialogs",
-      "args": [],
-      "env": {
-        "VL_INSTANCE_ENTRYPOINT": "${user_config.vl_instance_entrypoint}",
-        "VL_INSTANCE_BEARER_TOKEN": "${user_config.vl_instance_bearer_token}",
-        "MCP_SERVER_MODE": "${user_config.mcp_server_mode}",
-        "MCP_LISTEN_ADDR": "${user_config.mcp_listen_addr}",
-        "MCP_DISABLED_TOOLS": "${user_config.mcp_disabled_tools}"
-      }
+    "command": "mcp-victorialogs",
+    "args": [],
+    "env": {
+      "VL_INSTANCE_ENTRYPOINT": "${user_config.vl_instance_entrypoint}",
+      "VL_INSTANCE_BEARER_TOKEN": "${user_config.vl_instance_bearer_token}",
+      "MCP_SERVER_MODE": "${user_config.mcp_server_mode}",
+      "MCP_LISTEN_ADDR": "${user_config.mcp_listen_addr}",
+      "MCP_DISABLED_TOOLS": "${user_config.mcp_disabled_tools}"
     }
   },
   "tools": [],
@@ -65,82 +61,80 @@
   "quality_score": 74,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ghcr.io-victoriametrics-community-mcp-victorialogs-docker-sse": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-d",
-            "--name",
-            "mcp-victorialogs",
-            "-e",
-            "MCP_SERVER_MODE=sse",
-            "-e",
-            "VL_INSTANCE_ENTRYPOINT=https://play-vmlogs.victoriametrics.com",
-            "ghcr.io/victoriametrics-community/mcp-victorialogs"
-          ],
-          "env": {
-            "MCP_SERVER_MODE": "sse",
-            "VL_INSTANCE_ENTRYPOINT": "https://play-vmlogs.victoriametrics.com"
-          }
-        },
-        "ghcr.io-victoriametrics-community-mcp-victorialogs-docker-http": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-d",
-            "--name",
-            "mcp-victorialogs",
-            "-e",
-            "MCP_SERVER_MODE=http",
-            "-e",
-            "VL_INSTANCE_ENTRYPOINT=YOUR_VL_INSTANCE_URL",
-            "ghcr.io/victoriametrics-community/mcp-victorialogs"
-          ],
-          "env": {
-            "MCP_SERVER_MODE": "http",
-            "VL_INSTANCE_ENTRYPOINT": "YOUR_VL_INSTANCE_URL"
-          }
-        },
-        "ghcr.io-victoriametrics-community-mcp-victorialogs-docker-stdio": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-d",
-            "--name",
-            "mcp-victorialogs",
-            "-e",
-            "VL_INSTANCE_ENTRYPOINT=YOUR_VL_INSTANCE_URL",
-            "ghcr.io/victoriametrics-community/mcp-victorialogs"
-          ],
-          "env": {
-            "VL_INSTANCE_ENTRYPOINT": "YOUR_VL_INSTANCE_URL"
-          }
-        },
-        "mcp-victorialogs-stdio": {
-          "command": "mcp-victorialogs",
-          "args": [],
-          "env": {
-            "VL_INSTANCE_ENTRYPOINT": "YOUR_VL_INSTANCE_URL"
-          }
-        },
-        "mcp-victorialogs-sse": {
-          "command": "mcp-victorialogs",
-          "args": [],
-          "env": {
-            "MCP_SERVER_MODE": "sse",
-            "VL_INSTANCE_ENTRYPOINT": "YOUR_VL_INSTANCE_URL",
-            "MCP_LISTEN_ADDR": "localhost:8081"
-          }
-        },
-        "mcp-victorialogs-http": {
-          "command": "mcp-victorialogs",
-          "args": [],
-          "env": {
-            "MCP_SERVER_MODE": "http",
-            "VL_INSTANCE_ENTRYPOINT": "YOUR_VL_INSTANCE_URL",
-            "MCP_LISTEN_ADDR": "localhost:8081"
-          }
+      "ghcr.io-victoriametrics-community-mcp-victorialogs-docker-sse": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-d",
+          "--name",
+          "mcp-victorialogs",
+          "-e",
+          "MCP_SERVER_MODE=sse",
+          "-e",
+          "VL_INSTANCE_ENTRYPOINT=https://play-vmlogs.victoriametrics.com",
+          "ghcr.io/victoriametrics-community/mcp-victorialogs"
+        ],
+        "env": {
+          "MCP_SERVER_MODE": "sse",
+          "VL_INSTANCE_ENTRYPOINT": "https://play-vmlogs.victoriametrics.com"
+        }
+      },
+      "ghcr.io-victoriametrics-community-mcp-victorialogs-docker-http": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-d",
+          "--name",
+          "mcp-victorialogs",
+          "-e",
+          "MCP_SERVER_MODE=http",
+          "-e",
+          "VL_INSTANCE_ENTRYPOINT=YOUR_VL_INSTANCE_URL",
+          "ghcr.io/victoriametrics-community/mcp-victorialogs"
+        ],
+        "env": {
+          "MCP_SERVER_MODE": "http",
+          "VL_INSTANCE_ENTRYPOINT": "YOUR_VL_INSTANCE_URL"
+        }
+      },
+      "ghcr.io-victoriametrics-community-mcp-victorialogs-docker-stdio": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-d",
+          "--name",
+          "mcp-victorialogs",
+          "-e",
+          "VL_INSTANCE_ENTRYPOINT=YOUR_VL_INSTANCE_URL",
+          "ghcr.io/victoriametrics-community/mcp-victorialogs"
+        ],
+        "env": {
+          "VL_INSTANCE_ENTRYPOINT": "YOUR_VL_INSTANCE_URL"
+        }
+      },
+      "mcp-victorialogs-stdio": {
+        "command": "mcp-victorialogs",
+        "args": [],
+        "env": {
+          "VL_INSTANCE_ENTRYPOINT": "YOUR_VL_INSTANCE_URL"
+        }
+      },
+      "mcp-victorialogs-sse": {
+        "command": "mcp-victorialogs",
+        "args": [],
+        "env": {
+          "MCP_SERVER_MODE": "sse",
+          "VL_INSTANCE_ENTRYPOINT": "YOUR_VL_INSTANCE_URL",
+          "MCP_LISTEN_ADDR": "localhost:8081"
+        }
+      },
+      "mcp-victorialogs-http": {
+        "command": "mcp-victorialogs",
+        "args": [],
+        "env": {
+          "MCP_SERVER_MODE": "http",
+          "VL_INSTANCE_ENTRYPOINT": "YOUR_VL_INSTANCE_URL",
+          "MCP_LISTEN_ADDR": "localhost:8081"
         }
       }
     },

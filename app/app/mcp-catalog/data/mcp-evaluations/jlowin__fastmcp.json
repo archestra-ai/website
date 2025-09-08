@@ -8,13 +8,11 @@
     "name": "jlowin"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/server.py"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "${__dirname}/server.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,13 @@
   "quality_score": 77,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "fastmcp": {
-          "command": "fastmcp",
-          "args": ["run", "server.py"],
-          "env": {}
-        }
+      "fastmcp": {
+        "command": "fastmcp",
+        "args": [
+          "run",
+          "server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

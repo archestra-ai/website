@@ -8,24 +8,23 @@
     "name": "ClickHouse"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp_clickhouse.main",
-    "mcp_config": {
-      "command": "python3",
-      "args": ["-m", "mcp_clickhouse.main"],
-      "env": {
-        "CLICKHOUSE_HOST": "${user_config.clickhouse_host}",
-        "CLICKHOUSE_PORT": "${user_config.clickhouse_port}",
-        "CLICKHOUSE_USER": "${user_config.clickhouse_user}",
-        "CLICKHOUSE_PASSWORD": "${user_config.clickhouse_password}",
-        "CLICKHOUSE_SECURE": "${user_config.clickhouse_secure}",
-        "CLICKHOUSE_VERIFY": "${user_config.clickhouse_verify}",
-        "CLICKHOUSE_CONNECT_TIMEOUT": "${user_config.clickhouse_connect_timeout}",
-        "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "${user_config.clickhouse_send_receive_timeout}",
-        "CHDB_ENABLED": "${user_config.chdb_enabled}",
-        "CLICKHOUSE_ENABLED": "${user_config.clickhouse_enabled}",
-        "CHDB_DATA_PATH": "${user_config.chdb_data_path}"
-      }
+    "command": "python3",
+    "args": [
+      "-m",
+      "mcp_clickhouse.main"
+    ],
+    "env": {
+      "CLICKHOUSE_HOST": "${user_config.clickhouse_host}",
+      "CLICKHOUSE_PORT": "${user_config.clickhouse_port}",
+      "CLICKHOUSE_USER": "${user_config.clickhouse_user}",
+      "CLICKHOUSE_PASSWORD": "${user_config.clickhouse_password}",
+      "CLICKHOUSE_SECURE": "${user_config.clickhouse_secure}",
+      "CLICKHOUSE_VERIFY": "${user_config.clickhouse_verify}",
+      "CLICKHOUSE_CONNECT_TIMEOUT": "${user_config.clickhouse_connect_timeout}",
+      "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "${user_config.clickhouse_send_receive_timeout}",
+      "CHDB_ENABLED": "${user_config.chdb_enabled}",
+      "CLICKHOUSE_ENABLED": "${user_config.clickhouse_enabled}",
+      "CHDB_DATA_PATH": "${user_config.chdb_data_path}"
     }
   },
   "tools": [],
@@ -124,107 +123,145 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-clickhouse-uv-clickhouse-placeholder": {
-          "command": "uv",
-          "args": ["run", "--with", "mcp-clickhouse", "--python", "3.10", "mcp-clickhouse"],
-          "env": {
-            "CLICKHOUSE_HOST": "<clickhouse-host>",
-            "CLICKHOUSE_PORT": "<clickhouse-port>",
-            "CLICKHOUSE_USER": "<clickhouse-user>",
-            "CLICKHOUSE_PASSWORD": "<clickhouse-password>",
-            "CLICKHOUSE_SECURE": "true",
-            "CLICKHOUSE_VERIFY": "true",
-            "CLICKHOUSE_CONNECT_TIMEOUT": "30",
-            "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "30"
-          }
-        },
-        "mcp-clickhouse-uv-clickhouse-playground": {
-          "command": "uv",
-          "args": ["run", "--with", "mcp-clickhouse", "--python", "3.10", "mcp-clickhouse"],
-          "env": {
-            "CLICKHOUSE_HOST": "sql-clickhouse.clickhouse.com",
-            "CLICKHOUSE_PORT": "8443",
-            "CLICKHOUSE_USER": "demo",
-            "CLICKHOUSE_PASSWORD": "",
-            "CLICKHOUSE_SECURE": "true",
-            "CLICKHOUSE_VERIFY": "true",
-            "CLICKHOUSE_CONNECT_TIMEOUT": "30",
-            "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "30"
-          }
-        },
-        "mcp-clickhouse-uv-chdb": {
-          "command": "uv",
-          "args": ["run", "--with", "mcp-clickhouse", "--python", "3.10", "mcp-clickhouse"],
-          "env": {
-            "CHDB_ENABLED": "true",
-            "CLICKHOUSE_ENABLED": "false",
-            "CHDB_DATA_PATH": "/path/to/chdb/data"
-          }
-        },
-        "mcp-clickhouse-uv-both": {
-          "command": "uv",
-          "args": ["run", "--with", "mcp-clickhouse", "--python", "3.10", "mcp-clickhouse"],
-          "env": {
-            "CLICKHOUSE_HOST": "<clickhouse-host>",
-            "CLICKHOUSE_PORT": "<clickhouse-port>",
-            "CLICKHOUSE_USER": "<clickhouse-user>",
-            "CLICKHOUSE_PASSWORD": "<clickhouse-password>",
-            "CLICKHOUSE_SECURE": "true",
-            "CLICKHOUSE_VERIFY": "true",
-            "CLICKHOUSE_CONNECT_TIMEOUT": "30",
-            "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "30",
-            "CHDB_ENABLED": "true",
-            "CHDB_DATA_PATH": "/path/to/chdb/data"
-          }
-        },
-        "mcp-clickhouse-python-module": {
-          "command": "python3",
-          "args": ["-m", "mcp_clickhouse.main"],
-          "env": {
-            "CLICKHOUSE_HOST": "<clickhouse-host>",
-            "CLICKHOUSE_PORT": "<clickhouse-port>",
-            "CLICKHOUSE_USER": "<clickhouse-user>",
-            "CLICKHOUSE_PASSWORD": "<clickhouse-password>",
-            "CLICKHOUSE_SECURE": "true",
-            "CLICKHOUSE_VERIFY": "true",
-            "CLICKHOUSE_CONNECT_TIMEOUT": "30",
-            "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "30"
-          }
-        },
-        "mcp-clickhouse-python-script": {
-          "command": "mcp-clickhouse",
-          "args": [],
-          "env": {
-            "CLICKHOUSE_HOST": "<clickhouse-host>",
-            "CLICKHOUSE_PORT": "<clickhouse-port>",
-            "CLICKHOUSE_USER": "<clickhouse-user>",
-            "CLICKHOUSE_PASSWORD": "<clickhouse-password>",
-            "CLICKHOUSE_SECURE": "true",
-            "CLICKHOUSE_VERIFY": "true",
-            "CLICKHOUSE_CONNECT_TIMEOUT": "30",
-            "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "30"
-          }
-        },
-        "mcp-clickhouse-dev-fastmcp": {
-          "command": "fastmcp",
-          "args": ["dev", "mcp_clickhouse/mcp_server.py"],
-          "env": {}
-        },
-        "mcp-clickhouse-http-default-port": {
-          "command": "python",
-          "args": ["-m", "mcp_clickhouse.main"],
-          "env": {
-            "CLICKHOUSE_MCP_SERVER_TRANSPORT": "http"
-          }
-        },
-        "mcp-clickhouse-http-custom-port": {
-          "command": "python",
-          "args": ["-m", "mcp_clickhouse.main"],
-          "env": {
-            "CLICKHOUSE_MCP_SERVER_TRANSPORT": "http",
-            "CLICKHOUSE_MCP_BIND_PORT": "4200"
-          }
+      "mcp-clickhouse-uv-clickhouse-placeholder": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--with",
+          "mcp-clickhouse",
+          "--python",
+          "3.10",
+          "mcp-clickhouse"
+        ],
+        "env": {
+          "CLICKHOUSE_HOST": "<clickhouse-host>",
+          "CLICKHOUSE_PORT": "<clickhouse-port>",
+          "CLICKHOUSE_USER": "<clickhouse-user>",
+          "CLICKHOUSE_PASSWORD": "<clickhouse-password>",
+          "CLICKHOUSE_SECURE": "true",
+          "CLICKHOUSE_VERIFY": "true",
+          "CLICKHOUSE_CONNECT_TIMEOUT": "30",
+          "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "30"
+        }
+      },
+      "mcp-clickhouse-uv-clickhouse-playground": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--with",
+          "mcp-clickhouse",
+          "--python",
+          "3.10",
+          "mcp-clickhouse"
+        ],
+        "env": {
+          "CLICKHOUSE_HOST": "sql-clickhouse.clickhouse.com",
+          "CLICKHOUSE_PORT": "8443",
+          "CLICKHOUSE_USER": "demo",
+          "CLICKHOUSE_PASSWORD": "",
+          "CLICKHOUSE_SECURE": "true",
+          "CLICKHOUSE_VERIFY": "true",
+          "CLICKHOUSE_CONNECT_TIMEOUT": "30",
+          "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "30"
+        }
+      },
+      "mcp-clickhouse-uv-chdb": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--with",
+          "mcp-clickhouse",
+          "--python",
+          "3.10",
+          "mcp-clickhouse"
+        ],
+        "env": {
+          "CHDB_ENABLED": "true",
+          "CLICKHOUSE_ENABLED": "false",
+          "CHDB_DATA_PATH": "/path/to/chdb/data"
+        }
+      },
+      "mcp-clickhouse-uv-both": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--with",
+          "mcp-clickhouse",
+          "--python",
+          "3.10",
+          "mcp-clickhouse"
+        ],
+        "env": {
+          "CLICKHOUSE_HOST": "<clickhouse-host>",
+          "CLICKHOUSE_PORT": "<clickhouse-port>",
+          "CLICKHOUSE_USER": "<clickhouse-user>",
+          "CLICKHOUSE_PASSWORD": "<clickhouse-password>",
+          "CLICKHOUSE_SECURE": "true",
+          "CLICKHOUSE_VERIFY": "true",
+          "CLICKHOUSE_CONNECT_TIMEOUT": "30",
+          "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "30",
+          "CHDB_ENABLED": "true",
+          "CHDB_DATA_PATH": "/path/to/chdb/data"
+        }
+      },
+      "mcp-clickhouse-python-module": {
+        "command": "python3",
+        "args": [
+          "-m",
+          "mcp_clickhouse.main"
+        ],
+        "env": {
+          "CLICKHOUSE_HOST": "<clickhouse-host>",
+          "CLICKHOUSE_PORT": "<clickhouse-port>",
+          "CLICKHOUSE_USER": "<clickhouse-user>",
+          "CLICKHOUSE_PASSWORD": "<clickhouse-password>",
+          "CLICKHOUSE_SECURE": "true",
+          "CLICKHOUSE_VERIFY": "true",
+          "CLICKHOUSE_CONNECT_TIMEOUT": "30",
+          "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "30"
+        }
+      },
+      "mcp-clickhouse-python-script": {
+        "command": "mcp-clickhouse",
+        "args": [],
+        "env": {
+          "CLICKHOUSE_HOST": "<clickhouse-host>",
+          "CLICKHOUSE_PORT": "<clickhouse-port>",
+          "CLICKHOUSE_USER": "<clickhouse-user>",
+          "CLICKHOUSE_PASSWORD": "<clickhouse-password>",
+          "CLICKHOUSE_SECURE": "true",
+          "CLICKHOUSE_VERIFY": "true",
+          "CLICKHOUSE_CONNECT_TIMEOUT": "30",
+          "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": "30"
+        }
+      },
+      "mcp-clickhouse-dev-fastmcp": {
+        "command": "fastmcp",
+        "args": [
+          "dev",
+          "mcp_clickhouse/mcp_server.py"
+        ],
+        "env": {}
+      },
+      "mcp-clickhouse-http-default-port": {
+        "command": "python",
+        "args": [
+          "-m",
+          "mcp_clickhouse.main"
+        ],
+        "env": {
+          "CLICKHOUSE_MCP_SERVER_TRANSPORT": "http"
+        }
+      },
+      "mcp-clickhouse-http-custom-port": {
+        "command": "python",
+        "args": [
+          "-m",
+          "mcp_clickhouse.main"
+        ],
+        "env": {
+          "CLICKHOUSE_MCP_SERVER_TRANSPORT": "http",
+          "CLICKHOUSE_MCP_BIND_PORT": "4200"
         }
       }
     },

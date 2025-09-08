@@ -8,13 +8,12 @@
     "name": "emicklei"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "melrose-mcp",
-    "mcp_config": {
-      "command": "melrose-mcp",
-      "args": ["-log", "${user_config.log_file_path}"],
-      "env": {}
-    }
+    "command": "melrose-mcp",
+    "args": [
+      "-log",
+      "${user_config.log_file_path}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -33,27 +32,31 @@
   "quality_score": 38,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "melrose-mcp": {
-          "command": "melrose-mcp",
-          "args": [],
-          "env": {}
-        },
-        "melrose-mcp-configured": {
-          "command": "/Users/SOME-USER/go/bin/melrose-mcp",
-          "args": ["-log", "/Users/SOME-USER/Library/Logs/claude-melrose.log"],
-          "env": {}
-        },
-        "browsermcp-mcp": {
-          "command": "npx",
-          "args": ["-y", "@browsermcp/mcp@latest"],
-          "env": {}
-        },
-        "melrose-mcp-stdio": {
-          "command": "/Users/SOME-USER/go/bin/melrose-mcp",
-          "args": [],
-          "env": {}
-        }
+      "melrose-mcp": {
+        "command": "melrose-mcp",
+        "args": [],
+        "env": {}
+      },
+      "melrose-mcp-configured": {
+        "command": "/Users/SOME-USER/go/bin/melrose-mcp",
+        "args": [
+          "-log",
+          "/Users/SOME-USER/Library/Logs/claude-melrose.log"
+        ],
+        "env": {}
+      },
+      "browsermcp-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@browsermcp/mcp@latest"
+        ],
+        "env": {}
+      },
+      "melrose-mcp-stdio": {
+        "command": "/Users/SOME-USER/go/bin/melrose-mcp",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

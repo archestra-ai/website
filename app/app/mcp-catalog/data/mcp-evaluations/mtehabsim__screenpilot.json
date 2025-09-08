@@ -8,13 +8,11 @@
     "name": "Mtehabsim"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "${user_config.python_executable_path}",
-      "args": ["${user_config.main_script_path}"],
-      "env": {}
-    }
+    "command": "${user_config.python_executable_path}",
+    "args": [
+      "${user_config.main_script_path}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -38,12 +36,12 @@
   "quality_score": 24,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "device-controll": {
-          "command": "pathToEnv\\venv\\Scripts\\python.exe",
-          "args": ["pathToProject\\ScreenPilot\\main.py"],
-          "env": {}
-        }
+      "device-controll": {
+        "command": "pathToEnv\\venv\\Scripts\\python.exe",
+        "args": [
+          "pathToProject\\ScreenPilot\\main.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

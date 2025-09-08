@@ -8,13 +8,11 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/main.py"],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "${__dirname}/main.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,12 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "crypto-portfolio-mcp": {
-          "command": "python",
-          "args": ["path/to/crypto-portfolio-mcp/main.py"],
-          "env": {}
-        }
+      "crypto-portfolio-mcp": {
+        "command": "python",
+        "args": [
+          "path/to/crypto-portfolio-mcp/main.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

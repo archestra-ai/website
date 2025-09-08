@@ -8,15 +8,13 @@
     "name": "inspektor-gadget"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "ig-mcp-server",
-    "mcp_config": {
-      "command": "ig-mcp-server",
-      "args": ["${user_config.gadget_config_arg}"],
-      "env": {
-        "KUBECONFIG": "${user_config.kubeconfig_path}",
-        "READ_ONLY": "${user_config.read_only}"
-      }
+    "command": "ig-mcp-server",
+    "args": [
+      "${user_config.gadget_config_arg}"
+    ],
+    "env": {
+      "KUBECONFIG": "${user_config.kubeconfig_path}",
+      "READ_ONLY": "${user_config.read_only}"
     }
   },
   "tools": [],
@@ -50,43 +48,45 @@
   "quality_score": 64,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ghcr.io-inspektor-gadget-ig-mcp-server-docker-artifacthub-discovery": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "--mount",
-            "type=bind,src=${env:HOME}/.kube/config,dst=/kubeconfig",
-            "ghcr.io/inspektor-gadget/ig-mcp-server:latest",
-            "-gadget-discoverer=artifacthub"
-          ],
-          "env": {}
-        },
-        "ghcr.io-inspektor-gadget-ig-mcp-server-docker-specific-gadgets": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "--mount",
-            "type=bind,src=${env:HOME}/.kube/config,dst=/kubeconfig",
-            "ghcr.io/inspektor-gadget/ig-mcp-server:latest",
-            "-gadget-images=trace_dns:latest,trace_tcp:latest,snapshot_process:latest,snapshot_socket:latest"
-          ],
-          "env": {}
-        },
-        "ig-mcp-server-binary-artifacthub-discovery": {
-          "command": "ig-mcp-server",
-          "args": ["-gadget-discoverer=artifacthub"],
-          "env": {}
-        },
-        "ig-mcp-server-binary-specific-gadgets": {
-          "command": "ig-mcp-server",
-          "args": ["-gadget-images=trace_dns:latest,trace_tcp:latest"],
-          "env": {}
-        }
+      "ghcr.io-inspektor-gadget-ig-mcp-server-docker-artifacthub-discovery": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "--mount",
+          "type=bind,src=${env:HOME}/.kube/config,dst=/kubeconfig",
+          "ghcr.io/inspektor-gadget/ig-mcp-server:latest",
+          "-gadget-discoverer=artifacthub"
+        ],
+        "env": {}
+      },
+      "ghcr.io-inspektor-gadget-ig-mcp-server-docker-specific-gadgets": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "--mount",
+          "type=bind,src=${env:HOME}/.kube/config,dst=/kubeconfig",
+          "ghcr.io/inspektor-gadget/ig-mcp-server:latest",
+          "-gadget-images=trace_dns:latest,trace_tcp:latest,snapshot_process:latest,snapshot_socket:latest"
+        ],
+        "env": {}
+      },
+      "ig-mcp-server-binary-artifacthub-discovery": {
+        "command": "ig-mcp-server",
+        "args": [
+          "-gadget-discoverer=artifacthub"
+        ],
+        "env": {}
+      },
+      "ig-mcp-server-binary-specific-gadgets": {
+        "command": "ig-mcp-server",
+        "args": [
+          "-gadget-images=trace_dns:latest,trace_tcp:latest"
+        ],
+        "env": {}
       }
     },
     "oauth": {

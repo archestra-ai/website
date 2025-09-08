@@ -8,15 +8,14 @@
     "name": "kaliaboi"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-zotero"],
-      "env": {
-        "ZOTERO_API_KEY": "${user_config.zotero_api_key}",
-        "ZOTERO_USER_ID": "${user_config.zotero_user_id}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-zotero"
+    ],
+    "env": {
+      "ZOTERO_API_KEY": "${user_config.zotero_api_key}",
+      "ZOTERO_USER_ID": "${user_config.zotero_user_id}"
     }
   },
   "tools": [],
@@ -43,24 +42,25 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-zotero": {
-          "command": "mcp-zotero",
-          "args": [],
-          "env": {}
-        },
-        "mcp-zotero-npx": {
-          "command": "npx",
-          "args": ["-y", "mcp-zotero"],
-          "env": {}
-        },
-        "mcp-zotero-configured": {
-          "command": "mcp-zotero",
-          "args": [],
-          "env": {
-            "ZOTERO_API_KEY": "YOUR_API_KEY",
-            "ZOTERO_USER_ID": "YOUR_USER_ID"
-          }
+      "mcp-zotero": {
+        "command": "mcp-zotero",
+        "args": [],
+        "env": {}
+      },
+      "mcp-zotero-npx": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-zotero"
+        ],
+        "env": {}
+      },
+      "mcp-zotero-configured": {
+        "command": "mcp-zotero",
+        "args": [],
+        "env": {
+          "ZOTERO_API_KEY": "YOUR_API_KEY",
+          "ZOTERO_USER_ID": "YOUR_USER_ID"
         }
       }
     },

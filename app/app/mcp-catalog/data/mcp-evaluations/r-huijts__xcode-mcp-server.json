@@ -8,18 +8,16 @@
     "name": "r-huijts"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
-      "env": {
-        "PROJECTS_BASE_DIR": "${user_config.projects_base_dir}",
-        "ALLOWED_PATHS": "${user_config.allowed_paths}",
-        "PORT": "${user_config.port}",
-        "DEBUG": "${user_config.debug}",
-        "LOG_LEVEL": "${user_config.log_level}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/index.js"
+    ],
+    "env": {
+      "PROJECTS_BASE_DIR": "${user_config.projects_base_dir}",
+      "ALLOWED_PATHS": "${user_config.allowed_paths}",
+      "PORT": "${user_config.port}",
+      "DEBUG": "${user_config.debug}",
+      "LOG_LEVEL": "${user_config.log_level}"
     }
   },
   "tools": [],
@@ -65,22 +63,27 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "xcode-mcp-server": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        },
-        "xcode-mcp-server-dev": {
-          "command": "npm",
-          "args": ["run", "dev"],
-          "env": {}
-        },
-        "xcode-mcp-server-configured": {
-          "command": "node",
-          "args": ["/path/to/xcode-mcp-server/dist/index.js"],
-          "env": {}
-        }
+      "xcode-mcp-server": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {}
+      },
+      "xcode-mcp-server-dev": {
+        "command": "npm",
+        "args": [
+          "run",
+          "dev"
+        ],
+        "env": {}
+      },
+      "xcode-mcp-server-configured": {
+        "command": "node",
+        "args": [
+          "/path/to/xcode-mcp-server/dist/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

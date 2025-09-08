@@ -8,23 +8,19 @@
     "name": "s2-streamstore"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "--package",
-        "@s2-dev/streamstore",
-        "--",
-        "mcp",
-        "start",
-        "--access-token",
-        "${user_config.s2_access_token}"
-      ],
-      "env": {
-        "S2_ACCESS_TOKEN": "${user_config.s2_access_token}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "--package",
+      "@s2-dev/streamstore",
+      "--",
+      "mcp",
+      "start",
+      "--access-token",
+      "${user_config.s2_access_token}"
+    ],
+    "env": {
+      "S2_ACCESS_TOKEN": "${user_config.s2_access_token}"
     }
   },
   "tools": [],
@@ -44,17 +40,26 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "s2-dev-streamstore": {
-          "command": "npx",
-          "args": ["-y", "--package", "@s2-dev/streamstore", "--", "mcp", "start", "--access-token", "..."],
-          "env": {}
-        },
-        "mcp-server": {
-          "command": "./DOWNLOAD/PATH/mcp-server",
-          "args": ["start"],
-          "env": {}
-        }
+      "s2-dev-streamstore": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "--package",
+          "@s2-dev/streamstore",
+          "--",
+          "mcp",
+          "start",
+          "--access-token",
+          "..."
+        ],
+        "env": {}
+      },
+      "mcp-server": {
+        "command": "./DOWNLOAD/PATH/mcp-server",
+        "args": [
+          "start"
+        ],
+        "env": {}
       }
     },
     "oauth": {

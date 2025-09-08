@@ -8,14 +8,15 @@
     "name": "sascharo"
   },
   "server": {
-    "type": "python",
-    "entry_point": "gxtract/main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["run", "gxtract", "--transport", "stdio"],
-      "env": {
-        "GROUNDX_API_KEY": "${user_config.groundx_api_key}"
-      }
+    "command": "uv",
+    "args": [
+      "run",
+      "gxtract",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "GROUNDX_API_KEY": "${user_config.groundx_api_key}"
     }
   },
   "tools": [],
@@ -35,38 +36,36 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "gxtract-stdio-env-var": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "DRIVE:\\path\\to\\your\\gxtract",
-            "--project",
-            "DRIVE:\\path\\to\\your\\gxtract",
-            "run",
-            "gxtract",
-            "--transport",
-            "stdio"
-          ],
-          "env": {
-            "GROUNDX_API_KEY": "${env:GROUNDX_API_KEY}"
-          }
-        },
-        "gxtract-stdio-input": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "DRIVE:\\path\\to\\your\\gxtract",
-            "--project",
-            "DRIVE:\\path\\to\\your\\gxtract",
-            "run",
-            "gxtract",
-            "--transport",
-            "stdio"
-          ],
-          "env": {
-            "GROUNDX_API_KEY": "${input:groundx-api-key}"
-          }
+      "gxtract-stdio-env-var": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "DRIVE:\\path\\to\\your\\gxtract",
+          "--project",
+          "DRIVE:\\path\\to\\your\\gxtract",
+          "run",
+          "gxtract",
+          "--transport",
+          "stdio"
+        ],
+        "env": {
+          "GROUNDX_API_KEY": "${env:GROUNDX_API_KEY}"
+        }
+      },
+      "gxtract-stdio-input": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "DRIVE:\\path\\to\\your\\gxtract",
+          "--project",
+          "DRIVE:\\path\\to\\your\\gxtract",
+          "run",
+          "gxtract",
+          "--transport",
+          "stdio"
+        ],
+        "env": {
+          "GROUNDX_API_KEY": "${input:groundx-api-key}"
         }
       }
     },

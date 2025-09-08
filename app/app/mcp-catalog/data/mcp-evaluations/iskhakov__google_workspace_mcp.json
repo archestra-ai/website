@@ -8,22 +8,18 @@
     "name": "iskhakov"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "server_overridden": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["--from", "git+https://github.com/iskhakov/google_workspace_mcp", "workspace-mcp"],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/iskhakov/google_workspace_mcp",
+      "workspace-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -34,18 +30,18 @@
   "quality_score": 71,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "workspace-mcp": {
-          "command": "uvx",
-          "args": ["workspace-mcp"],
-          "env": {
-            "GOOGLE_OAUTH_CLIENT_ID": "<YOUR_CLIENT_ID_HERE>",
-            "GOOGLE_OAUTH_CLIENT_SECRET": "<YOUR_CLIENT_SECRET_HERE>",
-            "USER_GOOGLE_EMAIL": "<YOUR_GOOGLE_EMAIL_HERE>",
-            "GOOGLE_PSE_API_KEY": "<YOUR_API_KEY_HERE>",
-            "GOOGLE_PSE_ENGINE_ID": "<YOUR_ENGINE_ID_HERE>",
-            "OAUTHLIB_INSECURE_TRANSPORT": "1"
-          }
+      "workspace-mcp": {
+        "command": "uvx",
+        "args": [
+          "workspace-mcp"
+        ],
+        "env": {
+          "GOOGLE_OAUTH_CLIENT_ID": "<YOUR_CLIENT_ID_HERE>",
+          "GOOGLE_OAUTH_CLIENT_SECRET": "<YOUR_CLIENT_SECRET_HERE>",
+          "USER_GOOGLE_EMAIL": "<YOUR_GOOGLE_EMAIL_HERE>",
+          "GOOGLE_PSE_API_KEY": "<YOUR_API_KEY_HERE>",
+          "GOOGLE_PSE_ENGINE_ID": "<YOUR_ENGINE_ID_HERE>",
+          "OAUTHLIB_INSECURE_TRANSPORT": "1"
         }
       }
     },

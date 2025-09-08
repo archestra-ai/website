@@ -8,18 +8,16 @@
     "name": "qiniu"
   },
   "server": {
-    "type": "python",
-    "entry_point": "qiniu-mcp-server",
-    "mcp_config": {
-      "command": "uvx",
-      "args": ["qiniu-mcp-server"],
-      "env": {
-        "QINIU_ACCESS_KEY": "${user_config.qiniu_access_key}",
-        "QINIU_SECRET_KEY": "${user_config.qiniu_secret_key}",
-        "QINIU_REGION_NAME": "${user_config.qiniu_region_name}",
-        "QINIU_ENDPOINT_URL": "${user_config.qiniu_endpoint_url}",
-        "QINIU_BUCKETS": "${user_config.qiniu_buckets}"
-      }
+    "command": "uvx",
+    "args": [
+      "qiniu-mcp-server"
+    ],
+    "env": {
+      "QINIU_ACCESS_KEY": "${user_config.qiniu_access_key}",
+      "QINIU_SECRET_KEY": "${user_config.qiniu_secret_key}",
+      "QINIU_REGION_NAME": "${user_config.qiniu_region_name}",
+      "QINIU_ENDPOINT_URL": "${user_config.qiniu_endpoint_url}",
+      "QINIU_BUCKETS": "${user_config.qiniu_buckets}"
     }
   },
   "tools": [],
@@ -67,28 +65,42 @@
   "quality_score": 64,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "qiniu-mcp-server": {
-          "command": "uvx",
-          "args": ["qiniu-mcp-server"],
-          "env": {
-            "QINIU_ACCESS_KEY": "YOUR_ACCESS_KEY",
-            "QINIU_SECRET_KEY": "YOUR_SECRET_KEY",
-            "QINIU_REGION_NAME": "YOUR_REGION_NAME",
-            "QINIU_ENDPOINT_URL": "YOUR_ENDPOINT_URL",
-            "QINIU_BUCKETS": "YOUR_BUCKET_A,YOUR_BUCKET_B"
-          }
-        },
-        "qiniu-mcp-server-stdio": {
-          "command": "uv",
-          "args": ["--directory", ".", "run", "qiniu-mcp-server"],
-          "env": {}
-        },
-        "qiniu-mcp-server-sse": {
-          "command": "uv",
-          "args": ["--directory", ".", "run", "qiniu-mcp-server", "--transport", "sse", "--port", "8000"],
-          "env": {}
+      "qiniu-mcp-server": {
+        "command": "uvx",
+        "args": [
+          "qiniu-mcp-server"
+        ],
+        "env": {
+          "QINIU_ACCESS_KEY": "YOUR_ACCESS_KEY",
+          "QINIU_SECRET_KEY": "YOUR_SECRET_KEY",
+          "QINIU_REGION_NAME": "YOUR_REGION_NAME",
+          "QINIU_ENDPOINT_URL": "YOUR_ENDPOINT_URL",
+          "QINIU_BUCKETS": "YOUR_BUCKET_A,YOUR_BUCKET_B"
         }
+      },
+      "qiniu-mcp-server-stdio": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          ".",
+          "run",
+          "qiniu-mcp-server"
+        ],
+        "env": {}
+      },
+      "qiniu-mcp-server-sse": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          ".",
+          "run",
+          "qiniu-mcp-server",
+          "--transport",
+          "sse",
+          "--port",
+          "8000"
+        ],
+        "env": {}
       }
     },
     "oauth": {

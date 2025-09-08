@@ -8,18 +8,16 @@
     "name": "luminati-io"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["@brightdata/mcp"],
-      "env": {
-        "API_TOKEN": "${user_config.api_token}",
-        "RATE_LIMIT": "${user_config.rate_limit}",
-        "WEB_UNLOCKER_ZONE": "${user_config.web_unlocker_zone}",
-        "BROWSER_ZONE": "${user_config.browser_zone}",
-        "PRO_MODE": "${user_config.pro_mode}"
-      }
+    "command": "npx",
+    "args": [
+      "@brightdata/mcp"
+    ],
+    "env": {
+      "API_TOKEN": "${user_config.api_token}",
+      "RATE_LIMIT": "${user_config.rate_limit}",
+      "WEB_UNLOCKER_ZONE": "${user_config.web_unlocker_zone}",
+      "BROWSER_ZONE": "${user_config.browser_zone}",
+      "PRO_MODE": "${user_config.pro_mode}"
     }
   },
   "tools": [],
@@ -66,24 +64,26 @@
   "quality_score": 66,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "brightdata-mcp": {
-          "command": "npx",
-          "args": ["@brightdata/mcp"],
-          "env": {
-            "API_TOKEN": "<insert-your-api-token-here>"
-          }
-        },
-        "brightdata-mcp-configured": {
-          "command": "npx",
-          "args": ["@brightdata/mcp"],
-          "env": {
-            "API_TOKEN": "<insert-your-api-token-here>",
-            "RATE_LIMIT": "<optional if you want to change rate limit format: limit/time+unit, e.g., 100/1h, 50/30m, 10/5s>",
-            "WEB_UNLOCKER_ZONE": "<optional if you want to override the web unlocker zone name - default is mcp_unlocker>",
-            "BROWSER_ZONE": "<optional if you want to override the browser zone name - defaults is mcp_browser>",
-            "PRO_MODE": "<optional boolean, defaults to false. Set to true to expose all tools including browser and web_data_* tools>"
-          }
+      "brightdata-mcp": {
+        "command": "npx",
+        "args": [
+          "@brightdata/mcp"
+        ],
+        "env": {
+          "API_TOKEN": "<insert-your-api-token-here>"
+        }
+      },
+      "brightdata-mcp-configured": {
+        "command": "npx",
+        "args": [
+          "@brightdata/mcp"
+        ],
+        "env": {
+          "API_TOKEN": "<insert-your-api-token-here>",
+          "RATE_LIMIT": "<optional if you want to change rate limit format: limit/time+unit, e.g., 100/1h, 50/30m, 10/5s>",
+          "WEB_UNLOCKER_ZONE": "<optional if you want to override the web unlocker zone name - default is mcp_unlocker>",
+          "BROWSER_ZONE": "<optional if you want to override the browser zone name - defaults is mcp_browser>",
+          "PRO_MODE": "<optional boolean, defaults to false. Set to true to expose all tools including browser and web_data_* tools>"
         }
       }
     },

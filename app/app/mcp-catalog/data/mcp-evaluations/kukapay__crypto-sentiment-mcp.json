@@ -8,14 +8,15 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "main.py"],
-      "env": {
-        "SANTIMENT_API_KEY": "${user_config.santiment_api_key}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "main.py"
+    ],
+    "env": {
+      "SANTIMENT_API_KEY": "${user_config.santiment_api_key}"
     }
   },
   "tools": [],
@@ -35,13 +36,16 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "crypto-sentiment-mcp": {
-          "command": "uv",
-          "args": ["--directory", "path/to/crypto-sentiment-mcp", "run", "main.py"],
-          "env": {
-            "SANTIMENT_API_KEY": "your_api_key_here"
-          }
+      "crypto-sentiment-mcp": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "path/to/crypto-sentiment-mcp",
+          "run",
+          "main.py"
+        ],
+        "env": {
+          "SANTIMENT_API_KEY": "your_api_key_here"
         }
       }
     },

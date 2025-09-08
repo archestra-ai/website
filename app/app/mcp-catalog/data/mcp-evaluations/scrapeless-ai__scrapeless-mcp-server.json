@@ -8,17 +8,16 @@
     "name": "scrapeless-ai"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "scrapeless-mcp-server"],
-      "env": {
-        "SCRAPELESS_KEY": "${user_config.scrapeless_key}",
-        "BROWSER_PROFILE_ID": "${user_config.browser_profile_id}",
-        "BROWSER_PROFILE_PERSIST": "${user_config.browser_profile_persist}",
-        "BROWSER_SESSION_TTL": "${user_config.browser_session_ttl}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "scrapeless-mcp-server"
+    ],
+    "env": {
+      "SCRAPELESS_KEY": "${user_config.scrapeless_key}",
+      "BROWSER_PROFILE_ID": "${user_config.browser_profile_id}",
+      "BROWSER_PROFILE_PERSIST": "${user_config.browser_profile_persist}",
+      "BROWSER_SESSION_TTL": "${user_config.browser_session_ttl}"
     }
   },
   "tools": [],
@@ -60,13 +59,14 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "scrapeless-mcp-server-stdio": {
-          "command": "npx",
-          "args": ["-y", "scrapeless-mcp-server"],
-          "env": {
-            "SCRAPELESS_KEY": "YOUR_SCRAPELESS_KEY"
-          }
+      "scrapeless-mcp-server-stdio": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "scrapeless-mcp-server"
+        ],
+        "env": {
+          "SCRAPELESS_KEY": "YOUR_SCRAPELESS_KEY"
         }
       }
     },

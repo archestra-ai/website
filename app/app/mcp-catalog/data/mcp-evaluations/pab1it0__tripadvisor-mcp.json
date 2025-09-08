@@ -8,14 +8,15 @@
     "name": "pab1it0"
   },
   "server": {
-    "type": "python",
-    "entry_point": "src/tripadvisor_mcp/main.py",
-    "mcp_config": {
-      "command": "uv",
-      "args": ["--directory", "${__dirname}", "run", "src/tripadvisor_mcp/main.py"],
-      "env": {
-        "TRIPADVISOR_API_KEY": "${user_config.tripadvisor_api_key}"
-      }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "src/tripadvisor_mcp/main.py"
+    ],
+    "env": {
+      "TRIPADVISOR_API_KEY": "${user_config.tripadvisor_api_key}"
     }
   },
   "tools": [],
@@ -35,32 +36,51 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "tripadvisor-mcp-uv": {
-          "command": "uv",
-          "args": ["--directory", "<full path to tripadvisor-mcp directory>", "run", "src/tripadvisor_mcp/main.py"],
-          "env": {
-            "TRIPADVISOR_API_KEY": "your_api_key_here"
-          }
-        },
-        "tripadvisor-mcp-server-docker": {
-          "command": "docker",
-          "args": ["run", "-it", "--rm", "-e", "TRIPADVISOR_API_KEY=your_api_key_here", "tripadvisor-mcp-server"],
-          "env": {
-            "TRIPADVISOR_API_KEY": "your_api_key_here"
-          }
-        },
-        "tripadvisor-mcp-server-docker-compose": {
-          "command": "docker-compose",
-          "args": ["up"],
-          "env": {}
-        },
-        "tripadvisor-mcp-server-docker-configured": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "-e", "TRIPADVISOR_API_KEY", "tripadvisor-mcp-server"],
-          "env": {
-            "TRIPADVISOR_API_KEY": "your_api_key_here"
-          }
+      "tripadvisor-mcp-uv": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "<full path to tripadvisor-mcp directory>",
+          "run",
+          "src/tripadvisor_mcp/main.py"
+        ],
+        "env": {
+          "TRIPADVISOR_API_KEY": "your_api_key_here"
+        }
+      },
+      "tripadvisor-mcp-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-it",
+          "--rm",
+          "-e",
+          "TRIPADVISOR_API_KEY=your_api_key_here",
+          "tripadvisor-mcp-server"
+        ],
+        "env": {
+          "TRIPADVISOR_API_KEY": "your_api_key_here"
+        }
+      },
+      "tripadvisor-mcp-server-docker-compose": {
+        "command": "docker-compose",
+        "args": [
+          "up"
+        ],
+        "env": {}
+      },
+      "tripadvisor-mcp-server-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "-e",
+          "TRIPADVISOR_API_KEY",
+          "tripadvisor-mcp-server"
+        ],
+        "env": {
+          "TRIPADVISOR_API_KEY": "your_api_key_here"
         }
       }
     },

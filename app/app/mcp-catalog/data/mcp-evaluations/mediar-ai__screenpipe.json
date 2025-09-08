@@ -8,13 +8,9 @@
     "name": "mediar-ai"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "screenpipe",
-    "mcp_config": {
-      "command": "screenpipe",
-      "args": [],
-      "env": {}
-    }
+    "command": "screenpipe",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 66,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "screenpipe": {
-          "command": "screenpipe",
-          "args": [],
-          "env": {}
-        }
+      "screenpipe": {
+        "command": "screenpipe",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

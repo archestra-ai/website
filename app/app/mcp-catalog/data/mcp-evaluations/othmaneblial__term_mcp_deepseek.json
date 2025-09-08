@@ -8,14 +8,12 @@
     "name": "OthmaneBlial"
   },
   "server": {
-    "type": "python",
-    "entry_point": "server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": ["${__dirname}/server.py"],
-      "env": {
-        "DEEPSEEK_API_KEY": "${user_config.deepseek_api_key}"
-      }
+    "command": "python",
+    "args": [
+      "${__dirname}/server.py"
+    ],
+    "env": {
+      "DEEPSEEK_API_KEY": "${user_config.deepseek_api_key}"
     }
   },
   "tools": [],
@@ -35,12 +33,12 @@
   "quality_score": 43,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "term-mcp-deepseek": {
-          "command": "python",
-          "args": ["server.py"],
-          "env": {}
-        }
+      "term-mcp-deepseek": {
+        "command": "python",
+        "args": [
+          "server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

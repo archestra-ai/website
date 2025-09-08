@@ -8,13 +8,11 @@
     "name": "biegehydra"
   },
   "server": {
-    "type": "node",
-    "entry_point": "extension.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/extension.js"],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/extension.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,27 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "supergateway-configured-windows": {
-          "command": "cmd",
-          "args": ["/c", "npx", "-y", "supergateway", "--sse", "http://localhost:8008/sse"],
-          "env": {}
-        },
-        "supergateway-configured-mac-linux": {
-          "command": "npx",
-          "args": ["-y", "supergateway", "--sse", "http://localhost:8008/sse"],
-          "env": {}
-        }
+      "supergateway-configured-windows": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "npx",
+          "-y",
+          "supergateway",
+          "--sse",
+          "http://localhost:8008/sse"
+        ],
+        "env": {}
+      },
+      "supergateway-configured-mac-linux": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "supergateway",
+          "--sse",
+          "http://localhost:8008/sse"
+        ],
+        "env": {}
       }
     },
     "oauth": {

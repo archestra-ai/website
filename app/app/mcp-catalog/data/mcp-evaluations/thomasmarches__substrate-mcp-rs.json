@@ -8,15 +8,11 @@
     "name": "ThomasMarches"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "substrate-mcp-rs",
-    "mcp_config": {
-      "command": "${__dirname}/target/release/substrate-mcp-rs",
-      "args": [],
-      "env": {
-        "RPC_URL": "${user_config.rpc_url}",
-        "SIGNING_KEYPAIR_HEX": "${user_config.signing_keypair_hex}"
-      }
+    "command": "${__dirname}/target/release/substrate-mcp-rs",
+    "args": [],
+    "env": {
+      "RPC_URL": "${user_config.rpc_url}",
+      "SIGNING_KEYPAIR_HEX": "${user_config.signing_keypair_hex}"
     }
   },
   "tools": [],
@@ -42,17 +38,18 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "substrate-mcp-rs-cargo": {
-          "command": "cargo",
-          "args": ["run", "--release"],
-          "env": {}
-        },
-        "substrate-mcp-rs-binary": {
-          "command": "$PROJECT_ROOT_ABSOLUTE_PATH/target/release/substrate-mcp-rs",
-          "args": [],
-          "env": {}
-        }
+      "substrate-mcp-rs-cargo": {
+        "command": "cargo",
+        "args": [
+          "run",
+          "--release"
+        ],
+        "env": {}
+      },
+      "substrate-mcp-rs-binary": {
+        "command": "$PROJECT_ROOT_ABSOLUTE_PATH/target/release/substrate-mcp-rs",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

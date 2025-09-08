@@ -8,16 +8,12 @@
     "name": "mahdin75"
   },
   "server": {
-    "type": "python",
-    "entry_point": "geoserver-mcp",
-    "mcp_config": {
-      "command": "${__dirname}/.venv/bin/geoserver-mcp",
-      "args": [],
-      "env": {
-        "GEOSERVER_URL": "${user_config.geoserver_url}",
-        "GEOSERVER_USER": "${user_config.geoserver_user}",
-        "GEOSERVER_PASSWORD": "${user_config.geoserver_password}"
-      }
+    "command": "${__dirname}/.venv/bin/geoserver-mcp",
+    "args": [],
+    "env": {
+      "GEOSERVER_URL": "${user_config.geoserver_url}",
+      "GEOSERVER_USER": "${user_config.geoserver_user}",
+      "GEOSERVER_PASSWORD": "${user_config.geoserver_password}"
     }
   },
   "tools": [],
@@ -52,66 +48,94 @@
   "quality_score": 69,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mahdin75-geoserver-mcp-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "GEOSERVER_URL=http://localhost:8080/geoserver",
-            "-e",
-            "GEOSERVER_USER=admin",
-            "-e",
-            "GEOSERVER_PASSWORD=geoserver",
-            "-p",
-            "8080:8080",
-            "mahdin75/geoserver-mcp"
-          ],
-          "env": {
-            "GEOSERVER_URL": "http://localhost:8080/geoserver",
-            "GEOSERVER_USER": "admin",
-            "GEOSERVER_PASSWORD": "geoserver"
-          }
-        },
-        "geoserver-mcp-linux": {
-          "command": "/path/to/geoserver-mcp/.venv/bin/geoserver-mcp",
-          "args": ["--url", "http://localhost:8080/geoserver", "--user", "admin", "--password", "geoserver"],
-          "env": {}
-        },
-        "geoserver-mcp-linux-debug": {
-          "command": "/path/to/geoserver-mcp/.venv/bin/geoserver-mcp",
-          "args": ["--url", "http://localhost:8080/geoserver", "--user", "admin", "--password", "geoserver", "--debug"],
-          "env": {}
-        },
-        "geoserver-mcp-linux-env": {
-          "command": "/path/to/geoserver-mcp/.venv/bin/geoserver-mcp",
-          "args": [],
-          "env": {
-            "GEOSERVER_URL": "http://localhost:8080/geoserver",
-            "GEOSERVER_USER": "admin",
-            "GEOSERVER_PASSWORD": "geoserver"
-          }
-        },
-        "geoserver-mcp-windows": {
-          "command": "C:\\path\\to\\geoserver-mcp\\.venv\\Scripts\\geoserver-mcp",
-          "args": ["--url", "http://localhost:8080/geoserver", "--user", "admin", "--password", "geoserver"],
-          "env": {}
-        },
-        "geoserver-mcp-windows-debug": {
-          "command": "C:\\path\\to\\geoserver-mcp\\.venv\\Scripts\\geoserver-mcp",
-          "args": ["--url", "http://localhost:8080/geoserver", "--user", "admin", "--password", "geoserver", "--debug"],
-          "env": {}
-        },
-        "geoserver-mcp-windows-env": {
-          "command": "C:\\path\\to\\geoserver-mcp\\.venv\\Scripts\\geoserver-mcp",
-          "args": [],
-          "env": {
-            "GEOSERVER_URL": "http://localhost:8080/geoserver",
-            "GEOSERVER_USER": "admin",
-            "GEOSERVER_PASSWORD": "geoserver"
-          }
+      "mahdin75-geoserver-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "GEOSERVER_URL=http://localhost:8080/geoserver",
+          "-e",
+          "GEOSERVER_USER=admin",
+          "-e",
+          "GEOSERVER_PASSWORD=geoserver",
+          "-p",
+          "8080:8080",
+          "mahdin75/geoserver-mcp"
+        ],
+        "env": {
+          "GEOSERVER_URL": "http://localhost:8080/geoserver",
+          "GEOSERVER_USER": "admin",
+          "GEOSERVER_PASSWORD": "geoserver"
+        }
+      },
+      "geoserver-mcp-linux": {
+        "command": "/path/to/geoserver-mcp/.venv/bin/geoserver-mcp",
+        "args": [
+          "--url",
+          "http://localhost:8080/geoserver",
+          "--user",
+          "admin",
+          "--password",
+          "geoserver"
+        ],
+        "env": {}
+      },
+      "geoserver-mcp-linux-debug": {
+        "command": "/path/to/geoserver-mcp/.venv/bin/geoserver-mcp",
+        "args": [
+          "--url",
+          "http://localhost:8080/geoserver",
+          "--user",
+          "admin",
+          "--password",
+          "geoserver",
+          "--debug"
+        ],
+        "env": {}
+      },
+      "geoserver-mcp-linux-env": {
+        "command": "/path/to/geoserver-mcp/.venv/bin/geoserver-mcp",
+        "args": [],
+        "env": {
+          "GEOSERVER_URL": "http://localhost:8080/geoserver",
+          "GEOSERVER_USER": "admin",
+          "GEOSERVER_PASSWORD": "geoserver"
+        }
+      },
+      "geoserver-mcp-windows": {
+        "command": "C:\\path\\to\\geoserver-mcp\\.venv\\Scripts\\geoserver-mcp",
+        "args": [
+          "--url",
+          "http://localhost:8080/geoserver",
+          "--user",
+          "admin",
+          "--password",
+          "geoserver"
+        ],
+        "env": {}
+      },
+      "geoserver-mcp-windows-debug": {
+        "command": "C:\\path\\to\\geoserver-mcp\\.venv\\Scripts\\geoserver-mcp",
+        "args": [
+          "--url",
+          "http://localhost:8080/geoserver",
+          "--user",
+          "admin",
+          "--password",
+          "geoserver",
+          "--debug"
+        ],
+        "env": {}
+      },
+      "geoserver-mcp-windows-env": {
+        "command": "C:\\path\\to\\geoserver-mcp\\.venv\\Scripts\\geoserver-mcp",
+        "args": [],
+        "env": {
+          "GEOSERVER_URL": "http://localhost:8080/geoserver",
+          "GEOSERVER_USER": "admin",
+          "GEOSERVER_PASSWORD": "geoserver"
         }
       }
     },

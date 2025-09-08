@@ -8,16 +8,14 @@
     "name": "caol64"
   },
   "server": {
-    "type": "node",
-    "entry_point": "dist/index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/dist/index.js"],
-      "env": {
-        "WECHAT_APP_ID": "${user_config.wechat_app_id}",
-        "WECHAT_APP_SECRET": "${user_config.wechat_app_secret}",
-        "HOST_IMAGE_PATH": "${user_config.host_image_path}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/index.js"
+    ],
+    "env": {
+      "WECHAT_APP_ID": "${user_config.wechat_app_id}",
+      "WECHAT_APP_SECRET": "${user_config.wechat_app_secret}",
+      "HOST_IMAGE_PATH": "${user_config.host_image_path}"
     }
   },
   "tools": [],
@@ -51,36 +49,36 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "wenyan-mcp": {
-          "command": "node",
-          "args": ["Your/path/to/wenyan-mcp/dist/index.js"],
-          "env": {
-            "WECHAT_APP_ID": "your_app_id",
-            "WECHAT_APP_SECRET": "your_app_secret"
-          }
-        },
-        "wenyan-mcp-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "--rm",
-            "-i",
-            "-v",
-            "/your/host/image/path:/mnt/host-downloads",
-            "-e",
-            "WECHAT_APP_ID=your_app_id",
-            "-e",
-            "WECHAT_APP_SECRET=your_app_secret",
-            "-e",
-            "HOST_IMAGE_PATH=/your/host/image/path",
-            "wenyan-mcp"
-          ],
-          "env": {
-            "WECHAT_APP_ID": "your_app_id",
-            "WECHAT_APP_SECRET": "your_app_secret",
-            "HOST_IMAGE_PATH": "/your/host/image/path"
-          }
+      "wenyan-mcp": {
+        "command": "node",
+        "args": [
+          "Your/path/to/wenyan-mcp/dist/index.js"
+        ],
+        "env": {
+          "WECHAT_APP_ID": "your_app_id",
+          "WECHAT_APP_SECRET": "your_app_secret"
+        }
+      },
+      "wenyan-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "-v",
+          "/your/host/image/path:/mnt/host-downloads",
+          "-e",
+          "WECHAT_APP_ID=your_app_id",
+          "-e",
+          "WECHAT_APP_SECRET=your_app_secret",
+          "-e",
+          "HOST_IMAGE_PATH=/your/host/image/path",
+          "wenyan-mcp"
+        ],
+        "env": {
+          "WECHAT_APP_ID": "your_app_id",
+          "WECHAT_APP_SECRET": "your_app_secret",
+          "HOST_IMAGE_PATH": "/your/host/image/path"
         }
       }
     },

@@ -8,18 +8,14 @@
     "name": "mariocandela"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "beelzebub",
-    "mcp_config": {
-      "command": "beelzebub",
-      "args": [
-        "--confCore",
-        "${__dirname}/configurations/beelzebub.yaml",
-        "--confServices",
-        "${__dirname}/configurations/services/"
-      ],
-      "env": {}
-    }
+    "command": "beelzebub",
+    "args": [
+      "--confCore",
+      "${__dirname}/configurations/beelzebub.yaml",
+      "--confServices",
+      "${__dirname}/configurations/services/"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -30,17 +26,20 @@
   "quality_score": 66,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "beelzebub": {
-          "command": "./beelzebub",
-          "args": [],
-          "env": {}
-        },
-        "beelzebub-configured": {
-          "command": "./beelzebub",
-          "args": ["--confCore", "./configurations/beelzebub.yaml", "--confServices", "./configurations/services/"],
-          "env": {}
-        }
+      "beelzebub": {
+        "command": "./beelzebub",
+        "args": [],
+        "env": {}
+      },
+      "beelzebub-configured": {
+        "command": "./beelzebub",
+        "args": [
+          "--confCore",
+          "./configurations/beelzebub.yaml",
+          "--confServices",
+          "./configurations/services/"
+        ],
+        "env": {}
       }
     },
     "oauth": {

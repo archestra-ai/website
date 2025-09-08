@@ -8,15 +8,15 @@
     "name": "SaseQ"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "mcp-remote", "https://gitmcp.io/SaseQ/discord-mcp"],
-      "env": {
-        "DISCORD_TOKEN": "${user_config.discord_token}",
-        "DISCORD_GUILD_ID": "${user_config.discord_guild_id}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-remote",
+      "https://gitmcp.io/SaseQ/discord-mcp"
+    ],
+    "env": {
+      "DISCORD_TOKEN": "${user_config.discord_token}",
+      "DISCORD_GUILD_ID": "${user_config.discord_guild_id}"
     }
   },
   "tools": [],
@@ -43,22 +43,26 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "discord-mcp-jar": {
-          "command": "java",
-          "args": ["-jar", "/absolute/path/to/discord-mcp-0.0.1-SNAPSHOT.jar"],
-          "env": {
-            "DISCORD_TOKEN": "YOUR_DISCORD_BOT_TOKEN",
-            "DISCORD_GUILD_ID": "OPTIONAL_DEFAULT_SERVER_ID"
-          }
-        },
-        "saseq-discord-mcp-remote": {
-          "command": "npx",
-          "args": ["mcp-remote", "https://gitmcp.io/SaseQ/discord-mcp"],
-          "env": {
-            "DISCORD_TOKEN": "YOUR_DISCORD_BOT_TOKEN",
-            "DISCORD_GUILD_ID": "OPTIONAL_DEFAULT_SERVER_ID"
-          }
+      "discord-mcp-jar": {
+        "command": "java",
+        "args": [
+          "-jar",
+          "/absolute/path/to/discord-mcp-0.0.1-SNAPSHOT.jar"
+        ],
+        "env": {
+          "DISCORD_TOKEN": "YOUR_DISCORD_BOT_TOKEN",
+          "DISCORD_GUILD_ID": "OPTIONAL_DEFAULT_SERVER_ID"
+        }
+      },
+      "saseq-discord-mcp-remote": {
+        "command": "npx",
+        "args": [
+          "mcp-remote",
+          "https://gitmcp.io/SaseQ/discord-mcp"
+        ],
+        "env": {
+          "DISCORD_TOKEN": "YOUR_DISCORD_BOT_TOKEN",
+          "DISCORD_GUILD_ID": "OPTIONAL_DEFAULT_SERVER_ID"
         }
       }
     },

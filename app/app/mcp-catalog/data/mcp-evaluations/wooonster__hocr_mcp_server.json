@@ -8,21 +8,17 @@
     "name": "Wooonster"
   },
   "server": {
-    "type": "python",
-    "entry_point": "mcp_server.py",
-    "mcp_config": {
-      "command": "python",
-      "args": [
-        "-m",
-        "uvicorn",
-        "mcp_server:app",
-        "--host",
-        "${user_config.server_host}",
-        "--port",
-        "${user_config.server_port}"
-      ],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "-m",
+      "uvicorn",
+      "mcp_server:app",
+      "--host",
+      "${user_config.server_host}",
+      "--port",
+      "${user_config.server_port}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -50,12 +46,17 @@
   "quality_score": 30,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp_server": {
-          "command": "uvicorn",
-          "args": ["mcp_server:app", "--reload", "--host", "0.0.0.0", "--port", "8000"],
-          "env": {}
-        }
+      "mcp_server": {
+        "command": "uvicorn",
+        "args": [
+          "mcp_server:app",
+          "--reload",
+          "--host",
+          "0.0.0.0",
+          "--port",
+          "8000"
+        ],
+        "env": {}
       }
     },
     "oauth": {

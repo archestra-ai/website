@@ -8,18 +8,14 @@
     "name": "TechDocsStudio"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://mcp.biel.ai/sse?project_slug=${user_config.project_slug}&domain=${user_config.domain}"
-      ],
-      "env": {
-        "API_KEY": "${user_config.api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-remote",
+      "https://mcp.biel.ai/sse?project_slug=${user_config.project_slug}&domain=${user_config.domain}"
+    ],
+    "env": {
+      "API_KEY": "${user_config.api_key}"
     }
   },
   "tools": [],
@@ -51,26 +47,32 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "biel-ai": {
-          "command": "npx",
-          "args": [
-            "-y",
-            "mcp-remote",
-            "https://mcp.biel.ai/sse?project_slug=YOUR_PROJECT_SLUG&domain=https://your-docs-domain.com"
-          ],
-          "env": {}
-        },
-        "biel-mcp-server-python": {
-          "command": "python",
-          "args": ["biel_mcp_server.py"],
-          "env": {}
-        },
-        "biel-mcp-docker": {
-          "command": "docker",
-          "args": ["run", "-d", "-p", "7832:7832", "biel-mcp"],
-          "env": {}
-        }
+      "biel-ai": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-remote",
+          "https://mcp.biel.ai/sse?project_slug=YOUR_PROJECT_SLUG&domain=https://your-docs-domain.com"
+        ],
+        "env": {}
+      },
+      "biel-mcp-server-python": {
+        "command": "python",
+        "args": [
+          "biel_mcp_server.py"
+        ],
+        "env": {}
+      },
+      "biel-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-d",
+          "-p",
+          "7832:7832",
+          "biel-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

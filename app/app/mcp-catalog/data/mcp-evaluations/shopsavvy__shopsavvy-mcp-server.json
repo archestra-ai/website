@@ -8,14 +8,12 @@
     "name": "shopsavvy"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["@shopsavvy/mcp-server"],
-      "env": {
-        "SHOPSAVVY_API_KEY": "${user_config.shopsavvy_api_key}"
-      }
+    "command": "npx",
+    "args": [
+      "@shopsavvy/mcp-server"
+    ],
+    "env": {
+      "SHOPSAVVY_API_KEY": "${user_config.shopsavvy_api_key}"
     }
   },
   "tools": [],
@@ -35,27 +33,33 @@
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "shopsavvy-mcp-server-configured": {
-          "command": "npx",
-          "args": ["@shopsavvy/mcp-server"],
-          "env": {
-            "SHOPSAVVY_API_KEY": "your_api_key_here"
-          }
-        },
-        "shopsavvy-mcp-server-dev": {
-          "command": "npm",
-          "args": ["run", "dev"],
-          "env": {
-            "SHOPSAVVY_API_KEY": "your_key_here"
-          }
-        },
-        "shopsavvy-mcp-server-inspect": {
-          "command": "npm",
-          "args": ["run", "inspect"],
-          "env": {
-            "SHOPSAVVY_API_KEY": "your_key_here"
-          }
+      "shopsavvy-mcp-server-configured": {
+        "command": "npx",
+        "args": [
+          "@shopsavvy/mcp-server"
+        ],
+        "env": {
+          "SHOPSAVVY_API_KEY": "your_api_key_here"
+        }
+      },
+      "shopsavvy-mcp-server-dev": {
+        "command": "npm",
+        "args": [
+          "run",
+          "dev"
+        ],
+        "env": {
+          "SHOPSAVVY_API_KEY": "your_key_here"
+        }
+      },
+      "shopsavvy-mcp-server-inspect": {
+        "command": "npm",
+        "args": [
+          "run",
+          "inspect"
+        ],
+        "env": {
+          "SHOPSAVVY_API_KEY": "your_key_here"
         }
       }
     },

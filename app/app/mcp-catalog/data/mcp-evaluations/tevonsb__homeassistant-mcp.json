@@ -8,21 +8,19 @@
     "name": "tevonsb"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/index.js"],
-      "env": {
-        "HASS_HOST": "${user_config.hass_host}",
-        "HASS_TOKEN": "${user_config.hass_token}",
-        "HASS_SOCKET_URL": "${user_config.hass_socket_url}",
-        "PORT": "${user_config.port}",
-        "NODE_ENV": "${user_config.node_env}",
-        "DEBUG": "${user_config.debug}",
-        "TEST_HASS_HOST": "${user_config.test_hass_host}",
-        "TEST_HASS_TOKEN": "${user_config.test_hass_token}"
-      }
+    "command": "node",
+    "args": [
+      "${__dirname}/index.js"
+    ],
+    "env": {
+      "HASS_HOST": "${user_config.hass_host}",
+      "HASS_TOKEN": "${user_config.hass_token}",
+      "HASS_SOCKET_URL": "${user_config.hass_socket_url}",
+      "PORT": "${user_config.port}",
+      "NODE_ENV": "${user_config.node_env}",
+      "DEBUG": "${user_config.debug}",
+      "TEST_HASS_HOST": "${user_config.test_hass_host}",
+      "TEST_HASS_TOKEN": "${user_config.test_hass_token}"
     }
   },
   "tools": [],
@@ -92,18 +90,20 @@
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "homeassistant-mcp-docker": {
-          "command": "docker",
-          "args": ["compose", "up", "-d"],
-          "env": {
-            "HASS_HOST": "http://homeassistant.local:8123",
-            "HASS_TOKEN": "your_home_assistant_token",
-            "HASS_SOCKET_URL": "ws://homeassistant.local:8123/api/websocket",
-            "PORT": "3000",
-            "NODE_ENV": "production",
-            "DEBUG": "false"
-          }
+      "homeassistant-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "compose",
+          "up",
+          "-d"
+        ],
+        "env": {
+          "HASS_HOST": "http://homeassistant.local:8123",
+          "HASS_TOKEN": "your_home_assistant_token",
+          "HASS_SOCKET_URL": "ws://homeassistant.local:8123/api/websocket",
+          "PORT": "3000",
+          "NODE_ENV": "production",
+          "DEBUG": "false"
         }
       }
     },

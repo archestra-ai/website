@@ -8,16 +8,14 @@
     "name": "Regenerating-World"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["pix-mcp"],
-      "env": {
-        "MCP_MODE": "${user_config.mcp_mode}",
-        "NODE_ENV": "${user_config.node_env}",
-        "PORT": "${user_config.port}"
-      }
+    "command": "npx",
+    "args": [
+      "pix-mcp"
+    ],
+    "env": {
+      "MCP_MODE": "${user_config.mcp_mode}",
+      "NODE_ENV": "${user_config.node_env}",
+      "PORT": "${user_config.port}"
     }
   },
   "tools": [],
@@ -53,28 +51,32 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "pix-mcp-stdio": {
-          "command": "npx",
-          "args": ["pix-mcp"],
-          "env": {
-            "MCP_MODE": "stdio"
-          }
-        },
-        "pix-mcp-http": {
-          "command": "npx",
-          "args": ["pix-mcp"],
-          "env": {
-            "MCP_MODE": "http"
-          }
-        },
-        "pix-mcp-manual-deployment-http": {
-          "command": "node",
-          "args": ["dist/index.js"],
-          "env": {
-            "MCP_MODE": "http",
-            "NODE_ENV": "production"
-          }
+      "pix-mcp-stdio": {
+        "command": "npx",
+        "args": [
+          "pix-mcp"
+        ],
+        "env": {
+          "MCP_MODE": "stdio"
+        }
+      },
+      "pix-mcp-http": {
+        "command": "npx",
+        "args": [
+          "pix-mcp"
+        ],
+        "env": {
+          "MCP_MODE": "http"
+        }
+      },
+      "pix-mcp-manual-deployment-http": {
+        "command": "node",
+        "args": [
+          "dist/index.js"
+        ],
+        "env": {
+          "MCP_MODE": "http",
+          "NODE_ENV": "production"
         }
       }
     },

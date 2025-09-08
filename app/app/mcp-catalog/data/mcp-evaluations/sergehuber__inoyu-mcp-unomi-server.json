@@ -8,20 +8,18 @@
     "name": "sergehuber"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["@inoyu/mcp-unomi-server"],
-      "env": {
-        "UNOMI_BASE_URL": "${user_config.unomi_base_url}",
-        "UNOMI_USERNAME": "${user_config.unomi_username}",
-        "UNOMI_PASSWORD": "${user_config.unomi_password}",
-        "UNOMI_PROFILE_ID": "${user_config.unomi_profile_id}",
-        "UNOMI_KEY": "${user_config.unomi_key}",
-        "UNOMI_EMAIL": "${user_config.unomi_email}",
-        "UNOMI_SOURCE_ID": "${user_config.unomi_source_id}"
-      }
+    "command": "npx",
+    "args": [
+      "@inoyu/mcp-unomi-server"
+    ],
+    "env": {
+      "UNOMI_BASE_URL": "${user_config.unomi_base_url}",
+      "UNOMI_USERNAME": "${user_config.unomi_username}",
+      "UNOMI_PASSWORD": "${user_config.unomi_password}",
+      "UNOMI_PROFILE_ID": "${user_config.unomi_profile_id}",
+      "UNOMI_KEY": "${user_config.unomi_key}",
+      "UNOMI_EMAIL": "${user_config.unomi_email}",
+      "UNOMI_SOURCE_ID": "${user_config.unomi_source_id}"
     }
   },
   "tools": [],
@@ -88,19 +86,19 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "inoyu-mcp-unomi-server": {
-          "command": "npx",
-          "args": ["@inoyu/mcp-unomi-server"],
-          "env": {
-            "UNOMI_BASE_URL": "http://your-unomi-server:8181",
-            "UNOMI_USERNAME": "your-username",
-            "UNOMI_PASSWORD": "your-password",
-            "UNOMI_PROFILE_ID": "your-profile-id",
-            "UNOMI_KEY": "your-unomi-key",
-            "UNOMI_EMAIL": "your-email@example.com",
-            "UNOMI_SOURCE_ID": "claude-desktop"
-          }
+      "inoyu-mcp-unomi-server": {
+        "command": "npx",
+        "args": [
+          "@inoyu/mcp-unomi-server"
+        ],
+        "env": {
+          "UNOMI_BASE_URL": "http://your-unomi-server:8181",
+          "UNOMI_USERNAME": "your-username",
+          "UNOMI_PASSWORD": "your-password",
+          "UNOMI_PROFILE_ID": "your-profile-id",
+          "UNOMI_KEY": "your-unomi-key",
+          "UNOMI_EMAIL": "your-email@example.com",
+          "UNOMI_SOURCE_ID": "claude-desktop"
         }
       }
     },
