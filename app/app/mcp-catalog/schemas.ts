@@ -1,4 +1,4 @@
-import { DxtManifestSchema, DxtUserConfigurationOptionSchema, McpServerConfigSchema } from '@anthropic-ai/dxt';
+import { DxtManifestSchema, McpServerConfigSchema } from '@anthropic-ai/dxt';
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { z } from 'zod';
 
@@ -166,16 +166,6 @@ const ArchestraMcpServerManifestBase = DxtManifestSchema.omit({ repository: true
    * `type` and `entry_point` fields which are not needed for our purposes
    */
   server: McpServerConfigSchema,
-  /**
-   * TODO: `server_overriden` should not exist.. it should be "merged" into `server`
-   */
-  server_overridden: McpServerConfigSchema.optional(),
-  /**
-   * TODO: `server_docker` should not exist.. it should be "merged" into `server`
-   */
-  server_docker: z.any().optional(),
-
-  user_config_overridden: z.record(z.string(), DxtUserConfigurationOptionSchema).optional(),
 });
 
 export const ArchestraMcpServerManifestSchema = ArchestraMcpServerManifestBase.refine(

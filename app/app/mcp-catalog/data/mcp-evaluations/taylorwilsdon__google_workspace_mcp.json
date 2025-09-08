@@ -8,24 +8,8 @@
     "name": "taylorwilsdon"
   },
   "server": {
-    "command": "python",
-    "args": [
-      "${__dirname}/server/main.py"
-    ],
-    "env": {
-      "GOOGLE_OAUTH_CLIENT_ID": "${user_config.google_oauth_client_id}",
-      "GOOGLE_OAUTH_CLIENT_SECRET": "${user_config.google_oauth_client_secret}",
-      "USER_GOOGLE_EMAIL": "${user_config.user_google_email}",
-      "GOOGLE_PSE_API_KEY": "${user_config.google_pse_api_key}",
-      "GOOGLE_PSE_ENGINE_ID": "${user_config.google_pse_engine_id}",
-      "OAUTHLIB_INSECURE_TRANSPORT": "${user_config.oauthlib_insecure_transport}"
-    }
-  },
-  "server_overridden": {
     "command": "uvx",
-    "args": [
-      "workspace-mcp"
-    ],
+    "args": ["workspace-mcp"],
     "env": {}
   },
   "tools": [],

@@ -17,8 +17,6 @@ let concurrency = 10; // Default concurrency level
 interface AuditResult {
   serverName: string;
   fileName: string;
-  configType: 'server' | 'server_docker' | 'none';
-  dockerPermutationKey?: string;
   installSuccess: boolean;
   logsRetrieved: boolean;
   pingSuccess: boolean;
@@ -102,25 +100,6 @@ async function readEvaluationFiles(): Promise<{ fileName: string; data: Archestr
   }
 
   return evaluations;
-}
-
-// Extract server configuration from evaluation data
-function extractServerConfig(data: ArchestraMcpServerManifest): {
-  config: McpServerConfig | null;
-  type: 'server' | 'server_docker' | 'none';
-  dockerPermutationKey?: string;
-} {
-  // Check for server_docker first (rare case)
-  if (data.server_docker) {
-    return { config: data.server_docker as McpServerConfig, type: 'server_docker' };
-  }
-
-  // Check for standard server config
-  if (data.server) {
-    return { config: data.server, type: 'server' };
-  }
-
-  return { config: null, type: 'none' };
 }
 
 // Sanitize display name to match validation requirements
@@ -238,17 +217,13 @@ async function writeResultsToCsv(results: AuditResult[], outputPath: string): Pr
   const csvStream = createWriteStream(outputPath);
 
   // Write CSV header
-  csvStream.write(
-    'Server Name,File Name,Config Type,Docker Permutation Key,Install Success,Logs Retrieved,Ping Success,Error,Timestamp\n'
-  );
+  csvStream.write('Server Name,File Name,Install Success,Logs Retrieved,Ping Success,Error,Timestamp\n');
 
   // Write each result
   for (const result of results) {
     const row = [
       result.serverName,
       result.fileName,
-      result.configType,
-      result.dockerPermutationKey || '',
       result.installSuccess ? 'true' : 'false',
       result.logsRetrieved ? 'true' : 'false',
       result.pingSuccess ? 'true' : 'false',
@@ -313,7 +288,6 @@ async function auditSingleServer(
   const result: AuditResult = {
     serverName,
     fileName,
-    configType: 'none',
     installSuccess: false,
     logsRetrieved: false,
     pingSuccess: false,
@@ -321,20 +295,9 @@ async function auditSingleServer(
   };
 
   try {
-    // Extract server configuration
-    const { config, type, dockerPermutationKey } = extractServerConfig(data);
-    result.configType = type;
-    result.dockerPermutationKey = dockerPermutationKey;
-
-    if (!config) {
-      result.error = 'No server configuration found';
-      console.log(`  ❌ No server configuration found`);
-      return result;
-    }
-
     // Install the server
-    console.log(`  Installing server (${type})...`);
-    const installResult = await installMcpServer(serverName, displayName, config);
+    console.log(`  Installing server (${data.server})...`);
+    const installResult = await installMcpServer(serverName, displayName, data.server);
 
     if (!installResult.success) {
       result.error = installResult.error;
@@ -443,13 +406,11 @@ async function auditServerConfigs(): Promise<void> {
   const duration = Math.round((Date.now() - startTime) / 1000);
   const successful = results.filter((r) => r.pingSuccess).length;
   const failed = results.filter((r) => !r.pingSuccess).length;
-  const noConfig = results.filter((r) => r.configType === 'none').length;
 
   console.log('\n=== AUDIT SUMMARY ===');
   console.log(`Total servers audited: ${results.length}`);
   console.log(`Successful validations: ${successful} (${((successful / results.length) * 100).toFixed(1)}%)`);
   console.log(`Failed validations: ${failed} (${((failed / results.length) * 100).toFixed(1)}%)`);
-  console.log(`No configuration found: ${noConfig}`);
   console.log(`Total duration: ${duration} seconds`);
   console.log(`Results saved to: ${outputPath}`);
 }

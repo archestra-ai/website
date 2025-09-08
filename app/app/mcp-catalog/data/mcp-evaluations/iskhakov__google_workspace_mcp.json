@@ -8,17 +8,8 @@
     "name": "iskhakov"
   },
   "server": {
-    "command": "unknown",
-    "args": [],
-    "env": {}
-  },
-  "server_overridden": {
     "command": "uvx",
-    "args": [
-      "--from",
-      "git+https://github.com/iskhakov/google_workspace_mcp",
-      "workspace-mcp"
-    ],
+    "args": ["--from", "git+https://github.com/iskhakov/google_workspace_mcp", "workspace-mcp"],
     "env": {}
   },
   "tools": [],
@@ -32,9 +23,7 @@
     "client_config_permutations": {
       "workspace-mcp": {
         "command": "uvx",
-        "args": [
-          "workspace-mcp"
-        ],
+        "args": ["workspace-mcp"],
         "env": {
           "GOOGLE_OAUTH_CLIENT_ID": "<YOUR_CLIENT_ID_HERE>",
           "GOOGLE_OAUTH_CLIENT_SECRET": "<YOUR_CLIENT_SECRET_HERE>",
