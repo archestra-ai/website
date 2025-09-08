@@ -11,8 +11,11 @@
     "type": "node",
     "entry_point": "index.js",
     "mcp_config": {
-      "command": "unknown",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "-y",
+        "pluggedin-mcp"
+      ],
       "env": {}
     }
   },

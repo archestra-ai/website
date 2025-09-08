@@ -73,7 +73,7 @@ async function fetchWithRetry(url: string, options: RequestInit = {}, maxRetries
       await delay(1000 * (i + 1));
     }
   }
-  throw new Error(`Failed after ${maxRetries} retries`);
+  throw new Error(maxRetries > 1 ? `Failed after ${maxRetries} retries` : 'Request failed');
 }
 
 // Read and parse MCP evaluation files
@@ -149,6 +149,8 @@ async function installMcpServer(
   serverConfig: McpServerConfig
 ): Promise<{ success: boolean; error?: string }> {
   try {
+    // Don't retry install requests - if it fails with 500, the server might be partially installed
+    // and retries will fail with "already installed" error
     const response = await fetchWithRetry(INSTALL_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -158,7 +160,7 @@ async function installMcpServer(
         serverConfig,
         userConfigValues: {},
       }),
-    });
+    }, 1); // maxRetries = 1 (no retry)
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
@@ -413,11 +415,6 @@ async function auditServerConfigs(): Promise<void> {
 
     results.push(result);
     console.log('');
-
-    // Add a small delay between servers to avoid overwhelming the system
-    if (i < evaluations.length - 1) {
-      await delay(1000);
-    }
   }
 
   // Write results to CSV
