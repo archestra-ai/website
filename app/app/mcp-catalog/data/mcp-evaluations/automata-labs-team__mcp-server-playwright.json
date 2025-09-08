@@ -44,7 +44,7 @@
     "url": "https://github.com/Automata-Labs-team/MCP-Server-Playwright",
     "name": "automata-labs-team__mcp-server-playwright",
     "path": null,
-    "stars": 244,
+    "stars": 251,
     "contributors": 5,
     "issues": 0,
     "releases": true,
@@ -53,7 +53,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:25:59.906Z",
+  "last_scraped_at": "2025-09-07T22:12:20.552Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

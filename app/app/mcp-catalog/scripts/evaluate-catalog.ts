@@ -60,6 +60,7 @@ interface EvaluateSingleRepoOptions {
   updateProtocol?: boolean;
   updateScore?: boolean;
   updateAll?: boolean;
+  readmeOnly?: boolean;
   force?: boolean;
   model?: string;
   showOutput?: boolean;
@@ -927,6 +928,7 @@ If no run command found, respond with: {"mcpServers": {}}`;
       return {
         ...server,
         archestra_config: {
+          oauth: server.archestra_config?.oauth || { provider: null, required: false },
           ...server.archestra_config,
           client_config_permutations: result,
         },
@@ -1379,6 +1381,7 @@ If no configuration found, respond: {"oauth": { "provider": null, "required": fa
       return {
         ...server,
         archestra_config: {
+          client_config_permutations: server.archestra_config?.client_config_permutations || null,
           ...server.archestra_config,
           oauth: result.oauth,
         },
@@ -1627,6 +1630,7 @@ async function evaluateSingleRepo(
     updateDependencies = false,
     updateProtocol = false,
     updateScore = false,
+    readmeOnly = false,
     model = 'gemini-2.5-pro',
     updateAll = false,
   }: EvaluateSingleRepoOptions = {}
@@ -1661,7 +1665,9 @@ async function evaluateSingleRepo(
       console.log(`  - Force: ${force ? 'YES' : 'NO'}`);
       console.log(`  - Model: ${model || 'gemini-2.5-pro'}`);
 
-      if (updateAll) {
+      if (readmeOnly) {
+        console.log(`  - Mode: README ONLY (no AI evaluation)`);
+      } else if (updateAll) {
         console.log(`  - Mode: UPDATE ALL`);
       } else {
         const updates = [];
@@ -1685,56 +1691,65 @@ async function evaluateSingleRepo(
     }
 
     // 3. Apply updates based on options
-    // Determine if any specific update was requested
-    const hasSpecificUpdates =
-      updateGithub ||
-      updateCategory ||
-      updateArchestraClientConfigPermutations ||
-      updateArchestraOauth ||
-      updateCanonicalServerAndUserConfig ||
-      updateDependencies ||
-      updateProtocol ||
-      updateScore;
 
-    // If force is true and specific updates are requested, ONLY do those updates
-    // Otherwise, fill in missing data
-    const shouldUpdateMissing = !force || !hasSpecificUpdates;
+    // If readmeOnly is true, only update GitHub data (which includes README)
+    if (readmeOnly) {
+      server = await extractGitHubData(server, githubInfo, true);
+    } else {
+      // Determine if any specific update was requested
+      const hasSpecificUpdates =
+        updateGithub ||
+        updateCategory ||
+        updateArchestraClientConfigPermutations ||
+        updateArchestraOauth ||
+        updateCanonicalServerAndUserConfig ||
+        updateDependencies ||
+        updateProtocol ||
+        updateScore;
 
-    if (updateGithub || (shouldUpdateMissing && !server.last_scraped_at)) {
-      server = await extractGitHubData(server, githubInfo, force);
-    }
+      // If force is true and specific updates are requested, ONLY do those updates
+      // Otherwise, fill in missing data
+      const shouldUpdateMissing = !force || !hasSpecificUpdates;
 
-    if (updateCategory || (shouldUpdateMissing && !server.category)) {
-      server = await extractCategory(server, model, force);
-    }
+      if (updateGithub || (shouldUpdateMissing && !server.last_scraped_at)) {
+        server = await extractGitHubData(server, githubInfo, force);
+      }
 
-    if (
-      updateArchestraClientConfigPermutations ||
-      (shouldUpdateMissing &&
-        (!server.archestra_config?.client_config_permutations?.mcpServers ||
-          Object.keys(server.archestra_config?.client_config_permutations?.mcpServers || {}).length === 0))
-    ) {
-      server = await extractArchestraClientConfigPermutationsConfig(server, model, force);
-    }
+      if (updateCategory || (shouldUpdateMissing && !server.category)) {
+        server = await extractCategory(server, model, force);
+      }
 
-    if (updateArchestraOauth || (shouldUpdateMissing && !server.archestra_config?.oauth)) {
-      server = await extractArchestraOauthConfig(server, model, force);
-    }
+      if (
+        updateArchestraClientConfigPermutations ||
+        (shouldUpdateMissing &&
+          (!server.archestra_config?.client_config_permutations?.mcpServers ||
+            Object.keys(server.archestra_config?.client_config_permutations?.mcpServers || {}).length === 0))
+      ) {
+        server = await extractArchestraClientConfigPermutationsConfig(server, model, force);
+      }
 
-    if (updateCanonicalServerAndUserConfig || (shouldUpdateMissing && (!server.server || !server.user_config))) {
-      server = await extractCanonicalServerAndUserConfigConfig(server, model, force);
-    }
+      if (updateArchestraOauth || (shouldUpdateMissing && !server.archestra_config?.oauth)) {
+        server = await extractArchestraOauthConfig(server, model, force);
+      }
 
-    if (updateDependencies || (shouldUpdateMissing && (!server.dependencies || server.dependencies.length === 0))) {
-      server = await extractDependencies(server, model, force);
-    }
+      if (updateCanonicalServerAndUserConfig || (shouldUpdateMissing && (!server.server || !server.user_config))) {
+        server = await extractCanonicalServerAndUserConfigConfig(server, model, force);
+      }
 
-    if (updateProtocol || (shouldUpdateMissing && server.protocol_features?.implementing_tools === undefined)) {
-      server = await extractProtocolFeatures(server, model, force);
-    }
+      if (updateDependencies || (shouldUpdateMissing && (!server.dependencies || server.dependencies.length === 0))) {
+        server = await extractDependencies(server, model, force);
+      }
 
-    if (updateScore || (shouldUpdateMissing && (server.quality_score === null || server.quality_score === undefined))) {
-      server = await extractScore(server, force);
+      if (updateProtocol || (shouldUpdateMissing && server.protocol_features?.implementing_tools === undefined)) {
+        server = await extractProtocolFeatures(server, model, force);
+      }
+
+      if (
+        updateScore ||
+        (shouldUpdateMissing && (server.quality_score === null || server.quality_score === undefined))
+      ) {
+        server = await extractScore(server, force);
+      }
     }
 
     // Display results if showOutput
@@ -1775,7 +1790,7 @@ async function evaluateSingleRepo(
             implementing_stdio,
             implementing_streamable_http,
             implementing_oauth2,
-          },
+          } = {},
           dependencies,
         } = server;
 
@@ -1852,11 +1867,26 @@ async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<
   // Read all GitHub URLs
   let allUrls: string[] = JSON.parse(fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf8'));
 
-  // Filter out non-GitHub URLs (e.g., GitLab)
+  // Filter out non-GitHub URLs (e.g., GitLab, remote servers)
   let githubUrls = allUrls.filter((url) => url.includes('github.com'));
 
+  // Also filter out remote servers (URLs starting with http:// or https:// but not GitHub)
+  const remoteServers = allUrls.filter(
+    (url) => (url.startsWith('http://') || url.startsWith('https://')) && !url.includes('github.com')
+  );
+
   if (githubUrls.length < allUrls.length) {
-    console.log(`⚠️  Skipping ${allUrls.length - githubUrls.length} non-GitHub URLs (GitLab, etc.)`);
+    const nonGitHubCount = allUrls.length - githubUrls.length;
+    const remoteCount = remoteServers.length;
+    const otherCount = nonGitHubCount - remoteCount;
+
+    console.log(`⚠️  Skipping ${nonGitHubCount} non-GitHub URLs:`);
+    if (remoteCount > 0) {
+      console.log(`   - ${remoteCount} remote MCP servers`);
+    }
+    if (otherCount > 0) {
+      console.log(`   - ${otherCount} other repositories (GitLab, etc.)`);
+    }
   }
 
   const existingFiles = fs.readdirSync(MCP_SERVERS_EVALUATIONS_DIR).filter((f) => f.endsWith('.json'));
@@ -2015,6 +2045,7 @@ Usage: npm run evaluate-catalog [options] [github-url]
 
 Update Options:
   --github                                 Update GitHub data (stars, issues, README)
+  --readme-only                            ONLY update README content (no AI evaluation)
   --category                               Update category classification
   --archestra-client-config-permutations   Update Archestra client config permutations
   --archestra-oauth                        Update Archestra oauth related configurations
@@ -2036,6 +2067,7 @@ Control Options:
 Examples:
   npm run evaluate-catalog https://github.com/org/repo
   npm run evaluate-catalog --github --force
+  npm run evaluate-catalog --readme-only                    # Update all READMEs without AI
   npm run evaluate-catalog --category --model llama2
   npm run evaluate-catalog --category --model gemini-1.5-flash
   npm run evaluate-catalog --all --concurrency 20
@@ -2058,6 +2090,7 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
     updateProtocol: args.includes('--protocol'),
     updateScore: args.includes('--score'),
     updateAll: args.includes('--all'),
+    readmeOnly: args.includes('--readme-only'),
     force: args.includes('--force'),
     missingOnly: args.includes('--missing-only'),
     model: args.includes('--model') ? args[args.indexOf('--model') + 1] : 'gemini-2.5-pro',
@@ -2081,6 +2114,22 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
     options.updateScore = true;
   }
 
+  // Apply --readme-only flag
+  if (options.readmeOnly) {
+    // Reset all other update flags
+    options.updateGithub = true; // Need GitHub to fetch README
+    options.updateCategory = false;
+    options.updateArchestraClientConfigPermutations = false;
+    options.updateArchestraOauth = false;
+    options.updateCanonicalServerAndUserConfig = false;
+    options.updateDependencies = false;
+    options.updateProtocol = false;
+    options.updateScore = false;
+    options.updateAll = false;
+    // Force is implied for README-only updates
+    options.force = true;
+  }
+
   const url = args.find((arg) => arg.includes('://') || arg.includes('github.com'));
 
   // Check GitHub token
@@ -2092,8 +2141,14 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
   // Single repo evaluation
   if (url) {
     if (!url.includes('github.com')) {
-      console.log(`⚠️  Skipping non-GitHub URL: ${url}`);
-      console.log('   This script only supports GitHub repositories.');
+      const isRemoteServer = url.startsWith('http://') || url.startsWith('https://');
+      if (isRemoteServer) {
+        console.log(`⚠️  Skipping remote MCP server: ${url}`);
+        console.log('   Remote servers are evaluated separately with fixed scores.');
+      } else {
+        console.log(`⚠️  Skipping non-GitHub URL: ${url}`);
+        console.log('   This script only supports GitHub repositories.');
+      }
       return;
     }
     await evaluateSingleRepo(url, options);
