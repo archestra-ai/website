@@ -12,6 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Global variables for configuration
 let numberOfServersToEvaluate: number | 'all' = 'all';
 let debugMode = false;
+let concurrency = 10; // Default concurrency level
 
 interface AuditResult {
   serverName: string;
@@ -151,16 +152,20 @@ async function installMcpServer(
   try {
     // Don't retry install requests - if it fails with 500, the server might be partially installed
     // and retries will fail with "already installed" error
-    const response = await fetchWithRetry(INSTALL_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        id,
-        displayName: sanitizeDisplayName(displayName),
-        serverConfig,
-        userConfigValues: {},
-      }),
-    }, 1); // maxRetries = 1 (no retry)
+    const response = await fetchWithRetry(
+      INSTALL_ENDPOINT,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id,
+          displayName: sanitizeDisplayName(displayName),
+          serverConfig,
+          userConfigValues: {},
+        }),
+      },
+      1
+    ); // maxRetries = 1 (no retry)
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
@@ -308,14 +313,89 @@ async function waitForBackendReady(): Promise<void> {
   });
 }
 
+// Process a single server audit
+async function auditSingleServer(
+  evaluation: { fileName: string; data: ArchestraMcpServerManifest },
+  index: number,
+  total: number
+): Promise<AuditResult> {
+  const { fileName, data } = evaluation;
+  const serverName = data.name || fileName.replace('.json', '');
+  const displayName = data.display_name || serverName;
+
+  console.log(`[${index + 1}/${total}] Processing ${serverName}...`);
+
+  const result: AuditResult = {
+    serverName,
+    fileName,
+    configType: 'none',
+    installSuccess: false,
+    logsRetrieved: false,
+    pingSuccess: false,
+    timestamp: new Date().toISOString(),
+  };
+
+  try {
+    // Extract server configuration
+    const { config, type, dockerPermutationKey } = extractServerConfig(data);
+    result.configType = type;
+    result.dockerPermutationKey = dockerPermutationKey;
+
+    if (!config) {
+      result.error = 'No server configuration found';
+      console.log(`  ❌ No server configuration found`);
+      return result;
+    }
+
+    // Install the server
+    console.log(`  Installing server (${type})...`);
+    const installResult = await installMcpServer(serverName, displayName, config);
+
+    if (!installResult.success) {
+      result.error = installResult.error;
+      console.log(`  ❌ Installation failed: ${installResult.error}`);
+      return result;
+    }
+
+    result.installSuccess = true;
+    console.log(`  ✓ Installation successful`);
+
+    // Poll logs and check for ping
+    console.log(`  Checking logs...`);
+    const logsResult = await pollLogsAndCheckPing(serverName);
+
+    result.logsRetrieved = !!logsResult.logs;
+    result.pingSuccess = logsResult.success;
+    result.logs = logsResult.logs;
+
+    if (!logsResult.success) {
+      result.error = logsResult.error;
+      console.log(`  ❌ Validation failed: ${logsResult.error}`);
+    } else {
+      console.log(`  ✓ Server validated successfully`);
+    }
+
+    // Clean up - delete the server
+    console.log(`  Cleaning up...`);
+    await deleteMcpServer(serverName);
+  } catch (error) {
+    result.error = error instanceof Error ? error.message : String(error);
+    console.log(`  ❌ Error: ${result.error}`);
+  }
+
+  console.log('');
+  return result;
+}
+
 // Main audit function
 async function auditServerConfigs(): Promise<void> {
   console.log('Starting MCP server configuration audit...');
   if (numberOfServersToEvaluate !== 'all') {
-    console.log(`Limiting evaluation to ${numberOfServersToEvaluate} servers\n`);
+    console.log(`Limiting evaluation to ${numberOfServersToEvaluate} servers`);
   } else {
-    console.log('Evaluating all servers\n');
+    console.log('Evaluating all servers');
   }
+  console.log(`Concurrency: ${concurrency} parallel requests\n`);
 
   // Check if backend is available
   console.log('Checking backend availability...');
@@ -345,76 +425,28 @@ async function auditServerConfigs(): Promise<void> {
   const evaluations = await readEvaluationFiles();
   console.log(`Found ${evaluations.length} evaluation files\n`);
 
-  // Process each evaluation
-  for (let i = 0; i < evaluations.length; i++) {
-    const { fileName, data } = evaluations[i];
-    const serverName = data.name || fileName.replace('.json', '');
-    const displayName = data.display_name || serverName;
+  // Process evaluations in batches for concurrency
+  for (let i = 0; i < evaluations.length; i += concurrency) {
+    const batch = evaluations.slice(i, i + concurrency);
 
-    console.log(`[${i + 1}/${evaluations.length}] Processing ${serverName}...`);
-
-    const result: AuditResult = {
-      serverName,
-      fileName,
-      configType: 'none',
-      installSuccess: false,
-      logsRetrieved: false,
-      pingSuccess: false,
-      timestamp: new Date().toISOString(),
-    };
-
-    try {
-      // Extract server configuration
-      const { config, type, dockerPermutationKey } = extractServerConfig(data);
-      result.configType = type;
-      result.dockerPermutationKey = dockerPermutationKey;
-
-      if (!config) {
-        result.error = 'No server configuration found';
-        results.push(result);
-        console.log(`  ❌ No server configuration found`);
-        continue;
-      }
-
-      // Install the server
-      console.log(`  Installing server (${type})...`);
-      const installResult = await installMcpServer(serverName, displayName, config);
-
-      if (!installResult.success) {
-        result.error = installResult.error;
-        results.push(result);
-        console.log(`  ❌ Installation failed: ${installResult.error}`);
-        continue;
-      }
-
-      result.installSuccess = true;
-      console.log(`  ✓ Installation successful`);
-
-      // Poll logs and check for ping
-      console.log(`  Checking logs...`);
-      const logsResult = await pollLogsAndCheckPing(serverName);
-
-      result.logsRetrieved = !!logsResult.logs;
-      result.pingSuccess = logsResult.success;
-      result.logs = logsResult.logs;
-
-      if (!logsResult.success) {
-        result.error = logsResult.error;
-        console.log(`  ❌ Validation failed: ${logsResult.error}`);
-      } else {
-        console.log(`  ✓ Server validated successfully`);
-      }
-
-      // Clean up - delete the server
-      console.log(`  Cleaning up...`);
-      await deleteMcpServer(serverName);
-    } catch (error) {
-      result.error = error instanceof Error ? error.message : String(error);
-      console.log(`  ❌ Error: ${result.error}`);
+    // Show batch progress
+    if (i > 0) {
+      const pct = Math.round((i / evaluations.length) * 100);
+      console.log(`\n📊 Batch Progress: ${i}/${evaluations.length} (${pct}%)\n`);
     }
 
-    results.push(result);
-    console.log('');
+    // Process batch in parallel
+    const promises = batch.map((evaluation, batchIndex) =>
+      auditSingleServer(evaluation, i + batchIndex, evaluations.length)
+    );
+
+    const batchResults = await Promise.all(promises);
+    results.push(...batchResults);
+
+    // Add a small delay between batches to avoid overwhelming the system
+    if (i + concurrency < evaluations.length) {
+      await delay(1000);
+    }
   }
 
   // Write results to CSV
@@ -453,6 +485,7 @@ Usage: tsx app/mcp-catalog/scripts/audit-server-configs.ts [options]
 
 Options:
   --number-of-servers-to-evaluate <n|all>  Number of servers to evaluate (default: all)
+  --concurrency <n>                        Number of parallel audits (default: 10)
   --debug                                  Enable debug mode to log all HTTP requests/responses
   --help, -h                               Show this help message
 
@@ -462,6 +495,9 @@ Examples:
 
   # Audit only the first 10 servers
   tsx app/app/mcp-catalog/scripts/audit-server-configs.ts --number-of-servers-to-evaluate 10
+
+  # Audit with higher concurrency
+  tsx app/app/mcp-catalog/scripts/audit-server-configs.ts --concurrency 20
 
   # Audit with debug logging
   tsx app/app/mcp-catalog/scripts/audit-server-configs.ts --debug
@@ -483,6 +519,19 @@ Prerequisites:
   if (args.includes('--debug')) {
     debugMode = true;
     console.log('Debug mode enabled');
+  }
+
+  // Parse concurrency
+  const concurrencyIndex = args.indexOf('--concurrency');
+  if (concurrencyIndex !== -1 && args[concurrencyIndex + 1]) {
+    const value = args[concurrencyIndex + 1];
+    const parsed = parseInt(value, 10);
+    if (!isNaN(parsed) && parsed > 0) {
+      concurrency = parsed;
+    } else {
+      console.error('❌ Invalid value for --concurrency. Must be a positive number.');
+      process.exit(1);
+    }
   }
 
   // Parse number of servers
