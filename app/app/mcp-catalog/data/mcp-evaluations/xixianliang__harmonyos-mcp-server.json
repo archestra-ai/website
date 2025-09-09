@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "server.py"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "server.py"],
     "env": {}
   },
   "tools": [],
@@ -28,12 +23,7 @@
     "client_config_permutations": {
       "harmonyos-mcp-server-stdio": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "harmonyos-mcp-server",
-          "run",
-          "server.py"
-        ],
+        "args": ["--directory", "harmonyos-mcp-server", "run", "server.py"],
         "env": {}
       }
     },

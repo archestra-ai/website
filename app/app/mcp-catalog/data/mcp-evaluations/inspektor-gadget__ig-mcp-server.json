@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "ig-mcp-server",
-    "args": [
-      "${user_config.gadget_config_arg}"
-    ],
+    "args": ["${user_config.gadget_config_arg}"],
     "env": {
       "KUBECONFIG": "${user_config.kubeconfig_path}",
       "READ_ONLY": "${user_config.read_only}"
@@ -76,16 +74,12 @@
       },
       "ig-mcp-server-binary-artifacthub-discovery": {
         "command": "ig-mcp-server",
-        "args": [
-          "-gadget-discoverer=artifacthub"
-        ],
+        "args": ["-gadget-discoverer=artifacthub"],
         "env": {}
       },
       "ig-mcp-server-binary-specific-gadgets": {
         "command": "ig-mcp-server",
-        "args": [
-          "-gadget-images=trace_dns:latest,trace_tcp:latest"
-        ],
+        "args": ["-gadget-images=trace_dns:latest,trace_tcp:latest"],
         "env": {}
       }
     },

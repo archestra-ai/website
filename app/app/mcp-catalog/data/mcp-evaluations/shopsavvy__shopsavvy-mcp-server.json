@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "@shopsavvy/mcp-server"
-    ],
+    "args": ["@shopsavvy/mcp-server"],
     "env": {
       "SHOPSAVVY_API_KEY": "${user_config.shopsavvy_api_key}"
     }
@@ -35,29 +33,21 @@
     "client_config_permutations": {
       "shopsavvy-mcp-server-configured": {
         "command": "npx",
-        "args": [
-          "@shopsavvy/mcp-server"
-        ],
+        "args": ["@shopsavvy/mcp-server"],
         "env": {
           "SHOPSAVVY_API_KEY": "your_api_key_here"
         }
       },
       "shopsavvy-mcp-server-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev"
-        ],
+        "args": ["run", "dev"],
         "env": {
           "SHOPSAVVY_API_KEY": "your_key_here"
         }
       },
       "shopsavvy-mcp-server-inspect": {
         "command": "npm",
-        "args": [
-          "run",
-          "inspect"
-        ],
+        "args": ["run", "inspect"],
         "env": {
           "SHOPSAVVY_API_KEY": "your_key_here"
         }

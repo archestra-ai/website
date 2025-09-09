@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}/src/mcp_server_milvus",
-      "run",
-      "server.py"
-    ],
+    "args": ["--directory", "${__dirname}/src/mcp_server_milvus", "run", "server.py"],
     "env": {
       "MILVUS_URI": "${user_config.milvus_uri}"
     }
@@ -54,20 +49,12 @@
     "client_config_permutations": {
       "mcp-server-milvus-stdio": {
         "command": "uv",
-        "args": [
-          "run",
-          "src/mcp_server_milvus/server.py",
-          "--milvus-uri",
-          "http://localhost:19530"
-        ],
+        "args": ["run", "src/mcp_server_milvus/server.py", "--milvus-uri", "http://localhost:19530"],
         "env": {}
       },
       "mcp-server-milvus-stdio-env": {
         "command": "uv",
-        "args": [
-          "run",
-          "src/mcp_server_milvus/server.py"
-        ],
+        "args": ["run", "src/mcp_server_milvus/server.py"],
         "env": {}
       },
       "mcp-server-milvus-sse": {

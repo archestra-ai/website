@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/content_core/mcp_server.py"
-    ],
+    "args": ["${__dirname}/content_core/mcp_server.py"],
     "env": {}
   },
   "tools": [],
@@ -25,27 +23,15 @@
     "client_config_permutations": {
       "content-core-ccore": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "content-core",
-          "ccore"
-        ]
+        "args": ["--from", "content-core", "ccore"]
       },
       "content-core-cclean": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "content-core",
-          "cclean"
-        ]
+        "args": ["--from", "content-core", "cclean"]
       },
       "content-core-csum": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "content-core",
-          "csum"
-        ]
+        "args": ["--from", "content-core", "csum"]
       }
     },
     "oauth": {

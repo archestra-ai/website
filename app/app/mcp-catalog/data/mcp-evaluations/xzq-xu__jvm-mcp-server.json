@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "jvm-mcp-server"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "jvm-mcp-server"],
     "env": {
       "ARTHAS_SSH_HOST": "${user_config.arthas_ssh_host}",
       "ARTHAS_SSH_PORT": "${user_config.arthas_ssh_port}",
@@ -65,42 +60,22 @@
       },
       "jvm-mcp-server-no-env": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/jvm-mcp-server",
-          "run",
-          "jvm-mcp-server"
-        ],
+        "args": ["--directory", "/path/to/jvm-mcp-server", "run", "jvm-mcp-server"],
         "env": {}
       },
       "jvm-mcp-server-cli-basic": {
         "command": "uv",
-        "args": [
-          "run",
-          "jvm-mcp-server"
-        ],
+        "args": ["run", "jvm-mcp-server"],
         "env": {}
       },
       "jvm-mcp-server-cli-with-env-file": {
         "command": "uv",
-        "args": [
-          "run",
-          "--env-file",
-          ".env",
-          "jvm-mcp-server"
-        ],
+        "args": ["run", "--env-file", ".env", "jvm-mcp-server"],
         "env": {}
       },
       "jvm-mcp-server-cli-generic-directory-env-file": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/project",
-          "run",
-          "--env-file",
-          ".env",
-          "jvm-mcp-server"
-        ],
+        "args": ["--directory", "/path/to/project", "run", "--env-file", ".env", "jvm-mcp-server"],
         "env": {}
       }
     },

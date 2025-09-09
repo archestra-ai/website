@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "prediction-markets-mcp-stdio": {
         "command": "node",
-        "args": [
-          "build/index.js"
-        ],
+        "args": ["build/index.js"],
         "env": {}
       }
     },

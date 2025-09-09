@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/server.py"
-    ],
+    "args": ["${__dirname}/server.py"],
     "env": {
       "DEEPSEEK_API_KEY": "${user_config.deepseek_api_key}"
     }
@@ -35,9 +33,7 @@
     "client_config_permutations": {
       "term-mcp-deepseek": {
         "command": "python",
-        "args": [
-          "server.py"
-        ],
+        "args": ["server.py"],
         "env": {}
       }
     },

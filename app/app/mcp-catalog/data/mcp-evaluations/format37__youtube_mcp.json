@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/mcp/main.py"
-    ],
+    "args": ["${__dirname}/mcp/main.py"],
     "env": {
       "PORT": "${user_config.port}",
       "MCP_KEY": "${user_config.mcp_key}",

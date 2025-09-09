@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "node-code-sandbox-mcp"
-    ],
+    "args": ["-y", "node-code-sandbox-mcp"],
     "env": {
       "FILES_DIR": "${user_config.files_dir}",
       "SANDBOX_MEMORY_LIMIT": "${user_config.sandbox_memory_limit}",
@@ -76,10 +73,7 @@
       },
       "node-code-sandbox-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "node-code-sandbox-mcp"
-        ],
+        "args": ["-y", "node-code-sandbox-mcp"],
         "env": {
           "FILES_DIR": "/Users/alfonsograziano/Desktop/node-sandbox",
           "SANDBOX_MEMORY_LIMIT": "512m",

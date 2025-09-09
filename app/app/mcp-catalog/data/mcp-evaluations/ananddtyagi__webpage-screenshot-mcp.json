@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/dist/index.js"
-    ],
+    "args": ["${__dirname}/dist/index.js"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "webpage-screenshot": {
         "command": "node",
-        "args": [
-          "~/path/to/webpage-screenshot-mcp/dist/index.js"
-        ],
+        "args": ["~/path/to/webpage-screenshot-mcp/dist/index.js"],
         "env": {}
       }
     },

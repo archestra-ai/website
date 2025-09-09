@@ -45,28 +45,17 @@
     "client_config_permutations": {
       "interactive-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "interactive-mcp"
-        ],
+        "args": ["-y", "interactive-mcp"],
         "env": {}
       },
       "interactive-mcp-versioned": {
         "command": "npx",
-        "args": [
-          "-y",
-          "interactive-mcp@1.9.0"
-        ],
+        "args": ["-y", "interactive-mcp@1.9.0"],
         "env": {}
       },
       "interactive-mcp-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "interactive-mcp",
-          "-t",
-          "30"
-        ],
+        "args": ["-y", "interactive-mcp", "-t", "30"],
         "env": {}
       },
       "interactive-mcp-with-config": {
@@ -83,9 +72,7 @@
       },
       "interactive-mcp-dev": {
         "command": "pnpm",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {}
       }
     },

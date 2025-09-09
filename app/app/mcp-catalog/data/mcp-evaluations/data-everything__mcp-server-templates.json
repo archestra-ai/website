@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "mcpt",
-    "args": [
-      "deploy",
-      "${user_config.template_name}"
-    ],
+    "args": ["deploy", "${user_config.template_name}"],
     "env": {
       "GITLAB_TOKEN": "${user_config.gitlab_token}",
       "API_KEY": "${user_config.api_key}",
@@ -90,10 +87,7 @@
     "client_config_permutations": {
       "dataeverything-mcp-file-server-docker": {
         "command": "mcp-template",
-        "args": [
-          "deploy",
-          "file-server"
-        ],
+        "args": ["deploy", "file-server"],
         "env": {}
       },
       "dataeverything-mcp-file-server-docker-configured": {
@@ -115,12 +109,7 @@
       },
       "dataeverything-mcp-file-server-docker-overridden": {
         "command": "mcp-template",
-        "args": [
-          "deploy",
-          "file-server",
-          "--override",
-          "metadata__description=Custom file server"
-        ],
+        "args": ["deploy", "file-server", "--override", "metadata__description=Custom file server"],
         "env": {}
       },
       "dataeverything-mcp-file-server-docker-env": {
@@ -142,12 +131,7 @@
       },
       "dataeverything-mcp-file-server-docker-with-config-file": {
         "command": "mcp-template",
-        "args": [
-          "deploy",
-          "file-server",
-          "--config-file",
-          "./config.json"
-        ],
+        "args": ["deploy", "file-server", "--config-file", "./config.json"],
         "env": {}
       },
       "dataeverything-mcp-file-server-docker-mixed-config": {

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "oura-mcp-server"
-    ],
+    "args": ["oura-mcp-server"],
     "env": {
       "OURA_API_TOKEN": "${user_config.oura_api_token}"
     }
@@ -35,9 +33,7 @@
     "client_config_permutations": {
       "oura-mcp-server": {
         "command": "uvx",
-        "args": [
-          "oura-mcp-server"
-        ],
+        "args": ["oura-mcp-server"],
         "env": {
           "OURA_API_TOKEN": "YOUR_OURA_API_TOKEN"
         }

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/dist/index.js"
-    ],
+    "args": ["${__dirname}/dist/index.js"],
     "env": {
       "PROJECTS_BASE_DIR": "${user_config.projects_base_dir}",
       "ALLOWED_PATHS": "${user_config.allowed_paths}",
@@ -65,24 +63,17 @@
     "client_config_permutations": {
       "xcode-mcp-server": {
         "command": "npm",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {}
       },
       "xcode-mcp-server-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev"
-        ],
+        "args": ["run", "dev"],
         "env": {}
       },
       "xcode-mcp-server-configured": {
         "command": "node",
-        "args": [
-          "/path/to/xcode-mcp-server/dist/index.js"
-        ],
+        "args": ["/path/to/xcode-mcp-server/dist/index.js"],
         "env": {}
       }
     },

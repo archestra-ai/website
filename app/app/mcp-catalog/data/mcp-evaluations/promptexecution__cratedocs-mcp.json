@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "cratedocs",
-    "args": [
-      "stdio"
-    ],
+    "args": ["stdio"],
     "env": {}
   },
   "tools": [],
@@ -25,42 +23,22 @@
     "client_config_permutations": {
       "cratedocs-stdio": {
         "command": "cratedocs",
-        "args": [
-          "stdio"
-        ],
+        "args": ["stdio"],
         "env": {}
       },
       "cratedocs-http": {
         "command": "cargo",
-        "args": [
-          "run",
-          "--bin",
-          "cratedocs",
-          "http"
-        ],
+        "args": ["run", "--bin", "cratedocs", "http"],
         "env": {}
       },
       "cratedocs-http-custom-address": {
         "command": "cargo",
-        "args": [
-          "run",
-          "--bin",
-          "cratedocs",
-          "http",
-          "--address",
-          "0.0.0.0:3000"
-        ],
+        "args": ["run", "--bin", "cratedocs", "http", "--address", "0.0.0.0:3000"],
         "env": {}
       },
       "cratedocs-http-debug": {
         "command": "cargo",
-        "args": [
-          "run",
-          "--bin",
-          "cratedocs",
-          "http",
-          "--debug"
-        ],
+        "args": ["run", "--bin", "cratedocs", "http", "--debug"],
         "env": {}
       },
       "mcp-remote": {

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "./k8m",
-    "args": [
-      "--in-cluster=${user_config.in_cluster}"
-    ],
+    "args": ["--in-cluster=${user_config.in_cluster}"],
     "env": {
       "PORT": "${user_config.port}",
       "KUBECONFIG": "${user_config.kubeconfig}",
@@ -223,10 +221,7 @@
       },
       "k8m-go": {
         "command": "go",
-        "args": [
-          "run",
-          "main.go"
-        ],
+        "args": ["run", "main.go"],
         "env": {}
       }
     },

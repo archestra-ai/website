@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "java",
-    "args": [
-      "-jar",
-      "${__dirname}/ones-wiki-mcp-server-0.0.1-SNAPSHOT.jar"
-    ],
+    "args": ["-jar", "${__dirname}/ones-wiki-mcp-server-0.0.1-SNAPSHOT.jar"],
     "env": {
       "ONES_HOST": "${user_config.ones_host}",
       "ONES_EMAIL": "${user_config.ones_email}",

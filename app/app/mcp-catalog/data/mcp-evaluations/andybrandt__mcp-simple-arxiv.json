@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "mcp_simple_arxiv"
-    ],
+    "args": ["-m", "mcp_simple_arxiv"],
     "env": {}
   },
   "tools": [],
@@ -26,18 +23,12 @@
     "client_config_permutations": {
       "mcp-simple-arxiv-stdio": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_simple_arxiv"
-        ],
+        "args": ["-m", "mcp_simple_arxiv"],
         "env": {}
       },
       "mcp-simple-arxiv-stdio-windows-absolute-path": {
         "command": "C:\\Users\\YOUR_USERNAME\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
-        "args": [
-          "-m",
-          "mcp_simple_arxiv"
-        ],
+        "args": ["-m", "mcp_simple_arxiv"],
         "env": {}
       }
     },

@@ -48,14 +48,7 @@
     "client_config_permutations": {
       "mcp_server": {
         "command": "uvicorn",
-        "args": [
-          "mcp_server:app",
-          "--reload",
-          "--host",
-          "0.0.0.0",
-          "--port",
-          "8000"
-        ],
+        "args": ["mcp_server:app", "--reload", "--host", "0.0.0.0", "--port", "8000"],
         "env": {}
       }
     },

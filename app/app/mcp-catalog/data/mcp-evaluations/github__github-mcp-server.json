@@ -9,14 +9,7 @@
   },
   "server": {
     "command": "docker",
-    "args": [
-      "run",
-      "-i",
-      "--rm",
-      "-e",
-      "GITHUB_PERSONAL_ACCESS_TOKEN",
-      "ghcr.io/github/github-mcp-server"
-    ],
+    "args": ["run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN", "ghcr.io/github/github-mcp-server"],
     "env": {
       "GITHUB_PERSONAL_ACCESS_TOKEN": "${user_config.github_personal_access_token}"
     }
@@ -40,14 +33,7 @@
     "client_config_permutations": {
       "github-github-mcp-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "-e",
-          "GITHUB_PERSONAL_ACCESS_TOKEN",
-          "ghcr.io/github/github-mcp-server"
-        ],
+        "args": ["run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN", "ghcr.io/github/github-mcp-server"],
         "env": {
           "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
         }

@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "mcp_simple_pubmed"
-    ],
+    "args": ["-m", "mcp_simple_pubmed"],
     "env": {
       "PUBMED_EMAIL": "${user_config.pubmed_email}",
       "PUBMED_API_KEY": "${user_config.pubmed_api_key}"
@@ -43,10 +40,7 @@
     "client_config_permutations": {
       "simple-pubmed": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_simple_pubmed"
-        ],
+        "args": ["-m", "mcp_simple_pubmed"],
         "env": {
           "PUBMED_EMAIL": "your-email@example.com",
           "PUBMED_API_KEY": "your-api-key"

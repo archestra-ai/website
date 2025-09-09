@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "jbang",
-    "args": [
-      "jfx@quarkiverse/quarkus-mcp-servers"
-    ],
+    "args": ["jfx@quarkiverse/quarkus-mcp-servers"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "jfx": {
         "command": "jbang",
-        "args": [
-          "jfx@quarkiverse/quarkus-mcp-servers"
-        ],
+        "args": ["jfx@quarkiverse/quarkus-mcp-servers"],
         "env": {}
       }
     },

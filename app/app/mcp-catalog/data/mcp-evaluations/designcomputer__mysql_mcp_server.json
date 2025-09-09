@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "--from",
-      "mysql-mcp-server",
-      "mysql_mcp_server"
-    ],
+    "args": ["--from", "mysql-mcp-server", "mysql_mcp_server"],
     "env": {
       "MYSQL_HOST": "${user_config.mysql_host}",
       "MYSQL_PORT": "${user_config.mysql_port}",
@@ -71,12 +67,7 @@
     "client_config_permutations": {
       "mysql-mcp-server-with-config": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "path/to/mysql_mcp_server",
-          "run",
-          "mysql_mcp_server"
-        ],
+        "args": ["--directory", "path/to/mysql_mcp_server", "run", "mysql_mcp_server"],
         "env": {
           "MYSQL_HOST": "localhost",
           "MYSQL_PORT": "3306",
@@ -87,11 +78,7 @@
       },
       "mysql-mcp-server-stdio-with-config": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "mysql-mcp-server",
-          "mysql_mcp_server"
-        ],
+        "args": ["--from", "mysql-mcp-server", "mysql_mcp_server"],
         "env": {
           "MYSQL_HOST": "localhost",
           "MYSQL_PORT": "3306",

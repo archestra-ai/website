@@ -9,13 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "--from",
-      "mcp-alchemy==2025.7.9.172934",
-      "--refresh-package",
-      "mcp-alchemy",
-      "mcp-alchemy"
-    ],
+    "args": ["--from", "mcp-alchemy==2025.7.9.172934", "--refresh-package", "mcp-alchemy", "mcp-alchemy"],
     "env": {
       "DB_URL": "${user_config.db_url}",
       "CLAUDE_LOCAL_FILES_PATH": "${user_config.claude_local_files_path}",
@@ -62,13 +56,7 @@
     "client_config_permutations": {
       "mcp-alchemy-sqlite": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "mcp-alchemy==2025.7.9.172934",
-          "--refresh-package",
-          "mcp-alchemy",
-          "mcp-alchemy"
-        ],
+        "args": ["--from", "mcp-alchemy==2025.7.9.172934", "--refresh-package", "mcp-alchemy", "mcp-alchemy"],
         "env": {
           "DB_URL": "sqlite:////absolute/path/to/database.db"
         }
@@ -166,14 +154,7 @@
       },
       "mcp-alchemy-dev": {
         "command": "uv",
-        "args": [
-          "run",
-          "--directory",
-          "/path/to/mcp-alchemy",
-          "-m",
-          "mcp_alchemy.server",
-          "main"
-        ],
+        "args": ["run", "--directory", "/path/to/mcp-alchemy", "-m", "mcp_alchemy.server", "main"],
         "env": {
           "DB_URL": "sqlite:////absolute/path/to/database.db"
         }

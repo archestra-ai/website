@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "dotnet",
-    "args": [
-      "run",
-      "--project",
-      "${__dirname}/src",
-      "--no-build"
-    ],
+    "args": ["run", "--project", "${__dirname}/src", "--no-build"],
     "env": {}
   },
   "tools": [],
@@ -28,12 +23,7 @@
     "client_config_permutations": {
       "mcp-afl-server": {
         "command": "dotnet",
-        "args": [
-          "run",
-          "--project",
-          "C:\\path\\to\\mcp-afl-server\\src",
-          "--no-build"
-        ],
+        "args": ["run", "--project", "C:\\path\\to\\mcp-afl-server\\src", "--no-build"],
         "env": {}
       }
     },

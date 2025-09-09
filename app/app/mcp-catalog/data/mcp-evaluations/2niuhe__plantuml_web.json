@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py"
-    ],
+    "args": ["${__dirname}/main.py"],
     "env": {}
   },
   "tools": [],
@@ -25,22 +23,12 @@
     "client_config_permutations": {
       "plantuml-web-mcp-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-d",
-          "-p",
-          "8080:8080",
-          "-p",
-          "8765:8765",
-          "plantuml_web_mcp:latest"
-        ],
+        "args": ["run", "-d", "-p", "8080:8080", "-p", "8765:8765", "plantuml_web_mcp:latest"],
         "env": {}
       },
       "plantuml-web-mcp": {
         "command": "sh",
-        "args": [
-          "start.sh"
-        ],
+        "args": ["start.sh"],
         "env": {}
       }
     },

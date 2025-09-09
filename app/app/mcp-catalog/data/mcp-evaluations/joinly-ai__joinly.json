@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "docker",
-    "args": [
-      "run",
-      "-p",
-      "8000:8000",
-      "ghcr.io/joinly-ai/joinly:latest"
-    ],
+    "args": ["run", "-p", "8000:8000", "ghcr.io/joinly-ai/joinly:latest"],
     "env": {
       "JOINLY_LLM_MODEL": "${user_config.joinly_llm_model}",
       "JOINLY_LLM_PROVIDER": "${user_config.joinly_llm_provider}",
@@ -54,12 +49,7 @@
     "client_config_permutations": {
       "ghcr.io-joinly-ai-joinly-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8000:8000",
-          "ghcr.io/joinly-ai/joinly:latest"
-        ],
+        "args": ["run", "-p", "8000:8000", "ghcr.io/joinly-ai/joinly:latest"],
         "env": {}
       }
     },

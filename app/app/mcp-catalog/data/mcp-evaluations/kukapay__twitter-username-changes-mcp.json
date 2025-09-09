@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py"
-    ],
+    "args": ["${__dirname}/main.py"],
     "env": {}
   },
   "tools": [],
@@ -25,17 +23,12 @@
     "client_config_permutations": {
       "twitter-username-changes-mcp-dev": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "main.py"
-        ],
+        "args": ["dev", "main.py"],
         "env": {}
       },
       "twitter-username-changes": {
         "command": "python",
-        "args": [
-          "/absolute/path/to/twitter-username-changes-mcp/main.py"
-        ],
+        "args": ["/absolute/path/to/twitter-username-changes-mcp/main.py"],
         "env": {}
       }
     },

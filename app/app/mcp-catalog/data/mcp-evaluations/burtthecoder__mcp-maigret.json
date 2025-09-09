@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {
       "MAIGRET_REPORTS_DIR": "${user_config.maigret_reports_dir}"
     }
@@ -42,9 +40,7 @@
       },
       "mcp-maigret-from-source": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/mcp-maigret/build/index.js"
-        ],
+        "args": ["/absolute/path/to/mcp-maigret/build/index.js"],
         "env": {
           "MAIGRET_REPORTS_DIR": "/path/to/reports/directory"
         }

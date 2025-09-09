@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "y",
-      "@joshuarileydev/simulator-mcp-server"
-    ],
+    "args": ["y", "@joshuarileydev/simulator-mcp-server"],
     "env": {}
   },
   "tools": [],
@@ -26,10 +23,7 @@
     "client_config_permutations": {
       "joshuarileydev-simulator-mcp-server": {
         "command": "npx",
-        "args": [
-          "y",
-          "@joshuarileydev/simulator-mcp-server"
-        ],
+        "args": ["y", "@joshuarileydev/simulator-mcp-server"],
         "env": {}
       }
     },

@@ -52,25 +52,17 @@
     "client_config_permutations": {
       "jdbc": {
         "command": "jbang",
-        "args": [
-          "jdbc@quarkiverse/quarkus-mcp-servers",
-          "[jdbc_url]"
-        ],
+        "args": ["jdbc@quarkiverse/quarkus-mcp-servers", "[jdbc_url]"],
         "env": {}
       },
       "jdbcquarkiverse-quarkus-mcp-servers-empty-h2": {
         "command": "jbang",
-        "args": [
-          "jdbc@quarkiverse/quarkus-mcp-servers"
-        ],
+        "args": ["jdbc@quarkiverse/quarkus-mcp-servers"],
         "env": {}
       },
       "jdbcquarkiverse-quarkus-mcp-servers-oracle": {
         "command": "jbang",
-        "args": [
-          "jdbc@quarkiverse/quarkus-mcp-servers",
-          "jdbc:oracle:thin:@localhost:1521:orcl"
-        ],
+        "args": ["jdbc@quarkiverse/quarkus-mcp-servers", "jdbc:oracle:thin:@localhost:1521:orcl"],
         "env": {}
       },
       "jdbcquarkiverse-quarkus-mcp-servers-postgresql": {

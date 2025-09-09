@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "mcp-teams-server"
-    ],
+    "args": ["-m", "mcp-teams-server"],
     "env": {
       "TEAMS_APP_ID": "${user_config.teams_app_id}",
       "TEAMS_APP_PASSWORD": "${user_config.teams_app_password}",
@@ -76,30 +73,17 @@
     "client_config_permutations": {
       "mcp-teams-server": {
         "command": "uv",
-        "args": [
-          "run",
-          "mcp-teams-server"
-        ],
+        "args": ["run", "mcp-teams-server"],
         "env": {}
       },
       "inditextech-mcp-teams-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-it",
-          "inditextech/mcp-teams-server"
-        ],
+        "args": ["run", "-it", "inditextech/mcp-teams-server"],
         "env": {}
       },
       "inditextech-mcp-teams-server-docker-configured": {
         "command": "docker",
-        "args": [
-          "run",
-          "--env-file",
-          ".env",
-          "-it",
-          "inditextech/mcp-teams-server"
-        ],
+        "args": ["run", "--env-file", ".env", "-it", "inditextech/mcp-teams-server"],
         "env": {}
       }
     },

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "fireproof-mcp-configured": {
         "command": "node",
-        "args": [
-          "/path/to/fireproof-mcp/build/index.js"
-        ],
+        "args": ["/path/to/fireproof-mcp/build/index.js"],
         "env": {}
       }
     },

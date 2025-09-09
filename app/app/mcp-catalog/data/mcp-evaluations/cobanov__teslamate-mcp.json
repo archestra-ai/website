@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "run",
-      "python",
-      "${__dirname}/main.py"
-    ],
+    "args": ["run", "python", "${__dirname}/main.py"],
     "env": {
       "DATABASE_URL": "${user_config.database_url}",
       "AUTH_TOKEN": "${user_config.auth_token}"
@@ -45,10 +41,7 @@
     "client_config_permutations": {
       "teslamate-mcp-docker": {
         "command": "docker-compose",
-        "args": [
-          "up",
-          "-d"
-        ],
+        "args": ["up", "-d"],
         "env": {
           "DATABASE_URL": "postgresql://username:password@hostname:port/teslamate",
           "AUTH_TOKEN": "your-secret-bearer-token-here"
@@ -56,22 +49,14 @@
       },
       "teslamate-mcp-local": {
         "command": "uv",
-        "args": [
-          "run",
-          "python",
-          "main.py"
-        ],
+        "args": ["run", "python", "main.py"],
         "env": {
           "DATABASE_URL": "postgresql://username:password@hostname:port/teslamate"
         }
       },
       "teslamate-mcp-stdio": {
         "command": "uv",
-        "args": [
-          "run",
-          "python",
-          "/path/to/teslamate-mcp/main.py"
-        ],
+        "args": ["run", "python", "/path/to/teslamate-mcp/main.py"],
         "env": {
           "DATABASE_URL": "postgresql://username:password@hostname:port/teslamate"
         }

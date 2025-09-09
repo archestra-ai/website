@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/server/index.js"
-    ],
+    "args": ["${__dirname}/server/index.js"],
     "env": {
       "SOLANA_RPC_URL": "${user_config.solana_rpc_url}",
       "PRIVATE_KEY": "${user_config.private_key}"
@@ -43,9 +41,7 @@
     "client_config_permutations": {
       "Jupiter-MCP": {
         "command": "node",
-        "args": [
-          "path/to/jupiter-mcp/server/index.js"
-        ],
+        "args": ["path/to/jupiter-mcp/server/index.js"],
         "env": {
           "SOLANA_RPC_URL": "solana rpc url you can access",
           "PRIVATE_KEY": "your private key"

@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@freema/mcp-design-system-extractor"
-    ],
+    "args": ["-y", "@freema/mcp-design-system-extractor"],
     "env": {
       "STORYBOOK_URL": "${user_config.storybook_url}"
     }

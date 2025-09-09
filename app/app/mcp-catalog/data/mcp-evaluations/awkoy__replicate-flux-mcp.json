@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "replicate-flux-mcp"
-    ],
+    "args": ["-y", "replicate-flux-mcp"],
     "env": {
       "REPLICATE_API_TOKEN": "${user_config.replicate_api_token}"
     }
@@ -36,10 +33,7 @@
     "client_config_permutations": {
       "replicate-flux-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "replicate-flux-mcp"
-        ],
+        "args": ["-y", "replicate-flux-mcp"],
         "env": {
           "REPLICATE_API_TOKEN": "YOUR_TOKEN"
         }

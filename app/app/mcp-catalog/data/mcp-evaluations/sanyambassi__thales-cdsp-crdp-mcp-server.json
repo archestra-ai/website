@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/dist/crdp-mcp-server.js"
-    ],
+    "args": ["${__dirname}/dist/crdp-mcp-server.js"],
     "env": {
       "CRDP_SERVICE_URL": "${user_config.crdp_service_url}",
       "CRDP_PROBES_URL": "${user_config.crdp_probes_url}",
@@ -59,25 +57,19 @@
     "client_config_permutations": {
       "crdp-stdio": {
         "command": "npm",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {}
       },
       "crdp-http": {
         "command": "npm",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {
           "MCP_TRANSPORT": "streamable-http"
         }
       },
       "crdp-ai-assistant-config": {
         "command": "node",
-        "args": [
-          "/path/to/your/crdp-mcp-server/dist/crdp-mcp-server.js"
-        ],
+        "args": ["/path/to/your/crdp-mcp-server/dist/crdp-mcp-server.js"],
         "env": {
           "CRDP_SERVICE_URL": "http://your-crdp-server:8090",
           "CRDP_PROBES_URL": "http://your-crdp-server:8080",

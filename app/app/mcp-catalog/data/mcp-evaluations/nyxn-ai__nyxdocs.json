@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "run",
-      "python",
-      "-m",
-      "nyxdocs.server"
-    ],
+    "args": ["run", "python", "-m", "nyxdocs.server"],
     "env": {
       "COINGECKO_API_KEY": "${user_config.coingecko_api_key}",
       "GITHUB_TOKEN": "${user_config.github_token}",
@@ -80,12 +75,7 @@
     "client_config_permutations": {
       "nyxdocs": {
         "command": "uv",
-        "args": [
-          "run",
-          "python",
-          "-m",
-          "nyxdocs.server"
-        ],
+        "args": ["run", "python", "-m", "nyxdocs.server"],
         "env": {}
       }
     },

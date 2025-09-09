@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "mcp-server-everything-search"
-    ],
+    "args": ["mcp-server-everything-search"],
     "env": {
       "EVERYTHING_SDK_PATH": "${user_config.everything_sdk_path}"
     }
@@ -35,52 +33,36 @@
     "client_config_permutations": {
       "mcp-server-everything-search-pip-module": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_server_everything_search"
-        ],
+        "args": ["-m", "mcp_server_everything_search"],
         "env": {}
       },
       "mcp-server-everything-search-windows-uvx-configured": {
         "command": "uvx",
-        "args": [
-          "mcp-server-everything-search"
-        ],
+        "args": ["mcp-server-everything-search"],
         "env": {
           "EVERYTHING_SDK_PATH": "path/to/Everything-SDK/dll/Everything64.dll"
         }
       },
       "mcp-server-everything-search-windows-pip-configured": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_server_everything_search"
-        ],
+        "args": ["-m", "mcp_server_everything_search"],
         "env": {
           "EVERYTHING_SDK_PATH": "path/to/Everything-SDK/dll/Everything64.dll"
         }
       },
       "mcp-server-everything-search-linux-macos-uvx": {
         "command": "uvx",
-        "args": [
-          "mcp-server-everything-search"
-        ],
+        "args": ["mcp-server-everything-search"],
         "env": {}
       },
       "mcp-server-everything-search-linux-macos-pip": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_server_everything_search"
-        ],
+        "args": ["-m", "mcp_server_everything_search"],
         "env": {}
       },
       "mcp-server-everything-search-uv-run": {
         "command": "uv",
-        "args": [
-          "run",
-          "mcp-server-everything-search"
-        ],
+        "args": ["run", "mcp-server-everything-search"],
         "env": {}
       },
       "mcp-server-everything-search-dev-uv-configured": {

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py"
-    ],
+    "args": ["${__dirname}/main.py"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "crypto-portfolio-mcp": {
         "command": "python",
-        "args": [
-          "path/to/crypto-portfolio-mcp/main.py"
-        ],
+        "args": ["path/to/crypto-portfolio-mcp/main.py"],
         "env": {}
       }
     },

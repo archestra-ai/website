@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "mcp-ai-soc",
-    "args": [
-      "--type",
-      "local"
-    ],
+    "args": ["--type", "local"],
     "env": {
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
       "MCP_DB_URI": "${user_config.mcp_db_uri}",
@@ -63,38 +60,22 @@
       },
       "mcp-ai-soc-local-stdio-sse": {
         "command": "mcp-ai-soc",
-        "args": [
-          "--type",
-          "local",
-          "--stdio",
-          "--sse"
-        ],
+        "args": ["--type", "local", "--stdio", "--sse"],
         "env": {}
       },
       "mcp-ai-soc-local-stdio": {
         "command": "mcp-ai-soc",
-        "args": [
-          "--type",
-          "local",
-          "--stdio"
-        ],
+        "args": ["--type", "local", "--stdio"],
         "env": {}
       },
       "mcp-ai-soc-local-sse": {
         "command": "mcp-ai-soc",
-        "args": [
-          "--type",
-          "local",
-          "--sse"
-        ],
+        "args": ["--type", "local", "--sse"],
         "env": {}
       },
       "mcp-ai-soc-remote": {
         "command": "mcp-ai-soc",
-        "args": [
-          "--type",
-          "remote"
-        ],
+        "args": ["--type", "remote"],
         "env": {}
       }
     },

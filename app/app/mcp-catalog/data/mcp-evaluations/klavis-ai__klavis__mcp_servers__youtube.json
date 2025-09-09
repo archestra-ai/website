@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/server.py"
-    ],
+    "args": ["${__dirname}/server.py"],
     "env": {
       "YOUTUBE_API_KEY": "${user_config.youtube_api_key}",
       "YOUTUBE_MCP_SERVER_PORT": "${user_config.youtube_mcp_server_port}",
@@ -59,14 +57,7 @@
     "client_config_permutations": {
       "youtube-mcp-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "5000:5000",
-          "--env-file",
-          ".env",
-          "youtube-mcp-server"
-        ],
+        "args": ["run", "-p", "5000:5000", "--env-file", ".env", "youtube-mcp-server"],
         "env": {
           "YOUTUBE_API_KEY": "your_youtube_api_key_here",
           "YOUTUBE_MCP_SERVER_PORT": "5000",
@@ -76,9 +67,7 @@
       },
       "youtube-mcp-server-python": {
         "command": "python",
-        "args": [
-          "mcp_servers/youtube/server.py"
-        ],
+        "args": ["mcp_servers/youtube/server.py"],
         "env": {
           "YOUTUBE_API_KEY": "your_youtube_api_key_here",
           "YOUTUBE_MCP_SERVER_PORT": "5000",

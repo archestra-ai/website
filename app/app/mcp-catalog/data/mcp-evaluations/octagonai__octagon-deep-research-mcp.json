@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "octagon-deep-research-mcp@latest"
-    ],
+    "args": ["-y", "octagon-deep-research-mcp@latest"],
     "env": {
       "OCTAGON_API_KEY": "${user_config.octagon_api_key}"
     }
@@ -36,20 +33,14 @@
     "client_config_permutations": {
       "octagon-deep-research-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "octagon-deep-research-mcp"
-        ],
+        "args": ["-y", "octagon-deep-research-mcp"],
         "env": {
           "OCTAGON_API_KEY": "your-octagon-api-key"
         }
       },
       "octagon-deep-research-mcp-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "octagon-deep-research-mcp@latest"
-        ],
+        "args": ["-y", "octagon-deep-research-mcp@latest"],
         "env": {
           "OCTAGON_API_KEY": "YOUR_API_KEY_HERE"
         }

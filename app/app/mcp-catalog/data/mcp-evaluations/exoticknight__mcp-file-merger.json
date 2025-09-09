@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@exoticknight/mcp-file-merger",
-      "${user_config.allowed_directories}"
-    ],
+    "args": ["-y", "@exoticknight/mcp-file-merger", "${user_config.allowed_directories}"],
     "env": {}
   },
   "tools": [],
@@ -35,11 +31,7 @@
     "client_config_permutations": {
       "file-merger": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@exoticknight/mcp-file-merger",
-          "/path/to/allowed/dir"
-        ],
+        "args": ["-y", "@exoticknight/mcp-file-merger", "/path/to/allowed/dir"],
         "env": {}
       }
     },

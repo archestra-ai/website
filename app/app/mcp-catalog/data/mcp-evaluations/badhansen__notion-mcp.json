@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}/src",
-      "run",
-      "server.py"
-    ],
+    "args": ["--directory", "${__dirname}/src", "run", "server.py"],
     "env": {
       "NOTION_TOKEN": "${user_config.notion_token}",
       "PAGE_ID": "${user_config.page_id}",
@@ -62,12 +57,7 @@
     "client_config_permutations": {
       "notion-mcp": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/Users/username/Projects/Python/notion-mcp/src",
-          "run",
-          "server.py"
-        ],
+        "args": ["--directory", "/Users/username/Projects/Python/notion-mcp/src", "run", "server.py"],
         "env": {}
       }
     },

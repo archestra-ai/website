@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "mindsdb"
-    ],
+    "args": ["-m", "mindsdb"],
     "env": {}
   },
   "tools": [],

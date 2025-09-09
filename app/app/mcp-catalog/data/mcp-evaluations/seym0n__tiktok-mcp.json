@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {
       "TIKNEURON_MCP_API_KEY": "${user_config.tikneuron_mcp_api_key}"
     }
@@ -35,9 +33,7 @@
     "client_config_permutations": {
       "tiktok-mcp": {
         "command": "node",
-        "args": [
-          "path\\build\\index.js"
-        ],
+        "args": ["path\\build\\index.js"],
         "env": {
           "TIKNEURON_MCP_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
         }

@@ -9,13 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "--from",
-      "git+https://github.com/hyperb1iss/droidmind",
-      "droidmind",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["--from", "git+https://github.com/hyperb1iss/droidmind", "droidmind", "--transport", "stdio"],
     "env": {}
   },
   "tools": [],
@@ -29,29 +23,17 @@
     "client_config_permutations": {
       "droidmind-uvx-stdio": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "git+https://github.com/hyperb1iss/droidmind",
-          "droidmind",
-          "--transport",
-          "stdio"
-        ],
+        "args": ["--from", "git+https://github.com/hyperb1iss/droidmind", "droidmind", "--transport", "stdio"],
         "env": {}
       },
       "droidmind-stdio": {
         "command": "droidmind",
-        "args": [
-          "--transport",
-          "stdio"
-        ],
+        "args": ["--transport", "stdio"],
         "env": {}
       },
       "droidmind-sse": {
         "command": "droidmind",
-        "args": [
-          "--transport",
-          "sse"
-        ],
+        "args": ["--transport", "sse"],
         "env": {}
       }
     },

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "statusObserver": {
         "command": "node",
-        "args": [
-          "/path/to/mcp-status-observer/build/index.js"
-        ],
+        "args": ["/path/to/mcp-status-observer/build/index.js"],
         "env": {}
       }
     },

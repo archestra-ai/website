@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/src/mattermost_mcp_host/main.py"
-    ],
+    "args": ["${__dirname}/src/mattermost_mcp_host/main.py"],
     "env": {
       "MATTERMOST_URL": "${user_config.mattermost_url}",
       "MATTERMOST_TOKEN": "${user_config.mattermost_token}",

@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "bun",
-    "args": [
-      "run",
-      "${__dirname}/src/index.ts"
-    ],
+    "args": ["run", "${__dirname}/src/index.ts"],
     "env": {
       "GITHUB_TOKEN": "${user_config.github_token}",
       "DEFAULT_AUTO_OPEN": "${user_config.default_auto_open}",
@@ -52,10 +49,7 @@
     "client_config_permutations": {
       "unified-diff-mcp": {
         "command": "bun",
-        "args": [
-          "run",
-          "/path/to/unified-diff-mcp/src/index.ts"
-        ],
+        "args": ["run", "/path/to/unified-diff-mcp/src/index.ts"],
         "env": {
           "GITHUB_TOKEN": "your_github_token_here",
           "DEFAULT_AUTO_OPEN": "true",
@@ -64,10 +58,7 @@
       },
       "unified-diff-mcp-dev": {
         "command": "bun",
-        "args": [
-          "--watch",
-          "/path/to/unified-diff-mcp/src/index.ts"
-        ],
+        "args": ["--watch", "/path/to/unified-diff-mcp/src/index.ts"],
         "env": {}
       }
     },

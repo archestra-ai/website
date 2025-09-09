@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "markitdown_mcp"
-    ],
+    "args": ["-m", "markitdown_mcp"],
     "env": {}
   },
   "tools": [],
@@ -31,57 +28,27 @@
       },
       "markitdown-mcp-http": {
         "command": "markitdown-mcp",
-        "args": [
-          "--http",
-          "--host",
-          "127.0.0.1",
-          "--port",
-          "3001"
-        ],
+        "args": ["--http", "--host", "127.0.0.1", "--port", "3001"],
         "env": {}
       },
       "markitdown-mcp-docker-basic": {
         "command": "docker",
-        "args": [
-          "run",
-          "-it",
-          "--rm",
-          "markitdown-mcp:latest"
-        ],
+        "args": ["run", "-it", "--rm", "markitdown-mcp:latest"],
         "env": {}
       },
       "markitdown-mcp-docker-mounted": {
         "command": "docker",
-        "args": [
-          "run",
-          "-it",
-          "--rm",
-          "-v",
-          "/home/user/data:/workdir",
-          "markitdown-mcp:latest"
-        ],
+        "args": ["run", "-it", "--rm", "-v", "/home/user/data:/workdir", "markitdown-mcp:latest"],
         "env": {}
       },
       "markitdown-mcp-docker-claude-desktop": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "markitdown-mcp:latest"
-        ],
+        "args": ["run", "--rm", "-i", "markitdown-mcp:latest"],
         "env": {}
       },
       "markitdown-mcp-docker-claude-desktop-mounted": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "-v",
-          "/home/user/data:/workdir",
-          "markitdown-mcp:latest"
-        ],
+        "args": ["run", "--rm", "-i", "-v", "/home/user/data:/workdir", "markitdown-mcp:latest"],
         "env": {}
       }
     },

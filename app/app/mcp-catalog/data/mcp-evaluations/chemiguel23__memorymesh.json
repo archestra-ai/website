@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/index.js"
-    ],
+    "args": ["${__dirname}/index.js"],
     "env": {}
   },
   "tools": [],

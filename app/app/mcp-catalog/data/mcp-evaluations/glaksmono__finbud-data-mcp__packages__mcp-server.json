@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "finbud-data-mcp"
-    ],
+    "args": ["-y", "finbud-data-mcp"],
     "env": {
       "FINBUD_DATA_API_KEY": "${user_config.finbud_data_api_key}",
       "FINBUD_DATA_BASE_URL": "${user_config.finbud_data_base_url}"
@@ -44,20 +41,14 @@
     "client_config_permutations": {
       "finbud-data-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "finbud-data-mcp"
-        ],
+        "args": ["-y", "finbud-data-mcp"],
         "env": {
           "FINBUD_DATA_API_KEY": "My API Key"
         }
       },
       "finbud-data-mcp-with-config": {
         "command": "npx",
-        "args": [
-          "-y",
-          "finbud-data-mcp"
-        ],
+        "args": ["-y", "finbud-data-mcp"],
         "env": {
           "FINBUD_DATA_API_KEY": "My API Key",
           "FINBUD_DATA_BASE_URL": "https://data.finbud.ai/api"

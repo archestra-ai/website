@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "mcp-text-editor"
-    ],
+    "args": ["mcp-text-editor"],
     "env": {}
   },
   "tools": [],
@@ -25,29 +23,17 @@
     "client_config_permutations": {
       "mcp-text-editor": {
         "command": "uvx",
-        "args": [
-          "mcp-text-editor"
-        ],
+        "args": ["mcp-text-editor"],
         "env": {}
       },
       "mcp-text-editor-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "--mount",
-          "type=bind,src=/some/path/src,dst=/some/path/dst",
-          "mcp/text-editor"
-        ],
+        "args": ["run", "-i", "--rm", "--mount", "type=bind,src=/some/path/src,dst=/some/path/dst", "mcp/text-editor"],
         "env": {}
       },
       "mcp-text-editor-python": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_text_editor"
-        ],
+        "args": ["-m", "mcp_text_editor"],
         "env": {}
       }
     },

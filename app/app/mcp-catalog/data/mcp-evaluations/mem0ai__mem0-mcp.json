@@ -9,14 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "run",
-      "main.py",
-      "--host",
-      "${user_config.host}",
-      "--port",
-      "${user_config.port}"
-    ],
+    "args": ["run", "main.py", "--host", "${user_config.host}", "--port", "${user_config.port}"],
     "env": {
       "MEM0_API_KEY": "${user_config.mem0_api_key}"
     }
@@ -56,22 +49,12 @@
     "client_config_permutations": {
       "mcp-server-mem0": {
         "command": "uv",
-        "args": [
-          "run",
-          "main.py"
-        ],
+        "args": ["run", "main.py"],
         "env": {}
       },
       "mcp-server-mem0-configured": {
         "command": "uv",
-        "args": [
-          "run",
-          "main.py",
-          "--host",
-          "<your host>",
-          "--port",
-          "<your port>"
-        ],
+        "args": ["run", "main.py", "--host", "<your host>", "--port", "<your port>"],
         "env": {}
       }
     },

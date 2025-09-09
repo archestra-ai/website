@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}/MCP-Geo",
-      "run",
-      "geo.py"
-    ],
+    "args": ["--directory", "${__dirname}/MCP-Geo", "run", "geo.py"],
     "env": {
       "GEOCODER_PROVIDER": "${user_config.geocoder_provider}",
       "NOMINATIM_URL": "${user_config.nominatim_url}",
@@ -78,12 +73,7 @@
     "client_config_permutations": {
       "mcp-geo": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "MCP-Geo",
-          "run",
-          "geo.py"
-        ],
+        "args": ["--directory", "MCP-Geo", "run", "geo.py"],
         "env": {
           "NOMINATIM_URL": "${NOMINATIM_URL}",
           "SCHEME": "http",

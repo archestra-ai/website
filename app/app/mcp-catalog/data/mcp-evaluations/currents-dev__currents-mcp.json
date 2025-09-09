@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@currents/mcp"
-    ],
+    "args": ["-y", "@currents/mcp"],
     "env": {
       "CURRENTS_API_KEY": "${user_config.currents_api_key}"
     }
@@ -36,10 +33,7 @@
     "client_config_permutations": {
       "currents-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@currents/mcp"
-        ],
+        "args": ["-y", "@currents/mcp"],
         "env": {
           "CURRENTS_API_KEY": "your-api-key"
         }

@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@executeautomation/playwright-mcp-server"
-    ],
+    "args": ["-y", "@executeautomation/playwright-mcp-server"],
     "env": {
       "OPENAI_API_KEY": "${user_config.openai_api_key}"
     }
@@ -36,10 +33,7 @@
     "client_config_permutations": {
       "executeautomation-playwright-mcp-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@executeautomation/playwright-mcp-server"
-        ],
+        "args": ["-y", "@executeautomation/playwright-mcp-server"],
         "env": {}
       }
     },

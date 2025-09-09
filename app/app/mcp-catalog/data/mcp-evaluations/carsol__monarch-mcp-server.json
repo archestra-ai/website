@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/run_server.py"
-    ],
+    "args": ["${__dirname}/run_server.py"],
     "env": {
       "MONARCH_EMAIL": "${user_config.monarch_email}",
       "MONARCH_PASSWORD": "${user_config.monarch_password}",
@@ -50,16 +48,12 @@
     "client_config_permutations": {
       "monarch-money": {
         "command": "python",
-        "args": [
-          "run_server.py"
-        ],
+        "args": ["run_server.py"],
         "env": {}
       },
       "monarch-money-configured": {
         "command": "python",
-        "args": [
-          "/path/to/monarch-mcp-server/run_server.py"
-        ],
+        "args": ["/path/to/monarch-mcp-server/run_server.py"],
         "env": {
           "MONARCH_EMAIL": "your-email@example.com",
           "MONARCH_PASSWORD": "your-password",

@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "kubectl_mcp_tool",
-      "serve"
-    ],
+    "args": ["-m", "kubectl_mcp_tool", "serve"],
     "env": {
       "KUBECONFIG": "${user_config.kubeconfig}"
     }
@@ -38,21 +34,12 @@
     "client_config_permutations": {
       "kubectl-mcp-tool": {
         "command": "kubectl-mcp",
-        "args": [
-          "serve"
-        ],
+        "args": ["serve"],
         "env": {}
       },
       "rohitghumare64-kubectl-mcp-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8081:8000",
-          "-v",
-          "$HOME/.kube:/root/.kube",
-          "rohitghumare64/kubectl-mcp-server:latest"
-        ],
+        "args": ["run", "-p", "8081:8000", "-v", "$HOME/.kube:/root/.kube", "rohitghumare64/kubectl-mcp-server:latest"],
         "env": {}
       }
     },

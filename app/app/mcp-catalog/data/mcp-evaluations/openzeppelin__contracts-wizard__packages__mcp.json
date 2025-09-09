@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@openzeppelin/contracts-mcp"
-    ],
+    "args": ["-y", "@openzeppelin/contracts-mcp"],
     "env": {}
   },
   "tools": [],
@@ -26,18 +23,12 @@
     "client_config_permutations": {
       "openzeppelin-contracts-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@openzeppelin/contracts-mcp"
-        ],
+        "args": ["-y", "@openzeppelin/contracts-mcp"],
         "env": {}
       },
       "openzeppelin-contracts-mcp-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@openzeppelin/contracts-mcp"
-        ],
+        "args": ["-y", "@openzeppelin/contracts-mcp"],
         "env": {}
       }
     },

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/index.js"
-    ],
+    "args": ["${__dirname}/index.js"],
     "env": {
       "FEISHU_APP_ID": "${user_config.feishu_app_id}",
       "FEISHU_APP_SECRET": "${user_config.feishu_app_secret}",
@@ -51,18 +49,12 @@
     "client_config_permutations": {
       "open-feishu-mcp-server-deployed": {
         "command": "npm",
-        "args": [
-          "run",
-          "deploy"
-        ],
+        "args": ["run", "deploy"],
         "env": {}
       },
       "open-feishu-mcp-server-local": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev"
-        ],
+        "args": ["run", "dev"],
         "env": {
           "FEISHU_APP_ID": "your_development_feishu_app_id",
           "FEISHU_APP_SECRET": "your_development_feishu_app_secret",

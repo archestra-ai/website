@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "prisma",
-      "mcp"
-    ],
+    "args": ["-y", "prisma", "mcp"],
     "env": {}
   },
   "tools": [],
@@ -27,20 +23,12 @@
     "client_config_permutations": {
       "mcp-remote": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-remote",
-          "https://mcp.prisma.io/mcp"
-        ],
+        "args": ["-y", "mcp-remote", "https://mcp.prisma.io/mcp"],
         "env": {}
       },
       "prisma-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "prisma",
-          "mcp"
-        ],
+        "args": ["-y", "prisma", "mcp"],
         "env": {}
       }
     },

@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@ddukbg/github-enterprise-mcp"
-    ],
+    "args": ["-y", "@ddukbg/github-enterprise-mcp"],
     "env": {
       "GITHUB_TOKEN": "${user_config.github_token}",
       "GITHUB_ENTERPRISE_URL": "${user_config.github_enterprise_url}",
@@ -105,10 +102,7 @@
       },
       "github-enterprise-mcp-docker-compose": {
         "command": "docker-compose",
-        "args": [
-          "up",
-          "-d"
-        ],
+        "args": ["up", "-d"],
         "env": {
           "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3",
           "GITHUB_TOKEN": "your_github_token",
@@ -117,10 +111,7 @@
       },
       "github-enterprise-mcp-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev"
-        ],
+        "args": ["run", "dev"],
         "env": {
           "GITHUB_TOKEN": "your_github_token",
           "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3"
@@ -128,12 +119,7 @@
       },
       "github-enterprise-mcp-node-http": {
         "command": "node",
-        "args": [
-          "dist/index.js",
-          "--transport",
-          "http",
-          "--debug"
-        ],
+        "args": ["dist/index.js", "--transport", "http", "--debug"],
         "env": {
           "GITHUB_TOKEN": "your_github_token",
           "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3"
@@ -141,11 +127,7 @@
       },
       "github-enterprise-mcp-node-http-cursor": {
         "command": "node",
-        "args": [
-          "dist/index.js",
-          "--transport",
-          "http"
-        ],
+        "args": ["dist/index.js", "--transport", "http"],
         "env": {
           "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3",
           "GITHUB_TOKEN": "your_github_token"
@@ -153,10 +135,7 @@
       },
       "github-enterprise-mcp-global": {
         "command": "github-enterprise-mcp",
-        "args": [
-          "--transport=http",
-          "--debug"
-        ],
+        "args": ["--transport=http", "--debug"],
         "env": {
           "GITHUB_TOKEN": "your_github_token",
           "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3"
@@ -189,9 +168,7 @@
       },
       "ddukbg-github-enterprise-mcp-npx-cursor": {
         "command": "npx",
-        "args": [
-          "@ddukbg/github-enterprise-mcp"
-        ],
+        "args": ["@ddukbg/github-enterprise-mcp"],
         "env": {
           "GITHUB_ENTERPRISE_URL": "https://github.your-company.com/api/v3",
           "GITHUB_TOKEN": "your_github_token"

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "mvf1-cli",
-    "args": [
-      "mcp"
-    ],
+    "args": ["mcp"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "mvf1-stdio": {
         "command": "mvf1-cli",
-        "args": [
-          "mcp"
-        ],
+        "args": ["mcp"],
         "env": {}
       }
     },

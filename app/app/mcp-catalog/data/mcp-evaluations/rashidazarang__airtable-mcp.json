@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "@rashidazarang/airtable-mcp"
-    ],
+    "args": ["@rashidazarang/airtable-mcp"],
     "env": {
       "AIRTABLE_TOKEN": "${user_config.airtable_token}",
       "AIRTABLE_BASE_ID": "${user_config.airtable_base_id}"
@@ -43,13 +41,7 @@
     "client_config_permutations": {
       "rashidazarang-airtable-mcp-typescript": {
         "command": "npx",
-        "args": [
-          "@rashidazarang/airtable-mcp",
-          "--token",
-          "YOUR_AIRTABLE_TOKEN",
-          "--base",
-          "YOUR_BASE_ID"
-        ],
+        "args": ["@rashidazarang/airtable-mcp", "--token", "YOUR_AIRTABLE_TOKEN", "--base", "YOUR_BASE_ID"],
         "env": {
           "NODE_ENV": "production",
           "LOG_LEVEL": "INFO"
@@ -57,19 +49,11 @@
       },
       "rashidazarang-airtable-mcp-args": {
         "command": "npx",
-        "args": [
-          "@rashidazarang/airtable-mcp",
-          "--token",
-          "YOUR_AIRTABLE_TOKEN",
-          "--base",
-          "YOUR_BASE_ID"
-        ]
+        "args": ["@rashidazarang/airtable-mcp", "--token", "YOUR_AIRTABLE_TOKEN", "--base", "YOUR_BASE_ID"]
       },
       "rashidazarang-airtable-mcp-env": {
         "command": "npx",
-        "args": [
-          "@rashidazarang/airtable-mcp"
-        ],
+        "args": ["@rashidazarang/airtable-mcp"],
         "env": {
           "AIRTABLE_TOKEN": "YOUR_AIRTABLE_TOKEN",
           "AIRTABLE_BASE_ID": "YOUR_BASE_ID"

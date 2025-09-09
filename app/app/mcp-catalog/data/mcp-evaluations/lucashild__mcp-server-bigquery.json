@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "mcp-server-bigquery"
-    ],
+    "args": ["mcp-server-bigquery"],
     "env": {
       "BIGQUERY_PROJECT": "${user_config.bigquery_project}",
       "BIGQUERY_LOCATION": "${user_config.bigquery_location}",
@@ -73,13 +71,7 @@
       },
       "mcp-server-bigquery-published": {
         "command": "uvx",
-        "args": [
-          "mcp-server-bigquery",
-          "--project",
-          "{{GCP_PROJECT_ID}}",
-          "--location",
-          "{{GCP_LOCATION}}"
-        ],
+        "args": ["mcp-server-bigquery", "--project", "{{GCP_PROJECT_ID}}", "--location", "{{GCP_LOCATION}}"],
         "env": {}
       },
       "mcp-server-bigquery-inspector": {

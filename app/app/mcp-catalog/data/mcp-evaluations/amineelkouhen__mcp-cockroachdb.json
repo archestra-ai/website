@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "src/main.py"
-    ],
+    "args": ["src/main.py"],
     "env": {
       "CRDB_HOST": "${user_config.crdb_host}",
       "CRDB_PORT": "${user_config.crdb_port}",
@@ -137,12 +135,7 @@
       },
       "cockroachdb-mcp-server-dev-configured": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "<your_mcp_server_directory>",
-          "run",
-          "src/main.py"
-        ],
+        "args": ["--directory", "<your_mcp_server_directory>", "run", "src/main.py"],
         "env": {
           "CRDB_HOST": "<your_cockroachdb_hostname>",
           "CRDB_PORT": "<your_cockroachdb_port>",
@@ -157,12 +150,7 @@
       },
       "mcp-cockroachdb-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "26257:26257",
-          "mcp/cockroachdb"
-        ],
+        "args": ["run", "-p", "26257:26257", "mcp/cockroachdb"],
         "env": {}
       }
     },

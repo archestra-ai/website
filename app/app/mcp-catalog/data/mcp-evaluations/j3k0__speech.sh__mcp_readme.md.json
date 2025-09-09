@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "sh",
-    "args": [
-      "${__dirname}/mcp-server.sh"
-    ],
+    "args": ["${__dirname}/mcp-server.sh"],
     "env": {}
   },
   "readme": null,

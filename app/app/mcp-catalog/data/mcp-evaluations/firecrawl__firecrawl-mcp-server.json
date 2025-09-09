@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "firecrawl-mcp"
-    ],
+    "args": ["-y", "firecrawl-mcp"],
     "env": {
       "FIRECRAWL_API_KEY": "${user_config.firecrawl_api_key}",
       "FIRECRAWL_API_URL": "${user_config.firecrawl_api_url}",
@@ -152,20 +149,14 @@
     "client_config_permutations": {
       "firecrawl-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "firecrawl-mcp"
-        ],
+        "args": ["-y", "firecrawl-mcp"],
         "env": {
           "FIRECRAWL_API_KEY": "fc-YOUR_API_KEY"
         }
       },
       "firecrawl-mcp-sse-local": {
         "command": "npx",
-        "args": [
-          "-y",
-          "firecrawl-mcp"
-        ],
+        "args": ["-y", "firecrawl-mcp"],
         "env": {
           "SSE_LOCAL": "true",
           "FIRECRAWL_API_KEY": "fc-YOUR_API_KEY"
@@ -173,10 +164,7 @@
       },
       "firecrawl-mcp-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "firecrawl-mcp"
-        ],
+        "args": ["-y", "firecrawl-mcp"],
         "env": {
           "FIRECRAWL_API_KEY": "your-api-key",
           "FIRECRAWL_API_URL": "https://firecrawl.your-domain.com",

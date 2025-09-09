@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "azure-mcp-server"
-    ],
+    "args": ["-y", "azure-mcp-server"],
     "env": {}
   },
   "tools": [],

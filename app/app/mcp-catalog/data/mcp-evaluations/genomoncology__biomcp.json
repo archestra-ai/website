@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py"
-    ],
+    "args": ["${__dirname}/main.py"],
     "env": {}
   },
   "tools": [],
@@ -25,13 +23,7 @@
     "client_config_permutations": {
       "biomcp-python": {
         "command": "uv",
-        "args": [
-          "run",
-          "--with",
-          "biomcp-python",
-          "biomcp",
-          "run"
-        ],
+        "args": ["run", "--with", "biomcp-python", "biomcp", "run"],
         "env": {}
       }
     },

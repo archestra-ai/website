@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/qrcode_mcp_server.py"
-    ],
+    "args": ["${__dirname}/qrcode_mcp_server.py"],
     "env": {
       "TRANSPORT_MODE": "${user_config.transport_mode}",
       "HOST": "${user_config.host}",
@@ -51,36 +49,19 @@
     "client_config_permutations": {
       "qrcode-mcp-docker-sse-default": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8008:8008",
-          "qrcode-mcp"
-        ],
+        "args": ["run", "-p", "8008:8008", "qrcode-mcp"],
         "env": {}
       },
       "qrcode-mcp-docker-http": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8008:8008",
-          "-e",
-          "TRANSPORT_MODE=http",
-          "qrcode-mcp"
-        ],
+        "args": ["run", "-p", "8008:8008", "-e", "TRANSPORT_MODE=http", "qrcode-mcp"],
         "env": {
           "TRANSPORT_MODE": "http"
         }
       },
       "qrcode-mcp-docker-stdio": {
         "command": "docker",
-        "args": [
-          "run",
-          "-e",
-          "TRANSPORT_MODE=stdio",
-          "qrcode-mcp"
-        ],
+        "args": ["run", "-e", "TRANSPORT_MODE=stdio", "qrcode-mcp"],
         "env": {
           "TRANSPORT_MODE": "stdio"
         }
@@ -107,40 +88,22 @@
       },
       "qrcode-mcp-server-stdio": {
         "command": "python",
-        "args": [
-          "qrcode_mcp_server.py"
-        ],
+        "args": ["qrcode_mcp_server.py"],
         "env": {}
       },
       "qrcode-mcp-server-http": {
         "command": "python",
-        "args": [
-          "qrcode_mcp_server.py",
-          "--http",
-          "--host",
-          "127.0.0.1",
-          "--port",
-          "8008"
-        ],
+        "args": ["qrcode_mcp_server.py", "--http", "--host", "127.0.0.1", "--port", "8008"],
         "env": {}
       },
       "qrcode-mcp-server-sse": {
         "command": "python",
-        "args": [
-          "qrcode_mcp_server.py",
-          "--sse",
-          "--host",
-          "127.0.0.1",
-          "--port",
-          "8008"
-        ],
+        "args": ["qrcode_mcp_server.py", "--sse", "--host", "127.0.0.1", "--port", "8008"],
         "env": {}
       },
       "qrcode-mcp-server-stdio-claude-config": {
         "command": "python",
-        "args": [
-          "/ABSOLUTE/PATH/TO/qrcode_mcp/qrcode_mcp_server.py"
-        ],
+        "args": ["/ABSOLUTE/PATH/TO/qrcode_mcp/qrcode_mcp_server.py"],
         "env": {}
       }
     },

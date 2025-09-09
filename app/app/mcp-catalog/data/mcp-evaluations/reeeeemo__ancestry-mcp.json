@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "mcp-server-ancestry",
-    "args": [
-      "--gedcom-path",
-      "${user_config.gedcom_path}"
-    ],
+    "args": ["--gedcom-path", "${user_config.gedcom_path}"],
     "env": {}
   },
   "tools": [],
@@ -34,10 +31,7 @@
     "client_config_permutations": {
       "mcp-server-ancestry": {
         "command": "mcp-server-ancestry",
-        "args": [
-          "--gedcom-path",
-          "path/to/your/gedcom/files"
-        ],
+        "args": ["--gedcom-path", "path/to/your/gedcom/files"],
         "env": {}
       }
     },

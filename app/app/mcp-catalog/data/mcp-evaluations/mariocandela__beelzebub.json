@@ -33,12 +33,7 @@
       },
       "beelzebub-configured": {
         "command": "./beelzebub",
-        "args": [
-          "--confCore",
-          "./configurations/beelzebub.yaml",
-          "--confServices",
-          "./configurations/services/"
-        ],
+        "args": ["--confCore", "./configurations/beelzebub.yaml", "--confServices", "./configurations/services/"],
         "env": {}
       }
     },

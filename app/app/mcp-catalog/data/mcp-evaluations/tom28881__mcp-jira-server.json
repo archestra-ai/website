@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/dist/index.js"
-    ],
+    "args": ["${__dirname}/dist/index.js"],
     "env": {
       "JIRA_HOST": "${user_config.jira_host}",
       "JIRA_EMAIL": "${user_config.jira_email}",
@@ -87,9 +85,7 @@
     "client_config_permutations": {
       "mcp-jira-server-configured-exported": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/mcp-jira-server/dist/index.js"
-        ],
+        "args": ["/absolute/path/to/mcp-jira-server/dist/index.js"],
         "env": {
           "JIRA_HOST": "https://your-company.atlassian.net",
           "JIRA_EMAIL": "your-email@company.com",
@@ -99,9 +95,7 @@
       },
       "mcp-jira-server-env-file": {
         "command": "node",
-        "args": [
-          "dist/index.js"
-        ],
+        "args": ["dist/index.js"],
         "env": {}
       },
       "mcp-jira-server-run-script": {
@@ -111,9 +105,7 @@
       },
       "mcp-jira-server-configured-settings": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/mcp-jira-server/dist/index.js"
-        ],
+        "args": ["/absolute/path/to/mcp-jira-server/dist/index.js"],
         "env": {
           "JIRA_HOST": "https://your-company.atlassian.net",
           "JIRA_EMAIL": "your-email@company.com",

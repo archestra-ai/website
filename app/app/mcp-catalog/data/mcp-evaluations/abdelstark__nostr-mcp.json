@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/src/index.js"
-    ],
+    "args": ["${__dirname}/src/index.js"],
     "env": {
       "LOG_LEVEL": "${user_config.log_level}",
       "NODE_ENV": "${user_config.node_env}",
@@ -75,17 +73,12 @@
     "client_config_permutations": {
       "nostr-mcp-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev"
-        ],
+        "args": ["run", "dev"],
         "env": {}
       },
       "nostr-mcp-prod": {
         "command": "npm",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {}
       }
     },

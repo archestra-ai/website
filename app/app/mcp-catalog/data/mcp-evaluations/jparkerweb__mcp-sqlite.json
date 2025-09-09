@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-sqlite",
-      "${user_config.database_path}"
-    ],
+    "args": ["-y", "mcp-sqlite", "${user_config.database_path}"],
     "env": {}
   },
   "tools": [],
@@ -34,11 +30,7 @@
     "client_config_permutations": {
       "mcp-sqlite": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-sqlite",
-          "<path-to-your-sqlite-database.db>"
-        ],
+        "args": ["-y", "mcp-sqlite", "<path-to-your-sqlite-database.db>"],
         "env": {}
       }
     },

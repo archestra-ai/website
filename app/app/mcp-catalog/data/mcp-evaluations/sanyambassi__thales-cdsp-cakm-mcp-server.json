@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "run",
-      "python",
-      "-m",
-      "database_tde_server"
-    ],
+    "args": ["run", "python", "-m", "database_tde_server"],
     "env": {
       "DB_TDE_SERVER_NAME": "${user_config.db_tde_server_name}",
       "DB_TDE_LOG_LEVEL": "${user_config.db_tde_log_level}",
@@ -55,12 +50,7 @@
     "client_config_permutations": {
       "database-tde": {
         "command": "uv",
-        "args": [
-          "run",
-          "python",
-          "-m",
-          "database_tde_server"
-        ],
+        "args": ["run", "python", "-m", "database_tde_server"],
         "env": {
           "DB_TDE_SERVER_NAME": "database-tde-mcp",
           "DB_TDE_LOG_LEVEL": "INFO",

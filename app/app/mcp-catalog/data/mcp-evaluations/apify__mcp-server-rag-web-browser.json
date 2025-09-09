@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@apify/mcp-server-rag-web-browser"
-    ],
+    "args": ["-y", "@apify/mcp-server-rag-web-browser"],
     "env": {
       "APIFY_TOKEN": "${user_config.apify_token}"
     }
@@ -36,28 +33,21 @@
     "client_config_permutations": {
       "apify-mcp-server-rag-web-browser-configured": {
         "command": "npx",
-        "args": [
-          "@apify/mcp-server-rag-web-browser"
-        ],
+        "args": ["@apify/mcp-server-rag-web-browser"],
         "env": {
           "APIFY_TOKEN": "your-apify-api-token"
         }
       },
       "apify-mcp-server-rag-web-browser-npx": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@apify/mcp-server-rag-web-browser"
-        ],
+        "args": ["-y", "@apify/mcp-server-rag-web-browser"],
         "env": {
           "APIFY_TOKEN": "your-apify-api-token"
         }
       },
       "apify-mcp-server-rag-web-browser-stdio": {
         "command": "node",
-        "args": [
-          "dist/index.js"
-        ],
+        "args": ["dist/index.js"],
         "env": {
           "APIFY_TOKEN": "your-apify-api-token"
         }

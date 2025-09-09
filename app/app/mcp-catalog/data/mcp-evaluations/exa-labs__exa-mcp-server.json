@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "exa-mcp-server",
-      "--tools=${user_config.tools}"
-    ],
+    "args": ["-y", "exa-mcp-server", "--tools=${user_config.tools}"],
     "env": {
       "EXA_API_KEY": "${user_config.exa_api_key}"
     }
@@ -45,20 +41,14 @@
     "client_config_permutations": {
       "exa-mcp-server-claude-code": {
         "command": "npx",
-        "args": [
-          "-y",
-          "exa-mcp-server"
-        ],
+        "args": ["-y", "exa-mcp-server"],
         "env": {
           "EXA_API_KEY": "YOUR_API_KEY"
         }
       },
       "exa-mcp-server-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "exa-mcp-server"
-        ],
+        "args": ["-y", "exa-mcp-server"],
         "env": {
           "EXA_API_KEY": "your-api-key-here"
         }
@@ -76,25 +66,17 @@
       },
       "exa-mcp-server-direct": {
         "command": "npx",
-        "args": [
-          "exa-mcp-server"
-        ],
+        "args": ["exa-mcp-server"],
         "env": {}
       },
       "exa-mcp-server-direct-web-search": {
         "command": "npx",
-        "args": [
-          "exa-mcp-server",
-          "--tools=web_search_exa"
-        ],
+        "args": ["exa-mcp-server", "--tools=web_search_exa"],
         "env": {}
       },
       "exa-mcp-server-direct-multiple-tools": {
         "command": "npx",
-        "args": [
-          "exa-mcp-server",
-          "--tools=web_search_exa,company_research"
-        ],
+        "args": ["exa-mcp-server", "--tools=web_search_exa,company_research"],
         "env": {}
       }
     },

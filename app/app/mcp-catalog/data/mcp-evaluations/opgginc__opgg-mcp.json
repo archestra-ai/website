@@ -9,14 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@smithery/cli@latest",
-      "run",
-      "@opgginc/opgg-mcp",
-      "--key",
-      "${user_config.smithery_api_key}"
-    ],
+    "args": ["-y", "@smithery/cli@latest", "run", "@opgginc/opgg-mcp", "--key", "${user_config.smithery_api_key}"],
     "env": {}
   },
   "tools": [],
@@ -38,50 +31,22 @@
     "client_config_permutations": {
       "supergateway-streamable-http-mac-linux": {
         "command": "npx",
-        "args": [
-          "-y",
-          "supergateway",
-          "--streamableHttp",
-          "https://mcp-api.op.gg/mcp"
-        ],
+        "args": ["-y", "supergateway", "--streamableHttp", "https://mcp-api.op.gg/mcp"],
         "env": {}
       },
       "supergateway-streamable-http-windows": {
         "command": "cmd",
-        "args": [
-          "/c",
-          "npx",
-          "-y",
-          "supergateway",
-          "--streamableHttp",
-          "https://mcp-api.op.gg/mcp"
-        ],
+        "args": ["/c", "npx", "-y", "supergateway", "--streamableHttp", "https://mcp-api.op.gg/mcp"],
         "env": {}
       },
       "opgginc-opgg-mcp-smithery-mac-linux": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@smithery/cli@latest",
-          "run",
-          "@opgginc/opgg-mcp",
-          "--key",
-          "{SMITHERY_API_KEY}"
-        ],
+        "args": ["-y", "@smithery/cli@latest", "run", "@opgginc/opgg-mcp", "--key", "{SMITHERY_API_KEY}"],
         "env": {}
       },
       "opgginc-opgg-mcp-smithery-windows": {
         "command": "cmd",
-        "args": [
-          "/c",
-          "npx",
-          "-y",
-          "@smithery/cli@latest",
-          "run",
-          "@opgginc/opgg-mcp",
-          "--key",
-          "{SMITHERY_API_KEY}"
-        ],
+        "args": ["/c", "npx", "-y", "@smithery/cli@latest", "run", "@opgginc/opgg-mcp", "--key", "{SMITHERY_API_KEY}"],
         "env": {}
       }
     },

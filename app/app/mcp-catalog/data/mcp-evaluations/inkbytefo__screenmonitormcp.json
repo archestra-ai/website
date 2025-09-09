@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "screenmonitormcp_v2.mcp_main"
-    ],
+    "args": ["-m", "screenmonitormcp_v2.mcp_main"],
     "env": {
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
       "OPENAI_MODEL": "${user_config.openai_model}",
@@ -52,10 +49,7 @@
     "client_config_permutations": {
       "screenmonitormcp-v2": {
         "command": "python",
-        "args": [
-          "-m",
-          "screenmonitormcp_v2.mcp_main"
-        ],
+        "args": ["-m", "screenmonitormcp_v2.mcp_main"],
         "env": {
           "OPENAI_API_KEY": "your-openai-api-key-here",
           "OPENAI_BASE_URL": "https://openrouter.ai/api/v1",

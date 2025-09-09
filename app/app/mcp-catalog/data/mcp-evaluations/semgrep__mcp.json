@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "semgrep-mcp"
-    ],
+    "args": ["semgrep-mcp"],
     "env": {
       "SEMGREP_APP_TOKEN": "${user_config.semgrep_app_token}"
     }
@@ -35,43 +33,24 @@
     "client_config_permutations": {
       "semgrep-mcp-uvx-stdio": {
         "command": "uvx",
-        "args": [
-          "semgrep-mcp",
-          "-t",
-          "stdio"
-        ],
+        "args": ["semgrep-mcp", "-t", "stdio"],
         "env": {}
       },
       "semgrep-mcp-docker-stdio": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "ghcr.io/semgrep/mcp",
-          "-t",
-          "stdio"
-        ],
+        "args": ["run", "-i", "--rm", "ghcr.io/semgrep/mcp", "-t", "stdio"],
         "env": {}
       },
       "semgrep-mcp-uvx-configured": {
         "command": "uvx",
-        "args": [
-          "semgrep-mcp"
-        ],
+        "args": ["semgrep-mcp"],
         "env": {
           "SEMGREP_APP_TOKEN": "<token>"
         }
       },
       "semgrep-mcp-uvx-streamable-http": {
         "command": "uvx",
-        "args": [
-          "semgrep-mcp",
-          "-t",
-          "streamable-http",
-          "--port",
-          "8080"
-        ],
+        "args": ["semgrep-mcp", "-t", "streamable-http", "--port", "8080"],
         "env": {}
       },
       "semgrep-mcp-docker-streamable-http": {
@@ -92,29 +71,12 @@
       },
       "semgrep-mcp-uvx-sse": {
         "command": "uvx",
-        "args": [
-          "semgrep-mcp",
-          "-t",
-          "sse",
-          "--port",
-          "8080"
-        ],
+        "args": ["semgrep-mcp", "-t", "sse", "--port", "8080"],
         "env": {}
       },
       "semgrep-mcp-docker-sse": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "-p",
-          "8080:8080",
-          "ghcr.io/semgrep/mcp",
-          "-t",
-          "sse",
-          "--port",
-          "8080"
-        ],
+        "args": ["run", "-i", "--rm", "-p", "8080:8080", "ghcr.io/semgrep/mcp", "-t", "sse", "--port", "8080"],
         "env": {}
       }
     },

@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-remote",
-      "https://api.gamebrain.co/v1/mcp?api-key=${user_config.api_key}"
-    ],
+    "args": ["-y", "mcp-remote", "https://api.gamebrain.co/v1/mcp?api-key=${user_config.api_key}"],
     "env": {}
   },
   "tools": [],
@@ -35,11 +31,7 @@
     "client_config_permutations": {
       "mcp-remote": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-remote",
-          "https://api.gamebrain.co/v1/mcp?api-key=YOUR_KEY"
-        ],
+        "args": ["-y", "mcp-remote", "https://api.gamebrain.co/v1/mcp?api-key=YOUR_KEY"],
         "env": {}
       }
     },

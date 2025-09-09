@@ -43,10 +43,7 @@
     "client_config_permutations": {
       "osv": {
         "command": "thv",
-        "args": [
-          "run",
-          "osv"
-        ],
+        "args": ["run", "osv"],
         "env": {}
       },
       "osv-mcp-server": {

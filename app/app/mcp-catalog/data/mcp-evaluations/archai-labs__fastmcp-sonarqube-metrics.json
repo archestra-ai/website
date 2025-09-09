@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/server.py"
-    ],
+    "args": ["${__dirname}/server.py"],
     "env": {
       "SONARQUBE_URL": "${user_config.sonarqube_url}",
       "SONARQUBE_TOKEN": "${user_config.sonarqube_token}",
@@ -100,9 +98,7 @@
     "client_config_permutations": {
       "fastmcp-sonarqube-metrics-server": {
         "command": "python",
-        "args": [
-          "server.py"
-        ],
+        "args": ["server.py"],
         "env": {}
       }
     },

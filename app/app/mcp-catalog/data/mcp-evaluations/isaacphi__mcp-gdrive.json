@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@isaacphi/mcp-gdrive"
-    ],
+    "args": ["-y", "@isaacphi/mcp-gdrive"],
     "env": {
       "GDRIVE_CREDS_DIR": "${user_config.gdrive_creds_dir}",
       "CLIENT_ID": "${user_config.client_id}",
@@ -52,10 +49,7 @@
     "client_config_permutations": {
       "isaacphi-mcp-gdrive": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@isaacphi/mcp-gdrive"
-        ],
+        "args": ["-y", "@isaacphi/mcp-gdrive"],
         "env": {
           "CLIENT_ID": "<CLIENT_ID>",
           "CLIENT_SECRET": "<CLIENT_SECRET>",
@@ -64,9 +58,7 @@
       },
       "isaacphi-mcp-gdrive-local": {
         "command": "node",
-        "args": [
-          "./dist/index.js"
-        ],
+        "args": ["./dist/index.js"],
         "env": {
           "CLIENT_ID": "<CLIENT_ID>",
           "CLIENT_SECRET": "<CLIENT_SECRET>",

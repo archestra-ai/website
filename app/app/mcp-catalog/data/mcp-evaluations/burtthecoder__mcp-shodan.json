@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@burtthecoder/mcp-shodan"
-    ],
+    "args": ["-y", "@burtthecoder/mcp-shodan"],
     "env": {
       "SHODAN_API_KEY": "${user_config.shodan_api_key}"
     }
@@ -43,9 +40,7 @@
       },
       "burtthecoder-mcp-shodan-source": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/mcp-shodan/build/index.js"
-        ],
+        "args": ["/absolute/path/to/mcp-shodan/build/index.js"],
         "env": {
           "SHODAN_API_KEY": "your-shodan-api-key"
         }

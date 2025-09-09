@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "meta-ads-mcp"
-    ],
+    "args": ["meta-ads-mcp"],
     "env": {
       "PIPEBOARD_API_TOKEN": "${user_config.pipeboard_api_token}"
     }
@@ -35,9 +33,7 @@
     "client_config_permutations": {
       "meta-ads-mcp": {
         "command": "uvx",
-        "args": [
-          "meta-ads-mcp"
-        ],
+        "args": ["meta-ads-mcp"],
         "env": {}
       }
     },

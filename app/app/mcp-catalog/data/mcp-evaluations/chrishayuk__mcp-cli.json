@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/mcp_cli/__main__.py"
-    ],
+    "args": ["${__dirname}/mcp_cli/__main__.py"],
     "env": {
       "LLM_PROVIDER": "${user_config.llm_provider}",
       "LLM_MODEL": "${user_config.llm_model}",

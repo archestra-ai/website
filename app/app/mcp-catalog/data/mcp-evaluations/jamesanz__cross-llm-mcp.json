@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/dist/index.js"
-    ],
+    "args": ["${__dirname}/dist/index.js"],
     "env": {
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
       "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
@@ -75,9 +73,7 @@
     "client_config_permutations": {
       "cross-llm-mcp": {
         "command": "npm",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {}
       }
     },

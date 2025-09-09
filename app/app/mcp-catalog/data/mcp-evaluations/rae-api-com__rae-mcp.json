@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "./rae-mpc",
-    "args": [
-      "--transport",
-      "${user_config.transport}",
-      "--port",
-      "${user_config.port}"
-    ],
+    "args": ["--transport", "${user_config.transport}", "--port", "${user_config.port}"],
     "env": {}
   },
   "tools": [],
@@ -42,20 +37,12 @@
     "client_config_permutations": {
       "rae-mpc-stdio": {
         "command": "./rae-mpc",
-        "args": [
-          "--transport",
-          "stdio"
-        ],
+        "args": ["--transport", "stdio"],
         "env": {}
       },
       "rae-mpc-sse": {
         "command": "./rae-mpc",
-        "args": [
-          "--transport",
-          "sse",
-          "--port",
-          "8080"
-        ],
+        "args": ["--transport", "sse", "--port", "8080"],
         "env": {}
       }
     },

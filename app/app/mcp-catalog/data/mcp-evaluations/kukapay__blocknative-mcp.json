@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "blocknative_mcp"
-    ],
+    "args": ["-m", "blocknative_mcp"],
     "env": {
       "BLOCKNATIVE_API_KEY": "${user_config.blocknative_api_key}"
     }
@@ -36,20 +33,12 @@
     "client_config_permutations": {
       "blocknative-mcp-dev": {
         "command": "uv",
-        "args": [
-          "run",
-          "mcp",
-          "dev",
-          "blocknative-mcp"
-        ],
+        "args": ["run", "mcp", "dev", "blocknative-mcp"],
         "env": {}
       },
       "blocknative-mcp": {
         "command": "uv",
-        "args": [
-          "run",
-          "blocknative-mcp"
-        ],
+        "args": ["run", "blocknative-mcp"],
         "env": {}
       }
     },

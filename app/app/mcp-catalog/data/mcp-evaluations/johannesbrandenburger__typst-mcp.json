@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/server.py"
-    ],
+    "args": ["${__dirname}/server.py"],
     "env": {}
   },
   "tools": [],
@@ -25,17 +23,12 @@
     "client_config_permutations": {
       "typst-mcp-server": {
         "command": "python",
-        "args": [
-          "server.py"
-        ],
+        "args": ["server.py"],
         "env": {}
       },
       "typst-mcp-server-mcp-install": {
         "command": "mcp",
-        "args": [
-          "install",
-          "server.py"
-        ],
+        "args": ["install", "server.py"],
         "env": {}
       }
     },

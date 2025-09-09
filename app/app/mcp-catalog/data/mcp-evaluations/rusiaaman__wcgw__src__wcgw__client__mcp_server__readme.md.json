@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/server/index.js"
-    ],
+    "args": ["${__dirname}/server/index.js"],
     "env": {
       "CLAUDE_API_KEY": "${user_config.claude_api_key}",
       "AGENT_WORKING_DIRECTORY": "${user_config.agent_working_directory}",

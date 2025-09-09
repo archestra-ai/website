@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "run",
-      "main.py"
-    ],
+    "args": ["run", "main.py"],
     "env": {}
   },
   "tools": [],
@@ -26,12 +23,7 @@
     "client_config_permutations": {
       "books-mcp-server-stdio": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/Enter your local project directory/books-mcp-server",
-          "run",
-          "main.py"
-        ],
+        "args": ["--directory", "/Enter your local project directory/books-mcp-server", "run", "main.py"],
         "env": {}
       }
     },

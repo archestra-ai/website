@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py"
-    ],
+    "args": ["${__dirname}/main.py"],
     "env": {}
   },
   "tools": [],
@@ -33,10 +31,7 @@
     "client_config_permutations": {
       "hyperliquid-info": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "main.py"
-        ],
+        "args": ["dev", "main.py"],
         "env": {}
       }
     },

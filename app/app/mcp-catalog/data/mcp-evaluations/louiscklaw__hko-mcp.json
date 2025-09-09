@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "github:louiscklaw/mcp-hko"
-    ],
+    "args": ["-y", "github:louiscklaw/mcp-hko"],
     "env": {}
   },
   "tools": [],
@@ -26,28 +23,17 @@
     "client_config_permutations": {
       "mcp-hko-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "inspect"
-        ],
+        "args": ["run", "inspect"],
         "env": {}
       },
       "mcp-hko-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "github:louiscklaw/mcp-hko"
-        ],
+        "args": ["-y", "github:louiscklaw/mcp-hko"],
         "env": {}
       },
       "mcp-hko-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "mcp-hko:latest"
-        ],
+        "args": ["run", "-i", "--rm", "mcp-hko:latest"],
         "env": {}
       }
     },

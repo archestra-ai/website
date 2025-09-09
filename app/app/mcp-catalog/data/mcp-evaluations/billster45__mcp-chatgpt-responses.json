@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "chatgpt_server.py"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "chatgpt_server.py"],
     "env": {
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
       "DEFAULT_MODEL": "${user_config.default_model}",
@@ -65,12 +60,7 @@
     "client_config_permutations": {
       "billster45-mcp-chatgpt-responses": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "\\path\\to\\mcp-chatgpt-responses",
-          "run",
-          "chatgpt_server.py"
-        ],
+        "args": ["--directory", "\\path\\to\\mcp-chatgpt-responses", "run", "chatgpt_server.py"],
         "env": {
           "OPENAI_API_KEY": "your-api-key-here",
           "DEFAULT_MODEL": "gpt-4o",

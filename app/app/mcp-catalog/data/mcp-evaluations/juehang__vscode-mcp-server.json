@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/index.js"
-    ],
+    "args": ["${__dirname}/index.js"],
     "env": {}
   },
   "tools": [],
@@ -25,10 +23,7 @@
     "client_config_permutations": {
       "vscode-mcp-server": {
         "command": "npx",
-        "args": [
-          "mcp-remote@next",
-          "http://localhost:3000/mcp"
-        ]
+        "args": ["mcp-remote@next", "http://localhost:3000/mcp"]
       }
     },
     "oauth": {

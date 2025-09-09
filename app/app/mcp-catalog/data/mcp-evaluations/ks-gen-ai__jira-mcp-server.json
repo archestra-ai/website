@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {
       "JIRA_URL": "${user_config.jira_url}",
       "JIRA_API_MAIL": "${user_config.jira_api_mail}",
@@ -54,9 +52,7 @@
     "client_config_permutations": {
       "Jira communication server": {
         "command": "node",
-        "args": [
-          "/PATH_TO_THE_PROJECT/build/index.js"
-        ],
+        "args": ["/PATH_TO_THE_PROJECT/build/index.js"],
         "env": {
           "JIRA_URL": "https://XXXXXXXX.atlassian.net",
           "JIRA_API_MAIL": "Your email",

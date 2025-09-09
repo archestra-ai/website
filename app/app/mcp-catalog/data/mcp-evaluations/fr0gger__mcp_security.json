@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "orkl"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "orkl"],
     "env": {}
   },
   "tools": [],
@@ -28,12 +23,7 @@
     "client_config_permutations": {
       "orkl": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/MyMCP/mcptest/orkl",
-          "run",
-          "orkl"
-        ],
+        "args": ["--directory", "/MyMCP/mcptest/orkl", "run", "orkl"],
         "env": {}
       }
     },

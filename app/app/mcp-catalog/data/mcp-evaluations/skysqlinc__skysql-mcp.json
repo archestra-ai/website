@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/src/mcp-server/server.py"
-    ],
+    "args": ["${__dirname}/src/mcp-server/server.py"],
     "env": {
       "SKYSQL_API_KEY": "${user_config.skysql_api_key}"
     }
@@ -35,13 +33,7 @@
     "client_config_permutations": {
       "wong2-mcp-cli": {
         "command": "npx",
-        "args": [
-          "@wong2/mcp-cli",
-          "uv",
-          "run",
-          "python",
-          "src/mcp-server/server.py"
-        ],
+        "args": ["@wong2/mcp-cli", "uv", "run", "python", "src/mcp-server/server.py"],
         "env": {}
       },
       "skysql-mcp-launch-sh-configured": {

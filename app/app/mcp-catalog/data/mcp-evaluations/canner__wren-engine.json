@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/mcp-server/main.py"
-    ],
+    "args": ["${__dirname}/mcp-server/main.py"],
     "env": {}
   },
   "tools": [],

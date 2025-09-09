@@ -64,11 +64,7 @@
     "client_config_permutations": {
       "bridge-mcp-ghidra-claude": {
         "command": "python",
-        "args": [
-          "/ABSOLUTE_PATH_TO/bridge_mcp_ghidra.py",
-          "--ghidra-server",
-          "http://127.0.0.1:8080/"
-        ],
+        "args": ["/ABSOLUTE_PATH_TO/bridge_mcp_ghidra.py", "--ghidra-server", "http://127.0.0.1:8080/"],
         "env": {}
       },
       "bridge-mcp-ghidra-cline": {
@@ -88,9 +84,7 @@
       },
       "bridge-mcp-ghidra-5ire": {
         "command": "python",
-        "args": [
-          "/ABSOLUTE_PATH_TO/bridge_mcp_ghidra.py"
-        ],
+        "args": ["/ABSOLUTE_PATH_TO/bridge_mcp_ghidra.py"],
         "env": {}
       }
     },

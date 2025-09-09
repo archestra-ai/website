@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {
       "SUBSCRIPTION_ID": "${user_config.subscription_id}",
       "AZURE_SUBSCRIPTION_ID": "${user_config.azure_subscription_id}",
@@ -67,9 +65,7 @@
     "client_config_permutations": {
       "azure-resource-graph-mcp-server": {
         "command": "node",
-        "args": [
-          "C:\\YOUR_WORKSPACE\\azure-resource-graph-mcp-server\\build\\index.js"
-        ],
+        "args": ["C:\\YOUR_WORKSPACE\\azure-resource-graph-mcp-server\\build\\index.js"],
         "env": {
           "SUBSCRIPTION_ID": "xxxxxx-xx-xx-xx-xxxxxx"
         }

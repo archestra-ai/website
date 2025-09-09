@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "tsx",
-      "${__dirname}/server.ts"
-    ],
+    "args": ["tsx", "${__dirname}/server.ts"],
     "env": {
       "MOBSF_API_KEY": "${user_config.mobsf_api_key}",
       "MOBSF_URL": "${user_config.mobsf_url}"
@@ -44,18 +41,12 @@
     "client_config_permutations": {
       "mobsf-mcp-claude": {
         "command": "npx",
-        "args": [
-          "tsx",
-          "/absolute/path/to/server.ts"
-        ],
+        "args": ["tsx", "/absolute/path/to/server.ts"],
         "env": {}
       },
       "mobsf-mcp-5ire": {
         "command": "npx",
-        "args": [
-          "tsx",
-          "C:\\Users\\Downloads\\mobsf-mcp-server\\server.js"
-        ],
+        "args": ["tsx", "C:\\Users\\Downloads\\mobsf-mcp-server\\server.js"],
         "env": {}
       }
     },

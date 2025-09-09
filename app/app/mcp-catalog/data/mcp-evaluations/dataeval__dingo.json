@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/server/mcp_server.py"
-    ],
+    "args": ["${__dirname}/server/mcp_server.py"],
     "env": {
       "DINGO_LLM_API_KEY": "${user_config.llm_api_key}",
       "DINGO_LLM_API_URL": "${user_config.llm_api_url}",

@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npm",
-    "args": [
-      "run",
-      "dev:local"
-    ],
+    "args": ["run", "dev:local"],
     "env": {
       "API_KEY": "${user_config.api_key}"
     }
@@ -36,34 +33,22 @@
     "client_config_permutations": {
       "mcp-remote": {
         "command": "npx",
-        "args": [
-          "mcp-remote",
-          "https://tripgo-mcp-server.skedgo-account.workers.dev/sse"
-        ],
+        "args": ["mcp-remote", "https://tripgo-mcp-server.skedgo-account.workers.dev/sse"],
         "env": {}
       },
       "mcp-remote-local-target": {
         "command": "npx",
-        "args": [
-          "mcp-remote",
-          "http://localhost:8787/sse"
-        ],
+        "args": ["mcp-remote", "http://localhost:8787/sse"],
         "env": {}
       },
       "tripgo-mcp-server-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "dev:local"
-        ],
+        "args": ["run", "dev:local"],
         "env": {}
       },
       "tripgo-mcp-server-deploy": {
         "command": "npm",
-        "args": [
-          "run",
-          "deploy"
-        ],
+        "args": ["run", "deploy"],
         "env": {}
       }
     },

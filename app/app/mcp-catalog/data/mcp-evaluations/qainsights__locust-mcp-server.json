@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "locust_server.py"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "locust_server.py"],
     "env": {
       "LOCUST_HOST": "${user_config.locust_host}",
       "LOCUST_USERS": "${user_config.locust_users}",
@@ -62,12 +57,7 @@
     "client_config_permutations": {
       "locust": {
         "command": "/Users/naveenkumar/.local/bin/uv",
-        "args": [
-          "--directory",
-          "/Users/naveenkumar/Gits/locust-mcp-server",
-          "run",
-          "locust_server.py"
-        ],
+        "args": ["--directory", "/Users/naveenkumar/Gits/locust-mcp-server", "run", "locust_server.py"],
         "env": {}
       }
     },

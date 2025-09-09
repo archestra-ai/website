@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "main.py"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "main.py"],
     "env": {
       "CRYPTOPANIC_API_PLAN": "${user_config.cryptopanic_api_plan}",
       "CRYPTOPANIC_API_KEY": "${user_config.cryptopanic_api_key}"
@@ -46,12 +41,7 @@
     "client_config_permutations": {
       "cryptopanic-mcp-server": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/your/path/to/cryptopanic-mcp-server",
-          "run",
-          "main.py"
-        ],
+        "args": ["--directory", "/your/path/to/cryptopanic-mcp-server", "run", "main.py"],
         "env": {
           "CRYPTOPANIC_API_PLAN": "your_api_plan",
           "CRYPTOPANIC_API_KEY": "your_api_key"

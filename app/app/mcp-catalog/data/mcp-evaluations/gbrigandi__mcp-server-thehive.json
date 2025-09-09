@@ -57,9 +57,7 @@
     "client_config_permutations": {
       "mcp-server-thehive-cargo": {
         "command": "cargo",
-        "args": [
-          "run"
-        ],
+        "args": ["run"],
         "env": {
           "THEHIVE_URL": "http://localhost:9000/api",
           "THEHIVE_API_TOKEN": "your-api-token-here",

@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "oorlogsbronnen-mcp"
-    ],
+    "args": ["-y", "oorlogsbronnen-mcp"],
     "env": {}
   },
   "tools": [],
@@ -26,17 +23,12 @@
     "client_config_permutations": {
       "oorlogsbronnen-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "oorlogsbronnen-mcp"
-        ],
+        "args": ["-y", "oorlogsbronnen-mcp"],
         "env": {}
       },
       "oorlogsbronnen-mcp-configured": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/oorlogsbronnen-mcp/dist/mcp-server.js"
-        ],
+        "args": ["/absolute/path/to/oorlogsbronnen-mcp/dist/mcp-server.js"],
         "env": {}
       }
     },

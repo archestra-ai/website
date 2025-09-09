@@ -23,11 +23,7 @@
     "client_config_permutations": {
       "llm-context": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "llm-context",
-          "lc-mcp"
-        ],
+        "args": ["--from", "llm-context", "lc-mcp"],
         "env": {}
       }
     },

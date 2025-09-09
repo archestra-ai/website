@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/server/index.js"
-    ],
+    "args": ["${__dirname}/server/index.js"],
     "env": {
       "DEFAULT_SEED": "${user_config.default_seed}",
       "XRPL_NETWORK": "${user_config.xrpl_network}"
@@ -43,9 +41,7 @@
     "client_config_permutations": {
       "RomThpt-mcp-xrpl": {
         "command": "npm",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {}
       }
     },

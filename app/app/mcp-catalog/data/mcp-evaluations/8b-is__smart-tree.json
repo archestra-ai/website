@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "/usr/local/bin/st",
-    "args": [
-      "--mcp"
-    ],
+    "args": ["--mcp"],
     "env": {
       "AI_TOOLS": "${user_config.ai_tools}"
     }
@@ -35,9 +33,7 @@
     "client_config_permutations": {
       "smart-tree": {
         "command": "/usr/local/bin/st",
-        "args": [
-          "--mcp"
-        ],
+        "args": ["--mcp"],
         "env": {
           "AI_TOOLS": "1"
         }

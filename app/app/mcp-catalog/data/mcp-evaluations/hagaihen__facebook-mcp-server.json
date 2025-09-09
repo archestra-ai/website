@@ -9,16 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "run",
-      "--with",
-      "mcp[cli]",
-      "--with",
-      "requests",
-      "mcp",
-      "run",
-      "${__dirname}/server.py"
-    ],
+    "args": ["run", "--with", "mcp[cli]", "--with", "requests", "mcp", "run", "${__dirname}/server.py"],
     "env": {
       "FACEBOOK_ACCESS_TOKEN": "${user_config.facebook_access_token}",
       "FACEBOOK_PAGE_ID": "${user_config.facebook_page_id}"

@@ -23,72 +23,37 @@
     "client_config_permutations": {
       "modelcontextprotocol-server-filesystem": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-filesystem",
-          "~/.mcp/filesystem"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "~/.mcp/filesystem"],
         "env": {}
       },
       "modelcontextprotocol-server-filesystem-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-d",
-          "-p",
-          "8080:8080",
-          "-v",
-          "~/.mcp/filesystem:/data",
-          "mcp/server-filesystem:latest"
-        ],
+        "args": ["run", "-d", "-p", "8080:8080", "-v", "~/.mcp/filesystem:/data", "mcp/server-filesystem:latest"],
         "env": {}
       },
       "modelcontextprotocol-server-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-stdio"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-stdio"],
         "env": {}
       },
       "modelcontextprotocol-server-stdio-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-d",
-          "-p",
-          "8080:8080",
-          "mcp/server-stdio:latest"
-        ],
+        "args": ["run", "-d", "-p", "8080:8080", "mcp/server-stdio:latest"],
         "env": {}
       },
       "modelcontextprotocol-server-fetch": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-fetch"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-fetch"],
         "env": {}
       },
       "modelcontextprotocol-server-fetch-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-d",
-          "-p",
-          "8080:8080",
-          "mcp/server-fetch:latest"
-        ],
+        "args": ["run", "-d", "-p", "8080:8080", "mcp/server-fetch:latest"],
         "env": {}
       },
       "modelcontextprotocol-server-fetch-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-fetch",
-          "--config",
-          "config.json"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-fetch", "--config", "config.json"],
         "env": {}
       },
       "modelcontextprotocol-server-fetch-docker-configured": {

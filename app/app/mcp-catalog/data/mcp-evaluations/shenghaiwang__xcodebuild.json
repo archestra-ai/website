@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "mcpxcodebuild"
-    ],
+    "args": ["mcpxcodebuild"],
     "env": {}
   },
   "tools": [],
@@ -25,17 +23,12 @@
     "client_config_permutations": {
       "mcpxcodebuild-uvx": {
         "command": "uvx",
-        "args": [
-          "mcpxcodebuild"
-        ],
+        "args": ["mcpxcodebuild"],
         "env": {}
       },
       "mcpxcodebuild-pip": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcpxcodebuild"
-        ],
+        "args": ["-m", "mcpxcodebuild"],
         "env": {}
       }
     },

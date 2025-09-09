@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/msgraph_mcp_server/server.py"
-    ],
+    "args": ["${__dirname}/msgraph_mcp_server/server.py"],
     "env": {
       "TENANT_ID": "${user_config.tenant_id}",
       "CLIENT_ID": "${user_config.client_id}",
@@ -51,10 +49,7 @@
     "client_config_permutations": {
       "msgraph-mcp-server": {
         "command": "fastmcp",
-        "args": [
-          "dev",
-          "/path/to/src/msgraph_mcp_server/server.py"
-        ],
+        "args": ["dev", "/path/to/src/msgraph_mcp_server/server.py"],
         "env": {}
       }
     },

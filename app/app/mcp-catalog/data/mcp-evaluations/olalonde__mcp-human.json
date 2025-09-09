@@ -23,18 +23,12 @@
     "client_config_permutations": {
       "mcp-human": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-human@latest"
-        ],
+        "args": ["-y", "mcp-human@latest"],
         "env": {}
       },
       "mcp-human-production": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-human@latest"
-        ],
+        "args": ["-y", "mcp-human@latest"],
         "env": {
           "MTURK_SANDBOX": "false"
         }

@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@jinzcdev/markmap-mcp-server"
-    ],
+    "args": ["-y", "@jinzcdev/markmap-mcp-server"],
     "env": {
       "MARKMAP_DIR": "${user_config.markmap_dir}"
     }
@@ -36,37 +33,24 @@
     "client_config_permutations": {
       "jinzcdev-markmap-mcp-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@jinzcdev/markmap-mcp-server"
-        ],
+        "args": ["-y", "@jinzcdev/markmap-mcp-server"],
         "env": {}
       },
       "jinzcdev-markmap-mcp-server-with-output": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@jinzcdev/markmap-mcp-server",
-          "--output",
-          "/path/to/output/directory"
-        ],
+        "args": ["-y", "@jinzcdev/markmap-mcp-server", "--output", "/path/to/output/directory"],
         "env": {}
       },
       "jinzcdev-markmap-mcp-server-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@jinzcdev/markmap-mcp-server"
-        ],
+        "args": ["-y", "@jinzcdev/markmap-mcp-server"],
         "env": {
           "MARKMAP_DIR": "/path/to/output/directory"
         }
       },
       "jinzcdev-markmap-mcp-server-local": {
         "command": "node",
-        "args": [
-          "build/index.js"
-        ],
+        "args": ["build/index.js"],
         "env": {}
       }
     },

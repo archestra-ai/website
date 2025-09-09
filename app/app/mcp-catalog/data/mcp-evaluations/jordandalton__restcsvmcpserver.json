@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "restcsv-mcp-server"
-    ],
+    "args": ["restcsv-mcp-server"],
     "env": {
       "RESTCSV_API_KEY": "${user_config.restcsv_api_key}"
     }
@@ -35,9 +33,7 @@
     "client_config_permutations": {
       "restcsv-mcp-server": {
         "command": "npx",
-        "args": [
-          "restcsv-mcp-server"
-        ],
+        "args": ["restcsv-mcp-server"],
         "env": {
           "RESTCSV_API_KEY": "<REPLACE>"
         }

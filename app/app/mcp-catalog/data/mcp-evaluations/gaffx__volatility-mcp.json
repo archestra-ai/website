@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/vol_mcp_server.py",
-      "-i",
-      "${user_config.memory_image_path}"
-    ],
+    "args": ["${__dirname}/vol_mcp_server.py", "-i", "${user_config.memory_image_path}"],
     "env": {
       "VOLATILITY_BIN": "${user_config.volatility_bin}"
     }
@@ -42,9 +38,7 @@
     "client_config_permutations": {
       "volatility-fastapi-server": {
         "command": "uvicorn",
-        "args": [
-          "volatility_fastapi_server:app"
-        ],
+        "args": ["volatility_fastapi_server:app"],
         "env": {}
       },
       "vol-mcp-server-configured": {

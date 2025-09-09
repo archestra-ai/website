@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/src/server.py"
-    ],
+    "args": ["${__dirname}/src/server.py"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "aws-pricing-mcp": {
         "command": "python",
-        "args": [
-          "src/server.py"
-        ],
+        "args": ["src/server.py"],
         "env": {}
       }
     },

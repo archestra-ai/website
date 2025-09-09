@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@cjo4m06/mcp-shrimp-task-manager"
-    ],
+    "args": ["-y", "@cjo4m06/mcp-shrimp-task-manager"],
     "env": {
       "ENABLE_GUI": "${user_config.enable_gui}",
       "DATA_DIR": "${user_config.data_dir}",
@@ -58,17 +55,11 @@
     "client_config_permutations": {
       "cjo4m06-mcp-shrimp-task-manager": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@cjo4m06/mcp-shrimp-task-manager"
-        ]
+        "args": ["-y", "@cjo4m06/mcp-shrimp-task-manager"]
       },
       "cjo4m06-mcp-shrimp-task-manager-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@cjo4m06/mcp-shrimp-task-manager"
-        ],
+        "args": ["-y", "@cjo4m06/mcp-shrimp-task-manager"],
         "env": {
           "ENABLE_GUI": "true",
           "WEB_PORT": "<YOUR_PORT_HERE>",

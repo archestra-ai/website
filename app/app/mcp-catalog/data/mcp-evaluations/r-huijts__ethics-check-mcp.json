@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@r-huijts/ethics-vibe-check"
-    ],
+    "args": ["-y", "@r-huijts/ethics-vibe-check"],
     "env": {}
   },
   "tools": [],
@@ -55,10 +52,7 @@
     "client_config_permutations": {
       "ethics-vibe-check": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@r-huijts/ethics-vibe-check"
-        ],
+        "args": ["-y", "@r-huijts/ethics-vibe-check"],
         "env": {}
       }
     },

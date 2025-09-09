@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "bazi-mcp"
-    ],
+    "args": ["bazi-mcp"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "cantian-ai-bazi-mcp": {
         "command": "npx",
-        "args": [
-          "bazi-mcp"
-        ],
+        "args": ["bazi-mcp"],
         "env": {}
       }
     },

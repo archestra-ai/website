@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@suekou/mcp-notion-server"
-    ],
+    "args": ["-y", "@suekou/mcp-notion-server"],
     "env": {
       "NOTION_API_TOKEN": "${user_config.notion_api_token}",
       "NOTION_MARKDOWN_CONVERSION": "${user_config.notion_markdown_conversion}"
@@ -44,20 +41,14 @@
     "client_config_permutations": {
       "suekou-mcp-notion-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@suekou/mcp-notion-server"
-        ],
+        "args": ["-y", "@suekou/mcp-notion-server"],
         "env": {
           "NOTION_API_TOKEN": "your-integration-token"
         }
       },
       "suekou-mcp-notion-server-markdown-conversion": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@suekou/mcp-notion-server"
-        ],
+        "args": ["-y", "@suekou/mcp-notion-server"],
         "env": {
           "NOTION_API_TOKEN": "your-integration-token",
           "NOTION_MARKDOWN_CONVERSION": "true"
@@ -65,18 +56,14 @@
       },
       "suekou-mcp-notion-server-local-build": {
         "command": "node",
-        "args": [
-          "your-built-file-path"
-        ],
+        "args": ["your-built-file-path"],
         "env": {
           "NOTION_API_TOKEN": "your-integration-token"
         }
       },
       "suekou-mcp-notion-server-local-build-markdown-conversion": {
         "command": "node",
-        "args": [
-          "your-built-file-path"
-        ],
+        "args": ["your-built-file-path"],
         "env": {
           "NOTION_API_TOKEN": "your-integration-token",
           "NOTION_MARKDOWN_CONVERSION": "true"

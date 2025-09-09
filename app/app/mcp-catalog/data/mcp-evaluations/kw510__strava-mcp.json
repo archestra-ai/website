@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "wrangler",
-    "args": [
-      "dev"
-    ],
+    "args": ["dev"],
     "env": {
       "STRAVA_CLIENT_ID": "${user_config.strava_client_id}",
       "STRAVA_CLIENT_SECRET": "${user_config.strava_client_secret}"
@@ -43,9 +41,7 @@
     "client_config_permutations": {
       "strava-mcp": {
         "command": "wrangler",
-        "args": [
-          "dev"
-        ],
+        "args": ["dev"],
         "env": {}
       }
     },

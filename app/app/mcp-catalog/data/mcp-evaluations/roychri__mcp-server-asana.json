@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@roychri/mcp-server-asana"
-    ],
+    "args": ["-y", "@roychri/mcp-server-asana"],
     "env": {
       "ASANA_ACCESS_TOKEN": "${user_config.asana_access_token}",
       "READ_ONLY_MODE": "${user_config.read_only_mode}"
@@ -45,20 +42,14 @@
     "client_config_permutations": {
       "roychri-mcp-server-asana": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@roychri/mcp-server-asana"
-        ],
+        "args": ["-y", "@roychri/mcp-server-asana"],
         "env": {
           "ASANA_ACCESS_TOKEN": "<YOUR_ASANA_ACCESS_TOKEN>"
         }
       },
       "roychri-mcp-server-asana-readonly": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@roychri/mcp-server-asana"
-        ],
+        "args": ["-y", "@roychri/mcp-server-asana"],
         "env": {
           "ASANA_ACCESS_TOKEN": "<YOUR_ASANA_ACCESS_TOKEN>",
           "READ_ONLY_MODE": "true"

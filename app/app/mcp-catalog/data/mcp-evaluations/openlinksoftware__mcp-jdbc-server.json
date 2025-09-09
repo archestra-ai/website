@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "java",
-    "args": [
-      "-jar",
-      "${__dirname}/MCPServer-1.0.0-runner.jar"
-    ],
+    "args": ["-jar", "${__dirname}/MCPServer-1.0.0-runner.jar"],
     "env": {
       "jdbc.url": "${user_config.jdbc_url}",
       "jdbc.user": "${user_config.jdbc_user}",
@@ -62,10 +59,7 @@
     "client_config_permutations": {
       "MCPServer-1.0.0-runner-configured": {
         "command": "java",
-        "args": [
-          "-jar",
-          "/path/to/mcp-jdbc-server/MCPServer-1.0.0-runner.jar"
-        ],
+        "args": ["-jar", "/path/to/mcp-jdbc-server/MCPServer-1.0.0-runner.jar"],
         "env": {
           "jdbc.url": "jdbc:virtuoso://localhost:1111",
           "jdbc.user": "username",

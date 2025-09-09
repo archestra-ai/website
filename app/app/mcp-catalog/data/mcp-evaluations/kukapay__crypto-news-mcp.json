@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py"
-    ],
+    "args": ["${__dirname}/main.py"],
     "env": {
       "NEWS_API_KEY": "${user_config.news_api_key}"
     }
@@ -35,9 +33,7 @@
     "client_config_permutations": {
       "Crypto News": {
         "command": "python",
-        "args": [
-          "path/to/crypto-news-mcp/main.py"
-        ],
+        "args": ["path/to/crypto-news-mcp/main.py"],
         "env": {
           "NEWS_API_KEY": "your_newsdata_api_key_here"
         }

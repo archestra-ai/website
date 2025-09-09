@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "${__dirname}/jadx-mcp-server/.venv/bin/python",
-    "args": [
-      "${__dirname}/jadx-mcp-server/jadx_mcp.py"
-    ],
+    "args": ["${__dirname}/jadx-mcp-server/jadx_mcp.py"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "jadx-mcp-server": {
         "command": "python",
-        "args": [
-          "jadx_mcp.py"
-        ],
+        "args": ["jadx_mcp.py"],
         "env": {}
       }
     },

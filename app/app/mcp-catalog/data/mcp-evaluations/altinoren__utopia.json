@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "dotnet",
-    "args": [
-      "run",
-      "--project",
-      "${__dirname}/Utopia.csproj"
-    ],
+    "args": ["run", "--project", "${__dirname}/Utopia.csproj"],
     "env": {}
   },
   "tools": [],
@@ -27,11 +23,7 @@
     "client_config_permutations": {
       "Utopia": {
         "command": "dotnet",
-        "args": [
-          "run",
-          "--project",
-          "<path_to_project_folder>/Utopia.csproj"
-        ],
+        "args": ["run", "--project", "<path_to_project_folder>/Utopia.csproj"],
         "env": {}
       }
     },

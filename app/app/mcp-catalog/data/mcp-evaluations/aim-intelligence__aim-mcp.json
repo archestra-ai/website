@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "aim-guard-mcp"
-    ],
+    "args": ["-y", "aim-guard-mcp"],
     "env": {}
   },
   "tools": [],
@@ -26,16 +23,12 @@
     "client_config_permutations": {
       "aim-guard-mcp": {
         "command": "npx",
-        "args": [
-          "aim-guard-mcp"
-        ],
+        "args": ["aim-guard-mcp"],
         "env": {}
       },
       "aim-guard-mcp-stdio": {
         "command": "npx",
-        "args": [
-          "aim-guard-mcp"
-        ],
+        "args": ["aim-guard-mcp"],
         "env": {}
       }
     },

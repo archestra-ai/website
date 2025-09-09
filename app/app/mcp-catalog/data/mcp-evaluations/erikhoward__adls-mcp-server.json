@@ -83,12 +83,7 @@
       },
       "adls2-mcp-server-configured": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/adls2-mcp-server/repo",
-          "run",
-          "adls2-mcp-server"
-        ],
+        "args": ["--directory", "/path/to/adls2-mcp-server/repo", "run", "adls2-mcp-server"],
         "env": {
           "LOG_LEVEL": "DEBUG",
           "UPLOAD_ROOT": "/path/to/store/uploads",

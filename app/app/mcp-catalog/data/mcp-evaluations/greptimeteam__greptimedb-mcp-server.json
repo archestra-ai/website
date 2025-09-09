@@ -9,13 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "-m",
-      "greptimedb_mcp_server.server"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "-m", "greptimedb_mcp_server.server"],
     "env": {
       "GREPTIMEDB_HOST": "${user_config.greptimedb_host}",
       "GREPTIMEDB_PORT": "${user_config.greptimedb_port}",
@@ -80,13 +74,7 @@
     "client_config_permutations": {
       "greptimedb-mcp-server-with-config": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/greptimedb-mcp-server",
-          "run",
-          "-m",
-          "greptimedb_mcp_server.server"
-        ],
+        "args": ["--directory", "/path/to/greptimedb-mcp-server", "run", "-m", "greptimedb_mcp_server.server"],
         "env": {
           "GREPTIMEDB_HOST": "localhost",
           "GREPTIMEDB_PORT": "4002",

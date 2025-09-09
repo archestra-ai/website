@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "ns-mcp-server"
-    ],
+    "args": ["-y", "ns-mcp-server"],
     "env": {
       "NS_API_KEY": "${user_config.ns_api_key}"
     }
@@ -36,19 +33,14 @@
     "client_config_permutations": {
       "ns-mcp-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "ns-mcp-server"
-        ],
+        "args": ["-y", "ns-mcp-server"],
         "env": {
           "NS_API_KEY": "your_api_key_here"
         }
       },
       "ns-mcp-server-local": {
         "command": "node",
-        "args": [
-          "/path/to/ns-server/build/index.js"
-        ],
+        "args": ["/path/to/ns-server/build/index.js"],
         "env": {
           "NS_API_KEY": "your_api_key_here"
         }

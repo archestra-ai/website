@@ -75,10 +75,7 @@
     "client_config_permutations": {
       "k8s-mcp-server-stdio": {
         "command": "./k8s-mcp-server",
-        "args": [
-          "--mode",
-          "stdio"
-        ],
+        "args": ["--mode", "stdio"],
         "env": {}
       },
       "k8s-mcp-server-sse-env": {
@@ -91,11 +88,7 @@
       },
       "k8s-mcp-server-readonly-sse": {
         "command": "./k8s-mcp-server",
-        "args": [
-          "--mode",
-          "sse",
-          "--read-only"
-        ],
+        "args": ["--mode", "sse", "--read-only"],
         "env": {}
       },
       "ginnux-k8s-mcp-server-docker": {
@@ -142,9 +135,7 @@
       },
       "ginnux-k8s-mcp-server-docker-compose": {
         "command": "docker-compose",
-        "args": [
-          "up"
-        ],
+        "args": ["up"],
         "env": {
           "KUBECONFIG": "/home/appuser/.kube/config",
           "SERVER_MODE": "sse",

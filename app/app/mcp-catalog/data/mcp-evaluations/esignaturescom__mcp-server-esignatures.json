@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "mcp-server-esignatures"
-    ],
+    "args": ["mcp-server-esignatures"],
     "env": {
       "ESIGNATURES_SECRET_TOKEN": "${user_config.esignatures_secret_token}"
     }
@@ -35,21 +33,14 @@
     "client_config_permutations": {
       "mcp-server-esignatures-dev": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/your-local-directories/mcp-server-esignatures",
-          "run",
-          "mcp-server-esignatures"
-        ],
+        "args": ["--directory", "/your-local-directories/mcp-server-esignatures", "run", "mcp-server-esignatures"],
         "env": {
           "ESIGNATURES_SECRET_TOKEN": "your-esignatures-api-secret-token"
         }
       },
       "mcp-server-esignatures-published": {
         "command": "uvx",
-        "args": [
-          "mcp-server-esignatures"
-        ],
+        "args": ["mcp-server-esignatures"],
         "env": {
           "ESIGNATURES_SECRET_TOKEN": "your-esignatures-api-secret-token"
         }

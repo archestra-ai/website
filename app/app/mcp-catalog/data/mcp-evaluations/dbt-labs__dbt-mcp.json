@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "--env-file",
-      "${user_config.env_file_path}",
-      "dbt-mcp"
-    ],
+    "args": ["--env-file", "${user_config.env_file_path}", "dbt-mcp"],
     "env": {
       "DISABLE_DBT_CLI": "${user_config.disable_dbt_cli}",
       "DISABLE_SEMANTIC_LAYER": "${user_config.disable_semantic_layer}",
@@ -150,11 +146,7 @@
     "client_config_permutations": {
       "dbt-mcp": {
         "command": "uvx",
-        "args": [
-          "--env-file",
-          "<path-to-.env-file>",
-          "dbt-mcp"
-        ],
+        "args": ["--env-file", "<path-to-.env-file>", "dbt-mcp"],
         "env": {}
       }
     },

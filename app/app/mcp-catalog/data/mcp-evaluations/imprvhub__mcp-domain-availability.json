@@ -38,10 +38,7 @@
       },
       "mcp-domain-availability-local": {
         "command": "uv",
-        "args": [
-          "run",
-          "src/mcp_domain_availability/main.py"
-        ],
+        "args": ["run", "src/mcp_domain_availability/main.py"],
         "env": {}
       }
     },
