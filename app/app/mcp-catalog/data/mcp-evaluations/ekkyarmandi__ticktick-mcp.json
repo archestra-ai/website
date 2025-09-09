@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py"
-    ],
+    "args": ["${__dirname}/main.py"],
     "env": {
       "TICKTICK_API_KEY": "${user_config.ticktick_api_key}"
     }
@@ -35,9 +33,7 @@
     "client_config_permutations": {
       "ticktick-mcp": {
         "command": "python",
-        "args": [
-          "main.py"
-        ],
+        "args": ["main.py"],
         "env": {}
       }
     },

@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "${user_config.uv_bin}",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "k6_server.py"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "k6_server.py"],
     "env": {
       "K6_BIN": "${user_config.k6_bin}"
     }
@@ -45,12 +40,7 @@
     "client_config_permutations": {
       "k6": {
         "command": "/path/to/bin/uv",
-        "args": [
-          "--directory",
-          "/path/to/k6-mcp-server",
-          "run",
-          "k6_server.py"
-        ],
+        "args": ["--directory", "/path/to/k6-mcp-server", "run", "k6_server.py"],
         "env": {}
       }
     },

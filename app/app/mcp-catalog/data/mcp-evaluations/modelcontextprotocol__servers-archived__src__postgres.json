@@ -23,42 +23,22 @@
     "client_config_permutations": {
       "mcp-postgres-docker-claude-desktop": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "mcp/postgres",
-          "postgresql://host.docker.internal:5432/mydb"
-        ],
+        "args": ["run", "-i", "--rm", "mcp/postgres", "postgresql://host.docker.internal:5432/mydb"],
         "env": {}
       },
       "modelcontextprotocol-server-postgres-claude-desktop": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-postgres",
-          "postgresql://localhost/mydb"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost/mydb"],
         "env": {}
       },
       "mcp-postgres-docker-vscode": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "mcp/postgres",
-          "${input:pg_url}"
-        ],
+        "args": ["run", "-i", "--rm", "mcp/postgres", "${input:pg_url}"],
         "env": {}
       },
       "modelcontextprotocol-server-postgres-vscode": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-postgres",
-          "${input:pg_url}"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-postgres", "${input:pg_url}"],
         "env": {}
       }
     },

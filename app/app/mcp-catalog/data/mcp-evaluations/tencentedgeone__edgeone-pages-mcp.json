@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "edgeone-pages-mcp"
-    ],
+    "args": ["edgeone-pages-mcp"],
     "env": {
       "EDGEONE_PAGES_API_TOKEN": "${user_config.edgeone_pages_api_token}",
       "EDGEONE_PAGES_PROJECT_NAME": "${user_config.edgeone_pages_project_name}"
@@ -43,9 +41,7 @@
     "client_config_permutations": {
       "edgeone-pages-mcp-server": {
         "command": "npx",
-        "args": [
-          "edgeone-pages-mcp"
-        ],
+        "args": ["edgeone-pages-mcp"],
         "env": {
           "EDGEONE_PAGES_API_TOKEN": "",
           "EDGEONE_PAGES_PROJECT_NAME": ""

@@ -69,48 +69,22 @@
     "client_config_permutations": {
       "portainer-mcp": {
         "command": "/path/to/portainer-mcp",
-        "args": [
-          "-server",
-          "[IP]:[PORT]",
-          "-token",
-          "[TOKEN]",
-          "-tools",
-          "/tmp/tools.yaml"
-        ],
+        "args": ["-server", "[IP]:[PORT]", "-token", "[TOKEN]", "-tools", "/tmp/tools.yaml"],
         "env": {}
       },
       "portainer-mcp-disable-version-check": {
         "command": "/path/to/portainer-mcp",
-        "args": [
-          "-server",
-          "[IP]:[PORT]",
-          "-token",
-          "[TOKEN]",
-          "-disable-version-check"
-        ],
+        "args": ["-server", "[IP]:[PORT]", "-token", "[TOKEN]", "-disable-version-check"],
         "env": {}
       },
       "portainer-mcp-custom-tools": {
         "command": "/path/to/portainer-mcp",
-        "args": [
-          "-server",
-          "[IP]:[PORT]",
-          "-token",
-          "[TOKEN]",
-          "-tools",
-          "/path/to/custom/tools.yaml"
-        ],
+        "args": ["-server", "[IP]:[PORT]", "-token", "[TOKEN]", "-tools", "/path/to/custom/tools.yaml"],
         "env": {}
       },
       "portainer-mcp-read-only": {
         "command": "/path/to/portainer-mcp",
-        "args": [
-          "-server",
-          "[IP]:[PORT]",
-          "-token",
-          "[TOKEN]",
-          "-read-only"
-        ],
+        "args": ["-server", "[IP]:[PORT]", "-token", "[TOKEN]", "-read-only"],
         "env": {}
       }
     },

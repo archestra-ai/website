@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "main.py"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "main.py"],
     "env": {
       "WEB3_CAREER_API_TOKEN": "${user_config.web3_career_api_token}"
     }
@@ -38,34 +33,21 @@
     "client_config_permutations": {
       "Web3 Jobs": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/web3-jobs-mcp",
-          "run",
-          "main.py"
-        ],
+        "args": ["--directory", "/path/to/web3-jobs-mcp", "run", "main.py"],
         "env": {
           "WEB3_CAREER_API_TOKEN": "your-api-token"
         }
       },
       "Web3 Jobs-dev": {
         "command": "uv",
-        "args": [
-          "run",
-          "mcp",
-          "dev",
-          "main.py"
-        ],
+        "args": ["run", "mcp", "dev", "main.py"],
         "env": {
           "WEB3_CAREER_API_TOKEN": "your-api-token"
         }
       },
       "Web3 Jobs-direct": {
         "command": "uv",
-        "args": [
-          "run",
-          "main.py"
-        ],
+        "args": ["run", "main.py"],
         "env": {
           "WEB3_CAREER_API_TOKEN": "your-api-token"
         }

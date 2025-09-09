@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/index.js"
-    ],
+    "args": ["${__dirname}/index.js"],
     "env": {
       "API_KEY": "${user_config.api_key}",
       "ODBC_DSN": "${user_config.odbc_dsn}",

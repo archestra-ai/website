@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "think-mcp"
-    ],
+    "args": ["think-mcp"],
     "env": {
       "ADVANCED_MODE": "${user_config.advanced_mode}",
       "TAVILY_API_KEY": "${user_config.tavily_api_key}"
@@ -43,17 +41,12 @@
     "client_config_permutations": {
       "think-mcp": {
         "command": "uvx",
-        "args": [
-          "think-mcp"
-        ],
+        "args": ["think-mcp"],
         "env": {}
       },
       "think-mcp-configured": {
         "command": "uvx",
-        "args": [
-          "think-mcp",
-          "--advanced"
-        ],
+        "args": ["think-mcp", "--advanced"],
         "env": {
           "TAVILY_API_KEY": "... YOUR TAVILY API KEY HERE ..."
         }

@@ -86,12 +86,7 @@
     "client_config_permutations": {
       "mcp-language-server-gopls": {
         "command": "mcp-language-server",
-        "args": [
-          "--workspace",
-          "/Users/you/dev/yourproject/",
-          "--lsp",
-          "gopls"
-        ],
+        "args": ["--workspace", "/Users/you/dev/yourproject/", "--lsp", "gopls"],
         "env": {
           "PATH": "/opt/homebrew/bin:/Users/you/go/bin",
           "GOPATH": "/users/you/go",
@@ -101,36 +96,17 @@
       },
       "mcp-language-server-rust-analyzer": {
         "command": "mcp-language-server",
-        "args": [
-          "--workspace",
-          "/Users/you/dev/yourproject/",
-          "--lsp",
-          "rust-analyzer"
-        ],
+        "args": ["--workspace", "/Users/you/dev/yourproject/", "--lsp", "rust-analyzer"],
         "env": {}
       },
       "mcp-language-server-pyright-langserver": {
         "command": "mcp-language-server",
-        "args": [
-          "--workspace",
-          "/Users/you/dev/yourproject/",
-          "--lsp",
-          "pyright-langserver",
-          "--",
-          "--stdio"
-        ],
+        "args": ["--workspace", "/Users/you/dev/yourproject/", "--lsp", "pyright-langserver", "--", "--stdio"],
         "env": {}
       },
       "mcp-language-server-typescript-language-server": {
         "command": "mcp-language-server",
-        "args": [
-          "--workspace",
-          "/Users/you/dev/yourproject/",
-          "--lsp",
-          "typescript-language-server",
-          "--",
-          "--stdio"
-        ],
+        "args": ["--workspace", "/Users/you/dev/yourproject/", "--lsp", "typescript-language-server", "--", "--stdio"],
         "env": {}
       },
       "mcp-language-server-clangd": {

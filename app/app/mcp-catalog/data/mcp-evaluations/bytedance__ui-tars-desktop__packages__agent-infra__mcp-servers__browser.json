@@ -146,37 +146,24 @@
     "client_config_permutations": {
       "agent-infra-mcp-server-browser": {
         "command": "npx",
-        "args": [
-          "@agent-infra/mcp-server-browser@latest"
-        ],
+        "args": ["@agent-infra/mcp-server-browser@latest"],
         "env": {}
       },
       "agent-infra-mcp-server-browser-remote": {
         "command": "npx",
-        "args": [
-          "@agent-infra/mcp-server-browser",
-          "--port",
-          "8089"
-        ],
+        "args": ["@agent-infra/mcp-server-browser", "--port", "8089"],
         "env": {}
       },
       "agent-infra-mcp-server-browser-remote-display": {
         "command": "npx",
-        "args": [
-          "@agent-infra/mcp-server-browser",
-          "--port",
-          "8089"
-        ],
+        "args": ["@agent-infra/mcp-server-browser", "--port", "8089"],
         "env": {
           "DISPLAY": ":0"
         }
       },
       "agent-infra-mcp-server-browser-vision": {
         "command": "npx",
-        "args": [
-          "@agent-infra/mcp-server-browser@latest",
-          "--vision"
-        ],
+        "args": ["@agent-infra/mcp-server-browser@latest", "--vision"],
         "env": {}
       }
     },

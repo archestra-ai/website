@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@open-mcp/{server-id}"
-    ],
+    "args": ["-y", "@open-mcp/{server-id}"],
     "env": {
       "ENV_VAR": "${user_config.env_var}"
     }

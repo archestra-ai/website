@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "postmancer"
-    ],
+    "args": ["-y", "postmancer"],
     "env": {
       "COLLECTIONS_PATH": "${user_config.collections_path}",
       "LOG_LEVEL": "${user_config.log_level}",
@@ -60,10 +57,7 @@
     "client_config_permutations": {
       "postmancer": {
         "command": "npx",
-        "args": [
-          "-y",
-          "postmancer"
-        ],
+        "args": ["-y", "postmancer"],
         "env": {
           "LOG_LEVEL": "info"
         }

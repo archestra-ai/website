@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "mcp_datetime"
-    ],
+    "args": ["-m", "mcp_datetime"],
     "env": {
       "PYTHON": "${user_config.python}"
     }
@@ -36,17 +33,12 @@
     "client_config_permutations": {
       "mcp-datetime": {
         "command": "uvx",
-        "args": [
-          "mcp-datetime"
-        ],
+        "args": ["mcp-datetime"],
         "env": {}
       },
       "mcp-datetime-manual-install": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_datetime"
-        ],
+        "args": ["-m", "mcp_datetime"],
         "env": {
           "PYTHON": "/path/to/your/python"
         }

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "mcp-shell-server"
-    ],
+    "args": ["mcp-shell-server"],
     "env": {
       "ALLOW_COMMANDS": "${user_config.allow_commands}"
     }
@@ -35,30 +33,21 @@
     "client_config_permutations": {
       "mcp-shell-server-configured-published": {
         "command": "uvx",
-        "args": [
-          "mcp-shell-server"
-        ],
+        "args": ["mcp-shell-server"],
         "env": {
           "ALLOW_COMMANDS": "ls,cat,pwd,grep,wc,touch,find"
         }
       },
       "mcp-shell-server-configured-local": {
         "command": "uv",
-        "args": [
-          "--directory",
-          ".",
-          "run",
-          "mcp-shell-server"
-        ],
+        "args": ["--directory", ".", "run", "mcp-shell-server"],
         "env": {
           "ALLOW_COMMANDS": "ls,cat,pwd,grep,wc,touch,find"
         }
       },
       "mcp-shell-server-direct": {
         "command": "uvx",
-        "args": [
-          "mcp-shell-server"
-        ],
+        "args": ["mcp-shell-server"],
         "env": {
           "ALLOW_COMMANDS": "ls,cat,echo"
         }

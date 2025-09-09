@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@llmindset/mcp-hfspace",
-      "${user_config.spaces}"
-    ],
+    "args": ["-y", "@llmindset/mcp-hfspace", "${user_config.spaces}"],
     "env": {
       "MCP_HF_WORK_DIR": "${user_config.mcp_hf_work_dir}",
       "HF_TOKEN": "${user_config.hf_token}",
@@ -52,9 +48,7 @@
       "description": "A list of Hugging Face spaces to connect to. mcp-hfspace will find the most appropriate endpoint.",
       "multiple": true,
       "required": false,
-      "default": [
-        "black-forest-labs/FLUX.1-schnell"
-      ],
+      "default": ["black-forest-labs/FLUX.1-schnell"],
       "sensitive": false
     }
   },
@@ -65,10 +59,7 @@
     "client_config_permutations": {
       "llmindset-mcp-hfspace": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@llmindset/mcp-hfspace"
-        ],
+        "args": ["-y", "@llmindset/mcp-hfspace"],
         "env": {}
       },
       "llmindset-mcp-hfspace-configured": {

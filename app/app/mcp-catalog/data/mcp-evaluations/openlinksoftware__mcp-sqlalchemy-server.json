@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "mcp-sqlalchemy-server"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "mcp-sqlalchemy-server"],
     "env": {
       "ODBC_DSN": "${user_config.odbc_dsn}",
       "ODBC_USER": "${user_config.odbc_user}",
@@ -64,12 +59,7 @@
     "client_config_permutations": {
       "mcp-sqlalchemy-server": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/mcp-sqlalchemy-server",
-          "run",
-          "mcp-sqlalchemy-server"
-        ],
+        "args": ["--directory", "/path/to/mcp-sqlalchemy-server", "run", "mcp-sqlalchemy-server"],
         "env": {
           "ODBC_DSN": "dsn_name",
           "ODBC_USER": "username",

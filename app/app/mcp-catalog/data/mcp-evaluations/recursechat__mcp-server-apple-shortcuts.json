@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/server/main.py"
-    ],
+    "args": ["${__dirname}/server/main.py"],
     "env": {
       "APPLE_SHORTCUTS_API_KEY": "${user_config.apple_shortcuts_api_key}",
       "MCP_SERVER_PORT": "${user_config.mcp_server_port}",
@@ -53,17 +51,12 @@
     "client_config_permutations": {
       "mcp-server-apple-shortcuts": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-server-apple-shortcuts"
-        ],
+        "args": ["-y", "mcp-server-apple-shortcuts"],
         "env": {}
       },
       "mcp-server-apple-shortcuts-local-build": {
         "command": "npx",
-        "args": [
-          "/path/to/mcp-server-apple-shortcuts/build/index.js"
-        ],
+        "args": ["/path/to/mcp-server-apple-shortcuts/build/index.js"],
         "env": {}
       }
     },

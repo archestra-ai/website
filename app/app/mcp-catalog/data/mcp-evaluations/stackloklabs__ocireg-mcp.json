@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "./ocireg-mcp",
-    "args": [
-      "-port",
-      "${user_config.mcp_port}"
-    ],
+    "args": ["-port", "${user_config.mcp_port}"],
     "env": {
       "OCI_TOKEN": "${user_config.oci_token}",
       "OCI_USERNAME": "${user_config.oci_username}",
@@ -61,20 +58,12 @@
     "client_config_permutations": {
       "oci-registry": {
         "command": "thv",
-        "args": [
-          "run",
-          "oci-registry"
-        ],
+        "args": ["run", "oci-registry"],
         "env": {}
       },
       "oci-registry-with-token": {
         "command": "thv",
-        "args": [
-          "run",
-          "--secret",
-          "oci-token,target=OCI_TOKEN",
-          "oci-registry"
-        ],
+        "args": ["run", "--secret", "oci-token,target=OCI_TOKEN", "oci-registry"],
         "env": {}
       },
       "oci-registry-with-user-pass": {
@@ -91,10 +80,7 @@
       },
       "ocireg-mcp-configured": {
         "command": "./ocireg-mcp",
-        "args": [
-          "-port",
-          "9090"
-        ],
+        "args": ["-port", "9090"],
         "env": {}
       }
     },

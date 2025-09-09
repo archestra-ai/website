@@ -9,14 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "run",
-      "--with",
-      "fastmcp",
-      "fastmcp",
-      "run",
-      "./server.py"
-    ],
+    "args": ["run", "--with", "fastmcp", "fastmcp", "run", "./server.py"],
     "env": {
       "UNSPLASH_ACCESS_KEY": "${user_config.unsplash_access_key}"
     }
@@ -40,14 +33,7 @@
     "client_config_permutations": {
       "unsplash-mcp-server": {
         "command": "uv",
-        "args": [
-          "run",
-          "--with",
-          "fastmcp",
-          "fastmcp",
-          "run",
-          "./server.py"
-        ],
+        "args": ["run", "--with", "fastmcp", "fastmcp", "run", "./server.py"],
         "env": {
           "UNSPLASH_ACCESS_KEY": "${YOUR_ACCESS_KEY}"
         }

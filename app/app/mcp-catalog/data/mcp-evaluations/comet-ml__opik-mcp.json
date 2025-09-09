@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js",
-      "--debug",
-      "${user_config.opik_debug}"
-    ],
+    "args": ["${__dirname}/build/index.js", "--debug", "${user_config.opik_debug}"],
     "env": {
       "OPIK_API_BASE_URL": "${user_config.opik_api_base_url}",
       "OPIK_API_KEY": "${user_config.opik_api_key}",
@@ -63,18 +59,12 @@
     "client_config_permutations": {
       "comet-ml-opik-mcp-stdio": {
         "command": "npm",
-        "args": [
-          "run",
-          "start:stdio"
-        ],
+        "args": ["run", "start:stdio"],
         "env": {}
       },
       "comet-ml-opik-mcp-sse": {
         "command": "npm",
-        "args": [
-          "run",
-          "start:sse"
-        ],
+        "args": ["run", "start:sse"],
         "env": {}
       },
       "comet-ml-opik-mcp-cursor-integration": {

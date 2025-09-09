@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "tool",
-      "run",
-      "vectara-mcp"
-    ],
+    "args": ["tool", "run", "vectara-mcp"],
     "env": {
       "VECTARA_API_KEY": "${user_config.vectara_api_key}",
       "VECTARA_CORPUS_KEYS": "${user_config.vectara_corpus_keys}"
@@ -44,11 +40,7 @@
     "client_config_permutations": {
       "vectara-mcp": {
         "command": "uv",
-        "args": [
-          "tool",
-          "run",
-          "vectara-mcp"
-        ],
+        "args": ["tool", "run", "vectara-mcp"],
         "env": {}
       }
     },

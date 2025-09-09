@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@fireflyai/firefly-mcp"
-    ],
+    "args": ["-y", "@fireflyai/firefly-mcp"],
     "env": {
       "FIREFLY_ACCESS_KEY": "${user_config.firefly_access_key}",
       "FIREFLY_SECRET_KEY": "${user_config.firefly_secret_key}"
@@ -44,18 +41,12 @@
     "client_config_permutations": {
       "fireflyai-firefly-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@fireflyai/firefly-mcp"
-        ],
+        "args": ["-y", "@fireflyai/firefly-mcp"],
         "env": {}
       },
       "fireflyai-firefly-mcp-env-vars": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@fireflyai/firefly-mcp"
-        ],
+        "args": ["-y", "@fireflyai/firefly-mcp"],
         "env": {
           "FIREFLY_ACCESS_KEY": "your_access_key",
           "FIREFLY_SECRET_KEY": "your_secret_key"
@@ -63,33 +54,17 @@
       },
       "fireflyai-firefly-mcp-with-args": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@fireflyai/firefly-mcp",
-          "--access-key",
-          "your_access_key",
-          "--secret-key",
-          "your_secret_key"
-        ],
+        "args": ["-y", "@fireflyai/firefly-mcp", "--access-key", "your_access_key", "--secret-key", "your_secret_key"],
         "env": {}
       },
       "fireflyai-firefly-mcp-sse-port": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@fireflyai/firefly-mcp",
-          "--sse",
-          "--port",
-          "6001"
-        ],
+        "args": ["-y", "@fireflyai/firefly-mcp", "--sse", "--port", "6001"],
         "env": {}
       },
       "fireflyai-firefly-mcp-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@fireflyai/firefly-mcp"
-        ],
+        "args": ["-y", "@fireflyai/firefly-mcp"],
         "env": {
           "FIREFLY_ACCESS_KEY": "your_access_key",
           "FIREFLY_SECRET_KEY": "your_secret_key"

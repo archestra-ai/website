@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "box-mcp-server"
-    ],
+    "args": ["box-mcp-server"],
     "env": {
       "BOX_USER_ID": "${user_config.box_user_id}",
       "BOX_JWT_BASE64": "${user_config.box_jwt_base64}",
@@ -67,9 +65,7 @@
     "client_config_permutations": {
       "box-mcp-server-jwt-configured": {
         "command": "npx",
-        "args": [
-          "box-mcp-server"
-        ],
+        "args": ["box-mcp-server"],
         "env": {
           "BOX_JWT_BASE64": "YOUR_BASE64_ENCODED_JWT",
           "BOX_USER_ID": "123456"
@@ -77,18 +73,14 @@
       },
       "box-mcp-server-dev-token-configured": {
         "command": "npx",
-        "args": [
-          "box-mcp-server"
-        ],
+        "args": ["box-mcp-server"],
         "env": {
           "BOX_DEV_TOKEN": "YOUR_DEV_TOKEN_GOES_HERE"
         }
       },
       "box-mcp-server-node-dev": {
         "command": "node",
-        "args": [
-          "PATH_TO_YOUR_CLONED_REPO/dist/index.js"
-        ],
+        "args": ["PATH_TO_YOUR_CLONED_REPO/dist/index.js"],
         "env": {}
       }
     },

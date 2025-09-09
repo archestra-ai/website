@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "airtable-mcp-server"
-    ],
+    "args": ["-y", "airtable-mcp-server"],
     "env": {
       "AIRTABLE_API_KEY": "${user_config.airtable_api_key}"
     }
@@ -36,20 +33,14 @@
     "client_config_permutations": {
       "airtable-mcp-server-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "airtable-mcp-server"
-        ],
+        "args": ["-y", "airtable-mcp-server"],
         "env": {
           "AIRTABLE_API_KEY": "pat123.abc123"
         }
       },
       "airtable-mcp-server-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "airtable-mcp-server"
-        ],
+        "args": ["-y", "airtable-mcp-server"],
         "env": {
           "AIRTABLE_API_KEY": "pat123.abc123"
         }

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "container-use",
-    "args": [
-      "stdio"
-    ],
+    "args": ["stdio"],
     "env": {}
   },
   "tools": [],
@@ -25,16 +23,12 @@
     "client_config_permutations": {
       "container-use-stdio": {
         "command": "container-use",
-        "args": [
-          "stdio"
-        ],
+        "args": ["stdio"],
         "env": {}
       },
       "cu-stdio": {
         "command": "cu",
-        "args": [
-          "stdio"
-        ],
+        "args": ["stdio"],
         "env": {}
       }
     },

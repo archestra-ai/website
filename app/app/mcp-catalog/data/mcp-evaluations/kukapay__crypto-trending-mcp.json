@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "main.py"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "main.py"],
     "env": {}
   },
   "tools": [],
@@ -28,12 +23,7 @@
     "client_config_permutations": {
       "crypto-trending": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/absolute/path/to/crypto-trending-mcp",
-          "run",
-          "main.py"
-        ],
+        "args": ["--directory", "/absolute/path/to/crypto-trending-mcp", "run", "main.py"],
         "env": {}
       }
     },

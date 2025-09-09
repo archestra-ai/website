@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "bun",
-    "args": [
-      "${__dirname}/index.ts"
-    ],
+    "args": ["${__dirname}/index.ts"],
     "env": {
       "BLUESKY_APP_KEY": "${user_config.bluesky_app_key}",
       "BLUESKY_IDENTIFIER": "${user_config.bluesky_identifier}"
@@ -42,9 +40,7 @@
     "client_config_permutations": {
       "laulauland-bluesky-context-server": {
         "command": "/Users/laurynas-fp/.bun/bin/bun",
-        "args": [
-          "<path_to_this_directory>/bluesky-context-server/index.ts"
-        ],
+        "args": ["<path_to_this_directory>/bluesky-context-server/index.ts"],
         "env": {
           "BLUESKY_APP_KEY": "",
           "BLUESKY_IDENTIFIER": ""

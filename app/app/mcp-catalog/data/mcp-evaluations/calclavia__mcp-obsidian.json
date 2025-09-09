@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-obsidian",
-      "${user_config.vault_path}"
-    ],
+    "args": ["-y", "mcp-obsidian", "${user_config.vault_path}"],
     "env": {}
   },
   "tools": [],
@@ -34,11 +30,7 @@
     "client_config_permutations": {
       "mcp-obsidian": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-obsidian",
-          "${input:vaultPath}"
-        ],
+        "args": ["-y", "mcp-obsidian", "${input:vaultPath}"],
         "env": {}
       }
     },

@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "aseprite_mcp"
-    ],
+    "args": ["-m", "aseprite_mcp"],
     "env": {}
   },
   "tools": [],
@@ -26,13 +23,7 @@
     "client_config_permutations": {
       "aseprite_mcp": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/repo",
-          "run",
-          "-m",
-          "aseprite_mcp"
-        ],
+        "args": ["--directory", "/path/to/repo", "run", "-m", "aseprite_mcp"],
         "env": {}
       }
     },

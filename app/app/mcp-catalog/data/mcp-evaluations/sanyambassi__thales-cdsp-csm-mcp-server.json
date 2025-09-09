@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["${__dirname}/main.py", "--transport", "stdio"],
     "env": {
       "AKEYLESS_ACCESS_ID": "${user_config.akeyless_access_id}",
       "AKEYLESS_ACCESS_KEY": "${user_config.akeyless_access_key}",
@@ -113,9 +109,7 @@
     "client_config_permutations": {
       "thales-cdsp-csm-mcp-server-stdio": {
         "command": "python",
-        "args": [
-          "main.py"
-        ],
+        "args": ["main.py"],
         "env": {
           "AKEYLESS_ACCESS_ID": "your_access_id",
           "AKEYLESS_ACCESS_KEY": "your_access_key",
@@ -125,15 +119,7 @@
       },
       "thales-cdsp-csm-mcp-server-http": {
         "command": "python",
-        "args": [
-          "main.py",
-          "--transport",
-          "streamable-http",
-          "--host",
-          "localhost",
-          "--port",
-          "8000"
-        ],
+        "args": ["main.py", "--transport", "streamable-http", "--host", "localhost", "--port", "8000"],
         "env": {
           "AKEYLESS_ACCESS_ID": "your_access_id",
           "AKEYLESS_ACCESS_KEY": "your_access_key",
@@ -143,11 +129,7 @@
       },
       "thales-cdsp-csm-mcp-server-uv-stdio": {
         "command": "uv",
-        "args": [
-          "run",
-          "python",
-          "main.py"
-        ],
+        "args": ["run", "python", "main.py"],
         "env": {
           "AKEYLESS_ACCESS_ID": "your_access_id",
           "AKEYLESS_ACCESS_KEY": "your_access_key",
@@ -157,17 +139,7 @@
       },
       "thales-cdsp-csm-mcp-server-uv-http": {
         "command": "uv",
-        "args": [
-          "run",
-          "python",
-          "main.py",
-          "--transport",
-          "streamable-http",
-          "--host",
-          "localhost",
-          "--port",
-          "8000"
-        ],
+        "args": ["run", "python", "main.py", "--transport", "streamable-http", "--host", "localhost", "--port", "8000"],
         "env": {
           "AKEYLESS_ACCESS_ID": "your_access_id",
           "AKEYLESS_ACCESS_KEY": "your_access_key",

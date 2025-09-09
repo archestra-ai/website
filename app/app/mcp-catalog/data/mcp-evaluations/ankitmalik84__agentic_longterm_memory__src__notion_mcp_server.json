@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/notion_mcp_server/api_serverV2.py"
-    ],
+    "args": ["${__dirname}/notion_mcp_server/api_serverV2.py"],
     "env": {
       "NOTION_TOKEN": "${user_config.notion_token}",
       "HOST": "${user_config.host}",
@@ -113,18 +111,12 @@
     "client_config_permutations": {
       "notion-mcp-server-api-v2": {
         "command": "python",
-        "args": [
-          "-m",
-          "notion_mcp_server.api_serverV2"
-        ],
+        "args": ["-m", "notion_mcp_server.api_serverV2"],
         "env": {}
       },
       "notion-mcp-server-cli-v2": {
         "command": "python",
-        "args": [
-          "-m",
-          "notion_mcp_server.serverV2"
-        ],
+        "args": ["-m", "notion_mcp_server.serverV2"],
         "env": {}
       }
     },

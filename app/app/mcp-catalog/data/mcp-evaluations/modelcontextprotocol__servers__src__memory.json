@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@modelcontextprotocol/server-memory"
-    ],
+    "args": ["-y", "@modelcontextprotocol/server-memory"],
     "env": {
       "MEMORY_FILE_PATH": "${user_config.memory_file_path}"
     }
@@ -36,30 +33,17 @@
     "client_config_permutations": {
       "memory-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "-v",
-          "claude-memory:/app/dist",
-          "--rm",
-          "mcp/memory"
-        ],
+        "args": ["run", "-i", "-v", "claude-memory:/app/dist", "--rm", "mcp/memory"],
         "env": {}
       },
       "modelcontextprotocol-server-memory": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-memory"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-memory"],
         "env": {}
       },
       "modelcontextprotocol-server-memory-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-memory"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-memory"],
         "env": {
           "MEMORY_FILE_PATH": "/path/to/custom/memory.json"
         }

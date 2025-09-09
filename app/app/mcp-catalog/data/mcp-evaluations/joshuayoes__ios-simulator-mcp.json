@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "ios-simulator-mcp"
-    ],
+    "args": ["-y", "ios-simulator-mcp"],
     "env": {
       "IOS_SIMULATOR_MCP_FILTERED_TOOLS": "${user_config.ios_simulator_mcp_filtered_tools}"
     }
@@ -36,17 +33,12 @@
     "client_config_permutations": {
       "ios-simulator-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "ios-simulator-mcp"
-        ],
+        "args": ["-y", "ios-simulator-mcp"],
         "env": {}
       },
       "ios-simulator-mcp-local-dev": {
         "command": "node",
-        "args": [
-          "/full/path/to/your/ios-simulator-mcp/build/index.js"
-        ],
+        "args": ["/full/path/to/your/ios-simulator-mcp/build/index.js"],
         "env": {}
       }
     },

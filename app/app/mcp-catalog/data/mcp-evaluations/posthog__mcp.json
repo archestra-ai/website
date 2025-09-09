@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "pnpm",
-    "args": [
-      "run",
-      "dev"
-    ],
+    "args": ["run", "dev"],
     "env": {
       "POSTHOG_AUTH_HEADER": "Bearer ${user_config.posthog_api_key}",
       "POSTHOG_BASE_URL": "${user_config.posthog_base_url}",
@@ -52,10 +49,7 @@
     "client_config_permutations": {
       "posthog-mcp-dev": {
         "command": "pnpm",
-        "args": [
-          "run",
-          "dev"
-        ],
+        "args": ["run", "dev"],
         "env": {
           "POSTHOG_BASE_URL": "https://eu.posthog.com",
           "INKEEP_API_KEY": "..."

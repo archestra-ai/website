@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "yutu",
-    "args": [
-      "mcp"
-    ],
+    "args": ["mcp"],
     "env": {
       "YUTU_CREDENTIAL": "${user_config.yutu_credential}",
       "YUTU_CACHE_TOKEN": "${user_config.yutu_cache_token}"
@@ -41,9 +39,7 @@
     "client_config_permutations": {
       "yutu": {
         "command": "yutu",
-        "args": [
-          "mcp"
-        ],
+        "args": ["mcp"],
         "env": {
           "YUTU_CREDENTIAL": "/absolute/path/to/client_secret.json",
           "YUTU_CACHE_TOKEN": "/absolute/path/to/youtube.token.json"

@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py",
-      "--config",
-      "${config_file_path}"
-    ],
+    "args": ["${__dirname}/main.py", "--config", "${config_file_path}"],
     "env": {}
   },
   "tools": [],

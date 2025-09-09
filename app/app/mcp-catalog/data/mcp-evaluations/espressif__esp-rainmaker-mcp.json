@@ -9,16 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "run",
-      "--with",
-      "esp-rainmaker-cli",
-      "--with",
-      "mcp[cli]",
-      "mcp",
-      "run",
-      "${__dirname}/server.py"
-    ],
+    "args": ["run", "--with", "esp-rainmaker-cli", "--with", "mcp[cli]", "mcp", "run", "${__dirname}/server.py"],
     "env": {}
   },
   "tools": [],

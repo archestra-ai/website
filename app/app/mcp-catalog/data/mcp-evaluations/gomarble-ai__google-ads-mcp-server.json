@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/server.py"
-    ],
+    "args": ["${__dirname}/server.py"],
     "env": {
       "GOOGLE_ADS_DEVELOPER_TOKEN": "${user_config.google_ads_developer_token}",
       "GOOGLE_ADS_OAUTH_CONFIG_PATH": "${user_config.google_ads_oauth_config_path}"
@@ -44,9 +42,7 @@
     "client_config_permutations": {
       "google-ads": {
         "command": "/full/path/to/your/project/.venv/bin/python",
-        "args": [
-          "/full/path/to/your/project/server.py"
-        ],
+        "args": ["/full/path/to/your/project/server.py"],
         "env": {}
       }
     },

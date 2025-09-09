@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "${user_config.python_executable_path}",
-    "args": [
-      "${user_config.main_script_path}"
-    ],
+    "args": ["${user_config.main_script_path}"],
     "env": {}
   },
   "tools": [],
@@ -38,9 +36,7 @@
     "client_config_permutations": {
       "device-controll": {
         "command": "pathToEnv\\venv\\Scripts\\python.exe",
-        "args": [
-          "pathToProject\\ScreenPilot\\main.py"
-        ],
+        "args": ["pathToProject\\ScreenPilot\\main.py"],
         "env": {}
       }
     },

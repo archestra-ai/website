@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "run",
-      "wsb-analyst"
-    ],
+    "args": ["run", "wsb-analyst"],
     "env": {
       "REDDIT_CLIENT_ID": "${user_config.reddit_client_id}",
       "REDDIT_CLIENT_SECRET": "${user_config.reddit_client_secret}"
@@ -44,10 +41,7 @@
     "client_config_permutations": {
       "wsb-analyst": {
         "command": "uvx",
-        "args": [
-          "run",
-          "wsb-analyst"
-        ],
+        "args": ["run", "wsb-analyst"],
         "env": {
           "REDDIT_CLIENT_ID": "your_client_id_here",
           "REDDIT_CLIENT_SECRET": "your_client_secret_here"

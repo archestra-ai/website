@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-remote",
-      "${user_config.mcp_server_url}"
-    ],
+    "args": ["-y", "mcp-remote", "${user_config.mcp_server_url}"],
     "env": {
       "CLOUDFLARE_API_TOKEN": "${user_config.cloudflare_api_token}"
     }
@@ -43,18 +39,12 @@
     "client_config_permutations": {
       "mcp-remote-observability": {
         "command": "npx",
-        "args": [
-          "mcp-remote",
-          "https://observability.mcp.cloudflare.com/sse"
-        ],
+        "args": ["mcp-remote", "https://observability.mcp.cloudflare.com/sse"],
         "env": {}
       },
       "mcp-remote-bindings": {
         "command": "npx",
-        "args": [
-          "mcp-remote",
-          "https://bindings.mcp.cloudflare.com/sse"
-        ],
+        "args": ["mcp-remote", "https://bindings.mcp.cloudflare.com/sse"],
         "env": {}
       }
     },

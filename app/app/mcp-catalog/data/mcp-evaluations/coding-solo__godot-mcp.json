@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {
       "DEBUG": "${user_config.debug}",
       "GODOT_PATH": "${user_config.godot_path}"
@@ -43,9 +41,7 @@
     "client_config_permutations": {
       "godot-mcp": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/godot-mcp/build/index.js"
-        ],
+        "args": ["/absolute/path/to/godot-mcp/build/index.js"],
         "env": {
           "DEBUG": "true"
         }

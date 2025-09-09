@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@growthbook/mcp"
-    ],
+    "args": ["-y", "@growthbook/mcp"],
     "env": {
       "GB_API_KEY": "${user_config.gb_api_key}",
       "GB_USER": "${user_config.gb_user}",
@@ -62,10 +59,7 @@
     "client_config_permutations": {
       "growthbook-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@growthbook/mcp"
-        ],
+        "args": ["-y", "@growthbook/mcp"],
         "env": {
           "GB_API_KEY": "YOUR_API_KEY",
           "GB_API_URL": "YOUR_API_URL",

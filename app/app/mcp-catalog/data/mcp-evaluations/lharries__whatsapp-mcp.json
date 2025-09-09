@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "${user_config.uv_executable_path}",
-    "args": [
-      "--directory",
-      "${user_config.whatsapp_mcp_server_directory}",
-      "run",
-      "main.py"
-    ],
+    "args": ["--directory", "${user_config.whatsapp_mcp_server_directory}", "run", "main.py"],
     "env": {}
   },
   "tools": [],
@@ -41,12 +36,7 @@
     "client_config_permutations": {
       "whatsapp": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "{{PATH_TO_SRC}}/whatsapp-mcp/whatsapp-mcp-server",
-          "run",
-          "main.py"
-        ],
+        "args": ["--directory", "{{PATH_TO_SRC}}/whatsapp-mcp/whatsapp-mcp-server", "run", "main.py"],
         "env": {}
       }
     },

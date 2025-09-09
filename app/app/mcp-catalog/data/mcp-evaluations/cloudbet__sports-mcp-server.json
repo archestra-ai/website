@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "go",
-    "args": [
-      "run",
-      "."
-    ],
+    "args": ["run", "."],
     "env": {}
   },
   "tools": [],
@@ -26,10 +23,7 @@
     "client_config_permutations": {
       "cloudbet-sports-mcp-server": {
         "command": "go",
-        "args": [
-          "run",
-          "."
-        ],
+        "args": ["run", "."],
         "env": {}
       }
     },

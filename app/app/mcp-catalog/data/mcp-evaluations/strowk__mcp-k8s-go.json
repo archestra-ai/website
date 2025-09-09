@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "mcp-k8s-go",
-    "args": [
-      "--allowed-contexts=${user_config.allowed_contexts}",
-      "${user_config.readonly}"
-    ],
+    "args": ["--allowed-contexts=${user_config.allowed_contexts}", "${user_config.readonly}"],
     "env": {
       "KUBECONFIG": "${user_config.kubeconfig}"
     }
@@ -50,9 +47,7 @@
     "client_config_permutations": {
       "strowk-mcp-k8s": {
         "command": "npx",
-        "args": [
-          "@strowk/mcp-k8s"
-        ],
+        "args": ["@strowk/mcp-k8s"],
         "env": {}
       },
       "mcp-k8s": {
@@ -62,10 +57,7 @@
       },
       "mcp-k8s-configured": {
         "command": "mcp-k8s",
-        "args": [
-          "--allowed-contexts=dev,prod",
-          "--readonly"
-        ],
+        "args": ["--allowed-contexts=dev,prod", "--readonly"],
         "env": {}
       },
       "mcp-k8s-go": {
@@ -75,14 +67,7 @@
       },
       "mcpk8s-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "-v",
-          "~/.kube/config:/home/nonroot/.kube/config",
-          "--rm",
-          "mcpk8s/server:latest"
-        ],
+        "args": ["run", "-i", "-v", "~/.kube/config:/home/nonroot/.kube/config", "--rm", "mcpk8s/server:latest"],
         "env": {}
       }
     },

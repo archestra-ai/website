@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "mcp-pandoc"
-    ],
+    "args": ["mcp-pandoc"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "mcp-pandoc": {
         "command": "uvx",
-        "args": [
-          "mcp-pandoc"
-        ],
+        "args": ["mcp-pandoc"],
         "env": {}
       }
     },

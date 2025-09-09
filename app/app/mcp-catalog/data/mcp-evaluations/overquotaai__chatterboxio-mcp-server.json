@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "pnpm",
-    "args": [
-      "start"
-    ],
+    "args": ["start"],
     "env": {
       "CHATTERBOX_API_ENDPOINT": "${user_config.chatterbox_api_endpoint}",
       "CHATTERBOX_API_KEY": "${user_config.chatterbox_api_key}"
@@ -44,9 +42,7 @@
     "client_config_permutations": {
       "OverQuotaAI-chatterboxio-mcp-server": {
         "command": "pnpm",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {
           "CHATTERBOX_API_ENDPOINT": "https://api.chatter-box.io",
           "CHATTERBOX_API_KEY": "your_api_key_here"

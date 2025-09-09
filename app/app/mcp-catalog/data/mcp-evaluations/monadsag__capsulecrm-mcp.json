@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/server/main.py"
-    ],
+    "args": ["${__dirname}/server/main.py"],
     "env": {
       "CAPSULECRM_API_KEY": "${user_config.capsulecrm_api_key}",
       "LOG_LEVEL": "${user_config.log_level}"

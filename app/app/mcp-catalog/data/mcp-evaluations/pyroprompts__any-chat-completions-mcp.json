@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@pyroprompts/any-chat-completions-mcp"
-    ],
+    "args": ["-y", "@pyroprompts/any-chat-completions-mcp"],
     "env": {
       "AI_CHAT_KEY": "${user_config.ai_chat_key}",
       "AI_CHAT_NAME": "${user_config.ai_chat_name}",
@@ -63,9 +60,7 @@
     "client_config_permutations": {
       "pyroprompts-any-chat-completions-mcp-openai-npx": {
         "command": "npx",
-        "args": [
-          "@pyroprompts/any-chat-completions-mcp"
-        ],
+        "args": ["@pyroprompts/any-chat-completions-mcp"],
         "env": {
           "AI_CHAT_KEY": "OPENAI_KEY",
           "AI_CHAT_NAME": "OpenAI",
@@ -75,9 +70,7 @@
       },
       "any-chat-completions-mcp-openai-local": {
         "command": "node",
-        "args": [
-          "/path/to/any-chat-completions-mcp/build/index.js"
-        ],
+        "args": ["/path/to/any-chat-completions-mcp/build/index.js"],
         "env": {
           "AI_CHAT_KEY": "OPENAI_KEY",
           "AI_CHAT_NAME": "OpenAI",
@@ -87,9 +80,7 @@
       },
       "any-chat-completions-mcp-pyroprompts-local": {
         "command": "node",
-        "args": [
-          "/path/to/any-chat-completions-mcp/build/index.js"
-        ],
+        "args": ["/path/to/any-chat-completions-mcp/build/index.js"],
         "env": {
           "AI_CHAT_KEY": "PYROPROMPTS_KEY",
           "AI_CHAT_NAME": "PyroPrompts",
@@ -99,9 +90,7 @@
       },
       "any-chat-completions-mcp-perplexity-local": {
         "command": "node",
-        "args": [
-          "/path/to/any-chat-completions-mcp/build/index.js"
-        ],
+        "args": ["/path/to/any-chat-completions-mcp/build/index.js"],
         "env": {
           "AI_CHAT_KEY": "PERPLEXITY_KEY",
           "AI_CHAT_NAME": "Perplexity",
@@ -111,10 +100,7 @@
       },
       "pyroprompts-any-chat-completions-mcp-perplexity-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@pyroprompts/any-chat-completions-mcp"
-        ],
+        "args": ["-y", "@pyroprompts/any-chat-completions-mcp"],
         "env": {
           "AI_CHAT_KEY": "pplx-012345679",
           "AI_CHAT_NAME": "Perplexity",

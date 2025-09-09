@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "@growi/mcp-server"
-    ],
+    "args": ["@growi/mcp-server"],
     "env": {
       "GROWI_BASE_URL": "${user_config.growi_base_url}",
       "GROWI_API_TOKEN": "${user_config.growi_api_token}"
@@ -43,9 +41,7 @@
     "client_config_permutations": {
       "growi-mcp-server-npx-configured": {
         "command": "npx",
-        "args": [
-          "@growi/mcp-server"
-        ],
+        "args": ["@growi/mcp-server"],
         "env": {
           "GROWI_BASE_URL": "https://your-growi-instance.com",
           "GROWI_API_TOKEN": "your_growi_api_token"
@@ -53,9 +49,7 @@
       },
       "growi-mcp-server-pnpm-dev-cli": {
         "command": "pnpm",
-        "args": [
-          "dev:cli"
-        ],
+        "args": ["dev:cli"],
         "env": {
           "GROWI_BASE_URL": "https://your-growi-instance.com",
           "GROWI_API_TOKEN": "your_growi_api_token"
@@ -63,9 +57,7 @@
       },
       "growi-mcp-server-pnpm-dev-inspect": {
         "command": "pnpm",
-        "args": [
-          "dev:inspect"
-        ],
+        "args": ["dev:inspect"],
         "env": {
           "GROWI_BASE_URL": "https://your-growi-instance.com",
           "GROWI_API_TOKEN": "your_growi_api_token"
@@ -73,9 +65,7 @@
       },
       "growi-mcp-server-pnpm-start": {
         "command": "pnpm",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {
           "GROWI_BASE_URL": "https://your-growi-instance.com",
           "GROWI_API_TOKEN": "your_growi_api_token"

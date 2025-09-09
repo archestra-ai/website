@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-remote",
-      "https://gitmcp.io/${user_config.github_owner}/${user_config.github_repo}"
-    ],
+    "args": ["-y", "mcp-remote", "https://gitmcp.io/${user_config.github_owner}/${user_config.github_repo}"],
     "env": {}
   },
   "tools": [],
@@ -40,10 +36,7 @@
     "client_config_permutations": {
       "mcp-remote": {
         "command": "npx",
-        "args": [
-          "mcp-remote",
-          "https://gitmcp.io/{owner}/{repo}"
-        ],
+        "args": ["mcp-remote", "https://gitmcp.io/{owner}/{repo}"],
         "env": {}
       }
     },

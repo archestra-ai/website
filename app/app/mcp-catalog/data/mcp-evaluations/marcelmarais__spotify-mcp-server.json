@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py"
-    ],
+    "args": ["${__dirname}/main.py"],
     "env": {
       "SPOTIPY_CLIENT_ID": "${user_config.spotipy_client_id}",
       "SPOTIPY_CLIENT_SECRET": "${user_config.spotipy_client_secret}",
@@ -67,9 +65,7 @@
     "client_config_permutations": {
       "spotify-mcp-server": {
         "command": "uvx",
-        "args": [
-          "spotify-mcp-server"
-        ],
+        "args": ["spotify-mcp-server"],
         "env": {}
       }
     },

@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "server.py"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "server.py"],
     "env": {
       "LOCAL_IP": "${user_config.local_ip}",
       "ROSBRIDGE_IP": "${user_config.rosbridge_ip}",
@@ -52,12 +47,7 @@
     "client_config_permutations": {
       "ros-mcp-server": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/ABSOLUTE/PATH/TO/PARENT/FOLDER/ros-mcp-server",
-          "run",
-          "server.py"
-        ],
+        "args": ["--directory", "/ABSOLUTE/PATH/TO/PARENT/FOLDER/ros-mcp-server", "run", "server.py"],
         "env": {}
       }
     },

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "vrchat-mcp"
-    ],
+    "args": ["vrchat-mcp"],
     "env": {
       "VRCHAT_USERNAME": "${user_config.vrchat_username}",
       "VRCHAT_AUTH_TOKEN": "${user_config.vrchat_auth_token}"
@@ -43,9 +41,7 @@
     "client_config_permutations": {
       "vrchat-mcp": {
         "command": "npx",
-        "args": [
-          "vrchat-mcp"
-        ],
+        "args": ["vrchat-mcp"],
         "env": {
           "VRCHAT_USERNAME": "your_username",
           "VRCHAT_AUTH_TOKEN": "your_auth_token"
@@ -53,9 +49,7 @@
       },
       "vrchat-mcp-configured": {
         "command": "npx",
-        "args": [
-          "vrchat-mcp"
-        ],
+        "args": ["vrchat-mcp"],
         "env": {
           "VRCHAT_USERNAME": "your-username",
           "VRCHAT_AUTH_TOKEN": "your-auth-token"
@@ -63,9 +57,7 @@
       },
       "vrchat-mcp-stdio": {
         "command": "node",
-        "args": [
-          "./dist/main.js"
-        ],
+        "args": ["./dist/main.js"],
         "env": {
           "VRCHAT_USERNAME": "your_username",
           "VRCHAT_AUTH_TOKEN": "your_auth_token"

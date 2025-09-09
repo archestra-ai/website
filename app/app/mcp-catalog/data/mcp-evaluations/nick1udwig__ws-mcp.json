@@ -62,84 +62,49 @@
     "client_config_permutations": {
       "mcp-server-fetch": {
         "command": "uvx",
-        "args": [
-          "mcp-server-fetch"
-        ],
+        "args": ["mcp-server-fetch"],
         "env": {}
       },
       "wcgw_mcp-macos": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "wcgw@latest",
-          "--python",
-          "3.12",
-          "wcgw_mcp"
-        ],
+        "args": ["--from", "wcgw@latest", "--python", "3.12", "wcgw_mcp"],
         "env": {}
       },
       "wcgw_mcp-linux": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "/tmp/wcgw",
-          "--with",
-          "/tmp/wcgw/src/mcp_wcgw",
-          "--python",
-          "3.12",
-          "wcgw_mcp"
-        ],
+        "args": ["--from", "/tmp/wcgw", "--with", "/tmp/wcgw/src/mcp_wcgw", "--python", "3.12", "wcgw_mcp"],
         "env": {}
       },
       "modelcontextprotocol-server-brave-search-env-var": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-brave-search"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-brave-search"],
         "env": {
           "BRAVE_API_KEY": "YOUR_API_KEY_HERE"
         }
       },
       "modelcontextprotocol-server-brave-search-env-file": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-brave-search"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-brave-search"],
         "env": {}
       },
       "modelcontextprotocol-server-brave-search-multiple": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-brave-search"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-brave-search"],
         "env": {}
       },
       "mcp-server-fetch-multiple": {
         "command": "uvx",
-        "args": [
-          "mcp-server-fetch"
-        ],
+        "args": ["mcp-server-fetch"],
         "env": {}
       },
       "wcgw-default-configured": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "wcgw@latest",
-          "--python",
-          "3.12",
-          "wcgw_mcp"
-        ],
+        "args": ["--from", "wcgw@latest", "--python", "3.12", "wcgw_mcp"],
         "env": {}
       },
       "fetch-default-configured": {
         "command": "uvx",
-        "args": [
-          "mcp-server-fetch"
-        ],
+        "args": ["mcp-server-fetch"],
         "env": {}
       }
     },

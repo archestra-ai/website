@@ -9,16 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "--with-editable",
-      "${__dirname}",
-      "--python",
-      "3.13",
-      "mcp-aiven"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "--with-editable", "${__dirname}", "--python", "3.13", "mcp-aiven"],
     "env": {
       "AIVEN_BASE_URL": "${user_config.aiven_base_url}",
       "AIVEN_TOKEN": "${user_config.aiven_token}"
@@ -85,10 +76,7 @@
       },
       "mcp-aiven-dev": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "mcp_aiven/mcp_server.py"
-        ],
+        "args": ["dev", "mcp_aiven/mcp_server.py"],
         "env": {
           "AIVEN_BASE_URL": "https://api.aiven.io",
           "AIVEN_TOKEN": "$AIVEN_TOKEN"

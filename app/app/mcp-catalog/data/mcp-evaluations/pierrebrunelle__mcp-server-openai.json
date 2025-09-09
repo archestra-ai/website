@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "src.mcp_server_openai.server"
-    ],
+    "args": ["-m", "src.mcp_server_openai.server"],
     "env": {
       "PYTHONPATH": "${user_config.python_path}",
       "OPENAI_API_KEY": "${user_config.openai_api_key}"
@@ -43,10 +40,7 @@
     "client_config_permutations": {
       "mcp-server-openai": {
         "command": "python",
-        "args": [
-          "-m",
-          "src.mcp_server_openai.server"
-        ],
+        "args": ["-m", "src.mcp_server_openai.server"],
         "env": {
           "PYTHONPATH": "C:/path/to/your/mcp-server-openai",
           "OPENAI_API_KEY": "your-key-here"

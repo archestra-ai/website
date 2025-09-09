@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "run",
-      "${__dirname}/isaac_mcp/server.py"
-    ],
+    "args": ["run", "${__dirname}/isaac_mcp/server.py"],
     "env": {
       "BEAVER3D_MODEL": "${user_config.beaver3d_model}",
       "ARK_API_KEY": "${user_config.ark_api_key}",
@@ -51,20 +48,12 @@
     "client_config_permutations": {
       "isaac-sim-mcp": {
         "command": "uv",
-        "args": [
-          "run",
-          "/home/ubuntu/Documents/isaac-sim-mcp/isaac_mcp/server.py"
-        ],
+        "args": ["run", "/home/ubuntu/Documents/isaac-sim-mcp/isaac_mcp/server.py"],
         "env": {}
       },
       "isaac-sim-mcp-dev": {
         "command": "uv",
-        "args": [
-          "run",
-          "mcp",
-          "dev",
-          "~/Documents/isaac-sim-mcp/isaac_mcp/server.py"
-        ],
+        "args": ["run", "mcp", "dev", "~/Documents/isaac-sim-mcp/isaac_mcp/server.py"],
         "env": {}
       }
     },

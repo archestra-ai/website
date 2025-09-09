@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "mcp-chess"
-    ],
+    "args": ["mcp-chess"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "mcp-chess": {
         "command": "uvx",
-        "args": [
-          "mcp-chess"
-        ],
+        "args": ["mcp-chess"],
         "env": {}
       }
     },

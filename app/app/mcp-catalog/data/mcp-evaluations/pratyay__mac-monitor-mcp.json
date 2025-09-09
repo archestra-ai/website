@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/src/monitor.py"
-    ],
+    "args": ["${__dirname}/src/monitor.py"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "mac-monitor-mcp": {
         "command": "python",
-        "args": [
-          "src/monitor.py"
-        ],
+        "args": ["src/monitor.py"],
         "env": {}
       }
     },

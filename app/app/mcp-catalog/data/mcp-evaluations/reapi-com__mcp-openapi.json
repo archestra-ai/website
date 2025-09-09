@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@reapi/mcp-openapi@latest",
-      "--dir",
-      "${user_config.specs_directory}"
-    ],
+    "args": ["-y", "@reapi/mcp-openapi@latest", "--dir", "${user_config.specs_directory}"],
     "env": {}
   },
   "tools": [],
@@ -36,22 +31,12 @@
     "client_config_permutations": {
       "reapi-mcp-openapi-project-config": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@reapi/mcp-openapi@latest",
-          "--dir",
-          "./specs"
-        ],
+        "args": ["-y", "@reapi/mcp-openapi@latest", "--dir", "./specs"],
         "env": {}
       },
       "reapi-mcp-openapi-global-config": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@reapi/mcp-openapi@latest",
-          "--dir",
-          "/path/to/your/specs"
-        ],
+        "args": ["-y", "@reapi/mcp-openapi@latest", "--dir", "/path/to/your/specs"],
         "env": {}
       }
     },

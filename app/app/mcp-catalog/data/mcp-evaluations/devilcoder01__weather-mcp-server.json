@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/server/main.py"
-    ],
+    "args": ["${__dirname}/server/main.py"],
     "env": {
       "WEATHER_API_KEY": "${user_config.weather_api_key}"
     }
@@ -35,9 +33,7 @@
     "client_config_permutations": {
       "devilcoder01-weather-mcp-server": {
         "command": "python",
-        "args": [
-          "main.py"
-        ],
+        "args": ["main.py"],
         "env": {}
       }
     },

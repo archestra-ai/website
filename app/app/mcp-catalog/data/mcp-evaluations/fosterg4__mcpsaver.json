@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@fosterg4/mcpsaver"
-    ],
+    "args": ["-y", "@fosterg4/mcpsaver"],
     "env": {
       "LOG_LEVEL": "${user_config.log_level}"
     }
@@ -125,10 +122,7 @@
     "client_config_permutations": {
       "fosterg4-mcpsaver-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@fosterg4/mcpsaver"
-        ]
+        "args": ["-y", "@fosterg4/mcpsaver"]
       },
       "fosterg4-mcpsaver-global": {
         "command": "mcpsaver",
@@ -136,11 +130,7 @@
       },
       "fosterg4-mcpsaver-http": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@fosterg4/mcpsaver",
-          "mcpsaver-http"
-        ]
+        "args": ["-y", "@fosterg4/mcpsaver", "mcpsaver-http"]
       },
       "fosterg4-mcpsaver-http-configured": {
         "command": "mcpsaver-http",
@@ -152,16 +142,11 @@
       },
       "fosterg4-mcpsaver-dev-stdio": {
         "command": "npm",
-        "args": [
-          "start"
-        ]
+        "args": ["start"]
       },
       "fosterg4-mcpsaver-dev-http": {
         "command": "npm",
-        "args": [
-          "run",
-          "start:http"
-        ]
+        "args": ["run", "start:http"]
       }
     },
     "oauth": {

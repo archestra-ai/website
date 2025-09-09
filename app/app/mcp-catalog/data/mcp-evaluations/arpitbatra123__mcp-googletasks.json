@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {
       "GOOGLE_CLIENT_ID": "${user_config.google_client_id}",
       "GOOGLE_CLIENT_SECRET": "${user_config.google_client_secret}",
@@ -52,9 +50,7 @@
     "client_config_permutations": {
       "google-tasks": {
         "command": "node",
-        "args": [
-          "/path/to/google-tasks-mcp/build/index.js"
-        ],
+        "args": ["/path/to/google-tasks-mcp/build/index.js"],
         "env": {
           "GOOGLE_CLIENT_ID": "your_client_id_here",
           "GOOGLE_CLIENT_SECRET": "your_client_secret_here",

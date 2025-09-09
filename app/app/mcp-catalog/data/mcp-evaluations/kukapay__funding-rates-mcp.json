@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "funding-rates-mcp"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "funding-rates-mcp"],
     "env": {}
   },
   "tools": [],
@@ -28,12 +23,7 @@
     "client_config_permutations": {
       "funding-rates-mcp": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/absolute/path/to/funding-rates-mcp",
-          "run",
-          "funding-rates-mcp"
-        ],
+        "args": ["--directory", "/absolute/path/to/funding-rates-mcp", "run", "funding-rates-mcp"],
         "env": {}
       }
     },

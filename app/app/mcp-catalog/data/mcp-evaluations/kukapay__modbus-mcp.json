@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "modbus-mcp"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "modbus-mcp"],
     "env": {
       "MODBUS_TYPE": "${user_config.modbus_type}",
       "MODBUS_HOST": "${user_config.modbus_host}",
@@ -110,12 +105,7 @@
     "client_config_permutations": {
       "modbus-mcp-tcp-configured": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/modbus-mcp",
-          "run",
-          "modbus-mcp"
-        ],
+        "args": ["--directory", "/path/to/modbus-mcp", "run", "modbus-mcp"],
         "env": {
           "MODBUS_TYPE": "tcp",
           "MODBUS_HOST": "127.0.0.1",

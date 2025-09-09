@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@anaisbetts/mcp-youtube"
-    ],
+    "args": ["-y", "@anaisbetts/mcp-youtube"],
     "env": {}
   },
   "tools": [],
@@ -26,10 +23,7 @@
     "client_config_permutations": {
       "anaisbetts-mcp-youtube": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@anaisbetts/mcp-youtube"
-        ]
+        "args": ["-y", "@anaisbetts/mcp-youtube"]
       }
     },
     "oauth": {

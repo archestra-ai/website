@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@mcpdotdirect/evm-mcp-server"
-    ],
+    "args": ["-y", "@mcpdotdirect/evm-mcp-server"],
     "env": {}
   },
   "tools": [],
@@ -26,69 +23,47 @@
     "client_config_permutations": {
       "mcpdotdirect-evm-mcp-server-npx-stdio": {
         "command": "npx",
-        "args": [
-          "@mcpdotdirect/evm-mcp-server"
-        ],
+        "args": ["@mcpdotdirect/evm-mcp-server"],
         "env": {}
       },
       "mcpdotdirect-evm-mcp-server-npx-http": {
         "command": "npx",
-        "args": [
-          "@mcpdotdirect/evm-mcp-server",
-          "--http"
-        ],
+        "args": ["@mcpdotdirect/evm-mcp-server", "--http"],
         "env": {}
       },
       "mcpdotdirect-evm-mcp-server-bun-stdio": {
         "command": "bun",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {}
       },
       "mcpdotdirect-evm-mcp-server-bun-stdio-dev": {
         "command": "bun",
-        "args": [
-          "dev"
-        ],
+        "args": ["dev"],
         "env": {}
       },
       "mcpdotdirect-evm-mcp-server-bun-http": {
         "command": "bun",
-        "args": [
-          "start:http"
-        ],
+        "args": ["start:http"],
         "env": {}
       },
       "mcpdotdirect-evm-mcp-server-bun-http-dev": {
         "command": "bun",
-        "args": [
-          "dev:http"
-        ],
+        "args": ["dev:http"],
         "env": {}
       },
       "mcpdotdirect-evm-mcp-server-cursor-config": {
         "command": "npx",
-        "args": [
-          "@mcpdotdirect/evm-mcp-server"
-        ],
+        "args": ["@mcpdotdirect/evm-mcp-server"],
         "env": {}
       },
       "mcpdotdirect-evm-mcp-server-mcpjson-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@mcpdotdirect/evm-mcp-server"
-        ],
+        "args": ["-y", "@mcpdotdirect/evm-mcp-server"],
         "env": {}
       },
       "mcpdotdirect-evm-mcp-server-mcpjson-http": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@mcpdotdirect/evm-mcp-server",
-          "--http"
-        ],
+        "args": ["-y", "@mcpdotdirect/evm-mcp-server", "--http"],
         "env": {}
       }
     },

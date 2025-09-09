@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/dist/index.js",
-      "--browser",
-      "${user_config.browser_type}"
-    ],
+    "args": ["${__dirname}/dist/index.js", "--browser", "${user_config.browser_type}"],
     "env": {}
   },
   "tools": [],
@@ -35,18 +31,12 @@
     "client_config_permutations": {
       "imprvhub-mcp-browser-agent": {
         "command": "node",
-        "args": [
-          "ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js"
-        ],
+        "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js"],
         "env": {}
       },
       "imprvhub-mcp-browser-agent-configured": {
         "command": "node",
-        "args": [
-          "ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js",
-          "--browser",
-          "chrome"
-        ],
+        "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-browser-agent/dist/index.js", "--browser", "chrome"],
         "env": {}
       }
     },

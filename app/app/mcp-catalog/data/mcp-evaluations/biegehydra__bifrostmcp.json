@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/extension.js"
-    ],
+    "args": ["${__dirname}/extension.js"],
     "env": {}
   },
   "tools": [],
@@ -25,24 +23,12 @@
     "client_config_permutations": {
       "supergateway-configured-windows": {
         "command": "cmd",
-        "args": [
-          "/c",
-          "npx",
-          "-y",
-          "supergateway",
-          "--sse",
-          "http://localhost:8008/sse"
-        ],
+        "args": ["/c", "npx", "-y", "supergateway", "--sse", "http://localhost:8008/sse"],
         "env": {}
       },
       "supergateway-configured-mac-linux": {
         "command": "npx",
-        "args": [
-          "-y",
-          "supergateway",
-          "--sse",
-          "http://localhost:8008/sse"
-        ],
+        "args": ["-y", "supergateway", "--sse", "http://localhost:8008/sse"],
         "env": {}
       }
     },

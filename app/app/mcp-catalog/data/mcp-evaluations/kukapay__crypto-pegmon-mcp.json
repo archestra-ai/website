@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "run",
-      "main.py"
-    ],
+    "args": ["run", "main.py"],
     "env": {}
   },
   "tools": [],
@@ -26,10 +23,7 @@
     "client_config_permutations": {
       "crypto-pegmon-mcp": {
         "command": "uv",
-        "args": [
-          "run",
-          "main.py"
-        ],
+        "args": ["run", "main.py"],
         "env": {}
       }
     },

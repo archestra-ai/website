@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "simctl-mcp"
-    ],
+    "args": ["-y", "simctl-mcp"],
     "env": {
       "PORT": "${user_config.port}"
     }
@@ -36,43 +33,27 @@
     "client_config_permutations": {
       "simctl-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "simctl-mcp"
-        ],
+        "args": ["-y", "simctl-mcp"],
         "env": {}
       },
       "simctl-mcp-stdio": {
         "command": "npx",
-        "args": [
-          "simctl-mcp"
-        ],
+        "args": ["simctl-mcp"],
         "env": {}
       },
       "simctl-mcp-http": {
         "command": "npx",
-        "args": [
-          "simctl-mcp",
-          "--http"
-        ],
+        "args": ["simctl-mcp", "--http"],
         "env": {}
       },
       "simctl-mcp-http-port-3000": {
         "command": "npx",
-        "args": [
-          "simctl-mcp",
-          "--http",
-          "--port",
-          "3000"
-        ],
+        "args": ["simctl-mcp", "--http", "--port", "3000"],
         "env": {}
       },
       "simctl-mcp-http-env-port": {
         "command": "npx",
-        "args": [
-          "simctl-mcp",
-          "--http"
-        ],
+        "args": ["simctl-mcp", "--http"],
         "env": {
           "PORT": "3000"
         }

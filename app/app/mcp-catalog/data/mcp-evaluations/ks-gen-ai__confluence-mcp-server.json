@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {
       "CONFLUENCE_URL": "${user_config.confluence_url}",
       "CONFLUENCE_API_MAIL": "${user_config.confluence_api_mail}",
@@ -53,9 +51,7 @@
     "client_config_permutations": {
       "KS-GEN-AI-confluence-mcp-server-configured": {
         "command": "node",
-        "args": [
-          "/PATH_TO_THE_PROJECT/build/index.js"
-        ],
+        "args": ["/PATH_TO_THE_PROJECT/build/index.js"],
         "env": {
           "CONFLUENCE_URL": "https://XXXXXXXX.atlassian.net/wiki",
           "CONFLUENCE_API_MAIL": "Your email",

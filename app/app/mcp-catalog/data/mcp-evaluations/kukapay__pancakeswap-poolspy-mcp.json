@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "main.py"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "main.py"],
     "env": {
       "THEGRAPH_API_KEY": "${user_config.thegraph_api_key}"
     }
@@ -38,22 +33,14 @@
     "client_config_permutations": {
       "PancakeSwap-PoolSpy": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "path/to/pancakeswap-poolspy-mcp",
-          "run",
-          "main.py"
-        ],
+        "args": ["--directory", "path/to/pancakeswap-poolspy-mcp", "run", "main.py"],
         "env": {
           "THEGRAPH_API_KEY": "your api key from The Graph"
         }
       },
       "PancakeSwap-PoolSpy-dev": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "main.py"
-        ],
+        "args": ["dev", "main.py"],
         "env": {}
       }
     },

@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@makehq/mcp-server"
-    ],
+    "args": ["-y", "@makehq/mcp-server"],
     "env": {
       "MAKE_API_KEY": "${user_config.make_api_key}",
       "MAKE_ZONE": "${user_config.make_zone}",
@@ -50,10 +47,7 @@
     "client_config_permutations": {
       "makehq-mcp-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@makehq/mcp-server"
-        ],
+        "args": ["-y", "@makehq/mcp-server"],
         "env": {
           "MAKE_API_KEY": "<your-api-key>",
           "MAKE_ZONE": "<your-zone>",

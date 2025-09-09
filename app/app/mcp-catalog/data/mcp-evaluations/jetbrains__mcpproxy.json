@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@jetbrains/mcp-proxy"
-    ],
+    "args": ["-y", "@jetbrains/mcp-proxy"],
     "env": {
       "IDE_PORT": "${user_config.ide_port}",
       "HOST": "${user_config.host}",
@@ -51,18 +48,12 @@
     "client_config_permutations": {
       "jetbrains-mcp-proxy": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@jetbrains/mcp-proxy"
-        ],
+        "args": ["-y", "@jetbrains/mcp-proxy"],
         "env": {}
       },
       "jetbrains-mcp-proxy-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@jetbrains/mcp-proxy"
-        ],
+        "args": ["-y", "@jetbrains/mcp-proxy"],
         "env": {
           "IDE_PORT": "<port of IDE's built-in webserver>",
           "HOST": "<host/address of IDE's built-in webserver>",
@@ -71,10 +62,7 @@
       },
       "jetbrains-mcp-proxy-external-client": {
         "command": "sh",
-        "args": [
-          "-c",
-          "IDE_PORT=YOUR_IDEA_PORT HOST=YOUR_IDEA_LAN_IP npx -y @jetbrains/mcp-proxy"
-        ],
+        "args": ["-c", "IDE_PORT=YOUR_IDEA_PORT HOST=YOUR_IDEA_LAN_IP npx -y @jetbrains/mcp-proxy"],
         "env": {
           "IDE_PORT": "YOUR_IDEA_PORT",
           "HOST": "YOUR_IDEA_LAN_IP"

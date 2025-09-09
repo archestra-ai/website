@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "mcp",
-    "args": [
-      "dev",
-      "confluence.py"
-    ],
+    "args": ["dev", "confluence.py"],
     "env": {
       "CONFLUENCE_API_BASE": "${user_config.confluence_api_base}",
       "CONFLUENCE_USERNAME": "${user_config.confluence_username}",
@@ -53,17 +50,12 @@
     "client_config_permutations": {
       "confluence-py": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "confluence.py"
-        ],
+        "args": ["dev", "confluence.py"],
         "env": {}
       },
       "confluence-py-fallback": {
         "command": "python",
-        "args": [
-          "confluence.py"
-        ],
+        "args": ["confluence.py"],
         "env": {}
       }
     },

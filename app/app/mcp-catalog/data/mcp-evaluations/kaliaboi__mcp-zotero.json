@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-zotero"
-    ],
+    "args": ["-y", "mcp-zotero"],
     "env": {
       "ZOTERO_API_KEY": "${user_config.zotero_api_key}",
       "ZOTERO_USER_ID": "${user_config.zotero_user_id}"
@@ -49,10 +46,7 @@
       },
       "mcp-zotero-npx": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-zotero"
-        ],
+        "args": ["-y", "mcp-zotero"],
         "env": {}
       },
       "mcp-zotero-configured": {

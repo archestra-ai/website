@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "main.py"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "main.py"],
     "env": {}
   },
   "tools": [],
@@ -28,12 +23,7 @@
     "client_config_permutations": {
       "DAO Proposals": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/dao-proposals-mcp",
-          "run",
-          "main.py"
-        ],
+        "args": ["--directory", "/path/to/dao-proposals-mcp", "run", "main.py"],
         "env": {}
       }
     },

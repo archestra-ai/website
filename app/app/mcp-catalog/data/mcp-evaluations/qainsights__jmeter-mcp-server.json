@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "jmeter_server.py"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "jmeter_server.py"],
     "env": {
       "JMETER_HOME": "${user_config.jmeter_home}",
       "JMETER_BIN": "${user_config.jmeter_bin}",
@@ -53,12 +48,7 @@
     "client_config_permutations": {
       "jmeter": {
         "command": "/path/to/uv",
-        "args": [
-          "--directory",
-          "/path/to/jmeter-mcp-server",
-          "run",
-          "jmeter_server.py"
-        ],
+        "args": ["--directory", "/path/to/jmeter-mcp-server", "run", "jmeter_server.py"],
         "env": {}
       }
     },

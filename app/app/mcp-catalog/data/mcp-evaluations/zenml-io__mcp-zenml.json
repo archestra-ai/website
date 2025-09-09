@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "run",
-      "${__dirname}/zenml_server.py"
-    ],
+    "args": ["run", "${__dirname}/zenml_server.py"],
     "env": {
       "LOGLEVEL": "INFO",
       "NO_COLOR": "1",
@@ -49,10 +46,7 @@
     "client_config_permutations": {
       "zenml": {
         "command": "/usr/local/bin/uv",
-        "args": [
-          "run",
-          "path/to/server/zenml_server.py"
-        ],
+        "args": ["run", "path/to/server/zenml_server.py"],
         "env": {
           "LOGLEVEL": "INFO",
           "NO_COLOR": "1",

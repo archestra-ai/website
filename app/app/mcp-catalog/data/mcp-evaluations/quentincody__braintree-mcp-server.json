@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/braintree_server.py"
-    ],
+    "args": ["${__dirname}/braintree_server.py"],
     "env": {
       "BRAINTREE_MERCHANT_ID": "${user_config.braintree_merchant_id}",
       "BRAINTREE_PUBLIC_KEY": "${user_config.braintree_public_key}",
@@ -59,16 +57,12 @@
     "client_config_permutations": {
       "braintree-server-stdio": {
         "command": "python",
-        "args": [
-          "braintree_server.py"
-        ],
+        "args": ["braintree_server.py"],
         "env": {}
       },
       "braintree-sse-server-sse": {
         "command": "python",
-        "args": [
-          "braintree_sse_server.py"
-        ],
+        "args": ["braintree_sse_server.py"],
         "env": {}
       }
     },

@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@ashra/mcp-server"
-    ],
+    "args": ["-y", "@ashra/mcp-server"],
     "env": {}
   },
   "tools": [],
@@ -26,9 +23,7 @@
     "client_config_permutations": {
       "ashra-mcp-configured": {
         "command": "node",
-        "args": [
-          "<path/to/ashra-mcp>/build/index.js"
-        ],
+        "args": ["<path/to/ashra-mcp>/build/index.js"],
         "env": {
           "ASHRA_API_KEY": "<YOUR-API-KEY>"
         }

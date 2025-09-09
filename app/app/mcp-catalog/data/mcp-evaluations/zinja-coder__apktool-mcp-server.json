@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/apktool_mcp_server.py"
-    ],
+    "args": ["${__dirname}/apktool_mcp_server.py"],
     "env": {}
   },
   "tools": [],
@@ -25,11 +23,7 @@
     "client_config_permutations": {
       "apktool-mcp-server": {
         "command": "uv",
-        "args": [
-          "run",
-          "python",
-          "apktool_mcp_server.py"
-        ],
+        "args": ["run", "python", "apktool_mcp_server.py"],
         "env": {}
       }
     },

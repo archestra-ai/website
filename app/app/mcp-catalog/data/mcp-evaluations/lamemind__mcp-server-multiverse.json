@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@lamemind/mcp-server-multiverse@latest",
-      "${user_config.multiverse_config_path}"
-    ],
+    "args": ["-y", "@lamemind/mcp-server-multiverse@latest", "${user_config.multiverse_config_path}"],
     "env": {}
   },
   "tools": [],
@@ -34,28 +30,17 @@
     "client_config_permutations": {
       "lamemind-mcp-server-multiverse-job-config": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@lamemind/mcp-server-multiverse@latest",
-          "/path/to/your/job-multiverse.json"
-        ],
+        "args": ["-y", "@lamemind/mcp-server-multiverse@latest", "/path/to/your/job-multiverse.json"],
         "env": {}
       },
       "lamemind-mcp-server-multiverse-side-project-config": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@lamemind/mcp-server-multiverse@latest",
-          "/path/to/your/side-project-multiverse.json"
-        ],
+        "args": ["-y", "@lamemind/mcp-server-multiverse@latest", "/path/to/your/side-project-multiverse.json"],
         "env": {}
       },
       "benborla29-mcp-server-mysql-job-db": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@benborla29/mcp-server-mysql"
-        ],
+        "args": ["-y", "@benborla29/mcp-server-mysql"],
         "env": {
           "MYSQL_HOST": "127.0.0.1",
           "MYSQL_PORT": "3306",
@@ -66,10 +51,7 @@
       },
       "benborla29-mcp-server-mysql-side-project-db": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@benborla29/mcp-server-mysql"
-        ],
+        "args": ["-y", "@benborla29/mcp-server-mysql"],
         "env": {
           "MYSQL_HOST": "127.0.0.1",
           "MYSQL_PORT": "3306",
@@ -80,26 +62,17 @@
       },
       "modelcontextprotocol-server-filesystem-with-path": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-filesystem@latest",
-          "/full/path/to/side-project"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-filesystem@latest", "/full/path/to/side-project"],
         "env": {}
       },
       "my-own-mcp-server-local-script": {
         "command": "node",
-        "args": [
-          "/my-own/mcp-server/i-m-working-on/build/index.js"
-        ],
+        "args": ["/my-own/mcp-server/i-m-working-on/build/index.js"],
         "env": {}
       },
       "modelcontextprotocol-server-github-with-token": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-github@latest"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-github@latest"],
         "env": {
           "GITHUB_PERSONAL_ACCESS_TOKEN": "<your-personal-access-token>"
         }

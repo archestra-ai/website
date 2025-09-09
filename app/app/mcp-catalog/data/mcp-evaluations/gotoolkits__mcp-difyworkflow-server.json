@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "mcp-difyworkflow-server",
-    "args": [
-      "-base-url",
-      "${user_config.base_url}"
-    ],
+    "args": ["-base-url", "${user_config.base_url}"],
     "env": {
       "DIFY_WORKFLOW_NAME": "${user_config.dify_workflow_name}",
       "DIFY_API_KEYS": "${user_config.dify_api_keys}"
@@ -54,10 +51,7 @@
     "client_config_permutations": {
       "mcp-difyworkflow-server": {
         "command": "mcp-difyworkflow-server",
-        "args": [
-          "-base-url",
-          "http://localhost/v1"
-        ],
+        "args": ["-base-url", "http://localhost/v1"],
         "env": {
           "DIFY_WORKFLOW_NAME": "workflow-translator“,workflow-genImag",
           "DIFY_API_KEYS": "appkey-xxxxxxxxxxxa,appkey-xxxxxxxxxxxb"

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "defi-yields-mcp"
-    ],
+    "args": ["defi-yields-mcp"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "defi-yields-mcp": {
         "command": "uvx",
-        "args": [
-          "defi-yields-mcp"
-        ],
+        "args": ["defi-yields-mcp"],
         "env": {}
       }
     },

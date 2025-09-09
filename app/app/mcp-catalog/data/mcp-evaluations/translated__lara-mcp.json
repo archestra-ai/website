@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@translated/lara-mcp",
-      "stdio"
-    ],
+    "args": ["-y", "@translated/lara-mcp", "stdio"],
     "env": {
       "LARA_TRANSLATE_API_KEY": "${user_config.lara_translate_api_key}"
     }
@@ -37,37 +33,21 @@
     "client_config_permutations": {
       "translated-lara-mcp": {
         "command": "lara-mcp",
-        "args": [
-          "--port",
-          "3000",
-          "--api-key",
-          "YOUR_LARA_API_KEY"
-        ],
+        "args": ["--port", "3000", "--api-key", "YOUR_LARA_API_KEY"],
         "env": {
           "LARA_API_KEY": "YOUR_LARA_API_KEY"
         }
       },
       "translatednet-lara-mcp-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "3000:3000",
-          "-e",
-          "LARA_API_KEY=YOUR_LARA_API_KEY",
-          "translatednet/lara-mcp"
-        ],
+        "args": ["run", "-p", "3000:3000", "-e", "LARA_API_KEY=YOUR_LARA_API_KEY", "translatednet/lara-mcp"],
         "env": {
           "LARA_API_KEY": "YOUR_LARA_API_KEY"
         }
       },
       "translated-lara-mcp-stdio": {
         "command": "lara-mcp",
-        "args": [
-          "stdio",
-          "--api-key",
-          "YOUR_LARA_API_KEY"
-        ],
+        "args": ["stdio", "--api-key", "YOUR_LARA_API_KEY"],
         "env": {
           "LARA_API_KEY": "YOUR_LARA_API_KEY"
         }

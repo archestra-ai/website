@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@raygun.io/mcp-server-raygun"
-    ],
+    "args": ["-y", "@raygun.io/mcp-server-raygun"],
     "env": {
       "RAYGUN_PAT_TOKEN": "${user_config.raygun_pat_token}",
       "SOURCEMAP_ALLOWED_DIRS": "${user_config.sourcemap_allowed_dirs}"
@@ -43,10 +40,7 @@
     "client_config_permutations": {
       "raygun.io-mcp-server-raygun": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@raygun.io/mcp-server-raygun"
-        ],
+        "args": ["-y", "@raygun.io/mcp-server-raygun"],
         "env": {
           "RAYGUN_PAT_TOKEN": "your-pat-token-here"
         }

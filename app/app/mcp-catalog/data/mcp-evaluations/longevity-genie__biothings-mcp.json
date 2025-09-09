@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "biothings-mcp",
-      "--output-dir",
-      "${user_config.output_dir}"
-    ],
+    "args": ["biothings-mcp", "--output-dir", "${user_config.output_dir}"],
     "env": {}
   },
   "tools": [],
@@ -34,52 +30,32 @@
     "client_config_permutations": {
       "biothings-mcp-stdio": {
         "command": "uvx",
-        "args": [
-          "biothings-mcp"
-        ],
+        "args": ["biothings-mcp"],
         "env": {}
       },
       "biothings-mcp-stdio-explicit": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "biothings-mcp",
-          "stdio"
-        ],
+        "args": ["--from", "biothings-mcp", "stdio"],
         "env": {}
       },
       "biothings-mcp-server": {
         "command": "uvx",
-        "args": [
-          "biothings-mcp",
-          "server"
-        ],
+        "args": ["biothings-mcp", "server"],
         "env": {}
       },
       "biothings-mcp-server-port-8000": {
         "command": "uvx",
-        "args": [
-          "biothings-mcp",
-          "server",
-          "--port",
-          "8000"
-        ],
+        "args": ["biothings-mcp", "server", "--port", "8000"],
         "env": {}
       },
       "biothings-mcp-sse": {
         "command": "uvx",
-        "args": [
-          "biothings-mcp",
-          "sse"
-        ],
+        "args": ["biothings-mcp", "sse"],
         "env": {}
       },
       "biothings-mcp-repo": {
         "command": "uv",
-        "args": [
-          "run",
-          "server"
-        ],
+        "args": ["run", "server"],
         "env": {}
       }
     },

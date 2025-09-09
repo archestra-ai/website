@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py"
-    ],
+    "args": ["${__dirname}/main.py"],
     "env": {
       "DATABRICKS_HOST": "${user_config.databricks_host}",
       "DATABRICKS_TOKEN": "${user_config.databricks_token}"
@@ -43,9 +41,7 @@
     "client_config_permutations": {
       "databricks-genie-mcp-server": {
         "command": "python",
-        "args": [
-          "main.py"
-        ],
+        "args": ["main.py"],
         "env": {
           "DATABRICKS_HOST": "your-databricks-instance.cloud.databricks.com",
           "DATABRICKS_TOKEN": "your-personal-access-token"

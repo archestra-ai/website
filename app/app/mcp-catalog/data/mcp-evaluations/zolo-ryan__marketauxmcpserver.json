@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {
       "MARKETAUX_API_KEY": "${user_config.marketaux_api_key}"
     }
@@ -35,9 +33,7 @@
     "client_config_permutations": {
       "newsmcp": {
         "command": "node",
-        "args": [
-          "C:\\Path\\To\\Your\\project\\NewsMCP\\build\\index.js"
-        ],
+        "args": ["C:\\Path\\To\\Your\\project\\NewsMCP\\build\\index.js"],
         "env": {
           "MARKETAUX_API_KEY": "Your-API-TOKEN"
         }

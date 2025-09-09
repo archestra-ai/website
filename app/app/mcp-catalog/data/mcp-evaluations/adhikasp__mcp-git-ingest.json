@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "--from",
-      "git+https://github.com/adhikasp/mcp-git-ingest",
-      "mcp-git-ingest"
-    ],
+    "args": ["--from", "git+https://github.com/adhikasp/mcp-git-ingest", "mcp-git-ingest"],
     "env": {}
   },
   "tools": [],
@@ -27,11 +23,7 @@
     "client_config_permutations": {
       "mcp-git-ingest": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "git+https://github.com/adhikasp/mcp-git-ingest",
-          "mcp-git-ingest"
-        ],
+        "args": ["--from", "git+https://github.com/adhikasp/mcp-git-ingest", "mcp-git-ingest"],
         "env": {}
       }
     },

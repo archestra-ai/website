@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@boldsign/mcp"
-    ],
+    "args": ["-y", "@boldsign/mcp"],
     "env": {
       "BOLDSIGN_API_KEY": "${user_config.boldsign_api_key}",
       "BOLDSIGN_API_REGION": "${user_config.boldsign_api_region}"
@@ -44,10 +41,7 @@
     "client_config_permutations": {
       "boldsign-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@boldsign/mcp"
-        ],
+        "args": ["-y", "@boldsign/mcp"],
         "env": {
           "BOLDSIGN_API_KEY": "YOUR_BOLDSIGN_API_KEY",
           "BOLDSIGN_API_REGION": "US"

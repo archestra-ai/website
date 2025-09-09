@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "pipx",
-    "args": [
-      "run",
-      "keep-mcp"
-    ],
+    "args": ["run", "keep-mcp"],
     "env": {
       "GOOGLE_EMAIL": "${user_config.google_email}",
       "GOOGLE_MASTER_TOKEN": "${user_config.google_master_token}",
@@ -51,10 +48,7 @@
     "client_config_permutations": {
       "keep-mcp-pipx": {
         "command": "pipx",
-        "args": [
-          "run",
-          "keep-mcp"
-        ],
+        "args": ["run", "keep-mcp"],
         "env": {
           "GOOGLE_EMAIL": "Your Google Email",
           "GOOGLE_MASTER_TOKEN": "Your Google Master Token - see README.md"
@@ -62,10 +56,7 @@
       },
       "keep-mcp-pipx-unsafe": {
         "command": "pipx",
-        "args": [
-          "run",
-          "keep-mcp"
-        ],
+        "args": ["run", "keep-mcp"],
         "env": {
           "GOOGLE_EMAIL": "Your Google Email",
           "GOOGLE_MASTER_TOKEN": "Your Google Master Token - see README.md",

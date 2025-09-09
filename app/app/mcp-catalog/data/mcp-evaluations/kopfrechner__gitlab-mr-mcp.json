@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/index.js"
-    ],
+    "args": ["${__dirname}/index.js"],
     "env": {
       "MR_MCP_GITLAB_TOKEN": "${user_config.mr_mcp_gitlab_token}",
       "MR_MCP_GITLAB_HOST": "${user_config.mr_mcp_gitlab_host}",
@@ -59,9 +57,7 @@
     "client_config_permutations": {
       "gitlab-mr-mcp": {
         "command": "node",
-        "args": [
-          "/path/to/gitlab-mr-mcp/index.js"
-        ],
+        "args": ["/path/to/gitlab-mr-mcp/index.js"],
         "env": {
           "MR_MCP_GITLAB_TOKEN": "your_gitlab_token",
           "MR_MCP_GITLAB_HOST": "your_gitlab_host"

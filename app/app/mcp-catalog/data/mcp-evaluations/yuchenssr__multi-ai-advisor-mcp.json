@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {
       "SERVER_NAME": "${user_config.server_name}",
       "SERVER_VERSION": "${user_config.server_version}",
@@ -91,9 +89,7 @@
     "client_config_permutations": {
       "YuChenSSR-multi-ai-advisor-mcp": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/multi-ai-advisor-mcp/build/index.js"
-        ],
+        "args": ["/absolute/path/to/multi-ai-advisor-mcp/build/index.js"],
         "env": {}
       }
     },

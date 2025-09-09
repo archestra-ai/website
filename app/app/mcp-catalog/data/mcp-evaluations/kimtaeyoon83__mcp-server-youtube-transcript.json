@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@mcp/youtube-transcriber"
-    ],
+    "args": ["-y", "@mcp/youtube-transcriber"],
     "env": {}
   },
   "tools": [],
@@ -26,10 +23,7 @@
     "client_config_permutations": {
       "kimtaeyoon83-mcp-server-youtube-transcript": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@kimtaeyoon83/mcp-server-youtube-transcript"
-        ],
+        "args": ["-y", "@kimtaeyoon83/mcp-server-youtube-transcript"],
         "env": {}
       }
     },

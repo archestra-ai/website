@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${user_config.ghidra_mcp_path}/GhidraMCP/ghidra_server.py"
-    ],
+    "args": ["${user_config.ghidra_mcp_path}/GhidraMCP/ghidra_server.py"],
     "env": {}
   },
   "tools": [],
@@ -33,9 +31,7 @@
     "client_config_permutations": {
       "ghidra": {
         "command": "python",
-        "args": [
-          "PATH-TO-REPO/GhidraMCP/ghidra_server.py"
-        ],
+        "args": ["PATH-TO-REPO/GhidraMCP/ghidra_server.py"],
         "env": {}
       }
     },

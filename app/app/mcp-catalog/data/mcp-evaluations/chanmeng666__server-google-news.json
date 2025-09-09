@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/dist/index.js"
-    ],
+    "args": ["${__dirname}/dist/index.js"],
     "env": {
       "SERP_API_KEY": "${user_config.serp_api_key}"
     }
@@ -35,18 +33,14 @@
     "client_config_permutations": {
       "google-news": {
         "command": "node",
-        "args": [
-          "dist/index.js"
-        ],
+        "args": ["dist/index.js"],
         "env": {
           "SERP_API_KEY": "your-api-key"
         }
       },
       "chanmeng666-google-news-server": {
         "command": "npm",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {
           "SERP_API_KEY": "your-api-key"
         }

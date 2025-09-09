@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "aiwen-mcp-server-geoip"
-    ],
+    "args": ["-y", "aiwen-mcp-server-geoip"],
     "env": {
       "AIWEN_API_KEY": "${user_config.aiwen_api_key}",
       "IPV4_ACCURACY": "${user_config.ipv4_accuracy}",
@@ -52,10 +49,7 @@
     "client_config_permutations": {
       "aiwen-mcp-server-geoip": {
         "command": "npx",
-        "args": [
-          "-y",
-          "aiwen-mcp-server-geoip"
-        ],
+        "args": ["-y", "aiwen-mcp-server-geoip"],
         "env": {
           "AIWEN_API_KEY": "xxxxxx",
           "IPV4_ACCURACY": "city",

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "npm",
-    "args": [
-      "start"
-    ],
+    "args": ["start"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "medical-mcp-stdio": {
         "command": "npm",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {}
       }
     },

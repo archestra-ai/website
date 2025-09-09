@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@shopify/dev-mcp@latest"
-    ],
+    "args": ["-y", "@shopify/dev-mcp@latest"],
     "env": {
       "OPT_OUT_INSTRUMENTATION": "${user_config.opt_out_instrumentation}",
       "POLARIS_UNIFIED": "${user_config.polaris_unified}"
@@ -42,47 +39,31 @@
     "client_config_permutations": {
       "shopify-dev-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@shopify/dev-mcp@latest"
-        ],
+        "args": ["-y", "@shopify/dev-mcp@latest"],
         "env": {}
       },
       "shopify-dev-mcp-windows": {
         "command": "cmd",
-        "args": [
-          "/k",
-          "npx",
-          "-y",
-          "@shopify/dev-mcp@latest"
-        ],
+        "args": ["/k", "npx", "-y", "@shopify/dev-mcp@latest"],
         "env": {}
       },
       "shopify-dev-mcp-no-instrumentation": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@shopify/dev-mcp@latest"
-        ],
+        "args": ["-y", "@shopify/dev-mcp@latest"],
         "env": {
           "OPT_OUT_INSTRUMENTATION": "true"
         }
       },
       "shopify-dev-mcp-polaris": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@shopify/dev-mcp@latest"
-        ],
+        "args": ["-y", "@shopify/dev-mcp@latest"],
         "env": {
           "POLARIS_UNIFIED": "true"
         }
       },
       "shopify-dev-mcp-dev": {
         "command": "node",
-        "args": [
-          "<absolute_path_of_project>/dist/index.js"
-        ],
+        "args": ["<absolute_path_of_project>/dist/index.js"],
         "env": {}
       }
     },

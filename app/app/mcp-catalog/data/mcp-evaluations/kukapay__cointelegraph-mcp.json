@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "main.py"
-    ],
+    "args": ["main.py"],
     "env": {}
   },
   "tools": [],
@@ -25,17 +23,12 @@
     "client_config_permutations": {
       "cointelegraph-mcp-server-dev": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "main.py"
-        ],
+        "args": ["dev", "main.py"],
         "env": {}
       },
       "cointelegraph-mcp-server-prod": {
         "command": "python",
-        "args": [
-          "main.py"
-        ],
+        "args": ["main.py"],
         "env": {}
       }
     },

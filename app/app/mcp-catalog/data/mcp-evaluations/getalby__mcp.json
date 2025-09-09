@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@getalby/mcp"
-    ],
+    "args": ["-y", "@getalby/mcp"],
     "env": {
       "NWC_CONNECTION_STRING": "${user_config.nwc_connection_string}",
       "MODE": "${user_config.mode}"
@@ -44,20 +41,14 @@
     "client_config_permutations": {
       "getalby-mcp-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@getalby/mcp"
-        ],
+        "args": ["-y", "@getalby/mcp"],
         "env": {
           "NWC_CONNECTION_STRING": "YOUR NWC CONNECTION STRING HERE"
         }
       },
       "getalby-mcp-http": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@getalby/mcp"
-        ],
+        "args": ["-y", "@getalby/mcp"],
         "env": {
           "MODE": "HTTP",
           "NWC_CONNECTION_STRING": "YOUR NWC CONNECTION STRING HERE"

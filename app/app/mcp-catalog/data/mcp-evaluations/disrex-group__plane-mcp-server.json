@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@disrex/plane-mcp-server"
-    ],
+    "args": ["-y", "@disrex/plane-mcp-server"],
     "env": {
       "PLANE_API_KEY": "${user_config.plane_api_key}",
       "PLANE_WORKSPACE_SLUG": "${user_config.plane_workspace_slug}"
@@ -77,10 +74,7 @@
     "client_config_permutations": {
       "disrex-plane-mcp-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@disrex/plane-mcp-server"
-        ],
+        "args": ["-y", "@disrex/plane-mcp-server"],
         "env": {
           "PLANE_API_KEY": "<YOUR_PLANE_API_KEY_HERE>",
           "PLANE_WORKSPACE_SLUG": "<YOUR_WORKSPACE_SLUG_HERE>"

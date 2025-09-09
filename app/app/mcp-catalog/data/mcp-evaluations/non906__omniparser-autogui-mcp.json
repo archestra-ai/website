@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "omniparser-autogui-mcp"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "omniparser-autogui-mcp"],
     "env": {
       "PYTHONIOENCODING": "utf-8",
       "OCR_LANG": "${user_config.ocr_lang}",
@@ -110,12 +105,7 @@
     "client_config_permutations": {
       "omniparser_autogui_mcp": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "D:\\CLONED_PATH\\omniparser-autogui-mcp",
-          "run",
-          "omniparser-autogui-mcp"
-        ],
+        "args": ["--directory", "D:\\CLONED_PATH\\omniparser-autogui-mcp", "run", "omniparser-autogui-mcp"],
         "env": {
           "PYTHONIOENCODING": "utf-8",
           "OCR_LANG": "en"

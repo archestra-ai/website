@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py"
-    ],
+    "args": ["${__dirname}/main.py"],
     "env": {
       "SOLSNIFFER_API_KEY": "${user_config.solsniffer_api_key}"
     }
@@ -35,9 +33,7 @@
     "client_config_permutations": {
       "rug-check-mcp": {
         "command": "python",
-        "args": [
-          "path/to/rug-check-mcp/main.py"
-        ],
+        "args": ["path/to/rug-check-mcp/main.py"],
         "env": {
           "SOLSNIFFER_API_KEY": "your_solsniffer_api_key_here"
         }

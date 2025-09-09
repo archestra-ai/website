@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/server.py"
-    ],
+    "args": ["${__dirname}/server.py"],
     "env": {}
   },
   "tools": [],
@@ -25,10 +23,7 @@
     "client_config_permutations": {
       "higress-ops-mcp-server-stdio": {
         "command": "uv",
-        "args": [
-          "run",
-          "client.py"
-        ],
+        "args": ["run", "client.py"],
         "env": {}
       }
     },

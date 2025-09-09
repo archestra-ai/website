@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {}
   },
   "tools": [],
@@ -25,16 +23,12 @@
     "client_config_permutations": {
       "mcp-claude-hackernews-stdio": {
         "command": "node",
-        "args": [
-          "build/index.js"
-        ],
+        "args": ["build/index.js"],
         "env": {}
       },
       "hackerNews": {
         "command": "node",
-        "args": [
-          "ABSOLUTE_PATH_TO_DIRECTORY/mcp-claude-hackernews/build/index.js"
-        ],
+        "args": ["ABSOLUTE_PATH_TO_DIRECTORY/mcp-claude-hackernews/build/index.js"],
         "env": {}
       }
     },

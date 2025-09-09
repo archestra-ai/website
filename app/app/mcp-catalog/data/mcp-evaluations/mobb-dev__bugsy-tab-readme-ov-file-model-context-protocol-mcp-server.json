@@ -23,30 +23,17 @@
     "client_config_permutations": {
       "mobb-bugsy-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@mobb/bugsy-server"
-        ],
+        "args": ["-y", "@mobb/bugsy-server"],
         "env": {}
       },
       "mobb-bugsy-server-with-config": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@mobb/bugsy-server",
-          "--config",
-          "./bugsy-config.json"
-        ],
+        "args": ["-y", "@mobb/bugsy-server", "--config", "./bugsy-config.json"],
         "env": {}
       },
       "mobb-bugsy-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8080:8080",
-          "mobb/bugsy-server:latest"
-        ],
+        "args": ["run", "-p", "8080:8080", "mobb/bugsy-server:latest"],
         "env": {}
       },
       "mobb-bugsy-server-docker-configured": {

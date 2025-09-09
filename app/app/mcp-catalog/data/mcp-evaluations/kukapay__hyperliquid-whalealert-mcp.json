@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "main.py"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "main.py"],
     "env": {
       "COINGLASS_API_KEY": "${user_config.coinglass_api_key}"
     }
@@ -38,12 +33,7 @@
     "client_config_permutations": {
       "hyperliquid-whalealert": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/hyperliquid-whalealert-mcp",
-          "run",
-          "main.py"
-        ],
+        "args": ["--directory", "/path/to/hyperliquid-whalealert-mcp", "run", "main.py"],
         "env": {
           "COINGLASS_API_KEY": "your_api_key"
         }

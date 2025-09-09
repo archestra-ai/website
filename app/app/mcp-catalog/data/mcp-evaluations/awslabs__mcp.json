@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/server/main.py"
-    ],
+    "args": ["${__dirname}/server/main.py"],
     "env": {}
   },
   "tools": [],
@@ -25,12 +23,7 @@
     "client_config_permutations": {
       "aws-documentation-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8080:8080",
-          "public.ecr.aws/aws-mcp/aws-documentation-server:latest"
-        ],
+        "args": ["run", "-p", "8080:8080", "public.ecr.aws/aws-mcp/aws-documentation-server:latest"],
         "env": {}
       },
       "aws-bedrock-server-docker": {

@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@just-every/mcp-screenshot-website-fast"
-    ],
+    "args": ["-y", "@just-every/mcp-screenshot-website-fast"],
     "env": {}
   },
   "tools": [],
@@ -26,18 +23,12 @@
     "client_config_permutations": {
       "just-every-mcp-screenshot-website-fast": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@just-every/mcp-screenshot-website-fast"
-        ],
+        "args": ["-y", "@just-every/mcp-screenshot-website-fast"],
         "env": {}
       },
       "just-every-mcp-screenshot-website-fast-dev": {
         "command": "npm",
-        "args": [
-          "run",
-          "serve:dev"
-        ],
+        "args": ["run", "serve:dev"],
         "env": {}
       }
     },

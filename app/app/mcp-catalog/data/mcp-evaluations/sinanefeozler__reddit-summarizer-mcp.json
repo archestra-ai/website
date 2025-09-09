@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py"
-    ],
+    "args": ["${__dirname}/main.py"],
     "env": {
       "REDDIT_USERNAME": "${user_config.reddit_username}",
       "REDDIT_PASSWORD": "${user_config.reddit_password}",

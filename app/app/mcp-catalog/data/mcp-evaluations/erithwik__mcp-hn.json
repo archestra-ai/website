@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "mcp-hn"
-    ],
+    "args": ["mcp-hn"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "mcp-hn": {
         "command": "uvx",
-        "args": [
-          "mcp-hn"
-        ],
+        "args": ["mcp-hn"],
         "env": {}
       }
     },

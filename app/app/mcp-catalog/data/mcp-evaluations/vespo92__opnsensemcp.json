@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/dist/index.js"
-    ],
+    "args": ["${__dirname}/dist/index.js"],
     "env": {
       "OPNSENSE_HOST": "${user_config.opnsense_host}",
       "OPNSENSE_API_KEY": "${user_config.opnsense_api_key}",
@@ -90,35 +88,22 @@
     "client_config_permutations": {
       "opnsense-mcp-stdio": {
         "command": "npm",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {}
       },
       "opnsense-mcp-sse": {
         "command": "npm",
-        "args": [
-          "run",
-          "start:sse"
-        ],
+        "args": ["run", "start:sse"],
         "env": {}
       },
       "opnsense-mcp-sse-port-8080": {
         "command": "npm",
-        "args": [
-          "run",
-          "start:sse",
-          "--",
-          "--port",
-          "8080"
-        ],
+        "args": ["run", "start:sse", "--", "--port", "8080"],
         "env": {}
       },
       "opnsense-mcp-claude-desktop-configured": {
         "command": "node",
-        "args": [
-          "dist/index.js"
-        ],
+        "args": ["dist/index.js"],
         "env": {
           "OPNSENSE_HOST": "https://192.168.1.1:55443",
           "OPNSENSE_API_KEY": "your_api_key",

@@ -9,13 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-remote",
-      "https://mcp.stape.ai/sse",
-      "--header",
-      "Authorization: ${user_config.stape_api_key}"
-    ],
+    "args": ["-y", "mcp-remote", "https://mcp.stape.ai/sse", "--header", "Authorization: ${user_config.stape_api_key}"],
     "env": {}
   },
   "tools": [],

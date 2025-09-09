@@ -9,14 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@mindpilot/mcp@latest",
-      "--port",
-      "${user_config.port}",
-      "--data-path",
-      "${user_config.data_path}"
-    ],
+    "args": ["-y", "@mindpilot/mcp@latest", "--port", "${user_config.port}", "--data-path", "${user_config.data_path}"],
     "env": {
       "MIND_PILOT_DISABLE_ANALYTICS": "${user_config.disable_analytics}"
     }
@@ -56,43 +49,27 @@
     "client_config_permutations": {
       "mindpilot-mcp": {
         "command": "npx",
-        "args": [
-          "@mindpilot/mcp@latest"
-        ],
+        "args": ["@mindpilot/mcp@latest"],
         "env": {}
       },
       "mindpilot-mcp-disable-analytics": {
         "command": "npx",
-        "args": [
-          "@mindpilot/mcp@latest",
-          "--disable-analytics"
-        ],
+        "args": ["@mindpilot/mcp@latest", "--disable-analytics"],
         "env": {}
       },
       "mindpilot-mcp-port-5555": {
         "command": "npx",
-        "args": [
-          "@mindpilot/mcp@latest",
-          "--port",
-          "5555"
-        ],
+        "args": ["@mindpilot/mcp@latest", "--port", "5555"],
         "env": {}
       },
       "mindpilot-mcp-custom-data-path": {
         "command": "npx",
-        "args": [
-          "@mindpilot/mcp@latest",
-          "--data-path",
-          "/path/to/custom/location"
-        ],
+        "args": ["@mindpilot/mcp@latest", "--data-path", "/path/to/custom/location"],
         "env": {}
       },
       "mindpilot-mcp-dev": {
         "command": "npx",
-        "args": [
-          "tsx",
-          "<path to...>/src/server/server.ts"
-        ],
+        "args": ["tsx", "<path to...>/src/server/server.ts"],
         "env": {}
       }
     },

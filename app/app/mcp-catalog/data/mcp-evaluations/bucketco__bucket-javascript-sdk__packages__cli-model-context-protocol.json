@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@bucketco/cli"
-    ],
+    "args": ["-y", "@bucketco/cli"],
     "env": {}
   },
   "readme": null,

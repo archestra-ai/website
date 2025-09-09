@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "go",
-    "args": [
-      "run",
-      "main.go"
-    ],
+    "args": ["run", "main.go"],
     "env": {}
   },
   "tools": [],
@@ -26,10 +23,7 @@
     "client_config_permutations": {
       "gin-mcp": {
         "command": "go",
-        "args": [
-          "run",
-          "."
-        ],
+        "args": ["run", "."],
         "env": {}
       }
     },

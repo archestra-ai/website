@@ -42,23 +42,12 @@
     "client_config_permutations": {
       "s2-dev-streamstore": {
         "command": "npx",
-        "args": [
-          "-y",
-          "--package",
-          "@s2-dev/streamstore",
-          "--",
-          "mcp",
-          "start",
-          "--access-token",
-          "..."
-        ],
+        "args": ["-y", "--package", "@s2-dev/streamstore", "--", "mcp", "start", "--access-token", "..."],
         "env": {}
       },
       "mcp-server": {
         "command": "./DOWNLOAD/PATH/mcp-server",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {}
       }
     },

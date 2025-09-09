@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@wonderwhy-er/desktop-commander"
-    ],
+    "args": ["-y", "@wonderwhy-er/desktop-commander"],
     "env": {}
   },
   "tools": [],
@@ -26,10 +23,7 @@
     "client_config_permutations": {
       "wonderwhy-er-desktop-commander": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@wonderwhy-er/desktop-commander"
-        ],
+        "args": ["-y", "@wonderwhy-er/desktop-commander"],
         "env": {}
       }
     },

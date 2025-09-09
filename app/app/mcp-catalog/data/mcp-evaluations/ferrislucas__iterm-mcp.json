@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "iterm-mcp"
-    ],
+    "args": ["-y", "iterm-mcp"],
     "env": {}
   },
   "tools": [],
@@ -26,10 +23,7 @@
     "client_config_permutations": {
       "iterm-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "iterm-mcp"
-        ],
+        "args": ["-y", "iterm-mcp"],
         "env": {}
       }
     },

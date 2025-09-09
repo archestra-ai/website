@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "mcp-baostock-server"
-    ],
+    "args": ["-m", "mcp-baostock-server"],
     "env": {}
   },
   "tools": [],
@@ -26,10 +23,7 @@
     "client_config_permutations": {
       "mcp-baostock-server": {
         "command": "uv",
-        "args": [
-          "run",
-          "mcp-baostock-server"
-        ],
+        "args": ["run", "mcp-baostock-server"],
         "env": {}
       }
     },

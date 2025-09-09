@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {
       "PLANE_API_KEY": "${user_config.plane_api_key}",
       "PLANE_WORKSPACE_SLUG": "${user_config.plane_workspace_slug}"
@@ -43,9 +41,7 @@
     "client_config_permutations": {
       "kelvin6365-plane-mcp-server-configured": {
         "command": "node",
-        "args": [
-          "path/to/plane-mcp-server/build/index.js"
-        ],
+        "args": ["path/to/plane-mcp-server/build/index.js"],
         "env": {
           "PLANE_API_KEY": "your_plane_api_key_here",
           "PLANE_WORKSPACE_SLUG": "your_workspace_slug_here"

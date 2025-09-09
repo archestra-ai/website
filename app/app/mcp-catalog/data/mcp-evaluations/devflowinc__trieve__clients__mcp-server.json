@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "trieve-mcp-server@latest"
-    ],
+    "args": ["trieve-mcp-server@latest"],
     "env": {
       "TRIEVE_API_KEY": "${user_config.trieve_api_key}",
       "TRIEVE_ORGANIZATION_ID": "${user_config.trieve_organization_id}",
@@ -51,9 +49,7 @@
     "client_config_permutations": {
       "trieve-mcp-server-configured": {
         "command": "npx",
-        "args": [
-          "trieve-mcp-server@latest"
-        ],
+        "args": ["trieve-mcp-server@latest"],
         "env": {
           "TRIEVE_API_KEY": "$TRIEVE_API_KEY",
           "TRIEVE_ORGANIZATION_ID": "$TRIEVE_ORGANIZATION_ID",

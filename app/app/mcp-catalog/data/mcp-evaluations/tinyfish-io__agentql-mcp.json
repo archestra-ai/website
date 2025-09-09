@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "agentql-mcp"
-    ],
+    "args": ["-y", "agentql-mcp"],
     "env": {
       "AGENTQL_API_KEY": "${user_config.agentql_api_key}"
     }
@@ -36,10 +33,7 @@
     "client_config_permutations": {
       "agentql": {
         "command": "npx",
-        "args": [
-          "-y",
-          "agentql-mcp"
-        ],
+        "args": ["-y", "agentql-mcp"],
         "env": {
           "AGENTQL_API_KEY": "YOUR_API_KEY"
         }

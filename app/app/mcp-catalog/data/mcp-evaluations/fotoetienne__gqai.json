@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "gqai",
-    "args": [
-      "run",
-      "--config",
-      ".graphqlrc.yml"
-    ],
+    "args": ["run", "--config", ".graphqlrc.yml"],
     "env": {
       "MY_AUTH_TOKEN": "${user_config.my_auth_token}",
       "MY_SCHEMA_URL": "${user_config.my_schema_url}",
@@ -69,11 +65,7 @@
     "client_config_permutations": {
       "gqai": {
         "command": "gqai",
-        "args": [
-          "run",
-          "--config",
-          ".graphqlrc.yml"
-        ],
+        "args": ["run", "--config", ".graphqlrc.yml"],
         "env": {}
       }
     },

@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@vectorize-io/vectorize-mcp-server@latest"
-    ],
+    "args": ["-y", "@vectorize-io/vectorize-mcp-server@latest"],
     "env": {
       "VECTORIZE_ORG_ID": "${user_config.org_id}",
       "VECTORIZE_TOKEN": "${user_config.token}",
@@ -52,10 +49,7 @@
     "client_config_permutations": {
       "vectorize-io-vectorize-mcp-server-with-inputs": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@vectorize-io/vectorize-mcp-server@latest"
-        ],
+        "args": ["-y", "@vectorize-io/vectorize-mcp-server@latest"],
         "env": {
           "VECTORIZE_ORG_ID": "${input:org_id}",
           "VECTORIZE_TOKEN": "${input:token}",
@@ -64,10 +58,7 @@
       },
       "vectorize-io-vectorize-mcp-server-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@vectorize-io/vectorize-mcp-server@latest"
-        ],
+        "args": ["-y", "@vectorize-io/vectorize-mcp-server@latest"],
         "env": {
           "VECTORIZE_ORG_ID": "your-org-id",
           "VECTORIZE_TOKEN": "your-token",

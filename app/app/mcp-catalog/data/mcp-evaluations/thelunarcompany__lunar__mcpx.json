@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "docker",
-    "args": [
-      "run",
-      "lunar/mcpx"
-    ],
+    "args": ["run", "lunar/mcpx"],
     "env": {}
   },
   "tools": [],

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "func",
-    "args": [
-      "start"
-    ],
+    "args": ["start"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "modelcontextprotocol-server-memory": {
         "command": "func",
-        "args": [
-          "start"
-        ],
+        "args": ["start"],
         "env": {}
       }
     },

@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${user_config.src_path}",
-      "run",
-      "jupyter_mcp_server.py"
-    ],
+    "args": ["--directory", "${user_config.src_path}", "run", "jupyter_mcp_server.py"],
     "env": {}
   },
   "tools": [],
@@ -36,12 +31,7 @@
     "client_config_permutations": {
       "jupyter": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/path/to/src",
-          "run",
-          "jupyter_mcp_server.py"
-        ],
+        "args": ["--directory", "/path/to/src", "run", "jupyter_mcp_server.py"],
         "env": {}
       }
     },

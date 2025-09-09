@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@aashari/mcp-server-atlassian-confluence"
-    ],
+    "args": ["-y", "@aashari/mcp-server-atlassian-confluence"],
     "env": {
       "ATLASSIAN_SITE_NAME": "${user_config.atlassian_site_name}",
       "ATLASSIAN_USER_EMAIL": "${user_config.atlassian_user_email}",
@@ -79,56 +76,40 @@
     "client_config_permutations": {
       "aashari-mcp-server-atlassian-confluence": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@aashari/mcp-server-atlassian-confluence"
-        ],
+        "args": ["-y", "@aashari/mcp-server-atlassian-confluence"],
         "env": {}
       },
       "aashari-mcp-server-atlassian-confluence-stdio": {
         "command": "npx",
-        "args": [
-          "@aashari/mcp-server-atlassian-confluence"
-        ],
+        "args": ["@aashari/mcp-server-atlassian-confluence"],
         "env": {
           "TRANSPORT_MODE": "stdio"
         }
       },
       "aashari-mcp-server-atlassian-confluence-stdio-npm": {
         "command": "npm",
-        "args": [
-          "run",
-          "mcp:stdio"
-        ],
+        "args": ["run", "mcp:stdio"],
         "env": {
           "TRANSPORT_MODE": "stdio"
         }
       },
       "aashari-mcp-server-atlassian-confluence-http": {
         "command": "npx",
-        "args": [
-          "@aashari/mcp-server-atlassian-confluence"
-        ],
+        "args": ["@aashari/mcp-server-atlassian-confluence"],
         "env": {
           "TRANSPORT_MODE": "http"
         }
       },
       "aashari-mcp-server-atlassian-confluence-http-npm": {
         "command": "npm",
-        "args": [
-          "run",
-          "mcp:http"
-        ],
+        "args": ["run", "mcp:http"],
         "env": {
           "TRANSPORT_MODE": "http"
         }
       },
       "aashari-mcp-server-atlassian-confluence-inspect": {
         "command": "npm",
-        "args": [
-          "run",
-          "mcp:inspect"
-        ],
+        "args": ["run", "mcp:inspect"],
         "env": {}
       }
     },

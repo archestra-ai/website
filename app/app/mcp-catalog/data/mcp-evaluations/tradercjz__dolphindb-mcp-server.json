@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "dolphindb-mcp-server"
-    ],
+    "args": ["dolphindb-mcp-server"],
     "env": {
       "DDB_HOST": "${user_config.ddb_host}",
       "DDB_PORT": "${user_config.ddb_port}",
@@ -65,9 +63,7 @@
       },
       "dolphindb-mcp-server-uvx": {
         "command": "uvx",
-        "args": [
-          "dolphindb-mcp-server"
-        ],
+        "args": ["dolphindb-mcp-server"],
         "env": {}
       }
     },

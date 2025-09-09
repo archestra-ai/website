@@ -23,33 +23,19 @@
     "client_config_permutations": {
       "mcp-puppeteer-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "--init",
-          "-e",
-          "DOCKER_CONTAINER=true",
-          "mcp/puppeteer"
-        ],
+        "args": ["run", "-i", "--rm", "--init", "-e", "DOCKER_CONTAINER=true", "mcp/puppeteer"],
         "env": {
           "DOCKER_CONTAINER": "true"
         }
       },
       "modelcontextprotocol-server-puppeteer": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-puppeteer"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
         "env": {}
       },
       "modelcontextprotocol-server-puppeteer-configured": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-puppeteer"
-        ],
+        "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
         "env": {
           "PUPPETEER_LAUNCH_OPTIONS": "{ \"headless\": false, \"executablePath\": \"C:/Program Files/Google/Chrome/Application/chrome.exe\", \"args\": [] }",
           "ALLOW_DANGEROUS": "true"

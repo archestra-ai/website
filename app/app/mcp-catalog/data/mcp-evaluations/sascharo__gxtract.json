@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "run",
-      "gxtract",
-      "--transport",
-      "stdio"
-    ],
+    "args": ["run", "gxtract", "--transport", "stdio"],
     "env": {
       "GROUNDX_API_KEY": "${user_config.groundx_api_key}"
     }

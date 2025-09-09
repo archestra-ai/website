@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "bun",
-    "args": [
-      "${__dirname}/packages/bitte-ai/index.js"
-    ],
+    "args": ["${__dirname}/packages/bitte-ai/index.js"],
     "env": {}
   },
   "tools": [],
@@ -25,26 +23,17 @@
     "client_config_permutations": {
       "bitte-ai": {
         "command": "bun",
-        "args": [
-          "run",
-          "dev:bitte-ai"
-        ],
+        "args": ["run", "dev:bitte-ai"],
         "env": {}
       },
       "bitte-ai-start": {
         "command": "bun",
-        "args": [
-          "run",
-          "start"
-        ],
+        "args": ["run", "start"],
         "env": {}
       },
       "bitte-ai-dev": {
         "command": "bun",
-        "args": [
-          "run",
-          "dev"
-        ],
+        "args": ["run", "dev"],
         "env": {}
       }
     },

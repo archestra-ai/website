@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "didlogic_mcp"
-    ],
+    "args": ["didlogic_mcp"],
     "env": {
       "DIDLOGIC_API_KEY": "${user_config.didlogic_api_key}"
     }
@@ -35,19 +33,14 @@
     "client_config_permutations": {
       "didlogic_mcp": {
         "command": "uvx",
-        "args": [
-          "didlogic_mcp"
-        ],
+        "args": ["didlogic_mcp"],
         "env": {
           "DIDLOGIC_API_KEY": "YOUR_DIDLOGIC_KEY"
         }
       },
       "didlogic_mcp-python": {
         "command": "python",
-        "args": [
-          "-m",
-          "didlogic_mcp"
-        ],
+        "args": ["-m", "didlogic_mcp"],
         "env": {
           "DIDLOGIC_API_KEY": "YOUR_DIDLOGIC_KEY"
         }

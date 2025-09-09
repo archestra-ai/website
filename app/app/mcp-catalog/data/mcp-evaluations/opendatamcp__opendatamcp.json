@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "odmcp",
-      "--provider",
-      "${user_config.provider_name}"
-    ],
+    "args": ["-m", "odmcp", "--provider", "${user_config.provider_name}"],
     "env": {}
   },
   "tools": [],
@@ -36,11 +31,7 @@
     "client_config_permutations": {
       "ch_sbb": {
         "command": "uvx",
-        "args": [
-          "odmcp",
-          "setup",
-          "ch_sbb"
-        ],
+        "args": ["odmcp", "setup", "ch_sbb"],
         "env": {}
       }
     },

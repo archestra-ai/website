@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py"
-    ],
+    "args": ["${__dirname}/main.py"],
     "env": {}
   },
   "tools": [],
@@ -25,12 +23,7 @@
     "client_config_permutations": {
       "kukapay-crypto-projects-mcp": {
         "command": "uv",
-        "args": [
-          "run",
-          "mcp",
-          "dev",
-          "main.py"
-        ],
+        "args": ["run", "mcp", "dev", "main.py"],
         "env": {}
       }
     },

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/index.js"
-    ],
+    "args": ["${__dirname}/index.js"],
     "env": {
       "HASS_HOST": "${user_config.hass_host}",
       "HASS_TOKEN": "${user_config.hass_token}",
@@ -92,11 +90,7 @@
     "client_config_permutations": {
       "homeassistant-mcp-docker": {
         "command": "docker",
-        "args": [
-          "compose",
-          "up",
-          "-d"
-        ],
+        "args": ["compose", "up", "-d"],
         "env": {
           "HASS_HOST": "http://homeassistant.local:8123",
           "HASS_TOKEN": "your_home_assistant_token",

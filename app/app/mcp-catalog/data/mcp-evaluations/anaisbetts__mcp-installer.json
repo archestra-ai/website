@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "@anaisbetts/mcp-installer"
-    ],
+    "args": ["@anaisbetts/mcp-installer"],
     "env": {
       "GITHUB_PERSONAL_ACCESS_TOKEN": "${user_config.github_personal_access_token}"
     }
@@ -35,10 +33,7 @@
     "client_config_permutations": {
       "mcp-installer": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@anaisbetts/mcp-installer"
-        ],
+        "args": ["-y", "@anaisbetts/mcp-installer"],
         "env": {}
       }
     },

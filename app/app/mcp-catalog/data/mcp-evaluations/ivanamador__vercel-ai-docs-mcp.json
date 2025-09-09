@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/dist/main.js"
-    ],
+    "args": ["${__dirname}/dist/main.js"],
     "env": {
       "GOOGLE_GENERATIVE_AI_API_KEY": "${user_config.google_generative_ai_api_key}"
     }
@@ -35,17 +33,12 @@
     "client_config_permutations": {
       "vercel-ai-docs-npm-start": {
         "command": "npm",
-        "args": [
-          "run",
-          "start"
-        ],
+        "args": ["run", "start"],
         "env": {}
       },
       "vercel-ai-docs": {
         "command": "node",
-        "args": [
-          "ABSOLUTE_PATH_TO_PROJECT/dist/main.js"
-        ],
+        "args": ["ABSOLUTE_PATH_TO_PROJECT/dist/main.js"],
         "env": {
           "GOOGLE_GENERATIVE_AI_API_KEY": "your-google-api-key-here"
         }

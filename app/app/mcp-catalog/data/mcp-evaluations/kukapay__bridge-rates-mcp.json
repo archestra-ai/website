@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/index.js"
-    ],
+    "args": ["${__dirname}/index.js"],
     "env": {}
   },
   "tools": [],
@@ -25,9 +23,7 @@
     "client_config_permutations": {
       "bridge-rates": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/bridge-rates-mcp/index.js"
-        ],
+        "args": ["/absolute/path/to/bridge-rates-mcp/index.js"],
         "env": {}
       }
     },

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {
       "POSTMAN_API_KEY": "${user_config.postman_api_key}"
     }
@@ -35,9 +33,7 @@
     "client_config_permutations": {
       "postman-api-server": {
         "command": "node",
-        "args": [
-          "/path/to/postman-api-server/build/index.js"
-        ],
+        "args": ["/path/to/postman-api-server/build/index.js"],
         "env": {
           "POSTMAN_API_KEY": "CHANGEME"
         }

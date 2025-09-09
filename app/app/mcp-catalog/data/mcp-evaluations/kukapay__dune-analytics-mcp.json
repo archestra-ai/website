@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py"
-    ],
+    "args": ["${__dirname}/main.py"],
     "env": {
       "DUNE_API_KEY": "${user_config.dune_api_key}"
     }
@@ -35,22 +33,14 @@
     "client_config_permutations": {
       "kukapay-dune-analytics-mcp": {
         "command": "mcp",
-        "args": [
-          "dev",
-          "main.py"
-        ],
+        "args": ["dev", "main.py"],
         "env": {
           "DUNE_API_KEY": "your_api_key_here"
         }
       },
       "kukapay-dune-analytics-mcp-claude-install": {
         "command": "mcp",
-        "args": [
-          "install",
-          "main.py",
-          "--name",
-          "Dune Analytics"
-        ],
+        "args": ["install", "main.py", "--name", "Dune Analytics"],
         "env": {
           "DUNE_API_KEY": "your_api_key_here"
         }

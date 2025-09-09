@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "wanaku"
-    ],
+    "args": ["-y", "wanaku"],
     "env": {}
   },
   "tools": [],

@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "--experimental-modules",
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["--experimental-modules", "${__dirname}/build/index.js"],
     "env": {
       "VIRUSTOTAL_API_KEY": "${user_config.virustotal_api_key}"
     }
@@ -43,10 +40,7 @@
       },
       "burtthecoder-mcp-virustotal-from-source": {
         "command": "node",
-        "args": [
-          "--experimental-modules",
-          "/absolute/path/to/mcp-virustotal/build/index.js"
-        ],
+        "args": ["--experimental-modules", "/absolute/path/to/mcp-virustotal/build/index.js"],
         "env": {
           "VIRUSTOTAL_API_KEY": "your-virustotal-api-key"
         }

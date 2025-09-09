@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@johnneerdael/netskope-mcp"
-    ],
+    "args": ["-y", "@johnneerdael/netskope-mcp"],
     "env": {
       "NETSKOPE_BASE_URL": "${user_config.netskope_base_url}",
       "NETSKOPE_API_KEY": "${user_config.netskope_api_key}"
@@ -64,10 +61,7 @@
       },
       "johnneerdael-netskope-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@johnneerdael/netskope-mcp"
-        ],
+        "args": ["-y", "@johnneerdael/netskope-mcp"],
         "env": {
           "NETSKOPE_BASE_URL": "https://your-tenant.goskope.com",
           "NETSKOPE_API_KEY": "your-token"
@@ -75,9 +69,7 @@
       },
       "johnneerdael-netskope-mcp-local": {
         "command": "node",
-        "args": [
-          "dist/cli.js"
-        ],
+        "args": ["dist/cli.js"],
         "env": {
           "NETSKOPE_BASE_URL": "https://your-tenant.goskope.com",
           "NETSKOPE_API_KEY": "your-token"

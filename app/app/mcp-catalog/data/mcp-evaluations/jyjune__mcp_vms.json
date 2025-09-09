@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "--directory",
-      "${__dirname}",
-      "run",
-      "mcp_vms.py"
-    ],
+    "args": ["--directory", "${__dirname}", "run", "mcp_vms.py"],
     "env": {
       "VMS_IMG_WIDTH": "${user_config.vms_img_width}",
       "VMS_IMG_HEIGHT": "${user_config.vms_img_height}",
@@ -88,12 +83,7 @@
     "client_config_permutations": {
       "vms": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "X:\\path\\to\\mcp-vms",
-          "run",
-          "mcp_vms.py"
-        ],
+        "args": ["--directory", "X:\\path\\to\\mcp-vms", "run", "mcp_vms.py"],
         "env": {}
       }
     },

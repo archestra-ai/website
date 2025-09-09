@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "balldontlie-mcp"
-    ],
+    "args": ["-y", "balldontlie-mcp"],
     "env": {
       "BALLDONTLIE_API_KEY": "${user_config.balldontlie_api_key}"
     }
@@ -36,20 +33,14 @@
     "client_config_permutations": {
       "balldontlie-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "balldontlie-mcp"
-        ],
+        "args": ["-y", "balldontlie-mcp"],
         "env": {
           "BALLDONTLIE_API_KEY": "YOUR API KEY HERE"
         }
       },
       "balldontlie-mcp-sh": {
         "command": "sh",
-        "args": [
-          "-c",
-          "BALLDONTLIE_API_KEY=your-api-key-here npx -y balldontlie-mcp"
-        ],
+        "args": ["-c", "BALLDONTLIE_API_KEY=your-api-key-here npx -y balldontlie-mcp"],
         "env": {
           "BALLDONTLIE_API_KEY": "your-api-key-here"
         }

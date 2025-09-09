@@ -23,22 +23,12 @@
     "client_config_permutations": {
       "fastmcp-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "fastmcp",
-          "dev",
-          "src/examples/addition.ts"
-        ],
+        "args": ["-y", "fastmcp", "dev", "src/examples/addition.ts"],
         "env": {}
       },
       "fastmcp-inspect": {
         "command": "npx",
-        "args": [
-          "-y",
-          "fastmcp",
-          "inspect",
-          "src/examples/addition.ts"
-        ],
+        "args": ["-y", "fastmcp", "inspect", "src/examples/addition.ts"],
         "env": {}
       },
       "fastmcp-http-stream-stateless": {
@@ -59,12 +49,7 @@
       },
       "fastmcp-http-stream-stateless-env": {
         "command": "npx",
-        "args": [
-          "-y",
-          "fastmcp",
-          "dev",
-          "src/server.ts"
-        ],
+        "args": ["-y", "fastmcp", "dev", "src/server.ts"],
         "env": {
           "FASTMCP_STATELESS": "true"
         }

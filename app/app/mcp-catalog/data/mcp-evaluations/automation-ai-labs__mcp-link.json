@@ -9,15 +9,7 @@
   },
   "server": {
     "command": "go",
-    "args": [
-      "run",
-      "main.go",
-      "serve",
-      "--port",
-      "${user_config.port}",
-      "--host",
-      "${user_config.host}"
-    ],
+    "args": ["run", "main.go", "serve", "--port", "${user_config.port}", "--host", "${user_config.host}"],
     "env": {}
   },
   "tools": [],
@@ -46,15 +38,7 @@
     "client_config_permutations": {
       "mcp-openapi-to-mcp-adapter": {
         "command": "go",
-        "args": [
-          "run",
-          "main.go",
-          "serve",
-          "--port",
-          "8080",
-          "--host",
-          "0.0.0.0"
-        ],
+        "args": ["run", "main.go", "serve", "--port", "8080", "--host", "0.0.0.0"],
         "env": {}
       }
     },

@@ -9,11 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@4everland/hosting-mcp@latest",
-      "serve"
-    ],
+    "args": ["-y", "@4everland/hosting-mcp@latest", "serve"],
     "env": {
       "TOKEN": "${user_config.token}"
     }
@@ -37,21 +33,14 @@
     "client_config_permutations": {
       "4everland-hosting-mcp": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@4everland/hosting-mcp@latest",
-          "serve"
-        ],
+        "args": ["-y", "@4everland/hosting-mcp@latest", "serve"],
         "env": {
           "TOKEN": "your-hosting-auth-token"
         }
       },
       "4everland-hosting-mcp-local": {
         "command": "npm",
-        "args": [
-          "run",
-          "serve"
-        ],
+        "args": ["run", "serve"],
         "env": {}
       }
     },

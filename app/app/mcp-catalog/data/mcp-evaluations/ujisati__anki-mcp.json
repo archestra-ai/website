@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "uv",
-    "args": [
-      "run",
-      "anki-mcp"
-    ],
+    "args": ["run", "anki-mcp"],
     "env": {}
   },
   "tools": [],
@@ -26,20 +23,12 @@
     "client_config_permutations": {
       "anki-mcp": {
         "command": "uv",
-        "args": [
-          "run",
-          "anki-mcp"
-        ],
+        "args": ["run", "anki-mcp"],
         "env": {}
       },
       "anki-mcp-with-directory": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "/ABSOLUTE/PATH/TO/anki-mcp",
-          "run",
-          "anki-mcp"
-        ],
+        "args": ["--directory", "/ABSOLUTE/PATH/TO/anki-mcp", "run", "anki-mcp"],
         "env": {}
       }
     },

@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "mongo-mcp",
-      "${user_config.mongodb_connection_url}"
-    ],
+    "args": ["mongo-mcp", "${user_config.mongodb_connection_url}"],
     "env": {}
   },
   "tools": [],
@@ -34,18 +31,12 @@
     "client_config_permutations": {
       "mongo-mcp": {
         "command": "npx",
-        "args": [
-          "mongo-mcp",
-          "mongodb://<username>:<password>@<host>:<port>/<database>?authSource=admin"
-        ],
+        "args": ["mongo-mcp", "mongodb://<username>:<password>@<host>:<port>/<database>?authSource=admin"],
         "env": {}
       },
       "mongo-mcp-local-dev": {
         "command": "node",
-        "args": [
-          "dist/index.js",
-          "mongodb://root:example@localhost:27017/test?authSource=admin"
-        ],
+        "args": ["dist/index.js", "mongodb://root:example@localhost:27017/test?authSource=admin"],
         "env": {}
       }
     },

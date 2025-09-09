@@ -23,10 +23,7 @@
     "client_config_permutations": {
       "telegram-mcp-docker-compose": {
         "command": "docker-compose",
-        "args": [
-          "up",
-          "-d"
-        ],
+        "args": ["up", "-d"],
         "env": {}
       },
       "telegram-mcp-docker": {

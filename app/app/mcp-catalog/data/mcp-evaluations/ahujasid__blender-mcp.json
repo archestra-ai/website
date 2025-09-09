@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "blender-mcp"
-    ],
+    "args": ["blender-mcp"],
     "env": {}
   },
   "tools": [],
@@ -25,18 +23,12 @@
     "client_config_permutations": {
       "blender-mcp": {
         "command": "uvx",
-        "args": [
-          "blender-mcp"
-        ],
+        "args": ["blender-mcp"],
         "env": {}
       },
       "blender-mcp-windows": {
         "command": "cmd",
-        "args": [
-          "/c",
-          "uvx",
-          "blender-mcp"
-        ],
+        "args": ["/c", "uvx", "blender-mcp"],
         "env": {}
       }
     },

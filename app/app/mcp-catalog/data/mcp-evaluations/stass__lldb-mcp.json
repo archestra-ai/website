@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "python3",
-    "args": [
-      "${__dirname}/lldb_mcp.py",
-      "${user_config.debug_mode}"
-    ],
+    "args": ["${__dirname}/lldb_mcp.py", "${user_config.debug_mode}"],
     "env": {}
   },
   "tools": [],
@@ -34,9 +31,7 @@
     "client_config_permutations": {
       "lldb-mcp": {
         "command": "python3",
-        "args": [
-          "/path/to/lldb-mcp/lldb_mcp.py"
-        ],
+        "args": ["/path/to/lldb-mcp/lldb_mcp.py"],
         "env": {}
       }
     },

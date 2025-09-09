@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@aashari/mcp-server-aws-sso"
-    ],
+    "args": ["-y", "@aashari/mcp-server-aws-sso"],
     "env": {
       "AWS_REGION": "${user_config.aws_region}",
       "AWS_SSO_START_URL": "${user_config.aws_sso_start_url}",
@@ -84,28 +81,19 @@
     "client_config_permutations": {
       "aashari-mcp-server-aws-sso": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@aashari/mcp-server-aws-sso"
-        ],
+        "args": ["-y", "@aashari/mcp-server-aws-sso"],
         "env": {}
       },
       "aashari-mcp-server-aws-sso-stdio": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@aashari/mcp-server-aws-sso"
-        ],
+        "args": ["-y", "@aashari/mcp-server-aws-sso"],
         "env": {
           "TRANSPORT_MODE": "stdio"
         }
       },
       "aashari-mcp-server-aws-sso-http": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@aashari/mcp-server-aws-sso"
-        ],
+        "args": ["-y", "@aashari/mcp-server-aws-sso"],
         "env": {
           "TRANSPORT_MODE": "http"
         }

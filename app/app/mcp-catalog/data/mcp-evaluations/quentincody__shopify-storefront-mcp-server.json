@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "shopify_storefront_mcp_server"
-    ],
+    "args": ["-m", "shopify_storefront_mcp_server"],
     "env": {
       "SHOPIFY_STOREFRONT_ACCESS_TOKEN": "${user_config.shopify_storefront_access_token}",
       "SHOPIFY_STORE_NAME": "${user_config.shopify_store_name}",
@@ -59,10 +56,7 @@
     "client_config_permutations": {
       "shopify_storefront_mcp_server": {
         "command": "python",
-        "args": [
-          "-m",
-          "shopify_storefront_mcp_server"
-        ],
+        "args": ["-m", "shopify_storefront_mcp_server"],
         "env": {}
       }
     },

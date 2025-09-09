@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "web3-mcp"
-    ],
+    "args": ["web3-mcp"],
     "env": {
       "ANKR_ENDPOINT": "${user_config.ankr_endpoint}",
       "ANKR_PRIVATE_KEY": "${user_config.ankr_private_key}"
@@ -43,19 +41,14 @@
     "client_config_permutations": {
       "web3-mcp": {
         "command": "uvx",
-        "args": [
-          "web3-mcp"
-        ],
+        "args": ["web3-mcp"],
         "env": {
           "ANKR_ENDPOINT": "https://rpc.ankr.com/..."
         }
       },
       "web3_mcp": {
         "command": "python",
-        "args": [
-          "-m",
-          "web3_mcp"
-        ],
+        "args": ["-m", "web3_mcp"],
         "env": {
           "ANKR_ENDPOINT": "your_ankr_endpoint",
           "ANKR_PRIVATE_KEY": "your_private_key"

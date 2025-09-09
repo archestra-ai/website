@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "bunx",
-    "args": [
-      "cal-mcp"
-    ],
+    "args": ["cal-mcp"],
     "env": {}
   },
   "tools": [],
@@ -25,17 +23,12 @@
     "client_config_permutations": {
       "cal-mcp": {
         "command": "bunx",
-        "args": [
-          "cal-mcp"
-        ],
+        "args": ["cal-mcp"],
         "env": {}
       },
       "cal-mcp-stdio": {
         "command": "bun",
-        "args": [
-          "run",
-          "index.ts"
-        ],
+        "args": ["run", "index.ts"],
         "env": {}
       }
     },

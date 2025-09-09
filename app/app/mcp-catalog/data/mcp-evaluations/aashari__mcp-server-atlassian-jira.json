@@ -9,10 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@aashari/mcp-server-atlassian-jira"
-    ],
+    "args": ["-y", "@aashari/mcp-server-atlassian-jira"],
     "env": {
       "ATLASSIAN_SITE_NAME": "${user_config.atlassian_site_name}",
       "ATLASSIAN_USER_EMAIL": "${user_config.atlassian_user_email}",
@@ -87,26 +84,19 @@
     "client_config_permutations": {
       "aashari-mcp-server-atlassian-jira": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@aashari/mcp-server-atlassian-jira"
-        ],
+        "args": ["-y", "@aashari/mcp-server-atlassian-jira"],
         "env": {}
       },
       "aashari-mcp-server-atlassian-jira-stdio": {
         "command": "npx",
-        "args": [
-          "@aashari/mcp-server-atlassian-jira"
-        ],
+        "args": ["@aashari/mcp-server-atlassian-jira"],
         "env": {
           "TRANSPORT_MODE": "stdio"
         }
       },
       "aashari-mcp-server-atlassian-jira-http": {
         "command": "npx",
-        "args": [
-          "@aashari/mcp-server-atlassian-jira"
-        ],
+        "args": ["@aashari/mcp-server-atlassian-jira"],
         "env": {
           "TRANSPORT_MODE": "http"
         }

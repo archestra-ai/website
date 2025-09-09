@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/build/index.js"
-    ],
+    "args": ["${__dirname}/build/index.js"],
     "env": {
       "DOORDASH_API_KEY": "${user_config.doordash_api_key}"
     }
@@ -35,9 +33,7 @@
     "client_config_permutations": {
       "doordash": {
         "command": "node",
-        "args": [
-          "<thePathToYour>/build/index.js"
-        ],
+        "args": ["<thePathToYour>/build/index.js"],
         "env": {
           "DOORDASH_API_KEY": "<REPLACE>"
         }

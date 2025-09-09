@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "node",
-    "args": [
-      "${__dirname}/dist/server.js"
-    ],
+    "args": ["${__dirname}/dist/server.js"],
     "env": {
       "STRAVA_CLIENT_ID": "${user_config.strava_client_id}",
       "STRAVA_CLIENT_SECRET": "${user_config.strava_client_secret}",
@@ -66,9 +64,7 @@
     "client_config_permutations": {
       "strava-mcp-local": {
         "command": "node",
-        "args": [
-          "/absolute/path/to/your/strava-mcp/dist/server.js"
-        ],
+        "args": ["/absolute/path/to/your/strava-mcp/dist/server.js"],
         "env": {}
       }
     },

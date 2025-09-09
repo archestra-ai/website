@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/server/main.py"
-    ],
+    "args": ["${__dirname}/server/main.py"],
     "env": {}
   },
   "tools": [],
@@ -25,29 +23,17 @@
     "client_config_permutations": {
       "MaxMSP-MCP-Server-claude": {
         "command": "python",
-        "args": [
-          "install.py",
-          "--client",
-          "claude"
-        ],
+        "args": ["install.py", "--client", "claude"],
         "env": {}
       },
       "MaxMSP-MCP-Server-cursor": {
         "command": "python",
-        "args": [
-          "install.py",
-          "--client",
-          "cursor"
-        ],
+        "args": ["install.py", "--client", "cursor"],
         "env": {}
       },
       "MaxMSP-MCP-Server-other-client": {
         "command": "python",
-        "args": [
-          "install.py",
-          "--client",
-          "{your_client_name}"
-        ],
+        "args": ["install.py", "--client", "{your_client_name}"],
         "env": {}
       }
     },

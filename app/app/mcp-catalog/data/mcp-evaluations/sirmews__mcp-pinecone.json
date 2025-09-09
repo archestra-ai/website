@@ -9,13 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "mcp-pinecone",
-      "--index-name",
-      "${user_config.index_name}",
-      "--api-key",
-      "${user_config.api_key}"
-    ],
+    "args": ["mcp-pinecone", "--index-name", "${user_config.index_name}", "--api-key", "${user_config.api_key}"],
     "env": {}
   },
   "tools": [],
@@ -43,23 +37,12 @@
     "client_config_permutations": {
       "mcp-pinecone": {
         "command": "uv",
-        "args": [
-          "--directory",
-          "{project_dir}",
-          "run",
-          "mcp-pinecone"
-        ],
+        "args": ["--directory", "{project_dir}", "run", "mcp-pinecone"],
         "env": {}
       },
       "mcp-pinecone-configured": {
         "command": "uvx",
-        "args": [
-          "--index-name",
-          "{your-index-name}",
-          "--api-key",
-          "{your-secret-api-key}",
-          "mcp-pinecone"
-        ],
+        "args": ["--index-name", "{your-index-name}", "--api-key", "{your-secret-api-key}", "mcp-pinecone"],
         "env": {}
       }
     },

@@ -9,9 +9,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "mcp-server-perplexity"
-    ],
+    "args": ["mcp-server-perplexity"],
     "env": {
       "PERPLEXITY_API_KEY": "${user_config.perplexity_api_key}"
     }
@@ -35,9 +33,7 @@
     "client_config_permutations": {
       "mcp-server-perplexity": {
         "command": "uvx",
-        "args": [
-          "mcp-server-perplexity"
-        ],
+        "args": ["mcp-server-perplexity"],
         "env": {
           "PERPLEXITY_API_KEY": "your-perplexity-api-key"
         }
