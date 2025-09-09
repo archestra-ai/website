@@ -9,7 +9,11 @@ This script automatically creates GitHub issues for MCP servers that are failing
    - Create a PAT at: https://github.com/settings/tokens
    - Required scopes: `public_repo` (for creating issues and comments)
 
-2. **Node.js Dependencies**
+2. **Slack Invite Link**
+   - A Slack workspace invite link for the Archestra community
+   - This will be included in a comment on each issue to help contributors
+
+3. **Node.js Dependencies**
    - Install dependencies from the project root:
 
    ```bash
@@ -17,7 +21,7 @@ This script automatically creates GitHub issues for MCP servers that are failing
    pnpm install
    ```
 
-3. **CSV Audit File**
+4. **CSV Audit File**
    - Place the audit CSV file at: `app/scripts/create-github-issues-for-mcp-servers/mcp_catalog_audit.csv`
    - Generate this file by running:
    ```bash
@@ -49,6 +53,8 @@ Servers with `Install Success = FALSE` are considered broken and eligible for is
 6. **For each broken server:**
    - Checks if an issue already exists (idempotent)
    - Creates a GitHub issue if needed
+   - Adds a `/bounty 15` comment
+   - Adds a Slack invite comment for community support
 
 ## Usage
 
@@ -56,7 +62,7 @@ Servers with `Install Success = FALSE` are considered broken and eligible for is
 
 ```bash
 # From the app directory
-GITHUB_PAT=your_github_pat_here npx tsx scripts/create-github-issues-for-mcp-servers/index.ts
+GITHUB_PAT=your_github_pat_here SLACK_INVITE_LINK=https://your-slack-invite.link npx tsx scripts/create-github-issues-for-mcp-servers/index.ts
 
 # Or with dry-run mode (no issues created, just preview)
 npx tsx scripts/create-github-issues-for-mcp-servers/index.ts --dry-run
@@ -101,6 +107,11 @@ You should open a pull request in `archestra-ai/website` which modifies the `ser
 In the pull request, you should upload a very short video showing that you are able to install the server + make at least one tool call in the chat using one or more tools from the server 😀
 ```
 
+**Comments:**
+
+1. **Bounty Comment:** `/bounty 15`
+2. **Slack Invite Comment:** `If you have any questions about this [come join us](SLACK_INVITE_LINK) in the Archestra community Slack workspace! 🙂`
+
 ## Features
 
 - **Idempotent**: Won't create duplicate issues if they already exist
@@ -125,3 +136,8 @@ In the pull request, you should upload a very short video showing that you are a
 
 - This means none of the top 15 servers (by quality or stars) are broken
 - Check the CSV file to ensure it contains test results
+
+### Missing SLACK_INVITE_LINK
+
+- The SLACK_INVITE_LINK environment variable is required
+- Provide a valid Slack invite link for your community workspace

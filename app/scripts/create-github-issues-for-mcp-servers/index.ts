@@ -201,14 +201,47 @@ async function addBountyComment(octokit: Octokit, issueNumber: number, dryRun: b
   }
 }
 
+async function addSlackInviteComment(
+  octokit: Octokit,
+  issueNumber: number,
+  slackInviteLink: string,
+  dryRun: boolean
+): Promise<void> {
+  if (dryRun) {
+    console.log(`[DRY RUN] Would add Slack invite comment to issue #${issueNumber}`);
+    return;
+  }
+
+  try {
+    await octokit.issues.createComment({
+      owner: GITHUB_REPO_OWNER,
+      repo: GITHUB_REPO_NAME,
+      issue_number: issueNumber,
+      body: `If you have any questions about this [come join us](${slackInviteLink}) in the Archestra community Slack workspace! 🙂`,
+    });
+
+    console.log(`Added Slack invite comment to issue #${issueNumber}`);
+  } catch (error) {
+    console.error(`Failed to add Slack invite comment to issue #${issueNumber}:`, error);
+  }
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes('--dry-run');
   const githubToken = process.env.GITHUB_PAT;
+  const slackInviteLink = process.env.SLACK_INVITE_LINK;
 
   if (!githubToken && !dryRun) {
     console.error('Error: GITHUB_PAT environment variable is required');
-    console.error('Usage: GITHUB_PAT=your_token npx tsx scripts/create-mcp-issues.ts');
+    console.error('Usage: GITHUB_PAT=your_token SLACK_INVITE_LINK=your_link npx tsx scripts/create-mcp-issues.ts');
+    console.error('Or use --dry-run flag to test without creating issues');
+    process.exit(1);
+  }
+
+  if (!slackInviteLink && !dryRun) {
+    console.error('Error: SLACK_INVITE_LINK environment variable is required');
+    console.error('Usage: GITHUB_PAT=your_token SLACK_INVITE_LINK=your_link npx tsx scripts/create-mcp-issues.ts');
     console.error('Or use --dry-run flag to test without creating issues');
     process.exit(1);
   }
@@ -226,14 +259,13 @@ async function main() {
     const brokenServerNames = await readCsvFile();
 
     // Step 2: Fetch top servers by quality score
-    const topByQuality = await fetchServers('quality', 1);
+    const topByQuality = await fetchServers('quality', 15);
     const brokenByQuality = filterBrokenServers(topByQuality, brokenServerNames);
     console.log(`Found ${brokenByQuality.length} broken servers in top 15 by quality`);
 
     // Step 3: Fetch top servers by stars
     const topByStars = await fetchServers('stars', 15);
-    // const brokenByStars = filterBrokenServers(topByStars, brokenServerNames);
-    const brokenByStars: McpServer[] = [];
+    const brokenByStars = filterBrokenServers(topByStars, brokenServerNames);
     console.log(`Found ${brokenByStars.length} broken servers in top 15 by stars`);
 
     // Step 4: Create union of both lists (remove duplicates)
@@ -268,6 +300,11 @@ async function main() {
         await new Promise((resolve) => setTimeout(resolve, 1000));
 
         await addBountyComment(octokit, issueNumber, dryRun);
+
+        // Add another small delay before Slack comment
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        await addSlackInviteComment(octokit, issueNumber, slackInviteLink!, dryRun);
 
         // Add another small delay between issues
         await new Promise((resolve) => setTimeout(resolve, 2000));
