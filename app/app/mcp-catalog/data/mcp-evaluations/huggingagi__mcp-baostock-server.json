@@ -8,13 +8,9 @@
     "name": "HuggingAGI"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["-m", "mcp-baostock-server"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-baostock-server": {
-          "command": "uv",
-          "args": ["run", "mcp-baostock-server"],
-          "env": {}
-        }
+      "mcp-baostock-server": {
+        "command": "uv",
+        "args": ["run", "mcp-baostock-server"],
+        "env": {}
       }
     },
     "oauth": {

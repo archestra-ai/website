@@ -8,13 +8,9 @@
     "name": "cantian-ai"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["bazi-mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "cantian-ai-bazi-mcp": {
-          "command": "npx",
-          "args": ["bazi-mcp"],
-          "env": {}
-        }
+      "cantian-ai-bazi-mcp": {
+        "command": "npx",
+        "args": ["bazi-mcp"],
+        "env": {}
       }
     },
     "oauth": {
@@ -44,16 +38,16 @@
     "url": "https://github.com/cantian-ai/bazi-mcp",
     "name": "cantian-ai__bazi-mcp",
     "path": null,
-    "stars": 142,
+    "stars": 159,
     "contributors": 5,
-    "issues": 0,
+    "issues": 2,
     "releases": false,
     "ci_cd": false,
-    "latest_commit_hash": "b4d437bcc53ffa9094da0d1e041e90c07492faea"
+    "latest_commit_hash": "28159d98bb78d037560dc9c8dc4ec18b03ddd438"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:25:54.645Z",
+  "last_scraped_at": "2025-09-07T22:12:12.108Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
@@ -88,5 +82,5 @@
       "importance": 6
     }
   ],
-  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"bazi-mcp\",\n  \"version\": \"0.0.25\",\n  \"type\": \"module\",\n  \"devDependencies\": {\n    \"@tsconfig/node22\": \"^22.0.1\",\n    \"@types/node\": \"^22.14.1\",\n    \"typescript\": \"^5.8.3\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/cantian-ai/bazi-mcp.git\"\n  },\n  \"keywords\": [\n    \"bazi\",\n    \"八字\",\n    \"mcp\",\n    \"算命\",\n    \"命理\"\n  ],\n  \"license\": \"ISC\",\n  \"exports\": {\n    \".\": \"./dist/index.js\"\n  },\n  \"scripts\": {\n    \"tsc\": \"rm -rf dist && tsc\",\n    \"prepublishOnly\": \"npm run tsc && chmod +x dist/stdio.js\"\n  },\n  \"bin\": {\n    \"bazi-mcp\": \"./dist/stdio.js\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.10.2\",\n    \"date-fns\": \"^3.6.0\",\n    \"date-fns-tz\": \"^3.2.0\",\n    \"tyme4ts\": \"^1.3.3\",\n    \"zod\": \"^3.24.3\"\n  }\n}\n"
+  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"bazi-mcp\",\n  \"version\": \"0.0.25\",\n  \"type\": \"module\",\n  \"module\": \"./src/smithery.ts\",\n  \"devDependencies\": {\n    \"@tsconfig/node22\": \"^22.0.1\",\n    \"@types/node\": \"^22.14.1\",\n    \"typescript\": \"^5.8.3\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/cantian-ai/bazi-mcp.git\"\n  },\n  \"keywords\": [\n    \"bazi\",\n    \"八字\",\n    \"mcp\",\n    \"算命\",\n    \"命理\"\n  ],\n  \"license\": \"ISC\",\n  \"exports\": {\n    \".\": \"./dist/index.js\"\n  },\n  \"scripts\": {\n    \"tsc\": \"rm -rf dist && tsc\",\n    \"prepublishOnly\": \"npm run tsc && chmod +x dist/stdio.js\",\n    \"smithery-dev\": \"npx @smithery/cli dev\"\n  },\n  \"bin\": {\n    \"bazi-mcp\": \"./dist/stdio.js\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.10.2\",\n    \"cantian-tymext\": \"^0.0.21\",\n    \"date-fns\": \"^3.6.0\",\n    \"date-fns-tz\": \"^3.2.0\",\n    \"tsx\": \"^4.20.5\",\n    \"tyme4ts\": \"^1.3.4\",\n    \"zod\": \"^3.24.3\"\n  }\n}\n"
 }

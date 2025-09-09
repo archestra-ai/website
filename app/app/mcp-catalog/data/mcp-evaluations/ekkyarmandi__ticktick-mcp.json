@@ -8,29 +8,33 @@
     "name": "ekkyarmandi"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "python",
+    "args": ["${__dirname}/main.py"],
+    "env": {
+      "TICKTICK_API_KEY": "${user_config.ticktick_api_key}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "ticktick_api_key": {
+      "type": "string",
+      "title": "TickTick API Key",
+      "description": "Your access token for the TickTick API, obtained via OAuth.",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# TickTick MCP\n\nA Model Context Protocol (MCP) server that provides tools for integrating TickTick task management tools. Using Python and the MCP SDK.\n\n## Overview\n\nThis repository contains a Model Context Protocol (MCP) server implementation for TickTick. It provides a standardized way for AI assistants and applications to interact with TickTick's task management functionality, allowing operations like:\n\n- Retrieving projects and tasks\n- Creating new projects and tasks\n- Updating task details\n- Completing and deleting tasks\n\nWith this MCP, AI systems can act as task masters to help manage your to-do lists and tasks in TickTick with natural language.\n\n## Requirements\n\n- Python 3.8+\n- TickTick account\n- TickTick API key (via OAuth) # COMMENT: I will add a tool to generate an API key from the TickTick developer portal\n\n## Installation\n\n1. Clone this repository\n\n   ```bash\n   git clone https://github.com/ekkyarmandi/ticktick-mcp.git\n   cd ticktick-mcp\n   ```\n\n2. Install dependencies\n\n   ```bash\n   pip install -r requirements.txt\n   ```\n\n## Obtaining a TickTick API Key\n\nThis MCP uses TickTick's OpenAPI scheme, which requires registering an app through TickTick's developer portal:\n\n1. Go to the [TickTick Developer Documentation](https://developer.ticktick.com/docs)\n2. Click on `Manage Apps` in the top right corner and login with your TickTick credentials\n3. Register a new app by clicking the `+App Name` button\n4. Enter a name for your app (only required field)\n5. Once created, you'll be able to see your `Client ID` and `Client Secret`\n6. For the `OAuth Redirect URL`, enter a URL where you'll be redirected after authorization (e.g., `http://127.0.0.1:8080`)\n\n### Authorizing Your App\n\nAfter registering your app, use the [ticktick-py](https://github.com/lazeroffmichael/ticktick-py) library to get your access token:\n\n```python\nfrom ticktick.oauth2 import OAuth2\n\n# Replace with your details from the developer portal\nclient_id = \"YOUR_CLIENT_ID\"\nclient_secret = \"YOUR_CLIENT_SECRET\"\nredirect_uri = \"YOUR_REDIRECT_URI\"  # e.g., http://127.0.0.1:8080\n\nauth_client = OAuth2(client_id=client_id,\n                    client_secret=client_secret,\n                    redirect_uri=redirect_uri)\n\n# This will open a web browser for authorization\n# Follow the instructions in the terminal to authorize\nauth_client.get_access_token()\n```\n\nAfter authorizing, the access token will be saved to a `.token-oauth` file by default. You can extract the token from this file or use:\n\n```python\nprint(auth_client.token_info[\"access_token\"])\n```\n\n## Configuration\n\n1. Create a `.env` file in the root directory with your TickTick API key:\n   ```\n   TICKTICK_API_KEY=your_access_token_here\n   ```\n\n## Usage\n\nRun the MCP server:\n\n```bash\npython main.py\n```\n\nThis will start the MCP server on port 8000. You can now connect to it using any MCP client.\n\n### Available Tools\n\nThe server provides the following tools:\n\n- `get_projects`: Get a list of all projects\n- `project_details`: Get details of a specific project\n- `get_task_details`: Get details of a specific task\n- `create_project`: Create a new project\n- `create_task`: Create a new task in a project\n- `update_task`: Update an existing task\n- `complete_task`: Mark a task as complete\n- `delete_task`: Delete a task\n\n### Example Interactions\n\nOnce your MCP server is running, AI systems can help manage your tasks with natural language commands like:\n\n- \"Show me all my projects\"\n- \"Create a new project called 'Home Renovation'\"\n- \"Add a task to buy groceries tomorrow\"\n- \"Mark my 'Pay bills' task as complete\"\n- \"What tasks do I have due this week?\"\n- \"Delete the task about the canceled meeting\"\n\n## Using with MCP Clients\n\nThis server can be used with any MCP-compatible client, such as:\n\n- Claude Desktop\n- Cursor IDE\n- Custom AI applications using MCP SDKs\n\n## Development\n\nTo extend or modify this MCP server:\n\n1. Add new tools in `tools.py`\n2. Register them in `main.py` using `mcp.add_tool()`\n\n## License\n\nMIT\n\n## Contributing\n\nContributions are welcome! Please feel free to submit a Pull Request.\n",
   "category": "Development",
   "quality_score": 24,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ticktick-mcp": {
-          "command": "python",
-          "args": ["main.py"],
-          "env": {}
-        }
+      "ticktick-mcp": {
+        "command": "python",
+        "args": ["main.py"],
+        "env": {}
       }
     },
     "oauth": {

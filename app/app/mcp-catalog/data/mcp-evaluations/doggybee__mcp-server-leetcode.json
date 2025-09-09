@@ -8,13 +8,9 @@
     "name": "doggybee"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "mcp-server-leetcode",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,27 +21,25 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcpfun-mcp-server-leetcode": {
-          "command": "mcp-server-leetcode",
-          "args": [],
-          "env": {}
-        },
-        "mcpfun-mcp-server-leetcode-cli-config": {
-          "command": "mcp-server-leetcode",
-          "args": [],
-          "env": {}
-        },
-        "mcpfun-mcp-server-leetcode-node-config": {
-          "command": "node",
-          "args": ["/path/to/dist/index.js"],
-          "env": {}
-        },
-        "mcpfun-mcp-server-leetcode-dev": {
-          "command": "npm",
-          "args": ["run", "dev"],
-          "env": {}
-        }
+      "mcpfun-mcp-server-leetcode": {
+        "command": "mcp-server-leetcode",
+        "args": [],
+        "env": {}
+      },
+      "mcpfun-mcp-server-leetcode-cli-config": {
+        "command": "mcp-server-leetcode",
+        "args": [],
+        "env": {}
+      },
+      "mcpfun-mcp-server-leetcode-node-config": {
+        "command": "node",
+        "args": ["/path/to/dist/index.js"],
+        "env": {}
+      },
+      "mcpfun-mcp-server-leetcode-dev": {
+        "command": "npm",
+        "args": ["run", "dev"],
+        "env": {}
       }
     },
     "oauth": {
@@ -57,9 +51,9 @@
     "owner": "doggybee",
     "repo": "mcp-server-leetcode",
     "url": "https://github.com/doggybee/mcp-server-leetcode",
-    "name": "mcp-server-leetcode",
+    "name": "doggybee__mcp-server-leetcode",
     "path": null,
-    "stars": 21,
+    "stars": 25,
     "contributors": 2,
     "issues": 0,
     "releases": false,
@@ -68,7 +62,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:33:10.613Z",
+  "last_scraped_at": "2025-09-07T22:12:57.770Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

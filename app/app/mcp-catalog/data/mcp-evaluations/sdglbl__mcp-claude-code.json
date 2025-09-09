@@ -8,13 +8,9 @@
     "name": "SDGLBL"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/server/main.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,9 +20,7 @@
   "category": "Development",
   "quality_score": 56,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false
@@ -36,18 +30,18 @@
     "owner": "SDGLBL",
     "repo": "mcp-claude-code",
     "url": "https://github.com/SDGLBL/mcp-claude-code",
-    "name": "mcp-claude-code",
+    "name": "sdglbl__mcp-claude-code",
     "path": null,
-    "stars": 238,
+    "stars": 258,
     "contributors": 4,
-    "issues": 15,
+    "issues": 17,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "fadf3e98bb74e75c4d5b63a1b8dcef676a1c614c"
+    "latest_commit_hash": "5aa07a6bf55f6ec3009a6adc1698679132f44c90"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:36:27.279Z",
+  "last_scraped_at": "2025-09-07T22:16:39.615Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,
@@ -106,5 +100,5 @@
       "importance": 2
     }
   ],
-  "raw_dependencies": "=== pyproject.toml ===\n[build-system]\nrequires = [\"setuptools>=61.0.0\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"mcp-claude-code\"\nversion = \"0.4.0\"\ndescription = \"MCP implementation of Claude Code capabilities\"\nreadme = \"README.md\"\nrequires-python = \">=3.12\"\nlicense = { text = \"MIT\" }\nauthors = [{ name = \"SDGLBL\", email = \"sdglbl.me@gmail.com\" }]\nclassifiers = [\n  \"Programming Language :: Python :: 3\",\n  \"License :: OSI Approved :: MIT License\",\n  \"Operating System :: OS Independent\",\n]\ndependencies = [\n  \"httpx>=0.27.0\",\n  \"uvicorn>=0.23.1\",\n  \"openai>=1.50.0\",\n  \"python-dotenv>=1.0.0\",\n  \"litellm<=1.67.1\",\n  \"grep-ast>=0.8.1\",\n  \"GitPython>=3.1.0\",\n  \"fastmcp>=2.5.1\",\n  \"libtmux>=0.15.0\",\n  \"bashlex>=0.16\",\n  \"pytest-asyncio>=0.26.0\",\n]\n\n[project.optional-dependencies]\ndev = [\"pytest>=7.0.0\", \"pytest-cov>=4.1.0\", \"ruff>=0.1.0\", \"black>=23.3.0\"]\ntest = [\n  \"pytest>=7.0.0\",\n  \"pytest-cov>=4.1.0\",\n  \"pytest-mock>=3.10.0\",\n  \"pytest-asyncio>=0.25.3\",\n  \"twisted\",\n]\nperformance = [\"ujson>=5.7.0\", \"orjson>=3.9.0\"]\n\n[project.scripts]\nclaudecode = \"mcp_claude_code.cli:main\"\n\n[tool.setuptools.packages.find]\nwhere = [\".\"]\ninclude = [\"mcp_claude_code*\"]\n\n\n[tool.basedpyright]\ninclude = [\"mcp_claude_code\"]\n\nexclude = [\n  \"**/node_modules\",\n  \"**/__pycache__\",\n  \"src/experimental\",\n  \"src/typestubs\",\n]\n\npythonVersion = \"3.13\"\nreportUnknownVariableType = false\nreportUnknownMemberType = false\nreportUnknownParameterType = false\nreportUnusedCallResult = false\nreportIgnoreCommentWithoutRule = false\nreportUnusedParameter = false\nreportAny = false\nreportRedeclaration = false\nreportMissingTypeArgument = false\nreportExplicitAny = false\nreportUnusedFunction = false\n\n[tool.pytest.ini_options]\nasyncio_mode = \"strict\"\nasyncio_default_fixture_loop_scope = \"function\"\n"
+  "raw_dependencies": "=== pyproject.toml ===\n[build-system]\nrequires = [\"setuptools>=61.0.0\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"mcp-claude-code\"\nversion = \"0.5.1\"\ndescription = \"MCP implementation of Claude Code capabilities\"\nreadme = \"README.md\"\nrequires-python = \">=3.12\"\nlicense = { text = \"MIT\" }\nauthors = [{ name = \"SDGLBL\", email = \"sdglbl.me@gmail.com\" }]\nclassifiers = [\n  \"Programming Language :: Python :: 3\",\n  \"License :: OSI Approved :: MIT License\",\n  \"Operating System :: OS Independent\",\n]\ndependencies = [\n  \"httpx>=0.27.0\",\n  \"uvicorn>=0.23.1\",\n  \"openai>=1.50.0\",\n  \"python-dotenv>=1.0.0\",\n  \"litellm<=1.67.1\",\n  \"grep-ast>=0.8.1\",\n  \"GitPython>=3.1.0\",\n  \"fastmcp>=2.5.1\",\n  \"libtmux>=0.15.0\",\n  \"bashlex>=0.16\",\n  \"pytest-asyncio>=0.26.0\",\n]\n\n[project.optional-dependencies]\ndev = [\"pytest>=7.0.0\", \"pytest-cov>=4.1.0\", \"ruff>=0.1.0\", \"black>=23.3.0\"]\ntest = [\n  \"pytest>=7.0.0\",\n  \"pytest-cov>=4.1.0\",\n  \"pytest-mock>=3.10.0\",\n  \"pytest-asyncio>=0.25.3\",\n  \"twisted\",\n]\nperformance = [\"ujson>=5.7.0\", \"orjson>=3.9.0\"]\n\n[project.scripts]\nclaudecode = \"mcp_claude_code.cli:main\"\n\n[tool.setuptools.packages.find]\nwhere = [\".\"]\ninclude = [\"mcp_claude_code*\"]\n\n\n[tool.basedpyright]\ninclude = [\"mcp_claude_code\"]\n\nexclude = [\n  \"**/node_modules\",\n  \"**/__pycache__\",\n  \"src/experimental\",\n  \"src/typestubs\",\n]\n\npythonVersion = \"3.13\"\nreportUnknownVariableType = false\nreportUnknownMemberType = false\nreportUnknownParameterType = false\nreportUnusedCallResult = false\nreportIgnoreCommentWithoutRule = false\nreportUnusedParameter = false\nreportAny = false\nreportRedeclaration = false\nreportMissingTypeArgument = false\nreportExplicitAny = false\nreportUnusedFunction = false\n\n[tool.pytest.ini_options]\nasyncio_mode = \"strict\"\nasyncio_default_fixture_loop_scope = \"function\"\n"
 }

@@ -8,13 +8,9 @@
     "name": "olalonde"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,16 @@
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-human": {
-          "command": "npx",
-          "args": ["-y", "mcp-human@latest"],
-          "env": {}
-        },
-        "mcp-human-production": {
-          "command": "npx",
-          "args": ["-y", "mcp-human@latest"],
-          "env": {
-            "MTURK_SANDBOX": "false"
-          }
+      "mcp-human": {
+        "command": "npx",
+        "args": ["-y", "mcp-human@latest"],
+        "env": {}
+      },
+      "mcp-human-production": {
+        "command": "npx",
+        "args": ["-y", "mcp-human@latest"],
+        "env": {
+          "MTURK_SANDBOX": "false"
         }
       }
     },

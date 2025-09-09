@@ -8,13 +8,9 @@
     "name": "Automata-Labs-team"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@automatalabs/mcp-server-playwright"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 68,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "automatalabs-mcp-server-playwright": {
-          "command": "npx",
-          "args": ["-y", "@automatalabs/mcp-server-playwright"],
-          "env": {}
-        }
+      "automatalabs-mcp-server-playwright": {
+        "command": "npx",
+        "args": ["-y", "@automatalabs/mcp-server-playwright"],
+        "env": {}
       }
     },
     "oauth": {
@@ -44,7 +38,7 @@
     "url": "https://github.com/Automata-Labs-team/MCP-Server-Playwright",
     "name": "automata-labs-team__mcp-server-playwright",
     "path": null,
-    "stars": 244,
+    "stars": 251,
     "contributors": 5,
     "issues": 0,
     "releases": true,
@@ -53,7 +47,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:25:59.906Z",
+  "last_scraped_at": "2025-09-07T22:12:20.552Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

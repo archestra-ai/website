@@ -8,13 +8,9 @@
     "name": "wanaku-ai"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "wanaku"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],

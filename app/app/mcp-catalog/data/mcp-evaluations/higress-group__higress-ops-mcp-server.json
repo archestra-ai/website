@@ -8,13 +8,9 @@
     "name": "higress-group"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/server.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 39,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "higress-ops-mcp-server-stdio": {
-          "command": "uv",
-          "args": ["run", "client.py"],
-          "env": {}
-        }
+      "higress-ops-mcp-server-stdio": {
+        "command": "uv",
+        "args": ["run", "client.py"],
+        "env": {}
       }
     },
     "oauth": {
@@ -42,18 +36,18 @@
     "owner": "higress-group",
     "repo": "higress-ops-mcp-server",
     "url": "https://github.com/higress-group/higress-ops-mcp-server",
-    "name": "higress-ops-mcp-server",
+    "name": "higress-group__higress-ops-mcp-server",
     "path": null,
-    "stars": 20,
+    "stars": 21,
     "contributors": 1,
-    "issues": 1,
+    "issues": 0,
     "releases": false,
     "ci_cd": false,
     "latest_commit_hash": "715e13be384a43bceeae01891add5643e3d59a30"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:35:54.716Z",
+  "last_scraped_at": "2025-09-07T22:16:01.397Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

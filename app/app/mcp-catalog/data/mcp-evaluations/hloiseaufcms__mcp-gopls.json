@@ -8,13 +8,9 @@
     "name": "hloiseaufcms"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "mcp-gopls",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-gopls": {
-          "command": "mcp-gopls",
-          "args": [],
-          "env": {}
-        }
+      "mcp-gopls": {
+        "command": "mcp-gopls",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {
@@ -42,18 +36,18 @@
     "owner": "hloiseaufcms",
     "repo": "mcp-gopls",
     "url": "https://github.com/hloiseaufcms/mcp-gopls",
-    "name": "mcp-gopls",
+    "name": "hloiseaufcms__mcp-gopls",
     "path": null,
-    "stars": 37,
+    "stars": 40,
     "contributors": 2,
-    "issues": 2,
+    "issues": 0,
     "releases": false,
     "ci_cd": false,
     "latest_commit_hash": "2587313f195c6410c8f7ceb858a83d71298ebcfb"
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:35:54.200Z",
+  "last_scraped_at": "2025-09-07T22:15:59.721Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

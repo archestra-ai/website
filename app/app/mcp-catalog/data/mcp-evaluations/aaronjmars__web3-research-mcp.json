@@ -8,13 +8,9 @@
     "name": "aaronjmars"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "web3-research-mcp@latest"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 59,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "web3-research-mcp": {
-          "command": "npx",
-          "args": ["-y", "web3-research-mcp@latest"],
-          "env": {}
-        }
+      "web3-research-mcp": {
+        "command": "npx",
+        "args": ["-y", "web3-research-mcp@latest"],
+        "env": {}
       }
     },
     "oauth": {
@@ -42,18 +36,18 @@
     "owner": "aaronjmars",
     "repo": "web3-research-mcp",
     "url": "https://github.com/aaronjmars/web3-research-mcp",
-    "name": "web3-research-mcp",
+    "name": "aaronjmars__web3-research-mcp",
     "path": null,
-    "stars": 140,
+    "stars": 143,
     "contributors": 3,
-    "issues": 0,
+    "issues": 1,
     "releases": false,
     "ci_cd": false,
     "latest_commit_hash": "b835413e1c3788417431c6d7a735bf6e372bcf96"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:37:05.165Z",
+  "last_scraped_at": "2025-09-07T22:17:50.351Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

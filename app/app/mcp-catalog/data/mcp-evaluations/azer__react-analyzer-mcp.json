@@ -8,13 +8,9 @@
     "name": "azer"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": ["${__dirname}/build/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "react-analyzer-mcp": {
-          "command": "node",
-          "args": ["/Users/azer/code/sandbox/react-analyzer-mcp/build/index.js"],
-          "env": {}
-        }
+      "react-analyzer-mcp": {
+        "command": "node",
+        "args": ["/Users/azer/code/sandbox/react-analyzer-mcp/build/index.js"],
+        "env": {}
       }
     },
     "oauth": {
@@ -42,9 +36,9 @@
     "owner": "azer",
     "repo": "react-analyzer-mcp",
     "url": "https://github.com/azer/react-analyzer-mcp",
-    "name": "react-analyzer-mcp",
+    "name": "azer__react-analyzer-mcp",
     "path": null,
-    "stars": 44,
+    "stars": 46,
     "contributors": 1,
     "issues": 0,
     "releases": false,
@@ -53,7 +47,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:35:12.657Z",
+  "last_scraped_at": "2025-09-07T22:15:38.276Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

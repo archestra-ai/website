@@ -8,39 +8,40 @@
     "name": "ChristianHinge"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uv",
+    "args": ["tool", "dicom-mcp", "${user_config.config_file_path}"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "config_file_path": {
+      "type": "file",
+      "title": "DICOM MCP Configuration File",
+      "description": "Path to the YAML configuration file for DICOM MCP server, defining DICOM nodes and calling AE titles.",
+      "required": true
+    }
+  },
   "readme": "# DICOM MCP Server for Medical Imaging Systems 🏥\n\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n[![Python Version](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)\n [![PyPI Version](https://img.shields.io/pypi/v/dicom-mcp.svg)](https://pypi.org/project/dicom-mcp/) [![PyPI Downloads](https://img.shields.io/pypi/dm/dicom-mcp.svg)](https://pypi.org/project/dicom-mcp/)  \n\nThe `dicom-mcp` server enables AI assistants to query, read, and move data on DICOM servers (PACS, VNA, etc.). \n\n<div align=\"center\">\n\n🤝 **[Contribute](#contributing)** •\n📝 **[Report Bug](https://github.com/ChristianHinge/dicom-mcp/issues)**  •\n📝 **[Blog Post 1](https://www.christianhinge.com/projects/dicom-mcp/)** \n\n</div>\n\n```text\n---------------------------------------------------------------------\n🧑‍⚕️ User: \"Any significant findings in John Doe's previous CT report?\"\n\n🧠 LLM → ⚙️ Tools:\n   query_patients → query_studies → query_series → extract_pdf_text_from_dicom\n\n💬 LLM Response: \"The report from 2025-03-26 mentions a history of splenomegaly (enlarged spleen)\"\n\n🧑‍⚕️ User: \"What's the volume of his spleen at the last scan and the scan today?\"\n\n🧠 LLM → ⚙️ Tools:\n   (query_studies → query_series → move_series → query_series → extract_pdf_text_from_dicom) x2\n   (The move_series tool sends the latest CT to a DICOM segmentation node, which returns volume PDF report)\n\n💬 LLM Response: \"last year 2024-03-26: 412cm³, today 2025-04-10: 350cm³\"\n---------------------------------------------------------------------\n```\n\n\n## ✨ Core Capabilities\n\n`dicom-mcp` provides tools to:\n\n* **🔍 Query Metadata**: Search for patients, studies, series, and instances using various criteria.\n* **📄 Read DICOM Reports (PDF)**: Retrieve DICOM instances containing encapsulated PDFs (e.g., clinical reports) and extract the text content.\n* **➡️ Send DICOM Images**: Send series or studies to other DICOM destinations, e.g. AI endpoints for image segmentation, classification, etc.\n* **⚙️ Utilities**: Manage connections and understand query options.\n\n## 🚀 Quick Start\n### 📥 Installation\nInstall using uv or pip:\n\n```bash\nuv tool install dicom-mcp\n```\nOr by cloning the repository:\n\n```bash\n# Clone and set up development environment\ngit clone https://github.com/ChristianHinge/dicom-mcp\ncd dicom mcp\n\n# Create and activate virtual environment\nuv venv\nsource .venv/bin/activate\n\n# Install with test dependencies\nuv pip install -e \".[dev]\"\n```\n\n\n### ⚙️ Configuration\n\n`dicom-mcp` requires a YAML configuration file (`config.yaml` or similar) defining DICOM nodes and calling AE titles. Adapt the configuration or keep as is for compatibility with the sample ORTHANC  Server.\n\n```yaml\nnodes:\n  main:\n    host: \"localhost\"\n    port: 4242 \n    ae_title: \"ORTHANC\"\n    description: \"Local Orthanc DICOM server\"\n\ncurrent_node: \"main\"\ncalling_aet: \"MCPSCU\" \n```\n> [!WARNING]\nDICOM-MCP is not meant for clinical use, and should not be connected with live hospital databases or databases with patient-sensitive data. Doing so could lead to both loss of patient data, and leakage of patient data onto the internet. DICOM-MCP can be used with locally hosted open-weight LLMs for complete data privacy. \n\n### (Optional) Sample ORTHANC server\nIf you don't have a DICOM server available, you can run a local ORTHANC server using Docker:\n\nClone the repository and install test dependencies `pip install -e \".[dev]`\n\n```bash\ncd tests\ndocker ocmpose up -d\ncd ..\npytest # uploads dummy pdf data to ORTHANC server\n```\nUI at [http://localhost:8042](http://localhost:8042)\n\n### 🔌 MCP Integration\n\nAdd to your client configuration (e.g. `claude_desktop_config.json`):\n\n```json\n{\n  \"mcpServers\": {\n    \"dicom\": {\n      \"command\": \"uv\",\n      \"args\": [\"tool\",\"dicom-mcp\", \"/path/to/your_config.yaml\"]\n    }\n  }\n}\n```\n\nFor development:\n\n```json\n{\n    \"mcpServers\": {\n        \"arxiv-mcp-server\": {\n            \"command\": \"uv\",\n            \"args\": [\n                \"--directory\",\n                \"path/to/cloned/dicom-mcp\",\n                \"run\",\n                \"dicom-mcp\",\n                \"/path/to/your_config.yaml\"\n            ]\n        }\n    }\n}\n```\n\n\n## 🛠️ Tools Overview\n\n`dicom-mcp` provides four categories of tools for interaction with DICOM servers and DICOM data. \n\n### 🔍 Query Metadata\n\n* **`query_patients`**: Search for patients based on criteria like name, ID, or birth date.\n* **`query_studies`**: Find studies using patient ID, date, modality, description, accession number, or Study UID.\n* **`query_series`**: Locate series within a specific study using modality, series number/description, or Series UID.\n* **`query_instances`**: Find individual instances (images/objects) within a series using instance number or SOP Instance UID\n### 📄 Read DICOM Reports (PDF)\n\n* **`extract_pdf_text_from_dicom`**: Retrieve a specific DICOM instance containing an encapsulated PDF and extract its text content.\n\n### ➡️ Send DICOM Images\n\n* **`move_series`**: Send a specific DICOM series to another configured DICOM node using C-MOVE.\n* **`move_study`**: Send an entire DICOM study to another configured DICOM node using C-MOVE.\n\n### ⚙️ Utilities\n\n* **`list_dicom_nodes`**: Show the currently active DICOM node and list all configured nodes.\n* **`switch_dicom_node`**: Change the active DICOM node for subsequent operations.\n* **`verify_connection`**: Test the DICOM network connection to the currently active node using C-ECHO.\n* **`get_attribute_presets`**: List the available levels of detail (minimal, standard, extended) for metadata query results.<p>\n\n\n### Example interaction\nThe tools can be chained together to answer complex questions:\n\n\n<div align=\"center\">\n<img src=\"images/example.png\" alt=\"My Awesome Diagram\" width=\"700\">\n</div>\n\n\n## 📈 Contributing\n### Running Tests\n\nTests require a running Orthanc DICOM server. You can use Docker:\n\n```bash\n# Navigate to the directory containing docker-compose.yml (e.g., tests/)\ncd tests\ndocker-compose up -d\n```\n\nRun tests using pytest:\n\n```bash\n# From the project root directory\npytest\n```\n\nStop the Orthanc container:\n\n```bash\ncd tests\ndocker-compose down\n```\n\n### Debugging\n\nUse the MCP Inspector for debugging the server communication:\n\n```bash\nnpx @modelcontextprotocol/inspector uv run dicom-mcp /path/to/your_config.yaml --transport stdio\n```\n\n## 🙏 Acknowledgments\n\n* Built using [pynetdicom](https://github.com/pydicom/pynetdicom)\n* Uses [PyPDF2](https://pypi.org/project/PyPDF2/) for PDF text extraction\n",
   "category": "Healthcare",
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "dicom-mcp-tool-with-config": {
-          "command": "uv",
-          "args": ["tool", "dicom-mcp", "/path/to/your_config.yaml"],
-          "env": {}
-        },
-        "dicom-mcp-dev-run-with-config": {
-          "command": "uv",
-          "args": ["--directory", "path/to/cloned/dicom-mcp", "run", "dicom-mcp", "/path/to/your_config.yaml"],
-          "env": {}
-        },
-        "dicom-mcp-stdio-with-config": {
-          "command": "uv",
-          "args": ["run", "dicom-mcp", "/path/to/your_config.yaml", "--transport", "stdio"],
-          "env": {}
-        }
+      "dicom-mcp-tool-with-config": {
+        "command": "uv",
+        "args": ["tool", "dicom-mcp", "/path/to/your_config.yaml"],
+        "env": {}
+      },
+      "dicom-mcp-dev-run-with-config": {
+        "command": "uv",
+        "args": ["--directory", "path/to/cloned/dicom-mcp", "run", "dicom-mcp", "/path/to/your_config.yaml"],
+        "env": {}
+      },
+      "dicom-mcp-stdio-with-config": {
+        "command": "uv",
+        "args": ["run", "dicom-mcp", "/path/to/your_config.yaml", "--transport", "stdio"],
+        "env": {}
       }
     },
     "oauth": {
@@ -52,9 +53,9 @@
     "owner": "ChristianHinge",
     "repo": "dicom-mcp",
     "url": "https://github.com/ChristianHinge/dicom-mcp",
-    "name": "dicom-mcp",
+    "name": "christianhinge__dicom-mcp",
     "path": null,
-    "stars": 56,
+    "stars": 63,
     "contributors": 2,
     "issues": 0,
     "releases": true,
@@ -63,7 +64,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:33:47.103Z",
+  "last_scraped_at": "2025-09-07T22:14:03.900Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

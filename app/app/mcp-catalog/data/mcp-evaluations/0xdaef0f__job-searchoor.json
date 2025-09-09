@@ -8,13 +8,9 @@
     "name": "0xDAEF0F"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "job-searchoor"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 36,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "job-searchoor": {
-          "command": "npx",
-          "args": ["-y", "job-searchoor"],
-          "env": {}
-        }
+      "job-searchoor": {
+        "command": "npx",
+        "args": ["-y", "job-searchoor"],
+        "env": {}
       }
     },
     "oauth": {

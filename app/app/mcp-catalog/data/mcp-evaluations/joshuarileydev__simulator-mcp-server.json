@@ -8,13 +8,9 @@
     "name": "JoshuaRileyDev"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["y", "@joshuarileydev/simulator-mcp-server"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "joshuarileydev-simulator-mcp-server": {
-          "command": "npx",
-          "args": ["y", "@joshuarileydev/simulator-mcp-server"],
-          "env": {}
-        }
+      "joshuarileydev-simulator-mcp-server": {
+        "command": "npx",
+        "args": ["y", "@joshuarileydev/simulator-mcp-server"],
+        "env": {}
       }
     },
     "oauth": {
@@ -42,18 +36,18 @@
     "owner": "JoshuaRileyDev",
     "repo": "simulator-mcp-server",
     "url": "https://github.com/JoshuaRileyDev/simulator-mcp-server",
-    "name": "simulator-mcp-server",
+    "name": "joshuarileydev__simulator-mcp-server",
     "path": null,
     "stars": 46,
     "contributors": 1,
-    "issues": 3,
+    "issues": 0,
     "releases": false,
     "ci_cd": false,
     "latest_commit_hash": "f16cfd12741df1de4a097d30d427a93a0958d610"
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:36:11.887Z",
+  "last_scraped_at": "2025-09-07T22:16:16.402Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -8,13 +8,9 @@
     "name": "andybrandt"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "simple-timeserver-mac": {
-          "command": "python",
-          "args": ["-m", "mcp_simple_timeserver"],
-          "env": {}
-        },
-        "simple-timeserver-windows": {
-          "command": "C:\\Users\\YOUR_USERNAME\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
-          "args": ["-m", "mcp_simple_timeserver"],
-          "env": {}
-        }
+      "simple-timeserver-mac": {
+        "command": "python",
+        "args": ["-m", "mcp_simple_timeserver"],
+        "env": {}
+      },
+      "simple-timeserver-windows": {
+        "command": "C:\\Users\\YOUR_USERNAME\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "args": ["-m", "mcp_simple_timeserver"],
+        "env": {}
       }
     },
     "oauth": {

@@ -24,17 +24,11 @@ function createBaseServerManifest(overrides?: Partial<ArchestraMcpServerManifest
       name: 'Test Author',
     },
     server: {
-      type: 'node',
-      entry_point: 'server/index.js',
-      mcp_config: {
-        command: 'node',
-        args: ['server/index.js'],
-      },
+      command: 'node',
+      args: ['server/index.js'],
     },
     archestra_config: {
-      client_config_permutations: {
-        mcpServers: {},
-      },
+      client_config_permutations: {},
       oauth: {
         provider: null,
         required: false,
@@ -149,7 +143,7 @@ describe('Quality Calculator', () => {
         createBaseServerManifest({
           name: 'test-server-2',
           github_info: {
-            ...server.github_info,
+            ...server.github_info!,
           },
         }),
       ];
@@ -166,7 +160,7 @@ describe('Quality Calculator', () => {
     it('should return maximum score (10 points) when both CI/CD and releases are present', () => {
       const server = createBaseServerManifest({
         github_info: {
-          ...createBaseServerManifest().github_info,
+          ...createBaseServerManifest().github_info!,
           ci_cd: true,
           releases: true,
         },
@@ -316,7 +310,7 @@ This is a comprehensive README with detailed documentation, installation instruc
           implementing_oauth2: false,
         },
         github_info: {
-          ...createBaseServerManifest().github_info,
+          ...createBaseServerManifest().github_info!,
           stars: 150,
           contributors: 5,
           issues: 10,

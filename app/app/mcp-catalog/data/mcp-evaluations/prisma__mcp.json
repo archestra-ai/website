@@ -8,13 +8,9 @@
     "name": "prisma"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "prisma", "mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-remote": {
-          "command": "npx",
-          "args": ["-y", "mcp-remote", "https://mcp.prisma.io/mcp"],
-          "env": {}
-        },
-        "prisma-mcp": {
-          "command": "npx",
-          "args": ["-y", "prisma", "mcp"],
-          "env": {}
-        }
+      "mcp-remote": {
+        "command": "npx",
+        "args": ["-y", "mcp-remote", "https://mcp.prisma.io/mcp"],
+        "env": {}
+      },
+      "prisma-mcp": {
+        "command": "npx",
+        "args": ["-y", "prisma", "mcp"],
+        "env": {}
       }
     },
     "oauth": {
@@ -47,9 +41,9 @@
     "owner": "prisma",
     "repo": "mcp",
     "url": "https://github.com/prisma/mcp",
-    "name": "mcp",
+    "name": "prisma__mcp",
     "path": null,
-    "stars": 22,
+    "stars": 25,
     "contributors": 4,
     "issues": 0,
     "releases": false,
@@ -58,7 +52,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:34:39.923Z",
+  "last_scraped_at": "2025-09-07T22:14:49.005Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

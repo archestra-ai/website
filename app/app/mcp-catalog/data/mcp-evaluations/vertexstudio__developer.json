@@ -8,13 +8,9 @@
     "name": "VertexStudio"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "${__dirname}/target/release/developer",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 22,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "developer-release": {
-          "command": "/path/to/your/developer/target/release/developer",
-          "args": [],
-          "env": {}
-        },
-        "developer-debug": {
-          "command": "/path/to/your/developer/target/debug/developer",
-          "args": [],
-          "env": {}
-        }
+      "developer-release": {
+        "command": "/path/to/your/developer/target/release/developer",
+        "args": [],
+        "env": {}
+      },
+      "developer-debug": {
+        "command": "/path/to/your/developer/target/debug/developer",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {
@@ -47,9 +41,9 @@
     "owner": "VertexStudio",
     "repo": "developer",
     "url": "https://github.com/VertexStudio/developer",
-    "name": "developer",
+    "name": "vertexstudio__developer",
     "path": null,
-    "stars": 12,
+    "stars": 14,
     "contributors": 1,
     "issues": 0,
     "releases": false,
@@ -58,7 +52,7 @@
   },
   "programming_language": "Rust",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:33:17.355Z",
+  "last_scraped_at": "2025-09-07T22:12:59.808Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

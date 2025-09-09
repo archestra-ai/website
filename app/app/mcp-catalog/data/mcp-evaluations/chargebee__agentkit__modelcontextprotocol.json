@@ -8,13 +8,9 @@
     "name": "chargebee"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@chargebee/mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 59,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "chargebee-mcp": {
-          "command": "npx",
-          "args": ["-y", "@chargebee/mcp"],
-          "env": {}
-        }
+      "chargebee-mcp": {
+        "command": "npx",
+        "args": ["-y", "@chargebee/mcp"],
+        "env": {}
       }
     },
     "oauth": {
@@ -42,9 +36,9 @@
     "owner": "chargebee",
     "repo": "agentkit",
     "url": "https://github.com/chargebee/agentkit/tree/main/modelcontextprotocol",
-    "name": "agentkit",
+    "name": "chargebee__agentkit__modelcontextprotocol",
     "path": "modelcontextprotocol",
-    "stars": 13,
+    "stars": 14,
     "contributors": 4,
     "issues": 0,
     "releases": true,
@@ -53,7 +47,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:37:11.660Z",
+  "last_scraped_at": "2025-09-07T22:18:05.614Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

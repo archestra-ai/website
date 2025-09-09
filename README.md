@@ -1,21 +1,56 @@
-# Archestra.AI Website
+<div align="center">  
+  
+  # Archestra AI Official Website
 
-The official website for [Archestra.AI](https://archestra.ai) - the enterprise MCP platform for AI agents.
 
-## Getting Started
+  **Enterprise MCP platform for AI agents.**
 
-1. Install dependencies:
+  
+  [![Contributors](https://img.shields.io/github/contributors/archestra-ai/website)](https://github.com/archestra-ai/website/graphs/contributors)
+  [![Slack](https://img.shields.io/badge/Slack-Join%20Community-4A154B?logo=slack)](https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg)
 
-   ```bash
-   cd app
-   pnpm install
-   ```
+</div>
 
-2. Run the development server:
+## 🌐 Overview
 
-   ```bash
-   pnpm dev
-   ```
+This repository contains the source code for [Archestra.AI](https://archestra.ai), the official website for the Archestra enterprise platform.
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ (Latest LTS recommended)
+- pnpm 10.14.0+
+
+### Development
+
+1. Clone the repository
+```bash
+git clone https://github.com/archestra-ai/website.git
+cd website
+```
+
+2. Install dependencies
+```bash
+cd app
+pnpm install
+```
+
+3. Start development server
+```bash
+pnpm dev
+```
+
+The application will be available at `http://localhost:3000`.
+
+## 🤝 Contributing
+
+We welcome contributions from the community! [Contribution guidelines](https://www.archestra.ai/docs/contributing).
+
+<div align="center">
+  <br />
+  <a href="https://www.archestra.ai/blog/archestra-joins-cncf-linux-foundation"><img src="https://raw.githubusercontent.com/archestra-ai/archestra/main/desktop_app/public/images/linux-foundation-logo.png" height="50" alt="Linux Foundation" /></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.archestra.ai/blog/archestra-joins-cncf-linux-foundation"><img src="https://raw.githubusercontent.com/archestra-ai/archestra/main/desktop_app/public/images/cncf-logo.png" height="50" alt="CNCF" /></a>
+  </div>

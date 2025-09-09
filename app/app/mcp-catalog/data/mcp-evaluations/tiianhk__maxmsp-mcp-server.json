@@ -8,13 +8,9 @@
     "name": "tiianhk"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/server/main.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,22 +21,20 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "MaxMSP-MCP-Server-claude": {
-          "command": "python",
-          "args": ["install.py", "--client", "claude"],
-          "env": {}
-        },
-        "MaxMSP-MCP-Server-cursor": {
-          "command": "python",
-          "args": ["install.py", "--client", "cursor"],
-          "env": {}
-        },
-        "MaxMSP-MCP-Server-other-client": {
-          "command": "python",
-          "args": ["install.py", "--client", "{your_client_name}"],
-          "env": {}
-        }
+      "MaxMSP-MCP-Server-claude": {
+        "command": "python",
+        "args": ["install.py", "--client", "claude"],
+        "env": {}
+      },
+      "MaxMSP-MCP-Server-cursor": {
+        "command": "python",
+        "args": ["install.py", "--client", "cursor"],
+        "env": {}
+      },
+      "MaxMSP-MCP-Server-other-client": {
+        "command": "python",
+        "args": ["install.py", "--client", "{your_client_name}"],
+        "env": {}
       }
     },
     "oauth": {
@@ -52,18 +46,18 @@
     "owner": "tiianhk",
     "repo": "MaxMSP-MCP-Server",
     "url": "https://github.com/tiianhk/MaxMSP-MCP-Server",
-    "name": "MaxMSP-MCP-Server",
+    "name": "tiianhk__maxmsp-mcp-server",
     "path": null,
-    "stars": 66,
+    "stars": 84,
     "contributors": 4,
-    "issues": 2,
+    "issues": 0,
     "releases": false,
     "ci_cd": true,
-    "latest_commit_hash": "e95592f58f1a7a0181e135d3b4a5d4bbeca53485"
+    "latest_commit_hash": "f31a9d4681173dfef974773708852d6d1dedd26a"
   },
   "programming_language": "Max",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:33:17.531Z",
+  "last_scraped_at": "2025-09-07T22:12:59.917Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

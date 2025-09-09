@@ -8,13 +8,9 @@
     "name": "furey"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "docker",
+    "args": ["run", "furey/mongodb-lens"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,44 +21,42 @@
   "quality_score": 76,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mongodb-lens": {
-          "command": "npx",
-          "args": ["-y", "mongodb-lens", "--uri", "mongodb://localhost:27017/mydatabase"]
-        },
-        "mongodb-lens-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "3000:3000",
-            "-e",
-            "MONGODB_URI=mongodb://host.docker.internal:27017/mydatabase",
-            "furey/mongodb-lens"
-          ],
-          "env": {
-            "MONGODB_URI": "mongodb://host.docker.internal:27017/mydatabase"
-          }
-        },
-        "mongodb-lens-docker-configured": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "3000:3000",
-            "-e",
-            "MONGODB_URI=mongodb://host.docker.internal:27017/mydatabase",
-            "-e",
-            "MCP_PORT=3000",
-            "-e",
-            "MCP_CONFIRM=true",
-            "furey/mongodb-lens"
-          ],
-          "env": {
-            "MONGODB_URI": "mongodb://host.docker.internal:27017/mydatabase",
-            "MCP_PORT": "3000",
-            "MCP_CONFIRM": "true"
-          }
+      "mongodb-lens": {
+        "command": "npx",
+        "args": ["-y", "mongodb-lens", "--uri", "mongodb://localhost:27017/mydatabase"]
+      },
+      "mongodb-lens-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "3000:3000",
+          "-e",
+          "MONGODB_URI=mongodb://host.docker.internal:27017/mydatabase",
+          "furey/mongodb-lens"
+        ],
+        "env": {
+          "MONGODB_URI": "mongodb://host.docker.internal:27017/mydatabase"
+        }
+      },
+      "mongodb-lens-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "3000:3000",
+          "-e",
+          "MONGODB_URI=mongodb://host.docker.internal:27017/mydatabase",
+          "-e",
+          "MCP_PORT=3000",
+          "-e",
+          "MCP_CONFIRM=true",
+          "furey/mongodb-lens"
+        ],
+        "env": {
+          "MONGODB_URI": "mongodb://host.docker.internal:27017/mydatabase",
+          "MCP_PORT": "3000",
+          "MCP_CONFIRM": "true"
         }
       }
     },
@@ -75,9 +69,9 @@
     "owner": "furey",
     "repo": "mongodb-lens",
     "url": "https://github.com/furey/mongodb-lens",
-    "name": "mongodb-lens",
+    "name": "furey__mongodb-lens",
     "path": null,
-    "stars": 176,
+    "stars": 184,
     "contributors": 3,
     "issues": 0,
     "releases": true,
@@ -86,7 +80,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:34:07.912Z",
+  "last_scraped_at": "2025-09-07T22:14:16.809Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

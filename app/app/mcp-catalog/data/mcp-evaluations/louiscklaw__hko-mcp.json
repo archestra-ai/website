@@ -8,13 +8,9 @@
     "name": "louiscklaw"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "github:louiscklaw/mcp-hko"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,22 +21,20 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-hko-dev": {
-          "command": "npm",
-          "args": ["run", "inspect"],
-          "env": {}
-        },
-        "mcp-hko-stdio": {
-          "command": "npx",
-          "args": ["-y", "github:louiscklaw/mcp-hko"],
-          "env": {}
-        },
-        "mcp-hko-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "mcp-hko:latest"],
-          "env": {}
-        }
+      "mcp-hko-dev": {
+        "command": "npm",
+        "args": ["run", "inspect"],
+        "env": {}
+      },
+      "mcp-hko-stdio": {
+        "command": "npx",
+        "args": ["-y", "github:louiscklaw/mcp-hko"],
+        "env": {}
+      },
+      "mcp-hko-docker": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "mcp-hko:latest"],
+        "env": {}
       }
     },
     "oauth": {

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "test": "vitest",
-    "prettier": "prettier --write .",
+    "prettier": "prettier",
     "typecheck": "tsc --noEmit",
     "catalog:evaluate": "npx tsx app/mcp-catalog/scripts/evaluate-catalog.ts",
     "catalog:validate": "npx tsx app/mcp-catalog/scripts/validate-catalog.ts",

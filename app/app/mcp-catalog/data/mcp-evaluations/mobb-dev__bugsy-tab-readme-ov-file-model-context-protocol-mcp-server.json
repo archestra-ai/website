@@ -8,13 +8,9 @@
     "name": "mobb-dev"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,38 +21,36 @@
   "quality_score": 19,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mobb-bugsy-server": {
-          "command": "npx",
-          "args": ["-y", "@mobb/bugsy-server"],
-          "env": {}
-        },
-        "mobb-bugsy-server-with-config": {
-          "command": "npx",
-          "args": ["-y", "@mobb/bugsy-server", "--config", "./bugsy-config.json"],
-          "env": {}
-        },
-        "mobb-bugsy-server-docker": {
-          "command": "docker",
-          "args": ["run", "-p", "8080:8080", "mobb/bugsy-server:latest"],
-          "env": {}
-        },
-        "mobb-bugsy-server-docker-configured": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "BUGS_PORT=8081",
-            "-e",
-            "BUGS_LOG_LEVEL=debug",
-            "mobb/bugsy-server:latest"
-          ],
-          "env": {
-            "BUGS_PORT": "8081",
-            "BUGS_LOG_LEVEL": "debug"
-          }
+      "mobb-bugsy-server": {
+        "command": "npx",
+        "args": ["-y", "@mobb/bugsy-server"],
+        "env": {}
+      },
+      "mobb-bugsy-server-with-config": {
+        "command": "npx",
+        "args": ["-y", "@mobb/bugsy-server", "--config", "./bugsy-config.json"],
+        "env": {}
+      },
+      "mobb-bugsy-server-docker": {
+        "command": "docker",
+        "args": ["run", "-p", "8080:8080", "mobb/bugsy-server:latest"],
+        "env": {}
+      },
+      "mobb-bugsy-server-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "BUGS_PORT=8081",
+          "-e",
+          "BUGS_LOG_LEVEL=debug",
+          "mobb/bugsy-server:latest"
+        ],
+        "env": {
+          "BUGS_PORT": "8081",
+          "BUGS_LOG_LEVEL": "debug"
         }
       }
     },

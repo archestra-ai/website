@@ -99,7 +99,7 @@ export function getDocsByCategory(): DocCategory[] {
       // Group docs by subcategory
       const subcategoryMap = new Map<string | undefined, DocPage[]>();
       const directDocs: DocPage[] = [];
-      
+
       categoryDocs.forEach((doc) => {
         if (doc.subcategory) {
           if (!subcategoryMap.has(doc.subcategory)) {

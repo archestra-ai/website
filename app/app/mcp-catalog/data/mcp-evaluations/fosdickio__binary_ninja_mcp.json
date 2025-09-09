@@ -8,13 +8,9 @@
     "name": "fosdickio"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/bridge/binja_mcp_bridge.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "binary_ninja_mcp": {
-          "command": "python",
-          "args": ["/ABSOLUTE/PATH/TO/binary_ninja_mcp/bridge/binja_mcp_bridge.py"],
-          "env": {}
-        }
+      "binary_ninja_mcp": {
+        "command": "python",
+        "args": ["/ABSOLUTE/PATH/TO/binary_ninja_mcp/bridge/binja_mcp_bridge.py"],
+        "env": {}
       }
     },
     "oauth": {

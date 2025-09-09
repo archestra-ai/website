@@ -8,13 +8,9 @@
     "name": "zinja-coder"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/apktool_mcp_server.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 72,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "apktool-mcp-server": {
-          "command": "uv",
-          "args": ["run", "python", "apktool_mcp_server.py"],
-          "env": {}
-        }
+      "apktool-mcp-server": {
+        "command": "uv",
+        "args": ["run", "python", "apktool_mcp_server.py"],
+        "env": {}
       }
     },
     "oauth": {

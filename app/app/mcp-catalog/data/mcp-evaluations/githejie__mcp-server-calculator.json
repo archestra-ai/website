@@ -8,13 +8,9 @@
     "name": "githejie"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["mcp-server-calculator"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-calculator": {
-          "command": "uvx",
-          "args": ["mcp-server-calculator"],
-          "env": {}
-        },
-        "mcp_server_calculator": {
-          "command": "python",
-          "args": ["-m", "mcp_server_calculator"],
-          "env": {}
-        }
+      "mcp-server-calculator": {
+        "command": "uvx",
+        "args": ["mcp-server-calculator"],
+        "env": {}
+      },
+      "mcp_server_calculator": {
+        "command": "python",
+        "args": ["-m", "mcp_server_calculator"],
+        "env": {}
       }
     },
     "oauth": {

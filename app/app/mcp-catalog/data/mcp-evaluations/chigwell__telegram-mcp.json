@@ -8,13 +8,9 @@
     "name": "chigwell"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,34 +21,32 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "telegram-mcp-docker-compose": {
-          "command": "docker-compose",
-          "args": ["up", "-d"],
-          "env": {}
-        },
-        "telegram-mcp-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-d",
-            "--name",
-            "telegram-mcp-server",
-            "-e",
-            "TELEGRAM_API_ID=your_api_id_here",
-            "-e",
-            "TELEGRAM_API_HASH=your_api_hash_here",
-            "-e",
-            "TELEGRAM_SESSION_STRING=your_session_string_here",
-            "-p",
-            "8000:8000",
-            "telegram-mcp:latest"
-          ],
-          "env": {
-            "TELEGRAM_API_ID": "your_api_id_here",
-            "TELEGRAM_API_HASH": "your_api_hash_here",
-            "TELEGRAM_SESSION_STRING": "your_session_string_here"
-          }
+      "telegram-mcp-docker-compose": {
+        "command": "docker-compose",
+        "args": ["up", "-d"],
+        "env": {}
+      },
+      "telegram-mcp-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-d",
+          "--name",
+          "telegram-mcp-server",
+          "-e",
+          "TELEGRAM_API_ID=your_api_id_here",
+          "-e",
+          "TELEGRAM_API_HASH=your_api_hash_here",
+          "-e",
+          "TELEGRAM_SESSION_STRING=your_session_string_here",
+          "-p",
+          "8000:8000",
+          "telegram-mcp:latest"
+        ],
+        "env": {
+          "TELEGRAM_API_ID": "your_api_id_here",
+          "TELEGRAM_API_HASH": "your_api_hash_here",
+          "TELEGRAM_SESSION_STRING": "your_session_string_here"
         }
       }
     },

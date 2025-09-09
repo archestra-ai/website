@@ -8,13 +8,9 @@
     "name": "g0t4"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "mcp-server-commands"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,27 +21,25 @@
   "quality_score": 64,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-commands": {
-          "command": "npx",
-          "args": ["mcp-server-commands"],
-          "env": {}
-        },
-        "mcp-server-commands-local-build": {
-          "command": "/path/to/mcp-server-commands/build/index.js",
-          "args": [],
-          "env": {}
-        },
-        "mcp-server-commands-via-mcpo": {
-          "command": "uvx",
-          "args": ["mcpo", "--port", "3010", "--api-key", "supersecret", "--", "npx", "mcp-server-commands"],
-          "env": {}
-        },
-        "mcp-server-commands-verbose": {
-          "command": "npx",
-          "args": ["mcp-server-commands", "--verbose"],
-          "env": {}
-        }
+      "mcp-server-commands": {
+        "command": "npx",
+        "args": ["mcp-server-commands"],
+        "env": {}
+      },
+      "mcp-server-commands-local-build": {
+        "command": "/path/to/mcp-server-commands/build/index.js",
+        "args": [],
+        "env": {}
+      },
+      "mcp-server-commands-via-mcpo": {
+        "command": "uvx",
+        "args": ["mcpo", "--port", "3010", "--api-key", "supersecret", "--", "npx", "mcp-server-commands"],
+        "env": {}
+      },
+      "mcp-server-commands-verbose": {
+        "command": "npx",
+        "args": ["mcp-server-commands", "--verbose"],
+        "env": {}
       }
     },
     "oauth": {
@@ -57,18 +51,18 @@
     "owner": "g0t4",
     "repo": "mcp-server-commands",
     "url": "https://github.com/g0t4/mcp-server-commands",
-    "name": "mcp-server-commands",
+    "name": "g0t4__mcp-server-commands",
     "path": null,
-    "stars": 183,
+    "stars": 192,
     "contributors": 1,
-    "issues": 4,
+    "issues": 0,
     "releases": true,
     "ci_cd": true,
     "latest_commit_hash": "4973cc443c6ccd9c9b0c42506ac640f342f0f76a"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:33:24.104Z",
+  "last_scraped_at": "2025-09-07T22:13:00.712Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
