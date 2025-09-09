@@ -8,12 +8,12 @@
     "name": "pragmar"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "python",
+    "args": [
+      "${__dirname}/server/lib/mcp_server_webcrawl/cli.py"
+    ],
+    "env": {
+      "PYTHONPATH": "${__dirname}/server/lib"
     }
   },
   "tools": [],
@@ -24,9 +24,7 @@
   "category": "AI Tools",
   "quality_score": 54,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false
@@ -48,7 +46,7 @@
   "programming_language": "Python",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:27:50.651Z",
-  "evaluation_model": "gemini-2.5-pro",
+  "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

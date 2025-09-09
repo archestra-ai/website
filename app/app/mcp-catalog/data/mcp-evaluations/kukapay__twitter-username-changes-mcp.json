@@ -8,13 +8,11 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "${__dirname}/main.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,20 @@
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "twitter-username-changes-mcp-dev": {
-          "command": "mcp",
-          "args": ["dev", "main.py"],
-          "env": {}
-        },
-        "twitter-username-changes": {
-          "command": "python",
-          "args": ["/absolute/path/to/twitter-username-changes-mcp/main.py"],
-          "env": {}
-        }
+      "twitter-username-changes-mcp-dev": {
+        "command": "mcp",
+        "args": [
+          "dev",
+          "main.py"
+        ],
+        "env": {}
+      },
+      "twitter-username-changes": {
+        "command": "python",
+        "args": [
+          "/absolute/path/to/twitter-username-changes-mcp/main.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

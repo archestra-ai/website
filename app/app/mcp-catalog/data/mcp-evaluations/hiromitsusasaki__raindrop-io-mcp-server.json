@@ -8,30 +8,38 @@
     "name": "hiromitsusasaki"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "node",
+    "args": [
+      "${__dirname}/index.js"
+    ],
+    "env": {
+      "RAINDROP_TOKEN": "${user_config.raindrop_token}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "raindrop_token": {
+      "type": "string",
+      "title": "Raindrop.io API Token",
+      "description": "Your Raindrop.io API token for authentication.",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# Raindrop.io MCP Server\n[![smithery badge](https://smithery.ai/badge/@hiromitsusasaki/raindrop-io-mcp-server)](https://smithery.ai/server/@hiromitsusasaki/raindrop-io-mcp-server)\n\nAn integration that allows LLMs to interact with Raindrop.io bookmarks using the Model Context Protocol (MCP).\n\n<a href=\"https://glama.ai/mcp/servers/@hiromitsusasaki/raindrop-io-mcp-server\">\n  <img width=\"380\" height=\"200\" src=\"https://glama.ai/mcp/servers/@hiromitsusasaki/raindrop-io-mcp-server/badge\" alt=\"Raindrop.io Server MCP server\" />\n</a>\n\n## Features\n\n- Create bookmarks\n- Search bookmarks\n- Filter by tags\n\n## Requirements\n\n- Node.js 16 or higher\n- Raindrop.io account and API token\n\n## Setup\n\n### Installing via Smithery\n\nTo install Raindrop.io Integration for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@hiromitsusasaki/raindrop-io-mcp-server):\n\n```bash\nnpx -y @smithery/cli install @hiromitsusasaki/raindrop-io-mcp-server --client claude\n```\n\n### Manual Installation\n\n1. Clone the repository:\n```bash\ngit clone https://github.com/hiromitsusasaki/raindrop-io-mcp-server\ncd raindrop-io-mcp-server\n```\n\n2. Install dependencies:\n```bash\nnpm install\n```\n\n3. Set up environment variables:\n- Create a `.env` file and set your Raindrop.io API token\n```\nRAINDROP_TOKEN=your_access_token_here\n```\n\n4. Build:\n```bash\nnpm run build\n```\n\n## Using with Claude for Desktop\n\n1. Open Claude for Desktop configuration file:\n- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`\n- Windows: `%APPDATA%\\Claude\\claude_desktop_config.json`\n\n2. Add the following configuration:\n```json\n{\n  \"mcpServers\": {\n    \"raindrop\": {\n      \"command\": \"node\",\n      \"args\": [\"PATH_TO_BUILD/index.js\"],\n      \"env\": {\n        \"RAINDROP_TOKEN\": \"your_access_token_here\"\n      }\n    }\n  }\n}\n```\n\n3. Restart Claude for Desktop\n\n## Available Tools\n\n### create-bookmark\nCreates a new bookmark.\n\n**Parameters:**\n- `url`: URL to bookmark (required)\n- `title`: Title for the bookmark (optional)\n- `tags`: Array of tags (optional)\n- `collection`: Collection ID (optional)\n\n### search-bookmarks\nSearches through bookmarks.\n\n**Parameters:**\n- `query`: Search query (required)\n- `tags`: Array of tags to filter by (optional)\n\n## Development\n\n```bash\n# Build for development\nnpm run build\n\n# Start server\nnpm start\n```\n\n## Security Notes\n\n- Always manage API tokens using environment variables\n- Set appropriate permissions for Claude for Desktop configuration files\n- Restrict unnecessary file access\n\n## Open Source\n\nThis is an open source MCP server that anyone can use and contribute to. The project is released under the MIT License.\n\n## Contributing\n\nContributions are welcome! Feel free to submit issues, feature requests, or pull requests to help improve this project.\n\n## Related Links\n\n- [Model Context Protocol](https://modelcontextprotocol.io/)\n- [Raindrop.io API Documentation](https://developer.raindrop.io/)",
   "category": "Knowledge",
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "hiromitsusasaki-raindrop-io-mcp-server": {
-          "command": "node",
-          "args": ["PATH_TO_BUILD/index.js"],
-          "env": {
-            "RAINDROP_TOKEN": "your_access_token_here"
-          }
+      "hiromitsusasaki-raindrop-io-mcp-server": {
+        "command": "node",
+        "args": [
+          "PATH_TO_BUILD/index.js"
+        ],
+        "env": {
+          "RAINDROP_TOKEN": "your_access_token_here"
         }
       }
     },

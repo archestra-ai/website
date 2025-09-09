@@ -1,0 +1,34 @@
+{
+  "name": "huggingface__remote-mcp",
+  "display_name": "HuggingFace MCP",
+  "version": "1.0.0",
+  "description": "Remote MCP server for HuggingFace services - access models, datasets, and spaces",
+  "remote_url": "https://huggingface.co/mcp",
+  "remote_mcp_docs_url": "https://huggingface.co/settings/mcp",
+  "tools": [],
+  "prompts": [],
+  "user_config": {},
+  "readme": null,
+  "category": "AI Tools",
+  "quality_score": 80,
+  "archestra_config": {
+    "client_config_permutations": null,
+    "oauth": {
+      "provider": null,
+      "required": false
+    }
+  },
+  "framework": null,
+  "last_scraped_at": "2025-09-05T19:30:23.066Z",
+  "evaluation_model": null,
+  "raw_dependencies": null,
+  "dxt_version": "0.1.0",
+  "author": {
+    "name": "huggingface"
+  },
+  "server": {
+    "command": "remote",
+    "args": [],
+    "env": {}
+  }
+}

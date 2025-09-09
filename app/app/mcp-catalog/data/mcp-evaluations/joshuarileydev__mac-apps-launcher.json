@@ -8,13 +8,12 @@
     "name": "JoshuaRileyDev"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@joshuarileydev/mac-apps-launcher-mcp-server"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,13 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "joshuarileydev-mac-apps-launcher-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "@joshuarileydev/mac-apps-launcher-mcp-server"],
-          "env": {}
-        }
+      "joshuarileydev-mac-apps-launcher-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@joshuarileydev/mac-apps-launcher-mcp-server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -19,6 +19,7 @@ interface McpCatalogClientProps {
   languages: string[];
   dependencies: string[];
   mcpFeatures: string[];
+  serverTypes: string[];
   serverCounts: Map<string, number>;
 }
 
@@ -28,6 +29,7 @@ export default function McpCatalogClient({
   languages,
   dependencies,
   mcpFeatures,
+  serverTypes,
   serverCounts,
 }: McpCatalogClientProps) {
   const searchParams = useSearchParams();
@@ -42,6 +44,7 @@ export default function McpCatalogClient({
   const [selectedLanguage, setSelectedLanguage] = useState(searchParams.get('language') || 'All');
   const [selectedDependency, setSelectedDependency] = useState(searchParams.get('dependency') || 'All');
   const [selectedFeature, setSelectedFeature] = useState(searchParams.get('feature') || 'All');
+  const [selectedServerType, setSelectedServerType] = useState(searchParams.get('serverType') || 'All');
   const [sortBy, setSortBy] = useState(searchParams.get('sort') || 'quality');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | null>(
     (searchParams.get('dir') as 'asc' | 'desc') || 'desc'
@@ -67,7 +70,8 @@ export default function McpCatalogClient({
     selectedCategory !== 'All' ||
     selectedLanguage !== 'All' ||
     selectedDependency !== 'All' ||
-    selectedFeature !== 'All';
+    selectedFeature !== 'All' ||
+    selectedServerType !== 'All';
 
   // Count active filters
   const activeFilterCount = [
@@ -76,6 +80,7 @@ export default function McpCatalogClient({
     selectedLanguage !== 'All',
     selectedDependency !== 'All',
     selectedFeature !== 'All',
+    selectedServerType !== 'All',
   ].filter(Boolean).length;
 
   // Clear all filters
@@ -85,6 +90,7 @@ export default function McpCatalogClient({
     setSelectedLanguage('All');
     setSelectedDependency('All');
     setSelectedFeature('All');
+    setSelectedServerType('All');
     // Reset to quality sort when clearing filters
     if (sortBy === 'relevance') {
       setSortBy('quality');
@@ -164,13 +170,7 @@ export default function McpCatalogClient({
 
   // Calculate search relevance score for a server
   const calculateSearchRelevance = (
-    {
-      display_name: serverName,
-      description,
-      category,
-      github_info: { repo: gitHubRepo, owner: gitHubOwner, path: gitHubPath },
-      readme,
-    }: ArchestraMcpServerManifest,
+    { display_name: serverName, description, category, github_info, readme }: ArchestraMcpServerManifest,
     query: string
   ): number => {
     if (!query) return 0;
@@ -200,19 +200,24 @@ export default function McpCatalogClient({
       score += 35;
     }
 
-    // Repository name match (without github.com)
-    if (gitHubRepo.toLowerCase().includes(lowerQuery)) {
-      score += 20;
-    }
+    // For GitHub servers, check repo/owner/path
+    if (github_info) {
+      const { repo: gitHubRepo, owner: gitHubOwner, path: gitHubPath } = github_info;
 
-    // Organization name match
-    if (gitHubOwner.toLowerCase().includes(lowerQuery)) {
-      score += 15;
-    }
+      // Repository name match (without github.com)
+      if (gitHubRepo.toLowerCase().includes(lowerQuery)) {
+        score += 20;
+      }
 
-    // URL path match (for repository paths)
-    if (gitHubPath && gitHubPath.toLowerCase().includes(lowerQuery)) {
-      score += 10;
+      // Organization name match
+      if (gitHubOwner.toLowerCase().includes(lowerQuery)) {
+        score += 15;
+      }
+
+      // URL path match (for repository paths)
+      if (gitHubPath && gitHubPath.toLowerCase().includes(lowerQuery)) {
+        score += 10;
+      }
     }
 
     // README match (lowest priority)
@@ -221,13 +226,21 @@ export default function McpCatalogClient({
     }
 
     // Boost score for servers where the query matches multiple fields
-    const matchCount = [
+    const matchFields = [
       serverName.includes(lowerQuery),
       description && description.toLowerCase().includes(lowerQuery),
       category && category.toLowerCase().includes(lowerQuery),
-      gitHubRepo.toLowerCase().includes(lowerQuery),
-      gitHubOwner.toLowerCase().includes(lowerQuery),
-    ].filter(Boolean).length;
+    ];
+
+    // Add GitHub-specific matches if github_info exists
+    if (github_info) {
+      matchFields.push(
+        github_info.repo.toLowerCase().includes(lowerQuery),
+        github_info.owner.toLowerCase().includes(lowerQuery)
+      );
+    }
+
+    const matchCount = matchFields.filter(Boolean).length;
 
     // Add bonus for multiple field matches (indicates more relevant result)
     if (matchCount > 1) {
@@ -242,39 +255,54 @@ export default function McpCatalogClient({
       server,
       searchScore: searchQuery ? calculateSearchRelevance(server, searchQuery) : 0,
     }))
-    .filter(({ server: { category, programming_language, dependencies, protocol_features }, searchScore }) => {
-      // Filter by search
-      const matchesSearch = !searchQuery || searchScore > 0;
+    .filter(
+      ({ server: { category, programming_language, dependencies, protocol_features, remote_url }, searchScore }) => {
+        // Filter by search
+        const matchesSearch = !searchQuery || searchScore > 0;
 
-      // Filter by category
-      const matchesCategory =
-        selectedCategory === 'All' ||
-        (selectedCategory === 'Uncategorized' && category === null) ||
-        category === selectedCategory;
+        // Filter by category
+        const matchesCategory =
+          selectedCategory === 'All' ||
+          (selectedCategory === 'Uncategorized' && category === null) ||
+          category === selectedCategory;
 
-      // Filter by language
-      const matchesLanguage = selectedLanguage === 'All' || programming_language === selectedLanguage;
+        // Filter by language
+        const matchesLanguage = selectedLanguage === 'All' || programming_language === selectedLanguage;
 
-      // Filter by dependency
-      const matchesDependency =
-        selectedDependency === 'All' ||
-        (dependencies && dependencies.some((dep) => dep.name === selectedDependency && dep.importance >= 8));
+        // Filter by dependency
+        const matchesDependency =
+          selectedDependency === 'All' ||
+          (dependencies && dependencies.some((dep) => dep.name === selectedDependency && dep.importance >= 8));
 
-      // Filter by MCP features
-      const matchesFeature =
-        selectedFeature === 'All' ||
-        (selectedFeature === 'Tools' && protocol_features?.implementing_tools === true) ||
-        (selectedFeature === 'Resources' && protocol_features?.implementing_resources === true) ||
-        (selectedFeature === 'Prompts' && protocol_features?.implementing_prompts === true) ||
-        (selectedFeature === 'Sampling' && protocol_features?.implementing_sampling === true) ||
-        (selectedFeature === 'Roots' && protocol_features?.implementing_roots === true) ||
-        (selectedFeature === 'Logging' && protocol_features?.implementing_logging === true) ||
-        (selectedFeature === 'STDIO Transport' && protocol_features?.implementing_stdio === true) ||
-        (selectedFeature === 'Streamable HTTP' && protocol_features?.implementing_streamable_http === true) ||
-        (selectedFeature === 'OAuth2' && protocol_features?.implementing_oauth2 === true);
+        // Filter by MCP features
+        const matchesFeature =
+          selectedFeature === 'All' ||
+          (selectedFeature === 'Tools' && protocol_features?.implementing_tools === true) ||
+          (selectedFeature === 'Resources' && protocol_features?.implementing_resources === true) ||
+          (selectedFeature === 'Prompts' && protocol_features?.implementing_prompts === true) ||
+          (selectedFeature === 'Sampling' && protocol_features?.implementing_sampling === true) ||
+          (selectedFeature === 'Roots' && protocol_features?.implementing_roots === true) ||
+          (selectedFeature === 'Logging' && protocol_features?.implementing_logging === true) ||
+          (selectedFeature === 'STDIO Transport' && protocol_features?.implementing_stdio === true) ||
+          (selectedFeature === 'Streamable HTTP' && protocol_features?.implementing_streamable_http === true) ||
+          (selectedFeature === 'OAuth2' && protocol_features?.implementing_oauth2 === true);
 
-      return matchesSearch && matchesCategory && matchesLanguage && matchesDependency && matchesFeature;
-    });
+        // Filter by server type
+        const matchesServerType =
+          selectedServerType === 'All' ||
+          (selectedServerType === 'Remote' && remote_url !== undefined && remote_url !== null) ||
+          (selectedServerType === 'Self-hosted' && (remote_url === undefined || remote_url === null));
+
+        return (
+          matchesSearch &&
+          matchesCategory &&
+          matchesLanguage &&
+          matchesDependency &&
+          matchesFeature &&
+          matchesServerType
+        );
+      }
+    );
 
   // Sort filtered servers
   const sortedServers = [...filteredAndScoredServers].sort((a, b) => {
@@ -298,18 +326,18 @@ export default function McpCatalogClient({
         break;
 
       case 'stars':
-        // Sort by GitHub stars
-        result = (serverA.github_info.stars || 0) - (serverB.github_info.stars || 0);
+        // Sort by GitHub stars (remote servers without github_info get 0)
+        result = (serverA.github_info?.stars || 0) - (serverB.github_info?.stars || 0);
         break;
 
       case 'contributors':
-        // Sort by contributors
-        result = (serverA.github_info.contributors || 0) - (serverB.github_info.contributors || 0);
+        // Sort by contributors (remote servers without github_info get 0)
+        result = (serverA.github_info?.contributors || 0) - (serverB.github_info?.contributors || 0);
         break;
 
       case 'issues':
-        // Sort by issues
-        result = (serverA.github_info.issues || 0) - (serverB.github_info.issues || 0);
+        // Sort by issues (remote servers without github_info get 0)
+        result = (serverA.github_info?.issues || 0) - (serverB.github_info?.issues || 0);
         break;
 
       case 'updated':
@@ -424,6 +452,33 @@ export default function McpCatalogClient({
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-9 text-sm"
                   />
+                </div>
+              </div>
+
+              {/* Server Type */}
+              <div>
+                <h3 className="text-sm font-medium text-gray-700 mb-2">Server Type</h3>
+                <div className="space-y-1">
+                  {serverTypes.map((serverType) => (
+                    <button
+                      key={serverType}
+                      onClick={() => setSelectedServerType(serverType)}
+                      className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
+                        selectedServerType === serverType
+                          ? 'bg-indigo-100 text-indigo-800 font-medium'
+                          : 'text-gray-600 hover:bg-gray-100'
+                      }`}
+                    >
+                      {serverType}
+                      <span className="float-right text-xs text-gray-500">
+                        {serverType === 'All'
+                          ? mcpServers.length
+                          : serverType === 'Remote'
+                            ? mcpServers.filter((s) => s.remote_url !== undefined && s.remote_url !== null).length
+                            : mcpServers.filter((s) => s.remote_url === undefined || s.remote_url === null).length}
+                      </span>
+                    </button>
+                  ))}
                 </div>
               </div>
 
@@ -602,6 +657,33 @@ export default function McpCatalogClient({
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-9 text-sm"
                   />
+                </div>
+
+                {/* Server Type */}
+                <div>
+                  <h3 className="text-sm font-medium text-gray-700 mb-2">Server Type</h3>
+                  <div className="space-y-1">
+                    {serverTypes.map((serverType) => (
+                      <button
+                        key={serverType}
+                        onClick={() => setSelectedServerType(serverType)}
+                        className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
+                          selectedServerType === serverType
+                            ? 'bg-indigo-100 text-indigo-800 font-medium'
+                            : 'text-gray-600 hover:bg-gray-100'
+                        }`}
+                      >
+                        {serverType}
+                        <span className="float-right text-xs text-gray-500">
+                          {serverType === 'All'
+                            ? mcpServers.length
+                            : serverType === 'Remote'
+                              ? mcpServers.filter((s) => s.remote_url !== undefined && s.remote_url !== null).length
+                              : mcpServers.filter((s) => s.remote_url === undefined || s.remote_url === null).length}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Dependencies */}
@@ -867,8 +949,12 @@ export default function McpCatalogClient({
                     category,
                     framework,
                     quality_score: qualityScore,
+                    readme,
+                    remote_url: remoteUrl,
                   } = item.server;
                   const searchScore = item.searchScore;
+                  const hasArchestraBadge = readme && readme.toLowerCase().includes('archestra.ai');
+                  const isRemoteServer = remoteUrl && !gitHubInfo;
 
                   // Preserve current state in the link
                   const params = new URLSearchParams();
@@ -877,19 +963,34 @@ export default function McpCatalogClient({
                   if (selectedLanguage !== 'All') params.set('language', selectedLanguage);
                   if (selectedDependency !== 'All') params.set('dependency', selectedDependency);
                   if (selectedFeature !== 'All') params.set('feature', selectedFeature);
+                  if (selectedServerType !== 'All') params.set('serverType', selectedServerType);
                   if (isClient) {
                     params.set('scroll', window.scrollY.toString());
                   }
 
                   return (
                     <Link key={serverId} href={`/mcp-catalog/${serverId}?${params.toString()}`} className="block">
-                      <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
+                      <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full relative overflow-hidden">
+                        {hasArchestraBadge && (
+                          <div
+                            className="absolute top-10 -right-12 bg-purple-600 text-white text-[10px] font-semibold px-12 py-1.5 transform rotate-45 shadow-sm z-10 text-center"
+                            style={{ width: '200px' }}
+                          >
+                            Supporting catalog
+                          </div>
+                        )}
                         <CardHeader className="p-4 sm:p-6">
                           <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
                             <div className="flex flex-wrap gap-1 sm:gap-2">
-                              <Badge variant="outline" className="text-xs">
-                                {programming_language}
-                              </Badge>
+                              {isRemoteServer ? (
+                                <Badge className="bg-blue-100 text-blue-800 border-blue-200 text-xs">
+                                  Remote Server
+                                </Badge>
+                              ) : (
+                                <Badge variant="outline" className="text-xs">
+                                  {programming_language}
+                                </Badge>
+                              )}
                               <Badge variant="outline" className="text-xs">
                                 {category || 'Uncategorized'}
                               </Badge>
@@ -905,23 +1006,25 @@ export default function McpCatalogClient({
                             )}
                           </div>
                           <CardTitle className="text-xl break-words">{serverName}</CardTitle>
-                          <div
-                            className="text-sm text-gray-500 mb-2 font-mono"
-                            style={{
-                              overflowWrap: 'break-word',
-                              wordBreak: 'keep-all',
-                            }}
-                          >
-                            <span>
-                              {gitHubInfo.owner}/{gitHubInfo.repo}
-                            </span>
-                            {gitHubInfo.path && (
-                              <>
-                                <span>/</span>
-                                <span className="text-blue-600">{gitHubInfo.path}</span>
-                              </>
-                            )}
-                          </div>
+                          {gitHubInfo && (
+                            <div
+                              className="text-sm text-gray-500 mb-2 font-mono"
+                              style={{
+                                overflowWrap: 'break-word',
+                                wordBreak: 'keep-all',
+                              }}
+                            >
+                              <span>
+                                {gitHubInfo.owner}/{gitHubInfo.repo}
+                              </span>
+                              {gitHubInfo.path && (
+                                <>
+                                  <span>/</span>
+                                  <span className="text-blue-600">{gitHubInfo.path}</span>
+                                </>
+                              )}
+                            </div>
+                          )}
                           {description !== "We're evaluating this MCP server" && (
                             <CardDescription>{description}</CardDescription>
                           )}
@@ -930,7 +1033,7 @@ export default function McpCatalogClient({
                           <div className="space-y-4">
                             <QualityBar score={qualityScore} />
                             <div className="flex flex-wrap gap-2">
-                              {qualityScore !== null ? (
+                              {qualityScore !== null && gitHubInfo ? (
                                 <div className="flex items-center gap-1 text-xs text-gray-600">
                                   {(() => {
                                     const serverCount = serverCounts.get(`${gitHubInfo.owner}/${gitHubInfo.repo}`) || 1;
@@ -973,10 +1076,10 @@ export default function McpCatalogClient({
                               {framework && (
                                 <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">{framework}</span>
                               )}
-                              {gitHubInfo.releases && (
+                              {gitHubInfo?.releases && (
                                 <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">releases</span>
                               )}
-                              {gitHubInfo.ci_cd && (
+                              {gitHubInfo?.ci_cd && (
                                 <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">ci/cd</span>
                               )}
                             </div>

@@ -8,30 +8,38 @@
     "name": "elie222"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "node",
+    "args": [
+      "${__dirname}/apps/mcp-server/build/index.js"
+    ],
+    "env": {
+      "API_KEY": "${user_config.api_key}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "API Key",
+      "description": "Your API key for the Inbox Zero personal assistant. Get it from the /settings page in the web app.",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# Inbox Zero MCP Server\n\nAn MCP server to manage your inbox efficiently. Use it within Cursor, Windsurf, or Claude desktop to interact with your Inbox Zero personal assistant.\n\n## Run it locally\n\nFrom this directory:\n\n```\npnpm run build\npnpm start\n```\n\nThen use the MCP at path `apps/mcp-server/build/index.js` in Cursor or Claude Desktop. Note, use the full path.\n\nATM, you should replace the empty string with your API key (PRs welcome to improve this). You can get your API key from the `/settings` page in the web app:\n\n```js\nconst API_KEY = process.env.API_KEY || \"\";\n```\n",
   "category": "Email",
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server": {
-          "command": "node",
-          "args": ["apps/mcp-server/build/index.js"],
-          "env": {
-            "API_KEY": "YOUR_API_KEY"
-          }
+      "mcp-server": {
+        "command": "node",
+        "args": [
+          "apps/mcp-server/build/index.js"
+        ],
+        "env": {
+          "API_KEY": "YOUR_API_KEY"
         }
       }
     },
@@ -44,18 +52,18 @@
     "owner": "elie222",
     "repo": "inbox-zero",
     "url": "https://github.com/elie222/inbox-zero/tree/main/apps/mcp-server",
-    "name": "inbox-zero",
+    "name": "elie222__inbox-zero__apps__mcp-server",
     "path": "apps/mcp-server",
-    "stars": 8457,
+    "stars": 8736,
     "contributors": 43,
-    "issues": 153,
+    "issues": 172,
     "releases": false,
     "ci_cd": true,
-    "latest_commit_hash": "fcbca06fd22244bfceaceb292c98adf2cee63cfc"
+    "latest_commit_hash": "4b8e34f9a10e9d7d6fe7efb5132939d41e606b45"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:33:33.389Z",
+  "last_scraped_at": "2025-09-07T22:13:20.737Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,
@@ -78,5 +86,5 @@
       "importance": 6
     }
   ],
-  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@inbox-zero/mcp-server\",\n  \"version\": \"0.0.1\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"bin\": {\n    \"inbox-zero-ai\": \"./build/index.js\"\n  },\n  \"scripts\": {\n    \"start\": \"node build/index.js\",\n    \"build\": \"tsc && node -e \\\"require('fs').chmodSync('build/index.js', '755')\\\"\"\n  },\n  \"files\": [\n    \"build\"\n  ],\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"1.12.1\",\n    \"zod\": \"3.25.46\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"22.15.29\",\n    \"typescript\": \"5.8.3\"\n  }\n}\n"
+  "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@inbox-zero/mcp-server\",\n  \"version\": \"0.0.1\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"bin\": {\n    \"inbox-zero-ai\": \"./build/index.js\"\n  },\n  \"scripts\": {\n    \"start\": \"node build/index.js\",\n    \"build\": \"tsc && node -e \\\"require('fs').chmodSync('build/index.js', '755')\\\"\"\n  },\n  \"files\": [\n    \"build\"\n  ],\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"1.17.4\",\n    \"zod\": \"3.25.46\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"24.3.0\",\n    \"typescript\": \"5.9.2\"\n  }\n}\n"
 }

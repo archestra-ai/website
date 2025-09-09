@@ -1,0 +1,34 @@
+{
+  "name": "stripe__remote-mcp",
+  "display_name": "Stripe MCP",
+  "version": "1.0.0",
+  "description": "Remote MCP server for Stripe - payment infrastructure for the internet",
+  "remote_url": "https://mcp.stripe.com",
+  "remote_mcp_docs_url": "https://docs.stripe.com/mcp",
+  "tools": [],
+  "prompts": [],
+  "user_config": {},
+  "readme": null,
+  "category": "Finance",
+  "quality_score": 80,
+  "archestra_config": {
+    "client_config_permutations": null,
+    "oauth": {
+      "provider": null,
+      "required": false
+    }
+  },
+  "framework": null,
+  "last_scraped_at": "2025-09-05T19:30:23.066Z",
+  "evaluation_model": null,
+  "raw_dependencies": null,
+  "dxt_version": "0.1.0",
+  "author": {
+    "name": "stripe"
+  },
+  "server": {
+    "command": "remote",
+    "args": [],
+    "env": {}
+  }
+}

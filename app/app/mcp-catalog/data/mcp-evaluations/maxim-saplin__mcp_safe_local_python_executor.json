@@ -8,13 +8,14 @@
     "name": "maxim-saplin"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "mcp_server.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +26,23 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-safe-local-python-executor-manual": {
-          "command": "uv",
-          "args": ["run", "mcp_server.py"],
-          "env": {}
-        },
-        "safe-local-python-executor": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/mcp_local_python_executor/", "run", "mcp_server.py"],
-          "env": {}
-        }
+      "mcp-safe-local-python-executor-manual": {
+        "command": "uv",
+        "args": [
+          "run",
+          "mcp_server.py"
+        ],
+        "env": {}
+      },
+      "safe-local-python-executor": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/mcp_local_python_executor/",
+          "run",
+          "mcp_server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {
@@ -47,9 +54,9 @@
     "owner": "maxim-saplin",
     "repo": "mcp_safe_local_python_executor",
     "url": "https://github.com/maxim-saplin/mcp_safe_local_python_executor",
-    "name": "mcp_safe_local_python_executor",
+    "name": "maxim-saplin__mcp_safe_local_python_executor",
     "path": null,
-    "stars": 31,
+    "stars": 32,
     "contributors": 3,
     "issues": 0,
     "releases": false,
@@ -58,7 +65,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:33:23.557Z",
+  "last_scraped_at": "2025-09-07T22:12:59.889Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

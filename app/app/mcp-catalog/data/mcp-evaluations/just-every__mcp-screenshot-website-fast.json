@@ -8,13 +8,12 @@
     "name": "just-every"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@just-every/mcp-screenshot-website-fast"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +24,21 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "just-every-mcp-screenshot-website-fast": {
-          "command": "npx",
-          "args": ["-y", "@just-every/mcp-screenshot-website-fast"],
-          "env": {}
-        },
-        "just-every-mcp-screenshot-website-fast-dev": {
-          "command": "npm",
-          "args": ["run", "serve:dev"],
-          "env": {}
-        }
+      "just-every-mcp-screenshot-website-fast": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@just-every/mcp-screenshot-website-fast"
+        ],
+        "env": {}
+      },
+      "just-every-mcp-screenshot-website-fast-dev": {
+        "command": "npm",
+        "args": [
+          "run",
+          "serve:dev"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,11 @@
     "name": "reading-plus-ai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "mcp-server-ds"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,22 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-ds-dev": {
-          "command": "uv",
-          "args": ["--directory", "/Users/username/src/mcp-server-ds", "run", "mcp-server-ds"],
-          "env": {}
-        },
-        "mcp-server-ds-published": {
-          "command": "uvx",
-          "args": ["mcp-server-ds"],
-          "env": {}
-        }
+      "mcp-server-ds-dev": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/Users/username/src/mcp-server-ds",
+          "run",
+          "mcp-server-ds"
+        ],
+        "env": {}
+      },
+      "mcp-server-ds-published": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-ds"
+        ],
+        "env": {}
       }
     },
     "oauth": {
@@ -47,18 +50,18 @@
     "owner": "reading-plus-ai",
     "repo": "mcp-server-data-exploration",
     "url": "https://github.com/reading-plus-ai/mcp-server-data-exploration",
-    "name": "mcp-server-data-exploration",
+    "name": "reading-plus-ai__mcp-server-data-exploration",
     "path": null,
-    "stars": 452,
+    "stars": 475,
     "contributors": 2,
-    "issues": 0,
+    "issues": 7,
     "releases": false,
     "ci_cd": false,
     "latest_commit_hash": "0cd67660c2591f05fe8dfe5bf93c9d5b66c5b95d"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:36:38.534Z",
+  "last_scraped_at": "2025-09-07T22:17:31.842Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

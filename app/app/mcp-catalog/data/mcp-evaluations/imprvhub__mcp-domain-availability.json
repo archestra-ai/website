@@ -8,13 +8,14 @@
     "name": "imprvhub"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "--python=3.10",
+      "--from",
+      "git+https://github.com/imprvhub/mcp-domain-availability",
+      "mcp-domain-availability"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,22 +26,23 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-domain-availability": {
-          "command": "uvx",
-          "args": [
-            "--python=3.10",
-            "--from",
-            "git+https://github.com/imprvhub/mcp-domain-availability",
-            "mcp-domain-availability"
-          ],
-          "env": {}
-        },
-        "mcp-domain-availability-local": {
-          "command": "uv",
-          "args": ["run", "src/mcp_domain_availability/main.py"],
-          "env": {}
-        }
+      "mcp-domain-availability": {
+        "command": "uvx",
+        "args": [
+          "--python=3.10",
+          "--from",
+          "git+https://github.com/imprvhub/mcp-domain-availability",
+          "mcp-domain-availability"
+        ],
+        "env": {}
+      },
+      "mcp-domain-availability-local": {
+        "command": "uv",
+        "args": [
+          "run",
+          "src/mcp_domain_availability/main.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

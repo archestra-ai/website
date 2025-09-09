@@ -8,13 +8,11 @@
     "name": "QuentinCody"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python3",
+    "args": [
+      "${__dirname}/catalysishub_mcp_server.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,12 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "catalysishub-mcp-server-configured": {
-          "command": "/Users/quentincody/.env/bin/python3",
-          "args": ["/Users/quentincody/catalysishub-mcp-server/catalysishub_mcp_server.py"],
-          "env": {}
-        }
+      "catalysishub-mcp-server-configured": {
+        "command": "/Users/quentincody/.env/bin/python3",
+        "args": [
+          "/Users/quentincody/catalysishub-mcp-server/catalysishub_mcp_server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,11 @@
     "name": "janswist"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/index.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,12 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "dexscreener-configured": {
-          "command": "node",
-          "args": ["/ABSOLUTE/PATH/TO/PARENT/FOLDER/index.js"],
-          "env": {}
-        }
+      "dexscreener-configured": {
+        "command": "node",
+        "args": [
+          "/ABSOLUTE/PATH/TO/PARENT/FOLDER/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

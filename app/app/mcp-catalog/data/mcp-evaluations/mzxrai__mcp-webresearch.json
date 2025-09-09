@@ -8,13 +8,12 @@
     "name": "mzxrai"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@mzxrai/mcp-webresearch@latest"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +24,20 @@
   "quality_score": 64,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-webresearch": {
-          "command": "npx",
-          "args": ["-y", "@mzxrai/mcp-webresearch@latest"],
-          "env": {}
-        },
-        "mcp-webresearch-dev": {
-          "command": "pnpm",
-          "args": ["dev"],
-          "env": {}
-        }
+      "mcp-webresearch": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@mzxrai/mcp-webresearch@latest"
+        ],
+        "env": {}
+      },
+      "mcp-webresearch-dev": {
+        "command": "pnpm",
+        "args": [
+          "dev"
+        ],
+        "env": {}
       }
     },
     "oauth": {

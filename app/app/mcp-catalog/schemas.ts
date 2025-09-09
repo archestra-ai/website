@@ -1,9 +1,4 @@
-import {
-  DxtManifestSchema,
-  DxtManifestServerSchema,
-  DxtUserConfigurationOptionSchema,
-  McpServerConfigSchema,
-} from '@anthropic-ai/dxt';
+import { DxtManifestSchema, McpServerConfigSchema } from '@anthropic-ai/dxt';
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { z } from 'zod';
 
@@ -58,9 +53,7 @@ export const MCPDependencySchema = z.object({
   importance: z.number().min(1).max(10),
 });
 
-export const ArchestraClientConfigPermutationsSchema = z.object({
-  mcpServers: z.record(z.string(), McpServerConfigSchema),
-});
+export const ArchestraClientConfigPermutationsSchema = z.record(z.string(), McpServerConfigSchema);
 
 /**
  * NOTE: when we are ready to add more OAuth providers, we can simply add them here
@@ -126,42 +119,81 @@ export const ArchestraMcpServerProtocolFeaturesSchema = z.object({
   implementing_oauth2: z.boolean(),
 });
 
-export const ArchestraMcpServerManifestSchema = DxtManifestSchema.omit({ repository: true })
-  .extend({
-    /**
-     * Machine-readable name (used for CLI, APIs)
-     *
-     * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#field-definitions
-     */
-    name: z.string(),
+const ArchestraMcpServerManifestBase = DxtManifestSchema.omit({ repository: true }).extend({
+  /**
+   * Machine-readable name (used for CLI, APIs)
+   *
+   * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#field-definitions
+   */
+  name: z.string(),
 
-    /**
-     * Human-friendly name for UI display
-     *
-     * `display_name` in `DxtManifestSchema` is marked as optional, here we make it required
-     *
-     * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#field-definitions
-     */
-    display_name: z.string(),
+  /**
+   * Human-friendly name for UI display
+   *
+   * `display_name` in `DxtManifestSchema` is marked as optional, here we make it required
+   *
+   * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#field-definitions
+   */
+  display_name: z.string(),
 
-    readme: z.string().nullable(),
-    category: McpServerCategorySchema.nullable(),
-    quality_score: z.number().min(0).max(100).nullable(),
-    archestra_config: ArchestraConfigSchema,
-    github_info: ArchestraMcpServerFullGitHubInfoSchema,
-    programming_language: z.string(),
-    framework: z.string().nullable(),
-    last_scraped_at: z.string().nullable(),
-    evaluation_model: z.string().nullable(),
-    protocol_features: ArchestraMcpServerProtocolFeaturesSchema,
-    dependencies: z.array(MCPDependencySchema),
-    raw_dependencies: z.string().nullable(),
-    server_overridden: DxtManifestServerSchema.optional(),
-    server_docker: z.any().optional(),
-    user_config_overridden: z.record(z.string(), DxtUserConfigurationOptionSchema).optional(),
-  })
-  .openapi('ArchestraMcpServerManifest');
+  /**
+   * URL for remote MCP servers. If set, this server is treated as remote.
+   * Remote servers are accessed via HTTP/WebSocket instead of being installed locally.
+   */
+  remote_url: z.string().url().optional(),
 
-export const ArchestraMcpServerManifestWithScoreBreakdownSchema = ArchestraMcpServerManifestSchema.extend({
+  /**
+   * Documentation URL for remote MCP servers. Optional field that provides
+   * a link to the remote server's documentation or setup instructions.
+   */
+  remote_mcp_docs_url: z.string().url().optional(),
+
+  readme: z.string().nullable(),
+  category: McpServerCategorySchema.nullable(),
+  quality_score: z.number().min(0).max(100).nullable(),
+  archestra_config: ArchestraConfigSchema.optional(),
+  github_info: ArchestraMcpServerFullGitHubInfoSchema.optional(),
+  programming_language: z.string().optional(),
+  framework: z.string().nullable(),
+  last_scraped_at: z.string().nullable(),
+  evaluation_model: z.string().nullable(),
+  protocol_features: ArchestraMcpServerProtocolFeaturesSchema.optional(),
+  dependencies: z.array(MCPDependencySchema).optional(),
+  raw_dependencies: z.string().nullable(),
+
+  /**
+   * NOTE: for server, we override the `server` field from `DxtManifestSchema` as this contains
+   * `type` and `entry_point` fields which are not needed for our purposes
+   */
+  server: McpServerConfigSchema,
+});
+
+export const ArchestraMcpServerManifestSchema = ArchestraMcpServerManifestBase.refine(
+  (data) => {
+    // Local servers (no remote_url) require github_info and programming_language
+    if (!data.remote_url && (!data.github_info || !data.programming_language)) {
+      return false;
+    }
+    return true;
+  },
+  {
+    message: 'Local servers require github_info and programming_language',
+  }
+).openapi('ArchestraMcpServerManifest');
+
+export const ArchestraMcpServerManifestWithScoreBreakdownSchema = ArchestraMcpServerManifestBase.extend({
   score_breakdown: ArchestraScoreBreakdownSchema,
-}).openapi('ArchestraMcpServerManifestWithScoreBreakdown');
+})
+  .refine(
+    (data) => {
+      // Local servers (no remote_url) require github_info and programming_language
+      if (!data.remote_url && (!data.github_info || !data.programming_language)) {
+        return false;
+      }
+      return true;
+    },
+    {
+      message: 'Local servers require github_info and programming_language',
+    }
+  )
+  .openapi('ArchestraMcpServerManifestWithScoreBreakdown');

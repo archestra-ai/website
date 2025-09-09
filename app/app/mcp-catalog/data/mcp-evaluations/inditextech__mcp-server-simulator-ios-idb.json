@@ -8,13 +8,11 @@
     "name": "InditexTech"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/index.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,19 @@
   "quality_score": 68,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-simulator-ios-idb": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        },
-        "mcp-server-simulator-ios-idb-configured": {
-          "command": "node",
-          "args": ["/path/to/mcp-server-simulator-ios-idb/dist/index.js"],
-          "env": {}
-        }
+      "mcp-server-simulator-ios-idb": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {}
+      },
+      "mcp-server-simulator-ios-idb-configured": {
+        "command": "node",
+        "args": [
+          "/path/to/mcp-server-simulator-ios-idb/dist/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {
@@ -47,18 +47,18 @@
     "owner": "InditexTech",
     "repo": "mcp-server-simulator-ios-idb",
     "url": "https://github.com/InditexTech/mcp-server-simulator-ios-idb",
-    "name": "mcp-server-simulator-ios-idb",
+    "name": "inditextech__mcp-server-simulator-ios-idb",
     "path": null,
-    "stars": 220,
-    "contributors": 6,
-    "issues": 4,
+    "stars": 238,
+    "contributors": 7,
+    "issues": 0,
     "releases": true,
     "ci_cd": true,
-    "latest_commit_hash": "988116ebe08a8e6d5223d7be6842e97550ead2a3"
+    "latest_commit_hash": "437dbda02f6a52931158f802b0d7b0f63e20ded9"
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T19:57:27.052Z",
+  "last_scraped_at": "2025-09-07T22:16:04.441Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

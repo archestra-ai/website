@@ -8,13 +8,11 @@
     "name": "PatrickPalmer"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "${__dirname}/src/maya_mcp_server.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,12 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "MayaMCP": {
-          "command": "[FULL PATH TO MayaMCP PROJECT]/.venv/Scripts/python.exe",
-          "args": ["[FULL PATH TO MayaMCP PROJECT]/src/maya_mcp_server.py"],
-          "env": {}
-        }
+      "MayaMCP": {
+        "command": "[FULL PATH TO MayaMCP PROJECT]/.venv/Scripts/python.exe",
+        "args": [
+          "[FULL PATH TO MayaMCP PROJECT]/src/maya_mcp_server.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {
@@ -44,16 +42,16 @@
     "url": "https://github.com/PatrickPalmer/MayaMCP",
     "name": "patrickpalmer__mayamcp",
     "path": null,
-    "stars": 23,
+    "stars": 25,
     "contributors": 2,
-    "issues": 0,
+    "issues": 3,
     "releases": true,
     "ci_cd": false,
     "latest_commit_hash": "5aa3d7b575facf699f88d5334aafa785516bb7e5"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:25:54.853Z",
+  "last_scraped_at": "2025-09-07T22:12:15.339Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

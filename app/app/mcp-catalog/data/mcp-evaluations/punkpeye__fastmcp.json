@@ -8,13 +8,9 @@
     "name": "punkpeye"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,39 +21,52 @@
   "quality_score": 86,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "fastmcp-stdio": {
-          "command": "npx",
-          "args": ["-y", "fastmcp", "dev", "src/examples/addition.ts"],
-          "env": {}
-        },
-        "fastmcp-inspect": {
-          "command": "npx",
-          "args": ["-y", "fastmcp", "inspect", "src/examples/addition.ts"],
-          "env": {}
-        },
-        "fastmcp-http-stream-stateless": {
-          "command": "npx",
-          "args": [
-            "-y",
-            "fastmcp",
-            "dev",
-            "src/server.ts",
-            "--transport",
-            "http-stream",
-            "--port",
-            "8080",
-            "--stateless",
-            "true"
-          ],
-          "env": {}
-        },
-        "fastmcp-http-stream-stateless-env": {
-          "command": "npx",
-          "args": ["-y", "fastmcp", "dev", "src/server.ts"],
-          "env": {
-            "FASTMCP_STATELESS": "true"
-          }
+      "fastmcp-stdio": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "fastmcp",
+          "dev",
+          "src/examples/addition.ts"
+        ],
+        "env": {}
+      },
+      "fastmcp-inspect": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "fastmcp",
+          "inspect",
+          "src/examples/addition.ts"
+        ],
+        "env": {}
+      },
+      "fastmcp-http-stream-stateless": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "fastmcp",
+          "dev",
+          "src/server.ts",
+          "--transport",
+          "http-stream",
+          "--port",
+          "8080",
+          "--stateless",
+          "true"
+        ],
+        "env": {}
+      },
+      "fastmcp-http-stream-stateless-env": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "fastmcp",
+          "dev",
+          "src/server.ts"
+        ],
+        "env": {
+          "FASTMCP_STATELESS": "true"
         }
       }
     },

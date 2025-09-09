@@ -8,35 +8,54 @@
     "name": "Rai220"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "uvx",
+    "args": [
+      "think-mcp"
+    ],
+    "env": {
+      "ADVANCED_MODE": "${user_config.advanced_mode}",
+      "TAVILY_API_KEY": "${user_config.tavily_api_key}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "advanced_mode": {
+      "type": "boolean",
+      "title": "Enable Advanced Mode",
+      "description": "Adds additional tools like criticize, plan, and search.",
+      "default": false,
+      "required": false
+    },
+    "tavily_api_key": {
+      "type": "string",
+      "title": "Tavily API Key",
+      "description": "Your Tavily API key for search functionality in advanced mode.",
+      "sensitive": true,
+      "required": false
+    }
+  },
   "readme": "# Think MCP Tool\n\nThink MCP is an implementation of an MCP (Model Context Protocol) server that provides a \"think\" tool for structured reasoning in agentic AI workflows. This project is inspired by the Anthropic engineering article: [The \"think\" tool: Enabling Claude to stop and think in complex tool use situations](https://www.anthropic.com/engineering/claude-think-tool).\n\nAccording to the referenced article, adding the think tool can lead to improved evaluation metrics by enabling reasoning capabilities even in models that do not natively possess advanced reasoning skills.\n\n![alt text](tau_bench.png)\n\n## What is the \"think\" tool?\nThe \"think\" tool allows an AI agent to pause and record an explicit thought during complex reasoning or multi-step tool use. It does not change the environment or database, but appends the thought to the log, helping the agent process information, backtrack, or comply with detailed policies.\n\nThis approach is especially useful for:\n- Tool output analysis (processing results of previous tool calls)\n- Policy-heavy environments (verifying compliance with guidelines)\n- Sequential decision making (where each step builds on previous ones)\n\n## Features\n- Implements the \"think\" tool as described in Anthropic's research\n- Minimal, standards-based MCP server using [mcp[cli]](https://pypi.org/project/mcp/)\n- Ready for integration with Claude or other agentic LLMs\n\n## Usage\n\n### MCP server configuration\nAdd this MCP server to your facorite agent.\n```\n\"mcpServers\": {\n    \"think-mcp\": {\n        \"command\": \"uvx\",\n        \"args\": [\"think-mcp\"],\n        \"enabled\": true\n    }\n}\n```\n\n## Tool definition\nThe \"think\" tool is defined as:\n- **Input:** `thought` (string) — A thought to think about.\n- **Behavior:** Appends the thought to the log for structured reasoning.\n\n## Advanced mode\nAdds aditional tools for your agent:\n- criticize\n- plan\n- search\n\n```\n\"mcpServers\": {\n    \"think-mcp\": {\n        \"command\": \"uvx\",\n        \"args\": [\"think-mcp\", \"--advanced\"],\n        \"enabled\": true,\n        \"env\": {\n            \"TAVILY_API_KEY\": ... YOUR TAVILY API KEY HERE ...\n        }\n    }\n}\n```\n\n## Reference\n- Based on: [Anthropic Engineering Blog — The \"think\" tool](https://www.anthropic.com/engineering/claude-think-tool)\n\n## License\nMIT License — see [LICENSE](LICENSE)",
   "category": "AI Tools",
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "think-mcp": {
-          "command": "uvx",
-          "args": ["think-mcp"],
-          "env": {}
-        },
-        "think-mcp-configured": {
-          "command": "uvx",
-          "args": ["think-mcp", "--advanced"],
-          "env": {
-            "TAVILY_API_KEY": "... YOUR TAVILY API KEY HERE ..."
-          }
+      "think-mcp": {
+        "command": "uvx",
+        "args": [
+          "think-mcp"
+        ],
+        "env": {}
+      },
+      "think-mcp-configured": {
+        "command": "uvx",
+        "args": [
+          "think-mcp",
+          "--advanced"
+        ],
+        "env": {
+          "TAVILY_API_KEY": "... YOUR TAVILY API KEY HERE ..."
         }
       }
     },

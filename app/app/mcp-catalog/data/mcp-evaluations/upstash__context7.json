@@ -8,22 +8,9 @@
     "name": "upstash"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"],
-      "env": {}
-    }
-  },
-  "server_overridden": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@upstash/context7-mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -34,23 +21,21 @@
   "quality_score": 82,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "upstash-context7-mcp": {
-          "command": "npx",
-          "args": ["-y", "@upstash/context7-mcp"]
-        },
-        "upstash-context7-mcp-bun": {
-          "command": "bunx",
-          "args": ["-y", "@upstash/context7-mcp"]
-        },
-        "upstash-context7-mcp-deno": {
-          "command": "deno",
-          "args": ["run", "--allow-env=NO_DEPRECATION,TRACE_DEPRECATION", "--allow-net", "npm:@upstash/context7-mcp"]
-        },
-        "upstash-context7-mcp-latest": {
-          "command": "npx",
-          "args": ["-y", "@upstash/context7-mcp@latest"]
-        }
+      "upstash-context7-mcp": {
+        "command": "npx",
+        "args": ["-y", "@upstash/context7-mcp"]
+      },
+      "upstash-context7-mcp-bun": {
+        "command": "bunx",
+        "args": ["-y", "@upstash/context7-mcp"]
+      },
+      "upstash-context7-mcp-deno": {
+        "command": "deno",
+        "args": ["run", "--allow-env=NO_DEPRECATION,TRACE_DEPRECATION", "--allow-net", "npm:@upstash/context7-mcp"]
+      },
+      "upstash-context7-mcp-latest": {
+        "command": "npx",
+        "args": ["-y", "@upstash/context7-mcp@latest"]
       }
     },
     "oauth": {

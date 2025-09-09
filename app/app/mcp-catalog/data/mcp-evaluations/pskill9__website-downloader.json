@@ -8,13 +8,11 @@
     "name": "pskill9"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,12 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "website-downloader": {
-          "command": "node",
-          "args": ["/path/to/website-downloader/build/index.js"],
-          "env": {}
-        }
+      "website-downloader": {
+        "command": "node",
+        "args": [
+          "/path/to/website-downloader/build/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {
@@ -42,18 +40,18 @@
     "owner": "pskill9",
     "repo": "website-downloader",
     "url": "https://github.com/pskill9/website-downloader",
-    "name": "website-downloader",
+    "name": "pskill9__website-downloader",
     "path": null,
-    "stars": 122,
+    "stars": 134,
     "contributors": 3,
-    "issues": 0,
+    "issues": 1,
     "releases": false,
     "ci_cd": false,
     "latest_commit_hash": "5b399bebad1800ac6df5052b63eaea37117092b6"
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:36:18.096Z",
+  "last_scraped_at": "2025-09-07T22:16:35.398Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

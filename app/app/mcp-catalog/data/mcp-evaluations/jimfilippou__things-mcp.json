@@ -8,13 +8,12 @@
     "name": "jimfilippou"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "things-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +24,18 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "things-mcp": {
-          "command": "npx",
-          "args": ["-y", "things-mcp"],
-          "env": {}
-        },
-        "things-mcp-configured": {
-          "command": "things-mcp",
-          "args": [],
-          "env": {}
-        }
+      "things-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "things-mcp"
+        ],
+        "env": {}
+      },
+      "things-mcp-configured": {
+        "command": "things-mcp",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

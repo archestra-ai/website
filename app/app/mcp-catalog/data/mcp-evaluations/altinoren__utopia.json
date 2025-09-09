@@ -8,13 +8,13 @@
     "name": "altinoren"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "dotnet",
+    "args": [
+      "run",
+      "--project",
+      "${__dirname}/Utopia.csproj"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +25,14 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "Utopia": {
-          "command": "dotnet",
-          "args": ["run", "--project", "<path_to_project_folder>/Utopia.csproj"],
-          "env": {}
-        }
+      "Utopia": {
+        "command": "dotnet",
+        "args": [
+          "run",
+          "--project",
+          "<path_to_project_folder>/Utopia.csproj"
+        ],
+        "env": {}
       }
     },
     "oauth": {

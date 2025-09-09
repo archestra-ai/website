@@ -8,13 +8,11 @@
     "name": "tomholford"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "${__dirname}/bin/server",
+    "args": [
+      "-transport=stdio"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,27 +23,35 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "tic-tac-toe-stdio": {
-          "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
-          "args": ["-transport=stdio"],
-          "env": {}
-        },
-        "tic-tac-toe-desktop-config": {
-          "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
-          "args": [""],
-          "env": {}
-        },
-        "tic-tac-toe-sse": {
-          "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
-          "args": ["-transport=sse", "-addr=:8080"],
-          "env": {}
-        },
-        "tic-tac-toe-http": {
-          "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
-          "args": ["-transport=http", "-addr=:8080"],
-          "env": {}
-        }
+      "tic-tac-toe-stdio": {
+        "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
+        "args": [
+          "-transport=stdio"
+        ],
+        "env": {}
+      },
+      "tic-tac-toe-desktop-config": {
+        "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
+        "args": [
+          ""
+        ],
+        "env": {}
+      },
+      "tic-tac-toe-sse": {
+        "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
+        "args": [
+          "-transport=sse",
+          "-addr=:8080"
+        ],
+        "env": {}
+      },
+      "tic-tac-toe-http": {
+        "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
+        "args": [
+          "-transport=http",
+          "-addr=:8080"
+        ],
+        "env": {}
       }
     },
     "oauth": {

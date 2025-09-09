@@ -8,13 +8,11 @@
     "name": "promptexecution"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "cratedocs",
+    "args": [
+      "stdio"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,40 +23,58 @@
   "quality_score": 31,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "cratedocs-stdio": {
-          "command": "cratedocs",
-          "args": ["stdio"],
-          "env": {}
-        },
-        "cratedocs-http": {
-          "command": "cargo",
-          "args": ["run", "--bin", "cratedocs", "http"],
-          "env": {}
-        },
-        "cratedocs-http-custom-address": {
-          "command": "cargo",
-          "args": ["run", "--bin", "cratedocs", "http", "--address", "0.0.0.0:3000"],
-          "env": {}
-        },
-        "cratedocs-http-debug": {
-          "command": "cargo",
-          "args": ["run", "--bin", "cratedocs", "http", "--debug"],
-          "env": {}
-        },
-        "mcp-remote": {
-          "command": "bunx",
-          "args": [
-            "-y",
-            "mcp-remote@latest",
-            "http://127.0.0.1:3000/sse?sessionId=",
-            "--allow-http",
-            "--transport",
-            "sse-only",
-            "--debug"
-          ],
-          "env": {}
-        }
+      "cratedocs-stdio": {
+        "command": "cratedocs",
+        "args": [
+          "stdio"
+        ],
+        "env": {}
+      },
+      "cratedocs-http": {
+        "command": "cargo",
+        "args": [
+          "run",
+          "--bin",
+          "cratedocs",
+          "http"
+        ],
+        "env": {}
+      },
+      "cratedocs-http-custom-address": {
+        "command": "cargo",
+        "args": [
+          "run",
+          "--bin",
+          "cratedocs",
+          "http",
+          "--address",
+          "0.0.0.0:3000"
+        ],
+        "env": {}
+      },
+      "cratedocs-http-debug": {
+        "command": "cargo",
+        "args": [
+          "run",
+          "--bin",
+          "cratedocs",
+          "http",
+          "--debug"
+        ],
+        "env": {}
+      },
+      "mcp-remote": {
+        "command": "bunx",
+        "args": [
+          "-y",
+          "mcp-remote@latest",
+          "http://127.0.0.1:3000/sse?sessionId=",
+          "--allow-http",
+          "--transport",
+          "sse-only",
+          "--debug"
+        ],
+        "env": {}
       }
     },
     "oauth": {
@@ -70,9 +86,9 @@
     "owner": "promptexecution",
     "repo": "cratedocs-mcp",
     "url": "https://github.com/promptexecution/cratedocs-mcp",
-    "name": "cratedocs-mcp",
+    "name": "promptexecution__cratedocs-mcp",
     "path": null,
-    "stars": 3,
+    "stars": 5,
     "contributors": 4,
     "issues": 0,
     "releases": false,
@@ -81,7 +97,7 @@
   },
   "programming_language": "Rust",
   "framework": null,
-  "last_scraped_at": "2025-08-03T21:18:53.999Z",
+  "last_scraped_at": "2025-09-07T22:16:01.188Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

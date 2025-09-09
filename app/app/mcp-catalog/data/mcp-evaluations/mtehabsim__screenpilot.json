@@ -8,29 +8,40 @@
     "name": "Mtehabsim"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "${user_config.python_executable_path}",
+    "args": [
+      "${user_config.main_script_path}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "python_executable_path": {
+      "type": "file",
+      "title": "Python Executable Path",
+      "description": "The full path to your Python executable, typically located in your virtual environment (e.g., C:\\Users\\YourUser\\ScreenPilot\\venv\\Scripts\\python.exe).",
+      "required": true
+    },
+    "main_script_path": {
+      "type": "file",
+      "title": "Main Script Path",
+      "description": "The full path to the ScreenPilot 'main.py' file (e.g., C:\\Users\\YourUser\\ScreenPilot\\main.py).",
+      "required": true
+    }
+  },
   "readme": "[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/mtehabsim-screenpilot-badge.png)](https://mseep.ai/app/mtehabsim-screenpilot)\n\n# ScreenPilot\n\nMCP server to let LLM take full control on your device by providing screen automation toolkit for controlling and interacting with graphical user interfaces. Good for automation, education and having fun.\n\n\n## Main Features\n\n- 📷 Screen capture and analysis\n- 🖱️ Mouse control (clicking, positioning)\n- ⌨️ Keyboard input (typing, key presses, hotkeys)\n\n## watch demo\n\n\nhttps://github.com/user-attachments/assets/c18380c0-b3dd-4b7c-925d-28ef205ca11f\n\n\n\n## Installation\n0. Install python 3.12\n1. Clone the repository:\n   ```bash\n   git clone https://github.com/Mtehabsim/ScreenPilot.git\n   ```\n2. create virtiual environment\n```bash\n\npython -m venv venv\n```\n3. activate the env\n```bash\nvenv\\Scripts\\activate\n```\n4. Install the required packages:\n   ```bash\n   pip install -r requirements.txt\n   ```\n5. Open Claude AI desktop\n6. file -> settings -> developer -> edit config\n7. open config file and paste this\n```bash\n{\n    \"mcpServers\": {\n        \"device-controll\": {\n            \"command\": \"pathToEnv\\\\venv\\\\Scripts\\\\python.exe\",\n            \"args\": [\n                \"pathToProject\\\\ScreenPilot\\\\main.py\"\n            ]\n        }\n    }\n}\n\n```\n8. Replace\n    \"pathToEnv\\\\venv\\\\Scripts\\\\python.exe\" → with the full path to your python.exe\n    \"pathToProject\\\\ScreenPilot\\\\main.py\" → with the full path to your main.py file\n\n9. Save the config file.\n\n10. Open Claude AI Desktop.\n\n11. Go to File → Exit\n\n12. You can now open Claude AI Desktop and enjoy ScreenPilot.\n\n\n### Available Tools\n\n- **Screen Capture**: Take screenshots and get screen information\n- **Mouse Control**: Move the mouse and perform clicks\n- **Keyboard Actions**: Type text, press keys, and use hotkey combinations\n- **Scrolling**: Scroll in different directions and to specific positions\n- **Element Detection**: Check if elements exist on screen and wait for them to appear\n- **Action Sequences**: Perform multiple actions in sequence\n\n## Contributing\n\nContributions are welcome! Please feel free to submit a Pull Request.\n\n",
   "category": "Browser Automation",
   "quality_score": 24,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "device-controll": {
-          "command": "pathToEnv\\venv\\Scripts\\python.exe",
-          "args": ["pathToProject\\ScreenPilot\\main.py"],
-          "env": {}
-        }
+      "device-controll": {
+        "command": "pathToEnv\\venv\\Scripts\\python.exe",
+        "args": [
+          "pathToProject\\ScreenPilot\\main.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {
