@@ -142,7 +142,7 @@ function sleep(ms: number): Promise<void> {
  * https://docs.github.com/en/rest/repos?apiVersion=2022-11-28
  *
  */
-async function fetchRepoData(owner: string, repo: string, repositoryPath: string | null): Promise<GitHubApiResponse> {
+async function fetchRepoData(owner: string, repo: string, repositoryPath: string | null, readmeOnly: boolean = false): Promise<GitHubApiResponse> {
   const token = process.env.GITHUB_TOKEN;
   const headers: Record<string, string> = {
     Accept: 'application/vnd.github.v3+json',
@@ -179,7 +179,52 @@ async function fetchRepoData(owner: string, repo: string, repositoryPath: string
 
   while (retryCount <= maxRetries) {
     try {
-      // Fetch all data in parallel
+      // If readmeOnly is true, only fetch README and basic repo data
+      if (readmeOnly) {
+        const repoData = await apiCall(`/repos/${owner}/${repo}`).catch((error) => {
+          // If the main repo API fails, we can't continue
+          throw error;
+        });
+
+        // Check if repository path exists
+        if (repositoryPath) {
+          try {
+            await apiCall(`/repos/${owner}/${repo}/contents/${repositoryPath}`);
+          } catch (error) {
+            throw new Error(`PATH_NOT_FOUND: ${repositoryPath} does not exist in ${owner}/${repo}`);
+          }
+        }
+
+        // Fetch README
+        let readmeContent = '';
+        try {
+          const readmeUrl = repositoryPath
+            ? `/repos/${owner}/${repo}/contents/${repositoryPath}/README.md`
+            : `/repos/${owner}/${repo}/readme`;
+          const readme = await apiCall(readmeUrl);
+          readmeContent = Buffer.from(readme.content, 'base64').toString('utf-8');
+        } catch (error) {
+          console.warn(`No README found at ${repositoryPath ? `${repositoryPath}/README.md` : 'root'}`);
+        }
+
+        // Return only README content, other fields will be undefined to signal they shouldn't be updated
+        return {
+          name: undefined as any,
+          owner_name: undefined as any,
+          description: undefined as any,
+          stargazers_count: undefined as any,
+          total_issues_count: undefined as any,
+          language: undefined as any,
+          has_releases: undefined as any,
+          has_workflows: undefined as any,
+          contributors_count: undefined as any,
+          readme_content: readmeContent,
+          latest_commit_hash: undefined as any,
+          raw_dependencies: undefined as any,
+        };
+      }
+
+      // Fetch all data in parallel (original behavior)
       const [repoData, contributorsResponse, releases, workflows, issuesSearchResponse] = await Promise.all([
         apiCall(`/repos/${owner}/${repo}`).catch((error) => {
           // If the main repo API fails, we can't continue
@@ -699,11 +744,11 @@ function createNewMCPServer(
     framework: null,
     github_info: {
       ...githubInfo,
-      stars: apiData.stargazers_count,
-      contributors: apiData.contributors_count,
-      issues: apiData.total_issues_count,
-      releases: apiData.has_releases,
-      ci_cd: apiData.has_workflows,
+      stars: apiData.stargazers_count !== undefined ? apiData.stargazers_count : 0,
+      contributors: apiData.contributors_count !== undefined ? apiData.contributors_count : 0,
+      issues: apiData.total_issues_count !== undefined ? apiData.total_issues_count : 0,
+      releases: apiData.has_releases !== undefined ? apiData.has_releases : false,
+      ci_cd: apiData.has_workflows !== undefined ? apiData.has_workflows : false,
       latest_commit_hash: apiData.latest_commit_hash || null,
     },
     protocol_features: {
@@ -732,21 +777,33 @@ function createNewMCPServer(
 async function extractGitHubData(
   server: ArchestraMcpServerManifest,
   githubInfo: ArchestraMcpServerGitHubRepoInfo,
-  force: boolean = false
+  force: boolean = false,
+  readmeOnly: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
   // Skip if already exists and not forcing
   if (server.last_scraped_at && !force) {
     console.log(`  ⏭️  GitHub Data: Skipped (last scraped: ${server.last_scraped_at})`);
     return server;
   }
-  console.log(`  🔄 GitHub Data: Fetching...`);
+  console.log(`  🔄 GitHub Data: Fetching${readmeOnly ? ' (README only)' : ''}...`);
 
   const { owner, repo, path } = githubInfo;
 
-  const apiData = await fetchRepoData(owner, repo, path);
+  const apiData = await fetchRepoData(owner, repo, path, readmeOnly);
+  
+  if (readmeOnly) {
+    // When readme-only, ONLY update the README and last_scraped_at
+    // Preserve ALL other fields including name, raw_dependencies, latest_commit_hash, etc.
+    return {
+      ...server,
+      readme: apiData.readme_content || server.readme,
+      last_scraped_at: new Date().toISOString(),
+    };
+  }
+  
   const newServer = createNewMCPServer(githubInfo, apiData);
 
-  // Merge GitHub fields
+  // Merge GitHub fields (full update)
   return {
     ...server,
     name: newServer.name,
@@ -1629,7 +1686,12 @@ async function evaluateSingleRepo(
 
     if (!server) {
       // Create new server from GitHub
-      const apiData = await fetchRepoData(owner, repo, repoPath);
+      const apiData = await fetchRepoData(owner, repo, repoPath, readmeOnly);
+      if (readmeOnly) {
+        // For readme-only mode on new servers, we need at least basic data
+        // This should not happen in practice as readme-only is for updating existing evaluations
+        console.warn(`Warning: Creating new server with readme-only mode for ${githubUrl}`);
+      }
       server = createNewMCPServer(githubInfo, apiData);
     }
 
@@ -1637,7 +1699,7 @@ async function evaluateSingleRepo(
 
     // If readmeOnly is true, only update GitHub data (which includes README)
     if (readmeOnly) {
-      server = await extractGitHubData(server, githubInfo, true);
+      server = await extractGitHubData(server, githubInfo, true, true);
     } else {
       // Determine if any specific update was requested
       const hasSpecificUpdates =
@@ -1655,7 +1717,7 @@ async function evaluateSingleRepo(
       const shouldUpdateMissing = !force || !hasSpecificUpdates;
 
       if (updateGithub || (shouldUpdateMissing && !server.last_scraped_at)) {
-        server = await extractGitHubData(server, githubInfo, force);
+        server = await extractGitHubData(server, githubInfo, force, false);
       }
 
       if (updateCategory || (shouldUpdateMissing && !server.category)) {

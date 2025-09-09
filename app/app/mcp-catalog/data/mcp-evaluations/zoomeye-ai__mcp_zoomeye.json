@@ -94,7 +94,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:30:53.532Z",
+  "last_scraped_at": "2025-09-09T13:06:31.974Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

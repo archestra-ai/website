@@ -46,7 +46,7 @@
   },
   "programming_language": "Unknown",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:06.408Z",
+  "last_scraped_at": "2025-09-09T13:05:09.991Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": false,

@@ -41,7 +41,7 @@
   },
   "programming_language": "Java",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:13:53.968Z",
+  "last_scraped_at": "2025-09-09T13:05:26.200Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": false,
