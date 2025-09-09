@@ -55,7 +55,7 @@
   },
   "programming_language": "Rust",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:07.593Z",
+  "last_scraped_at": "2025-09-09T13:05:09.992Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

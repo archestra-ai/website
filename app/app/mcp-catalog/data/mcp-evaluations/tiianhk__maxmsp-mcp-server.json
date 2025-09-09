@@ -57,7 +57,7 @@
   },
   "programming_language": "Max",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:59.917Z",
+  "last_scraped_at": "2025-09-09T13:05:21.337Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

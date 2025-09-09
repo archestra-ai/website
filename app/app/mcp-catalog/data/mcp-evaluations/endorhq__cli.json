@@ -47,7 +47,7 @@
   },
   "programming_language": "Unknown",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:15:48.408Z",
+  "last_scraped_at": "2025-09-09T13:05:36.380Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

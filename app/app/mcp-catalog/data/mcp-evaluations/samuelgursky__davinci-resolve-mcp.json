@@ -110,7 +110,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:16.281Z",
+  "last_scraped_at": "2025-09-09T13:05:12.221Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

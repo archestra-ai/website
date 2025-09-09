@@ -144,7 +144,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:14:19.302Z",
+  "last_scraped_at": "2025-09-09T13:05:28.350Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

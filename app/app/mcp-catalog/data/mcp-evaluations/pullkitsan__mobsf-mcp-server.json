@@ -70,7 +70,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:49:55.158Z",
+  "last_scraped_at": "2025-09-09T13:06:34.352Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

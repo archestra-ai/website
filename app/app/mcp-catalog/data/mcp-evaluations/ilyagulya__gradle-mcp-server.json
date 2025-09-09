@@ -47,7 +47,7 @@
   },
   "programming_language": "Kotlin",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:16:08.489Z",
+  "last_scraped_at": "2025-09-09T13:05:37.860Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -80,7 +80,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:16:45.860Z",
+  "last_scraped_at": "2025-09-09T13:05:42.810Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
