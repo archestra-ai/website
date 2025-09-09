@@ -8,13 +8,11 @@
     "name": "QuantGeekDev"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "docker-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,22 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "docker-mcp": {
-          "command": "uvx",
-          "args": ["docker-mcp"],
-          "env": {}
-        },
-        "docker-mcp-configured": {
-          "command": "uv",
-          "args": ["--directory", "<path-to-docker-mcp>", "run", "docker-mcp"],
-          "env": {}
-        }
+      "docker-mcp": {
+        "command": "uvx",
+        "args": [
+          "docker-mcp"
+        ],
+        "env": {}
+      },
+      "docker-mcp-configured": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "<path-to-docker-mcp>",
+          "run",
+          "docker-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {
@@ -47,18 +50,18 @@
     "owner": "QuantGeekDev",
     "repo": "docker-mcp",
     "url": "https://github.com/QuantGeekDev/docker-mcp",
-    "name": "docker-mcp",
+    "name": "quantgeekdev__docker-mcp",
     "path": null,
-    "stars": 355,
+    "stars": 382,
     "contributors": 2,
-    "issues": 0,
+    "issues": 4,
     "releases": false,
     "ci_cd": false,
     "latest_commit_hash": "6dada7feb35543c0d335b84a02559b5d55fe4b85"
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:36:22.519Z",
+  "last_scraped_at": "2025-09-07T22:16:45.040Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

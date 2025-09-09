@@ -8,13 +8,12 @@
     "name": "Bigsy"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "clojars-deps-server"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +24,19 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "clojars-deps-server": {
-          "command": "npx",
-          "args": ["clojars-deps-server"],
-          "env": {}
-        },
-        "clojars-deps-server-configured": {
-          "command": "node",
-          "args": ["/path/to/clojars-deps-server/build/index.js"],
-          "env": {}
-        }
+      "clojars-deps-server": {
+        "command": "npx",
+        "args": [
+          "clojars-deps-server"
+        ],
+        "env": {}
+      },
+      "clojars-deps-server-configured": {
+        "command": "node",
+        "args": [
+          "/path/to/clojars-deps-server/build/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

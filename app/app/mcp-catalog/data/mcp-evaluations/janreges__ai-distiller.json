@@ -8,13 +8,12 @@
     "name": "janreges"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@janreges/ai-distiller-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,14 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "janreges-ai-distiller-mcp": {
-          "command": "aid",
-          "args": ["--mcp-server", "--port", "8080"],
-          "env": {}
-        }
+      "janreges-ai-distiller-mcp": {
+        "command": "aid",
+        "args": [
+          "--mcp-server",
+          "--port",
+          "8080"
+        ],
+        "env": {}
       }
     },
     "oauth": {
@@ -42,18 +43,18 @@
     "owner": "janreges",
     "repo": "ai-distiller",
     "url": "https://github.com/janreges/ai-distiller",
-    "name": "ai-distiller",
+    "name": "janreges__ai-distiller",
     "path": null,
-    "stars": 72,
+    "stars": 87,
     "contributors": 1,
-    "issues": 6,
+    "issues": 0,
     "releases": true,
     "ci_cd": true,
     "latest_commit_hash": "7790d3b203c6825ed4a7471deef950662eb2f694"
   },
   "programming_language": "C",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:36:05.974Z",
+  "last_scraped_at": "2025-09-07T22:16:12.743Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,

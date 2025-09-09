@@ -8,13 +8,12 @@
     "name": "ujisati"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "run",
+      "anki-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +24,23 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "anki-mcp": {
-          "command": "uv",
-          "args": ["run", "anki-mcp"],
-          "env": {}
-        },
-        "anki-mcp-with-directory": {
-          "command": "uv",
-          "args": ["--directory", "/ABSOLUTE/PATH/TO/anki-mcp", "run", "anki-mcp"],
-          "env": {}
-        }
+      "anki-mcp": {
+        "command": "uv",
+        "args": [
+          "run",
+          "anki-mcp"
+        ],
+        "env": {}
+      },
+      "anki-mcp-with-directory": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/ABSOLUTE/PATH/TO/anki-mcp",
+          "run",
+          "anki-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

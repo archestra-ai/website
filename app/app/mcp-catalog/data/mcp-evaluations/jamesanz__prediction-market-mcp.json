@@ -8,13 +8,11 @@
     "name": "JamesANZ"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,12 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "prediction-markets-mcp-stdio": {
-          "command": "node",
-          "args": ["build/index.js"],
-          "env": {}
-        }
+      "prediction-markets-mcp-stdio": {
+        "command": "node",
+        "args": [
+          "build/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,11 @@
     "name": "jagan-shanmugam"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "osm-mcp-server"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,35 +23,40 @@
   "quality_score": 65,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "osm-mcp-server": {
-          "command": "uvx",
-          "args": ["osm-mcp-server"],
-          "env": {}
-        },
-        "osm-mcp-server-local-run": {
-          "command": "osm-mcp-server",
-          "args": [],
-          "env": {}
-        },
-        "osm-mcp-server-configured": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/osm-mcp-server", "run", "osm-mcp-server"],
-          "env": {}
-        },
-        "osm-mcp-server-inspector": {
-          "command": "npx",
-          "args": [
-            "-y",
-            "@modelcontextprotocol/inspector",
-            "uv",
-            "--directory",
-            "/path/to/osm-mcp-server",
-            "run",
-            "osm-mcp-server"
-          ],
-          "env": {}
-        }
+      "osm-mcp-server": {
+        "command": "uvx",
+        "args": [
+          "osm-mcp-server"
+        ],
+        "env": {}
+      },
+      "osm-mcp-server-local-run": {
+        "command": "osm-mcp-server",
+        "args": [],
+        "env": {}
+      },
+      "osm-mcp-server-configured": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/osm-mcp-server",
+          "run",
+          "osm-mcp-server"
+        ],
+        "env": {}
+      },
+      "osm-mcp-server-inspector": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/inspector",
+          "uv",
+          "--directory",
+          "/path/to/osm-mcp-server",
+          "run",
+          "osm-mcp-server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

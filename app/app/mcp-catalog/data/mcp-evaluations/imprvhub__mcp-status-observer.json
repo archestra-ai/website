@@ -8,13 +8,11 @@
     "name": "imprvhub"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,12 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "statusObserver": {
-          "command": "node",
-          "args": ["/path/to/mcp-status-observer/build/index.js"],
-          "env": {}
-        }
+      "statusObserver": {
+        "command": "node",
+        "args": [
+          "/path/to/mcp-status-observer/build/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

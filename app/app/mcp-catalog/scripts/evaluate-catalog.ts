@@ -60,6 +60,7 @@ interface EvaluateSingleRepoOptions {
   updateProtocol?: boolean;
   updateScore?: boolean;
   updateAll?: boolean;
+  readmeOnly?: boolean;
   force?: boolean;
   model?: string;
   showOutput?: boolean;
@@ -890,31 +891,27 @@ Examples of CORRECT output:
 
 If you find "mcp-server-fetch" in uvx command:
 {
-  "mcpServers": {
-    "mcp-server-fetch": {
-      "command": "uvx",
-      "args": ["mcp-server-fetch"]
-    }
+  "mcp-server-fetch": {
+    "command": "uvx",
+    "args": ["mcp-server-fetch"]
   }
 }
 
 If you find "@modelcontextprotocol/server-filesystem" in npx and a docker variant:
 {
-  "mcpServers": {
-    "filesystem-server": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/files"]
-    },
-    "filesystem-server-docker": {
-      "command": "docker",
-      "args": ["run", "-v", "/path:/data", "mcp/filesystem:latest"]
-    }
+  "filesystem-server": {
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/files"]
+  },
+  "filesystem-server-docker": {
+    "command": "docker",
+    "args": ["run", "-v", "/path:/data", "mcp/filesystem:latest"]
   }
 }
 
 The keys MUST be based on the actual package/image names found in the content.
 
-If no run command found, respond with: {"mcpServers": {}}`;
+If no run command found, respond with: {}`;
 
   // For Gemini, we need a simpler schema without additionalProperties
   const isGemini = model.startsWith('gemini-');
@@ -923,10 +920,11 @@ If no run command found, respond with: {"mcpServers": {}}`;
   try {
     const result = await callLLM(prompt, configFormat, model);
     // Only save if mcpServers exists AND has actual content
-    if (result.mcpServers && Object.keys(result.mcpServers).length > 0) {
+    if (result && Object.keys(result).length > 0) {
       return {
         ...server,
         archestra_config: {
+          oauth: server.archestra_config?.oauth || { provider: null, required: false },
           ...server.archestra_config,
           client_config_permutations: result,
         },
@@ -955,17 +953,22 @@ async function extractCanonicalServerAndUserConfigConfig(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  // Skip if human evaluation (evaluation_model === null AND configs already exist)
-  if (server.evaluation_model === null && server.server && server.user_config && !force) {
-    console.log(`  ⏭️  Canonical Server and User Config: Skipped (human evaluation)`);
-    return server;
+  if (server.server.command === 'unknown') {
+    console.log(`  ⏭️  Canonical Server and User Config: Evaluating as command is currently unknown`);
+  } else {
+    // Skip if human evaluation (evaluation_model === null AND configs already exist)
+    if (server.evaluation_model === null && server.server && server.user_config && !force) {
+      console.log(`  ⏭️  Canonical Server and User Config: Skipped (human evaluation)`);
+      return server;
+    }
+
+    // Skip if already exists and not forcing
+    if (server?.server && server?.user_config && !force) {
+      console.log(`  ⏭️  Canonical Server and User Config: Skipped (already exists)`);
+      return server;
+    }
   }
 
-  // Skip if already exists and not forcing
-  if (server?.server && server?.user_config && !force) {
-    console.log(`  ⏭️  Canonical Server and User Config: Skipped (already exists)`);
-    return server;
-  }
   console.log(`  🔄 Canonical Server and User Config: Extracting...`);
 
   const content = server.readme || server.description;
@@ -979,16 +982,9 @@ async function extractCanonicalServerAndUserConfigConfig(
 Content:
 ${content.substring(0, 8000)}
 
-IMPORTANT: You MUST return a JSON object with BOTH "server" and "user_config" fields. The "server" object MUST include:
-1. "type": REQUIRED - Must be either "python", "node", "binary" or "docker"
-2. "entry_point": REQUIRED - The main file to execute (e.g., "index.js", "main.py", or binary name)
-3. "mcp_config": REQUIRED - Object with "command", "args", and "env" fields
+IMPORTANT: You MUST return a JSON object with BOTH "server" and "user_config" fields
 
 Instructions:
-- Determine the server type based on the runtime:
-  * If it uses npx, npm, node, or has package.json → type="node", entry_point="index.js" (or main file)
-  * If it uses python, pip, or has requirements.txt → type="python", entry_point="main.py" (or main file)  
-  * If it's a compiled executable → type="binary", entry_point=<binary name>
 - Extract the CANONICAL way to run this server. Use a docker command as the LAST resort. Have a preference towards npx, node, python, etc.
 - Additionally, for any dynamic configuration (e.g. flags, environment variables, api keys, etc.) this should go into the "user_config" object (using the format documented below)
 - For Docker commands: split "docker run" into command="docker" and args=["run", ...]
@@ -1028,32 +1024,9 @@ Server Configuration
 
 The server object defines how to run the MCP server:
 
-Server Types
+**Examples:**
 
-1. **Python**: server.type = "python"
-   - Requires entry_point to Python file
-   - All dependencies must be bundled in the DXT
-   - Can use server/lib for packages or server/venv for full virtual environment
-   - Python runtime version specified in compatibility.runtimes.python
-
-2. **Node.js**: server.type = "node"
-   - Requires entry_point to JavaScript file
-   - All dependencies must be bundled in node_modules
-   - Node.js runtime version specified in compatibility.runtimes.node
-   - Typically includes package.json at extension root for dependency management
-
-3. **Binary**: server.type = "binary"
-   - Pre-compiled executable with all dependencies included
-   - Platform-specific binaries supported
-   - Completely self-contained (no runtime requirements)
-
-MCP Configuration
-
-The mcp_config object in the server configuration defines how the implementing app should execute the MCP server. This replaces the manual JSON configuration users currently need to write.
-
-**Python Example:**
-
-"mcp_config": {
+{
   "command": "python",
   "args": ["server/main.py"],
   "env": {
@@ -1061,17 +1034,13 @@ The mcp_config object in the server configuration defines how the implementing a
   }
 }
 
-**Node.js Example:**
-
-"mcp_config": {
+{
   "command": "node",
   "args": ["$\{__dirname\}/server/index.js"],
   "env": {}
 }
 
-**Binary Example:**
-
-"mcp_config": {
+{
   "command": "server/my-server",
   "args": ["--config", "server/config.json"],
   "env": {}
@@ -1088,7 +1057,7 @@ These pertain to any configuration that is "dynamic" and needs to be substituted
 
 Example:
 
-"mcp_config": {
+{
   "command": "python",
   "args": ["$\{__dirname\}/server/main.py"],
   "env": {
@@ -1153,13 +1122,11 @@ Available variables for default values:
     }
   },
   "server": {
-    "mcp_config": {
-      "command": "node",
-      "args": [
-        "$\{__dirname\}/server/index.js",
-        "$\{user_config.allowed_directories\}"
-      ]
-    }
+    "command": "node",
+    "args": [
+      "$\{__dirname\}/server/index.js",
+      "$\{user_config.allowed_directories\}"
+    ]
   }
 }
 
@@ -1183,13 +1150,11 @@ Available variables for default values:
     }
   },
   "server": {
-    "mcp_config": {
-      "command": "node",
-      "args": ["server/index.js"],
-      "env": {
-        "API_KEY": "$\{user_config.api_key\}",
-        "BASE_URL": "$\{user_config.base_url\}"
-      }
+    "command": "node",
+    "args": ["server/index.js"],
+    "env": {
+      "API_KEY": "$\{user_config.api_key\}",
+      "BASE_URL": "$\{user_config.base_url\}"
     }
   }
 }
@@ -1220,18 +1185,16 @@ Available variables for default values:
     }
   },
   "server": {
-    "mcp_config": {
-      "command": "python",
-      "args": [
-        "server/main.py",
-        "--database",
-        "$\{user_config.database_path\}",
-        "--timeout",
-        "$\{user_config.timeout\}"
-      ],
-      "env": {
-        "READ_ONLY": "$\{user_config.read_only\}"
-      }
+    "command": "python",
+    "args": [
+      "server/main.py",
+      "--database",
+      "$\{user_config.database_path\}",
+      "--timeout",
+      "$\{user_config.timeout\}"
+    ],
+    "env": {
+      "READ_ONLY": "$\{user_config.read_only\}"
     }
   }
 }
@@ -1243,13 +1206,9 @@ Available variables for default values:
 EXAMPLE RESPONSE for an npx-based MCP server:
 {
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@example/mcp-server"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@example/mcp-server"],
+    "env": {}
   },
   "user_config": {}
 }
@@ -1257,15 +1216,11 @@ EXAMPLE RESPONSE for an npx-based MCP server:
 EXAMPLE RESPONSE for a server with environment variables:
 {
   "server": {
-    "type": "binary",
-    "entry_point": "slack-mcp-server",
-    "mcp_config": {
-      "command": "./slack-mcp-server",
-      "args": [],
-      "env": {
-        "SLACK_MCP_XOXC_TOKEN": "$\{user_config.slack_mcp_xoxc_token\}",
-        "SLACK_MCP_XOXD_TOKEN": "$\{user_config.slack_mcp_xoxd_token\}"
-      }
+    "command": "./slack-mcp-server",
+    "args": [],
+    "env": {
+      "SLACK_MCP_XOXC_TOKEN": "$\{user_config.slack_mcp_xoxc_token\}",
+      "SLACK_MCP_XOXD_TOKEN": "$\{user_config.slack_mcp_xoxd_token\}"
     }
   },
   "user_config": {
@@ -1286,10 +1241,9 @@ EXAMPLE RESPONSE for a server with environment variables:
   }
 }
 
-REMEMBER: 
-1. The "server" object MUST ALWAYS include "type", "entry_point", and "mcp_config" fields. Never omit these required fields.
-2. Use the EXACT environment variable names from the README (don't rename them).
-3. For user_config keys, use lowercase with underscores version of the env var name.`;
+REMEMBER:
+1. Use the EXACT environment variable names from the README (don't rename them).
+2. For user_config keys, use lowercase with underscores version of the env var name.`;
 
   // For Gemini, we need a simpler schema without additionalProperties
   const isGemini = model.startsWith('gemini-');
@@ -1298,15 +1252,6 @@ REMEMBER:
   try {
     const result = await callLLM(prompt, configFormat, model);
     if (result && result.server) {
-      // Validate that server has required fields
-      if (!result.server.type || !result.server.entry_point || !result.server.mcp_config) {
-        console.warn(
-          `Server config missing required fields: type=${result.server.type}, entry_point=${result.server.entry_point}, mcp_config=${!!result.server.mcp_config}`
-        );
-        // If critical fields are missing, log the issue but still use what we got
-        // The improved prompt should prevent this from happening
-      }
-
       return {
         ...server,
         server: result.server,
@@ -1379,6 +1324,7 @@ If no configuration found, respond: {"oauth": { "provider": null, "required": fa
       return {
         ...server,
         archestra_config: {
+          client_config_permutations: server.archestra_config?.client_config_permutations || null,
           ...server.archestra_config,
           oauth: result.oauth,
         },
@@ -1627,6 +1573,7 @@ async function evaluateSingleRepo(
     updateDependencies = false,
     updateProtocol = false,
     updateScore = false,
+    readmeOnly = false,
     model = 'gemini-2.5-pro',
     updateAll = false,
   }: EvaluateSingleRepoOptions = {}
@@ -1661,7 +1608,9 @@ async function evaluateSingleRepo(
       console.log(`  - Force: ${force ? 'YES' : 'NO'}`);
       console.log(`  - Model: ${model || 'gemini-2.5-pro'}`);
 
-      if (updateAll) {
+      if (readmeOnly) {
+        console.log(`  - Mode: README ONLY (no AI evaluation)`);
+      } else if (updateAll) {
         console.log(`  - Mode: UPDATE ALL`);
       } else {
         const updates = [];
@@ -1685,56 +1634,65 @@ async function evaluateSingleRepo(
     }
 
     // 3. Apply updates based on options
-    // Determine if any specific update was requested
-    const hasSpecificUpdates =
-      updateGithub ||
-      updateCategory ||
-      updateArchestraClientConfigPermutations ||
-      updateArchestraOauth ||
-      updateCanonicalServerAndUserConfig ||
-      updateDependencies ||
-      updateProtocol ||
-      updateScore;
 
-    // If force is true and specific updates are requested, ONLY do those updates
-    // Otherwise, fill in missing data
-    const shouldUpdateMissing = !force || !hasSpecificUpdates;
+    // If readmeOnly is true, only update GitHub data (which includes README)
+    if (readmeOnly) {
+      server = await extractGitHubData(server, githubInfo, true);
+    } else {
+      // Determine if any specific update was requested
+      const hasSpecificUpdates =
+        updateGithub ||
+        updateCategory ||
+        updateArchestraClientConfigPermutations ||
+        updateArchestraOauth ||
+        updateCanonicalServerAndUserConfig ||
+        updateDependencies ||
+        updateProtocol ||
+        updateScore;
 
-    if (updateGithub || (shouldUpdateMissing && !server.last_scraped_at)) {
-      server = await extractGitHubData(server, githubInfo, force);
-    }
+      // If force is true and specific updates are requested, ONLY do those updates
+      // Otherwise, fill in missing data
+      const shouldUpdateMissing = !force || !hasSpecificUpdates;
 
-    if (updateCategory || (shouldUpdateMissing && !server.category)) {
-      server = await extractCategory(server, model, force);
-    }
+      if (updateGithub || (shouldUpdateMissing && !server.last_scraped_at)) {
+        server = await extractGitHubData(server, githubInfo, force);
+      }
 
-    if (
-      updateArchestraClientConfigPermutations ||
-      (shouldUpdateMissing &&
-        (!server.archestra_config?.client_config_permutations?.mcpServers ||
-          Object.keys(server.archestra_config?.client_config_permutations?.mcpServers || {}).length === 0))
-    ) {
-      server = await extractArchestraClientConfigPermutationsConfig(server, model, force);
-    }
+      if (updateCategory || (shouldUpdateMissing && !server.category)) {
+        server = await extractCategory(server, model, force);
+      }
 
-    if (updateArchestraOauth || (shouldUpdateMissing && !server.archestra_config?.oauth)) {
-      server = await extractArchestraOauthConfig(server, model, force);
-    }
+      if (
+        updateArchestraClientConfigPermutations ||
+        (shouldUpdateMissing &&
+          (!server.archestra_config?.client_config_permutations?.mcpServers ||
+            Object.keys(server.archestra_config?.client_config_permutations?.mcpServers || {}).length === 0))
+      ) {
+        server = await extractArchestraClientConfigPermutationsConfig(server, model, force);
+      }
 
-    if (updateCanonicalServerAndUserConfig || (shouldUpdateMissing && (!server.server || !server.user_config))) {
-      server = await extractCanonicalServerAndUserConfigConfig(server, model, force);
-    }
+      if (updateArchestraOauth || (shouldUpdateMissing && !server.archestra_config?.oauth)) {
+        server = await extractArchestraOauthConfig(server, model, force);
+      }
 
-    if (updateDependencies || (shouldUpdateMissing && (!server.dependencies || server.dependencies.length === 0))) {
-      server = await extractDependencies(server, model, force);
-    }
+      if (updateCanonicalServerAndUserConfig || (shouldUpdateMissing && (!server.server || !server.user_config))) {
+        server = await extractCanonicalServerAndUserConfigConfig(server, model, force);
+      }
 
-    if (updateProtocol || (shouldUpdateMissing && server.protocol_features?.implementing_tools === undefined)) {
-      server = await extractProtocolFeatures(server, model, force);
-    }
+      if (updateDependencies || (shouldUpdateMissing && (!server.dependencies || server.dependencies.length === 0))) {
+        server = await extractDependencies(server, model, force);
+      }
 
-    if (updateScore || (shouldUpdateMissing && (server.quality_score === null || server.quality_score === undefined))) {
-      server = await extractScore(server, force);
+      if (updateProtocol || (shouldUpdateMissing && server.protocol_features?.implementing_tools === undefined)) {
+        server = await extractProtocolFeatures(server, model, force);
+      }
+
+      if (
+        updateScore ||
+        (shouldUpdateMissing && (server.quality_score === null || server.quality_score === undefined))
+      ) {
+        server = await extractScore(server, force);
+      }
     }
 
     // Display results if showOutput
@@ -1775,7 +1733,7 @@ async function evaluateSingleRepo(
             implementing_stdio,
             implementing_streamable_http,
             implementing_oauth2,
-          },
+          } = {},
           dependencies,
         } = server;
 
@@ -1852,11 +1810,26 @@ async function evaluateAllRepos(options: EvaluateAllReposOptions = {}): Promise<
   // Read all GitHub URLs
   let allUrls: string[] = JSON.parse(fs.readFileSync(MCP_SERVERS_JSON_FILE_PATH, 'utf8'));
 
-  // Filter out non-GitHub URLs (e.g., GitLab)
+  // Filter out non-GitHub URLs (e.g., GitLab, remote servers)
   let githubUrls = allUrls.filter((url) => url.includes('github.com'));
 
+  // Also filter out remote servers (URLs starting with http:// or https:// but not GitHub)
+  const remoteServers = allUrls.filter(
+    (url) => (url.startsWith('http://') || url.startsWith('https://')) && !url.includes('github.com')
+  );
+
   if (githubUrls.length < allUrls.length) {
-    console.log(`⚠️  Skipping ${allUrls.length - githubUrls.length} non-GitHub URLs (GitLab, etc.)`);
+    const nonGitHubCount = allUrls.length - githubUrls.length;
+    const remoteCount = remoteServers.length;
+    const otherCount = nonGitHubCount - remoteCount;
+
+    console.log(`⚠️  Skipping ${nonGitHubCount} non-GitHub URLs:`);
+    if (remoteCount > 0) {
+      console.log(`   - ${remoteCount} remote MCP servers`);
+    }
+    if (otherCount > 0) {
+      console.log(`   - ${otherCount} other repositories (GitLab, etc.)`);
+    }
   }
 
   const existingFiles = fs.readdirSync(MCP_SERVERS_EVALUATIONS_DIR).filter((f) => f.endsWith('.json'));
@@ -2015,6 +1988,7 @@ Usage: npm run evaluate-catalog [options] [github-url]
 
 Update Options:
   --github                                 Update GitHub data (stars, issues, README)
+  --readme-only                            ONLY update README content (no AI evaluation)
   --category                               Update category classification
   --archestra-client-config-permutations   Update Archestra client config permutations
   --archestra-oauth                        Update Archestra oauth related configurations
@@ -2036,6 +2010,7 @@ Control Options:
 Examples:
   npm run evaluate-catalog https://github.com/org/repo
   npm run evaluate-catalog --github --force
+  npm run evaluate-catalog --readme-only                    # Update all READMEs without AI
   npm run evaluate-catalog --category --model llama2
   npm run evaluate-catalog --category --model gemini-1.5-flash
   npm run evaluate-catalog --all --concurrency 20
@@ -2058,6 +2033,7 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
     updateProtocol: args.includes('--protocol'),
     updateScore: args.includes('--score'),
     updateAll: args.includes('--all'),
+    readmeOnly: args.includes('--readme-only'),
     force: args.includes('--force'),
     missingOnly: args.includes('--missing-only'),
     model: args.includes('--model') ? args[args.indexOf('--model') + 1] : 'gemini-2.5-pro',
@@ -2081,6 +2057,22 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
     options.updateScore = true;
   }
 
+  // Apply --readme-only flag
+  if (options.readmeOnly) {
+    // Reset all other update flags
+    options.updateGithub = true; // Need GitHub to fetch README
+    options.updateCategory = false;
+    options.updateArchestraClientConfigPermutations = false;
+    options.updateArchestraOauth = false;
+    options.updateCanonicalServerAndUserConfig = false;
+    options.updateDependencies = false;
+    options.updateProtocol = false;
+    options.updateScore = false;
+    options.updateAll = false;
+    // Force is implied for README-only updates
+    options.force = true;
+  }
+
   const url = args.find((arg) => arg.includes('://') || arg.includes('github.com'));
 
   // Check GitHub token
@@ -2092,8 +2084,14 @@ Note: For Gemini models, set GEMINI_API_KEY or GOOGLE_API_KEY environment variab
   // Single repo evaluation
   if (url) {
     if (!url.includes('github.com')) {
-      console.log(`⚠️  Skipping non-GitHub URL: ${url}`);
-      console.log('   This script only supports GitHub repositories.');
+      const isRemoteServer = url.startsWith('http://') || url.startsWith('https://');
+      if (isRemoteServer) {
+        console.log(`⚠️  Skipping remote MCP server: ${url}`);
+        console.log('   Remote servers are evaluated separately with fixed scores.');
+      } else {
+        console.log(`⚠️  Skipping non-GitHub URL: ${url}`);
+        console.log('   This script only supports GitHub repositories.');
+      }
       return;
     }
     await evaluateSingleRepo(url, options);
@@ -2115,3 +2113,4 @@ if (require.main === module) {
 }
 
 export { evaluateAllRepos, evaluateSingleRepo };
+('');

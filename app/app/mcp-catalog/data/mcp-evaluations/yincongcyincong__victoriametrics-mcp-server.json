@@ -8,39 +8,65 @@
     "name": "yincongcyincong"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "npx",
+    "args": [
+      "-y",
+      "@yincongcyincong/victoriametrics-mcp-server"
+    ],
+    "env": {
+      "VM_URL": "${user_config.vm_url}",
+      "VM_SELECT_URL": "${user_config.vm_select_url}",
+      "VM_INSERT_URL": "${user_config.vm_insert_url}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "vm_url": {
+      "type": "string",
+      "title": "VictoriaMetrics Base URL",
+      "description": "The base URL for the VictoriaMetrics instance.",
+      "required": false,
+      "default": "http://127.0.0.1:8428"
+    },
+    "vm_select_url": {
+      "type": "string",
+      "title": "VictoriaMetrics Select URL",
+      "description": "The URL for querying data from VictoriaMetrics. If empty, VM_URL will be used.",
+      "required": false
+    },
+    "vm_insert_url": {
+      "type": "string",
+      "title": "VictoriaMetrics Insert URL",
+      "description": "The URL for inserting data into VictoriaMetrics. If empty, VM_URL will be used.",
+      "required": false
+    }
+  },
   "readme": "[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/yincongcyincong-victoriametrics-mcp-server-badge.png)](https://mseep.ai/app/yincongcyincong-victoriametrics-mcp-server)\n\n# VictoriaMetrics MCP Server\n[![smithery badge](https://smithery.ai/badge/@yincongcyincong/victoriametrics-mcp-server)](https://smithery.ai/server/@yincongcyincong/victoriametrics-mcp-server)\n\n\nMCP Server for the VictoriaMetrics.\n\n### Installing via Smithery\n\nTo install VictoriaMetrics Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@yincongcyincong/victoriametrics-mcp-server):\n\n```bash\nnpx -y @smithery/cli install @yincongcyincong/victoriametrics-mcp-server --client claude\n```\n\n## Debug\n```\nnpx @modelcontextprotocol/inspector -e VM_URL=http://127.0.0.1:8428  node src/index.js\n\n```\n\n### NPX\n\n```json\n{\n    \"mcpServers\": {\n        \"victoriametrics\": {\n            \"command\": \"npx\",\n            \"args\": [\n                \"-y\",\n                \"@yincongcyincong/victoriametrics-mcp-server\"\n            ],\n            \"env\": {\n                \"VM_URL\": \"\",\n                \"VM_SELECT_URL\": \"\",\n                \"VM_INSERT_URL\": \"\"\n            }\n        }\n    }\n}\n```\n\n### 📊 VictoriaMetrics Tools API Documentation\n\n## 1. `vm_data_write`\n\n**Description**: Write data to the VictoriaMetrics database.\n\n**Input Parameters**:\n\n| Parameter     | Type        | Description                                | Required |\n|---------------|-------------|--------------------------------------------|----------|\n| `metric`      | `object`    | Tags of the metric                         | ✅        |\n| `values`      | `number[]`  | Array of metric values                     | ✅        |\n| `timestamps`  | `number[]`  | Array of timestamps in Unix seconds        | ✅        |\n\n---\n\n## 2. `vm_prometheus_write`\n\n**Description**: Import Prometheus exposition format data into VictoriaMetrics.\n\n**Input Parameters**:\n\n| Parameter | Type     | Description                                     | Required |\n|-----------|----------|-------------------------------------------------|----------|\n| `data`    | `string` | Metrics in Prometheus exposition format         | ✅        |\n\n---\n\n## 3. `vm_query_range`\n\n**Description**: Query time series data over a specific time range.\n\n**Input Parameters**:\n\n| Parameter | Type     | Description                                     | Required |\n|-----------|----------|-------------------------------------------------|----------|\n| `query`   | `string` | PromQL expression                               | ✅        |\n| `start`   | `number` | Start timestamp in Unix seconds                 | ⛔️        |\n| `end`     | `number` | End timestamp in Unix seconds                   | ⛔️        |\n| `step`    | `string` | Query resolution step width (e.g., `10s`, `1m`) | ⛔️        |\n\n> Only `query` is required; the other fields are optional.\n\n---\n\n## 4. `vm_query`\n\n**Description**: Query the current value of a time series.\n\n**Input Parameters**:\n\n| Parameter | Type     | Description                             | Required |\n|-----------|----------|-----------------------------------------|----------|\n| `query`   | `string` | PromQL expression to evaluate           | ✅        |\n| `time`    | `number` | Evaluation timestamp in Unix seconds    | ⛔️        |\n\n---\n\n## 5. `vm_labels`\n\n**Description**: Get all unique label names.\n\n**Input Parameters**: None\n\n---\n\n## 6. `vm_label_values`\n\n**Description**: Get all unique values for a specific label.\n\n**Input Parameters**:\n\n| Parameter | Type     | Description                  | Required |\n|-----------|----------|------------------------------|----------|\n| `label`   | `string` | Label name to get values for | ✅        |\n\n---\n",
   "category": "Monitoring",
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "yincongcyincong-victoriametrics-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "@yincongcyincong/victoriametrics-mcp-server"],
-          "env": {
-            "VM_URL": "",
-            "VM_SELECT_URL": "",
-            "VM_INSERT_URL": ""
-          }
-        },
-        "yincongcyincong-victoriametrics-mcp-server-debug": {
-          "command": "node",
-          "args": ["src/index.js"],
-          "env": {
-            "VM_URL": "http://127.0.0.1:8428"
-          }
+      "yincongcyincong-victoriametrics-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@yincongcyincong/victoriametrics-mcp-server"
+        ],
+        "env": {
+          "VM_URL": "",
+          "VM_SELECT_URL": "",
+          "VM_INSERT_URL": ""
+        }
+      },
+      "yincongcyincong-victoriametrics-mcp-server-debug": {
+        "command": "node",
+        "args": [
+          "src/index.js"
+        ],
+        "env": {
+          "VM_URL": "http://127.0.0.1:8428"
         }
       }
     },
@@ -53,9 +79,9 @@
     "owner": "yincongcyincong",
     "repo": "VictoriaMetrics-mcp-server",
     "url": "https://github.com/yincongcyincong/VictoriaMetrics-mcp-server",
-    "name": "VictoriaMetrics-mcp-server",
+    "name": "yincongcyincong__victoriametrics-mcp-server",
     "path": null,
-    "stars": 6,
+    "stars": 7,
     "contributors": 3,
     "issues": 0,
     "releases": false,
@@ -64,7 +90,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:34:52.610Z",
+  "last_scraped_at": "2025-09-07T22:15:09.344Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

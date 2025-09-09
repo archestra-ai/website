@@ -8,13 +8,13 @@
     "name": "longevity-genie"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "gget-mcp@latest",
+      "stdio"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,27 +25,42 @@
   "quality_score": 41,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "gget-mcp": {
-          "command": "uvx",
-          "args": ["--from", "gget-mcp", "stdio"],
-          "env": {}
-        },
-        "gget-mcp-http": {
-          "command": "uvx",
-          "args": ["--from", "gget-mcp", "server"],
-          "env": {}
-        },
-        "gget-mcp-stdio-local": {
-          "command": "uvx",
-          "args": ["--from", "gget-mcp", "stdio", "--output-dir", "./gget_output"],
-          "env": {}
-        },
-        "gget-mcp-sse": {
-          "command": "uvx",
-          "args": ["gget-mcp", "server-sse"],
-          "env": {}
-        }
+      "gget-mcp": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "gget-mcp",
+          "stdio"
+        ],
+        "env": {}
+      },
+      "gget-mcp-http": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "gget-mcp",
+          "server"
+        ],
+        "env": {}
+      },
+      "gget-mcp-stdio-local": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "gget-mcp",
+          "stdio",
+          "--output-dir",
+          "./gget_output"
+        ],
+        "env": {}
+      },
+      "gget-mcp-sse": {
+        "command": "uvx",
+        "args": [
+          "gget-mcp",
+          "server-sse"
+        ],
+        "env": {}
       }
     },
     "oauth": {
@@ -59,7 +74,7 @@
     "url": "https://github.com/longevity-genie/gget-mcp",
     "name": "longevity-genie__gget-mcp",
     "path": null,
-    "stars": 8,
+    "stars": 9,
     "contributors": 2,
     "issues": 0,
     "releases": false,
@@ -68,7 +83,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-18T14:25:57.696Z",
+  "last_scraped_at": "2025-09-07T22:12:18.561Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

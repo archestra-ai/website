@@ -8,13 +8,9 @@
     "name": "seekrays"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "./mcp-monitor",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-monitor-stdio": {
-          "command": "./mcp-monitor",
-          "args": [],
-          "env": {}
-        }
+      "mcp-monitor-stdio": {
+        "command": "./mcp-monitor",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

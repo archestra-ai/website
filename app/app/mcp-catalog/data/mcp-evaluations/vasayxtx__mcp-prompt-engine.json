@@ -8,13 +8,13 @@
     "name": "vasayxtx"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "mcp-prompt-engine",
+    "args": [
+      "serve",
+      "--prompts",
+      "${__dirname}/prompts"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,31 +25,36 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-prompt-engine": {
-          "command": "mcp-prompt-engine",
-          "args": ["serve"],
-          "env": {}
-        },
-        "mcp-prompt-engine-configured": {
-          "command": "mcp-prompt-engine",
-          "args": ["serve", "--prompts", "/path/to/your/prompts", "--disable-json-args"],
-          "env": {}
-        },
-        "ghcr.io-vasayxtx-mcp-prompt-engine-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-v",
-            "/path/to/your/prompts:/app/prompts:ro",
-            "-v",
-            "/path/to/your/logs:/app/logs",
-            "ghcr.io/vasayxtx/mcp-prompt-engine"
-          ],
-          "env": {}
-        }
+      "mcp-prompt-engine": {
+        "command": "mcp-prompt-engine",
+        "args": [
+          "serve"
+        ],
+        "env": {}
+      },
+      "mcp-prompt-engine-configured": {
+        "command": "mcp-prompt-engine",
+        "args": [
+          "serve",
+          "--prompts",
+          "/path/to/your/prompts",
+          "--disable-json-args"
+        ],
+        "env": {}
+      },
+      "ghcr.io-vasayxtx-mcp-prompt-engine-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-v",
+          "/path/to/your/prompts:/app/prompts:ro",
+          "-v",
+          "/path/to/your/logs:/app/logs",
+          "ghcr.io/vasayxtx/mcp-prompt-engine"
+        ],
+        "env": {}
       }
     },
     "oauth": {
@@ -61,9 +66,9 @@
     "owner": "vasayxtx",
     "repo": "mcp-prompt-engine",
     "url": "https://github.com/vasayxtx/mcp-prompt-engine",
-    "name": "mcp-prompt-engine",
+    "name": "vasayxtx__mcp-prompt-engine",
     "path": null,
-    "stars": 3,
+    "stars": 6,
     "contributors": 1,
     "issues": 0,
     "releases": true,
@@ -72,7 +77,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-08-04T10:14:19.832Z",
+  "last_scraped_at": "2025-09-07T22:16:57.229Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,

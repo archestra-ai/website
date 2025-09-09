@@ -8,13 +8,11 @@
     "name": "quarkiverse"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "jbang",
+    "args": [
+      "jfx@quarkiverse/quarkus-mcp-servers"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,12 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "jfx": {
-          "command": "jbang",
-          "args": ["jfx@quarkiverse/quarkus-mcp-servers"],
-          "env": {}
-        }
+      "jfx": {
+        "command": "jbang",
+        "args": [
+          "jfx@quarkiverse/quarkus-mcp-servers"
+        ],
+        "env": {}
       }
     },
     "oauth": {

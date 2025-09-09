@@ -1,0 +1,34 @@
+{
+  "name": "paypal__remote-mcp",
+  "display_name": "PayPal MCP",
+  "version": "1.0.0",
+  "description": "Remote MCP server for PayPal - online payments and financial services",
+  "remote_url": "https://mcp.paypal.com/mcp",
+  "remote_mcp_docs_url": "https://www.paypal.ai/",
+  "tools": [],
+  "prompts": [],
+  "user_config": {},
+  "readme": null,
+  "category": "Finance",
+  "quality_score": 80,
+  "archestra_config": {
+    "client_config_permutations": null,
+    "oauth": {
+      "provider": null,
+      "required": false
+    }
+  },
+  "framework": null,
+  "last_scraped_at": "2025-09-05T19:30:23.066Z",
+  "evaluation_model": null,
+  "raw_dependencies": null,
+  "dxt_version": "0.1.0",
+  "author": {
+    "name": "paypal"
+  },
+  "server": {
+    "command": "remote",
+    "args": [],
+    "env": {}
+  }
+}

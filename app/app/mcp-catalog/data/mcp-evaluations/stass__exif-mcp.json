@@ -8,13 +8,11 @@
     "name": "stass"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/server.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,27 +23,34 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "exif-mcp": {
-          "command": "node",
-          "args": ["/path/to/exif-mcp/dist/server.js"],
-          "env": {}
-        },
-        "exif-mcp-npm-start": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        },
-        "exif-mcp-npm-dev": {
-          "command": "npm",
-          "args": ["run", "dev"],
-          "env": {}
-        },
-        "exif-mcp-stdio": {
-          "command": "node",
-          "args": ["dist/server.js"],
-          "env": {}
-        }
+      "exif-mcp": {
+        "command": "node",
+        "args": [
+          "/path/to/exif-mcp/dist/server.js"
+        ],
+        "env": {}
+      },
+      "exif-mcp-npm-start": {
+        "command": "npm",
+        "args": [
+          "start"
+        ],
+        "env": {}
+      },
+      "exif-mcp-npm-dev": {
+        "command": "npm",
+        "args": [
+          "run",
+          "dev"
+        ],
+        "env": {}
+      },
+      "exif-mcp-stdio": {
+        "command": "node",
+        "args": [
+          "dist/server.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {
