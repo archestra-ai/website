@@ -104,9 +104,12 @@ export default async function Home() {
           <div className="container px-4 md:px-6 py-16 max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row items-center gap-12">
               <div className="flex-1 text-center lg:text-left">
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Agents 🤝 Enterprise Data</h1>
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">AI 🤝 Enterprise Data</h1>
                 <p className="text-xl text-gray-700 mb-8">
-                  Build powerful, safe, interconnected AI agents without the technical overhead.
+                  Run AI agents locally and connect to your data leveraging {serverCount} open-source MCP servers.
+
+                  < br />< br />
+                  Build reports, automate communication, and more — all while keeping your data private and secure on your machine.
                 </p>
                 <div className="flex justify-center lg:justify-start">
                   <DesktopAppDownloadButton />
@@ -124,27 +127,26 @@ export default async function Home() {
           <div className="container px-4 md:px-6 max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="flex flex-col items-center text-center p-6">
-                <Cpu className="h-12 w-12 text-gray-700 mb-4" />
+                <AlertTriangle className="h-12 w-12 text-gray-700 mb-4" />
                 <h3 className="font-semibold mb-2 text-lg">Secure MCP Runtime</h3>
                 <p className="text-sm text-gray-600">
-                  Isolated execution environment for {serverCount} Open Source MCP Servers with sandboxing and resource
-                  controls
+                  Isolated execution environment protecting your host system.
                 </p>
               </div>
 
               <div className="flex flex-col items-center text-center p-6">
-                <AlertTriangle className="h-12 w-12 text-gray-700 mb-4" />
-                <h3 className="font-semibold mb-2 text-lg">Prompt Injection Prevention</h3>
+                <Cpu className="h-12 w-12 text-gray-700 mb-4" />
+                <h3 className="font-semibold mb-2 text-lg">No Technical Knowledge Needed</h3>
                 <p className="text-sm text-gray-600">
-                  Securing the context to prevent leakage of data to the context and changing agent's behaviour
+                  No need to configure API keys for each service; Archestra will do it for you.
                 </p>
               </div>
 
               <div className="flex flex-col items-center text-center p-6">
                 <Package className="h-12 w-12 text-gray-700 mb-4" />
-                <h3 className="font-semibold mb-2 text-lg">Supply Chain Analysis</h3>
+                <h3 className="font-semibold mb-2 text-lg">Fully Local</h3>
                 <p className="text-sm text-gray-600">
-                  AI-powered evaluation of dependencies and security vulnerabilities in MCP server packages
+                  Optionally, can work without an internet connection after initial download.
                 </p>
               </div>
             </div>
@@ -165,7 +167,7 @@ export default async function Home() {
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border-2 border-green-300 shadow-md p-8">
               <div className="flex flex-col items-center text-center">
                 <Package className="h-12 w-12 text-green-600 mb-4" />
-                <h2 className="text-2xl font-bold mb-3 text-green-900">Multi-Tenant Enterprise MCP Platform</h2>
+                <h2 className="text-2xl font-bold mb-3 text-green-900">Want to deploy for your colleagues?</h2>
                 <p className="text-gray-700 mb-6 max-w-2xl">
                   Deploy and manage AI-to-Data connectors at scale with enterprise-grade security, compliance, and
                   governance features.
@@ -197,7 +199,7 @@ export default async function Home() {
               <div className="flex-1">
                 <h3 className="font-semibold mb-1">Open Source</h3>
                 <p className="text-sm text-gray-600 mb-2">
-                  {companyName} is open source, follow us on{' '}
+                  {companyName} is open source. Follow us on{' '}
                   <a
                     href={githubArchestraRepoUrl}
                     target="_blank"
