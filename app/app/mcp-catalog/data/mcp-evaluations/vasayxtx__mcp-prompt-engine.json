@@ -8,13 +8,9 @@
     "name": "vasayxtx"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "mcp-prompt-engine",
+    "args": ["serve", "--prompts", "${__dirname}/prompts"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,31 +21,29 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-prompt-engine": {
-          "command": "mcp-prompt-engine",
-          "args": ["serve"],
-          "env": {}
-        },
-        "mcp-prompt-engine-configured": {
-          "command": "mcp-prompt-engine",
-          "args": ["serve", "--prompts", "/path/to/your/prompts", "--disable-json-args"],
-          "env": {}
-        },
-        "ghcr.io-vasayxtx-mcp-prompt-engine-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "-v",
-            "/path/to/your/prompts:/app/prompts:ro",
-            "-v",
-            "/path/to/your/logs:/app/logs",
-            "ghcr.io/vasayxtx/mcp-prompt-engine"
-          ],
-          "env": {}
-        }
+      "mcp-prompt-engine": {
+        "command": "mcp-prompt-engine",
+        "args": ["serve"],
+        "env": {}
+      },
+      "mcp-prompt-engine-configured": {
+        "command": "mcp-prompt-engine",
+        "args": ["serve", "--prompts", "/path/to/your/prompts", "--disable-json-args"],
+        "env": {}
+      },
+      "ghcr.io-vasayxtx-mcp-prompt-engine-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-v",
+          "/path/to/your/prompts:/app/prompts:ro",
+          "-v",
+          "/path/to/your/logs:/app/logs",
+          "ghcr.io/vasayxtx/mcp-prompt-engine"
+        ],
+        "env": {}
       }
     },
     "oauth": {

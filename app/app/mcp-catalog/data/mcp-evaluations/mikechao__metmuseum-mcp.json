@@ -8,13 +8,9 @@
     "name": "mikechao"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "metmuseum-mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "metmuseum-mcp": {
-          "command": "npx",
-          "args": ["-y", "metmuseum-mcp"],
-          "env": {}
-        }
+      "metmuseum-mcp": {
+        "command": "npx",
+        "args": ["-y", "metmuseum-mcp"],
+        "env": {}
       }
     },
     "oauth": {

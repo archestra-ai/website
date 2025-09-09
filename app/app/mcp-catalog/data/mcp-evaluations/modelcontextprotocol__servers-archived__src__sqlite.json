@@ -8,13 +8,9 @@
     "name": "modelcontextprotocol"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,39 +21,37 @@
   "quality_score": 70,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-sqlite-uv": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "parent_of_servers_repo/servers/src/sqlite",
-            "run",
-            "mcp-server-sqlite",
-            "--db-path",
-            "~/test.db"
-          ],
-          "env": {}
-        },
-        "mcp-sqlite-docker-desktop": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "-v", "mcp-test:/mcp", "mcp/sqlite", "--db-path", "/mcp/test.db"],
-          "env": {}
-        },
-        "mcp-server-sqlite-uvx": {
-          "command": "uvx",
-          "args": ["mcp-server-sqlite", "--db-path", "${input:db_path}"],
-          "env": {}
-        },
-        "mcp-sqlite-docker-vscode": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "-v", "mcp-sqlite:/mcp", "mcp/sqlite", "--db-path", "${input:db_path}"],
-          "env": {}
-        },
-        "mcp-server-sqlite-dev": {
-          "command": "mcp",
-          "args": ["dev", "src/mcp_server_sqlite/server.py:wrapper"],
-          "env": {}
-        }
+      "mcp-server-sqlite-uv": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "parent_of_servers_repo/servers/src/sqlite",
+          "run",
+          "mcp-server-sqlite",
+          "--db-path",
+          "~/test.db"
+        ],
+        "env": {}
+      },
+      "mcp-sqlite-docker-desktop": {
+        "command": "docker",
+        "args": ["run", "--rm", "-i", "-v", "mcp-test:/mcp", "mcp/sqlite", "--db-path", "/mcp/test.db"],
+        "env": {}
+      },
+      "mcp-server-sqlite-uvx": {
+        "command": "uvx",
+        "args": ["mcp-server-sqlite", "--db-path", "${input:db_path}"],
+        "env": {}
+      },
+      "mcp-sqlite-docker-vscode": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "-v", "mcp-sqlite:/mcp", "mcp/sqlite", "--db-path", "${input:db_path}"],
+        "env": {}
+      },
+      "mcp-server-sqlite-dev": {
+        "command": "mcp",
+        "args": ["dev", "src/mcp_server_sqlite/server.py:wrapper"],
+        "env": {}
       }
     },
     "oauth": {

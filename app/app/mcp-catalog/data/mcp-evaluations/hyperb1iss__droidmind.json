@@ -8,13 +8,9 @@
     "name": "hyperb1iss"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["--from", "git+https://github.com/hyperb1iss/droidmind", "droidmind", "--transport", "stdio"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,22 +21,20 @@
   "quality_score": 69,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "droidmind-uvx-stdio": {
-          "command": "uvx",
-          "args": ["--from", "git+https://github.com/hyperb1iss/droidmind", "droidmind", "--transport", "stdio"],
-          "env": {}
-        },
-        "droidmind-stdio": {
-          "command": "droidmind",
-          "args": ["--transport", "stdio"],
-          "env": {}
-        },
-        "droidmind-sse": {
-          "command": "droidmind",
-          "args": ["--transport", "sse"],
-          "env": {}
-        }
+      "droidmind-uvx-stdio": {
+        "command": "uvx",
+        "args": ["--from", "git+https://github.com/hyperb1iss/droidmind", "droidmind", "--transport", "stdio"],
+        "env": {}
+      },
+      "droidmind-stdio": {
+        "command": "droidmind",
+        "args": ["--transport", "stdio"],
+        "env": {}
+      },
+      "droidmind-sse": {
+        "command": "droidmind",
+        "args": ["--transport", "sse"],
+        "env": {}
       }
     },
     "oauth": {

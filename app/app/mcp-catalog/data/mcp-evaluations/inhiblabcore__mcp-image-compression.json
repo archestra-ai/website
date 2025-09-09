@@ -8,30 +8,34 @@
     "name": "InhiblabCore"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "npx",
+    "args": ["-y", "@inhiblab-core/mcp-image-compression"],
+    "env": {
+      "IMAGE_COMPRESSION_DOWNLOAD_DIR": "${user_config.image_compression_download_dir}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "image_compression_download_dir": {
+      "type": "directory",
+      "title": "Image Compression Download Directory",
+      "description": "The directory where compressed images will be downloaded.",
+      "required": true,
+      "default": "${DOWNLOADS}"
+    }
+  },
   "readme": "[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/inhiblabcore-mcp-image-compression-badge.png)](https://mseep.ai/app/inhiblabcore-mcp-image-compression)\n\n# mcp-image-compression\n\n## Project Overview\n\nmcp-image-compression is a high-performance image compression microservice based on MCP (Modal Context Protocol) architecture. This service focuses on providing fast and high-quality image compression capabilities to help developers optimize image resources for websites and applications, improving loading speed and user experience.\n\n## Features\n\n- **Multi-format support**: Compress mainstream image formats including JPEG, PNG, WebP, AVIF\n- **Offline Usage**: No need to connect to the internet to use\n- **Smart compression**: Automatically select optimal compression parameters based on image content\n- **Batch processing**: Support parallel compression of multiple images for improved efficiency\n- **Quality control**: Customizable compression quality to balance file size and visual quality\n\n## TOOLS\n\n1. `image_compression`\n   - Image compression\n   - Inputs:\n     - `urls` (strings): URLs of images to compress\n     - `quality` (int): Quality of compression (0-100)\n     - `format` (string): Format of compressed image (e.g. \"jpeg\", \"png\", \"webp\", \"avif\")\n   - Returns: Compressed images url\n\n## Setup\n\n### NPX\n\n```json\n{\n  \"mcpServers\": {\n    \"Image compression\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@inhiblab-core/mcp-image-compression\"\n      ],\n      \"env\": {\n        \"IMAGE_COMPRESSION_DOWNLOAD_DIR\": \"<YOUR_DIR>\"\n      },\n      \"disabled\": false,\n      \"autoApprove\": []\n    }\n  }\n}\n```\n\n## Build\n\n```bash\ndocker build -t mcp-image-compression .\n```\n\n## License\n\nThis MCP server is licensed under the MIT License. This means you are free to use, modify, and distribute the software, subject to the terms and conditions of the MIT License. For more details, please see the LICENSE file in the project repository.\n\n",
   "category": "Development",
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "inhiblab-core-mcp-image-compression": {
-          "command": "npx",
-          "args": ["-y", "@inhiblab-core/mcp-image-compression"],
-          "env": {
-            "IMAGE_COMPRESSION_DOWNLOAD_DIR": "<YOUR_DIR>"
-          }
+      "inhiblab-core-mcp-image-compression": {
+        "command": "npx",
+        "args": ["-y", "@inhiblab-core/mcp-image-compression"],
+        "env": {
+          "IMAGE_COMPRESSION_DOWNLOAD_DIR": "<YOUR_DIR>"
         }
       }
     },

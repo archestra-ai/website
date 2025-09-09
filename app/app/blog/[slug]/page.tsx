@@ -143,9 +143,25 @@ export default async function BlogPostPage({ params }: Props) {
                     <ol {...props} className="list-decimal list-inside mb-6 space-y-2 pl-4" />
                   ),
                   li: ({ node, ...props }) => <li {...props} className="text-lg text-gray-700 leading-relaxed" />,
-                  a: ({ node, ...props }) => (
-                    <a {...props} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer" />
-                  ),
+                  a: ({ node, href, ...props }) => {
+                    // Check if it's an external link
+                    const isExternal = href && (href.startsWith('http://') || href.startsWith('https://'));
+                    // Check if external link is to the same domain
+                    const isSameDomain = isExternal && typeof window !== 'undefined' && 
+                      new URL(href).hostname === window.location.hostname;
+                    // Internal links (starting with /) or same domain links don't open in new tab
+                    const shouldOpenInNewTab = isExternal && !isSameDomain;
+                    
+                    return (
+                      <a
+                        {...props}
+                        href={href}
+                        className="text-blue-600 hover:underline"
+                        target={shouldOpenInNewTab ? "_blank" : undefined}
+                        rel={shouldOpenInNewTab ? "noopener noreferrer" : undefined}
+                      />
+                    );
+                  },
                   img: ({ node, ...props }) => <img {...props} className="rounded-lg shadow-md my-8 w-full" />,
                   blockquote: ({ node, ...props }) => (
                     <blockquote

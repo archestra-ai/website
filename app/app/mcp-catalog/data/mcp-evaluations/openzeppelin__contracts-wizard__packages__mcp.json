@@ -8,13 +8,9 @@
     "name": "OpenZeppelin"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@openzeppelin/contracts-mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "openzeppelin-contracts-mcp": {
-          "command": "npx",
-          "args": ["-y", "@openzeppelin/contracts-mcp"],
-          "env": {}
-        },
-        "openzeppelin-contracts-mcp-stdio": {
-          "command": "npx",
-          "args": ["-y", "@openzeppelin/contracts-mcp"],
-          "env": {}
-        }
+      "openzeppelin-contracts-mcp": {
+        "command": "npx",
+        "args": ["-y", "@openzeppelin/contracts-mcp"],
+        "env": {}
+      },
+      "openzeppelin-contracts-mcp-stdio": {
+        "command": "npx",
+        "args": ["-y", "@openzeppelin/contracts-mcp"],
+        "env": {}
       }
     },
     "oauth": {

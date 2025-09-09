@@ -8,13 +8,9 @@
     "name": "snaggle-ai"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "openapi-mcp-server"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "openapi-mcp-server": {
-          "command": "npx",
-          "args": ["openapi-mcp-server@latest", "init"],
-          "env": {}
-        }
+      "openapi-mcp-server": {
+        "command": "npx",
+        "args": ["openapi-mcp-server@latest", "init"],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,9 @@
     "name": "manusa"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "kubernetes-mcp-server@latest"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kubernetes-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "kubernetes-mcp-server@latest"],
-          "env": {}
-        }
+      "kubernetes-mcp-server": {
+        "command": "npx",
+        "args": ["-y", "kubernetes-mcp-server@latest"],
+        "env": {}
       }
     },
     "oauth": {

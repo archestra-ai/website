@@ -8,13 +8,9 @@
     "name": "thunderboltsid"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "./bin/mcp-nutanix",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-nutanix": {
-          "command": "./bin/mcp-nutanix",
-          "args": [],
-          "env": {}
-        }
+      "mcp-nutanix": {
+        "command": "./bin/mcp-nutanix",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

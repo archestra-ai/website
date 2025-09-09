@@ -8,30 +8,34 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "node",
+    "args": ["${__dirname}/index.js"],
+    "env": {
+      "INFURA_PROJECT_ID": "${user_config.infura_project_id}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "infura_project_id": {
+      "type": "string",
+      "title": "Infura Project ID",
+      "description": "Your Infura project ID with access to Ethereum, Polygon, Arbitrum, and Optimism.",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# Uniswap V3 Price MCP Server\n\nAn MCP server that delivers real-time token prices from Uniswap V3 across multiple chains — optimized for AI agents and DeFi automation.\n\n![License](https://img.shields.io/badge/license-MIT-blue.svg)\n![Node.js](https://img.shields.io/badge/Node.js-18.x-green.svg)\n![Status](https://img.shields.io/badge/status-active-brightgreen.svg)\n\n\n## Features\n- **Supported Chains**: Ethereum Mainnet (1), Polygon (137), Arbitrum (42161), Optimism (10).\n- **Token Price Fetching**: Queries Uniswap V3 pools for token prices against USDT, USDC, or WETH (in that order) with automatic decimal and symbol retrieval.\n- **USD Conversion**: Optional USD price conversion using CryptoCompare API for all quote tokens.\n\n## Prerequisites\n- **Node.js** (v18 or higher recommended) and **npm**.\n- **Infura Account**: Obtain an `INFURA_PROJECT_ID` with access to Ethereum, Polygon, Arbitrum, and Optimism (sign up at [Infura](https://infura.io/)).\n\n## Installation\n1. Clone the repository:\n   ```bash\n   git clone https://github.com/kukapay/uniswap-price-mcp.git\n   cd uniswap-price-mcp\n   ```\n\n2. Install dependencies:\n   ```bash\n   npm install\n   ```\n\n3. **Client Configuration**:\n\n    ```json\n    {\n      \"mcpServers\": {\n        \"Uniswap Price\": {\n          \"command\": \"node\",\n          \"args\": [\"path/to/uniswap-price-mcp/index.js\"],\n          \"env\": {\n            \"INFURA_PROJECT_ID\": \"your_infura_project_id\"\n          }\n        }\n      }\n    }\n    ```\n    Replace `your_infura_project_id` with your Infura project ID.\n    \n## Usage\n\nInteract with the server using MCP-compatible clients.\n\n### Tools\n\n#### getSupportedChains\n\n**Prompt**:\n```\nShow me a list of all blockchain networks supported by the server, formatted as a table.\n```\n**Result**:\n\n| Chain ID | Chain Name       |\n|----------|------------------|\n| 1        | Ethereum Mainnet |\n| 137      | Polygon          |\n| 42161    | Arbitrum         |\n| 10       | Optimism         |\n\n#### getTokenPrice\n\n**Prompt**:\n```\nWhat is the current price of DAI in USD on the Ethereum Mainnet?\n```\n\n**Result**:\n```\nPrice of token DAI on chain 1 in USD: 1.00\n```\n\n**Prompt**:\n```\nGet the USD price of Chainlink (LINK) on the Polygon network.\n```\n\n**Result**:\n```\nPrice of token LINK on chain 137 in USD: 18.50\n```\n\n## License\nThis project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.\n",
   "category": "Finance",
   "quality_score": 43,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "Uniswap Price": {
-          "command": "node",
-          "args": ["path/to/uniswap-price-mcp/index.js"],
-          "env": {
-            "INFURA_PROJECT_ID": "your_infura_project_id"
-          }
+      "Uniswap Price": {
+        "command": "node",
+        "args": ["path/to/uniswap-price-mcp/index.js"],
+        "env": {
+          "INFURA_PROJECT_ID": "your_infura_project_id"
         }
       }
     },

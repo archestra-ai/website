@@ -8,13 +8,9 @@
     "name": "azer"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": ["${__dirname}/build/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "react-analyzer-mcp": {
-          "command": "node",
-          "args": ["/Users/azer/code/sandbox/react-analyzer-mcp/build/index.js"],
-          "env": {}
-        }
+      "react-analyzer-mcp": {
+        "command": "node",
+        "args": ["/Users/azer/code/sandbox/react-analyzer-mcp/build/index.js"],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,9 @@
     "name": "QuantGeekDev"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["docker-mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "docker-mcp": {
-          "command": "uvx",
-          "args": ["docker-mcp"],
-          "env": {}
-        },
-        "docker-mcp-configured": {
-          "command": "uv",
-          "args": ["--directory", "<path-to-docker-mcp>", "run", "docker-mcp"],
-          "env": {}
-        }
+      "docker-mcp": {
+        "command": "uvx",
+        "args": ["docker-mcp"],
+        "env": {}
+      },
+      "docker-mcp-configured": {
+        "command": "uv",
+        "args": ["--directory", "<path-to-docker-mcp>", "run", "docker-mcp"],
+        "env": {}
       }
     },
     "oauth": {

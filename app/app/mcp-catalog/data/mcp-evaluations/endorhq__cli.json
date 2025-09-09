@@ -8,13 +8,9 @@
     "name": "endorhq"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@endorhq/cli", "mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "endorhq-cli-mcp": {
-          "command": "npx",
-          "args": ["-y", "@endorhq/cli", "mcp"],
-          "env": {}
-        }
+      "endorhq-cli-mcp": {
+        "command": "npx",
+        "args": ["-y", "@endorhq/cli", "mcp"],
+        "env": {}
       }
     },
     "oauth": {

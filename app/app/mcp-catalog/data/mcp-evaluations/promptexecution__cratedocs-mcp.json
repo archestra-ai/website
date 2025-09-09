@@ -8,13 +8,9 @@
     "name": "promptexecution"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "cratedocs",
+    "args": ["stdio"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,40 +21,38 @@
   "quality_score": 31,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "cratedocs-stdio": {
-          "command": "cratedocs",
-          "args": ["stdio"],
-          "env": {}
-        },
-        "cratedocs-http": {
-          "command": "cargo",
-          "args": ["run", "--bin", "cratedocs", "http"],
-          "env": {}
-        },
-        "cratedocs-http-custom-address": {
-          "command": "cargo",
-          "args": ["run", "--bin", "cratedocs", "http", "--address", "0.0.0.0:3000"],
-          "env": {}
-        },
-        "cratedocs-http-debug": {
-          "command": "cargo",
-          "args": ["run", "--bin", "cratedocs", "http", "--debug"],
-          "env": {}
-        },
-        "mcp-remote": {
-          "command": "bunx",
-          "args": [
-            "-y",
-            "mcp-remote@latest",
-            "http://127.0.0.1:3000/sse?sessionId=",
-            "--allow-http",
-            "--transport",
-            "sse-only",
-            "--debug"
-          ],
-          "env": {}
-        }
+      "cratedocs-stdio": {
+        "command": "cratedocs",
+        "args": ["stdio"],
+        "env": {}
+      },
+      "cratedocs-http": {
+        "command": "cargo",
+        "args": ["run", "--bin", "cratedocs", "http"],
+        "env": {}
+      },
+      "cratedocs-http-custom-address": {
+        "command": "cargo",
+        "args": ["run", "--bin", "cratedocs", "http", "--address", "0.0.0.0:3000"],
+        "env": {}
+      },
+      "cratedocs-http-debug": {
+        "command": "cargo",
+        "args": ["run", "--bin", "cratedocs", "http", "--debug"],
+        "env": {}
+      },
+      "mcp-remote": {
+        "command": "bunx",
+        "args": [
+          "-y",
+          "mcp-remote@latest",
+          "http://127.0.0.1:3000/sse?sessionId=",
+          "--allow-http",
+          "--transport",
+          "sse-only",
+          "--debug"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,9 @@
     "name": "yangkyeongmo"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/server/main.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,9 +20,7 @@
   "category": "Data",
   "quality_score": 64,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

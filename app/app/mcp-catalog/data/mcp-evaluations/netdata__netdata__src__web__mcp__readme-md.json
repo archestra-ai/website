@@ -8,13 +8,9 @@
     "name": "netdata"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],

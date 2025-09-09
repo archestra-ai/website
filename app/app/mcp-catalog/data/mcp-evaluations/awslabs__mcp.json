@@ -8,13 +8,9 @@
     "name": "awslabs"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/server/main.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,700 +21,698 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "aws-documentation-server-docker": {
-          "command": "docker",
-          "args": ["run", "-p", "8080:8080", "public.ecr.aws/aws-mcp/aws-documentation-server:latest"],
-          "env": {}
-        },
-        "aws-bedrock-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-bedrock-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-s3-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "-e",
-            "S3_BUCKET_NAME=my-mcp-bucket",
-            "public.ecr.aws/aws-mcp/aws-s3-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1",
-            "S3_BUCKET_NAME": "my-mcp-bucket"
-          }
-        },
-        "aws-ec2-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-ec2-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-lambda-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-lambda-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-cloudformation-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-cloudformation-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-iam-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-iam-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-ecs-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-ecs-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-eks-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-eks-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-rds-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-rds-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-dynamodb-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-dynamodb-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-opensearch-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-opensearch-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-redshift-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-redshift-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-elasticache-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-elasticache-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-sqs-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-sqs-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-sns-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-sns-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-stepfunctions-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-stepfunctions-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-cost-explorer-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-cost-explorer-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-healthlake-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-healthlake-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-comprehend-medical-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-comprehend-medical-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-textract-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-textract-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-rekognition-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-rekognition-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-polly-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-polly-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-transcribe-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-transcribe-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-translate-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-translate-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-comprehend-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-comprehend-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-forecast-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-forecast-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-personalize-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-personalize-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-sagemaker-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-sagemaker-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-kendra-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-kendra-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-lex-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-lex-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-connect-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-connect-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-chime-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-chime-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-waf-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-waf-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-shield-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-shield-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-guardduty-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-guardduty-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-securityhub-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-securityhub-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-kms-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-kms-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-secretsmanager-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-secretsmanager-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-systemsmanager-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-systemsmanager-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-cloudwatch-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-cloudwatch-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-xray-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-xray-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-config-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-config-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-health-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-health-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-audit-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-audit-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-billing-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-billing-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-organizations-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-organizations-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-cost-optimization-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-cost-optimization-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-well-architected-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-well-architected-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
-        },
-        "aws-support-server-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-p",
-            "8080:8080",
-            "-e",
-            "AWS_REGION=us-east-1",
-            "public.ecr.aws/aws-mcp/aws-support-server:latest"
-          ],
-          "env": {
-            "AWS_REGION": "us-east-1"
-          }
+      "aws-documentation-server-docker": {
+        "command": "docker",
+        "args": ["run", "-p", "8080:8080", "public.ecr.aws/aws-mcp/aws-documentation-server:latest"],
+        "env": {}
+      },
+      "aws-bedrock-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-bedrock-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-s3-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "-e",
+          "S3_BUCKET_NAME=my-mcp-bucket",
+          "public.ecr.aws/aws-mcp/aws-s3-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1",
+          "S3_BUCKET_NAME": "my-mcp-bucket"
+        }
+      },
+      "aws-ec2-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-ec2-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-lambda-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-lambda-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-cloudformation-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-cloudformation-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-iam-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-iam-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-ecs-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-ecs-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-eks-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-eks-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-rds-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-rds-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-dynamodb-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-dynamodb-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-opensearch-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-opensearch-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-redshift-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-redshift-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-elasticache-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-elasticache-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-sqs-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-sqs-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-sns-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-sns-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-stepfunctions-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-stepfunctions-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-cost-explorer-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-cost-explorer-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-healthlake-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-healthlake-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-comprehend-medical-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-comprehend-medical-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-textract-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-textract-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-rekognition-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-rekognition-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-polly-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-polly-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-transcribe-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-transcribe-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-translate-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-translate-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-comprehend-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-comprehend-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-forecast-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-forecast-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-personalize-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-personalize-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-sagemaker-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-sagemaker-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-kendra-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-kendra-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-lex-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-lex-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-connect-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-connect-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-chime-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-chime-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-waf-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-waf-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-shield-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-shield-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-guardduty-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-guardduty-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-securityhub-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-securityhub-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-kms-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-kms-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-secretsmanager-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-secretsmanager-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-systemsmanager-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-systemsmanager-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-cloudwatch-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-cloudwatch-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-xray-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-xray-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-config-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-config-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-health-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-health-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-audit-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-audit-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-billing-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-billing-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-organizations-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-organizations-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-cost-optimization-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-cost-optimization-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-well-architected-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-well-architected-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
+        }
+      },
+      "aws-support-server-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "-e",
+          "AWS_REGION=us-east-1",
+          "public.ecr.aws/aws-mcp/aws-support-server:latest"
+        ],
+        "env": {
+          "AWS_REGION": "us-east-1"
         }
       }
     },

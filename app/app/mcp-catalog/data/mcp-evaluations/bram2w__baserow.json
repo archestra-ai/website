@@ -8,13 +8,9 @@
     "name": "bram2w"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "docker",
+    "args": ["run", "-v", "baserow_data:/baserow/data", "-p", "80:80", "-p", "443:443", "baserow/baserow:1.34.5"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "baserow-baserow-docker": {
-          "command": "docker",
-          "args": ["run", "-v", "baserow_data:/baserow/data", "-p", "80:80", "-p", "443:443", "baserow/baserow:1.34.5"],
-          "env": {}
-        },
-        "baserow-dev-script": {
-          "command": "./dev.sh",
-          "args": ["--build"],
-          "env": {}
-        }
+      "baserow-baserow-docker": {
+        "command": "docker",
+        "args": ["run", "-v", "baserow_data:/baserow/data", "-p", "80:80", "-p", "443:443", "baserow/baserow:1.34.5"],
+        "env": {}
+      },
+      "baserow-dev-script": {
+        "command": "./dev.sh",
+        "args": ["--build"],
+        "env": {}
       }
     },
     "oauth": {

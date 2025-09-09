@@ -8,13 +8,20 @@
     "name": "co-browser"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "docker",
+    "args": [
+      "run",
+      "-itp",
+      "--device=/dev/sgx_provision:/dev/sgx/provision",
+      "--device=/dev/sgx_enclave:/dev/sgx/enclave",
+      "-v",
+      "/var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket",
+      "-p",
+      "8000:8000",
+      "--rm",
+      "gsc-attestable-mcp-server"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,28 +32,26 @@
   "quality_score": 38,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "gsc-attestable-mcp-server-docker-secure-hardware": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-itp",
-            "--device=/dev/sgx_provision:/dev/sgx/provision",
-            "--device=/dev/sgx_enclave:/dev/sgx/enclave",
-            "-v",
-            "/var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket",
-            "-p",
-            "8000:8000",
-            "--rm",
-            "gsc-attestable-mcp-server"
-          ],
-          "env": {}
-        },
-        "gsc-attestable-mcp-server-docker-local": {
-          "command": "docker",
-          "args": ["run", "-p", "8000:8000", "--rm", "gsc-attestable-mcp-server"],
-          "env": {}
-        }
+      "gsc-attestable-mcp-server-docker-secure-hardware": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-itp",
+          "--device=/dev/sgx_provision:/dev/sgx/provision",
+          "--device=/dev/sgx_enclave:/dev/sgx/enclave",
+          "-v",
+          "/var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket",
+          "-p",
+          "8000:8000",
+          "--rm",
+          "gsc-attestable-mcp-server"
+        ],
+        "env": {}
+      },
+      "gsc-attestable-mcp-server-docker-local": {
+        "command": "docker",
+        "args": ["run", "-p", "8000:8000", "--rm", "gsc-attestable-mcp-server"],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,9 @@
     "name": "dagger"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "container-use",
+    "args": ["stdio"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "container-use-stdio": {
-          "command": "container-use",
-          "args": ["stdio"],
-          "env": {}
-        },
-        "cu-stdio": {
-          "command": "cu",
-          "args": ["stdio"],
-          "env": {}
-        }
+      "container-use-stdio": {
+        "command": "container-use",
+        "args": ["stdio"],
+        "env": {}
+      },
+      "cu-stdio": {
+        "command": "cu",
+        "args": ["stdio"],
+        "env": {}
       }
     },
     "oauth": {

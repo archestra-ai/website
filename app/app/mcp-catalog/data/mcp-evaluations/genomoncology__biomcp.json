@@ -8,13 +8,9 @@
     "name": "genomoncology"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/main.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "biomcp-python": {
-          "command": "uv",
-          "args": ["run", "--with", "biomcp-python", "biomcp", "run"],
-          "env": {}
-        }
+      "biomcp-python": {
+        "command": "uv",
+        "args": ["run", "--with", "biomcp-python", "biomcp", "run"],
+        "env": {}
       }
     },
     "oauth": {

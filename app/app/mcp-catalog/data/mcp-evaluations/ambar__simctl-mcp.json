@@ -8,50 +8,54 @@
     "name": "ambar"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "npx",
+    "args": ["-y", "simctl-mcp"],
+    "env": {
+      "PORT": "${user_config.port}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "port": {
+      "type": "number",
+      "title": "HTTP Server Port",
+      "description": "Port for HTTP server mode. Default is 8081 if --http is used without specifying a port.",
+      "required": false,
+      "default": 8081
+    }
+  },
   "readme": "# simctl-mcp\n\nA Model Context Protocol server implementation for iOS Simulator control.\n\n[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/ambar/simctl-mcp)](https://archestra.ai/mcp-catalog/ambar__simctl-mcp)\n[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=simctl-mcp&config=eyJjb21tYW5kIjoibnB4IC15IHNpbWN0bC1tY3AifQ%3D%3D)\n\n## Config\n\n`.cursor/mcp.json` or `.vscode/mcp.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"simctl-mcp\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"simctl-mcp\"]\n    }\n  }\n}\n```\n\n## Prompts\n\nSome examples of prompts:\n\n- What operations does the simulator support?\n- Open shortcuts://\n- What is the bundle ID of the \"Settings\" app?\n- Set clipboard content to: Hello\n- What is the simulator SDK version?\n- Generate an Appium connection string for the \"Settings\" app\n\n## Usage\n\nThe server can be started in two modes:\n\n1. STDIO Mode (default)\n2. HTTP Server Mode\n\n### STDIO Mode\n\nIn STDIO mode, the server communicates through standard input/output streams.\n\n```bash\nnpx simctl-mcp\n```\n\n### HTTP Server Mode\n\nIn HTTP server mode, the server listens for HTTP connections on a specified port.\n\n```bash\n# Start with default port (8081)\nnpx simctl-mcp --http\n\n# Start with custom port using --port flag\nnpx simctl-mcp --http --port 3000\n\n# Start with custom port using environment variable\nPORT=3000 npx simctl-mcp --http\n```\n\n## Tools\n\n## Device Management:\n- Create new simulator devices\n- Delete existing devices\n- Boot devices\n- Shutdown devices\n- List all available devices\n- List available device types\n- List available runtimes\n\n## App Management:\n- Install apps\n- Uninstall apps\n- Launch apps\n- Terminate running apps\n- Get app container path\n- Get app information\n- List installed apps\n\n## App Permissions:\n- Grant permissions to apps\n- Revoke app permissions\n- Reset all app permissions\n\n## System Features:\n- Open URLs in simulator\n- Add media files\n- Get/Set environment variables\n- Get/Set appearance (light/dark mode)\n- Send simulated push notifications\n\n## Certificate & Security:\n- Add root certificates\n- Add regular certificates\n- Reset keychain\n\n## Media & Content:\n- Take screenshots\n- Get/Set pasteboard content (clipboard)\n",
   "category": "Development",
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "simctl-mcp": {
-          "command": "npx",
-          "args": ["-y", "simctl-mcp"],
-          "env": {}
-        },
-        "simctl-mcp-stdio": {
-          "command": "npx",
-          "args": ["simctl-mcp"],
-          "env": {}
-        },
-        "simctl-mcp-http": {
-          "command": "npx",
-          "args": ["simctl-mcp", "--http"],
-          "env": {}
-        },
-        "simctl-mcp-http-port-3000": {
-          "command": "npx",
-          "args": ["simctl-mcp", "--http", "--port", "3000"],
-          "env": {}
-        },
-        "simctl-mcp-http-env-port": {
-          "command": "npx",
-          "args": ["simctl-mcp", "--http"],
-          "env": {
-            "PORT": "3000"
-          }
+      "simctl-mcp": {
+        "command": "npx",
+        "args": ["-y", "simctl-mcp"],
+        "env": {}
+      },
+      "simctl-mcp-stdio": {
+        "command": "npx",
+        "args": ["simctl-mcp"],
+        "env": {}
+      },
+      "simctl-mcp-http": {
+        "command": "npx",
+        "args": ["simctl-mcp", "--http"],
+        "env": {}
+      },
+      "simctl-mcp-http-port-3000": {
+        "command": "npx",
+        "args": ["simctl-mcp", "--http", "--port", "3000"],
+        "env": {}
+      },
+      "simctl-mcp-http-env-port": {
+        "command": "npx",
+        "args": ["simctl-mcp", "--http"],
+        "env": {
+          "PORT": "3000"
         }
       }
     },

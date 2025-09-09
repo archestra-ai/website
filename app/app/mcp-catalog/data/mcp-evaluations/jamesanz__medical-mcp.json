@@ -8,13 +8,9 @@
     "name": "JamesANZ"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npm",
+    "args": ["start"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "medical-mcp-stdio": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        }
+      "medical-mcp-stdio": {
+        "command": "npm",
+        "args": ["start"],
+        "env": {}
       }
     },
     "oauth": {

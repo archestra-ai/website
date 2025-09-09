@@ -8,36 +8,77 @@
     "name": "Xuanwo"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "uvx",
+    "args": ["mcp-server-opendal"],
+    "env": {
+      "OPENDAL_MYS3_TYPE": "${user_config.opendal_mys3_type}",
+      "OPENDAL_MYS3_BUCKET": "${user_config.opendal_mys3_bucket}",
+      "OPENDAL_MYS3_REGION": "${user_config.opendal_mys3_region}",
+      "OPENDAL_MYS3_ENDPOINT": "${user_config.opendal_mys3_endpoint}",
+      "OPENDAL_MYS3_ACCESS_KEY_ID": "${user_config.opendal_mys3_access_key_id}",
+      "OPENDAL_MYS3_SECRET_ACCESS_KEY": "${user_config.opendal_mys3_secret_access_key}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "opendal_mys3_type": {
+      "type": "string",
+      "title": "OpenDAL Service Type (mys3)",
+      "description": "Type of the OpenDAL storage service for the 'mys3' alias (e.g., s3, azblob, gcs).",
+      "required": true,
+      "default": "s3"
+    },
+    "opendal_mys3_bucket": {
+      "type": "string",
+      "title": "OpenDAL S3 Bucket (mys3)",
+      "description": "Name of the S3 bucket for the 'mys3' alias.",
+      "required": true
+    },
+    "opendal_mys3_region": {
+      "type": "string",
+      "title": "OpenDAL S3 Region (mys3)",
+      "description": "AWS region for the S3 bucket for the 'mys3' alias.",
+      "required": true
+    },
+    "opendal_mys3_endpoint": {
+      "type": "string",
+      "title": "OpenDAL S3 Endpoint (mys3)",
+      "description": "Custom endpoint for S3 for the 'mys3' alias (e.g., for MinIO).",
+      "required": false
+    },
+    "opendal_mys3_access_key_id": {
+      "type": "string",
+      "title": "OpenDAL S3 Access Key ID (mys3)",
+      "description": "Access Key ID for S3 authentication for the 'mys3' alias.",
+      "sensitive": true,
+      "required": true
+    },
+    "opendal_mys3_secret_access_key": {
+      "type": "string",
+      "title": "OpenDAL S3 Secret Access Key (mys3)",
+      "description": "Secret Access Key for S3 authentication for the 'mys3' alias.",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# Model Context Protocol Server for Apache OpenDAL™\nA Model Context Protocol (MCP) server implementation that provides access to various storage services via [Apache OpenDAL™](https://opendal.apache.org/).\n\n[![PyPI - Version](https://img.shields.io/pypi/v/mcp-server-opendal)](https://pypi.org/project/mcp-server-opendal/)\n[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mcp-server-opendal)](https://pypi.org/project/mcp-server-opendal/)\n[![Lint and Test](https://github.com/Xuanwo/mcp-server-opendal/actions/workflows/test.yml/badge.svg)](https://github.com/Xuanwo/mcp-server-opendal/actions/workflows/test.yml)\n\n## Features\n\n- Seamless access to multiple storage services including S3, Azure Blob Storage, Google Cloud Storage, and more\n- List files and directories from storage services\n- Read file contents with automatic text/binary detection\n- Environment variable based configuration\n\n## Installation\n\n```shell\npip install mcp-server-opendal\n```\n\n## Usage with Claude Desktop\n\nAdd the following to `claude_desktop_config.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"opendal\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"mcp-server-opendal\"\n      ],\n      \"env\": {\n        \"YOUR_ENV_VAR\": \"YOUR_ENV_VALUE\"\n      }\n    }\n  }\n}\n```\n\nIt requires `uv` to be installed on your machine. Check the [official documentation](https://docs.astral.sh/uv/getting-started/installation/) for installation guides.\n\n## Environment variables\n\nConfigure storage services by setting environment variables. Each service requires a prefix and specific configuration options.\n\nFor example, to configure an S3 service with alias \"mys3\":\n\n```\nOPENDAL_MYS3_TYPE=s3\nOPENDAL_MYS3_BUCKET=mybucket\nOPENDAL_MYS3_REGION=us-east-1\nOPENDAL_MYS3_ENDPOINT=http://localhost:9000\nOPENDAL_MYS3_ACCESS_KEY_ID=myaccesskey\nOPENDAL_MYS3_SECRET_ACCESS_KEY=mysecretkey\n```\n\nThen you can use tool like `read` and `list` with `mys3://path/to/file`.\n\n`mcp-server-opendal` will also load from `.env`.\n\n## Development\n\n```shell\nnpx @modelcontextprotocol/inspector \\\n  uv run mcp-server-opendal\n```\n",
   "category": "Cloud",
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-opendal-with-config": {
-          "command": "uvx",
-          "args": ["mcp-server-opendal"],
-          "env": {
-            "YOUR_ENV_VAR": "YOUR_ENV_VALUE"
-          }
-        },
-        "mcp-server-opendal-uv-run": {
-          "command": "uv",
-          "args": ["run", "mcp-server-opendal"],
-          "env": {}
+      "mcp-server-opendal-with-config": {
+        "command": "uvx",
+        "args": ["mcp-server-opendal"],
+        "env": {
+          "YOUR_ENV_VAR": "YOUR_ENV_VALUE"
         }
+      },
+      "mcp-server-opendal-uv-run": {
+        "command": "uv",
+        "args": ["run", "mcp-server-opendal"],
+        "env": {}
       }
     },
     "oauth": {

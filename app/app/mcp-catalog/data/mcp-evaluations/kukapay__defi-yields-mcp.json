@@ -8,13 +8,9 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["defi-yields-mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "defi-yields-mcp": {
-          "command": "uvx",
-          "args": ["defi-yields-mcp"],
-          "env": {}
-        }
+      "defi-yields-mcp": {
+        "command": "uvx",
+        "args": ["defi-yields-mcp"],
+        "env": {}
       }
     },
     "oauth": {

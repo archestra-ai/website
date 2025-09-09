@@ -8,13 +8,9 @@
     "name": "jae-jae"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "g-search-mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "g-search": {
-          "command": "npx",
-          "args": ["-y", "g-search-mcp"],
-          "env": {}
-        },
-        "g-search-debug": {
-          "command": "npx",
-          "args": ["-y", "g-search-mcp", "--debug"],
-          "env": {}
-        }
+      "g-search": {
+        "command": "npx",
+        "args": ["-y", "g-search-mcp"],
+        "env": {}
+      },
+      "g-search-debug": {
+        "command": "npx",
+        "args": ["-y", "g-search-mcp", "--debug"],
+        "env": {}
       }
     },
     "oauth": {

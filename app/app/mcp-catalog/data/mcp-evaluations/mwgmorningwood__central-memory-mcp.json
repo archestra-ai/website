@@ -8,13 +8,9 @@
     "name": "MWGMorningwood"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "func",
+    "args": ["start"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "modelcontextprotocol-server-memory": {
-          "command": "func",
-          "args": ["start"],
-          "env": {}
-        }
+      "modelcontextprotocol-server-memory": {
+        "command": "func",
+        "args": ["start"],
+        "env": {}
       }
     },
     "oauth": {

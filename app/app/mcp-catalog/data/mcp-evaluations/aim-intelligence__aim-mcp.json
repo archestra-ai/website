@@ -8,13 +8,9 @@
     "name": "AIM-Intelligence"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "aim-guard-mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "aim-guard-mcp": {
-          "command": "npx",
-          "args": ["aim-guard-mcp"],
-          "env": {}
-        },
-        "aim-guard-mcp-stdio": {
-          "command": "npx",
-          "args": ["aim-guard-mcp"],
-          "env": {}
-        }
+      "aim-guard-mcp": {
+        "command": "npx",
+        "args": ["aim-guard-mcp"],
+        "env": {}
+      },
+      "aim-guard-mcp-stdio": {
+        "command": "npx",
+        "args": ["aim-guard-mcp"],
+        "env": {}
       }
     },
     "oauth": {

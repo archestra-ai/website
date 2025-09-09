@@ -8,13 +8,9 @@
     "name": "JamesANZ"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": ["${__dirname}/server/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "bitcoin-mcp-stdio": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        }
+      "bitcoin-mcp-stdio": {
+        "command": "npm",
+        "args": ["start"],
+        "env": {}
       }
     },
     "oauth": {

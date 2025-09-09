@@ -8,13 +8,9 @@
     "name": "ferdousbhai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["investor-agent"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "investor-agent": {
-          "command": "uvx",
-          "args": ["investor-agent"],
-          "env": {}
-        },
-        "investor-agent-ta": {
-          "command": "uvx",
-          "args": ["investor-agent[ta]"],
-          "env": {}
-        }
+      "investor-agent": {
+        "command": "uvx",
+        "args": ["investor-agent"],
+        "env": {}
+      },
+      "investor-agent-ta": {
+        "command": "uvx",
+        "args": ["investor-agent[ta]"],
+        "env": {}
       }
     },
     "oauth": {

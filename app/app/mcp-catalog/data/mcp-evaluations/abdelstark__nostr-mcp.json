@@ -8,34 +8,78 @@
     "name": "AbdelStark"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "node",
+    "args": ["${__dirname}/src/index.js"],
+    "env": {
+      "LOG_LEVEL": "${user_config.log_level}",
+      "NODE_ENV": "${user_config.node_env}",
+      "NOSTR_RELAYS": "${user_config.nostr_relays}",
+      "NOSTR_NSEC_KEY": "${user_config.nostr_nsec_key}",
+      "SERVER_MODE": "${user_config.server_mode}",
+      "PORT": "${user_config.port}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "log_level": {
+      "type": "string",
+      "title": "Log Level",
+      "description": "Log level (debug, info, warn, error)",
+      "required": false,
+      "default": "debug"
+    },
+    "node_env": {
+      "type": "string",
+      "title": "Node Environment",
+      "description": "Node environment (development, production)",
+      "required": false,
+      "default": "development"
+    },
+    "nostr_relays": {
+      "type": "string",
+      "title": "Nostr Relays",
+      "description": "Comma-separated list of Nostr relays to connect to (e.g., wss://relay.damus.io,wss://relay.primal.net,wss://nos.lol)",
+      "required": false,
+      "default": "wss://relay.damus.io,wss://relay.primal.net,wss://nos.lol"
+    },
+    "nostr_nsec_key": {
+      "type": "string",
+      "title": "Nostr Private Key",
+      "description": "Your Nostr private key (starts with nsec)",
+      "sensitive": true,
+      "required": true
+    },
+    "server_mode": {
+      "type": "string",
+      "title": "Server Mode",
+      "description": "Server mode (stdio or sse)",
+      "required": false,
+      "default": "sse"
+    },
+    "port": {
+      "type": "number",
+      "title": "Port",
+      "description": "Port for SSE mode",
+      "required": false,
+      "default": 9000
+    }
+  },
   "readme": "# 🌐 Nostr MCP Server\n\nA Model Context Protocol (MCP) server that enables AI models to interact with Nostr, allowing them to post notes and interact with the freedom of speech protocol.\n\nCensorship resistance matters, even for LLMs.\n\n[![smithery badge](https://smithery.ai/badge/@AbdelStark/nostr-mcp)](https://smithery.ai/server/@AbdelStark/nostr-mcp)\n[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)\n[![MCP](https://img.shields.io/badge/MCP-Protocol-blue?style=flat-square)](https://github.com/modelcontextprotocol/typescript-sdk)\n[![Nostr](https://img.shields.io/badge/Nostr-Protocol-purple?style=flat-square)](https://nostr.com/)\n\nBTW, you should [join Nostr now!](https://start.njump.me/?s=npub1hr6v96g0phtxwys4x0tm3khawuuykz6s28uzwtj5j0zc7lunu99snw2e29)\n\n## 🚀 Features\n\n- 📝 Post notes to Nostr network\n- 🔌 Connect to multiple relays\n- 🤖 MCP-compliant API for AI integration\n- 💸 Send Lightning zaps to Nostr users (WIP)\n- 📡 Server-Sent Events (SSE) support for real-time communication\n\n## 👷‍♂️ TODOs\n\n- [ ] Add support for multiple simultaneous connections\n- [ ] Implement stdin transport mode (configurable via environment variable)\n\n## 📋 Prerequisites\n\n- Node.js 18+\n\n## 🛠️ Installation\n\n### Installing via Smithery\n\nTo install Nostr MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@AbdelStark/nostr-mcp):\n\n```bash\nnpx -y @smithery/cli install @AbdelStark/nostr-mcp --client claude\n```\n\n### Manual Installation\n1. Clone the repository:\n\n```bash\ngit clone https://github.com/AbdelStark/nostr-mcp\ncd nostr-mcp\n```\n\n1. Install dependencies:\n\n```bash\nnpm install\n```\n\n1. Create a `.env` file:\n\n> 💡 You can copy the `.env.example` file and modify it as needed.\n\n```env\n# Log level (debug, info, warn, error)\nLOG_LEVEL=debug\n# Node environment (development, production)\nNODE_ENV=development\n# List of Nostr relays to connect to\nNOSTR_RELAYS=wss://relay.damus.io,wss://relay.primal.net,wss://nos.lol\n# Your Nostr private key (starts with nsec)\nNOSTR_NSEC_KEY=your_nsec_key_here\n# Server mode (stdio or sse)\nSERVER_MODE=sse\n# Port for SSE mode\nPORT=9000\n```\n\n## 🚦 Usage\n\n### Starting the Server\n\n```bash\n# Development mode with hot reload\nnpm run dev\n\n# Production mode\nnpm start\n```\n\n### Available Tools\n\n#### `post_note`\n\nPosts a new note to the Nostr network.\n\nExample input:\n\n```json\n{\n  \"content\": \"Hello from Nostr! 👋\"\n}\n```\n\n#### `send_zap`\n\nSends a Lightning zap to a Nostr user.\n\nExample input:\n\n```json\n{\n  \"nip05Address\": \"user@domain.com\",\n  \"amount\": 1000\n}\n```\n\n## 🔧 Development\n\n### Project Structure\n\n```text\nnostr-mcp/\n├── src/\n│   ├── index.ts        # Main server entry point\n│   ├── nostr-client.ts # Nostr client implementation\n│   └── types.ts        # TypeScript type definitions\n├── .env               # Environment configuration\n└── tsconfig.json     # TypeScript configuration\n```\n\n### Running Tests\n\n```bash\nnpm test\n```\n\n## 🤝 Contributing\n\n1. Fork the repository\n2. Create your feature branch (`git checkout -b feature/amazing-feature`)\n3. Commit your changes (`git commit -m 'Add some amazing feature'`)\n4. Push to the branch (`git push origin feature/amazing-feature`)\n5. Open a Pull Request\n\n## 📜 License\n\nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.\n\n## 🔗 Resources\n\n- [Join Nostr](https://start.njump.me/?s=npub1hr6v96g0phtxwys4x0tm3khawuuykz6s28uzwtj5j0zc7lunu99snw2e29)\n- [Nostr Manifesto](https://fiatjaf.com/nostr.html)\n- [Nostr Specifications](https://github.com/nostr-protocol/nips)\n- [Model Context Protocol](https://modelcontextprotocol.io/introduction)\n- [Visual testing tool for MCP servers](https://github.com/modelcontextprotocol/inspector)\n- [Awesome MCP Servers](https://github.com/punkpeye/awesome-mcp-servers)\n- [Awesome MCP Clients](https://github.com/punkpeye/awesome-mcp-clients)\n- [MCP TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk)\n- [Nostr Development Kit (NDK)](https://github.com/nostr-dev-kit/ndk)\n\n## 📬 Contact\n\nFeel free to follow me if you'd like, using my public key:\n\n```text\nnpub1hr6v96g0phtxwys4x0tm3khawuuykz6s28uzwtj5j0zc7lunu99snw2e29\n```\n\nOr just **scan this QR code** to find me:\n\n![Nostr Public Key QR Code](https://hackmd.io/_uploads/SkAvwlYYC.png)\n\n---\n\n<p align=\"center\">\n  Made with ❤️ for the Nostr community\n</p>\n",
   "category": "AI Tools",
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "nostr-mcp-dev": {
-          "command": "npm",
-          "args": ["run", "dev"],
-          "env": {}
-        },
-        "nostr-mcp-prod": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        }
+      "nostr-mcp-dev": {
+        "command": "npm",
+        "args": ["run", "dev"],
+        "env": {}
+      },
+      "nostr-mcp-prod": {
+        "command": "npm",
+        "args": ["start"],
+        "env": {}
       }
     },
     "oauth": {

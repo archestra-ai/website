@@ -18,11 +18,7 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
         description: 'A test MCP server',
         long_description: 'A longer description',
         author: { name: 'Test Author' },
-        server: {
-          type: 'node',
-          entry_point: 'index.js',
-          mcp_config: { command: 'node', args: ['index.js'] },
-        },
+        server: { command: 'node', args: ['index.js'] },
         tools: [],
         prompts: [],
         readme: 'Test readme',
@@ -30,9 +26,7 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
         programming_language: 'TypeScript',
         quality_score: 95,
         archestra_config: {
-          client_config_permutations: {
-            mcpServers: {},
-          },
+          client_config_permutations: {},
           oauth: { provider: null, required: false },
         },
         github_info: {
@@ -74,11 +68,7 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
         description: 'A test MCP server with path',
         long_description: 'A longer description',
         author: { name: 'Test Author 2' },
-        server: {
-          type: 'node',
-          entry_point: 'index.js',
-          mcp_config: { command: 'node', args: ['index.js'] },
-        },
+        server: { command: 'node', args: ['index.js'] },
         tools: [],
         prompts: [],
         readme: 'Test readme',
@@ -86,9 +76,7 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
         programming_language: 'JavaScript',
         quality_score: 50,
         archestra_config: {
-          client_config_permutations: {
-            mcpServers: {},
-          },
+          client_config_permutations: {},
           oauth: { provider: null, required: false },
         },
         github_info: {
@@ -130,11 +118,7 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
         description: 'A pending MCP server',
         long_description: 'A longer description',
         author: { name: 'Pending Author' },
-        server: {
-          type: 'node',
-          entry_point: 'index.js',
-          mcp_config: { command: 'node', args: ['index.js'] },
-        },
+        server: { command: 'node', args: ['index.js'] },
         tools: [],
         prompts: [],
         readme: 'Test readme',
@@ -142,9 +126,7 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
         programming_language: 'TypeScript',
         quality_score: null,
         archestra_config: {
-          client_config_permutations: {
-            mcpServers: {},
-          },
+          client_config_permutations: {},
           oauth: { provider: null, required: false },
         },
         github_info: {

@@ -8,13 +8,9 @@
     "name": "BitteProtocol"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "bun",
+    "args": ["${__dirname}/packages/bitte-ai/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,22 +21,20 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "bitte-ai": {
-          "command": "bun",
-          "args": ["run", "dev:bitte-ai"],
-          "env": {}
-        },
-        "bitte-ai-start": {
-          "command": "bun",
-          "args": ["run", "start"],
-          "env": {}
-        },
-        "bitte-ai-dev": {
-          "command": "bun",
-          "args": ["run", "dev"],
-          "env": {}
-        }
+      "bitte-ai": {
+        "command": "bun",
+        "args": ["run", "dev:bitte-ai"],
+        "env": {}
+      },
+      "bitte-ai-start": {
+        "command": "bun",
+        "args": ["run", "start"],
+        "env": {}
+      },
+      "bitte-ai-dev": {
+        "command": "bun",
+        "args": ["run", "dev"],
+        "env": {}
       }
     },
     "oauth": {

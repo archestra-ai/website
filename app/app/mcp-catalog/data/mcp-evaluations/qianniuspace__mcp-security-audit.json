@@ -8,13 +8,9 @@
     "name": "qianniuspace"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "mcp-security-audit"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-security-audit": {
-          "command": "npx",
-          "args": ["-y", "mcp-security-audit"],
-          "env": {}
-        },
-        "mcp-security-audit-configured": {
-          "command": "npx",
-          "args": ["-y", "/path/to/mcp-security-audit/build/index.js"],
-          "env": {}
-        }
+      "mcp-security-audit": {
+        "command": "npx",
+        "args": ["-y", "mcp-security-audit"],
+        "env": {}
+      },
+      "mcp-security-audit-configured": {
+        "command": "npx",
+        "args": ["-y", "/path/to/mcp-security-audit/build/index.js"],
+        "env": {}
       }
     },
     "oauth": {

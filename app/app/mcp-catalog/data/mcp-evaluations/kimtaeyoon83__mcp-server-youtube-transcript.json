@@ -8,13 +8,9 @@
     "name": "kimtaeyoon83"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@mcp/youtube-transcriber"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kimtaeyoon83-mcp-server-youtube-transcript": {
-          "command": "npx",
-          "args": ["-y", "@kimtaeyoon83/mcp-server-youtube-transcript"],
-          "env": {}
-        }
+      "kimtaeyoon83-mcp-server-youtube-transcript": {
+        "command": "npx",
+        "args": ["-y", "@kimtaeyoon83/mcp-server-youtube-transcript"],
+        "env": {}
       }
     },
     "oauth": {

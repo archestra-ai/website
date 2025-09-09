@@ -8,13 +8,9 @@
     "name": "mcpdotdirect"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@mcpdotdirect/starknet-mcp-server"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,57 +21,55 @@
   "quality_score": 67,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcpdotdirect-starknet-mcp-server-npx-stdio": {
-          "command": "npx",
-          "args": ["@mcpdotdirect/starknet-mcp-server"],
-          "env": {}
-        },
-        "mcpdotdirect-starknet-mcp-server-npx-http": {
-          "command": "npx",
-          "args": ["@mcpdotdirect/starknet-mcp-server", "http"],
-          "env": {}
-        },
-        "mcpdotdirect-starknet-mcp-server-global-stdio": {
-          "command": "starknet-mcp-server",
-          "args": [],
-          "env": {}
-        },
-        "mcpdotdirect-starknet-mcp-server-global-http": {
-          "command": "starknet-mcp-server",
-          "args": ["http"],
-          "env": {}
-        },
-        "mcpdotdirect-starknet-mcp-server-local-script-stdio": {
-          "command": "npm",
-          "args": ["run", "starknet-mcp"],
-          "env": {}
-        },
-        "mcpdotdirect-starknet-mcp-server-local-script-http": {
-          "command": "npm",
-          "args": ["run", "starknet-mcp-http"],
-          "env": {}
-        },
-        "mcpdotdirect-starknet-mcp-server-source-start-stdio": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        },
-        "mcpdotdirect-starknet-mcp-server-source-start-http": {
-          "command": "npm",
-          "args": ["run", "start:http"],
-          "env": {}
-        },
-        "mcpdotdirect-starknet-mcp-server-source-dev-stdio": {
-          "command": "npm",
-          "args": ["run", "dev"],
-          "env": {}
-        },
-        "mcpdotdirect-starknet-mcp-server-source-dev-http": {
-          "command": "npm",
-          "args": ["run", "dev:http"],
-          "env": {}
-        }
+      "mcpdotdirect-starknet-mcp-server-npx-stdio": {
+        "command": "npx",
+        "args": ["@mcpdotdirect/starknet-mcp-server"],
+        "env": {}
+      },
+      "mcpdotdirect-starknet-mcp-server-npx-http": {
+        "command": "npx",
+        "args": ["@mcpdotdirect/starknet-mcp-server", "http"],
+        "env": {}
+      },
+      "mcpdotdirect-starknet-mcp-server-global-stdio": {
+        "command": "starknet-mcp-server",
+        "args": [],
+        "env": {}
+      },
+      "mcpdotdirect-starknet-mcp-server-global-http": {
+        "command": "starknet-mcp-server",
+        "args": ["http"],
+        "env": {}
+      },
+      "mcpdotdirect-starknet-mcp-server-local-script-stdio": {
+        "command": "npm",
+        "args": ["run", "starknet-mcp"],
+        "env": {}
+      },
+      "mcpdotdirect-starknet-mcp-server-local-script-http": {
+        "command": "npm",
+        "args": ["run", "starknet-mcp-http"],
+        "env": {}
+      },
+      "mcpdotdirect-starknet-mcp-server-source-start-stdio": {
+        "command": "npm",
+        "args": ["start"],
+        "env": {}
+      },
+      "mcpdotdirect-starknet-mcp-server-source-start-http": {
+        "command": "npm",
+        "args": ["run", "start:http"],
+        "env": {}
+      },
+      "mcpdotdirect-starknet-mcp-server-source-dev-stdio": {
+        "command": "npm",
+        "args": ["run", "dev"],
+        "env": {}
+      },
+      "mcpdotdirect-starknet-mcp-server-source-dev-http": {
+        "command": "npm",
+        "args": ["run", "dev:http"],
+        "env": {}
       }
     },
     "oauth": {

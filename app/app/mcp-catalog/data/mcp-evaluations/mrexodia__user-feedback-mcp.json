@@ -8,13 +8,9 @@
     "name": "mrexodia"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uv",
+    "args": ["--directory", "${__dirname}", "run", "server.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,22 +21,20 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "github.com/mrexodia/user-feedback-mcp": {
-          "command": "uv",
-          "args": ["--directory", "c:\\MCP\\user-feedback-mcp", "run", "server.py"],
-          "env": {}
-        },
-        "github.com/mrexodia/user-feedback-mcp-npm-dev": {
-          "command": "npm",
-          "args": ["run", "dev"],
-          "env": {}
-        },
-        "github.com/mrexodia/user-feedback-mcp-fastmcp-dev": {
-          "command": "uv",
-          "args": ["run", "fastmcp", "dev", "server.py"],
-          "env": {}
-        }
+      "github.com/mrexodia/user-feedback-mcp": {
+        "command": "uv",
+        "args": ["--directory", "c:\\MCP\\user-feedback-mcp", "run", "server.py"],
+        "env": {}
+      },
+      "github.com/mrexodia/user-feedback-mcp-npm-dev": {
+        "command": "npm",
+        "args": ["run", "dev"],
+        "env": {}
+      },
+      "github.com/mrexodia/user-feedback-mcp-fastmcp-dev": {
+        "command": "uv",
+        "args": ["run", "fastmcp", "dev", "server.py"],
+        "env": {}
       }
     },
     "oauth": {

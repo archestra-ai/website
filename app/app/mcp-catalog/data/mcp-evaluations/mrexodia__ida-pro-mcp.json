@@ -8,13 +8,9 @@
     "name": "mrexodia"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 73,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ida-pro-mcp-sse-transport": {
-          "command": "uv",
-          "args": ["run", "ida-pro-mcp", "--transport", "http://127.0.0.1:8744/sse"],
-          "env": {}
-        },
-        "idalib-mcp-headless": {
-          "command": "uv",
-          "args": ["run", "idalib-mcp", "--host", "127.0.0.1", "--port", "8745", "path/to/executable"],
-          "env": {}
-        }
+      "ida-pro-mcp-sse-transport": {
+        "command": "uv",
+        "args": ["run", "ida-pro-mcp", "--transport", "http://127.0.0.1:8744/sse"],
+        "env": {}
+      },
+      "idalib-mcp-headless": {
+        "command": "uv",
+        "args": ["run", "idalib-mcp", "--host", "127.0.0.1", "--port", "8745", "path/to/executable"],
+        "env": {}
       }
     },
     "oauth": {

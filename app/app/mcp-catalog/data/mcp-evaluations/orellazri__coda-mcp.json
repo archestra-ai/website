@@ -8,44 +8,48 @@
     "name": "orellazri"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "npx",
+    "args": ["-y", "coda-mcp@latest"],
+    "env": {
+      "API_KEY": "${user_config.api_key}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "Coda API Key",
+      "description": "Your Coda API key. You can generate one from your Coda account settings.",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# Coda MCP Server\n\nThis project implements a Model Context Protocol (MCP) server that acts as a bridge to interact with the [Coda](https://coda.io/) API. It allows an MCP client (like an AI assistant) to perform actions on Coda pages, such as listing, creating, reading, updating, duplicating, and renaming.\n\n## Features\n\nThe server exposes the following tools to the MCP client:\n\n- **`coda_list_documents`**: Lists all documents available to the user.\n- **`coda_list_pages`**: Lists all pages within the configured Coda document with pagination support.\n- **`coda_create_page`**: Creates a new page in the document, optionally under a specified parent page (creating a subpage) and populating it with initial markdown content.\n- **`coda_get_page_content`**: Retrieves the content of a specified page (by ID or name) as markdown.\n- **`coda_replace_page_content`**: Replaces the content of a specified page with new markdown content.\n- **`coda_append_page_content`**: Appends new markdown content to the end of a specified page.\n- **`coda_duplicate_page`**: Creates a copy of an existing page with a new name.\n- **`coda_rename_page`**: Renames an existing page.\n- **`coda_peek_page`**: Peek into the beginning of a page and return a limited number of lines.\n- **`coda_resolve_link`**: Resolve metadata given a browser link to a Coda object.\n\n## Usage\n\nAdd the MCP server to Cursor/Claude Desktop/etc. like so:\n\n```json\n{\n  \"mcpServers\": {\n    \"coda\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"coda-mcp@latest\"],\n      \"env\": {\n        \"API_KEY\": \"...\"\n      }\n    }\n  }\n}\n```\n\nRequired environment variables:\n\n- `API_KEY`: Your Coda API key. You can generate one from your Coda account settings.\n\nThis MCP server is also available with Docker, like so:\n\n```json\n{\n  \"mcpServers\": {\n    \"coda\": {\n      \"command\": \"docker\",\n      \"args\": [\"run\", \"-i\", \"--rm\", \"-e\", \"API_KEY\", \"reaperberri/coda-mcp:latest\"],\n      \"env\": {\n        \"API_KEY\": \"...\"\n      }\n    }\n  }\n}\n```\n\n## Local Setup\n\n1.  **Prerequisites:**\n\n    - Node.js\n    - pnpm\n\n2.  **Clone the repository:**\n\n    ```bash\n    git clone <repository-url>\n    cd coda-mcp\n    ```\n\n3.  **Install dependencies:**\n\n    ```bash\n    pnpm install\n    ```\n\n4.  **Build the project:**\n    ```bash\n    pnpm build\n    ```\n    This compiles the TypeScript code to JavaScript in the `dist/` directory.\n\n## Running the Server\n\nThe MCP server communicates over standard input/output (stdio). To run it, set the environment variables and run the compiled JavaScript file - `dist/index.js`.\n",
   "category": "Knowledge",
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "coda-mcp": {
-          "command": "npx",
-          "args": ["-y", "coda-mcp@latest"],
-          "env": {
-            "API_KEY": "..."
-          }
-        },
-        "reaperberri-coda-mcp-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "API_KEY", "reaperberri/coda-mcp:latest"],
-          "env": {
-            "API_KEY": "..."
-          }
-        },
-        "coda-mcp-stdio": {
-          "command": "node",
-          "args": ["dist/index.js"],
-          "env": {
-            "API_KEY": "..."
-          }
+      "coda-mcp": {
+        "command": "npx",
+        "args": ["-y", "coda-mcp@latest"],
+        "env": {
+          "API_KEY": "..."
+        }
+      },
+      "reaperberri-coda-mcp-docker": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "-e", "API_KEY", "reaperberri/coda-mcp:latest"],
+        "env": {
+          "API_KEY": "..."
+        }
+      },
+      "coda-mcp-stdio": {
+        "command": "node",
+        "args": ["dist/index.js"],
+        "env": {
+          "API_KEY": "..."
         }
       }
     },

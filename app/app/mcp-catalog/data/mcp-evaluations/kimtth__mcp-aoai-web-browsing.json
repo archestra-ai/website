@@ -8,13 +8,9 @@
     "name": "kimtth"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/server/main.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-web-auto": {
-          "command": "python",
-          "args": ["chatgui.py"],
-          "env": {}
-        }
+      "mcp-web-auto": {
+        "command": "python",
+        "args": ["chatgui.py"],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,9 @@
     "name": "AbdelStark"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "bitcoin-mcp@latest"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 59,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "bitcoin-mcp": {
-          "command": "npx",
-          "args": ["-y", "bitcoin-mcp@latest"],
-          "env": {}
-        },
-        "bitcoin-mcp-stdio": {
-          "command": "npx",
-          "args": ["-y", "bitcoin-mcp@latest"],
-          "env": {}
-        }
+      "bitcoin-mcp": {
+        "command": "npx",
+        "args": ["-y", "bitcoin-mcp@latest"],
+        "env": {}
+      },
+      "bitcoin-mcp-stdio": {
+        "command": "npx",
+        "args": ["-y", "bitcoin-mcp@latest"],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,9 @@
     "name": "wise-vision"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "docker",
+    "args": ["run", "-i", "--rm", "wisevision/mcp_server_ros_2"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "wisevision-mcp_server_ros_2-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "wisevision/mcp_server_ros_2"],
-          "env": {}
-        }
+      "wisevision-mcp_server_ros_2-docker": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "wisevision/mcp_server_ros_2"],
+        "env": {}
       }
     },
     "oauth": {

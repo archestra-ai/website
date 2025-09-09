@@ -8,13 +8,9 @@
     "name": "TheLunarCompany"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "docker",
+    "args": ["run", "lunar/mcpx"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],

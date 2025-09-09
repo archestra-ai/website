@@ -8,30 +8,34 @@
     "name": "Zolo-Ryan"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "node",
+    "args": ["${__dirname}/build/index.js"],
+    "env": {
+      "MARKETAUX_API_KEY": "${user_config.marketaux_api_key}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "marketaux_api_key": {
+      "type": "string",
+      "title": "Marketaux API Key",
+      "description": "Your API token obtained from the Marketaux dashboard.",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# Marketaux MCP Server\nA MCP Server Implementation that integrates the [Marketaux api](https://www.marketaux.com/documentation) providing search based on entity, countries, industries, symbols etc.\n\n### Tools\n\n- market_aux_news_search\n    - Execute the search using market aux search all api\n    - inputs:\n      - symbols\n      - entity_types\n      - industries\n      - countries\n      - language\n      - published_before\n      - published_after\n      - published_on\n\n\n### Configuration\n#### Getting an API key\n\n1. Sign up for a [Free account on Marketaux](https://www.marketaux.com/register)\n2. Verify your email account and go to dashboard\n3. Get your api token from there\n\n#### Setting up MCP server\n\nAdd this in your `claude_desktop_config.json` file\n\n```json\n{\n    \"mcpServers\": {\n        \"newsmcp\": {\n            \"command\": \"node\",\n            \"args\": [\n                \"C:\\\\Path\\\\To\\\\Your\\\\project\\\\NewsMCP\\\\build\\\\index.js\"\n            ],\n            \"env\": {\n                \"MARKETAUX_API_KEY\": \"Your-API-TOKEN\"\n            }\n        }\n    }\n}\n```\n\n### Contributing\n\nContributions are welcomed! Please free to submit a PR.\n\n> Only the Free Tier endpoint is implemented.\n\n> Added to [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers/pull/925)\n### Disclaimer\n\nThis is not officially associated with Marketaux api. It is a third party implementation of the api with a MCP Server.\n",
   "category": "Finance",
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "newsmcp": {
-          "command": "node",
-          "args": ["C:\\Path\\To\\Your\\project\\NewsMCP\\build\\index.js"],
-          "env": {
-            "MARKETAUX_API_KEY": "Your-API-TOKEN"
-          }
+      "newsmcp": {
+        "command": "node",
+        "args": ["C:\\Path\\To\\Your\\project\\NewsMCP\\build\\index.js"],
+        "env": {
+          "MARKETAUX_API_KEY": "Your-API-TOKEN"
         }
       }
     },

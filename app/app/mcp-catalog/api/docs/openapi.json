@@ -79,61 +79,23 @@
           "server": {
             "type": "object",
             "properties": {
-              "type": {
-                "type": "string",
-                "enum": ["python", "node", "binary"]
-              },
-              "entry_point": {
+              "command": {
                 "type": "string"
               },
-              "mcp_config": {
+              "args": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "env": {
                 "type": "object",
-                "properties": {
-                  "command": {
-                    "type": "string"
-                  },
-                  "args": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "env": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
-                  },
-                  "platform_overrides": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object",
-                      "properties": {
-                        "command": {
-                          "type": "string"
-                        },
-                        "args": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "env": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  }
-                },
-                "required": ["command"],
-                "additionalProperties": false
+                "additionalProperties": {
+                  "type": "string"
+                }
               }
             },
-            "required": ["type", "entry_point", "mcp_config"],
+            "required": ["command"],
             "additionalProperties": false
           },
           "tools": {
@@ -339,34 +301,28 @@
               "client_config_permutations": {
                 "type": "object",
                 "nullable": true,
-                "properties": {
-                  "mcpServers": {
-                    "type": "object",
-                    "additionalProperties": {
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "command": {
+                      "type": "string"
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "env": {
                       "type": "object",
-                      "properties": {
-                        "command": {
-                          "type": "string"
-                        },
-                        "args": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "env": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "required": ["command"],
-                      "additionalProperties": false
+                      "additionalProperties": {
+                        "type": "string"
+                      }
                     }
-                  }
-                },
-                "required": ["mcpServers"]
+                  },
+                  "required": ["command"],
+                  "additionalProperties": false
+                }
               },
               "oauth": {
                 "type": "object",
@@ -525,123 +481,6 @@
           "raw_dependencies": {
             "type": "string",
             "nullable": true
-          },
-          "server_overridden": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": ["python", "node", "binary"]
-              },
-              "entry_point": {
-                "type": "string"
-              },
-              "mcp_config": {
-                "type": "object",
-                "properties": {
-                  "command": {
-                    "type": "string"
-                  },
-                  "args": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "env": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
-                  },
-                  "platform_overrides": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object",
-                      "properties": {
-                        "command": {
-                          "type": "string"
-                        },
-                        "args": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "env": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  }
-                },
-                "required": ["command"],
-                "additionalProperties": false
-              }
-            },
-            "required": ["type", "entry_point", "mcp_config"],
-            "additionalProperties": false
-          },
-          "server_docker": {
-            "nullable": true
-          },
-          "user_config_overridden": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "enum": ["string", "number", "boolean", "directory", "file"]
-                },
-                "title": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "required": {
-                  "type": "boolean"
-                },
-                "default": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "boolean"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  ]
-                },
-                "multiple": {
-                  "type": "boolean"
-                },
-                "sensitive": {
-                  "type": "boolean"
-                },
-                "min": {
-                  "type": "number"
-                },
-                "max": {
-                  "type": "number"
-                }
-              },
-              "required": ["type", "title", "description"],
-              "additionalProperties": false
-            }
           }
         },
         "required": [
@@ -728,61 +567,23 @@
           "server": {
             "type": "object",
             "properties": {
-              "type": {
-                "type": "string",
-                "enum": ["python", "node", "binary"]
-              },
-              "entry_point": {
+              "command": {
                 "type": "string"
               },
-              "mcp_config": {
+              "args": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "env": {
                 "type": "object",
-                "properties": {
-                  "command": {
-                    "type": "string"
-                  },
-                  "args": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "env": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
-                  },
-                  "platform_overrides": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object",
-                      "properties": {
-                        "command": {
-                          "type": "string"
-                        },
-                        "args": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "env": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  }
-                },
-                "required": ["command"],
-                "additionalProperties": false
+                "additionalProperties": {
+                  "type": "string"
+                }
               }
             },
-            "required": ["type", "entry_point", "mcp_config"],
+            "required": ["command"],
             "additionalProperties": false
           },
           "tools": {
@@ -988,34 +789,28 @@
               "client_config_permutations": {
                 "type": "object",
                 "nullable": true,
-                "properties": {
-                  "mcpServers": {
-                    "type": "object",
-                    "additionalProperties": {
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "command": {
+                      "type": "string"
+                    },
+                    "args": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "env": {
                       "type": "object",
-                      "properties": {
-                        "command": {
-                          "type": "string"
-                        },
-                        "args": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "env": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "required": ["command"],
-                      "additionalProperties": false
+                      "additionalProperties": {
+                        "type": "string"
+                      }
                     }
-                  }
-                },
-                "required": ["mcpServers"]
+                  },
+                  "required": ["command"],
+                  "additionalProperties": false
+                }
               },
               "oauth": {
                 "type": "object",
@@ -1174,123 +969,6 @@
           "raw_dependencies": {
             "type": "string",
             "nullable": true
-          },
-          "server_overridden": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": ["python", "node", "binary"]
-              },
-              "entry_point": {
-                "type": "string"
-              },
-              "mcp_config": {
-                "type": "object",
-                "properties": {
-                  "command": {
-                    "type": "string"
-                  },
-                  "args": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "env": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
-                  },
-                  "platform_overrides": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object",
-                      "properties": {
-                        "command": {
-                          "type": "string"
-                        },
-                        "args": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "env": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  }
-                },
-                "required": ["command"],
-                "additionalProperties": false
-              }
-            },
-            "required": ["type", "entry_point", "mcp_config"],
-            "additionalProperties": false
-          },
-          "server_docker": {
-            "nullable": true
-          },
-          "user_config_overridden": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "enum": ["string", "number", "boolean", "directory", "file"]
-                },
-                "title": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "required": {
-                  "type": "boolean"
-                },
-                "default": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "boolean"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  ]
-                },
-                "multiple": {
-                  "type": "boolean"
-                },
-                "sensitive": {
-                  "type": "boolean"
-                },
-                "min": {
-                  "type": "number"
-                },
-                "max": {
-                  "type": "number"
-                }
-              },
-              "required": ["type", "title", "description"],
-              "additionalProperties": false
-            }
           },
           "score_breakdown": {
             "type": "object",

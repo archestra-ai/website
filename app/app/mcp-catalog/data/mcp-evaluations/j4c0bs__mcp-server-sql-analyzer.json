@@ -8,13 +8,9 @@
     "name": "j4c0bs"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["--from", "git+https://github.com/j4c0bs/mcp-server-sql-analyzer.git", "mcp-server-sql-analyzer"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,29 +21,27 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-sql-analyzer": {
-          "command": "uvx",
-          "args": ["--from", "git+https://github.com/j4c0bs/mcp-server-sql-analyzer.git", "mcp-server-sql-analyzer"],
-          "env": {}
-        },
-        "mcp-server-sql-analyzer-local": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/mcp-server-sql-analyzer", "run", "mcp-server-sql-analyzer"],
-          "env": {}
-        },
-        "mcp-server-sql-analyzer-development": {
-          "command": "npx",
-          "args": [
-            "@modelcontextprotocol/inspector",
-            "uv",
-            "--directory",
-            "/path/to/mcp-server-sql-analyzer",
-            "run",
-            "mcp-server-sql-analyzer"
-          ],
-          "env": {}
-        }
+      "mcp-server-sql-analyzer": {
+        "command": "uvx",
+        "args": ["--from", "git+https://github.com/j4c0bs/mcp-server-sql-analyzer.git", "mcp-server-sql-analyzer"],
+        "env": {}
+      },
+      "mcp-server-sql-analyzer-local": {
+        "command": "uv",
+        "args": ["--directory", "/path/to/mcp-server-sql-analyzer", "run", "mcp-server-sql-analyzer"],
+        "env": {}
+      },
+      "mcp-server-sql-analyzer-development": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "uv",
+          "--directory",
+          "/path/to/mcp-server-sql-analyzer",
+          "run",
+          "mcp-server-sql-analyzer"
+        ],
+        "env": {}
       }
     },
     "oauth": {

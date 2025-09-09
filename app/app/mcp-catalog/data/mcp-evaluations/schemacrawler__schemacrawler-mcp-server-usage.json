@@ -8,13 +8,9 @@
     "name": "schemacrawler"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "docker",
+    "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "schemacrawler-schemacrawler-ai-docker": {
-          "command": "docker",
-          "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
-          "env": {}
-        },
-        "schemacrawler-schemacrawler-ai-docker-configured": {
-          "command": "docker",
-          "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
-          "env": {}
-        }
+      "schemacrawler-schemacrawler-ai-docker": {
+        "command": "docker",
+        "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
+        "env": {}
+      },
+      "schemacrawler-schemacrawler-ai-docker-configured": {
+        "command": "docker",
+        "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
+        "env": {}
       }
     },
     "oauth": {

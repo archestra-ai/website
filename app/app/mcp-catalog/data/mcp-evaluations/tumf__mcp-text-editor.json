@@ -8,13 +8,9 @@
     "name": "tumf"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["mcp-text-editor"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,29 +21,20 @@
   "quality_score": 66,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-text-editor": {
-          "command": "uvx",
-          "args": ["mcp-text-editor"],
-          "env": {}
-        },
-        "mcp-text-editor-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "--mount",
-            "type=bind,src=/some/path/src,dst=/some/path/dst",
-            "mcp/text-editor"
-          ],
-          "env": {}
-        },
-        "mcp-text-editor-python": {
-          "command": "python",
-          "args": ["-m", "mcp_text_editor"],
-          "env": {}
-        }
+      "mcp-text-editor": {
+        "command": "uvx",
+        "args": ["mcp-text-editor"],
+        "env": {}
+      },
+      "mcp-text-editor-docker": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "--mount", "type=bind,src=/some/path/src,dst=/some/path/dst", "mcp/text-editor"],
+        "env": {}
+      },
+      "mcp-text-editor-python": {
+        "command": "python",
+        "args": ["-m", "mcp_text_editor"],
+        "env": {}
       }
     },
     "oauth": {

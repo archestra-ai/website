@@ -8,13 +8,9 @@
     "name": "yamanoku"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "deno",
+    "args": ["run", "--allow-net=api.webstatus.dev", "jsr:@yamanoku/baseline-mcp-server"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "yamanoku-baseline-mcp-server": {
-          "command": "deno",
-          "args": ["run", "--allow-net=api.webstatus.dev", "jsr:@yamanoku/baseline-mcp-server"],
-          "env": {}
-        },
-        "baseline-mcp-server-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "baseline-mcp-server:latest"],
-          "env": {}
-        }
+      "yamanoku-baseline-mcp-server": {
+        "command": "deno",
+        "args": ["run", "--allow-net=api.webstatus.dev", "jsr:@yamanoku/baseline-mcp-server"],
+        "env": {}
+      },
+      "baseline-mcp-server-docker": {
+        "command": "docker",
+        "args": ["run", "-i", "baseline-mcp-server:latest"],
+        "env": {}
       }
     },
     "oauth": {

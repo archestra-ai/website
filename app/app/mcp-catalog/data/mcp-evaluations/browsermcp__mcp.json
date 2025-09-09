@@ -8,13 +8,9 @@
     "name": "browsermcp"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": ["${__dirname}/server/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,9 +20,7 @@
   "category": "Browser Automation",
   "quality_score": 50,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": "google",
       "required": true

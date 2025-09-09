@@ -8,13 +8,9 @@
     "name": "narumiruna"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["gitingestmcp@latest"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,22 +21,20 @@
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "gitingestmcp": {
-          "command": "uvx",
-          "args": ["gitingestmcp@latest"],
-          "env": {}
-        },
-        "gitingestmcp-github": {
-          "command": "uvx",
-          "args": ["--from", "git+https://github.com/narumiruna/gitingest-mcp", "gitingestmcp"],
-          "env": {}
-        },
-        "gitingestmcp-local": {
-          "command": "uv",
-          "args": ["run", "--directory", "/home/<user>/workspace/gitingest-mcp", "gitingestmcp"],
-          "env": {}
-        }
+      "gitingestmcp": {
+        "command": "uvx",
+        "args": ["gitingestmcp@latest"],
+        "env": {}
+      },
+      "gitingestmcp-github": {
+        "command": "uvx",
+        "args": ["--from", "git+https://github.com/narumiruna/gitingest-mcp", "gitingestmcp"],
+        "env": {}
+      },
+      "gitingestmcp-local": {
+        "command": "uv",
+        "args": ["run", "--directory", "/home/<user>/workspace/gitingest-mcp", "gitingestmcp"],
+        "env": {}
       }
     },
     "oauth": {

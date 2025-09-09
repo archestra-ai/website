@@ -8,29 +8,40 @@
     "name": "vectara"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "uv",
+    "args": ["tool", "run", "vectara-mcp"],
+    "env": {
+      "VECTARA_API_KEY": "${user_config.vectara_api_key}",
+      "VECTARA_CORPUS_KEYS": "${user_config.vectara_corpus_keys}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "vectara_api_key": {
+      "type": "string",
+      "title": "Vectara API Key",
+      "description": "Your Vectara API key for authentication.",
+      "sensitive": true,
+      "required": true
+    },
+    "vectara_corpus_keys": {
+      "type": "string",
+      "title": "Vectara Corpus Keys",
+      "description": "Comma-separated list of Vectara corpus keys to use for the search.",
+      "required": true
+    }
+  },
   "readme": "# Vectara MCP Server\n\n![GitHub Repo stars](https://img.shields.io/github/stars/Vectara/Vectara-mcp?style=social)\n![PyPI version](https://img.shields.io/pypi/v/vectara-mcp.svg)\n![License](https://img.shields.io/pypi/l/vectara-mcp.svg)\n\n> 🔌 **Compatible with [Claude Desktop](https://claude.ai/desktop), and any other MCP Client!**\n>\n> Vectara MCP is also compatible with any MCP client\n>\n\nThe Model Context Protocol (MCP) is an open standard that enables AI systems to interact seamlessly with various data sources and tools, facilitating secure, two-way connections.\n\nVectara-MCP provides any agentic application with access to fast, reliable RAG with reduced hallucination, powered by Vectara's Trusted RAG platform, through the MCP protocol.\n\n## Installation\n\nYou can install the package directly from PyPI:\n\n```bash\npip install vectara-mcp\n```\n\n## Available Tools\n\n- **ask_vectara:**\n  Run a RAG query using Vectara, returning search results with a generated response.\n\n  Args:\n\n  - query: str, The user query to run - required.\n  - corpus_keys: list[str], List of Vectara corpus keys to use for the search - required. Please ask the user to provide one or more corpus keys. \n  - api_key: str, The Vectara API key - required.\n  - n_sentences_before: int, Number of sentences before the answer to include in the context - optional, default is 2.\n  - n_sentences_after: int, Number of sentences after the answer to include in the context - optional, default is 2.\n  - lexical_interpolation: float, The amount of lexical interpolation to use - optional, default is 0.005.\n  - max_used_search_results: int, The maximum number of search results to use - optional, default is 10.\n  - generation_preset_name: str, The name of the generation preset to use - optional, default is \"vectara-summary-table-md-query-ext-jan-2025-gpt-4o\".\n  - response_language: str, The language of the response - optional, default is \"eng\".\n\n  Returns:\n\n    - The response from Vectara, including the generated answer and the search results.\n<br><br>\n\n- **search_vectara:**\n    Run a semantic search query using Vectara, without generation.\n\n  Args:\n\n  - query: str, The user query to run - required.\n  - corpus_keys: list[str], List of Vectara corpus keys to use for the search - required. Please ask the user to provide one or more corpus keys. \n  - api_key: str, The Vectara API key - required.\n  - n_sentences_before: int, Number of sentences before the answer to include in the context - optional, default is 2.\n  - n_sentences_after: int, Number of sentences after the answer to include in the context - optional, default is 2.\n  - lexical_interpolation: float, The amount of lexical interpolation to use - optional, default is 0.005.\n    \n  Returns:\n  - The response from Vectara, including the matching search results.\n\n\n## Configuration with Claude Desktop\n\nAdd to your claude_desktop_config.json:\n\n```json\n{\n  \"mcpServers\": {\n    \"Vectara\": {\n      \"command\": \"uv\",\n      \"args\": [\n        \"tool\",\n        \"run\",\n        \"vectara-mcp\"\n      ]\n    }\n  }\n}\n```\n\n## Usage in Claude Desktop App\n\nOnce the installation is complete, and the Claude desktop app is configured, you must completely close and re-open the Claude desktop app to see the Vectara-mcp server. You should see a hammer icon in the bottom left of the app, indicating available MCP tools, you can click on the hammer icon to see more detial on the Vectara-search and Vectara-extract tools.\n\nNow claude will have complete access to the Vectara-mcp server, including the ask-vectara and search-vectara tools. \nWhen you issue the tools for the first time, Claude will ask you for your Vectara api key and corpus key (or keys if you want to use multiple corpora). After you set those, you will be ready to go. Here are some examples you can try (with the Vectara corpus that includes information from our [website](https://vectara.com):\n\n### Vectara RAG Examples\n\n1. **Querying Vectara corpus**:\n```\nask-vectara Who is Amr Awadallah?\n```\n\n2. **Searching Vectara corpus**:\n```\nsearch-vectara events in NYC?\n```\n\n## Acknowledgments ✨\n\n- [Model Context Protocol](https://modelcontextprotocol.io) for the MCP specification\n- [Anthropic](https://anthropic.com) for Claude Desktop\n",
   "category": "AI Tools",
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "vectara-mcp": {
-          "command": "uv",
-          "args": ["tool", "run", "vectara-mcp"],
-          "env": {}
-        }
+      "vectara-mcp": {
+        "command": "uv",
+        "args": ["tool", "run", "vectara-mcp"],
+        "env": {}
       }
     },
     "oauth": {

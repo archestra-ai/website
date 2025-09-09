@@ -8,13 +8,9 @@
     "name": "BurtTheCoder"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": ["${__dirname}/build/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,15 @@
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-dnstwist": {
-          "command": "mcp-dnstwist",
-          "args": [],
-          "env": {}
-        },
-        "mcp-dnstwist-from-source": {
-          "command": "node",
-          "args": ["/absolute/path/to/mcp-dnstwist/build/index.js"],
-          "env": {}
-        }
+      "mcp-dnstwist": {
+        "command": "mcp-dnstwist",
+        "args": [],
+        "env": {}
+      },
+      "mcp-dnstwist-from-source": {
+        "command": "node",
+        "args": ["/absolute/path/to/mcp-dnstwist/build/index.js"],
+        "env": {}
       }
     },
     "oauth": {
