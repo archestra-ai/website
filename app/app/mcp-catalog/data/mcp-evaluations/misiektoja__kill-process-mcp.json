@@ -8,13 +8,14 @@
     "name": "misiektoja"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uv",
+    "args": [
+      "run",
+      "--directory",
+      "${__dirname}",
+      "kill_process_mcp.py"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +26,15 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kill-process-mcp": {
-          "command": "uv",
-          "args": ["run", "--directory", "/path/to/kill-process-mcp", "kill_process_mcp.py"],
-          "env": {}
-        }
+      "kill-process-mcp": {
+        "command": "uv",
+        "args": [
+          "run",
+          "--directory",
+          "/path/to/kill-process-mcp",
+          "kill_process_mcp.py"
+        ],
+        "env": {}
       }
     },
     "oauth": {

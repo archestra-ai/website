@@ -8,59 +8,88 @@
     "name": "tinybirdco"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "uvx",
+    "args": [
+      "mcp-tinybird",
+      "stdio"
+    ],
+    "env": {
+      "TB_API_URL": "${user_config.tb_api_url}",
+      "TB_ADMIN_TOKEN": "${user_config.tb_admin_token}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "tb_api_url": {
+      "type": "string",
+      "title": "Tinybird API URL",
+      "description": "Your Tinybird API URL (e.g., https://api.tinybird.co)",
+      "sensitive": false,
+      "required": true
+    },
+    "tb_admin_token": {
+      "type": "string",
+      "title": "Tinybird Admin Token",
+      "description": "Your Tinybird Admin Token",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# 🚨 DEPRECATED\n\n**This repository is deprecated and no longer maintained.**\n\n**New implementation:** [Tinybird MCP Server](https://www.tinybird.co/docs/forward/analytics-agents/mcp)\n\n**Please migrate to the official implementation.**\n",
   "category": "Development",
   "quality_score": 73,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-tinybird-stdio-configured": {
-          "command": "uvx",
-          "args": ["mcp-tinybird", "stdio"],
-          "env": {
-            "TB_API_URL": "<TINYBIRD_API_URL>",
-            "TB_ADMIN_TOKEN": "<TINYBIRD_ADMIN_TOKEN>"
-          }
-        },
-        "mcp-tinybird-sse": {
-          "command": "uvx",
-          "args": ["mcp-tinybird", "sse"],
-          "env": {}
-        },
-        "mcp-tinybird_local": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/your/mcp-tinybird", "run", "mcp-tinybird", "stdio"],
-          "env": {}
-        },
-        "mcp-tinybird": {
-          "command": "uvx",
-          "args": ["mcp-tinybird"],
-          "env": {}
-        },
-        "modelcontextprotocol-inspector": {
-          "command": "npx",
-          "args": [
-            "@modelcontextprotocol/inspector",
-            "uv",
-            "--directory",
-            "/Users/alrocar/gr/mcp-tinybird",
-            "run",
-            "mcp-tinybird"
-          ],
-          "env": {}
+      "mcp-tinybird-stdio-configured": {
+        "command": "uvx",
+        "args": [
+          "mcp-tinybird",
+          "stdio"
+        ],
+        "env": {
+          "TB_API_URL": "<TINYBIRD_API_URL>",
+          "TB_ADMIN_TOKEN": "<TINYBIRD_ADMIN_TOKEN>"
         }
+      },
+      "mcp-tinybird-sse": {
+        "command": "uvx",
+        "args": [
+          "mcp-tinybird",
+          "sse"
+        ],
+        "env": {}
+      },
+      "mcp-tinybird_local": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/path/to/your/mcp-tinybird",
+          "run",
+          "mcp-tinybird",
+          "stdio"
+        ],
+        "env": {}
+      },
+      "mcp-tinybird": {
+        "command": "uvx",
+        "args": [
+          "mcp-tinybird"
+        ],
+        "env": {}
+      },
+      "modelcontextprotocol-inspector": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "uv",
+          "--directory",
+          "/Users/alrocar/gr/mcp-tinybird",
+          "run",
+          "mcp-tinybird"
+        ],
+        "env": {}
       }
     },
     "oauth": {

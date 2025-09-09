@@ -8,13 +8,11 @@
     "name": "jasonjmcghee"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/mcp-debug.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,19 +23,19 @@
   "quality_score": 74,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-debug-js-stdio": {
-          "command": "node",
-          "args": ["/path/to/mcp-debug.js"],
-          "env": {}
-        },
-        "jasonmcghee-claude-debugs-for-you-stdio": {
-          "command": "node",
-          "args": [
-            "/Users/jason/Library/Application Support/Code/User/globalStorage/jasonmcghee.claude-debugs-for-you/mcp-debug.js"
-          ],
-          "env": {}
-        }
+      "mcp-debug-js-stdio": {
+        "command": "node",
+        "args": [
+          "/path/to/mcp-debug.js"
+        ],
+        "env": {}
+      },
+      "jasonmcghee-claude-debugs-for-you-stdio": {
+        "command": "node",
+        "args": [
+          "/Users/jason/Library/Application Support/Code/User/globalStorage/jasonmcghee.claude-debugs-for-you/mcp-debug.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

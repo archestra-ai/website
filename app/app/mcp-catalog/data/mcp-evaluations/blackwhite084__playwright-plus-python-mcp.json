@@ -8,13 +8,11 @@
     "name": "blackwhite084"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "playwright-server"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,34 +23,34 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "playwright-server-dev": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "C:\\Users\\xxxxx\\Documents\\project\\python\\mcp\\playwright-server",
-            "run",
-            "playwright-server"
-          ],
-          "env": {}
-        },
-        "playwright-server": {
-          "command": "uvx",
-          "args": ["playwright-server"],
-          "env": {}
-        },
-        "playwright-server-debug": {
-          "command": "npx",
-          "args": [
-            "@modelcontextprotocol/inspector",
-            "uv",
-            "--directory",
-            "C:\\Users\\YUNYING\\Documents\\project\\python\\mcp\\playwright-server",
-            "run",
-            "playwright-server"
-          ],
-          "env": {}
-        }
+      "playwright-server-dev": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "C:\\Users\\xxxxx\\Documents\\project\\python\\mcp\\playwright-server",
+          "run",
+          "playwright-server"
+        ],
+        "env": {}
+      },
+      "playwright-server": {
+        "command": "uvx",
+        "args": [
+          "playwright-server"
+        ],
+        "env": {}
+      },
+      "playwright-server-debug": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "uv",
+          "--directory",
+          "C:\\Users\\YUNYING\\Documents\\project\\python\\mcp\\playwright-server",
+          "run",
+          "playwright-server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

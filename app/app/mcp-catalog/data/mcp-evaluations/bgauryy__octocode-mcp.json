@@ -8,13 +8,12 @@
     "name": "bgauryy"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "octocode-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,12 @@
   "quality_score": 67,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "octocode-mcp": {
-          "command": "npx",
-          "args": ["octocode-mcp"],
-          "env": {}
-        }
+      "octocode-mcp": {
+        "command": "npx",
+        "args": [
+          "octocode-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

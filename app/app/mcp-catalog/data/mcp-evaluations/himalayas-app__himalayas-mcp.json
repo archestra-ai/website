@@ -8,13 +8,12 @@
     "name": "Himalayas-App"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "mcp-remote",
+      "https://mcp.himalayas.app/sse"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,13 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-remote": {
-          "command": "npx",
-          "args": ["mcp-remote", "https://mcp.himalayas.app/sse"],
-          "env": {}
-        }
+      "mcp-remote": {
+        "command": "npx",
+        "args": [
+          "mcp-remote",
+          "https://mcp.himalayas.app/sse"
+        ],
+        "env": {}
       }
     },
     "oauth": {

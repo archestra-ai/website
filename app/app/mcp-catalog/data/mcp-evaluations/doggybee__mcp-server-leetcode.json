@@ -8,13 +8,9 @@
     "name": "doggybee"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "mcp-server-leetcode",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,27 +21,30 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcpfun-mcp-server-leetcode": {
-          "command": "mcp-server-leetcode",
-          "args": [],
-          "env": {}
-        },
-        "mcpfun-mcp-server-leetcode-cli-config": {
-          "command": "mcp-server-leetcode",
-          "args": [],
-          "env": {}
-        },
-        "mcpfun-mcp-server-leetcode-node-config": {
-          "command": "node",
-          "args": ["/path/to/dist/index.js"],
-          "env": {}
-        },
-        "mcpfun-mcp-server-leetcode-dev": {
-          "command": "npm",
-          "args": ["run", "dev"],
-          "env": {}
-        }
+      "mcpfun-mcp-server-leetcode": {
+        "command": "mcp-server-leetcode",
+        "args": [],
+        "env": {}
+      },
+      "mcpfun-mcp-server-leetcode-cli-config": {
+        "command": "mcp-server-leetcode",
+        "args": [],
+        "env": {}
+      },
+      "mcpfun-mcp-server-leetcode-node-config": {
+        "command": "node",
+        "args": [
+          "/path/to/dist/index.js"
+        ],
+        "env": {}
+      },
+      "mcpfun-mcp-server-leetcode-dev": {
+        "command": "npm",
+        "args": [
+          "run",
+          "dev"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,11 @@
     "name": "zcaceres"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/index.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,21 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "gtasks": {
-          "command": "/opt/homebrew/bin/node",
-          "args": ["{ABSOLUTE PATH TO FILE HERE}/dist/index.js"],
-          "env": {}
-        },
-        "gtasks-auth": {
-          "command": "npm",
-          "args": ["run", "start", "auth"],
-          "env": {}
-        }
+      "gtasks": {
+        "command": "/opt/homebrew/bin/node",
+        "args": [
+          "{ABSOLUTE PATH TO FILE HERE}/dist/index.js"
+        ],
+        "env": {}
+      },
+      "gtasks-auth": {
+        "command": "npm",
+        "args": [
+          "run",
+          "start",
+          "auth"
+        ],
+        "env": {}
       }
     },
     "oauth": {

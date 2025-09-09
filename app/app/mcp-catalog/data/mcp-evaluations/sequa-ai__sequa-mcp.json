@@ -8,29 +8,39 @@
     "name": "sequa-ai"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@sequa-ai/sequa-mcp@latest",
+      "${user_config.sequa_mcp_url}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "sequa_mcp_url": {
+      "type": "string",
+      "title": "Sequa MCP URL",
+      "description": "The URL for your Sequa MCP endpoint. This can be found in your Sequa project settings under 'MCP Setup URLs'.",
+      "required": true,
+      "default": "https://mcp.sequa.ai/v1/setup-code-assistant"
+    }
+  },
   "readme": "# Sequa MCP\n\nThis repository is the **entry point for using Sequa via the Model Context Protocol (MCP)**. If you arrived here looking to \"add Sequa as an MCP server\" to Cursor, Claude, Windsurf, VSCode, Cline, Highlight, Augment, or any other MCP‑capable client — you are in the right place.\n\nIt gives you a **single drop‑in command** that bridges *STDIO/command* MCP transports used by many IDEs today with Sequa’s **native streamable HTTP MCP** endpoint.\n\n---\n\n## 🧱 Prerequisites (Read First!)\n\nBefore you configure *any* AI agent:\n\n1. **Create / sign in to your Sequa account** at **[https://app.sequa.ai/login](https://app.sequa.ai/login?ref=sequa-mcp)**.\n2. **Setup a Project** inside the Sequa app.\n3. Inside that project, locate the **MCP Setup URLs** and select the transport your AI agent supports.\n4. **Copy the URL or configuration** and install it in your client.\n\n> ❗ *If you skip project creation the MCP server will refuse connections — the proxy can launch but you will receive auth / project errors.*\n\n---\n\n## 🤔 What is Sequa?\n\nSequa is a **Contextual Knowledge Engine** that unifies code, documentation and more across *multiple* repositories and continuously streams that context to any LLM‑powered agent. By injecting deep, current project knowledge, Sequa enables assistants to:\n\n* Execute architecture aware & cross‑repo tasks\n* Understand project goals and state\n* Generate more accurate production ready code\n* Centralize AI coding rules and best practices\n\n---\n\n## 🚀 Quick Start (Proxy Launch)\n\n### NPX (most common)\n\n```bash\nnpx -y @sequa-ai/sequa-mcp@latest https://mcp.sequa.ai/v1/setup-code-assistant\n```\n\n> Replace the URL if you use an endpoint from the specific project\n\n---\n\n## 🔌 IDE / Tool Configuration\n\n### Cursor (`~/.cursor/mcp.json`)\n\n```json\n{\n  \"mcpServers\": {\n    \"sequa\": {\n      \"url\": \"https://mcp.sequa.ai/v1/setup-code-assistant\"\n    }\n  }\n}\n```\n\n### Claude Desktop (Settings → Developer → *Edit Config*)\n\n```json\n{\n  \"mcpServers\": {\n    \"sequa\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@sequa-ai/sequa-mcp@latest\",\n        \"https://mcp.sequa.ai/v1/setup-code-assistant\"\n      ]\n    }\n  }\n}\n```\n\n### Windsurf (`~/.codeium/windsurf/mcp_config.json`)\n\n```json\n{\n  \"mcpServers\": {\n    \"sequa\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@sequa-ai/sequa-mcp@latest\",\n        \"https://mcp.sequa.ai/v1/setup-code-assistant\"\n      ]\n    }\n  }\n}\n```\n\n### VS Code (`.vscode/mcp.json`)\n\n```json\n{\n  \"servers\": {\n    \"sequa\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@sequa-ai/sequa-mcp@latest\",\n        \"https://mcp.sequa.ai/v1/setup-code-assistant\"\n      ]\n    }\n  }\n}\n```\n\n### Cline / Claude Dev Tools (`cline_mcp_settings.json`)\n\n```json\n{\n  \"mcpServers\": {\n    \"sequa\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@sequa-ai/sequa-mcp@latest\",\n        \"https://mcp.sequa.ai/v1/setup-code-assistant\"\n      ],\n      \"disabled\": false,\n      \"autoApprove\": []\n    }\n  }\n}\n```\n\n### Highlight AI (GUI → Plugins → Custom Plugin → *Add using a command*)\n\n```bash\nnpx -y @sequa-ai/sequa-mcp@latest https://mcp.sequa.ai/v1/setup-code-assistant\n```\n\n### Augment Code\n\n```bash\nnpx -y @sequa-ai/sequa-mcp@latest https://mcp.sequa.ai/v1/setup-code-assistant\n```\n\nOr `augment_config.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"sequa\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@sequa-ai/sequa-mcp@latest\",\n        \"https://mcp.sequa.ai/v1/setup-code-assistant\"\n      ]\n    }\n  }\n}\n```\n\n",
   "category": "AI Tools",
   "quality_score": 51,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "sequa-ai-sequa-mcp": {
-          "command": "npx",
-          "args": ["-y", "@sequa-ai/sequa-mcp@latest", "https://mcp.sequa.ai/v1/setup-code-assistant"],
-          "env": {}
-        }
+      "sequa-ai-sequa-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@sequa-ai/sequa-mcp@latest",
+          "https://mcp.sequa.ai/v1/setup-code-assistant"
+        ],
+        "env": {}
       }
     },
     "oauth": {

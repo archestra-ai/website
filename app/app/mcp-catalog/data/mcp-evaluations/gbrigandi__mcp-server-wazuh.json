@@ -8,13 +8,9 @@
     "name": "gbrigandi"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "./mcp-server-wazuh",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +21,18 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-wazuh": {
-          "command": "./mcp-server-wazuh",
-          "args": [],
-          "env": {}
-        },
-        "ghcr.io-gbrigandi-mcp-server-wazuh-docker": {
-          "command": "docker",
-          "args": ["run", "ghcr.io/gbrigandi/mcp-server-wazuh:latest"],
-          "env": {}
-        }
+      "mcp-server-wazuh": {
+        "command": "./mcp-server-wazuh",
+        "args": [],
+        "env": {}
+      },
+      "ghcr.io-gbrigandi-mcp-server-wazuh-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "ghcr.io/gbrigandi/mcp-server-wazuh:latest"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,12 @@
     "name": "mobile-next"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@mobilenext/mobile-mcp@latest"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,13 @@
   "quality_score": 81,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mobile-mcp": {
-          "command": "npx",
-          "args": ["-y", "@mobilenext/mobile-mcp@latest"],
-          "env": {}
-        }
+      "mobile-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@mobilenext/mobile-mcp@latest"
+        ],
+        "env": {}
       }
     },
     "oauth": {

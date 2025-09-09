@@ -8,53 +8,117 @@
     "name": "tom28881"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "node",
+    "args": [
+      "${__dirname}/dist/index.js"
+    ],
+    "env": {
+      "JIRA_HOST": "${user_config.jira_host}",
+      "JIRA_EMAIL": "${user_config.jira_email}",
+      "JIRA_API_TOKEN": "${user_config.jira_api_token}",
+      "JIRA_DEFAULT_PROJECT": "${user_config.jira_default_project}",
+      "AUTO_CREATE_TEST_TICKETS": "${user_config.auto_create_test_tickets}",
+      "JIRA_FIELD_STORY_POINTS": "${user_config.jira_field_story_points}",
+      "JIRA_FIELD_ACCEPTANCE_CRITERIA": "${user_config.jira_field_acceptance_criteria}",
+      "JIRA_FIELD_EPIC_LINK": "${user_config.jira_field_epic_link}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "jira_host": {
+      "type": "string",
+      "title": "Jira Host URL",
+      "description": "The base URL for your Jira instance (e.g., https://your-company.atlassian.net)",
+      "required": true,
+      "default": "https://your-company.atlassian.net"
+    },
+    "jira_email": {
+      "type": "string",
+      "title": "Jira User Email",
+      "description": "The email address of the Jira user for authentication",
+      "required": true
+    },
+    "jira_api_token": {
+      "type": "string",
+      "title": "Jira API Token",
+      "description": "Your Jira API token for authentication. Never commit this!",
+      "sensitive": true,
+      "required": true
+    },
+    "jira_default_project": {
+      "type": "string",
+      "title": "Jira Default Project Key",
+      "description": "The default Jira project key to use if not specified (e.g., PROJ)",
+      "required": false,
+      "default": "PROJ"
+    },
+    "auto_create_test_tickets": {
+      "type": "boolean",
+      "title": "Auto-create Test Tickets",
+      "description": "Enable automatic test ticket creation for stories",
+      "required": false,
+      "default": false
+    },
+    "jira_field_story_points": {
+      "type": "string",
+      "title": "Jira Story Points Custom Field ID",
+      "description": "Custom field ID for Story Points (e.g., customfield_10001). Leave empty for auto-detection.",
+      "required": false
+    },
+    "jira_field_acceptance_criteria": {
+      "type": "string",
+      "title": "Jira Acceptance Criteria Custom Field ID",
+      "description": "Custom field ID for Acceptance Criteria (e.g., customfield_10002). Leave empty for auto-detection.",
+      "required": false
+    },
+    "jira_field_epic_link": {
+      "type": "string",
+      "title": "Jira Epic Link Custom Field ID",
+      "description": "Custom field ID for Epic Link (e.g., customfield_10003). Leave empty for auto-detection.",
+      "required": false
+    }
+  },
   "readme": "# MCP Jira Server fo Claude Code\n\nA comprehensive Model Context Protocol (MCP) server for Jira integration with Claude Code. This server provides complete Jira functionality including issue management, sprint operations, comments, attachments, and batch processing.\n\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n[![TypeScript](https://img.shields.io/badge/TypeScript-5.4+-blue.svg)](https://www.typescriptlang.org/)\n[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)\n\n⚠️ **Security Note**: Never commit your API tokens! All credentials should be in `.env` files or environment variables.\n\n## 🚀 Features\n\n### 📋 Issue Management (12 tools)\n- **create-issue** - Create issues with full field support including custom fields and dates\n- **update-issue** - Update existing issues with smart field handling\n- **get-issue** - Retrieve detailed issue information\n- **search-issues** - Advanced search using JQL or simplified filters with date support\n- **transition-issue** - Move issues through workflow states\n- **link-issues** - Create relationships between issues (with smart type matching)\n- **get-link-types** - List available issue link types\n- **get-fields** - Show available fields for project/issue type\n- **diagnose-fields** - Troubleshoot field configuration and find custom field IDs\n- **create-epic-with-subtasks** - Create epic with multiple subtasks in one operation\n- **create-task-for-epic** - Create task linked to epic (optimized for localized Jira)\n\n### 💬 Comments & History (3 tools)\n- **get-comments** - Read issue comments with author and timestamp information\n- **get-history** - View detailed change history with field modifications\n- **add-comment** - Add comments with Atlassian Document Format support\n- **batch-comment** - Add same comment to multiple issues simultaneously\n\n### 📎 Attachments (2 tools)\n- **get-attachments** - List attachments with metadata (size, type, upload date)\n- **upload-attachment** - Upload files using base64 encoding\n\n### 🏃 Sprint & Agile Management (4 tools)\n- **get-boards** - List available Jira boards for agile projects\n- **get-sprints** - View sprints for a board with status indicators\n- **move-issue-to-sprint** - Move issues between sprints and backlog\n- **create-sprint** - Create new sprints with optional start/end dates\n\n### Resources\n- `jira://projects` - List all accessible projects\n- `jira://project/{key}` - Get specific project details\n- `jira://issue/{key}` - Get specific issue details\n- `jira://myself` - Current user information\n- `jira://search?jql={query}` - Search results\n\n### Prompts\n- **standup-report** - Generate daily standup reports\n- **sprint-planning** - Assist with sprint planning activities\n- **bug-triage** - Help prioritize and triage bugs\n- **release-notes** - Generate release notes from completed issues\n- **epic-status** - Comprehensive epic progress reports\n\n## Installation\n\n1. Clone the repository:\n```bash\ngit clone https://github.com/tom28881/JIRA_MCP.git\ncd JIRA_MCP\n```\n\n2. Install dependencies:\n```bash\nnpm install\n```\n\n3. Build the project:\n```bash\nnpm run build\n```\n\n4. Create a `.env` file from the example:\n```bash\ncp .env.example .env\n```\n\n5. Configure your Jira credentials in `.env`:\n```env\nJIRA_HOST=https://your-company.atlassian.net\nJIRA_EMAIL=your-email@company.com\nJIRA_API_TOKEN=your-api-token\nJIRA_DEFAULT_PROJECT=PROJ\n```\n\n### Getting a Jira API Token\n\n1. Log in to [Atlassian account settings](https://id.atlassian.com/manage-profile/security/api-tokens)\n2. Click \"Create API token\"\n3. Give it a name (e.g., \"MCP Server\")\n4. Copy the token and add it to your `.env` file\n\n## Claude Code Configuration\n\nTo use this MCP server with Claude Code, you need to configure it in your MCP settings.\n\n### Option 1: Using Environment Variables\n\nSet up the server with environment variables:\n\n```bash\n# Export environment variables\nexport JIRA_HOST=\"https://your-company.atlassian.net\"\nexport JIRA_EMAIL=\"your-email@company.com\"\nexport JIRA_API_TOKEN=\"your-api-token\"\nexport JIRA_DEFAULT_PROJECT=\"PROJ\"\n\n# Run Claude Code with the MCP server\nclaude --mcp \"node /absolute/path/to/mcp-jira-server/dist/index.js\"\n```\n\n### Option 2: Using .env File\n\nCreate a `.env` file in the server directory and run:\n\n```bash\ncd /path/to/mcp-jira-server\nclaude --mcp \"node dist/index.js\"\n# or use the convenient run script:\nclaude --mcp \"./run.sh\"\n```\n\n### Option 3: Add to Claude Code Settings\n\nAdd the server to your Claude Code settings file (`~/.claude/settings.json`):\n\n```json\n{\n  \"mcpServers\": [\n    {\n      \"name\": \"jira\",\n      \"command\": \"node\",\n      \"args\": [\"/absolute/path/to/mcp-jira-server/dist/index.js\"],\n      \"env\": {\n        \"JIRA_HOST\": \"https://your-company.atlassian.net\",\n        \"JIRA_EMAIL\": \"your-email@company.com\",\n        \"JIRA_API_TOKEN\": \"your-api-token\",\n        \"JIRA_DEFAULT_PROJECT\": \"PROJ\"\n      }\n    }\n  ]\n}\n```\n\n## Usage Examples\n\n### Creating Issues\n\n```\nCreate a new bug in project PROJ with high priority about login issues\n```\n\n```\nCreate a story \"Implement user authentication\" with 5 story points and assign it to john@example.com\n```\n\n### Setting Dates and Time Estimates\n\n```\nCreate task \"Database backup\" with dueDate \"next week\" and originalEstimate \"4h\"\n```\n\n```\nUpdate PROJ-123 with startDate \"tomorrow\" and dueDate \"+14d\"\n```\n\n```\nCreate issue \"Quarterly review\" with dueDate \"31.3.2025\" and originalEstimate \"2 days\"\n```\n\n### Creating Epics with Subtasks\n\n```\nCreate an epic \"Database Migration\" in project PROJ with subtasks \"Backup current data\" and \"Migrate schema\"\n```\n\n### Creating Subtasks\n\n```\nCreate a subtask \"Review code\" for parent issue PROJ-123\n```\n\n### Czech Jira Support\n\n```\nCreate issue type \"Úkol\" in project PROJ\n```\n\n```\nCreate task for epic PPC-48 with summary \"Database backup\"\n```\n\n### Searching Issues\n\n```\nFind all open bugs assigned to me\n```\n\n```\nSearch for issues in project PROJ with label \"urgent\" that are not done\n```\n\n### Date-based Searching\n\n```\nSearch issues due before \"next week\" in project PROJ\n```\n\n```\nFind issues created after \"2024-12-01\" and updated after \"yesterday\"\n```\n\n```\nSearch for overdue issues: dueBefore \"today\" and status != \"Done\"\n```\n\n### Managing Issues\n\n```\nUpdate PROJ-123 to add story points 8\n```\n\n```\nTransition PROJ-456 to \"In Progress\"\n```\n\n```\nLink PROJ-123 to PROJ-456 as \"blocks\"\n```\n\n**Note**: Epic-Story relationships use the epicLink field, not regular issue links:\n```\nUpdate PROJ-456 with epicLink \"PROJ-100\"  # Links story to epic\n```\n\n### Using Prompts\n\n```\nGenerate a standup report for john@example.com\n```\n\n```\nHelp me plan the sprint for project PROJ\n```\n\n```\nCreate release notes for version 2.0 in project PROJ\n```\n\n## Advanced Configuration\n\n### Custom Fields\n\nThe server can work with any Jira configuration:\n\n#### Option 1: Auto-Detection (Recommended)\nLeave custom field IDs unset in `.env` and the server will automatically detect them based on field names.\n\n#### Option 2: Manual Configuration\nIf auto-detection doesn't work, configure custom field IDs in your `.env`:\n\n```env\nJIRA_FIELD_STORY_POINTS=customfield_10001\nJIRA_FIELD_ACCEPTANCE_CRITERIA=customfield_10002\nJIRA_FIELD_EPIC_LINK=customfield_10003\n```\n\n#### Finding Field IDs\nUse the `diagnose-fields` tool to find the correct field IDs for your Jira instance:\n```\ndiagnose-fields project:\"PROJ\" issueType:\"Story\"\n```\n\n### Auto-create Test Tickets\n\nEnable automatic test ticket creation for stories:\n\n```env\nAUTO_CREATE_TEST_TICKETS=true\n```\n\n## Development\n\n### Running in Development Mode\n\n```bash\nnpm run dev\n```\n\n### Type Checking\n\n```bash\nnpm run typecheck\n```\n\n### Linting\n\n```bash\nnpm run lint\n```\n\n## Features\n\n### 🌍 Localization Support\n- Automatic support for localized Jira instances (Czech, English, etc.)\n- Issue type names can be in any language (e.g., \"Task\", \"Úkol\", \"Aufgabe\")\n- Priority names support localization (e.g., \"High\", \"Vysoká\", \"Hoch\")\n- Special support for Czech Jira configurations\n- Works with any Jira language setting\n\n### 📅 Date and Time Management\n- Flexible date input formats:\n  - ISO: \"2024-12-31\"\n  - European: \"31.12.2024\" or \"31/12/2024\"\n  - Relative: \"today\", \"tomorrow\", \"next week\", \"+7d\", \"+2w\", \"+1m\"\n  - Czech: \"dnes\", \"zítra\", \"příští týden\"\n- Time tracking support:\n  - Estimates: \"2h\", \"1d 4h\", \"3 days\", \"2 hodiny\"\n  - Automatic format conversion\n- Date-based searching and filtering\n\n### 🔄 Automatic Retry\nThe server automatically retries failed requests with exponential backoff (up to 3 attempts).\n\n### 📦 Robust Error Handling\n- Empty response handling for Jira transitions\n- Detailed error messages with context\n- Graceful degradation for missing features\n\n### 📝 Comprehensive Logging\nEnable debug logging to see detailed information:\n```bash\nDEBUG=* claude --mcp \"./run.sh\"\n# or specific to jira-mcp:\nDEBUG=jira-mcp claude --mcp \"./run.sh\"\n```\n\n### 🔒 Connection Testing\nThe server tests the connection on startup and provides clear error messages if authentication fails.\n\n### 📄 Atlassian Document Format\nAutomatically converts plain text and markdown to Jira's ADF format for rich text fields.\n\n## Troubleshooting\n\n### Working with Different Jira Configurations\n\nThis MCP server is designed to work with **any Jira instance** regardless of:\n- Language settings (English, Czech, German, etc.)\n- Custom field configurations\n- Project-specific settings\n\n**Best Practices:**\n1. Use `get-fields` to see available issue types in your language\n2. Use `diagnose-fields` to find custom field IDs\n3. Create issues using the exact issue type names from your Jira\n\n### Common Issues\n\n1. **Authentication Failed**\n   - Verify your API token is correct\n   - Ensure your email matches your Atlassian account\n   - Check that your Jira instance URL includes `https://`\n\n2. **Project Not Found**\n   - Verify you have access to the project\n   - Check the project key is correct (case-sensitive)\n\n3. **Custom Fields Not Working**\n   - Use `diagnose-fields` tool to find the correct field IDs for your project\n   - Use `get-fields` tool to see all available fields\n   - Custom field IDs typically start with `customfield_`\n   - Some fields may not be available for certain issue types (e.g., labels on Epics)\n   - Epic Link field ID varies between Jira instances\n\n4. **Link Type Not Found**\n   - Use `get-link-types` tool to see available link types\n   - Link types are case-sensitive in Jira API\n   - The server will try to match case-insensitively\n   - Epic-Story relationships use epicLink field, not regular issue links\n\n5. **Epic-Story Linking Issues**\n   - Run `diagnose-fields` for project and \"Story\" issue type\n   - Update JIRA_FIELD_EPIC_LINK in .env with the correct field ID\n   - Restart the MCP server after updating .env\n\n### Debug Mode\n\nSet the `DEBUG` environment variable for verbose logging:\n\n```bash\nDEBUG=* claude --mcp \"./run.sh\"\n# or\nDEBUG=jira-mcp claude --mcp \"./run.sh\"\n```\n\n### View Logs\n\nLogs are output to stderr and include:\n- Connection status\n- API requests and responses\n- Error details with context\n- Performance metrics\n\n## Contributing\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines.\n\n## License\n\nMIT License - see LICENSE file for details\n\n## Support\n\nFor issues and feature requests, please use the GitHub issue tracker.\n",
   "category": "Development",
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-jira-server-configured-exported": {
-          "command": "node",
-          "args": ["/absolute/path/to/mcp-jira-server/dist/index.js"],
-          "env": {
-            "JIRA_HOST": "https://your-company.atlassian.net",
-            "JIRA_EMAIL": "your-email@company.com",
-            "JIRA_API_TOKEN": "your-api-token",
-            "JIRA_DEFAULT_PROJECT": "PROJ"
-          }
-        },
-        "mcp-jira-server-env-file": {
-          "command": "node",
-          "args": ["dist/index.js"],
-          "env": {}
-        },
-        "mcp-jira-server-run-script": {
-          "command": "./run.sh",
-          "args": [],
-          "env": {}
-        },
-        "mcp-jira-server-configured-settings": {
-          "command": "node",
-          "args": ["/absolute/path/to/mcp-jira-server/dist/index.js"],
-          "env": {
-            "JIRA_HOST": "https://your-company.atlassian.net",
-            "JIRA_EMAIL": "your-email@company.com",
-            "JIRA_API_TOKEN": "your-api-token",
-            "JIRA_DEFAULT_PROJECT": "PROJ"
-          }
+      "mcp-jira-server-configured-exported": {
+        "command": "node",
+        "args": [
+          "/absolute/path/to/mcp-jira-server/dist/index.js"
+        ],
+        "env": {
+          "JIRA_HOST": "https://your-company.atlassian.net",
+          "JIRA_EMAIL": "your-email@company.com",
+          "JIRA_API_TOKEN": "your-api-token",
+          "JIRA_DEFAULT_PROJECT": "PROJ"
+        }
+      },
+      "mcp-jira-server-env-file": {
+        "command": "node",
+        "args": [
+          "dist/index.js"
+        ],
+        "env": {}
+      },
+      "mcp-jira-server-run-script": {
+        "command": "./run.sh",
+        "args": [],
+        "env": {}
+      },
+      "mcp-jira-server-configured-settings": {
+        "command": "node",
+        "args": [
+          "/absolute/path/to/mcp-jira-server/dist/index.js"
+        ],
+        "env": {
+          "JIRA_HOST": "https://your-company.atlassian.net",
+          "JIRA_EMAIL": "your-email@company.com",
+          "JIRA_API_TOKEN": "your-api-token",
+          "JIRA_DEFAULT_PROJECT": "PROJ"
         }
       }
     },

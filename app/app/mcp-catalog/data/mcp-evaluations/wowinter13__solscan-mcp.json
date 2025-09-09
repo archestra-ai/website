@@ -8,30 +8,34 @@
     "name": "wowinter13"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "${HOME}/.cargo/bin/solscan-mcp",
+    "args": [],
+    "env": {
+      "SOLSCAN_API_KEY": "${user_config.solscan_api_key}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "solscan_api_key": {
+      "type": "string",
+      "title": "Solscan API Key",
+      "description": "Your Solscan Pro API key. You can obtain one from Solscan APIs.",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# 🟣🔎 solscan-mcp: A Solscan API MCP Server in Rust\n\n## Overview\n\nA Model Context Protocol (MCP) server for interacting with the Solscan Pro API for Solana blockchain data. This server provides tools to query token information, account activities, and transaction details on the Solana blockchain via Large Language Models.\n\n\n## Examples\n\nSimple prompts: \n\n\nhttps://github.com/user-attachments/assets/2f2586b2-ed9d-4d4d-bda4-0154b9b98cde\n\n\n\n\n_You can also use it for much more complex queries, like analyzing criminal activity combining multiple MCPs and correct context._\n\n_For example, upload a csv list of suspected addresses, then using perplexity-mcp research tool LLM will add info to context window on how investigators define criminal wallets based on their activity (mev, dusting, poisoning, sandwiched, etc) -> solscan-mcp will use this context to investigate the wallets and provide a report._\n\n\n## Features\n\nFor detailed documentation of all available tools, see [TOOLS.md](TOOLS.md).\n\n## Installation\n\nPrerequisites:\n- Rust toolchain (install via [rustup](https://rustup.rs/)) – for regular usage\n- Docker – for Docker usage\n- Solscan Pro API key. You can obtain one from [Solscan APIs](https://solscan.io/apis).\n\n### Regular\n\n```bash\ncargo install solscan-mcp\n\nwhere solscan-mcp # -> /Users/$username/.cargo/bin/solscan-mcp\n```\n\nAdd the following to your `claude_desktop_config.json` or `claude_config.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"solscan-mcp\": {\n      \"command\": \"/Users/$username/.cargo/bin/solscan-mcp\",\n      \"args\": [],\n      \"env\": {\n        \"SOLSCAN_API_KEY\": \"your_solscan_api_key\"\n      }\n    }\n  }\n}\n```\n\n### Docker\n\nWIP, will be available soon.\n\n\n\n## Code quality Notes\n\nI treat MCPs like useful scripts, as the structure of the APIs they rely on can always change. So, api.rs could definitely be split into multiple APIs based on Solscan namespaces. My main goal was to make it work and be easy to maintain, while ensuring errors are ignored without breaking the flow (unlike many MCPs I've tested in Python/TS, which crash painfully when they don't gracefully handle simple errors).\n\n\n## License\n\nMIT\n",
   "category": "Data Science",
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "solscan-mcp": {
-          "command": "/Users/$username/.cargo/bin/solscan-mcp",
-          "args": [],
-          "env": {
-            "SOLSCAN_API_KEY": "your_solscan_api_key"
-          }
+      "solscan-mcp": {
+        "command": "/Users/$username/.cargo/bin/solscan-mcp",
+        "args": [],
+        "env": {
+          "SOLSCAN_API_KEY": "your_solscan_api_key"
         }
       }
     },

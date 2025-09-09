@@ -8,13 +8,12 @@
     "name": "safedep"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@mcp/package-auditor"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@mcp/package-auditor"
+    ],
+    "env": {}
   },
   "readme": null,
   "category": "Security",

@@ -8,13 +8,12 @@
     "name": "CoderGamester"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@codergamester/mcp-unity"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,9 +23,7 @@
   "category": "Gaming",
   "quality_score": 59,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false
@@ -48,7 +45,7 @@
   "programming_language": "C#",
   "framework": null,
   "last_scraped_at": "2025-08-03T20:15:46.897Z",
-  "evaluation_model": "gemini-2.5-pro",
+  "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": false,

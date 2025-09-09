@@ -8,13 +8,12 @@
     "name": "stefan-xyz"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-server-runescape"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +24,20 @@
   "quality_score": 38,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-runescape": {
-          "command": "npx",
-          "args": ["-y", "mcp-server-runescape"],
-          "env": {}
-        },
-        "mcp-server-runescape-node": {
-          "command": "node",
-          "args": ["/Users/path/to/mcp-server-runescape/src/server.js"],
-          "env": {}
-        }
+      "mcp-server-runescape": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-server-runescape"
+        ],
+        "env": {}
+      },
+      "mcp-server-runescape-node": {
+        "command": "node",
+        "args": [
+          "/Users/path/to/mcp-server-runescape/src/server.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

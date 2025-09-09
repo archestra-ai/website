@@ -8,13 +8,12 @@
     "name": "getrupt"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@ashra/mcp-server"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,13 +24,13 @@
   "quality_score": 32,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ashra-mcp-configured": {
-          "command": "node",
-          "args": ["<path/to/ashra-mcp>/build/index.js"],
-          "env": {
-            "ASHRA_API_KEY": "<YOUR-API-KEY>"
-          }
+      "ashra-mcp-configured": {
+        "command": "node",
+        "args": [
+          "<path/to/ashra-mcp>/build/index.js"
+        ],
+        "env": {
+          "ASHRA_API_KEY": "<YOUR-API-KEY>"
         }
       }
     },

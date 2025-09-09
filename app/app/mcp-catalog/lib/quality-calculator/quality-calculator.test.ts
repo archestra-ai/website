@@ -24,17 +24,11 @@ function createBaseServerManifest(overrides?: Partial<ArchestraMcpServerManifest
       name: 'Test Author',
     },
     server: {
-      type: 'node',
-      entry_point: 'server/index.js',
-      mcp_config: {
-        command: 'node',
-        args: ['server/index.js'],
-      },
+      command: 'node',
+      args: ['server/index.js'],
     },
     archestra_config: {
-      client_config_permutations: {
-        mcpServers: {},
-      },
+      client_config_permutations: {},
       oauth: {
         provider: null,
         required: false,

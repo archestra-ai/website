@@ -8,13 +8,12 @@
     "name": "ferrislucas"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "iterm-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,13 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "iterm-mcp": {
-          "command": "npx",
-          "args": ["-y", "iterm-mcp"],
-          "env": {}
-        }
+      "iterm-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "iterm-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

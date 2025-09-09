@@ -8,13 +8,12 @@
     "name": "bucketco"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@bucketco/cli"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@bucketco/cli"
+    ],
+    "env": {}
   },
   "readme": null,
   "category": "Development",

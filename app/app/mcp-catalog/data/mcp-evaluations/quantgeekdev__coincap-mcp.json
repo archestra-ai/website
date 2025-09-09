@@ -8,13 +8,11 @@
     "name": "QuantGeekDev"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "coincap-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +23,17 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "coincap-mcp": {
-          "command": "npx",
-          "args": ["coincap-mcp"],
-          "env": {}
-        },
-        "coincap-mcp-configured": {
-          "command": "/path/to/coincap-mcp/build/index.js",
-          "args": [],
-          "env": {}
-        }
+      "coincap-mcp": {
+        "command": "npx",
+        "args": [
+          "coincap-mcp"
+        ],
+        "env": {}
+      },
+      "coincap-mcp-configured": {
+        "command": "/path/to/coincap-mcp/build/index.js",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

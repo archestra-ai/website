@@ -8,13 +8,13 @@
     "name": "glenngillen"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-remote@latest",
+      "https://mcpmcp.io/mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,11 +25,13 @@
   "quality_score": 32,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-remote": {
-          "command": "npx",
-          "args": ["-y", "mcp-remote@latest", "https://mcpmcp.io/mcp"]
-        }
+      "mcp-remote": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-remote@latest",
+          "https://mcpmcp.io/mcp"
+        ]
       }
     },
     "oauth": {

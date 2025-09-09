@@ -130,14 +130,6 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
       try {
         const content = fs.readFileSync(evaluationPath, 'utf-8');
         const evaluation = JSON.parse(content) as ArchestraMcpServerManifest;
-        // Use server_overridden if it exists, otherwise use server
-        if (evaluation.server_overridden) {
-          evaluation.server = evaluation.server_overridden;
-        }
-        // Use user_config_overridden if it exists, otherwise use user_config
-        if (evaluation.user_config_overridden) {
-          evaluation.user_config = evaluation.user_config_overridden;
-        }
         evaluationsMap.set(evaluation.name, evaluation);
       } catch (error) {
         console.warn(`Failed to load evaluation file for ${name}:`, error);
@@ -155,14 +147,6 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
               const filePath = path.join(MCP_SERVERS_EVALUATIONS_DIR, file);
               const content = fs.readFileSync(filePath, 'utf-8');
               const evaluation = JSON.parse(content) as ArchestraMcpServerManifest;
-              // Use server_overridden if it exists, otherwise use server
-              if (evaluation.server_overridden) {
-                evaluation.server = evaluation.server_overridden;
-              }
-              // Use user_config_overridden if it exists, otherwise use user_config
-              if (evaluation.user_config_overridden) {
-                evaluation.user_config = evaluation.user_config_overridden;
-              }
               // Map by name instead of trying to reconstruct URL
               evaluationsMap.set(evaluation.name, evaluation);
             } catch (error) {
@@ -228,13 +212,9 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
               email: 'Unknown',
             },
             server: {
-              type: 'binary' as const,
-              entry_point: remoteUrl || '',
-              mcp_config: {
-                command: 'remote',
-                args: [],
-                env: {},
-              },
+              command: 'remote',
+              args: [],
+              env: {},
             },
             archestra_config: {
               client_config_permutations: null,
@@ -283,13 +263,9 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
               email: 'Unknown',
             },
             server: {
-              type: 'node',
-              entry_point: 'unknown',
-              mcp_config: {
-                command: 'unknown',
-                args: [],
-                env: {},
-              },
+              command: 'unknown',
+              args: [],
+              env: {},
             },
             archestra_config: {
               client_config_permutations: null,
@@ -429,14 +405,6 @@ export function loadServersFromSameRepo(targetServer: ArchestraMcpServerManifest
         try {
           const content = fs.readFileSync(evaluationPath, 'utf-8');
           const evaluation = JSON.parse(content) as ArchestraMcpServerManifest;
-          // Use server_overridden if it exists, otherwise use server
-          if (evaluation.server_overridden) {
-            evaluation.server = evaluation.server_overridden;
-          }
-          // Use user_config_overridden if it exists, otherwise use user_config
-          if (evaluation.user_config_overridden) {
-            evaluation.user_config = evaluation.user_config_overridden;
-          }
           servers.push(evaluation);
         } catch (error) {
           console.warn(`Failed to load evaluation file for ${urlName}:`, error);

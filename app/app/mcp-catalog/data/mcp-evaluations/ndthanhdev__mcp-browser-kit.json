@@ -8,13 +8,11 @@
     "name": "ndthanhdev"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/server/index.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,12 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-browser-kit-server": {
-          "command": "npx",
-          "args": ["@mcp-browser-kit/server"],
-          "env": {}
-        }
+      "mcp-browser-kit-server": {
+        "command": "npx",
+        "args": [
+          "@mcp-browser-kit/server"
+        ],
+        "env": {}
       }
     },
     "oauth": {

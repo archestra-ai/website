@@ -8,13 +8,9 @@
     "name": "gitkraken"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "gk",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,9 +20,7 @@
   "category": "Development",
   "quality_score": 81,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false

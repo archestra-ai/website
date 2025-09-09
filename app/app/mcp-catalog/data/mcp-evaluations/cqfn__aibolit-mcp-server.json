@@ -8,13 +8,12 @@
     "name": "cqfn"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "aibolit-mcp-server@0.0.6"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,13 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "aibolit-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "aibolit-mcp-server@0.0.6"],
-          "env": {}
-        }
+      "aibolit-mcp-server": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "aibolit-mcp-server@0.0.6"
+        ],
+        "env": {}
       }
     },
     "oauth": {

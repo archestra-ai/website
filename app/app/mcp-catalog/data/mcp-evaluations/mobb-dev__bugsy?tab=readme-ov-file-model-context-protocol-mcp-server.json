@@ -8,15 +8,11 @@
     "name": "mobb-dev"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "slack-mcp-server",
-    "mcp_config": {
-      "command": "./slack-mcp-server",
-      "args": [],
-      "env": {
-        "SLACK_MCP_XOXC_TOKEN": "${user_config.slack_mcp_xoxc_token}",
-        "SLACK_MCP_XOXD_TOKEN": "${user_config.slack_mcp_xoxd_token}"
-      }
+    "command": "./slack-mcp-server",
+    "args": [],
+    "env": {
+      "SLACK_MCP_XOXC_TOKEN": "${user_config.slack_mcp_xoxc_token}",
+      "SLACK_MCP_XOXD_TOKEN": "${user_config.slack_mcp_xoxd_token}"
     }
   },
   "readme": null,

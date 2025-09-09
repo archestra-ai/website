@@ -8,13 +8,12 @@
     "name": "r-huijts"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "oorlogsbronnen-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +24,20 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "oorlogsbronnen-mcp": {
-          "command": "npx",
-          "args": ["-y", "oorlogsbronnen-mcp"],
-          "env": {}
-        },
-        "oorlogsbronnen-mcp-configured": {
-          "command": "node",
-          "args": ["/absolute/path/to/oorlogsbronnen-mcp/dist/mcp-server.js"],
-          "env": {}
-        }
+      "oorlogsbronnen-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "oorlogsbronnen-mcp"
+        ],
+        "env": {}
+      },
+      "oorlogsbronnen-mcp-configured": {
+        "command": "node",
+        "args": [
+          "/absolute/path/to/oorlogsbronnen-mcp/dist/mcp-server.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {

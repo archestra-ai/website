@@ -8,35 +8,67 @@
     "name": "cyclops-ui"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "mcp-cyclops",
+    "args": [],
+    "env": {
+      "KUBECONFIG": "${user_config.kubeconfig}",
+      "CYCLOPS_KUBE_CONTEXT": "${user_config.cyclops_kube_context}",
+      "CYCLOPS_MODULE_NAMESPACE": "${user_config.cyclops_module_namespace}",
+      "CYCLOPS_HELM_RELEASE_NAMESPACE": "${user_config.cyclops_helm_release_namespace}",
+      "CYCLOPS_MODULE_TARGET_NAMESPACE": "${user_config.cyclops_module_target_namespace}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "kubeconfig": {
+      "type": "file",
+      "title": "Kubeconfig File Path",
+      "description": "Path to the Kubernetes kubeconfig file. Defaults to in-cluster config or $HOME/.kube/config if not provided.",
+      "required": false,
+      "default": "${HOME}/.kube/config"
+    },
+    "cyclops_kube_context": {
+      "type": "string",
+      "title": "Kubernetes Context",
+      "description": "The Kubernetes context to use for connecting to the cluster.",
+      "required": false
+    },
+    "cyclops_module_namespace": {
+      "type": "string",
+      "title": "Module Storage Namespace",
+      "description": "The Kubernetes namespace where Cyclops Modules are stored.",
+      "required": false
+    },
+    "cyclops_helm_release_namespace": {
+      "type": "string",
+      "title": "Helm Release Namespace",
+      "description": "The Kubernetes namespace for Helm releases managed by Cyclops.",
+      "required": false
+    },
+    "cyclops_module_target_namespace": {
+      "type": "string",
+      "title": "Module Target Namespace",
+      "description": "The target Kubernetes namespace where modules should be deployed.",
+      "required": false
+    }
+  },
   "readme": "<p align=\"center\" width=\"100%\">\n    <img width=\"75%\" src=\"https://raw.githubusercontent.com/cyclops-ui/cyclops/main/web/static/img/cyclops-simplistic.png\">\n<p/>\n\n# Cyclops MCP (Model Context Protocol)\n\nCyclops MCP allows your favorite AI agent to manage your Kubernetes applications. Cyclops MCP servers provide tools for agents to create and update existing applications safely.\n\nhttps://github.com/user-attachments/assets/0c675c33-1e36-4fdb-bf8c-2fd7fb491e6b\n\nThis means it can check all of your existing templates and the schema of those templates to create accurate and production-ready applications. Your agent now has much less room to make a misconfiguration since it creates high-level resources (Cyclops Modules) instead of touching every line of your Kubernetes resources (Deployments, Services, and Ingresses).\n\nIt allows you to move fast and ensure no uncaught misconfigurations are hitting your production.\n\n**With Cyclops and our MCP, you can now abstract Kubernetes complexity from your developers AND your AI agents**\n\n## Install via UI\n\nThe easiest way to install the Cyclops MCP server is through the Cyclops UI. Below are instructions on how to install it via binary and kubectl, but the recommended way of installing it is via the UI.\n\n> ⚠️ To install Cyclops MCP through the UI, you should run Cyclops on a version `v0.20.1` or greater\n\n1. Install the Cyclops MCP by going to sidebar `“Addon”` > `\"MCP server\"`. You can now click `\"Install Cyclops MCP server\"` and your Cyclops MCP server will be up and running in a few seconds.\n\n<img width=\"762\" alt=\"addon-install\" src=\"https://github.com/user-attachments/assets/57dfd8f9-9b58-4797-a348-d2788a6fba9b\" />\n\n2. Now that your MCP server is up running, all thats left is exposing it outside of your cluster and connecting your AI agent to it.\n\n   To expose the MCP server on localhost you can simply port-forward it with the following command:\n\n    ```bash\n    kubectl port-forward -n cyclops svc/cyclops-mcp 8000:8000\n    ```\n\n   Your server is now available on `localhost:8000`.\n\n3. To connect it to an AI agent you will just have to provide the Cyclops MCP server in its configuration. For example, to add it to Cursor, you can simply add it with the following JSON:\n\n    ```bash\n    {\n      \"mcpServers\": {\n        \"cyclops-kubernetes\": {\n          \"url\": \"http://localhost:8000/sse\"\n        }\n      }\n    }\n    ```\n\nYou can now start a fresh conversation with your AI companion. Above is an example of how we used it with Cursor.\n\n<details>\n\n<summary>Install stdin binary</summary>\n\n### 1. Make sure Cyclops is installed in your Kubernetes cluster\n\nCheck our docs on how it install it with a single command - https://cyclops-ui.com/docs/installation/install/manifest\n\n### 2. Download MCP server\n\nYou can download the Cyclops MCP server binary with the following command:\n\n```yaml\nGOBIN=\"$HOME/go/bin\" go install github.com/cyclops-ui/mcp-cyclops/cmd/mcp-cyclops@latest\n```\n\n### 3. Add server configuration\n\n> ⚠️ By default, Cyclops MCP will use the `.kube/config` file to connect to your cluster\n\nConfigure your MCP Cyclops server:\n\n```json\n{\n  \"mcpServers\": {\n    \"mcp-cyclops\": {\n      \"command\": \"mcp-cyclops\"\n    }\n  }\n}\n```\n\n## Configuration\n\nYou can configure Cyclops MCP server via env variables. Below is an example of adding the configuration for specifying the kubeconfig file the Cyclops MCP server should use when managing your Cyclops applications.\n\n```json\n{\n  \"mcpServers\": {\n    \"mcp-cyclops\": {\n      \"command\": \"mcp-cyclops\",\n      \"env\": {\n        \"KUBECONFIG\": \"/path/to/your/kubeconfig\"\n      }\n    }\n  }\n}\n\n```\n\n### Environment variables\n\nBelow is the list of environment variables used for configuring your Cyclops MCP server:\n\n| Env var                           | Description                                                                             |\n|-----------------------------------|-----------------------------------------------------------------------------------------|\n| `KUBECONFIG`                      | Path to kubeconfig file (optional, defaults to in-cluster config or $HOME/.kube/config) |\n| `CYCLOPS_KUBE_CONTEXT`            | Kubernetes context to use (optional)                                                    |\n| `CYCLOPS_MODULE_NAMESPACE`        | Namespace where modules are stored                                                      |\n| `CYCLOPS_HELM_RELEASE_NAMESPACE`  | Namespace for Helm releases                                                             |\n| `CYCLOPS_MODULE_TARGET_NAMESPACE` | Target namespace for modules                                                            |\n\n---\n\n</details>\n\n<details>\n\n<summary>\nInstall to a Kubernetes cluster manually\n</summary>\n\n---\n\nInstead of having each developer install `mcp-cyclops` binary, you can install the Cyclops MCP server with SSE as transport type to your Kubernetes cluster and allow all of your developers to connect to the same server.\n\n1. Before installing, make sure Cyclops and all its CRDs are installed in your cluster:\n    1. Check Cyclops pods are running:\n\n        ```shell\n        kubectl get pods -n cyclops\n        ```\n\n       Should write:\n\n        ```\n        NAME                            READY   STATUS    RESTARTS   AGE\n        cyclops-ctrl-676b5d9789-ntcls   1/1     Running   0          94s\n        cyclops-ui-7798655f97-xdg29     1/1     Running   0          94s\n        ```\n\n    2. Check if CRDs are installed\n\n        ```shell\n        kubectl get crds | grep cyclops-ui\n        ```\n\n       Should write:\n\n        ```\n        modules.cyclops-ui.com             2025-04-26T15:28:18Z\n        templateauthrules.cyclops-ui.com   2025-04-26T15:28:18Z\n        templatestores.cyclops-ui.com      2025-04-26T15:28:18Z\n        ```\n\n2. Install Cyclops MCP server with the following command:\n\n    ```shell\n    kubectl apply -f https://raw.githubusercontent.com/cyclops-ui/mcp-cyclops/refs/heads/main/install/mcp-server.yaml\n    ```\n\n3. You can now expose the `cyclops-mcp` service. To test your MCP server, you can port-forward it:\n\n    ```shell\n    kubectl port-forward svc/cyclops-mcp -n cyclops 8000:8000\n    ```\n\n4. Add your Cyclops MCP server host, or in case you are testing it, the [localhost](http://localhost) address where you port-forwarded the MCP service:\n\n    ```json\n    {\n      \"mcpServers\": {\n        \"mcp-cyclops\": {\n          \"url\": \"http://localhost:8000/sse\"\n        }\n      }\n    }\n    ```\n---\n\n</details>\n\n## Tools\n\n| Tool                  | Description                                                                                                                        |\n|-----------------------|------------------------------------------------------------------------------------------------------------------------------------|\n| `create_module`       | Create new Module. Before calling this tool, make sure to call `get_template_schema` to validate values for the given template     |\n| `get_module`          | Fetch Module by name                                                                                                               |\n| `list_modules`        | List all Cyclops Modules                                                                                                           |\n| `update_module`       | Update Module by Name. Before calling this tool, make sure to call `get_template_schema` to validate values for the given template |\n| `get_template_schema` | Returns JSON schema for the given template. Needs to be checked before calling `create_module` tool                                |\n| `get_template_store`  | Fetch Template Store by Name                                                                                                       |\n| `list_template_store` | List Template Stores from cluster                                                                                                  |\n\n",
   "category": "AI Tools",
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-cyclops": {
-          "command": "mcp-cyclops",
-          "args": [],
-          "env": {}
-        },
-        "mcp-cyclops-configured": {
-          "command": "mcp-cyclops",
-          "args": [],
-          "env": {
-            "KUBECONFIG": "/path/to/your/kubeconfig"
-          }
+      "mcp-cyclops": {
+        "command": "mcp-cyclops",
+        "args": [],
+        "env": {}
+      },
+      "mcp-cyclops-configured": {
+        "command": "mcp-cyclops",
+        "args": [],
+        "env": {
+          "KUBECONFIG": "/path/to/your/kubeconfig"
         }
       }
     },

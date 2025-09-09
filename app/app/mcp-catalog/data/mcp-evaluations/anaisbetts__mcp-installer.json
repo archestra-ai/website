@@ -8,29 +8,38 @@
     "name": "anaisbetts"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "npx",
+    "args": [
+      "@anaisbetts/mcp-installer"
+    ],
+    "env": {
+      "GITHUB_PERSONAL_ACCESS_TOKEN": "${user_config.github_personal_access_token}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "github_personal_access_token": {
+      "type": "string",
+      "title": "GitHub Personal Access Token",
+      "description": "Your GitHub Personal Access Token, used when installing GitHub-based MCP servers.",
+      "sensitive": true,
+      "required": false
+    }
+  },
   "readme": "# mcp-installer - A MCP Server to install MCP Servers\n\nThis server is a server that installs other MCP servers for you. Install it, and you can ask Claude to install MCP servers hosted in npm or PyPi for you. Requires `npx` and `uv` to be installed for node and Python servers respectively.\n\n![image](https://github.com/user-attachments/assets/d082e614-b4bc-485c-a7c5-f80680348793)\n\n### How to install:\n\nPut this into your `claude_desktop_config.json` (either at `~/Library/Application Support/Claude` on macOS or `C:\\Users\\NAME\\AppData\\Roaming\\Claude` on Windows):\n\n```json\n  \"mcpServers\": {\n    \"mcp-installer\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"@anaisbetts/mcp-installer\"\n      ]\n    }\n  }\n```\n\n### Example prompts\n\n> Hey Claude, install the MCP server named mcp-server-fetch\n\n> Hey Claude, install the @modelcontextprotocol/server-filesystem package as an MCP server. Use ['/Users/anibetts/Desktop'] for the arguments\n\n> Hi Claude, please install the MCP server at /Users/anibetts/code/mcp-youtube, I'm too lazy to do it myself.\n\n> Install the server @modelcontextprotocol/server-github. Set the environment variable GITHUB_PERSONAL_ACCESS_TOKEN to '1234567890'\n",
   "category": "Development",
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-installer": {
-          "command": "npx",
-          "args": ["-y", "@anaisbetts/mcp-installer"],
-          "env": {}
-        }
+      "mcp-installer": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@anaisbetts/mcp-installer"
+        ],
+        "env": {}
       }
     },
     "oauth": {

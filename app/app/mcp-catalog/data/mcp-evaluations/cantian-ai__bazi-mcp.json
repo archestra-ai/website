@@ -8,13 +8,11 @@
     "name": "cantian-ai"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "bazi-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +23,12 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "cantian-ai-bazi-mcp": {
-          "command": "npx",
-          "args": ["bazi-mcp"],
-          "env": {}
-        }
+      "cantian-ai-bazi-mcp": {
+        "command": "npx",
+        "args": [
+          "bazi-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {

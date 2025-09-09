@@ -8,13 +8,12 @@
     "name": "janreges"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "@janreges/ai-distiller-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,14 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "janreges-ai-distiller-mcp": {
-          "command": "aid",
-          "args": ["--mcp-server", "--port", "8080"],
-          "env": {}
-        }
+      "janreges-ai-distiller-mcp": {
+        "command": "aid",
+        "args": [
+          "--mcp-server",
+          "--port",
+          "8080"
+        ],
+        "env": {}
       }
     },
     "oauth": {

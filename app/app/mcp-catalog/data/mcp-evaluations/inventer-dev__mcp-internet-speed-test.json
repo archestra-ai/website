@@ -8,13 +8,9 @@
     "name": "inventer-dev"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "mcp-internet-speed-test",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,37 +21,53 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-internet-speed-test": {
-          "command": "mcp-internet-speed-test",
-          "args": [],
-          "env": {}
-        },
-        "mcp-internet-speed-test-uvx": {
-          "command": "uvx",
-          "args": ["mcp-internet-speed-test"],
-          "env": {}
-        },
-        "mcp-internet-speed-test-docker": {
-          "command": "docker",
-          "args": ["run", "-it", "--rm", "-v", "$(pwd):/app", "-w", "/app", "mcp-internet-speed-test"],
-          "env": {}
-        },
-        "mcp-internet-speed-test-dev": {
-          "command": "uv",
-          "args": ["run", "python", "-m", "mcp_internet_speed_test.main"],
-          "env": {}
-        },
-        "mcp-internet-speed-test-configured": {
-          "command": "mcp-internet-speed-test",
-          "args": [],
-          "env": {}
-        },
-        "mcp-internet-speed-test-configured-uvx": {
-          "command": "uvx",
-          "args": ["mcp-internet-speed-test"],
-          "env": {}
-        }
+      "mcp-internet-speed-test": {
+        "command": "mcp-internet-speed-test",
+        "args": [],
+        "env": {}
+      },
+      "mcp-internet-speed-test-uvx": {
+        "command": "uvx",
+        "args": [
+          "mcp-internet-speed-test"
+        ],
+        "env": {}
+      },
+      "mcp-internet-speed-test-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-it",
+          "--rm",
+          "-v",
+          "$(pwd):/app",
+          "-w",
+          "/app",
+          "mcp-internet-speed-test"
+        ],
+        "env": {}
+      },
+      "mcp-internet-speed-test-dev": {
+        "command": "uv",
+        "args": [
+          "run",
+          "python",
+          "-m",
+          "mcp_internet_speed_test.main"
+        ],
+        "env": {}
+      },
+      "mcp-internet-speed-test-configured": {
+        "command": "mcp-internet-speed-test",
+        "args": [],
+        "env": {}
+      },
+      "mcp-internet-speed-test-configured-uvx": {
+        "command": "uvx",
+        "args": [
+          "mcp-internet-speed-test"
+        ],
+        "env": {}
       }
     },
     "oauth": {

@@ -8,13 +8,12 @@
     "name": "hileamlakB"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "-m",
+      "server.main"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,17 +24,21 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "prims": {
-          "command": "python",
-          "args": ["-m", "server.main"],
-          "env": {}
-        },
-        "prims-docker": {
-          "command": "docker",
-          "args": ["run", "prims-docker"],
-          "env": {}
-        }
+      "prims": {
+        "command": "python",
+        "args": [
+          "-m",
+          "server.main"
+        ],
+        "env": {}
+      },
+      "prims-docker": {
+        "command": "docker",
+        "args": [
+          "run",
+          "prims-docker"
+        ],
+        "env": {}
       }
     },
     "oauth": {

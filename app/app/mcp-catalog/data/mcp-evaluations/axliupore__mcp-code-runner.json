@@ -8,13 +8,12 @@
     "name": "axliupore"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "docker",
+    "args": [
+      "run",
+      "axliupore/mcp-code-runner"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,11 +24,12 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "axliupore-mcp-code-runner": {
-          "command": "npx",
-          "args": ["-y", "@axliupore/mcp-code-runner"]
-        }
+      "axliupore-mcp-code-runner": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@axliupore/mcp-code-runner"
+        ]
       }
     },
     "oauth": {

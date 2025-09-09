@@ -8,13 +8,13 @@
     "name": "open-strategy-partners"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": [
+      "--from",
+      "git+https://github.com/open-strategy-partners/osp_marketing_tools@main",
+      "osp_marketing_tools"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,16 +25,14 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "osp_marketing_tools": {
-          "command": "uvx",
-          "args": [
-            "--from",
-            "git+https://github.com/open-strategy-partners/osp_marketing_tools@main",
-            "osp_marketing_tools"
-          ],
-          "env": {}
-        }
+      "osp_marketing_tools": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/open-strategy-partners/osp_marketing_tools@main",
+          "osp_marketing_tools"
+        ],
+        "env": {}
       }
     },
     "oauth": {

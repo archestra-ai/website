@@ -8,13 +8,9 @@
     "name": "yikakia"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "${__dirname}/server/godoc-mcp-server",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +21,10 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "godoc-mcp-server-stdio": {
-          "command": "godoc-mcp-server",
-          "args": [],
-          "env": {}
-        }
+      "godoc-mcp-server-stdio": {
+        "command": "godoc-mcp-server",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {

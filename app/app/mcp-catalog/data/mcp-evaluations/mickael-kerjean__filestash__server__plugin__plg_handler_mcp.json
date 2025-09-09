@@ -8,13 +8,11 @@
     "name": "mickael-kerjean"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": [
+      "${__dirname}/server/index.js"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],

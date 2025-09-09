@@ -8,13 +8,12 @@
     "name": "g0t4"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "mcp-server-commands"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,27 +24,39 @@
   "quality_score": 64,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-commands": {
-          "command": "npx",
-          "args": ["mcp-server-commands"],
-          "env": {}
-        },
-        "mcp-server-commands-local-build": {
-          "command": "/path/to/mcp-server-commands/build/index.js",
-          "args": [],
-          "env": {}
-        },
-        "mcp-server-commands-via-mcpo": {
-          "command": "uvx",
-          "args": ["mcpo", "--port", "3010", "--api-key", "supersecret", "--", "npx", "mcp-server-commands"],
-          "env": {}
-        },
-        "mcp-server-commands-verbose": {
-          "command": "npx",
-          "args": ["mcp-server-commands", "--verbose"],
-          "env": {}
-        }
+      "mcp-server-commands": {
+        "command": "npx",
+        "args": [
+          "mcp-server-commands"
+        ],
+        "env": {}
+      },
+      "mcp-server-commands-local-build": {
+        "command": "/path/to/mcp-server-commands/build/index.js",
+        "args": [],
+        "env": {}
+      },
+      "mcp-server-commands-via-mcpo": {
+        "command": "uvx",
+        "args": [
+          "mcpo",
+          "--port",
+          "3010",
+          "--api-key",
+          "supersecret",
+          "--",
+          "npx",
+          "mcp-server-commands"
+        ],
+        "env": {}
+      },
+      "mcp-server-commands-verbose": {
+        "command": "npx",
+        "args": [
+          "mcp-server-commands",
+          "--verbose"
+        ],
+        "env": {}
       }
     },
     "oauth": {

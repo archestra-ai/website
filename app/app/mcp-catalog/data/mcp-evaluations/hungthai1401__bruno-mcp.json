@@ -8,13 +8,12 @@
     "name": "hungthai1401"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "bruno-mcp"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,12 +24,13 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "bruno-mcp": {
-          "command": "npx",
-          "args": ["-y", "bruno-mcp"],
-          "env": {}
-        }
+      "bruno-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "bruno-mcp"
+        ],
+        "env": {}
       }
     },
     "oauth": {
