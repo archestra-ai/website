@@ -172,7 +172,8 @@
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "evaluation_model": "gemini-2.5-flash",
   "raw_dependencies": "=== pyproject.toml ===\n[project]\nname = \"fastn\"\nversion = \"0.1.0\"\ndescription = \"A simple MCP fastn server\"\nreadme = \"README.md\"\nrequires-python = \">=3.10\"\ndependencies = [\n    \"httpx>=0.28.1\",\n    \"mcp[cli]>=1.2.0\",\n]\n\n[build-system]\nrequires = [ \"hatchling\",]\nbuild-backend = \"hatchling.build\"\n\n[tool.hatch.build.targets.wheel]\npackages = [\".\"]\n\n[project.scripts]\nfastn = \"fastn:main\"\n\n",

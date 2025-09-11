@@ -12,6 +12,7 @@ export async function GET(request: NextRequest) {
       q: searchParams.get('q') || undefined,
       category: searchParams.get('category') || undefined,
       language: searchParams.get('language') || undefined,
+      worksInArchestra: searchParams.get('worksInArchestra') || undefined,
       limit: searchParams.get('limit') || undefined,
       offset: searchParams.get('offset') || undefined,
       sortBy: searchParams.get('sortBy') || undefined,
@@ -28,6 +29,7 @@ export async function GET(request: NextRequest) {
       q: query = '',
       category = '',
       language = '',
+      worksInArchestra,
       limit = 20,
       offset = 0,
       sortBy = 'quality',
@@ -45,6 +47,7 @@ export async function GET(request: NextRequest) {
         github_info,
         category: serverCategory,
         programming_language: programmingLanguage,
+        archestra_config,
       }) => {
         // Search query filter
         if (query) {
@@ -73,6 +76,14 @@ export async function GET(request: NextRequest) {
         // Language filter
         if (language && programmingLanguage !== language) {
           return false;
+        }
+
+        // Works in Archestra filter
+        if (worksInArchestra !== undefined) {
+          const serverWorksInArchestra = archestra_config?.works_in_archestra || false;
+          if (worksInArchestra !== serverWorksInArchestra) {
+            return false;
+          }
         }
 
         return true;

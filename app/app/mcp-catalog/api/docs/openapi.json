@@ -346,9 +346,12 @@
                   }
                 },
                 "required": ["required"]
+              },
+              "works_in_archestra": {
+                "type": "boolean"
               }
             },
-            "required": ["client_config_permutations", "oauth"]
+            "required": ["client_config_permutations", "oauth", "works_in_archestra"]
           },
           "github_info": {
             "type": "object",
@@ -834,9 +837,12 @@
                   }
                 },
                 "required": ["required"]
+              },
+              "works_in_archestra": {
+                "type": "boolean"
               }
             },
-            "required": ["client_config_permutations", "oauth"]
+            "required": ["client_config_permutations", "oauth", "works_in_archestra"]
           },
           "github_info": {
             "type": "object",
@@ -1102,6 +1108,16 @@
             "required": false,
             "description": "Filter by programming language",
             "name": "language",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "boolean",
+              "description": "Filter by whether the server is confirmed to work in the Archestra Desktop app"
+            },
+            "required": false,
+            "description": "Filter by whether the server is confirmed to work in the Archestra Desktop app",
+            "name": "worksInArchestra",
             "in": "query"
           },
           {

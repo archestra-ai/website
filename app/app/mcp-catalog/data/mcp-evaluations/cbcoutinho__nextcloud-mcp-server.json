@@ -69,7 +69,8 @@
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "evaluation_model": "gemini-2.5-flash",
   "raw_dependencies": "=== pyproject.toml ===\n[project]\nname = \"nextcloud-mcp-server\"\nversion = \"0.7.1\"\ndescription = \"\"\nauthors = [\n    {name = \"Chris Coutinho\",email = \"chris@coutinho.io\"}\n]\nreadme = \"README.md\"\nrequires-python = \">=3.11\"\ndependencies = [\n    \"mcp[cli] (>=1.10,<1.11)\",\n    \"httpx (>=0.28.1,<0.29.0)\",\n    \"pillow (>=11.2.1,<12.0.0)\",\n    \"icalendar (>=6.0.0,<7.0.0)\",\n    \"pythonvcard4>=0.2.0\",\n]\n\n[tool.pytest.ini_options]\nasyncio_mode = \"auto\"\nasyncio_default_test_loop_scope = \"session\"\nasyncio_default_fixture_loop_scope = \"session\"\nlog_cli = 1\nlog_cli_level = \"INFO\"\nlog_level = \"INFO\"\nmarkers = [\n    \"integration: marks tests as slow (deselect with '-m \\\"not slow\\\"')\"\n]\n\n[tool.commitizen]\nname = \"cz_conventional_commits\"\ntag_format = \"v$version\"\nversion_scheme = \"pep440\"\nversion_provider = \"uv\"\nupdate_changelog_on_bump = true\nmajor_version_zero = true\n\n[build-system]\nrequires = [\"poetry-core>=2.0.0,<3.0.0\"]\nbuild-backend = \"poetry.core.masonry.api\"\n\n[dependency-groups]\ndev = [\n    \"commitizen>=4.8.2\",\n    \"ipython>=9.2.0\",\n    \"pytest>=8.3.5\",\n    \"pytest-asyncio>=1.0.0\",\n    \"pytest-cov>=6.1.1\",\n    \"ruff>=0.11.13\",\n]\n",

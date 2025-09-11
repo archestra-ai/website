@@ -73,7 +73,8 @@
       "provider": null,
       "required": false
     },
-    "client_config_permutations": null
+    "client_config_permutations": null,
+    "works_in_archestra": false
   },
   "evaluation_model": "gemini-2.5-pro",
   "raw_dependencies": null,
