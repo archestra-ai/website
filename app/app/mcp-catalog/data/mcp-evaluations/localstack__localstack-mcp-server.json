@@ -66,7 +66,8 @@
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "evaluation_model": null,
   "raw_dependencies": null,

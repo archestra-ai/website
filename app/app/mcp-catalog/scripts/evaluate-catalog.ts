@@ -986,6 +986,11 @@ If no run command found, respond with: {}`;
       return {
         ...server,
         archestra_config: {
+          /**
+           * by default, new servers should go through a manual human validation to ensure
+           * that they work in the Archestra Desktop app
+           */
+          works_in_archestra: false,
           oauth: server.archestra_config?.oauth || { provider: null, required: false },
           ...server.archestra_config,
           client_config_permutations: result,
@@ -1386,6 +1391,11 @@ If no configuration found, respond: {"oauth": { "provider": null, "required": fa
       return {
         ...server,
         archestra_config: {
+          /**
+           * by default, new servers should go through a manual human validation to ensure
+           * that they work in the Archestra Desktop app
+           */
+          works_in_archestra: false,
           client_config_permutations: server.archestra_config?.client_config_permutations || null,
           ...server.archestra_config,
           oauth: result.oauth,

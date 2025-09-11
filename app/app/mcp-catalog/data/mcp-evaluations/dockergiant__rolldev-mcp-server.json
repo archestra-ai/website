@@ -66,7 +66,8 @@
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "evaluation_model": "gemini-2.5-flash",
   "raw_dependencies": "=== package.json ===\n{\n  \"name\": \"@disrex/rolldev-mcp-server\",\n  \"version\": \"1.0.0\",\n  \"description\": \"MCP Server for RollDev + Magento 2 development workflow with project initialization\",\n  \"license\": \"MIT\",\n  \"author\": \"RollDev Team & Disrex\",\n  \"homepage\": \"https://github.com/dockergiant/rolldev-mcp-server\",\n  \"bugs\": \"https://github.com/dockergiant/rolldev-mcp-server/issues\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/dockergiant/rolldev-mcp-server.git\"\n  },\n  \"keywords\": [\n    \"mcp\",\n    \"model-context-protocol\",\n    \"rolldev\",\n    \"magento\",\n    \"magento2\",\n    \"development\",\n    \"php\",\n    \"mysql\",\n    \"docker\",\n    \"project-initialization\",\n    \"environment-setup\",\n    \"redis\",\n    \"opensearch\",\n    \"claude\",\n    \"llm\",\n    \"ai\"\n  ],\n  \"type\": \"module\",\n  \"scripts\": {\n    \"start\": \"node server.js\",\n    \"dev\": \"node --inspect server.js\",\n    \"test\": \"jest\",\n    \"test:watch\": \"jest --watch\",\n    \"test:coverage\": \"jest --coverage\"\n  },\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^0.4.0\"\n  },\n  \"bin\": {\n    \"rolldev-mcp-server\": \"server.js\"\n  },\n  \"main\": \"server.js\",\n  \"files\": [\n    \"server.js\",\n    \"README.md\",\n    \"LICENSE\"\n  ],\n  \"engines\": {\n    \"node\": \">=18.0.0\"\n  },\n  \"devDependencies\": {\n    \"jest\": \"^30.0.5\"\n  }\n}\n",

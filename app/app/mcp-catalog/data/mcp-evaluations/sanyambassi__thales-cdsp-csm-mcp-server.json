@@ -147,7 +147,8 @@
           "LOG_LEVEL": "INFO"
         }
       }
-    }
+    },
+    "works_in_archestra": false
   },
   "evaluation_model": "gemini-2.5-pro",
   "raw_dependencies": "=== pyproject.toml ===\n[project]\nname = \"thales-cdsp-csm-mcp-server\"\nversion = \"1.0.0\"\ndescription = \"Thales CDSP CSM (CipherTrust Secrets Management) Secrets Management, powered by Akeyless, MCP Server\"\nauthors = [\n    {name = \"Sanyam Bassi\", email = \"sanyam.bassi@thalesgroup.com\"}\n]\nreadme = \"README.md\"\nlicense = {text = \"MIT\"}\nrequires-python = \">=3.10\"\ndependencies = [\n    \"fastmcp>=2.0.0\",\n    \"httpx>=0.25.0\",\n    \"pydantic>=2.0.0\",\n    \"python-dotenv>=1.0.0\",\n    \"union>=0.1.190\",\n    \"rich>=13.0.0\",\n]\n\n[project.optional-dependencies]\ndev = [\n    \"requests>=2.25.0\",\n    \"pytest>=7.0.0\",\n    \"pytest-asyncio>=0.21.0\",\n]\n\n[project.scripts]\nthales-cdsp-csm-mcp-server = \"src.thales_cdsp_csm_mcp_server.server:main\"\n\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n[tool.uv]\ndev-dependencies = [\n    \"requests>=2.25.0\",\n    \"pytest>=7.0.0\",\n    \"pytest-asyncio>=0.21.0\",\n]\n\n[tool.pytest.ini_options]\nasyncio_mode = \"auto\"\ntestpaths = [\"tests\"]\npython_files = [\"test_*.py\"]\npython_classes = [\"Test*\"]\npython_functions = [\"test_*\"]\naddopts = \"-v --tb=short\"\n\n \n\n=== requirements.txt ===\nfastmcp>=2.0.0\nhttpx>=0.25.0\npydantic>=2.0.0\npython-dotenv>=1.0.0\nunion>=0.1.190\nrich>=13.0.0 ",
