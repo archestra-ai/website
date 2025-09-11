@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import CookieSettingsLink from '@components/CookieSettingsLink';
 import constants from '@constants';
@@ -17,7 +18,13 @@ export default function Footer() {
               © {new Date().getFullYear()} {companyAlternateName}. All rights reserved.
             </p>
             <p className="text-xs text-gray-400 mt-1">{companyName} Inc.</p>
-            <div className="mt-2">
+            <div className="mt-2 flex flex-col sm:flex-row gap-2 sm:gap-4 text-xs">
+              <Link href="/privacy" className="text-gray-500 hover:text-gray-700 transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-gray-500 hover:text-gray-700 transition-colors">
+                Terms of Service
+              </Link>
               <CookieSettingsLink />
             </div>
           </div>
