@@ -60,27 +60,16 @@ export default function TermsContent() {
       remarkPlugins={[remarkGfm]}
       components={{
         p: ({ node, ...props }) => <p {...props} className="text-base text-gray-700 leading-relaxed mb-4" />,
-        h1: ({ node, ...props }) => (
-          <h1 {...props} className="text-4xl font-bold text-gray-900 mb-8" />
-        ),
-        h2: ({ node, ...props }) => (
-          <h2 {...props} className="text-2xl font-semibold text-gray-900 mb-4 mt-8" />
-        ),
+        h1: ({ node, ...props }) => <h1 {...props} className="text-4xl font-bold text-gray-900 mb-8" />,
+        h2: ({ node, ...props }) => <h2 {...props} className="text-2xl font-semibold text-gray-900 mb-4 mt-8" />,
         h3: ({ node, ...props }) => <h3 {...props} className="text-xl font-semibold text-gray-900 mb-3 mt-6" />,
         ul: ({ node, ...props }) => <ul {...props} className="list-disc list-inside mb-4 space-y-2 pl-4" />,
-        ol: ({ node, ...props }) => (
-          <ol {...props} className="list-decimal list-inside mb-4 space-y-2 pl-4" />
-        ),
+        ol: ({ node, ...props }) => <ol {...props} className="list-decimal list-inside mb-4 space-y-2 pl-4" />,
         li: ({ node, ...props }) => <li {...props} className="text-base text-gray-700 leading-relaxed" />,
-        a: ({ node, ...props }) => (
-          <a {...props} className="text-blue-600 hover:underline" />
-        ),
+        a: ({ node, ...props }) => <a {...props} className="text-blue-600 hover:underline" />,
         strong: ({ node, ...props }) => <strong {...props} className="font-semibold text-gray-900" />,
         blockquote: ({ node, ...props }) => (
-          <blockquote
-            {...props}
-            className="border-l-4 border-gray-300 pl-6 my-6 text-base text-gray-600 italic"
-          />
+          <blockquote {...props} className="border-l-4 border-gray-300 pl-6 my-6 text-base text-gray-600 italic" />
         ),
       }}
     >
