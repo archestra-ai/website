@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
+
       <main className="flex-1 relative">
         {/* Grid Background */}
         <div
@@ -25,14 +25,14 @@ export default function PrivacyPolicyPage() {
             backgroundSize: '40px 40px',
           }}
         />
-        
+
         <div className="container relative z-10 mx-auto px-4 py-12 max-w-4xl">
           <div className="bg-white rounded-lg shadow-sm p-8">
             <PrivacyContent />
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );
