@@ -8,13 +8,9 @@
     "name": "PatrickPalmer"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/src/maya_mcp_server.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "MayaMCP": {
-          "command": "[FULL PATH TO MayaMCP PROJECT]/.venv/Scripts/python.exe",
-          "args": ["[FULL PATH TO MayaMCP PROJECT]/src/maya_mcp_server.py"],
-          "env": {}
-        }
+      "MayaMCP": {
+        "command": "[FULL PATH TO MayaMCP PROJECT]/.venv/Scripts/python.exe",
+        "args": ["[FULL PATH TO MayaMCP PROJECT]/src/maya_mcp_server.py"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "PatrickPalmer",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:15.339Z",
+  "last_scraped_at": "2025-09-09T13:05:12.383Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

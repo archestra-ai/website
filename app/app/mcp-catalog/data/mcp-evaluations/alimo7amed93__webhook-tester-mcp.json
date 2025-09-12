@@ -8,13 +8,9 @@
     "name": "alimo7amed93"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "fastmcp",
+    "args": ["run", "${__dirname}/Webhook-test_mcp/server.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "webhook-tester-mcp": {
-          "command": "fastmcp",
-          "args": ["run", "{{fullPath}}\\Webhook-test_mcp\\server.py"],
-          "env": {}
-        }
+      "webhook-tester-mcp": {
+        "command": "fastmcp",
+        "args": ["run", "{{fullPath}}\\Webhook-test_mcp\\server.py"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "alimo7amed93",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:15:32.826Z",
+  "last_scraped_at": "2025-09-09T13:05:34.651Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

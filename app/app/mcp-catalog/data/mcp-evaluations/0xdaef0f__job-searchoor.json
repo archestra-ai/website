@@ -8,13 +8,9 @@
     "name": "0xDAEF0F"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "job-searchoor"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 36,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "job-searchoor": {
-          "command": "npx",
-          "args": ["-y", "job-searchoor"],
-          "env": {}
-        }
+      "job-searchoor": {
+        "command": "npx",
+        "args": ["-y", "job-searchoor"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "0xDAEF0F",
@@ -53,7 +48,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:23:28.917Z",
+  "last_scraped_at": "2025-09-09T13:06:25.353Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

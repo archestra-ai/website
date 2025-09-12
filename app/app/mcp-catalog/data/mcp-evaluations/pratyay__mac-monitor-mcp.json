@@ -8,13 +8,9 @@
     "name": "Pratyay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/src/monitor.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mac-monitor-mcp": {
-          "command": "python",
-          "args": ["src/monitor.py"],
-          "env": {}
-        }
+      "mac-monitor-mcp": {
+        "command": "python",
+        "args": ["src/monitor.py"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "Pratyay",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:16:35.426Z",
+  "last_scraped_at": "2025-09-09T13:05:40.983Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

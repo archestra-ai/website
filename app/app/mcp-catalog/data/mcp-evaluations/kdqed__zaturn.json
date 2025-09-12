@@ -8,13 +8,9 @@
     "name": "kdqed"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/server/main.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,13 +20,12 @@
   "category": "Data Science",
   "quality_score": 39,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "kdqed",
@@ -47,7 +42,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:17:26.670Z",
+  "last_scraped_at": "2025-09-09T13:06:04.940Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

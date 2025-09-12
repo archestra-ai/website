@@ -8,37 +8,43 @@
     "name": "JamesANZ"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "node",
+    "args": ["${__dirname}/build/index.js"],
+    "env": {
+      "MONGODB_URI": "${user_config.mongodb_uri}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
-  "readme": "# Memory MCP\n\nA Model Context Protocol (MCP) server for logging and retrieving memories from LLM conversations.\n\n## Features\n\n- **Save Memories**: Store memories from LLM conversations with timestamps and LLM identification\n- **Retrieve Memories**: Get all stored memories with detailed metadata\n- **Add Memories**: Append new memories without overwriting existing ones\n- **Clear Memories**: Remove all stored memories\n- **MongoDB Storage**: Persistent storage using MongoDB database\n\n## Installation\n\n1. Install dependencies:\n\n```bash\nnpm install\n```\n\n2. Build the project:\n\n```bash\nnpm run build\n```\n\n## Configuration\n\nSet the MongoDB connection string via environment variable:\n\n```bash\nexport MONGODB_URI=\"mongodb://localhost:27017\"\n```\n\nDefault: `mongodb://localhost:27017`\n\n## Usage\n\n### Available Tools\n\n1. **save-memories**: Save all memories to the database, overwriting existing ones\n   - `memories`: Array of memory strings to save\n   - `llm`: Name of the LLM (e.g., 'chatgpt', 'claude')\n   - `userId`: Optional user identifier\n\n2. **get-memories**: Retrieve all memories from the database\n   - No parameters required\n\n3. **add-memories**: Add new memories to the database without overwriting existing ones\n   - `memories`: Array of memory strings to add\n   - `llm`: Name of the LLM (e.g., 'chatgpt', 'claude')\n   - `userId`: Optional user identifier\n\n4. **clear-memories**: Clear all memories from the database\n   - No parameters required\n\n### Example Usage in LLM\n\n1. **Save all memories** (overwrites existing):\n\n   ```\n   User: \"Save all my memories from this conversation to the MCP server\"\n   LLM: [Uses save-memories tool with current conversation memories]\n   ```\n\n2. **Retrieve all memories**:\n\n   ```\n   User: \"Get all my memories from the MCP server\"\n   LLM: [Uses get-memories tool to retrieve stored memories]\n   ```\n\n3. **Add new memories** (preserves existing):\n   ```\n   User: \"Add these new memories to my existing ones\"\n   LLM: [Uses add-memories tool to append new memories]\n   ```\n\n## Database Schema\n\nMemories are stored in MongoDB with the following structure:\n\n```javascript\n{\n  _id: ObjectId,\n  memories: string[],        // Array of memory strings\n  timestamp: Date,          // When memories were saved\n  llm: string,             // LLM identifier (e.g., 'chatgpt', 'claude')\n  userId?: string          // Optional user identifier\n}\n```\n\n## Development\n\nTo run in development mode:\n\n```bash\nnpm run build\nnode build/index.js\n```\n",
+  "user_config": {
+    "mongodb_uri": {
+      "type": "string",
+      "title": "MongoDB Connection URI",
+      "description": "The connection string for the MongoDB database.",
+      "required": false,
+      "default": "mongodb://localhost:27017",
+      "sensitive": false
+    }
+  },
+  "readme": "# Memory MCP\n[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/JamesANZ/memory-mcp)](https://archestra.ai/mcp-catalog/jamesanz__memory-mcp)\n\nA Model Context Protocol (MCP) server for logging and retrieving memories from LLM conversations with intelligent context window caching capabilities.\n\n## Features\n\n- **Save Memories**: Store memories from LLM conversations with timestamps and LLM identification\n- **Retrieve Memories**: Get all stored memories with detailed metadata\n- **Add Memories**: Append new memories without overwriting existing ones\n- **Clear Memories**: Remove all stored memories\n- **Context Window Caching**: Archive, retrieve, and summarize conversation context\n- **Relevance Scoring**: Automatically score archived content relevance to current context\n- **Tag-based Search**: Categorize and search context by tags\n- **Conversation Orchestration**: External system to manage context window caching\n- **MongoDB Storage**: Persistent storage using MongoDB database\n\n## Installation\n\n1. Install dependencies:\n\n```bash\nnpm install\n```\n\n2. Build the project:\n\n```bash\nnpm run build\n```\n\n## Configuration\n\nSet the MongoDB connection string via environment variable:\n\n```bash\nexport MONGODB_URI=\"mongodb://localhost:27017\"\n```\n\nDefault: `mongodb://localhost:27017`\n\n## Usage\n\n### Running the MCP Server\n\nStart the MCP server:\n\n```bash\nnpm start\n```\n\n### Running the Conversation Orchestrator Demo\n\nTry the interactive CLI demo:\n\n```bash\nnpm run cli\n```\n\nThe CLI demo allows you to:\n\n- Add messages to simulate conversation\n- See automatic archiving when context gets full\n- Trigger manual archiving and retrieval\n- Create summaries of archived content\n- Monitor conversation status and get recommendations\n\n### Basic Memory Tools\n\n1. **save-memories**: Save all memories to the database, overwriting existing ones\n   - `memories`: Array of memory strings to save\n   - `llm`: Name of the LLM (e.g., 'chatgpt', 'claude')\n   - `userId`: Optional user identifier\n\n2. **get-memories**: Retrieve all memories from the database\n   - No parameters required\n\n3. **add-memories**: Add new memories to the database without overwriting existing ones\n   - `memories`: Array of memory strings to add\n   - `llm`: Name of the LLM (e.g., 'chatgpt', 'claude')\n   - `userId`: Optional user identifier\n\n4. **clear-memories**: Clear all memories from the database\n   - No parameters required\n\n### Context Window Caching Tools\n\n5. **archive-context**: Archive context messages for a conversation with tags and metadata\n   - `conversationId`: Unique identifier for the conversation\n   - `contextMessages`: Array of context messages to archive\n   - `tags`: Tags for categorizing the archived content\n   - `llm`: Name of the LLM (e.g., 'chatgpt', 'claude')\n   - `userId`: Optional user identifier\n\n6. **retrieve-context**: Retrieve relevant archived context for a conversation\n   - `conversationId`: Unique identifier for the conversation\n   - `tags`: Optional tags to filter by\n   - `minRelevanceScore`: Minimum relevance score (0-1, default: 0.1)\n   - `limit`: Maximum number of items to return (default: 10)\n\n7. **score-relevance**: Score the relevance of archived context against current conversation context\n   - `conversationId`: Unique identifier for the conversation\n   - `currentContext`: Current conversation context to compare against\n   - `llm`: Name of the LLM (e.g., 'chatgpt', 'claude')\n\n8. **create-summary**: Create a summary of context items and link them to the summary\n   - `conversationId`: Unique identifier for the conversation\n   - `contextItems`: Context items to summarize\n   - `summaryText`: Human-provided summary text\n   - `llm`: Name of the LLM (e.g., 'chatgpt', 'claude')\n   - `userId`: Optional user identifier\n\n9. **get-conversation-summaries**: Get all summaries for a specific conversation\n   - `conversationId`: Unique identifier for the conversation\n\n10. **search-context-by-tags**: Search archived context and summaries by tags\n    - `tags`: Tags to search for\n\n### Example Usage in LLM\n\n#### Basic Memory Operations\n\n1. **Save all memories** (overwrites existing):\n\n   ```\n   User: \"Save all my memories from this conversation to the MCP server\"\n   LLM: [Uses save-memories tool with current conversation memories]\n   ```\n\n2. **Retrieve all memories**:\n   ```\n   User: \"Get all my memories from the MCP server\"\n   LLM: [Uses get-memories tool to retrieve stored memories]\n   ```\n\n#### Context Window Caching Workflow\n\n1. **Archive context when window gets full**:\n\n   ```\n   User: \"The conversation is getting long, archive the early parts\"\n   LLM: [Uses archive-context tool to store old messages with tags]\n   ```\n\n2. **Score relevance of archived content**:\n\n   ```\n   User: \"How relevant is the archived content to our current discussion?\"\n   LLM: [Uses score-relevance tool to evaluate archived content]\n   ```\n\n3. **Retrieve relevant archived context**:\n\n   ```\n   User: \"Bring back the relevant archived information\"\n   LLM: [Uses retrieve-context tool to get relevant archived content]\n   ```\n\n4. **Create summaries for long conversations**:\n   ```\n   User: \"Summarize the early parts of our conversation\"\n   LLM: [Uses create-summary tool to condense archived content]\n   ```\n\n## Conversation Orchestration System\n\nThe `ConversationOrchestrator` class provides automatic context window management:\n\n### Key Features\n\n- **Automatic Archiving**: Archives content when context usage reaches 80%\n- **Intelligent Retrieval**: Retrieves relevant content when usage drops below 30%\n- **Relevance Scoring**: Uses keyword overlap to score archived content relevance\n- **Smart Tagging**: Automatically generates tags based on content keywords\n- **Conversation State Management**: Tracks active conversations and their context\n- **Recommendations**: Provides suggestions for optimal context management\n\n### Usage Example\n\n```typescript\nimport { ConversationOrchestrator } from \"./orchestrator.js\";\n\nconst orchestrator = new ConversationOrchestrator(8000); // 8k word limit\n\n// Add a message (triggers automatic archiving/retrieval)\nconst result = await orchestrator.addMessage(\n  \"conversation-123\",\n  \"This is a new message in the conversation\",\n  \"claude\",\n);\n\n// Check if archiving is needed\nif (result.archiveDecision?.shouldArchive) {\n  await orchestrator.executeArchive(result.archiveDecision, result.state);\n}\n\n// Check if retrieval is needed\nif (result.retrievalDecision?.shouldRetrieve) {\n  await orchestrator.executeRetrieval(result.retrievalDecision, result.state);\n}\n```\n\n## Database Schema\n\n### Basic Memory Structure\n\n```typescript\ntype BasicMemory = {\n  _id: ObjectId;\n  memories: string[]; // Array of memory strings\n  timestamp: Date; // When memories were saved\n  llm: string; // LLM identifier (e.g., 'chatgpt', 'claude')\n  userId?: string; // Optional user identifier\n};\n```\n\n### Extended Memory Structure (Context Caching)\n\n```typescript\ntype ExtendedMemory = {\n  _id: ObjectId;\n  memories: string[]; // Array of memory strings\n  timestamp: Date; // When memories were saved\n  llm: string; // LLM identifier\n  userId?: string; // Optional user identifier\n  conversationId?: string; // Unique conversation identifier\n  contextType?: \"active\" | \"archived\" | \"summary\";\n  relevanceScore?: number; // 0-1 relevance score\n  tags?: string[]; // Categorization tags\n  parentContextId?: ObjectId; // Reference to original content for summaries\n  messageIndex?: number; // Order within conversation\n  wordCount?: number; // Size tracking\n  summaryText?: string; // Condensed version\n};\n```\n\n## Context Window Caching Workflow\n\nThe orchestration system automatically:\n\n1. **Monitors conversation length** and context usage\n2. **Archives content** when context usage reaches 80%\n3. **Scores relevance** of archived content against current context\n4. **Retrieves relevant content** when usage drops below 30%\n5. **Creates summaries** to condense very long conversations\n\n### Key Features\n\n- **Conversation Grouping**: All archived content is linked to specific conversation IDs\n- **Relevance Scoring**: Simple keyword overlap scoring (can be enhanced with semantic similarity)\n- **Tag-based Organization**: Categorize content for easy retrieval\n- **Summary Linking**: Preserve links between summaries and original content\n- **Backward Compatibility**: All existing memory functions work unchanged\n- **Automatic Management**: No manual intervention required for basic operations\n\n## Development\n\nTo run in development mode:\n\n```bash\nnpm run build\nnode build/index.js\n```\n\nTo run the CLI demo:\n\n```bash\nnpm run cli\n```\n\n## License\n\nISC\n",
   "category": "AI Tools",
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "memory-mcp": {
-          "command": "node",
-          "args": ["build/index.js"],
-          "env": {
-            "MONGODB_URI": "mongodb://localhost:27017"
-          }
+      "memory-mcp": {
+        "command": "node",
+        "args": ["build/index.js"],
+        "env": {
+          "MONGODB_URI": "mongodb://localhost:27017"
         }
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "JamesANZ",
@@ -55,7 +61,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T10:21:02.449Z",
+  "last_scraped_at": "2025-09-09T13:06:20.792Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

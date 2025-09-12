@@ -8,13 +8,9 @@
     "name": "tubasasakunn"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": ["${__dirname}/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,13 +20,12 @@
   "category": "AI Tools",
   "quality_score": 56,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "tubasasakunn",
@@ -47,8 +42,8 @@
   },
   "programming_language": "Unknown",
   "framework": null,
-  "last_scraped_at": "2025-08-04T10:50:46.902Z",
-  "evaluation_model": "gemini-2.5-pro",
+  "last_scraped_at": "2025-09-09T13:06:41.677Z",
+  "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

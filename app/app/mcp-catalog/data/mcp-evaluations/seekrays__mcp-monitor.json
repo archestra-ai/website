@@ -8,13 +8,9 @@
     "name": "seekrays"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "./mcp-monitor",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-monitor-stdio": {
-          "command": "./mcp-monitor",
-          "args": [],
-          "env": {}
-        }
+      "mcp-monitor-stdio": {
+        "command": "./mcp-monitor",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "seekrays",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:22:28.480Z",
+  "last_scraped_at": "2025-09-09T13:06:24.473Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

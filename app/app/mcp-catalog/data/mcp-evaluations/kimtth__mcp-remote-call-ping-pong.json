@@ -8,13 +8,9 @@
     "name": "kimtth"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/mcp-api-server.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,23 +21,22 @@
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-api-server": {
-          "command": "python",
-          "args": ["mcp-api-server.py"],
-          "env": {}
-        },
-        "mcp-sse-server": {
-          "command": "python",
-          "args": ["mcp-sse-server.py"],
-          "env": {}
-        }
+      "mcp-api-server": {
+        "command": "python",
+        "args": ["mcp-api-server.py"],
+        "env": {}
+      },
+      "mcp-sse-server": {
+        "command": "python",
+        "args": ["mcp-sse-server.py"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "kimtth",
@@ -58,7 +53,7 @@
   },
   "programming_language": "HTML",
   "framework": null,
-  "last_scraped_at": "2025-08-03T21:01:01.929Z",
+  "last_scraped_at": "2025-09-09T13:06:48.822Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

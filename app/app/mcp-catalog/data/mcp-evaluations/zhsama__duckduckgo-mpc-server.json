@@ -8,13 +8,9 @@
     "name": "zhsama"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "duckduckgo-mcp-server"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,23 +21,22 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "duckduckgo-search-online": {
-          "command": "npx",
-          "args": ["-y", "duckduckgo-mcp-server"],
-          "env": {}
-        },
-        "duckduckgo-search-local": {
-          "command": "node",
-          "args": ["/path/to/duckduckgo-search/build/index.js"],
-          "env": {}
-        }
+      "duckduckgo-search-online": {
+        "command": "npx",
+        "args": ["-y", "duckduckgo-mcp-server"],
+        "env": {}
+      },
+      "duckduckgo-search-local": {
+        "command": "node",
+        "args": ["/path/to/duckduckgo-search/build/index.js"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "zhsama",
@@ -58,7 +53,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:30:10.205Z",
+  "last_scraped_at": "2025-09-09T13:06:32.378Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

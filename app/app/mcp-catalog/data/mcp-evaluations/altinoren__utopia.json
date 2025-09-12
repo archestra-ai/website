@@ -8,13 +8,9 @@
     "name": "altinoren"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "dotnet",
+    "args": ["run", "--project", "${__dirname}/Utopia.csproj"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "Utopia": {
-          "command": "dotnet",
-          "args": ["run", "--project", "<path_to_project_folder>/Utopia.csproj"],
-          "env": {}
-        }
+      "Utopia": {
+        "command": "dotnet",
+        "args": ["run", "--project", "<path_to_project_folder>/Utopia.csproj"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "altinoren",
@@ -53,7 +48,7 @@
   },
   "programming_language": "C#",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:55:54.676Z",
+  "last_scraped_at": "2025-09-09T13:06:41.669Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

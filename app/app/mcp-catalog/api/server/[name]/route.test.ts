@@ -19,9 +19,8 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
         long_description: 'A longer description for test server 1',
         author: { name: 'Test Author', email: 'test@example.com' },
         server: {
-          type: 'node',
-          entry_point: 'index.js',
-          mcp_config: { command: 'node', args: ['index.js'] },
+          command: 'node',
+          args: ['index.js'],
         },
         tools: [{ name: 'test-tool', description: 'A test tool' }],
         prompts: [{ name: 'test-prompt', text: 'A test prompt' }],
@@ -30,10 +29,9 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
         programming_language: 'TypeScript',
         quality_score: 85,
         archestra_config: {
-          client_config_permutations: {
-            mcpServers: {},
-          },
+          client_config_permutations: {},
           oauth: { provider: null, required: false },
+          works_in_archestra: false,
         },
         github_info: {
           owner: 'test-org',
@@ -78,9 +76,8 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
         long_description: 'A longer description for test server with path',
         author: { name: 'Another Author' },
         server: {
-          type: 'node',
-          entry_point: 'index.js',
-          mcp_config: { command: 'node', args: ['index.js'] },
+          command: 'node',
+          args: ['index.js'],
         },
         tools: [],
         prompts: [],
@@ -89,10 +86,9 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
         programming_language: 'Python',
         quality_score: null,
         archestra_config: {
-          client_config_permutations: {
-            mcpServers: {},
-          },
+          client_config_permutations: {},
           oauth: { provider: null, required: false },
+          works_in_archestra: false,
         },
         github_info: {
           owner: 'test-org-2',

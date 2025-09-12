@@ -8,13 +8,9 @@
     "name": "yoelbassin"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uv",
+    "args": ["--directory", "${__dirname}", "run", "main.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "gr-mcp": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/gr-mcp", "run", "main.py"],
-          "env": {}
-        }
+      "gr-mcp": {
+        "command": "uv",
+        "args": ["--directory", "/path/to/gr-mcp", "run", "main.py"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "yoelbassin",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:17:36.342Z",
+  "last_scraped_at": "2025-09-09T13:06:06.696Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

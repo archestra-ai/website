@@ -8,13 +8,9 @@
     "name": "dotemacs"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "${__dirname}/domain-lookup-mcp",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 34,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "domain-lookup-mcp": {
-          "command": "/path/to/domain-lookup-mcp/domain-lookup-mcp",
-          "args": [],
-          "env": {}
-        }
+      "domain-lookup-mcp": {
+        "command": "/path/to/domain-lookup-mcp/domain-lookup-mcp",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "dotemacs",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:58:29.706Z",
+  "last_scraped_at": "2025-09-09T13:06:46.658Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

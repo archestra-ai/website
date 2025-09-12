@@ -8,13 +8,9 @@
     "name": "hyperb1iss"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/lucidity_mcp/cli.py", "--transport", "sse", "--host", "127.0.0.1", "--port", "6969"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,38 +21,37 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "lucidity-mcp-stdio": {
-          "command": "lucidity-mcp",
-          "args": [],
-          "env": {}
-        },
-        "lucidity-mcp-sse-configured": {
-          "command": "lucidity-mcp",
-          "args": ["--transport", "sse", "--host", "127.0.0.1", "--port", "6969"],
-          "env": {}
-        },
-        "lucidity-mcp-debug": {
-          "command": "lucidity-mcp",
-          "args": ["--debug"],
-          "env": {}
-        },
-        "lucidity-mcp-log-file": {
-          "command": "lucidity-mcp",
-          "args": ["--log-file", "lucidity.log"],
-          "env": {}
-        },
-        "lucidity-mcp-sse": {
-          "command": "lucidity-mcp",
-          "args": ["--transport", "sse"],
-          "env": {}
-        }
+      "lucidity-mcp-stdio": {
+        "command": "lucidity-mcp",
+        "args": [],
+        "env": {}
+      },
+      "lucidity-mcp-sse-configured": {
+        "command": "lucidity-mcp",
+        "args": ["--transport", "sse", "--host", "127.0.0.1", "--port", "6969"],
+        "env": {}
+      },
+      "lucidity-mcp-debug": {
+        "command": "lucidity-mcp",
+        "args": ["--debug"],
+        "env": {}
+      },
+      "lucidity-mcp-log-file": {
+        "command": "lucidity-mcp",
+        "args": ["--log-file", "lucidity.log"],
+        "env": {}
+      },
+      "lucidity-mcp-sse": {
+        "command": "lucidity-mcp",
+        "args": ["--transport", "sse"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "hyperb1iss",
@@ -73,7 +68,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:21:22.753Z",
+  "last_scraped_at": "2025-09-09T13:06:23.691Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

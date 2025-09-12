@@ -8,15 +8,11 @@
     "name": "mobb-dev"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "slack-mcp-server",
-    "mcp_config": {
-      "command": "./slack-mcp-server",
-      "args": [],
-      "env": {
-        "SLACK_MCP_XOXC_TOKEN": "${user_config.slack_mcp_xoxc_token}",
-        "SLACK_MCP_XOXD_TOKEN": "${user_config.slack_mcp_xoxd_token}"
-      }
+    "command": "./slack-mcp-server",
+    "args": [],
+    "env": {
+      "SLACK_MCP_XOXC_TOKEN": "${user_config.slack_mcp_xoxc_token}",
+      "SLACK_MCP_XOXD_TOKEN": "${user_config.slack_mcp_xoxd_token}"
     }
   },
   "readme": null,
@@ -87,9 +83,10 @@
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "evaluation_model": "gemini-2.5-flash",
   "raw_dependencies": null,
-  "last_scraped_at": "2025-08-28T19:49:13.509Z"
+  "last_scraped_at": "2025-09-09T13:06:34.429Z"
 }

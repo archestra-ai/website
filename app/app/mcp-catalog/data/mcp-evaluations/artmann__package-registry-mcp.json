@@ -8,13 +8,9 @@
     "name": "artmann"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "package-registry-mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "package-registry": {
-          "command": "npx",
-          "args": ["-y", "package-registry-mcp"],
-          "env": {}
-        }
+      "package-registry": {
+        "command": "npx",
+        "args": ["-y", "package-registry-mcp"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "artmann",
@@ -53,7 +48,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:15:38.319Z",
+  "last_scraped_at": "2025-09-09T13:05:35.504Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

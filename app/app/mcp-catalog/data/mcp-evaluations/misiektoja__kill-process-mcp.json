@@ -8,13 +8,9 @@
     "name": "misiektoja"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uv",
+    "args": ["run", "--directory", "${__dirname}", "kill_process_mcp.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kill-process-mcp": {
-          "command": "uv",
-          "args": ["run", "--directory", "/path/to/kill-process-mcp", "kill_process_mcp.py"],
-          "env": {}
-        }
+      "kill-process-mcp": {
+        "command": "uv",
+        "args": ["run", "--directory", "/path/to/kill-process-mcp", "kill_process_mcp.py"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "misiektoja",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:13:10.147Z",
+  "last_scraped_at": "2025-09-09T13:05:22.045Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -8,37 +8,42 @@
     "name": "macrocosm-os"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "uv",
+    "args": ["--directory", "${__dirname}", "run", "macrocosmos_mcp.py"],
+    "env": {
+      "MC_API": "${user_config.mc_api}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "mc_api": {
+      "type": "string",
+      "title": "Macrocosmos API Key",
+      "description": "Your API key for Macrocosmos",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# 🌌 Macrocosmos MCP\n\n**Macrocosmos MCP** lets you integrate **SN13** and **SN1** APIs directly into **Claude for Desktop** or **Cursor**. Instantly tap into social data, perform live web searches, and explore Hugging Face models — all from within your AI environment.\n\n---\n\n## ⚡ Features\n\n- 🔍 Query **X** (Twitter) and **Reddit** data on demand\n- 📚 Explore **SN13 Hugging Face** repositories and datasets\n\n---\n\n## 🚀 Quick Setup\n\n### 1. Clone the Repo\n\n```bash\ngit clone https://github.com/macrocosm-os/macrocosmos-mcp.git\ncd macrocosmos-mcp/src\n```\n\n### 2. Install Requirements (requires [uv](https://astral.sh/blog/uv/))\n\n```bash\nuv venv\nsource .venv/bin/activate\nuv add \"mcp[cli]\" httpx macrocosmos\n```\n\n### 3. Configure Claude or Cursor\n\nOpen the MCP config file:\n\n- **Claude:** `~/Library/Application Support/Claude/claude_desktop_config.json`\n- **Cursor:** `~/Library/Application Support/Cursor/cursor_mcp_config.json`\n\nAdd this entry:\n\n```json\n\"macrocosmos\": {\n    \"command\": \"uv\",\n    \"args\": [\n        \"--directory\",\n        \"/full_path_to_repo/macrocosmos_mcp/src/\",\n        \"run\",\n        \"macrocosmos_mcp.py\"\n    ],\n    \"env\": {\n        \"MC_API\": \"\",\n    }\n}\n```\n\nReplace `/full_path_to_repo/` with your full local path and insert your API keys.\n\n---\n\n## 🔮 Upcoming\n\n- 🧠 All the power of **Subnets** in your AI environment — coming soon.\n\n---\n\nMIT License\nMade with ❤️ by the Macrocosm OS team\n",
   "category": "AI Tools",
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "macrocosmos-configured": {
-          "command": "uv",
-          "args": ["--directory", "/full_path_to_repo/macrocosmos_mcp/src/", "run", "macrocosmos_mcp.py"],
-          "env": {
-            "MC_API": ""
-          }
+      "macrocosmos-configured": {
+        "command": "uv",
+        "args": ["--directory", "/full_path_to_repo/macrocosmos_mcp/src/", "run", "macrocosmos_mcp.py"],
+        "env": {
+          "MC_API": ""
         }
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "macrocosm-os",
@@ -55,7 +60,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:51:08.168Z",
+  "last_scraped_at": "2025-09-09T13:06:36.066Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -8,13 +8,9 @@
     "name": "yamanoku"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "deno",
+    "args": ["run", "--allow-net=api.webstatus.dev", "jsr:@yamanoku/baseline-mcp-server"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,23 +21,22 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "yamanoku-baseline-mcp-server": {
-          "command": "deno",
-          "args": ["run", "--allow-net=api.webstatus.dev", "jsr:@yamanoku/baseline-mcp-server"],
-          "env": {}
-        },
-        "baseline-mcp-server-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "baseline-mcp-server:latest"],
-          "env": {}
-        }
+      "yamanoku-baseline-mcp-server": {
+        "command": "deno",
+        "args": ["run", "--allow-net=api.webstatus.dev", "jsr:@yamanoku/baseline-mcp-server"],
+        "env": {}
+      },
+      "baseline-mcp-server-docker": {
+        "command": "docker",
+        "args": ["run", "-i", "baseline-mcp-server:latest"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "yamanoku",
@@ -58,7 +53,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:29:15.498Z",
+  "last_scraped_at": "2025-09-09T13:06:31.897Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

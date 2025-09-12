@@ -8,13 +8,9 @@
     "name": "janreges"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@janreges/ai-distiller-mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 47,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "janreges-ai-distiller-mcp": {
-          "command": "aid",
-          "args": ["--mcp-server", "--port", "8080"],
-          "env": {}
-        }
+      "janreges-ai-distiller-mcp": {
+        "command": "aid",
+        "args": ["--mcp-server", "--port", "8080"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "janreges",
@@ -53,7 +48,7 @@
   },
   "programming_language": "C",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:16:12.743Z",
+  "last_scraped_at": "2025-09-09T13:05:38.700Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,

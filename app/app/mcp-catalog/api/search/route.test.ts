@@ -18,9 +18,8 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
       long_description: 'A longer description',
       author: { name: 'Test Author' },
       server: {
-        type: 'node',
-        entry_point: 'index.js',
-        mcp_config: { command: 'node', args: ['index.js'] },
+        command: 'node',
+        args: ['index.js'],
       },
       tools: [],
       prompts: [],
@@ -29,10 +28,9 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
       programming_language: 'TypeScript',
       quality_score: 90,
       archestra_config: {
-        client_config_permutations: {
-          mcpServers: {},
-        },
+        client_config_permutations: {},
         oauth: { provider: null, required: false },
+        works_in_archestra: true,
       },
       github_info: {
         owner: 'test-org',
@@ -74,9 +72,8 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
       long_description: 'Another longer description',
       author: { name: 'Test Author 2' },
       server: {
-        type: 'python',
-        entry_point: 'main.py',
-        mcp_config: { command: 'python', args: ['main.py'] },
+        command: 'python',
+        args: ['main.py'],
       },
       tools: [],
       prompts: [],
@@ -85,10 +82,9 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
       programming_language: 'Python',
       quality_score: 85,
       archestra_config: {
-        client_config_permutations: {
-          mcpServers: {},
-        },
+        client_config_permutations: {},
         oauth: { provider: null, required: false },
+        works_in_archestra: false,
       },
       github_info: {
         owner: 'test-org',
@@ -108,6 +104,60 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
       evaluation_model: 'claude-3',
       protocol_features: {
         implementing_tools: false,
+        implementing_prompts: true,
+        implementing_resources: false,
+        implementing_sampling: false,
+        implementing_roots: false,
+        implementing_logging: false,
+        implementing_stdio: true,
+        implementing_streamable_http: false,
+        implementing_oauth2: false,
+      },
+      dependencies: [],
+      raw_dependencies: '{}',
+    },
+    {
+      $schema: 'https://github.com/anthropic-ai/dxt/blob/main/catalog/mcp_catalog_manifest.schema.json',
+      dxt_version: '0.2.6',
+      name: 'test-server-3',
+      display_name: 'Test Server 3',
+      version: '3.0.0',
+      description: 'Third test server',
+      long_description: 'Third longer description',
+      author: { name: 'Test Author 3' },
+      server: {
+        command: 'node',
+        args: ['index.js'],
+      },
+      tools: [],
+      prompts: [],
+      readme: 'Test readme 3',
+      category: 'Data',
+      programming_language: 'JavaScript',
+      quality_score: 75,
+      archestra_config: {
+        client_config_permutations: {},
+        oauth: { provider: null, required: false },
+        works_in_archestra: false,
+      },
+      github_info: {
+        owner: 'test-org',
+        repo: 'test-repo-3',
+        url: 'https://github.com/test-org/test-repo-3',
+        name: 'test-repo-3',
+        path: null,
+        stars: 25,
+        contributors: 2,
+        issues: 3,
+        releases: false,
+        ci_cd: false,
+        latest_commit_hash: 'ghi789',
+      },
+      framework: null,
+      last_scraped_at: '2024-01-01',
+      evaluation_model: 'claude-3',
+      protocol_features: {
+        implementing_tools: true,
         implementing_prompts: true,
         implementing_resources: false,
         implementing_sampling: false,
@@ -141,8 +191,8 @@ describe('GET /mcp-catalog/api/search', () => {
 
     expect(response.status).toBe(200);
     expect(data).toHaveProperty('servers');
-    expect(data.servers).toHaveLength(2);
-    expect(data).toHaveProperty('totalCount', 2);
+    expect(data.servers).toHaveLength(3);
+    expect(data).toHaveProperty('totalCount', 3);
     expect(data).toHaveProperty('hasMore', false);
   });
 
@@ -183,7 +233,7 @@ describe('GET /mcp-catalog/api/search', () => {
 
     expect(response.status).toBe(200);
     expect(data.servers).toHaveLength(1);
-    expect(data.totalCount).toBe(2);
+    expect(data.totalCount).toBe(3);
     expect(data.hasMore).toBe(true);
     expect(data.limit).toBe(1);
     expect(data.offset).toBe(0);
@@ -197,6 +247,7 @@ describe('GET /mcp-catalog/api/search', () => {
     expect(response.status).toBe(200);
     expect(data.servers[0].quality_score).toBe(90);
     expect(data.servers[1].quality_score).toBe(85);
+    expect(data.servers[2].quality_score).toBe(75);
   });
 
   it('should return 400 for invalid query parameters', async () => {
@@ -207,5 +258,30 @@ describe('GET /mcp-catalog/api/search', () => {
     expect(response.status).toBe(400);
     expect(data).toHaveProperty('error');
     expect(data).toHaveProperty('details');
+  });
+
+  it('should filter servers by worksInArchestra flag', async () => {
+    // Test filtering for servers that work in Archestra
+    const requestTrue = createRequest({ worksInArchestra: 'true' });
+    const responseTrue = await GET(requestTrue);
+    const dataTrue = await responseTrue.json();
+
+    expect(responseTrue.status).toBe(200);
+    expect(dataTrue.servers).toHaveLength(1);
+    expect(dataTrue.servers[0].name).toBe('test-server-1');
+    expect(dataTrue.servers[0].archestra_config.works_in_archestra).toBe(true);
+
+    // Test filtering for servers that don't work in Archestra
+    const requestFalse = createRequest({ worksInArchestra: 'false' });
+    const responseFalse = await GET(requestFalse);
+    const dataFalse = await responseFalse.json();
+
+    expect(responseFalse.status).toBe(200);
+    expect(dataFalse.servers).toHaveLength(2);
+    // Servers are sorted by quality score by default, so test-server-2 (85) comes before test-server-3 (75)
+    expect(dataFalse.servers[0].name).toBe('test-server-2');
+    expect(dataFalse.servers[0].archestra_config.works_in_archestra).toBe(false);
+    expect(dataFalse.servers[1].name).toBe('test-server-3');
+    expect(dataFalse.servers[1].archestra_config.works_in_archestra).toBe(false);
   });
 });

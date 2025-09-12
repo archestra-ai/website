@@ -8,13 +8,9 @@
     "name": "modelcontextprotocol"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,33 +21,32 @@
   "quality_score": 65,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-puppeteer-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "--init", "-e", "DOCKER_CONTAINER=true", "mcp/puppeteer"],
-          "env": {
-            "DOCKER_CONTAINER": "true"
-          }
-        },
-        "modelcontextprotocol-server-puppeteer": {
-          "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
-          "env": {}
-        },
-        "modelcontextprotocol-server-puppeteer-configured": {
-          "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
-          "env": {
-            "PUPPETEER_LAUNCH_OPTIONS": "{ \"headless\": false, \"executablePath\": \"C:/Program Files/Google/Chrome/Application/chrome.exe\", \"args\": [] }",
-            "ALLOW_DANGEROUS": "true"
-          }
+      "mcp-puppeteer-docker": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "--init", "-e", "DOCKER_CONTAINER=true", "mcp/puppeteer"],
+        "env": {
+          "DOCKER_CONTAINER": "true"
+        }
+      },
+      "modelcontextprotocol-server-puppeteer": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+        "env": {}
+      },
+      "modelcontextprotocol-server-puppeteer-configured": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+        "env": {
+          "PUPPETEER_LAUNCH_OPTIONS": "{ \"headless\": false, \"executablePath\": \"C:/Program Files/Google/Chrome/Application/chrome.exe\", \"args\": [] }",
+          "ALLOW_DANGEROUS": "true"
         }
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "modelcontextprotocol",

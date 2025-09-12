@@ -8,13 +8,9 @@
     "name": "RobSpectre"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "mvf1-cli",
+    "args": ["mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mvf1-stdio": {
-          "command": "mvf1-cli",
-          "args": ["mcp"],
-          "env": {}
-        }
+      "mvf1-stdio": {
+        "command": "mvf1-cli",
+        "args": ["mcp"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "RobSpectre",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:52:09.883Z",
+  "last_scraped_at": "2025-09-09T13:06:36.707Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -8,13 +8,9 @@
     "name": "reading-plus-ai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["mcp-server-ds"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,23 +21,22 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-ds-dev": {
-          "command": "uv",
-          "args": ["--directory", "/Users/username/src/mcp-server-ds", "run", "mcp-server-ds"],
-          "env": {}
-        },
-        "mcp-server-ds-published": {
-          "command": "uvx",
-          "args": ["mcp-server-ds"],
-          "env": {}
-        }
+      "mcp-server-ds-dev": {
+        "command": "uv",
+        "args": ["--directory", "/Users/username/src/mcp-server-ds", "run", "mcp-server-ds"],
+        "env": {}
+      },
+      "mcp-server-ds-published": {
+        "command": "uvx",
+        "args": ["mcp-server-ds"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "reading-plus-ai",
@@ -58,7 +53,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:17:31.842Z",
+  "last_scraped_at": "2025-09-09T13:06:06.209Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

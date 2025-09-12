@@ -1,9 +1,4 @@
-import {
-  DxtManifestSchema,
-  DxtManifestServerSchema,
-  DxtUserConfigurationOptionSchema,
-  McpServerConfigSchema,
-} from '@anthropic-ai/dxt';
+import { DxtManifestSchema, McpServerConfigSchema } from '@anthropic-ai/dxt';
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { z } from 'zod';
 
@@ -58,9 +53,7 @@ export const MCPDependencySchema = z.object({
   importance: z.number().min(1).max(10),
 });
 
-export const ArchestraClientConfigPermutationsSchema = z.object({
-  mcpServers: z.record(z.string(), McpServerConfigSchema),
-});
+export const ArchestraClientConfigPermutationsSchema = z.record(z.string(), McpServerConfigSchema);
 
 /**
  * NOTE: when we are ready to add more OAuth providers, we can simply add them here
@@ -104,6 +97,7 @@ export const ArchestraConfigSchema = z.object({
   client_config_permutations: ArchestraClientConfigPermutationsSchema.nullable(),
   oauth: ArchestraOauthSchema,
   browser_based: ArchestraBrowserBasedSchema.optional(),
+  works_in_archestra: z.boolean(),
 });
 
 export const ArchestraScoreBreakdownSchema = z.object({
@@ -210,9 +204,12 @@ const FullDxtServerSchema = DxtManifestSchema.omit({ repository: true }).extend(
   dependencies: z.array(MCPDependencySchema).optional(),
   raw_dependencies: z.string().nullable(),
   oauth_config: OauthConfigSchema.optional(),
-  server_overridden: DxtManifestServerSchema.optional(),
-  server_docker: z.any().optional(),
-  user_config_overridden: z.record(z.string(), DxtUserConfigurationOptionSchema).optional(),
+
+  /**
+   * NOTE: for server, we override the `server` field from `DxtManifestSchema` as this contains
+   * `type` and `entry_point` fields which are not needed for our purposes
+   */
+  server: McpServerConfigSchema,
 });
 
 // Union schema that accepts both formats

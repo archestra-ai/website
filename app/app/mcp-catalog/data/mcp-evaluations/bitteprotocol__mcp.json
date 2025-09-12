@@ -8,13 +8,9 @@
     "name": "BitteProtocol"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "bun",
+    "args": ["${__dirname}/packages/bitte-ai/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,28 +21,27 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "bitte-ai": {
-          "command": "bun",
-          "args": ["run", "dev:bitte-ai"],
-          "env": {}
-        },
-        "bitte-ai-start": {
-          "command": "bun",
-          "args": ["run", "start"],
-          "env": {}
-        },
-        "bitte-ai-dev": {
-          "command": "bun",
-          "args": ["run", "dev"],
-          "env": {}
-        }
+      "bitte-ai": {
+        "command": "bun",
+        "args": ["run", "dev:bitte-ai"],
+        "env": {}
+      },
+      "bitte-ai-start": {
+        "command": "bun",
+        "args": ["run", "start"],
+        "env": {}
+      },
+      "bitte-ai-dev": {
+        "command": "bun",
+        "args": ["run", "dev"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "BitteProtocol",
@@ -63,7 +58,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:18:05.987Z",
+  "last_scraped_at": "2025-09-09T13:06:09.431Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,

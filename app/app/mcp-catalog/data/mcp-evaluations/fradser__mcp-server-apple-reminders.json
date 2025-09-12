@@ -8,13 +8,9 @@
     "name": "FradSer"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "mcp-server-apple-reminders"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 63,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-apple-reminders": {
-          "command": "mcp-server-apple-reminders",
-          "args": [],
-          "env": {}
-        }
+      "mcp-server-apple-reminders": {
+        "command": "mcp-server-apple-reminders",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "FradSer",
@@ -53,7 +48,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:20.988Z",
+  "last_scraped_at": "2025-09-09T13:05:13.786Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

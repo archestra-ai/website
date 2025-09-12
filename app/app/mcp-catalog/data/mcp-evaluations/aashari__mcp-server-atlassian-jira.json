@@ -8,49 +8,105 @@
     "name": "aashari"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "npx",
+    "args": ["-y", "@aashari/mcp-server-atlassian-jira"],
+    "env": {
+      "ATLASSIAN_SITE_NAME": "${user_config.atlassian_site_name}",
+      "ATLASSIAN_USER_EMAIL": "${user_config.atlassian_user_email}",
+      "ATLASSIAN_API_TOKEN": "${user_config.atlassian_api_token}",
+      "TRANSPORT_MODE": "${user_config.transport_mode}",
+      "PORT": "${user_config.port}",
+      "DEBUG": "${user_config.debug}",
+      "ATLASSIAN_JIRA_URL": "${user_config.atlassian_jira_url}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "atlassian_site_name": {
+      "type": "string",
+      "title": "Atlassian Jira Site Name",
+      "description": "Your Jira site name (e.g., 'mycompany' for 'mycompany.atlassian.net').",
+      "required": true,
+      "sensitive": false
+    },
+    "atlassian_user_email": {
+      "type": "string",
+      "title": "Atlassian User Email",
+      "description": "Your Atlassian account email.",
+      "required": true,
+      "sensitive": false
+    },
+    "atlassian_api_token": {
+      "type": "string",
+      "title": "Atlassian API Token",
+      "description": "Your Atlassian API token for authentication.",
+      "required": true,
+      "sensitive": true
+    },
+    "transport_mode": {
+      "type": "string",
+      "title": "Transport Mode",
+      "description": "Set to 'stdio' for MCP clients or 'http' for server mode.",
+      "required": false,
+      "default": "http",
+      "sensitive": false
+    },
+    "port": {
+      "type": "number",
+      "title": "HTTP Server Port",
+      "description": "Port for the HTTP transport server.",
+      "required": false,
+      "default": 3000,
+      "sensitive": false
+    },
+    "debug": {
+      "type": "boolean",
+      "title": "Enable Debug Logging",
+      "description": "Enable verbose debug logging.",
+      "required": false,
+      "default": false,
+      "sensitive": false
+    },
+    "atlassian_jira_url": {
+      "type": "string",
+      "title": "Atlassian Jira URL",
+      "description": "Your full Jira instance URL (e.g., 'https://mycompany.atlassian.net'). Overrides ATLASSIAN_SITE_NAME if set.",
+      "required": false,
+      "sensitive": false
+    }
+  },
   "readme": "# Connect AI to Your Jira Projects\n\nTransform how you manage and track your work by connecting Claude, Cursor AI, and other AI assistants directly to your Jira projects, issues, and workflows. Get instant project insights, streamline issue management, and enhance your team collaboration.\n\n[![NPM Version](https://img.shields.io/npm/v/@aashari/mcp-server-atlassian-jira)](https://www.npmjs.com/package/@aashari/mcp-server-atlassian-jira)\n\n## What You Can Do\n\n✅ **Ask AI about your projects**: *\"What are the active issues in the DEV project?\"*  \n✅ **Get issue insights**: *\"Show me details about PROJ-123 including comments\"*  \n✅ **Track project progress**: *\"List all high priority issues assigned to me\"*  \n✅ **Manage issue comments**: *\"Add a comment to PROJ-456 about the test results\"*  \n✅ **Search across projects**: *\"Find all bugs in progress across my projects\"*  \n✅ **Check workflow status**: *\"What are the available statuses for the DEV project?\"*  \n\n## Perfect For\n\n- **Developers** who need quick access to issue details and development context\n- **Project Managers** tracking progress, priorities, and team assignments  \n- **Scrum Masters** managing sprints and workflow states\n- **Team Leads** monitoring project health and issue resolution\n- **QA Engineers** tracking bugs and testing status\n- **Anyone** who wants to interact with Jira using natural language\n\n## Quick Start\n\nGet up and running in 2 minutes:\n\n### 1. Get Your Jira Credentials\n\nGenerate a Jira API Token:\n1. Go to [Atlassian API Tokens](https://id.atlassian.com/manage-profile/security/api-tokens)\n2. Click **Create API token**\n3. Give it a name like **\"AI Assistant\"**\n4. **Copy the generated token** immediately (you won't see it again!)\n\n### 2. Try It Instantly\n\n```bash\n# Set your credentials\nexport ATLASSIAN_SITE_NAME=\"your-company\"  # for your-company.atlassian.net\nexport ATLASSIAN_USER_EMAIL=\"your.email@company.com\"\nexport ATLASSIAN_API_TOKEN=\"your_api_token\"\n\n# List your Jira projects\nnpx -y @aashari/mcp-server-atlassian-jira ls-projects\n\n# Get details about a specific project\nnpx -y @aashari/mcp-server-atlassian-jira get-project --project-key-or-id DEV\n\n# Search for issues\nnpx -y @aashari/mcp-server-atlassian-jira ls-issues --project-key-or-id DEV\n```\n\n## Connect to AI Assistants\n\n### For Claude Desktop Users\n\nAdd this to your Claude configuration file (`~/.claude/claude_desktop_config.json`):\n\n```json\n{\n  \"mcpServers\": {\n    \"jira\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@aashari/mcp-server-atlassian-jira\"],\n      \"env\": {\n        \"ATLASSIAN_SITE_NAME\": \"your-company\",\n        \"ATLASSIAN_USER_EMAIL\": \"your.email@company.com\",\n        \"ATLASSIAN_API_TOKEN\": \"your_api_token\"\n      }\n    }\n  }\n}\n```\n\nRestart Claude Desktop, and you'll see \"🔗 jira\" in the status bar.\n\n### For Other AI Assistants\n\nMost AI assistants support MCP. Install the server globally:\n\n```bash\nnpm install -g @aashari/mcp-server-atlassian-jira\n```\n\nThen configure your AI assistant to use the MCP server with STDIO transport.\n\n### Alternative: Configuration File\n\nCreate `~/.mcp/configs.json` for system-wide configuration:\n\n```json\n{\n  \"jira\": {\n    \"environments\": {\n      \"ATLASSIAN_SITE_NAME\": \"your-company\",\n      \"ATLASSIAN_USER_EMAIL\": \"your.email@company.com\",\n      \"ATLASSIAN_API_TOKEN\": \"your_api_token\"\n    }\n  }\n}\n```\n\n**Alternative config keys:** The system also accepts `\"atlassian-jira\"`, `\"@aashari/mcp-server-atlassian-jira\"`, or `\"mcp-server-atlassian-jira\"` instead of `\"jira\"`.\n\n## Real-World Examples\n\n### 📋 Explore Your Projects\n\nAsk your AI assistant:\n- *\"List all projects I have access to\"*\n- *\"Show me details about the DEV project\"*  \n- *\"What projects contain the word 'Platform'?\"*\n- *\"Get project information for PROJ-123\"*\n\n### 🔍 Search and Track Issues\n\nAsk your AI assistant:\n- *\"Find all high priority issues in the DEV project\"*\n- *\"Show me issues assigned to me that are in progress\"*\n- *\"Search for bugs reported in the last week\"*\n- *\"List all open issues for the mobile team\"*\n\n### 📝 Manage Issue Details\n\nAsk your AI assistant:\n- *\"Get full details about issue PROJ-456 including comments\"*\n- *\"Show me the development information for PROJ-789\"*\n- *\"What's the current status and assignee of PROJ-123?\"*\n- *\"Display all comments on the authentication bug\"*\n\n### 💬 Issue Communication\n\nAsk your AI assistant:\n- *\"Add a comment to PROJ-456: 'Code review completed, ready for testing'\"*\n- *\"Comment on the login issue that it's been deployed to staging\"*\n- *\"Add testing results to issue PROJ-789\"*\n\n### 🔄 Workflow Management\n\nAsk your AI assistant:\n- *\"What are the available statuses in the DEV project?\"*\n- *\"Show me all possible workflow states\"*\n- *\"What status options are available for project MOBILE?\"*\n- *\"List the workflow states for issue transitions\"*\n\n## Troubleshooting\n\n### \"Authentication failed\" or \"403 Forbidden\"\n\n1. **Check your API Token permissions**:\n   - Go to [Atlassian API Tokens](https://id.atlassian.com/manage-profile/security/api-tokens)\n   - Make sure your token is still active and hasn't expired\n\n2. **Verify your site name format**:\n   - If your Jira URL is `https://mycompany.atlassian.net`\n   - Your site name should be just `mycompany`\n\n3. **Test your credentials**:\n   ```bash\n   # Test your credentials work\n   npx -y @aashari/mcp-server-atlassian-jira ls-projects\n   ```\n\n### \"Project not found\" or \"Issue not found\"\n\n1. **Check project key spelling**:\n   ```bash\n   # List your projects to see the correct keys\n   npx -y @aashari/mcp-server-atlassian-jira ls-projects\n   ```\n\n2. **Verify access permissions**:\n   - Make sure you have access to the project in your browser\n   - Some projects may be restricted to certain users\n\n### \"No results found\" when searching\n\n1. **Try different search terms**:\n   - Use project keys instead of project names\n   - Try broader search criteria\n\n2. **Check issue permissions**:\n   - You can only access issues you have permission to view\n   - Ask your admin if you should have access to specific projects\n\n### Claude Desktop Integration Issues\n\n1. **Restart Claude Desktop** after updating the config file\n2. **Check the status bar** for the \"🔗 jira\" indicator\n3. **Verify config file location**:\n   - macOS: `~/.claude/claude_desktop_config.json`\n   - Windows: `%APPDATA%\\\\Claude\\\\claude_desktop_config.json`\n\n### Getting Help\n\nIf you're still having issues:\n1. Run a simple test command to verify everything works\n2. Check the [GitHub Issues](https://github.com/aashari/mcp-server-atlassian-jira/issues) for similar problems\n3. Create a new issue with your error message and setup details\n\n## Frequently Asked Questions\n\n### What permissions do I need?\n\nYour Atlassian account needs:\n- **Access to Jira** with the appropriate permissions for the projects you want to query\n- **API token** with appropriate permissions (automatically granted when you create one)\n\n### Can I use this with Jira Server (on-premise)?\n\nCurrently, this tool only supports **Jira Cloud**. Jira Server/Data Center support may be added in future versions.\n\n### How do I find my site name?\n\nYour site name is the first part of your Jira URL:\n- URL: `https://mycompany.atlassian.net` → Site name: `mycompany`\n- URL: `https://acme-corp.atlassian.net` → Site name: `acme-corp`\n\n### What AI assistants does this work with?\n\nAny AI assistant that supports the Model Context Protocol (MCP):\n- Claude Desktop (most popular)\n- Cursor AI\n- Continue.dev\n- Many others\n\n### Is my data secure?\n\nYes! This tool:\n- Runs entirely on your local machine\n- Uses your own Jira credentials\n- Never sends your data to third parties\n- Only accesses what you give it permission to access\n\n### Can I search across multiple projects?\n\nYes! When you don't specify a project, searches will look across all projects you have access to. You can also use JQL queries for advanced cross-project searches.\n\n## Support\n\nNeed help? Here's how to get assistance:\n\n1. **Check the troubleshooting section above** - most common issues are covered there\n2. **Visit our GitHub repository** for documentation and examples: [github.com/aashari/mcp-server-atlassian-jira](https://github.com/aashari/mcp-server-atlassian-jira)\n3. **Report issues** at [GitHub Issues](https://github.com/aashari/mcp-server-atlassian-jira/issues)\n4. **Start a discussion** for feature requests or general questions\n\n---\n\n*Made with ❤️ for teams who want to bring AI into their project management workflow.*\n",
   "category": "AI Tools",
   "quality_score": 71,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "aashari-mcp-server-atlassian-jira": {
-          "command": "npx",
-          "args": ["-y", "@aashari/mcp-server-atlassian-jira"],
-          "env": {}
-        },
-        "aashari-mcp-server-atlassian-jira-stdio": {
-          "command": "npx",
-          "args": ["@aashari/mcp-server-atlassian-jira"],
-          "env": {
-            "TRANSPORT_MODE": "stdio"
-          }
-        },
-        "aashari-mcp-server-atlassian-jira-http": {
-          "command": "npx",
-          "args": ["@aashari/mcp-server-atlassian-jira"],
-          "env": {
-            "TRANSPORT_MODE": "http"
-          }
+      "aashari-mcp-server-atlassian-jira": {
+        "command": "npx",
+        "args": ["-y", "@aashari/mcp-server-atlassian-jira"],
+        "env": {}
+      },
+      "aashari-mcp-server-atlassian-jira-stdio": {
+        "command": "npx",
+        "args": ["@aashari/mcp-server-atlassian-jira"],
+        "env": {
+          "TRANSPORT_MODE": "stdio"
+        }
+      },
+      "aashari-mcp-server-atlassian-jira-http": {
+        "command": "npx",
+        "args": ["@aashari/mcp-server-atlassian-jira"],
+        "env": {
+          "TRANSPORT_MODE": "http"
         }
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "aashari",
@@ -67,7 +123,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:15:29.691Z",
+  "last_scraped_at": "2025-09-09T13:05:34.838Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

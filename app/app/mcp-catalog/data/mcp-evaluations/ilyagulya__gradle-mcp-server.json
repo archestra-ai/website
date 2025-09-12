@@ -8,13 +8,9 @@
     "name": "IlyaGulya"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "java",
+    "args": ["-jar", "${HOME}/mcp-servers/gradle-mcp-server/gradle-mcp-server-all.jar"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "gradle-mcp-server": {
-          "command": "java",
-          "args": ["-jar", "<absolute_path_to_home>/mcp-servers/gradle-mcp-server/gradle-mcp-server-all.jar"],
-          "env": {}
-        }
+      "gradle-mcp-server": {
+        "command": "java",
+        "args": ["-jar", "<absolute_path_to_home>/mcp-servers/gradle-mcp-server/gradle-mcp-server-all.jar"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "IlyaGulya",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Kotlin",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:16:08.489Z",
+  "last_scraped_at": "2025-09-09T13:05:37.860Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -8,13 +8,9 @@
     "name": "jimfilippou"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "things-mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,23 +21,22 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "things-mcp": {
-          "command": "npx",
-          "args": ["-y", "things-mcp"],
-          "env": {}
-        },
-        "things-mcp-configured": {
-          "command": "things-mcp",
-          "args": [],
-          "env": {}
-        }
+      "things-mcp": {
+        "command": "npx",
+        "args": ["-y", "things-mcp"],
+        "env": {}
+      },
+      "things-mcp-configured": {
+        "command": "things-mcp",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "jimfilippou",
@@ -58,7 +53,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T21:00:04.659Z",
+  "last_scraped_at": "2025-09-09T13:06:47.958Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

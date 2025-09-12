@@ -8,13 +8,9 @@
     "name": "kimtaeyoon83"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@mcp/youtube-transcriber"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kimtaeyoon83-mcp-server-youtube-transcript": {
-          "command": "npx",
-          "args": ["-y", "@kimtaeyoon83/mcp-server-youtube-transcript"],
-          "env": {}
-        }
+      "kimtaeyoon83-mcp-server-youtube-transcript": {
+        "command": "npx",
+        "args": ["-y", "@kimtaeyoon83/mcp-server-youtube-transcript"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": "google",
       "required": true
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "kimtaeyoon83",
@@ -53,7 +48,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:23.017Z",
+  "last_scraped_at": "2025-09-09T13:05:14.465Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

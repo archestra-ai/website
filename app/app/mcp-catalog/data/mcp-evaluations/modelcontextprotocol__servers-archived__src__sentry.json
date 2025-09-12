@@ -8,13 +8,9 @@
     "name": "modelcontextprotocol"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,69 +21,68 @@
   "quality_score": 62,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-sentry-uvx-basic": {
-          "command": "uvx",
-          "args": ["mcp-server-sentry"],
-          "env": {}
-        },
-        "mcp_server_sentry-pip-basic": {
-          "command": "python",
-          "args": ["-m", "mcp_server_sentry"],
-          "env": {}
-        },
-        "mcp-server-sentry-uvx-configured": {
-          "command": "uvx",
-          "args": ["mcp-server-sentry", "--auth-token", "YOUR_SENTRY_TOKEN"],
-          "env": {}
-        },
-        "mcp-sentry-docker-configured": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "mcp/sentry", "--auth-token", "YOUR_SENTRY_TOKEN"],
-          "env": {}
-        },
-        "mcp_server_sentry-pip-configured": {
-          "command": "python",
-          "args": ["-m", "mcp_server_sentry", "--auth-token", "YOUR_SENTRY_TOKEN"],
-          "env": {}
-        },
-        "mcp-server-sentry-uvx-env": {
-          "command": "uvx",
-          "args": ["mcp-server-sentry"],
-          "env": {
-            "SENTRY_AUTH_TOKEN": "YOUR_SENTRY_TOKEN"
-          }
-        },
-        "mcp-sentry-docker-env": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "mcp/sentry"],
-          "env": {
-            "SENTRY_AUTH_TOKEN": "YOUR_SENTRY_TOKEN"
-          }
-        },
-        "mcp-server-sentry-inspector-uvx": {
-          "command": "npx",
-          "args": ["@modelcontextprotocol/inspector", "uvx", "mcp-server-sentry", "--auth-token", "YOUR_SENTRY_TOKEN"],
-          "env": {}
-        },
-        "mcp-server-sentry-inspector-uv-run": {
-          "command": "npx",
-          "args": [
-            "@modelcontextprotocol/inspector",
-            "uv",
-            "run",
-            "mcp-server-sentry",
-            "--auth-token",
-            "YOUR_SENTRY_TOKEN"
-          ],
-          "env": {}
+      "mcp-server-sentry-uvx-basic": {
+        "command": "uvx",
+        "args": ["mcp-server-sentry"],
+        "env": {}
+      },
+      "mcp_server_sentry-pip-basic": {
+        "command": "python",
+        "args": ["-m", "mcp_server_sentry"],
+        "env": {}
+      },
+      "mcp-server-sentry-uvx-configured": {
+        "command": "uvx",
+        "args": ["mcp-server-sentry", "--auth-token", "YOUR_SENTRY_TOKEN"],
+        "env": {}
+      },
+      "mcp-sentry-docker-configured": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "mcp/sentry", "--auth-token", "YOUR_SENTRY_TOKEN"],
+        "env": {}
+      },
+      "mcp_server_sentry-pip-configured": {
+        "command": "python",
+        "args": ["-m", "mcp_server_sentry", "--auth-token", "YOUR_SENTRY_TOKEN"],
+        "env": {}
+      },
+      "mcp-server-sentry-uvx-env": {
+        "command": "uvx",
+        "args": ["mcp-server-sentry"],
+        "env": {
+          "SENTRY_AUTH_TOKEN": "YOUR_SENTRY_TOKEN"
         }
+      },
+      "mcp-sentry-docker-env": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "mcp/sentry"],
+        "env": {
+          "SENTRY_AUTH_TOKEN": "YOUR_SENTRY_TOKEN"
+        }
+      },
+      "mcp-server-sentry-inspector-uvx": {
+        "command": "npx",
+        "args": ["@modelcontextprotocol/inspector", "uvx", "mcp-server-sentry", "--auth-token", "YOUR_SENTRY_TOKEN"],
+        "env": {}
+      },
+      "mcp-server-sentry-inspector-uv-run": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/inspector",
+          "uv",
+          "run",
+          "mcp-server-sentry",
+          "--auth-token",
+          "YOUR_SENTRY_TOKEN"
+        ],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "modelcontextprotocol",

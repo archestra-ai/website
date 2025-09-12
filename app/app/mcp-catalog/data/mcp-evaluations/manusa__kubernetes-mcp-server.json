@@ -8,13 +8,9 @@
     "name": "manusa"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "kubernetes-mcp-server@latest"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kubernetes-mcp-server": {
-          "command": "npx",
-          "args": ["-y", "kubernetes-mcp-server@latest"],
-          "env": {}
-        }
+      "kubernetes-mcp-server": {
+        "command": "npx",
+        "args": ["-y", "kubernetes-mcp-server@latest"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "manusa",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:33.236Z",
+  "last_scraped_at": "2025-09-09T13:05:16.854Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

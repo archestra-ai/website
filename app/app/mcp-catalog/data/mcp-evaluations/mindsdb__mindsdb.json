@@ -8,13 +8,9 @@
     "name": "mindsdb"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["-m", "mindsdb"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,13 +20,12 @@
   "category": "AI Tools",
   "quality_score": 68,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "mindsdb",
@@ -47,7 +42,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:09.608Z",
+  "last_scraped_at": "2025-09-09T13:05:10.006Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

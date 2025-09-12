@@ -8,13 +8,9 @@
     "name": "cyberchitta"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "llm-context": {
-          "command": "uvx",
-          "args": ["--from", "llm-context", "lc-mcp"],
-          "env": {}
-        }
+      "llm-context": {
+        "command": "uvx",
+        "args": ["--from", "llm-context", "lc-mcp"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "cyberchitta",

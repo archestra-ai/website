@@ -8,13 +8,9 @@
     "name": "MWGMorningwood"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "func",
+    "args": ["start"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "modelcontextprotocol-server-memory": {
-          "command": "func",
-          "args": ["start"],
-          "env": {}
-        }
+      "modelcontextprotocol-server-memory": {
+        "command": "func",
+        "args": ["start"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "MWGMorningwood",
@@ -53,7 +48,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:18:12.865Z",
+  "last_scraped_at": "2025-09-09T13:06:19.872Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

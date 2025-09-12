@@ -8,50 +8,63 @@
     "name": "flipt-io"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "npx",
+    "args": ["-y", "@flipt-io/mcp-server-flipt"],
+    "env": {
+      "FLIPT_API_URL": "${user_config.flipt_api_url}",
+      "FLIPT_API_KEY": "${user_config.flipt_api_key}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "flipt_api_url": {
+      "type": "string",
+      "title": "Flipt API URL",
+      "description": "The URL of the Flipt API",
+      "required": false,
+      "default": "http://localhost:8080"
+    },
+    "flipt_api_key": {
+      "type": "string",
+      "title": "Flipt API Key",
+      "description": "The API key to use for the Flipt API",
+      "sensitive": true,
+      "required": false
+    }
+  },
   "readme": "# Flipt MCP Server\n\n[![mcp-server-flipt](https://img.shields.io/npm/v/@flipt-io/mcp-server-flipt?label=%40flipt-io%2Fmcp-server-flipt)](https://www.npmjs.com/package/@flipt-io/mcp-server-flipt)\n[![smithery badge](https://smithery.ai/badge/@flipt-io/mcp-server-flipt)](https://smithery.ai/install/@flipt-io/mcp-server-flipt)\n[![MseeP.ai Security Assessment Badge](https://mseep.net/mseep-audited.png)](https://mseep.ai/app/flipt-io-mcp-server-flipt)\n\nA [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server for [Flipt](https://flipt.io), allowing AI assistants to interact with feature flags.\n\n<img width=\"2060\" alt=\"mcp\" src=\"https://github.com/user-attachments/assets/cc32a6dd-5368-43c1-897a-a0ccfeeacaf0\" />\n\n## Features\n\n- List, create, update, and delete namespaces, flags, segments, rules, and more\n- Evaluate flags for specific entities\n- Toggle flags on/off\n- Manage constraints, variants, distributions, and rollouts\n\n## Usage\n\nOnce the server is running, it will:\n\n1. Set up a STDIO transport for MCP communication\n2. Register tools and prompts for interacting with Flipt\n\nThe server is designed to be used with AI assistants that support the Model Context Protocol.\n\n### Installing via Smithery\n\nTo install Flipt MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/install/@flipt-io/mcp-server-flipt):\n\n```bash\nnpx -y @smithery/cli install @flipt-io/mcp-server-flipt --client claude\n```\n\n### Node\n\nYou can install the package globally and run it:\n\n```bash\nnpm install -g @flipt-io/mcp-server-flipt && mcp-server-flipt\n```\n\nOr run it directly with npx:\n\n```bash\nnpx -y @flipt-io/mcp-server-flipt\n```\n\n### Docker\n\nYou can also run the server in a Docker container:\n\n```bash\ndocker run -d --name mcp-server-flipt ghcr.io/flipt-io/mcp-server-flipt:latest\n```\n\n## Configuration\n\nThe server can be configured using environment variables:\n\n- `FLIPT_API_URL`: The URL of the Flipt API (default: <http://localhost:8080>)\n- `FLIPT_API_KEY`: The API key to use for the Flipt API (optional)\n\nYou can set these in a `.env` file in the directory where you run the server.\n\n## Development\n\n```bash\n# Install dependencies\nnpm install\n\n# Run in development mode\nnpm run dev\n\n# Build the project\nnpm run build\n\n# Start the server\nnpm start\n\n# Format code\nnpm run fmt\n\n# Lint code\nnpm run lint\n```\n\n## License\n\nApache 2.0\n",
   "category": "Development",
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "flipt-io-mcp-server-flipt-global": {
-          "command": "mcp-server-flipt",
-          "args": [],
-          "env": {}
-        },
-        "flipt-io-mcp-server-flipt-npx": {
-          "command": "npx",
-          "args": ["-y", "@flipt-io/mcp-server-flipt"],
-          "env": {}
-        },
-        "flipt-io-mcp-server-flipt-docker": {
-          "command": "docker",
-          "args": ["run", "-d", "--name", "mcp-server-flipt", "ghcr.io/flipt-io/mcp-server-flipt:latest"],
-          "env": {}
-        },
-        "flipt-io-mcp-server-flipt-npm-start": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        }
+      "flipt-io-mcp-server-flipt-global": {
+        "command": "mcp-server-flipt",
+        "args": [],
+        "env": {}
+      },
+      "flipt-io-mcp-server-flipt-npx": {
+        "command": "npx",
+        "args": ["-y", "@flipt-io/mcp-server-flipt"],
+        "env": {}
+      },
+      "flipt-io-mcp-server-flipt-docker": {
+        "command": "docker",
+        "args": ["run", "-d", "--name", "mcp-server-flipt", "ghcr.io/flipt-io/mcp-server-flipt:latest"],
+        "env": {}
+      },
+      "flipt-io-mcp-server-flipt-npm-start": {
+        "command": "npm",
+        "args": ["start"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "flipt-io",
@@ -68,7 +81,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:15:50.327Z",
+  "last_scraped_at": "2025-09-09T13:05:36.392Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

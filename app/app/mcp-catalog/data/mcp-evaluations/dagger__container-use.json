@@ -8,13 +8,9 @@
     "name": "dagger"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "container-use",
+    "args": ["stdio"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,23 +21,22 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "container-use-stdio": {
-          "command": "container-use",
-          "args": ["stdio"],
-          "env": {}
-        },
-        "cu-stdio": {
-          "command": "cu",
-          "args": ["stdio"],
-          "env": {}
-        }
+      "container-use-stdio": {
+        "command": "container-use",
+        "args": ["stdio"],
+        "env": {}
+      },
+      "cu-stdio": {
+        "command": "cu",
+        "args": ["stdio"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "dagger",
@@ -58,7 +53,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:51.912Z",
+  "last_scraped_at": "2025-09-09T13:05:19.800Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,

@@ -8,13 +8,9 @@
     "name": "ananddtyagi"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": ["${__dirname}/dist/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 36,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "gif-creator": {
-          "command": "node",
-          "args": ["/path/to/gif-creator-mcp/dist/index.js"],
-          "env": {}
-        }
+      "gif-creator": {
+        "command": "node",
+        "args": ["/path/to/gif-creator-mcp/dist/index.js"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "ananddtyagi",
@@ -53,7 +48,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:23:25.459Z",
+  "last_scraped_at": "2025-09-09T13:06:24.334Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

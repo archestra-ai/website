@@ -8,13 +8,9 @@
     "name": "mickael-kerjean"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": ["${__dirname}/server/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -28,7 +24,8 @@
     "oauth": {
       "provider": "google",
       "required": true
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "mickael-kerjean",
@@ -45,7 +42,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:17:45.384Z",
+  "last_scraped_at": "2025-09-09T13:06:07.922Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

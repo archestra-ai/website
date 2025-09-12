@@ -8,13 +8,9 @@
     "name": "thunderboltsid"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "./bin/mcp-nutanix",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 49,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-nutanix": {
-          "command": "./bin/mcp-nutanix",
-          "args": [],
-          "env": {}
-        }
+      "mcp-nutanix": {
+        "command": "./bin/mcp-nutanix",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "thunderboltsid",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:40.303Z",
+  "last_scraped_at": "2025-09-09T13:05:18.379Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

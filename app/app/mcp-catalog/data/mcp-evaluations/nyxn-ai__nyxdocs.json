@@ -8,35 +8,82 @@
     "name": "nyxn-ai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "uv",
+    "args": ["run", "python", "-m", "nyxdocs.server"],
+    "env": {
+      "COINGECKO_API_KEY": "${user_config.coingecko_api_key}",
+      "GITHUB_TOKEN": "${user_config.github_token}",
+      "DATABASE_URL": "${user_config.database_url}",
+      "LOG_LEVEL": "${user_config.log_level}",
+      "UPDATE_INTERVAL": "${user_config.update_interval}",
+      "MAX_CONCURRENT_SCRAPES": "${user_config.max_concurrent_scrapes}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "coingecko_api_key": {
+      "type": "string",
+      "title": "CoinGecko API Key",
+      "description": "Your API key for accessing CoinGecko market data and project information.",
+      "sensitive": true,
+      "required": true
+    },
+    "github_token": {
+      "type": "string",
+      "title": "GitHub Token",
+      "description": "Your GitHub personal access token for accessing repository documentation and README files.",
+      "sensitive": true,
+      "required": true
+    },
+    "database_url": {
+      "type": "string",
+      "title": "Database URL",
+      "description": "The URL for the database connection (e.g., sqlite:///nyxdocs.db or postgresql://user:pass@localhost/nyxdocs).",
+      "default": "sqlite:///nyxdocs.db",
+      "required": false
+    },
+    "log_level": {
+      "type": "string",
+      "title": "Log Level",
+      "description": "The logging level for the server (e.g., INFO, DEBUG, WARNING, ERROR).",
+      "default": "INFO",
+      "required": false
+    },
+    "update_interval": {
+      "type": "number",
+      "title": "Update Interval (seconds)",
+      "description": "The frequency in seconds for background tasks to check for documentation updates.",
+      "default": 3600,
+      "min": 60,
+      "required": false
+    },
+    "max_concurrent_scrapes": {
+      "type": "number",
+      "title": "Max Concurrent Scrapes",
+      "description": "The maximum number of documentation scraping tasks to run concurrently.",
+      "default": 5,
+      "min": 1,
+      "required": false
+    }
+  },
   "readme": "# NyxDocs - Cryptocurrency Documentation MCP Server\n\n[![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)\n[![MCP](https://img.shields.io/badge/MCP-compatible-green.svg)](https://modelcontextprotocol.io)\n[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)\n\nNyxDocs is a specialized Model Context Protocol (MCP) server that provides comprehensive documentation management for cryptocurrency projects. Built with Python and inspired by Context7's architecture, it offers real-time access to crypto project documentation, blockchain information, and development resources.\n\n## 🚀 Features\n\n### Core Capabilities\n- **Multi-Blockchain Support**: Ethereum, BSC, Polygon, Solana, and more\n- **Real-time Documentation**: Automatically discovers and updates project docs\n- **Smart Search**: Find projects by name, category, or blockchain\n- **Content Extraction**: Supports GitHub, GitBook, Notion, and official websites\n- **Update Monitoring**: Tracks documentation changes automatically\n\n### MCP Tools\n- `search_crypto_projects`: Search cryptocurrency projects by various criteria\n- `get_project_info`: Detailed project information with blockchain context\n- `get_documentation`: Retrieve actual documentation content\n- `list_blockchains`: Available blockchain networks\n- `check_updates`: Recent documentation updates\n\n## 🏗️ Architecture\n\n```\n┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐\n│   Data Sources  │    │   NyxDocs Core   │    │   MCP Client    │\n│                 │    │                  │    │                 │\n│ • CoinGecko API │────│ • Project DB     │────│ • Claude        │\n│ • GitHub API    │    │ • Doc Scraper    │    │ • Cursor        │\n│ • GitBook       │    │ • Update Monitor │    │ • VS Code       │\n│ • Notion        │    │ • MCP Server     │    │ • Other Clients │\n└─────────────────┘    └──────────────────┘    └─────────────────┘\n```\n\n### Key Components\n\n1. **MCP Server Core**: FastMCP-based server handling protocol communication\n2. **Data Collectors**: Modules for gathering project information from various APIs\n3. **Documentation Scrapers**: Intelligent content extraction from different sources\n4. **Database Layer**: SQLite/PostgreSQL for storing projects and documentation\n5. **Update Monitors**: Background tasks for tracking documentation changes\n\n## 📦 Installation\n\n### Prerequisites\n- Python 3.11+\n- uv (recommended) or pip\n\n### Quick Start\n\n```bash\n# Clone the repository\ngit clone https://github.com/nyxn-ai/NyxDocs.git\ncd NyxDocs\n\n# Install with uv (recommended)\nuv sync\n\n# Or install with pip\npip install -e .\n\n# Set up environment\ncp .env.example .env\n# Edit .env with your API keys\n\n# Initialize database\nuv run python -m nyxdocs.database.init\n\n# Start the server\nuv run python -m nyxdocs.server\n```\n\n### MCP Client Configuration\n\n#### Cursor\n```json\n{\n  \"mcpServers\": {\n    \"nyxdocs\": {\n      \"command\": \"uv\",\n      \"args\": [\"run\", \"python\", \"-m\", \"nyxdocs.server\"]\n    }\n  }\n}\n```\n\n#### Claude Desktop\n```json\n{\n  \"mcpServers\": {\n    \"nyxdocs\": {\n      \"command\": \"uv\",\n      \"args\": [\"run\", \"python\", \"-m\", \"nyxdocs.server\"]\n    }\n  }\n}\n```\n\n## 🔧 Configuration\n\n### Environment Variables\n\n```env\n# API Keys\nCOINGECKO_API_KEY=your_coingecko_api_key\nGITHUB_TOKEN=your_github_token\n\n# Database\nDATABASE_URL=sqlite:///nyxdocs.db\n# Or for PostgreSQL: postgresql://user:pass@localhost/nyxdocs\n\n# Server Settings\nLOG_LEVEL=INFO\nUPDATE_INTERVAL=3600  # seconds\nMAX_CONCURRENT_SCRAPES=5\n```\n\n### Supported Data Sources\n\n- **CoinGecko**: Market data and project information\n- **GitHub**: Repository documentation and README files\n- **GitBook**: Hosted documentation platforms\n- **Notion**: Project documentation pages\n- **Official Websites**: Direct documentation scraping\n\n## 🛠️ Usage Examples\n\n### Search for DeFi Projects\n```python\n# In your MCP client\nsearch_crypto_projects(query=\"uniswap\", category=\"DeFi\", blockchain=\"ethereum\")\n```\n\n### Get Project Documentation\n```python\nget_documentation(project=\"uniswap\", format=\"markdown\")\n```\n\n### Monitor Updates\n```python\ncheck_updates(since=\"2024-01-01\", limit=10)\n```\n\n## 🧪 Development\n\n### Project Structure\n```\nNyxDocs/\n├── nyxdocs/\n│   ├── __init__.py\n│   ├── server.py              # Main MCP server\n│   ├── collectors/            # Data collection modules\n│   ├── scrapers/              # Documentation scrapers\n│   ├── database/              # Database models and operations\n│   ├── tools/                 # MCP tool implementations\n│   └── utils/                 # Utility functions\n├── tests/                     # Test suite\n├── docs/                      # Documentation\n├── pyproject.toml            # Project configuration\n└── README.md\n```\n\n### Running Tests\n```bash\nuv run pytest\n```\n\n### Code Quality\n```bash\nuv run ruff check\nuv run mypy nyxdocs\n```\n\n## 📚 Documentation\n\n- [API Reference](docs/api.md)\n- [Configuration Guide](docs/configuration.md)\n- [Development Setup](docs/development.md)\n- [Contributing Guidelines](CONTRIBUTING.md)\n\n## 🤝 Contributing\n\nWe welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.\n\n## 📄 License\n\nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.\n\n## 🙏 Acknowledgments\n\n- Inspired by [Context7](https://github.com/upstash/context7) by Upstash\n- Built with [Python MCP SDK](https://github.com/modelcontextprotocol/python-sdk)\n- Cryptocurrency data provided by CoinGecko API\n\n---\n\n**NyxDocs** - Making cryptocurrency project documentation accessible and up-to-date for AI assistants.\n",
   "category": "Finance",
   "quality_score": 35,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "nyxdocs": {
-          "command": "uv",
-          "args": ["run", "python", "-m", "nyxdocs.server"],
-          "env": {}
-        }
+      "nyxdocs": {
+        "command": "uv",
+        "args": ["run", "python", "-m", "nyxdocs.server"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "nyxn-ai",
@@ -53,7 +100,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:27:49.574Z",
+  "last_scraped_at": "2025-09-09T13:06:29.741Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

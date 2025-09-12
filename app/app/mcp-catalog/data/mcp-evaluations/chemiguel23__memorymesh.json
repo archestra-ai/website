@@ -8,13 +8,9 @@
     "name": "CheMiguel23"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": ["${__dirname}/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -28,7 +24,8 @@
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "CheMiguel23",
@@ -45,7 +42,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:16:44.707Z",
+  "last_scraped_at": "2025-09-09T13:06:19.826Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

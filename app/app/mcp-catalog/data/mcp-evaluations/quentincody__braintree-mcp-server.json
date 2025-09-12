@@ -8,40 +8,69 @@
     "name": "QuentinCody"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "python",
+    "args": ["${__dirname}/braintree_server.py"],
+    "env": {
+      "BRAINTREE_MERCHANT_ID": "${user_config.braintree_merchant_id}",
+      "BRAINTREE_PUBLIC_KEY": "${user_config.braintree_public_key}",
+      "BRAINTREE_PRIVATE_KEY": "${user_config.braintree_private_key}",
+      "BRAINTREE_ENVIRONMENT": "${user_config.braintree_environment}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "braintree_merchant_id": {
+      "type": "string",
+      "title": "Braintree Merchant ID",
+      "description": "Your Braintree Merchant ID, obtained from your Braintree Control Panel.",
+      "sensitive": true,
+      "required": true
+    },
+    "braintree_public_key": {
+      "type": "string",
+      "title": "Braintree Public Key",
+      "description": "Your Braintree Public Key, obtained from your Braintree Control Panel.",
+      "sensitive": true,
+      "required": true
+    },
+    "braintree_private_key": {
+      "type": "string",
+      "title": "Braintree Private Key",
+      "description": "Your Braintree Private Key, obtained from your Braintree Control Panel.",
+      "sensitive": true,
+      "required": true
+    },
+    "braintree_environment": {
+      "type": "string",
+      "title": "Braintree Environment",
+      "description": "The Braintree environment to connect to (e.g., sandbox or production).",
+      "default": "sandbox",
+      "required": true
+    }
+  },
   "readme": "# Braintree MCP Server\n\nAn unofficial Model Context Protocol (MCP) server for interacting with PayPal Braintree payment processing services.\n\n## License and Citation\n\nThis project is available under the MIT License with an Academic Citation Requirement. This means you can freely use, modify, and distribute the code, but any academic or scientific publication that uses this software must provide appropriate attribution.\n\n### For academic/research use:\nIf you use this software in a research project that leads to a publication, presentation, or report, you **must** cite this work according to the format provided in [CITATION.md](CITATION.md).\n\n### For commercial/non-academic use:\nCommercial and non-academic use follows the standard MIT License terms without the citation requirement.\n\nBy using this software, you agree to these terms. See [LICENSE.md](LICENSE.md) for the complete license text.\n\n## Server Versions\n\nThere are two versions of the Braintree MCP server available:\n\n### 1. STDIO Transport Server (`braintree_server.py`)\n\n- Uses standard input/output (STDIO) for communication\n- Designed for integrations with Claude Desktop and other MCP clients that support STDIO\n- Each client session spawns a new server process\n- The server terminates when the client disconnects\n\n**Usage with Claude Desktop:**\n1. Configure `claude_desktop_config.json` to point to this server\n2. Open Claude Desktop and select the Braintree tool\n\n### 2. SSE Transport Server (`braintree_sse_server.py`)\n\n- Uses Server-Sent Events (SSE) for communication\n- Designed as a standalone web server that can handle multiple client connections\n- Server runs persistently until manually stopped\n- Binds to `127.0.0.1:8001` by default (configurable)\n\n**Manual Usage:**\n```bash\npython braintree_sse_server.py\n```\n\n**Connecting to the SSE server:**\nUse an MCP client that supports SSE transport and connect to `http://127.0.0.1:8001/sse`\n\n## Overview\n\nThis server implements the Model Context Protocol (MCP) specification to provide AI assistant models with direct, structured access to Braintree's payment processing capabilities via GraphQL API. It enables AI systems to perform payment operations like fetching transactions, creating payments, and managing customer data through MCP tools.\n\n## Installation\n\n1. Clone this repository\n```bash\ngit clone https://github.com/yourusername/braintree-mcp-server.git\ncd braintree-mcp-server\n```\n\n2. Set up a Python 3.13+ environment\n```bash\n# If using pyenv\npyenv install 3.13.0\npyenv local 3.13.0\n\n# Or using another method to ensure Python 3.13+\n```\n\n3. Install dependencies\n```bash\npip install -e .\n```\n\n## Configuration\n\nCreate a `.env` file in the project root with your Braintree credentials:\n\n```\nBRAINTREE_MERCHANT_ID=your_merchant_id\nBRAINTREE_PUBLIC_KEY=your_public_key\nBRAINTREE_PRIVATE_KEY=your_private_key\nBRAINTREE_ENVIRONMENT=sandbox  # or production\n```\n\nYou can obtain these credentials from your Braintree Control Panel.\n\n## Usage\n\n### Running the server\n\n#### Default STDIO Transport\n```bash\npython braintree_server.py\n```\n\nThe server runs using stdio transport by default, which is suitable for integration with AI assistant systems that support MCP.\n\n#### Server-Sent Events (SSE) Transport\n```bash\npython braintree_sse_server.py\n```\n\nThe SSE server provides a web-based transport layer that allows multiple persistent client connections. This is useful for standalone deployments where multiple clients need to access the Braintree functionality.\n\nDefault configuration:\n- Host: 127.0.0.1 (localhost)\n- Port: 8001\n- Environment: Defined in your .env file\n\nSee `requirements.txt` for the required dependencies.\n\n### Available MCP Tools\n\n#### braintree_ping\n\nSimple connectivity test to check if your Braintree credentials are working.\n\n```python\nresponse = await braintree_ping()\n# Returns \"pong\" if successful\n```\n\n#### braintree_execute_graphql\n\nExecute arbitrary GraphQL queries against the Braintree API.\n\n```python\nquery = \"\"\"\nquery GetTransactionDetails($id: ID!) {\n  node(id: $id) {\n    ... on Transaction {\n      id\n      status\n      amount {\n        value\n        currencyCode\n      }\n      createdAt\n    }\n  }\n}\n\"\"\"\n\nvariables = {\"id\": \"transaction_id_here\"}\n\nresponse = await braintree_execute_graphql(query, variables)\n# Returns JSON response from Braintree\n```\n\n## Common GraphQL Operations\n\n### Fetch Customer\n\n```graphql\nquery GetCustomer($id: ID!) {\n  node(id: $id) {\n    ... on Customer {\n      id\n      firstName\n      lastName\n      email\n      paymentMethods {\n        edges {\n          node {\n            id\n            details {\n              ... on CreditCardDetails {\n                last4\n                expirationMonth\n                expirationYear\n                cardType\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n```\n\n### Create Transaction\n\n```graphql\nmutation CreateTransaction($input: ChargePaymentMethodInput!) {\n  chargePaymentMethod(input: $input) {\n    transaction {\n      id\n      status\n      amount {\n        value\n        currencyCode\n      }\n    }\n  }\n}\n```\n\nWith variables:\n```json\n{\n  \"input\": {\n    \"paymentMethodId\": \"payment_method_id_here\",\n    \"transaction\": {\n      \"amount\": \"10.00\",\n      \"orderId\": \"order123\",\n      \"options\": {\n        \"submitForSettlement\": true\n      }\n    }\n  }\n}\n```\n\n## Troubleshooting\n\n- Ensure your Braintree credentials are correct in the `.env` file\n- Verify your network connection can reach Braintree's API endpoints\n- Check for any rate limiting or permission issues with your Braintree account",
   "category": "Finance",
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "braintree-server-stdio": {
-          "command": "python",
-          "args": ["braintree_server.py"],
-          "env": {}
-        },
-        "braintree-sse-server-sse": {
-          "command": "python",
-          "args": ["braintree_sse_server.py"],
-          "env": {}
-        }
+      "braintree-server-stdio": {
+        "command": "python",
+        "args": ["braintree_server.py"],
+        "env": {}
+      },
+      "braintree-sse-server-sse": {
+        "command": "python",
+        "args": ["braintree_sse_server.py"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "QuentinCody",
@@ -58,7 +87,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:14:59.454Z",
+  "last_scraped_at": "2025-09-09T13:06:16.608Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

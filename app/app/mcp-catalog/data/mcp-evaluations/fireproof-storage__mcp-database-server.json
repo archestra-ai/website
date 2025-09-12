@@ -8,13 +8,9 @@
     "name": "fireproof-storage"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": ["${__dirname}/build/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "fireproof-mcp-configured": {
-          "command": "node",
-          "args": ["/path/to/fireproof-mcp/build/index.js"],
-          "env": {}
-        }
+      "fireproof-mcp-configured": {
+        "command": "node",
+        "args": ["/path/to/fireproof-mcp/build/index.js"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "fireproof-storage",
@@ -53,7 +48,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:14:14.925Z",
+  "last_scraped_at": "2025-09-09T13:05:28.376Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

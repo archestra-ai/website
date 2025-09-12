@@ -31,8 +31,7 @@ const McpClientConfigurationCard = ({ server }: McpClientConfigurationCardProps)
   const clientConfigPermutations = server.archestra_config?.client_config_permutations;
 
   // Check if config exists and has actual server configurations
-  const hasValidConfig =
-    clientConfigPermutations?.mcpServers && Object.keys(clientConfigPermutations.mcpServers).length > 0;
+  const hasValidConfig = clientConfigPermutations && Object.keys(clientConfigPermutations).length > 0;
 
   const copyToClipboard = async (text: string) => {
     try {

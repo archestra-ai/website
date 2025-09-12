@@ -412,12 +412,10 @@
   "https://github.com/8b-is/smart-tree",
   "https://github.com/cyberchitta/llm-context.py",
   "https://github.com/exoticknight/mcp-file-merger",
-  "https://github.com/quarkiverse/quarkus-mcp-servers/tree/main/filesystem",
   "https://github.com/hmk/box-mcp-server",
   "https://github.com/isaacphi/mcp-gdrive",
   "https://github.com/jeannier/homebrew-mcp",
   "https://github.com/mamertofabian/mcp-everything-search",
-  "https://github.com/mark3labs/mcp-filesystem-server",
   "https://github.com/mickael-kerjean/filestash/tree/master/server/plugin/plg_handler_mcp",
   "https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp",
   "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
@@ -854,7 +852,6 @@
   "https://github.com/inkbytefo/screenmonitormcp",
   "https://github.com/SecretiveShell/MCP-wolfram-alpha",
   "https://github.com/Seym0n/tiktok-mcp",
-  "https://github.com/Shopify/dev-mcp",
   "https://github.com/sirmews/apple-notes-mcp",
   "https://github.com/sooperset/mcp-atlassian",
   "https://github.com/suekou/mcp-notion-server",
@@ -885,5 +882,6 @@
   "https://github.com/bucketco/bucket-javascript-sdk/tree/main/packages/cli",
   "https://github.com/FosterG4/mcpsaver",
   "https://github.com/makenotion/notion-mcp-server",
-  "https://github.com/cbcoutinho/nextcloud-mcp-server"
+  "https://github.com/cbcoutinho/nextcloud-mcp-server",
+  "https://github.com/localstack/localstack-mcp-server"
 ]

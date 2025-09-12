@@ -8,13 +8,9 @@
     "name": "mckinsey"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["vizro-mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,37 +21,36 @@
   "quality_score": 76,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "vizro-mcp": {
-          "command": "uvx",
-          "args": ["vizro-mcp"],
-          "env": {}
-        },
-        "mcp-vizro-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "mcp/vizro"],
-          "env": {}
-        },
-        "mcp-vizro-docker-with-config": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "--mount",
-            "type=bind,src=</absolute/path/to/allowed/dir>,dst=</absolute/path/to/allowed/dir>",
-            "--mount",
-            "type=bind,src=</absolute/path/to/data.csv>,dst=</absolute/path/to/data.csv>",
-            "mcp/vizro"
-          ],
-          "env": {}
-        }
+      "vizro-mcp": {
+        "command": "uvx",
+        "args": ["vizro-mcp"],
+        "env": {}
+      },
+      "mcp-vizro-docker": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "mcp/vizro"],
+        "env": {}
+      },
+      "mcp-vizro-docker-with-config": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "--mount",
+          "type=bind,src=</absolute/path/to/allowed/dir>,dst=</absolute/path/to/allowed/dir>",
+          "--mount",
+          "type=bind,src=</absolute/path/to/data.csv>,dst=</absolute/path/to/data.csv>",
+          "mcp/vizro"
+        ],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "mckinsey",
@@ -72,7 +67,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:17:23.849Z",
+  "last_scraped_at": "2025-09-09T13:06:05.465Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

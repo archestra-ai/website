@@ -8,13 +8,9 @@
     "name": "JamesANZ"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npm",
+    "args": ["start"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "medical-mcp-stdio": {
-          "command": "npm",
-          "args": ["start"],
-          "env": {}
-        }
+      "medical-mcp-stdio": {
+        "command": "npm",
+        "args": ["start"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "JamesANZ",
@@ -53,7 +48,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:17.623Z",
+  "last_scraped_at": "2025-09-09T13:05:13.003Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

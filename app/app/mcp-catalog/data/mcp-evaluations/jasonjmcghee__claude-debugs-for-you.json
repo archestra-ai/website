@@ -8,13 +8,9 @@
     "name": "jasonjmcghee"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": ["${__dirname}/mcp-debug.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,25 +21,24 @@
   "quality_score": 74,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-debug-js-stdio": {
-          "command": "node",
-          "args": ["/path/to/mcp-debug.js"],
-          "env": {}
-        },
-        "jasonmcghee-claude-debugs-for-you-stdio": {
-          "command": "node",
-          "args": [
-            "/Users/jason/Library/Application Support/Code/User/globalStorage/jasonmcghee.claude-debugs-for-you/mcp-debug.js"
-          ],
-          "env": {}
-        }
+      "mcp-debug-js-stdio": {
+        "command": "node",
+        "args": ["/path/to/mcp-debug.js"],
+        "env": {}
+      },
+      "jasonmcghee-claude-debugs-for-you-stdio": {
+        "command": "node",
+        "args": [
+          "/Users/jason/Library/Application Support/Code/User/globalStorage/jasonmcghee.claude-debugs-for-you/mcp-debug.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "jasonjmcghee",
@@ -60,7 +55,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:16:15.915Z",
+  "last_scraped_at": "2025-09-09T13:05:38.587Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

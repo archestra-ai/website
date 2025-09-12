@@ -8,37 +8,42 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "node",
+    "args": ["${__dirname}/index.js"],
+    "env": {
+      "PRIVATE_KEY": "${user_config.private_key}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "private_key": {
+      "type": "string",
+      "title": "Sui Private Key",
+      "description": "Your Bech32-formatted Sui private key (starts with `suiprivkey`)",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# Sui Trader MCP\n\nAn MCP server designed for AI agents to perform optimal token swaps on the Sui blockchain.\n\n![License](https://img.shields.io/badge/license-MIT-blue.svg)\n![Node.js](https://img.shields.io/badge/Node.js-18.x-green.svg)\n![Status](https://img.shields.io/badge/status-active-brightgreen.svg)\n\n## Features\n\n- **Token Swaps**: Execute token swaps on Sui mainnet via the Cetus Aggregator.\n- **Bech32 Private Key Support**: Securely load a Sui private key (starting with `suiprivkey`) from environment variables.\n\n## Prerequisites\n\n- **Node.js**: Version 18.x or higher.\n- **npm**: For dependency management.\n- **Sui Wallet**: A Sui private key in bech32 format (starts with `suiprivkey`).\n\n## Installation\n\n1. **Clone the Repository**:\n   ```bash\n   git clone https://github.com/kukapay/sui-trader-mcp.git\n   cd sui-trader-mcp\n   ```\n\n2. **Install Dependencies**:\n   ```bash\n   npm install\n   ```\n\n3. **Configure MCP Client**:\n    ```json\n    {\n      \"mcpServers\": {\n        \"sui-trader\": {\n          \"command\": \"node\",\n          \"args\": [\"/absolute/path/to/sui-trader-mcp/index.js\"],\n          \"env\": { \"PRIVATE_KEY\": \"your_private_key\" }\n          }\n        }\n      }\n    }\n    ```\n    Replace `/absolute/path/to/sui-trader-mcp/` with the actual installation path, and `your_private_key` with your Bech32-formatted private key..\n    \n## Usage\n\nUse an MCP-compatible client to invoke the `swap` tool. \n\n### Example\n\nPrompt:\n```\nSwap 1.5 SUI to USDC with 2% slippage, using a fixed input amount.\n```\n\nOutput:\n```\nTransaction ID: zjGekhLBfMYzGqu57fTeu3K1NX5jC5wNUy8rpdPcLyv. Status: success\n```\n\n## License\n\nThis project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.\n\n",
   "category": "Finance",
   "quality_score": 36,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "sui-trader": {
-          "command": "node",
-          "args": ["/absolute/path/to/sui-trader-mcp/index.js"],
-          "env": {
-            "PRIVATE_KEY": "your_private_key"
-          }
+      "sui-trader": {
+        "command": "node",
+        "args": ["/absolute/path/to/sui-trader-mcp/index.js"],
+        "env": {
+          "PRIVATE_KEY": "your_private_key"
         }
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "kukapay",
@@ -55,7 +60,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:12:45.956Z",
+  "last_scraped_at": "2025-09-09T13:06:15.084Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

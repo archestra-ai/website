@@ -8,13 +8,9 @@
     "name": "modelcontextprotocol"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,41 +21,40 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "brave-search-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "BRAVE_API_KEY", "mcp/brave-search"],
-          "env": {
-            "BRAVE_API_KEY": "YOUR_API_KEY_HERE"
-          }
-        },
-        "modelcontextprotocol-server-brave-search": {
-          "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-brave-search"],
-          "env": {
-            "BRAVE_API_KEY": "YOUR_API_KEY_HERE"
-          }
-        },
-        "brave-search-docker-configured": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "-e", "BRAVE_API_KEY", "mcp/brave-search"],
-          "env": {
-            "BRAVE_API_KEY": "${input:brave_api_key}"
-          }
-        },
-        "modelcontextprotocol-server-brave-search-configured": {
-          "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-brave-search"],
-          "env": {
-            "BRAVE_API_KEY": "${input:brave_api_key}"
-          }
+      "brave-search-docker": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "-e", "BRAVE_API_KEY", "mcp/brave-search"],
+        "env": {
+          "BRAVE_API_KEY": "YOUR_API_KEY_HERE"
+        }
+      },
+      "modelcontextprotocol-server-brave-search": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+        "env": {
+          "BRAVE_API_KEY": "YOUR_API_KEY_HERE"
+        }
+      },
+      "brave-search-docker-configured": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "-e", "BRAVE_API_KEY", "mcp/brave-search"],
+        "env": {
+          "BRAVE_API_KEY": "${input:brave_api_key}"
+        }
+      },
+      "modelcontextprotocol-server-brave-search-configured": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+        "env": {
+          "BRAVE_API_KEY": "${input:brave_api_key}"
         }
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "modelcontextprotocol",

@@ -8,13 +8,9 @@
     "name": "gitkraken"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "gk",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,13 +20,12 @@
   "category": "Development",
   "quality_score": 81,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "gitkraken",
@@ -47,7 +42,7 @@
   },
   "programming_language": "Unknown",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:15:50.279Z",
+  "last_scraped_at": "2025-09-09T13:05:36.335Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

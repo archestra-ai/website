@@ -40,18 +40,18 @@ Here's how a browser-based auth provider was added to the Slack MCP Server (http
 
 3. Copy the file (or create a new one) to `desktop_app/src/ui/catalog_local`. The MCP server will appear on the "Connections" page with a purple "Developer" tag, allowing you to modify and work with it without running the catalog.
 
-4. Ensure that `server.mcp_config` or `server_overridden.mcp_config` is correct and matches the configuration you ran in step 1.
+4. Ensure that `server` is correct and matches the configuration you ran in step 1.
 
 ```json
-  "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "slack-mcp-server@latest", "--transport", "stdio"],
-      "env": {
-        "SLACK_MCP_XOXC_TOKEN": "${user_config.slack_mcp_xoxc_token}",
-        "SLACK_MCP_XOXD_TOKEN": "${user_config.slack_mcp_xoxd_token}",
-        "SLACK_MCP_ADD_MESSAGE_TOOL": "${user_config.slack_mcp_add_message_tool}"
-      }
-    }
+{
+  "command": "npx",
+  "args": ["-y", "slack-mcp-server@latest", "--transport", "stdio"],
+  "env": {
+    "SLACK_MCP_XOXC_TOKEN": "${user_config.slack_mcp_xoxc_token}",
+    "SLACK_MCP_XOXD_TOKEN": "${user_config.slack_mcp_xoxd_token}",
+    "SLACK_MCP_ADD_MESSAGE_TOOL": "${user_config.slack_mcp_add_message_tool}"
+  }
+}
 ```
 
 5. Find the `archestra_config` section and add `browser_based.required: true`:

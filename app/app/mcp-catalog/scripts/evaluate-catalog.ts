@@ -142,7 +142,12 @@ function sleep(ms: number): Promise<void> {
  * https://docs.github.com/en/rest/repos?apiVersion=2022-11-28
  *
  */
-async function fetchRepoData(owner: string, repo: string, repositoryPath: string | null): Promise<GitHubApiResponse> {
+async function fetchRepoData(
+  owner: string,
+  repo: string,
+  repositoryPath: string | null,
+  readmeOnly: boolean = false
+): Promise<GitHubApiResponse> {
   const token = process.env.GITHUB_TOKEN;
   const headers: Record<string, string> = {
     Accept: 'application/vnd.github.v3+json',
@@ -179,7 +184,52 @@ async function fetchRepoData(owner: string, repo: string, repositoryPath: string
 
   while (retryCount <= maxRetries) {
     try {
-      // Fetch all data in parallel
+      // If readmeOnly is true, only fetch README and basic repo data
+      if (readmeOnly) {
+        const repoData = await apiCall(`/repos/${owner}/${repo}`).catch((error) => {
+          // If the main repo API fails, we can't continue
+          throw error;
+        });
+
+        // Check if repository path exists
+        if (repositoryPath) {
+          try {
+            await apiCall(`/repos/${owner}/${repo}/contents/${repositoryPath}`);
+          } catch (error) {
+            throw new Error(`PATH_NOT_FOUND: ${repositoryPath} does not exist in ${owner}/${repo}`);
+          }
+        }
+
+        // Fetch README
+        let readmeContent = '';
+        try {
+          const readmeUrl = repositoryPath
+            ? `/repos/${owner}/${repo}/contents/${repositoryPath}/README.md`
+            : `/repos/${owner}/${repo}/readme`;
+          const readme = await apiCall(readmeUrl);
+          readmeContent = Buffer.from(readme.content, 'base64').toString('utf-8');
+        } catch (error) {
+          console.warn(`No README found at ${repositoryPath ? `${repositoryPath}/README.md` : 'root'}`);
+        }
+
+        // Return only README content, other fields will be undefined to signal they shouldn't be updated
+        return {
+          name: undefined as any,
+          owner_name: undefined as any,
+          description: undefined as any,
+          stargazers_count: undefined as any,
+          total_issues_count: undefined as any,
+          language: undefined as any,
+          has_releases: undefined as any,
+          has_workflows: undefined as any,
+          contributors_count: undefined as any,
+          readme_content: readmeContent,
+          latest_commit_hash: undefined as any,
+          raw_dependencies: undefined as any,
+        };
+      }
+
+      // Fetch all data in parallel (original behavior)
       const [repoData, contributorsResponse, releases, workflows, issuesSearchResponse] = await Promise.all([
         apiCall(`/repos/${owner}/${repo}`).catch((error) => {
           // If the main repo API fails, we can't continue
@@ -699,11 +749,11 @@ function createNewMCPServer(
     framework: null,
     github_info: {
       ...githubInfo,
-      stars: apiData.stargazers_count,
-      contributors: apiData.contributors_count,
-      issues: apiData.total_issues_count,
-      releases: apiData.has_releases,
-      ci_cd: apiData.has_workflows,
+      stars: apiData.stargazers_count !== undefined ? apiData.stargazers_count : 0,
+      contributors: apiData.contributors_count !== undefined ? apiData.contributors_count : 0,
+      issues: apiData.total_issues_count !== undefined ? apiData.total_issues_count : 0,
+      releases: apiData.has_releases !== undefined ? apiData.has_releases : false,
+      ci_cd: apiData.has_workflows !== undefined ? apiData.has_workflows : false,
       latest_commit_hash: apiData.latest_commit_hash || null,
     },
     protocol_features: {
@@ -732,21 +782,33 @@ function createNewMCPServer(
 async function extractGitHubData(
   server: ArchestraMcpServerManifest,
   githubInfo: ArchestraMcpServerGitHubRepoInfo,
-  force: boolean = false
+  force: boolean = false,
+  readmeOnly: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
   // Skip if already exists and not forcing
   if (server.last_scraped_at && !force) {
     console.log(`  ⏭️  GitHub Data: Skipped (last scraped: ${server.last_scraped_at})`);
     return server;
   }
-  console.log(`  🔄 GitHub Data: Fetching...`);
+  console.log(`  🔄 GitHub Data: Fetching${readmeOnly ? ' (README only)' : ''}...`);
 
   const { owner, repo, path } = githubInfo;
 
-  const apiData = await fetchRepoData(owner, repo, path);
+  const apiData = await fetchRepoData(owner, repo, path, readmeOnly);
+
+  if (readmeOnly) {
+    // When readme-only, ONLY update the README and last_scraped_at
+    // Preserve ALL other fields including name, raw_dependencies, latest_commit_hash, etc.
+    return {
+      ...server,
+      readme: apiData.readme_content || server.readme,
+      last_scraped_at: new Date().toISOString(),
+    };
+  }
+
   const newServer = createNewMCPServer(githubInfo, apiData);
 
-  // Merge GitHub fields
+  // Merge GitHub fields (full update)
   return {
     ...server,
     name: newServer.name,
@@ -891,31 +953,27 @@ Examples of CORRECT output:
 
 If you find "mcp-server-fetch" in uvx command:
 {
-  "mcpServers": {
-    "mcp-server-fetch": {
-      "command": "uvx",
-      "args": ["mcp-server-fetch"]
-    }
+  "mcp-server-fetch": {
+    "command": "uvx",
+    "args": ["mcp-server-fetch"]
   }
 }
 
 If you find "@modelcontextprotocol/server-filesystem" in npx and a docker variant:
 {
-  "mcpServers": {
-    "filesystem-server": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/files"]
-    },
-    "filesystem-server-docker": {
-      "command": "docker",
-      "args": ["run", "-v", "/path:/data", "mcp/filesystem:latest"]
-    }
+  "filesystem-server": {
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/files"]
+  },
+  "filesystem-server-docker": {
+    "command": "docker",
+    "args": ["run", "-v", "/path:/data", "mcp/filesystem:latest"]
   }
 }
 
 The keys MUST be based on the actual package/image names found in the content.
 
-If no run command found, respond with: {"mcpServers": {}}`;
+If no run command found, respond with: {}`;
 
   // For Gemini, we need a simpler schema without additionalProperties
   const isGemini = model.startsWith('gemini-');
@@ -924,10 +982,15 @@ If no run command found, respond with: {"mcpServers": {}}`;
   try {
     const result = await callLLM(prompt, configFormat, model);
     // Only save if mcpServers exists AND has actual content
-    if (result.mcpServers && Object.keys(result.mcpServers).length > 0) {
+    if (result && Object.keys(result).length > 0) {
       return {
         ...server,
         archestra_config: {
+          /**
+           * by default, new servers should go through a manual human validation to ensure
+           * that they work in the Archestra Desktop app
+           */
+          works_in_archestra: false,
           oauth: server.archestra_config?.oauth || { provider: null, required: false },
           ...server.archestra_config,
           client_config_permutations: result,
@@ -957,17 +1020,22 @@ async function extractCanonicalServerAndUserConfigConfig(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  // Skip if human evaluation (evaluation_model === null AND configs already exist)
-  if (server.evaluation_model === null && server.server && server.user_config && !force) {
-    console.log(`  ⏭️  Canonical Server and User Config: Skipped (human evaluation)`);
-    return server;
+  if (server.server.command === 'unknown') {
+    console.log(`  ⏭️  Canonical Server and User Config: Evaluating as command is currently unknown`);
+  } else {
+    // Skip if human evaluation (evaluation_model === null AND configs already exist)
+    if (server.evaluation_model === null && server.server && server.user_config && !force) {
+      console.log(`  ⏭️  Canonical Server and User Config: Skipped (human evaluation)`);
+      return server;
+    }
+
+    // Skip if already exists and not forcing
+    if (server?.server && server?.user_config && !force) {
+      console.log(`  ⏭️  Canonical Server and User Config: Skipped (already exists)`);
+      return server;
+    }
   }
 
-  // Skip if already exists and not forcing
-  if (server?.server && server?.user_config && !force) {
-    console.log(`  ⏭️  Canonical Server and User Config: Skipped (already exists)`);
-    return server;
-  }
   console.log(`  🔄 Canonical Server and User Config: Extracting...`);
 
   const content = server.readme || server.description;
@@ -981,16 +1049,9 @@ async function extractCanonicalServerAndUserConfigConfig(
 Content:
 ${content.substring(0, 8000)}
 
-IMPORTANT: You MUST return a JSON object with BOTH "server" and "user_config" fields. The "server" object MUST include:
-1. "type": REQUIRED - Must be either "python", "node", "binary" or "docker"
-2. "entry_point": REQUIRED - The main file to execute (e.g., "index.js", "main.py", or binary name)
-3. "mcp_config": REQUIRED - Object with "command", "args", and "env" fields
+IMPORTANT: You MUST return a JSON object with BOTH "server" and "user_config" fields
 
 Instructions:
-- Determine the server type based on the runtime:
-  * If it uses npx, npm, node, or has package.json → type="node", entry_point="index.js" (or main file)
-  * If it uses python, pip, or has requirements.txt → type="python", entry_point="main.py" (or main file)  
-  * If it's a compiled executable → type="binary", entry_point=<binary name>
 - Extract the CANONICAL way to run this server. Use a docker command as the LAST resort. Have a preference towards npx, node, python, etc.
 - Additionally, for any dynamic configuration (e.g. flags, environment variables, api keys, etc.) this should go into the "user_config" object (using the format documented below)
 - For Docker commands: split "docker run" into command="docker" and args=["run", ...]
@@ -1030,32 +1091,9 @@ Server Configuration
 
 The server object defines how to run the MCP server:
 
-Server Types
+**Examples:**
 
-1. **Python**: server.type = "python"
-   - Requires entry_point to Python file
-   - All dependencies must be bundled in the DXT
-   - Can use server/lib for packages or server/venv for full virtual environment
-   - Python runtime version specified in compatibility.runtimes.python
-
-2. **Node.js**: server.type = "node"
-   - Requires entry_point to JavaScript file
-   - All dependencies must be bundled in node_modules
-   - Node.js runtime version specified in compatibility.runtimes.node
-   - Typically includes package.json at extension root for dependency management
-
-3. **Binary**: server.type = "binary"
-   - Pre-compiled executable with all dependencies included
-   - Platform-specific binaries supported
-   - Completely self-contained (no runtime requirements)
-
-MCP Configuration
-
-The mcp_config object in the server configuration defines how the implementing app should execute the MCP server. This replaces the manual JSON configuration users currently need to write.
-
-**Python Example:**
-
-"mcp_config": {
+{
   "command": "python",
   "args": ["server/main.py"],
   "env": {
@@ -1063,17 +1101,13 @@ The mcp_config object in the server configuration defines how the implementing a
   }
 }
 
-**Node.js Example:**
-
-"mcp_config": {
+{
   "command": "node",
   "args": ["$\{__dirname\}/server/index.js"],
   "env": {}
 }
 
-**Binary Example:**
-
-"mcp_config": {
+{
   "command": "server/my-server",
   "args": ["--config", "server/config.json"],
   "env": {}
@@ -1090,7 +1124,7 @@ These pertain to any configuration that is "dynamic" and needs to be substituted
 
 Example:
 
-"mcp_config": {
+{
   "command": "python",
   "args": ["$\{__dirname\}/server/main.py"],
   "env": {
@@ -1155,13 +1189,11 @@ Available variables for default values:
     }
   },
   "server": {
-    "mcp_config": {
-      "command": "node",
-      "args": [
-        "$\{__dirname\}/server/index.js",
-        "$\{user_config.allowed_directories\}"
-      ]
-    }
+    "command": "node",
+    "args": [
+      "$\{__dirname\}/server/index.js",
+      "$\{user_config.allowed_directories\}"
+    ]
   }
 }
 
@@ -1185,13 +1217,11 @@ Available variables for default values:
     }
   },
   "server": {
-    "mcp_config": {
-      "command": "node",
-      "args": ["server/index.js"],
-      "env": {
-        "API_KEY": "$\{user_config.api_key\}",
-        "BASE_URL": "$\{user_config.base_url\}"
-      }
+    "command": "node",
+    "args": ["server/index.js"],
+    "env": {
+      "API_KEY": "$\{user_config.api_key\}",
+      "BASE_URL": "$\{user_config.base_url\}"
     }
   }
 }
@@ -1222,18 +1252,16 @@ Available variables for default values:
     }
   },
   "server": {
-    "mcp_config": {
-      "command": "python",
-      "args": [
-        "server/main.py",
-        "--database",
-        "$\{user_config.database_path\}",
-        "--timeout",
-        "$\{user_config.timeout\}"
-      ],
-      "env": {
-        "READ_ONLY": "$\{user_config.read_only\}"
-      }
+    "command": "python",
+    "args": [
+      "server/main.py",
+      "--database",
+      "$\{user_config.database_path\}",
+      "--timeout",
+      "$\{user_config.timeout\}"
+    ],
+    "env": {
+      "READ_ONLY": "$\{user_config.read_only\}"
     }
   }
 }
@@ -1245,13 +1273,9 @@ Available variables for default values:
 EXAMPLE RESPONSE for an npx-based MCP server:
 {
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@example/mcp-server"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@example/mcp-server"],
+    "env": {}
   },
   "user_config": {}
 }
@@ -1259,15 +1283,11 @@ EXAMPLE RESPONSE for an npx-based MCP server:
 EXAMPLE RESPONSE for a server with environment variables:
 {
   "server": {
-    "type": "binary",
-    "entry_point": "slack-mcp-server",
-    "mcp_config": {
-      "command": "./slack-mcp-server",
-      "args": [],
-      "env": {
-        "SLACK_MCP_XOXC_TOKEN": "$\{user_config.slack_mcp_xoxc_token\}",
-        "SLACK_MCP_XOXD_TOKEN": "$\{user_config.slack_mcp_xoxd_token\}"
-      }
+    "command": "./slack-mcp-server",
+    "args": [],
+    "env": {
+      "SLACK_MCP_XOXC_TOKEN": "$\{user_config.slack_mcp_xoxc_token\}",
+      "SLACK_MCP_XOXD_TOKEN": "$\{user_config.slack_mcp_xoxd_token\}"
     }
   },
   "user_config": {
@@ -1288,10 +1308,9 @@ EXAMPLE RESPONSE for a server with environment variables:
   }
 }
 
-REMEMBER: 
-1. The "server" object MUST ALWAYS include "type", "entry_point", and "mcp_config" fields. Never omit these required fields.
-2. Use the EXACT environment variable names from the README (don't rename them).
-3. For user_config keys, use lowercase with underscores version of the env var name.`;
+REMEMBER:
+1. Use the EXACT environment variable names from the README (don't rename them).
+2. For user_config keys, use lowercase with underscores version of the env var name.`;
 
   // For Gemini, we need a simpler schema without additionalProperties
   const isGemini = model.startsWith('gemini-');
@@ -1300,15 +1319,6 @@ REMEMBER:
   try {
     const result = await callLLM(prompt, configFormat, model);
     if (result && result.server) {
-      // Validate that server has required fields
-      if (!result.server.type || !result.server.entry_point || !result.server.mcp_config) {
-        console.warn(
-          `Server config missing required fields: type=${result.server.type}, entry_point=${result.server.entry_point}, mcp_config=${!!result.server.mcp_config}`
-        );
-        // If critical fields are missing, log the issue but still use what we got
-        // The improved prompt should prevent this from happening
-      }
-
       return {
         ...server,
         server: result.server,
@@ -1381,6 +1391,11 @@ If no configuration found, respond: {"oauth": { "provider": null, "required": fa
       return {
         ...server,
         archestra_config: {
+          /**
+           * by default, new servers should go through a manual human validation to ensure
+           * that they work in the Archestra Desktop app
+           */
+          works_in_archestra: false,
           client_config_permutations: server.archestra_config?.client_config_permutations || null,
           ...server.archestra_config,
           oauth: result.oauth,
@@ -1686,7 +1701,12 @@ async function evaluateSingleRepo(
 
     if (!server) {
       // Create new server from GitHub
-      const apiData = await fetchRepoData(owner, repo, repoPath);
+      const apiData = await fetchRepoData(owner, repo, repoPath, readmeOnly);
+      if (readmeOnly) {
+        // For readme-only mode on new servers, we need at least basic data
+        // This should not happen in practice as readme-only is for updating existing evaluations
+        console.warn(`Warning: Creating new server with readme-only mode for ${githubUrl}`);
+      }
       server = createNewMCPServer(githubInfo, apiData);
     }
 
@@ -1694,7 +1714,7 @@ async function evaluateSingleRepo(
 
     // If readmeOnly is true, only update GitHub data (which includes README)
     if (readmeOnly) {
-      server = await extractGitHubData(server, githubInfo, true);
+      server = await extractGitHubData(server, githubInfo, true, true);
     } else {
       // Determine if any specific update was requested
       const hasSpecificUpdates =
@@ -1712,7 +1732,7 @@ async function evaluateSingleRepo(
       const shouldUpdateMissing = !force || !hasSpecificUpdates;
 
       if (updateGithub || (shouldUpdateMissing && !server.last_scraped_at)) {
-        server = await extractGitHubData(server, githubInfo, force);
+        server = await extractGitHubData(server, githubInfo, force, false);
       }
 
       if (updateCategory || (shouldUpdateMissing && !server.category)) {
@@ -2170,3 +2190,4 @@ if (require.main === module) {
 }
 
 export { evaluateAllRepos, evaluateSingleRepo };
+('');

@@ -8,13 +8,9 @@
     "name": "jagan-shanmugam"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["osm-mcp-server"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,41 +21,40 @@
   "quality_score": 65,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "osm-mcp-server": {
-          "command": "uvx",
-          "args": ["osm-mcp-server"],
-          "env": {}
-        },
-        "osm-mcp-server-local-run": {
-          "command": "osm-mcp-server",
-          "args": [],
-          "env": {}
-        },
-        "osm-mcp-server-configured": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/osm-mcp-server", "run", "osm-mcp-server"],
-          "env": {}
-        },
-        "osm-mcp-server-inspector": {
-          "command": "npx",
-          "args": [
-            "-y",
-            "@modelcontextprotocol/inspector",
-            "uv",
-            "--directory",
-            "/path/to/osm-mcp-server",
-            "run",
-            "osm-mcp-server"
-          ],
-          "env": {}
-        }
+      "osm-mcp-server": {
+        "command": "uvx",
+        "args": ["osm-mcp-server"],
+        "env": {}
+      },
+      "osm-mcp-server-local-run": {
+        "command": "osm-mcp-server",
+        "args": [],
+        "env": {}
+      },
+      "osm-mcp-server-configured": {
+        "command": "uv",
+        "args": ["--directory", "/path/to/osm-mcp-server", "run", "osm-mcp-server"],
+        "env": {}
+      },
+      "osm-mcp-server-inspector": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/inspector",
+          "uv",
+          "--directory",
+          "/path/to/osm-mcp-server",
+          "run",
+          "osm-mcp-server"
+        ],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "jagan-shanmugam",
@@ -76,7 +71,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:19:14.701Z",
+  "last_scraped_at": "2025-09-09T13:06:22.024Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

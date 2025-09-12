@@ -8,18 +8,22 @@
     "name": "stape-io"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "mcp-remote", "https://mcp.stape.ai/sse", "--header", "Authorization: ${user_config.stape_api_key}"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "stape_api_key": {
+      "type": "string",
+      "title": "Stape API Key",
+      "description": "Your Stape API key for authentication with the remote MCP server.",
+      "sensitive": true,
+      "required": true
+    }
+  },
   "readme": "# Stape MCP Server\n\nThis project implements an **MCP (Model Context Protocol) server** for the **Stape** platform.\n\n## Prerequisites\n- Node.js (v18 or higher)\n\n## Access the remote MCP server from Claude Desktop\n\nOpen Claude Desktop and navigate to Settings -> Developer -> Edit Config. This opens the configuration file that controls which MCP servers Claude can access.\n\nReplace the content with the following configuration (make sure npx is installed on your machine). Get Stape API key from your Stape account and set it in the configuration file instead of ${your_stape_api_key}. Once you restart Claude Desktop.\n\n```json\n{\n  \"mcpServers\": {\n    \"stape-mcp-server\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"mcp-remote\",\n        \"https://mcp.stape.ai/sse\",\n        \"--header\",\n        \"Authorization: ${your_stape_api_key}\"\n      ]\n    }\n  }\n}\n```\n\n### Troubleshooting\n\n**MCP Server Name Length Limit**\n\nSome MCP clients (like Cursor AI) have a 60-character limit for the combined MCP server name + tool name length. If you use a longer server name in your configuration (e.g., `stape-mcp-server-your-additional-long-name`), some tools may be filtered out.\n\nTo avoid this issue:\n- Use shorter server names in your MCP configuration (e.g., `stape-mcp-server`)\n\n**Clearing MCP Cache**\n\n[mcp-remote](https://github.com/geelen/mcp-remote#readme) stores all the credential information inside ~/.mcp-auth (or wherever your MCP_REMOTE_CONFIG_DIR points to). If you're having persistent issues, try running:\nYou can run rm -rf ~/.mcp-auth to clear any locally stored state and tokens.\n```\nrm -rf ~/.mcp-auth\n```\nThen restarting your MCP client.\n\n## Open Source\n\nThe **Stape MCP Server** is developed and maintained by [Stape Team](https://stape.io/) under the Apache 2.0 license.\n",
   "category": "AI Tools",
   "quality_score": 47,
@@ -28,7 +32,8 @@
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "stape-io",
@@ -45,7 +50,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:21:20.379Z",
+  "last_scraped_at": "2025-09-09T13:06:23.744Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

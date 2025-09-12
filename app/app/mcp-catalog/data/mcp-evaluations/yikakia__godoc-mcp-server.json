@@ -8,13 +8,9 @@
     "name": "yikakia"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "${__dirname}/server/godoc-mcp-server",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "godoc-mcp-server-stdio": {
-          "command": "godoc-mcp-server",
-          "args": [],
-          "env": {}
-        }
+      "godoc-mcp-server-stdio": {
+        "command": "godoc-mcp-server",
+        "args": [],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "yikakia",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:16:57.052Z",
+  "last_scraped_at": "2025-09-09T13:05:44.323Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

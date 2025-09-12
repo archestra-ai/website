@@ -8,16 +8,12 @@
     "name": "rusiaaman"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "node",
-      "args": ["${__dirname}/server/index.js"],
-      "env": {
-        "CLAUDE_API_KEY": "${user_config.claude_api_key}",
-        "AGENT_WORKING_DIRECTORY": "${user_config.agent_working_directory}",
-        "SHELL_EXECUTABLE_PATH": "${user_config.shell_executable_path}"
-      }
+    "command": "node",
+    "args": ["${__dirname}/server/index.js"],
+    "env": {
+      "CLAUDE_API_KEY": "${user_config.claude_api_key}",
+      "AGENT_WORKING_DIRECTORY": "${user_config.agent_working_directory}",
+      "SHELL_EXECUTABLE_PATH": "${user_config.shell_executable_path}"
     }
   },
   "readme": null,
@@ -83,9 +79,10 @@
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "evaluation_model": "gemini-2.5-flash",
   "raw_dependencies": null,
-  "last_scraped_at": "2025-08-28T19:53:22.116Z"
+  "last_scraped_at": "2025-09-09T13:06:52.086Z"
 }

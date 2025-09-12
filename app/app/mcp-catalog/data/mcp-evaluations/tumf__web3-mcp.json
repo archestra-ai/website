@@ -8,45 +8,58 @@
     "name": "tumf"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
+    "command": "uvx",
+    "args": ["web3-mcp"],
+    "env": {
+      "ANKR_ENDPOINT": "${user_config.ankr_endpoint}",
+      "ANKR_PRIVATE_KEY": "${user_config.ankr_private_key}"
     }
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "ankr_endpoint": {
+      "type": "string",
+      "title": "Ankr RPC Endpoint",
+      "description": "Your Ankr RPC endpoint (e.g., https://rpc.ankr.com/your_api_key)",
+      "sensitive": true,
+      "required": true
+    },
+    "ankr_private_key": {
+      "type": "string",
+      "title": "Ankr Private Key",
+      "description": "Your private key for authenticated Ankr requests",
+      "sensitive": true,
+      "required": false
+    }
+  },
   "readme": "# Web3 MCP\n\n[![Tests](https://github.com/tumf/web3-mcp/actions/workflows/test.yml/badge.svg)](https://github.com/tumf/web3-mcp/actions/workflows/test.yml)\n[![codecov](https://codecov.io/gh/tumf/web3-mcp/branch/main/graph/badge.svg)](https://codecov.io/gh/tumf/web3-mcp)\n[![PyPI version](https://badge.fury.io/py/web3-mcp.svg)](https://badge.fury.io/py/web3-mcp)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n\nAn MCP server implementation wrapping Ankr Advanced API.\n\n## Overview\n\nFastMCP is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server that provides access to Ankr's Advanced API for blockchain data. It allows LLMs to interact with blockchain data across multiple chains including Ethereum, BSC, Polygon, Avalanche, and more.\n\n## MCP Client Setting\n\n```json\n{\n  \"mcpServers\": {\n    \"web3\": {\n      \"command\": \"uvx\",\n      \"args\": [\n        \"web3-mcp\"\n      ],\n      \"env\": {\n        \"ANKR_ENDPOINT\": \"https://rpc.ankr.com/...\",\n      }\n    }\n  }\n}\n```\n\n## Features\n\n- Complete wrapper for all Ankr Advanced API endpoints\n- NFT API: Get NFT metadata, holders, transfers, and ownership information\n- Query API: Access blockchain statistics, blocks, logs, and transaction data\n- Token API: Get token balances, prices, holders, and transfer history\n- Support for multiple blockchain networks\n\n## Installation\n\n```bash\n# Clone the repository\ngit clone https://github.com/tumf/web3-mcp.git\ncd web3-mcp\n\n# Install with uv\nuv pip install -e .\n```\n\n## Configuration\n\nSet the following environment variables:\n\n```bash\n# Required\nexport ANKR_ENDPOINT=\"your_ankr_rpc_endpoint\"\n\n# Optional but recommended for authenticated requests\nexport ANKR_PRIVATE_KEY=\"your_private_key\"\n```\n\n## Usage\n\n### Running the server\n\n```python\nfrom web3_mcp.server import init_server\n\n# Initialize MCP server\nmcp = init_server(\n    name=\"Ankr MCP\",\n    endpoint=\"your_ankr_endpoint\",  # Optional, defaults to ANKR_ENDPOINT env var\n    private_key=\"your_private_key\"  # Optional, defaults to ANKR_PRIVATE_KEY env var\n)\n\n# Run server\nmcp.run()\n```\n\n### Using with FastMCP CLI\n\n```bash\n# Set environment variables first\nexport ANKR_ENDPOINT=\"your_ankr_endpoint\"\nexport ANKR_PRIVATE_KEY=\"your_private_key\"\n\n# Run the server\npython -m web3_mcp\n```\n\n## API Categories\n\n### NFT API\n\n- `get_nfts_by_owner`: Get NFTs owned by a wallet address\n- `get_nft_metadata`: Get metadata for a specific NFT\n- `get_nft_holders`: Get holders of a specific NFT collection\n- `get_nft_transfers`: Get transfer history for NFTs\n\n### Query API\n\n- `get_blockchain_stats`: Get blockchain statistics\n- `get_blocks`: Get blocks information\n- `get_logs`: Get blockchain logs\n- `get_transactions_by_hash`: Get transactions by hash\n- `get_transactions_by_address`: Get transactions by address\n- `get_interactions`: Get wallet interactions with contracts\n\n### Token API\n\n- `get_account_balance`: Get token balances for a wallet\n- `get_currencies`: Get available currencies\n- `get_token_price`: Get token price information\n- `get_token_holders`: Get token holders\n- `get_token_holders_count`: Get token holders count\n- `get_token_transfers`: Get token transfer history\n\n## License\n\nMIT\n",
   "category": "Development",
   "quality_score": 53,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "web3-mcp": {
-          "command": "uvx",
-          "args": ["web3-mcp"],
-          "env": {
-            "ANKR_ENDPOINT": "https://rpc.ankr.com/..."
-          }
-        },
-        "web3_mcp": {
-          "command": "python",
-          "args": ["-m", "web3_mcp"],
-          "env": {
-            "ANKR_ENDPOINT": "your_ankr_endpoint",
-            "ANKR_PRIVATE_KEY": "your_private_key"
-          }
+      "web3-mcp": {
+        "command": "uvx",
+        "args": ["web3-mcp"],
+        "env": {
+          "ANKR_ENDPOINT": "https://rpc.ankr.com/..."
+        }
+      },
+      "web3_mcp": {
+        "command": "python",
+        "args": ["-m", "web3_mcp"],
+        "env": {
+          "ANKR_ENDPOINT": "your_ankr_endpoint",
+          "ANKR_PRIVATE_KEY": "your_private_key"
         }
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "tumf",
@@ -63,7 +76,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-03T21:05:03.309Z",
+  "last_scraped_at": "2025-09-09T13:06:53.376Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

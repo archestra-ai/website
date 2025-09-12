@@ -8,13 +8,9 @@
     "name": "deadletterq"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": ["${__dirname}/build/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,21 +21,20 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-opennutrition": {
-          "command": "node",
-          "args": [
-            "/Users/YOUR.USERNAME/.nvm/versions/node/v20.19.0/bin/node",
-            "/ABSOLUTE/PATH/TO/PARENT/FOLDER/mcp-opennutrition/build/index.js"
-          ],
-          "env": {}
-        }
+      "mcp-opennutrition": {
+        "command": "node",
+        "args": [
+          "/Users/YOUR.USERNAME/.nvm/versions/node/v20.19.0/bin/node",
+          "/ABSOLUTE/PATH/TO/PARENT/FOLDER/mcp-opennutrition/build/index.js"
+        ],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "deadletterq",
@@ -56,7 +51,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:25:05.886Z",
+  "last_scraped_at": "2025-09-09T13:06:26.243Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -8,13 +8,9 @@
     "name": "0xshellming"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": ["${__dirname}/dist/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,23 +21,22 @@
   "quality_score": 55,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "content-summarizer": {
-          "command": "pnpm",
-          "args": ["start"],
-          "env": {}
-        },
-        "content-summarizer-configured": {
-          "command": "node",
-          "args": ["{ABSOLUTE PATH TO FILE HERE}/dist/index.js"],
-          "env": {}
-        }
+      "content-summarizer": {
+        "command": "pnpm",
+        "args": ["start"],
+        "env": {}
+      },
+      "content-summarizer-configured": {
+        "command": "node",
+        "args": ["{ABSOLUTE PATH TO FILE HERE}/dist/index.js"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "0xshellming",
@@ -58,7 +53,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:16:45.249Z",
+  "last_scraped_at": "2025-09-09T13:06:18.605Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

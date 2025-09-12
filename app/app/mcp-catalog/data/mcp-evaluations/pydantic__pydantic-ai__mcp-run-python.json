@@ -8,13 +8,9 @@
     "name": "pydantic"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,52 +21,51 @@
   "quality_score": 68,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "jsr-pydantic-mcp-run-python-stdio": {
-          "command": "deno",
-          "args": [
-            "run",
-            "-N",
-            "-R=node_modules",
-            "-W=node_modules",
-            "--node-modules-dir=auto",
-            "jsr:@pydantic/mcp-run-python",
-            "stdio"
-          ],
-          "env": {}
-        },
-        "jsr-pydantic-mcp-run-python-sse": {
-          "command": "deno",
-          "args": [
-            "run",
-            "-N",
-            "-R=node_modules",
-            "-W=node_modules",
-            "--node-modules-dir=auto",
-            "jsr:@pydantic/mcp-run-python",
-            "sse"
-          ],
-          "env": {}
-        },
-        "jsr-pydantic-mcp-run-python-warmup": {
-          "command": "deno",
-          "args": [
-            "run",
-            "-N",
-            "-R=node_modules",
-            "-W=node_modules",
-            "--node-modules-dir=auto",
-            "jsr:@pydantic/mcp-run-python",
-            "warmup"
-          ],
-          "env": {}
-        }
+      "jsr-pydantic-mcp-run-python-stdio": {
+        "command": "deno",
+        "args": [
+          "run",
+          "-N",
+          "-R=node_modules",
+          "-W=node_modules",
+          "--node-modules-dir=auto",
+          "jsr:@pydantic/mcp-run-python",
+          "stdio"
+        ],
+        "env": {}
+      },
+      "jsr-pydantic-mcp-run-python-sse": {
+        "command": "deno",
+        "args": [
+          "run",
+          "-N",
+          "-R=node_modules",
+          "-W=node_modules",
+          "--node-modules-dir=auto",
+          "jsr:@pydantic/mcp-run-python",
+          "sse"
+        ],
+        "env": {}
+      },
+      "jsr-pydantic-mcp-run-python-warmup": {
+        "command": "deno",
+        "args": [
+          "run",
+          "-N",
+          "-R=node_modules",
+          "-W=node_modules",
+          "--node-modules-dir=auto",
+          "jsr:@pydantic/mcp-run-python",
+          "warmup"
+        ],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "pydantic",

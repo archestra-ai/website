@@ -178,9 +178,25 @@ export default function DocContent({ content }: DocContentProps) {
           ul: ({ node, ...props }) => <ul {...props} className="list-disc list-outside mb-4 space-y-2 ml-6" />,
           ol: ({ node, ...props }) => <ol {...props} className="list-decimal list-outside mb-4 space-y-2 ml-6" />,
           li: ({ node, ...props }) => <li {...props} className="text-gray-700 leading-relaxed" />,
-          a: ({ node, ...props }) => (
-            <a {...props} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer" />
-          ),
+          a: ({ node, href, ...props }) => {
+            // Check if it's an external link
+            const isExternal = href && (href.startsWith('http://') || href.startsWith('https://'));
+            // Check if external link is to the same domain
+            const isSameDomain =
+              isExternal && typeof window !== 'undefined' && new URL(href).hostname === window.location.hostname;
+            // Internal links (starting with /) or same domain links don't open in new tab
+            const shouldOpenInNewTab = isExternal && !isSameDomain;
+
+            return (
+              <a
+                {...props}
+                href={href}
+                className="text-blue-600 hover:underline"
+                target={shouldOpenInNewTab ? '_blank' : undefined}
+                rel={shouldOpenInNewTab ? 'noopener noreferrer' : undefined}
+              />
+            );
+          },
           img: ({ node, ...props }) => (
             <img {...props} className="rounded-lg shadow-md my-6 w-full max-w-2xl mx-auto" />
           ),

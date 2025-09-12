@@ -8,13 +8,9 @@
     "name": "bgauryy"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "octocode-mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 67,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "octocode-mcp": {
-          "command": "npx",
-          "args": ["octocode-mcp"],
-          "env": {}
-        }
+      "octocode-mcp": {
+        "command": "npx",
+        "args": ["octocode-mcp"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "bgauryy",
@@ -53,7 +48,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:16:36.721Z",
+  "last_scraped_at": "2025-09-09T13:05:40.995Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

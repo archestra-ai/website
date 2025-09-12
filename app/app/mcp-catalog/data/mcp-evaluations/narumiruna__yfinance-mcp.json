@@ -8,13 +8,9 @@
     "name": "narumiruna"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["yfmcp@latest"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,23 +21,22 @@
   "quality_score": 45,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "yfmcp": {
-          "command": "uvx",
-          "args": ["yfmcp@latest"],
-          "env": {}
-        },
-        "narumi-yfinance-mcp-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "narumi/yfinance-mcp"],
-          "env": {}
-        }
+      "yfmcp": {
+        "command": "uvx",
+        "args": ["yfmcp@latest"],
+        "env": {}
+      },
+      "narumi-yfinance-mcp-docker": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "narumi/yfinance-mcp"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "narumiruna",
@@ -58,7 +53,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:13:55.977Z",
+  "last_scraped_at": "2025-09-09T13:06:15.812Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

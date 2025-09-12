@@ -8,13 +8,9 @@
     "name": "wong2"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@wong2/mcp-cli"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -24,13 +20,12 @@
   "category": "AI Tools",
   "quality_score": 53,
   "archestra_config": {
-    "client_config_permutations": {
-      "mcpServers": {}
-    },
+    "client_config_permutations": {},
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "wong2",
@@ -47,8 +42,8 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T21:05:44.942Z",
-  "evaluation_model": "gemini-2.5-pro",
+  "last_scraped_at": "2025-09-09T13:06:53.302Z",
+  "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
     "implementing_prompts": true,

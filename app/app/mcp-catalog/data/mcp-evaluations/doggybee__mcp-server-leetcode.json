@@ -8,13 +8,9 @@
     "name": "doggybee"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "mcp-server-leetcode",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,33 +21,32 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcpfun-mcp-server-leetcode": {
-          "command": "mcp-server-leetcode",
-          "args": [],
-          "env": {}
-        },
-        "mcpfun-mcp-server-leetcode-cli-config": {
-          "command": "mcp-server-leetcode",
-          "args": [],
-          "env": {}
-        },
-        "mcpfun-mcp-server-leetcode-node-config": {
-          "command": "node",
-          "args": ["/path/to/dist/index.js"],
-          "env": {}
-        },
-        "mcpfun-mcp-server-leetcode-dev": {
-          "command": "npm",
-          "args": ["run", "dev"],
-          "env": {}
-        }
+      "mcpfun-mcp-server-leetcode": {
+        "command": "mcp-server-leetcode",
+        "args": [],
+        "env": {}
+      },
+      "mcpfun-mcp-server-leetcode-cli-config": {
+        "command": "mcp-server-leetcode",
+        "args": [],
+        "env": {}
+      },
+      "mcpfun-mcp-server-leetcode-node-config": {
+        "command": "node",
+        "args": ["/path/to/dist/index.js"],
+        "env": {}
+      },
+      "mcpfun-mcp-server-leetcode-dev": {
+        "command": "npm",
+        "args": ["run", "dev"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "doggybee",
@@ -68,7 +63,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:57.770Z",
+  "last_scraped_at": "2025-09-09T13:05:19.628Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

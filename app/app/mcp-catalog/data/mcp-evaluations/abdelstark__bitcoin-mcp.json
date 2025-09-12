@@ -8,13 +8,9 @@
     "name": "AbdelStark"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "bitcoin-mcp@latest"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,23 +21,22 @@
   "quality_score": 59,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "bitcoin-mcp": {
-          "command": "npx",
-          "args": ["-y", "bitcoin-mcp@latest"],
-          "env": {}
-        },
-        "bitcoin-mcp-stdio": {
-          "command": "npx",
-          "args": ["-y", "bitcoin-mcp@latest"],
-          "env": {}
-        }
+      "bitcoin-mcp": {
+        "command": "npx",
+        "args": ["-y", "bitcoin-mcp@latest"],
+        "env": {}
+      },
+      "bitcoin-mcp-stdio": {
+        "command": "npx",
+        "args": ["-y", "bitcoin-mcp@latest"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "AbdelStark",
@@ -58,7 +53,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:55:52.959Z",
+  "last_scraped_at": "2025-09-09T13:06:41.594Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

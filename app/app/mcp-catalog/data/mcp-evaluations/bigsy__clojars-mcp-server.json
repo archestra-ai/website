@@ -8,13 +8,9 @@
     "name": "Bigsy"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "clojars-deps-server"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,23 +21,22 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "clojars-deps-server": {
-          "command": "npx",
-          "args": ["clojars-deps-server"],
-          "env": {}
-        },
-        "clojars-deps-server-configured": {
-          "command": "node",
-          "args": ["/path/to/clojars-deps-server/build/index.js"],
-          "env": {}
-        }
+      "clojars-deps-server": {
+        "command": "npx",
+        "args": ["clojars-deps-server"],
+        "env": {}
+      },
+      "clojars-deps-server-configured": {
+        "command": "node",
+        "args": ["/path/to/clojars-deps-server/build/index.js"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "Bigsy",
@@ -58,7 +53,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:24:21.716Z",
+  "last_scraped_at": "2025-09-09T13:06:26.229Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -8,13 +8,9 @@
     "name": "prisma"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "prisma", "mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,23 +21,22 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-remote": {
-          "command": "npx",
-          "args": ["-y", "mcp-remote", "https://mcp.prisma.io/mcp"],
-          "env": {}
-        },
-        "prisma-mcp": {
-          "command": "npx",
-          "args": ["-y", "prisma", "mcp"],
-          "env": {}
-        }
+      "mcp-remote": {
+        "command": "npx",
+        "args": ["-y", "mcp-remote", "https://mcp.prisma.io/mcp"],
+        "env": {}
+      },
+      "prisma-mcp": {
+        "command": "npx",
+        "args": ["-y", "prisma", "mcp"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "prisma",
@@ -58,7 +53,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:14:49.005Z",
+  "last_scraped_at": "2025-09-09T13:05:31.197Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

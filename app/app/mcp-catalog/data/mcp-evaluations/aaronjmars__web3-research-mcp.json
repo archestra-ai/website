@@ -8,13 +8,9 @@
     "name": "aaronjmars"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "web3-research-mcp@latest"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 59,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "web3-research-mcp": {
-          "command": "npx",
-          "args": ["-y", "web3-research-mcp@latest"],
-          "env": {}
-        }
+      "web3-research-mcp": {
+        "command": "npx",
+        "args": ["-y", "web3-research-mcp@latest"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "aaronjmars",
@@ -53,7 +48,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:17:50.351Z",
+  "last_scraped_at": "2025-09-09T13:06:08.572Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

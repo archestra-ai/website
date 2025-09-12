@@ -8,13 +8,9 @@
     "name": "j3k0"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "mcp-server.sh",
-    "mcp_config": {
-      "command": "sh",
-      "args": ["${__dirname}/mcp-server.sh"],
-      "env": {}
-    }
+    "command": "sh",
+    "args": ["${__dirname}/mcp-server.sh"],
+    "env": {}
   },
   "readme": null,
   "category": "Communication",
@@ -52,9 +48,10 @@
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "evaluation_model": "gemini-2.5-flash",
   "raw_dependencies": null,
-  "last_scraped_at": "2025-08-28T19:51:08.319Z"
+  "last_scraped_at": "2025-09-09T13:06:48.297Z"
 }

@@ -8,13 +8,9 @@
     "name": "maxim-saplin"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uv",
+    "args": ["--directory", "${__dirname}", "run", "mcp_server.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,23 +21,22 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-safe-local-python-executor-manual": {
-          "command": "uv",
-          "args": ["run", "mcp_server.py"],
-          "env": {}
-        },
-        "safe-local-python-executor": {
-          "command": "uv",
-          "args": ["--directory", "/path/to/mcp_local_python_executor/", "run", "mcp_server.py"],
-          "env": {}
-        }
+      "mcp-safe-local-python-executor-manual": {
+        "command": "uv",
+        "args": ["run", "mcp_server.py"],
+        "env": {}
+      },
+      "safe-local-python-executor": {
+        "command": "uv",
+        "args": ["--directory", "/path/to/mcp_local_python_executor/", "run", "mcp_server.py"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "maxim-saplin",
@@ -58,7 +53,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:59.889Z",
+  "last_scraped_at": "2025-09-09T13:05:21.222Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

@@ -8,13 +8,9 @@
     "name": "tumf"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["mcp-text-editor"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,35 +21,27 @@
   "quality_score": 66,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-text-editor": {
-          "command": "uvx",
-          "args": ["mcp-text-editor"],
-          "env": {}
-        },
-        "mcp-text-editor-docker": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-i",
-            "--rm",
-            "--mount",
-            "type=bind,src=/some/path/src,dst=/some/path/dst",
-            "mcp/text-editor"
-          ],
-          "env": {}
-        },
-        "mcp-text-editor-python": {
-          "command": "python",
-          "args": ["-m", "mcp_text_editor"],
-          "env": {}
-        }
+      "mcp-text-editor": {
+        "command": "uvx",
+        "args": ["mcp-text-editor"],
+        "env": {}
+      },
+      "mcp-text-editor-docker": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "--mount", "type=bind,src=/some/path/src,dst=/some/path/dst", "mcp/text-editor"],
+        "env": {}
+      },
+      "mcp-text-editor-python": {
+        "command": "python",
+        "args": ["-m", "mcp_text_editor"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "tumf",
@@ -70,7 +58,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:16:55.347Z",
+  "last_scraped_at": "2025-09-09T13:05:43.329Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

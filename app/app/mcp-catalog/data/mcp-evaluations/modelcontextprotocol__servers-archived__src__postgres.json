@@ -8,13 +8,9 @@
     "name": "modelcontextprotocol"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,33 +21,32 @@
   "quality_score": 65,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-postgres-docker-claude-desktop": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "mcp/postgres", "postgresql://host.docker.internal:5432/mydb"],
-          "env": {}
-        },
-        "modelcontextprotocol-server-postgres-claude-desktop": {
-          "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost/mydb"],
-          "env": {}
-        },
-        "mcp-postgres-docker-vscode": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "mcp/postgres", "${input:pg_url}"],
-          "env": {}
-        },
-        "modelcontextprotocol-server-postgres-vscode": {
-          "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-postgres", "${input:pg_url}"],
-          "env": {}
-        }
+      "mcp-postgres-docker-claude-desktop": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "mcp/postgres", "postgresql://host.docker.internal:5432/mydb"],
+        "env": {}
+      },
+      "modelcontextprotocol-server-postgres-claude-desktop": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost/mydb"],
+        "env": {}
+      },
+      "mcp-postgres-docker-vscode": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "mcp/postgres", "${input:pg_url}"],
+        "env": {}
+      },
+      "modelcontextprotocol-server-postgres-vscode": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-postgres", "${input:pg_url}"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "modelcontextprotocol",

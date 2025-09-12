@@ -8,13 +8,9 @@
     "name": "genomoncology"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/main.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "biomcp-python": {
-          "command": "uv",
-          "args": ["run", "--with", "biomcp-python", "biomcp", "run"],
-          "env": {}
-        }
+      "biomcp-python": {
+        "command": "uv",
+        "args": ["run", "--with", "biomcp-python", "biomcp", "run"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "genomoncology",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:19.077Z",
+  "last_scraped_at": "2025-09-09T13:06:27.968Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

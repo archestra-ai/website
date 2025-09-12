@@ -8,13 +8,9 @@
     "name": "pskill9"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": ["${__dirname}/build/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 48,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "website-downloader": {
-          "command": "node",
-          "args": ["/path/to/website-downloader/build/index.js"],
-          "env": {}
-        }
+      "website-downloader": {
+        "command": "node",
+        "args": ["/path/to/website-downloader/build/index.js"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "pskill9",
@@ -53,7 +48,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:16:35.398Z",
+  "last_scraped_at": "2025-09-09T13:05:40.982Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

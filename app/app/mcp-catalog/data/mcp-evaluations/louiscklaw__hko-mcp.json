@@ -8,13 +8,9 @@
     "name": "louiscklaw"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "github:louiscklaw/mcp-hko"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,28 +21,27 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-hko-dev": {
-          "command": "npm",
-          "args": ["run", "inspect"],
-          "env": {}
-        },
-        "mcp-hko-stdio": {
-          "command": "npx",
-          "args": ["-y", "github:louiscklaw/mcp-hko"],
-          "env": {}
-        },
-        "mcp-hko-docker": {
-          "command": "docker",
-          "args": ["run", "-i", "--rm", "mcp-hko:latest"],
-          "env": {}
-        }
+      "mcp-hko-dev": {
+        "command": "npm",
+        "args": ["run", "inspect"],
+        "env": {}
+      },
+      "mcp-hko-stdio": {
+        "command": "npx",
+        "args": ["-y", "github:louiscklaw/mcp-hko"],
+        "env": {}
+      },
+      "mcp-hko-docker": {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "mcp-hko:latest"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "louiscklaw",
@@ -63,7 +58,7 @@
   },
   "programming_language": "TypeScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T21:01:04.494Z",
+  "last_scraped_at": "2025-09-09T13:06:50.206Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

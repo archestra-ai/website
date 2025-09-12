@@ -8,13 +8,9 @@
     "name": "Operative-Sh"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@mcp/server"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,26 +21,25 @@
   "quality_score": 52,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "web-eval-agent": {
-          "command": "uvx",
-          "args": [
-            "--refresh-package",
-            "webEvalAgent",
-            "--from",
-            "git+https://github.com/Operative-Sh/web-eval-agent.git",
-            "webEvalAgent"
-          ],
-          "env": {
-            "OPERATIVE_API_KEY": "<YOUR_KEY>"
-          }
+      "web-eval-agent": {
+        "command": "uvx",
+        "args": [
+          "--refresh-package",
+          "webEvalAgent",
+          "--from",
+          "git+https://github.com/Operative-Sh/web-eval-agent.git",
+          "webEvalAgent"
+        ],
+        "env": {
+          "OPERATIVE_API_KEY": "<YOUR_KEY>"
         }
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "Operative-Sh",
@@ -61,7 +56,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:24.041Z",
+  "last_scraped_at": "2025-09-09T13:05:14.662Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

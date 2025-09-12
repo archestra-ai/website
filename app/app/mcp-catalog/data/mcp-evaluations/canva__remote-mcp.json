@@ -11,9 +11,25 @@
   "readme": null,
   "category": "Art & Culture",
   "quality_score": 80,
-  "archestra_config": null,
+  "archestra_config": {
+    "client_config_permutations": null,
+    "oauth": {
+      "provider": null,
+      "required": false
+    },
+    "works_in_archestra": false
+  },
   "framework": null,
   "last_scraped_at": "2025-09-05T19:30:23.066Z",
   "evaluation_model": null,
-  "raw_dependencies": null
+  "raw_dependencies": null,
+  "dxt_version": "0.1.0",
+  "author": {
+    "name": "canva"
+  },
+  "server": {
+    "command": "remote",
+    "args": [],
+    "env": {}
+  }
 }

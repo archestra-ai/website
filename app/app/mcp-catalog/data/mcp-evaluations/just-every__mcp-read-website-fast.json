@@ -8,13 +8,9 @@
     "name": "just-every"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@just-every/mcp-read-website-fast"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,23 +21,22 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "read-website-fast": {
-          "command": "npx",
-          "args": ["-y", "@just-every/mcp-read-website-fast"],
-          "env": {}
-        },
-        "read-website-fast-dev-no-restart": {
-          "command": "npm",
-          "args": ["run", "serve:dev"],
-          "env": {}
-        }
+      "read-website-fast": {
+        "command": "npx",
+        "args": ["-y", "@just-every/mcp-read-website-fast"],
+        "env": {}
+      },
+      "read-website-fast-dev-no-restart": {
+        "command": "npm",
+        "args": ["run", "serve:dev"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "just-every",
@@ -58,7 +53,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:26:01.752Z",
+  "last_scraped_at": "2025-09-09T13:06:28.877Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

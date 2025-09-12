@@ -8,45 +8,90 @@
     "name": "tufantunc"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": [
+      "-y",
+      "ssh-mcp",
+      "--",
+      "--host=${user_config.host}",
+      "--user=${user_config.user}",
+      "--port=${user_config.port}",
+      "--password=${user_config.password}",
+      "--key=${user_config.key}",
+      "--timeout=${user_config.timeout}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "host": {
+      "type": "string",
+      "title": "SSH Host",
+      "description": "Hostname or IP of the Linux or Windows server",
+      "required": true
+    },
+    "user": {
+      "type": "string",
+      "title": "SSH User",
+      "description": "SSH username",
+      "required": true
+    },
+    "port": {
+      "type": "number",
+      "title": "SSH Port",
+      "description": "SSH port",
+      "required": false,
+      "default": 22
+    },
+    "password": {
+      "type": "string",
+      "title": "SSH Password",
+      "description": "SSH password",
+      "sensitive": true,
+      "required": false
+    },
+    "key": {
+      "type": "file",
+      "title": "SSH Private Key Path",
+      "description": "Path to private SSH key",
+      "required": false
+    },
+    "timeout": {
+      "type": "number",
+      "title": "Command Timeout (ms)",
+      "description": "Command execution timeout in milliseconds",
+      "required": false,
+      "default": 60000
+    }
+  },
   "readme": "# SSH MCP Server\n\n[![NPM Version](https://img.shields.io/npm/v/ssh-mcp)](https://www.npmjs.com/package/ssh-mcp)\n[![Downloads](https://img.shields.io/npm/dm/ssh-mcp)](https://www.npmjs.com/package/ssh-mcp)\n[![Node Version](https://img.shields.io/node/v/ssh-mcp)](https://nodejs.org/)\n[![License](https://img.shields.io/github/license/tufantunc/ssh-mcp)](./LICENSE)\n[![GitHub Stars](https://img.shields.io/github/stars/tufantunc/ssh-mcp?style=social)](https://github.com/tufantunc/ssh-mcp/stargazers)\n[![GitHub Forks](https://img.shields.io/github/forks/tufantunc/ssh-mcp?style=social)](https://github.com/tufantunc/ssh-mcp/forks)\n[![Build Status](https://github.com/tufantunc/ssh-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/tufantunc/ssh-mcp/actions)\n[![GitHub issues](https://img.shields.io/github/issues/tufantunc/ssh-mcp)](https://github.com/tufantunc/ssh-mcp/issues)\n\n[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/tufantunc/ssh-mcp)](https://archestra.ai/mcp-catalog/tufantunc__ssh-mcp)\n\n**SSH MCP Server** is a local Model Context Protocol (MCP) server that exposes SSH control for Linux and Windows systems, enabling LLMs and other MCP clients to execute shell commands securely via SSH.\n\n## Contents\n\n- [Quick Start](#quick-start)\n- [Features](#features)\n- [Installation](#installation)\n- [Client Setup](#client-setup)\n- [Testing](#testing)\n- [Disclaimer](#disclaimer)\n- [Support](#support)\n\n## Quick Start\n\n- [Install](#installation) SSH MCP Server\n- [Configure](#configuration) SSH MCP Server\n- [Set up](#client-setup) your MCP Client (e.g. Claude Desktop, Cursor, etc)\n- Execute remote shell commands on your Linux or Windows server via natural language\n\n## Features\n\n- MCP-compliant server exposing SSH capabilities\n- Execute shell commands on remote Linux and Windows systems\n- Secure authentication via password or SSH key\n- Built with TypeScript and the official MCP SDK\n- **Configurable timeout protection** with automatic process abortion\n- **Graceful timeout handling** - attempts to kill hanging processes before closing connections\n\n### Tools\n\n- `exec`: Execute a shell command on the remote server\n  - **Parameters:**\n    - `command` (required): Shell command to execute on the remote SSH server\n  - **Timeout Configuration:**\n    - Timeout is configured via command line argument `--timeout` (in milliseconds)\n    - Default timeout: 60000ms (1 minute)\n    - When a command times out, the server automatically attempts to abort the running process before closing the connection\n\n## Installation\n\n1. **Clone the repository:**\n   ```bash\n   git clone https://github.com/tufantunc/ssh-mcp.git\n   cd ssh-mcp\n   ```\n2. **Install dependencies:**\n   ```bash\n   npm install\n   ```\n\n## Client Setup\n\nYou can configure Claude Desktop to use this MCP Server.\n\n**Required Parameters:**\n- `host`: Hostname or IP of the Linux or Windows server\n- `user`: SSH username\n\n**Optional Parameters:**\n- `port`: SSH port (default: 22)\n- `password`: SSH password (or use `key` for key-based auth)\n- `key`: Path to private SSH key\n- `timeout`: Command execution timeout in milliseconds (default: 60000ms = 1 minute)\n\n\n```commandline\n{\n    \"mcpServers\": {\n        \"ssh-mcp\": {\n            \"command\": \"npx\",\n            \"args\": [\n                \"ssh-mcp\",\n                \"-y\",\n                \"--\",\n                \"--host=1.2.3.4\",\n                \"--port=22\",\n                \"--user=root\",\n                \"--password=pass\",\n                \"--key=path/to/key\",\n                \"--timeout=30000\"\n            ]\n        }\n    }\n}\n```\n\n## Testing\n\nYou can use the [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector) for visual debugging of this MCP Server.\n\n```sh\nnpm run inspect\n```\n\n## Disclaimer\n\nSSH MCP Server is provided under the [MIT License](./LICENSE). Use at your own risk. This project is not affiliated with or endorsed by any SSH or MCP provider.\n\n## Contributing\n\nWe welcome contributions! Please see our [Contributing Guidelines](./CONTRIBUTING.md) for more information.\n\n## Code of Conduct\n\nThis project follows a [Code of Conduct](./CODE_OF_CONDUCT.md) to ensure a welcoming environment for everyone.\n\n## Support\n\nIf you find SSH MCP Server helpful, consider starring the repository or contributing! Pull requests and feedback are welcome. ",
   "category": "AI Tools",
   "quality_score": 56,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "ssh-mcp": {
-          "command": "npx",
-          "args": [
-            "-y",
-            "ssh-mcp",
-            "--",
-            "--host=1.2.3.4",
-            "--port=22",
-            "--user=root",
-            "--password=pass",
-            "--key=path/to/key",
-            "--timeout=30000"
-          ],
-          "env": {}
-        }
+      "ssh-mcp": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "ssh-mcp",
+          "--",
+          "--host=1.2.3.4",
+          "--port=22",
+          "--user=root",
+          "--password=pass",
+          "--key=path/to/key",
+          "--timeout=30000"
+        ],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "tufantunc",
@@ -63,7 +108,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:13:10.539Z",
+  "last_scraped_at": "2025-09-09T13:05:22.133Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

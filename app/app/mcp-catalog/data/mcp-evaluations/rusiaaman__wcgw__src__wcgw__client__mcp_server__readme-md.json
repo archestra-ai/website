@@ -8,13 +8,9 @@
     "name": "rusiaaman"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "unknown",
+    "args": [],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,78 +21,77 @@
   "quality_score": 41,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "modelcontextprotocol-server-filesystem": {
-          "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-filesystem", "~/.mcp/filesystem"],
-          "env": {}
-        },
-        "modelcontextprotocol-server-filesystem-docker": {
-          "command": "docker",
-          "args": ["run", "-d", "-p", "8080:8080", "-v", "~/.mcp/filesystem:/data", "mcp/server-filesystem:latest"],
-          "env": {}
-        },
-        "modelcontextprotocol-server-stdio": {
-          "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-stdio"],
-          "env": {}
-        },
-        "modelcontextprotocol-server-stdio-docker": {
-          "command": "docker",
-          "args": ["run", "-d", "-p", "8080:8080", "mcp/server-stdio:latest"],
-          "env": {}
-        },
-        "modelcontextprotocol-server-fetch": {
-          "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-fetch"],
-          "env": {}
-        },
-        "modelcontextprotocol-server-fetch-docker": {
-          "command": "docker",
-          "args": ["run", "-d", "-p", "8080:8080", "mcp/server-fetch:latest"],
-          "env": {}
-        },
-        "modelcontextprotocol-server-fetch-configured": {
-          "command": "npx",
-          "args": ["-y", "@modelcontextprotocol/server-fetch", "--config", "config.json"],
-          "env": {}
-        },
-        "modelcontextprotocol-server-fetch-docker-configured": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-d",
-            "-p",
-            "8080:8080",
-            "-v",
-            "./config.json:/app/config.json",
-            "mcp/server-fetch:latest",
-            "--config",
-            "/app/config.json"
-          ],
-          "env": {}
-        },
-        "modelcontextprotocol-server-fetch-docker-env-configured": {
-          "command": "docker",
-          "args": [
-            "run",
-            "-d",
-            "-p",
-            "8080:8080",
-            "-e",
-            "MCP_FETCH_ALLOWED_HOSTS=example.com,another.org",
-            "mcp/server-fetch:latest"
-          ],
-          "env": {
-            "MCP_FETCH_ALLOWED_HOSTS": "example.com,another.org"
-          }
+      "modelcontextprotocol-server-filesystem": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "~/.mcp/filesystem"],
+        "env": {}
+      },
+      "modelcontextprotocol-server-filesystem-docker": {
+        "command": "docker",
+        "args": ["run", "-d", "-p", "8080:8080", "-v", "~/.mcp/filesystem:/data", "mcp/server-filesystem:latest"],
+        "env": {}
+      },
+      "modelcontextprotocol-server-stdio": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-stdio"],
+        "env": {}
+      },
+      "modelcontextprotocol-server-stdio-docker": {
+        "command": "docker",
+        "args": ["run", "-d", "-p", "8080:8080", "mcp/server-stdio:latest"],
+        "env": {}
+      },
+      "modelcontextprotocol-server-fetch": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-fetch"],
+        "env": {}
+      },
+      "modelcontextprotocol-server-fetch-docker": {
+        "command": "docker",
+        "args": ["run", "-d", "-p", "8080:8080", "mcp/server-fetch:latest"],
+        "env": {}
+      },
+      "modelcontextprotocol-server-fetch-configured": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-fetch", "--config", "config.json"],
+        "env": {}
+      },
+      "modelcontextprotocol-server-fetch-docker-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-d",
+          "-p",
+          "8080:8080",
+          "-v",
+          "./config.json:/app/config.json",
+          "mcp/server-fetch:latest",
+          "--config",
+          "/app/config.json"
+        ],
+        "env": {}
+      },
+      "modelcontextprotocol-server-fetch-docker-env-configured": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-d",
+          "-p",
+          "8080:8080",
+          "-e",
+          "MCP_FETCH_ALLOWED_HOSTS=example.com,another.org",
+          "mcp/server-fetch:latest"
+        ],
+        "env": {
+          "MCP_FETCH_ALLOWED_HOSTS": "example.com,another.org"
         }
       }
     },
     "oauth": {
       "provider": "google",
       "required": true
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "rusiaaman",

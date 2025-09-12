@@ -8,35 +8,55 @@
     "name": "Wooonster"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": [
+      "-m",
+      "uvicorn",
+      "mcp_server:app",
+      "--host",
+      "${user_config.server_host}",
+      "--port",
+      "${user_config.server_port}"
+    ],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
   "keywords": [],
-  "user_config": {},
+  "user_config": {
+    "server_host": {
+      "type": "string",
+      "title": "Server Host",
+      "description": "The host address for the MCP server.",
+      "default": "0.0.0.0",
+      "required": false
+    },
+    "server_port": {
+      "type": "number",
+      "title": "Server Port",
+      "description": "The port for the MCP server.",
+      "default": 8000,
+      "required": false,
+      "min": 1,
+      "max": 65535
+    }
+  },
   "readme": "# HOCR MCP Agent\n[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/Wooonster/hocr_mcp_server)](https://archestra.ai/mcp-catalog/wooonster__hocr_mcp_server)\n\n### Vue Frontend\n\nStart command:\n\n```bash\ncd hocr-vue-client/\n\nnpm install\nnpm run dev\n```\n\nRequired packages:\n```bash\ncd hocr-vue-client/\n\nnpm install katex\nnpm install axios\n```\n\n### MCP Server\n\nStart command:\n\n```bash\nuvicorn mcp_server:app --reload --host 0.0.0.0 --port 8000\n````",
   "category": "AI Tools",
   "quality_score": 30,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp_server": {
-          "command": "uvicorn",
-          "args": ["mcp_server:app", "--reload", "--host", "0.0.0.0", "--port", "8000"],
-          "env": {}
-        }
+      "mcp_server": {
+        "command": "uvicorn",
+        "args": ["mcp_server:app", "--reload", "--host", "0.0.0.0", "--port", "8000"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "Wooonster",
@@ -53,7 +73,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:17:04.053Z",
+  "last_scraped_at": "2025-09-09T13:05:44.258Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,

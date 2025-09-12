@@ -8,13 +8,9 @@
     "name": "safedep"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "npx",
-      "args": ["-y", "@mcp/package-auditor"],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@mcp/package-auditor"],
+    "env": {}
   },
   "readme": null,
   "category": "Security",
@@ -69,9 +65,10 @@
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "evaluation_model": "gemini-2.5-flash",
   "raw_dependencies": null,
-  "last_scraped_at": "2025-08-28T19:50:10.169Z"
+  "last_scraped_at": "2025-09-09T13:06:35.281Z"
 }

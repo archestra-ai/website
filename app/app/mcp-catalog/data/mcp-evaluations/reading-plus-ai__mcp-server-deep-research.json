@@ -8,13 +8,9 @@
     "name": "reading-plus-ai"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["mcp-server-deep-research"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,28 +21,27 @@
   "quality_score": 58,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-server-deep-research": {
-          "command": "uvx",
-          "args": ["mcp-server-deep-research"],
-          "env": {}
-        },
-        "mcp-server-deep-research-configured": {
-          "command": "uv",
-          "args": [
-            "--directory",
-            "/Users/username/repos/mcp-server-application/mcp-server-deep-research",
-            "run",
-            "mcp-server-deep-research"
-          ],
-          "env": {}
-        }
+      "mcp-server-deep-research": {
+        "command": "uvx",
+        "args": ["mcp-server-deep-research"],
+        "env": {}
+      },
+      "mcp-server-deep-research-configured": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/Users/username/repos/mcp-server-application/mcp-server-deep-research",
+          "run",
+          "mcp-server-deep-research"
+        ],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "reading-plus-ai",
@@ -63,7 +58,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:27:51.377Z",
+  "last_scraped_at": "2025-09-09T13:06:30.874Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": false,

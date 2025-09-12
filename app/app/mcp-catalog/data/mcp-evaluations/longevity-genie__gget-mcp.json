@@ -8,13 +8,9 @@
     "name": "longevity-genie"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["--from", "gget-mcp@latest", "stdio"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,33 +21,32 @@
   "quality_score": 41,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "gget-mcp": {
-          "command": "uvx",
-          "args": ["--from", "gget-mcp", "stdio"],
-          "env": {}
-        },
-        "gget-mcp-http": {
-          "command": "uvx",
-          "args": ["--from", "gget-mcp", "server"],
-          "env": {}
-        },
-        "gget-mcp-stdio-local": {
-          "command": "uvx",
-          "args": ["--from", "gget-mcp", "stdio", "--output-dir", "./gget_output"],
-          "env": {}
-        },
-        "gget-mcp-sse": {
-          "command": "uvx",
-          "args": ["gget-mcp", "server-sse"],
-          "env": {}
-        }
+      "gget-mcp": {
+        "command": "uvx",
+        "args": ["--from", "gget-mcp", "stdio"],
+        "env": {}
+      },
+      "gget-mcp-http": {
+        "command": "uvx",
+        "args": ["--from", "gget-mcp", "server"],
+        "env": {}
+      },
+      "gget-mcp-stdio-local": {
+        "command": "uvx",
+        "args": ["--from", "gget-mcp", "stdio", "--output-dir", "./gget_output"],
+        "env": {}
+      },
+      "gget-mcp-sse": {
+        "command": "uvx",
+        "args": ["gget-mcp", "server-sse"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "longevity-genie",
@@ -68,7 +63,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:18.561Z",
+  "last_scraped_at": "2025-09-09T13:05:13.047Z",
   "evaluation_model": "gemini-2.5-pro",
   "protocol_features": {
     "implementing_tools": true,

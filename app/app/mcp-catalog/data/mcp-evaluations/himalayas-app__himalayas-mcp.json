@@ -8,13 +8,9 @@
     "name": "Himalayas-App"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["mcp-remote", "https://mcp.himalayas.app/sse"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 40,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "mcp-remote": {
-          "command": "npx",
-          "args": ["mcp-remote", "https://mcp.himalayas.app/sse"],
-          "env": {}
-        }
+      "mcp-remote": {
+        "command": "npx",
+        "args": ["mcp-remote", "https://mcp.himalayas.app/sse"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "Himalayas-App",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Unknown",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:25:58.431Z",
+  "last_scraped_at": "2025-09-09T13:06:28.261Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

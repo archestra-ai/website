@@ -8,13 +8,9 @@
     "name": "tomholford"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "${__dirname}/bin/server",
+    "args": ["-transport=stdio"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,33 +21,32 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "tic-tac-toe-stdio": {
-          "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
-          "args": ["-transport=stdio"],
-          "env": {}
-        },
-        "tic-tac-toe-desktop-config": {
-          "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
-          "args": [""],
-          "env": {}
-        },
-        "tic-tac-toe-sse": {
-          "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
-          "args": ["-transport=sse", "-addr=:8080"],
-          "env": {}
-        },
-        "tic-tac-toe-http": {
-          "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
-          "args": ["-transport=http", "-addr=:8080"],
-          "env": {}
-        }
+      "tic-tac-toe-stdio": {
+        "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
+        "args": ["-transport=stdio"],
+        "env": {}
+      },
+      "tic-tac-toe-desktop-config": {
+        "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
+        "args": [""],
+        "env": {}
+      },
+      "tic-tac-toe-sse": {
+        "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
+        "args": ["-transport=sse", "-addr=:8080"],
+        "env": {}
+      },
+      "tic-tac-toe-http": {
+        "command": "/full/path/to/mcp-tic-tac-toe/bin/server",
+        "args": ["-transport=http", "-addr=:8080"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "tomholford",
@@ -68,7 +63,7 @@
   },
   "programming_language": "Go",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:16:45.571Z",
+  "last_scraped_at": "2025-09-09T13:06:18.713Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

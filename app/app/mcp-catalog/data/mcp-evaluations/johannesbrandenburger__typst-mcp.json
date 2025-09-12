@@ -8,13 +8,9 @@
     "name": "johannesbrandenburger"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/server.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,23 +21,22 @@
   "quality_score": 54,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "typst-mcp-server": {
-          "command": "python",
-          "args": ["server.py"],
-          "env": {}
-        },
-        "typst-mcp-server-mcp-install": {
-          "command": "mcp",
-          "args": ["install", "server.py"],
-          "env": {}
-        }
+      "typst-mcp-server": {
+        "command": "python",
+        "args": ["server.py"],
+        "env": {}
+      },
+      "typst-mcp-server-mcp-install": {
+        "command": "mcp",
+        "args": ["install", "server.py"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "johannesbrandenburger",
@@ -58,7 +53,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-03T21:00:04.190Z",
+  "last_scraped_at": "2025-09-09T13:06:47.913Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

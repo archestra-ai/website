@@ -8,13 +8,9 @@
     "name": "bram2w"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "docker",
+    "args": ["run", "-v", "baserow_data:/baserow/data", "-p", "80:80", "-p", "443:443", "baserow/baserow:1.34.5"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,23 +21,22 @@
   "quality_score": 60,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "baserow-baserow-docker": {
-          "command": "docker",
-          "args": ["run", "-v", "baserow_data:/baserow/data", "-p", "80:80", "-p", "443:443", "baserow/baserow:1.34.5"],
-          "env": {}
-        },
-        "baserow-dev-script": {
-          "command": "./dev.sh",
-          "args": ["--build"],
-          "env": {}
-        }
+      "baserow-baserow-docker": {
+        "command": "docker",
+        "args": ["run", "-v", "baserow_data:/baserow/data", "-p", "80:80", "-p", "443:443", "baserow/baserow:1.34.5"],
+        "env": {}
+      },
+      "baserow-dev-script": {
+        "command": "./dev.sh",
+        "args": ["--build"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "bram2w",
@@ -58,7 +53,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:13:56.413Z",
+  "last_scraped_at": "2025-09-09T13:05:26.101Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

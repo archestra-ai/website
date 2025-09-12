@@ -8,13 +8,9 @@
     "name": "tiianhk"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/server/main.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,28 +21,27 @@
   "quality_score": 46,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "MaxMSP-MCP-Server-claude": {
-          "command": "python",
-          "args": ["install.py", "--client", "claude"],
-          "env": {}
-        },
-        "MaxMSP-MCP-Server-cursor": {
-          "command": "python",
-          "args": ["install.py", "--client", "cursor"],
-          "env": {}
-        },
-        "MaxMSP-MCP-Server-other-client": {
-          "command": "python",
-          "args": ["install.py", "--client", "{your_client_name}"],
-          "env": {}
-        }
+      "MaxMSP-MCP-Server-claude": {
+        "command": "python",
+        "args": ["install.py", "--client", "claude"],
+        "env": {}
+      },
+      "MaxMSP-MCP-Server-cursor": {
+        "command": "python",
+        "args": ["install.py", "--client", "cursor"],
+        "env": {}
+      },
+      "MaxMSP-MCP-Server-other-client": {
+        "command": "python",
+        "args": ["install.py", "--client", "{your_client_name}"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "tiianhk",
@@ -63,7 +58,7 @@
   },
   "programming_language": "Max",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:12:59.917Z",
+  "last_scraped_at": "2025-09-09T13:05:21.337Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

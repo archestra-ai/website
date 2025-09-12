@@ -8,13 +8,9 @@
     "name": "endorhq"
   },
   "server": {
-    "type": "binary",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["-y", "@endorhq/cli", "mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 42,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "endorhq-cli-mcp": {
-          "command": "npx",
-          "args": ["-y", "@endorhq/cli", "mcp"],
-          "env": {}
-        }
+      "endorhq-cli-mcp": {
+        "command": "npx",
+        "args": ["-y", "@endorhq/cli", "mcp"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "endorhq",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Unknown",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:15:48.408Z",
+  "last_scraped_at": "2025-09-09T13:05:36.380Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

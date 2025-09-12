@@ -8,13 +8,9 @@
     "name": "fosdickio"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["${__dirname}/bridge/binja_mcp_bridge.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 61,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "binary_ninja_mcp": {
-          "command": "python",
-          "args": ["/ABSOLUTE/PATH/TO/binary_ninja_mcp/bridge/binja_mcp_bridge.py"],
-          "env": {}
-        }
+      "binary_ninja_mcp": {
+        "command": "python",
+        "args": ["/ABSOLUTE/PATH/TO/binary_ninja_mcp/bridge/binja_mcp_bridge.py"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "fosdickio",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-03T20:48:14.414Z",
+  "last_scraped_at": "2025-09-09T13:06:33.607Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

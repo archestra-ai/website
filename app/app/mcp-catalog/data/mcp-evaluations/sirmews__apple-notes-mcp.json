@@ -8,13 +8,9 @@
     "name": "sirmews"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uvx",
+    "args": ["apple-notes-mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,28 +21,27 @@
   "quality_score": 69,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "apple-notes-mcp-dev": {
-          "command": "uv",
-          "args": ["--directory", "{project_dir}", "run", "apple-notes-mcp"],
-          "env": {}
-        },
-        "apple-notes-mcp-published": {
-          "command": "uvx",
-          "args": ["apple-notes-mcp"],
-          "env": {}
-        },
-        "apple-notes-mcp-debug": {
-          "command": "npx",
-          "args": ["@modelcontextprotocol/inspector", "uv", "--directory", "{project_dir}", "run", "apple-notes-mcp"],
-          "env": {}
-        }
+      "apple-notes-mcp-dev": {
+        "command": "uv",
+        "args": ["--directory", "{project_dir}", "run", "apple-notes-mcp"],
+        "env": {}
+      },
+      "apple-notes-mcp-published": {
+        "command": "uvx",
+        "args": ["apple-notes-mcp"],
+        "env": {}
+      },
+      "apple-notes-mcp-debug": {
+        "command": "npx",
+        "args": ["@modelcontextprotocol/inspector", "uv", "--directory", "{project_dir}", "run", "apple-notes-mcp"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "sirmews",
@@ -63,7 +58,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-03T21:04:10.223Z",
+  "last_scraped_at": "2025-09-09T13:06:52.630Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

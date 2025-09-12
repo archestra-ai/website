@@ -8,13 +8,9 @@
     "name": "JoshuaRileyDev"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "npx",
+    "args": ["y", "@joshuarileydev/simulator-mcp-server"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 50,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "joshuarileydev-simulator-mcp-server": {
-          "command": "npx",
-          "args": ["y", "@joshuarileydev/simulator-mcp-server"],
-          "env": {}
-        }
+      "joshuarileydev-simulator-mcp-server": {
+        "command": "npx",
+        "args": ["y", "@joshuarileydev/simulator-mcp-server"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "JoshuaRileyDev",
@@ -53,7 +48,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:16:16.402Z",
+  "last_scraped_at": "2025-09-09T13:05:38.587Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

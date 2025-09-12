@@ -8,13 +8,9 @@
     "name": "janswist"
   },
   "server": {
-    "type": "node",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "node",
+    "args": ["${__dirname}/index.js"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 44,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "dexscreener-configured": {
-          "command": "node",
-          "args": ["/ABSOLUTE/PATH/TO/PARENT/FOLDER/index.js"],
-          "env": {}
-        }
+      "dexscreener-configured": {
+        "command": "node",
+        "args": ["/ABSOLUTE/PATH/TO/PARENT/FOLDER/index.js"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "janswist",
@@ -53,7 +48,7 @@
   },
   "programming_language": "JavaScript",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:37:13.386Z",
+  "last_scraped_at": "2025-09-09T13:06:10.236Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

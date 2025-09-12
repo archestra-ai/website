@@ -8,13 +8,9 @@
     "name": "kukapay"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "uv",
+    "args": ["--directory", "${__dirname}", "run", "main.py"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,18 +21,17 @@
   "quality_score": 57,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "kukapay-crypto-feargreed-mcp": {
-          "command": "uv",
-          "args": ["--directory", "/your/path/to/crypto-feargreed-mcp", "run", "main.py"],
-          "env": {}
-        }
+      "kukapay-crypto-feargreed-mcp": {
+        "command": "uv",
+        "args": ["--directory", "/your/path/to/crypto-feargreed-mcp", "run", "main.py"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "kukapay",
@@ -53,7 +48,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-08-04T09:37:16.404Z",
+  "last_scraped_at": "2025-09-09T13:06:11.069Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,

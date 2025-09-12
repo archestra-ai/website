@@ -8,13 +8,9 @@
     "name": "microsoft"
   },
   "server": {
-    "type": "python",
-    "entry_point": "index.js",
-    "mcp_config": {
-      "command": "unknown",
-      "args": [],
-      "env": {}
-    }
+    "command": "python",
+    "args": ["-m", "markitdown_mcp"],
+    "env": {}
   },
   "tools": [],
   "prompts": [],
@@ -25,43 +21,42 @@
   "quality_score": 80,
   "archestra_config": {
     "client_config_permutations": {
-      "mcpServers": {
-        "markitdown-mcp-stdio": {
-          "command": "markitdown-mcp",
-          "args": [],
-          "env": {}
-        },
-        "markitdown-mcp-http": {
-          "command": "markitdown-mcp",
-          "args": ["--http", "--host", "127.0.0.1", "--port", "3001"],
-          "env": {}
-        },
-        "markitdown-mcp-docker-basic": {
-          "command": "docker",
-          "args": ["run", "-it", "--rm", "markitdown-mcp:latest"],
-          "env": {}
-        },
-        "markitdown-mcp-docker-mounted": {
-          "command": "docker",
-          "args": ["run", "-it", "--rm", "-v", "/home/user/data:/workdir", "markitdown-mcp:latest"],
-          "env": {}
-        },
-        "markitdown-mcp-docker-claude-desktop": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "markitdown-mcp:latest"],
-          "env": {}
-        },
-        "markitdown-mcp-docker-claude-desktop-mounted": {
-          "command": "docker",
-          "args": ["run", "--rm", "-i", "-v", "/home/user/data:/workdir", "markitdown-mcp:latest"],
-          "env": {}
-        }
+      "markitdown-mcp-stdio": {
+        "command": "markitdown-mcp",
+        "args": [],
+        "env": {}
+      },
+      "markitdown-mcp-http": {
+        "command": "markitdown-mcp",
+        "args": ["--http", "--host", "127.0.0.1", "--port", "3001"],
+        "env": {}
+      },
+      "markitdown-mcp-docker-basic": {
+        "command": "docker",
+        "args": ["run", "-it", "--rm", "markitdown-mcp:latest"],
+        "env": {}
+      },
+      "markitdown-mcp-docker-mounted": {
+        "command": "docker",
+        "args": ["run", "-it", "--rm", "-v", "/home/user/data:/workdir", "markitdown-mcp:latest"],
+        "env": {}
+      },
+      "markitdown-mcp-docker-claude-desktop": {
+        "command": "docker",
+        "args": ["run", "--rm", "-i", "markitdown-mcp:latest"],
+        "env": {}
+      },
+      "markitdown-mcp-docker-claude-desktop-mounted": {
+        "command": "docker",
+        "args": ["run", "--rm", "-i", "-v", "/home/user/data:/workdir", "markitdown-mcp:latest"],
+        "env": {}
       }
     },
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "microsoft",
@@ -78,7 +73,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2025-09-07T22:17:45.700Z",
+  "last_scraped_at": "2025-09-09T13:06:07.880Z",
   "evaluation_model": "gemini-2.5-flash",
   "protocol_features": {
     "implementing_tools": true,
