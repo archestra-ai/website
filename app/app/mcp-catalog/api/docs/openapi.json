@@ -14,1338 +14,2346 @@
   "components": {
     "schemas": {
       "ArchestraMcpServerManifest": {
-        "type": "object",
-        "properties": {
-          "$schema": {
-            "type": "string"
-          },
-          "dxt_version": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "display_name": {
-            "type": "string"
-          },
-          "version": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "long_description": {
-            "type": "string"
-          },
-          "author": {
+        "anyOf": [
+          {
             "type": "object",
             "properties": {
               "name": {
                 "type": "string"
               },
-              "email": {
-                "type": "string",
-                "format": "email"
-              },
-              "url": {
-                "type": "string",
-                "format": "uri"
-              }
-            },
-            "required": ["name"],
-            "additionalProperties": false
-          },
-          "homepage": {
-            "type": "string",
-            "format": "uri"
-          },
-          "documentation": {
-            "type": "string",
-            "format": "uri"
-          },
-          "support": {
-            "type": "string",
-            "format": "uri"
-          },
-          "icon": {
-            "type": "string"
-          },
-          "screenshots": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "server": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": ["python", "node", "binary"]
-              },
-              "entry_point": {
+              "display_name": {
                 "type": "string"
               },
-              "mcp_config": {
+              "version": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "remote_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "remote_mcp_docs_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "oauth_config": {
                 "type": "object",
                 "properties": {
-                  "command": {
+                  "name": {
                     "type": "string"
                   },
-                  "args": {
+                  "server_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "auth_server_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "resource_metadata_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "client_id": {
+                    "type": "string"
+                  },
+                  "client_secret": {
+                    "type": "string"
+                  },
+                  "redirect_uris": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  },
+                  "scopes": {
                     "type": "array",
                     "items": {
                       "type": "string"
                     }
                   },
-                  "env": {
-                    "type": "object",
-                    "additionalProperties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "well_known_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "default_scopes": {
+                    "type": "array",
+                    "items": {
                       "type": "string"
                     }
                   },
-                  "platform_overrides": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object",
-                      "properties": {
-                        "command": {
-                          "type": "string"
-                        },
-                        "args": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "env": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "additionalProperties": false
-                    }
-                  }
-                },
-                "required": ["command"],
-                "additionalProperties": false
-              }
-            },
-            "required": ["type", "entry_point", "mcp_config"],
-            "additionalProperties": false
-          },
-          "tools": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                }
-              },
-              "required": ["name"],
-              "additionalProperties": false
-            }
-          },
-          "tools_generated": {
-            "type": "boolean"
-          },
-          "prompts": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "arguments": {
-                  "type": "array",
-                  "items": {
+                  "supports_resource_metadata": {
+                    "type": "boolean"
+                  },
+                  "generic_oauth": {
+                    "type": "boolean"
+                  },
+                  "token_endpoint": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "access_token_env_var": {
                     "type": "string"
+                  },
+                  "requires_proxy": {
+                    "type": "boolean"
+                  },
+                  "provider_name": {
+                    "type": "string"
+                  },
+                  "browser_auth": {
+                    "type": "boolean"
+                  },
+                  "streamable_http_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "streamable_http_port": {
+                    "type": "number"
                   }
                 },
-                "text": {
-                  "type": "string"
-                }
+                "required": [
+                  "name",
+                  "server_url",
+                  "client_id",
+                  "redirect_uris",
+                  "scopes",
+                  "default_scopes",
+                  "supports_resource_metadata"
+                ]
               },
-              "required": ["name", "text"],
-              "additionalProperties": false
-            }
-          },
-          "prompts_generated": {
-            "type": "boolean"
-          },
-          "keywords": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "license": {
-            "type": "string"
-          },
-          "compatibility": {
-            "type": "object",
-            "properties": {
-              "claude_desktop": {
-                "type": "string"
-              },
-              "platforms": {
+              "tools": {
                 "type": "array",
                 "items": {
-                  "type": "string",
-                  "enum": ["darwin", "win32", "linux"]
+                  "nullable": true
                 }
               },
-              "runtimes": {
+              "prompts": {
+                "type": "array",
+                "items": {
+                  "nullable": true
+                }
+              },
+              "user_config": {
                 "type": "object",
-                "properties": {
-                  "python": {
-                    "type": "string"
-                  },
-                  "node": {
-                    "type": "string"
-                  }
-                },
-                "additionalProperties": false
-              }
-            }
-          },
-          "user_config": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "enum": ["string", "number", "boolean", "directory", "file"]
-                },
-                "title": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "required": {
-                  "type": "boolean"
-                },
-                "default": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "boolean"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  ]
-                },
-                "multiple": {
-                  "type": "boolean"
-                },
-                "sensitive": {
-                  "type": "boolean"
-                },
-                "min": {
-                  "type": "number"
-                },
-                "max": {
-                  "type": "number"
+                "additionalProperties": {
+                  "nullable": true
                 }
               },
-              "required": ["type", "title", "description"],
-              "additionalProperties": false
-            }
-          },
-          "remote_url": {
-            "type": "string",
-            "format": "uri"
-          },
-          "remote_mcp_docs_url": {
-            "type": "string",
-            "format": "uri"
-          },
-          "readme": {
-            "type": "string",
-            "nullable": true
-          },
-          "category": {
-            "type": "string",
-            "nullable": true,
-            "enum": [
-              "Aggregators",
-              "Art & Culture",
-              "Healthcare",
-              "Browser Automation",
-              "Cloud",
-              "Development",
-              "CLI Tools",
-              "Communication",
-              "Data",
-              "Logistics",
-              "Data Science",
-              "IoT",
-              "File Management",
-              "Finance",
-              "Gaming",
-              "Knowledge",
-              "Location",
-              "Marketing",
-              "Monitoring",
-              "Media",
-              "AI Tools",
-              "Search",
-              "Security",
-              "Social Media",
-              "Sports",
-              "Support",
-              "Translation",
-              "Audio",
-              "Travel",
-              "Messengers",
-              "Email",
-              "CRM",
-              "Enterprise",
-              "Job Search",
-              "Local files",
-              "General"
-            ]
-          },
-          "quality_score": {
-            "type": "number",
-            "nullable": true,
-            "minimum": 0,
-            "maximum": 100
-          },
-          "archestra_config": {
-            "type": "object",
-            "properties": {
-              "client_config_permutations": {
+              "readme": {
+                "type": "string",
+                "nullable": true
+              },
+              "category": {
+                "type": "string",
+                "nullable": true,
+                "enum": [
+                  "Aggregators",
+                  "Art & Culture",
+                  "Healthcare",
+                  "Browser Automation",
+                  "Cloud",
+                  "Development",
+                  "CLI Tools",
+                  "Communication",
+                  "Data",
+                  "Logistics",
+                  "Data Science",
+                  "IoT",
+                  "File Management",
+                  "Finance",
+                  "Gaming",
+                  "Knowledge",
+                  "Location",
+                  "Marketing",
+                  "Monitoring",
+                  "Media",
+                  "AI Tools",
+                  "Search",
+                  "Security",
+                  "Social Media",
+                  "Sports",
+                  "Support",
+                  "Translation",
+                  "Audio",
+                  "Travel",
+                  "Messengers",
+                  "Email",
+                  "CRM",
+                  "Enterprise",
+                  "Job Search",
+                  "Local files",
+                  "General"
+                ]
+              },
+              "quality_score": {
+                "type": "number",
+                "nullable": true,
+                "minimum": 0,
+                "maximum": 100
+              },
+              "archestra_config": {
                 "type": "object",
                 "nullable": true,
                 "properties": {
-                  "mcpServers": {
+                  "client_config_permutations": {
                     "type": "object",
-                    "additionalProperties": {
-                      "type": "object",
-                      "properties": {
-                        "command": {
-                          "type": "string"
-                        },
-                        "args": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "env": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "required": ["command"],
-                      "additionalProperties": false
-                    }
-                  }
-                },
-                "required": ["mcpServers"]
-              },
-              "oauth": {
-                "type": "object",
-                "properties": {
-                  "provider": {
-                    "type": "string",
                     "nullable": true,
-                    "enum": ["google", "slack", "linkedin"]
-                  },
-                  "required": {
-                    "type": "boolean"
-                  }
-                },
-                "required": ["provider", "required"]
-              },
-              "browser_based": {
-                "type": "object",
-                "properties": {
-                  "required": {
-                    "type": "boolean"
-                  }
-                },
-                "required": ["required"]
-              }
-            },
-            "required": ["client_config_permutations", "oauth"]
-          },
-          "github_info": {
-            "type": "object",
-            "properties": {
-              "owner": {
-                "type": "string"
-              },
-              "repo": {
-                "type": "string"
-              },
-              "url": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "path": {
-                "type": "string",
-                "nullable": true
-              },
-              "stars": {
-                "type": "number"
-              },
-              "contributors": {
-                "type": "number"
-              },
-              "issues": {
-                "type": "number"
-              },
-              "releases": {
-                "type": "boolean"
-              },
-              "ci_cd": {
-                "type": "boolean"
-              },
-              "latest_commit_hash": {
-                "type": "string",
-                "nullable": true
-              }
-            },
-            "required": [
-              "owner",
-              "repo",
-              "url",
-              "name",
-              "path",
-              "stars",
-              "contributors",
-              "issues",
-              "releases",
-              "ci_cd",
-              "latest_commit_hash"
-            ]
-          },
-          "programming_language": {
-            "type": "string"
-          },
-          "framework": {
-            "type": "string",
-            "nullable": true
-          },
-          "last_scraped_at": {
-            "type": "string",
-            "nullable": true
-          },
-          "evaluation_model": {
-            "type": "string",
-            "nullable": true
-          },
-          "protocol_features": {
-            "type": "object",
-            "properties": {
-              "implementing_tools": {
-                "type": "boolean"
-              },
-              "implementing_prompts": {
-                "type": "boolean"
-              },
-              "implementing_resources": {
-                "type": "boolean"
-              },
-              "implementing_sampling": {
-                "type": "boolean"
-              },
-              "implementing_roots": {
-                "type": "boolean"
-              },
-              "implementing_logging": {
-                "type": "boolean"
-              },
-              "implementing_stdio": {
-                "type": "boolean"
-              },
-              "implementing_streamable_http": {
-                "type": "boolean"
-              },
-              "implementing_oauth2": {
-                "type": "boolean"
-              }
-            },
-            "required": [
-              "implementing_tools",
-              "implementing_prompts",
-              "implementing_resources",
-              "implementing_sampling",
-              "implementing_roots",
-              "implementing_logging",
-              "implementing_stdio",
-              "implementing_streamable_http",
-              "implementing_oauth2"
-            ]
-          },
-          "dependencies": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "importance": {
-                  "type": "number",
-                  "minimum": 1,
-                  "maximum": 10
-                }
-              },
-              "required": ["name", "importance"]
-            }
-          },
-          "raw_dependencies": {
-            "type": "string",
-            "nullable": true
-          },
-          "server_overridden": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": ["python", "node", "binary"]
-              },
-              "entry_point": {
-                "type": "string"
-              },
-              "mcp_config": {
-                "type": "object",
-                "properties": {
-                  "command": {
-                    "type": "string"
-                  },
-                  "args": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "env": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
-                  },
-                  "platform_overrides": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object",
-                      "properties": {
-                        "command": {
-                          "type": "string"
-                        },
-                        "args": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "env": {
+                    "properties": {
+                      "mcpServers": {
+                        "type": "object",
+                        "additionalProperties": {
                           "type": "object",
-                          "additionalProperties": {
-                            "type": "string"
-                          }
+                          "properties": {
+                            "command": {
+                              "type": "string"
+                            },
+                            "args": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "env": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "required": ["command"],
+                          "additionalProperties": false
                         }
-                      },
-                      "additionalProperties": false
-                    }
-                  }
-                },
-                "required": ["command"],
-                "additionalProperties": false
-              }
-            },
-            "required": ["type", "entry_point", "mcp_config"],
-            "additionalProperties": false
-          },
-          "server_docker": {
-            "nullable": true
-          },
-          "user_config_overridden": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "enum": ["string", "number", "boolean", "directory", "file"]
-                },
-                "title": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "required": {
-                  "type": "boolean"
-                },
-                "default": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "boolean"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
                       }
-                    }
-                  ]
-                },
-                "multiple": {
-                  "type": "boolean"
-                },
-                "sensitive": {
-                  "type": "boolean"
-                },
-                "min": {
-                  "type": "number"
-                },
-                "max": {
-                  "type": "number"
-                }
-              },
-              "required": ["type", "title", "description"],
-              "additionalProperties": false
-            }
-          }
-        },
-        "required": [
-          "dxt_version",
-          "name",
-          "display_name",
-          "version",
-          "description",
-          "author",
-          "server",
-          "readme",
-          "category",
-          "quality_score",
-          "framework",
-          "last_scraped_at",
-          "evaluation_model",
-          "raw_dependencies"
-        ],
-        "additionalProperties": false
-      },
-      "ArchestraMcpServerManifestWithScoreBreakdown": {
-        "type": "object",
-        "properties": {
-          "$schema": {
-            "type": "string"
-          },
-          "dxt_version": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "display_name": {
-            "type": "string"
-          },
-          "version": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "long_description": {
-            "type": "string"
-          },
-          "author": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string",
-                "format": "email"
-              },
-              "url": {
-                "type": "string",
-                "format": "uri"
-              }
-            },
-            "required": ["name"],
-            "additionalProperties": false
-          },
-          "homepage": {
-            "type": "string",
-            "format": "uri"
-          },
-          "documentation": {
-            "type": "string",
-            "format": "uri"
-          },
-          "support": {
-            "type": "string",
-            "format": "uri"
-          },
-          "icon": {
-            "type": "string"
-          },
-          "screenshots": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "server": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": ["python", "node", "binary"]
-              },
-              "entry_point": {
-                "type": "string"
-              },
-              "mcp_config": {
-                "type": "object",
-                "properties": {
-                  "command": {
-                    "type": "string"
+                    },
+                    "required": ["mcpServers"]
                   },
-                  "args": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "env": {
+                  "oauth": {
                     "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
-                  },
-                  "platform_overrides": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object",
-                      "properties": {
-                        "command": {
-                          "type": "string"
-                        },
-                        "args": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "env": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": "string"
-                          }
-                        }
+                    "properties": {
+                      "provider": {
+                        "type": "string",
+                        "nullable": true,
+                        "enum": ["google", "slack", "linkedin"]
                       },
-                      "additionalProperties": false
-                    }
-                  }
-                },
-                "required": ["command"],
-                "additionalProperties": false
-              }
-            },
-            "required": ["type", "entry_point", "mcp_config"],
-            "additionalProperties": false
-          },
-          "tools": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                }
-              },
-              "required": ["name"],
-              "additionalProperties": false
-            }
-          },
-          "tools_generated": {
-            "type": "boolean"
-          },
-          "prompts": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "arguments": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "text": {
-                  "type": "string"
-                }
-              },
-              "required": ["name", "text"],
-              "additionalProperties": false
-            }
-          },
-          "prompts_generated": {
-            "type": "boolean"
-          },
-          "keywords": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "license": {
-            "type": "string"
-          },
-          "compatibility": {
-            "type": "object",
-            "properties": {
-              "claude_desktop": {
-                "type": "string"
-              },
-              "platforms": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "enum": ["darwin", "win32", "linux"]
-                }
-              },
-              "runtimes": {
-                "type": "object",
-                "properties": {
-                  "python": {
-                    "type": "string"
-                  },
-                  "node": {
-                    "type": "string"
-                  }
-                },
-                "additionalProperties": false
-              }
-            }
-          },
-          "user_config": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "enum": ["string", "number", "boolean", "directory", "file"]
-                },
-                "title": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "required": {
-                  "type": "boolean"
-                },
-                "default": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "boolean"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
+                      "required": {
+                        "type": "boolean"
                       }
-                    }
-                  ]
-                },
-                "multiple": {
-                  "type": "boolean"
-                },
-                "sensitive": {
-                  "type": "boolean"
-                },
-                "min": {
-                  "type": "number"
-                },
-                "max": {
-                  "type": "number"
-                }
-              },
-              "required": ["type", "title", "description"],
-              "additionalProperties": false
-            }
-          },
-          "remote_url": {
-            "type": "string",
-            "format": "uri"
-          },
-          "remote_mcp_docs_url": {
-            "type": "string",
-            "format": "uri"
-          },
-          "readme": {
-            "type": "string",
-            "nullable": true
-          },
-          "category": {
-            "type": "string",
-            "nullable": true,
-            "enum": [
-              "Aggregators",
-              "Art & Culture",
-              "Healthcare",
-              "Browser Automation",
-              "Cloud",
-              "Development",
-              "CLI Tools",
-              "Communication",
-              "Data",
-              "Logistics",
-              "Data Science",
-              "IoT",
-              "File Management",
-              "Finance",
-              "Gaming",
-              "Knowledge",
-              "Location",
-              "Marketing",
-              "Monitoring",
-              "Media",
-              "AI Tools",
-              "Search",
-              "Security",
-              "Social Media",
-              "Sports",
-              "Support",
-              "Translation",
-              "Audio",
-              "Travel",
-              "Messengers",
-              "Email",
-              "CRM",
-              "Enterprise",
-              "Job Search",
-              "Local files",
-              "General"
-            ]
-          },
-          "quality_score": {
-            "type": "number",
-            "nullable": true,
-            "minimum": 0,
-            "maximum": 100
-          },
-          "archestra_config": {
-            "type": "object",
-            "properties": {
-              "client_config_permutations": {
-                "type": "object",
-                "nullable": true,
-                "properties": {
-                  "mcpServers": {
+                    },
+                    "required": ["provider", "required"]
+                  },
+                  "browser_based": {
                     "type": "object",
-                    "additionalProperties": {
-                      "type": "object",
-                      "properties": {
-                        "command": {
-                          "type": "string"
-                        },
-                        "args": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "env": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "required": ["command"],
-                      "additionalProperties": false
-                    }
+                    "properties": {
+                      "required": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": ["required"]
                   }
                 },
-                "required": ["mcpServers"]
+                "required": ["client_config_permutations", "oauth"]
               },
-              "oauth": {
+              "github_info": {
                 "type": "object",
                 "properties": {
-                  "provider": {
+                  "owner": {
+                    "type": "string"
+                  },
+                  "repo": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "path": {
                     "type": "string",
-                    "nullable": true,
-                    "enum": ["google", "slack", "linkedin"]
+                    "nullable": true
                   },
-                  "required": {
+                  "stars": {
+                    "type": "number"
+                  },
+                  "contributors": {
+                    "type": "number"
+                  },
+                  "issues": {
+                    "type": "number"
+                  },
+                  "releases": {
                     "type": "boolean"
+                  },
+                  "ci_cd": {
+                    "type": "boolean"
+                  },
+                  "latest_commit_hash": {
+                    "type": "string",
+                    "nullable": true
                   }
                 },
-                "required": ["provider", "required"]
+                "required": [
+                  "owner",
+                  "repo",
+                  "url",
+                  "name",
+                  "path",
+                  "stars",
+                  "contributors",
+                  "issues",
+                  "releases",
+                  "ci_cd",
+                  "latest_commit_hash"
+                ]
               },
-              "browser_based": {
-                "type": "object",
-                "properties": {
-                  "required": {
-                    "type": "boolean"
-                  }
-                },
-                "required": ["required"]
-              }
-            },
-            "required": ["client_config_permutations", "oauth"]
-          },
-          "github_info": {
-            "type": "object",
-            "properties": {
-              "owner": {
+              "programming_language": {
                 "type": "string"
               },
-              "repo": {
-                "type": "string"
-              },
-              "url": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "path": {
+              "framework": {
                 "type": "string",
                 "nullable": true
               },
-              "stars": {
-                "type": "number"
-              },
-              "contributors": {
-                "type": "number"
-              },
-              "issues": {
-                "type": "number"
-              },
-              "releases": {
-                "type": "boolean"
-              },
-              "ci_cd": {
-                "type": "boolean"
-              },
-              "latest_commit_hash": {
+              "last_scraped_at": {
                 "type": "string",
                 "nullable": true
-              }
-            },
-            "required": [
-              "owner",
-              "repo",
-              "url",
-              "name",
-              "path",
-              "stars",
-              "contributors",
-              "issues",
-              "releases",
-              "ci_cd",
-              "latest_commit_hash"
-            ]
-          },
-          "programming_language": {
-            "type": "string"
-          },
-          "framework": {
-            "type": "string",
-            "nullable": true
-          },
-          "last_scraped_at": {
-            "type": "string",
-            "nullable": true
-          },
-          "evaluation_model": {
-            "type": "string",
-            "nullable": true
-          },
-          "protocol_features": {
-            "type": "object",
-            "properties": {
-              "implementing_tools": {
-                "type": "boolean"
               },
-              "implementing_prompts": {
-                "type": "boolean"
-              },
-              "implementing_resources": {
-                "type": "boolean"
-              },
-              "implementing_sampling": {
-                "type": "boolean"
-              },
-              "implementing_roots": {
-                "type": "boolean"
-              },
-              "implementing_logging": {
-                "type": "boolean"
-              },
-              "implementing_stdio": {
-                "type": "boolean"
-              },
-              "implementing_streamable_http": {
-                "type": "boolean"
-              },
-              "implementing_oauth2": {
-                "type": "boolean"
-              }
-            },
-            "required": [
-              "implementing_tools",
-              "implementing_prompts",
-              "implementing_resources",
-              "implementing_sampling",
-              "implementing_roots",
-              "implementing_logging",
-              "implementing_stdio",
-              "implementing_streamable_http",
-              "implementing_oauth2"
-            ]
-          },
-          "dependencies": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "importance": {
-                  "type": "number",
-                  "minimum": 1,
-                  "maximum": 10
-                }
-              },
-              "required": ["name", "importance"]
-            }
-          },
-          "raw_dependencies": {
-            "type": "string",
-            "nullable": true
-          },
-          "server_overridden": {
-            "type": "object",
-            "properties": {
-              "type": {
+              "evaluation_model": {
                 "type": "string",
-                "enum": ["python", "node", "binary"]
+                "nullable": true
               },
-              "entry_point": {
-                "type": "string"
-              },
-              "mcp_config": {
+              "protocol_features": {
                 "type": "object",
                 "properties": {
-                  "command": {
-                    "type": "string"
+                  "implementing_tools": {
+                    "type": "boolean"
                   },
-                  "args": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
+                  "implementing_prompts": {
+                    "type": "boolean"
                   },
-                  "env": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
+                  "implementing_resources": {
+                    "type": "boolean"
                   },
-                  "platform_overrides": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object",
-                      "properties": {
-                        "command": {
-                          "type": "string"
-                        },
-                        "args": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "env": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "additionalProperties": false
-                    }
+                  "implementing_sampling": {
+                    "type": "boolean"
+                  },
+                  "implementing_roots": {
+                    "type": "boolean"
+                  },
+                  "implementing_logging": {
+                    "type": "boolean"
+                  },
+                  "implementing_stdio": {
+                    "type": "boolean"
+                  },
+                  "implementing_streamable_http": {
+                    "type": "boolean"
+                  },
+                  "implementing_oauth2": {
+                    "type": "boolean"
                   }
                 },
-                "required": ["command"],
-                "additionalProperties": false
-              }
-            },
-            "required": ["type", "entry_point", "mcp_config"],
-            "additionalProperties": false
-          },
-          "server_docker": {
-            "nullable": true
-          },
-          "user_config_overridden": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "enum": ["string", "number", "boolean", "directory", "file"]
-                },
-                "title": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "required": {
-                  "type": "boolean"
-                },
-                "default": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "boolean"
-                    },
-                    {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  ]
-                },
-                "multiple": {
-                  "type": "boolean"
-                },
-                "sensitive": {
-                  "type": "boolean"
-                },
-                "min": {
-                  "type": "number"
-                },
-                "max": {
-                  "type": "number"
-                }
-              },
-              "required": ["type", "title", "description"],
-              "additionalProperties": false
-            }
-          },
-          "score_breakdown": {
-            "type": "object",
-            "properties": {
-              "mcp_protocol": {
-                "type": "number"
-              },
-              "github_metrics": {
-                "type": "number"
-              },
-              "deployment_maturity": {
-                "type": "number"
-              },
-              "documentation": {
-                "type": "number"
+                "required": [
+                  "implementing_tools",
+                  "implementing_prompts",
+                  "implementing_resources",
+                  "implementing_sampling",
+                  "implementing_roots",
+                  "implementing_logging",
+                  "implementing_stdio",
+                  "implementing_streamable_http",
+                  "implementing_oauth2"
+                ]
               },
               "dependencies": {
-                "type": "number"
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "importance": {
+                      "type": "number",
+                      "minimum": 1,
+                      "maximum": 10
+                    }
+                  },
+                  "required": ["name", "importance"]
+                }
               },
-              "badge_usage": {
-                "type": "number"
-              },
-              "total": {
-                "type": "number"
+              "raw_dependencies": {
+                "type": "string",
+                "nullable": true
               }
             },
             "required": [
-              "mcp_protocol",
-              "github_metrics",
-              "deployment_maturity",
-              "documentation",
-              "dependencies",
-              "badge_usage",
-              "total"
+              "name",
+              "display_name",
+              "version",
+              "description",
+              "readme",
+              "category",
+              "quality_score",
+              "framework",
+              "last_scraped_at",
+              "evaluation_model",
+              "raw_dependencies"
             ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "$schema": {
+                "type": "string"
+              },
+              "dxt_version": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "display_name": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "long_description": {
+                "type": "string"
+              },
+              "author": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "required": ["name"],
+                "additionalProperties": false
+              },
+              "homepage": {
+                "type": "string",
+                "format": "uri"
+              },
+              "documentation": {
+                "type": "string",
+                "format": "uri"
+              },
+              "support": {
+                "type": "string",
+                "format": "uri"
+              },
+              "icon": {
+                "type": "string"
+              },
+              "screenshots": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "server": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": ["python", "node", "binary"]
+                  },
+                  "entry_point": {
+                    "type": "string"
+                  },
+                  "mcp_config": {
+                    "type": "object",
+                    "properties": {
+                      "command": {
+                        "type": "string"
+                      },
+                      "args": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "env": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "platform_overrides": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "object",
+                          "properties": {
+                            "command": {
+                              "type": "string"
+                            },
+                            "args": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "env": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": ["command"],
+                    "additionalProperties": false
+                  }
+                },
+                "required": ["type", "entry_point", "mcp_config"],
+                "additionalProperties": false
+              },
+              "tools": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["name"],
+                  "additionalProperties": false
+                }
+              },
+              "tools_generated": {
+                "type": "boolean"
+              },
+              "prompts": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "arguments": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["name", "text"],
+                  "additionalProperties": false
+                }
+              },
+              "prompts_generated": {
+                "type": "boolean"
+              },
+              "keywords": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "license": {
+                "type": "string"
+              },
+              "compatibility": {
+                "type": "object",
+                "properties": {
+                  "claude_desktop": {
+                    "type": "string"
+                  },
+                  "platforms": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": ["darwin", "win32", "linux"]
+                    }
+                  },
+                  "runtimes": {
+                    "type": "object",
+                    "properties": {
+                      "python": {
+                        "type": "string"
+                      },
+                      "node": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "user_config": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": ["string", "number", "boolean", "directory", "file"]
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "required": {
+                      "type": "boolean"
+                    },
+                    "default": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "boolean"
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      ]
+                    },
+                    "multiple": {
+                      "type": "boolean"
+                    },
+                    "sensitive": {
+                      "type": "boolean"
+                    },
+                    "min": {
+                      "type": "number"
+                    },
+                    "max": {
+                      "type": "number"
+                    }
+                  },
+                  "required": ["type", "title", "description"],
+                  "additionalProperties": false
+                }
+              },
+              "remote_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "remote_mcp_docs_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "readme": {
+                "type": "string",
+                "nullable": true
+              },
+              "category": {
+                "type": "string",
+                "nullable": true,
+                "enum": [
+                  "Aggregators",
+                  "Art & Culture",
+                  "Healthcare",
+                  "Browser Automation",
+                  "Cloud",
+                  "Development",
+                  "CLI Tools",
+                  "Communication",
+                  "Data",
+                  "Logistics",
+                  "Data Science",
+                  "IoT",
+                  "File Management",
+                  "Finance",
+                  "Gaming",
+                  "Knowledge",
+                  "Location",
+                  "Marketing",
+                  "Monitoring",
+                  "Media",
+                  "AI Tools",
+                  "Search",
+                  "Security",
+                  "Social Media",
+                  "Sports",
+                  "Support",
+                  "Translation",
+                  "Audio",
+                  "Travel",
+                  "Messengers",
+                  "Email",
+                  "CRM",
+                  "Enterprise",
+                  "Job Search",
+                  "Local files",
+                  "General"
+                ]
+              },
+              "quality_score": {
+                "type": "number",
+                "nullable": true,
+                "minimum": 0,
+                "maximum": 100
+              },
+              "archestra_config": {
+                "type": "object",
+                "properties": {
+                  "client_config_permutations": {
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                      "mcpServers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "object",
+                          "properties": {
+                            "command": {
+                              "type": "string"
+                            },
+                            "args": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "env": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "required": ["command"],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": ["mcpServers"]
+                  },
+                  "oauth": {
+                    "type": "object",
+                    "properties": {
+                      "provider": {
+                        "type": "string",
+                        "nullable": true,
+                        "enum": ["google", "slack", "linkedin"]
+                      },
+                      "required": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": ["provider", "required"]
+                  },
+                  "browser_based": {
+                    "type": "object",
+                    "properties": {
+                      "required": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": ["required"]
+                  }
+                },
+                "required": ["client_config_permutations", "oauth"]
+              },
+              "github_info": {
+                "type": "object",
+                "properties": {
+                  "owner": {
+                    "type": "string"
+                  },
+                  "repo": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "stars": {
+                    "type": "number"
+                  },
+                  "contributors": {
+                    "type": "number"
+                  },
+                  "issues": {
+                    "type": "number"
+                  },
+                  "releases": {
+                    "type": "boolean"
+                  },
+                  "ci_cd": {
+                    "type": "boolean"
+                  },
+                  "latest_commit_hash": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                },
+                "required": [
+                  "owner",
+                  "repo",
+                  "url",
+                  "name",
+                  "path",
+                  "stars",
+                  "contributors",
+                  "issues",
+                  "releases",
+                  "ci_cd",
+                  "latest_commit_hash"
+                ]
+              },
+              "programming_language": {
+                "type": "string"
+              },
+              "framework": {
+                "type": "string",
+                "nullable": true
+              },
+              "last_scraped_at": {
+                "type": "string",
+                "nullable": true
+              },
+              "evaluation_model": {
+                "type": "string",
+                "nullable": true
+              },
+              "protocol_features": {
+                "type": "object",
+                "properties": {
+                  "implementing_tools": {
+                    "type": "boolean"
+                  },
+                  "implementing_prompts": {
+                    "type": "boolean"
+                  },
+                  "implementing_resources": {
+                    "type": "boolean"
+                  },
+                  "implementing_sampling": {
+                    "type": "boolean"
+                  },
+                  "implementing_roots": {
+                    "type": "boolean"
+                  },
+                  "implementing_logging": {
+                    "type": "boolean"
+                  },
+                  "implementing_stdio": {
+                    "type": "boolean"
+                  },
+                  "implementing_streamable_http": {
+                    "type": "boolean"
+                  },
+                  "implementing_oauth2": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "implementing_tools",
+                  "implementing_prompts",
+                  "implementing_resources",
+                  "implementing_sampling",
+                  "implementing_roots",
+                  "implementing_logging",
+                  "implementing_stdio",
+                  "implementing_streamable_http",
+                  "implementing_oauth2"
+                ]
+              },
+              "dependencies": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "importance": {
+                      "type": "number",
+                      "minimum": 1,
+                      "maximum": 10
+                    }
+                  },
+                  "required": ["name", "importance"]
+                }
+              },
+              "raw_dependencies": {
+                "type": "string",
+                "nullable": true
+              },
+              "oauth_config": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "server_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "auth_server_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "resource_metadata_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "client_id": {
+                    "type": "string"
+                  },
+                  "client_secret": {
+                    "type": "string"
+                  },
+                  "redirect_uris": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  },
+                  "scopes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "well_known_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "default_scopes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "supports_resource_metadata": {
+                    "type": "boolean"
+                  },
+                  "generic_oauth": {
+                    "type": "boolean"
+                  },
+                  "token_endpoint": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "access_token_env_var": {
+                    "type": "string"
+                  },
+                  "requires_proxy": {
+                    "type": "boolean"
+                  },
+                  "provider_name": {
+                    "type": "string"
+                  },
+                  "browser_auth": {
+                    "type": "boolean"
+                  },
+                  "streamable_http_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "streamable_http_port": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "name",
+                  "server_url",
+                  "client_id",
+                  "redirect_uris",
+                  "scopes",
+                  "default_scopes",
+                  "supports_resource_metadata"
+                ]
+              },
+              "server_overridden": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": ["python", "node", "binary"]
+                  },
+                  "entry_point": {
+                    "type": "string"
+                  },
+                  "mcp_config": {
+                    "type": "object",
+                    "properties": {
+                      "command": {
+                        "type": "string"
+                      },
+                      "args": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "env": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "platform_overrides": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "object",
+                          "properties": {
+                            "command": {
+                              "type": "string"
+                            },
+                            "args": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "env": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": ["command"],
+                    "additionalProperties": false
+                  }
+                },
+                "required": ["type", "entry_point", "mcp_config"],
+                "additionalProperties": false
+              },
+              "server_docker": {
+                "nullable": true
+              },
+              "user_config_overridden": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": ["string", "number", "boolean", "directory", "file"]
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "required": {
+                      "type": "boolean"
+                    },
+                    "default": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "boolean"
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      ]
+                    },
+                    "multiple": {
+                      "type": "boolean"
+                    },
+                    "sensitive": {
+                      "type": "boolean"
+                    },
+                    "min": {
+                      "type": "number"
+                    },
+                    "max": {
+                      "type": "number"
+                    }
+                  },
+                  "required": ["type", "title", "description"],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "dxt_version",
+              "name",
+              "display_name",
+              "version",
+              "description",
+              "author",
+              "server",
+              "readme",
+              "category",
+              "quality_score",
+              "framework",
+              "last_scraped_at",
+              "evaluation_model",
+              "raw_dependencies"
+            ],
+            "additionalProperties": false
           }
-        },
-        "required": [
-          "dxt_version",
-          "name",
-          "display_name",
-          "version",
-          "description",
-          "author",
-          "server",
-          "readme",
-          "category",
-          "quality_score",
-          "framework",
-          "last_scraped_at",
-          "evaluation_model",
-          "raw_dependencies",
-          "score_breakdown"
-        ],
-        "additionalProperties": false
+        ]
+      },
+      "ArchestraMcpServerManifestWithScoreBreakdown": {
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "display_name": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "remote_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "remote_mcp_docs_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "oauth_config": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "server_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "auth_server_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "resource_metadata_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "client_id": {
+                    "type": "string"
+                  },
+                  "client_secret": {
+                    "type": "string"
+                  },
+                  "redirect_uris": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  },
+                  "scopes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "well_known_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "default_scopes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "supports_resource_metadata": {
+                    "type": "boolean"
+                  },
+                  "generic_oauth": {
+                    "type": "boolean"
+                  },
+                  "token_endpoint": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "access_token_env_var": {
+                    "type": "string"
+                  },
+                  "requires_proxy": {
+                    "type": "boolean"
+                  },
+                  "provider_name": {
+                    "type": "string"
+                  },
+                  "browser_auth": {
+                    "type": "boolean"
+                  },
+                  "streamable_http_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "streamable_http_port": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "name",
+                  "server_url",
+                  "client_id",
+                  "redirect_uris",
+                  "scopes",
+                  "default_scopes",
+                  "supports_resource_metadata"
+                ]
+              },
+              "tools": {
+                "type": "array",
+                "items": {
+                  "nullable": true
+                }
+              },
+              "prompts": {
+                "type": "array",
+                "items": {
+                  "nullable": true
+                }
+              },
+              "user_config": {
+                "type": "object",
+                "additionalProperties": {
+                  "nullable": true
+                }
+              },
+              "readme": {
+                "type": "string",
+                "nullable": true
+              },
+              "category": {
+                "type": "string",
+                "nullable": true,
+                "enum": [
+                  "Aggregators",
+                  "Art & Culture",
+                  "Healthcare",
+                  "Browser Automation",
+                  "Cloud",
+                  "Development",
+                  "CLI Tools",
+                  "Communication",
+                  "Data",
+                  "Logistics",
+                  "Data Science",
+                  "IoT",
+                  "File Management",
+                  "Finance",
+                  "Gaming",
+                  "Knowledge",
+                  "Location",
+                  "Marketing",
+                  "Monitoring",
+                  "Media",
+                  "AI Tools",
+                  "Search",
+                  "Security",
+                  "Social Media",
+                  "Sports",
+                  "Support",
+                  "Translation",
+                  "Audio",
+                  "Travel",
+                  "Messengers",
+                  "Email",
+                  "CRM",
+                  "Enterprise",
+                  "Job Search",
+                  "Local files",
+                  "General"
+                ]
+              },
+              "quality_score": {
+                "type": "number",
+                "nullable": true,
+                "minimum": 0,
+                "maximum": 100
+              },
+              "archestra_config": {
+                "type": "object",
+                "nullable": true,
+                "properties": {
+                  "client_config_permutations": {
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                      "mcpServers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "object",
+                          "properties": {
+                            "command": {
+                              "type": "string"
+                            },
+                            "args": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "env": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "required": ["command"],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": ["mcpServers"]
+                  },
+                  "oauth": {
+                    "type": "object",
+                    "properties": {
+                      "provider": {
+                        "type": "string",
+                        "nullable": true,
+                        "enum": ["google", "slack", "linkedin"]
+                      },
+                      "required": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": ["provider", "required"]
+                  },
+                  "browser_based": {
+                    "type": "object",
+                    "properties": {
+                      "required": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": ["required"]
+                  }
+                },
+                "required": ["client_config_permutations", "oauth"]
+              },
+              "github_info": {
+                "type": "object",
+                "properties": {
+                  "owner": {
+                    "type": "string"
+                  },
+                  "repo": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "stars": {
+                    "type": "number"
+                  },
+                  "contributors": {
+                    "type": "number"
+                  },
+                  "issues": {
+                    "type": "number"
+                  },
+                  "releases": {
+                    "type": "boolean"
+                  },
+                  "ci_cd": {
+                    "type": "boolean"
+                  },
+                  "latest_commit_hash": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                },
+                "required": [
+                  "owner",
+                  "repo",
+                  "url",
+                  "name",
+                  "path",
+                  "stars",
+                  "contributors",
+                  "issues",
+                  "releases",
+                  "ci_cd",
+                  "latest_commit_hash"
+                ]
+              },
+              "programming_language": {
+                "type": "string"
+              },
+              "framework": {
+                "type": "string",
+                "nullable": true
+              },
+              "last_scraped_at": {
+                "type": "string",
+                "nullable": true
+              },
+              "evaluation_model": {
+                "type": "string",
+                "nullable": true
+              },
+              "protocol_features": {
+                "type": "object",
+                "properties": {
+                  "implementing_tools": {
+                    "type": "boolean"
+                  },
+                  "implementing_prompts": {
+                    "type": "boolean"
+                  },
+                  "implementing_resources": {
+                    "type": "boolean"
+                  },
+                  "implementing_sampling": {
+                    "type": "boolean"
+                  },
+                  "implementing_roots": {
+                    "type": "boolean"
+                  },
+                  "implementing_logging": {
+                    "type": "boolean"
+                  },
+                  "implementing_stdio": {
+                    "type": "boolean"
+                  },
+                  "implementing_streamable_http": {
+                    "type": "boolean"
+                  },
+                  "implementing_oauth2": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "implementing_tools",
+                  "implementing_prompts",
+                  "implementing_resources",
+                  "implementing_sampling",
+                  "implementing_roots",
+                  "implementing_logging",
+                  "implementing_stdio",
+                  "implementing_streamable_http",
+                  "implementing_oauth2"
+                ]
+              },
+              "dependencies": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "importance": {
+                      "type": "number",
+                      "minimum": 1,
+                      "maximum": 10
+                    }
+                  },
+                  "required": ["name", "importance"]
+                }
+              },
+              "raw_dependencies": {
+                "type": "string",
+                "nullable": true
+              },
+              "score_breakdown": {
+                "type": "object",
+                "properties": {
+                  "mcp_protocol": {
+                    "type": "number"
+                  },
+                  "github_metrics": {
+                    "type": "number"
+                  },
+                  "deployment_maturity": {
+                    "type": "number"
+                  },
+                  "documentation": {
+                    "type": "number"
+                  },
+                  "dependencies": {
+                    "type": "number"
+                  },
+                  "badge_usage": {
+                    "type": "number"
+                  },
+                  "total": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "mcp_protocol",
+                  "github_metrics",
+                  "deployment_maturity",
+                  "documentation",
+                  "dependencies",
+                  "badge_usage",
+                  "total"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "display_name",
+              "version",
+              "description",
+              "readme",
+              "category",
+              "quality_score",
+              "framework",
+              "last_scraped_at",
+              "evaluation_model",
+              "raw_dependencies",
+              "score_breakdown"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "$schema": {
+                "type": "string"
+              },
+              "dxt_version": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "display_name": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "long_description": {
+                "type": "string"
+              },
+              "author": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "required": ["name"],
+                "additionalProperties": false
+              },
+              "homepage": {
+                "type": "string",
+                "format": "uri"
+              },
+              "documentation": {
+                "type": "string",
+                "format": "uri"
+              },
+              "support": {
+                "type": "string",
+                "format": "uri"
+              },
+              "icon": {
+                "type": "string"
+              },
+              "screenshots": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "server": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": ["python", "node", "binary"]
+                  },
+                  "entry_point": {
+                    "type": "string"
+                  },
+                  "mcp_config": {
+                    "type": "object",
+                    "properties": {
+                      "command": {
+                        "type": "string"
+                      },
+                      "args": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "env": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "platform_overrides": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "object",
+                          "properties": {
+                            "command": {
+                              "type": "string"
+                            },
+                            "args": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "env": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": ["command"],
+                    "additionalProperties": false
+                  }
+                },
+                "required": ["type", "entry_point", "mcp_config"],
+                "additionalProperties": false
+              },
+              "tools": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["name"],
+                  "additionalProperties": false
+                }
+              },
+              "tools_generated": {
+                "type": "boolean"
+              },
+              "prompts": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "arguments": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["name", "text"],
+                  "additionalProperties": false
+                }
+              },
+              "prompts_generated": {
+                "type": "boolean"
+              },
+              "keywords": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "license": {
+                "type": "string"
+              },
+              "compatibility": {
+                "type": "object",
+                "properties": {
+                  "claude_desktop": {
+                    "type": "string"
+                  },
+                  "platforms": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": ["darwin", "win32", "linux"]
+                    }
+                  },
+                  "runtimes": {
+                    "type": "object",
+                    "properties": {
+                      "python": {
+                        "type": "string"
+                      },
+                      "node": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "user_config": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": ["string", "number", "boolean", "directory", "file"]
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "required": {
+                      "type": "boolean"
+                    },
+                    "default": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "boolean"
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      ]
+                    },
+                    "multiple": {
+                      "type": "boolean"
+                    },
+                    "sensitive": {
+                      "type": "boolean"
+                    },
+                    "min": {
+                      "type": "number"
+                    },
+                    "max": {
+                      "type": "number"
+                    }
+                  },
+                  "required": ["type", "title", "description"],
+                  "additionalProperties": false
+                }
+              },
+              "remote_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "remote_mcp_docs_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "readme": {
+                "type": "string",
+                "nullable": true
+              },
+              "category": {
+                "type": "string",
+                "nullable": true,
+                "enum": [
+                  "Aggregators",
+                  "Art & Culture",
+                  "Healthcare",
+                  "Browser Automation",
+                  "Cloud",
+                  "Development",
+                  "CLI Tools",
+                  "Communication",
+                  "Data",
+                  "Logistics",
+                  "Data Science",
+                  "IoT",
+                  "File Management",
+                  "Finance",
+                  "Gaming",
+                  "Knowledge",
+                  "Location",
+                  "Marketing",
+                  "Monitoring",
+                  "Media",
+                  "AI Tools",
+                  "Search",
+                  "Security",
+                  "Social Media",
+                  "Sports",
+                  "Support",
+                  "Translation",
+                  "Audio",
+                  "Travel",
+                  "Messengers",
+                  "Email",
+                  "CRM",
+                  "Enterprise",
+                  "Job Search",
+                  "Local files",
+                  "General"
+                ]
+              },
+              "quality_score": {
+                "type": "number",
+                "nullable": true,
+                "minimum": 0,
+                "maximum": 100
+              },
+              "archestra_config": {
+                "type": "object",
+                "properties": {
+                  "client_config_permutations": {
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                      "mcpServers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "object",
+                          "properties": {
+                            "command": {
+                              "type": "string"
+                            },
+                            "args": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "env": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "required": ["command"],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": ["mcpServers"]
+                  },
+                  "oauth": {
+                    "type": "object",
+                    "properties": {
+                      "provider": {
+                        "type": "string",
+                        "nullable": true,
+                        "enum": ["google", "slack", "linkedin"]
+                      },
+                      "required": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": ["provider", "required"]
+                  },
+                  "browser_based": {
+                    "type": "object",
+                    "properties": {
+                      "required": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": ["required"]
+                  }
+                },
+                "required": ["client_config_permutations", "oauth"]
+              },
+              "github_info": {
+                "type": "object",
+                "properties": {
+                  "owner": {
+                    "type": "string"
+                  },
+                  "repo": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "path": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "stars": {
+                    "type": "number"
+                  },
+                  "contributors": {
+                    "type": "number"
+                  },
+                  "issues": {
+                    "type": "number"
+                  },
+                  "releases": {
+                    "type": "boolean"
+                  },
+                  "ci_cd": {
+                    "type": "boolean"
+                  },
+                  "latest_commit_hash": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                },
+                "required": [
+                  "owner",
+                  "repo",
+                  "url",
+                  "name",
+                  "path",
+                  "stars",
+                  "contributors",
+                  "issues",
+                  "releases",
+                  "ci_cd",
+                  "latest_commit_hash"
+                ]
+              },
+              "programming_language": {
+                "type": "string"
+              },
+              "framework": {
+                "type": "string",
+                "nullable": true
+              },
+              "last_scraped_at": {
+                "type": "string",
+                "nullable": true
+              },
+              "evaluation_model": {
+                "type": "string",
+                "nullable": true
+              },
+              "protocol_features": {
+                "type": "object",
+                "properties": {
+                  "implementing_tools": {
+                    "type": "boolean"
+                  },
+                  "implementing_prompts": {
+                    "type": "boolean"
+                  },
+                  "implementing_resources": {
+                    "type": "boolean"
+                  },
+                  "implementing_sampling": {
+                    "type": "boolean"
+                  },
+                  "implementing_roots": {
+                    "type": "boolean"
+                  },
+                  "implementing_logging": {
+                    "type": "boolean"
+                  },
+                  "implementing_stdio": {
+                    "type": "boolean"
+                  },
+                  "implementing_streamable_http": {
+                    "type": "boolean"
+                  },
+                  "implementing_oauth2": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "implementing_tools",
+                  "implementing_prompts",
+                  "implementing_resources",
+                  "implementing_sampling",
+                  "implementing_roots",
+                  "implementing_logging",
+                  "implementing_stdio",
+                  "implementing_streamable_http",
+                  "implementing_oauth2"
+                ]
+              },
+              "dependencies": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "importance": {
+                      "type": "number",
+                      "minimum": 1,
+                      "maximum": 10
+                    }
+                  },
+                  "required": ["name", "importance"]
+                }
+              },
+              "raw_dependencies": {
+                "type": "string",
+                "nullable": true
+              },
+              "oauth_config": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "server_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "auth_server_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "resource_metadata_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "client_id": {
+                    "type": "string"
+                  },
+                  "client_secret": {
+                    "type": "string"
+                  },
+                  "redirect_uris": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  },
+                  "scopes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "well_known_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "default_scopes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "supports_resource_metadata": {
+                    "type": "boolean"
+                  },
+                  "generic_oauth": {
+                    "type": "boolean"
+                  },
+                  "token_endpoint": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "access_token_env_var": {
+                    "type": "string"
+                  },
+                  "requires_proxy": {
+                    "type": "boolean"
+                  },
+                  "provider_name": {
+                    "type": "string"
+                  },
+                  "browser_auth": {
+                    "type": "boolean"
+                  },
+                  "streamable_http_url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "streamable_http_port": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "name",
+                  "server_url",
+                  "client_id",
+                  "redirect_uris",
+                  "scopes",
+                  "default_scopes",
+                  "supports_resource_metadata"
+                ]
+              },
+              "server_overridden": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": ["python", "node", "binary"]
+                  },
+                  "entry_point": {
+                    "type": "string"
+                  },
+                  "mcp_config": {
+                    "type": "object",
+                    "properties": {
+                      "command": {
+                        "type": "string"
+                      },
+                      "args": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "env": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        }
+                      },
+                      "platform_overrides": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "object",
+                          "properties": {
+                            "command": {
+                              "type": "string"
+                            },
+                            "args": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "env": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": ["command"],
+                    "additionalProperties": false
+                  }
+                },
+                "required": ["type", "entry_point", "mcp_config"],
+                "additionalProperties": false
+              },
+              "server_docker": {
+                "nullable": true
+              },
+              "user_config_overridden": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": ["string", "number", "boolean", "directory", "file"]
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "required": {
+                      "type": "boolean"
+                    },
+                    "default": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "boolean"
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      ]
+                    },
+                    "multiple": {
+                      "type": "boolean"
+                    },
+                    "sensitive": {
+                      "type": "boolean"
+                    },
+                    "min": {
+                      "type": "number"
+                    },
+                    "max": {
+                      "type": "number"
+                    }
+                  },
+                  "required": ["type", "title", "description"],
+                  "additionalProperties": false
+                }
+              },
+              "score_breakdown": {
+                "type": "object",
+                "properties": {
+                  "mcp_protocol": {
+                    "type": "number"
+                  },
+                  "github_metrics": {
+                    "type": "number"
+                  },
+                  "deployment_maturity": {
+                    "type": "number"
+                  },
+                  "documentation": {
+                    "type": "number"
+                  },
+                  "dependencies": {
+                    "type": "number"
+                  },
+                  "badge_usage": {
+                    "type": "number"
+                  },
+                  "total": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "mcp_protocol",
+                  "github_metrics",
+                  "deployment_maturity",
+                  "documentation",
+                  "dependencies",
+                  "badge_usage",
+                  "total"
+                ]
+              }
+            },
+            "required": [
+              "dxt_version",
+              "name",
+              "display_name",
+              "version",
+              "description",
+              "author",
+              "server",
+              "readme",
+              "category",
+              "quality_score",
+              "framework",
+              "last_scraped_at",
+              "evaluation_model",
+              "raw_dependencies",
+              "score_breakdown"
+            ],
+            "additionalProperties": false
+          }
+        ]
       }
     },
     "parameters": {}
