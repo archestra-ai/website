@@ -130,6 +130,7 @@
       }
     },
     "browser_based": {
+    "provider": "linkedin-browser",
       "required": true
     }
   },
