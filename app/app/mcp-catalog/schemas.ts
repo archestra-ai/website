@@ -74,6 +74,7 @@ export const ArchestraConfigSchema = z.object({
   client_config_permutations: ArchestraClientConfigPermutationsSchema.nullable(),
   oauth: ArchestraOauthSchema,
   browser_based: ArchestraBrowserBasedSchema.optional(),
+  works_in_archestra: z.boolean(),
 });
 
 export const ArchestraScoreBreakdownSchema = z.object({

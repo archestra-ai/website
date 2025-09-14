@@ -182,18 +182,18 @@ export default function DocContent({ content }: DocContentProps) {
             // Check if it's an external link
             const isExternal = href && (href.startsWith('http://') || href.startsWith('https://'));
             // Check if external link is to the same domain
-            const isSameDomain = isExternal && typeof window !== 'undefined' && 
-              new URL(href).hostname === window.location.hostname;
+            const isSameDomain =
+              isExternal && typeof window !== 'undefined' && new URL(href).hostname === window.location.hostname;
             // Internal links (starting with /) or same domain links don't open in new tab
             const shouldOpenInNewTab = isExternal && !isSameDomain;
-            
+
             return (
               <a
                 {...props}
                 href={href}
                 className="text-blue-600 hover:underline"
-                target={shouldOpenInNewTab ? "_blank" : undefined}
-                rel={shouldOpenInNewTab ? "noopener noreferrer" : undefined}
+                target={shouldOpenInNewTab ? '_blank' : undefined}
+                rel={shouldOpenInNewTab ? 'noopener noreferrer' : undefined}
               />
             );
           },

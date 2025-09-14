@@ -30,7 +30,8 @@
     "oauth": {
       "provider": "google",
       "required": true
-    }
+    },
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "kimtaeyoon83",

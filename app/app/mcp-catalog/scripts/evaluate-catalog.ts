@@ -142,7 +142,12 @@ function sleep(ms: number): Promise<void> {
  * https://docs.github.com/en/rest/repos?apiVersion=2022-11-28
  *
  */
-async function fetchRepoData(owner: string, repo: string, repositoryPath: string | null, readmeOnly: boolean = false): Promise<GitHubApiResponse> {
+async function fetchRepoData(
+  owner: string,
+  repo: string,
+  repositoryPath: string | null,
+  readmeOnly: boolean = false
+): Promise<GitHubApiResponse> {
   const token = process.env.GITHUB_TOKEN;
   const headers: Record<string, string> = {
     Accept: 'application/vnd.github.v3+json',
@@ -790,7 +795,7 @@ async function extractGitHubData(
   const { owner, repo, path } = githubInfo;
 
   const apiData = await fetchRepoData(owner, repo, path, readmeOnly);
-  
+
   if (readmeOnly) {
     // When readme-only, ONLY update the README and last_scraped_at
     // Preserve ALL other fields including name, raw_dependencies, latest_commit_hash, etc.
@@ -800,7 +805,7 @@ async function extractGitHubData(
       last_scraped_at: new Date().toISOString(),
     };
   }
-  
+
   const newServer = createNewMCPServer(githubInfo, apiData);
 
   // Merge GitHub fields (full update)
@@ -981,6 +986,11 @@ If no run command found, respond with: {}`;
       return {
         ...server,
         archestra_config: {
+          /**
+           * by default, new servers should go through a manual human validation to ensure
+           * that they work in the Archestra Desktop app
+           */
+          works_in_archestra: false,
           oauth: server.archestra_config?.oauth || { provider: null, required: false },
           ...server.archestra_config,
           client_config_permutations: result,
@@ -1381,6 +1391,11 @@ If no configuration found, respond: {"oauth": { "provider": null, "required": fa
       return {
         ...server,
         archestra_config: {
+          /**
+           * by default, new servers should go through a manual human validation to ensure
+           * that they work in the Archestra Desktop app
+           */
+          works_in_archestra: false,
           client_config_permutations: server.archestra_config?.client_config_permutations || null,
           ...server.archestra_config,
           oauth: result.oauth,

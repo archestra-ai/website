@@ -28,6 +28,7 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
         archestra_config: {
           client_config_permutations: {},
           oauth: { provider: null, required: false },
+          works_in_archestra: false,
         },
         github_info: {
           owner: 'test-org',
@@ -78,6 +79,7 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
         archestra_config: {
           client_config_permutations: {},
           oauth: { provider: null, required: false },
+          works_in_archestra: false,
         },
         github_info: {
           owner: 'test-org-2',
@@ -128,6 +130,7 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
         archestra_config: {
           client_config_permutations: {},
           oauth: { provider: null, required: false },
+          works_in_archestra: false,
         },
         github_info: {
           owner: 'pending-server',
