@@ -125,7 +125,7 @@
       "provider": "google",
       "required": true
     },
-    "works_in_archestra": false
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "iskhakov",

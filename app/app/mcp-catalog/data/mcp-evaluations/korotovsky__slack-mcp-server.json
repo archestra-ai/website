@@ -80,7 +80,7 @@
       "provider": "slack-browser",
       "required": true
     },
-    "works_in_archestra": false
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "korotovsky",

@@ -17,7 +17,7 @@
       "provider": null,
       "required": false
     },
-    "works_in_archestra": false
+    "works_in_archestra": true
   },
   "framework": null,
   "last_scraped_at": "2025-09-05T19:30:23.066Z",
@@ -32,6 +32,7 @@
     "description": "Linear MCP Server (dynamic registration)",
     "default_scopes": ["read", "write"],
     "supports_resource_metadata": true
+  },
   "dxt_version": "0.1.0",
   "author": {
     "name": "linear"
