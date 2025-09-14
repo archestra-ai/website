@@ -50,6 +50,16 @@ const DesktopAppDownloadButton = () => {
   }, []);
 
   const handleDownload = () => {
+    /**
+     * TEMPORARY: Only allow downloads for macOS
+     *
+     * remove this once we have Linux/Windows support wrapped up
+     */
+    if (platformInfo && platformInfo.platform !== 'macos') {
+      console.log('Downloads temporarily disabled for non-macOS platforms');
+      return;
+    }
+
     if (!release || !platformInfo) {
       // Fallback to releases page
       console.log('No release or platform info available');
@@ -105,41 +115,54 @@ const DesktopAppDownloadButton = () => {
 
   const osIcon = getOSIcon();
 
+  // TEMPORARY: Check if platform is supported (only macOS for now)
+  const isPlatformSupported = platformInfo?.platform === 'macos';
+  const isNonMacPlatform = platformInfo && !isPlatformSupported && platformInfo.platform !== 'unknown';
+
   return (
-    <button
-      onClick={handleDownload}
-      disabled={loading || downloading}
-      className="group relative inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:from-purple-600 hover:to-purple-800 hover:shadow-xl transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-    >
-      {/* Icon container */}
-      <div className="flex items-center justify-center w-6 h-6 relative">
-        {osIcon ? (
-          <Image
-            src={osIcon}
-            alt={platformInfo?.displayName || 'OS'}
-            width={24}
-            height={24}
-            className="object-contain"
-            unoptimized
-          />
-        ) : (
-          <Download className="w-5 h-5" />
+    <div className="flex flex-col items-center lg:items-start gap-2">
+      <button
+        onClick={handleDownload}
+        disabled={loading || downloading || !isPlatformSupported}
+        className="group relative inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:from-purple-600 hover:to-purple-800 hover:shadow-xl transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+      >
+        {/* Icon container */}
+        <div className="flex items-center justify-center w-6 h-6 relative">
+          {osIcon ? (
+            <Image
+              src={osIcon}
+              alt={platformInfo?.displayName || 'OS'}
+              width={24}
+              height={24}
+              className="object-contain"
+              unoptimized
+            />
+          ) : (
+            <Download className="w-5 h-5" />
+          )}
+        </div>
+
+        {/* Text */}
+        <span className="text-base font-medium">{getButtonText()}</span>
+
+        {/* Loading shimmer effect */}
+        {loading && (
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer rounded-lg" />
         )}
-      </div>
 
-      {/* Text */}
-      <span className="text-base font-medium">{getButtonText()}</span>
+        {/* Download progress effect */}
+        {downloading && (
+          <div className="absolute bottom-0 left-0 h-1 bg-white/30 animate-download-progress rounded-b-lg" />
+        )}
+      </button>
 
-      {/* Loading shimmer effect */}
-      {loading && (
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer rounded-lg" />
+      {/* TEMPORARY: Coming soon message for non-Mac platforms */}
+      {isNonMacPlatform && (
+        <p className="text-sm text-gray-500 dark:text-gray-400 text-center lg:text-left">
+          We're working hard to bring {platformInfo.displayName} support soon, stay tuned!
+        </p>
       )}
-
-      {/* Download progress effect */}
-      {downloading && (
-        <div className="absolute bottom-0 left-0 h-1 bg-white/30 animate-download-progress rounded-b-lg" />
-      )}
-    </button>
+    </div>
   );
 };
 
