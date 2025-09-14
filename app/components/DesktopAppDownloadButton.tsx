@@ -4,6 +4,7 @@ import { Download } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
+import { EmailForm } from '@components/EmailForm';
 import constants from '@constants';
 import { type GitHubRelease, fetchLatestRelease, findMatchingAsset } from '@lib/desktop-app-github-releases';
 import { type PlatformInfo, detectPlatform } from '@lib/platform-detector';
@@ -115,15 +116,33 @@ const DesktopAppDownloadButton = () => {
 
   const osIcon = getOSIcon();
 
-  // TEMPORARY: Check if platform is supported (only macOS for now)
+  /**
+   * TEMPORARY: Check if platform is supported (only macOS for now)
+   *
+   * For Windows/Linux, show email form instead of download button
+   *
+   * additionally, don't render anything until we know the platform to avoid updating UI state very quickly (flashing)
+   */
   const isPlatformSupported = platformInfo?.platform === 'macos';
   const isNonMacPlatform = platformInfo && !isPlatformSupported && platformInfo.platform !== 'unknown';
+  if (!platformInfo) {
+    return null;
+  } else if (isNonMacPlatform) {
+    return (
+      <div className="flex flex-col gap-3 w-full max-w-md items-center">
+        <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
+          We're working hard to bring {platformInfo.displayName} support soon (for now Mac only), stay tuned!
+        </p>
+        <EmailForm />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center lg:items-start gap-2">
       <button
         onClick={handleDownload}
-        disabled={loading || downloading || !isPlatformSupported}
+        disabled={loading || downloading}
         className="group relative inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:from-purple-600 hover:to-purple-800 hover:shadow-xl transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
       >
         {/* Icon container */}
@@ -155,13 +174,6 @@ const DesktopAppDownloadButton = () => {
           <div className="absolute bottom-0 left-0 h-1 bg-white/30 animate-download-progress rounded-b-lg" />
         )}
       </button>
-
-      {/* TEMPORARY: Coming soon message for non-Mac platforms */}
-      {isNonMacPlatform && (
-        <p className="text-sm text-gray-500 dark:text-gray-400 text-center lg:text-left">
-          We're working hard to bring {platformInfo.displayName} support soon, stay tuned!
-        </p>
-      )}
     </div>
   );
 };
