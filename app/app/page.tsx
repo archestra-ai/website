@@ -107,9 +107,10 @@ export default async function Home() {
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">AI 🤝 Enterprise Data</h1>
                 <p className="text-xl text-gray-700 mb-8">
                   Run AI agents locally and connect to your data leveraging {serverCount} open-source MCP servers.
-
-                  < br />< br />
-                  Build reports, automate communication, and more — all while keeping your data private and secure on your machine.
+                  <br />
+                  <br />
+                  Build reports, automate communication, and more — all while keeping your data private and secure on
+                  your machine.
                 </p>
                 <div className="flex justify-center lg:justify-start">
                   <DesktopAppDownloadButton />
@@ -129,9 +130,7 @@ export default async function Home() {
               <div className="flex flex-col items-center text-center p-6">
                 <AlertTriangle className="h-12 w-12 text-gray-700 mb-4" />
                 <h3 className="font-semibold mb-2 text-lg">Secure MCP Runtime</h3>
-                <p className="text-sm text-gray-600">
-                  Isolated execution environment protecting your host system.
-                </p>
+                <p className="text-sm text-gray-600">Isolated execution environment protecting your host system.</p>
               </div>
 
               <div className="flex flex-col items-center text-center p-6">

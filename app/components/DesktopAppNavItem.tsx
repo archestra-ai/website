@@ -44,7 +44,7 @@ const DesktopAppNavItem = ({ onClose }: DesktopAppNavItemProps) => {
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    
+
     // TEMPORARY: Only allow downloads for macOS
     if (platformInfo && platformInfo.platform !== 'macos') {
       console.log('Downloads temporarily disabled for non-macOS platforms');
@@ -77,13 +77,13 @@ const DesktopAppNavItem = ({ onClose }: DesktopAppNavItemProps) => {
   // TEMPORARY: Check if platform is supported (only macOS for now)
   const isPlatformSupported = platformInfo?.platform === 'macos';
   const isNonMacPlatform = platformInfo && !isPlatformSupported && platformInfo.platform !== 'unknown';
-  
+
   return (
     <a
       href="#"
       className={`block px-4 py-3 text-sm transition-colors rounded-lg ${
-        isPlatformSupported 
-          ? 'text-gray-700 hover:bg-gray-50 cursor-pointer' 
+        isPlatformSupported
+          ? 'text-gray-700 hover:bg-gray-50 cursor-pointer'
           : 'text-gray-400 cursor-not-allowed opacity-60'
       }`}
       onClick={handleClick}
@@ -93,9 +93,7 @@ const DesktopAppNavItem = ({ onClose }: DesktopAppNavItemProps) => {
         <div className="text-xs text-green-600 mt-0.5 font-semibold">New!</div>
         {/* TEMPORARY: Show coming soon for non-Mac platforms */}
         {isNonMacPlatform && (
-          <div className="text-xs text-gray-500 mt-0.5">
-            ({platformInfo.displayName} coming soon)
-          </div>
+          <div className="text-xs text-gray-500 mt-0.5">({platformInfo.displayName} coming soon)</div>
         )}
       </div>
     </a>
