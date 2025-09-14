@@ -16,7 +16,8 @@
     "oauth": {
       "provider": null,
       "required": false
-    }
+    },
+    "works_in_archestra": false
   },
   "framework": null,
   "last_scraped_at": "2025-09-05T19:30:23.066Z",

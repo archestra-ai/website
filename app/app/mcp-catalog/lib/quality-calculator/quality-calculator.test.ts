@@ -33,6 +33,7 @@ function createBaseServerManifest(overrides?: Partial<ArchestraMcpServerManifest
         provider: null,
         required: false,
       },
+      works_in_archestra: false,
     },
     github_info: {
       owner: 'test-owner',
