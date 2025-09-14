@@ -5,6 +5,16 @@
   "description": "Remote MCP server for Fireflies - AI meeting assistant and transcription",
   "remote_url": "https://api.fireflies.ai/mcp",
   "remote_mcp_docs_url": "https://guide.fireflies.ai/articles/8272956938-learn-about-the-fireflies-mcp-server-model-context-protocol",
+  "oauth_config": {
+    "name": "Fireflies MCP",
+    "server_url": "https://api.fireflies.ai/mcp",
+    "client_id": "",
+    "redirect_uris": ["http://localhost:8080/oauth/callback"],
+    "scopes": ["read", "write"],
+    "description": "Fireflies MCP Server (dynamic registration)",
+    "default_scopes": ["read", "write"],
+    "supports_resource_metadata": true
+  },
   "tools": [],
   "prompts": [],
   "user_config": {},
@@ -15,9 +25,9 @@
     "client_config_permutations": null,
     "oauth": {
       "provider": null,
-      "required": false
+      "required": true
     },
-    "works_in_archestra": false
+    "works_in_archestra": true
   },
   "framework": null,
   "last_scraped_at": "2025-09-05T19:30:23.066Z",

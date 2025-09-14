@@ -5,6 +5,16 @@
   "description": "Remote MCP server for Atlassian - Jira, Confluence, and team collaboration tools",
   "remote_url": "https://mcp.atlassian.com/v1/sse",
   "remote_mcp_docs_url": "https://www.atlassian.com/platform/remote-mcp-server",
+  "oauth_config": {
+    "name": "Atlassian MCP",
+    "server_url": "https://mcp.atlassian.com/v1/sse",
+    "client_id": "",
+    "redirect_uris": ["http://localhost:8080/oauth/callback"],
+    "scopes": ["read", "write"],
+    "description": "Atlassian MCP Server (dynamic registration)",
+    "default_scopes": ["read", "write"],
+    "supports_resource_metadata": true
+  },
   "tools": [],
   "prompts": [],
   "user_config": {},
@@ -15,7 +25,7 @@
     "client_config_permutations": null,
     "oauth": {
       "provider": null,
-      "required": false
+      "required": true
     },
     "works_in_archestra": false
   },

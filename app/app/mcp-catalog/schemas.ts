@@ -213,7 +213,9 @@ const FullDxtServerSchema = DxtManifestSchema.omit({ repository: true }).extend(
 });
 
 // Union schema that accepts both formats
-const ArchestraMcpServerManifestBase = z.union([RemoteServerSchema, FullDxtServerSchema]);
+// IMPORTANT: FullDxtServerSchema must come first to ensure servers with dxt_version
+// match against it and preserve all fields including 'server'
+const ArchestraMcpServerManifestBase = z.union([FullDxtServerSchema, RemoteServerSchema]);
 
 export const ArchestraMcpServerManifestSchema = ArchestraMcpServerManifestBase.refine(
   (data) => {
@@ -228,10 +230,11 @@ export const ArchestraMcpServerManifestSchema = ArchestraMcpServerManifestBase.r
   }
 ).openapi('ArchestraMcpServerManifest');
 
-export const ArchestraMcpServerManifestWithScoreBreakdownSchema = z.union([
-  RemoteServerSchema.extend({ score_breakdown: ArchestraScoreBreakdownSchema }),
-  FullDxtServerSchema.extend({ score_breakdown: ArchestraScoreBreakdownSchema }),
-])
+export const ArchestraMcpServerManifestWithScoreBreakdownSchema = z
+  .union([
+    FullDxtServerSchema.extend({ score_breakdown: ArchestraScoreBreakdownSchema }),
+    RemoteServerSchema.extend({ score_breakdown: ArchestraScoreBreakdownSchema }),
+  ])
   .refine(
     (data) => {
       // For full DXT schemas, local servers (no remote_url) require github_info and programming_language

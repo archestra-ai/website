@@ -15,7 +15,7 @@
     "client_config_permutations": null,
     "oauth": {
       "provider": null,
-      "required": false
+      "required": true
     },
     "works_in_archestra": true
   },
