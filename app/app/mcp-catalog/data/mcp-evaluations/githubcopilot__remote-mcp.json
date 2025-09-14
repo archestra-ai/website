@@ -1,0 +1,47 @@
+{
+  "name": "githubcopilot__remote-mcp",
+  "display_name": "GitHub MCP",
+  "version": "1.0.0",
+  "description": "Remote MCP server for github - issue tracking and project management",
+  "remote_url": "https://api.githubcopilot.com/mcp/",
+  "remote_mcp_docs_url": "https://github.app/docs/mcp",
+  "tools": [],
+  "prompts": [],
+  "user_config": {},
+  "readme": null,
+  "category": "Development",
+  "quality_score": 80,
+  "archestra_config": {
+    "client_config_permutations": null,
+    "oauth": {
+      "provider": null,
+      "required": true
+    },
+    "works_in_archestra": true
+  },
+  "framework": null,
+  "last_scraped_at": "2025-09-05T19:30:23.066Z",
+  "evaluation_model": null,
+  "raw_dependencies": null,
+  "oauth_config": {
+    "name": "GitHub Copilot MCP",
+    "server_url": "https://api.githubcopilot.com/mcp",
+    "client_id": "Ov23li3CnHLM7PNQ2Xiv",
+    "client_secret": "REDACTED",
+    "redirect_uris": ["https://oauth.dev.archestra.ai/oauth/callback", "http://localhost:8080/oauth/callback"],
+    "scopes": ["read", "write"],
+    "description": "GitHub Copilot MCP Server",
+    "default_scopes": ["read", "write"],
+    "supports_resource_metadata": true,
+    "requires_proxy": true
+  },
+  "dxt_version": "0.1.0",
+  "author": {
+    "name": "github"
+  },
+  "server": {
+    "command": "remote",
+    "args": [],
+    "env": {}
+  }
+}

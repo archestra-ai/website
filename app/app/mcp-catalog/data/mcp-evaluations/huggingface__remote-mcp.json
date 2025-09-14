@@ -5,6 +5,16 @@
   "description": "Remote MCP server for HuggingFace services - access models, datasets, and spaces",
   "remote_url": "https://huggingface.co/mcp",
   "remote_mcp_docs_url": "https://huggingface.co/settings/mcp",
+  "oauth_config": {
+    "name": "HuggingFace MCP",
+    "server_url": "https://huggingface.co/mcp",
+    "client_id": "",
+    "redirect_uris": ["http://localhost:8080/oauth/callback"],
+    "scopes": ["read", "write"],
+    "description": "HuggingFace MCP Server (dynamic registration)",
+    "default_scopes": ["read", "write"],
+    "supports_resource_metadata": true
+  },
   "tools": [],
   "prompts": [],
   "user_config": {},
@@ -15,9 +25,9 @@
     "client_config_permutations": null,
     "oauth": {
       "provider": null,
-      "required": false
+      "required": true
     },
-    "works_in_archestra": false
+    "works_in_archestra": true
   },
   "framework": null,
   "last_scraped_at": "2025-09-05T19:30:23.066Z",
