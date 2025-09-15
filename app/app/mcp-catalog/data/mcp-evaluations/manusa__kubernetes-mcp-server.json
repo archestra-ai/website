@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "manusa__kubernetes-mcp-server",
-  "display_name": "kubernetes-mcp-server",
+  "display_name": "OpenShift",
   "version": "1.0.0",
   "description": "Model Context Protocol (MCP) server for Kubernetes and OpenShift",
   "author": {
