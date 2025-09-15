@@ -7,7 +7,7 @@
   "remote_mcp_docs_url": "https://developers.asana.com/docs/using-asanas-model-control-protocol-mcp-server",
   "oauth_config": {
     "name": "Asana MCP",
-    "server_url": "https://mcp.asana.com/sse",  // sse endpoint is not supported yet
+    "server_url": "https://mcp.asana.com/sse",
     "client_id": "",
     "redirect_uris": ["http://localhost:8080/oauth/callback"],
     "scopes": ["read", "write"],

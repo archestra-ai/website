@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "modelcontextprotocol__servers__src__filesystem",
-  "display_name": "filesystem",
+  "display_name": "Filesystem",
   "version": "1.0.0",
   "description": "Model Context Protocol Servers",
   "author": {
