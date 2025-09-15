@@ -1,6 +1,6 @@
 {
   "name": "linear__remote-mcp",
-  "display_name": "Linear MCP",
+  "display_name": "Linear",
   "version": "1.0.0",
   "description": "Remote MCP server for Linear - issue tracking and project management",
   "remote_url": "https://mcp.linear.app/mcp",

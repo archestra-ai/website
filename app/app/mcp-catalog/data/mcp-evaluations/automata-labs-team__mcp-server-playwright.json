@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "automata-labs-team__mcp-server-playwright",
-  "display_name": "MCP-Server-Playwright",
+  "display_name": "Playwright Browser Automation",
   "version": "1.0.0",
   "description": "MCP server for browser automation using Playwright",
   "author": {

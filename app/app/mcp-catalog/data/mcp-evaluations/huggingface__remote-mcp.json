@@ -1,6 +1,6 @@
 {
   "name": "huggingface__remote-mcp",
-  "display_name": "HuggingFace MCP",
+  "display_name": "HuggingFace",
   "version": "1.0.0",
   "description": "Remote MCP server for HuggingFace services - access models, datasets, and spaces",
   "remote_url": "https://huggingface.co/mcp",

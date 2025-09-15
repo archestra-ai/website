@@ -1,6 +1,6 @@
 {
   "name": "jam__remote-mcp",
-  "display_name": "Jam MCP",
+  "display_name": "Jam",
   "version": "1.0.0",
   "description": "Remote MCP server for Jam - bug reporting and feedback tool",
   "remote_url": "https://mcp.jam.dev/mcp",

@@ -1,6 +1,6 @@
 {
   "name": "intercom__remote-mcp",
-  "display_name": "Intercom MCP",
+  "display_name": "Intercom",
   "version": "1.0.0",
   "description": "Remote MCP server for Intercom - customer messaging and support platform",
   "remote_url": "https://mcp.intercom.com/mcp",

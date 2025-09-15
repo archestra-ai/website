@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "g0t4__mcp-server-commands",
-  "display_name": "mcp-server-commands",
+  "display_name": "Commands",
   "version": "1.0.0",
   "description": "Model Context Protocol server to run commands",
   "author": {
@@ -46,7 +46,7 @@
       "provider": null,
       "required": false
     },
-    "works_in_archestra": true
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "g0t4",

@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "korotovsky__slack-mcp-server",
-  "display_name": "slack-mcp-server",
+  "display_name": "Slack",
   "version": "1.0.0",
   "description": "The most powerful MCP Slack Server with no permission requirements, Apps support, multiple transports Stdio and SSE, DMs, Group DMs and smart history fetch logic.",
   "author": {
