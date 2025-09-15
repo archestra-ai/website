@@ -117,7 +117,7 @@
       }
     },
     "browser_based": {
-    "provider": "linkedin-browser",
+      "provider": "linkedin-browser",
       "required": true
     },
     "works_in_archestra": true
