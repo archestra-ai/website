@@ -1758,7 +1758,10 @@ async function evaluateSingleRepo(
         server = await extractArchestraOauthConfig(server, model, force);
       }
 
-      if (updateCanonicalServerAndUserConfig || (shouldUpdateMissing && (!('dxt_version' in server && server.server) || !server.user_config))) {
+      if (
+        updateCanonicalServerAndUserConfig ||
+        (shouldUpdateMissing && (!('dxt_version' in server && server.server) || !server.user_config))
+      ) {
         server = await extractCanonicalServerAndUserConfigConfig(server, model, force);
       }
 
