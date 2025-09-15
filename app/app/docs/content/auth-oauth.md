@@ -9,12 +9,16 @@ This guide explains how to add OAuth authentication to MCP servers in Archestra.
 
 ## Quick Reference - OAuth Types
 
-| Type | Example | OAuth Spec | DCR | Proxy Required | Key Features |
-|------|---------|------------|-----|----------------|--------------|
-| **Type 1: Generic OAuth 2.0** | Slack | OAuth 2.0 | ❌ | ✅ | Standard OAuth flow, env var injection |
-| **Type 2: MCP OAuth without DCR** | Google Workspace | MCP OAuth 2.1 | ❌ | ✅ | MCP SDK flow, static client credentials |
-| **Type 3: Remote MCP without DCR** | GitHub Copilot | MCP OAuth 2.1 | ❌ | ✅ | Remote server, static credentials |
-| **Type 4: Remote MCP with DCR** | Linear | MCP OAuth 2.1 | ✅ | ❌ | Dynamic client registration |
+| Type | DCR | Proxy Required | Key Features |
+|------|-----|----------------|--------------|
+| **Type 1: Generic OAuth 2.0** | ❌ | ✅ | Standard OAuth flow, env var injection |
+| **Type 2: MCP OAuth without DCR** | ❌ | ✅ | MCP SDK flow, static client credentials |
+| **Type 3: Remote MCP without DCR** | ❌ | ✅ | Remote server, static credentials |
+| **Type 4: Remote MCP with DCR** | ✅ | ❌ | Dynamic client registration |
+
+**DCR (Dynamic Client Registration):** A protocol that allows OAuth clients to register themselves dynamically with an authorization server at runtime, eliminating the need to manually configure client credentials beforehand.
+
+**MCP OAuth 2.1:** The Model Context Protocol's authorization specification for secure client-server communication. [View specification →](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization)
 
 ## Architecture Overview
 
