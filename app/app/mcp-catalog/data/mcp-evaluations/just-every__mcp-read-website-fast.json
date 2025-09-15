@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "just-every__mcp-read-website-fast",
-  "display_name": "mcp-read-website-fast",
+  "display_name": "Fast Website Reader",
   "version": "1.0.0",
   "description": "Quickly reads webpages and converts to markdown for fast, token efficient web scraping",
   "author": {

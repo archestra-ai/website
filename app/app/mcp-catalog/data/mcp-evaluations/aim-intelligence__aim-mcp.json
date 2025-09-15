@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "aim-intelligence__aim-mcp",
-  "display_name": "AIM-MCP",
+  "display_name": "AIM Safety Guard",
   "version": "1.0.0",
   "description": "AIM MCP Server :: Guard and Protect your MCPs & AI Chatting",
   "author": {
@@ -36,7 +36,7 @@
       "provider": null,
       "required": false
     },
-    "works_in_archestra": true
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "AIM-Intelligence",

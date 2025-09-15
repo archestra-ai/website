@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "f4ww4z__mcp-mysql-server",
-  "display_name": "mcp-mysql-server",
+  "display_name": "MySQL",
   "version": "1.0.0",
   "description": "A Model Context Protocol server for MySQL database operations",
   "author": {

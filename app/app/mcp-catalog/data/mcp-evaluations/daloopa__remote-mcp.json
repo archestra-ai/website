@@ -1,6 +1,6 @@
 {
   "name": "daloopa__remote-mcp",
-  "display_name": "Daloopa MCP",
+  "display_name": "Daloopa",
   "version": "1.0.0",
   "description": "Remote MCP server for Daloopa - financial data extraction and modeling",
   "remote_url": "https://mcp.daloopa.com/server/mcp",

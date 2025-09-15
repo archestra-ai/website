@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "anaisbetts__mcp-installer",
-  "display_name": "mcp-installer",
+  "display_name": "MCP Server Installer",
   "version": "1.0.0",
   "description": "An MCP server that installs other MCP servers for you",
   "author": {
@@ -41,7 +41,7 @@
       "provider": null,
       "required": false
     },
-    "works_in_archestra": true
+    "works_in_archestra": false
   },
   "github_info": {
     "owner": "anaisbetts",

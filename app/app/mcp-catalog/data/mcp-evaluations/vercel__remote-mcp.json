@@ -1,6 +1,6 @@
 {
   "name": "vercel__remote-mcp",
-  "display_name": "Vercel MCP",
+  "display_name": "Vercel",
   "version": "1.0.0",
   "description": "Remote MCP server for Vercel - frontend cloud platform and deployment",
   "remote_url": "https://mcp.vercel.com/",

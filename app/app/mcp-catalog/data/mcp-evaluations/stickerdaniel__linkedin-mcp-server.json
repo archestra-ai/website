@@ -2,7 +2,7 @@
   "dxt_version": "1.0.0",
   "version": "1.0.0",
   "name": "stickerdaniel__linkedin-mcp-server",
-  "display_name": "linkedin-mcp-server",
+  "display_name": "LinkedIn",
   "description": "This MCP server allows Claude and other AI assistants to access your LinkedIn. Scrape LinkedIn profiles and companies, get your recommended jobs, and perform job searches.",
   "author": {
     "name": "stickerdaniel"

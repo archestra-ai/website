@@ -1,6 +1,6 @@
 {
   "name": "stytch__remote-mcp",
-  "display_name": "Stytch MCP",
+  "display_name": "Stytch",
   "version": "1.0.0",
   "description": "Remote MCP server for Stytch - authentication and identity platform",
   "remote_url": "http://mcp.stytch.dev/mcp",

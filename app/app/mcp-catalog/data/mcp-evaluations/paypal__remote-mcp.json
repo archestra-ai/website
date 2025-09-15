@@ -1,6 +1,6 @@
 {
   "name": "paypal__remote-mcp",
-  "display_name": "PayPal MCP",
+  "display_name": "PayPal",
   "version": "1.0.0",
   "description": "Remote MCP server for PayPal - online payments and financial services",
   "remote_url": "https://mcp.paypal.com/mcp",
