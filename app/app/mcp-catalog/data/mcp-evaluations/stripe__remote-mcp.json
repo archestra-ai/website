@@ -1,6 +1,6 @@
 {
   "name": "stripe__remote-mcp",
-  "display_name": "Stripe MCP",
+  "display_name": "Stripe",
   "version": "1.0.0",
   "description": "Remote MCP server for Stripe - payment infrastructure for the internet",
   "remote_url": "https://mcp.stripe.com",

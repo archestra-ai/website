@@ -1,6 +1,6 @@
 {
   "name": "canva__remote-mcp",
-  "display_name": "Canva MCP",
+  "display_name": "Canva",
   "version": "1.0.0",
   "description": "Remote MCP server for Canva - graphic design and visual content creation",
   "remote_url": "https://mcp.canva.com/mcp",

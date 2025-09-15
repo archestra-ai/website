@@ -1,6 +1,6 @@
 {
   "name": "fireflies__remote-mcp",
-  "display_name": "Fireflies MCP",
+  "display_name": "Fireflies",
   "version": "1.0.0",
   "description": "Remote MCP server for Fireflies - AI meeting assistant and transcription",
   "remote_url": "https://api.fireflies.ai/mcp",

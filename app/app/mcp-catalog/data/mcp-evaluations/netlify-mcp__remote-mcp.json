@@ -1,6 +1,6 @@
 {
   "name": "netlify-mcp__remote-mcp",
-  "display_name": "Netlify MCP",
+  "display_name": "Netlify",
   "version": "1.0.0",
   "description": "Remote MCP server for Netlify - web development platform and hosting",
   "remote_url": "https://netlify-mcp.netlify.app/mcp",

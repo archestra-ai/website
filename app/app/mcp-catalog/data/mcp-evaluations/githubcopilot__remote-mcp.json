@@ -1,6 +1,6 @@
 {
   "name": "githubcopilot__remote-mcp",
-  "display_name": "GitHub MCP",
+  "display_name": "GitHub",
   "version": "1.0.0",
   "description": "Remote MCP server for github - issue tracking and project management",
   "remote_url": "https://api.githubcopilot.com/mcp/",
