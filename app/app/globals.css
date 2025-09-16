@@ -10,6 +10,32 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes download-progress {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  .animate-download-progress {
+    animation: download-progress 3s ease-out;
+  }
 }
 
 @layer base {

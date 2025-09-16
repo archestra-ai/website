@@ -21,14 +21,15 @@ You can find the entire development team in our [Slack Community](https://join.s
 
 That's it! Taking this simple first step gets you 95% of the way there. Our engineers will jump into the conversation, greet you, and share any relevant context to get you started.
 
-# 🤝 Responsible AI Usage is Welcome
+# 🤝 Contribute Responsibly
 
-We encourage the use of AI tools to help you contribute!
+We encourage the use of AI tools while working on your contribution! However, as always, and especially in the AI era, it's essential to emphasize that the project benefits only from contributions made at a certain level of quality.
 
-However, we ask that you use these tools responsibly. We sometimes have to reject contributions that show signs of unreviewed AI-generated code, such as:
+We sometimes have to reject contributions that show signs of unreviewed AI-generated code, such as:
 
-1.  Hard-to-read descriptions and comments.
-2.  Code that doesn't follow the existing patterns and conventions of the project.
-3.  Noticeable signs of rushed or un-reviewed AI generation.
+1. Hard-to-read descriptions and comments.
+2. Code that doesn't follow the existing patterns and conventions of the project.
+3. Code that doesn't follow reasonable clean code best practices.
+4. Or other noticeable signs of rushed or unreviewed AI generation.
 
-From our perspective, carefully reviewing such a contribution can take longer than implementing the feature ourselves. For this reason, we may close the pull request. If this happens to you, please don't be discouraged. We kindly ask you to rework your changes and re-open the pull request when you're ready.
+From our perspective, carefully reviewing such a contribution can take longer than implementing the feature ourselves. For this reason, we may close the pull request. If this happens to you, please don't be discouraged. We kindly ask that you rework your changes and reopen the pull request when you're ready.

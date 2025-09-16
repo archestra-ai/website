@@ -5,36 +5,42 @@ subcategory: MCP Authentication
 order: 6
 ---
 
-This guide shows you how to add OAuth providers (like Jira, LinkedIn, MS Teams) to Archestra using standard OAuth 2.0 flows with PKCE security.
+This guide explains how to add OAuth authentication to MCP servers in Archestra. There are 4 distinct types of OAuth implementations, each with different configuration requirements.
+
+## Quick Reference - OAuth Types
+
+| Type | DCR | Proxy Required | Key Features |
+|------|-----|----------------|--------------|
+| **Type 1: Generic OAuth 2.0** | ❌ | ✅ | Standard OAuth flow, env var injection |
+| **Type 2: MCP OAuth without DCR** | ❌ | ✅ | MCP SDK flow, static client credentials |
+| **Type 3: Remote MCP without DCR** | ❌ | ✅ | Remote server, static credentials |
+| **Type 4: Remote MCP with DCR** | ✅ | ❌ | Dynamic client registration |
+
+**DCR (Dynamic Client Registration):** A protocol that allows OAuth clients to register themselves dynamically with an authorization server at runtime, eliminating the need to manually configure client credentials beforehand.
+
+**MCP OAuth 2.1:** The Model Context Protocol's authorization specification for secure client-server communication. [View specification →](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization)
 
 ## Architecture Overview
 
-Archestra uses a secure two-tier OAuth system with automatic endpoint discovery:
+Archestra uses a secure two-tier OAuth system:
 
 ```
-Desktop App (Discovery + PKCE) →
+Desktop App (PKCE + Flow Management) →
   OAuth Proxy (Secret Injection) →
     Provider API
 ```
 
-**How it works:**
+**Components:**
 
-1. **Desktop App** performs OAuth discovery, manages provider-specific logic, initiates PKCE flows, and stores tokens as environment variables for MCP servers
-2. **OAuth Proxy** acts as a generic service that injects client secrets into token requests for any endpoint specified by the desktop app
-3. **Provider** is the external OAuth service (Google, Slack, Jira, etc.)
+1. **Desktop App** - Manages OAuth flows, PKCE, token storage, and MCP server lifecycle
+2. **OAuth Proxy** - Securely injects client secrets for providers that don't support DCR
+3. **Provider API** - The external OAuth service (Google, Slack, GitHub, etc.)
 
 **Security benefits:**
 
 - Desktop app never sees OAuth client secrets - they're kept secure in the OAuth proxy
 - All OAuth complexity is handled by the desktop app
 - The proxy is a simple ~400-line generic service
-
-### OAuth Discovery (RFC 8414)
-
-The desktop app automatically discovers OAuth endpoints using standard `.well-known` endpoints:
-
-- `/.well-known/oauth-authorization-server` (preferred)
-- `/.well-known/openid_configuration` (fallback)
 
 ## Developer Quickstart
 
@@ -74,177 +80,286 @@ Try it with an existing OAuth provider:
 4. Complete the OAuth flow in your browser
 5. Navigate to Servers and find your installed MCP server
 
-## Add a new OAuth provider
+## Adding New OAuth MCP Servers
 
-Here's how to add a new OAuth provider to Archestra using Jira as an example:
+To add a new OAuth-enabled MCP server, first identify which type it is from the quick reference table above, then follow the appropriate guide below.
 
-### 1. Create a local MCP server for testing
+### Local Development Setup
 
-Find the MCP server JSON in the catalog, e.g. https://github.com/archestra-ai/website/blob/main/app/app/mcp-catalog/data/mcp-evaluations/korotovsky__slack-mcp-server.json
+1. Create or copy a server JSON file to `desktop_app/src/ui/catalog_local/`
+2. The server will appear on the "Connections" page with a purple "Developer" tag
+3. This allows you to test without deploying to the catalog
 
-Copy the file (or create a new one) to `desktop_app/src/ui/catalog_local`. The MCP server will appear on the "Connections" page with a purple "Developer" tag, allowing you to modify and work with it without running the catalog
+## Type 1: Generic OAuth 2.0 (Slack Example)
 
-### 2. Configure the OAuth proxy
+Standard OAuth 2.0 flow for providers that don't support MCP SDK OAuth.
 
-The OAuth proxy injects client secrets into token requests for any endpoint specified by the desktop app.
-
-#### Add provider to allowlist
-
-> **Note**: The OAuth proxy validates endpoints against a provider allowlist to prevent SSRF attacks.
-
-Add your provider to the OAuth proxy's provider configuration:
-
-```javascript
-// oauth_proxy/src/config/providers.js
-export const TRUSTED_PROVIDERS = {
-  google: ['oauth2.googleapis.com', 'accounts.google.com'],
-  slack: ['slack.com', 'api.slack.com'],
-  jira: ['auth.atlassian.com'], // Add your new provider
-  // ... other providers
-};
+### Configuration Structure
+```json
+{
+  "oauth_config": {
+    "name": "Slack MCP",
+    "server_url": "https://slack.com/oauth/v2/authorize",
+    "token_endpoint": "https://slack.com/api/oauth.v2.access",
+    "client_id": "9210991658150.9211748349222",
+    "client_secret": "REDACTED",
+    "redirect_uris": [
+      "https://oauth.dev.archestra.ai/oauth/callback",
+      "http://localhost:8080/oauth/callback"
+    ],
+    "scopes": ["channels:read", "chat:write", "users:read"],
+    "default_scopes": ["channels:read", "chat:write", "users:read"],
+    "generic_oauth": true,
+    "access_token_env_var": "SLACK_MCP_XOXP_TOKEN",
+    "requires_proxy": true
+  },
+  "archestra_config": {
+    "oauth": {
+      "provider": null,
+      "required": true
+    },
+    "works_in_archestra": true
+  }
+}
 ```
 
-#### Add your OAuth credentials
+**Key fields:**
+- `server_url` - OAuth authorization endpoint
+- `token_endpoint` - OAuth token exchange endpoint
+- `client_id` - Get from provider's app page (e.g., https://api.slack.com/apps)
+- `client_secret` - Always use "REDACTED" (proxy will inject real secret)
+- `redirect_uris` - OAuth callback URLs (first one is used)
+- `generic_oauth: true` - Use standard OAuth 2.0 instead of MCP OAuth 2.1
+- `access_token_env_var` - Optional: inject token as env var instead of Authorization header
+- `requires_proxy: true` - Routes through OAuth proxy for secret injection
 
-Add your OAuth app credentials to the proxy's environment (use pattern `PROVIDER_CLIENT_ID` and `PROVIDER_CLIENT_SECRET`):
+## Type 2: MCP OAuth without DCR (Google Workspace Example)
+
+MCP SDK OAuth 2.1 with static client credentials.
+
+### Configuration Structure
+
+```json
+{
+  "oauth_config": {
+    "name": "Google OAuth",
+    "server_url": "https://accounts.google.com",
+    "client_id": "354887056155-5b4rlcofccknibd4fv3ldud9vvac3rdf.apps.googleusercontent.com",
+    "client_secret": "REDACTED",
+    "redirect_uris": ["https://oauth.dev.archestra.ai/oauth/callback"],
+    "scopes": [
+      "openid",
+      "email",
+      "profile",
+      "https://www.googleapis.com/auth/gmail.readonly"
+    ],
+    "well_known_url": "https://accounts.google.com/.well-known/openid-configuration",
+    "supports_resource_metadata": false,
+    "requires_proxy": true
+  },
+  "server": {
+    "command": "uvx",
+    "args": ["--from", "git+https://github.com/...", "workspace-mcp"],
+    "env": {
+      "MCP_ENABLE_OAUTH21": "true",
+      "MCP_TOKEN_ONLY_MODE": "true"
+    }
+  }
+}
+```
+
+**Key differences from Type 1:**
+- No `generic_oauth` flag (uses MCP SDK OAuth)
+- `well_known_url` for OAuth discovery
+- Server env vars enable MCP OAuth 2.1 mode
+
+## Type 3: Remote MCP without DCR (GitHub Copilot Example)
+
+Remote MCP server with static OAuth credentials.
+
+### Configuration Structure
+
+```json
+{
+  "remote_url": "https://api.githubcopilot.com/mcp/",
+  "oauth_config": {
+    "name": "GitHub Copilot MCP",
+    "server_url": "https://api.githubcopilot.com/mcp",
+    "client_id": "Ov23li3CnHLM7PNQ2Xiv",
+    "client_secret": "REDACTED",
+    "redirect_uris": [
+      "https://oauth.dev.archestra.ai/oauth/callback",
+      "http://localhost:8080/oauth/callback"
+    ],
+    "scopes": ["read", "write"],
+    "supports_resource_metadata": true,
+    "requires_proxy": true
+  },
+  "server": {
+    "command": "remote",
+    "args": [],
+    "env": {}
+  }
+}
+```
+
+**Key differences:**
+- `remote_url` field indicates remote MCP server
+- `server.command: "remote"` tells Archestra this is remote
+- Still requires proxy for secret injection
+
+## Type 4: Remote MCP with DCR (Linear Example)
+
+Remote MCP server supporting Dynamic Client Registration - no proxy needed!
+
+### Configuration Structure
+
+```json
+{
+  "remote_url": "https://mcp.linear.app/mcp",
+  "oauth_config": {
+    "name": "Linear MCP",
+    "server_url": "https://mcp.linear.app/mcp",
+    "client_id": "",
+    "redirect_uris": ["http://localhost:8080/oauth/callback"],
+    "scopes": ["read", "write"],
+    "supports_resource_metadata": true
+  },
+  "server": {
+    "command": "remote",
+    "args": [],
+    "env": {}
+  }
+}
+```
+
+**Key differences:**
+- Empty `client_id` - will be dynamically registered
+- No `client_secret` field
+- No `requires_proxy` - DCR handles credentials
+
+
+## OAuth Proxy Configuration (Types 1-3 Only)
+
+The OAuth proxy securely stores and injects client secrets. Type 4 (DCR) doesn't need proxy configuration.
+
+### 1. Add Provider to Allowlist
+
+Edit `oauth_proxy/src/config/providers.js`:
+
+```javascript
+export const ALLOWED_DESTINATIONS = [
+  'oauth2.googleapis.com',
+  'accounts.google.com',
+  'slack.com',
+  'api.slack.com',
+  'github.com',
+  'api.githubcopilot.com',
+  'your-provider.com',  // Add your provider's domain
+  // ...
+];
+```
+
+### 2. Add OAuth Credentials
+
+Add credentials to `oauth_proxy/.env` using this pattern:
+- Pattern: `{mcp_server_id}_CLIENT_ID` and `{mcp_server_id}_SECRET`
+- The `mcp_server_id` comes from your server JSON filename
 
 ```bash
 # oauth_proxy/.env
-JIRA_CLIENT_ID=your-client-id-from-jira
-JIRA_CLIENT_SECRET=your-client-secret-from-jira
+
+# Type 1: Slack (Generic OAuth)
+korotovsky__slack-mcp-server_CLIENT_ID=your-slack-client-id
+korotovsky__slack-mcp-server_SECRET=your-slack-client-secret
+
+# Type 2: Google Workspace (MCP OAuth)
+iskhakov__google_workspace_mcp_CLIENT_ID=your-google-client-id
+iskhakov__google_workspace_mcp_SECRET=your-google-client-secret
+
+# Type 3: GitHub Copilot (Remote MCP)
+githubcopilot__remote-mcp_CLIENT_ID=your-github-client-id
+githubcopilot__remote-mcp_SECRET=your-github-client-secret
+
+# Type 4: Linear (DCR) - No proxy credentials needed!
 ```
 
-> **Note**: The provider name in the allowlist must match the provider name used in your MCP server catalog configuration. The proxy will only accept token endpoints from the allowed hostnames for each provider, preventing SSRF attacks.
+### 3. Start OAuth Proxy
 
-### 3. Create desktop app provider definition
-
-All OAuth logic is handled in the desktop app.
-
-#### Create the provider definition
-
-Create a new file for your provider with OAuth discovery configuration:
-
-```typescript
-// desktop_app/src/backend/server/plugins/oauth/providers/jira.ts
-import { OAuthProviderDefinition } from '../provider-interface';
-
-export const jiraProvider: OAuthProviderDefinition = {
-  name: 'jira',
-  scopes: ['read:jira-user', 'write:jira-work'], // Permissions your MCP server needs
-  usePKCE: true, // Use PKCE for security (recommended)
-  clientId: 'your-public-client-id', // Public client ID (not secret!)
-
-  // Map OAuth tokens to environment variable names
-  // These will be available to your MCP server
-  tokenEnvVarPattern: {
-    accessToken: 'JIRA_ACCESS_TOKEN',
-    refreshToken: 'JIRA_REFRESH_TOKEN',
-    expiryDate: 'JIRA_TOKEN_EXPIRY',
-  },
-
-  // Additional authorization parameters
-  authorizationParams: {
-    audience: 'api.atlassian.com', // API audience
-    prompt: 'consent', // Always show consent screen
-    access_type: 'offline', // Request refresh token
-  },
-
-  // OAuth discovery configuration
-  discoveryConfig: {
-    baseUrl: 'https://auth.atlassian.com',
-    enabled: true,
-    fallbackEndpoints: {
-      authorization: 'https://auth.atlassian.com/authorize',
-      token: 'https://auth.atlassian.com/oauth/token',
-      revocation: 'https://auth.atlassian.com/oauth/revoke',
-    },
-  },
-
-  metadata: {
-    displayName: 'Jira',
-    documentationUrl: 'https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/',
-    supportsRefresh: true,
-    notes: 'Uses OAuth discovery with fallback endpoints. Supports automatic endpoint discovery per RFC 8414.',
-  },
-};
+```bash
+cd oauth_proxy
+pnpm install
+pnpm start  # Runs on http://localhost:8080
 ```
 
-#### Register the provider
+## Testing Your OAuth Integration
 
-Add your provider to the registry:
+1. **Place your server JSON** in `desktop_app/src/ui/catalog_local/`
+2. **Start the desktop app**: `cd desktop_app && pnpm start`
+3. **Navigate to Connections** - find your server with purple "Developer" tag
+4. **Click "Install (OAuth)"** - browser opens for authorization
+5. **Complete OAuth flow** - tokens are stored and server starts
+6. **Check Settings → Servers** - verify server is running
 
-```typescript
-// desktop_app/src/backend/server/plugins/oauth/providers.ts
-import { jiraProvider } from './providers/jira';
+## OAuth Flow Details
 
-export const oauthProviders: OAuthProviderRegistry = {
-  google: googleProvider,
-  slack: slackProvider,
-  'slack-browser': slackBrowserProvider,
-  'linkedin-browser': linkedinBrowserProvider,
-  jira: jiraProvider, // Add your new provider
-};
+### Type 1 (Generic OAuth):
+1. Desktop app opens browser with authorization URL
+2. User authorizes in browser
+3. OAuth proxy receives callback via deep link
+4. Proxy exchanges code for tokens (injecting secret)
+5. Tokens stored, optionally injected as env vars
+
+### Types 2-3 (MCP OAuth):
+1. MCP SDK discovers OAuth endpoints via `.well-known`
+2. PKCE flow initiated with code verifier
+3. OAuth proxy handles token exchange with secret injection
+4. Tokens stored in database, passed via Authorization header
+
+### Type 4 (DCR):
+1. MCP SDK registers client dynamically
+2. Standard OAuth flow without proxy
+3. Client credentials stored for reuse
+
+## Common Configuration Patterns
+
+### Environment Variable Injection (Type 1)
+
+Some servers need tokens as environment variables instead of Authorization headers:
+
+```json
+{
+  "oauth_config": {
+    "access_token_env_var": "SLACK_MCP_XOXP_TOKEN",
+    // Token will be injected as this env var
+  }
+}
 ```
 
-Also export it from the index:
+### File-based Credentials
 
-```typescript
-// desktop_app/src/backend/server/plugins/oauth/index.ts
-export {
-  // ... existing exports
-  jiraProvider,
-} from './providers';
+For servers that read credentials from files:
+
+```json
+{
+  "server": {
+    "inject_file": {
+      "/home/appuser/.credentials/token.json": "{\"access_token\": \"${access_token}\"}"
+    }
+  }
+}
 ```
 
-### 4. Test the OAuth flow
+### Scope Discovery
 
-When users install your MCP server:
+Type 2 servers can discover scopes automatically:
 
-1. The UI detects `oauth.required: true` and `provider: "jira"`
-2. Desktop app performs OAuth discovery for Jira's endpoints
-3. Starts the OAuth flow with discovered or fallback endpoints
-4. OAuth proxy receives the discovered `token_endpoint` and makes the token exchange
-5. After successful authentication, tokens are stored and passed to the MCP server as environment variables
-
-You're all set! Your MCP server should now appear in Settings → Servers with OAuth authentication working.
-
-## Advanced Configuration
-
-### File-based credentials
-
-Some MCP servers need credentials written to a file instead of environment variables:
-
-```typescript
-// In your provider definition
-tokenHandler: async (tokens, serverId) => {
-  // Create a credentials file format your MCP server expects
-  const credentials = {
-    type: 'authorized_user',
-    access_token: tokens.access_token,
-    refresh_token: tokens.refresh_token,
-    expiry: tokens.expires_at,
-  };
-
-  // Write to a specific path in the container
-  await writeFileToContainer(serverId, '/home/appuser/.jira/credentials.json', JSON.stringify(credentials, null, 2));
-
-  // Don't return env vars since we're using a file
-  return {};
-};
-```
-
-### Provider-specific token parameters
-
-The desktop app can pass provider-specific parameters to the OAuth proxy:
-
-```typescript
-// Desktop app automatically includes provider-specific authorization parameters
-// in the token exchange request to the OAuth proxy
-
-authorizationParams: {
-  audience: 'api.atlassian.com',
-  prompt: 'consent',
-  access_type: 'offline',
+```json
+{
+  "oauth_config": {
+    "supports_resource_metadata": true,
+    "well_known_url": "https://accounts.google.com/.well-known/openid-configuration"
+  }
 }
 ```
 
@@ -271,3 +386,10 @@ Access a running container for debugging:
 ```
 
 Replace `CONTAINER_ID` with your actual container ID from the `container ls` command.
+
+Check stored tokens in database:
+
+```bash
+cd desktop_app
+pnpm db:studio  # Open Drizzle Studio, check mcp_servers table
+```
