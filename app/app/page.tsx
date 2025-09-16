@@ -1,5 +1,4 @@
-import { AlertTriangle, ArrowRight, Cpu, GitCommit, Github, MessageSquare, Package, Star, Users } from 'lucide-react';
-import Link from 'next/link';
+import { GitCommit, Github, MessageSquare, Star, Users } from 'lucide-react';
 
 import DesktopAppDownloadButton from '@components/DesktopAppDownloadButton';
 import Footer from '@components/Footer';
@@ -104,13 +103,16 @@ export default async function Home() {
           <div className="container px-4 md:px-6 py-16 max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row items-center gap-12">
               <div className="flex-1 text-center lg:text-left">
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">AI 🤝 Enterprise Data</h1>
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Easy-to-use local MCP</h1>
                 <p className="text-xl text-gray-700 mb-8">
-                  Run AI agents locally and connect to your data leveraging {serverCount} open-source MCP servers.
-                  <br />
-                  <br />
-                  Build reports, automate communication, and more — all while keeping your data private and secure on
-                  your machine.
+                  Build helpful agents with prompts!
+                  <br/><br/>
+                  - Nice ChatGPT-like interface<br/>
+                  - Running <b>locally</b> for sensitive corporate data<br/>
+                  - Sandboxed runtime preventing from <b>supply chain</b> attacks<br/>
+                  - Configuration <b>without API keys or configs</b><br/>
+                  - Supports {serverCount} open-source MCP servers<br/>
+                  - <b>Free and open-source</b>
                 </p>
                 <div className="flex justify-center lg:justify-start">
                   <DesktopAppDownloadButton />
@@ -119,34 +121,6 @@ export default async function Home() {
 
               <div className="flex-1 max-w-3xl lg:max-w-none">
                 <img src="/screenshot.png" alt="Archestra Autonomous Agents Interface" className="scale-110" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-white py-4">
-          <div className="container px-4 md:px-6 max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="flex flex-col items-center text-center p-6">
-                <AlertTriangle className="h-12 w-12 text-gray-700 mb-4" />
-                <h3 className="font-semibold mb-2 text-lg">Secure MCP Runtime</h3>
-                <p className="text-sm text-gray-600">Isolated execution environment protecting your host system.</p>
-              </div>
-
-              <div className="flex flex-col items-center text-center p-6">
-                <Cpu className="h-12 w-12 text-gray-700 mb-4" />
-                <h3 className="font-semibold mb-2 text-lg">No Technical Knowledge Needed</h3>
-                <p className="text-sm text-gray-600">
-                  No need to configure API keys for each service; Archestra will do it for you.
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center text-center p-6">
-                <Package className="h-12 w-12 text-gray-700 mb-4" />
-                <h3 className="font-semibold mb-2 text-lg">Fully Local</h3>
-                <p className="text-sm text-gray-600">
-                  Optionally, can work without an internet connection after initial download.
-                </p>
               </div>
             </div>
           </div>
@@ -162,24 +136,7 @@ export default async function Home() {
             }}
           />
 
-          <div className="container relative z-10 px-4 md:px-6 max-w-4xl mx-auto">
-            <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border-2 border-green-300 shadow-md p-8">
-              <div className="flex flex-col items-center text-center">
-                <Package className="h-12 w-12 text-green-600 mb-4" />
-                <h2 className="text-2xl font-bold mb-3 text-green-900">Want to deploy for your colleagues?</h2>
-                <p className="text-gray-700 mb-6 max-w-2xl">
-                  Deploy and manage AI-to-Data connectors at scale with enterprise-grade security, compliance, and
-                  governance features.
-                </p>
-                <Link
-                  href="/enterprise-platform"
-                  className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
-                >
-                  Book a Demo <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-          </div>
+
         </section>
 
         <section className="relative py-4">

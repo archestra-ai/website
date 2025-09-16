@@ -341,6 +341,158 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+
+          {/* Media Coverage Section */}
+          <div className="max-w-6xl mx-auto mb-16">
+            <div className="space-y-8">
+              <div>
+                <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider text-center mb-6">
+                  Media Coverage
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                  <a
+                    href="https://siliconangle.com/2025/08/14/archestra-raises-3-3m-secure-enterprise-use-ai-agents-mcp-servers/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors"
+                  >
+                    <p className="font-medium text-gray-900">SiliconANGLE</p>
+                    <p className="text-sm text-gray-600 mt-1">Archestra raises $3.3M to secure enterprise use of AI agents</p>
+                  </a>
+                  
+                  <a
+                    href="https://siliconcanals.com/archestra-ai-secures-e2-8m/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors"
+                  >
+                    <p className="font-medium text-gray-900">Silicon Canals</p>
+                    <p className="text-sm text-gray-600 mt-1">Archestra AI secures €2.8M</p>
+                  </a>
+                  
+                  <a
+                    href="https://www.uktech.news/ai/archestra-raises-2-5m-to-protect-corporate-data-from-ai-agents-20250813"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors"
+                  >
+                    <p className="font-medium text-gray-900">UKTN</p>
+                    <p className="text-sm text-gray-600 mt-1">Archestra raises £2.5m to protect corporate data from AI agents</p>
+                  </a>
+                  
+                  <a
+                    href="https://techfundingnews.com/archestra-london-startup-3-3m-autonomous-agents-guardrails/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors"
+                  >
+                    <p className="font-medium text-gray-900">Tech Funding News</p>
+                    <p className="text-sm text-gray-600 mt-1">London startup raises $3.3m for autonomous agents guardrails</p>
+                  </a>
+                  
+                  <a
+                    href="https://www.eu-startups.com/2025/08/london-based-archestra-raises-e2-8-million-to-stop-ai-agents-going-rogue/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors"
+                  >
+                    <p className="font-medium text-gray-900">EU-Startups</p>
+                    <p className="text-sm text-gray-600 mt-1">Archestra raises €2.8 million to stop AI agents going rogue</p>
+                  </a>
+                  
+                  <a
+                    href="https://www.uktechnews.info/2025/08/14/archestra-secures-2-5-million-pre-seed-investment-led-by-concept-ventures/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors"
+                  >
+                    <p className="font-medium text-gray-900">UK Tech News</p>
+                    <p className="text-sm text-gray-600 mt-1">Archestra secures £2.5 million pre-seed investment</p>
+                  </a>
+                  
+                  <a
+                    href="https://www.techinasia.com/news/londonbased-archestra-raises-33m-enhance-ai-data-security"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors"
+                  >
+                    <p className="font-medium text-gray-900">Tech in Asia</p>
+                    <p className="text-sm text-gray-600 mt-1">London-based Archestra raises $3.3m to enhance AI data security</p>
+                  </a>
+                  
+                  <a
+                    href="https://startuprise.co.uk/london-based-archestra-secures-e2-8-million-in-pre-seed-round/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors"
+                  >
+                    <p className="font-medium text-gray-900">StartupRise</p>
+                    <p className="text-sm text-gray-600 mt-1">Archestra secures €2.8 million in pre-seed round</p>
+                  </a>
+                  
+                  <a
+                    href="https://tech.eu/2025/08/14/archestra-raises-3-3m-to-build-guardrails-for-enterprise-ai-agents/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors"
+                  >
+                    <p className="font-medium text-gray-900">Tech.eu</p>
+                    <p className="text-sm text-gray-600 mt-1">Archestra raises $3.3m to build guardrails for enterprise AI agents</p>
+                  </a>
+                  
+                  <a
+                    href="https://itbrief.co.uk/story/archestra-ai-raises-3-3m-to-secure-enterprise-ai-agents"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors"
+                  >
+                    <p className="font-medium text-gray-900">IT Brief UK</p>
+                    <p className="text-sm text-gray-600 mt-1">Archestra AI raises $3.3m to secure enterprise AI agents</p>
+                  </a>
+                  
+                  <a
+                    href="https://businesscloud.co.uk/news/trio-who-moved-to-uk-to-launch-ai-startup-raise-2-4m/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors"
+                  >
+                    <p className="font-medium text-gray-900">BusinessCloud</p>
+                    <p className="text-sm text-gray-600 mt-1">Trio who moved to UK to launch AI startup raise £2.4m</p>
+                  </a>
+                  
+                  <a
+                    href="https://startupnewswire.com/archestra-raises-2-8m-ai-agent-security/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors"
+                  >
+                    <p className="font-medium text-gray-900">Startup News Wire</p>
+                    <p className="text-sm text-gray-600 mt-1">Archestra raises €2.8m for AI agent security</p>
+                  </a>
+                  
+                  <a
+                    href="https://securitybrief.co.uk/story/archestra-ai-raises-3-3m-to-secure-enterprise-ai-agents"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors"
+                  >
+                    <p className="font-medium text-gray-900">SecurityBrief UK</p>
+                    <p className="text-sm text-gray-600 mt-1">Archestra AI raises $3.3m to secure enterprise AI agents</p>
+                  </a>
+                  
+                  <a
+                    href="https://theaiinsider.tech/2025/08/20/archestra-raises-3-3m-to-secure-ai-agent-deployments-with-enterprise-ready-mcp-platform/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-lg px-4 py-3 border border-gray-200 hover:border-gray-400 transition-colors"
+                  >
+                    <p className="font-medium text-gray-900">The AI Insider</p>
+                    <p className="text-sm text-gray-600 mt-1">Archestra raises $3.3m to secure AI agent deployments</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
 
