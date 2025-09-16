@@ -11,6 +11,7 @@ import constants from '@constants';
 const {
   company: { name: companyName },
   website: { urls: websiteUrls },
+  slack: { joinCommunityUrl: slackJoinCommunityUrl },
 } = constants;
 
 export default function Header() {
@@ -54,6 +55,15 @@ export default function Header() {
             <Link href="/about" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
               About Us
             </Link>
+            
+            <a
+              href={slackJoinCommunityUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors"
+            >
+              Slack Community
+            </a>
           </nav>
         </div>
 
@@ -116,6 +126,16 @@ export default function Header() {
             >
               About Us
             </Link>
+            
+            <a
+              href={slackJoinCommunityUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Slack Community
+            </a>
           </nav>
         </div>
       )}
