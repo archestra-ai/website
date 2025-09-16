@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "quantgeekdev__mongo-mcp",
   "display_name": "mongo-mcp",
-  "version": "1.0.0",
   "description": "A mongo db server for the model context protocol (MCP)",
   "author": {
     "name": "QuantGeekDev"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["mongo-mcp", "${user_config.mongodb_connection_url}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

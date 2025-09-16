@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "iaptic__mcp-server-iaptic",
   "display_name": "mcp-server-iaptic",
-  "version": "1.0.0",
   "description": " Model Context Protocol server for interacting with iaptic",
   "author": {
     "name": "iaptic"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["mcp-server-iaptic", "--api-key", "${user_config.api_key}", "--app-name", "${user_config.app_name}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

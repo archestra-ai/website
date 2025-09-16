@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "stadiamaps__stadiamaps-mcp-server-ts",
   "display_name": "stadiamaps-mcp-server-ts",
-  "version": "1.0.0",
   "description": "A TypeScript MCP server for interacting with the Stadia Maps APIs",
   "author": {
     "name": "stadiamaps"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/build/index.js"],
     "env": {
       "API_KEY": "${user_config.api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

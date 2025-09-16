@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "wuye-ai__mcp-server-wuye-ai",
   "display_name": "mcp-server-wuye-ai",
-  "version": "1.0.0",
   "description": "CRIC物业AI MCP Server",
   "author": {
     "name": "wuye-ai"
@@ -15,7 +13,8 @@
       "MODE": "${user_config.mode}",
       "HOSTNAME": "${user_config.hostname}",
       "PORT": "${user_config.port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

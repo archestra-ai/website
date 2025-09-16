@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "lfnovo__content-core",
   "display_name": "content-core",
-  "version": "1.0.0",
   "description": "Extract what matters from any media source",
   "author": {
     "name": "lfnovo"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/content_core/mcp_server.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

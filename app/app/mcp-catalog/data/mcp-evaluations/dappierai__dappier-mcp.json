@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "dappierai__dappier-mcp",
   "display_name": "dappier-mcp",
-  "version": "1.0.0",
   "description": "Enable fast, free real-time web search and access premium data from trusted media brands—news, financial markets, sports, entertainment, weather, and more. Build powerful AI agents with Dappier.",
   "author": {
     "name": "DappierAI"
@@ -12,7 +10,8 @@
     "args": ["dappier-mcp"],
     "env": {
       "DAPPIER_API_KEY": "${user_config.dappier_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

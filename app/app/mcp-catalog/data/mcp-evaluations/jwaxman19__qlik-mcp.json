@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jwaxman19__qlik-mcp",
   "display_name": "qlik-mcp",
-  "version": "1.0.0",
   "description": "An MCP server to run qlik",
   "author": {
     "name": "jwaxman19"
@@ -19,7 +17,8 @@
       "REQUEST_DELAY_MS": "${user_config.request_delay_ms}",
       "MAX_RETRIES": "${user_config.max_retries}",
       "RETRY_DELAY_MS": "${user_config.retry_delay_ms}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

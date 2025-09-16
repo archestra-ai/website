@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sitbon__magg",
   "display_name": "magg",
-  "version": "1.0.0",
   "description": "Magg: The MCP Aggregator",
   "author": {
     "name": "sitbon"
@@ -12,7 +10,8 @@
     "args": ["serve"],
     "env": {
       "MAGG_PRIVATE_KEY": "${user_config.magg_private_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

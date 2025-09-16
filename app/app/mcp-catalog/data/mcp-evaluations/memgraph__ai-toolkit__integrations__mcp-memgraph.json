@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "memgraph__ai-toolkit__integrations__mcp-memgraph",
   "display_name": "mcp-memgraph",
-  "version": "1.0.0",
   "description": "Toolkit for building AI-driven graph apps on Memgraph, with LangChain, MCP, and agent implementations. ",
   "author": {
     "name": "memgraph"
@@ -16,7 +14,8 @@
       "MEMGRAPH_PASSWORD": "${user_config.memgraph_password}",
       "MEMGRAPH_DATABASE": "${user_config.memgraph_database}",
       "MCP_TRANSPORT": "${user_config.mcp_transport}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

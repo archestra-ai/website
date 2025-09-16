@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "trilogy-group__aws-pricing-mcp",
   "display_name": "aws-pricing-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that exposes AWS EC2 pricing data with an option to search by CPU, RAM, networking",
   "author": {
     "name": "trilogy-group"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/src/server.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

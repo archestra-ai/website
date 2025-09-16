@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "feuerdev__keep-mcp",
   "display_name": "keep-mcp",
-  "version": "1.0.0",
   "description": "MCP server for Google Keep",
   "author": {
     "name": "feuerdev"
@@ -14,7 +12,8 @@
       "GOOGLE_EMAIL": "${user_config.google_email}",
       "GOOGLE_MASTER_TOKEN": "${user_config.google_master_token}",
       "UNSAFE_MODE": "${user_config.unsafe_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

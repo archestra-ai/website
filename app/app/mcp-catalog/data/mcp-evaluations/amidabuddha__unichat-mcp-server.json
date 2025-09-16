@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "amidabuddha__unichat-mcp-server",
   "display_name": "unichat-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from amidabuddha/unichat-mcp-server",
   "author": {
     "name": "amidabuddha"
@@ -13,7 +11,8 @@
     "env": {
       "UNICHAT_MODEL": "${user_config.unichat_model}",
       "UNICHAT_API_KEY": "${user_config.unichat_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

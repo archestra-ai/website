@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "glenngillen__mcpmcp-server",
   "display_name": "mcpmcp-server",
-  "version": "1.0.0",
   "description": "Discover, setup, and integrate MCP servers with your favorite clients. Unlock the full potential of AI in your daily workflow.",
   "author": {
     "name": "glenngillen"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "mcp-remote@latest", "https://mcpmcp.io/mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

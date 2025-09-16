@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "higress-group__higress-ops-mcp-server",
   "display_name": "higress-ops-mcp-server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server implementation that enables comprehensive configuration and management of Higress.",
   "author": {
     "name": "higress-group"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/server.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

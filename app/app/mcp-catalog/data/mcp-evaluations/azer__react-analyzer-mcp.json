@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "azer__react-analyzer-mcp",
   "display_name": "react-analyzer-mcp",
-  "version": "1.0.0",
   "description": "MCP server for analyzing & generating docs for React code locally",
   "author": {
     "name": "azer"
@@ -10,7 +8,8 @@
   "server": {
     "command": "node",
     "args": ["${__dirname}/build/index.js"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

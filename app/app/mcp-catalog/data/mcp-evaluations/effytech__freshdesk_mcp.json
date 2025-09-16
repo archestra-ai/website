@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "effytech__freshdesk_mcp",
   "display_name": "freshdesk_mcp",
-  "version": "1.0.0",
   "description": "MCP server created for Freshdesk, allowing AI models to interact with Freshdesk modules",
   "author": {
     "name": "effytech"
@@ -13,7 +11,8 @@
     "env": {
       "FRESHDESK_API_KEY": "${user_config.freshdesk_api_key}",
       "FRESHDESK_DOMAIN": "${user_config.freshdesk_domain}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

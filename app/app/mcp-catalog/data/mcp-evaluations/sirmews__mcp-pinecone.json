@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sirmews__mcp-pinecone",
   "display_name": "mcp-pinecone",
-  "version": "1.0.0",
   "description": "Model Context Protocol server to allow for reading and writing from Pinecone. Rudimentary RAG",
   "author": {
     "name": "sirmews"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["mcp-pinecone", "--index-name", "${user_config.index_name}", "--api-key", "${user_config.api_key}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

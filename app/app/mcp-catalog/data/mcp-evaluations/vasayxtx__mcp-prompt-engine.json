@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "vasayxtx__mcp-prompt-engine",
   "display_name": "mcp-prompt-engine",
-  "version": "1.0.0",
   "description": "MCP Prompt Engine",
   "author": {
     "name": "vasayxtx"
@@ -10,7 +8,8 @@
   "server": {
     "command": "mcp-prompt-engine",
     "args": ["serve", "--prompts", "${__dirname}/prompts"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mbailey__voice-mcp",
   "display_name": "voice-mcp",
-  "version": "1.0.0",
   "description": "Voice Mode for Claude Code",
   "author": {
     "name": "mbailey"
@@ -12,7 +10,8 @@
     "args": ["voice-mode"],
     "env": {
       "OPENAI_API_KEY": "${user_config.openai_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "vectorize-io__vectorize-mcp-server",
   "display_name": "vectorize-mcp-server",
-  "version": "1.0.0",
   "description": "Official Vectorize MCP Server",
   "author": {
     "name": "vectorize-io"
@@ -14,7 +12,8 @@
       "VECTORIZE_ORG_ID": "${user_config.org_id}",
       "VECTORIZE_TOKEN": "${user_config.token}",
       "VECTORIZE_PIPELINE_ID": "${user_config.pipeline_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

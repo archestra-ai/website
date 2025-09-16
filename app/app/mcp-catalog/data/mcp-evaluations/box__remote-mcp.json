@@ -1,10 +1,7 @@
 {
   "name": "box__remote-mcp",
   "display_name": "Box MCP",
-  "version": "1.0.0",
   "description": "Remote MCP server for Box - cloud content management and file sharing",
-  "remote_url": "https://mcp.box.com/",
-  "remote_mcp_docs_url": "https://box.dev/guides/box-mcp/remote/",
   "oauth_config": {
     "name": "Box MCP",
     "server_url": "https://mcp.box.com/",
@@ -33,13 +30,14 @@
   "last_scraped_at": "2025-09-05T19:30:23.066Z",
   "evaluation_model": null,
   "raw_dependencies": null,
-  "dxt_version": "0.1.0",
   "author": {
     "name": "box"
   },
   "server": {
-    "command": "remote",
-    "args": [],
-    "env": {}
-  }
+    "type": "remote",
+    "url": "https://mcp.box.com/",
+    "docs_url": "https://box.dev/guides/box-mcp/remote/"
+  },
+  "github_info": null,
+  "programming_language": null
 }

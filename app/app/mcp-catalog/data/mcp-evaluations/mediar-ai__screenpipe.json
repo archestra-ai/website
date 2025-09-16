@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mediar-ai__screenpipe",
   "display_name": "screenpipe",
-  "version": "1.0.0",
   "description": "AI app store powered by 24/7 desktop history.  open source | 100% local | dev friendly | 24/7 screen, mic recording",
   "author": {
     "name": "mediar-ai"
@@ -10,7 +8,8 @@
   "server": {
     "command": "screenpipe",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

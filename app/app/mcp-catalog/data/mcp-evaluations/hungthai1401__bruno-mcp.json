@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hungthai1401__bruno-mcp",
   "display_name": "bruno-mcp",
-  "version": "1.0.0",
   "description": "MCP Server for running Bruno Collections",
   "author": {
     "name": "hungthai1401"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "bruno-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

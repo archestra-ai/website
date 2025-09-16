@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "imprvhub__mcp-claude-spotify",
   "display_name": "mcp-claude-spotify",
-  "version": "1.0.0",
   "description": "An integration that allows Claude Desktop to interact with Spotify using the Model Context Protocol (MCP).",
   "author": {
     "name": "imprvhub"
@@ -13,7 +11,8 @@
     "env": {
       "SPOTIFY_CLIENT_ID": "${user_config.spotify_client_id}",
       "SPOTIFY_CLIENT_SECRET": "${user_config.spotify_client_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

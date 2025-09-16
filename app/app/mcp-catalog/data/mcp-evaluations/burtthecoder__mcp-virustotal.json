@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "burtthecoder__mcp-virustotal",
   "display_name": "mcp-virustotal",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server for querying the VirusTotal API.",
   "author": {
     "name": "BurtTheCoder"
@@ -12,7 +10,8 @@
     "args": ["--experimental-modules", "${__dirname}/build/index.js"],
     "env": {
       "VIRUSTOTAL_API_KEY": "${user_config.virustotal_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

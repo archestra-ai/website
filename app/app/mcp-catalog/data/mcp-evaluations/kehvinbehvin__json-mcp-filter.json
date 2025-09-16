@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kehvinbehvin__json-mcp-filter",
   "display_name": "json-mcp-filter",
-  "version": "1.0.0",
   "description": "JSON MCP server to filter only relevant data for your LLM",
   "author": {
     "name": "kehvinbehvin"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "json-mcp-filter@latest"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

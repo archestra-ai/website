@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "harry-027__jotdown",
   "display_name": "JotDown",
-  "version": "1.0.0",
   "description": "An MCP Server in Rust for creating Notion pages & mdBooks with LLMs 🦀",
   "author": {
     "name": "Harry-027"
@@ -12,7 +10,8 @@
     "args": [],
     "env": {
       "NOTION_TOKEN": "${user_config.notion_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

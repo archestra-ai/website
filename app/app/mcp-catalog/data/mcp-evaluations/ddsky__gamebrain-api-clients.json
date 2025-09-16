@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ddsky__gamebrain-api-clients",
   "display_name": "gamebrain-api-clients",
-  "version": "1.0.0",
   "description": "MCP server from ddsky/gamebrain-api-clients",
   "author": {
     "name": "ddsky"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "mcp-remote", "https://api.gamebrain.co/v1/mcp?api-key=${user_config.api_key}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "olalonde__mcp-human",
   "display_name": "mcp-human",
-  "version": "1.0.0",
   "description": "Human Assistance for AI Assistants",
   "author": {
     "name": "olalonde"
@@ -10,7 +8,8 @@
   "server": {
     "command": "unknown",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

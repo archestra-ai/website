@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "rishijatia__fantasy-pl-mcp",
   "display_name": "fantasy-pl-mcp",
-  "version": "1.0.0",
   "description": "Fantasy Premier League MCP Server",
   "author": {
     "name": "rishijatia"
@@ -14,7 +12,8 @@
       "FPL_EMAIL": "${user_config.fpl_email}",
       "FPL_PASSWORD": "${user_config.fpl_password}",
       "FPL_TEAM_ID": "${user_config.fpl_team_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

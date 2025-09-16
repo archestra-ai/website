@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ihor-sokoliuk__mcp-searxng",
   "display_name": "mcp-searxng",
-  "version": "1.0.0",
   "description": "MCP Server for SearXNG",
   "author": {
     "name": "ihor-sokoliuk"
@@ -14,7 +12,8 @@
       "SEARXNG_URL": "${user_config.searxng_url}",
       "AUTH_USERNAME": "${user_config.auth_username}",
       "AUTH_PASSWORD": "${user_config.auth_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

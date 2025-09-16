@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kaiyuanxiaobing__atomgit-mcp-server",
   "display_name": "atomgit-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from kaiyuanxiaobing/atomgit-mcp-server",
   "author": {
     "name": "kaiyuanxiaobing"
@@ -12,7 +10,8 @@
     "args": ["-y", "atomgit-mcp-server@latest"],
     "env": {
       "ATOMGIT_PERSONAL_ACCESS_TOKEN": "${user_config.atomgit_personal_access_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

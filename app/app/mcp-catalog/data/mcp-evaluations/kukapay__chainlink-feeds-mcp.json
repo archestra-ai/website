@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__chainlink-feeds-mcp",
   "display_name": "chainlink-feeds-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that provides real-time access to Chainlink's decentralized on-chain price feeds.",
   "author": {
     "name": "kukapay"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/index.js"],
     "env": {
       "INFURA_API_KEY": "${user_config.infura_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

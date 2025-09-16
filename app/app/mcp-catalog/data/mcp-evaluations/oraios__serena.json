@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "oraios__serena",
   "display_name": "serena",
-  "version": "1.0.0",
   "description": "A powerful coding agent toolkit providing semantic retrieval and editing capabilities (MCP server & other integrations)",
   "author": {
     "name": "oraios"
@@ -30,7 +28,8 @@
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
       "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
       "SERENA_DISABLE_INDEXING": "${user_config.disable_indexing}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

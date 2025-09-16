@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "getalby__nwc-mcp-server",
   "display_name": "nwc-mcp-server",
-  "version": "1.0.0",
   "description": "Connect a bitcoin lightning wallet to your LLM using Nostr Wallet Connect and Model Context Protocol",
   "author": {
     "name": "getalby"
@@ -13,7 +11,8 @@
     "env": {
       "NWC_CONNECTION_STRING": "${user_config.nwc_connection_string}",
       "MODE": "${user_config.mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

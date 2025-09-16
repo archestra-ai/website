@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__opcua-mcp",
   "display_name": "opcua-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that connects to OPC UA-enabled industrial systems.",
   "author": {
     "name": "kukapay"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/main.py"],
     "env": {
       "OPCUA_SERVER_URL": "${user_config.opcua_server_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

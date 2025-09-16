@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "apify__actors-mcp-server",
   "display_name": "actors-mcp-server",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) Server for Apify's Actors",
   "author": {
     "name": "apify"
@@ -12,7 +10,8 @@
     "args": ["-y", "@apify/actors-mcp-server"],
     "env": {
       "APIFY_TOKEN": "${user_config.apify_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

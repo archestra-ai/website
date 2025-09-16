@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "codex-data__codex-mcp",
-  "display_name": "codex-mcp",
-  "version": "1.0.0",
+  "display_name": "Codex",
   "description": "A Model Context Protocol server for the Codex API",
   "author": {
     "name": "Codex-Data"
@@ -12,7 +10,8 @@
     "args": ["-y", "@codex-data/codex-mcp"],
     "env": {
       "CODEX_API_KEY": "${user_config.codex_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

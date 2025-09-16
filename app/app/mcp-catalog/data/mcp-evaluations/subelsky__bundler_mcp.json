@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "subelsky__bundler_mcp",
   "display_name": "bundler_mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server enabling AI agents to query information about gems in a Ruby project's Gemfile, including source code and metadata.",
   "author": {
     "name": "subelsky"
@@ -13,7 +11,8 @@
     "env": {
       "BUNDLE_GEMFILE": "${user_config.bundle_gemfile}",
       "BUNDLER_MCP_LOG_FILE": "${user_config.bundler_mcp_log_file}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

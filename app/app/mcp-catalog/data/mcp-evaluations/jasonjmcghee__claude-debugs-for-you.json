@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jasonjmcghee__claude-debugs-for-you",
   "display_name": "claude-debugs-for-you",
-  "version": "1.0.0",
   "description": "Enable any LLM (e.g. Claude) to interactively debug any language for you via MCP and a VS Code Extension",
   "author": {
     "name": "jasonjmcghee"
@@ -10,7 +8,8 @@
   "server": {
     "command": "node",
     "args": ["${__dirname}/mcp-debug.js"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

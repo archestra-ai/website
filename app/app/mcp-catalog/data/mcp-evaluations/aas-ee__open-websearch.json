@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "aas-ee__open-websearch",
   "display_name": "open-webSearch",
-  "version": "1.0.0",
   "description": "Web search mcp using free multi-engine search (NO API KEYS REQUIRED) — Supports Bing, Baidu, DuckDuckGo, Brave, Exa, Github, Juejin and CSDN.",
   "author": {
     "name": "Aas-ee"
@@ -17,7 +15,8 @@
       "USE_PROXY": "${user_config.use_proxy}",
       "PROXY_URL": "${user_config.proxy_url}",
       "PORT": "${user_config.port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

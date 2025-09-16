@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "marcelmarais__spotify-mcp-server",
   "display_name": "spotify-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from marcelmarais/spotify-mcp-server",
   "author": {
     "name": "marcelmarais"
@@ -16,7 +14,8 @@
       "SPOTIPY_REDIRECT_URI": "${user_config.spotipy_redirect_uri}",
       "SPOTIPY_SCOPE": "${user_config.spotipy_scope}",
       "SPOTIPY_CACHE_PATH": "${user_config.spotipy_cache_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

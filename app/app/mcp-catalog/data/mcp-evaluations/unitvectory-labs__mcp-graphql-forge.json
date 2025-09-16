@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "unitvectory-labs__mcp-graphql-forge",
   "display_name": "mcp-graphql-forge",
-  "version": "1.0.0",
   "description": "A lightweight, configuration-driven MCP server that exposes curated GraphQL queries as modular tools, enabling intentional API interactions from your agents.",
   "author": {
     "name": "UnitVectorY-Labs"
@@ -13,7 +11,8 @@
     "env": {
       "FORGE_CONFIG": "${user_config.forge_config}",
       "FORGE_DEBUG": "${user_config.forge_debug}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

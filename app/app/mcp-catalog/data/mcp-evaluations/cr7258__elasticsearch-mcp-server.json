@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "cr7258__elasticsearch-mcp-server",
   "display_name": "elasticsearch-mcp-server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server implementation that provides Elasticsearch and OpenSearch interaction.",
   "author": {
     "name": "cr7258"
@@ -14,7 +12,8 @@
       "ELASTICSEARCH_HOSTS": "${user_config.elasticsearch_hosts}",
       "ELASTICSEARCH_USERNAME": "${user_config.elasticsearch_username}",
       "ELASTICSEARCH_PASSWORD": "${user_config.elasticsearch_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

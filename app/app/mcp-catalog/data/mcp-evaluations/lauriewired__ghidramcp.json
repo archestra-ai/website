@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "lauriewired__ghidramcp",
   "display_name": "GhidraMCP",
-  "version": "1.0.0",
   "description": "MCP Server for Ghidra",
   "author": {
     "name": "LaurieWired"
@@ -20,7 +18,8 @@
       "--ghidra-server",
       "${user_config.ghidra_server}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

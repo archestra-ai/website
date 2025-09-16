@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "atomicchonk__roadrecon_mcp_server",
   "display_name": "roadrecon_mcp_server",
-  "version": "1.0.0",
   "description": "Claude MCP server to perform analysis on ROADrecon data",
   "author": {
     "name": "atomicchonk"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/roadrecon_mcp_server.py"],
     "env": {
       "ROADRECON_URL": "${user_config.roadrecon_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

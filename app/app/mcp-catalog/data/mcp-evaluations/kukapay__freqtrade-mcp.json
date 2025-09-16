@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__freqtrade-mcp",
   "display_name": "freqtrade-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that integrates with the Freqtrade cryptocurrency trading bot.",
   "author": {
     "name": "kukapay"
@@ -14,7 +12,8 @@
       "FREQTRADE_API_URL": "${user_config.freqtrade_api_url}",
       "FREQTRADE_USERNAME": "${user_config.freqtrade_username}",
       "FREQTRADE_PASSWORD": "${user_config.freqtrade_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

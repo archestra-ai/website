@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gwbischof__free-will-mcp",
   "display_name": "free-will-mcp",
-  "version": "1.0.0",
   "description": "This was a fun project to explore what an AI would do with the ability to give itself prompts, ignore user requests, and wake itself up at a later time.",
   "author": {
     "name": "gwbischof"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["--from", "git+https://github.com/gwbischof/free-will-mcp@v0.3", "free-will-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

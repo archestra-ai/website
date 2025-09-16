@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "roychri__mcp-server-asana",
   "display_name": "mcp-server-asana",
-  "version": "1.0.0",
   "description": "MCP server from roychri/mcp-server-asana",
   "author": {
     "name": "roychri"
@@ -13,7 +11,8 @@
     "env": {
       "ASANA_ACCESS_TOKEN": "${user_config.asana_access_token}",
       "READ_ONLY_MODE": "${user_config.read_only_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

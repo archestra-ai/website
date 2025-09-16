@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "automata-labs-team__mcp-server-playwright",
-  "display_name": "MCP-Server-Playwright",
-  "version": "1.0.0",
+  "display_name": "Playwright Browser Automation",
   "description": "MCP server for browser automation using Playwright",
   "author": {
     "name": "Automata-Labs-team"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@automatalabs/mcp-server-playwright"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

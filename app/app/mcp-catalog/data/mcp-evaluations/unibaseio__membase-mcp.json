@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "unibaseio__membase-mcp",
   "display_name": "membase-mcp",
-  "version": "1.0.0",
   "description": "A lightweight decentralized memory gateway that connects AI agents to Membase for persistent, verifiable multi-session memory.",
   "author": {
     "name": "unibaseio"
@@ -14,7 +12,8 @@
       "MEMBASE_ACCOUNT": "${user_config.membase_account}",
       "MEMBASE_CONVERSATION_ID": "${user_config.membase_conversation_id}",
       "MEMBASE_ID": "${user_config.membase_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

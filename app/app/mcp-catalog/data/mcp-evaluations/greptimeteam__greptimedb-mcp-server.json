@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "greptimeteam__greptimedb-mcp-server",
   "display_name": "greptimedb-mcp-server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server implementation for GreptimeDB",
   "author": {
     "name": "GreptimeTeam"
@@ -17,7 +15,8 @@
       "GREPTIMEDB_PASSWORD": "${user_config.greptimedb_password}",
       "GREPTIMEDB_DATABASE": "${user_config.greptimedb_database}",
       "GREPTIMEDB_TIMEZONE": "${user_config.greptimedb_timezone}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

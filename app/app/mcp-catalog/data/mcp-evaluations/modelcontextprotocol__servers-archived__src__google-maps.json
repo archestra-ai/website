@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "modelcontextprotocol__servers-archived__src__google-maps",
   "display_name": "google-maps",
-  "version": "1.0.0",
   "description": "Reference MCP servers that are no longer maintained",
   "author": {
     "name": "modelcontextprotocol"
@@ -12,7 +10,8 @@
     "args": ["-y", "@modelcontextprotocol/server-google-maps"],
     "env": {
       "GOOGLE_MAPS_API_KEY": "${user_config.google_maps_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

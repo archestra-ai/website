@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "devflowinc__trieve__clients__mcp-server",
-  "display_name": "mcp-server",
-  "version": "1.0.0",
+  "display_name": "Trieve",
   "description": "All-in-one platform for search, recommendations, RAG, and analytics offered via API",
   "author": {
     "name": "devflowinc"
@@ -14,7 +12,8 @@
       "TRIEVE_API_KEY": "${user_config.trieve_api_key}",
       "TRIEVE_ORGANIZATION_ID": "${user_config.trieve_organization_id}",
       "TRIEVE_DATASET_ID": "${user_config.trieve_dataset_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

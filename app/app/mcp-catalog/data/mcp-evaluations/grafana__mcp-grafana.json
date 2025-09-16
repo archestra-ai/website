@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "grafana__mcp-grafana",
   "display_name": "mcp-grafana",
-  "version": "1.0.0",
   "description": "MCP server for Grafana",
   "author": {
     "name": "grafana"
@@ -15,7 +13,8 @@
       "--disable-navigation",
       "${user_config.disable_navigation}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

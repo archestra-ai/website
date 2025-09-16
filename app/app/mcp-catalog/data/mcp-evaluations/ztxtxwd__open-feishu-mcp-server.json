@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ztxtxwd__open-feishu-mcp-server",
   "display_name": "open-feishu-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from ztxtxwd/open-feishu-mcp-server",
   "author": {
     "name": "ztxtxwd"
@@ -14,7 +12,8 @@
       "FEISHU_APP_ID": "${user_config.feishu_app_id}",
       "FEISHU_APP_SECRET": "${user_config.feishu_app_secret}",
       "COOKIE_ENCRYPTION_KEY": "${user_config.cookie_encryption_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

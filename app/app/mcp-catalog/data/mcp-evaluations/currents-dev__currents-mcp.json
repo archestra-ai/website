@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "currents-dev__currents-mcp",
   "display_name": "currents-mcp",
-  "version": "1.0.0",
   "description": "Currents MCP Server",
   "author": {
     "name": "currents-dev"
@@ -12,7 +10,8 @@
     "args": ["-y", "@currents/mcp"],
     "env": {
       "CURRENTS_API_KEY": "${user_config.currents_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

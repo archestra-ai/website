@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ks-gen-ai__jira-mcp-server",
   "display_name": "jira-mcp-server",
-  "version": "1.0.0",
   "description": "A test of jira mcp server",
   "author": {
     "name": "KS-GEN-AI"
@@ -14,7 +12,8 @@
       "JIRA_URL": "${user_config.jira_url}",
       "JIRA_API_MAIL": "${user_config.jira_api_mail}",
       "JIRA_API_KEY": "${user_config.jira_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

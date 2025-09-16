@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "artmann__package-registry-mcp",
-  "display_name": "package-registry-mcp",
-  "version": "1.0.0",
+  "display_name": "Package Registry",
   "description": "MCP server for searching and getting up-to-date information about NPM, Cargo, PyPi, and NuGet packages.",
   "author": {
     "name": "artmann"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "package-registry-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

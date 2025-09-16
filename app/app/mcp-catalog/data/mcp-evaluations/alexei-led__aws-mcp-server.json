@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "alexei-led__aws-mcp-server",
   "display_name": "aws-mcp-server",
-  "version": "1.0.0",
   "description": "A lightweight service that enables AI assistants to execute AWS CLI commands (in safe containerized environment) through the Model Context Protocol (MCP). Bridges Claude, Cursor, and other MCP-aware AI tools with AWS CLI for enhanced cloud infrastructure management.",
   "author": {
     "name": "alexei-led"
@@ -18,7 +16,8 @@
       "AWS_REGION": "${user_config.aws_region}",
       "AWS_MCP_SECURITY_MODE": "${user_config.aws_mcp_security_mode}",
       "AWS_MCP_SECURITY_CONFIG": "${user_config.aws_mcp_security_config}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

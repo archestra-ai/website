@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ergut__mcp-bigquery-server",
   "display_name": "mcp-bigquery-server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that provides secure, read-only access to BigQuery datasets. Enables Large Language Models (LLMs) to safely query and analyze data through a standardized interface.",
   "author": {
     "name": "ergut"
@@ -19,7 +17,8 @@
       "--key-file",
       "${user_config.key_file}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

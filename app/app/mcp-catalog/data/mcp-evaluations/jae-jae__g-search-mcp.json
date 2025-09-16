@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jae-jae__g-search-mcp",
   "display_name": "g-search-mcp",
-  "version": "1.0.0",
   "description": "A powerful MCP server for Google search that enables parallel searching with multiple keywords simultaneously.",
   "author": {
     "name": "jae-jae"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "g-search-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

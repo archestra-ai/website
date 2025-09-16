@@ -1,10 +1,7 @@
 {
   "name": "monday__remote-mcp",
   "display_name": "Monday.com MCP",
-  "version": "1.0.0",
   "description": "Remote MCP server for Monday.com - work operating system for teams",
-  "remote_url": "https://mcp.monday.com/sse",
-  "remote_mcp_docs_url": "https://developer.monday.com/apps/docs/mondaycom-mcp-integration",
   "oauth_config": {
     "name": "Monday.com MCP",
     "server_url": "https://mcp.monday.com/sse",
@@ -33,13 +30,14 @@
   "last_scraped_at": "2025-09-05T19:30:23.066Z",
   "evaluation_model": null,
   "raw_dependencies": null,
-  "dxt_version": "0.1.0",
   "author": {
     "name": "monday"
   },
   "server": {
-    "command": "remote",
-    "args": [],
-    "env": {}
-  }
+    "type": "remote",
+    "url": "https://mcp.monday.com/sse",
+    "docs_url": "https://developer.monday.com/apps/docs/mondaycom-mcp-integration"
+  },
+  "github_info": null,
+  "programming_language": null
 }

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sooperset__mcp-atlassian",
   "display_name": "mcp-atlassian",
-  "version": "1.0.0",
   "description": "MCP server for Atlassian tools (Confluence, Jira)",
   "author": {
     "name": "sooperset"
@@ -76,7 +74,8 @@
       "MCP_VERBOSE": "${user_config.mcp_verbose}",
       "MCP_LOGGING_STDOUT": "${user_config.mcp_logging_stdout}",
       "ENABLED_TOOLS": "${user_config.enabled_tools}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

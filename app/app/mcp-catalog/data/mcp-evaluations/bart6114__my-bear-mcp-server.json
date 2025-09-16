@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "bart6114__my-bear-mcp-server",
   "display_name": "my-bear-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from bart6114/my-bear-mcp-server",
   "author": {
     "name": "bart6114"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "github:bart6114/my-bear-mcp-server", "--db-path", "${user_config.db_path}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

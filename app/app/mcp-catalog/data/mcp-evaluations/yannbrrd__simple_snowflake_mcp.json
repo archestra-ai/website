@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "yannbrrd__simple_snowflake_mcp",
   "display_name": "simple_snowflake_mcp",
-  "version": "1.0.0",
   "description": "MCP server from YannBrrd/simple_snowflake_mcp",
   "author": {
     "name": "YannBrrd"
@@ -18,7 +16,8 @@
       "SNOWFLAKE_DATABASE": "${user_config.snowflake_database}",
       "SNOWFLAKE_SCHEMA": "${user_config.snowflake_schema}",
       "MCP_READ_ONLY": "${user_config.mcp_read_only}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

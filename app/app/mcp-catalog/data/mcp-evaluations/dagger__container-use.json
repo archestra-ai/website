@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "dagger__container-use",
   "display_name": "container-use",
-  "version": "1.0.0",
   "description": "Development environments for coding agents. Enable multiple agents to work safely and independently with your preferred stack.",
   "author": {
     "name": "dagger"
@@ -10,7 +8,8 @@
   "server": {
     "command": "container-use",
     "args": ["stdio"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

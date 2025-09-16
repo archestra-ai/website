@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "githejie__mcp-server-calculator",
   "display_name": "mcp-server-calculator",
-  "version": "1.0.0",
   "description": "A Model Context Protocol server for calculating.",
   "author": {
     "name": "githejie"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["mcp-server-calculator"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

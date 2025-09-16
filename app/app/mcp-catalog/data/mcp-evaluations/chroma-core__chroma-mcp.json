@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "chroma-core__chroma-mcp",
   "display_name": "chroma-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server implementation that provides database capabilities for Chroma",
   "author": {
     "name": "chroma-core"
@@ -26,7 +24,8 @@
       "CHROMA_JINA_API_KEY": "${user_config.chroma_jina_api_key}",
       "CHROMA_VOYAGEAI_API_KEY": "${user_config.chroma_voyageai_api_key}",
       "CHROMA_ROBOFLOW_API_KEY": "${user_config.chroma_roboflow_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

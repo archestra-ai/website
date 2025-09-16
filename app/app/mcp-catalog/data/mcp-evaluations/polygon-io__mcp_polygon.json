@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "polygon-io__mcp_polygon",
   "display_name": "mcp_polygon",
-  "version": "1.0.0",
   "description": "An MCP server for Polygon.io Financial Market Data",
   "author": {
     "name": "polygon-io"
@@ -14,7 +12,8 @@
       "POLYGON_API_KEY": "${user_config.polygon_api_key}",
       "HOME": "${user_config.home}",
       "MCP_TRANSPORT": "${user_config.mcp_transport}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

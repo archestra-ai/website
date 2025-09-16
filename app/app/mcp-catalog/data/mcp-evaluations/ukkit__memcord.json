@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ukkit__memcord",
   "display_name": "memcord",
-  "version": "1.0.0",
   "description": "🧠 AI Memory Management for Claude Desktop. Save, search & organize chat history with intelligent   summarization. MCP server.",
   "author": {
     "name": "ukkit"
@@ -12,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "memcord"],
     "env": {
       "PYTHONPATH": "${user_config.pythonpath}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

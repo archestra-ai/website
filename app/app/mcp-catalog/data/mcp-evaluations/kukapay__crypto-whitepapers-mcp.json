@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__crypto-whitepapers-mcp",
   "display_name": "crypto-whitepapers-mcp",
-  "version": "1.0.0",
   "description": "An MCP server serving as a structured knowledge base of crypto whitepapers.",
   "author": {
     "name": "kukapay"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uv",
     "args": ["--directory", "${__dirname}", "run", "crypto-whitepapers-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

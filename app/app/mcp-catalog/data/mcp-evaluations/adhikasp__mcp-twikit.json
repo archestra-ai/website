@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "adhikasp__mcp-twikit",
   "display_name": "mcp-twikit",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server for interacting with Twitter.",
   "author": {
     "name": "adhikasp"
@@ -14,7 +12,8 @@
       "TWITTER_USERNAME": "${user_config.twitter_username}",
       "TWITTER_EMAIL": "${user_config.twitter_email}",
       "TWITTER_PASSWORD": "${user_config.twitter_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

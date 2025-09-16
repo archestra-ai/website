@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tradercjz__dolphindb-mcp-server",
   "display_name": "dolphindb-mcp-server",
-  "version": "1.0.0",
   "description": "dolphindb-mcp-server",
   "author": {
     "name": "tradercjz"
@@ -15,7 +13,8 @@
       "DDB_PORT": "${user_config.ddb_port}",
       "DDB_USER": "${user_config.ddb_user}",
       "DDB_PASSWD": "${user_config.ddb_passwd}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

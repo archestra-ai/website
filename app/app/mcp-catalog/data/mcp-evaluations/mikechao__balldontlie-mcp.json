@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mikechao__balldontlie-mcp",
   "display_name": "balldontlie-mcp",
-  "version": "1.0.0",
   "description": "An MCP Server implementation that integrates the Balldontlie API, to provide information about players, teams and games for the NBA, NFL and MLB",
   "author": {
     "name": "mikechao"
@@ -12,7 +10,8 @@
     "args": ["-y", "balldontlie-mcp"],
     "env": {
       "BALLDONTLIE_API_KEY": "${user_config.balldontlie_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

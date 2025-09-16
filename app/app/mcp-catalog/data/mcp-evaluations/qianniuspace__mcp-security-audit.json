@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "qianniuspace__mcp-security-audit",
   "display_name": "mcp-security-audit",
-  "version": "1.0.0",
   "description": "A powerful MCP (Model Context Protocol) Server that audits npm package dependencies for security vulnerabilities. Built with remote npm registry integration for real-time security checks.",
   "author": {
     "name": "qianniuspace"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "mcp-security-audit"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

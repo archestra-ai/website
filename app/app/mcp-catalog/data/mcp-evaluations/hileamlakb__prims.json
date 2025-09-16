@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hileamlakb__prims",
   "display_name": "PRIMS",
-  "version": "1.0.0",
   "description": "PRIMS is a lightweight, open-source Model Context Protocol (MCP) server that lets LLM agents safely execute arbitrary Python code in a secure, throw-away sandbox.",
   "author": {
     "name": "hileamlakB"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["-m", "server.main"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

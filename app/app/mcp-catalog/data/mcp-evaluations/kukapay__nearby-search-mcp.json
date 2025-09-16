@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__nearby-search-mcp",
   "display_name": "nearby-search-mcp",
-  "version": "1.0.0",
   "description": "An MCP server for nearby place searches with IP-based location detection.",
   "author": {
     "name": "kukapay"
@@ -12,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "main.py"],
     "env": {
       "GOOGLE_API_KEY": "${user_config.google_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

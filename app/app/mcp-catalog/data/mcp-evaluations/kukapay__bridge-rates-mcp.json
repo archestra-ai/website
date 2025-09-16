@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__bridge-rates-mcp",
   "display_name": "bridge-rates-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that delivers real-time cross-chain bridge rates and optimal transfer routes to  onchain AI agents.",
   "author": {
     "name": "kukapay"
@@ -10,7 +8,8 @@
   "server": {
     "command": "node",
     "args": ["${__dirname}/index.js"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

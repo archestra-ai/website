@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "prisma__mcp",
   "display_name": "mcp",
-  "version": "1.0.0",
   "description": "MCP server from prisma/mcp",
   "author": {
     "name": "prisma"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "prisma", "mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sdglbl__mcp-claude-code",
   "display_name": "mcp-claude-code",
-  "version": "1.0.0",
   "description": "MCP implementation of Claude Code capabilities and more",
   "author": {
     "name": "SDGLBL"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/server/main.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

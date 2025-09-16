@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "intentos-labs__beeper-mcp",
   "display_name": "beeper-mcp",
-  "version": "1.0.0",
   "description": "A backend service for executing beeper transactions on Binance Smart Chain",
   "author": {
     "name": "intentos-labs"
@@ -15,7 +13,8 @@
       "BEEPER_ACCOUNT": "${user_config.beeper_account}",
       "BEEPER_SECRET_KEY": "${user_config.beeper_secret_key}",
       "BEEPER_TARGET_TOKEN": "${user_config.beeper_target_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

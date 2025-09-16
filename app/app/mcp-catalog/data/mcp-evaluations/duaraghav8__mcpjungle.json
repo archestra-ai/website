@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "duaraghav8__mcpjungle",
   "display_name": "MCPJungle",
-  "version": "1.0.0",
   "description": "Self-hosted MCP Registry + Gateway for AI agents",
   "author": {
     "name": "duaraghav8"
@@ -12,7 +10,8 @@
     "args": ["start"],
     "env": {
       "DATABASE_URL": "${user_config.database_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

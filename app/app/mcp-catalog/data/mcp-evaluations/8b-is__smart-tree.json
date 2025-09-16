@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "8b-is__smart-tree",
   "display_name": "smart-tree",
-  "version": "1.0.0",
   "description": "  A blazingly fast, context-aware directory tree tool co-created by human and AI for optimal information density across multiple output formats. Smart Tree bridges the gap between human readability and AI token   efficiency, providing fixed-width formats for parsing, ultra-compact modes for bandwidth optimization, and AI-specific formats.  HEX MODE",
   "author": {
     "name": "8b-is"
@@ -12,7 +10,8 @@
     "args": ["--mcp"],
     "env": {
       "AI_TOOLS": "${user_config.ai_tools}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

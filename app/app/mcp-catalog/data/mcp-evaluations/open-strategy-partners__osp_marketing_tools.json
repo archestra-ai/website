@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "open-strategy-partners__osp_marketing_tools",
   "display_name": "osp_marketing_tools",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that empowers LLMs to use some of Open Srategy Partners' core writing and product marketing techniques.",
   "author": {
     "name": "open-strategy-partners"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["--from", "git+https://github.com/open-strategy-partners/osp_marketing_tools@main", "osp_marketing_tools"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

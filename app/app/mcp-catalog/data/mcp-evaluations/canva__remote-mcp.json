@@ -1,10 +1,7 @@
 {
   "name": "canva__remote-mcp",
-  "display_name": "Canva MCP",
-  "version": "1.0.0",
+  "display_name": "Canva",
   "description": "Remote MCP server for Canva - graphic design and visual content creation",
-  "remote_url": "https://mcp.canva.com/mcp",
-  "remote_mcp_docs_url": "https://www.canva.dev/docs/connect/canva-mcp-server-setup/",
   "oauth_config": {
     "name": "Canva MCP",
     "server_url": "https://mcp.canva.com/mcp",
@@ -33,13 +30,14 @@
   "last_scraped_at": "2025-09-05T19:30:23.066Z",
   "evaluation_model": null,
   "raw_dependencies": null,
-  "dxt_version": "0.1.0",
   "author": {
     "name": "canva"
   },
   "server": {
-    "command": "remote",
-    "args": [],
-    "env": {}
-  }
+    "type": "remote",
+    "url": "https://mcp.canva.com/mcp",
+    "docs_url": "https://www.canva.dev/docs/connect/canva-mcp-server-setup/"
+  },
+  "github_info": null,
+  "programming_language": null
 }

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "integromat__make-mcp-server",
   "display_name": "make-mcp-server",
-  "version": "1.0.0",
   "description": "Make MCP Server",
   "author": {
     "name": "integromat"
@@ -14,7 +12,8 @@
       "MAKE_API_KEY": "${user_config.make_api_key}",
       "MAKE_ZONE": "${user_config.make_zone}",
       "MAKE_TEAM": "${user_config.make_team}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

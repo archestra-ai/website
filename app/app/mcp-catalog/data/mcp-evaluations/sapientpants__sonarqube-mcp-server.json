@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sapientpants__sonarqube-mcp-server",
   "display_name": "sonarqube-mcp-server",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) server for SonarQube",
   "author": {
     "name": "sapientpants"
@@ -17,7 +15,8 @@
       "SONARQUBE_USERNAME": "${user_config.sonarqube_username}",
       "SONARQUBE_PASSWORD": "${user_config.sonarqube_password}",
       "SONARQUBE_PASSCODE": "${user_config.sonarqube_passcode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

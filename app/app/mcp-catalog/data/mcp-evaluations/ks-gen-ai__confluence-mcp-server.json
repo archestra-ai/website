@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ks-gen-ai__confluence-mcp-server",
   "display_name": "confluence-mcp-server",
-  "version": "1.0.0",
   "description": "A test of confluence mcp server",
   "author": {
     "name": "KS-GEN-AI"
@@ -14,7 +12,8 @@
       "CONFLUENCE_URL": "${user_config.confluence_url}",
       "CONFLUENCE_API_MAIL": "${user_config.confluence_api_mail}",
       "CONFLUENCE_API_KEY": "${user_config.confluence_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

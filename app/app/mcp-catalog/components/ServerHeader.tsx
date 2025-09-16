@@ -10,7 +10,7 @@ const ServerHeader = ({ server }: ServerHeaderProps) => {
   const {
     display_name: serverName,
     github_info,
-    remote_url,
+    server: serverConfig,
     last_scraped_at: lastScrapedAt,
     programming_language: programmingLanguage,
     category,
@@ -45,7 +45,7 @@ const ServerHeader = ({ server }: ServerHeaderProps) => {
                 </>
               )}
             </div>
-          ) : remote_url ? (
+          ) : serverConfig.type === 'remote' ? (
             <div
               className="text-sm text-gray-500 mb-4 font-mono"
               style={{
@@ -53,7 +53,7 @@ const ServerHeader = ({ server }: ServerHeaderProps) => {
                 wordBreak: 'keep-all',
               }}
             >
-              <span className="text-blue-600">{remote_url}</span>
+              <span className="text-blue-600">{serverConfig.url}</span>
             </div>
           ) : null}
 
@@ -89,7 +89,7 @@ const ServerHeader = ({ server }: ServerHeaderProps) => {
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
-          {remote_url && !github_info ? (
+          {serverConfig.type === 'remote' && !github_info ? (
             <Badge className="bg-blue-100 text-blue-800 border-blue-200 text-xs sm:text-sm">Remote Server</Badge>
           ) : (
             <Badge variant="outline" className="text-xs sm:text-sm">

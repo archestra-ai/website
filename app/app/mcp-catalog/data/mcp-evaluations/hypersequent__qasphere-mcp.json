@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hypersequent__qasphere-mcp",
   "display_name": "qasphere-mcp",
-  "version": "1.0.0",
   "description": "MCP Server for QA Sphere TMS",
   "author": {
     "name": "Hypersequent"
@@ -13,7 +11,8 @@
     "env": {
       "QASPHERE_TENANT_URL": "${user_config.qasphere_tenant_url}",
       "QASPHERE_API_KEY": "${user_config.qasphere_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "joelio__stocky",
   "display_name": "stocky",
-  "version": "1.0.0",
   "description": "An MCP server for searching and downloading stock photography.",
   "author": {
     "name": "joelio"
@@ -13,7 +11,8 @@
     "env": {
       "PEXELS_API_KEY": "${user_config.pexels_api_key}",
       "UNSPLASH_ACCESS_KEY": "${user_config.unsplash_access_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

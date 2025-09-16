@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gitkraken__gk-cli",
   "display_name": "gk-cli",
-  "version": "1.0.0",
   "description": "GitKraken CLI Releases and Documentation",
   "author": {
     "name": "gitkraken"
@@ -10,7 +8,8 @@
   "server": {
     "command": "gk",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

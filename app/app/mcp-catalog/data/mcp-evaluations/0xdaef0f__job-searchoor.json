@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "0xdaef0f__job-searchoor",
-  "display_name": "job-searchoor",
-  "version": "1.0.0",
+  "display_name": "Job Searchoor",
   "description": "A simple MCP server that delivers you jobs based on your needs",
   "author": {
     "name": "0xDAEF0F"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "job-searchoor"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

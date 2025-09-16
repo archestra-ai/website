@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hloiseaufcms__mcp-gopls",
   "display_name": "mcp-gopls",
-  "version": "1.0.0",
   "description": "MCP server from hloiseaufcms/mcp-gopls",
   "author": {
     "name": "hloiseaufcms"
@@ -10,7 +8,8 @@
   "server": {
     "command": "mcp-gopls",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

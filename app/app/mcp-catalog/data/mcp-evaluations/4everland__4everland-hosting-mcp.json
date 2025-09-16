@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "4everland__4everland-hosting-mcp",
   "display_name": "4everland-hosting-mcp",
-  "version": "1.0.0",
   "description": "MCP server from 4everland/4everland-hosting-mcp",
   "author": {
     "name": "4everland"
@@ -12,7 +10,8 @@
     "args": ["-y", "@4everland/hosting-mcp@latest", "serve"],
     "env": {
       "TOKEN": "${user_config.token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

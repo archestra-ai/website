@@ -1,6 +1,4 @@
 {
-  "dxt_version": "1.0.0",
-  "version": "1.0.0",
   "name": "rusiaaman__wcgw__src__wcgw__client__mcp_server__readme.md",
   "display_name": "Readme.md",
   "description": "Shell and coding agent on claude desktop app",
@@ -14,7 +12,8 @@
       "CLAUDE_API_KEY": "${user_config.claude_api_key}",
       "AGENT_WORKING_DIRECTORY": "${user_config.agent_working_directory}",
       "SHELL_EXECUTABLE_PATH": "${user_config.shell_executable_path}"
-    }
+    },
+    "type": "local"
   },
   "readme": null,
   "category": "Development",

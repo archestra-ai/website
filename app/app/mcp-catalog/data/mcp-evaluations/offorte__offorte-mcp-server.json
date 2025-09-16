@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "offorte__offorte-mcp-server",
   "display_name": "offorte-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server for the Offorte API - Create & send proposals using AI",
   "author": {
     "name": "offorte"
@@ -14,7 +12,8 @@
       "OFFORTE_ACCOUNT_NAME": "${user_config.offorte_account_name}",
       "OFFORTE_API_KEY": "${user_config.offorte_api_key}",
       "TRANSPORT_TYPE": "${user_config.transport_type}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

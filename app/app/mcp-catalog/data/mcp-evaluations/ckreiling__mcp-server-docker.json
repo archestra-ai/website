@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ckreiling__mcp-server-docker",
   "display_name": "mcp-server-docker",
-  "version": "1.0.0",
   "description": "MCP server for Docker",
   "author": {
     "name": "ckreiling"
@@ -12,7 +10,8 @@
     "args": ["mcp-server-docker"],
     "env": {
       "DOCKER_HOST": "${user_config.docker_host}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

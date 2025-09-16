@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "longportapp__openapi__mcp",
   "display_name": "mcp",
-  "version": "1.0.0",
   "description": "LongPort OpenAPI SDK Base.",
   "author": {
     "name": "longportapp"
@@ -21,7 +19,8 @@
       "LONGPORT_APP_KEY": "${user_config.longport_app_key}",
       "LONGPORT_APP_SECRET": "${user_config.longport_app_secret}",
       "LONGPORT_ACCESS_TOKEN": "${user_config.longport_access_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

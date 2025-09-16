@@ -1,16 +1,15 @@
 {
-  "dxt_version": "0.1.0",
   "name": "microsoft__playwright-mcp",
   "display_name": "playwright-mcp",
-  "version": "1.0.0",
   "description": "Playwright MCP server",
   "author": {
     "name": "microsoft"
   },
   "server": {
-    "command": "node",
-    "args": ["${__dirname}/server/index.js"],
-    "env": {}
+    "command": "docker",
+    "args": ["run", "-i", "--rm", "--init", "mcr.microsoft.com/playwright/mcp"],
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],
@@ -31,7 +30,7 @@
       "provider": null,
       "required": false
     },
-    "works_in_archestra": false
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "microsoft",

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "yworks__mcp-typescribe",
   "display_name": "mcp-typescribe",
-  "version": "1.0.0",
   "description": "An MCP server implementation enabling LLMs to work with new APIs and frameworks",
   "author": {
     "name": "yWorks"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "mcp-typescribe@latest", "run-server", "${user_config.api_json_path}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

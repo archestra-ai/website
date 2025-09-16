@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tevonsb__homeassistant-mcp",
   "display_name": "homeassistant-mcp",
-  "version": "1.0.0",
   "description": "A MCP server for Home Assistant",
   "author": {
     "name": "tevonsb"
@@ -19,7 +17,8 @@
       "DEBUG": "${user_config.debug}",
       "TEST_HASS_HOST": "${user_config.test_hass_host}",
       "TEST_HASS_TOKEN": "${user_config.test_hass_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

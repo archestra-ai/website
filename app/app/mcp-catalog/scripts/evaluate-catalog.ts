@@ -733,8 +733,6 @@ function createNewMCPServer(
    * some of the data will be filled in throughout the various steps of the evaluation process in this script
    */
   return {
-    dxt_version: '1.0.0',
-    version: '1.0.0',
     name: githubInfo.name.replace(/#/g, '-'), // Sanitize # to - for filesystem compatibility
     display_name: determineMCPServerName(githubInfo),
     description: apiData.description || `MCP server from ${githubInfo.owner}/${githubInfo.repo}`,
@@ -883,15 +881,20 @@ async function extractArchestraClientConfigPermutationsConfig(
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
   // Skip if human evaluation (evaluation_model === null AND server config already exists)
-  if (server.evaluation_model === null && server.server && !force) {
+  if (
+    server.evaluation_model === null &&
+    server.server.type === 'local' &&
+    server.archestra_config?.client_config_permutations &&
+    !force
+  ) {
     console.log(`  ⏭️  Server Config: Skipped (human evaluation)`);
     return server;
   }
   // Skip if already exists and not forcing
   // Check if client_config_permutations exists AND has actual server configurations
   if (
-    server.archestra_config?.client_config_permutations?.mcpServers &&
-    Object.keys(server.archestra_config.client_config_permutations.mcpServers).length > 0 &&
+    server.archestra_config?.client_config_permutations &&
+    Object.keys(server.archestra_config.client_config_permutations).length > 0 &&
     !force
   ) {
     console.log(`  ⏭️  Server Config: Skipped (already exists)`);
@@ -1020,20 +1023,28 @@ async function extractCanonicalServerAndUserConfigConfig(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  if (server.server.command === 'unknown') {
-    console.log(`  ⏭️  Canonical Server and User Config: Evaluating as command is currently unknown`);
-  } else {
-    // Skip if human evaluation (evaluation_model === null AND configs already exist)
-    if (server.evaluation_model === null && server.server && server.user_config && !force) {
-      console.log(`  ⏭️  Canonical Server and User Config: Skipped (human evaluation)`);
-      return server;
-    }
+  const { server: serverConfig } = server;
 
-    // Skip if already exists and not forcing
-    if (server?.server && server?.user_config && !force) {
-      console.log(`  ⏭️  Canonical Server and User Config: Skipped (already exists)`);
-      return server;
+  // Check if this is a "local" based server before accessing server property
+  if (serverConfig.type === 'local') {
+    if (serverConfig.command === 'unknown') {
+      console.log(`  ⏭️  Canonical Server and User Config: Evaluating as command is currently unknown`);
+    } else {
+      // Skip if human evaluation (evaluation_model === null AND configs already exist)
+      if (server.evaluation_model === null && serverConfig && server.user_config && !force) {
+        console.log(`  ⏭️  Canonical Server and User Config: Skipped (human evaluation)`);
+        return server;
+      }
+
+      // Skip if already exists and not forcing
+      if (serverConfig && server.user_config && !force) {
+        console.log(`  ⏭️  Canonical Server and User Config: Skipped (already exists)`);
+        return server;
+      }
     }
+  } else {
+    console.log(`  ⏭️  Canonical Server and User Config: Skipped (remote server)`);
+    return server;
   }
 
   console.log(`  🔄 Canonical Server and User Config: Extracting...`);
@@ -1752,7 +1763,10 @@ async function evaluateSingleRepo(
         server = await extractArchestraOauthConfig(server, model, force);
       }
 
-      if (updateCanonicalServerAndUserConfig || (shouldUpdateMissing && (!server.server || !server.user_config))) {
+      if (
+        updateCanonicalServerAndUserConfig ||
+        (shouldUpdateMissing && (server.server.type === 'remote' || !server.user_config))
+      ) {
         server = await extractCanonicalServerAndUserConfigConfig(server, model, force);
       }
 
@@ -1791,13 +1805,12 @@ async function evaluateSingleRepo(
         server.category ||
         server.archestra_config ||
         server.user_config ||
-        server.server ||
+        server.server.type === 'local' ||
         server.dependencies ||
         server.protocol_features?.implementing_tools !== null
       ) {
         const {
           category,
-          server: server_config,
           archestra_config,
           user_config,
           protocol_features: {
@@ -1813,6 +1826,9 @@ async function evaluateSingleRepo(
           } = {},
           dependencies,
         } = server;
+
+        // Only access server property if it's a DXT-based server
+        const server_config = server.server.type === 'local' ? server.server : undefined;
 
         console.log(`\n🤖 AI Analysis:`);
 

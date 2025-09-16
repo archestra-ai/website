@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jtang613__ghidrassistmcp",
   "display_name": "GhidrAssistMCP",
-  "version": "1.0.0",
   "description": "An MCP extension for Ghidra",
   "author": {
     "name": "jtang613"
@@ -14,7 +12,8 @@
       "MCP_SERVER_HOST": "${user_config.mcp_server_host}",
       "MCP_SERVER_PORT": "${user_config.mcp_server_port}",
       "MCP_SERVER_ENABLED": "${user_config.mcp_server_enabled}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

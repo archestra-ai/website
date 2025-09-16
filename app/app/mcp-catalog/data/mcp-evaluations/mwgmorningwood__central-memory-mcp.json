@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mwgmorningwood__central-memory-mcp",
   "display_name": "Central-Memory-MCP",
-  "version": "1.0.0",
   "description": "A custom fork of @modelcontextprotocol/server-memory using Azure Functions MCP triggers and Table storage.",
   "author": {
     "name": "MWGMorningwood"
@@ -10,7 +8,8 @@
   "server": {
     "command": "func",
     "args": ["start"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

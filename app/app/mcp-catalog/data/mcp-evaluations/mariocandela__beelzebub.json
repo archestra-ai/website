@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mariocandela__beelzebub",
   "display_name": "beelzebub",
-  "version": "1.0.0",
   "description": "A secure low code honeypot framework, leveraging AI for System Virtualization.",
   "author": {
     "name": "mariocandela"
@@ -15,7 +13,8 @@
       "--confServices",
       "${__dirname}/configurations/services/"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

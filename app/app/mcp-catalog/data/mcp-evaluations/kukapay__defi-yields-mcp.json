@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__defi-yields-mcp",
   "display_name": "defi-yields-mcp",
-  "version": "1.0.0",
   "description": "An MCP server for AI agents to explore DeFi yield opportunities, powered by DefiLlama.",
   "author": {
     "name": "kukapay"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["defi-yields-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

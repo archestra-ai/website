@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "r-huijts__xcode-mcp-server",
   "display_name": "xcode-mcp-server",
-  "version": "1.0.0",
   "description": "MCP Server implementation for Xcode integration",
   "author": {
     "name": "r-huijts"
@@ -16,7 +14,8 @@
       "PORT": "${user_config.port}",
       "DEBUG": "${user_config.debug}",
       "LOG_LEVEL": "${user_config.log_level}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

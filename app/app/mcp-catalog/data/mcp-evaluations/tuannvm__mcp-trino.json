@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tuannvm__mcp-trino",
   "display_name": "mcp-trino",
-  "version": "1.0.0",
   "description": "A high-performance Model Context Protocol (MCP) server for Trino implemented in Go.",
   "author": {
     "name": "tuannvm"
@@ -16,7 +14,8 @@
       "TRINO_USER": "${user_config.trino_user}",
       "TRINO_PASSWORD": "${user_config.trino_password}",
       "TRINO_SCHEME": "${user_config.trino_scheme}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

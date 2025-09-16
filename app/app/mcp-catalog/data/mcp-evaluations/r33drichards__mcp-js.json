@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "r33drichards__mcp-js",
   "display_name": "mcp-js",
-  "version": "1.0.0",
   "description": "A Rust-based Model Context Protocol (MCP) server that exposes a V8 JavaScript runtime as a tool for AI agents like Claude and Cursor. Supports persistent heap snapshots via S3 or local filesystem, and is ready for integration with modern AI development environments.",
   "author": {
     "name": "r33drichards"
@@ -10,7 +8,8 @@
   "server": {
     "command": "/usr/local/bin/mcp-v8",
     "args": ["--s3-bucket", "${user_config.s3_bucket_name}", "--directory-path", "${user_config.directory_path}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

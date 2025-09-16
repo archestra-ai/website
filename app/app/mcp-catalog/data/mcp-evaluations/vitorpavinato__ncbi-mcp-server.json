@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "vitorpavinato__ncbi-mcp-server",
   "display_name": "ncbi-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from vitorpavinato/ncbi-mcp-server",
   "author": {
     "name": "vitorpavinato"
@@ -13,7 +11,8 @@
     "env": {
       "NCBI_EMAIL": "${user_config.ncbi_email}",
       "NCBI_API_KEY": "${user_config.ncbi_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

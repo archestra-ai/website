@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "imprvhub__mcp-domain-availability",
   "display_name": "mcp-domain-availability",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that enables Claude Desktop to check domain availability across 50+ TLDs. Features DNS/WHOIS verification, bulk checking, and smart suggestions. Zero-clone installation via uvx.",
   "author": {
     "name": "imprvhub"
@@ -15,7 +13,8 @@
       "git+https://github.com/imprvhub/mcp-domain-availability",
       "mcp-domain-availability"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

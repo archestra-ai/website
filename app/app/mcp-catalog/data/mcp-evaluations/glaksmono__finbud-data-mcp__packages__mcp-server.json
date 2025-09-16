@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "glaksmono__finbud-data-mcp__packages__mcp-server",
-  "display_name": "mcp-server",
-  "version": "1.0.0",
+  "display_name": "Finbud Data",
   "description": "AI & Developer centric financial data API",
   "author": {
     "name": "glaksmono"
@@ -13,7 +11,8 @@
     "env": {
       "FINBUD_DATA_API_KEY": "${user_config.finbud_data_api_key}",
       "FINBUD_DATA_BASE_URL": "${user_config.finbud_data_base_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

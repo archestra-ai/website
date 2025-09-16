@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pskill9__hn-server",
   "display_name": "hn-server",
-  "version": "1.0.0",
   "description": "Hacker news MCP server",
   "author": {
     "name": "pskill9"
@@ -10,7 +8,8 @@
   "server": {
     "command": "node",
     "args": ["${__dirname}/build/index.js"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

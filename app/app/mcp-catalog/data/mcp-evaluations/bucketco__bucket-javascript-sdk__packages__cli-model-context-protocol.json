@@ -1,6 +1,4 @@
 {
-  "dxt_version": "1.0.0",
-  "version": "1.0.0",
   "name": "bucketco__bucket-javascript-sdk__packages__cli-model-context-protocol",
   "display_name": "cli#model-context-protocol",
   "description": "JS/TS SDKs for Bucket.co",
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@bucketco/cli"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "readme": null,
   "category": "Development",

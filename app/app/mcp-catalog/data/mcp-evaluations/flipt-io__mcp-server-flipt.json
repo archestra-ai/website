@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "flipt-io__mcp-server-flipt",
-  "display_name": "mcp-server-flipt",
-  "version": "1.0.0",
+  "display_name": "Flipt",
   "description": "MCP server from flipt-io/mcp-server-flipt",
   "author": {
     "name": "flipt-io"
@@ -13,7 +11,8 @@
     "env": {
       "FLIPT_API_URL": "${user_config.flipt_api_url}",
       "FLIPT_API_KEY": "${user_config.flipt_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

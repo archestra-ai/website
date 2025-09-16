@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mem0ai__mem0-mcp",
   "display_name": "mem0-mcp",
-  "version": "1.0.0",
   "description": "MCP server from mem0ai/mem0-mcp",
   "author": {
     "name": "mem0ai"
@@ -12,7 +10,8 @@
     "args": ["run", "main.py", "--host", "${user_config.host}", "--port", "${user_config.port}"],
     "env": {
       "MEM0_API_KEY": "${user_config.mem0_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

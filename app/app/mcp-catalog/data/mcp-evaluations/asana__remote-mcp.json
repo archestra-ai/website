@@ -1,13 +1,10 @@
 {
   "name": "asana__remote-mcp",
   "display_name": "Asana MCP",
-  "version": "1.0.0",
   "description": "Remote MCP server for Asana - work management and team collaboration",
-  "remote_url": "https://mcp.asana.com/sse",
-  "remote_mcp_docs_url": "https://developers.asana.com/docs/using-asanas-model-control-protocol-mcp-server",
   "oauth_config": {
     "name": "Asana MCP",
-    "server_url": "https://mcp.asana.com/sse",  // sse endpoint is not supported yet
+    "server_url": "https://mcp.asana.com/sse",
     "client_id": "",
     "redirect_uris": ["http://localhost:8080/oauth/callback"],
     "scopes": ["read", "write"],
@@ -33,13 +30,14 @@
   "last_scraped_at": "2025-09-05T19:30:23.066Z",
   "evaluation_model": null,
   "raw_dependencies": null,
-  "dxt_version": "0.1.0",
   "author": {
     "name": "asana"
   },
   "server": {
-    "command": "remote",
-    "args": [],
-    "env": {}
-  }
+    "type": "remote",
+    "url": "https://mcp.asana.com/sse",
+    "docs_url": "https://developers.asana.com/docs/using-asanas-model-control-protocol-mcp-server"
+  },
+  "github_info": null,
+  "programming_language": null
 }

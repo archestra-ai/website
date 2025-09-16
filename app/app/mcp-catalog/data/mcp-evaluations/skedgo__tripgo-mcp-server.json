@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "skedgo__tripgo-mcp-server",
   "display_name": "tripgo-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server for TripGo's multi-modal routing",
   "author": {
     "name": "skedgo"
@@ -12,7 +10,8 @@
     "args": ["run", "dev:local"],
     "env": {
       "API_KEY": "${user_config.api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

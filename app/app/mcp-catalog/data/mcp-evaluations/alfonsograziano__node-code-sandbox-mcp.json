@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "alfonsograziano__node-code-sandbox-mcp",
   "display_name": "node-code-sandbox-mcp",
-  "version": "1.0.0",
   "description": "A Node.js–based Model Context Protocol server that spins up disposable Docker containers to execute arbitrary JavaScript.",
   "author": {
     "name": "alfonsograziano"
@@ -14,7 +12,8 @@
       "FILES_DIR": "${user_config.files_dir}",
       "SANDBOX_MEMORY_LIMIT": "${user_config.sandbox_memory_limit}",
       "SANDBOX_CPU_LIMIT": "${user_config.sandbox_cpu_limit}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

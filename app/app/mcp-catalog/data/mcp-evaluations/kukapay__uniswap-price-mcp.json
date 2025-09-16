@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__uniswap-price-mcp",
   "display_name": "uniswap-price-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that delivers real-time token prices from Uniswap V3 across multiple chains.",
   "author": {
     "name": "kukapay"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/index.js"],
     "env": {
       "INFURA_PROJECT_ID": "${user_config.infura_project_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

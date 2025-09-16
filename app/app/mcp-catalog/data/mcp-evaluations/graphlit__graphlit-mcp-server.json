@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "graphlit__graphlit-mcp-server",
   "display_name": "graphlit-mcp-server",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) Server for Graphlit Platform",
   "author": {
     "name": "graphlit"
@@ -14,7 +12,8 @@
       "GRAPHLIT_ORGANIZATION_ID": "${user_config.graphlit_organization_id}",
       "GRAPHLIT_ENVIRONMENT_ID": "${user_config.graphlit_environment_id}",
       "GRAPHLIT_JWT_SECRET": "${user_config.graphlit_jwt_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

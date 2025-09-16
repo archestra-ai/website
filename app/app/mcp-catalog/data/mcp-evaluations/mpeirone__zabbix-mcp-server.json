@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mpeirone__zabbix-mcp-server",
   "display_name": "zabbix-mcp-server",
-  "version": "1.0.0",
   "description": "🔌 Complete MCP server for Zabbix integration - Connect AI assistants to Zabbix monitoring with 40+ tools for hosts, items, triggers, templates, problems, and more. Features read-only mode and comprehensive API coverage.",
   "author": {
     "name": "mpeirone"
@@ -16,7 +14,8 @@
       "ZABBIX_USER": "${user_config.zabbix_user}",
       "ZABBIX_PASSWORD": "${user_config.zabbix_password}",
       "READ_ONLY": "${user_config.read_only}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

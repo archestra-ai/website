@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jamesanz__memory-mcp",
   "display_name": "memory-mcp",
-  "version": "1.0.0",
   "description": "A simple MCP server that stores and retrieves memories from multiple LLMs",
   "author": {
     "name": "JamesANZ"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/build/index.js"],
     "env": {
       "MONGODB_URI": "${user_config.mongodb_uri}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "quentincody__braintree-mcp-server",
   "display_name": "braintree-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from QuentinCody/braintree-mcp-server",
   "author": {
     "name": "QuentinCody"
@@ -15,7 +13,8 @@
       "BRAINTREE_PUBLIC_KEY": "${user_config.braintree_public_key}",
       "BRAINTREE_PRIVATE_KEY": "${user_config.braintree_private_key}",
       "BRAINTREE_ENVIRONMENT": "${user_config.braintree_environment}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

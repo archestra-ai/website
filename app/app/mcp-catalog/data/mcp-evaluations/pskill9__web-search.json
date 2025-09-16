@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pskill9__web-search",
   "display_name": "web-search",
-  "version": "1.0.0",
   "description": "Web search using free google search (NO API KEYS REQUIRED)",
   "author": {
     "name": "pskill9"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/server/main.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

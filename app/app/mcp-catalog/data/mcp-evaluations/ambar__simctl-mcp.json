@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ambar__simctl-mcp",
-  "display_name": "simctl-mcp",
-  "version": "1.0.0",
+  "display_name": "iOS Simulator Control",
   "description": "MCP server from ambar/simctl-mcp",
   "author": {
     "name": "ambar"
@@ -12,7 +10,8 @@
     "args": ["-y", "simctl-mcp"],
     "env": {
       "PORT": "${user_config.port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

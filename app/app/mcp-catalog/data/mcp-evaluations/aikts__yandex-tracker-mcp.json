@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "aikts__yandex-tracker-mcp",
   "display_name": "yandex-tracker-mcp",
-  "version": "1.0.0",
   "description": "Yandex Tracker MCP Server with OAuth2 support",
   "author": {
     "name": "aikts"
@@ -19,7 +17,8 @@
       "TRACKER_CLOUD_ORG_ID": "${user_config.tracker_cloud_org_id}",
       "TRACKER_ORG_ID": "${user_config.tracker_org_id}",
       "TRANSPORT": "${user_config.transport}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "last9__last9-mcp-server",
   "display_name": "last9-mcp-server",
-  "version": "1.0.0",
   "description": "Last9 MCP Server",
   "author": {
     "name": "last9"
@@ -14,7 +12,8 @@
       "LAST9_BASE_URL": "${user_config.last9_base_url}",
       "LAST9_AUTH_TOKEN": "${user_config.last9_auth_token}",
       "LAST9_REFRESH_TOKEN": "${user_config.last9_refresh_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

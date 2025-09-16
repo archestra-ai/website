@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "modelcontextprotocol__servers-archived__src__gitlab",
   "display_name": "gitlab",
-  "version": "1.0.0",
   "description": "Reference MCP servers that are no longer maintained",
   "author": {
     "name": "modelcontextprotocol"
@@ -10,7 +8,8 @@
   "server": {
     "command": "unknown",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

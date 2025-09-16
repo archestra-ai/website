@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__jupiter-mcp",
   "display_name": "jupiter-mcp",
-  "version": "1.0.0",
   "description": "An MCP server for executing token swaps on the Solana blockchain using Jupiter's new Ultra API.",
   "author": {
     "name": "kukapay"
@@ -13,7 +11,8 @@
     "env": {
       "SOLANA_RPC_URL": "${user_config.solana_rpc_url}",
       "PRIVATE_KEY": "${user_config.private_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

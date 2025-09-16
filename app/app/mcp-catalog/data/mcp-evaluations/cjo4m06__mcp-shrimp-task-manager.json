@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "cjo4m06__mcp-shrimp-task-manager",
   "display_name": "mcp-shrimp-task-manager",
-  "version": "1.0.0",
   "description": "Shrimp Task Manager is a task tool built for AI Agents, emphasizing chain-of-thought, reflection, and style consistency. It converts natural language into structured dev tasks with dependency tracking and iterative refinement, enabling agent-like developer behavior in reasoning AI systems.",
   "author": {
     "name": "cjo4m06"
@@ -15,7 +13,8 @@
       "DATA_DIR": "${user_config.data_dir}",
       "WEB_PORT": "${user_config.web_port}",
       "TEMPLATES_USE": "${user_config.templates_use}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

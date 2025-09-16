@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "reeeeemo__ancestry-mcp",
   "display_name": "ancestry-mcp",
-  "version": "1.0.0",
   "description": "Ancestry MCP server made with Python that allows interactability with .ged (GEDCOM) files",
   "author": {
     "name": "reeeeemo"
@@ -10,7 +8,8 @@
   "server": {
     "command": "mcp-server-ancestry",
     "args": ["--gedcom-path", "${user_config.gedcom_path}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

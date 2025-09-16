@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "cantian-ai__bazi-mcp",
-  "display_name": "bazi-mcp",
-  "version": "1.0.0",
+  "display_name": "Bazi Fortune Telling",
   "description": "MCP server for Bazi (八字) information",
   "author": {
     "name": "cantian-ai"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["bazi-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

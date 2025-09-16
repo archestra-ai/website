@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "quantgeekdev__docker-mcp",
   "display_name": "docker-mcp",
-  "version": "1.0.0",
   "description": "A docker MCP Server (modelcontextprotocol)",
   "author": {
     "name": "QuantGeekDev"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["docker-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

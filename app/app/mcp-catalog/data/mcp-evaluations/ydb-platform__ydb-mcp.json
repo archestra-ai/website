@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ydb-platform__ydb-mcp",
   "display_name": "ydb-mcp",
-  "version": "1.0.0",
   "description": "MCP server from ydb-platform/ydb-mcp",
   "author": {
     "name": "ydb-platform"
@@ -29,7 +27,8 @@
       "MCP_HOST": "${user_config.mcp_host}",
       "MCP_PORT": "${user_config.mcp_port}",
       "LOG_LEVEL": "${user_config.log_level}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mikechao__brave-search-mcp",
   "display_name": "brave-search-mcp",
-  "version": "1.0.0",
   "description": "An MCP Server implementation that integrates the Brave Search API, providing, Web Search, Local Points of Interest Search, Image Search, Video Search and News Search capabilities",
   "author": {
     "name": "mikechao"
@@ -12,7 +10,8 @@
     "args": ["-y", "brave-search-mcp"],
     "env": {
       "BRAVE_API_KEY": "${user_config.brave_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "calclavia__mcp-obsidian",
   "display_name": "mcp-obsidian",
-  "version": "1.0.0",
   "description": "A connector for Claude Desktop to read and search an Obsidian vault.",
   "author": {
     "name": "calclavia"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "mcp-obsidian", "${user_config.vault_path}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

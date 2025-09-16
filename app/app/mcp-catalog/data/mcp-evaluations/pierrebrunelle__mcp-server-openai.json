@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pierrebrunelle__mcp-server-openai",
   "display_name": "mcp-server-openai",
-  "version": "1.0.0",
   "description": "Query OpenAI models directly from Claude using MCP protocol.",
   "author": {
     "name": "pierrebrunelle"
@@ -13,7 +11,8 @@
     "env": {
       "PYTHONPATH": "${user_config.python_path}",
       "OPENAI_API_KEY": "${user_config.openai_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

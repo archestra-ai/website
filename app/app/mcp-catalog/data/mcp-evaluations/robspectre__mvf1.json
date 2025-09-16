@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "robspectre__mvf1",
   "display_name": "mvf1",
-  "version": "1.0.0",
   "description": "A Python package and command line interface to control video players for MultiViewer For F1, the best way to watch Formula 1.",
   "author": {
     "name": "RobSpectre"
@@ -10,7 +8,8 @@
   "server": {
     "command": "mvf1-cli",
     "args": ["mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

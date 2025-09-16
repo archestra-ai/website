@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "narumiruna__gitingest-mcp",
   "display_name": "gitingest-mcp",
-  "version": "1.0.0",
   "description": "MCP server from narumiruna/gitingest-mcp",
   "author": {
     "name": "narumiruna"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["gitingestmcp@latest"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

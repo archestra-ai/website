@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "niledatabase__nile-mcp-server",
   "display_name": "nile-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server for Nile Database - Manage and query databases, tenants, users, auth using LLMs",
   "author": {
     "name": "niledatabase"
@@ -14,7 +12,8 @@
       "NILE_API_KEY": "${user_config.nile_api_key}",
       "NILE_WORKSPACE_SLUG": "${user_config.nile_workspace_slug}",
       "MCP_SERVER_MODE": "${user_config.mcp_server_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

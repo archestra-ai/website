@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gwbischof__bluesky-social-mcp",
   "display_name": "bluesky-social-mcp",
-  "version": "1.0.0",
   "description": "A Bluesky MCP",
   "author": {
     "name": "gwbischof"
@@ -13,7 +11,8 @@
     "env": {
       "BLUESKY_IDENTIFIER": "${user_config.bluesky_identifier}",
       "BLUESKY_APP_PASSWORD": "${user_config.bluesky_app_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

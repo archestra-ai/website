@@ -185,8 +185,8 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
 
       if (evaluation) {
         // If this is a remote server and the evaluation doesn't have remote_url, add it
-        if (isRemote && remoteUrl && !evaluation.remote_url) {
-          evaluation.remote_url = remoteUrl;
+        if (isRemote && remoteUrl && evaluation.server.type === 'remote') {
+          evaluation.server.url = remoteUrl;
         }
         servers.push(evaluation);
         // If we found the specific name we're looking for, we can cache and return early
@@ -201,20 +201,17 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
           const displayName = gitHubOrg.charAt(0).toUpperCase() + gitHubOrg.slice(1) + ' MCP';
 
           const server: ArchestraMcpServerManifest = {
-            dxt_version: '0.1.0',
-            version: '0.1.0',
             name: urlName,
             display_name: displayName,
             description: `Remote MCP server from ${gitHubOrg}`,
-            remote_url: remoteUrl,
             author: {
               name: gitHubOrg,
               email: 'Unknown',
             },
             server: {
-              command: 'remote',
-              args: [],
-              env: {},
+              type: 'remote',
+              url: remoteUrl!,
+              docs_url: null,
             },
             archestra_config: {
               client_config_permutations: null,
@@ -227,9 +224,8 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
             user_config: {},
             category: null,
             quality_score: null,
-            // Remote servers may not have GitHub info
-            github_info: undefined,
-            programming_language: undefined,
+            github_info: null,
+            programming_language: null,
             protocol_features: {
               implementing_tools: false,
               implementing_prompts: false,
@@ -254,8 +250,6 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
           const displayName = repositoryPath ? repositoryPath.split('/').pop() || gitHubRepo : gitHubRepo;
 
           const server: ArchestraMcpServerManifest = {
-            dxt_version: '0.1.0',
-            version: '0.1.0',
             name: urlName,
             display_name: displayName,
             description: "We're evaluating this MCP server",
@@ -264,6 +258,7 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
               email: 'Unknown',
             },
             server: {
+              type: 'local',
               command: 'unknown',
               args: [],
               env: {},

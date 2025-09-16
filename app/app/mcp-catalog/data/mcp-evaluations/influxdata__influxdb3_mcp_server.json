@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "influxdata__influxdb3_mcp_server",
   "display_name": "influxdb3_mcp_server",
-  "version": "1.0.0",
   "description": "MCP Server for InfluxDB 3",
   "author": {
     "name": "influxdata"
@@ -17,7 +15,8 @@
       "INFLUX_DB_CLUSTER_ID": "${user_config.influx_db_cluster_id}",
       "INFLUX_DB_ACCOUNT_ID": "${user_config.influx_db_account_id}",
       "INFLUX_DB_MANAGEMENT_TOKEN": "${user_config.influx_db_management_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

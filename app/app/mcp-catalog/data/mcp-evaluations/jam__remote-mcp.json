@@ -1,10 +1,7 @@
 {
   "name": "jam__remote-mcp",
-  "display_name": "Jam MCP",
-  "version": "1.0.0",
+  "display_name": "Jam",
   "description": "Remote MCP server for Jam - bug reporting and feedback tool",
-  "remote_url": "https://mcp.jam.dev/mcp",
-  "remote_mcp_docs_url": "https://jam.dev/docs/debug-a-jam/mcp",
   "oauth_config": {
     "name": "Jam MCP",
     "server_url": "https://mcp.jam.dev/mcp",
@@ -33,13 +30,14 @@
   "last_scraped_at": "2025-09-05T19:30:23.066Z",
   "evaluation_model": null,
   "raw_dependencies": null,
-  "dxt_version": "0.1.0",
   "author": {
     "name": "jam"
   },
   "server": {
-    "command": "remote",
-    "args": [],
-    "env": {}
-  }
+    "type": "remote",
+    "url": "https://mcp.jam.dev/mcp",
+    "docs_url": "https://jam.dev/docs/debug-a-jam/mcp"
+  },
+  "github_info": null,
+  "programming_language": null
 }

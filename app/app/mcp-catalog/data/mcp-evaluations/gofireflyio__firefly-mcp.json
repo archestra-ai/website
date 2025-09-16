@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gofireflyio__firefly-mcp",
   "display_name": "firefly-mcp",
-  "version": "1.0.0",
   "description": "Firefly MCP",
   "author": {
     "name": "gofireflyio"
@@ -13,7 +11,8 @@
     "env": {
       "FIREFLY_ACCESS_KEY": "${user_config.firefly_access_key}",
       "FIREFLY_SECRET_KEY": "${user_config.firefly_secret_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],
