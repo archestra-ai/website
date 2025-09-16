@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "anaisbetts__mcp-youtube",
-  "display_name": "mcp-youtube",
+  "display_name": "YouTube",
   "version": "1.0.0",
   "description": "A Model-Context Protocol Server for YouTube",
   "author": {

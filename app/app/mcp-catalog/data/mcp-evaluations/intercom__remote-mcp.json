@@ -1,10 +1,20 @@
 {
   "name": "intercom__remote-mcp",
-  "display_name": "Intercom MCP",
+  "display_name": "Intercom",
   "version": "1.0.0",
   "description": "Remote MCP server for Intercom - customer messaging and support platform",
   "remote_url": "https://mcp.intercom.com/mcp",
   "remote_mcp_docs_url": "https://developers.intercom.com/docs/guides/mcp",
+  "oauth_config": {
+    "name": "Intercom MCP",
+    "server_url": "https://mcp.intercom.com/mcp",
+    "client_id": "",
+    "redirect_uris": ["http://localhost:8080/oauth/callback"],
+    "scopes": ["read", "write"],
+    "description": "Intercom MCP Server (dynamic registration)",
+    "default_scopes": ["read", "write"],
+    "supports_resource_metadata": true
+  },
   "tools": [],
   "prompts": [],
   "user_config": {},
@@ -15,9 +25,9 @@
     "client_config_permutations": null,
     "oauth": {
       "provider": null,
-      "required": false
+      "required": true
     },
-    "works_in_archestra": false
+    "works_in_archestra": true
   },
   "framework": null,
   "last_scraped_at": "2025-09-05T19:30:23.066Z",

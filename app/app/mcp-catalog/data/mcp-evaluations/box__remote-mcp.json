@@ -5,6 +5,16 @@
   "description": "Remote MCP server for Box - cloud content management and file sharing",
   "remote_url": "https://mcp.box.com/",
   "remote_mcp_docs_url": "https://box.dev/guides/box-mcp/remote/",
+  "oauth_config": {
+    "name": "Box MCP",
+    "server_url": "https://mcp.box.com/",
+    "client_id": "",
+    "redirect_uris": ["http://localhost:8080/oauth/callback"],
+    "scopes": ["read", "write"],
+    "description": "Remote MCP server for Box - cloud content management and file sharing",
+    "default_scopes": ["read", "write"],
+    "supports_resource_metadata": true
+  },
   "tools": [],
   "prompts": [],
   "user_config": {},
@@ -15,7 +25,7 @@
     "client_config_permutations": null,
     "oauth": {
       "provider": null,
-      "required": false
+      "required": true
     },
     "works_in_archestra": false
   },

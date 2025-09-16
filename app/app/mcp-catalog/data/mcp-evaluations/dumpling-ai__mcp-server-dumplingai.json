@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "dumpling-ai__mcp-server-dumplingai",
-  "display_name": "mcp-server-dumplingai",
+  "display_name": "Dumpling AI",
   "version": "1.0.0",
   "description": "MCP (Model Context Protocol) server for Dumpling AI",
   "author": {

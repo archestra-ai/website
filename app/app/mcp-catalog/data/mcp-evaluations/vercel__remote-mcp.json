@@ -1,10 +1,20 @@
 {
   "name": "vercel__remote-mcp",
-  "display_name": "Vercel MCP",
+  "display_name": "Vercel",
   "version": "1.0.0",
   "description": "Remote MCP server for Vercel - frontend cloud platform and deployment",
   "remote_url": "https://mcp.vercel.com/",
   "remote_mcp_docs_url": "https://vercel.com/docs/mcp/vercel-mcp",
+  "oauth_config": {
+    "name": "Vercel MCP",
+    "server_url": "https://mcp.vercel.com/",
+    "client_id": "",
+    "redirect_uris": ["http://localhost:8080/oauth/callback"],
+    "scopes": ["read", "write"],
+    "description": "Vercel MCP Server (dynamic registration)",
+    "default_scopes": ["read", "write"],
+    "supports_resource_metadata": true
+  },
   "tools": [],
   "prompts": [],
   "user_config": {},
@@ -15,9 +25,9 @@
     "client_config_permutations": null,
     "oauth": {
       "provider": null,
-      "required": false
+      "required": true
     },
-    "works_in_archestra": false
+    "works_in_archestra": true
   },
   "framework": null,
   "last_scraped_at": "2025-09-05T19:30:23.066Z",

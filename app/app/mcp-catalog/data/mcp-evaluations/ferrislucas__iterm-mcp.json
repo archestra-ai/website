@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "ferrislucas__iterm-mcp",
-  "display_name": "iterm-mcp",
+  "display_name": "iTerm",
   "version": "1.0.0",
   "description": "A Model Context Protocol server that executes commands in the current iTerm session - useful for REPL and CLI assistance",
   "author": {

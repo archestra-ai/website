@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "bigsy__clojars-mcp-server",
-  "display_name": "Clojars-MCP-Server",
+  "display_name": "Clojars",
   "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that provides tools for fetching dependency information from Clojars, the Clojure community's artifact repository.",
   "author": {
