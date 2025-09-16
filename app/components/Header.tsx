@@ -55,7 +55,7 @@ export default function Header() {
             <Link href="/about" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
               About Us
             </Link>
-            
+
             <a
               href={slackJoinCommunityUrl}
               target="_blank"
@@ -126,7 +126,7 @@ export default function Header() {
             >
               About Us
             </Link>
-            
+
             <a
               href={slackJoinCommunityUrl}
               target="_blank"

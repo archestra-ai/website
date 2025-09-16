@@ -1,4 +1,3 @@
-
 import DesktopAppDownloadButton from '@components/DesktopAppDownloadButton';
 import Footer from '@components/Footer';
 import HeaderWithBanner from '@components/HeaderWithBanner';
@@ -21,7 +20,6 @@ const {
     },
   },
 } = constants;
-
 
 export default async function Home() {
   const mcpServers = loadServers();
@@ -58,13 +56,14 @@ export default async function Home() {
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Easy-to-use local MCP</h1>
                 <p className="text-base text-gray-700 mb-8">
                   Build helpful agents with prompts!
-                  <br/><br/>
-                  - ChatGPT-like interface<br/>
-                  - <b>Local</b> for sensitive corporate data<br/>
-                  - Sandboxed runtime preventing from <b>supply chain</b> attacks<br/>
-                  - Configuration <b>without API keys or configs</b><br/>
-                  - Supports {serverCount} open-source MCP servers<br/>
-                  - <b>Free and open-source</b>
+                  <br />
+                  <br />
+                  - ChatGPT-like interface
+                  <br />- <b>Local</b> for sensitive corporate data
+                  <br />- Sandboxed runtime preventing from <b>supply chain</b> attacks
+                  <br />- Configuration <b>without API keys or configs</b>
+                  <br />- Supports {serverCount} open-source MCP servers
+                  <br />- <b>Free and open-source</b>
                 </p>
                 <div className="flex justify-center lg:justify-start">
                   <DesktopAppDownloadButton />
@@ -77,7 +76,6 @@ export default async function Home() {
             </div>
           </div>
         </section>
-
       </main>
 
       <Footer />
