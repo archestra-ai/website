@@ -16,7 +16,8 @@
       "VMS_PORT": "${user_config.vms_port}",
       "VMS_ACCESS_ID": "${user_config.vms_access_id}",
       "VMS_ACCESS_PW": "${user_config.vms_access_pw}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

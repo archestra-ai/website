@@ -11,7 +11,8 @@
     "env": {
       "ZOTERO_API_KEY": "${user_config.zotero_api_key}",
       "ZOTERO_USER_ID": "${user_config.zotero_user_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

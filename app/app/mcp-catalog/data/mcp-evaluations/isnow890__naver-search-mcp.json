@@ -11,7 +11,8 @@
     "env": {
       "NAVER_CLIENT_ID": "${user_config.naver_client_id}",
       "NAVER_CLIENT_SECRET": "${user_config.naver_client_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

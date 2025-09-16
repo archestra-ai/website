@@ -12,7 +12,8 @@
       "FILES_DIR": "${user_config.files_dir}",
       "SANDBOX_MEMORY_LIMIT": "${user_config.sandbox_memory_limit}",
       "SANDBOX_CPU_LIMIT": "${user_config.sandbox_cpu_limit}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

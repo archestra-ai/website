@@ -8,7 +8,8 @@
   "server": {
     "command": "${user_config.melrose_mcp_path}",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -10,7 +10,8 @@
     "args": ["-y", "@tacticlaunch/mcp-linear"],
     "env": {
       "LINEAR_API_TOKEN": "${user_config.linear_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

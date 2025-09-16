@@ -10,7 +10,8 @@
     "args": ["--directory", "${__dirname}/src/mcp_server_milvus", "run", "server.py"],
     "env": {
       "MILVUS_URI": "${user_config.milvus_uri}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

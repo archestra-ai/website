@@ -29,7 +29,8 @@
       "PROMETHEUS_PASSWORD": "${user_config.prometheus_password}",
       "PROMETHEUS_TOKEN": "${user_config.prometheus_token}",
       "ORG_ID": "${user_config.org_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

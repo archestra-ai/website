@@ -11,7 +11,8 @@
     "env": {
       "AIVEN_BASE_URL": "${user_config.aiven_base_url}",
       "AIVEN_TOKEN": "${user_config.aiven_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

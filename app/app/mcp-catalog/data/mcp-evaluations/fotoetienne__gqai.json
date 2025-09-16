@@ -14,7 +14,8 @@
       "MY_DOCS_PATH": "${user_config.my_docs_path}",
       "MY_INCLUDE": "${user_config.my_include}",
       "MY_EXCLUDE": "${user_config.my_exclude}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

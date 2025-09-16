@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@janreges/ai-distiller-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

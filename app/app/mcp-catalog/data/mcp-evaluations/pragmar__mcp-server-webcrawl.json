@@ -10,7 +10,8 @@
     "args": ["${__dirname}/server/lib/mcp_server_webcrawl/cli.py"],
     "env": {
       "PYTHONPATH": "${__dirname}/server/lib"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

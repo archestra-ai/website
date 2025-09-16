@@ -10,7 +10,8 @@
     "args": ["tool", "run", "--from", "rootly-mcp-server", "rootly-mcp-server"],
     "env": {
       "ROOTLY_API_TOKEN": "${user_config.rootly_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

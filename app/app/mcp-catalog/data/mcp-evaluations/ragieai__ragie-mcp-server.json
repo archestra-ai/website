@@ -17,7 +17,8 @@
     ],
     "env": {
       "RAGIE_API_KEY": "${user_config.ragie_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

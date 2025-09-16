@@ -12,7 +12,8 @@
       "MONARCH_EMAIL": "${user_config.monarch_email}",
       "MONARCH_PASSWORD": "${user_config.monarch_password}",
       "MONARCH_MFA_SECRET": "${user_config.monarch_mfa_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

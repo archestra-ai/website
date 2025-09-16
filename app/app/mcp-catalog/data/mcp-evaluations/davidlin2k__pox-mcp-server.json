@@ -10,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "server.py"],
     "env": {
       "POX_SERVER_URL": "${user_config.pox_server_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

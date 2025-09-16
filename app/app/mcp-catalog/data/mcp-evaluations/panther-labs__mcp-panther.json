@@ -11,7 +11,8 @@
     "env": {
       "PANTHER_API_TOKEN": "${user_config.panther_api_token}",
       "PANTHER_BASE_URL": "${user_config.panther_base_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

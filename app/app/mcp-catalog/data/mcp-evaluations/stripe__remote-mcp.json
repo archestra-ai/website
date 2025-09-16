@@ -2,16 +2,22 @@
   "name": "stripe__remote-mcp",
   "display_name": "Stripe",
   "description": "Remote MCP server for Stripe - payment infrastructure for the internet",
-  "remote_url": "https://mcp.stripe.com",
-  "remote_mcp_docs_url": "https://docs.stripe.com/mcp",
   "oauth_config": {
     "name": "Stripe MCP",
     "server_url": "https://mcp.stripe.com",
     "client_id": "",
-    "redirect_uris": ["http://localhost:8080/oauth/callback"],
-    "scopes": ["read", "write"],
+    "redirect_uris": [
+      "http://localhost:8080/oauth/callback"
+    ],
+    "scopes": [
+      "read",
+      "write"
+    ],
     "description": "Stripe MCP Server (dynamic registration)",
-    "default_scopes": ["read", "write"],
+    "default_scopes": [
+      "read",
+      "write"
+    ],
     "supports_resource_metadata": true
   },
   "tools": [],
@@ -36,8 +42,10 @@
     "name": "stripe"
   },
   "server": {
-    "command": "remote",
-    "args": [],
-    "env": {}
-  }
+    "type": "remote",
+    "url": "https://mcp.stripe.com",
+    "docs_url": "https://docs.stripe.com/mcp"
+  },
+  "github_info": null,
+  "programming_language": null
 }

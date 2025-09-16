@@ -11,7 +11,8 @@
     "env": {
       "METORO_AUTH_TOKEN": "${user_config.metoro_auth_token}",
       "METORO_API_URL": "${user_config.metoro_api_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

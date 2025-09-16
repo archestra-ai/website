@@ -15,7 +15,8 @@
       "--disable-tools",
       "${user_config.disable_tools}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

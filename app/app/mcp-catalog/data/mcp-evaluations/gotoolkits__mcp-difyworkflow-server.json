@@ -11,7 +11,8 @@
     "env": {
       "DIFY_WORKFLOW_NAME": "${user_config.dify_workflow_name}",
       "DIFY_API_KEYS": "${user_config.dify_api_keys}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

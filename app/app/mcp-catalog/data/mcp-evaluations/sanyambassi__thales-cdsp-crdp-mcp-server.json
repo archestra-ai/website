@@ -13,7 +13,8 @@
       "CRDP_PROBES_URL": "${user_config.crdp_probes_url}",
       "MCP_TRANSPORT": "${user_config.mcp_transport}",
       "MCP_PORT": "${user_config.mcp_port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

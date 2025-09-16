@@ -10,7 +10,8 @@
     "args": ["${__dirname}/index.js"],
     "env": {
       "RAINDROP_TOKEN": "${user_config.raindrop_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

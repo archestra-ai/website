@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "mcp-remote", "https://api.gamebrain.co/v1/mcp?api-key=${user_config.api_key}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

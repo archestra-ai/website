@@ -10,7 +10,8 @@
     "args": ["${__dirname}/build/index.js"],
     "env": {
       "MAIGRET_REPORTS_DIR": "${user_config.maigret_reports_dir}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

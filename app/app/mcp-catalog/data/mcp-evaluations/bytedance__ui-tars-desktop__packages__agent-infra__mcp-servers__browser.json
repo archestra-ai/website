@@ -37,7 +37,8 @@
     ],
     "env": {
       "DISPLAY": "${user_config.display}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

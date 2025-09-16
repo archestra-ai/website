@@ -16,7 +16,8 @@
       "AWS_REGION": "${user_config.aws_region}",
       "AWS_MCP_SECURITY_MODE": "${user_config.aws_mcp_security_mode}",
       "AWS_MCP_SECURITY_CONFIG": "${user_config.aws_mcp_security_config}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

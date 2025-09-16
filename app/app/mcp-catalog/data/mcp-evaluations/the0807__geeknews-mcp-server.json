@@ -15,7 +15,8 @@
       "--key",
       "${user_config.smithery_key}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

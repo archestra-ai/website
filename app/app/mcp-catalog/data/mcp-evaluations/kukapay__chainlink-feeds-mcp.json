@@ -10,7 +10,8 @@
     "args": ["${__dirname}/index.js"],
     "env": {
       "INFURA_API_KEY": "${user_config.infura_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

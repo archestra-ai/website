@@ -74,7 +74,8 @@
       "MCP_VERBOSE": "${user_config.mcp_verbose}",
       "MCP_LOGGING_STDOUT": "${user_config.mcp_logging_stdout}",
       "ENABLED_TOOLS": "${user_config.enabled_tools}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

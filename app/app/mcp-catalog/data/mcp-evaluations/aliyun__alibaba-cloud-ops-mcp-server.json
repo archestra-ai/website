@@ -11,7 +11,8 @@
     "env": {
       "ALIBABA_CLOUD_ACCESS_KEY_ID": "${user_config.alibaba_cloud_access_key_id}",
       "ALIBABA_CLOUD_ACCESS_KEY_SECRET": "${user_config.alibaba_cloud_access_key_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

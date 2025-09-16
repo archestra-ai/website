@@ -10,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "src/tripadvisor_mcp/main.py"],
     "env": {
       "TRIPADVISOR_API_KEY": "${user_config.tripadvisor_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

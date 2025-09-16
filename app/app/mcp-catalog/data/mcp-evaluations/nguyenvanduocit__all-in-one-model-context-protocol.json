@@ -25,7 +25,8 @@
       "GOOGLE_TOKEN_FILE": "${user_config.google_token_file}",
       "GOOGLE_CREDENTIALS_FILE": "${user_config.google_credentials_file}",
       "QDRANT_API_KEY": "${user_config.qdrant_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

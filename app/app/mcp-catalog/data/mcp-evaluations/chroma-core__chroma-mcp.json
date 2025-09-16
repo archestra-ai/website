@@ -24,7 +24,8 @@
       "CHROMA_JINA_API_KEY": "${user_config.chroma_jina_api_key}",
       "CHROMA_VOYAGEAI_API_KEY": "${user_config.chroma_voyageai_api_key}",
       "CHROMA_ROBOFLOW_API_KEY": "${user_config.chroma_roboflow_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

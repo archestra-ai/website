@@ -12,7 +12,8 @@
       "SEARXNG_URL": "${user_config.searxng_url}",
       "AUTH_USERNAME": "${user_config.auth_username}",
       "AUTH_PASSWORD": "${user_config.auth_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

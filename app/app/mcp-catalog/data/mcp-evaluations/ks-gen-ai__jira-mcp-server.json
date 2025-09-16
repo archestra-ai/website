@@ -12,7 +12,8 @@
       "JIRA_URL": "${user_config.jira_url}",
       "JIRA_API_MAIL": "${user_config.jira_api_mail}",
       "JIRA_API_KEY": "${user_config.jira_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

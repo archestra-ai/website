@@ -8,7 +8,8 @@
   "server": {
     "command": "mcp-internet-speed-test",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

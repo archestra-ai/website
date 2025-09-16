@@ -10,7 +10,8 @@
     "args": ["${__dirname}/server.py"],
     "env": {
       "DEEPSEEK_API_KEY": "${user_config.deepseek_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

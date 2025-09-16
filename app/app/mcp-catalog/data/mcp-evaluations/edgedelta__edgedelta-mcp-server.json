@@ -20,7 +20,8 @@
     "env": {
       "ED_API_TOKEN": "${user_config.ed_api_token}",
       "ED_ORG_ID": "${user_config.ed_org_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -11,7 +11,8 @@
     "env": {
       "BLUESKY_IDENTIFIER": "${user_config.bluesky_identifier}",
       "BLUESKY_APP_PASSWORD": "${user_config.bluesky_app_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

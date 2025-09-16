@@ -12,7 +12,8 @@
       "DB_TDE_SERVER_NAME": "${user_config.db_tde_server_name}",
       "DB_TDE_LOG_LEVEL": "${user_config.db_tde_log_level}",
       "DB_TDE_DATABASE_CONNECTIONS": "${user_config.db_tde_database_connections}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

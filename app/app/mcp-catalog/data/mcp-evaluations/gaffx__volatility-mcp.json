@@ -10,7 +10,8 @@
     "args": ["${__dirname}/vol_mcp_server.py", "-i", "${user_config.memory_image_path}"],
     "env": {
       "VOLATILITY_BIN": "${user_config.volatility_bin}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -20,7 +20,8 @@
       "${user_config.mcp_name}",
       "${user_config.mcp_server_addresses}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

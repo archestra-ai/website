@@ -8,7 +8,8 @@
   "server": {
     "command": "docker",
     "args": ["run", "-v", "baserow_data:/baserow/data", "-p", "80:80", "-p", "443:443", "baserow/baserow:1.34.5"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

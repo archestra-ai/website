@@ -12,7 +12,8 @@
       "CORTEX_ENDPOINT": "${user_config.cortex_endpoint}",
       "CORTEX_API_KEY": "${user_config.cortex_api_key}",
       "RUST_LOG": "${user_config.rust_log}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

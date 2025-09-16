@@ -14,7 +14,8 @@
       "ODBC_USER": "${user_config.odbc_user}",
       "ODBC_PASSWORD": "${user_config.odbc_password}",
       "ODBCINI": "${user_config.odbcini}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

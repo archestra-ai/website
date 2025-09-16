@@ -16,7 +16,8 @@
       "--port",
       "${user_config.server_port}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

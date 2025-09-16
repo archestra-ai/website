@@ -8,7 +8,8 @@
   "server": {
     "command": "${__dirname}/target/release/developer",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

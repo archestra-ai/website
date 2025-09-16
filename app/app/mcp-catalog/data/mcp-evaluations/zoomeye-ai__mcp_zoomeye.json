@@ -10,7 +10,8 @@
     "args": ["mcp-server-zoomeye"],
     "env": {
       "ZOOMEYE_API_KEY": "${user_config.zoomeye_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

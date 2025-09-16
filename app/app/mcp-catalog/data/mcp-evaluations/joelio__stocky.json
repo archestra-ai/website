@@ -11,7 +11,8 @@
     "env": {
       "PEXELS_API_KEY": "${user_config.pexels_api_key}",
       "UNSPLASH_ACCESS_KEY": "${user_config.unsplash_access_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

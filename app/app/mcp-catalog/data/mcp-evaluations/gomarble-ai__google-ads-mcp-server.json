@@ -11,7 +11,8 @@
     "env": {
       "GOOGLE_ADS_DEVELOPER_TOKEN": "${user_config.google_ads_developer_token}",
       "GOOGLE_ADS_OAUTH_CONFIG_PATH": "${user_config.google_ads_oauth_config_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -12,7 +12,8 @@
       "POLYGON_API_KEY": "${user_config.polygon_api_key}",
       "HOME": "${user_config.home}",
       "MCP_TRANSPORT": "${user_config.mcp_transport}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

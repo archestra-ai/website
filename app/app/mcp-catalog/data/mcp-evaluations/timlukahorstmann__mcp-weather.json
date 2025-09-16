@@ -10,7 +10,8 @@
     "args": ["-y", "@timlukahorstmann/mcp-weather"],
     "env": {
       "ACCUWEATHER_API_KEY": "${user_config.accuweather_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

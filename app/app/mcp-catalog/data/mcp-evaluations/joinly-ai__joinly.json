@@ -12,7 +12,8 @@
       "JOINLY_LLM_MODEL": "${user_config.joinly_llm_model}",
       "JOINLY_LLM_PROVIDER": "${user_config.joinly_llm_provider}",
       "OPENAI_API_KEY": "${user_config.openai_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

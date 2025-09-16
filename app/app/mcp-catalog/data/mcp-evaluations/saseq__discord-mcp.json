@@ -11,7 +11,8 @@
     "env": {
       "DISCORD_TOKEN": "${user_config.discord_token}",
       "DISCORD_GUILD_ID": "${user_config.discord_guild_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -8,7 +8,8 @@
   "server": {
     "command": "python3",
     "args": ["${__dirname}/catalysishub_mcp_server.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

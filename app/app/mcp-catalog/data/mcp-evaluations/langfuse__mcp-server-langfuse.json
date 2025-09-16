@@ -12,7 +12,8 @@
       "LANGFUSE_PUBLIC_KEY": "${user_config.langfuse_public_key}",
       "LANGFUSE_SECRET_KEY": "${user_config.langfuse_secret_key}",
       "LANGFUSE_BASEURL": "${user_config.langfuse_baseurl}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

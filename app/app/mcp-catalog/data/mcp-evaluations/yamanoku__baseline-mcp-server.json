@@ -8,7 +8,8 @@
   "server": {
     "command": "deno",
     "args": ["run", "--allow-net=api.webstatus.dev", "jsr:@yamanoku/baseline-mcp-server"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

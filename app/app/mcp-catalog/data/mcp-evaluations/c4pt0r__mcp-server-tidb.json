@@ -14,7 +14,8 @@
       "TIDB_USERNAME": "${user_config.tidb_username}",
       "TIDB_PASSWORD": "${user_config.tidb_password}",
       "TIDB_DATABASE": "${user_config.tidb_database}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

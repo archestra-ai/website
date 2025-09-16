@@ -13,7 +13,8 @@
       "DEFAULT_MODEL": "${user_config.default_model}",
       "DEFAULT_TEMPERATURE": "${user_config.default_temperature}",
       "MAX_TOKENS": "${user_config.max_tokens}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

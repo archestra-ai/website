@@ -2,8 +2,6 @@
   "name": "githubcopilot__remote-mcp",
   "display_name": "GitHub",
   "description": "Remote MCP server for github - issue tracking and project management",
-  "remote_url": "https://api.githubcopilot.com/mcp/",
-  "remote_mcp_docs_url": "https://github.app/docs/mcp",
   "tools": [],
   "prompts": [],
   "user_config": {},
@@ -27,10 +25,19 @@
     "server_url": "https://api.githubcopilot.com/mcp",
     "client_id": "Ov23li3CnHLM7PNQ2Xiv",
     "client_secret": "REDACTED",
-    "redirect_uris": ["https://oauth.dev.archestra.ai/oauth/callback", "http://localhost:8080/oauth/callback"],
-    "scopes": ["read", "write"],
+    "redirect_uris": [
+      "https://oauth.dev.archestra.ai/oauth/callback",
+      "http://localhost:8080/oauth/callback"
+    ],
+    "scopes": [
+      "read",
+      "write"
+    ],
     "description": "GitHub Copilot MCP Server",
-    "default_scopes": ["read", "write"],
+    "default_scopes": [
+      "read",
+      "write"
+    ],
     "supports_resource_metadata": true,
     "requires_proxy": true
   },
@@ -38,8 +45,10 @@
     "name": "github"
   },
   "server": {
-    "command": "remote",
-    "args": [],
-    "env": {}
-  }
+    "type": "remote",
+    "url": "https://api.githubcopilot.com/mcp/",
+    "docs_url": "https://github.app/docs/mcp"
+  },
+  "github_info": null,
+  "programming_language": null
 }

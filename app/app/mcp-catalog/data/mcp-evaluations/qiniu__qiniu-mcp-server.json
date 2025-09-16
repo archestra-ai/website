@@ -14,7 +14,8 @@
       "QINIU_REGION_NAME": "${user_config.qiniu_region_name}",
       "QINIU_ENDPOINT_URL": "${user_config.qiniu_endpoint_url}",
       "QINIU_BUCKETS": "${user_config.qiniu_buckets}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

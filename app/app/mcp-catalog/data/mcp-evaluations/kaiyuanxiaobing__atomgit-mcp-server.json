@@ -10,7 +10,8 @@
     "args": ["-y", "atomgit-mcp-server@latest"],
     "env": {
       "ATOMGIT_PERSONAL_ACCESS_TOKEN": "${user_config.atomgit_personal_access_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

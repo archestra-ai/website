@@ -13,7 +13,8 @@
       "--confServices",
       "${__dirname}/configurations/services/"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

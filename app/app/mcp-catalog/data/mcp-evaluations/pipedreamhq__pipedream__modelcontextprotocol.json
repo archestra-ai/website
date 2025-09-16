@@ -14,7 +14,8 @@
       "PIPEDREAM_PROJECT_ID": "${user_config.pipedream_project_id}",
       "PIPEDREAM_PROJECT_ENVIRONMENT": "${user_config.pipedream_project_environment}",
       "PD_SDK_DEBUG": "${user_config.pd_sdk_debug}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

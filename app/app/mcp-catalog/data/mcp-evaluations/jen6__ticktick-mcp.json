@@ -14,7 +14,8 @@
       "TICKTICK_REDIRECT_URI": "${user_config.ticktick_redirect_uri}",
       "TICKTICK_USERNAME": "${user_config.ticktick_username}",
       "TICKTICK_PASSWORD": "${user_config.ticktick_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@r-huijts/ethics-vibe-check"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

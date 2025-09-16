@@ -19,7 +19,8 @@
     ],
     "env": {
       "S2_ACCESS_TOKEN": "${user_config.s2_access_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

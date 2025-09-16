@@ -8,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["mcp-pinecone", "--index-name", "${user_config.index_name}", "--api-key", "${user_config.api_key}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -10,7 +10,8 @@
     "args": ["${__dirname}/dist/index.js"],
     "env": {
       "SERP_API_KEY": "${user_config.serp_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

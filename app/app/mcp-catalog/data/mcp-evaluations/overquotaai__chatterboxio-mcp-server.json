@@ -11,7 +11,8 @@
     "env": {
       "CHATTERBOX_API_ENDPOINT": "${user_config.chatterbox_api_endpoint}",
       "CHATTERBOX_API_KEY": "${user_config.chatterbox_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -12,7 +12,8 @@
       "XERO_CLIENT_ID": "${user_config.xero_client_id}",
       "XERO_CLIENT_SECRET": "${user_config.xero_client_secret}",
       "XERO_CLIENT_BEARER_TOKEN": "${user_config.xero_client_bearer_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -15,7 +15,8 @@
       "DEFAULT_CHATGPT_MODEL": "${user_config.default_chatgpt_model}",
       "DEFAULT_CLAUDE_MODEL": "${user_config.default_claude_model}",
       "DEFAULT_DEEPSEEK_MODEL": "${user_config.default_deepseek_model}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -11,7 +11,8 @@
     "env": {
       "PUBMED_EMAIL": "${user_config.pubmed_email}",
       "PUBMED_API_KEY": "${user_config.pubmed_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

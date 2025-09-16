@@ -8,7 +8,8 @@
   "server": {
     "command": "screenpipe",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

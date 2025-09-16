@@ -11,7 +11,8 @@
     "env": {
       "EXCEL_FILES_PATH": "${user_config.excel_files_path}",
       "FASTMCP_PORT": "${user_config.fastmcp_port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

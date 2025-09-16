@@ -39,7 +39,8 @@
       "BROWSERBASE_API_KEY": "${user_config.browserbase_api_key}",
       "BROWSERBASE_PROJECT_ID": "${user_config.browserbase_project_id}",
       "GEMINI_API_KEY": "${user_config.gemini_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

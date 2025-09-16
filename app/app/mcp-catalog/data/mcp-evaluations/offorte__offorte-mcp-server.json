@@ -12,7 +12,8 @@
       "OFFORTE_ACCOUNT_NAME": "${user_config.offorte_account_name}",
       "OFFORTE_API_KEY": "${user_config.offorte_api_key}",
       "TRANSPORT_TYPE": "${user_config.transport_type}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

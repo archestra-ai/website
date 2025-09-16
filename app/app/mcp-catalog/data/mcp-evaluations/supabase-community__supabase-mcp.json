@@ -18,7 +18,8 @@
     "env": {
       "SUPABASE_ACCESS_TOKEN": "${user_config.supabase_access_token}",
       "SUPABASE_READ_ONLY": "${user_config.read_only}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

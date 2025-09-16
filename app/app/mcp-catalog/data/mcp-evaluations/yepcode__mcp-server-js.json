@@ -11,7 +11,8 @@
     "env": {
       "YEPCODE_API_TOKEN": "${user_config.yepcode_api_token}",
       "YEPCODE_MCP_OPTIONS": "${user_config.yepcode_mcp_options}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

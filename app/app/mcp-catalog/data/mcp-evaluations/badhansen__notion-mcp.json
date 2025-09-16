@@ -13,7 +13,8 @@
       "PAGE_ID": "${user_config.page_id}",
       "NOTION_VERSION": "${user_config.notion_version}",
       "NOTION_BASE_URL": "${user_config.notion_base_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

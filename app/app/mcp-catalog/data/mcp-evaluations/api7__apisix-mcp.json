@@ -14,7 +14,8 @@
       "APISIX_ADMIN_API_PORT": "${user_config.apisix_admin_api_port}",
       "APISIX_ADMIN_API_PREFIX": "${user_config.apisix_admin_api_prefix}",
       "APISIX_ADMIN_KEY": "${user_config.apisix_admin_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

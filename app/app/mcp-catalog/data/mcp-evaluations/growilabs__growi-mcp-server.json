@@ -11,7 +11,8 @@
     "env": {
       "GROWI_BASE_URL": "${user_config.growi_base_url}",
       "GROWI_API_TOKEN": "${user_config.growi_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

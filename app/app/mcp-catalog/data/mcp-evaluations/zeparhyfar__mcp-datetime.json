@@ -10,7 +10,8 @@
     "args": ["-m", "mcp_datetime"],
     "env": {
       "PYTHON": "${user_config.python}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

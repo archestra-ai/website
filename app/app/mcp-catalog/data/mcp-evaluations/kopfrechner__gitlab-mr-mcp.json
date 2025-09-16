@@ -13,7 +13,8 @@
       "MR_MCP_GITLAB_HOST": "${user_config.mr_mcp_gitlab_host}",
       "MR_MCP_MIN_ACCESS_LEVEL": "${user_config.mr_mcp_min_access_level}",
       "MR_MCP_PROJECT_SEARCH_TERM": "${user_config.mr_mcp_project_search_term}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -16,7 +16,8 @@
       "UNOMI_KEY": "${user_config.unomi_key}",
       "UNOMI_EMAIL": "${user_config.unomi_email}",
       "UNOMI_SOURCE_ID": "${user_config.unomi_source_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

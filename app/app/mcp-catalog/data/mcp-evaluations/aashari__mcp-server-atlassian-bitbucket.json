@@ -18,7 +18,8 @@
       "BITBUCKET_DEFAULT_WORKSPACE": "${user_config.bitbucket_default_workspace}",
       "ATLASSIAN_SITE_NAME": "${user_config.atlassian_site_name}",
       "ATLASSIAN_USER_EMAIL": "${user_config.atlassian_user_email}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

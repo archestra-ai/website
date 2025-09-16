@@ -18,7 +18,8 @@
       "AZURE_CLIENT_ID": "${user_config.azure_client_id}",
       "AZURE_CLIENT_SECRET": "${user_config.azure_client_secret}",
       "LOG_LEVEL": "${user_config.log_level}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

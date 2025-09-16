@@ -16,7 +16,8 @@
       "HTTP_HOST": "${user_config.http_host}",
       "SPACE_ID": "${user_config.space_id}",
       "ENVIRONMENT_ID": "${user_config.environment_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

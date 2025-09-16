@@ -10,7 +10,8 @@
     "args": ["-y", "@ipfind/ipfind-mcp-server"],
     "env": {
       "IPFIND_API_KEY": "${user_config.ipfind_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

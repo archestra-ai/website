@@ -19,7 +19,8 @@
       "TFMCP_AUDIT_ENABLED": "${user_config.tfmcp_audit_enabled}",
       "TFMCP_AUDIT_LOG_FILE": "${user_config.tfmcp_audit_log_file}",
       "TFMCP_AUDIT_LOG_SENSITIVE": "${user_config.tfmcp_audit_log_sensitive}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

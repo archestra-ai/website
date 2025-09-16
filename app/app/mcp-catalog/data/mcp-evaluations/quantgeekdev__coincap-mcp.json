@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["coincap-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

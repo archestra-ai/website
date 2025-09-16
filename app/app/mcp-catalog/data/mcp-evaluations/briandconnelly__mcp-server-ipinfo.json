@@ -10,7 +10,8 @@
     "args": ["mcp-server-ipinfo"],
     "env": {
       "IPINFO_API_TOKEN": "${user_config.ipinfo_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

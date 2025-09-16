@@ -20,7 +20,8 @@
       "GOPATH": "${user_config.gopath}",
       "GOCACHE": "${user_config.gocache}",
       "GOMODCACHE": "${user_config.gomodcache}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

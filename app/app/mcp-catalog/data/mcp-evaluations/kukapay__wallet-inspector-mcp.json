@@ -10,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "main.py"],
     "env": {
       "DUNE_SIM_API_KEY": "${user_config.dune_sim_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

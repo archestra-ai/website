@@ -8,7 +8,8 @@
   "server": {
     "command": "${__dirname}/just-mcp",
     "args": ["--stdio", "--directory", "${user_config.project_directory}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

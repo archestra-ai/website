@@ -11,7 +11,8 @@
     "env": {
       "ZETTELKASTEN_NOTES_DIR": "${user_config.zettelkasten_notes_dir}",
       "ZETTELKASTEN_DATABASE_PATH": "${user_config.zettelkasten_database_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

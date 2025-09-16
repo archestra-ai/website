@@ -11,7 +11,8 @@
     "env": {
       "RTT_API_USERNAME": "${user_config.rtt_api_username}",
       "RTT_API_PASSWORD": "${user_config.rtt_api_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

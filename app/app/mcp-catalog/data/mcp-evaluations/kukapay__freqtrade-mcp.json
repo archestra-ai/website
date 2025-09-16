@@ -12,7 +12,8 @@
       "FREQTRADE_API_URL": "${user_config.freqtrade_api_url}",
       "FREQTRADE_USERNAME": "${user_config.freqtrade_username}",
       "FREQTRADE_PASSWORD": "${user_config.freqtrade_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

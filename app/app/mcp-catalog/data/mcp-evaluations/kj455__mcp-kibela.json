@@ -11,7 +11,8 @@
     "env": {
       "KIBELA_TEAM": "${user_config.kibela_team}",
       "KIBELA_TOKEN": "${user_config.kibela_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

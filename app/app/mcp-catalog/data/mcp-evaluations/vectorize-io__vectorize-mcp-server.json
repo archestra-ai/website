@@ -12,7 +12,8 @@
       "VECTORIZE_ORG_ID": "${user_config.org_id}",
       "VECTORIZE_TOKEN": "${user_config.token}",
       "VECTORIZE_PIPELINE_ID": "${user_config.pipeline_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

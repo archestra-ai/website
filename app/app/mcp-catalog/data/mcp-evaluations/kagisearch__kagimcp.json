@@ -12,7 +12,8 @@
       "KAGI_API_KEY": "${user_config.kagi_api_key}",
       "KAGI_SUMMARIZER_ENGINE": "${user_config.kagi_summarizer_engine}",
       "FASTMCP_LOG_LEVEL": "${user_config.fastmcp_log_level}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

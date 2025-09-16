@@ -8,7 +8,8 @@
   "server": {
     "command": "node",
     "args": ["${__dirname}/dist/index.js", "--browser", "${user_config.browser_type}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

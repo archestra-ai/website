@@ -13,7 +13,8 @@
       "--user-agent=${user_config.user_agent}",
       "--proxy-url=${user_config.proxy_url}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

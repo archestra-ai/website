@@ -16,7 +16,8 @@
       "PORT": "${user_config.port}",
       "DEBUG": "${user_config.debug}",
       "ATLASSIAN_JIRA_URL": "${user_config.atlassian_jira_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

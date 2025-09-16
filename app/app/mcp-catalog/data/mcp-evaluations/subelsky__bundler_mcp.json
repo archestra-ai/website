@@ -11,7 +11,8 @@
     "env": {
       "BUNDLE_GEMFILE": "${user_config.bundle_gemfile}",
       "BUNDLER_MCP_LOG_FILE": "${user_config.bundler_mcp_log_file}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

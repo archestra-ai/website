@@ -11,7 +11,8 @@
     "env": {
       "API_KEY": "${user_config.api_key}",
       "SECRET_KEY": "${user_config.secret_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

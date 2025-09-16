@@ -15,7 +15,8 @@
       "SUPABASE_ACCESS_TOKEN": "${user_config.supabase_access_token}",
       "SUPABASE_SERVICE_ROLE_KEY": "${user_config.supabase_service_role_key}",
       "QUERY_API_KEY": "${user_config.query_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

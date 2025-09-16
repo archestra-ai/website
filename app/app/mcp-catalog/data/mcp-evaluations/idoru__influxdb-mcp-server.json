@@ -12,7 +12,8 @@
       "INFLUXDB_TOKEN": "${user_config.influxdb_token}",
       "INFLUXDB_URL": "${user_config.influxdb_url}",
       "INFLUXDB_ORG": "${user_config.influxdb_org}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

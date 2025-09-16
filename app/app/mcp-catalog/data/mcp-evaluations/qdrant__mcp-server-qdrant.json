@@ -25,7 +25,8 @@
       "FASTMCP_WARN_ON_DUPLICATE_TOOLS": "${user_config.fastmcp_warn_on_duplicate_tools}",
       "FASTMCP_WARN_ON_DUPLICATE_PROMPTS": "${user_config.fastmcp_warn_on_duplicate_prompts}",
       "FASTMCP_DEPENDENCIES": "${user_config.fastmcp_dependencies}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

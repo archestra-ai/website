@@ -11,7 +11,8 @@
     "env": {
       "ANKR_ENDPOINT": "${user_config.ankr_endpoint}",
       "ANKR_PRIVATE_KEY": "${user_config.ankr_private_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

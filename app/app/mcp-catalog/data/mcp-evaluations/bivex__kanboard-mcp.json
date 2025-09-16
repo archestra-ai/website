@@ -13,7 +13,8 @@
       "KANBOARD_API_KEY": "${user_config.kanboard_api_key}",
       "KANBOARD_USERNAME": "${user_config.kanboard_username}",
       "KANBOARD_PASSWORD": "${user_config.kanboard_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

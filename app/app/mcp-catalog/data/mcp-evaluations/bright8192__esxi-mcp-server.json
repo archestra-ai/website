@@ -20,7 +20,8 @@
       "MCP_API_KEY": "${user_config.mcp_api_key}",
       "MCP_LOG_FILE": "${user_config.mcp_log_file}",
       "MCP_LOG_LEVEL": "${user_config.mcp_log_level}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

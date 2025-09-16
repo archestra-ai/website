@@ -8,7 +8,8 @@
   "server": {
     "command": "func",
     "args": ["start"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

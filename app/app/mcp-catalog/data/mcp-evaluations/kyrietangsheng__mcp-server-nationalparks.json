@@ -10,7 +10,8 @@
     "args": ["-y", "mcp-server-nationalparks"],
     "env": {
       "NPS_API_KEY": "${user_config.nps_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

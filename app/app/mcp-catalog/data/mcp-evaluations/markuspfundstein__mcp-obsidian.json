@@ -12,7 +12,8 @@
       "OBSIDIAN_API_KEY": "${user_config.obsidian_api_key}",
       "OBSIDIAN_HOST": "${user_config.obsidian_host}",
       "OBSIDIAN_PORT": "${user_config.obsidian_port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

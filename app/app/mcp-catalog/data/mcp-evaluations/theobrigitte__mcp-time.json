@@ -15,7 +15,8 @@
       "--log-file",
       "${user_config.log_file}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

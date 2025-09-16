@@ -22,7 +22,8 @@
       "--use-tls",
       "${user_config.use_tls}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

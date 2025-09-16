@@ -13,7 +13,8 @@
       "THEHIVE_API_TOKEN": "${user_config.thehive_api_token}",
       "VERIFY_SSL": "${user_config.verify_ssl}",
       "RUST_LOG": "${user_config.rust_log}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

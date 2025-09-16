@@ -13,7 +13,8 @@
       "APP_STORE_CONNECT_ISSUER_ID": "${user_config.app_store_connect_issuer_id}",
       "APP_STORE_CONNECT_P8_PATH": "${user_config.app_store_connect_p8_path}",
       "APP_STORE_CONNECT_VENDOR_NUMBER": "${user_config.app_store_connect_vendor_number}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

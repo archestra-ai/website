@@ -10,7 +10,8 @@
     "args": ["${__dirname}/dist/index.js"],
     "env": {
       "PORT": "${user_config.port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

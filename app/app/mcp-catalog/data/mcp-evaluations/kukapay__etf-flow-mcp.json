@@ -10,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "etf-flow-mcp"],
     "env": {
       "COINGLASS_API_KEY": "${user_config.coinglass_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

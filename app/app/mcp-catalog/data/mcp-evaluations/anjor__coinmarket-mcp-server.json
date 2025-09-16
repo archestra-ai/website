@@ -10,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "coinmarket_service"],
     "env": {
       "COINMARKET_API_KEY": "${user_config.coinmarket_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

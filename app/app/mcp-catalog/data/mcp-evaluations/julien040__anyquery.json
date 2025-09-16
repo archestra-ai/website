@@ -8,7 +8,8 @@
   "server": {
     "command": "anyquery",
     "args": ["mcp", "--host", "${user_config.host}", "--port", "${user_config.port}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

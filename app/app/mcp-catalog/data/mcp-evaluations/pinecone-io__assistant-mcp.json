@@ -12,7 +12,8 @@
       "PINECONE_API_KEY": "${user_config.pinecone_api_key}",
       "PINECONE_ASSISTANT_HOST": "${user_config.pinecone_assistant_host}",
       "LOG_LEVEL": "${user_config.log_level}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

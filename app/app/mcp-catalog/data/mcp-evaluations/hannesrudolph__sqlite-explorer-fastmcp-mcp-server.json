@@ -10,7 +10,8 @@
     "args": ["run", "--with", "fastmcp", "--with", "uvicorn", "fastmcp", "run", "${__dirname}/sqlite_explorer.py"],
     "env": {
       "SQLITE_DB_PATH": "${user_config.sqlite_db_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

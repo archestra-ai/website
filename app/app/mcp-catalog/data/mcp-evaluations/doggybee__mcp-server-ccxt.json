@@ -20,7 +20,8 @@
       "PROXY_URL": "${user_config.proxy_url}",
       "PROXY_USERNAME": "${user_config.proxy_username}",
       "PROXY_PASSWORD": "${user_config.proxy_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

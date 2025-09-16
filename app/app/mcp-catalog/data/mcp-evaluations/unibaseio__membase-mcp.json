@@ -12,7 +12,8 @@
       "MEMBASE_ACCOUNT": "${user_config.membase_account}",
       "MEMBASE_CONVERSATION_ID": "${user_config.membase_conversation_id}",
       "MEMBASE_ID": "${user_config.membase_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

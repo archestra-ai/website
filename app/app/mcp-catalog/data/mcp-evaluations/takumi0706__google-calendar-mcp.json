@@ -18,7 +18,8 @@
       "PORT": "${user_config.port}",
       "HOST": "${user_config.host}",
       "USE_MANUAL_AUTH": "${user_config.use_manual_auth}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

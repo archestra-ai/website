@@ -11,7 +11,8 @@
     "env": {
       "NOTION_API_TOKEN": "${user_config.notion_api_token}",
       "NOTION_MARKDOWN_CONVERSION": "${user_config.notion_markdown_conversion}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -12,7 +12,8 @@
       "SERVICE_ACCOUNT_PATH": "${user_config.service_account_path}",
       "DRIVE_FOLDER_ID": "${user_config.drive_folder_id}",
       "CREDENTIALS_CONFIG": "${user_config.credentials_config}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

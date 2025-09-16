@@ -10,7 +10,8 @@
     "args": ["dappier-mcp"],
     "env": {
       "DAPPIER_API_KEY": "${user_config.dappier_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

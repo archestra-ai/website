@@ -15,7 +15,8 @@
       "SONARQUBE_USERNAME": "${user_config.sonarqube_username}",
       "SONARQUBE_PASSWORD": "${user_config.sonarqube_password}",
       "SONARQUBE_PASSCODE": "${user_config.sonarqube_passcode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

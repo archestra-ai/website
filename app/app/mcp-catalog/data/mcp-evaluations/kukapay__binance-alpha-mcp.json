@@ -11,7 +11,8 @@
     "env": {
       "WS_ENDPOINT": "${user_config.ws_endpoint}",
       "RPC_ENDPOINT": "${user_config.rpc_endpoint}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

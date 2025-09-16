@@ -10,7 +10,8 @@
     "args": ["run", "--rm", "-i", "-e", "PDCP_API_KEY=${user_config.pdcp_api_key}", "mcp/recon"],
     "env": {
       "PDCP_API_KEY": "${user_config.pdcp_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

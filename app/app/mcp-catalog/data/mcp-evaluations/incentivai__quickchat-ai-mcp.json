@@ -11,7 +11,8 @@
     "env": {
       "SCENARIO_ID": "${user_config.scenario_id}",
       "API_KEY": "${user_config.api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

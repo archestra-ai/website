@@ -10,7 +10,8 @@
     "args": ["${__dirname}/index.js"],
     "env": {
       "PRIVATE_KEY": "${user_config.private_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

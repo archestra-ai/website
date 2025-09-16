@@ -10,7 +10,8 @@
     "args": ["${__dirname}/server/index.js"],
     "env": {
       "API_KEY": "${user_config.api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

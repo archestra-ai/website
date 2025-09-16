@@ -10,7 +10,8 @@
     "args": ["-y", "@marketplaceadpros/amazon-ads-mcp-server"],
     "env": {
       "BEARER_TOKEN": "${user_config.bearer_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -15,7 +15,8 @@
       "MINIO_ACCESS_KEY": "${user_config.minio_access_key}",
       "MINIO_SECRET_KEY": "${user_config.minio_secret_key}",
       "MINIO_BUCKET_NAME": "${user_config.minio_bucket_name}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

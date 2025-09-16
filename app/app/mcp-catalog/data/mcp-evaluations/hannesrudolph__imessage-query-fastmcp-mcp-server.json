@@ -10,7 +10,8 @@
     "args": [],
     "env": {
       "SQLITE_DB_PATH": "${user_config.sqlite_db_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

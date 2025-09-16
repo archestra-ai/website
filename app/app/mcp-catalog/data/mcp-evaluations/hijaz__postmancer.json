@@ -13,7 +13,8 @@
       "LOG_LEVEL": "${user_config.log_level}",
       "POSTMANCER_ENCRYPTION_KEY": "${user_config.postmancer_encryption_key}",
       "ENCRYPTION_KEY": "${user_config.encryption_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

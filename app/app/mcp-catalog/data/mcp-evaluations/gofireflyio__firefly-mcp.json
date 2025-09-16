@@ -11,7 +11,8 @@
     "env": {
       "FIREFLY_ACCESS_KEY": "${user_config.firefly_access_key}",
       "FIREFLY_SECRET_KEY": "${user_config.firefly_secret_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

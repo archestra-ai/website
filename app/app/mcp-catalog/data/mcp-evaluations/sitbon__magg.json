@@ -10,7 +10,8 @@
     "args": ["serve"],
     "env": {
       "MAGG_PRIVATE_KEY": "${user_config.magg_private_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

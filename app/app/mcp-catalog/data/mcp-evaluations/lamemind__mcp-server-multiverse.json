@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@lamemind/mcp-server-multiverse@latest", "${user_config.multiverse_config_path}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

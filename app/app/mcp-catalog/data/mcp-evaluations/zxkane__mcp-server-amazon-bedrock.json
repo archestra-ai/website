@@ -13,7 +13,8 @@
       "AWS_ACCESS_KEY_ID": "${user_config.aws_access_key_id}",
       "AWS_SECRET_ACCESS_KEY": "${user_config.aws_secret_access_key}",
       "AWS_REGION": "${user_config.aws_region}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

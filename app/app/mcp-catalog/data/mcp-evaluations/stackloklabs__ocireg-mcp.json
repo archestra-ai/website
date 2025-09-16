@@ -12,7 +12,8 @@
       "OCI_TOKEN": "${user_config.oci_token}",
       "OCI_USERNAME": "${user_config.oci_username}",
       "OCI_PASSWORD": "${user_config.oci_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

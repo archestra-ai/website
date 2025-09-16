@@ -19,7 +19,8 @@
       "LONGPORT_APP_KEY": "${user_config.longport_app_key}",
       "LONGPORT_APP_SECRET": "${user_config.longport_app_secret}",
       "LONGPORT_ACCESS_TOKEN": "${user_config.longport_access_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -12,7 +12,8 @@
       "LOCAL_IP": "${user_config.local_ip}",
       "ROSBRIDGE_IP": "${user_config.rosbridge_ip}",
       "ROSBRIDGE_PORT": "${user_config.rosbridge_port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

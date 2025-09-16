@@ -15,7 +15,8 @@
       "PYTHONIOENCODING": "UTF-8",
       "ZENML_STORE_URL": "${user_config.zenml_store_url}",
       "ZENML_STORE_API_KEY": "${user_config.zenml_store_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

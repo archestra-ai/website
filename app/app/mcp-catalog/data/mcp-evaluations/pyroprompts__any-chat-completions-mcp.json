@@ -13,7 +13,8 @@
       "AI_CHAT_NAME": "${user_config.ai_chat_name}",
       "AI_CHAT_MODEL": "${user_config.ai_chat_model}",
       "AI_CHAT_BASE_URL": "${user_config.ai_chat_base_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

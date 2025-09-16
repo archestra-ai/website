@@ -10,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "main.py"],
     "env": {
       "WEB3_CAREER_API_TOKEN": "${user_config.web3_career_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

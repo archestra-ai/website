@@ -12,7 +12,8 @@
       "VIS_REQUEST_SERVER": "${user_config.vis_request_server}",
       "SERVICE_ID": "${user_config.service_id}",
       "DISABLED_TOOLS": "${user_config.disabled_tools}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -10,7 +10,8 @@
     "args": ["-y", "@currents/mcp"],
     "env": {
       "CURRENTS_API_KEY": "${user_config.currents_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

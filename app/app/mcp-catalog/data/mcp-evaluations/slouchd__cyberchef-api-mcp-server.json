@@ -19,7 +19,8 @@
     ],
     "env": {
       "CYBERCHEF_API_URL": "${user_config.cyberchef_api_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

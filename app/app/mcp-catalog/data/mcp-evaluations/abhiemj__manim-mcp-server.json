@@ -10,7 +10,8 @@
     "args": ["${__dirname}/src/manim_server.py"],
     "env": {
       "MANIM_EXECUTABLE": "${user_config.manim_executable}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -10,7 +10,8 @@
     "args": ["-y", "@iplocate/mcp-server"],
     "env": {
       "IPLOCATE_API_KEY": "${user_config.iplocate_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

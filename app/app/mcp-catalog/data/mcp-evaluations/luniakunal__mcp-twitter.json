@@ -11,7 +11,8 @@
     "env": {
       "COOKIES_PATH": "${user_config.cookies_path}",
       "ENV_FILE": "${user_config.env_file}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

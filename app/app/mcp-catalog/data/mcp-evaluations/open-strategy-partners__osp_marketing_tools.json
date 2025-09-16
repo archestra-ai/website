@@ -8,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["--from", "git+https://github.com/open-strategy-partners/osp_marketing_tools@main", "osp_marketing_tools"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -10,7 +10,8 @@
     "args": ["${__dirname}/github_graphql_mcp_server.py"],
     "env": {
       "GITHUB_TOKEN": "${user_config.github_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

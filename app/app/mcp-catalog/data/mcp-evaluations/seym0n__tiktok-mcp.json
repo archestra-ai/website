@@ -10,7 +10,8 @@
     "args": ["${__dirname}/build/index.js"],
     "env": {
       "TIKNEURON_MCP_API_KEY": "${user_config.tikneuron_mcp_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

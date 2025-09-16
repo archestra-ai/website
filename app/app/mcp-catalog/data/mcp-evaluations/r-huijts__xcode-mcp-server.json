@@ -14,7 +14,8 @@
       "PORT": "${user_config.port}",
       "DEBUG": "${user_config.debug}",
       "LOG_LEVEL": "${user_config.log_level}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

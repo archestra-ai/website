@@ -11,7 +11,8 @@
     "env": {
       "AIRTABLE_TOKEN": "${user_config.airtable_token}",
       "AIRTABLE_BASE_ID": "${user_config.airtable_base_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

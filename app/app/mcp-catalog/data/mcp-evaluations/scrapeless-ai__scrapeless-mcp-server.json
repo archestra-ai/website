@@ -13,7 +13,8 @@
       "BROWSER_PROFILE_ID": "${user_config.browser_profile_id}",
       "BROWSER_PROFILE_PERSIST": "${user_config.browser_profile_persist}",
       "BROWSER_SESSION_TTL": "${user_config.browser_session_ttl}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

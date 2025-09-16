@@ -12,7 +12,8 @@
       "GITHUB_TOKEN": "${user_config.github_token}",
       "DEFAULT_AUTO_OPEN": "${user_config.default_auto_open}",
       "DEFAULT_OUTPUT_MODE": "${user_config.default_output_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

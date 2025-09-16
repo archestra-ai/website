@@ -15,7 +15,8 @@
       "HYDROLIX_PORT": "${user_config.hydrolix_port}",
       "HYDROLIX_VERIFY": "${user_config.hydrolix_verify}",
       "HYDROLIX_DATABASE": "${user_config.hydrolix_database}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -10,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "k6_server.py"],
     "env": {
       "K6_BIN": "${user_config.k6_bin}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

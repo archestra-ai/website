@@ -11,7 +11,8 @@
     "env": {
       "FLIPT_API_URL": "${user_config.flipt_api_url}",
       "FLIPT_API_KEY": "${user_config.flipt_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

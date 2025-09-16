@@ -14,7 +14,8 @@
       "STRAVA_ACCESS_TOKEN": "${user_config.strava_access_token}",
       "STRAVA_REFRESH_TOKEN": "${user_config.strava_refresh_token}",
       "ROUTE_EXPORT_PATH": "${user_config.route_export_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

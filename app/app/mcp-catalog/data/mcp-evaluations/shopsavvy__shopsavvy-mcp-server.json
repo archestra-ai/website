@@ -10,7 +10,8 @@
     "args": ["@shopsavvy/mcp-server"],
     "env": {
       "SHOPSAVVY_API_KEY": "${user_config.shopsavvy_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

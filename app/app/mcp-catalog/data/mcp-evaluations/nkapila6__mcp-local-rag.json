@@ -18,7 +18,8 @@
     ],
     "env": {
       "DOCKER_CONTAINER": "${user_config.docker_container}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

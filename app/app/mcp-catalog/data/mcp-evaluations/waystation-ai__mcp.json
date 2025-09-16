@@ -8,7 +8,8 @@
   "server": {
     "command": "mcp-remote-proxy",
     "args": ["https://waystation.ai/mcp/${user_config.user_unique_id}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

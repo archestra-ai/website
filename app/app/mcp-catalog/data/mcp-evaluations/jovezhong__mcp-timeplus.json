@@ -20,7 +20,8 @@
       "TIMEPLUS_DATABASE": "${user_config.timeplus_database}",
       "TIMEPLUS_READ_ONLY": "${user_config.timeplus_read_only}",
       "TIMEPLUS_KAFKA_CONFIG": "${user_config.timeplus_kafka_config}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

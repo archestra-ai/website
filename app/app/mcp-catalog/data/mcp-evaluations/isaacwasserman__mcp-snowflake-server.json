@@ -27,7 +27,8 @@
       "SNOWFLAKE_WAREHOUSE": "${user_config.snowflake_warehouse}",
       "SNOWFLAKE_PASSWORD": "${user_config.snowflake_password}",
       "SNOWFLAKE_AUTHENTICATOR": "${user_config.snowflake_authenticator}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -18,7 +18,8 @@
       "CRDB_SSL_CA_PATH": "${user_config.crdb_ssl_ca_path}",
       "CRDB_SSL_KEYFILE": "${user_config.crdb_ssl_keyfile}",
       "CRDB_SSL_CERTFILE": "${user_config.crdb_ssl_certfile}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

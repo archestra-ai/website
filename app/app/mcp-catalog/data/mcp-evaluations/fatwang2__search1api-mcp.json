@@ -10,7 +10,8 @@
     "args": ["-y", "search1api-mcp"],
     "env": {
       "SEARCH1API_KEY": "${user_config.search1api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

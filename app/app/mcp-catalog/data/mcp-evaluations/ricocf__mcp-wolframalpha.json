@@ -11,7 +11,8 @@
     "env": {
       "WOLFRAM_API_KEY": "${user_config.wolfram_api_key}",
       "GeminiAPI": "${user_config.gemini_api}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

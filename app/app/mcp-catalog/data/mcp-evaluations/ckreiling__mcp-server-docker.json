@@ -10,7 +10,8 @@
     "args": ["mcp-server-docker"],
     "env": {
       "DOCKER_HOST": "${user_config.docker_host}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

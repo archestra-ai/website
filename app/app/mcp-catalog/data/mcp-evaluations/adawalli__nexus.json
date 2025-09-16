@@ -15,7 +15,8 @@
       "OPENROUTER_TIMEOUT_MS": "${user_config.openrouter_timeout_ms}",
       "OPENROUTER_MAX_RETRIES": "${user_config.openrouter_max_retries}",
       "OPENROUTER_BASE_URL": "${user_config.openrouter_base_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

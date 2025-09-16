@@ -10,7 +10,8 @@
     "args": ["logfire-mcp@latest"],
     "env": {
       "LOGFIRE_READ_TOKEN": "${user_config.logfire_read_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

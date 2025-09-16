@@ -12,7 +12,8 @@
       "RAD_SECURITY_ACCESS_KEY_ID": "${user_config.rad_security_access_key_id}",
       "RAD_SECURITY_SECRET_KEY": "${user_config.rad_security_secret_key}",
       "RAD_SECURITY_ACCOUNT_ID": "${user_config.rad_security_account_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

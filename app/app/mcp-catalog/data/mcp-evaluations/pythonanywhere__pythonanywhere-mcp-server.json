@@ -11,7 +11,8 @@
     "env": {
       "API_TOKEN": "${user_config.api_token}",
       "LOGNAME": "${user_config.logname}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

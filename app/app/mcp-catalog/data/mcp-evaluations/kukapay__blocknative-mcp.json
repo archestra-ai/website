@@ -10,7 +10,8 @@
     "args": ["-m", "blocknative_mcp"],
     "env": {
       "BLOCKNATIVE_API_KEY": "${user_config.blocknative_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

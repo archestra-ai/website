@@ -10,7 +10,8 @@
     "args": ["-y", "agentql-mcp"],
     "env": {
       "AGENTQL_API_KEY": "${user_config.agentql_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

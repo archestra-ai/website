@@ -12,7 +12,8 @@
       "GOOGLE_EMAIL": "${user_config.google_email}",
       "GOOGLE_MASTER_TOKEN": "${user_config.google_master_token}",
       "UNSAFE_MODE": "${user_config.unsafe_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

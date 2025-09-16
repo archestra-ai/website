@@ -16,7 +16,8 @@
       "SNOWFLAKE_DATABASE": "${user_config.snowflake_database}",
       "SNOWFLAKE_SCHEMA": "${user_config.snowflake_schema}",
       "MCP_READ_ONLY": "${user_config.mcp_read_only}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

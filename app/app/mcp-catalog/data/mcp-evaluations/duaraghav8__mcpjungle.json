@@ -10,7 +10,8 @@
     "args": ["start"],
     "env": {
       "DATABASE_URL": "${user_config.database_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

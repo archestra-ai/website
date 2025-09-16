@@ -28,7 +28,8 @@
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
       "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
       "SERENA_DISABLE_INDEXING": "${user_config.disable_indexing}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

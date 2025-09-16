@@ -11,7 +11,8 @@
     "env": {
       "DATABASE_URL": "${user_config.database_url}",
       "AUTH_TOKEN": "${user_config.auth_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

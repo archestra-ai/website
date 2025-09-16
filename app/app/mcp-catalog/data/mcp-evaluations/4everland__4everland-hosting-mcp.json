@@ -10,7 +10,8 @@
     "args": ["-y", "@4everland/hosting-mcp@latest", "serve"],
     "env": {
       "TOKEN": "${user_config.token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

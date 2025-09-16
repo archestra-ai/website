@@ -10,7 +10,8 @@
     "args": ["-y", "@burtthecoder/mcp-shodan"],
     "env": {
       "SHODAN_API_KEY": "${user_config.shodan_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -10,7 +10,8 @@
     "args": ["run", "--directory", "${__dirname}", "homebrew_mcp.py"],
     "env": {
       "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

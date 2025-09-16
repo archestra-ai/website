@@ -11,7 +11,8 @@
     "env": {
       "SLACK_MCP_XOXC_TOKEN": "${user_config.slack_mcp_xoxc_token}",
       "SLACK_MCP_XOXD_TOKEN": "${user_config.slack_mcp_xoxd_token}"
-    }
+    },
+    "type": "local"
   },
   "readme": null,
   "category": "AI Tools",

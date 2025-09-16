@@ -10,7 +10,8 @@
     "args": ["${__dirname}/main.py"],
     "env": {
       "SOLSNIFFER_API_KEY": "${user_config.solsniffer_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

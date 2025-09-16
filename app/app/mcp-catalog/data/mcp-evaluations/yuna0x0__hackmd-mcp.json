@@ -11,7 +11,8 @@
     "env": {
       "HACKMD_API_TOKEN": "${user_config.hackmd_api_token}",
       "HACKMD_API_URL": "${user_config.hackmd_api_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

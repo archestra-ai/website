@@ -10,7 +10,8 @@
     "args": ["-y", "balldontlie-mcp"],
     "env": {
       "BALLDONTLIE_API_KEY": "${user_config.balldontlie_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

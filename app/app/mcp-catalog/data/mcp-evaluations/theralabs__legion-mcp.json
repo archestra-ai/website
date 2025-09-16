@@ -12,7 +12,8 @@
       "DB_TYPE": "${user_config.db_type}",
       "DB_CONFIG": "${user_config.db_config}",
       "DB_CONFIGS": "${user_config.db_configs}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

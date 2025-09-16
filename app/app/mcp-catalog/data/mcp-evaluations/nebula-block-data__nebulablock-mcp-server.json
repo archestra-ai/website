@@ -10,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "-m", "src.main"],
     "env": {
       "NEBULA_BLOCK_API_KEY": "${user_config.nebula_block_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

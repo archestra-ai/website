@@ -11,7 +11,8 @@
     "env": {
       "EXTENSION_SECRET": "${user_config.extension_secret}",
       "EXTENSION_PORT": "${user_config.extension_port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

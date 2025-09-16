@@ -24,7 +24,8 @@
       "DBT_PATH": "${user_config.dbt_path}",
       "DBT_CLI_TIMEOUT": "${user_config.dbt_cli_timeout}",
       "DBT_WARN_ERROR_OPTIONS": "${user_config.dbt_warn_error_options}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

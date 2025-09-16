@@ -10,7 +10,8 @@
     "args": ["opengenes-mcp"],
     "env": {
       "MCP_TRANSPORT": "${user_config.mcp_transport}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -11,7 +11,8 @@
     "env": {
       "INFURA_KEY": "${user_config.infura_key}",
       "WALLET_PRIVATE_KEY": "${user_config.wallet_private_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

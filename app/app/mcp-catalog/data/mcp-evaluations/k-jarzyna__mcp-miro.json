@@ -10,7 +10,8 @@
     "args": ["-y", "@k-jarzyna/mcp-miro"],
     "env": {
       "MIRO_ACCESS_TOKEN": "${user_config.miro_access_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

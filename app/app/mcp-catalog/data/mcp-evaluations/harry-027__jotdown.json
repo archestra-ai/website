@@ -10,7 +10,8 @@
     "args": [],
     "env": {
       "NOTION_TOKEN": "${user_config.notion_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

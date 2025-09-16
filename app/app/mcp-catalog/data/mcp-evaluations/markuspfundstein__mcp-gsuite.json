@@ -17,7 +17,8 @@
       "--credentials-dir",
       "${user_config.credentials_dir}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

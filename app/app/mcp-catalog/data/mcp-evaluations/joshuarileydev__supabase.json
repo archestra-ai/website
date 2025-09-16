@@ -10,7 +10,8 @@
     "args": ["-y", "@joshuarileydev/supabase-mcp-server"],
     "env": {
       "SUPABASE_API_KEY": "${user_config.supabase_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

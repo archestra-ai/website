@@ -11,7 +11,8 @@
     "env": {
       "LEETCODE_SITE": "${user_config.leetcode_site}",
       "LEETCODE_SESSION": "${user_config.leetcode_session}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

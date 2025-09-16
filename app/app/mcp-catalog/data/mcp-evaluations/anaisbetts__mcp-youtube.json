@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@anaisbetts/mcp-youtube"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

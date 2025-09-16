@@ -8,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["-m", "server.main"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

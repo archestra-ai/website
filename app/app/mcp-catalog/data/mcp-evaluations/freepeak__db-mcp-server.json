@@ -21,7 +21,8 @@
       "TRANSPORT_MODE": "${user_config.transport_mode}",
       "CONFIG_PATH": "${user_config.config_path}",
       "DB_CONFIG": "${user_config.db_config}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

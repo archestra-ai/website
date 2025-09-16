@@ -14,7 +14,8 @@
       "--output-format",
       "${user_config.output_format}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

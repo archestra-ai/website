@@ -15,7 +15,8 @@
       "LOG_LEVEL": "${user_config.log_level}",
       "UPDATE_INTERVAL": "${user_config.update_interval}",
       "MAX_CONCURRENT_SCRAPES": "${user_config.max_concurrent_scrapes}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

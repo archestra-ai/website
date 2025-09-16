@@ -10,7 +10,8 @@
     "args": ["${__dirname}/roadrecon_mcp_server.py"],
     "env": {
       "ROADRECON_URL": "${user_config.roadrecon_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -8,7 +8,8 @@
   "server": {
     "command": "docker",
     "args": ["run", "furey/mongodb-lens"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

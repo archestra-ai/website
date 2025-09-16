@@ -8,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/apktool_mcp_server.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

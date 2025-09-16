@@ -8,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["--from", "git+https://github.com/hyperb1iss/droidmind", "droidmind", "--transport", "stdio"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

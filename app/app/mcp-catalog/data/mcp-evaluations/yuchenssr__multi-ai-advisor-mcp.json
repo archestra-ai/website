@@ -17,7 +17,8 @@
       "GEMMA_SYSTEM_PROMPT": "${user_config.gemma_system_prompt}",
       "LLAMA_SYSTEM_PROMPT": "${user_config.llama_system_prompt}",
       "DEEPSEEK_SYSTEM_PROMPT": "${user_config.deepseek_system_prompt}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

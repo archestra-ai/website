@@ -30,7 +30,8 @@
       "DOCUMENT_ID": "${user_config.document_id}",
       "RUNTIME_URL": "${user_config.runtime_url}",
       "RUNTIME_TOKEN": "${user_config.runtime_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

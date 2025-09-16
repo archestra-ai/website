@@ -12,7 +12,8 @@
       "FEISHU_APP_ID": "${user_config.feishu_app_id}",
       "FEISHU_APP_SECRET": "${user_config.feishu_app_secret}",
       "COOKIE_ENCRYPTION_KEY": "${user_config.cookie_encryption_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

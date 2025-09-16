@@ -10,7 +10,8 @@
     "args": ["${user_config.mcp_repository_path}/main.py"],
     "env": {
       "IDF_PATH": "${user_config.idf_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

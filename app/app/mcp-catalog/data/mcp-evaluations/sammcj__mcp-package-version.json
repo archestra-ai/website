@@ -15,7 +15,8 @@
       "--base-url",
       "${user_config.base_url}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

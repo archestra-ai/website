@@ -12,7 +12,8 @@
       "APPLE_SHORTCUTS_API_KEY": "${user_config.apple_shortcuts_api_key}",
       "MCP_SERVER_PORT": "${user_config.mcp_server_port}",
       "SHORTCUTS_DATA_DIR": "${user_config.shortcuts_data_dir}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

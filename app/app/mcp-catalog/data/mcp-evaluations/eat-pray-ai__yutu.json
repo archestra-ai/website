@@ -11,7 +11,8 @@
     "env": {
       "YUTU_CREDENTIAL": "${user_config.yutu_credential}",
       "YUTU_CACHE_TOKEN": "${user_config.yutu_cache_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

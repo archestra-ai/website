@@ -15,7 +15,8 @@
       "WEBSCRAPING_AI_DEFAULT_JS_RENDERING": "${user_config.webscraping_ai_default_js_rendering}",
       "WEBSCRAPING_AI_DEFAULT_TIMEOUT": "${user_config.webscraping_ai_default_timeout}",
       "WEBSCRAPING_AI_DEFAULT_JS_TIMEOUT": "${user_config.webscraping_ai_default_js_timeout}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

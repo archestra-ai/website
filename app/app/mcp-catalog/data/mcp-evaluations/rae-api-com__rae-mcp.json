@@ -8,7 +8,8 @@
   "server": {
     "command": "./rae-mpc",
     "args": ["--transport", "${user_config.transport}", "--port", "${user_config.port}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -11,7 +11,8 @@
     "env": {
       "DEBUG": "${user_config.debug}",
       "GODOT_PATH": "${user_config.godot_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -17,7 +17,8 @@
     "env": {
       "AUTH_HEADER": "${user_config.auth_header}",
       "OPENAI_API_KEY": "${user_config.openai_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

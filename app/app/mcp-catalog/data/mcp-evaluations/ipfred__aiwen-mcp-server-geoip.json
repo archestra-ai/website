@@ -12,7 +12,8 @@
       "AIWEN_API_KEY": "${user_config.aiwen_api_key}",
       "IPV4_ACCURACY": "${user_config.ipv4_accuracy}",
       "IPV6_ACCURACY": "${user_config.ipv6_accuracy}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

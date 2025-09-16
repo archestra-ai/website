@@ -27,7 +27,8 @@
       "MCP_HOST": "${user_config.mcp_host}",
       "MCP_PORT": "${user_config.mcp_port}",
       "LOG_LEVEL": "${user_config.log_level}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

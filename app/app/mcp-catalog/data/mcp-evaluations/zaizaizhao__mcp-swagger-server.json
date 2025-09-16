@@ -14,7 +14,8 @@
       "MCP_OPENAPI_URL": "${user_config.mcp_openapi_url}",
       "MCP_AUTH_TYPE": "${user_config.mcp_auth_type}",
       "API_TOKEN": "${user_config.api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -20,7 +20,8 @@
       "CHDB_ENABLED": "${user_config.chdb_enabled}",
       "CLICKHOUSE_ENABLED": "${user_config.clickhouse_enabled}",
       "CHDB_DATA_PATH": "${user_config.chdb_data_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

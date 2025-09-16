@@ -10,7 +10,8 @@
     "args": ["run", "--with", "fastmcp", "fastmcp", "run", "./server.py"],
     "env": {
       "UNSPLASH_ACCESS_KEY": "${user_config.unsplash_access_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

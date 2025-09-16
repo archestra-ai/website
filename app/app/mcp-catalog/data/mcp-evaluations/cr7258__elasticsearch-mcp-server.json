@@ -12,7 +12,8 @@
       "ELASTICSEARCH_HOSTS": "${user_config.elasticsearch_hosts}",
       "ELASTICSEARCH_USERNAME": "${user_config.elasticsearch_username}",
       "ELASTICSEARCH_PASSWORD": "${user_config.elasticsearch_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

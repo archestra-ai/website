@@ -12,7 +12,8 @@
       "OPIK_API_BASE_URL": "${user_config.opik_api_base_url}",
       "OPIK_API_KEY": "${user_config.opik_api_key}",
       "OPIK_WORKSPACE_NAME": "${user_config.opik_workspace_name}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

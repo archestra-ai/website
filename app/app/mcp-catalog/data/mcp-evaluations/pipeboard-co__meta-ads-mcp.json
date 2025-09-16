@@ -10,7 +10,8 @@
     "args": ["meta-ads-mcp"],
     "env": {
       "PIPEBOARD_API_TOKEN": "${user_config.pipeboard_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

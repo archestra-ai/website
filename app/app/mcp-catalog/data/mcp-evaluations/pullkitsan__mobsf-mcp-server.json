@@ -11,7 +11,8 @@
     "env": {
       "MOBSF_API_KEY": "${user_config.mobsf_api_key}",
       "MOBSF_URL": "${user_config.mobsf_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

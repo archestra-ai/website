@@ -12,7 +12,8 @@
       "DAISYS_EMAIL": "${user_config.daisys_email}",
       "DAISYS_PASSWORD": "${user_config.daisys_password}",
       "DAISYS_BASE_STORAGE_PATH": "${user_config.daisys_base_storage_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

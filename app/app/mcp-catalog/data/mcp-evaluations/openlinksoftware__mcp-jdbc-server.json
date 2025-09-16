@@ -13,7 +13,8 @@
       "jdbc.user": "${user_config.jdbc_user}",
       "jdbc.password": "${user_config.jdbc_password}",
       "jdbc.api_key": "${user_config.jdbc_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

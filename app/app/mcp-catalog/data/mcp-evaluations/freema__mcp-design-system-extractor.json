@@ -10,7 +10,8 @@
     "args": ["-y", "@freema/mcp-design-system-extractor"],
     "env": {
       "STORYBOOK_URL": "${user_config.storybook_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

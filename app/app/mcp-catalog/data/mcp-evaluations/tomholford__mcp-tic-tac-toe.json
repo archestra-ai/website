@@ -8,7 +8,8 @@
   "server": {
     "command": "${__dirname}/bin/server",
     "args": ["-transport=stdio"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "json-mcp-filter@latest"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

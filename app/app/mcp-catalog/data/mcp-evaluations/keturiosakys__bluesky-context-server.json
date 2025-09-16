@@ -11,7 +11,8 @@
     "env": {
       "BLUESKY_APP_KEY": "${user_config.bluesky_app_key}",
       "BLUESKY_IDENTIFIER": "${user_config.bluesky_identifier}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

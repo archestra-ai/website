@@ -21,7 +21,8 @@
       "CAPTION_MODEL_PATH": "${user_config.caption_model_path}",
       "OMNI_PARSER_DEVICE": "${user_config.omni_parser_device}",
       "BOX_TRESHOLD": "${user_config.box_treshold}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -12,7 +12,8 @@
       "NOCODB_URL": "${user_config.nocodb_url}",
       "NOCODB_BASE_ID": "${user_config.nocodb_base_id}",
       "NOCODB_API_TOKEN": "${user_config.nocodb_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

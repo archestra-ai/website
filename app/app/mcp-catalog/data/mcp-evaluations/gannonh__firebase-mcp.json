@@ -16,7 +16,8 @@
       "MCP_HTTP_HOST": "${user_config.mcp_http_host}",
       "MCP_HTTP_PATH": "${user_config.mcp_http_path}",
       "DEBUG_LOG_FILE": "${user_config.debug_log_file}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

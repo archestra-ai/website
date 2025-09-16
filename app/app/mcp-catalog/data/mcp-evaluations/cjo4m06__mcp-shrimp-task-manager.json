@@ -13,7 +13,8 @@
       "DATA_DIR": "${user_config.data_dir}",
       "WEB_PORT": "${user_config.web_port}",
       "TEMPLATES_USE": "${user_config.templates_use}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

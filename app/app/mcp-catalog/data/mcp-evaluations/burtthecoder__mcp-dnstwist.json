@@ -8,7 +8,8 @@
   "server": {
     "command": "node",
     "args": ["${__dirname}/build/index.js"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

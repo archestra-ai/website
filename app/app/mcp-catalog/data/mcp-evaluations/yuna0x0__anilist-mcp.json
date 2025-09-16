@@ -10,7 +10,8 @@
     "args": ["-y", "anilist-mcp"],
     "env": {
       "ANILIST_TOKEN": "${user_config.anilist_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

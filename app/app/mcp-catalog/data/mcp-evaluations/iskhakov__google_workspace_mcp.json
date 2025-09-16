@@ -19,7 +19,8 @@
       "GOOGLE_OAUTH_CLIENT_SECRET": "dummy",
       "MCP_ENABLE_OAUTH21": "true",
       "MCP_TOKEN_ONLY_MODE": "true"
-    }
+    },
+    "type": "local"
   },
   "oauth_config": {
     "name": "Google OAuth",

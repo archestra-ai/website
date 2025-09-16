@@ -17,7 +17,8 @@
     "env": {
       "DRUID_BROKER_URL": "${user_config.druid_broker_url}",
       "DRUID_COORDINATOR_URL": "${user_config.druid_coordinator_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

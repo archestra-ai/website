@@ -13,7 +13,8 @@
       "NTFY_URL": "${user_config.ntfy_url}",
       "NTFY_TOKEN": "${user_config.ntfy_token}",
       "PROTECTED_TOPIC": "${user_config.protected_topic}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

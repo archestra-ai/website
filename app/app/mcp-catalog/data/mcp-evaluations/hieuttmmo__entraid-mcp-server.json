@@ -12,7 +12,8 @@
       "TENANT_ID": "${user_config.tenant_id}",
       "CLIENT_ID": "${user_config.client_id}",
       "CLIENT_SECRET": "${user_config.client_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

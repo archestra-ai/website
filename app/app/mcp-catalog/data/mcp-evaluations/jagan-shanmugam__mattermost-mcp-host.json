@@ -24,7 +24,8 @@
       "GOOGLE_API_KEY": "${user_config.google_api_key}",
       "COMMAND_PREFIX": "${user_config.command_prefix}",
       "TAVILY_API_KEY": "${user_config.tavily_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

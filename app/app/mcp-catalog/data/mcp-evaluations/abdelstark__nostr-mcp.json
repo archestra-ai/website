@@ -15,7 +15,8 @@
       "NOSTR_NSEC_KEY": "${user_config.nostr_nsec_key}",
       "SERVER_MODE": "${user_config.server_mode}",
       "PORT": "${user_config.port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

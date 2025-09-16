@@ -8,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["biothings-mcp", "--output-dir", "${user_config.output_dir}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

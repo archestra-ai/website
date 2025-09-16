@@ -10,7 +10,8 @@
     "args": ["attio-mcp-server"],
     "env": {
       "ATTIO_API_KEY": "${user_config.attio_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

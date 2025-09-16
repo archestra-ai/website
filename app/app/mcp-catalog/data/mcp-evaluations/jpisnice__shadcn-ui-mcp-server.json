@@ -11,7 +11,8 @@
     "env": {
       "GITHUB_PERSONAL_ACCESS_TOKEN": "${user_config.github_personal_access_token}",
       "FRAMEWORK": "${user_config.framework}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

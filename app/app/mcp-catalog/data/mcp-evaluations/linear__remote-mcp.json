@@ -2,8 +2,6 @@
   "name": "linear__remote-mcp",
   "display_name": "Linear",
   "description": "Remote MCP server for Linear - issue tracking and project management",
-  "remote_url": "https://mcp.linear.app/mcp",
-  "remote_mcp_docs_url": "https://linear.app/docs/mcp",
   "tools": [],
   "prompts": [],
   "user_config": {},
@@ -26,18 +24,28 @@
     "name": "Linear MCP",
     "server_url": "https://mcp.linear.app/mcp",
     "client_id": "",
-    "redirect_uris": ["http://localhost:8080/oauth/callback"],
-    "scopes": ["read", "write"],
+    "redirect_uris": [
+      "http://localhost:8080/oauth/callback"
+    ],
+    "scopes": [
+      "read",
+      "write"
+    ],
     "description": "Linear MCP Server (dynamic registration)",
-    "default_scopes": ["read", "write"],
+    "default_scopes": [
+      "read",
+      "write"
+    ],
     "supports_resource_metadata": true
   },
   "author": {
     "name": "linear"
   },
   "server": {
-    "command": "remote",
-    "args": [],
-    "env": {}
-  }
+    "type": "remote",
+    "url": "https://mcp.linear.app/mcp",
+    "docs_url": "https://linear.app/docs/mcp"
+  },
+  "github_info": null,
+  "programming_language": null
 }

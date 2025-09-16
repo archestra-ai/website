@@ -8,7 +8,8 @@
   "server": {
     "command": "mcp-server-ancestry",
     "args": ["--gedcom-path", "${user_config.gedcom_path}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

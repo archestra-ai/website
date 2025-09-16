@@ -11,7 +11,8 @@
     "env": {
       "FORGE_CONFIG": "${user_config.forge_config}",
       "FORGE_DEBUG": "${user_config.forge_debug}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

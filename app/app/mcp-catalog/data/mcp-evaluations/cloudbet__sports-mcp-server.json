@@ -8,7 +8,8 @@
   "server": {
     "command": "go",
     "args": ["run", "."],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -8,7 +8,8 @@
   "server": {
     "command": "uv",
     "args": ["--directory", "${__dirname}", "run", "mcp_server_datavis", "--output_type", "${user_config.output_type}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

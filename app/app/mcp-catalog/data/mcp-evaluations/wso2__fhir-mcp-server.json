@@ -16,7 +16,8 @@
       "FHIR_MCP_HOST": "${user_config.fhir_mcp_host}",
       "FHIR_MCP_PORT": "${user_config.fhir_mcp_port}",
       "FHIR_SERVER_ACCESS_TOKEN": "${user_config.fhir_server_access_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

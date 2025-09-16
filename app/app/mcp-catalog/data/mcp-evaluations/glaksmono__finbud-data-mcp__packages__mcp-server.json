@@ -11,7 +11,8 @@
     "env": {
       "FINBUD_DATA_API_KEY": "${user_config.finbud_data_api_key}",
       "FINBUD_DATA_BASE_URL": "${user_config.finbud_data_base_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

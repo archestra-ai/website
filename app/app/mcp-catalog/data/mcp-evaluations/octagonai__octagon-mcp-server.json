@@ -10,7 +10,8 @@
     "args": ["-y", "octagon-mcp@latest"],
     "env": {
       "OCTAGON_API_KEY": "${user_config.octagon_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

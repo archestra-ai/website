@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "aibolit-mcp-server@0.0.6"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

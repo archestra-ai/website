@@ -10,7 +10,8 @@
     "args": ["${user_config.crate_package_id}", "--features", "${user_config.crate_features}"],
     "env": {
       "OPENAI_API_KEY": "${user_config.openai_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

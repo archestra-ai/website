@@ -10,7 +10,8 @@
     "args": ["-y", "mcp-ipfs"],
     "env": {
       "W3_LOGIN_EMAIL": "${user_config.w3_login_email}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

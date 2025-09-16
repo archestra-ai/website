@@ -11,7 +11,8 @@
     "env": {
       "CRYPTOPANIC_API_PLAN": "${user_config.cryptopanic_api_plan}",
       "CRYPTOPANIC_API_KEY": "${user_config.cryptopanic_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

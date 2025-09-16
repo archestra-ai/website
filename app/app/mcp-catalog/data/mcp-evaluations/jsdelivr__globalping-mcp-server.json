@@ -11,7 +11,8 @@
     "env": {
       "GLOBALPING_CLIENT_ID": "${user_config.globalping_client_id}",
       "OAUTH_KV": "${user_config.oauth_kv}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

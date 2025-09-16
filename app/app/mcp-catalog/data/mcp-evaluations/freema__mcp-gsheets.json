@@ -12,7 +12,8 @@
       "GOOGLE_PROJECT_ID": "${user_config.google_project_id}",
       "GOOGLE_APPLICATION_CREDENTIALS": "${user_config.google_application_credentials}",
       "GOOGLE_SERVICE_ACCOUNT_KEY": "${user_config.google_service_account_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

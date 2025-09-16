@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@mcpdotdirect/evm-mcp-server"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

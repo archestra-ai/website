@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "mcp-sqlite", "${user_config.database_path}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

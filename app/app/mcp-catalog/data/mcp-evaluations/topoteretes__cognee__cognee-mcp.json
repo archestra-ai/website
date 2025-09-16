@@ -26,7 +26,8 @@
       "EMBEDDING_MODEL": "${user_config.embedding_model}",
       "EMBEDDING_DIMENSIONS": "${user_config.embedding_dimensions}",
       "EMBEDDING_MAX_TOKENS": "${user_config.embedding_max_tokens}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

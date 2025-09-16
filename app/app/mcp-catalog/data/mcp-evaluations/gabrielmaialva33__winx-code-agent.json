@@ -10,7 +10,8 @@
     "args": [],
     "env": {
       "RUST_LOG": "${user_config.rust_log}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

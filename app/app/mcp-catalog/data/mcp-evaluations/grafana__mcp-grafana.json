@@ -13,7 +13,8 @@
       "--disable-navigation",
       "${user_config.disable_navigation}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -8,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["-m", "odmcp", "--provider", "${user_config.provider_name}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -11,7 +11,8 @@
     "env": {
       "KAGGLE_USERNAME": "${user_config.kaggle_username}",
       "KAGGLE_KEY": "${user_config.kaggle_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

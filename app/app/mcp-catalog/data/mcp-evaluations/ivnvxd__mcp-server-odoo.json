@@ -17,7 +17,8 @@
       "ODOO_MCP_TRANSPORT": "${user_config.odoo_mcp_transport}",
       "ODOO_MCP_HOST": "${user_config.odoo_mcp_host}",
       "ODOO_MCP_PORT": "${user_config.odoo_mcp_port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

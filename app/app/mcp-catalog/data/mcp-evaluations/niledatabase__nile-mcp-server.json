@@ -12,7 +12,8 @@
       "NILE_API_KEY": "${user_config.nile_api_key}",
       "NILE_WORKSPACE_SLUG": "${user_config.nile_workspace_slug}",
       "MCP_SERVER_MODE": "${user_config.mcp_server_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

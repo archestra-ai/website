@@ -10,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "main.py"],
     "env": {
       "GOOGLE_API_KEY": "${user_config.google_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

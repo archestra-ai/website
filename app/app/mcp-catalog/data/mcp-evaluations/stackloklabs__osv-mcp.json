@@ -11,7 +11,8 @@
     "env": {
       "MCP_PORT": "${user_config.mcp_port}",
       "MCP_TRANSPORT": "${user_config.mcp_transport}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

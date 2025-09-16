@@ -12,7 +12,8 @@
       "CONFLUENCE_URL": "${user_config.confluence_url}",
       "CONFLUENCE_API_MAIL": "${user_config.confluence_api_mail}",
       "CONFLUENCE_API_KEY": "${user_config.confluence_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

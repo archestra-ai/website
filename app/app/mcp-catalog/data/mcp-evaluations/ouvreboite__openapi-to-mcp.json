@@ -34,7 +34,8 @@
       "--verbose",
       "${user_config.verbose}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

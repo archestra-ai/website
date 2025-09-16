@@ -8,7 +8,8 @@
   "server": {
     "command": "uv",
     "args": ["--directory", "${user_config.src_path}", "run", "jupyter_mcp_server.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

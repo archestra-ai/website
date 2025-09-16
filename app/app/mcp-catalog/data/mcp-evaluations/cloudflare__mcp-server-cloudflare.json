@@ -10,7 +10,8 @@
     "args": ["-y", "mcp-remote", "${user_config.mcp_server_url}"],
     "env": {
       "CLOUDFLARE_API_TOKEN": "${user_config.cloudflare_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -10,7 +10,8 @@
     "args": ["${__dirname}/main.py"],
     "env": {
       "OPCUA_SERVER_URL": "${user_config.opcua_server_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

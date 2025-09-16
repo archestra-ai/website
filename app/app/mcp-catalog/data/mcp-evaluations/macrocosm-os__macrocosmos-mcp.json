@@ -10,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "macrocosmos_mcp.py"],
     "env": {
       "MC_API": "${user_config.mc_api}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

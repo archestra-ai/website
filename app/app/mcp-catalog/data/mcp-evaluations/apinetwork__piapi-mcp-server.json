@@ -10,7 +10,8 @@
     "args": ["${__dirname}/dist/index.js"],
     "env": {
       "PIAPI_API_KEY": "${user_config.piapi_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

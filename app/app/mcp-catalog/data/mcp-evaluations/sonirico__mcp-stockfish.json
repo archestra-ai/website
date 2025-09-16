@@ -19,7 +19,8 @@
       "MCP_STOCKFISH_LOG_LEVEL": "${user_config.mcp_stockfish_log_level}",
       "MCP_STOCKFISH_LOG_FORMAT": "${user_config.mcp_stockfish_log_format}",
       "MCP_STOCKFISH_LOG_OUTPUT": "${user_config.mcp_stockfish_log_output}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

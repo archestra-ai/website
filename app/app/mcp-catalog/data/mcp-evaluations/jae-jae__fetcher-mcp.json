@@ -10,7 +10,8 @@
     "args": ["-y", "fetcher-mcp"],
     "env": {
       "NODE_ENV": "${user_config.node_env}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

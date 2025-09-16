@@ -10,7 +10,8 @@
     "args": ["-y", "@open-mcp/{server-id}"],
     "env": {
       "ENV_VAR": "${user_config.env_var}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

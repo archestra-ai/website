@@ -11,7 +11,8 @@
     "env": {
       "DATA_API_TOKEN": "${user_config.data_api_token}",
       "PROVIDER": "${user_config.provider}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

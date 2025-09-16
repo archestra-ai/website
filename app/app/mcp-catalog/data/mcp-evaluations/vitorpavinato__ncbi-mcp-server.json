@@ -11,7 +11,8 @@
     "env": {
       "NCBI_EMAIL": "${user_config.ncbi_email}",
       "NCBI_API_KEY": "${user_config.ncbi_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -17,7 +17,8 @@
       "JIRA_FIELD_STORY_POINTS": "${user_config.jira_field_story_points}",
       "JIRA_FIELD_ACCEPTANCE_CRITERIA": "${user_config.jira_field_acceptance_criteria}",
       "JIRA_FIELD_EPIC_LINK": "${user_config.jira_field_epic_link}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

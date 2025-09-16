@@ -14,7 +14,8 @@
       "WEB_UNLOCKER_ZONE": "${user_config.web_unlocker_zone}",
       "BROWSER_ZONE": "${user_config.browser_zone}",
       "PRO_MODE": "${user_config.pro_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

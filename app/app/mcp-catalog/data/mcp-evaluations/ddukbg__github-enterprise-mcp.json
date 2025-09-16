@@ -13,7 +13,8 @@
       "GITHUB_ENTERPRISE_URL": "${user_config.github_enterprise_url}",
       "DEBUG": "${user_config.debug}",
       "LANGUAGE": "${user_config.language}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -15,7 +15,8 @@
       "REDIS_SSL": "${user_config.redis_ssl}",
       "REDIS_CA_PATH": "${user_config.redis_ca_path}",
       "REDIS_CLUSTER_MODE": "${user_config.redis_cluster_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

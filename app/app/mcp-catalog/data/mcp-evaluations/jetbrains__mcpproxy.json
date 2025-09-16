@@ -12,7 +12,8 @@
       "IDE_PORT": "${user_config.ide_port}",
       "HOST": "${user_config.host}",
       "LOG_ENABLED": "${user_config.log_enabled}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -12,7 +12,8 @@
       "RESOLVE_SCRIPT_API": "${user_config.resolve_script_api}",
       "RESOLVE_SCRIPT_LIB": "${user_config.resolve_script_lib}",
       "PYTHONPATH": "${user_config.resolve_script_api}/Modules/"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

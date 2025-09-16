@@ -14,7 +14,8 @@
       "SERVER_LISTEN_ADDR": "${user_config.server_listen_addr}",
       "SERVER_PORT": "${user_config.server_port}",
       "IMAGE_RESOURCE_SERVER_ADDR": "${user_config.image_resource_server_addr}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

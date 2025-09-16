@@ -12,7 +12,8 @@
       "LAST9_BASE_URL": "${user_config.last9_base_url}",
       "LAST9_AUTH_TOKEN": "${user_config.last9_auth_token}",
       "LAST9_REFRESH_TOKEN": "${user_config.last9_refresh_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -15,7 +15,8 @@
       "MAX_COMMAND_LENGTH": "${user_config.max_command_length}",
       "COMMAND_TIMEOUT": "${user_config.command_timeout}",
       "ALLOW_SHELL_OPERATORS": "${user_config.allow_shell_operators}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

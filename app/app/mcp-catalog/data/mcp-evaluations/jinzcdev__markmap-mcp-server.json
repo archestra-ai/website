@@ -10,7 +10,8 @@
     "args": ["-y", "@jinzcdev/markmap-mcp-server"],
     "env": {
       "MARKMAP_DIR": "${user_config.markmap_dir}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

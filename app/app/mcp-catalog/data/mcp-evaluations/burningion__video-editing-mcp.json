@@ -10,7 +10,8 @@
     "args": ["video-editor-mcp", "${user_config.api_key}"],
     "env": {
       "LOAD_PHOTOS_DB": "${user_config.load_photos_db}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -8,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["blender-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

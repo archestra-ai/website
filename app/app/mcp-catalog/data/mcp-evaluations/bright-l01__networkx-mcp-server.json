@@ -8,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["-m", "networkx_mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

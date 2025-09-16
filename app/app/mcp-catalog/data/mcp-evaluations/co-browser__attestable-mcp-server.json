@@ -19,7 +19,8 @@
       "--rm",
       "gsc-attestable-mcp-server"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

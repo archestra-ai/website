@@ -12,7 +12,8 @@
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
       "CHROME_PATH": "${user_config.chrome_path}",
       "PATIENT": "${user_config.patient}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

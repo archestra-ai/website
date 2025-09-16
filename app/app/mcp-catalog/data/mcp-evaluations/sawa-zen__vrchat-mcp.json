@@ -11,7 +11,8 @@
     "env": {
       "VRCHAT_USERNAME": "${user_config.vrchat_username}",
       "VRCHAT_AUTH_TOKEN": "${user_config.vrchat_auth_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

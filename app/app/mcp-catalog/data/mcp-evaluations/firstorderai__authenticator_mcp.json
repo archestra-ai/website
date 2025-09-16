@@ -10,7 +10,8 @@
     "args": ["-y", "authenticator-mcp"],
     "env": {
       "AUTHENTICATOR_ACCESS_TOKEN": "${user_config.authenticator_access_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

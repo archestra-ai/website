@@ -10,7 +10,8 @@
     "args": ["-u", "${__dirname}/pyats_mcp_server.py"],
     "env": {
       "PYATS_TESTBED_PATH": "${user_config.pyats_testbed_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

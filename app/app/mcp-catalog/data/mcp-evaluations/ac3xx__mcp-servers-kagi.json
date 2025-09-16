@@ -10,7 +10,8 @@
     "args": ["${__dirname}/build/index.js"],
     "env": {
       "KAGI_API_KEY": "${user_config.kagi_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

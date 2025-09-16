@@ -10,7 +10,8 @@
     "args": [],
     "env": {
       "SOLSCAN_API_KEY": "${user_config.solscan_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -10,7 +10,8 @@
     "args": ["-y", "@tatumio/blockchain-mcp"],
     "env": {
       "TATUM_API_KEY": "${user_config.tatum_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

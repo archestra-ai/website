@@ -11,7 +11,8 @@
     "env": {
       "MCP_MONGODB_URI": "${user_config.mcp_mongodb_uri}",
       "MCP_MONGODB_READONLY": "${user_config.mcp_mongodb_readonly}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

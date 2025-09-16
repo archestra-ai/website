@@ -11,7 +11,8 @@
     "env": {
       "RAYGUN_PAT_TOKEN": "${user_config.raygun_pat_token}",
       "SOURCEMAP_ALLOWED_DIRS": "${user_config.sourcemap_allowed_dirs}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

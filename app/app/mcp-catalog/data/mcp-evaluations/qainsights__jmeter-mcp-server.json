@@ -12,7 +12,8 @@
       "JMETER_HOME": "${user_config.jmeter_home}",
       "JMETER_BIN": "${user_config.jmeter_bin}",
       "JMETER_JAVA_OPTS": "${user_config.jmeter_java_opts}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

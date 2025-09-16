@@ -12,7 +12,8 @@
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
       "QDRANT_URL": "${user_config.qdrant_url}",
       "QDRANT_API_KEY": "${user_config.qdrant_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

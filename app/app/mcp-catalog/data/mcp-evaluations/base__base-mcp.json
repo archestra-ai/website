@@ -18,7 +18,8 @@
       "CHAIN_ID": "${user_config.chain_id}",
       "NEYNAR_API_KEY": "${user_config.neynar_api_key}",
       "PINATA_JWT": "${user_config.pinata_jwt}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

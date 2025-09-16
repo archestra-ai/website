@@ -11,7 +11,8 @@
     "env": {
       "SOLANA_RPC_URL": "${user_config.solana_rpc_url}",
       "PRIVATE_KEY": "${user_config.private_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

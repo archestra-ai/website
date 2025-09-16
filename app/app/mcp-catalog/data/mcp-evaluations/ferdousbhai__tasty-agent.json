@@ -12,7 +12,8 @@
       "TASTYTRADE_USERNAME": "${user_config.tastytrade_username}",
       "TASTYTRADE_PASSWORD": "${user_config.tastytrade_password}",
       "TASTYTRADE_ACCOUNT_ID": "${user_config.tastytrade_account_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

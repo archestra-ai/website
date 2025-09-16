@@ -27,7 +27,8 @@
       "SOME_API_KEY": "${user_config.some_api_key}",
       "WEATHERBIT_API_KEY": "${user_config.weatherbit_api_key}",
       "REQUEST_HEADERS": "${user_config.request_headers}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -8,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["mcp-server-git", "--repository", "${user_config.repo_path}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

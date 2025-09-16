@@ -10,7 +10,8 @@
     "args": ["${__dirname}/dist/index.js", "--transport=stdio", "--username=${user_config.docker_hub_username}"],
     "env": {
       "HUB_PAT_TOKEN": "${user_config.hub_pat_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

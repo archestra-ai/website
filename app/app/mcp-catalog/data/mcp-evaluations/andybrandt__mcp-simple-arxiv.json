@@ -8,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["-m", "mcp_simple_arxiv"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -8,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/lucidity_mcp/cli.py", "--transport", "sse", "--host", "127.0.0.1", "--port", "6969"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@getrember/mcp", "--api-key=${user_config.rember_api_key}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

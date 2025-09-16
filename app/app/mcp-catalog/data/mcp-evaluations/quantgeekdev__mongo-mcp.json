@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["mongo-mcp", "${user_config.mongodb_connection_url}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

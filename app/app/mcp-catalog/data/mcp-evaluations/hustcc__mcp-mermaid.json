@@ -17,7 +17,8 @@
       "--endpoint",
       "${user_config.endpoint}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

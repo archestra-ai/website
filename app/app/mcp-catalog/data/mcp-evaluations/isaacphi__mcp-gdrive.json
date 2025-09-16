@@ -12,7 +12,8 @@
       "GDRIVE_CREDS_DIR": "${user_config.gdrive_creds_dir}",
       "CLIENT_ID": "${user_config.client_id}",
       "CLIENT_SECRET": "${user_config.client_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

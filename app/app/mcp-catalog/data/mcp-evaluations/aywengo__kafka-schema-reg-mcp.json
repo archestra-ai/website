@@ -38,7 +38,8 @@
       "SCHEMA_REGISTRY_NAME_8": "${user_config.schema_registry_name_8}",
       "SCHEMA_REGISTRY_URL_8": "${user_config.schema_registry_url_8}",
       "VIEWONLY_8": "${user_config.viewonly_8}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

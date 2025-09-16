@@ -10,7 +10,8 @@
     "args": ["-y", "bugsnag-mcp-server"],
     "env": {
       "BUGSNAG_API_KEY": "${user_config.bugsnag_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

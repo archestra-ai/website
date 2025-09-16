@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@sequa-ai/sequa-mcp@latest", "${user_config.sequa_mcp_url}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -12,7 +12,8 @@
       "FPL_EMAIL": "${user_config.fpl_email}",
       "FPL_PASSWORD": "${user_config.fpl_password}",
       "FPL_TEAM_ID": "${user_config.fpl_team_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

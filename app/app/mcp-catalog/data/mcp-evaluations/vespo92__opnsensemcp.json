@@ -17,7 +17,8 @@
       "REDIS_HOST": "${user_config.redis_host}",
       "POSTGRES_HOST": "${user_config.postgres_host}",
       "OPNSENSE_VERIFY_SSL": "${user_config.opnsense_verify_ssl}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

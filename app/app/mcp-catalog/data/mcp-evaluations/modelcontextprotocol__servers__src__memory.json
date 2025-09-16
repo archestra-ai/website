@@ -10,7 +10,8 @@
     "args": ["-y", "@modelcontextprotocol/server-memory"],
     "env": {
       "MEMORY_FILE_PATH": "${user_config.memory_file_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -11,7 +11,8 @@
     "env": {
       "NWC_CONNECTION_STRING": "${user_config.nwc_connection_string}",
       "MODE": "${user_config.mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -17,7 +17,8 @@
       "--key-file",
       "${user_config.key_file}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

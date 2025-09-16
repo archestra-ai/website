@@ -18,7 +18,8 @@
     "env": {
       "PORTAINER_MCP_DISABLE_VERSION_CHECK": "${user_config.disable_version_check}",
       "PORTAINER_MCP_READ_ONLY": "${user_config.read_only_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

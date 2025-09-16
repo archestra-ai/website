@@ -21,7 +21,8 @@
       "${user_config.read_only ? '--read-only' : ''}",
       "${user_config.disable_explain_check ? '--with-explain-check' : ''}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

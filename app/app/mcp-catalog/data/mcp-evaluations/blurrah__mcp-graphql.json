@@ -14,7 +14,8 @@
       "ALLOW_MUTATIONS": "${user_config.allow_mutations}",
       "NAME": "${user_config.name}",
       "SCHEMA": "${user_config.schema}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

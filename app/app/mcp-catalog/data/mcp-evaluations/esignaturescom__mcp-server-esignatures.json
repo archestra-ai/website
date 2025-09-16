@@ -10,7 +10,8 @@
     "args": ["mcp-server-esignatures"],
     "env": {
       "ESIGNATURES_SECRET_TOKEN": "${user_config.esignatures_secret_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

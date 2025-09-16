@@ -13,7 +13,8 @@
       "BRAINTREE_PUBLIC_KEY": "${user_config.braintree_public_key}",
       "BRAINTREE_PRIVATE_KEY": "${user_config.braintree_private_key}",
       "BRAINTREE_ENVIRONMENT": "${user_config.braintree_environment}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

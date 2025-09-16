@@ -8,7 +8,8 @@
   "server": {
     "command": "bun",
     "args": ["${__dirname}/packages/bitte-ai/index.js"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -10,7 +10,8 @@
     "args": ["-y", "discogs-mcp-server"],
     "env": {
       "DISCOGS_PERSONAL_ACCESS_TOKEN": "${user_config.discogs_personal_access_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

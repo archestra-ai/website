@@ -17,7 +17,8 @@
       "REQUEST_DELAY_MS": "${user_config.request_delay_ms}",
       "MAX_RETRIES": "${user_config.max_retries}",
       "RETRY_DELAY_MS": "${user_config.retry_delay_ms}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

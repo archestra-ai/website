@@ -10,7 +10,8 @@
     "args": ["oura-mcp-server"],
     "env": {
       "OURA_API_TOKEN": "${user_config.oura_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

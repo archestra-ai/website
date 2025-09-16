@@ -8,7 +8,8 @@
   "server": {
     "command": "./mcp-server-wazuh",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

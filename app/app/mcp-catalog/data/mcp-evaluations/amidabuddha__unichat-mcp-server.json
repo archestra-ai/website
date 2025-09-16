@@ -11,7 +11,8 @@
     "env": {
       "UNICHAT_MODEL": "${user_config.unichat_model}",
       "UNICHAT_API_KEY": "${user_config.unichat_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

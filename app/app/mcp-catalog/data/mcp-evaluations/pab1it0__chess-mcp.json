@@ -10,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "src/chess_mcp/main.py"],
     "env": {
       "NO_UV": "${user_config.no_uv}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

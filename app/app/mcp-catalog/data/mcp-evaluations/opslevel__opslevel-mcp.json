@@ -10,7 +10,8 @@
     "args": [],
     "env": {
       "OPSLEVEL_API_TOKEN": "${user_config.opslevel_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

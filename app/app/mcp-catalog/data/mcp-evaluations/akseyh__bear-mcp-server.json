@@ -10,7 +10,8 @@
     "args": ["bear-mcp-server"],
     "env": {
       "BEAR_DB_PATH": "${user_config.bear_db_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

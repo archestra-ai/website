@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "kubernetes-mcp-server@latest"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

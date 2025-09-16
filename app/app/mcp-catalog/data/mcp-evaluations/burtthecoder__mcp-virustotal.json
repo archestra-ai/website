@@ -10,7 +10,8 @@
     "args": ["--experimental-modules", "${__dirname}/build/index.js"],
     "env": {
       "VIRUSTOTAL_API_KEY": "${user_config.virustotal_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

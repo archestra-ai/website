@@ -8,7 +8,8 @@
   "server": {
     "command": "${__dirname}/jadx-mcp-server/.venv/bin/python",
     "args": ["${__dirname}/jadx-mcp-server/jadx_mcp.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

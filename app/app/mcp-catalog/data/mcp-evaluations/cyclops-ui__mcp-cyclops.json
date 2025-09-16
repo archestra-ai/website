@@ -14,7 +14,8 @@
       "CYCLOPS_MODULE_NAMESPACE": "${user_config.cyclops_module_namespace}",
       "CYCLOPS_HELM_RELEASE_NAMESPACE": "${user_config.cyclops_helm_release_namespace}",
       "CYCLOPS_MODULE_TARGET_NAMESPACE": "${user_config.cyclops_module_target_namespace}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

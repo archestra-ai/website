@@ -13,7 +13,8 @@
       "MODE": "${user_config.mode}",
       "HOSTNAME": "${user_config.hostname}",
       "PORT": "${user_config.port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

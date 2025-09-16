@@ -10,7 +10,8 @@
     "args": ["-y", "mcp-server-giphy"],
     "env": {
       "GIPHY_API_KEY": "${user_config.giphy_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

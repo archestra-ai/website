@@ -17,7 +17,8 @@
       "TRACKER_CLOUD_ORG_ID": "${user_config.tracker_cloud_org_id}",
       "TRACKER_ORG_ID": "${user_config.tracker_org_id}",
       "TRANSPORT": "${user_config.transport}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -12,7 +12,8 @@
       "GEOSERVER_URL": "${user_config.geoserver_url}",
       "GEOSERVER_USER": "${user_config.geoserver_user}",
       "GEOSERVER_PASSWORD": "${user_config.geoserver_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

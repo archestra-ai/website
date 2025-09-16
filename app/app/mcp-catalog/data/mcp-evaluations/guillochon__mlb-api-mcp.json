@@ -10,7 +10,8 @@
     "args": ["${__dirname}/main.py"],
     "env": {
       "TZ": "${user_config.timezone}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

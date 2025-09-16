@@ -16,7 +16,8 @@
       "READ_ONLY": "${user_config.read_only}",
       "MAX_FILE_SIZE": "${user_config.max_file_size}",
       "READ_ONLY_MODE": "${user_config.read_only_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

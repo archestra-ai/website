@@ -17,7 +17,8 @@
       "CB_MCP_TRANSPORT": "${user_config.cb_mcp_transport}",
       "CB_MCP_HOST": "${user_config.cb_mcp_host}",
       "CB_MCP_PORT": "${user_config.cb_mcp_port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

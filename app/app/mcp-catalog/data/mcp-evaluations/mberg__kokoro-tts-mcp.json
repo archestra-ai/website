@@ -26,7 +26,8 @@
       "DEBUG": "${user_config.debug}",
       "MP3_RETENTION_DAYS": "${user_config.mp3_retention_days}",
       "DELETE_LOCAL_AFTER_S3_UPLOAD": "${user_config.delete_local_after_s3_upload}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

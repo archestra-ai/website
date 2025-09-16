@@ -8,7 +8,8 @@
   "server": {
     "command": "./bin/mcp-nutanix",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

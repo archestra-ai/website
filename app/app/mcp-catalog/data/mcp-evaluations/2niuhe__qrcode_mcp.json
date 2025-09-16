@@ -12,7 +12,8 @@
       "TRANSPORT_MODE": "${user_config.transport_mode}",
       "HOST": "${user_config.host}",
       "PORT": "${user_config.port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

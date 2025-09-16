@@ -11,7 +11,8 @@
     "env": {
       "FACEBOOK_ACCESS_TOKEN": "${user_config.facebook_access_token}",
       "FACEBOOK_PAGE_ID": "${user_config.facebook_page_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -12,7 +12,8 @@
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
       "OPENAI_MODEL": "${user_config.openai_model}",
       "OPENAI_BASE_URL": "${user_config.openai_base_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

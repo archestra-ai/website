@@ -11,7 +11,8 @@
     "env": {
       "GOOGLE_CLIENT_SECRETS_FILE": "${user_config.google_client_secrets_file}",
       "GOOGLE_TOKEN_FILE": "${user_config.google_token_file}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

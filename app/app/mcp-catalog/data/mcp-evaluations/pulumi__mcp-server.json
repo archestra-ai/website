@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@pulumi/mcp-server@latest", "stdio"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

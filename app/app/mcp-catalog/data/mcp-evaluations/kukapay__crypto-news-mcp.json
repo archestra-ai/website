@@ -10,7 +10,8 @@
     "args": ["${__dirname}/main.py"],
     "env": {
       "NEWS_API_KEY": "${user_config.news_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

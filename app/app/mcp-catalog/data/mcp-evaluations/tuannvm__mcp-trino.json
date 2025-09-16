@@ -14,7 +14,8 @@
       "TRINO_USER": "${user_config.trino_user}",
       "TRINO_PASSWORD": "${user_config.trino_password}",
       "TRINO_SCHEME": "${user_config.trino_scheme}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

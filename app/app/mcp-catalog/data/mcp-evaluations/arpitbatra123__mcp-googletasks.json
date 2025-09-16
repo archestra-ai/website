@@ -12,7 +12,8 @@
       "GOOGLE_CLIENT_ID": "${user_config.google_client_id}",
       "GOOGLE_CLIENT_SECRET": "${user_config.google_client_secret}",
       "GOOGLE_REDIRECT_URI": "${user_config.google_redirect_uri}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

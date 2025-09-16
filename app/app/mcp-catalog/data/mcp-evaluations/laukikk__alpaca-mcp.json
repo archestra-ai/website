@@ -11,7 +11,8 @@
     "env": {
       "ALPACA_PAPER_API_KEY": "${user_config.alpaca_paper_api_key}",
       "ALPACA_PAPER_API_SECRET": "${user_config.alpaca_paper_api_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

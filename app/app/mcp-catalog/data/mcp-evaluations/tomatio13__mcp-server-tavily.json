@@ -11,7 +11,8 @@
     "env": {
       "TAVILY_API_KEY": "${user_config.tavily_api_key}",
       "PYTHONIOENCODING": "utf-8"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

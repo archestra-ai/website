@@ -8,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["gitingestmcp@latest"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

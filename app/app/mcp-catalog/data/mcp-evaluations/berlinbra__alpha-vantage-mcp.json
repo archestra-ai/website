@@ -10,7 +10,8 @@
     "args": ["run", "src/alpha_vantage_mcp/server.py"],
     "env": {
       "ALPHA_VANTAGE_API_KEY": "${user_config.alpha_vantage_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

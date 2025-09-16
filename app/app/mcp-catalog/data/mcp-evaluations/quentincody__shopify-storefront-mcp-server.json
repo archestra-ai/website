@@ -13,7 +13,8 @@
       "SHOPIFY_STORE_NAME": "${user_config.shopify_store_name}",
       "SHOPIFY_API_VERSION": "${user_config.shopify_api_version}",
       "SHOPIFY_BUYER_IP": "${user_config.shopify_buyer_ip}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

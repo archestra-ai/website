@@ -10,7 +10,8 @@
     "args": ["-y", "campertunity-mcp-server@latest"],
     "env": {
       "CAMPERTUNITY_API_KEY": "${user_config.campertunity_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

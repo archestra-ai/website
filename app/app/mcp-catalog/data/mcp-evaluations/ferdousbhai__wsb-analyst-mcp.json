@@ -11,7 +11,8 @@
     "env": {
       "REDDIT_CLIENT_ID": "${user_config.reddit_client_id}",
       "REDDIT_CLIENT_SECRET": "${user_config.reddit_client_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

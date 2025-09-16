@@ -13,7 +13,8 @@
       "AUTHORIZED_CHAT_ID": "${user_config.authorized_chat_id}",
       "OPENROUTER_API_KEY": "${user_config.openrouter_api_key}",
       "OPENAI_API_KEY": "${user_config.openai_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

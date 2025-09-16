@@ -10,7 +10,8 @@
     "args": ["-y", "@picahq/mcp"],
     "env": {
       "PICA_SECRET": "${user_config.pica_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

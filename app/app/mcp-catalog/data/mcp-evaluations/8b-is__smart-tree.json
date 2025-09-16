@@ -10,7 +10,8 @@
     "args": ["--mcp"],
     "env": {
       "AI_TOOLS": "${user_config.ai_tools}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

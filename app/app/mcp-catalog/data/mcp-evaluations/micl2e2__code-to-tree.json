@@ -8,7 +8,8 @@
   "server": {
     "command": "${user_config.code_to_tree_path}",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -12,7 +12,8 @@
       "API_KEY": "${user_config.api_key}",
       "PORT": "${user_config.port}",
       "VERBOSE_MODE": "${user_config.verbose_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

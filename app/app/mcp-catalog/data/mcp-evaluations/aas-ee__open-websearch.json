@@ -15,7 +15,8 @@
       "USE_PROXY": "${user_config.use_proxy}",
       "PROXY_URL": "${user_config.proxy_url}",
       "PORT": "${user_config.port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

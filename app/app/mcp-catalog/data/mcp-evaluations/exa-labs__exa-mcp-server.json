@@ -10,7 +10,8 @@
     "args": ["-y", "exa-mcp-server", "--tools=${user_config.tools}"],
     "env": {
       "EXA_API_KEY": "${user_config.exa_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

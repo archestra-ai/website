@@ -8,7 +8,8 @@
   "server": {
     "command": "mvf1-cli",
     "args": ["mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -8,7 +8,8 @@
   "server": {
     "command": "docker",
     "args": ["run", "axliupore/mcp-code-runner"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

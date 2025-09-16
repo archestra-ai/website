@@ -12,7 +12,8 @@
       "ARTHAS_SSH_HOST": "${user_config.arthas_ssh_host}",
       "ARTHAS_SSH_PORT": "${user_config.arthas_ssh_port}",
       "ARTHAS_SSH_PASSWORD": "${user_config.arthas_ssh_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

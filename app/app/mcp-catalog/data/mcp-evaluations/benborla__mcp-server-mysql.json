@@ -25,7 +25,8 @@
       "MYSQL_RATE_LIMIT": "${user_config.mysql_rate_limit}",
       "MYSQL_SSL": "${user_config.mysql_ssl}",
       "MYSQL_ENABLE_LOGGING": "${user_config.mysql_enable_logging}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

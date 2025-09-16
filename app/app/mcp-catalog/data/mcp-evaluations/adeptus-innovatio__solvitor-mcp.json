@@ -10,7 +10,8 @@
     "args": [],
     "env": {
       "SOLVITOR_API_KEY": "${user_config.solvitor_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

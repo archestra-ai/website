@@ -10,7 +10,8 @@
     "args": ["-y", "github-repo-mcp"],
     "env": {
       "GITHUB_TOKEN": "${user_config.github_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

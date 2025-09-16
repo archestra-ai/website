@@ -14,7 +14,8 @@
       "AZURE_OPENAI_ENDPOINT": "${user_config.azure_openai_endpoint}",
       "OPENAI_API_VERSION": "${user_config.openai_api_version}",
       "MCP_HF_WORK_DIR": "${user_config.mcp_hf_work_dir}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

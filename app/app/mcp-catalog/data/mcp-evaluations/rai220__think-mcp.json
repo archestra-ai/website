@@ -11,7 +11,8 @@
     "env": {
       "ADVANCED_MODE": "${user_config.advanced_mode}",
       "TAVILY_API_KEY": "${user_config.tavily_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -10,7 +10,8 @@
     "args": [],
     "env": {
       "BGG_USERNAME": "${user_config.bgg_username}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -14,7 +14,8 @@
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
       "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
       "MCP_TOOL_TIMEOUT": "${user_config.mcp_tool_timeout}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

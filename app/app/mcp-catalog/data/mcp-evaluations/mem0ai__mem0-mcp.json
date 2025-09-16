@@ -10,7 +10,8 @@
     "args": ["run", "main.py", "--host", "${user_config.host}", "--port", "${user_config.port}"],
     "env": {
       "MEM0_API_KEY": "${user_config.mem0_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

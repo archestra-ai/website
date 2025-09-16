@@ -11,7 +11,8 @@
     "env": {
       "API_KEY": "${user_config.api_key}",
       "DOCRAY_HOST": "${user_config.docray_host}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

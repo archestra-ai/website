@@ -8,7 +8,8 @@
   "server": {
     "command": "${user_config.python_executable_path}",
     "args": ["${user_config.main_script_path}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

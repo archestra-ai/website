@@ -8,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["apple-notes-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

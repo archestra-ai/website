@@ -11,7 +11,8 @@
     "env": {
       "NOTION_API_KEY": "${user_config.notion_api_key}",
       "NOTION_DATABASE_ID": "${user_config.notion_database_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -17,7 +17,8 @@
       "DEBUG": "${user_config.debug}",
       "TEST_HASS_HOST": "${user_config.test_hass_host}",
       "TEST_HASS_TOKEN": "${user_config.test_hass_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

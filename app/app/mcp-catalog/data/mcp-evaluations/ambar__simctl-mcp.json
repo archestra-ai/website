@@ -10,7 +10,8 @@
     "args": ["-y", "simctl-mcp"],
     "env": {
       "PORT": "${user_config.port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

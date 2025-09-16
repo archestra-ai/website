@@ -11,7 +11,8 @@
     "env": {
       "CIRCLECI_TOKEN": "${user_config.circleci_token}",
       "CIRCLECI_BASE_URL": "${user_config.circleci_base_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

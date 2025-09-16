@@ -18,7 +18,8 @@
       "--key=${user_config.key}",
       "--timeout=${user_config.timeout}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -12,7 +12,8 @@
       "TWITTER_USERNAME": "${user_config.twitter_username}",
       "TWITTER_EMAIL": "${user_config.twitter_email}",
       "TWITTER_PASSWORD": "${user_config.twitter_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

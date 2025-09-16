@@ -11,7 +11,8 @@
     "env": {
       "RPC_URL": "${user_config.rpc_url}",
       "SIGNING_KEYPAIR_HEX": "${user_config.signing_keypair_hex}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

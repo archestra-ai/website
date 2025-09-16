@@ -10,7 +10,8 @@
     "args": ["${__dirname}/src/mcp-server/server.py"],
     "env": {
       "SKYSQL_API_KEY": "${user_config.skysql_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

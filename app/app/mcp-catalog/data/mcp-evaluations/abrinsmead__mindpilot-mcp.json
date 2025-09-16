@@ -10,7 +10,8 @@
     "args": ["-y", "@mindpilot/mcp@latest", "--port", "${user_config.port}", "--data-path", "${user_config.data_path}"],
     "env": {
       "MIND_PILOT_DISABLE_ANALYTICS": "${user_config.disable_analytics}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

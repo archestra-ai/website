@@ -10,7 +10,8 @@
     "args": ["--access-mode=${user_config.access_mode}"],
     "env": {
       "DATABASE_URI": "${user_config.database_uri}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

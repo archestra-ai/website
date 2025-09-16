@@ -19,7 +19,8 @@
       "MODBUS_STOPBITS": "${user_config.modbus_stopbits}",
       "MODBUS_BYTESIZE": "${user_config.modbus_bytesize}",
       "MODBUS_TIMEOUT": "${user_config.modbus_timeout}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -10,7 +10,8 @@
     "args": ["mcp-server-kubernetes"],
     "env": {
       "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS": "${user_config.allow_only_non_destructive_tools}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

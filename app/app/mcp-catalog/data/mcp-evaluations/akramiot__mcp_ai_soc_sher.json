@@ -12,7 +12,8 @@
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
       "MCP_DB_URI": "${user_config.mcp_db_uri}",
       "MCP_SECURITY_ENABLE_THREAT_ANALYSIS": "${user_config.mcp_security_enable_threat_analysis}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

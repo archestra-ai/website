@@ -11,7 +11,8 @@
     "env": {
       "DATABRICKS_HOST": "${user_config.databricks_host}",
       "DATABRICKS_TOKEN": "${user_config.databricks_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

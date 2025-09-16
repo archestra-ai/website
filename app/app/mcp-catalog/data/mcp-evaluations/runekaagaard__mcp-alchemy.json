@@ -13,7 +13,8 @@
       "CLAUDE_LOCAL_FILES_PATH": "${user_config.claude_local_files_path}",
       "EXECUTE_QUERY_MAX_CHARS": "${user_config.execute_query_max_chars}",
       "DB_ENGINE_OPTIONS": "${user_config.db_engine_options}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -8,7 +8,8 @@
   "server": {
     "command": "piloty",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

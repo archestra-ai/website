@@ -12,7 +12,8 @@
       "MAKE_API_KEY": "${user_config.make_api_key}",
       "MAKE_ZONE": "${user_config.make_zone}",
       "MAKE_TEAM": "${user_config.make_team}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

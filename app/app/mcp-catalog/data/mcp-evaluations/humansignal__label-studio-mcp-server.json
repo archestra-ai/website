@@ -11,7 +11,8 @@
     "env": {
       "LABEL_STUDIO_API_KEY": "${user_config.label_studio_api_key}",
       "LABEL_STUDIO_URL": "${user_config.label_studio_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

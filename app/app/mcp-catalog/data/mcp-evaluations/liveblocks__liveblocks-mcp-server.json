@@ -10,7 +10,8 @@
     "args": ["${__dirname}/build/index.js"],
     "env": {
       "LIVEBLOCKS_SECRET_KEY": "${user_config.liveblocks_secret_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

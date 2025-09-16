@@ -8,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${user_config.ghidra_mcp_path}/GhidraMCP/ghidra_server.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

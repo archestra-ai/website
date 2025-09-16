@@ -10,7 +10,8 @@
     "args": ["-y", "@translated/lara-mcp", "stdio"],
     "env": {
       "LARA_TRANSLATE_API_KEY": "${user_config.lara_translate_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

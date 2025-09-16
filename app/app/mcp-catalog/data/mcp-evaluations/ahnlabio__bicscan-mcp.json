@@ -10,7 +10,8 @@
     "args": ["--from", "git+https://github.com/ahnlabio/bicscan-mcp", "bicscan-mcp"],
     "env": {
       "BICSCAN_API_KEY": "${user_config.bicscan_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

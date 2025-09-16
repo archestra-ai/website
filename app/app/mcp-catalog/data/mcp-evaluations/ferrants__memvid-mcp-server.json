@@ -10,7 +10,8 @@
     "args": ["server.py"],
     "env": {
       "PORT": "${user_config.port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

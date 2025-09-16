@@ -10,7 +10,8 @@
     "args": ["-y", "@codex-data/codex-mcp"],
     "env": {
       "CODEX_API_KEY": "${user_config.codex_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

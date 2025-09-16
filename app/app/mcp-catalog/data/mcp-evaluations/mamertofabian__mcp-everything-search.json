@@ -10,7 +10,8 @@
     "args": ["mcp-server-everything-search"],
     "env": {
       "EVERYTHING_SDK_PATH": "${user_config.everything_sdk_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

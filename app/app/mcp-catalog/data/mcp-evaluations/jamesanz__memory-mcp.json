@@ -10,7 +10,8 @@
     "args": ["${__dirname}/build/index.js"],
     "env": {
       "MONGODB_URI": "${user_config.mongodb_uri}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

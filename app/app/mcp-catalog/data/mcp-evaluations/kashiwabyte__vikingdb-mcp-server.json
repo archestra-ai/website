@@ -25,7 +25,8 @@
       "--index-name",
       "${user_config.index_name}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

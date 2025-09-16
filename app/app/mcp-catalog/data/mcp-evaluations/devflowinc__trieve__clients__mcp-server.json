@@ -12,7 +12,8 @@
       "TRIEVE_API_KEY": "${user_config.trieve_api_key}",
       "TRIEVE_ORGANIZATION_ID": "${user_config.trieve_organization_id}",
       "TRIEVE_DATASET_ID": "${user_config.trieve_dataset_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

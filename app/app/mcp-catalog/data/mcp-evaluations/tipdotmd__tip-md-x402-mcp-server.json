@@ -16,7 +16,8 @@
       "PORT": "${user_config.port}",
       "NODE_ENV": "${user_config.node_env}",
       "LOG_LEVEL": "${user_config.log_level}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

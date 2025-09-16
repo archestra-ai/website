@@ -11,7 +11,8 @@
     "env": {
       "GRAFANA_URL": "${user_config.grafana_url}",
       "GRAFANA_API_KEY": "${user_config.grafana_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

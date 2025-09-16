@@ -10,7 +10,8 @@
     "args": ["armor-crypto-mcp@latest"],
     "env": {
       "ARMOR_API_KEY": "${user_config.armor_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

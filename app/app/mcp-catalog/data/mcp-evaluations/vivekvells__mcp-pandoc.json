@@ -8,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["mcp-pandoc"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

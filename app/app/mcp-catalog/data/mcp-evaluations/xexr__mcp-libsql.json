@@ -17,7 +17,8 @@
     "env": {
       "LIBSQL_AUTH_TOKEN": "${user_config.libsql_auth_token}",
       "MCP_LIBSQL_DEV_MODE": "${user_config.dev_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

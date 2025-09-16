@@ -8,7 +8,8 @@
   "server": {
     "command": "docker",
     "args": ["run", "-i", "--rm", "wisevision/mcp_server_ros_2"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

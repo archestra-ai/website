@@ -8,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/mindmap_mcp_server/server.py", "--return-type", "${user_config.return_type}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

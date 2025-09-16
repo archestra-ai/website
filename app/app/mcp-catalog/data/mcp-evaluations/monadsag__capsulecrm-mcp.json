@@ -11,7 +11,8 @@
     "env": {
       "CAPSULECRM_API_KEY": "${user_config.capsulecrm_api_key}",
       "LOG_LEVEL": "${user_config.log_level}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

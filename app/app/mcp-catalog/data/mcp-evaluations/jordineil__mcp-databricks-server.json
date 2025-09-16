@@ -12,7 +12,8 @@
       "DATABRICKS_HOST": "${user_config.databricks_host}",
       "DATABRICKS_TOKEN": "${user_config.databricks_token}",
       "DATABRICKS_HTTP_PATH": "${user_config.databricks_http_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

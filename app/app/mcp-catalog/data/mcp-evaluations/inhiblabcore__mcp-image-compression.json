@@ -10,7 +10,8 @@
     "args": ["-y", "@inhiblab-core/mcp-image-compression"],
     "env": {
       "IMAGE_COMPRESSION_DOWNLOAD_DIR": "${user_config.image_compression_download_dir}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

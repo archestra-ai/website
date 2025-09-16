@@ -12,7 +12,8 @@
       "KBC_STORAGE_API_URL": "${user_config.kbc_storage_api_url}",
       "KBC_STORAGE_TOKEN": "${user_config.kbc_storage_token}",
       "KBC_WORKSPACE_SCHEMA": "${user_config.kbc_workspace_schema}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

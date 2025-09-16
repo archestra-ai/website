@@ -15,7 +15,8 @@
       "OPENDAL_MYS3_ENDPOINT": "${user_config.opendal_mys3_endpoint}",
       "OPENDAL_MYS3_ACCESS_KEY_ID": "${user_config.opendal_mys3_access_key_id}",
       "OPENDAL_MYS3_SECRET_ACCESS_KEY": "${user_config.opendal_mys3_secret_access_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -8,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["mcp-server-ds"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -37,7 +37,8 @@
       "SCHEMA_REGISTRY_API_KEY": "${user_config.schema_registry_api_key}",
       "SCHEMA_REGISTRY_API_SECRET": "${user_config.schema_registry_api_secret}",
       "SCHEMA_REGISTRY_ENDPOINT": "${user_config.schema_registry_endpoint}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

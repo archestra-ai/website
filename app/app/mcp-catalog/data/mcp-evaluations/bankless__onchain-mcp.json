@@ -10,7 +10,8 @@
     "args": ["-y", "@bankless/onchain-mcp"],
     "env": {
       "BANKLESS_API_TOKEN": "${user_config.bankless_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -12,7 +12,8 @@
       "MCP_MODE": "${user_config.mcp_mode}",
       "NODE_ENV": "${user_config.node_env}",
       "PORT": "${user_config.port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

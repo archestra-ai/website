@@ -10,7 +10,8 @@
     "args": ["-y", "editorconfig-mcp-server"],
     "env": {
       "PORT": "${user_config.port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

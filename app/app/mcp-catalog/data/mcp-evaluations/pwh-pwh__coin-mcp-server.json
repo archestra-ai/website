@@ -10,7 +10,8 @@
     "args": ["run", "--allow-net", "--allow-read", "--allow-env", "https://deno.land/x/coin_mcp_server/main.ts"],
     "env": {
       "BGURL": "${user_config.bgurl}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

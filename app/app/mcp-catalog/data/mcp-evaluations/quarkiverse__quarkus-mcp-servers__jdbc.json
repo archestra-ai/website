@@ -15,7 +15,8 @@
       "-p",
       "${user_config.password}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

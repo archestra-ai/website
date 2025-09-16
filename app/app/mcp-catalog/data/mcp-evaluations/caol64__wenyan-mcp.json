@@ -12,7 +12,8 @@
       "WECHAT_APP_ID": "${user_config.wechat_app_id}",
       "WECHAT_APP_SECRET": "${user_config.wechat_app_secret}",
       "HOST_IMAGE_PATH": "${user_config.host_image_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

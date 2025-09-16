@@ -29,7 +29,8 @@
       "SAMBANOVA_API_KEY": "${user_config.sambanova_api_key}",
       "IBM_WATSONX_API_KEY": "${user_config.ibm_watsonx_api_key}",
       "LLAMA_API_KEY": "${user_config.llama_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

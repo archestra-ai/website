@@ -8,7 +8,8 @@
   "server": {
     "command": "node",
     "args": ["${__dirname}/build/index.js", "--feeds-path", "${user_config.feeds_path}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

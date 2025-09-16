@@ -11,7 +11,8 @@
     "env": {
       "STRAVA_CLIENT_ID": "${user_config.strava_client_id}",
       "STRAVA_CLIENT_SECRET": "${user_config.strava_client_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

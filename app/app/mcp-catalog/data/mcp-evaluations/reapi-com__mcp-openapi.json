@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@reapi/mcp-openapi@latest", "--dir", "${user_config.specs_directory}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

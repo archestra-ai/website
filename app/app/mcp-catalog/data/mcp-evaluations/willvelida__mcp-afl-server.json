@@ -8,7 +8,8 @@
   "server": {
     "command": "dotnet",
     "args": ["run", "--project", "${__dirname}/src", "--no-build"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

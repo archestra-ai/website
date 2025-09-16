@@ -12,7 +12,8 @@
       "VM_URL": "${user_config.vm_url}",
       "VM_SELECT_URL": "${user_config.vm_select_url}",
       "VM_INSERT_URL": "${user_config.vm_insert_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

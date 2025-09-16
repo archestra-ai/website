@@ -8,7 +8,8 @@
   "server": {
     "command": "docker",
     "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

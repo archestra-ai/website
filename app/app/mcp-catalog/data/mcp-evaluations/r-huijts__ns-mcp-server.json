@@ -10,7 +10,8 @@
     "args": ["-y", "ns-mcp-server"],
     "env": {
       "NS_API_KEY": "${user_config.ns_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

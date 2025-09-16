@@ -8,7 +8,8 @@
   "server": {
     "command": "./toolbox",
     "args": ["--tools-file", "${user_config.tools_file}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

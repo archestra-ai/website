@@ -18,7 +18,8 @@
     "env": {
       "ROS_LOG_DIR": "/tmp",
       "ROS_DOMAIN_ID": "${user_config.ros_domain_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

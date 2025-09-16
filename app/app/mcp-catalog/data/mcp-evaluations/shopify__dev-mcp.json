@@ -11,7 +11,8 @@
     "env": {
       "OPT_OUT_INSTRUMENTATION": "${user_config.opt_out_instrumentation}",
       "POLARIS_UNIFIED": "${user_config.polaris_unified}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

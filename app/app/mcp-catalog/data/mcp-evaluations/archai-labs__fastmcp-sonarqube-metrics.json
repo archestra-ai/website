@@ -18,7 +18,8 @@
       "AZURE_OPENAI_ENDPOINT": "${user_config.azure_openai_endpoint}",
       "AZURE_DEPLOYMENT": "${user_config.azure_deployment}",
       "AZURE_API_VERSION": "${user_config.azure_api_version}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

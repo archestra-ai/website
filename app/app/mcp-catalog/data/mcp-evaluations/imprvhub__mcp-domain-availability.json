@@ -13,7 +13,8 @@
       "git+https://github.com/imprvhub/mcp-domain-availability",
       "mcp-domain-availability"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

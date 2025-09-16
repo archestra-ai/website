@@ -12,7 +12,8 @@
       "CLAUDE_API_KEY": "${user_config.claude_api_key}",
       "AGENT_WORKING_DIRECTORY": "${user_config.agent_working_directory}",
       "SHELL_EXECUTABLE_PATH": "${user_config.shell_executable_path}"
-    }
+    },
+    "type": "local"
   },
   "readme": null,
   "category": "Development",

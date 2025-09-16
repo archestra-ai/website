@@ -11,7 +11,8 @@
     "env": {
       "EDGEONE_PAGES_API_TOKEN": "${user_config.edgeone_pages_api_token}",
       "EDGEONE_PAGES_PROJECT_NAME": "${user_config.edgeone_pages_project_name}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

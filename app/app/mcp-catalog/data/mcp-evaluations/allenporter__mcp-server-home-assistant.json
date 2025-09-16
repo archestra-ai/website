@@ -11,7 +11,8 @@
     "env": {
       "HOME_ASSISTANT_WEB_SOCKET_URL": "${user_config.home_assistant_web_socket_url}",
       "HOME_ASSISTANT_API_TOKEN": "${user_config.home_assistant_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

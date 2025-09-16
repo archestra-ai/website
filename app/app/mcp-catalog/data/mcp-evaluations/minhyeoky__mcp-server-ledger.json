@@ -10,7 +10,8 @@
     "args": ["run", "--with", "mcp[cli]", "mcp", "run", "${__dirname}/main.py"],
     "env": {
       "LEDGER_FILE": "${user_config.ledger_file}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

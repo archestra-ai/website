@@ -15,7 +15,8 @@
       "TRANSPORT_MODE": "${user_config.transport_mode}",
       "PORT": "${user_config.port}",
       "DEBUG": "${user_config.debug}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

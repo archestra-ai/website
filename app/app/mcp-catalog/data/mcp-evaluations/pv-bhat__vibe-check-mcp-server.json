@@ -14,7 +14,8 @@
       "OPENROUTER_API_KEY": "${user_config.openrouter_api_key}",
       "DEFAULT_LLM_PROVIDER": "${user_config.default_llm_provider}",
       "DEFAULT_MODEL": "${user_config.default_model}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["mcp-remote", "https://mcp.himalayas.app/sse"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -10,7 +10,8 @@
     "args": [],
     "env": {
       "CLIMATIQ_API_KEY": "${user_config.climatiq_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

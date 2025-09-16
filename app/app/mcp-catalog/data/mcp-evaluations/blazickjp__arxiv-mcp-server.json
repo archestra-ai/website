@@ -10,7 +10,8 @@
     "args": ["tool", "run", "arxiv-mcp-server", "--storage-path", "${user_config.arxiv_storage_path}"],
     "env": {
       "ARXIV_STORAGE_PATH": "${user_config.arxiv_storage_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

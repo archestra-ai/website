@@ -10,7 +10,8 @@
     "args": ["didlogic_mcp"],
     "env": {
       "DIDLOGIC_API_KEY": "${user_config.didlogic_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

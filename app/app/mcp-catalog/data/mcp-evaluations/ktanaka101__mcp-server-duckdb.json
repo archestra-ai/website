@@ -11,7 +11,8 @@
     "env": {
       "READ_ONLY": "${user_config.readonly}",
       "KEEP_CONNECTION": "${user_config.keep_connection}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

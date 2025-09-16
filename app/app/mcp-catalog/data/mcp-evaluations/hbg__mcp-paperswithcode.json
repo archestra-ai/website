@@ -8,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@hbg/mcp-paperswithcode"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -14,7 +14,8 @@
       "BOX_JWT_CONFIG_PATH": "${user_config.box_jwt_config_path}",
       "BOX_JWT": "${user_config.box_jwt}",
       "BOX_DEV_TOKEN": "${user_config.box_dev_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

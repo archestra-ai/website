@@ -15,7 +15,8 @@
       "AZURE_STORAGE_ACCOUNT_NAME": "${user_config.azure_storage_account_name}",
       "AZURE_STORAGE_ACCOUNT_KEY": "${user_config.azure_storage_account_key}",
       "READ_ONLY_MODE": "${user_config.read_only_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

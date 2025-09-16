@@ -10,7 +10,8 @@
     "args": ["-y", "ios-simulator-mcp"],
     "env": {
       "IOS_SIMULATOR_MCP_FILTERED_TOOLS": "${user_config.ios_simulator_mcp_filtered_tools}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

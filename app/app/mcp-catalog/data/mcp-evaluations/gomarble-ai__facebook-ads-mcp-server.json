@@ -8,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/server.py", "--fb-token", "${user_config.fb_token}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -12,7 +12,8 @@
       "PORT": "${user_config.port}",
       "MCP_KEY": "${user_config.mcp_key}",
       "OPENAI_API_KEY": "${user_config.openai_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

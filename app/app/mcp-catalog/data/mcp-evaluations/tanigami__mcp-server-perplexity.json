@@ -10,7 +10,8 @@
     "args": ["mcp-server-perplexity"],
     "env": {
       "PERPLEXITY_API_KEY": "${user_config.perplexity_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

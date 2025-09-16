@@ -10,7 +10,8 @@
     "args": ["${__dirname}/index.js"],
     "env": {
       "EXCHANGE_NAME": "${user_config.exchange_name}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

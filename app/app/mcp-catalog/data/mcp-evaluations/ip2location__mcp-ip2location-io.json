@@ -10,7 +10,8 @@
     "args": ["--directory", "${__dirname}/src", "run", "server.py"],
     "env": {
       "IP2LOCATION_API_KEY": "${user_config.ip2location_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

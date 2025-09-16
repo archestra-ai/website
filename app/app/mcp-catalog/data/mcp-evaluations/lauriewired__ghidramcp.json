@@ -18,7 +18,8 @@
       "--ghidra-server",
       "${user_config.ghidra_server}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

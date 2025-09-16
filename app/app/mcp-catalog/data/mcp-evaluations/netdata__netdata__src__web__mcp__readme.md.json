@@ -8,7 +8,8 @@
   "server": {
     "command": "",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "readme": null,
   "category": "Monitoring",

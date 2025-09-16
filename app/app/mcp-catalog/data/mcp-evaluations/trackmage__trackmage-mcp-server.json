@@ -12,7 +12,8 @@
       "TRACKMAGE_CLIENT_ID": "${user_config.trackmage_client_id}",
       "TRACKMAGE_CLIENT_SECRET": "${user_config.trackmage_client_secret}",
       "TRACKMAGE_WORKSPACE_ID": "${user_config.trackmage_workspace_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

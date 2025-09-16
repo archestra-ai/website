@@ -10,7 +10,8 @@
     "args": ["${__dirname}/build/index.js"],
     "env": {
       "CHAT_DB_PATH": "${user_config.chat_db_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

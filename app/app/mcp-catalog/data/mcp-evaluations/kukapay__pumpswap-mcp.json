@@ -14,7 +14,8 @@
       "SELL_SLIPPAGE": "${user_config.sell_slippage}",
       "SWAP_PRIORITY_FEE": "${user_config.swap_priority_fee}",
       "PRIVATE_KEY": "${user_config.private_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -12,7 +12,8 @@
       "ATLASSIAN_HOST": "${user_config.atlassian_host}",
       "ATLASSIAN_EMAIL": "${user_config.atlassian_email}",
       "ATLASSIAN_TOKEN": "${user_config.atlassian_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -10,7 +10,8 @@
     "args": ["${__dirname}/build/index.js"],
     "env": {
       "NTFY_TOPIC": "${user_config.ntfy_topic}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],
