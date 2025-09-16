@@ -6,18 +6,10 @@
     "name": "PayPal MCP",
     "server_url": "https://mcp.paypal.com/mcp",
     "client_id": "",
-    "redirect_uris": [
-      "http://localhost:8080/oauth/callback"
-    ],
-    "scopes": [
-      "read",
-      "write"
-    ],
+    "redirect_uris": ["http://localhost:8080/oauth/callback"],
+    "scopes": ["read", "write"],
     "description": "PayPal MCP Server (dynamic registration)",
-    "default_scopes": [
-      "read",
-      "write"
-    ],
+    "default_scopes": ["read", "write"],
     "supports_resource_metadata": true
   },
   "tools": [],
