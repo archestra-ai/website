@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "oraios__serena",
   "display_name": "serena",
-  "version": "1.0.0",
   "description": "A powerful coding agent toolkit providing semantic retrieval and editing capabilities (MCP server & other integrations)",
   "author": {
     "name": "oraios"

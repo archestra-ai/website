@@ -1,6 +1,4 @@
 {
-  "dxt_version": "1.0.0",
-  "version": "1.0.0",
   "name": "makenotion__notion-mcp-server",
   "display_name": "notion-mcp-server",
   "description": "Official Notion MCP Server",

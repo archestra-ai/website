@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tanigami__mcp-server-perplexity",
   "display_name": "mcp-server-perplexity",
-  "version": "1.0.0",
   "description": "MCP server from tanigami/mcp-server-perplexity",
   "author": {
     "name": "tanigami"

@@ -1,6 +1,4 @@
 {
-  "dxt_version": "1.0.0",
-  "version": "1.0.0",
   "name": "sanyambassi__thales-cdsp-csm-mcp-server",
   "display_name": "thales-cdsp-csm-mcp-server",
   "description": "A Model Context Protocol (MCP) server for managing secrets in Thales CDSP Secrets Manager, powered by Akeyless, Vault. This server provides tools for creating, managing, and deleting static secrets, DFC keys, and other resources through the MCP protocol.",

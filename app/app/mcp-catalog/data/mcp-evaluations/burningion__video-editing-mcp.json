@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "burningion__video-editing-mcp",
   "display_name": "video-editing-mcp",
-  "version": "1.0.0",
   "description": "MCP Interface for Video Jungle",
   "author": {
     "name": "burningion"

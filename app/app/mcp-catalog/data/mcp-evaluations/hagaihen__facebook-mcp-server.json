@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hagaihen__facebook-mcp-server",
   "display_name": "facebook-mcp-server",
-  "version": "1.0.0",
   "description": "Facebook MCP server for automating posts, comment moderation, insights, and sentiment filtering.",
   "author": {
     "name": "HagaiHen"

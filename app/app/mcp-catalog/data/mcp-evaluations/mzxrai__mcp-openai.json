@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mzxrai__mcp-openai",
   "display_name": "mcp-openai",
-  "version": "1.0.0",
   "description": "Chat with OpenAI models from Claude Desktop",
   "author": {
     "name": "mzxrai"

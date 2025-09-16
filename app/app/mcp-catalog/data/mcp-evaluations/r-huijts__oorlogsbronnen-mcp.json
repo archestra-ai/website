@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "r-huijts__oorlogsbronnen-mcp",
   "display_name": "oorlogsbronnen-mcp",
-  "version": "1.0.0",
   "description": "MCP server for accessing Dutch World War II archives through the Oorlogsbronnen API. Provides structured access to historical records, photographs, and documents from 1940-1945 Netherlands.",
   "author": {
     "name": "r-huijts"

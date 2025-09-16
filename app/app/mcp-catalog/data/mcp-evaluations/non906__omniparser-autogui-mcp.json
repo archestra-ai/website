@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "non906__omniparser-autogui-mcp",
   "display_name": "omniparser-autogui-mcp",
-  "version": "1.0.0",
   "description": "Automatic operation of on-screen GUI.",
   "author": {
     "name": "NON906"

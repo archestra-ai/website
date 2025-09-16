@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "couchbase-ecosystem__mcp-server-couchbase",
   "display_name": "mcp-server-couchbase",
-  "version": "1.0.0",
   "description": "MCP Server to interact with data in Couchbase Clusters",
   "author": {
     "name": "Couchbase-Ecosystem"

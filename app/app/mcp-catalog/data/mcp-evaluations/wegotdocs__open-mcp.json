@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "wegotdocs__open-mcp",
   "display_name": "open-mcp",
-  "version": "1.0.0",
   "description": "MCP server from wegotdocs/open-mcp",
   "author": {
     "name": "wegotdocs"

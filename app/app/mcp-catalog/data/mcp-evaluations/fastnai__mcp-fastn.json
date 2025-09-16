@@ -1,6 +1,4 @@
 {
-  "dxt_version": "1.0.0",
-  "version": "1.0.0",
   "name": "fastnai__mcp-fastn",
   "display_name": "mcp-fastn",
   "description": "MCP server from fastnai/mcp-fastn",

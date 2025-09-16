@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tinyfish-io__agentql-mcp",
   "display_name": "agentql-mcp",
-  "version": "1.0.0",
   "description": "Model Context Protocol server that integrates AgentQL's data extraction capabilities.",
   "author": {
     "name": "tinyfish-io"

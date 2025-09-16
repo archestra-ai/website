@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "andybrandt__mcp-simple-timeserver",
   "display_name": "mcp-simple-timeserver",
-  "version": "1.0.0",
   "description": "Simple solution to give Claude ability to check current time via MCP",
   "author": {
     "name": "andybrandt"

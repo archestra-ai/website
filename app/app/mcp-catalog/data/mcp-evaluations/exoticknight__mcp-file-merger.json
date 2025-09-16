@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "exoticknight__mcp-file-merger",
   "display_name": "mcp-file-merger",
-  "version": "1.0.0",
   "description": "MCP server for merging multiple files into one",
   "author": {
     "name": "exoticknight"

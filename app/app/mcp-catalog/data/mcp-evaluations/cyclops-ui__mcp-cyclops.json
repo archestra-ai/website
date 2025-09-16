@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "cyclops-ui__mcp-cyclops",
   "display_name": "mcp-cyclops",
-  "version": "1.0.0",
   "description": "Model Context Protocol server for Cyclops",
   "author": {
     "name": "cyclops-ui"

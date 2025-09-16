@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "reading-plus-ai__mcp-server-deep-research",
   "display_name": "mcp-server-deep-research",
-  "version": "1.0.0",
   "description": "MCP server from reading-plus-ai/mcp-server-deep-research",
   "author": {
     "name": "reading-plus-ai"

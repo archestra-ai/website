@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ycloud-developers__ycloud-whatsapp-mcp-server",
   "display_name": "ycloud-whatsapp-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from YCloud-Developers/ycloud-whatsapp-mcp-server",
   "author": {
     "name": "YCloud-Developers"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "dealexpress__mcp-server",
   "display_name": "DealX",
-  "version": "1.0.0",
   "description": "MCP Server for DealX platform",
   "author": {
     "name": "DealExpress"

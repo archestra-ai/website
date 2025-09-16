@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "r-huijts__ethics-check-mcp",
   "display_name": "ethics-check-mcp",
-  "version": "1.0.0",
   "description": "MCP server from r-huijts/ethics-check-mcp",
   "author": {
     "name": "r-huijts"

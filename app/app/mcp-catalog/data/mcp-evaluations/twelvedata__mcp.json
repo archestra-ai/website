@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "twelvedata__mcp",
   "display_name": "mcp",
-  "version": "1.0.0",
   "description": "Twelve Data MCP (Model Context Protocol) Server provides seamless, real-time access to financial market data via WebSocket, enabling reliable streaming of price quotes, market metrics, and events directly into your applications.",
   "author": {
     "name": "twelvedata"

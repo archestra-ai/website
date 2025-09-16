@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "yashshingvi__databricks-genie-mcp",
   "display_name": "databricks-genie-MCP",
-  "version": "1.0.0",
   "description": "MCP server from yashshingvi/databricks-genie-MCP",
   "author": {
     "name": "yashshingvi"

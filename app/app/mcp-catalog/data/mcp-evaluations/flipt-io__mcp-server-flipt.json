@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "flipt-io__mcp-server-flipt",
   "display_name": "Flipt",
-  "version": "1.0.0",
   "description": "MCP server from flipt-io/mcp-server-flipt",
   "author": {
     "name": "flipt-io"

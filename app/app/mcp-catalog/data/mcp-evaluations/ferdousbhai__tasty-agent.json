@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ferdousbhai__tasty-agent",
   "display_name": "tasty-agent",
-  "version": "1.0.0",
   "description": "Let Claude manage your tastytrade portfolio.",
   "author": {
     "name": "ferdousbhai"

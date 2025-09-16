@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pskill9__website-downloader",
   "display_name": "website-downloader",
-  "version": "1.0.0",
   "description": "MCP server to download entire websites",
   "author": {
     "name": "pskill9"

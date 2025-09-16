@@ -1,6 +1,4 @@
 {
-  "dxt_version": "1.0.0",
-  "version": "1.0.0",
   "name": "safedep__vet__docs__mcp.md",
   "display_name": "mcp.md",
   "description": "Protect against malicious open source packages 🤖",

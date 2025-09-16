@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "cswkim__discogs-mcp-server",
   "display_name": "discogs-mcp-server",
-  "version": "1.0.0",
   "description": "MCP Server for Discogs",
   "author": {
     "name": "cswkim"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "wanaku-ai__wanaku",
   "display_name": "wanaku",
-  "version": "1.0.0",
   "description": "Wanaku MCP Router",
   "author": {
     "name": "wanaku-ai"

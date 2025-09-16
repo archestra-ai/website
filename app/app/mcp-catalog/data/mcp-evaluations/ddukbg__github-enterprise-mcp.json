@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ddukbg__github-enterprise-mcp",
   "display_name": "github-enterprise-mcp",
-  "version": "1.0.0",
   "description": "github-enterprise-mcp",
   "author": {
     "name": "ddukbg"

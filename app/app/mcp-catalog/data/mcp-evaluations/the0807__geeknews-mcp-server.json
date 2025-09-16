@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "the0807__geeknews-mcp-server",
   "display_name": "GeekNews-MCP-Server",
-  "version": "1.0.0",
   "description": "📰 GeekNews MCP Server",
   "author": {
     "name": "the0807"

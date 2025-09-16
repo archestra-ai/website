@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "inditextech__mcp-teams-server",
   "display_name": "mcp-teams-server",
-  "version": "1.0.0",
   "description": "An MCP (Model Context Protocol) server implementation for Microsoft Teams integration, providing capabilities to read messages, create messages, reply to messages, mention members.",
   "author": {
     "name": "InditexTech"

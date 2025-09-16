@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "nebula-block-data__nebulablock-mcp-server",
   "display_name": "nebulablock-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from Nebula-Block-Data/nebulablock-mcp-server",
   "author": {
     "name": "Nebula-Block-Data"

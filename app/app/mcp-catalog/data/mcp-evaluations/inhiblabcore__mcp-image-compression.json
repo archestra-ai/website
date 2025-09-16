@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "inhiblabcore__mcp-image-compression",
   "display_name": "mcp-image-compression",
-  "version": "1.0.0",
   "description": "A high-performance image compression microservice based on MCP (Modal Context Protocol)",
   "author": {
     "name": "InhiblabCore"

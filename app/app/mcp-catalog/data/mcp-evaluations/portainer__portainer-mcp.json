@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "portainer__portainer-mcp",
   "display_name": "portainer-mcp",
-  "version": "1.0.0",
   "description": "Portainer MCP server",
   "author": {
     "name": "portainer"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ivanamador__vercel-ai-docs-mcp",
   "display_name": "vercel-ai-docs-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that provides AI-powered search and querying capabilities for the Vercel AI SDK documentation. This project enables developers to ask questions about the Vercel AI SDK and receive accurate, contextualized responses based on the official documentation.",
   "author": {
     "name": "IvanAmador"

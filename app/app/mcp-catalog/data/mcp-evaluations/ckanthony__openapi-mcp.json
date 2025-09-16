@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ckanthony__openapi-mcp",
   "display_name": "openapi-mcp",
-  "version": "1.0.0",
   "description": "Dockerized MCP Server to allow your AI agent to access any API with existing api docs",
   "author": {
     "name": "ckanthony"

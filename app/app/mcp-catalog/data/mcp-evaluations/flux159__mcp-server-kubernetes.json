@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "flux159__mcp-server-kubernetes",
   "display_name": "Kubernetes",
-  "version": "1.0.0",
   "description": "MCP Server for kubernetes management commands",
   "author": {
     "name": "Flux159"

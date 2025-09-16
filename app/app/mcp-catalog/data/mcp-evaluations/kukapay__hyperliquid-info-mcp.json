@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__hyperliquid-info-mcp",
   "display_name": "hyperliquid-info-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that provides real-time data and insights from the Hyperliquid perp DEX for use in bots, dashboards, and analytics.",
   "author": {
     "name": "kukapay"

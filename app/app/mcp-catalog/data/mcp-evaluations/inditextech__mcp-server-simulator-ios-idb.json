@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "inditextech__mcp-server-simulator-ios-idb",
   "display_name": "mcp-server-simulator-ios-idb",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that enables LLMs to interact with iOS simulators through natural language commands.",
   "author": {
     "name": "InditexTech"

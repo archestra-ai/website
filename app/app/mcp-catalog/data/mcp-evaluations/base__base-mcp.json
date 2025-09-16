@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "base__base-mcp",
   "display_name": "base-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that provides onchain tools for LLMs, allowing them to interact with the Base network and Coinbase API.",
   "author": {
     "name": "base"

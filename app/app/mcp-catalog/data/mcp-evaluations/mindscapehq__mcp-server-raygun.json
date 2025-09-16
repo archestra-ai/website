@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mindscapehq__mcp-server-raygun",
   "display_name": "mcp-server-raygun",
-  "version": "1.0.0",
   "description": "MCP server from MindscapeHQ/mcp-server-raygun",
   "author": {
     "name": "MindscapeHQ"

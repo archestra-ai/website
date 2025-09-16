@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "govcraft__rust-docs-mcp-server",
   "display_name": "rust-docs-mcp-server",
-  "version": "1.0.0",
   "description": "🦀 Prevents outdated Rust code suggestions from AI assistants. This MCP server fetches current crate docs, uses embeddings/LLMs, and provides accurate context via a tool call.",
   "author": {
     "name": "Govcraft"

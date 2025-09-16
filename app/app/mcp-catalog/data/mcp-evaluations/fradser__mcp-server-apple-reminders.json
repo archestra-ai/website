@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "fradser__mcp-server-apple-reminders",
   "display_name": "Apple Reminders",
-  "version": "1.0.0",
   "description": "MCP server from FradSer/mcp-server-apple-reminders",
   "author": {
     "name": "FradSer"

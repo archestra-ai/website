@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "recursechat__mcp-server-apple-shortcuts",
   "display_name": "mcp-server-apple-shortcuts",
-  "version": "1.0.0",
   "description": "MCP server from recursechat/mcp-server-apple-shortcuts",
   "author": {
     "name": "recursechat"

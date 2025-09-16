@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zilliztech__mcp-server-milvus",
   "display_name": "mcp-server-milvus",
-  "version": "1.0.0",
   "description": "Model Context Protocol Servers for Milvus",
   "author": {
     "name": "zilliztech"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sascharo__gxtract",
   "display_name": "gxtract",
-  "version": "1.0.0",
   "description": "GXtract MCP Server for VS Code, forks and other editors; provides tools for interacting with GroundX",
   "author": {
     "name": "sascharo"

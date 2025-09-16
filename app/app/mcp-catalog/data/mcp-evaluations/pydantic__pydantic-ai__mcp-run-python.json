@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pydantic__pydantic-ai__mcp-run-python",
   "display_name": "mcp-run-python",
-  "version": "1.0.0",
   "description": "Agent Framework / shim to use Pydantic with LLMs",
   "author": {
     "name": "pydantic"

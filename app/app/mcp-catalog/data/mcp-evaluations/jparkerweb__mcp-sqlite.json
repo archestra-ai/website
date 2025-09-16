@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jparkerweb__mcp-sqlite",
   "display_name": "mcp-sqlite",
-  "version": "1.0.0",
   "description": "🐇 Model Context Protocol (MCP) server that provides comprehensive SQLite database interaction capabilities",
   "author": {
     "name": "jparkerweb"

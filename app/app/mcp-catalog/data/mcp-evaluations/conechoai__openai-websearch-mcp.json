@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "conechoai__openai-websearch-mcp",
   "display_name": "openai-websearch-mcp",
-  "version": "1.0.0",
   "description": "openai websearch tool as mcp server",
   "author": {
     "name": "ConechoAI"

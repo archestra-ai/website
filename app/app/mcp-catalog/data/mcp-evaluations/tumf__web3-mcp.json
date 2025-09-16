@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tumf__web3-mcp",
   "display_name": "web3-mcp",
-  "version": "1.0.0",
   "description": "MCP server from tumf/web3-mcp",
   "author": {
     "name": "tumf"

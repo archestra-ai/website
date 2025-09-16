@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "stackloklabs__ocireg-mcp",
   "display_name": "ocireg-mcp",
-  "version": "1.0.0",
   "description": "An MCP (Model Context Protocol) server that provides tools for querying OCI registries and image references.",
   "author": {
     "name": "StacklokLabs"

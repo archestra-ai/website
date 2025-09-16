@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "giuseppe-coco__google-workspace-mcp-server",
   "display_name": "Google-Workspace-MCP-Server",
-  "version": "1.0.0",
   "description": "MCP server from giuseppe-coco/Google-Workspace-MCP-Server",
   "author": {
     "name": "giuseppe-coco"

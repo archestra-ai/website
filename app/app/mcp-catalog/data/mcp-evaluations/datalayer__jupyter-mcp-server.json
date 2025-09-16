@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "datalayer__jupyter-mcp-server",
   "display_name": "jupyter-mcp-server",
-  "version": "1.0.0",
   "description": "🪐 ✨ Model Context Protocol (MCP) Server for Jupyter.",
   "author": {
     "name": "datalayer"

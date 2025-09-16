@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "fireproof-storage__mcp-database-server",
   "display_name": "mcp-database-server",
-  "version": "1.0.0",
   "description": "Store and load JSON documents from LLM tool use",
   "author": {
     "name": "fireproof-storage"

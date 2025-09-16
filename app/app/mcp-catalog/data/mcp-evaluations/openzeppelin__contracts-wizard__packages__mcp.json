@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "openzeppelin__contracts-wizard__packages__mcp",
   "display_name": "mcp",
-  "version": "1.0.0",
   "description": "Interactive smart contract generator based on OpenZeppelin Contracts.",
   "author": {
     "name": "OpenZeppelin"

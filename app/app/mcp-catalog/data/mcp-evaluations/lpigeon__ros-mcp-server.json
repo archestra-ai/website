@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "lpigeon__ros-mcp-server",
   "display_name": "ros-mcp-server",
-  "version": "1.0.0",
   "description": "Connect AI models like Claude & GPT with robots using MCP and ROS.",
   "author": {
     "name": "lpigeon"

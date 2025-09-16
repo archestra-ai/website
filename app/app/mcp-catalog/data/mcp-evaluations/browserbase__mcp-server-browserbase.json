@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "browserbase__mcp-server-browserbase",
   "display_name": "mcp-server-browserbase",
-  "version": "1.0.0",
   "description": "Allow LLMs to control a browser with Browserbase and Stagehand",
   "author": {
     "name": "browserbase"

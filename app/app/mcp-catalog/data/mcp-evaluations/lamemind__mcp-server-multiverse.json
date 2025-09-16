@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "lamemind__mcp-server-multiverse",
   "display_name": "mcp-server-multiverse",
-  "version": "1.0.0",
   "description": "A middleware server that enables multiple isolated instances of the same MCP servers to coexist independently with unique namespaces and configurations.",
   "author": {
     "name": "lamemind"

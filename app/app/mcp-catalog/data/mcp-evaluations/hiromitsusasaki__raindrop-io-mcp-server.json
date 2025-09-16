@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hiromitsusasaki__raindrop-io-mcp-server",
   "display_name": "raindrop-io-mcp-server",
-  "version": "1.0.0",
   "description": "An integration that allows LLMs to interact with Raindrop.io bookmarks using the Model Context Protocol (MCP).",
   "author": {
     "name": "hiromitsusasaki"

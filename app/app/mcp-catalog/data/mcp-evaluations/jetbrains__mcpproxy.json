@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jetbrains__mcpproxy",
   "display_name": "mcpProxy",
-  "version": "1.0.0",
   "description": "A model context protocol server to work with JetBrains IDEs: IntelliJ, PyCharm, WebStorm, etc. Also, works with Android Studio",
   "author": {
     "name": "JetBrains"

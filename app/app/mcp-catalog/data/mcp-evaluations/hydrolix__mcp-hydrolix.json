@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hydrolix__mcp-hydrolix",
   "display_name": "mcp-hydrolix",
-  "version": "1.0.0",
   "description": "An MCP server for Hydrolix",
   "author": {
     "name": "hydrolix"

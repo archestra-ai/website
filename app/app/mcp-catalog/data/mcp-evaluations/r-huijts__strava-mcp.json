@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "r-huijts__strava-mcp",
   "display_name": "strava-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that connects to Strava API, providing tools to access Strava data through LLMs",
   "author": {
     "name": "r-huijts"

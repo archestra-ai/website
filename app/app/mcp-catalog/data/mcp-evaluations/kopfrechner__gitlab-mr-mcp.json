@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kopfrechner__gitlab-mr-mcp",
   "display_name": "gitlab-mr-mcp",
-  "version": "1.0.0",
   "description": "Interact seamlessly with GitLab repositories to manage merge requests and issues. Fetch details, add comments, and streamline your code review process with ease.",
   "author": {
     "name": "kopfrechner"

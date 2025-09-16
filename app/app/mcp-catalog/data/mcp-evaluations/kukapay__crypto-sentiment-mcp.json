@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__crypto-sentiment-mcp",
   "display_name": "crypto-sentiment-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that delivers cryptocurrency sentiment analysis to AI agents.",
   "author": {
     "name": "kukapay"

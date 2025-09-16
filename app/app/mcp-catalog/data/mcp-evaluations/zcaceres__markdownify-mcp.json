@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zcaceres__markdownify-mcp",
   "display_name": "markdownify-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol server for converting almost anything to Markdown",
   "author": {
     "name": "zcaceres"

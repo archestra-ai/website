@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tomekkorbak__oura-mcp-server",
   "display_name": "oura-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server for Oura API integration",
   "author": {
     "name": "tomekkorbak"

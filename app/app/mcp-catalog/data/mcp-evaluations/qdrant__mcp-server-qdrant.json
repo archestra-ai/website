@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "qdrant__mcp-server-qdrant",
   "display_name": "mcp-server-qdrant",
-  "version": "1.0.0",
   "description": "An official Qdrant Model Context Protocol (MCP) server implementation",
   "author": {
     "name": "qdrant"

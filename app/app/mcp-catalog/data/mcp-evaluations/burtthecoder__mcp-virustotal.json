@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "burtthecoder__mcp-virustotal",
   "display_name": "mcp-virustotal",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server for querying the VirusTotal API.",
   "author": {
     "name": "BurtTheCoder"

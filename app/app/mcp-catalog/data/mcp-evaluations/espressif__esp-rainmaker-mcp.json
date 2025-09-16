@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "espressif__esp-rainmaker-mcp",
   "display_name": "esp-rainmaker-mcp",
-  "version": "1.0.0",
   "description": "ESP RainMaker MCP server",
   "author": {
     "name": "espressif"

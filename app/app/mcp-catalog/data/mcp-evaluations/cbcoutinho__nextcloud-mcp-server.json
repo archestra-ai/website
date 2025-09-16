@@ -1,6 +1,4 @@
 {
-  "dxt_version": "1.0.0",
-  "version": "1.0.0",
   "name": "cbcoutinho__nextcloud-mcp-server",
   "display_name": "nextcloud-mcp-server",
   "description": "Nextcloud MCP Server",

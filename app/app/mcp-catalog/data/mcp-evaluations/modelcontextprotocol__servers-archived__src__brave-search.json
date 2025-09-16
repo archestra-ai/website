@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "modelcontextprotocol__servers-archived__src__brave-search",
   "display_name": "brave-search",
-  "version": "1.0.0",
   "description": "Reference MCP servers that are no longer maintained",
   "author": {
     "name": "modelcontextprotocol"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hyperb1iss__droidmind",
   "display_name": "droidmind",
-  "version": "1.0.0",
   "description": "Control your Android devices with AI using Model Context Protocol",
   "author": {
     "name": "hyperb1iss"

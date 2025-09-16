@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__uniswap-trader-mcp",
   "display_name": "uniswap-trader-mcp",
-  "version": "1.0.0",
   "description": "An MCP server for AI agents to automate token swaps on Uniswap DEX across multiple blockchains.",
   "author": {
     "name": "kukapay"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "nguyenvanduocit__all-in-one-model-context-protocol",
   "display_name": "all-in-one-model-context-protocol",
-  "version": "1.0.0",
   "description": "🚀 All-in-one MCP server with AI search, RAG, and multi-service integrations (GitLab/Jira/Confluence/YouTube) for AI-enhanced development workflows",
   "author": {
     "name": "nguyenvanduocit"

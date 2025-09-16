@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "co-browser__browser-use-mcp-server",
   "display_name": "browser-use-mcp-server",
-  "version": "1.0.0",
   "description": "Browse the web, directly from Cursor etc.",
   "author": {
     "name": "co-browser"

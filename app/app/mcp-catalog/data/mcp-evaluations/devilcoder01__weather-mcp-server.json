@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "devilcoder01__weather-mcp-server",
   "display_name": "weather-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from devilcoder01/weather-mcp-server",
   "author": {
     "name": "devilcoder01"

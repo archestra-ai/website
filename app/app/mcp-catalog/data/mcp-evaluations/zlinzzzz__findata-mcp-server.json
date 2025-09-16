@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zlinzzzz__findata-mcp-server",
   "display_name": "finData-mcp-server",
-  "version": "1.0.0",
   "description": "FinData enables  your AI agents retrieve financial data from different providers like Tushare, Wind, and DataYes.",
   "author": {
     "name": "zlinzzzz"

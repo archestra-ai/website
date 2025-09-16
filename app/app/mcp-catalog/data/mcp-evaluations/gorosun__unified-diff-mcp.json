@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gorosun__unified-diff-mcp",
   "display_name": "unified-diff-mcp",
-  "version": "1.0.0",
   "description": "MCP server from gorosun/unified-diff-mcp",
   "author": {
     "name": "gorosun"

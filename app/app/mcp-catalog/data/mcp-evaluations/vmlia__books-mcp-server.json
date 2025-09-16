@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "vmlia__books-mcp-server",
   "display_name": "books-mcp-server",
-  "version": "1.0.0",
   "description": "This is an MCP server used for querying books, and it can be applied in common MCP clients, such as Cherry Studio.",
   "author": {
     "name": "VmLia"

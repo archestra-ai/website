@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ipfred__aiwen-mcp-server-geoip",
   "display_name": "aiwen-mcp-server-geoip",
-  "version": "1.0.0",
   "description": "埃文IP定位MCP",
   "author": {
     "name": "ipfred"

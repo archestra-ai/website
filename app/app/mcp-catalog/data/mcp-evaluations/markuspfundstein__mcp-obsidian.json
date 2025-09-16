@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "markuspfundstein__mcp-obsidian",
   "display_name": "mcp-obsidian",
-  "version": "1.0.0",
   "description": "MCP server that interacts with Obsidian via the Obsidian rest API community plugin",
   "author": {
     "name": "MarkusPfundstein"

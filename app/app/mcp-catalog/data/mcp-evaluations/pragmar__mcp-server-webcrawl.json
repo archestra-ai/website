@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pragmar__mcp-server-webcrawl",
   "display_name": "mcp-server-webcrawl",
-  "version": "1.0.0",
   "description": "MCP server tailored to connecting web crawler data and archives",
   "author": {
     "name": "pragmar"

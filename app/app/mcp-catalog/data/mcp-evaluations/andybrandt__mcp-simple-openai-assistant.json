@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "andybrandt__mcp-simple-openai-assistant",
   "display_name": "mcp-simple-openai-assistant",
-  "version": "1.0.0",
   "description": "MCP server that gives Claude ability to use OpenAI's GPTs assistants",
   "author": {
     "name": "andybrandt"

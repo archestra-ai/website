@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "longevity-genie__gget-mcp",
   "display_name": "gget-mcp",
-  "version": "1.0.0",
   "description": "Bioinformatic MCP server that wraps the most useful functions of the gget library",
   "author": {
     "name": "longevity-genie"

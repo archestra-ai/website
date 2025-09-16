@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "emicklei__melrose-mcp",
   "display_name": "melrose-mcp",
-  "version": "1.0.0",
   "description": "MCP server (STDIO) that uses melrose tool to play musical expressions",
   "author": {
     "name": "emicklei"

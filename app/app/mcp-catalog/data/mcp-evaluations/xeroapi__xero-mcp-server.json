@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "xeroapi__xero-mcp-server",
   "display_name": "xero-mcp-server",
-  "version": "1.0.0",
   "description": "An MCP server that integrates with the MCP protocol. https://modelcontextprotocol.io/introduction",
   "author": {
     "name": "XeroAPI"

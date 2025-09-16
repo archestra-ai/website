@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__chainlist-mcp",
   "display_name": "chainlist-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that gives AI agents fast access to verified EVM chain information, including RPC URLs, chain IDs, explorers, and native tokens.",
   "author": {
     "name": "kukapay"

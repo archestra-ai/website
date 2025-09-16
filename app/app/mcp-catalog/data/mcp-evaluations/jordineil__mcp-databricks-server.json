@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jordineil__mcp-databricks-server",
   "display_name": "mcp-databricks-server",
-  "version": "1.0.0",
   "description": "MCP Server for Databricks",
   "author": {
     "name": "JordiNeil"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "stape-io__stape-mcp-server",
   "display_name": "stape-mcp-server",
-  "version": "1.0.0",
   "description": "Interact with the Seape API using AI assistants like Claude, or in AI-powered IDEs like Cursor. ",
   "author": {
     "name": "stape-io"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "longevity-genie__synergy-age-mcp",
   "display_name": "synergy-age-mcp",
-  "version": "1.0.0",
   "description": "MCP server from longevity-genie/synergy-age-mcp",
   "author": {
     "name": "longevity-genie"

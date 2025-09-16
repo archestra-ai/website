@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ujisati__anki-mcp",
   "display_name": "anki-mcp",
-  "version": "1.0.0",
   "description": "the best anki mcp",
   "author": {
     "name": "ujisati"

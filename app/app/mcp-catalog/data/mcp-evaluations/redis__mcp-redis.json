@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "redis__mcp-redis",
   "display_name": "mcp-redis",
-  "version": "1.0.0",
   "description": "The official Redis MCP Server is a natural language interface designed for agentic applications to manage and search data in Redis efficiently",
   "author": {
     "name": "redis"

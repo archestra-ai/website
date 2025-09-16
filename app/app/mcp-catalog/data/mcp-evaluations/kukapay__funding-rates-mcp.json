@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__funding-rates-mcp",
   "display_name": "funding-rates-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that provides real-time funding rate data across major crypto exchanges.",
   "author": {
     "name": "kukapay"

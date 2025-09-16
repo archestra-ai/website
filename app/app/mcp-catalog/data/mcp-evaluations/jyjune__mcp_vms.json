@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jyjune__mcp_vms",
   "display_name": "mcp_vms",
-  "version": "1.0.0",
   "description": "MCP server for controlling and accessing a video surveillance system",
   "author": {
     "name": "jyjune"

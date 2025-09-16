@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "teddyzxcv__ntfy-mcp",
   "display_name": "ntfy-mcp",
-  "version": "1.0.0",
   "description": "MCP server from teddyzxcv/ntfy-mcp",
   "author": {
     "name": "teddyzxcv"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ragieai__ragie-mcp-server",
   "display_name": "ragie-mcp-server",
-  "version": "1.0.0",
   "description": "Ragie Model Context Protocol Server",
   "author": {
     "name": "ragieai"

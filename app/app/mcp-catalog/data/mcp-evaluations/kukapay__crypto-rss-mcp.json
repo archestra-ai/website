@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__crypto-rss-mcp",
   "display_name": "crypto-rss-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that aggregates real-time cryptocurrency news from multiple RSS feeds.",
   "author": {
     "name": "kukapay"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "antvis__mcp-server-chart",
   "display_name": "mcp-server-chart",
-  "version": "1.0.0",
   "description": "🤖 A visualization mcp contains 25+ visual charts using @antvis. Using for chart generation and data analysis.",
   "author": {
     "name": "antvis"

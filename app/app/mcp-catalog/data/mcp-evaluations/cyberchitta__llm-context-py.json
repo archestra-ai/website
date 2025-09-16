@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "cyberchitta__llm-context-py",
   "display_name": "llm-context.py",
-  "version": "1.0.0",
   "description": "Share code with LLMs via Model Context Protocol or clipboard. Rule-based customization enables easy switching between different tasks (like code review and documentation). Includes smart code outlining.",
   "author": {
     "name": "cyberchitta"

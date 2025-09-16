@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "aywengo__kafka-schema-reg-mcp",
   "display_name": "kafka-schema-reg-mcp",
-  "version": "1.0.0",
   "description": "A comprehensive Message Control Protocol (MCP) server for Kafka Schema Registry.",
   "author": {
     "name": "aywengo"

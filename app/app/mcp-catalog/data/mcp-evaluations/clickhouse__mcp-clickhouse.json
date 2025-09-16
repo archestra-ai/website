@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "clickhouse__mcp-clickhouse",
   "display_name": "mcp-clickhouse",
-  "version": "1.0.0",
   "description": "Connect ClickHouse to your AI assistants.",
   "author": {
     "name": "ClickHouse"

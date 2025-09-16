@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ivanmurzak__unity-mcp",
   "display_name": "Unity-MCP",
-  "version": "1.0.0",
   "description": "MCP Server + Plugin for Unity Editor and Unity game. The Plugin allows to connect to MCP clients like Claude Desktop or others.",
   "author": {
     "name": "IvanMurzak"

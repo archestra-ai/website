@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "regenerating-world__pix-mcp",
   "display_name": "pix-mcp",
-  "version": "1.0.0",
   "description": "MCP server from Regenerating-World/pix-mcp",
   "author": {
     "name": "Regenerating-World"

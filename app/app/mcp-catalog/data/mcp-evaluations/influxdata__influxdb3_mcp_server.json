@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "influxdata__influxdb3_mcp_server",
   "display_name": "influxdb3_mcp_server",
-  "version": "1.0.0",
   "description": "MCP Server for InfluxDB 3",
   "author": {
     "name": "influxdata"

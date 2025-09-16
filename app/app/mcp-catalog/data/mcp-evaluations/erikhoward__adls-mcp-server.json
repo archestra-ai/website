@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "erikhoward__adls-mcp-server",
   "display_name": "adls-mcp-server",
-  "version": "1.0.0",
   "description": "Microsoft Azure Data Lake Storage MCP Server",
   "author": {
     "name": "erikhoward"

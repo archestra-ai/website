@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "lharries__whatsapp-mcp",
   "display_name": "whatsapp-mcp",
-  "version": "1.0.0",
   "description": "WhatsApp MCP server",
   "author": {
     "name": "lharries"

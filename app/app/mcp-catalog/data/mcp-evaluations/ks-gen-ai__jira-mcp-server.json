@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ks-gen-ai__jira-mcp-server",
   "display_name": "jira-mcp-server",
-  "version": "1.0.0",
   "description": "A test of jira mcp server",
   "author": {
     "name": "KS-GEN-AI"

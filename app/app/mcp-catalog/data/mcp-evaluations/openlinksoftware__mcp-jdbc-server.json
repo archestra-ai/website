@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "openlinksoftware__mcp-jdbc-server",
   "display_name": "mcp-jdbc-server",
-  "version": "1.0.0",
   "description": "Java based Model Context Procotol (MCP) Server for JDBC",
   "author": {
     "name": "OpenLinkSoftware"

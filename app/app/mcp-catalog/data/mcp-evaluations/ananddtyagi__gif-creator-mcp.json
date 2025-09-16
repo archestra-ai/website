@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ananddtyagi__gif-creator-mcp",
   "display_name": "gif-creator-mcp",
-  "version": "1.0.0",
   "description": "MCP that allows you to take your video and turn it into a gif. ",
   "author": {
     "name": "ananddtyagi"

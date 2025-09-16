@@ -127,7 +127,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
     display_name: serverName,
     github_info: gitHubInfo,
     quality_score: qualityScore,
-    remote_url,
+    server: serverConfig,
   } = server;
   const gitHubInfoOwner = gitHubInfo?.owner;
   const gitHubInfoRepo = gitHubInfo?.repo;
@@ -135,7 +135,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
   // Calculate quality score without all servers (we'll update this client-side if needed)
   // For remote servers, always calculate the score since it's a fixed value
   const qualityScoreBreakdown =
-    qualityScore !== null || (remote_url && !gitHubInfo) ? calculateQualityScore(server) : null;
+    qualityScore !== null || serverConfig.type === 'remote' ? calculateQualityScore(server) : null;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -162,7 +162,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
               <QualityScoreCard server={server} scoreBreakdown={qualityScoreBreakdown} />
 
               {/* Remote Server Info Card */}
-              {remote_url && !gitHubInfo && (
+              {serverConfig.type === 'remote' && (
                 <Card className="bg-blue-50 border-blue-200">
                   <CardHeader>
                     <CardTitle className="text-blue-900">Remote MCP Server</CardTitle>
@@ -174,7 +174,8 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                       installation or source code access.
                     </p>
                     <p className="text-blue-800 mt-2">
-                      <strong>Endpoint:</strong> <code className="bg-blue-100 px-2 py-1 rounded">{remote_url}</code>
+                      <strong>Endpoint:</strong>{' '}
+                      <code className="bg-blue-100 px-2 py-1 rounded">{serverConfig.url}</code>
                     </p>
                   </CardContent>
                 </Card>
@@ -183,7 +184,7 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
               <GitHubMetricsCard server={server} serverCount={serverCount} />
               {/* Show configuration for all servers, but hide other sections for remote servers */}
               <McpClientConfigurationCard server={server} />
-              {!(remote_url && !gitHubInfo) && (
+              {serverConfig.type === 'local' && (
                 <>
                   <McpProtocolSupportCard server={server} />
                   <DependenciesCard server={server} />
@@ -222,7 +223,9 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
                   issueUrlParams={`title=Issue with ${encodeURIComponent(serverName)}&body=Server: ${
                     gitHubInfo
                       ? `${gitHubInfoOwner}/${gitHubInfoRepo}${gitHubInfoPath ? `/${gitHubInfoPath}` : ''}`
-                      : remote_url || serverName
+                      : serverConfig.type === 'remote'
+                        ? serverConfig.url
+                        : serverName
                   }%0AName: ${serverName}%0A%0APlease describe the issue:`}
                   fullWidth
                 />

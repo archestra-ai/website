@@ -1,6 +1,4 @@
 {
-  "dxt_version": "1.0.0",
-  "version": "1.0.0",
   "name": "linked-api__linkedapi-mcp",
   "display_name": "linkedapi-mcp",
   "description": "MCP server that lets AI assistants control LinkedIn accounts and retrieve real-time data.",

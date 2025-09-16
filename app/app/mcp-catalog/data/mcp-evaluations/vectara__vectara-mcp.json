@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "vectara__vectara-mcp",
   "display_name": "vectara-mcp",
-  "version": "1.0.0",
   "description": "Open source MCP server for Vectara",
   "author": {
     "name": "vectara"

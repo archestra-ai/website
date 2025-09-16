@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "joelio__stocky",
   "display_name": "stocky",
-  "version": "1.0.0",
   "description": "An MCP server for searching and downloading stock photography.",
   "author": {
     "name": "joelio"

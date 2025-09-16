@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "admica__filescopemcp",
   "display_name": "FileScopeMCP",
-  "version": "1.0.0",
   "description": "Analyzes your codebase identifying important files based on dependency relationships. Generates diagrams and importance scores per file, helping AI assistants understand the codebase. Automatically parses popular programming languages such as Python, C, C++, Rust, Zig, Lua.",
   "author": {
     "name": "admica"

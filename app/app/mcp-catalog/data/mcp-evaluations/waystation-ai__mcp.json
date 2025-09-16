@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "waystation-ai__mcp",
   "display_name": "mcp",
-  "version": "1.0.0",
   "description": "The only MCP Server you need. Connect any MCP host with the tools you use daily through our no-code, secure integration hub.",
   "author": {
     "name": "waystation-ai"

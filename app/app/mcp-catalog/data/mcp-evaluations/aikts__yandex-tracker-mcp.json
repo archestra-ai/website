@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "aikts__yandex-tracker-mcp",
   "display_name": "yandex-tracker-mcp",
-  "version": "1.0.0",
   "description": "Yandex Tracker MCP Server with OAuth2 support",
   "author": {
     "name": "aikts"

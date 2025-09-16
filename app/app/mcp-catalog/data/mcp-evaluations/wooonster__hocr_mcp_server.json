@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "wooonster__hocr_mcp_server",
   "display_name": "hocr_mcp_server",
-  "version": "1.0.0",
   "description": "MCP server from Wooonster/hocr_mcp_server",
   "author": {
     "name": "Wooonster"

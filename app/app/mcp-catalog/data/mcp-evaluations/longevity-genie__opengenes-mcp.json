@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "longevity-genie__opengenes-mcp",
   "display_name": "opengenes-mcp",
-  "version": "1.0.0",
   "description": "MCP for the open-genes",
   "author": {
     "name": "longevity-genie"

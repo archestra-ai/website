@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zeparhyfar__mcp-datetime",
   "display_name": "mcp-datetime",
-  "version": "1.0.0",
   "description": "A MCP server for datetime formatting and file name generation.",
   "author": {
     "name": "ZeparHyfar"

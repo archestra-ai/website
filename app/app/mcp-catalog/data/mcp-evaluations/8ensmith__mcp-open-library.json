@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "8ensmith__mcp-open-library",
   "display_name": "mcp-open-library",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server for the Internet Archive's Open Library API that enables AI assistants to search for book and author information.",
   "author": {
     "name": "8enSmith"

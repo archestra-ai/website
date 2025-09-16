@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "qainsights__locust-mcp-server",
   "display_name": "locust-mcp-server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server implementation for running Locust load tests. This server enables seamless integration of Locust load testing capabilities with AI-powered development environments.",
   "author": {
     "name": "QAInsights"

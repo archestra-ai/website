@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "inventer-dev__mcp-internet-speed-test",
   "display_name": "mcp-internet-speed-test",
-  "version": "1.0.0",
   "description": "The MCP Internet Speed Test is a specialized Model Context Protocol (MCP) server that enables AI models and agents to perform internet speed measurements.",
   "author": {
     "name": "inventer-dev"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "horw__esp-mcp",
   "display_name": "esp-mcp",
-  "version": "1.0.0",
   "description": "Centralize ESP32 related commands and simplify getting started with seamless, LLM-driven interaction and help.",
   "author": {
     "name": "horw"

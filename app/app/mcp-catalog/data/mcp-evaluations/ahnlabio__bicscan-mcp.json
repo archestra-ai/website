@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ahnlabio__bicscan-mcp",
   "display_name": "bicscan-mcp",
-  "version": "1.0.0",
   "description": "BICScan MCP Server",
   "author": {
     "name": "ahnlabio"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jamesanz__cross-llm-mcp",
   "display_name": "cross-llm-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that provides access to multiple Large Language Model (LLM) APIs including ChatGPT, Claude, and DeepSeek",
   "author": {
     "name": "JamesANZ"

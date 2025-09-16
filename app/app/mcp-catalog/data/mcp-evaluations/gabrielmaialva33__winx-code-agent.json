@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gabrielmaialva33__winx-code-agent",
   "display_name": "winx-code-agent",
-  "version": "1.0.0",
   "description": "✨ A high-performance code agent written in Rust, combining the best features of WCGW for maximum efficiency and semantic capabilities. 🦀",
   "author": {
     "name": "gabrielmaialva33"

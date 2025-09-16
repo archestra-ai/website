@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kyrietangsheng__mcp-server-nationalparks",
   "display_name": "mcp-server-nationalparks",
-  "version": "1.0.0",
   "description": "MCP server from KyrieTangSheng/mcp-server-nationalparks",
   "author": {
     "name": "KyrieTangSheng"

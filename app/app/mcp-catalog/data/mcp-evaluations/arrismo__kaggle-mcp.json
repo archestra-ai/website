@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "arrismo__kaggle-mcp",
   "display_name": "kaggle-mcp",
-  "version": "1.0.0",
   "description": "MCP server for Kaggle",
   "author": {
     "name": "arrismo"

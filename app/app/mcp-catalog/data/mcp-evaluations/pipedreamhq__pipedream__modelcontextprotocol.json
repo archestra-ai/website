@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pipedreamhq__pipedream__modelcontextprotocol",
   "display_name": "modelcontextprotocol",
-  "version": "1.0.0",
   "description": "Connect APIs, remarkably fast.  Free for developers.",
   "author": {
     "name": "PipedreamHQ"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hmk__box-mcp-server",
   "display_name": "box-mcp-server",
-  "version": "1.0.0",
   "description": "A Box model context protocol server to search, read and access files",
   "author": {
     "name": "hmk"

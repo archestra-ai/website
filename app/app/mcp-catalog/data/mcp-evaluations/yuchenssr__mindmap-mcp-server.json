@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "yuchenssr__mindmap-mcp-server",
   "display_name": "mindmap-mcp-server",
-  "version": "1.0.0",
   "description": "mindmap, mcp server, artifact",
   "author": {
     "name": "YuChenSSR"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "webscraping-ai__webscraping-ai-mcp-server",
   "display_name": "webscraping-ai-mcp-server",
-  "version": "1.0.0",
   "description": " A Model Context Protocol (MCP) server implementation that integrates with WebScraping.AI for web data extraction capabilities.",
   "author": {
     "name": "webscraping-ai"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "louiscklaw__hko-mcp",
   "display_name": "hko-mcp",
-  "version": "1.0.0",
   "description": "Fetch data from Hong Kong Observatory with MCP",
   "author": {
     "name": "louiscklaw"

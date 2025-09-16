@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "keboola__keboola-mcp-server",
   "display_name": "keboola-mcp-server",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) Server for the Keboola Platform",
   "author": {
     "name": "keboola"

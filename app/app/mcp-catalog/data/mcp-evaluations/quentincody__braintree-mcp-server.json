@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "quentincody__braintree-mcp-server",
   "display_name": "braintree-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from QuentinCody/braintree-mcp-server",
   "author": {
     "name": "QuentinCody"

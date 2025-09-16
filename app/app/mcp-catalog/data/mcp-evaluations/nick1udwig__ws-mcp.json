@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "nick1udwig__ws-mcp",
   "display_name": "ws-mcp",
-  "version": "1.0.0",
   "description": "MCP server from nick1udwig/ws-mcp",
   "author": {
     "name": "nick1udwig"

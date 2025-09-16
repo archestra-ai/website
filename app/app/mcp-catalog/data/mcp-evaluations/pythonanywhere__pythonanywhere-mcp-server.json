@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pythonanywhere__pythonanywhere-mcp-server",
   "display_name": "pythonanywhere-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from pythonanywhere/pythonanywhere-mcp-server",
   "author": {
     "name": "pythonanywhere"

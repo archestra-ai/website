@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tom28881__mcp-jira-server",
   "display_name": "mcp-jira-server",
-  "version": "1.0.0",
   "description": "Comprehensive MCP server for Jira integration with Claude Code",
   "author": {
     "name": "tom28881"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kashiwabyte__vikingdb-mcp-server",
   "display_name": "vikingdb-mcp-server",
-  "version": "1.0.0",
   "description": "a mcp server for vikingdb store and search",
   "author": {
     "name": "KashiwaByte"

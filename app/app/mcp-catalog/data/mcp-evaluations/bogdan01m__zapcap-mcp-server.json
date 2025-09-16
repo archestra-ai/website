@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "bogdan01m__zapcap-mcp-server",
   "display_name": "zapcap-mcp-server",
-  "version": "1.0.0",
   "description": "MCP Server for ZapCap.ai",
   "author": {
     "name": "bogdan01m"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sequa-ai__sequa-mcp",
   "display_name": "sequa-mcp",
-  "version": "1.0.0",
   "description": "MCP server from sequa-ai/sequa-mcp",
   "author": {
     "name": "sequa-ai"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "0xshellming__mcp-summarizer",
   "display_name": "mcp-summarizer",
-  "version": "1.0.0",
   "description": "MCP Server for AI Summarization",
   "author": {
     "name": "0xshellming"

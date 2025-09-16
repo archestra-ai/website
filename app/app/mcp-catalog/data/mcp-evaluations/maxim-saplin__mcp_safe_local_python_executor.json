@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "maxim-saplin__mcp_safe_local_python_executor",
   "display_name": "mcp_safe_local_python_executor",
-  "version": "1.0.0",
   "description": "Stdio MCP Server wrapping custom Python runtime (LocalPythonExecutor) from Hugging Faces' `smolagents` framework. The runtime combines the ease of setup (compared to docker, VM, cloud runtimes) while providing safeguards and limiting operations/imports that are allowed inside the runtime.",
   "author": {
     "name": "maxim-saplin"

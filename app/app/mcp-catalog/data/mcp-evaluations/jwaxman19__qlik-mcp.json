@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jwaxman19__qlik-mcp",
   "display_name": "qlik-mcp",
-  "version": "1.0.0",
   "description": "An MCP server to run qlik",
   "author": {
     "name": "jwaxman19"

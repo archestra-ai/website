@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "magarcia__mcp-server-giphy",
   "display_name": "mcp-server-giphy",
-  "version": "1.0.0",
   "description": "An implementation of Giphy integration with Model Context Protocol",
   "author": {
     "name": "magarcia"

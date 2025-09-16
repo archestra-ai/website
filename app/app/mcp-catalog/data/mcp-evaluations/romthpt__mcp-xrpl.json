@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "romthpt__mcp-xrpl",
   "display_name": "mcp-xrpl",
-  "version": "1.0.0",
   "description": "MCP server from RomThpt/mcp-xrpl",
   "author": {
     "name": "RomThpt"

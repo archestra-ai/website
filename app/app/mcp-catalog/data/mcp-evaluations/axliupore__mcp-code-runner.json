@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "axliupore__mcp-code-runner",
   "display_name": "mcp-code-runner",
-  "version": "1.0.0",
   "description": "MCP server from axliupore/mcp-code-runner",
   "author": {
     "name": "axliupore"

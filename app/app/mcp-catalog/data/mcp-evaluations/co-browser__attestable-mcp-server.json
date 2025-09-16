@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "co-browser__attestable-mcp-server",
   "display_name": "attestable-mcp-server",
-  "version": "1.0.0",
   "description": "Verify that any MCP server is running the intended and untampered code via hardware attestation.",
   "author": {
     "name": "co-browser"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "isaacwasserman__mcp-vegalite-server",
   "display_name": "mcp-vegalite-server",
-  "version": "1.0.0",
   "description": "MCP server from isaacwasserman/mcp-vegalite-server",
   "author": {
     "name": "isaacwasserman"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kagisearch__kagimcp",
   "display_name": "kagimcp",
-  "version": "1.0.0",
   "description": "The Official Model Context Protocol (MCP) server for Kagi search & other tools.",
   "author": {
     "name": "kagisearch"

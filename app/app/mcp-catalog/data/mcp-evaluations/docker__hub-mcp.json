@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "docker__hub-mcp",
   "display_name": "hub-mcp",
-  "version": "1.0.0",
   "description": "Docker Hub MCP Server",
   "author": {
     "name": "docker"

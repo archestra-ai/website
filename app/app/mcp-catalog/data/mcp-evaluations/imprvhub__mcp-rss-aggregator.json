@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "imprvhub__mcp-rss-aggregator",
   "display_name": "mcp-rss-aggregator",
-  "version": "1.0.0",
   "description": "Model Context Protocol Server for aggregating RSS feeds in Claude Desktop",
   "author": {
     "name": "imprvhub"

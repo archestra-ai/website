@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "utensils__mcp-nixos",
   "display_name": "mcp-nixos",
-  "version": "1.0.0",
   "description": "MCP-NixOS - Model Context Protocol Server for NixOS resources",
   "author": {
     "name": "utensils"

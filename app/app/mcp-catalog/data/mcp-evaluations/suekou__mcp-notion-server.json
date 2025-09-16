@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "suekou__mcp-notion-server",
   "display_name": "mcp-notion-server",
-  "version": "1.0.0",
   "description": "MCP server from suekou/mcp-notion-server",
   "author": {
     "name": "suekou"

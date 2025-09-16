@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mtehabsim__screenpilot",
   "display_name": "ScreenPilot",
-  "version": "1.0.0",
   "description": "MCP server to let LLM take full control on your device by providing screen automation toolkit for controlling and interacting with graphical user interface",
   "author": {
     "name": "Mtehabsim"

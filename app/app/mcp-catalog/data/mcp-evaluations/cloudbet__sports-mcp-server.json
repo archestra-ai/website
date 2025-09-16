@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "cloudbet__sports-mcp-server",
   "display_name": "sports-mcp-server",
-  "version": "1.0.0",
   "description": "Cloudbet Sports Data MCP Server",
   "author": {
     "name": "cloudbet"

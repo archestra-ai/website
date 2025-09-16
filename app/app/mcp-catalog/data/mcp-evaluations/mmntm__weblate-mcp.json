@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mmntm__weblate-mcp",
   "display_name": "weblate-mcp",
-  "version": "1.0.0",
   "description": "MCP server from mmntm/weblate-mcp",
   "author": {
     "name": "mmntm"

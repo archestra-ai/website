@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ananddtyagi__webpage-screenshot-mcp",
   "display_name": "webpage-screenshot-mcp",
-  "version": "1.0.0",
   "description": "An MCP that gives your agent the ability to snap a screenshot of webpages. Useful when you want your agent to check its progress during development.",
   "author": {
     "name": "ananddtyagi"

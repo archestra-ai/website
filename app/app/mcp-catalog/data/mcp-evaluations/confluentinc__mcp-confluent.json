@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "confluentinc__mcp-confluent",
   "display_name": "mcp-confluent",
-  "version": "1.0.0",
   "description": "MCP server from confluentinc/mcp-confluent",
   "author": {
     "name": "confluentinc"

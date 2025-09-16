@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "joshuarileydev__mac-apps-launcher",
   "display_name": "mac-apps-launcher",
-  "version": "1.0.0",
   "description": "MCP server from JoshuaRileyDev/mac-apps-launcher",
   "author": {
     "name": "JoshuaRileyDev"

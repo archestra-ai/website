@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "metoro-io__metoro-mcp-server",
   "display_name": "metoro-mcp-server",
-  "version": "1.0.0",
   "description": "Metoro MCP Server",
   "author": {
     "name": "metoro-io"

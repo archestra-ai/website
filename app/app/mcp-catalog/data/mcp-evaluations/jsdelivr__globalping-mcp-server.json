@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jsdelivr__globalping-mcp-server",
   "display_name": "globalping-mcp-server",
-  "version": "1.0.0",
   "description": "Remote MCP server that gives LLMs access to run network commands",
   "author": {
     "name": "jsdelivr"

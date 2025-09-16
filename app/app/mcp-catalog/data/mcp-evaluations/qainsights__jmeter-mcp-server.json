@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "qainsights__jmeter-mcp-server",
   "display_name": "jmeter-mcp-server",
-  "version": "1.0.0",
   "description": "✨ JMeter Meets AI Workflows: Introducing the JMeter MCP Server! 🤯 ",
   "author": {
     "name": "QAInsights"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "automation-ai-labs__mcp-link",
   "display_name": "mcp-link",
-  "version": "1.0.0",
   "description": "Convert Any OpenAPI V3 API to MCP Server",
   "author": {
     "name": "automation-ai-labs"

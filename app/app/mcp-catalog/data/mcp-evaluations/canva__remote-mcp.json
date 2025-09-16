@@ -1,7 +1,6 @@
 {
   "name": "canva__remote-mcp",
   "display_name": "Canva",
-  "version": "1.0.0",
   "description": "Remote MCP server for Canva - graphic design and visual content creation",
   "remote_url": "https://mcp.canva.com/mcp",
   "remote_mcp_docs_url": "https://www.canva.dev/docs/connect/canva-mcp-server-setup/",
@@ -33,7 +32,6 @@
   "last_scraped_at": "2025-09-05T19:30:23.066Z",
   "evaluation_model": null,
   "raw_dependencies": null,
-  "dxt_version": "0.1.0",
   "author": {
     "name": "canva"
   },

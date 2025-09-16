@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "cloudflare__mcp-server-cloudflare",
   "display_name": "mcp-server-cloudflare",
-  "version": "1.0.0",
   "description": "MCP server from cloudflare/mcp-server-cloudflare",
   "author": {
     "name": "cloudflare"

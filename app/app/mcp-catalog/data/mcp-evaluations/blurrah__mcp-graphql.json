@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "blurrah__mcp-graphql",
   "display_name": "mcp-graphql",
-  "version": "1.0.0",
   "description": "Model Context Protocol server for GraphQL",
   "author": {
     "name": "blurrah"

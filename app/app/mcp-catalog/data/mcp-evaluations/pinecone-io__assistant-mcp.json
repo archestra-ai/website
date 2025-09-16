@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pinecone-io__assistant-mcp",
   "display_name": "assistant-mcp",
-  "version": "1.0.0",
   "description": "Pinecone Assistant MCP server",
   "author": {
     "name": "pinecone-io"

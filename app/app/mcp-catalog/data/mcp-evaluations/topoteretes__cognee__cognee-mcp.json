@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "topoteretes__cognee__cognee-mcp",
   "display_name": "cognee-mcp",
-  "version": "1.0.0",
   "description": "Memory for AI Agents in 5 lines of code",
   "author": {
     "name": "topoteretes"

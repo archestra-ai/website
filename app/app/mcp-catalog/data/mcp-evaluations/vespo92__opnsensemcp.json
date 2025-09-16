@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "vespo92__opnsensemcp",
   "display_name": "OPNSenseMCP",
-  "version": "1.0.0",
   "description": "MCP Server for OPNSense to act as IaC proxy",
   "author": {
     "name": "vespo92"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kaliaboi__mcp-zotero",
   "display_name": "mcp-zotero",
-  "version": "1.0.0",
   "description": "A connector for Claude Desktop to work with collection and sources on your Zotero Cloud.",
   "author": {
     "name": "kaliaboi"

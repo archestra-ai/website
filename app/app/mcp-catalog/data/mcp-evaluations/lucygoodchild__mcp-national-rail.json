@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "lucygoodchild__mcp-national-rail",
   "display_name": "mcp-national-rail",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server to retrieve train schedules from National Rail",
   "author": {
     "name": "lucygoodchild"

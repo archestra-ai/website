@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jamesanz__bitcoin-mcp",
   "display_name": "bitcoin-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that provides real-time Bitcoin blockchain data",
   "author": {
     "name": "JamesANZ"

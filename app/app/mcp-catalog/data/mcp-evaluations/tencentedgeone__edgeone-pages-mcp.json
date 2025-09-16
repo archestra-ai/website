@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tencentedgeone__edgeone-pages-mcp",
   "display_name": "edgeone-pages-mcp",
-  "version": "1.0.0",
   "description": "An MCP service designed for deploying HTML content to EdgeOne Pages and obtaining an accessible public URL.",
   "author": {
     "name": "TencentEdgeOne"

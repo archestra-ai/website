@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "yiwenlu66__piloty",
   "display_name": "PiloTY",
-  "version": "1.0.0",
   "description": "PiloTY: AI pilot for PTY operations via MCP - enables AI agents to control interactive terminals like a human",
   "author": {
     "name": "yiwenlu66"

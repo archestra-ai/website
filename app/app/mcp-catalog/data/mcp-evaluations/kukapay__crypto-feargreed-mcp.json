@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__crypto-feargreed-mcp",
   "display_name": "crypto-feargreed-mcp",
-  "version": "1.0.0",
   "description": "Providing real-time and historical Crypto Fear & Greed Index data",
   "author": {
     "name": "kukapay"

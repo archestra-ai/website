@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "promptexecution__cratedocs-mcp",
   "display_name": "cratedocs-mcp",
-  "version": "1.0.0",
   "description": "MCP tools for Rust Context Engineering (rustdocs, rust analyzer)",
   "author": {
     "name": "promptexecution"

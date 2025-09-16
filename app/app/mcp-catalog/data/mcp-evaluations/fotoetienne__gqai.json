@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "fotoetienne__gqai",
   "display_name": "gqai",
-  "version": "1.0.0",
   "description": "Turn any GraphQL endpoint into a set of MCP tools",
   "author": {
     "name": "fotoetienne"

@@ -9,7 +9,7 @@ interface ResourcesCardProps {
 
 const ResourcesCard = ({ server }: ResourcesCardProps) => {
   const gitHubRepoUrl = server.github_info?.url;
-  const remoteDocsUrl = server.remote_mcp_docs_url;
+  const remoteDocsUrl = server.server.type === 'remote' ? server.server.docs_url : null;
 
   // Only show GitHub repository or remote documentation links, not the endpoint URL
   const resourceUrl = gitHubRepoUrl || remoteDocsUrl;

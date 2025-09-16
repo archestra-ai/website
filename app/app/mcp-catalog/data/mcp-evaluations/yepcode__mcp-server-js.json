@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "yepcode__mcp-server-js",
   "display_name": "mcp-server-js",
-  "version": "1.0.0",
   "description": "An MCP (Model Context Protocol) server that enables ✨ AI platforms to interact with 🤖 YepCode's infrastructure.  Turn your YepCode processes into powerful tools that AI assistants can use 🚀",
   "author": {
     "name": "yepcode"

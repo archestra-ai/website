@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ktanaka101__mcp-server-duckdb",
   "display_name": "mcp-server-duckdb",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server implementation for DuckDB, providing database interaction capabilities",
   "author": {
     "name": "ktanaka101"

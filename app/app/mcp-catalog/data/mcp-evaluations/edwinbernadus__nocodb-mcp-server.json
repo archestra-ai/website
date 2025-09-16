@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "edwinbernadus__nocodb-mcp-server",
   "display_name": "nocodb-mcp-server",
-  "version": "1.0.0",
   "description": "nocodb mcp server",
   "author": {
     "name": "edwinbernadus"

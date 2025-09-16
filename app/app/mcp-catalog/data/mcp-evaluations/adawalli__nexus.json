@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "adawalli__nexus",
   "display_name": "nexus",
-  "version": "1.0.0",
   "description": "MCP Server to make searching openrouter easy",
   "author": {
     "name": "adawalli"

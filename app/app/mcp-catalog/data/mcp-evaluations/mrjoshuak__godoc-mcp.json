@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mrjoshuak__godoc-mcp",
   "display_name": "godoc-mcp",
-  "version": "1.0.0",
   "description": "go doc mcp server",
   "author": {
     "name": "mrjoshuak"

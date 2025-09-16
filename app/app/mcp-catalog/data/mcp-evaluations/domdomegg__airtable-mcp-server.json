@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "domdomegg__airtable-mcp-server",
   "display_name": "airtable-mcp-server",
-  "version": "1.0.0",
   "description": "🗂️🤖 Airtable Model Context Protocol Server, for allowing AI systems to interact with your Airtable bases",
   "author": {
     "name": "domdomegg"

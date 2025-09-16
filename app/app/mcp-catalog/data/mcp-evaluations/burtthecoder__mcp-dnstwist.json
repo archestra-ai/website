@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "burtthecoder__mcp-dnstwist",
   "display_name": "mcp-dnstwist",
-  "version": "1.0.0",
   "description": "MCP server for dnstwist, a powerful DNS fuzzing tool that helps detect typosquatting, phishing, and corporate espionage.",
   "author": {
     "name": "BurtTheCoder"

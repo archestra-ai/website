@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gwbischof__outsource-mcp",
   "display_name": "outsource-mcp",
-  "version": "1.0.0",
   "description": "Give your AI assistant its own AI assistants.",
   "author": {
     "name": "gwbischof"

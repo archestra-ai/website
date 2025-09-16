@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "openlinksoftware__mcp-odbc-server",
   "display_name": "mcp-odbc-server",
-  "version": "1.0.0",
   "description": "Typescript based Model Context Procotol (MCP) Server for Open Database Connectivity (ODBC)",
   "author": {
     "name": "OpenLinkSoftware"

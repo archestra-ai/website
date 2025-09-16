@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ipfind__ipfind-mcp-server",
   "display_name": "ipfind-mcp-server",
-  "version": "1.0.0",
   "description": "IP Find MCP Server",
   "author": {
     "name": "ipfind"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kj455__mcp-kibela",
   "display_name": "mcp-kibela",
-  "version": "1.0.0",
   "description": "MCP server implementation that enables AI assistants to search and reference Kibela content",
   "author": {
     "name": "kj455"

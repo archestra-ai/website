@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hustcc__mcp-echarts",
   "display_name": "mcp-echarts",
-  "version": "1.0.0",
   "description": "🧬 Generate visual charts using ECharts with AI MCP dynamically, used for chart generation and data analysis.",
   "author": {
     "name": "hustcc"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "bytedance__ui-tars-desktop__packages__agent-infra__mcp-servers__browser",
   "display_name": "browser",
-  "version": "1.0.0",
   "description": "The Open-Source Multimodal AI Agent Stack: Connecting Cutting-Edge AI Models and Agent Infra",
   "author": {
     "name": "bytedance"

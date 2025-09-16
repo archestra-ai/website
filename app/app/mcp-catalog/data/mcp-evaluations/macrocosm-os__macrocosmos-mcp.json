@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "macrocosm-os__macrocosmos-mcp",
   "display_name": "macrocosmos-mcp",
-  "version": "1.0.0",
   "description": "The MCP for macrocosmos subnets. ",
   "author": {
     "name": "macrocosm-os"

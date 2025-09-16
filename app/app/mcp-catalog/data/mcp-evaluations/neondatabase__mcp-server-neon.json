@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "neondatabase__mcp-server-neon",
   "display_name": "mcp-server-neon",
-  "version": "1.0.0",
   "description": "MCP server for interacting with Neon Management API and databases",
   "author": {
     "name": "neondatabase"

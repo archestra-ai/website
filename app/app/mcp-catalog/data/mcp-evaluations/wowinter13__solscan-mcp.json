@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "wowinter13__solscan-mcp",
   "display_name": "solscan-mcp",
-  "version": "1.0.0",
   "description": "An MCP server for querying Solana transactions using natural language with Solscan API",
   "author": {
     "name": "wowinter13"

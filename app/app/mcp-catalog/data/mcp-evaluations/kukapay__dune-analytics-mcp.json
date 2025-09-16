@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__dune-analytics-mcp",
   "display_name": "dune-analytics-mcp",
-  "version": "1.0.0",
   "description": "A mcp server that bridges Dune Analytics data to AI agents.",
   "author": {
     "name": "kukapay"

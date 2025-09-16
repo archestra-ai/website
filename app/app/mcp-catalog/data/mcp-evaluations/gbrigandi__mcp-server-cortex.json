@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gbrigandi__mcp-server-cortex",
   "display_name": "mcp-server-cortex",
-  "version": "1.0.0",
   "description": "MCP Server for Cortex",
   "author": {
     "name": "gbrigandi"

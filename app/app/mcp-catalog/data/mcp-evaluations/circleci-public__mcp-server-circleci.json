@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "circleci-public__mcp-server-circleci",
   "display_name": "mcp-server-circleci",
-  "version": "1.0.0",
   "description": "A specialized server implementation for the Model Context Protocol (MCP) designed to integrate with CircleCI's development workflow. This project serves as a bridge between CircleCI's infrastructure and the Model Context Protocol, enabling enhanced AI-powered development experiences.",
   "author": {
     "name": "CircleCI-Public"

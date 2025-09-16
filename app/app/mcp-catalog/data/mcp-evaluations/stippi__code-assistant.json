@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "stippi__code-assistant",
   "display_name": "code-assistant",
-  "version": "1.0.0",
   "description": "An LLM-powered, autonomous coding assistant. Also offers an MCP mode.",
   "author": {
     "name": "stippi"

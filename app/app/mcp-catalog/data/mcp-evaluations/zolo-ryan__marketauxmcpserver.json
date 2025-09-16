@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zolo-ryan__marketauxmcpserver",
   "display_name": "MarketAuxMcpServer",
-  "version": "1.0.0",
   "description": "MCP server from Zolo-Ryan/MarketAuxMcpServer",
   "author": {
     "name": "Zolo-Ryan"

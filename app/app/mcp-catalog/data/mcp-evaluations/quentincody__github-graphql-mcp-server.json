@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "quentincody__github-graphql-mcp-server",
   "display_name": "github-graphql-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from QuentinCody/github-graphql-mcp-server",
   "author": {
     "name": "QuentinCody"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ttommyth__interactive-mcp",
   "display_name": "interactive-mcp",
-  "version": "1.0.0",
   "description": "Vibe coding should have human in the loop! interactive-mcp: Local, cross-platform MCP server for interact with your AI Agent",
   "author": {
     "name": "ttommyth"

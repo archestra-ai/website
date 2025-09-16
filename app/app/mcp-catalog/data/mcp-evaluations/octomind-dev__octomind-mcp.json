@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "octomind-dev__octomind-mcp",
   "display_name": "octomind-mcp",
-  "version": "1.0.0",
   "description": "An MCP server for octomind tools, resources and prompts",
   "author": {
     "name": "OctoMind-dev"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "micl2e2__code-to-tree",
   "display_name": "code-to-tree",
-  "version": "1.0.0",
   "description": "A runtime-free MCP server that converts source code into AST🌲, regardless of language.",
   "author": {
     "name": "micl2e2"

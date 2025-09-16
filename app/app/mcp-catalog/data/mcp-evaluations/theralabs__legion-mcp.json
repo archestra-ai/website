@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "theralabs__legion-mcp",
   "display_name": "legion-mcp",
-  "version": "1.0.0",
   "description": "A server that helps people access and query data in databases using the Legion Query Runner with Model Context Protocol (MCP) in Python.",
   "author": {
     "name": "TheRaLabs"

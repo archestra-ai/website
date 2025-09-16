@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "theobrigitte__mcp-time",
   "display_name": "mcp-time",
-  "version": "1.0.0",
   "description": "MCP (Model Context Protocol) server which provides utilities to work with time and dates, with natural language, multiple formats and timezone convertion capabilities",
   "author": {
     "name": "TheoBrigitte"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pearch-ai__mcp_pearch",
   "display_name": "mcp_pearch",
-  "version": "1.0.0",
   "description": "The most accurate people search API/MCP. Natural language in, high-quality candidates out. Built for ATSs and AI Agents.",
   "author": {
     "name": "Pearch-ai"

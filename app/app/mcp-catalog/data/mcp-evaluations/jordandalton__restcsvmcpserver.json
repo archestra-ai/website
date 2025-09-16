@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jordandalton__restcsvmcpserver",
   "display_name": "RestCsvMcpServer",
-  "version": "1.0.0",
   "description": "MCP Server for RestCSV, Generated using MCPGen",
   "author": {
     "name": "JordanDalton"

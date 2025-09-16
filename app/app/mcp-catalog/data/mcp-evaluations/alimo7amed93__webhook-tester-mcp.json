@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "alimo7amed93__webhook-tester-mcp",
   "display_name": "webhook-tester-mcp",
-  "version": "1.0.0",
   "description": "FastMCP server for managing and testing webhooks via webhook-test.com API",
   "author": {
     "name": "alimo7amed93"

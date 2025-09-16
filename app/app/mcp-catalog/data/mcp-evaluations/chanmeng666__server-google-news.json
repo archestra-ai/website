@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "chanmeng666__server-google-news",
   "display_name": "server-google-news",
-  "version": "1.0.0",
   "description": "【Star-crossed coders unite!⭐️】Model Context Protocol (MCP) server implementation providing Google News search capabilities via SerpAPI, with automatic news categorization and multi-language support.",
   "author": {
     "name": "ChanMeng666"

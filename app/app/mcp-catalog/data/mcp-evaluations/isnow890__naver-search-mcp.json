@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "isnow890__naver-search-mcp",
   "display_name": "naver-search-mcp",
-  "version": "1.0.0",
   "description": "MCP server for Naver Search API integration. Provides comprehensive search capabilities across Naver services (web, news, blog, shopping, etc) and data trend analysis tools via DataLab API.",
   "author": {
     "name": "isnow890"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "qiniu__qiniu-mcp-server",
   "display_name": "qiniu-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from qiniu/qiniu-mcp-server",
   "author": {
     "name": "qiniu"

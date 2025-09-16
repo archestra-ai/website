@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "glips__figma-context-mcp",
   "display_name": "Figma",
-  "version": "1.0.0",
   "description": "MCP server to provide Figma layout information to AI coding agents like Cursor",
   "author": {
     "name": "GLips"

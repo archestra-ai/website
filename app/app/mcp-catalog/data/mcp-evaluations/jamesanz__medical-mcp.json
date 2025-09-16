@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jamesanz__medical-mcp",
   "display_name": "medical-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that provides comprehensive medical information by querying multiple authoritative medical APIs including FDA, WHO, PubMed, Google Scholar, and RxNorm",
   "author": {
     "name": "JamesANZ"

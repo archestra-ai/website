@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sonirico__mcp-shell",
   "display_name": "mcp-shell",
-  "version": "1.0.0",
   "description": "Give hands to AI. MCP server to run shell commands securely, auditably, and on demand.",
   "author": {
     "name": "sonirico"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "akramiot__mcp_ai_soc_sher",
   "display_name": "MCP_AI_SOC_Sher",
-  "version": "1.0.0",
   "description": "AI SOC  Security Threat analysis using  MCP Server ",
   "author": {
     "name": "akramIOT"

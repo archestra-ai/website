@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "yangkyeongmo__mcp-server-apache-airflow",
   "display_name": "mcp-server-apache-airflow",
-  "version": "1.0.0",
   "description": "MCP server from yangkyeongmo/mcp-server-apache-airflow",
   "author": {
     "name": "yangkyeongmo"

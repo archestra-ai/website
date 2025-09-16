@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "minhyeoky__mcp-server-ledger",
   "display_name": "mcp-server-ledger",
-  "version": "1.0.0",
   "description": "A Model Context Protocol server for interacting with Ledger CLI, a powerful double-entry accounting system. This server enables Large Language Models to query and analyze financial data through a standardized interface, making it easy for AI assistants to help with financial reporting, budget analysis, and accounting tasks.",
   "author": {
     "name": "minhyeoky"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gbrigandi__mcp-server-wazuh",
   "display_name": "mcp-server-wazuh",
-  "version": "1.0.0",
   "description": "MCP Server for Wazuh SIEM",
   "author": {
     "name": "gbrigandi"

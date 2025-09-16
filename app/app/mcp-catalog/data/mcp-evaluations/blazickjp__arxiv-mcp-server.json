@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "blazickjp__arxiv-mcp-server",
   "display_name": "arxiv-mcp-server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol server for searching and analyzing arXiv papers",
   "author": {
     "name": "blazickjp"

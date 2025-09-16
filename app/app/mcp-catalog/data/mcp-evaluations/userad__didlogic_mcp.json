@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "userad__didlogic_mcp",
   "display_name": "didlogic_mcp",
-  "version": "1.0.0",
   "description": "MCP server from UserAd/didlogic_mcp",
   "author": {
     "name": "UserAd"

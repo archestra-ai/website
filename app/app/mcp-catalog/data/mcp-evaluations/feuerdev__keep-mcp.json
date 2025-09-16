@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "feuerdev__keep-mcp",
   "display_name": "keep-mcp",
-  "version": "1.0.0",
   "description": "MCP server for Google Keep",
   "author": {
     "name": "feuerdev"

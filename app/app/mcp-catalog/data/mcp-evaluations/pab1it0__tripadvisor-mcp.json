@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pab1it0__tripadvisor-mcp",
   "display_name": "tripadvisor-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server for Tripadvisor Content API.  This provides access to Tripadvisor location data, reviews, and photos through standardized MCP interfaces, allowing AI assistants to search for travel destinations and experiences.",
   "author": {
     "name": "pab1it0"

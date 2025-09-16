@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pyroprompts__any-chat-completions-mcp",
   "display_name": "any-chat-completions-mcp",
-  "version": "1.0.0",
   "description": "MCP Server for using any LLM as a Tool",
   "author": {
     "name": "pyroprompts"

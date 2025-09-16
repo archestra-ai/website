@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "yuchenssr__multi-ai-advisor-mcp",
   "display_name": "multi-ai-advisor-mcp",
-  "version": "1.0.0",
   "description": "council of models for decision",
   "author": {
     "name": "YuChenSSR"

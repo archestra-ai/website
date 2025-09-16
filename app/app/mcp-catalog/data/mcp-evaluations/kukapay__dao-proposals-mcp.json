@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__dao-proposals-mcp",
   "display_name": "dao-proposals-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that aggregates live governance proposals from major DAOs.",
   "author": {
     "name": "kukapay"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "narumiruna__yfinance-mcp",
   "display_name": "yfinance-mcp",
-  "version": "1.0.0",
   "description": "MCP server from narumiruna/yfinance-mcp",
   "author": {
     "name": "narumiruna"

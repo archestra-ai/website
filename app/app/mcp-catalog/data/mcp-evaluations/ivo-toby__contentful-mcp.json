@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ivo-toby__contentful-mcp",
   "display_name": "contentful-mcp",
-  "version": "1.0.0",
   "description": "MCP (Model Context Protocol) server for the Contentful Management API",
   "author": {
     "name": "ivo-toby"

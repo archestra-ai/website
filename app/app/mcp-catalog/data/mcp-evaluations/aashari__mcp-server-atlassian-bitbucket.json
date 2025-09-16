@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "aashari__mcp-server-atlassian-bitbucket",
   "display_name": "mcp-server-atlassian-bitbucket",
-  "version": "1.0.0",
   "description": "Node.js/TypeScript MCP server for Atlassian Bitbucket. Enables AI systems (LLMs) to interact with workspaces, repositories, and pull requests via tools (list, get, comment, search). Connects AI directly to version control workflows through the standard MCP interface.",
   "author": {
     "name": "aashari"

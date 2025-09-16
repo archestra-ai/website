@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tinybirdco__mcp-tinybird",
   "display_name": "mcp-tinybird",
-  "version": "1.0.0",
   "description": "MCP server from tinybirdco/mcp-tinybird",
   "author": {
     "name": "tinybirdco"

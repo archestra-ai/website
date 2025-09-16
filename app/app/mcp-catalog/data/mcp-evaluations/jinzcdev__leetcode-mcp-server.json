@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jinzcdev__leetcode-mcp-server",
   "display_name": "leetcode-mcp-server",
-  "version": "1.0.0",
   "description": "An MCP server enabling automated access to LeetCode's problems, solutions, and public data with optional authentication for user-specific features, supporting leetcode.com & leetcode.cn sites.",
   "author": {
     "name": "jinzcdev"

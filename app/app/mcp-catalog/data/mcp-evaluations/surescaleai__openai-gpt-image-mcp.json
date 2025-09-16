@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "surescaleai__openai-gpt-image-mcp",
   "display_name": "openai-gpt-image-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) tool server for OpenAI's GPT-4o/gpt-image-1 image generation and editing APIs.",
   "author": {
     "name": "SureScaleAI"

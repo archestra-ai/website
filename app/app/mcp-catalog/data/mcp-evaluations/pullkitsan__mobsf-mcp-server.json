@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pullkitsan__mobsf-mcp-server",
   "display_name": "mobsf-mcp-server",
-  "version": "1.0.0",
   "description": "This MCP server uses mobsf api's to scan and analyze the apk and ipa files.",
   "author": {
     "name": "pullkitsan"

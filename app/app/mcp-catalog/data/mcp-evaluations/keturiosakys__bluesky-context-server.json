@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "keturiosakys__bluesky-context-server",
   "display_name": "bluesky-context-server",
-  "version": "1.0.0",
   "description": "Bluesky MCP server",
   "author": {
     "name": "keturiosakys"

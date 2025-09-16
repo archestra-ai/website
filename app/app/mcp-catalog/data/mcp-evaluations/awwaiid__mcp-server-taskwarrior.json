@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "awwaiid__mcp-server-taskwarrior",
   "display_name": "TaskWarrior",
-  "version": "1.0.0",
   "description": "MCP Server for TaskWarrior!",
   "author": {
     "name": "awwaiid"

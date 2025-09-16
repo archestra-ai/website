@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mberg__kokoro-tts-mcp",
   "display_name": "kokoro-tts-mcp",
-  "version": "1.0.0",
   "description": "Kokoro Text to Speech (TTS) MCP Server",
   "author": {
     "name": "mberg"

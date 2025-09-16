@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "burtthecoder__mcp-shodan",
   "display_name": "Shodan",
-  "version": "1.0.0",
   "description": "MCP server for querying the Shodan API",
   "author": {
     "name": "BurtTheCoder"

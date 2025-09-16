@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "saseq__discord-mcp",
   "display_name": "discord-mcp",
-  "version": "1.0.0",
   "description": "A MCP server for the Discord integration. Enable your AI assistants to seamlessly interact with Discord. Enhance your Discord experience with powerful automation capabilities.",
   "author": {
     "name": "SaseQ"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "johnneerdael__netskope-mcp",
   "display_name": "netskope-mcp",
-  "version": "1.0.0",
   "description": "MCP server from johnneerdael/netskope-mcp",
   "author": {
     "name": "johnneerdael"

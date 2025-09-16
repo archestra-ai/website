@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "overquotaai__chatterboxio-mcp-server",
   "display_name": "chatterboxio-mcp-server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol server implementation for ChatterBox, enabling AI agents to interact with online meetings and generate meeting summaries",
   "author": {
     "name": "OverQuotaAI"

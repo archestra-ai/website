@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "misiektoja__kill-process-mcp",
   "display_name": "kill-process-mcp",
-  "version": "1.0.0",
   "description": "Cross-platform MCP (Model Context Protocol) server exposing tools to list and terminate OS processes via natural language queries",
   "author": {
     "name": "misiektoja"

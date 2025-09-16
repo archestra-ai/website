@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "yuna0x0__hackmd-mcp",
   "display_name": "hackmd-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol server for integrating HackMD's note-taking platform with AI assistants.",
   "author": {
     "name": "yuna0x0"

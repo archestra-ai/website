@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "azure__azure-mcp",
   "display_name": "azure-mcp",
-  "version": "1.0.0",
   "description": "The Azure MCP Server, bringing the power of Azure to your agents.",
   "author": {
     "name": "Azure"

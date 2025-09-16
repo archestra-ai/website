@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "qainsights__k6-mcp-server",
   "display_name": "k6-mcp-server",
-  "version": "1.0.0",
   "description": "k6 MCP server",
   "author": {
     "name": "QAInsights"

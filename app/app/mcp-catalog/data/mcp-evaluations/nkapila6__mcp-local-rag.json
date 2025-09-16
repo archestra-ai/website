@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "nkapila6__mcp-local-rag",
   "display_name": "mcp-local-rag",
-  "version": "1.0.0",
   "description": "\"primitive\" RAG-like web search model context protocol (MCP) server that runs locally. ✨ no APIs ✨",
   "author": {
     "name": "nkapila6"

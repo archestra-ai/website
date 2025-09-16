@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "supabase-community__supabase-mcp",
   "display_name": "supabase-mcp",
-  "version": "1.0.0",
   "description": "Connect Supabase to your AI assistants",
   "author": {
     "name": "supabase-community"

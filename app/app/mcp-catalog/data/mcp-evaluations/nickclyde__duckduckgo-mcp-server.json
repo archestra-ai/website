@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "nickclyde__duckduckgo-mcp-server",
   "display_name": "duckduckgo-mcp-server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that provides web search capabilities through DuckDuckGo, with additional features for content fetching and parsing.",
   "author": {
     "name": "nickclyde"

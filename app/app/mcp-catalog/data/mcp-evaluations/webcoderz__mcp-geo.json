@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "webcoderz__mcp-geo",
   "display_name": "MCP-Geo",
-  "version": "1.0.0",
   "description": "Geocoding MCP server with GeoPY!",
   "author": {
     "name": "webcoderz"

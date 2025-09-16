@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mikechao__metmuseum-mcp",
   "display_name": "metmuseum-mcp",
-  "version": "1.0.0",
   "description": "Met Museum MCP integration to discover the art collection at The Metropolitan Museum of Art in New York",
   "author": {
     "name": "mikechao"

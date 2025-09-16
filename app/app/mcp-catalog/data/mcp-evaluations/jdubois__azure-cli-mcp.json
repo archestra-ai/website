@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jdubois__azure-cli-mcp",
   "display_name": "azure-cli-mcp",
-  "version": "1.0.0",
   "description": "Talk with Azure using MCP",
   "author": {
     "name": "jdubois"

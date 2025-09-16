@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "klavis-ai__klavis__mcp_servers__youtube",
   "display_name": "youtube",
-  "version": "1.0.0",
   "description": "Klavis AI (YC X25):  Open Source MCP integration for AI applications",
   "author": {
     "name": "Klavis-AI"

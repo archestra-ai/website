@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "seekrays__mcp-monitor",
   "display_name": "mcp-monitor",
-  "version": "1.0.0",
   "description": "A system monitoring tool that exposes system metrics via the Model Context Protocol (MCP). This tool allows LLMs to retrieve real-time system information through an MCP-compatible interface.",
   "author": {
     "name": "seekrays"

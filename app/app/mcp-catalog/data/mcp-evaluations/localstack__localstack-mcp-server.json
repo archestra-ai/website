@@ -1,6 +1,4 @@
 {
-  "dxt_version": "1.0.0",
-  "version": "1.0.0",
   "name": "localstack__localstack-mcp-server",
   "display_name": "localstack-mcp-server",
   "description": "MCP server from localstack/localstack-mcp-server",

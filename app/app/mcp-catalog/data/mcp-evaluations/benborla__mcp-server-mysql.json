@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "benborla__mcp-server-mysql",
   "display_name": "mcp-server-mysql",
-  "version": "1.0.0",
   "description": "A Model Context Protocol server that provides read-only access to MySQL databases. This server enables LLMs to inspect database schemas and execute read-only queries.",
   "author": {
     "name": "benborla"

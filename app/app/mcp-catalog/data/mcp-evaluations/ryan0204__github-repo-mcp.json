@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ryan0204__github-repo-mcp",
   "display_name": "github-repo-mcp",
-  "version": "1.0.0",
   "description": "Model Context Protocol server for Github Repo // Reading Github Repo",
   "author": {
     "name": "Ryan0204"

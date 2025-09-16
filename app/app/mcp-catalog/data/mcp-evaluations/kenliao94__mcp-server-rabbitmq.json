@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kenliao94__mcp-server-rabbitmq",
   "display_name": "mcp-server-rabbitmq",
-  "version": "1.0.0",
   "description": "MCP server for interacting with RabbitMQ",
   "author": {
     "name": "kenliao94"

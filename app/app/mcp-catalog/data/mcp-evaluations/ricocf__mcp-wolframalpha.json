@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ricocf__mcp-wolframalpha",
   "display_name": "mcp-wolframalpha",
-  "version": "1.0.0",
   "description": "A Python-powered Model Context Protocol MCP server and client that uses Wolfram Alpha via API.",
   "author": {
     "name": "ricocf"

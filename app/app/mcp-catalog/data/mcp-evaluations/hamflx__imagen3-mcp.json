@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hamflx__imagen3-mcp",
   "display_name": "imagen3-mcp",
-  "version": "1.0.0",
   "description": "MCP server from hamflx/imagen3-mcp",
   "author": {
     "name": "hamflx"

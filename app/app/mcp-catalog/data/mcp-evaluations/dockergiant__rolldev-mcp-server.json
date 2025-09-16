@@ -1,6 +1,4 @@
 {
-  "dxt_version": "1.0.0",
-  "version": "1.0.0",
   "name": "dockergiant__rolldev-mcp-server",
   "display_name": "rolldev-mcp-server",
   "description": "RollDev MCP Server to use in Ai agents",

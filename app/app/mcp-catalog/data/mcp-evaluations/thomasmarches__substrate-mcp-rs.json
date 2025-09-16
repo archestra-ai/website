@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "thomasmarches__substrate-mcp-rs",
   "display_name": "substrate-mcp-rs",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server for Substrate blockchains, written in Rust and interfacing the subxt crate.",
   "author": {
     "name": "ThomasMarches"

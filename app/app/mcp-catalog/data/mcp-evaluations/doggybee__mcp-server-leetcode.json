@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "doggybee__mcp-server-leetcode",
   "display_name": "mcp-server-leetcode",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server for LeetCode that provides access to problems, user data, and contest information through GraphQL",
   "author": {
     "name": "doggybee"

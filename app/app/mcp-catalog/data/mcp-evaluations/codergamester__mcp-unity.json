@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "codergamester__mcp-unity",
   "display_name": "mcp-unity",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) plugin to connect with Unity Editor — designed for OpenAI, Gemini, Claude, Deepseek and Grok interoperability",
   "author": {
     "name": "CoderGamester"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "laukikk__alpaca-mcp",
   "display_name": "alpaca-mcp",
-  "version": "1.0.0",
   "description": "MCP for the Alpaca trading API to manage stock and crypto portfolios, place trades, and access market data",
   "author": {
     "name": "laukikk"

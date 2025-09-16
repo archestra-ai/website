@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "abhiemj__manim-mcp-server",
   "display_name": "manim-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from abhiemj/manim-mcp-server",
   "author": {
     "name": "abhiemj"

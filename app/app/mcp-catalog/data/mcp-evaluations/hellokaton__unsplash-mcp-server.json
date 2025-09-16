@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hellokaton__unsplash-mcp-server",
   "display_name": "unsplash-mcp-server",
-  "version": "1.0.0",
   "description": "🔎 A MCP server for Unsplash image search.",
   "author": {
     "name": "hellokaton"

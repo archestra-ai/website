@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "altinoren__utopia",
   "display_name": "Utopia",
-  "version": "1.0.0",
   "description": "An MCP Server that simulates a set of smart home and lifestyle devices, allowing you to interact with them through AI agents.",
   "author": {
     "name": "altinoren"

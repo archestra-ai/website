@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "shareseer__shareseer-mcp-server",
   "display_name": "shareseer-mcp-server",
-  "version": "1.0.0",
   "description": "ShareSeer MCP Server - Access SEC filings and insider transactions via Claude",
   "author": {
     "name": "shareseer"

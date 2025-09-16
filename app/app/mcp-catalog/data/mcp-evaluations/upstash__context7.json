@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "upstash__context7",
   "display_name": "context7",
-  "version": "1.0.0",
   "description": "Context7 MCP Server -- Up-to-date code documentation for LLMs and AI code editors",
   "author": {
     "name": "upstash"

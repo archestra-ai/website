@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "c4pt0r__mcp-server-tidb",
   "display_name": "mcp-server-tidb",
-  "version": "1.0.0",
   "description": "mcp server for tidb",
   "author": {
     "name": "c4pt0r"

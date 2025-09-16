@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "billster45__mcp-chatgpt-responses",
   "display_name": "mcp-chatgpt-responses",
-  "version": "1.0.0",
   "description": "MCP server for access to OpenAI's ChatGPT API with Responses API for conversation management",
   "author": {
     "name": "billster45"

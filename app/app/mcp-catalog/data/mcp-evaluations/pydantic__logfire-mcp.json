@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pydantic__logfire-mcp",
   "display_name": "logfire-mcp",
-  "version": "1.0.0",
   "description": "The Logfire MCP Server is here! :tada:",
   "author": {
     "name": "pydantic"

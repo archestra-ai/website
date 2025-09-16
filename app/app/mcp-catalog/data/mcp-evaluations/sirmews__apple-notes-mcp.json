@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sirmews__apple-notes-mcp",
   "display_name": "apple-notes-mcp",
-  "version": "1.0.0",
   "description": "Read your Apple Notes with Claude Model Context Protocol",
   "author": {
     "name": "sirmews"

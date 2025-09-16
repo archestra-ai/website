@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pab1it0__chess-mcp",
   "display_name": "chess-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol server for Chess.com's Published Data API.  This provides access to Chess.com player data, game records, and other public information through standardized MCP interfaces, allowing AI assistants to search and analyze chess information.",
   "author": {
     "name": "pab1it0"

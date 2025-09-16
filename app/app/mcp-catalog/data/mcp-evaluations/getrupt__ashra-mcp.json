@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "getrupt__ashra-mcp",
   "display_name": "ashra-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol server for Ashra",
   "author": {
     "name": "getrupt"

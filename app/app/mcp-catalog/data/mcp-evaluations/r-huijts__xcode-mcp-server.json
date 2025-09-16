@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "r-huijts__xcode-mcp-server",
   "display_name": "xcode-mcp-server",
-  "version": "1.0.0",
   "description": "MCP Server implementation for Xcode integration",
   "author": {
     "name": "r-huijts"

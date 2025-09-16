@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "techdocsstudio__biel-mcp",
   "display_name": "biel-mcp",
-  "version": "1.0.0",
   "description": "Connect AI tools like Cursor, VS Code, and Claude to your product docs.",
   "author": {
     "name": "TechDocsStudio"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "bram2w__baserow",
   "display_name": "baserow",
-  "version": "1.0.0",
   "description": "The official repository is hosted on https://gitlab.com/bramw/baserow. Baserow is an open source no-code database tool and Airtable alternative.",
   "author": {
     "name": "bram2w"

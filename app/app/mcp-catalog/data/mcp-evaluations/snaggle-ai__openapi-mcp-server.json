@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "snaggle-ai__openapi-mcp-server",
   "display_name": "openapi-mcp-server",
-  "version": "1.0.0",
   "description": "Allow AI to wade through complex OpenAPIs using Simple Language",
   "author": {
     "name": "snaggle-ai"

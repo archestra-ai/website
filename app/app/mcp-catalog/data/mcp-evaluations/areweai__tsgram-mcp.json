@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "areweai__tsgram-mcp",
   "display_name": "tsgram-mcp",
-  "version": "1.0.0",
   "description": "TSGram - Telegram MCP Server for local Claude Code integration - debug and vibe code on the go!",
   "author": {
     "name": "areweai"

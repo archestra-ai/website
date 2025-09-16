@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "opendatamcp__opendatamcp",
   "display_name": "OpenDataMCP",
-  "version": "1.0.0",
   "description": "Connect any Open Data to any LLM with Model Context Protocol.",
   "author": {
     "name": "OpenDataMCP"

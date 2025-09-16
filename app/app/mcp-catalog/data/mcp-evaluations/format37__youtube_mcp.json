@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "format37__youtube_mcp",
   "display_name": "youtube_mcp",
-  "version": "1.0.0",
   "description": "youtube transcriber mcp server",
   "author": {
     "name": "format37"

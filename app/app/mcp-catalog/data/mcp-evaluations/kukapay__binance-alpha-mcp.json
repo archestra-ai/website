@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__binance-alpha-mcp",
   "display_name": "binance-alpha-mcp",
-  "version": "1.0.0",
   "description": "An MCP server for tracking Binance Alpha trades, helping AI agents optimize alpha point accumulation.",
   "author": {
     "name": "kukapay"

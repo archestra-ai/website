@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "longportapp__openapi__mcp",
   "display_name": "mcp",
-  "version": "1.0.0",
   "description": "LongPort OpenAPI SDK Base.",
   "author": {
     "name": "longportapp"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "punkpeye__fastmcp",
   "display_name": "fastmcp",
-  "version": "1.0.0",
   "description": "A TypeScript framework for building MCP servers.",
   "author": {
     "name": "punkpeye"

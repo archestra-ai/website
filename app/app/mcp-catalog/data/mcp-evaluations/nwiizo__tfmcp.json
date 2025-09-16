@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "nwiizo__tfmcp",
   "display_name": "tfmcp",
-  "version": "1.0.0",
   "description": "🌍 Terraform Model Context Protocol (MCP) Tool - An experimental CLI tool that enables AI assistants to manage and operate Terraform environments. Supports reading Terraform configurations, analyzing plans, applying configurations, and managing state with Claude Desktop integration. ⚡️",
   "author": {
     "name": "nwiizo"

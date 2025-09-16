@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kadykov__mcp-openapi-schema-explorer",
   "display_name": "mcp-openapi-schema-explorer",
-  "version": "1.0.0",
   "description": "MCP server providing token-efficient access to OpenAPI/Swagger specs via MCP Resources for client-side exploration.",
   "author": {
     "name": "kadykov"

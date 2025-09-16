@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jagan-shanmugam__mattermost-mcp-host",
   "display_name": "mattermost-mcp-host",
-  "version": "1.0.0",
   "description": "A Mattermost integration that connects to Model Context Protocol (MCP) servers, leveraging a LangGraph-based Agent.",
   "author": {
     "name": "jagan-shanmugam"

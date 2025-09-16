@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "imprvhub__mcp-status-observer",
   "display_name": "mcp-status-observer",
-  "version": "1.0.0",
   "description": "Model Context Protocol server for monitoring Operational Status of major digital platforms in Claude Desktop. ",
   "author": {
     "name": "imprvhub"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "patrickpalmer__mayamcp",
   "display_name": "MayaMCP",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) server implementation for Autodesk Maya",
   "author": {
     "name": "PatrickPalmer"

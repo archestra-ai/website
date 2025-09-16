@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tomatio13__mcp-server-tavily",
   "display_name": "mcp-server-tavily",
-  "version": "1.0.0",
   "description": "Taivily APIを利用するMCP Serverです。Officialが提供される前に開発しました",
   "author": {
     "name": "Tomatio13"

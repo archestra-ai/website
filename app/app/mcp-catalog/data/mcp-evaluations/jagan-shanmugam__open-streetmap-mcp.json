@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jagan-shanmugam__open-streetmap-mcp",
   "display_name": "open-streetmap-mcp",
-  "version": "1.0.0",
   "description": "An OpenStreetMap MCP server implementation that enhances LLM capabilities with location-based services and geospatial data.",
   "author": {
     "name": "jagan-shanmugam"

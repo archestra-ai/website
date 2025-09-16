@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "quarkiverse__quarkus-mcp-servers__jdbc",
   "display_name": "jdbc",
-  "version": "1.0.0",
   "description": "Model Context Protocol Servers in Quarkus",
   "author": {
     "name": "quarkiverse"

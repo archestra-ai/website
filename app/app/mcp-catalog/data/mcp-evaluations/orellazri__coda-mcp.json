@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "orellazri__coda-mcp",
   "display_name": "coda-mcp",
-  "version": "1.0.0",
   "description": "MCP Server for Coda",
   "author": {
     "name": "orellazri"

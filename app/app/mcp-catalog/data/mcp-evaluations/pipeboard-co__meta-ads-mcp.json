@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pipeboard-co__meta-ads-mcp",
   "display_name": "meta-ads-mcp",
-  "version": "1.0.0",
   "description": "MCP server to manage Facebook and Instagram Ads (Meta Ads)",
   "author": {
     "name": "pipeboard-co"

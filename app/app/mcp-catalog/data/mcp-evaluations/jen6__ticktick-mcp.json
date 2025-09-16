@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jen6__ticktick-mcp",
   "display_name": "ticktick-mcp",
-  "version": "1.0.0",
   "description": "Enhance your TickTick workflow with MCP server. Better filtering interface",
   "author": {
     "name": "jen6"

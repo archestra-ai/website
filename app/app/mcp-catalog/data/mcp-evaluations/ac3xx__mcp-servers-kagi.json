@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ac3xx__mcp-servers-kagi",
   "display_name": "mcp-servers-kagi",
-  "version": "1.0.0",
   "description": "A Model Context Protocol server implementation for Kagi's API",
   "author": {
     "name": "ac3xx"

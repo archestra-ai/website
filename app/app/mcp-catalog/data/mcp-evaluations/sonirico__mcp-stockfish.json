@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sonirico__mcp-stockfish",
   "display_name": "mcp-stockfish",
-  "version": "1.0.0",
   "description": "🐟 MCP server connecting AI systems to Stockfish chess engine ",
   "author": {
     "name": "sonirico"

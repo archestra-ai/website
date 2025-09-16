@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "janswist__mcp-dexscreener",
   "display_name": "mcp-dexscreener",
-  "version": "1.0.0",
   "description": "Dexscreener API's MCP server - let your AI agent check any on-chain price using Dexscreener's free and open API",
   "author": {
     "name": "janswist"

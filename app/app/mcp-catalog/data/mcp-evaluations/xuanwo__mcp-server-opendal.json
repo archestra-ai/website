@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "xuanwo__mcp-server-opendal",
   "display_name": "mcp-server-opendal",
-  "version": "1.0.0",
   "description": "Model Context Protocol Server for Apache OpenDAL™",
   "author": {
     "name": "Xuanwo"

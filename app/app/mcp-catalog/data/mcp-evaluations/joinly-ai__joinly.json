@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "joinly-ai__joinly",
   "display_name": "joinly",
-  "version": "1.0.0",
   "description": "Make your meetings accessible to AI Agents",
   "author": {
     "name": "joinly-ai"

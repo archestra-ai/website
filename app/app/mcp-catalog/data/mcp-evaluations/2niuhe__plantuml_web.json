@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "2niuhe__plantuml_web",
   "display_name": "plantuml_web",
-  "version": "1.0.0",
   "description": "Generate PlantUML Diagrams as PNG/SVG with Embedded Web Viewer",
   "author": {
     "name": "2niuhe"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "microsoft__playwright-mcp",
   "display_name": "playwright-mcp",
-  "version": "1.0.0",
   "description": "Playwright MCP server",
   "author": {
     "name": "microsoft"

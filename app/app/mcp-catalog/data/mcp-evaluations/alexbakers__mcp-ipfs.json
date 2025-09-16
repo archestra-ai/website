@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "alexbakers__mcp-ipfs",
   "display_name": "mcp-ipfs",
-  "version": "1.0.0",
   "description": "🪐 MCP IPFS Server ",
   "author": {
     "name": "alexbakers"

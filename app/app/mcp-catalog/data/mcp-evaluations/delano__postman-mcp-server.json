@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "delano__postman-mcp-server",
   "display_name": "postman-mcp-server",
-  "version": "1.0.0",
   "description": "An MCP server that provides access to Postman.",
   "author": {
     "name": "delano"

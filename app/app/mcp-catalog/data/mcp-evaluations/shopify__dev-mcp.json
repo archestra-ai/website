@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "shopify__dev-mcp",
   "display_name": "dev-mcp",
-  "version": "1.0.0",
   "description": "Shopify.dev MCP server",
   "author": {
     "name": "Shopify"

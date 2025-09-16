@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "vivekvells__mcp-pandoc",
   "display_name": "mcp-pandoc",
-  "version": "1.0.0",
   "description": "MCP server for document format conversion using pandoc.",
   "author": {
     "name": "vivekVells"

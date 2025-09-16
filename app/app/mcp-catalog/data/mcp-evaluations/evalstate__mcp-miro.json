@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "evalstate__mcp-miro",
   "display_name": "mcp-miro",
-  "version": "1.0.0",
   "description": "MCP server from evalstate/mcp-miro",
   "author": {
     "name": "evalstate"

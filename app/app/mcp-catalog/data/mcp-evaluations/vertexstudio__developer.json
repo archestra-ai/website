@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "vertexstudio__developer",
   "display_name": "developer",
-  "version": "1.0.0",
   "description": "MCP server from VertexStudio/developer",
   "author": {
     "name": "VertexStudio"

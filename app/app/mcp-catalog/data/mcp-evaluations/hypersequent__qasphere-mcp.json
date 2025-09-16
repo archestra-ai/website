@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hypersequent__qasphere-mcp",
   "display_name": "qasphere-mcp",
-  "version": "1.0.0",
   "description": "MCP Server for QA Sphere TMS",
   "author": {
     "name": "Hypersequent"

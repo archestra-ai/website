@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zillow__auto-mobile",
   "display_name": "auto-mobile",
-  "version": "1.0.0",
   "description": "Mobile automation suite of tools including an MCP and libraries for test authoring & execution",
   "author": {
     "name": "zillow"

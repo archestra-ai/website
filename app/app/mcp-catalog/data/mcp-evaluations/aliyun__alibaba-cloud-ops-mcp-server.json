@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "aliyun__alibaba-cloud-ops-mcp-server",
   "display_name": "alibaba-cloud-ops-mcp-server",
-  "version": "1.0.0",
   "description": "AlibabaCloud CloudOps MCP Server",
   "author": {
     "name": "aliyun"

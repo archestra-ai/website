@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "redis__mcp-redis-cloud",
   "display_name": "mcp-redis-cloud",
-  "version": "1.0.0",
   "description": "MCP server from redis/mcp-redis-cloud",
   "author": {
     "name": "redis"

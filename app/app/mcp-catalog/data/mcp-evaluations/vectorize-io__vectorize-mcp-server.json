@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "vectorize-io__vectorize-mcp-server",
   "display_name": "vectorize-mcp-server",
-  "version": "1.0.0",
   "description": "Official Vectorize MCP Server",
   "author": {
     "name": "vectorize-io"

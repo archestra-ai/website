@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "akseyh__bear-mcp-server",
   "display_name": "bear-mcp-server",
-  "version": "1.0.0",
   "description": "MCP Server integration for Bear note app",
   "author": {
     "name": "akseyh"

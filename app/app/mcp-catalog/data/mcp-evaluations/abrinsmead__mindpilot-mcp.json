@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "abrinsmead__mindpilot-mcp",
   "display_name": "mindpilot-mcp",
-  "version": "1.0.0",
   "description": "See through your agent's eyes. Visualize legacy code, architect new systems, understand everything.",
   "author": {
     "name": "abrinsmead"

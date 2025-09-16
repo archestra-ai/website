@@ -1,6 +1,4 @@
 {
-  "dxt_version": "1.0.0",
-  "version": "1.0.0",
   "name": "elastic__mcp-server-elasticsearch",
   "display_name": "mcp-server-elasticsearch",
   "description": "MCP server from elastic/mcp-server-elasticsearch",

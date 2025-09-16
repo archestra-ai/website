@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "chargebee__agentkit__modelcontextprotocol",
   "display_name": "Chargebee",
-  "version": "1.0.0",
   "description": "Seamlessly integrate AI agents with Chargebee using AgentKit for smarter billing and subscription workflows.",
   "author": {
     "name": "chargebee"

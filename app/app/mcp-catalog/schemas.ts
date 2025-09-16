@@ -143,108 +143,50 @@ export const ArchestraMcpServerProtocolFeaturesSchema = z.object({
   implementing_oauth2: z.boolean(),
 });
 
-// Base schema for remote servers
-const RemoteServerSchema = z.object({
-  name: z.string(),
-  display_name: z.string(),
-  version: z.string(),
-  description: z.string(),
-  remote_url: z.string().url().optional(),
-  remote_mcp_docs_url: z.string().url().optional(),
-  oauth_config: OauthConfigSchema.optional(),
-  tools: z.array(z.any()).optional(),
-  prompts: z.array(z.any()).optional(),
-  user_config: z.record(z.string(), z.any()).optional(),
-  readme: z.string().nullable(),
-  category: McpServerCategorySchema.nullable(),
-  quality_score: z.number().min(0).max(100).nullable(),
-  archestra_config: ArchestraConfigSchema.nullable().optional(),
-  github_info: ArchestraMcpServerFullGitHubInfoSchema.optional(),
-  programming_language: z.string().optional(),
-  framework: z.string().nullable(),
-  last_scraped_at: z.string().nullable(),
-  evaluation_model: z.string().nullable(),
-  protocol_features: ArchestraMcpServerProtocolFeaturesSchema.optional(),
-  dependencies: z.array(MCPDependencySchema).optional(),
-  raw_dependencies: z.string().nullable(),
+export const LocalServerSchema = McpServerConfigSchema.extend({
+  type: z.literal('local'),
 });
 
-// Full DXT-based schema
-const FullDxtServerSchema = DxtManifestSchema.omit({ repository: true }).extend({
-  /**
-   * Machine-readable name (used for CLI, APIs)
-   */
-  name: z.string(),
-
-  /**
-   * Human-friendly name for UI display
-   */
-  display_name: z.string(),
-
-  /**
-   * URL for remote MCP servers. If set, this server is treated as remote.
-   */
-  remote_url: z.string().url().optional(),
-
-  /**
-   * Documentation URL for remote MCP servers.
-   */
-  remote_mcp_docs_url: z.string().url().optional(),
-
-  readme: z.string().nullable(),
-  category: McpServerCategorySchema.nullable(),
-  quality_score: z.number().min(0).max(100).nullable(),
-  archestra_config: ArchestraConfigSchema.optional(),
-  github_info: ArchestraMcpServerFullGitHubInfoSchema.optional(),
-  programming_language: z.string().optional(),
-  framework: z.string().nullable(),
-  last_scraped_at: z.string().nullable(),
-  evaluation_model: z.string().nullable(),
-  protocol_features: ArchestraMcpServerProtocolFeaturesSchema.optional(),
-  dependencies: z.array(MCPDependencySchema).optional(),
-  raw_dependencies: z.string().nullable(),
-  oauth_config: OauthConfigSchema.optional(),
-
-  /**
-   * NOTE: for server, we override the `server` field from `DxtManifestSchema` as this contains
-   * `type` and `entry_point` fields which are not needed for our purposes
-   */
-  server: McpServerConfigSchema,
+export const RemoteServerSchema = z.object({
+  type: z.literal('remote'),
+  url: z.string().url(),
+  docs_url: z.string().url().nullable(),
 });
 
-// Union schema that accepts both formats
-// IMPORTANT: FullDxtServerSchema must come first to ensure servers with dxt_version
-// match against it and preserve all fields including 'server'
-const ArchestraMcpServerManifestBase = z.union([FullDxtServerSchema, RemoteServerSchema]);
+export const ArchestraMcpServerManifestSchema = DxtManifestSchema.omit({
+  repository: true,
+  $schema: true,
+  version: true,
+  dxt_version: true,
+})
+  .extend({
+    /**
+     * Machine-readable name (used for CLI, APIs)
+     */
+    name: z.string(),
 
-export const ArchestraMcpServerManifestSchema = ArchestraMcpServerManifestBase.refine(
-  (data) => {
-    // For full DXT schemas, local servers (no remote_url) require github_info and programming_language
-    if ('dxt_version' in data && !data.remote_url && (!data.github_info || !data.programming_language)) {
-      return false;
-    }
-    return true;
-  },
-  {
-    message: 'Local DXT servers require github_info and programming_language',
-  }
-).openapi('ArchestraMcpServerManifest');
+    /**
+     * Human-friendly name for UI display
+     */
+    display_name: z.string(),
+    readme: z.string().nullable(),
+    category: McpServerCategorySchema.nullable(),
+    quality_score: z.number().min(0).max(100).nullable(),
+    archestra_config: ArchestraConfigSchema.optional(),
+    github_info: ArchestraMcpServerFullGitHubInfoSchema.nullable(),
+    programming_language: z.string().nullable(),
+    framework: z.string().nullable(),
+    last_scraped_at: z.string().nullable(),
+    evaluation_model: z.string().nullable(),
+    protocol_features: ArchestraMcpServerProtocolFeaturesSchema.optional(),
+    dependencies: z.array(MCPDependencySchema).optional(),
+    raw_dependencies: z.string().nullable(),
+    oauth_config: OauthConfigSchema.optional(),
 
-export const ArchestraMcpServerManifestWithScoreBreakdownSchema = z
-  .union([
-    FullDxtServerSchema.extend({ score_breakdown: ArchestraScoreBreakdownSchema }),
-    RemoteServerSchema.extend({ score_breakdown: ArchestraScoreBreakdownSchema }),
-  ])
-  .refine(
-    (data) => {
-      // For full DXT schemas, local servers (no remote_url) require github_info and programming_language
-      if ('dxt_version' in data && !data.remote_url && (!data.github_info || !data.programming_language)) {
-        return false;
-      }
-      return true;
-    },
-    {
-      message: 'Local DXT servers require github_info and programming_language',
-    }
-  )
-  .openapi('ArchestraMcpServerManifestWithScoreBreakdown');
+    server: z.discriminatedUnion('type', [LocalServerSchema, RemoteServerSchema]),
+  })
+  .openapi('ArchestraMcpServerManifest');
+
+export const ArchestraMcpServerManifestWithScoreBreakdownSchema = ArchestraMcpServerManifestSchema.extend({
+  score_breakdown: ArchestraScoreBreakdownSchema,
+}).openapi('ArchestraMcpServerManifestWithScoreBreakdown');

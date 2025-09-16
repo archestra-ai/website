@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mckinsey__vizro__vizro-mcp",
   "display_name": "vizro-mcp",
-  "version": "1.0.0",
   "description": "Vizro is a low-code toolkit for building high-quality data visualization apps.",
   "author": {
     "name": "mckinsey"

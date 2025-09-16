@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tiianhk__maxmsp-mcp-server",
   "display_name": "MaxMSP-MCP-Server",
-  "version": "1.0.0",
   "description": "MCP (Model Context Protocol) Server for Max (Max/MSP/Jitter)",
   "author": {
     "name": "tiianhk"

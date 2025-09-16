@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "nickpending__mcp-recon",
   "display_name": "mcp-recon",
-  "version": "1.0.0",
   "description": "Tellix is a conversational recon interface powered by httpx and LLMs. Just ask.",
   "author": {
     "name": "nickpending"

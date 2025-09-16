@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "brianxiadong__ones-wiki-mcp-server",
   "display_name": "ones-wiki-mcp-server",
-  "version": "1.0.0",
   "description": "ones-wiki-mcp-server",
   "author": {
     "name": "brianxiadong"

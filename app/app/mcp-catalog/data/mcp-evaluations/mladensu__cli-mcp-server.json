@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mladensu__cli-mcp-server",
   "display_name": "cli-mcp-server",
-  "version": "1.0.0",
   "description": "Command line interface for MCP clients with secure execution and customizable security policies",
   "author": {
     "name": "MladenSU"

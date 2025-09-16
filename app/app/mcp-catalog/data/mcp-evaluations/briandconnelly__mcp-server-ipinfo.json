@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "briandconnelly__mcp-server-ipinfo",
   "display_name": "mcp-server-ipinfo",
-  "version": "1.0.0",
   "description": "IP Geolocation Server for MCP",
   "author": {
     "name": "briandconnelly"

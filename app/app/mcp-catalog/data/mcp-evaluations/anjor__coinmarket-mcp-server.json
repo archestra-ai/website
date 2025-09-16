@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "anjor__coinmarket-mcp-server",
   "display_name": "coinmarket-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from anjor/coinmarket-mcp-server",
   "author": {
     "name": "anjor"

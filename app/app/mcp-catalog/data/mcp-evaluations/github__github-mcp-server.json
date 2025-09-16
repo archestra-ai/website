@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "github__github-mcp-server",
   "display_name": "github-mcp-server",
-  "version": "1.0.0",
   "description": "GitHub's official MCP Server",
   "author": {
     "name": "github"

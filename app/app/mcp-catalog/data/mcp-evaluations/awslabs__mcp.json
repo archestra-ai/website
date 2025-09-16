@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "awslabs__mcp",
   "display_name": "mcp",
-  "version": "1.0.0",
   "description": "AWS MCP Servers — helping you get the most out of AWS, wherever you use MCP.",
   "author": {
     "name": "awslabs"

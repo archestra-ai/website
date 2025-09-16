@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "takashiishida__arxiv-latex-mcp",
   "display_name": "arxiv-latex-mcp",
-  "version": "1.0.0",
   "description": "MCP server that uses arxiv-to-prompt to fetch and process arXiv LaTeX sources for precise interpretation of mathematical expressions in scientific papers.",
   "author": {
     "name": "takashiishida"

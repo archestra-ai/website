@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "erithwik__mcp-hn",
   "display_name": "mcp-hn",
-  "version": "1.0.0",
   "description": "MCP Server for Hackernews",
   "author": {
     "name": "erithwik"

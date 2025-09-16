@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jlowin__fastmcp",
   "display_name": "fastmcp",
-  "version": "1.0.0",
   "description": "🚀 The fast, Pythonic way to build MCP servers and clients",
   "author": {
     "name": "jlowin"

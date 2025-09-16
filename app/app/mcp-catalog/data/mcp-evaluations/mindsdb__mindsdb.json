@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mindsdb__mindsdb",
   "display_name": "mindsdb",
-  "version": "1.0.0",
   "description": "AI Analytics Engine that can answer questions over large scale data. - The only MCP Server you'll ever need",
   "author": {
     "name": "mindsdb"

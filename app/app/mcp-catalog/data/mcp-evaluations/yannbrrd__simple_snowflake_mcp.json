@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "yannbrrd__simple_snowflake_mcp",
   "display_name": "simple_snowflake_mcp",
-  "version": "1.0.0",
   "description": "MCP server from YannBrrd/simple_snowflake_mcp",
   "author": {
     "name": "YannBrrd"

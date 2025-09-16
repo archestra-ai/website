@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "spacecode-ai__spacebridge-mcp",
   "display_name": "SpaceBridge-MCP",
-  "version": "1.0.0",
   "description": "MCP server that turbocharges vibe coding by automating issue tracking",
   "author": {
     "name": "spacecode-ai"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "scrapeless-ai__scrapeless-mcp-server",
   "display_name": "scrapeless-mcp-server",
-  "version": "1.0.0",
   "description": "Scrapeless Mcp Server",
   "author": {
     "name": "scrapeless-ai"

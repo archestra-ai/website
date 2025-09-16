@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "neo4j-contrib__mcp-neo4j",
   "display_name": "mcp-neo4j",
-  "version": "1.0.0",
   "description": "Model Context Protocol with Neo4j",
   "author": {
     "name": "neo4j-contrib"

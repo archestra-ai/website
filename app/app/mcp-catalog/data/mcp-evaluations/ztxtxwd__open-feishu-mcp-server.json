@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ztxtxwd__open-feishu-mcp-server",
   "display_name": "open-feishu-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from ztxtxwd/open-feishu-mcp-server",
   "author": {
     "name": "ztxtxwd"

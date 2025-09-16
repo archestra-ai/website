@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jjsantos01__jupyter-notebook-mcp",
   "display_name": "jupyter-notebook-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) for Jupyter Notebook",
   "author": {
     "name": "jjsantos01"

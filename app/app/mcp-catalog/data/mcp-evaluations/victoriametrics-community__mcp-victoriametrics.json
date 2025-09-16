@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "victoriametrics-community__mcp-victoriametrics",
   "display_name": "mcp-victoriametrics",
-  "version": "1.0.0",
   "description": "The implementation of Model Context Protocol (MCP) server for VictoriaMetrics",
   "author": {
     "name": "VictoriaMetrics-Community"

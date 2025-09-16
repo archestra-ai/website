@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gaffx__volatility-mcp",
   "display_name": "volatility-mcp",
-  "version": "1.0.0",
   "description": "This repo hosts an MCP server for volatility3.x",
   "author": {
     "name": "Gaffx"

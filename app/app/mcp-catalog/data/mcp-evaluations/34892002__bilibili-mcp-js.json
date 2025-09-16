@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "34892002__bilibili-mcp-js",
   "display_name": "bilibili-mcp-js",
-  "version": "1.0.0",
   "description": "MCP server from 34892002/bilibili-mcp-js",
   "author": {
     "name": "34892002"

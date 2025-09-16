@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "adhikasp__mcp-git-ingest",
   "display_name": "mcp-git-ingest",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that helps read GitHub repository structure and important files.",
   "author": {
     "name": "adhikasp"

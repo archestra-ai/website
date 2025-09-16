@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tiberriver256__mcp-server-azure-devops",
   "display_name": "mcp-server-azure-devops",
-  "version": "1.0.0",
   "description": "An MCP server for Azure DevOps",
   "author": {
     "name": "Tiberriver256"

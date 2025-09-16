@@ -1,6 +1,4 @@
 {
-  "dxt_version": "1.0.0",
-  "version": "v1.2.2",
   "name": "fosterg4__mcpsaver",
   "display_name": "mcpsaver",
   "description": "An MCP (Model Context Protocol) server that extracts minimal, relevant code context, analyzes diffs, and optimizes imports to reduce token usage for AI assistants.",

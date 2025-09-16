@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kelvin6365__plane-mcp-server",
   "display_name": "plane-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from kelvin6365/plane-mcp-server",
   "author": {
     "name": "kelvin6365"

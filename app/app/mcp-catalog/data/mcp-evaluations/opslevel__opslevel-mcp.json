@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "opslevel__opslevel-mcp",
   "display_name": "opslevel-mcp",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) server for OpsLevel",
   "author": {
     "name": "opslevel"

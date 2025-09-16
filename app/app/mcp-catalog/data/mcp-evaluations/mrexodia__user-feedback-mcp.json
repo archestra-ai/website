@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mrexodia__user-feedback-mcp",
   "display_name": "user-feedback-mcp",
-  "version": "1.0.0",
   "description": "Simple MCP Server to enable a human-in-the-loop workflow in tools like Cline and Cursor.",
   "author": {
     "name": "mrexodia"

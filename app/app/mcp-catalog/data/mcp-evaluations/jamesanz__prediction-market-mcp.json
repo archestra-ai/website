@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jamesanz__prediction-market-mcp",
   "display_name": "prediction-market-mcp",
-  "version": "1.0.0",
   "description": "A simple MCP server that grabs prediction market data ",
   "author": {
     "name": "JamesANZ"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "khan2a__telephony-mcp-server",
   "display_name": "telephony-mcp-server",
-  "version": "1.0.0",
   "description": "A very simple no-fuss minimalist MCP Server with telephony tools like voice call and sms. This MCP Server can be integrated with LLM applications. Vonage API is used for calls, SMS, Speech-to-Text and Speech Recognition.",
   "author": {
     "name": "khan2a"

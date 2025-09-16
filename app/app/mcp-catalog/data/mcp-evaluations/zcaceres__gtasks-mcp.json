@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zcaceres__gtasks-mcp",
   "display_name": "gtasks-mcp",
-  "version": "1.0.0",
   "description": "A Google Tasks Model Context Protocol Server for Claude",
   "author": {
     "name": "zcaceres"

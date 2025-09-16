@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zcaceres__fetch-mcp",
   "display_name": "fetch-mcp",
-  "version": "1.0.0",
   "description": "A flexible HTTP fetching Model Context Protocol server.",
   "author": {
     "name": "zcaceres"

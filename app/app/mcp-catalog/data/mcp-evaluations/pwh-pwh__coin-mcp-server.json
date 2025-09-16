@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pwh-pwh__coin-mcp-server",
   "display_name": "coin-mcp-server",
-  "version": "1.0.0",
   "description": "use Bitget’s API to get cryptocurrency info",
   "author": {
     "name": "pwh-pwh"

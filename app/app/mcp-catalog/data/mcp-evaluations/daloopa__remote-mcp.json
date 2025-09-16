@@ -1,7 +1,6 @@
 {
   "name": "daloopa__remote-mcp",
   "display_name": "Daloopa",
-  "version": "1.0.0",
   "description": "Remote MCP server for Daloopa - financial data extraction and modeling",
   "remote_url": "https://mcp.daloopa.com/server/mcp",
   "remote_mcp_docs_url": "https://docs.daloopa.com/docs/daloopa-mcp",
@@ -33,7 +32,6 @@
   "last_scraped_at": "2025-09-05T19:30:23.066Z",
   "evaluation_model": null,
   "raw_dependencies": null,
-  "dxt_version": "0.1.0",
   "author": {
     "name": "daloopa"
   },

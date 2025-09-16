@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hardik-id__azure-resource-graph-mcp-server",
   "display_name": "azure-resource-graph-mcp-server",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) server that provides access to Azure Resource Graph queries. It allows you to retrieve information about Azure resources across your subscriptions using Resource Graph queries.",
   "author": {
     "name": "hardik-id"

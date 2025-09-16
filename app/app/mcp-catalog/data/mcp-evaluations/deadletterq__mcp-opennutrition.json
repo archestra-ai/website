@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "deadletterq__mcp-opennutrition",
   "display_name": "mcp-opennutrition",
-  "version": "1.0.0",
   "description": "MCP server providing access to the comprehensive OpenNutrition food database with 300,000+ food items, nutritional data, and barcode lookups",
   "author": {
     "name": "deadletterq"

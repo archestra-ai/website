@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "guillochon__mlb-api-mcp",
   "display_name": "mlb-api-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that provides comprehensive access to MLB statistics and baseball data through a FastMCP-based interface.",
   "author": {
     "name": "guillochon"

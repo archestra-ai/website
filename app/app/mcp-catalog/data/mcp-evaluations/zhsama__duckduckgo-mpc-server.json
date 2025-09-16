@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zhsama__duckduckgo-mpc-server",
   "display_name": "duckduckgo-mpc-server",
-  "version": "1.0.0",
   "description": "MCP server from zhsama/duckduckgo-mpc-server",
   "author": {
     "name": "zhsama"

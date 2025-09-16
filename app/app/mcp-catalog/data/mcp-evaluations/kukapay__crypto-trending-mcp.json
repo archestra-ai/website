@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__crypto-trending-mcp",
   "display_name": "crypto-trending-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that tracks and monitors the latest trending tokens on CoinGecko.",
   "author": {
     "name": "kukapay"

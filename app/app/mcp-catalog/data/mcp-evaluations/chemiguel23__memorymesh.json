@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "chemiguel23__memorymesh",
   "display_name": "MemoryMesh",
-  "version": "1.0.0",
   "description": "A knowledge graph server that uses the Model Context Protocol (MCP) to provide structured memory persistence for AI models. v0.2.8",
   "author": {
     "name": "CheMiguel23"

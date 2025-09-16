@@ -1,6 +1,4 @@
 {
-  "dxt_version": "1.0.0",
-  "version": "1.0.0",
   "name": "thingsboard__thingsboard-mcp",
   "display_name": "thingsboard-mcp",
   "description": "MCP server from thingsboard/thingsboard-mcp",

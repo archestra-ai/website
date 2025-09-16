@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pab1it0__prometheus-mcp-server",
   "display_name": "prometheus-mcp-server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that enables AI agents and LLMs to query and analyze Prometheus metrics through standardized interfaces.",
   "author": {
     "name": "pab1it0"

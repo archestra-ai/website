@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "archai-labs__fastmcp-sonarqube-metrics",
   "display_name": "fastmcp-sonarqube-metrics",
-  "version": "1.0.0",
   "description": "Chat with your SonarQube data: explore metrics, compare trends, and track issues—effortlessly.",
   "author": {
     "name": "ArchAI-Labs"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pwh-pwh__cal-mcp",
   "display_name": "cal-mcp",
-  "version": "1.0.0",
   "description": "用于计算数学表达式的MCP",
   "author": {
     "name": "pwh-pwh"

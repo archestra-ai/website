@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "haris-musa__excel-mcp-server",
   "display_name": "excel-mcp-server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol server for Excel file manipulation",
   "author": {
     "name": "haris-musa"

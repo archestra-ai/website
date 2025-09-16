@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hustcc__mcp-mermaid",
   "display_name": "mcp-mermaid",
-  "version": "1.0.0",
   "description": "❤️ Generate mermaid diagram and chart with AI MCP dynamically.",
   "author": {
     "name": "hustcc"

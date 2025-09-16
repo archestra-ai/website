@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zhwt__go-mcp-mysql",
   "display_name": "go-mcp-mysql",
-  "version": "1.0.0",
   "description": "Zero burden, ready-to-use Model Context Protocol (MCP) server for interacting with MySQL and automation. No Node.js or Python environment needed.",
   "author": {
     "name": "Zhwt"

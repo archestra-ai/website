@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "humansignal__label-studio-mcp-server",
   "display_name": "label-studio-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from HumanSignal/label-studio-mcp-server",
   "author": {
     "name": "HumanSignal"

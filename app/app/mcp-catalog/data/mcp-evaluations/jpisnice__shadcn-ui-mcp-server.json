@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jpisnice__shadcn-ui-mcp-server",
   "display_name": "shadcn-ui-mcp-server",
-  "version": "1.0.0",
   "description": "A mcp server to allow LLMS gain context about shadcn ui component structure,usage and installation,compaitable with react,svelte 5,and vue",
   "author": {
     "name": "Jpisnice"

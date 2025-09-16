@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "r-huijts__rijksmuseum-mcp",
   "display_name": "rijksmuseum-mcp",
-  "version": "1.0.0",
   "description": "Rijksmuseum MCP integration for artwork exploration and analysis",
   "author": {
     "name": "r-huijts"

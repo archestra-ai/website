@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "abdelstark__bitcoin-mcp",
   "display_name": "bitcoin-mcp",
-  "version": "1.0.0",
   "description": "Bitcoin & Lightning Network MCP Server.",
   "author": {
     "name": "AbdelStark"

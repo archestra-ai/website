@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "longevity-genie__biothings-mcp",
   "display_name": "biothings-mcp",
-  "version": "1.0.0",
   "description": "MCP (Model Context Protocol) server for biothings",
   "author": {
     "name": "longevity-genie"

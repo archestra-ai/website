@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "wise-vision__mcp_server_ros_2",
   "display_name": "mcp_server_ros_2",
-  "version": "1.0.0",
   "description": "Advanced MCP Server ROS 2 bridging AI agents straight into robotics",
   "author": {
     "name": "wise-vision"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "julien040__anyquery",
   "display_name": "anyquery",
-  "version": "1.0.0",
   "description": "Query anything (GitHub, Notion, +40 more) with SQL and let LLMs (ChatGPT, Claude) connect to using MCP",
   "author": {
     "name": "julien040"

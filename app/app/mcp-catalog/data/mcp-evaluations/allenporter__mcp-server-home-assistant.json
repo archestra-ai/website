@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "allenporter__mcp-server-home-assistant",
   "display_name": "mcp-server-home-assistant",
-  "version": "1.0.0",
   "description": "A Model Context Protocol Server for Home Assistant",
   "author": {
     "name": "allenporter"

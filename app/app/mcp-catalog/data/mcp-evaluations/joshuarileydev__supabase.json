@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "joshuarileydev__supabase",
   "display_name": "supabase",
-  "version": "1.0.0",
   "description": "MCP server from joshuarileydev/supabase",
   "author": {
     "name": "joshuarileydev"

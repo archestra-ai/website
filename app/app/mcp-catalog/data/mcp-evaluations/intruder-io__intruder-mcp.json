@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "intruder-io__intruder-mcp",
   "display_name": "intruder-mcp",
-  "version": "1.0.0",
   "description": "An MCP server to let AI agents control Intruder",
   "author": {
     "name": "intruder-io"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "nyxn-ai__nyxdocs",
   "display_name": "NyxDocs",
-  "version": "1.0.0",
   "description": "Cryptocurrency Documentation MCP Server - AI-powered documentation collection and management system for blockchain projects",
   "author": {
     "name": "nyxn-ai"

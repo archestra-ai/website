@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zenml-io__mcp-zenml",
   "display_name": "mcp-zenml",
-  "version": "1.0.0",
   "description": "MCP server to connect an MCP client (Cursor, Claude Desktop etc) with your ZenML MLOps and LLMOps pipelines",
   "author": {
     "name": "zenml-io"

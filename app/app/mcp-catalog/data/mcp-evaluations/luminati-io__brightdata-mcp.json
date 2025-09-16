@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "luminati-io__brightdata-mcp",
   "display_name": "brightdata-mcp",
-  "version": "1.0.0",
   "description": "A powerful Model Context Protocol (MCP) server that provides an all-in-one solution for public web access.",
   "author": {
     "name": "luminati-io"

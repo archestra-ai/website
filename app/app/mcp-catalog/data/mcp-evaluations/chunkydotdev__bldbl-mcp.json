@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "chunkydotdev__bldbl-mcp",
   "display_name": "bldbl-mcp",
-  "version": "1.0.0",
   "description": "MCP server from chunkydotdev/bldbl-mcp",
   "author": {
     "name": "chunkydotdev"

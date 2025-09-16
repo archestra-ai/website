@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "danhilse__notion_mcp",
   "display_name": "notion_mcp",
-  "version": "1.0.0",
   "description": "A simple MCP integration that allows Claude to read and manage a personal Notion todo list",
   "author": {
     "name": "danhilse"

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mzxrai__mcp-webresearch",
   "display_name": "mcp-webresearch",
-  "version": "1.0.0",
   "description": "MCP web research server (give Claude real-time info from the web)",
   "author": {
     "name": "mzxrai"

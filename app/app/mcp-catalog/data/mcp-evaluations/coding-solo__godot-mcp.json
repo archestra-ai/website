@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "coding-solo__godot-mcp",
   "display_name": "godot-mcp",
-  "version": "1.0.0",
   "description": "MCP server for interfacing with Godot game engine. Provides tools for launching the editor, running projects, and capturing debug output.",
   "author": {
     "name": "Coding-Solo"

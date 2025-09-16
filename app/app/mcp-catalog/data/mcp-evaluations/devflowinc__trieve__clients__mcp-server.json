@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "devflowinc__trieve__clients__mcp-server",
   "display_name": "Trieve",
-  "version": "1.0.0",
   "description": "All-in-one platform for search, recommendations, RAG, and analytics offered via API",
   "author": {
     "name": "devflowinc"

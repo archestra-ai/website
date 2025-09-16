@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "takumi0706__google-calendar-mcp",
   "display_name": "google-calendar-mcp",
-  "version": "1.0.0",
   "description": "Google Calendar MCP server for Claude Desktop integration",
   "author": {
     "name": "takumi0706"

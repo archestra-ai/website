@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "omni-mcp__isaac-sim-mcp",
   "display_name": "isaac-sim-mcp",
-  "version": "1.0.0",
   "description": "Isaac Simulation MCP Extension and Server",
   "author": {
     "name": "omni-mcp"

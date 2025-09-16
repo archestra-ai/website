@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "timlukahorstmann__mcp-weather",
   "display_name": "mcp-weather",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that provides hourly and daily weather forecasts using the AccuWeather API.",
   "author": {
     "name": "TimLukaHorstmann"

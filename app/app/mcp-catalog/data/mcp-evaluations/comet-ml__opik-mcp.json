@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "comet-ml__opik-mcp",
   "display_name": "opik-mcp",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) implementation for Opik enabling seamless IDE integration and unified access to prompts, projects, traces, and metrics. ",
   "author": {
     "name": "comet-ml"

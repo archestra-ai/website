@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "amidabuddha__unichat-mcp-server",
   "display_name": "unichat-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from amidabuddha/unichat-mcp-server",
   "author": {
     "name": "amidabuddha"

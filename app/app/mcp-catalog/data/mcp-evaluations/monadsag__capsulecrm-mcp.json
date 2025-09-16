@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "monadsag__capsulecrm-mcp",
   "display_name": "capsulecrm-mcp",
-  "version": "1.0.0",
   "description": "MCP server from MonadsAG/capsulecrm-mcp",
   "author": {
     "name": "MonadsAG"

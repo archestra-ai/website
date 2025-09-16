@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "trackmage__trackmage-mcp-server",
   "display_name": "trackmage-mcp-server",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) server for TrackMage API integration, with support for 1600+ carriers worldwide. Enables AI assistants to track shipments, manage logistics, create orders, and monitor package delivery   statuses. Features OAuth authentication, carrier detection, and real-time tracking updates.",
   "author": {
     "name": "trackmage"

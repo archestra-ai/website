@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "yamanoku__baseline-mcp-server",
   "display_name": "baseline-mcp-server",
-  "version": "1.0.0",
   "description": "特定のWeb APIに関するBaselineの状況を提供するModel Context Protocolサーバー",
   "author": {
     "name": "yamanoku"

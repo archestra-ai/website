@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "codelogicincengineering__codelogic-mcp-server",
   "display_name": "codelogic-mcp-server",
-  "version": "1.0.0",
   "description": "An MCP Server to utilize Codelogic's rich software dependency data in your AI programming assistant.",
   "author": {
     "name": "CodeLogicIncEngineering"

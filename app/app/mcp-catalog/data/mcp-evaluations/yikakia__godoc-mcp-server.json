@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "yikakia__godoc-mcp-server",
   "display_name": "godoc-mcp-server",
-  "version": "1.0.0",
   "description": "A mcp server provide infomation from pkg.go.dev. For all golang programmers",
   "author": {
     "name": "yikakia"

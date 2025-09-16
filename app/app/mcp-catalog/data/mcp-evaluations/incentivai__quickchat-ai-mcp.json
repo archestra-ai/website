@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "incentivai__quickchat-ai-mcp",
   "display_name": "quickchat-ai-mcp",
-  "version": "1.0.0",
   "description": "The Quickchat AI MCP server",
   "author": {
     "name": "incentivai"

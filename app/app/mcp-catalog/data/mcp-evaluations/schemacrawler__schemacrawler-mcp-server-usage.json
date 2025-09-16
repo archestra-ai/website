@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "schemacrawler__schemacrawler-mcp-server-usage",
   "display_name": "SchemaCrawler-MCP-Server-Usage",
-  "version": "1.0.0",
   "description": "Find out how to use SchemaCrawler AI MCP Server",
   "author": {
     "name": "schemacrawler"

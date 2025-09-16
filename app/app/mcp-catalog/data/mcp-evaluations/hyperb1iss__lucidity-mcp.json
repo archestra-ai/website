@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hyperb1iss__lucidity-mcp",
   "display_name": "lucidity-mcp",
-  "version": "1.0.0",
   "description": "AI-powered code quality analysis using MCP to help AI assistants review code more effectively. Analyze git changes for complexity, security issues, and more through structured prompts.",
   "author": {
     "name": "hyperb1iss"

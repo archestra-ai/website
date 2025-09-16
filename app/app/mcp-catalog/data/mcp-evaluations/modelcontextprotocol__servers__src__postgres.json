@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "modelcontextprotocol__servers__src__postgres",
   "display_name": "postgres",
-  "version": "1.0.0",
   "description": "Model Context Protocol Servers",
   "author": {
     "name": "modelcontextprotocol"

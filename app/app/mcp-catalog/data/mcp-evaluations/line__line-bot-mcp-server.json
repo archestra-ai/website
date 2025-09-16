@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "line__line-bot-mcp-server",
   "display_name": "line-bot-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server that integrates the LINE Messaging API to connect an AI Agent to the LINE Official Account.",
   "author": {
     "name": "line"

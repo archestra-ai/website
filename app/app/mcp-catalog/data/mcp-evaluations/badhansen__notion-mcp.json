@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "badhansen__notion-mcp",
   "display_name": "notion-mcp",
-  "version": "1.0.0",
   "description": "A simple Model Context Protocol (MCP) server that integrates with Notion's API to manage my personal todo list.",
   "author": {
     "name": "Badhansen"

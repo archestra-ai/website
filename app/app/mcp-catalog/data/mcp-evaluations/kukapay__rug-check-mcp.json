@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__rug-check-mcp",
   "display_name": "rug-check-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that detects potential risks in Solana meme tokens.",
   "author": {
     "name": "kukapay"

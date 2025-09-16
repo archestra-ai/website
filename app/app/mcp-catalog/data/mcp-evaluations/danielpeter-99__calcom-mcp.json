@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "danielpeter-99__calcom-mcp",
   "display_name": "calcom-mcp",
-  "version": "1.0.0",
   "description": "A FastMCP server for interacting with the Cal.com API. This enables LLMs to manage event types, create bookings, and access Cal.com scheduling data programmatically.",
   "author": {
     "name": "Danielpeter-99"

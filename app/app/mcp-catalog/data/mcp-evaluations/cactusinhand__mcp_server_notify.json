@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "cactusinhand__mcp_server_notify",
   "display_name": "mcp_server_notify",
-  "version": "1.0.0",
   "description": "Send system notification when Agent task is done.",
   "author": {
     "name": "Cactusinhand"
