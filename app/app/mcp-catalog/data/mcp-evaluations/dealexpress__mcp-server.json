@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "dealexpress__mcp-server",
   "display_name": "DealX",
-  "version": "1.0.0",
   "description": "MCP Server for DealX platform",
   "author": {
     "name": "DealExpress"
@@ -14,7 +12,8 @@
       "DEALX_API_URL": "${user_config.dealx_api_url}",
       "MCP_SERVER_PORT": "${user_config.mcp_server_port}",
       "LOG_LEVEL": "${user_config.log_level}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

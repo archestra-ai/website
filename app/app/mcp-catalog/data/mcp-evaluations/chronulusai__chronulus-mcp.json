@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "chronulusai__chronulus-mcp",
   "display_name": "chronulus-mcp",
-  "version": "1.0.0",
   "description": "MCP Server for Chronulus AI Forecasting and Prediction Agents",
   "author": {
     "name": "ChronulusAI"
@@ -12,7 +10,8 @@
     "args": ["chronulus-mcp"],
     "env": {
       "CHRONULUS_API_KEY": "${user_config.chronulus_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

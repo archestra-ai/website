@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "j4c0bs__mcp-server-sql-analyzer",
   "display_name": "mcp-server-sql-analyzer",
-  "version": "1.0.0",
   "description": "MCP server for SQL static analysis.",
   "author": {
     "name": "j4c0bs"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["--from", "git+https://github.com/j4c0bs/mcp-server-sql-analyzer.git", "mcp-server-sql-analyzer"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

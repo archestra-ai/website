@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "iunera__druid-mcp-server",
   "display_name": "druid-mcp-server",
-  "version": "1.0.0",
   "description": "A comprehensive Model Context Protocol (MCP) server for Apache Druid that provides extensive tools, resources, and AI-assisted prompts for managing and analyzing Druid clusters. Built with Spring Boot and Spring AI, this server enables seamless integration between AI assistants and Apache Druid through standardized MCP protocol.",
   "author": {
     "name": "iunera"
@@ -19,7 +17,8 @@
     "env": {
       "DRUID_BROKER_URL": "${user_config.druid_broker_url}",
       "DRUID_COORDINATOR_URL": "${user_config.druid_coordinator_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

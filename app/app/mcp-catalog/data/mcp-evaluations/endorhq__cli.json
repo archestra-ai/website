@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "endorhq__cli",
   "display_name": "cli",
-  "version": "1.0.0",
   "description": "Endor provides instant, private, sandboxed environments for your favorite services anywhere Node is available. Run MariaDB, PostgreSQL and many more servers securely and in just a few seconds. Perfect for AI agents and humans in a hurry.",
   "author": {
     "name": "endorhq"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@endorhq/cli", "mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jjsantos01__qgis_mcp",
   "display_name": "qgis_mcp",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) that allows LLMs to use QGIS Desktop",
   "author": {
     "name": "jjsantos01"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uv",
     "args": ["--directory", "${user_config.qgis_mcp_repo_path}/src/qgis_mcp", "run", "qgis_mcp_server.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

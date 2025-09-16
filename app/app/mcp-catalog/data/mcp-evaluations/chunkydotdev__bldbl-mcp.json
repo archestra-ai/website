@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "chunkydotdev__bldbl-mcp",
   "display_name": "bldbl-mcp",
-  "version": "1.0.0",
   "description": "MCP server from chunkydotdev/bldbl-mcp",
   "author": {
     "name": "chunkydotdev"
@@ -15,7 +13,8 @@
       "BUILDABLE_PROJECT_ID": "${user_config.buildable_project_id}",
       "BUILDABLE_AI_ASSISTANT_ID": "${user_config.buildable_ai_assistant_id}",
       "BUILDABLE_API_URL": "${user_config.buildable_api_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

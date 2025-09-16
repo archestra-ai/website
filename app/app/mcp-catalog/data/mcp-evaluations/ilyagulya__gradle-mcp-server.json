@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ilyagulya__gradle-mcp-server",
   "display_name": "gradle-mcp-server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server to enable AI tools to interact with Gradle projects programmatically.",
   "author": {
     "name": "IlyaGulya"
@@ -10,7 +8,8 @@
   "server": {
     "command": "java",
     "args": ["-jar", "${HOME}/mcp-servers/gradle-mcp-server/gradle-mcp-server-all.jar"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

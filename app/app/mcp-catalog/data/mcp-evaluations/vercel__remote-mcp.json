@@ -1,10 +1,7 @@
 {
   "name": "vercel__remote-mcp",
   "display_name": "Vercel",
-  "version": "1.0.0",
   "description": "Remote MCP server for Vercel - frontend cloud platform and deployment",
-  "remote_url": "https://mcp.vercel.com/",
-  "remote_mcp_docs_url": "https://vercel.com/docs/mcp/vercel-mcp",
   "oauth_config": {
     "name": "Vercel MCP",
     "server_url": "https://mcp.vercel.com/",
@@ -33,13 +30,14 @@
   "last_scraped_at": "2025-09-05T19:30:23.066Z",
   "evaluation_model": null,
   "raw_dependencies": null,
-  "dxt_version": "0.1.0",
   "author": {
     "name": "vercel"
   },
   "server": {
-    "command": "remote",
-    "args": [],
-    "env": {}
-  }
+    "type": "remote",
+    "url": "https://mcp.vercel.com/",
+    "docs_url": "https://vercel.com/docs/mcp/vercel-mcp"
+  },
+  "github_info": null,
+  "programming_language": null
 }

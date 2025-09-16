@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tigranbs__mcgravity",
   "display_name": "mcgravity",
-  "version": "1.0.0",
   "description": "A proxy tool for composing multiple MCP servers into one unified endpoint. Scale your AI tools by load balancing requests across multiple MCP servers, similar to how Nginx works for web servers.",
   "author": {
     "name": "tigranbs"
@@ -22,7 +20,8 @@
       "${user_config.mcp_name}",
       "${user_config.mcp_server_addresses}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zinja-coder__apktool-mcp-server",
   "display_name": "apktool-mcp-server",
-  "version": "1.0.0",
   "description": "A MCP Server for APK Tool (Part of Android Reverse Engineering MCP Suites)",
   "author": {
     "name": "zinja-coder"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/apktool_mcp_server.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

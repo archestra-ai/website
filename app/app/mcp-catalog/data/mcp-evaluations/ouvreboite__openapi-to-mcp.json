@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ouvreboite__openapi-to-mcp",
   "display_name": "openapi-to-mcp",
-  "version": "1.0.0",
   "description": "An MCP server for your API",
   "author": {
     "name": "ouvreboite"
@@ -36,7 +34,8 @@
       "--verbose",
       "${user_config.verbose}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

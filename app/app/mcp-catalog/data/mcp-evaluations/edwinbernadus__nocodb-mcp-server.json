@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "edwinbernadus__nocodb-mcp-server",
   "display_name": "nocodb-mcp-server",
-  "version": "1.0.0",
   "description": "nocodb mcp server",
   "author": {
     "name": "edwinbernadus"
@@ -14,7 +12,8 @@
       "NOCODB_URL": "${user_config.nocodb_url}",
       "NOCODB_BASE_ID": "${user_config.nocodb_base_id}",
       "NOCODB_API_TOKEN": "${user_config.nocodb_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

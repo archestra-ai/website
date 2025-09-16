@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "apify__mcp-server-rag-web-browser",
   "display_name": "mcp-server-rag-web-browser",
-  "version": "1.0.0",
   "description": "A MCP Server for the RAG Web Browser Actor",
   "author": {
     "name": "apify"
@@ -12,7 +10,8 @@
     "args": ["-y", "@apify/mcp-server-rag-web-browser"],
     "env": {
       "APIFY_TOKEN": "${user_config.apify_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

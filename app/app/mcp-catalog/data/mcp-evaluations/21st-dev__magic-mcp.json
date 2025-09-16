@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "21st-dev__magic-mcp",
   "display_name": "magic-mcp",
-  "version": "1.0.0",
   "description": "It's like v0 but in your Cursor/WindSurf/Cline. 21st dev Magic MCP server for working with your frontend like Magic",
   "author": {
     "name": "21st-dev"
@@ -12,7 +10,8 @@
     "args": ["-y", "@21st-dev/magic@latest"],
     "env": {
       "API_KEY": "${user_config.api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

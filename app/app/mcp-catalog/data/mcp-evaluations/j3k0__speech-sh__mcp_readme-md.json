@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "j3k0__speech-sh__mcp_readme-md",
   "display_name": "MCP_README.md",
-  "version": "1.0.0",
   "description": "Simple curl script to play aloud what you type, useful if your voice is suddenly broken.",
   "author": {
     "name": "j3k0"
@@ -10,7 +8,8 @@
   "server": {
     "command": "unknown",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

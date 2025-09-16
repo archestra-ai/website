@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "webcoderz__mcp-geo",
   "display_name": "MCP-Geo",
-  "version": "1.0.0",
   "description": "Geocoding MCP server with GeoPY!",
   "author": {
     "name": "webcoderz"
@@ -17,7 +15,8 @@
       "ARC_USERNAME": "${user_config.arc_username}",
       "ARC_PASSWORD": "${user_config.arc_password}",
       "BING_API_KEY": "${user_config.bing_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

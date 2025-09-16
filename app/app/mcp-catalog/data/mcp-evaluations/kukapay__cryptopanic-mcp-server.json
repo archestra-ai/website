@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__cryptopanic-mcp-server",
   "display_name": "cryptopanic-mcp-server",
-  "version": "1.0.0",
   "description": "Provide latest cryptocurrency news to AI agents.",
   "author": {
     "name": "kukapay"
@@ -13,7 +11,8 @@
     "env": {
       "CRYPTOPANIC_API_PLAN": "${user_config.cryptopanic_api_plan}",
       "CRYPTOPANIC_API_KEY": "${user_config.cryptopanic_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

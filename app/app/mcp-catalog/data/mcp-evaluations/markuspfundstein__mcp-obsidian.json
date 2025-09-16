@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "markuspfundstein__mcp-obsidian",
   "display_name": "mcp-obsidian",
-  "version": "1.0.0",
   "description": "MCP server that interacts with Obsidian via the Obsidian rest API community plugin",
   "author": {
     "name": "MarkusPfundstein"
@@ -14,7 +12,8 @@
       "OBSIDIAN_API_KEY": "${user_config.obsidian_api_key}",
       "OBSIDIAN_HOST": "${user_config.obsidian_host}",
       "OBSIDIAN_PORT": "${user_config.obsidian_port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

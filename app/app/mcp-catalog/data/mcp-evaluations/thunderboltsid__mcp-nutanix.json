@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "thunderboltsid__mcp-nutanix",
   "display_name": "mcp-nutanix",
-  "version": "1.0.0",
   "description": "MCP Server for Nutanix",
   "author": {
     "name": "thunderboltsid"
@@ -10,7 +8,8 @@
   "server": {
     "command": "./bin/mcp-nutanix",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

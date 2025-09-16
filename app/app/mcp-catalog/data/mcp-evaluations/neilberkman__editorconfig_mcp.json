@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "neilberkman__editorconfig_mcp",
   "display_name": "editorconfig_mcp",
-  "version": "1.0.0",
   "description": "MCP server from neilberkman/editorconfig_mcp",
   "author": {
     "name": "neilberkman"
@@ -12,7 +10,8 @@
     "args": ["-y", "editorconfig-mcp-server"],
     "env": {
       "PORT": "${user_config.port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

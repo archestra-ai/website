@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "idosal__git-mcp",
   "display_name": "git-mcp",
-  "version": "1.0.0",
   "description": "Put an end to code hallucinations! GitMCP is a free, open-source, remote MCP server for any GitHub project",
   "author": {
     "name": "idosal"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "mcp-remote", "https://gitmcp.io/${user_config.github_owner}/${user_config.github_repo}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

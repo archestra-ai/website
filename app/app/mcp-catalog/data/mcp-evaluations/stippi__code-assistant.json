@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "stippi__code-assistant",
   "display_name": "code-assistant",
-  "version": "1.0.0",
   "description": "An LLM-powered, autonomous coding assistant. Also offers an MCP mode.",
   "author": {
     "name": "stippi"
@@ -17,7 +15,8 @@
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
       "GOOGLE_API_KEY": "${user_config.google_api_key}",
       "OPENROUTER_API_KEY": "${user_config.openrouter_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "dataeval__dingo",
   "display_name": "dingo",
-  "version": "1.0.0",
   "description": "Dingo: A Comprehensive AI Data Quality Evaluation Tool",
   "author": {
     "name": "DataEval"
@@ -14,7 +12,8 @@
       "DINGO_LLM_API_KEY": "${user_config.llm_api_key}",
       "DINGO_LLM_API_URL": "${user_config.llm_api_url}",
       "DINGO_LLM_MODEL": "${user_config.llm_model}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "2niuhe__qrcode_mcp",
   "display_name": "qrcode_mcp",
-  "version": "1.0.0",
   "description": "mcp tool to generate qrcode",
   "author": {
     "name": "2niuhe"
@@ -14,7 +12,8 @@
       "TRANSPORT_MODE": "${user_config.transport_mode}",
       "HOST": "${user_config.host}",
       "PORT": "${user_config.port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

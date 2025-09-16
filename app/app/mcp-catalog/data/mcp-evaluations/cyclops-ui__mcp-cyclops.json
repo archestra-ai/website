@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "cyclops-ui__mcp-cyclops",
   "display_name": "mcp-cyclops",
-  "version": "1.0.0",
   "description": "Model Context Protocol server for Cyclops",
   "author": {
     "name": "cyclops-ui"
@@ -16,7 +14,8 @@
       "CYCLOPS_MODULE_NAMESPACE": "${user_config.cyclops_module_namespace}",
       "CYCLOPS_HELM_RELEASE_NAMESPACE": "${user_config.cyclops_helm_release_namespace}",
       "CYCLOPS_MODULE_TARGET_NAMESPACE": "${user_config.cyclops_module_target_namespace}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

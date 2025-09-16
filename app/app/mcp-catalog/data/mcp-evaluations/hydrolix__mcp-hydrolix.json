@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hydrolix__mcp-hydrolix",
   "display_name": "mcp-hydrolix",
-  "version": "1.0.0",
   "description": "An MCP server for Hydrolix",
   "author": {
     "name": "hydrolix"
@@ -17,7 +15,8 @@
       "HYDROLIX_PORT": "${user_config.hydrolix_port}",
       "HYDROLIX_VERIFY": "${user_config.hydrolix_verify}",
       "HYDROLIX_DATABASE": "${user_config.hydrolix_database}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

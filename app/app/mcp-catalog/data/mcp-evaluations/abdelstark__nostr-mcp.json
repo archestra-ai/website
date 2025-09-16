@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "abdelstark__nostr-mcp",
   "display_name": "nostr-mcp",
-  "version": "1.0.0",
   "description": "A Nostr MCP server that allows to interact with Nostr, enabling posting notes, and more.",
   "author": {
     "name": "AbdelStark"
@@ -17,7 +15,8 @@
       "NOSTR_NSEC_KEY": "${user_config.nostr_nsec_key}",
       "SERVER_MODE": "${user_config.server_mode}",
       "PORT": "${user_config.port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

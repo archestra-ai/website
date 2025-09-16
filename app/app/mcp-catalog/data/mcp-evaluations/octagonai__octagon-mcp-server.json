@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "octagonai__octagon-mcp-server",
   "display_name": "octagon-mcp-server",
-  "version": "1.0.0",
   "description": "A free MCP server to analyze and extract insights from public filings, earnings transcripts, financial metrics, stock market data, private market transactions, and deep web-based research within Claude Desktop and other popular MCP clients.",
   "author": {
     "name": "OctagonAI"
@@ -12,7 +10,8 @@
     "args": ["-y", "octagon-mcp@latest"],
     "env": {
       "OCTAGON_API_KEY": "${user_config.octagon_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

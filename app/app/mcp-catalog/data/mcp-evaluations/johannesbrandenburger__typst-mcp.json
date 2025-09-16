@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "johannesbrandenburger__typst-mcp",
   "display_name": "typst-mcp",
-  "version": "1.0.0",
   "description": "Typst MCP Server is an MCP (Model Context Protocol) implementation that helps AI models interact with Typst, a markup-based typesetting system. The server provides tools for converting between LaTeX and Typst, validating Typst syntax, and generating images from Typst code.",
   "author": {
     "name": "johannesbrandenburger"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/server.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

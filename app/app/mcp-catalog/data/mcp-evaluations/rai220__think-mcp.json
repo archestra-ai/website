@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "rai220__think-mcp",
   "display_name": "think-mcp",
-  "version": "1.0.0",
   "description": "MCP Server for reasoning",
   "author": {
     "name": "Rai220"
@@ -13,7 +11,8 @@
     "env": {
       "ADVANCED_MODE": "${user_config.advanced_mode}",
       "TAVILY_API_KEY": "${user_config.tavily_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

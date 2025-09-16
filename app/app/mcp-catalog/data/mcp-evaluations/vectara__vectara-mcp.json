@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "vectara__vectara-mcp",
   "display_name": "vectara-mcp",
-  "version": "1.0.0",
   "description": "Open source MCP server for Vectara",
   "author": {
     "name": "vectara"
@@ -13,7 +11,8 @@
     "env": {
       "VECTARA_API_KEY": "${user_config.vectara_api_key}",
       "VECTARA_CORPUS_KEYS": "${user_config.vectara_corpus_keys}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

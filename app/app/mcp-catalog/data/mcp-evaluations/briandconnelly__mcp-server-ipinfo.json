@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "briandconnelly__mcp-server-ipinfo",
   "display_name": "mcp-server-ipinfo",
-  "version": "1.0.0",
   "description": "IP Geolocation Server for MCP",
   "author": {
     "name": "briandconnelly"
@@ -12,7 +10,8 @@
     "args": ["mcp-server-ipinfo"],
     "env": {
       "IPINFO_API_TOKEN": "${user_config.ipinfo_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

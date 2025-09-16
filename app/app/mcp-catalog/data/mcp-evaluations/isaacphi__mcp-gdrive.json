@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "isaacphi__mcp-gdrive",
   "display_name": "mcp-gdrive",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) Server for reading from Google Drive and editing Google Sheets",
   "author": {
     "name": "isaacphi"
@@ -14,7 +12,8 @@
       "GDRIVE_CREDS_DIR": "${user_config.gdrive_creds_dir}",
       "CLIENT_ID": "${user_config.client_id}",
       "CLIENT_SECRET": "${user_config.client_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

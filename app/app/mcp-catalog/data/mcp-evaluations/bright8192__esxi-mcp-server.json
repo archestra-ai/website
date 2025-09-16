@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "bright8192__esxi-mcp-server",
   "display_name": "esxi-mcp-server",
-  "version": "1.0.0",
   "description": "A VMware ESXi/vCenter management server based on MCP (Model Control Protocol), providing simple REST API interfaces for virtual machine management.",
   "author": {
     "name": "bright8192"
@@ -22,7 +20,8 @@
       "MCP_API_KEY": "${user_config.mcp_api_key}",
       "MCP_LOG_FILE": "${user_config.mcp_log_file}",
       "MCP_LOG_LEVEL": "${user_config.mcp_log_level}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

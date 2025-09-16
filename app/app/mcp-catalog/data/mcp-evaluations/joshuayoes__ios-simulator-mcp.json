@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "joshuayoes__ios-simulator-mcp",
   "display_name": "ios-simulator-mcp",
-  "version": "1.0.0",
   "description": "MCP server for interacting with the iOS simulator",
   "author": {
     "name": "joshuayoes"
@@ -12,7 +10,8 @@
     "args": ["-y", "ios-simulator-mcp"],
     "env": {
       "IOS_SIMULATOR_MCP_FILTERED_TOOLS": "${user_config.ios_simulator_mcp_filtered_tools}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

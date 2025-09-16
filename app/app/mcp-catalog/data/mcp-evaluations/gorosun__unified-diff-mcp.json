@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gorosun__unified-diff-mcp",
   "display_name": "unified-diff-mcp",
-  "version": "1.0.0",
   "description": "MCP server from gorosun/unified-diff-mcp",
   "author": {
     "name": "gorosun"
@@ -14,7 +12,8 @@
       "GITHUB_TOKEN": "${user_config.github_token}",
       "DEFAULT_AUTO_OPEN": "${user_config.default_auto_open}",
       "DEFAULT_OUTPUT_MODE": "${user_config.default_output_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

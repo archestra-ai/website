@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ip2location__mcp-ip2location-io",
   "display_name": "mcp-ip2location-io",
-  "version": "1.0.0",
   "description": "IP Geolocation MCP server using IP2Location.io API",
   "author": {
     "name": "ip2location"
@@ -12,7 +10,8 @@
     "args": ["--directory", "${__dirname}/src", "run", "server.py"],
     "env": {
       "IP2LOCATION_API_KEY": "${user_config.ip2location_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

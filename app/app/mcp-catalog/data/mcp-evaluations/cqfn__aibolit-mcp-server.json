@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "cqfn__aibolit-mcp-server",
   "display_name": "aibolit-mcp-server",
-  "version": "1.0.0",
   "description": "MCP Server for Aibolit Java Static Analyzer: Helping Your AI Agent Identify Hotspots for Refactoring",
   "author": {
     "name": "cqfn"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "aibolit-mcp-server@0.0.6"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "marketplaceadpros__amazon-ads-mcp-server",
   "display_name": "amazon-ads-mcp-server",
-  "version": "1.0.0",
   "description": "MCP Server to interact with Amazon Ads",
   "author": {
     "name": "MarketplaceAdPros"
@@ -12,7 +10,8 @@
     "args": ["-y", "@marketplaceadpros/amazon-ads-mcp-server"],
     "env": {
       "BEARER_TOKEN": "${user_config.bearer_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

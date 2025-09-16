@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "r-huijts__opentk-mcp",
   "display_name": "opentk-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server providing access to Dutch parliamentary data (Tweede Kamer) through OpenTK . This server enables AI assistants to search, retrieve, and analyze parliamentary documents, activities, and information as published by parliament..",
   "author": {
     "name": "r-huijts"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@r-huijts/opentk-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

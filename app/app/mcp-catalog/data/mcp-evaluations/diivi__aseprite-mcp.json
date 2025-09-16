@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "diivi__aseprite-mcp",
   "display_name": "aseprite-mcp",
-  "version": "1.0.0",
   "description": "MCP server for interacting with the Aseprite API",
   "author": {
     "name": "diivi"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["-m", "aseprite_mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "eyalzh__browser-control-mcp",
   "display_name": "browser-control-mcp",
-  "version": "1.0.0",
   "description": "MCP server paired with a browser extension that enables AI agents to control the user's browser.",
   "author": {
     "name": "eyalzh"
@@ -13,7 +11,8 @@
     "env": {
       "EXTENSION_SECRET": "${user_config.extension_secret}",
       "EXTENSION_PORT": "${user_config.extension_port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

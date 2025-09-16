@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hijaz__postmancer",
   "display_name": "postmancer",
-  "version": "1.0.0",
   "description": "An experimental MCP server Rest Client intended to be a replacement of tools postman & insomnia",
   "author": {
     "name": "hijaz"
@@ -15,7 +13,8 @@
       "LOG_LEVEL": "${user_config.log_level}",
       "POSTMANCER_ENCRYPTION_KEY": "${user_config.postmancer_encryption_key}",
       "ENCRYPTION_KEY": "${user_config.encryption_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

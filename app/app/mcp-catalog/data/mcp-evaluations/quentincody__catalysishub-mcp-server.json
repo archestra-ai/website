@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "quentincody__catalysishub-mcp-server",
   "display_name": "catalysishub-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from QuentinCody/catalysishub-mcp-server",
   "author": {
     "name": "QuentinCody"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python3",
     "args": ["${__dirname}/catalysishub_mcp_server.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

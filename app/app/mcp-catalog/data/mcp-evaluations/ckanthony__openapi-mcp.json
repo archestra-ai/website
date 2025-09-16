@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ckanthony__openapi-mcp",
   "display_name": "openapi-mcp",
-  "version": "1.0.0",
   "description": "Dockerized MCP Server to allow your AI agent to access any API with existing api docs",
   "author": {
     "name": "ckanthony"
@@ -29,7 +27,8 @@
       "SOME_API_KEY": "${user_config.some_api_key}",
       "WEATHERBIT_API_KEY": "${user_config.weatherbit_api_key}",
       "REQUEST_HEADERS": "${user_config.request_headers}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

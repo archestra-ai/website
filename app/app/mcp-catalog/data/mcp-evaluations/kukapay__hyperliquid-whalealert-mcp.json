@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__hyperliquid-whalealert-mcp",
   "display_name": "hyperliquid-whalealert-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that provides real-time whale alerts on Hyperliquid.",
   "author": {
     "name": "kukapay"
@@ -12,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "main.py"],
     "env": {
       "COINGLASS_API_KEY": "${user_config.coinglass_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

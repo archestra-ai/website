@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jordandalton__restcsvmcpserver",
   "display_name": "RestCsvMcpServer",
-  "version": "1.0.0",
   "description": "MCP Server for RestCSV, Generated using MCPGen",
   "author": {
     "name": "JordanDalton"
@@ -12,7 +10,8 @@
     "args": ["restcsv-mcp-server"],
     "env": {
       "RESTCSV_API_KEY": "${user_config.restcsv_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

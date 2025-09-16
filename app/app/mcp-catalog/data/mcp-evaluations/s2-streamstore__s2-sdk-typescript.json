@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "s2-streamstore__s2-sdk-typescript",
   "display_name": "s2-sdk-typescript",
-  "version": "1.0.0",
   "description": "S2 TypeScript SDK",
   "author": {
     "name": "s2-streamstore"
@@ -21,7 +19,8 @@
     ],
     "env": {
       "S2_ACCESS_TOKEN": "${user_config.s2_access_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

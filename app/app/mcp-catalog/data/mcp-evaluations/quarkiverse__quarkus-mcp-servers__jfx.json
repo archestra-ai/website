@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "quarkiverse__quarkus-mcp-servers__jfx",
   "display_name": "jfx",
-  "version": "1.0.0",
   "description": "Model Context Protocol Servers in Quarkus",
   "author": {
     "name": "quarkiverse"
@@ -10,7 +8,8 @@
   "server": {
     "command": "jbang",
     "args": ["jfx@quarkiverse/quarkus-mcp-servers"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

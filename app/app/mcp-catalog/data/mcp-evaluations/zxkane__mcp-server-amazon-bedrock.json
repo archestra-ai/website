@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zxkane__mcp-server-amazon-bedrock",
   "display_name": "mcp-server-amazon-bedrock",
-  "version": "1.0.0",
   "description": "Model Context Procotol(MCP) server for using Amazon Bedrock Nova Canvas to generate images",
   "author": {
     "name": "zxkane"
@@ -15,7 +13,8 @@
       "AWS_ACCESS_KEY_ID": "${user_config.aws_access_key_id}",
       "AWS_SECRET_ACCESS_KEY": "${user_config.aws_secret_access_key}",
       "AWS_REGION": "${user_config.aws_region}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

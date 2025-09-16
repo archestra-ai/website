@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ahujasid__blender-mcp",
   "display_name": "blender-mcp",
-  "version": "1.0.0",
   "description": "MCP server from ahujasid/blender-mcp",
   "author": {
     "name": "ahujasid"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["blender-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

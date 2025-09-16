@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ariadng__metatrader-mcp-server",
   "display_name": "metatrader-mcp-server",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) to enable AI LLMs to trade using MetaTrader platform",
   "author": {
     "name": "ariadng"
@@ -17,7 +15,8 @@
       "--server",
       "${user_config.server}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

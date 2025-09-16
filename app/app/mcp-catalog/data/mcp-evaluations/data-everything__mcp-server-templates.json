@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "data-everything__mcp-server-templates",
   "display_name": "mcp-server-templates",
-  "version": "1.0.0",
   "description": "A flexible platform that provides Docker & Kubernetes backends, a lightweight CLI (mcpt), and client utilities for seamless MCP integration. Spin up servers from templates, route requests through a single endpoint with load balancing, and support both deployed (HTTP) and local (stdio) transports — all with sensible defaults and YAML-based configs.",
   "author": {
     "name": "Data-Everything"
@@ -18,7 +16,8 @@
       "READ_ONLY": "${user_config.read_only}",
       "MAX_FILE_SIZE": "${user_config.max_file_size}",
       "READ_ONLY_MODE": "${user_config.read_only_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "base__base-mcp",
   "display_name": "base-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that provides onchain tools for LLMs, allowing them to interact with the Base network and Coinbase API.",
   "author": {
     "name": "base"
@@ -20,7 +18,8 @@
       "CHAIN_ID": "${user_config.chain_id}",
       "NEYNAR_API_KEY": "${user_config.neynar_api_key}",
       "PINATA_JWT": "${user_config.pinata_jwt}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "burningion__video-editing-mcp",
   "display_name": "video-editing-mcp",
-  "version": "1.0.0",
   "description": "MCP Interface for Video Jungle",
   "author": {
     "name": "burningion"
@@ -12,7 +10,8 @@
     "args": ["video-editor-mcp", "${user_config.api_key}"],
     "env": {
       "LOAD_PHOTOS_DB": "${user_config.load_photos_db}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

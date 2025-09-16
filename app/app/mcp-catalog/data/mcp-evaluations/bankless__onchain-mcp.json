@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "bankless__onchain-mcp",
   "display_name": "onchain-mcp",
-  "version": "1.0.0",
   "description": "Bringing the bankless onchain API to MCP",
   "author": {
     "name": "Bankless"
@@ -12,7 +10,8 @@
     "args": ["-y", "@bankless/onchain-mcp"],
     "env": {
       "BANKLESS_API_TOKEN": "${user_config.bankless_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

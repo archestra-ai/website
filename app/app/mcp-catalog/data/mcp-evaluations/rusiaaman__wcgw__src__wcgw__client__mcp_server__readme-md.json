@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "rusiaaman__wcgw__src__wcgw__client__mcp_server__readme-md",
   "display_name": "Readme.md",
-  "version": "1.0.0",
   "description": "Shell and coding agent on claude desktop app",
   "author": {
     "name": "rusiaaman"
@@ -10,7 +8,8 @@
   "server": {
     "command": "unknown",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

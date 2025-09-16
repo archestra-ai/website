@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zenml-io__mcp-zenml",
   "display_name": "mcp-zenml",
-  "version": "1.0.0",
   "description": "MCP server to connect an MCP client (Cursor, Claude Desktop etc) with your ZenML MLOps and LLMOps pipelines",
   "author": {
     "name": "zenml-io"
@@ -17,7 +15,8 @@
       "PYTHONIOENCODING": "UTF-8",
       "ZENML_STORE_URL": "${user_config.zenml_store_url}",
       "ZENML_STORE_API_KEY": "${user_config.zenml_store_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

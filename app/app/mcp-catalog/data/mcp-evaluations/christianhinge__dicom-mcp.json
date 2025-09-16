@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "christianhinge__dicom-mcp",
   "display_name": "dicom-mcp",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) for interacting with dicom servers (PACS etc.)",
   "author": {
     "name": "ChristianHinge"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uv",
     "args": ["tool", "dicom-mcp", "${user_config.config_file_path}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "lostintangent__gistpad-mcp",
   "display_name": "gistpad-mcp",
-  "version": "1.0.0",
   "description": "📓 An MCP server for managing your personal knowledge, daily notes, and re-usable prompts via GitHub Gists",
   "author": {
     "name": "lostintangent"
@@ -19,7 +17,8 @@
     ],
     "env": {
       "GITHUB_TOKEN": "${user_config.github_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "caol64__wenyan-mcp",
   "display_name": "wenyan-mcp",
-  "version": "1.0.0",
   "description": "文颜 MCP Server 可以让 AI 自动将 Markdown 文章排版后发布至微信公众号。",
   "author": {
     "name": "caol64"
@@ -14,7 +12,8 @@
       "WECHAT_APP_ID": "${user_config.wechat_app_id}",
       "WECHAT_APP_SECRET": "${user_config.wechat_app_secret}",
       "HOST_IMAGE_PATH": "${user_config.host_image_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

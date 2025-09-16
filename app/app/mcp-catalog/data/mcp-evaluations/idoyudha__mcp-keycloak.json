@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "idoyudha__mcp-keycloak",
   "display_name": "mcp-keycloak",
-  "version": "1.0.0",
   "description": "The Keycloak MCP Server designed for agentic applications to manage and search data in Keycloak efficiently",
   "author": {
     "name": "idoyudha"
@@ -17,7 +15,8 @@
       "REALM_NAME": "${user_config.realm_name}",
       "CLIENT_ID": "${user_config.client_id}",
       "CLIENT_SECRET": "${user_config.client_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

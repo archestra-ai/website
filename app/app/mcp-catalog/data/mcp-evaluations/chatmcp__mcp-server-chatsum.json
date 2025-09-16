@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "chatmcp__mcp-server-chatsum",
   "display_name": "mcp-server-chatsum",
-  "version": "1.0.0",
   "description": "Query and Summarize your chat messages.",
   "author": {
     "name": "chatmcp"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/build/index.js"],
     "env": {
       "CHAT_DB_PATH": "${user_config.chat_db_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "thelunarcompany__lunar__mcpx",
   "display_name": "mcpx",
-  "version": "1.0.0",
   "description": "lunar.dev: Ground Control for 3rd Party APIs",
   "author": {
     "name": "TheLunarCompany"
@@ -10,7 +8,8 @@
   "server": {
     "command": "docker",
     "args": ["run", "lunar/mcpx"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

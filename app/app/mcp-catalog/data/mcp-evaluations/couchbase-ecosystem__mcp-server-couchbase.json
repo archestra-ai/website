@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "couchbase-ecosystem__mcp-server-couchbase",
   "display_name": "mcp-server-couchbase",
-  "version": "1.0.0",
   "description": "MCP Server to interact with data in Couchbase Clusters",
   "author": {
     "name": "Couchbase-Ecosystem"
@@ -19,7 +17,8 @@
       "CB_MCP_TRANSPORT": "${user_config.cb_mcp_transport}",
       "CB_MCP_HOST": "${user_config.cb_mcp_host}",
       "CB_MCP_PORT": "${user_config.cb_mcp_port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

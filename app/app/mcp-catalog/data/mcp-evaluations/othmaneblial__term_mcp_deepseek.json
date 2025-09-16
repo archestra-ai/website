@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "othmaneblial__term_mcp_deepseek",
   "display_name": "term_mcp_deepseek",
-  "version": "1.0.0",
   "description": "A MCP‑like server using the DeepSeek API for Terminal",
   "author": {
     "name": "OthmaneBlial"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/server.py"],
     "env": {
       "DEEPSEEK_API_KEY": "${user_config.deepseek_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

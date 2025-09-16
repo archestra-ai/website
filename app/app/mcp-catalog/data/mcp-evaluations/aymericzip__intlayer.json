@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "aymericzip__intlayer",
   "display_name": "intlayer",
-  "version": "1.0.0",
   "description": "Internationalisation solution for JS application focusing on scalability. Make your JavaScript / TypeScript application multilingue.",
   "author": {
     "name": "aymericzip"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "intlayer"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

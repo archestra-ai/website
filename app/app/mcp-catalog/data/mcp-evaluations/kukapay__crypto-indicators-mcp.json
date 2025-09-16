@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__crypto-indicators-mcp",
   "display_name": "crypto-indicators-mcp",
-  "version": "1.0.0",
   "description": "An MCP server providing a range of cryptocurrency technical analysis indicators and strategies.",
   "author": {
     "name": "kukapay"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/index.js"],
     "env": {
       "EXCHANGE_NAME": "${user_config.exchange_name}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

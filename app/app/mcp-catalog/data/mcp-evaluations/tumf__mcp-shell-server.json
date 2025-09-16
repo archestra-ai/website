@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tumf__mcp-shell-server",
   "display_name": "mcp-shell-server",
-  "version": "1.0.0",
   "description": "MCP server from tumf/mcp-shell-server",
   "author": {
     "name": "tumf"
@@ -12,7 +10,8 @@
     "args": ["mcp-shell-server"],
     "env": {
       "ALLOW_COMMANDS": "${user_config.allow_commands}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

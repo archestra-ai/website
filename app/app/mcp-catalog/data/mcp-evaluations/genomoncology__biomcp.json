@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "genomoncology__biomcp",
   "display_name": "biomcp",
-  "version": "1.0.0",
   "description": "BioMCP: Biomedical Model Context Protocol",
   "author": {
     "name": "genomoncology"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/main.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

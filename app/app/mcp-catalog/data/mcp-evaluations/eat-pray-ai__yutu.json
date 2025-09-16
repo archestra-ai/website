@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "eat-pray-ai__yutu",
   "display_name": "yutu",
-  "version": "1.0.0",
   "description": "A fully functional MCP server and CLI for YouTube",
   "author": {
     "name": "eat-pray-ai"
@@ -13,7 +11,8 @@
     "env": {
       "YUTU_CREDENTIAL": "${user_config.yutu_credential}",
       "YUTU_CACHE_TOKEN": "${user_config.yutu_cache_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

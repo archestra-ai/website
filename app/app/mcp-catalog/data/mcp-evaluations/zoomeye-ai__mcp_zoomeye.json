@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zoomeye-ai__mcp_zoomeye",
   "display_name": "mcp_zoomeye",
-  "version": "1.0.0",
   "description": "A Model Context Protocol server that provides network asset information based on query conditions. This server allows LLMs to obtain network asset information and supports querying network asset information by zoomeye dork etc.",
   "author": {
     "name": "zoomeye-ai"
@@ -12,7 +10,8 @@
     "args": ["mcp-server-zoomeye"],
     "env": {
       "ZOOMEYE_API_KEY": "${user_config.zoomeye_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

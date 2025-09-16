@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "freema__mcp-gsheets",
   "display_name": "mcp-gsheets",
-  "version": "1.0.0",
   "description": "MCP server for Google Sheets - Read, write and manipulate spreadsheets through Claude Desktop",
   "author": {
     "name": "freema"
@@ -14,7 +12,8 @@
       "GOOGLE_PROJECT_ID": "${user_config.google_project_id}",
       "GOOGLE_APPLICATION_CREDENTIALS": "${user_config.google_application_credentials}",
       "GOOGLE_SERVICE_ACCOUNT_KEY": "${user_config.google_service_account_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

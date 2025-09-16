@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pab1it0__adx-mcp-server",
   "display_name": "adx-mcp-server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that enables AI assistants to query and analyze Azure Data Explorer databases through standardized interfaces.",
   "author": {
     "name": "pab1it0"
@@ -16,7 +14,8 @@
       "AZURE_TENANT_ID": "${user_config.azure_tenant_id}",
       "AZURE_CLIENT_ID": "${user_config.azure_client_id}",
       "ADX_TOKEN_FILE_PATH": "${user_config.adx_token_file_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

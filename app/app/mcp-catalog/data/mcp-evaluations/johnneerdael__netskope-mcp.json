@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "johnneerdael__netskope-mcp",
   "display_name": "netskope-mcp",
-  "version": "1.0.0",
   "description": "MCP server from johnneerdael/netskope-mcp",
   "author": {
     "name": "johnneerdael"
@@ -13,7 +11,8 @@
     "env": {
       "NETSKOPE_BASE_URL": "${user_config.netskope_base_url}",
       "NETSKOPE_API_KEY": "${user_config.netskope_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

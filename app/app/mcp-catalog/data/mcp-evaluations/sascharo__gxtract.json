@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sascharo__gxtract",
   "display_name": "gxtract",
-  "version": "1.0.0",
   "description": "GXtract MCP Server for VS Code, forks and other editors; provides tools for interacting with GroundX",
   "author": {
     "name": "sascharo"
@@ -12,7 +10,8 @@
     "args": ["run", "gxtract", "--transport", "stdio"],
     "env": {
       "GROUNDX_API_KEY": "${user_config.groundx_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gongrzhe__gmail-mcp-server",
   "display_name": "Gmail-MCP-Server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server for Gmail integration in Claude Desktop with auto authentication support. This server enables AI assistants to manage Gmail through natural language interactions.",
   "author": {
     "name": "GongRzhe"
@@ -10,7 +8,8 @@
   "server": {
     "command": "unknown",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

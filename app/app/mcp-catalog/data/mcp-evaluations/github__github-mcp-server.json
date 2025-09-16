@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "github__github-mcp-server",
   "display_name": "github-mcp-server",
-  "version": "1.0.0",
   "description": "GitHub's official MCP Server",
   "author": {
     "name": "github"
@@ -12,7 +10,8 @@
     "args": ["run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN", "ghcr.io/github/github-mcp-server"],
     "env": {
       "GITHUB_PERSONAL_ACCESS_TOKEN": "${user_config.github_personal_access_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

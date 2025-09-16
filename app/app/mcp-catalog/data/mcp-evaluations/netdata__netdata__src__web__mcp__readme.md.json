@@ -1,6 +1,4 @@
 {
-  "dxt_version": "1.0.0",
-  "version": "1.0.0",
   "name": "netdata__netdata__src__web__mcp__readme.md",
   "display_name": "README.md",
   "description": "The fastest path to AI-powered full stack observability, even for lean teams.",
@@ -10,7 +8,8 @@
   "server": {
     "command": "",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "readme": null,
   "category": "Monitoring",

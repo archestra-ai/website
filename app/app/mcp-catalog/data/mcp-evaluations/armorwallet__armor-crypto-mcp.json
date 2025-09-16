@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "armorwallet__armor-crypto-mcp",
   "display_name": "armor-crypto-mcp",
-  "version": "1.0.0",
   "description": "The MCP server for interacting with Blockchain, Swaps, Strategic Planning and more.",
   "author": {
     "name": "armorwallet"
@@ -12,7 +10,8 @@
     "args": ["armor-crypto-mcp@latest"],
     "env": {
       "ARMOR_API_KEY": "${user_config.armor_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

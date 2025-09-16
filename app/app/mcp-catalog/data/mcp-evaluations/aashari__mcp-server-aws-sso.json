@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "aashari__mcp-server-aws-sso",
   "display_name": "mcp-server-aws-sso",
-  "version": "1.0.0",
   "description": "Node.js/TypeScript MCP server for AWS Single Sign-On (SSO). Enables AI systems (LLMs) with tools to initiate SSO login (device auth flow), list accounts/roles, and securely execute AWS CLI commands using temporary credentials. Streamlines AI interaction with AWS resources.",
   "author": {
     "name": "aashari"
@@ -18,7 +16,8 @@
       "PORT": "${user_config.port}",
       "AWS_SSO_REGION": "${user_config.aws_sso_region}",
       "AWS_PROFILE": "${user_config.aws_profile}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

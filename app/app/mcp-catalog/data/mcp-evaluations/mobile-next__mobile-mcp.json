@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mobile-next__mobile-mcp",
   "display_name": "mobile-mcp",
-  "version": "1.0.0",
   "description": "Model Context Protocol Server for Mobile Automation and Scraping (iOS, Android, Emulators, Simulators and Real Devices)",
   "author": {
     "name": "mobile-next"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@mobilenext/mobile-mcp@latest"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

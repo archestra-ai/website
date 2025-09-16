@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "stack-chan__stack-chan",
   "display_name": "stack-chan",
-  "version": "1.0.0",
   "description": "A JavaScript-driven M5Stack-embedded super-kawaii robot.",
   "author": {
     "name": "stack-chan"
@@ -10,7 +8,8 @@
   "server": {
     "command": "node",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "elie222__inbox-zero__apps__mcp-server",
   "display_name": "Inbox Zero",
-  "version": "1.0.0",
   "description": "The world's best AI personal assistant for email. Open source app to help you reach inbox zero fast.",
   "author": {
     "name": "elie222"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/apps/mcp-server/build/index.js"],
     "env": {
       "API_KEY": "${user_config.api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

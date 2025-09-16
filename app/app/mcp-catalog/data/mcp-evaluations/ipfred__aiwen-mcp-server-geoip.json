@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ipfred__aiwen-mcp-server-geoip",
   "display_name": "aiwen-mcp-server-geoip",
-  "version": "1.0.0",
   "description": "埃文IP定位MCP",
   "author": {
     "name": "ipfred"
@@ -14,7 +12,8 @@
       "AIWEN_API_KEY": "${user_config.aiwen_api_key}",
       "IPV4_ACCURACY": "${user_config.ipv4_accuracy}",
       "IPV6_ACCURACY": "${user_config.ipv6_accuracy}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

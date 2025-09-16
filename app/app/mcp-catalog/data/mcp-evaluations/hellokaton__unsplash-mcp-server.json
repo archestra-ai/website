@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hellokaton__unsplash-mcp-server",
   "display_name": "unsplash-mcp-server",
-  "version": "1.0.0",
   "description": "🔎 A MCP server for Unsplash image search.",
   "author": {
     "name": "hellokaton"
@@ -12,7 +10,8 @@
     "args": ["run", "--with", "fastmcp", "fastmcp", "run", "./server.py"],
     "env": {
       "UNSPLASH_ACCESS_KEY": "${user_config.unsplash_access_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

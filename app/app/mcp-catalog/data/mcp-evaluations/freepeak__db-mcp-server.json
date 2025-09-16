@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "freepeak__db-mcp-server",
   "display_name": "db-mcp-server",
-  "version": "1.0.0",
   "description": "A powerful multi-database server implementing the Model Context Protocol (MCP) to provide AI assistants with structured access to databases.",
   "author": {
     "name": "FreePeak"
@@ -23,7 +21,8 @@
       "TRANSPORT_MODE": "${user_config.transport_mode}",
       "CONFIG_PATH": "${user_config.config_path}",
       "DB_CONFIG": "${user_config.db_config}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -231,7 +231,7 @@ export function calculateQualityScore(
   allServers?: ArchestraMcpServerManifest[]
 ): ArchestraScoreBreakdown {
   // Remote servers get a fixed high score of 80
-  if (server.remote_url && !server.github_info) {
+  if (server.server.type === 'remote') {
     return {
       mcp_protocol: 0,
       github_metrics: 0,

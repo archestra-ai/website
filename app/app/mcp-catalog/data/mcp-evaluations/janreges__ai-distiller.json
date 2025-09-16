@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "janreges__ai-distiller",
   "display_name": "ai-distiller",
-  "version": "1.0.0",
   "description": "AI Distiller is ultra‑fast, open‑source tool for intelligently extracting only the essential public APIs, types, and structure from large codebases. Compresses 90–98% of code into AI‑friendly context, integrates via CLI or MCP, supports 12+ languages, and AI prompt workflows for cleaner, cost‑effective AI development.",
   "author": {
     "name": "janreges"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@janreges/ai-distiller-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

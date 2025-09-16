@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mattijsdp__dbt-docs-mcp",
   "display_name": "dbt-docs-mcp",
-  "version": "1.0.0",
   "description": "MCP (model context protocol) server for interacting with dbt Docs",
   "author": {
     "name": "mattijsdp"
@@ -21,7 +19,8 @@
       "MANIFEST_PATH": "${user_config.manifest_path}",
       "SCHEMA_MAPPING_PATH": "${user_config.schema_mapping_path}",
       "MANIFEST_CL_PATH": "${user_config.manifest_cl_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

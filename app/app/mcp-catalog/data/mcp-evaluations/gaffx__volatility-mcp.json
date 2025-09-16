@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gaffx__volatility-mcp",
   "display_name": "volatility-mcp",
-  "version": "1.0.0",
   "description": "This repo hosts an MCP server for volatility3.x",
   "author": {
     "name": "Gaffx"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/vol_mcp_server.py", "-i", "${user_config.memory_image_path}"],
     "env": {
       "VOLATILITY_BIN": "${user_config.volatility_bin}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tubasasakunn__context-apps-mcp",
   "display_name": "context-apps-mcp",
-  "version": "1.0.0",
   "description": "MCP server from tubasasakunn/context-apps-mcp",
   "author": {
     "name": "tubasasakunn"
@@ -10,7 +8,8 @@
   "server": {
     "command": "node",
     "args": ["${__dirname}/index.js"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

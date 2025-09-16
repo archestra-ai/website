@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "iplocate__mcp-server-iplocate",
   "display_name": "mcp-server-iplocate",
-  "version": "1.0.0",
   "description": "MCP server for looking up IP address geolocation (IP to country, IP to city), network information, proxy and VPN detection, abuse contacts, and more - using the IPLocate.io API.",
   "author": {
     "name": "iplocate"
@@ -12,7 +10,8 @@
     "args": ["-y", "@iplocate/mcp-server"],
     "env": {
       "IPLOCATE_API_KEY": "${user_config.iplocate_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

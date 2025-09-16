@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "r-huijts__ns-mcp-server",
   "display_name": "ns-mcp-server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that provides access to NS (Dutch Railways) travel information through Claude AI. This server enables Claude to fetch real-time train travel information and disruptions using the official Dutch NS API.",
   "author": {
     "name": "r-huijts"
@@ -12,7 +10,8 @@
     "args": ["-y", "ns-mcp-server"],
     "env": {
       "NS_API_KEY": "${user_config.ns_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

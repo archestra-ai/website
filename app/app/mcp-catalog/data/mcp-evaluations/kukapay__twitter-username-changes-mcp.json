@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__twitter-username-changes-mcp",
   "display_name": "twitter-username-changes-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that tracks the historical changes of Twitter usernames.",
   "author": {
     "name": "kukapay"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/main.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

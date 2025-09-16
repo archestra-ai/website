@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "aliyun__alibaba-cloud-ops-mcp-server",
   "display_name": "alibaba-cloud-ops-mcp-server",
-  "version": "1.0.0",
   "description": "AlibabaCloud CloudOps MCP Server",
   "author": {
     "name": "aliyun"
@@ -13,7 +11,8 @@
     "env": {
       "ALIBABA_CLOUD_ACCESS_KEY_ID": "${user_config.alibaba_cloud_access_key_id}",
       "ALIBABA_CLOUD_ACCESS_KEY_SECRET": "${user_config.alibaba_cloud_access_key_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

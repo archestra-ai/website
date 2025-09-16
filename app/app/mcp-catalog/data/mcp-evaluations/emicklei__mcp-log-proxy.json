@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "emicklei__mcp-log-proxy",
   "display_name": "mcp-log-proxy",
-  "version": "1.0.0",
   "description": "a web logging proxy for MCP client-server communication",
   "author": {
     "name": "emicklei"
@@ -10,7 +8,8 @@
   "server": {
     "command": "melrose-mcp",
     "args": ["-log", "${user_config.log_file_path}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

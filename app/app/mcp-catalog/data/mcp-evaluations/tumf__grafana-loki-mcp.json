@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tumf__grafana-loki-mcp",
   "display_name": "grafana-loki-mcp",
-  "version": "1.0.0",
   "description": "Grafana Loki MCP Repository",
   "author": {
     "name": "tumf"
@@ -13,7 +11,8 @@
     "env": {
       "GRAFANA_URL": "${user_config.grafana_url}",
       "GRAFANA_API_KEY": "${user_config.grafana_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

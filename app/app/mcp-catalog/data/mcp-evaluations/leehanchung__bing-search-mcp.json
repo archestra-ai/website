@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "leehanchung__bing-search-mcp",
   "display_name": "bing-search-mcp",
-  "version": "1.0.0",
   "description": "MCP Server for Bing Search API",
   "author": {
     "name": "leehanchung"
@@ -13,7 +11,8 @@
     "env": {
       "BING_API_KEY": "${user_config.bing_api_key}",
       "BING_API_URL": "${user_config.bing_api_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

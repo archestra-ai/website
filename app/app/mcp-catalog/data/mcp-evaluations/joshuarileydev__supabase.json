@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "joshuarileydev__supabase",
   "display_name": "supabase",
-  "version": "1.0.0",
   "description": "MCP server from joshuarileydev/supabase",
   "author": {
     "name": "joshuarileydev"
@@ -12,7 +10,8 @@
     "args": ["-y", "@joshuarileydev/supabase-mcp-server"],
     "env": {
       "SUPABASE_API_KEY": "${user_config.supabase_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "openbnb-org__mcp-server-airbnb",
   "display_name": "mcp-server-airbnb",
-  "version": "1.0.0",
   "description": "MCP server from openbnb-org/mcp-server-airbnb",
   "author": {
     "name": "openbnb-org"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@openbnb/mcp-server-airbnb", "${user_config.ignore_robots_txt}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

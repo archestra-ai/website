@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "boldsign__boldsign-mcp",
   "display_name": "boldsign-mcp",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) server for BoldSign API",
   "author": {
     "name": "boldsign"
@@ -13,7 +11,8 @@
     "env": {
       "BOLDSIGN_API_KEY": "${user_config.boldsign_api_key}",
       "BOLDSIGN_API_REGION": "${user_config.boldsign_api_region}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

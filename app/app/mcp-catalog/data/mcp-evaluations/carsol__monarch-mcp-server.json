@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "carsol__monarch-mcp-server",
   "display_name": "monarch-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from carsol/monarch-mcp-server",
   "author": {
     "name": "carsol"
@@ -14,7 +12,8 @@
       "MONARCH_EMAIL": "${user_config.monarch_email}",
       "MONARCH_PASSWORD": "${user_config.monarch_password}",
       "MONARCH_MFA_SECRET": "${user_config.monarch_mfa_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

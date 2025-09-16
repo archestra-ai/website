@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "xing5__mcp-google-sheets",
   "display_name": "mcp-google-sheets",
-  "version": "1.0.0",
   "description": "This MCP server integrates with your Google Drive and Google Sheets, to enable creating and modifying spreadsheets.",
   "author": {
     "name": "xing5"
@@ -14,7 +12,8 @@
       "SERVICE_ACCOUNT_PATH": "${user_config.service_account_path}",
       "DRIVE_FOLDER_ID": "${user_config.drive_folder_id}",
       "CREDENTIALS_CONFIG": "${user_config.credentials_config}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

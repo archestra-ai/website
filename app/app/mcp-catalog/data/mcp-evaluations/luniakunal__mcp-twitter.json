@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "luniakunal__mcp-twitter",
   "display_name": "mcp-twitter",
-  "version": "1.0.0",
   "description": "Manage your twitter account using mcp",
   "author": {
     "name": "LuniaKunal"
@@ -13,7 +11,8 @@
     "env": {
       "COOKIES_PATH": "${user_config.cookies_path}",
       "ENV_FILE": "${user_config.env_file}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

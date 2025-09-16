@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "xixianliang__harmonyos-mcp-server",
   "display_name": "HarmonyOS-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server for manipulating HarmonyOS next devices.",
   "author": {
     "name": "XixianLiang"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uv",
     "args": ["--directory", "${__dirname}", "run", "server.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

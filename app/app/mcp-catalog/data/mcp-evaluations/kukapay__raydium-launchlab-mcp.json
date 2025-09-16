@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__raydium-launchlab-mcp",
   "display_name": "raydium-launchlab-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that enables AI agents to launch, buy, and sell tokens on the Raydium Launchpad(aka LaunchLab).",
   "author": {
     "name": "kukapay"
@@ -15,7 +13,8 @@
       "PRIVATE_KEY": "${user_config.private_key}",
       "PINATA_JWT": "${user_config.pinata_jwt}",
       "PINATA_GATEWAY": "${user_config.pinata_gateway}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

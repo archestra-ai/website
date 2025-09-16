@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "andybrandt__mcp-simple-pubmed",
   "display_name": "mcp-simple-pubmed",
-  "version": "1.0.0",
   "description": "MCP server for searching and querying PubMed medical papers/research database",
   "author": {
     "name": "andybrandt"
@@ -13,7 +11,8 @@
     "env": {
       "PUBMED_EMAIL": "${user_config.pubmed_email}",
       "PUBMED_API_KEY": "${user_config.pubmed_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

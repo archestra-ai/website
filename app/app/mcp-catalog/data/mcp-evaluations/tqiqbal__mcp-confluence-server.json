@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tqiqbal__mcp-confluence-server",
   "display_name": "mcp-confluence-server",
-  "version": "1.0.0",
   "description": "MCP server from tqiqbal/mcp-confluence-server",
   "author": {
     "name": "tqiqbal"
@@ -14,7 +12,8 @@
       "CONFLUENCE_API_BASE": "${user_config.confluence_api_base}",
       "CONFLUENCE_USERNAME": "${user_config.confluence_username}",
       "CONFLUENCE_PASSWORD": "${user_config.confluence_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

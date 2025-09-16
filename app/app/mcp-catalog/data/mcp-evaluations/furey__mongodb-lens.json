@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "furey__mongodb-lens",
   "display_name": "mongodb-lens",
-  "version": "1.0.0",
   "description": "🍃🔎 MongoDB Lens: Full Featured MCP Server for MongoDB Databases",
   "author": {
     "name": "furey"
@@ -10,7 +8,8 @@
   "server": {
     "command": "docker",
     "args": ["run", "furey/mongodb-lens"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "markuspfundstein__mcp-gsuite",
   "display_name": "mcp-gsuite",
-  "version": "1.0.0",
   "description": "MCP Server to interact with Google Gsuite prodcuts",
   "author": {
     "name": "MarkusPfundstein"
@@ -19,7 +17,8 @@
       "--credentials-dir",
       "${user_config.credentials_dir}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

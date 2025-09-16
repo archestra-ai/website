@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gbrigandi__mcp-server-thehive",
   "display_name": "mcp-server-thehive",
-  "version": "1.0.0",
   "description": "MCP Server for TheHive",
   "author": {
     "name": "gbrigandi"
@@ -15,7 +13,8 @@
       "THEHIVE_API_TOKEN": "${user_config.thehive_api_token}",
       "VERIFY_SSL": "${user_config.verify_ssl}",
       "RUST_LOG": "${user_config.rust_log}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

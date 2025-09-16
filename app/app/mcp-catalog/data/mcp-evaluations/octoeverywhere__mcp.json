@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "octoeverywhere__mcp",
   "display_name": "mcp",
-  "version": "1.0.0",
   "description": "A free 3D Printing MCP server that allows for getting live printer state, webcam snapshots, and printer control.",
   "author": {
     "name": "OctoEverywhere"
@@ -10,7 +8,8 @@
   "server": {
     "command": "",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

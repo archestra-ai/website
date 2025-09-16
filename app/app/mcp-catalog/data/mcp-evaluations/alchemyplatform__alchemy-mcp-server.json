@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "alchemyplatform__alchemy-mcp-server",
   "display_name": "Alchemy",
-  "version": "1.0.0",
   "description": "Alchemy's official MCP Server. Allow AI agents to interact with Alchemy's blockchain APIs.",
   "author": {
     "name": "alchemyplatform"
@@ -12,7 +10,8 @@
     "args": ["-y", "@alchemy/mcp-server"],
     "env": {
       "ALCHEMY_API_KEY": "${user_config.alchemy_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

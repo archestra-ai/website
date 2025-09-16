@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jen6__ticktick-mcp",
   "display_name": "ticktick-mcp",
-  "version": "1.0.0",
   "description": "Enhance your TickTick workflow with MCP server. Better filtering interface",
   "author": {
     "name": "jen6"
@@ -16,7 +14,8 @@
       "TICKTICK_REDIRECT_URI": "${user_config.ticktick_redirect_uri}",
       "TICKTICK_USERNAME": "${user_config.ticktick_username}",
       "TICKTICK_PASSWORD": "${user_config.ticktick_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

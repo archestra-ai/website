@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "lharries__whatsapp-mcp",
   "display_name": "whatsapp-mcp",
-  "version": "1.0.0",
   "description": "WhatsApp MCP server",
   "author": {
     "name": "lharries"
@@ -10,7 +8,8 @@
   "server": {
     "command": "${user_config.uv_executable_path}",
     "args": ["--directory", "${user_config.whatsapp_mcp_server_directory}", "run", "main.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

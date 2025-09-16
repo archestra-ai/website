@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "bitteprotocol__mcp",
   "display_name": "mcp",
-  "version": "1.0.0",
   "description": "MCP server from BitteProtocol/mcp",
   "author": {
     "name": "BitteProtocol"
@@ -10,7 +8,8 @@
   "server": {
     "command": "bun",
     "args": ["${__dirname}/packages/bitte-ai/index.js"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

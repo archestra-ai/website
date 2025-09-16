@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "andybrandt__mcp-simple-arxiv",
   "display_name": "mcp-simple-arxiv",
-  "version": "1.0.0",
   "description": "Tool to  work with arXiv, provide LLM with ability to search and read papers from there",
   "author": {
     "name": "andybrandt"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["-m", "mcp_simple_arxiv"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

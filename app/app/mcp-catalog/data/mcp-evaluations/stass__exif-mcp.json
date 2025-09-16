@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "stass__exif-mcp",
   "display_name": "exif-mcp",
-  "version": "1.0.0",
   "description": "MCP server to extract image metadata (EXIF, XMP, etc)",
   "author": {
     "name": "stass"
@@ -10,7 +8,8 @@
   "server": {
     "command": "node",
     "args": ["${__dirname}/dist/server.js"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "daisys-ai__daisys-mcp",
   "display_name": "daisys-mcp",
-  "version": "1.0.0",
   "description": "The Daisys mcp server",
   "author": {
     "name": "daisys-ai"
@@ -14,7 +12,8 @@
       "DAISYS_EMAIL": "${user_config.daisys_email}",
       "DAISYS_PASSWORD": "${user_config.daisys_password}",
       "DAISYS_BASE_STORAGE_PATH": "${user_config.daisys_base_storage_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

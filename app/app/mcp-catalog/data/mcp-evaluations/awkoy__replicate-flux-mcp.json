@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "awkoy__replicate-flux-mcp",
   "display_name": "Replicate Flux",
-  "version": "1.0.0",
   "description": "MCP for Replicate Flux Model - A powerful tool for generating customized images and SVG assets that match specific coding vibes and aesthetic styles. Streamline your visual asset creation process with AI-powered design generation tailored for developers.",
   "author": {
     "name": "awkoy"
@@ -12,7 +10,8 @@
     "args": ["-y", "replicate-flux-mcp"],
     "env": {
       "REPLICATE_API_TOKEN": "${user_config.replicate_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

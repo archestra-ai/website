@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "openlinksoftware__mcp-sqlalchemy-server",
   "display_name": "mcp-sqlalchemy-server",
-  "version": "1.0.0",
   "description": "A simple MCP ODBC server using FastAPI, ODBC and SQLAlchemy.",
   "author": {
     "name": "OpenLinkSoftware"
@@ -15,7 +13,8 @@
       "ODBC_USER": "${user_config.odbc_user}",
       "ODBC_PASSWORD": "${user_config.odbc_password}",
       "API_KEY": "${user_config.api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "anwerj__youtube-uploader-mcp",
   "display_name": "youtube-uploader-mcp",
-  "version": "1.0.0",
   "description": "Upload Videos with the help of AI",
   "author": {
     "name": "anwerj"
@@ -10,7 +8,8 @@
   "server": {
     "command": "${__dirname}/youtube-uploader-mcp-linux-amd64",
     "args": ["-client_secret_file", "${user_config.client_secret_file}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

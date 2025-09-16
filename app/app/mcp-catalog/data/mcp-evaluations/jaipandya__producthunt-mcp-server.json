@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jaipandya__producthunt-mcp-server",
   "display_name": "producthunt-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from jaipandya/producthunt-mcp-server",
   "author": {
     "name": "jaipandya"
@@ -12,7 +10,8 @@
     "args": [],
     "env": {
       "PRODUCT_HUNT_TOKEN": "${user_config.product_hunt_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

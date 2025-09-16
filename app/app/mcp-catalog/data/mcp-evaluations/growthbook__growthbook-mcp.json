@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "growthbook__growthbook-mcp",
   "display_name": "growthbook-mcp",
-  "version": "1.0.0",
   "description": "Official GrowthBook MCP server for creating flags, getting experiments, and more.",
   "author": {
     "name": "growthbook"
@@ -15,7 +13,8 @@
       "GB_USER": "${user_config.gb_user}",
       "GB_API_URL": "${user_config.gb_api_url}",
       "GB_APP_ORIGIN": "${user_config.gb_app_origin}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

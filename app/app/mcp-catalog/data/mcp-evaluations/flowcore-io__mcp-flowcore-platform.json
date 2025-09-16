@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "flowcore-io__mcp-flowcore-platform",
   "display_name": "mcp-flowcore-platform",
-  "version": "1.0.0",
   "description": "MCP server for managing and interacting with Flowcore Platform",
   "author": {
     "name": "flowcore-io"
@@ -13,7 +11,8 @@
     "env": {
       "USERNAME": "${user_config.username}",
       "PAT": "${user_config.pat}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

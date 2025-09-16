@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "slouchd__cyberchef-api-mcp-server",
   "display_name": "cyberchef-api-mcp-server",
-  "version": "1.0.0",
   "description": "CyberChef API MCP Server ✨🧑‍🍳",
   "author": {
     "name": "slouchd"
@@ -21,7 +19,8 @@
     ],
     "env": {
       "CYBERCHEF_API_URL": "${user_config.cyberchef_api_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

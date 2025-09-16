@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sanyambassi__ciphertrust-manager-mcp-server",
   "display_name": "ciphertrust-manager-mcp-server",
-  "version": "1.0.0",
   "description": "MCP Server for Thales CipherTrust Manager",
   "author": {
     "name": "sanyambassi"
@@ -15,7 +13,8 @@
       "CIPHERTRUST_USER": "${user_config.ciphertrust_user}",
       "CIPHERTRUST_PASSWORD": "${user_config.ciphertrust_password}",
       "CIPHERTRUST_NOSSLVERIFY": "${user_config.ciphertrust_nosslverify}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

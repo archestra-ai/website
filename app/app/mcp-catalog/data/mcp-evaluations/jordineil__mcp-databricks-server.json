@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jordineil__mcp-databricks-server",
   "display_name": "mcp-databricks-server",
-  "version": "1.0.0",
   "description": "MCP Server for Databricks",
   "author": {
     "name": "JordiNeil"
@@ -14,7 +12,8 @@
       "DATABRICKS_HOST": "${user_config.databricks_host}",
       "DATABRICKS_TOKEN": "${user_config.databricks_token}",
       "DATABRICKS_HTTP_PATH": "${user_config.databricks_http_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tipdotmd__tip-md-x402-mcp-server",
   "display_name": "tip-md-x402-mcp-server",
-  "version": "1.0.0",
   "description": "🏆 Hackathon: Transform any AI agent into a payment-enabled agent using x402 + CDP. MCP server for instant crypto tipping with automatic disbursement.",
   "author": {
     "name": "tipdotmd"
@@ -18,7 +16,8 @@
       "PORT": "${user_config.port}",
       "NODE_ENV": "${user_config.node_env}",
       "LOG_LEVEL": "${user_config.log_level}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

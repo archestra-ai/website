@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "suekou__mcp-notion-server",
   "display_name": "mcp-notion-server",
-  "version": "1.0.0",
   "description": "MCP server from suekou/mcp-notion-server",
   "author": {
     "name": "suekou"
@@ -13,7 +11,8 @@
     "env": {
       "NOTION_API_TOKEN": "${user_config.notion_api_token}",
       "NOTION_MARKDOWN_CONVERSION": "${user_config.notion_markdown_conversion}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

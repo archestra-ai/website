@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "chrishayuk__mcp-cli",
   "display_name": "mcp-cli",
-  "version": "1.0.0",
   "description": "MCP server from chrishayuk/mcp-cli",
   "author": {
     "name": "chrishayuk"
@@ -16,7 +14,8 @@
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
       "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}",
       "MCP_TOOL_TIMEOUT": "${user_config.mcp_tool_timeout}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

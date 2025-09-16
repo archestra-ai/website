@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "quentincody__shopify-storefront-mcp-server",
   "display_name": "shopify-storefront-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from QuentinCody/shopify-storefront-mcp-server",
   "author": {
     "name": "QuentinCody"
@@ -15,7 +13,8 @@
       "SHOPIFY_STORE_NAME": "${user_config.shopify_store_name}",
       "SHOPIFY_API_VERSION": "${user_config.shopify_api_version}",
       "SHOPIFY_BUYER_IP": "${user_config.shopify_buyer_ip}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

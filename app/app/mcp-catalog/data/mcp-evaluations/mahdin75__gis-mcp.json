@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mahdin75__gis-mcp",
   "display_name": "gis-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server implementation that connects Large Language Models (LLMs) to GIS operations using GIS libraries, enabling AI assistants to perform geospatial operations and transformations.",
   "author": {
     "name": "mahdin75"
@@ -10,7 +8,8 @@
   "server": {
     "command": "gis-mcp",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

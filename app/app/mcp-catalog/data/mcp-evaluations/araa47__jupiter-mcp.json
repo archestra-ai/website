@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "araa47__jupiter-mcp",
   "display_name": "jupiter-mcp",
-  "version": "1.0.0",
   "description": "MCP server from araa47/jupiter-mcp",
   "author": {
     "name": "araa47"
@@ -15,7 +13,8 @@
       "PRIVATE_KEY": "${user_config.private_key}",
       "SOLANA_NETWORK": "${user_config.solana_network}",
       "REQUEST_TIMEOUT": "${user_config.request_timeout}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

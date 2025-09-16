@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hainanzhao__mcp-gitlab-jira",
   "display_name": "mcp-gitlab-jira",
-  "version": "1.0.0",
   "description": "MCP server from HainanZhao/mcp-gitlab-jira",
   "author": {
     "name": "HainanZhao"
@@ -16,7 +14,8 @@
       "ATLASSIAN_SITE_NAME": "${user_config.atlassian_site_name}",
       "ATLASSIAN_USER_EMAIL": "${user_config.atlassian_user_email}",
       "ATLASSIAN_API_TOKEN": "${user_config.atlassian_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

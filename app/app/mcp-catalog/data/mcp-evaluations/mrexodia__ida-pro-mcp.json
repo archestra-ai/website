@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mrexodia__ida-pro-mcp",
   "display_name": "ida-pro-mcp",
-  "version": "1.0.0",
   "description": "MCP Server for IDA Pro.",
   "author": {
     "name": "mrexodia"
@@ -10,7 +8,8 @@
   "server": {
     "command": "unknown",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

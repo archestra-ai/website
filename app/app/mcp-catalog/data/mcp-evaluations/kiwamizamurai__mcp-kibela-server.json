@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kiwamizamurai__mcp-kibela-server",
   "display_name": "mcp-kibela-server",
-  "version": "1.0.0",
   "description": "MCP server implementation for Kibela API integration",
   "author": {
     "name": "kiwamizamurai"
@@ -13,7 +11,8 @@
     "env": {
       "KIBELA_TEAM": "${user_config.kibela_team}",
       "KIBELA_TOKEN": "${user_config.kibela_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

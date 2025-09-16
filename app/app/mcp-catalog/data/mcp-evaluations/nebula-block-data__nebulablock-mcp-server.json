@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "nebula-block-data__nebulablock-mcp-server",
   "display_name": "nebulablock-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from Nebula-Block-Data/nebulablock-mcp-server",
   "author": {
     "name": "Nebula-Block-Data"
@@ -12,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "-m", "src.main"],
     "env": {
       "NEBULA_BLOCK_API_KEY": "${user_config.nebula_block_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

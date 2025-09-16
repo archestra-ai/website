@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "promptexecution__just-mcp",
   "display_name": "just-mcp",
-  "version": "1.0.0",
   "description": "mcp server for just",
   "author": {
     "name": "promptexecution"
@@ -10,7 +8,8 @@
   "server": {
     "command": "${__dirname}/just-mcp",
     "args": ["--stdio", "--directory", "${user_config.project_directory}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

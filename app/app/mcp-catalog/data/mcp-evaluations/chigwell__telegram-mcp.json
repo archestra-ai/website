@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "chigwell__telegram-mcp",
   "display_name": "telegram-mcp",
-  "version": "1.0.0",
   "description": "MCP server from chigwell/telegram-mcp",
   "author": {
     "name": "chigwell"
@@ -10,7 +8,8 @@
   "server": {
     "command": "unknown",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

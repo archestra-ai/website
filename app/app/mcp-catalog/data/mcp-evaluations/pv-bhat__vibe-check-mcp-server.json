@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pv-bhat__vibe-check-mcp-server",
   "display_name": "vibe-check-mcp-server",
-  "version": "1.0.0",
   "description": "The definitive Vibe Coder's sanity check MCP server: Prevent cascading errors in AI workflows by implementing strategic pattern interrupts. Uses tool call \"Vibe Check\" with LearnLM 2.0 Flash, fine-tuned for pedagogy and metacognition to enhance complex workflow strategy, and prevents tunnel vision errors.",
   "author": {
     "name": "PV-Bhat"
@@ -16,7 +14,8 @@
       "OPENROUTER_API_KEY": "${user_config.openrouter_api_key}",
       "DEFAULT_LLM_PROVIDER": "${user_config.default_llm_provider}",
       "DEFAULT_MODEL": "${user_config.default_model}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

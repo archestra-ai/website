@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tianqitang1__enrichr-mcp-server",
   "display_name": "enrichr-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from tianqitang1/enrichr-mcp-server",
   "author": {
     "name": "tianqitang1"
@@ -15,7 +13,8 @@
       "ENRICHR_MAX_TERMS": "${user_config.enrichr_max_terms}",
       "ENRICHR_FORMAT": "${user_config.enrichr_format}",
       "ENRICHR_OUTPUT_FILE": "${user_config.enrichr_output_file}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

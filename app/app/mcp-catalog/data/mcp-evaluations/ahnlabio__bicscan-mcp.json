@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ahnlabio__bicscan-mcp",
   "display_name": "bicscan-mcp",
-  "version": "1.0.0",
   "description": "BICScan MCP Server",
   "author": {
     "name": "ahnlabio"
@@ -12,7 +10,8 @@
     "args": ["--from", "git+https://github.com/ahnlabio/bicscan-mcp", "bicscan-mcp"],
     "env": {
       "BICSCAN_API_KEY": "${user_config.bicscan_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "freema__mcp-design-system-extractor",
   "display_name": "mcp-design-system-extractor",
-  "version": "1.0.0",
   "description": "MCP (Model Context Protocol) server that enables AI assistants to interact with Storybook design systems. Extract component HTML, analyze styles, and help with design system adoption and refactoring.",
   "author": {
     "name": "freema"
@@ -12,7 +10,8 @@
     "args": ["-y", "@freema/mcp-design-system-extractor"],
     "env": {
       "STORYBOOK_URL": "${user_config.storybook_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],
