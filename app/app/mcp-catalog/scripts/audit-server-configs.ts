@@ -295,6 +295,13 @@ async function auditSingleServer(
   };
 
   try {
+    // Check if this is a DXT-based server (has server property)
+    if (!('dxt_version' in data) || !data.server) {
+      result.error = 'Server configuration not available (remote or missing server property)';
+      console.log(`  ⚠️ Skipping: ${result.error}`);
+      return result;
+    }
+
     // Install the server
     console.log(`  Installing server (${data.server})...`);
     const installResult = await installMcpServer(serverName, displayName, data.server);

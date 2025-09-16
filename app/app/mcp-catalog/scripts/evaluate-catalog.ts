@@ -883,7 +883,7 @@ async function extractArchestraClientConfigPermutationsConfig(
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
   // Skip if human evaluation (evaluation_model === null AND server config already exists)
-  if (server.evaluation_model === null && server.server && !force) {
+  if (server.evaluation_model === null && 'dxt_version' in server && server.server && !force) {
     console.log(`  ⏭️  Server Config: Skipped (human evaluation)`);
     return server;
   }
@@ -1020,20 +1020,26 @@ async function extractCanonicalServerAndUserConfigConfig(
   model: string,
   force: boolean = false
 ): Promise<ArchestraMcpServerManifest> {
-  if (server.server.command === 'unknown') {
-    console.log(`  ⏭️  Canonical Server and User Config: Evaluating as command is currently unknown`);
-  } else {
-    // Skip if human evaluation (evaluation_model === null AND configs already exist)
-    if (server.evaluation_model === null && server.server && server.user_config && !force) {
-      console.log(`  ⏭️  Canonical Server and User Config: Skipped (human evaluation)`);
-      return server;
-    }
+  // Check if this is a DXT-based server before accessing server property
+  if ('dxt_version' in server && server.server) {
+    if (server.server.command === 'unknown') {
+      console.log(`  ⏭️  Canonical Server and User Config: Evaluating as command is currently unknown`);
+    } else {
+      // Skip if human evaluation (evaluation_model === null AND configs already exist)
+      if (server.evaluation_model === null && server.server && server.user_config && !force) {
+        console.log(`  ⏭️  Canonical Server and User Config: Skipped (human evaluation)`);
+        return server;
+      }
 
-    // Skip if already exists and not forcing
-    if (server?.server && server?.user_config && !force) {
-      console.log(`  ⏭️  Canonical Server and User Config: Skipped (already exists)`);
-      return server;
+      // Skip if already exists and not forcing
+      if (server?.server && server?.user_config && !force) {
+        console.log(`  ⏭️  Canonical Server and User Config: Skipped (already exists)`);
+        return server;
+      }
     }
+  } else {
+    console.log(`  ⏭️  Canonical Server and User Config: Skipped (remote server)`);
+    return server;
   }
 
   console.log(`  🔄 Canonical Server and User Config: Extracting...`);
@@ -1752,7 +1758,10 @@ async function evaluateSingleRepo(
         server = await extractArchestraOauthConfig(server, model, force);
       }
 
-      if (updateCanonicalServerAndUserConfig || (shouldUpdateMissing && (!server.server || !server.user_config))) {
+      if (
+        updateCanonicalServerAndUserConfig ||
+        (shouldUpdateMissing && (!('dxt_version' in server && server.server) || !server.user_config))
+      ) {
         server = await extractCanonicalServerAndUserConfigConfig(server, model, force);
       }
 
@@ -1791,13 +1800,12 @@ async function evaluateSingleRepo(
         server.category ||
         server.archestra_config ||
         server.user_config ||
-        server.server ||
+        ('dxt_version' in server && server.server) ||
         server.dependencies ||
         server.protocol_features?.implementing_tools !== null
       ) {
         const {
           category,
-          server: server_config,
           archestra_config,
           user_config,
           protocol_features: {
@@ -1813,6 +1821,9 @@ async function evaluateSingleRepo(
           } = {},
           dependencies,
         } = server;
+
+        // Only access server property if it's a DXT-based server
+        const server_config = 'dxt_version' in server ? server.server : undefined;
 
         console.log(`\n🤖 AI Analysis:`);
 
