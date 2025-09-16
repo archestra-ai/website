@@ -109,7 +109,7 @@ async function checkExistingIssue(octokit: Octokit, title: string): Promise<numb
       per_page: 100,
     });
 
-    const existingIssue = issues.find((issue) => issue.title === title);
+    const existingIssue = issues.find((issue: any) => issue.title === title);
     return existingIssue ? existingIssue.number : null;
   } catch (error) {
     console.error(`Failed to check for existing issues:`, error);
@@ -164,7 +164,7 @@ async function checkExistingBountyComment(octokit: Octokit, issueNumber: number)
     });
 
     // Check if any comment contains the bounty command
-    return comments.some((comment) => comment.body?.includes('/bounty'));
+    return comments.some((comment: any) => comment.body?.includes('/bounty'));
   } catch (error) {
     console.error(`Failed to check for existing bounty comments:`, error);
     return false;
