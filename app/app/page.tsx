@@ -50,8 +50,8 @@ export default async function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <HeaderWithBanner />
 
-      <main className="flex-1 relative flex flex-col">
-        <section className="bg-white">
+      <main className="flex-1 relative flex items-center justify-center">
+        <section className="bg-white w-full">
           <div className="container px-4 md:px-6 py-16 max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row items-center gap-12">
               <div className="flex-1 text-center lg:text-left">
@@ -59,8 +59,8 @@ export default async function Home() {
                 <p className="text-base text-gray-700 mb-8">
                   Build helpful agents with prompts!
                   <br/><br/>
-                  - Nice ChatGPT-like interface<br/>
-                  - Running <b>locally</b> for sensitive corporate data<br/>
+                  - ChatGPT-like interface<br/>
+                  - <b>Local</b> for sensitive corporate data<br/>
                   - Sandboxed runtime preventing from <b>supply chain</b> attacks<br/>
                   - Configuration <b>without API keys or configs</b><br/>
                   - Supports {serverCount} open-source MCP servers<br/>
