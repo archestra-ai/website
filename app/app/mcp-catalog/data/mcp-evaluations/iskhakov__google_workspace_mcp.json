@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.1.0",
   "name": "iskhakov__google_workspace_mcp",
-  "display_name": "Google Workspace",
+  "display_name": "google_workspace_mcp",
   "version": "1.0.0",
   "description": "Control Gmail, Google Calendar, Docs, Sheets, Slides, Chat, Forms, Tasks, Search & Drive with AI - Comprehensive Google Workspace / G Suite MCP Server",
   "author": {

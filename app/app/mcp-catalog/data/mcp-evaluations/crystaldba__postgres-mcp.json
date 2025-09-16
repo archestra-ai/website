@@ -8,8 +8,9 @@
     "name": "crystaldba"
   },
   "server": {
-    "command": "postgres-mcp",
-    "args": ["--access-mode=${user_config.access_mode}"],
+    "command": "docker",
+
+    "args": ["run", "-i", "--rm", "-e", "DATABASE_URI", "crystaldba/postgres-mcp"],
     "env": {
       "DATABASE_URI": "${user_config.database_uri}"
     }
@@ -64,7 +65,7 @@
       "provider": null,
       "required": false
     },
-    "works_in_archestra": false
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "crystaldba",

@@ -72,7 +72,7 @@ Here's how a browser-based auth provider was added to the Slack MCP Server (http
 
 6. Create a Browser Provider Definition
    Create [`desktop_app/src/backend/server/plugins/browser-auth/providers/slack-browser.ts`](https://github.com/archestra-ai/archestra/blob/main/desktop_app/src/backend/server/plugins/browser-auth/providers/slack-browser.ts), following the pattern "`<provider_name>-browser.ts`". This defines how authentication works: where to navigate, how to extract tokens or cookies, which URLs are allowed, and which ENV variables to add to the container.
-7. (Optional) Add a utility for your browser provider if it needs complex token extraction logic. Here's an example for Slack: [`desktop_app/src/backend/server/plugins/browser-auth/utils/slack-token-extractor.ts`](https://github.com/archestra-ai/archestra/blob/main/desktop_app/src/backend/server/plugins/oauth/utils/slack-token-extractor.ts)
+7. (Optional) If your token extraction code is complex or lengthy, consider moving it to the `utils` folder. Here's an example for Slack: [`desktop_app/src/backend/server/plugins/browser-auth/utils/slack-token-extractor.ts`](https://github.com/archestra-ai/archestra/blob/main/desktop_app/src/backend/server/plugins/oauth/utils/slack-token-extractor.ts)
 8. Update the Provider Registry: [`desktop_app/src/backend/server/plugins/browser-auth/provider-registry.ts`](https://github.com/archestra-ai/archestra/blob/main/desktop_app/src/backend/server/plugins/browser-auth/provider-registry.ts)
 
    > NOTE: Add `'slack-browser': slackBrowserProvider,` to oauthProviders, and don't forget to re-export it in the end of the file

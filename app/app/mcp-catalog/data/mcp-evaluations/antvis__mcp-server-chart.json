@@ -9,12 +9,7 @@
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "@antv/mcp-server-chart"],
-    "env": {
-      "VIS_REQUEST_SERVER": "${user_config.vis_request_server}",
-      "SERVICE_ID": "${user_config.service_id}",
-      "DISABLED_TOOLS": "${user_config.disabled_tools}"
-    }
+    "args": ["-y", "@antv/mcp-server-chart"]
   },
   "tools": [],
   "prompts": [],
@@ -77,7 +72,7 @@
       "provider": null,
       "required": false
     },
-    "works_in_archestra": false
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "antvis",
