@@ -53,17 +53,14 @@ export default async function Home() {
           <div className="container px-4 md:px-6 py-16 max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row items-center gap-12">
               <div className="flex-1 text-center lg:text-left">
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Easy-to-use local MCP</h1>
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Simple & Safe Local Agent</h1>
                 <p className="text-base text-gray-700 mb-8">
-                  Build helpful agents with prompts!
-                  <br />
-                  <br />
                   - ChatGPT-like interface
-                  <br />- <b>Local</b> for sensitive corporate data
-                  <br />- Sandboxed runtime preventing from <b>supply chain</b> attacks
-                  <br />- Configuration <b>without API keys or configs</b>
+                  <br />- Local for sensitive corporate data
                   <br />- Supports {serverCount} open-source MCP servers
-                  <br />- <b>Free and open-source</b>
+                  <br />- <b>Sandboxed runtime</b> preventing from supply chain attacks
+                  <br />- Configuration <b>without API keys or configs</b>
+                  <br />- Free and open-source
                 </p>
                 <div className="flex justify-center lg:justify-start">
                   <DesktopAppDownloadButton />
