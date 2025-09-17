@@ -54,7 +54,9 @@ export default async function Home() {
             <div className="flex flex-col lg:flex-row items-center gap-12">
               <div className="flex-1 text-center lg:text-left">
                 <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Simple & Safe Local Agent</h1>
-                <h2 className="text-lg md:text-xl text-gray-600 mb-6">For management, legal, finance, sales, HR, engineering, marketing, operations, IT, research</h2>
+                <h2 className="text-lg md:text-xl text-gray-600 mb-6">
+                  For management, legal, finance, sales, HR, engineering, marketing, operations, IT, research
+                </h2>
                 <p className="text-base text-gray-700 mb-8">
                   - ChatGPT-like interface
                   <br />- Local for sensitive corporate data
@@ -69,7 +71,11 @@ export default async function Home() {
               </div>
 
               <div className="flex-1 max-w-5xl lg:max-w-none">
-                <img src="/screenshot.png" alt="Archestra Autonomous Agents Interface" className="scale-75 md:scale-90 lg:scale-150" />
+                <img
+                  src="/screenshot.png"
+                  alt="Archestra Autonomous Agents Interface"
+                  className="scale-75 md:scale-90 lg:scale-150"
+                />
               </div>
             </div>
           </div>
