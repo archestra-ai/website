@@ -15,7 +15,7 @@ const {
     name: companyName,
     alternateName: companyAlternateName,
     description: companyDescription,
-    people: { joey: JOEY, matvey: MATVEY, ildar: ILDAR },
+    people: { joey: JOEY, matvey: MATVEY, ildar: ILDAR, dominik: DOMINIK },
   },
 } = constants;
 
@@ -95,7 +95,7 @@ export default function AboutPage() {
             </div>
 
             {/* Team Member Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {/* Joey */}
               <Card className="border-2 hover:border-yellow-200 transition-colors">
                 <CardContent className="p-6 text-left">
@@ -163,6 +163,38 @@ export default function AboutPage() {
                   <div className="flex justify-center gap-3 mt-3">
                     <a
                       href={ILDAR.sameAs}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-500 hover:text-blue-600 transition-colors"
+                    >
+                      <Linkedin size={20} />
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Dominik */}
+              <Card className="border-2 hover:border-purple-200 transition-colors">
+                <CardContent className="p-6 text-left">
+                  <div className="flex justify-center mb-4">
+                    <Image
+                      src="/team/dominik.png"
+                      alt={DOMINIK.name}
+                      width={150}
+                      height={150}
+                      className="rounded-full object-cover"
+                    />
+                  </div>
+                  <h3 className="font-bold text-xl mb-2">{DOMINIK.name}</h3>
+                  <p className="text-gray-700 font-medium mb-1">{DOMINIK.jobTitle}</p>
+                  <p className="text-gray-500 text-sm mb-3">
+                    {DOMINIK.address.addressLocality}, {DOMINIK.address.addressCountry}
+                  </p>
+                  <p className="text-gray-700 text-sm leading-relaxed mb-4">{DOMINIK.description}</p>
+                  <EmailCodePanel email="dominik@archestra.ai" />
+                  <div className="flex justify-center gap-3 mt-3">
+                    <a
+                      href={DOMINIK.sameAs}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-500 hover:text-blue-600 transition-colors"
