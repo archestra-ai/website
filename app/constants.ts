@@ -75,8 +75,7 @@ const DOMINIK = {
     addressLocality: 'Wrocław',
     addressCountry: 'Poland',
   },
-  description:
-    'Software engineer with 10+ years of experience.',
+  description: 'Software engineer with 10+ years of experience.',
 };
 const PEOPLE = {
   matvey: MATVEY,
