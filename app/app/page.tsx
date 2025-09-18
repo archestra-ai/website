@@ -61,7 +61,7 @@ export default async function Home() {
                   - ChatGPT-like interface
                   <br />- Local for sensitive corporate data
                   <br />- Supports {serverCount} open-source <b>MCP</b> servers
-                  <br />- <b>Sandboxed runtime</b> preventing from supply chain attacks
+                  <br />- <b>Sandboxed runtime</b> preventing supply chain attacks
                   <br />- Configuration <b>without API keys or configs</b>
                   <br />- Free and open-source
                 </p>
