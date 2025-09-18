@@ -61,10 +61,28 @@ const JOEY = {
   description:
     'Experienced software engineer/leader with 10+ years in full-stack development and expertise in Python, TypeScript, Clojure, Go, and cloud infrastructure.',
 };
+const DOMINIK = {
+  '@type': 'Person',
+  name: 'Dominik Broj',
+  jobTitle: 'Founding Engineer',
+  worksFor: {
+    '@type': 'Organization',
+    name: COMPANY_NAME,
+  },
+  sameAs: 'https://www.linkedin.com/in/dominikbroj/',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Wrocław',
+    addressCountry: 'Poland',
+  },
+  description:
+    'Software engineer with 10+ years of experience.',
+};
 const PEOPLE = {
   matvey: MATVEY,
   ildar: ILDAR,
   joey: JOEY,
+  dominik: DOMINIK,
 };
 
 // GitHub constants
