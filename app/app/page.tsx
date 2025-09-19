@@ -87,7 +87,7 @@ export default async function Home() {
                 <img
                   src="/screenshot.png"
                   alt="Archestra Autonomous Agents Interface"
-                  className="scale-75 md:scale-90 lg:scale-150"
+                  className="scale-90 lg:scale-110"
                 />
               </div>
             </div>
