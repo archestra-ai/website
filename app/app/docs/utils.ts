@@ -7,7 +7,7 @@ import { DocCategory, DocFrontMatter, DocNavItem, DocPage, DocSubcategory, Table
 
 const docsDirectory = path.join(process.cwd(), 'app/docs/content');
 
-const categoryOrder = ['Getting Started', 'API Reference', 'Guides', 'Examples', 'Advanced', 'Reference'];
+const categoryOrder = ['Archestra Desktop Agent', 'Getting Started', 'API Reference', 'Guides', 'Examples', 'Advanced', 'Reference'];
 
 export function getAllDocs(): DocPage[] {
   if (!fs.existsSync(docsDirectory)) {

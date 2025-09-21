@@ -1,6 +1,6 @@
 'use client';
 
-import { Book, Code, FileText, Layers, Menu, Settings, X } from 'lucide-react';
+import { Book, Code, FileText, Layers, Menu, Monitor, Settings, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -12,6 +12,7 @@ interface DocsSidebarProps {
 }
 
 const categoryIcons: Record<string, React.ReactNode> = {
+  'Archestra Desktop Agent': <Monitor className="h-4 w-4" />,
   'Getting Started': <Book className="h-4 w-4" />,
   'API Reference': <Code className="h-4 w-4" />,
   Development: <Code className="h-4 w-4" />,
