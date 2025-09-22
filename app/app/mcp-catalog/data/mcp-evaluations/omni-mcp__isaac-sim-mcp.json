@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "omni-mcp__isaac-sim-mcp",
   "display_name": "isaac-sim-mcp",
-  "version": "1.0.0",
   "description": "Isaac Simulation MCP Extension and Server",
   "author": {
     "name": "omni-mcp"
@@ -14,7 +12,8 @@
       "BEAVER3D_MODEL": "${user_config.beaver3d_model}",
       "ARK_API_KEY": "${user_config.ark_api_key}",
       "NVIDIA_API_KEY": "${user_config.nvidia_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jovezhong__mcp-timeplus",
   "display_name": "mcp-timeplus",
-  "version": "1.0.0",
   "description": "Execute SQL queries and manage databases seamlessly with Timeplus. Leverage powerful tools to interact with your data, Kafka topics, and Iceberg tables efficiently. Enhance your data workflows with a user-friendly interface and robust backend capabilities.",
   "author": {
     "name": "jovezhong"
@@ -22,7 +20,8 @@
       "TIMEPLUS_DATABASE": "${user_config.timeplus_database}",
       "TIMEPLUS_READ_ONLY": "${user_config.timeplus_read_only}",
       "TIMEPLUS_KAFKA_CONFIG": "${user_config.timeplus_kafka_config}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

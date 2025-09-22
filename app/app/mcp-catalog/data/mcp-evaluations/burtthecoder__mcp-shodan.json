@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "burtthecoder__mcp-shodan",
   "display_name": "Shodan",
-  "version": "1.0.0",
   "description": "MCP server for querying the Shodan API",
   "author": {
     "name": "BurtTheCoder"
@@ -12,7 +10,8 @@
     "args": ["-y", "@burtthecoder/mcp-shodan"],
     "env": {
       "SHODAN_API_KEY": "${user_config.shodan_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

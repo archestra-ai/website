@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "doggybee__mcp-server-ccxt",
   "display_name": "mcp-server-ccxt",
-  "version": "1.0.0",
   "description": "High-performance CCXT MCP server for cryptocurrency exchange integration",
   "author": {
     "name": "doggybee"
@@ -22,7 +20,8 @@
       "PROXY_URL": "${user_config.proxy_url}",
       "PROXY_USERNAME": "${user_config.proxy_username}",
       "PROXY_PASSWORD": "${user_config.proxy_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

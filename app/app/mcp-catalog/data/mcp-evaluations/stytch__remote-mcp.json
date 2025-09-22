@@ -1,10 +1,7 @@
 {
   "name": "stytch__remote-mcp",
   "display_name": "Stytch",
-  "version": "1.0.0",
   "description": "Remote MCP server for Stytch - authentication and identity platform",
-  "remote_url": "http://mcp.stytch.dev/mcp",
-  "remote_mcp_docs_url": "https://stytch.com/docs/workspace-management/stytch-mcp",
   "oauth_config": {
     "name": "Stytch MCP",
     "server_url": "http://mcp.stytch.dev/mcp",
@@ -33,13 +30,14 @@
   "last_scraped_at": "2025-09-05T19:30:23.066Z",
   "evaluation_model": null,
   "raw_dependencies": null,
-  "dxt_version": "0.1.0",
   "author": {
     "name": "stytch"
   },
   "server": {
-    "command": "remote",
-    "args": [],
-    "env": {}
-  }
+    "type": "remote",
+    "url": "http://mcp.stytch.dev/mcp",
+    "docs_url": "https://stytch.com/docs/workspace-management/stytch-mcp"
+  },
+  "github_info": null,
+  "programming_language": null
 }

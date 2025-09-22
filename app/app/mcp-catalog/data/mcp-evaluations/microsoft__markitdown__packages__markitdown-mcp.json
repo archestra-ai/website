@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "microsoft__markitdown__packages__markitdown-mcp",
   "display_name": "markitdown-mcp",
-  "version": "1.0.0",
   "description": "Python tool for converting files and office documents to Markdown.",
   "author": {
     "name": "microsoft"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["-m", "markitdown_mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

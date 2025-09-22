@@ -9,15 +9,13 @@ import { GET } from './route';
 vi.mock('@mcpCatalog/lib/catalog', () => ({
   loadServers: (): ArchestraMcpServerManifest[] => [
     {
-      $schema: 'https://github.com/anthropic-ai/dxt/blob/main/catalog/mcp_catalog_manifest.schema.json',
-      dxt_version: '0.2.6',
       name: 'test-server-1',
       display_name: 'Test Server 1',
-      version: '1.0.0',
       description: 'A test MCP server',
       long_description: 'A longer description',
       author: { name: 'Test Author' },
       server: {
+        type: 'local',
         command: 'node',
         args: ['index.js'],
       },
@@ -63,15 +61,13 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
       raw_dependencies: '{}',
     },
     {
-      $schema: 'https://github.com/anthropic-ai/dxt/blob/main/catalog/mcp_catalog_manifest.schema.json',
-      dxt_version: '0.2.6',
       name: 'test-server-2',
       display_name: 'Test Server 2',
-      version: '2.0.0',
       description: 'Another test server',
       long_description: 'Another longer description',
       author: { name: 'Test Author 2' },
       server: {
+        type: 'local',
         command: 'python',
         args: ['main.py'],
       },
@@ -117,15 +113,13 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
       raw_dependencies: '{}',
     },
     {
-      $schema: 'https://github.com/anthropic-ai/dxt/blob/main/catalog/mcp_catalog_manifest.schema.json',
-      dxt_version: '0.2.6',
       name: 'test-server-3',
       display_name: 'Test Server 3',
-      version: '3.0.0',
       description: 'Third test server',
       long_description: 'Third longer description',
       author: { name: 'Test Author 3' },
       server: {
+        type: 'local',
         command: 'node',
         args: ['index.js'],
       },

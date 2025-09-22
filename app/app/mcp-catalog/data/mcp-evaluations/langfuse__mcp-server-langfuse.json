@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "langfuse__mcp-server-langfuse",
   "display_name": "mcp-server-langfuse",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) Server for Langfuse Prompt Management. This server allows you to access and manage your Langfuse prompts through the Model Context Protocol.",
   "author": {
     "name": "langfuse"
@@ -14,7 +12,8 @@
       "LANGFUSE_PUBLIC_KEY": "${user_config.langfuse_public_key}",
       "LANGFUSE_SECRET_KEY": "${user_config.langfuse_secret_key}",
       "LANGFUSE_BASEURL": "${user_config.langfuse_baseurl}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sammcj__mcp-package-version",
   "display_name": "mcp-package-version",
-  "version": "1.0.0",
   "description": "An MCP server that provides LLMs with the latest stable package versions when coding",
   "author": {
     "name": "sammcj"
@@ -17,7 +15,8 @@
       "--base-url",
       "${user_config.base_url}"
     ],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

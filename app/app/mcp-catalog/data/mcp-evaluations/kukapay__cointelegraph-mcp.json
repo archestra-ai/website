@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__cointelegraph-mcp",
   "display_name": "cointelegraph-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that provides real-time access to the latest news from Cointelegraph.",
   "author": {
     "name": "kukapay"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["main.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

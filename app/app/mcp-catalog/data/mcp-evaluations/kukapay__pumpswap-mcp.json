@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__pumpswap-mcp",
   "display_name": "pumpswap-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that enables AI agents to interact with PumpSwap for real-time token swaps and automated on-chain trading.",
   "author": {
     "name": "kukapay"
@@ -16,7 +14,8 @@
       "SELL_SLIPPAGE": "${user_config.sell_slippage}",
       "SWAP_PRIORITY_FEE": "${user_config.swap_priority_fee}",
       "PRIVATE_KEY": "${user_config.private_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

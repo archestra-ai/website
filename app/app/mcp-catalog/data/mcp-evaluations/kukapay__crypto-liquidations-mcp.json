@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__crypto-liquidations-mcp",
   "display_name": "crypto-liquidations-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that streams real-time cryptocurrency liquidation events from Binance.",
   "author": {
     "name": "kukapay"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uv",
     "args": ["--directory", "${__dirname}", "run", "main.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

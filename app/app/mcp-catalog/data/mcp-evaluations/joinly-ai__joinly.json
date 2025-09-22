@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "joinly-ai__joinly",
   "display_name": "joinly",
-  "version": "1.0.0",
   "description": "Make your meetings accessible to AI Agents",
   "author": {
     "name": "joinly-ai"
@@ -14,7 +12,8 @@
       "JOINLY_LLM_MODEL": "${user_config.joinly_llm_model}",
       "JOINLY_LLM_PROVIDER": "${user_config.joinly_llm_provider}",
       "OPENAI_API_KEY": "${user_config.openai_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "panther-labs__mcp-panther",
   "display_name": "mcp-panther",
-  "version": "1.0.0",
   "description": "Write detections, investigate alerts, and query logs—all from your favorite AI agents",
   "author": {
     "name": "panther-labs"
@@ -13,7 +11,8 @@
     "env": {
       "PANTHER_API_TOKEN": "${user_config.panther_api_token}",
       "PANTHER_BASE_URL": "${user_config.panther_base_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

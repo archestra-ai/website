@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "confluentinc__mcp-confluent",
   "display_name": "mcp-confluent",
-  "version": "1.0.0",
   "description": "MCP server from confluentinc/mcp-confluent",
   "author": {
     "name": "confluentinc"
@@ -39,7 +37,8 @@
       "SCHEMA_REGISTRY_API_KEY": "${user_config.schema_registry_api_key}",
       "SCHEMA_REGISTRY_API_SECRET": "${user_config.schema_registry_api_secret}",
       "SCHEMA_REGISTRY_ENDPOINT": "${user_config.schema_registry_endpoint}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -26,10 +26,9 @@ export default function QualityScoreCard({ server, scoreBreakdown }: QualityScor
     quality_score: qualityScore,
     protocol_features: protocolFeatures,
     dependencies,
-    remote_url: remoteUrl,
-    github_info: githubInfo,
+    server: serverConfig,
   } = server;
-  const isRemoteServer = remoteUrl && !githubInfo;
+  const isRemoteServer = serverConfig.type === 'remote';
 
   const getScoreDescription = (score: number, maxScore: number, category: string) => {
     const percentage = (score / maxScore) * 100;

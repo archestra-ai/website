@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__sui-trader-mcp",
   "display_name": "sui-trader-mcp",
-  "version": "1.0.0",
   "description": "An MCP server designed for AI agents to perform optimal token swaps on the Sui blockchain.",
   "author": {
     "name": "kukapay"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/index.js"],
     "env": {
       "PRIVATE_KEY": "${user_config.private_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

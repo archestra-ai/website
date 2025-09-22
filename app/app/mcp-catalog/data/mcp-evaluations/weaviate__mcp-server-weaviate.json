@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "weaviate__mcp-server-weaviate",
   "display_name": "mcp-server-weaviate",
-  "version": "1.0.0",
   "description": "MCP (Model Context Protocol) server for Weaviate",
   "author": {
     "name": "weaviate"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/server/main.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

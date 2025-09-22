@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "samuelgursky__davinci-resolve-mcp",
   "display_name": "davinci-resolve-mcp",
-  "version": "1.0.0",
   "description": "MCP server integration for DaVinci Resolve",
   "author": {
     "name": "samuelgursky"
@@ -14,7 +12,8 @@
       "RESOLVE_SCRIPT_API": "${user_config.resolve_script_api}",
       "RESOLVE_SCRIPT_LIB": "${user_config.resolve_script_lib}",
       "PYTHONPATH": "${user_config.resolve_script_api}/Modules/"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

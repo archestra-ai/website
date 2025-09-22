@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "softeria__ms-365-mcp-server",
   "display_name": "ms-365-mcp-server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server for interacting with Microsoft 365 and Office services through the Graph API",
   "author": {
     "name": "softeria"
@@ -15,7 +13,8 @@
       "MS365_MCP_CLIENT_SECRET": "${user_config.ms365_mcp_client_secret}",
       "MS365_MCP_TENANT_ID": "${user_config.ms365_mcp_tenant_id}",
       "MS365_MCP_OAUTH_TOKEN": "${user_config.ms365_mcp_oauth_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "fatwang2__search1api-mcp",
   "display_name": "Search1API",
-  "version": "1.0.0",
   "description": "MCP server from fatwang2/search1api-mcp",
   "author": {
     "name": "fatwang2"
@@ -12,7 +10,8 @@
     "args": ["-y", "search1api-mcp"],
     "env": {
       "SEARCH1API_KEY": "${user_config.search1api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

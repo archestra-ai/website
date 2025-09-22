@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "adawalli__nexus",
   "display_name": "nexus",
-  "version": "1.0.0",
   "description": "MCP Server to make searching openrouter easy",
   "author": {
     "name": "adawalli"
@@ -17,7 +15,8 @@
       "OPENROUTER_TIMEOUT_MS": "${user_config.openrouter_timeout_ms}",
       "OPENROUTER_MAX_RETRIES": "${user_config.openrouter_max_retries}",
       "OPENROUTER_BASE_URL": "${user_config.openrouter_base_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

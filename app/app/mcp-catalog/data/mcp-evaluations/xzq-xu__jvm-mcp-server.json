@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "xzq-xu__jvm-mcp-server",
   "display_name": "jvm-mcp-server",
-  "version": "1.0.0",
   "description": "This is an implementation project of a JVM-based MCP (Model Context Protocol) server. The project aims to provide a standardized MCP server implementation for the JVM platform, enabling AI models to better interact with the Java ecosystem.",
   "author": {
     "name": "xzq-xu"
@@ -14,7 +12,8 @@
       "ARTHAS_SSH_HOST": "${user_config.arthas_ssh_host}",
       "ARTHAS_SSH_PORT": "${user_config.arthas_ssh_port}",
       "ARTHAS_SSH_PASSWORD": "${user_config.arthas_ssh_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

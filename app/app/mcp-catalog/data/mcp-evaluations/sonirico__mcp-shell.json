@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sonirico__mcp-shell",
   "display_name": "mcp-shell",
-  "version": "1.0.0",
   "description": "Give hands to AI. MCP server to run shell commands securely, auditably, and on demand.",
   "author": {
     "name": "sonirico"
@@ -18,7 +16,8 @@
       "MCP_SHELL_LOG_OUTPUT": "${user_config.mcp_shell_log_output}",
       "MCP_SHELL_SEC_CONFIG_FILE": "${user_config.mcp_shell_sec_config_file}",
       "MCP_SHELL_SECURITY_ENABLED": "${user_config.mcp_shell_security_enabled}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

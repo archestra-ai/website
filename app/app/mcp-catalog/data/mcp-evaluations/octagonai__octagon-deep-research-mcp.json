@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "octagonai__octagon-deep-research-mcp",
   "display_name": "octagon-deep-research-mcp",
-  "version": "1.0.0",
   "description": "The Octagon Deep Research MCP server provides specialized AI-powered comprehensive research and analysis capabilities by integrating with advanced deep research agents. No rate limits, faster than ChatGPT Deep Research, more thorough than Grok DeepSearch or Perplexity Deep Research. ",
   "author": {
     "name": "OctagonAI"
@@ -12,7 +10,8 @@
     "args": ["-y", "octagon-deep-research-mcp@latest"],
     "env": {
       "OCTAGON_API_KEY": "${user_config.octagon_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

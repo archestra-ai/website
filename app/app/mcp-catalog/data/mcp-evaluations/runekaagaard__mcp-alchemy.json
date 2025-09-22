@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "runekaagaard__mcp-alchemy",
   "display_name": "mcp-alchemy",
-  "version": "1.0.0",
   "description": "A MCP (model context protocol) server that gives the LLM access to and knowledge about relational databases like SQLite, Postgresql, MySQL & MariaDB, Oracle, and MS-SQL.",
   "author": {
     "name": "runekaagaard"
@@ -15,7 +13,8 @@
       "CLAUDE_LOCAL_FILES_PATH": "${user_config.claude_local_files_path}",
       "EXECUTE_QUERY_MAX_CHARS": "${user_config.execute_query_max_chars}",
       "DB_ENGINE_OPTIONS": "${user_config.db_engine_options}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

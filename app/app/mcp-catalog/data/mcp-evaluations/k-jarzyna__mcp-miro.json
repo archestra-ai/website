@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "k-jarzyna__mcp-miro",
   "display_name": "mcp-miro",
-  "version": "1.0.0",
   "description": "Miro integration for Model Context Protocol",
   "author": {
     "name": "k-jarzyna"
@@ -12,7 +10,8 @@
     "args": ["-y", "@k-jarzyna/mcp-miro"],
     "env": {
       "MIRO_ACCESS_TOKEN": "${user_config.miro_access_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

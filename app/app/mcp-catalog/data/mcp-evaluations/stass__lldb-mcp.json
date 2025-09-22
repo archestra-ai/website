@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "stass__lldb-mcp",
   "display_name": "lldb-mcp",
-  "version": "1.0.0",
   "description": "LLDB MCP server",
   "author": {
     "name": "stass"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python3",
     "args": ["${__dirname}/lldb_mcp.py", "${user_config.debug_mode}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

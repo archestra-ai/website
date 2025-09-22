@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "crystaldba__postgres-mcp",
   "display_name": "postgres-mcp",
-  "version": "1.0.0",
   "description": "Postgres MCP Pro provides configurable read/write access and performance analysis for you and your AI agents.",
   "author": {
     "name": "crystaldba"
@@ -12,7 +10,8 @@
     "args": ["--access-mode=${user_config.access_mode}"],
     "env": {
       "DATABASE_URI": "${user_config.database_uri}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

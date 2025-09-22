@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "posthog__mcp",
   "display_name": "mcp",
-  "version": "1.0.0",
   "description": "Official PostHog MCP Server 🦔",
   "author": {
     "name": "posthog"
@@ -14,7 +12,8 @@
       "POSTHOG_AUTH_HEADER": "Bearer ${user_config.posthog_api_key}",
       "POSTHOG_BASE_URL": "${user_config.posthog_base_url}",
       "INKEEP_API_KEY": "${user_config.inkeep_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

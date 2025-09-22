@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hustcc__mcp-echarts",
   "display_name": "mcp-echarts",
-  "version": "1.0.0",
   "description": "🧬 Generate visual charts using ECharts with AI MCP dynamically, used for chart generation and data analysis.",
   "author": {
     "name": "hustcc"
@@ -17,7 +15,8 @@
       "MINIO_ACCESS_KEY": "${user_config.minio_access_key}",
       "MINIO_SECRET_KEY": "${user_config.minio_secret_key}",
       "MINIO_BUCKET_NAME": "${user_config.minio_bucket_name}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

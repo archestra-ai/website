@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "fr0gger__mcp_security",
   "display_name": "MCP_Security",
-  "version": "1.0.0",
   "description": "This is a repository to experiment with MCP for security",
   "author": {
     "name": "fr0gger"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uv",
     "args": ["--directory", "${__dirname}", "run", "orkl"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pratyay__mac-monitor-mcp",
   "display_name": "mac-monitor-mcp",
-  "version": "1.0.0",
   "description": "MCP server from Pratyay/mac-monitor-mcp",
   "author": {
     "name": "Pratyay"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/src/monitor.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

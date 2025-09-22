@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "idoru__influxdb-mcp-server",
   "display_name": "influxdb-mcp-server",
-  "version": "1.0.0",
   "description": "An MCP Server for querying InfluxDB",
   "author": {
     "name": "idoru"
@@ -14,7 +12,8 @@
       "INFLUXDB_TOKEN": "${user_config.influxdb_token}",
       "INFLUXDB_URL": "${user_config.influxdb_url}",
       "INFLUXDB_ORG": "${user_config.influxdb_org}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

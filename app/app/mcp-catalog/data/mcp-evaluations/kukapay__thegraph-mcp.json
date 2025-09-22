@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__thegraph-mcp",
   "display_name": "thegraph-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that powers AI agents with indexed blockchain data from The Graph.",
   "author": {
     "name": "kukapay"
@@ -12,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "main.py"],
     "env": {
       "THEGRAPH_API_KEY": "${user_config.thegraph_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

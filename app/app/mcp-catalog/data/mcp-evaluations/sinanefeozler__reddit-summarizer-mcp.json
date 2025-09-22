@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sinanefeozler__reddit-summarizer-mcp",
   "display_name": "reddit-summarizer-mcp",
-  "version": "1.0.0",
   "description": "MCP server from sinanefeozler/reddit-summarizer-mcp",
   "author": {
     "name": "sinanefeozler"
@@ -15,7 +13,8 @@
       "REDDIT_PASSWORD": "${user_config.reddit_password}",
       "REDDIT_CLIENT_ID": "${user_config.reddit_client_id}",
       "REDDIT_CLIENT_SECRET": "${user_config.reddit_client_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

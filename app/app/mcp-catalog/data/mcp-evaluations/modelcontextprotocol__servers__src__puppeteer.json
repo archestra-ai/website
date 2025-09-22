@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "modelcontextprotocol__servers__src__puppeteer",
   "display_name": "puppeteer",
-  "version": "1.0.0",
   "description": "Model Context Protocol Servers",
   "author": {
     "name": "modelcontextprotocol"
@@ -10,7 +8,8 @@
   "server": {
     "command": "unknown",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

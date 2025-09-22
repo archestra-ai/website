@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "edgedelta__edgedelta-mcp-server",
   "display_name": "edgedelta-mcp-server",
-  "version": "1.0.0",
   "description": "Edge Delta MCP Server",
   "author": {
     "name": "edgedelta"
@@ -22,7 +20,8 @@
     "env": {
       "ED_API_TOKEN": "${user_config.ed_api_token}",
       "ED_ORG_ID": "${user_config.ed_org_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

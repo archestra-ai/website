@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__crypto-orderbook-mcp",
   "display_name": "crypto-orderbook-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that analyzes order book depth and imbalance across major crypto exchanges.",
   "author": {
     "name": "kukapay"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uv",
     "args": ["--directory", "${__dirname}", "run", "main.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

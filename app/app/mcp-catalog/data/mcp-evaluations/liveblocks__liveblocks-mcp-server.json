@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "liveblocks__liveblocks-mcp-server",
   "display_name": "liveblocks-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server for Liveblocks.",
   "author": {
     "name": "liveblocks"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/build/index.js"],
     "env": {
       "LIVEBLOCKS_SECRET_KEY": "${user_config.liveblocks_secret_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

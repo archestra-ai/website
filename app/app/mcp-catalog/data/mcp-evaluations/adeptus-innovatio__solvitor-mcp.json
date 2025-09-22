@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "adeptus-innovatio__solvitor-mcp",
   "display_name": "solvitor-mcp",
-  "version": "1.0.0",
   "description": "MCP server from Adeptus-Innovatio/solvitor-mcp",
   "author": {
     "name": "Adeptus-Innovatio"
@@ -12,7 +10,8 @@
     "args": [],
     "env": {
       "SOLVITOR_API_KEY": "${user_config.solvitor_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

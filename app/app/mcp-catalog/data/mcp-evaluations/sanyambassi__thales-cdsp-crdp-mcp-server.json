@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sanyambassi__thales-cdsp-crdp-mcp-server",
   "display_name": "thales-cdsp-crdp-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server for Thales CipherTrust RESTful Data Protection (CRDP)",
   "author": {
     "name": "sanyambassi"
@@ -15,7 +13,8 @@
       "CRDP_PROBES_URL": "${user_config.crdp_probes_url}",
       "MCP_TRANSPORT": "${user_config.mcp_transport}",
       "MCP_PORT": "${user_config.mcp_port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

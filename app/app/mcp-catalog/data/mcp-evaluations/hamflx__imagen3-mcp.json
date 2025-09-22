@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hamflx__imagen3-mcp",
   "display_name": "imagen3-mcp",
-  "version": "1.0.0",
   "description": "MCP server from hamflx/imagen3-mcp",
   "author": {
     "name": "hamflx"
@@ -16,7 +14,8 @@
       "SERVER_LISTEN_ADDR": "${user_config.server_listen_addr}",
       "SERVER_PORT": "${user_config.server_port}",
       "IMAGE_RESOURCE_SERVER_ADDR": "${user_config.image_resource_server_addr}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

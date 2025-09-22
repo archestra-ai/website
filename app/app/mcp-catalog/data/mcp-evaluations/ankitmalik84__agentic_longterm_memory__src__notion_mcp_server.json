@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ankitmalik84__agentic_longterm_memory__src__notion_mcp_server",
   "display_name": "notion_mcp_server",
-  "version": "1.0.0",
   "description": "Sophisticated AI chatbot with long-term memory capabilities, complete Notion workspace integration, and MCP (Model Context Protocol) implementation. Features semantic, episodic, and procedural memory systems.",
   "author": {
     "name": "ankitmalik84"
@@ -21,7 +19,8 @@
       "ENABLE_ANALYTICS": "${user_config.enable_analytics}",
       "ENABLE_BULK_OPERATIONS": "${user_config.enable_bulk_operations}",
       "LOG_LEVEL": "${user_config.log_level}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

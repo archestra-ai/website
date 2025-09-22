@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__token-minter-mcp",
   "display_name": "token-minter-mcp",
-  "version": "1.0.0",
   "description": "An MCP server providing tools for AI agents to mint ERC-20 tokens across multiple blockchains.",
   "author": {
     "name": "kukapay"
@@ -13,7 +11,8 @@
     "env": {
       "INFURA_KEY": "${user_config.infura_key}",
       "PRIVATE_KEY": "${user_config.private_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

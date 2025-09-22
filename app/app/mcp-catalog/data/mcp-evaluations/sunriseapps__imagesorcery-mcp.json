@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sunriseapps__imagesorcery-mcp",
   "display_name": "imagesorcery-mcp",
-  "version": "1.0.0",
   "description": "An MCP server providing tools for image processing operations",
   "author": {
     "name": "sunriseapps"
@@ -10,7 +8,8 @@
   "server": {
     "command": "imagesorcery-mcp",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__web3-jobs-mcp",
   "display_name": "web3-jobs-mcp",
-  "version": "1.0.0",
   "description": "An MCP server that provides AI agents with real-time access to curated Web3 jobs.",
   "author": {
     "name": "kukapay"
@@ -12,7 +10,8 @@
     "args": ["--directory", "${__dirname}", "run", "main.py"],
     "env": {
       "WEB3_CAREER_API_TOKEN": "${user_config.web3_career_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

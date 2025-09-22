@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "opgginc__opgg-mcp",
   "display_name": "opgg-mcp",
-  "version": "1.0.0",
   "description": "MCP server from opgginc/opgg-mcp",
   "author": {
     "name": "opgginc"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@smithery/cli@latest", "run", "@opgginc/opgg-mcp", "--key", "${user_config.smithery_api_key}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

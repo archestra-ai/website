@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "exa-labs__exa-mcp-server",
   "display_name": "exa-mcp-server",
-  "version": "1.0.0",
   "description": "Exa is a Web Search API | This is Exa MCP (Model Context Protocol)",
   "author": {
     "name": "exa-labs"
@@ -12,7 +10,8 @@
     "args": ["-y", "exa-mcp-server", "--tools=${user_config.tools}"],
     "env": {
       "EXA_API_KEY": "${user_config.exa_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "stackloklabs__osv-mcp",
   "display_name": "osv-mcp",
-  "version": "1.0.0",
   "description": "An MCP server for OSV",
   "author": {
     "name": "StacklokLabs"
@@ -13,7 +11,8 @@
     "env": {
       "MCP_PORT": "${user_config.mcp_port}",
       "MCP_TRANSPORT": "${user_config.mcp_transport}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

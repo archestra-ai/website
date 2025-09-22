@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gomarble-ai__facebook-ads-mcp-server",
   "display_name": "facebook-ads-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from gomarble-ai/facebook-ads-mcp-server",
   "author": {
     "name": "gomarble-ai"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/server.py", "--fb-token", "${user_config.fb_token}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

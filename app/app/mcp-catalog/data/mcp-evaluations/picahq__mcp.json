@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "picahq__mcp",
   "display_name": "mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol Server for Pica",
   "author": {
     "name": "picahq"
@@ -12,7 +10,8 @@
     "args": ["-y", "@picahq/mcp"],
     "env": {
       "PICA_SECRET": "${user_config.pica_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mahdin75__geoserver-mcp",
   "display_name": "geoserver-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server implementation that connects LLMs to the GeoServer REST API",
   "author": {
     "name": "mahdin75"
@@ -14,7 +12,8 @@
       "GEOSERVER_URL": "${user_config.geoserver_url}",
       "GEOSERVER_USER": "${user_config.geoserver_user}",
       "GEOSERVER_PASSWORD": "${user_config.geoserver_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

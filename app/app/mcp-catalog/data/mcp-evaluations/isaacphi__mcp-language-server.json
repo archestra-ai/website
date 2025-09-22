@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "isaacphi__mcp-language-server",
   "display_name": "mcp-language-server",
-  "version": "1.0.0",
   "description": "mcp-language-server gives MCP enabled clients access semantic tools like get definition, references, rename, and diagnostics.",
   "author": {
     "name": "isaacphi"
@@ -22,7 +20,8 @@
       "GOPATH": "${user_config.gopath}",
       "GOCACHE": "${user_config.gocache}",
       "GOMODCACHE": "${user_config.gomodcache}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jordandalton__doordash-mcp-server",
   "display_name": "DoorDash-MCP-Server",
-  "version": "1.0.0",
   "description": "MCP server from JordanDalton/DoorDash-MCP-Server",
   "author": {
     "name": "JordanDalton"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/build/index.js"],
     "env": {
       "DOORDASH_API_KEY": "${user_config.doordash_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

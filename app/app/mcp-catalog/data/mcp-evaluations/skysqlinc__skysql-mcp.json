@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "skysqlinc__skysql-mcp",
   "display_name": "skysql-mcp",
-  "version": "1.0.0",
   "description": "SkySQL MCP server and client repository.",
   "author": {
     "name": "skysqlinc"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/src/mcp-server/server.py"],
     "env": {
       "SKYSQL_API_KEY": "${user_config.skysql_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

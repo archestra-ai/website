@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "wonderwhy-er__desktopcommandermcp",
   "display_name": "DesktopCommanderMCP",
-  "version": "1.0.0",
   "description": "This is MCP server for Claude that gives it terminal control, file system search and diff file editing capabilities",
   "author": {
     "name": "wonderwhy-er"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@wonderwhy-er/desktop-commander"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "portainer__portainer-mcp",
   "display_name": "portainer-mcp",
-  "version": "1.0.0",
   "description": "Portainer MCP server",
   "author": {
     "name": "portainer"
@@ -20,7 +18,8 @@
     "env": {
       "PORTAINER_MCP_DISABLE_VERSION_CHECK": "${user_config.disable_version_check}",
       "PORTAINER_MCP_READ_ONLY": "${user_config.read_only_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

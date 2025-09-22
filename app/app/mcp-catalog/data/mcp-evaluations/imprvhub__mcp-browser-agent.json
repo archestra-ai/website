@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "imprvhub__mcp-browser-agent",
   "display_name": "mcp-browser-agent",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) integration that provides Claude Desktop with autonomous browser automation capabilities. This agent enables Claude to interact with web content, manipulate DOM elements, execute JavaScript, and perform API requests.",
   "author": {
     "name": "imprvhub"
@@ -10,7 +8,8 @@
   "server": {
     "command": "node",
     "args": ["${__dirname}/dist/index.js", "--browser", "${user_config.browser_type}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

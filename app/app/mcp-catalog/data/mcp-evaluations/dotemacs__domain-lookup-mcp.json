@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "dotemacs__domain-lookup-mcp",
   "display_name": "domain-lookup-mcp",
-  "version": "1.0.0",
   "description": "Domain Lookup MCP",
   "author": {
     "name": "dotemacs"
@@ -10,7 +8,8 @@
   "server": {
     "command": "${__dirname}/domain-lookup-mcp",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "arpitbatra123__mcp-googletasks",
   "display_name": "mcp-googletasks",
-  "version": "1.0.0",
   "description": "This Model Context Protocol (MCP) server provides a bridge between Claude and Google Tasks, allowing you to manage your task lists and tasks directly through Claude.",
   "author": {
     "name": "arpitbatra123"
@@ -14,7 +12,8 @@
       "GOOGLE_CLIENT_ID": "${user_config.google_client_id}",
       "GOOGLE_CLIENT_SECRET": "${user_config.google_client_secret}",
       "GOOGLE_REDIRECT_URI": "${user_config.google_redirect_uri}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

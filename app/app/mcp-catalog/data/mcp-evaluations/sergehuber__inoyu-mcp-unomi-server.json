@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sergehuber__inoyu-mcp-unomi-server",
   "display_name": "inoyu-mcp-unomi-server",
-  "version": "1.0.0",
   "description": "An implementation of Anthropic's Model Context Protocol for the Apache Unomi CDP",
   "author": {
     "name": "sergehuber"
@@ -18,7 +16,8 @@
       "UNOMI_KEY": "${user_config.unomi_key}",
       "UNOMI_EMAIL": "${user_config.unomi_email}",
       "UNOMI_SOURCE_ID": "${user_config.unomi_source_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

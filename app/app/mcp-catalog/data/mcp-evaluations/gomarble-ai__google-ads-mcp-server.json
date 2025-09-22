@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gomarble-ai__google-ads-mcp-server",
   "display_name": "google-ads-mcp-server",
-  "version": "1.0.0",
   "description": "This repo helps us to analyze googla ads performance data",
   "author": {
     "name": "gomarble-ai"
@@ -13,7 +11,8 @@
     "env": {
       "GOOGLE_ADS_DEVELOPER_TOKEN": "${user_config.google_ads_developer_token}",
       "GOOGLE_ADS_OAUTH_CONFIG_PATH": "${user_config.google_ads_oauth_config_path}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tumf__mcp-text-editor",
   "display_name": "mcp-text-editor",
-  "version": "1.0.0",
   "description": "MCP server from tumf/mcp-text-editor",
   "author": {
     "name": "tumf"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["mcp-text-editor"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

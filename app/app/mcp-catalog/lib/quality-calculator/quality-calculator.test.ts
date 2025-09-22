@@ -12,9 +12,7 @@ import {
 
 function createBaseServerManifest(overrides?: Partial<ArchestraMcpServerManifest>): ArchestraMcpServerManifest {
   return {
-    dxt_version: '1.0.0',
     name: 'test-server',
-    version: '1.0.0',
     display_name: 'Test Server',
     description: 'A test MCP server',
     readme: null,
@@ -24,6 +22,7 @@ function createBaseServerManifest(overrides?: Partial<ArchestraMcpServerManifest
       name: 'Test Author',
     },
     server: {
+      type: 'local',
       command: 'node',
       args: ['server/index.js'],
     },

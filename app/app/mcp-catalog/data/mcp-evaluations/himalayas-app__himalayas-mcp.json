@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "himalayas-app__himalayas-mcp",
   "display_name": "himalayas-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that provides access to remote job listings and company information from Himalayas.app. ",
   "author": {
     "name": "Himalayas-App"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["mcp-remote", "https://mcp.himalayas.app/sse"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

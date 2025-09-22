@@ -1,10 +1,7 @@
 {
   "name": "netlify-mcp__remote-mcp",
   "display_name": "Netlify",
-  "version": "1.0.0",
   "description": "Remote MCP server for Netlify - web development platform and hosting",
-  "remote_url": "https://netlify-mcp.netlify.app/mcp",
-  "remote_mcp_docs_url": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/",
   "oauth_config": {
     "name": "Netlify MCP",
     "server_url": "https://netlify-mcp.netlify.app/mcp",
@@ -33,13 +30,14 @@
   "last_scraped_at": "2025-09-05T19:30:23.066Z",
   "evaluation_model": null,
   "raw_dependencies": null,
-  "dxt_version": "0.1.0",
   "author": {
     "name": "netlify-mcp"
   },
   "server": {
-    "command": "remote",
-    "args": [],
-    "env": {}
-  }
+    "type": "remote",
+    "url": "https://netlify-mcp.netlify.app/mcp",
+    "docs_url": "https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/"
+  },
+  "github_info": null,
+  "programming_language": null
 }

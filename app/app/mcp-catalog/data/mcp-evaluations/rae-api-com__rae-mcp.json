@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "rae-api-com__rae-mcp",
   "display_name": "rae-mcp",
-  "version": "1.0.0",
   "description": "MPC Server to connect your preferred model with rae-api.com",
   "author": {
     "name": "rae-api-com"
@@ -10,7 +8,8 @@
   "server": {
     "command": "./rae-mpc",
     "args": ["--transport", "${user_config.transport}", "--port", "${user_config.port}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

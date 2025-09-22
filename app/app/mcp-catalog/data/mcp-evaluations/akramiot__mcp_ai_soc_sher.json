@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "akramiot__mcp_ai_soc_sher",
   "display_name": "MCP_AI_SOC_Sher",
-  "version": "1.0.0",
   "description": "AI SOC  Security Threat analysis using  MCP Server ",
   "author": {
     "name": "akramIOT"
@@ -14,7 +12,8 @@
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
       "MCP_DB_URI": "${user_config.mcp_db_uri}",
       "MCP_SECURITY_ENABLE_THREAT_ANALYSIS": "${user_config.mcp_security_enable_threat_analysis}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

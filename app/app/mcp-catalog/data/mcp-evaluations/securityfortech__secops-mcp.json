@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "securityfortech__secops-mcp",
   "display_name": "secops-mcp",
-  "version": "1.0.0",
   "description": "All-in-one security testing toolbox that brings together popular open source tools through a single MCP interface. Connected to an AI agent, it enables tasks like pentesting, bug bounty hunting, threat hunting, and more.",
   "author": {
     "name": "securityfortech"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/main.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

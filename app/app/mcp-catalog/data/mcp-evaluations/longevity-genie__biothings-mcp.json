@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "longevity-genie__biothings-mcp",
   "display_name": "biothings-mcp",
-  "version": "1.0.0",
   "description": "MCP (Model Context Protocol) server for biothings",
   "author": {
     "name": "longevity-genie"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["biothings-mcp", "--output-dir", "${user_config.output_dir}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "rootly-ai-labs__rootly-mcp-server",
   "display_name": "Rootly-MCP-server",
-  "version": "1.0.0",
   "description": "Rootly MCP server",
   "author": {
     "name": "Rootly-AI-Labs"
@@ -12,7 +10,8 @@
     "args": ["tool", "run", "--from", "rootly-mcp-server", "rootly-mcp-server"],
     "env": {
       "ROOTLY_API_TOKEN": "${user_config.rootly_api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

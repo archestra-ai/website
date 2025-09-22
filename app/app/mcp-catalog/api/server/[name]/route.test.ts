@@ -10,15 +10,13 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
   loadServers: vi.fn((name?: string) => {
     const allServers: ArchestraMcpServerManifest[] = [
       {
-        $schema: 'https://github.com/anthropic-ai/dxt/blob/main/catalog/mcp_catalog_manifest.schema.json',
-        dxt_version: '0.2.6',
         name: 'test-server-1',
         display_name: 'Test Server 1',
-        version: '1.0.0',
         description: 'A test MCP server',
         long_description: 'A longer description for test server 1',
         author: { name: 'Test Author', email: 'test@example.com' },
         server: {
+          type: 'local',
           command: 'node',
           args: ['index.js'],
         },
@@ -67,15 +65,13 @@ vi.mock('@mcpCatalog/lib/catalog', () => ({
         raw_dependencies: 'axios@^1.0.0\nlodash@^4.0.0',
       },
       {
-        $schema: 'https://github.com/anthropic-ai/dxt/blob/main/catalog/mcp_catalog_manifest.schema.json',
-        dxt_version: '0.2.6',
         name: 'test-server-with-path',
         display_name: 'Test Server With Path',
-        version: '2.0.0',
         description: 'A test MCP server with repository path',
         long_description: 'A longer description for test server with path',
         author: { name: 'Another Author' },
         server: {
+          type: 'local',
           command: 'node',
           args: ['index.js'],
         },

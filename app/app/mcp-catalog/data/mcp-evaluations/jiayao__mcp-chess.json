@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jiayao__mcp-chess",
   "display_name": "mcp-chess",
-  "version": "1.0.0",
   "description": "MCP server for playing chess against AI",
   "author": {
     "name": "jiayao"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["mcp-chess"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jagan-shanmugam__climatiq-mcp-server",
   "display_name": "climatiq-mcp-server",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server for accessing the Climatiq API to calculate carbon emissions. This allows AI assistants to perform real-time carbon calculations and provide climate impact insights.",
   "author": {
     "name": "jagan-shanmugam"
@@ -12,7 +10,8 @@
     "args": [],
     "env": {
       "CLIMATIQ_API_KEY": "${user_config.climatiq_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

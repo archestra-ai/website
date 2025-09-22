@@ -90,7 +90,6 @@ const DesktopAppNavItem = ({ onClose }: DesktopAppNavItemProps) => {
     >
       <div className="font-medium">Personal Desktop App</div>
       <div className="flex items-center gap-2">
-        <div className="text-xs text-green-600 mt-0.5 font-semibold">New!</div>
         {/* TEMPORARY: Show coming soon for non-Mac platforms */}
         {isNonMacPlatform && (
           <div className="text-xs text-gray-500 mt-0.5">({platformInfo.displayName} coming soon)</div>

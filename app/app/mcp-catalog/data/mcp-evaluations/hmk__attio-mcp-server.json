@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "hmk__attio-mcp-server",
   "display_name": "attio-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from hmk/attio-mcp-server",
   "author": {
     "name": "hmk"
@@ -12,7 +10,8 @@
     "args": ["attio-mcp-server"],
     "env": {
       "ATTIO_API_KEY": "${user_config.attio_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

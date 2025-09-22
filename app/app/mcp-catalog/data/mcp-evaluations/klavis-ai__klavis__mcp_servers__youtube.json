@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "klavis-ai__klavis__mcp_servers__youtube",
   "display_name": "youtube",
-  "version": "1.0.0",
   "description": "Klavis AI (YC X25):  Open Source MCP integration for AI applications",
   "author": {
     "name": "Klavis-AI"
@@ -15,7 +13,8 @@
       "YOUTUBE_MCP_SERVER_PORT": "${user_config.youtube_mcp_server_port}",
       "WEBSHARE_PROXY_USERNAME": "${user_config.webshare_proxy_username}",
       "WEBSHARE_PROXY_PASSWORD": "${user_config.webshare_proxy_password}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

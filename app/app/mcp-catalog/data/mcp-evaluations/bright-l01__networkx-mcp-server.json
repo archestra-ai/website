@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "bright-l01__networkx-mcp-server",
   "display_name": "networkx-mcp-server",
-  "version": "1.0.0",
   "description": "🕸️ First NetworkX MCP server for graph analysis in AI conversations | Community & Enterprise editions | Graph algorithms • Network analysis • MCP integration",
   "author": {
     "name": "Bright-L01"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["-m", "networkx_mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

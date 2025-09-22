@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "yutarop__ros-mcp",
   "display_name": "ros-mcp",
-  "version": "1.0.0",
   "description": "MCP server for ROS to control robots via topics, services, and actions.",
   "author": {
     "name": "Yutarop"
@@ -20,7 +18,8 @@
     "env": {
       "ROS_LOG_DIR": "/tmp",
       "ROS_DOMAIN_ID": "${user_config.ros_domain_id}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

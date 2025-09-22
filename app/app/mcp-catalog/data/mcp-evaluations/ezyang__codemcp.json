@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ezyang__codemcp",
   "display_name": "codemcp",
-  "version": "1.0.0",
   "description": "Coding assistant MCP for Claude Desktop",
   "author": {
     "name": "ezyang"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["-m", "codemcp", "serve", "--port", "${user_config.port}", "--host", "${user_config.host}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

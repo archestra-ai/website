@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "wegotdocs__open-mcp",
   "display_name": "open-mcp",
-  "version": "1.0.0",
   "description": "MCP server from wegotdocs/open-mcp",
   "author": {
     "name": "wegotdocs"
@@ -12,7 +10,8 @@
     "args": ["-y", "@open-mcp/{server-id}"],
     "env": {
       "ENV_VAR": "${user_config.env_var}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

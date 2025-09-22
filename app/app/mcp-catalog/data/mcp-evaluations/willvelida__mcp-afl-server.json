@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "willvelida__mcp-afl-server",
   "display_name": "mcp-afl-server",
-  "version": "1.0.0",
   "description": "This is a Model Context Protocol (MCP) server that provides AFL (Australian Football League) data from Squiggle API.",
   "author": {
     "name": "willvelida"
@@ -10,7 +8,8 @@
   "server": {
     "command": "dotnet",
     "args": ["run", "--project", "${__dirname}/src", "--no-build"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

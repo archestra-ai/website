@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kw510__strava-mcp",
   "display_name": "strava-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server with Strava OAuth integration, built on Cloudflare Workers. Enables secure authentication and tool access for MCP clients like Claude and Cursor through Strava login. Perfect for developers looking to integrate Strava authentication with AI tools.",
   "author": {
     "name": "kw510"
@@ -13,7 +11,8 @@
     "env": {
       "STRAVA_CLIENT_ID": "${user_config.strava_client_id}",
       "STRAVA_CLIENT_SECRET": "${user_config.strava_client_secret}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

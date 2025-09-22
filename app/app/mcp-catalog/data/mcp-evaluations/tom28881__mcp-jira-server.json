@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tom28881__mcp-jira-server",
   "display_name": "mcp-jira-server",
-  "version": "1.0.0",
   "description": "Comprehensive MCP server for Jira integration with Claude Code",
   "author": {
     "name": "tom28881"
@@ -19,7 +17,8 @@
       "JIRA_FIELD_STORY_POINTS": "${user_config.jira_field_story_points}",
       "JIRA_FIELD_ACCEPTANCE_CRITERIA": "${user_config.jira_field_acceptance_criteria}",
       "JIRA_FIELD_EPIC_LINK": "${user_config.jira_field_epic_link}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

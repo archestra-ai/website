@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zcaceres__markdownify-mcp",
   "display_name": "markdownify-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol server for converting almost anything to Markdown",
   "author": {
     "name": "zcaceres"
@@ -13,7 +11,8 @@
     "env": {
       "UV_PATH": "${user_config.uv_path}",
       "MD_SHARE_DIR": "${user_config.md_share_dir}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "translated__lara-mcp",
   "display_name": "lara-mcp",
-  "version": "1.0.0",
   "description": "MCP server from translated/lara-mcp",
   "author": {
     "name": "translated"
@@ -12,7 +10,8 @@
     "args": ["-y", "@translated/lara-mcp", "stdio"],
     "env": {
       "LARA_TRANSLATE_API_KEY": "${user_config.lara_translate_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

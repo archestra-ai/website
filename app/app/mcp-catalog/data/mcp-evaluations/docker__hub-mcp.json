@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "docker__hub-mcp",
   "display_name": "hub-mcp",
-  "version": "1.0.0",
   "description": "Docker Hub MCP Server",
   "author": {
     "name": "docker"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/dist/index.js", "--transport=stdio", "--username=${user_config.docker_hub_username}"],
     "env": {
       "HUB_PAT_TOKEN": "${user_config.hub_pat_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

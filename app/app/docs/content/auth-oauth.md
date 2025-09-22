@@ -9,12 +9,12 @@ This guide explains how to add OAuth authentication to MCP servers in Archestra.
 
 ## Quick Reference - OAuth Types
 
-| Type | DCR | Proxy Required | Key Features |
-|------|-----|----------------|--------------|
-| **Type 1: Generic OAuth 2.0** | ❌ | ✅ | Standard OAuth flow, env var injection |
-| **Type 2: MCP OAuth without DCR** | ❌ | ✅ | MCP SDK flow, static client credentials |
-| **Type 3: Remote MCP without DCR** | ❌ | ✅ | Remote server, static credentials |
-| **Type 4: Remote MCP with DCR** | ✅ | ❌ | Dynamic client registration |
+| Type                               | DCR | Proxy Required | Key Features                            |
+| ---------------------------------- | --- | -------------- | --------------------------------------- |
+| **Type 1: Generic OAuth 2.0**      | ❌  | ✅             | Standard OAuth flow, env var injection  |
+| **Type 2: MCP OAuth without DCR**  | ❌  | ✅             | MCP SDK flow, static client credentials |
+| **Type 3: Remote MCP without DCR** | ❌  | ✅             | Remote server, static credentials       |
+| **Type 4: Remote MCP with DCR**    | ✅  | ❌             | Dynamic client registration             |
 
 **DCR (Dynamic Client Registration):** A protocol that allows OAuth clients to register themselves dynamically with an authorization server at runtime, eliminating the need to manually configure client credentials beforehand.
 
@@ -95,6 +95,7 @@ To add a new OAuth-enabled MCP server, first identify which type it is from the 
 Standard OAuth 2.0 flow for providers that don't support MCP SDK OAuth.
 
 ### Configuration Structure
+
 ```json
 {
   "oauth_config": {
@@ -103,10 +104,7 @@ Standard OAuth 2.0 flow for providers that don't support MCP SDK OAuth.
     "token_endpoint": "https://slack.com/api/oauth.v2.access",
     "client_id": "9210991658150.9211748349222",
     "client_secret": "REDACTED",
-    "redirect_uris": [
-      "https://oauth.dev.archestra.ai/oauth/callback",
-      "http://localhost:8080/oauth/callback"
-    ],
+    "redirect_uris": ["https://oauth.dev.archestra.ai/oauth/callback", "http://localhost:8080/oauth/callback"],
     "scopes": ["channels:read", "chat:write", "users:read"],
     "default_scopes": ["channels:read", "chat:write", "users:read"],
     "generic_oauth": true,
@@ -124,6 +122,7 @@ Standard OAuth 2.0 flow for providers that don't support MCP SDK OAuth.
 ```
 
 **Key fields:**
+
 - `server_url` - OAuth authorization endpoint
 - `token_endpoint` - OAuth token exchange endpoint
 - `client_id` - Get from provider's app page (e.g., https://api.slack.com/apps)
@@ -147,12 +146,7 @@ MCP SDK OAuth 2.1 with static client credentials.
     "client_id": "354887056155-5b4rlcofccknibd4fv3ldud9vvac3rdf.apps.googleusercontent.com",
     "client_secret": "REDACTED",
     "redirect_uris": ["https://oauth.dev.archestra.ai/oauth/callback"],
-    "scopes": [
-      "openid",
-      "email",
-      "profile",
-      "https://www.googleapis.com/auth/gmail.readonly"
-    ],
+    "scopes": ["openid", "email", "profile", "https://www.googleapis.com/auth/gmail.readonly"],
     "well_known_url": "https://accounts.google.com/.well-known/openid-configuration",
     "supports_resource_metadata": false,
     "requires_proxy": true
@@ -169,6 +163,7 @@ MCP SDK OAuth 2.1 with static client credentials.
 ```
 
 **Key differences from Type 1:**
+
 - No `generic_oauth` flag (uses MCP SDK OAuth)
 - `well_known_url` for OAuth discovery
 - Server env vars enable MCP OAuth 2.1 mode
@@ -187,10 +182,7 @@ Remote MCP server with static OAuth credentials.
     "server_url": "https://api.githubcopilot.com/mcp",
     "client_id": "Ov23li3CnHLM7PNQ2Xiv",
     "client_secret": "REDACTED",
-    "redirect_uris": [
-      "https://oauth.dev.archestra.ai/oauth/callback",
-      "http://localhost:8080/oauth/callback"
-    ],
+    "redirect_uris": ["https://oauth.dev.archestra.ai/oauth/callback", "http://localhost:8080/oauth/callback"],
     "scopes": ["read", "write"],
     "supports_resource_metadata": true,
     "requires_proxy": true
@@ -204,6 +196,7 @@ Remote MCP server with static OAuth credentials.
 ```
 
 **Key differences:**
+
 - `remote_url` field indicates remote MCP server
 - `server.command: "remote"` tells Archestra this is remote
 - Still requires proxy for secret injection
@@ -234,10 +227,10 @@ Remote MCP server supporting Dynamic Client Registration - no proxy needed!
 ```
 
 **Key differences:**
+
 - Empty `client_id` - will be dynamically registered
 - No `client_secret` field
 - No `requires_proxy` - DCR handles credentials
-
 
 ## OAuth Proxy Configuration (Types 1-3 Only)
 
@@ -255,7 +248,7 @@ export const ALLOWED_DESTINATIONS = [
   'api.slack.com',
   'github.com',
   'api.githubcopilot.com',
-  'your-provider.com',  // Add your provider's domain
+  'your-provider.com', // Add your provider's domain
   // ...
 ];
 ```
@@ -263,6 +256,7 @@ export const ALLOWED_DESTINATIONS = [
 ### 2. Add OAuth Credentials
 
 Add credentials to `oauth_proxy/.env` using this pattern:
+
 - Pattern: `{mcp_server_id}_CLIENT_ID` and `{mcp_server_id}_SECRET`
 - The `mcp_server_id` comes from your server JSON filename
 
@@ -304,6 +298,7 @@ pnpm start  # Runs on http://localhost:8080
 ## OAuth Flow Details
 
 ### Type 1 (Generic OAuth):
+
 1. Desktop app opens browser with authorization URL
 2. User authorizes in browser
 3. OAuth proxy receives callback via deep link
@@ -311,12 +306,14 @@ pnpm start  # Runs on http://localhost:8080
 5. Tokens stored, optionally injected as env vars
 
 ### Types 2-3 (MCP OAuth):
+
 1. MCP SDK discovers OAuth endpoints via `.well-known`
 2. PKCE flow initiated with code verifier
 3. OAuth proxy handles token exchange with secret injection
 4. Tokens stored in database, passed via Authorization header
 
 ### Type 4 (DCR):
+
 1. MCP SDK registers client dynamically
 2. Standard OAuth flow without proxy
 3. Client credentials stored for reuse
@@ -330,7 +327,7 @@ Some servers need tokens as environment variables instead of Authorization heade
 ```json
 {
   "oauth_config": {
-    "access_token_env_var": "SLACK_MCP_XOXP_TOKEN",
+    "access_token_env_var": "SLACK_MCP_XOXP_TOKEN"
     // Token will be injected as this env var
   }
 }

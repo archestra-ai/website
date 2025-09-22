@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kkjdaniel__bgg-mcp",
   "display_name": "bgg-mcp",
-  "version": "1.0.0",
   "description": "BGG MCP provides access to the BoardGameGeek API through the Model Context Protocol, enabling retrieval and filtering of board game data, user collections, and profiles.",
   "author": {
     "name": "kkjdaniel"
@@ -12,7 +10,8 @@
     "args": [],
     "env": {
       "BGG_USERNAME": "${user_config.bgg_username}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

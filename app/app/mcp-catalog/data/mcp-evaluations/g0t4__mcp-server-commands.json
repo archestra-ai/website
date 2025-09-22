@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "g0t4__mcp-server-commands",
   "display_name": "Commands",
-  "version": "1.0.0",
   "description": "Model Context Protocol server to run commands",
   "author": {
     "name": "g0t4"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "mcp-server-commands"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

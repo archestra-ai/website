@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jimfilippou__things-mcp",
   "display_name": "things-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that provides seamless integration with the Things productivity app.",
   "author": {
     "name": "jimfilippou"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "things-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

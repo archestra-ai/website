@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "mcpdotdirect__evm-mcp-server",
   "display_name": "evm-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server that provides LLM with tools for interacting with EVM networks",
   "author": {
     "name": "mcpdotdirect"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@mcpdotdirect/evm-mcp-server"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

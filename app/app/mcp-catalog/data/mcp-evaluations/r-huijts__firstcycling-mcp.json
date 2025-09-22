@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "r-huijts__firstcycling-mcp",
   "display_name": "firstcycling-mcp",
-  "version": "1.0.0",
   "description": "This is a Model Context Protocol (MCP) server that provides professional cycling data from FirstCycling. It allows you to retrieve information about professional cyclists, race results, and more.",
   "author": {
     "name": "r-huijts"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uv",
     "args": ["--directory", "${__dirname}", "run", "firstcycling.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

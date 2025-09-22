@@ -255,54 +255,47 @@ export default function McpCatalogClient({
       server,
       searchScore: searchQuery ? calculateSearchRelevance(server, searchQuery) : 0,
     }))
-    .filter(
-      ({ server: { category, programming_language, dependencies, protocol_features, remote_url }, searchScore }) => {
-        // Filter by search
-        const matchesSearch = !searchQuery || searchScore > 0;
+    .filter(({ server: { category, programming_language, dependencies, protocol_features, server }, searchScore }) => {
+      // Filter by search
+      const matchesSearch = !searchQuery || searchScore > 0;
 
-        // Filter by category
-        const matchesCategory =
-          selectedCategory === 'All' ||
-          (selectedCategory === 'Uncategorized' && category === null) ||
-          category === selectedCategory;
+      // Filter by category
+      const matchesCategory =
+        selectedCategory === 'All' ||
+        (selectedCategory === 'Uncategorized' && category === null) ||
+        category === selectedCategory;
 
-        // Filter by language
-        const matchesLanguage = selectedLanguage === 'All' || programming_language === selectedLanguage;
+      // Filter by language
+      const matchesLanguage = selectedLanguage === 'All' || programming_language === selectedLanguage;
 
-        // Filter by dependency
-        const matchesDependency =
-          selectedDependency === 'All' ||
-          (dependencies && dependencies.some((dep) => dep.name === selectedDependency && dep.importance >= 8));
+      // Filter by dependency
+      const matchesDependency =
+        selectedDependency === 'All' ||
+        (dependencies && dependencies.some((dep) => dep.name === selectedDependency && dep.importance >= 8));
 
-        // Filter by MCP features
-        const matchesFeature =
-          selectedFeature === 'All' ||
-          (selectedFeature === 'Tools' && protocol_features?.implementing_tools === true) ||
-          (selectedFeature === 'Resources' && protocol_features?.implementing_resources === true) ||
-          (selectedFeature === 'Prompts' && protocol_features?.implementing_prompts === true) ||
-          (selectedFeature === 'Sampling' && protocol_features?.implementing_sampling === true) ||
-          (selectedFeature === 'Roots' && protocol_features?.implementing_roots === true) ||
-          (selectedFeature === 'Logging' && protocol_features?.implementing_logging === true) ||
-          (selectedFeature === 'STDIO Transport' && protocol_features?.implementing_stdio === true) ||
-          (selectedFeature === 'Streamable HTTP' && protocol_features?.implementing_streamable_http === true) ||
-          (selectedFeature === 'OAuth2' && protocol_features?.implementing_oauth2 === true);
+      // Filter by MCP features
+      const matchesFeature =
+        selectedFeature === 'All' ||
+        (selectedFeature === 'Tools' && protocol_features?.implementing_tools === true) ||
+        (selectedFeature === 'Resources' && protocol_features?.implementing_resources === true) ||
+        (selectedFeature === 'Prompts' && protocol_features?.implementing_prompts === true) ||
+        (selectedFeature === 'Sampling' && protocol_features?.implementing_sampling === true) ||
+        (selectedFeature === 'Roots' && protocol_features?.implementing_roots === true) ||
+        (selectedFeature === 'Logging' && protocol_features?.implementing_logging === true) ||
+        (selectedFeature === 'STDIO Transport' && protocol_features?.implementing_stdio === true) ||
+        (selectedFeature === 'Streamable HTTP' && protocol_features?.implementing_streamable_http === true) ||
+        (selectedFeature === 'OAuth2' && protocol_features?.implementing_oauth2 === true);
 
-        // Filter by server type
-        const matchesServerType =
-          selectedServerType === 'All' ||
-          (selectedServerType === 'Remote' && remote_url !== undefined && remote_url !== null) ||
-          (selectedServerType === 'Self-hosted' && (remote_url === undefined || remote_url === null));
+      // Filter by server type
+      const matchesServerType =
+        selectedServerType === 'All' ||
+        (selectedServerType === 'Remote' && server.type === 'remote') ||
+        (selectedServerType === 'Self-hosted' && server.type === 'local');
 
-        return (
-          matchesSearch &&
-          matchesCategory &&
-          matchesLanguage &&
-          matchesDependency &&
-          matchesFeature &&
-          matchesServerType
-        );
-      }
-    );
+      return (
+        matchesSearch && matchesCategory && matchesLanguage && matchesDependency && matchesFeature && matchesServerType
+      );
+    });
 
   // Sort filtered servers
   const sortedServers = [...filteredAndScoredServers].sort((a, b) => {
@@ -474,8 +467,8 @@ export default function McpCatalogClient({
                         {serverType === 'All'
                           ? mcpServers.length
                           : serverType === 'Remote'
-                            ? mcpServers.filter((s) => s.remote_url !== undefined && s.remote_url !== null).length
-                            : mcpServers.filter((s) => s.remote_url === undefined || s.remote_url === null).length}
+                            ? mcpServers.filter((s) => s.server.type === 'remote').length
+                            : mcpServers.filter((s) => s.server.type === 'local').length}
                       </span>
                     </button>
                   ))}
@@ -678,8 +671,8 @@ export default function McpCatalogClient({
                           {serverType === 'All'
                             ? mcpServers.length
                             : serverType === 'Remote'
-                              ? mcpServers.filter((s) => s.remote_url !== undefined && s.remote_url !== null).length
-                              : mcpServers.filter((s) => s.remote_url === undefined || s.remote_url === null).length}
+                              ? mcpServers.filter((s) => s.server.type === 'remote').length
+                              : mcpServers.filter((s) => s.server.type === 'local').length}
                         </span>
                       </button>
                     ))}
@@ -950,11 +943,11 @@ export default function McpCatalogClient({
                     framework,
                     quality_score: qualityScore,
                     readme,
-                    remote_url: remoteUrl,
+                    server,
                   } = item.server;
                   const searchScore = item.searchScore;
                   const hasArchestraBadge = readme && readme.toLowerCase().includes('archestra.ai');
-                  const isRemoteServer = remoteUrl && !gitHubInfo;
+                  const isRemoteServer = server.type === 'remote' && !gitHubInfo;
 
                   // Preserve current state in the link
                   const params = new URLSearchParams();

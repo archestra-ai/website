@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "wong2__mcp-cli",
   "display_name": "mcp-cli",
-  "version": "1.0.0",
   "description": "A CLI inspector for the Model Context Protocol",
   "author": {
     "name": "wong2"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "@wong2/mcp-cli"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

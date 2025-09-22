@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "shopsavvy__shopsavvy-mcp-server",
   "display_name": "shopsavvy-mcp-server",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) server for ShopSavvy Data API - provides product lookup, pricing, and historical data tools for AI assistants.",
   "author": {
     "name": "shopsavvy"
@@ -12,7 +10,8 @@
     "args": ["@shopsavvy/mcp-server"],
     "env": {
       "SHOPSAVVY_API_KEY": "${user_config.shopsavvy_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

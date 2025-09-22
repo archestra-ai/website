@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "juehang__vscode-mcp-server",
   "display_name": "vscode-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server to expose VS Code editing features to an LLM for AI coding",
   "author": {
     "name": "juehang"
@@ -10,7 +8,8 @@
   "server": {
     "command": "node",
     "args": ["${__dirname}/index.js"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

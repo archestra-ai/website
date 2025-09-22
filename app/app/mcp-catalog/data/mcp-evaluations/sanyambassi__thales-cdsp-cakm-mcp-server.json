@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "sanyambassi__thales-cdsp-cakm-mcp-server",
   "display_name": "thales-cdsp-cakm-mcp-server",
-  "version": "1.0.0",
   "description": "MCP Server to manage encryption for Ms SQL and Oracle databases using Thales CAKM connector",
   "author": {
     "name": "sanyambassi"
@@ -14,7 +12,8 @@
       "DB_TDE_SERVER_NAME": "${user_config.db_tde_server_name}",
       "DB_TDE_LOG_LEVEL": "${user_config.db_tde_log_level}",
       "DB_TDE_DATABASE_CONNECTIONS": "${user_config.db_tde_database_connections}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

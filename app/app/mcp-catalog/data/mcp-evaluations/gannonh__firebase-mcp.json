@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gannonh__firebase-mcp",
   "display_name": "firebase-mcp",
-  "version": "1.0.0",
   "description": "🔥 Model Context Protocol (MCP) server for Firebase.",
   "author": {
     "name": "gannonh"
@@ -18,7 +16,8 @@
       "MCP_HTTP_HOST": "${user_config.mcp_http_host}",
       "MCP_HTTP_PATH": "${user_config.mcp_http_path}",
       "DEBUG_LOG_FILE": "${user_config.debug_log_file}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

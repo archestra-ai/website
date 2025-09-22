@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ycloud-developers__ycloud-whatsapp-mcp-server",
   "display_name": "ycloud-whatsapp-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from YCloud-Developers/ycloud-whatsapp-mcp-server",
   "author": {
     "name": "YCloud-Developers"
@@ -14,7 +12,8 @@
       "API_BASE_URL": "${user_config.api_base_url}",
       "OPENAPI_SPEC_PATH": "${user_config.openapi_spec_path}",
       "API_HEADERS": "X-API-Key:${user_config.ycloud_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "biegehydra__bifrostmcp",
   "display_name": "BifrostMCP",
-  "version": "1.0.0",
   "description": "VSCode Extension with an MCP server that exposes semantic tools like Find Usages and Rename to LLMs",
   "author": {
     "name": "biegehydra"
@@ -10,7 +8,8 @@
   "server": {
     "command": "node",
     "args": ["${__dirname}/extension.js"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

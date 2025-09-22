@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "zaizaizhao__mcp-swagger-server",
   "display_name": "mcp-swagger-server",
-  "version": "1.0.0",
   "description": "MCP Swagger Server 将任何符合 OpenAPI/Swagger 规范的 REST API 转换为 Model Context Protocol (MCP) 格式，让 AI 助手能够理解和调用您的 API。",
   "author": {
     "name": "zaizaizhao"
@@ -16,7 +14,8 @@
       "MCP_OPENAPI_URL": "${user_config.mcp_openapi_url}",
       "MCP_AUTH_TYPE": "${user_config.mcp_auth_type}",
       "API_TOKEN": "${user_config.api_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

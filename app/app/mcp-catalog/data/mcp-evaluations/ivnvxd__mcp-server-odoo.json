@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "ivnvxd__mcp-server-odoo",
   "display_name": "mcp-server-odoo",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server that enables AI assistants to securely interact with Odoo ERP systems through standardized resources and tools for data retrieval and manipulation.",
   "author": {
     "name": "ivnvxd"
@@ -19,7 +17,8 @@
       "ODOO_MCP_TRANSPORT": "${user_config.odoo_mcp_transport}",
       "ODOO_MCP_HOST": "${user_config.odoo_mcp_host}",
       "ODOO_MCP_PORT": "${user_config.odoo_mcp_port}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

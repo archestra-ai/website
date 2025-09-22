@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "pwh-pwh__coin-mcp-server",
   "display_name": "coin-mcp-server",
-  "version": "1.0.0",
   "description": "use Bitget’s API to get cryptocurrency info",
   "author": {
     "name": "pwh-pwh"
@@ -12,7 +10,8 @@
     "args": ["run", "--allow-net", "--allow-read", "--allow-env", "https://deno.land/x/coin_mcp_server/main.ts"],
     "env": {
       "BGURL": "${user_config.bgurl}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

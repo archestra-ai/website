@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "dataring-engineering__mcp-server-trino",
   "display_name": "mcp-server-trino",
-  "version": "1.0.0",
   "description": "MCP Server for Trino",
   "author": {
     "name": "Dataring-engineering"
@@ -17,7 +15,8 @@
       "TRINO_PASSWORD": "${user_config.trino_password}",
       "TRINO_CATALOG": "${user_config.trino_catalog}",
       "TRINO_SCHEMA": "${user_config.trino_schema}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

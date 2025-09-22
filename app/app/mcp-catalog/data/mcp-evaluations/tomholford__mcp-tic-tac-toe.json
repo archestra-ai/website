@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tomholford__mcp-tic-tac-toe",
   "display_name": "mcp-tic-tac-toe",
-  "version": "1.0.0",
   "description": "Play tic-tac-toe against an LLM via MCP",
   "author": {
     "name": "tomholford"
@@ -10,7 +8,8 @@
   "server": {
     "command": "${__dirname}/bin/server",
     "args": ["-transport=stdio"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

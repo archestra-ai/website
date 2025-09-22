@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "jeannier__homebrew-mcp",
   "display_name": "homebrew-mcp",
-  "version": "1.0.0",
   "description": "Homebrew MCP : Comprehensive brew support for installing, upgrading, searching, and maintaining macOS packages.",
   "author": {
     "name": "jeannier"
@@ -12,7 +10,8 @@
     "args": ["run", "--directory", "${__dirname}", "homebrew_mcp.py"],
     "env": {
       "ANTHROPIC_API_KEY": "${user_config.anthropic_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "lucashild__mcp-server-bigquery",
   "display_name": "mcp-server-bigquery",
-  "version": "1.0.0",
   "description": "A Model Context Protocol server that provides access to BigQuery",
   "author": {
     "name": "LucasHild"
@@ -15,7 +13,8 @@
       "BIGQUERY_LOCATION": "${user_config.bigquery_location}",
       "BIGQUERY_DATASETS": "${user_config.bigquery_datasets}",
       "BIGQUERY_KEY_FILE": "${user_config.bigquery_key_file}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

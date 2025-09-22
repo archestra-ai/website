@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "aliyun__alibabacloud-tablestore-mcp-server",
   "display_name": "alibabacloud-tablestore-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from aliyun/alibabacloud-tablestore-mcp-server",
   "author": {
     "name": "aliyun"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/server/main.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

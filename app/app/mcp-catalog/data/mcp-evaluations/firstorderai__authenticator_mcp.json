@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "firstorderai__authenticator_mcp",
   "display_name": "Authenticator",
-  "version": "1.0.0",
   "description": "A secure MCP (Model Context Protocol) server that enables AI agents to interact with the Authenticator App.",
   "author": {
     "name": "firstorderai"
@@ -12,7 +10,8 @@
     "args": ["-y", "authenticator-mcp"],
     "env": {
       "AUTHENTICATOR_ACCESS_TOKEN": "${user_config.authenticator_access_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

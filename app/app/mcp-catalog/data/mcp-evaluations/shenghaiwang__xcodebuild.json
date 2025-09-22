@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "shenghaiwang__xcodebuild",
   "display_name": "xcodebuild",
-  "version": "1.0.0",
   "description": "MCP tool for building Xcode iOS workspace/project and feeding back error to LLMs.",
   "author": {
     "name": "ShenghaiWang"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["mcpxcodebuild"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

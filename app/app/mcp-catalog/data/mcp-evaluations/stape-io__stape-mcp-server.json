@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "stape-io__stape-mcp-server",
   "display_name": "stape-mcp-server",
-  "version": "1.0.0",
   "description": "Interact with the Seape API using AI assistants like Claude, or in AI-powered IDEs like Cursor. ",
   "author": {
     "name": "stape-io"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "mcp-remote", "https://mcp.stape.ai/sse", "--header", "Authorization: ${user_config.stape_api_key}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

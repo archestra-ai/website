@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "agentmail-to__agentmail-toolkit__mcp",
   "display_name": "mcp",
-  "version": "1.0.0",
   "description": "MCP server from agentmail-to/agentmail-toolkit",
   "author": {
     "name": "agentmail-to"
@@ -10,7 +8,8 @@
   "server": {
     "command": "unknown",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

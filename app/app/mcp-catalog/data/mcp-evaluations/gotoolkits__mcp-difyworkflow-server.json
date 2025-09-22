@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gotoolkits__mcp-difyworkflow-server",
   "display_name": "mcp-difyworkflow-server",
-  "version": "1.0.0",
   "description": "mcp-difyworkflow-server is an mcp server Tools application that implements the query and invocation of Dify workflows, supporting the on-demand operation of multiple custom Dify workflows.",
   "author": {
     "name": "gotoolkits"
@@ -13,7 +11,8 @@
     "env": {
       "DIFY_WORKFLOW_NAME": "${user_config.dify_workflow_name}",
       "DIFY_API_KEYS": "${user_config.dify_api_keys}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

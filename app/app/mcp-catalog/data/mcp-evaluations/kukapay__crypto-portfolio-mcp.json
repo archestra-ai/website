@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "kukapay__crypto-portfolio-mcp",
   "display_name": "crypto-portfolio-mcp",
-  "version": "1.0.0",
   "description": "An MCP server for tracking and managing cryptocurrency portfolio allocations.",
   "author": {
     "name": "kukapay"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["${__dirname}/main.py"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

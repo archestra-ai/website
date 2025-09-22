@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "i-am-bee__acp-mcp",
   "display_name": "acp-mcp",
-  "version": "1.0.0",
   "description": "MCP server from i-am-bee/acp-mcp",
   "author": {
     "name": "i-am-bee"
@@ -10,7 +8,8 @@
   "server": {
     "command": "uvx",
     "args": ["acp-mcp", "${user_config.acp_server_url}"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gbrigandi__mcp-server-cortex",
   "display_name": "mcp-server-cortex",
-  "version": "1.0.0",
   "description": "MCP Server for Cortex",
   "author": {
     "name": "gbrigandi"
@@ -14,7 +12,8 @@
       "CORTEX_ENDPOINT": "${user_config.cortex_endpoint}",
       "CORTEX_API_KEY": "${user_config.cortex_api_key}",
       "RUST_LOG": "${user_config.rust_log}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "victoriametrics-community__mcp-victoriametrics",
   "display_name": "mcp-victoriametrics",
-  "version": "1.0.0",
   "description": "The implementation of Model Context Protocol (MCP) server for VictoriaMetrics",
   "author": {
     "name": "VictoriaMetrics-Community"
@@ -14,7 +12,8 @@
       "MCP_SERVER_MODE": "${user_config.mcp_server_mode}",
       "VM_INSTANCE_ENTRYPOINT": "${user_config.vm_instance_entrypoint}",
       "VM_INSTANCE_TYPE": "${user_config.vm_instance_type}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

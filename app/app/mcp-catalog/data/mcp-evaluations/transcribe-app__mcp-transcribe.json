@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "transcribe-app__mcp-transcribe",
   "display_name": "mcp-transcribe",
-  "version": "1.0.0",
   "description": "Add transcription tools to your AI-powered assistants.",
   "author": {
     "name": "transcribe-app"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/build/index.js"],
     "env": {
       "MCP_INTEGRATION_URL": "${user_config.mcp_integration_url}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

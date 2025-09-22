@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "qiniu__qiniu-mcp-server",
   "display_name": "qiniu-mcp-server",
-  "version": "1.0.0",
   "description": "MCP server from qiniu/qiniu-mcp-server",
   "author": {
     "name": "qiniu"
@@ -16,7 +14,8 @@
       "QINIU_REGION_NAME": "${user_config.qiniu_region_name}",
       "QINIU_ENDPOINT_URL": "${user_config.qiniu_endpoint_url}",
       "QINIU_BUCKETS": "${user_config.qiniu_buckets}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

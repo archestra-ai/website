@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "apecloud__aperag",
   "display_name": "ApeRAG",
-  "version": "1.0.0",
   "description": "ApeRAG: Best choice for building your own Knowledge Graph and for Context Engineering",
   "author": {
     "name": "apecloud"
@@ -13,7 +11,8 @@
     "env": {
       "API_KEY": "${user_config.api_key}",
       "DOCRAY_HOST": "${user_config.docray_host}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

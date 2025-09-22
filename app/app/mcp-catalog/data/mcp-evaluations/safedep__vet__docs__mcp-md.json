@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "safedep__vet__docs__mcp-md",
   "display_name": "mcp.md",
-  "version": "1.0.0",
   "description": "Protect against malicious open source packages 🤖",
   "author": {
     "name": "safedep"
@@ -10,7 +8,8 @@
   "server": {
     "command": "unknown",
     "args": [],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

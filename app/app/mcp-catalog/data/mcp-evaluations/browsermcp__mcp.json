@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "browsermcp__mcp",
   "display_name": "mcp",
-  "version": "1.0.0",
   "description": "Browser MCP is a Model Context Provider (MCP) server that allows AI applications to control your browser",
   "author": {
     "name": "browsermcp"
@@ -10,7 +8,8 @@
   "server": {
     "command": "node",
     "args": ["${__dirname}/server/index.js"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

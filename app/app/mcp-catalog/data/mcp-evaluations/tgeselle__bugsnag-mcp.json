@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "tgeselle__bugsnag-mcp",
   "display_name": "bugsnag-mcp",
-  "version": "1.0.0",
   "description": "A Model Context Protocol (MCP) server for interacting with Bugsnag. This server allows LLM tools like Cursor and Claude to investigate and resolve issues in Bugsnag.",
   "author": {
     "name": "tgeselle"
@@ -12,7 +10,8 @@
     "args": ["-y", "bugsnag-mcp-server"],
     "env": {
       "BUGSNAG_API_KEY": "${user_config.bugsnag_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

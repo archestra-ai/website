@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "angheljf__nyt",
   "display_name": "nyt",
-  "version": "1.0.0",
   "description": "MCP server from angheljf/nyt",
   "author": {
     "name": "angheljf"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/build/index.js"],
     "env": {
       "NYTIMES_API_KEY": "${user_config.nytimes_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "bgauryy__octocode-mcp",
   "display_name": "octocode-mcp",
-  "version": "1.0.0",
   "description": "Code search analysys MCP",
   "author": {
     "name": "bgauryy"
@@ -10,7 +8,8 @@
   "server": {
     "command": "npx",
     "args": ["-y", "octocode-mcp"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

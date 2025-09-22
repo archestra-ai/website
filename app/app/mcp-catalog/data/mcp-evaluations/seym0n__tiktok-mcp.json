@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "seym0n__tiktok-mcp",
   "display_name": "tiktok-mcp",
-  "version": "1.0.0",
   "description": "Model Context Protocol (MCP) with TikTok integration",
   "author": {
     "name": "Seym0n"
@@ -12,7 +10,8 @@
     "args": ["${__dirname}/build/index.js"],
     "env": {
       "TIKNEURON_MCP_API_KEY": "${user_config.tikneuron_mcp_api_key}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "xexr__mcp-libsql",
   "display_name": "mcp-libsql",
-  "version": "1.0.0",
   "description": "Secure MCP server for libSQL databases with comprehensive tools, connection pooling, and transaction support. Built with TypeScript for Claude Desktop, Claude Code, Cursor, and other MCP clients.",
   "author": {
     "name": "Xexr"
@@ -19,7 +17,8 @@
     "env": {
       "LIBSQL_AUTH_TOKEN": "${user_config.libsql_auth_token}",
       "MCP_LIBSQL_DEV_MODE": "${user_config.dev_mode}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

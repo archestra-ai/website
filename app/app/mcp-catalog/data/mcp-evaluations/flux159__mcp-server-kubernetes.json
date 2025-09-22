@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "flux159__mcp-server-kubernetes",
   "display_name": "Kubernetes",
-  "version": "1.0.0",
   "description": "MCP Server for kubernetes management commands",
   "author": {
     "name": "Flux159"
@@ -12,7 +10,8 @@
     "args": ["mcp-server-kubernetes"],
     "env": {
       "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS": "${user_config.allow_only_non_destructive_tools}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

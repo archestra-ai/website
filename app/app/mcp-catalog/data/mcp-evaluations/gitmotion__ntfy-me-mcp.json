@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "gitmotion__ntfy-me-mcp",
   "display_name": "ntfy-me-mcp",
-  "version": "1.0.0",
   "description": "An ntfy MCP server for sending/fetching ntfy notifications to any/self-hosted ntfy.sh server from AI Agents 📤 (supports secure token auth & more - use with npx or docker!)",
   "author": {
     "name": "gitmotion"
@@ -15,7 +13,8 @@
       "NTFY_URL": "${user_config.ntfy_url}",
       "NTFY_TOKEN": "${user_config.ntfy_token}",
       "PROTECTED_TOPIC": "${user_config.protected_topic}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

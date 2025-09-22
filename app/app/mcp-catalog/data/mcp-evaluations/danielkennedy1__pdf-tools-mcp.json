@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "danielkennedy1__pdf-tools-mcp",
   "display_name": "pdf-tools-mcp",
-  "version": "1.0.0",
   "description": "MCP server from danielkennedy1/pdf-tools-mcp",
   "author": {
     "name": "danielkennedy1"
@@ -10,7 +8,8 @@
   "server": {
     "command": "python",
     "args": ["-m", "src.main"],
-    "env": {}
+    "env": {},
+    "type": "local"
   },
   "tools": [],
   "prompts": [],

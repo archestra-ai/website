@@ -1,8 +1,6 @@
 {
-  "dxt_version": "0.1.0",
   "name": "yuna0x0__anilist-mcp",
   "display_name": "anilist-mcp",
-  "version": "1.0.0",
   "description": "AniList MCP server for accessing anime and manga data",
   "author": {
     "name": "yuna0x0"
@@ -12,7 +10,8 @@
     "args": ["-y", "anilist-mcp"],
     "env": {
       "ANILIST_TOKEN": "${user_config.anilist_token}"
-    }
+    },
+    "type": "local"
   },
   "tools": [],
   "prompts": [],
