@@ -1,7 +1,8 @@
+// copied from https://neon.com/guides/local-development-with-neon#local-postgresql
 import { Pool, neon, neonConfig } from '@neondatabase/serverless';
 import { drizzle as drizzleHttp } from 'drizzle-orm/neon-http';
 import { drizzle as drizzleWs } from 'drizzle-orm/neon-serverless';
-import * as ws from 'ws';
+import ws from 'ws';
 
 let connectionString = process.env.DATABASE_URL;
 
@@ -16,15 +17,11 @@ if (process.env.NODE_ENV === 'development') {
   neonConfig.useSecureWebSocket = connectionStringUrl.hostname !== 'db.localtest.me';
   neonConfig.wsProxy = (host) => (host === 'db.localtest.me' ? `${host}:4444/v2` : `${host}/v2`);
 }
-
-// Provide a fallback connection string if none is provided
-// This will be replaced with actual connection string in production
-if (!connectionString) {
-  console.warn('DATABASE_URL not set. Using placeholder connection string.');
-  connectionString = 'postgres://user:pass@host/db';
-}
-
 neonConfig.webSocketConstructor = ws;
+
+if (!connectionString) {
+  throw new Error('DATABASE_URL environment variable is not set');
+}
 
 const sql = neon(connectionString);
 const pool = new Pool({ connectionString });
