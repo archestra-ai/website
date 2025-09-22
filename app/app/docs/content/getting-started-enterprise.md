@@ -1,6 +1,6 @@
 ---
-title: Enterprise
-category: Getting Started
+title: Getting Started
+category: Archestra Enterprise
 order: 1
 tags: [setup, installation, quickstart]
 ---
