@@ -29,9 +29,7 @@ export default function SignInContent() {
               // Clean up storage
               sessionStorage.removeItem('desktopCallbackURL');
               // Redirect to desktop app with token
-              const redirectURL = `${storedCallbackURL}?token=${encodeURIComponent(
-                sessionData.session.token
-              )}`;
+              const redirectURL = `${storedCallbackURL}?token=${encodeURIComponent(sessionData.session.token)}`;
               window.location.href = redirectURL;
               return;
             }
@@ -104,9 +102,7 @@ export default function SignInContent() {
               {isRedirecting ? 'Redirecting to desktop app...' : 'Signing you in...'}
             </h1>
             <p className="text-gray-600">
-              {isRedirecting
-                ? 'Opening Archestra desktop application.'
-                : 'Redirecting to Google for authentication.'}
+              {isRedirecting ? 'Opening Archestra desktop application.' : 'Redirecting to Google for authentication.'}
             </p>
           </div>
         </div>
