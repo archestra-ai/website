@@ -1,16 +1,99 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { auth } from '@lib/db/auth';
+import { and, eq } from 'drizzle-orm';
 import { NextRequest } from 'next/server';
 
+import constants from '@constants';
 import { auth } from '@lib/db/auth';
+import { drizzleClientHttp } from '@lib/db/db';
+import { rateLimitTable } from '@lib/db/schema/rate-limit';
+
+const {
+  inference: {
+    geminiApiKey,
+    rateLimits: { dailyTokenLimit, maxRequestsPerDay },
+  },
+} = constants;
+
+async function checkAndUpdateRateLimit(
+  userId: string,
+  tokensToAdd: number = 0
+): Promise<{ allowed: boolean; tokensUsed: number; requestCount: number }> {
+  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+
+  // Get or create rate limit record for today
+  const existingLimit = await drizzleClientHttp
+    .select()
+    .from(rateLimitTable)
+    .where(and(eq(rateLimitTable.userId, userId), eq(rateLimitTable.date, today)))
+    .limit(1);
+
+  if (existingLimit.length === 0) {
+    // Create new record for today
+    const newRecord = {
+      id: `${userId}_${today}`,
+      userId,
+      date: today,
+      tokensUsed: tokensToAdd,
+      requestCount: tokensToAdd > 0 ? 1 : 0,
+    };
+
+    await drizzleClientHttp.insert(rateLimitTable).values(newRecord);
+
+    return {
+      allowed: true,
+      tokensUsed: tokensToAdd,
+      requestCount: tokensToAdd > 0 ? 1 : 0,
+    };
+  }
+
+  const current = existingLimit[0];
+
+  // Check if limits would be exceeded
+  if (tokensToAdd === 0) {
+    // Just checking, not updating
+    return {
+      allowed: current.tokensUsed < dailyTokenLimit && current.requestCount < maxRequestsPerDay,
+      tokensUsed: current.tokensUsed,
+      requestCount: current.requestCount,
+    };
+  }
+
+  // Check if adding these tokens would exceed the limit
+  if (current.tokensUsed + tokensToAdd > dailyTokenLimit || current.requestCount >= maxRequestsPerDay) {
+    return {
+      allowed: false,
+      tokensUsed: current.tokensUsed,
+      requestCount: current.requestCount,
+    };
+  }
+
+  // Update the record
+  await drizzleClientHttp
+    .update(rateLimitTable)
+    .set({
+      tokensUsed: current.tokensUsed + tokensToAdd,
+      requestCount: current.requestCount + 1,
+      updatedAt: new Date(),
+    })
+    .where(and(eq(rateLimitTable.userId, userId), eq(rateLimitTable.date, today)));
+
+  return {
+    allowed: true,
+    tokensUsed: current.tokensUsed + tokensToAdd,
+    requestCount: current.requestCount + 1,
+  };
+}
 
 export async function POST(request: NextRequest) {
-  // Log the x-goog-api-key header
-  const auth_token = request.headers.get('x-goog-api-key');
-  console.log('X-Goog-Api-Key header:', auth_token);
-
-  const auth_token2 = request.headers.get('Authorization');
-  console.log(auth_token2);
-
+  // Validate that API key is configured
+  if (!geminiApiKey) {
+    return new Response(JSON.stringify({ error: 'GOOGLE_API_TOKEN not configured' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+  
   const session = await auth.api.getSession({
     headers: request.headers,
   });
@@ -25,17 +108,64 @@ export async function POST(request: NextRequest) {
     });
   }
 
-  console.log('Authenticated user:', session.user);
-
-  // Validate that API key is configured
-  if (!process.env.GOOGLE_API_TOKEN) {
-    return new Response(JSON.stringify({ error: 'GOOGLE_API_TOKEN not configured' }), {
-      status: 500,
+  // Extract and validate the authorization token
+  const authHeader = request.headers.get('authorization');
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return new Response(JSON.stringify({ error: 'Missing or invalid authorization header' }), {
+      status: 401,
       headers: { 'Content-Type': 'application/json' },
     });
   }
 
-  console.log('LLM Proxy: Request received');
+  const token = authHeader.substring(7); // Remove 'Bearer ' prefix
+
+  // Verify the session token using better-auth
+  let session;
+  try {
+    const headers = new Headers();
+    headers.set('cookie', `better-auth.session_token=${token}`);
+
+    session = await auth.api.getSession({
+      headers: headers,
+    });
+
+    if (!session?.user) {
+      return new Response(JSON.stringify({ error: 'Invalid or expired token' }), {
+        status: 401,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+  } catch (error) {
+    console.error('Token validation error:', error);
+    return new Response(JSON.stringify({ error: 'Invalid token' }), {
+      status: 401,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  const userId = session.user.id;
+
+  // Check rate limit before processing
+  const rateLimitCheck = await checkAndUpdateRateLimit(userId, 0);
+  if (!rateLimitCheck.allowed) {
+    return new Response(
+      JSON.stringify({
+        error: 'Rate limit exceeded',
+        details: {
+          dailyTokenLimit,
+          tokensUsed: rateLimitCheck.tokensUsed,
+          requestCount: rateLimitCheck.requestCount,
+          maxRequestsPerDay,
+        },
+      }),
+      {
+        status: 429,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
+  }
+
+  console.log(`LLM Proxy: Request received from user ${userId}`);
 
   try {
     // Parse the request body
@@ -43,7 +173,7 @@ export async function POST(request: NextRequest) {
     console.log('Request body', body);
 
     // Initialize Google Generative AI with API key from environment
-    const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_TOKEN);
+    const genAI = new GoogleGenerativeAI(geminiApiKey);
 
     // Initialize the Gemini 2.5 Flash model
     const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
@@ -75,7 +205,8 @@ export async function POST(request: NextRequest) {
     const stream = new TransformStream();
     const writer = stream.writable.getWriter();
 
-    // Start the async streaming process
+    // Start the async streaming process (capture userId in closure)
+    const streamUserId = userId;
     (async () => {
       try {
         // Generate streaming content
@@ -147,13 +278,18 @@ export async function POST(request: NextRequest) {
         // Send the [DONE] marker
         await writer.write(encoder.encode('data: [DONE]\n\n'));
 
-        // Log final token usage statistics
+        // Log final token usage statistics and update rate limit
         if (finalResponse.usageMetadata) {
+          const totalTokens = finalResponse.usageMetadata.totalTokenCount || 0;
+
           console.log('\n=== TOTAL TOKEN USAGE ===');
           console.log('Prompt Tokens:', finalResponse.usageMetadata.promptTokenCount);
           console.log('Completion Tokens:', finalResponse.usageMetadata.candidatesTokenCount || 0);
-          console.log('Total Tokens:', finalResponse.usageMetadata.totalTokenCount);
+          console.log('Total Tokens:', totalTokens);
           console.log('========================\n');
+
+          // Update rate limit with actual tokens used
+          await checkAndUpdateRateLimit(streamUserId, totalTokens);
         }
       } catch (error) {
         console.error('Generation error:', error);

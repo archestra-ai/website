@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 // Company constants
 const COMPANY_NAME = 'Archestra';
 
@@ -161,4 +163,25 @@ export default {
     measurementId: 'G-ZMQMSHJV9F',
   },
   debug: process.env.NODE_ENV === 'development',
+  database: {
+    url: process.env.DATABASE_URL || 'postgres://postgres:postgres@db.localtest.me:5432/main',
+  },
+  auth: {
+    socialProviders: {
+      google: {
+        clientId: process.env.GOOGLE_CLIENT_ID || '',
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+        redirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://localhost:3000/api/auth/callback/google',
+      },
+    },
+    secret: process.env.BETTER_AUTH_SECRET || 'fallback-secret-for-development',
+    baseURL: process.env.BETTER_AUTH_URL || 'http://localhost:3000',
+  },
+  inference: {
+    geminiApiKey: process.env.GOOGLE_API_TOKEN,
+    rateLimits: {
+      dailyTokenLimit: parseInt(process.env.DAILY_TOKEN_LIMIT || '100000', 10),
+      maxRequestsPerDay: parseInt(process.env.MAX_REQUESTS_PER_DAY || '1000', 10),
+    },
+  },
 };
