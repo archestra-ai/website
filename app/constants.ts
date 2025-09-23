@@ -180,8 +180,7 @@ export default {
   inference: {
     geminiApiKey: process.env.GOOGLE_API_TOKEN,
     rateLimits: {
-      dailyTokenLimit: parseInt(process.env.DAILY_TOKEN_LIMIT || '100000', 10),
-      maxRequestsPerDay: parseInt(process.env.MAX_REQUESTS_PER_DAY || '1000', 10),
+      dailyTokenLimit: 3_000_000,
     },
   },
 };
