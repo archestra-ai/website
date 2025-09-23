@@ -37,7 +37,17 @@ cd app
 pnpm install
 ```
 
-3. Start development server
+3. Start local database (optional - for database features)
+
+Using Docker Compose:
+```bash
+cd app
+docker-compose up -d
+```
+
+The application automatically uses this local database in development mode.
+
+4. Start development server
 ```bash
 pnpm dev
 ```
