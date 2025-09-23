@@ -1,7 +1,32 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { NextRequest } from 'next/server';
 
+import { auth } from '@lib/db/auth';
+
 export async function POST(request: NextRequest) {
+  // Log the x-goog-api-key header
+  const auth_token = request.headers.get('x-goog-api-key');
+  console.log('X-Goog-Api-Key header:', auth_token);
+
+  const auth_token2 = request.headers.get('Authorization');
+  console.log(auth_token2);
+
+  const session = await auth.api.getSession({
+    headers: request.headers,
+  });
+
+  console.log(session);
+
+  // // Check if user is authenticated
+  if (!session) {
+    return new Response(JSON.stringify({ error: 'Unauthorized - No valid session' }), {
+      status: 401,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  console.log('Authenticated user:', session.user);
+
   // Validate that API key is configured
   if (!process.env.GOOGLE_API_TOKEN) {
     return new Response(JSON.stringify({ error: 'GOOGLE_API_TOKEN not configured' }), {
