@@ -1,39 +1,166 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import { NextRequest } from "next/server";
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import { and, eq } from 'drizzle-orm';
+import { NextRequest } from 'next/server';
+
+import { auth } from '@lib/db/auth';
+import { drizzleClientHttp } from '@lib/db/db';
+import { rateLimitTable } from '@lib/db/schema/rate-limit';
+
+// Configuration
+const DAILY_TOKEN_LIMIT = parseInt(process.env.DAILY_TOKEN_LIMIT || '100000', 10);
+const MAX_REQUESTS_PER_DAY = parseInt(process.env.MAX_REQUESTS_PER_DAY || '1000', 10);
+
+async function checkAndUpdateRateLimit(
+  userId: string,
+  tokensToAdd: number = 0
+): Promise<{ allowed: boolean; tokensUsed: number; requestCount: number }> {
+  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+
+  // Get or create rate limit record for today
+  const existingLimit = await drizzleClientHttp
+    .select()
+    .from(rateLimitTable)
+    .where(and(eq(rateLimitTable.userId, userId), eq(rateLimitTable.date, today)))
+    .limit(1);
+
+  if (existingLimit.length === 0) {
+    // Create new record for today
+    const newRecord = {
+      id: `${userId}_${today}`,
+      userId,
+      date: today,
+      tokensUsed: tokensToAdd,
+      requestCount: tokensToAdd > 0 ? 1 : 0,
+    };
+
+    await drizzleClientHttp.insert(rateLimitTable).values(newRecord);
+
+    return {
+      allowed: true,
+      tokensUsed: tokensToAdd,
+      requestCount: tokensToAdd > 0 ? 1 : 0,
+    };
+  }
+
+  const current = existingLimit[0];
+
+  // Check if limits would be exceeded
+  if (tokensToAdd === 0) {
+    // Just checking, not updating
+    return {
+      allowed: current.tokensUsed < DAILY_TOKEN_LIMIT && current.requestCount < MAX_REQUESTS_PER_DAY,
+      tokensUsed: current.tokensUsed,
+      requestCount: current.requestCount,
+    };
+  }
+
+  // Check if adding these tokens would exceed the limit
+  if (current.tokensUsed + tokensToAdd > DAILY_TOKEN_LIMIT || current.requestCount >= MAX_REQUESTS_PER_DAY) {
+    return {
+      allowed: false,
+      tokensUsed: current.tokensUsed,
+      requestCount: current.requestCount,
+    };
+  }
+
+  // Update the record
+  await drizzleClientHttp
+    .update(rateLimitTable)
+    .set({
+      tokensUsed: current.tokensUsed + tokensToAdd,
+      requestCount: current.requestCount + 1,
+      updatedAt: new Date(),
+    })
+    .where(and(eq(rateLimitTable.userId, userId), eq(rateLimitTable.date, today)));
+
+  return {
+    allowed: true,
+    tokensUsed: current.tokensUsed + tokensToAdd,
+    requestCount: current.requestCount + 1,
+  };
+}
 
 export async function POST(request: NextRequest) {
   // Validate that API key is configured
   if (!process.env.GOOGLE_API_TOKEN) {
+    return new Response(JSON.stringify({ error: 'GOOGLE_API_TOKEN not configured' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  // Extract and validate the authorization token
+  const authHeader = request.headers.get('authorization');
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return new Response(JSON.stringify({ error: 'Missing or invalid authorization header' }), {
+      status: 401,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  const token = authHeader.substring(7); // Remove 'Bearer ' prefix
+
+  // Verify the session token using better-auth
+  let session;
+  try {
+    const headers = new Headers();
+    headers.set('cookie', `better-auth.session_token=${token}`);
+
+    session = await auth.api.getSession({
+      headers: headers,
+    });
+
+    if (!session?.user) {
+      return new Response(JSON.stringify({ error: 'Invalid or expired token' }), {
+        status: 401,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+  } catch (error) {
+    console.error('Token validation error:', error);
+    return new Response(JSON.stringify({ error: 'Invalid token' }), {
+      status: 401,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  const userId = session.user.id;
+
+  // Check rate limit before processing
+  const rateLimitCheck = await checkAndUpdateRateLimit(userId, 0);
+  if (!rateLimitCheck.allowed) {
     return new Response(
-      JSON.stringify({ error: "GOOGLE_API_TOKEN not configured" }),
+      JSON.stringify({
+        error: 'Rate limit exceeded',
+        details: {
+          dailyTokenLimit: DAILY_TOKEN_LIMIT,
+          tokensUsed: rateLimitCheck.tokensUsed,
+          requestCount: rateLimitCheck.requestCount,
+          maxRequestsPerDay: MAX_REQUESTS_PER_DAY,
+        },
+      }),
       {
-        status: 500,
-        headers: { "Content-Type": "application/json" },
+        status: 429,
+        headers: { 'Content-Type': 'application/json' },
       }
     );
   }
 
-  console.log("LLM Proxy: Request received");
+  console.log(`LLM Proxy: Request received from user ${userId}`);
 
   try {
     // Parse the request body
     const body = await request.json();
-    console.log("Request body", body);
+    console.log('Request body', body);
 
     // Initialize Google Generative AI with API key from environment
     const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_TOKEN);
 
     // Initialize the Gemini 2.5 Flash model
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
     // Extract request parameters from the body
-    const {
-      contents,
-      generationConfig,
-      tools,
-      toolConfig,
-      systemInstruction,
-    } = body;
+    const { contents, generationConfig, tools, toolConfig, systemInstruction } = body;
 
     // Prepare the request configuration
     const requestConfig: any = {
@@ -52,14 +179,15 @@ export async function POST(request: NextRequest) {
       requestConfig.systemInstruction = systemInstruction;
     }
 
-    console.log("Starting stream generation with config:", requestConfig);
+    console.log('Starting stream generation with config:', requestConfig);
 
     // Create a TransformStream to handle the streaming response
     const encoder = new TextEncoder();
     const stream = new TransformStream();
     const writer = stream.writable.getWriter();
 
-    // Start the async streaming process
+    // Start the async streaming process (capture userId in closure)
+    const streamUserId = userId;
     (async () => {
       try {
         // Generate streaming content
@@ -79,13 +207,11 @@ export async function POST(request: NextRequest) {
 
           // Add candidates if present
           if (chunkData.candidates) {
-            filteredResponse.candidates = chunkData.candidates.map(
-              (candidate: any) => ({
-                content: candidate.content,
-                finishReason: candidate.finishReason,
-                index: candidate.index || 0,
-              })
-            );
+            filteredResponse.candidates = chunkData.candidates.map((candidate: any) => ({
+              content: candidate.content,
+              finishReason: candidate.finishReason,
+              index: candidate.index || 0,
+            }));
           }
 
           // Add usage metadata if present
@@ -109,7 +235,7 @@ export async function POST(request: NextRequest) {
           const sseChunk = `data: ${JSON.stringify(filteredResponse)}\n\n`;
           await writer.write(encoder.encode(sseChunk));
 
-          console.log("Sent chunk:", sseChunk);
+          console.log('Sent chunk:', sseChunk);
         }
 
         // Get the final response for complete metadata
@@ -123,7 +249,7 @@ export async function POST(request: NextRequest) {
             index: index,
           })),
           usageMetadata: finalResponse.usageMetadata,
-          modelVersion: modelVersion || "gemini-2.5-flash",
+          modelVersion: modelVersion || 'gemini-2.5-flash',
           responseId: responseId,
         };
 
@@ -131,32 +257,28 @@ export async function POST(request: NextRequest) {
         await writer.write(encoder.encode(sseFinalChunk));
 
         // Send the [DONE] marker
-        await writer.write(encoder.encode("data: [DONE]\n\n"));
+        await writer.write(encoder.encode('data: [DONE]\n\n'));
 
-        // Log final token usage statistics
+        // Log final token usage statistics and update rate limit
         if (finalResponse.usageMetadata) {
-          console.log("\n=== TOTAL TOKEN USAGE ===");
-          console.log(
-            "Prompt Tokens:",
-            finalResponse.usageMetadata.promptTokenCount
-          );
-          console.log(
-            "Completion Tokens:",
-            finalResponse.usageMetadata.candidatesTokenCount || 0
-          );
-          console.log(
-            "Total Tokens:",
-            finalResponse.usageMetadata.totalTokenCount
-          );
-          console.log("========================\n");
+          const totalTokens = finalResponse.usageMetadata.totalTokenCount || 0;
+
+          console.log('\n=== TOTAL TOKEN USAGE ===');
+          console.log('Prompt Tokens:', finalResponse.usageMetadata.promptTokenCount);
+          console.log('Completion Tokens:', finalResponse.usageMetadata.candidatesTokenCount || 0);
+          console.log('Total Tokens:', totalTokens);
+          console.log('========================\n');
+
+          // Update rate limit with actual tokens used
+          await checkAndUpdateRateLimit(streamUserId, totalTokens);
         }
       } catch (error) {
-        console.error("Generation error:", error);
+        console.error('Generation error:', error);
 
         // Send error in SSE format if streaming has started
         const errorChunk = `data: ${JSON.stringify({
           error: true,
-          message: "Generation failed",
+          message: 'Generation failed',
         })}\n\n`;
         await writer.write(encoder.encode(errorChunk));
       } finally {
@@ -167,23 +289,23 @@ export async function POST(request: NextRequest) {
     // Return the stream as a response with SSE headers
     return new Response(stream.readable, {
       headers: {
-        "Content-Type": "text/event-stream",
-        "Cache-Control": "no-cache",
-        "Connection": "keep-alive",
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        Connection: 'keep-alive',
       },
     });
   } catch (error) {
     // Handle any errors that occur during initial setup
-    console.error("LLM Proxy error:", error);
+    console.error('LLM Proxy error:', error);
 
     return new Response(
       JSON.stringify({
-        error: "Generation failed",
-        details: error instanceof Error ? error.message : "Unknown error",
+        error: 'Generation failed',
+        details: error instanceof Error ? error.message : 'Unknown error',
       }),
       {
         status: 500,
-        headers: { "Content-Type": "application/json" },
+        headers: { 'Content-Type': 'application/json' },
       }
     );
   }
