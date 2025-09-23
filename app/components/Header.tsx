@@ -125,7 +125,7 @@ export default function Header() {
 
       {/* Mobile menu dropdown */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden border-t border-gray-200" style={{ backgroundColor: '#f4f4f4' }}>
+        <div className="lg:hidden border-t border-gray-200 bg-gray-100">
           <nav className="flex flex-col px-4 py-2">
             <Link
               href="/enterprise-platform"
