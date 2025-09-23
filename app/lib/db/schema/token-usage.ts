@@ -1,7 +1,7 @@
 import { integer, pgTable, text, timestamp, uniqueIndex } from 'drizzle-orm/pg-core';
 
-export const rateLimitTable = pgTable(
-  'rate_limit',
+export const tokenUsageTable = pgTable(
+  'token_usage',
   {
     id: text('id').primaryKey(),
     userId: text('user_id').notNull(),
@@ -18,5 +18,5 @@ export const rateLimitTable = pgTable(
   })
 );
 
-export type RateLimit = typeof rateLimitTable.$inferSelect;
-export type NewRateLimit = typeof rateLimitTable.$inferInsert;
+export type TokenUsage = typeof tokenUsageTable.$inferSelect;
+export type NewTokenUsage = typeof tokenUsageTable.$inferInsert;

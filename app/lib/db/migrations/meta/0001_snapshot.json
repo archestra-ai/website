@@ -1,5 +1,5 @@
 {
-  "id": "7ca5bdbb-2595-48bd-8733-8c5a6b1c3330",
+  "id": "cbab4acf-c2c8-4fcf-bd37-d30f33d8d662",
   "prevId": "1f8aee1a-8967-4729-a45d-fa5f9ac47785",
   "version": "7",
   "dialect": "postgresql",
@@ -311,8 +311,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.rate_limit": {
-      "name": "rate_limit",
+    "public.token_usage": {
+      "name": "token_usage",
       "schema": "",
       "columns": {
         "id": {
