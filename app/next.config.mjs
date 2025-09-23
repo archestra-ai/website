@@ -8,6 +8,14 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.googleusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
   experimental: {
     optimizePackageImports: ['lucide-react'],
