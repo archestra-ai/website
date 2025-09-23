@@ -29,6 +29,10 @@ jobs:
         run: pnpm typecheck
 
       - name: Build
+        env:
+          # on prod build we throw error if DATABASE_URL is not set
+          # so we need to set it to a dummy value on CI
+          DATABASE_URL: postgresql://user:password@host.tld/dbname?option=value
         run: pnpm build
 
   ensure-catalog-data-is-valid:
