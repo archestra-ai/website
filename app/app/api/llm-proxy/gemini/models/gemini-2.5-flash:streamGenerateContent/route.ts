@@ -10,14 +10,14 @@ import { rateLimitTable } from '@lib/db/schema/rate-limit';
 const {
   inference: {
     geminiApiKey,
-    rateLimits: { dailyTokenLimit, maxRequestsPerDay },
+    rateLimits: { dailyTokenLimit },
   },
 } = constants;
 
 async function checkAndUpdateRateLimit(
   userId: string,
   tokensToAdd: number = 0
-): Promise<{ allowed: boolean; tokensUsed: number; requestCount: number }> {
+): Promise<{ allowed: boolean; tokensUsed: number }> {
   const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 
   // Get or create rate limit record for today
@@ -28,13 +28,21 @@ async function checkAndUpdateRateLimit(
     .limit(1);
 
   if (existingLimit.length === 0) {
-    // Create new record for today
+    // No record exists for today
+    if (tokensToAdd === 0) {
+      // Just checking - user hasn't used any tokens today
+      return {
+        allowed: true,
+        tokensUsed: 0,
+      };
+    }
+
+    // Create new record for today with initial token usage
     const newRecord = {
       id: `${userId}_${today}`,
       userId,
       date: today,
       tokensUsed: tokensToAdd,
-      requestCount: tokensToAdd > 0 ? 1 : 0,
     };
 
     await drizzleClientHttp.insert(rateLimitTable).values(newRecord);
@@ -42,7 +50,6 @@ async function checkAndUpdateRateLimit(
     return {
       allowed: true,
       tokensUsed: tokensToAdd,
-      requestCount: tokensToAdd > 0 ? 1 : 0,
     };
   }
 
@@ -52,27 +59,16 @@ async function checkAndUpdateRateLimit(
   if (tokensToAdd === 0) {
     // Just checking, not updating
     return {
-      allowed: current.tokensUsed < dailyTokenLimit && current.requestCount < maxRequestsPerDay,
+      allowed: current.tokensUsed < dailyTokenLimit,
       tokensUsed: current.tokensUsed,
-      requestCount: current.requestCount,
     };
   }
 
-  // Check if adding these tokens would exceed the limit
-  if (current.tokensUsed + tokensToAdd > dailyTokenLimit || current.requestCount >= maxRequestsPerDay) {
-    return {
-      allowed: false,
-      tokensUsed: current.tokensUsed,
-      requestCount: current.requestCount,
-    };
-  }
-
-  // Update the record
+  // Update the record with new token usage
   await drizzleClientHttp
     .update(rateLimitTable)
     .set({
       tokensUsed: current.tokensUsed + tokensToAdd,
-      requestCount: current.requestCount + 1,
       updatedAt: new Date(),
     })
     .where(and(eq(rateLimitTable.userId, userId), eq(rateLimitTable.date, today)));
@@ -80,7 +76,6 @@ async function checkAndUpdateRateLimit(
   return {
     allowed: true,
     tokensUsed: current.tokensUsed + tokensToAdd,
-    requestCount: current.requestCount + 1,
   };
 }
 
@@ -118,8 +113,6 @@ export async function POST(request: NextRequest) {
         details: {
           dailyTokenLimit,
           tokensUsed: rateLimitCheck.tokensUsed,
-          requestCount: rateLimitCheck.requestCount,
-          maxRequestsPerDay,
         },
       }),
       {
@@ -176,7 +169,6 @@ export async function POST(request: NextRequest) {
         // Generate streaming content
         const result = await model.generateContentStream(requestConfig);
 
-        let totalTokenUsage = null;
         let responseId = null;
         let modelVersion = null;
 
@@ -200,7 +192,6 @@ export async function POST(request: NextRequest) {
           // Add usage metadata if present
           if (chunkData.usageMetadata) {
             filteredResponse.usageMetadata = chunkData.usageMetadata;
-            totalTokenUsage = chunkData.usageMetadata;
           }
 
           // Add other metadata

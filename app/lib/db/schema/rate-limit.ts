@@ -7,7 +7,6 @@ export const rateLimitTable = pgTable(
     userId: text('user_id').notNull(),
     date: text('date').notNull(), // Format: YYYY-MM-DD
     tokensUsed: integer('tokens_used').notNull().default(0),
-    requestCount: integer('request_count').notNull().default(0),
     createdAt: timestamp('created_at').defaultNow().notNull(),
     updatedAt: timestamp('updated_at')
       .defaultNow()
