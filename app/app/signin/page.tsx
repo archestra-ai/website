@@ -1,5 +1,6 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import Footer from '@components/Footer';
@@ -8,13 +9,16 @@ import { authClient } from '@lib/auth-client';
 
 export default function SignInPage() {
   const [error, setError] = useState<string | null>(null);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     const triggerOAuth = async () => {
       try {
         await authClient.signIn.social({
           provider: 'google',
-          callbackURL: '/',
+          // Get callbackURL from query params, default to '/'
+          // TODO: we need to put the proper token here...
+          callbackURL: `${searchParams.get('callbackURL')}?token=12345` || '/',
         });
       } catch (err) {
         console.error('OAuth error:', err);
@@ -23,7 +27,7 @@ export default function SignInPage() {
     };
 
     triggerOAuth();
-  }, []);
+  }, [searchParams]);
 
   if (error) {
     return (

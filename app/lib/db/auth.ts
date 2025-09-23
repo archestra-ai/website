@@ -18,4 +18,6 @@ export const auth = betterAuth({
   socialProviders,
   secret,
   baseURL,
+  // https://www.better-auth.com/docs/reference/options#wildcard-support
+  trustedOrigins: ['archestra-ai://auth-success'],
 });
