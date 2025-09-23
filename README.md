@@ -1,6 +1,6 @@
 <div align="center">  
   
-  # Archestra AI Official Website
+  # Archestra.AI Official Website
 
 
   **Enterprise MCP platform for AI agents.**
@@ -39,10 +39,10 @@ pnpm install
 
 3. Start local database (optional - for database features)
 
-Using Docker / Podman Compose:
+Using Docker Compose:
 ```bash
 cd app
-docker-compose up -d (or podman-compose up -d)
+docker-compose up -d
 ```
 
 The application automatically uses this local database in development mode.
