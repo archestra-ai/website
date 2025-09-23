@@ -39,10 +39,10 @@ pnpm install
 
 3. Start local database (optional - for database features)
 
-Using Docker Compose:
+Using Docker / Podman Compose:
 ```bash
 cd app
-docker-compose up -d
+docker-compose up -d (or podman-compose up -d)
 ```
 
 The application automatically uses this local database in development mode.

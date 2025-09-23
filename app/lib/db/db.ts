@@ -1,7 +1,6 @@
 // copied from https://neon.com/guides/local-development-with-neon#local-postgresql
-import { Pool, neon, neonConfig } from '@neondatabase/serverless';
+import { neon, neonConfig } from '@neondatabase/serverless';
 import { drizzle as drizzleHttp } from 'drizzle-orm/neon-http';
-import { drizzle as drizzleWs } from 'drizzle-orm/neon-serverless';
 import ws from 'ws';
 
 let connectionString = process.env.DATABASE_URL;
@@ -24,7 +23,6 @@ if (!connectionString) {
 }
 
 const sql = neon(connectionString);
-const pool = new Pool({ connectionString });
 
 // Drizzle supports both HTTP and WebSocket clients. Choose the one that fits your needs:
 
@@ -40,4 +38,5 @@ export const drizzleClientHttp = drizzleHttp({ client: sql });
 // - Maintains a persistent connection
 // - More efficient for multiple sequential queries
 // - Better for high-frequency database operations
-export const drizzleClientWs = drizzleWs({ client: pool });
+// const pool = new Pool({ connectionString });
+// export const drizzleClientWs = drizzleWs({ client: pool });
