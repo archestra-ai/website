@@ -2,13 +2,17 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { and, eq } from 'drizzle-orm';
 import { NextRequest } from 'next/server';
 
+import constants from '@constants';
 import { auth } from '@lib/db/auth';
 import { drizzleClientHttp } from '@lib/db/db';
 import { rateLimitTable } from '@lib/db/schema/rate-limit';
 
-// Configuration
-const DAILY_TOKEN_LIMIT = parseInt(process.env.DAILY_TOKEN_LIMIT || '100000', 10);
-const MAX_REQUESTS_PER_DAY = parseInt(process.env.MAX_REQUESTS_PER_DAY || '1000', 10);
+const {
+  inference: {
+    geminiApiKey,
+    rateLimits: { dailyTokenLimit, maxRequestsPerDay },
+  },
+} = constants;
 
 async function checkAndUpdateRateLimit(
   userId: string,
@@ -48,14 +52,14 @@ async function checkAndUpdateRateLimit(
   if (tokensToAdd === 0) {
     // Just checking, not updating
     return {
-      allowed: current.tokensUsed < DAILY_TOKEN_LIMIT && current.requestCount < MAX_REQUESTS_PER_DAY,
+      allowed: current.tokensUsed < dailyTokenLimit && current.requestCount < maxRequestsPerDay,
       tokensUsed: current.tokensUsed,
       requestCount: current.requestCount,
     };
   }
 
   // Check if adding these tokens would exceed the limit
-  if (current.tokensUsed + tokensToAdd > DAILY_TOKEN_LIMIT || current.requestCount >= MAX_REQUESTS_PER_DAY) {
+  if (current.tokensUsed + tokensToAdd > dailyTokenLimit || current.requestCount >= maxRequestsPerDay) {
     return {
       allowed: false,
       tokensUsed: current.tokensUsed,
@@ -82,7 +86,7 @@ async function checkAndUpdateRateLimit(
 
 export async function POST(request: NextRequest) {
   // Validate that API key is configured
-  if (!process.env.GOOGLE_API_TOKEN) {
+  if (!geminiApiKey) {
     return new Response(JSON.stringify({ error: 'GOOGLE_API_TOKEN not configured' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
@@ -133,10 +137,10 @@ export async function POST(request: NextRequest) {
       JSON.stringify({
         error: 'Rate limit exceeded',
         details: {
-          dailyTokenLimit: DAILY_TOKEN_LIMIT,
+          dailyTokenLimit,
           tokensUsed: rateLimitCheck.tokensUsed,
           requestCount: rateLimitCheck.requestCount,
-          maxRequestsPerDay: MAX_REQUESTS_PER_DAY,
+          maxRequestsPerDay,
         },
       }),
       {
@@ -154,7 +158,7 @@ export async function POST(request: NextRequest) {
     console.log('Request body', body);
 
     // Initialize Google Generative AI with API key from environment
-    const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_TOKEN);
+    const genAI = new GoogleGenerativeAI(geminiApiKey);
 
     // Initialize the Gemini 2.5 Flash model
     const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });

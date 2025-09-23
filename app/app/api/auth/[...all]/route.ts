@@ -8,12 +8,12 @@ const handler = toNextJsHandler(auth);
 // Wrap the GET handler to intercept successful authentication
 export async function GET(req: NextRequest) {
   const response = await handler.GET(req);
-  
+
   // Check if this is a successful OAuth callback
   const url = new URL(req.url);
   const isCallback = url.pathname.includes('/callback/');
   const callbackUrl = url.searchParams.get('callbackURL');
-  
+
   // If this is a successful OAuth callback and we have a desktop callback URL
   if (isCallback && callbackUrl?.includes('archestra-ai://')) {
     try {
@@ -24,7 +24,7 @@ export async function GET(req: NextRequest) {
         const sessionMatch = sessionCookie.match(/better-auth.session_token=([^;]+)/);
         if (sessionMatch) {
           const sessionToken = sessionMatch[1];
-          
+
           // Redirect to the desktop app with the session token
           const deepLinkUrl = `archestra-ai://auth-success?token=${encodeURIComponent(sessionToken)}`;
           return NextResponse.redirect(deepLinkUrl);
@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
       console.error('Error handling OAuth callback:', error);
     }
   }
-  
+
   return response;
 }
 
