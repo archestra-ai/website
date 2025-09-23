@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { NextRequest } from 'next/server';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import constants from '@constants';
 import { auth } from '@lib/db/auth';
@@ -52,7 +53,25 @@ describe('Rate Limiting Tests', () => {
   const mockUserId = 'test-user-123';
   const mockToday = new Date().toISOString().split('T')[0];
   const mockSession = {
-    user: { id: mockUserId },
+    session: {
+      id: 'session-123',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      userId: mockUserId,
+      expiresAt: new Date(Date.now() + 86400000),
+      token: 'test-token',
+      ipAddress: '127.0.0.1',
+      userAgent: 'test-agent',
+    },
+    user: {
+      id: mockUserId,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      email: 'test@example.com',
+      emailVerified: true,
+      name: 'Test User',
+      image: null,
+    },
   };
 
   beforeEach(() => {
@@ -61,7 +80,7 @@ describe('Rate Limiting Tests', () => {
     vi.spyOn(console, 'error').mockImplementation(() => {});
   });
 
-  describe('checkAndUpdateRateLimit function behavior', () => {
+  describe('checkAndUpdateTokenUsage function behavior', () => {
     it('should allow first request of the day and create a new record', async () => {
       // Mock auth session
       vi.mocked(auth.api.getSession).mockResolvedValue(mockSession);
@@ -112,7 +131,7 @@ describe('Rate Limiting Tests', () => {
       const response = await POST(request);
       expect(response.status).toBe(200);
 
-      // Verify rate limit check was called (select)
+      // Verify token usage check was called (select)
       expect(mockSelect).toHaveBeenCalled();
 
       // Verify new record was NOT created during initial check
@@ -327,7 +346,27 @@ describe('Rate Limiting Tests', () => {
       const userId2 = 'user-2';
 
       // First user at limit
-      vi.mocked(auth.api.getSession).mockResolvedValueOnce({ user: { id: userId1 } });
+      vi.mocked(auth.api.getSession).mockResolvedValueOnce({
+        session: {
+          id: 'session-1',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          userId: userId1,
+          expiresAt: new Date(Date.now() + 86400000),
+          token: 'test-token-1',
+          ipAddress: '127.0.0.1',
+          userAgent: 'test-agent',
+        },
+        user: {
+          id: userId1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          email: 'user1@example.com',
+          emailVerified: true,
+          name: 'User 1',
+          image: null,
+        },
+      });
       const mockSelect1 = vi.fn().mockReturnValue({
         from: vi.fn().mockReturnValue({
           where: vi.fn().mockReturnValue({
@@ -360,7 +399,27 @@ describe('Rate Limiting Tests', () => {
       expect(response1.status).toBe(429);
 
       // Second user under limit
-      vi.mocked(auth.api.getSession).mockResolvedValueOnce({ user: { id: userId2 } });
+      vi.mocked(auth.api.getSession).mockResolvedValueOnce({
+        session: {
+          id: 'session-2',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          userId: userId2,
+          expiresAt: new Date(Date.now() + 86400000),
+          token: 'test-token-2',
+          ipAddress: '127.0.0.1',
+          userAgent: 'test-agent',
+        },
+        user: {
+          id: userId2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          email: 'user2@example.com',
+          emailVerified: true,
+          name: 'User 2',
+          image: null,
+        },
+      });
       const mockSelect2 = vi.fn().mockReturnValue({
         from: vi.fn().mockReturnValue({
           where: vi.fn().mockReturnValue({
@@ -420,9 +479,6 @@ describe('Rate Limiting Tests', () => {
     });
 
     it('should reset limits for a new day', async () => {
-      const yesterday = new Date();
-      yesterday.setDate(yesterday.getDate() - 1);
-      const yesterdayStr = yesterday.toISOString().split('T')[0];
 
       // Mock auth session
       vi.mocked(auth.api.getSession).mockResolvedValue(mockSession);
@@ -481,7 +537,7 @@ describe('Rate Limiting Tests', () => {
   describe('Authentication and Authorization', () => {
     it('should return 401 when no session exists', async () => {
       // Mock no session
-      vi.mocked(auth.api.getSession).mockResolvedValue(null);
+      vi.mocked(auth.api.getSession).mockResolvedValue(null as any);
 
       const request = new NextRequest('http://localhost:3000/api/llm-proxy', {
         method: 'POST',
