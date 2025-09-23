@@ -43,7 +43,7 @@ export function UserProfile({ isMobile = false }: UserProfileProps) {
 
   const linkDesktopAppButton = (
     <Button
-      onClick={() => window.open(`archestra-ai://open-desktop-app?token=${sessionData?.session?.token}`, '_self')}
+      onClick={() => { window.location.href = `archestra-ai://open-desktop-app?token=${sessionData?.session?.token}`; }}
       variant="outline"
       size="sm"
       className="w-full"
