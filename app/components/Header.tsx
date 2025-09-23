@@ -6,7 +6,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import { GitHubStarButton } from '@components/GitHubStarButton';
+import { UserProfile } from '@components/UserProfile';
 import constants from '@constants';
+import { authClient } from '@lib/auth-client';
 
 const {
   company: { name: companyName },
@@ -16,6 +18,22 @@ const {
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { data: session, isPending } = authClient.useSession();
+
+  const handleGoogleSignIn = async () => {
+    setIsLoading(true);
+    try {
+      await authClient.signIn.social({
+        provider: 'google',
+        callbackURL: '/',
+      });
+    } catch (error) {
+      console.error('Sign in error:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <header className="border-b border-gray-200 bg-white">
@@ -67,9 +85,22 @@ export default function Header() {
           </nav>
         </div>
 
-        {/* GitHub Star Button - Desktop */}
-        <div className="hidden lg:block">
+        {/* Right side - GitHub Star + Auth */}
+        <div className="hidden lg:flex items-center gap-4">
           <GitHubStarButton />
+          {isPending ? (
+            <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
+          ) : session ? (
+            <UserProfile user={session.user} />
+          ) : (
+            <button
+              onClick={handleGoogleSignIn}
+              disabled={isLoading}
+              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoading ? 'Signing in...' : 'Sign In'}
+            </button>
+          )}
         </div>
 
         {/* Mobile hamburger button and GitHub star */}
@@ -87,7 +118,7 @@ export default function Header() {
 
       {/* Mobile menu dropdown */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden border-t border-gray-200 bg-white">
+        <div className="lg:hidden border-t border-gray-200" style={{ backgroundColor: '#f4f4f4' }}>
           <nav className="flex flex-col px-4 py-2">
             <Link
               href="/enterprise-platform"
@@ -136,6 +167,28 @@ export default function Header() {
             >
               Slack Community
             </a>
+
+            <div className="border-t border-gray-200 my-2" />
+
+            {/* Auth section */}
+            {isPending ? (
+              <div className="px-3 py-2">
+                <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
+              </div>
+            ) : session ? (
+              <UserProfile user={session.user} isMobile />
+            ) : (
+              <button
+                onClick={() => {
+                  handleGoogleSignIn();
+                  setIsMobileMenuOpen(false);
+                }}
+                disabled={isLoading}
+                className="px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full text-left"
+              >
+                {isLoading ? 'Signing in...' : 'Sign In'}
+              </button>
+            )}
           </nav>
         </div>
       )}
