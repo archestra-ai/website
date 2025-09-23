@@ -93,36 +93,15 @@ export async function POST(request: NextRequest) {
     });
   }
 
-  // Extract and validate the authorization token
-  const authHeader = request.headers.get('authorization');
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return new Response(JSON.stringify({ error: 'Missing or invalid authorization header' }), {
-      status: 401,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
+  const session = await auth.api.getSession({
+    headers: request.headers,
+  });
 
-  const token = authHeader.substring(7); // Remove 'Bearer ' prefix
+  console.log(session);
 
-  // Verify the session token using better-auth
-  let session;
-  try {
-    const headers = new Headers();
-    headers.set('cookie', `better-auth.session_token=${token}`);
-
-    session = await auth.api.getSession({
-      headers: headers,
-    });
-
-    if (!session?.user) {
-      return new Response(JSON.stringify({ error: 'Invalid or expired token' }), {
-        status: 401,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-  } catch (error) {
-    console.error('Token validation error:', error);
-    return new Response(JSON.stringify({ error: 'Invalid token' }), {
+  // Check if user is authenticated
+  if (!session) {
+    return new Response(JSON.stringify({ error: 'Unauthorized - No valid session' }), {
       status: 401,
       headers: { 'Content-Type': 'application/json' },
     });
