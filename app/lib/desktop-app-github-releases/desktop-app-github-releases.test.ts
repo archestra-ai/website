@@ -78,52 +78,6 @@ describe('desktop-app-github-releases', () => {
       });
     });
 
-    it('should cache the release data', async () => {
-      (global.fetch as any).mockResolvedValueOnce({
-        ok: true,
-        json: async () => mockRelease,
-      });
-
-      await fetchLatestRelease();
-
-      expect(localStorageMock.setItem).toHaveBeenCalledWith(
-        'archestra-latest-release',
-        expect.stringContaining('"v1.0.0"')
-      );
-    });
-
-    it('should return cached data if still valid', async () => {
-      const cachedData = {
-        data: mockRelease,
-        timestamp: Date.now() - 1000, // 1 second ago
-      };
-      localStorageMock.store['archestra-latest-release'] = JSON.stringify(cachedData);
-
-      const result = await fetchLatestRelease();
-
-      expect(result).toEqual(mockRelease);
-      expect(global.fetch).not.toHaveBeenCalled();
-    });
-
-    it('should fetch new data if cache is expired', async () => {
-      const cachedData = {
-        data: mockRelease,
-        timestamp: Date.now() - 6 * 60 * 1000, // 6 minutes ago (expired)
-      };
-      localStorageMock.store['archestra-latest-release'] = JSON.stringify(cachedData);
-
-      (global.fetch as any).mockResolvedValueOnce({
-        ok: true,
-        json: async () => ({ ...mockRelease, tag_name: 'v1.0.1' }),
-      });
-
-      const result = await fetchLatestRelease();
-
-      expect(result?.tag_name).toBe('v1.0.1');
-      expect(global.fetch).toHaveBeenCalled();
-      expect(localStorageMock.removeItem).toHaveBeenCalledWith('archestra-latest-release');
-    });
-
     it('should handle API errors gracefully', async () => {
       (global.fetch as any).mockResolvedValueOnce({
         ok: false,
@@ -141,20 +95,6 @@ describe('desktop-app-github-releases', () => {
       const result = await fetchLatestRelease();
 
       expect(result).toBeNull();
-    });
-
-    it('should handle invalid cache data gracefully', async () => {
-      localStorageMock.store['archestra-latest-release'] = 'invalid json';
-
-      (global.fetch as any).mockResolvedValueOnce({
-        ok: true,
-        json: async () => mockRelease,
-      });
-
-      const result = await fetchLatestRelease();
-
-      expect(result).toEqual(mockRelease);
-      expect(global.fetch).toHaveBeenCalled();
     });
   });
 

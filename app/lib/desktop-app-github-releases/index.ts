@@ -25,57 +25,8 @@ const {
 } = constants;
 
 const GITHUB_API_URL = `https://api.github.com/repos/${githubOrgName}/${desktopAppRepoName}/releases/latest`;
-const CACHE_KEY = 'archestra-latest-release';
-const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
-
-interface CachedRelease {
-  data: GitHubRelease;
-  timestamp: number;
-}
-
-function getCachedRelease(): GitHubRelease | null {
-  if (typeof window === 'undefined') return null;
-
-  try {
-    const cached = localStorage.getItem(CACHE_KEY);
-    if (!cached) return null;
-
-    const { data, timestamp }: CachedRelease = JSON.parse(cached);
-
-    // Check if cache is still valid
-    if (Date.now() - timestamp > CACHE_TTL) {
-      localStorage.removeItem(CACHE_KEY);
-      return null;
-    }
-
-    return data;
-  } catch (error) {
-    console.error('Error reading cache:', error);
-    return null;
-  }
-}
-
-function setCachedRelease(release: GitHubRelease): void {
-  if (typeof window === 'undefined') return;
-
-  try {
-    const cacheData: CachedRelease = {
-      data: release,
-      timestamp: Date.now(),
-    };
-    localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData));
-  } catch (error) {
-    console.error('Error setting cache:', error);
-  }
-}
 
 export async function fetchLatestRelease(): Promise<GitHubRelease | null> {
-  // Check cache first
-  const cached = getCachedRelease();
-  if (cached) {
-    return cached;
-  }
-
   try {
     const response = await fetch(GITHUB_API_URL, {
       headers: {
@@ -88,10 +39,6 @@ export async function fetchLatestRelease(): Promise<GitHubRelease | null> {
     }
 
     const release: GitHubRelease = await response.json();
-
-    // Cache the result
-    setCachedRelease(release);
-
     return release;
   } catch (error) {
     console.error('Error fetching latest release:', error);
