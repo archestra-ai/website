@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "db:studio": "pnpm drizzle-kit studio",
     "db:generate": "pnpm drizzle-kit generate",
     "db:migrate": "pnpm drizzle-kit migrate",
     "build": "pnpm db:migrate && next build",
     "build:check": "next build",
+    "dev": "pnpm drizzle-kit up && next dev",
     "start": "next start",
     "test": "vitest",
     "prettier": "prettier --write .",
