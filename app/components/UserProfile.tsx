@@ -41,23 +41,9 @@ export function UserProfile({ isMobile = false }: UserProfileProps) {
     .toUpperCase()
     .slice(0, 2);
 
-  const linkDesktopAppButton = (
-    <Button
-      onClick={() => {
-        window.location.href = `archestra-ai://open-desktop-app?token=${sessionData?.session?.token}`;
-      }}
-      variant="outline"
-      size="sm"
-      className="w-full"
-    >
-      Link Desktop App
-    </Button>
-  );
-
   if (isMobile) {
     return (
       <div className="px-3 py-2">
-        {linkDesktopAppButton}
         <Button onClick={handleSignOut} disabled={isLoading} variant="outline" size="sm" className="w-full mt-2">
           <LogOut className="mr-2 h-4 w-4" />
           {isLoading ? 'Signing out...' : 'Sign out'}
@@ -90,8 +76,6 @@ export function UserProfile({ isMobile = false }: UserProfileProps) {
 
           {/* Dropdown */}
           <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 z-20">
-            <div className="p-2">{linkDesktopAppButton}</div>
-
             <div className="p-2">
               <Button onClick={handleSignOut} disabled={isLoading} variant="outline" size="sm" className="w-full">
                 <LogOut className="mr-2 h-4 w-4" />
