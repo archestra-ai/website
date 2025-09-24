@@ -17,9 +17,9 @@ const {
 async function checkAndUpdateTokenUsage(
   userId: string,
   tokensToAdd: number = 0
-): Promise<{ 
-  allowed: boolean; 
-  tokensUsed: number; 
+): Promise<{
+  allowed: boolean;
+  tokensUsed: number;
   globalLimitExceeded?: boolean;
   totalTokensUsedToday?: number;
 }> {
@@ -135,7 +135,7 @@ export async function POST(request: NextRequest) {
     const errorMessage = tokenUsageCheck.globalLimitExceeded
       ? 'Global daily token limit exceeded'
       : 'Rate limit exceeded';
-    
+
     const errorDetails: any = tokenUsageCheck.globalLimitExceeded
       ? {
           dailyTotalTokenUsageLimit,
