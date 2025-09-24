@@ -43,6 +43,7 @@ vi.mock('@constants', () => ({
       geminiApiKey: 'test-api-key',
       rateLimits: {
         dailyTokenLimit: 3_000_000,
+        dailyTotalTokenUsageLimit: 150_000_000,
       },
     },
   },
@@ -255,7 +256,17 @@ describe('Rate Limiting Tests', () => {
       const mockSelect = vi.fn();
       mockSelect
         .mockReturnValueOnce({
-          // First call - check before request
+          // First call - check global total
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockResolvedValue([
+              {
+                totalTokens: 5_000_000, // Well under global limit
+              },
+            ]),
+          }),
+        })
+        .mockReturnValueOnce({
+          // Second call - check user's usage before request
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockReturnValue({
               limit: vi.fn().mockResolvedValue([
@@ -273,7 +284,17 @@ describe('Rate Limiting Tests', () => {
           }),
         })
         .mockReturnValueOnce({
-          // Second call - after token usage
+          // Third call - check global total after token usage
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockResolvedValue([
+              {
+                totalTokens: 5_000_000, // Still under global limit
+              },
+            ]),
+          }),
+        })
+        .mockReturnValueOnce({
+          // Fourth call - check user's usage after token usage
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockReturnValue({
               limit: vi.fn().mockResolvedValue([
@@ -389,24 +410,39 @@ describe('Rate Limiting Tests', () => {
           image: null,
         },
       } as MockSessionReturnType);
-      const mockSelect1 = vi.fn().mockReturnValue({
-        from: vi.fn().mockReturnValue({
-          where: vi.fn().mockReturnValue({
-            limit: vi.fn().mockResolvedValue([
+
+      // First user's mock selects (global check, then user check)
+      const mockSelect1 = vi.fn();
+      mockSelect1
+        .mockReturnValueOnce({
+          // Check global total - under limit
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockResolvedValue([
               {
-                id: `${userId1}_${mockToday}`,
-                userId: userId1,
-                date: mockToday,
-                tokensUsed: 3_000_000,
-                requestCount: 100,
-                createdAt: new Date(),
-                updatedAt: new Date(),
+                totalTokens: 10_000_000, // Under global limit
               },
             ]),
           }),
-        }),
-      });
-      vi.mocked(drizzleClientHttp.select).mockImplementationOnce(mockSelect1);
+        })
+        .mockReturnValueOnce({
+          // Check user 1's usage - at personal limit
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockReturnValue({
+              limit: vi.fn().mockResolvedValue([
+                {
+                  id: `${userId1}_${mockToday}`,
+                  userId: userId1,
+                  date: mockToday,
+                  tokensUsed: 3_000_000,
+                  requestCount: 100,
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                },
+              ]),
+            }),
+          }),
+        });
+      vi.mocked(drizzleClientHttp.select).mockImplementation(mockSelect1);
 
       // First request - should be rejected
       const request1 = new NextRequest('http://localhost:3000/api/llm-proxy', {
@@ -442,24 +478,39 @@ describe('Rate Limiting Tests', () => {
           image: null,
         },
       } as MockSessionReturnType);
-      const mockSelect2 = vi.fn().mockReturnValue({
-        from: vi.fn().mockReturnValue({
-          where: vi.fn().mockReturnValue({
-            limit: vi.fn().mockResolvedValue([
+
+      // Second user's mock selects (global check, then user check)
+      const mockSelect2 = vi.fn();
+      mockSelect2
+        .mockReturnValueOnce({
+          // Check global total - still under limit
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockResolvedValue([
               {
-                id: `${userId2}_${mockToday}`,
-                userId: userId2,
-                date: mockToday,
-                tokensUsed: 100,
-                requestCount: 1,
-                createdAt: new Date(),
-                updatedAt: new Date(),
+                totalTokens: 10_000_100, // Still under global limit
               },
             ]),
           }),
-        }),
-      });
-      vi.mocked(drizzleClientHttp.select).mockImplementationOnce(mockSelect2);
+        })
+        .mockReturnValueOnce({
+          // Check user 2's usage - well under limit
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockReturnValue({
+              limit: vi.fn().mockResolvedValue([
+                {
+                  id: `${userId2}_${mockToday}`,
+                  userId: userId2,
+                  date: mockToday,
+                  tokensUsed: 100,
+                  requestCount: 1,
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                },
+              ]),
+            }),
+          }),
+        });
+      vi.mocked(drizzleClientHttp.select).mockImplementation(mockSelect2);
 
       // Mock update for second user
       const mockUpdate = vi.fn().mockReturnValue({
@@ -498,6 +549,298 @@ describe('Rate Limiting Tests', () => {
 
       const response2 = await POST(request2);
       expect(response2.status).toBe(200);
+    });
+
+    it('should reject request when global daily token limit is exceeded', async () => {
+      // Mock auth session
+      vi.mocked(auth.api.getSession).mockResolvedValue(mockSession);
+
+      // Mock database - global limit exceeded (sum of all users)
+      const mockSelect = vi.fn();
+      mockSelect
+        .mockReturnValueOnce({
+          // First call - check global total
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockResolvedValue([
+              {
+                totalTokens: 150_000_001, // Just over global limit
+              },
+            ]),
+          }),
+        })
+        .mockReturnValueOnce({
+          // Second call - check user's usage
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockReturnValue({
+              limit: vi.fn().mockResolvedValue([
+                {
+                  id: `${mockUserId}_${mockToday}`,
+                  userId: mockUserId,
+                  date: mockToday,
+                  tokensUsed: 100, // User is well under their limit
+                  requestCount: 1,
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                },
+              ]),
+            }),
+          }),
+        });
+      vi.mocked(drizzleClientHttp.select).mockImplementation(mockSelect);
+
+      // Create request
+      const request = new NextRequest('http://localhost:3000/api/llm-proxy', {
+        method: 'POST',
+        body: JSON.stringify({
+          contents: [{ text: 'Hello' }],
+          generationConfig: {},
+        }),
+      });
+
+      const response = await POST(request);
+      expect(response.status).toBe(429);
+
+      const body = await response.json();
+      expect(body.error).toBe('Global daily token limit exceeded');
+      expect(body.details.dailyTotalTokenUsageLimit).toBe(150_000_000);
+      expect(body.details.totalTokensUsedToday).toBe(150_000_001);
+      expect(body.details.message).toContain('total token usage across all users');
+    });
+
+    it('should track total usage across multiple users', async () => {
+      const userId1 = 'user-1';
+      const userId2 = 'user-2';
+
+      // First user makes a request
+      vi.mocked(auth.api.getSession).mockResolvedValueOnce({
+        session: {
+          id: 'session-1',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          userId: userId1,
+          expiresAt: new Date(Date.now() + 86400000),
+          token: 'test-token-1',
+          ipAddress: '127.0.0.1',
+          userAgent: 'test-agent',
+        },
+        user: {
+          id: userId1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          email: 'user1@example.com',
+          emailVerified: true,
+          name: 'User 1',
+          image: null,
+        },
+      } as MockSessionReturnType);
+
+      // Mock for first user - total is under limit but close
+      const mockSelect1 = vi.fn();
+      mockSelect1
+        .mockReturnValueOnce({
+          // Check global total - close but under
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockResolvedValue([
+              {
+                totalTokens: 149_999_000, // Close to limit but not over
+              },
+            ]),
+          }),
+        })
+        .mockReturnValueOnce({
+          // Check user 1's usage
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockReturnValue({
+              limit: vi.fn().mockResolvedValue([
+                {
+                  id: `${userId1}_${mockToday}`,
+                  userId: userId1,
+                  date: mockToday,
+                  tokensUsed: 1_000_000, // Under personal limit
+                  requestCount: 100,
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                },
+              ]),
+            }),
+          }),
+        })
+        .mockReturnValueOnce({
+          // Third call (after stream) - check global total for update
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockResolvedValue([
+              {
+                totalTokens: 149_999_000,
+              },
+            ]),
+          }),
+        })
+        .mockReturnValueOnce({
+          // Fourth call (after stream) - check user's usage for update
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockReturnValue({
+              limit: vi.fn().mockResolvedValue([
+                {
+                  id: `${userId1}_${mockToday}`,
+                  userId: userId1,
+                  date: mockToday,
+                  tokensUsed: 1_000_000, // Under personal limit
+                  requestCount: 100,
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                },
+              ]),
+            }),
+          }),
+        });
+      vi.mocked(drizzleClientHttp.select).mockImplementation(mockSelect1);
+
+      // Mock update for user 1
+      const mockUpdate = vi.fn().mockReturnValue({
+        set: vi.fn().mockReturnValue({
+          where: vi.fn().mockResolvedValue(undefined),
+        }),
+      });
+      vi.mocked(drizzleClientHttp.update).mockImplementation(mockUpdate);
+
+      // Mock successful Gemini API response
+      const mockStream = {
+        stream: (async function* () {
+          yield {
+            candidates: [{ content: { text: 'test' }, finishReason: 'STOP', index: 0 }],
+            usageMetadata: { promptTokenCount: 10, candidatesTokenCount: 5, totalTokenCount: 15 },
+          };
+        })(),
+        response: Promise.resolve({
+          candidates: [{ content: { text: 'test' }, finishReason: 'STOP' }],
+          usageMetadata: { promptTokenCount: 10, candidatesTokenCount: 5, totalTokenCount: 15 },
+        }),
+      };
+
+      const genAI = new GoogleGenerativeAI('test-key');
+      const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+      vi.mocked(model.generateContentStream).mockResolvedValue(mockStream as any);
+
+      // First request should succeed
+      const request1 = new NextRequest('http://localhost:3000/api/llm-proxy', {
+        method: 'POST',
+        body: JSON.stringify({
+          contents: [{ text: 'Hello' }],
+          generationConfig: {},
+        }),
+      });
+
+      const response1 = await POST(request1);
+      expect(response1.status).toBe(200);
+
+      // Second user tries when total is now over limit
+      vi.mocked(auth.api.getSession).mockResolvedValueOnce({
+        session: {
+          id: 'session-2',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          userId: userId2,
+          expiresAt: new Date(Date.now() + 86400000),
+          token: 'test-token-2',
+          ipAddress: '127.0.0.1',
+          userAgent: 'test-agent',
+        },
+        user: {
+          id: userId2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          email: 'user2@example.com',
+          emailVerified: true,
+          name: 'User 2',
+          image: null,
+        },
+      } as MockSessionReturnType);
+
+      // Mock for second user - total is now over limit
+      const mockSelect2 = vi.fn();
+      mockSelect2.mockReturnValueOnce({
+        // Check global total - now exceeded
+        from: vi.fn().mockReturnValue({
+          where: vi.fn().mockResolvedValue([
+            {
+              totalTokens: 150_000_100, // Over global limit
+            },
+          ]),
+        }),
+      });
+      vi.mocked(drizzleClientHttp.select).mockImplementation(mockSelect2);
+
+      // Second request should be rejected due to global limit
+      const request2 = new NextRequest('http://localhost:3000/api/llm-proxy', {
+        method: 'POST',
+        body: JSON.stringify({
+          contents: [{ text: 'Hello' }],
+          generationConfig: {},
+        }),
+      });
+
+      const response2 = await POST(request2);
+      expect(response2.status).toBe(429);
+      const body2 = await response2.json();
+      expect(body2.error).toBe('Global daily token limit exceeded');
+    });
+
+    it('should allow requests when global limit is not exceeded even if one user is at their limit', async () => {
+      // Mock auth session
+      vi.mocked(auth.api.getSession).mockResolvedValue(mockSession);
+
+      // First call - user at their personal limit but global is OK
+      const mockSelect = vi.fn();
+      mockSelect
+        .mockReturnValueOnce({
+          // Check global total - well under limit
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockResolvedValue([
+              {
+                totalTokens: 10_000_000, // Well under global limit
+              },
+            ]),
+          }),
+        })
+        .mockReturnValueOnce({
+          // Check user's usage - at personal limit
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockReturnValue({
+              limit: vi.fn().mockResolvedValue([
+                {
+                  id: `${mockUserId}_${mockToday}`,
+                  userId: mockUserId,
+                  date: mockToday,
+                  tokensUsed: 3_000_000, // At personal daily limit
+                  requestCount: 100,
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                },
+              ]),
+            }),
+          }),
+        });
+      vi.mocked(drizzleClientHttp.select).mockImplementation(mockSelect);
+
+      // Create request
+      const request = new NextRequest('http://localhost:3000/api/llm-proxy', {
+        method: 'POST',
+        body: JSON.stringify({
+          contents: [{ text: 'Hello' }],
+          generationConfig: {},
+        }),
+      });
+
+      const response = await POST(request);
+      expect(response.status).toBe(429);
+
+      const body = await response.json();
+      // Should be personal limit error, not global
+      expect(body.error).toBe('Rate limit exceeded');
+      expect(body.details.dailyTokenLimit).toBe(3_000_000);
+      expect(body.details.tokensUsed).toBe(3_000_000);
+      // Should not have global limit details
+      expect(body.details.dailyTotalTokenUsageLimit).toBeUndefined();
     });
 
     it('should reset limits for a new day', async () => {
@@ -552,6 +895,73 @@ describe('Rate Limiting Tests', () => {
 
       // Verify that select was called to check for today's record
       expect(mockSelect).toHaveBeenCalled();
+    });
+
+    it('should reset global limit tracking on a new day', async () => {
+      // Mock auth session
+      vi.mocked(auth.api.getSession).mockResolvedValue(mockSession);
+
+      // Mock database - new day, no records yet so total is 0
+      const mockSelect = vi.fn();
+      mockSelect
+        .mockReturnValueOnce({
+          // Check global total for new day - should be 0
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockResolvedValue([
+              {
+                totalTokens: 0, // No usage yet today
+              },
+            ]),
+          }),
+        })
+        .mockReturnValueOnce({
+          // Check user's usage - no record for today
+          from: vi.fn().mockReturnValue({
+            where: vi.fn().mockReturnValue({
+              limit: vi.fn().mockResolvedValue([]), // No record for today
+            }),
+          }),
+        });
+      vi.mocked(drizzleClientHttp.select).mockImplementation(mockSelect);
+
+      // Mock insert for new day's record
+      const mockInsert = vi.fn().mockReturnValue({
+        values: vi.fn().mockResolvedValue(undefined),
+      });
+      vi.mocked(drizzleClientHttp.insert).mockImplementation(mockInsert);
+
+      // Mock successful Gemini API response
+      const mockStream = {
+        stream: (async function* () {
+          yield {
+            candidates: [{ content: { text: 'test' }, finishReason: 'STOP', index: 0 }],
+            usageMetadata: { promptTokenCount: 10, candidatesTokenCount: 5, totalTokenCount: 15 },
+          };
+        })(),
+        response: Promise.resolve({
+          candidates: [{ content: { text: 'test' }, finishReason: 'STOP' }],
+          usageMetadata: { promptTokenCount: 10, candidatesTokenCount: 5, totalTokenCount: 15 },
+        }),
+      };
+
+      const genAI = new GoogleGenerativeAI('test-key');
+      const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+      vi.mocked(model.generateContentStream).mockResolvedValue(mockStream as any);
+
+      // Create request
+      const request = new NextRequest('http://localhost:3000/api/llm-proxy', {
+        method: 'POST',
+        body: JSON.stringify({
+          contents: [{ text: 'Hello' }],
+          generationConfig: {},
+        }),
+      });
+
+      const response = await POST(request);
+      expect(response.status).toBe(200);
+
+      // Verify both selects were called (global total and user usage)
+      expect(mockSelect).toHaveBeenCalledTimes(2);
     });
   });
 });
