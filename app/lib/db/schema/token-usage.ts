@@ -5,6 +5,7 @@ export const tokenUsageTable = pgTable(
   {
     id: text('id').primaryKey(),
     userId: text('user_id').notNull(),
+    chatId: text('chat_id').notNull(),
     date: text('date').notNull(), // Format: YYYY-MM-DD
     tokensUsed: integer('tokens_used').notNull().default(0),
     createdAt: timestamp('created_at').defaultNow().notNull(),
@@ -14,7 +15,7 @@ export const tokenUsageTable = pgTable(
       .notNull(),
   },
   (table) => ({
-    userDateIdx: uniqueIndex('user_date_idx').on(table.userId, table.date),
+    userDateChatIdx: uniqueIndex('user_date_chat_idx').on(table.userId, table.date, table.chatId),
   })
 );
 

@@ -15,6 +15,13 @@
       "when": 1758659695762,
       "tag": "0001_talented_paper_doll",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1758755366472,
+      "tag": "0002_married_midnight",
+      "breakpoints": true
     }
   ]
 }
