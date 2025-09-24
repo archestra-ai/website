@@ -252,13 +252,8 @@ export async function POST(request: NextRequest) {
         // Get the final response for complete metadata
         const finalResponse = await result.response;
 
-        // Send final chunk with complete metadata
+        // Send final chunk with metadata only (content was already streamed)
         const finalChunk = {
-          candidates: finalResponse.candidates?.map((candidate: any, index: number) => ({
-            content: candidate.content,
-            finishReason: candidate.finishReason,
-            index: index,
-          })),
           usageMetadata: finalResponse.usageMetadata,
           modelVersion: modelVersion || 'gemini-2.5-pro',
           responseId: responseId,
