@@ -108,11 +108,15 @@
         }
       }
     },
-    "oauth": {
-      "provider": null,
-      "required": false
+   "oauth": {
+      "provider": "supabase",
+      "required": true
     },
-    "works_in_archestra": false
+    "browser_based": {
+      "provider": "supabase-browser",
+      "required": true
+    },
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "supabase-community",
