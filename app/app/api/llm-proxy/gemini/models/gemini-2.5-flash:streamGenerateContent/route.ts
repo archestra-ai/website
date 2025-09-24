@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { and, eq } from 'drizzle-orm';
+import { and, eq, sql } from 'drizzle-orm';
 import { NextRequest } from 'next/server';
 
 import constants from '@constants';
@@ -10,15 +10,40 @@ import { tokenUsageTable } from '@lib/db/schema/token-usage';
 const {
   inference: {
     geminiApiKey,
-    rateLimits: { dailyTokenLimit },
+    rateLimits: { dailyTokenLimit, dailyTotalTokenUsageLimit },
   },
 } = constants;
 
 async function checkAndUpdateTokenUsage(
   userId: string,
   tokensToAdd: number = 0
-): Promise<{ allowed: boolean; tokensUsed: number }> {
+): Promise<{ 
+  allowed: boolean; 
+  tokensUsed: number; 
+  globalLimitExceeded?: boolean;
+  totalTokensUsedToday?: number;
+}> {
   const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+
+  // First check the global daily limit across all users
+  const totalUsageResult = await drizzleClientHttp
+    .select({
+      totalTokens: sql<number>`COALESCE(SUM(${tokenUsageTable.tokensUsed}), 0)`,
+    })
+    .from(tokenUsageTable)
+    .where(eq(tokenUsageTable.date, today));
+
+  const totalTokensUsedToday = Number(totalUsageResult[0]?.totalTokens || 0);
+
+  // Check if global limit would be exceeded
+  if (totalTokensUsedToday + tokensToAdd > dailyTotalTokenUsageLimit) {
+    return {
+      allowed: false,
+      tokensUsed: 0,
+      globalLimitExceeded: true,
+      totalTokensUsedToday,
+    };
+  }
 
   // Get or create token usage record for today
   const existingLimit = await drizzleClientHttp
@@ -107,13 +132,25 @@ export async function POST(request: NextRequest) {
   // Check token usage limit before processing
   const tokenUsageCheck = await checkAndUpdateTokenUsage(userId, 0);
   if (!tokenUsageCheck.allowed) {
-    return new Response(
-      JSON.stringify({
-        error: 'Rate limit exceeded',
-        details: {
+    const errorMessage = tokenUsageCheck.globalLimitExceeded
+      ? 'Global daily token limit exceeded'
+      : 'Rate limit exceeded';
+    
+    const errorDetails: any = tokenUsageCheck.globalLimitExceeded
+      ? {
+          dailyTotalTokenUsageLimit,
+          totalTokensUsedToday: tokenUsageCheck.totalTokensUsedToday,
+          message: 'The total token usage across all users has exceeded the daily limit. Please try again tomorrow.',
+        }
+      : {
           dailyTokenLimit,
           tokensUsed: tokenUsageCheck.tokensUsed,
-        },
+        };
+
+    return new Response(
+      JSON.stringify({
+        error: errorMessage,
+        details: errorDetails,
       }),
       {
         status: 429,
