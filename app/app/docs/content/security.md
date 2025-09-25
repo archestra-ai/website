@@ -1,5 +1,5 @@
 ---
-title: Security & Bug Bounty
+title: Security
 category: Development
 order: 10
 subcategory: Other
