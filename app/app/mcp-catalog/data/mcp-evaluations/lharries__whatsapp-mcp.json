@@ -9,7 +9,7 @@
     "command": "sh",
     "args": [
       "-c",
-      "[ ! -d /tmp/whatsapp-mcp ] && (cd /tmp && git clone -b fix/whatsmeow-context-compatibility https://github.com/MrMoshkovitz/whatsapp-mcp.git) || true && cd /tmp/whatsapp-mcp/whatsapp-bridge && (go run main.go &) && sleep 15 && cd ../whatsapp-mcp-server && /opt/venv/bin/python main.py"
+      "[ ! -d /tmp/whatsapp-mcp ] && (cd /tmp && git clone -b fix/whatsmeow-context-compatibility https://github.com/MrMoshkovitz/whatsapp-mcp.git) || true && cd /tmp/whatsapp-mcp/whatsapp-bridge && (go run main.go &) && sleep 15 && cd ../whatsapp-mcp-server && /usr/local/bin/python3 -m pip install --user mcp[cli]==1.6.0 && PYTHONPATH=/home/mcp/.local/lib/python3.12/site-packages:/opt/venv/lib/python3.12/site-packages /usr/local/bin/python3 main.py"
     ],
     "env": {},
     "type": "local",
