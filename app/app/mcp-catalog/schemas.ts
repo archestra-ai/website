@@ -143,8 +143,14 @@ export const ArchestraMcpServerProtocolFeaturesSchema = z.object({
   implementing_oauth2: z.boolean(),
 });
 
+export const LogMonitorSchema = z.object({
+  type: z.enum(['log-monitor']),
+  provider: z.enum(['whatsapp']),
+});
+
 export const LocalServerSchema = McpServerConfigSchema.extend({
   type: z.literal('local'),
+  setup: z.array(LogMonitorSchema).optional(),
 });
 
 export const RemoteServerSchema = z.object({
