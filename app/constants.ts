@@ -181,7 +181,7 @@ export default {
     geminiApiKey: process.env.GOOGLE_API_TOKEN,
     rateLimits: {
       dailyTokenLimit: 3_000_000,
-      dailyTotalTokenUsageLimit: 150_000_000,
+      dailyTotalTokenUsageLimit: 5_000_000,
     },
   },
 };
