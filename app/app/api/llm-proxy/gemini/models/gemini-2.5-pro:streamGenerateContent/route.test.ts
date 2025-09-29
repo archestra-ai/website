@@ -43,7 +43,7 @@ vi.mock('@constants', () => ({
       geminiApiKey: 'test-api-key',
       rateLimits: {
         dailyTokenLimit: 3_000_000,
-        dailyTotalTokenUsageLimit: 150_000_000,
+        dailyTotalTokenUsageLimit: 5_000_000,
       },
     },
   },
@@ -260,7 +260,7 @@ describe('Rate Limiting Tests', () => {
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockResolvedValue([
               {
-                totalTokens: 5_000_000, // Well under global limit
+                totalTokens: 1_000_000, // Well under global limit
               },
             ]),
           }),
@@ -288,7 +288,7 @@ describe('Rate Limiting Tests', () => {
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockResolvedValue([
               {
-                totalTokens: 5_000_000, // Still under global limit
+                totalTokens: 1_000_000, // Still under global limit
               },
             ]),
           }),
@@ -419,7 +419,7 @@ describe('Rate Limiting Tests', () => {
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockResolvedValue([
               {
-                totalTokens: 10_000_000, // Under global limit
+                totalTokens: 1_000_000, // Under global limit
               },
             ]),
           }),
@@ -487,7 +487,7 @@ describe('Rate Limiting Tests', () => {
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockResolvedValue([
               {
-                totalTokens: 10_000_100, // Still under global limit
+                totalTokens: 1_000_100, // Still under global limit
               },
             ]),
           }),
@@ -563,7 +563,7 @@ describe('Rate Limiting Tests', () => {
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockResolvedValue([
               {
-                totalTokens: 150_000_001, // Just over global limit
+                totalTokens: 5_000_001, // Just over global limit
               },
             ]),
           }),
@@ -602,8 +602,8 @@ describe('Rate Limiting Tests', () => {
 
       const body = await response.json();
       expect(body.error).toBe('Global daily token limit exceeded');
-      expect(body.details.dailyTotalTokenUsageLimit).toBe(150_000_000);
-      expect(body.details.totalTokensUsedToday).toBe(150_000_001);
+      expect(body.details.dailyTotalTokenUsageLimit).toBe(5_000_000);
+      expect(body.details.totalTokensUsedToday).toBe(5_000_001);
       expect(body.details.message).toContain('total token usage across all users');
     });
 
@@ -642,7 +642,7 @@ describe('Rate Limiting Tests', () => {
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockResolvedValue([
               {
-                totalTokens: 149_999_000, // Close to limit but not over
+                totalTokens: 4_999_000, // Close to limit but not over
               },
             ]),
           }),
@@ -670,7 +670,7 @@ describe('Rate Limiting Tests', () => {
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockResolvedValue([
               {
-                totalTokens: 149_999_000,
+                totalTokens: 4_999_000,
               },
             ]),
           }),
@@ -763,7 +763,7 @@ describe('Rate Limiting Tests', () => {
         from: vi.fn().mockReturnValue({
           where: vi.fn().mockResolvedValue([
             {
-              totalTokens: 150_000_100, // Over global limit
+              totalTokens: 5_000_100, // Over global limit
             },
           ]),
         }),
@@ -797,7 +797,7 @@ describe('Rate Limiting Tests', () => {
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockResolvedValue([
               {
-                totalTokens: 10_000_000, // Well under global limit
+                totalTokens: 1_000_000, // Well under global limit
               },
             ]),
           }),
