@@ -260,7 +260,7 @@ describe('Rate Limiting Tests', () => {
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockResolvedValue([
               {
-                totalTokens: 5_000_000, // Well under global limit
+                totalTokens: 1_000_000, // Well under global limit
               },
             ]),
           }),
@@ -288,7 +288,7 @@ describe('Rate Limiting Tests', () => {
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockResolvedValue([
               {
-                totalTokens: 5_000_000, // Still under global limit
+                totalTokens: 1_000_000, // Still under global limit
               },
             ]),
           }),
@@ -419,7 +419,7 @@ describe('Rate Limiting Tests', () => {
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockResolvedValue([
               {
-                totalTokens: 10_000_000, // Under global limit
+                totalTokens: 1_000_000, // Under global limit
               },
             ]),
           }),
@@ -487,7 +487,7 @@ describe('Rate Limiting Tests', () => {
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockResolvedValue([
               {
-                totalTokens: 10_000_100, // Still under global limit
+                totalTokens: 1_000_100, // Still under global limit
               },
             ]),
           }),
@@ -642,7 +642,7 @@ describe('Rate Limiting Tests', () => {
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockResolvedValue([
               {
-                totalTokens: 149_999_000, // Close to limit but not over
+                totalTokens: 4_999_000, // Close to limit but not over
               },
             ]),
           }),
@@ -670,7 +670,7 @@ describe('Rate Limiting Tests', () => {
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockResolvedValue([
               {
-                totalTokens: 149_999_000,
+                totalTokens: 4_999_000,
               },
             ]),
           }),
@@ -797,7 +797,7 @@ describe('Rate Limiting Tests', () => {
           from: vi.fn().mockReturnValue({
             where: vi.fn().mockResolvedValue([
               {
-                totalTokens: 10_000_000, // Well under global limit
+                totalTokens: 1_000_000, // Well under global limit
               },
             ]),
           }),
