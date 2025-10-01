@@ -90,6 +90,23 @@
                   "type": {
                     "type": "string",
                     "enum": ["local"]
+                  },
+                  "setup": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": ["log-monitor"]
+                        },
+                        "provider": {
+                          "type": "string",
+                          "enum": ["whatsapp"]
+                        }
+                      },
+                      "required": ["type", "provider"]
+                    }
                   }
                 },
                 "required": ["command", "type"],
