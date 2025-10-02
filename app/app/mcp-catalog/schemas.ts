@@ -59,7 +59,7 @@ export const ArchestraClientConfigPermutationsSchema = z.record(z.string(), McpS
  * NOTE: when we are ready to add more OAuth providers, we can simply add them here
  * and re-run the `evaluate-catalog.ts` script to have the catalog updated
  */
-export const ArchestraSupportedOauthProvidersSchema = z.enum(['google', 'slack', 'linkedin']);
+export const ArchestraSupportedOauthProvidersSchema = z.enum(['google', 'slack', 'linkedin', 'supabase']);
 
 export const ArchestraOauthSchema = z.object({
   provider: ArchestraSupportedOauthProvidersSchema.nullable(),
