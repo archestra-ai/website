@@ -38,10 +38,7 @@ export default function Header() {
             >
               Desktop Agent
             </Link>
-            <Link
-              href="/book-demo"
-              className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors"
-            >
+            <Link href="/book-demo" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
               Book Demo
             </Link>
 

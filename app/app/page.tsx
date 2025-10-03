@@ -1,8 +1,9 @@
+import { AlertTriangle, Code2, Github, Network, Plug, Shield, ShieldCheck, Sparkles, Wrench } from 'lucide-react';
+import Link from 'next/link';
+
 import Footer from '@components/Footer';
 import HeaderWithBanner from '@components/HeaderWithBanner';
 import constants from '@constants';
-import { AlertTriangle, Code2, Github, Network, Plug, Shield, ShieldCheck, Sparkles, Wrench } from 'lucide-react';
-import Link from 'next/link';
 
 const {
   company: {
@@ -50,13 +51,11 @@ export default async function Home() {
         <section className="bg-gradient-to-b from-gray-50 to-white py-20">
           <div className="container px-4 md:px-6 max-w-7xl mx-auto">
             <div className="flex flex-col items-center text-center gap-8">
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
-                Mitigate the "Lethal Trifecta"
-              </h1>
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">Mitigate the "Lethal Trifecta"</h1>
               <p className="text-xl md:text-2xl text-gray-700 max-w-3xl">
                 Middleware for enterprises to secure agent-to-data connections
               </p>
-              
+
               {/* Key Features */}
               <div className="flex flex-wrap justify-center gap-3 mt-6">
                 <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-gray-200">
@@ -106,61 +105,59 @@ export default async function Home() {
 
             {/* Breaches List */}
             <div className="text-center mb-12">
-              <p className="text-lg text-gray-700 mb-4 font-medium">
-                Major AI platforms have been compromised:
-              </p>
+              <p className="text-lg text-gray-700 mb-4 font-medium">Major AI platforms have been compromised:</p>
               <div className="flex flex-wrap justify-center gap-3 mb-8 max-w-4xl mx-auto">
-                <a 
-                  href="https://systemweakness.com/new-prompt-injection-attack-on-chatgpt-web-version-ef717492c5c2" 
-                  target="_blank" 
+                <a
+                  href="https://systemweakness.com/new-prompt-injection-attack-on-chatgpt-web-version-ef717492c5c2"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-700 transition-colors"
                 >
                   ChatGPT (Apr 2023) →
                 </a>
-                <a 
-                  href="https://embracethered.com/blog/posts/2023/google-bard-data-exfiltration/" 
-                  target="_blank" 
+                <a
+                  href="https://embracethered.com/blog/posts/2023/google-bard-data-exfiltration/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-700 transition-colors"
                 >
                   Google Bard (Nov 2023) →
                 </a>
-                <a 
-                  href="https://embracethered.com/blog/posts/2024/github-copilot-chat-prompt-injection-data-exfiltration/" 
-                  target="_blank" 
+                <a
+                  href="https://embracethered.com/blog/posts/2024/github-copilot-chat-prompt-injection-data-exfiltration/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-700 transition-colors"
                 >
                   GitHub Copilot (Jun 2024) →
                 </a>
-                <a 
-                  href="https://labs.zenity.io/p/links-materials-living-off-microsoft-copilot" 
-                  target="_blank" 
+                <a
+                  href="https://labs.zenity.io/p/links-materials-living-off-microsoft-copilot"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-700 transition-colors"
                 >
                   Microsoft Copilot (Aug 2024) →
                 </a>
-                <a 
-                  href="https://promptarmor.substack.com/p/data-exfiltration-from-slack-ai-via" 
-                  target="_blank" 
+                <a
+                  href="https://promptarmor.substack.com/p/data-exfiltration-from-slack-ai-via"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-700 transition-colors"
                 >
                   Slack AI (Aug 2024) →
                 </a>
-                <a 
-                  href="https://embracethered.com/blog/posts/2025/chatgpt-operator-prompt-injection-exploits/" 
-                  target="_blank" 
+                <a
+                  href="https://embracethered.com/blog/posts/2025/chatgpt-operator-prompt-injection-exploits/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-700 transition-colors"
                 >
                   ChatGPT Operator (Feb 2025) →
                 </a>
-                <a 
-                  href="https://www.codeintegrity.ai/blog/notion" 
-                  target="_blank" 
+                <a
+                  href="https://www.codeintegrity.ai/blog/notion"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-700 transition-colors"
                 >
@@ -289,9 +286,13 @@ export default async function Home() {
                 Thank you for contributing and continuously making <b>Archestra</b> better, <b>you're awesome</b> 🫶
               </p>
               <div className="flex justify-center">
-                <a href="https://github.com/archestra-ai/archestra/graphs/contributors" target="_blank" rel="noopener noreferrer">
-                  <img 
-                    src="https://contrib.rocks/image?repo=archestra-ai/archestra" 
+                <a
+                  href="https://github.com/archestra-ai/archestra/graphs/contributors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="https://contrib.rocks/image?repo=archestra-ai/archestra"
                     alt="Contributors"
                     className="max-w-full"
                   />
@@ -300,7 +301,6 @@ export default async function Home() {
             </div>
           </div>
         </section>
-
       </main>
 
       <Footer />

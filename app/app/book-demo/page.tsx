@@ -35,10 +35,10 @@ export default function BookDemoPage() {
                 onLoad={() => setIsLoading(false)}
               />
             </div>
-            <Script 
-              type="text/javascript" 
-              src="https://assets.calendly.com/assets/external/widget.js" 
-              async 
+            <Script
+              type="text/javascript"
+              src="https://assets.calendly.com/assets/external/widget.js"
+              async
               onLoad={() => {
                 // Give Calendly a moment to fully initialize
                 setTimeout(() => setIsLoading(false), 1000);
