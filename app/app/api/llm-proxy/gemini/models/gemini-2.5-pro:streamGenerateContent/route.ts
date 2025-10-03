@@ -14,10 +14,7 @@ const {
   },
 } = constants;
 
-async function checkAndUpdateTokenUsage(
-  userId: string,
-  tokensToAdd: number = 0
-): Promise<{
+async function checkTokenUsage(userId: string): Promise<{
   allowed: boolean;
   tokensUsed: number;
   globalLimitExceeded?: boolean;
@@ -35,8 +32,8 @@ async function checkAndUpdateTokenUsage(
 
   const totalTokensUsedToday = Number(totalUsageResult[0]?.totalTokens || 0);
 
-  // Check if global limit would be exceeded
-  if (totalTokensUsedToday + tokensToAdd > dailyTotalTokenUsageLimit) {
+  // Check if global limit is exceeded
+  if (totalTokensUsedToday >= dailyTotalTokenUsageLimit) {
     return {
       allowed: false,
       tokensUsed: 0,
@@ -45,63 +42,63 @@ async function checkAndUpdateTokenUsage(
     };
   }
 
-  // Get or create token usage record for today
-  const existingLimit = await drizzleClientHttp
-    .select()
-    .from(tokenUsageTable)
-    .where(and(eq(tokenUsageTable.userId, userId), eq(tokenUsageTable.date, today)))
-    .limit(1);
-
-  if (existingLimit.length === 0) {
-    // No record exists for today
-    if (tokensToAdd === 0) {
-      // Just checking - user hasn't used any tokens today
-      return {
-        allowed: true,
-        tokensUsed: 0,
-      };
-    }
-
-    // Create new record for today with initial token usage
-    const newRecord = {
-      id: `${userId}_${today}`,
-      userId,
-      date: today,
-      tokensUsed: tokensToAdd,
-    };
-
-    await drizzleClientHttp.insert(tokenUsageTable).values(newRecord);
-
-    return {
-      allowed: true,
-      tokensUsed: tokensToAdd,
-    };
-  }
-
-  const current = existingLimit[0];
-
-  // Check if limits would be exceeded
-  if (tokensToAdd === 0) {
-    // Just checking, not updating
-    return {
-      allowed: current.tokensUsed < dailyTokenLimit,
-      tokensUsed: current.tokensUsed,
-    };
-  }
-
-  // Update the record with new token usage
-  await drizzleClientHttp
-    .update(tokenUsageTable)
-    .set({
-      tokensUsed: current.tokensUsed + tokensToAdd,
-      updatedAt: new Date(),
+  // Get user's total token usage for today (across all chats)
+  const userTotalUsageResult = await drizzleClientHttp
+    .select({
+      totalUserTokens: sql<number>`COALESCE(SUM(${tokenUsageTable.tokensUsed}), 0)`,
     })
+    .from(tokenUsageTable)
     .where(and(eq(tokenUsageTable.userId, userId), eq(tokenUsageTable.date, today)));
+
+  const userTotalTokensToday = Number(userTotalUsageResult[0]?.totalUserTokens || 0);
+
+  // Check if user's daily limit is exceeded
+  if (userTotalTokensToday >= dailyTokenLimit) {
+    return {
+      allowed: false,
+      tokensUsed: userTotalTokensToday,
+    };
+  }
 
   return {
     allowed: true,
-    tokensUsed: current.tokensUsed + tokensToAdd,
+    tokensUsed: userTotalTokensToday,
   };
+}
+
+async function updateTokenUsage(userId: string, chatId: string, tokensUsed: number): Promise<void> {
+  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+
+  // Get the existing record for this specific chat
+  const existingChatUsage = await drizzleClientHttp
+    .select()
+    .from(tokenUsageTable)
+    .where(and(eq(tokenUsageTable.userId, userId), eq(tokenUsageTable.date, today), eq(tokenUsageTable.chatId, chatId)))
+    .limit(1);
+
+  if (existingChatUsage.length === 0) {
+    // No record exists for this chat today - create new one
+    const newRecord = {
+      id: `${userId}_${chatId}_${today}`,
+      userId,
+      chatId,
+      date: today,
+      tokensUsed, // Set directly, not add, since this is cumulative from Gemini
+    };
+
+    await drizzleClientHttp.insert(tokenUsageTable).values(newRecord);
+  } else {
+    // Update existing record - REPLACE the value, not add, since Gemini returns cumulative totals
+    await drizzleClientHttp
+      .update(tokenUsageTable)
+      .set({
+        tokensUsed, // Replace with new cumulative total
+        updatedAt: new Date(),
+      })
+      .where(
+        and(eq(tokenUsageTable.userId, userId), eq(tokenUsageTable.date, today), eq(tokenUsageTable.chatId, chatId))
+      );
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -117,8 +114,6 @@ export async function POST(request: NextRequest) {
     headers: request.headers,
   });
 
-  console.log(session);
-
   // Check if user is authenticated
   if (!session) {
     return new Response(JSON.stringify({ error: 'Unauthorized - No valid session' }), {
@@ -130,7 +125,7 @@ export async function POST(request: NextRequest) {
   const userId = session.user.id;
 
   // Check token usage limit before processing
-  const tokenUsageCheck = await checkAndUpdateTokenUsage(userId, 0);
+  const tokenUsageCheck = await checkTokenUsage(userId);
   if (!tokenUsageCheck.allowed) {
     const errorMessage = tokenUsageCheck.globalLimitExceeded
       ? 'Global daily token limit exceeded'
@@ -276,7 +271,11 @@ export async function POST(request: NextRequest) {
           console.log('========================\n');
 
           // Update token usage with actual tokens used
-          await checkAndUpdateTokenUsage(streamUserId, totalTokens);
+          /**
+           * TODO: finalChunk.responseId is unique for every request.. ideally
+           * we'd get back some form of "chat id"
+           */
+          await updateTokenUsage(streamUserId, finalChunk.responseId, totalTokens);
         }
       } catch (error) {
         console.error('Generation error:', error);

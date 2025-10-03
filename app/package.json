@@ -8,7 +8,7 @@
     "db:migrate": "pnpm drizzle-kit migrate",
     "build": "pnpm db:migrate && next build",
     "build:check": "next build",
-    "dev": "pnpm drizzle-kit up && next dev",
+    "dev": "pnpm db:migrate && next dev",
     "start": "next start",
     "test": "vitest",
     "prettier": "prettier --write .",
