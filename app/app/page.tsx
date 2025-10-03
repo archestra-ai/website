@@ -233,7 +233,7 @@ export default async function Home() {
                   <li className="flex items-start gap-3">
                     <span className="text-green-500 mt-1">✓</span>
                     <div>
-                      <span className="font-medium text-gray-900">Plug-in Architecture</span>
+                      <span className="font-medium text-gray-900">Network-level proxy</span>
                       <p className="text-sm text-gray-600 mt-1">No need to update your agent code</p>
                     </div>
                   </li>
