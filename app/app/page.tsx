@@ -72,7 +72,7 @@ export default async function Home() {
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-gray-200">
                   <Shield className="w-5 h-5 text-red-600" />
-                  <span className="text-sm font-medium">Fine-grained Guardrails</span>
+                  <span className="text-sm font-medium">Fine-Grained Guardrails</span>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-gray-200">
                   <Network className="w-5 h-5 text-green-600" />
