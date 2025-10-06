@@ -1,7 +1,7 @@
 ---
 title: How to Contribute
 category: Development
-order: 2
+order: 1
 ---
 
 ![Contributing](/docs/one-person-is-handling-a-box-for-the-other-over.png)

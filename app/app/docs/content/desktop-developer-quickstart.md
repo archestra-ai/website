@@ -1,7 +1,7 @@
 ---
-title: Quickstart
-category: Development
-order: 1
+title: Developer Quickstart
+category: Archestra Desktop Agent
+order: 10
 ---
 
 > **Note:** The development environment currently supports **macOS only**. Windows and Linux support is coming soon.

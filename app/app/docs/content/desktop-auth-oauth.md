@@ -1,8 +1,8 @@
 ---
-title: Authentication with OAuth
-category: Development
-subcategory: MCP Authentication
-order: 6
+title: OAuth Authentication
+category: Archestra Desktop Agent
+subcategory: Authentication
+order: 5
 ---
 
 This guide explains how to add OAuth authentication to MCP servers in Archestra. There are 4 distinct types of OAuth implementations, each with different configuration requirements.

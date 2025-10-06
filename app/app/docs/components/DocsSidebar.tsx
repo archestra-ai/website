@@ -13,9 +13,10 @@ interface DocsSidebarProps {
 
 const categoryIcons: Record<string, React.ReactNode> = {
   'Archestra Desktop Agent': <Monitor className="h-4 w-4" />,
+  'Archestra Platform': <Layers className="h-4 w-4" />,
+  'Development': <Code className="h-4 w-4" />,
   'Getting Started': <Book className="h-4 w-4" />,
   'API Reference': <Code className="h-4 w-4" />,
-  Development: <Code className="h-4 w-4" />,
   Guides: <FileText className="h-4 w-4" />,
   Examples: <Layers className="h-4 w-4" />,
   Advanced: <Settings className="h-4 w-4" />,

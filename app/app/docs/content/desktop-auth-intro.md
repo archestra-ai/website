@@ -1,8 +1,8 @@
 ---
-title: Introduction
-category: Development
-subcategory: MCP Authentication
-order: 4
+title: Authentication Overview
+category: Archestra Desktop Agent
+subcategory: Authentication
+order: 3
 ---
 
 ![Archestra Development](/docs/a-scientific-discussion.png)
