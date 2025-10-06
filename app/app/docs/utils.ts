@@ -8,7 +8,9 @@ import { DocCategory, DocFrontMatter, DocNavItem, DocPage, DocSubcategory, Table
 const docsDirectory = path.join(process.cwd(), 'app/docs/content');
 
 const categoryOrder = [
+  'Archestra Platform',
   'Archestra Desktop Agent',
+  'Development',
   'Getting Started',
   'API Reference',
   'Guides',

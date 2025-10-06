@@ -1,5 +1,5 @@
 ---
-title: 🚀 Overview
+title: Overview
 category: Archestra Desktop Agent
 order: 1
 ---

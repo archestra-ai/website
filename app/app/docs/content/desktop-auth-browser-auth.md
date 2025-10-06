@@ -1,8 +1,8 @@
 ---
 title: Browser-Based Authentication
-category: Development
-subcategory: MCP Authentication
-order: 5
+category: Archestra Desktop Agent
+subcategory: Authentication
+order: 4
 ---
 
 ## Security Consideration
