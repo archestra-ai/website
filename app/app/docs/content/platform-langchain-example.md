@@ -5,6 +5,4 @@ subcategory: Practical Examples
 order: 6
 ---
 
-# Building Secure Agent with LangChain
-
 Coming soon...

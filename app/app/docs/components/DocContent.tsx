@@ -217,15 +217,15 @@ export default function DocContent({ content }: DocContentProps) {
             );
           },
           table: ({ node, ...props }) => (
-            <div className="overflow-x-auto my-6">
-              <table {...props} className="min-w-full divide-y divide-gray-200" />
+            <div className="my-6 w-full">
+              <table {...props} className="w-full divide-y divide-gray-200 table-fixed" />
             </div>
           ),
           thead: ({ node, ...props }) => <thead {...props} className="bg-gray-50" />,
           th: ({ node, ...props }) => (
-            <th {...props} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" />
+            <th {...props} className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider break-words" />
           ),
-          td: ({ node, ...props }) => <td {...props} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900" />,
+          td: ({ node, ...props }) => <td {...props} className="px-4 py-4 text-sm text-gray-900 break-words" />,
           // Custom components for callouts
           div: ({ node, className, children, ...props }) => {
             if (className?.includes('callout')) {

@@ -95,7 +95,7 @@ The most straightforward way to break the trifecta is to ensure your AI system o
 
 Dynamic Tool Access is a security mechanism where Archestra monitors the context state and automatically adjusts the scope of available tools based on trust levels and data sensitivity.
 
-[Learn more about Dynamic Tool Access →](/docs/platform-dynamic-tool-access)
+[Learn more about Dynamic Tool Access →](/docs/platform-dynamic-tools)
 
 ### Akinator (Dual LLM)
 
