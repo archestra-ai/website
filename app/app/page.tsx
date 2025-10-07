@@ -87,7 +87,7 @@ export default async function Home() {
                 Seamlessly integrate Archestra with leading AI development frameworks and platforms
               </p>
             </div>
-            
+
             {/* Platform Logos Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
               {/* N8N */}
@@ -98,7 +98,7 @@ export default async function Home() {
                 <div className="text-4xl font-bold text-red-600 mb-3">n8n</div>
                 <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
               </Link>
-              
+
               {/* Vercel AI */}
               <Link
                 href="/docs/platform-vercel-ai-example"
@@ -107,7 +107,7 @@ export default async function Home() {
                 <div className="text-3xl font-bold text-black mb-3">Vercel AI</div>
                 <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
               </Link>
-              
+
               {/* LangChain */}
               <Link
                 href="/docs/platform-langchain-example"
@@ -116,7 +116,7 @@ export default async function Home() {
                 <div className="text-3xl font-bold text-green-600 mb-3">LangChain</div>
                 <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
               </Link>
-              
+
               {/* OpenWebUI */}
               <Link
                 href="/docs/platform-openwebui-example"
@@ -126,7 +126,7 @@ export default async function Home() {
                 <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
               </Link>
             </div>
-            
+
             {/* Additional Integration Note */}
             <div className="text-center mt-12">
               <p className="text-gray-600">
