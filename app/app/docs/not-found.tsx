@@ -25,7 +25,9 @@ export default function NotFound() {
             <div className="mb-8">
               <h1 className="text-8xl sm:text-9xl font-bold text-gray-200 mb-4">404</h1>
               <div className="text-xl sm:text-2xl font-semibold text-gray-800 mb-2">Documentation Not Found</div>
-              <p className="text-gray-600">The documentation page you're looking for doesn't exist or has been moved.</p>
+              <p className="text-gray-600">
+                The documentation page you're looking for doesn't exist or has been moved.
+              </p>
             </div>
 
             {/* Suggestions */}
