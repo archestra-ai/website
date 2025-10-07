@@ -1,7 +1,8 @@
 'use client';
 
 import { Check, Copy, Link as LinkIcon } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import mermaid from 'mermaid';
+import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
@@ -18,6 +19,50 @@ interface DocContentProps {
 interface CodeBlockProps {
   children: React.ReactNode;
   className?: string;
+}
+
+interface MermaidProps {
+  chart: string;
+}
+
+function Mermaid({ chart }: MermaidProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [svg, setSvg] = useState<string>('');
+
+  useEffect(() => {
+    const renderChart = async () => {
+      if (!ref.current) return;
+      
+      try {
+        const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
+        const { svg } = await mermaid.render(id, chart);
+        // Scale up the SVG by modifying its viewBox and dimensions
+        const scaledSvg = svg.replace(
+          /(<svg[^>]*)(>)/,
+          (match, p1, p2) => {
+            // Add or modify width to be 100% and set a min-height
+            return p1.replace(/width="[^"]*"/, '').replace(/height="[^"]*"/, '') + ' width="100%" style="min-height: 400px; max-width: 900px;"' + p2;
+          }
+        );
+        setSvg(scaledSvg);
+      } catch (error) {
+        console.error('Mermaid rendering failed:', error);
+        setSvg('<div class="text-red-600">Failed to render diagram</div>');
+      }
+    };
+
+    renderChart();
+  }, [chart]);
+
+  return (
+    <div className="my-8 w-full flex justify-center">
+      <div 
+        ref={ref} 
+        dangerouslySetInnerHTML={{ __html: svg }}
+        className="mermaid-diagram w-full"
+      />
+    </div>
+  );
 }
 
 function CodeBlock({ children, className }: CodeBlockProps) {
@@ -61,6 +106,31 @@ function CodeBlock({ children, className }: CodeBlockProps) {
 }
 
 export default function DocContent({ content }: DocContentProps) {
+  useEffect(() => {
+    // Initialize mermaid
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'neutral',
+      securityLevel: 'loose',
+      themeVariables: {
+        fontFamily: 'ui-sans-serif, system-ui, sans-serif',
+        fontSize: '20px',
+        primaryTextColor: '#111827',
+        primaryColor: '#e0e7ff',
+        primaryBorderColor: '#6366f1',
+        lineColor: '#6b7280',
+      },
+      flowchart: {
+        htmlLabels: true,
+        curve: 'basis',
+        rankSpacing: 80,
+        nodeSpacing: 80,
+        padding: 20,
+        diagramPadding: 8,
+      },
+    });
+  }, []);
+
   useEffect(() => {
     // Handle initial load with hash
     if (window.location.hash) {
@@ -203,12 +273,31 @@ export default function DocContent({ content }: DocContentProps) {
           blockquote: ({ node, ...props }) => (
             <blockquote {...props} className="border-l-4 border-blue-500 pl-4 my-4 text-gray-600 italic" />
           ),
-          pre: ({ node, children, ...props }) => <CodeBlock {...props}>{children}</CodeBlock>,
+          pre: ({ node, children, ...props }) => {
+            // Check if this is a mermaid code block
+            if (children && typeof children === 'object' && 'props' in children) {
+              const childProps = (children as any).props;
+              if (childProps?.className?.includes('language-mermaid')) {
+                const mermaidCode = extractText(childProps.children);
+                return <Mermaid chart={mermaidCode} />;
+              }
+            }
+            return <CodeBlock {...props}>{children}</CodeBlock>;
+            
+            function extractText(node: React.ReactNode): string {
+              if (typeof node === 'string') return node;
+              if (Array.isArray(node)) return node.map(extractText).join('');
+              if (node && typeof node === 'object' && 'props' in node) {
+                return extractText((node as any).props.children);
+              }
+              return '';
+            }
+          },
           code: ({ node, className, children, ...props }) => {
             const match = /language-(\w+)/.exec(className || '');
             // Code inside a pre block (code fence)
             return match ? (
-              <code {...props}>{children}</code>
+              <code className={className} {...props}>{children}</code>
             ) : (
               // Inline code
               <code className="bg-gray-100 px-1 py-0.5 rounded text-sm font-mono break-all" {...props}>
