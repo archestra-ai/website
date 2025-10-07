@@ -21,34 +21,42 @@ This combination allows malicious actors to potentially exploit prompt injection
 
 Archestra Platform provides a security layer that enables safe deployment of autonomous N8N agents without sacrificing functionality. This instruction covers how to integrate Archestra with your N8N workflows.
 
-### 0. Runnin N8N and Archestra Platfrom
+### 0. Running N8N and Archestra Platform
 
 We've prepared a docker-compose with local N8N and Archestra:
 
-```
-Claude, add docker compose instruction here
+```bash
+# Clone the repository with docker-compose configuration
+git clone https://github.com/archestra-ai/archestra
+cd platfrom
+
+# Start N8N and Archestra Platform
+docker-compose -f docker-compose-n8n.yml up
+
+# Access N8N at http://localhost:5678
+# Archestra Platform runs at http://localhost:3000
 ```
 
 ### 1. Building Autonomous Agent with N8N
 
-We're going to build a very simple autonomous agent in N8N using GitHub MCP server and OpenAI model.
+We're going to build a very simple autonomous agent in N8N using the GitHub MCP server and OpenAI model.
 
 ![N8N](/docs/platfrom/n8n-1.png)
 
-1. ▶️ Add "AI Agent" node.
-2. Add "Chat Trigger"
+1. Add "AI Agent" node.
+2. Add "Chat Trigger".
 3. Add "Model" node and choose OpenAI gpt-4o.
-4. Add "MCP Client" node to the "tools" leaf and connect it to the official remote GitHub MCP following this instructions: https://github.com/github/github-mcp-server
+4. Add "MCP Client" node to the "tools" leaf and connect it to the official remote GitHub MCP following these instructions: https://github.com/github/github-mcp-server
 
 ### 2. Reproducing Prompt Injection
 
-For the test purposes, we'll created a malicious Issue in the GitHub making the agent to follow it's content as a prompt and publish "sensitive" data from one repo (website) to another (archestra).
+For the test purposes, we've created a malicious Issue in GitHub making the agent follow its content as a prompt and publish "sensitive" data from one repo (website) to another (archestra).
 
 ```mermaid
 flowchart TD
-    A(["GitHub MCP"]) --> n1["Malicious GitHub Issue With Prompt Injection Leaks into the agent context (archestra)"]
-    A --> n2["Pulling Sensitive Data From GitHub repo (website)"]
-    A --> n3["Publishing Sensitive Data to a 3rd party repo (archestra)"]
+    A(["GitHub MCP"]) --> n1["Malicious GitHub Issue With Prompt Injection"]
+    A --> n2["Pulling Sensitive Data From GitHub"]
+    A --> n3["Publishing Sensitive Data to 3rd party repo"]
     n4["N8N AI Agent Loop"] --> A
 
     style n1 fill:#ffcccc
@@ -63,7 +71,7 @@ We will utilize this test [GitHub issue](https://github.com/archestra-ai/archest
 resolve https://github.com/archestra-ai/archestra/issues/647
 ```
 
-See how agent loop is following the "malicious" prompt exposing issue from the "sensitive repo" (website) to our repo "archestra":
+See how the agent loop is following the "malicious" prompt exposing issue from the "sensitive repo" (website) to our repo "archestra":
 
 ![N8N](/docs/platfrom/n8n-2.png)
 
@@ -111,7 +119,7 @@ With Archestra acting as a proxy between N8N and OpenAI, all LLM requests are mo
 http://platform-archestra-1:9000/v1
 ```
 
-instead of https://api.openai.com/v1 (platform-archestra-1 is a in-docker DNS name for archestra platfrom launched by docker compose) 4. Open the agent in the N8N again and put "hi" to the chat. It will make Archestra to discover tools.
+instead of https://api.openai.com/v1 (platform-archestra-1 is an in-docker DNS name for Archestra platform launched by docker-compose) 4. Open the agent in the N8N again and put "hi" to the chat. It will make Archestra discover tools.
 
 ### 4. Try prompt injection again and notice how Archestra prevents it
 
@@ -121,8 +129,8 @@ Go to the N8N and try the prompt again:
 resolve https://github.com/archestra-ai/archestra/issues/647
 ```
 
-N8N is not able to execute the second call once the un-trusted content got injected into the agent.
+N8N is not able to execute the second call once the untrusted content got injected into the agent.
 
 ![N8N](/docs/platfrom/n8n-3.png)
 
-Here, Archestra's "Dynamic Tools" feature is reducing the context trustwortheness and preventing the following tool calls. Read about it here: (claude, add link).
+Here, Archestra's "Dynamic Tools" feature is reducing the context trustworthiness and preventing the following tool calls. Read about it [here](/docs/platform-dynamic-tools).
