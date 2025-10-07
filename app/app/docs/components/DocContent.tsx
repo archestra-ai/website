@@ -32,18 +32,19 @@ function Mermaid({ chart }: MermaidProps) {
   useEffect(() => {
     const renderChart = async () => {
       if (!ref.current) return;
-      
+
       try {
         const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
         const { svg } = await mermaid.render(id, chart);
         // Scale up the SVG by modifying its viewBox and dimensions
-        const scaledSvg = svg.replace(
-          /(<svg[^>]*)(>)/,
-          (match, p1, p2) => {
-            // Add or modify width to be 100% and set a min-height
-            return p1.replace(/width="[^"]*"/, '').replace(/height="[^"]*"/, '') + ' width="100%" style="min-height: 400px; max-width: 900px;"' + p2;
-          }
-        );
+        const scaledSvg = svg.replace(/(<svg[^>]*)(>)/, (match, p1, p2) => {
+          // Add or modify width to be 100% and set a min-height
+          return (
+            p1.replace(/width="[^"]*"/, '').replace(/height="[^"]*"/, '') +
+            ' width="100%" style="min-height: 400px; max-width: 900px;"' +
+            p2
+          );
+        });
         setSvg(scaledSvg);
       } catch (error) {
         console.error('Mermaid rendering failed:', error);
@@ -56,11 +57,7 @@ function Mermaid({ chart }: MermaidProps) {
 
   return (
     <div className="my-8 w-full flex justify-center">
-      <div 
-        ref={ref} 
-        dangerouslySetInnerHTML={{ __html: svg }}
-        className="mermaid-diagram w-full"
-      />
+      <div ref={ref} dangerouslySetInnerHTML={{ __html: svg }} className="mermaid-diagram w-full" />
     </div>
   );
 }
@@ -283,7 +280,7 @@ export default function DocContent({ content }: DocContentProps) {
               }
             }
             return <CodeBlock {...props}>{children}</CodeBlock>;
-            
+
             function extractText(node: React.ReactNode): string {
               if (typeof node === 'string') return node;
               if (Array.isArray(node)) return node.map(extractText).join('');
@@ -297,7 +294,9 @@ export default function DocContent({ content }: DocContentProps) {
             const match = /language-(\w+)/.exec(className || '');
             // Code inside a pre block (code fence)
             return match ? (
-              <code className={className} {...props}>{children}</code>
+              <code className={className} {...props}>
+                {children}
+              </code>
             ) : (
               // Inline code
               <code className="bg-gray-100 px-1 py-0.5 rounded text-sm font-mono break-all" {...props}>
