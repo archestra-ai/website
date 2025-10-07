@@ -15,6 +15,25 @@ This feature automatically restricts agent capabilities when untrusted content e
 | ✅ Can process untrusted content | ✅ Can process untrusted content                                                   | ✅ Can process untrusted content |
 | ✅ Can communicate externally    | 🤖 External communication **dynamically disabled after processing untrusted data** | 🚫 Cannot communicate externally |
 
+```mermaid
+flowchart TD
+    Start[Original prompt from user] --> Decision{Context trusted?}
+
+    Decision -->|Yes| ToolCall[Make a tool Call]
+    Decision -->|No| AddContext[Add to context that<br/>tool is not allowed]
+
+    ToolCall --> Check{Tool result<br/>trusted?}
+
+    Check -->|Yes| AddTrusted[Add to context and<br/>continue the loop]
+    Check -->|No| MarkUntrusted[Mark context<br/>as untrusted<br/>or block]
+
+    AddTrusted --> Talk[Talk to user if<br/>necessary]
+    MarkUntrusted --> Talk
+    AddContext --> Talk
+
+    Talk --> Start
+```
+
 ## Detect tools
 
 The first step is to configure Archestra as a proxy for your agent's API requests. When your agent executes requests through the Archestra proxy endpoint, the platform automatically discovers and registers any tools included in those requests.
