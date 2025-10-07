@@ -10,7 +10,7 @@ The Archestra Platform can be deployed using Docker for development and testing,
 
 Docker deployment provides the fastest way to get started with Archestra Platform, ideal for development and testing purposes.
 
-### Prerequisites
+### Docker Prerequisites
 
 - **Docker** - Container runtime ([Install Docker](https://docs.docker.com/get-docker/))
 
@@ -43,7 +43,7 @@ docker run -p 9000:9000 -p 3000:3000 \
 
 Helm deployment is our recommended approach for deploying Archestra Platform to production environments.
 
-### Prerequisites
+### Helm Prerequisites
 
 - **Kubernetes cluster** - A running Kubernetes cluster
 - **Helm 3+** - Package manager for Kubernetes ([Install Helm](https://helm.sh/docs/intro/install/))
