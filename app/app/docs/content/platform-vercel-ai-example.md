@@ -11,7 +11,7 @@ order: 7
 
 In this guide we will use an exemplary Express ([Node.js](http://Node.js)) application to show how seamlessly agents written with AI SDK can be reconfigured to use Archestra as a security layer.
 
-The full example can be found on: [https://github.com/archestra-ai/archestra/platform/examples/ai-sdk-express](https://github.com/archestra-ai/archestra/platform/examples/ai-sdk-express)
+The full example can be found on: [https://github.com/archestra-ai/archestra/tree/main/platform/examples/ai-sdk-express](https://github.com/archestra-ai/archestra/tree/main/platform/examples/ai-sdk-express)
 
 ## Problem
 
