@@ -89,7 +89,7 @@ export default async function Home() {
             </div>
 
             {/* Platform Logos Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 max-w-5xl mx-auto">
               {/* N8N */}
               <Link
                 href="/docs/platform-n8n-example"
@@ -104,7 +104,16 @@ export default async function Home() {
                 href="/docs/platform-vercel-ai-example"
                 className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
               >
-                <div className="text-3xl font-bold text-black mb-3">Vercel AI</div>
+                <div className="text-3xl font-bold text-black mb-3 text-center whitespace-nowrap">Vercel AI</div>
+                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
+              </Link>
+
+              {/* Pydantic AI */}
+              <Link
+                href="/docs/platform-pydantic-example"
+                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
+              >
+                <div className="text-3xl font-bold text-pink-600 mb-3 text-center whitespace-nowrap">Pydantic AI</div>
                 <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
               </Link>
 
