@@ -75,6 +75,7 @@ docker run -p 9000:9000 -p 3000:3000 archestra/platform
 ```
 
 This starts Archestra Platform with:
+
 - API proxy on port 9000
 - Web UI on port 3000
 
