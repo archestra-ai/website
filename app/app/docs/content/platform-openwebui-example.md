@@ -61,9 +61,9 @@ Once OpenWebUI is running:
 3. Navigate to **Settings \> Connections \> OpenAI \> Configure** (look for the wrench icon).
 4. Verify that you have a correct OpenAI API Key and BASE\_URL of Archestra: [http://localhost:9000/v1](http://localhost:9000/v1) in URL, or Add Connection with those values, if you use your own OpenWebUI
    ☝️If you’re not sure where is Archestra BASE\_URL you can navigate to Archestra settings, in our example it on [http://localhost:3000](http://localhost:3000)
-   ![][/docs/plafrom/openwebui/image1.png]
+   ![openwebui][/docs/plafrom/openwebui/image1.png]
 
-![][/docs/plafrom/openwebui/image2.png]
+![openwebui][/docs/plafrom/openwebui/image2.png]
 
 5. Now you can **Create a New Chat** and start chatting with the models
 
