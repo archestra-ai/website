@@ -11,7 +11,7 @@ order: 7
 
 In this guide we will use an exemplary Express ([Node.js](http://Node.js)) application to show how seamlessly agents written with AI SDK can be reconfigured to use Archestra as a security layer.
 
-The full example can be found on: [https://github.com/archestra-ai/archestra/platform/examples/ai-sdk-express](https://github.com/archestra-ai/archestra/platform/examples/ai-sdk-express)
+The full example can be found on: [https://github.com/archestra-ai/archestra/tree/main/platform/examples/ai-sdk-express](https://github.com/archestra-ai/archestra/tree/main/platform/examples/ai-sdk-express)
 
 ## Problem
 
@@ -57,7 +57,7 @@ And now imagine that your agent is also capable of sending data to the outside w
 
 Let’s see how you can plug in Archestra when using AI SDK and how it can help to solve such issues.
 
-## Step 1\. Get your OpenAI API Key
+## Step 1. Get your OpenAI API Key
 
 To use OpenAI models (such as GPT-4 or o3-mini), you need an API key from a supported provider.
 
@@ -69,13 +69,13 @@ You can use:
 
 👉 Once you have the key, copy it and keep it handy.
 
-## Step 2\. Run Archestra Platform locally
+## Step 2. Run Archestra Platform locally
 
 ```shell
 docker run -p 9000:9000 -p 3000:3000 archestra/platform
 ```
 
-## Step 3\. Integrate AI SDK with Archestra
+## Step 3. Integrate AI SDK with Archestra
 
 At first, you need to change baseUrl and point it to Archestra’s proxy which runs on [`http://localhost:9000/v1`](http://localhost:9000/v1).  
 Also, make sure that you configure the AI SDK to use [Chat Completions API](https://platform.openai.com/docs/api-reference/chat/create) which is currently supported by Archestra. It can be done simply by appending `.chat` to the OpenAI provider instance.
@@ -101,14 +101,14 @@ pnpm install
 pnpm dev
 ```
 
-## Step 4\. Observe chat history in Archestra
+## Step 4. Observe chat history in Archestra
 
 Archestra proxies every request from your AI Agent and records all the details, so you can review them. Just send some messages from your agent and then:
 
 1. Open [http://localhost:3000](http://localhost:3000) and navigate to **Chat**
 2. In the table with conversations open any of them by clicking on the **Details**
 
-## Step 5\. See the tools in Archestra and configure the rules
+## Step 5. See the tools in Archestra and configure the rules
 
 Every tool call is recorded and you can see all the tools ever used by your Agent on the Tool page.
 
@@ -130,7 +130,7 @@ The decision tree for Archestra would be:
 
 ![Archestra Decision Tree](/docs/platfrom/archestra-decision-tree.png)
 
-## All Set\!
+## All Set!
 
 Now you are safe from Lethal Trifecta type attacks and prompt injections cannot influence your agent. Following the example from the [Problem section](#problem), Archestra would block any subsequent tool calls if the context is marked as untrusted.
 
