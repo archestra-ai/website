@@ -248,11 +248,10 @@ export default function DocContent({ content }: DocContentProps) {
           a: ({ node, href, ...props }) => {
             // Check if it's an external link
             const isExternal = href && (href.startsWith('http://') || href.startsWith('https://'));
-            // Check if external link is to the same domain
-            const isSameDomain =
-              isExternal && typeof window !== 'undefined' && new URL(href).hostname === window.location.hostname;
-            // Internal links (starting with /) or same domain links don't open in new tab
-            const shouldOpenInNewTab = isExternal && !isSameDomain;
+            // Don't open localhost links in new tab (consistent behavior for SSR)
+            const isLocalhost = href && (href.includes('localhost') || href.includes('127.0.0.1'));
+            // Internal links (starting with /) or localhost links don't open in new tab
+            const shouldOpenInNewTab = isExternal && !isLocalhost;
 
             return (
               <a
