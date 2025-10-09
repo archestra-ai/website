@@ -77,13 +77,13 @@ docker run -p 9000:9000 -p 3000:3000 archestra/platform
 
 ## Step 3. Integrate AI SDK with Archestra
 
-At first, you need to change baseUrl and point it to Archestra’s proxy which runs on [`http://localhost:9000/v1`](http://localhost:9000/v1).  
+At first, you need to change baseUrl and point it to Archestra's proxy which runs on [`http://localhost:9000/v1/openai`](http://localhost:9000/v1/openai).
 Also, make sure that you configure the AI SDK to use [Chat Completions API](https://platform.openai.com/docs/api-reference/chat/create) which is currently supported by Archestra. It can be done simply by appending `.chat` to the OpenAI provider instance.
 
 ```ts
 const customOpenAI = createOpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  baseURL: 'http://localhost:9000/v1', // 1. use Archestra URL
+  baseURL: 'http://localhost:9000/v1/openai', // 1. use Archestra URL with provider
 }).chat; // 2. Add .chat because Archestra supports Chat Completions API
 
 const result = streamText({
@@ -91,6 +91,19 @@ const result = streamText({
   messages: conversationHistory,
 });
 ```
+
+### Optional: Use a specific agent
+
+If you want to use a specific agent instead of the default one, you can include the agent ID in the URL:
+
+```ts
+const customOpenAI = createOpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+  baseURL: 'http://localhost:9000/v1/openai/{agent-id}', // Use your agent ID
+}).chat;
+```
+
+You can create and manage agents in the Archestra Platform UI at [http://localhost:3000/agents](http://localhost:3000/agents).
 
 Feel free to use our official [Node.js](http://Node.js) (Express) CLI chat example:
 
@@ -130,7 +143,7 @@ The decision tree for Archestra would be:
 
 ![Archestra Decision Tree](/docs/platfrom/archestra-decision-tree.png)
 
-## All Set!
+## All Set
 
 Now you are safe from Lethal Trifecta type attacks and prompt injections cannot influence your agent. Following the example from the [Problem section](#problem), Archestra would block any subsequent tool calls if the context is marked as untrusted.
 
