@@ -21,6 +21,7 @@ Ensure you have the following tools installed:
 
 - **[Tilt](https://docs.tilt.dev/install.html)** - Development environment orchestrator
 - **[kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/)** - Kubernetes CLI
+- **[Helm](https://helm.sh/fr/docs/intro/install/)** - Package manager for Kubernetes
 - **Local Kubernetes cluster** - Choose one:
   - Docker Desktop with Kubernetes enabled
   - [Kind](https://kind.sigs.k8s.io/) (Kubernetes in Docker)
