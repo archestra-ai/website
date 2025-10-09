@@ -58,8 +58,10 @@ Once OpenWebUI is running:
 1. Go to **localhost:3004** or your OpenWebUI url e.g. [https://openweui.yourcompany.com/](https://openweui.yourcompany.com/)
 2. Click on your **User > Admin Panel**.
 3. Navigate to **Settings > Connections > OpenAI > Configure** (look for the wrench icon).
-4. Verify that you have a correct OpenAI API Key and BASE_URL of Archestra: [http://localhost:9000/v1](http://localhost:9000/v1) in URL, or Add Connection with those values, if you use your own OpenWebUI
-   ☝️If you’re not sure where is Archestra BASE_URL you can navigate to Archestra settings, in our example it on [http://localhost:3000](http://localhost:3000)
+4. Verify that you have a correct OpenAI API Key and BASE_URL of Archestra: [http://localhost:9000/v1/openai](http://localhost:9000/v1/openai) in URL, or Add Connection with those values, if you use your own OpenWebUI
+   ☝️If you're not sure where is Archestra BASE_URL you can navigate to Archestra settings, in our example it on [http://localhost:3000](http://localhost:3000)
+
+   **Optional:** To use a specific agent, include the agent ID in the URL: `http://localhost:9000/v1/openai/{agent-id}`. You can create and manage agents at [http://localhost:3000/agents](http://localhost:3000/agents)
 
    ![openwebui](/docs/platfrom/openwebui-image1.png)
 
