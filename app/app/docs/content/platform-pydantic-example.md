@@ -89,7 +89,7 @@ docker run pydantic-ai-archestra-example --secure
 
 ## Step 6. Integrate Pydantic AI with Archestra in your own code
 
-To integrate Pydantic AI with Archestra, configure the OpenAI model to point to Archestra's proxy which runs on `http://localhost:9000/v1` (or `http://host.docker.internal:9000/v1` from within Docker):
+To integrate Pydantic AI with Archestra, configure the OpenAI model to point to Archestra's proxy which runs on `http://localhost:9000/v1/openai` (or `http://host.docker.internal:9000/v1/openai` from within Docker):
 
 ```python
 from pydantic_ai import Agent
@@ -101,7 +101,7 @@ agent = Agent(
     model=OpenAIChatModel(
         model_name="gpt-4o",
         provider=OpenAIProvider(
-            base_url="http://localhost:9000/v1",  # Point to Archestra
+            base_url="http://localhost:9000/v1/openai",  # Point to Archestra with provider
             api_key=os.getenv("OPENAI_API_KEY"),
         ),
     ),
@@ -110,6 +110,19 @@ agent = Agent(
 ```
 
 That's it! Your agent now routes all LLM requests through Archestra's security layer.
+
+### Optional: Use a specific agent
+
+If you want to use a specific agent instead of the default one, you can include the agent ID in the URL:
+
+```python
+provider=OpenAIProvider(
+    base_url="http://localhost:9000/v1/openai/{agent-id}",  # Use your agent ID
+    api_key=os.getenv("OPENAI_API_KEY"),
+)
+```
+
+You can create and manage agents in the Archestra Platform UI at [http://localhost:3000/agents](http://localhost:3000/agents).
 
 ## Step 7. Observe agent execution in Archestra
 
@@ -141,7 +154,7 @@ The decision tree for Archestra would be:
 
 ![Archestra Decision Tree](/docs/platfrom/archestra-decision-tree.png)
 
-## All Set!
+## All Set
 
 Now you are safe from Lethal Trifecta type attacks and prompt injections cannot influence your agent. With Archestra, the GitHub API response is automatically marked as untrusted, and any subsequent dangerous tool calls (like `send_email`) are blocked.
 
