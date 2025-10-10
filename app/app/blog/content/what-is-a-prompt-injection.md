@@ -139,15 +139,26 @@ This means the agent can still read the GitHub issue and work with it, but it ca
 
 ### 2. Akinator (Dual-LLM) Pattern
 
-Our [Akinator (Dual-LLM)](https://www.archestra.ai/docs/platform-akinator-dual-llm) approach uses a separate "quarantined" LLM to analyze requests for potential prompt injections before they reach the main agent.
+Our [Akinator (Dual-LLM)](https://www.archestra.ai/docs/platform-akinator-dual-llm) pattern is inspired by the classic guessing game "Guess Who" and the online game Akinator. Here's how it works:
 
-This creates an additional layer of defense by:
+Imagine the potentially malicious tool response (like the GitHub issue content) is written on a card and placed on the main AI agent's forehead — it can't read it directly, so it can't be poisoned by any prompt injection hidden inside.
 
-- Detecting suspicious patterns in external content
-- Identifying potential prompt injection attempts
-- Preventing malicious instructions from ever reaching the primary agent
+Instead, the main agent asks a separate "quarantined" LLM (which has **no tools** and therefore can't do anything dangerous) to read the card. The quarantined LLM can only respond using a fixed, structured format that cannot contain prompt injections by design.
 
-Together, these patterns create a security architecture that doesn't rely on models being "smart enough" to resist attacks — it prevents the attacks from succeeding at the infrastructure level.
+The main agent then plays "20 questions" with the quarantined LLM, asking yes/no questions to figure out what information it needs to complete the user's original goal — all while keeping the potentially malicious content out of its own context.
+
+For example:
+
+- **Main Agent**: "Does the GitHub issue describe a frontend feature?"
+- **Quarantined LLM**: "Yes"
+- **Main Agent**: "Does it involve creating a new page?"
+- **Quarantined LLM**: "Yes, a `/test` page"
+
+The main agent can usually determine what actions to take through this question-and-answer loop. If specific unguessable information is needed (like exact names or IDs), the Dual LLM pattern stores it outside the main agent's context until the final response — preventing the malicious instructions from ever influencing tool execution decisions.
+
+If the pattern fails to extract enough information, it falls back to human approval — but this is rare in practice.
+
+Together with Dynamic Tools, these patterns create a security architecture that doesn't rely on models being "smart enough" to resist attacks — it prevents the attacks from succeeding at the infrastructure level.
 
 ## Protecting Your AI Agents
 
