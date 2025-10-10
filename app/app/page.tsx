@@ -1,4 +1,4 @@
-import { AlertTriangle, Github, Network, Shield, ShieldCheck, Sparkles } from 'lucide-react';
+import { AlertTriangle, Github, Network, ShieldCheck, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 import Footer from '@components/Footer';
@@ -51,9 +51,9 @@ export default async function Home() {
         <section className="bg-gradient-to-b from-gray-50 to-white py-20">
           <div className="container px-4 md:px-6 max-w-7xl mx-auto">
             <div className="flex flex-col items-center text-center gap-8">
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900">Enabling agents for enterprises</h1>
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900">Agents 🤝 Enterprise Data</h1>
               <p className="text-xl md:text-2xl text-gray-700 max-w-3xl">
-                Open source iPaaS platform to build, deploy, and secure autonomous AI agents at scale
+                Open source iPaaS for secure and reliable autonomous AI agents in enterprises
               </p>
 
               {/* Key Features */}
@@ -65,10 +65,6 @@ export default async function Home() {
                 <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-gray-200">
                   <ShieldCheck className="w-5 h-5 text-purple-600" />
                   <span className="text-sm font-medium">Enterprise-Ready</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-gray-200">
-                  <Shield className="w-5 h-5 text-red-600" />
-                  <span className="text-sm font-medium">Fine-Grained Guardrails</span>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-gray-200">
                   <Network className="w-5 h-5 text-green-600" />
@@ -140,7 +136,7 @@ export default async function Home() {
             <div className="text-center mt-12">
               <p className="text-gray-600">
                 And many more through our{' '}
-                <Link href="/docs/platform-quickstart" className="text-blue-600 hover:text-blue-700 font-medium">
+                <Link href="/docs/" className="text-blue-600 hover:text-blue-700 font-medium">
                   OpenAI-compatible proxy
                 </Link>
               </p>
