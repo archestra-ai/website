@@ -6,6 +6,20 @@ order: 3
 
 The Archestra Platform can be deployed using Docker for development and testing, or Helm for production environments. Both deployment methods provide access to the Admin UI on port 3000 and the API on port 9000.
 
+## Environment Variables
+
+The following environment variables can be used to configure Archestra Platform:
+
+- **`ARCHESTRA_API_BASE_URL`** - Base URL for the Archestra API proxy. This is where your agents should connect to instead of the LLM provider directly. 
+  - Default: `http://localhost:9000`
+  - Example: `http://localhost:9001` or `https://api.example.com`
+  - Note: This configures both the port where the backend API server listens (parsed from the URL) and the base URL that the frontend uses to connect to the backend
+
+- **`DATABASE_URL`** - PostgreSQL connection string for the database.
+  - Format: `postgresql://user:password@host:5432/database`
+  - Default: Internal PostgreSQL (Docker) or managed instance (Helm)
+  - Required for production deployments with external database
+
 ## Docker Deployment
 
 Docker deployment provides the fastest way to get started with Archestra Platform, ideal for development and testing purposes.
