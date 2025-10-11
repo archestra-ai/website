@@ -102,6 +102,20 @@ helm upgrade archestra-platform \
 
 If you don't specify `postgresql.external_database_url`, the Helm chart will automatically create and manage a PostgreSQL instance for you within your Kubernetes cluster.
 
+### Custom Environment Variables
+
+You can pass custom environment variables to the platform container using the `archestra.env` values:
+
+```bash
+helm upgrade archestra-platform \
+  oci://europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/helm-charts/archestra-platform \
+  --install \
+  --namespace archestra \
+  --create-namespace \
+  --set archestra.env.ARCHESTRA_API_BASE_URL=https://api.example.com \
+  --wait
+```
+
 ### Accessing the Platform
 
 After installation, access the platform using port forwarding:
