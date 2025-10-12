@@ -20,6 +20,10 @@ The following environment variables can be used to configure Archestra Platform:
   - Default: Internal PostgreSQL (Docker) or managed instance (Helm)
   - Required for production deployments with external database
 
+- **`ARCHESTRA_ANALYTICS`** - Controls PostHog analytics for product improvements.
+  - Default: `enabled`
+  - Set to `disabled` to opt-out of analytics
+
 ## Docker Deployment
 
 Docker deployment provides the fastest way to get started with Archestra Platform, ideal for development and testing purposes.
