@@ -344,9 +344,7 @@ export default async function Home() {
                 </span>
                 Newsletter
               </div>
-              <p className="text-xl text-gray-600 mb-10">
-                Short, crisp, and to the point e-mails about Archestra
-              </p>
+              <p className="text-xl text-gray-600 mb-10">Short, crisp, and to the point e-mails about Archestra</p>
               <div className="flex justify-center">
                 <NewsletterForm />
               </div>
