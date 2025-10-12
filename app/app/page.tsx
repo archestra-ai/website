@@ -53,7 +53,7 @@ export default async function Home() {
             <div className="flex flex-col items-center text-center gap-8">
               <h1 className="text-5xl md:text-6xl font-bold text-gray-900">Agents 🤝 Enterprise Data</h1>
               <p className="text-xl md:text-2xl text-gray-700 max-w-3xl">
-                Open source iPaaS for secure and reliable autonomous AI agents in enterprises
+                Open Source Gateway to bring security and control to AI agents
               </p>
 
               {/* Key Features */}
@@ -78,20 +78,18 @@ export default async function Home() {
         {/* Platform Integrations Section */}
         <section className="pb-20 bg-white">
           <div className="container px-4 md:px-6 max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Seamlessly integrate Archestra with leading AI development frameworks and platforms
-              </p>
-            </div>
-
             {/* Platform Logos Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
               {/* N8N */}
               <Link
                 href="/docs/platform-n8n-example"
                 className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
               >
-                <div className="text-4xl font-bold text-red-600 mb-3">n8n</div>
+                <div className="text-red-600 mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-4xl font-bold">n8n</span>
+                </div>
                 <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
               </Link>
 
@@ -100,7 +98,11 @@ export default async function Home() {
                 href="/docs/platform-vercel-ai-example"
                 className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
               >
-                <div className="text-3xl font-bold text-black mb-3 text-center whitespace-nowrap">Vercel AI</div>
+                <div className="text-black mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-3xl font-bold whitespace-nowrap">Vercel AI</span>
+                </div>
                 <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
               </Link>
 
@@ -109,16 +111,11 @@ export default async function Home() {
                 href="/docs/platform-pydantic-example"
                 className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
               >
-                <div className="text-3xl font-bold text-pink-600 mb-3 text-center whitespace-nowrap">Pydantic AI</div>
-                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
-              </Link>
-
-              {/* LangChain */}
-              <Link
-                href="/docs/platform-langchain-example"
-                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
-              >
-                <div className="text-3xl font-bold text-green-600 mb-3">LangChain</div>
+                <div className="text-pink-600 mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-3xl font-bold whitespace-nowrap">Pydantic AI</span>
+                </div>
                 <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
               </Link>
 
@@ -127,7 +124,11 @@ export default async function Home() {
                 href="/docs/platform-openwebui-example"
                 className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
               >
-                <div className="text-3xl font-bold text-blue-600 mb-3">OpenWebUI</div>
+                <div className="text-blue-600 mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-3xl font-bold">OpenWebUI</span>
+                </div>
                 <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
               </Link>
             </div>
@@ -149,7 +150,7 @@ export default async function Home() {
           <div className="container px-4 md:px-6 max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Why Enterprises Need Secure AI Agents
+                Why Enterprises Need an Agentic Gateway
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 AI agents unlock tremendous value, but come with critical security challenges that must be addressed
@@ -158,7 +159,7 @@ export default async function Home() {
 
             {/* Breaches List */}
             <div className="text-center mb-12">
-              <p className="text-lg text-gray-700 mb-4 font-medium">Major AI platforms have been compromised:</p>
+              <p className="text-lg text-gray-700 mb-4 font-medium">Major AI Platforms Have Been Compromised:</p>
               <div className="flex flex-wrap justify-center gap-3 mb-8 max-w-4xl mx-auto">
                 <a
                   href="https://systemweakness.com/new-prompt-injection-attack-on-chatgpt-web-version-ef717492c5c2"
@@ -280,13 +281,13 @@ export default async function Home() {
                     <span className="text-green-500 mt-1">✓</span>
                     <div>
                       <span className="font-medium text-gray-900">On-Prem</span>
-                      <p className="text-sm text-gray-600 mt-1">No 3'rd party cloud</p>
+                      <p className="text-sm text-gray-600 mt-1">No 3rd Party Cloud</p>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-green-500 mt-1">✓</span>
                     <div>
-                      <span className="font-medium text-gray-900">Network-level proxy</span>
+                      <span className="font-medium text-gray-900">Network-Level Proxy</span>
                       <p className="text-sm text-gray-600 mt-1">No need to update your agent code</p>
                     </div>
                   </li>
