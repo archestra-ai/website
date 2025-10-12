@@ -78,7 +78,6 @@ export default async function Home() {
         {/* Platform Integrations Section */}
         <section className="pb-20 bg-white">
           <div className="container px-4 md:px-6 max-w-7xl mx-auto">
-
             {/* Platform Logos Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
               {/* N8N */}
@@ -86,7 +85,11 @@ export default async function Home() {
                 href="/docs/platform-n8n-example"
                 className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
               >
-                <div className="text-red-600 mb-3 text-center"><span className="text-sm font-medium">Securing</span><br/><span className="text-4xl font-bold">n8n</span></div>
+                <div className="text-red-600 mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-4xl font-bold">n8n</span>
+                </div>
                 <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
               </Link>
 
@@ -95,7 +98,11 @@ export default async function Home() {
                 href="/docs/platform-vercel-ai-example"
                 className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
               >
-                <div className="text-black mb-3 text-center"><span className="text-sm font-medium">Securing</span><br/><span className="text-3xl font-bold whitespace-nowrap">Vercel AI</span></div>
+                <div className="text-black mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-3xl font-bold whitespace-nowrap">Vercel AI</span>
+                </div>
                 <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
               </Link>
 
@@ -104,7 +111,11 @@ export default async function Home() {
                 href="/docs/platform-pydantic-example"
                 className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
               >
-                <div className="text-pink-600 mb-3 text-center"><span className="text-sm font-medium">Securing</span><br/><span className="text-3xl font-bold whitespace-nowrap">Pydantic AI</span></div>
+                <div className="text-pink-600 mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-3xl font-bold whitespace-nowrap">Pydantic AI</span>
+                </div>
                 <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
               </Link>
 
@@ -113,7 +124,11 @@ export default async function Home() {
                 href="/docs/platform-openwebui-example"
                 className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
               >
-                <div className="text-blue-600 mb-3 text-center"><span className="text-sm font-medium">Securing</span><br/><span className="text-3xl font-bold">OpenWebUI</span></div>
+                <div className="text-blue-600 mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-3xl font-bold">OpenWebUI</span>
+                </div>
                 <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
               </Link>
             </div>
