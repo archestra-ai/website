@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import Footer from '@components/Footer';
 import HeaderWithBanner from '@components/HeaderWithBanner';
+import NewsletterForm from '@components/NewsletterForm';
 import constants from '@constants';
 
 const {
@@ -326,6 +327,26 @@ export default async function Home() {
                   <Github className="w-5 h-5" />
                   <span>Deploy</span>
                 </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Newsletter Section */}
+        <section className="py-20 relative overflow-hidden bg-gradient-to-br from-teal-50 via-blue-50 to-purple-50">
+          <div className="absolute inset-0 bg-grid-slate-100 [mask-image:radial-gradient(ellipse_at_center,transparent,white)]"></div>
+          <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
+            <div className="text-center max-w-2xl mx-auto">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-100 rounded-full text-teal-700 text-sm font-medium mb-6">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+                </span>
+                Newsletter
+              </div>
+              <p className="text-xl text-gray-600 mb-10">Short, crisp, and to the point e-mails about Archestra</p>
+              <div className="flex justify-center">
+                <NewsletterForm />
               </div>
             </div>
           </div>
