@@ -12,9 +12,11 @@ Ensure you have the following tools installed:
 
 - **Node.js** (v18 or higher) - JavaScript runtime
 - **pnpm** (v8 or higher) - Package manager
+
   ```bash
   npm install -g pnpm
   ```
+
 - **Git** - Version control
 
 ### Kubernetes Development
@@ -51,5 +53,5 @@ This command will:
 
 - Build and deploy all platform services to your local Kubernetes cluster
 - Set up hot-reload for code changes
-- Open the Tilt UI at http://localhost:10350
-- Open the Archestra UI at http://localhost:3000
+- Open the Tilt UI at <http://localhost:10350>
+- Open the Archestra UI at <http://localhost:3000>

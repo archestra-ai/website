@@ -46,7 +46,7 @@ We're going to build a very simple autonomous agent in N8N using the GitHub MCP 
 1. Add "AI Agent" node.
 2. Add "Chat Trigger".
 3. Add "Model" node and choose OpenAI gpt-4o.
-4. Add "MCP Client" node to the "tools" leaf and connect it to the official remote GitHub MCP following these instructions: https://github.com/github/github-mcp-server
+4. Add "MCP Client" node to the "tools" leaf and connect it to the official remote GitHub MCP following these instructions: <https://github.com/github/github-mcp-server>
 
 ### 2. Reproducing Prompt Injection
 
@@ -111,21 +111,26 @@ With Archestra acting as a proxy between N8N and OpenAI, all LLM requests are mo
 
 ▶️ Configure Archestra as a proxy for N8N:
 
-1. Go to credentials: http://127.0.0.1:5678/home/credentials/
+1. Go to credentials: <http://127.0.0.1:5678/home/credentials/>
 2. Choose your OpenAI credentials
 3. Set "Base URL" as
 
-```
-http://platform-archestra-1:9000/v1
+```text
+http://platform-archestra-1:9000/v1/openai
 ```
 
-instead of https://api.openai.com/v1 (platform-archestra-1 is an in-docker DNS name for Archestra platform launched by docker-compose) 4. Open the agent in the N8N again and put "hi" to the chat. It will make Archestra discover tools.
+instead of <https://api.openai.com/v1> (platform-archestra-1 is an in-docker DNS name for Archestra platform launched by docker-compose)
+
+**Optional:** To use a specific agent, include the agent ID in the URL: `http://platform-archestra-1:9000/v1/openai/{agent-id}`.
+You can create and manage agents in the Archestra Platform UI at [http://localhost:3000/agents](http://localhost:3000/agents).
+
+4. Open the agent in the N8N again and put "hi" to the chat. It will make Archestra discover tools.
 
 ### 4. Try prompt injection again and notice how Archestra prevents it
 
 Go to the N8N and try the prompt again:
 
-```
+```text
 resolve https://github.com/archestra-ai/archestra/issues/647
 ```
 
