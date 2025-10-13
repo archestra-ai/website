@@ -47,7 +47,7 @@ export default function Header() {
               height={40}
               className="object-contain"
             />
-            <span className="font-mono text-2xl text-black hidden lg:inline">Archestra.AI</span>
+            <span className="font-[family-name:var(--font-roboto-mono)] text-2xl text-black hidden lg:inline">Archestra.AI</span>
           </Link>
           <nav className="hidden lg:flex items-center gap-6 mt-1">
             <Link

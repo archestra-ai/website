@@ -140,7 +140,7 @@ export default function Home() {
         </section>
 
         {/* Chat Animation Demonstration */}
-        <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+        <section className="pt-0 pb-16 bg-gradient-to-b from-white to-gray-50">
           <div className="container md:px-6 max-w-7xl mx-auto">
             {/* Chat Demonstration */}
             <div className="flex flex-col gap-4 w-full max-w-4xl mx-auto">
@@ -154,7 +154,7 @@ export default function Home() {
                       }`
                 }`}
               >
-                <Card className="w-full max-w-[600px] bg-blue-50 border-blue-200">
+                <Card className="w-full max-w-[420px] bg-blue-50 border-blue-200">
                   <CardContent className="flex gap-2 flex-row-reverse p-4">
                     <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
                       <User className="w-4 h-4 text-blue-600" />

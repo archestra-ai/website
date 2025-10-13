@@ -1,10 +1,16 @@
 import type { Metadata, Viewport } from 'next';
+import { Roboto_Mono } from 'next/font/google';
 
 import ConditionalAnalytics from '@components/ConditionalAnalytics';
 import GDPRConsentPanel from '@components/GDPRConsentPanel';
 import constants from '@constants';
 
 import './globals.css';
+
+const robotoMono = Roboto_Mono({
+  subsets: ['latin'],
+  variable: '--font-roboto-mono',
+});
 
 const {
   website: { urls: websiteUrls, keywords: websiteKeywords },
@@ -77,7 +83,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={robotoMono.variable}>
         {children}
         <GDPRConsentPanel />
         <ConditionalAnalytics gaId={constants.googleAnalytics.measurementId} />
