@@ -139,7 +139,7 @@ This means the agent can still read the GitHub issue and work with it, but it ca
 
 ### 2. Akinator (Dual-LLM) Pattern
 
-Our [Akinator (Dual-LLM)](https://www.archestra.ai/docs/platform-akinator-dual-llm) pattern is inspired by the classic guessing game "Guess Who" and the online game Akinator. Here's how it works:
+Our [Akinator (Dual-LLM)](https://www.archestra.ai/blog/dual-llm) pattern is inspired by the classic guessing game "Guess Who" and the online game Akinator. Here's how it works:
 
 Imagine the potentially malicious tool response (like the GitHub issue content) is written on a card and placed on the main AI agent's forehead — it can't read it directly, so it can't be poisoned by any prompt injection hidden inside.
 
