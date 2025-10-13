@@ -48,6 +48,19 @@ const nextConfig = {
         destination: '/api/llm-proxy/gemini/models/gemini-2.5-pro:streamGenerateContent',
         permanent: false,
       },
+      /**
+       * Address some typos we have in the platform docs URLs
+       */
+      {
+        source: '/docs/platfrom-quickstart',
+        destination: '/docs/platform-quickstart',
+        permanent: true,
+      },
+      {
+        source: '/docs/platfrom-developer-quickstart',
+        destination: '/docs/platform-developer-quickstart',
+        permanent: true,
+      },
     ];
   },
   skipTrailingSlashRedirect: true,
