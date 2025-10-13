@@ -1,6 +1,6 @@
 ---
 title: 'What is a Prompt Injection?'
-date: '2025-10-10'
+date: '2025-10-13'
 author: 'Joey Orlando'
 description: 'A deep dive into prompt injection attacks, why even the smartest AI models are vulnerable, and how Archestra Platform protects your AI agents from this critical security threat.'
 image: '/blog/prompt-injection-github-issue.png'
