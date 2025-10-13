@@ -60,25 +60,29 @@ graph LR
 Access the configuration interface at `http://localhost:3000/dual-llm`:
 
 ![Dual LLM Configuration UI](/docs/platfrom/dual-llm-1.png)
-*Screenshot: Configuration interface showing prompt templates and settings*
+_Screenshot: Configuration interface showing prompt templates and settings_
 
 ### Settings
 
 **Enable/Disable Toggle**
+
 - Turn the dual LLM protection on or off
 - When disabled, tool outputs are processed normally
 
 **Max Rounds**
+
 - Number of Q&A exchanges between agents
 - More rounds = better understanding but higher cost
 - Recommended: 5-10 rounds
 
 **Main Agent Prompt**
+
 - Instructions for the privileged agent
 - Teaches it how to ask good questions
 - Variable: `{{originalUserRequest}}` - the user's initial request
 
 **Quarantined Agent Prompt**
+
 - Instructions for the restricted agent
 - Emphasizes security rules (only return indices)
 - Variables:
@@ -88,13 +92,14 @@ Access the configuration interface at `http://localhost:3000/dual-llm`:
   - `{{maxIndex}}` - maximum valid index
 
 **Summary Prompt**
+
 - Instructions for generating the final safe output
 - Variable: `{{qaText}}` - the complete Q&A conversation
 
 ## Example Execution
 
 ![Dual LLM Execution Logs](/docs/platfrom/dual-llm-2.png)
-*Screenshot: Backend logs showing Q&A rounds and structured responses*
+_Screenshot: Backend logs showing Q&A rounds and structured responses_
 
 ### Sample Q&A Session
 
@@ -122,6 +127,7 @@ The malicious "IGNORE PREVIOUS INSTRUCTIONS" never reaches the main LLM.
 ## When It Activates
 
 The dual LLM pattern automatically runs when:
+
 1. The feature is enabled in configuration
 2. A tool returns data
 3. The tool's output is marked as untrusted
@@ -131,15 +137,19 @@ Configure tool trust settings at `http://localhost:3000/tools`.
 ## Use Cases
 
 ### Email Integration
+
 Protect against malicious content in emails that attempt to hijack the agent's behavior.
 
 ### Web Scraping
+
 Safely extract information from web pages that might contain adversarial prompts.
 
 ### File System Access
+
 Read user-uploaded files without risk of embedded prompt injections.
 
 ### Database Queries
+
 Process query results that include user-generated content safely.
 
 ## References

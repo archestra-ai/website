@@ -36,6 +36,7 @@ Here's the thing about AI agents - they're incredibly powerful but fundamentally
 - Poisoned data from a phishing email
 
 Simon Willison calls this the **"Lethal Trifecta"** - when an AI agent has:
+
 1. Access to private data
 2. Ability to communicate outside
 3. Exposure to content from untrusted sources
@@ -129,6 +130,7 @@ Because at the end of the day, AI agents shouldn't have to choose between being 
 ## References
 
 This work builds on insights from:
+
 - [Simon Willison's prompt injection research](https://simonwillison.net/)
 - [Patterns to prevent prompt injections](https://simonwillison.net/2025/Jun/13/prompt-injection-design-patterns/)
 - [Anthropic's guidance on building effective agents](https://www.anthropic.com/research/building-effective-agents)
