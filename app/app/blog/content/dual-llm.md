@@ -1,6 +1,6 @@
 ---
 title: 'The Archestra Dual LLM Pattern: Teaching AI Agents to Play a Guess Who? Game with Untrusted Data'
-date: '2025-10-14'
+date: '2025-10-13'
 author: 'Ildar Iskhakov, CTO'
 description: 'How we developed a new security pattern inspired by a childhood game to protect AI agents from prompt injection attacks'
 image: '/blog/oct-14-2025-dual-llm-image1.jpg'
