@@ -97,11 +97,11 @@ Dynamic Tool Access is a security mechanism where Archestra monitors the context
 
 [Learn more about Dynamic Tool Access →](/docs/platform-dynamic-tools)
 
-### Akinator (Dual LLM)
+### Archestra Dual LLM
 
-Akinator is Archestra's dual LLM guardrail system that provides an independent security validation layer. A separate LLM reviews all tool invocations before execution, ensuring malicious prompts cannot bypass security policies.
+Archestra's dual LLM guardrail system provides an independent security validation layer. A separate LLM reviews all tool invocations without passing the untrusted data to the context, ensuring malicious prompts cannot bypass security policies.
 
-[Learn more about Akinator (Dual LLM) →](/docs/platform-akinator-dual-llm)
+[Learn more about Archestra Dual LLM →](/docs/platform-dual-llm)
 
 ## References
 

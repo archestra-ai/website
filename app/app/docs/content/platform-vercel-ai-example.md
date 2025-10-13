@@ -86,6 +86,8 @@ const customOpenAI = createOpenAI({
   baseURL: 'http://localhost:9000/v1/openai', // 1. use Archestra URL with provider
 }).chat; // 2. Add .chat because Archestra supports Chat Completions API
 
+// Make sure to add all messages from the AI SDK result to conversation history
+// This includes assistant messages with tool_calls and tool result messages
 const result = streamText({
   model: customOpenAI('gpt-4o'),
   messages: conversationHistory,

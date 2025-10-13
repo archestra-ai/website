@@ -6,6 +6,24 @@ order: 3
 
 The Archestra Platform can be deployed using Docker for development and testing, or Helm for production environments. Both deployment methods provide access to the Admin UI on port 3000 and the API on port 9000.
 
+## Environment Variables
+
+The following environment variables can be used to configure Archestra Platform:
+
+- **`ARCHESTRA_API_BASE_URL`** - Base URL for the Archestra API proxy. This is where your agents should connect to instead of the LLM provider directly.
+  - Default: `http://localhost:9000`
+  - Example: `http://localhost:9001` or `https://api.example.com`
+  - Note: This configures both the port where the backend API server listens (parsed from the URL) and the base URL that the frontend uses to connect to the backend
+
+- **`DATABASE_URL`** - PostgreSQL connection string for the database.
+  - Format: `postgresql://user:password@host:5432/database`
+  - Default: Internal PostgreSQL (Docker) or managed instance (Helm)
+  - Required for production deployments with external database
+
+- **`ARCHESTRA_ANALYTICS`** - Controls PostHog analytics for product improvements.
+  - Default: `enabled`
+  - Set to `disabled` to opt-out of analytics
+
 ## Docker Deployment
 
 Docker deployment provides the fastest way to get started with Archestra Platform, ideal for development and testing purposes.
@@ -88,16 +106,30 @@ helm upgrade archestra-platform \
 
 If you don't specify `postgresql.external_database_url`, the Helm chart will automatically create and manage a PostgreSQL instance for you within your Kubernetes cluster.
 
-### Accessing the Platform
+### Custom Environment Variables
 
-After installation, access the platform using port forwarding:
+You can pass custom environment variables to the platform container using the `archestra.env` values:
 
 ```bash
-# Forward the Admin UI (port 3000)
-kubectl --namespace archestra port-forward svc/archestra-platform 3000:3000
+helm upgrade archestra-platform \
+  oci://europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/helm-charts/archestra-platform \
+  --install \
+  --namespace archestra \
+  --create-namespace \
+  --set archestra.env.ARCHESTRA_API_BASE_URL=https://api.example.com \
+  --wait
+```
 
-# In a separate terminal, forward the API (port 9000)
+### Accessing the Platform
+
+After installation, access the platform using port forwarding (both commands must be running):
+
+```bash
+# Forward the API (port 9000)
 kubectl --namespace archestra port-forward svc/archestra-platform 9000:9000
+
+# In a separate terminal, forward the Admin UI (port 3000)
+kubectl --namespace archestra port-forward svc/archestra-platform 3000:3000
 ```
 
 Then visit:
