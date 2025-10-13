@@ -44,7 +44,7 @@ Each agent maintains its own:
 - Tool configurations
 - Security policies
 
-**Default Agent**: If you don't specify an agent ID in the proxy URL, Archestra will create or use a default agent based on your User-Agent header.
+**Default Agent**: If you don't specify an agent ID in the proxy URL, Archestra will create or use a default agent based on your `User-Agent` header.
 
 ## Proxying your Agent to the Archestra Platform
 
