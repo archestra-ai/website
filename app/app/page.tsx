@@ -318,6 +318,42 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Docker Run Section */}
+        <section className="py-16 bg-white">
+          <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Quick Start</h2>
+                <p className="text-lg text-gray-600">Deploy Archestra in seconds with Docker</p>
+              </div>
+              <div className="bg-gray-900 rounded-lg p-6 shadow-xl">
+                <div className="flex items-center justify-between">
+                  <code className="text-green-400 font-mono text-sm md:text-base">
+                    docker run -p 9000:9000 -p 3000:3000 archestra/platform
+                  </code>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText('docker run -p 9000:9000 -p 3000:3000 archestra/platform');
+                    }}
+                    className="ml-4 px-3 py-1.5 text-xs font-medium bg-gray-700 hover:bg-gray-600 text-white rounded transition-colors"
+                  >
+                    Copy
+                  </button>
+                </div>
+              </div>
+              <div className="text-center mt-4">
+                <p className="text-sm text-gray-600">
+                  View the{' '}
+                  <Link href="/docs/platform-deployment" className="text-blue-600 hover:text-blue-700 font-medium">
+                    full deployment guide
+                  </Link>{' '}
+                  for more options
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Platform Integrations Section */}
         <section className="pb-20 pt-20 bg-white">
           <div className="container px-4 md:px-6 max-w-7xl mx-auto">
