@@ -78,7 +78,8 @@ docker run -p 9000:9000 -p 3000:3000 archestra/platform
 ## Step 3. Integrate AI SDK with Archestra
 
 At first, you need to change baseUrl and point it to Archestra's proxy which runs on [`http://localhost:9000/v1/openai`](http://localhost:9000/v1/openai).
-Also, make sure that you configure the AI SDK to use [Chat Completions API](https://platform.openai.com/docs/api-reference/chat/create) which is currently supported by Archestra. It can be done simply by appending `.chat` to the OpenAI provider instance.
+
+OpenAI provides `/chat/completions` and `/responses` API's. Archestra doesn't support `/responses` yet. We're working on it ([here](https://github.com/archestra-ai/archestra/issues/720) is a GH issue), meanwhile please make sure that your agent uses `/chat/completions`. It can be done simply by appending `.chat` to the OpenAI provider instance. Check [this](https://ai-sdk.dev/providers/ai-sdk-providers/openai#language-models) for more details.
 
 ```ts
 const customOpenAI = createOpenAI({
