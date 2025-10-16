@@ -171,11 +171,11 @@ export default {
       google: {
         clientId: process.env.GOOGLE_CLIENT_ID || '',
         clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-        redirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://localhost:3000/api/auth/callback/google',
+        redirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://localhost:3001/api/auth/callback/google',
       },
     },
     secret: process.env.BETTER_AUTH_SECRET || 'fallback-secret-for-development',
-    baseURL: process.env.BETTER_AUTH_URL || 'http://localhost:3000',
+    baseURL: process.env.BETTER_AUTH_URL || 'http://localhost:3001',
   },
   inference: {
     geminiApiKey: process.env.GOOGLE_API_TOKEN,
