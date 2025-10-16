@@ -20,6 +20,14 @@ The following environment variables can be used to configure Archestra Platform:
   - Default: Internal PostgreSQL (Docker) or managed instance (Helm)
   - Required for production deployments with external database
 
+- **`ALLOWED_FRONTEND_ORIGINS`** - Comma-separated list of frontend origins allowed to access the API (CORS configuration).
+  - Default: `*` in development (`NODE_ENV=development`), localhost-only in production
+  - If you need to run backend and frontend on different domains (e.g., `https://app.example.com` accessing `https://api.example.com`), configure this variable to allow cross-origin requests
+  - Examples:
+    - Single domain: `https://app.example.com`
+    - Multiple domains: `https://app.example.com,https://dashboard.example.com`
+    - All origins: `*` (not recommended for production)
+
 - **`ARCHESTRA_ANALYTICS`** - Controls PostHog analytics for product improvements.
   - Default: `enabled`
   - Set to `disabled` to opt-out of analytics
