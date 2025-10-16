@@ -52,7 +52,7 @@ The application automatically uses this local database in development mode.
 pnpm dev
 ```
 
-The application will be available at `http://localhost:3000`.
+The application will be available at `http://localhost:3001`.
 
 ## 🤝 Contributing
 

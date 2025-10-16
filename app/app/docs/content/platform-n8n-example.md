@@ -28,7 +28,7 @@ We've prepared a docker-compose with local N8N and Archestra:
 ```bash
 # Clone the repository with docker-compose configuration
 git clone https://github.com/archestra-ai/archestra
-cd platfrom
+cd platform
 
 # Start N8N and Archestra Platform
 docker-compose -f docker-compose-n8n.yml up
