@@ -1,5 +1,5 @@
 ---
-title: Security & Bug Bounty
+title: Security
 category: Development
 order: 2
 description: Security policies and contact information for Archestra.ai
