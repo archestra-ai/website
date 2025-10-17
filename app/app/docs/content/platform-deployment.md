@@ -32,6 +32,17 @@ The following environment variables can be used to configure Archestra Platform:
   - Default: `enabled`
   - Set to `disabled` to opt-out of analytics
 
+- **`ARCHESTRA_AUTH_SECRET`** - Secret key used for signing authentication tokens and passwords.
+  - Required for production deployments
+  - Example: `something-really-really-secret-12345`
+
+- **`ARCHESTRA_AUTH_ADMIN_EMAIL`** - Email address for the default Archestra Admin user, created on startup.
+  - Default: `admin@example.com`
+
+- **`ARCHESTRA_AUTH_ADMIN_PASSWORD`** - Password for the default Archestra Admin user. Set once on first-run.
+  - Default: `admin123`
+  - Note: Change this to a secure password for production deployments
+
 ## Docker Deployment
 
 Docker deployment provides the fastest way to get started with Archestra Platform, ideal for development and testing purposes.
