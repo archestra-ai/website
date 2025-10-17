@@ -22,64 +22,45 @@ lastUpdated: 2025-10-08
    - Web UI at <http://localhost:3000>
    - API proxy at <http://localhost:9000>
 
-## Configuring an Agent
+## Connecting Your Agent
 
-Agents are the core concept in Archestra Platform. Each agent represents a distinct AI application or workflow that you want to secure.
+To connect your AI application to Archestra, you'll need to configure it to use Archestra as a proxy.
 
-1. Navigate to the **Agents** page at <http://localhost:3000/agents>
+### Quick Start
 
-2. Click **Create Agent** and give your agent a name (e.g., "My Chat Bot")
+For the fastest setup, use the default agent configuration:
 
-3. Copy the **Proxy URL** displayed for your agent. It will look like:
+```text
+http://localhost:9000/v1/{provider}
+```
 
-   ```text
-   http://localhost:9000/v1/openai/{agent-id}
-   ```
+Replace `{provider}` with your LLM provider (`openai`, `anthropic`, etc.). This will automatically create or use a default agent based on your `User-Agent` header.
 
-![Agents Page](/docs/platfrom/agents-page.png)
+### Using Specific Agents
 
-Each agent maintains its own:
+For production applications, we recommend creating dedicated agents for better organization and policy management. See [Agents](https://www.archestra.ai/docs/platform-agents) for details on creating and managing agents.
 
-- Interaction history
-- Tool configurations
-- Security policies
+### Supported Providers
 
-**Default Agent**: If you don't specify an agent ID in the proxy URL, Archestra will create or use a default agent based on your `User-Agent` header.
-
-## Proxying your Agent to the Archestra Platform
-
-To connect your AI application to Archestra, configure it to use the Archestra proxy URL instead of the OpenAI API directly.
-
-### URL Format
-
-Archestra supports two URL formats:
-
-1. **Default Agent** (auto-creates based on User-Agent):
-
-   ```text
-   http://localhost:9000/v1/openai
-   ```
-
-2. **Specific Agent** (uses the agent you created):
-
-   ```text
-   http://localhost:9000/v1/openai/{agent-id}
-   ```
+Archestra supports multiple LLM providers. Learn more about [Supported LLM Providers](https://www.archestra.ai/docs/platform-supported-llm-providers) including OpenAI, Anthropic, and more
 
 ## Next Steps
 
-Now that your agent is connected to Archestra, you can:
+Now that you have Archestra running, you can:
 
-1. **Understand the threats** - Learn about [The Lethal Trifecta](https://www.archestra.ai/docs/platform-lethal-trifecta) that Archestra protects against
+1. **Create an Agent** - Learn about [Agents](https://www.archestra.ai/docs/platform-agents) and how to configure them for your applications
 
-2. **Configure security policies** - Set up [Dynamic Tools](https://www.archestra.ai/docs/platform-dynamic-tools#mark-tools) to control which tools can be invoked and when
+2. **Understand the threats** - Learn about [The Lethal Trifecta](https://www.archestra.ai/docs/platform-lethal-trifecta) that Archestra protects against
 
-3. **Monitor your agents** - View interaction logs, tool calls, and security events in the Archestra UI
+3. **Configure security policies** - Set up [Dynamic Tools](https://www.archestra.ai/docs/platform-dynamic-tools#mark-tools) to control which tools can be invoked and when
 
-4. **Explore examples** - Check out practical examples:
+4. **Monitor your agents** - View interaction logs, tool calls, and security events in the Archestra UI
+
+5. **Explore examples** - Check out practical examples:
    - [Vercel AI SDK](https://www.archestra.ai/docs/platform-vercel-ai-example)
    - [Pydantic AI](https://www.archestra.ai/docs/platform-pydantic-example)
    - [N8N](https://www.archestra.ai/docs/platform-n8n-example)
+   - [LangChain](https://www.archestra.ai/docs/platform-langchain-example)
    - [OpenWebUI](https://www.archestra.ai/docs/platform-openwebui-example)
 
-5. [Join the Slack community](https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg) to talk to the developers and get assistance!
+6. [Join the Slack community](https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg) to talk to the developers and get assistance!
