@@ -13,11 +13,11 @@ OpenWebUI - one of the most popular clients for LLMs, however it doesn't have bu
 
 In this guide, we will set up the basics: OpenWebUI + Github tool -> Archestra Platform -> OpenAI. We will then make OpenWebUI read a very _interesting_ issue that could impact the original plan and cause the OpenWebUI Chat to do something you haven't even asked for. Afterwards, we'll connect it to Archestra to see how it prevented such behavior. This illustrates a fundamental problem faced by any AI Agent when it has access to tools that can read private data or post outside, known as the [Lethal Trifecta](https://www.archestra.ai/docs/platform-lethal-trifecta).
 
-## Step 1. Get your OpenAI API Key
+## Step 1. Get your LLM Provider API Key
 
-To use OpenAI models (such as GPT-4 or o3-mini), you need an API key from a supported provider.
+This example uses OpenAI, but Archestra supports multiple LLM providers. See [Supported LLM Providers](https://www.archestra.ai/docs/platform-supported-llm-providers) for the complete list.
 
-You can use:
+For OpenAI, you can get an API key from:
 
 - OpenAI directly ([https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys))
 - Azure OpenAI
