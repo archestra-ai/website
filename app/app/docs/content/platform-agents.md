@@ -22,7 +22,6 @@ Using agents provides several benefits:
 1. **Isolation** - Keep different AI applications separate with their own policies
 2. **Monitoring** - Track interactions and security events per application
 3. **Flexibility** - Apply different security rules to different use cases
-4. **Organization** - Manage multiple AI applications from one platform
 
 ## Creating an Agent
 
@@ -87,40 +86,7 @@ const customOpenAI = createOpenAI({
 }).chat;
 ```
 
-**Anthropic with LangChain:**
-
-```python
-from langchain_anthropic import ChatAnthropic
-
-llm = ChatAnthropic(
-    model="claude-sonnet-4-5-20250929",
-    base_url="http://localhost:9000/v1/anthropic/{agent-id}",
-    api_key="your-api-key"
-)
-```
-
-**Generic HTTP Client:**
-
-```bash
-curl -X POST http://localhost:9000/v1/openai/{agent-id}/chat/completions \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -d '{
-    "model": "gpt-4o",
-    "messages": [{"role": "user", "content": "Hello!"}]
-  }'
-```
-
 ## Managing Agents
-
-### Viewing Agents
-
-The **Agents** page shows all your agents with:
-
-- Agent name
-- Unique agent ID
-- Creation date
-- Action menu for connecting, editing, or deleting
 
 ### Editing Agents
 
@@ -140,31 +106,3 @@ To delete an agent:
 3. Confirm the deletion
 
 ⚠️ **Warning**: Deleting an agent is permanent and will remove all associated interaction history and policies.
-
-## Agent Interaction History
-
-All requests and responses that flow through an agent are recorded in the interaction history. You can view this in the **Chats** section of the UI:
-
-1. Navigate to **Chats** at <http://localhost:3000>
-2. Filter by agent to see interactions for a specific agent
-3. Click **Details** on any interaction to see the full request and response
-
-This history is invaluable for:
-
-- Debugging issues
-- Auditing security events
-- Understanding agent behavior
-- Analyzing tool usage
-
-## Next Steps
-
-Now that you understand agents, you can:
-
-1. **Configure security policies** - Set up [Dynamic Tools](https://www.archestra.ai/docs/platform-dynamic-tools) to control tool invocations
-2. **Learn about providers** - Understand [Supported LLM Providers](https://www.archestra.ai/docs/platform-supported-llm-providers) and their requirements
-3. **Explore examples** - Check out integration guides for your framework:
-   - [Vercel AI SDK](https://www.archestra.ai/docs/platform-vercel-ai-example)
-   - [Pydantic AI](https://www.archestra.ai/docs/platform-pydantic-example)
-   - [N8N](https://www.archestra.ai/docs/platform-n8n-example)
-   - [LangChain](https://www.archestra.ai/docs/platform-langchain-example)
-   - [OpenWebUI](https://www.archestra.ai/docs/platform-openwebui-example)
