@@ -37,7 +37,7 @@ The following environment variables can be used to configure Archestra Platform:
   - Example: `something-really-really-secret-12345`
 
 - **`ARCHESTRA_AUTH_ADMIN_EMAIL`** - Email address for the default Archestra Admin user, created on startup.
-  - Default: `admin@localhost`
+  - Default: `admin@localhost.ai`
 
 - **`ARCHESTRA_AUTH_ADMIN_PASSWORD`** - Password for the default Archestra Admin user. Set once on first-run.
   - Default: `password`
