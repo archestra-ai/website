@@ -10,23 +10,24 @@ The Archestra Platform can be deployed using Docker for development and testing,
 
 The following environment variables can be used to configure Archestra Platform:
 
-- **`ARCHESTRA_API_BASE_URL`** - Base URL for the Archestra API proxy. This is where your agents should connect to instead of the LLM provider directly.
-  - Default: `http://localhost:9000`
-  - Example: `http://localhost:9001` or `https://api.example.com`
-  - Note: This configures both the port where the backend API server listens (parsed from the URL) and the base URL that the frontend uses to connect to the backend
-
 - **`DATABASE_URL`** - PostgreSQL connection string for the database.
   - Format: `postgresql://user:password@host:5432/database`
   - Default: Internal PostgreSQL (Docker) or managed instance (Helm)
   - Required for production deployments with external database
 
-- **`ARCHESTRA_ALLOWED_FRONTEND_ORIGINS`** - Comma-separated list of frontend origins allowed to access the API (CORS configuration).
-  - Default: Localhost regex pattern (allows `http(s)://localhost` on any port)
-  - If you need to run backend and frontend on different domains (e.g., `https://app.example.com` accessing `https://api.example.com`), configure this variable to allow cross-origin requests
-  - Examples:
-    - Single domain: `https://app.example.com`
-    - Multiple domains: `https://app.example.com,https://dashboard.example.com`
-  - Note: Wildcard `*` is not supported due to cookie-based authentication (credentials mode)
+- **`ARCHESTRA_API_BASE_URL`** - Base URL for the Archestra API proxy. This is where your agents should connect to instead of the LLM provider directly.
+  - Default: `http://localhost:9000`
+  - Example: `http://localhost:9001` or `https://api.example.com`
+  - Note: This configures both the port where the backend API server listens (parsed from the URL) and the base URL that the frontend uses to connect to the backend
+
+- **`ARCHESTRA_FRONTEND_URL`** - The URL where users access the frontend application.
+  - Example: `https://frontend.example.com`
+  - Optional for local development
+
+- **`ARCHESTRA_AUTH_COOKIE_DOMAIN`** - Cookie domain configuration for authentication.
+  - Should be set to the domain of the `ARCHESTRA_FRONTEND_URL`
+  - Example: If frontend is at `https://frontend.example.com`, set to `example.com`
+  - Required when using different domains or subdomains for frontend and backend
 
 - **`ARCHESTRA_ANALYTICS`** - Controls PostHog analytics for product improvements.
   - Default: `enabled`
