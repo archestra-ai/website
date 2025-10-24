@@ -28,12 +28,14 @@ Archestra Platform is designed as a high-performance security proxy for LLM appl
 ## Hardware Requirements
 
 ### Minimum Requirements (Development)
+
 - **CPU**: 2 cores
 - **RAM**: 4GB
 - **Storage**: 20GB
 - **Database**: PostgreSQL 14+ (can be shared)
 
 ### Recommended Requirements (Production)
+
 - **CPU**: 4+ cores
 - **RAM**: 8-16GB
 - **Storage**: 50GB+ (depends on interaction logging volume)
@@ -42,14 +44,15 @@ Archestra Platform is designed as a high-performance security proxy for LLM appl
 
 ### Deployment Tiers by Volume
 
-| Tier | Requests/Day | Requests/Second | Platform Resources | Database Resources | Architecture |
-|------|--------------|-----------------|-------------------|-------------------|--------------|
-| **Small** | <100K | 1-100 | 1 instance: 2 vCPU, 4GB RAM | 2 vCPU, 4GB RAM | Single instance + shared DB |
-| **Medium** | 100K-1M | 100-500 | 2-4 instances: 4 vCPU, 8GB RAM each | 4 vCPU, 8GB RAM, read replicas | Load balancer + DB replication |
-| **Large** | 1M-10M | 500-2K | 4-8 instances: 4 vCPU, 16GB RAM each | 8 vCPU, 16GB RAM, connection pooling | Multi-region, dedicated DB cluster |
-| **Enterprise** | >10M | 2K+ | 8+ instances: 8 vCPU, 16GB RAM each | 8+ vCPU, 32GB RAM, sharding | Multi-region, DB cluster + caching |
+| Tier           | Requests/Day | Requests/Second | Platform Resources                   | Database Resources                   | Architecture                       |
+| -------------- | ------------ | --------------- | ------------------------------------ | ------------------------------------ | ---------------------------------- |
+| **Small**      | <100K        | 1-100           | 1 instance: 2 vCPU, 4GB RAM          | 2 vCPU, 4GB RAM                      | Single instance + shared DB        |
+| **Medium**     | 100K-1M      | 100-500         | 2-4 instances: 4 vCPU, 8GB RAM each  | 4 vCPU, 8GB RAM, read replicas       | Load balancer + DB replication     |
+| **Large**      | 1M-10M       | 500-2K          | 4-8 instances: 4 vCPU, 16GB RAM each | 8 vCPU, 16GB RAM, connection pooling | Multi-region, dedicated DB cluster |
+| **Enterprise** | >10M         | 2K+             | 8+ instances: 8 vCPU, 16GB RAM each  | 8+ vCPU, 32GB RAM, sharding          | Multi-region, DB cluster + caching |
 
 **Storage Requirements** (varies by interaction logging retention):
+
 - Small: 20GB
 - Medium: 50GB
 - Large: 100-500GB
@@ -61,20 +64,22 @@ Archestra Platform is designed as a high-performance security proxy for LLM appl
 
 Measured on **GCP n2-standard-4** (4-core CPU, 16GB RAM) with mock mode enabled:
 
-| Test Scenario | Throughput (req/s) | Mean Latency (ms) | P50 (ms) | P95 (ms) | P99 (ms) | Failed |
-|---------------|-------------------|-------------------|----------|----------|----------|---------|
-| Chat with Tools | 405.52 | 1233 | 1225 | 1290 | 1343 | 0 |
+| Test Scenario   | Throughput (req/s) | Mean Latency (ms) | P50 (ms) | P95 (ms) | P99 (ms) | Failed |
+| --------------- | ------------------ | ----------------- | -------- | -------- | -------- | ------ |
+| Chat with Tools | 405.52             | 1233              | 1225     | 1290     | 1343     | 0      |
 
 **Test Configuration**: 50,000 requests, 500 concurrent connections, Apache Bench
 
 ### Real-World Performance Expectations
 
 **With Real LLM APIs** (OpenAI, Gemini, Anthropic):
+
 - **Added Latency**: ~30-50ms platform overhead
 - **Total Latency**: LLM API latency + 30-50ms
 - **Throughput**: Limited by LLM API rate limits and latency, not by platform
 
 **Platform Overhead Breakdown**:
+
 - Request parsing and validation: <5ms
 - Security policy evaluation: <5ms
 - Database logging: ~10-15ms
@@ -83,30 +88,33 @@ Measured on **GCP n2-standard-4** (4-core CPU, 16GB RAM) with mock mode enabled:
 
 ### Operation-Specific Performance
 
-| Operation | Average Time | Notes |
-|-----------|-------------|--------|
-| Chat completion (no tools) | ~25ms | Request parsing + DB logging + forwarding |
-| Chat completion (with tools) | ~30ms | + Tool metadata persistence |
-| Tool invocation policy evaluation | <5ms | Per policy, per tool call |
-| Trusted data policy evaluation | <3ms | Per policy, per message |
-| Dual LLM quarantine (1 round) | ~2-3s | 2x LLM API calls (provider-dependent) |
-| Dual LLM quarantine (3 rounds) | ~6-9s | 6x LLM API calls (provider-dependent) |
-| Interaction logging (simple) | ~8ms | Small request/response (<5KB) |
-| Interaction logging (complex) | ~15ms | Large request/response with tools (>20KB) |
-| Policy lookup (cached) | <1ms | In-memory cache hit |
-| Policy lookup (uncached) | ~5ms | Database query |
+| Operation                         | Average Time | Notes                                     |
+| --------------------------------- | ------------ | ----------------------------------------- |
+| Chat completion (no tools)        | ~25ms        | Request parsing + DB logging + forwarding |
+| Chat completion (with tools)      | ~30ms        | + Tool metadata persistence               |
+| Tool invocation policy evaluation | <5ms         | Per policy, per tool call                 |
+| Trusted data policy evaluation    | <3ms         | Per policy, per message                   |
+| Dual LLM quarantine (1 round)     | ~2-3s        | 2x LLM API calls (provider-dependent)     |
+| Dual LLM quarantine (3 rounds)    | ~6-9s        | 6x LLM API calls (provider-dependent)     |
+| Interaction logging (simple)      | ~8ms         | Small request/response (<5KB)             |
+| Interaction logging (complex)     | ~15ms        | Large request/response with tools (>20KB) |
+| Policy lookup (cached)            | <1ms         | In-memory cache hit                       |
+| Policy lookup (uncached)          | ~5ms         | Database query                            |
 
 ### Security Feature Impact
 
 **Tool Invocation Policies**:
+
 - Overhead: <5ms per policy evaluation
 - Impact on throughput: Negligible (<2%)
 
 **Trusted Data Policies**:
+
 - Overhead: <5ms per data evaluation
 - Impact on throughput: Negligible (<2%)
 
 **Dual LLM Pattern** (when activated):
+
 - Overhead: Depends on LLM provider latency × configured rounds
 - Typical: 2-6 additional LLM calls per untrusted tool output
 - Only triggered for untrusted tool results
@@ -119,6 +127,7 @@ Measured on **GCP n2-standard-4** (4-core CPU, 16GB RAM) with mock mode enabled:
 Archestra Platform has **minimal external dependencies**:
 
 **Required Dependencies**:
+
 - **PostgreSQL Database**: Required for interaction logging and policy storage
   - High availability: Use managed PostgreSQL (AWS RDS, GCP Cloud SQL, Azure Database)
   - Automatic failover recommended for production
@@ -127,21 +136,25 @@ Archestra Platform has **minimal external dependencies**:
   - Failures propagate to client with appropriate error codes
 
 **Optional Dependencies**:
+
 - None - Platform is self-contained
 
 ### Graceful Degradation
 
 **Database Failures**:
+
 - ⚠️ Platform requires database connectivity for operation
 - **Recommendation**: Use managed PostgreSQL with automatic failover
 - **Mitigation**: Deploy multiple platform instances across availability zones
 
 **LLM Provider Failures**:
+
 - ✅ Platform gracefully forwards provider errors to clients
 - ✅ Includes provider error codes and messages
 - ✅ No data loss - interaction logging happens after successful response
 
 **Platform Instance Failures**:
+
 - ✅ Stateless design enables instant failover
 - ✅ Deploy behind load balancer for automatic routing
 - ✅ No session state - any instance can handle any request
@@ -149,6 +162,7 @@ Archestra Platform has **minimal external dependencies**:
 ### High Availability Setup
 
 **Recommended Production Architecture**:
+
 ```
 ┌─────────────┐
 │ Load Balancer│
@@ -173,6 +187,7 @@ Archestra Platform has **minimal external dependencies**:
 ```
 
 **Uptime Expectations**:
+
 - **Platform SLA**: 99.9%+ (with proper deployment)
 - **Overall System**: Limited by LLM provider SLA
 - **Database**: 99.95%+ (with managed PostgreSQL)
@@ -180,12 +195,14 @@ Archestra Platform has **minimal external dependencies**:
 ### Monitoring & Observability
 
 **Built-in Monitoring**:
+
 - Interaction logging for all requests/responses
 - Policy evaluation tracking
 - Error logging and tracking
 - Performance metrics available via database queries
 
 **Recommended External Tools**:
+
 - Prometheus + Grafana for metrics
 - PostgreSQL `pg_stat_statements` for query analysis
 - Application Performance Monitoring (APM) tools supported
@@ -197,11 +214,13 @@ Archestra Platform has **minimal external dependencies**:
 **Overhead**: ~8-12ms per request
 
 **Storage**:
+
 - Average interaction size: ~2-5KB
 - With tool calls: ~5-15KB
 - Large context: ~50-100KB
 
 **Query Performance**:
+
 - List interactions: <50ms for 1000 records
 - Get by ID: <5ms with index
 - Filter by agent: <30ms with index
@@ -228,6 +247,7 @@ Archestra Platform is stateless and can be scaled horizontally:
 ### Memory Usage
 
 **Per Instance**:
+
 - Base memory: ~150MB
 - Per request: ~1-2MB (depends on context size)
 - Recommended: 2GB RAM per instance
@@ -236,6 +256,7 @@ Archestra Platform is stateless and can be scaled horizontally:
 ### Database Scaling
 
 **PostgreSQL Performance**:
+
 - Recommended: Dedicated PostgreSQL instance for production
 - Connection pooling: Use PgBouncer for high-traffic deployments
 - Indexes: All critical queries use indexes (agent_id, created_at)
@@ -250,16 +271,19 @@ Archestra Platform includes built-in benchmarking infrastructure for measuring p
 To run benchmarks against your local development environment:
 
 1. **Enable mock mode** in `platform/.env`:
+
    ```bash
    BENCHMARK_MOCK_MODE=true
    ```
 
 2. **Create benchmark configuration** at `platform/benchmarks/benchmark-config.env`:
+
    ```bash
    export ARCHESTRA_API_URL=http://127.0.0.1:9000
    ```
 
 3. **Configure test parameters** in `platform/benchmarks/.env`:
+
    ```bash
    NUM_REQUESTS=1000    # Total requests per test
    CONCURRENCY=10       # Concurrent requests
