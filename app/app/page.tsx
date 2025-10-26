@@ -580,8 +580,89 @@ export default function Home() {
                 </ul>
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Bottom CTA */}
+        {/* On-Prem Performance Section */}
+        <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+          <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Production-Ready</h2>
+                  <p className="text-xl text-gray-600">Enterprise-grade performance and observability</p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                  {/* Performance Card */}
+                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-blue-100 rounded-lg">
+                        <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M13 10V3L4 14h7v7l9-11h-7z"
+                          />
+                        </svg>
+                      </div>
+                      <h3 className="text-xl font-semibold text-gray-900">Lightning Fast</h3>
+                    </div>
+                    <p className="text-5xl font-black text-blue-600 mb-2">41ms</p>
+                    <p className="text-gray-700 font-medium mb-4">99p latency overhead</p>
+                    <a
+                      href="/docs/platform-performance-benchmarks"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                    >
+                      View Benchmark
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+
+                  {/* Observability Card */}
+                  <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border border-green-200">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-green-100 rounded-lg">
+                        <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                          />
+                        </svg>
+                      </div>
+                      <h3 className="text-xl font-semibold text-gray-900">Full Observability</h3>
+                    </div>
+                    <ul className="space-y-3">
+                      <li className="flex items-center gap-2">
+                        <span className="text-green-500">✓</span>
+                        <span className="text-gray-700">Prometheus exporter</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-green-500">✓</span>
+                        <span className="text-gray-700">Traces</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-green-500">✓</span>
+                        <span className="text-gray-700">Real-time token usage monitoring</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom CTA - Outside of panel */}
             <div className="text-center mt-12">
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
