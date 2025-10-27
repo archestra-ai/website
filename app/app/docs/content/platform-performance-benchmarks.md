@@ -6,7 +6,6 @@ description: Performance metrics and benchmarks for Archestra Platform's securit
 lastUpdated: 2025-10-15
 ---
 
-
 ## Overview
 
 This document provides performance metrics and overhead measurements for Archestra Platform. The platform adds approximately 30-50ms latency per request (41ms at p99) while providing enterprise-grade security and policy enforcement for LLM applications.
@@ -86,11 +85,4 @@ This document provides performance metrics and overhead measurements for Archest
 - Error logging and tracking
 - Performance metrics available via database queries
 
-**Prometheus Metrics**:
-
-- Total HTTP requests
-- HTTP error requests
-- Request latency
-- LLM total requests
-- LLM error requests
-- LLM latency
+For detailed information on setting up Prometheus monitoring, distributed tracing with OpenTelemetry, and Grafana dashboards, see the [Observability documentation](platform-observability.md).

@@ -6,7 +6,7 @@ order: 5
 
 # Platform Observability
 
-The Archestra platform provides Prometheus-compatible metrics for monitoring and a health check endpoint.
+The Archestra platform exposes Prometheus metrics and OpenTelemetry traces for monitoring system health, tracking HTTP requests, and analyzing LLM API performance.
 
 ## Health Check
 
@@ -47,7 +47,47 @@ The endpoint `http://localhost:9000/metrics` exposes Prometheus-formatted metric
 - `nodejs_gc_duration_seconds` - Garbage collection timing by type
 - `nodejs_version_info` - Node.js version information
 
-## Setting Up Monitoring
+## Distributed Tracing
+
+The platform exports OpenTelemetry traces to help you understand request flows and identify performance bottlenecks. Traces can be consumed by any OTLP-compatible backend (Jaeger, Tempo, Honeycomb, Grafana Cloud, etc.).
+
+### Configuration
+
+Configure the OpenTelemetry Collector endpoint via environment variable:
+
+```bash
+OTEL_EXPORTER_OTLP_ENDPOINT=http://your-collector:4318/v1/traces
+```
+
+If not specified, the platform defaults to `http://localhost:4318/v1/traces`.
+
+### What's Traced
+
+The platform automatically traces:
+
+- **HTTP requests** - All API requests with method, route, and status code
+- **LLM API calls** - External calls to OpenAI, Anthropic, and Gemini with dedicated spans showing exact response time
+
+### LLM Request Spans
+
+Each LLM API call includes detailed attributes for filtering and analysis:
+
+**Span Attributes:**
+
+- `route.category=llm-proxy` - All LLM proxy requests
+- `llm.provider` - Provider name (`openai`, `anthropic`, `gemini`)
+- `llm.model` - Model name (e.g., `gpt-4`, `claude-3-5-sonnet-20241022`)
+- `llm.stream` - Whether the request was streaming (`true`/`false`)
+
+**Span Names:**
+
+- `openai.chat.completions` - OpenAI chat completion calls
+- `anthropic.messages` - Anthropic message calls
+- `gemini.generateContent` - Gemini content generation calls
+
+These dedicated spans show the exact duration of external LLM API calls, separate from your application's processing time.
+
+## Setting Up Prometheus
 
 _The following instructions assume you are familiar with Grafana and Prometheus and have them already set up._
 
@@ -69,6 +109,7 @@ If you are unsure what the Platform API base URL is, check the Platform UI's Set
 Here are some Grafana charts to get you started:
 
 - Request rate by route:
+
   ```promql
   rate(http_request_duration_seconds_count[5m])
   ```
@@ -77,12 +118,10 @@ Here are some Grafana charts to get you started:
   ```promql
   sum(rate(http_request_duration_seconds_count{status_code=~"4..|5.."}[5m])) by (route, method) / sum(rate(http_request_duration_seconds_count[5m])) by (route, method) * 100
   ```
-  
 - Response time percentiles:
   ```promql
   histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))
   ```
-  
 - Memory usage:
   ```promql
   process_resident_memory_bytes / 1024 / 1024
@@ -91,4 +130,3 @@ Here are some Grafana charts to get you started:
 ## Coming Soon
 
 - LLM request count, duration, error rate and token usage per agent
-- OpenTelemetry tracing (OTeL)
