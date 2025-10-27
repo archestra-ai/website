@@ -73,12 +73,14 @@ The platform automatically traces:
 Each LLM API call includes detailed attributes for filtering and analysis:
 
 **Span Attributes:**
+
 - `route.category=llm-proxy` - All LLM proxy requests
 - `llm.provider` - Provider name (`openai`, `anthropic`, `gemini`)
 - `llm.model` - Model name (e.g., `gpt-4`, `claude-3-5-sonnet-20241022`)
 - `llm.stream` - Whether the request was streaming (`true`/`false`)
 
 **Span Names:**
+
 - `openai.chat.completions` - OpenAI chat completion calls
 - `anthropic.messages` - Anthropic message calls
 - `gemini.generateContent` - Gemini content generation calls
@@ -107,6 +109,7 @@ If you are unsure what the Platform API base URL is, check the Platform UI's Set
 Here are some Grafana charts to get you started:
 
 - Request rate by route:
+
   ```promql
   rate(http_request_duration_seconds_count[5m])
   ```
@@ -115,12 +118,10 @@ Here are some Grafana charts to get you started:
   ```promql
   sum(rate(http_request_duration_seconds_count{status_code=~"4..|5.."}[5m])) by (route, method) / sum(rate(http_request_duration_seconds_count[5m])) by (route, method) * 100
   ```
-  
 - Response time percentiles:
   ```promql
   histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))
   ```
-  
 - Memory usage:
   ```promql
   process_resident_memory_bytes / 1024 / 1024
