@@ -68,26 +68,27 @@ If you are unsure what the Platform API base URL is, check the Platform UI's Set
 
 Here are some Grafana charts to get you started:
 
-**Request Rate by Route:**
+- Request rate by route:
+  ```promql
+  rate(http_request_duration_seconds_count[5m])
+  ```
 
-```promql
-rate(http_request_duration_seconds_count[5m])
-```
-
-**Response Time Percentiles:**
-
-```promql
-histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))
-```
-
-**Memory Usage:**
-
-```promql
-process_resident_memory_bytes / 1024 / 1024
-```
+- Error rate by route:
+  ```promql
+  sum(rate(http_request_duration_seconds_count{status_code=~"4..|5.."}[5m])) by (route, method) / sum(rate(http_request_duration_seconds_count[5m])) by (route, method) * 100
+  ```
+  
+- Response time percentiles:
+  ```promql
+  histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))
+  ```
+  
+- Memory usage:
+  ```promql
+  process_resident_memory_bytes / 1024 / 1024
+  ```
 
 ## Coming Soon
 
-- Request error rate metrics
 - LLM request count, duration, error rate and token usage per agent
 - OpenTelemetry tracing (OTeL)
