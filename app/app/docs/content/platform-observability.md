@@ -88,7 +88,44 @@ Here are some Grafana charts to get you started:
   process_resident_memory_bytes / 1024 / 1024
   ```
 
+## Distributed Tracing
+
+The platform exports OpenTelemetry traces that can be consumed by your observability infrastructure (Jaeger, Tempo, Honeycomb, etc.).
+
+### Configuration
+
+Configure the OpenTelemetry Collector endpoint via environment variable:
+
+```bash
+OTEL_EXPORTER_OTLP_ENDPOINT=http://your-collector:4318/v1/traces
+```
+
+If not specified, the platform defaults to `http://localhost:4318/v1/traces`.
+
+### What's Traced
+
+The platform automatically traces:
+
+- **HTTP requests** - All API requests with method, route, and status code
+- **LLM API calls** - External calls to OpenAI, Anthropic, and Gemini with dedicated spans showing exact response time
+
+### LLM Request Spans
+
+Each LLM API call includes detailed attributes for filtering and analysis:
+
+**Span Attributes:**
+- `route.category=llm-proxy` - All LLM proxy requests
+- `llm.provider` - Provider name (`openai`, `anthropic`, `gemini`)
+- `llm.model` - Model name (e.g., `gpt-4`, `claude-3-5-sonnet-20241022`)
+- `llm.stream` - Whether the request was streaming (`true`/`false`)
+
+**Span Names:**
+- `openai.chat.completions` - OpenAI chat completion calls
+- `anthropic.messages` - Anthropic message calls
+- `gemini.generateContent` - Gemini content generation calls
+
+These dedicated spans show the exact duration of external LLM API calls, separate from your application's processing time.
+
 ## Coming Soon
 
 - LLM request count, duration, error rate and token usage per agent
-- OpenTelemetry tracing (OTeL)
