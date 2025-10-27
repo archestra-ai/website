@@ -6,11 +6,6 @@ description: Performance metrics and benchmarks for Archestra Platform's securit
 lastUpdated: 2025-10-15
 ---
 
-<div class="callout-info">
-
-If you are using Archestra Platform and have performance issues, we will be more than happy to help you. Just join our [Slack community](https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg) and shoot a message on the #general channel.
-
-</div>
 
 ## Overview
 
@@ -99,10 +94,3 @@ This document provides performance metrics and overhead measurements for Archest
 - LLM total requests
 - LLM error requests
 - LLM latency
-
-## Support
-
-For performance-related questions or issues:
-
-1. [Join the Slack community](https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg)
-2. [Report issues on GitHub](https://github.com/archestraai/archestra)
