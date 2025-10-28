@@ -29,6 +29,11 @@ The endpoint `http://localhost:9000/metrics` exposes Prometheus-formatted metric
 - `http_request_duration_seconds_bucket` - Request duration histogram buckets
 - `http_request_summary_seconds` - Request duration summary with quantiles
 
+### LLM Metrics
+
+- `llm_request_duration_seconds` - LLM API request duration by provider, agent, and status code
+- `llm_tokens_total` - Token consumption by provider, agent, and type (input/output)
+
 ### Process Metrics
 
 - `process_cpu_user_seconds_total` - CPU time in user mode
@@ -106,7 +111,9 @@ If you are unsure what the Platform API base URL is, check the Platform UI's Set
 
 ## Chart Examples
 
-Here are some Grafana charts to get you started:
+Here are some PromQL queries for Grafana charts to get you started:
+
+### HTTP Metrics
 
 - Request rate by route:
 
@@ -127,6 +134,26 @@ Here are some Grafana charts to get you started:
   process_resident_memory_bytes / 1024 / 1024
   ```
 
-## Coming Soon
+### LLM Metrics
 
-- LLM request count, duration, error rate and token usage per agent
+- LLM requests per second by agent and provider:
+
+  ```promql
+  sum(rate(llm_request_duration_seconds_count[5m])) by (agent, provider)
+  ```
+
+- LLM token usage rate (tokens/sec):
+
+  ```promql
+  sum(rate(llm_tokens_total[5m])) by (provider, agent, type)
+  ```
+
+- LLM error rate by provider:
+
+  ```promql
+  sum(rate(llm_request_duration_seconds_count{status_code!="200"}[5m])) by (provider) / sum(rate(llm_request_duration_seconds_count[5m])) by (provider) * 100
+  ```
+
+The screenshot below shows the request rate and duration charts, as well as the rate of LLM calls and their token usage:
+
+![Request rate, duration, LLM request rate and token usage](/docs/platfrom/observability-1.png)
