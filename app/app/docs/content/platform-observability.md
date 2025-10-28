@@ -153,3 +153,7 @@ Here are some PromQL queries for Grafana charts to get you started:
   ```promql
   sum(rate(llm_request_duration_seconds_count{status_code!="200"}[5m])) by (provider) / sum(rate(llm_request_duration_seconds_count[5m])) by (provider) * 100
   ```
+
+The screenshot below shows the request rate and duration charts, as well as the rate of LLM calls and their token usage:
+
+![Request rate, duration, LLM request rate and token usage](/docs/platfrom/observability-1.png)
