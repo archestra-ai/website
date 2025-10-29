@@ -142,14 +142,11 @@ helm upgrade archestra-platform \
 
 ### Accessing the Platform
 
-After installation, access the platform using port forwarding (both commands must be running):
+After installation, access the platform using port forwarding:
 
 ```bash
-# Forward the API (port 9000)
-kubectl --namespace archestra port-forward svc/archestra-platform 9000:9000
-
-# In a separate terminal, forward the Admin UI (port 3000)
-kubectl --namespace archestra port-forward svc/archestra-platform 3000:3000
+# Forward the API (port 9000) and the Admin UI (port 3000)
+kubectl --namespace archestra port-forward svc/archestra-platform 9000:9000 3000:3000
 ```
 
 Then visit:
