@@ -7,8 +7,6 @@ description: Understanding and configuring agents in Archestra Platform
 lastUpdated: 2025-10-17
 ---
 
-## What are Agents?
-
 Agents are the core concept in Archestra Platform. Each agent represents a distinct AI application or workflow that you want to secure and monitor. Think of an agent as a logical grouping for:
 
 - **Interaction history** - All LLM requests and responses
