@@ -63,6 +63,10 @@ The following environment variables can be used to configure Archestra Platform:
 - **`ARCHESTRA_OTEL_EXPORTER_OTLP_ENDPOINT`** - OTEL Exporter endpoint for sending traces
   - Default: `http://localhost:4318/v1/traces`
 
+- **`ARCHESTRA_LOGGING_LEVEL`** - Log level for Archestra
+  - Default: `info`
+  - Supported values: `trace`, `debug`, `info`, `warn`, `error`, `fatal`
+
 ## Docker Deployment
 
 Docker deployment provides the fastest way to get started with Archestra Platform, ideal for development and testing purposes.
