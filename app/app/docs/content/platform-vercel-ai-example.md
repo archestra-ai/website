@@ -1,8 +1,7 @@
 ---
 title: Secure Agent with Vercel AI
-category: Archestra Platform
-subcategory: Practical Examples
-order: 7
+category: Examples
+order: 6
 ---
 
 ## Overview
@@ -57,11 +56,11 @@ And now imagine that your agent is also capable of sending data to the outside w
 
 Let’s see how you can plug in Archestra when using AI SDK and how it can help to solve such issues.
 
-## Step 1. Get your OpenAI API Key
+## Step 1. Get your LLM Provider API Key
 
-To use OpenAI models (such as GPT-4 or o3-mini), you need an API key from a supported provider.
+This example uses OpenAI, but Archestra supports multiple LLM providers. See [Supported LLM Providers](https://www.archestra.ai/docs/platform-supported-llm-providers) for the complete list.
 
-You can use:
+For OpenAI, you can get an API key from:
 
 - OpenAI directly ([https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys))
 - Azure OpenAI
@@ -77,9 +76,9 @@ docker run -p 9000:9000 -p 3000:3000 archestra/platform
 
 ## Step 3. Integrate AI SDK with Archestra
 
-At first, you need to change baseUrl and point it to Archestra's proxy which runs on [`http://localhost:9000/v1/openai`](http://localhost:9000/v1/openai).
+Change the baseUrl to point to Archestra's proxy. For OpenAI, this is [`http://localhost:9000/v1/openai`](http://localhost:9000/v1/openai). For other providers, see [Supported LLM Providers](https://www.archestra.ai/docs/platform-supported-llm-providers).
 
-OpenAI provides `/chat/completions` and `/responses` API's. Archestra doesn't support `/responses` yet. We're working on it ([here](https://github.com/archestra-ai/archestra/issues/720) is a GH issue), meanwhile please make sure that your agent uses `/chat/completions`. It can be done simply by appending `.chat` to the OpenAI provider instance. Check [this](https://ai-sdk.dev/providers/ai-sdk-providers/openai#language-models) for more details.
+**Important for OpenAI**: Ensure your agent uses `/chat/completions` (not `/responses`, which Archestra doesn't support yet - [issue #720](https://github.com/archestra-ai/archestra/issues/720)). Append `.chat` to the OpenAI provider instance. See [AI SDK docs](https://ai-sdk.dev/providers/ai-sdk-providers/openai#language-models) for details.
 
 ```ts
 const customOpenAI = createOpenAI({

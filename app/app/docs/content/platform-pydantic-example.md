@@ -1,7 +1,6 @@
 ---
 title: Secure Agent with Pydantic AI
-category: Archestra Platform
-subcategory: Practical Examples
+category: Examples
 order: 5
 ---
 
@@ -25,11 +24,11 @@ In our example, the agent:
 
 The GitHub issue ([archestra-ai/archestra#669](https://github.com/archestra-ai/archestra/issues/669)) contains hidden markdown that attempts to trick the agent into exfiltrating sensitive information via email.
 
-## Step 1. Get your OpenAI API Key
+## Step 1. Get your LLM Provider API Key
 
-To use OpenAI models (such as GPT-4 or o3-mini), you need an API key from a supported provider.
+This example uses OpenAI, but Archestra supports multiple LLM providers. See [Supported LLM Providers](https://www.archestra.ai/docs/platform-supported-llm-providers) for the complete list.
 
-You can use:
+For OpenAI, you can get an API key from:
 
 - OpenAI directly ([https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys))
 - Azure OpenAI

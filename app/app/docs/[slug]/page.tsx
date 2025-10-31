@@ -165,8 +165,8 @@ export default async function DocPage({ params }: Props) {
                 </div>
 
                 {/* Table of Contents - Right Sidebar */}
-                {toc.length > 0 && (
-                  <aside className="hidden xl:block w-64 flex-shrink-0">
+                <aside className="hidden xl:block w-64 flex-shrink-0">
+                  {toc.length > 0 && (
                     <div className="sticky top-20">
                       <h3 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wider">
                         On this page
@@ -187,8 +187,8 @@ export default async function DocPage({ params }: Props) {
                         ))}
                       </nav>
                     </div>
-                  </aside>
-                )}
+                  )}
+                </aside>
               </div>
             </article>
           </div>

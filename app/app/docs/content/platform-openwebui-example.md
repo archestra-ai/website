@@ -1,8 +1,7 @@
 ---
 title: Secure Agent with OpenWebUI
-category: Archestra Platform
-subcategory: Practical Examples
-order: 6
+category: Examples
+order: 4
 ---
 
 ## Overview
@@ -13,11 +12,11 @@ OpenWebUI - one of the most popular clients for LLMs, however it doesn't have bu
 
 In this guide, we will set up the basics: OpenWebUI + Github tool -> Archestra Platform -> OpenAI. We will then make OpenWebUI read a very _interesting_ issue that could impact the original plan and cause the OpenWebUI Chat to do something you haven't even asked for. Afterwards, we'll connect it to Archestra to see how it prevented such behavior. This illustrates a fundamental problem faced by any AI Agent when it has access to tools that can read private data or post outside, known as the [Lethal Trifecta](https://www.archestra.ai/docs/platform-lethal-trifecta).
 
-## Step 1. Get your OpenAI API Key
+## Step 1. Get your LLM Provider API Key
 
-To use OpenAI models (such as GPT-4 or o3-mini), you need an API key from a supported provider.
+This example uses OpenAI, but Archestra supports multiple LLM providers. See [Supported LLM Providers](https://www.archestra.ai/docs/platform-supported-llm-providers) for the complete list.
 
-You can use:
+For OpenAI, you can get an API key from:
 
 - OpenAI directly ([https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys))
 - Azure OpenAI
@@ -61,6 +60,8 @@ Once OpenWebUI is running:
 4. Verify that you have a correct OpenAI API Key and BASE_URL of Archestra: [http://localhost:9000/v1/openai](http://localhost:9000/v1/openai) in URL, or Add Connection with those values, if you use your own OpenWebUI
    ☝️If you're not sure where is Archestra BASE_URL you can navigate to Archestra settings, in our example it on [http://localhost:3000](http://localhost:3000)
 
+   ✌️️If you're running OpenWebUI in its own Docker container locally, separately from the platform, the `BASE_URL` will have Docker's special hostname, `host.docker.internal` instead of `localhost`. E.g. `http://host.docker.internal:9000/v1/openai`
+
    **Optional:** To use a specific agent, include the agent ID in the URL: `http://localhost:9000/v1/openai/{agent-id}`. You can create and manage agents at [http://localhost:3000/agents](http://localhost:3000/agents)
 
    ![openwebui](/docs/platfrom/openwebui-image1.png)
@@ -85,10 +86,10 @@ Also you can start using MCP servers
 1. Click **User > Admin Panel**
 2. Navigate to **Settings > External tools > Manage Tool Servers > +**
 3. In the dialog window select **Type: MCP Streamable HTTP**
-4. Paste your mcp server streamable http url and Github Personal Access Token, e.g.
+4. Paste your MCP server streamable HTTP URL. This example uses Dungeons and Dragons MCP, which also requires your GitHub personal access token.
 
-   ```javascript
-   [https://dmcp-server.deno.dev/mcp](https://api.githubcopilot.com/mcp)
+   ```
+   https://dmcp-server.deno.dev/mcp
    ```
 
    ![](/docs/platfrom/openwebui-image3.png)
