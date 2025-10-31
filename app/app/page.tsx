@@ -323,9 +323,7 @@ export default function Home() {
         <section className="py-20 bg-gradient-to-b from-white to-gray-50">
           <div className="container px-4 md:px-6 max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Security and Guardrails
-              </h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Security and Guardrails</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 The foundation of Archestra - comprehensive protection for enterprise AI deployments
               </p>
@@ -426,8 +424,8 @@ export default function Home() {
 
             {/* Call to Action */}
             <div className="text-center">
-              <Link 
-                href="/docs/platform-dual-llm" 
+              <Link
+                href="/docs/platform-dual-llm"
                 className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Learn About Our Security Model
@@ -440,9 +438,7 @@ export default function Home() {
         <section className="py-20 bg-white">
           <div className="container px-4 md:px-6 max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Enterprise MCP Orchestator
-              </h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Enterprise MCP Orchestator</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Running MCP's in Kubernetes, managing credentials and access
               </p>
@@ -461,9 +457,7 @@ export default function Home() {
                       <ShieldCheck className="w-8 h-8 text-blue-600 mr-3" />
                       <h3 className="text-lg font-semibold text-gray-900">LLM Proxy</h3>
                     </div>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Complete security layer for all LLM interactions
-                    </p>
+                    <p className="text-sm text-gray-600 mb-4">Complete security layer for all LLM interactions</p>
                     <div className="space-y-2">
                       <div className="flex items-center text-xs text-gray-500">
                         <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
@@ -478,9 +472,7 @@ export default function Home() {
                         Observability
                       </div>
                     </div>
-                    <p className="text-xs text-blue-600 mt-4 group-hover:text-blue-700">
-                      Learn more →
-                    </p>
+                    <p className="text-xs text-blue-600 mt-4 group-hover:text-blue-700">Learn more →</p>
                   </CardContent>
                 </Card>
               </Link>
@@ -493,9 +485,7 @@ export default function Home() {
                       <Github className="w-8 h-8 text-purple-600 mr-3" />
                       <h3 className="text-lg font-semibold text-gray-900">Private MCP Registry</h3>
                     </div>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Centralized governance for all MCP servers
-                    </p>
+                    <p className="text-sm text-gray-600 mb-4">Centralized governance for all MCP servers</p>
                     <div className="space-y-2">
                       <div className="flex items-center text-xs text-gray-500">
                         <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
@@ -510,9 +500,7 @@ export default function Home() {
                         Compliance & Governance
                       </div>
                     </div>
-                    <p className="text-xs text-purple-600 mt-4 group-hover:text-purple-700">
-                      Learn more →
-                    </p>
+                    <p className="text-xs text-purple-600 mt-4 group-hover:text-purple-700">Learn more →</p>
                   </CardContent>
                 </Card>
               </Link>
@@ -525,9 +513,7 @@ export default function Home() {
                       <Send className="w-8 h-8 text-green-600 mr-3" />
                       <h3 className="text-lg font-semibold text-gray-900">MCP Gateway</h3>
                     </div>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Simple and controlled MCP adoption
-                    </p>
+                    <p className="text-sm text-gray-600 mb-4">Simple and controlled MCP adoption</p>
                     <div className="space-y-2">
                       <div className="flex items-center text-xs text-gray-500">
                         <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
@@ -538,14 +524,11 @@ export default function Home() {
                         Universal Compatibility
                       </div>
                     </div>
-                    <p className="text-xs text-green-600 mt-4 group-hover:text-green-700">
-                      Learn more →
-                    </p>
+                    <p className="text-xs text-green-600 mt-4 group-hover:text-green-700">Learn more →</p>
                   </CardContent>
                 </Card>
               </Link>
             </div>
-
           </div>
         </section>
 

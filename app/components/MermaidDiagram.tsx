@@ -12,7 +12,7 @@ export default function MermaidDiagram() {
       if (!ref.current) return;
 
       try {
-        mermaid.initialize({ 
+        mermaid.initialize({
           startOnLoad: false,
           theme: 'default',
           themeVariables: {
@@ -21,8 +21,8 @@ export default function MermaidDiagram() {
             primaryBorderColor: '#0066cc',
             lineColor: '#333',
             secondaryColor: '#fff2cc',
-            tertiaryColor: '#f9f9f9'
-          }
+            tertiaryColor: '#f9f9f9',
+          },
         });
 
         const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
@@ -47,7 +47,7 @@ export default function MermaidDiagram() {
     style Pod1 fill:#fff2cc,stroke:#d6b656,stroke-width:1px
     style Pod2 fill:#fff2cc,stroke:#d6b656,stroke-width:1px
     style Pod3 fill:#fff2cc,stroke:#d6b656,stroke-width:1px`;
-        
+
         const { svg } = await mermaid.render(id, chart);
         const scaledSvg = svg.replace(/(<svg[^>]*)(>)/, (match, p1, p2) => {
           return (
