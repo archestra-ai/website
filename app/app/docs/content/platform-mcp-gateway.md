@@ -9,6 +9,12 @@ lastUpdated: 2025-10-31
 
 MCP Gateway is the unified access point for all MCP servers in Archestra Platform. It provides a single endpoint through which AI agents and applications can discover and interact with multiple MCP servers, regardless of whether they are remote services or locally orchestrated containers.
 
+## To use MCP Gateway:
+
+1. Go to "MCP Registry" and install MCP server.
+2. Go to "Agents" -> Wrench Icon -> Assign tools to the agent.
+3. Go to "Agents" -> Connect Icon -> You'll get connection instructions.
+
 ```mermaid
 graph TB
     subgraph Clients

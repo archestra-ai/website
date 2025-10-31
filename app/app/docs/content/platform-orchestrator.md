@@ -9,6 +9,8 @@ lastUpdated: 2025-10-31
 
 The MCP Orchestrator is Archestra's system for running and managing MCP servers within your existing Kubernetes cluster. It handles the lifecycle of MCP server pods, manages their secrets securely, and provides unified access through the MCP Gateway.
 
+> **Note:** The MCP Orchestrator requires a Kubernetes (K8s) cluster to operate. You still could use Private MCP Registry, MCP Gateway and security features with remote MCP servers, or self-host them and connect to Archestra.
+
 ```mermaid
 graph TB
     subgraph K8S["Kubernetes Cluster"]
