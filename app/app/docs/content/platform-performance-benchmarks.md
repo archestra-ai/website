@@ -51,7 +51,7 @@ This document provides performance metrics and overhead measurements for Archest
 
 ### Operation-Specific Performance
 
-| Operation                      | Average Time | Notes                                 |
+| Operation                      | Response Time | Notes                                 |
 | ------------------------------ | ------------ | ------------------------------------- |
 | Chat completion (with tools)   | ~30ms        | + Tool metadata persistence           |
 | Dual LLM quarantine (1 round)  | ~2-3s        | 2x LLM API calls (provider-dependent) |
