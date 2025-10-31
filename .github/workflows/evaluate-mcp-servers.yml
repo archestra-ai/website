@@ -35,6 +35,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Fetch all history for proper diff comparison
+          persist-credentials: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -42,7 +43,7 @@ jobs:
           node-version: "20"
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4.2.0
         with:
           version: 9
 
@@ -65,28 +66,31 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           AI_MODEL: ${{ github.event.inputs.model || 'gemini-2.5-flash' }}
+          FORCE_INPUT: ${{ github.event.inputs.force }}
+          CONCURRENCY_INPUT: ${{ github.event.inputs.concurrency }}
+          MODEL_INPUT: ${{ github.event.inputs.model }}
         run: |
           # Set the model parameter
-          MODEL_PARAM="--model ${{ github.event.inputs.model || 'gemini-2.5-flash' }}"
-          echo "Using AI model: ${{ github.event.inputs.model || 'gemini-2.5-flash' }}"
-          
+          MODEL_PARAM="--model ${MODEL_INPUT:-gemini-2.5-flash}"
+          echo "Using AI model: ${MODEL_INPUT:-gemini-2.5-flash}"
+
           # Determine evaluation mode
-          if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
+          if [[ "$FORCE_INPUT" == "true" ]]; then
             echo "Running forced evaluation of all servers..."
-            npm run catalog:evaluate -- --all --force --concurrency ${{ github.event.inputs.concurrency || '5' }} $MODEL_PARAM
+            npm run catalog:evaluate -- --all --force --concurrency ${CONCURRENCY_INPUT:-5} $MODEL_PARAM
           elif [[ "${{ github.event_name }}" == "push" ]]; then
             echo "Detecting newly added servers from git diff..."
-            
+
             # Get the diff of mcp-servers.json
             git diff HEAD~1 HEAD -- app/mcp-catalog/data/mcp-servers.json > diff.txt || true
-            
+
             # Extract only added URLs (lines starting with +)
             grep '^+  "https://github.com' diff.txt | sed 's/^+  "//' | sed 's/",$//' | sed 's/"$//' > new_servers.txt || true
-            
+
             if [ -s new_servers.txt ]; then
               echo "Found $(wc -l < new_servers.txt) new servers to evaluate:"
               cat new_servers.txt
-              
+
               # Evaluate each new server
               while IFS= read -r url; do
                 echo "Evaluating: $url"
@@ -97,7 +101,7 @@ jobs:
             fi
           else
             echo "Evaluating only missing servers..."
-            npm run catalog:evaluate -- --missing-only --all --concurrency ${{ github.event.inputs.concurrency || '5' }} $MODEL_PARAM
+            npm run catalog:evaluate -- --missing-only --all --concurrency ${CONCURRENCY_INPUT:-5} $MODEL_PARAM
           fi
 
       - name: Generate evaluation report
@@ -134,6 +138,10 @@ jobs:
       - name: Commit and Push or Create PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FORCE_INPUT: ${{ github.event.inputs.force }}
+          EVENT_NAME: ${{ github.event_name }}
+          WORKFLOW_NAME: ${{ github.workflow }}
+          RUN_NUMBER: ${{ github.run_number }}
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
@@ -156,10 +164,10 @@ jobs:
           fi
 
           # Create commit message
-          if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
+          if [[ "$FORCE_INPUT" == "true" ]]; then
             COMMIT_MSG="chore: force re-evaluate all MCP servers"
             PR_TITLE="chore: Force re-evaluate all MCP servers"
-          elif [[ "${{ github.event_name }}" == "push" ]] && [ -f app/new_servers.txt ] && [ -s app/new_servers.txt ]; then
+          elif [[ "$EVENT_NAME" == "push" ]] && [ -f app/new_servers.txt ] && [ -s app/new_servers.txt ]; then
             NEW_COUNT=$(wc -l < app/new_servers.txt)
             COMMIT_MSG="chore: evaluate $NEW_COUNT newly added MCP server(s)"
             PR_TITLE="chore: Evaluate $NEW_COUNT newly added MCP server(s)"
@@ -167,58 +175,58 @@ jobs:
             COMMIT_MSG="chore: evaluate missing MCP servers"
             PR_TITLE="chore: Evaluate missing MCP servers"
           fi
-          
+
           # Get current branch
           CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
           echo "Current branch: $CURRENT_BRANCH"
-          
+
           # Check if we're on main/master branch
           if [[ "$CURRENT_BRANCH" == "main" ]] || [[ "$CURRENT_BRANCH" == "master" ]]; then
             echo "On main branch - creating PR instead of direct commit"
-            
+
             # Create a new branch for the changes
             BRANCH_NAME="bot/mcp-evaluation-$(date +%Y%m%d-%H%M%S)"
             git checkout -b "$BRANCH_NAME"
-            
+
             # Commit changes
             git commit -m "$COMMIT_MSG
-            
-            Triggered by: ${{ github.event_name }}
-            Workflow: ${{ github.workflow }} #${{ github.run_number }}"
-            
+
+            Triggered by: $EVENT_NAME
+            Workflow: $WORKFLOW_NAME #$RUN_NUMBER"
+
             # Push the new branch
             git push origin "$BRANCH_NAME"
-            
+
             # Create PR using GitHub CLI
             PR_BODY="## Automated MCP Server Evaluation
 
             This PR contains automated evaluation results for MCP servers.
-            
-            **Triggered by:** ${{ github.event_name }}  
-            **Workflow run:** ${{ github.workflow }} #${{ github.run_number }}
-            
+
+            **Triggered by:** $EVENT_NAME
+            **Workflow run:** $WORKFLOW_NAME #$RUN_NUMBER
+
             ### Changes
             - Updated evaluation data for MCP servers
             - Quality scores and metadata refreshed
-            
+
             ---
             *This PR was automatically created by GitHub Actions*"
-            
+
             gh pr create \
               --title "$PR_TITLE" \
               --body "$PR_BODY" \
               --base main \
               --head "$BRANCH_NAME" || echo "PR creation failed or already exists"
-              
+
           else
             echo "Not on main branch - committing directly"
-            
+
             # Commit changes
             git commit -m "$COMMIT_MSG
-            
-            Triggered by: ${{ github.event_name }}
-            Workflow: ${{ github.workflow }} #${{ github.run_number }}"
-            
+
+            Triggered by: $EVENT_NAME
+            Workflow: $WORKFLOW_NAME #$RUN_NUMBER"
+
             # Push to current branch
             git push
           fi
