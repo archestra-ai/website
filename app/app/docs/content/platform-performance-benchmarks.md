@@ -1,5 +1,5 @@
 ---
-title: Performance Benchmarks
+title: Performance & Latency
 category: Archestra Platform
 order: 10
 description: Performance metrics and benchmarks for Archestra Platform's security features

@@ -1,8 +1,7 @@
 ---
 title: Secure Agent with OpenWebUI
-category: Archestra Platform
-subcategory: Practical Examples
-order: 6
+category: Examples
+order: 4
 ---
 
 ## Overview

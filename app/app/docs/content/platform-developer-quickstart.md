@@ -1,7 +1,7 @@
 ---
 title: Developer Quickstart
-category: Archestra Platform
-order: 2
+category: Development
+order: 1
 ---
 
 ## Prerequisites
