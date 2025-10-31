@@ -129,11 +129,57 @@ This command will:
 - Create the namespace `archestra` if it doesn't exist
 - Wait for all resources to be ready
 
-### Database Configuration
+### Configuration
 
-#### External PostgreSQL (Recommended for Production)
+The Helm chart provides extensive configuration options through values. For the complete configuration reference, see the [values.yaml file](https://github.com/archestra-ai/archestra/blob/main/platform/helm/values.yaml).
 
-To use an external PostgreSQL database, configure the `postgresql.external_database_url` value:
+#### Core Configuration
+
+**Archestra Platform Settings**:
+
+- `archestra.image` - Docker image for the Archestra Platform (contains both backend API and frontend). See [available tags](https://hub.docker.com/r/archestra/platform/tags)
+- `archestra.env` - Environment variables to pass to the container (see Environment Variables section above for available options)
+
+**Example**:
+
+```bash
+helm upgrade archestra-platform \
+  oci://europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/helm-charts/archestra-platform \
+  --install \
+  --namespace archestra \
+  --create-namespace \
+  --set archestra.env.ARCHESTRA_API_BASE_URL=https://api.example.com \
+  --set archestra.env.ARCHESTRA_AUTH_SECRET=your-secret-key \
+  --wait
+```
+
+#### MCP Server Runtime Configuration
+
+**Orchestrator Settings**:
+
+- `archestra.orchestrator.baseImage` - Base Docker image for MCP server containers (defaults to official Archestra MCP server base image)
+
+**Kubernetes Settings**:
+
+- `archestra.orchestrator.kubernetes.namespace` - Kubernetes namespace where MCP server pods will be created (defaults to Helm release namespace)
+- `archestra.orchestrator.kubernetes.loadKubeconfigFromCurrentCluster` - Use in-cluster configuration (recommended when running inside K8s)
+- `archestra.orchestrator.kubernetes.kubeconfig.enabled` - Enable mounting kubeconfig from a secret
+- `archestra.orchestrator.kubernetes.kubeconfig.secretName` - Name of secret containing kubeconfig file
+- `archestra.orchestrator.kubernetes.kubeconfig.mountPath` - Path where kubeconfig will be mounted
+- `archestra.orchestrator.kubernetes.serviceAccount.create` - Create a service account (default: true)
+- `archestra.orchestrator.kubernetes.serviceAccount.annotations` - Annotations to add to the service account
+- `archestra.orchestrator.kubernetes.serviceAccount.name` - Name of the service account (auto-generated if not set)
+- `archestra.orchestrator.kubernetes.serviceAccount.imagePullSecrets` - Image pull secrets for the service account
+- `archestra.orchestrator.kubernetes.rbac.create` - Create RBAC resources (default: true)
+
+#### Database Configuration
+
+**PostgreSQL Settings**:
+
+- `postgresql.external_database_url` - External PostgreSQL connection string (recommended for production)
+- `postgresql.enabled` - Enable managed PostgreSQL instance (default: true, disabled if external_database_url is set)
+
+For external PostgreSQL (recommended for production):
 
 ```bash
 helm upgrade archestra-platform \
@@ -145,23 +191,7 @@ helm upgrade archestra-platform \
   --wait
 ```
 
-#### Managed PostgreSQL (Default)
-
-If you don't specify `postgresql.external_database_url`, the Helm chart will automatically create and manage a PostgreSQL instance for you within your Kubernetes cluster.
-
-### Custom Environment Variables
-
-You can pass custom environment variables to the platform container using the `archestra.env` values:
-
-```bash
-helm upgrade archestra-platform \
-  oci://europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/helm-charts/archestra-platform \
-  --install \
-  --namespace archestra \
-  --create-namespace \
-  --set archestra.env.ARCHESTRA_API_BASE_URL=https://api.example.com \
-  --wait
-```
+If you don't specify `postgresql.external_database_url`, the chart will deploy a managed PostgreSQL instance using the Bitnami PostgreSQL chart. For PostgreSQL-specific configuration options, see the [Bitnami PostgreSQL Helm chart documentation](https://artifacthub.io/packages/helm/bitnami/postgresql?modal=values-schema).
 
 ### Accessing the Platform
 

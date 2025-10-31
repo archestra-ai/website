@@ -105,3 +105,15 @@ jobs:
 
       - name: Run zizmor 🌈
         uses: zizmorcore/zizmor-action@f52a838cfabf134edcbaa7c8b3677dde20045018 # v0.1.1
+        with:
+          config: |
+            rules:
+              template-injection:
+                level: error
+              artipacked:
+                level: error
+              unpinned-uses:
+                level: error
+              secrets-inherit:
+                level: error
+            fail-fast: true
