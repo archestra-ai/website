@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 
 import Footer from '@components/Footer';
 import HeaderWithBanner from '@components/HeaderWithBanner';
+import MermaidDiagram from '@components/MermaidDiagram';
 import NewsletterForm from '@components/NewsletterForm';
 import { Card, CardContent } from '@components/ui/card';
 import constants from '@constants';
@@ -318,109 +319,233 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Docker Run Section */}
-        <section className="py-16 bg-white">
+        {/* Security and Guardrails Section */}
+        <section className="py-20 bg-gradient-to-b from-white to-gray-50">
           <div className="container px-4 md:px-6 max-w-7xl mx-auto">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Quick Start</h2>
-                <p className="text-lg text-gray-600">Deploy Archestra in seconds with Docker</p>
-              </div>
-              <div className="bg-gray-900 rounded-lg p-6 shadow-xl">
-                <div className="flex items-center justify-between">
-                  <code className="text-green-400 font-mono text-sm md:text-base">
-                    docker run -p 9000:9000 -p 3000:3000 archestra/platform
-                  </code>
-                  <button
-                    onClick={() => {
-                      navigator.clipboard.writeText('docker run -p 9000:9000 -p 3000:3000 archestra/platform');
-                    }}
-                    className="ml-4 px-3 py-1.5 text-xs font-medium bg-gray-700 hover:bg-gray-600 text-white rounded transition-colors"
-                  >
-                    Copy
-                  </button>
-                </div>
-              </div>
-              <div className="text-center mt-4">
-                <p className="text-sm text-gray-600">
-                  View the{' '}
-                  <Link href="/docs/platform-deployment" className="text-blue-600 hover:text-blue-700 font-medium">
-                    full deployment guide
-                  </Link>{' '}
-                  for more options
-                </p>
-              </div>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Security and Guardrails
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                The foundation of Archestra - comprehensive protection for enterprise AI deployments
+              </p>
+            </div>
+
+            {/* Security Features Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
+              {/* Dual LLM Pattern */}
+              <Card className="border-gray-200 hover:shadow-md transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-start mb-4">
+                    <ShieldCheck className="w-8 h-8 text-blue-600 mr-3 flex-shrink-0" />
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Dual LLM Pattern</h3>
+                      <p className="text-sm text-gray-600">
+                        Separate untrusted content processing from main agent logic to prevent prompt injections
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Tool Call Policies */}
+              <Card className="border-gray-200 hover:shadow-md transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-start mb-4">
+                    <AlertTriangle className="w-8 h-8 text-orange-600 mr-3 flex-shrink-0" />
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Tool Call Policies</h3>
+                      <p className="text-sm text-gray-600">
+                        Define granular rules for what tools can be called and with what parameters
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Cost Control */}
+              <Card className="border-gray-200 hover:shadow-md transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-start mb-4">
+                    <Github className="w-8 h-8 text-green-600 mr-3 flex-shrink-0" />
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Cost Control</h3>
+                      <p className="text-sm text-gray-600">
+                        Set spending limits and monitor usage across all LLM providers in real-time
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Audit Logging */}
+              <Card className="border-gray-200 hover:shadow-md transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-start mb-4">
+                    <Mail className="w-8 h-8 text-purple-600 mr-3 flex-shrink-0" />
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Complete Audit Trail</h3>
+                      <p className="text-sm text-gray-600">
+                        Track every LLM interaction, tool call, and decision for compliance and debugging
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Data Isolation */}
+              <Card className="border-gray-200 hover:shadow-md transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-start mb-4">
+                    <Bot className="w-8 h-8 text-indigo-600 mr-3 flex-shrink-0" />
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Data Isolation</h3>
+                      <p className="text-sm text-gray-600">
+                        Keep sensitive data within your infrastructure with self-hosted deployment
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Rate Limiting */}
+              <Card className="border-gray-200 hover:shadow-md transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-start mb-4">
+                    <Send className="w-8 h-8 text-red-600 mr-3 flex-shrink-0" />
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">Rate Limiting</h3>
+                      <p className="text-sm text-gray-600">
+                        Prevent abuse and manage resources with configurable rate limits per user or API key
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Call to Action */}
+            <div className="text-center">
+              <Link 
+                href="/docs/platform-dual-llm" 
+                className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Learn About Our Security Model
+                <span className="ml-2">→</span>
+              </Link>
             </div>
           </div>
         </section>
 
-        {/* Platform Integrations Section */}
-        <section className="pb-20 pt-20 bg-white">
+        <section className="py-20 bg-white">
           <div className="container px-4 md:px-6 max-w-7xl mx-auto">
-            {/* Platform Logos Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-              {/* N8N */}
-              <Link
-                href="/docs/platform-n8n-example"
-                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
-              >
-                <div className="text-red-600 mb-3 text-center">
-                  <span className="text-sm font-medium">Securing</span>
-                  <br />
-                  <span className="text-4xl font-bold">n8n</span>
-                </div>
-                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
-              </Link>
-
-              {/* Vercel AI */}
-              <Link
-                href="/docs/platform-vercel-ai-example"
-                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
-              >
-                <div className="text-black mb-3 text-center">
-                  <span className="text-sm font-medium">Securing</span>
-                  <br />
-                  <span className="text-3xl font-bold whitespace-nowrap">Vercel AI</span>
-                </div>
-                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
-              </Link>
-
-              {/* Pydantic AI */}
-              <Link
-                href="/docs/platform-pydantic-example"
-                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
-              >
-                <div className="text-pink-600 mb-3 text-center">
-                  <span className="text-sm font-medium">Securing</span>
-                  <br />
-                  <span className="text-3xl font-bold whitespace-nowrap">Pydantic AI</span>
-                </div>
-                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
-              </Link>
-
-              {/* OpenWebUI */}
-              <Link
-                href="/docs/platform-openwebui-example"
-                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
-              >
-                <div className="text-blue-600 mb-3 text-center">
-                  <span className="text-sm font-medium">Securing</span>
-                  <br />
-                  <span className="text-3xl font-bold">OpenWebUI</span>
-                </div>
-                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
-              </Link>
-            </div>
-
-            {/* Additional Integration Note */}
-            <div className="text-center mt-12">
-              <p className="text-gray-600">
-                And many more through our{' '}
-                <Link href="/docs/" className="text-blue-600 hover:text-blue-700 font-medium">
-                  OpenAI-compatible proxy
-                </Link>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Enterprise MCP Orchestator
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Running MCP's in Kubernetes, managing credentials and access
               </p>
             </div>
+
+            {/* Architecture Diagram */}
+            <MermaidDiagram />
+
+            {/* Feature Tiles */}
+            <div className="grid md:grid-cols-3 gap-6 mt-16 max-w-5xl mx-auto">
+              {/* LLM Proxy Tile */}
+              <Link href="/docs/platform-llm-proxy" className="group">
+                <Card className="h-full border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-200">
+                  <CardContent className="p-6">
+                    <div className="flex items-center mb-4">
+                      <ShieldCheck className="w-8 h-8 text-blue-600 mr-3" />
+                      <h3 className="text-lg font-semibold text-gray-900">LLM Proxy</h3>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Complete security layer for all LLM interactions
+                    </p>
+                    <div className="space-y-2">
+                      <div className="flex items-center text-xs text-gray-500">
+                        <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                        Security & Guardrails
+                      </div>
+                      <div className="flex items-center text-xs text-gray-500">
+                        <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                        Cost Control
+                      </div>
+                      <div className="flex items-center text-xs text-gray-500">
+                        <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                        Observability
+                      </div>
+                    </div>
+                    <p className="text-xs text-blue-600 mt-4 group-hover:text-blue-700">
+                      Learn more →
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* Private MCP Registry Tile */}
+              <Link href="/docs/platform-private-registry" className="group">
+                <Card className="h-full border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all duration-200">
+                  <CardContent className="p-6">
+                    <div className="flex items-center mb-4">
+                      <Github className="w-8 h-8 text-purple-600 mr-3" />
+                      <h3 className="text-lg font-semibold text-gray-900">Private MCP Registry</h3>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Centralized governance for all MCP servers
+                    </p>
+                    <div className="space-y-2">
+                      <div className="flex items-center text-xs text-gray-500">
+                        <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                        Version Control
+                      </div>
+                      <div className="flex items-center text-xs text-gray-500">
+                        <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                        Access Management
+                      </div>
+                      <div className="flex items-center text-xs text-gray-500">
+                        <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                        Compliance & Governance
+                      </div>
+                    </div>
+                    <p className="text-xs text-purple-600 mt-4 group-hover:text-purple-700">
+                      Learn more →
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* MCP Gateway Tile */}
+              <Link href="/docs/platform-mcp-gateway" className="group">
+                <Card className="h-full border-gray-200 hover:border-green-300 hover:shadow-lg transition-all duration-200">
+                  <CardContent className="p-6">
+                    <div className="flex items-center mb-4">
+                      <Send className="w-8 h-8 text-green-600 mr-3" />
+                      <h3 className="text-lg font-semibold text-gray-900">MCP Gateway</h3>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Simple and controlled MCP adoption
+                    </p>
+                    <div className="space-y-2">
+                      <div className="flex items-center text-xs text-gray-500">
+                        <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                        Easy Integration
+                      </div>
+                      <div className="flex items-center text-xs text-gray-500">
+                        <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                        Universal Compatibility
+                      </div>
+                    </div>
+                    <p className="text-xs text-green-600 mt-4 group-hover:text-green-700">
+                      Learn more →
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+
           </div>
         </section>
 
@@ -687,6 +812,112 @@ export default function Home() {
                   <span>Deploy</span>
                 </a>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Docker Run Section */}
+        <section className="py-16 bg-white">
+          <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Quick Start</h2>
+                <p className="text-lg text-gray-600">Deploy Archestra in seconds with Docker</p>
+              </div>
+              <div className="bg-gray-900 rounded-lg p-6 shadow-xl">
+                <div className="flex items-center justify-between">
+                  <code className="text-green-400 font-mono text-sm md:text-base">
+                    docker run -p 9000:9000 -p 3000:3000 archestra/platform
+                  </code>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText('docker run -p 9000:9000 -p 3000:3000 archestra/platform');
+                    }}
+                    className="ml-4 px-3 py-1.5 text-xs font-medium bg-gray-700 hover:bg-gray-600 text-white rounded transition-colors"
+                  >
+                    Copy
+                  </button>
+                </div>
+              </div>
+              <div className="text-center mt-4">
+                <p className="text-sm text-gray-600">
+                  View the{' '}
+                  <Link href="/docs/platform-deployment" className="text-blue-600 hover:text-blue-700 font-medium">
+                    full deployment guide
+                  </Link>{' '}
+                  for more options
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Platform Integrations Section */}
+        <section className="pb-20 pt-20 bg-white">
+          <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+            {/* Platform Logos Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+              {/* N8N */}
+              <Link
+                href="/docs/platform-n8n-example"
+                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
+              >
+                <div className="text-red-600 mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-4xl font-bold">n8n</span>
+                </div>
+                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
+              </Link>
+
+              {/* Vercel AI */}
+              <Link
+                href="/docs/platform-vercel-ai-example"
+                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
+              >
+                <div className="text-black mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-3xl font-bold whitespace-nowrap">Vercel AI</span>
+                </div>
+                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
+              </Link>
+
+              {/* Pydantic AI */}
+              <Link
+                href="/docs/platform-pydantic-example"
+                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
+              >
+                <div className="text-pink-600 mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-3xl font-bold whitespace-nowrap">Pydantic AI</span>
+                </div>
+                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
+              </Link>
+
+              {/* OpenWebUI */}
+              <Link
+                href="/docs/platform-openwebui-example"
+                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
+              >
+                <div className="text-blue-600 mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-3xl font-bold">OpenWebUI</span>
+                </div>
+                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
+              </Link>
+            </div>
+
+            {/* Additional Integration Note */}
+            <div className="text-center mt-12">
+              <p className="text-gray-600">
+                And many more through our{' '}
+                <Link href="/docs/" className="text-blue-600 hover:text-blue-700 font-medium">
+                  OpenAI-compatible proxy
+                </Link>
+              </p>
             </div>
           </div>
         </section>
