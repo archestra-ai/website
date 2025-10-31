@@ -10,7 +10,7 @@ The Archestra Platform can be deployed using Docker for development and testing,
 
 The following environment variables can be used to configure Archestra Platform:
 
-- **`DATABASE_URL`** - PostgreSQL connection string for the database.
+- **`ARCHESTRA_DATABASE_URL`** - PostgreSQL connection string for the database.
   - Format: `postgresql://user:password@host:5432/database`
   - Default: Internal PostgreSQL (Docker) or managed instance (Helm)
   - Required for production deployments with external database
@@ -59,6 +59,9 @@ The following environment variables can be used to configure Archestra Platform:
 - **`ARCHESTRA_ORCHESTRATOR_KUBECONFIG`** - Path to custom kubeconfig file. Mount the required kubeconfig as volume inside the
   - Optional: Uses default locations if not specified
   - Example: `/path/to/kubeconfig`
+
+- **`ARCHESTRA_OTEL_EXPORTER_OTLP_ENDPOINT`** - OTEL Exporter endpoint for sending traces
+  - Default: `http://localhost:4318/v1/traces`
 
 ## Docker Deployment
 
