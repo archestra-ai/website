@@ -141,6 +141,7 @@ The Helm chart provides extensive configuration options through values. For the 
 - `archestra.env` - Environment variables to pass to the container (see Environment Variables section above for available options)
 
 **Example**:
+
 ```bash
 helm upgrade archestra-platform \
   oci://europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/helm-charts/archestra-platform \
@@ -179,6 +180,7 @@ helm upgrade archestra-platform \
 - `postgresql.enabled` - Enable managed PostgreSQL instance (default: true, disabled if external_database_url is set)
 
 For external PostgreSQL (recommended for production):
+
 ```bash
 helm upgrade archestra-platform \
   oci://europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/helm-charts/archestra-platform \
