@@ -31,8 +31,8 @@ The endpoint `http://localhost:9000/metrics` exposes Prometheus-formatted metric
 
 ### LLM Metrics
 
-- `llm_request_duration_seconds` - LLM API request duration by provider, agent, agent_name, and status code
-- `llm_tokens_total` - Token consumption by provider, agent, agent_name, and type (input/output)
+- `llm_request_duration_seconds` - LLM API request duration by provider, agent_id, agent_name, and status code
+- `llm_tokens_total` - Token consumption by provider, agent_id, agent_name, and type (input/output)
 
 ### Process Metrics
 
@@ -84,6 +84,7 @@ Each LLM API call includes detailed attributes for filtering and analysis:
 - `llm.model` - Model name (e.g., `gpt-4`, `claude-3-5-sonnet-20241022`)
 - `llm.stream` - Whether the request was streaming (`true`/`false`)
 - `route.category` - The category of the route (e.g., `llm-proxy`, `mcp-gateway`, `api`)
+- `agent.id` - The ID of the agent handling the request
 - `agent.name` - The name of the agent handling the request
 - `agent.<label_key>` - Custom agent labels (e.g., `agent.environment=production`, `agent.team=data-science`)
 
