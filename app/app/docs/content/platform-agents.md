@@ -21,3 +21,9 @@ Using agents provides several benefits:
 1. **Isolation** - Keep different AI applications separate with their own policies
 2. **Monitoring** - Track interactions and security events per application
 3. **Flexibility** - Apply different security rules to different use cases
+
+## Agent Labels
+
+Agent labels are a powerful feature that can be used to organize and categorize your agents.
+
+Beyond organization, labels also play a crucial role in observability. Read more about how to use labels for observability [here](/docs/platform-observability).

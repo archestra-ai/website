@@ -206,3 +206,11 @@ Then visit:
 
 - **Admin UI**: <http://localhost:3000>
 - **API**: <http://localhost:9000>
+
+## Infrastructure as Code
+
+### Terraform
+
+For managing Archestra Platform resources, you can use our official Terraform provider to manage Archestra Platform declaratively.
+
+For complete documentation, examples, and resource reference, visit the [Archestra Terraform Provider Documentation](https://registry.terraform.io/providers/archestra-ai/archestra/latest/docs).

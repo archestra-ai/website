@@ -31,8 +31,8 @@ The endpoint `http://localhost:9000/metrics` exposes Prometheus-formatted metric
 
 ### LLM Metrics
 
-- `llm_request_duration_seconds` - LLM API request duration by provider, agent, and status code
-- `llm_tokens_total` - Token consumption by provider, agent, and type (input/output)
+- `llm_request_duration_seconds` - LLM API request duration by provider, agent_id, agent_name, and status code
+- `llm_tokens_total` - Token consumption by provider, agent_id, agent_name, and type (input/output)
 
 ### Process Metrics
 
@@ -83,6 +83,10 @@ Each LLM API call includes detailed attributes for filtering and analysis:
 - `llm.provider` - Provider name (`openai`, `anthropic`, `gemini`)
 - `llm.model` - Model name (e.g., `gpt-4`, `claude-3-5-sonnet-20241022`)
 - `llm.stream` - Whether the request was streaming (`true`/`false`)
+- `route.category` - The category of the route (e.g., `llm-proxy`, `mcp-gateway`, `api`)
+- `agent.id` - The ID of the agent handling the request
+- `agent.name` - The name of the agent handling the request
+- `agent.<label_key>` - Custom agent labels (e.g., `agent.environment=production`, `agent.team=data-science`)
 
 **Span Names:**
 
@@ -139,19 +143,37 @@ Here are some PromQL queries for Grafana charts to get you started:
 - LLM requests per second by agent and provider:
 
   ```promql
-  sum(rate(llm_request_duration_seconds_count[5m])) by (agent, provider)
-  ```
-
-- LLM token usage rate (tokens/sec):
-
-  ```promql
-  sum(rate(llm_tokens_total[5m])) by (provider, agent, type)
+  sum(rate(llm_request_duration_seconds_count[5m])) by (agent_name, provider)
   ```
 
 - LLM error rate by provider:
 
   ```promql
   sum(rate(llm_request_duration_seconds_count{status_code!="200"}[5m])) by (provider) / sum(rate(llm_request_duration_seconds_count[5m])) by (provider) * 100
+  ```
+
+- LLM token usage rate (tokens/sec) by agent name:
+
+  ```promql
+  sum(rate(llm_tokens_total[5m])) by (provider, agent_name, type)
+  ```
+
+- Total tokens by agent name:
+
+  ```promql
+  sum(rate(llm_tokens_total[5m])) by (agent_name, type)
+  ```
+
+- Request duration by agent name and provider:
+
+  ```promql
+  histogram_quantile(0.95, sum(rate(llm_request_duration_seconds_bucket[5m])) by (agent_name, provider, le))
+  ```
+
+- Error rate by agent:
+
+  ```promql
+  sum(rate(llm_request_duration_seconds_count{status_code!~"2.."}[5m])) by (agent_name) / sum(rate(llm_request_duration_seconds_count[5m])) by (agent_name)
   ```
 
 The screenshot below shows the request rate and duration charts, as well as the rate of LLM calls and their token usage:
