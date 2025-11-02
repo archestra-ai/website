@@ -172,6 +172,18 @@ helm upgrade archestra-platform \
 - `archestra.orchestrator.kubernetes.serviceAccount.imagePullSecrets` - Image pull secrets for the service account
 - `archestra.orchestrator.kubernetes.rbac.create` - Create RBAC resources (default: true)
 
+#### Service & Ingress Configuration
+
+**Service Settings**:
+
+- `archestra.service.annotations` - Annotations to add to the Kubernetes Service for cloud provider integrations
+
+**Ingress Settings**:
+
+- `archestra.ingress.enabled` - Enable or disable ingress creation (default: false)
+- `archestra.ingress.annotations` - Annotations for ingress controller and load balancer behavior
+- `archestra.ingress.spec` - Complete ingress specification for advanced configurations
+
 #### Database Configuration
 
 **PostgreSQL Settings**:
