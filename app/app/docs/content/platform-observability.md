@@ -118,11 +118,15 @@ The charts include:
   - Request Rate - HTTP requests per second by route with filtering capability
   - Error Rate - 4xx and 5xx error rates by route and status code (color-coded: yellow for 4xx, red for 5xx)
   - Request Duration - p50 and p95 response time percentiles
-- Trace Metrics - Integration with Jaeger for distributed tracing visualization
+- Traces - List of the recent traces and an individual trace panel
 
 The charts in the "Application Metrics" group can be filtered by route. To do so, use the "Route" dropdown in the top left.
 
-![Pre-built Grafana dashboard](/docs/platfrom/observability-1.png)
+The screenshots below show the pre-built Grafana charts with metrics and traces:
+
+![Grafana charts with metrics](/docs/platfrom/observability-metrics.png)
+
+![Grafana charts with traces](/docs/platfrom/observability-traces.png)
 
 ## Setting Up Prometheus
 
