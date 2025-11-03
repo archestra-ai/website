@@ -122,6 +122,8 @@ The charts include:
 
 The charts in the "Application Metrics" group can be filtered by route. To do so, use the "Route" dropdown in the top left.
 
+![Pre-built Grafana dashboard](/docs/platfrom/observability-1.png)
+
 ## Setting Up Prometheus
 
 _The following instructions assume you are familiar with Grafana and Prometheus and have them already set up._
@@ -201,7 +203,3 @@ Here are some PromQL queries for Grafana charts to get you started:
   ```promql
   sum(rate(llm_request_duration_seconds_count{status_code!~"2.."}[5m])) by (agent_name) / sum(rate(llm_request_duration_seconds_count[5m])) by (agent_name)
   ```
-
-The screenshot below shows the request rate and duration charts, as well as the rate of LLM calls and their token usage:
-
-![Request rate, duration, LLM request rate and token usage](/docs/platfrom/observability-1.png)
