@@ -204,4 +204,4 @@ Here are some PromQL queries for Grafana charts to get you started:
 
 The screenshot below shows the request rate and duration charts, as well as the rate of LLM calls and their token usage:
 
-![Request rate, duration, LLM request rate and token usage](/docs/platform/observability-1.png)
+![Request rate, duration, LLM request rate and token usage](/docs/platfrom/observability-1.png)
