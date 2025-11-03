@@ -96,6 +96,29 @@ Each LLM API call includes detailed attributes for filtering and analysis:
 
 These dedicated spans show the exact duration of external LLM API calls, separate from your application's processing time.
 
+## Grafana Dashboard
+
+We've prepared a docker-compose with Grafana + Prometheus + Tempo and a dashboard with "golden" metric charts. Run it with:
+```bash
+cd platform/dev
+docker-compose -f docker-compose.observability.yml up
+```
+Grafana UI will be available at http://localhost:3002
+
+They charts include:
+- System Resources
+  - CPU Usage - Real-time CPU utilization tracking
+  - Memory Usage (Resident) - Physical memory consumption monitoring
+- LLM Metrics
+  - Token Usage - Input/output token consumption rates by agent
+- Application Metrics
+  - Request Rate - HTTP requests per second by route with filtering capability
+  - Error Rate - 4xx and 5xx error rates by route and status code (color-coded: yellow for 4xx, red for 5xx)
+  - Request Duration - p50 and p95 response time percentiles
+- Trace Metrics - Integration with Jaeger for distributed tracing visualization
+
+The charts in the "Application Metrics" group can be filtered by route. To do so, use the "Route" dropdown in the top left.
+
 ## Setting Up Prometheus
 
 _The following instructions assume you are familiar with Grafana and Prometheus and have them already set up._
