@@ -98,35 +98,7 @@ These dedicated spans show the exact duration of external LLM API calls, separat
 
 ## Grafana Dashboard
 
-We've prepared a docker-compose setup with Grafana + Prometheus + Tempo. It has a dashboard with charts visualizing "four golden signals", LLM token usage and traces. Run it with:
-
-```bash
-cd platform/dev
-docker-compose -f docker-compose.observability.yml up
-```
-
-Grafana UI will be available at http://localhost:3002
-
-The charts include:
-
-- System Resources
-  - CPU Usage - Real-time CPU utilization tracking
-  - Memory Usage (Resident) - Physical memory consumption monitoring
-- LLM Metrics
-  - Token Usage - Input/output token consumption rates by agent
-- Application Metrics
-  - Request Rate - HTTP requests per second by route with filtering capability
-  - Error Rate - 4xx and 5xx error rates by route and status code (color-coded: yellow for 4xx, red for 5xx)
-  - Request Duration - p50 and p95 response time percentiles
-- Traces - List of the recent traces and an individual trace panel
-
-The charts in the "Application Metrics" group can be filtered by route. To do so, use the "Route" dropdown in the top left.
-
-The screenshots below show the pre-built Grafana charts with metrics and traces:
-
-![Grafana charts with metrics](/docs/platfrom/observability-metrics.png)
-
-![Grafana charts with traces](/docs/platfrom/observability-traces.png)
+We've prepared a Grafana dashboard with charts visualizing the "four golden signals", LLM token usage and traces. To download the dashboard template, head [here](https://github.com/archestra-ai/archestra/blob/main/platform/dev/grafana/dashboards/platform.json)
 
 ## Setting Up Prometheus
 
