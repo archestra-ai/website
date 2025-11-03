@@ -86,7 +86,7 @@ Each LLM API call includes detailed attributes for filtering and analysis:
 - `route.category` - The category of the route (e.g., `llm-proxy`, `mcp-gateway`, `api`)
 - `agent.id` - The ID of the agent handling the request
 - `agent.name` - The name of the agent handling the request
-- `agent.<label_key>` - Custom agent labels (e.g., `agent.environment=production`, `agent.team=data-science`)
+- `<label_key>` - Custom agent labels (e.g., `environment=production`, `team=data-science`)
 
 **Span Names:**
 
