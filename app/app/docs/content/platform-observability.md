@@ -122,9 +122,11 @@ The charts include:
 
 The charts in the "Application Metrics" group can be filtered by route. To do so, use the "Route" dropdown in the top left.
 
-The screenshot below shows the pre-built Grafana charts:
+The screenshots below show the pre-built Grafana charts with metrics and traces:
 
-![Pre-built Grafana dashboard](/docs/platfrom/observability-1.png)
+![Grafana charts with metrics](/docs/platfrom/observability-metrics.png)
+
+![Grafana charts with traces](/docs/platfrom/observability-traces.png)
 
 ## Setting Up Prometheus
 
