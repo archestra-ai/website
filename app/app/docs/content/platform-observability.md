@@ -98,14 +98,17 @@ These dedicated spans show the exact duration of external LLM API calls, separat
 
 ## Grafana Dashboard
 
-We've prepared a docker-compose with Grafana + Prometheus + Tempo and a dashboard with "golden" metric charts. Run it with:
+We've prepared a docker-compose setup with Grafana + Prometheus + Tempo. It has a dashboard with charts visualizing "four golden signals", LLM token usage and traces. Run it with:
+
 ```bash
 cd platform/dev
 docker-compose -f docker-compose.observability.yml up
 ```
+
 Grafana UI will be available at http://localhost:3002
 
-They charts include:
+The charts include:
+
 - System Resources
   - CPU Usage - Real-time CPU utilization tracking
   - Memory Usage (Resident) - Physical memory consumption monitoring
@@ -201,4 +204,4 @@ Here are some PromQL queries for Grafana charts to get you started:
 
 The screenshot below shows the request rate and duration charts, as well as the rate of LLM calls and their token usage:
 
-![Request rate, duration, LLM request rate and token usage](/docs/platfrom/observability-1.png)
+![Request rate, duration, LLM request rate and token usage](/docs/platform/observability-1.png)
