@@ -83,10 +83,9 @@ Each LLM API call includes detailed attributes for filtering and analysis:
 - `llm.provider` - Provider name (`openai`, `anthropic`, `gemini`)
 - `llm.model` - Model name (e.g., `gpt-4`, `claude-3-5-sonnet-20241022`)
 - `llm.stream` - Whether the request was streaming (`true`/`false`)
-- `route.category` - The category of the route (e.g., `llm-proxy`, `mcp-gateway`, `api`)
 - `agent.id` - The ID of the agent handling the request
 - `agent.name` - The name of the agent handling the request
-- `<label_key>` - Custom agent labels (e.g., `environment=production`, `team=data-science`)
+- `agent.<label_key>` - Custom agent labels (e.g., `environment=production`, `team=data-science`)
 
 **Span Names:**
 
