@@ -59,6 +59,18 @@ The following environment variables can be used to configure Archestra Platform:
 - **`ARCHESTRA_OTEL_EXPORTER_OTLP_ENDPOINT`** - OTEL Exporter endpoint for sending traces
   - Default: `http://localhost:4318/v1/traces`
 
+- **`ARCHESTRA_OTEL_EXPORTER_OTLP_AUTH_USERNAME`** - Username for OTEL basic authentication
+  - Optional: Only used if both username and password are provided
+  - Example: `your-username`
+
+- **`ARCHESTRA_OTEL_EXPORTER_OTLP_AUTH_PASSWORD`** - Password for OTEL basic authentication
+  - Optional: Only used if both username and password are provided
+  - Example: `your-password`
+
+- **`ARCHESTRA_OTEL_EXPORTER_OTLP_AUTH_BEARER`** - Bearer token for OTEL authentication
+  - Optional: Takes precedence over basic authentication if provided
+  - Example: `your-bearer-token`
+
 - **`ARCHESTRA_ANALYTICS`** - Controls PostHog analytics for product improvements.
   - Default: `enabled`
   - Set to `disabled` to opt-out of analytics

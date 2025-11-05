@@ -61,10 +61,39 @@ The platform exports OpenTelemetry traces to help you understand request flows a
 Configure the OpenTelemetry Collector endpoint via environment variable:
 
 ```bash
-OTEL_EXPORTER_OTLP_ENDPOINT=http://your-collector:4318/v1/traces
+ARCHESTRA_OTEL_EXPORTER_OTLP_ENDPOINT=http://your-collector:4318/v1/traces
 ```
 
 If not specified, the platform defaults to `http://localhost:4318/v1/traces`.
+
+### Authentication
+
+The platform supports authentication for OTEL trace export through environment variables. Authentication is optional and can be configured using either basic authentication or bearer token authentication.
+
+#### Bearer Token Authentication
+
+Bearer token authentication takes precedence over basic authentication when both are configured:
+
+```bash
+ARCHESTRA_OTEL_EXPORTER_OTLP_AUTH_BEARER=your-bearer-token
+```
+
+This adds an `Authorization: Bearer your-bearer-token` header to all OTEL requests.
+
+#### Basic Authentication
+
+For basic authentication, **both** username and password must be provided:
+
+```bash
+ARCHESTRA_OTEL_EXPORTER_OTLP_AUTH_USERNAME=your-username
+ARCHESTRA_OTEL_EXPORTER_OTLP_AUTH_PASSWORD=your-password
+```
+
+This adds an `Authorization: Basic base64(username:password)` header to all OTEL requests.
+
+#### No Authentication
+
+If none of the authentication environment variables are configured, traces will be sent without authentication headers.
 
 ### What's Traced
 
