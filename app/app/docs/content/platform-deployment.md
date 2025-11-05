@@ -68,7 +68,7 @@ The following environment variables can be used to configure Archestra Platform:
   - Supported values: `trace`, `debug`, `info`, `warn`, `error`, `fatal`
 
 - **`ARCHESTRA_METRICS_SECRET`** - Bearer token for authenticating metrics endpoint access
-  - Optional: If not set, metrics endpoint is publicly accessible
+  - Default: `archestra-metrics-secret`
   - Note: When set, clients must include `Authorization: Bearer <token>` header to access `/metrics`
 
 ## Docker Deployment
