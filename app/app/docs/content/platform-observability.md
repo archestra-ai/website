@@ -95,6 +95,13 @@ Each LLM API call includes detailed attributes for filtering and analysis:
 
 These dedicated spans show the exact duration of external LLM API calls, separate from your application's processing time.
 
+### Custom Agent Labels
+
+Labels are key-value pairs that can be configured when creating or updating agents through the Archestra Platform UI. Use them, for example, to logically group agents by environment or application type. Once added, labels automatically appear in:
+
+- **Metrics** - As additional label dimensions on `llm_request_duration_seconds` and `llm_tokens_total`. Use them to drill down into charts. _Note that `kebab-case` labels will be converted to `snake_case` here because of Prometheus naming rules._
+- **Traces** - As span attributes. Use them to filter traces.
+
 ## Grafana Dashboard
 
 We've prepared a Grafana dashboard with charts visualizing the "four golden signals", LLM token usage and traces. To download the dashboard template, head [here](https://github.com/archestra-ai/archestra/blob/main/platform/dev/grafana/dashboards/platform.json)
