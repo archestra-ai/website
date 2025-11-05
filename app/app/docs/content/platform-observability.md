@@ -21,7 +21,7 @@ The endpoint `http://localhost:9000/health` returns basic service status:
 
 ## Metrics
 
-The endpoint `http://localhost:9000/metrics` exposes Prometheus-formatted metrics including:
+The endpoint `http://localhost:9050/metrics` exposes Prometheus-formatted metrics including:
 
 ### HTTP Metrics
 
@@ -109,12 +109,13 @@ Add the following to your `prometheus.yml`:
 scrape_configs:
   - job_name: 'archestra-backend'
     static_configs:
-      - targets: ['localhost:9000'] # Platform API base URL
+      - targets: ['localhost:9050'] # Platform API base URL
     scrape_interval: 15s
     metrics_path: /metrics
 ```
 
-If you are unsure what the Platform API base URL is, check the Platform UI's Settings.
+If you are unsure what the Platform API base URL is, check the Platform UI's Settings. While the Platform API is exposed
+on port 9000, `/metrics` is exposed separately on port 9050.
 
 ## Chart Examples
 
