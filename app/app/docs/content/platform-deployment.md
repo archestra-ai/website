@@ -29,10 +29,6 @@ The following environment variables can be used to configure Archestra Platform:
   - Example: If frontend is at `https://frontend.example.com`, set to `example.com`
   - Required when using different domains or subdomains for frontend and backend
 
-- **`ARCHESTRA_ANALYTICS`** - Controls PostHog analytics for product improvements.
-  - Default: `enabled`
-  - Set to `disabled` to opt-out of analytics
-
 - **`ARCHESTRA_AUTH_SECRET`** - Secret key used for signing authentication tokens and passwords.
   - Required for production deployments
   - Example: `something-really-really-secret-12345`
@@ -63,9 +59,17 @@ The following environment variables can be used to configure Archestra Platform:
 - **`ARCHESTRA_OTEL_EXPORTER_OTLP_ENDPOINT`** - OTEL Exporter endpoint for sending traces
   - Default: `http://localhost:4318/v1/traces`
 
+- **`ARCHESTRA_ANALYTICS`** - Controls PostHog analytics for product improvements.
+  - Default: `enabled`
+  - Set to `disabled` to opt-out of analytics
+
 - **`ARCHESTRA_LOGGING_LEVEL`** - Log level for Archestra
   - Default: `info`
   - Supported values: `trace`, `debug`, `info`, `warn`, `error`, `fatal`
+
+- **`ARCHESTRA_METRICS_SECRET`** - Bearer token for authenticating metrics endpoint access
+  - Optional: If not set, metrics endpoint is publicly accessible
+  - Note: When set, clients must include `Authorization: Bearer <token>` header to access `/metrics`
 
 ## Docker Deployment
 
