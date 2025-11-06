@@ -79,11 +79,28 @@ const DOMINIK = {
   },
   description: 'Software engineer with 10+ years of experience.',
 };
+const ANNA = {
+  '@type': 'Person',
+  name: 'Anna Shishliakova',
+  jobTitle: 'Software Engineer',
+  worksFor: {
+    '@type': 'Organization',
+    name: COMPANY_NAME,
+  },
+  sameAs: 'https://linkedin.com/in/ashlkv/',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Berlin',
+    addressCountry: 'Germany',
+  },
+  description: 'Fullstack engineer with a focus on interfaces and 10+ years of experience.',
+};
 const PEOPLE = {
   matvey: MATVEY,
   ildar: ILDAR,
   joey: JOEY,
   dominik: DOMINIK,
+  anna: ANNA,
 };
 
 // GitHub constants
