@@ -166,7 +166,7 @@ helm upgrade archestra-platform \
   --namespace archestra \
   --create-namespace \
   --set archestra.env.ARCHESTRA_API_BASE_URL=https://api.example.com \
-  --set archestra.env.ARCHESTRA_AUTH_SECRET=your-secret-key \
+  --set archestra.env.ARCHESTRA_AUTH_SECRET=better-auth-secret-123456789 \
   --wait
 ```
 
