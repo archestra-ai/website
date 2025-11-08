@@ -30,7 +30,7 @@ The following environment variables can be used to configure Archestra Platform:
   - Required when using different domains or subdomains for frontend and backend
 
 - **`ARCHESTRA_AUTH_SECRET`** - Secret key used for signing authentication tokens and passwords.
-  - Required for production deployments
+  - Auto-generated once on first run. Set manually if you need to control the secret value.
   - Example: `something-really-really-secret-12345`
 
 - **`ARCHESTRA_AUTH_ADMIN_EMAIL`** - Email address for the default Archestra Admin user, created on startup.
@@ -103,6 +103,7 @@ This will start the platform with:
 
 - **Admin UI** available at <http://localhost:3000>
 - **API** available at <http://localhost:9000>
+- **Auth Secret** auto-generated and saved to `/app/data/.auth_secret` (persisted across restarts)
 
 ### Using External PostgreSQL
 
@@ -165,9 +166,11 @@ helm upgrade archestra-platform \
   --namespace archestra \
   --create-namespace \
   --set archestra.env.ARCHESTRA_API_BASE_URL=https://api.example.com \
-  --set archestra.env.ARCHESTRA_AUTH_SECRET=your-secret-key \
+  --set archestra.env.ARCHESTRA_AUTH_SECRET=better-auth-secret-123456789 \
   --wait
 ```
+
+Note: `ARCHESTRA_AUTH_SECRET` is optional. It will be auto-generated if not specified.
 
 #### MCP Server Runtime Configuration
 
