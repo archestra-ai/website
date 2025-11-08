@@ -1,7 +1,7 @@
 ---
 title: Deployment
 category: Archestra Platform
-order: 3
+order: 2
 ---
 
 The Archestra Platform can be deployed using Docker for development and testing, or Helm for production environments. Both deployment methods provide access to the Admin UI on port 3000 and the API on port 9000.
