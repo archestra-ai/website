@@ -11,12 +11,14 @@ Archestra Platform includes a built-in chat feature that can be configured as an
 ## Overview
 
 By the end of this guide, you'll have:
+
 - A dedicated n8n expert chat agent
 - Access to all n8n MCP tools directly in the chat
 - Pre-configured system prompt with n8n expertise
 - Quick-action prompts for common tasks
 
 The chat assistant can help you:
+
 - Design and build n8n workflows
 - Debug node configurations
 - Understand n8n best practices
@@ -62,21 +64,25 @@ You need to install the n8n MCP server to give your agent access to n8n tools.
 2. Configure the following fields:
 
    **Name:**
+
    ```
    n8n
    ```
 
    **Command:**
+
    ```
    npx
    ```
 
    **Arguments:**
+
    ```
    n8n-mcp
    ```
 
    **Environment Variables:**
+
    ```
    MCP_MODE=stdio
    LOG_LEVEL=error
@@ -97,6 +103,7 @@ To find your n8n API key:
 4. Generate a new API key or copy your existing one
 
 **Example n8n API URL formats:**
+
 - Local: `http://localhost:5678`
 - Cloud: `https://your-instance.app.n8n.cloud`
 - Self-hosted: `https://n8n.yourdomain.com`
@@ -117,6 +124,7 @@ Archestra includes a pre-configured "n8n Expert" system prompt that provides com
 ### What the n8n Expert Prompt Does
 
 The n8n Expert system prompt includes:
+
 - Deep knowledge of n8n workflow design patterns
 - Best practices for node configuration
 - Expertise in MCP tool usage
@@ -136,6 +144,7 @@ Make all n8n MCP tools available to your agent:
 6. Click **Save Configuration**
 
 Common n8n MCP tools include:
+
 - `search_nodes` - Search for available n8n nodes
 - `get_node_essentials` - Get node configuration details
 - `search_templates` - Find workflow templates
@@ -174,6 +183,7 @@ You're all set! Now you can start chatting with your n8n expert:
 **Problem:** Agent responds with XML-formatted tool commands instead of actually executing the tools.
 
 **Solution:**
+
 1. Go to **Agents** page
 2. Find your n8n agent
 3. Verify that n8n MCP tools are assigned to the agent
@@ -185,6 +195,7 @@ You're all set! Now you can start chatting with your n8n expert:
 **Problem:** Chat page shows a message about missing API key.
 
 **Solution:**
+
 1. Go to **Settings → Chat**
 2. Enter your Anthropic API key
 3. Click **Save API Key**
@@ -195,6 +206,7 @@ You're all set! Now you can start chatting with your n8n expert:
 **Problem:** Agent doesn't seem to have n8n expertise.
 
 **Solution:**
+
 1. Confirm the "n8n Expert" system prompt is assigned to your agent
 2. Go to **Agents** page → Click message icon → Verify system prompt
 3. If not assigned, select it and save

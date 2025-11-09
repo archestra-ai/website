@@ -64,6 +64,7 @@ Archestra provides two types of prompts that enhance the chat experience:
 **Where they appear:** System prompts are not visible in the chat UI, but they influence all of the agent's responses throughout the conversation.
 
 **How to assign:**
+
 1. Go to **Settings → Chat → Prompt Library**
 2. Create or find your desired system prompt
 3. Go to the **Agents** page
@@ -72,6 +73,7 @@ Archestra provides two types of prompts that enhance the chat experience:
 6. Click **Save Configuration**
 
 **Example use cases:**
+
 - "You are an expert in n8n automation software"
 - "You are a helpful customer support agent"
 - "You are a technical documentation writer"
@@ -85,6 +87,7 @@ Archestra provides two types of prompts that enhance the chat experience:
 **How to use:** Simply click on a suggestion button to send it as your first message to the agent.
 
 **How to assign:**
+
 1. Go to **Settings → Chat → Prompt Library**
 2. Create or find your desired regular prompts
 3. Go to the **Agents** page
@@ -93,6 +96,7 @@ Archestra provides two types of prompts that enhance the chat experience:
 6. Click **Save Configuration**
 
 **Example use cases:**
+
 - "Check n8n connectivity"
 - "Help me debug my workflow"
 - "Create a demo webhook workflow"
