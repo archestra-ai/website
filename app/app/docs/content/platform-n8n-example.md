@@ -1,8 +1,7 @@
 ---
 title: Secure Agent with N8N
-category: Archestra Platform
-subcategory: Practical Examples
-order: 5
+category: Examples
+order: 3
 ---
 
 N8N is an open-source workflow automation platform that enables users to connect various applications, services, and APIs through a visual node-based interface. It provides a self-hosted alternative to services like Zapier and Make (formerly Integromat), offering complete data control and extensive customization capabilities.

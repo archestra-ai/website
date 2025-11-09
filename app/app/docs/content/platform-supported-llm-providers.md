@@ -1,7 +1,7 @@
 ---
 title: Supported LLM Providers
 category: Archestra Platform
-order: 4
+order: 3
 description: LLM providers supported by Archestra Platform
 lastUpdated: 2025-10-17
 ---

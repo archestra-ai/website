@@ -1,11 +1,10 @@
 ---
-title: Performance Benchmarks
+title: Performance & Latency
 category: Archestra Platform
-order: 10
+order: 6
 description: Performance metrics and benchmarks for Archestra Platform's security features
 lastUpdated: 2025-10-15
 ---
-
 
 ## Overview
 
@@ -52,11 +51,11 @@ This document provides performance metrics and overhead measurements for Archest
 
 ### Operation-Specific Performance
 
-| Operation                      | Average Time | Notes                                 |
-| ------------------------------ | ------------ | ------------------------------------- |
-| Chat completion (with tools)   | ~30ms        | + Tool metadata persistence           |
-| Dual LLM quarantine (1 round)  | ~2-3s        | 2x LLM API calls (provider-dependent) |
-| Dual LLM quarantine (3 rounds) | ~6-9s        | 6x LLM API calls (provider-dependent) |
+| Operation                      | Response Time | Notes                                 |
+| ------------------------------ | ------------- | ------------------------------------- |
+| Chat completion (with tools)   | ~30ms         | + Tool metadata persistence           |
+| Dual LLM quarantine (1 round)  | ~2-3s         | 2x LLM API calls (provider-dependent) |
+| Dual LLM quarantine (3 rounds) | ~6-9s         | 6x LLM API calls (provider-dependent) |
 
 ### Failure Handling
 
@@ -86,11 +85,4 @@ This document provides performance metrics and overhead measurements for Archest
 - Error logging and tracking
 - Performance metrics available via database queries
 
-**Prometheus Metrics**:
-
-- Total HTTP requests
-- HTTP error requests
-- Request latency
-- LLM total requests
-- LLM error requests
-- LLM latency
+For detailed information on setting up Prometheus monitoring, distributed tracing with OpenTelemetry, and Grafana dashboards, see the [Observability documentation](platform-observability.md).

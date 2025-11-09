@@ -1,8 +1,7 @@
 ---
 title: Secure Agent with Mastra.ai
-category: Archestra Platform
-subcategory: Practical Examples
-order: 8
+category: Examples
+order: 2
 ---
 
 ## Overview

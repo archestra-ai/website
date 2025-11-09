@@ -1,7 +1,6 @@
 ---
 title: Secure Agent with Pydantic AI
-category: Archestra Platform
-subcategory: Practical Examples
+category: Examples
 order: 5
 ---
 
