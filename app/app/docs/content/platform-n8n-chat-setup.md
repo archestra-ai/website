@@ -212,6 +212,25 @@ You're all set! Now you can start chatting with your n8n expert:
 3. If not assigned, select it and save
 4. Start a new conversation to see the changes
 
+### "Tool invocation blocked: context contains untrusted data" Error
+
+**Problem:** When the agent attempts to use an n8n MCP tool (like `search_nodes`), you receive an error:
+```
+Tool invocation blocked: context contains untrusted data
+```
+
+**Solution:**
+
+This error occurs when tool invocation policies block the tool call due to security restrictions. To resolve:
+
+1. Navigate to **Settings → Tools**
+2. Find the n8n MCP tools in the list
+3. Enable or adjust the permissions for the tools you want to use
+4. Save the configuration
+5. Return to your chat conversation and try again
+
+> **Note:** Archestra's security policies protect against unauthorized tool usage. You may need to explicitly allow certain MCP tools based on your organization's security requirements.
+
 ## Next Steps
 
 Now that you have your n8n chat assistant set up:
