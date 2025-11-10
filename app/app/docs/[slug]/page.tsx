@@ -31,35 +31,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const pageUrl = `${constants.website.urls.base}/docs/${slug}`;
-  const title = `${doc.title} | ${companyName} Docs`;
-  const description = doc.description || `Documentation for ${doc.title}`;
-  const ogImage = constants.website.urls.logoAbsoluteUrl;
-
   return {
-    title,
-    description,
+    title: `${doc.title} | ${companyName} Docs`,
     openGraph: {
       title: doc.title,
-      description,
-      url: pageUrl,
-      siteName: companyName,
       type: 'article',
       publishedTime: doc.lastUpdated,
-      images: [
-        {
-          url: ogImage,
-          alt: `${companyName} Logo`,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: doc.title,
-      description,
-      images: [ogImage],
-      site: constants.twitter.handle,
-      creator: constants.twitter.handle,
     },
   };
 }
