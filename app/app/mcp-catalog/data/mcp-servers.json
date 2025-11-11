@@ -856,5 +856,6 @@
   "https://github.com/makenotion/notion-mcp-server",
   "https://github.com/cbcoutinho/nextcloud-mcp-server",
   "https://github.com/localstack/localstack-mcp-server",
-  "https://github.com/adhikasp/mcp-reddit"
+  "https://github.com/adhikasp/mcp-reddit",
+  "https://github.com/czlonkowski/n8n-mcp"
 ]
