@@ -7,8 +7,10 @@ export default function DocsPage() {
   const docs = getAllDocs();
 
   if (docs.length > 0) {
-    // Redirect to the first documentation page
-    redirect(`/docs/${docs[0].slug}`);
+    // Try to redirect to platform-quickstart if it exists, otherwise use the first doc
+    const platformQuickstart = docs.find(doc => doc.slug === 'platform-quickstart');
+    const targetDoc = platformQuickstart || docs[0];
+    redirect(`/docs/${targetDoc.slug}`);
   }
 
   // If no docs exist, show a message
