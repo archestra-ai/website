@@ -558,80 +558,81 @@ export default function KubeconPage() {
           </div>
         </div>
 
-
         <>
-            <div className="flex flex-col w-full">
-              {/* Title - positioned at top and aligned left */}
-              <h1 className="leading-none text-black text-left -mt-20">
-                <span className="text-[600px] p-0 m-0 inline-block font-extrabold animate-pulse">MCP</span><br/>
-                <span className="p-0 m-0 text-[200px] inline-block animate-pulse font-light">
-                  {displayedWord}<span className="animate-blink">|</span>
-                </span>
-              </h1>
-            </div>
+          <div className="flex flex-col w-full">
+            {/* Title - positioned at top and aligned left */}
+            <h1 className="leading-none text-black text-left -mt-20">
+              <span className="text-[600px] p-0 m-0 inline-block font-extrabold animate-pulse">MCP</span>
+              <br />
+              <span className="p-0 m-0 text-[200px] inline-block animate-pulse font-light">
+                {displayedWord}
+                <span className="animate-blink">|</span>
+              </span>
+            </h1>
+          </div>
 
-            {/* Leaderboard at bottom left */}
-            <div className="absolute bottom-8 left-8">
-              {lastUpdate && <div className="text-sm text-gray-500 font-light mb-2">Updated: {lastUpdate}</div>}
-              {leaderboard.length > 0 && (
-                <div className="divide-y divide-black border-2 border-black bg-white">
-                  {/* Top 3 entries - always visible */}
-                  {leaderboard.slice(0, 3).map((entry) => (
-                    <div
-                      key={`${entry.rank}-${entry.username}`}
-                      className={`flex items-center px-3 py-2 space-x-4 ${entry.rank === 1 ? 'bg-gray-100' : ''}`}
-                    >
-                      <span className="text-xl font-light">{getRankEmoji(entry.rank)}</span>
-                      <span className="text-xl font-light text-black">@{entry.username}</span>
-                    </div>
-                  ))}
+          {/* Leaderboard at bottom left */}
+          <div className="absolute bottom-8 left-8">
+            {lastUpdate && <div className="text-sm text-gray-500 font-light mb-2">Updated: {lastUpdate}</div>}
+            {leaderboard.length > 0 && (
+              <div className="divide-y divide-black border-2 border-black bg-white">
+                {/* Top 3 entries - always visible */}
+                {leaderboard.slice(0, 3).map((entry) => (
+                  <div
+                    key={`${entry.rank}-${entry.username}`}
+                    className={`flex items-center px-3 py-2 space-x-4 ${entry.rank === 1 ? 'bg-gray-100' : ''}`}
+                  >
+                    <span className="text-xl font-light">{getRankEmoji(entry.rank)}</span>
+                    <span className="text-xl font-light text-black">@{entry.username}</span>
+                  </div>
+                ))}
 
-                  {/* 4th position - rotating through remaining entries */}
-                  {leaderboard.length > 3 && (
-                    <div className="relative min-h-[40px]">
-                      {leaderboard.slice(3).map((entry, index) => (
-                        <div
-                          key={`${entry.rank}-${entry.username}`}
-                          className={`absolute inset-0 flex items-center px-3 py-2 space-x-4 transition-opacity duration-1000 ${
-                            index === currentRotatingIndex ? 'opacity-100' : 'opacity-0'
-                          }`}
-                        >
-                          <span className="text-xl font-light">{getRankEmoji(entry.rank)}</span>
-                          <span className="text-xl font-light text-black">@{entry.username}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-
-            {/* QR Codes - positioned next to leaderboard */}
-            <div className="absolute bottom-8 right-8 flex space-x-6">
-              {/* Participate QR */}
-              <div className="flex flex-col items-center">
-                <div className="bg-white p-2 mb-2">
-                  <img
-                    src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(issueUrl || 'https://github.com/archestra-ai/archestra/issues/1')}`}
-                    alt="Participate in the game"
-                    className="w-36 h-36"
-                  />
-                </div>
-                <p className="text-sm font-light text-black text-center">Game ;)</p>
+                {/* 4th position - rotating through remaining entries */}
+                {leaderboard.length > 3 && (
+                  <div className="relative min-h-[40px]">
+                    {leaderboard.slice(3).map((entry, index) => (
+                      <div
+                        key={`${entry.rank}-${entry.username}`}
+                        className={`absolute inset-0 flex items-center px-3 py-2 space-x-4 transition-opacity duration-1000 ${
+                          index === currentRotatingIndex ? 'opacity-100' : 'opacity-0'
+                        }`}
+                      >
+                        <span className="text-xl font-light">{getRankEmoji(entry.rank)}</span>
+                        <span className="text-xl font-light text-black">@{entry.username}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
+            )}
+          </div>
 
-              {/* Book Demo QR */}
-              <div className="flex flex-col items-center">
-                <div className="bg-white p-2 mb-2">
-                  <img
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.archestra.ai/book-demo"
-                    alt="Book a platform demo"
-                    className="w-36 h-36"
-                  />
-                </div>
-                <p className="text-sm font-light text-black text-center">Book a demo</p>
+          {/* QR Codes - positioned next to leaderboard */}
+          <div className="absolute bottom-8 right-8 flex space-x-6">
+            {/* Participate QR */}
+            <div className="flex flex-col items-center">
+              <div className="bg-white p-2 mb-2">
+                <img
+                  src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(issueUrl || 'https://github.com/archestra-ai/archestra/issues/1')}`}
+                  alt="Participate in the game"
+                  className="w-36 h-36"
+                />
               </div>
+              <p className="text-sm font-light text-black text-center">Game ;)</p>
             </div>
+
+            {/* Book Demo QR */}
+            <div className="flex flex-col items-center">
+              <div className="bg-white p-2 mb-2">
+                <img
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.archestra.ai/book-demo"
+                  alt="Book a platform demo"
+                  className="w-36 h-36"
+                />
+              </div>
+              <p className="text-sm font-light text-black text-center">Book a demo</p>
+            </div>
+          </div>
         </>
 
         {/* Hidden reset button */}
