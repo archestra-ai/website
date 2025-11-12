@@ -558,18 +558,37 @@ export default function KubeconPage() {
           </div>
         </div>
 
-        {
+
+        {isLoading ? (
+          <div className="flex flex-col items-center">
+            <div className="text-6xl animate-pulse">⏳</div>
+            <p className="text-black text-3xl mt-6 font-light">Loading...</p>
+          </div>
+        ) : error ? (
+          <div className="bg-black text-white text-2xl px-12 py-6 font-light">⚠️ {error}</div>
+        ) : (
           <>
             <div className="flex flex-col w-full">
               {/* Title - positioned at top and aligned left */}
-              <h1 className="leading-none text-black text-left -mt-20">
-                <span className="text-[600px] p-0 m-0 inline-block font-extrabold animate-pulse">MCP</span>
-                <br />
-                <span className="p-0 m-0 text-[200px] inline-block animate-pulse font-light">
-                  {displayedWord}
-                  <span className="animate-blink">|</span>
-                </span>
-              </h1>
+              <h1 className="text-6xl text-black text-left px-8">Convince sceptical AI</h1>
+
+              {/* Typing animation text - with large gap from title */}
+              <div className="relative flex flex-col mt-48 w-full px-8">
+                <div className="flex items-start justify-start">
+                  <h2 className="text-8xl font-light text-black text-left">
+                    {displayedText || 'Loading comments...'}
+                    <span className={`inline-block w-1 h-20 bg-black ml-2 ${isTyping ? 'animate-pulse' : ''}`}></span>
+                  </h2>
+                </div>
+                {/* AI about username's attempt - shown after typing finishes */}
+                {!isTyping && modelResponses.length > 0 && (
+                  <div className="mt-16 text-right">
+                    <p className="text-4xl font-light text-gray-600">
+                      AI about @{modelResponses[currentPhraseIndex % modelResponses.length].username}'s attempt
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Leaderboard at bottom left */}
@@ -609,7 +628,7 @@ export default function KubeconPage() {
             </div>
 
             {/* QR Codes at bottom right */}
-            <div className="absolute bottom-8 left-26 flex space-x-6">
+            <div className="absolute bottom-8 right-8 flex space-x-6">
               {/* Participate QR */}
               <div className="flex flex-col items-center">
                 <div className="bg-white p-2 mb-2">

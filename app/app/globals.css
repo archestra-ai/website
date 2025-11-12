@@ -142,6 +142,7 @@ body {
       blink 1s step-end infinite 3s;
     animation-fill-mode: backwards;
   }
+
 }
 
 @layer base {
