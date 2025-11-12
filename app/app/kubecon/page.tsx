@@ -481,12 +481,12 @@ export default function KubeconPage() {
 
   if (!isConfigured) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-6">
-        <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full animate-fadeIn">
-          <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">GitHub issue viewer</h1>
+      <div className="min-h-screen bg-black flex items-center justify-center p-6">
+        <div className="bg-gray-900 rounded-2xl shadow-2xl p-8 max-w-md w-full animate-fadeIn border border-gray-800">
+          <h1 className="text-3xl font-bold text-white mb-6 text-center">GitHub issue viewer</h1>
           <div className="space-y-4">
             <div>
-              <label htmlFor="apiKey" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="apiKey" className="block text-sm font-medium text-gray-300 mb-2">
                 GitHub API key
               </label>
               <input
@@ -495,14 +495,14 @@ export default function KubeconPage() {
                 value={apiKey}
                 onChange={(e) => setApiKey(e.target.value.trim())}
                 placeholder="ghp_xxxxxxxxxxxxxxxxxxxx or github_pat_xxxx"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                className="w-full px-4 py-2 bg-black text-white border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
               />
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-gray-400 mt-1">
                 Personal access token with 'repo' scope for private repos or no scope for public
               </p>
             </div>
             <div>
-              <label htmlFor="issueUrl" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="issueUrl" className="block text-sm font-medium text-gray-300 mb-2">
                 GitHub issue URL
               </label>
               <input
@@ -511,7 +511,7 @@ export default function KubeconPage() {
                 value={issueUrl}
                 onChange={(e) => setIssueUrl(e.target.value)}
                 placeholder="https://github.com/owner/repo/issues/123"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                className="w-full px-4 py-2 bg-black text-white border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
               />
             </div>
             {error && <div className="text-red-500 text-sm animate-shake">{error}</div>}
@@ -535,19 +535,19 @@ export default function KubeconPage() {
       `}</style>
 
       <div
-        className="min-h-screen bg-white flex flex-col items-center justify-start pt-20 p-8 pb-32 relative"
+        className="min-h-screen bg-black flex flex-col items-start justify-start p-0 pb-32 relative"
         style={{ fontFamily: "'Roboto Mono', monospace" }}
       >
         {/* Auto-refresh indicator */}
         <div className="fixed top-8 right-8 z-50 flex items-center space-x-3">
           <div className="relative w-16 h-16">
             <svg className="w-16 h-16 transform -rotate-90">
-              <circle cx="32" cy="32" r="28" stroke="#e0e0e0" strokeWidth="2" fill="none" />
+              <circle cx="32" cy="32" r="28" stroke="#333333" strokeWidth="2" fill="none" />
               <circle
                 cx="32"
                 cy="32"
                 r="28"
-                stroke="#000"
+                stroke="#fff"
                 strokeWidth="2"
                 fill="none"
                 strokeDasharray={`${2 * Math.PI * 28}`}
@@ -561,29 +561,24 @@ export default function KubeconPage() {
         <>
           <div className="flex flex-col w-full">
             {/* Title - positioned at top and aligned left */}
-            <h1 className="leading-none text-black text-left -mt-20">
-              <span className="text-[600px] p-0 m-0 inline-block font-extrabold animate-pulse">MCP</span>
-              <br />
-              <span className="p-0 m-0 text-[200px] inline-block animate-pulse font-light">
-                {displayedWord}
-                <span className="animate-blink">|</span>
-              </span>
+            <h1 className="leading-none text-white text-left -mt-20">
+              <span className="text-[650px] p-0 m-0 inline-block font-extrabold animate-pulse">MCP</span>
             </h1>
           </div>
 
           {/* Leaderboard at bottom left */}
           <div className="absolute bottom-8 left-8">
-            {lastUpdate && <div className="text-sm text-gray-500 font-light mb-2">Updated: {lastUpdate}</div>}
+            {lastUpdate && <div className="text-sm text-gray-400 font-light mb-2">Updated: {lastUpdate}</div>}
             {leaderboard.length > 0 && (
-              <div className="divide-y divide-black border-2 border-black bg-white">
+              <div className="divide-y divide-white border-2 border-white bg-black">
                 {/* Top 3 entries - always visible */}
                 {leaderboard.slice(0, 3).map((entry) => (
                   <div
                     key={`${entry.rank}-${entry.username}`}
-                    className={`flex items-center px-3 py-2 space-x-4 ${entry.rank === 1 ? 'bg-gray-100' : ''}`}
+                    className={`flex items-center px-3 py-2 space-x-4 ${entry.rank === 1 ? 'bg-gray-900' : ''}`}
                   >
                     <span className="text-xl font-light">{getRankEmoji(entry.rank)}</span>
-                    <span className="text-xl font-light text-black">@{entry.username}</span>
+                    <span className="text-xl font-light text-white">@{entry.username}</span>
                   </div>
                 ))}
 
@@ -598,7 +593,7 @@ export default function KubeconPage() {
                         }`}
                       >
                         <span className="text-xl font-light">{getRankEmoji(entry.rank)}</span>
-                        <span className="text-xl font-light text-black">@{entry.username}</span>
+                        <span className="text-xl font-light text-white">@{entry.username}</span>
                       </div>
                     ))}
                   </div>
@@ -610,14 +605,15 @@ export default function KubeconPage() {
           {/* Game QR Code - positioned next to leaderboard */}
           <div className="absolute bottom-8 left-[400px]">
             <div className="flex flex-col items-center">
-              <div className="bg-white p-2 mb-2">
+              <div className="bg-black border-2 border-white p-2 mb-2">
                 <img
                   src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(issueUrl || 'https://github.com/archestra-ai/archestra/issues/1')}`}
                   alt="Participate in the game"
                   className="w-36 h-36"
                 />
               </div>
-              <p className="text-sm font-light text-black text-center">Game ;)</p>
+              <p className="text-sm font-light text-white text-center">Game ;)</p>
+
             </div>
           </div>
         </>
@@ -625,7 +621,7 @@ export default function KubeconPage() {
         {/* Hidden reset button */}
         <button
           onClick={handleReset}
-          className="fixed bottom-4 right-4 text-gray-400 hover:text-black transition-colors px-3 py-2 text-sm font-light"
+          className="fixed bottom-4 right-4 text-gray-600 hover:text-white transition-colors px-3 py-2 text-sm font-light"
           style={{ opacity: 0.1 }}
           onMouseEnter={(e) => {
             e.currentTarget.style.opacity = '1';
