@@ -607,9 +607,8 @@ export default function KubeconPage() {
             )}
           </div>
 
-          {/* QR Codes - positioned next to leaderboard */}
-          <div className="absolute bottom-8 right-8 flex space-x-6">
-            {/* Participate QR */}
+          {/* Game QR Code - positioned next to leaderboard */}
+          <div className="absolute bottom-8 left-[400px]">
             <div className="flex flex-col items-center">
               <div className="bg-white p-2 mb-2">
                 <img
@@ -619,18 +618,6 @@ export default function KubeconPage() {
                 />
               </div>
               <p className="text-sm font-light text-black text-center">Game ;)</p>
-            </div>
-
-            {/* Book Demo QR */}
-            <div className="flex flex-col items-center">
-              <div className="bg-white p-2 mb-2">
-                <img
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.archestra.ai/book-demo"
-                  alt="Book a platform demo"
-                  className="w-36 h-36"
-                />
-              </div>
-              <p className="text-sm font-light text-black text-center">Book a demo</p>
             </div>
           </div>
         </>
