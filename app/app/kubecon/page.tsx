@@ -613,6 +613,7 @@ export default function KubeconPage() {
                 />
               </div>
               <p className="text-sm font-light text-white text-center">Game ;)</p>
+
             </div>
           </div>
         </>
