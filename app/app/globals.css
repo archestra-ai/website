@@ -79,19 +79,23 @@ body {
   }
 
   @keyframes blink {
-    0%, 50% {
+    0%,
+    50% {
       border-color: black;
     }
-    51%, 100% {
+    51%,
+    100% {
       border-color: transparent;
     }
   }
 
   @keyframes blinkCursor {
-    0%, 50% {
+    0%,
+    50% {
       opacity: 1;
     }
-    51%, 100% {
+    51%,
+    100% {
       opacity: 0;
     }
   }
@@ -124,16 +128,16 @@ body {
     overflow: hidden;
     white-space: nowrap;
     border-right: 4px solid black;
-    animation: 
+    animation:
       typewriter 3s steps(40, end),
       blink 1s step-end infinite;
   }
-  
+
   .typewriter-delayed {
     overflow: hidden;
     white-space: nowrap;
     border-right: 4px solid black;
-    animation: 
+    animation:
       typewriter 2s steps(30, end) 3s,
       blink 1s step-end infinite 3s;
     animation-fill-mode: backwards;

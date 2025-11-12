@@ -558,13 +558,18 @@ export default function KubeconPage() {
           </div>
         </div>
 
-        {(
+        {
           <>
             <div className="flex flex-col w-full">
               {/* Title - positioned at top and aligned left */}
-                <h1 className="leading-none text-black text-left -mt-20">
-                <span className="text-[600px] p-0 m-0 inline-block font-extrabold animate-pulse">MCP</span><br/><span className="p-0 m-0 text-[200px] inline-block animate-pulse font-light">{displayedWord}<span className="animate-blink">|</span></span>
-                </h1>
+              <h1 className="leading-none text-black text-left -mt-20">
+                <span className="text-[600px] p-0 m-0 inline-block font-extrabold animate-pulse">MCP</span>
+                <br />
+                <span className="p-0 m-0 text-[200px] inline-block animate-pulse font-light">
+                  {displayedWord}
+                  <span className="animate-blink">|</span>
+                </span>
+              </h1>
             </div>
 
             {/* Leaderboard at bottom left */}
@@ -630,7 +635,7 @@ export default function KubeconPage() {
               </div>
             </div>
           </>
-        )}
+        }
 
         {/* Hidden reset button */}
         <button
