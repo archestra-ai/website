@@ -532,23 +532,50 @@ export default function KubeconPage() {
       {/* Google Fonts import for Roboto Mono */}
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap');
-        
+
         @keyframes flicker {
-          0%, 100% { opacity: 1; }
-          5% { opacity: 0.8; }
-          10% { opacity: 0.3; }
-          15% { opacity: 1; }
-          20% { opacity: 0.6; }
-          25% { opacity: 0.1; }
-          30% { opacity: 1; }
-          70% { opacity: 1; }
-          72% { opacity: 0.2; }
-          77% { opacity: 0.9; }
-          80% { opacity: 0.8; }
-          83% { opacity: 0.4; }
-          85% { opacity: 1; }
+          0%,
+          100% {
+            opacity: 1;
+          }
+          5% {
+            opacity: 0.8;
+          }
+          10% {
+            opacity: 0.3;
+          }
+          15% {
+            opacity: 1;
+          }
+          20% {
+            opacity: 0.6;
+          }
+          25% {
+            opacity: 0.1;
+          }
+          30% {
+            opacity: 1;
+          }
+          70% {
+            opacity: 1;
+          }
+          72% {
+            opacity: 0.2;
+          }
+          77% {
+            opacity: 0.9;
+          }
+          80% {
+            opacity: 0.8;
+          }
+          83% {
+            opacity: 0.4;
+          }
+          85% {
+            opacity: 1;
+          }
         }
-        
+
         .flicker {
           animation: flicker 3s infinite;
         }
@@ -633,7 +660,6 @@ export default function KubeconPage() {
                 />
               </div>
               <p className="text-sm font-light text-white text-center">Game ;)</p>
-
             </div>
           </div>
         </>
