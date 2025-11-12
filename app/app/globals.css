@@ -69,6 +69,37 @@ body {
     }
   }
 
+  @keyframes typewriter {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink {
+    0%,
+    50% {
+      border-color: black;
+    }
+    51%,
+    100% {
+      border-color: transparent;
+    }
+  }
+
+  @keyframes blinkCursor {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+
   .animate-shimmer {
     animation: shimmer 2s infinite;
   }
@@ -87,6 +118,29 @@ body {
 
   .animate-shake {
     animation: shake 0.5s ease-in-out;
+  }
+
+  .animate-blink {
+    animation: blinkCursor 1s infinite;
+  }
+
+  .typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 4px solid black;
+    animation:
+      typewriter 3s steps(40, end),
+      blink 1s step-end infinite;
+  }
+
+  .typewriter-delayed {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 4px solid black;
+    animation:
+      typewriter 2s steps(30, end) 3s,
+      blink 1s step-end infinite 3s;
+    animation-fill-mode: backwards;
   }
 }
 

@@ -34,6 +34,13 @@ export default function KubeconPage() {
   const typingIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const isAutoRefreshRunning = useRef(false);
 
+  // Typewriter animation for rotating words
+  const rotatingWords = ['Governance', 'Orchestrator', 'Access', 'Security', 'Registry', 'Observability', 'Gateway'];
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [displayedWord, setDisplayedWord] = useState('');
+  const [isTypingWord, setIsTypingWord] = useState(true);
+  const wordTypingIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
   // Cleanup function for auto-refresh
   const stopAutoRefresh = () => {
     console.log('[KubeCon] Stopping auto-refresh');
@@ -69,6 +76,10 @@ export default function KubeconPage() {
         clearInterval(rotationIntervalRef.current);
         rotationIntervalRef.current = null;
       }
+      if (wordTypingIntervalRef.current) {
+        clearInterval(wordTypingIntervalRef.current);
+        wordTypingIntervalRef.current = null;
+      }
     };
   }, []);
 
@@ -91,6 +102,48 @@ export default function KubeconPage() {
       if (rotationIntervalRef.current) clearInterval(rotationIntervalRef.current);
     };
   }, [leaderboard]);
+
+  // Typewriter animation for rotating words
+  useEffect(() => {
+    if (wordTypingIntervalRef.current) clearInterval(wordTypingIntervalRef.current);
+
+    const targetWord = rotatingWords[currentWordIndex];
+    let charIndex = 0;
+
+    if (isTypingWord) {
+      // Typing phase
+      wordTypingIntervalRef.current = setInterval(() => {
+        if (charIndex <= targetWord.length) {
+          setDisplayedWord(targetWord.slice(0, charIndex));
+          charIndex++;
+        } else {
+          // Finished typing, wait then start deleting
+          clearInterval(wordTypingIntervalRef.current!);
+          setTimeout(() => {
+            setIsTypingWord(false);
+          }, 2000); // Wait 2 seconds before deleting
+        }
+      }, 100); // Type one character every 100ms
+    } else {
+      // Deleting phase
+      let currentLength = targetWord.length;
+      wordTypingIntervalRef.current = setInterval(() => {
+        if (currentLength >= 0) {
+          setDisplayedWord(targetWord.slice(0, currentLength));
+          currentLength--;
+        } else {
+          // Finished deleting, move to next word
+          clearInterval(wordTypingIntervalRef.current!);
+          setCurrentWordIndex((prev) => (prev + 1) % rotatingWords.length);
+          setIsTypingWord(true);
+        }
+      }, 50); // Delete faster than typing
+    }
+
+    return () => {
+      if (wordTypingIntervalRef.current) clearInterval(wordTypingIntervalRef.current);
+    };
+  }, [currentWordIndex, isTypingWord]);
 
   // Typing animation effect
   useEffect(() => {
@@ -420,6 +473,10 @@ export default function KubeconPage() {
       clearInterval(typingIntervalRef.current);
       typingIntervalRef.current = null;
     }
+    if (wordTypingIntervalRef.current) {
+      clearInterval(wordTypingIntervalRef.current);
+      wordTypingIntervalRef.current = null;
+    }
   };
 
   if (!isConfigured) {
@@ -501,102 +558,82 @@ export default function KubeconPage() {
           </div>
         </div>
 
-        {isLoading ? (
-          <div className="flex flex-col items-center">
-            <div className="text-6xl animate-pulse">⏳</div>
-            <p className="text-black text-3xl mt-6 font-light">Loading...</p>
+        <>
+          <div className="flex flex-col w-full">
+            {/* Title - positioned at top and aligned left */}
+            <h1 className="leading-none text-black text-left -mt-20">
+              <span className="text-[600px] p-0 m-0 inline-block font-extrabold animate-pulse">MCP</span>
+              <br />
+              <span className="p-0 m-0 text-[200px] inline-block animate-pulse font-light">
+                {displayedWord}
+                <span className="animate-blink">|</span>
+              </span>
+            </h1>
           </div>
-        ) : error ? (
-          <div className="bg-black text-white text-2xl px-12 py-6 font-light">⚠️ {error}</div>
-        ) : (
-          <>
-            <div className="flex flex-col w-full">
-              {/* Title - positioned at top and aligned left */}
-              <h1 className="text-6xl text-black text-left px-8">Convince sceptical AI</h1>
 
-              {/* Typing animation text - with large gap from title */}
-              <div className="relative flex flex-col mt-48 w-full px-8">
-                <div className="flex items-start justify-start">
-                  <h2 className="text-8xl font-light text-black text-left">
-                    {displayedText || 'Loading comments...'}
-                    <span className={`inline-block w-1 h-20 bg-black ml-2 ${isTyping ? 'animate-pulse' : ''}`}></span>
-                  </h2>
-                </div>
-                {/* AI about username's attempt - shown after typing finishes */}
-                {!isTyping && modelResponses.length > 0 && (
-                  <div className="mt-16 text-right">
-                    <p className="text-4xl font-light text-gray-600">
-                      AI about @{modelResponses[currentPhraseIndex % modelResponses.length].username}'s attempt
-                    </p>
+          {/* Leaderboard at bottom left */}
+          <div className="absolute bottom-8 left-8">
+            {lastUpdate && <div className="text-sm text-gray-500 font-light mb-2">Updated: {lastUpdate}</div>}
+            {leaderboard.length > 0 && (
+              <div className="divide-y divide-black border-2 border-black bg-white">
+                {/* Top 3 entries - always visible */}
+                {leaderboard.slice(0, 3).map((entry) => (
+                  <div
+                    key={`${entry.rank}-${entry.username}`}
+                    className={`flex items-center px-3 py-2 space-x-4 ${entry.rank === 1 ? 'bg-gray-100' : ''}`}
+                  >
+                    <span className="text-xl font-light">{getRankEmoji(entry.rank)}</span>
+                    <span className="text-xl font-light text-black">@{entry.username}</span>
+                  </div>
+                ))}
+
+                {/* 4th position - rotating through remaining entries */}
+                {leaderboard.length > 3 && (
+                  <div className="relative min-h-[40px]">
+                    {leaderboard.slice(3).map((entry, index) => (
+                      <div
+                        key={`${entry.rank}-${entry.username}`}
+                        className={`absolute inset-0 flex items-center px-3 py-2 space-x-4 transition-opacity duration-1000 ${
+                          index === currentRotatingIndex ? 'opacity-100' : 'opacity-0'
+                        }`}
+                      >
+                        <span className="text-xl font-light">{getRankEmoji(entry.rank)}</span>
+                        <span className="text-xl font-light text-black">@{entry.username}</span>
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
-            </div>
+            )}
+          </div>
 
-            {/* Leaderboard at bottom left */}
-            <div className="absolute bottom-8 left-8">
-              {lastUpdate && <div className="text-sm text-gray-500 font-light mb-2">Updated: {lastUpdate}</div>}
-              {leaderboard.length > 0 && (
-                <div className="divide-y divide-black border-2 border-black bg-white">
-                  {/* Top 3 entries - always visible */}
-                  {leaderboard.slice(0, 3).map((entry) => (
-                    <div
-                      key={`${entry.rank}-${entry.username}`}
-                      className={`flex items-center px-3 py-2 space-x-4 ${entry.rank === 1 ? 'bg-gray-100' : ''}`}
-                    >
-                      <span className="text-xl font-light">{getRankEmoji(entry.rank)}</span>
-                      <span className="text-xl font-light text-black">@{entry.username}</span>
-                    </div>
-                  ))}
-
-                  {/* 4th position - rotating through remaining entries */}
-                  {leaderboard.length > 3 && (
-                    <div className="relative min-h-[40px]">
-                      {leaderboard.slice(3).map((entry, index) => (
-                        <div
-                          key={`${entry.rank}-${entry.username}`}
-                          className={`absolute inset-0 flex items-center px-3 py-2 space-x-4 transition-opacity duration-1000 ${
-                            index === currentRotatingIndex ? 'opacity-100' : 'opacity-0'
-                          }`}
-                        >
-                          <span className="text-xl font-light">{getRankEmoji(entry.rank)}</span>
-                          <span className="text-xl font-light text-black">@{entry.username}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-
-            {/* QR Codes at bottom right */}
-            <div className="absolute bottom-8 right-8 flex space-x-6">
-              {/* Participate QR */}
-              <div className="flex flex-col items-center">
-                <div className="bg-white p-2 mb-2">
-                  <img
-                    src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(issueUrl || 'https://github.com/archestra-ai/archestra/issues/1')}`}
-                    alt="Participate in the game"
-                    className="w-36 h-36"
-                  />
-                </div>
-                <p className="text-sm font-light text-black text-center">Participate in the game</p>
+          {/* QR Codes - positioned next to leaderboard */}
+          <div className="absolute bottom-8 right-8 flex space-x-6">
+            {/* Participate QR */}
+            <div className="flex flex-col items-center">
+              <div className="bg-white p-2 mb-2">
+                <img
+                  src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(issueUrl || 'https://github.com/archestra-ai/archestra/issues/1')}`}
+                  alt="Participate in the game"
+                  className="w-36 h-36"
+                />
               </div>
-
-              {/* Book Demo QR */}
-              <div className="flex flex-col items-center">
-                <div className="bg-white p-2 mb-2">
-                  <img
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.archestra.ai/book-demo"
-                    alt="Book a platform demo"
-                    className="w-36 h-36"
-                  />
-                </div>
-                <p className="text-sm font-light text-black text-center">Book a platform demo</p>
-              </div>
+              <p className="text-sm font-light text-black text-center">Game ;)</p>
             </div>
-          </>
-        )}
+
+            {/* Book Demo QR */}
+            <div className="flex flex-col items-center">
+              <div className="bg-white p-2 mb-2">
+                <img
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.archestra.ai/book-demo"
+                  alt="Book a platform demo"
+                  className="w-36 h-36"
+                />
+              </div>
+              <p className="text-sm font-light text-black text-center">Book a demo</p>
+            </div>
+          </div>
+        </>
 
         {/* Hidden reset button */}
         <button
