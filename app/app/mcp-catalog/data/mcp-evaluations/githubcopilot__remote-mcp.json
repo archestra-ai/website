@@ -4,7 +4,15 @@
   "description": "Remote MCP server for github - issue tracking and project management",
   "tools": [],
   "prompts": [],
-  "user_config": {},
+  "user_config": {
+    "access_token": {
+      "sensitive": true,
+      "type": "string",
+      "title": "Access Token",
+      "description": "The access token for the GitHub MCP server",
+      "required": true
+    }
+  },
   "readme": null,
   "category": "Development",
   "quality_score": 80,

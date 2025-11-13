@@ -41,7 +41,7 @@
       "provider": null,
       "required": false
     },
-    "works_in_archestra": false
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "upstash",
