@@ -33,7 +33,7 @@ export default function KubeconPage() {
   const phraseIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const typingIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const isAutoRefreshRunning = useRef(false);
-  
+
   // State for switching between MCP and Governance
   const [showMCP, setShowMCP] = useState(true);
   const switchIntervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -94,7 +94,7 @@ export default function KubeconPage() {
   // Effect for switching between MCP and Governance
   useEffect(() => {
     switchIntervalRef.current = setInterval(() => {
-      setShowMCP(prev => !prev);
+      setShowMCP((prev) => !prev);
     }, 3000); // Switch every 3 seconds
 
     return () => {
@@ -588,13 +588,13 @@ export default function KubeconPage() {
             {/* Title - positioned at top and aligned left */}
             <h1 className="leading-none text-white text-left -mt-20">
               <div className="relative" style={{ width: '1800px', height: '650px' }}>
-                <span 
+                <span
                   className={`text-[650px] p-0 m-0 absolute font-extrabold transition-opacity duration-500 ${showMCP ? 'opacity-100' : 'opacity-0'}`}
                   style={{ letterSpacing: '0.3em' }}
                 >
                   MCP
                 </span>
-                <span 
+                <span
                   className={`text-[175px] p-0 m-0 absolute font-extrabold transition-opacity duration-500 ${!showMCP ? 'opacity-100' : 'opacity-0'}`}
                   style={{ top: '230px', letterSpacing: '0.15em' }}
                 >
