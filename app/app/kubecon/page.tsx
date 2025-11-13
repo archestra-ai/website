@@ -587,16 +587,16 @@ export default function KubeconPage() {
           <div className="flex flex-col w-full">
             {/* Title - positioned at top and aligned left */}
             <h1 className="leading-none text-white text-left -mt-20">
-              <div className="relative" style={{ width: '1800px', height: '650px' }}>
+              <div className="relative" style={{ width: '1400px', height: '650px' }}>
                 <span
                   className={`text-[650px] p-0 m-0 absolute font-extrabold transition-opacity duration-500 ${showMCP ? 'opacity-100' : 'opacity-0'}`}
-                  style={{ letterSpacing: '0.3em' }}
+                  style={{ letterSpacing: '-0.05em' }}
                 >
                   MCP
                 </span>
                 <span
                   className={`text-[175px] p-0 m-0 absolute font-extrabold transition-opacity duration-500 ${!showMCP ? 'opacity-100' : 'opacity-0'}`}
-                  style={{ top: '230px', letterSpacing: '0.15em' }}
+                  style={{ top: '230px', letterSpacing: '0.05em' }}
                 >
                   Governance
                 </span>
