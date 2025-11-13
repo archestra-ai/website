@@ -33,6 +33,10 @@ export default function KubeconPage() {
   const phraseIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const typingIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const isAutoRefreshRunning = useRef(false);
+  
+  // State for switching between MCP and Governance
+  const [showMCP, setShowMCP] = useState(true);
+  const switchIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Typewriter animation for rotating words
   const rotatingWords = ['Governance', 'Orchestrator', 'Access', 'Security', 'Registry', 'Observability', 'Gateway'];
@@ -79,6 +83,23 @@ export default function KubeconPage() {
       if (wordTypingIntervalRef.current) {
         clearInterval(wordTypingIntervalRef.current);
         wordTypingIntervalRef.current = null;
+      }
+      if (switchIntervalRef.current) {
+        clearInterval(switchIntervalRef.current);
+        switchIntervalRef.current = null;
+      }
+    };
+  }, []);
+
+  // Effect for switching between MCP and Governance
+  useEffect(() => {
+    switchIntervalRef.current = setInterval(() => {
+      setShowMCP(prev => !prev);
+    }, 3000); // Switch every 3 seconds
+
+    return () => {
+      if (switchIntervalRef.current) {
+        clearInterval(switchIntervalRef.current);
       }
     };
   }, []);
@@ -477,6 +498,10 @@ export default function KubeconPage() {
       clearInterval(wordTypingIntervalRef.current);
       wordTypingIntervalRef.current = null;
     }
+    if (switchIntervalRef.current) {
+      clearInterval(switchIntervalRef.current);
+      switchIntervalRef.current = null;
+    }
   };
 
   if (!isConfigured) {
@@ -532,53 +557,6 @@ export default function KubeconPage() {
       {/* Google Fonts import for Roboto Mono */}
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap');
-
-        @keyframes flicker {
-          0%,
-          100% {
-            opacity: 1;
-          }
-          5% {
-            opacity: 0.8;
-          }
-          10% {
-            opacity: 0.3;
-          }
-          15% {
-            opacity: 1;
-          }
-          20% {
-            opacity: 0.6;
-          }
-          25% {
-            opacity: 0.1;
-          }
-          30% {
-            opacity: 1;
-          }
-          70% {
-            opacity: 1;
-          }
-          72% {
-            opacity: 0.2;
-          }
-          77% {
-            opacity: 0.9;
-          }
-          80% {
-            opacity: 0.8;
-          }
-          83% {
-            opacity: 0.4;
-          }
-          85% {
-            opacity: 1;
-          }
-        }
-
-        .flicker {
-          animation: flicker 3s infinite;
-        }
       `}</style>
 
       <div
@@ -609,7 +587,20 @@ export default function KubeconPage() {
           <div className="flex flex-col w-full">
             {/* Title - positioned at top and aligned left */}
             <h1 className="leading-none text-white text-left -mt-20">
-              <span className="text-[650px] p-0 m-0 inline-block font-extrabold flicker">MCP</span>
+              <div className="relative" style={{ width: '1800px', height: '650px' }}>
+                <span 
+                  className={`text-[650px] p-0 m-0 absolute font-extrabold transition-opacity duration-500 ${showMCP ? 'opacity-100' : 'opacity-0'}`}
+                  style={{ letterSpacing: '0.3em' }}
+                >
+                  MCP
+                </span>
+                <span 
+                  className={`text-[175px] p-0 m-0 absolute font-extrabold transition-opacity duration-500 ${!showMCP ? 'opacity-100' : 'opacity-0'}`}
+                  style={{ top: '230px', letterSpacing: '0.15em' }}
+                >
+                  Governance
+                </span>
+              </div>
             </h1>
           </div>
 
