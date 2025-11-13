@@ -206,7 +206,6 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
             description: `Remote MCP server from ${gitHubOrg}`,
             author: {
               name: gitHubOrg,
-              email: 'Unknown',
             },
             server: {
               type: 'remote',
@@ -255,7 +254,6 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
             description: "We're evaluating this MCP server",
             author: {
               name: gitHubOrg,
-              email: 'Unknown',
             },
             server: {
               type: 'local',
