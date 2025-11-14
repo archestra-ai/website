@@ -94,18 +94,18 @@ const result = streamText({
 });
 ```
 
-### Optional: Use a specific agent
+### Optional: Use a specific profile
 
-If you want to use a specific agent instead of the default one, you can include the agent ID in the URL:
+If you want to use a specific profile instead of the default one, you can include the profile ID in the URL:
 
 ```ts
 const customOpenAI = createOpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  baseURL: 'http://localhost:9000/v1/openai/{agent-id}', // Use your agent ID
+  baseURL: 'http://localhost:9000/v1/openai/{profile-id}', // Use your profile ID
 }).chat;
 ```
 
-You can create and manage agents in the Archestra Platform UI at [http://localhost:3000/agents](http://localhost:3000/agents).
+You can create and manage profiles in the Archestra Platform UI at [http://localhost:3000/profiles](http://localhost:3000/profiles).
 
 Feel free to use our official [Node.js](http://Node.js) (Express) CLI chat example:
 

@@ -45,20 +45,20 @@ The chat feature requires an Anthropic API key to function.
 
 > **Note:** This is a one-time setup. The API key is stored securely and used for all chat conversations.
 
-## Step 2: Create n8n Agent
+## Step 2: Create n8n Profile
 
-Create a dedicated agent for n8n assistance:
+Create a dedicated profile for n8n assistance:
 
-1. Go to the **Agents** page
-2. Click **Create Agent**
+1. Go to the **Profiles** page
+2. Click **Create Profile**
 3. Enter a name like "n8n Assistant" or "Workflow Expert"
 4. Click **Save**
 
-Keep this agent dedicated to n8n tasks for better organization.
+Keep this profile dedicated to n8n tasks for better organization.
 
 ## Step 3: Add n8n MCP Server
 
-You need to install the n8n MCP server to give your agent access to n8n tools.
+You need to install the n8n MCP server to give your profile access to n8n tools.
 
 1. Go to **MCP Registry → Add MCP Server → Local**
 2. Configure the following fields:
@@ -115,9 +115,9 @@ Archestra includes a pre-configured "n8n Expert" system prompt that provides com
 1. Go to **Settings → Chat → Prompt Library**
 2. Find the **"n8n Expert"** system prompt (it's pre-installed)
 3. Review the prompt content to understand what expertise it provides
-4. Go back to the **Agents** page
-5. Find your n8n agent
-6. Click the **message icon (💬)** on the agent card
+4. Go back to the **Profiles** page
+5. Find your n8n profile
+6. Click the **message icon (💬)** on the profile card
 7. In the dialog, select **"n8n Expert"** from the "System Prompt" dropdown
 8. Click **Save Configuration**
 
@@ -132,12 +132,12 @@ The n8n Expert system prompt includes:
 - Understanding of n8n templates and examples
 - Knowledge of common n8n integrations
 
-## Step 5: Assign n8n MCP Tools to Agent
+## Step 5: Assign n8n MCP Tools to Profile
 
-Make all n8n MCP tools available to your agent:
+Make all n8n MCP tools available to your profile:
 
-1. Go to the **Agents** page
-2. Click on your n8n agent to open details
+1. Go to the **Profiles** page
+2. Click on your n8n profile to open details
 3. Navigate to the **Tools** tab or configuration
 4. Find the n8n MCP server in the list
 5. Select **all n8n MCP tools**
@@ -157,8 +157,8 @@ Common n8n MCP tools include:
 
 Archestra includes pre-configured regular prompts for quick n8n actions:
 
-1. Go to the **Agents** page
-2. Click the **message icon (💬)** on your n8n agent
+1. Go to the **Profiles** page
+2. Click the **message icon (💬)** on your n8n profile
 3. Under "Regular Prompts", select:
    - **"Check n8n Connectivity"** - Tests connection to your n8n instance
    - **"Create Demo AI Agent Workflow"** - Builds a sample workflow
@@ -178,15 +178,15 @@ You're all set! Now you can start chatting with your n8n expert:
 
 ## Troubleshooting
 
-### Agent Outputs XML Tool Commands Instead of Calling Tools
+### Profile Outputs XML Tool Commands Instead of Calling Tools
 
-**Problem:** Agent responds with XML-formatted tool commands instead of actually executing the tools.
+**Problem:** Profile responds with XML-formatted tool commands instead of actually executing the tools.
 
 **Solution:**
 
-1. Go to **Agents** page
-2. Find your n8n agent
-3. Verify that n8n MCP tools are assigned to the agent
+1. Go to **Profiles** page
+2. Find your n8n profile
+3. Verify that n8n MCP tools are assigned to the profile
 4. If tools are not assigned, configure them and save
 5. Start a new conversation
 
@@ -201,14 +201,14 @@ You're all set! Now you can start chatting with your n8n expert:
 3. Click **Save API Key**
 4. Return to the Chat page
 
-### Agent Gives Generic Responses
+### Profile Gives Generic Responses
 
-**Problem:** Agent doesn't seem to have n8n expertise.
+**Problem:** Profile doesn't seem to have n8n expertise.
 
 **Solution:**
 
-1. Confirm the "n8n Expert" system prompt is assigned to your agent
-2. Go to **Agents** page → Click message icon → Verify system prompt
+1. Confirm the "n8n Expert" system prompt is assigned to your profile
+2. Go to **Profiles** page → Click message icon → Verify system prompt
 3. If not assigned, select it and save
 4. Start a new conversation to see the changes
 
@@ -219,11 +219,11 @@ Now that you have your n8n chat assistant set up:
 - **Explore templates**: Ask your assistant to search for workflow templates
 - **Learn best practices**: Ask questions about n8n concepts and patterns
 - **Build workflows**: Start creating real workflows with step-by-step guidance
-- **Share with team**: Create multiple agents for different team members
+- **Share with team**: Create multiple profiles for different team members
 - **Customize prompts**: Create your own regular prompts for common tasks
 
 ## Related Documentation
 
 - [Chat and Prompt Library](/docs/platform-chat-prompt-library) - Learn more about the chat feature and prompt management
-- [Agents](/docs/platform-agents) - Understanding agents and their configuration
+- [Profiles](/docs/platform-profiles) - Understanding profiles and their configuration
 - [n8n Security Example](/docs/platform-n8n-example) - Using Archestra as a proxy for n8n workflows
