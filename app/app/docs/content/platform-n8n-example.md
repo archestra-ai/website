@@ -120,8 +120,8 @@ http://platform-archestra-1:9000/v1/openai
 
 instead of <https://api.openai.com/v1> (platform-archestra-1 is an in-docker DNS name for Archestra platform launched by docker-compose)
 
-**Optional:** To use a specific agent, include the agent ID in the URL: `http://platform-archestra-1:9000/v1/openai/{agent-id}`.
-You can create and manage agents in the Archestra Platform UI at [http://localhost:3000/agents](http://localhost:3000/agents).
+**Optional:** To use a specific profile, include the agent ID in the URL: `http://platform-archestra-1:9000/v1/openai/{agent-id}`.
+You can create and manage profiles in the Archestra Platform UI at [http://localhost:3000/profiles](http://localhost:3000/profiles).
 
 4. Open the agent in the N8N again and put "hi" to the chat. It will make Archestra discover tools.
 

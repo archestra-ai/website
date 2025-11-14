@@ -40,11 +40,11 @@ The following table lists all available permissions that can be assigned to cust
 
 | Permission                            | Description                                                                      |
 | ------------------------------------- | -------------------------------------------------------------------------------- |
-| `agent:create`                        | Create new ai agents that can use tools and interact with users                  |
-| `agent:read`                          | View and list ai agents that can use tools and interact with users               |
-| `agent:update`                        | Modify existing ai agents that can use tools and interact with users             |
-| `agent:delete`                        | Remove existing ai agents that can use tools and interact with users             |
-| `agent:admin`                         | Administrative control over ai agents that can use tools and interact with users |
+| `agent:create`                        | Create new ai profiles that can use tools and interact with users                  |
+| `agent:read`                          | View and list ai profiles that can use tools and interact with users               |
+| `agent:update`                        | Modify existing ai profiles that can use tools and interact with users             |
+| `agent:delete`                        | Remove existing ai profiles that can use tools and interact with users             |
+| `agent:admin`                         | Administrative control over ai profiles that can use tools and interact with users |
 | `conversation:create`                 | Create new chat conversations with automation experts                            |
 | `conversation:read`                   | View and list chat conversations with automation experts                         |
 | `conversation:update`                 | Modify existing chat conversations with automation experts                       |
@@ -114,16 +114,16 @@ Grant users only the minimum permissions necessary for their role. Start with th
 Combine roles with team-based access control for fine-grained resource access:
 
 1. **Create teams** for different groups (e.g., "Data Scientists", "Developers")
-2. **Assign agents and MCP servers** to specific teams
+2. **Assign profiles and MCP servers** to specific teams
 3. **Add members to teams** based on their role and responsibilities
 
 #### Team Access Control Rules
 
-**For Agents:**
+**For Profiles:**
 
-- Team members can only see agents assigned to teams they belong to
-- Exception: Users with `agent:admin` permission can see all agents
-- Exception: Agents with no team assignment are visible to all organization members
+- Team members can only see profiles assigned to teams they belong to
+- Exception: Users with `agent:admin` permission can see all profiles
+- Exception: Profiles with no team assignment are visible to all organization members
 
 **For MCP Servers:**
 
@@ -132,7 +132,7 @@ Combine roles with team-based access control for fine-grained resource access:
 - Exception: MCP servers with no team assignment are accessible to all organization members
 
 **Associated Artifacts:**
-Team-based access extends to related resources like interaction logs, policies, and tool assignments. Members can only view these artifacts for agents and MCP servers they have access to.
+Team-based access extends to related resources like interaction logs, policies, and tool assignments. Members can only view these artifacts for profiles and MCP servers they have access to.
 
 ### Regular Review
 

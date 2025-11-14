@@ -62,7 +62,7 @@ Once OpenWebUI is running:
 
    ✌️️If you're running OpenWebUI in its own Docker container locally, separately from the platform, the `BASE_URL` will have Docker's special hostname, `host.docker.internal` instead of `localhost`. E.g. `http://host.docker.internal:9000/v1/openai`
 
-   **Optional:** To use a specific agent, include the agent ID in the URL: `http://localhost:9000/v1/openai/{agent-id}`. You can create and manage agents at [http://localhost:3000/agents](http://localhost:3000/agents)
+   **Optional:** To use a specific profile, include the agent ID in the URL: `http://localhost:9000/v1/openai/{agent-id}`. You can create and manage profiles at [http://localhost:3000/profiles](http://localhost:3000/profiles)
 
    ![openwebui](/docs/platfrom/openwebui-image1.png)
 
