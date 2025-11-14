@@ -59,9 +59,9 @@ Archestra provides two types of prompts that enhance the chat experience:
 
 ### System Prompts
 
-**What they are:** System prompts define the profile's behavior, expertise, and personality. They set the context for how the profile responds to all messages.
+**What they are:** System prompts define the LLM's behavior, expertise, and personality. They set the context for how the LLM responds to all messages.
 
-**Where they appear:** System prompts are not visible in the chat UI, but they influence all of the profile's responses throughout the conversation.
+**Where they appear:** System prompts are not visible in the chat UI, but they influence all of the LLM's responses throughout the conversation.
 
 **How to assign:**
 
@@ -84,7 +84,7 @@ Archestra provides two types of prompts that enhance the chat experience:
 
 **Where they appear:** Regular prompts are shown as clickable suggestion buttons on the initial screen of a new conversation, before any messages are sent.
 
-**How to use:** Simply click on a suggestion button to send it as your first message to the profile.
+**How to use:** Simply click on a suggestion button to send it as your first message to the LLM.
 
 **How to assign:**
 
@@ -112,7 +112,7 @@ Navigate to **Settings → Chat → Prompt Library** to manage all your prompts.
 1. Click the **New Prompt** button
 2. Enter a descriptive name
 3. Choose the type:
-   - **System**: For profile behavior and expertise
+   - **System**: For LLM behavior and expertise
    - **Regular**: For quick-action suggestions
 4. Write your prompt content
 5. Click **Create**
@@ -156,7 +156,7 @@ Here's the typical workflow for using chat:
    - Assign MCP tools that the profile should have access to
 
 3. **Assign Prompts** (optional but recommended)
-   - Assign a system prompt to define the profile's expertise
+   - Assign a system prompt to define the LLM's expertise
    - Assign regular prompts for common tasks
 
 4. **Start Chatting**

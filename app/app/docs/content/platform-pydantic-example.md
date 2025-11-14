@@ -112,11 +112,11 @@ That's it! Your agent now routes all LLM requests through Archestra's security l
 
 ### Optional: Use a specific profile
 
-If you want to use a specific profile instead of the default one, you can include the agent ID in the URL:
+If you want to use a specific profile instead of the default one, you can include the profile ID in the URL:
 
 ```python
 provider=OpenAIProvider(
-    base_url="http://localhost:9000/v1/openai/{agent-id}",  # Use your agent ID
+    base_url="http://localhost:9000/v1/openai/{profile-id}",  # Use your profile ID
     api_key=os.getenv("OPENAI_API_KEY"),
 )
 ```

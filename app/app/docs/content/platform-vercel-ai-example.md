@@ -96,12 +96,12 @@ const result = streamText({
 
 ### Optional: Use a specific profile
 
-If you want to use a specific profile instead of the default one, you can include the agent ID in the URL:
+If you want to use a specific profile instead of the default one, you can include the profile ID in the URL:
 
 ```ts
 const customOpenAI = createOpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-  baseURL: 'http://localhost:9000/v1/openai/{agent-id}', // Use your agent ID
+  baseURL: 'http://localhost:9000/v1/openai/{profile-id}', // Use your profile ID
 }).chat;
 ```
 
