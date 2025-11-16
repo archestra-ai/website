@@ -43,11 +43,6 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: '/api/llm-proxy/gemini/models/gemini-2.5-flash:streamGenerateContent',
-        destination: '/api/llm-proxy/gemini/models/gemini-2.5-pro:streamGenerateContent',
-        permanent: false,
-      },
       /**
        * Address some typos we have in the platform docs URLs
        */
