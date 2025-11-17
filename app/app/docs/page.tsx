@@ -8,7 +8,7 @@ export default function DocsPage() {
 
   if (docs.length > 0) {
     // Try to redirect to platform-quickstart if it exists, otherwise use the first doc
-    const platformQuickstart = docs.find(doc => doc.slug === 'platform-quickstart');
+    const platformQuickstart = docs.find((doc) => doc.slug === 'platform-quickstart');
     const targetDoc = platformQuickstart || docs[0];
     redirect(`/docs/${targetDoc.slug}`);
   }

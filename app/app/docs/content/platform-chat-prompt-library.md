@@ -6,7 +6,7 @@ order: 4
 description: Learn how to use Archestra's chat feature and manage prompts
 ---
 
-Archestra Platform includes a built-in chat interface that provides conversational access to your AI agents. The chat feature is agent-based, meaning each conversation is tied to a specific agent with its own MCP tools and custom prompts.
+Archestra Platform includes a built-in chat interface that provides conversational access to your AI agents. The chat feature is profile-based, meaning each conversation is tied to a specific profile with its own MCP tools and custom prompts.
 
 ## Setting Up Chat
 
@@ -23,16 +23,16 @@ The chat feature uses Anthropic's Claude models through Archestra's LLM proxy, w
 
 ### Starting a Conversation
 
-Each conversation is tied to a specific agent. To start chatting:
+Each conversation is tied to a specific profile. To start chatting:
 
 1. Navigate to the **Chat** page
-2. Click **New Chat** or use the agent selector dropdown
-3. Choose your agent
+2. Click **New Chat** or use the profile selector dropdown
+3. Choose your profile
 4. Start your conversation
 
 ## MCP Tools in Chat
 
-When MCP tools are assigned to an agent, they automatically become available in chat conversations with that agent.
+When MCP tools are assigned to a profile, they automatically become available in chat conversations with that profile.
 
 ### How It Works
 
@@ -41,17 +41,17 @@ When MCP tools are assigned to an agent, they automatically become available in 
 - All tool invocations go through Archestra's security policies
 - Tool results are shown in the conversation with collapsible details
 
-### Assigning Tools to Agents
+### Assigning Tools to Profiles
 
 To make MCP tools available in chat:
 
-1. Go to the **Agents** page
-2. Click on your agent
+1. Go to the **Profiles** page
+2. Click on your profile
 3. Navigate to the **Tools** tab or use the tools configuration dialog
 4. Select the MCP tools you want to make available
 5. Save the configuration
 
-Now when you chat with this agent, it will be able to use these tools to help you.
+Now when you chat with this profile, it will be able to use these tools to help you.
 
 ## Prompts in Chat
 
@@ -59,16 +59,16 @@ Archestra provides two types of prompts that enhance the chat experience:
 
 ### System Prompts
 
-**What they are:** System prompts define the agent's behavior, expertise, and personality. They set the context for how the agent responds to all messages.
+**What they are:** System prompts define the LLM's behavior, expertise, and personality. They set the context for how the LLM responds to all messages.
 
-**Where they appear:** System prompts are not visible in the chat UI, but they influence all of the agent's responses throughout the conversation.
+**Where they appear:** System prompts are not visible in the chat UI, but they influence all of the LLM's responses throughout the conversation.
 
 **How to assign:**
 
 1. Go to **Settings → Chat → Prompt Library**
 2. Create or find your desired system prompt
-3. Go to the **Agents** page
-4. Click the message icon (💬) on your agent card
+3. Go to the **Profiles** page
+4. Click the message icon (💬) on your profile card
 5. Select the system prompt from the "System Prompt" dropdown
 6. Click **Save Configuration**
 
@@ -84,14 +84,14 @@ Archestra provides two types of prompts that enhance the chat experience:
 
 **Where they appear:** Regular prompts are shown as clickable suggestion buttons on the initial screen of a new conversation, before any messages are sent.
 
-**How to use:** Simply click on a suggestion button to send it as your first message to the agent.
+**How to use:** Simply click on a suggestion button to send it as your first message to the LLM.
 
 **How to assign:**
 
 1. Go to **Settings → Chat → Prompt Library**
 2. Create or find your desired regular prompts
-3. Go to the **Agents** page
-4. Click the message icon (💬) on your agent card
+3. Go to the **Profiles** page
+4. Click the message icon (💬) on your profile card
 5. Select multiple regular prompts from the "Regular Prompts" section
 6. Click **Save Configuration**
 
@@ -112,7 +112,7 @@ Navigate to **Settings → Chat → Prompt Library** to manage all your prompts.
 1. Click the **New Prompt** button
 2. Enter a descriptive name
 3. Choose the type:
-   - **System**: For agent behavior and expertise
+   - **System**: For LLM behavior and expertise
    - **Regular**: For quick-action suggestions
 4. Write your prompt content
 5. Click **Create**
@@ -126,7 +126,7 @@ When you edit a prompt, Archestra creates a new version:
 3. Modify the name or content
 4. Click **Update**
 
-This creates a new version while preserving the history. Agents automatically use the latest active version.
+This creates a new version while preserving the history. Profiles automatically use the latest active version.
 
 ### Version History
 
@@ -138,10 +138,10 @@ Each prompt maintains a complete version history:
 
 ### Viewing Prompt Usage
 
-The Prompt Library shows which agents are using each prompt:
+The Prompt Library shows which profiles are using each prompt:
 
-- **Agents using: X** - Displays the count of agents using this prompt
-- Agent names are shown as badges below the prompt content
+- **Profiles using: X** - Displays the count of profiles using this prompt
+- Profile names are shown as badges below the prompt content
 - This helps you understand the impact of prompt changes
 
 ## Chat Workflow
@@ -151,19 +151,19 @@ Here's the typical workflow for using chat:
 1. **Configure API Key** (one-time setup)
    - Add your Anthropic API key in Settings → Chat
 
-2. **Create or Select an Agent**
-   - Create a specialized agent or use an existing one
-   - Assign MCP tools that the agent should have access to
+2. **Create or Select a Profile**
+   - Create a specialized profile or use an existing one
+   - Assign MCP tools that the profile should have access to
 
 3. **Assign Prompts** (optional but recommended)
-   - Assign a system prompt to define the agent's expertise
+   - Assign a system prompt to define the LLM's expertise
    - Assign regular prompts for common tasks
 
 4. **Start Chatting**
    - Go to the Chat page
-   - Select your agent
+   - Select your profile
    - Use prompt suggestions or type your own message
-   - The agent can use assigned MCP tools during the conversation
+   - The profile can use assigned MCP tools during the conversation
 
 5. **Manage Conversations**
    - All conversations are saved and can be resumed
