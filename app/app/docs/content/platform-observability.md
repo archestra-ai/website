@@ -33,6 +33,7 @@ The endpoint `http://localhost:9050/metrics` exposes Prometheus-formatted metric
 
 - `llm_request_duration_seconds` - LLM API request duration by provider, agent_id, agent_name, and status code
 - `llm_tokens_total` - Token consumption by provider, agent_id, agent_name, and type (input/output)
+- `llm_blocked_tool_total` - Counter of tool calls blocked by tool invocation policies, grouped by provider, agent_id, and agent_name
 
 ### Process Metrics
 
