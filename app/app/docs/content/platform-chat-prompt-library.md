@@ -169,3 +169,24 @@ Here's the typical workflow for using chat:
    - All conversations are saved and can be resumed
    - Rename conversations for better organization
    - Delete old conversations when no longer needed
+
+## Troubleshooting
+
+### "Tool invocation blocked: context contains untrusted data" Error
+
+**Problem:** When the agent attempts to use an MCP tool, you receive an error message:
+```
+Tool invocation blocked: context contains untrusted data
+```
+
+**Solution:**
+
+This error occurs when tool invocation policies block the tool call due to security restrictions. To resolve:
+
+1. Navigate to **Settings → Tools**
+2. Find the blocked MCP tool in the list
+3. Enable or adjust the permissions for the tool
+4. Save the configuration
+5. Return to your chat conversation and try again
+
+> **Note:** Archestra's security policies protect against unauthorized tool usage. You may need to explicitly allow certain tools based on your organization's security requirements.
