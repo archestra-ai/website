@@ -16,7 +16,7 @@ export default function DocsPage() {
 
   // Show developer notice in development, generic message in production
   const isDevelopment = process.env.NODE_ENV === 'development';
-  
+
   if (isDevelopment) {
     return <DeveloperNotice />;
   }

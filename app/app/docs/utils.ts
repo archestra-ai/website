@@ -65,7 +65,7 @@ export function getDocBySlug(slug: string): DocPage | undefined {
   if (!docsDirectory) {
     return undefined;
   }
-  
+
   const fullPath = path.join(docsDirectory, `${slug}.md`);
 
   if (!fs.existsSync(fullPath)) {

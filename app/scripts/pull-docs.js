@@ -8,50 +8,50 @@ const TARGET_DIR = '.platform-docs';
 
 function pullDocs(forceRemote = false) {
   console.log('🔄 Checking if platform docs need to be pulled...');
-  
+
   // In development, check if local docs exist (unless forcing remote)
   const localDocsPath = path.join(__dirname, '../../../archestra/docs');
   if (!forceRemote && process.env.NODE_ENV !== 'production' && fs.existsSync(localDocsPath)) {
     console.log('✅ Using local archestra docs from:', localDocsPath);
     return;
   }
-  
+
   // Check if we already have pulled docs
   const targetPath = path.join(__dirname, '..', TARGET_DIR);
   if (fs.existsSync(targetPath)) {
     console.log('✅ Platform docs already exist in:', TARGET_DIR);
     return;
   }
-  
+
   console.log('📦 Pulling platform documentation from GitHub...');
-  
+
   const tempPath = path.join(__dirname, '..', TEMP_DIR);
-  
+
   try {
     // Clean up any existing temp directory
     if (fs.existsSync(tempPath)) {
       fs.rmSync(tempPath, { recursive: true, force: true });
     }
-    
+
     // Clone only the docs folder using sparse checkout (more efficient)
     console.log('🔗 Cloning archestra repository (docs only)...');
     execSync(`git clone --depth 1 --filter=blob:none --sparse ${REPO_URL} ${TEMP_DIR}`, {
       cwd: path.join(__dirname, '..'),
-      stdio: 'inherit'
+      stdio: 'inherit',
     });
-    
+
     // Set up sparse checkout for the docs folder and all its contents
     execSync('git sparse-checkout set docs', {
       cwd: tempPath,
-      stdio: 'inherit'
+      stdio: 'inherit',
     });
-    
+
     // Pull the files
     execSync('git checkout', {
       cwd: tempPath,
-      stdio: 'inherit'
+      stdio: 'inherit',
     });
-    
+
     // Move docs folder to target location
     const docsSource = path.join(tempPath, 'docs');
     if (fs.existsSync(docsSource)) {
@@ -59,17 +59,17 @@ function pullDocs(forceRemote = false) {
       if (fs.existsSync(targetPath)) {
         fs.rmSync(targetPath, { recursive: true, force: true });
       }
-      
+
       // Move the entire docs folder to target location
       fs.renameSync(docsSource, targetPath);
-      
+
       console.log('✅ Platform docs successfully pulled to:', TARGET_DIR);
-      
+
       // List what was pulled for verification
       const pages = path.join(targetPath, 'pages');
       const assets = path.join(targetPath, 'assets');
       if (fs.existsSync(pages)) {
-        const pageCount = fs.readdirSync(pages).filter(f => f.endsWith('.md')).length;
+        const pageCount = fs.readdirSync(pages).filter((f) => f.endsWith('.md')).length;
         console.log(`   📄 Found ${pageCount} documentation pages`);
       }
       if (fs.existsSync(assets)) {
@@ -78,7 +78,6 @@ function pullDocs(forceRemote = false) {
     } else {
       throw new Error('Docs folder not found in cloned repository');
     }
-    
   } catch (error) {
     console.error('❌ Failed to pull platform docs:', error.message);
     console.error('   Documentation may not be available in production.');

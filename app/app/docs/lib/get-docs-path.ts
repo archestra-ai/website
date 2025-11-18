@@ -24,7 +24,7 @@ export function getDocsPath(): DocsPathConfig | null {
       isLocalDevelopment: true,
     };
   }
-  
+
   // Check for pulled docs (used in production or when local doesn't exist)
   const pulledDocsPath = path.join(process.cwd(), '.platform-docs');
   if (fs.existsSync(pulledDocsPath)) {
@@ -34,7 +34,7 @@ export function getDocsPath(): DocsPathConfig | null {
       isLocalDevelopment: false,
     };
   }
-  
+
   // No docs available
   return null;
 }

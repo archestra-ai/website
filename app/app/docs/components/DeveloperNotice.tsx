@@ -19,7 +19,6 @@ export default function DeveloperNotice() {
                     We've moved our documentation to the platform repository for better consistency and maintainability.
                   </p>
                 </div>
-
               </div>
             </div>
           </div>
@@ -30,7 +29,7 @@ export default function DeveloperNotice() {
               <Terminal className="h-5 w-5 text-gray-500" />
               Setup Instructions for Local Development
             </h2>
-            
+
             <div className="space-y-6">
               <div>
                 <h3 className="text-sm font-semibold text-gray-700 mb-2">1. Clone the platform repository</h3>
@@ -47,7 +46,7 @@ export default function DeveloperNotice() {
                   <div>Your directory structure should look like:</div>
                   <div className="mt-2 text-gray-600">
                     <div>├── archestra/</div>
-                    <div>│   └── docs/</div>
+                    <div>│ └── docs/</div>
                     <div>└── archestra-website/</div>
                   </div>
                 </div>
@@ -72,25 +71,29 @@ export default function DeveloperNotice() {
               <li className="flex items-start gap-3">
                 <span className="text-purple-500 mt-1">•</span>
                 <div>
-                  <strong className="text-gray-900">Single Source of Truth:</strong> Documentation lives alongside the platform code it describes
+                  <strong className="text-gray-900">Single Source of Truth:</strong> Documentation lives alongside the
+                  platform code it describes
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-purple-500 mt-1">•</span>
                 <div>
-                  <strong className="text-gray-900">Better Versioning:</strong> Docs are versioned with the platform releases
+                  <strong className="text-gray-900">Better Versioning:</strong> Docs are versioned with the platform
+                  releases
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-purple-500 mt-1">•</span>
                 <div>
-                  <strong className="text-gray-900">Easier Maintenance:</strong> Platform developers can update docs in the same PR as feature changes
+                  <strong className="text-gray-900">Easier Maintenance:</strong> Platform developers can update docs in
+                  the same PR as feature changes
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-purple-500 mt-1">•</span>
                 <div>
-                  <strong className="text-gray-900">Consistency:</strong> Ensures documentation stays in sync with the actual implementation
+                  <strong className="text-gray-900">Consistency:</strong> Ensures documentation stays in sync with the
+                  actual implementation
                 </div>
               </li>
             </ul>
