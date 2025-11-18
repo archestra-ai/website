@@ -47,6 +47,26 @@ const nextConfig = {
         source: '/docs/platfrom/:path*',
         destination: '/api/docs-images/platfrom/:path*',
       },
+      {
+        source: '/docs/:path*.png',
+        destination: '/api/docs-images/:path*.png',
+      },
+      {
+        source: '/docs/:path*.jpg',
+        destination: '/api/docs-images/:path*.jpg',
+      },
+      {
+        source: '/docs/:path*.jpeg',
+        destination: '/api/docs-images/:path*.jpeg',
+      },
+      {
+        source: '/docs/:path*.gif',
+        destination: '/api/docs-images/:path*.gif',
+      },
+      {
+        source: '/docs/:path*.svg',
+        destination: '/api/docs-images/:path*.svg',
+      },
     ];
   },
   async redirects() {

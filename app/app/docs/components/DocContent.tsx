@@ -264,7 +264,7 @@ export default function DocContent({ content }: DocContentProps) {
             );
           },
           img: ({ node, ...props }) => (
-            <img {...props} className="rounded-lg shadow-md my-6 w-full max-w-2xl mx-auto" />
+            <img {...props} className="shadow-md my-6 w-full max-w-2xl mx-auto" />
           ),
           blockquote: ({ node, ...props }) => (
             <blockquote {...props} className="border-l-4 border-blue-500 pl-4 my-4 text-gray-600 italic" />
