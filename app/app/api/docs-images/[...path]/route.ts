@@ -8,40 +8,41 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   try {
     const { path: pathSegments } = await params;
     const imagePath = pathSegments.join('/');
-    
+
     // Get the assets directory based on environment
     const assetsDirectory = getAssetsDirectory();
     if (!assetsDirectory) {
       return new NextResponse('Docs not available', { status: 503 });
     }
-    
+
     // Try multiple possible paths for the image
     let fullPath = path.join(assetsDirectory, imagePath);
-    
+
     // If not found in old_docs, try in assets root (for automated_screenshots)
     if (!fs.existsSync(fullPath)) {
       const basePath = assetsDirectory.replace('/old_docs', '');
       fullPath = path.join(basePath, imagePath);
     }
-    
+
     // Check if file exists
     if (!fs.existsSync(fullPath)) {
       return new NextResponse('Image not found', { status: 404 });
     }
-    
+
     // Read the image file
     const imageBuffer = fs.readFileSync(fullPath);
-    
+
     // Determine content type based on file extension
     const ext = path.extname(imagePath).toLowerCase();
-    const contentType = {
-      '.png': 'image/png',
-      '.jpg': 'image/jpeg',
-      '.jpeg': 'image/jpeg',
-      '.gif': 'image/gif',
-      '.svg': 'image/svg+xml',
-    }[ext] || 'application/octet-stream';
-    
+    const contentType =
+      {
+        '.png': 'image/png',
+        '.jpg': 'image/jpeg',
+        '.jpeg': 'image/jpeg',
+        '.gif': 'image/gif',
+        '.svg': 'image/svg+xml',
+      }[ext] || 'application/octet-stream';
+
     // Return the image with appropriate headers
     return new NextResponse(imageBuffer, {
       headers: {
