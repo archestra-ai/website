@@ -99,7 +99,7 @@ export default async function DocPage({ params }: Props) {
                     <span className="text-gray-900 font-medium">{doc.title}</span>
                   </div>
                   <a
-                    href={`https://github.com/archestra-ai/website/edit/main/app/app/docs/content/${doc.slug}.md`}
+                    href={`https://github.com/archestra-ai/archestra/edit/main/docs/pages/${doc.slug}.md`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors sm:ml-4 -ml-2 sm:ml-0 px-2 py-1 hover:bg-gray-50 rounded-lg"

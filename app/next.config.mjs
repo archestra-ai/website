@@ -41,6 +41,14 @@ const nextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: '/docs/platfrom/:path*',
+        destination: '/api/docs-images/platfrom/:path*',
+      },
+    ];
+  },
   async redirects() {
     return [
       {

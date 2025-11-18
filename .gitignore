@@ -29,3 +29,7 @@ next-env.d.ts
 
 .claude/settings.local.json
 .DS_Store
+
+# Platform docs pulled during build
+.platform-docs
+.platform-docs-temp

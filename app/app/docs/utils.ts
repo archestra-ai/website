@@ -3,9 +3,8 @@ import matter from 'gray-matter';
 import path from 'path';
 import readingTime from 'reading-time';
 
+import { getDocsDirectory } from './lib/get-docs-path';
 import { DocCategory, DocFrontMatter, DocNavItem, DocPage, DocSubcategory, TableOfContentsItem } from './types';
-
-const docsDirectory = path.join(process.cwd(), 'app/docs/content');
 
 const categoryOrder = [
   'Archestra Platform',
@@ -20,7 +19,8 @@ const categoryOrder = [
 ];
 
 export function getAllDocs(): DocPage[] {
-  if (!fs.existsSync(docsDirectory)) {
+  const docsDirectory = getDocsDirectory();
+  if (!docsDirectory || !fs.existsSync(docsDirectory)) {
     return [];
   }
 
@@ -61,6 +61,11 @@ export function getAllDocs(): DocPage[] {
 }
 
 export function getDocBySlug(slug: string): DocPage | undefined {
+  const docsDirectory = getDocsDirectory();
+  if (!docsDirectory) {
+    return undefined;
+  }
+  
   const fullPath = path.join(docsDirectory, `${slug}.md`);
 
   if (!fs.existsSync(fullPath)) {
