@@ -1,4 +1,4 @@
-import { getAssetsDirectory } from '@/app/docs/lib/get-docs-path';
+import { getAssetsDirectory } from '../../../../docs/lib/get-docs-path';
 import fs from 'fs';
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
