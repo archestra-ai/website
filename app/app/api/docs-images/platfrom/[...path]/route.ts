@@ -1,7 +1,8 @@
-import { getAssetsDirectory } from '../../../../docs/lib/get-docs-path';
 import fs from 'fs';
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
+
+import { getAssetsDirectory } from '../../../../docs/lib/get-docs-path';
 
 export async function GET(request: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
   try {
