@@ -4,7 +4,7 @@ import 'dotenv/config';
 const COMPANY_NAME = 'Archestra';
 
 // Website constants
-const WEBSITE_BASE_URL = 'https://www.archestra.ai';
+const WEBSITE_BASE_URL = 'https://archestra.ai';
 const MCP_CATALOG_URL = `${WEBSITE_BASE_URL}/mcp-catalog`;
 
 const LOGO_RELATIVE_URL = '/logo.png';
