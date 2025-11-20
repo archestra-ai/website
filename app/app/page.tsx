@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import Footer from '@components/Footer';
-import HeaderWithBanner from '@components/HeaderWithBanner';
+import Header from '@components/Header';
 import MermaidDiagram from '@components/MermaidDiagram';
 import NewsletterForm from '@components/NewsletterForm';
 import { Card, CardContent } from '@components/ui/card';
@@ -125,7 +125,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <HeaderWithBanner />
+      <Header />
 
       <main className="flex-1">
         {/* Hero Section */}

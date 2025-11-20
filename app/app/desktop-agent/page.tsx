@@ -1,6 +1,6 @@
 import DesktopAppDownloadButton from '@components/DesktopAppDownloadButton';
 import Footer from '@components/Footer';
-import HeaderWithBanner from '@components/HeaderWithBanner';
+import Header from '@components/Header';
 import TypewriterText from '@components/TypewriterText';
 import constants from '@constants';
 import { loadServers } from '@mcpCatalog/lib/catalog';
@@ -43,7 +43,7 @@ export default async function DesktopAgent() {
   return (
     <div className="min-h-screen flex flex-col">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <HeaderWithBanner />
+      <Header />
 
       <main className="flex-1 relative flex items-center justify-center">
         <section className="bg-white w-full">
