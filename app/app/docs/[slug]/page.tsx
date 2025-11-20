@@ -28,15 +28,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!doc) {
     return {
       title: `Documentation Not Found | ${companyName}`,
+      description: `${companyName} documentation page not found.`,
+      openGraph: {
+        title: `Documentation Not Found | ${companyName}`,
+        description: `${companyName} documentation page not found.`,
+      },
     };
   }
 
+  const description = doc.description || `${doc.title} documentation for ${companyName}.`;
+
   return {
     title: `${doc.title} | ${companyName} Docs`,
+    description,
     openGraph: {
       title: doc.title,
+      description,
       type: 'article',
       publishedTime: doc.lastUpdated,
+      images: [
+        {
+          url: `/docs/${doc.slug}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `${doc.title} | ${companyName} Docs`,
+        },
+      ],
     },
   };
 }
