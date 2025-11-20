@@ -71,23 +71,6 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.archestra.ai',
-          },
-        ],
-        // Slack only unfurls reliably on the apex domain; force www -> apex so OG fetches hit the working host.
-        destination: 'https://archestra.ai/:path*',
-        permanent: true,
-      },
-      {
-        source: '/api/llm-proxy/gemini/models/gemini-2.5-flash:streamGenerateContent',
-        destination: '/api/llm-proxy/gemini/models/gemini-2.5-pro:streamGenerateContent',
-        permanent: false,
-      },
       /**
        * Address some typos we have in the platform docs URLs
        */
