@@ -1,7 +1,6 @@
 import 'highlight.js/styles/github.css';
 import { ChevronLeft, ChevronRight, Clock, Edit } from 'lucide-react';
 import type { Metadata } from 'next';
-import { headers } from 'next/headers';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -24,10 +23,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const doc = getDocBySlug(slug);
-  const hdrs = await headers();
-  const host = hdrs.get('host');
-  const proto = hdrs.get('x-forwarded-proto') ?? 'https';
-  const origin = host ? `${proto}://${host}` : constants.website.urls.base;
+  const origin = constants.website.urls.base;
 
   if (!doc) {
     return {
