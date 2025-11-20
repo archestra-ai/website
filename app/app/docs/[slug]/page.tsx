@@ -1,6 +1,7 @@
 import 'highlight.js/styles/github.css';
 import { ChevronLeft, ChevronRight, Clock, Edit } from 'lucide-react';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -10,8 +11,7 @@ import constants from '@constants';
 
 import DocContent from '../components/DocContent';
 import DocsSidebar from '../components/DocsSidebar';
-import { TableOfContentsItem } from '../types';
-import { formatLastUpdated, generateTableOfContents, getAllDocs, getDocBySlug, getDocsByCategory } from '../utils';
+import { generateTableOfContents, getAllDocs, getDocBySlug, getDocsByCategory } from '../utils';
 
 const {
   company: { name: companyName },
@@ -24,6 +24,10 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const doc = getDocBySlug(slug);
+  const hdrs = await headers();
+  const host = hdrs.get('host');
+  const proto = hdrs.get('x-forwarded-proto') ?? 'https';
+  const origin = host ? `${proto}://${host}` : constants.website.urls.base;
 
   if (!doc) {
     return {
@@ -41,6 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${doc.title} | ${companyName} Docs`,
     description,
+    metadataBase: new URL(origin),
     openGraph: {
       title: doc.title,
       description,
@@ -48,12 +53,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: doc.lastUpdated,
       images: [
         {
-          url: `/docs/${doc.slug}/opengraph-image`,
+          url: `${origin}/docs/${doc.slug}/opengraph-image`,
           width: 1200,
           height: 630,
           alt: `${doc.title} | ${companyName} Docs`,
         },
       ],
+      url: `${origin}/docs/${doc.slug}`,
     },
   };
 }
@@ -64,6 +70,8 @@ export async function generateStaticParams() {
     slug: doc.slug,
   }));
 }
+
+export const dynamic = 'force-dynamic';
 
 export default async function DocPage({ params }: Props) {
   const { slug } = await params;
