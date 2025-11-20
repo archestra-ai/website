@@ -149,7 +149,7 @@ export default function DocsSidebar({ categories }: DocsSidebarProps) {
 
       {/* Desktop Sidebar - Only visible on large screens */}
       <aside className="hidden lg:block w-64 flex-shrink-0">
-        <div className="sticky top-20 max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <div className="sticky top-20">
           <nav className="space-y-4 pb-8">
             {/* Desktop Categories */}
             {categories.map((category) => {

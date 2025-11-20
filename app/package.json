@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
-    "build:check": "next build",
-    "dev": "next dev -p 3001",
+    "docs:pull": "node scripts/pull-docs.js",
+    "build": "pnpm docs:pull && pnpm db:migrate && next build",
+    "build:check": "pnpm docs:pull && next build",
+    "dev": "pnpm drizzle-kit up && next dev -p 3001",
     "start": "next start",
     "test": "vitest",
     "prettier": "prettier --write .",

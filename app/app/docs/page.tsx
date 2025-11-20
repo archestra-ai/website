@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation';
 
+import DeveloperNotice from './components/DeveloperNotice';
 import { getAllDocs } from './utils';
 
 export default function DocsPage() {
@@ -13,7 +14,14 @@ export default function DocsPage() {
     redirect(`/docs/${targetDoc.slug}`);
   }
 
-  // If no docs exist, show a message
+  // Show developer notice in development, generic message in production
+  const isDevelopment = process.env.NODE_ENV === 'development';
+
+  if (isDevelopment) {
+    return <DeveloperNotice />;
+  }
+
+  // Production message
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">

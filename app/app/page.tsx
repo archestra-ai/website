@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import Footer from '@components/Footer';
-import HeaderWithBanner from '@components/HeaderWithBanner';
+import Header from '@components/Header';
 import MermaidDiagram from '@components/MermaidDiagram';
 import NewsletterForm from '@components/NewsletterForm';
 import { Card, CardContent } from '@components/ui/card';
@@ -125,7 +125,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <HeaderWithBanner />
+      <Header />
 
       <main className="flex-1">
         {/* Hero Section */}
@@ -810,6 +810,7 @@ export default function Home() {
               <div className="bg-gray-900 rounded-lg p-6 shadow-xl">
                 <div className="flex items-center justify-between">
                   <code className="text-green-400 font-mono text-sm md:text-base">
+                    docker pull archestra/platform:latest; <br />
                     docker run -p 9000:9000 -p 3000:3000 archestra/platform
                   </code>
                   <button
