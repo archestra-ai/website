@@ -53,7 +53,12 @@ export const MCPDependencySchema = z.object({
   importance: z.number().min(1).max(10),
 });
 
-export const ArchestraClientConfigPermutationsSchema = z.record(z.string(), McpServerConfigSchema);
+// Extended MCP server config with docker_image support
+const ExtendedMcpServerConfigSchema = McpServerConfigSchema.extend({
+  docker_image: z.string().optional(),
+});
+
+export const ArchestraClientConfigPermutationsSchema = z.record(z.string(), ExtendedMcpServerConfigSchema);
 
 /**
  * NOTE: when we are ready to add more OAuth providers, we can simply add them here
@@ -151,6 +156,7 @@ export const LogMonitorSchema = z.object({
 export const LocalServerSchema = McpServerConfigSchema.extend({
   type: z.literal('local'),
   setup: z.array(LogMonitorSchema).optional(),
+  docker_image: z.string().optional(),
 });
 
 export const RemoteServerSchema = z.object({
