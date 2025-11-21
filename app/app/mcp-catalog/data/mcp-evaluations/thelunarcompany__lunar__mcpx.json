@@ -9,7 +9,8 @@
     "command": "docker",
     "args": ["run", "lunar/mcpx"],
     "env": {},
-    "type": "local"
+    "type": "local",
+    "docker_image": "lunar/mcpx"
   },
   "tools": [],
   "prompts": [],

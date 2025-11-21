@@ -9,7 +9,8 @@
     "command": "docker",
     "args": ["run", "-i", "--rm", "--init", "mcr.microsoft.com/playwright/mcp"],
     "env": {},
-    "type": "local"
+    "type": "local",
+    "docker_image": "mcr.microsoft.com/playwright/mcp"
   },
   "tools": [],
   "prompts": [],

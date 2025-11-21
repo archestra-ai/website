@@ -132,7 +132,8 @@
           "THINGSBOARD_URL": "<your_thingsboard_url>",
           "THINGSBOARD_USERNAME": "<your_username>",
           "THINGSBOARD_PASSWORD": "<your_password>"
-        }
+        },
+        "docker_image": "thingsboard/mcp"
       },
       "thingsboard-mcp-docker-sse": {
         "command": "docker",
@@ -159,7 +160,8 @@
           "THINGSBOARD_PASSWORD": "<your_password>",
           "SPRING_AI_MCP_SERVER_STDIO": "false",
           "SPRING_WEB_APPLICATION_TYPE": "servlet"
-        }
+        },
+        "docker_image": "thingsboard/mcp"
       },
       "thingsboard-mcp-server-jar-stdio": {
         "command": "java",

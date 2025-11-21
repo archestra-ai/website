@@ -55,7 +55,8 @@
         ],
         "env": {
           "DATABASE_URL": "postgres://admin:root@localhost:5432/mcpjungle_db"
-        }
+        },
+        "docker_image": "mcpjungle/mcpjungle:latest"
       },
       "mcpjungle-configured": {
         "command": "mcpjungle",

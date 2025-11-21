@@ -75,7 +75,8 @@
       "MCP_LOGGING_STDOUT": "${user_config.mcp_logging_stdout}",
       "ENABLED_TOOLS": "${user_config.enabled_tools}"
     },
-    "type": "local"
+    "type": "local",
+    "docker_image": "ghcr.io/sooperset/mcp-atlassian:latest"
   },
   "tools": [],
   "prompts": [],
@@ -233,7 +234,8 @@
           "--oauth-setup",
           "-v"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "ghcr.io/sooperset/mcp-atlassian:latest"
       },
       "mcp-atlassian-docker": {
         "command": "docker",
@@ -262,7 +264,8 @@
           "JIRA_URL": "<YOUR_JIRA URL_HERE>",
           "JIRA_USERNAME": "<YOUR_JIRA USERNAME_HERE>",
           "JIRA_API_TOKEN": "<YOUR_JIRA API TOKEN_HERE>"
-        }
+        },
+        "docker_image": "ghcr.io/sooperset/mcp-atlassian:latest"
       }
     },
     "oauth": {

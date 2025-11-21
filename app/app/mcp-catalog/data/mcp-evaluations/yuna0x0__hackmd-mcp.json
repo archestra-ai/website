@@ -50,7 +50,8 @@
         "args": ["run", "-e", "HACKMD_API_TOKEN=your_api_token", "yuna0x0/hackmd-mcp"],
         "env": {
           "HACKMD_API_TOKEN": "your_api_token"
-        }
+        },
+        "docker_image": "yuna0x0/hackmd-mcp"
       }
     },
     "oauth": {

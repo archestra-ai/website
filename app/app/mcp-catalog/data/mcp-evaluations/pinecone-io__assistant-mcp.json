@@ -61,7 +61,8 @@
         "env": {
           "PINECONE_API_KEY": "<YOUR_PINECONE_API_KEY_HERE>",
           "PINECONE_ASSISTANT_HOST": "<YOUR_PINE_ASSISTANT_HOST_HERE>"
-        }
+        },
+        "docker_image": "pinecone/assistant-mcp"
       },
       "pinecone-assistant": {
         "command": "docker",
@@ -78,7 +79,8 @@
         "env": {
           "PINECONE_API_KEY": "<YOUR_PINECONE_API_KEY_HERE>",
           "PINECONE_ASSISTANT_HOST": "<YOUR_PINECONE_ASSISTANT_HOST_HERE>"
-        }
+        },
+        "docker_image": "pinecone/assistant-mcp"
       },
       "assistant-mcp-source": {
         "command": "./target/release/assistant-mcp",

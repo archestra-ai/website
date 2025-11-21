@@ -111,7 +111,8 @@
           "-t",
           "streamable-http"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp-server-twelve-data"
       }
     },
     "oauth": {

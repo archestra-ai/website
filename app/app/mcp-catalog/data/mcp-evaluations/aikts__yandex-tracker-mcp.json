@@ -111,7 +111,8 @@
           "TRACKER_TOKEN": "your_tracker_token_here",
           "TRACKER_CLOUD_ORG_ID": "your_cloud_org_id_here",
           "TRACKER_ORG_ID": "your_org_id_here"
-        }
+        },
+        "docker_image": "ghcr.io/aikts/yandex-tracker-mcp:latest"
       },
       "yandex-tracker-mcp-stdio": {
         "command": "uvx",
@@ -144,7 +145,8 @@
           "TRACKER_CLOUD_ORG_ID": "your_cloud_org_id_here",
           "TRACKER_ORG_ID": "your_org_id_here",
           "TRANSPORT": "stdio"
-        }
+        },
+        "docker_image": "ghcr.io/aikts/yandex-tracker-mcp:latest"
       }
     },
     "oauth": {

@@ -46,7 +46,8 @@
       "kaggle-mcp-test-docker": {
         "command": "docker",
         "args": ["run", "--rm", "-it", "--env-file", ".env", "kaggle-mcp-test"],
-        "env": {}
+        "env": {},
+        "docker_image": ".env"
       },
       "kaggle-mcp-configured": {
         "command": "kaggle-mcp",

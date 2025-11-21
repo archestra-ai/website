@@ -9,7 +9,8 @@
     "command": "docker",
     "args": ["run", "-v", "baserow_data:/baserow/data", "-p", "80:80", "-p", "443:443", "baserow/baserow:1.34.5"],
     "env": {},
-    "type": "local"
+    "type": "local",
+    "docker_image": "baserow/baserow:1.34.5"
   },
   "tools": [],
   "prompts": [],
@@ -23,7 +24,8 @@
       "baserow-baserow-docker": {
         "command": "docker",
         "args": ["run", "-v", "baserow_data:/baserow/data", "-p", "80:80", "-p", "443:443", "baserow/baserow:1.34.5"],
-        "env": {}
+        "env": {},
+        "docker_image": "baserow/baserow:1.34.5"
       },
       "baserow-dev-script": {
         "command": "./dev.sh",

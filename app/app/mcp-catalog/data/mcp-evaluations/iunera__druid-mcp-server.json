@@ -78,7 +78,8 @@
         "env": {
           "DRUID_BROKER_URL": "http://your-druid-broker:8082",
           "DRUID_COORDINATOR_URL": "http://your-druid-coordinator:8081"
-        }
+        },
+        "docker_image": "iunera/druid-mcp-server:latest"
       },
       "iunera-druid-mcp-server-docker-stdio": {
         "command": "docker",
@@ -104,7 +105,8 @@
           "LOGGING_PATTERN_CONSOLE": "",
           "DRUID_BROKER_URL": "http://your-druid-broker:8082",
           "DRUID_COORDINATOR_URL": "http://your-druid-coordinator:8081"
-        }
+        },
+        "docker_image": "iunera/druid-mcp-server:latest"
       }
     },
     "oauth": {

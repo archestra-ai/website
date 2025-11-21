@@ -111,7 +111,8 @@
       "tfmcp-docker": {
         "command": "docker",
         "args": ["run", "--rm", "-it", "tfmcp", "mcp"],
-        "env": {}
+        "env": {},
+        "docker_image": "tfmcp"
       },
       "tfmcp-docker-configured": {
         "command": "docker",
@@ -128,7 +129,8 @@
         ],
         "env": {
           "TERRAFORM_DIR": "/app/terraform"
-        }
+        },
+        "docker_image": "tfmcp"
       }
     },
     "oauth": {

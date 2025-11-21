@@ -42,14 +42,16 @@
         "args": ["run", "-e", "COINMARKET_API_KEY=your_api_key_here", "coinmarket-service"],
         "env": {
           "COINMARKET_API_KEY": "your_api_key_here"
-        }
+        },
+        "docker_image": "coinmarket-service"
       },
       "coinmarket-service-docker-configured": {
         "command": "docker",
         "args": ["run", "--rm", "-e", "COINMARKET_API_KEY=<insert api key>", "coinmarket-service"],
         "env": {
           "COINMARKET_API_KEY": "<insert api key>"
-        }
+        },
+        "docker_image": "coinmarket-service"
       }
     },
     "oauth": {

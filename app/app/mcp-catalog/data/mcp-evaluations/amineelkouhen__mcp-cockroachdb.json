@@ -150,7 +150,8 @@
       "mcp-cockroachdb-docker": {
         "command": "docker",
         "args": ["run", "-p", "26257:26257", "mcp/cockroachdb"],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp/cockroachdb"
       }
     },
     "oauth": {

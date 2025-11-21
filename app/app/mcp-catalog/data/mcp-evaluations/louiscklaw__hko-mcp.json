@@ -33,7 +33,8 @@
       "mcp-hko-docker": {
         "command": "docker",
         "args": ["run", "-i", "--rm", "mcp-hko:latest"],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp-hko:latest"
       }
     },
     "oauth": {

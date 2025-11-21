@@ -48,7 +48,8 @@
       "kadykov-mcp-openapi-schema-explorer-docker": {
         "command": "docker",
         "args": ["run", "--rm", "-i", "kadykov/mcp-openapi-schema-explorer:latest", "<remote-url-to-spec>"],
-        "env": {}
+        "env": {},
+        "docker_image": "kadykov/mcp-openapi-schema-explorer:latest"
       },
       "kadykov-mcp-openapi-schema-explorer-docker-local": {
         "command": "docker",
@@ -63,7 +64,8 @@
           "--output-format",
           "yaml"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "kadykov/mcp-openapi-schema-explorer:latest"
       },
       "mcp-openapi-schema-explorer-global": {
         "command": "mcp-openapi-schema-explorer",

@@ -33,22 +33,26 @@
       "markitdown-mcp-docker-basic": {
         "command": "docker",
         "args": ["run", "-it", "--rm", "markitdown-mcp:latest"],
-        "env": {}
+        "env": {},
+        "docker_image": "markitdown-mcp:latest"
       },
       "markitdown-mcp-docker-mounted": {
         "command": "docker",
         "args": ["run", "-it", "--rm", "-v", "/home/user/data:/workdir", "markitdown-mcp:latest"],
-        "env": {}
+        "env": {},
+        "docker_image": "markitdown-mcp:latest"
       },
       "markitdown-mcp-docker-claude-desktop": {
         "command": "docker",
         "args": ["run", "--rm", "-i", "markitdown-mcp:latest"],
-        "env": {}
+        "env": {},
+        "docker_image": "markitdown-mcp:latest"
       },
       "markitdown-mcp-docker-claude-desktop-mounted": {
         "command": "docker",
         "args": ["run", "--rm", "-i", "-v", "/home/user/data:/workdir", "markitdown-mcp:latest"],
-        "env": {}
+        "env": {},
+        "docker_image": "markitdown-mcp:latest"
       }
     },
     "oauth": {

@@ -28,7 +28,8 @@
       "mcp-text-editor-docker": {
         "command": "docker",
         "args": ["run", "-i", "--rm", "--mount", "type=bind,src=/some/path/src,dst=/some/path/dst", "mcp/text-editor"],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp/text-editor"
       },
       "mcp-text-editor-python": {
         "command": "python",

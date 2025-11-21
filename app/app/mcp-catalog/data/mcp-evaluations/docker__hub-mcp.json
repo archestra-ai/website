@@ -79,7 +79,8 @@
         ],
         "env": {
           "HUB_PAT_TOKEN": "YOUR_DOCKER_HUB_PERSONAL_ACCESS_TOKEN"
-        }
+        },
+        "docker_image": "hub"
       },
       "docker-hub-stdio": {
         "command": "node",

@@ -97,7 +97,8 @@
           "PORT": "3000",
           "NODE_ENV": "production",
           "DEBUG": "false"
-        }
+        },
+        "docker_image": "compose"
       }
     },
     "oauth": {

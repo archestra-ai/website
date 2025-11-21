@@ -98,21 +98,24 @@
         "args": ["run", "--rm", "-i", "-e", "NOTION_TOKEN", "mcp/notion"],
         "env": {
           "NOTION_TOKEN": "<YOUR_NOTION_TOKEN>"
-        }
+        },
+        "docker_image": "mcp/notion"
       },
       "mcp-notion-docker-openapi-headers": {
         "command": "docker",
         "args": ["run", "--rm", "-i", "-e", "OPENAPI_MCP_HEADERS", "mcp/notion"],
         "env": {
           "OPENAPI_MCP_HEADERS": "<YOUR_OPENAPI_MCP_HEADERS_JSON_STRING>"
-        }
+        },
+        "docker_image": "mcp/notion"
       },
       "notion-mcp-server-docker-local-notion-token": {
         "command": "docker",
         "args": ["run", "--rm", "-i", "-e", "NOTION_TOKEN=<YOUR_NOTION_TOKEN>", "notion-mcp-server"],
         "env": {
           "NOTION_TOKEN": "<YOUR_NOTION_TOKEN>"
-        }
+        },
+        "docker_image": "notion-mcp-server"
       },
       "notion-mcp-server-docker-local-openapi-headers": {
         "command": "docker",
@@ -126,7 +129,8 @@
         ],
         "env": {
           "OPENAPI_MCP_HEADERS": "<YOUR_OPENAPI_MCP_HEADERS_JSON_STRING>"
-        }
+        },
+        "docker_image": "notion-mcp-server"
       },
       "notionhq-notion-mcp-server-stdio-default": {
         "command": "npx",

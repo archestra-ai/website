@@ -47,7 +47,8 @@
         "args": ["run", "-e", "PICA_SECRET=your_pica_secret_key", "pica-mcp-server"],
         "env": {
           "PICA_SECRET": "your_pica_secret_key"
-        }
+        },
+        "docker_image": "pica-mcp-server"
       }
     },
     "oauth": {

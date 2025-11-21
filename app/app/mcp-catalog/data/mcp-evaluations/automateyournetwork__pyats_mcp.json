@@ -57,7 +57,8 @@
         ],
         "env": {
           "PYATS_TESTBED_PATH": "/app/testbed.yaml"
-        }
+        },
+        "docker_image": "pyats-mcp-server"
       },
       "pyats-mcp-server-docker-configured": {
         "command": "docker",
@@ -73,7 +74,8 @@
         ],
         "env": {
           "PYATS_TESTBED_PATH": "/app/testbed.yaml"
-        }
+        },
+        "docker_image": "pyats-mcp-server"
       },
       "pyats-mcp-server-python-configured": {
         "command": "python3",

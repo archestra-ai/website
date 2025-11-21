@@ -99,7 +99,8 @@
         "args": ["run", "-i", "--rm", "--init", "-e", "DOCKER_CONTAINER=true", "telephony-mcp-server"],
         "env": {
           "DOCKER_CONTAINER": "true"
-        }
+        },
+        "docker_image": "telephony-mcp-server"
       }
     },
     "oauth": {

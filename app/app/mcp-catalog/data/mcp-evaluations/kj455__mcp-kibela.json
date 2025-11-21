@@ -44,7 +44,8 @@
         "env": {
           "KIBELA_TEAM": "your-team-name from https://[team-name].kibe.la",
           "KIBELA_TOKEN": "your-token"
-        }
+        },
+        "docker_image": "ghcr.io/kj455/mcp-kibela:latest"
       },
       "kj455-mcp-kibela-docker-configured": {
         "command": "docker",
@@ -52,7 +53,8 @@
         "env": {
           "KIBELA_TEAM": "${input:kibela_team}",
           "KIBELA_TOKEN": "${input:kibela_token}"
-        }
+        },
+        "docker_image": "ghcr.io/kj455/mcp-kibela:latest"
       },
       "kj455-mcp-kibela-node-stdio": {
         "command": "node",

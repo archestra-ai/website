@@ -33,7 +33,8 @@
       "nixos-docker": {
         "command": "docker",
         "args": ["run", "--rm", "-i", "ghcr.io/utensils/mcp-nixos"],
-        "env": {}
+        "env": {},
+        "docker_image": "ghcr.io/utensils/mcp-nixos"
       },
       "nixos-local-dev": {
         "command": "uv",

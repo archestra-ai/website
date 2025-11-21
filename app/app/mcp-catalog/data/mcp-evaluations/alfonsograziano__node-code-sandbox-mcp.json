@@ -68,7 +68,8 @@
           "FILES_DIR": "$HOME/Desktop/sandbox-output",
           "SANDBOX_MEMORY_LIMIT": "512m",
           "SANDBOX_CPU_LIMIT": "0.75"
-        }
+        },
+        "docker_image": "mcp/node-code-sandbox"
       },
       "node-code-sandbox-mcp": {
         "command": "npx",
@@ -102,7 +103,8 @@
           "FILES_DIR": "$HOME/Desktop/sandbox-output",
           "SANDBOX_MEMORY_LIMIT": "512m",
           "SANDBOX_CPU_LIMIT": "0.5"
-        }
+        },
+        "docker_image": "mcp/node-code-sandbox"
       },
       "alfonsograziano-node-code-sandbox-mcp-docker-stdio": {
         "command": "docker",
@@ -115,7 +117,8 @@
           "alfonsograziano/node-code-sandbox-mcp",
           "stdio"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "alfonsograziano/node-code-sandbox-mcp"
       },
       "mcp-node-code-sandbox-docker-vscode": {
         "command": "docker",
@@ -139,7 +142,8 @@
           "FILES_DIR": "$HOME/Desktop/sandbox-output",
           "SANDBOX_MEMORY_LIMIT": "512m",
           "SANDBOX_CPU_LIMIT": "1"
-        }
+        },
+        "docker_image": "mcp/node-code-sandbox"
       }
     },
     "oauth": {

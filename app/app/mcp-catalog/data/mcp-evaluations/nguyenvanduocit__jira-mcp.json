@@ -65,7 +65,8 @@
           "ATLASSIAN_HOST": "https://your-company.atlassian.net",
           "ATLASSIAN_EMAIL": "your-email@company.com",
           "ATLASSIAN_TOKEN": "your-api-token"
-        }
+        },
+        "docker_image": "ghcr.io/nguyenvanduocit/jira-mcp:latest"
       },
       "ghcr.io-nguyenvanduocit-jira-mcp-docker-cursor-configured": {
         "command": "docker",
@@ -85,7 +86,8 @@
           "ATLASSIAN_HOST": "https://your-company.atlassian.net",
           "ATLASSIAN_EMAIL": "your-email@company.com",
           "ATLASSIAN_TOKEN": "your-api-token"
-        }
+        },
+        "docker_image": "ghcr.io/nguyenvanduocit/jira-mcp:latest"
       },
       "jira-mcp-binary-cursor-configured": {
         "command": "/usr/local/bin/jira-mcp",
@@ -104,7 +106,8 @@
       "ghcr.io-nguyenvanduocit-jira-mcp-docker-env-file": {
         "command": "docker",
         "args": ["run", "--rm", "-i", "--env-file", ".env", "ghcr.io/nguyenvanduocit/jira-mcp:latest"],
-        "env": {}
+        "env": {},
+        "docker_image": ".env"
       },
       "jira-mcp-binary-http-mode": {
         "command": "jira-mcp",

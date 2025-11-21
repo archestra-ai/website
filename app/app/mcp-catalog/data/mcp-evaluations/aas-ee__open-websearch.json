@@ -132,7 +132,8 @@
         "env": {
           "ENABLE_CORS": "true",
           "CORS_ORIGIN": "*"
-        }
+        },
+        "docker_image": "ghcr.io/aas-ee/open-web-search:latest"
       }
     },
     "oauth": {

@@ -61,7 +61,8 @@
         "env": {
           "CIRCLECI_TOKEN": "your-circleci-token",
           "CIRCLECI_BASE_URL": "https://circleci.com"
-        }
+        },
+        "docker_image": "circleci:mcp-server-circleci"
       },
       "circleci-mcp-server-circleci-npx-stdio-input-env": {
         "command": "npx",
@@ -86,7 +87,8 @@
         "env": {
           "CIRCLECI_TOKEN": "${input:circleci-token}",
           "CIRCLECI_BASE_URL": "${input:circleci-base-url}"
-        }
+        },
+        "docker_image": "circleci:mcp-server-circleci"
       }
     },
     "oauth": {

@@ -28,7 +28,8 @@
       "prims-docker": {
         "command": "docker",
         "args": ["run", "prims-docker"],
-        "env": {}
+        "env": {},
+        "docker_image": "prims-docker"
       }
     },
     "oauth": {

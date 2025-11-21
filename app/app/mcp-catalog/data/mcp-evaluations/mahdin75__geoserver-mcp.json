@@ -67,7 +67,8 @@
           "GEOSERVER_URL": "http://localhost:8080/geoserver",
           "GEOSERVER_USER": "admin",
           "GEOSERVER_PASSWORD": "geoserver"
-        }
+        },
+        "docker_image": "mahdin75/geoserver-mcp"
       },
       "geoserver-mcp-linux": {
         "command": "/path/to/geoserver-mcp/.venv/bin/geoserver-mcp",

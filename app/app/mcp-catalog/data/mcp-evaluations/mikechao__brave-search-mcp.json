@@ -42,7 +42,8 @@
         "args": ["run", "-i", "--rm", "-e", "BRAVE_API_KEY", "brave-search-mcp"],
         "env": {
           "BRAVE_API_KEY": "YOUR API KEY HERE"
-        }
+        },
+        "docker_image": "brave-search-mcp"
       },
       "brave-search-mcp-librechat": {
         "command": "sh",

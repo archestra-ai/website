@@ -48,11 +48,13 @@
       },
       "sitbon-magg-docker": {
         "command": "docker",
-        "args": ["run", "-p", "8000:8000", "ghcr.io/sitbon/magg:latest"]
+        "args": ["run", "-p", "8000:8000", "ghcr.io/sitbon/magg:latest"],
+        "docker_image": "ghcr.io/sitbon/magg:latest"
       },
       "sitbon-magg-docker-auth-volume": {
         "command": "docker",
-        "args": ["run", "-p", "8000:8000", "-v", "~/.ssh/magg:/home/magg/.ssh/magg:ro", "ghcr.io/sitbon/magg:latest"]
+        "args": ["run", "-p", "8000:8000", "-v", "~/.ssh/magg:/home/magg/.ssh/magg:ro", "ghcr.io/sitbon/magg:latest"],
+        "docker_image": "ghcr.io/sitbon/magg:latest"
       },
       "sitbon-magg-docker-auth-env": {
         "command": "docker",
@@ -66,27 +68,33 @@
         ],
         "env": {
           "MAGG_PRIVATE_KEY": "<YOUR_PRIVATE_KEY_HERE>"
-        }
+        },
+        "docker_image": "ghcr.io/sitbon/magg:latest"
       },
       "sitbon-magg-docker-beta": {
         "command": "docker",
-        "args": ["run", "-p", "8000:8000", "ghcr.io/sitbon/magg:beta"]
+        "args": ["run", "-p", "8000:8000", "ghcr.io/sitbon/magg:beta"],
+        "docker_image": "ghcr.io/sitbon/magg:beta"
       },
       "sitbon-magg-docker-with-config": {
         "command": "docker",
-        "args": ["run", "-p", "8000:8000", "-v", "/path/to/config:/home/magg/.magg", "ghcr.io/sitbon/magg:latest"]
+        "args": ["run", "-p", "8000:8000", "-v", "/path/to/config:/home/magg/.magg", "ghcr.io/sitbon/magg:latest"],
+        "docker_image": "ghcr.io/sitbon/magg:latest"
       },
       "sitbon-magg-compose": {
         "command": "docker",
-        "args": ["compose", "up", "magg"]
+        "args": ["compose", "up", "magg"],
+        "docker_image": "compose"
       },
       "sitbon-magg-compose-beta": {
         "command": "docker",
-        "args": ["compose", "up", "magg-beta"]
+        "args": ["compose", "up", "magg-beta"],
+        "docker_image": "compose"
       },
       "sitbon-magg-compose-dev": {
         "command": "docker",
-        "args": ["compose", "up", "magg-dev"]
+        "args": ["compose", "up", "magg-dev"],
+        "docker_image": "compose"
       }
     },
     "oauth": {

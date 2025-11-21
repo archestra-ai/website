@@ -42,7 +42,8 @@
           "/path/to/your/logs:/app/logs",
           "ghcr.io/vasayxtx/mcp-prompt-engine"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "ghcr.io/vasayxtx/mcp-prompt-engine"
       }
     },
     "oauth": {

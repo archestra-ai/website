@@ -42,7 +42,8 @@
         "args": ["run", "-it", "--rm", "-e", "TRIPADVISOR_API_KEY=your_api_key_here", "tripadvisor-mcp-server"],
         "env": {
           "TRIPADVISOR_API_KEY": "your_api_key_here"
-        }
+        },
+        "docker_image": "tripadvisor-mcp-server"
       },
       "tripadvisor-mcp-server-docker-compose": {
         "command": "docker-compose",
@@ -54,7 +55,8 @@
         "args": ["run", "--rm", "-i", "-e", "TRIPADVISOR_API_KEY", "tripadvisor-mcp-server"],
         "env": {
           "TRIPADVISOR_API_KEY": "your_api_key_here"
-        }
+        },
+        "docker_image": "tripadvisor-mcp-server"
       }
     },
     "oauth": {

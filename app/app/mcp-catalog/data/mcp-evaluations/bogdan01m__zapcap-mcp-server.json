@@ -54,7 +54,8 @@
         "env": {
           "DOCKER_CLI_HINTS": "false",
           "ZAPCAP_API_KEY": "your_api_key_here"
-        }
+        },
+        "docker_image": "bogdan01m/zapcap-mcp-server:latest"
       }
     },
     "oauth": {

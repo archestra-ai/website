@@ -71,7 +71,8 @@
           "type=bind,src=/path/to/collections,dst=/data/collections",
           "postmancer"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "postmancer"
       }
     },
     "oauth": {

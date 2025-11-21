@@ -71,14 +71,16 @@
       "mcp-memgraph-docker": {
         "command": "docker",
         "args": ["run", "--rm", "mcp-memgraph:latest"],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp-memgraph:latest"
       },
       "mcp-memgraph-docker-stdio": {
         "command": "docker",
         "args": ["run", "--rm", "-i", "-e", "MCP_TRANSPORT=stdio", "mcp-memgraph:latest"],
         "env": {
           "MCP_TRANSPORT": "stdio"
-        }
+        },
+        "docker_image": "mcp-memgraph:latest"
       },
       "mcp-memgraph-docker-configured": {
         "command": "docker",
@@ -99,7 +101,8 @@
           "MEMGRAPH_URL": "bolt://memgraph:7687",
           "MEMGRAPH_USER": "myuser",
           "MEMGRAPH_PASSWORD": "password"
-        }
+        },
+        "docker_image": "mcp-memgraph:latest"
       },
       "mcp-memgraph-docker-stdio-configured": {
         "command": "docker",
@@ -122,7 +125,8 @@
           "MEMGRAPH_URL": "bolt://memgraph:7687",
           "MEMGRAPH_USER": "myuser",
           "MEMGRAPH_PASSWORD": "mypassword"
-        }
+        },
+        "docker_image": "mcp-memgraph:latest"
       }
     },
     "oauth": {

@@ -81,7 +81,8 @@
           "RAD_SECURITY_ACCESS_KEY_ID": "your_access_key",
           "RAD_SECURITY_SECRET_KEY": "your_secret_key",
           "RAD_SECURITY_ACCOUNT_ID": "your_account_id"
-        }
+        },
+        "docker_image": "rad-security/mcp-server"
       },
       "rad-security-mcp-server-docker-sse": {
         "command": "docker",
@@ -104,7 +105,8 @@
           "RAD_SECURITY_ACCESS_KEY_ID": "your_access_key",
           "RAD_SECURITY_SECRET_KEY": "your_secret_key",
           "RAD_SECURITY_ACCOUNT_ID": "your_account_id"
-        }
+        },
+        "docker_image": "rad-security/mcp-server"
       }
     },
     "oauth": {

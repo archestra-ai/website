@@ -69,7 +69,8 @@
         "env": {
           "NAVER_CLIENT_ID": "your_client_id",
           "NAVER_CLIENT_SECRET": "your_client_secret"
-        }
+        },
+        "docker_image": "mcp/naver-search"
       }
     },
     "oauth": {

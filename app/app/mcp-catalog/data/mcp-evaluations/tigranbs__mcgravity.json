@@ -93,7 +93,8 @@
       "tigranbs-mcgravity-docker": {
         "command": "docker",
         "args": ["run", "-p", "3001:3001", "tigranbs/mcgravity", "http://mcp1.example.com", "http://mcp2.example.com"],
-        "env": {}
+        "env": {},
+        "docker_image": "tigranbs/mcgravity"
       },
       "tigranbs-mcgravity-docker-configured": {
         "command": "docker",
@@ -108,7 +109,8 @@
           "4000",
           "http://mcp1.example.com"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "tigranbs/mcgravity"
       }
     },
     "oauth": {

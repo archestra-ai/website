@@ -38,7 +38,8 @@
       "semgrep-mcp-docker-stdio": {
         "command": "docker",
         "args": ["run", "-i", "--rm", "ghcr.io/semgrep/mcp", "-t", "stdio"],
-        "env": {}
+        "env": {},
+        "docker_image": "ghcr.io/semgrep/mcp"
       },
       "semgrep-mcp-uvx-configured": {
         "command": "uvx",
@@ -66,7 +67,8 @@
           "--port",
           "8080"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "ghcr.io/semgrep/mcp"
       },
       "semgrep-mcp-uvx-sse": {
         "command": "uvx",
@@ -76,7 +78,8 @@
       "semgrep-mcp-docker-sse": {
         "command": "docker",
         "args": ["run", "-i", "--rm", "-p", "8080:8080", "ghcr.io/semgrep/mcp", "-t", "sse", "--port", "8080"],
-        "env": {}
+        "env": {},
+        "docker_image": "ghcr.io/semgrep/mcp"
       }
     },
     "oauth": {

@@ -13,7 +13,8 @@
       "JOINLY_LLM_PROVIDER": "${user_config.joinly_llm_provider}",
       "OPENAI_API_KEY": "${user_config.openai_api_key}"
     },
-    "type": "local"
+    "type": "local",
+    "docker_image": "ghcr.io/joinly-ai/joinly:latest"
   },
   "tools": [],
   "prompts": [],
@@ -49,7 +50,8 @@
       "ghcr.io-joinly-ai-joinly-docker": {
         "command": "docker",
         "args": ["run", "-p", "8000:8000", "ghcr.io/joinly-ai/joinly:latest"],
-        "env": {}
+        "env": {},
+        "docker_image": "ghcr.io/joinly-ai/joinly:latest"
       }
     },
     "oauth": {

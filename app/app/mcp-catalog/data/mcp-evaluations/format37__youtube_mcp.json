@@ -76,7 +76,8 @@
         "env": {
           "MCP_KEY": "YOUR-MCP-KEY",
           "OPENAI_API_KEY": "YOUR-OPENAI-KRY"
-        }
+        },
+        "docker_image": "youtube_mcp"
       }
     },
     "oauth": {

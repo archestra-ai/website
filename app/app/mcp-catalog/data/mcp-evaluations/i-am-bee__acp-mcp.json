@@ -36,7 +36,8 @@
       "ghcr.io-i-am-bee-acp-mcp-docker": {
         "command": "docker",
         "args": ["run", "-i", "--rm", "ghcr.io/i-am-bee/acp-mcp", "http://host.docker.internal:8000"],
-        "env": {}
+        "env": {},
+        "docker_image": "ghcr.io/i-am-bee/acp-mcp"
       },
       "acp-mcp-configured": {
         "command": "uvx",
@@ -46,7 +47,8 @@
       "ghcr.io-i-am-bee-acp-mcp-docker-configured": {
         "command": "docker",
         "args": ["run", "-i", "--rm", "ghcr.io/i-am-bee/acp-mcp", "http://host.docker.internal:8000"],
-        "env": {}
+        "env": {},
+        "docker_image": "ghcr.io/i-am-bee/acp-mcp"
       }
     },
     "oauth": {

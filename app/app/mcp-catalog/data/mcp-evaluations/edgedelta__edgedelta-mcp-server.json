@@ -21,7 +21,8 @@
       "ED_API_TOKEN": "${user_config.ed_api_token}",
       "ED_ORG_ID": "${user_config.ed_org_id}"
     },
-    "type": "local"
+    "type": "local",
+    "docker_image": "ghcr.io/edgedelta/edgedelta-mcp-server:latest"
   },
   "tools": [],
   "prompts": [],
@@ -60,7 +61,8 @@
         "env": {
           "ED_API_TOKEN": "<YOUR_TOKEN>",
           "ED_ORG_ID": "<YOUR_ORG_ID>"
-        }
+        },
+        "docker_image": "ghcr.io/edgedelta/edgedelta-mcp-server:latest"
       }
     },
     "oauth": {

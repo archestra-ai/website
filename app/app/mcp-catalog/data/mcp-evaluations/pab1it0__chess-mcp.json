@@ -33,7 +33,8 @@
       "pab1it0-chess-mcp-docker": {
         "command": "docker",
         "args": ["run", "--rm", "-i", "pab1it0/chess-mcp"],
-        "env": {}
+        "env": {},
+        "docker_image": "pab1it0/chess-mcp"
       },
       "chess-mcp-uv": {
         "command": "uv",

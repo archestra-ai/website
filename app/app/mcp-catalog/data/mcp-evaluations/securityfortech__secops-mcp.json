@@ -23,7 +23,8 @@
       "secops-mcp-docker": {
         "command": "docker",
         "args": ["run", "-it", "--rm", "secops-mcp"],
-        "env": {}
+        "env": {},
+        "docker_image": "secops-mcp"
       },
       "secops-mcp": {
         "command": "python",

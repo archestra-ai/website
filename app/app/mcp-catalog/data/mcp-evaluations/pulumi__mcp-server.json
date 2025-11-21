@@ -33,17 +33,20 @@
       "pulumi-mcp-server-docker-stdio": {
         "command": "docker",
         "args": ["run", "-i", "--rm", "pulumi/mcp-server:latest", "stdio"],
-        "env": {}
+        "env": {},
+        "docker_image": "pulumi/mcp-server:latest"
       },
       "pulumi-mcp-server-docker-sse": {
         "command": "docker",
         "args": ["run", "-i", "--rm", "-p", "3000:3000", "pulumi/mcp-server:latest", "sse"],
-        "env": {}
+        "env": {},
+        "docker_image": "pulumi/mcp-server:latest"
       },
       "pulumi-mcp-server-docker-with-volume": {
         "command": "docker",
         "args": ["run", "-i", "--rm", "-v", "~/projects/my-pulumi-app:/app/project", "pulumi/mcp-server:latest"],
-        "env": {}
+        "env": {},
+        "docker_image": "pulumi/mcp-server:latest"
       }
     },
     "oauth": {

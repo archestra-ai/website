@@ -107,6 +107,9 @@
                       },
                       "required": ["type", "provider"]
                     }
+                  },
+                  "docker_image": {
+                    "type": "string"
                   }
                 },
                 "required": ["command", "type"],
@@ -345,6 +348,9 @@
                       "additionalProperties": {
                         "type": "string"
                       }
+                    },
+                    "docker_image": {
+                      "type": "string"
                     }
                   },
                   "required": ["command"],

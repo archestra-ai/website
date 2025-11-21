@@ -254,7 +254,8 @@
           "BOOTSTRAP_SERVERS": "your_bootstrap_servers",
           "KAFKA_API_KEY": "your_api_key",
           "KAFKA_API_SECRET": "your_api_secret"
-        }
+        },
+        "docker_image": "mcp-confluent"
       }
     },
     "oauth": {

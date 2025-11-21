@@ -42,7 +42,8 @@
         "env": {
           "TRANSPORT": "stdio",
           "HEURIST_API_KEY": "your-api-key-here"
-        }
+        },
+        "docker_image": "mesh-tool-server"
       },
       "mesh-tool-server-sse-uv": {
         "command": "uv",
@@ -54,7 +55,8 @@
         "args": ["run", "-p", "8000:8000", "-e", "PORT=8000", "mesh-tool-server"],
         "env": {
           "PORT": "8000"
-        }
+        },
+        "docker_image": "mesh-tool-server"
       }
     },
     "oauth": {

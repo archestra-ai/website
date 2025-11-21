@@ -60,7 +60,8 @@
           "mcp/filesystem",
           "/projects"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp/filesystem"
       },
       "modelcontextprotocol-server-filesystem-vscode": {
         "command": "npx",
@@ -78,7 +79,8 @@
           "mcp/filesystem",
           "/projects"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp/filesystem"
       }
     },
     "oauth": {

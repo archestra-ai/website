@@ -93,7 +93,8 @@
       "fhir-mcp-server-docker": {
         "command": "docker",
         "args": ["run", "--env-file", ".env", "-p", "8000:8000", "fhir-mcp-server"],
-        "env": {}
+        "env": {},
+        "docker_image": ".env"
       },
       "fhir-mcp-server-stdio": {
         "command": "uv",
