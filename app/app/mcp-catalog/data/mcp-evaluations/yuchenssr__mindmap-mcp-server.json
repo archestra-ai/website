@@ -7,11 +7,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/mindmap_mcp_server/server.py",
-      "--return-type",
-      "${user_config.return_type}"
-    ],
+    "args": ["${__dirname}/mindmap_mcp_server/server.py", "--return-type", "${user_config.return_type}"],
     "env": {},
     "type": "local"
   },
@@ -34,50 +30,27 @@
     "client_config_permutations": {
       "mindmap-mcp-server-html": {
         "command": "uvx",
-        "args": [
-          "mindmap-mcp-server",
-          "--return-type",
-          "html"
-        ],
+        "args": ["mindmap-mcp-server", "--return-type", "html"],
         "env": {}
       },
       "mindmap-mcp-server-filepath": {
         "command": "uvx",
-        "args": [
-          "mindmap-mcp-server",
-          "--return-type",
-          "filePath"
-        ],
+        "args": ["mindmap-mcp-server", "--return-type", "filePath"],
         "env": {}
       },
       "mindmap-mcp-server-python-html": {
         "command": "python",
-        "args": [
-          "/path/to/your/mindmap_mcp_server/server.py",
-          "--return-type",
-          "html"
-        ],
+        "args": ["/path/to/your/mindmap_mcp_server/server.py", "--return-type", "html"],
         "env": {}
       },
       "mindmap-mcp-server-python-filepath": {
         "command": "python",
-        "args": [
-          "/path/to/your/mindmap_mcp_server/server.py",
-          "--return-type",
-          "filePath"
-        ],
+        "args": ["/path/to/your/mindmap_mcp_server/server.py", "--return-type", "filePath"],
         "env": {}
       },
       "ychen94-mindmap-converter-mcp-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "-v",
-          "/path/to/output/folder:/output",
-          "ychen94/mindmap-converter-mcp:latest"
-        ],
+        "args": ["run", "--rm", "-i", "-v", "/path/to/output/folder:/output", "ychen94/mindmap-converter-mcp:latest"],
         "env": {},
         "docker_image": "ychen94/mindmap-converter-mcp:latest"
       }

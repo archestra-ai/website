@@ -7,10 +7,7 @@
   },
   "server": {
     "command": "docker",
-    "args": [
-      "run",
-      "lunar/mcpx"
-    ],
+    "args": ["run", "lunar/mcpx"],
     "env": {},
     "type": "local",
     "docker_image": "lunar/mcpx"

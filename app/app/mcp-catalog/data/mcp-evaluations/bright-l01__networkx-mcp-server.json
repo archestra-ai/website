@@ -7,10 +7,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "networkx_mcp"
-    ],
+    "args": ["-m", "networkx_mcp"],
     "env": {},
     "type": "local"
   },
@@ -25,20 +22,12 @@
     "client_config_permutations": {
       "networkx_mcp": {
         "command": "python",
-        "args": [
-          "-m",
-          "networkx_mcp"
-        ],
+        "args": ["-m", "networkx_mcp"],
         "env": {}
       },
       "networkx-mcp-server-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-p",
-          "8000:8000",
-          "networkx-mcp-server"
-        ],
+        "args": ["run", "-p", "8000:8000", "networkx-mcp-server"],
         "env": {},
         "docker_image": "networkx-mcp-server"
       }

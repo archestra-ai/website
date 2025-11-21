@@ -7,11 +7,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "mcp-server-git",
-      "--repository",
-      "${user_config.repo_path}"
-    ],
+    "args": ["mcp-server-git", "--repository", "${user_config.repo_path}"],
     "env": {},
     "type": "local"
   },
@@ -34,61 +30,33 @@
     "client_config_permutations": {
       "mcp-server-git": {
         "command": "uvx",
-        "args": [
-          "mcp-server-git"
-        ],
+        "args": ["mcp-server-git"],
         "env": {}
       },
       "mcp-server-git-configured": {
         "command": "uvx",
-        "args": [
-          "mcp-server-git",
-          "--repository",
-          "path/to/git/repo"
-        ],
+        "args": ["mcp-server-git", "--repository", "path/to/git/repo"],
         "env": {}
       },
       "mcp_server_git": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_server_git"
-        ],
+        "args": ["-m", "mcp_server_git"],
         "env": {}
       },
       "mcp_server_git-configured": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_server_git",
-          "--repository",
-          "path/to/git/repo"
-        ],
+        "args": ["-m", "mcp_server_git", "--repository", "path/to/git/repo"],
         "env": {}
       },
       "mcp-git-docker-claude-desktop": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "--mount",
-          "type=bind,src=/Users/username,dst=/Users/username",
-          "mcp/git"
-        ],
+        "args": ["run", "--rm", "-i", "--mount", "type=bind,src=/Users/username,dst=/Users/username", "mcp/git"],
         "env": {},
         "docker_image": "mcp/git"
       },
       "mcp-git-docker-vscode": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "--mount",
-          "type=bind,src=${workspaceFolder},dst=/workspace",
-          "mcp/git"
-        ],
+        "args": ["run", "--rm", "-i", "--mount", "type=bind,src=${workspaceFolder},dst=/workspace", "mcp/git"],
         "env": {},
         "docker_image": "mcp/git"
       }

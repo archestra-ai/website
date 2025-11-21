@@ -7,10 +7,7 @@
   },
   "server": {
     "command": "docker",
-    "args": [
-      "run",
-      "axliupore/mcp-code-runner"
-    ],
+    "args": ["run", "axliupore/mcp-code-runner"],
     "env": {},
     "type": "local",
     "docker_image": "axliupore/mcp-code-runner"
@@ -26,10 +23,7 @@
     "client_config_permutations": {
       "axliupore-mcp-code-runner": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@axliupore/mcp-code-runner"
-        ]
+        "args": ["-y", "@axliupore/mcp-code-runner"]
       }
     },
     "oauth": {

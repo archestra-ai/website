@@ -7,9 +7,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "mcp-server-zoomeye"
-    ],
+    "args": ["mcp-server-zoomeye"],
     "env": {
       "ZOOMEYE_API_KEY": "${user_config.zoomeye_api_key}"
     },
@@ -34,10 +32,7 @@
     "client_config_permutations": {
       "mcp-server-zoomeye-python": {
         "command": "python",
-        "args": [
-          "-m",
-          "mcp_server_zoomeye"
-        ],
+        "args": ["-m", "mcp_server_zoomeye"],
         "env": {
           "ZOOMEYE_API_KEY": "your_api_key_here"
         }
@@ -74,9 +69,7 @@
       },
       "mcp-server-zoomeye-uvx": {
         "command": "uvx",
-        "args": [
-          "mcp-server-zoomeye"
-        ],
+        "args": ["mcp-server-zoomeye"],
         "env": {
           "ZOOMEYE_API_KEY": "your_api_key_here"
         }

@@ -7,11 +7,7 @@
   },
   "server": {
     "command": "mcp-prompt-engine",
-    "args": [
-      "serve",
-      "--prompts",
-      "${__dirname}/prompts"
-    ],
+    "args": ["serve", "--prompts", "${__dirname}/prompts"],
     "env": {},
     "type": "local"
   },
@@ -26,19 +22,12 @@
     "client_config_permutations": {
       "mcp-prompt-engine": {
         "command": "mcp-prompt-engine",
-        "args": [
-          "serve"
-        ],
+        "args": ["serve"],
         "env": {}
       },
       "mcp-prompt-engine-configured": {
         "command": "mcp-prompt-engine",
-        "args": [
-          "serve",
-          "--prompts",
-          "/path/to/your/prompts",
-          "--disable-json-args"
-        ],
+        "args": ["serve", "--prompts", "/path/to/your/prompts", "--disable-json-args"],
         "env": {}
       },
       "ghcr.io-vasayxtx-mcp-prompt-engine-docker": {

@@ -82,13 +82,7 @@
       },
       "hainanzhao-mcp-gitlab-jira-docker-persistent": {
         "command": "docker",
-        "args": [
-          "exec",
-          "-i",
-          "mcp-gitlab-jira-container",
-          "npm",
-          "start"
-        ],
+        "args": ["exec", "-i", "mcp-gitlab-jira-container", "npm", "start"],
         "env": {},
         "docker_image": "exec"
       },

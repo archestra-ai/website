@@ -7,14 +7,7 @@
   },
   "server": {
     "command": "docker",
-    "args": [
-      "run",
-      "-i",
-      "--rm",
-      "-e",
-      "AZURE_CREDENTIALS",
-      "ghcr.io/jdubois/azure-cli-mcp:latest"
-    ],
+    "args": ["run", "-i", "--rm", "-e", "AZURE_CREDENTIALS", "ghcr.io/jdubois/azure-cli-mcp:latest"],
     "env": {
       "AZURE_CREDENTIALS": "${user_config.azure_credentials}"
     },
@@ -40,14 +33,7 @@
     "client_config_permutations": {
       "jdubois-azure-cli-mcp-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "-e",
-          "AZURE_CREDENTIALS",
-          "ghcr.io/jdubois/azure-cli-mcp:latest"
-        ],
+        "args": ["run", "-i", "--rm", "-e", "AZURE_CREDENTIALS", "ghcr.io/jdubois/azure-cli-mcp:latest"],
         "env": {
           "AZURE_CREDENTIALS": "${input:azure-credentials}"
         },
@@ -55,10 +41,7 @@
       },
       "jdubois-azure-cli-mcp-java": {
         "command": "java",
-        "args": [
-          "-jar",
-          "<path-to>/azure-cli-mcp.jar"
-        ],
+        "args": ["-jar", "<path-to>/azure-cli-mcp.jar"],
         "env": {}
       }
     },

@@ -7,10 +7,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "mcp-mongo-server"
-    ],
+    "args": ["-y", "mcp-mongo-server"],
     "env": {
       "MCP_MONGODB_URI": "${user_config.mcp_mongodb_uri}",
       "MCP_MONGODB_READONLY": "${user_config.mcp_mongodb_readonly}"
@@ -44,29 +41,17 @@
     "client_config_permutations": {
       "mcp-mongo-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-mongo-server",
-          "mongodb://muhammed:kilic@localhost:27017/database"
-        ],
+        "args": ["-y", "mcp-mongo-server", "mongodb://muhammed:kilic@localhost:27017/database"],
         "env": {}
       },
       "mcp-mongo-server-readonly": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-mongo-server",
-          "mongodb://muhammed:kilic@localhost:27017/database",
-          "--read-only"
-        ],
+        "args": ["-y", "mcp-mongo-server", "mongodb://muhammed:kilic@localhost:27017/database", "--read-only"],
         "env": {}
       },
       "mcp-mongo-server-env-full": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-mongo-server"
-        ],
+        "args": ["-y", "mcp-mongo-server"],
         "env": {
           "MCP_MONGODB_URI": "mongodb://muhammed:kilic@localhost:27017/database",
           "MCP_MONGODB_READONLY": "true"
@@ -74,10 +59,7 @@
       },
       "mcp-mongo-server-env-uri": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mcp-mongo-server"
-        ],
+        "args": ["-y", "mcp-mongo-server"],
         "env": {
           "MCP_MONGODB_URI": "mongodb://muhammed:kilic@localhost:27017/database"
         }
@@ -102,11 +84,7 @@
       },
       "github-kiliczsh-mcp-mongo-server": {
         "command": "npx",
-        "args": [
-          "-y",
-          "github:kiliczsh/mcp-mongo-server",
-          "mongodb://muhammed:kilic@localhost:27017/database"
-        ],
+        "args": ["-y", "github:kiliczsh/mcp-mongo-server", "mongodb://muhammed:kilic@localhost:27017/database"],
         "env": {}
       },
       "github-kiliczsh-mcp-mongo-server-readonly": {

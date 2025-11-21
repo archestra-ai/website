@@ -7,10 +7,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@notionhq/notion-mcp-server"
-    ],
+    "args": ["-y", "@notionhq/notion-mcp-server"],
     "env": {
       "NOTION_TOKEN": "${user_config.notion_token}",
       "OPENAPI_MCP_HEADERS": "${user_config.openapi_mcp_headers}",
@@ -84,34 +81,21 @@
     "client_config_permutations": {
       "notionhq-notion-mcp-server-notion-token": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@notionhq/notion-mcp-server"
-        ],
+        "args": ["-y", "@notionhq/notion-mcp-server"],
         "env": {
           "NOTION_TOKEN": "<YOUR_NOTION_TOKEN>"
         }
       },
       "notionhq-notion-mcp-server-openapi-headers": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@notionhq/notion-mcp-server"
-        ],
+        "args": ["-y", "@notionhq/notion-mcp-server"],
         "env": {
           "OPENAPI_MCP_HEADERS": "<YOUR_OPENAPI_MCP_HEADERS_JSON_STRING>"
         }
       },
       "mcp-notion-docker-notion-token": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "-e",
-          "NOTION_TOKEN",
-          "mcp/notion"
-        ],
+        "args": ["run", "--rm", "-i", "-e", "NOTION_TOKEN", "mcp/notion"],
         "env": {
           "NOTION_TOKEN": "<YOUR_NOTION_TOKEN>"
         },
@@ -119,14 +103,7 @@
       },
       "mcp-notion-docker-openapi-headers": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "-e",
-          "OPENAPI_MCP_HEADERS",
-          "mcp/notion"
-        ],
+        "args": ["run", "--rm", "-i", "-e", "OPENAPI_MCP_HEADERS", "mcp/notion"],
         "env": {
           "OPENAPI_MCP_HEADERS": "<YOUR_OPENAPI_MCP_HEADERS_JSON_STRING>"
         },
@@ -134,14 +111,7 @@
       },
       "notion-mcp-server-docker-local-notion-token": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "-e",
-          "NOTION_TOKEN=<YOUR_NOTION_TOKEN>",
-          "notion-mcp-server"
-        ],
+        "args": ["run", "--rm", "-i", "-e", "NOTION_TOKEN=<YOUR_NOTION_TOKEN>", "notion-mcp-server"],
         "env": {
           "NOTION_TOKEN": "<YOUR_NOTION_TOKEN>"
         },
@@ -164,58 +134,32 @@
       },
       "notionhq-notion-mcp-server-stdio-default": {
         "command": "npx",
-        "args": [
-          "@notionhq/notion-mcp-server"
-        ],
+        "args": ["@notionhq/notion-mcp-server"],
         "env": {}
       },
       "notionhq-notion-mcp-server-stdio-explicit": {
         "command": "npx",
-        "args": [
-          "@notionhq/notion-mcp-server",
-          "--transport",
-          "stdio"
-        ],
+        "args": ["@notionhq/notion-mcp-server", "--transport", "stdio"],
         "env": {}
       },
       "notionhq-notion-mcp-server-http-default": {
         "command": "npx",
-        "args": [
-          "@notionhq/notion-mcp-server",
-          "--transport",
-          "http"
-        ],
+        "args": ["@notionhq/notion-mcp-server", "--transport", "http"],
         "env": {}
       },
       "notionhq-notion-mcp-server-http-port-8080": {
         "command": "npx",
-        "args": [
-          "@notionhq/notion-mcp-server",
-          "--transport",
-          "http",
-          "--port",
-          "8080"
-        ],
+        "args": ["@notionhq/notion-mcp-server", "--transport", "http", "--port", "8080"],
         "env": {}
       },
       "notionhq-notion-mcp-server-http-auth-token-cli": {
         "command": "npx",
-        "args": [
-          "@notionhq/notion-mcp-server",
-          "--transport",
-          "http",
-          "--auth-token",
-          "<YOUR_SECRET_TOKEN>"
-        ],
+        "args": ["@notionhq/notion-mcp-server", "--transport", "http", "--auth-token", "<YOUR_SECRET_TOKEN>"],
         "env": {}
       },
       "notionhq-notion-mcp-server-http-auth-token-env": {
         "command": "npx",
-        "args": [
-          "@notionhq/notion-mcp-server",
-          "--transport",
-          "http"
-        ],
+        "args": ["@notionhq/notion-mcp-server", "--transport", "http"],
         "env": {
           "AUTH_TOKEN": "<YOUR_SECRET_TOKEN>"
         }

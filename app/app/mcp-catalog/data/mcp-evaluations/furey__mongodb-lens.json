@@ -7,10 +7,7 @@
   },
   "server": {
     "command": "docker",
-    "args": [
-      "run",
-      "furey/mongodb-lens"
-    ],
+    "args": ["run", "furey/mongodb-lens"],
     "env": {},
     "type": "local",
     "docker_image": "furey/mongodb-lens"
@@ -26,12 +23,7 @@
     "client_config_permutations": {
       "mongodb-lens": {
         "command": "npx",
-        "args": [
-          "-y",
-          "mongodb-lens",
-          "--uri",
-          "mongodb://localhost:27017/mydatabase"
-        ]
+        "args": ["-y", "mongodb-lens", "--uri", "mongodb://localhost:27017/mydatabase"]
       },
       "mongodb-lens-docker": {
         "command": "docker",

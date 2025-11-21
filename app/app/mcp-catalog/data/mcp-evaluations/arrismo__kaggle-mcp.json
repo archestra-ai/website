@@ -7,9 +7,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/server.py"
-    ],
+    "args": ["${__dirname}/server.py"],
     "env": {
       "KAGGLE_USERNAME": "${user_config.kaggle_username}",
       "KAGGLE_KEY": "${user_config.kaggle_key}"
@@ -42,22 +40,12 @@
     "client_config_permutations": {
       "kaggle-mcp": {
         "command": "uv",
-        "args": [
-          "run",
-          "kaggle-mcp"
-        ],
+        "args": ["run", "kaggle-mcp"],
         "env": {}
       },
       "kaggle-mcp-test-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-it",
-          "--env-file",
-          ".env",
-          "kaggle-mcp-test"
-        ],
+        "args": ["run", "--rm", "-it", "--env-file", ".env", "kaggle-mcp-test"],
         "env": {},
         "docker_image": ".env"
       },

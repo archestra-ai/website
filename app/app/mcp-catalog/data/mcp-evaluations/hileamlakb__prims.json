@@ -7,10 +7,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "-m",
-      "server.main"
-    ],
+    "args": ["-m", "server.main"],
     "env": {},
     "type": "local"
   },
@@ -25,18 +22,12 @@
     "client_config_permutations": {
       "prims": {
         "command": "python",
-        "args": [
-          "-m",
-          "server.main"
-        ],
+        "args": ["-m", "server.main"],
         "env": {}
       },
       "prims-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "prims-docker"
-        ],
+        "args": ["run", "prims-docker"],
         "env": {},
         "docker_image": "prims-docker"
       }

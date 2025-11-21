@@ -100,45 +100,23 @@
       },
       "jira-mcp-binary-env-file": {
         "command": "jira-mcp",
-        "args": [
-          "-env",
-          ".env"
-        ],
+        "args": ["-env", ".env"],
         "env": {}
       },
       "ghcr.io-nguyenvanduocit-jira-mcp-docker-env-file": {
         "command": "docker",
-        "args": [
-          "run",
-          "--rm",
-          "-i",
-          "--env-file",
-          ".env",
-          "ghcr.io/nguyenvanduocit/jira-mcp:latest"
-        ],
+        "args": ["run", "--rm", "-i", "--env-file", ".env", "ghcr.io/nguyenvanduocit/jira-mcp:latest"],
         "env": {},
         "docker_image": ".env"
       },
       "jira-mcp-binary-http-mode": {
         "command": "jira-mcp",
-        "args": [
-          "-env",
-          ".env",
-          "-http_port",
-          "3000"
-        ],
+        "args": ["-env", ".env", "-http_port", "3000"],
         "env": {}
       },
       "jira-mcp-go-run-dev": {
         "command": "go",
-        "args": [
-          "run",
-          "main.go",
-          "-env",
-          ".env",
-          "-http_port",
-          "3002"
-        ],
+        "args": ["run", "main.go", "-env", ".env", "-http_port", "3002"],
         "env": {}
       }
     },

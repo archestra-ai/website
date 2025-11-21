@@ -7,10 +7,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "-y",
-      "@circleci/mcp-server-circleci"
-    ],
+    "args": ["-y", "@circleci/mcp-server-circleci"],
     "env": {
       "CIRCLECI_TOKEN": "${user_config.circleci_token}",
       "CIRCLECI_BASE_URL": "${user_config.circleci_base_url}"
@@ -43,10 +40,7 @@
     "client_config_permutations": {
       "circleci-mcp-server-circleci-npx-hardcoded-env": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@circleci/mcp-server-circleci"
-        ],
+        "args": ["-y", "@circleci/mcp-server-circleci"],
         "env": {
           "CIRCLECI_TOKEN": "your-circleci-token",
           "CIRCLECI_BASE_URL": "https://circleci.com"
@@ -72,10 +66,7 @@
       },
       "circleci-mcp-server-circleci-npx-stdio-input-env": {
         "command": "npx",
-        "args": [
-          "-y",
-          "@circleci/mcp-server-circleci"
-        ],
+        "args": ["-y", "@circleci/mcp-server-circleci"],
         "env": {
           "CIRCLECI_TOKEN": "${input:circleci-token}",
           "CIRCLECI_BASE_URL": "${input:circleci-base-url}"

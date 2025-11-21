@@ -7,10 +7,7 @@
   },
   "server": {
     "command": "docker",
-    "args": [
-      "run",
-      "ghcr.io/cbcoutinho/nextcloud--mcp--server-blue"
-    ],
+    "args": ["run", "ghcr.io/cbcoutinho/nextcloud--mcp--server-blue"],
     "env": {},
     "type": "local",
     "docker_image": "ghcr.io/cbcoutinho/nextcloud--mcp--server-blue"

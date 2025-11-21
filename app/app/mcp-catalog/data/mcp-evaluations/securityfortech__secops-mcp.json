@@ -7,9 +7,7 @@
   },
   "server": {
     "command": "python",
-    "args": [
-      "${__dirname}/main.py"
-    ],
+    "args": ["${__dirname}/main.py"],
     "env": {},
     "type": "local"
   },
@@ -24,20 +22,13 @@
     "client_config_permutations": {
       "secops-mcp-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-it",
-          "--rm",
-          "secops-mcp"
-        ],
+        "args": ["run", "-it", "--rm", "secops-mcp"],
         "env": {},
         "docker_image": "secops-mcp"
       },
       "secops-mcp": {
         "command": "python",
-        "args": [
-          "main.py"
-        ],
+        "args": ["main.py"],
         "env": {}
       }
     },

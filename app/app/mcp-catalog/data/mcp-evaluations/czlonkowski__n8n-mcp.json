@@ -7,9 +7,7 @@
   },
   "server": {
     "command": "npx",
-    "args": [
-      "n8n-mcp"
-    ],
+    "args": ["n8n-mcp"],
     "env": {
       "MCP_MODE": "stdio",
       "LOG_LEVEL": "error",
@@ -19,13 +17,7 @@
   },
   "tools": [],
   "prompts": [],
-  "keywords": [
-    "n8n",
-    "workflow",
-    "automation",
-    "documentation",
-    "nodes"
-  ],
+  "keywords": ["n8n", "workflow", "automation", "documentation", "nodes"],
   "user_config": {
     "N8N_API_URL": {
       "type": "string",
@@ -48,9 +40,7 @@
     "client_config_permutations": {
       "n8n-mcp-configured": {
         "command": "npx",
-        "args": [
-          "n8n-mcp"
-        ],
+        "args": ["n8n-mcp"],
         "env": {
           "MCP_MODE": "stdio",
           "LOG_LEVEL": "error",

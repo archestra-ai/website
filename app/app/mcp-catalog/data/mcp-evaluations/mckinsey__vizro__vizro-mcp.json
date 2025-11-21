@@ -7,9 +7,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "vizro-mcp"
-    ],
+    "args": ["vizro-mcp"],
     "env": {},
     "type": "local"
   },
@@ -24,19 +22,12 @@
     "client_config_permutations": {
       "vizro-mcp": {
         "command": "uvx",
-        "args": [
-          "vizro-mcp"
-        ],
+        "args": ["vizro-mcp"],
         "env": {}
       },
       "mcp-vizro-docker": {
         "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "mcp/vizro"
-        ],
+        "args": ["run", "-i", "--rm", "mcp/vizro"],
         "env": {},
         "docker_image": "mcp/vizro"
       },
