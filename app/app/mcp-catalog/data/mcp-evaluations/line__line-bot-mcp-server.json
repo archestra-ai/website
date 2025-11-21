@@ -7,7 +7,9 @@
   },
   "server": {
     "command": "npx",
-    "args": ["@line/line-bot-mcp-server"],
+    "args": [
+      "@line/line-bot-mcp-server"
+    ],
     "env": {
       "CHANNEL_ACCESS_TOKEN": "${user_config.channel_access_token}",
       "DESTINATION_USER_ID": "${user_config.destination_user_id}"
@@ -40,7 +42,9 @@
     "client_config_permutations": {
       "line-line-bot-mcp-server": {
         "command": "npx",
-        "args": ["@line/line-bot-mcp-server"],
+        "args": [
+          "@line/line-bot-mcp-server"
+        ],
         "env": {
           "CHANNEL_ACCESS_TOKEN": "FILL_HERE",
           "DESTINATION_USER_ID": "FILL_HERE"
@@ -61,7 +65,8 @@
         "env": {
           "CHANNEL_ACCESS_TOKEN": "FILL_HERE",
           "DESTINATION_USER_ID": "FILL_HERE"
-        }
+        },
+        "docker_image": "line/line-bot-mcp-server"
       }
     },
     "oauth": {

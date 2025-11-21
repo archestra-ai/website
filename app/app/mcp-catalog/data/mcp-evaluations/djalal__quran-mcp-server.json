@@ -7,7 +7,9 @@
   },
   "server": {
     "command": "node",
-    "args": ["${__dirname}/dist/src/server.js"],
+    "args": [
+      "${__dirname}/dist/src/server.js"
+    ],
     "env": {
       "API_KEY": "${user_config.api_key}",
       "PORT": "${user_config.port}",
@@ -61,11 +63,14 @@
         "env": {
           "API_KEY": "your_api_key_if_needed",
           "VERBOSE_MODE": "true"
-        }
+        },
+        "docker_image": "quran-mcp-server"
       },
       "quran-mcp-server-node": {
         "command": "node",
-        "args": ["/path/to/quran-mcp-server/dist/src/server.js"],
+        "args": [
+          "/path/to/quran-mcp-server/dist/src/server.js"
+        ],
         "env": {
           "API_KEY": "your_api_key_if_needed",
           "VERBOSE_MODE": "true"
@@ -73,7 +78,10 @@
       },
       "quran-mcp-server-dev": {
         "command": "npx",
-        "args": ["ts-node", "/path/to/quran-mcp-server/src/server.ts"],
+        "args": [
+          "ts-node",
+          "/path/to/quran-mcp-server/src/server.ts"
+        ],
         "env": {
           "API_KEY": "your_api_key_if_needed",
           "VERBOSE_MODE": "true"

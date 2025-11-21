@@ -28,7 +28,8 @@
       "WEATHERBIT_API_KEY": "${user_config.weatherbit_api_key}",
       "REQUEST_HEADERS": "${user_config.request_headers}"
     },
-    "type": "local"
+    "type": "local",
+    "docker_image": "ckanthony/openapi-mcp:latest"
   },
   "tools": [],
   "prompts": [],
@@ -90,7 +91,8 @@
           "--api-key-loc",
           "header"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "$(pwd)/my-api/.env"
       },
       "ckanthony-openapi-mcp-docker-remote": {
         "command": "docker",
@@ -113,7 +115,8 @@
         ],
         "env": {
           "SOME_API_KEY": "your_actual_key"
-        }
+        },
+        "docker_image": "ckanthony/openapi-mcp:latest"
       }
     },
     "oauth": {

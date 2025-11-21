@@ -7,7 +7,11 @@
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "@pulumi/mcp-server@latest", "stdio"],
+    "args": [
+      "-y",
+      "@pulumi/mcp-server@latest",
+      "stdio"
+    ],
     "env": {},
     "type": "local"
   },
@@ -22,28 +26,60 @@
     "client_config_permutations": {
       "pulumi-mcp-server-stdio": {
         "command": "npx",
-        "args": ["-y", "@pulumi/mcp-server@latest", "stdio"],
+        "args": [
+          "-y",
+          "@pulumi/mcp-server@latest",
+          "stdio"
+        ],
         "env": {}
       },
       "pulumi-mcp-server-sse": {
         "command": "npx",
-        "args": ["-y", "@pulumi/mcp-server@latest", "sse"],
+        "args": [
+          "-y",
+          "@pulumi/mcp-server@latest",
+          "sse"
+        ],
         "env": {}
       },
       "pulumi-mcp-server-docker-stdio": {
         "command": "docker",
-        "args": ["run", "-i", "--rm", "pulumi/mcp-server:latest", "stdio"],
-        "env": {}
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "pulumi/mcp-server:latest",
+          "stdio"
+        ],
+        "env": {},
+        "docker_image": "pulumi/mcp-server:latest"
       },
       "pulumi-mcp-server-docker-sse": {
         "command": "docker",
-        "args": ["run", "-i", "--rm", "-p", "3000:3000", "pulumi/mcp-server:latest", "sse"],
-        "env": {}
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-p",
+          "3000:3000",
+          "pulumi/mcp-server:latest",
+          "sse"
+        ],
+        "env": {},
+        "docker_image": "pulumi/mcp-server:latest"
       },
       "pulumi-mcp-server-docker-with-volume": {
         "command": "docker",
-        "args": ["run", "-i", "--rm", "-v", "~/projects/my-pulumi-app:/app/project", "pulumi/mcp-server:latest"],
-        "env": {}
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-v",
+          "~/projects/my-pulumi-app:/app/project",
+          "pulumi/mcp-server:latest"
+        ],
+        "env": {},
+        "docker_image": "pulumi/mcp-server:latest"
       }
     },
     "oauth": {

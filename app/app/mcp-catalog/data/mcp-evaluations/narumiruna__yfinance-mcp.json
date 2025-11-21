@@ -7,7 +7,9 @@
   },
   "server": {
     "command": "uvx",
-    "args": ["yfmcp@latest"],
+    "args": [
+      "yfmcp@latest"
+    ],
     "env": {},
     "type": "local"
   },
@@ -22,13 +24,21 @@
     "client_config_permutations": {
       "yfmcp": {
         "command": "uvx",
-        "args": ["yfmcp@latest"],
+        "args": [
+          "yfmcp@latest"
+        ],
         "env": {}
       },
       "narumi-yfinance-mcp-docker": {
         "command": "docker",
-        "args": ["run", "-i", "--rm", "narumi/yfinance-mcp"],
-        "env": {}
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "narumi/yfinance-mcp"
+        ],
+        "env": {},
+        "docker_image": "narumi/yfinance-mcp"
       }
     },
     "oauth": {

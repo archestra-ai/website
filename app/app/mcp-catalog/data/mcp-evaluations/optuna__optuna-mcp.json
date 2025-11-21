@@ -7,7 +7,11 @@
   },
   "server": {
     "command": "uvx",
-    "args": ["optuna-mcp", "--storage", "${user_config.storage}"],
+    "args": [
+      "optuna-mcp",
+      "--storage",
+      "${user_config.storage}"
+    ],
     "env": {},
     "type": "local"
   },
@@ -30,12 +34,18 @@
     "client_config_permutations": {
       "optuna-mcp": {
         "command": "uvx",
-        "args": ["optuna-mcp"],
+        "args": [
+          "optuna-mcp"
+        ],
         "env": {}
       },
       "optuna-mcp-configured": {
         "command": "uvx",
-        "args": ["optuna-mcp", "--storage", "sqlite:///optuna.db"],
+        "args": [
+          "optuna-mcp",
+          "--storage",
+          "sqlite:///optuna.db"
+        ],
         "env": {}
       },
       "optuna-optuna-mcp-docker": {
@@ -51,7 +61,8 @@
           "--storage",
           "sqlite:////app/workspace/optuna.db"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "optuna/optuna-mcp:latest"
       }
     },
     "oauth": {

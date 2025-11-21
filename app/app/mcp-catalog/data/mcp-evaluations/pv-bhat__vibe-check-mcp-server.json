@@ -7,7 +7,9 @@
   },
   "server": {
     "command": "node",
-    "args": ["${__dirname}/build/index.js"],
+    "args": [
+      "${__dirname}/build/index.js"
+    ],
     "env": {
       "GEMINI_API_KEY": "${user_config.gemini_api_key}",
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
@@ -64,19 +66,31 @@
     "client_config_permutations": {
       "vibe-check-mcp-server": {
         "command": "npm",
-        "args": ["start"],
+        "args": [
+          "start"
+        ],
         "env": {}
       },
       "vibe-check-mcp-docker": {
         "command": "docker",
-        "args": ["run", "-e", "GEMINI_API_KEY=your_gemini_api_key", "-p", "3000:3000", "vibe-check-mcp"],
+        "args": [
+          "run",
+          "-e",
+          "GEMINI_API_KEY=your_gemini_api_key",
+          "-p",
+          "3000:3000",
+          "vibe-check-mcp"
+        ],
         "env": {
           "GEMINI_API_KEY": "your_gemini_api_key"
-        }
+        },
+        "docker_image": "vibe-check-mcp"
       },
       "vibe-check-mcp-with-config": {
         "command": "node",
-        "args": ["/path/to/vibe-check-mcp/build/index.js"],
+        "args": [
+          "/path/to/vibe-check-mcp/build/index.js"
+        ],
         "env": {
           "GEMINI_API_KEY": "YOUR_GEMINI_API_KEY"
         }

@@ -58,7 +58,14 @@
       },
       "mcp-package-version-sse": {
         "command": "mcp-package-version",
-        "args": ["--transport", "sse", "--port", "18080", "--base-url", "http://localhost:18080"],
+        "args": [
+          "--transport",
+          "sse",
+          "--port",
+          "18080",
+          "--base-url",
+          "http://localhost:18080"
+        ],
         "env": {}
       },
       "mcp-package-version-configured": {
@@ -68,8 +75,14 @@
       },
       "mcp-package-version-docker": {
         "command": "docker",
-        "args": ["run", "-p", "18080:18080", "ghcr.io/sammcj/mcp-package-version:main"],
-        "env": {}
+        "args": [
+          "run",
+          "-p",
+          "18080:18080",
+          "ghcr.io/sammcj/mcp-package-version:main"
+        ],
+        "env": {},
+        "docker_image": "ghcr.io/sammcj/mcp-package-version:main"
       }
     },
     "oauth": {

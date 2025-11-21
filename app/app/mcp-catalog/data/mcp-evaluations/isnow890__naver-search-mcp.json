@@ -7,7 +7,10 @@
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "@isnow890/naver-search-mcp"],
+    "args": [
+      "-y",
+      "@isnow890/naver-search-mcp"
+    ],
     "env": {
       "NAVER_CLIENT_ID": "${user_config.naver_client_id}",
       "NAVER_CLIENT_SECRET": "${user_config.naver_client_secret}"
@@ -40,7 +43,9 @@
     "client_config_permutations": {
       "isnow890-naver-search-mcp": {
         "command": "npx",
-        "args": ["@isnow890/naver-search-mcp"],
+        "args": [
+          "@isnow890/naver-search-mcp"
+        ],
         "env": {
           "NAVER_CLIENT_ID": "your_client_id",
           "NAVER_CLIENT_SECRET": "your_client_secret"
@@ -48,7 +53,10 @@
       },
       "isnow890-naver-search-mcp-configured": {
         "command": "npx",
-        "args": ["-y", "@isnow890/naver-search-mcp"],
+        "args": [
+          "-y",
+          "@isnow890/naver-search-mcp"
+        ],
         "env": {
           "NAVER_CLIENT_ID": "your_client_id",
           "NAVER_CLIENT_SECRET": "your_client_secret"
@@ -69,7 +77,8 @@
         "env": {
           "NAVER_CLIENT_ID": "your_client_id",
           "NAVER_CLIENT_SECRET": "your_client_secret"
-        }
+        },
+        "docker_image": "mcp/naver-search"
       }
     },
     "oauth": {

@@ -7,7 +7,9 @@
   },
   "server": {
     "command": "node",
-    "args": ["${__dirname}/dist/index.js"],
+    "args": [
+      "${__dirname}/dist/index.js"
+    ],
     "env": {
       "WECHAT_APP_ID": "${user_config.wechat_app_id}",
       "WECHAT_APP_SECRET": "${user_config.wechat_app_secret}",
@@ -48,7 +50,9 @@
     "client_config_permutations": {
       "wenyan-mcp": {
         "command": "node",
-        "args": ["Your/path/to/wenyan-mcp/dist/index.js"],
+        "args": [
+          "Your/path/to/wenyan-mcp/dist/index.js"
+        ],
         "env": {
           "WECHAT_APP_ID": "your_app_id",
           "WECHAT_APP_SECRET": "your_app_secret"
@@ -74,7 +78,8 @@
           "WECHAT_APP_ID": "your_app_id",
           "WECHAT_APP_SECRET": "your_app_secret",
           "HOST_IMAGE_PATH": "/your/host/image/path"
-        }
+        },
+        "docker_image": "wenyan-mcp"
       }
     },
     "oauth": {

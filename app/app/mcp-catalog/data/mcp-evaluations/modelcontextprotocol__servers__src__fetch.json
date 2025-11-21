@@ -48,17 +48,28 @@
     "client_config_permutations": {
       "mcp-server-fetch": {
         "command": "uvx",
-        "args": ["mcp-server-fetch"],
+        "args": [
+          "mcp-server-fetch"
+        ],
         "env": {}
       },
       "mcp-fetch-docker": {
         "command": "docker",
-        "args": ["run", "-i", "--rm", "mcp/fetch"],
-        "env": {}
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "mcp/fetch"
+        ],
+        "env": {},
+        "docker_image": "mcp/fetch"
       },
       "mcp_server_fetch": {
         "command": "python",
-        "args": ["-m", "mcp_server_fetch"],
+        "args": [
+          "-m",
+          "mcp_server_fetch"
+        ],
         "env": {}
       }
     },

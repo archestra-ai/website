@@ -7,7 +7,14 @@
   },
   "server": {
     "command": "uv",
-    "args": ["run", "--with", "mcp[cli]", "mcp", "run", "${__dirname}/main.py"],
+    "args": [
+      "run",
+      "--with",
+      "mcp[cli]",
+      "mcp",
+      "run",
+      "${__dirname}/main.py"
+    ],
     "env": {
       "LEDGER_FILE": "${user_config.ledger_file}"
     },
@@ -43,16 +50,29 @@
         ],
         "env": {
           "LEDGER_FILE": "/main.ledger"
-        }
+        },
+        "docker_image": "minhyeoky/mcp-ledger"
       },
       "mcp-server-ledger-uv-configured": {
         "command": "uv",
-        "args": ["run", "--env-file", "/path/to/your/.env", "--with", "mcp[cli]", "mcp", "run", "<repo_path>/main.py"],
+        "args": [
+          "run",
+          "--env-file",
+          "/path/to/your/.env",
+          "--with",
+          "mcp[cli]",
+          "mcp",
+          "run",
+          "<repo_path>/main.py"
+        ],
         "env": {}
       },
       "mcp-server-ledger-dev": {
         "command": "mcp",
-        "args": ["dev", "main.py"],
+        "args": [
+          "dev",
+          "main.py"
+        ],
         "env": {}
       }
     },

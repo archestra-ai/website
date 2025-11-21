@@ -7,9 +7,16 @@
   },
   "server": {
     "command": "docker",
-    "args": ["run", "-i", "--rm", "--init", "mcr.microsoft.com/playwright/mcp"],
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "--init",
+      "mcr.microsoft.com/playwright/mcp"
+    ],
     "env": {},
-    "type": "local"
+    "type": "local",
+    "docker_image": "mcr.microsoft.com/playwright/mcp"
   },
   "tools": [],
   "prompts": [],
@@ -22,7 +29,9 @@
     "client_config_permutations": {
       "playwright-mcp": {
         "command": "npx",
-        "args": ["@playwright/mcp@latest"],
+        "args": [
+          "@playwright/mcp@latest"
+        ],
         "env": {}
       }
     },

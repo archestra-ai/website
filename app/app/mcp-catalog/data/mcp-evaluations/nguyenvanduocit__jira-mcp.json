@@ -65,7 +65,8 @@
           "ATLASSIAN_HOST": "https://your-company.atlassian.net",
           "ATLASSIAN_EMAIL": "your-email@company.com",
           "ATLASSIAN_TOKEN": "your-api-token"
-        }
+        },
+        "docker_image": "ghcr.io/nguyenvanduocit/jira-mcp:latest"
       },
       "ghcr.io-nguyenvanduocit-jira-mcp-docker-cursor-configured": {
         "command": "docker",
@@ -85,7 +86,8 @@
           "ATLASSIAN_HOST": "https://your-company.atlassian.net",
           "ATLASSIAN_EMAIL": "your-email@company.com",
           "ATLASSIAN_TOKEN": "your-api-token"
-        }
+        },
+        "docker_image": "ghcr.io/nguyenvanduocit/jira-mcp:latest"
       },
       "jira-mcp-binary-cursor-configured": {
         "command": "/usr/local/bin/jira-mcp",
@@ -98,22 +100,45 @@
       },
       "jira-mcp-binary-env-file": {
         "command": "jira-mcp",
-        "args": ["-env", ".env"],
+        "args": [
+          "-env",
+          ".env"
+        ],
         "env": {}
       },
       "ghcr.io-nguyenvanduocit-jira-mcp-docker-env-file": {
         "command": "docker",
-        "args": ["run", "--rm", "-i", "--env-file", ".env", "ghcr.io/nguyenvanduocit/jira-mcp:latest"],
-        "env": {}
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "--env-file",
+          ".env",
+          "ghcr.io/nguyenvanduocit/jira-mcp:latest"
+        ],
+        "env": {},
+        "docker_image": ".env"
       },
       "jira-mcp-binary-http-mode": {
         "command": "jira-mcp",
-        "args": ["-env", ".env", "-http_port", "3000"],
+        "args": [
+          "-env",
+          ".env",
+          "-http_port",
+          "3000"
+        ],
         "env": {}
       },
       "jira-mcp-go-run-dev": {
         "command": "go",
-        "args": ["run", "main.go", "-env", ".env", "-http_port", "3002"],
+        "args": [
+          "run",
+          "main.go",
+          "-env",
+          ".env",
+          "-http_port",
+          "3002"
+        ],
         "env": {}
       }
     },

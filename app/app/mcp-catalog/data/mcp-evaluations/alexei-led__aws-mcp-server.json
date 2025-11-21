@@ -7,7 +7,9 @@
   },
   "server": {
     "command": "python",
-    "args": ["${__dirname}/aws_mcp_server/main.py"],
+    "args": [
+      "${__dirname}/aws_mcp_server/main.py"
+    ],
     "env": {
       "AWS_MCP_TIMEOUT": "${user_config.aws_mcp_timeout}",
       "AWS_MCP_MAX_OUTPUT": "${user_config.aws_mcp_max_output}",
@@ -80,12 +82,22 @@
     "client_config_permutations": {
       "alexei-led-aws-mcp-server-docker": {
         "command": "docker",
-        "args": ["compose", "-f", "deploy/docker/docker-compose.yml", "up", "-d"],
-        "env": {}
+        "args": [
+          "compose",
+          "-f",
+          "deploy/docker/docker-compose.yml",
+          "up",
+          "-d"
+        ],
+        "env": {},
+        "docker_image": "compose"
       },
       "aws_mcp_server": {
         "command": "python",
-        "args": ["-m", "aws_mcp_server"],
+        "args": [
+          "-m",
+          "aws_mcp_server"
+        ],
         "env": {}
       }
     },

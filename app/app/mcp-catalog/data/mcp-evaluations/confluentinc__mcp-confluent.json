@@ -7,7 +7,10 @@
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "@confluentinc/mcp-confluent"],
+    "args": [
+      "-y",
+      "@confluentinc/mcp-confluent"
+    ],
     "env": {
       "HTTP_HOST": "${user_config.http_host}",
       "HTTP_MCP_ENDPOINT_PATH": "${user_config.http_mcp_endpoint_path}",
@@ -254,7 +257,8 @@
           "BOOTSTRAP_SERVERS": "your_bootstrap_servers",
           "KAFKA_API_KEY": "your_api_key",
           "KAFKA_API_SECRET": "your_api_secret"
-        }
+        },
+        "docker_image": "mcp-confluent"
       }
     },
     "oauth": {

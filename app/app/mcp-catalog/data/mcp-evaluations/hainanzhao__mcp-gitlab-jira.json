@@ -82,8 +82,15 @@
       },
       "hainanzhao-mcp-gitlab-jira-docker-persistent": {
         "command": "docker",
-        "args": ["exec", "-i", "mcp-gitlab-jira-container", "npm", "start"],
-        "env": {}
+        "args": [
+          "exec",
+          "-i",
+          "mcp-gitlab-jira-container",
+          "npm",
+          "start"
+        ],
+        "env": {},
+        "docker_image": "exec"
       },
       "hainanzhao-mcp-gitlab-jira-docker-onetime": {
         "command": "docker",
@@ -103,7 +110,8 @@
           "ATLASSIAN_API_TOKEN=your-jira-api-token",
           "hainanzhao/mcp-gitlab-jira:latest"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "hainanzhao/mcp-gitlab-jira:latest"
       }
     },
     "oauth": {

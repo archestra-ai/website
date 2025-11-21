@@ -39,8 +39,16 @@
       },
       "product-hunt-mcp-docker": {
         "command": "docker",
-        "args": ["run", "-i", "--rm", "-e", "PRODUCT_HUNT_TOKEN=your_token_here", "product-hunt-mcp"],
-        "env": {}
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "PRODUCT_HUNT_TOKEN=your_token_here",
+          "product-hunt-mcp"
+        ],
+        "env": {},
+        "docker_image": "product-hunt-mcp"
       }
     },
     "oauth": {

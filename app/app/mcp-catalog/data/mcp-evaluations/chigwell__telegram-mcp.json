@@ -22,7 +22,10 @@
     "client_config_permutations": {
       "telegram-mcp-docker-compose": {
         "command": "docker-compose",
-        "args": ["up", "-d"],
+        "args": [
+          "up",
+          "-d"
+        ],
         "env": {}
       },
       "telegram-mcp-docker": {
@@ -46,7 +49,8 @@
           "TELEGRAM_API_ID": "your_api_id_here",
           "TELEGRAM_API_HASH": "your_api_hash_here",
           "TELEGRAM_SESSION_STRING": "your_session_string_here"
-        }
+        },
+        "docker_image": "telegram-mcp:latest"
       }
     },
     "oauth": {

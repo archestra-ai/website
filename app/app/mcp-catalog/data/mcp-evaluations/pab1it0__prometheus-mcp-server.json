@@ -30,7 +30,8 @@
       "PROMETHEUS_TOKEN": "${user_config.prometheus_token}",
       "ORG_ID": "${user_config.org_id}"
     },
-    "type": "local"
+    "type": "local",
+    "docker_image": "ghcr.io/pab1it0/prometheus-mcp-server:latest"
   },
   "tools": [],
   "prompts": [],
@@ -79,10 +80,18 @@
     "client_config_permutations": {
       "prometheus-mcp-server-docker": {
         "command": "docker",
-        "args": ["run", "-i", "--rm", "-e", "PROMETHEUS_URL", "ghcr.io/pab1it0/prometheus-mcp-server:latest"],
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "PROMETHEUS_URL",
+          "ghcr.io/pab1it0/prometheus-mcp-server:latest"
+        ],
         "env": {
           "PROMETHEUS_URL": "<url>"
-        }
+        },
+        "docker_image": "ghcr.io/pab1it0/prometheus-mcp-server:latest"
       }
     },
     "oauth": {

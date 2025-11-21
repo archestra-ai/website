@@ -7,7 +7,9 @@
   },
   "server": {
     "command": "uvx",
-    "args": ["zapcap-mcp-server"],
+    "args": [
+      "zapcap-mcp-server"
+    ],
     "env": {
       "ZAPCAP_API_KEY": "${user_config.zapcap_api_key}"
     },
@@ -32,7 +34,9 @@
     "client_config_permutations": {
       "zapcap-mcp-server": {
         "command": "uvx",
-        "args": ["zapcap-mcp-server"],
+        "args": [
+          "zapcap-mcp-server"
+        ],
         "env": {
           "ZAPCAP_API_KEY": "your_api_key_here"
         }
@@ -54,7 +58,8 @@
         "env": {
           "DOCKER_CLI_HINTS": "false",
           "ZAPCAP_API_KEY": "your_api_key_here"
-        }
+        },
+        "docker_image": "bogdan01m/zapcap-mcp-server:latest"
       }
     },
     "oauth": {

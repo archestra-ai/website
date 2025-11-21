@@ -7,7 +7,12 @@
   },
   "server": {
     "command": "uv",
-    "args": ["--directory", "${__dirname}/intruder_mcp", "run", "server.py"],
+    "args": [
+      "--directory",
+      "${__dirname}/intruder_mcp",
+      "run",
+      "server.py"
+    ],
     "env": {
       "INTRUDER_API_KEY": "${user_config.intruder_api_key}"
     },
@@ -32,7 +37,12 @@
     "client_config_permutations": {
       "intruder": {
         "command": "uv",
-        "args": ["--directory", "path/to/intruder-mcp/intruder_mcp", "run", "server.py"],
+        "args": [
+          "--directory",
+          "path/to/intruder-mcp/intruder_mcp",
+          "run",
+          "server.py"
+        ],
         "env": {
           "INTRUDER_API_KEY": "your-api-key"
         }
@@ -51,7 +61,8 @@
         ],
         "env": {
           "INTRUDER_API_KEY": "<your-api-key>"
-        }
+        },
+        "docker_image": "container"
       }
     },
     "oauth": {

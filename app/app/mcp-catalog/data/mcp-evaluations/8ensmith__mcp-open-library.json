@@ -7,7 +7,10 @@
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "@8enSmith/mcp-open-library"],
+    "args": [
+      "-y",
+      "@8enSmith/mcp-open-library"
+    ],
     "env": {},
     "type": "local"
   },
@@ -22,13 +25,22 @@
     "client_config_permutations": {
       "8enSmith-mcp-open-library": {
         "command": "npx",
-        "args": ["-y", "@8enSmith/mcp-open-library"],
+        "args": [
+          "-y",
+          "@8enSmith/mcp-open-library"
+        ],
         "env": {}
       },
       "mcp-open-library-docker": {
         "command": "docker",
-        "args": ["run", "-p", "8080:8080", "mcp-open-library"],
-        "env": {}
+        "args": [
+          "run",
+          "-p",
+          "8080:8080",
+          "mcp-open-library"
+        ],
+        "env": {},
+        "docker_image": "mcp-open-library"
       }
     },
     "oauth": {

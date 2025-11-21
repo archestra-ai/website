@@ -31,7 +31,8 @@
       "RUNTIME_URL": "${user_config.runtime_url}",
       "RUNTIME_TOKEN": "${user_config.runtime_token}"
     },
-    "type": "local"
+    "type": "local",
+    "docker_image": "datalayer/jupyter-mcp-server:latest"
   },
   "tools": [],
   "prompts": [],
@@ -104,7 +105,8 @@
           "DOCUMENT_ID": "notebook.ipynb",
           "RUNTIME_URL": "http://host.docker.internal:8888",
           "RUNTIME_TOKEN": "MY_TOKEN"
-        }
+        },
+        "docker_image": "datalayer/jupyter-mcp-server:latest"
       },
       "datalayer-jupyter-mcp-server-docker-linux": {
         "command": "docker",
@@ -131,7 +133,8 @@
           "DOCUMENT_ID": "notebook.ipynb",
           "RUNTIME_URL": "http://localhost:8888",
           "RUNTIME_TOKEN": "MY_TOKEN"
-        }
+        },
+        "docker_image": "datalayer/jupyter-mcp-server:latest"
       }
     },
     "oauth": {

@@ -70,7 +70,8 @@
           "MCP_SERVER_MODE": "sse",
           "VM_INSTANCE_ENTRYPOINT": "https://play.victoriametrics.com",
           "VM_INSTANCE_TYPE": "cluster"
-        }
+        },
+        "docker_image": "ghcr.io/victoriametrics-community/mcp-victoriametrics"
       }
     },
     "oauth": {

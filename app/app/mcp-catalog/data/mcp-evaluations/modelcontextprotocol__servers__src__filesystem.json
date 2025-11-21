@@ -7,7 +7,11 @@
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "@modelcontextprotocol/server-filesystem", "${user_config.allowed_directories}"],
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-filesystem",
+      "${user_config.allowed_directories}"
+    ],
     "env": {},
     "type": "local"
   },
@@ -60,11 +64,16 @@
           "mcp/filesystem",
           "/projects"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp/filesystem"
       },
       "modelcontextprotocol-server-filesystem-vscode": {
         "command": "npx",
-        "args": ["-y", "@modelcontextprotocol/server-filesystem", "${workspaceFolder}"],
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "${workspaceFolder}"
+        ],
         "env": {}
       },
       "mcp-filesystem-docker-vscode": {
@@ -78,7 +87,8 @@
           "mcp/filesystem",
           "/projects"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp/filesystem"
       }
     },
     "oauth": {

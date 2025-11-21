@@ -7,7 +7,9 @@
   },
   "server": {
     "command": "uvx",
-    "args": ["mcp-server-docker"],
+    "args": [
+      "mcp-server-docker"
+    ],
     "env": {
       "DOCKER_HOST": "${user_config.docker_host}"
     },
@@ -32,24 +34,41 @@
     "client_config_permutations": {
       "mcp-server-docker": {
         "command": "uvx",
-        "args": ["mcp-server-docker"],
+        "args": [
+          "mcp-server-docker"
+        ],
         "env": {}
       },
       "mcp-server-docker-docker": {
         "command": "docker",
-        "args": ["run", "-i", "--rm", "-v", "/var/run/docker.sock:/var/run/docker.sock", "mcp-server-docker:latest"],
-        "env": {}
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-v",
+          "/var/run/docker.sock:/var/run/docker.sock",
+          "mcp-server-docker:latest"
+        ],
+        "env": {},
+        "docker_image": "mcp-server-docker:latest"
       },
       "mcp-server-docker-ssh": {
         "command": "uvx",
-        "args": ["mcp-server-docker"],
+        "args": [
+          "mcp-server-docker"
+        ],
         "env": {
           "DOCKER_HOST": "ssh://myusername@myhost.example.com"
         }
       },
       "mcp-server-docker-devbox": {
         "command": "/path/to/repo/.devbox/nix/profile/default/bin/uv",
-        "args": ["--directory", "/path/to/repo/", "run", "mcp-server-docker"],
+        "args": [
+          "--directory",
+          "/path/to/repo/",
+          "run",
+          "mcp-server-docker"
+        ],
         "env": {}
       }
     },

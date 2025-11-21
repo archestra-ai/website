@@ -7,7 +7,9 @@
   },
   "server": {
     "command": "python",
-    "args": ["${__dirname}/mcp/main.py"],
+    "args": [
+      "${__dirname}/mcp/main.py"
+    ],
     "env": {
       "PORT": "${user_config.port}",
       "MCP_KEY": "${user_config.mcp_key}",
@@ -76,7 +78,8 @@
         "env": {
           "MCP_KEY": "YOUR-MCP-KEY",
           "OPENAI_API_KEY": "YOUR-OPENAI-KRY"
-        }
+        },
+        "docker_image": "youtube_mcp"
       }
     },
     "oauth": {

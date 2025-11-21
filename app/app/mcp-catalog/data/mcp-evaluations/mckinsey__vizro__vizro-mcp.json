@@ -7,7 +7,9 @@
   },
   "server": {
     "command": "uvx",
-    "args": ["vizro-mcp"],
+    "args": [
+      "vizro-mcp"
+    ],
     "env": {},
     "type": "local"
   },
@@ -22,13 +24,21 @@
     "client_config_permutations": {
       "vizro-mcp": {
         "command": "uvx",
-        "args": ["vizro-mcp"],
+        "args": [
+          "vizro-mcp"
+        ],
         "env": {}
       },
       "mcp-vizro-docker": {
         "command": "docker",
-        "args": ["run", "-i", "--rm", "mcp/vizro"],
-        "env": {}
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "mcp/vizro"
+        ],
+        "env": {},
+        "docker_image": "mcp/vizro"
       },
       "mcp-vizro-docker-with-config": {
         "command": "docker",
@@ -42,7 +52,8 @@
           "type=bind,src=</absolute/path/to/data.csv>,dst=</absolute/path/to/data.csv>",
           "mcp/vizro"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp/vizro"
       }
     },
     "oauth": {

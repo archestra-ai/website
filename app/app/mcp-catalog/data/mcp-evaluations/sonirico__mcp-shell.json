@@ -102,11 +102,17 @@
       },
       "mcp-shell-docker-secure": {
         "command": "docker",
-        "args": ["run", "--rm", "-i", "mcp-shell:latest"],
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "mcp-shell:latest"
+        ],
         "env": {
           "MCP_SHELL_SECURITY_ENABLED": "true",
           "MCP_SHELL_LOG_LEVEL": "info"
-        }
+        },
+        "docker_image": "mcp-shell:latest"
       },
       "mcp-shell-production-json-config": {
         "command": "mcp-shell",

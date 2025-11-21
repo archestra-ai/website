@@ -22,7 +22,10 @@
     "client_config_permutations": {
       "bytebase-dbhub-cursor-config": {
         "command": "npx",
-        "args": ["-y", "@bytebase/dbhub"],
+        "args": [
+          "-y",
+          "@bytebase/dbhub"
+        ],
         "env": {
           "TRANSPORT": "stdio",
           "DSN": "postgres://user:password@localhost:5432/dbname?sslmode=disable",
@@ -47,7 +50,8 @@
           "--dsn",
           "postgres://user:password@localhost:5432/dbname?sslmode=disable"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "8080:8080"
       },
       "bytebase-dbhub-docker-http-demo": {
         "command": "docker",
@@ -66,7 +70,8 @@
           "8080",
           "--demo"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "8080:8080"
       },
       "bytebase-dbhub-npx-http-postgres": {
         "command": "npx",
@@ -84,7 +89,15 @@
       },
       "bytebase-dbhub-npx-http-demo": {
         "command": "npx",
-        "args": ["-y", "@bytebase/dbhub", "--transport", "http", "--port", "8080", "--demo"],
+        "args": [
+          "-y",
+          "@bytebase/dbhub",
+          "--transport",
+          "http",
+          "--port",
+          "8080",
+          "--demo"
+        ],
         "env": {}
       },
       "bytebase-dbhub-docker-stdio-claude-desktop": {
@@ -99,7 +112,8 @@
           "--dsn",
           "postgres://user:password@host.docker.internal:5432/dbname?sslmode=disable"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "bytebase/dbhub"
       },
       "bytebase-dbhub-npx-stdio-claude-desktop": {
         "command": "npx",
@@ -115,12 +129,24 @@
       },
       "bytebase-dbhub-npx-stdio-demo-claude-desktop": {
         "command": "npx",
-        "args": ["-y", "@bytebase/dbhub", "--transport", "stdio", "--demo"],
+        "args": [
+          "-y",
+          "@bytebase/dbhub",
+          "--transport",
+          "stdio",
+          "--demo"
+        ],
         "env": {}
       },
       "bytebase-dbhub-npx-readonly": {
         "command": "npx",
-        "args": ["-y", "@bytebase/dbhub", "--readonly", "--dsn", "postgres://user:password@localhost:5432/dbname"],
+        "args": [
+          "-y",
+          "@bytebase/dbhub",
+          "--readonly",
+          "--dsn",
+          "postgres://user:password@localhost:5432/dbname"
+        ],
         "env": {}
       }
     },

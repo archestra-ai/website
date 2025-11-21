@@ -7,7 +7,9 @@
   },
   "server": {
     "command": "uvx",
-    "args": ["mcp-server-qdrant"],
+    "args": [
+      "mcp-server-qdrant"
+    ],
     "env": {
       "QDRANT_URL": "${user_config.qdrant_url}",
       "QDRANT_API_KEY": "${user_config.qdrant_api_key}",
@@ -147,7 +149,9 @@
     "client_config_permutations": {
       "mcp-server-qdrant": {
         "command": "uvx",
-        "args": ["mcp-server-qdrant"],
+        "args": [
+          "mcp-server-qdrant"
+        ],
         "env": {
           "QDRANT_URL": "http://localhost:6333",
           "COLLECTION_NAME": "my-collection",
@@ -156,7 +160,11 @@
       },
       "mcp-server-qdrant-sse": {
         "command": "uvx",
-        "args": ["mcp-server-qdrant", "--transport", "sse"],
+        "args": [
+          "mcp-server-qdrant",
+          "--transport",
+          "sse"
+        ],
         "env": {
           "QDRANT_URL": "http://localhost:6333",
           "COLLECTION_NAME": "my-collection"
@@ -164,7 +172,11 @@
       },
       "mcp-server-qdrant-sse-custom-port": {
         "command": "uvx",
-        "args": ["mcp-server-qdrant", "--transport", "sse"],
+        "args": [
+          "mcp-server-qdrant",
+          "--transport",
+          "sse"
+        ],
         "env": {
           "QDRANT_URL": "http://localhost:6333",
           "COLLECTION_NAME": "my-collection",
@@ -192,11 +204,14 @@
           "QDRANT_URL": "http://your-qdrant-server:6333",
           "QDRANT_API_KEY": "your-api-key",
           "COLLECTION_NAME": "your-collection"
-        }
+        },
+        "docker_image": "mcp-server-qdrant"
       },
       "mcp-server-qdrant-claude-remote": {
         "command": "uvx",
-        "args": ["mcp-server-qdrant"],
+        "args": [
+          "mcp-server-qdrant"
+        ],
         "env": {
           "QDRANT_URL": "https://xyz-example.eu-central.aws.cloud.qdrant.io:6333",
           "QDRANT_API_KEY": "your_api_key",
@@ -206,7 +221,9 @@
       },
       "mcp-server-qdrant-claude-local": {
         "command": "uvx",
-        "args": ["mcp-server-qdrant"],
+        "args": [
+          "mcp-server-qdrant"
+        ],
         "env": {
           "QDRANT_LOCAL_PATH": "/path/to/qdrant/database",
           "COLLECTION_NAME": "your-collection-"

@@ -7,7 +7,9 @@
   },
   "server": {
     "command": "node",
-    "args": ["${__dirname}/mcp-server/dist/server.js"],
+    "args": [
+      "${__dirname}/mcp-server/dist/server.js"
+    ],
     "env": {
       "EXTENSION_SECRET": "${user_config.extension_secret}",
       "EXTENSION_PORT": "${user_config.extension_port}"
@@ -40,7 +42,9 @@
     "client_config_permutations": {
       "browser-control": {
         "command": "node",
-        "args": ["/path/to/repo/mcp-server/dist/server.js"],
+        "args": [
+          "/path/to/repo/mcp-server/dist/server.js"
+        ],
         "env": {
           "EXTENSION_SECRET": "<secret_on_firefox_extension_options_page>",
           "EXTENSION_PORT": "8089"
@@ -63,7 +67,8 @@
         "env": {
           "EXTENSION_SECRET": "<secret_from_extension>",
           "CONTAINERIZED": "true"
-        }
+        },
+        "docker_image": "browser-control-mcp"
       }
     },
     "oauth": {

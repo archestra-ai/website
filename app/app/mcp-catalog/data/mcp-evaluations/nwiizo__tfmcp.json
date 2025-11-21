@@ -7,7 +7,9 @@
   },
   "server": {
     "command": "tfmcp",
-    "args": ["mcp"],
+    "args": [
+      "mcp"
+    ],
     "env": {
       "HOME": "${HOME}",
       "TERRAFORM_DIR": "${user_config.terraform_dir}",
@@ -98,20 +100,31 @@
     "client_config_permutations": {
       "tfmcp": {
         "command": "tfmcp",
-        "args": ["mcp"],
+        "args": [
+          "mcp"
+        ],
         "env": {}
       },
       "tfmcp-configured": {
         "command": "tfmcp",
-        "args": ["mcp"],
+        "args": [
+          "mcp"
+        ],
         "env": {
           "TERRAFORM_DIR": "/path/to/your/terraform/project"
         }
       },
       "tfmcp-docker": {
         "command": "docker",
-        "args": ["run", "--rm", "-it", "tfmcp", "mcp"],
-        "env": {}
+        "args": [
+          "run",
+          "--rm",
+          "-it",
+          "tfmcp",
+          "mcp"
+        ],
+        "env": {},
+        "docker_image": "tfmcp"
       },
       "tfmcp-docker-configured": {
         "command": "docker",
@@ -128,7 +141,8 @@
         ],
         "env": {
           "TERRAFORM_DIR": "/app/terraform"
-        }
+        },
+        "docker_image": "tfmcp"
       }
     },
     "oauth": {

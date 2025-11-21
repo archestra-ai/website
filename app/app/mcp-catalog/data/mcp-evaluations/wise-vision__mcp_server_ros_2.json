@@ -7,9 +7,15 @@
   },
   "server": {
     "command": "docker",
-    "args": ["run", "-i", "--rm", "wisevision/mcp_server_ros_2"],
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "wisevision/mcp_server_ros_2"
+    ],
     "env": {},
-    "type": "local"
+    "type": "local",
+    "docker_image": "wisevision/mcp_server_ros_2"
   },
   "tools": [],
   "prompts": [],
@@ -22,8 +28,14 @@
     "client_config_permutations": {
       "wisevision-mcp_server_ros_2-docker": {
         "command": "docker",
-        "args": ["run", "-i", "--rm", "wisevision/mcp_server_ros_2"],
-        "env": {}
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "wisevision/mcp_server_ros_2"
+        ],
+        "env": {},
+        "docker_image": "wisevision/mcp_server_ros_2"
       }
     },
     "oauth": {

@@ -7,7 +7,15 @@
   },
   "server": {
     "command": "browser-use-mcp-server",
-    "args": ["run", "server", "--port", "8000", "--stdio", "--proxy-port", "9000"],
+    "args": [
+      "run",
+      "server",
+      "--port",
+      "8000",
+      "--stdio",
+      "--proxy-port",
+      "9000"
+    ],
     "env": {
       "OPENAI_API_KEY": "${user_config.openai_api_key}",
       "CHROME_PATH": "${user_config.chrome_path}",
@@ -47,7 +55,12 @@
     "client_config_permutations": {
       "browser-use-mcp-server": {
         "command": "uv",
-        "args": ["run", "server", "--port", "8000"],
+        "args": [
+          "run",
+          "server",
+          "--port",
+          "8000"
+        ],
         "env": {
           "OPENAI_API_KEY": "your-api-key",
           "CHROME_PATH": "optional/path/to/chrome",
@@ -56,19 +69,34 @@
       },
       "browser-use-mcp-server-stdio-configured": {
         "command": "browser-use-mcp-server",
-        "args": ["run", "server", "--port", "8000", "--stdio", "--proxy-port", "9000"],
+        "args": [
+          "run",
+          "server",
+          "--port",
+          "8000",
+          "--stdio",
+          "--proxy-port",
+          "9000"
+        ],
         "env": {
           "OPENAI_API_KEY": "your-api-key"
         }
       },
       "browser-use-mcp-server-docker": {
         "command": "docker",
-        "args": ["run", "--rm", "-p8000:8000", "-p5900:5900", "browser-use-mcp-server"],
+        "args": [
+          "run",
+          "--rm",
+          "-p8000:8000",
+          "-p5900:5900",
+          "browser-use-mcp-server"
+        ],
         "env": {
           "OPENAI_API_KEY": "your-api-key",
           "CHROME_PATH": "optional/path/to/chrome",
           "PATIENT": "false"
-        }
+        },
+        "docker_image": "browser-use-mcp-server"
       },
       "browser-use-mcp-server-docker-custom-vnc": {
         "command": "docker",
@@ -85,7 +113,8 @@
           "OPENAI_API_KEY": "your-api-key",
           "CHROME_PATH": "optional/path/to/chrome",
           "PATIENT": "false"
-        }
+        },
+        "docker_image": "browser-use-mcp-server"
       }
     },
     "oauth": {

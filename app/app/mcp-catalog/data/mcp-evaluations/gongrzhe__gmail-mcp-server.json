@@ -22,7 +22,9 @@
     "client_config_permutations": {
       "gongrzhe-server-gmail-autoauth-mcp": {
         "command": "npx",
-        "args": ["@gongrzhe/server-gmail-autoauth-mcp"],
+        "args": [
+          "@gongrzhe/server-gmail-autoauth-mcp"
+        ],
         "env": {}
       },
       "mcp-gmail-docker": {
@@ -39,7 +41,8 @@
         ],
         "env": {
           "GMAIL_CREDENTIALS_PATH": "/gmail-server/credentials.json"
-        }
+        },
+        "docker_image": "mcp/gmail"
       }
     },
     "oauth": {

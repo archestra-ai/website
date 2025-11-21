@@ -7,7 +7,12 @@
   },
   "server": {
     "command": "uv",
-    "args": ["--directory", "${__dirname}", "run", "src/chess_mcp/main.py"],
+    "args": [
+      "--directory",
+      "${__dirname}",
+      "run",
+      "src/chess_mcp/main.py"
+    ],
     "env": {
       "NO_UV": "${user_config.no_uv}"
     },
@@ -32,12 +37,23 @@
     "client_config_permutations": {
       "pab1it0-chess-mcp-docker": {
         "command": "docker",
-        "args": ["run", "--rm", "-i", "pab1it0/chess-mcp"],
-        "env": {}
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "pab1it0/chess-mcp"
+        ],
+        "env": {},
+        "docker_image": "pab1it0/chess-mcp"
       },
       "chess-mcp-uv": {
         "command": "uv",
-        "args": ["--directory", "<full path to chess-mcp directory>", "run", "src/chess_mcp/main.py"],
+        "args": [
+          "--directory",
+          "<full path to chess-mcp directory>",
+          "run",
+          "src/chess_mcp/main.py"
+        ],
         "env": {}
       }
     },

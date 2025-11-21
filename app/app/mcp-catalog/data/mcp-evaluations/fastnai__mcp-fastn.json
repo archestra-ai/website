@@ -96,11 +96,23 @@
     "client_config_permutations": {
       "fastn-mcp-server-api-key": {
         "command": "fastn-mcp-server",
-        "args": ["--api_key", "YOUR_API_KEY", "--space_id", "YOUR_WORKSPACE_ID"]
+        "args": [
+          "--api_key",
+          "YOUR_API_KEY",
+          "--space_id",
+          "YOUR_WORKSPACE_ID"
+        ]
       },
       "fastn-mcp-server-tenant-auth": {
         "command": "fastn-mcp-server",
-        "args": ["--space_id", "YOUR_WORKSPACE_ID", "--tenant_id", "YOUR_TENANT_ID", "--auth_token", "YOUR_AUTH_TOKEN"]
+        "args": [
+          "--space_id",
+          "YOUR_WORKSPACE_ID",
+          "--tenant_id",
+          "YOUR_TENANT_ID",
+          "--auth_token",
+          "YOUR_AUTH_TOKEN"
+        ]
       },
       "fastn-server-manual-api-key": {
         "command": "/path/to/your/uv",
@@ -132,14 +144,22 @@
       },
       "ucl-stdio-server-docker-env-file": {
         "command": "docker",
-        "args": ["run", "-i", "--rm", "--env-file", "/path/to/your/fastn-stdio-server/.env", "ucl-stdio-server"],
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "--env-file",
+          "/path/to/your/fastn-stdio-server/.env",
+          "ucl-stdio-server"
+        ],
         "env": {
           "API_KEY": "YOUR_API_KEY",
           "SPACE_ID": "YOUR_WORKSPACE_ID",
           "TENANT_ID": "YOUR_TENANT_ID",
           "AUTH_TOKEN": "YOUR_AUTH_TOKEN",
           "CONFIG_MODE": "extended"
-        }
+        },
+        "docker_image": "/path/to/your/fastn-stdio-server/.env"
       },
       "ucl-stdio-server-docker-env-vars": {
         "command": "docker",
@@ -165,7 +185,8 @@
           "TENANT_ID": "YOUR_TENANT_ID",
           "AUTH_TOKEN": "YOUR_AUTH_TOKEN",
           "CONFIG_MODE": "extended"
-        }
+        },
+        "docker_image": "ucl-stdio-server"
       }
     },
     "oauth": {

@@ -7,7 +7,10 @@
   },
   "server": {
     "command": "uv",
-    "args": ["run", "src/alpha_vantage_mcp/server.py"],
+    "args": [
+      "run",
+      "src/alpha_vantage_mcp/server.py"
+    ],
     "env": {
       "ALPHA_VANTAGE_API_KEY": "${user_config.alpha_vantage_api_key}"
     },
@@ -32,21 +35,36 @@
     "client_config_permutations": {
       "mcp-alpha-vantage-docker": {
         "command": "docker",
-        "args": ["run", "-i", "-e", "ALPHA_VANTAGE_API_KEY", "mcp/alpha-vantage"],
+        "args": [
+          "run",
+          "-i",
+          "-e",
+          "ALPHA_VANTAGE_API_KEY",
+          "mcp/alpha-vantage"
+        ],
         "env": {
           "ALPHA_VANTAGE_API_KEY": "REPLACE_API_KEY"
-        }
+        },
+        "docker_image": "mcp/alpha-vantage"
       },
       "alpha-vantage-mcp-with-config": {
         "command": "uv",
-        "args": ["--directory", "/Users/{INSERT_USER}/YOUR/PATH/TO/alpha-vantage-mcp", "run", "alpha-vantage-mcp"],
+        "args": [
+          "--directory",
+          "/Users/{INSERT_USER}/YOUR/PATH/TO/alpha-vantage-mcp",
+          "run",
+          "alpha-vantage-mcp"
+        ],
         "env": {
           "ALPHA_VANTAGE_API_KEY": "<insert api key>"
         }
       },
       "alpha-vantage-mcp-uv-run": {
         "command": "uv",
-        "args": ["run", "src/alpha_vantage_mcp/server.py"],
+        "args": [
+          "run",
+          "src/alpha_vantage_mcp/server.py"
+        ],
         "env": {}
       },
       "alpha-vantage-mcp-with-inspector": {

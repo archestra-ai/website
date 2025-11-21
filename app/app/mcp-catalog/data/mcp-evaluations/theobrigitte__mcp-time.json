@@ -50,8 +50,14 @@
     "client_config_permutations": {
       "theo01-mcp-time-docker": {
         "command": "docker",
-        "args": ["run", "--rm", "-i", "theo01/mcp-time:latest"],
-        "env": {}
+        "args": [
+          "run",
+          "--rm",
+          "-i",
+          "theo01/mcp-time:latest"
+        ],
+        "env": {},
+        "docker_image": "theo01/mcp-time:latest"
       },
       "mcp-time-stdio": {
         "command": "mcp-time",
@@ -60,7 +66,12 @@
       },
       "mcp-time-stream": {
         "command": "mcp-time",
-        "args": ["--transport", "stream", "--address", "http://localhost:8080/mcp"],
+        "args": [
+          "--transport",
+          "stream",
+          "--address",
+          "http://localhost:8080/mcp"
+        ],
         "env": {}
       }
     },

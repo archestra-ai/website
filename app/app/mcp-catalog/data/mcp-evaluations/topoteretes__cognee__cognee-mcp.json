@@ -147,7 +147,8 @@
           "--transport",
           "http"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "cognee/cognee-mcp:main"
       },
       "cognee-cognee-mcp-main-docker-sse": {
         "command": "docker",
@@ -163,12 +164,14 @@
           "--transport",
           "sse"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "cognee/cognee-mcp:main"
       },
       "cognee-cognee-mcp-main-docker-stdio": {
         "command": "docker",
         "args": ["run", "--env-file", "./.env", "--rm", "-it", "cognee/cognee-mcp:main"],
-        "env": {}
+        "env": {},
+        "docker_image": "cognee/cognee-mcp:main"
       },
       "cognee-uv-run": {
         "command": "uv",

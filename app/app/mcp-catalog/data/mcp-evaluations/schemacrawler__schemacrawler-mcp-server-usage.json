@@ -7,9 +7,16 @@
   },
   "server": {
     "command": "docker",
-    "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
+    "args": [
+      "compose",
+      "-f",
+      "schemacrawler-mcpserver.yaml",
+      "up",
+      "-d"
+    ],
     "env": {},
-    "type": "local"
+    "type": "local",
+    "docker_image": "compose"
   },
   "tools": [],
   "prompts": [],
@@ -22,13 +29,27 @@
     "client_config_permutations": {
       "schemacrawler-schemacrawler-ai-docker": {
         "command": "docker",
-        "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
-        "env": {}
+        "args": [
+          "compose",
+          "-f",
+          "schemacrawler-mcpserver.yaml",
+          "up",
+          "-d"
+        ],
+        "env": {},
+        "docker_image": "compose"
       },
       "schemacrawler-schemacrawler-ai-docker-configured": {
         "command": "docker",
-        "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
-        "env": {}
+        "args": [
+          "compose",
+          "-f",
+          "schemacrawler-mcpserver.yaml",
+          "up",
+          "-d"
+        ],
+        "env": {},
+        "docker_image": "compose"
       }
     },
     "oauth": {

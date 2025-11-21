@@ -57,13 +57,22 @@
       },
       "biel-mcp-server-python": {
         "command": "python",
-        "args": ["biel_mcp_server.py"],
+        "args": [
+          "biel_mcp_server.py"
+        ],
         "env": {}
       },
       "biel-mcp-docker": {
         "command": "docker",
-        "args": ["run", "-d", "-p", "7832:7832", "biel-mcp"],
-        "env": {}
+        "args": [
+          "run",
+          "-d",
+          "-p",
+          "7832:7832",
+          "biel-mcp"
+        ],
+        "env": {},
+        "docker_image": "biel-mcp"
       }
     },
     "oauth": {
