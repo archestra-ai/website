@@ -33,7 +33,8 @@
       "mcp-internet-speed-test-docker": {
         "command": "docker",
         "args": ["run", "-it", "--rm", "-v", "$(pwd):/app", "-w", "/app", "mcp-internet-speed-test"],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp-internet-speed-test"
       },
       "mcp-internet-speed-test-dev": {
         "command": "uv",

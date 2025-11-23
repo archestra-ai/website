@@ -42,7 +42,8 @@
         "args": ["run", "-i", "--rm", "-e", "OPSLEVEL_API_TOKEN", "public.ecr.aws/opslevel/mcp:latest"],
         "env": {
           "OPSLEVEL_API_TOKEN": "XXXXXX"
-        }
+        },
+        "docker_image": "public.ecr.aws/opslevel/mcp:latest"
       }
     },
     "oauth": {

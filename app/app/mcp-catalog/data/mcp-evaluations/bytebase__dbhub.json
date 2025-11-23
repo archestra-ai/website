@@ -47,7 +47,8 @@
           "--dsn",
           "postgres://user:password@localhost:5432/dbname?sslmode=disable"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "8080:8080"
       },
       "bytebase-dbhub-docker-http-demo": {
         "command": "docker",
@@ -66,7 +67,8 @@
           "8080",
           "--demo"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "8080:8080"
       },
       "bytebase-dbhub-npx-http-postgres": {
         "command": "npx",
@@ -99,7 +101,8 @@
           "--dsn",
           "postgres://user:password@host.docker.internal:5432/dbname?sslmode=disable"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "bytebase/dbhub"
       },
       "bytebase-dbhub-npx-stdio-claude-desktop": {
         "command": "npx",

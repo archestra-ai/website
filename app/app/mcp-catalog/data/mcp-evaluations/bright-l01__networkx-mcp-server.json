@@ -28,7 +28,8 @@
       "networkx-mcp-server-docker": {
         "command": "docker",
         "args": ["run", "-p", "8000:8000", "networkx-mcp-server"],
-        "env": {}
+        "env": {},
+        "docker_image": "networkx-mcp-server"
       }
     },
     "oauth": {

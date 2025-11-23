@@ -61,7 +61,8 @@
         "env": {
           "API_KEY": "your_api_key_if_needed",
           "VERBOSE_MODE": "true"
-        }
+        },
+        "docker_image": "quran-mcp-server"
       },
       "quran-mcp-server-node": {
         "command": "node",

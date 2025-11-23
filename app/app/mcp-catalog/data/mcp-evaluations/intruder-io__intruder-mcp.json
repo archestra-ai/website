@@ -51,7 +51,8 @@
         ],
         "env": {
           "INTRUDER_API_KEY": "<your-api-key>"
-        }
+        },
+        "docker_image": "container"
       }
     },
     "oauth": {

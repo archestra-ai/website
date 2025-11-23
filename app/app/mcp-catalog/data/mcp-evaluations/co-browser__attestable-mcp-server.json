@@ -20,7 +20,8 @@
       "gsc-attestable-mcp-server"
     ],
     "env": {},
-    "type": "local"
+    "type": "local",
+    "docker_image": "gsc-attestable-mcp-server"
   },
   "tools": [],
   "prompts": [],
@@ -45,12 +46,14 @@
           "--rm",
           "gsc-attestable-mcp-server"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "gsc-attestable-mcp-server"
       },
       "gsc-attestable-mcp-server-docker-local": {
         "command": "docker",
         "args": ["run", "-p", "8000:8000", "--rm", "gsc-attestable-mcp-server"],
-        "env": {}
+        "env": {},
+        "docker_image": "gsc-attestable-mcp-server"
       }
     },
     "oauth": {

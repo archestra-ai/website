@@ -35,7 +35,8 @@
         "args": ["run", "-i", "--rm", "-e", "GOOGLE_MAPS_API_KEY", "mcp/google-maps"],
         "env": {
           "GOOGLE_MAPS_API_KEY": "<YOUR_API_KEY>"
-        }
+        },
+        "docker_image": "mcp/google-maps"
       },
       "modelcontextprotocol-server-google-maps": {
         "command": "npx",
@@ -56,7 +57,8 @@
         "args": ["run", "-i", "--rm", "mcp/google-maps"],
         "env": {
           "GOOGLE_MAPS_API_KEY": "${input:maps_api_key}"
-        }
+        },
+        "docker_image": "mcp/google-maps"
       }
     },
     "oauth": {

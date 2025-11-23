@@ -51,7 +51,8 @@
           "--storage",
           "sqlite:////app/workspace/optuna.db"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "optuna/optuna-mcp:latest"
       }
     },
     "oauth": {

@@ -9,7 +9,8 @@
     "command": "docker",
     "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
     "env": {},
-    "type": "local"
+    "type": "local",
+    "docker_image": "compose"
   },
   "tools": [],
   "prompts": [],
@@ -23,12 +24,14 @@
       "schemacrawler-schemacrawler-ai-docker": {
         "command": "docker",
         "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
-        "env": {}
+        "env": {},
+        "docker_image": "compose"
       },
       "schemacrawler-schemacrawler-ai-docker-configured": {
         "command": "docker",
         "args": ["compose", "-f", "schemacrawler-mcpserver.yaml", "up", "-d"],
-        "env": {}
+        "env": {},
+        "docker_image": "compose"
       }
     },
     "oauth": {

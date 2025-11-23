@@ -51,12 +51,14 @@
       "mcp-git-docker-claude-desktop": {
         "command": "docker",
         "args": ["run", "--rm", "-i", "--mount", "type=bind,src=/Users/username,dst=/Users/username", "mcp/git"],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp/git"
       },
       "mcp-git-docker-vscode": {
         "command": "docker",
         "args": ["run", "--rm", "-i", "--mount", "type=bind,src=${workspaceFolder},dst=/workspace", "mcp/git"],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp/git"
       }
     },
     "oauth": {

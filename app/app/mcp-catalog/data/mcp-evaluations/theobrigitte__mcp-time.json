@@ -51,7 +51,8 @@
       "theo01-mcp-time-docker": {
         "command": "docker",
         "args": ["run", "--rm", "-i", "theo01/mcp-time:latest"],
-        "env": {}
+        "env": {},
+        "docker_image": "theo01/mcp-time:latest"
       },
       "mcp-time-stdio": {
         "command": "mcp-time",

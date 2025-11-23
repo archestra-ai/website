@@ -61,7 +61,8 @@
         "env": {
           "API_KEY": "<your_redis_cloud_api_key>",
           "SECRET_KEY": "<your_redis_cloud_api_secret_key>"
-        }
+        },
+        "docker_image": "mcp/redis-cloud"
       }
     },
     "oauth": {

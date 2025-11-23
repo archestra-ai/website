@@ -51,7 +51,8 @@
         ],
         "env": {
           "W3_LOGIN_EMAIL": "your-email@example.com"
-        }
+        },
+        "docker_image": "alexbakers/mcp-ipfs"
       }
     },
     "oauth": {

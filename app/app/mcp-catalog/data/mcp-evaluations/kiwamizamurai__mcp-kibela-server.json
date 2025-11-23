@@ -61,7 +61,8 @@
         "env": {
           "KIBELA_TEAM": "YOUR_TEAM_NAME",
           "KIBELA_TOKEN": "YOUR_TOKEN"
-        }
+        },
+        "docker_image": "ghcr.io/kiwamizamurai/mcp-kibela-server:latest"
       },
       "kiwamizamurai-mcp-kibela-server-local-path": {
         "command": "node",
@@ -85,7 +86,8 @@
         "env": {
           "KIBELA_TEAM": "YOUR_TEAM_NAME",
           "KIBELA_TOKEN": "YOUR_TOKEN"
-        }
+        },
+        "docker_image": "mcp-kibela-server"
       }
     },
     "oauth": {

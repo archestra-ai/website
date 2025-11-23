@@ -50,7 +50,8 @@
       "tavily-search-server-docker-compose": {
         "command": "docker",
         "args": ["compose", "up", "-d"],
-        "env": {}
+        "env": {},
+        "docker_image": "compose"
       }
     },
     "oauth": {

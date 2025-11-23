@@ -42,7 +42,8 @@
         "args": ["run", "--rm", "--interactive", "--env", "BICSCAN_API_KEY=YOUR_BICSCAN_API_KEY_HERE", "bicscan-mcp"],
         "env": {
           "BICSCAN_API_KEY": "YOUR_BICSCAN_API_KEY_HERE"
-        }
+        },
+        "docker_image": "bicscan-mcp"
       },
       "bicscan-mcp-uvx": {
         "command": "uvx",

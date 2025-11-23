@@ -67,7 +67,8 @@
           "DISABLE_CONSOLE_OUTPUT=true",
           "ghcr.io/czlonkowski/n8n-mcp:latest"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "ghcr.io/czlonkowski/n8n-mcp:latest"
       }
     },
     "oauth": {

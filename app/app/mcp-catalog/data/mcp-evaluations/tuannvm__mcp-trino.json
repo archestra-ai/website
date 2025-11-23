@@ -87,7 +87,8 @@
           "TRINO_USER": "<USERNAME>",
           "TRINO_PASSWORD": "<PASSWORD>",
           "TRINO_SCHEME": "http"
-        }
+        },
+        "docker_image": "ghcr.io/tuannvm/mcp-trino:latest"
       }
     },
     "oauth": {

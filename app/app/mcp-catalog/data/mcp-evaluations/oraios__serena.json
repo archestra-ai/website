@@ -129,7 +129,8 @@
       "serena-docker": {
         "command": "docker",
         "args": ["run", "-p", "8000:8000", "-v", "$(pwd):/app", "serena:latest"],
-        "env": {}
+        "env": {},
+        "docker_image": "serena:latest"
       }
     },
     "oauth": {
