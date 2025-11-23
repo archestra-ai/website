@@ -53,11 +53,11 @@ When we started building Archestra, we tried every existing approach:
 
 **Static allow/block lists?** Either you kill your agent's creativity with an overly restrictive allow-list, or you can't possibly anticipate every attack vector with a block-list.
 
-<img src="/blog/oct-14-2025-dual-llm-image3.png" alt="Lethal Trifecta Trade-offs" style="max-width: 500px; margin: 0 auto; display: block;" />
+![Lethal Trifecta Trade-offs](/blog/oct-14-2025-dual-llm-image3.png)
 
 The brutal truth: you can only pick 2 out of 3. Want autonomy and outside communication? Say goodbye to accessing private data safely.
 
-<img src="/blog/oct-14-2025-dual-llm-image4.png" alt="Autonomy vs Control Balance" style="max-width: 600px; margin: 0 auto; display: block;" />
+![Autonomy vs Control Balance](/blog/oct-14-2025-dual-llm-image4.png)
 
 But what if we could shift this balance?
 
@@ -79,8 +79,6 @@ Here's how it works:
 4. **Quarantined LLM responds with just a number**: `{"answer": 0}`
 5. **This repeats for several rounds** until the main agent understands enough
 6. **Main agent decides what to do** based on answers, not on raw (potentially malicious) content
-
-<img src="/blog/oct-14-2025-dual-llm-image2.png" alt="Tool calling flow" style="max-width: 400px; margin: 0 auto; display: block;" />
 
 The quarantined LLM is like a friend who's looking at your forehead card in a game of "Guess Who" - they can see the answer, but they can only respond to your specific questions with predefined choices.
 
