@@ -818,7 +818,9 @@ export default function Home() {
                   </code>
                   <button
                     onClick={() => {
-                      navigator.clipboard.writeText('docker pull archestra/platform:latest;\ndocker run -p 9000:9000 -p 3000:3000 \\\n  -v archestra-postgres-data:/var/lib/postgresql/data \\\n  -v archestra-app-data:/app/data \\\n  archestra/platform;');
+                      navigator.clipboard.writeText(
+                        'docker pull archestra/platform:latest;\ndocker run -p 9000:9000 -p 3000:3000 \\\n  -v archestra-postgres-data:/var/lib/postgresql/data \\\n  -v archestra-app-data:/app/data \\\n  archestra/platform;'
+                      );
                     }}
                     className="ml-4 px-3 py-1.5 text-xs font-medium bg-gray-700 hover:bg-gray-600 text-white rounded transition-colors"
                   >
