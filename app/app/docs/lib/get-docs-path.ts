@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-export interface DocsPathConfig {
+interface DocsPathConfig {
   docsDirectory: string;
   assetsDirectory: string;
   isLocalDevelopment: boolean;
@@ -14,7 +14,7 @@ export interface DocsPathConfig {
  * 2. Pulled docs (.platform-docs) - for production/CI or when local doesn't exist
  * 3. Returns null if no docs are available
  */
-export function getDocsPath(): DocsPathConfig | null {
+function getDocsPath(): DocsPathConfig | null {
   // Check for local development docs first
   const localDocsPath = path.join(process.cwd(), '../../archestra/docs');
   if (fs.existsSync(localDocsPath)) {

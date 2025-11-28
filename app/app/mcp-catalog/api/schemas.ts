@@ -30,6 +30,6 @@ export const ErrorResponseSchema = z.object({
   error: z.string(),
 });
 
-export type SearchQuery = z.infer<typeof SearchQuerySchema>;
-export type SearchResponse = z.infer<typeof SearchResponseSchema>;
-export type ErrorResponse = z.infer<typeof ErrorResponseSchema>;
+type SearchQuery = z.infer<typeof SearchQuerySchema>;
+type SearchResponse = z.infer<typeof SearchResponseSchema>;
+type ErrorResponse = z.infer<typeof ErrorResponseSchema>;
