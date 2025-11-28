@@ -46,7 +46,7 @@
     "zod-to-json-schema": "^3.25.0"
   },
   "devDependencies": {
-    "@anthropic-ai/dxt": "^0.2.6",
+    "@anthropic-ai/mcpb": "^2.0.1",
     "@octokit/rest": "^22.0.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",

@@ -217,7 +217,8 @@
                 },
                 "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "user_config": {
             "type": "object",

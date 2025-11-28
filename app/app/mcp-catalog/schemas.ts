@@ -1,4 +1,4 @@
-import { DxtManifestSchema, McpServerConfigSchema } from '@anthropic-ai/dxt';
+import { McpServerConfigSchema, McpbManifestSchema } from '@anthropic-ai/mcpb/schemas/0.3';
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { z } from 'zod';
 
@@ -165,12 +165,18 @@ export const RemoteServerSchema = z.object({
   docs_url: z.string().url().nullable(),
 });
 
-export const ArchestraMcpServerManifestSchema = DxtManifestSchema.omit({
-  repository: true,
-  $schema: true,
-  version: true,
-  dxt_version: true,
-})
+export const ArchestraMcpServerManifestSchema = McpbManifestSchema._def.schema
+  .omit({
+    repository: true,
+    $schema: true,
+    version: true,
+    dxt_version: true,
+    manifest_version: true,
+    icons: true,
+    localization: true,
+    privacy_policies: true,
+    _meta: true,
+  })
   .extend({
     /**
      * Machine-readable name (used for CLI, APIs)
