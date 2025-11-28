@@ -61,7 +61,8 @@
         "env": {
           "CHANNEL_ACCESS_TOKEN": "FILL_HERE",
           "DESTINATION_USER_ID": "FILL_HERE"
-        }
+        },
+        "docker_image": "line/line-bot-mcp-server"
       }
     },
     "oauth": {

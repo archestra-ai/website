@@ -47,7 +47,8 @@
       "discogs-mcp-server-docker": {
         "command": "docker",
         "args": ["run", "--rm", "-i", "--env-file", "/PATH/TO/YOUR/PROJECT/FOLDER/.env", "discogs-mcp-server:latest"],
-        "env": {}
+        "env": {},
+        "docker_image": "/PATH/TO/YOUR/PROJECT/FOLDER/.env"
       },
       "discogs-mcp-server-pnpm-dev": {
         "command": "pnpm",
@@ -62,7 +63,8 @@
       "discogs-mcp-server-docker-stream": {
         "command": "docker",
         "args": ["run", "--env-file", ".env", "-p", "3001:3001", "discogs-mcp-server:latest", "stream"],
-        "env": {}
+        "env": {},
+        "docker_image": ".env"
       }
     },
     "oauth": {

@@ -63,7 +63,8 @@
         "env": {
           "EXTENSION_SECRET": "<secret_from_extension>",
           "CONTAINERIZED": "true"
-        }
+        },
+        "docker_image": "browser-control-mcp"
       }
     },
     "oauth": {

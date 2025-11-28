@@ -51,7 +51,8 @@
       "flipt-io-mcp-server-flipt-docker": {
         "command": "docker",
         "args": ["run", "-d", "--name", "mcp-server-flipt", "ghcr.io/flipt-io/mcp-server-flipt:latest"],
-        "env": {}
+        "env": {},
+        "docker_image": "ghcr.io/flipt-io/mcp-server-flipt:latest"
       },
       "flipt-io-mcp-server-flipt-npm-start": {
         "command": "npm",

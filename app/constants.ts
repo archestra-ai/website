@@ -95,12 +95,32 @@ const ANNA = {
   },
   description: 'Fullstack engineer with a focus on interfaces and 10+ years of experience.',
 };
+
+const INNOKENTII = {
+  '@type': 'Person',
+  name: 'Innokentii Konstantinov',
+  jobTitle: 'Founding Engineer',
+  worksFor: {
+    '@type': 'Organization',
+    name: COMPANY_NAME,
+  },
+  sameAs: 'https://www.linkedin.com/in/innokentii-konstantinov-92444b19b/',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'London',
+    addressCountry: 'UK',
+  },
+  description:
+    'Engineer with experience ranging from building user interfaces to developing high-load distributed systems. Previously working on Grafana Mimir. Founding engineer at Amixr (acquired by Grafana Labs).',
+};
+
 const PEOPLE = {
   matvey: MATVEY,
   ildar: ILDAR,
   joey: JOEY,
   dominik: DOMINIK,
   anna: ANNA,
+  innokentii: INNOKENTII,
 };
 
 // GitHub constants

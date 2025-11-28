@@ -42,7 +42,8 @@
         "args": ["run", "-p", "3000:3000", "-e", "LARA_API_KEY=YOUR_LARA_API_KEY", "translatednet/lara-mcp"],
         "env": {
           "LARA_API_KEY": "YOUR_LARA_API_KEY"
-        }
+        },
+        "docker_image": "translatednet/lara-mcp"
       },
       "translated-lara-mcp-stdio": {
         "command": "lara-mcp",

@@ -1,6 +1,6 @@
 import 'highlight.js/styles/github.css';
 import { ChevronLeft, ChevronRight, Clock, Edit } from 'lucide-react';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -10,8 +10,7 @@ import constants from '@constants';
 
 import DocContent from '../components/DocContent';
 import DocsSidebar from '../components/DocsSidebar';
-import { TableOfContentsItem } from '../types';
-import { formatLastUpdated, generateTableOfContents, getAllDocs, getDocBySlug, getDocsByCategory } from '../utils';
+import { generateTableOfContents, getAllDocs, getDocBySlug, getDocsByCategory } from '../utils';
 
 const {
   company: { name: companyName },
@@ -24,19 +23,39 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const doc = getDocBySlug(slug);
+  const origin = constants.website.urls.base;
 
   if (!doc) {
     return {
       title: `Documentation Not Found | ${companyName}`,
+      description: `${companyName} documentation page not found.`,
+      openGraph: {
+        title: `Documentation Not Found | ${companyName}`,
+        description: `${companyName} documentation page not found.`,
+      },
     };
   }
 
+  const description = doc.description || `${doc.title} documentation for ${companyName}.`;
+
   return {
     title: `${doc.title} | ${companyName} Docs`,
+    description,
+    metadataBase: new URL(origin),
     openGraph: {
       title: doc.title,
+      description,
       type: 'article',
       publishedTime: doc.lastUpdated,
+      images: [
+        {
+          url: `${origin}/docs/${doc.slug}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `${doc.title} | ${companyName} Docs`,
+        },
+      ],
+      url: `${origin}/docs/${doc.slug}`,
     },
   };
 }
@@ -47,6 +66,8 @@ export async function generateStaticParams() {
     slug: doc.slug,
   }));
 }
+
+export const dynamic = 'force-dynamic';
 
 export default async function DocPage({ params }: Props) {
   const { slug } = await params;

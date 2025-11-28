@@ -49,21 +49,24 @@
       "qrcode-mcp-docker-sse-default": {
         "command": "docker",
         "args": ["run", "-p", "8008:8008", "qrcode-mcp"],
-        "env": {}
+        "env": {},
+        "docker_image": "qrcode-mcp"
       },
       "qrcode-mcp-docker-http": {
         "command": "docker",
         "args": ["run", "-p", "8008:8008", "-e", "TRANSPORT_MODE=http", "qrcode-mcp"],
         "env": {
           "TRANSPORT_MODE": "http"
-        }
+        },
+        "docker_image": "qrcode-mcp"
       },
       "qrcode-mcp-docker-stdio": {
         "command": "docker",
         "args": ["run", "-e", "TRANSPORT_MODE=stdio", "qrcode-mcp"],
         "env": {
           "TRANSPORT_MODE": "stdio"
-        }
+        },
+        "docker_image": "qrcode-mcp"
       },
       "qrcode-mcp-docker-http-custom-port": {
         "command": "docker",
@@ -83,7 +86,8 @@
           "TRANSPORT_MODE": "http",
           "HOST": "0.0.0.0",
           "PORT": "9000"
-        }
+        },
+        "docker_image": "qrcode-mcp"
       },
       "qrcode-mcp-server-stdio": {
         "command": "python",

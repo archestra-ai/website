@@ -267,14 +267,16 @@
         "env": {
           "SCHEMA_REGISTRY_URL": "http://localhost:8081",
           "SLIM_MODE": "true"
-        }
+        },
+        "docker_image": "aywengo/kafka-schema-reg-mcp:stable"
       },
       "aywengo-kafka-schema-reg-mcp-stable-docker": {
         "command": "docker",
         "args": ["run", "-e", "SCHEMA_REGISTRY_URL=http://localhost:8081", "aywengo/kafka-schema-reg-mcp:stable"],
         "env": {
           "SCHEMA_REGISTRY_URL": "http://localhost:8081"
-        }
+        },
+        "docker_image": "aywengo/kafka-schema-reg-mcp:stable"
       },
       "kafka-schema-registry-unified-mcp-python": {
         "command": "python",

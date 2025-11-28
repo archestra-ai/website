@@ -15,7 +15,7 @@ const {
     name: companyName,
     alternateName: companyAlternateName,
     description: companyDescription,
-    people: { joey: JOEY, matvey: MATVEY, ildar: ILDAR, dominik: DOMINIK, anna: ANNA },
+    people: { joey: JOEY, matvey: MATVEY, ildar: ILDAR, dominik: DOMINIK, anna: ANNA, innokentii: INNOKENTII },
   },
 } = constants;
 
@@ -227,6 +227,38 @@ export default function AboutPage() {
                   <div className="flex justify-center gap-3 mt-3">
                     <a
                       href={ANNA.sameAs}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-500 hover:text-blue-600 transition-colors"
+                    >
+                      <Linkedin size={20} />
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Innokentii */}
+              <Card className="border-2 hover:border-orange-200 transition-colors">
+                <CardContent className="p-6 text-left">
+                  <div className="flex justify-center mb-4">
+                    <Image
+                      src="/team/innokentii.jpeg"
+                      alt={INNOKENTII.name}
+                      width={150}
+                      height={150}
+                      className="rounded-full object-cover"
+                    />
+                  </div>
+                  <h3 className="font-bold text-xl mb-2">{INNOKENTII.name}</h3>
+                  <p className="text-gray-700 font-medium mb-1">{INNOKENTII.jobTitle}</p>
+                  <p className="text-gray-500 text-sm mb-3">
+                    {INNOKENTII.address.addressLocality}, {INNOKENTII.address.addressCountry}
+                  </p>
+                  <p className="text-gray-700 text-sm leading-relaxed mb-4">{INNOKENTII.description}</p>
+                  <EmailCodePanel email="ikonstantinov@archestra.ai" />
+                  <div className="flex justify-center gap-3 mt-3">
+                    <a
+                      href={INNOKENTII.sameAs}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-500 hover:text-blue-600 transition-colors"

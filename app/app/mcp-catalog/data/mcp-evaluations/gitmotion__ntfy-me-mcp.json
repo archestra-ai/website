@@ -100,7 +100,8 @@
           "NTFY_TOPIC": "your-topic-name",
           "NTFY_URL": "https://your-ntfy-server.com",
           "NTFY_TOKEN": "your-auth-token"
-        }
+        },
+        "docker_image": "gitmotion/ntfy-me-mcp:latest"
       },
       "ntfy-me-mcp-local-build": {
         "command": "node",

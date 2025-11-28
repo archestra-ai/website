@@ -65,14 +65,16 @@
         "args": ["run", "-i", "--rm", "-e", "SEARXNG_URL", "isokoliuk/mcp-searxng:latest"],
         "env": {
           "SEARXNG_URL": "YOUR_SEARXNG_INSTANCE_URL"
-        }
+        },
+        "docker_image": "isokoliuk/mcp-searxng:latest"
       },
       "mcp-searxng-docker": {
         "command": "docker",
         "args": ["run", "-i", "--rm", "-e", "SEARXNG_URL", "mcp-searxng:latest"],
         "env": {
           "SEARXNG_URL": "YOUR_SEARXNG_INSTANCE_URL"
-        }
+        },
+        "docker_image": "mcp-searxng:latest"
       }
     },
     "oauth": {

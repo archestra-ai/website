@@ -28,7 +28,8 @@
       "mcp-open-library-docker": {
         "command": "docker",
         "args": ["run", "-p", "8080:8080", "mcp-open-library"],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp-open-library"
       }
     },
     "oauth": {

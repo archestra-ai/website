@@ -28,7 +28,8 @@
       "baseline-mcp-server-docker": {
         "command": "docker",
         "args": ["run", "-i", "baseline-mcp-server:latest"],
-        "env": {}
+        "env": {},
+        "docker_image": "baseline-mcp-server:latest"
       }
     },
     "oauth": {

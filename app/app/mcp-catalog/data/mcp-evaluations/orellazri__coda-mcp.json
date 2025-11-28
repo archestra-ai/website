@@ -42,7 +42,8 @@
         "args": ["run", "-i", "--rm", "-e", "API_KEY", "reaperberri/coda-mcp:latest"],
         "env": {
           "API_KEY": "..."
-        }
+        },
+        "docker_image": "reaperberri/coda-mcp:latest"
       },
       "coda-mcp-stdio": {
         "command": "node",

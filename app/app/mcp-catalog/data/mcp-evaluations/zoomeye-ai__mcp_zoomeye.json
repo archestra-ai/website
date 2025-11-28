@@ -49,7 +49,8 @@
         ],
         "env": {
           "ZOOMEYE_API_KEY": "your_api_key_here"
-        }
+        },
+        "docker_image": "zoomeyeteam/mcp-server-zoomeye:latest"
       },
       "zoomeyeteam-mcp-server-zoomeye-docker-local": {
         "command": "docker",
@@ -63,7 +64,8 @@
         ],
         "env": {
           "ZOOMEYE_API_KEY": "your_api_key_here"
-        }
+        },
+        "docker_image": "zoomeyeteam/mcp-server-zoomeye:local"
       },
       "mcp-server-zoomeye-uvx": {
         "command": "uvx",

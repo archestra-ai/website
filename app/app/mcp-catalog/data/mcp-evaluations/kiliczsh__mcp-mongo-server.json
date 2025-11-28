@@ -79,7 +79,8 @@
         "env": {
           "MCP_MONGODB_URI": "mongodb://muhammed:kilic@localhost:27017/database",
           "MCP_MONGODB_READONLY": "true"
-        }
+        },
+        "docker_image": "mcp-mongo-server"
       },
       "github-kiliczsh-mcp-mongo-server": {
         "command": "npx",

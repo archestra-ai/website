@@ -80,7 +80,8 @@
           "PIPEDREAM_CLIENT_SECRET": "your_client_secret",
           "PIPEDREAM_PROJECT_ID": "your_project_id",
           "PIPEDREAM_PROJECT_ENVIRONMENT": "development"
-        }
+        },
+        "docker_image": ".env"
       },
       "pipedream-mcp-http": {
         "command": "pnpm",

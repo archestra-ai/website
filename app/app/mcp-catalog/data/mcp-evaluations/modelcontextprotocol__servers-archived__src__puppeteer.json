@@ -25,7 +25,8 @@
         "args": ["run", "-i", "--rm", "--init", "-e", "DOCKER_CONTAINER=true", "mcp/puppeteer"],
         "env": {
           "DOCKER_CONTAINER": "true"
-        }
+        },
+        "docker_image": "mcp/puppeteer"
       },
       "modelcontextprotocol-server-puppeteer": {
         "command": "npx",

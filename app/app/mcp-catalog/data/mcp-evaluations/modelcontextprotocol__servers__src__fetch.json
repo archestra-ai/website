@@ -54,7 +54,8 @@
       "mcp-fetch-docker": {
         "command": "docker",
         "args": ["run", "-i", "--rm", "mcp/fetch"],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp/fetch"
       },
       "mcp_server_fetch": {
         "command": "python",
