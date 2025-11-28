@@ -44,6 +44,9 @@ export const metadata: Metadata = {
   },
 };
 
+// Force dynamic rendering to avoid oversized ISR payload (20+ MB of server data)
+export const dynamic = 'force-dynamic';
+
 // Get unique categories from evaluations, sorted by count
 function getCategories(evaluations: ArchestraMcpServerManifest[]): string[] {
   const categoryCounts = new Map<string, number>();
