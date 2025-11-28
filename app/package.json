@@ -17,7 +17,6 @@
     "openapi:generate": "npx tsx app/mcp-catalog/scripts/generate-openapi-schema.ts && pnpm prettier --write app/mcp-catalog/api/docs/openapi.json",
     "codegen:all": "pnpm openapi:generate"
   },
-  "packageManager": "pnpm@10.24.0",
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^7.3.4",
     "@next/third-parties": "^16.0.3",
@@ -72,5 +71,11 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
-  }
+  },
+  "pnpm": {
+    "overrides": {
+      "node-forge": "1.3.2"
+    }
+  },
+  "packageManager": "pnpm@10.24.0"
 }
