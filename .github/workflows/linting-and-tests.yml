@@ -28,6 +28,9 @@ jobs:
       - name: Check prettier formatting
         run: pnpm prettier --check .
 
+      - name: Run Knip
+        run: pnpm knip
+
       - name: Run tests
         run: pnpm test
 

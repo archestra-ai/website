@@ -175,5 +175,4 @@ When making changes:
 5. Run `pnpm typecheck` to catch type errors
 6. Update OpenAPI spec with `pnpm openapi:generate` when modifying API endpoints
 7. Write tests for new functionality, mock external dependencies
-8. The project uses lint-staged with prettier for automatic formatting on commit
-9. When working with the catalog data, ensure JSON validity with `pnpm catalog:validate`
+8. When working with the catalog data, ensure JSON validity with `pnpm catalog:validate`

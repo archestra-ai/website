@@ -71,7 +71,7 @@ export const ArchestraOauthSchema = z.object({
   required: z.boolean(),
 });
 
-export const OauthConfigSchema = z.object({
+const OauthConfigSchema = z.object({
   name: z.string(),
   server_url: z.string().url(),
   auth_server_url: z.string().url().optional(), // Optional, defaults to server_url
@@ -94,11 +94,11 @@ export const OauthConfigSchema = z.object({
   streamable_http_port: z.number().optional(), // Port for streamable HTTP MCP servers
 });
 
-export const ArchestraBrowserBasedSchema = z.object({
+const ArchestraBrowserBasedSchema = z.object({
   required: z.boolean(),
 });
 
-export const ArchestraConfigSchema = z.object({
+const ArchestraConfigSchema = z.object({
   client_config_permutations: ArchestraClientConfigPermutationsSchema.nullable(),
   oauth: ArchestraOauthSchema,
   browser_based: ArchestraBrowserBasedSchema.optional(),
@@ -123,7 +123,7 @@ export const ArchestraMcpServerGitHubRepoInfoSchema = z.object({
   path: z.string().nullable(),
 });
 
-export const ArchestraMcpServerGitHubRepoStatsSchema = z.object({
+const ArchestraMcpServerGitHubRepoStatsSchema = z.object({
   stars: z.number(),
   contributors: z.number(),
   issues: z.number(),
@@ -132,7 +132,7 @@ export const ArchestraMcpServerGitHubRepoStatsSchema = z.object({
   latest_commit_hash: z.string().nullable(),
 });
 
-export const ArchestraMcpServerFullGitHubInfoSchema = ArchestraMcpServerGitHubRepoInfoSchema.merge(
+const ArchestraMcpServerFullGitHubInfoSchema = ArchestraMcpServerGitHubRepoInfoSchema.merge(
   ArchestraMcpServerGitHubRepoStatsSchema
 );
 
@@ -148,18 +148,18 @@ export const ArchestraMcpServerProtocolFeaturesSchema = z.object({
   implementing_oauth2: z.boolean(),
 });
 
-export const LogMonitorSchema = z.object({
+const LogMonitorSchema = z.object({
   type: z.enum(['log-monitor']),
   provider: z.enum(['whatsapp']),
 });
 
-export const LocalServerSchema = McpServerConfigSchema.extend({
+const LocalServerSchema = McpServerConfigSchema.extend({
   type: z.literal('local'),
   setup: z.array(LogMonitorSchema).optional(),
   docker_image: z.string().optional(),
 });
 
-export const RemoteServerSchema = z.object({
+const RemoteServerSchema = z.object({
   type: z.literal('remote'),
   url: z.string().url(),
   docs_url: z.string().url().nullable(),
