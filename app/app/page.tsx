@@ -38,6 +38,7 @@ export default function Home() {
   const [typingComplete, setTypingComplete] = useState(false);
   const [showArchestraTile, setShowArchestraTile] = useState(false);
   const [showArchestraTile2, setShowArchestraTile2] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   // Check localStorage after mount to avoid hydration mismatch
   useEffect(() => {
@@ -811,15 +812,24 @@ export default function Home() {
                 <div className="flex items-center justify-between">
                   <code className="text-green-400 font-mono text-sm md:text-base">
                     docker pull archestra/platform:latest; <br />
-                    docker run -p 9000:9000 -p 3000:3000 archestra/platform
+                    docker run -p 9000:9000 -p 3000:3000 \ <br />
+                    &nbsp;&nbsp;-v archestra-postgres-data:/var/lib/postgresql/data \ <br />
+                    &nbsp;&nbsp;-v archestra-app-data:/app/data \ <br />
+                    &nbsp;&nbsp;archestra/platform
                   </code>
                   <button
                     onClick={() => {
-                      navigator.clipboard.writeText('docker run -p 9000:9000 -p 3000:3000 archestra/platform');
+                      navigator.clipboard.writeText(
+                        'docker pull archestra/platform:latest;\ndocker run -p 9000:9000 -p 3000:3000 \\\n  -v archestra-postgres-data:/var/lib/postgresql/data \\\n  -v archestra-app-data:/app/data \\\n  archestra/platform;'
+                      );
+                      setCopied(true);
+                      setTimeout(() => setCopied(false), 2000);
                     }}
-                    className="ml-4 px-3 py-1.5 text-xs font-medium bg-gray-700 hover:bg-gray-600 text-white rounded transition-colors"
+                    className={`ml-4 px-3 py-1.5 text-xs font-medium text-white rounded transition-all ${
+                      copied ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-700 hover:bg-gray-600'
+                    }`}
                   >
-                    Copy
+                    {copied ? 'Copied!' : 'Copy'}
                   </button>
                 </div>
               </div>
