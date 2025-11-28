@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "docs:pull": "node scripts/pull-docs.js",
-    "build": "pnpm docs:pull && pnpm db:migrate && next build",
+    "build": "pnpm docs:pull && next build",
     "build:check": "pnpm docs:pull && next build",
-    "dev": "pnpm drizzle-kit up && next dev -p 3001",
+    "dev": "next dev -p 3001",
     "start": "next start",
     "test": "vitest",
     "knip": "knip",
