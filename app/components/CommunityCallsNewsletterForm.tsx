@@ -29,7 +29,7 @@ export default function CommunityCallsNewsletterForm() {
 
     try {
       const formId = 'cmdehe4lw18tnwy0ifkz89qqk';
-      
+
       const response = await fetch(`https://app.loops.so/api/newsletter-form/${formId}`, {
         method: 'POST',
         headers: {

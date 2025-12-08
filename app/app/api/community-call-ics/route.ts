@@ -23,19 +23,19 @@ export async function GET() {
   const getNextMeetingDay = () => {
     const now = new Date();
     const meetingDay = MEETING_CONFIG.dayNumber;
-    
+
     // Create a date for today at 2:00 PM London time
     const londonTime = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/London' }));
     const currentDay = londonTime.getDay();
-    
+
     // Calculate days until next meeting day
     let daysUntilMeeting = meetingDay - currentDay;
-    
+
     // If today is the meeting day, check if the time has passed
     if (currentDay === meetingDay) {
       const meetingTime = new Date(londonTime);
       meetingTime.setHours(MEETING_CONFIG.hour, MEETING_CONFIG.minute, 0, 0);
-      
+
       // If it's past meeting time on the meeting day, get next week's meeting
       if (londonTime >= meetingTime) {
         daysUntilMeeting = 7;
@@ -46,20 +46,22 @@ export async function GET() {
       // If meeting day has already passed this week
       daysUntilMeeting += 7;
     }
-    
+
     // Create the date for the next meeting
     const nextMeeting = new Date(now);
     nextMeeting.setDate(now.getDate() + daysUntilMeeting);
-    
+
     // Set to 2:00 PM London time (we'll handle timezone in the ICS format)
     // For ICS, we need to use UTC time
     const year = nextMeeting.getFullYear();
     const month = nextMeeting.getMonth();
     const date = nextMeeting.getDate();
-    
+
     // Create a date at 2:00 PM London time
-    const londonMeetingTime = new Date(`${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}T14:00:00`);
-    
+    const londonMeetingTime = new Date(
+      `${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}T14:00:00`
+    );
+
     // Convert to UTC for ICS file (London is UTC+0 in winter, UTC+1 in summer)
     // We'll use the actual timezone info
     const formatter = new Intl.DateTimeFormat('en-US', {
@@ -72,7 +74,7 @@ export async function GET() {
       second: '2-digit',
       hour12: false,
     });
-    
+
     // For simplicity, we'll create the event with Europe/London timezone
     return {
       year,
@@ -82,14 +84,14 @@ export async function GET() {
   };
 
   const nextMeeting = getNextMeetingDay();
-  
+
   // Format date for ICS (YYYYMMDD)
   const formatDate = (year: number, month: number, date: number) => {
     return `${year}${String(month).padStart(2, '0')}${String(date).padStart(2, '0')}`;
   };
 
   const eventDate = formatDate(nextMeeting.year, nextMeeting.month, nextMeeting.date);
-  
+
   // Create ICS content
   const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
@@ -117,7 +119,10 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:archestra-community-call-${eventDate}@archestra.ai
-DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '')}Z
+DTSTAMP:${new Date()
+    .toISOString()
+    .replace(/[-:]/g, '')
+    .replace(/\.\d{3}/, '')}Z
 DTSTART;TZID=Europe/London:${eventDate}T${String(MEETING_CONFIG.hour).padStart(2, '0')}${String(MEETING_CONFIG.minute).padStart(2, '0')}00
 DTEND;TZID=Europe/London:${eventDate}T${String(MEETING_CONFIG.hour).padStart(2, '0')}${String(MEETING_CONFIG.minute + MEETING_CONFIG.durationMinutes).padStart(2, '0')}00
 SUMMARY:${MEETING_CONFIG.title}
@@ -140,8 +145,8 @@ END:VCALENDAR`;
       'Content-Type': 'text/calendar',
       'Content-Disposition': 'attachment; filename="archestra-community-call.ics"',
       'Cache-Control': 'no-cache, no-store, must-revalidate',
-      'Pragma': 'no-cache',
-      'Expires': '0',
+      Pragma: 'no-cache',
+      Expires: '0',
     },
   });
 }
