@@ -1,6 +1,6 @@
 'use client';
 
-import { AlertTriangle, Bot, Github, Mail, Send, ShieldCheck, User } from 'lucide-react';
+import { AlertTriangle, Bot, Calendar, Github, Mail, Send, ShieldCheck, User, Users } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -957,6 +957,27 @@ export default function Home() {
                   />
                 </a>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Community Calls Hero Section */}
+        <section className="py-12 bg-gradient-to-r from-teal-500 to-blue-600 text-white">
+          <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+            <div className="text-center">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-3">
+                Weekly Community Calls
+              </h2>
+              <p className="text-lg mb-6 max-w-xl mx-auto opacity-95">
+                Every Tuesday at 2:00 PM London Time
+              </p>
+              <Link
+                href="/community-calls"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-teal-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
+              >
+                <Calendar className="w-5 h-5" />
+                View Details
+              </Link>
             </div>
           </div>
         </section>
