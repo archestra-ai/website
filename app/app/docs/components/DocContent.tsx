@@ -302,7 +302,7 @@ export default function DocContent({ content }: DocContentProps) {
             );
           },
           table: ({ node, ...props }) => (
-            <div className="my-6 w-full">
+            <div className="my-6 w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
               <table {...props} className="w-full divide-y divide-gray-200 table-fixed" />
             </div>
           ),
