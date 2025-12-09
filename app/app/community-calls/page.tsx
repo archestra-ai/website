@@ -1,5 +1,7 @@
 'use client';
 
+import { TZDate } from '@date-fns/tz';
+import { addDays, getDay, setHours, setMilliseconds, setMinutes, setSeconds } from 'date-fns';
 import { Bell, Calendar, Users, Video } from 'lucide-react';
 import Image from 'next/image';
 
@@ -49,19 +51,23 @@ Google Meet: ${MEETING_CONFIG.meetingLink}`;
 const DESCRIPTION = `Join our weekly community calls every ${MEETING_CONFIG.dayOfWeek} at ${MEETING_CONFIG.time} (${MEETING_CONFIG.timezone}). Connect with the Archestra team and community members.`;
 
 export default function CommunityCallsPage() {
-  // Calculate next meeting date
-  const getNextMeetingDate = () => {
-    const now = new Date();
-    const currentDay = now.getDay();
+  // Calculate next meeting date (2pm London time)
+  const getNextMeetingDate = (): Date => {
+    // Get current time in London timezone using TZDate
+    const nowInLondon = TZDate.tz(MEETING_CONFIG.timezone);
+    const londonDay = getDay(nowInLondon);
 
-    let daysUntilMeeting = MEETING_CONFIG.dayNumber - currentDay;
+    let daysUntilMeeting = MEETING_CONFIG.dayNumber - londonDay;
 
-    // If today is Tuesday, check if the time has passed
-    if (currentDay === MEETING_CONFIG.dayNumber) {
-      const meetingTime = new Date(now);
-      meetingTime.setHours(MEETING_CONFIG.hour, MEETING_CONFIG.minute, 0, 0);
+    // If today is meeting day in London, check if the meeting time has passed
+    if (londonDay === MEETING_CONFIG.dayNumber) {
+      const londonHour = nowInLondon.getHours();
+      const londonMinute = nowInLondon.getMinutes();
 
-      if (now >= meetingTime) {
+      if (
+        londonHour > MEETING_CONFIG.hour ||
+        (londonHour === MEETING_CONFIG.hour && londonMinute >= MEETING_CONFIG.minute)
+      ) {
         daysUntilMeeting = 7; // Next week
       } else {
         daysUntilMeeting = 0; // Today
@@ -70,12 +76,17 @@ export default function CommunityCallsPage() {
       daysUntilMeeting += 7;
     }
 
-    const nextMeeting = new Date(now);
-    nextMeeting.setDate(now.getDate() + daysUntilMeeting);
-    nextMeeting.setHours(MEETING_CONFIG.hour, MEETING_CONFIG.minute, 0, 0);
-    nextMeeting.setMilliseconds(0);
+    // Create meeting date at 2pm London time using TZDate
+    // TZDate properly handles timezone - all operations happen in London time
+    let meetingDate = addDays(nowInLondon, daysUntilMeeting);
+    meetingDate = setHours(meetingDate, MEETING_CONFIG.hour);
+    meetingDate = setMinutes(meetingDate, MEETING_CONFIG.minute);
+    meetingDate = setSeconds(meetingDate, 0);
+    meetingDate = setMilliseconds(meetingDate, 0);
 
-    return nextMeeting;
+    // Convert TZDate to regular Date for display in user's local timezone
+    // TZDate.getTime() returns the correct UTC timestamp
+    return new Date(meetingDate.getTime());
   };
 
   const nextMeetingDate = getNextMeetingDate();
@@ -134,20 +145,20 @@ export default function CommunityCallsPage() {
   };
 
   const getGoogleCalendarDate = () => {
-    // Format for Google Calendar (YYYYMMDDTHHmmSS/YYYYMMDDTHHmmSS)
-    const formatDate = (date: Date) => {
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      const hours = String(date.getHours()).padStart(2, '0');
-      const minutes = String(date.getMinutes()).padStart(2, '0');
-      const seconds = String(date.getSeconds()).padStart(2, '0');
-      return `${year}${month}${day}T${hours}${minutes}${seconds}`;
+    // Format for Google Calendar in UTC (YYYYMMDDTHHmmSSZ/YYYYMMDDTHHmmSSZ)
+    const formatDateUTC = (date: Date) => {
+      const year = date.getUTCFullYear();
+      const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(date.getUTCDate()).padStart(2, '0');
+      const hours = String(date.getUTCHours()).padStart(2, '0');
+      const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+      const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+      return `${year}${month}${day}T${hours}${minutes}${seconds}Z`;
     };
 
     const endTime = new Date(nextMeetingDate.getTime() + MEETING_CONFIG.durationMinutes * 60000);
 
-    return `${formatDate(nextMeetingDate)}/${formatDate(endTime)}`;
+    return `${formatDateUTC(nextMeetingDate)}/${formatDateUTC(endTime)}`;
   };
 
   return (
