@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "target": "ES6",
     "skipLibCheck": true,
@@ -11,7 +15,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -19,18 +23,38 @@
       }
     ],
     // Allows us to use vitest imports in tests without having to explicitly import them
-    "types": ["vitest/globals"],
+    "types": [
+      "vitest/globals"
+    ],
     /*
      Aliasing
     */
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["components/*"],
-      "@constants": ["constants"],
-      "@lib/*": ["lib/*"],
-      "@mcpCatalog/*": ["app/mcp-catalog/*"]
+      "@components/*": [
+        "components/*"
+      ],
+      "@constants": [
+        "constants"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ],
+      "@mcpCatalog/*": [
+        "app/mcp-catalog/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
-  "exclude": ["node_modules", ".next", "dist"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "dist"
+  ]
 }
