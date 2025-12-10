@@ -1,7 +1,7 @@
 {
   "name": "flux159__mcp-server-kubernetes",
   "display_name": "Kubernetes",
-  "description": "MCP Server for kubernetes management commands. Connect to Kubernetes clusters and manage resources using kubectl, Helm, and advanced operations like port forwarding and node management.",
+  "description": "Specify which cluster context to manage (e.g., 'production', 'staging'). It's important specify a context for your application clusters. Leaving this empty will manage the Archestra platform cluster itself.",
   "author": {
     "name": "Flux159"
   },
