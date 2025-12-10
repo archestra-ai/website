@@ -120,7 +120,8 @@
   "prompts": [
     {
       "name": "k8s-diagnose",
-      "description": "Systematic troubleshooting flow for Kubernetes pods. Guides through identifying issues, collecting evidence, and suggesting remediation steps."
+      "description": "Systematic troubleshooting flow for Kubernetes pods. Guides through identifying issues, collecting evidence, and suggesting remediation steps.",
+      "text": "Systematic troubleshooting flow for Kubernetes pods. Guides through identifying issues, collecting evidence, and suggesting remediation steps."
     }
   ],
   "keywords": [
