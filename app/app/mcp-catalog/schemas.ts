@@ -187,6 +187,11 @@ export const ArchestraMcpServerManifestSchema = McpbManifestSchema._def.schema
      * Human-friendly name for UI display
      */
     display_name: z.string(),
+
+    /**
+     * Installation instructions shown in the installation modal
+     */
+    instructions: z.string().optional(),
     readme: z.string().nullable(),
     category: McpServerCategorySchema.nullable(),
     quality_score: z.number().min(0).max(100).nullable(),

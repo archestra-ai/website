@@ -274,6 +274,9 @@
               "additionalProperties": false
             }
           },
+          "instructions": {
+            "type": "string"
+          },
           "readme": {
             "type": "string",
             "nullable": true
