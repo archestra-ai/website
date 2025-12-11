@@ -10,7 +10,7 @@
     "command": "sh",
     "args": [
       "-c",
-      "go install github.com/grafana/mcp-grafana/cmd/mcp-grafana@latest && exec mcp-grafana $([ \"$DISABLE_ONCALL\" = \"true\" ] && echo \"--disable-oncall\") $([ \"$DISABLE_NAVIGATION\" = \"true\" ] && echo \"--disable-navigation\")"
+      "go install github.com/grafana/mcp-grafana/cmd/mcp-grafana@latest && ARGS=\"\"; [ \"$DISABLE_ONCALL\" = \"true\" ] && ARGS=\"$ARGS --disable-oncall\"; [ \"$DISABLE_NAVIGATION\" = \"true\" ] && ARGS=\"$ARGS --disable-navigation\"; exec mcp-grafana $ARGS"
     ],
     "env": {
       "GRAFANA_URL": "${user_config.grafana_url}",
