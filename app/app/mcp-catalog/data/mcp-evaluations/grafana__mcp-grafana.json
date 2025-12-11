@@ -55,6 +55,7 @@
       "type": "string",
       "title": "Grafana Username",
       "description": "Username for basic authentication. Only needed if not using service account token. For local Grafana, default is 'admin'.",
+      "default": "admin",
       "required": false
     },
     "grafana_password": {
@@ -62,6 +63,7 @@
       "title": "Grafana Password",
       "description": "Password for basic authentication. Only needed if not using service account token. For local Grafana, default is 'admin'.",
       "required": false,
+      "default": "admin",
       "sensitive": true
     }
   },
