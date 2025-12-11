@@ -157,6 +157,7 @@ const LocalServerSchema = McpServerConfigSchema.extend({
   type: z.literal('local'),
   setup: z.array(LogMonitorSchema).optional(),
   docker_image: z.string().optional(),
+  service_account: z.string().optional(),
 });
 
 const RemoteServerSchema = z.object({
@@ -187,6 +188,11 @@ export const ArchestraMcpServerManifestSchema = McpbManifestSchema._def.schema
      * Human-friendly name for UI display
      */
     display_name: z.string(),
+
+    /**
+     * Installation instructions shown in the installation modal
+     */
+    instructions: z.string().optional(),
     readme: z.string().nullable(),
     category: McpServerCategorySchema.nullable(),
     quality_score: z.number().min(0).max(100).nullable(),
