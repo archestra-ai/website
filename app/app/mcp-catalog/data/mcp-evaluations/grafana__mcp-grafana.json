@@ -6,12 +6,10 @@
     "name": "grafana"
   },
   "server": {
-    "command": "./grafana-mcp-server",
+    "command": "sh",
     "args": [
-      "--disable-oncall",
-      "${user_config.disable_oncall}",
-      "--disable-navigation",
-      "${user_config.disable_navigation}"
+      "-c",
+      "go install github.com/grafana/mcp-grafana/cmd/mcp-grafana@latest && exec mcp-grafana"
     ],
     "env": {},
     "type": "local"
