@@ -157,6 +157,7 @@ const LocalServerSchema = McpServerConfigSchema.extend({
   type: z.literal('local'),
   setup: z.array(LogMonitorSchema).optional(),
   docker_image: z.string().optional(),
+  service_account: z.string().optional(),
 });
 
 const RemoteServerSchema = z.object({

@@ -110,6 +110,9 @@
                   },
                   "docker_image": {
                     "type": "string"
+                  },
+                  "service_account": {
+                    "type": "string"
                   }
                 },
                 "required": ["command", "type"],

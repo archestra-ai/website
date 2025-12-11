@@ -10,6 +10,7 @@
     "command": "docker",
     "args": ["run", "-i", "--rm", "flux159/mcp-server-kubernetes:v3.0.1"],
     "docker_image": "flux159/mcp-server-kubernetes:v3.0.1",
+    "service_account": "operator",
     "env": {
       "K8S_CONTEXT": "${user_config.k8s_context}",
       "K8S_NAMESPACE": "${user_config.k8s_namespace}",
