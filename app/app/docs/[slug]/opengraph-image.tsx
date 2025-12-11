@@ -45,60 +45,58 @@ export default async function Image({ params }: Props) {
   const title = doc?.title ?? `${constants.company.name} Docs`;
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        alignItems: 'flex-start',
+        background: '#000',
+        color: '#fff',
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        justifyContent: 'flex-end',
+        padding: '72px 72px 64px',
+        position: 'relative',
+        width: '100%',
+        fontFamily: 'Inter, Arial, sans-serif',
+      }}
+    >
       <div
         style={{
-          alignItems: 'flex-start',
-          background: '#000',
-          color: '#fff',
+          position: 'absolute',
+          right: 32,
+          top: 24,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <LogoMark />
+      </div>
+
+      <div
+        style={{
           display: 'flex',
           flexDirection: 'column',
-          height: '100%',
-          justifyContent: 'flex-end',
-          padding: '72px 72px 64px',
-          position: 'relative',
-          width: '100%',
-          fontFamily: 'Inter, Arial, sans-serif',
+          gap: 12,
+          maxWidth: '70%',
+          alignItems: 'flex-start',
+          marginTop: 'auto',
         }}
       >
         <div
           style={{
-            position: 'absolute',
-            right: 32,
-            top: 24,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            fontSize: 78,
+            fontWeight: 'bolder',
+            lineHeight: 1.05,
+            wordBreak: 'break-word',
+            whiteSpace: 'pre-wrap',
+            textAlign: 'left',
           }}
         >
-          <LogoMark />
-        </div>
-
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 12,
-            maxWidth: '70%',
-            alignItems: 'flex-start',
-            marginTop: 'auto',
-          }}
-        >
-          <div
-            style={{
-              fontSize: 78,
-              fontWeight: 'bolder',
-              lineHeight: 1.05,
-              wordBreak: 'break-word',
-              whiteSpace: 'pre-wrap',
-              textAlign: 'left',
-            }}
-          >
-            {title}
-          </div>
+          {title}
         </div>
       </div>
-    ),
+    </div>,
     size
   );
 }
