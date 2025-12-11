@@ -13,6 +13,17 @@ function pullDocs(forceRemote = false) {
   const localDocsPath = path.join(__dirname, '../../../archestra/docs');
   if (!forceRemote && process.env.NODE_ENV !== 'production' && fs.existsSync(localDocsPath)) {
     console.log('✅ Using local archestra docs from:', localDocsPath);
+
+    // Also copy openapi.json to public directory for SwaggerUI in local dev
+    const localOpenapiJson = path.join(localDocsPath, 'openapi.json');
+    if (fs.existsSync(localOpenapiJson)) {
+      const publicDocsDir = path.join(__dirname, '..', 'public', 'docs');
+      if (!fs.existsSync(publicDocsDir)) {
+        fs.mkdirSync(publicDocsDir, { recursive: true });
+      }
+      fs.copyFileSync(localOpenapiJson, path.join(publicDocsDir, 'openapi.json'));
+      console.log('   📋 Copied openapi.json to public/docs/');
+    }
     return;
   }
 
@@ -68,12 +79,23 @@ function pullDocs(forceRemote = false) {
       // List what was pulled for verification
       const pages = path.join(targetPath, 'pages');
       const assets = path.join(targetPath, 'assets');
+      const openapiJson = path.join(targetPath, 'openapi.json');
       if (fs.existsSync(pages)) {
         const pageCount = fs.readdirSync(pages).filter((f) => f.endsWith('.md')).length;
         console.log(`   📄 Found ${pageCount} documentation pages`);
       }
       if (fs.existsSync(assets)) {
         console.log(`   🖼️  Found assets directory`);
+      }
+
+      // Copy openapi.json to public directory for SwaggerUI
+      if (fs.existsSync(openapiJson)) {
+        const publicDocsDir = path.join(__dirname, '..', 'public', 'docs');
+        if (!fs.existsSync(publicDocsDir)) {
+          fs.mkdirSync(publicDocsDir, { recursive: true });
+        }
+        fs.copyFileSync(openapiJson, path.join(publicDocsDir, 'openapi.json'));
+        console.log(`   📋 Copied openapi.json to public/docs/`);
       }
     } else {
       throw new Error('Docs folder not found in cloned repository');

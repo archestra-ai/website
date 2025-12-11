@@ -857,5 +857,6 @@
   "https://github.com/cbcoutinho/nextcloud-mcp-server",
   "https://github.com/localstack/localstack-mcp-server",
   "https://github.com/adhikasp/mcp-reddit",
-  "https://github.com/czlonkowski/n8n-mcp"
+  "https://github.com/czlonkowski/n8n-mcp",
+  "https://github.com/argoproj-labs/mcp-for-argocd"
 ]
