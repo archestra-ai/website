@@ -2,6 +2,7 @@
   "name": "grafana__mcp-grafana",
   "display_name": "mcp-grafana",
   "description": "MCP server for Grafana",
+  "instructions": "Provide your Grafana URL and authentication. For local Grafana instances, use username/password (defaults are admin/admin). For production or Grafana Cloud, create a service account token in Configuration > Service accounts with appropriate permissions for the tools you want to use.",
   "author": {
     "name": "grafana"
   },
@@ -14,6 +15,8 @@
     "env": {
       "GRAFANA_URL": "${user_config.grafana_url}",
       "GRAFANA_SERVICE_ACCOUNT_TOKEN": "${user_config.grafana_service_account_token}",
+      "GRAFANA_USERNAME": "${user_config.grafana_username}",
+      "GRAFANA_PASSWORD": "${user_config.grafana_password}",
       "DISABLE_ONCALL": "${user_config.disable_oncall}",
       "DISABLE_NAVIGATION": "${user_config.disable_navigation}"
     },
@@ -44,8 +47,21 @@
     "grafana_service_account_token": {
       "type": "string",
       "title": "Grafana Service Account Token",
-      "description": "Service account token for Grafana API authentication. Create one in Grafana under Configuration > Service accounts.",
-      "required": true,
+      "description": "Service account token for Grafana API authentication. Leave empty if using username/password.",
+      "required": false,
+      "sensitive": true
+    },
+    "grafana_username": {
+      "type": "string",
+      "title": "Grafana Username",
+      "description": "Username for basic authentication. Only needed if not using service account token. For local Grafana, default is 'admin'.",
+      "required": false
+    },
+    "grafana_password": {
+      "type": "string",
+      "title": "Grafana Password",
+      "description": "Password for basic authentication. Only needed if not using service account token. For local Grafana, default is 'admin'.",
+      "required": false,
       "sensitive": true
     }
   },
