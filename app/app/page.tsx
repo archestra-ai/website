@@ -841,32 +841,37 @@ export default function Home() {
         <section className="py-24 bg-gradient-to-br from-green-50 via-emerald-50 to-cyan-50 relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0 bg-grid-slate-100/20 [mask-image:radial-gradient(ellipse_at_center,white,transparent_75%)]"></div>
-          
+
           <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left Column - Image */}
               <div className="relative">
                 {/* Green glow effect */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-emerald-400 rounded-2xl blur-3xl opacity-10"></div>
-                
+
                 {/* Cost Chart Screenshot */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
-                  <img 
-                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/cost.png" 
+                  <img
+                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/cost.png"
                     alt="Cost Monitoring Dashboard"
                     className="w-full h-auto"
                   />
                 </div>
-                
+
                 {/* Savings Badge */}
                 <div className="absolute -top-3 -left-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
                   </svg>
                   Up to 96% Savings
                 </div>
               </div>
-              
+
               {/* Right Column - Content */}
               <div className="space-y-6">
                 {/* Badge */}
@@ -874,16 +879,16 @@ export default function Home() {
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                   <span className="text-green-700 font-medium text-sm">Cost Optimization</span>
                 </div>
-                
+
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                   Cost Monitoring, Limits and{' '}
                   <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
                     Dynamic Optimization
                   </span>
                 </h2>
-                
+
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Per-team, per-agent or per-organization cost monitoring and limitations. Dynamic optimizer 
+                  Per-team, per-agent or per-organization cost monitoring and limitations. Dynamic optimizer
                   automatically reduces costs up to 96% by intelligently switching to cheaper models for simpler tasks.
                 </p>
 
@@ -893,8 +898,12 @@ export default function Home() {
                   <div className="flex items-start gap-4 bg-white/80 backdrop-blur rounded-lg p-4 border border-green-200">
                     <div className="p-2 bg-green-100 rounded-lg flex-shrink-0">
                       <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                        />
                       </svg>
                     </div>
                     <div>
@@ -909,8 +918,12 @@ export default function Home() {
                   <div className="flex items-start gap-4 bg-white/80 backdrop-blur rounded-lg p-4 border border-blue-200">
                     <div className="p-2 bg-blue-100 rounded-lg flex-shrink-0">
                       <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                          d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                        />
                       </svg>
                     </div>
                     <div>
@@ -925,8 +938,12 @@ export default function Home() {
                   <div className="flex items-start gap-4 bg-white/80 backdrop-blur rounded-lg p-4 border border-orange-200">
                     <div className="p-2 bg-orange-100 rounded-lg flex-shrink-0">
                       <svg className="w-5 h-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                          d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
                       </svg>
                     </div>
                     <div>
@@ -941,8 +958,12 @@ export default function Home() {
                   <div className="flex items-start gap-4 bg-white/80 backdrop-blur rounded-lg p-4 border border-purple-200">
                     <div className="p-2 bg-purple-100 rounded-lg flex-shrink-0">
                       <svg className="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                          d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                        />
                       </svg>
                     </div>
                     <div>
@@ -969,7 +990,7 @@ export default function Home() {
                     <p className="text-xs text-gray-600">Controls</p>
                   </div>
                 </div>
-                
+
                 {/* CTA Button */}
                 <div className="pt-2">
                   <Link
@@ -977,7 +998,12 @@ export default function Home() {
                     className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-medium rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg shadow-green-500/25"
                   >
                     <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                      />
                     </svg>
                     Learn About Cost Management
                     <span className="ml-2">→</span>
@@ -992,7 +1018,7 @@ export default function Home() {
         <section className="py-24 bg-white relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0 bg-grid-slate-100/10 [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)]"></div>
-          
+
           <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left Column - Content */}
@@ -1002,18 +1028,18 @@ export default function Home() {
                   <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></div>
                   <span className="text-indigo-700 font-medium text-sm">Observability</span>
                 </div>
-                
+
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                   Works with Your{' '}
                   <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                     Observability Stack
                   </span>
                 </h2>
-                
+
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Export metrics to Prometheus, traces to OpenTelemetry, and visualize everything in Grafana. 
-                  Track LLM token usage, request latency, tool blocking events, and system performance 
-                  with pre-configured dashboards.
+                  Export metrics to Prometheus, traces to OpenTelemetry, and visualize everything in Grafana. Track LLM
+                  token usage, request latency, tool blocking events, and system performance with pre-configured
+                  dashboards.
                 </p>
 
                 {/* Key Features */}
@@ -1022,8 +1048,12 @@ export default function Home() {
                   <div className="flex items-start gap-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-4 border border-indigo-200">
                     <div className="p-2 bg-indigo-100 rounded-lg flex-shrink-0">
                       <svg className="w-5 h-5 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                          d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
                       </svg>
                     </div>
                     <div>
@@ -1033,8 +1063,8 @@ export default function Home() {
                         <code className="text-xs bg-gray-100 px-1 rounded">llm_request_duration_seconds</code>,{' '}
                         <code className="text-xs bg-gray-100 px-1 rounded">http_request_duration_seconds</code>
                       </p>
-                      <Link 
-                        href="/docs/platform-observability#prometheus-metrics" 
+                      <Link
+                        href="/docs/platform-observability#prometheus-metrics"
                         className="text-xs text-indigo-600 hover:text-indigo-700 font-medium mt-1 inline-block"
                       >
                         View all metrics →
@@ -1046,8 +1076,12 @@ export default function Home() {
                   <div className="flex items-start gap-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg p-4 border border-blue-200">
                     <div className="p-2 bg-blue-100 rounded-lg flex-shrink-0">
                       <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                        />
                       </svg>
                     </div>
                     <div>
@@ -1055,8 +1089,8 @@ export default function Home() {
                       <p className="text-sm text-gray-600 mt-1">
                         Full request traces with span attributes for every LLM API call
                       </p>
-                      <Link 
-                        href="/docs/platform-observability#opentelemetry-tracing" 
+                      <Link
+                        href="/docs/platform-observability#opentelemetry-tracing"
                         className="text-xs text-blue-600 hover:text-blue-700 font-medium mt-1 inline-block"
                       >
                         Configure tracing →
@@ -1068,8 +1102,12 @@ export default function Home() {
                   <div className="flex items-start gap-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-4 border border-purple-200">
                     <div className="p-2 bg-purple-100 rounded-lg flex-shrink-0">
                       <svg className="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                          d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+                        />
                       </svg>
                     </div>
                     <div>
@@ -1077,8 +1115,8 @@ export default function Home() {
                       <p className="text-sm text-gray-600 mt-1">
                         Time to first token, tokens per second, blocked tool calls tracking
                       </p>
-                      <Link 
-                        href="/docs/platform-observability#llm-metrics" 
+                      <Link
+                        href="/docs/platform-observability#llm-metrics"
                         className="text-xs text-purple-600 hover:text-purple-700 font-medium mt-1 inline-block"
                       >
                         See LLM metrics →
@@ -1090,8 +1128,12 @@ export default function Home() {
                   <div className="flex items-start gap-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4 border border-green-200">
                     <div className="p-2 bg-green-100 rounded-lg flex-shrink-0">
                       <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                          d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
+                        />
                       </svg>
                     </div>
                     <div>
@@ -1099,8 +1141,8 @@ export default function Home() {
                       <p className="text-sm text-gray-600 mt-1">
                         Ready-to-use dashboards for monitoring your AI infrastructure
                       </p>
-                      <Link 
-                        href="/docs/platform-observability#grafana-dashboards" 
+                      <Link
+                        href="/docs/platform-observability#grafana-dashboards"
                         className="text-xs text-green-600 hover:text-green-700 font-medium mt-1 inline-block"
                       >
                         Setup Grafana →
@@ -1108,7 +1150,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* CTA Button */}
                 <div className="pt-2">
                   <Link
@@ -1116,33 +1158,48 @@ export default function Home() {
                     className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-medium rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg shadow-indigo-500/25"
                   >
                     <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
                     </svg>
                     Explore Observability Features
                     <span className="ml-2">→</span>
                   </Link>
                 </div>
               </div>
-              
+
               {/* Right Column - Image */}
               <div className="relative">
                 {/* Indigo glow effect */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-2xl blur-3xl opacity-15"></div>
-                
+
                 {/* Observability Dashboard Screenshot */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
-                  <img 
-                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/observability.png" 
+                  <img
+                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/observability.png"
                     alt="Observability Dashboard"
                     className="w-full h-auto"
                   />
                 </div>
-                
+
                 {/* Floating Badge */}
                 <div className="absolute -top-3 -right-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center gap-2">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    />
                   </svg>
                   Real-time Insights
                 </div>
@@ -1168,20 +1225,34 @@ export default function Home() {
                 <div className="flex items-center justify-between mb-6">
                   <div className="p-3 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl">
                     <svg className="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                      />
                     </svg>
                   </div>
-                  <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">PERFORMANCE</span>
+                  <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                    PERFORMANCE
+                  </span>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Lightning Fast</h3>
-                <p className="text-6xl font-black text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text mb-2">45ms</p>
+                <p className="text-6xl font-black text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text mb-2">
+                  45ms
+                </p>
                 <p className="text-gray-600 mb-4">95th percentile latency</p>
                 <Link
                   href="/docs/platform-performance-benchmarks"
                   className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors group"
                 >
                   View Benchmarks
-                  <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg
+                    className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </Link>
@@ -1192,8 +1263,12 @@ export default function Home() {
                 <div className="flex items-center justify-between mb-6">
                   <div className="p-3 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl">
                     <svg className="w-8 h-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                      />
                     </svg>
                   </div>
                   <span className="text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">IAC</span>
@@ -1203,9 +1278,7 @@ export default function Home() {
                   Automate your entire Archestra deployment with Infrastructure as Code
                 </p>
                 <div className="bg-gray-900 rounded-lg p-3 mb-4">
-                  <code className="text-green-400 font-mono text-xs">
-                    terraform init archestra
-                  </code>
+                  <code className="text-green-400 font-mono text-xs">terraform init archestra</code>
                 </div>
                 <a
                   href="https://github.com/archestra-ai/terraform-provider-archestra"
@@ -1215,7 +1288,12 @@ export default function Home() {
                 >
                   <Github className="w-4 h-4 mr-1" />
                   View Provider
-                  <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg
+                    className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </a>
@@ -1226,27 +1304,34 @@ export default function Home() {
                 <div className="flex items-center justify-between mb-6">
                   <div className="p-3 bg-gradient-to-br from-orange-100 to-red-100 rounded-xl">
                     <svg className="w-8 h-8 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                      />
                     </svg>
                   </div>
-                  <span className="text-xs font-semibold text-orange-600 bg-orange-50 px-3 py-1 rounded-full">KUBERNETES</span>
+                  <span className="text-xs font-semibold text-orange-600 bg-orange-50 px-3 py-1 rounded-full">
+                    KUBERNETES
+                  </span>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Helm Chart</h3>
-                <p className="text-gray-600 mb-6">
-                  Production-ready Kubernetes deployment with a single command
-                </p>
+                <p className="text-gray-600 mb-6">Production-ready Kubernetes deployment with a single command</p>
                 <div className="bg-gray-900 rounded-lg p-3 mb-4">
-                  <code className="text-green-400 font-mono text-xs">
-                    helm install archestra
-                  </code>
+                  <code className="text-green-400 font-mono text-xs">helm install archestra</code>
                 </div>
                 <Link
                   href="/docs/platform-deployment#helm-deployment-recommended-for-production"
                   className="inline-flex items-center text-orange-600 hover:text-orange-700 font-medium transition-colors group"
                 >
                   Deployment Guide
-                  <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg
+                    className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </Link>
