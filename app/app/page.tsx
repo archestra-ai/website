@@ -28,7 +28,11 @@ const {
 } = constants;
 
 // Particle Animation Component
-const ParticleAnimation = ({ topLogoRefs, archestraRef, bottomLogoRefs }: {
+const ParticleAnimation = ({
+  topLogoRefs,
+  archestraRef,
+  bottomLogoRefs,
+}: {
   topLogoRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
   archestraRef: React.RefObject<HTMLDivElement>;
   bottomLogoRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
@@ -50,7 +54,7 @@ const ParticleAnimation = ({ topLogoRefs, archestraRef, bottomLogoRefs }: {
       if (rect) {
         canvas.width = rect.width;
         canvas.height = rect.height;
-        
+
         // Recalculate logo positions and recreate particles
         const positions = getLogoPositions();
         if (positions.archestraPos && positions.topLogos.length > 0 && positions.bottomLogos.length > 0) {
@@ -58,12 +62,12 @@ const ParticleAnimation = ({ topLogoRefs, archestraRef, bottomLogoRefs }: {
         }
       }
     };
-    
+
     // Initial delay to ensure logos are rendered
     setTimeout(() => {
       resizeCanvas();
     }, 100);
-    
+
     window.addEventListener('resize', resizeCanvas);
 
     // Get actual logo positions from refs
@@ -72,34 +76,35 @@ const ParticleAnimation = ({ topLogoRefs, archestraRef, bottomLogoRefs }: {
       if (!containerRect) return { topLogos: [], archestraPos: null, bottomLogos: [] };
 
       const topLogos = topLogoRefs.current
-        .filter(ref => ref !== null)
-        .map(ref => {
+        .filter((ref) => ref !== null)
+        .map((ref) => {
           const rect = ref!.getBoundingClientRect();
           return {
             x: (rect.left + rect.width / 2 - containerRect.left) / containerRect.width,
-            y: (rect.top + rect.height / 2 - containerRect.top) / containerRect.height
+            y: (rect.top + rect.height / 2 - containerRect.top) / containerRect.height,
           };
         });
 
       const archestraRect = archestraRef.current?.getBoundingClientRect();
-      const archestraPos = archestraRect ? {
-        x: (archestraRect.left + archestraRect.width / 2 - containerRect.left) / containerRect.width,
-        y: (archestraRect.top + archestraRect.height / 2 - containerRect.top) / containerRect.height
-      } : { x: 0.5, y: 0.5 };
+      const archestraPos = archestraRect
+        ? {
+            x: (archestraRect.left + archestraRect.width / 2 - containerRect.left) / containerRect.width,
+            y: (archestraRect.top + archestraRect.height / 2 - containerRect.top) / containerRect.height,
+          }
+        : { x: 0.5, y: 0.5 };
 
       const bottomLogos = bottomLogoRefs.current
-        .filter(ref => ref !== null)
-        .map(ref => {
+        .filter((ref) => ref !== null)
+        .map((ref) => {
           const rect = ref!.getBoundingClientRect();
           return {
             x: (rect.left + rect.width / 2 - containerRect.left) / containerRect.width,
-            y: (rect.top + rect.height / 2 - containerRect.top) / containerRect.height
+            y: (rect.top + rect.height / 2 - containerRect.top) / containerRect.height,
           };
         });
 
       return { topLogos, archestraPos, bottomLogos };
     };
-
 
     // Particle class
     class Particle {
@@ -134,7 +139,7 @@ const ParticleAnimation = ({ topLogoRefs, archestraRef, bottomLogoRefs }: {
 
       update(canvasWidth: number, canvasHeight: number) {
         this.progress += this.speed;
-        
+
         if (this.progress >= 1) {
           this.progress = 0;
           this.x = this.startX;
@@ -189,36 +194,24 @@ const ParticleAnimation = ({ topLogoRefs, archestraRef, bottomLogoRefs }: {
       window.archestraPos = archestraPosition;
 
       // Top to bottom connections via Archestra
-      topLogoPositions.forEach(topLogo => {
-        bottomLogoPositions.forEach(bottomLogo => {
+      topLogoPositions.forEach((topLogo) => {
+        bottomLogoPositions.forEach((bottomLogo) => {
           // Create 2 particles per connection
           for (let i = 0; i < 2; i++) {
             particles.push(
-              new Particle(
-                topLogo.x * width,
-                topLogo.y * height,
-                bottomLogo.x * width,
-                bottomLogo.y * height,
-                true
-              )
+              new Particle(topLogo.x * width, topLogo.y * height, bottomLogo.x * width, bottomLogo.y * height, true)
             );
           }
         });
       });
 
       // Bottom to top connections via Archestra
-      bottomLogoPositions.forEach(bottomLogo => {
-        topLogoPositions.forEach(topLogo => {
+      bottomLogoPositions.forEach((bottomLogo) => {
+        topLogoPositions.forEach((topLogo) => {
           // Create 2 particles per connection
           for (let i = 0; i < 2; i++) {
             particles.push(
-              new Particle(
-                bottomLogo.x * width,
-                bottomLogo.y * height,
-                topLogo.x * width,
-                topLogo.y * height,
-                true
-              )
+              new Particle(bottomLogo.x * width, bottomLogo.y * height, topLogo.x * width, topLogo.y * height, true)
             );
           }
         });
@@ -234,15 +227,23 @@ const ParticleAnimation = ({ topLogoRefs, archestraRef, bottomLogoRefs }: {
 
     // Initial particle creation
     const initialPositions = getLogoPositions();
-    if (initialPositions.archestraPos && initialPositions.topLogos.length > 0 && initialPositions.bottomLogos.length > 0) {
-      particlesRef.current = createParticles(initialPositions.topLogos, initialPositions.bottomLogos, initialPositions.archestraPos);
+    if (
+      initialPositions.archestraPos &&
+      initialPositions.topLogos.length > 0 &&
+      initialPositions.bottomLogos.length > 0
+    ) {
+      particlesRef.current = createParticles(
+        initialPositions.topLogos,
+        initialPositions.bottomLogos,
+        initialPositions.archestraPos
+      );
     }
 
     // Animation loop
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particlesRef.current.forEach(particle => {
+      particlesRef.current.forEach((particle) => {
         particle.update(canvas.width, canvas.height);
         particle.draw(ctx);
       });
@@ -261,11 +262,7 @@ const ParticleAnimation = ({ topLogoRefs, archestraRef, bottomLogoRefs }: {
   }, [topLogoRefs, archestraRef, bottomLogoRefs]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      style={{ zIndex: 5 }}
-    />
+    <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 5 }} />
   );
 };
 
@@ -303,10 +300,10 @@ export default function Home() {
         <section className="bg-gradient-to-b from-gray-50 to-white pb-0 pt-20">
           <div className="container pt-4 md:px-6 max-w-7xl mx-auto">
             <div className="flex flex-col items-center text-center gap-8">
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900">Central Place for AI in Your Organization</h1>
-              <p className="text-xl md:text-2xl text-gray-700 max-w-3xl">
-                Open Source and Cloud-Native
-              </p>
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900">
+                Central Place for AI in Your Organization
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-700 max-w-3xl">Open Source and Cloud-Native</p>
             </div>
           </div>
         </section>
@@ -316,7 +313,7 @@ export default function Home() {
           <div className="container px-4 md:px-6 max-w-7xl mx-auto">
             <div className="relative max-w-6xl mx-auto">
               {/* Particle Animation */}
-              <ParticleAnimation 
+              <ParticleAnimation
                 topLogoRefs={topLogoRefs}
                 archestraRef={archestraRef}
                 bottomLogoRefs={bottomLogoRefs}
@@ -324,27 +321,46 @@ export default function Home() {
               {/* Top Row - AI Applications */}
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-16">
                 <div className="flex flex-col items-center">
-                  <div ref={el => topLogoRefs.current[0] = el} className="w-20 h-20 flex items-center justify-center">
+                  <div
+                    ref={(el) => (topLogoRefs.current[0] = el)}
+                    className="w-20 h-20 flex items-center justify-center"
+                  >
                     <img src="/logo_n8n.png" alt="n8n" className="w-full h-full object-contain" />
                   </div>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div ref={el => topLogoRefs.current[1] = el} className="w-20 h-20 flex items-center justify-center">
+                  <div
+                    ref={(el) => (topLogoRefs.current[1] = el)}
+                    className="w-20 h-20 flex items-center justify-center"
+                  >
                     <img src="/logo_cursor.png" alt="Cursor" className="w-full h-full object-contain" />
                   </div>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div ref={el => topLogoRefs.current[2] = el} className="w-20 h-20 flex items-center justify-center">
+                  <div
+                    ref={(el) => (topLogoRefs.current[2] = el)}
+                    className="w-20 h-20 flex items-center justify-center"
+                  >
                     <img src="/logo_claude.png" alt="Claude" className="w-full h-full object-contain" />
                   </div>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div ref={el => topLogoRefs.current[3] = el} className="w-20 h-20 flex items-center justify-center">
-                    <img src="/logo_azure_ai_foundry.png" alt="Azure AI Foundry" className="w-full h-full object-contain" />
+                  <div
+                    ref={(el) => (topLogoRefs.current[3] = el)}
+                    className="w-20 h-20 flex items-center justify-center"
+                  >
+                    <img
+                      src="/logo_azure_ai_foundry.png"
+                      alt="Azure AI Foundry"
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div ref={el => topLogoRefs.current[4] = el} className="w-20 h-20 flex items-center justify-center">
+                  <div
+                    ref={(el) => (topLogoRefs.current[4] = el)}
+                    className="w-20 h-20 flex items-center justify-center"
+                  >
                     <span className="text-2xl">🦜⛓️</span>
                   </div>
                 </div>
@@ -354,38 +370,45 @@ export default function Home() {
               <div className="relative z-10 flex justify-center mb-16">
                 <div ref={archestraRef} className="relative">
                   <div className="absolute inset-0 bg-black blur-2xl opacity-10 animate-pulse"></div>
-                  <img 
-                    src="/logo_square.png" 
-                    alt="Archestra" 
-                    className="relative w-24 h-24"
-                  />
+                  <img src="/logo_square.png" alt="Archestra" className="relative w-24 h-24" />
                 </div>
               </div>
 
               {/* Bottom Row - LLM Providers */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
                 <div className="flex flex-col items-center">
-                  <div ref={el => bottomLogoRefs.current[0] = el} className="w-20 h-20 flex items-center justify-center">
+                  <div
+                    ref={(el) => (bottomLogoRefs.current[0] = el)}
+                    className="w-20 h-20 flex items-center justify-center"
+                  >
                     <img src="/logo_openai.png" alt="OpenAI" className="w-full h-full object-contain" />
                   </div>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div ref={el => bottomLogoRefs.current[1] = el} className="w-20 h-20 flex items-center justify-center">
+                  <div
+                    ref={(el) => (bottomLogoRefs.current[1] = el)}
+                    className="w-20 h-20 flex items-center justify-center"
+                  >
                     <img src="/logo_bedrock.png" alt="AWS Bedrock" className="w-full h-full object-contain" />
                   </div>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div ref={el => bottomLogoRefs.current[2] = el} className="w-20 h-20 flex items-center justify-center">
+                  <div
+                    ref={(el) => (bottomLogoRefs.current[2] = el)}
+                    className="w-20 h-20 flex items-center justify-center"
+                  >
                     <img src="/logo_anthropic.png" alt="Anthropic" className="w-full h-full object-contain" />
                   </div>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div ref={el => bottomLogoRefs.current[3] = el} className="w-20 h-20 flex items-center justify-center">
+                  <div
+                    ref={(el) => (bottomLogoRefs.current[3] = el)}
+                    className="w-20 h-20 flex items-center justify-center"
+                  >
                     <span className="text-xl font-bold text-blue-600">vLLM</span>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </section>
@@ -394,7 +417,7 @@ export default function Home() {
         <section className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0 bg-grid-slate-100/50 [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)]"></div>
-          
+
           <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left Column - Content */}
@@ -404,57 +427,74 @@ export default function Home() {
                   <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
                   <span className="text-red-700 font-medium text-sm">Security Foundation</span>
                 </div>
-                
+
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                   Non-Probabilistic Security to{' '}
                   <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
                     Prevent Data Exfiltration
                   </span>
                 </h2>
-                
+
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Models could consume prompt injections via MCP uncontrollably - reading your inbox, 
-                  GitHub issues, or customer inquiries - and follow malicious instructions resulting 
-                  in data exfiltration.
+                  Models could consume prompt injections via MCP uncontrollably - reading your inbox, GitHub issues, or
+                  customer inquiries - and follow malicious instructions resulting in data exfiltration.
                 </p>
-                
+
                 {/* Examples of Hacks */}
                 <div className="bg-red-50/50 backdrop-blur rounded-lg p-4 border border-red-200">
                   <p className="text-sm font-semibold text-red-900 mb-3">⚠️ Real attacks examples:</p>
                   <div className="grid grid-cols-2 gap-2 text-xs">
-                    <a href="https://simonwillison.net/2023/Apr/14/new-prompt-injection-attack-on-chatgpt-web-version-markdown-imag/" 
-                       target="_blank" rel="noopener noreferrer"
-                       className="text-gray-700 hover:text-red-600 transition-colors">
+                    <a
+                      href="https://simonwillison.net/2023/Apr/14/new-prompt-injection-attack-on-chatgpt-web-version-markdown-imag/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700 hover:text-red-600 transition-colors"
+                    >
                       • ChatGPT (Apr 2023)
                     </a>
-                    <a href="https://simonwillison.net/2023/Nov/4/hacking-google-bard-from-prompt-injection-to-data-exfiltration/" 
-                       target="_blank" rel="noopener noreferrer"
-                       className="text-gray-700 hover:text-red-600 transition-colors">
+                    <a
+                      href="https://simonwillison.net/2023/Nov/4/hacking-google-bard-from-prompt-injection-to-data-exfiltration/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700 hover:text-red-600 transition-colors"
+                    >
                       • Google Bard (Nov 2023)
                     </a>
-                    <a href="https://simonwillison.net/2024/Jun/16/github-copilot-chat-prompt-injection/" 
-                       target="_blank" rel="noopener noreferrer"
-                       className="text-gray-700 hover:text-red-600 transition-colors">
+                    <a
+                      href="https://simonwillison.net/2024/Jun/16/github-copilot-chat-prompt-injection/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700 hover:text-red-600 transition-colors"
+                    >
                       • GitHub Copilot (Jun 2024)
                     </a>
-                    <a href="https://simonwillison.net/2024/Aug/14/living-off-microsoft-copilot/" 
-                       target="_blank" rel="noopener noreferrer"
-                       className="text-gray-700 hover:text-red-600 transition-colors">
+                    <a
+                      href="https://simonwillison.net/2024/Aug/14/living-off-microsoft-copilot/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700 hover:text-red-600 transition-colors"
+                    >
                       • Microsoft Copilot (Aug 2024)
                     </a>
-                    <a href="https://simonwillison.net/2024/Aug/20/data-exfiltration-from-slack-ai/" 
-                       target="_blank" rel="noopener noreferrer"
-                       className="text-gray-700 hover:text-red-600 transition-colors">
+                    <a
+                      href="https://simonwillison.net/2024/Aug/20/data-exfiltration-from-slack-ai/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700 hover:text-red-600 transition-colors"
+                    >
                       • Slack AI (Aug 2024)
                     </a>
-                    <a href="https://simonwillison.net/2025/Feb/17/chatgpt-operator-prompt-injection/" 
-                       target="_blank" rel="noopener noreferrer"
-                       className="text-gray-700 hover:text-red-600 transition-colors">
+                    <a
+                      href="https://simonwillison.net/2025/Feb/17/chatgpt-operator-prompt-injection/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700 hover:text-red-600 transition-colors"
+                    >
                       • ChatGPT Operator (Feb 2025)
                     </a>
                   </div>
                 </div>
-                
+
                 {/* CTA Buttons */}
                 <div className="flex flex-wrap gap-3 pt-2">
                   <Link
@@ -474,7 +514,7 @@ export default function Home() {
                     <span className="ml-1">→</span>
                   </Link>
                 </div>
-                
+
                 {/* Trust Indicators */}
                 <div className="flex items-center gap-6 pt-4 text-sm">
                   <a
@@ -495,12 +535,12 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-              
+
               {/* Right Column - Video */}
               <div className="relative space-y-4">
                 {/* Glow effect */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-2xl blur-2xl opacity-20 animate-pulse"></div>
-                
+
                 {/* Video Container */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-black">
                   <div className="relative pb-[56.25%] h-0">
@@ -514,19 +554,19 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                
+
                 {/* Video Label */}
                 <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-lg">
                   <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                   LIVE DEMO
                 </div>
-                
+
                 {/* Demo Description Box */}
                 <div className="relative bg-white/90 backdrop-blur rounded-lg p-4 border border-gray-200 shadow-lg">
                   <p className="text-sm font-semibold text-gray-900 mb-2">🎬 What you'll see in the demo:</p>
                   <p className="text-sm text-gray-600">
-                    Live demonstration of Archestra's security engine preventing data leaks from 
-                    private to public GitHub repositories through prompt injection attacks.
+                    Live demonstration of Archestra's security engine preventing data leaks from private to public
+                    GitHub repositories through prompt injection attacks.
                   </p>
                 </div>
               </div>
@@ -538,32 +578,37 @@ export default function Home() {
         <section className="py-24 bg-gradient-to-br from-purple-50 via-indigo-50 to-white relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0 bg-grid-slate-100/30 [mask-image:radial-gradient(ellipse_at_center,white,transparent_85%)]"></div>
-          
+
           <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left Column - Image */}
               <div className="relative">
                 {/* Purple glow effect */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-purple-400 to-indigo-400 rounded-2xl blur-3xl opacity-15"></div>
-                
+
                 {/* Screenshot Container */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
-                  <img 
-                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/mcp-registry.png" 
+                  <img
+                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/mcp-registry.png"
                     alt="Private MCP Registry Interface"
                     className="w-full h-auto"
                   />
                 </div>
-                
+
                 {/* Floating Badge */}
                 <div className="absolute -top-3 -right-3 bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center gap-2">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    />
                   </svg>
                   Enterprise Ready
                 </div>
               </div>
-              
+
               {/* Right Column - Content */}
               <div className="space-y-6">
                 {/* Badge */}
@@ -571,17 +616,17 @@ export default function Home() {
                   <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                   <span className="text-purple-700 font-medium text-sm">Centralized Governance</span>
                 </div>
-                
+
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                   Private MCP Registry with{' '}
                   <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
                     Full Governance
                   </span>
                 </h2>
-                
+
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Add MCPs to your private registry to share them with your team: self-hosted and remote, 
-                  self-built and third-party. Maintain complete control over your organization's MCP ecosystem.
+                  Add MCPs to your private registry to share them with your team: self-hosted and remote, self-built and
+                  third-party. Maintain complete control over your organization's MCP ecosystem.
                 </p>
 
                 {/* Features List */}
@@ -590,8 +635,12 @@ export default function Home() {
                   <div className="flex items-start gap-4 bg-white/70 backdrop-blur rounded-lg p-4 border border-purple-200">
                     <div className="p-2 bg-purple-100 rounded-lg flex-shrink-0">
                       <svg className="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                          d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+                        />
                       </svg>
                     </div>
                     <div>
@@ -609,9 +658,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900">Access Management</h3>
-                      <p className="text-sm text-gray-600 mt-1">
-                        Granular permissions and team-based access control
-                      </p>
+                      <p className="text-sm text-gray-600 mt-1">Granular permissions and team-based access control</p>
                     </div>
                   </div>
 
@@ -619,8 +666,12 @@ export default function Home() {
                   <div className="flex items-start gap-4 bg-white/70 backdrop-blur rounded-lg p-4 border border-blue-200">
                     <div className="p-2 bg-blue-100 rounded-lg flex-shrink-0">
                       <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                        />
                       </svg>
                     </div>
                     <div>
@@ -631,7 +682,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* CTA Button */}
                 <div className="pt-2">
                   <Link
@@ -639,7 +690,12 @@ export default function Home() {
                     className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all shadow-lg shadow-purple-500/25"
                   >
                     <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                      />
                     </svg>
                     Learn About Private Registry
                     <span className="ml-2">→</span>
@@ -654,7 +710,7 @@ export default function Home() {
         <section className="py-24 bg-white relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0 bg-grid-slate-100/20 [mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)]"></div>
-          
+
           <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left Column - Content */}
@@ -664,16 +720,16 @@ export default function Home() {
                   <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
                   <span className="text-blue-700 font-medium text-sm">Cloud-Native Architecture</span>
                 </div>
-                
+
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                   Kubernetes-Native{' '}
                   <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                     MCP Orchestrator
                   </span>
                 </h2>
-                
+
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Run MCP servers in Kubernetes, managing their state, API keys, OAuth, and credentials. 
+                  Run MCP servers in Kubernetes, managing their state, API keys, OAuth, and credentials.
                   Enterprise-grade orchestration with automatic scaling, health checks, and zero-downtime deployments.
                 </p>
 
@@ -683,8 +739,12 @@ export default function Home() {
                   <div className="flex items-start gap-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-4 border border-green-200">
                     <div className="p-2 bg-green-100 rounded-lg flex-shrink-0">
                       <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                          d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"
+                        />
                       </svg>
                     </div>
                     <div>
@@ -692,8 +752,8 @@ export default function Home() {
                       <p className="text-sm text-gray-600 mt-1">
                         Store secrets in HashiCorp Vault or Kubernetes Secrets with automatic rotation
                       </p>
-                      <Link 
-                        href="/docs/platform-secrets-management" 
+                      <Link
+                        href="/docs/platform-secrets-management"
                         className="text-xs text-green-600 hover:text-green-700 font-medium mt-1 inline-block"
                       >
                         Learn about secrets management →
@@ -705,8 +765,12 @@ export default function Home() {
                   <div className="flex items-start gap-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-4 border border-purple-200">
                     <div className="p-2 bg-purple-100 rounded-lg flex-shrink-0">
                       <svg className="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
-                          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                        />
                       </svg>
                     </div>
                     <div>
@@ -717,7 +781,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* CTA Buttons */}
                 <div className="flex flex-wrap gap-3 pt-2">
                   <Link
@@ -725,7 +789,12 @@ export default function Home() {
                     className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all shadow-lg shadow-blue-500/25"
                   >
                     <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                      />
                     </svg>
                     Learn More
                     <span className="ml-2">→</span>
@@ -741,21 +810,26 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-              
+
               {/* Right Column - Mermaid Diagram */}
               <div className="relative">
                 {/* Blue glow effect */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-2xl blur-3xl opacity-10"></div>
-                
+
                 {/* Diagram Container */}
                 <div className="relative bg-white rounded-2xl shadow-xl border border-gray-200 p-6">
                   <MermaidDiagram />
                 </div>
-                
+
                 {/* Floating Label */}
                 <div className="absolute -top-3 -right-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center gap-2">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+                    />
                   </svg>
                   K8s Native
                 </div>
