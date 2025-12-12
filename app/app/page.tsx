@@ -1208,6 +1208,152 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Chat UI Section */}
+        <section className="py-24 bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 relative overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute inset-0 bg-grid-slate-100/20 [mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)]"></div>
+
+          <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Column - Image */}
+              <div className="relative">
+                {/* Purple glow effect */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-2xl blur-3xl opacity-15"></div>
+
+                {/* Chat UI Screenshot */}
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
+                  <img
+                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/chat.png"
+                    alt="Chat Interface"
+                    className="w-full h-auto"
+                  />
+                </div>
+
+                {/* Floating Badge */}
+                <div className="absolute -top-3 -left-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                    />
+                  </svg>
+                  ChatGPT-like Experience
+                </div>
+              </div>
+
+              {/* Right Column - Content */}
+              <div className="space-y-6">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-100 rounded-full">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                  <span className="text-purple-700 font-medium text-sm">User Interface</span>
+                </div>
+
+                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                  ChatGPT-like{' '}
+                  <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    Chat with MCPs
+                  </span>
+                </h2>
+
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Intuitive chat interface for all your users - technical and non-technical alike. Connect to any MCP server from your private registry with a single click. Includes a company-wide prompt library to share best practices across teams.
+                </p>
+
+                {/* Key Features */}
+                <div className="space-y-4">
+                  {/* Prompt Registry */}
+                  <div className="flex items-start gap-4 bg-white/80 backdrop-blur rounded-lg p-4 border border-purple-200">
+                    <div className="p-2 bg-purple-100 rounded-lg flex-shrink-0">
+                      <svg className="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Private Prompt Registry</h3>
+                      <p className="text-sm text-gray-600 mt-1">
+                        Share and reuse proven prompts across your organization
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* One-click MCP Connection */}
+                  <div className="flex items-start gap-4 bg-white/80 backdrop-blur rounded-lg p-4 border border-pink-200">
+                    <div className="p-2 bg-pink-100 rounded-lg flex-shrink-0">
+                      <svg className="w-5 h-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">One-Click MCP Access</h3>
+                      <p className="text-sm text-gray-600 mt-1">
+                        Connect to any approved MCP server instantly from the interface
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Multi-Model Support */}
+                  <div className="flex items-start gap-4 bg-white/80 backdrop-blur rounded-lg p-4 border border-orange-200">
+                    <div className="p-2 bg-orange-100 rounded-lg flex-shrink-0">
+                      <svg className="w-5 h-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Multi-Model Support</h3>
+                      <p className="text-sm text-gray-600 mt-1">
+                        Works with Claude, GPT-4, Gemini, and open-source models
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <div className="pt-2">
+                  <Link
+                    href="/docs/platform-chat-interface"
+                    className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg shadow-purple-500/25"
+                  >
+                    <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                      />
+                    </svg>
+                    Explore Chat Interface
+                    <span className="ml-2">→</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Production-Ready Section */}
         <section className="py-24 bg-gradient-to-b from-white to-gray-50">
           <div className="container px-4 md:px-6 max-w-6xl mx-auto">
