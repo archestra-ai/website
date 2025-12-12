@@ -7,11 +7,9 @@
     "name": "grafana"
   },
   "server": {
-    "command": "sh",
-    "args": [
-      "-c",
-      "go install github.com/grafana/mcp-grafana/cmd/mcp-grafana@latest && ARGS=\"\"; [ \"$DISABLE_ONCALL\" = \"true\" ] && ARGS=\"$ARGS --disable-oncall\"; [ \"$DISABLE_NAVIGATION\" = \"true\" ] && ARGS=\"$ARGS --disable-navigation\"; exec mcp-grafana $ARGS"
-    ],
+    "command": "docker",
+    "args": ["run", "-i", "--rm", "mcp/grafana", "-t", "stdio"],
+    "docker_image": "mcp/grafana",
     "env": {
       "GRAFANA_URL": "${user_config.grafana_url}",
       "GRAFANA_SERVICE_ACCOUNT_TOKEN": "${user_config.grafana_service_account_token}",
@@ -76,7 +74,7 @@
       "provider": null,
       "required": false
     },
-    "works_in_archestra": false
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "grafana",
