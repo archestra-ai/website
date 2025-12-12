@@ -34,11 +34,11 @@ const ParticleAnimation = ({
   bottomLogoRefs,
 }: {
   topLogoRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
-  archestraRef: React.RefObject<HTMLDivElement>;
+  archestraRef: React.RefObject<HTMLDivElement | null>;
   bottomLogoRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
   const particlesRef = useRef<any[]>([]);
 
   useEffect(() => {
@@ -322,7 +322,9 @@ export default function Home() {
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-16">
                 <div className="flex flex-col items-center">
                   <div
-                    ref={(el) => (topLogoRefs.current[0] = el)}
+                    ref={(el) => {
+                      topLogoRefs.current[0] = el;
+                    }}
                     className="w-20 h-20 flex items-center justify-center"
                   >
                     <img src="/logo_n8n.png" alt="n8n" className="w-full h-full object-contain" />
@@ -330,7 +332,9 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col items-center">
                   <div
-                    ref={(el) => (topLogoRefs.current[1] = el)}
+                    ref={(el) => {
+                      topLogoRefs.current[1] = el;
+                    }}
                     className="w-20 h-20 flex items-center justify-center"
                   >
                     <img src="/logo_cursor.png" alt="Cursor" className="w-full h-full object-contain" />
@@ -338,7 +342,9 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col items-center">
                   <div
-                    ref={(el) => (topLogoRefs.current[2] = el)}
+                    ref={(el) => {
+                      topLogoRefs.current[2] = el;
+                    }}
                     className="w-20 h-20 flex items-center justify-center"
                   >
                     <img src="/logo_claude.png" alt="Claude" className="w-full h-full object-contain" />
@@ -346,7 +352,9 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col items-center">
                   <div
-                    ref={(el) => (topLogoRefs.current[3] = el)}
+                    ref={(el) => {
+                      topLogoRefs.current[3] = el;
+                    }}
                     className="w-20 h-20 flex items-center justify-center"
                   >
                     <img
@@ -358,7 +366,9 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col items-center">
                   <div
-                    ref={(el) => (topLogoRefs.current[4] = el)}
+                    ref={(el) => {
+                      topLogoRefs.current[4] = el;
+                    }}
                     className="w-20 h-20 flex items-center justify-center"
                   >
                     <span className="text-2xl">🦜⛓️</span>
@@ -378,7 +388,9 @@ export default function Home() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
                 <div className="flex flex-col items-center">
                   <div
-                    ref={(el) => (bottomLogoRefs.current[0] = el)}
+                    ref={(el) => {
+                      bottomLogoRefs.current[0] = el;
+                    }}
                     className="w-20 h-20 flex items-center justify-center"
                   >
                     <img src="/logo_openai.png" alt="OpenAI" className="w-full h-full object-contain" />
@@ -386,7 +398,9 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col items-center">
                   <div
-                    ref={(el) => (bottomLogoRefs.current[1] = el)}
+                    ref={(el) => {
+                      bottomLogoRefs.current[1] = el;
+                    }}
                     className="w-20 h-20 flex items-center justify-center"
                   >
                     <img src="/logo_bedrock.png" alt="AWS Bedrock" className="w-full h-full object-contain" />
@@ -394,7 +408,9 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col items-center">
                   <div
-                    ref={(el) => (bottomLogoRefs.current[2] = el)}
+                    ref={(el) => {
+                      bottomLogoRefs.current[2] = el;
+                    }}
                     className="w-20 h-20 flex items-center justify-center"
                   >
                     <img src="/logo_anthropic.png" alt="Anthropic" className="w-full h-full object-contain" />
@@ -402,7 +418,9 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col items-center">
                   <div
-                    ref={(el) => (bottomLogoRefs.current[3] = el)}
+                    ref={(el) => {
+                      bottomLogoRefs.current[3] = el;
+                    }}
                     className="w-20 h-20 flex items-center justify-center"
                   >
                     <span className="text-xl font-bold text-blue-600">vLLM</span>
