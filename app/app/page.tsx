@@ -1333,24 +1333,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* CTA Button */}
-                <div className="pt-2">
-                  <Link
-                    href="/docs/platform-chat-interface"
-                    className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg shadow-purple-500/25"
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                      />
-                    </svg>
-                    Explore Chat Interface
-                    <span className="ml-2">→</span>
-                  </Link>
-                </div>
               </div>
             </div>
           </div>
