@@ -1259,7 +1259,9 @@ export default function Home() {
                 </h2>
 
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Intuitive chat interface for all your users - technical and non-technical alike. Connect to any MCP server from your private registry with a single click. Includes a company-wide prompt library to share best practices across teams.
+                  Intuitive chat interface for all your users - technical and non-technical alike. Connect to any MCP
+                  server from your private registry with a single click. Includes a company-wide prompt library to share
+                  best practices across teams.
                 </p>
 
                 {/* Key Features */}
