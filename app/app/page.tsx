@@ -729,8 +729,9 @@ export default function Home() {
                 </h2>
 
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Run MCP servers in Kubernetes, managing their state, API keys, OAuth, and credentials.
-                  Enterprise-grade orchestration with automatic scaling, health checks, and zero-downtime deployments.
+                  For multi-team and multi-user environments, bring order to secrets management, access control,
+                  logging, and observability. Run MCP servers in Kubernetes with enterprise-grade isolation, audit
+                  trails, and centralized governance across your entire organization.
                 </p>
 
                 {/* Key Features */}
