@@ -2,7 +2,7 @@
   "name": "flux159__mcp-server-kubernetes",
   "display_name": "Kubernetes",
   "description": "MCP Server for kubernetes management commands",
-  "instructions": "- **Default authentication method:** Leave empty to use current kubectl context. \n\n- **API method:** Requires both K8S_SERVER (API URL) + K8S_TOKEN (bearer token). Optional: K8S_SKIP_TLS_VERIFY for self-signed certs. Cannot mix methods - use kubeconfig OR direct API, not both.",
+  "instructions": "- **Default authentication method:** Leave all fields empty to use current kubectl context. \n\n- **API authentication method:** Requires both `K8S_SERVER` + `K8S_TOKEN`.",
   "author": {
     "name": "Flux159"
   },
@@ -151,7 +151,7 @@
     "k8s_server": {
       "type": "string",
       "title": "Kubernetes API Server",
-      "description": "Kubernetes API server URL. Must be reachable from the orchestrator pod. Local clusters: use Docker internal IP: e.g., https://172.18.0.2:6443. Cloud clusters: use public IP or domain name.\nGet context URL:\n`kubectl config view --context <name> --minify | grep \"server\"`",
+      "description": "Kubernetes API server URL. Must be reachable from the orchestrator pod. Local clusters: use Docker internal IP: e.g., `https://172.18.0.2:6443`. Cloud clusters: use public IP or domain name.\nGet context URL:\n`kubectl config view --context <name> --minify | grep \"server\"`",
       "default": "",
       "required": false
     },
@@ -166,7 +166,7 @@
     "k8s_skip_tls_verify": {
       "type": "boolean",
       "title": "Skip TLS Verification",
-      "description": "Skip TLS certificate verification when connecting to the target cluster. Set to `true` when using K8S_SERVER + K8S_TOKEN authentication\n(required since CA certificate is not provided). Only set to `false` if you're providing full kubeconfig with CA certificate data.",
+      "description": "Skip TLS certificate verification when connecting to the target cluster. Set to `true` when using `K8S_SERVER` + `K8S_TOKEN` authentication\n(required since CA certificate is not provided). Only set to `false` if you're providing full kubeconfig with CA certificate data.",
       "default": true,
       "required": false
     },
