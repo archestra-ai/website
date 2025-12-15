@@ -166,7 +166,7 @@
     "k8s_skip_tls_verify": {
       "type": "boolean",
       "title": "Skip TLS Verification",
-      "description": "Skip TLS certificate verification when connecting to the target cluster. Set to `true` when using K8S_SERVER + K8S_TOKEN authentication\n   (required since CA certificate is not provided). Only set to `false` if you're providing full kubeconfig with CA certificate data.",
+      "description": "Skip TLS certificate verification when connecting to the target cluster. Set to `true` when using K8S_SERVER + K8S_TOKEN authentication\n(required since CA certificate is not provided). Only set to `false` if you're providing full kubeconfig with CA certificate data.",
       "default": true,
       "required": false
     },
