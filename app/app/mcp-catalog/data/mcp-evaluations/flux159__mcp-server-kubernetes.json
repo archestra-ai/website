@@ -8,7 +8,12 @@
   },
   "server": {
     "command": "docker",
-    "args": ["run", "-i", "--rm", "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-server-kubernetes:auth-fix"],
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-server-kubernetes:auth-fix"
+    ],
     "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-server-kubernetes:auth-fix",
     "service_account": "operator",
     "env": {
