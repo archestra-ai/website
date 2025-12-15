@@ -50,8 +50,24 @@ export function getAllDocs(): DocPage[] {
       });
 
     return allDocsData.sort((a, b) => {
+      // First, sort by category
       const categoryCompare = getCategoryOrder(a.category) - getCategoryOrder(b.category);
       if (categoryCompare !== 0) return categoryCompare;
+
+      // Then, docs without subcategory come before docs with subcategory
+      const aHasSubcat = !!a.subcategory;
+      const bHasSubcat = !!b.subcategory;
+      if (aHasSubcat !== bHasSubcat) {
+        return aHasSubcat ? 1 : -1; // Docs without subcategory come first
+      }
+
+      // If both have subcategories, sort by subcategory name first
+      if (aHasSubcat && bHasSubcat) {
+        const subcatCompare = (a.subcategory || '').localeCompare(b.subcategory || '');
+        if (subcatCompare !== 0) return subcatCompare;
+      }
+
+      // Finally, sort by order
       return a.order - b.order;
     });
   } catch (error) {
