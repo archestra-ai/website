@@ -2,19 +2,16 @@
   "name": "flux159__mcp-server-kubernetes",
   "display_name": "Kubernetes",
   "description": "MCP Server for kubernetes management commands",
-  "instructions": "All configuration fields are optional. Leave blank to use your current kubectl context. Configure specific settings below only if you need to override the default behavior or enable security modes.",
+  "instructions": "- **Default authentication method:** Leave empty to use current kubectl context. \n\n- **API method:** Requires both K8S_SERVER (API URL) + K8S_TOKEN (bearer token). Optional: K8S_SKIP_TLS_VERIFY for self-signed certs. Cannot mix methods - use kubeconfig OR direct API, not both.",
   "author": {
     "name": "Flux159"
   },
   "server": {
     "command": "docker",
-    "args": ["run", "-i", "--rm", "flux159/mcp-server-kubernetes:v3.0.1"],
-    "docker_image": "flux159/mcp-server-kubernetes:v3.0.1",
+    "args": ["run", "-i", "--rm", "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-server-kubernetes:auth-fix"],
+    "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-server-kubernetes:auth-fix",
     "service_account": "operator",
     "env": {
-      "K8S_CONTEXT": "${user_config.k8s_context}",
-      "K8S_NAMESPACE": "${user_config.k8s_namespace}",
-      "KUBECONFIG_PATH": "${user_config.kubeconfig_path}",
       "K8S_SERVER": "${user_config.k8s_server}",
       "K8S_TOKEN": "${user_config.k8s_token}",
       "K8S_SKIP_TLS_VERIFY": "${user_config.k8s_skip_tls_verify}",
@@ -146,38 +143,17 @@
     "aks"
   ],
   "user_config": {
-    "k8s_context": {
-      "type": "string",
-      "title": "Kubernetes Context",
-      "description": "Override the default kubeconfig context. Leave empty to use the current context from your kubeconfig file.",
-      "default": "",
-      "required": false
-    },
-    "k8s_namespace": {
-      "type": "string",
-      "title": "Default Namespace",
-      "description": "Override the default namespace for operations. Leave empty to use 'default' or the namespace from your kubeconfig context.",
-      "default": "",
-      "required": false
-    },
-    "kubeconfig_path": {
-      "type": "string",
-      "title": "Kubeconfig Path",
-      "description": "Path to a custom kubeconfig file. Leave empty to use the default ~/.kube/config location.",
-      "default": "",
-      "required": false
-    },
     "k8s_server": {
       "type": "string",
       "title": "Kubernetes API Server",
-      "description": "Direct Kubernetes cluster API endpoint URL (e.g., https://cluster.example.com:6443). Use this for direct cluster connection without kubeconfig.",
+      "description": "Kubernetes API server URL. Must be reachable from the orchestrator pod. Local clusters: use Docker internal IP: e.g., https://172.18.0.2:6443. Cloud clusters: use public IP or domain name.\nGet context URL:\n`kubectl config view --context <name> --minify | grep \"server\"`",
       "default": "",
       "required": false
     },
     "k8s_token": {
       "type": "string",
       "title": "Authentication Token",
-      "description": "Bearer token for Kubernetes API authentication. Required when using K8S_SERVER for direct connection.",
+      "description": "Bearer token for target cluster authentication.\n\nTo generate, switch to target context:\n```\nkubectl config use-context <name>\n```\n\nThen create a namespace, service account, role binding and token:\n\nCreate the namespace:\n```\nkubectl create namespace mcp-admin\n```\n\nCreate the service account:\n```\nkubectl create sa mcp-admin -n mcp-admin\n```\n\nCreate the cluster role binding:\n```\nkubectl create clusterrolebinding mcp-admin\\\n   --clusterrole=cluster-admin\\\n   --serviceaccount=mcp-admin:mcp-admin\n```\n\nGenerate the token:\n```\nkubectl create token mcp-admin -n mcp-admin --duration=87600h\n```",
       "default": "",
       "required": false,
       "sensitive": true
@@ -185,15 +161,15 @@
     "k8s_skip_tls_verify": {
       "type": "boolean",
       "title": "Skip TLS Verification",
-      "description": "Skip TLS certificate verification when connecting to the cluster. Use only for development/testing environments.",
-      "default": false,
+      "description": "Skip TLS certificate verification when connecting to the target cluster. Set to `true` when using K8S_SERVER + K8S_TOKEN authentication\n   (required since CA certificate is not provided). Only set to `false` if you're providing full kubeconfig with CA certificate data.",
+      "default": true,
       "required": false
     },
     "allow_only_non_destructive_tools": {
       "type": "boolean",
       "title": "Non-Destructive Mode",
       "description": "Disable destructive operations (delete pods, deployments, namespaces, etc.). Safe mode for production clusters.",
-      "default": false,
+      "default": true,
       "required": false
     },
     "allow_only_readonly_tools": {
@@ -206,7 +182,7 @@
     "mask_secrets": {
       "type": "boolean",
       "title": "Mask Secrets",
-      "description": "Mask sensitive data in kubectl get secrets output for security.",
+      "description": "Mask sensitive data in `kubectl get secrets` output for security.",
       "default": true,
       "required": false
     },
