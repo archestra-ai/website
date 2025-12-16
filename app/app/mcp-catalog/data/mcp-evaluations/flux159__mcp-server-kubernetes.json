@@ -2,7 +2,7 @@
   "name": "flux159__mcp-server-kubernetes",
   "display_name": "Kubernetes",
   "description": "MCP Server for kubernetes management commands",
-  "instructions": "- **Default authentication method:** Leave all fields empty to use current kubectl context. \n\n- **API authentication method:** Requires both `K8S_SERVER` + `K8S_TOKEN`.",
+  "instructions": "Archestra supports two authentication methods for the Kubernetes MCP server:\n\n**1. ServiceAccount (allows access to the same cluster as your Archestra instance)**\n\nLeave all fields empty to use the in-cluster ServiceAccount.\n\nWhen using the official Helm chart, Archestra creates a ServiceAccount with read-only permissions in its namespace. To elevate permissions, grant additional permissions to the ServiceAccount and change the RoleBinding to a ClusterRoleBinding if access to other namespaces is required.\n\nThe default ServiceAccount follows this naming pattern: `{release-name}-archestra-platform-mcp-k8s-operator`.\n\nTo use a manually created ServiceAccount instead, set the `ARCHESTRA_ORCHESTRATOR_MCP_K8S_SERVICE_ACCOUNT_NAME` environment variable.\n\n**2. Authentication Token (allows access to an external Kubernetes cluster)**\n\nConfigure `K8S_SERVER` and `K8S_TOKEN` to connect to an external Kubernetes cluster.",
   "author": {
     "name": "Flux159"
   },
@@ -151,22 +151,22 @@
     "k8s_server": {
       "type": "string",
       "title": "Kubernetes API Server",
-      "description": "Kubernetes API server URL. Must be reachable from the orchestrator pod. Local clusters: use Docker internal IP: e.g., `https://172.18.0.2:6443`. Cloud clusters: use public IP or domain name.\nGet context URL:\n`kubectl config view --context <name> --minify | grep \"server\"`",
+      "description": "Must be reachable from the cluster where Archestra is running.\n\nFor local clusters: use Docker internal IP: e.g., `https://172.18.0.2:6443`.\n\nFor Cloud clusters: use public IP or domain name.\nGet context URL:\n`kubectl config view --context <name> --minify | grep \"server\"`",
       "default": "",
       "required": false
     },
     "k8s_token": {
       "type": "string",
       "title": "Authentication Token",
-      "description": "Bearer token for target cluster authentication.\n\nTo generate, switch to target context:\n```\nkubectl config use-context <name>\n```\n\nThen create a namespace, service account, role binding and token:\n\nCreate the namespace:\n```\nkubectl create namespace mcp-admin\n```\n\nCreate the service account:\n```\nkubectl create sa mcp-admin -n mcp-admin\n```\n\nCreate the cluster role binding:\n```\nkubectl create clusterrolebinding mcp-admin\\\n   --clusterrole=cluster-admin\\\n   --serviceaccount=mcp-admin:mcp-admin\n```\n\nGenerate the token:\n```\nkubectl create token mcp-admin -n mcp-admin --duration=87600h\n```",
+      "description": "To generate, switch to target context:\n```\nkubectl config use-context <name>\n```\n\nThen create a namespace, service account, role binding and token:\n\nCreate the namespace:\n```\nkubectl create namespace mcp-admin\n```\n\nCreate the service account:\n```\nkubectl create sa mcp-admin -n mcp-admin\n```\n\nCreate the cluster role binding:\n```\nkubectl create clusterrolebinding mcp-admin\\\n   --clusterrole=cluster-admin\\\n   --serviceaccount=mcp-admin:mcp-admin\n```\n\nGenerate the token:\n```\nkubectl create token mcp-admin -n mcp-admin --duration=87600h\n```",
       "default": "",
       "required": false,
       "sensitive": true
     },
     "k8s_skip_tls_verify": {
       "type": "boolean",
-      "title": "Skip TLS Verification",
-      "description": "Skip TLS certificate verification when connecting to the target cluster. Set to `true` when using `K8S_SERVER` + `K8S_TOKEN` authentication\n(required since CA certificate is not provided). Only set to `false` if you're providing full kubeconfig with CA certificate data.",
+      "title": "",
+      "description": "Skip TLS certificate verification when connecting to the target cluster. Set to `true` when using `K8S_SERVER` + `K8S_TOKEN` authentication\n(It's needed bacause this MCP server doesn't support CA certificate yet).",
       "default": true,
       "required": false
     },
@@ -180,7 +180,7 @@
     "allow_only_readonly_tools": {
       "type": "boolean",
       "title": "Read-Only Mode",
-      "description": "Enable strict read-only mode. Only allows get, describe, logs, and list operations.",
+      "description": "Only allows get, describe, logs, and list operations.",
       "default": false,
       "required": false
     },
