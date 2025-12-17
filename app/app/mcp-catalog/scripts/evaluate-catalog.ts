@@ -1,5 +1,5 @@
 #!/usr/bin/env tsx
-import { DxtManifestServerSchema, DxtUserConfigurationOptionSchema } from '@anthropic-ai/dxt';
+import { McpbManifestServerSchema, McpbUserConfigurationOptionSchema } from '@anthropic-ai/mcpb/schemas/0.3';
 import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
@@ -22,18 +22,12 @@ import { MCP_SERVERS_EVALUATIONS_DIR, MCP_SERVERS_JSON_FILE_PATH } from './paths
 
 const CATEGORIES = McpServerCategorySchema.options;
 
-const CanonicalServerAndUserConfigSchema = z.object({
-  /**
-   * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#server-configuration
-   * https://github.com/anthropics/dxt/blob/v0.2.6/src/schemas.ts#L94
-   */
-  server: DxtManifestServerSchema,
-  /**
-   * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#user-configuration
-   * https://github.com/anthropics/dxt/blob/v0.2.6/src/schemas.ts#L102-L103
-   */
-  user_config: z.record(z.string(), DxtUserConfigurationOptionSchema),
-});
+const CanonicalServerAndUserConfigSchema = z
+  .object({
+    server: McpbManifestServerSchema,
+    user_config: z.record(z.string(), McpbUserConfigurationOptionSchema),
+  })
+  .describe('https://github.com/modelcontextprotocol/mcpb/blob/main/src/schemas/0.3.ts');
 
 interface GitHubApiResponse {
   name: string;
@@ -1082,9 +1076,7 @@ If no run command found, respond with: {}`;
  * Extract the canonical server, and user config, configurations using AI
  *
  * Information in prompt was built using information from the following resources:
- * https://github.com/anthropics/dxt/blob/v0.2.6/src/schemas.ts#L29
- * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#server-configuration
- * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#user-configuration
+ * https://github.com/modelcontextprotocol/mcpb/blob/main/src/schemas/0.3.ts
  */
 async function extractCanonicalServerAndUserConfigConfig(
   server: ArchestraMcpServerManifest,
@@ -1913,7 +1905,7 @@ async function evaluateSingleRepo(
         if (archestra_config) console.log(`  Archestra Configuration: Available`);
         if (user_config) console.log(`  User Configuration: Available`);
         if (dependencies && dependencies.length > 0) {
-          console.log(`  Dependencies: ${dependencies.map((d) => `${d.name}(${d.importance})`).join(', ')}`);
+          console.log(`  Dependencies: ${dependencies.map((d: any) => `${d.name}(${d.importance})`).join(', ')}`);
         }
 
         if (implementing_tools !== null) {

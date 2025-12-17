@@ -33,3 +33,7 @@ next-env.d.ts
 # Platform docs pulled during build
 .platform-docs
 .platform-docs-temp
+app/public/docs
+
+CLAUDE_LOCAL.md
+app/.playwright-mcp/*

@@ -200,25 +200,4 @@ export default {
     measurementId: 'G-ZMQMSHJV9F',
   },
   debug: process.env.NODE_ENV === 'development',
-  database: {
-    url: process.env.DATABASE_URL || 'postgres://postgres:postgres@db.localtest.me:5432/main',
-  },
-  auth: {
-    socialProviders: {
-      google: {
-        clientId: process.env.GOOGLE_CLIENT_ID || '',
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-        redirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://localhost:3001/api/auth/callback/google',
-      },
-    },
-    secret: process.env.BETTER_AUTH_SECRET || 'fallback-secret-for-development',
-    baseURL: process.env.BETTER_AUTH_URL || 'http://localhost:3001',
-  },
-  inference: {
-    geminiApiKey: process.env.GOOGLE_API_TOKEN,
-    rateLimits: {
-      dailyTokenLimit: 3_000_000,
-      dailyTotalTokenUsageLimit: 5_000_000,
-    },
-  },
 };

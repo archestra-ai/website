@@ -1,13 +1,11 @@
-<div align="center">  
-  
-  # Archestra.AI Official Website
+<div align="center">
 
+# Archestra.AI Official Website
 
-  **Enterprise MCP platform for AI agents.**
+**Enterprise MCP platform for AI agents.**
 
-  
-  [![Contributors](https://img.shields.io/github/contributors/archestra-ai/website)](https://github.com/archestra-ai/website/graphs/contributors)
-  [![Slack](https://img.shields.io/badge/Slack-Join%20Community-4A154B?logo=slack)](https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg)
+[![Contributors](https://img.shields.io/github/contributors/archestra-ai/website)](https://github.com/archestra-ai/website/graphs/contributors)
+[![Slack](https://img.shields.io/badge/Slack-Join%20Community-4A154B?logo=slack)](https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg)
 
 </div>
 
@@ -15,39 +13,31 @@
 
 This repository contains the source code for [Archestra.AI](https://archestra.ai), the official website for the Archestra enterprise platform.
 
-
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ (Latest LTS recommended)
-- pnpm 10.14.0+
+- Node.js 24+ (Latest LTS recommended)
+- pnpm 10.24.0+
 
 ### Development
 
 1. Clone the repository
+
 ```bash
 git clone https://github.com/archestra-ai/website.git
 cd website
 ```
 
 2. Install dependencies
+
 ```bash
 cd app
 pnpm install
 ```
 
-3. Start local database (optional - for database features)
+3. Start development server
 
-Using Docker Compose:
-```bash
-cd app
-docker-compose up -d
-```
-
-The application automatically uses this local database in development mode.
-
-4. Start development server
 ```bash
 pnpm dev
 ```

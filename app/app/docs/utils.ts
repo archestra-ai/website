@@ -6,6 +6,21 @@ import readingTime from 'reading-time';
 import { getDocsDirectory } from './lib/get-docs-path';
 import { DocCategory, DocFrontMatter, DocNavItem, DocPage, DocSubcategory, TableOfContentsItem } from './types';
 
+/**
+ * Converts a lastUpdated value to an ISO string.
+ * gray-matter parses YAML dates (e.g., 2025-10-08) as Date objects,
+ * but Next.js metadata expects strings.
+ */
+function normalizeLastUpdated(lastUpdated: string | Date | undefined): string {
+  if (!lastUpdated) {
+    return new Date().toISOString();
+  }
+  if (lastUpdated instanceof Date) {
+    return lastUpdated.toISOString();
+  }
+  return String(lastUpdated);
+}
+
 const categoryOrder = [
   'Archestra Platform',
   'Archestra Desktop Agent',
@@ -45,7 +60,7 @@ export function getAllDocs(): DocPage[] {
           description: frontMatter.description,
           content,
           readingTime: stats.text,
-          lastUpdated: frontMatter.lastUpdated || new Date().toISOString(),
+          lastUpdated: normalizeLastUpdated(frontMatter.lastUpdated),
         } as DocPage;
       });
 
@@ -86,7 +101,7 @@ export function getDocBySlug(slug: string): DocPage | undefined {
     description: frontMatter.description,
     content,
     readingTime: stats.text,
-    lastUpdated: frontMatter.lastUpdated || new Date().toISOString(),
+    lastUpdated: normalizeLastUpdated(frontMatter.lastUpdated),
   };
 
   // Add navigation
@@ -166,7 +181,7 @@ export function generateTableOfContents(content: string): TableOfContentsItem[] 
   return toc;
 }
 
-export function getNavigationLinks(currentSlug: string): { prev?: DocNavItem; next?: DocNavItem } | undefined {
+function getNavigationLinks(currentSlug: string): { prev?: DocNavItem; next?: DocNavItem } | undefined {
   const allDocs = getAllDocs();
   const currentIndex = allDocs.findIndex((doc) => doc.slug === currentSlug);
 
@@ -198,36 +213,4 @@ export function getNavigationLinks(currentSlug: string): { prev?: DocNavItem; ne
 function getCategoryOrder(category: string): number {
   const index = categoryOrder.findIndex((cat) => cat.toLowerCase() === category.toLowerCase());
   return index === -1 ? 999 : index;
-}
-
-export function formatLastUpdated(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-}
-
-export function searchDocs(query: string): DocPage[] {
-  const allDocs = getAllDocs();
-  const searchTerms = query.toLowerCase().split(' ').filter(Boolean);
-
-  if (searchTerms.length === 0) return allDocs;
-
-  return allDocs
-    .map((doc) => {
-      const titleMatch = searchTerms.filter((term) => doc.title.toLowerCase().includes(term)).length;
-      const contentMatch = searchTerms.filter((term) => doc.content.toLowerCase().includes(term)).length;
-      const descriptionMatch = doc.description
-        ? searchTerms.filter((term) => doc.description!.toLowerCase().includes(term)).length
-        : 0;
-
-      const score = titleMatch * 10 + descriptionMatch * 5 + contentMatch;
-
-      return { doc, score };
-    })
-    .filter(({ score }) => score > 0)
-    .sort((a, b) => b.score - a.score)
-    .map(({ doc }) => doc);
 }

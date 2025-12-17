@@ -110,6 +110,9 @@
                   },
                   "docker_image": {
                     "type": "string"
+                  },
+                  "service_account": {
+                    "type": "string"
                   }
                 },
                 "required": ["command", "type"],
@@ -217,7 +220,8 @@
                 },
                 "additionalProperties": false
               }
-            }
+            },
+            "additionalProperties": false
           },
           "user_config": {
             "type": "object",
@@ -272,6 +276,9 @@
               "required": ["type", "title", "description"],
               "additionalProperties": false
             }
+          },
+          "instructions": {
+            "type": "string"
           },
           "readme": {
             "type": "string",

@@ -3,10 +3,16 @@ name: Linting and Tests
 on:
   workflow_call:
 
+# Set default permissions to empty to enforce least privilege
+# Each job will explicitly declare the permissions it needs
+permissions: {}
+
 jobs:
   app-linting-formatting-and-tests:
     name: App Linting, Formatting, and Tests
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     defaults:
       run:
         working-directory: ./app
@@ -22,6 +28,9 @@ jobs:
       - name: Check prettier formatting
         run: pnpm prettier --check .
 
+      - name: Run Knip
+        run: pnpm knip
+
       - name: Run tests
         run: pnpm test
 
@@ -29,15 +38,13 @@ jobs:
         run: pnpm typecheck
 
       - name: Build check
-        env:
-          # on prod build we throw error if DATABASE_URL is not set
-          # so we need to set it to a dummy value on CI
-          DATABASE_URL: postgresql://user:password@host.tld/dbname?option=value
         run: pnpm build:check
 
   ensure-catalog-data-is-valid:
     name: Ensure Catalog Data is Valid
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     defaults:
       run:
         working-directory: ./app
@@ -56,6 +63,8 @@ jobs:
   verify-no-pending-openapi-schema-changes:
     name: Verify no pending openapi schema changes
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     defaults:
       run:
         working-directory: ./app
@@ -96,6 +105,7 @@ jobs:
     name: Zizmor GitHub Actions static analysis
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       security-events: write
     steps:
       - name: Checkout repository
@@ -103,17 +113,16 @@ jobs:
         with:
           persist-credentials: false
 
+      # From zizmor action docs:
+      # https://github.com/zizmorcore/zizmor-action?tab=readme-ov-file#usage-with-github-advanced-security-recommended
+      #
+      # In this mode, the action will not fail when zizmor produces findings.
+      # This is because Advanced Security encourages workflows to only fail on internal errors.
+      #
+      # To use workflow failure as a blocking signal, you can use GitHub's rulesets feature.
+      # For more information, see:
+      # https://docs.github.com/en/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#pull-request-check-failures-for-code-scanning-alerts
       - name: Run zizmor 🌈
-        uses: zizmorcore/zizmor-action@f52a838cfabf134edcbaa7c8b3677dde20045018 # v0.1.1
+        uses: zizmorcore/zizmor-action@e639db99335bc9038abc0e066dfcd72e23d26fb4 # v0.3.0
         with:
-          config: |
-            rules:
-              template-injection:
-                level: error
-              artipacked:
-                level: error
-              unpinned-uses:
-                level: error
-              secrets-inherit:
-                level: error
-            fail-fast: true
+          config: .github/zizmor.yml

@@ -1,9 +1,10 @@
 #!/usr/bin/env tsx
-import { type McpServerConfig } from '@anthropic-ai/dxt';
+import { McpServerConfigSchema } from '@anthropic-ai/mcpb/schemas/0.3';
 import { createWriteStream } from 'fs';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { z } from 'zod';
 
 import type { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
@@ -111,7 +112,7 @@ function sanitizeDisplayName(name: string): string {
 async function installMcpServer(
   id: string,
   displayName: string,
-  serverConfig: McpServerConfig
+  serverConfig: z.infer<typeof McpServerConfigSchema>
 ): Promise<{ success: boolean; error?: string }> {
   try {
     // Don't retry install requests - if it fails with 500, the server might be partially installed
