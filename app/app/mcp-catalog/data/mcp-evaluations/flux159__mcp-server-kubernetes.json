@@ -2,19 +2,21 @@
   "name": "flux159__mcp-server-kubernetes",
   "display_name": "Kubernetes",
   "description": "MCP Server for kubernetes management commands",
-  "instructions": "All configuration fields are optional. Leave blank to use your current kubectl context. Configure specific settings below only if you need to override the default behavior or enable security modes.",
+  "instructions": "Archestra supports two authentication methods for the Kubernetes MCP server:\n\n**1. ServiceAccount (allows access to the same cluster as your Archestra instance)**\n\nLeave all fields empty to use the in-cluster ServiceAccount.\n\nWhen using the official Helm chart, Archestra creates a ServiceAccount with read-only permissions in its namespace. To elevate permissions, grant additional permissions to the ServiceAccount and change the RoleBinding to a ClusterRoleBinding if access to other namespaces is required.\n\nThe default ServiceAccount follows this naming pattern: `{release-name}-archestra-platform-mcp-k8s-operator`.\n\nTo use a manually created ServiceAccount instead, set the `ARCHESTRA_ORCHESTRATOR_MCP_K8S_SERVICE_ACCOUNT_NAME` environment variable.\n\n**2. Authentication Token (allows access to an external Kubernetes cluster)**\n\nConfigure `K8S_SERVER` and `K8S_TOKEN` to connect to an external Kubernetes cluster.",
   "author": {
     "name": "Flux159"
   },
   "server": {
     "command": "docker",
-    "args": ["run", "-i", "--rm", "flux159/mcp-server-kubernetes:v3.0.1"],
-    "docker_image": "flux159/mcp-server-kubernetes:v3.0.1",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-server-kubernetes:auth-fix"
+    ],
+    "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-server-kubernetes:auth-fix",
     "service_account": "operator",
     "env": {
-      "K8S_CONTEXT": "${user_config.k8s_context}",
-      "K8S_NAMESPACE": "${user_config.k8s_namespace}",
-      "KUBECONFIG_PATH": "${user_config.kubeconfig_path}",
       "K8S_SERVER": "${user_config.k8s_server}",
       "K8S_TOKEN": "${user_config.k8s_token}",
       "K8S_SKIP_TLS_VERIFY": "${user_config.k8s_skip_tls_verify}",
@@ -146,67 +148,46 @@
     "aks"
   ],
   "user_config": {
-    "k8s_context": {
-      "type": "string",
-      "title": "Kubernetes Context",
-      "description": "Override the default kubeconfig context. Leave empty to use the current context from your kubeconfig file.",
-      "default": "",
-      "required": false
-    },
-    "k8s_namespace": {
-      "type": "string",
-      "title": "Default Namespace",
-      "description": "Override the default namespace for operations. Leave empty to use 'default' or the namespace from your kubeconfig context.",
-      "default": "",
-      "required": false
-    },
-    "kubeconfig_path": {
-      "type": "string",
-      "title": "Kubeconfig Path",
-      "description": "Path to a custom kubeconfig file. Leave empty to use the default ~/.kube/config location.",
-      "default": "",
-      "required": false
-    },
     "k8s_server": {
       "type": "string",
       "title": "Kubernetes API Server",
-      "description": "Direct Kubernetes cluster API endpoint URL (e.g., https://cluster.example.com:6443). Use this for direct cluster connection without kubeconfig.",
+      "description": "Must be reachable from the cluster where Archestra is running.\n\nFor local clusters: use Docker internal IP: e.g., `https://172.18.0.2:6443`.\n\nFor Cloud clusters: use public IP or domain name.\nGet context URL:\n`kubectl config view --context <name> --minify | grep \"server\"`",
       "default": "",
       "required": false
     },
     "k8s_token": {
       "type": "string",
       "title": "Authentication Token",
-      "description": "Bearer token for Kubernetes API authentication. Required when using K8S_SERVER for direct connection.",
+      "description": "To generate, switch to target context:\n```\nkubectl config use-context <name>\n```\n\nThen create a namespace, service account, role binding and token:\n\nCreate the namespace:\n```\nkubectl create namespace mcp-admin\n```\n\nCreate the service account:\n```\nkubectl create sa mcp-admin -n mcp-admin\n```\n\nCreate the cluster role binding:\n```\nkubectl create clusterrolebinding mcp-admin\\\n   --clusterrole=cluster-admin\\\n   --serviceaccount=mcp-admin:mcp-admin\n```\n\nGenerate the token:\n```\nkubectl create token mcp-admin -n mcp-admin --duration=87600h\n```",
       "default": "",
       "required": false,
       "sensitive": true
     },
     "k8s_skip_tls_verify": {
       "type": "boolean",
-      "title": "Skip TLS Verification",
-      "description": "Skip TLS certificate verification when connecting to the cluster. Use only for development/testing environments.",
-      "default": false,
+      "title": "",
+      "description": "Skip TLS certificate verification when connecting to the target cluster. Set to `true` when using `K8S_SERVER` + `K8S_TOKEN` authentication\n(It's needed bacause this MCP server doesn't support CA certificate yet).",
+      "default": true,
       "required": false
     },
     "allow_only_non_destructive_tools": {
       "type": "boolean",
       "title": "Non-Destructive Mode",
       "description": "Disable destructive operations (delete pods, deployments, namespaces, etc.). Safe mode for production clusters.",
-      "default": false,
+      "default": true,
       "required": false
     },
     "allow_only_readonly_tools": {
       "type": "boolean",
       "title": "Read-Only Mode",
-      "description": "Enable strict read-only mode. Only allows get, describe, logs, and list operations.",
+      "description": "Only allows get, describe, logs, and list operations.",
       "default": false,
       "required": false
     },
     "mask_secrets": {
       "type": "boolean",
       "title": "Mask Secrets",
-      "description": "Mask sensitive data in kubectl get secrets output for security.",
+      "description": "Mask sensitive data in `kubectl get secrets` output for security.",
       "default": true,
       "required": false
     },
