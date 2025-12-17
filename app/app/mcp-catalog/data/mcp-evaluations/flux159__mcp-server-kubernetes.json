@@ -8,7 +8,12 @@
   },
   "server": {
     "command": "docker",
-    "args": ["run", "-i", "--rm", "flux159/mcp-server-kubernetes:v3.0.3"],
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "flux159/mcp-server-kubernetes:v3.0.3"
+    ],
     "docker_image": "flux159/mcp-server-kubernetes:v3.0.3",
     "service_account": "operator",
     "env": {
@@ -159,20 +164,20 @@
       "required": false,
       "sensitive": true
     },
-    "k8s_ca_data": {
-      "type": "string",
-      "title": "CA Certificate Data",
-      "description": "Base64-encoded Certificate Authority data for verifying the Kubernetes API server's TLS certificate. .\n\nSwitch to the target context:\n```\nkubectl config use-context <name>\n```\n\nThen retrieve the CA data:\n```\nkubectl config view --raw --minify | grep certificate-authority-data'\n```",
-      "default": "",
-      "required": false,
-      "sensitive": false
-    },
     "k8s_skip_tls_verify": {
       "type": "boolean",
       "title": "",
       "description": "Skip TLS certificate verification when connecting to the target cluster. When disabled, `K8S_CA_DATA` might be required, depending on the cluster's configuration.",
       "default": true,
       "required": false
+    },
+    "k8s_ca_data": {
+      "type": "string",
+      "title": "Certificate Authority data",
+      "description": "Base64-encoded CA data for verifying the Kubernetes API server's TLS certificate. .\n\nSwitch to the target context:\n```\nkubectl config use-context <name>\n```\n\nThen retrieve the CA data:\n```\nkubectl config view --raw --minify | grep certificate-authority-data\n```",
+      "default": "",
+      "required": false,
+      "sensitive": false
     },
     "allow_only_non_destructive_tools": {
       "type": "boolean",
@@ -212,12 +217,18 @@
     "client_config_permutations": {
       "kubernetes-default": {
         "command": "npx",
-        "args": ["-y", "mcp-server-kubernetes"],
+        "args": [
+          "-y",
+          "mcp-server-kubernetes"
+        ],
         "env": {}
       },
       "kubernetes-readonly": {
         "command": "npx",
-        "args": ["-y", "mcp-server-kubernetes"],
+        "args": [
+          "-y",
+          "mcp-server-kubernetes"
+        ],
         "env": {
           "ALLOW_ONLY_READONLY_TOOLS": "true",
           "MASK_SECRETS": "true"
@@ -225,7 +236,10 @@
       },
       "kubernetes-non-destructive": {
         "command": "npx",
-        "args": ["-y", "mcp-server-kubernetes"],
+        "args": [
+          "-y",
+          "mcp-server-kubernetes"
+        ],
         "env": {
           "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS": "true",
           "MASK_SECRETS": "true"
@@ -233,7 +247,10 @@
       },
       "kubernetes-production": {
         "command": "npx",
-        "args": ["-y", "mcp-server-kubernetes"],
+        "args": [
+          "-y",
+          "mcp-server-kubernetes"
+        ],
         "env": {
           "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS": "true",
           "MASK_SECRETS": "true",
