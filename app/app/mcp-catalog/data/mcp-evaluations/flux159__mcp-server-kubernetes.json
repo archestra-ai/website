@@ -8,17 +8,13 @@
   },
   "server": {
     "command": "docker",
-    "args": [
-      "run",
-      "-i",
-      "--rm",
-      "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-server-kubernetes:auth-fix"
-    ],
-    "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-server-kubernetes:auth-fix",
+    "args": ["run", "-i", "--rm", "flux159/mcp-server-kubernetes:v3.0.3"],
+    "docker_image": "flux159/mcp-server-kubernetes:v3.0.3",
     "service_account": "operator",
     "env": {
       "K8S_SERVER": "${user_config.k8s_server}",
       "K8S_TOKEN": "${user_config.k8s_token}",
+      "K8S_CA_DATA": "${user_config.k8s_ca_data}",
       "K8S_SKIP_TLS_VERIFY": "${user_config.k8s_skip_tls_verify}",
       "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS": "${user_config.allow_only_non_destructive_tools}",
       "ALLOW_ONLY_READONLY_TOOLS": "${user_config.allow_only_readonly_tools}",
@@ -163,10 +159,18 @@
       "required": false,
       "sensitive": true
     },
+    "k8s_ca_data": {
+      "type": "string",
+      "title": "CA Certificate Data",
+      "description": "Base64-encoded Certificate Authority data for verifying the Kubernetes API server's TLS certificate. .\n\nSwitch to the target context:\n```\nkubectl config use-context <name>\n```\n\nThen retrieve the CA data:\n```\nkubectl config view --raw --minify | grep certificate-authority-data'\n```",
+      "default": "",
+      "required": false,
+      "sensitive": false
+    },
     "k8s_skip_tls_verify": {
       "type": "boolean",
       "title": "",
-      "description": "Skip TLS certificate verification when connecting to the target cluster. Set to `true` when using `K8S_SERVER` + `K8S_TOKEN` authentication\n(It's needed bacause this MCP server doesn't support CA certificate yet).",
+      "description": "Skip TLS certificate verification when connecting to the target cluster. When disabled, `K8S_CA_DATA` might be required, depending on the cluster's configuration.",
       "default": true,
       "required": false
     },
