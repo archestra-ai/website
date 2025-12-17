@@ -62,7 +62,8 @@
           "YOUTUBE_MCP_SERVER_PORT": "5000",
           "WEBSHARE_PROXY_USERNAME": "your_proxy_username",
           "WEBSHARE_PROXY_PASSWORD": "your_proxy_password"
-        }
+        },
+        "docker_image": ".env"
       },
       "youtube-mcp-server-python": {
         "command": "python",

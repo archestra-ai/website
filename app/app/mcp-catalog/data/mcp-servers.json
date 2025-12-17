@@ -255,8 +255,6 @@
   "https://github.com/yashshingvi/databricks-genie-MCP",
   "https://github.com/21st-dev/magic-mcp",
   "https://github.com/aashari/mcp-server-atlassian-bitbucket",
-  "https://github.com/aashari/mcp-server-atlassian-confluence",
-  "https://github.com/aashari/mcp-server-atlassian-jira",
   "https://github.com/abrinsmead/mindpilot-mcp",
   "https://github.com/admica/FileScopeMCP",
   "https://github.com/akramIOT/MCP_AI_SOC_Sher",
@@ -289,7 +287,6 @@
   "https://github.com/gorosun/unified-diff-mcp",
   "https://github.com/Govcraft/rust-docs-mcp-server",
   "https://github.com/promptexecution/cratedocs-mcp",
-  "https://github.com/HainanZhao/mcp-gitlab-jira",
   "https://github.com/haris-musa/excel-mcp-server",
   "https://github.com/higress-group/higress-ops-mcp-server",
   "https://github.com/hijaz/postmancer",
@@ -699,9 +696,7 @@
   "https://github.com/aikts/yandex-tracker-mcp",
   "https://github.com/effytech/freshdesk_mcp",
   "https://github.com/incentivai/quickchat-ai-mcp",
-  "https://github.com/nguyenvanduocit/jira-mcp",
   "https://github.com/sooperset/mcp-atlassian",
-  "https://github.com/tom28881/mcp-jira-server",
   "https://github.com/mmntm/weblate-mcp",
   "https://github.com/translated/lara-mcp",
   "https://github.com/daisys-ai/daisys-mcp",
@@ -793,7 +788,6 @@
   "https://github.com/kj455/mcp-kibela",
   "https://github.com/Klavis-AI/klavis/tree/main/mcp_servers/youtube",
   "https://github.com/KS-GEN-AI/confluence-mcp-server",
-  "https://github.com/KS-GEN-AI/jira-mcp-server",
   "https://github.com/kw510/strava-mcp",
   "https://github.com/louiscklaw/hko-mcp",
   "https://github.com/magarcia/mcp-server-giphy",
@@ -857,5 +851,6 @@
   "https://github.com/cbcoutinho/nextcloud-mcp-server",
   "https://github.com/localstack/localstack-mcp-server",
   "https://github.com/adhikasp/mcp-reddit",
-  "https://github.com/czlonkowski/n8n-mcp"
+  "https://github.com/czlonkowski/n8n-mcp",
+  "https://github.com/argoproj-labs/mcp-for-argocd"
 ]

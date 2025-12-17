@@ -78,12 +78,14 @@
       "inditextech-mcp-teams-server-docker": {
         "command": "docker",
         "args": ["run", "-it", "inditextech/mcp-teams-server"],
-        "env": {}
+        "env": {},
+        "docker_image": "inditextech/mcp-teams-server"
       },
       "inditextech-mcp-teams-server-docker-configured": {
         "command": "docker",
         "args": ["run", "--env-file", ".env", "-it", "inditextech/mcp-teams-server"],
-        "env": {}
+        "env": {},
+        "docker_image": ".env"
       }
     },
     "oauth": {

@@ -192,7 +192,8 @@
           "QDRANT_URL": "http://your-qdrant-server:6333",
           "QDRANT_API_KEY": "your-api-key",
           "COLLECTION_NAME": "your-collection"
-        }
+        },
+        "docker_image": "mcp-server-qdrant"
       },
       "mcp-server-qdrant-claude-remote": {
         "command": "uvx",

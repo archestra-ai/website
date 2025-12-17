@@ -59,7 +59,8 @@
         "args": ["run", "-d", "-e", "YEPCODE_API_TOKEN=your_api_token_here", "yepcode/mcp-server"],
         "env": {
           "YEPCODE_API_TOKEN": "your_api_token_here"
-        }
+        },
+        "docker_image": "yepcode/mcp-server"
       }
     },
     "oauth": {

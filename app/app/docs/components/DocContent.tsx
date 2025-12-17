@@ -2,6 +2,7 @@
 
 import { Check, Copy, Link as LinkIcon } from 'lucide-react';
 import mermaid from 'mermaid';
+import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
@@ -11,6 +12,16 @@ import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
 
 import { Button } from '@components/ui/button';
+
+// Dynamically import SwaggerUI to avoid SSR issues
+const SwaggerUI = dynamic(() => import('./SwaggerUI'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center py-20">
+      <div className="animate-pulse text-gray-500">Loading API documentation...</div>
+    </div>
+  ),
+});
 
 interface DocContentProps {
   content: string;
@@ -103,6 +114,13 @@ function CodeBlock({ children, className }: CodeBlockProps) {
 }
 
 export default function DocContent({ content }: DocContentProps) {
+  // Check if content contains the swagger-ui directive
+  const hasSwaggerUI = content.includes(':::swagger-ui');
+
+  // If swagger-ui directive is present, extract the content without the directive
+  // and render SwaggerUI component
+  const processedContent = hasSwaggerUI ? content.replace(/:::swagger-ui\s*:::/g, '').trim() : content;
+
   useEffect(() => {
     // Initialize mermaid
     mermaid.initialize({
@@ -183,6 +201,7 @@ export default function DocContent({ content }: DocContentProps) {
 
   return (
     <div className="prose prose-lg max-w-none">
+      {/* Render the markdown content */}
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkBreaks]}
         rehypePlugins={[rehypeHighlight, rehypeRaw, rehypeSlug]}
@@ -263,9 +282,7 @@ export default function DocContent({ content }: DocContentProps) {
               />
             );
           },
-          img: ({ node, ...props }) => (
-            <img {...props} className="rounded-lg shadow-md my-6 w-full max-w-2xl mx-auto" />
-          ),
+          img: ({ node, ...props }) => <img {...props} className="shadow-md my-6 w-full max-w-2xl mx-auto" />,
           iframe: ({ node, ...props }) => (
             <div className="relative my-6 w-full overflow-hidden rounded-lg" style={{ paddingBottom: '56.25%' }}>
               <iframe
@@ -313,7 +330,7 @@ export default function DocContent({ content }: DocContentProps) {
             );
           },
           table: ({ node, ...props }) => (
-            <div className="my-6 w-full">
+            <div className="my-6 w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
               <table {...props} className="w-full divide-y divide-gray-200 table-fixed" />
             </div>
           ),
@@ -354,8 +371,11 @@ export default function DocContent({ content }: DocContentProps) {
           },
         }}
       >
-        {content}
+        {processedContent}
       </ReactMarkdown>
+
+      {/* Render SwaggerUI after markdown content if the directive is present */}
+      {hasSwaggerUI && <SwaggerUI />}
     </div>
   );
 }

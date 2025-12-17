@@ -1,5 +1,5 @@
 #!/usr/bin/env tsx
-import { DxtManifestServerSchema, DxtUserConfigurationOptionSchema } from '@anthropic-ai/dxt';
+import { McpbManifestServerSchema, McpbUserConfigurationOptionSchema } from '@anthropic-ai/mcpb/schemas/0.3';
 import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
@@ -22,18 +22,12 @@ import { MCP_SERVERS_EVALUATIONS_DIR, MCP_SERVERS_JSON_FILE_PATH } from './paths
 
 const CATEGORIES = McpServerCategorySchema.options;
 
-const CanonicalServerAndUserConfigSchema = z.object({
-  /**
-   * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#server-configuration
-   * https://github.com/anthropics/dxt/blob/v0.2.6/src/schemas.ts#L94
-   */
-  server: DxtManifestServerSchema,
-  /**
-   * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#user-configuration
-   * https://github.com/anthropics/dxt/blob/v0.2.6/src/schemas.ts#L102-L103
-   */
-  user_config: z.record(z.string(), DxtUserConfigurationOptionSchema),
-});
+const CanonicalServerAndUserConfigSchema = z
+  .object({
+    server: McpbManifestServerSchema,
+    user_config: z.record(z.string(), McpbUserConfigurationOptionSchema),
+  })
+  .describe('https://github.com/modelcontextprotocol/mcpb/blob/main/src/schemas/0.3.ts');
 
 interface GitHubApiResponse {
   name: string;
@@ -542,6 +536,42 @@ function convertToGeminiSchema(jsonSchema: any): any {
 }
 
 /**
+ * Extract Docker image name from docker run args
+ * Handles common patterns like:
+ * - ["run", "-i", "--rm", "IMAGE"]
+ * - ["run", "--rm", "-e", "VAR=val", "IMAGE"]
+ * - ["run", "-v", "/path:/path", "IMAGE"]
+ */
+function extractDockerImage(args?: string[]): string | undefined {
+  if (!args || args.length === 0) return undefined;
+
+  // Skip the first "run" command if present
+  let startIndex = args[0] === 'run' ? 1 : 0;
+
+  // Find the first argument that doesn't start with '-' and isn't a value for a flag
+  // Common flags that take values: -e, -v, --mount, --name, -p, --env, etc.
+  const flagsWithValues = new Set(['-e', '-v', '--mount', '--name', '-p', '--env', '--volume', '-w', '--workdir']);
+
+  for (let i = startIndex; i < args.length; i++) {
+    const arg = args[i];
+
+    // Skip flags that start with '-'
+    if (arg.startsWith('-')) {
+      // If this flag takes a value, skip the next argument too
+      if (flagsWithValues.has(arg)) {
+        i++; // Skip the next argument (the value)
+      }
+      continue;
+    }
+
+    // Found a non-flag argument - this should be the image
+    return arg;
+  }
+
+  return undefined;
+}
+
+/**
  * Call LLM (Ollama or Gemini) for analysis
  */
 async function callLLM(prompt: string, format?: any, model = 'gemini-2.5-pro'): Promise<any> {
@@ -916,6 +946,8 @@ ${content.substring(0, 8000)}
 Instructions:
 - Extract all ways to run the server (npx, docker, node, python, etc.)
 - For Docker commands: split "docker run" into command="docker" and args=["run", ...]
+- For Docker commands: ALSO extract the Docker image name into a separate "docker_image" field
+- The docker_image should be the image name from the args (e.g., "pulumi/mcp-server:latest", "redis/mcp-redis:latest")
 - For npx: command="npx", args=["-y", "package-name"]
 - Extract environment variables from docker -e flags to env object
 - CRITICAL: Server names MUST be derived from the actual package/image names in the content:
@@ -970,7 +1002,20 @@ If you find "@modelcontextprotocol/server-filesystem" in npx and a docker varian
   },
   "filesystem-server-docker": {
     "command": "docker",
-    "args": ["run", "-v", "/path:/data", "mcp/filesystem:latest"]
+    "args": ["run", "-v", "/path:/data", "mcp/filesystem:latest"],
+    "docker_image": "mcp/filesystem:latest"
+  }
+}
+
+If you find a Redis server with Docker and environment variables:
+{
+  "redis-mcp-docker": {
+    "command": "docker",
+    "args": ["run", "-i", "--rm", "-e", "REDIS_HOST=localhost", "redis/mcp-redis:latest"],
+    "docker_image": "redis/mcp-redis:latest",
+    "env": {
+      "REDIS_HOST": "localhost"
+    }
   }
 }
 
@@ -986,6 +1031,23 @@ If no run command found, respond with: {}`;
     const result = await callLLM(prompt, configFormat, model);
     // Only save if mcpServers exists AND has actual content
     if (result && Object.keys(result).length > 0) {
+      // Enhance Docker-based configs with docker_image field (fallback if LLM didn't provide it)
+      const enhancedResult: any = {};
+      for (const [key, config] of Object.entries(result)) {
+        const configObj = config as any;
+        if (configObj.command === 'docker' && !configObj.docker_image) {
+          // Extract Docker image from args and add as dedicated field (fallback)
+          const dockerImage = extractDockerImage(configObj.args);
+          enhancedResult[key] = {
+            ...configObj,
+            ...(dockerImage ? { docker_image: dockerImage } : {}),
+          };
+        } else {
+          // Keep config as-is (including docker_image if LLM already provided it)
+          enhancedResult[key] = configObj;
+        }
+      }
+
       return {
         ...server,
         archestra_config: {
@@ -996,7 +1058,7 @@ If no run command found, respond with: {}`;
           works_in_archestra: false,
           oauth: server.archestra_config?.oauth || { provider: null, required: false },
           ...server.archestra_config,
-          client_config_permutations: result,
+          client_config_permutations: enhancedResult,
         },
         evaluation_model: model,
       };
@@ -1014,9 +1076,7 @@ If no run command found, respond with: {}`;
  * Extract the canonical server, and user config, configurations using AI
  *
  * Information in prompt was built using information from the following resources:
- * https://github.com/anthropics/dxt/blob/v0.2.6/src/schemas.ts#L29
- * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#server-configuration
- * https://github.com/anthropics/dxt/blob/main/MANIFEST.md#user-configuration
+ * https://github.com/modelcontextprotocol/mcpb/blob/main/src/schemas/0.3.ts
  */
 async function extractCanonicalServerAndUserConfigConfig(
   server: ArchestraMcpServerManifest,
@@ -1066,6 +1126,7 @@ Instructions:
 - Extract the CANONICAL way to run this server. Use a docker command as the LAST resort. Have a preference towards npx, node, python, etc.
 - Additionally, for any dynamic configuration (e.g. flags, environment variables, api keys, etc.) this should go into the "user_config" object (using the format documented below)
 - For Docker commands: split "docker run" into command="docker" and args=["run", ...]
+- For Docker commands: ALSO extract the Docker image name into a separate "docker_image" field in the server config
 - For npx: command="npx", args=["-y", "package-name"], type="node", entry_point="index.js"
 - Extract environment variables from docker -e flags to env object
 - For Docker, include the full image name in args
@@ -1121,6 +1182,13 @@ The server object defines how to run the MCP server:
 {
   "command": "server/my-server",
   "args": ["--config", "server/config.json"],
+  "env": {}
+}
+
+{
+  "command": "docker",
+  "args": ["run", "-i", "--rm", "myimage/server:latest", "--port", "3000"],
+  "docker_image": "myimage/server:latest",
   "env": {}
 }
 
@@ -1837,7 +1905,7 @@ async function evaluateSingleRepo(
         if (archestra_config) console.log(`  Archestra Configuration: Available`);
         if (user_config) console.log(`  User Configuration: Available`);
         if (dependencies && dependencies.length > 0) {
-          console.log(`  Dependencies: ${dependencies.map((d) => `${d.name}(${d.importance})`).join(', ')}`);
+          console.log(`  Dependencies: ${dependencies.map((d: any) => `${d.name}(${d.importance})`).join(', ')}`);
         }
 
         if (implementing_tools !== null) {

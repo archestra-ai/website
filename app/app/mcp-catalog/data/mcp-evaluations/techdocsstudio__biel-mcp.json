@@ -63,7 +63,8 @@
       "biel-mcp-docker": {
         "command": "docker",
         "args": ["run", "-d", "-p", "7832:7832", "biel-mcp"],
-        "env": {}
+        "env": {},
+        "docker_image": "biel-mcp"
       }
     },
     "oauth": {

@@ -26,7 +26,8 @@
         "env": {
           "GITLAB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>",
           "GITLAB_API_URL": "https://gitlab.com/api/v4"
-        }
+        },
+        "docker_image": "mcp/gitlab"
       },
       "modelcontextprotocol-server-gitlab": {
         "command": "npx",
@@ -50,7 +51,8 @@
         "env": {
           "GITLAB_PERSONAL_ACCESS_TOKEN": "${input:gitlab_token}",
           "GITLAB_API_URL": "${input:gitlab_url}"
-        }
+        },
+        "docker_image": "mcp/gitlab"
       }
     },
     "oauth": {

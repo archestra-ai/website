@@ -35,7 +35,8 @@
       "mcp-sqlite-docker-desktop": {
         "command": "docker",
         "args": ["run", "--rm", "-i", "-v", "mcp-test:/mcp", "mcp/sqlite", "--db-path", "/mcp/test.db"],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp/sqlite"
       },
       "mcp-server-sqlite-uvx": {
         "command": "uvx",
@@ -45,7 +46,8 @@
       "mcp-sqlite-docker-vscode": {
         "command": "docker",
         "args": ["run", "-i", "--rm", "-v", "mcp-sqlite:/mcp", "mcp/sqlite", "--db-path", "${input:db_path}"],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp/sqlite"
       },
       "mcp-server-sqlite-dev": {
         "command": "mcp",

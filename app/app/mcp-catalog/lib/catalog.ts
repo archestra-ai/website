@@ -17,7 +17,7 @@ const serversCache = new Map<string, ArchestraMcpServerManifest[]>();
 const CACHE_KEY_ALL = '__ALL_SERVERS__';
 
 // Clear the cache (useful for development or when data changes)
-export function clearServersCache(): void {
+function clearServersCache(): void {
   serversCache.clear();
 }
 
@@ -359,7 +359,7 @@ export function loadServers(name?: string): ArchestraMcpServerManifest[] {
 /**
  * Load only servers from the same repository as the target server
  */
-export function loadServersFromSameRepo(targetServer: ArchestraMcpServerManifest): ArchestraMcpServerManifest[] {
+function loadServersFromSameRepo(targetServer: ArchestraMcpServerManifest): ArchestraMcpServerManifest[] {
   // Remote servers don't have repositories, return empty array
   if (!targetServer.github_info) {
     return [];

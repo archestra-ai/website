@@ -9,7 +9,8 @@
     "command": "docker",
     "args": ["run", "furey/mongodb-lens"],
     "env": {},
-    "type": "local"
+    "type": "local",
+    "docker_image": "furey/mongodb-lens"
   },
   "tools": [],
   "prompts": [],
@@ -36,7 +37,8 @@
         ],
         "env": {
           "MONGODB_URI": "mongodb://host.docker.internal:27017/mydatabase"
-        }
+        },
+        "docker_image": "furey/mongodb-lens"
       },
       "mongodb-lens-docker-configured": {
         "command": "docker",
@@ -56,7 +58,8 @@
           "MONGODB_URI": "mongodb://host.docker.internal:27017/mydatabase",
           "MCP_PORT": "3000",
           "MCP_CONFIRM": "true"
-        }
+        },
+        "docker_image": "furey/mongodb-lens"
       }
     },
     "oauth": {

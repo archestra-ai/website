@@ -69,7 +69,8 @@
       "mcp-package-version-docker": {
         "command": "docker",
         "args": ["run", "-p", "18080:18080", "ghcr.io/sammcj/mcp-package-version:main"],
-        "env": {}
+        "env": {},
+        "docker_image": "ghcr.io/sammcj/mcp-package-version:main"
       }
     },
     "oauth": {

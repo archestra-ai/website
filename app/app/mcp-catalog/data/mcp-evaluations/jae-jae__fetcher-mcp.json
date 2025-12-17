@@ -53,7 +53,8 @@
       "fetcher-mcp-docker": {
         "command": "docker",
         "args": ["run", "-p", "3000:3000", "ghcr.io/jae-jae/fetcher-mcp:latest"],
-        "env": {}
+        "env": {},
+        "docker_image": "ghcr.io/jae-jae/fetcher-mcp:latest"
       },
       "fetcher-mcp-docker-compose": {
         "command": "docker-compose",

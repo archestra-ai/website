@@ -92,7 +92,8 @@
           "ADX_DATABASE": "your_database",
           "AZURE_TENANT_ID": "your_tenant_id",
           "AZURE_CLIENT_ID": "your_client_id"
-        }
+        },
+        "docker_image": "adx-mcp-server"
       },
       "adx-mcp-server-docker-claude-desktop": {
         "command": "docker",
@@ -118,7 +119,8 @@
           "AZURE_TENANT_ID": "your_tenant_id",
           "AZURE_CLIENT_ID": "your_client_id",
           "ADX_TOKEN_FILE_PATH": "/var/run/secrets/azure/tokens/azure-identity-token"
-        }
+        },
+        "docker_image": "adx-mcp-server"
       }
     },
     "oauth": {

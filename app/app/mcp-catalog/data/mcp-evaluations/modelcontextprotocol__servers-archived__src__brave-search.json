@@ -25,7 +25,8 @@
         "args": ["run", "-i", "--rm", "-e", "BRAVE_API_KEY", "mcp/brave-search"],
         "env": {
           "BRAVE_API_KEY": "YOUR_API_KEY_HERE"
-        }
+        },
+        "docker_image": "mcp/brave-search"
       },
       "modelcontextprotocol-server-brave-search": {
         "command": "npx",
@@ -39,7 +40,8 @@
         "args": ["run", "-i", "--rm", "-e", "BRAVE_API_KEY", "mcp/brave-search"],
         "env": {
           "BRAVE_API_KEY": "${input:brave_api_key}"
-        }
+        },
+        "docker_image": "mcp/brave-search"
       },
       "modelcontextprotocol-server-brave-search-configured": {
         "command": "npx",

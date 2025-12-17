@@ -1,4 +1,4 @@
-import { DxtManifestSchema, McpServerConfigSchema } from '@anthropic-ai/dxt';
+import { McpServerConfigSchema, McpbManifestSchema } from '@anthropic-ai/mcpb/schemas/0.3';
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { z } from 'zod';
 
@@ -53,7 +53,12 @@ export const MCPDependencySchema = z.object({
   importance: z.number().min(1).max(10),
 });
 
-export const ArchestraClientConfigPermutationsSchema = z.record(z.string(), McpServerConfigSchema);
+// Extended MCP server config with docker_image support
+const ExtendedMcpServerConfigSchema = McpServerConfigSchema.extend({
+  docker_image: z.string().optional(),
+});
+
+export const ArchestraClientConfigPermutationsSchema = z.record(z.string(), ExtendedMcpServerConfigSchema);
 
 /**
  * NOTE: when we are ready to add more OAuth providers, we can simply add them here
@@ -66,7 +71,7 @@ export const ArchestraOauthSchema = z.object({
   required: z.boolean(),
 });
 
-export const OauthConfigSchema = z.object({
+const OauthConfigSchema = z.object({
   name: z.string(),
   server_url: z.string().url(),
   auth_server_url: z.string().url().optional(), // Optional, defaults to server_url
@@ -89,11 +94,11 @@ export const OauthConfigSchema = z.object({
   streamable_http_port: z.number().optional(), // Port for streamable HTTP MCP servers
 });
 
-export const ArchestraBrowserBasedSchema = z.object({
+const ArchestraBrowserBasedSchema = z.object({
   required: z.boolean(),
 });
 
-export const ArchestraConfigSchema = z.object({
+const ArchestraConfigSchema = z.object({
   client_config_permutations: ArchestraClientConfigPermutationsSchema.nullable(),
   oauth: ArchestraOauthSchema,
   browser_based: ArchestraBrowserBasedSchema.optional(),
@@ -118,7 +123,7 @@ export const ArchestraMcpServerGitHubRepoInfoSchema = z.object({
   path: z.string().nullable(),
 });
 
-export const ArchestraMcpServerGitHubRepoStatsSchema = z.object({
+const ArchestraMcpServerGitHubRepoStatsSchema = z.object({
   stars: z.number(),
   contributors: z.number(),
   issues: z.number(),
@@ -127,7 +132,7 @@ export const ArchestraMcpServerGitHubRepoStatsSchema = z.object({
   latest_commit_hash: z.string().nullable(),
 });
 
-export const ArchestraMcpServerFullGitHubInfoSchema = ArchestraMcpServerGitHubRepoInfoSchema.merge(
+const ArchestraMcpServerFullGitHubInfoSchema = ArchestraMcpServerGitHubRepoInfoSchema.merge(
   ArchestraMcpServerGitHubRepoStatsSchema
 );
 
@@ -143,28 +148,36 @@ export const ArchestraMcpServerProtocolFeaturesSchema = z.object({
   implementing_oauth2: z.boolean(),
 });
 
-export const LogMonitorSchema = z.object({
+const LogMonitorSchema = z.object({
   type: z.enum(['log-monitor']),
   provider: z.enum(['whatsapp']),
 });
 
-export const LocalServerSchema = McpServerConfigSchema.extend({
+const LocalServerSchema = McpServerConfigSchema.extend({
   type: z.literal('local'),
   setup: z.array(LogMonitorSchema).optional(),
+  docker_image: z.string().optional(),
+  service_account: z.string().optional(),
 });
 
-export const RemoteServerSchema = z.object({
+const RemoteServerSchema = z.object({
   type: z.literal('remote'),
   url: z.string().url(),
   docs_url: z.string().url().nullable(),
 });
 
-export const ArchestraMcpServerManifestSchema = DxtManifestSchema.omit({
-  repository: true,
-  $schema: true,
-  version: true,
-  dxt_version: true,
-})
+export const ArchestraMcpServerManifestSchema = McpbManifestSchema._def.schema
+  .omit({
+    repository: true,
+    $schema: true,
+    version: true,
+    dxt_version: true,
+    manifest_version: true,
+    icons: true,
+    localization: true,
+    privacy_policies: true,
+    _meta: true,
+  })
   .extend({
     /**
      * Machine-readable name (used for CLI, APIs)
@@ -175,6 +188,11 @@ export const ArchestraMcpServerManifestSchema = DxtManifestSchema.omit({
      * Human-friendly name for UI display
      */
     display_name: z.string(),
+
+    /**
+     * Installation instructions shown in the installation modal
+     */
+    instructions: z.string().optional(),
     readme: z.string().nullable(),
     category: McpServerCategorySchema.nullable(),
     quality_score: z.number().min(0).max(100).nullable(),

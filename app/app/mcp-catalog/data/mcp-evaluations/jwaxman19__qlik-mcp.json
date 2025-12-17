@@ -94,7 +94,8 @@
       "qlik-mcp-docker": {
         "command": "docker",
         "args": ["run", "--env-file", ".env", "qlik-mcp"],
-        "env": {}
+        "env": {},
+        "docker_image": ".env"
       },
       "qlik-mcp-deno": {
         "command": "deno",

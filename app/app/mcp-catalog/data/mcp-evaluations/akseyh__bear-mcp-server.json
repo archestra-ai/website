@@ -39,7 +39,8 @@
           "-i",
           "akseyh/bear-mcp-server"
         ],
-        "env": {}
+        "env": {},
+        "docker_image": "akseyh/bear-mcp-server"
       },
       "bear-mcp-server": {
         "command": "npx",

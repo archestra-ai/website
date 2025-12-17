@@ -33,7 +33,8 @@
       "memory-server-docker": {
         "command": "docker",
         "args": ["run", "-i", "-v", "claude-memory:/app/dist", "--rm", "mcp/memory"],
-        "env": {}
+        "env": {},
+        "docker_image": "mcp/memory"
       },
       "modelcontextprotocol-server-memory": {
         "command": "npx",

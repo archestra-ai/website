@@ -76,7 +76,8 @@
         "env": {
           "MCP_SERVER_MODE": "sse",
           "VL_INSTANCE_ENTRYPOINT": "https://play-vmlogs.victoriametrics.com"
-        }
+        },
+        "docker_image": "ghcr.io/victoriametrics-community/mcp-victorialogs"
       },
       "ghcr.io-victoriametrics-community-mcp-victorialogs-docker-http": {
         "command": "docker",
@@ -94,7 +95,8 @@
         "env": {
           "MCP_SERVER_MODE": "http",
           "VL_INSTANCE_ENTRYPOINT": "YOUR_VL_INSTANCE_URL"
-        }
+        },
+        "docker_image": "ghcr.io/victoriametrics-community/mcp-victorialogs"
       },
       "ghcr.io-victoriametrics-community-mcp-victorialogs-docker-stdio": {
         "command": "docker",
@@ -109,7 +111,8 @@
         ],
         "env": {
           "VL_INSTANCE_ENTRYPOINT": "YOUR_VL_INSTANCE_URL"
-        }
+        },
+        "docker_image": "ghcr.io/victoriametrics-community/mcp-victorialogs"
       },
       "mcp-victorialogs-stdio": {
         "command": "mcp-victorialogs",

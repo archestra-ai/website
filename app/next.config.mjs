@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -41,13 +38,36 @@ const nextConfig = {
       },
     ];
   },
-  async redirects() {
+  async rewrites() {
     return [
       {
-        source: '/api/llm-proxy/gemini/models/gemini-2.5-flash:streamGenerateContent',
-        destination: '/api/llm-proxy/gemini/models/gemini-2.5-pro:streamGenerateContent',
-        permanent: false,
+        source: '/docs/platfrom/:path*',
+        destination: '/api/docs-images/platfrom/:path*',
       },
+      {
+        source: '/docs/:path*.png',
+        destination: '/api/docs-images/:path*.png',
+      },
+      {
+        source: '/docs/:path*.jpg',
+        destination: '/api/docs-images/:path*.jpg',
+      },
+      {
+        source: '/docs/:path*.jpeg',
+        destination: '/api/docs-images/:path*.jpeg',
+      },
+      {
+        source: '/docs/:path*.gif',
+        destination: '/api/docs-images/:path*.gif',
+      },
+      {
+        source: '/docs/:path*.svg',
+        destination: '/api/docs-images/:path*.svg',
+      },
+    ];
+  },
+  async redirects() {
+    return [
       /**
        * Address some typos we have in the platform docs URLs
        */

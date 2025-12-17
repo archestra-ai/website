@@ -8,7 +8,7 @@ export interface ConsentSettings {
   preferences: boolean;
 }
 
-export interface StoredConsent {
+interface StoredConsent {
   version: string;
   timestamp: string;
   settings: ConsentSettings;

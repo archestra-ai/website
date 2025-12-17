@@ -43,7 +43,8 @@
         ],
         "env": {
           "LEDGER_FILE": "/main.ledger"
-        }
+        },
+        "docker_image": "minhyeoky/mcp-ledger"
       },
       "mcp-server-ledger-uv-configured": {
         "command": "uv",

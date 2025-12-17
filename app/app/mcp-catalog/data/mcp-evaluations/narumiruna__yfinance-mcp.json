@@ -28,7 +28,8 @@
       "narumi-yfinance-mcp-docker": {
         "command": "docker",
         "args": ["run", "-i", "--rm", "narumi/yfinance-mcp"],
-        "env": {}
+        "env": {},
+        "docker_image": "narumi/yfinance-mcp"
       }
     },
     "oauth": {

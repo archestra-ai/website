@@ -95,12 +95,32 @@ const ANNA = {
   },
   description: 'Fullstack engineer with a focus on interfaces and 10+ years of experience.',
 };
+
+const INNOKENTII = {
+  '@type': 'Person',
+  name: 'Innokentii Konstantinov',
+  jobTitle: 'Founding Engineer',
+  worksFor: {
+    '@type': 'Organization',
+    name: COMPANY_NAME,
+  },
+  sameAs: 'https://www.linkedin.com/in/innokentii-konstantinov-92444b19b/',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'London',
+    addressCountry: 'UK',
+  },
+  description:
+    'Engineer with experience ranging from building user interfaces to developing high-load distributed systems. Previously working on Grafana Mimir. Founding engineer at Amixr (acquired by Grafana Labs).',
+};
+
 const PEOPLE = {
   matvey: MATVEY,
   ildar: ILDAR,
   joey: JOEY,
   dominik: DOMINIK,
   anna: ANNA,
+  innokentii: INNOKENTII,
 };
 
 // GitHub constants
@@ -180,25 +200,4 @@ export default {
     measurementId: 'G-ZMQMSHJV9F',
   },
   debug: process.env.NODE_ENV === 'development',
-  database: {
-    url: process.env.DATABASE_URL || 'postgres://postgres:postgres@db.localtest.me:5432/main',
-  },
-  auth: {
-    socialProviders: {
-      google: {
-        clientId: process.env.GOOGLE_CLIENT_ID || '',
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-        redirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://localhost:3001/api/auth/callback/google',
-      },
-    },
-    secret: process.env.BETTER_AUTH_SECRET || 'fallback-secret-for-development',
-    baseURL: process.env.BETTER_AUTH_URL || 'http://localhost:3001',
-  },
-  inference: {
-    geminiApiKey: process.env.GOOGLE_API_TOKEN,
-    rateLimits: {
-      dailyTokenLimit: 3_000_000,
-      dailyTotalTokenUsageLimit: 5_000_000,
-    },
-  },
 };

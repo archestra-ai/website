@@ -139,7 +139,8 @@
           "TENANT_ID": "YOUR_TENANT_ID",
           "AUTH_TOKEN": "YOUR_AUTH_TOKEN",
           "CONFIG_MODE": "extended"
-        }
+        },
+        "docker_image": "/path/to/your/fastn-stdio-server/.env"
       },
       "ucl-stdio-server-docker-env-vars": {
         "command": "docker",
@@ -165,7 +166,8 @@
           "TENANT_ID": "YOUR_TENANT_ID",
           "AUTH_TOKEN": "YOUR_AUTH_TOKEN",
           "CONFIG_MODE": "extended"
-        }
+        },
+        "docker_image": "ucl-stdio-server"
       }
     },
     "oauth": {
