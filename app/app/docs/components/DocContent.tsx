@@ -285,11 +285,7 @@ export default function DocContent({ content }: DocContentProps) {
           img: ({ node, ...props }) => <img {...props} className="shadow-md my-6 w-full max-w-2xl mx-auto" />,
           iframe: ({ node, ...props }) => (
             <div className="relative my-6 w-full overflow-hidden rounded-lg" style={{ paddingBottom: '56.25%' }}>
-              <iframe
-                {...props}
-                className="absolute top-0 left-0 w-full h-full"
-                loading="lazy"
-              />
+              <iframe {...props} className="absolute top-0 left-0 w-full h-full" loading="lazy" />
             </div>
           ),
           blockquote: ({ node, ...props }) => (
