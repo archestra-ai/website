@@ -6,6 +6,21 @@ import readingTime from 'reading-time';
 import { getDocsDirectory } from './lib/get-docs-path';
 import { DocCategory, DocFrontMatter, DocNavItem, DocPage, DocSubcategory, TableOfContentsItem } from './types';
 
+/**
+ * Converts a lastUpdated value to an ISO string.
+ * gray-matter parses YAML dates (e.g., 2025-10-08) as Date objects,
+ * but Next.js metadata expects strings.
+ */
+function normalizeLastUpdated(lastUpdated: string | Date | undefined): string {
+  if (!lastUpdated) {
+    return new Date().toISOString();
+  }
+  if (lastUpdated instanceof Date) {
+    return lastUpdated.toISOString();
+  }
+  return String(lastUpdated);
+}
+
 const categoryOrder = [
   'Archestra Platform',
   'Archestra Desktop Agent',
@@ -45,7 +60,7 @@ export function getAllDocs(): DocPage[] {
           description: frontMatter.description,
           content,
           readingTime: stats.text,
-          lastUpdated: frontMatter.lastUpdated || new Date().toISOString(),
+          lastUpdated: normalizeLastUpdated(frontMatter.lastUpdated),
         } as DocPage;
       });
 
@@ -86,7 +101,7 @@ export function getDocBySlug(slug: string): DocPage | undefined {
     description: frontMatter.description,
     content,
     readingTime: stats.text,
-    lastUpdated: frontMatter.lastUpdated || new Date().toISOString(),
+    lastUpdated: normalizeLastUpdated(frontMatter.lastUpdated),
   };
 
   // Add navigation

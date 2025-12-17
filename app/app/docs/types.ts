@@ -46,5 +46,6 @@ export interface DocFrontMatter {
   subcategory?: string;
   order?: number;
   description?: string;
-  lastUpdated?: string;
+  // gray-matter parses YAML dates (e.g., 2025-10-08) as Date objects
+  lastUpdated?: string | Date;
 }
