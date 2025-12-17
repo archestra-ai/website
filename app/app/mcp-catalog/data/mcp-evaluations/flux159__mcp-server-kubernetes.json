@@ -167,7 +167,7 @@
     "k8s_ca_data": {
       "type": "string",
       "title": "CA Certificate Data",
-      "description": "Base64-encoded Certificate Authority data for verifying the Kubernetes API server's TLS certificate. .\n\nSwitch to the target context:\n```\nkubectl config use-context <name>\n```\n\nThen retrieve the CA data:\n```\nkubectl config view --raw --minify -o jsonpath='{.clusters[0].cluster.certificate-authority-data}'\n```",
+      "description": "Base64-encoded Certificate Authority data for verifying the Kubernetes API server's TLS certificate. .\n\nSwitch to the target context:\n```\nkubectl config use-context <name>\n```\n\nThen retrieve the CA data:\n```\nkubectl config view --raw --minify | grep certificate-authority-data'\n```",
       "default": "",
       "required": false,
       "sensitive": false
@@ -225,7 +225,10 @@
       },
       "kubernetes-readonly": {
         "command": "npx",
-        "args": ["-y", "mcp-server-kubernetes"],
+        "args": [
+          "-y",
+          "mcp-server-kubernetes"
+        ],
         "env": {
           "ALLOW_ONLY_READONLY_TOOLS": "true",
           "MASK_SECRETS": "true"
@@ -233,7 +236,10 @@
       },
       "kubernetes-non-destructive": {
         "command": "npx",
-        "args": ["-y", "mcp-server-kubernetes"],
+        "args": [
+          "-y",
+          "mcp-server-kubernetes"
+        ],
         "env": {
           "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS": "true",
           "MASK_SECRETS": "true"
@@ -241,7 +247,10 @@
       },
       "kubernetes-production": {
         "command": "npx",
-        "args": ["-y", "mcp-server-kubernetes"],
+        "args": [
+          "-y",
+          "mcp-server-kubernetes"
+        ],
         "env": {
           "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS": "true",
           "MASK_SECRETS": "true",
