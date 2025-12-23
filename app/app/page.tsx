@@ -1518,14 +1518,16 @@ export default function Home() {
                   <code className="text-green-400 font-mono text-sm md:text-base">
                     docker pull archestra/platform:latest; <br />
                     docker run -p 9000:9000 -p 3000:3000 \ <br />
+                    &nbsp;&nbsp;-e ARCHESTRA_QUICKSTART \ <br />
+                    &nbsp;&nbsp;-v /var/run/docker.sock:/var/run/docker.sock \ <br />
                     &nbsp;&nbsp;-v archestra-postgres-data:/var/lib/postgresql/data \ <br />
                     &nbsp;&nbsp;-v archestra-app-data:/app/data \ <br />
-                    &nbsp;&nbsp;archestra/platform
+                    &nbsp;&nbsp;archestra/platform;
                   </code>
                   <button
                     onClick={() => {
                       navigator.clipboard.writeText(
-                        'docker pull archestra/platform:latest;\ndocker run -p 9000:9000 -p 3000:3000 \\\n  -v archestra-postgres-data:/var/lib/postgresql/data \\\n  -v archestra-app-data:/app/data \\\n  archestra/platform;'
+                        'docker pull archestra/platform:latest;\ndocker run -p 9000:9000 -p 3000:3000 \\\n  -e ARCHESTRA_QUICKSTART \\\n  -v /var/run/docker.sock:/var/run/docker.sock \\\n  -v archestra-postgres-data:/var/lib/postgresql/data \\\n  -v archestra-app-data:/app/data \\\n  archestra/platform;'
                       );
                       setCopied(true);
                       setTimeout(() => setCopied(false), 2000);
