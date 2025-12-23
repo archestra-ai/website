@@ -1516,12 +1516,12 @@ export default function Home() {
               <div className="bg-gray-900 rounded-lg p-6 shadow-xl">
                 <div className="flex items-center justify-between">
                   <code className="text-green-400 font-mono text-sm md:text-base">
-                    docker pull archestra/platform:latest; <br/>
-                    docker run -p 9000:9000 -p 3000:3000 \ <br/>
-                    &nbsp;&nbsp;-e ARCHESTRA_QUICKSTART \ <br/>
-                    &nbsp;&nbsp;-v /var/run/docker.sock:/var/run/docker.sock \ <br/>
-                    &nbsp;&nbsp;-v archestra-postgres-data:/var/lib/postgresql/data \ <br/>
-                    &nbsp;&nbsp;-v archestra-app-data:/app/data \ <br/>
+                    docker pull archestra/platform:latest; <br />
+                    docker run -p 9000:9000 -p 3000:3000 \ <br />
+                    &nbsp;&nbsp;-e ARCHESTRA_QUICKSTART \ <br />
+                    &nbsp;&nbsp;-v /var/run/docker.sock:/var/run/docker.sock \ <br />
+                    &nbsp;&nbsp;-v archestra-postgres-data:/var/lib/postgresql/data \ <br />
+                    &nbsp;&nbsp;-v archestra-app-data:/app/data \ <br />
                     &nbsp;&nbsp;archestra/platform;
                   </code>
                   <button
