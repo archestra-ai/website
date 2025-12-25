@@ -24,16 +24,18 @@
   "user_config": {
     "gaggimate_host": {
       "type": "string",
+      "title": "Gaggimate Host",
       "description": "Hostname or IP address of the Gaggimate device",
       "default": "localhost"
     },
     "gaggimate_protocol": {
       "type": "string",
+      "title": "Gaggimate Protocol",
       "description": "WebSocket protocol (ws or wss)",
       "default": "ws"
     }
   },
-  "category": "IoT & Hardware",
+  "category": "IoT",
   "quality_score": 75,
   "github_info": {
     "owner": "Matvey-Kuk",
