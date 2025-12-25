@@ -6,6 +6,21 @@ import readingTime from 'reading-time';
 import { getDocsDirectory } from './lib/get-docs-path';
 import { DocCategory, DocFrontMatter, DocNavItem, DocPage, DocSubcategory, TableOfContentsItem } from './types';
 
+/**
+ * Converts a lastUpdated value to an ISO string.
+ * gray-matter parses YAML dates (e.g., 2025-10-08) as Date objects,
+ * but Next.js metadata expects strings.
+ */
+function normalizeLastUpdated(lastUpdated: string | Date | undefined): string {
+  if (!lastUpdated) {
+    return new Date().toISOString();
+  }
+  if (lastUpdated instanceof Date) {
+    return lastUpdated.toISOString();
+  }
+  return String(lastUpdated);
+}
+
 const categoryOrder = [
   'Archestra Platform',
   'Archestra Desktop Agent',
@@ -45,15 +60,11 @@ export function getAllDocs(): DocPage[] {
           description: frontMatter.description,
           content,
           readingTime: stats.text,
-          lastUpdated: frontMatter.lastUpdated || new Date().toISOString(),
+          lastUpdated: normalizeLastUpdated(frontMatter.lastUpdated),
         } as DocPage;
       });
 
-    return allDocsData.sort((a, b) => {
-      const categoryCompare = getCategoryOrder(a.category) - getCategoryOrder(b.category);
-      if (categoryCompare !== 0) return categoryCompare;
-      return a.order - b.order;
-    });
+    return allDocsData.sort(compareDocPages);
   } catch (error) {
     console.error('Error reading documentation:', error);
     return [];
@@ -86,7 +97,7 @@ export function getDocBySlug(slug: string): DocPage | undefined {
     description: frontMatter.description,
     content,
     readingTime: stats.text,
-    lastUpdated: frontMatter.lastUpdated || new Date().toISOString(),
+    lastUpdated: normalizeLastUpdated(frontMatter.lastUpdated),
   };
 
   // Add navigation
@@ -198,4 +209,26 @@ function getNavigationLinks(currentSlug: string): { prev?: DocNavItem; next?: Do
 function getCategoryOrder(category: string): number {
   const index = categoryOrder.findIndex((cat) => cat.toLowerCase() === category.toLowerCase());
   return index === -1 ? 999 : index;
+}
+
+export function compareDocPages(a: DocPage, b: DocPage): number {
+  // First, sort by category
+  const categoryCompare = getCategoryOrder(a.category) - getCategoryOrder(b.category);
+  if (categoryCompare !== 0) return categoryCompare;
+
+  // Then, docs without subcategory come before docs with subcategory
+  const aHasSubcat = !!a.subcategory;
+  const bHasSubcat = !!b.subcategory;
+  if (aHasSubcat !== bHasSubcat) {
+    return aHasSubcat ? 1 : -1; // Docs without subcategory come first
+  }
+
+  // If both have subcategories, sort by subcategory name first
+  if (aHasSubcat && bHasSubcat) {
+    const subcatCompare = (a.subcategory || '').localeCompare(b.subcategory || '');
+    if (subcatCompare !== 0) return subcatCompare;
+  }
+
+  // Finally, sort by order
+  return a.order - b.order;
 }
