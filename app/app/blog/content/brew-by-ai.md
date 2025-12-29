@@ -2,13 +2,14 @@
 title: 'Brew By AI'
 date: '2025-12-28'
 author: 'Matvey Kukuy, CEO'
-description: "A Christmas project of making AI brew coffee."
+description: 'A Christmas project of making AI brew coffee.'
 image: '/blog/2025-12-28-main-image.jpeg'
 ---
 
 The holiday season is here, and I hope you don’t mind if I shake up our usual corporate blog content with this fun little story about how we literally got AI to brew us a delicious cup of coffee.
 
 This post is packed with technical details. It starts with the mechanics of the process, moves on to writing an MCP server, and concludes with the AI successfully adjusting the coffee machine for both dark and light roasts—much to the amazement of onlookers. If you want to skip the nitty-gritty and just see it in action, feel free to scroll to the end. For everyone else, let’s dive into the tech!
+
 # The problem of dialing in espresso
 
 ![1.3 million views on a video about dialing in espresso...](/blog/2025-12-28-hoffmann.png)
@@ -145,6 +146,7 @@ Now we need to connect the Gaggimate MCP, the AI of your choice (I personally pr
 ## Installing Archestra locally
 
 After ensuring Docker is installed on your computer, launch the orchestrator:
+
 ```
 docker pull archestra/platform:latest;
 docker run -p 9000:9000 -p 3000:3000 \
@@ -265,7 +267,7 @@ Hi, I have a dark roast and 16g basket. Investigate my last shot and profile ple
 
 <img src="/blog/2025-12-28-first-shot.png" alt="AI barista is analyzing the shot and adjusting the machine settings">
 
-Quite impressive, the shot was definitely not a great one and AI managed to get that purely from the data! I would personally never have thought about trying a 1.75 ratio either. 
+Quite impressive, the shot was definitely not a great one and AI managed to get that purely from the data! I would personally never have thought about trying a 1.75 ratio either.
 
 # ☕️ Letting the AI brew!
 
