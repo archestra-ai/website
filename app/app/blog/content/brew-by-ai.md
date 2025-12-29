@@ -277,7 +277,6 @@ Quite impressive, the shot was definitely not a great one and AI managed to get 
 
 <img src="/blog/2025-12-28-shot-1-graph.png" alt="5s pre-infusion, 32g out.">
 
-
 AI created a "classical" profile: 5s pre-infusion; 9 bar till 1:2 ratio after that. It went with 94C.
 
 <img src="/blog/2025-12-28-shot-1-photo.png" alt="The first shot, machine stopped a bit earlier">
@@ -290,7 +289,7 @@ After a shot, I complained "It's too sour".
 
 It updated only the yield! My take would be to update the grind size, interesting!
 
-This shot is just... **Perfect.** 
+This shot is just... **Perfect.**
 
 Over the last few days we tested AI-James with the dark roast from the local grocery store, other types of light roast. Each time it took no more than 3 shots to tune in the machine and each time we got really good results.
 
