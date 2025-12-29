@@ -2,12 +2,8 @@ import 'highlight.js/styles/github.css';
 import { Github } from 'lucide-react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeRaw from 'rehype-raw';
-import remarkBreaks from 'remark-breaks';
-import remarkGfm from 'remark-gfm';
 
+import BlogContent from '@components/BlogContent';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 import constants from '@constants';
@@ -41,6 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
+      images: post.image ? [{ url: post.image }] : undefined,
     },
   };
 }
@@ -126,70 +123,7 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
 
             <div className="max-w-3xl mx-auto text-left">
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm, remarkBreaks]}
-                rehypePlugins={[rehypeHighlight, rehypeRaw]}
-                components={{
-                  p: ({ node, ...props }) => <p {...props} className="text-lg text-gray-700 leading-relaxed mb-6" />,
-                  h1: ({ node, ...props }) => (
-                    <h1 {...props} className="text-3xl font-medium text-gray-900 mb-6 mt-10" />
-                  ),
-                  h2: ({ node, ...props }) => (
-                    <h2 {...props} className="text-2xl font-medium text-gray-900 mb-4 mt-8" />
-                  ),
-                  h3: ({ node, ...props }) => <h3 {...props} className="text-xl font-medium text-gray-900 mb-3 mt-6" />,
-                  ul: ({ node, ...props }) => <ul {...props} className="list-disc list-inside mb-6 space-y-2 pl-4" />,
-                  ol: ({ node, ...props }) => (
-                    <ol {...props} className="list-decimal list-inside mb-6 space-y-2 pl-4" />
-                  ),
-                  li: ({ node, ...props }) => <li {...props} className="text-lg text-gray-700 leading-relaxed" />,
-                  a: ({ node, href, ...props }) => {
-                    // Check if it's an external link
-                    const isExternal = href && (href.startsWith('http://') || href.startsWith('https://'));
-                    // Check if external link is to the same domain
-                    const isSameDomain =
-                      isExternal &&
-                      typeof window !== 'undefined' &&
-                      new URL(href).hostname === window.location.hostname;
-                    // Internal links (starting with /) or same domain links don't open in new tab
-                    const shouldOpenInNewTab = isExternal && !isSameDomain;
-
-                    return (
-                      <a
-                        {...props}
-                        href={href}
-                        className="text-blue-600 hover:underline"
-                        target={shouldOpenInNewTab ? '_blank' : undefined}
-                        rel={shouldOpenInNewTab ? 'noopener noreferrer' : undefined}
-                      />
-                    );
-                  },
-                  img: ({ node, ...props }) => <img {...props} className="rounded-lg shadow-md my-8 w-full" />,
-                  blockquote: ({ node, ...props }) => (
-                    <blockquote
-                      {...props}
-                      className="border-l-4 border-gray-300 pl-6 my-6 text-lg text-gray-600 italic"
-                    />
-                  ),
-                  pre: ({ node, ...props }) => (
-                    <pre {...props} className="bg-gray-50 rounded-lg p-4 overflow-x-auto my-6 text-sm" />
-                  ),
-                  code: ({ node, className, children, ...props }) => {
-                    const match = /language-(\w+)/.exec(className || '');
-                    return match ? (
-                      <code className={className} {...props}>
-                        {children}
-                      </code>
-                    ) : (
-                      <code className="bg-gray-100 px-1 py-0.5 rounded text-sm" {...props}>
-                        {children}
-                      </code>
-                    );
-                  },
-                }}
-              >
-                {post.content}
-              </ReactMarkdown>
+              <BlogContent content={post.content} />
             </div>
           </article>
         </div>

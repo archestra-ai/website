@@ -3,7 +3,7 @@ title: 'Joining the CNCF and The Linux Foundation'
 date: 2025-08-20
 author: 'Matvey Kukuy, CEO'
 description: 'Archestra has joined the Cloud Native Computing Foundation (CNCF) and The Linux Foundation to reinforces our commitment to open-source.'
-image: '/blog/pixelated-modern-abstract-pattern.png'
+image: '/blog/2025-08-20-archestra-joins-cncf-hero.png'
 ---
 
 I have been a long-time fan of Open Source, building and maintaining open source projects like [Grafana OnCall](https://github.com/grafana/oncall), or supporting such a great initiative as [Open Source Endowment](https://endowment.dev/). That's why I believe that planting the right OSS DNA in the company from the first day is crucial.

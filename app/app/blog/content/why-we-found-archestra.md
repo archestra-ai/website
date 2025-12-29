@@ -3,7 +3,7 @@ title: 'Why We Founded Archestra'
 date: '2025-08-11'
 author: 'Matvey Kukuy, CEO'
 description: "Why can't an AI draft 150 personalized emails to investors for my new startup?"
-image: '/blog/02.jpg'
+image: '/blog/2025-08-11-why-we-founded-archestra-hero.jpg'
 ---
 
 A while back, I reached out to Ildar and Joey—two of the best engineers I know with a simple question. It sounded naive, and I thought the answer would be easy.
@@ -22,7 +22,7 @@ But here's the catch: AI is almost useless if it can only read data. To be tru
 
 And that's where the real trouble begins. And I'm not speaking about the risk of making someone laugh because your EMail will sound dumb. I'm talking about real-world security issues, such as autonomous agents that can write data, which can lead to [agents being tricked into leaking a database](https://simonwillison.net/2025/Jul/6/supabase-mcp-lethal-trifecta/) or [exposing private GitHub repositories](https://simonwillison.net/2025/May/26/github-mcp-exploited/).
 
-![More access — more risk!](/blog/03.jpg)
+![More access — more risk!](/blog/2025-08-11-why-we-founded-archestra-risk.jpg)
 
 The security risks are so massive that [Anthropic won't even let Claude create a Google Calendar event](https://support.anthropic.com/en/articles/11088742-using-the-gmail-and-google-calendar-integrations) through its integration. Reading is fine; writing is just too dangerous.
 
@@ -41,7 +41,7 @@ As you might have guessed, this problem is what Ildar, Joey, and I decided to ta
 3. Implementing state-of-the-art security ideas
 4. Building it all open-source under the MIT license
 
-![01](/blog/01.jpg)
+![More access doesn't mean more risk](/blog/2025-08-11-why-we-founded-archestra-solution.jpg)
 
 We've just closed our [first $3.3M funding round](/blog/archestra-unveils-open-source-solution-announces-vc-backing), and we're building Archestra in the open. I'd love to invite you to follow our progress, join the beta, and help us shape the future of secure AI.
 

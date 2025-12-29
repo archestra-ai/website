@@ -3,7 +3,7 @@ title: 'The Archestra Dual LLM Pattern: Teaching AI Agents to Play a Guess Who? 
 date: '2025-10-13'
 author: 'Ildar Iskhakov, CTO'
 description: 'How we developed a new security pattern inspired by a childhood game to protect AI agents from prompt injection attacks'
-image: '/blog/oct-14-2025-dual-llm-image1.jpg'
+image: '/blog/2025-10-13-dual-llm-image1.jpg'
 ---
 
 ## The Attack That Changed Everything
@@ -53,11 +53,11 @@ When we started building Archestra, we tried every existing approach:
 
 **Static allow/block lists?** Either you kill your agent's creativity with an overly restrictive allow-list, or you can't possibly anticipate every attack vector with a block-list.
 
-![Lethal Trifecta Trade-offs](/blog/oct-14-2025-dual-llm-image3.png)
+![Lethal Trifecta Trade-offs](/blog/2025-10-13-dual-llm-image3.png)
 
 The brutal truth: you can only pick 2 out of 3. Want autonomy and outside communication? Say goodbye to accessing private data safely.
 
-![Autonomy vs Control Balance](/blog/oct-14-2025-dual-llm-image4.png)
+![Autonomy vs Control Balance](/blog/2025-10-13-dual-llm-image4.png)
 
 But what if we could shift this balance?
 

@@ -3,7 +3,7 @@ title: 'Archestra Platform: The Open-Source Agentic Gateway for Secure AI'
 date: '2025-10-13'
 author: 'Matvey Kukuy, CEO'
 description: 'The first release of the Archestra Platform, our open-source agentic gateway built to secure your AI agents'
-image: '/blog/platform-launch.png'
+image: '/blog/2025-10-13-archestra-platform-release-hero.png'
 ---
 
 Today, I am thrilled to announce the first official release of the **Archestra Platform**, our open-source agentic gateway built to secure your AI agents from the ground up.

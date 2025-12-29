@@ -3,30 +3,15 @@
 import mermaid from 'mermaid';
 import { useEffect, useRef, useState } from 'react';
 
-export default function MermaidDiagram() {
+interface MermaidDiagramProps {
+  chart?: string;
+}
+
+export default function MermaidDiagram({ chart }: MermaidDiagramProps = {}) {
   const ref = useRef<HTMLDivElement>(null);
   const [svg, setSvg] = useState<string>('');
 
-  useEffect(() => {
-    const renderChart = async () => {
-      if (!ref.current) return;
-
-      try {
-        mermaid.initialize({
-          startOnLoad: false,
-          theme: 'default',
-          themeVariables: {
-            primaryColor: '#e6f3ff',
-            primaryTextColor: '#333',
-            primaryBorderColor: '#0066cc',
-            lineColor: '#333',
-            secondaryColor: '#fff2cc',
-            tertiaryColor: '#f9f9f9',
-          },
-        });
-
-        const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
-        const chart = `graph TB
+  const defaultChart = `graph TB
     subgraph K8S["Kubernetes Cluster"]
         subgraph Archestra["Archestra Platform"]
             Gateway["MCP Gateway"]
@@ -48,7 +33,28 @@ export default function MermaidDiagram() {
     style Pod2 fill:#fff2cc,stroke:#d6b656,stroke-width:1px
     style Pod3 fill:#fff2cc,stroke:#d6b656,stroke-width:1px`;
 
-        const { svg } = await mermaid.render(id, chart);
+  useEffect(() => {
+    const renderChart = async () => {
+      if (!ref.current) return;
+
+      try {
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: 'default',
+          themeVariables: {
+            primaryColor: '#e6f3ff',
+            primaryTextColor: '#333',
+            primaryBorderColor: '#0066cc',
+            lineColor: '#333',
+            secondaryColor: '#fff2cc',
+            tertiaryColor: '#f9f9f9',
+          },
+        });
+
+        const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
+        const chartContent = chart || defaultChart;
+
+        const { svg } = await mermaid.render(id, chartContent);
         const scaledSvg = svg.replace(/(<svg[^>]*)(>)/, (match, p1, p2) => {
           return (
             p1.replace(/width="[^"]*"/, '').replace(/height="[^"]*"/, '') +
@@ -64,7 +70,7 @@ export default function MermaidDiagram() {
     };
 
     renderChart();
-  }, []);
+  }, [chart]);
 
   return (
     <div className="max-w-4xl mx-auto mb-12">
