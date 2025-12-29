@@ -10,7 +10,6 @@
     "command": "npx",
     "args": ["-y", "matvey-kuk/gaggimate-mcp"],
     "env": {
-      "GAGGIMATE_HOST": "localhost"
     }
   },
   "archestra_config": {
@@ -22,13 +21,13 @@
     "works_in_archestra": true
   },
   "user_config": {
-    "gaggimate_host": {
+    "GAGGIMATE_HOST": {
       "type": "string",
       "title": "Gaggimate Host",
       "description": "Hostname or IP address of the Gaggimate device",
       "default": "localhost"
     },
-    "gaggimate_protocol": {
+    "GAGGIMATE_PROTOCOL": {
       "type": "string",
       "title": "Gaggimate Protocol",
       "description": "WebSocket protocol (ws or wss)",
