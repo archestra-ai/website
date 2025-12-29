@@ -9,8 +9,7 @@
     "type": "local",
     "command": "npx",
     "args": ["-y", "matvey-kuk/gaggimate-mcp"],
-    "env": {
-    }
+    "env": {}
   },
   "archestra_config": {
     "client_config_permutations": null,
