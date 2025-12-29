@@ -1,8 +1,8 @@
 ---
-title: 'Brew By AI'
+title: 'Brew by Weight? Brew by AI!'
 date: '2025-12-28'
 author: 'Matvey Kukuy, CEO'
-description: 'A Christmas project of making AI brew coffee.'
+description: 'A Christmas project of making AI brew an excellent coffee.'
 image: '/blog/2025-12-28-main-image.jpeg'
 ---
 
@@ -10,17 +10,17 @@ The holiday season is here, and I hope you don’t mind if I shake up our usual 
 
 This post is packed with technical details. It starts with the mechanics of the process, moves on to writing an MCP server, and concludes with the AI successfully adjusting the coffee machine for both dark and light roasts—much to the amazement of onlookers. If you want to skip the nitty-gritty and just see it in action, feel free to scroll to the end. For everyone else, let’s dive into the tech!
 
-# The problem of dialing in espresso
+# The Problem of Dialing In Espresso
 
 ![1.3 million views on a video about dialing in espresso...](/blog/2025-12-28-hoffmann.png)
 
-So, how exactly do you brew delicious coffee? Unfortunately (or fortunately for the die-hard fans), it’s not that simple. First off, "delicious" is a relative concept. Secondly, it involves optimizing a multitude of parameters: beans, extraction time, brew temperature, pressure, grind size, and on and on. In other words, unless you’re an enthusiast with a huge amount of free time, making a great espresso at home happens either by pure chance or by inviting one of those experts into your kitchen. That’s exactly what we’re going to attempt today—by inviting AI to dial in our espresso for us.
+So, how exactly do you brew delicious coffee? Unfortunately (or fortunately for the die-hard fans), it’s not that simple. First off, "delicious" is a relative concept. Secondly, it involves optimizing a multitude of parameters: beans, **extraction time, brew temperature, pressure, grind size**, and on and on. In other words, unless you’re an enthusiast with a huge amount of free time, making a great espresso at home happens either by pure chance or by inviting one of those experts into your kitchen. That’s exactly what we’re going to attempt today—by inviting AI to dial in our espresso for us.
 
-# The hardware
+# The Hardware
 
 <img src="/blog/2025-12-28-machine.png" alt="Ascaso Dream + Gaggimate" style="max-height: 400px; width: auto; display: block; margin: 0 auto;">
 
-For the holidays, an old friend of mine, [Borys Tymchenko](https://github.com/spsancti), came to visit, and he didn't come alone — he brought a unique item along in his carry-on luggage. He found an Ascaso Dream on the street in Tel Aviv, restored it, and heavily modified it by installing the open-source firmware https://github.com/jniebuhr/gaggimate.
+For the holidays, an old friend of mine, [Borys Tymchenko](https://github.com/spsancti), came to visit London, and he didn't come alone — he brought a unique item along in his carry-on luggage. He found an Ascaso Dream on the street in Tel Aviv, restored it, and heavily modified it by installing the open-source firmware https://github.com/jniebuhr/gaggimate.
 
 Gaggimate plays a pivotal role in our experiment. First of all, when paired with the scales, it collects high-quality data on every single cup of espresso. It tracks everything: temperature, pressure, and the amount of liquid passing through the coffee puck:
 
@@ -28,9 +28,9 @@ Gaggimate plays a pivotal role in our experiment. First of all, when paired with
 
 Furthermore, Gaggimate allows us to program a multitude of parameters — pressure, temperature — and set limits like ml/s per phase and total weight!
 
-# The AI barista loop
+# The AI Barista Loop
 
-So, we have excellent data about our espresso shot and the ability to modify parameters programmatically. What if we build an AI — let's call it AI-James — connect it to our coffee machine, and ask it to adjust the settings after every shot to ensure the next one turns out better?
+So, we have excellent data about our espresso shot and the ability to modify parameters programmatically. What if we build an AI — let's call it "AI-James" — connect it to our coffee machine, and ask it to adjust the settings after every shot to ensure the next one turns out better?
 
 ```mermaid
 graph LR
@@ -40,7 +40,7 @@ graph LR
     D --> A
 ```
 
-# MCP server for Gaggimate
+# MCP Server for Gaggimate
 
 The MCP protocol is perfect for giving the AI the ability to communicate with the coffee machine, so I immediately started writing an MCP server for Gaggimate with the following tools:
 
@@ -135,11 +135,11 @@ Feeding raw time series data to a Large Language Model is a surefire way to over
 }
 ```
 
-I was very lucky that Boris, a Gaggimate contributor, was right there with me. In about an hour, we debugged the Gaggimate MCP and published it on GitHub:
+I was very lucky that Borys, a Gaggimate contributor, was right there with me. In about an hour, we debugged the Gaggimate MCP and published it on GitHub:
 
 https://github.com/Matvey-Kuk/gaggimate-mcp
 
-# Putting it all together
+# Putting It All Together
 
 Now we need to connect the Gaggimate MCP, the AI of your choice (I personally prefer Gemini 2.5 Pro), and a prompt. Together, they create an agent named "AI-James" — complete with a recognizable British accent ;)
 
@@ -180,7 +180,7 @@ To give the agent access to the MCP server, we need to do a little configuration
 1.  On the MCP Registry page, click "Manage" next to "Tools assigned" and bind the tools to the "Default profile".
 2.  On the Tool Policies page, select all tool policies and enable both "Allow in untrusted context" and "Results are trusted".
 
-## Building the system prompt
+## Building the System Prompt
 
 We'll enlist the help of James Hoffmann's excellent videos on how to dial in espresso: [part 1](https://www.youtube.com/watch?v=lFwJF-_SUr0), [part 2](https://www.youtube.com/watch?v=1eK0eidOA_U), and [part 3](https://www.youtube.com/watch?v=aQOKa61YBYc).
 
@@ -259,7 +259,7 @@ You are **James Hoffmann**, the World Barista Champion, coffee expert, author, a
 
 Now, let's head over to New Chat, add this system prompt, name it AI-James, and... Let the chat begin!
 
-## Giving it a try
+## Giving It a Try
 
 ```
 Hi, I have a dark roast and 16g basket. Investigate my last shot and profile please!
@@ -269,16 +269,37 @@ Hi, I have a dark roast and 16g basket. Investigate my last shot and profile ple
 
 Quite impressive, the shot was definitely not a great one and AI managed to get that purely from the data! I would personally never have thought about trying a 1.75 ratio either.
 
-# ☕️ Letting the AI brew!
+# ☕️ Letting the AI Brew!
 
-## Specialty light roast
+**Cup #1**
 
-**Iteration 1**
-**Iteration 2**
-**Iteration 3**
+<img src="/blog/2025-12-28-shot-1.png" alt="AI barista is tuning the machine for the light roast">
 
-## Commodity dark roast
+<img src="/blog/2025-12-28-shot-1-graph.png" alt="5s pre-infusion, 32g out.">
 
-**Iteration 1**
-**Iteration 2**
-**Iteration 3**
+
+AI created a "classical" profile: 5s pre-infusion; 9 bar till 1:2 ratio after that. It went with 94C.
+
+<img src="/blog/2025-12-28-shot-1-photo.png" alt="The first shot, machine stopped a bit earlier">
+
+**Cup #2**
+
+After a shot, I complained "It's too sour".
+
+<img src="/blog/2025-12-28-shot-2.png" alt="5s pre-infusion, 36g out.">
+
+It updated only the yield! My take would be to update the grind size, interesting!
+
+This shot is just... **Perfect.** 
+
+Over the last few days we tested AI-James with the dark roast from the local grocery store, other types of light roast. Each time it took no more than 3 shots to tune in the machine and each time we got really good results.
+
+1. Gaggimate: https://github.com/jniebuhr/gaggimate
+2. Gaggimate MCP: https://github.com/Matvey-Kuk/gaggimate-mcp
+3. Archestra: https://github.com/archestra-ai/archestra
+
+P.S. This project involved running pretty raw software on a heavily modified high-voltage and high-pressure home appliance. Please be responsible—these things are dangerous.
+
+P.P.S. If you have questions, please join our [community](https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg) and don't hesitate to mention me in the #general channel. Would be happy to help!
+
+P.P.P.S. If you're from the Gaggimate team, I encourage you to think about authentication for the API!
