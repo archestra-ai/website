@@ -3,7 +3,7 @@ title: 'Thank you, 100 MCP Server builders!'
 date: '2025-09-09'
 author: 'Matvey Kukuy, CEO'
 description: 'Archestra Catalog is supported by 100+ MCP servers, thank you!'
-image: '/blog/celebrating-100-painting.png'
+image: '/blog/2025-09-09-celebrating-100-mcp-servers-hero.png'
 ---
 
 Today, we noticed that 100 MCP servers now have an "Archestra Trust Score" badge in their GitHub repos!

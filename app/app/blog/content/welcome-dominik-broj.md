@@ -3,7 +3,7 @@ title: 'Dominik, welcome post'
 date: '2025-09-18'
 author: 'Dominik Broj'
 description: 'Dominik Broj joining Archestra as a Founding Engineer bringing 10+ years of experience as Engineer at such companies as Grafana Labs, DataArt and Sportradar.'
-image: '/blog/dominik.jpg'
+image: '/blog/2025-09-18-welcome-dominik-hero.jpg'
 ---
 
 # AI: The Game Changer with a Catch
