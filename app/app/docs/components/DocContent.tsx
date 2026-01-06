@@ -261,6 +261,44 @@ export default function DocContent({ content }: DocContentProps) {
               </h3>
             );
           },
+          h4: ({ node, children, ...props }) => {
+            const id = props.id || '';
+            return (
+              <h4
+                {...props}
+                className="text-md font-bold text-gray-900 mb-2 mt-5 group relative scroll-mt-20 transition-colors"
+              >
+                <a
+                  href={`#${id}`}
+                  className="absolute -left-8 top-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                  onClick={(e) => handleAnchorClick(e, id)}
+                  title="Copy link to section"
+                >
+                  <LinkIcon className="h-4 w-4 text-gray-400 hover:text-gray-600" />
+                </a>
+                {children}
+              </h4>
+            );
+          },
+          h5: ({ node, children, ...props }) => {
+            const id = props.id || '';
+            return (
+              <h5
+                {...props}
+                className="text-[15px] font-bold text-gray-900 mb-2 mt-5 group relative scroll-mt-20 transition-colors"
+              >
+                <a
+                  href={`#${id}`}
+                  className="absolute -left-8 top-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                  onClick={(e) => handleAnchorClick(e, id)}
+                  title="Copy link to section"
+                >
+                  <LinkIcon className="h-4 w-4 text-gray-400 hover:text-gray-600" />
+                </a>
+                {children}
+              </h5>
+            );
+          },
           ul: ({ node, ...props }) => <ul {...props} className="list-disc list-outside mb-4 space-y-2 ml-6" />,
           ol: ({ node, ...props }) => <ol {...props} className="list-decimal list-outside mb-4 space-y-2 ml-6" />,
           li: ({ node, ...props }) => <li {...props} className="text-gray-700 leading-relaxed" />,
