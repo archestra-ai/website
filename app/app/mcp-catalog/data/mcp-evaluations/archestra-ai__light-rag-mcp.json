@@ -1,9 +1,9 @@
 {
-  "name": "brojd__lightrag-mcp",
+  "name": "archestra-ai__light-rag-mcp",
   "display_name": "LightRAG MCP Server",
   "description": "MCP server for LightRAG - a knowledge graph-enhanced RAG system. Supports Neo4j for graph storage, Qdrant for vector storage, and multiple LLM providers (OpenAI, Anthropic, Gemini).",
   "author": {
-    "name": "brojd"
+    "name": "archestra-ai"
   },
   "server": {
     "command": "docker",
@@ -13,7 +13,7 @@
       "--rm",
       "-p",
       "8080:8080",
-      "brojd/lightrag-mcp:latest"
+      "archestra/light-rag-mcp:latest"
     ],
     "env": {
       "LIGHTRAG_LLM_PROVIDER": "${user_config.llm_provider}",
@@ -27,7 +27,7 @@
       "LIGHTRAG_QDRANT_URL": "${user_config.qdrant_url}",
       "LIGHTRAG_QDRANT_API_KEY": "${user_config.qdrant_api_key}"
     },
-    "docker_image": "brojd/lightrag-mcp:latest",
+    "docker_image": "archestra/light-rag-mcp:latest",
     "type": "local"
   },
   "tools": [
@@ -72,7 +72,7 @@
       "description": "Delete entities and relationships associated with specific documents."
     },
     {
-      "name": "check_lightrag_health",
+      "name": "check_light-rag_health",
       "description": "Check LightRAG API and storage backend health."
     }
   ],
@@ -80,7 +80,7 @@
   "keywords": [
     "rag",
     "knowledge-graph",
-    "lightrag",
+    "light-rag",
     "neo4j",
     "qdrant",
     "embeddings",
@@ -159,12 +159,12 @@
       "required": false
     }
   },
-  "readme": "# LightRAG MCP Server\n\n[![Docker Hub](https://img.shields.io/docker/v/brojd/lightrag-mcp?label=Docker%20Hub)](https://hub.docker.com/r/brojd/lightrag-mcp)\n\nAn MCP server for [LightRAG](https://github.com/HKUDS/LightRAG) - a knowledge graph-enhanced Retrieval-Augmented Generation system.\n\n## Features\n\n- **Knowledge Graph RAG**: Combines vector search with knowledge graph for enhanced retrieval\n- **Multiple Query Modes**: local, global, hybrid, naive, and mix query strategies\n- **Entity & Relationship Management**: Create, edit, and delete entities and relationships\n- **Document Processing**: Insert documents with automatic entity extraction\n- **Multi-Provider Support**: OpenAI, Anthropic (Claude), and Google Gemini for LLM\n- **Flexible Storage**: Neo4j + Qdrant for production, or local files for development\n\n## Quick Start\n\n### Minimal (Local Storage)\n\n```bash\ndocker run -d -p 8080:8080 \\\n  -e LIGHTRAG_LLM_API_KEY=sk-xxx \\\n  -v lightrag-data:/app/data \\\n  brojd/lightrag-mcp:latest\n```\n\n### With Neo4j + Qdrant\n\n```bash\ndocker run -d -p 8080:8080 \\\n  -e LIGHTRAG_LLM_API_KEY=sk-xxx \\\n  -e LIGHTRAG_NEO4J_URI=bolt://neo4j:7687 \\\n  -e LIGHTRAG_NEO4J_PASSWORD=password \\\n  -e LIGHTRAG_QDRANT_URL=http://qdrant:6333 \\\n  brojd/lightrag-mcp:latest\n```\n\n### With Anthropic Claude\n\n```bash\ndocker run -d -p 8080:8080 \\\n  -e LIGHTRAG_LLM_PROVIDER=anthropic \\\n  -e LIGHTRAG_LLM_MODEL=claude-sonnet-4-20250514 \\\n  -e LIGHTRAG_LLM_API_KEY=sk-ant-xxx \\\n  -e LIGHTRAG_EMBEDDING_PROVIDER=openai \\\n  -e LIGHTRAG_EMBEDDING_API_KEY=sk-xxx \\\n  brojd/lightrag-mcp:latest\n```\n\n## Environment Variables\n\n| Variable | Default | Description |\n|----------|---------|-------------|\n| `LIGHTRAG_LLM_PROVIDER` | openai | LLM provider: openai, anthropic, gemini |\n| `LIGHTRAG_LLM_MODEL` | gpt-4o-mini | LLM model name |\n| `LIGHTRAG_LLM_API_KEY` | - | API key for LLM provider (required) |\n| `LIGHTRAG_EMBEDDING_PROVIDER` | openai | Embedding provider: openai, gemini |\n| `LIGHTRAG_EMBEDDING_MODEL` | text-embedding-3-large | Embedding model |\n| `LIGHTRAG_NEO4J_URI` | - | Neo4j URI (optional, uses local files if not set) |\n| `LIGHTRAG_NEO4J_PASSWORD` | - | Neo4j password |\n| `LIGHTRAG_QDRANT_URL` | - | Qdrant URL (optional, uses local files if not set) |\n\n## MCP Configuration\n\nConnect via streamable-http transport:\n\n```json\n{\n  \"mcpServers\": {\n    \"lightrag\": {\n      \"transport\": {\n        \"type\": \"streamableHttp\",\n        \"url\": \"http://localhost:8080/mcp\"\n      }\n    }\n  }\n}\n```\n\n## Available Tools\n\n- `query_document` - Semantic query with mode selection (local/global/hybrid/naive/mix)\n- `insert_document` - Insert text content with automatic entity extraction\n- `insert_file` - Insert from file path\n- `insert_batch` - Batch insert from directory\n- `get_documents` - List all documents\n- `get_graph_labels` - Get entity and relationship types\n- `create_entities` - Create new entities\n- `create_relations` - Create relationships\n- `delete_by_entities` - Delete by entity name\n- `delete_by_doc_ids` - Delete by document ID\n- `check_lightrag_health` - System health check\n",
+  "readme": "# LightRAG MCP Server\n\nAn MCP server for [LightRAG](https://github.com/HKUDS/LightRAG) - a knowledge graph-enhanced Retrieval-Augmented Generation system.\n\n## Features\n\n- **Knowledge Graph RAG**: Combines vector search with knowledge graph for enhanced retrieval\n- **Multiple Query Modes**: local, global, hybrid, naive, and mix query strategies\n- **Entity & Relationship Management**: Create, edit, and delete entities and relationships\n- **Document Processing**: Insert documents with automatic entity extraction\n- **Multi-Provider Support**: OpenAI, Anthropic (Claude), and Google Gemini for LLM\n- **Flexible Storage**: Neo4j + Qdrant for production, or local files for development\n\n## Quick Start\n\n### Minimal (Local Storage)\n\n```bash\ndocker run -d -p 8080:8080 \\\n  -e LIGHTRAG_LLM_API_KEY=sk-xxx \\\n  -v light-rag-data:/app/data \\\n  archestra/light-rag-mcp:latest\n```\n\n### With Neo4j + Qdrant\n\n```bash\ndocker run -d -p 8080:8080 \\\n  -e LIGHTRAG_LLM_API_KEY=sk-xxx \\\n  -e LIGHTRAG_NEO4J_URI=bolt://neo4j:7687 \\\n  -e LIGHTRAG_NEO4J_PASSWORD=password \\\n  -e LIGHTRAG_QDRANT_URL=http://qdrant:6333 \\\n  archestra/light-rag-mcp:latest\n```\n\n### With Anthropic Claude\n\n```bash\ndocker run -d -p 8080:8080 \\\n  -e LIGHTRAG_LLM_PROVIDER=anthropic \\\n  -e LIGHTRAG_LLM_MODEL=claude-sonnet-4-20250514 \\\n  -e LIGHTRAG_LLM_API_KEY=sk-ant-xxx \\\n  -e LIGHTRAG_EMBEDDING_PROVIDER=openai \\\n  -e LIGHTRAG_EMBEDDING_API_KEY=sk-xxx \\\n  archestra/light-rag-mcp:latest\n```\n\n## Environment Variables\n\n| Variable | Default | Description |\n|----------|---------|-------------|\n| `LIGHTRAG_LLM_PROVIDER` | openai | LLM provider: openai, anthropic, gemini |\n| `LIGHTRAG_LLM_MODEL` | gpt-4o-mini | LLM model name |\n| `LIGHTRAG_LLM_API_KEY` | - | API key for LLM provider (required) |\n| `LIGHTRAG_EMBEDDING_PROVIDER` | openai | Embedding provider: openai, gemini |\n| `LIGHTRAG_EMBEDDING_MODEL` | text-embedding-3-large | Embedding model |\n| `LIGHTRAG_NEO4J_URI` | - | Neo4j URI (optional, uses local files if not set) |\n| `LIGHTRAG_NEO4J_PASSWORD` | - | Neo4j password |\n| `LIGHTRAG_QDRANT_URL` | - | Qdrant URL (optional, uses local files if not set) |\n\n## MCP Configuration\n\nConnect via streamable-http transport:\n\n```json\n{\n  \"mcpServers\": {\n    \"light-rag\": {\n      \"transport\": {\n        \"type\": \"streamableHttp\",\n        \"url\": \"http://localhost:8080/mcp\"\n      }\n    }\n  }\n}\n```\n\n## Available Tools\n\n- `query_document` - Semantic query with mode selection (local/global/hybrid/naive/mix)\n- `insert_document` - Insert text content with automatic entity extraction\n- `insert_file` - Insert from file path\n- `insert_batch` - Batch insert from directory\n- `get_documents` - List all documents\n- `get_graph_labels` - Get entity and relationship types\n- `create_entities` - Create new entities\n- `create_relations` - Create relationships\n- `delete_by_entities` - Delete by entity name\n- `delete_by_doc_ids` - Delete by document ID\n- `check_light-rag_health` - System health check\n",
   "category": "AI Tools",
   "quality_score": 70,
   "archestra_config": {
     "client_config_permutations": {
-      "lightrag-mcp-docker": {
+      "light-rag-mcp-docker": {
         "command": "docker",
         "args": [
           "run",
@@ -172,7 +172,7 @@
           "--rm",
           "-p",
           "8080:8080",
-          "brojd/lightrag-mcp:latest"
+          "archestra/light-rag-mcp:latest"
         ],
         "env": {
           "LIGHTRAG_LLM_PROVIDER": "${user_config.llm_provider}",
@@ -186,7 +186,7 @@
           "LIGHTRAG_QDRANT_URL": "${user_config.qdrant_url}",
           "LIGHTRAG_QDRANT_API_KEY": "${user_config.qdrant_api_key}"
         },
-        "docker_image": "brojd/lightrag-mcp:latest"
+        "docker_image": "archestra/light-rag-mcp:latest"
       }
     },
     "oauth": {
@@ -196,10 +196,10 @@
     "works_in_archestra": true
   },
   "github_info": {
-    "owner": "brojd",
-    "repo": "lightrag-mcp",
-    "url": "https://github.com/brojd/lightrag-mcp",
-    "name": "lightrag-mcp",
+    "owner": "archestra",
+    "repo": "light-rag-mcp",
+    "url": "https://github.com/archestra",
+    "name": "light-rag-mcp",
     "path": null,
     "stars": 0,
     "contributors": 1,
