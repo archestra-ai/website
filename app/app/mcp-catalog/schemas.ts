@@ -166,7 +166,7 @@ const RemoteServerSchema = z.object({
   docs_url: z.string().url().nullable(),
 });
 
-export const ArchestraMcpServerManifestSchema = McpbManifestSchema._def.schema
+export const ArchestraMcpServerManifestSchema = McpbManifestSchema
   .omit({
     repository: true,
     $schema: true,
