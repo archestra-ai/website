@@ -1,4 +1,4 @@
-import { ArchestraMcpServerManifest, ArchestraScoreBreakdown } from '@mcpCatalog/types';
+import { ArchestraMcpServerManifest, ArchestraScoreBreakdown, MCPDependency } from '@mcpCatalog/types';
 
 /**
  * Calculate MCP Protocol Implementation Score (40 points max)
@@ -184,7 +184,7 @@ export function calculateDependenciesScore(
   let score = 20;
 
   // Count significant dependencies (importance >= 5)
-  const significantDeps = dependencies.filter((dep) => dep.importance >= 5);
+  const significantDeps = dependencies.filter((dep: MCPDependency) => dep.importance >= 5);
   const depCount = significantDeps.length;
 
   // Penalty only if more than 10 dependencies
@@ -200,7 +200,7 @@ export function calculateDependenciesScore(
     const depFrequency = new Map<string, number>();
     for (const otherServer of allServers) {
       if (otherServer.dependencies) {
-        for (const dep of otherServer.dependencies.filter((d) => d.importance >= 5)) {
+        for (const dep of otherServer.dependencies.filter((d: MCPDependency) => d.importance >= 5)) {
           depFrequency.set(dep.name, (depFrequency.get(dep.name) || 0) + 1);
         }
       }
