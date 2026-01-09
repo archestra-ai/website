@@ -166,18 +166,17 @@ const RemoteServerSchema = z.object({
   docs_url: z.string().url().nullable(),
 });
 
-export const ArchestraMcpServerManifestSchema = McpbManifestSchema
-  .omit({
-    repository: true,
-    $schema: true,
-    version: true,
-    dxt_version: true,
-    manifest_version: true,
-    icons: true,
-    localization: true,
-    privacy_policies: true,
-    _meta: true,
-  })
+export const ArchestraMcpServerManifestSchema = McpbManifestSchema.omit({
+  repository: true,
+  $schema: true,
+  version: true,
+  dxt_version: true,
+  manifest_version: true,
+  icons: true,
+  localization: true,
+  privacy_policies: true,
+  _meta: true,
+})
   .extend({
     /**
      * Machine-readable name (used for CLI, APIs)
