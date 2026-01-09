@@ -323,7 +323,8 @@
               "Enterprise",
               "Job Search",
               "Local files",
-              "General"
+              "General",
+              null
             ]
           },
           "quality_score": {
@@ -370,7 +371,7 @@
                   "provider": {
                     "type": "string",
                     "nullable": true,
-                    "enum": ["google", "slack", "linkedin"]
+                    "enum": ["google", "slack", "linkedin", null]
                   },
                   "required": {
                     "type": "boolean"

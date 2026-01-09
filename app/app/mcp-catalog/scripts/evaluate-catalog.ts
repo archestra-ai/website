@@ -1025,7 +1025,7 @@ If no run command found, respond with: {}`;
 
   // For Gemini, we need a simpler schema without additionalProperties
   const isGemini = model.startsWith('gemini-');
-  const configFormat = isGemini ? undefined : zodToJsonSchema(ArchestraClientConfigPermutationsSchema);
+  const configFormat = isGemini ? undefined : zodToJsonSchema(ArchestraClientConfigPermutationsSchema as any);
 
   try {
     const result = await callLLM(prompt, configFormat, model);
@@ -1393,7 +1393,7 @@ REMEMBER:
 
   // For Gemini, we need a simpler schema without additionalProperties
   const isGemini = model.startsWith('gemini-');
-  const configFormat = isGemini ? undefined : zodToJsonSchema(CanonicalServerAndUserConfigSchema);
+  const configFormat = isGemini ? undefined : zodToJsonSchema(CanonicalServerAndUserConfigSchema as any);
 
   try {
     const result = await callLLM(prompt, configFormat, model);
@@ -1462,7 +1462,7 @@ Rules:
 
 If no configuration found, respond: {"oauth": { "provider": null, "required": false }}`;
 
-  const configFormat = zodToJsonSchema(ArchestraOauthSchema);
+  const configFormat = zodToJsonSchema(ArchestraOauthSchema as any);
 
   try {
     const result = await callLLM(prompt, configFormat, model);
@@ -1579,7 +1579,7 @@ If no library dependencies found, respond: {"dependencies": []}`;
   const DependenciesResponseSchema = z.object({
     dependencies: z.array(MCPDependencySchema),
   });
-  const dependenciesFormat = zodToJsonSchema(DependenciesResponseSchema);
+  const dependenciesFormat = zodToJsonSchema(DependenciesResponseSchema as any);
 
   try {
     const result = await callLLM(prompt, dependenciesFormat, model);
@@ -1662,7 +1662,7 @@ Respond with JSON format:
   "implementing_oauth2": true/false
 }`;
 
-  const protocolFormat = zodToJsonSchema(ArchestraMcpServerProtocolFeaturesSchema);
+  const protocolFormat = zodToJsonSchema(ArchestraMcpServerProtocolFeaturesSchema as any);
 
   try {
     const result = await callLLM(prompt, protocolFormat, model);
