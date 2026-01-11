@@ -137,7 +137,17 @@
     "client_config_permutations": {
       "lightrag-mcp": {
         "command": "uvx",
-        "args": ["lightrag-mcp", "--scheme", "${input:scheme}", "--host", "${input:host}", "--port", "${input:port}", "--api-key", "${input:api_key}"],
+        "args": [
+          "lightrag-mcp",
+          "--scheme",
+          "${input:scheme}",
+          "--host",
+          "${input:host}",
+          "--port",
+          "${input:port}",
+          "--api-key",
+          "${input:api_key}"
+        ],
         "env": {}
       }
     },
