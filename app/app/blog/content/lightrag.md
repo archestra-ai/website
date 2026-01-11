@@ -6,37 +6,39 @@ description: 'Building personal Movie Recommendation assistant with Archestra, L
 image: '/blog/2026-01-12-main-image.webp'
 ---
 
-Let's do something fun and useful today. Archestra becomes more and more powerful and in this blog post I want to show you how easily you can integrate it with **LightRAG**, **Neo4j** and **Qdrant** in order to solve my personal problem. That's a good example of empowering Archestra with **knowledge base** and **memory** capabilities.
+Let's do something fun and useful today. Archestra is becoming more and more powerful and in this blog post I want to show you how easily you can integrate it with **LightRAG**, **Neo4j** and **Qdrant** to solve my personal problem. It's a good example of empowering Archestra with **knowledge base** and **memory** capabilities.
 
 # The problem to solve
 
-I watched many TV shows on VOD and it becomes more and more challenging to find a good next candidate based on my preferences and historical data about what I watched and how I liked it.
+I've watched many TV shows on various streaming platforms and it's becoming increasingly challenging to find a good next candidate. There's just too many options and I want recommendations based on my preferences and historical data about what I've already watched and how I liked it.
 
-In order to solve it, I want to build an agent that can recommend me new TV shows candidates I can watch based on what I like, what I watched, how I rated previous watchings and my mood.
+To solve this, I want to build an agent that recommends me new TV shows based on what I like, what I've watched, how I rated previous shows and my current mood.
 
 # Technological stack and architecture
 
-The plan is to **LightRAG** as <AI_pls_fill> connected to **Neo4j** as a graph storage and **Qdrant** as a vector storage.
+The plan is to use **LightRAG** as a retrieval-augmented generation framework connected to **Neo4j** as graph storage and **Qdrant** as vector storage.
 
-In short, [Neo4j](https://neo4j.com/) is a <AI_pls_fill> that allows you to <AI_pls_fill>.
+In short, [Neo4j](https://neo4j.com/) is a graph database that stores data as nodes and relationships. It's great for representing complex connections between entities - like TV shows, genres, actors and user preferences.
 
-[Qdrant](https://qdrant.tech/) is <AI_pls_fill> and you can use it to <AI_pls_fill>.
+[Qdrant](https://qdrant.tech/) is a vector database built for similarity search. You can use it to find semantically similar content by comparing vector embeddings.
 
-[LightRAG](https://arxiv.org/abs/2410.05779) can use both under the hood. Thanks to that <AI_pls_fill>. [Here's](https://github.com/HKUDS/LightRAG/tree/main) its GH repo
+[LightRAG](https://arxiv.org/abs/2410.05779) uses both under the hood. Here's how they work together: when you ingest a document, LightRAG uses an LLM to extract entities (like "Breaking Bad", "crime drama", "Vince Gilligan") and relationships between them (like "Breaking Bad" → "is a" → "crime drama"). These entities and relationships are stored in Neo4j as a knowledge graph. At the same time, LightRAG creates vector embeddings for text chunks and entities, which are stored in Qdrant.
 
-LightRAG can also be configured to use external key-value storage (for LLM response cache, text chunks, document information) like Redis or doc status storage like Postgres / MongoDB (for document indexing) but for simplity we will just use default JsonFile for those two.
+When you query LightRAG, it uses a dual-level retrieval approach. Low-level retrieval finds specific entities and their direct relationships - useful for questions like "what crime dramas are in the database?". High-level retrieval looks at broader themes and topics across the graph - useful for questions like "recommend something dark and intense". Both retrieval paths use the vector embeddings in Qdrant to find semantically relevant content, then traverse the knowledge graph in Neo4j to understand context and relationships. Finally, an LLM generates a response based on all retrieved information. [Here's](https://github.com/HKUDS/LightRAG/tree/main) its GH repo.
 
-We are going to use managed cloud instances of Neo4j and Qdrant.
+LightRAG can also be configured to use external key-value storage (for LLM response cache, text chunks, document information) like Redis or doc status storage like Postgres / MongoDB (for document indexing) but for simplicity we will just use default JsonFile for those two.
 
-Then we need a running instance of Archestra and LightRAG. I'm going to use my own k8s cluster where I have Archestra deployed. I'll deploy LightRAG there on separate namespace.
+We're going to use managed cloud instances of Neo4j and Qdrant.
 
-Then we're going to connect Archestra to LightRAG via MCP server that runs via [Archestra MCP Orchestrator](https://archestra.ai/docs/platform-orchestrator).
+Then we need a running instance of Archestra and LightRAG. I'm going to use my own k8s cluster where I have Archestra deployed. I'll deploy LightRAG there on a separate namespace.
 
-Lastly, we are going to use new Archestra's Agent-to-Agent capabilities. We will have main Movie Recommender agent connected to two subagents:
-- Movie Finder - responsible for finding TV shows candidates
-- Movie Tracker - responsible for tracking historical data of my watchings and ratings
+Next, we'll connect Archestra to LightRAG via MCP server that runs via [Archestra MCP Orchestrator](https://archestra.ai/docs/platform-orchestrator).
 
-We also need TV shows to be entered to our storages via LightRAG. I'm going to use [themoviedb.org](https://www.themoviedb.org/) as a source of data.
+Lastly, we're going to use Archestra's Agent-to-Agent capabilities. We will have a main Movie Recommender agent connected to two subagents:
+- **Movie Finder** - responsible for finding TV shows candidates
+- **Movie Tracker** - responsible for tracking historical data of my watchings and ratings
+
+We also need TV shows data to be entered into our storages via LightRAG. I'm going to use [themoviedb.org](https://www.themoviedb.org/) as a source of data.
 
 <img src="/blog/2026-01-12-diagram.png" alt="Architecture Diagram" />
 
@@ -44,11 +46,11 @@ We also need TV shows to be entered to our storages via LightRAG. I'm going to u
 
 # Let's start preparation!
 
-## Neo4j Aura DB instance
+## Neo4j AuraDB instance
 
-Create Neo4j account if you haven't already. Then create AuraDB instance.
+Create a Neo4j account if you haven't already. Then create an AuraDB instance - they offer a free tier which is enough for our use case.
 
-Note down for later:
+Note down the credentials for later:
 ```bash
 NEO4J_URI=<from_Connect_->_Developer_Hub>
 NEO4J_USERNAME=neo4j # (default)
@@ -59,9 +61,9 @@ NEO4J_PASSWORD=<shown_after_instance_creation>
 
 ## Qdrant cluster
 
-Time to create Qdrant cluster. On your Qdrant account go to Clusters page, enter the name and create new instance.
+Time to create a Qdrant cluster. On your Qdrant account go to the Clusters page, enter a name and create a new instance. Again, there's a free tier available.
 
-Note down for later:
+Note down the credentials for later:
 ```bash
 QDRANT_URL=<cluster_endpoint>
 QDRANT_API_KEY=<cluster_api_key>
@@ -71,9 +73,9 @@ QDRANT_API_KEY=<cluster_api_key>
 
 ## Deploy LightRAG server
 
-We have now Graph and Vector storages ready to use. The next step is to deploy LightRAG server. To do so, I'm going to use [helm chart](https://github.com/HKUDS/LightRAG/tree/main/k8s-deploy/lightrag) from official LightRAG repository.
+We now have graph and vector storages ready to use. The next step is to deploy the LightRAG server. I'm going to use the [helm chart](https://github.com/HKUDS/LightRAG/tree/main/k8s-deploy/lightrag) from the official LightRAG repository.
 
-Now we're going to use environment variables written down before. You also need LLM provider API key. I'm going to use OpenAI.
+Now we're going to use the environment variables we noted down before. You also need an LLM provider API key - I'm going to use OpenAI.
 
 ```bash
 helm upgrade --install lightrag ./charts/lightrag \
@@ -92,18 +94,18 @@ helm upgrade --install lightrag ./charts/lightrag \
   --wait
 ```
 
-Once installed, you need a way to access LightRAG API and UI. You can do it via kubectl port-forwarding:
+Once installed, you need a way to access the LightRAG API and UI. You can do it via kubectl port-forwarding:
 ```bash
 kubectl port-forward -n lightrag svc/lightrag 9621:9621
 ```
 
-or configure ingress controller which I'll skip for simplicity.
+Or you can configure an ingress controller, which I'll skip here for simplicity.
 
 ## Fetch TMDB data
 
-We have LightRAG server running and connected to Neo4j and Qdrant. Let's ingest TV shows data from TMDB. Once an account on TMDB is created, you can get the API key.
+We have LightRAG server running and connected to Neo4j and Qdrant. Now let's ingest some TV shows data from TMDB. Once you've created an account on TMDB, you can get an API key from your account settings.
 
-At first I'll create a script that will fetch data from TMDB and will save it into JSON file on my local file system. I'm interested in English TV shows produced in 2010 or later, with rating greater or equal to 7 that have at least 200 votes. The script applies those filters accordingly.
+First, I'll create a script that fetches data from TMDB and saves it to a JSON file. I'm interested in classic English TV shows (released before 2010), with a rating of 7 or higher and at least 200 votes. The script applies these filters accordingly.
 
 **fetch-tmdb-tv-shows.mjs**
 ```mjs
@@ -162,13 +164,13 @@ async function fetchTvShows() {
 fetchTvShows();
 ```
 
-You can run it with `export API_KEY=<your_key> node fetch-tmdb-tv-shows.mjs`. Shortly after you will have `tmdb_tv_shows.json` file in the same directory.
+You can run it with `TMDB_API_KEY=<your_key> node fetch-tmdb-tv-shows.mjs`. Shortly after, you'll have a `tmdb_tv_shows.json` file in the same directory.
 
 ## LightRAG data ingestion
 
-The next step is to ingest data from newly created `tmdb_tv_shows.json` into LightRAG. What LightRAG will do as a part of data ingestion is <AI_pls_fill>.
+The next step is to ingest data from the newly created `tmdb_tv_shows.json` into LightRAG. During ingestion, LightRAG will extract entities and relationships from the text, create vector embeddings for semantic search, and build a knowledge graph connecting all the TV shows, genres, and other metadata.
 
-Let's again create a script that will help us ingest data programmatically.
+Let's create another script to help us ingest data programmatically.
 
 **ingest-tv-shows.mjs**
 ```mjs
@@ -252,9 +254,9 @@ ${show.overview}
 ingestTvShows();
 ```
 
-Put `.env` file in the same directory, then run it with `node ingest-tv-shows.mjs`. All 100 TV shows are going to be ingested to LightRAG which you can observe in LightRAG UI! :tada:
+Put a `.env` file in the same directory with the required variables, then run it with `node ingest-tv-shows.mjs`. All 100 TV shows will be ingested into LightRAG, which you can observe in the LightRAG UI! 🎉
 
-Note the knowledge graph it created :)
+Note the knowledge graph it created.
 
 <img src="/blog/2026-01-12-ingest.gif" alt="LightRAG ingestion" />
 
@@ -262,47 +264,49 @@ Note the knowledge graph it created :)
 
 # Connect with Archestra
 
-In order to connect LightRAG to Archestra we will use MCP server that will run via Archestra MCP Orchestrator. We are going to use [my fork](https://github.com/brojd/lightrag-mcp) of [lightrag-mcp](https://github.com/shemhamforash23/lightrag-mcp) (fork was needed to properly support connecting via https, we might contribute to upstream repo afterwards).
+To connect LightRAG to Archestra, we'll use an MCP server that runs via Archestra MCP Orchestrator. We're going to use [my fork](https://github.com/brojd/lightrag-mcp) of [lightrag-mcp](https://github.com/shemhamforash23/lightrag-mcp) (the fork was needed to properly support connecting via HTTPS - we might contribute this back to the upstream repo later).
 
 ## Add MCP server to registry
 
-Let's first add MCP server to MCP registry.
+Let's first add the MCP server to the MCP registry.
 
 <img src="/blog/2026-01-12-mcp-registry.gif" alt="Add MCP Server to MCP registry" />
 
 ## Install MCP server and assign tools to profile
 
-Now we need to install MCP server. We need to provide credentials required to connect with LightRAG. Under the hood, Archestra's MCP Orchestrator will start the pod for the server and will discover its tools.
+Now we need to install the MCP server. We provide the credentials required to connect with LightRAG. Under the hood, Archestra's MCP Orchestrator will start a pod for the server and discover its tools.
 
-Then we can assign tools to the profile so that the tools are available in the chat.
+Then we assign the tools to a profile so they're available in the chat.
 
-We will also update tools policies because we trust the content of the data we entered.
+We'll also update the tool policies because we trust the content of the data we entered.
 
 <img src="/blog/2026-01-12-install-mcp.gif" alt="Install MCP server and connect with profile" />
 
 ## Create agents
 
-We are ready to create agents! Recommender will orchestrate the whole process. Finder will be responsible for finding good TV shows candidates while Tracker will make sure user shares fellings about already watched tv shows and will update the LightRAG data accordingly.
+We're ready to create the agents! Recommender will orchestrate the whole process. Finder will be responsible for finding good TV show candidates while Tracker will make sure the user shares their feelings about already watched shows and will enrich the LightRAG knowledge graph with that feedback.
 
-Let's use those simple system prompts:
+The key insight here is that when Tracker inserts user feedback into LightRAG, it gets processed just like any other document - LightRAG extracts entities and relationships from the feedback and links them to existing entities in the graph. So if I say "I loved Breaking Bad, especially the character development, 9/10", LightRAG will connect my positive sentiment to the Breaking Bad entity that's already in the graph. This way, future queries about "shows with great character development" or "shows I might like" will take my preferences into account.
+
+Let's use these simple system prompts:
 
 Movie Recommender (Orchestrator)
-> You are a friendly movie recommendation assistant. At the start of each conversation, first delegate to Movie Tracker to check for any watched shows missing ratings or impressions—if found, ask the user to share their feelings before proceeding. When the user wants recommendations, delegate to Movie Finder. Summarize responses from subagents conversationally and guide the user through the experience.
+> You are a friendly movie recommendation assistant. At the start of each conversation, first delegate to Movie Tracker to check if the user has shared feelings about recently recommended shows—if not, ask the user to share their impressions before proceeding. When the user wants recommendations, delegate to Movie Finder. Summarize responses from subagents conversationally and guide the user through the experience.
 
 Movie Finder (Subagent)
 > You find TV show recommendations by querying LightRAG. Use the query tool to search for shows matching user preferences, mood, and viewing history. If the user's request is vague, ask clarifying questions about genre, mood, or preferences before searching. Return relevant recommendations with brief explanations of why each show might appeal to the user.
 
 Movie Tracker (Subagent)
-> You track the user's TV show watching history and ratings. When asked to check for missing data, query LightRAG for shows that were recommended but lack user ratings or impressions, and report them back. When collecting feedback, ask the user about their impressions and ratings (1-10), then use the LightRAG insert tool to update the knowledge base so future recommendations reflect their preferences. Every time you get useful info from the user, you must update corresponding document in LightRAG.
+> You track the user's TV show watching history and ratings. When asked to check for feedback, query LightRAG for recent user activity and identify shows that were discussed but lack ratings. When collecting feedback, ask the user about their impressions and ratings (1-10), then use the LightRAG insert tool to add this feedback as a new entry. LightRAG will extract entities from the feedback and link them to existing shows in the knowledge graph, enriching future recommendations.
 
 <img src="/blog/2026-01-12-agents.gif" alt="Create agents" />
 
-# The Result :tada:
+# The Result 🎉
 
-We are ready to test everything out. We start the chat with Movie Recommender. Every time I share feelings about some TV shows, it Movie Tracker subagent asks follow-up questions if needed and record the answers in LightRAG. New chats have this knowledge and when I ask about next recommendations Movie Finder take it into account. It uses LightRAG data and is being constantly updated based on the impressions I'm proactively asked for by Movie Tracker.
+We're ready to test everything out. We start a chat with Movie Recommender. Every time I share my feelings about a TV show, the Movie Tracker subagent asks follow-up questions if needed and inserts my feedback into LightRAG as a new document. LightRAG then extracts entities from my feedback and connects them to existing shows in the knowledge graph. In new chat sessions, this enriched graph is available - when I ask for recommendations, Movie Finder queries LightRAG and my preferences are part of the context. The knowledge graph keeps growing with each feedback I provide.
 
-<img src="/blog/2026-01-12-final-chat.gif" alt="Create agents" />
+<img src="/blog/2026-01-12-final-chat.gif" alt="Final chat demo" />
 
 Exactly what I wanted!
 
-Now I can finally focus on watching TV shows instead of spending time finding the right ones :relieved: :popcorn:
+Now I can finally focus on watching TV shows instead of spending time finding the right ones 😌🍿
