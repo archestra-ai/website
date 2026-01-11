@@ -7,7 +7,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": ["lightrag-mcp", "--host", "${user_config.host}", "--port", "${user_config.port}"],
+    "args": ["lightrag-mcp", "--host", "${user_config.host}", "--port", "${user_config.port}", "--api-key", "${user_config.api_key}"],
     "env": {},
     "type": "local"
   },
@@ -97,6 +97,12 @@
       "description": "LightRAG API port",
       "required": true,
       "default": "9621"
+    },
+    "api_key": {
+      "type": "string",
+      "title": "LightRAG API Key",
+      "description": "LightRAG API key",
+      "required": false
     }
   },
   "readme": "# LightRAG MCP Server\n\nA bridge application that connects LightRAG (Retrieval-Augmented Generation) API with MCP-compatible clients.\n\n## Features\n\n- **Information Retrieval**: Execute semantic and keyword queries to documents\n- **Document Management**: Upload, index, and track document processing status\n- **Knowledge Graph Operations**: Manage entities and relationships\n- **Monitoring**: Check API health and document processing progress\n\n## Prerequisites\n\n- Python 3.11+\n- Running LightRAG API server (default: http://localhost:9621)\n\n## Installation\n\n```bash\nuvx lightrag-mcp --host localhost --port 9621\n```\n\n## Configuration\n\n- `--host`: LightRAG API host (default: localhost)\n- `--port`: LightRAG API port (default: 9621)\n- `--api-key`: Optional API authentication key\n",
@@ -106,7 +112,7 @@
     "client_config_permutations": {
       "lightrag-mcp": {
         "command": "uvx",
-        "args": ["lightrag-mcp", "--host", "${input:host}", "--port", "${input:port}"],
+        "args": ["lightrag-mcp", "--host", "${input:host}", "--port", "${input:port}", "--api-key", "${input:api_key}"],
         "env": {}
       }
     },
