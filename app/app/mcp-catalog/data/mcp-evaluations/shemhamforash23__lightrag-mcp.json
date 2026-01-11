@@ -7,7 +7,15 @@
   },
   "server": {
     "command": "uvx",
-    "args": ["lightrag-mcp", "--host", "${user_config.host}", "--port", "${user_config.port}", "--api-key", "${user_config.api_key}"],
+    "args": [
+      "lightrag-mcp",
+      "--host",
+      "${user_config.host}",
+      "--port",
+      "${user_config.port}",
+      "--api-key",
+      "${user_config.api_key}"
+    ],
     "env": {},
     "type": "local"
   },
@@ -82,7 +90,14 @@
     }
   ],
   "prompts": [],
-  "keywords": ["rag", "lightrag", "knowledge-graph", "semantic-search", "document-management", "retrieval-augmented-generation"],
+  "keywords": [
+    "rag",
+    "lightrag",
+    "knowledge-graph",
+    "semantic-search",
+    "document-management",
+    "retrieval-augmented-generation"
+  ],
   "user_config": {
     "host": {
       "type": "string",
