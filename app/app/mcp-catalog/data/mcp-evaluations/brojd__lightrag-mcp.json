@@ -8,6 +8,8 @@
   "server": {
     "command": "uvx",
     "args": [
+      "--from",
+      "git+https://github.com/brojd/lightrag-mcp",
       "lightrag-mcp",
       "--scheme",
       "${user_config.scheme}",
@@ -138,6 +140,8 @@
       "lightrag-mcp": {
         "command": "uvx",
         "args": [
+          "--from",
+          "git+https://github.com/brojd/lightrag-mcp",
           "lightrag-mcp",
           "--scheme",
           "${input:scheme}",
