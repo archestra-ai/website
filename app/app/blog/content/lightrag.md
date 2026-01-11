@@ -279,3 +279,20 @@ Then we can assign tools to the profile so that the tools are available in the c
 We will also update tools policies because we trust the content of the data we entered.
 
 <img src="/blog/2026-01-12-install-mcp.gif" alt="Install MCP server and connect with profile" />
+
+## Create agents
+
+We are ready to create agents! Recommender will orchestrate the whole process. Finder will be responsible for finding good TV shows candidates while Tracker will make sure user shares fellings about already watched tv shows and will update the LightRAG data accordingly.
+
+Let's use those simple system prompts:
+
+Movie Recommender (Orchestrator)
+> You are a friendly movie recommendation assistant. At the start of each conversation, first delegate to Movie Tracker to check for any watched shows missing ratings or impressions—if found, ask the user to share their feelings before proceeding. When the user wants recommendations, delegate to Movie Finder. Summarize responses from subagents conversationally and guide the user through the experience.
+
+Movie Finder (Subagent)
+> You find TV show recommendations by querying LightRAG. Use the query tool to search for shows matching user preferences, mood, and viewing history. If the user's request is vague, ask clarifying questions about genre, mood, or preferences before searching. Return relevant recommendations with brief explanations of why each show might appeal to the user.
+
+Movie Tracker (Subagent)
+> You track the user's TV show watching history and ratings. When asked to check for missing data, query LightRAG for shows that were recommended but lack user ratings or impressions, and report them back. When collecting feedback, ask the user about their impressions and ratings (1-10), then use the LightRAG insert tool to update the knowledge base so future recommendations reflect their preferences.
+
+<img src="/blog/2026-01-12-agents.gif" alt="Create agents" />
