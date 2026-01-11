@@ -1,14 +1,16 @@
 {
-  "name": "shemhamforash23__lightrag-mcp",
+  "name": "brojd__lightrag-mcp",
   "display_name": "lightrag-mcp",
-  "description": "MCP server that bridges LightRAG API with MCP-compatible clients, enabling RAG capabilities including semantic queries, document management, and knowledge graph operations.",
+  "description": "MCP server that bridges LightRAG API with MCP-compatible clients, enabling RAG capabilities including semantic queries, document management, and knowledge graph operations. Supports HTTPS for remote deployments.",
   "author": {
-    "name": "shemhamforash23"
+    "name": "brojd"
   },
   "server": {
     "command": "uvx",
     "args": [
       "lightrag-mcp",
+      "--scheme",
+      "${user_config.scheme}",
       "--host",
       "${user_config.host}",
       "--port",
@@ -99,35 +101,43 @@
     "retrieval-augmented-generation"
   ],
   "user_config": {
+    "scheme": {
+      "type": "string",
+      "title": "HTTP Scheme",
+      "description": "HTTP scheme (http or https)",
+      "required": true,
+      "default": "https"
+    },
     "host": {
       "type": "string",
       "title": "LightRAG Host",
-      "description": "LightRAG API host (use host.docker.internal for local development)",
+      "description": "LightRAG API host (e.g., lightrag.example.com)",
       "required": true,
       "default": "host.docker.internal"
     },
     "port": {
       "type": "string",
       "title": "LightRAG Port",
-      "description": "LightRAG API port",
+      "description": "LightRAG API port (443 for HTTPS, 9621 for HTTP)",
       "required": true,
-      "default": "9621"
+      "default": "443"
     },
     "api_key": {
       "type": "string",
       "title": "LightRAG API Key",
       "description": "LightRAG API key",
-      "required": false
+      "required": false,
+      "sensitive": true
     }
   },
-  "readme": "# LightRAG MCP Server\n\nA bridge application that connects LightRAG (Retrieval-Augmented Generation) API with MCP-compatible clients.\n\n## Features\n\n- **Information Retrieval**: Execute semantic and keyword queries to documents\n- **Document Management**: Upload, index, and track document processing status\n- **Knowledge Graph Operations**: Manage entities and relationships\n- **Monitoring**: Check API health and document processing progress\n\n## Prerequisites\n\n- Python 3.11+\n- Running LightRAG API server (default: http://localhost:9621)\n\n## Installation\n\n```bash\nuvx lightrag-mcp --host localhost --port 9621\n```\n\n## Configuration\n\n- `--host`: LightRAG API host (default: localhost)\n- `--port`: LightRAG API port (default: 9621)\n- `--api-key`: Optional API authentication key\n",
+  "readme": "# LightRAG MCP Server\n\nA bridge application that connects LightRAG (Retrieval-Augmented Generation) API with MCP-compatible clients.\n\n## Features\n\n- **Information Retrieval**: Execute semantic and keyword queries to documents\n- **Document Management**: Upload, index, and track document processing status\n- **Knowledge Graph Operations**: Manage entities and relationships\n- **Monitoring**: Check API health and document processing progress\n- **HTTPS Support**: Connect to remote LightRAG deployments securely\n\n## Prerequisites\n\n- Python 3.11+\n- Running LightRAG API server\n\n## Installation\n\n```bash\nuvx lightrag-mcp --scheme https --host lightrag.example.com --port 443 --api-key YOUR_KEY\n```\n\n## Configuration\n\n- `--scheme`: HTTP scheme, either `http` or `https` (default: http)\n- `--host`: LightRAG API host (default: localhost)\n- `--port`: LightRAG API port (default: 9621)\n- `--api-key`: Optional API authentication key\n- `--no-verify-ssl`: Disable SSL certificate verification for HTTPS\n",
   "category": "Knowledge",
   "quality_score": 70,
   "archestra_config": {
     "client_config_permutations": {
       "lightrag-mcp": {
         "command": "uvx",
-        "args": ["lightrag-mcp", "--host", "${input:host}", "--port", "${input:port}", "--api-key", "${input:api_key}"],
+        "args": ["lightrag-mcp", "--scheme", "${input:scheme}", "--host", "${input:host}", "--port", "${input:port}", "--api-key", "${input:api_key}"],
         "env": {}
       }
     },
@@ -138,9 +148,9 @@
     "works_in_archestra": true
   },
   "github_info": {
-    "owner": "shemhamforash23",
+    "owner": "brojd",
     "repo": "lightrag-mcp",
-    "url": "https://github.com/shemhamforash23/lightrag-mcp",
+    "url": "https://github.com/brojd/lightrag-mcp",
     "name": "lightrag-mcp",
     "path": null,
     "stars": 0,
@@ -152,7 +162,7 @@
   },
   "programming_language": "Python",
   "framework": null,
-  "last_scraped_at": "2026-01-07T12:00:00.000Z",
+  "last_scraped_at": "2026-01-11T12:00:00.000Z",
   "evaluation_model": "manual",
   "protocol_features": {
     "implementing_tools": true,
