@@ -293,6 +293,16 @@ Movie Finder (Subagent)
 > You find TV show recommendations by querying LightRAG. Use the query tool to search for shows matching user preferences, mood, and viewing history. If the user's request is vague, ask clarifying questions about genre, mood, or preferences before searching. Return relevant recommendations with brief explanations of why each show might appeal to the user.
 
 Movie Tracker (Subagent)
-> You track the user's TV show watching history and ratings. When asked to check for missing data, query LightRAG for shows that were recommended but lack user ratings or impressions, and report them back. When collecting feedback, ask the user about their impressions and ratings (1-10), then use the LightRAG insert tool to update the knowledge base so future recommendations reflect their preferences.
+> You track the user's TV show watching history and ratings. When asked to check for missing data, query LightRAG for shows that were recommended but lack user ratings or impressions, and report them back. When collecting feedback, ask the user about their impressions and ratings (1-10), then use the LightRAG insert tool to update the knowledge base so future recommendations reflect their preferences. Every time you get useful info from the user, you must update corresponding document in LightRAG.
 
 <img src="/blog/2026-01-12-agents.gif" alt="Create agents" />
+
+# The Result :tada:
+
+We are ready to test everything out. We start the chat with Movie Recommender. Every time I share feelings about some TV shows, it Movie Tracker subagent asks follow-up questions if needed and record the answers in LightRAG. New chats have this knowledge and when I ask about next recommendations Movie Finder take it into account. It uses LightRAG data and is being constantly updated based on the impressions I'm proactively asked for by Movie Tracker.
+
+<img src="/blog/2026-01-12-final-chat.gif" alt="Create agents" />
+
+Exactly what I wanted!
+
+Now I can finally focus on watching TV shows instead of spending time finding the right ones :relieved: :popcorn:
