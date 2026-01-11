@@ -40,7 +40,9 @@ We also need TV shows to be entered to our storages via LightRAG. I'm going to u
 
 <img src="/blog/2026-01-12-diagram.png" alt="Architecture Diagram" />
 
-# Let's Start!
+---
+
+# Let's start preparation!
 
 ## Neo4j Aura DB instance
 
@@ -66,3 +68,214 @@ QDRANT_API_KEY=<cluster_api_key>
 ```
 
 <img src="/blog/2026-01-12-qdrant.gif" alt="Setup Qdrant cluster" />
+
+## Deploy LightRAG server
+
+We have now Graph and Vector storages ready to use. The next step is to deploy LightRAG server. To do so, I'm going to use [helm chart](https://github.com/HKUDS/LightRAG/tree/main/k8s-deploy/lightrag) from official LightRAG repository.
+
+Now we're going to use environment variables written down before. You also need LLM provider API key. I'm going to use OpenAI.
+
+```bash
+helm upgrade --install lightrag ./charts/lightrag \
+  --namespace lightrag --create-namespace \
+  -f k8s/lightrag-values.yaml \
+  --set-string env.OPENAI_API_KEY='sk-your-openai-api-key' \
+  --set-string env.LIGHTRAG_NEO4J_URI='neo4j+s://xxxxxxxx.databases.neo4j.io' \
+  --set-string env.LIGHTRAG_NEO4J_USERNAME='neo4j' \
+  --set-string env.LIGHTRAG_NEO4J_PASSWORD='your-neo4j-password' \
+  --set-string env.LIGHTRAG_NEO4J_DATABASE='neo4j' \
+  --set-string env.LIGHTRAG_QDRANT_URL='https://xxxxxxxx.cloud.qdrant.io:6333' \
+  --set-string env.LIGHTRAG_QDRANT_API_KEY='your-qdrant-api-key' \
+  --set-string env.LIGHTRAG_LLM_MODEL='gpt-4o-mini' \
+  --set-string env.LIGHTRAG_EMBEDDING_MODEL='text-embedding-3-small' \
+  --set-string env.LIGHTRAG_EMBEDDING_DIM='1536' \
+  --wait
+```
+
+Once installed, you need a way to access LightRAG API and UI. You can do it via kubectl port-forwarding:
+```bash
+kubectl port-forward -n lightrag svc/lightrag 9621:9621
+```
+
+or configure ingress controller which I'll skip for simplicity.
+
+## Fetch TMDB data
+
+We have LightRAG server running and connected to Neo4j and Qdrant. Let's ingest TV shows data from TMDB. Once an account on TMDB is created, you can get the API key.
+
+At first I'll create a script that will fetch data from TMDB and will save it into JSON file on my local file system. I'm interested in English TV shows produced in 2010 or later, with rating greater or equal to 7 that have at least 200 votes. The script applies those filters accordingly.
+
+**fetch-tmdb-tv-shows.mjs**
+```mjs
+import { writeFileSync } from "fs";
+
+const API_KEY = process.env.TMDB_API_KEY;
+
+if (!API_KEY) {
+  console.error("Error: TMDB_API_KEY environment variable is required");
+  process.exit(1);
+}
+
+const BASE_URL = "https://api.themoviedb.org/3/discover/tv";
+
+const params = new URLSearchParams({
+  "vote_average.gte": "7",
+  "first_air_date.lte": "2009-12-31",
+  "vote_count.gte": "200",
+  with_original_language: "en",
+  sort_by: "vote_average.desc",
+});
+
+async function fetchTvShows() {
+  const allResults = [];
+
+  for (let page = 1; page <= 5; page++) {
+    const url = `${BASE_URL}?${params}&page=${page}`;
+    const response = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+        Accept: "application/json",
+      },
+    });
+
+    const data = await response.json();
+    allResults.push(...data.results);
+    console.log(`Fetched page ${page}: ${data.results.length} shows`);
+  }
+
+  const output = {
+    query_params: {
+      vote_average_gte: 7,
+      first_air_date_lte: "2009-12-31",
+      vote_count_gte: 200,
+      original_language: "en",
+      sort_by: "vote_average.desc",
+    },
+    total_results: allResults.length,
+    tv_shows: allResults,
+  };
+
+  writeFileSync("tmdb_tv_shows.json", JSON.stringify(output, null, 2));
+  console.log(`\nSaved ${allResults.length} TV shows to tmdb_tv_shows.json`);
+}
+
+fetchTvShows();
+```
+
+You can run it with `export API_KEY=<your_key> node fetch-tmdb-tv-shows.mjs`. Shortly after you will have `tmdb_tv_shows.json` file in the same directory.
+
+## LightRAG data ingestion
+
+The next step is to ingest data from newly created `tmdb_tv_shows.json` into LightRAG. What LightRAG will do as a part of data ingestion is <AI_pls_fill>.
+
+Let's again create a script that will help us ingest data programmatically.
+
+**ingest-tv-shows.mjs**
+```mjs
+import { readFileSync } from "fs";
+import { config } from "dotenv";
+
+// Load env vars from parent .env file
+config({ path: "./.env" });
+
+const LIGHTRAG_DOMAIN = process.env.LIGHTRAG_DOMAIN || "localhost:9621";
+const LIGHTRAG_URL = LIGHTRAG_DOMAIN.includes("localhost")
+  ? `http://${LIGHTRAG_DOMAIN}`
+  : `https://${LIGHTRAG_DOMAIN}`;
+const LIGHTRAG_API_KEY = process.env.LIGHTRAG_API_KEY;
+
+// Parse command line arguments
+const args = process.argv.slice(2);
+const start = parseInt(args[0] || "0", 10);
+const end = parseInt(args[1] || "101", 10);
+
+async function ingestTvShows() {
+  // Load TV shows data
+  const data = JSON.parse(readFileSync("tmdb_tv_shows.json", "utf-8"));
+  const tvShows = data.tv_shows.slice(start, end);
+
+  console.log(`Ingesting TV shows ${start + 1} to ${Math.min(end, data.tv_shows.length)} of ${data.tv_shows.length} total`);
+  console.log(`LightRAG URL: ${LIGHTRAG_URL}\n`);
+
+  let success = 0;
+  let failed = 0;
+
+  for (const show of tvShows) {
+    // Format TV show as a document
+    const document = `
+Title: ${show.name}
+Original Title: ${show.original_name}
+First Air Date: ${show.first_air_date}
+Rating: ${show.vote_average}/10 (${show.vote_count} votes)
+Popularity: ${show.popularity}
+Language: ${show.original_language}
+Genre IDs: ${show.genre_ids.join(", ")}
+Origin Country: ${show.origin_country.join(", ")}
+
+Overview:
+${show.overview}
+`.trim();
+
+    // Generate unique file_source (include ID to handle duplicates like "Battlestar Galactica")
+    const fileSource = show.name.toLowerCase().replace(/[^a-z0-9]+/g, "_") + `_${show.id}.md`;
+
+    try {
+      const response = await fetch(`${LIGHTRAG_URL}/documents/text`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(LIGHTRAG_API_KEY && { "X-API-Key": LIGHTRAG_API_KEY }),
+        },
+        body: JSON.stringify({ text: document, file_source: fileSource }),
+      });
+
+      if (response.ok) {
+        console.log(`✓ Ingested: ${show.name} (${show.vote_average}/10)`);
+        success++;
+      } else {
+        const error = await response.text();
+        console.error(`✗ Failed: ${show.name} - ${response.status}: ${error}`);
+        failed++;
+      }
+    } catch (error) {
+      console.error(`✗ Failed: ${show.name} - ${error.message}`);
+      failed++;
+    }
+
+    // Small delay to avoid overwhelming the API
+    await new Promise((resolve) => setTimeout(resolve, 500));
+  }
+
+  console.log(`\nDone! Success: ${success}, Failed: ${failed}`);
+}
+
+ingestTvShows();
+```
+
+Put `.env` file in the same directory, then run it with `node ingest-tv-shows.mjs`. All 100 TV shows are going to be ingested to LightRAG which you can observe in LightRAG UI! :tada:
+
+Note the knowledge graph it created :)
+
+<img src="/blog/2026-01-12-ingest.gif" alt="LightRAG ingestion" />
+
+---
+
+# Connect with Archestra
+
+In order to connect LightRAG to Archestra we will use MCP server that will run via Archestra MCP Orchestrator. We are going to use [my fork](https://github.com/brojd/lightrag-mcp) of [lightrag-mcp](https://github.com/shemhamforash23/lightrag-mcp) (fork was needed to properly support connecting via https, we might contribute to upstream repo afterwards).
+
+## Add MCP server to registry
+
+Let's first add MCP server to MCP registry.
+
+<img src="/blog/2026-01-12-mcp-registry.gif" alt="Add MCP Server to MCP registry" />
+
+## Install MCP server and assign tools to profile
+
+Now we need to install MCP server. We need to provide credentials required to connect with LightRAG. Under the hood, Archestra's MCP Orchestrator will start the pod for the server and will discover its tools.
+
+Then we can assign tools to the profile so that the tools are available in the chat.
+
+We will also update tools policies because we trust the content of the data we entered.
+
+<img src="/blog/2026-01-12-install-mcp.gif" alt="Install MCP server and connect with profile" />
