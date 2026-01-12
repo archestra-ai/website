@@ -1,8 +1,8 @@
 ---
-title: 'LightRAG'
+title: 'Personal Movie Recommender with LightRAG and Archestra'
 date: '2026-01-12'
 author: 'Dominik Broj, Founding Engineer'
-description: 'Building personal Movie Recommendation assistant with Archestra, LightRAG, Neo4j and Qdrant'
+description: 'Practical guide to memory and knowledge base integration in Archestra via LightRAG'
 image: '/blog/2026-01-12-main-image.webp'
 ---
 
@@ -34,7 +34,7 @@ Then we need a running instance of Archestra and LightRAG. I'm going to use my o
 
 Next, we'll connect Archestra to LightRAG via MCP server that runs via [Archestra MCP Orchestrator](https://archestra.ai/docs/platform-orchestrator).
 
-Lastly, we're going to use Archestra's Agent-to-Agent capabilities. We will have a main Movie Recommender agent connected to two subagents:
+Lastly, we're going to use Archestra's Agent-to-Agent capabilities. We will have a main **Movie Recommender** agent connected to two subagents:
 - **Movie Finder** - responsible for finding TV shows candidates
 - **Movie Tracker** - responsible for tracking historical data of my watchings and ratings
 
@@ -310,3 +310,5 @@ We're ready to test everything out. We start a chat with Movie Recommender. Ever
 Exactly what I wanted!
 
 Now I can finally focus on watching TV shows instead of spending time finding the right ones 😌🍿
+
+<img src="/blog/2026-01-12-popcorn-giphy.gif" alt="More time for this" />
