@@ -35,6 +35,7 @@ Then we need a running instance of Archestra and LightRAG. I'm going to use my o
 Next, we'll connect Archestra to LightRAG via MCP server that runs via [Archestra MCP Orchestrator](https://archestra.ai/docs/platform-orchestrator).
 
 Lastly, we're going to use Archestra's Agent-to-Agent capabilities. We will have a main **Movie Recommender** agent connected to two subagents:
+
 - **Movie Finder** - responsible for finding TV shows candidates
 - **Movie Tracker** - responsible for tracking historical data of my watchings and ratings
 
@@ -51,6 +52,7 @@ We also need TV shows data to be entered into our storages via LightRAG. I'm goi
 Create a Neo4j account if you haven't already. Then create an AuraDB instance - they offer a free tier which is enough for our use case.
 
 Note down the credentials for later:
+
 ```bash
 NEO4J_URI=<from_Connect_->_Developer_Hub>
 NEO4J_USERNAME=neo4j # (default)
@@ -64,6 +66,7 @@ NEO4J_PASSWORD=<shown_after_instance_creation>
 Time to create a Qdrant cluster. On your Qdrant account go to the Clusters page, enter a name and create a new instance. Again, there's a free tier available.
 
 Note down the credentials for later:
+
 ```bash
 QDRANT_URL=<cluster_endpoint>
 QDRANT_API_KEY=<cluster_api_key>
@@ -95,6 +98,7 @@ helm upgrade --install lightrag ./charts/lightrag \
 ```
 
 Once installed, you need a way to access the LightRAG API and UI. You can do it via kubectl port-forwarding:
+
 ```bash
 kubectl port-forward -n lightrag svc/lightrag 9621:9621
 ```
@@ -108,24 +112,25 @@ We have LightRAG server running and connected to Neo4j and Qdrant. Now let's ing
 First, I'll create a script that fetches data from TMDB and saves it to a JSON file. I'm interested in classic English TV shows (released before 2010), with a rating of 7 or higher and at least 200 votes. The script applies these filters accordingly.
 
 **fetch-tmdb-tv-shows.mjs**
+
 ```mjs
-import { writeFileSync } from "fs";
+import { writeFileSync } from 'fs';
 
 const API_KEY = process.env.TMDB_API_KEY;
 
 if (!API_KEY) {
-  console.error("Error: TMDB_API_KEY environment variable is required");
+  console.error('Error: TMDB_API_KEY environment variable is required');
   process.exit(1);
 }
 
-const BASE_URL = "https://api.themoviedb.org/3/discover/tv";
+const BASE_URL = 'https://api.themoviedb.org/3/discover/tv';
 
 const params = new URLSearchParams({
-  "vote_average.gte": "7",
-  "first_air_date.lte": "2009-12-31",
-  "vote_count.gte": "200",
-  with_original_language: "en",
-  sort_by: "vote_average.desc",
+  'vote_average.gte': '7',
+  'first_air_date.lte': '2009-12-31',
+  'vote_count.gte': '200',
+  with_original_language: 'en',
+  sort_by: 'vote_average.desc',
 });
 
 async function fetchTvShows() {
@@ -136,7 +141,7 @@ async function fetchTvShows() {
     const response = await fetch(url, {
       headers: {
         Authorization: `Bearer ${API_KEY}`,
-        Accept: "application/json",
+        Accept: 'application/json',
       },
     });
 
@@ -148,16 +153,16 @@ async function fetchTvShows() {
   const output = {
     query_params: {
       vote_average_gte: 7,
-      first_air_date_lte: "2009-12-31",
+      first_air_date_lte: '2009-12-31',
       vote_count_gte: 200,
-      original_language: "en",
-      sort_by: "vote_average.desc",
+      original_language: 'en',
+      sort_by: 'vote_average.desc',
     },
     total_results: allResults.length,
     tv_shows: allResults,
   };
 
-  writeFileSync("tmdb_tv_shows.json", JSON.stringify(output, null, 2));
+  writeFileSync('tmdb_tv_shows.json', JSON.stringify(output, null, 2));
   console.log(`\nSaved ${allResults.length} TV shows to tmdb_tv_shows.json`);
 }
 
@@ -173,30 +178,31 @@ The next step is to ingest data from the newly created `tmdb_tv_shows.json` into
 Let's create another script to help us ingest data programmatically.
 
 **ingest-tv-shows.mjs**
+
 ```mjs
-import { readFileSync } from "fs";
-import { config } from "dotenv";
+import { config } from 'dotenv';
+import { readFileSync } from 'fs';
 
 // Load env vars from parent .env file
-config({ path: "./.env" });
+config({ path: './.env' });
 
-const LIGHTRAG_DOMAIN = process.env.LIGHTRAG_DOMAIN || "localhost:9621";
-const LIGHTRAG_URL = LIGHTRAG_DOMAIN.includes("localhost")
-  ? `http://${LIGHTRAG_DOMAIN}`
-  : `https://${LIGHTRAG_DOMAIN}`;
+const LIGHTRAG_DOMAIN = process.env.LIGHTRAG_DOMAIN || 'localhost:9621';
+const LIGHTRAG_URL = LIGHTRAG_DOMAIN.includes('localhost') ? `http://${LIGHTRAG_DOMAIN}` : `https://${LIGHTRAG_DOMAIN}`;
 const LIGHTRAG_API_KEY = process.env.LIGHTRAG_API_KEY;
 
 // Parse command line arguments
 const args = process.argv.slice(2);
-const start = parseInt(args[0] || "0", 10);
-const end = parseInt(args[1] || "101", 10);
+const start = parseInt(args[0] || '0', 10);
+const end = parseInt(args[1] || '101', 10);
 
 async function ingestTvShows() {
   // Load TV shows data
-  const data = JSON.parse(readFileSync("tmdb_tv_shows.json", "utf-8"));
+  const data = JSON.parse(readFileSync('tmdb_tv_shows.json', 'utf-8'));
   const tvShows = data.tv_shows.slice(start, end);
 
-  console.log(`Ingesting TV shows ${start + 1} to ${Math.min(end, data.tv_shows.length)} of ${data.tv_shows.length} total`);
+  console.log(
+    `Ingesting TV shows ${start + 1} to ${Math.min(end, data.tv_shows.length)} of ${data.tv_shows.length} total`
+  );
   console.log(`LightRAG URL: ${LIGHTRAG_URL}\n`);
 
   let success = 0;
@@ -211,22 +217,22 @@ First Air Date: ${show.first_air_date}
 Rating: ${show.vote_average}/10 (${show.vote_count} votes)
 Popularity: ${show.popularity}
 Language: ${show.original_language}
-Genre IDs: ${show.genre_ids.join(", ")}
-Origin Country: ${show.origin_country.join(", ")}
+Genre IDs: ${show.genre_ids.join(', ')}
+Origin Country: ${show.origin_country.join(', ')}
 
 Overview:
 ${show.overview}
 `.trim();
 
     // Generate unique file_source (include ID to handle duplicates like "Battlestar Galactica")
-    const fileSource = show.name.toLowerCase().replace(/[^a-z0-9]+/g, "_") + `_${show.id}.md`;
+    const fileSource = show.name.toLowerCase().replace(/[^a-z0-9]+/g, '_') + `_${show.id}.md`;
 
     try {
       const response = await fetch(`${LIGHTRAG_URL}/documents/text`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          ...(LIGHTRAG_API_KEY && { "X-API-Key": LIGHTRAG_API_KEY }),
+          'Content-Type': 'application/json',
+          ...(LIGHTRAG_API_KEY && { 'X-API-Key': LIGHTRAG_API_KEY }),
         },
         body: JSON.stringify({ text: document, file_source: fileSource }),
       });
@@ -291,12 +297,15 @@ The key insight here is that when Tracker inserts user feedback into LightRAG, i
 Let's use these simple system prompts:
 
 Movie Recommender (Orchestrator)
+
 > You are a friendly movie recommendation assistant. At the start of each conversation, first delegate to Movie Tracker to check if the user has shared feelings about recently recommended shows—if not, ask the user to share their impressions before proceeding. When the user wants recommendations, delegate to Movie Finder. Summarize responses from subagents conversationally and guide the user through the experience.
 
 Movie Finder (Subagent)
+
 > You find TV show recommendations by querying LightRAG. Use the query tool to search for shows matching user preferences, mood, and viewing history. If the user's request is vague, ask clarifying questions about genre, mood, or preferences before searching. Return relevant recommendations with brief explanations of why each show might appeal to the user.
 
 Movie Tracker (Subagent)
+
 > You track the user's TV show watching history and ratings. When asked to check for feedback, query LightRAG for recent user activity and identify shows that were discussed but lack ratings. When collecting feedback, ask the user about their impressions and ratings (1-10), then use the LightRAG insert tool to add this feedback as a new entry. LightRAG will extract entities from the feedback and link them to existing shows in the knowledge graph, enriching future recommendations.
 
 <img src="/blog/2026-01-12-agents.gif" alt="Create agents" />
