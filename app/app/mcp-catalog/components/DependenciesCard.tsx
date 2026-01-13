@@ -4,7 +4,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
-import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
+import type { ArchestraMcpServerManifest, MCPDependency } from '@mcpCatalog/types';
 
 import EvaluatedByModelInfo from './EvaluatedByModelInfo';
 
@@ -17,9 +17,9 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
   const { dependencies } = server;
 
   // Group dependencies by importance level
-  const mainDeps = dependencies?.filter((d) => d.importance >= 8) || [];
-  const mediumDeps = dependencies?.filter((d) => d.importance >= 5 && d.importance < 8) || [];
-  const lightDeps = dependencies?.filter((d) => d.importance < 5) || [];
+  const mainDeps = dependencies?.filter((d: MCPDependency) => d.importance >= 8) || [];
+  const mediumDeps = dependencies?.filter((d: MCPDependency) => d.importance >= 5 && d.importance < 8) || [];
+  const lightDeps = dependencies?.filter((d: MCPDependency) => d.importance < 5) || [];
   const totalDeps = (dependencies || []).length;
 
   const DependenciesContent = () => (
@@ -30,8 +30,8 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
           <h4 className="text-sm font-semibold text-gray-700 mb-2">Main</h4>
           <div className="space-y-2">
             {mainDeps
-              .sort((a, b) => b.importance - a.importance)
-              .map((dep, index) => (
+              .sort((a: MCPDependency, b: MCPDependency) => b.importance - a.importance)
+              .map((dep: MCPDependency, index: number) => (
                 <div
                   key={index}
                   className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-green-500 to-green-600 text-white shadow-md overflow-hidden"
@@ -50,8 +50,8 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
           <h4 className="text-sm font-semibold text-gray-700 mb-2">Medium</h4>
           <div className="space-y-2">
             {mediumDeps
-              .sort((a, b) => b.importance - a.importance)
-              .map((dep, index) => (
+              .sort((a: MCPDependency, b: MCPDependency) => b.importance - a.importance)
+              .map((dep: MCPDependency, index: number) => (
                 <div
                   key={index}
                   className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-gray-300 to-gray-400 text-gray-800 shadow-sm overflow-hidden"
@@ -70,8 +70,8 @@ export default function DependenciesCard({ server }: DependenciesCardProps) {
           <h4 className="text-sm font-semibold text-gray-700 mb-2">Light</h4>
           <div className="space-y-2">
             {lightDeps
-              .sort((a, b) => b.importance - a.importance)
-              .map((dep, index) => (
+              .sort((a: MCPDependency, b: MCPDependency) => b.importance - a.importance)
+              .map((dep: MCPDependency, index: number) => (
                 <div
                   key={index}
                   className="px-3 py-2 rounded-lg font-medium text-sm bg-gradient-to-r from-gray-100 to-gray-200 text-gray-600 shadow-sm overflow-hidden"
