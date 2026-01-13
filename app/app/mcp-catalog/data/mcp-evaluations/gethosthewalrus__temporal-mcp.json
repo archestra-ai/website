@@ -19,9 +19,9 @@
       "TEMPORAL_NAMESPACE=${user_config.temporal_namespace}",
       "-e",
       "TEMPORAL_TLS_ENABLED=${user_config.temporal_tls_enabled}",
-      "gethosthewalrus/temporal-mcp-server:latest"
+      "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/temporal-walrus-mcp:latest"
     ],
-    "docker_image": "gethosthewalrus/temporal-mcp-server:latest",
+    "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/temporal-walrus-mcp:latest",
     "env": {
       "TEMPORAL_HOST": "${user_config.temporal_host}",
       "TEMPORAL_NAMESPACE": "${user_config.temporal_namespace}",
