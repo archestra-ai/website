@@ -55,15 +55,7 @@
     { "name": "github_get_issue", "description": "Retrieve issue details via GitHub API" }
   ],
   "prompts": [],
-  "keywords": [
-    "coding",
-    "git",
-    "github",
-    "semantic-editing",
-    "lsp",
-    "pull-requests",
-    "code-editing"
-  ],
+  "keywords": ["coding", "git", "github", "semantic-editing", "lsp", "pull-requests", "code-editing"],
   "user_config": {
     "github_token": {
       "type": "string",
