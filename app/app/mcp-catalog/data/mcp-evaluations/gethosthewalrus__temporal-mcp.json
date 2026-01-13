@@ -11,13 +11,6 @@
       "run",
       "-i",
       "--rm",
-      "--network",
-      "host",
-      "-e",
-      "TEMPORAL_HOST=${user_config.temporal_host}",
-      "-e",
-      "TEMPORAL_NAMESPACE=${user_config.temporal_namespace}",
-      "-e",
       "TEMPORAL_TLS_ENABLED=${user_config.temporal_tls_enabled}",
       "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/temporal-walrus-mcp:0.0.1"
     ],
@@ -120,22 +113,22 @@
   "user_config": {
     "temporal_host": {
       "type": "string",
-      "title": "Temporal Host",
-      "description": "Temporal server address (e.g., localhost:7233 for local, or your-namespace.tmprl.cloud:7233 for Temporal Cloud)",
+      "title": "",
+      "description": "Set to your Temporal server address (e.g., localhost:7233, host.docker.internal:7233, etc.)",
       "default": "",
       "required": true
     },
     "temporal_namespace": {
       "type": "string",
-      "title": "Temporal Namespace",
-      "description": "Temporal namespace for workflow isolation",
+      "title": "",
+      "description": "Set to your Temporal namespace",
       "default": "default",
       "required": false
     },
     "temporal_tls_enabled": {
       "type": "boolean",
-      "title": "Enable TLS",
-      "description": "Enable TLS for secure connections.",
+      "title": "",
+      "description": "Enable TLS for secure connections. Set to true if you are using a remote Temporal server.",
       "default": false,
       "required": false
     }
