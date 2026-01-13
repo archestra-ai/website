@@ -19,9 +19,9 @@
       "TEMPORAL_NAMESPACE=${user_config.temporal_namespace}",
       "-e",
       "TEMPORAL_TLS_ENABLED=${user_config.temporal_tls_enabled}",
-      "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/temporal-walrus-mcp:latest"
+      "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/temporal-walrus-mcp:0.0.1"
     ],
-    "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/temporal-walrus-mcp:latest",
+    "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/temporal-walrus-mcp:0.0.1",
     "env": {
       "TEMPORAL_HOST": "${user_config.temporal_host}",
       "TEMPORAL_NAMESPACE": "${user_config.temporal_namespace}",
