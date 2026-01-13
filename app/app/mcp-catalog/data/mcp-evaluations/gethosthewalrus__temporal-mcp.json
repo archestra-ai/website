@@ -135,7 +135,7 @@
     "temporal_tls_enabled": {
       "type": "boolean",
       "title": "Enable TLS",
-      "description": "Enable TLS for secure connections. Recommended for remote/cloud Temporal instances.",
+      "description": "Enable TLS for secure connections.",
       "default": false,
       "required": false
     }
