@@ -1,7 +1,7 @@
 {
-  "name": "archestra-ai__coding-agent",
+  "name": "archestra-ai__archestra-coding-agent",
   "display_name": "archestra-coding-agent",
-  "description": "A custom MCP server combining semantic code editing with Git/GitHub operations, packaged as a Docker image for Kubernetes deployment.",
+  "description": "Ab MCP server combining semantic code editing with Git/GitHub capabilities.",
   "author": {
     "name": "archestra-ai"
   },
@@ -15,7 +15,7 @@
     ],
     "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/archestra-coding-agent:0.0.2",
     "env": {
-      "GITHUB_TOKEN": "${user_config.GITHUB_TOKEN}"
+      "GITHUB_TOKEN": "${user_config.github_token}"
     },
     "type": "local"
   },
@@ -31,45 +31,24 @@
     "code-editing"
   ],
   "user_config": {
-    "GITHUB_TOKEN": {
+    "github_token": {
       "type": "string",
-      "title": "GitHub Token",
-      "description": "GitHub personal access token for API operations",
+      "title": "",
+      "description": "GitHub personal access token for API operations. IMPORTANT: your PAT must have the repo scope granted (for the MCP server to be able to open PRs on your behalf)",
       "default": "",
-      "required": true
+      "required": true,
+      "sensitive": true
     }
   },
   "readme": "## Archestra Coding Agent MCP Server\n\nA custom MCP (Model Context Protocol) server combining semantic code editing with Git/GitHub operations, packaged as a Docker image for Kubernetes deployment.\n\n### Key Features\n\n#### Semantic Code Operations (from Serena)\n- Symbol-level retrieval: `find_symbol`, `find_referencing_symbols`\n- Symbol editing: `replace_symbol_body`, `insert_after_symbol`, `insert_before_symbol`\n- File operations: `create_text_file`, `read_file`\n- Shell execution: `execute_shell_command`\n- Language server support for 30+ languages via LSP\n\n#### Git Tools\n- Repository cloning and status checking\n- Diff viewing and commit staging\n- Branch creation and switching\n- Push operations to remote repositories\n\n#### GitHub Integration\n- Pull request creation and listing\n- Issue detail retrieval\n\n### Configuration\n\nRequires `GITHUB_TOKEN` environment variable for API operations. Optional `WORKSPACE_DIR` (defaults to `/workspace`) specifies the cloned repository location.\n\n### Building & Deployment\n\nThe project uses `make build` for Docker image compilation and `make push` for registry deployment. Local testing via Docker requires exposing port 9121 and mounting a workspace volume.\n\n### Installation in Archestra\n\nUsers add the server via the internal MCP catalog, create an associated profile, configure GitHub authentication, then begin development work.\n\n### Development\n\nTesting involves standard Python tooling—install requirements, run pytest, and validate MCP connectivity on the designated port.",
   "category": "Development",
-  "quality_score": 0,
-  "archestra_config": {
-    "client_config_permutations": {
-      "archestra-coding-agent": {
-        "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/archestra-coding-agent:0.0.2"
-        ],
-        "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/archestra-coding-agent:0.0.2",
-        "env": {
-          "GITHUB_TOKEN": "${user_config.GITHUB_TOKEN}"
-        }
-      }
-    },
-    "oauth": {
-      "provider": null,
-      "required": false
-    },
-    "works_in_archestra": true
-  },
+  "quality_score": 85,
   "github_info": {
     "owner": "archestra-ai",
-    "repo": "archestra",
-    "url": "https://github.com/archestra-ai/archestra/tree/dev/platform/experiments/archestra-coding-agent",
-    "name": "archestra-ai__coding-agent",
-    "path": "platform/experiments/archestra-coding-agent",
+    "repo": "archestra-coding-agent",
+    "url": "https://github.com/archestra-ai/archestra-coding-agent",
+    "name": "archestra-ai__archestra-coding-agent",
+    "path": null,
     "stars": 0,
     "contributors": 0,
     "issues": 0,
