@@ -855,5 +855,6 @@
   "https://github.com/czlonkowski/n8n-mcp",
   "https://github.com/argoproj-labs/mcp-for-argocd",
   "https://github.com/Matvey-Kuk/gaggimate-mcp",
-  "https://github.com/GethosTheWalrus/temporal-mcp"
+  "https://github.com/GethosTheWalrus/temporal-mcp",
+  "https://github.com/mongodb-js/mongodb-mcp-server"
 ]
