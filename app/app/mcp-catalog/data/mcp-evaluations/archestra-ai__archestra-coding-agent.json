@@ -1,7 +1,7 @@
 {
   "name": "archestra-ai__archestra-coding-agent",
   "display_name": "archestra-coding-agent",
-  "description": "Ab MCP server combining semantic code editing with Git/GitHub capabilities.",
+  "description": "An MCP server combining semantic code editing with Git/GitHub capabilities.",
   "author": {
     "name": "archestra-ai"
   },
