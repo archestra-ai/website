@@ -1,0 +1,181 @@
+{
+  "name": "gethosthewalrus__temporal-mcp",
+  "display_name": "Temporal MCP",
+  "description": "MCP server that enables AI assistants to manage Temporal workflow orchestration through a standardized interface, supporting workflow execution, control, batch operations, and schedule management.",
+  "author": {
+    "name": "GethosTheWalrus"
+  },
+  "server": {
+    "command": "docker",
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "--network",
+      "host",
+      "-e",
+      "TEMPORAL_HOST=${user_config.temporal_host}",
+      "-e",
+      "TEMPORAL_NAMESPACE=${user_config.temporal_namespace}",
+      "-e",
+      "TEMPORAL_TLS_ENABLED=${user_config.temporal_tls_enabled}",
+      "gethosthewalrus/temporal-mcp-server:latest"
+    ],
+    "docker_image": "gethosthewalrus/temporal-mcp-server:latest",
+    "env": {
+      "TEMPORAL_HOST": "${user_config.temporal_host}",
+      "TEMPORAL_NAMESPACE": "${user_config.temporal_namespace}",
+      "TEMPORAL_TLS_ENABLED": "${user_config.temporal_tls_enabled}"
+    },
+    "type": "local"
+  },
+  "tools": [
+    {
+      "name": "start_workflow",
+      "description": "Launch new workflow executions"
+    },
+    {
+      "name": "get_workflow_result",
+      "description": "Retrieve workflow completion results"
+    },
+    {
+      "name": "describe_workflow",
+      "description": "Access detailed workflow execution metadata"
+    },
+    {
+      "name": "list_workflows",
+      "description": "Query workflow executions with pagination"
+    },
+    {
+      "name": "get_workflow_history",
+      "description": "Obtain complete workflow event timelines"
+    },
+    {
+      "name": "query_workflow",
+      "description": "Query a running workflow for its current state"
+    },
+    {
+      "name": "signal_workflow",
+      "description": "Send a signal to a running workflow"
+    },
+    {
+      "name": "cancel_workflow",
+      "description": "Request cancellation of a running workflow"
+    },
+    {
+      "name": "terminate_workflow",
+      "description": "Forcefully terminate a running workflow"
+    },
+    {
+      "name": "continue_as_new",
+      "description": "Continue a workflow as a new execution"
+    },
+    {
+      "name": "batch_signal",
+      "description": "Send signals to multiple workflows with configurable batch sizes"
+    },
+    {
+      "name": "batch_cancel",
+      "description": "Cancel multiple workflows with configurable batch sizes"
+    },
+    {
+      "name": "batch_terminate",
+      "description": "Terminate multiple workflows with configurable batch sizes"
+    },
+    {
+      "name": "create_schedule",
+      "description": "Create a new workflow schedule with cron expression support"
+    },
+    {
+      "name": "list_schedules",
+      "description": "List all workflow schedules"
+    },
+    {
+      "name": "pause_schedule",
+      "description": "Pause an active schedule"
+    },
+    {
+      "name": "unpause_schedule",
+      "description": "Resume a paused schedule"
+    },
+    {
+      "name": "delete_schedule",
+      "description": "Delete an existing schedule"
+    },
+    {
+      "name": "trigger_schedule",
+      "description": "Manually trigger a scheduled workflow"
+    }
+  ],
+  "keywords": [
+    "temporal",
+    "workflow",
+    "orchestration",
+    "scheduling",
+    "microservices",
+    "distributed-systems",
+    "workflow-engine",
+    "task-queue"
+  ],
+  "user_config": {
+    "temporal_host": {
+      "type": "string",
+      "title": "Temporal Host",
+      "description": "Temporal server address (e.g., localhost:7233 for local, or your-namespace.tmprl.cloud:7233 for Temporal Cloud)",
+      "default": "",
+      "required": true
+    },
+    "temporal_namespace": {
+      "type": "string",
+      "title": "Temporal Namespace",
+      "description": "Temporal namespace for workflow isolation",
+      "default": "default",
+      "required": false
+    },
+    "temporal_tls_enabled": {
+      "type": "boolean",
+      "title": "Enable TLS",
+      "description": "Enable TLS for secure connections. Recommended for remote/cloud Temporal instances.",
+      "default": false,
+      "required": false
+    }
+  },
+  "category": "Cloud",
+  "quality_score": 65,
+  "github_info": {
+    "owner": "GethosTheWalrus",
+    "repo": "temporal-mcp",
+    "url": "https://github.com/GethosTheWalrus/temporal-mcp",
+    "name": "gethosthewalrus__temporal-mcp",
+    "path": null,
+    "stars": 0,
+    "contributors": 1,
+    "issues": 0,
+    "releases": false,
+    "ci_cd": false,
+    "latest_commit_hash": null
+  },
+  "programming_language": "Python",
+  "framework": null,
+  "protocol_features": {
+    "implementing_tools": true,
+    "implementing_prompts": false,
+    "implementing_resources": false,
+    "implementing_sampling": false,
+    "implementing_roots": false,
+    "implementing_logging": false,
+    "implementing_stdio": true,
+    "implementing_streamable_http": false,
+    "implementing_oauth2": false
+  },
+  "dependencies": [
+    {
+      "name": "temporalio",
+      "importance": 10
+    },
+    {
+      "name": "mcp",
+      "importance": 9
+    }
+  ]
+}
