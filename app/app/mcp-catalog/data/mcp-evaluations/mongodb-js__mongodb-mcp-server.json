@@ -7,12 +7,7 @@
   },
   "server": {
     "command": "docker",
-    "args": [
-      "run",
-      "-i",
-      "--rm",
-      "mongodb/mongodb-mcp-server:1.4.1"
-    ],
+    "args": ["run", "-i", "--rm", "mongodb/mongodb-mcp-server:1.4.1"],
     "docker_image": "mongodb/mongodb-mcp-server:1.4.1",
     "env": {
       "MDB_MCP_CONNECTION_STRING": "${user_config.connection_string}"
@@ -101,15 +96,7 @@
       "description": "Connect to a MongoDB instance"
     }
   ],
-  "keywords": [
-    "mongodb",
-    "database",
-    "nosql",
-    "document-database",
-    "atlas",
-    "crud",
-    "aggregation"
-  ],
+  "keywords": ["mongodb", "database", "nosql", "document-database", "atlas", "crud", "aggregation"],
   "user_config": {
     "connection_string": {
       "type": "string",
