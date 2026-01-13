@@ -7,12 +7,12 @@
   },
   "server": {
     "command": "docker",
-    "args": ["run", "-i", "--rm", "-p", "9121:9121", "-e", "GITHUB_TOKEN", "-v", "/workspace:/workspace", "archestra-coding-agent"],
+    "args": ["run", "-i", "--rm", "archestra-coding-agent"],
+    "docker_image": "archestra-coding-agent",
     "env": {
-      "GITHUB_TOKEN": ""
+      "GITHUB_TOKEN": "${user_config.GITHUB_TOKEN}"
     },
-    "type": "local",
-    "docker_image": "archestra-coding-agent"
+    "type": "local"
   },
   "tools": [],
   "prompts": [],
@@ -33,7 +33,7 @@
     "client_config_permutations": {
       "archestra-coding-agent": {
         "command": "docker",
-        "args": ["run", "-i", "--rm", "-p", "9121:9121", "-e", "GITHUB_TOKEN", "-v", "/workspace:/workspace", "archestra-coding-agent"],
+        "args": ["run", "-i", "--rm"],
         "env": {
           "GITHUB_TOKEN": ""
         }
