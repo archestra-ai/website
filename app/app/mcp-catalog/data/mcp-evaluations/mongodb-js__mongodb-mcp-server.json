@@ -11,8 +11,6 @@
       "run",
       "-i",
       "--rm",
-      "-e",
-      "MDB_MCP_CONNECTION_STRING=${user_config.connection_string}",
       "mongodb/mongodb-mcp-server:1.4.1"
     ],
     "docker_image": "mongodb/mongodb-mcp-server:1.4.1",
@@ -115,8 +113,8 @@
   "user_config": {
     "connection_string": {
       "type": "string",
-      "title": "MongoDB Connection String",
-      "description": "MongoDB connection string (e.g., mongodb://localhost:27017 or mongodb+srv://user:password@cluster.mongodb.net)",
+      "title": "",
+      "description": "MongoDB connection string (e.g., mongodb://admin:password@localhost:27017)",
       "default": "",
       "required": true,
       "sensitive": true
