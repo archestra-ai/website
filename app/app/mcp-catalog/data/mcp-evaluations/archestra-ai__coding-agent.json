@@ -7,8 +7,8 @@
   },
   "server": {
     "command": "docker",
-    "args": ["run", "-i", "--rm", "archestra-coding-agent"],
-    "docker_image": "archestra-coding-agent",
+    "args": ["run", "-i", "--rm", "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/archestra-coding-agent:0.0.2"],
+    "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/archestra-coding-agent:0.0.2",
     "env": {
       "GITHUB_TOKEN": "${user_config.GITHUB_TOKEN}"
     },
@@ -33,9 +33,9 @@
     "client_config_permutations": {
       "archestra-coding-agent": {
         "command": "docker",
-        "args": ["run", "-i", "--rm"],
+        "args": ["run", "-i", "--rm", "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/archestra-coding-agent:0.0.2"],
         "env": {
-          "GITHUB_TOKEN": ""
+          "GITHUB_TOKEN": "${user_config.GITHUB_TOKEN}"
         }
       }
     },
