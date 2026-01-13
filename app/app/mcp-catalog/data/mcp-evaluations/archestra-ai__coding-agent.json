@@ -7,7 +7,12 @@
   },
   "server": {
     "command": "docker",
-    "args": ["run", "-i", "--rm", "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/archestra-coding-agent:0.0.2"],
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/archestra-coding-agent:0.0.2"
+    ],
     "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/archestra-coding-agent:0.0.2",
     "env": {
       "GITHUB_TOKEN": "${user_config.GITHUB_TOKEN}"
@@ -16,7 +21,15 @@
   },
   "tools": [],
   "prompts": [],
-  "keywords": ["coding", "git", "github", "semantic-editing", "lsp", "pull-requests", "code-editing"],
+  "keywords": [
+    "coding",
+    "git",
+    "github",
+    "semantic-editing",
+    "lsp",
+    "pull-requests",
+    "code-editing"
+  ],
   "user_config": {
     "GITHUB_TOKEN": {
       "type": "string",
@@ -33,7 +46,13 @@
     "client_config_permutations": {
       "archestra-coding-agent": {
         "command": "docker",
-        "args": ["run", "-i", "--rm", "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/archestra-coding-agent:0.0.2"],
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/archestra-coding-agent:0.0.2"
+        ],
+        "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/archestra-coding-agent:0.0.2",
         "env": {
           "GITHUB_TOKEN": "${user_config.GITHUB_TOKEN}"
         }
