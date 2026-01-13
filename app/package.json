@@ -18,9 +18,9 @@
     "codegen:all": "pnpm openapi:generate"
   },
   "dependencies": {
-    "@asteasolutions/zod-to-openapi": "^7.3.4",
+    "@asteasolutions/zod-to-openapi": "^8.4.0",
     "@date-fns/tz": "^1.4.1",
-    "@next/third-parties": "^16.1.0",
+    "@next/third-parties": "^16.1.1",
     "@radix-ui/react-slot": "1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -30,7 +30,7 @@
     "highlight.js": "^11.11.1",
     "lucide-react": "^0.562.0",
     "mermaid": "^11.12.2",
-    "next": "16.1.0",
+    "next": "16.1.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-markdown": "^10.1.0",
@@ -43,8 +43,8 @@
     "swagger-ui-react": "^5.30.3",
     "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.25.67",
-    "zod-to-json-schema": "^3.25.0"
+    "zod": "^4.2.1",
+    "zod-to-json-schema": "^3.25.1"
   },
   "devDependencies": {
     "@anthropic-ai/mcpb": "^2.1.2",
@@ -52,14 +52,14 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.1",
     "@trivago/prettier-plugin-sort-imports": "^6.0.0",
-    "@types/node": "^25.0.2",
+    "@types/node": "^25.0.3",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19",
     "@types/swagger-ui-react": "^5.18.0",
     "@vitejs/plugin-react": "^5.1.2",
     "csv-parse": "^6.1.0",
-    "jsdom": "^27.3.0",
-    "knip": "^5.76.3",
+    "jsdom": "^27.4.0",
+    "knip": "^5.78.0",
     "postcss": "^8.5",
     "postcss-load-config": "^6.0.1",
     "prettier": "^3.7.3",
@@ -75,7 +75,8 @@
       "js-yaml": "3.14.2",
       "mdast-util-to-hast": "13.2.1",
       "node-forge": "1.3.2",
-      "tmp": "0.2.4"
+      "tmp": "0.2.4",
+      "zod": "^4.2.1"
     }
   },
   "packageManager": "pnpm@10.24.0"

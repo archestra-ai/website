@@ -9,7 +9,7 @@ import { Badge } from '@components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
 import { Input } from '@components/ui/input';
 import { QualityBar } from '@mcpCatalog/components/QualityBar';
-import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
+import type { ArchestraMcpServerManifest, MCPDependency } from '@mcpCatalog/types';
 
 const ITEMS_PER_PAGE = 30;
 
@@ -271,7 +271,8 @@ export default function McpCatalogClient({
       // Filter by dependency
       const matchesDependency =
         selectedDependency === 'All' ||
-        (dependencies && dependencies.some((dep) => dep.name === selectedDependency && dep.importance >= 8));
+        (dependencies &&
+          dependencies.some((dep: MCPDependency) => dep.name === selectedDependency && dep.importance >= 8));
 
       // Filter by MCP features
       const matchesFeature =
@@ -496,7 +497,9 @@ export default function McpCatalogClient({
                           : mcpServers.filter(
                               (s) =>
                                 s.dependencies &&
-                                s.dependencies.some((dep) => dep.name === dependency && dep.importance >= 8)
+                                s.dependencies.some(
+                                  (dep: MCPDependency) => dep.name === dependency && dep.importance >= 8
+                                )
                             ).length}
                       </span>
                     </button>
@@ -700,7 +703,9 @@ export default function McpCatalogClient({
                             : mcpServers.filter(
                                 (s) =>
                                   s.dependencies &&
-                                  s.dependencies.some((dep) => dep.name === dependency && dep.importance >= 8)
+                                  s.dependencies.some(
+                                    (dep: MCPDependency) => dep.name === dependency && dep.importance >= 8
+                                  )
                               ).length}
                         </span>
                       </button>

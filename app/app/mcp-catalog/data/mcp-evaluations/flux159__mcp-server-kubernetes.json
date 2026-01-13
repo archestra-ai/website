@@ -2,7 +2,7 @@
   "name": "flux159__mcp-server-kubernetes",
   "display_name": "Kubernetes",
   "description": "MCP Server for kubernetes management commands",
-  "instructions": "Archestra supports two authentication methods for the Kubernetes MCP server:\n\n**1. ServiceAccount (allows access to the same cluster as your Archestra instance)**\n\nLeave all fields empty to use the in-cluster ServiceAccount.\n\nWhen using the official Helm chart, Archestra creates a ServiceAccount with read-only permissions in its namespace. To elevate permissions, grant additional permissions to the ServiceAccount and change the RoleBinding to a ClusterRoleBinding if access to other namespaces is required.\n\nThe default ServiceAccount follows this naming pattern: `{release-name}-archestra-platform-mcp-k8s-operator`.\n\nTo use a manually created ServiceAccount instead, set the `ARCHESTRA_ORCHESTRATOR_MCP_K8S_SERVICE_ACCOUNT_NAME` environment variable.\n\n**2. Authentication Token (allows access to an external Kubernetes cluster)**\n\nConfigure `K8S_SERVER` and `K8S_TOKEN` to connect to an external Kubernetes cluster.",
+  "instructions": "Archestra supports two authentication methods for the Kubernetes MCP server:\n\n**1. ServiceAccount (allows access to the same cluster as your Archestra instance)**\n\nLeave all fields empty to use the in-cluster ServiceAccount.\n\nWhen using the official Helm chart, Archestra creates a ServiceAccount with read-only permissions in its namespace. To elevate permissions, grant additional permissions to the ServiceAccount and change the RoleBinding to a ClusterRoleBinding if access to other namespaces is required.\n\nThe default ServiceAccount name is `archestra-platform-mcp-k8s-operator`. You can modify this value during installation to use a different ServiceAccount.\n\n**2. Authentication Token (allows access to an external Kubernetes cluster)**\n\nConfigure `K8S_SERVER` and `K8S_TOKEN` to connect to an external Kubernetes cluster.",
   "author": {
     "name": "Flux159"
   },
@@ -10,7 +10,7 @@
     "command": "docker",
     "args": ["run", "-i", "--rm", "flux159/mcp-server-kubernetes:v3.0.3"],
     "docker_image": "flux159/mcp-server-kubernetes:v3.0.3",
-    "service_account": "operator",
+    "service_account": "archestra-platform-mcp-k8s-operator",
     "env": {
       "K8S_SERVER": "${user_config.k8s_server}",
       "K8S_TOKEN": "${user_config.k8s_token}",
