@@ -1,0 +1,165 @@
+{
+  "name": "jfrog__mcp-jfrog",
+  "display_name": "JFrog MCP Server",
+  "description": "Official JFrog MCP server that enables AI assistants to interact with the JFrog Platform. Supports repository management, build tracking, runtime monitoring, artifact searching, package intelligence, and Xray security scanning.",
+  "author": {
+    "name": "JFrog"
+  },
+  "server": {
+    "command": "docker",
+    "args": ["run", "-i", "--rm", "-e", "JFROG_ACCESS_TOKEN", "-e", "JFROG_URL", "mcp/jfrog"],
+    "docker_image": "mcp/jfrog",
+    "env": {
+      "JFROG_ACCESS_TOKEN": "${user_config.access_token}",
+      "JFROG_URL": "${user_config.jfrog_url}"
+    },
+    "type": "local"
+  },
+  "tools": [
+    {
+      "name": "check_jfrog_availability",
+      "description": "Check JFrog platform availability"
+    },
+    {
+      "name": "create_local_repository",
+      "description": "Create a local repository"
+    },
+    {
+      "name": "create_remote_repository",
+      "description": "Create a remote repository"
+    },
+    {
+      "name": "create_virtual_repository",
+      "description": "Create a virtual repository"
+    },
+    {
+      "name": "list_repositories",
+      "description": "List all repositories"
+    },
+    {
+      "name": "set_folder_property",
+      "description": "Set properties on a folder"
+    },
+    {
+      "name": "execute_aql_query",
+      "description": "Execute AQL queries for artifact search"
+    },
+    {
+      "name": "list_jfrog_builds",
+      "description": "List all builds"
+    },
+    {
+      "name": "get_specific_build",
+      "description": "Get details of a specific build"
+    },
+    {
+      "name": "list_jfrog_runtime_clusters",
+      "description": "List runtime clusters"
+    },
+    {
+      "name": "get_jfrog_runtime_specific_cluster",
+      "description": "Get details of a specific runtime cluster"
+    },
+    {
+      "name": "list_jfrog_running_images",
+      "description": "List running container images"
+    },
+    {
+      "name": "list_jfrog_environments",
+      "description": "List environments"
+    },
+    {
+      "name": "list_jfrog_projects",
+      "description": "List all projects"
+    },
+    {
+      "name": "get_specific_project",
+      "description": "Get details of a specific project"
+    },
+    {
+      "name": "create_project",
+      "description": "Create a new project"
+    },
+    {
+      "name": "jfrog_get_package_info",
+      "description": "Get package information from catalog"
+    },
+    {
+      "name": "jfrog_get_package_versions",
+      "description": "Get available package versions"
+    },
+    {
+      "name": "jfrog_get_package_version_vulnerabilities",
+      "description": "Get vulnerabilities for a package version"
+    },
+    {
+      "name": "jfrog_get_vulnerability_info",
+      "description": "Get detailed vulnerability information"
+    },
+    {
+      "name": "jfrog_get_package_curation_status",
+      "description": "Check package curation status"
+    },
+    {
+      "name": "jfrog_get_artifacts_summary",
+      "description": "Get Xray scan summary for artifacts"
+    }
+  ],
+  "keywords": ["jfrog", "artifactory", "xray", "devops", "ci-cd", "security", "artifacts", "packages", "builds"],
+  "user_config": {
+    "access_token": {
+      "type": "string",
+      "title": "JFrog Access Token",
+      "description": "JFrog access or identity token for authentication",
+      "default": "",
+      "required": true,
+      "sensitive": true
+    },
+    "jfrog_url": {
+      "type": "string",
+      "title": "JFrog URL",
+      "description": "Base URL for your JFrog platform instance (e.g., https://acme.jfrog.io)",
+      "default": "",
+      "required": true,
+      "sensitive": false
+    }
+  },
+  "readme": "# JFrog MCP Server\n\nThe official JFrog MCP server provides tools for interacting with the JFrog Platform through AI assistants.\n\n## Features\n\n- **Repository Management**: Create and manage local, remote, and virtual repositories\n- **Build Tracking**: List and inspect build information\n- **Runtime Monitoring**: Monitor runtime clusters and running container images\n- **Artifact Search**: Execute AQL queries to find artifacts\n- **Package Intelligence**: Get package info, versions, and vulnerability data\n- **Security Scanning**: Access Xray scan summaries organized by severity\n- **Curation**: Check package curation status\n\n## Environment Variables\n\n- `JFROG_ACCESS_TOKEN`: JFrog access or identity token for authentication (required)\n- `JFROG_URL`: Base URL for your JFrog platform instance (required)\n- `TRANSPORT`: Transport mode - 'stdio' (default) or 'sse'\n- `PORT`: Port for SSE transport (default: 8080)\n",
+  "category": "Development",
+  "quality_score": 85,
+  "last_scraped_at": "2026-01-14T00:00:00.000Z",
+  "evaluation_model": "manual",
+  "raw_dependencies": "",
+  "github_info": {
+    "owner": "jfrog",
+    "repo": "mcp-jfrog",
+    "url": "https://github.com/jfrog/mcp-jfrog",
+    "name": "jfrog__mcp-jfrog",
+    "path": null,
+    "stars": 0,
+    "contributors": 1,
+    "issues": 0,
+    "releases": true,
+    "ci_cd": true,
+    "latest_commit_hash": null
+  },
+  "programming_language": "TypeScript",
+  "framework": null,
+  "protocol_features": {
+    "implementing_tools": true,
+    "implementing_prompts": false,
+    "implementing_resources": false,
+    "implementing_sampling": false,
+    "implementing_roots": false,
+    "implementing_logging": false,
+    "implementing_stdio": true,
+    "implementing_streamable_http": true,
+    "implementing_oauth2": false
+  },
+  "dependencies": [
+    {
+      "name": "@modelcontextprotocol/sdk",
+      "importance": 9
+    }
+  ]
+}
