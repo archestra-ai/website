@@ -6,7 +6,22 @@ description: 'A Christmas project of making AI brew an excellent coffee.'
 image: '/blog/2025-12-28-main-image.jpeg'
 ---
 
-The holiday season is here, and I hope you don’t mind if I shake up our usual corporate blog content with this fun little story about how we literally got AI to brew us a delicious cup of coffee.
+<div style="background: #f8f9fa; padding: 16px; border-radius: 6px; margin-bottom: 24px; border-left: 3px solid #6b7280;">
+  <p style="margin: 0 0 8px 0; color: #374151;">
+    <strong>Thank you!</strong> This post received over 50,000 views on Reddit. Join the discussion:
+  </p>
+  <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+    <a href="https://www.reddit.com/r/gaggimate/comments/1pynb7e/a_christmas_project_of_making_ai_brew_an/" target="_blank" rel="noopener noreferrer" style="color: #4b5563; text-decoration: underline;">
+      r/gaggimate
+    </a>
+    <span style="color: #9ca3af;">•</span>
+    <a href="https://www.reddit.com/r/mcp/comments/1pynehb/mcp_for_a_coffee_machine_worked/" target="_blank" rel="noopener noreferrer" style="color: #4b5563; text-decoration: underline;">
+      r/mcp
+    </a>
+  </div>
+</div>
+
+The holiday season is here, and I hope you don't mind if I shake up our usual corporate blog content with this fun little story about how we literally got AI to brew us a delicious cup of coffee.
 
 This post is packed with technical details. It starts with the mechanics of the process, moves on to writing an MCP server, and concludes with the AI successfully adjusting the coffee machine for both dark and light roasts—much to the amazement of onlookers. If you want to skip the nitty-gritty and just see it in action, feel free to scroll to the end. For everyone else, let’s dive into the tech!
 
