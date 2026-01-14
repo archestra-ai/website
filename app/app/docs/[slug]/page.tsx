@@ -38,6 +38,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const description = doc.description || `${doc.title} documentation for ${companyName}.`;
 
+  const imageUrl = `${origin}/docs/${doc.slug}/opengraph-image`;
+  const imageAlt = `${doc.title} | ${companyName} Docs`;
+
   return {
     title: `${doc.title} | ${companyName} Docs`,
     description,
@@ -49,13 +52,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: doc.lastUpdated,
       images: [
         {
-          url: `${origin}/docs/${doc.slug}/opengraph-image`,
+          url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${doc.title} | ${companyName} Docs`,
+          alt: imageAlt,
         },
       ],
       url: `${origin}/docs/${doc.slug}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: doc.title,
+      description,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: imageAlt,
+        },
+      ],
     },
   };
 }
