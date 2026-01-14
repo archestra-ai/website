@@ -154,15 +154,7 @@
     }
   ],
   "prompts": [],
-  "keywords": [
-    "coding",
-    "git",
-    "github",
-    "semantic-editing",
-    "lsp",
-    "pull-requests",
-    "code-editing"
-  ],
+  "keywords": ["coding", "git", "github", "semantic-editing", "lsp", "pull-requests", "code-editing"],
   "user_config": {
     "github_token": {
       "type": "string",
