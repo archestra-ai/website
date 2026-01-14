@@ -1,10 +1,66 @@
 import fs from 'fs';
 import matter from 'gray-matter';
+import type { Metadata } from 'next';
 import path from 'path';
 import readingTime from 'reading-time';
 
 import { getDocsDirectory } from './lib/get-docs-path';
 import { DocCategory, DocFrontMatter, DocNavItem, DocPage, DocSubcategory, TableOfContentsItem } from './types';
+
+/**
+ * Generates metadata for a documentation page including OpenGraph and Twitter card data.
+ * Extracted for testability.
+ */
+export function buildDocMetadata(doc: DocPage | undefined, origin: string, companyName: string): Metadata {
+  if (!doc) {
+    return {
+      title: `Documentation Not Found | ${companyName}`,
+      description: `${companyName} documentation page not found.`,
+      openGraph: {
+        title: `Documentation Not Found | ${companyName}`,
+        description: `${companyName} documentation page not found.`,
+      },
+    };
+  }
+
+  const description = doc.description || `${doc.title} documentation for ${companyName}.`;
+  const imageUrl = `${origin}/docs/${doc.slug}/opengraph-image`;
+  const imageAlt = `${doc.title} | ${companyName} Docs`;
+
+  return {
+    title: `${doc.title} | ${companyName} Docs`,
+    description,
+    metadataBase: new URL(origin),
+    openGraph: {
+      title: doc.title,
+      description,
+      type: 'article',
+      publishedTime: doc.lastUpdated,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: imageAlt,
+        },
+      ],
+      url: `${origin}/docs/${doc.slug}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: doc.title,
+      description,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: imageAlt,
+        },
+      ],
+    },
+  };
+}
 
 /**
  * Converts a lastUpdated value to an ISO string.
