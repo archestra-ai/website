@@ -10,7 +10,7 @@ import constants from '@constants';
 
 import DocContent from '../components/DocContent';
 import DocsSidebar from '../components/DocsSidebar';
-import { generateTableOfContents, getAllDocs, getDocBySlug, getDocsByCategory } from '../utils';
+import { buildDocMetadata, generateTableOfContents, getAllDocs, getDocBySlug, getDocsByCategory } from '../utils';
 
 const {
   company: { name: companyName },
@@ -23,57 +23,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const doc = getDocBySlug(slug);
-  const origin = constants.website.urls.base;
-
-  if (!doc) {
-    return {
-      title: `Documentation Not Found | ${companyName}`,
-      description: `${companyName} documentation page not found.`,
-      openGraph: {
-        title: `Documentation Not Found | ${companyName}`,
-        description: `${companyName} documentation page not found.`,
-      },
-    };
-  }
-
-  const description = doc.description || `${doc.title} documentation for ${companyName}.`;
-
-  const imageUrl = `${origin}/docs/${doc.slug}/opengraph-image`;
-  const imageAlt = `${doc.title} | ${companyName} Docs`;
-
-  return {
-    title: `${doc.title} | ${companyName} Docs`,
-    description,
-    metadataBase: new URL(origin),
-    openGraph: {
-      title: doc.title,
-      description,
-      type: 'article',
-      publishedTime: doc.lastUpdated,
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: imageAlt,
-        },
-      ],
-      url: `${origin}/docs/${doc.slug}`,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: doc.title,
-      description,
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: imageAlt,
-        },
-      ],
-    },
-  };
+  return buildDocMetadata(doc, constants.website.urls.base, companyName);
 }
 
 export async function generateStaticParams() {
