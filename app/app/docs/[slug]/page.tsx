@@ -152,11 +152,11 @@ export default async function DocPage({ params }: Props) {
                 {/* Table of Contents - Right Sidebar */}
                 <aside className="hidden xl:block w-64 flex-shrink-0">
                   {toc.length > 0 && (
-                    <div className="sticky top-20">
+                    <div className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto">
                       <h3 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wider">
                         On this page
                       </h3>
-                      <nav className="space-y-1">
+                      <nav className="space-y-1 pb-4">
                         {toc.map((item) => (
                           <a
                             key={item.id}
