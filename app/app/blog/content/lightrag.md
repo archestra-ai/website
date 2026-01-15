@@ -6,21 +6,23 @@ description: 'Practical guide to memory and knowledge base integration in Arches
 image: '/blog/2026-01-12-main-image.webp'
 ---
 
-I've watched many TV shows on various streaming platforms and it's becoming increasingly challenging to find a good next candidate. There are just too many options. I want recommendations based on my preferences, historical data about what I've already watched and how I liked it - not just what's popular right now.
+I've watched so many TV shows that finding the next one has become a mission. I keep jumping between streaming platforms trying to find something I actually want to watch. Filters barely help. And when a friend recommends something great but not that popular? Good luck finding it unless you know the exact title.
 
-To solve this, let's build a dedicated AI agent that recommends new TV shows based on your taste and current mood. It will act as a personal movie expert that actually remembers what you enjoyed in the past.
+What I want is recommendations based on my preferences and what I've already watched - not just what's popular right now. I don't want to be locked into a specific platform. I want a single place where I can search shows across all of them.
 
-We will build this using **LightRAG**, **Neo4j**, and **Qdrant** to create an intelligent system that learns from feedback. Finally, we'll use **Archestra** as the orchestration layer to connect these components, giving our agent the persistent **knowledge base** and **memory** capabilities it needs to be effective.
+To solve this, let's build an AI agent that recommends TV shows based on your taste and current mood. It will act as a personal movie expert that actually remembers what you enjoyed in the past.
+
+We will leverage **LightRAG**, **Neo4j**, and **Qdrant** to create an intelligent system that learns from feedback. Finally, we'll use **Archestra** as the orchestration layer to connect these components, giving our agent the persistent **knowledge base** and **memory** capabilities it needs to be effective.
 
 # Technological stack and architecture
 
-The plan is to use **LightRAG** - a retrieval-augmented generation framework - with **Neo4j** as graph storage and **Qdrant** as vector storage. **Archestra** will be connected to LightRAG via MCP server that runs via [Archestra MCP Orchestrator](https://archestra.ai/docs/platform-orchestrator)..
+**LightRAG** - a retrieval-augmented generation framework - will be backed by **Neo4j** as graph storage and **Qdrant** as vector storage. **Archestra** will be connected to LightRAG via MCP server that runs via [Archestra MCP Orchestrator](https://archestra.ai/docs/platform-orchestrator)..
 
 <img src="/blog/2026-01-12-diagram.png" alt="Architecture Diagram" />
 
 [Neo4j](https://neo4j.com/) acts as a storage for complex relationships, while [Qdrant](https://qdrant.tech/) handles vector similarity search.
 
-[LightRAG](https://arxiv.org/abs/2410.05779) combines them nicely: it extracts entities and relationships into **Neo4j** and stores embeddings in **Qdrant**. This enables dual-level retrieval - finding specific facts via the graph and broad themes via vectors. As for key-value and doc status storages, we're going to use a default **JSONFile**.
+[LightRAG](https://arxiv.org/abs/2410.05779) combines them nicely: it extracts entities and relationships into **Neo4j** and stores embeddings in **Qdrant**. This enables dual-level retrieval - finding specific facts via the graph and broad themes via vectors. For key-value storage (used for caching) and doc status storage (tracks which documents have been processed), we'll just use the default **JSONFile**.
 
 Our agent architecture consists of:
 
