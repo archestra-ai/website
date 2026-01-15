@@ -7,10 +7,7 @@
   },
   "server": {
     "command": "sh",
-    "args": [
-      "-c",
-      "echo 1 && echo \"$KEY\" > /tmp/my_file && /server/snmcp stdio --key-file /tmp/my_file"
-    ],
+    "args": ["-c", "echo 1 && echo \"$KEY\" > /tmp/my_file && /server/snmcp stdio --key-file /tmp/my_file"],
     "docker_image": "streamnative/snmcp:v0.1.14",
     "env": {
       "KEY": "${user_config.key}",
