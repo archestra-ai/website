@@ -1,47 +1,34 @@
 ---
-title: 'Personal Movie Recommender with LightRAG and Archestra'
+title: "A self-hosted Movie Recommendation Agent with LightRAG and MCP's"
 date: '2026-01-12'
 author: 'Dominik Broj, Founding Engineer'
 description: 'Practical guide to memory and knowledge base integration in Archestra via LightRAG'
 image: '/blog/2026-01-12-main-image.webp'
 ---
 
-Let's do something fun and useful today. Archestra is becoming more and more powerful and in this blog post I want to show you how easily you can integrate it with **LightRAG**, **Neo4j** and **Qdrant** to solve my personal problem. It's a good example of empowering Archestra with **knowledge base** and **memory** capabilities.
+I've watched many TV shows on various streaming platforms and it's becoming increasingly challenging to find a good next candidate. There are just too many options. I want recommendations based on my preferences, historical data about what I've already watched and how I liked it - not just what's popular right now.
 
-# The problem to solve
+To solve this, let's build a dedicated AI agent that recommends new TV shows based on your taste and current mood. It will act as a personal movie expert that actually remembers what you enjoyed in the past.
 
-I've watched many TV shows on various streaming platforms and it's becoming increasingly challenging to find a good next candidate. There's just too many options and I want recommendations based on my preferences and historical data about what I've already watched and how I liked it.
-
-To solve this, I want to build an agent that recommends me new TV shows based on what I like, what I've watched, how I rated previous shows and my current mood.
+We will build this using **LightRAG**, **Neo4j**, and **Qdrant** to create an intelligent system that learns from feedback. Finally, we'll use **Archestra** as the orchestration layer to connect these components, giving our agent the persistent **knowledge base** and **memory** capabilities it needs to be effective.
 
 # Technological stack and architecture
 
-The plan is to use **LightRAG** as a retrieval-augmented generation framework connected to **Neo4j** as graph storage and **Qdrant** as vector storage.
-
-In short, [Neo4j](https://neo4j.com/) is a graph database that stores data as nodes and relationships. It's great for representing complex connections between entities - like TV shows, genres, actors and user preferences.
-
-[Qdrant](https://qdrant.tech/) is a vector database built for similarity search. You can use it to find semantically similar content by comparing vector embeddings.
-
-[LightRAG](https://arxiv.org/abs/2410.05779) uses both under the hood. Here's how they work together: when you ingest a document, LightRAG uses an LLM to extract entities (like "Breaking Bad", "crime drama", "Vince Gilligan") and relationships between them (like "Breaking Bad" → "is a" → "crime drama"). These entities and relationships are stored in Neo4j as a knowledge graph. At the same time, LightRAG creates vector embeddings for text chunks and entities, which are stored in Qdrant.
-
-When you query LightRAG, it uses a dual-level retrieval approach. Low-level retrieval finds specific entities and their direct relationships - useful for questions like "what crime dramas are in the database?". High-level retrieval looks at broader themes and topics across the graph - useful for questions like "recommend something dark and intense". Both retrieval paths use the vector embeddings in Qdrant to find semantically relevant content, then traverse the knowledge graph in Neo4j to understand context and relationships. Finally, an LLM generates a response based on all retrieved information. [Here's](https://github.com/HKUDS/LightRAG/tree/main) its GH repo.
-
-LightRAG can also be configured to use external key-value storage (for LLM response cache, text chunks, document information) like Redis or doc status storage like Postgres / MongoDB (for document indexing) but for simplicity we will just use default JsonFile for those two.
-
-We're going to use managed cloud instances of Neo4j and Qdrant.
-
-Then we need a running instance of Archestra and LightRAG. I'm going to use my own k8s cluster where I have Archestra deployed. I'll deploy LightRAG there on a separate namespace.
-
-Next, we'll connect Archestra to LightRAG via MCP server that runs via [Archestra MCP Orchestrator](https://archestra.ai/docs/platform-orchestrator).
-
-Lastly, we're going to use Archestra's Agent-to-Agent capabilities. We will have a main **Movie Recommender** agent connected to two subagents:
-
-- **Movie Finder** - responsible for finding TV shows candidates
-- **Movie Tracker** - responsible for tracking historical data of my watchings and ratings
-
-We also need TV shows data to be entered into our storages via LightRAG. I'm going to use [themoviedb.org](https://www.themoviedb.org/) as a source of data.
+The plan is to use **LightRAG** - a retrieval-augmented generation framework - with **Neo4j** as graph storage and **Qdrant** as vector storage. **Archestra** will be connected to LightRAG via MCP server that runs via [Archestra MCP Orchestrator](https://archestra.ai/docs/platform-orchestrator)..
 
 <img src="/blog/2026-01-12-diagram.png" alt="Architecture Diagram" />
+
+[Neo4j](https://neo4j.com/) acts as a storage for complex relationships, while [Qdrant](https://qdrant.tech/) handles vector similarity search.
+
+[LightRAG](https://arxiv.org/abs/2410.05779) combines them nicely: it extracts entities and relationships into **Neo4j** and stores embeddings in **Qdrant**. This enables dual-level retrieval - finding specific facts via the graph and broad themes via vectors. As for key-value and doc status storages, we're going to use a default **JSONFile**.
+
+Our agent architecture consists of:
+
+- **Movie Recommender** - The main orchestrator.
+- **Movie Finder** - Sub-agent that finds content.
+- **Movie Tracker** - Sub-agent that manages watch history.
+
+For data, we'll ingest TV shows from [themoviedb.org](https://www.themoviedb.org/).
 
 ---
 
@@ -298,7 +285,7 @@ Let's use these simple system prompts:
 
 Movie Recommender (Orchestrator)
 
-> You are a friendly movie recommendation assistant. At the start of each conversation, first delegate to Movie Tracker to check if the user has shared feelings about recently recommended shows—if not, ask the user to share their impressions before proceeding. When the user wants recommendations, delegate to Movie Finder. Summarize responses from subagents conversationally and guide the user through the experience.
+> You are a friendly movie recommendation assistant. At the start of each conversation, first delegate to Movie Tracker to check if the user has shared feelings about recently recommended shows - if not, ask the user to share their impressions before proceeding. When the user wants recommendations, delegate to Movie Finder. Summarize responses from subagents conversationally and guide the user through the experience.
 
 Movie Finder (Subagent)
 
