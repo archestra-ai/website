@@ -7,8 +7,8 @@
   },
   "server": {
     "command": "docker",
-    "args": ["run", "-i", "--rm", "-e", "JFROG_ACCESS_TOKEN", "-e", "JFROG_URL", "mcp/jfrog"],
-    "docker_image": "mcp/jfrog",
+    "args": ["run", "-i", "--rm", "-e", "JFROG_ACCESS_TOKEN", "-e", "JFROG_URL", "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-jfrog:experimental"],
+    "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-jfrog:experimental",
     "env": {
       "JFROG_ACCESS_TOKEN": "${user_config.access_token}",
       "JFROG_URL": "${user_config.jfrog_url}"
