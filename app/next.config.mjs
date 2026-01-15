@@ -81,14 +81,6 @@ const nextConfig = {
         destination: '/docs/platform-developer-quickstart',
         permanent: true,
       },
-      /**
-       * Redirect old agents documentation to profiles
-       */
-      {
-        source: '/docs/platform-agents',
-        destination: '/docs/platform-profiles',
-        permanent: true,
-      },
     ];
   },
   skipTrailingSlashRedirect: true,
