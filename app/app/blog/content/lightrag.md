@@ -34,224 +34,80 @@ For data, we'll ingest TV shows from [themoviedb.org](https://www.themoviedb.org
 
 ---
 
-# Let's start preparation!
+# Let's get started
 
-## Neo4j AuraDB instance
+## Prerequisites
 
-Create a Neo4j account if you haven't already. Then create an AuraDB instance - they offer a free tier which is enough for our use case.
+You'll need:
+- **Docker** - for running Neo4j, Qdrant and LightRAG
+- **Node.js** - for running the data scripts
+- **OpenAI API key** - LightRAG uses it for LLM and embeddings
+- **TMDB API key** - for fetching TV shows data (free account at [themoviedb.org](https://www.themoviedb.org/))
 
-Note down the credentials for later:
+## Neo4j and Qdrant
 
-```bash
-NEO4J_URI=<from_Connect_->_Developer_Hub>
-NEO4J_USERNAME=neo4j # (default)
-NEO4J_PASSWORD=<shown_after_instance_creation>
-```
-
-<img src="/blog/2026-01-12-neo4j.gif" alt="Setup Neo4j Aura DB" />
-
-## Qdrant cluster
-
-Time to create a Qdrant cluster. On your Qdrant account go to the Clusters page, enter a name and create a new instance. Again, there's a free tier available.
-
-Note down the credentials for later:
+Fire up both databases locally:
 
 ```bash
-QDRANT_URL=<cluster_endpoint>
-QDRANT_API_KEY=<cluster_api_key>
+docker run -d --name neo4j \
+  -p 7474:7474 -p 7687:7687 \
+  -e NEO4J_AUTH=neo4j/your-password \
+  neo4j:latest
+
+docker run -d --name qdrant \
+  -p 6333:6333 -p 6334:6334 \
+  qdrant/qdrant:latest
 ```
 
-<img src="/blog/2026-01-12-qdrant.gif" alt="Setup Qdrant cluster" />
+Neo4j browser is at `http://localhost:7474`, Qdrant dashboard at `http://localhost:6333/dashboard`.
 
-## Deploy LightRAG server
+## LightRAG server
 
-We now have graph and vector storages ready to use. The next step is to deploy the LightRAG server. I'm going to use the [helm chart](https://github.com/HKUDS/LightRAG/tree/main/k8s-deploy/lightrag) from the official LightRAG repository.
-
-Now we're going to use the environment variables we noted down before. You also need an LLM provider API key - I'm going to use OpenAI.
+Now the fun part - let's spin up LightRAG and connect it to both databases:
 
 ```bash
-helm upgrade --install lightrag ./charts/lightrag \
-  --namespace lightrag --create-namespace \
-  -f k8s/lightrag-values.yaml \
-  --set-string env.OPENAI_API_KEY='sk-your-openai-api-key' \
-  --set-string env.LIGHTRAG_NEO4J_URI='neo4j+s://xxxxxxxx.databases.neo4j.io' \
-  --set-string env.LIGHTRAG_NEO4J_USERNAME='neo4j' \
-  --set-string env.LIGHTRAG_NEO4J_PASSWORD='your-neo4j-password' \
-  --set-string env.LIGHTRAG_NEO4J_DATABASE='neo4j' \
-  --set-string env.LIGHTRAG_QDRANT_URL='https://xxxxxxxx.cloud.qdrant.io:6333' \
-  --set-string env.LIGHTRAG_QDRANT_API_KEY='your-qdrant-api-key' \
-  --set-string env.LIGHTRAG_LLM_MODEL='gpt-4o-mini' \
-  --set-string env.LIGHTRAG_EMBEDDING_MODEL='text-embedding-3-small' \
-  --set-string env.LIGHTRAG_EMBEDDING_DIM='1536' \
-  --wait
+docker run -d --name lightrag \
+  -p 9621:9621 \
+  -e LLM_BINDING=openai \
+  -e LLM_MODEL=gpt-4o-mini \
+  -e EMBEDDING_BINDING=openai \
+  -e EMBEDDING_MODEL=text-embedding-3-small \
+  -e OPENAI_API_KEY=sk-your-openai-key \
+  -e LIGHTRAG_GRAPH_STORAGE=Neo4JStorage \
+  -e LIGHTRAG_VECTOR_STORAGE=QdrantVectorDBStorage \
+  -e NEO4J_URI=bolt://host.docker.internal:7687 \
+  -e NEO4J_USERNAME=neo4j \
+  -e NEO4J_PASSWORD=your-password \
+  -e QDRANT_URL=http://host.docker.internal:6333 \
+  --add-host=host.docker.internal:host-gateway \
+  ghcr.io/hkuds/lightrag:latest
 ```
 
-Once installed, you need a way to access the LightRAG API and UI. You can do it via kubectl port-forwarding:
+The `host.docker.internal` trick lets the LightRAG container talk to Neo4j and Qdrant running on your host machine.
 
-```bash
-kubectl port-forward -n lightrag svc/lightrag 9621:9621
-```
-
-Or you can configure an ingress controller, which I'll skip here for simplicity.
+Once it's up, the LightRAG UI is available at `http://localhost:9621`.
 
 ## Fetch TMDB data
 
-We have LightRAG server running and connected to Neo4j and Qdrant. Now let's ingest some TV shows data from TMDB. Once you've created an account on TMDB, you can get an API key from your account settings.
+[This script](https://gist.github.com/brojd/3493c6bd5ddfb8c575b7c7da321774fd) fetches classic English TV shows from TMDB - released before 2010, rated 7+ with at least 200 votes (adjust these filters to your needs). Grab it and run:
 
-First, I'll create a script that fetches data from TMDB and saves it to a JSON file. I'm interested in classic English TV shows (released before 2010), with a rating of 7 or higher and at least 200 votes. The script applies these filters accordingly.
-
-**fetch-tmdb-tv-shows.mjs**
-
-```mjs
-import { writeFileSync } from 'fs';
-
-const API_KEY = process.env.TMDB_API_KEY;
-
-if (!API_KEY) {
-  console.error('Error: TMDB_API_KEY environment variable is required');
-  process.exit(1);
-}
-
-const BASE_URL = 'https://api.themoviedb.org/3/discover/tv';
-
-const params = new URLSearchParams({
-  'vote_average.gte': '7',
-  'first_air_date.lte': '2009-12-31',
-  'vote_count.gte': '200',
-  with_original_language: 'en',
-  sort_by: 'vote_average.desc',
-});
-
-async function fetchTvShows() {
-  const allResults = [];
-
-  for (let page = 1; page <= 5; page++) {
-    const url = `${BASE_URL}?${params}&page=${page}`;
-    const response = await fetch(url, {
-      headers: {
-        Authorization: `Bearer ${API_KEY}`,
-        Accept: 'application/json',
-      },
-    });
-
-    const data = await response.json();
-    allResults.push(...data.results);
-    console.log(`Fetched page ${page}: ${data.results.length} shows`);
-  }
-
-  const output = {
-    query_params: {
-      vote_average_gte: 7,
-      first_air_date_lte: '2009-12-31',
-      vote_count_gte: 200,
-      original_language: 'en',
-      sort_by: 'vote_average.desc',
-    },
-    total_results: allResults.length,
-    tv_shows: allResults,
-  };
-
-  writeFileSync('tmdb_tv_shows.json', JSON.stringify(output, null, 2));
-  console.log(`\nSaved ${allResults.length} TV shows to tmdb_tv_shows.json`);
-}
-
-fetchTvShows();
+```bash
+TMDB_API_KEY=your-key node fetch-tmdb-tv-shows.mjs
 ```
 
-You can run it with `TMDB_API_KEY=<your_key> node fetch-tmdb-tv-shows.mjs`. Shortly after, you'll have a `tmdb_tv_shows.json` file in the same directory.
+You'll get a `tmdb_tv_shows.json` file with 100 TV shows.
 
-## LightRAG data ingestion
+## Ingest data into LightRAG
 
-The next step is to ingest data from the newly created `tmdb_tv_shows.json` into LightRAG. During ingestion, LightRAG will extract entities and relationships from the text, create vector embeddings for semantic search, and build a knowledge graph connecting all the TV shows, genres, and other metadata.
+Now let's feed this data to LightRAG. During ingestion, LightRAG extracts entities and relationships from the text, creates vector embeddings and builds a knowledge graph connecting all the shows, genres and metadata.
 
-Let's create another script to help us ingest data programmatically.
+[This script](https://gist.github.com/brojd/3f8faff370abe01b3dd3ed2ffea373db) reads the JSON and sends each show to LightRAG's API. Grab it and run:
 
-**ingest-tv-shows.mjs**
-
-```mjs
-import { config } from 'dotenv';
-import { readFileSync } from 'fs';
-
-// Load env vars from parent .env file
-config({ path: './.env' });
-
-const LIGHTRAG_DOMAIN = process.env.LIGHTRAG_DOMAIN || 'localhost:9621';
-const LIGHTRAG_URL = LIGHTRAG_DOMAIN.includes('localhost') ? `http://${LIGHTRAG_DOMAIN}` : `https://${LIGHTRAG_DOMAIN}`;
-const LIGHTRAG_API_KEY = process.env.LIGHTRAG_API_KEY;
-
-// Parse command line arguments
-const args = process.argv.slice(2);
-const start = parseInt(args[0] || '0', 10);
-const end = parseInt(args[1] || '101', 10);
-
-async function ingestTvShows() {
-  // Load TV shows data
-  const data = JSON.parse(readFileSync('tmdb_tv_shows.json', 'utf-8'));
-  const tvShows = data.tv_shows.slice(start, end);
-
-  console.log(
-    `Ingesting TV shows ${start + 1} to ${Math.min(end, data.tv_shows.length)} of ${data.tv_shows.length} total`
-  );
-  console.log(`LightRAG URL: ${LIGHTRAG_URL}\n`);
-
-  let success = 0;
-  let failed = 0;
-
-  for (const show of tvShows) {
-    // Format TV show as a document
-    const document = `
-Title: ${show.name}
-Original Title: ${show.original_name}
-First Air Date: ${show.first_air_date}
-Rating: ${show.vote_average}/10 (${show.vote_count} votes)
-Popularity: ${show.popularity}
-Language: ${show.original_language}
-Genre IDs: ${show.genre_ids.join(', ')}
-Origin Country: ${show.origin_country.join(', ')}
-
-Overview:
-${show.overview}
-`.trim();
-
-    // Generate unique file_source (include ID to handle duplicates like "Battlestar Galactica")
-    const fileSource = show.name.toLowerCase().replace(/[^a-z0-9]+/g, '_') + `_${show.id}.md`;
-
-    try {
-      const response = await fetch(`${LIGHTRAG_URL}/documents/text`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          ...(LIGHTRAG_API_KEY && { 'X-API-Key': LIGHTRAG_API_KEY }),
-        },
-        body: JSON.stringify({ text: document, file_source: fileSource }),
-      });
-
-      if (response.ok) {
-        console.log(`✓ Ingested: ${show.name} (${show.vote_average}/10)`);
-        success++;
-      } else {
-        const error = await response.text();
-        console.error(`✗ Failed: ${show.name} - ${response.status}: ${error}`);
-        failed++;
-      }
-    } catch (error) {
-      console.error(`✗ Failed: ${show.name} - ${error.message}`);
-      failed++;
-    }
-
-    // Small delay to avoid overwhelming the API
-    await new Promise((resolve) => setTimeout(resolve, 500));
-  }
-
-  console.log(`\nDone! Success: ${success}, Failed: ${failed}`);
-}
-
-ingestTvShows();
+```bash
+node ingest-tv-shows.mjs
 ```
 
-Put a `.env` file in the same directory with the required variables, then run it with `node ingest-tv-shows.mjs`. All 100 TV shows will be ingested into LightRAG, which you can observe in the LightRAG UI! 🎉
-
-Note the knowledge graph it created.
+All 100 TV shows will be ingested into LightRAG. Check out the knowledge graph it builds in the UI.
 
 <img src="/blog/2026-01-12-ingest.gif" alt="LightRAG ingestion" />
 
@@ -259,7 +115,20 @@ Note the knowledge graph it created.
 
 # Connect with Archestra
 
-To connect LightRAG to Archestra, we'll use an MCP server that runs via Archestra MCP Orchestrator. We're going to use [my fork](https://github.com/brojd/lightrag-mcp) of [lightrag-mcp](https://github.com/shemhamforash23/lightrag-mcp) (the fork was needed to properly support connecting via HTTPS - we might contribute this back to the upstream repo later).
+First, let's get Archestra running. The quickstart mode spins up everything you need including an embedded Kubernetes cluster for MCP server orchestration:
+
+```bash
+docker run -p 9000:9000 -p 3000:3000 \
+  -e ARCHESTRA_QUICKSTART=true \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v archestra-postgres-data:/var/lib/postgresql/data \
+  -v archestra-app-data:/app/data \
+  archestra/platform
+```
+
+Once it's up, head to `http://localhost:3000` to access the UI.
+
+Now let's connect LightRAG. We'll use an MCP server that runs via Archestra MCP Orchestrator - specifically [my fork](https://github.com/brojd/lightrag-mcp) of [lightrag-mcp](https://github.com/shemhamforash23/lightrag-mcp) (the fork adds proper HTTPS support).
 
 ## Add MCP server to registry
 
