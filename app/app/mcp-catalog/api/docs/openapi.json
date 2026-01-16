@@ -193,6 +193,9 @@
                 },
                 "max": {
                   "type": "number"
+                },
+                "mounted": {
+                  "type": "boolean"
                 }
               },
               "required": ["type", "title", "description"],

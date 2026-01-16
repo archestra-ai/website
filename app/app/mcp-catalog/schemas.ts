@@ -1,4 +1,8 @@
-import { McpServerConfigSchema, McpbManifestSchema } from '@anthropic-ai/mcpb/schemas/0.3';
+import {
+  McpServerConfigSchema,
+  McpbManifestSchema,
+  McpbUserConfigurationOptionSchema,
+} from '@anthropic-ai/mcpb/schemas/0.3';
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { z } from 'zod';
 
@@ -166,6 +170,12 @@ const RemoteServerSchema = z.object({
   docs_url: z.string().url().nullable(),
 });
 
+// Extend the user config option schema to support the 'mounted' property
+// which indicates the config value should be mounted as a file in the container
+const ExtendedUserConfigurationOptionSchema = McpbUserConfigurationOptionSchema.extend({
+  mounted: z.boolean().optional(),
+});
+
 // Pick only the fields we need from McpbManifestSchema to avoid .omit() which
 // doesn't work with schemas containing refinements in Zod 4.3+
 const mcpbShape = McpbManifestSchema.shape;
@@ -185,7 +195,7 @@ const BaseManifestSchema = z.object({
   keywords: mcpbShape.keywords,
   license: mcpbShape.license,
   compatibility: mcpbShape.compatibility,
-  user_config: mcpbShape.user_config,
+  user_config: z.record(z.string(), ExtendedUserConfigurationOptionSchema).optional(),
 });
 
 export const ArchestraMcpServerManifestSchema = BaseManifestSchema.extend({
