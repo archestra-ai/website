@@ -6,26 +6,31 @@
     "name": "StreamNative"
   },
   "server": {
-    "command": "sh",
-    "args": ["-c", "echo 1 && echo \"$KEY\" > /tmp/my_file && /server/snmcp stdio --key-file /tmp/my_file"],
+    "command": "/server/snmcp",
+    "args": [
+      "stdio",
+      "--key-file",
+      "/secrets/key_file.json"
+    ],
     "docker_image": "streamnative/snmcp:v0.1.14",
     "env": {
-      "KEY": "${user_config.key}",
       "SNMCP_ORGANIZATION": "${user_config.snmcp_organization}"
     },
     "type": "local"
   },
   "tools": [],
   "prompts": [],
-  "keywords": ["streamnative"],
+  "keywords": [
+    "streamnative"
+  ],
   "user_config": {
-    "key": {
+    "key_file.json": {
       "type": "string",
-      "title": "KEY",
-      "description": "",
-      "default": "",
-      "required": false,
-      "sensitive": false
+      "title": "Key File",
+      "description": "StreamNative service account key file. Creates secret at /secrets/key_file.json path.",
+      "required": true,
+      "sensitive": true,
+      "mounted": true
     },
     "snmcp_organization": {
       "type": "string",
