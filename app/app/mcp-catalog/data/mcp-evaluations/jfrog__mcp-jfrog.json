@@ -11,9 +11,9 @@
       "run",
       "-i",
       "--rm",
-      "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-jfrog:0.0.1"
+      "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-jfrog:experimental"
     ],
-    "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-jfrog:0.0.1",
+    "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-jfrog:experimental",
     "env": {
       "JFROG_ACCESS_TOKEN": "${user_config.access_token}",
       "JFROG_URL": "${user_config.jfrog_url}"
@@ -110,7 +110,17 @@
       "description": "Get Xray scan summary for artifacts"
     }
   ],
-  "keywords": ["jfrog", "artifactory", "xray", "devops", "ci-cd", "security", "artifacts", "packages", "builds"],
+  "keywords": [
+    "jfrog",
+    "artifactory",
+    "xray",
+    "devops",
+    "ci-cd",
+    "security",
+    "artifacts",
+    "packages",
+    "builds"
+  ],
   "user_config": {
     "access_token": {
       "type": "string",
