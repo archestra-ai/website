@@ -16,12 +16,6 @@
       "ArchestraMcpServerManifest": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string"
-          },
-          "display_name": {
-            "type": "string"
-          },
           "description": {
             "type": "string"
           },
@@ -66,78 +60,6 @@
             "items": {
               "type": "string"
             }
-          },
-          "server": {
-            "oneOf": [
-              {
-                "type": "object",
-                "properties": {
-                  "command": {
-                    "type": "string"
-                  },
-                  "args": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "env": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
-                  },
-                  "type": {
-                    "type": "string",
-                    "enum": ["local"]
-                  },
-                  "setup": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": ["log-monitor"]
-                        },
-                        "provider": {
-                          "type": "string",
-                          "enum": ["whatsapp"]
-                        }
-                      },
-                      "required": ["type", "provider"]
-                    }
-                  },
-                  "docker_image": {
-                    "type": "string"
-                  },
-                  "service_account": {
-                    "type": "string"
-                  }
-                },
-                "required": ["command", "type"],
-                "additionalProperties": false
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "enum": ["remote"]
-                  },
-                  "url": {
-                    "type": "string",
-                    "format": "uri"
-                  },
-                  "docs_url": {
-                    "type": "string",
-                    "nullable": true,
-                    "format": "uri"
-                  }
-                },
-                "required": ["type", "url", "docs_url"]
-              }
-            ]
           },
           "tools": {
             "type": "array",
@@ -271,11 +193,20 @@
                 },
                 "max": {
                   "type": "number"
+                },
+                "mounted": {
+                  "type": "boolean"
                 }
               },
               "required": ["type", "title", "description"],
               "additionalProperties": false
             }
+          },
+          "name": {
+            "type": "string"
+          },
+          "display_name": {
+            "type": "string"
           },
           "instructions": {
             "type": "string"
@@ -617,14 +548,85 @@
               "default_scopes",
               "supports_resource_metadata"
             ]
+          },
+          "server": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "command": {
+                    "type": "string"
+                  },
+                  "args": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "env": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": ["local"]
+                  },
+                  "setup": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": ["log-monitor"]
+                        },
+                        "provider": {
+                          "type": "string",
+                          "enum": ["whatsapp"]
+                        }
+                      },
+                      "required": ["type", "provider"]
+                    }
+                  },
+                  "docker_image": {
+                    "type": "string"
+                  },
+                  "service_account": {
+                    "type": "string"
+                  }
+                },
+                "required": ["command", "type"],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": ["remote"]
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "docs_url": {
+                    "type": "string",
+                    "nullable": true,
+                    "format": "uri"
+                  }
+                },
+                "required": ["type", "url", "docs_url"]
+              }
+            ]
           }
         },
         "required": [
-          "name",
-          "display_name",
           "description",
           "author",
-          "server",
+          "name",
+          "display_name",
           "readme",
           "category",
           "quality_score",
@@ -633,9 +635,9 @@
           "framework",
           "last_scraped_at",
           "evaluation_model",
-          "raw_dependencies"
-        ],
-        "additionalProperties": false
+          "raw_dependencies",
+          "server"
+        ]
       },
       "ArchestraMcpServerManifestWithScoreBreakdown": {
         "allOf": [
@@ -681,8 +683,7 @@
                 ]
               }
             },
-            "required": ["score_breakdown"],
-            "additionalProperties": false
+            "required": ["score_breakdown"]
           }
         ]
       }

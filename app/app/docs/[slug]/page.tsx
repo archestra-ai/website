@@ -10,7 +10,7 @@ import constants from '@constants';
 
 import DocContent from '../components/DocContent';
 import DocsSidebar from '../components/DocsSidebar';
-import { generateTableOfContents, getAllDocs, getDocBySlug, getDocsByCategory } from '../utils';
+import { buildDocMetadata, generateTableOfContents, getAllDocs, getDocBySlug, getDocsByCategory } from '../utils';
 
 const {
   company: { name: companyName },
@@ -23,41 +23,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const doc = getDocBySlug(slug);
-  const origin = constants.website.urls.base;
-
-  if (!doc) {
-    return {
-      title: `Documentation Not Found | ${companyName}`,
-      description: `${companyName} documentation page not found.`,
-      openGraph: {
-        title: `Documentation Not Found | ${companyName}`,
-        description: `${companyName} documentation page not found.`,
-      },
-    };
-  }
-
-  const description = doc.description || `${doc.title} documentation for ${companyName}.`;
-
-  return {
-    title: `${doc.title} | ${companyName} Docs`,
-    description,
-    metadataBase: new URL(origin),
-    openGraph: {
-      title: doc.title,
-      description,
-      type: 'article',
-      publishedTime: doc.lastUpdated,
-      images: [
-        {
-          url: `${origin}/docs/${doc.slug}/opengraph-image`,
-          width: 1200,
-          height: 630,
-          alt: `${doc.title} | ${companyName} Docs`,
-        },
-      ],
-      url: `${origin}/docs/${doc.slug}`,
-    },
-  };
+  return buildDocMetadata(doc, constants.website.urls.base, companyName);
 }
 
 export async function generateStaticParams() {
@@ -186,11 +152,11 @@ export default async function DocPage({ params }: Props) {
                 {/* Table of Contents - Right Sidebar */}
                 <aside className="hidden xl:block w-64 flex-shrink-0">
                   {toc.length > 0 && (
-                    <div className="sticky top-20">
+                    <div className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto">
                       <h3 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wider">
                         On this page
                       </h3>
-                      <nav className="space-y-1">
+                      <nav className="space-y-1 pb-4">
                         {toc.map((item) => (
                           <a
                             key={item.id}

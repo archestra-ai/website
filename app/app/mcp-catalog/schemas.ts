@@ -1,4 +1,8 @@
-import { McpServerConfigSchema, McpbManifestSchema } from '@anthropic-ai/mcpb/schemas/0.3';
+import {
+  McpServerConfigSchema,
+  McpbManifestSchema,
+  McpbUserConfigurationOptionSchema,
+} from '@anthropic-ai/mcpb/schemas/0.3';
 import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 import { z } from 'zod';
 
@@ -166,49 +170,65 @@ const RemoteServerSchema = z.object({
   docs_url: z.string().url().nullable(),
 });
 
-export const ArchestraMcpServerManifestSchema = McpbManifestSchema.omit({
-  repository: true,
-  $schema: true,
-  version: true,
-  dxt_version: true,
-  manifest_version: true,
-  icons: true,
-  localization: true,
-  privacy_policies: true,
-  _meta: true,
-})
-  .extend({
-    /**
-     * Machine-readable name (used for CLI, APIs)
-     */
-    name: z.string(),
+// Extend the user config option schema to support the 'mounted' property
+// which indicates the config value should be mounted as a file in the container
+const ExtendedUserConfigurationOptionSchema = McpbUserConfigurationOptionSchema.extend({
+  mounted: z.boolean().optional(),
+});
 
-    /**
-     * Human-friendly name for UI display
-     */
-    display_name: z.string(),
+// Pick only the fields we need from McpbManifestSchema to avoid .omit() which
+// doesn't work with schemas containing refinements in Zod 4.3+
+const mcpbShape = McpbManifestSchema.shape;
+const BaseManifestSchema = z.object({
+  description: mcpbShape.description,
+  long_description: mcpbShape.long_description,
+  author: mcpbShape.author,
+  homepage: mcpbShape.homepage,
+  documentation: mcpbShape.documentation,
+  support: mcpbShape.support,
+  icon: mcpbShape.icon,
+  screenshots: mcpbShape.screenshots,
+  tools: mcpbShape.tools,
+  tools_generated: mcpbShape.tools_generated,
+  prompts: mcpbShape.prompts,
+  prompts_generated: mcpbShape.prompts_generated,
+  keywords: mcpbShape.keywords,
+  license: mcpbShape.license,
+  compatibility: mcpbShape.compatibility,
+  user_config: z.record(z.string(), ExtendedUserConfigurationOptionSchema).optional(),
+});
 
-    /**
-     * Installation instructions shown in the installation modal
-     */
-    instructions: z.string().optional(),
-    readme: z.string().nullable(),
-    category: McpServerCategorySchema.nullable(),
-    quality_score: z.number().min(0).max(100).nullable(),
-    archestra_config: ArchestraConfigSchema.optional(),
-    github_info: ArchestraMcpServerFullGitHubInfoSchema.nullable(),
-    programming_language: z.string().nullable(),
-    framework: z.string().nullable(),
-    last_scraped_at: z.string().nullable(),
-    evaluation_model: z.string().nullable(),
-    protocol_features: ArchestraMcpServerProtocolFeaturesSchema.optional(),
-    dependencies: z.array(MCPDependencySchema).optional(),
-    raw_dependencies: z.string().nullable(),
-    oauth_config: OauthConfigSchema.optional(),
+export const ArchestraMcpServerManifestSchema = BaseManifestSchema.extend({
+  /**
+   * Machine-readable name (used for CLI, APIs)
+   */
+  name: z.string(),
 
-    server: z.discriminatedUnion('type', [LocalServerSchema, RemoteServerSchema]),
-  })
-  .openapi('ArchestraMcpServerManifest');
+  /**
+   * Human-friendly name for UI display
+   */
+  display_name: z.string(),
+
+  /**
+   * Installation instructions shown in the installation modal
+   */
+  instructions: z.string().optional(),
+  readme: z.string().nullable(),
+  category: McpServerCategorySchema.nullable(),
+  quality_score: z.number().min(0).max(100).nullable(),
+  archestra_config: ArchestraConfigSchema.optional(),
+  github_info: ArchestraMcpServerFullGitHubInfoSchema.nullable(),
+  programming_language: z.string().nullable(),
+  framework: z.string().nullable(),
+  last_scraped_at: z.string().nullable(),
+  evaluation_model: z.string().nullable(),
+  protocol_features: ArchestraMcpServerProtocolFeaturesSchema.optional(),
+  dependencies: z.array(MCPDependencySchema).optional(),
+  raw_dependencies: z.string().nullable(),
+  oauth_config: OauthConfigSchema.optional(),
+
+  server: z.discriminatedUnion('type', [LocalServerSchema, RemoteServerSchema]),
+}).openapi('ArchestraMcpServerManifest');
 
 export const ArchestraMcpServerManifestWithScoreBreakdownSchema = ArchestraMcpServerManifestSchema.extend({
   score_breakdown: ArchestraScoreBreakdownSchema,
