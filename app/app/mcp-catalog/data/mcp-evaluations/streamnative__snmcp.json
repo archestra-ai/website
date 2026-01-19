@@ -7,11 +7,7 @@
   },
   "server": {
     "command": "/server/snmcp",
-    "args": [
-      "stdio",
-      "--key-file",
-      "/secrets/key_file.json"
-    ],
+    "args": ["stdio", "--key-file", "/secrets/key_file.json"],
     "docker_image": "streamnative/snmcp:v0.1.14",
     "env": {
       "SNMCP_ORGANIZATION": "${user_config.snmcp_organization}"
@@ -20,9 +16,7 @@
   },
   "tools": [],
   "prompts": [],
-  "keywords": [
-    "streamnative"
-  ],
+  "keywords": ["streamnative"],
   "user_config": {
     "key_file.json": {
       "type": "string",
