@@ -110,17 +110,7 @@
       "description": "Get Xray scan summary for artifacts"
     }
   ],
-  "keywords": [
-    "jfrog",
-    "artifactory",
-    "xray",
-    "devops",
-    "ci-cd",
-    "security",
-    "artifacts",
-    "packages",
-    "builds"
-  ],
+  "keywords": ["jfrog", "artifactory", "xray", "devops", "ci-cd", "security", "artifacts", "packages", "builds"],
   "user_config": {
     "access_token": {
       "type": "string",
