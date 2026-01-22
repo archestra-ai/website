@@ -11,9 +11,9 @@
       "run",
       "-i",
       "--rm",
-      "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-jfrog:experimental"
+      "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-jfrog:v0.0.0-exp-1"
     ],
-    "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-jfrog:experimental",
+    "docker_image": "europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/mcp-jfrog:v0.0.0-exp-1",
     "env": {
       "JFROG_ACCESS_TOKEN": "${user_config.access_token}",
       "JFROG_URL": "${user_config.jfrog_url}"
