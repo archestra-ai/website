@@ -15,7 +15,7 @@ const {
     name: companyName,
     alternateName: companyAlternateName,
     description: companyDescription,
-    people: { joey: JOEY, matvey: MATVEY, ildar: ILDAR, dominik: DOMINIK, anna: ANNA, innokentii: INNOKENTII },
+    people: { joey: JOEY, matvey: MATVEY, ildar: ILDAR, dominik: DOMINIK, innokentii: INNOKENTII },
   },
 } = constants;
 
@@ -195,38 +195,6 @@ export default function AboutPage() {
                   <div className="flex justify-center gap-3 mt-3">
                     <a
                       href={DOMINIK.sameAs}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-500 hover:text-blue-600 transition-colors"
-                    >
-                      <Linkedin size={20} />
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Anna */}
-              <Card className="border-2 hover:border-pink-200 transition-colors">
-                <CardContent className="p-6 text-left">
-                  <div className="flex justify-center mb-4">
-                    <Image
-                      src="/team/anna.jpg"
-                      alt={ANNA.name}
-                      width={150}
-                      height={150}
-                      className="rounded-full object-cover"
-                    />
-                  </div>
-                  <h3 className="font-bold text-xl mb-2">{ANNA.name}</h3>
-                  <p className="text-gray-700 font-medium mb-1">{ANNA.jobTitle}</p>
-                  <p className="text-gray-500 text-sm mb-3">
-                    {ANNA.address.addressLocality}, {ANNA.address.addressCountry}
-                  </p>
-                  <p className="text-gray-700 text-sm leading-relaxed mb-4">{ANNA.description}</p>
-                  <EmailCodePanel email="anna@archestra.ai" />
-                  <div className="flex justify-center gap-3 mt-3">
-                    <a
-                      href={ANNA.sameAs}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-500 hover:text-blue-600 transition-colors"
