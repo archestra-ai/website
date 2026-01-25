@@ -2,7 +2,7 @@
   "name": "mongodb-js__mongodb-mcp-server",
   "display_name": "MongoDB MCP Server",
   "description": "Official MongoDB MCP server that enables AI assistants to interact with MongoDB databases and Atlas deployments. Supports CRUD operations, aggregation pipelines, collection management, indexing, and Atlas cluster administration.",
-  "instructions": "Archestra supports two authentication methods:\n\n**1. Connection String**\n\nSet `MDB_MCP_CONNECTION_STRING` with your MongoDB connection string.\n\n**2. X.509 Auth**\n\nRequires a connection string plus `tls_certificate_key` and `tls_certificate_ca` secrets. Paste your certificates into corresponding fields and they will  See [MongoDB X.509 docs](https://www.mongodb.com/docs/manual/tutorial/configure-x509-client-authentication/).",
+  "instructions": "Archestra supports two authentication methods:\n\n**1. Connection String**\n\nSet `MDB_MCP_CONNECTION_STRING` with your MongoDB connection string.\n\n**2. X.509 Auth**\n\nRequires a connection string plus `tls_certificate_key` and `tls_certificate_ca` secrets. See [MongoDB X.509 docs](https://www.mongodb.com/docs/manual/tutorial/configure-x509-client-authentication/).",
   "author": {
     "name": "MongoDB"
   },
@@ -112,14 +112,14 @@
     "tls_certificate_key": {
       "type": "string",
       "title": "TLS certificate key for the X.509 auth",
-      "description": "Creates secret at the /secrets/tls_certificate_key path, which is referenced by MDB_MCP_TLS_CERTIFICATE_KEY_FILE",
+      "description": "Paste your TLS certificate key here. Creates secret at the /secrets/tls_certificate_key path, which is referenced by MDB_MCP_TLS_CERTIFICATE_KEY_FILE",
       "sensitive": true,
       "mounted": true
     },
     "tls_certificate_ca": {
       "type": "string",
       "title": "CA certificate for the X.509 auth.",
-      "description": "Creates secret at the /secrets/tls_certificate_ca path, which is referenced by MDB_MCP_TLS_CERTIFICATE_CA_FILE",
+      "description": "Paste your CA certificate here. Creates secret at the /secrets/tls_certificate_ca path, which is referenced by MDB_MCP_TLS_CERTIFICATE_CA_FILE",
       "sensitive": true,
       "mounted": true
     }

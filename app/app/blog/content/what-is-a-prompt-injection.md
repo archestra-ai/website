@@ -71,7 +71,7 @@ An AI agent following these instructions would:
 3. Read the `.env` file containing sensitive credentials
 4. Send those credentials via email to the attacker
 
-And here's the scary part — it actually works. We created a [Pydantic AI example](https://github.com/archestra-ai/archestra/tree/main/platform/examples/pydantic-ai) that demonstrates this attack:
+And here's the scary part — it actually works. We created a [Pydantic AI example](https://github.com/archestra-ai/examples/tree/main/pydantic-ai) that demonstrates this attack:
 
 ![CLI Execution Showing the Exploit](/blog/2025-10-13-what-is-prompt-injection-exploit.png)
 
@@ -171,7 +171,7 @@ That's what we're building at Archestra.
 ### Join Us in Building Secure AI Infrastructure
 
 - Try our [open-source platform](https://www.archestra.ai/docs/platfrom-quickstart) and see Dynamic Tools in action
-- Run the [Pydantic AI example](https://github.com/archestra-ai/archestra/tree/main/platform/examples/pydantic-ai) to see prompt injection protection firsthand
+- Run the [Pydantic AI example](https://github.com/archestra-ai/examples/tree/main/pydantic-ai) to see prompt injection protection firsthand
 - Join our [Slack community](https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg) to discuss AI security with other engineers
 
 Because when it comes to AI security, architectural solutions beat hoping for smarter models every time.

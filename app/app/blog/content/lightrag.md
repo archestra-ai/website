@@ -1,5 +1,5 @@
 ---
-title: "A self-hosted Movie Recommendation Agent with LightRAG and MCP"
+title: 'A self-hosted Movie Recommendation Agent with LightRAG and MCP'
 date: '2026-01-12'
 author: 'Dominik Broj, Founding Engineer'
 description: 'How I built a personal movie expert with LightRAG and Archestra that learns from my feedback'
@@ -39,6 +39,7 @@ For data, we'll pull TV shows from [themoviedb.org](https://www.themoviedb.org/)
 ## Prerequisites
 
 You'll need:
+
 - **Docker** - to run Neo4j, Qdrant and LightRAG
 - **Node.js** - to run the data scripts
 - **OpenAI API key** - LightRAG uses this for the LLM and embeddings
@@ -156,7 +157,7 @@ Then assign the tools to a **profile** so they're available in chat. We'll also 
 
 Time to create our agents! **Recommender** orchestrates everything. **Finder** searches for TV show candidates. **Tracker** collects feedback about what you've watched and enriches the knowledge graph.
 
-Here's the key insight: when **Tracker** inserts your feedback into **LightRAG**, it gets processed like any other document. LightRAG extracts entities and relationships and links them to existing nodes in the graph. So if you say *"I loved Breaking Bad, especially the character development, 9/10"*, LightRAG connects that sentiment to the Breaking Bad entity. Future queries about "shows with great character development" will factor in your preferences.
+Here's the key insight: when **Tracker** inserts your feedback into **LightRAG**, it gets processed like any other document. LightRAG extracts entities and relationships and links them to existing nodes in the graph. So if you say _"I loved Breaking Bad, especially the character development, 9/10"_, LightRAG connects that sentiment to the Breaking Bad entity. Future queries about "shows with great character development" will factor in your preferences.
 
 Here are the system prompts:
 
