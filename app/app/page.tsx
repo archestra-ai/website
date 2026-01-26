@@ -88,9 +88,9 @@ const ParticleAnimation = ({
       const archestraRect = archestraRef.current?.getBoundingClientRect();
       const archestraPos = archestraRect
         ? {
-          x: (archestraRect.left + archestraRect.width / 2 - containerRect.left) / containerRect.width,
-          y: (archestraRect.top + archestraRect.height / 2 - containerRect.top) / containerRect.height,
-        }
+            x: (archestraRect.left + archestraRect.width / 2 - containerRect.left) / containerRect.width,
+            y: (archestraRect.top + archestraRect.height / 2 - containerRect.top) / containerRect.height,
+          }
         : { x: 0.5, y: 0.5 };
 
       const bottomLogos = bottomLogoRefs.current
@@ -1534,8 +1534,9 @@ export default function Home() {
                       setCopied(true);
                       setTimeout(() => setCopied(false), 2000);
                     }}
-                    className={`absolute top-0 right-0 md:static md:ml-4 px-3 py-1.5 text-xs font-medium text-white rounded-bl-lg rounded-tr-lg transition-all shadow-lg md:shadow-none z-10 ${copied ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-700 hover:bg-gray-600'
-                      }`}
+                    className={`absolute top-0 right-0 md:static md:ml-4 px-3 py-1.5 text-xs font-medium text-white rounded-bl-lg rounded-tr-lg transition-all shadow-lg md:shadow-none z-10 ${
+                      copied ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-700 hover:bg-gray-600'
+                    }`}
                   >
                     {copied ? 'Copied!' : 'Copy'}
                   </button>
