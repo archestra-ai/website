@@ -88,9 +88,9 @@ const ParticleAnimation = ({
       const archestraRect = archestraRef.current?.getBoundingClientRect();
       const archestraPos = archestraRect
         ? {
-            x: (archestraRect.left + archestraRect.width / 2 - containerRect.left) / containerRect.width,
-            y: (archestraRect.top + archestraRect.height / 2 - containerRect.top) / containerRect.height,
-          }
+          x: (archestraRect.left + archestraRect.width / 2 - containerRect.left) / containerRect.width,
+          y: (archestraRect.top + archestraRect.height / 2 - containerRect.top) / containerRect.height,
+        }
         : { x: 0.5, y: 0.5 };
 
       const bottomLogos = bottomLogoRefs.current
@@ -1513,17 +1513,19 @@ export default function Home() {
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Quick Start</h2>
                 <p className="text-lg text-gray-600">Deploy Archestra in seconds with Docker</p>
               </div>
-              <div className="bg-gray-900 rounded-lg p-6 shadow-xl">
-                <div className="flex items-center justify-between">
-                  <code className="text-green-400 font-mono text-sm md:text-base">
-                    docker pull archestra/platform:latest; <br />
-                    docker run -p 9000:9000 -p 3000:3000 \ <br />
-                    &nbsp;&nbsp;-e ARCHESTRA_QUICKSTART=true \ <br />
-                    &nbsp;&nbsp;-v /var/run/docker.sock:/var/run/docker.sock \ <br />
-                    &nbsp;&nbsp;-v archestra-postgres-data:/var/lib/postgresql/data \ <br />
-                    &nbsp;&nbsp;-v archestra-app-data:/app/data \ <br />
-                    &nbsp;&nbsp;archestra/platform;
-                  </code>
+              <div className="bg-gray-900 rounded-lg p-6 shadow-xl relative group">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
+                  <div className="w-full overflow-x-auto pr-16 md:pr-0">
+                    <code className="text-green-400 font-mono text-sm md:text-base block whitespace-pre pt-8 md:pt-0">
+                      docker pull archestra/platform:latest;{'\n'}
+                      docker run -p 9000:9000 -p 3000:3000 \{'\n'}
+                      &nbsp;&nbsp;-e ARCHESTRA_QUICKSTART=true \{'\n'}
+                      &nbsp;&nbsp;-v /var/run/docker.sock:/var/run/docker.sock \{'\n'}
+                      &nbsp;&nbsp;-v archestra-postgres-data:/var/lib/postgresql/data \{'\n'}
+                      &nbsp;&nbsp;-v archestra-app-data:/app/data \{'\n'}
+                      &nbsp;&nbsp;archestra/platform;
+                    </code>
+                  </div>
                   <button
                     onClick={() => {
                       navigator.clipboard.writeText(
@@ -1532,9 +1534,8 @@ export default function Home() {
                       setCopied(true);
                       setTimeout(() => setCopied(false), 2000);
                     }}
-                    className={`ml-4 px-3 py-1.5 text-xs font-medium text-white rounded transition-all ${
-                      copied ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-700 hover:bg-gray-600'
-                    }`}
+                    className={`absolute top-0 right-0 md:static md:ml-4 px-3 py-1.5 text-xs font-medium text-white rounded-bl-lg rounded-tr-lg transition-all shadow-lg md:shadow-none z-10 ${copied ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-700 hover:bg-gray-600'
+                      }`}
                   >
                     {copied ? 'Copied!' : 'Copy'}
                   </button>
