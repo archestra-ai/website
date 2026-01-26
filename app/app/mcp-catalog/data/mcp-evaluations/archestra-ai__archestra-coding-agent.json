@@ -197,5 +197,13 @@
     "implementing_oauth2": false
   },
   "dependencies": [],
-  "raw_dependencies": ""
+  "raw_dependencies": "",
+  "archestra_config": {
+    "client_config_permutations": null,
+    "oauth": {
+      "provider": null,
+      "required": false
+    },
+    "works_in_archestra": true
+  }
 }
