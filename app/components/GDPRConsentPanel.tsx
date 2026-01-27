@@ -95,13 +95,13 @@ export default function GDPRConsentPanel() {
             <div className="flex gap-3 flex-wrap">
               <button
                 onClick={handleRejectAll}
-                className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors flex-1 md:flex-none whitespace-nowrap justify-center"
+                className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors flex-1 md:flex-none whitespace-nowrap"
               >
                 Only Necessary
               </button>
               <button
                 onClick={handleAcceptAll}
-                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors flex-1 md:flex-none whitespace-nowrap justify-center"
+                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors flex-1 md:flex-none whitespace-nowrap"
               >
                 Accept All
               </button>
