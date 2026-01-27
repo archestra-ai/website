@@ -46,7 +46,7 @@
   "server": {
     "type": "remote",
     "url": "https://api.githubcopilot.com/mcp/",
-    "docs_url": "https://github.app/docs/mcp"
+    "docs_url": "https://github.com/github/github-mcp-server/blob/main/docs/remote-server.md"
   },
   "github_info": null,
   "programming_language": null
