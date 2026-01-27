@@ -9,7 +9,7 @@
       "sensitive": true,
       "type": "string",
       "title": "Access Token",
-      "description": "The access token for the GitHub MCP server",
+      "description": "A GitHub Personal Access Token (classic or fine-grained). Required scopes: repo, read:packages, read:org. Create one at https://github.com/settings/tokens",
       "required": true
     }
   },
