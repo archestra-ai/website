@@ -9,7 +9,7 @@
       "sensitive": true,
       "type": "string",
       "title": "Access Token",
-      "description": "The access token for the GitHub MCP server",
+      "description": "A GitHub Personal Access Token (classic or fine-grained). Required scopes: repo, read:packages, read:org. Create one at https://github.com/settings/tokens",
       "required": true
     }
   },
@@ -46,7 +46,7 @@
   "server": {
     "type": "remote",
     "url": "https://api.githubcopilot.com/mcp/",
-    "docs_url": "https://github.app/docs/mcp"
+    "docs_url": "https://github.com/github/github-mcp-server/blob/main/docs/remote-server.md"
   },
   "github_info": null,
   "programming_language": null
