@@ -73,7 +73,7 @@ export default function GDPRConsentPanel() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6">
+    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6 max-w-[100vw]">
       <div className="mx-auto max-w-7xl">
         <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-800 p-4 sm:p-6 relative">
           {isManuallyOpened && (
@@ -85,23 +85,23 @@ export default function GDPRConsentPanel() {
               <X className="h-5 w-5" />
             </button>
           )}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div className="flex-1">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div className="flex-1 pr-6 md:pr-0">
               <p className="text-sm text-gray-600 dark:text-gray-300">
                 We use cookies to enhance your browsing experience and analyze our traffic. By clicking "Accept All",
                 you consent to our use of cookies.
               </p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 flex-wrap">
               <button
                 onClick={handleRejectAll}
-                className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors flex-1 md:flex-none whitespace-nowrap"
               >
                 Only Necessary
               </button>
               <button
                 onClick={handleAcceptAll}
-                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
+                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors flex-1 md:flex-none whitespace-nowrap"
               >
                 Accept All
               </button>
