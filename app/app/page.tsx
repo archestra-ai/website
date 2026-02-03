@@ -2,7 +2,7 @@
 
 import { AlertTriangle, Calendar, Github, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 import Footer from '@components/Footer';
 import Header from '@components/Header';
@@ -27,250 +27,8 @@ const {
   },
 } = constants;
 
-// Particle Animation Component
-const ParticleAnimation = ({
-  topLogoRefs,
-  archestraRef,
-  bottomLogoRefs,
-}: {
-  topLogoRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
-  archestraRef: React.RefObject<HTMLDivElement | null>;
-  bottomLogoRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
-}) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number | undefined>(undefined);
-  const particlesRef = useRef<any[]>([]);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    // Set canvas size and recalculate positions
-    const resizeCanvas = () => {
-      const rect = canvas.parentElement?.getBoundingClientRect();
-      if (rect) {
-        canvas.width = rect.width;
-        canvas.height = rect.height;
-
-        // Recalculate logo positions and recreate particles
-        const positions = getLogoPositions();
-        if (positions.archestraPos && positions.topLogos.length > 0 && positions.bottomLogos.length > 0) {
-          particlesRef.current = createParticles(positions.topLogos, positions.bottomLogos, positions.archestraPos);
-        }
-      }
-    };
-
-    // Initial delay to ensure logos are rendered
-    setTimeout(() => {
-      resizeCanvas();
-    }, 100);
-
-    window.addEventListener('resize', resizeCanvas);
-
-    // Get actual logo positions from refs
-    const getLogoPositions = () => {
-      const containerRect = canvas.parentElement?.getBoundingClientRect();
-      if (!containerRect) return { topLogos: [], archestraPos: null, bottomLogos: [] };
-
-      const topLogos = topLogoRefs.current
-        .filter((ref) => ref !== null)
-        .map((ref) => {
-          const rect = ref!.getBoundingClientRect();
-          return {
-            x: (rect.left + rect.width / 2 - containerRect.left) / containerRect.width,
-            y: (rect.top + rect.height / 2 - containerRect.top) / containerRect.height,
-          };
-        });
-
-      const archestraRect = archestraRef.current?.getBoundingClientRect();
-      const archestraPos = archestraRect
-        ? {
-            x: (archestraRect.left + archestraRect.width / 2 - containerRect.left) / containerRect.width,
-            y: (archestraRect.top + archestraRect.height / 2 - containerRect.top) / containerRect.height,
-          }
-        : { x: 0.5, y: 0.5 };
-
-      const bottomLogos = bottomLogoRefs.current
-        .filter((ref) => ref !== null)
-        .map((ref) => {
-          const rect = ref!.getBoundingClientRect();
-          return {
-            x: (rect.left + rect.width / 2 - containerRect.left) / containerRect.width,
-            y: (rect.top + rect.height / 2 - containerRect.top) / containerRect.height,
-          };
-        });
-
-      return { topLogos, archestraPos, bottomLogos };
-    };
-
-    // Particle class
-    class Particle {
-      constructor(
-        public startX: number,
-        public startY: number,
-        public endX: number,
-        public endY: number,
-        public viaArchestra: boolean = true
-      ) {
-        this.x = startX;
-        this.y = startY;
-        this.progress = 0;
-        this.speed = 0.002 + Math.random() * 0.002;
-        this.radius = 1.5 + Math.random() * 1;
-        this.opacity = 0;
-        this.color = this.getRandomColor();
-      }
-
-      x: number;
-      y: number;
-      progress: number;
-      speed: number;
-      radius: number;
-      opacity: number;
-      color: string;
-
-      getRandomColor() {
-        const colors = ['#3b82f6', '#10b981', '#f59e0b'];
-        return colors[Math.floor(Math.random() * colors.length)];
-      }
-
-      update(canvasWidth: number, canvasHeight: number) {
-        this.progress += this.speed;
-
-        if (this.progress >= 1) {
-          this.progress = 0;
-          this.x = this.startX;
-          this.y = this.startY;
-        }
-
-        if (this.viaArchestra) {
-          const archestraPos = (window as any).archestraPos || { x: 0.5, y: 0.5 };
-          if (this.progress < 0.5) {
-            // First half: source to Archestra
-            const t = this.progress * 2;
-            this.x = this.startX + (archestraPos.x * canvasWidth - this.startX) * t;
-            this.y = this.startY + (archestraPos.y * canvasHeight - this.startY) * t;
-          } else {
-            // Second half: Archestra to destination
-            const t = (this.progress - 0.5) * 2;
-            this.x = archestraPos.x * canvasWidth + (this.endX - archestraPos.x * canvasWidth) * t;
-            this.y = archestraPos.y * canvasHeight + (this.endY - archestraPos.y * canvasHeight) * t;
-          }
-        }
-
-        // Fade in/out at edges
-        const fadeDistance = 0.15;
-        if (this.progress < fadeDistance) {
-          this.opacity = this.progress / fadeDistance;
-        } else if (this.progress > 1 - fadeDistance) {
-          this.opacity = (1 - this.progress) / fadeDistance;
-        } else {
-          this.opacity = 0.6 + Math.sin(Date.now() * 0.001 + this.progress * 10) * 0.2;
-        }
-      }
-
-      draw(ctx: CanvasRenderingContext2D) {
-        ctx.save();
-        ctx.globalAlpha = this.opacity;
-        ctx.fillStyle = this.color;
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-
-    // Create particles for all connections
-    const createParticles = (topLogoPositions: any[], bottomLogoPositions: any[], archestraPosition: any) => {
-      const particles: Particle[] = [];
-      const { width, height } = canvas;
-
-      // Store archestra position for particle update
-      window.archestraPos = archestraPosition;
-
-      // Top to bottom connections via Archestra
-      topLogoPositions.forEach((topLogo) => {
-        bottomLogoPositions.forEach((bottomLogo) => {
-          // Create 2 particles per connection
-          for (let i = 0; i < 2; i++) {
-            particles.push(
-              new Particle(topLogo.x * width, topLogo.y * height, bottomLogo.x * width, bottomLogo.y * height, true)
-            );
-          }
-        });
-      });
-
-      // Bottom to top connections via Archestra
-      bottomLogoPositions.forEach((bottomLogo) => {
-        topLogoPositions.forEach((topLogo) => {
-          // Create 2 particles per connection
-          for (let i = 0; i < 2; i++) {
-            particles.push(
-              new Particle(bottomLogo.x * width, bottomLogo.y * height, topLogo.x * width, topLogo.y * height, true)
-            );
-          }
-        });
-      });
-
-      // Stagger the initial progress
-      particles.forEach((p, i) => {
-        p.progress = (i / particles.length) * 0.5;
-      });
-
-      return particles;
-    };
-
-    // Initial particle creation
-    const initialPositions = getLogoPositions();
-    if (
-      initialPositions.archestraPos &&
-      initialPositions.topLogos.length > 0 &&
-      initialPositions.bottomLogos.length > 0
-    ) {
-      particlesRef.current = createParticles(
-        initialPositions.topLogos,
-        initialPositions.bottomLogos,
-        initialPositions.archestraPos
-      );
-    }
-
-    // Animation loop
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      particlesRef.current.forEach((particle) => {
-        particle.update(canvas.width, canvas.height);
-        particle.draw(ctx);
-      });
-
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [topLogoRefs, archestraRef, bottomLogoRefs]);
-
-  return (
-    <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 5 }} />
-  );
-};
-
 export default function Home() {
   const [copied, setCopied] = useState(false);
-  const topLogoRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const archestraRef = useRef<HTMLDivElement>(null);
-  const bottomLogoRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -297,135 +55,41 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="bg-gradient-to-b from-gray-50 to-white pb-0 pt-20">
-          <div className="container pt-4 md:px-6 max-w-7xl mx-auto">
-            <div className="flex flex-col items-center text-center gap-8">
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900">
-                Central Place for AI in Your Organization
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-700 max-w-3xl">Open Source and Cloud-Native</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Architecture Diagram Section */}
-        <section className="pt-12 pb-20 bg-gradient-to-b from-white to-gray-50">
+        <section className="min-h-[calc(100vh-4rem)] flex items-center bg-white">
           <div className="container px-4 md:px-6 max-w-7xl mx-auto">
-            <div className="relative max-w-6xl mx-auto">
-              {/* Particle Animation */}
-              <ParticleAnimation
-                topLogoRefs={topLogoRefs}
-                archestraRef={archestraRef}
-                bottomLogoRefs={bottomLogoRefs}
-              />
-              {/* Top Row - AI Applications */}
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-16">
-                <div className="flex flex-col items-center">
-                  <div
-                    ref={(el) => {
-                      topLogoRefs.current[0] = el;
-                    }}
-                    className="w-20 h-20 flex items-center justify-center"
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Column - Text */}
+              <div className="space-y-6">
+                <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+                  AI orchestrator with security foundation for enterprises
+                </h1>
+                <p className="text-xl text-gray-600">
+                  Yes, it's like <span className="line-through">ClawdBot</span>{' '}
+                  <span className="line-through">MoldBot</span> OpenClaw but secure and production-ready 😉
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                  <Link
+                    href="/docs/platform-quickstart"
+                    className="px-6 py-3 bg-black text-white font-medium rounded-md hover:bg-gray-900 transition-colors inline-block text-center"
                   >
-                    <img src="/logo_n8n.png" alt="n8n" className="w-full h-full object-contain" />
-                  </div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div
-                    ref={(el) => {
-                      topLogoRefs.current[1] = el;
-                    }}
-                    className="w-20 h-20 flex items-center justify-center"
+                    Get Started →
+                  </Link>
+                  <Link
+                    href="/book-demo"
+                    className="px-6 py-3 bg-white text-black font-medium rounded-md border border-gray-300 hover:bg-gray-50 transition-colors inline-block text-center"
                   >
-                    <img src="/logo_cursor.png" alt="Cursor" className="w-full h-full object-contain" />
-                  </div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div
-                    ref={(el) => {
-                      topLogoRefs.current[2] = el;
-                    }}
-                    className="w-20 h-20 flex items-center justify-center"
-                  >
-                    <img src="/logo_claude.png" alt="Claude" className="w-full h-full object-contain" />
-                  </div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div
-                    ref={(el) => {
-                      topLogoRefs.current[3] = el;
-                    }}
-                    className="w-20 h-20 flex items-center justify-center"
-                  >
-                    <img
-                      src="/logo_azure_ai_foundry.png"
-                      alt="Azure AI Foundry"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div
-                    ref={(el) => {
-                      topLogoRefs.current[4] = el;
-                    }}
-                    className="w-20 h-20 flex items-center justify-center"
-                  >
-                    <span className="text-2xl">🦜⛓️</span>
-                  </div>
+                    Book Demo
+                  </Link>
                 </div>
               </div>
 
-              {/* Center - Archestra */}
-              <div className="relative z-10 flex justify-center mb-16">
-                <div ref={archestraRef} className="relative">
-                  <div className="absolute inset-0 bg-black blur-2xl opacity-10 animate-pulse"></div>
-                  <img src="/logo_square.png" alt="Archestra" className="relative w-24 h-24" />
-                </div>
-              </div>
-
-              {/* Bottom Row - LLM Providers */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-                <div className="flex flex-col items-center">
-                  <div
-                    ref={(el) => {
-                      bottomLogoRefs.current[0] = el;
-                    }}
-                    className="w-20 h-20 flex items-center justify-center"
-                  >
-                    <img src="/logo_openai.png" alt="OpenAI" className="w-full h-full object-contain" />
-                  </div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div
-                    ref={(el) => {
-                      bottomLogoRefs.current[1] = el;
-                    }}
-                    className="w-20 h-20 flex items-center justify-center"
-                  >
-                    <img src="/logo_bedrock.png" alt="AWS Bedrock" className="w-full h-full object-contain" />
-                  </div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div
-                    ref={(el) => {
-                      bottomLogoRefs.current[2] = el;
-                    }}
-                    className="w-20 h-20 flex items-center justify-center"
-                  >
-                    <img src="/logo_anthropic.png" alt="Anthropic" className="w-full h-full object-contain" />
-                  </div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div
-                    ref={(el) => {
-                      bottomLogoRefs.current[3] = el;
-                    }}
-                    className="w-20 h-20 flex items-center justify-center"
-                  >
-                    <span className="text-xl font-bold text-blue-600">vLLM</span>
-                  </div>
-                </div>
+              {/* Right Column - Star History */}
+              <div className="relative">
+                <img
+                  src="https://api.star-history.com/svg?repos=archestra-ai/archestra&type=Date"
+                  alt="Star History Chart"
+                  className="w-full h-auto rounded-lg shadow-lg border border-gray-200"
+                />
               </div>
             </div>
           </div>
@@ -447,7 +111,7 @@ export default function Home() {
                 </div>
 
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  Non-Probabilistic Security to{' '}
+                  Deterministic Agentic Security to{' '}
                   <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
                     Prevent Data Exfiltration
                   </span>
@@ -460,7 +124,7 @@ export default function Home() {
 
                 {/* Examples of Hacks */}
                 <div className="bg-red-50/50 backdrop-blur rounded-lg p-4 border border-red-200">
-                  <p className="text-sm font-semibold text-red-900 mb-3">⚠️ Real attacks examples:</p>
+                  <p className="text-sm font-semibold text-red-900 mb-3">⚠️ Real attack examples:</p>
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <a
                       href="https://simonwillison.net/2023/Apr/14/new-prompt-injection-attack-on-chatgpt-web-version-markdown-imag/"
@@ -906,7 +570,7 @@ export default function Home() {
                 </h2>
 
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Per-team, per-agent or per-organization cost monitoring and limitations. Dynamic optimizer
+                  Per-team, per-agent, or per-organization cost monitoring and limitations. Dynamic optimizer
                   automatically reduces costs up to 96% by intelligently switching to cheaper models for simpler tasks.
                 </p>
 
