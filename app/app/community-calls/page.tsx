@@ -2,7 +2,7 @@
 
 import { TZDate } from '@date-fns/tz';
 import { addDays, getDay, setHours, setMilliseconds, setMinutes, setSeconds } from 'date-fns';
-import { Bell, Calendar, Users, Video, Play } from 'lucide-react';
+import { Bell, Calendar, Play, Users, Video } from 'lucide-react';
 import Image from 'next/image';
 
 import CommunityCallsNewsletterForm from '@components/CommunityCallsNewsletterForm';
@@ -56,20 +56,20 @@ export default function CommunityCallsPage() {
     // Define a reference date for the bi-weekly schedule (a known meeting date)
     // Using February 3, 2026 as a reference Tuesday (midnight for date calculation)
     const referenceDate = new Date('2026-02-03T00:00:00Z');
-    
+
     // Get current time in London timezone using TZDate
     const nowInLondon = TZDate.tz(MEETING_CONFIG.timezone);
     const nowTime = nowInLondon.getTime();
-    
+
     // Calculate the number of days since the reference date
     const daysSinceReference = Math.floor((nowTime - referenceDate.getTime()) / (1000 * 60 * 60 * 24));
-    
+
     // Calculate the number of weeks since reference
     const weeksSinceReference = Math.floor(daysSinceReference / 7);
-    
+
     // Determine if we're in an "on" week (even weeks) or "off" week (odd weeks)
     const isOnWeek = weeksSinceReference % 2 === 0;
-    
+
     const londonDay = getDay(nowInLondon);
     let daysUntilMeeting = MEETING_CONFIG.dayNumber - londonDay;
 
@@ -77,10 +77,11 @@ export default function CommunityCallsPage() {
     if (londonDay === MEETING_CONFIG.dayNumber) {
       const londonHour = nowInLondon.getHours();
       const londonMinute = nowInLondon.getMinutes();
-      
-      const hasMeetingPassed = londonHour > MEETING_CONFIG.hour ||
+
+      const hasMeetingPassed =
+        londonHour > MEETING_CONFIG.hour ||
         (londonHour === MEETING_CONFIG.hour && londonMinute >= MEETING_CONFIG.minute);
-      
+
       if (isOnWeek && !hasMeetingPassed) {
         daysUntilMeeting = 0; // Today is a meeting day
       } else {
@@ -209,8 +210,8 @@ export default function CommunityCallsPage() {
               </div>
               <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Bi-Weekly Community Calls</h1>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-                Join us every other Tuesday for our community calls where we discuss Archestra, share updates, and connect
-                with fellow developers and AI enthusiasts.
+                Join us every other Tuesday for our community calls where we discuss Archestra, share updates, and
+                connect with fellow developers and AI enthusiasts.
               </p>
 
               {/* Hero Image */}
