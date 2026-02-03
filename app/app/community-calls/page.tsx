@@ -2,7 +2,7 @@
 
 import { TZDate } from '@date-fns/tz';
 import { addDays, getDay, setHours, setMilliseconds, setMinutes, setSeconds } from 'date-fns';
-import { Bell, Calendar, Users, Video } from 'lucide-react';
+import { Bell, Calendar, Users, Video, Play } from 'lucide-react';
 import Image from 'next/image';
 
 import CommunityCallsNewsletterForm from '@components/CommunityCallsNewsletterForm';
@@ -42,38 +42,60 @@ const MEETING_DETAILS = {
 };
 
 // Generate description from agenda items
-const MEETING_DESCRIPTION = `Join us for our weekly community call!
+const MEETING_DESCRIPTION = `Join us for our bi-weekly community call!
 
 Check the agenda in our Slack community: ${constants.slack.joinCommunityUrl}
 
 Google Meet: ${MEETING_CONFIG.meetingLink}`;
 
-const DESCRIPTION = `Join our weekly community calls every ${MEETING_CONFIG.dayOfWeek} at ${MEETING_CONFIG.time} (${MEETING_CONFIG.timezone}). Connect with the Archestra team and community members.`;
+const DESCRIPTION = `Join our bi-weekly community calls every other ${MEETING_CONFIG.dayOfWeek} at ${MEETING_CONFIG.time} (${MEETING_CONFIG.timezone}). Connect with the Archestra team and community members.`;
 
 export default function CommunityCallsPage() {
-  // Calculate next meeting date (2pm London time)
+  // Calculate next meeting date (2pm London time) - bi-weekly schedule
   const getNextMeetingDate = (): Date => {
+    // Define a reference date for the bi-weekly schedule (a known meeting date)
+    // Using February 3, 2026 as a reference Tuesday (midnight for date calculation)
+    const referenceDate = new Date('2026-02-03T00:00:00Z');
+    
     // Get current time in London timezone using TZDate
     const nowInLondon = TZDate.tz(MEETING_CONFIG.timezone);
+    const nowTime = nowInLondon.getTime();
+    
+    // Calculate the number of days since the reference date
+    const daysSinceReference = Math.floor((nowTime - referenceDate.getTime()) / (1000 * 60 * 60 * 24));
+    
+    // Calculate the number of weeks since reference
+    const weeksSinceReference = Math.floor(daysSinceReference / 7);
+    
+    // Determine if we're in an "on" week (even weeks) or "off" week (odd weeks)
+    const isOnWeek = weeksSinceReference % 2 === 0;
+    
     const londonDay = getDay(nowInLondon);
-
     let daysUntilMeeting = MEETING_CONFIG.dayNumber - londonDay;
 
-    // If today is meeting day in London, check if the meeting time has passed
+    // If today is Tuesday in London
     if (londonDay === MEETING_CONFIG.dayNumber) {
       const londonHour = nowInLondon.getHours();
       const londonMinute = nowInLondon.getMinutes();
-
-      if (
-        londonHour > MEETING_CONFIG.hour ||
-        (londonHour === MEETING_CONFIG.hour && londonMinute >= MEETING_CONFIG.minute)
-      ) {
-        daysUntilMeeting = 7; // Next week
+      
+      const hasMeetingPassed = londonHour > MEETING_CONFIG.hour ||
+        (londonHour === MEETING_CONFIG.hour && londonMinute >= MEETING_CONFIG.minute);
+      
+      if (isOnWeek && !hasMeetingPassed) {
+        daysUntilMeeting = 0; // Today is a meeting day
       } else {
-        daysUntilMeeting = 0; // Today
+        // Next meeting is in 2 weeks if we're on an "on" week after meeting time,
+        // or 1 week if we're on an "off" week
+        daysUntilMeeting = isOnWeek ? 14 : 7;
       }
     } else if (daysUntilMeeting < 0) {
-      daysUntilMeeting += 7;
+      // Tuesday has passed this week
+      daysUntilMeeting += isOnWeek ? 14 : 7;
+    } else {
+      // Tuesday is coming up this week
+      if (!isOnWeek) {
+        daysUntilMeeting += 7; // Skip to next week's Tuesday
+      }
     }
 
     // Create meeting date at 2pm London time using TZDate
@@ -93,7 +115,7 @@ export default function CommunityCallsPage() {
 
   // Check if meeting is within 30 minutes
   const now = new Date();
-  const minutesUntilMeeting = Math.floor((nextMeetingDate.getTime() - now.getTime()) / (1000 * 30));
+  const minutesUntilMeeting = Math.floor((nextMeetingDate.getTime() - now.getTime()) / (1000 * 60));
   const canJoinMeeting = minutesUntilMeeting <= 30 && minutesUntilMeeting >= -30; // Allow joining 30 min before and during
 
   // Format date for display
@@ -123,7 +145,7 @@ export default function CommunityCallsPage() {
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Event',
-    name: 'Archestra Weekly Community Call',
+    name: 'Archestra Bi-Weekly Community Call',
     description: DESCRIPTION,
     startDate: nextMeetingDate.toISOString(),
     endDate: new Date(nextMeetingDate.getTime() + MEETING_CONFIG.durationMinutes * 60000).toISOString(),
@@ -183,11 +205,11 @@ export default function CommunityCallsPage() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-teal-500 to-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium mb-4">
                 <Users className="w-4 h-4" />
-                Every {MEETING_CONFIG.dayOfWeek} at {getLocalTime(nextMeetingDate)} ({localTimezoneName})
+                Every Other {MEETING_CONFIG.dayOfWeek} at {getLocalTime(nextMeetingDate)} ({localTimezoneName})
               </div>
-              <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Weekly Community Calls</h1>
+              <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Bi-Weekly Community Calls</h1>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-                Join us every Tuesday for our community calls where we discuss Archestra, share updates, and connect
+                Join us every other Tuesday for our community calls where we discuss Archestra, share updates, and connect
                 with fellow developers and AI enthusiasts.
               </p>
 
@@ -262,7 +284,7 @@ export default function CommunityCallsPage() {
                           Add to Calendar (.ics)
                         </Button>
                         <a
-                          href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(MEETING_CONFIG.title)}&dates=${getGoogleCalendarDate()}&details=${encodeURIComponent(MEETING_DESCRIPTION)}&location=${encodeURIComponent(MEETING_CONFIG.meetingLink)}&recur=${encodeURIComponent('RRULE:FREQ=WEEKLY;BYDAY=TU')}`}
+                          href={`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(MEETING_CONFIG.title)}&dates=${getGoogleCalendarDate()}&details=${encodeURIComponent(MEETING_DESCRIPTION)}&location=${encodeURIComponent(MEETING_CONFIG.meetingLink)}&recur=${encodeURIComponent('RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=TU')}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 font-medium py-2 px-4 rounded-lg transition-colors flex items-center gap-1.5 text-sm"
@@ -287,35 +309,51 @@ export default function CommunityCallsPage() {
                 </CardContent>
               </Card>
 
-              {/* Two column grid for Watch Recordings and Get Notified */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Recordings Card */}
-                <Card className="border-2 hover:border-blue-200 transition-colors">
-                  <CardContent className="p-8">
-                    <div className="flex items-start gap-4">
-                      <div className="bg-blue-100 p-3 rounded-lg">
-                        <Video className="w-6 h-6 text-blue-600" />
-                      </div>
-                      <div className="flex-1">
-                        <h2 className="text-2xl font-bold mb-2">Watch Recordings</h2>
-                        <p className="text-gray-600 mb-4">
-                          Can't make it to the live call? All our community calls are recorded and available on YouTube.
-                        </p>
-                        <a
-                          href="https://www.youtube.com/@ArchestraAI"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm"
-                        >
-                          <Video className="w-4 h-4" />
-                          Watch on YouTube
-                        </a>
-                      </div>
+              {/* Watch Past Recordings Section */}
+              <Card className="border-2 hover:border-blue-200 transition-colors mb-8">
+                <CardContent className="p-8">
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="bg-blue-100 p-3 rounded-lg">
+                      <Video className="w-6 h-6 text-blue-600" />
                     </div>
-                  </CardContent>
-                </Card>
+                    <div className="flex-1">
+                      <h2 className="text-2xl font-bold mb-2">Past Community Calls</h2>
+                      <p className="text-gray-600 mb-4">
+                        Watch recordings of our previous community calls to catch up on discussions, demos, and updates.
+                      </p>
+                    </div>
+                  </div>
 
-                {/* Email Notification Card */}
+                  {/* YouTube Playlist Embed */}
+                  <div className="aspect-video rounded-lg overflow-hidden bg-gray-100 mb-4">
+                    <iframe
+                      src="https://www.youtube.com/embed/videoseries?list=PL2L0p-cygIJC8XSiOsLyCwN8D_uUakX75"
+                      title="Archestra Community Calls Playlist"
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+
+                  <div className="flex justify-between items-center">
+                    <p className="text-sm text-gray-500">
+                      Subscribe to our YouTube channel to get notified when new recordings are available.
+                    </p>
+                    <a
+                      href="https://www.youtube.com/@ArchestraAI"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm"
+                    >
+                      <Video className="w-4 h-4" />
+                      View All Videos
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Email Notification Card */}
+              <div className="grid grid-cols-1 gap-8">
                 <Card className="border-2 hover:border-purple-200 transition-colors">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-4">
