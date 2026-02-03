@@ -16,7 +16,7 @@ const MEETING_CONFIG = {
 };
 
 // Generate description
-const MEETING_DESCRIPTION = `Join us for our weekly community call!\\n\\nCheck the agenda in our Slack community: https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg\\n\\nGoogle Meet: ${MEETING_CONFIG.meetingLink}\\n\\nMore info: https://archestra.ai/community-calls`;
+const MEETING_DESCRIPTION = `Join us for our bi-weekly community call!\\n\\nCheck the agenda in our Slack community: https://join.slack.com/t/archestracommunity/shared_invite/zt-39yk4skox-zBF1NoJ9u4t59OU8XxQChg\\n\\nGoogle Meet: ${MEETING_CONFIG.meetingLink}\\n\\nMore info: https://archestra.ai/community-calls`;
 
 export async function GET() {
   // Get the next meeting day
@@ -118,13 +118,14 @@ RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:archestra-community-call-${eventDate}@archestra.ai
+UID:archestra-community-call-recurring@archestra.ai
 DTSTAMP:${new Date()
     .toISOString()
     .replace(/[-:]/g, '')
     .replace(/\.\d{3}/, '')}Z
 DTSTART;TZID=Europe/London:${eventDate}T${String(MEETING_CONFIG.hour).padStart(2, '0')}${String(MEETING_CONFIG.minute).padStart(2, '0')}00
 DTEND;TZID=Europe/London:${eventDate}T${String(MEETING_CONFIG.hour).padStart(2, '0')}${String(MEETING_CONFIG.minute + MEETING_CONFIG.durationMinutes).padStart(2, '0')}00
+RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=TU
 SUMMARY:${MEETING_CONFIG.title}
 DESCRIPTION:${MEETING_DESCRIPTION}
 LOCATION:${MEETING_CONFIG.meetingLink}
