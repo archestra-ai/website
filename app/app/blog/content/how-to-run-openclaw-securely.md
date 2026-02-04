@@ -30,7 +30,7 @@ No malware. No privilege escalation. Just a cleverly worded email that the AI tr
 
 Matvey's demo is far from an isolated case. Security researchers have found a critical remote code execution vulnerability ([CVE-2026-25253](https://nvd.nist.gov/vuln/detail/CVE-2026-25253)) that allows one-click exploitation via a malicious link. Over 10,000 exposed OpenClaw instances have been discovered leaking credentials publicly. Malicious skills on ClawHub — OpenClaw's community extensions marketplace — have been caught deploying credential stealers. And commodity infostealers have already added OpenClaw to their target lists.
 
-The community is paying attention. Industry voices are calling OpenClaw a "security dumpster fire," and even its own documentation acknowledges there is no "perfectly secure" setup.
+The community is paying attention. Industry voices are calling OpenClaw a "security dumpster fire", and even its own documentation acknowledges there is no "perfectly secure" setup.
 
 So what do you do? Stop using it?
 
@@ -53,22 +53,17 @@ Here's what it gives you:
 
 Let's get both running locally and wire them together. The full setup takes about 10 minutes.
 
-### Step 1: Run Archestra Locally
+### Step 1: Run Archestra and OpenClaw via Docker Compose
 
-Make sure Docker is installed and running, then:
+We've published a ready-to-go setup in our [examples repo](https://github.com/archestra-ai/examples/tree/main/openclaw) that runs both Archestra and OpenClaw in Docker with a single command. Make sure Docker is installed and running (if you need to install it, see [Get Docker Desktop](https://docs.docker.com/get-started/introduction/get-docker-desktop/)), then:
 
 ```bash
-docker pull archestra/platform:latest
-
-docker run -p 9000:9000 -p 3000:3000 \
-  -e ARCHESTRA_QUICKSTART=true \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -v archestra-postgres-data:/var/lib/postgresql/data \
-  -v archestra-app-data:/app/data \
-  archestra/platform
+git clone https://github.com/archestra-ai/examples.git
+cd examples/openclaw
+docker compose up -d platform
 ```
 
-After a minute or so, open [http://localhost:3000](http://localhost:3000) and log in with the default credentials (`admin@example.com` / `password`). You'll want to change these for anything beyond local experimentation.
+This starts the Archestra platform. After a minute or so, open [http://localhost:3000](http://localhost:3000) and log in with the default credentials (`admin@example.com` / `password`). You'll want to change these for anything beyond local experimentation.
 
 ### Step 2: Configure Archestra as an LLM Proxy
 
@@ -80,18 +75,11 @@ In the Archestra UI:
 
 The Anthropic proxy URL will look something like `http://localhost:9000/v1/anthropic/<proxy-uuid>`. This is the endpoint we'll point OpenClaw at.
 
-### Step 3: Install OpenClaw
+### Step 3: Point OpenClaw at Archestra
 
-If you don't already have OpenClaw:
+The example repo includes an `openclaw.json` config that routes all LLM traffic through Archestra. The key insight is that Archestra's proxy speaks the native Anthropic Messages API — so we use `anthropic-messages` as the API type, and pass your real Anthropic API key (which Archestra forwards to the upstream provider).
 
-```bash
-npm install -g openclaw@2026.2.2-3
-openclaw onboard --install-daemon
-```
-
-### Step 4: Point OpenClaw at Archestra
-
-Edit your `~/.openclaw/openclaw.json` to add Archestra as a custom model provider. The key insight is that Archestra's proxy speaks the native Anthropic Messages API — so we use `anthropic-messages` as the API type, and pass your real Anthropic API key (which Archestra forwards to the upstream provider):
+Edit `openclaw.json` in the `examples/openclaw` directory and replace `<your-proxy-uuid>` with the UUID from Step 2:
 
 ```json5
 {
@@ -99,7 +87,8 @@ Edit your `~/.openclaw/openclaw.json` to add Archestra as a custom model provide
     providers: {
       // Route all LLM traffic through Archestra
       archestra: {
-        baseUrl: 'http://127.0.0.1:9000/v1/anthropic/<your-proxy-uuid>',
+        // Uses Docker service name — OpenClaw reaches Archestra over the Docker network
+        baseUrl: 'http://platform:9000/v1/anthropic/<your-proxy-uuid>',
         apiKey: '${ANTHROPIC_API_KEY}', // Your real Anthropic API key
         api: 'anthropic-messages',
         models: [
@@ -130,15 +119,16 @@ Edit your `~/.openclaw/openclaw.json` to add Archestra as a custom model provide
 }
 ```
 
-Replace `<your-proxy-uuid>` with the UUID from your LLM Proxy's Connection dialog, and make sure `ANTHROPIC_API_KEY` is set in your environment.
+### Step 4: Start OpenClaw
 
-Now every LLM request OpenClaw makes flows through Archestra, where you can observe, control, and limit it.
-
-Verify the connection:
+Now start the OpenClaw gateway alongside Archestra:
 
 ```bash
-openclaw models status --probe
+export ANTHROPIC_API_KEY="your-api-key-here"
+docker compose up -d
 ```
+
+This brings up the OpenClaw gateway at [http://localhost:18789](http://localhost:18789). Every LLM request OpenClaw makes now flows through Archestra, where you can observe, control, and limit it.
 
 ## Locking It Down: Tool Permissions
 
@@ -212,6 +202,7 @@ The good news is that locking it down doesn't require giving up what makes it us
 
 If you want to try this yourself:
 
+- [OpenClaw + Archestra example](https://github.com/archestra-ai/examples/tree/main/openclaw) — a ready-to-go setup you can clone and run
 - [Archestra Platform Quickstart](https://archestra.ai/docs/platform-quickstart)
 - [OpenClaw Documentation](https://docs.openclaw.ai/)
 - [Archestra GitHub](https://github.com/archestra-ai/archestra)
