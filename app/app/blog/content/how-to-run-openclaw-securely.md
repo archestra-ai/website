@@ -73,7 +73,7 @@ In the Archestra UI:
 
 1. Go to **Settings > LLM API Keys** and add your Anthropic API key (or whichever provider you use)
 2. Navigate to **LLM Proxy** in the sidebar — you'll see a "Default LLM Proxy" already created
-3. Click the **Connect** button on the "Default LLM Proxy" row, then select the **Anthropic** tab. Archestra provides provider-specific proxy URLs (one each for Anthropic, OpenAI, Gemini, etc.). We'll use the Anthropic endpoint since OpenClaw uses Claude
+3. Click the **Connect** button on the "Default LLM Proxy" row, then select the **Anthropic** tab. Archestra provides provider-specific proxy URLs (one each for Anthropic, OpenAI, Gemini, etc.). We'll use the Anthropic endpoint for this example.
 
 The Anthropic proxy URL will look something like `http://localhost:9000/v1/anthropic/<proxy-uuid>`. This is the endpoint we'll point OpenClaw at.
 
@@ -208,8 +208,6 @@ openclaw-gateway:
 ```
 
 This whitelisting approach is far safer than the native install, where OpenClaw has access to your entire home directory. Only mount what you need — everything else stays off-limits.
-
-Archestra adds another layer here: because all LLM traffic is proxied, your actual API keys never need to exist on the machine running OpenClaw. They live in Archestra's configuration, running in a separate container entirely.
 
 ## Wrapping Up
 
