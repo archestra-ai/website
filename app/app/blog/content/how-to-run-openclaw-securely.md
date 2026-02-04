@@ -79,7 +79,7 @@ The Anthropic proxy URL will look something like `http://localhost:9000/v1/anthr
 
 The example repo includes an `openclaw.json` config that routes all LLM traffic through Archestra. The key insight is that Archestra's proxy speaks the native Anthropic Messages API — so we use `anthropic-messages` as the API type, and pass your real Anthropic API key (which Archestra forwards to the upstream provider).
 
-Edit `openclaw.json` in the `examples/openclaw` directory and replace `<your-proxy-uuid>` with the UUID from Step 2:
+Edit `config/openclaw.json` in the `examples/openclaw` directory and replace `<your-proxy-uuid>` with the UUID from Step 2:
 
 ```json5
 {
@@ -182,17 +182,22 @@ When the cap is hit, Archestra returns an error to OpenClaw instead of forwardin
 
 This isn't just about runaway loops. Prompt injection attacks can deliberately trigger expensive operations — requesting maximum-context responses, chaining tool calls, or forcing the agent into recursive reasoning. Cost caps are a critical safety net.
 
-## Sandboxing: Don't Run It on Your Primary Machine
+## Sandboxing: Docker Gives You Isolation by Default
 
-Even with tool permissions and cost caps, you should think carefully about where OpenClaw runs. Giving an AI agent shell access on the same machine where you keep your passwords, financial documents, and personal photos is a risk that no amount of software guardrails can fully eliminate.
+If you followed the setup above, OpenClaw is already running inside a Docker container. This means it does **not** have access to your host machine's filesystem, SSH keys, or credentials by default — a massive improvement over running it natively.
 
-Options for isolation:
+You control exactly what OpenClaw can access by mounting specific directories in `docker-compose.yaml`. For example, to give OpenClaw access to a single project directory:
 
-- **Docker containers**: OpenClaw supports sandbox mode (`agents.defaults.sandbox.mode: "all"`) which runs tool execution in isolated Docker containers
-- **Dedicated VM**: Run OpenClaw in a virtual machine with only the data and credentials it needs
-- **Separate user account**: At minimum, run it under a restricted OS user with no access to your home directory's sensitive files
+```yaml
+openclaw-gateway:
+  volumes:
+    - ./config:/home/node/.openclaw
+    - ~/coding/my-project:/home/node/.openclaw/workspace/my-project
+```
 
-Archestra adds another layer here: because all LLM traffic is proxied, your actual API keys never need to exist on the machine running OpenClaw. They live in Archestra's configuration, which can run on a separate host or container entirely.
+This whitelisting approach is far safer than the native install, where OpenClaw has access to your entire home directory. Only mount what you need — everything else stays off-limits.
+
+Archestra adds another layer here: because all LLM traffic is proxied, your actual API keys never need to exist on the machine running OpenClaw. They live in Archestra's configuration, running in a separate container entirely.
 
 ## Wrapping Up
 
