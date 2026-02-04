@@ -12,6 +12,14 @@ const {
   },
 } = constants;
 
+export function formatStarCount(count: number): string {
+  if (count < 1000) {
+    return String(count);
+  }
+  const thousands = count / 1000;
+  return thousands % 1 === 0 ? `${thousands}k` : `${parseFloat(thousands.toFixed(1))}k`;
+}
+
 export function GitHubStarButton() {
   const [stars, setStars] = useState<number | null>(null);
 
@@ -45,7 +53,7 @@ export function GitHubStarButton() {
           <div className="w-px h-4 bg-gray-300" />
           <span className="flex items-center gap-1">
             <Star className="h-3 w-3 fill-current" />
-            {stars}
+            {formatStarCount(stars)}
           </span>
         </>
       )}
