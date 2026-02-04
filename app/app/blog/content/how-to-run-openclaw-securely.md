@@ -65,13 +65,15 @@ docker compose up -d platform
 
 This starts the Archestra platform. After a minute or so, open [http://localhost:3000](http://localhost:3000) and log in with the default credentials (`admin@example.com` / `password`). You'll want to change these for anything beyond local experimentation.
 
+> **Tip:** If `localhost` doesn't connect (common with OrbStack on macOS), use `http://127.0.0.1:3000` instead and uncomment the `ARCHESTRA_FRONTEND_URL` line in `docker-compose.yaml`.
+
 ### Step 2: Configure Archestra as an LLM Proxy
 
 In the Archestra UI:
 
 1. Go to **Settings > LLM API Keys** and add your Anthropic API key (or whichever provider you use)
 2. Navigate to **LLM Proxy** in the sidebar — you'll see a "Default LLM Proxy" already created
-3. Click into it and note the **Connection** details. Archestra provides provider-specific proxy URLs (one each for Anthropic, OpenAI, Gemini, etc.). We'll use the Anthropic endpoint since OpenClaw uses Claude
+3. Click the **Connect** button on the "Default LLM Proxy" row, then select the **Anthropic** tab. Archestra provides provider-specific proxy URLs (one each for Anthropic, OpenAI, Gemini, etc.). We'll use the Anthropic endpoint since OpenClaw uses Claude
 
 The Anthropic proxy URL will look something like `http://localhost:9000/v1/anthropic/<proxy-uuid>`. This is the endpoint we'll point OpenClaw at.
 
@@ -128,7 +130,17 @@ export ANTHROPIC_API_KEY="your-api-key-here"
 docker compose up -d
 ```
 
-This brings up the OpenClaw gateway at [http://localhost:18789](http://localhost:18789). Every LLM request OpenClaw makes now flows through Archestra, where you can observe, control, and limit it.
+This brings up the OpenClaw gateway. To access the dashboard, open the tokenized URL — the default gateway token is `changeme`:
+
+[http://localhost:18789/?token=changeme](http://localhost:18789/?token=changeme)
+
+On the first connection, OpenClaw will require you to **approve the device pairing**. This is a security feature that prevents unauthorized dashboard access. The example repo includes a helper script that approves all pending requests:
+
+```bash
+./approve-devices.sh
+```
+
+Once paired, the dashboard will connect and you'll see "Health OK" in the top right. Every LLM request OpenClaw makes now flows through Archestra, where you can observe, control, and limit it.
 
 ## Locking It Down: Tool Permissions
 
@@ -166,7 +178,7 @@ OpenClaw itself supports tool profiles (`minimal`, `messaging`, `coding`, `full`
 }
 ```
 
-The combination of OpenClaw's client-side restrictions and Archestra's server-side enforcement means you have two independent layers of defense. Even if one is bypassed, the other catches it.
+OpenClaw's tool config minimizes _what_ tools are available, and Archestra's tool policies enforce _how_ those tools can be used.
 
 ## Setting Hard Caps on LLM Costs
 
