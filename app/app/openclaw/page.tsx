@@ -29,7 +29,8 @@ export default function OpenClawPage() {
 
               <div className="relative space-y-6 max-w-4xl">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-950 leading-[1.15] tracking-tight">
-                  How to bring <span className="line-through decoration-gray-300 decoration-2 text-gray-400">ClawdBot</span>{' '}
+                  How to bring{' '}
+                  <span className="line-through decoration-gray-300 decoration-2 text-gray-400">ClawdBot</span>{' '}
                   <span className="line-through decoration-gray-300 decoration-2 text-gray-400">MoldBot</span>{' '}
                   <span className="text-gray-950">OpenClaw</span>-like agents to your organization{' '}
                   <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
@@ -68,20 +69,21 @@ export default function OpenClawPage() {
                 </h2>
 
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Agents can leak data because of the{' '}
-                  <strong>Lethal Trifecta</strong> — a dangerous combination of: access to private data,
-                  processing untrusted content, and external communication ability. When all three are present,
-                  prompt injection can exfiltrate sensitive data.
+                  Agents can leak data because of the <strong>Lethal Trifecta</strong> — a dangerous combination of:
+                  access to private data, processing untrusted content, and external communication ability. When all
+                  three are present, prompt injection can exfiltrate sensitive data.
                 </p>
 
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Archestra provides <strong>deterministic guardrails</strong> preventing agents from leaking
-                  sensitive data, corrupting systems, and following prompt injections.
+                  Archestra provides <strong>deterministic guardrails</strong> preventing agents from leaking sensitive
+                  data, corrupting systems, and following prompt injections.
                 </p>
 
                 {/* Examples of Hacks */}
                 <div className="bg-red-50/50 backdrop-blur rounded-lg p-4 border border-red-200">
-                  <p className="text-sm font-semibold text-red-900 mb-3">This vulnerability is not new, it's a well-known problem:</p>
+                  <p className="text-sm font-semibold text-red-900 mb-3">
+                    This vulnerability is not new, it's a well-known problem:
+                  </p>
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <a
                       href="https://simonwillison.net/2023/Apr/14/new-prompt-injection-attack-on-chatgpt-web-version-markdown-imag/"
@@ -165,11 +167,7 @@ export default function OpenClawPage() {
                   className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 cursor-zoom-in"
                   onClick={() => setLightboxOpen(true)}
                 >
-                  <img
-                    src="/clawdbot_hack.jpeg"
-                    alt="ClawdBot vulnerability demonstration"
-                    className="w-full h-auto"
-                  />
+                  <img src="/clawdbot_hack.jpeg" alt="ClawdBot vulnerability demonstration" className="w-full h-auto" />
                 </div>
                 <ol className="relative text-sm text-gray-500 space-y-1 pl-1">
                   <li>1. Sending ClawdBot email with prompt injection</li>
@@ -215,16 +213,12 @@ export default function OpenClawPage() {
           <div className="container px-4 md:px-6 max-w-7xl mx-auto">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                  Only 5 minutes to run and try yourself
-                </h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Only 5 minutes to run and try yourself</h2>
               </div>
               <QuickStartBlock showExposureOverlay />
             </div>
           </div>
         </section>
-
-
       </main>
 
       {/* Lightbox */}
