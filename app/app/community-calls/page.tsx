@@ -252,7 +252,7 @@ export default function CommunityCallsPage() {
 
                   <div className="border-t pt-6 pb-6">
                     <a
-                      href={constants.slack.joinCommunityUrl}
+                      href="/join-slack"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-teal-600 hover:text-teal-700 font-medium"
