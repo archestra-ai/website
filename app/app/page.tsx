@@ -1,13 +1,13 @@
 'use client';
 
-import { AlertTriangle, Calendar, Github, ShieldCheck } from 'lucide-react';
+import { AlertTriangle, Calendar, Github, Server, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
-import { useState } from 'react';
 
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 import MermaidDiagram from '@components/MermaidDiagram';
 import NewsletterForm from '@components/NewsletterForm';
+import QuickStartBlock from '@components/QuickStartBlock';
 import constants from '@constants';
 
 const {
@@ -28,8 +28,6 @@ const {
 } = constants;
 
 export default function Home() {
-  const [copied, setCopied] = useState(false);
-
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -91,6 +89,18 @@ export default function Home() {
                   className="w-full h-auto rounded-lg shadow-lg border border-gray-200"
                 />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Launch Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-10">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Quick Start</h2>
+              </div>
+              <QuickStartBlock />
             </div>
           </div>
         </section>
@@ -1169,59 +1179,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Docker Run Section */}
-        <section className="py-16 bg-white">
-          <div className="container px-4 md:px-6 max-w-7xl mx-auto">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Quick Start</h2>
-                <p className="text-lg text-gray-600">Deploy Archestra in seconds with Docker</p>
-              </div>
-              <div className="bg-gray-900 rounded-lg p-6 shadow-xl relative group">
-                <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
-                  <div className="w-full overflow-x-auto pr-16 md:pr-0">
-                    <code className="text-green-400 font-mono text-sm md:text-base block whitespace-pre pt-8 md:pt-0">
-                      docker pull archestra/platform:latest;{'\n'}
-                      docker run -p 9000:9000 -p 3000:3000 \{'\n'}
-                      &nbsp;&nbsp;-e ARCHESTRA_QUICKSTART=true \{'\n'}
-                      &nbsp;&nbsp;-v /var/run/docker.sock:/var/run/docker.sock \{'\n'}
-                      &nbsp;&nbsp;-v archestra-postgres-data:/var/lib/postgresql/data \{'\n'}
-                      &nbsp;&nbsp;-v archestra-app-data:/app/data \{'\n'}
-                      &nbsp;&nbsp;archestra/platform;
-                    </code>
-                  </div>
-                  <button
-                    onClick={() => {
-                      navigator.clipboard.writeText(
-                        'docker pull archestra/platform:latest;\ndocker run -p 9000:9000 -p 3000:3000 \\\n  -e ARCHESTRA_QUICKSTART=true \\\n  -v /var/run/docker.sock:/var/run/docker.sock \\\n  -v archestra-postgres-data:/var/lib/postgresql/data \\\n  -v archestra-app-data:/app/data \\\n  archestra/platform;'
-                      );
-                      setCopied(true);
-                      setTimeout(() => setCopied(false), 2000);
-                    }}
-                    className={`absolute top-0 right-0 md:static md:ml-4 px-3 py-1.5 text-xs font-medium text-white rounded-bl-lg rounded-tr-lg transition-all shadow-lg md:shadow-none z-10 ${
-                      copied ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-700 hover:bg-gray-600'
-                    }`}
-                  >
-                    {copied ? 'Copied!' : 'Copy'}
-                  </button>
-                </div>
-              </div>
-              <div className="text-center mt-4">
-                <p className="text-sm text-gray-600">
-                  View the{' '}
-                  <Link href="/docs/platform-deployment" className="text-blue-600 hover:text-blue-700 font-medium">
-                    full deployment guide
-                  </Link>{' '}
-                  for more options
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Platform Integrations Section */}
         <section className="pb-20 pt-20 bg-white">
           <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900">Integrates with your stack</h2>
+            </div>
             {/* Platform Logos Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
               {/* N8N */}
@@ -1275,16 +1238,6 @@ export default function Home() {
                 </div>
                 <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
               </Link>
-            </div>
-
-            {/* Additional Integration Note */}
-            <div className="text-center mt-12">
-              <p className="text-gray-600">
-                And many more through our{' '}
-                <Link href="/docs/" className="text-blue-600 hover:text-blue-700 font-medium">
-                  OpenAI-compatible proxy
-                </Link>
-              </p>
             </div>
           </div>
         </section>
