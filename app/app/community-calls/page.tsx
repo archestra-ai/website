@@ -59,21 +59,11 @@ export default function CommunityCallsPage() {
 
     // Get current time in London timezone using TZDate
     const nowInLondon = TZDate.tz(MEETING_CONFIG.timezone);
-    const nowTime = nowInLondon.getTime();
-
-    // Calculate the number of days since the reference date
-    const daysSinceReference = Math.floor((nowTime - referenceDate.getTime()) / (1000 * 60 * 60 * 24));
-
-    // Calculate the number of weeks since reference
-    const weeksSinceReference = Math.floor(daysSinceReference / 7);
-
-    // Determine if we're in an "on" week (even weeks) or "off" week (odd weeks)
-    const isOnWeek = weeksSinceReference % 2 === 0;
 
     const londonDay = getDay(nowInLondon);
-    let daysUntilMeeting = MEETING_CONFIG.dayNumber - londonDay;
+    let daysUntilTuesday = MEETING_CONFIG.dayNumber - londonDay;
 
-    // If today is Tuesday in London
+    // Find the next upcoming Tuesday
     if (londonDay === MEETING_CONFIG.dayNumber) {
       const londonHour = nowInLondon.getHours();
       const londonMinute = nowInLondon.getMinutes();
@@ -82,26 +72,27 @@ export default function CommunityCallsPage() {
         londonHour > MEETING_CONFIG.hour ||
         (londonHour === MEETING_CONFIG.hour && londonMinute >= MEETING_CONFIG.minute);
 
-      if (isOnWeek && !hasMeetingPassed) {
-        daysUntilMeeting = 0; // Today is a meeting day
-      } else {
-        // Next meeting is in 2 weeks if we're on an "on" week after meeting time,
-        // or 1 week if we're on an "off" week
-        daysUntilMeeting = isOnWeek ? 14 : 7;
-      }
-    } else if (daysUntilMeeting < 0) {
-      // Tuesday has passed this week
-      daysUntilMeeting += isOnWeek ? 14 : 7;
-    } else {
-      // Tuesday is coming up this week
-      if (!isOnWeek) {
-        daysUntilMeeting += 7; // Skip to next week's Tuesday
-      }
+      daysUntilTuesday = hasMeetingPassed ? 7 : 0;
+    } else if (daysUntilTuesday < 0) {
+      daysUntilTuesday += 7;
     }
+
+    // Get the candidate Tuesday date
+    const candidateDate = addDays(nowInLondon, daysUntilTuesday);
+
+    // Determine if the candidate Tuesday is in an "on" week based on the reference date
+    const daysSinceReference = Math.floor(
+      (candidateDate.getTime() - referenceDate.getTime()) / (1000 * 60 * 60 * 24)
+    );
+    const weeksSinceReference = Math.floor(daysSinceReference / 7);
+    const isOnWeek = weeksSinceReference % 2 === 0;
+
+    // If this Tuesday is an "off" week, skip to next Tuesday
+    const finalDaysUntil = isOnWeek ? daysUntilTuesday : daysUntilTuesday + 7;
 
     // Create meeting date at 2pm London time using TZDate
     // TZDate properly handles timezone - all operations happen in London time
-    let meetingDate = addDays(nowInLondon, daysUntilMeeting);
+    let meetingDate = addDays(nowInLondon, finalDaysUntil);
     meetingDate = setHours(meetingDate, MEETING_CONFIG.hour);
     meetingDate = setMinutes(meetingDate, MEETING_CONFIG.minute);
     meetingDate = setSeconds(meetingDate, 0);
