@@ -186,7 +186,6 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
           <span className="text-yellow-300">-p 9000:9000 -p 3000:3000</span> {renderLineContinuation()}
           {'\n'}
           <span className="text-gray-300">
-            ARCHESTRA_NGROK_AUTH_TOKEN
             {'  '}-e <span className="text-purple-400">ARCHESTRA_QUICKSTART</span>=true
           </span>{' '}
           {renderLineContinuation()}
