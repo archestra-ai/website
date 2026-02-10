@@ -22,7 +22,6 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
       setShell('powershell');
     }
   }, []);
-ARCHESTRA_NGROK_AUTH_TOKEN
   const lc = shell === 'bash' ? '\\' : '`';
 
   const getQuickstartCommand = () => {
