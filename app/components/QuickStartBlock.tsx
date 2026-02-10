@@ -22,7 +22,7 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
       setShell('powershell');
     }
   }, []);
-  
+
   const lc = shell === 'bash' ? '\\' : '`';
 
   const getQuickstartCommand = () => {
