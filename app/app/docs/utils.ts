@@ -79,6 +79,9 @@ function normalizeLastUpdated(lastUpdated: string | Date | undefined): string {
 
 const categoryOrder = [
   'Archestra Platform',
+  'Agents',
+  'LLM Proxy',
+  'MCP Gateway',
   'Archestra Desktop Agent',
   'Development',
   'Getting Started',
