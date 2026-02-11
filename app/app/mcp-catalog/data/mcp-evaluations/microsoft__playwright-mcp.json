@@ -7,7 +7,20 @@
   },
   "server": {
     "command": "docker",
-    "args": ["run", "-i", "--rm", "--init", "mcr.microsoft.com/playwright/mcp"],
+    "args": [
+      "run",
+      "-i",
+      "--rm",
+      "--init",
+      "mcr.microsoft.com/playwright/mcp",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8080",
+      "--allowed-hosts",
+      "*",
+      "--isolated"
+    ],
     "env": {},
     "type": "local",
     "docker_image": "mcr.microsoft.com/playwright/mcp"
@@ -31,7 +44,7 @@
       "provider": null,
       "required": false
     },
-    "works_in_archestra": false
+    "works_in_archestra": true
   },
   "github_info": {
     "owner": "microsoft",

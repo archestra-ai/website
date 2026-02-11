@@ -8,7 +8,7 @@
   "server": {
     "type": "local",
     "command": "npx",
-    "args": ["-y", "matvey-kuk/gaggimate-mcp"],
+    "args": ["-y", "gaggimate-mcp"],
     "env": {}
   },
   "archestra_config": {
@@ -83,7 +83,7 @@
     }
   ],
   "prompts": [],
-  "readme": "# Gaggimate MCP Server\n\nAI-powered espresso machine profile optimization via Model Context Protocol.\n\n## Features\n- Continuous learning and improvement of extraction parameters\n- WebSocket-based communication with espresso machine\n- Real-time shot data analysis\n- Automatic profile optimization\n\n## Installation\n\nQuick start:\n```bash\nGAGGIMATE_HOST=192.168.1.100 npx -y matvey-kuk/gaggimate-mcp\n```",
+  "readme": "# Gaggimate MCP Server\n\nAI-powered espresso machine profile optimization via Model Context Protocol.\n\n## Features\n- Continuous learning and improvement of extraction parameters\n- WebSocket-based communication with espresso machine\n- Real-time shot data analysis\n- Automatic profile optimization\n\n## Installation\n\nQuick start:\n```bash\nGAGGIMATE_HOST=192.168.1.100 npx -y gaggimate-mcp\n```",
   "framework": null,
   "last_scraped_at": "2025-12-25T00:00:00.000Z",
   "evaluation_model": null,

@@ -1,9 +1,10 @@
 'use client';
 
 import { Check, Code, Copy, Globe, MessageSquare, Rocket, Terminal } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type LaunchTab = 'development' | 'quickstart' | 'production';
+type ShellType = 'bash' | 'powershell';
 type ExposureStep = 'choose' | 'ngrok-input' | 'custom-domain-input' | null;
 
 const linkClass = 'text-gray-500 hover:text-gray-300 underline underline-offset-2';
@@ -11,27 +12,32 @@ const linkClass = 'text-gray-500 hover:text-gray-300 underline underline-offset-
 export default function QuickStartBlock({ showExposureOverlay = false }: { showExposureOverlay?: boolean }) {
   const [copied, setCopied] = useState(false);
   const [launchTab, setLaunchTab] = useState<LaunchTab>('quickstart');
+  const [shell, setShell] = useState<ShellType>('bash');
   const [exposureStep, setExposureStep] = useState<ExposureStep>(showExposureOverlay ? 'choose' : null);
   const [ngrokKey, setNgrokKey] = useState('');
   const [customDomain, setCustomDomain] = useState('');
 
-  const baseQuickstartCommand =
-    'docker pull archestra/platform:latest;\ndocker run -p 9000:9000 -p 3000:3000 \\\n  -e ARCHESTRA_QUICKSTART=true \\';
-  const quickstartCommandSuffix =
-    '\n  -v /var/run/docker.sock:/var/run/docker.sock \\\n  -v archestra-postgres-data:/var/lib/postgresql/data \\\n  -v archestra-app-data:/app/data \\\n  archestra/platform;';
+  useEffect(() => {
+    if (navigator.platform?.startsWith('Win') || navigator.userAgent?.includes('Windows')) {
+      setShell('powershell');
+    }
+  }, []);
+
+  const lc = shell === 'bash' ? '\\' : '`';
 
   const getQuickstartCommand = () => {
+    const base = `docker pull archestra/platform:latest;\ndocker run -p 9000:9000 -p 3000:3000 ${lc}\n  -e ARCHESTRA_QUICKSTART=true ${lc}`;
     let extra = '';
-    if (ngrokKey) extra += `\n  -e NGROK_API_KEY=${ngrokKey} \\`;
-    if (customDomain) extra += `\n  -e ARCHESTRA_API_BASE_URL=${customDomain} \\`;
-    return baseQuickstartCommand + extra + quickstartCommandSuffix;
+    if (ngrokKey) extra += `\n  -e ARCHESTRA_NGROK_AUTH_TOKEN=${ngrokKey} ${lc}`;
+    if (customDomain) extra += `\n  -e ARCHESTRA_API_BASE_URL=${customDomain} ${lc}`;
+    const suffix = `\n  -v /var/run/docker.sock:/var/run/docker.sock ${lc}\n  -v archestra-postgres-data:/var/lib/postgresql/data ${lc}\n  -v archestra-app-data:/app/data ${lc}\n  archestra/platform;`;
+    return base + extra + suffix;
   };
 
   const commands: Record<LaunchTab, string> = {
     development: 'git clone https://github.com/archestra-ai/archestra.git\ncd archestra/platform\ntilt up',
     quickstart: getQuickstartCommand(),
-    production:
-      'helm upgrade archestra-platform \\\n  oci://europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/helm-charts/archestra-platform \\\n  --install \\\n  --namespace archestra \\\n  --set archestra.env.HOSTNAME="0.0.0.0" \\\n  --create-namespace \\\n  --wait',
+    production: `helm upgrade archestra-platform ${lc}\n  oci://europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/helm-charts/archestra-platform ${lc}\n  --install ${lc}\n  --namespace archestra ${lc}\n  --set archestra.env.HOSTNAME="0.0.0.0" ${lc}\n  --create-namespace ${lc}\n  --wait`,
   };
 
   const handleCopy = () => {
@@ -153,6 +159,8 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
     return null;
   };
 
+  const renderLineContinuation = () => <span className="text-gray-600">{lc}</span>;
+
   const renderQuickstartCommand = () => (
     <div>
       <div className="flex text-gray-600 mb-3">
@@ -175,19 +183,19 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
         <span className="text-gray-600 select-none mr-4">$</span>
         <div>
           <span className="text-cyan-400">docker run</span>{' '}
-          <span className="text-yellow-300">-p 9000:9000 -p 3000:3000</span> <span className="text-gray-600">\</span>
+          <span className="text-yellow-300">-p 9000:9000 -p 3000:3000</span> {renderLineContinuation()}
           {'\n'}
           <span className="text-gray-300">
             {'  '}-e <span className="text-purple-400">ARCHESTRA_QUICKSTART</span>=true
           </span>{' '}
-          <span className="text-gray-600">\</span>
+          {renderLineContinuation()}
           {'\n'}
           {ngrokKey && (
             <>
               <span className="text-gray-300">
-                {'  '}-e <span className="text-purple-400">NGROK_API_KEY</span>={ngrokKey}
+                {'  '}-e <span className="text-purple-400">ARCHESTRA_NGROK_AUTH_TOKEN</span>={ngrokKey}
               </span>{' '}
-              <span className="text-gray-600">\</span>
+              {renderLineContinuation()}
               {'\n'}
             </>
           )}
@@ -196,18 +204,17 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
               <span className="text-gray-300">
                 {'  '}-e <span className="text-purple-400">ARCHESTRA_API_BASE_URL</span>={customDomain}
               </span>{' '}
-              <span className="text-gray-600">\</span>
+              {renderLineContinuation()}
               {'\n'}
             </>
           )}
           <span className="text-gray-300">{'  '}-v /var/run/docker.sock:/var/run/docker.sock</span>{' '}
-          <span className="text-gray-600">\</span>
+          {renderLineContinuation()}
           {'\n'}
           <span className="text-gray-300">{'  '}-v archestra-postgres-data:/var/lib/postgresql/data</span>{' '}
-          <span className="text-gray-600">\</span>
+          {renderLineContinuation()}
           {'\n'}
-          <span className="text-gray-300">{'  '}-v archestra-app-data:/app/data</span>{' '}
-          <span className="text-gray-600">\</span>
+          <span className="text-gray-300">{'  '}-v archestra-app-data:/app/data</span> {renderLineContinuation()}
           {'\n'}
           <span className="text-gray-300">{'  '}archestra/platform</span>
         </div>
@@ -237,27 +244,49 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
     <div className="rounded-xl overflow-hidden shadow-2xl border border-gray-800">
       {/* Tabs */}
       <div className="bg-gray-900 px-4 flex gap-0 border-b border-gray-700/50">
-        {[
-          { key: 'development' as const, label: 'Development', icon: Code },
-          { key: 'quickstart' as const, label: 'Local Quickstart', icon: Terminal },
-          { key: 'production' as const, label: 'Production', icon: Rocket },
-        ].map((tab) => {
-          const Icon = tab.icon;
-          const isActive = launchTab === tab.key;
-          return (
+        <div className="flex gap-0 flex-1">
+          {[
+            { key: 'development' as const, label: 'Development', icon: Code },
+            { key: 'quickstart' as const, label: 'Local Quickstart', icon: Terminal },
+            { key: 'production' as const, label: 'Production', icon: Rocket },
+          ].map((tab) => {
+            const Icon = tab.icon;
+            const isActive = launchTab === tab.key;
+            return (
+              <button
+                key={tab.key}
+                onClick={() => handleTabChange(tab.key)}
+                className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-all relative ${
+                  isActive ? 'text-white' : 'text-gray-500 hover:text-gray-300'
+                }`}
+              >
+                <Icon className="w-3.5 h-3.5" />
+                {tab.label}
+                {isActive && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-500" />}
+              </button>
+            );
+          })}
+        </div>
+        {launchTab !== 'development' && (
+          <div className="flex items-center gap-1 text-xs">
             <button
-              key={tab.key}
-              onClick={() => handleTabChange(tab.key)}
-              className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-all relative ${
-                isActive ? 'text-white' : 'text-gray-500 hover:text-gray-300'
+              onClick={() => setShell('bash')}
+              className={`px-2 py-1 rounded transition-colors ${
+                shell === 'bash' ? 'text-gray-200 bg-gray-700' : 'text-gray-500 hover:text-gray-300'
               }`}
             >
-              <Icon className="w-3.5 h-3.5" />
-              {tab.label}
-              {isActive && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-500" />}
+              Linux / macOS
             </button>
-          );
-        })}
+            <button
+              onClick={() => setShell('powershell')}
+              className={`px-2 py-1 rounded transition-colors ${
+                shell === 'powershell' ? 'text-gray-200 bg-gray-700' : 'text-gray-500 hover:text-gray-300'
+              }`}
+            >
+              Windows
+            </button>
+          </div>
+        )}
       </div>
       {/* Code content */}
       <div className="bg-[#0d1117] p-6 font-mono text-sm md:text-base leading-relaxed overflow-x-auto relative whitespace-pre-wrap">
@@ -369,24 +398,23 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
               <span className="text-gray-600 select-none mr-4">$</span>
               <div>
                 <span className="text-cyan-400">helm upgrade</span>{' '}
-                <span className="text-gray-300">archestra-platform</span> <span className="text-gray-600">\</span>
+                <span className="text-gray-300">archestra-platform</span> {renderLineContinuation()}
                 {'\n'}
                 <span className="text-gray-300">{'  '}oci://europe-west1-docker.pkg.dev/friendly-path-465518-r6/</span>
                 {'\n'}
                 <span className="text-gray-300">{'    '}archestra-public/helm-charts/archestra-platform</span>{' '}
-                <span className="text-gray-600">\</span>
+                {renderLineContinuation()}
                 {'\n'}
-                <span className="text-yellow-300">{'  '}--install</span> <span className="text-gray-600">\</span>
+                <span className="text-yellow-300">{'  '}--install</span> {renderLineContinuation()}
                 {'\n'}
                 <span className="text-yellow-300">{'  '}--namespace</span>{' '}
-                <span className="text-gray-300">archestra</span> <span className="text-gray-600">\</span>
+                <span className="text-gray-300">archestra</span> {renderLineContinuation()}
                 {'\n'}
                 <span className="text-yellow-300">{'  '}--set</span>{' '}
                 <span className="text-purple-400">archestra.env.HOSTNAME</span>
-                <span className="text-gray-300">=&quot;0.0.0.0&quot;</span> <span className="text-gray-600">\</span>
+                <span className="text-gray-300">=&quot;0.0.0.0&quot;</span> {renderLineContinuation()}
                 {'\n'}
-                <span className="text-yellow-300">{'  '}--create-namespace</span>{' '}
-                <span className="text-gray-600">\</span>
+                <span className="text-yellow-300">{'  '}--create-namespace</span> {renderLineContinuation()}
                 {'\n'}
                 <span className="text-yellow-300">{'  '}--wait</span>
               </div>
