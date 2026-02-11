@@ -28,7 +28,7 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
   const getQuickstartCommand = () => {
     const base = `docker pull archestra/platform:latest;\ndocker run -p 9000:9000 -p 3000:3000 ${lc}\n  -e ARCHESTRA_QUICKSTART=true ${lc}`;
     let extra = '';
-    if (ngrokKey) extra += `\n  -e NGROK_API_KEY=${ngrokKey} ${lc}`;
+    if (ngrokKey) extra += `\n  -e ARCHESTRA_NGROK_AUTH_TOKEN=${ngrokKey} ${lc}`;
     if (customDomain) extra += `\n  -e ARCHESTRA_API_BASE_URL=${customDomain} ${lc}`;
     const suffix = `\n  -v /var/run/docker.sock:/var/run/docker.sock ${lc}\n  -v archestra-postgres-data:/var/lib/postgresql/data ${lc}\n  -v archestra-app-data:/app/data ${lc}\n  archestra/platform;`;
     return base + extra + suffix;
@@ -193,7 +193,7 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
           {ngrokKey && (
             <>
               <span className="text-gray-300">
-                {'  '}-e <span className="text-purple-400">NGROK_API_KEY</span>={ngrokKey}
+                {'  '}-e <span className="text-purple-400">ARCHESTRA_NGROK_AUTH_TOKEN</span>={ngrokKey}
               </span>{' '}
               {renderLineContinuation()}
               {'\n'}
@@ -214,8 +214,7 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
           <span className="text-gray-300">{'  '}-v archestra-postgres-data:/var/lib/postgresql/data</span>{' '}
           {renderLineContinuation()}
           {'\n'}
-          <span className="text-gray-300">{'  '}-v archestra-app-data:/app/data</span>{' '}
-          {renderLineContinuation()}
+          <span className="text-gray-300">{'  '}-v archestra-app-data:/app/data</span> {renderLineContinuation()}
           {'\n'}
           <span className="text-gray-300">{'  '}archestra/platform</span>
         </div>
@@ -415,8 +414,7 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
                 <span className="text-purple-400">archestra.env.HOSTNAME</span>
                 <span className="text-gray-300">=&quot;0.0.0.0&quot;</span> {renderLineContinuation()}
                 {'\n'}
-                <span className="text-yellow-300">{'  '}--create-namespace</span>{' '}
-                {renderLineContinuation()}
+                <span className="text-yellow-300">{'  '}--create-namespace</span> {renderLineContinuation()}
                 {'\n'}
                 <span className="text-yellow-300">{'  '}--wait</span>
               </div>
