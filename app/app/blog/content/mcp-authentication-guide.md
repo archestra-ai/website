@@ -1,9 +1,9 @@
 ---
 title: "A Developer's Guide to MCP Authentication"
 date: '2026-02-11'
-author: 'Archestra Team'
+author: 'Joey Orlando'
 description: 'The standards, protocols, and patterns behind secure AI tool access — OAuth 2.1, PKCE, CIMD, and more.'
-image: '/blog/2026-02-11-mcp-authentication.jpg'
+image: '/blog/2026-02-11-mcp-authentication.png'
 ---
 
 ## Every MCP Connection Starts with a 401
@@ -11,6 +11,8 @@ image: '/blog/2026-02-11-mcp-authentication.jpg'
 You've just installed an MCP server. Your AI assistant connects, and immediately gets rejected — a `401 Unauthorized` response with a cryptic `WWW-Authenticate` header. What happens next involves at least three RFCs, a discovery protocol, and a client registration step your user never sees.
 
 MCP (Model Context Protocol) standardized on OAuth 2.1 for authentication. If you're building MCP clients, servers, or gateways, understanding how these pieces fit together saves hours of debugging. This post breaks down the full authentication landscape — the standards involved, how discovery works, how clients register, and where the sharp edges are.
+
+*This is Part 1 of a two-part series on MCP authentication. [Part 2](/blog/enterprise-mcp-servers-jwks) covers building enterprise MCP servers with JWKS and identity providers.*
 
 ## Why MCP Chose OAuth 2.1
 
@@ -27,16 +29,15 @@ This combination gives MCP clients a secure way to authenticate without embeddin
 
 MCP auth relies on a stack of interrelated standards. Here's the full picture:
 
-| Standard | What it does | MCP role |
-|---|---|---|
-| **OAuth 2.1** | Authorization framework | Core auth protocol |
-| **PKCE (RFC 7636)** | Protects code exchange for public clients | Required by spec |
-| **RFC 9728** | Protected Resource Metadata | Links resource server to auth server |
-| **RFC 8414** | Authorization Server Metadata | Endpoint discovery |
-| **RFC 7591** | Dynamic Client Registration (DCR) | Runtime client registration |
-| **CIMD** | Client ID Metadata Documents | URL-based client identity |
-| **RFC 8628** | Device Authorization Grant | Headless client auth |
-| **RFC 8707** | Resource Indicators | Audience-bound tokens |
+- **[OAuth 2.1](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-12)** — Authorization framework. The core auth protocol for MCP.
+- **[PKCE (RFC 7636)](https://datatracker.ietf.org/doc/html/rfc7636)** — Proof Key for Code Exchange. Protects code exchange for public clients. Required by the MCP spec.
+- **[RFC 9728](https://datatracker.ietf.org/doc/html/rfc9728)** — Protected Resource Metadata. Links a resource server to its authorization server.
+- **[RFC 8414](https://datatracker.ietf.org/doc/html/rfc8414)** — Authorization Server Metadata. Endpoint discovery for authorize, token, register, and JWKS URLs.
+- **[RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591)** — Dynamic Client Registration (DCR). Allows clients to register at runtime.
+- **[CIMD](https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/)** — Client ID Metadata Documents. URL-based client identity. The MCP default since November 2025.
+- **[RFC 8628](https://datatracker.ietf.org/doc/html/rfc8628)** — Device Authorization Grant. Auth for headless clients that can't open a browser.
+- **[RFC 8707](https://datatracker.ietf.org/doc/html/rfc8707)** — Resource Indicators. Binds tokens to a specific audience/resource server.
+- **[MCP Authorization Spec](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization)** — The MCP specification that ties all of the above together.
 
 Don't worry if this looks overwhelming — each piece has a specific job, and they chain together in a predictable sequence.
 
@@ -78,11 +79,7 @@ This answers: "who is the authorization server for this resource?"
   "token_endpoint": "https://auth.example.com/token",
   "registration_endpoint": "https://auth.example.com/register",
   "code_challenge_methods_supported": ["S256"],
-  "grant_types_supported": [
-    "authorization_code",
-    "refresh_token",
-    "urn:ietf:params:oauth:grant-type:device_code"
-  ]
+  "grant_types_supported": ["authorization_code", "refresh_token", "urn:ietf:params:oauth:grant-type:device_code"]
 }
 ```
 
@@ -205,13 +202,11 @@ Why this matters: when one authorization server protects multiple MCP servers, a
 
 MCP auth is still maturing. Here's where major clients stand as of early 2026:
 
-| Client | Auth Support | Registration | Notes |
-|---|---|---|---|
-| **Claude Desktop** | OAuth 2.1 + PKCE | CIMD | Full spec compliance |
-| **Claude Code** | OAuth 2.1 + PKCE | CIMD | Full spec compliance |
-| **Cursor** | OAuth 2.1 | DCR | PKCE support varies |
-| **Windsurf** | OAuth 2.1 | DCR | Basic OAuth support |
-| **Open WebUI** | OAuth 2.1 + PKCE | DCR | Full spec compliance |
+- **Claude Desktop** — OAuth 2.1 + PKCE, CIMD registration. Full spec compliance.
+- **Claude Code** — OAuth 2.1 + PKCE, CIMD registration. Full spec compliance.
+- **Cursor** — OAuth 2.1, DCR registration. PKCE support varies.
+- **Windsurf** — OAuth 2.1, DCR registration. Basic OAuth support.
+- **Open WebUI** — OAuth 2.1 + PKCE, DCR registration. Full spec compliance.
 
 The trend is toward CIMD as the default registration method, but DCR remains important for backwards compatibility and enterprise deployments where admins want to control client registration.
 
@@ -227,27 +222,16 @@ A few sharp edges from real-world MCP auth implementations:
 
 **Token type confusion.** MCP servers can issue either opaque tokens (random strings stored server-side) or JWTs (self-contained, verifiable with public keys). Your validation strategy differs significantly between the two. If you're building a gateway, you need to handle both.
 
-## What's Next
+## How Archestra Handles This
 
-The MCP auth landscape is still evolving. A few areas to watch:
+If you're looking for a concrete implementation of the full auth stack described above, [Archestra's MCP Gateway](https://archestra.ai/docs/mcp-authentication) implements the complete flow.
 
-- **Enterprise-Managed Authorization** — proposals for enterprises to manage OAuth flows centrally, mapping existing IdP sessions to MCP tokens via token exchange (RFC 8693)
-- **Consent and scope standardization** — more granular tool-level scopes beyond the current broad permissions
-- **Third-party IdP integration** — using JWKS-based JWT validation to delegate authentication to existing identity providers like Okta, Auth0, and Microsoft Entra ID
+**Gateway-level authentication.** Archestra acts as both the resource server and the authorization server. MCP clients like Claude Desktop, Claude Code, Cursor, and Open WebUI authenticate automatically using the standard OAuth 2.1 flow — including discovery (RFC 9728 + RFC 8414), client registration (both DCR and CIMD), and Authorization Code + PKCE. For direct API integrations, the gateway also supports static Bearer tokens.
 
-For a deeper look at how these standards apply to real gateway implementations, see the [Archestra Authentication docs](https://archestra.ai/docs/mcp-authentication).
+**Upstream credential management.** The gateway separates client-to-gateway auth (Token A) from gateway-to-upstream-server auth (Token B). Clients never handle upstream credentials directly. Archestra resolves them at runtime — supporting static API keys, OAuth tokens with automatic refresh, and per-user credential resolution for multi-tenant setups where each developer uses their own credentials.
 
-If you're building MCP servers that need enterprise-grade auth, see our companion post: [Building Enterprise-Ready MCP Servers with JWKS and Identity Providers](/blog/enterprise-mcp-servers-jwks).
+**PKCE everywhere (mostly).** Archestra enforces PKCE when the upstream provider supports it and gracefully degrades when it doesn't — important for providers like GitHub that still lack PKCE support.
 
-## Standards Reference
+For a deeper look at the gateway's auth architecture, see the [Archestra Authentication docs](https://archestra.ai/docs/mcp-authentication).
 
-| Standard | Full Name | Link |
-|---|---|---|
-| OAuth 2.1 | The OAuth 2.1 Authorization Framework | [datatracker.ietf.org](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-12) |
-| RFC 7636 | Proof Key for Code Exchange (PKCE) | [datatracker.ietf.org](https://datatracker.ietf.org/doc/html/rfc7636) |
-| RFC 9728 | OAuth Protected Resource Metadata | [datatracker.ietf.org](https://datatracker.ietf.org/doc/html/rfc9728) |
-| RFC 8414 | OAuth Authorization Server Metadata | [datatracker.ietf.org](https://datatracker.ietf.org/doc/html/rfc8414) |
-| RFC 7591 | Dynamic Client Registration | [datatracker.ietf.org](https://datatracker.ietf.org/doc/html/rfc7591) |
-| RFC 8628 | Device Authorization Grant | [datatracker.ietf.org](https://datatracker.ietf.org/doc/html/rfc8628) |
-| RFC 8707 | Resource Indicators for OAuth 2.0 | [datatracker.ietf.org](https://datatracker.ietf.org/doc/html/rfc8707) |
-| MCP Auth Spec | MCP Authorization Specification | [modelcontextprotocol.io](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization) |
+In Part 2 of this series, we go deeper into one specific pattern: [building MCP servers that validate JWTs from enterprise identity providers using JWKS](/blog/enterprise-mcp-servers-jwks).

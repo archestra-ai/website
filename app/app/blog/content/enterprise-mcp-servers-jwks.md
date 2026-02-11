@@ -1,7 +1,7 @@
 ---
 title: 'Building Enterprise-Ready MCP Servers with JWKS and Identity Providers'
 date: '2026-02-11'
-author: 'Archestra Team'
+author: 'Joey Orlando'
 description: 'How to integrate MCP servers with enterprise identity providers using JWKS for scalable, stateless token validation.'
 image: '/blog/2026-02-11-enterprise-mcp-servers.jpg'
 ---
@@ -17,7 +17,7 @@ Most MCP server tutorials show a simple setup: one server, one user, basic API k
 
 When you deploy MCP servers in this environment, you need authentication that scales beyond environment variable API keys. You need token-based authentication with cryptographic verification — and that means JWKS.
 
-If you're new to MCP authentication in general, start with [A Developer's Guide to MCP Authentication](/blog/mcp-authentication-guide) for the foundational concepts.
+_This is Part 2 of a two-part series on MCP authentication. [Part 1](/blog/mcp-authentication-guide) covers the full MCP auth landscape — OAuth 2.1, PKCE, discovery, and client registration._
 
 ## What is JWKS?
 
@@ -121,13 +121,11 @@ The MCP server runs its own OAuth authorization server. It issues tokens, manage
 
 ### Choosing Between Them
 
-| Factor | Third-Party IdP | Built-in OAuth |
-|---|---|---|
-| User management | External (Okta, Entra ID) | In the MCP server |
-| Setup complexity | Lower (just validate JWTs) | Higher (run full OAuth server) |
-| SSO integration | Native | Requires federation |
-| Token format | Defined by IdP | You control it |
-| Best for | Enterprise, multi-tenant | Standalone products |
+- **User management** — Third-Party IdP: external (Okta, Entra ID). Built-in OAuth: in the MCP server.
+- **Setup complexity** — Third-Party IdP: lower (just validate JWTs). Built-in OAuth: higher (run full OAuth server).
+- **SSO integration** — Third-Party IdP: native. Built-in OAuth: requires federation.
+- **Token format** — Third-Party IdP: defined by IdP. Built-in OAuth: you control it.
+- **Best for** — Third-Party IdP: enterprise, multi-tenant. Built-in OAuth: standalone products.
 
 In practice, most enterprise deployments use Pattern 1 because the organization already has an identity provider. The MCP server becomes another relying party in the existing identity infrastructure.
 
@@ -140,12 +138,10 @@ Here's a practical implementation for an MCP server that validates JWTs from any
 The `jose` library handles JWKS fetching, caching, key rotation, and `kid` matching out of the box:
 
 ```typescript
-import * as jose from "jose";
+import * as jose from 'jose';
 
 // jose manages caching and key rotation internally
-const JWKS = jose.createRemoteJWKSet(
-  new URL("https://your-idp.com/.well-known/jwks.json")
-);
+const JWKS = jose.createRemoteJWKSet(new URL('https://your-idp.com/.well-known/jwks.json'));
 
 async function verifyToken(token: string, expectedAudience: string) {
   const { payload } = await jose.jwtVerify(token, JWKS, {
@@ -168,19 +164,19 @@ Extract the Bearer token and validate before processing MCP requests:
 
 ```typescript
 async function authenticateRequest(req: Request) {
-  const authHeader = req.headers.get("authorization");
-  if (!authHeader?.startsWith("Bearer ")) {
-    return new Response("Unauthorized", {
+  const authHeader = req.headers.get('authorization');
+  if (!authHeader?.startsWith('Bearer ')) {
+    return new Response('Unauthorized', {
       status: 401,
       headers: {
-        "WWW-Authenticate":
+        'WWW-Authenticate':
           'Bearer resource_metadata="https://your-server.example/.well-known/oauth-protected-resource"',
       },
     });
   }
 
   const token = authHeader.slice(7);
-  return verifyToken(token, "https://your-server.example");
+  return verifyToken(token, 'https://your-server.example');
 }
 ```
 
@@ -191,32 +187,28 @@ Note the `WWW-Authenticate` header in the 401 response — this is required by t
 Wire the auth middleware into your MCP tool handlers:
 
 ```typescript
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { z } from "zod";
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { z } from 'zod';
 
 const server = new McpServer({
-  name: "enterprise-server",
-  version: "1.0.0",
+  name: 'enterprise-server',
+  version: '1.0.0',
 });
 
-server.tool(
-  "query-database",
-  { query: z.string() },
-  async (params, context) => {
-    const user = context.auth;
+server.tool('query-database', { query: z.string() }, async (params, context) => {
+  const user = context.auth;
 
-    if (!user.roles.includes("db-reader")) {
-      throw new Error("Insufficient permissions");
-    }
-
-    // Execute query scoped to user's org
-    const results = await db.query(params.query, {
-      organizationId: user.organizationId,
-    });
-
-    return { content: [{ type: "text", text: JSON.stringify(results) }] };
+  if (!user.roles.includes('db-reader')) {
+    throw new Error('Insufficient permissions');
   }
-);
+
+  // Execute query scoped to user's org
+  const results = await db.query(params.query, {
+    organizationId: user.organizationId,
+  });
+
+  return { content: [{ type: 'text', text: JSON.stringify(results) }] };
+});
 ```
 
 ## MCP-Spec Discovery Endpoints
@@ -302,13 +294,11 @@ The `jose` library's `createRemoteJWKSet` handles all three automatically:
 
 ```typescript
 // Handles caching, key matching, and rotation out of the box
-const JWKS = jose.createRemoteJWKSet(
-  new URL("https://your-idp.com/.well-known/jwks.json")
-);
+const JWKS = jose.createRemoteJWKSet(new URL('https://your-idp.com/.well-known/jwks.json'));
 
 // Finds the right key by kid, refreshes cache on unknown kid
 const { payload } = await jose.jwtVerify(token, JWKS, {
-  audience: "https://your-server.example",
+  audience: 'https://your-server.example',
 });
 ```
 
@@ -347,3 +337,5 @@ JWKS-based authentication gives MCP servers the same security model used by mode
 - **Automatic key rotation** — handled via JWKS refresh
 
 The MCP ecosystem is converging on these patterns. Building with JWKS and standard identity providers means your MCP servers are ready for enterprise deployment from day one.
+
+If you haven't already, check out [Part 1 of this series](/blog/mcp-authentication-guide) for the full MCP auth landscape — from the initial 401 handshake through discovery, client registration, and PKCE.
