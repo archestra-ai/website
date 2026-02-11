@@ -81,9 +81,7 @@ export default function CommunityCallsPage() {
     const candidateDate = addDays(nowInLondon, daysUntilTuesday);
 
     // Determine if the candidate Tuesday is in an "on" week based on the reference date
-    const daysSinceReference = Math.floor(
-      (candidateDate.getTime() - referenceDate.getTime()) / (1000 * 60 * 60 * 24)
-    );
+    const daysSinceReference = Math.floor((candidateDate.getTime() - referenceDate.getTime()) / (1000 * 60 * 60 * 24));
     const weeksSinceReference = Math.floor(daysSinceReference / 7);
     const isOnWeek = weeksSinceReference % 2 === 0;
 
