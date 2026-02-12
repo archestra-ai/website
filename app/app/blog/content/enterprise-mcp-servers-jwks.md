@@ -86,6 +86,8 @@ The MCP server:
 
 **Best for:** MCP servers deployed in environments with an existing IdP. The server has zero auth infrastructure of its own — all authentication is handled externally.
 
+> **Working example:** See the [MCP Server + Keycloak JWKS example](https://github.com/archestra-ai/archestra/tree/main/examples/mcp-server-jwks-keycloak) for a fully self-contained implementation of this pattern with Keycloak, role-based tool access, and an end-to-end test — all runnable with a single `docker compose up`.
+
 ### Pattern 2: Built-in OAuth Server
 
 The MCP server runs its own OAuth authorization server. It issues tokens, manages user sessions, and publishes its own JWKS endpoint.
