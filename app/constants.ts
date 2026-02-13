@@ -191,7 +191,7 @@ export default {
     },
   },
   slack: {
-    joinCommunityUrl: 'https://join.slack.com/t/archestracommunity/shared_invite/zt-3pxh76ids-sy7J9TrvfQnlbfhGO0uM5A',
+    joinCommunityUrl: 'https://join.slack.com/t/archestracommunity/shared_invite/zt-3q1cnvudy-SXlfy5mCfEZrqGdtH8V5zg',
   },
   twitter: {
     handle: '@archestra_ai',
