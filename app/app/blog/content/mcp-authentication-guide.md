@@ -12,7 +12,7 @@ You've just installed an MCP server. Your AI assistant connects, and immediately
 
 MCP (Model Context Protocol) standardized on OAuth 2.1 for authentication. If you're building MCP clients, servers, or gateways, understanding how these pieces fit together saves hours of debugging. This post breaks down the full authentication landscape — the standards involved, how discovery works, how clients register, and where the sharp edges are.
 
-*This is Part 1 of a two-part series on MCP authentication. [Part 2](/blog/enterprise-mcp-servers-jwks) covers building enterprise MCP servers with JWKS and identity providers.*
+_This is Part 1 of a two-part series on MCP authentication. [Part 2](/blog/enterprise-mcp-servers-jwks) covers building enterprise MCP servers with JWKS and identity providers._
 
 ## Why MCP Chose OAuth 2.1
 
