@@ -86,7 +86,7 @@ The MCP server:
 
 **Best for:** MCP servers deployed in environments with an existing IdP. The server has zero auth infrastructure of its own — all authentication is handled externally.
 
-> **Working example:** See the [MCP Server + Keycloak JWKS example](https://github.com/archestra-ai/archestra/tree/main/examples/mcp-server-jwks-keycloak) for a fully self-contained implementation of this pattern with Keycloak, role-based tool access, and an end-to-end test — all runnable with a single `docker compose up`.
+> **Working example:** See the [MCP Server + Keycloak JWKS example](https://github.com/archestra-ai/examples/tree/main/mcp-server-jwks-keycloak) for a fully self-contained implementation of this pattern with Keycloak, role-based tool access, and an end-to-end test — all runnable with a single `docker compose up`.
 
 ### Pattern 2: Built-in OAuth Server
 
@@ -327,7 +327,42 @@ If your organization runs multiple MCP servers, implementing auth in each one cr
 
 This is the **gateway-terminated auth** pattern, and it's how most enterprise deployments manage MCP authentication at scale. The gateway handles the OAuth 2.1 dance, CIMD/DCR registration, token validation, and upstream credential management — your MCP servers just process tool calls.
 
-For an implementation of this pattern, see the [Archestra MCP Gateway](https://archestra.ai/docs/platform-mcp-gateway) and its [authentication documentation](https://archestra.ai/docs/mcp-authentication).
+### End-to-End JWKS with JWT Propagation
+
+There's a hybrid pattern that combines gateway convenience with end-to-end identity verification. Instead of terminating auth at the gateway and connecting to upstream servers with separate credentials, the gateway **propagates the caller's original JWT** to the upstream MCP server:
+
+```
+  Client              Gateway             IdP (JWKS)         MCP Server
+    |                    |                     |                  |
+    |  JWT from IdP      |                     |                  |
+    |------------------>|                     |                  |
+    |                    |  Validate JWT       |                  |
+    |                    |-------------------->|                  |
+    |                    |  Valid              |                  |
+    |                    |<--------------------|                  |
+    |                    |                     |                  |
+    |                    |  Forward JWT                           |
+    |                    |--------------------------------------->|
+    |                    |                     |  Validate JWT    |
+    |                    |                     |<-----------------|
+    |                    |                     |  Valid           |
+    |                    |                     |----------------->|
+    |                    |                     |                  |
+    |  Tool result       |                     |                  |
+    |<-------------------|                     |                  |
+```
+
+The gateway validates the JWT and enforces access control (team membership, user matching). The upstream MCP server independently validates the same JWT against the IdP's JWKS endpoint and extracts user identity from the claims — roles, groups, email — without any gateway-specific integration.
+
+This pattern is useful when:
+
+- Your MCP servers need to enforce their own access control based on IdP claims
+- The same MCP server is deployed both behind a gateway and standalone
+- Compliance requires end-to-end identity verification (the server can prove who made each request)
+
+The [Archestra MCP Gateway](https://archestra.ai/docs/platform-mcp-gateway) supports this pattern via its [External IdP JWKS](https://archestra.ai/docs/mcp-authentication#external-idp-jwks) feature. You configure an OIDC identity provider, link it to an MCP Gateway, and the gateway automatically validates and propagates JWTs to upstream servers — both remote HTTP servers and locally orchestrated Kubernetes pods.
+
+The [MCP Server + Keycloak JWKS example](https://github.com/archestra-ai/examples/tree/main/mcp-server-jwks-keycloak) works with both deployment models: standalone (via `docker compose up`) or behind Archestra's gateway with JWT propagation.
 
 ## Wrapping Up
 

@@ -230,6 +230,8 @@ If you're looking for a concrete implementation of the full auth stack described
 
 **Upstream credential management.** The gateway separates client-to-gateway auth (Token A) from gateway-to-upstream-server auth (Token B). Clients never handle upstream credentials directly. Archestra resolves them at runtime — supporting static API keys, OAuth tokens with automatic refresh, and per-user credential resolution for multi-tenant setups where each developer uses their own credentials.
 
+**External IdP JWKS.** For enterprises with existing identity providers, Archestra can validate JWTs from external IdPs (Okta, Auth0, Keycloak, Entra ID) and propagate them to upstream MCP servers. The gateway validates the JWT signature via JWKS, matches the caller to an Archestra user, enforces team-based access control, and forwards the original JWT to the upstream server — enabling end-to-end identity verification without any Archestra-specific integration on the server side.
+
 **PKCE everywhere (mostly).** Archestra enforces PKCE when the upstream provider supports it and gracefully degrades when it doesn't — important for providers like GitHub that still lack PKCE support.
 
 For a deeper look at the gateway's auth architecture, see the [Archestra Authentication docs](https://archestra.ai/docs/mcp-authentication).
