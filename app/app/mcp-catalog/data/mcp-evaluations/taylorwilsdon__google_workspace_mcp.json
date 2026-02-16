@@ -1,24 +1,18 @@
 {
-  "name": "iskhakov__google_workspace_mcp",
+  "name": "taylorwilsdon__google_workspace_mcp",
   "display_name": "Google Workspace",
   "description": "Control Gmail, Google Calendar, Docs, Sheets, Slides, Chat, Forms, Tasks, Search & Drive with AI - Comprehensive Google Workspace / G Suite MCP Server",
   "author": {
-    "name": "iskhakov"
+    "name": "taylorwilsdon"
   },
   "server": {
     "command": "uvx",
     "args": [
-      "--from",
-      "git+https://github.com/iskhakov/google_workspace_mcp",
-      "workspace-mcp",
-      "--transport",
-      "streamable-http"
+      "workspace-mcp"
     ],
     "env": {
       "GOOGLE_OAUTH_CLIENT_ID": "354887056155-5b4rlcofccknibd4fv3ldud9vvac3rdf.apps.googleusercontent.com",
-      "GOOGLE_OAUTH_CLIENT_SECRET": "dummy",
-      "MCP_ENABLE_OAUTH21": "true",
-      "MCP_TOKEN_ONLY_MODE": "true"
+      "GOOGLE_OAUTH_CLIENT_SECRET": "dummy"
     },
     "type": "local"
   },
@@ -127,9 +121,9 @@
     "works_in_archestra": true
   },
   "github_info": {
-    "owner": "iskhakov",
+    "owner": "taylorwilsdon",
     "repo": "google_workspace_mcp",
-    "url": "https://github.com/iskhakov/google_workspace_mcp",
+    "url": "https://github.com/taylorwilsdon/google_workspace_mcp",
     "name": "google_workspace_mcp",
     "path": null,
     "stars": 390,
@@ -184,5 +178,5 @@
       "importance": 7
     }
   ],
-  "raw_dependencies": "=== pyproject.toml ===\n[build-system]\nrequires = [ \"setuptools>=61.0\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"workspace-mcp\"\nversion = \"1.1.17\"\ndescription = \"Comprehensive, highly performant Google Workspace Streamable HTTP & SSE MCP Server for Calendar, Gmail, Docs, Sheets, Slides & Drive\"\nreadme = \"README.md\"\nkeywords = [ \"mcp\", \"google\", \"workspace\", \"llm\", \"ai\", \"claude\", \"model\", \"context\", \"protocol\", \"server\"]\nrequires-python = \">=3.10\"\ndependencies = [\n \"fastapi>=0.115.12\",\n \"fastmcp>=2.10.6\",\n \"google-api-python-client>=2.168.0\",\n \"google-auth-httplib2>=0.2.0\",\n \"google-auth-oauthlib>=1.2.2\",\n \"httpx>=0.28.1\",\n \"pyjwt>=2.10.1\",\n \"ruff>=0.12.4\",\n \"tomlkit\",\n]\nclassifiers = [\n    \"Development Status :: 4 - Beta\",\n    \"Environment :: Console\",\n    \"Intended Audience :: Developers\",\n    \"License :: OSI Approved :: MIT License\",\n    \"Natural Language :: English\",\n    \"Operating System :: OS Independent\",\n    \"Programming Language :: Python\",\n    \"Programming Language :: Python :: 3 :: Only\",\n    \"Programming Language :: Python :: 3.11\",\n    \"Programming Language :: Python :: 3.12\",\n    \"Topic :: Internet :: WWW/HTTP :: Dynamic Content\",\n    \"Topic :: Internet :: WWW/HTTP :: HTTP Servers\",\n    \"Topic :: Software Development :: Libraries :: Application Frameworks\",\n    \"Topic :: Communications :: Chat\",\n    \"Topic :: Office/Business\",\n    \"Topic :: Scientific/Engineering :: Artificial Intelligence\",\n    \"Typing :: Typed\"\n]\n\n[[project.authors]]\nname = \"Taylor Wilsdon\"\nemail = \"taylor@iskhakov.com\"\n\n[project.license]\ntext = \"MIT\"\n\n[project.urls]\nHomepage = \"https://workspacemcp.com\"\nRepository = \"https://github.com/iskhakov/google_workspace_mcp\"\nDocumentation = \"https://github.com/iskhakov/google_workspace_mcp#readme\"\nIssues = \"https://github.com/iskhakov/google_workspace_mcp/issues\"\nChangelog = \"https://github.com/iskhakov/google_workspace_mcp/releases\"\n\n[project.scripts]\nworkspace-mcp = \"main:main\"\n\n[tool.setuptools]\npackages = [ \"auth\", \"gcalendar\", \"core\", \"gdocs\", \"gdrive\", \"gmail\", \"gchat\", \"gsheets\", \"gforms\", \"gslides\", \"gtasks\", \"gsearch\"]\npy-modules = [ \"main\"]\n"
+  "raw_dependencies": "=== pyproject.toml ===\n[build-system]\nrequires = [ \"setuptools>=61.0\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"workspace-mcp\"\nversion = \"1.1.17\"\ndescription = \"Comprehensive, highly performant Google Workspace Streamable HTTP & SSE MCP Server for Calendar, Gmail, Docs, Sheets, Slides & Drive\"\nreadme = \"README.md\"\nkeywords = [ \"mcp\", \"google\", \"workspace\", \"llm\", \"ai\", \"claude\", \"model\", \"context\", \"protocol\", \"server\"]\nrequires-python = \">=3.10\"\ndependencies = [\n \"fastapi>=0.115.12\",\n \"fastmcp>=2.10.6\",\n \"google-api-python-client>=2.168.0\",\n \"google-auth-httplib2>=0.2.0\",\n \"google-auth-oauthlib>=1.2.2\",\n \"httpx>=0.28.1\",\n \"pyjwt>=2.10.1\",\n \"ruff>=0.12.4\",\n \"tomlkit\",\n]\nclassifiers = [\n    \"Development Status :: 4 - Beta\",\n    \"Environment :: Console\",\n    \"Intended Audience :: Developers\",\n    \"License :: OSI Approved :: MIT License\",\n    \"Natural Language :: English\",\n    \"Operating System :: OS Independent\",\n    \"Programming Language :: Python\",\n    \"Programming Language :: Python :: 3 :: Only\",\n    \"Programming Language :: Python :: 3.11\",\n    \"Programming Language :: Python :: 3.12\",\n    \"Topic :: Internet :: WWW/HTTP :: Dynamic Content\",\n    \"Topic :: Internet :: WWW/HTTP :: HTTP Servers\",\n    \"Topic :: Software Development :: Libraries :: Application Frameworks\",\n    \"Topic :: Communications :: Chat\",\n    \"Topic :: Office/Business\",\n    \"Topic :: Scientific/Engineering :: Artificial Intelligence\",\n    \"Typing :: Typed\"\n]\n\n[[project.authors]]\nname = \"Taylor Wilsdon\"\nemail = \"taylor@iskhakov.com\"\n\n[project.license]\ntext = \"MIT\"\n\n[project.urls]\nHomepage = \"https://workspacemcp.com\"\nRepository = \"https://github.com/taylorwilsdon/google_workspace_mcp\"\nDocumentation = \"https://github.com/taylorwilsdon/google_workspace_mcp#readme\"\nIssues = \"https://github.com/taylorwilsdon/google_workspace_mcp/issues\"\nChangelog = \"https://github.com/taylorwilsdon/google_workspace_mcp/releases\"\n\n[project.scripts]\nworkspace-mcp = \"main:main\"\n\n[tool.setuptools]\npackages = [ \"auth\", \"gcalendar\", \"core\", \"gdocs\", \"gdrive\", \"gmail\", \"gchat\", \"gsheets\", \"gforms\", \"gslides\", \"gtasks\", \"gsearch\"]\npy-modules = [ \"main\"]\n"
 }
