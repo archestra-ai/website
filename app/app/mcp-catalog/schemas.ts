@@ -178,8 +178,18 @@ const ExtendedUserConfigurationOptionSchema = McpbUserConfigurationOptionSchema.
 
 // Pick only the fields we need from McpbManifestSchema to avoid .omit() which
 // doesn't work with schemas containing refinements in Zod 4.3+
-// McpbManifestSchema is a ZodEffects (has refinements), so unwrap to get the inner ZodObject's shape
-const mcpbShape = (McpbManifestSchema as unknown as { _def: { schema: z.ZodObject<any> } })._def.schema.shape;
+// McpbManifestSchema may be wrapped in ZodEffects (refinements), so unwrap to reach the inner ZodObject
+function unwrapToZodObject(schema: z.ZodTypeAny): z.ZodObject<any> {
+  let current = schema;
+  while (current instanceof z.ZodEffects) {
+    current = current.innerType();
+  }
+  if (!(current instanceof z.ZodObject)) {
+    throw new Error('Expected McpbManifestSchema to unwrap to a ZodObject');
+  }
+  return current;
+}
+const mcpbShape = unwrapToZodObject(McpbManifestSchema).shape;
 const BaseManifestSchema = z.object({
   description: mcpbShape.description,
   long_description: mcpbShape.long_description,
