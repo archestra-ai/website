@@ -202,13 +202,14 @@ Why this matters: when one authorization server protects multiple MCP servers, a
 
 MCP auth is still maturing. Here's where major clients stand as of early 2026:
 
-- **Claude Desktop** — OAuth 2.1 + PKCE, CIMD registration. Full spec compliance.
-- **Claude Code** — OAuth 2.1 + PKCE, CIMD registration. Full spec compliance.
+- **Claude Desktop** — OAuth 2.1 + PKCE, DCR registration. Full spec compliance.
+- **Claude Code** — OAuth 2.1 + PKCE, DCR registration. Full spec compliance.
 - **Cursor** — OAuth 2.1, DCR registration. PKCE support varies.
 - **Windsurf** — OAuth 2.1, DCR registration. Basic OAuth support.
 - **Open WebUI** — OAuth 2.1 + PKCE, DCR registration. Full spec compliance.
+- **VS Code** — OAuth 2.1 + PKCE, CIMD registration. First major client to ship CIMD.
 
-The trend is toward CIMD as the default registration method, but DCR remains important for backwards compatibility and enterprise deployments where admins want to control client registration.
+The MCP spec adopted CIMD as the default registration method in the 2025-11-25 revision. VS Code has shipped CIMD support; other clients are expected to follow. DCR remains important for backwards compatibility and enterprise deployments where admins want to control client registration.
 
 ## Common Pitfalls
 
