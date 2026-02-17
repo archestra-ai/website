@@ -7,9 +7,7 @@
   },
   "server": {
     "command": "uvx",
-    "args": [
-      "workspace-mcp"
-    ],
+    "args": ["workspace-mcp"],
     "env": {
       "GOOGLE_OAUTH_CLIENT_ID": "354887056155-5b4rlcofccknibd4fv3ldud9vvac3rdf.apps.googleusercontent.com",
       "GOOGLE_OAUTH_CLIENT_SECRET": "dummy"

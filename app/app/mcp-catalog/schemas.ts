@@ -186,7 +186,6 @@ function unwrapToZodObject(schema: z.ZodTypeAny): z.ZodObject<any> {
   }
   if (!current.shape) {
     throw new Error('Expected McpbManifestSchema to unwrap to a ZodObject with .shape');
-
   }
   return current;
 }
