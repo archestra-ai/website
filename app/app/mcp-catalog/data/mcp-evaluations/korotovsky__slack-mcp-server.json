@@ -54,11 +54,7 @@
     "token_endpoint": "https://slack.com/api/oauth.v2.access",
     "client_id": "9210991658150.9211748349222",
     "client_secret": "REDACTED",
-    "redirect_uris": [
-      "https://oauth.dev.archestra.ai/oauth/callback",
-      "https://brushed-leonardo-accursedly.ngrok-free.app/oauth/callback",
-      "http://localhost:8080/oauth/callback"
-    ],
+    "redirect_uris": ["http://localhost:8080/oauth/callback"],
     "scopes": ["channels:read", "chat:write", "users:read"],
     "description": "Slack MCP Server",
     "default_scopes": ["channels:read", "chat:write", "users:read"],
