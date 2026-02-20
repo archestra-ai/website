@@ -1,13 +1,13 @@
 {
-  "name": "modelcontextprotocol__ext-apps__examples__pdf-server",
-  "display_name": "PDF Server",
-  "description": "Interactive PDF viewer with chunked loading for rendering and navigating PDF documents",
+  "name": "modelcontextprotocol__ext-apps__map-server",
+  "display_name": "Map",
+  "description": "Interactive 3D globe viewer using CesiumJS for geographic data visualization",
   "author": {
     "name": "modelcontextprotocol"
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-pdf", "--stdio"],
+    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-map", "--stdio"],
     "env": {},
     "type": "local"
   },
@@ -16,13 +16,13 @@
   "keywords": [],
   "user_config": {},
   "readme": null,
-  "category": "File Management",
+  "category": "Data Science",
   "quality_score": null,
   "archestra_config": {
     "client_config_permutations": {
-      "mcp-server-pdf": {
+      "mcp-server-map": {
         "command": "npx",
-        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-pdf", "--stdio"],
+        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-map", "--stdio"],
         "env": {}
       }
     },
@@ -35,9 +35,9 @@
   "github_info": {
     "owner": "modelcontextprotocol",
     "repo": "ext-apps",
-    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/pdf-server",
-    "name": "modelcontextprotocol__ext-apps__examples__pdf-server",
-    "path": "examples/pdf-server",
+    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/map-server",
+    "name": "modelcontextprotocol__ext-apps__map-server",
+    "path": "examples/map-server",
     "stars": 0,
     "contributors": 0,
     "issues": 0,

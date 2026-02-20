@@ -1,13 +1,13 @@
 {
-  "name": "modelcontextprotocol__ext-apps__examples__shadertoy-server",
-  "display_name": "ShaderToy",
-  "description": "Real-time GLSL shader renderer for creating and previewing GPU shader programs",
+  "name": "modelcontextprotocol__ext-apps__video-resource-server",
+  "display_name": "Video Resource",
+  "description": "Binary video delivery via MCP resources for streaming and displaying video content",
   "author": {
     "name": "modelcontextprotocol"
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-shadertoy", "--stdio"],
+    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-video-resource", "--stdio"],
     "env": {},
     "type": "local"
   },
@@ -20,9 +20,9 @@
   "quality_score": null,
   "archestra_config": {
     "client_config_permutations": {
-      "mcp-server-shadertoy": {
+      "mcp-server-video-resource": {
         "command": "npx",
-        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-shadertoy", "--stdio"],
+        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-video-resource", "--stdio"],
         "env": {}
       }
     },
@@ -35,9 +35,9 @@
   "github_info": {
     "owner": "modelcontextprotocol",
     "repo": "ext-apps",
-    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/shadertoy-server",
-    "name": "modelcontextprotocol__ext-apps__examples__shadertoy-server",
-    "path": "examples/shadertoy-server",
+    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/video-resource-server",
+    "name": "modelcontextprotocol__ext-apps__video-resource-server",
+    "path": "examples/video-resource-server",
     "stars": 0,
     "contributors": 0,
     "issues": 0,

@@ -1,13 +1,13 @@
 {
-  "name": "modelcontextprotocol__ext-apps__examples__map-server",
-  "display_name": "Map",
-  "description": "Interactive 3D globe viewer using CesiumJS for geographic data visualization",
+  "name": "modelcontextprotocol__ext-apps__shadertoy-server",
+  "display_name": "ShaderToy",
+  "description": "Real-time GLSL shader renderer for creating and previewing GPU shader programs",
   "author": {
     "name": "modelcontextprotocol"
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-map", "--stdio"],
+    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-shadertoy", "--stdio"],
     "env": {},
     "type": "local"
   },
@@ -16,13 +16,13 @@
   "keywords": [],
   "user_config": {},
   "readme": null,
-  "category": "Data Science",
+  "category": "Media",
   "quality_score": null,
   "archestra_config": {
     "client_config_permutations": {
-      "mcp-server-map": {
+      "mcp-server-shadertoy": {
         "command": "npx",
-        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-map", "--stdio"],
+        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-shadertoy", "--stdio"],
         "env": {}
       }
     },
@@ -35,9 +35,9 @@
   "github_info": {
     "owner": "modelcontextprotocol",
     "repo": "ext-apps",
-    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/map-server",
-    "name": "modelcontextprotocol__ext-apps__examples__map-server",
-    "path": "examples/map-server",
+    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/shadertoy-server",
+    "name": "modelcontextprotocol__ext-apps__shadertoy-server",
+    "path": "examples/shadertoy-server",
     "stars": 0,
     "contributors": 0,
     "issues": 0,

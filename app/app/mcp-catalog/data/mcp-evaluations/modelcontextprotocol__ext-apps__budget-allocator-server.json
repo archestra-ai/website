@@ -1,5 +1,5 @@
 {
-  "name": "modelcontextprotocol__ext-apps__examples__budget-allocator-server",
+  "name": "modelcontextprotocol__ext-apps__budget-allocator-server",
   "display_name": "Budget Allocator",
   "description": "Interactive budget allocation interface for planning and visualizing spending distributions",
   "author": {
@@ -36,7 +36,7 @@
     "owner": "modelcontextprotocol",
     "repo": "ext-apps",
     "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/budget-allocator-server",
-    "name": "modelcontextprotocol__ext-apps__examples__budget-allocator-server",
+    "name": "modelcontextprotocol__ext-apps__budget-allocator-server",
     "path": "examples/budget-allocator-server",
     "stars": 0,
     "contributors": 0,

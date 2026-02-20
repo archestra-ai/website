@@ -1,13 +1,13 @@
 {
-  "name": "modelcontextprotocol__ext-apps__examples__cohort-heatmap-server",
-  "display_name": "Cohort Heatmap",
-  "description": "Customer retention cohort heatmap display for analyzing user engagement over time",
+  "name": "modelcontextprotocol__ext-apps__scenario-modeler-server",
+  "display_name": "Scenario Modeler",
+  "description": "SaaS business projections tool for modeling revenue scenarios and growth metrics",
   "author": {
     "name": "modelcontextprotocol"
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-cohort-heatmap", "--stdio"],
+    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-scenario-modeler", "--stdio"],
     "env": {},
     "type": "local"
   },
@@ -16,13 +16,13 @@
   "keywords": [],
   "user_config": {},
   "readme": null,
-  "category": "Data Science",
+  "category": "Finance",
   "quality_score": null,
   "archestra_config": {
     "client_config_permutations": {
-      "mcp-server-cohort-heatmap": {
+      "mcp-server-scenario-modeler": {
         "command": "npx",
-        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-cohort-heatmap", "--stdio"],
+        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-scenario-modeler", "--stdio"],
         "env": {}
       }
     },
@@ -35,9 +35,9 @@
   "github_info": {
     "owner": "modelcontextprotocol",
     "repo": "ext-apps",
-    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/cohort-heatmap-server",
-    "name": "modelcontextprotocol__ext-apps__examples__cohort-heatmap-server",
-    "path": "examples/cohort-heatmap-server",
+    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/scenario-modeler-server",
+    "name": "modelcontextprotocol__ext-apps__scenario-modeler-server",
+    "path": "examples/scenario-modeler-server",
     "stars": 0,
     "contributors": 0,
     "issues": 0,

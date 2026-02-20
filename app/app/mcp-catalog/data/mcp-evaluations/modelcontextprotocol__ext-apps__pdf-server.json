@@ -1,13 +1,13 @@
 {
-  "name": "modelcontextprotocol__ext-apps__examples__system-monitor-server",
-  "display_name": "System Monitor",
-  "description": "Real-time OS metrics dashboard for monitoring CPU, memory, and system performance",
+  "name": "modelcontextprotocol__ext-apps__pdf-server",
+  "display_name": "PDF Server",
+  "description": "Interactive PDF viewer with chunked loading for rendering and navigating PDF documents",
   "author": {
     "name": "modelcontextprotocol"
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-system-monitor", "--stdio"],
+    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-pdf", "--stdio"],
     "env": {},
     "type": "local"
   },
@@ -16,13 +16,13 @@
   "keywords": [],
   "user_config": {},
   "readme": null,
-  "category": "Monitoring",
+  "category": "File Management",
   "quality_score": null,
   "archestra_config": {
     "client_config_permutations": {
-      "mcp-server-system-monitor": {
+      "mcp-server-pdf": {
         "command": "npx",
-        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-system-monitor", "--stdio"],
+        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-pdf", "--stdio"],
         "env": {}
       }
     },
@@ -35,9 +35,9 @@
   "github_info": {
     "owner": "modelcontextprotocol",
     "repo": "ext-apps",
-    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/system-monitor-server",
-    "name": "modelcontextprotocol__ext-apps__examples__system-monitor-server",
-    "path": "examples/system-monitor-server",
+    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/pdf-server",
+    "name": "modelcontextprotocol__ext-apps__pdf-server",
+    "path": "examples/pdf-server",
     "stars": 0,
     "contributors": 0,
     "issues": 0,
