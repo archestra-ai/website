@@ -859,5 +859,18 @@
   "https://github.com/mongodb-js/mongodb-mcp-server",
   "coding",
   "https://github.com/jfrog/mcp-jfrog",
-  "https://github.com/streamnative/snmcp"
+  "https://github.com/streamnative/snmcp",
+  "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/map-server",
+  "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/threejs-server",
+  "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/shadertoy-server",
+  "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/sheet-music-server",
+  "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/wiki-explorer-server",
+  "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/cohort-heatmap-server",
+  "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/scenario-modeler-server",
+  "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/budget-allocator-server",
+  "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/customer-segmentation-server",
+  "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/system-monitor-server",
+  "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/transcript-server",
+  "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/video-resource-server",
+  "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/pdf-server"
 ]
