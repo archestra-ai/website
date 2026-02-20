@@ -1,0 +1,74 @@
+{
+  "name": "mcp__ext-apps__budget-allocator-server",
+  "display_name": "Budget Allocator",
+  "description": "Interactive budget allocation interface for planning and visualizing spending distributions",
+  "author": {
+    "name": "modelcontextprotocol"
+  },
+  "server": {
+    "command": "npx",
+    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-budget-allocator", "--stdio"],
+    "env": {},
+    "type": "local"
+  },
+  "tools": [],
+  "prompts": [],
+  "keywords": [],
+  "user_config": {},
+  "readme": null,
+  "category": "Finance",
+  "quality_score": null,
+  "archestra_config": {
+    "client_config_permutations": {
+      "mcp-server-budget-allocator": {
+        "command": "npx",
+        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-budget-allocator", "--stdio"],
+        "env": {}
+      }
+    },
+    "oauth": {
+      "provider": null,
+      "required": false
+    },
+    "works_in_archestra": true
+  },
+  "github_info": {
+    "owner": "modelcontextprotocol",
+    "repo": "ext-apps",
+    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/budget-allocator-server",
+    "name": "mcp__ext-apps__budget-allocator-server",
+    "path": "examples/budget-allocator-server",
+    "stars": 0,
+    "contributors": 0,
+    "issues": 0,
+    "releases": false,
+    "ci_cd": false,
+    "latest_commit_hash": null
+  },
+  "programming_language": "TypeScript",
+  "framework": null,
+  "last_scraped_at": null,
+  "evaluation_model": null,
+  "protocol_features": {
+    "implementing_tools": true,
+    "implementing_prompts": false,
+    "implementing_resources": true,
+    "implementing_sampling": false,
+    "implementing_roots": false,
+    "implementing_logging": false,
+    "implementing_stdio": true,
+    "implementing_streamable_http": false,
+    "implementing_oauth2": false
+  },
+  "dependencies": [
+    {
+      "name": "@modelcontextprotocol/sdk",
+      "importance": 10
+    },
+    {
+      "name": "@anthropic-ai/sdk",
+      "importance": 8
+    }
+  ],
+  "raw_dependencies": null
+}
