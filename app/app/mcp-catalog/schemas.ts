@@ -233,3 +233,91 @@ export const ArchestraMcpServerManifestSchema = BaseManifestSchema.extend({
 export const ArchestraMcpServerManifestWithScoreBreakdownSchema = ArchestraMcpServerManifestSchema.extend({
   score_breakdown: ArchestraScoreBreakdownSchema,
 }).openapi('ArchestraMcpServerManifestWithScoreBreakdown');
+
+// ─── MCP App (Client Application) Schemas ────────────────────────────────────
+
+export const McpAppCategorySchema = z.enum([
+  'IDE',
+  'Desktop Client',
+  'Automation',
+  'Framework',
+  'CLI',
+  'Web App',
+  'Other',
+]);
+
+export const McpAppPricingSchema = z.enum(['free', 'paid', 'freemium']);
+
+export const McpAppPlatformSchema = z.enum(['windows', 'mac', 'linux', 'web']);
+
+export const ArchestraMcpAppManifestSchema = z
+  .object({
+    /**
+     * Machine-readable identifier (slug)
+     */
+    name: z.string(),
+
+    /**
+     * Human-friendly display name
+     */
+    display_name: z.string(),
+
+    /**
+     * Short description of what the app does
+     */
+    description: z.string(),
+
+    /**
+     * App category (IDE, Desktop Client, Automation, etc.)
+     */
+    category: McpAppCategorySchema,
+
+    /**
+     * Primary website / homepage URL
+     */
+    website_url: z.string().url(),
+
+    /**
+     * Relative path to logo in /public, or an https:// URL
+     */
+    logo_url: z.string(),
+
+    /**
+     * Platforms the app runs on
+     */
+    supported_platforms: z.array(McpAppPlatformSchema),
+
+    /**
+     * MCP protocol features the app supports as a CLIENT
+     */
+    mcp_features: z.object({
+      tools: z.boolean(),
+      resources: z.boolean(),
+      prompts: z.boolean(),
+      sampling: z.boolean(),
+      roots: z.boolean(),
+      stdio_transport: z.boolean(),
+      http_transport: z.boolean(),
+    }),
+
+    /**
+     * GitHub repository URL (null for closed-source apps)
+     */
+    github_url: z.string().url().nullable(),
+
+    /**
+     * Pricing model
+     */
+    pricing: McpAppPricingSchema,
+
+    /**
+     * Whether the app is open source
+     */
+    open_source: z.boolean(),
+
+    /**
+     * Documentation URL for MCP integration
+     */
+    mcp_docs_url: z.string().url().nullable(),
+  })
+  .openapi('ArchestraMcpAppManifest');
