@@ -1,13 +1,13 @@
 {
-  "name": "modelcontextprotocol__ext-apps__sheet-music-server",
-  "display_name": "Sheet Music",
-  "description": "ABC notation to sheet music converter for rendering and displaying musical scores",
+  "name": "mcp__ext-apps__cohort-heatmap-server",
+  "display_name": "Cohort Heatmap",
+  "description": "Customer retention cohort heatmap display for analyzing user engagement over time",
   "author": {
     "name": "modelcontextprotocol"
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-sheet-music", "--stdio"],
+    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-cohort-heatmap", "--stdio"],
     "env": {},
     "type": "local"
   },
@@ -16,13 +16,13 @@
   "keywords": [],
   "user_config": {},
   "readme": null,
-  "category": "Art & Culture",
+  "category": "Data Science",
   "quality_score": null,
   "archestra_config": {
     "client_config_permutations": {
-      "mcp-server-sheet-music": {
+      "mcp-server-cohort-heatmap": {
         "command": "npx",
-        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-sheet-music", "--stdio"],
+        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-cohort-heatmap", "--stdio"],
         "env": {}
       }
     },
@@ -35,9 +35,9 @@
   "github_info": {
     "owner": "modelcontextprotocol",
     "repo": "ext-apps",
-    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/sheet-music-server",
-    "name": "modelcontextprotocol__ext-apps__sheet-music-server",
-    "path": "examples/sheet-music-server",
+    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/cohort-heatmap-server",
+    "name": "mcp__ext-apps__cohort-heatmap-server",
+    "path": "examples/cohort-heatmap-server",
     "stars": 0,
     "contributors": 0,
     "issues": 0,

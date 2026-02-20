@@ -1,13 +1,13 @@
 {
-  "name": "modelcontextprotocol__ext-apps__budget-allocator-server",
-  "display_name": "Budget Allocator",
-  "description": "Interactive budget allocation interface for planning and visualizing spending distributions",
+  "name": "mcp__ext-apps__customer-segmentation-server",
+  "display_name": "Customer Segmentation",
+  "description": "Scatter chart with clustering analysis for visualizing customer segments and patterns",
   "author": {
     "name": "modelcontextprotocol"
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-budget-allocator", "--stdio"],
+    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-customer-segmentation", "--stdio"],
     "env": {},
     "type": "local"
   },
@@ -16,13 +16,13 @@
   "keywords": [],
   "user_config": {},
   "readme": null,
-  "category": "Finance",
+  "category": "Data Science",
   "quality_score": null,
   "archestra_config": {
     "client_config_permutations": {
-      "mcp-server-budget-allocator": {
+      "mcp-server-customer-segmentation": {
         "command": "npx",
-        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-budget-allocator", "--stdio"],
+        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-customer-segmentation", "--stdio"],
         "env": {}
       }
     },
@@ -35,9 +35,9 @@
   "github_info": {
     "owner": "modelcontextprotocol",
     "repo": "ext-apps",
-    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/budget-allocator-server",
-    "name": "modelcontextprotocol__ext-apps__budget-allocator-server",
-    "path": "examples/budget-allocator-server",
+    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/customer-segmentation-server",
+    "name": "mcp__ext-apps__customer-segmentation-server",
+    "path": "examples/customer-segmentation-server",
     "stars": 0,
     "contributors": 0,
     "issues": 0,

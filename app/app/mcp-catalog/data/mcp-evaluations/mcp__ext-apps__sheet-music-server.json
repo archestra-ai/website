@@ -1,13 +1,13 @@
 {
-  "name": "modelcontextprotocol__ext-apps__video-resource-server",
-  "display_name": "Video Resource",
-  "description": "Binary video delivery via MCP resources for streaming and displaying video content",
+  "name": "mcp__ext-apps__sheet-music-server",
+  "display_name": "Sheet Music",
+  "description": "ABC notation to sheet music converter for rendering and displaying musical scores",
   "author": {
     "name": "modelcontextprotocol"
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-video-resource", "--stdio"],
+    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-sheet-music", "--stdio"],
     "env": {},
     "type": "local"
   },
@@ -16,13 +16,13 @@
   "keywords": [],
   "user_config": {},
   "readme": null,
-  "category": "Media",
+  "category": "Art & Culture",
   "quality_score": null,
   "archestra_config": {
     "client_config_permutations": {
-      "mcp-server-video-resource": {
+      "mcp-server-sheet-music": {
         "command": "npx",
-        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-video-resource", "--stdio"],
+        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-sheet-music", "--stdio"],
         "env": {}
       }
     },
@@ -35,9 +35,9 @@
   "github_info": {
     "owner": "modelcontextprotocol",
     "repo": "ext-apps",
-    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/video-resource-server",
-    "name": "modelcontextprotocol__ext-apps__video-resource-server",
-    "path": "examples/video-resource-server",
+    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/sheet-music-server",
+    "name": "mcp__ext-apps__sheet-music-server",
+    "path": "examples/sheet-music-server",
     "stars": 0,
     "contributors": 0,
     "issues": 0,

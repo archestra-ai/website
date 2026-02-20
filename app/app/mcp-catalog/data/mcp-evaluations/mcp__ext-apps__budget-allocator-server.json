@@ -1,13 +1,13 @@
 {
-  "name": "modelcontextprotocol__ext-apps__threejs-server",
-  "display_name": "Three.js",
-  "description": "Interactive 3D scene renderer using Three.js for creating and manipulating 3D visualizations",
+  "name": "mcp__ext-apps__budget-allocator-server",
+  "display_name": "Budget Allocator",
+  "description": "Interactive budget allocation interface for planning and visualizing spending distributions",
   "author": {
     "name": "modelcontextprotocol"
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-threejs", "--stdio"],
+    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-budget-allocator", "--stdio"],
     "env": {},
     "type": "local"
   },
@@ -16,13 +16,13 @@
   "keywords": [],
   "user_config": {},
   "readme": null,
-  "category": "Media",
+  "category": "Finance",
   "quality_score": null,
   "archestra_config": {
     "client_config_permutations": {
-      "mcp-server-threejs": {
+      "mcp-server-budget-allocator": {
         "command": "npx",
-        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-threejs", "--stdio"],
+        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-budget-allocator", "--stdio"],
         "env": {}
       }
     },
@@ -35,9 +35,9 @@
   "github_info": {
     "owner": "modelcontextprotocol",
     "repo": "ext-apps",
-    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/threejs-server",
-    "name": "modelcontextprotocol__ext-apps__threejs-server",
-    "path": "examples/threejs-server",
+    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/budget-allocator-server",
+    "name": "mcp__ext-apps__budget-allocator-server",
+    "path": "examples/budget-allocator-server",
     "stars": 0,
     "contributors": 0,
     "issues": 0,

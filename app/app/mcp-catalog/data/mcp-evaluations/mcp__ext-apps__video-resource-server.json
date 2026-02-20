@@ -1,13 +1,13 @@
 {
-  "name": "modelcontextprotocol__ext-apps__system-monitor-server",
-  "display_name": "System Monitor",
-  "description": "Real-time OS metrics dashboard for monitoring CPU, memory, and system performance",
+  "name": "mcp__ext-apps__video-resource-server",
+  "display_name": "Video Resource",
+  "description": "Binary video delivery via MCP resources for streaming and displaying video content",
   "author": {
     "name": "modelcontextprotocol"
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-system-monitor", "--stdio"],
+    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-video-resource", "--stdio"],
     "env": {},
     "type": "local"
   },
@@ -16,13 +16,13 @@
   "keywords": [],
   "user_config": {},
   "readme": null,
-  "category": "Monitoring",
+  "category": "Media",
   "quality_score": null,
   "archestra_config": {
     "client_config_permutations": {
-      "mcp-server-system-monitor": {
+      "mcp-server-video-resource": {
         "command": "npx",
-        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-system-monitor", "--stdio"],
+        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-video-resource", "--stdio"],
         "env": {}
       }
     },
@@ -35,9 +35,9 @@
   "github_info": {
     "owner": "modelcontextprotocol",
     "repo": "ext-apps",
-    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/system-monitor-server",
-    "name": "modelcontextprotocol__ext-apps__system-monitor-server",
-    "path": "examples/system-monitor-server",
+    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/video-resource-server",
+    "name": "mcp__ext-apps__video-resource-server",
+    "path": "examples/video-resource-server",
     "stars": 0,
     "contributors": 0,
     "issues": 0,

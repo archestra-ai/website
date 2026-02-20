@@ -1,13 +1,13 @@
 {
-  "name": "modelcontextprotocol__ext-apps__wiki-explorer-server",
-  "display_name": "Wiki Explorer",
-  "description": "Wikipedia link graph visualization for exploring article connections and relationships",
+  "name": "mcp__ext-apps__pdf-server",
+  "display_name": "PDF Server",
+  "description": "Interactive PDF viewer with chunked loading for rendering and navigating PDF documents",
   "author": {
     "name": "modelcontextprotocol"
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-wiki-explorer", "--stdio"],
+    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-pdf", "--stdio"],
     "env": {},
     "type": "local"
   },
@@ -16,13 +16,13 @@
   "keywords": [],
   "user_config": {},
   "readme": null,
-  "category": "Knowledge",
+  "category": "File Management",
   "quality_score": null,
   "archestra_config": {
     "client_config_permutations": {
-      "mcp-server-wiki-explorer": {
+      "mcp-server-pdf": {
         "command": "npx",
-        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-wiki-explorer", "--stdio"],
+        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-pdf", "--stdio"],
         "env": {}
       }
     },
@@ -35,9 +35,9 @@
   "github_info": {
     "owner": "modelcontextprotocol",
     "repo": "ext-apps",
-    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/wiki-explorer-server",
-    "name": "modelcontextprotocol__ext-apps__wiki-explorer-server",
-    "path": "examples/wiki-explorer-server",
+    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/pdf-server",
+    "name": "mcp__ext-apps__pdf-server",
+    "path": "examples/pdf-server",
     "stars": 0,
     "contributors": 0,
     "issues": 0,

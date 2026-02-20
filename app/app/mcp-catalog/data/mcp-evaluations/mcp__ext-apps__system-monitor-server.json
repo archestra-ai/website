@@ -1,13 +1,13 @@
 {
-  "name": "modelcontextprotocol__ext-apps__customer-segmentation-server",
-  "display_name": "Customer Segmentation",
-  "description": "Scatter chart with clustering analysis for visualizing customer segments and patterns",
+  "name": "mcp__ext-apps__system-monitor-server",
+  "display_name": "System Monitor",
+  "description": "Real-time OS metrics dashboard for monitoring CPU, memory, and system performance",
   "author": {
     "name": "modelcontextprotocol"
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-customer-segmentation", "--stdio"],
+    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-system-monitor", "--stdio"],
     "env": {},
     "type": "local"
   },
@@ -16,13 +16,13 @@
   "keywords": [],
   "user_config": {},
   "readme": null,
-  "category": "Data Science",
+  "category": "Monitoring",
   "quality_score": null,
   "archestra_config": {
     "client_config_permutations": {
-      "mcp-server-customer-segmentation": {
+      "mcp-server-system-monitor": {
         "command": "npx",
-        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-customer-segmentation", "--stdio"],
+        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-system-monitor", "--stdio"],
         "env": {}
       }
     },
@@ -35,9 +35,9 @@
   "github_info": {
     "owner": "modelcontextprotocol",
     "repo": "ext-apps",
-    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/customer-segmentation-server",
-    "name": "modelcontextprotocol__ext-apps__customer-segmentation-server",
-    "path": "examples/customer-segmentation-server",
+    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/system-monitor-server",
+    "name": "mcp__ext-apps__system-monitor-server",
+    "path": "examples/system-monitor-server",
     "stars": 0,
     "contributors": 0,
     "issues": 0,

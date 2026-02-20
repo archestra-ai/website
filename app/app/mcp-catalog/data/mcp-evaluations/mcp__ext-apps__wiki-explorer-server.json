@@ -1,13 +1,13 @@
 {
-  "name": "modelcontextprotocol__ext-apps__transcript-server",
-  "display_name": "Transcript",
-  "description": "Live speech transcription interface for real-time audio-to-text conversion",
+  "name": "mcp__ext-apps__wiki-explorer-server",
+  "display_name": "Wiki Explorer",
+  "description": "Wikipedia link graph visualization for exploring article connections and relationships",
   "author": {
     "name": "modelcontextprotocol"
   },
   "server": {
     "command": "npx",
-    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-transcript", "--stdio"],
+    "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-wiki-explorer", "--stdio"],
     "env": {},
     "type": "local"
   },
@@ -16,13 +16,13 @@
   "keywords": [],
   "user_config": {},
   "readme": null,
-  "category": "Audio",
+  "category": "Knowledge",
   "quality_score": null,
   "archestra_config": {
     "client_config_permutations": {
-      "mcp-server-transcript": {
+      "mcp-server-wiki-explorer": {
         "command": "npx",
-        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-transcript", "--stdio"],
+        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-wiki-explorer", "--stdio"],
         "env": {}
       }
     },
@@ -35,9 +35,9 @@
   "github_info": {
     "owner": "modelcontextprotocol",
     "repo": "ext-apps",
-    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/transcript-server",
-    "name": "modelcontextprotocol__ext-apps__transcript-server",
-    "path": "examples/transcript-server",
+    "url": "https://github.com/modelcontextprotocol/ext-apps/tree/main/examples/wiki-explorer-server",
+    "name": "mcp__ext-apps__wiki-explorer-server",
+    "path": "examples/wiki-explorer-server",
     "stars": 0,
     "contributors": 0,
     "issues": 0,
