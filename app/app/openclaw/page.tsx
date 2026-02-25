@@ -31,7 +31,7 @@ export default function OpenClawPage() {
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-950 leading-[1.15] tracking-tight">
                   How to bring{' '}
                   <span className="line-through decoration-gray-300 decoration-2 text-gray-400">ClawdBot</span>{' '}
-                  <span className="line-through decoration-gray-300 decoration-2 text-gray-400">MoldBot</span>{' '}
+                  <span className="line-through decoration-gray-300 decoration-2 text-gray-400">MoltBot</span>{' '}
                   <span className="text-gray-950">OpenClaw</span>-like agents to your organization{' '}
                   <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
                     but secure

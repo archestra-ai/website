@@ -63,7 +63,7 @@ export default function Home() {
                 </h1>
                 <p className="text-xl text-gray-600">
                   Yes, it's like <span className="line-through">ClawdBot</span>{' '}
-                  <span className="line-through">MoldBot</span> OpenClaw but secure and production-ready 😉
+                  <span className="line-through">MoltBot</span> OpenClaw but secure and production-ready 😉
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <Link
