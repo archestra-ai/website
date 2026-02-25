@@ -22,7 +22,13 @@
     "client_config_permutations": {
       "mcp-server-map": {
         "command": "npx",
-        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-map", "--stdio"],
+        "args": [
+          "-y",
+          "--silent",
+          "--registry=https://registry.npmjs.org/",
+          "@modelcontextprotocol/server-map",
+          "--stdio"
+        ],
         "env": {}
       }
     },

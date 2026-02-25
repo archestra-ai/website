@@ -22,7 +22,13 @@
     "client_config_permutations": {
       "mcp-server-pdf": {
         "command": "npx",
-        "args": ["-y", "--silent", "--registry=https://registry.npmjs.org/", "@modelcontextprotocol/server-pdf", "--stdio"],
+        "args": [
+          "-y",
+          "--silent",
+          "--registry=https://registry.npmjs.org/",
+          "@modelcontextprotocol/server-pdf",
+          "--stdio"
+        ],
         "env": {}
       }
     },
