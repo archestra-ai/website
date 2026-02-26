@@ -25,40 +25,8 @@ jobs:
       - name: Setup environment
         uses: ./.github/actions/setup-env
 
-      - name: Check prettier formatting
-        run: pnpm prettier --check .
-
-      - name: Run Knip
-        run: pnpm knip
-
-      - name: Run tests
-        run: pnpm test
-
-      - name: Typecheck
-        run: pnpm typecheck
-
-      - name: Build check
-        run: pnpm build:check
-
-  ensure-catalog-data-is-valid:
-    name: Ensure Catalog Data is Valid
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    defaults:
-      run:
-        working-directory: ./app
-    steps:
-      - name: Checkout project
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-        with:
-          persist-credentials: false
-
-      - name: Setup environment
-        uses: ./.github/actions/setup-env
-
-      - name: Validate catalog data
-        run: pnpm catalog:validate
+      - name: Check formatting, linting, and tests
+        run: pnpm check:ci
 
   verify-no-pending-openapi-schema-changes:
     name: Verify no pending openapi schema changes
