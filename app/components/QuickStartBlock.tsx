@@ -87,7 +87,7 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
       return (
         <div className="absolute inset-0 bg-[#0d1117] z-10 flex flex-col items-center justify-center p-6 md:p-8">
           <p className="text-gray-400 text-xs md:text-sm text-center mb-6 max-w-md">
-            To connect MS Teams, Archestra needs to be reachable from the internet.
+            To connect MS Teams, Archestra needs to be reachable from the Internet.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 w-full max-w-xl">
             <button
@@ -170,6 +170,7 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
       {agentTriggersPath}
     </a>
   );
+  const agentTriggersProdLink = <span className={linkClass}>&lt;archestra_url&gt;{agentTriggersPath}</span>;
 
   const renderQuickstartCommand = () => (
     <div>
@@ -257,8 +258,8 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
       <div className="bg-gray-900 px-4 flex gap-0 border-b border-gray-700/50">
         <div className="flex gap-0 flex-1">
           {[
-            { key: 'development' as const, label: 'Development', icon: Code },
             { key: 'quickstart' as const, label: 'Local Quickstart', icon: Terminal },
+            { key: 'development' as const, label: 'Development', icon: Code },
             { key: 'production' as const, label: 'Production', icon: Rocket },
           ].map((tab) => {
             const Icon = tab.icon;
@@ -331,9 +332,10 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
         <div className="bg-[#161b22] px-6 py-4 border-b border-gray-800/50 flex justify-center">
           <div className="grid grid-cols-[auto_auto] items-center gap-x-2 gap-y-2">
             <label className="text-gray-400 text-sm whitespace-nowrap text-right">
-              Archestra admin email{' '}
-              <span className="text-gray-500">
-                (must match {messagingProvider === 'slack' ? 'Slack' : 'MS Teams'} email):
+              Enter Archestra admin email
+              <br />
+              <span className="text-gray-500 text-xs">
+                Must match your {messagingProvider === 'slack' ? 'Slack' : 'MS Teams'} email
               </span>
             </label>
             <div className="flex items-center gap-1.5">
@@ -341,7 +343,7 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
                 type="email"
                 value={adminEmail}
                 onChange={(e) => setAdminEmail(e.target.value)}
-                className="px-3 py-1.5 text-sm rounded-md bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-indigo-500 font-mono w-64"
+                className="px-3 py-1.5 text-sm rounded-md bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-indigo-500 font-mono w-64 mb-1"
                 placeholder="admin@company.com"
               />
               <button
@@ -360,7 +362,11 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
                 )}
               </button>
             </div>
-            <p className="text-gray-400 text-sm text-right">Default Archestra password:</p>
+            <p className="text-gray-400 text-sm text-right">
+              Default Archestra password
+              <br />
+              <span className="text-gray-500 text-xs">Readonly</span>
+            </p>
             <div className="flex items-center gap-1.5">
               <input
                 type="text"
@@ -528,6 +534,10 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
               </div>
             </div>
             <div className="flex text-gray-600 mt-3">
+              <span className="select-none mr-4">#</span>
+              <span>Then open {agentTriggersProdLink}</span>
+            </div>
+            <div className="flex text-gray-600">
               <span className="select-none mr-4">#</span>
               <span>
                 Full guide:{' '}
