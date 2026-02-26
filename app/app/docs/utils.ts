@@ -1,4 +1,5 @@
 import fs from 'fs';
+import GithubSlugger from 'github-slugger';
 import matter from 'gray-matter';
 import type { Metadata } from 'next';
 import path from 'path';
@@ -220,15 +221,13 @@ export function getDocsByCategory(): DocCategory[] {
 export function generateTableOfContents(content: string): TableOfContentsItem[] {
   const headingRegex = /^(#{2,3})\s+(.+)$/gm;
   const toc: TableOfContentsItem[] = [];
+  const slugger = new GithubSlugger();
   let match;
 
   while ((match = headingRegex.exec(content)) !== null) {
     const level = match[1].length;
     const text = match[2];
-    const id = text
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, '')
-      .replace(/\s+/g, '-');
+    const id = slugger.slug(text);
 
     toc.push({ id, text, level });
   }
