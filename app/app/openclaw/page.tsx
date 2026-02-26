@@ -185,9 +185,16 @@ export default function OpenClawPage() {
 
           <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left Column - Screenshot placeholder */}
-              <div className="rounded-2xl border-2 border-dashed border-gray-300 bg-gray-50 p-12 flex items-center justify-center min-h-[300px]">
-                <p className="text-gray-400 text-sm">Screenshot placeholder</p>
+              {/* Left Column - Screenshot */}
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-teal-400 to-green-400 rounded-2xl blur-2xl opacity-15"></div>
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
+                  <img
+                    src="/sales-assistant-msteams-chat.png"
+                    alt="Sales assistant in Microsoft Teams chat"
+                    className="w-full h-auto"
+                  />
+                </div>
               </div>
 
               {/* Right Column - Content */}
