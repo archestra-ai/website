@@ -6,20 +6,25 @@ import { useEffect, useState } from 'react';
 type LaunchTab = 'development' | 'quickstart' | 'production';
 type ShellType = 'bash' | 'powershell';
 type ExposureStep = 'choose' | 'ngrok-input' | null;
-type MessagingProvider = 'slack' | 'msteams';
+export type MessagingProvider = 'slack' | 'msteams';
 
 const linkClass = 'text-gray-500 hover:text-gray-300 underline underline-offset-2';
 
-export default function QuickStartBlock({ showExposureOverlay = false }: { showExposureOverlay?: boolean }) {
+export default function QuickStartBlock({
+  showExposureOverlay = false,
+  messagingProvider = 'slack',
+  onMessagingProviderChange,
+}: {
+  showExposureOverlay?: boolean;
+  messagingProvider?: MessagingProvider;
+  onMessagingProviderChange?: (provider: MessagingProvider) => void;
+}) {
   const [copied, setCopied] = useState(false);
   const [launchTab, setLaunchTab] = useState<LaunchTab>('quickstart');
   const [shell, setShell] = useState<ShellType>('bash');
   const [exposureStep, setExposureStep] = useState<ExposureStep>(null);
   const [ngrokKey, setNgrokKey] = useState('');
   const [customDomain, setCustomDomain] = useState('');
-  const [messagingProvider, setMessagingProvider] = useState<MessagingProvider>('slack');
-  const [adminEmail, setAdminEmail] = useState('');
-  const [copiedField, setCopiedField] = useState<'email' | 'password' | null>(null);
 
   useEffect(() => {
     if (navigator.platform?.startsWith('Win') || navigator.userAgent?.includes('Windows')) {
@@ -27,12 +32,23 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
     }
   }, []);
 
+  // Reset exposure step when messaging provider changes
+  useEffect(() => {
+    if (messagingProvider === 'msteams' && showExposureOverlay && launchTab === 'quickstart') {
+      setExposureStep('choose');
+    } else {
+      setExposureStep(null);
+    }
+    setNgrokKey('');
+    setCustomDomain('');
+    setCopied(false);
+  }, [messagingProvider, showExposureOverlay, launchTab]);
+
   const lc = shell === 'bash' ? '\\' : '`';
 
   const getQuickstartCommand = () => {
     const base = `docker pull archestra/platform:latest;\ndocker run -p 9000:9000 -p 3000:3000 ${lc}\n  -e ARCHESTRA_QUICKSTART=true ${lc}`;
     let extra = '';
-    extra += `\n  -e ARCHESTRA_ADMIN_EMAIL=${adminEmail || '<your-email>'} ${lc}`;
     if (ngrokKey) extra += `\n  -e ARCHESTRA_NGROK_AUTH_TOKEN=${ngrokKey} ${lc}`;
     if (customDomain) extra += `\n  -e ARCHESTRA_API_BASE_URL=${customDomain} ${lc}`;
     const suffix = `\n  -v /var/run/docker.sock:/var/run/docker.sock ${lc}\n  -v archestra-postgres-data:/var/lib/postgresql/data ${lc}\n  -v archestra-app-data:/app/data ${lc}\n  archestra/platform;`;
@@ -40,9 +56,9 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
   };
 
   const commands: Record<LaunchTab, string> = {
-    development: `git clone https://github.com/archestra-ai/archestra.git\ncd archestra/platform\nARCHESTRA_ADMIN_EMAIL=${adminEmail || '<your-email>'} tilt up`,
+    development: 'git clone https://github.com/archestra-ai/archestra.git\ncd archestra/platform\ntilt up',
     quickstart: getQuickstartCommand(),
-    production: `helm upgrade archestra-platform ${lc}\n  oci://europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/helm-charts/archestra-platform ${lc}\n  --install ${lc}\n  --namespace archestra ${lc}\n  --set archestra.env.HOSTNAME="0.0.0.0" ${lc}\n  --set archestra.env.ARCHESTRA_ADMIN_EMAIL="${adminEmail || '<your-email>'}" ${lc}\n  --create-namespace ${lc}\n  --wait`,
+    production: `helm upgrade archestra-platform ${lc}\n  oci://europe-west1-docker.pkg.dev/friendly-path-465518-r6/archestra-public/helm-charts/archestra-platform ${lc}\n  --install ${lc}\n  --namespace archestra ${lc}\n  --set archestra.env.HOSTNAME="0.0.0.0" ${lc}\n  --create-namespace ${lc}\n  --wait`,
   };
 
   const handleCopy = () => {
@@ -54,29 +70,6 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
   const handleTabChange = (tab: LaunchTab) => {
     setLaunchTab(tab);
     setCopied(false);
-    if (showExposureOverlay && tab === 'quickstart' && messagingProvider === 'msteams') {
-      setExposureStep('choose');
-      setNgrokKey('');
-      setCustomDomain('');
-    } else {
-      setExposureStep(null);
-      setNgrokKey('');
-      setCustomDomain('');
-    }
-  };
-
-  const handleMessagingProviderChange = (provider: MessagingProvider) => {
-    setMessagingProvider(provider);
-    setCopied(false);
-    if (provider === 'slack') {
-      setExposureStep(null);
-      setNgrokKey('');
-      setCustomDomain('');
-    } else if (showExposureOverlay && launchTab === 'quickstart') {
-      setExposureStep('choose');
-      setNgrokKey('');
-      setCustomDomain('');
-    }
   };
 
   const renderExposureOverlay = () => {
@@ -201,12 +194,6 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
           </span>{' '}
           {renderLineContinuation()}
           {'\n'}
-          <span className="text-gray-300">
-            {'  '}-e <span className="text-purple-400">ARCHESTRA_ADMIN_EMAIL</span>=
-            {adminEmail || <span className="text-gray-500">&lt;your-email&gt;</span>}
-          </span>{' '}
-          {renderLineContinuation()}
-          {'\n'}
           {ngrokKey && (
             <>
               <span className="text-gray-300">
@@ -280,11 +267,11 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
           })}
         </div>
         <div className="flex items-center gap-2">
-          {showExposureOverlay && (
+          {showExposureOverlay && onMessagingProviderChange && (
             <>
               <div className="flex items-center gap-1 text-xs">
                 <button
-                  onClick={() => handleMessagingProviderChange('slack')}
+                  onClick={() => onMessagingProviderChange('slack')}
                   className={`flex items-center gap-1.5 px-2 py-1 rounded transition-colors ${
                     messagingProvider === 'slack' ? 'text-gray-200 bg-gray-700' : 'text-gray-500 hover:text-gray-300'
                   }`}
@@ -293,7 +280,7 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
                   Slack
                 </button>
                 <button
-                  onClick={() => handleMessagingProviderChange('msteams')}
+                  onClick={() => onMessagingProviderChange('msteams')}
                   className={`flex items-center gap-1.5 px-2 py-1 rounded transition-colors ${
                     messagingProvider === 'msteams' ? 'text-gray-200 bg-gray-700' : 'text-gray-500 hover:text-gray-300'
                   }`}
@@ -327,72 +314,6 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
           )}
         </div>
       </div>
-      {/* Admin email */}
-      {showExposureOverlay && (
-        <div className="bg-[#161b22] px-6 py-4 border-b border-gray-800/50 flex justify-center">
-          <div className="grid grid-cols-[auto_auto] items-center gap-x-2 gap-y-2">
-            <label className="text-gray-400 text-sm whitespace-nowrap text-right">
-              Enter Archestra admin email
-              <br />
-              <span className="text-gray-500 text-xs">
-                Must match your {messagingProvider === 'slack' ? 'Slack' : 'MS Teams'} email
-              </span>
-            </label>
-            <div className="flex items-center gap-1.5">
-              <input
-                type="email"
-                value={adminEmail}
-                onChange={(e) => setAdminEmail(e.target.value)}
-                className="px-3 py-1.5 text-sm rounded-md bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-indigo-500 font-mono w-64 mb-1"
-                placeholder="admin@company.com"
-              />
-              <button
-                onClick={() => {
-                  navigator.clipboard.writeText(adminEmail);
-                  setCopiedField('email');
-                  setTimeout(() => setCopiedField(null), 2000);
-                }}
-                className="text-gray-500 hover:text-gray-300 transition-colors p-1"
-                title="Copy email"
-              >
-                {copiedField === 'email' ? (
-                  <Check className="w-3.5 h-3.5 text-green-400" />
-                ) : (
-                  <Copy className="w-3.5 h-3.5" />
-                )}
-              </button>
-            </div>
-            <p className="text-gray-400 text-sm text-right">
-              Default Archestra password
-              <br />
-              <span className="text-gray-500 text-xs">Readonly</span>
-            </p>
-            <div className="flex items-center gap-1.5">
-              <input
-                type="text"
-                value="password"
-                readOnly
-                className="px-3 py-1.5 text-sm rounded-md bg-gray-800/50 text-gray-400 border border-gray-700/50 font-mono w-64 cursor-default select-all"
-              />
-              <button
-                onClick={() => {
-                  navigator.clipboard.writeText('password');
-                  setCopiedField('password');
-                  setTimeout(() => setCopiedField(null), 2000);
-                }}
-                className="text-gray-500 hover:text-gray-300 transition-colors p-1"
-                title="Copy password"
-              >
-                {copiedField === 'password' ? (
-                  <Check className="w-3.5 h-3.5 text-green-400" />
-                ) : (
-                  <Copy className="w-3.5 h-3.5" />
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
       {/* Code content */}
       <div className="bg-[#0d1117] p-6 font-mono text-sm md:text-base leading-relaxed overflow-x-auto relative whitespace-pre-wrap">
         <button
@@ -445,13 +366,7 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
             </div>
             <div className="flex">
               <span className="text-gray-600 select-none mr-4">$</span>
-              <span>
-                <span className="text-purple-400">ARCHESTRA_ADMIN_EMAIL</span>
-                <span className="text-gray-300">
-                  ={adminEmail || <span className="text-gray-500">&lt;your-email&gt;</span>}
-                </span>{' '}
-                <span className="text-green-400">tilt up</span>
-              </span>
+              <span className="text-green-400">tilt up</span>
             </div>
             <div className="flex text-gray-600 mt-3">
               <span className="select-none mr-4">#</span>
@@ -520,13 +435,6 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
                 <span className="text-yellow-300">{'  '}--set</span>{' '}
                 <span className="text-purple-400">archestra.env.HOSTNAME</span>
                 <span className="text-gray-300">=&quot;0.0.0.0&quot;</span> {renderLineContinuation()}
-                {'\n'}
-                <span className="text-yellow-300">{'  '}--set</span>{' '}
-                <span className="text-purple-400">archestra.env.ARCHESTRA_ADMIN_EMAIL</span>
-                <span className="text-gray-300">
-                  =&quot;{adminEmail || <span className="text-gray-500">&lt;your-email&gt;</span>}&quot;
-                </span>{' '}
-                {renderLineContinuation()}
                 {'\n'}
                 <span className="text-yellow-300">{'  '}--create-namespace</span> {renderLineContinuation()}
                 {'\n'}

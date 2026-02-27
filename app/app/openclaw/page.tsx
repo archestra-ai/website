@@ -4,10 +4,12 @@ import { useState } from 'react';
 
 import Footer from '@components/Footer';
 import Header from '@components/Header';
-import QuickStartBlock from '@components/QuickStartBlock';
+import QuickStartBlock, { type MessagingProvider } from '@components/QuickStartBlock';
 
 export default function OpenClawPage() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [messagingProvider, setMessagingProvider] = useState<MessagingProvider>('slack');
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -216,14 +218,18 @@ export default function OpenClawPage() {
         </section>
 
         {/* Try Yourself Section */}
-        <section className="min-h-screen flex items-center bg-gray-50">
-          <div className="container px-4 md:px-6 max-w-7xl mx-auto">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Only 5 minutes to run and try yourself</h2>
-              </div>
-              <QuickStartBlock showExposureOverlay />
+        <section className="py-24 bg-gray-50 relative overflow-hidden">
+          <div className="absolute inset-0 [background-image:radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.02)_1px,transparent_0)] [background-size:32px_32px]"></div>
+
+          <div className="container px-4 md:px-6 max-w-4xl mx-auto relative">
+            {/* Section heading */}
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Only 5 minutes to run and try yourself
+              </h2>
             </div>
+
+            <QuickStartBlock showExposureOverlay messagingProvider={messagingProvider} onMessagingProviderChange={setMessagingProvider} />
           </div>
         </section>
       </main>
