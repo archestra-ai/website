@@ -5,15 +5,24 @@ import { useEffect, useState } from 'react';
 
 type LaunchTab = 'development' | 'quickstart' | 'production';
 type ShellType = 'bash' | 'powershell';
-type ExposureStep = 'choose' | 'ngrok-input' | 'custom-domain-input' | null;
+type ExposureStep = 'choose' | 'ngrok-input' | null;
+export type MessagingProvider = 'slack' | 'msteams';
 
 const linkClass = 'text-gray-500 hover:text-gray-300 underline underline-offset-2';
 
-export default function QuickStartBlock({ showExposureOverlay = false }: { showExposureOverlay?: boolean }) {
+export default function QuickStartBlock({
+  showExposureOverlay = false,
+  messagingProvider = 'slack',
+  onMessagingProviderChange,
+}: {
+  showExposureOverlay?: boolean;
+  messagingProvider?: MessagingProvider;
+  onMessagingProviderChange?: (provider: MessagingProvider) => void;
+}) {
   const [copied, setCopied] = useState(false);
   const [launchTab, setLaunchTab] = useState<LaunchTab>('quickstart');
   const [shell, setShell] = useState<ShellType>('bash');
-  const [exposureStep, setExposureStep] = useState<ExposureStep>(showExposureOverlay ? 'choose' : null);
+  const [exposureStep, setExposureStep] = useState<ExposureStep>(null);
   const [ngrokKey, setNgrokKey] = useState('');
   const [customDomain, setCustomDomain] = useState('');
 
@@ -22,6 +31,18 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
       setShell('powershell');
     }
   }, []);
+
+  // Reset exposure step when messaging provider changes
+  useEffect(() => {
+    if (messagingProvider === 'msteams' && showExposureOverlay && launchTab === 'quickstart') {
+      setExposureStep('choose');
+    } else {
+      setExposureStep(null);
+    }
+    setNgrokKey('');
+    setCustomDomain('');
+    setCopied(false);
+  }, [messagingProvider, showExposureOverlay, launchTab]);
 
   const lc = shell === 'bash' ? '\\' : '`';
 
@@ -49,21 +70,17 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
   const handleTabChange = (tab: LaunchTab) => {
     setLaunchTab(tab);
     setCopied(false);
-    if (showExposureOverlay && tab === 'quickstart') {
-      setExposureStep('choose');
-      setNgrokKey('');
-      setCustomDomain('');
-    }
   };
 
   const renderExposureOverlay = () => {
-    if (!showExposureOverlay || launchTab !== 'quickstart' || exposureStep === null) return null;
+    if (!showExposureOverlay || launchTab !== 'quickstart' || messagingProvider !== 'msteams' || exposureStep === null)
+      return null;
 
     if (exposureStep === 'choose') {
       return (
         <div className="absolute inset-0 bg-[#0d1117] z-10 flex flex-col items-center justify-center p-6 md:p-8">
           <p className="text-gray-400 text-xs md:text-sm text-center mb-6 max-w-md">
-            To connect MS Teams or Slack, Archestra needs to be reachable from the internet.
+            To connect MS Teams, Archestra needs to be reachable from the Internet.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 w-full max-w-xl">
             <button
@@ -79,7 +96,7 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
               </span>
             </button>
             <button
-              onClick={() => setExposureStep('custom-domain-input')}
+              onClick={() => setExposureStep(null)}
               className="group flex flex-col items-center gap-2 px-4 py-5 rounded-lg bg-gray-800/60 border border-gray-700/50 hover:border-indigo-500/50 hover:bg-gray-800 transition-all text-left"
             >
               <div className="w-9 h-9 rounded-full bg-indigo-500/10 flex items-center justify-center mb-1 group-hover:bg-indigo-500/20 transition-colors">
@@ -132,34 +149,21 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
       );
     }
 
-    if (exposureStep === 'custom-domain-input') {
-      return (
-        <div className="absolute inset-0 bg-[#0d1117] z-10 flex flex-col items-center justify-center p-6">
-          <label className="text-gray-300 text-sm md:text-base mb-2">
-            Enter the URL (incl port) Archestra will be reachable via
-          </label>
-          <p className="text-gray-500 text-xs mb-4">By default, Archestra runs on port 3000</p>
-          <input
-            type="text"
-            value={customDomain}
-            onChange={(e) => setCustomDomain(e.target.value)}
-            className="w-full max-w-xs px-3 py-2 text-sm rounded-md bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-indigo-500 font-mono"
-            placeholder="https://example.com:3000"
-          />
-          <button
-            onClick={() => setExposureStep(null)}
-            className="mt-4 px-6 py-2 text-sm font-medium rounded-md bg-indigo-600 text-white hover:bg-indigo-500 transition-colors"
-          >
-            Continue
-          </button>
-        </div>
-      );
-    }
-
     return null;
   };
 
   const renderLineContinuation = () => <span className="text-gray-600">{lc}</span>;
+
+  const agentTriggersPath = `/agent-triggers/${messagingProvider === 'msteams' ? 'ms-teams' : 'slack'}`;
+  const agentTriggersBase = ngrokKey || customDomain ? '<archestra_url>' : 'localhost:3000';
+  const agentTriggersHref = ngrokKey || customDomain ? undefined : `http://localhost:3000${agentTriggersPath}`;
+  const agentTriggersPageLink = (
+    <a href={agentTriggersHref} target="_blank" rel="noopener noreferrer" className={linkClass}>
+      {agentTriggersBase}
+      {agentTriggersPath}
+    </a>
+  );
+  const agentTriggersProdLink = <span className={linkClass}>&lt;archestra_url&gt;{agentTriggersPath}</span>;
 
   const renderQuickstartCommand = () => (
     <div>
@@ -221,12 +225,7 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
       </div>
       <div className="flex text-gray-600 mt-3">
         <span className="select-none mr-4">#</span>
-        <span>
-          Then open{' '}
-          <a href="http://localhost:3000" target="_blank" rel="noopener noreferrer" className={linkClass}>
-            localhost:3000
-          </a>
-        </span>
+        <span>Then open {agentTriggersPageLink}</span>
       </div>
       <div className="flex text-gray-600">
         <span className="select-none mr-4">#</span>
@@ -246,8 +245,8 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
       <div className="bg-gray-900 px-4 flex gap-0 border-b border-gray-700/50">
         <div className="flex gap-0 flex-1">
           {[
-            { key: 'development' as const, label: 'Development', icon: Code },
             { key: 'quickstart' as const, label: 'Local Quickstart', icon: Terminal },
+            { key: 'development' as const, label: 'Development', icon: Code },
             { key: 'production' as const, label: 'Production', icon: Rocket },
           ].map((tab) => {
             const Icon = tab.icon;
@@ -267,26 +266,53 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
             );
           })}
         </div>
-        {launchTab !== 'development' && (
-          <div className="flex items-center gap-1 text-xs">
-            <button
-              onClick={() => setShell('bash')}
-              className={`px-2 py-1 rounded transition-colors ${
-                shell === 'bash' ? 'text-gray-200 bg-gray-700' : 'text-gray-500 hover:text-gray-300'
-              }`}
-            >
-              Linux / macOS
-            </button>
-            <button
-              onClick={() => setShell('powershell')}
-              className={`px-2 py-1 rounded transition-colors ${
-                shell === 'powershell' ? 'text-gray-200 bg-gray-700' : 'text-gray-500 hover:text-gray-300'
-              }`}
-            >
-              Windows
-            </button>
-          </div>
-        )}
+        <div className="flex items-center gap-2">
+          {showExposureOverlay && onMessagingProviderChange && (
+            <>
+              <div className="flex items-center gap-1 text-xs">
+                <button
+                  onClick={() => onMessagingProviderChange('slack')}
+                  className={`flex items-center gap-1.5 px-2 py-1 rounded transition-colors ${
+                    messagingProvider === 'slack' ? 'text-gray-200 bg-gray-700' : 'text-gray-500 hover:text-gray-300'
+                  }`}
+                >
+                  <img src="/logo-slack.png" alt="" className="w-3.5 h-3.5" />
+                  Slack
+                </button>
+                <button
+                  onClick={() => onMessagingProviderChange('msteams')}
+                  className={`flex items-center gap-1.5 px-2 py-1 rounded transition-colors ${
+                    messagingProvider === 'msteams' ? 'text-gray-200 bg-gray-700' : 'text-gray-500 hover:text-gray-300'
+                  }`}
+                >
+                  <img src="/logo-ms-teams.png" alt="" className="w-3.5 h-3.5" />
+                  MS Teams
+                </button>
+              </div>
+              {launchTab !== 'development' && <div className="w-px h-4 bg-gray-700"></div>}
+            </>
+          )}
+          {launchTab !== 'development' && (
+            <div className="flex items-center gap-1 text-xs">
+              <button
+                onClick={() => setShell('bash')}
+                className={`px-2 py-1 rounded transition-colors ${
+                  shell === 'bash' ? 'text-gray-200 bg-gray-700' : 'text-gray-500 hover:text-gray-300'
+                }`}
+              >
+                Linux / macOS
+              </button>
+              <button
+                onClick={() => setShell('powershell')}
+                className={`px-2 py-1 rounded transition-colors ${
+                  shell === 'powershell' ? 'text-gray-200 bg-gray-700' : 'text-gray-500 hover:text-gray-300'
+                }`}
+              >
+                Windows
+              </button>
+            </div>
+          )}
+        </div>
       </div>
       {/* Code content */}
       <div className="bg-[#0d1117] p-6 font-mono text-sm md:text-base leading-relaxed overflow-x-auto relative whitespace-pre-wrap">
@@ -349,11 +375,7 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
                 <a href="http://localhost:10350" target="_blank" rel="noopener noreferrer" className={linkClass}>
                   localhost:10350
                 </a>{' '}
-                (Tilt) and{' '}
-                <a href="http://localhost:3000" target="_blank" rel="noopener noreferrer" className={linkClass}>
-                  localhost:3000
-                </a>{' '}
-                (Archestra)
+                (Tilt) and {agentTriggersPageLink} (Archestra)
               </span>
             </div>
             <div className="flex text-gray-600">
@@ -420,6 +442,10 @@ export default function QuickStartBlock({ showExposureOverlay = false }: { showE
               </div>
             </div>
             <div className="flex text-gray-600 mt-3">
+              <span className="select-none mr-4">#</span>
+              <span>Then open {agentTriggersProdLink}</span>
+            </div>
+            <div className="flex text-gray-600">
               <span className="select-none mr-4">#</span>
               <span>
                 Full guide:{' '}
