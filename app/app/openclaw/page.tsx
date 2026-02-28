@@ -224,12 +224,14 @@ export default function OpenClawPage() {
           <div className="container px-4 md:px-6 max-w-4xl mx-auto relative">
             {/* Section heading */}
             <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                Only 5 minutes to run and try yourself
-              </h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Only 5 minutes to run and try yourself</h2>
             </div>
 
-            <QuickStartBlock showExposureOverlay messagingProvider={messagingProvider} onMessagingProviderChange={setMessagingProvider} />
+            <QuickStartBlock
+              showExposureOverlay
+              messagingProvider={messagingProvider}
+              onMessagingProviderChange={setMessagingProvider}
+            />
           </div>
         </section>
       </main>
