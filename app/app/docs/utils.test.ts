@@ -1,5 +1,7 @@
+import { slug } from 'github-slugger';
+
 import type { DocPage } from './types';
-import { buildDocMetadata, compareDocPages } from './utils';
+import { buildDocMetadata, compareDocPages, generateTableOfContents } from './utils';
 
 describe('compareDocPages', () => {
   it('should sort docs by category order', () => {
@@ -176,5 +178,94 @@ describe('buildDocMetadata', () => {
 
     const og = metadata.openGraph as Record<string, unknown>;
     expect(og.publishedTime).toBe(mockDoc.lastUpdated);
+  });
+});
+
+describe('generateTableOfContents', () => {
+  it('should extract h2 and h3 headings', () => {
+    const content = `
+## First Section
+Some text
+### Subsection
+More text
+## Second Section
+`;
+    const toc = generateTableOfContents(content);
+    expect(toc).toEqual([
+      { id: 'first-section', text: 'First Section', level: 2 },
+      { id: 'subsection', text: 'Subsection', level: 3 },
+      { id: 'second-section', text: 'Second Section', level: 2 },
+    ]);
+  });
+
+  it('should ignore h1 and h4+ headings', () => {
+    const content = `
+# Title
+## Included
+### Also Included
+#### Not Included
+##### Not Included Either
+`;
+    const toc = generateTableOfContents(content);
+    expect(toc).toHaveLength(2);
+    expect(toc[0]).toEqual({ id: 'included', text: 'Included', level: 2 });
+    expect(toc[1]).toEqual({ id: 'also-included', text: 'Also Included', level: 3 });
+  });
+
+  it('should generate IDs matching github-slugger used by rehype-slug', () => {
+    const headings = [
+      'Application & API Configuration',
+      'Authentication & Security',
+      'Observability & Metrics',
+      'Incoming Email Configuration',
+      'LLM Provider Configuration',
+      'ChatOps Configuration',
+    ];
+
+    const content = headings.map((h) => `## ${h}\nSome text`).join('\n');
+    const toc = generateTableOfContents(content);
+
+    headings.forEach((heading, i) => {
+      expect(toc[i].id).toBe(slug(heading));
+    });
+  });
+
+  it('should preserve double hyphens when special characters like & are stripped', () => {
+    const content = '## Application & API Configuration';
+    const toc = generateTableOfContents(content);
+    expect(toc[0].id).toBe('application--api-configuration');
+  });
+
+  it('should handle duplicate headings by appending numeric suffixes', () => {
+    const content = `
+## Setup
+Some text
+## Setup
+More text
+## Setup
+Even more
+`;
+    const toc = generateTableOfContents(content);
+    expect(toc).toEqual([
+      { id: 'setup', text: 'Setup', level: 2 },
+      { id: 'setup-1', text: 'Setup', level: 2 },
+      { id: 'setup-2', text: 'Setup', level: 2 },
+    ]);
+  });
+
+  it('should return empty array for content with no headings', () => {
+    expect(generateTableOfContents('Just some plain text.')).toEqual([]);
+  });
+
+  it('should not match headings inside inline code', () => {
+    const content = `
+## Real Heading
+\`\`\`
+Not a heading in code block
+\`\`\`
+`;
+    const toc = generateTableOfContents(content);
+    expect(toc).toHaveLength(1);
+    expect(toc[0].text).toBe('Real Heading');
   });
 });
