@@ -82,7 +82,7 @@ const categoryOrder = [
   'Archestra Platform',
   'Agents',
   'LLM Proxy',
-  'MCP Gateway',
+  'MCP',
   'Archestra Desktop Agent',
   'Development',
   'Getting Started',
