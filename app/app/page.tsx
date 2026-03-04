@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import { AlertTriangle, Calendar, Github, Server, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 
@@ -7,7 +9,7 @@ import Footer from '@components/Footer';
 import Header from '@components/Header';
 import MermaidDiagram from '@components/MermaidDiagram';
 import NewsletterForm from '@components/NewsletterForm';
-import QuickStartBlock from '@components/QuickStartBlock';
+import QuickStartBlock, { type MessagingProvider } from '@components/QuickStartBlock';
 import constants from '@constants';
 
 const {
@@ -28,6 +30,9 @@ const {
 } = constants;
 
 export default function Home() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [messagingProvider, setMessagingProvider] = useState<MessagingProvider>('slack');
+
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -53,41 +58,34 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="min-h-[calc(100vh-4rem)] flex items-center bg-white">
-          <div className="container px-4 md:px-6 max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left Column - Text */}
-              <div className="space-y-6">
-                <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
-                  AI orchestrator with security foundation for enterprises
-                </h1>
-                <p className="text-xl text-gray-600">
-                  Yes, it's like <span className="line-through">ClawdBot</span>{' '}
-                  <span className="line-through">MoltBot</span> OpenClaw but secure and production-ready 😉
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <Link
-                    href="/docs/platform-quickstart"
-                    className="px-6 py-3 bg-black text-white font-medium rounded-md hover:bg-gray-900 transition-colors inline-block text-center"
-                  >
-                    Get Started →
-                  </Link>
-                  <Link
-                    href="/book-demo"
-                    className="px-6 py-3 bg-white text-black font-medium rounded-md border border-gray-300 hover:bg-gray-50 transition-colors inline-block text-center"
-                  >
-                    Book Demo
-                  </Link>
-                </div>
+        <section className="min-h-[calc(100vh-4rem)] flex items-center relative bg-[#fafafa] overflow-hidden">
+          {/* Subtle grid texture */}
+          <div className="absolute inset-0 [background-image:radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.03)_1px,transparent_0)] [background-size:40px_40px]"></div>
+
+          <div className="container px-4 md:px-6 max-w-6xl mx-auto relative">
+            <div className="flex flex-col items-center text-center">
+              {/* Oversized decorative text behind */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none">
+                <span className="text-[12rem] md:text-[18rem] lg:text-[22rem] font-black text-gray-100/60 leading-none tracking-tighter">
+                  ?
+                </span>
               </div>
 
-              {/* Right Column - Star History */}
-              <div className="relative">
-                <img
-                  src="https://api.star-history.com/svg?repos=archestra-ai/archestra&type=Date"
-                  alt="Star History Chart"
-                  className="w-full h-auto rounded-lg shadow-lg border border-gray-200"
-                />
+              <div className="relative space-y-6 max-w-4xl">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-950 leading-[1.15] tracking-tight">
+                  How to bring{' '}
+                  <span className="line-through decoration-gray-300 decoration-2 text-gray-400">ClawdBot</span>{' '}
+                  <span className="line-through decoration-gray-300 decoration-2 text-gray-400">MoltBot</span>{' '}
+                  <span className="text-gray-950">OpenClaw</span>-like agents to your organization{' '}
+                  <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
+                    but secure
+                  </span>{' '}
+                  &amp; production&#8209;ready?
+                </h1>
+
+                <div className="flex justify-center pt-2">
+                  <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-violet-600 rounded-full"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -100,7 +98,10 @@ export default function Home() {
               <div className="text-center mb-10">
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Quick Start</h2>
               </div>
-              <QuickStartBlock />
+              <QuickStartBlock
+                messagingProvider={messagingProvider}
+                onMessagingProviderChange={setMessagingProvider}
+              />
             </div>
           </div>
         </section>
@@ -111,9 +112,9 @@ export default function Home() {
           <div className="absolute inset-0 bg-grid-slate-100/50 [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)]"></div>
 
           <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left Column - Content */}
-              <div className="space-y-6">
+            <div className="grid lg:grid-cols-2 gap-x-12 gap-y-6 lg:items-center">
+              {/* Title - first on mobile, top-left on desktop */}
+              <div className="space-y-4">
                 {/* Security Badge */}
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-red-100 rounded-full">
                   <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
@@ -121,20 +122,47 @@ export default function Home() {
                 </div>
 
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  Deterministic Agentic Security to{' '}
+                  Deterministic Agentic Guardrails to{' '}
                   <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
                     Prevent Data Exfiltration
                   </span>
                 </h2>
+              </div>
+
+              {/* Image - second on mobile, right column spanning both rows on desktop */}
+              <div className="relative space-y-4 lg:row-span-2">
+                <div className="absolute -inset-4 bg-gradient-to-r from-red-400 to-orange-400 rounded-2xl blur-2xl opacity-15"></div>
+                <div
+                  className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 cursor-zoom-in"
+                  onClick={() => setLightboxOpen(true)}
+                >
+                  <img src="/clawdbot_hack.jpeg" alt="ClawdBot vulnerability demonstration" className="w-full h-auto" />
+                </div>
+                <ol className="relative text-sm text-gray-500 space-y-1 pl-1">
+                  <li>1. Sending ClawdBot email with prompt injection</li>
+                  <li>2. Asking ClawdBot to check e-mail</li>
+                  <li>3. Receiving the private key from the hacked machine</li>
+                </ol>
+              </div>
+
+              {/* Rest of content - third on mobile, bottom-left on desktop */}
+              <div className="space-y-6">
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Agents can leak data because of the <strong>Lethal Trifecta</strong> — a dangerous combination of:
+                  access to private data, processing untrusted content, and external communication ability. When all
+                  three are present, prompt injection can exfiltrate sensitive data.
+                </p>
 
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Models could consume prompt injections via MCP uncontrollably - reading your inbox, GitHub issues, or
-                  customer inquiries - and follow malicious instructions resulting in data exfiltration.
+                  Archestra provides <strong>deterministic guardrails</strong> preventing agents from leaking sensitive
+                  data, corrupting systems, and following prompt injections.
                 </p>
 
                 {/* Examples of Hacks */}
                 <div className="bg-red-50/50 backdrop-blur rounded-lg p-4 border border-red-200">
-                  <p className="text-sm font-semibold text-red-900 mb-3">⚠️ Real attack examples:</p>
+                  <p className="text-sm font-semibold text-red-900 mb-3">
+                    This vulnerability is not new, it's a well-known problem:
+                  </p>
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <a
                       href="https://simonwillison.net/2023/Apr/14/new-prompt-injection-attack-on-chatgpt-web-version-markdown-imag/"
@@ -142,7 +170,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="text-gray-700 hover:text-red-600 transition-colors"
                     >
-                      • ChatGPT (Apr 2023)
+                      - ChatGPT (Apr 2023)
                     </a>
                     <a
                       href="https://simonwillison.net/2023/Nov/4/hacking-google-bard-from-prompt-injection-to-data-exfiltration/"
@@ -150,7 +178,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="text-gray-700 hover:text-red-600 transition-colors"
                     >
-                      • Google Bard (Nov 2023)
+                      - Google Bard (Nov 2023)
                     </a>
                     <a
                       href="https://simonwillison.net/2024/Jun/16/github-copilot-chat-prompt-injection/"
@@ -158,7 +186,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="text-gray-700 hover:text-red-600 transition-colors"
                     >
-                      • GitHub Copilot (Jun 2024)
+                      - GitHub Copilot (Jun 2024)
                     </a>
                     <a
                       href="https://simonwillison.net/2024/Aug/14/living-off-microsoft-copilot/"
@@ -166,7 +194,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="text-gray-700 hover:text-red-600 transition-colors"
                     >
-                      • Microsoft Copilot (Aug 2024)
+                      - Microsoft Copilot (Aug 2024)
                     </a>
                     <a
                       href="https://simonwillison.net/2024/Aug/20/data-exfiltration-from-slack-ai/"
@@ -174,7 +202,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="text-gray-700 hover:text-red-600 transition-colors"
                     >
-                      • Slack AI (Aug 2024)
+                      - Slack AI (Aug 2024)
                     </a>
                     <a
                       href="https://simonwillison.net/2025/Feb/17/chatgpt-operator-prompt-injection/"
@@ -182,86 +210,294 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="text-gray-700 hover:text-red-600 transition-colors"
                     >
-                      • ChatGPT Operator (Feb 2025)
+                      - ChatGPT Operator (Feb 2025)
                     </a>
                   </div>
                 </div>
 
-                {/* CTA Buttons */}
-                <div className="flex flex-wrap gap-3 pt-2">
-                  <Link
-                    href="/docs/platform-dynamic-tools"
-                    className="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg shadow-blue-500/25"
-                  >
-                    <ShieldCheck className="w-4 h-4 mr-2" />
-                    Dynamic Tools
-                    <span className="ml-1">→</span>
-                  </Link>
-                  <Link
-                    href="/docs/platform-lethal-trifecta"
-                    className="inline-flex items-center px-5 py-2.5 bg-white text-gray-900 font-medium rounded-lg border border-gray-300 hover:bg-gray-50 transition-all shadow-sm"
-                  >
-                    <AlertTriangle className="w-4 h-4 mr-2" />
-                    Lethal Trifecta
-                    <span className="ml-1">→</span>
-                  </Link>
+                {/* Trust Indicators */}
+                <div className="pt-4 text-sm">
+                  <p className="text-gray-500 mb-2">Read more</p>
+                  <div className="flex items-center gap-6">
+                    <a
+                      href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-gray-600 hover:text-blue-600 transition-colors"
+                    >
+                      <span className="font-medium">Simon Willison</span>
+                    </a>
+                    <a
+                      href="https://www.economist.com/leaders/2025/09/25/how-to-stop-ais-lethal-trifecta"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-gray-600 hover:text-blue-600 transition-colors"
+                    >
+                      <span className="font-medium">The Economist</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Chat UI Section */}
+        <section className="py-24 bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 relative overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute inset-0 bg-grid-slate-100/20 [mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)]"></div>
+
+          <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
+            <div className="grid lg:grid-cols-2 gap-x-12 gap-y-6 lg:items-center">
+              {/* Title */}
+              <div className="space-y-4">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-100 rounded-full">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                  <span className="text-purple-700 font-medium text-sm">User Interface</span>
                 </div>
 
-                {/* Trust Indicators */}
-                <div className="flex items-center gap-6 pt-4 text-sm">
-                  <a
-                    href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-gray-600 hover:text-blue-600 transition-colors"
-                  >
-                    <span className="font-medium">📰 Simon Willison</span>
-                  </a>
-                  <a
-                    href="https://www.economist.com/leaders/2025/09/25/how-to-stop-ais-lethal-trifecta"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-gray-600 hover:text-blue-600 transition-colors"
-                  >
-                    <span className="font-medium">📰 The Economist</span>
-                  </a>
+                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                  Internal{' '}
+                  <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    ChatGPT-like UI
+                  </span>
+                </h2>
+              </div>
+
+              {/* Image - second on mobile, left on desktop spanning both rows */}
+              <div className="relative lg:order-first lg:row-span-2">
+                {/* Purple glow effect */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-2xl blur-3xl opacity-15"></div>
+
+                {/* Chat UI Screenshot */}
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
+                  <img
+                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/chat.png"
+                    alt="Chat Interface"
+                    className="w-full h-auto"
+                  />
+                </div>
+
+                {/* Floating Badge */}
+                <div className="absolute -top-3 -left-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                    />
+                  </svg>
+                  ChatGPT-like Experience
                 </div>
               </div>
 
-              {/* Right Column - Video */}
-              <div className="relative space-y-4">
-                {/* Glow effect */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-2xl blur-2xl opacity-20 animate-pulse"></div>
+              {/* Rest of content */}
+              <div className="space-y-6">
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Intuitive chat interface for all your users - technical and non-technical alike. Connect to any MCP
+                  server from your private registry with a single click. Includes a company-wide prompt library to share
+                  best practices across teams.
+                </p>
 
-                {/* Video Container */}
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-black">
-                  <div className="relative pb-[56.25%] h-0">
-                    <iframe
-                      className="absolute top-0 left-0 w-full h-full"
-                      src="https://www.youtube.com/embed/SkmluS-xzmM?start=2155"
-                      title="Archestra Security Demo - Preventing Data Exfiltration"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
+                {/* Key Features */}
+                <div className="space-y-4">
+                  {/* Prompt Registry */}
+                  <div className="flex items-start gap-4 bg-white/80 backdrop-blur rounded-lg p-4 border border-purple-200">
+                    <div className="p-2 bg-purple-100 rounded-lg flex-shrink-0">
+                      <svg className="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Private Prompt Registry</h3>
+                      <p className="text-sm text-gray-600 mt-1">
+                        Share and reuse proven prompts across your organization
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* One-click MCP Connection */}
+                  <div className="flex items-start gap-4 bg-white/80 backdrop-blur rounded-lg p-4 border border-pink-200">
+                    <div className="p-2 bg-pink-100 rounded-lg flex-shrink-0">
+                      <svg className="w-5 h-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">One-Click MCP Access</h3>
+                      <p className="text-sm text-gray-600 mt-1">
+                        Connect to any approved MCP server instantly from the interface
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Multi-Model Support */}
+                  <div className="flex items-start gap-4 bg-white/80 backdrop-blur rounded-lg p-4 border border-orange-200">
+                    <div className="p-2 bg-orange-100 rounded-lg flex-shrink-0">
+                      <svg className="w-5 h-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">Multi-Model Support</h3>
+                      <p className="text-sm text-gray-600 mt-1">
+                        Works with Claude, GPT-4, Gemini, and open-source models
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Accessible / Slack & Teams Section */}
+        <section className="py-24 bg-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-grid-slate-100/20 [mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)]"></div>
+
+          <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Column - Content */}
+              <div className="space-y-6">
+                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                  🦀 Talk to autonomous agents via{' '}
+                  <span className="bg-gradient-to-r from-teal-600 to-green-600 bg-clip-text text-transparent">
+                    Slack, MS Teams and even E-Mail
+                  </span>
+                </h2>
+              </div>
+
+              {/* Right Column - Screenshots */}
+              <div className="relative space-y-6">
+                <div className="absolute -inset-4 bg-gradient-to-r from-teal-400 to-green-400 rounded-2xl blur-2xl opacity-15"></div>
+
+                {/* Slack Screenshot */}
+                <div className="relative">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
+                    <img
+                      src="/screenshot-slack.png"
+                      alt="Agent conversation in Slack"
+                      className="w-full h-auto"
                     />
+                  </div>
+                  <div className="absolute -top-3 -right-3 bg-gradient-to-r from-teal-600 to-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                    Slack example
                   </div>
                 </div>
 
-                {/* Video Label */}
-                <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-lg">
-                  <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                  LIVE DEMO
-                </div>
-
-                {/* Demo Description Box */}
-                <div className="relative bg-white/90 backdrop-blur rounded-lg p-4 border border-gray-200 shadow-lg">
-                  <p className="text-sm font-semibold text-gray-900 mb-2">🎬 What you'll see in the demo:</p>
-                  <p className="text-sm text-gray-600">
-                    Live demonstration of Archestra's security engine preventing data leaks from private to public
-                    GitHub repositories through prompt injection attacks.
-                  </p>
+                {/* MS Teams Screenshot */}
+                <div className="relative">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
+                    <img
+                      src="/sales-assistant-msteams-chat.png"
+                      alt="Sales assistant in Microsoft Teams chat"
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <div className="absolute -top-3 -right-3 bg-gradient-to-r from-teal-600 to-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                    MS Teams example
+                  </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Infrastructure Hero */}
+        <section className="py-32 bg-white relative overflow-hidden">
+          <div className="container px-4 md:px-6 max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-950 leading-tight tracking-tight">
+              Actually, it&apos;s an open source infrastructure component to{' '}
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
+                scale autonomous agents
+              </span>{' '}
+              across the whole organisation
+            </h2>
+          </div>
+        </section>
+
+        {/* Platform Integrations Section */}
+        <section className="pb-20 pt-20 bg-white">
+          <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900">Integrates with your stack</h2>
+            </div>
+            {/* Platform Logos Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+              {/* N8N */}
+              <Link
+                href="/docs/platform-n8n-example"
+                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
+              >
+                <div className="text-red-600 mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-4xl font-bold">n8n</span>
+                </div>
+                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
+              </Link>
+
+              {/* Vercel AI */}
+              <Link
+                href="/docs/platform-vercel-ai-example"
+                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
+              >
+                <div className="text-black mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-3xl font-bold whitespace-nowrap">Vercel AI</span>
+                </div>
+                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
+              </Link>
+
+              {/* Pydantic AI */}
+              <Link
+                href="/docs/platform-pydantic-example"
+                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
+              >
+                <div className="text-pink-600 mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-3xl font-bold whitespace-nowrap">Pydantic AI</span>
+                </div>
+                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
+              </Link>
+
+              {/* OpenWebUI */}
+              <Link
+                href="/docs/platform-openwebui-example"
+                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
+              >
+                <div className="text-blue-600 mb-3 text-center">
+                  <span className="text-sm font-medium">Securing</span>
+                  <br />
+                  <span className="text-3xl font-bold">OpenWebUI</span>
+                </div>
+                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
+              </Link>
             </div>
           </div>
         </section>
@@ -272,9 +508,25 @@ export default function Home() {
           <div className="absolute inset-0 bg-grid-slate-100/30 [mask-image:radial-gradient(ellipse_at_center,white,transparent_85%)]"></div>
 
           <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left Column - Image */}
-              <div className="relative">
+            <div className="grid lg:grid-cols-2 gap-x-12 gap-y-6 lg:items-center">
+              {/* Title */}
+              <div className="space-y-4">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-100 rounded-full">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                  <span className="text-purple-700 font-medium text-sm">Centralized Governance</span>
+                </div>
+
+                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                  Private MCP Registry with{' '}
+                  <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                    Full Governance
+                  </span>
+                </h2>
+              </div>
+
+              {/* Image - second on mobile, left on desktop spanning both rows */}
+              <div className="relative lg:order-first lg:row-span-2">
                 {/* Purple glow effect */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-purple-400 to-indigo-400 rounded-2xl blur-3xl opacity-15"></div>
 
@@ -301,21 +553,8 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Right Column - Content */}
+              {/* Rest of content */}
               <div className="space-y-6">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-100 rounded-full">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                  <span className="text-purple-700 font-medium text-sm">Centralized Governance</span>
-                </div>
-
-                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  Private MCP Registry with{' '}
-                  <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                    Full Governance
-                  </span>
-                </h2>
-
                 <p className="text-lg text-gray-600 leading-relaxed">
                   Add MCPs to your private registry to share them with your team: self-hosted and remote, self-built and
                   third-party. Maintain complete control over your organization's MCP ecosystem.
@@ -404,9 +643,9 @@ export default function Home() {
           <div className="absolute inset-0 bg-grid-slate-100/20 [mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)]"></div>
 
           <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left Column - Content */}
-              <div className="space-y-6">
+            <div className="grid lg:grid-cols-2 gap-x-12 gap-y-6 lg:items-center">
+              {/* Title */}
+              <div className="space-y-4">
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 rounded-full">
                   <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
@@ -419,7 +658,34 @@ export default function Home() {
                     MCP Orchestrator
                   </span>
                 </h2>
+              </div>
 
+              {/* Image - second on mobile, right on desktop spanning both rows */}
+              <div className="relative lg:row-span-2">
+                {/* Blue glow effect */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-2xl blur-3xl opacity-10"></div>
+
+                {/* Diagram Container */}
+                <div className="relative bg-white rounded-2xl shadow-xl border border-gray-200 p-6">
+                  <MermaidDiagram />
+                </div>
+
+                {/* Floating Label */}
+                <div className="absolute -top-3 -right-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+                    />
+                  </svg>
+                  K8s Native
+                </div>
+              </div>
+
+              {/* Rest of content */}
+              <div className="space-y-6">
                 <p className="text-lg text-gray-600 leading-relaxed">
                   For multi-team and multi-user environments, bring order to secrets management, access control,
                   logging, and observability. Run MCP servers in Kubernetes with enterprise-grade isolation, audit
@@ -501,30 +767,6 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-
-              {/* Right Column - Mermaid Diagram */}
-              <div className="relative">
-                {/* Blue glow effect */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-2xl blur-3xl opacity-10"></div>
-
-                {/* Diagram Container */}
-                <div className="relative bg-white rounded-2xl shadow-xl border border-gray-200 p-6">
-                  <MermaidDiagram />
-                </div>
-
-                {/* Floating Label */}
-                <div className="absolute -top-3 -right-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
-                    />
-                  </svg>
-                  K8s Native
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -535,9 +777,25 @@ export default function Home() {
           <div className="absolute inset-0 bg-grid-slate-100/20 [mask-image:radial-gradient(ellipse_at_center,white,transparent_75%)]"></div>
 
           <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left Column - Image */}
-              <div className="relative">
+            <div className="grid lg:grid-cols-2 gap-x-12 gap-y-6 lg:items-center">
+              {/* Title */}
+              <div className="space-y-4">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 rounded-full">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="text-green-700 font-medium text-sm">Cost Optimization</span>
+                </div>
+
+                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                  Cost Monitoring, Limits and{' '}
+                  <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                    Dynamic Optimization
+                  </span>
+                </h2>
+              </div>
+
+              {/* Image - second on mobile, left on desktop spanning both rows */}
+              <div className="relative lg:order-first lg:row-span-2">
                 {/* Green glow effect */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-emerald-400 rounded-2xl blur-3xl opacity-10"></div>
 
@@ -560,25 +818,12 @@ export default function Home() {
                       d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  Up to 96% Savings
+                  Token usage breakdown
                 </div>
               </div>
 
-              {/* Right Column - Content */}
+              {/* Rest of content */}
               <div className="space-y-6">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 rounded-full">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-green-700 font-medium text-sm">Cost Optimization</span>
-                </div>
-
-                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  Cost Monitoring, Limits and{' '}
-                  <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-                    Dynamic Optimization
-                  </span>
-                </h2>
-
                 <p className="text-lg text-gray-600 leading-relaxed">
                   Per-team, per-agent, or per-organization cost monitoring and limitations. Dynamic optimizer
                   automatically reduces costs up to 96% by intelligently switching to cheaper models for simpler tasks.
@@ -667,22 +912,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Stats Row */}
-                <div className="grid grid-cols-3 gap-4 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-600">96%</p>
-                    <p className="text-xs text-gray-600">Cost Reduction</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-blue-600">Real-time</p>
-                    <p className="text-xs text-gray-600">Monitoring</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-orange-600">Multi-level</p>
-                    <p className="text-xs text-gray-600">Controls</p>
-                  </div>
-                </div>
-
                 {/* CTA Button */}
                 <div className="pt-2">
                   <Link
@@ -712,9 +941,9 @@ export default function Home() {
           <div className="absolute inset-0 bg-grid-slate-100/10 [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)]"></div>
 
           <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left Column - Content */}
-              <div className="space-y-6">
+            <div className="grid lg:grid-cols-2 gap-x-12 gap-y-6 lg:items-center">
+              {/* Title */}
+              <div className="space-y-4">
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-100 rounded-full">
                   <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></div>
@@ -727,7 +956,38 @@ export default function Home() {
                     Observability Stack
                   </span>
                 </h2>
+              </div>
 
+              {/* Image - second on mobile, right on desktop spanning both rows */}
+              <div className="relative lg:row-span-2">
+                {/* Indigo glow effect */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-2xl blur-3xl opacity-15"></div>
+
+                {/* Observability Dashboard Screenshot */}
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
+                  <img
+                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/observability.png"
+                    alt="Observability Dashboard"
+                    className="w-full h-auto"
+                  />
+                </div>
+
+                {/* Floating Badge */}
+                <div className="absolute -top-3 -right-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    />
+                  </svg>
+                  Grafana Dashboard
+                </div>
+              </div>
+
+              {/* Rest of content */}
+              <div className="space-y-6">
                 <p className="text-lg text-gray-600 leading-relaxed">
                   Export metrics to Prometheus, traces to OpenTelemetry, and visualize everything in Grafana. Track LLM
                   token usage, request latency, tool blocking events, and system performance with pre-configured
@@ -866,163 +1126,6 @@ export default function Home() {
                     Explore Observability Features
                     <span className="ml-2">→</span>
                   </Link>
-                </div>
-              </div>
-
-              {/* Right Column - Image */}
-              <div className="relative">
-                {/* Indigo glow effect */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-2xl blur-3xl opacity-15"></div>
-
-                {/* Observability Dashboard Screenshot */}
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
-                  <img
-                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/observability.png"
-                    alt="Observability Dashboard"
-                    className="w-full h-auto"
-                  />
-                </div>
-
-                {/* Floating Badge */}
-                <div className="absolute -top-3 -right-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    />
-                  </svg>
-                  Real-time Insights
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Chat UI Section */}
-        <section className="py-24 bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 relative overflow-hidden">
-          {/* Background decoration */}
-          <div className="absolute inset-0 bg-grid-slate-100/20 [mask-image:radial-gradient(ellipse_at_center,white,transparent_80%)]"></div>
-
-          <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left Column - Image */}
-              <div className="relative">
-                {/* Purple glow effect */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-2xl blur-3xl opacity-15"></div>
-
-                {/* Chat UI Screenshot */}
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
-                  <img
-                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/chat.png"
-                    alt="Chat Interface"
-                    className="w-full h-auto"
-                  />
-                </div>
-
-                {/* Floating Badge */}
-                <div className="absolute -top-3 -left-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                    />
-                  </svg>
-                  ChatGPT-like Experience
-                </div>
-              </div>
-
-              {/* Right Column - Content */}
-              <div className="space-y-6">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-purple-100 rounded-full">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-                  <span className="text-purple-700 font-medium text-sm">User Interface</span>
-                </div>
-
-                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                  ChatGPT-like{' '}
-                  <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                    Chat with MCPs
-                  </span>
-                </h2>
-
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Intuitive chat interface for all your users - technical and non-technical alike. Connect to any MCP
-                  server from your private registry with a single click. Includes a company-wide prompt library to share
-                  best practices across teams.
-                </p>
-
-                {/* Key Features */}
-                <div className="space-y-4">
-                  {/* Prompt Registry */}
-                  <div className="flex items-start gap-4 bg-white/80 backdrop-blur rounded-lg p-4 border border-purple-200">
-                    <div className="p-2 bg-purple-100 rounded-lg flex-shrink-0">
-                      <svg className="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900">Private Prompt Registry</h3>
-                      <p className="text-sm text-gray-600 mt-1">
-                        Share and reuse proven prompts across your organization
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* One-click MCP Connection */}
-                  <div className="flex items-start gap-4 bg-white/80 backdrop-blur rounded-lg p-4 border border-pink-200">
-                    <div className="p-2 bg-pink-100 rounded-lg flex-shrink-0">
-                      <svg className="w-5 h-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900">One-Click MCP Access</h3>
-                      <p className="text-sm text-gray-600 mt-1">
-                        Connect to any approved MCP server instantly from the interface
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Multi-Model Support */}
-                  <div className="flex items-start gap-4 bg-white/80 backdrop-blur rounded-lg p-4 border border-orange-200">
-                    <div className="p-2 bg-orange-100 rounded-lg flex-shrink-0">
-                      <svg className="w-5 h-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900">Multi-Model Support</h3>
-                      <p className="text-sm text-gray-600 mt-1">
-                        Works with Claude, GPT-4, Gemini, and open-source models
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -1179,69 +1282,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Platform Integrations Section */}
-        <section className="pb-20 pt-20 bg-white">
-          <div className="container px-4 md:px-6 max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900">Integrates with your stack</h2>
-            </div>
-            {/* Platform Logos Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-              {/* N8N */}
-              <Link
-                href="/docs/platform-n8n-example"
-                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
-              >
-                <div className="text-red-600 mb-3 text-center">
-                  <span className="text-sm font-medium">Securing</span>
-                  <br />
-                  <span className="text-4xl font-bold">n8n</span>
-                </div>
-                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
-              </Link>
-
-              {/* Vercel AI */}
-              <Link
-                href="/docs/platform-vercel-ai-example"
-                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
-              >
-                <div className="text-black mb-3 text-center">
-                  <span className="text-sm font-medium">Securing</span>
-                  <br />
-                  <span className="text-3xl font-bold whitespace-nowrap">Vercel AI</span>
-                </div>
-                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
-              </Link>
-
-              {/* Pydantic AI */}
-              <Link
-                href="/docs/platform-pydantic-example"
-                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
-              >
-                <div className="text-pink-600 mb-3 text-center">
-                  <span className="text-sm font-medium">Securing</span>
-                  <br />
-                  <span className="text-3xl font-bold whitespace-nowrap">Pydantic AI</span>
-                </div>
-                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
-              </Link>
-
-              {/* OpenWebUI */}
-              <Link
-                href="/docs/platform-openwebui-example"
-                className="group flex flex-col items-center justify-center p-8 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
-              >
-                <div className="text-blue-600 mb-3 text-center">
-                  <span className="text-sm font-medium">Securing</span>
-                  <br />
-                  <span className="text-3xl font-bold">OpenWebUI</span>
-                </div>
-                <span className="text-sm text-gray-600 group-hover:text-gray-900">Documentation →</span>
-              </Link>
-            </div>
-          </div>
-        </section>
-
         {/* Newsletter Section */}
         <section className="py-20 relative overflow-hidden bg-gradient-to-br from-teal-50 via-blue-50 to-purple-50">
           <div className="absolute inset-0 bg-grid-slate-100 [mask-image:radial-gradient(ellipse_at_center,transparent,white)]"></div>
@@ -1304,6 +1344,20 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out"
+          onClick={() => setLightboxOpen(false)}
+        >
+          <img
+            src="/clawdbot_hack.jpeg"
+            alt="ClawdBot vulnerability demonstration"
+            className="max-w-full max-h-[90vh] rounded-lg shadow-2xl"
+          />
+        </div>
+      )}
 
       <Footer />
     </div>

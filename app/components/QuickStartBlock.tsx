@@ -5,24 +5,22 @@ import { useEffect, useState } from 'react';
 
 type LaunchTab = 'development' | 'quickstart' | 'production';
 type ShellType = 'bash' | 'powershell';
-type ExposureStep = 'choose' | 'ngrok-input' | null;
+type QuickstartStep = 'choose-provider' | 'choose-exposure' | 'ngrok-input' | 'ready';
 export type MessagingProvider = 'slack' | 'msteams';
 
 const linkClass = 'text-gray-500 hover:text-gray-300 underline underline-offset-2';
 
 export default function QuickStartBlock({
-  showExposureOverlay = false,
   messagingProvider = 'slack',
   onMessagingProviderChange,
 }: {
-  showExposureOverlay?: boolean;
   messagingProvider?: MessagingProvider;
   onMessagingProviderChange?: (provider: MessagingProvider) => void;
-}) {
+} = {}) {
   const [copied, setCopied] = useState(false);
   const [launchTab, setLaunchTab] = useState<LaunchTab>('quickstart');
   const [shell, setShell] = useState<ShellType>('bash');
-  const [exposureStep, setExposureStep] = useState<ExposureStep>(null);
+  const [quickstartStep, setQuickstartStep] = useState<QuickstartStep>('choose-provider');
   const [ngrokKey, setNgrokKey] = useState('');
   const [customDomain, setCustomDomain] = useState('');
 
@@ -32,17 +30,15 @@ export default function QuickStartBlock({
     }
   }, []);
 
-  // Reset exposure step when messaging provider changes
+  // Reset quickstart step when tab changes
   useEffect(() => {
-    if (messagingProvider === 'msteams' && showExposureOverlay && launchTab === 'quickstart') {
-      setExposureStep('choose');
-    } else {
-      setExposureStep(null);
+    if (launchTab === 'quickstart') {
+      setQuickstartStep('choose-provider');
     }
     setNgrokKey('');
     setCustomDomain('');
     setCopied(false);
-  }, [messagingProvider, showExposureOverlay, launchTab]);
+  }, [launchTab]);
 
   const lc = shell === 'bash' ? '\\' : '`';
 
@@ -72,59 +68,94 @@ export default function QuickStartBlock({
     setCopied(false);
   };
 
-  const renderExposureOverlay = () => {
-    if (!showExposureOverlay || launchTab !== 'quickstart' || messagingProvider !== 'msteams' || exposureStep === null)
-      return null;
+  const renderQuickstartOverlay = () => {
+    if (launchTab !== 'quickstart' || quickstartStep === 'ready') return null;
 
-    if (exposureStep === 'choose') {
+    if (quickstartStep === 'choose-provider') {
       return (
         <div className="absolute inset-0 bg-[#0d1117] z-10 flex flex-col items-center justify-center p-6 md:p-8">
-          <p className="text-gray-400 text-xs md:text-sm text-center mb-6 max-w-md">
-            To connect MS Teams, Archestra needs to be reachable from the Internet.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 w-full max-w-xl">
+          <p className="text-gray-300 text-sm md:text-base text-center mb-6">How will your users interact with the agent?</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-md">
             <button
-              onClick={() => setExposureStep('ngrok-input')}
-              className="group flex flex-col items-center gap-2 px-4 py-5 rounded-lg bg-gray-800/60 border border-gray-700/50 hover:border-indigo-500/50 hover:bg-gray-800 transition-all text-left"
+              onClick={() => {
+                if (onMessagingProviderChange) onMessagingProviderChange('slack');
+                setQuickstartStep('ready');
+              }}
+              className="group flex flex-col items-center gap-2 px-4 py-5 rounded-lg bg-gray-800/60 border border-gray-700/50 hover:border-indigo-500/50 hover:bg-gray-800 transition-all"
             >
-              <div className="w-9 h-9 rounded-full bg-indigo-500/10 flex items-center justify-center mb-1 group-hover:bg-indigo-500/20 transition-colors">
-                <Globe className="w-4 h-4 text-indigo-400" />
+              <div className="flex items-center gap-1.5 mb-1">
+                <div className="w-9 h-9 rounded-full bg-indigo-500/10 flex items-center justify-center group-hover:bg-indigo-500/20 transition-colors">
+                  <img src="/logo-slack.png" alt="" className="w-5 h-5" />
+                </div>
+                <span className="text-gray-500 text-sm">/</span>
+                <div className="w-9 h-9 rounded-full bg-indigo-500/10 flex items-center justify-center group-hover:bg-indigo-500/20 transition-colors">
+                  <svg className="w-5 h-5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                </div>
               </div>
-              <span className="text-sm font-medium text-gray-200">ngrok</span>
-              <span className="text-xs text-gray-500 text-center">
-                Fastest way to expose local server to the internet
-              </span>
+              <span className="text-sm font-medium text-gray-200">Slack or Web UI</span>
+              <span className="text-xs text-gray-500 text-center">Chat with agent via Slack or built-in web interface</span>
             </button>
             <button
-              onClick={() => setExposureStep(null)}
-              className="group flex flex-col items-center gap-2 px-4 py-5 rounded-lg bg-gray-800/60 border border-gray-700/50 hover:border-indigo-500/50 hover:bg-gray-800 transition-all text-left"
+              onClick={() => {
+                if (onMessagingProviderChange) onMessagingProviderChange('msteams');
+                setQuickstartStep('choose-exposure');
+              }}
+              className="group flex flex-col items-center gap-2 px-4 py-5 rounded-lg bg-gray-800/60 border border-gray-700/50 hover:border-indigo-500/50 hover:bg-gray-800 transition-all"
             >
               <div className="w-9 h-9 rounded-full bg-indigo-500/10 flex items-center justify-center mb-1 group-hover:bg-indigo-500/20 transition-colors">
-                <Terminal className="w-4 h-4 text-indigo-400" />
+                <img src="/logo-ms-teams.png" alt="" className="w-5 h-5" />
               </div>
-              <span className="text-sm font-medium text-gray-200">Other way</span>
-              <span className="text-xs text-gray-500 text-center">
-                I&apos;ll expose local Archestra to the internet myself
-              </span>
-            </button>
-            <button
-              onClick={() => setExposureStep(null)}
-              className="group flex flex-col items-center gap-2 px-4 py-5 rounded-lg bg-gray-800/60 border border-gray-700/50 hover:border-gray-600 hover:bg-gray-800 transition-all text-left"
-            >
-              <div className="w-9 h-9 rounded-full bg-gray-700/50 flex items-center justify-center mb-1 group-hover:bg-gray-700 transition-colors">
-                <MessageSquare className="w-4 h-4 text-gray-400" />
-              </div>
-              <span className="text-sm font-medium text-gray-200">Web chat only</span>
-              <span className="text-xs text-gray-500 text-center">Skip for now, could expose any moment later</span>
+              <span className="text-sm font-medium text-gray-200">Microsoft Teams</span>
+              <span className="text-xs text-gray-500 text-center">Requires exposing Archestra to the internet</span>
             </button>
           </div>
         </div>
       );
     }
 
-    if (exposureStep === 'ngrok-input') {
+    if (quickstartStep === 'choose-exposure') {
       return (
-        <div className="absolute inset-0 bg-[#0d1117] z-10 flex flex-col items-center justify-center p-6">
+        <div className="absolute inset-0 bg-[#0d1117] z-10 flex flex-col items-center justify-center p-6 md:p-8 animate-[fadeIn_0.3s_ease-out]">
+          <p className="text-gray-400 text-xs md:text-sm text-center mb-6 max-w-md">
+            MS Teams requires Archestra to be reachable from the internet. How would you like to expose it?
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-md animate-[slideIn_0.3s_ease-out]">
+            <button
+              onClick={() => setQuickstartStep('ngrok-input')}
+              className="group flex flex-col items-center gap-2 px-4 py-5 rounded-lg bg-gray-800/60 border border-gray-700/50 hover:border-indigo-500/50 hover:bg-gray-800 transition-all"
+            >
+              <div className="w-9 h-9 rounded-full bg-indigo-500/10 flex items-center justify-center mb-1 group-hover:bg-indigo-500/20 transition-colors">
+                <Globe className="w-4 h-4 text-indigo-400" />
+              </div>
+              <span className="text-sm font-medium text-gray-200">ngrok</span>
+              <span className="text-xs text-gray-500 text-center">Fastest way to expose local server to the internet</span>
+            </button>
+            <button
+              onClick={() => setQuickstartStep('ready')}
+              className="group flex flex-col items-center gap-2 px-4 py-5 rounded-lg bg-gray-800/60 border border-gray-700/50 hover:border-gray-600 hover:bg-gray-800 transition-all"
+            >
+              <div className="w-9 h-9 rounded-full bg-gray-700/50 flex items-center justify-center mb-1 group-hover:bg-gray-700 transition-colors">
+                <Terminal className="w-4 h-4 text-gray-400" />
+              </div>
+              <span className="text-sm font-medium text-gray-200">I&apos;ll expose later</span>
+              <span className="text-xs text-gray-500 text-center">Skip for now, configure exposure after setup</span>
+            </button>
+          </div>
+          <button
+            onClick={() => setQuickstartStep('choose-provider')}
+            className="mt-4 text-xs text-gray-600 hover:text-gray-400 transition-colors"
+          >
+            &larr; Back
+          </button>
+        </div>
+      );
+    }
+
+    if (quickstartStep === 'ngrok-input') {
+      return (
+        <div className="absolute inset-0 bg-[#0d1117] z-10 flex flex-col items-center justify-center p-6 animate-[fadeIn_0.3s_ease-out]">
           <label className="text-gray-300 text-sm md:text-base mb-2">Enter your ngrok API key</label>
           <p className="text-gray-500 text-xs mb-4">
             Get one at{' '}
@@ -140,10 +171,16 @@ export default function QuickStartBlock({
             placeholder="ngrok API key"
           />
           <button
-            onClick={() => setExposureStep(null)}
+            onClick={() => setQuickstartStep('ready')}
             className="mt-4 px-6 py-2 text-sm font-medium rounded-md bg-indigo-600 text-white hover:bg-indigo-500 transition-colors"
           >
             Continue
+          </button>
+          <button
+            onClick={() => setQuickstartStep('choose-exposure')}
+            className="mt-2 text-xs text-gray-600 hover:text-gray-400 transition-colors"
+          >
+            &larr; Back
           </button>
         </div>
       );
@@ -219,6 +256,15 @@ export default function QuickStartBlock({
       <div className="flex text-gray-600 mt-3">
         <span className="select-none mr-4">#</span>
         <span>
+          Then open{' '}
+          <a href="http://localhost:3000" target="_blank" rel="noopener noreferrer" className={linkClass}>
+            http://localhost:3000
+          </a>
+        </span>
+      </div>
+      <div className="flex text-gray-600">
+        <span className="select-none mr-4">#</span>
+        <span>
           Full guide:{' '}
           <a href="/docs/platform-deployment#docker-deployment" className={linkClass}>
             Deployment Guide
@@ -256,32 +302,7 @@ export default function QuickStartBlock({
           })}
         </div>
         <div className="flex items-center gap-2">
-          {showExposureOverlay && onMessagingProviderChange && (
-            <>
-              <div className="flex items-center gap-1 text-xs">
-                <button
-                  onClick={() => onMessagingProviderChange('slack')}
-                  className={`flex items-center gap-1.5 px-2 py-1 rounded transition-colors ${
-                    messagingProvider === 'slack' ? 'text-gray-200 bg-gray-700' : 'text-gray-500 hover:text-gray-300'
-                  }`}
-                >
-                  <img src="/logo-slack.png" alt="" className="w-3.5 h-3.5" />
-                  Slack
-                </button>
-                <button
-                  onClick={() => onMessagingProviderChange('msteams')}
-                  className={`flex items-center gap-1.5 px-2 py-1 rounded transition-colors ${
-                    messagingProvider === 'msteams' ? 'text-gray-200 bg-gray-700' : 'text-gray-500 hover:text-gray-300'
-                  }`}
-                >
-                  <img src="/logo-ms-teams.png" alt="" className="w-3.5 h-3.5" />
-                  MS Teams
-                </button>
-              </div>
-              {launchTab !== 'development' && <div className="w-px h-4 bg-gray-700"></div>}
-            </>
-          )}
-          {launchTab !== 'development' && (
+          {launchTab !== 'development' && !(launchTab === 'quickstart' && quickstartStep !== 'ready') && (
             <div className="flex items-center gap-1 text-xs">
               <button
                 onClick={() => setShell('bash')}
@@ -308,13 +329,13 @@ export default function QuickStartBlock({
         <button
           onClick={handleCopy}
           className={`absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-md transition-all z-20 ${
-            exposureStep !== null ? 'hidden' : ''
+            (launchTab === 'quickstart' && quickstartStep !== 'ready') ? 'hidden' : ''
           } ${copied ? 'bg-green-500/20 text-green-400' : 'text-gray-500 hover:text-gray-300 hover:bg-gray-700/50'}`}
         >
           {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
           <span>{copied ? 'Copied' : 'Copy'}</span>
         </button>
-        {renderExposureOverlay()}
+        {renderQuickstartOverlay()}
         {launchTab === 'development' && (
           <div>
             <div className="flex text-gray-600 mb-3">
@@ -360,6 +381,15 @@ export default function QuickStartBlock({
             <div className="flex text-gray-600 mt-3">
               <span className="select-none mr-4">#</span>
               <span>
+                Then open{' '}
+                <a href="http://localhost:3000" target="_blank" rel="noopener noreferrer" className={linkClass}>
+                  http://localhost:3000
+                </a>
+              </span>
+            </div>
+            <div className="flex text-gray-600">
+              <span className="select-none mr-4">#</span>
+              <span>
                 Full guide:{' '}
                 <a href="/docs/platform-developer-quickstart" className={linkClass}>
                   Developer Quickstart
@@ -368,7 +398,11 @@ export default function QuickStartBlock({
             </div>
           </div>
         )}
-        {launchTab === 'quickstart' && renderQuickstartCommand()}
+        {launchTab === 'quickstart' && (
+          <div className={quickstartStep !== 'ready' ? 'invisible' : undefined}>
+            {renderQuickstartCommand()}
+          </div>
+        )}
         {launchTab === 'production' && (
           <div>
             <div className="flex text-gray-600 mb-3">
@@ -431,48 +465,6 @@ export default function QuickStartBlock({
             </div>
           </div>
         )}
-      </div>
-      {/* Next step callout */}
-      <div className="bg-[#0d1117] border-t border-gray-700/50 px-6 py-3 font-mono text-sm flex">
-        <span className="text-green-400 select-none mr-4">→</span>
-        <span className="text-gray-400">
-          Then open{' '}
-          {launchTab === 'development' ? (
-            <>
-              <a
-                href="http://localhost:10350"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-200 hover:text-white underline underline-offset-2"
-              >
-                localhost:10350
-              </a>
-              <span className="text-gray-600"> (Tilt)</span> and{' '}
-              <a
-                href={agentTriggersHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-200 hover:text-white underline underline-offset-2"
-              >
-                {agentTriggersBase}
-                {agentTriggersPath}
-              </a>
-              <span className="text-gray-600"> (Archestra)</span>
-            </>
-          ) : launchTab === 'quickstart' ? (
-            <a
-              href={agentTriggersHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-200 hover:text-white underline underline-offset-2"
-            >
-              {agentTriggersBase}
-              {agentTriggersPath}
-            </a>
-          ) : (
-            <span className="text-gray-200">&lt;archestra_url&gt;{agentTriggersPath}</span>
-          )}
-        </span>
       </div>
     </div>
   );
