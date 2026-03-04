@@ -470,9 +470,7 @@ export default function QuickStartBlock({
               {agentTriggersPath}
             </a>
           ) : (
-            <span className="text-gray-200">
-              &lt;archestra_url&gt;{agentTriggersPath}
-            </span>
+            <span className="text-gray-200">&lt;archestra_url&gt;{agentTriggersPath}</span>
           )}
         </span>
       </div>
