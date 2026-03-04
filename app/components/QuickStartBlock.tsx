@@ -74,7 +74,9 @@ export default function QuickStartBlock({
     if (quickstartStep === 'choose-provider') {
       return (
         <div className="absolute inset-0 bg-[#0d1117] z-10 flex flex-col items-center justify-center p-6 md:p-8">
-          <p className="text-gray-300 text-sm md:text-base text-center mb-6">How will your users interact with the agent?</p>
+          <p className="text-gray-300 text-sm md:text-base text-center mb-6">
+            How will your users interact with the agent?
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-md">
             <button
               onClick={() => {
@@ -90,12 +92,19 @@ export default function QuickStartBlock({
                 <span className="text-gray-500 text-sm">/</span>
                 <div className="w-9 h-9 rounded-full bg-indigo-500/10 flex items-center justify-center group-hover:bg-indigo-500/20 transition-colors">
                   <svg className="w-5 h-5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                    />
                   </svg>
                 </div>
               </div>
               <span className="text-sm font-medium text-gray-200">Slack or Web UI</span>
-              <span className="text-xs text-gray-500 text-center">Chat with agent via Slack or built-in web interface</span>
+              <span className="text-xs text-gray-500 text-center">
+                Chat with agent via Slack or built-in web interface
+              </span>
             </button>
             <button
               onClick={() => {
@@ -130,7 +139,9 @@ export default function QuickStartBlock({
                 <Globe className="w-4 h-4 text-indigo-400" />
               </div>
               <span className="text-sm font-medium text-gray-200">ngrok</span>
-              <span className="text-xs text-gray-500 text-center">Fastest way to expose local server to the internet</span>
+              <span className="text-xs text-gray-500 text-center">
+                Fastest way to expose local server to the internet
+              </span>
             </button>
             <button
               onClick={() => setQuickstartStep('ready')}
@@ -329,7 +340,7 @@ export default function QuickStartBlock({
         <button
           onClick={handleCopy}
           className={`absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-md transition-all z-20 ${
-            (launchTab === 'quickstart' && quickstartStep !== 'ready') ? 'hidden' : ''
+            launchTab === 'quickstart' && quickstartStep !== 'ready' ? 'hidden' : ''
           } ${copied ? 'bg-green-500/20 text-green-400' : 'text-gray-500 hover:text-gray-300 hover:bg-gray-700/50'}`}
         >
           {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
@@ -399,9 +410,7 @@ export default function QuickStartBlock({
           </div>
         )}
         {launchTab === 'quickstart' && (
-          <div className={quickstartStep !== 'ready' ? 'invisible' : undefined}>
-            {renderQuickstartCommand()}
-          </div>
+          <div className={quickstartStep !== 'ready' ? 'invisible' : undefined}>{renderQuickstartCommand()}</div>
         )}
         {launchTab === 'production' && (
           <div>

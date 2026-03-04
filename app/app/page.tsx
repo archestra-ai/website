@@ -1,9 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-
 import { AlertTriangle, Calendar, Github, Server, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
+import { useState } from 'react';
 
 import Footer from '@components/Footer';
 import Header from '@components/Header';
@@ -98,10 +97,7 @@ export default function Home() {
               <div className="text-center mb-10">
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Quick Start</h2>
               </div>
-              <QuickStartBlock
-                messagingProvider={messagingProvider}
-                onMessagingProviderChange={setMessagingProvider}
-              />
+              <QuickStartBlock messagingProvider={messagingProvider} onMessagingProviderChange={setMessagingProvider} />
             </div>
           </div>
         </section>
@@ -397,11 +393,7 @@ export default function Home() {
                 {/* Slack Screenshot */}
                 <div className="relative">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-                    <img
-                      src="/screenshot-slack.png"
-                      alt="Agent conversation in Slack"
-                      className="w-full h-auto"
-                    />
+                    <img src="/screenshot-slack.png" alt="Agent conversation in Slack" className="w-full h-auto" />
                   </div>
                   <div className="absolute -top-3 -right-3 bg-gradient-to-r from-teal-600 to-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                     Slack example
