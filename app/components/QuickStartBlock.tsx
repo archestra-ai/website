@@ -157,13 +157,6 @@ export default function QuickStartBlock({
   const agentTriggersPath = `/agent-triggers/${messagingProvider === 'msteams' ? 'ms-teams' : 'slack'}`;
   const agentTriggersBase = ngrokKey || customDomain ? '<archestra_url>' : 'localhost:3000';
   const agentTriggersHref = ngrokKey || customDomain ? undefined : `http://localhost:3000${agentTriggersPath}`;
-  const agentTriggersPageLink = (
-    <a href={agentTriggersHref} target="_blank" rel="noopener noreferrer" className={linkClass}>
-      {agentTriggersBase}
-      {agentTriggersPath}
-    </a>
-  );
-  const agentTriggersProdLink = <span className={linkClass}>&lt;archestra_url&gt;{agentTriggersPath}</span>;
 
   const renderQuickstartCommand = () => (
     <div>
@@ -224,10 +217,6 @@ export default function QuickStartBlock({
         </div>
       </div>
       <div className="flex text-gray-600 mt-3">
-        <span className="select-none mr-4">#</span>
-        <span>Then open {agentTriggersPageLink}</span>
-      </div>
-      <div className="flex text-gray-600">
         <span className="select-none mr-4">#</span>
         <span>
           Full guide:{' '}
@@ -371,16 +360,6 @@ export default function QuickStartBlock({
             <div className="flex text-gray-600 mt-3">
               <span className="select-none mr-4">#</span>
               <span>
-                Then open{' '}
-                <a href="http://localhost:10350" target="_blank" rel="noopener noreferrer" className={linkClass}>
-                  localhost:10350
-                </a>{' '}
-                (Tilt) and {agentTriggersPageLink} (Archestra)
-              </span>
-            </div>
-            <div className="flex text-gray-600">
-              <span className="select-none mr-4">#</span>
-              <span>
                 Full guide:{' '}
                 <a href="/docs/platform-developer-quickstart" className={linkClass}>
                   Developer Quickstart
@@ -443,10 +422,6 @@ export default function QuickStartBlock({
             </div>
             <div className="flex text-gray-600 mt-3">
               <span className="select-none mr-4">#</span>
-              <span>Then open {agentTriggersProdLink}</span>
-            </div>
-            <div className="flex text-gray-600">
-              <span className="select-none mr-4">#</span>
               <span>
                 Full guide:{' '}
                 <a href="/docs/platform-deployment#helm-deployment" className={linkClass}>
@@ -456,6 +431,48 @@ export default function QuickStartBlock({
             </div>
           </div>
         )}
+      </div>
+      {/* Next step callout */}
+      <div className="bg-[#0d1117] border-t border-gray-700/50 px-6 py-3 font-mono text-sm flex">
+        <span className="text-green-400 select-none mr-4">→</span>
+        <span className="text-gray-400">
+          Then open{' '}
+          {launchTab === 'development' ? (
+            <>
+              <a
+                href="http://localhost:10350"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-200 hover:text-white underline underline-offset-2"
+              >
+                localhost:10350
+              </a>
+              <span className="text-gray-600"> (Tilt)</span> and{' '}
+              <a
+                href={agentTriggersHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-200 hover:text-white underline underline-offset-2"
+              >
+                {agentTriggersBase}
+                {agentTriggersPath}
+              </a>
+              <span className="text-gray-600"> (Archestra)</span>
+            </>
+          ) : launchTab === 'quickstart' ? (
+            <a
+              href={agentTriggersHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-200 hover:text-white underline underline-offset-2"
+            >
+              {agentTriggersBase}
+              {agentTriggersPath}
+            </a>
+          ) : (
+            <span className="text-gray-200">&lt;archestra_url&gt;{agentTriggersPath}</span>
+          )}
+        </span>
       </div>
     </div>
   );
