@@ -1319,6 +1319,17 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Quick Start (repeated) */}
+        <section className="py-24 bg-gray-50 relative overflow-hidden">
+          <div className="absolute inset-0 [background-image:radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.02)_1px,transparent_0)] [background-size:32px_32px]"></div>
+          <div className="container px-4 md:px-6 max-w-4xl mx-auto relative">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Quick Start</h2>
+            </div>
+            <QuickStartBlock messagingProvider={messagingProvider} onMessagingProviderChange={setMessagingProvider} />
+          </div>
+        </section>
+
         {/* Community Calls Hero Section */}
         <section className="py-12 bg-gradient-to-r from-teal-500 to-blue-600 text-white">
           <div className="container px-4 md:px-6 max-w-7xl mx-auto">

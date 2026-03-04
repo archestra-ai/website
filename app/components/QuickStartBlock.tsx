@@ -73,11 +73,13 @@ export default function QuickStartBlock({
 
     if (quickstartStep === 'choose-provider') {
       return (
-        <div className="absolute inset-0 bg-[#0d1117] z-10 flex flex-col items-center justify-center p-6 md:p-8">
-          <p className="text-gray-300 text-sm md:text-base text-center mb-6">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 md:p-8">
+          <div className="absolute inset-0 backdrop-blur-[2px] bg-[#0d1117]/70 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_90%)]"></div>
+          <div className="absolute inset-0 bg-[#0d1117]/40"></div>
+          <p className="relative text-gray-300 text-sm md:text-base text-center mb-6">
             How will your users interact with the agent?
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-md">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-md">
             <button
               onClick={() => {
                 if (onMessagingProviderChange) onMessagingProviderChange('slack');
@@ -126,11 +128,13 @@ export default function QuickStartBlock({
 
     if (quickstartStep === 'choose-exposure') {
       return (
-        <div className="absolute inset-0 bg-[#0d1117] z-10 flex flex-col items-center justify-center p-6 md:p-8 animate-[fadeIn_0.3s_ease-out]">
-          <p className="text-gray-400 text-xs md:text-sm text-center mb-6 max-w-md">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 md:p-8 animate-[fadeIn_0.3s_ease-out]">
+          <div className="absolute inset-0 backdrop-blur-[2px] bg-[#0d1117]/70 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_90%)]"></div>
+          <div className="absolute inset-0 bg-[#0d1117]/40"></div>
+          <p className="relative text-gray-400 text-xs md:text-sm text-center mb-6 max-w-md">
             MS Teams requires Archestra to be reachable from the internet. How would you like to expose it?
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-md animate-[slideIn_0.3s_ease-out]">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-md animate-[slideIn_0.3s_ease-out]">
             <button
               onClick={() => setQuickstartStep('ngrok-input')}
               className="group flex flex-col items-center gap-2 px-4 py-5 rounded-lg bg-gray-800/60 border border-gray-700/50 hover:border-indigo-500/50 hover:bg-gray-800 transition-all"
@@ -156,7 +160,7 @@ export default function QuickStartBlock({
           </div>
           <button
             onClick={() => setQuickstartStep('choose-provider')}
-            className="mt-4 text-xs text-gray-600 hover:text-gray-400 transition-colors"
+            className="relative mt-4 text-xs text-gray-600 hover:text-gray-400 transition-colors"
           >
             &larr; Back
           </button>
@@ -166,9 +170,11 @@ export default function QuickStartBlock({
 
     if (quickstartStep === 'ngrok-input') {
       return (
-        <div className="absolute inset-0 bg-[#0d1117] z-10 flex flex-col items-center justify-center p-6 animate-[fadeIn_0.3s_ease-out]">
-          <label className="text-gray-300 text-sm md:text-base mb-2">Enter your ngrok API key</label>
-          <p className="text-gray-500 text-xs mb-4">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 animate-[fadeIn_0.3s_ease-out]">
+          <div className="absolute inset-0 backdrop-blur-[2px] bg-[#0d1117]/70 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_90%)]"></div>
+          <div className="absolute inset-0 bg-[#0d1117]/40"></div>
+          <label className="relative text-gray-300 text-sm md:text-base mb-2">Enter your ngrok API key</label>
+          <p className="relative text-gray-500 text-xs mb-4">
             Get one at{' '}
             <a href="https://ngrok.com/" target="_blank" rel="noopener noreferrer" className={linkClass}>
               ngrok.com
@@ -178,18 +184,18 @@ export default function QuickStartBlock({
             type="text"
             value={ngrokKey}
             onChange={(e) => setNgrokKey(e.target.value)}
-            className="w-full max-w-xs px-3 py-2 text-sm rounded-md bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-indigo-500 font-mono"
+            className="relative w-full max-w-xs px-3 py-2 text-sm rounded-md bg-gray-800 text-gray-200 border border-gray-700 focus:outline-none focus:border-indigo-500 font-mono"
             placeholder="ngrok API key"
           />
           <button
             onClick={() => setQuickstartStep('ready')}
-            className="mt-4 px-6 py-2 text-sm font-medium rounded-md bg-indigo-600 text-white hover:bg-indigo-500 transition-colors"
+            className="relative mt-4 px-6 py-2 text-sm font-medium rounded-md bg-indigo-600 text-white hover:bg-indigo-500 transition-colors"
           >
             Continue
           </button>
           <button
             onClick={() => setQuickstartStep('choose-exposure')}
-            className="mt-2 text-xs text-gray-600 hover:text-gray-400 transition-colors"
+            className="relative mt-2 text-xs text-gray-600 hover:text-gray-400 transition-colors"
           >
             &larr; Back
           </button>
@@ -410,7 +416,7 @@ export default function QuickStartBlock({
           </div>
         )}
         {launchTab === 'quickstart' && (
-          <div className={quickstartStep !== 'ready' ? 'invisible' : undefined}>{renderQuickstartCommand()}</div>
+          <div className={quickstartStep !== 'ready' ? 'opacity-60' : undefined}>{renderQuickstartCommand()}</div>
         )}
         {launchTab === 'production' && (
           <div>
