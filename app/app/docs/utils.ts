@@ -83,6 +83,7 @@ const categoryOrder = [
   'Agents',
   'LLM Proxy',
   'MCP',
+  'Knowledge',
   'Archestra Desktop Agent',
   'Development',
   'Getting Started',
