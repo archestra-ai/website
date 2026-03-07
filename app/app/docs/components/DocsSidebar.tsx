@@ -1,6 +1,20 @@
 'use client';
 
-import { Book, Bot, Code, Database, FileText, Layers, Menu, Monitor, Network, Settings, Shield, X } from 'lucide-react';
+import {
+  Book,
+  Bot,
+  Code,
+  Database,
+  FileText,
+  Layers,
+  Lock,
+  Menu,
+  Monitor,
+  Network,
+  Settings,
+  Shield,
+  X,
+} from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -17,6 +31,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   Agents: <Bot className="h-4 w-4" />,
   'LLM Proxy': <Shield className="h-4 w-4" />,
   MCP: <Network className="h-4 w-4" />,
+  Administration: <Lock className="h-4 w-4" />,
   Knowledge: <Database className="h-4 w-4" />,
   Development: <Code className="h-4 w-4" />,
   'Getting Started': <Book className="h-4 w-4" />,
