@@ -2,12 +2,11 @@
   "name": "excalidraw__remote-mcp",
   "display_name": "Excalidraw",
   "description": "Remote MCP server for Excalidraw - streams hand-drawn diagrams with smooth viewport camera control and interactive fullscreen editing",
-  "oauth_config": null,
   "tools": [],
   "prompts": [],
   "user_config": {},
   "readme": null,
-  "category": "Design Tools",
+  "category": "Development",
   "quality_score": 80,
   "archestra_config": {
     "client_config_permutations": null,
