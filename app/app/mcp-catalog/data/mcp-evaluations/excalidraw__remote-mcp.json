@@ -1,0 +1,34 @@
+{
+  "name": "excalidraw__remote-mcp",
+  "display_name": "Excalidraw",
+  "description": "Remote MCP server for Excalidraw - streams hand-drawn diagrams with smooth viewport camera control and interactive fullscreen editing",
+  "oauth_config": null,
+  "tools": [],
+  "prompts": [],
+  "user_config": {},
+  "readme": null,
+  "category": "Design Tools",
+  "quality_score": 80,
+  "archestra_config": {
+    "client_config_permutations": null,
+    "oauth": {
+      "provider": null,
+      "required": false
+    },
+    "works_in_archestra": true
+  },
+  "framework": null,
+  "last_scraped_at": "2026-03-09T00:00:00.000Z",
+  "evaluation_model": null,
+  "raw_dependencies": null,
+  "author": {
+    "name": "excalidraw"
+  },
+  "server": {
+    "type": "remote",
+    "url": "https://mcp.excalidraw.com/mcp",
+    "docs_url": "https://github.com/excalidraw/excalidraw-mcp"
+  },
+  "github_info": null,
+  "programming_language": null
+}
