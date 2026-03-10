@@ -50,6 +50,13 @@ export default function Header() {
               MCP Catalog
             </Link>
 
+            <Link
+              href="/mcp-catalog/apps"
+              className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors"
+            >
+              MCP Apps
+            </Link>
+
             <Link href="/about" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
               About Us
             </Link>
@@ -115,6 +122,14 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               MCP Catalog
+            </Link>
+
+            <Link
+              href="/mcp-catalog/apps"
+              className="px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              MCP Apps
             </Link>
 
             <Link
