@@ -1,0 +1,78 @@
+{
+  "name": "googleworkspace___cli",
+  "display_name": "Google Workspace CLI",
+  "description": "Access all Google Workspace APIs (Gmail, Drive, Calendar, Sheets, Docs, Chat, Admin, etc.) via Google's official gws CLI. Dynamically generates commands from Google's Discovery Service.",
+  "author": {
+    "name": "googleworkspace"
+  },
+  "server": {
+    "type": "local",
+    "command": "sh",
+    "args": [
+      "-c",
+      "npm install -g @googleworkspace/cli 2>/dev/null && exec node -e 'const{McpServer:S}=require(\"@modelcontextprotocol/sdk/server/mcp.js\");const{StdioServerTransport:T}=require(\"@modelcontextprotocol/sdk/server/stdio.js\");const{z}=require(\"zod\");const{execFile}=require(\"child_process\");const s=new S({name:\"google-workspace-cli\",version:\"1.0.0\"});s.tool(\"google_workspace\",\"Execute a Google Workspace CLI (gws) command. Pass everything after gws, e.g. gmail users.messages.list --userId=me --maxResults=5\",{command:z.string()},async({command:c})=>{return new Promise((resolve)=>{execFile(\"gws\",c.split(/\\s+/),{timeout:30000,maxBuffer:10485760},(err,stdout,stderr)=>{if(err){resolve({content:[{type:\"text\",text:\"Error: \"+(stderr||err.message)}],isError:true})}else{resolve({content:[{type:\"text\",text:stdout||stderr||\"(empty)\"}]})}})})});s.connect(new T());'"
+    ],
+    "env": {
+      "GOOGLE_WORKSPACE_CLI_KEYRING_BACKEND": "file"
+    }
+  },
+  "instructions": "Generate a token with: `gcloud auth print-access-token --scopes=https://www.googleapis.com/auth/gmail.readonly,https://www.googleapis.com/auth/calendar,https://www.googleapis.com/auth/drive` (adjust scopes as needed). The token is short-lived (~1 hour). For multitenant OAuth setup, contact support.",
+  "user_config": {
+    "GOOGLE_WORKSPACE_CLI_TOKEN": {
+      "type": "string",
+      "title": "Google Access Token",
+      "description": "Google OAuth2 access token. Generate with: gcloud auth print-access-token --scopes=<comma-separated-scopes>",
+      "required": true,
+      "sensitive": true
+    }
+  },
+  "tools": [
+    {
+      "name": "google_workspace",
+      "description": "Execute a Google Workspace CLI (gws) command. Pass everything after 'gws', e.g. 'gmail users.messages.list --userId=me --maxResults=5' or 'drive files.list'."
+    }
+  ],
+  "prompts": [],
+  "keywords": [],
+  "readme": null,
+  "category": "Enterprise",
+  "quality_score": null,
+  "archestra_config": {
+    "client_config_permutations": null,
+    "oauth": {
+      "provider": null,
+      "required": false
+    },
+    "works_in_archestra": true
+  },
+  "github_info": {
+    "owner": "googleworkspace",
+    "repo": "cli",
+    "url": "https://github.com/googleworkspace/cli",
+    "name": "cli",
+    "path": null,
+    "stars": 0,
+    "contributors": 0,
+    "issues": 0,
+    "releases": true,
+    "ci_cd": true,
+    "latest_commit_hash": null
+  },
+  "protocol_features": {
+    "implementing_tools": true,
+    "implementing_prompts": false,
+    "implementing_resources": false,
+    "implementing_sampling": false,
+    "implementing_roots": false,
+    "implementing_logging": false,
+    "implementing_stdio": true,
+    "implementing_streamable_http": false,
+    "implementing_oauth2": false
+  },
+  "programming_language": "Rust",
+  "framework": null,
+  "last_scraped_at": null,
+  "evaluation_model": null,
+  "dependencies": [],
+  "raw_dependencies": null
+}
