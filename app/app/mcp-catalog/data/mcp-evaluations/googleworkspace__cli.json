@@ -16,13 +16,13 @@
       "GOOGLE_WORKSPACE_CLI_KEYRING_BACKEND": "file"
     }
   },
-  "instructions": "Generate a token with: `gcloud auth print-access-token --scopes=https://www.googleapis.com/auth/gmail.readonly,https://www.googleapis.com/auth/calendar,https://www.googleapis.com/auth/drive` (adjust scopes as needed). The token is short-lived (~1 hour). For multitenant OAuth setup, contact support.",
+  "instructions": "Authentication: Install the CLI (`npm install -g @googleworkspace/cli`) then run `gws auth setup` (creates a Cloud project, enables APIs, and logs you in) or `gws auth login` for subsequent logins. Alternatively, set the GOOGLE_WORKSPACE_CLI_TOKEN env var with an OAuth2 access token. Credentials are encrypted at rest in the OS keyring.",
   "user_config": {
     "GOOGLE_WORKSPACE_CLI_TOKEN": {
       "type": "string",
       "title": "Google Access Token",
-      "description": "Google OAuth2 access token. Generate with: gcloud auth print-access-token --scopes=<comma-separated-scopes>",
-      "required": true,
+      "description": "Google OAuth2 access token (optional if using gws auth login). Run `gws auth setup` or `gws auth login` to authenticate interactively instead.",
+      "required": false,
       "sensitive": true
     }
   },
