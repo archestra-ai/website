@@ -1,5 +1,5 @@
 {
-  "name": "googleworkspace___cli",
+  "name": "googleworkspace__cli",
   "display_name": "Google Workspace CLI",
   "description": "Access all Google Workspace APIs (Gmail, Drive, Calendar, Sheets, Docs, Chat, Admin, etc.) via Google's official gws CLI. Dynamically generates commands from Google's Discovery Service.",
   "author": {
