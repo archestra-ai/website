@@ -10,12 +10,16 @@ describe('extractRequiredPermissions', () => {
         operationProps: {
           op: {
             'x-required-permissions': {
-              allOf: ['toolPolicy:read', 'team:update'],
+              permissions: ['toolPolicy:read', 'team:update'],
+              note: 'Checked dynamically',
             },
           },
         },
       })
-    ).toEqual(['toolPolicy:read', 'team:update']);
+    ).toEqual({
+      note: 'Checked dynamically',
+      permissions: ['toolPolicy:read', 'team:update'],
+    });
   });
 
   it('reads x-required-permissions from immutable-style get() records', () => {
@@ -28,28 +32,44 @@ describe('extractRequiredPermissions', () => {
         operationProps: makeRecord({
           op: makeRecord({
             'x-required-permissions': makeRecord({
-              allOf: {
+              permissions: {
                 toJS: () => ['mcpRegistry:read'],
               },
             }),
           }),
         }),
       })
-    ).toEqual(['mcpRegistry:read']);
+    ).toEqual({
+      note: undefined,
+      permissions: ['mcpRegistry:read'],
+    });
   });
 });
 
 describe('SwaggerRbacPermissions', () => {
   it('renders permission badges', () => {
-    render(<SwaggerRbacPermissions permissions={['toolPolicy:read']} />);
+    render(<SwaggerRbacPermissions metadata={{ permissions: ['toolPolicy:read'] }} />);
 
     expect(screen.getByTestId('swagger-rbac-permissions')).toBeInTheDocument();
-    expect(screen.getByText('Requires')).toBeInTheDocument();
+    expect(screen.getByText('RBAC')).toBeInTheDocument();
     expect(screen.getByText('toolPolicy:read')).toBeInTheDocument();
   });
 
+  it('renders note-only RBAC metadata', () => {
+    render(
+      <SwaggerRbacPermissions
+        metadata={{
+          note: 'None (no additional RBAC permission required)',
+          permissions: [],
+        }}
+      />
+    );
+
+    expect(screen.getByText('None (no additional RBAC permission required)')).toBeInTheDocument();
+  });
+
   it('renders nothing when there are no permissions', () => {
-    const { container } = render(<SwaggerRbacPermissions permissions={[]} />);
+    const { container } = render(<SwaggerRbacPermissions metadata={{ permissions: [] }} />);
 
     expect(container).toBeEmptyDOMElement();
   });
