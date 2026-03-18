@@ -5,6 +5,7 @@ import {
   applyPlaygroundSettings,
   parseStoredPlaygroundSettings,
   rewriteRequestUrl,
+  serializePlaygroundSettings,
 } from './swagger-playground';
 
 describe('rewriteRequestUrl', () => {
@@ -85,5 +86,38 @@ describe('parseStoredPlaygroundSettings', () => {
   it('falls back to defaults when storage is empty or invalid', () => {
     expect(parseStoredPlaygroundSettings(null)).toEqual(DEFAULT_PLAYGROUND_SETTINGS);
     expect(parseStoredPlaygroundSettings('{')).toEqual(DEFAULT_PLAYGROUND_SETTINGS);
+  });
+
+  it('drops any previously persisted apiKey value', () => {
+    expect(
+      parseStoredPlaygroundSettings(
+        JSON.stringify({
+          apiKey: 'old-secret',
+          baseUrl: 'http://localhost:9000',
+          enabled: true,
+        })
+      )
+    ).toEqual({
+      apiKey: '',
+      baseUrl: 'http://localhost:9000',
+      enabled: true,
+    });
+  });
+});
+
+describe('serializePlaygroundSettings', () => {
+  it('persists only non-sensitive playground settings', () => {
+    expect(
+      serializePlaygroundSettings({
+        apiKey: 'secret-key',
+        baseUrl: 'http://localhost:9000',
+        enabled: true,
+      })
+    ).toBe(
+      JSON.stringify({
+        baseUrl: 'http://localhost:9000',
+        enabled: true,
+      })
+    );
   });
 });

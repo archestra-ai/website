@@ -73,7 +73,7 @@ export function parseStoredPlaygroundSettings(value: string | null): SwaggerPlay
     }
 
     return {
-      apiKey: parsed.apiKey,
+      apiKey: '',
       baseUrl: parsed.baseUrl || DEFAULT_PLAYGROUND_BASE_URL,
       enabled: parsed.enabled,
     };
@@ -83,7 +83,10 @@ export function parseStoredPlaygroundSettings(value: string | null): SwaggerPlay
 }
 
 export function serializePlaygroundSettings(settings: SwaggerPlaygroundSettings): string {
-  return JSON.stringify(settings);
+  return JSON.stringify({
+    baseUrl: settings.baseUrl,
+    enabled: settings.enabled,
+  });
 }
 
 export function rewriteRequestUrl(params: { baseUrl: string; requestUrl: string }): string | null {
@@ -134,12 +137,18 @@ function tryParseUrl(value: string): URL | null {
   }
 }
 
-function isPlaygroundSettings(value: unknown): value is SwaggerPlaygroundSettings {
+function isPlaygroundSettings(
+  value: unknown,
+): value is Pick<SwaggerPlaygroundSettings, 'baseUrl' | 'enabled'> & { apiKey?: string } {
   if (!value || typeof value !== 'object') {
     return false;
   }
 
   const record = value as Record<string, unknown>;
 
-  return typeof record.enabled === 'boolean' && typeof record.baseUrl === 'string' && typeof record.apiKey === 'string';
+  return (
+    typeof record.enabled === 'boolean' &&
+    typeof record.baseUrl === 'string' &&
+    (record.apiKey === undefined || typeof record.apiKey === 'string')
+  );
 }
