@@ -304,6 +304,18 @@ export default function SwaggerUI({ specUrl = '/docs/openapi.json' }: SwaggerUIP
           padding: 12px;
         }
 
+        .swagger-ui-wrapper .swagger-ui .markdown a,
+        .swagger-ui-wrapper .swagger-ui .renderedMarkdown a {
+          color: #2563eb;
+          text-decoration: underline;
+          text-underline-offset: 2px;
+        }
+
+        .swagger-ui-wrapper .swagger-ui .markdown a:hover,
+        .swagger-ui-wrapper .swagger-ui .renderedMarkdown a:hover {
+          color: #1d4ed8;
+        }
+
         /* Hide the info/description section since we have our own */
         .swagger-ui-wrapper .swagger-ui .info {
           display: none;
