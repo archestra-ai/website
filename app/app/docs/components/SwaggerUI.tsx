@@ -4,6 +4,8 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import 'swagger-ui-react/swagger-ui.css';
 
+import { createSwaggerRbacPlugin } from './swagger-rbac';
+
 // Dynamically import swagger-ui-react to avoid SSR issues
 const SwaggerUIReact = dynamic(() => import('swagger-ui-react'), {
   ssr: false,
@@ -17,6 +19,8 @@ const SwaggerUIReact = dynamic(() => import('swagger-ui-react'), {
 interface SwaggerUIProps {
   specUrl?: string;
 }
+
+const swaggerRbacPlugin = createSwaggerRbacPlugin();
 
 export default function SwaggerUI({ specUrl = '/docs/openapi.json' }: SwaggerUIProps) {
   const [mounted, setMounted] = useState(false);
@@ -72,6 +76,42 @@ export default function SwaggerUI({ specUrl = '/docs/openapi.json' }: SwaggerUIP
           border-radius: 8px;
         }
 
+        .swagger-ui-wrapper .swagger-ui .archestra-rbac-permissions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          align-items: center;
+          padding: 0 16px 14px;
+          margin-top: -2px;
+        }
+
+        .swagger-ui-wrapper .swagger-ui .archestra-rbac-permissions__label {
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+          color: #6b7280;
+        }
+
+        .swagger-ui-wrapper .swagger-ui .archestra-rbac-permissions__badges {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
+        .swagger-ui-wrapper .swagger-ui .archestra-rbac-permissions__badge {
+          display: inline-flex;
+          align-items: center;
+          padding: 3px 10px;
+          border-radius: 9999px;
+          border: 1px solid #d1d5db;
+          background: #ffffff;
+          color: #374151;
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 1.4;
+        }
+
         .swagger-ui-wrapper .swagger-ui .opblock.opblock-get {
           border-color: #93c5fd;
           background: rgba(59, 130, 246, 0.05);
@@ -123,7 +163,13 @@ export default function SwaggerUI({ specUrl = '/docs/openapi.json' }: SwaggerUIP
           display: none;
         }
       `}</style>
-      <SwaggerUIReact url={specUrl} defaultModelsExpandDepth={-1} supportedSubmitMethods={[]} tryItOutEnabled={false} />
+      <SwaggerUIReact
+        url={specUrl}
+        defaultModelsExpandDepth={-1}
+        plugins={[swaggerRbacPlugin]}
+        supportedSubmitMethods={[]}
+        tryItOutEnabled={false}
+      />
     </div>
   );
 }
