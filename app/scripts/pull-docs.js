@@ -1,10 +1,73 @@
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const REPO_URL = 'https://github.com/archestra-ai/archestra.git';
+const DEFAULT_REPO_URL = 'https://github.com/archestra-ai/archestra.git';
+const DEFAULT_REF = 'main';
 const TEMP_DIR = '.platform-docs-temp';
 const TARGET_DIR = '.platform-docs';
+
+function unique(values) {
+  return [
+    ...new Set(
+      values
+        .filter(Boolean)
+        .map((value) => value.trim())
+        .filter(Boolean)
+    ),
+  ];
+}
+
+function buildRepoUrlCandidates(env = process.env) {
+  const explicitRepoUrl = env.ARCHESTRA_DOCS_REPO_URL;
+  const repoOwner = env.ARCHESTRA_DOCS_REPO_OWNER || env.VERCEL_GIT_REPO_OWNER || env.GITHUB_REPOSITORY_OWNER;
+
+  return unique([
+    explicitRepoUrl,
+    repoOwner ? `https://github.com/${repoOwner}/archestra.git` : undefined,
+    DEFAULT_REPO_URL,
+  ]);
+}
+
+function buildRefCandidates(env = process.env) {
+  return unique([
+    env.ARCHESTRA_DOCS_REF,
+    env.VERCEL_GIT_COMMIT_REF,
+    env.GITHUB_HEAD_REF,
+    env.GITHUB_REF_NAME,
+    DEFAULT_REF,
+  ]);
+}
+
+function branchExists(repoUrl, ref) {
+  try {
+    const output = execFileSync('git', ['ls-remote', '--heads', repoUrl, ref], {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    });
+    return output.trim().length > 0;
+  } catch {
+    return false;
+  }
+}
+
+function resolvePlatformDocsSource(env = process.env, doesBranchExist = branchExists) {
+  const repoUrls = buildRepoUrlCandidates(env);
+  const refs = buildRefCandidates(env);
+
+  for (const repoUrl of repoUrls) {
+    for (const ref of refs) {
+      if (doesBranchExist(repoUrl, ref)) {
+        return { repoUrl, ref };
+      }
+    }
+  }
+
+  return {
+    repoUrl: DEFAULT_REPO_URL,
+    ref: DEFAULT_REF,
+  };
+}
 
 function pullDocs(forceRemote = false) {
   console.log('🔄 Checking if platform docs need to be pulled...');
@@ -37,6 +100,8 @@ function pullDocs(forceRemote = false) {
   console.log('📦 Pulling platform documentation from GitHub...');
 
   const tempPath = path.join(__dirname, '..', TEMP_DIR);
+  const { repoUrl, ref } = resolvePlatformDocsSource();
+  console.log(`🔗 Using platform docs source: ${repoUrl} @ ${ref}`);
 
   try {
     // Clean up any existing temp directory
@@ -46,19 +111,17 @@ function pullDocs(forceRemote = false) {
 
     // Clone only the docs folder using sparse checkout (more efficient)
     console.log('🔗 Cloning archestra repository (docs only)...');
-    execSync(`git clone --depth 1 --filter=blob:none --sparse ${REPO_URL} ${TEMP_DIR}`, {
-      cwd: path.join(__dirname, '..'),
-      stdio: 'inherit',
-    });
+    execFileSync(
+      'git',
+      ['clone', '--depth', '1', '--filter=blob:none', '--sparse', '--branch', ref, repoUrl, TEMP_DIR],
+      {
+        cwd: path.join(__dirname, '..'),
+        stdio: 'inherit',
+      }
+    );
 
     // Set up sparse checkout for the docs folder and all its contents
-    execSync('git sparse-checkout set docs', {
-      cwd: tempPath,
-      stdio: 'inherit',
-    });
-
-    // Pull the files
-    execSync('git checkout', {
+    execFileSync('git', ['sparse-checkout', 'set', 'docs'], {
       cwd: tempPath,
       stdio: 'inherit',
     });
@@ -119,4 +182,10 @@ if (require.main === module) {
   pullDocs(forceRemote);
 }
 
-module.exports = { pullDocs };
+module.exports = {
+  branchExists,
+  buildRefCandidates,
+  buildRepoUrlCandidates,
+  pullDocs,
+  resolvePlatformDocsSource,
+};
