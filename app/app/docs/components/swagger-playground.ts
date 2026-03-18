@@ -122,9 +122,7 @@ function normalizeBaseUrl(baseUrl: string): string {
     return '';
   }
 
-  const baseUrlWithScheme = /^[a-z]+:\/\//i.test(trimmedBaseUrl)
-    ? trimmedBaseUrl
-    : `http://${trimmedBaseUrl}`;
+  const baseUrlWithScheme = /^[a-z]+:\/\//i.test(trimmedBaseUrl) ? trimmedBaseUrl : `http://${trimmedBaseUrl}`;
 
   return baseUrlWithScheme.replace(/\/+$/, '');
 }
@@ -138,7 +136,7 @@ function tryParseUrl(value: string): URL | null {
 }
 
 function isPlaygroundSettings(
-  value: unknown,
+  value: unknown
 ): value is Pick<SwaggerPlaygroundSettings, 'baseUrl' | 'enabled'> & { apiKey?: string } {
   if (!value || typeof value !== 'object') {
     return false;

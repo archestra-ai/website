@@ -44,8 +44,7 @@ const PLAYGROUND_APPLY_DEBOUNCE_MS = 350;
 export default function SwaggerUI({ specUrl = '/docs/openapi.json' }: SwaggerUIProps) {
   const [mounted, setMounted] = useState(false);
   const [playground, setPlayground] = useState<SwaggerPlaygroundSettings>(DEFAULT_PLAYGROUND_SETTINGS);
-  const [appliedPlayground, setAppliedPlayground] =
-    useState<SwaggerPlaygroundSettings>(DEFAULT_PLAYGROUND_SETTINGS);
+  const [appliedPlayground, setAppliedPlayground] = useState<SwaggerPlaygroundSettings>(DEFAULT_PLAYGROUND_SETTINGS);
 
   useEffect(() => {
     setMounted(true);
@@ -373,10 +372,10 @@ export default function SwaggerUI({ specUrl = '/docs/openapi.json' }: SwaggerUIP
       <SwaggerUIReact
         key={[
           specUrl,
-          appliedPlayground.enabled ? "enabled" : "disabled",
+          appliedPlayground.enabled ? 'enabled' : 'disabled',
           appliedPlayground.baseUrl,
           appliedPlayground.apiKey,
-        ].join(":")}
+        ].join(':')}
         url={specUrl}
         defaultModelsExpandDepth={-1}
         plugins={[swaggerRbacPlugin]}
