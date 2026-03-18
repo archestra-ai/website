@@ -39,16 +39,21 @@ const SUPPORTED_SUBMIT_METHODS: Array<'delete' | 'get' | 'head' | 'options' | 'p
   'head',
   'options',
 ];
+const PLAYGROUND_APPLY_DEBOUNCE_MS = 350;
 
 export default function SwaggerUI({ specUrl = '/docs/openapi.json' }: SwaggerUIProps) {
   const [mounted, setMounted] = useState(false);
   const [playground, setPlayground] = useState<SwaggerPlaygroundSettings>(DEFAULT_PLAYGROUND_SETTINGS);
+  const [appliedPlayground, setAppliedPlayground] =
+    useState<SwaggerPlaygroundSettings>(DEFAULT_PLAYGROUND_SETTINGS);
 
   useEffect(() => {
     setMounted(true);
 
     const storedSettings = window.localStorage.getItem(SWAGGER_PLAYGROUND_STORAGE_KEY);
-    setPlayground(parseStoredPlaygroundSettings(storedSettings));
+    const parsedSettings = parseStoredPlaygroundSettings(storedSettings);
+    setPlayground(parsedSettings);
+    setAppliedPlayground(parsedSettings);
   }, []);
 
   useEffect(() => {
@@ -58,6 +63,23 @@ export default function SwaggerUI({ specUrl = '/docs/openapi.json' }: SwaggerUIP
 
     window.localStorage.setItem(SWAGGER_PLAYGROUND_STORAGE_KEY, serializePlaygroundSettings(playground));
   }, [mounted, playground]);
+
+  useEffect(() => {
+    if (!mounted) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setAppliedPlayground(playground);
+    }, PLAYGROUND_APPLY_DEBOUNCE_MS);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [mounted, playground]);
+
+  const isApplyingPlaygroundSettings =
+    playground.enabled !== appliedPlayground.enabled ||
+    playground.baseUrl !== appliedPlayground.baseUrl ||
+    playground.apiKey !== appliedPlayground.apiKey;
 
   if (!mounted) {
     return (
@@ -141,6 +163,12 @@ export default function SwaggerUI({ specUrl = '/docs/openapi.json' }: SwaggerUIP
           margin-top: 12px;
           font-size: 13px;
           color: #6b7280;
+        }
+
+        .swagger-ui-wrapper .archestra-swagger-playground__status {
+          margin-top: 10px;
+          font-size: 13px;
+          color: #2563eb;
         }
 
         .swagger-ui-wrapper .swagger-ui {
@@ -263,6 +291,12 @@ export default function SwaggerUI({ specUrl = '/docs/openapi.json' }: SwaggerUIP
           border-radius: 6px;
         }
 
+        .swagger-ui-wrapper .swagger-ui input[disabled],
+        .swagger-ui-wrapper .swagger-ui select[disabled],
+        .swagger-ui-wrapper .swagger-ui textarea[disabled] {
+          cursor: text;
+        }
+
         .swagger-ui-wrapper .swagger-ui .model-box {
           border-radius: 8px;
         }
@@ -332,20 +366,29 @@ export default function SwaggerUI({ specUrl = '/docs/openapi.json' }: SwaggerUIP
         <p className="archestra-swagger-playground__hint">
           Try it out is enabled only while playground mode is on. Settings stay in your browser on this machine.
         </p>
+        {isApplyingPlaygroundSettings ? (
+          <p className="archestra-swagger-playground__status">Updating playground…</p>
+        ) : null}
       </div>
       <SwaggerUIReact
+        key={[
+          specUrl,
+          appliedPlayground.enabled ? "enabled" : "disabled",
+          appliedPlayground.baseUrl,
+          appliedPlayground.apiKey,
+        ].join(":")}
         url={specUrl}
         defaultModelsExpandDepth={-1}
         plugins={[swaggerRbacPlugin]}
         requestInterceptor={(request) =>
           applyPlaygroundSettings({
             request: request as SwaggerRequest,
-            settings: playground,
+            settings: appliedPlayground,
             specUrl,
           })
         }
-        supportedSubmitMethods={playground.enabled ? SUPPORTED_SUBMIT_METHODS : []}
-        tryItOutEnabled={playground.enabled}
+        supportedSubmitMethods={appliedPlayground.enabled ? SUPPORTED_SUBMIT_METHODS : []}
+        tryItOutEnabled={appliedPlayground.enabled}
       />
     </div>
   );

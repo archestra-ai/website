@@ -10,20 +10,7 @@ type SwaggerRbacMetadata = {
 };
 
 export function createSwaggerRbacPlugin() {
-  return () => ({
-    wrapComponents: {
-      OperationSummary: (Original: React.ComponentType<unknown>) => (props: unknown) => {
-        const metadata = extractRequiredPermissions(props);
-
-        return (
-          <>
-            <Original {...(props as object)} />
-            <SwaggerRbacPermissions metadata={metadata} />
-          </>
-        );
-      },
-    },
-  });
+  return () => ({});
 }
 
 export function extractRequiredPermissions(operationSummaryProps: unknown): SwaggerRbacMetadata {

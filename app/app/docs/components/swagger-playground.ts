@@ -114,7 +114,16 @@ function isSpecRequest(requestUrl: string, specUrl: string): boolean {
 }
 
 function normalizeBaseUrl(baseUrl: string): string {
-  return baseUrl.trim().replace(/\/+$/, '');
+  const trimmedBaseUrl = baseUrl.trim();
+  if (!trimmedBaseUrl) {
+    return '';
+  }
+
+  const baseUrlWithScheme = /^[a-z]+:\/\//i.test(trimmedBaseUrl)
+    ? trimmedBaseUrl
+    : `http://${trimmedBaseUrl}`;
+
+  return baseUrlWithScheme.replace(/\/+$/, '');
 }
 
 function tryParseUrl(value: string): URL | null {

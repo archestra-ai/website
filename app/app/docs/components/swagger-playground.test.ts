@@ -25,6 +25,15 @@ describe('rewriteRequestUrl', () => {
       })
     ).toBe('http://localhost:9000/api/tools');
   });
+
+  it('adds http:// when the configured base URL is missing a scheme', () => {
+    expect(
+      rewriteRequestUrl({
+        baseUrl: 'localhost:9000',
+        requestUrl: '/api/tools',
+      })
+    ).toBe('http://localhost:9000/api/tools');
+  });
 });
 
 describe('applyPlaygroundSettings', () => {
