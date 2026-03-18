@@ -2,7 +2,7 @@
 
 // === Exports ===
 
-export const DEFAULT_PLAYGROUND_BASE_URL = 'http://localhost:9000';
+const DEFAULT_PLAYGROUND_BASE_URL = 'http://localhost:9000';
 
 export const DEFAULT_PLAYGROUND_SETTINGS: SwaggerPlaygroundSettings = {
   apiKey: '',

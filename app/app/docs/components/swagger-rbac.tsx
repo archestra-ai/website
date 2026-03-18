@@ -4,7 +4,7 @@ import React from 'react';
 
 // === Exports ===
 
-export type SwaggerRbacMetadata = {
+type SwaggerRbacMetadata = {
   note?: string;
   permissions: string[];
 };
