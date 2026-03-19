@@ -192,9 +192,9 @@ More text
 `;
     const toc = generateTableOfContents(content);
     expect(toc).toEqual([
-      { id: 'first-section', text: 'First Section', level: 2 },
-      { id: 'subsection', text: 'Subsection', level: 3 },
-      { id: 'second-section', text: 'Second Section', level: 2 },
+      { id: 'first-section', text: 'First Section', rawText: 'First Section', level: 2 },
+      { id: 'subsection', text: 'Subsection', rawText: 'Subsection', level: 3 },
+      { id: 'second-section', text: 'Second Section', rawText: 'Second Section', level: 2 },
     ]);
   });
 
@@ -208,8 +208,8 @@ More text
 `;
     const toc = generateTableOfContents(content);
     expect(toc).toHaveLength(2);
-    expect(toc[0]).toEqual({ id: 'included', text: 'Included', level: 2 });
-    expect(toc[1]).toEqual({ id: 'also-included', text: 'Also Included', level: 3 });
+    expect(toc[0]).toEqual({ id: 'included', text: 'Included', rawText: 'Included', level: 2 });
+    expect(toc[1]).toEqual({ id: 'also-included', text: 'Also Included', rawText: 'Also Included', level: 3 });
   });
 
   it('should generate IDs matching github-slugger used by rehype-slug', () => {
@@ -247,9 +247,9 @@ Even more
 `;
     const toc = generateTableOfContents(content);
     expect(toc).toEqual([
-      { id: 'setup', text: 'Setup', level: 2 },
-      { id: 'setup-1', text: 'Setup', level: 2 },
-      { id: 'setup-2', text: 'Setup', level: 2 },
+      { id: 'setup', text: 'Setup', rawText: 'Setup', level: 2 },
+      { id: 'setup-1', text: 'Setup', rawText: 'Setup', level: 2 },
+      { id: 'setup-2', text: 'Setup', rawText: 'Setup', level: 2 },
     ]);
   });
 
@@ -267,6 +267,7 @@ Not a heading in code block
     const toc = generateTableOfContents(content);
     expect(toc).toHaveLength(1);
     expect(toc[0].text).toBe('Real Heading');
+    expect(toc[0].rawText).toBe('Real Heading');
   });
 
   it('should strip inline markdown formatting from heading text', () => {
@@ -280,11 +281,13 @@ Not a heading in code block
       {
         id: 'connector-last_sync_status',
         text: 'Connector last_sync_status',
+        rawText: 'Connector `last_sync_status`',
         level: 2,
       },
       {
         id: 'force-re-sync-and-manual-sync',
         text: 'Force Re-sync and Manual Sync',
+        rawText: '[Force Re-sync](#force) and **Manual Sync**',
         level: 3,
       },
     ]);
