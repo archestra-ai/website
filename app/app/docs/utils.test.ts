@@ -268,4 +268,25 @@ Not a heading in code block
     expect(toc).toHaveLength(1);
     expect(toc[0].text).toBe('Real Heading');
   });
+
+  it('should strip inline markdown formatting from heading text', () => {
+    const content = `
+## Connector \`last_sync_status\`
+### [Force Re-sync](#force) and **Manual Sync**
+`;
+    const toc = generateTableOfContents(content);
+
+    expect(toc).toEqual([
+      {
+        id: 'connector-last_sync_status',
+        text: 'Connector last_sync_status',
+        level: 2,
+      },
+      {
+        id: 'force-re-sync-and-manual-sync',
+        text: 'Force Re-sync and Manual Sync',
+        level: 3,
+      },
+    ]);
+  });
 });
