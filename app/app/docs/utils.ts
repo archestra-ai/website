@@ -247,6 +247,7 @@ function normalizeHeadingText(text: string): string {
     .replace(/\*([^*]+)\*/g, '$1')
     .replace(/~~(.*?)~~/g, '$1')
     .replace(/<[^>]+>/g, '')
+    .replace(/[<>]/g, '')
     .trim();
 }
 
