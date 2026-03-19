@@ -228,13 +228,27 @@ export function generateTableOfContents(content: string): TableOfContentsItem[] 
 
   while ((match = headingRegex.exec(content)) !== null) {
     const level = match[1].length;
-    const text = match[2];
+    const rawText = match[2];
+    const text = normalizeHeadingText(rawText);
     const id = slugger.slug(text);
 
-    toc.push({ id, text, level });
+    toc.push({ id, text, rawText, level });
   }
 
   return toc;
+}
+
+function normalizeHeadingText(text: string): string {
+  return text
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/!\[([^\]]*)\]\([^)]+\)/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/(\*\*|__)(.*?)\1/g, '$2')
+    .replace(/\*([^*]+)\*/g, '$1')
+    .replace(/~~(.*?)~~/g, '$1')
+    .replace(/<[^>]+>/g, '')
+    .replace(/[<>]/g, '')
+    .trim();
 }
 
 function getNavigationLinks(currentSlug: string): { prev?: DocNavItem; next?: DocNavItem } | undefined {

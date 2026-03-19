@@ -37,6 +37,7 @@ export interface DocSubcategory {
 export interface TableOfContentsItem {
   id: string;
   text: string;
+  rawText: string;
   level: number;
 }
 
