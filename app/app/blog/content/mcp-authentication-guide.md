@@ -37,7 +37,10 @@ MCP auth relies on a stack of interrelated standards. Here's the full picture:
 - **[CIMD](https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/)** — Client ID Metadata Documents. URL-based client identity. The MCP default since November 2025.
 - **[RFC 8628](https://datatracker.ietf.org/doc/html/rfc8628)** — Device Authorization Grant. Auth for headless clients that can't open a browser.
 - **[RFC 8707](https://datatracker.ietf.org/doc/html/rfc8707)** — Resource Indicators. Binds tokens to a specific audience/resource server.
+- **[RFC 8693](https://datatracker.ietf.org/doc/html/rfc8693)** — OAuth 2.0 Token Exchange. Enables exchanging one token for another — the foundation for the Enterprise-Managed Authorization extension covered below.
+- **[RFC 7523](https://datatracker.ietf.org/doc/html/rfc7523)** — JWT Bearer Token Profiles for OAuth 2.0. Lets a signed JWT serve as an authorization grant — how enterprise identity assertions reach MCP servers.
 - **[MCP Authorization Spec](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization)** — The MCP specification that ties all of the above together.
+- **[Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization)** — MCP extension for centralized enterprise access control via identity providers. Covered in detail below.
 
 Don't worry if this looks overwhelming — each piece has a specific job, and they chain together in a predictable sequence.
 
@@ -198,6 +201,62 @@ This tells the authorization server to scope the token to that specific resource
 
 Why this matters: when one authorization server protects multiple MCP servers, audience binding prevents a token issued for Server A from working on Server B.
 
+## Enterprise-Managed Authorization
+
+Everything described above assumes a **user-driven** model: each employee individually authorizes each MCP client to access each MCP server. For consumer applications, this is ideal. For enterprises, it breaks down fast.
+
+Think about what happens when your organization adopts MCP across engineering teams. Every developer needs to individually authorize every MCP server they use — your internal code search tool, your CI/CD integration, your documentation server, your database query tool. New hires go through this for each server one by one. When someone leaves, you need to revoke access across every server individually. Security has no centralized view of who has access to what.
+
+If this sounds familiar, it's because it's the exact problem identity providers solved for SaaS applications a decade ago. The MCP [Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) extension brings that same model to MCP.
+
+### How It Works
+
+The extension puts your existing identity provider (Okta, Entra ID, Auth0) in the middle of MCP authorization. Instead of each employee authorizing each server, the IdP decides who gets access to what — using the same group memberships, role assignments, and conditional access policies you already manage.
+
+```
+  MCP Client          Enterprise IdP           MCP Server
+      │                     │                      │
+      │  1. SSO login       │                      │
+      │  (corporate creds)  │                      │
+      │────────────────────>│                      │
+      │                     │                      │
+      │  2. "Can this user  │                      │
+      │   access this       │                      │
+      │   MCP server?"      │                      │
+      │────────────────────>│                      │
+      │                     │                      │
+      │  3. Signed grant    │  (IdP checks group   │
+      │  (yes, with these   │   memberships,       │
+      │   permissions)      │   policies, MFA)     │
+      │<────────────────────│                      │
+      │                     │                      │
+      │  4. Exchange grant for access token        │
+      │────────────────────────────────────────────>│
+      │                     │                      │
+      │  5. Access token                           │
+      │<────────────────────────────────────────────│
+```
+
+The flow has three stages:
+
+**Stage 1 — Single Sign-On.** The employee logs in with their corporate credentials — the same Okta or Entra ID login they use for email, Slack, and everything else. One login, done.
+
+**Stage 2 — Policy Check.** The MCP client asks the IdP: "can this user access this specific MCP server?" The IdP evaluates your enterprise policies — group membership, role assignments, device compliance, conditional access rules — and returns a signed authorization grant (called an **ID-JAG**). If the employee isn't authorized, the request is denied before it ever reaches the MCP server. This is where your security team's policies are enforced.
+
+**Stage 3 — Token Issuance.** The MCP client presents the signed grant to the MCP server, which validates the IdP's signature (via JWKS — covered in [Part 2](/blog/enterprise-mcp-servers-jwks)) and issues an access token. When tokens expire, the client repeats from Stage 2 — no user interaction needed.
+
+### What This Changes for Platform Teams
+
+If you're running a platform team that's rolling out MCP servers, this extension is significant because it shifts access management from a developer self-service problem to a standard IT operations workflow:
+
+- **Onboarding**: add the employee to the right IdP groups and they instantly have access to the right MCP servers — no per-server setup
+- **Offboarding**: disable the employee in the IdP, all MCP access revoked immediately — no per-server cleanup
+- **Policy enforcement**: "the engineering team gets read-only access to the source control MCP server via AI code editors" is a policy you configure once in your IdP, not something each developer manages
+- **Scope control**: the IdP can grant different permission levels to different groups — marketing gets read-write for the documentation server, while engineering gets read-only
+- **Compliance**: every access decision flows through your IdP's audit log, giving security teams a centralized view of who accessed what and when
+
+The extension is currently in draft status and client support is still emerging — check the [MCP client matrix](https://modelcontextprotocol.io/extensions/client-matrix) for the latest. But the direction is clear: MCP access management is converging on the same centralized IdP model that the rest of the enterprise already uses.
+
 ## Client Adoption: Where Things Stand
 
 MCP auth is still maturing. Here's where major clients stand as of early 2026:
@@ -234,6 +293,8 @@ If you're looking for a concrete implementation of the full auth stack described
 **External IdP JWKS.** For enterprises with existing identity providers, Archestra can validate JWTs from external IdPs (Okta, Auth0, Keycloak, Entra ID) and propagate them to upstream MCP servers. The gateway validates the JWT signature via JWKS, matches the caller to an Archestra user, enforces team-based access control, and forwards the original JWT to the upstream server — enabling end-to-end identity verification without any Archestra-specific integration on the server side.
 
 **PKCE everywhere (mostly).** Archestra enforces PKCE when the upstream provider supports it and gracefully degrades when it doesn't — important for providers like GitHub that still lack PKCE support.
+
+**Enterprise-managed access control.** Archestra's team-based access control and external IdP integration align with the Enterprise-Managed Authorization extension described above. You manage MCP server access through your existing IdP — assign teams, set permissions, revoke access in one place. The gateway handles JWT validation, maps IdP identity to Archestra permissions, and logs every tool call for audit. As client support for the Enterprise-Managed Authorization extension matures, Archestra's gateway is positioned to serve as the authorization server in the ID-JAG flow — accepting identity assertions from your IdP and issuing scoped access tokens for upstream MCP servers.
 
 For a deeper look at the gateway's auth architecture, see the [Archestra Authentication docs](https://archestra.ai/docs/mcp-authentication).
 

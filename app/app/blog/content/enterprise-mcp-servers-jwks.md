@@ -364,6 +364,37 @@ The [Archestra MCP Gateway](https://archestra.ai/docs/platform-mcp-gateway) supp
 
 The [MCP Server + Keycloak JWKS example](https://github.com/archestra-ai/examples/tree/main/mcp-server-jwks-keycloak) works with both deployment models: standalone (via `docker compose up`) or behind Archestra's gateway with JWT propagation.
 
+## Enterprise-Managed Authorization: What's Coming
+
+Everything in this post — JWKS validation, claim-based access control, the gateway pattern — is about individual MCP servers verifying individual tokens. That works, but it leaves a gap: who decides which employees get tokens for which servers in the first place?
+
+Today, that's usually a manual process. Each developer authorizes each MCP server individually. IT doesn't have a centralized view. Onboarding means walking new hires through a dozen authorization flows. Offboarding means hoping you remembered to revoke access everywhere.
+
+The MCP [Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) extension closes this gap by putting the enterprise IdP in the decision-making seat. The IdP becomes the place where your security team decides which MCP servers are approved, which groups get access to which servers, and what permission levels each group gets — the same way they manage access to every other business application.
+
+### How It Connects to JWKS
+
+The extension introduces a token type called an **ID-JAG** (Identity Assertion JWT Authorization Grant). Here's the short version:
+
+1. Employee logs in via corporate SSO (Okta, Entra ID, etc.)
+2. The MCP client asks the IdP: "can this user access this MCP server?" The IdP checks group memberships, roles, and policies, then returns a signed ID-JAG
+3. The MCP server validates the ID-JAG — using the same JWKS-based signature verification described throughout this post — and issues an access token
+
+The JWKS patterns covered earlier are exactly what the MCP server uses in step 3. If you've built JWKS validation into your MCP server, you already have the foundation for Enterprise-Managed Authorization. The ID-JAG adds a few extra validation checks (verifying the token targets your specific server, preventing replay), but the core mechanism — fetch the IdP's public keys via JWKS, verify the signature — is the same.
+
+### What This Means for Your MCP Deployment
+
+For platform teams managing multiple MCP servers, this extension matters because it turns MCP access control into a standard IT operations workflow:
+
+- **Centralized policy**: "engineering gets read-only access to the code search MCP server" is a rule in your IdP, not a configuration on each server
+- **Automatic provisioning**: add someone to the right group, they can access the right MCP servers immediately
+- **Instant revocation**: disable the user in the IdP, all MCP access is gone — no per-server cleanup
+- **Audit trail**: every access decision goes through your IdP's logs
+
+If you're running MCP servers behind a gateway, the gateway can handle ID-JAG validation for all upstream servers — your individual MCP servers don't need to change. The [Archestra MCP Gateway](https://archestra.ai/docs/mcp-authentication) already validates JWTs from enterprise IdPs via JWKS, enforces team-based access policies, and logs every tool call. As client support for the Enterprise-Managed Authorization extension matures, the gateway is positioned to handle the ID-JAG flow end to end.
+
+The extension is currently in draft status. See [Part 1](/blog/mcp-authentication-guide) for the full Enterprise-Managed Authorization overview and the three-stage flow in detail.
+
 ## Wrapping Up
 
 JWKS-based authentication gives MCP servers the same security model used by modern web APIs. By delegating authentication to a trusted identity provider and using cryptographic token verification, you get:
@@ -373,6 +404,6 @@ JWKS-based authentication gives MCP servers the same security model used by mode
 - **Standards compliance** — works with any OIDC-compliant provider
 - **Automatic key rotation** — handled via JWKS refresh
 
-The MCP ecosystem is converging on these patterns. Building with JWKS and standard identity providers means your MCP servers are ready for enterprise deployment from day one.
+The MCP ecosystem is converging on these patterns — and the Enterprise-Managed Authorization extension is formalizing them into a standard for centralized access management. Building with JWKS and standard identity providers means your MCP servers are ready for enterprise deployment from day one.
 
-If you haven't already, check out [Part 1 of this series](/blog/mcp-authentication-guide) for the full MCP auth landscape — from the initial 401 handshake through discovery, client registration, and PKCE.
+If you haven't already, check out [Part 1 of this series](/blog/mcp-authentication-guide) for the full MCP auth landscape — from the initial 401 handshake through discovery, client registration, PKCE, and Enterprise-Managed Authorization.
