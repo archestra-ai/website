@@ -61,7 +61,7 @@
     "@types/swagger-ui-react": "^5.18.0",
     "@vitejs/plugin-react": "^5.1.4",
     "csv-parse": "^6.1.0",
-    "jsdom": "^28.1.0",
+    "jsdom": "^29.0.0",
     "knip": "^5.86.0",
     "postcss": "^8.5",
     "postcss-load-config": "^6.0.1",
