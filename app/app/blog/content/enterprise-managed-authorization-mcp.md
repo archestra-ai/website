@@ -161,9 +161,11 @@ If you think of JWKS as "validate the enterprise token," this new extension is "
 
 ## How Archestra Fits Into This
 
-This is the new MCP auth method Archestra is adding for gateway authentication.
+This is the new MCP auth method Archestra is adding in v1.2.0.
 
 When an enterprise identity provider is configured in Archestra, the gateway can participate in the second half of this spec-defined flow: it accepts a valid ID-JAG at the token endpoint, validates it against the configured IdP, and returns an MCP access token bound to the target gateway resource.
+
+In Archestra v1.2.0, that support shows up in the places it matters most: **Agents** and **MCP Gateways**. The same enterprise-managed authorization model that works for external MCP clients connecting to a gateway also applies to agent-driven tool access inside the platform, so enterprise auth policy is enforced consistently across both surfaces.
 
 That lets Archestra fit naturally into enterprise MCP deployments where:
 
