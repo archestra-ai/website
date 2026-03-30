@@ -3,7 +3,7 @@ title: 'Enterprise-Managed Authorization for MCP'
 date: '2026-03-30'
 author: 'Joey Orlando'
 description: 'How enterprise SSO, token exchange, and ID-JAG let MCP clients get server access without a separate per-server authorization flow.'
-image: '/blog/2026-03-30-enterprise-managed-authorization-flow.svg'
+image: '/blog/2026-03-30-enterprise-managed-authorization-hero.jpg'
 ---
 
 ## SSO Gets You Into the Client. Enterprise-Managed Authorization Gets You Into the Server.
