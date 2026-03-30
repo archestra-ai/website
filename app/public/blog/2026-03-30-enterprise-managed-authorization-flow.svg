@@ -1,6 +1,7 @@
-<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1600" height="900" fill="#F8FAFC"/>
-  <rect x="40" y="40" width="1520" height="820" rx="24" fill="white" stroke="#D7E2F0" stroke-width="2"/>
+<svg width="1600" height="1100" viewBox="0 0 1600 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1100" fill="#F8FAFC"/>
+  <rect x="40" y="40" width="1520" height="1020" rx="24" fill="white" stroke="#D7E2F0" stroke-width="2"/>
+
   <text x="90" y="120" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">
     Enterprise-Managed Authorization
   </text>
@@ -9,32 +10,32 @@
   </text>
 
   <g font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#0F172A" text-anchor="middle">
-    <rect x="120" y="210" width="160" height="64" rx="16" fill="#F1F5F9" stroke="#CBD5E1"/>
-    <text x="200" y="250">Browser</text>
+    <rect x="120" y="220" width="160" height="64" rx="16" fill="#F1F5F9" stroke="#CBD5E1"/>
+    <text x="200" y="260">Browser</text>
 
-    <rect x="380" y="210" width="180" height="64" rx="16" fill="#DBEAFE" stroke="#60A5FA"/>
-    <text x="470" y="250">MCP Client</text>
+    <rect x="380" y="220" width="180" height="64" rx="16" fill="#DBEAFE" stroke="#60A5FA"/>
+    <text x="470" y="260">MCP Client</text>
 
-    <rect x="680" y="210" width="240" height="64" rx="16" fill="#E0F2FE" stroke="#38BDF8"/>
-    <text x="800" y="250">Identity Provider</text>
+    <rect x="680" y="220" width="240" height="64" rx="16" fill="#E0F2FE" stroke="#38BDF8"/>
+    <text x="800" y="260">Identity Provider</text>
 
-    <rect x="1030" y="210" width="240" height="64" rx="16" fill="#DCFCE7" stroke="#4ADE80"/>
-    <text x="1150" y="250">MCP Auth Server</text>
+    <rect x="1030" y="220" width="240" height="64" rx="16" fill="#DCFCE7" stroke="#4ADE80"/>
+    <text x="1150" y="260">MCP Auth Server</text>
 
-    <rect x="1330" y="210" width="180" height="64" rx="16" fill="#FEF3C7" stroke="#F59E0B"/>
-    <text x="1420" y="250">MCP Server</text>
+    <rect x="1330" y="220" width="180" height="64" rx="16" fill="#FEF3C7" stroke="#F59E0B"/>
+    <text x="1420" y="260">MCP Server</text>
   </g>
 
   <g stroke="#94A3B8" stroke-width="2" stroke-dasharray="10 8">
-    <line x1="200" y1="290" x2="200" y2="790"/>
-    <line x1="470" y1="290" x2="470" y2="790"/>
-    <line x1="800" y1="290" x2="800" y2="790"/>
-    <line x1="1150" y1="290" x2="1150" y2="790"/>
-    <line x1="1420" y1="290" x2="1420" y2="790"/>
+    <line x1="200" y1="310" x2="200" y2="930"/>
+    <line x1="470" y1="310" x2="470" y2="930"/>
+    <line x1="800" y1="310" x2="800" y2="930"/>
+    <line x1="1150" y1="310" x2="1150" y2="930"/>
+    <line x1="1420" y1="310" x2="1420" y2="930"/>
   </g>
 
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M0 0L10 5L0 10V0Z" fill="#2563EB"/>
     </marker>
     <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
@@ -46,63 +47,63 @@
   </defs>
 
   <g font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#1E293B">
-    <line x1="470" y1="340" x2="200" y2="340" stroke="#2563EB" stroke-width="3" marker-end="url(#arrow)"/>
-    <text x="292" y="330">1. Redirect to IdP</text>
+    <line x1="470" y1="360" x2="200" y2="360" stroke="#2563EB" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    <text x="335" y="348" text-anchor="middle">1. Redirect to IdP</text>
 
-    <line x1="200" y1="390" x2="800" y2="390" stroke="#2563EB" stroke-width="3" marker-end="url(#arrow)"/>
-    <text x="410" y="380">2. Browser goes to IdP</text>
+    <line x1="200" y1="430" x2="800" y2="430" stroke="#2563EB" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    <text x="500" y="418" text-anchor="middle">2. Browser goes to IdP</text>
 
-    <rect x="710" y="418" width="180" height="44" rx="12" fill="#F8FAFC" stroke="#CBD5E1"/>
-    <text x="800" y="446" text-anchor="middle">User logs in</text>
+    <rect x="710" y="455" width="180" height="44" rx="12" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="800" y="483" text-anchor="middle">User logs in</text>
 
-    <line x1="800" y1="500" x2="200" y2="500" stroke="#2563EB" stroke-width="3" marker-end="url(#arrow)"/>
-    <text x="454" y="490">3. Authorization code</text>
+    <line x1="800" y1="550" x2="200" y2="550" stroke="#2563EB" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    <text x="500" y="538" text-anchor="middle">3. Authorization code</text>
 
-    <line x1="200" y1="550" x2="470" y2="550" stroke="#2563EB" stroke-width="3" marker-end="url(#arrow)"/>
-    <text x="282" y="540">4. Code to client</text>
+    <line x1="200" y1="620" x2="470" y2="620" stroke="#2563EB" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    <text x="335" y="608" text-anchor="middle">4. Code to client</text>
 
-    <line x1="470" y1="600" x2="800" y2="600" stroke="#2563EB" stroke-width="3" marker-end="url(#arrow)"/>
-    <text x="520" y="590">5. Exchange code for ID token</text>
+    <line x1="470" y1="690" x2="800" y2="690" stroke="#2563EB" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    <text x="635" y="678" text-anchor="middle">5. Exchange code for ID token</text>
 
-    <line x1="800" y1="650" x2="470" y2="650" stroke="#2563EB" stroke-width="3" marker-end="url(#arrow)"/>
-    <text x="572" y="640">6. ID token</text>
+    <line x1="800" y1="760" x2="470" y2="760" stroke="#2563EB" stroke-width="3" marker-end="url(#arrowBlue)"/>
+    <text x="635" y="748" text-anchor="middle">6. ID token</text>
 
-    <rect x="360" y="685" width="220" height="72" rx="14" fill="#EFF6FF" stroke="#93C5FD"/>
-    <text x="470" y="715" text-anchor="middle">Client stores ID token</text>
-    <text x="470" y="740" text-anchor="middle">after enterprise SSO</text>
+    <rect x="355" y="785" width="230" height="72" rx="14" fill="#EFF6FF" stroke="#93C5FD"/>
+    <text x="470" y="815" text-anchor="middle">Client stores ID token</text>
+    <text x="470" y="840" text-anchor="middle">after enterprise SSO</text>
   </g>
 
   <g font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#1E293B">
-    <line x1="470" y1="780" x2="800" y2="780" stroke="#059669" stroke-width="3" marker-end="url(#arrowGreen)"/>
-    <text x="516" y="770">7. RFC 8693 token exchange for ID-JAG</text>
+    <line x1="470" y1="900" x2="800" y2="900" stroke="#059669" stroke-width="3" marker-end="url(#arrowGreen)"/>
+    <text x="635" y="888" text-anchor="middle">7. RFC 8693 token exchange for ID-JAG</text>
 
-    <rect x="710" y="800" width="180" height="44" rx="12" fill="#F0FDF4" stroke="#86EFAC"/>
-    <text x="800" y="828" text-anchor="middle">IdP policy check</text>
+    <rect x="710" y="925" width="180" height="44" rx="12" fill="#F0FDF4" stroke="#86EFAC"/>
+    <text x="800" y="953" text-anchor="middle">IdP policy check</text>
 
-    <line x1="800" y1="860" x2="470" y2="860" stroke="#059669" stroke-width="3" marker-end="url(#arrowGreen)"/>
-    <text x="592" y="850">8. Signed ID-JAG</text>
+    <line x1="800" y1="1000" x2="470" y2="1000" stroke="#059669" stroke-width="3" marker-end="url(#arrowGreen)"/>
+    <text x="635" y="988" text-anchor="middle">8. Signed ID-JAG</text>
   </g>
 
-  <g transform="translate(0 -120)" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#1E293B">
-    <line x1="470" y1="780" x2="1150" y2="780" stroke="#059669" stroke-width="3" marker-end="url(#arrowGreen)"/>
-    <text x="676" y="770">9. JWT bearer grant with ID-JAG</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#1E293B">
+    <line x1="470" y1="840" x2="1150" y2="840" stroke="#059669" stroke-width="3" marker-end="url(#arrowGreen)"/>
+    <text x="810" y="828" text-anchor="middle">9. JWT bearer grant with ID-JAG</text>
 
-    <rect x="1060" y="800" width="180" height="44" rx="12" fill="#F0FDF4" stroke="#86EFAC"/>
-    <text x="1150" y="828" text-anchor="middle">Validate ID-JAG</text>
+    <rect x="1060" y="865" width="180" height="44" rx="12" fill="#F0FDF4" stroke="#86EFAC"/>
+    <text x="1150" y="893" text-anchor="middle">Validate ID-JAG</text>
 
-    <line x1="1150" y1="860" x2="470" y2="860" stroke="#059669" stroke-width="3" marker-end="url(#arrowGreen)"/>
-    <text x="738" y="850">10. MCP access token</text>
+    <line x1="1150" y1="940" x2="470" y2="940" stroke="#059669" stroke-width="3" marker-end="url(#arrowGreen)"/>
+    <text x="810" y="928" text-anchor="middle">10. MCP access token</text>
   </g>
 
-  <g transform="translate(0 -240)" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#1E293B">
-    <line x1="470" y1="780" x2="1420" y2="780" stroke="#D97706" stroke-width="3" marker-end="url(#arrowAmber)"/>
-    <text x="812" y="770">11. Call MCP API with access token</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#1E293B">
+    <line x1="470" y1="600" x2="1420" y2="600" stroke="#D97706" stroke-width="3" marker-end="url(#arrowAmber)"/>
+    <text x="945" y="588" text-anchor="middle">11. Call MCP API with access token</text>
 
-    <line x1="1420" y1="840" x2="470" y2="840" stroke="#D97706" stroke-width="3" marker-end="url(#arrowAmber)"/>
-    <text x="844" y="830">12. MCP response with data</text>
+    <line x1="1420" y1="660" x2="470" y2="660" stroke="#D97706" stroke-width="3" marker-end="url(#arrowAmber)"/>
+    <text x="945" y="648" text-anchor="middle">12. MCP response with data</text>
   </g>
 
-  <text x="90" y="835" fill="#64748B" font-family="Arial, Helvetica, sans-serif" font-size="18">
+  <text x="90" y="1030" fill="#64748B" font-family="Arial, Helvetica, sans-serif" font-size="18">
     Based on the flow shown in the MCP Enterprise-Managed Authorization extension.
   </text>
 </svg>
