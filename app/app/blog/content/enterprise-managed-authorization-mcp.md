@@ -181,7 +181,7 @@ If you think of JWKS as "validate the enterprise token," this new extension is "
 
 ## How Archestra Fits Into This
 
-Archestra supports this at the MCP Gateway layer in v1.2.0.
+Archestra supports this at the MCP Gateway layer in [v1.2.0](https://github.com/archestra-ai/archestra/releases/tag/platform-v1.2.0).
 
 When an enterprise identity provider is configured in Archestra, the gateway can participate in the second half of this spec-defined flow: it accepts a valid ID-JAG at the token endpoint, validates it against the configured IdP, and returns an MCP access token bound to the target gateway resource.
 
