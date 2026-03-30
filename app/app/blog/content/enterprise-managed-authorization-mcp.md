@@ -8,11 +8,11 @@ image: '/blog/2026-03-30-enterprise-managed-authorization-hero.jpg'
 
 ## SSO Gets You Into the Client. Enterprise-Managed Authorization Gets You Into the Server.
 
-In most enterprise MCP setups today, a user can sign in to their MCP client with the company identity provider and still get blocked when they try to use an MCP server. The client is authenticated, but the server still needs its own access token. That usually means another consent screen, another account-linking step, or another "Connect" button somewhere in the flow.
+In most enterprise MCP setups today, a user can sign in to a tool like Claude Desktop, Cursor, or an internal chat app with the company's **identity provider (IdP)** and still get blocked when they try to use an MCP server behind Archestra. The client is authenticated, but the server still needs its own access token. That usually means another consent screen, another account-linking step, or another "Connect" button somewhere in the flow.
 
 The new [Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) extension fills that gap.
 
-It gives MCP clients a standard way to take an enterprise identity assertion they already have, exchange it through the company's IdP, and turn it into an MCP access token for a specific server. In practical terms: if your company already trusts the user and already has a policy engine, the MCP client can use that existing trust to get access to enterprise-approved MCP servers without prompting the user to re-authorize each one manually.
+It gives MCP clients a standard way to take an enterprise identity assertion they already have, exchange it through the company's identity provider, and turn it into an MCP access token for a specific server. In practical terms: if your company already trusts the user and already has a policy engine, a client connecting to Archestra can use that existing trust to get access to enterprise-approved MCP gateways without prompting the user to re-authorize each one manually.
 
 _This is Part 3 of a three-part series on MCP authentication. [Part 1](/blog/mcp-authentication-guide) covers OAuth 2.1, PKCE, discovery, and client registration. [Part 2](/blog/enterprise-mcp-servers-jwks) covers JWKS validation for enterprise MCP servers._
 
@@ -20,7 +20,7 @@ _This is Part 3 of a three-part series on MCP authentication. [Part 1](/blog/mcp
 
 Standard MCP auth already gives us a solid foundation: OAuth 2.1, PKCE, discovery, client registration, and audience-bound tokens. But enterprise environments introduce a different requirement:
 
-- the user is already signed in to the MCP client with the company's IdP
+- the user is already signed in to their MCP client with the company's identity provider
 - the company wants central policy over which MCP servers are allowed
 - the company wants visibility into app-to-app access, not just user login
 - the user should not need to run a separate auth flow for every internal server
@@ -34,7 +34,7 @@ Instead of asking the MCP server to trust the raw enterprise identity token dire
 The extension is built on three layers:
 
 1. **Single sign-on** to the MCP client via OpenID Connect or SAML
-2. **Token Exchange (RFC 8693)** at the enterprise IdP
+2. **Token Exchange (RFC 8693)** at the enterprise identity provider
 3. **JWT Authorization Grant (RFC 7523)** at the MCP server's authorization server
 
 The MCP spec's flow looks like this:
@@ -72,23 +72,23 @@ sequenceDiagram
 
 Here's what is happening:
 
-1. The user signs in to the MCP client through the enterprise identity provider.
-2. The MCP client receives an identity assertion, typically an OIDC ID token.
-3. The MCP client asks the IdP to exchange that identity assertion for a new JWT-based grant targeted at a specific MCP server.
-4. The IdP evaluates enterprise policy and returns an **Identity Assertion JWT Authorization Grant**, or **ID-JAG**.
-5. The MCP client sends that ID-JAG to the MCP server's authorization server using the JWT bearer grant.
+1. The user signs in to a client such as Claude Desktop, Cursor, or an internal chat app through the enterprise identity provider.
+2. That client receives an identity assertion, typically an OIDC ID token.
+3. The client asks the identity provider to exchange that identity assertion for a new JWT-based grant targeted at a specific MCP server or Archestra gateway.
+4. The identity provider evaluates enterprise policy and returns an **Identity Assertion JWT Authorization Grant**, or **ID-JAG**.
+5. The client sends that ID-JAG to the MCP server's authorization server using the JWT bearer grant. In Archestra's case, that is the gateway token endpoint.
 6. The MCP authorization server validates the ID-JAG and issues a normal MCP access token.
 7. The client uses that access token to call the MCP server.
 
-That split matters. The enterprise IdP decides whether the client should be allowed to act for the user against a particular MCP server. The MCP server still issues the actual access token used on the wire for MCP requests.
+That split matters. The enterprise identity provider decides whether the client should be allowed to act for the user against a particular MCP server. The MCP server, or Archestra gateway, still issues the actual access token used on the wire for MCP requests.
 
-There is one important prerequisite underneath all of this: both the MCP client and the MCP authorization server need an established trust relationship with the same enterprise IdP. Without that shared trust anchor, there is nothing for the ID-JAG to extend.
+There is one important prerequisite underneath all of this: both the MCP client and the MCP authorization server need an established trust relationship with the same enterprise identity provider. Without that shared trust anchor, there is nothing for the ID-JAG to extend.
 
 ## What the ID-JAG Actually Does
 
 The most important object in this flow is the **ID-JAG**.
 
-It's a signed JWT from the enterprise IdP that says, in effect:
+It's a signed JWT from the enterprise identity provider that says, in effect:
 
 - who the user is
 - which MCP client requested access
@@ -113,7 +113,7 @@ One subtle implementation detail: in token exchange, the ID-JAG is returned in t
 
 ## How This Differs from an ID Token
 
-At a glance, an ID-JAG can look a lot like a normal OIDC ID token. Both are JWTs. Both are issued by the enterprise IdP. Both can carry user identity claims.
+At a glance, an ID-JAG can look a lot like a normal OIDC ID token. Both are JWTs. Both are issued by the enterprise identity provider. Both can carry user identity claims.
 
 But they have different jobs.
 
@@ -134,7 +134,7 @@ This extension is really about removing redundant consent while preserving polic
 
 For end users, the benefit is obvious: if they already signed in with enterprise SSO, they don't need to go through another authorization loop every time they connect to an approved MCP server.
 
-For administrators, it creates a clean control point. The IdP can evaluate whether a given MCP client, acting for a given user, should be allowed to request access to a given MCP server and scope set. That means the enterprise policy engine becomes part of the MCP authorization flow instead of sitting beside it. Instead of the integration bypassing the IdP, the IdP becomes the place where access policy, MFA requirements, and enterprise rules can actually be enforced.
+For administrators, it creates a clean control point. The identity provider can evaluate whether a given MCP client, acting for a given user, should be allowed to request access to a given MCP server and scope set. That means the enterprise policy engine becomes part of the MCP authorization flow instead of sitting beside it. Instead of the integration bypassing the identity provider, the identity provider becomes the place where access policy, MFA requirements, and enterprise rules can actually be enforced.
 
 For MCP client developers, it means fewer interactive auth interruptions. Once the client has the enterprise-issued identity assertion, it can obtain new MCP access tokens without bouncing the user back through another consent page.
 
@@ -146,9 +146,9 @@ In [Part 2](/blog/enterprise-mcp-servers-jwks), we looked at a different enterpr
 
 That pattern is still useful, but it solves a different problem.
 
-**JWKS-based auth** says: "the MCP server trusts tokens issued directly by the enterprise IdP."
+**JWKS-based auth** says: "the MCP server trusts tokens issued directly by the enterprise identity provider."
 
-**Enterprise-managed authorization** says: "the enterprise IdP can authorize access, but the MCP server still issues the final MCP access token."
+**Enterprise-managed authorization** says: "the enterprise identity provider can authorize access, but the MCP server still issues the final MCP access token."
 
 That distinction matters in practice:
 
@@ -167,8 +167,8 @@ When an enterprise identity provider is configured in Archestra, the gateway can
 
 That lets Archestra fit naturally into enterprise MCP deployments where:
 
-- the user already signs in to the MCP client with the corporate IdP
-- the IdP can perform token exchange
+- the user already signs in to Claude Desktop, Cursor, or another MCP client with the corporate identity provider
+- the identity provider can perform token exchange
 - the gateway should issue the actual MCP access token used by the client
 
 It also fits the broader Archestra model of keeping auth layers separate:
@@ -182,7 +182,7 @@ Those are related, but they are not the same problem. This extension addresses t
 
 One practical benefit of this model is that renewal can stay mostly non-interactive.
 
-In draft ID-JAG flows, the client can often obtain a fresh ID-JAG using an existing signed-in session artifact rather than forcing the user back through another browser consent step. Depending on the IdP and client setup, that may mean using a fresh ID token or a refresh token from the original SSO session as the input to token exchange.
+In draft ID-JAG flows, the client can often obtain a fresh ID-JAG using an existing signed-in session artifact rather than forcing the user back through another browser consent step. Depending on the identity provider and client setup, that may mean using a fresh ID token or a refresh token from the original SSO session as the input to token exchange.
 
 The practical outcome is what matters: once the enterprise login is established, the client can usually keep obtaining server-specific access without repeatedly interrupting the user.
 
@@ -190,7 +190,7 @@ The practical outcome is what matters: once the enterprise login is established,
 
 Like most auth specs, this looks cleaner on paper than it is in deployment.
 
-The main requirement is IdP support. The enterprise provider needs to do more than basic SSO. It must be able to perform RFC 8693 token exchange and issue a signed JWT grant with the claims the MCP authorization server expects.
+The main requirement is identity provider support. The enterprise provider needs to do more than basic SSO. It must be able to perform RFC 8693 token exchange and issue a signed JWT grant with the claims the MCP authorization server expects.
 
 A few details are easy to get wrong:
 
@@ -198,7 +198,7 @@ A few details are easy to get wrong:
 - the `resource` claim has to identify the actual MCP resource
 - the `client_id` in the grant has to match the MCP client making the request
 - the ID-JAG is not itself the final MCP access token
-- policy evaluation lives at the IdP, but token issuance still lives at the MCP authorization server
+- policy evaluation lives at the identity provider, but token issuance still lives at the MCP authorization server
 
 If any of those are misaligned, the whole promise of "silent enterprise auth" breaks down into confusing grant failures.
 
