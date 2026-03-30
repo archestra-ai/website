@@ -84,6 +84,26 @@ That split matters. The identity provider is making a policy decision. The MCP a
 
 There is one important prerequisite underneath all of this: both the MCP client and the MCP authorization server need an established trust relationship with the same enterprise identity provider. Without that shared trust anchor, there is nothing for the ID-JAG to extend.
 
+## Authorization Server vs Resource Server
+
+One bit of OAuth language can make this post feel more abstract than it really is: the distinction between the **authorization server** and the **resource server**.
+
+In this flow, the **authorization server** is the component that validates the grant and issues the final access token. The **resource server** is the component that receives that access token on actual MCP requests and returns tools, resources, or other MCP responses.
+
+In some architectures, those are separate systems. In others, they are just two roles implemented by the same product.
+
+Using Archestra as the practical example:
+
+- the **MCP server's authorization server** is the Archestra gateway token endpoint that validates the ID-JAG and mints the final MCP access token
+- the **MCP resource server** is the Archestra MCP gateway endpoint that receives `tools/list`, `tools/call`, and other MCP requests authenticated with that token
+
+If you want to map that to a familiar SaaS pattern, think about GitHub:
+
+- `github.com/login/oauth/access_token` is part of the authorization side because it issues tokens
+- `api.github.com` is the resource side because it receives those tokens on actual API requests
+
+Same idea here. The identity provider does not directly hand the client a token for the MCP API. It hands the client a grant. The MCP authorization server turns that grant into an access token, and the MCP resource server is what finally accepts that token on real MCP traffic.
+
 ## What the ID-JAG Actually Does
 
 The most important object in this flow is the **ID-JAG**.
