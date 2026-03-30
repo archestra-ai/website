@@ -55,7 +55,7 @@ sequenceDiagram
     C->>IdP: Token Request with IdP Authorization Code
     IdP-->>C: ID Token
 
-    note over C: User is logged<br/>in to Archestra.<br/>Client stores ID Token.
+    note over C: User is logged<br/>in to Archestra.<br/>Client stores enterprise session token.
 
     C->>IdP: Exchange ID Token for ID-JAG
     note over IdP: Evaluate Policy
