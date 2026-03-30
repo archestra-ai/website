@@ -8,7 +8,7 @@ image: '/blog/2026-03-30-enterprise-managed-authorization-hero.jpg'
 
 ## SSO Gets You Into the Client. Enterprise-Managed Authorization Gets You Into the Server.
 
-In most enterprise MCP setups today, a user can sign in to a tool like Claude Desktop, Cursor, or an internal chat app with the company's **identity provider (IdP)** and still get blocked when they try to use an MCP server behind Archestra. The client is authenticated, but the server still needs its own access token. That usually means another consent screen, another account-linking step, or another "Connect" button somewhere in the flow.
+In most enterprise MCP setups today, users can already sign in to tools like Claude Desktop, Cursor, or internal chat apps through their company's identity provider (IdP). But that does not automatically give those tools access to MCP servers exposed through Archestra. The client is authenticated, but the server still needs its own access token. That usually means another consent screen, another account-linking step, or another "Connect" button somewhere in the flow.
 
 The new [Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) extension fills that gap.
 
