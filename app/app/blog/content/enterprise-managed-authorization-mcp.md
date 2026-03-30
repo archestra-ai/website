@@ -22,6 +22,7 @@ Standard MCP auth already gives us a solid foundation: OAuth 2.1, PKCE, discover
 
 - the user is already signed in to the MCP client with the company's IdP
 - the company wants central policy over which MCP servers are allowed
+- the company wants visibility into app-to-app access, not just user login
 - the user should not need to run a separate auth flow for every internal server
 
 That's the hole this spec targets.
@@ -81,6 +82,8 @@ Here's what is happening:
 
 That split matters. The enterprise IdP decides whether the client should be allowed to act for the user against a particular MCP server. The MCP server still issues the actual access token used on the wire for MCP requests.
 
+There is one important prerequisite underneath all of this: both the MCP client and the MCP authorization server need an established trust relationship with the same enterprise IdP. Without that shared trust anchor, there is nothing for the ID-JAG to extend.
+
 ## What the ID-JAG Actually Does
 
 The most important object in this flow is the **ID-JAG**.
@@ -104,13 +107,34 @@ Those constraints give the MCP server enough context to answer the questions tha
 
 That makes the grant far safer than treating a generic enterprise identity token as an access token.
 
+It is also important not to confuse the ID-JAG with the final MCP access token. The IdP returns the ID-JAG from token exchange, but that object is still an assertion. The MCP authorization server validates it and only then issues the Bearer token the client uses for actual MCP calls.
+
+One subtle implementation detail: in token exchange, the ID-JAG is returned in the `access_token` field even though it is not an OAuth access token. The response uses `token_type=N_A` for exactly that reason. That field naming comes from RFC 8693, and it is easy to misread if you are debugging the flow for the first time.
+
+## How This Differs from an ID Token
+
+At a glance, an ID-JAG can look a lot like a normal OIDC ID token. Both are JWTs. Both are issued by the enterprise IdP. Both can carry user identity claims.
+
+But they have different jobs.
+
+- An **ID token** tells the client that user authentication happened.
+- An **ID-JAG** tells the MCP authorization server that this client may request access on behalf of that user for a particular MCP resource.
+
+That changes the important claims:
+
+- the ID token audience is the client itself
+- the ID-JAG audience is the MCP authorization server
+- the ID-JAG includes `client_id` and `resource` because it is about delegated API access, not just login
+
+That difference is the whole reason the extra exchange step exists. Reusing the raw ID token would not give the MCP authorization server enough context to decide whether this specific client should get access to this specific resource.
+
 ## Why Enterprises Will Care
 
 This extension is really about removing redundant consent while preserving policy boundaries.
 
 For end users, the benefit is obvious: if they already signed in with enterprise SSO, they don't need to go through another authorization loop every time they connect to an approved MCP server.
 
-For administrators, it creates a clean control point. The IdP can evaluate whether a given MCP client, acting for a given user, should be allowed to request access to a given MCP server and scope set. That means the enterprise policy engine becomes part of the MCP authorization flow instead of sitting beside it.
+For administrators, it creates a clean control point. The IdP can evaluate whether a given MCP client, acting for a given user, should be allowed to request access to a given MCP server and scope set. That means the enterprise policy engine becomes part of the MCP authorization flow instead of sitting beside it. Instead of the integration bypassing the IdP, the IdP becomes the place where access policy, MFA requirements, and enterprise rules can actually be enforced.
 
 For MCP client developers, it means fewer interactive auth interruptions. Once the client has the enterprise-issued identity assertion, it can obtain new MCP access tokens without bouncing the user back through another consent page.
 
@@ -153,6 +177,14 @@ It also fits the broader Archestra model of keeping auth layers separate:
 - **upstream credential handling** determines how Archestra authenticates to downstream MCP servers and SaaS APIs
 
 Those are related, but they are not the same problem. This extension addresses the first one cleanly.
+
+## Token Renewal Without Another Browser Round Trip
+
+One practical benefit of this model is that renewal can stay mostly non-interactive.
+
+In draft ID-JAG flows, the client can often obtain a fresh ID-JAG using an existing signed-in session artifact rather than forcing the user back through another browser consent step. Depending on the IdP and client setup, that may mean using a fresh ID token or a refresh token from the original SSO session as the input to token exchange.
+
+The practical outcome is what matters: once the enterprise login is established, the client can usually keep obtaining server-specific access without repeatedly interrupting the user.
 
 ## Requirements and Sharp Edges
 
