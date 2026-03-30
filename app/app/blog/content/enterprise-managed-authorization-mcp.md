@@ -14,6 +14,8 @@ The new [Enterprise-Managed Authorization](https://modelcontextprotocol.io/exten
 
 It gives MCP clients a standard way to take an enterprise identity assertion they already have, exchange it through the company's identity provider, and turn it into an MCP access token for a specific server. In practical terms: if your company already trusts the user and already has a policy engine, a client connecting to Archestra can use that existing trust to get access to enterprise-approved MCP gateways without prompting the user to re-authorize each one manually.
 
+> **tl;dr** Archestra [v1.2.0](https://github.com/archestra-ai/archestra/releases/tag/platform-v1.2.0) adds support for MCP Enterprise-Managed Authorization at the MCP Gateway layer, and also adds Archestra's separate enterprise-managed downstream credential flow for Agents and MCP Gateways inside the platform.
+
 _This is Part 3 of a three-part series on MCP authentication. [Part 1](/blog/mcp-authentication-guide) covers OAuth 2.1, PKCE, discovery, and client registration. [Part 2](/blog/enterprise-mcp-servers-jwks) covers JWKS validation for enterprise MCP servers._
 
 ## The Problem This Solves
