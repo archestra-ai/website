@@ -42,7 +42,7 @@ The MCP spec's flow looks like this:
 ```mermaid
 sequenceDiagram
     participant UA as Browser
-    participant C as MCP Client
+    participant C as Archestra (MCP Client)
     participant IdP as Identity Provider
     participant MAS as MCP Authorization Server
     participant MRS as MCP Resource Server
@@ -55,7 +55,7 @@ sequenceDiagram
     C->>IdP: Token Request with IdP Authorization Code
     IdP-->>C: ID Token
 
-    note over C: User is logged<br/>in to MCP Client.<br/>Client stores ID Token.
+    note over C: User is logged<br/>in to Archestra.<br/>Client stores ID Token.
 
     C->>IdP: Exchange ID Token for ID-JAG
     note over IdP: Evaluate Policy
