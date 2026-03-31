@@ -12,7 +12,7 @@ You've just installed an MCP server. Your AI assistant connects, and immediately
 
 MCP (Model Context Protocol) standardized on OAuth 2.1 for authentication. If you're building MCP clients, servers, or gateways, understanding how these pieces fit together saves hours of debugging. This post breaks down the full authentication landscape — the standards involved, how discovery works, how clients register, and where the sharp edges are.
 
-_This is Part 1 of a two-part series on MCP authentication. [Part 2](/blog/enterprise-mcp-servers-jwks) covers building enterprise MCP servers with JWKS and identity providers._
+_This is Part 1 of a three-part series on MCP authentication. [Part 2](/blog/enterprise-mcp-servers-jwks) covers building enterprise MCP servers with JWKS and identity providers. [Part 3](/blog/enterprise-managed-authorization-mcp) covers enterprise-managed authorization and ID-JAG._
 
 ## Why MCP Chose OAuth 2.1
 
@@ -237,4 +237,4 @@ If you're looking for a concrete implementation of the full auth stack described
 
 For a deeper look at the gateway's auth architecture, see the [Archestra Authentication docs](https://archestra.ai/docs/mcp-authentication).
 
-In Part 2 of this series, we go deeper into one specific pattern: [building MCP servers that validate JWTs from enterprise identity providers using JWKS](/blog/enterprise-mcp-servers-jwks).
+In Part 2 of this series, we go deeper into one specific pattern: [building MCP servers that validate JWTs from enterprise identity providers using JWKS](/blog/enterprise-mcp-servers-jwks). In Part 3, we cover [enterprise-managed authorization and ID-JAG](/blog/enterprise-managed-authorization-mcp).
