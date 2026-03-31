@@ -150,18 +150,6 @@ That changes the important claims:
 
 That difference is the whole reason the extra exchange step exists. Reusing the raw ID token would not give the MCP authorization server enough context to decide whether Archestra should get access to this specific resource.
 
-## Why Enterprises Will Care
-
-This extension is really about removing redundant consent while preserving policy boundaries.
-
-For end users, the benefit is obvious: if they already signed in with enterprise SSO, they don't need to go through another authorization loop every time they connect to an approved MCP server.
-
-For administrators, it creates a clean control point. The identity provider can evaluate whether Archestra, acting for a given user, should be allowed to request access to a given MCP server and scope set. That means the enterprise policy engine becomes part of the MCP authorization flow instead of sitting beside it. Instead of the integration bypassing the identity provider, the identity provider becomes the place where access policy, MFA requirements, and enterprise rules can actually be enforced.
-
-For teams deploying Archestra, it means fewer interactive auth interruptions. Once Archestra has the enterprise-issued identity assertion, it can obtain new MCP access tokens without bouncing the user back through another consent page.
-
-This matters most for clients that switch across many tools and servers during a session, such as IDEs, desktop assistants, and internal chat applications.
-
 ## How This Differs from the JWKS Pattern
 
 In [Part 2](/blog/enterprise-mcp-servers-jwks), we looked at a different enterprise pattern: the MCP server directly validates JWTs from the organization's identity provider using JWKS.
@@ -211,3 +199,15 @@ A few details are easy to get wrong:
 - policy evaluation lives at the identity provider, but token issuance still lives at the MCP authorization server
 
 If any of those are misaligned, the whole promise of "silent enterprise auth" breaks down into confusing grant failures.
+
+## Why Enterprises Will Care
+
+This extension is really about removing redundant consent while preserving policy boundaries.
+
+For end users, the benefit is obvious: if they already signed in with enterprise SSO, they don't need to go through another authorization loop every time they connect to an approved MCP server.
+
+For administrators, it creates a clean control point. The identity provider can evaluate whether Archestra, acting for a given user, should be allowed to request access to a given MCP server and scope set. That means the enterprise policy engine becomes part of the MCP authorization flow instead of sitting beside it. Instead of the integration bypassing the identity provider, the identity provider becomes the place where access policy, MFA requirements, and enterprise rules can actually be enforced.
+
+For teams deploying Archestra, it means fewer interactive auth interruptions. Once Archestra has the enterprise-issued identity assertion, it can obtain new MCP access tokens without bouncing the user back through another consent page.
+
+This matters most for clients that switch across many tools and servers during a session, such as IDEs, desktop assistants, and internal chat applications.
