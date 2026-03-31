@@ -74,9 +74,9 @@ sequenceDiagram
 
 Here's what is happening:
 
-1. The user signs in to a client such as Claude Desktop, Cursor, or an internal chat app through the enterprise identity provider.
-2. That client receives an enterprise identity assertion or other subject token the identity provider is willing to exchange.
-3. The client asks the identity provider to exchange that identity assertion for a new JWT-based grant targeted at a specific MCP server or Archestra gateway.
+1. The user signs in to Archestra through the enterprise identity provider.
+2. Archestra receives an enterprise identity assertion or other subject token the identity provider is willing to exchange.
+3. Archestra asks the identity provider to exchange that identity assertion for a new JWT-based grant targeted at a specific MCP server or Archestra gateway.
 4. The identity provider evaluates enterprise policy and returns an **Identity Assertion JWT Authorization Grant**, or **ID-JAG**.
 5. The client sends that ID-JAG to the MCP server's authorization server using the JWT bearer grant. In Archestra's case, that is the gateway token endpoint.
 6. The MCP authorization server validates the ID-JAG and issues a normal MCP access token.
