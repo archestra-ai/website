@@ -76,13 +76,13 @@ Here's what is happening:
 
 1. The user signs in to Archestra through the enterprise identity provider.
 2. Archestra receives an enterprise identity assertion or other subject token the identity provider is willing to exchange.
-3. Archestra asks the identity provider to exchange that identity assertion for a new JWT-based grant targeted at a specific MCP server or Archestra gateway.
+3. Archestra asks the identity provider to exchange that identity assertion for a new JWT-based grant targeted at a specific MCP server or Archestra MCP Gateway.
 4. The identity provider evaluates enterprise policy and returns an **Identity Assertion JWT Authorization Grant**, or **ID-JAG**.
 5. Archestra sends that ID-JAG to the MCP server's authorization server using the JWT bearer grant. In Archestra's case, that is the gateway token endpoint.
 6. The MCP authorization server validates the ID-JAG and issues a normal MCP access token.
 7. Archestra uses that access token to call the MCP server.
 
-That split matters. The identity provider is making a policy decision. The MCP authorization server, or Archestra gateway, is still the component that issues the access token used on actual MCP requests.
+That split matters. The identity provider is making a policy decision. The MCP authorization server, or Archestra MCP Gateway token endpoint, is still the component that issues the access token used on actual MCP requests.
 
 There is one important prerequisite underneath all of this: both Archestra and the MCP authorization server need an established trust relationship with the same enterprise identity provider. Without that shared trust anchor, there is nothing for the ID-JAG to extend.
 
