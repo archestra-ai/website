@@ -62,7 +62,7 @@
     "@vitejs/plugin-react": "^5.2.0",
     "csv-parse": "^6.2.1",
     "jsdom": "^29.0.1",
-    "knip": "^6.0.4",
+    "knip": "^6.0.5",
     "postcss": "^8.5",
     "postcss-load-config": "^6.0.1",
     "prettier": "^3.8.1",
