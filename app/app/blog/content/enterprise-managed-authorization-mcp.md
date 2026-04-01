@@ -8,15 +8,15 @@ image: '/blog/2026-03-30-enterprise-managed-authorization-hero.jpg'
 
 ## You Can't Ask HR to Paste API Keys
 
-You cannot roll MCP out to a big company by telling folks in HR, legal, or finance to open ServiceNow, generate API keys, and paste them into config files. They are not going to do that. More importantly, many of them should never have to know what any of that means. They want to open Claude, Cursor, or an internal chat tool and have their approved tools just work.
+You cannot roll MCP out in a large enterprise by telling folks in HR, legal, or finance to open ServiceNow, generate API keys, and paste them into config files. They want to open Claude, Cursor, or Archestra, and have their approved tools just work.
 
 That is the problem this post is about.
 
-We have been working through exactly that problem while rolling Archestra into a large enterprise environment. The goal was simple: no extra keys, no separate OAuth consent screen for every internal MCP server, and no weird setup steps for non-technical users. At the same time, the identity team still wanted the usual enterprise guarantees: SSO, central policy, auditability, and a clean way to decide which servers each app is allowed to reach.
+We've' been working through exactly that problem while rolling Archestra into a large enterprise environment. The goal was simple: no extra keys, no separate OAuth consent screen for every internal MCP server, and no weird setup steps for non-technical users. At the same time, the identity team still wanted the usual enterprise guarantees: SSO, central policy, auditability, and a clean way to decide which servers each app is allowed to reach.
 
 The new [Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) extension is the first MCP auth pattern I have seen that fits that reality cleanly. It lets an MCP client reuse the same enterprise identity provider already handling SSO, get an enterprise-approved grant for a specific MCP server, and then exchange that grant for a normal MCP access token.
 
-This post is a little more technical than the intro makes it sound. I will start with the human problem, then walk through the flow step by step, then explain the part that is easiest to mix up the first time you read the spec: the difference between an ID token, an ID-JAG, and the final MCP access token. If you only care about the practical takeaway, skip to [How This Differs from the JWKS Pattern](#how-this-differs-from-the-jwks-pattern) or [How Archestra Fits Into This](#how-archestra-fits-into-this).
+This post is a little more technical than the intro makes it sound. I'll start with the human problem, then walk through the flow step by step, then explain the part that is easiest to mix up the first time you read the spec: the difference between an ID token, an ID-JAG, and the final MCP access token. If you only care about the practical takeaway, skip to [How This Differs from the JWKS Pattern](#how-this-differs-from-the-jwks-pattern) or [How Archestra Fits Into This](#how-archestra-fits-into-this).
 
 > **tl;dr** If your company already trusts a user through enterprise SSO, enterprise-managed authorization gives you a standard way to turn that trust into access to approved MCP servers without making the user re-authorize each server by hand.
 
@@ -34,7 +34,7 @@ In the real world, the user is often already signed in to the MCP client through
 
 That is the hole this extension fills.
 
-It does **not** say "just send the enterprise identity token straight to the MCP server." Instead, it adds an intermediate grant that is specific to the target server and specific to the requesting MCP client. The enterprise identity provider stays in charge of the policy decision, while the MCP authorization server still stays in charge of issuing the actual access token.
+It does **not** say "just send the enterprise identity token straight to the MCP server in this flow" ([see the comparison with JWKS](#how-this-differs-from-the-jwks-pattern)). Instead, it adds an intermediate grant that is specific to the target server and specific to the requesting MCP client. The enterprise identity provider stays in charge of the policy decision, while the MCP authorization server still stays in charge of issuing the actual access token.
 
 ## The Flow, Step by Step
 
