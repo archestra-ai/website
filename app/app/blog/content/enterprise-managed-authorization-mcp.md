@@ -2,7 +2,7 @@
 title: 'Enterprise-Managed Authorization for MCP'
 date: '2026-03-30'
 author: 'Joey Orlando'
-description: 'How enterprise SSO, token exchange, and ID-JAG let Archestra get server access without a separate per-server authorization flow.'
+description: 'Centralized MCP server access control through enterprise identity providers.'
 image: '/blog/2026-03-30-enterprise-managed-authorization-hero.jpg'
 ---
 
