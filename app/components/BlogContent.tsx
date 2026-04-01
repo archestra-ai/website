@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
+import rehypeSlug from 'rehype-slug';
 import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
 
@@ -20,7 +21,7 @@ export default function BlogContent({ content }: BlogContentProps) {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm, remarkBreaks]}
-      rehypePlugins={[rehypeHighlight, rehypeRaw]}
+      rehypePlugins={[rehypeHighlight, rehypeRaw, rehypeSlug]}
       components={{
         p: ({ node, ...props }) => <p {...props} className="text-lg text-gray-700 leading-relaxed mb-6" />,
         h1: ({ node, ...props }) => <h1 {...props} className="text-3xl font-medium text-gray-900 mb-6 mt-10" />,
