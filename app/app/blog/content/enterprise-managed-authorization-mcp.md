@@ -3,10 +3,10 @@ title: 'Enterprise-Managed Authorization for MCP'
 date: '2026-03-30'
 author: 'Joey Orlando'
 description: 'Centralized MCP server access control through enterprise identity providers.'
-image: '/blog/2026-03-30-enterprise-managed-authorization-hero.jpg'
+image: '/blog/2026-03-30-enterprise-managed-authorization-hero.png'
 ---
 
-## You Can't Ask HR to Paste API Keys
+## You Can't Ask HR to Debug OAuth
 
 You can't roll MCP out in a large enterprise by telling folks in HR, legal, or finance to open ServiceNow, generate API keys, and paste them into config files. They want to open their AI app-of-choice, and have their approved tools just work.
 
