@@ -8,7 +8,7 @@ image: '/blog/2026-03-30-enterprise-managed-authorization-hero.jpg'
 
 ## You Can't Ask HR to Paste API Keys
 
-You cannot roll MCP out to a big company by telling people in HR, legal, or finance to open ServiceNow, generate API keys, and paste them into config files. They will not do it, and they should not have to. They want to open Claude, Cursor, or an internal chat tool and have their approved tools just work.
+You cannot roll MCP out to a big company by telling folks in HR, legal, or finance to open ServiceNow, generate API keys, and paste them into config files. They are not going to do that. More importantly, a lot of them would have no idea what you are even asking them to do, which is exactly how it should be. They want to open Claude, Cursor, or an internal chat tool and have their approved tools just work.
 
 That is the problem this post is about.
 
