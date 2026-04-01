@@ -19,6 +19,8 @@ The new [Enterprise-Managed Authorization](https://modelcontextprotocol.io/exten
 This post is a little more technical than the intro makes it sound. I'll start with the human problem, then walk through the flow step by step, then get to the part that's easiest to mix up the first time you read the spec: the difference between an ID token, an ID-JAG, and the final MCP access token. If you only care about the practical takeaway, skip to [How This Differs from the JWKS Pattern](#how-this-differs-from-the-jwks-pattern) or [How Archestra Fits Into This](#how-archestra-fits-into-this).
 
 > **tl;dr** If your company already trusts a user through enterprise SSO, enterprise-managed authorization gives you a standard way to turn that trust into access to approved MCP servers without making the user re-authorize each server by hand.
+>
+> Archestra supports this flow as of [v1.2.0](https://github.com/archestra-ai/archestra/releases/tag/platform-v1.2.0).
 
 _This is Part 3 of a three-part series on MCP authentication. [Part 1](/blog/mcp-authentication-guide) covers OAuth 2.1, PKCE, discovery, and client registration. [Part 2](/blog/enterprise-mcp-servers-jwks) covers JWKS validation for enterprise MCP servers._
 
