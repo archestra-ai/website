@@ -16,7 +16,7 @@ We have been working through exactly that problem while rolling Archestra into a
 
 The new [Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) extension is the first MCP auth pattern I have seen that fits that reality cleanly. It lets an MCP client reuse the same enterprise identity provider already handling SSO, get an enterprise-approved grant for a specific MCP server, and then exchange that grant for a normal MCP access token.
 
-This post is a little more technical than the intro makes it sound. I will start with the human problem, then walk through the flow step by step, then explain the part that confused me the first time I read the spec: the difference between an ID token, an ID-JAG, and the final MCP access token. If you only care about the practical takeaway, skip to the sections on how this differs from JWKS and how Archestra fits into the flow.
+This post is a little more technical than the intro makes it sound. I will start with the human problem, then walk through the flow step by step, then explain the part that confused me the first time I read the spec: the difference between an ID token, an ID-JAG, and the final MCP access token. If you only care about the practical takeaway, skip to [How This Differs from the JWKS Pattern](#how-this-differs-from-the-jwks-pattern) or [How Archestra Fits Into This](#how-archestra-fits-into-this).
 
 > **tl;dr** If your company already trusts a user through enterprise SSO, enterprise-managed authorization gives you a standard way to turn that trust into access to approved MCP servers without making the user re-authorize each server by hand.
 
