@@ -16,8 +16,6 @@ We've been working through exactly that problem while rolling Archestra into a l
 
 The new [Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) extension is the first MCP auth pattern I've seen that fits that reality cleanly. It lets an MCP client (ex. Archestra) reuse the same enterprise identity provider already handling SSO, get an enterprise-approved grant for a specific MCP server, and then exchange that grant for a normal MCP access token.
 
-When I say "Archestra MCP Gateway" in this post, I mean the Archestra layer that sits between MCP clients and downstream MCP servers or APIs, handles auth, and routes tool calls.
-
 This post is a little more technical than the intro makes it sound. I'll start with the human problem, then walk through the flow step by step, then get to the part that's easiest to mix up the first time you read the spec: the difference between an ID token, an ID-JAG, and the final MCP access token. If you only care about the practical takeaway, skip to [How This Differs from the JWKS Pattern](#how-this-differs-from-the-jwks-pattern) or [How Archestra Fits Into This](#how-archestra-fits-into-this).
 
 > **tl;dr** If your company already trusts a user through enterprise SSO, enterprise-managed authorization gives you a standard way to turn that trust into access to approved MCP servers without making the user re-authorize each server by hand.
@@ -45,6 +43,8 @@ The extension is built on three layers:
 1. **Single sign-on** to Archestra via OpenID Connect or SAML
 2. **[Token Exchange (RFC 8693)](https://datatracker.ietf.org/doc/html/rfc8693)** at the enterprise identity provider
 3. **[JWT Authorization Grant (RFC 7523)](https://datatracker.ietf.org/doc/html/rfc7523)** at the MCP server's authorization server
+
+When I say "Archestra MCP Gateway" in this section, I mean the Archestra layer that sits between MCP clients and downstream MCP servers or APIs, handles auth, and routes tool calls.
 
 The MCP spec's flow looks like this:
 
