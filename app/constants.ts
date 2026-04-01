@@ -49,7 +49,7 @@ const ILDAR = {
 const JOEY = {
   '@type': 'Person',
   name: 'Joey Orlando',
-  jobTitle: 'Founding Engineer',
+  jobTitle: 'Co-Founder',
   worksFor: {
     '@type': 'Organization',
     name: COMPANY_NAME,
@@ -60,8 +60,7 @@ const JOEY = {
     addressLocality: 'Montréal',
     addressCountry: 'Canada',
   },
-  description:
-    'Experienced software engineer/leader with 10+ years in full-stack development and expertise in Python, TypeScript, Clojure, Go, and cloud infrastructure.',
+  description: 'Second-time founder. Experienced engineer. Harvard/McGill biochemist in past life.',
 };
 const DOMINIK = {
   '@type': 'Person',
@@ -78,22 +77,6 @@ const DOMINIK = {
     addressCountry: 'Poland',
   },
   description: 'Software engineer with 10+ years of experience.',
-};
-const ANNA = {
-  '@type': 'Person',
-  name: 'Anna Shishliakova',
-  jobTitle: 'Software Engineer',
-  worksFor: {
-    '@type': 'Organization',
-    name: COMPANY_NAME,
-  },
-  sameAs: 'https://linkedin.com/in/ashlkv/',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Berlin',
-    addressCountry: 'Germany',
-  },
-  description: 'Fullstack engineer with a focus on interfaces and 10+ years of experience.',
 };
 
 const INNOKENTII = {
@@ -119,7 +102,6 @@ const PEOPLE = {
   ildar: ILDAR,
   joey: JOEY,
   dominik: DOMINIK,
-  anna: ANNA,
   innokentii: INNOKENTII,
 };
 
