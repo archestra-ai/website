@@ -8,11 +8,11 @@ image: '/blog/2026-03-30-enterprise-managed-authorization-hero.jpg'
 
 ## You Can't Ask HR to Paste API Keys
 
-You can't roll MCP out in a large enterprise by telling folks in HR, legal, or finance to open ServiceNow, generate API keys, and paste them into config files. They want to open Claude, Cursor, or Archestra, and have their approved tools just work.
+You can't roll MCP out in a large enterprise by telling folks in HR, legal, or finance to open ServiceNow, generate API keys, and paste them into config files. They want to open their AI app-of-choice, and have their approved tools just work.
 
 That's the problem this post is about.
 
-We've been working through exactly that problem while rolling Archestra into a large enterprise environment. The goal was simple: no extra keys, no separate OAuth consent screen for every internal MCP server, and no weird setup steps for non-technical users. At the same time, the identity team still wanted the usual enterprise guarantees: SSO, central policy, auditability, and a clean way to decide which servers each app is allowed to reach.
+We've been working through exactly this problem while recently deploying Archestra into a large enterprise environment. The goal was simple: no extra keys, no separate OAuth consent screen for every internal MCP server, and no weird setup steps for non-technical users. At the same time, the identity team still wanted the usual enterprise guarantees: SSO, central policy, auditability, and a clean way to decide which servers each app is allowed to reach.
 
 The new [Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) extension is the first MCP auth pattern I've seen that fits that reality cleanly. It lets an MCP client (ex. Archestra) reuse the same enterprise identity provider already handling SSO, get an enterprise-approved grant for a specific MCP server, and then exchange that grant for a normal MCP access token.
 
@@ -41,8 +41,8 @@ It **doesn't** say "just send the enterprise identity token straight to the MCP 
 The extension is built on three layers:
 
 1. **Single sign-on** to Archestra via OpenID Connect or SAML
-2. **[Token Exchange (RFC 8693)](https://datatracker.ietf.org/doc/html/rfc8693)** at the enterprise identity provider
-3. **[JWT Authorization Grant (RFC 7523)](https://datatracker.ietf.org/doc/html/rfc7523)** at the MCP server's authorization server
+2. **Token Exchange** ([RFC 8693](https://datatracker.ietf.org/doc/html/rfc8693)) at the enterprise identity provider
+3. **JWT Authorization Grant** ([RFC 7523](https://datatracker.ietf.org/doc/html/rfc7523)) at the MCP server's authorization server
 
 When I say "Archestra MCP Gateway" in this section, I mean the Archestra layer that sits between MCP clients and downstream MCP servers or APIs, handles auth, and routes tool calls.
 
@@ -140,7 +140,7 @@ That's much safer than pretending a generic enterprise identity token is already
 
 It's also important not to confuse the ID-JAG with the final MCP access token. The IdP returns the ID-JAG from token exchange, but that object is still an assertion. The MCP authorization server validates it and only then issues the Bearer token Archestra uses for actual MCP calls.
 
-One subtle implementation detail: in token exchange, the ID-JAG is returned in the `access_token` field even though it is not an OAuth access token. The response uses `token_type=N_A` for exactly that reason. That naming comes from RFC 8693, not from the MCP spec, but it's still easy to misread when you're debugging the flow for the first time.
+One subtle implementation detail: in token exchange, the ID-JAG is returned in the `access_token` field even though it is not an OAuth access token. The response uses `token_type=N_A` for exactly that reason. That naming comes from [RFC 8693](https://datatracker.ietf.org/doc/html/rfc8693), not from the MCP spec, but it's still easy to misread when you're debugging the flow for the first time.
 
 ## How This Differs from an ID Token
 
@@ -199,7 +199,7 @@ The two features complement each other, but they're not the same protocol step.
 
 Like most auth specs, this looks cleaner on paper than it does in deployment.
 
-The biggest requirement is identity provider support. SSO alone is not enough. The enterprise provider also needs to support RFC 8693 token exchange and issue a signed JWT grant with the claims the MCP authorization server expects.
+The biggest requirement is identity provider support. SSO alone is not enough. The enterprise provider also needs to support [RFC 8693](https://datatracker.ietf.org/doc/html/rfc8693) token exchange and issue a signed JWT grant with the claims the MCP authorization server expects.
 
 A few details are easy to get wrong:
 
