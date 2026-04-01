@@ -59,7 +59,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19",
     "@types/swagger-ui-react": "^5.18.0",
-    "@vitejs/plugin-react": "^5.2.0",
+    "@vitejs/plugin-react": "^6.0.1",
     "csv-parse": "^6.2.1",
     "jsdom": "^29.0.1",
     "knip": "^6.0.5",
