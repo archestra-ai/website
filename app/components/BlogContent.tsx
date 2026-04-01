@@ -1,6 +1,8 @@
 'use client';
 
+import { Link as LinkIcon } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import type React from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
@@ -18,15 +20,91 @@ interface BlogContentProps {
 }
 
 export default function BlogContent({ content }: BlogContentProps) {
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    window.history.pushState(null, '', `#${id}`);
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    navigator.clipboard.writeText(`${window.location.origin}${window.location.pathname}#${id}`);
+
+    element.classList.add('bg-yellow-100', 'transition-all', 'duration-300');
+    setTimeout(() => {
+      element.classList.remove('bg-yellow-100');
+    }, 2000);
+  };
+
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm, remarkBreaks]}
       rehypePlugins={[rehypeHighlight, rehypeRaw, rehypeSlug]}
       components={{
         p: ({ node, ...props }) => <p {...props} className="text-lg text-gray-700 leading-relaxed mb-6" />,
-        h1: ({ node, ...props }) => <h1 {...props} className="text-3xl font-medium text-gray-900 mb-6 mt-10" />,
-        h2: ({ node, ...props }) => <h2 {...props} className="text-2xl font-medium text-gray-900 mb-4 mt-8" />,
-        h3: ({ node, ...props }) => <h3 {...props} className="text-xl font-medium text-gray-900 mb-3 mt-6" />,
+        h1: ({ node, children, ...props }) => {
+          const id = props.id || '';
+          return (
+            <h1
+              {...props}
+              className="text-3xl font-medium text-gray-900 mb-6 mt-10 group relative scroll-mt-20 transition-colors"
+            >
+              {id ? (
+                <a
+                  href={`#${id}`}
+                  className="absolute -left-8 top-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                  onClick={(e) => handleAnchorClick(e, id)}
+                  title="Copy link to section"
+                >
+                  <LinkIcon className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                </a>
+              ) : null}
+              {children}
+            </h1>
+          );
+        },
+        h2: ({ node, children, ...props }) => {
+          const id = props.id || '';
+          return (
+            <h2
+              {...props}
+              className="text-2xl font-medium text-gray-900 mb-4 mt-8 group relative scroll-mt-20 transition-colors"
+            >
+              {id ? (
+                <a
+                  href={`#${id}`}
+                  className="absolute -left-8 top-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                  onClick={(e) => handleAnchorClick(e, id)}
+                  title="Copy link to section"
+                >
+                  <LinkIcon className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                </a>
+              ) : null}
+              {children}
+            </h2>
+          );
+        },
+        h3: ({ node, children, ...props }) => {
+          const id = props.id || '';
+          return (
+            <h3
+              {...props}
+              className="text-xl font-medium text-gray-900 mb-3 mt-6 group relative scroll-mt-20 transition-colors"
+            >
+              {id ? (
+                <a
+                  href={`#${id}`}
+                  className="absolute -left-8 top-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                  onClick={(e) => handleAnchorClick(e, id)}
+                  title="Copy link to section"
+                >
+                  <LinkIcon className="h-4 w-4 text-gray-400 hover:text-gray-600" />
+                </a>
+              ) : null}
+              {children}
+            </h3>
+          );
+        },
         ul: ({ node, ...props }) => <ul {...props} className="list-disc list-inside mb-6 space-y-2 pl-4" />,
         ol: ({ node, ...props }) => <ol {...props} className="list-decimal list-inside mb-6 space-y-2 pl-4" />,
         li: ({ node, ...props }) => <li {...props} className="text-lg text-gray-700 leading-relaxed" />,
