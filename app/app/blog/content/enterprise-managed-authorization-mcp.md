@@ -8,7 +8,7 @@ image: '/blog/2026-03-30-enterprise-managed-authorization-hero.jpg'
 
 ## You Can't Ask HR to Paste API Keys
 
-You cannot roll MCP out to a big company by telling folks in HR, legal, or finance to open ServiceNow, generate API keys, and paste them into config files. They are not going to do that. More importantly, a lot of them would have no idea what you are even asking them to do, which is exactly how it should be. They want to open Claude, Cursor, or an internal chat tool and have their approved tools just work.
+You cannot roll MCP out to a big company by telling folks in HR, legal, or finance to open ServiceNow, generate API keys, and paste them into config files. They are not going to do that. More importantly, many of them should never have to know what any of that means. They want to open Claude, Cursor, or an internal chat tool and have their approved tools just work.
 
 That is the problem this post is about.
 
@@ -16,7 +16,7 @@ We have been working through exactly that problem while rolling Archestra into a
 
 The new [Enterprise-Managed Authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) extension is the first MCP auth pattern I have seen that fits that reality cleanly. It lets an MCP client reuse the same enterprise identity provider already handling SSO, get an enterprise-approved grant for a specific MCP server, and then exchange that grant for a normal MCP access token.
 
-This post is a little more technical than the intro makes it sound. I will start with the human problem, then walk through the flow step by step, then explain the part that confused me the first time I read the spec: the difference between an ID token, an ID-JAG, and the final MCP access token. If you only care about the practical takeaway, skip to [How This Differs from the JWKS Pattern](#how-this-differs-from-the-jwks-pattern) or [How Archestra Fits Into This](#how-archestra-fits-into-this).
+This post is a little more technical than the intro makes it sound. I will start with the human problem, then walk through the flow step by step, then explain the part that is easiest to mix up the first time you read the spec: the difference between an ID token, an ID-JAG, and the final MCP access token. If you only care about the practical takeaway, skip to [How This Differs from the JWKS Pattern](#how-this-differs-from-the-jwks-pattern) or [How Archestra Fits Into This](#how-archestra-fits-into-this).
 
 > **tl;dr** If your company already trusts a user through enterprise SSO, enterprise-managed authorization gives you a standard way to turn that trust into access to approved MCP servers without making the user re-authorize each server by hand.
 
@@ -34,7 +34,7 @@ In the real world, the user is often already signed in to the MCP client through
 
 That is the hole this extension fills.
 
-It does **not** say "just send the enterprise identity token straight to the MCP server and hope for the best." That would be sloppy. Instead, it adds an intermediate grant that is specific to the target server and specific to the requesting MCP client. The enterprise identity provider stays in charge of the policy decision, while the MCP authorization server still stays in charge of issuing the actual access token.
+It does **not** say "just send the enterprise identity token straight to the MCP server." Instead, it adds an intermediate grant that is specific to the target server and specific to the requesting MCP client. The enterprise identity provider stays in charge of the policy decision, while the MCP authorization server still stays in charge of issuing the actual access token.
 
 ## The Flow, Step by Step
 
@@ -93,7 +93,7 @@ There is also one hard prerequisite underneath all of this: both Archestra and t
 
 ## Authorization Server vs Resource Server
 
-This part sounds more abstract than it is because OAuth terminology always sounds more abstract than it needs to.
+One bit of OAuth language can make this flow feel more abstract than it really is: the distinction between the **authorization server** and the **resource server**.
 
 In this flow, the **authorization server** is the component that validates the grant and issues the final access token. The **resource server** is the component that receives that access token on actual MCP requests and returns tools, resources, or other MCP responses.
 
@@ -138,7 +138,7 @@ That is much safer than pretending a generic enterprise identity token is alread
 
 It is also important not to confuse the ID-JAG with the final MCP access token. The IdP returns the ID-JAG from token exchange, but that object is still an assertion. The MCP authorization server validates it and only then issues the Bearer token Archestra uses for actual MCP calls.
 
-One detail I think is genuinely confusing in the current standards stack: in token exchange, the ID-JAG is returned in the `access_token` field even though it is not an OAuth access token. The response uses `token_type=N_A` for exactly that reason. That naming comes from RFC 8693, not from the MCP spec, but it is still an easy footgun when you are debugging the flow for the first time.
+One subtle implementation detail: in token exchange, the ID-JAG is returned in the `access_token` field even though it is not an OAuth access token. The response uses `token_type=N_A` for exactly that reason. That naming comes from RFC 8693, not from the MCP spec, but it is still easy to misread when you are debugging the flow for the first time.
 
 ## How This Differs from an ID Token
 
@@ -155,7 +155,7 @@ That changes the important claims:
 - the ID-JAG audience is the MCP authorization server
 - the ID-JAG includes `client_id` and `resource` because it is about delegated API access, not just login
 
-That difference is the whole reason the extra exchange step exists. Reusing the raw ID token would not give the MCP authorization server enough context to decide whether Archestra should get access to this specific resource. If you skip that distinction, you end up with a design that is convenient right up until you need real policy boundaries.
+That difference is the whole reason the extra exchange step exists. Reusing the raw ID token would not give the MCP authorization server enough context to decide whether Archestra should get access to this specific resource.
 
 ## How This Differs from the JWKS Pattern
 
@@ -180,7 +180,7 @@ If you think of JWKS as "validate the enterprise token," this new extension is "
 
 Archestra supports this at the MCP Gateway layer in [v1.2.0](https://github.com/archestra-ai/archestra/releases/tag/platform-v1.2.0).
 
-That matters because the gateway is the place where the messy enterprise reality actually shows up. Users are already inside the company identity system. Security teams want central policy. Product teams want zero friction. And nobody wants a new consent screen every time a client touches a different internal MCP server.
+That matters because the gateway is where these enterprise requirements meet the MCP protocol. Users are already inside the company identity system. Security teams want central policy. Product teams want low-friction access. And nobody wants a new consent screen every time a client touches a different internal MCP server.
 
 When an enterprise identity provider is configured in Archestra, the MCP Gateway can participate in the second half of this spec-defined flow: it accepts a valid ID-JAG at the token endpoint, validates it against the configured IdP, and returns an MCP access token bound to the target gateway resource.
 
@@ -207,11 +207,11 @@ A few details are easy to get wrong:
 - the ID-JAG is not itself the final MCP access token
 - policy evaluation lives at the identity provider, but token issuance still lives at the MCP authorization server
 
-If any of those are misaligned, the promised "silent enterprise auth" turns into confusing grant failures and a lot of head-scratching in logs.
+If any of those are misaligned, the promised "silent enterprise auth" turns into confusing grant failures.
 
 ## Why Enterprises Will Care
 
-This extension matters because it removes the dumbest part of enterprise MCP rollouts: asking already-authenticated users to keep proving they are allowed to use internal tools the company already approved for them.
+This extension matters because it removes one of the main sources of friction in enterprise MCP rollouts: asking already-authenticated users to go through another authorization step for internal tools the company already approved for them.
 
 For end users, the benefit is obvious. If they already signed in with enterprise SSO, they do not need another authorization loop every time they connect to an approved MCP server.
 
@@ -219,4 +219,4 @@ For administrators, it creates a clean control point. The identity provider can 
 
 For teams deploying Archestra, it means fewer interactive auth interruptions. Once Archestra has the enterprise-issued identity assertion, it can obtain new MCP access tokens without bouncing the user back through another consent page.
 
-This matters most for clients that switch across many tools and servers during a session, such as IDEs, desktop assistants, and internal chat applications. That is the real payoff: the employee sees one sign-in, the security team keeps control, and the MCP server still gets its own properly scoped token instead of some enterprise JWT that was never meant to be used as a direct bearer token.
+This matters most for clients that switch across many tools and servers during a session, such as IDEs, desktop assistants, and internal chat applications. The end result is a cleaner separation of responsibilities: the employee sees one sign-in, the security team keeps control, and the MCP server still gets its own properly scoped token instead of a generic enterprise JWT being used as a direct bearer token.
