@@ -190,6 +190,8 @@ When an enterprise identity provider is configured in Archestra, the MCP Gateway
 
 There is a separate but related feature in the platform: enterprise-managed downstream credentials for **Agents** and **MCP Gateways**. In that flow, Archestra already knows the user, resolves or refreshes a linked enterprise token, exchanges it server-side, and brokers the resulting downstream credential to an upstream MCP server or SaaS API at tool-call time.
 
+For external MCP clients such as Cursor, the practical setup today is often simpler than the full spec diagram makes it look. The client usually authenticates to Archestra with standard MCP OAuth 2.1, or in some cases a personal Archestra bearer token. Archestra then handles the enterprise-managed brokerage step behind the gateway when it needs a downstream GitHub, Jira, or other SaaS credential for that specific user.
+
 The distinction is simple:
 
 - **Gateway enterprise-managed authorization** is about whether Archestra may obtain an MCP access token for an Archestra MCP Gateway
