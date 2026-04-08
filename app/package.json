@@ -47,11 +47,11 @@
     "tailwind-merge": "^3.4.1",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^4.3.6",
-    "zod-to-json-schema": "^3.25.1"
+    "zod-to-json-schema": "^3.25.1",
+    "@octokit/rest": "^22.0.1"
   },
   "devDependencies": {
     "@anthropic-ai/mcpb": "^2.1.2",
-    "@octokit/rest": "^22.0.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
