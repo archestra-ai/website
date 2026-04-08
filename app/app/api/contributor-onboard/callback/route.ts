@@ -55,8 +55,16 @@ async function ensureForkExists(botOctokit: Octokit): Promise<string> {
     await botOctokit.repos.get({ owner: forkOwner, repo: TARGET_REPO });
   } catch {
     await botOctokit.repos.createFork({ owner: TARGET_OWNER, repo: TARGET_REPO });
-    // Wait for fork to be ready
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+
+    for (let i = 0; i < 10; i++) {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      try {
+        await botOctokit.repos.get({ owner: forkOwner, repo: TARGET_REPO });
+        break;
+      } catch {
+        if (i === 9) throw new Error('Fork creation timed out');
+      }
+    }
   }
 
   return forkOwner;
@@ -91,39 +99,9 @@ async function createContributorPR(botOctokit: Octokit, username: string, userId
     ref: `heads/${TARGET_BRANCH}`,
   });
 
-  // Update fork's main to match upstream
-  try {
-    await botOctokit.git.updateRef({
-      owner: forkOwner,
-      repo: TARGET_REPO,
-      ref: `heads/${TARGET_BRANCH}`,
-      sha: upstreamRef.object.sha,
-      force: true,
-    });
-  } catch {
-    // Fork might not have main yet, create it
-    await botOctokit.git.createRef({
-      owner: forkOwner,
-      repo: TARGET_REPO,
-      ref: `refs/heads/${TARGET_BRANCH}`,
-      sha: upstreamRef.object.sha,
-    });
-  }
+  const branchName = `contributor/${username}-${Date.now()}`;
 
-  const branchName = `contributor/${username}`;
-
-  // Delete branch on fork if it exists
-  try {
-    await botOctokit.git.deleteRef({
-      owner: forkOwner,
-      repo: TARGET_REPO,
-      ref: `heads/${branchName}`,
-    });
-  } catch {
-    // Doesn't exist, fine
-  }
-
-  // Create branch on fork
+  // Create branch on fork directly from upstream SHA (no need to sync fork's main)
   await botOctokit.git.createRef({
     owner: forkOwner,
     repo: TARGET_REPO,
@@ -176,8 +154,10 @@ async function createContributorPR(botOctokit: Octokit, username: string, userId
 
 export async function GET(request: NextRequest) {
   const code = request.nextUrl.searchParams.get('code');
+  const state = request.nextUrl.searchParams.get('state');
+  const storedState = request.cookies.get('oauth_state')?.value;
 
-  if (!code) {
+  if (!code || !state || !storedState || state !== storedState) {
     return NextResponse.redirect(`${BASE_URL}/contributor-onboard?error=missing_code`);
   }
 
@@ -188,17 +168,17 @@ export async function GET(request: NextRequest) {
     const botOctokit = new Octokit({ auth: GITHUB_BOT_TOKEN });
     const result = await createContributorPR(botOctokit, user.login, user.id);
 
-    if (result.alreadyExists) {
-      return NextResponse.redirect(
-        `${BASE_URL}/contributor-onboard?success=true&username=${user.login}`
-      );
-    }
+    const redirectUrl = result.alreadyExists
+      ? `${BASE_URL}/contributor-onboard?success=true&username=${user.login}`
+      : `${BASE_URL}/contributor-onboard?success=true&username=${user.login}&pr=${result.prNumber}`;
 
-    return NextResponse.redirect(
-      `${BASE_URL}/contributor-onboard?success=true&username=${user.login}&pr=${result.prNumber}`
-    );
+    const response = NextResponse.redirect(redirectUrl);
+    response.cookies.delete('oauth_state');
+    return response;
   } catch (error) {
     console.error('Contributor onboard error:', error);
-    return NextResponse.redirect(`${BASE_URL}/contributor-onboard?error=failed`);
+    const response = NextResponse.redirect(`${BASE_URL}/contributor-onboard?error=failed`);
+    response.cookies.delete('oauth_state');
+    return response;
   }
 }
