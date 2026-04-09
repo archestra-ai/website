@@ -1,6 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
-
 import { Octokit } from '@octokit/rest';
+import { NextRequest, NextResponse } from 'next/server';
 
 const GITHUB_OAUTH_CLIENT_ID = process.env.GITHUB_OAUTH_CLIENT_ID!;
 const GITHUB_OAUTH_CLIENT_SECRET = process.env.GITHUB_OAUTH_CLIENT_SECRET!;

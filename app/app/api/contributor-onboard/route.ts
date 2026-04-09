@@ -1,5 +1,4 @@
 import crypto from 'crypto';
-
 import { NextResponse } from 'next/server';
 
 const GITHUB_OAUTH_CLIENT_ID = process.env.GITHUB_OAUTH_CLIENT_ID!;
@@ -17,9 +16,7 @@ export async function GET() {
     state,
   });
 
-  const response = NextResponse.redirect(
-    `https://github.com/login/oauth/authorize?${params.toString()}`
-  );
+  const response = NextResponse.redirect(`https://github.com/login/oauth/authorize?${params.toString()}`);
 
   response.cookies.set('oauth_state', state, {
     httpOnly: true,

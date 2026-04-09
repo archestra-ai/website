@@ -42,8 +42,7 @@ function ContributorOnboardContent() {
           <div className="bg-white p-8 rounded-xl shadow-xl border border-gray-100">
             <h1 className="text-3xl font-bold text-gray-900 mb-4">Become a Contributor</h1>
             <p className="text-gray-600 mb-8">
-              Sign in with GitHub to get access to comment on issues and pull requests in the
-              Archestra repository.
+              Sign in with GitHub to get access to comment on issues and pull requests in the Archestra repository.
             </p>
             {error && (
               <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
