@@ -1,7 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: npm
-    directory: app
+    directory: /app
     schedule:
       interval: weekly
     groups:
@@ -19,11 +19,11 @@ updates:
       default-days: 7
 
   - package-ecosystem: github-actions
-    directory: .github
+    directory: /
     groups:
       github-actions-dependencies:
         patterns:
-          - "*.yml"
+          - "*"
     schedule:
       interval: weekly
     labels:

@@ -17,7 +17,7 @@ Most MCP server tutorials show a simple setup: one server, one user, basic API k
 
 When you deploy MCP servers in this environment, you need authentication that scales beyond environment variable API keys. You need token-based authentication with cryptographic verification — and that means JWKS.
 
-_This is Part 2 of a two-part series on MCP authentication. [Part 1](/blog/mcp-authentication-guide) covers the full MCP auth landscape — OAuth 2.1, PKCE, discovery, and client registration._
+_This is Part 2 of a three-part series on MCP authentication. [Part 1](/blog/mcp-authentication-guide) covers the full MCP auth landscape — OAuth 2.1, PKCE, discovery, and client registration. [Part 3](/blog/enterprise-managed-authorization-mcp) covers enterprise-managed authorization and ID-JAG._
 
 ## What is JWKS?
 
