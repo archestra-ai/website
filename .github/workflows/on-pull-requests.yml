@@ -12,6 +12,8 @@ on:
   # https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue#triggering-merge-group-checks-with-github-actions
   merge_group:
 
+permissions: {}
+
 concurrency:
   # Cancel any running workflow for the same branch when new commits are pushed.
   # We group both by ref_name (available when CI is triggered by a push to a branch/tag)
@@ -26,6 +28,4 @@ jobs:
     if: github.actor != 'github-actions[bot]'
     permissions:
       contents: read
-      security-events: write
-      id-token: write # Required for Workload Identity Federation
     uses: ./.github/workflows/linting-and-tests.yml
