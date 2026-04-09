@@ -22,8 +22,15 @@ on:
         default: "gemini-2.5-flash"
         type: string
 
+permissions: {}
+
+concurrency:
+  group: "evaluate-mcp-servers-${{ github.ref }}"
+  cancel-in-progress: true
+
 jobs:
   evaluate:
+    name: Evaluate MCP Servers
     runs-on: ubuntu-latest
     timeout-minutes: 90
     permissions:
@@ -48,6 +55,7 @@ jobs:
           FORCE_INPUT: ${{ github.event.inputs.force }}
           CONCURRENCY_INPUT: ${{ github.event.inputs.concurrency }}
           MODEL_INPUT: ${{ github.event.inputs.model }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
           # Set the model parameter
           MODEL_PARAM="--model ${MODEL_INPUT:-gemini-2.5-flash}"
@@ -57,7 +65,7 @@ jobs:
           if [[ "$FORCE_INPUT" == "true" ]]; then
             echo "Running forced evaluation of all servers..."
             npm run catalog:evaluate -- --all --force --concurrency ${CONCURRENCY_INPUT:-5} $MODEL_PARAM
-          elif [[ "${{ github.event_name }}" == "push" ]]; then
+          elif [[ "$EVENT_NAME" == "push" ]]; then
             echo "Detecting newly added servers from git diff..."
 
             # Get the diff of mcp-servers.json
