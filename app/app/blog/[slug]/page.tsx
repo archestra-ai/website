@@ -1,9 +1,9 @@
 import 'highlight.js/styles/github.css';
-import { Github } from 'lucide-react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import BlogContent from '@components/BlogContent';
+import { GitHubIcon } from '@components/BrandIcons';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 import constants from '@constants';
@@ -96,7 +96,7 @@ export default async function BlogPostPage({ params }: Props) {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors"
                     >
-                      <Github className="h-5 w-5" />
+                      <GitHubIcon className="h-5 w-5" />
                       GitHub
                     </a>
                   )}

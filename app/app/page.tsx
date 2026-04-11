@@ -1,9 +1,10 @@
 'use client';
 
-import { AlertTriangle, Calendar, Github, Server, ShieldCheck } from 'lucide-react';
+import { AlertTriangle, Calendar, Server, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
+import { GitHubIcon } from '@components/BrandIcons';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 import MermaidDiagram from '@components/MermaidDiagram';
@@ -1202,7 +1203,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium transition-colors group"
                 >
-                  <Github className="w-4 h-4 mr-1" />
+                  <GitHubIcon className="w-4 h-4 mr-1" />
                   View Provider
                   <svg
                     className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"

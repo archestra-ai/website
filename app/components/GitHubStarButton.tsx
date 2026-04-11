@@ -1,6 +1,7 @@
-import { Github, Star } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
+import { GitHubIcon } from '@components/BrandIcons';
 import constants from '@constants';
 
 const {
@@ -46,7 +47,7 @@ export function GitHubStarButton() {
       rel="noopener noreferrer"
       className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:text-gray-900 transition-colors"
     >
-      <Github className="h-4 w-4" />
+      <GitHubIcon className="h-4 w-4" />
       <span>Star us on GitHub ⭐</span>
       {stars !== null && (
         <>
