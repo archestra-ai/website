@@ -22,18 +22,18 @@
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^8.5.0",
     "@date-fns/tz": "^1.4.1",
-    "@next/third-parties": "^16.2.1",
+    "@next/third-parties": "^16.2.2",
     "@radix-ui/react-slot": "1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
-    "dotenv": "^17.3.1",
+    "dotenv": "^17.4.0",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
     "lucide-react": "^0.577.0",
-    "mermaid": "^11.13.0",
-    "next": "16.2.1",
+    "mermaid": "^11.14.0",
+    "next": "16.2.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-markdown": "^10.1.0",
@@ -47,7 +47,7 @@
     "tailwind-merge": "^3.5.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^4.3.6",
-    "zod-to-json-schema": "^3.25.1",
+    "zod-to-json-schema": "^3.25.2",
     "@octokit/rest": "^22.0.1"
   },
   "devDependencies": {
@@ -62,15 +62,15 @@
     "@vitejs/plugin-react": "^6.0.1",
     "csv-parse": "^6.2.1",
     "jsdom": "^29.0.1",
-    "knip": "^6.0.5",
+    "knip": "^6.2.0",
     "postcss": "^8.5",
     "postcss-load-config": "^6.0.1",
     "prettier": "^3.8.1",
     "tailwindcss": "^3.4.19",
     "tsx": "^4.21.0",
     "typescript": "^5",
-    "vite": "^8.0.2",
-    "vitest": "^4.1.1"
+    "vite": "^8.0.3",
+    "vitest": "^4.1.2"
   },
   "pnpm": {
     "overrides": {
