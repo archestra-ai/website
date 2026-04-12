@@ -1,6 +1,10 @@
-import { SVGProps } from 'react';
+import { CSSProperties, HTMLAttributes, SVGProps } from 'react';
 
 type BrandIconProps = SVGProps<SVGSVGElement> & {
+  size?: number | string;
+};
+
+type BrandImageProps = HTMLAttributes<HTMLImageElement> & {
   size?: number | string;
 };
 
@@ -20,18 +24,14 @@ export function GitHubIcon({ size, height, width, ...props }: BrandIconProps) {
   );
 }
 
-export function LinkedInIcon({ size, height, width, ...props }: BrandIconProps) {
-  return (
-    <svg
-      aria-hidden="true"
-      fill="currentColor"
-      height={height ?? size}
-      viewBox="0 0 24 24"
-      width={width ?? size}
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <path d="M4.98 3.5A2.48 2.48 0 1 0 5 8.46 2.48 2.48 0 0 0 4.98 3.5ZM2.75 9.75h4.46V21H2.75V9.75Zm7.26 0h4.28v1.54h.06c.6-1.13 2.06-2.32 4.24-2.32 4.53 0 5.36 2.98 5.36 6.86V21H19.5v-4.57c0-1.09-.02-2.5-1.52-2.5-1.53 0-1.76 1.2-1.76 2.42V21h-4.46V9.75Z" />
-    </svg>
-  );
+export function LinkedInIcon({ size, style, ...props }: BrandImageProps) {
+  const dimension = size ?? 24;
+  const imageStyle: CSSProperties = {
+    display: 'inline-block',
+    height: dimension,
+    width: dimension,
+    ...style,
+  };
+
+  return <img alt="" aria-hidden="true" src="/brand/linkedin-inbug-black.png" style={imageStyle} {...props} />;
 }
