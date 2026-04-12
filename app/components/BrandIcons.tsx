@@ -33,5 +33,5 @@ export function LinkedInIcon({ size, style, ...props }: BrandImageProps) {
     ...style,
   };
 
-  return <img alt="" aria-hidden="true" src="/brand/linkedin-inbug-black.png" style={imageStyle} {...props} />;
+  return <img alt="" aria-hidden="true" src="/brand/linkedin-inbug-blue.png" style={imageStyle} {...props} />;
 }
