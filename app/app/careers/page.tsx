@@ -154,8 +154,8 @@ export default function CareersPage() {
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-2">About the role</h3>
                       <p className="leading-relaxed">
-                        We&apos;re a small, well-funded founding team with exits to Grafana and Elastic. Our open source
-                        project gained 3k GitHub stars last month, and we have 3+ years of runway.
+                        We&apos;re a small team with exits to Grafana and Elastic building an open source AI
+                        infrastructure. Archestra.AI is VC-funded with 3+ years of runway.
                       </p>
                       <p className="leading-relaxed mt-2">
                         We&apos;re looking for a software engineer to join the &ldquo;core&rdquo; team working on the
@@ -200,11 +200,12 @@ export default function CareersPage() {
                       <h3 className="font-semibold text-gray-900 mb-3">What we&apos;re looking for</h3>
                       <ul className="space-y-2.5">
                         {[
-                          'Senior+ level',
-                          'Strong fundamentals in at least one of: TypeScript, Go, or Python',
-                          'Experience building and shipping production software',
+                          '6+ years of experience in software engineering roles',
+                          'Heavy focus on leveraging AI in day-to-day work',
+                          'Experience building, shipping and maintaining production software',
                           'Comfort with open source workflows (PRs, code review, public discussion)',
                           'Ability to work autonomously in a fast-moving early-stage team',
+                          'Experience in B2C products is a plus, but not required',
                         ].map((item) => (
                           <li key={item} className="flex items-start gap-2.5">
                             <div className="h-1.5 w-1.5 rounded-full bg-indigo-400 mt-2 flex-shrink-0" />
