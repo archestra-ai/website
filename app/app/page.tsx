@@ -1322,7 +1322,6 @@ export default function Home() {
             <QuickStartBlock messagingProvider={messagingProvider} onMessagingProviderChange={setMessagingProvider} />
           </div>
         </section>
-
       </main>
 
       {/* Lightbox */}
