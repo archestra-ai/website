@@ -54,6 +54,10 @@ export default function Header() {
               About Us
             </Link>
 
+            <Link href="/careers" className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">
+              Careers
+            </Link>
+
             <a
               href="/join-slack"
               target="_blank"
@@ -123,6 +127,14 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               About Us
+            </Link>
+
+            <Link
+              href="/careers"
+              className="px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Careers
             </Link>
 
             <a

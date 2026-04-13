@@ -9,6 +9,7 @@ import Footer from '@components/Footer';
 import Header from '@components/Header';
 import MermaidDiagram from '@components/MermaidDiagram';
 import NewsletterForm from '@components/NewsletterForm';
+import PlatformDiagram from '@components/PlatformDiagram';
 import QuickStartBlock, { type MessagingProvider } from '@components/QuickStartBlock';
 import constants from '@constants';
 
@@ -62,30 +63,22 @@ export default function Home() {
           {/* Subtle grid texture */}
           <div className="absolute inset-0 [background-image:radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.03)_1px,transparent_0)] [background-size:40px_40px]"></div>
 
-          <div className="container px-4 md:px-6 max-w-6xl mx-auto relative">
-            <div className="flex flex-col items-center text-center">
-              {/* Oversized decorative text behind */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none">
-                <span className="text-[12rem] md:text-[18rem] lg:text-[22rem] font-black text-gray-100/60 leading-none tracking-tighter">
-                  ?
-                </span>
+          <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+              {/* Left: Heading */}
+              <div className="flex-1 text-center lg:text-left">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-950 leading-[1.15] tracking-tight">
+                  Open Source AI Stack for Your{' '}
+                  <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
+                    Enterprise
+                  </span>
+                  .
+                </h1>
               </div>
 
-              <div className="relative space-y-6 max-w-4xl">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-950 leading-[1.15] tracking-tight">
-                  How to bring{' '}
-                  <span className="line-through decoration-gray-300 decoration-2 text-gray-400">ClawdBot</span>{' '}
-                  <span className="line-through decoration-gray-300 decoration-2 text-gray-400">MoltBot</span>{' '}
-                  <span className="text-gray-950">OpenClaw</span>-like agents to your organization{' '}
-                  <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
-                    but secure
-                  </span>{' '}
-                  &amp; production&#8209;ready?
-                </h1>
-
-                <div className="flex justify-center pt-2">
-                  <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-violet-600 rounded-full"></div>
-                </div>
+              {/* Right: Platform Architecture Diagram */}
+              <div className="flex-1 w-full max-w-lg lg:max-w-xl">
+                <PlatformDiagram />
               </div>
             </div>
           </div>
@@ -1328,23 +1321,6 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Quick Start</h2>
             </div>
             <QuickStartBlock messagingProvider={messagingProvider} onMessagingProviderChange={setMessagingProvider} />
-          </div>
-        </section>
-
-        {/* Community Calls Hero Section */}
-        <section className="py-12 bg-gradient-to-r from-teal-500 to-blue-600 text-white">
-          <div className="container px-4 md:px-6 max-w-7xl mx-auto">
-            <div className="text-center">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-3">Bi-Weekly Community Calls</h2>
-              <p className="text-lg mb-6 max-w-xl mx-auto opacity-95">Every Other Tuesday at 2:00 PM London Time</p>
-              <Link
-                href="/community-calls"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-teal-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
-              >
-                <Calendar className="w-5 h-5" />
-                View Details
-              </Link>
-            </div>
           </div>
         </section>
       </main>
