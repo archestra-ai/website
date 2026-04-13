@@ -21,12 +21,11 @@
   },
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^8.5.0",
-    "@date-fns/tz": "^1.4.1",
     "@next/third-parties": "^16.2.2",
+    "@octokit/rest": "^22.0.1",
     "@radix-ui/react-slot": "1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "date-fns": "^4.1.0",
     "dotenv": "^17.4.0",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
@@ -47,8 +46,7 @@
     "tailwind-merge": "^3.5.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^4.3.6",
-    "zod-to-json-schema": "^3.25.2",
-    "@octokit/rest": "^22.0.1"
+    "zod-to-json-schema": "^3.25.2"
   },
   "devDependencies": {
     "@anthropic-ai/mcpb": "^2.1.2",
