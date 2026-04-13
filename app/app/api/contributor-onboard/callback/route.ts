@@ -6,7 +6,7 @@ const GITHUB_OAUTH_CLIENT_SECRET = process.env.GITHUB_OAUTH_CLIENT_SECRET!;
 const GITHUB_BOT_TOKEN = process.env.GITHUB_BOT_TOKEN!;
 
 const TARGET_OWNER = 'archestra-ai';
-const TARGET_REPO = 'repo-a';
+const TARGET_REPO = 'archestra';
 const TARGET_BRANCH = 'main';
 const TARGET_FILE = 'EXTERNAL_CONTRIBUTORS.md';
 
