@@ -1,5 +1,6 @@
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
+import { GitHubIcon } from '@components/BrandIcons';
 import { Card, CardContent, CardHeader, CardTitle } from '@components/ui/card';
 import { ArchestraMcpServerManifest } from '@mcpCatalog/types';
 
@@ -33,7 +34,7 @@ const ResourcesCard = ({ server }: ResourcesCardProps) => {
           <div className="flex items-center gap-3">
             {gitHubRepoUrl ? (
               <>
-                <Github className="h-5 w-5 text-gray-600" />
+                <GitHubIcon className="h-5 w-5 text-gray-600" />
                 <span className="text-sm font-medium">GitHub Repository</span>
               </>
             ) : (

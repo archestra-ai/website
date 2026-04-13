@@ -1,7 +1,7 @@
-import { Linkedin } from 'lucide-react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 
+import { LinkedInIcon } from '@components/BrandIcons';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 import { Card, CardContent } from '@components/ui/card';
@@ -113,7 +113,7 @@ export default function AboutPage() {
                       rel="noopener noreferrer"
                       className="text-gray-500 hover:text-blue-600 transition-colors"
                     >
-                      <Linkedin size={20} />
+                      <LinkedInIcon size={20} />
                     </a>
                   </div>
                 </CardContent>
@@ -140,7 +140,7 @@ export default function AboutPage() {
                       rel="noopener noreferrer"
                       className="text-gray-500 hover:text-blue-600 transition-colors"
                     >
-                      <Linkedin size={20} />
+                      <LinkedInIcon size={20} />
                     </a>
                   </div>
                 </CardContent>
@@ -167,7 +167,7 @@ export default function AboutPage() {
                       rel="noopener noreferrer"
                       className="text-gray-500 hover:text-blue-600 transition-colors"
                     >
-                      <Linkedin size={20} />
+                      <LinkedInIcon size={20} />
                     </a>
                   </div>
                 </CardContent>
@@ -199,7 +199,7 @@ export default function AboutPage() {
                       rel="noopener noreferrer"
                       className="text-gray-500 hover:text-blue-600 transition-colors"
                     >
-                      <Linkedin size={20} />
+                      <LinkedInIcon size={20} />
                     </a>
                   </div>
                 </CardContent>
@@ -231,7 +231,7 @@ export default function AboutPage() {
                       rel="noopener noreferrer"
                       className="text-gray-500 hover:text-blue-600 transition-colors"
                     >
-                      <Linkedin size={20} />
+                      <LinkedInIcon size={20} />
                     </a>
                   </div>
                 </CardContent>
@@ -333,7 +333,7 @@ export default function AboutPage() {
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-blue-600 transition-colors ml-3"
                       >
-                        <Linkedin size={18} />
+                        <LinkedInIcon size={18} />
                       </a>
                     </div>
                   </div>
@@ -349,7 +349,7 @@ export default function AboutPage() {
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-blue-600 transition-colors ml-3"
                       >
-                        <Linkedin size={18} />
+                        <LinkedInIcon size={18} />
                       </a>
                     </div>
                   </div>
@@ -365,7 +365,7 @@ export default function AboutPage() {
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-blue-600 transition-colors ml-3"
                       >
-                        <Linkedin size={18} />
+                        <LinkedInIcon size={18} />
                       </a>
                     </div>
                   </div>
@@ -381,7 +381,7 @@ export default function AboutPage() {
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-blue-600 transition-colors ml-3"
                       >
-                        <Linkedin size={18} />
+                        <LinkedInIcon size={18} />
                       </a>
                     </div>
                   </div>
@@ -397,7 +397,7 @@ export default function AboutPage() {
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-blue-600 transition-colors ml-3"
                       >
-                        <Linkedin size={18} />
+                        <LinkedInIcon size={18} />
                       </a>
                     </div>
                   </div>
