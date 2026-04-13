@@ -1,6 +1,7 @@
 'use client';
 
 import { AlertTriangle, Calendar, Server, ShieldCheck } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -9,7 +10,6 @@ import Footer from '@components/Footer';
 import Header from '@components/Header';
 import MermaidDiagram from '@components/MermaidDiagram';
 import NewsletterForm from '@components/NewsletterForm';
-import PlatformDiagram from '@components/PlatformDiagram';
 import QuickStartBlock, { type MessagingProvider } from '@components/QuickStartBlock';
 import constants from '@constants';
 
@@ -66,7 +66,7 @@ export default function Home() {
           <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
               {/* Left: Heading */}
-              <div className="flex-1 text-center lg:text-left">
+              <div className="flex-1 text-center lg:text-left lg:shrink-0 lg:basis-2/5">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-950 leading-[1.15] tracking-tight">
                   Open Source AI Stack for Your{' '}
                   <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
@@ -77,8 +77,15 @@ export default function Home() {
               </div>
 
               {/* Right: Platform Architecture Diagram */}
-              <div className="flex-1 w-full max-w-lg lg:max-w-xl">
-                <PlatformDiagram />
+              <div className="lg:basis-3/5 w-full">
+                <Image
+                  src="/api/docs-images/platform-overview-architecture.png"
+                  alt="Archestra Platform Architecture"
+                  width={2208}
+                  height={1420}
+                  className="w-full h-auto rounded-xl shadow-lg"
+                  priority
+                />
               </div>
             </div>
           </div>
