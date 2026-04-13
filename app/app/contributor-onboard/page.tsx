@@ -1,7 +1,7 @@
 'use client';
 
-import Script from 'next/script';
 import { useSearchParams } from 'next/navigation';
+import Script from 'next/script';
 import { Suspense } from 'react';
 
 import Footer from '@components/Footer';
