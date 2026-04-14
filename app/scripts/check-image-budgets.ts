@@ -42,28 +42,7 @@ const budgetRules: BudgetRule[] = [
   },
 ];
 
-const legacyExceptions = new Set([
-  'blog/2025-08-11-why-we-founded-archestra-hero.jpg',
-  'blog/2025-08-20-archestra-joins-cncf-hero.png',
-  'blog/2025-09-09-celebrating-100-mcp-servers-hero.png',
-  'blog/2025-09-18-welcome-dominik-hero.jpg',
-  'blog/2025-10-13-what-is-prompt-injection-hero.png',
-  'blog/2025-12-09-platform-evolvement-image2.png',
-  'blog/2025-12-28-gaggimate-mcp.png',
-  'blog/2025-12-28-hoffmann.png',
-  'blog/2025-12-28-machine.png',
-  'blog/2025-12-28-shot-1-photo.png',
-  'blog/2026-01-12-agents.gif',
-  'blog/2026-01-12-hero.jpg',
-  'blog/2026-01-12-ingest.gif',
-  'blog/2026-01-12-install-mcp.gif',
-  'blog/2026-01-12-mcp-registry.gif',
-  'blog/2026-02-04-openclaw-secure-hero.png',
-  'blog/2026-02-04-openclaw-matvey-prompt-injection.png',
-  'blog/2026-02-11-mcp-authentication.png',
-  'blog/2026-03-30-enterprise-managed-authorization-hero.png',
-  'team-photo.jpg',
-]);
+const legacyExceptions = new Set<string>();
 
 function formatBytes(bytes: number): string {
   return `${(bytes / MB).toFixed(2)} MB`;

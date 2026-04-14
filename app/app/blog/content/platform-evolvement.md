@@ -31,7 +31,7 @@ Archestra is designed to be the centralized AI platform for your company, and we
 
 Want to create an agent that speaks to BambooHR, ServiceNow, Jira, and MS Teams, and give it to your manager? That's it.
 
-![Chat UI](/blog/2025-12-09-platform-evolvement-image2.png)
+![Chat UI](/blog/2025-12-09-platform-evolvement-image2.webp)
 
 ## 🆕 Internal MCP Registry with Governance
 

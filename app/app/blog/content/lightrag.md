@@ -110,7 +110,7 @@ node ingest-tv-shows.mjs
 
 All 100 TV shows will be ingested. Check out the knowledge graph in the UI - pretty cool!
 
-<img src="/blog/2026-01-12-ingest.gif" alt="LightRAG ingestion" />
+<img src="/blog/2026-01-12-ingest.webp" alt="LightRAG ingestion" />
 
 ---
 
@@ -143,7 +143,7 @@ We'll use an MCP server via the **Archestra MCP Orchestrator** - specifically [m
 
 First, add the MCP server to the registry:
 
-<img src="/blog/2026-01-12-mcp-registry.gif" alt="Add MCP Server to MCP registry" />
+<img src="/blog/2026-01-12-mcp-registry.webp" alt="Add MCP Server to MCP registry" />
 
 ## Install MCP server and assign tools
 
@@ -151,7 +151,7 @@ Install the MCP server with the credentials for **LightRAG**. Under the hood, Ar
 
 Then assign the tools to a **profile** so they're available in chat. We'll also loosen the tool policies since we trust our data.
 
-<img src="/blog/2026-01-12-install-mcp.gif" alt="Install MCP server and connect with profile" />
+<img src="/blog/2026-01-12-install-mcp.webp" alt="Install MCP server and connect with profile" />
 
 ## Create agents
 
@@ -173,7 +173,7 @@ Here are the system prompts:
 
 > You track the user's TV show watching history and ratings. When asked to check for feedback, query LightRAG for recent user activity and identify shows that were discussed but lack ratings. When collecting feedback, ask the user about their impressions and ratings (1-10), then use the LightRAG insert tool to add this feedback as a new entry. LightRAG will extract entities from the feedback and link them to existing shows in the knowledge graph, enriching future recommendations.
 
-<img src="/blog/2026-01-12-agents.gif" alt="Create agents" />
+<img src="/blog/2026-01-12-agents.webp" alt="Create agents" />
 
 # The result 🎉
 

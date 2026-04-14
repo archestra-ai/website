@@ -3,7 +3,7 @@ title: 'Enterprise-Managed Authorization for MCP'
 date: '2026-03-30'
 author: 'Joey Orlando'
 description: 'Centralized MCP server access control through enterprise identity providers.'
-image: '/blog/2026-03-30-enterprise-managed-authorization-hero.png'
+image: '/blog/2026-03-30-enterprise-managed-authorization-hero.webp'
 ---
 
 ## You Can't Ask HR to Debug OAuth

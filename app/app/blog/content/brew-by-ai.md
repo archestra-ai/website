@@ -27,13 +27,13 @@ This post is packed with technical details. It starts with the mechanics of the 
 
 # The Problem of Dialing In Espresso
 
-![1.3 million views on a video about dialing in espresso...](/blog/2025-12-28-hoffmann.png)
+![1.3 million views on a video about dialing in espresso...](/blog/2025-12-28-hoffmann.webp)
 
 So, how exactly do you brew delicious coffee? Unfortunately (or fortunately for the die-hard fans), it’s not that simple. First off, "delicious" is a relative concept. Secondly, it involves optimizing a multitude of parameters: beans, **extraction time, brew temperature, pressure, grind size**, and on and on. In other words, unless you’re an enthusiast with a huge amount of free time, making a great espresso at home happens either by pure chance or by inviting one of those experts into your kitchen. That’s exactly what we’re going to attempt today—by inviting AI to dial in our espresso for us.
 
 # The Hardware
 
-<img src="/blog/2025-12-28-machine.png" alt="Ascaso Dream + Gaggimate" style="max-height: 400px; width: auto; display: block; margin: 0 auto;">
+<img src="/blog/2025-12-28-machine.webp" alt="Ascaso Dream + Gaggimate" style="max-height: 400px; width: auto; display: block; margin: 0 auto;">
 
 For the holidays, an old friend of mine, [Borys Tymchenko](https://github.com/spsancti), came to visit London, and he didn't come alone — he brought a unique item along in his carry-on luggage. He found an Ascaso Dream on the street in Tel Aviv, restored it, and heavily modified it by installing the open-source firmware https://github.com/jniebuhr/gaggimate.
 
@@ -180,7 +180,7 @@ I’ve added the Gaggimate MCP to the Archestra registry, so installation is lit
 
 > If you want to add your own server to the catalog, [this is how it's done](https://github.com/archestra-ai/website/blob/main/app/app/mcp-catalog/data/mcp-evaluations/matvey-kuk__gaggimate-mcp.json).
 
-<img src="/blog/2025-12-28-gaggimate-mcp.png" alt="Installing Gaggimate MCP">
+<img src="/blog/2025-12-28-gaggimate-mcp.webp" alt="Installing Gaggimate MCP">
 
 During installation, you'll need to provide the `GAGGIMATE_HOST`. I recommend using the local network IP address instead of the `.local` domain. You can find the IP address like this:
 
@@ -294,7 +294,7 @@ Quite impressive, the shot was definitely not a great one and AI managed to get 
 
 AI created a "classical" profile: 5s pre-infusion; 9 bar till 1:2 ratio after that. It went with 94C.
 
-<img src="/blog/2025-12-28-shot-1-photo.png" alt="The first shot, machine stopped a bit earlier">
+<img src="/blog/2025-12-28-shot-1-photo.webp" alt="The first shot, machine stopped a bit earlier">
 
 **Cup #2**
 

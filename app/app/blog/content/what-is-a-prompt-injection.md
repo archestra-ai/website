@@ -3,7 +3,7 @@ title: 'What is a Prompt Injection?'
 date: '2025-10-13'
 author: 'Joey Orlando'
 description: 'A deep dive into prompt injection attacks, why even the smartest AI models are vulnerable, and how Archestra Platform protects your AI agents from this critical security threat.'
-image: '/blog/2025-10-13-what-is-prompt-injection-hero.png'
+image: '/blog/2025-10-13-what-is-prompt-injection-hero.webp'
 ---
 
 Imagine this scenario: you're an AI coding assistant helping a developer work on an open-source project. They point you to a GitHub issue that looks perfectly legitimate — a feature request with a clear description and reasonable requirements. You fetch the issue, read it, and start following the instructions. But hidden in an invisible markdown comment is a malicious prompt that tricks you into sending sensitive data from the developer's machine to an attacker's email address.
