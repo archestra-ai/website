@@ -46,31 +46,7 @@ async function getAuthenticatedUser(token: string): Promise<{ login: string; id:
   return { login: user.login, id: user.id };
 }
 
-async function ensureForkExists(botOctokit: Octokit): Promise<string> {
-  const { data: botUser } = await botOctokit.users.getAuthenticated();
-  const forkOwner = botUser.login;
-
-  try {
-    await botOctokit.repos.get({ owner: forkOwner, repo: TARGET_REPO });
-  } catch {
-    await botOctokit.repos.createFork({ owner: TARGET_OWNER, repo: TARGET_REPO });
-
-    for (let i = 0; i < 10; i++) {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      try {
-        await botOctokit.repos.get({ owner: forkOwner, repo: TARGET_REPO });
-        break;
-      } catch {
-        if (i === 9) throw new Error('Fork creation timed out');
-      }
-    }
-  }
-
-  return forkOwner;
-}
-
 async function createContributorPR(botOctokit: Octokit, username: string, userId: number) {
-  // Check current file content on upstream
   const { data: fileData } = await botOctokit.repos.getContent({
     owner: TARGET_OWNER,
     repo: TARGET_REPO,
@@ -89,10 +65,7 @@ async function createContributorPR(botOctokit: Octokit, username: string, userId
     return { alreadyExists: true };
   }
 
-  const forkOwner = await ensureForkExists(botOctokit);
-
-  // Sync fork's main with upstream
-  const { data: upstreamRef } = await botOctokit.git.getRef({
+  const { data: mainRef } = await botOctokit.git.getRef({
     owner: TARGET_OWNER,
     repo: TARGET_REPO,
     ref: `heads/${TARGET_BRANCH}`,
@@ -100,37 +73,23 @@ async function createContributorPR(botOctokit: Octokit, username: string, userId
 
   const branchName = `contributor/${username}-${Date.now()}`;
 
-  // Create branch on fork directly from upstream SHA (no need to sync fork's main)
   await botOctokit.git.createRef({
-    owner: forkOwner,
+    owner: TARGET_OWNER,
     repo: TARGET_REPO,
     ref: `refs/heads/${branchName}`,
-    sha: upstreamRef.object.sha,
+    sha: mainRef.object.sha,
   });
 
-  // Get file SHA from fork (should match upstream after sync)
-  const { data: forkFileData } = await botOctokit.repos.getContent({
-    owner: forkOwner,
-    repo: TARGET_REPO,
-    path: TARGET_FILE,
-    ref: branchName,
-  });
-
-  if (!('sha' in forkFileData)) {
-    throw new Error('Unexpected response from GitHub');
-  }
-
-  // Commit to fork branch
   const newContent = currentContent.trimEnd() + '\n' + entry + '\n';
   const authorEmail = `${userId}+${username}@users.noreply.github.com`;
 
   await botOctokit.repos.createOrUpdateFileContents({
-    owner: forkOwner,
+    owner: TARGET_OWNER,
     repo: TARGET_REPO,
     path: TARGET_FILE,
     message: `ci(contrib): add ${username}`,
     content: Buffer.from(newContent).toString('base64'),
-    sha: forkFileData.sha,
+    sha: fileData.sha,
     branch: branchName,
     author: {
       name: username,
@@ -138,12 +97,11 @@ async function createContributorPR(botOctokit: Octokit, username: string, userId
     },
   });
 
-  // Create PR from fork to upstream
   const { data: pr } = await botOctokit.pulls.create({
     owner: TARGET_OWNER,
     repo: TARGET_REPO,
     title: `ci(contrib): add ${username}`,
-    head: `${forkOwner}:${branchName}`,
+    head: branchName,
     base: TARGET_BRANCH,
     body: `Automated: grant contributor access to @${username}`,
   });
