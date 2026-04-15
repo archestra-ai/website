@@ -26,7 +26,8 @@ export default function Header() {
               alt={`${companyName} Logo`}
               width={40}
               height={40}
-              className="h-10 w-auto object-contain"
+              className="object-contain"
+              style={{ height: '40px', width: 'auto' }}
             />
             <span className="font-[family-name:var(--font-roboto-mono)] text-2xl text-black hidden lg:inline">
               Archestra.AI
