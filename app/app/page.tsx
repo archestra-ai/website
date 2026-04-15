@@ -276,9 +276,12 @@ export default function Home() {
 
                 {/* Chat UI Screenshot */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
-                  <img
+                  <Image
                     src="/api/docs-images/chat.webp"
                     alt="Chat Interface"
+                    width={3644}
+                    height={2368}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="w-full h-auto"
                   />
                 </div>
@@ -542,9 +545,12 @@ export default function Home() {
 
                 {/* Screenshot Container */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
-                  <img
+                  <Image
                     src="/api/docs-images/mcp-registry.webp"
                     alt="Private MCP Registry Interface"
+                    width={2490}
+                    height={1554}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="w-full h-auto"
                   />
                 </div>
@@ -811,9 +817,12 @@ export default function Home() {
 
                 {/* Cost Chart Screenshot */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
-                  <img
+                  <Image
                     src="/api/docs-images/cost.webp"
                     alt="Cost Monitoring Dashboard"
+                    width={2000}
+                    height={1048}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="w-full h-auto"
                   />
                 </div>
@@ -975,9 +984,12 @@ export default function Home() {
 
                 {/* Observability Dashboard Screenshot */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
-                  <img
+                  <Image
                     src="/api/docs-images/observability.webp"
                     alt="Observability Dashboard"
+                    width={2920}
+                    height={1488}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="w-full h-auto"
                   />
                 </div>
