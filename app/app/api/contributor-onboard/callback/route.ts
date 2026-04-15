@@ -69,6 +69,20 @@ async function createContributorPR(botOctokit: Octokit, username: string, userId
   }
 
   const branchName = `contributor/${username}-${Date.now()}`;
+
+  const { data: mainRef } = await botOctokit.git.getRef({
+    owner: TARGET_OWNER,
+    repo: TARGET_REPO,
+    ref: `heads/${TARGET_BRANCH}`,
+  });
+
+  await botOctokit.git.createRef({
+    owner: TARGET_OWNER,
+    repo: TARGET_REPO,
+    ref: `refs/heads/${branchName}`,
+    sha: mainRef.object.sha,
+  });
+
   const newContent = currentContent.trimEnd() + '\n' + entry + '\n';
   const authorEmail = `${userId}+${username}@users.noreply.github.com`;
 
