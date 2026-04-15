@@ -39,7 +39,7 @@ For the holidays, an old friend of mine, [Borys Tymchenko](https://github.com/sp
 
 Gaggimate plays a pivotal role in our experiment. First of all, when paired with the scales, it collects high-quality data on every single cup of espresso. It tracks everything: temperature, pressure, and the amount of liquid passing through the coffee puck:
 
-<img src="/blog/2025-12-28-gaggimate.png" alt="This shot was actually pretty good!">
+<img src="/blog/2025-12-28-gaggimate.webp" alt="This shot was actually pretty good!">
 
 Furthermore, Gaggimate allows us to program a multitude of parameters — pressure, temperature — and set limits like ml/s per phase and total weight!
 
@@ -280,7 +280,7 @@ Now, let's head over to New Chat, add this system prompt, name it AI-James, and.
 Hi, I have a dark roast and 16g basket. Investigate my last shot and profile please!
 ```
 
-<img src="/blog/2025-12-28-first-shot.png" alt="AI barista is analyzing the shot and adjusting the machine settings">
+<img src="/blog/2025-12-28-first-shot.webp" alt="AI barista is analyzing the shot and adjusting the machine settings">
 
 Quite impressive, the shot was definitely not a great one and AI managed to get that purely from the data! I would personally never have thought about trying a 1.75 ratio either.
 
@@ -288,7 +288,7 @@ Quite impressive, the shot was definitely not a great one and AI managed to get 
 
 **Cup #1**
 
-<img src="/blog/2025-12-28-shot-1.png" alt="AI barista is tuning the machine for the light roast">
+<img src="/blog/2025-12-28-shot-1.webp" alt="AI barista is tuning the machine for the light roast">
 
 <img src="/blog/2025-12-28-shot-1-graph.png" alt="5s pre-infusion, 32g out.">
 
@@ -300,7 +300,7 @@ AI created a "classical" profile: 5s pre-infusion; 9 bar till 1:2 ratio after th
 
 After a shot, I complained "It's too sour".
 
-<img src="/blog/2025-12-28-shot-2.png" alt="5s pre-infusion, 36g out.">
+<img src="/blog/2025-12-28-shot-2.webp" alt="5s pre-infusion, 36g out.">
 
 It updated only the yield! My take would be to update the grind size, interesting!
 

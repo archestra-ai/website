@@ -37,7 +37,7 @@ Want to create an agent that speaks to BambooHR, ServiceNow, Jira, and MS Teams,
 
 A central place to add "approved" MCP servers. We've put a lot of effort into making this UI friendly. The nice thing is that it supports self-made MCP servers, making it an easy way to deploy your MCP and share it with colleagues, yay!
 
-![MCP Registry](/blog/2025-12-09-platform-evolvement-image3.png)
+![MCP Registry](/blog/2025-12-09-platform-evolvement-image3.webp)
 
 ## 🆕 Cost Monitoring, Token Compressor, Model Optimizer, and Observability
 
@@ -49,7 +49,7 @@ Token spending is a significant topic, and we had to respond accordingly: a full
 - OpenTelemetry traces
 - Prometheus metrics
 
-![Cost Monitoring](/blog/2025-12-09-platform-evolvement-image4.png)
+![Cost Monitoring](/blog/2025-12-09-platform-evolvement-image4.webp)
 
 ## A Few Words About the Company
 

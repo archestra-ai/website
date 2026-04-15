@@ -133,7 +133,14 @@ export default function Home() {
                   className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 cursor-zoom-in"
                   onClick={() => setLightboxOpen(true)}
                 >
-                  <img src="/clawdbot_hack.jpeg" alt="ClawdBot vulnerability demonstration" className="w-full h-auto" />
+                  <Image
+                    src="/clawdbot_hack.jpeg"
+                    alt="ClawdBot vulnerability demonstration"
+                    width={3418}
+                    height={2142}
+                    className="w-full h-auto"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                  />
                 </div>
                 <ol className="relative text-sm text-gray-500 space-y-1 pl-1">
                   <li>1. Sending ClawdBot email with prompt injection</li>
@@ -394,7 +401,14 @@ export default function Home() {
                 {/* Slack Screenshot */}
                 <div className="relative">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-                    <img src="/screenshot-slack.png" alt="Agent conversation in Slack" className="w-full h-auto" />
+                    <Image
+                      src="/screenshot-slack.png"
+                      alt="Agent conversation in Slack"
+                      width={856}
+                      height={212}
+                      className="w-full h-auto"
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                    />
                   </div>
                   <div className="absolute -top-3 -right-3 bg-gradient-to-r from-teal-600 to-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                     Slack example
@@ -404,10 +418,13 @@ export default function Home() {
                 {/* MS Teams Screenshot */}
                 <div className="relative">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-                    <img
+                    <Image
                       src="/sales-assistant-msteams-chat.png"
                       alt="Sales assistant in Microsoft Teams chat"
+                      width={1065}
+                      height={725}
                       className="w-full h-auto"
+                      sizes="(min-width: 1024px) 50vw, 100vw"
                     />
                   </div>
                   <div className="absolute -top-3 -right-3 bg-gradient-to-r from-teal-600 to-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
@@ -1338,9 +1355,11 @@ export default function Home() {
           className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out"
           onClick={() => setLightboxOpen(false)}
         >
-          <img
+          <Image
             src="/clawdbot_hack.jpeg"
             alt="ClawdBot vulnerability demonstration"
+            width={3418}
+            height={2142}
             className="max-w-full max-h-[90vh] rounded-lg shadow-2xl"
           />
         </div>
