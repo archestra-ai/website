@@ -42,8 +42,6 @@ const budgetRules: BudgetRule[] = [
   },
 ];
 
-const legacyExceptions = new Set<string>();
-
 function formatBytes(bytes: number): string {
   return `${(bytes / MB).toFixed(2)} MB`;
 }
@@ -115,26 +113,14 @@ function getViolations(): Violation[] {
 }
 
 const violations = getViolations();
-const debt = violations.filter((violation) => legacyExceptions.has(violation.relativePath));
-const failures = violations.filter((violation) => !legacyExceptions.has(violation.relativePath));
 
-if (debt.length > 0) {
-  console.log('Known oversized image debt:');
-  for (const violation of debt) {
-    console.log(
-      `- ${violation.relativePath}: ${formatBytes(violation.bytes)} > ${formatBytes(violation.budget.maxBytes)} (${violation.budget.label})`
-    );
-  }
-  console.log('');
-}
-
-if (failures.length === 0) {
+if (violations.length === 0) {
   console.log('Image budgets passed.');
   process.exit(0);
 }
 
 console.error('Image budget failures:');
-for (const violation of failures) {
+for (const violation of violations) {
   console.error(
     `- ${violation.relativePath}: ${formatBytes(violation.bytes)} > ${formatBytes(violation.budget.maxBytes)} (${violation.budget.label})`
   );
