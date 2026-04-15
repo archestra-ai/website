@@ -277,7 +277,7 @@ export default function Home() {
                 {/* Chat UI Screenshot */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
                   <img
-                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/chat.png"
+                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/chat.webp"
                     alt="Chat Interface"
                     className="w-full h-auto"
                   />
@@ -543,7 +543,7 @@ export default function Home() {
                 {/* Screenshot Container */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
                   <img
-                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/mcp-registry.png"
+                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/mcp-registry.webp"
                     alt="Private MCP Registry Interface"
                     className="w-full h-auto"
                   />
@@ -812,7 +812,7 @@ export default function Home() {
                 {/* Cost Chart Screenshot */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
                   <img
-                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/cost.png"
+                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/cost.webp"
                     alt="Cost Monitoring Dashboard"
                     className="w-full h-auto"
                   />
@@ -976,7 +976,7 @@ export default function Home() {
                 {/* Observability Dashboard Screenshot */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
                   <img
-                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/observability.png"
+                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/observability.webp"
                     alt="Observability Dashboard"
                     className="w-full h-auto"
                   />
