@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-export type ImageSize = {
+type ImageSize = {
   height: number;
   width: number;
 };
