@@ -181,10 +181,10 @@ Let's test it! Start a chat with **Movie Recommender**. When you share feelings 
 
 In future sessions, this enriched graph is available. When you ask for recommendations, **Movie Finder** queries LightRAG with your preferences baked in. The knowledge graph grows with every piece of feedback you provide.
 
-<img src="/blog/2026-01-12-chat-result.png" alt="Final chat demo" />
+<img src="/blog/2026-01-12-chat-result.webp" alt="Final chat demo" />
 
 Exactly what I wanted!
 
 Now I can finally focus on watching TV shows instead of spending time finding the right ones 😌🍿
 
-<img src="/blog/2026-01-12-popcorn-giphy.gif" alt="More time for this" />
+<img src="/blog/2026-01-12-popcorn-giphy.webp" alt="More time for this" />

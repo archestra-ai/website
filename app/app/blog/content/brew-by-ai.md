@@ -3,7 +3,7 @@ title: 'Brew by Weight? Brew by AI!'
 date: '2025-12-28'
 author: 'Matvey Kukuy, CEO'
 description: 'A Christmas project of making AI brew an excellent coffee.'
-image: '/blog/2025-12-28-main-image.jpeg'
+image: '/blog/2025-12-28-main-image.webp'
 ---
 
 <div style="background: #f8f9fa; padding: 16px; border-radius: 6px; margin-bottom: 24px; border-left: 3px solid #6b7280;">
