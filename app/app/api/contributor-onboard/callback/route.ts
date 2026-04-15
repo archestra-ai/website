@@ -1,9 +1,12 @@
+import { createAppAuth } from '@octokit/auth-app';
 import { Octokit } from '@octokit/rest';
 import { NextRequest, NextResponse } from 'next/server';
 
 const GITHUB_OAUTH_CLIENT_ID = process.env.GITHUB_OAUTH_CLIENT_ID!;
 const GITHUB_OAUTH_CLIENT_SECRET = process.env.GITHUB_OAUTH_CLIENT_SECRET!;
-const GITHUB_BOT_TOKEN = process.env.GITHUB_BOT_TOKEN!;
+const GITHUB_APP_ID = process.env.GITHUB_APP_ID!;
+const GITHUB_APP_PRIVATE_KEY = process.env.GITHUB_APP_PRIVATE_KEY!;
+const GITHUB_APP_INSTALLATION_ID = process.env.GITHUB_APP_INSTALLATION_ID!;
 
 const TARGET_OWNER = 'archestra-ai';
 const TARGET_REPO = 'archestra';
@@ -65,21 +68,7 @@ async function createContributorPR(botOctokit: Octokit, username: string, userId
     return { alreadyExists: true };
   }
 
-  const { data: mainRef } = await botOctokit.git.getRef({
-    owner: TARGET_OWNER,
-    repo: TARGET_REPO,
-    ref: `heads/${TARGET_BRANCH}`,
-  });
-
   const branchName = `contributor/${username}-${Date.now()}`;
-
-  await botOctokit.git.createRef({
-    owner: TARGET_OWNER,
-    repo: TARGET_REPO,
-    ref: `refs/heads/${branchName}`,
-    sha: mainRef.object.sha,
-  });
-
   const newContent = currentContent.trimEnd() + '\n' + entry + '\n';
   const authorEmail = `${userId}+${username}@users.noreply.github.com`;
 
@@ -122,7 +111,14 @@ export async function GET(request: NextRequest) {
     const token = await exchangeCodeForToken(code);
     const user = await getAuthenticatedUser(token);
 
-    const botOctokit = new Octokit({ auth: GITHUB_BOT_TOKEN });
+    const botOctokit = new Octokit({
+      authStrategy: createAppAuth,
+      auth: {
+        appId: GITHUB_APP_ID,
+        privateKey: GITHUB_APP_PRIVATE_KEY,
+        installationId: GITHUB_APP_INSTALLATION_ID,
+      },
+    });
     const result = await createContributorPR(botOctokit, user.login, user.id);
 
     const redirectUrl = result.alreadyExists
