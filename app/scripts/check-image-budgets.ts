@@ -86,18 +86,19 @@ function walk(directory: string): string[] {
 
 function getViolations(): Violation[] {
   return walk(publicDirectory)
-    .map((absolutePath) => {
+    .flatMap((absolutePath): Violation[] => {
       const extension = path.extname(absolutePath).toLowerCase();
 
       if (!imageExtensions.has(extension)) {
-        return undefined;
+        return [];
       }
 
       const relativePath = path.relative(publicDirectory, absolutePath).replaceAll(path.sep, '/');
       const bytes = fs.statSync(absolutePath).size;
 
       if (relativePath.startsWith('blog/') && extension !== '.webp') {
-        return {
+        return [
+          {
           budget: {
             label: 'Blog format rule',
             maxBytes: 0,
@@ -107,23 +108,25 @@ function getViolations(): Violation[] {
           extension,
           message: 'Convert this file to .webp. Blog images must use .webp only.',
           relativePath,
-        } satisfies Violation;
+          } satisfies Violation,
+        ];
       }
 
       const budget = getApplicableBudget(relativePath, extension);
 
       if (bytes <= budget.maxBytes) {
-        return undefined;
+        return [];
       }
 
-      return {
-        budget,
-        bytes,
-        extension,
-        relativePath,
-      } satisfies Violation;
+      return [
+        {
+          budget,
+          bytes,
+          extension,
+          relativePath,
+        } satisfies Violation,
+      ];
     })
-    .filter((violation): violation is Violation => Boolean(violation))
     .sort((left, right) => right.bytes - left.bytes);
 }
 
