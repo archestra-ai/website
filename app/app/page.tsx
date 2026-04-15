@@ -79,7 +79,7 @@ export default function Home() {
               {/* Right: Platform Architecture Diagram */}
               <div className="lg:basis-3/5 w-full">
                 <Image
-                  src="/api/docs-images/platform-overview-architecture.png"
+                  src="/api/docs-images/platform-overview-architecture.webp"
                   alt="Archestra Platform Architecture"
                   width={2208}
                   height={1420}
