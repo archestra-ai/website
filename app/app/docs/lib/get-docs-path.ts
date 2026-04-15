@@ -20,7 +20,7 @@ function getDocsPath(): DocsPathConfig | null {
   if (fs.existsSync(localDocsPath)) {
     return {
       docsDirectory: path.join(localDocsPath, 'pages'),
-      assetsDirectory: path.join(localDocsPath, 'assets/old_docs'),
+      assetsDirectory: path.join(localDocsPath, 'assets'),
       isLocalDevelopment: true,
     };
   }
@@ -30,7 +30,7 @@ function getDocsPath(): DocsPathConfig | null {
   if (fs.existsSync(pulledDocsPath)) {
     return {
       docsDirectory: path.join(pulledDocsPath, 'pages'),
-      assetsDirectory: path.join(pulledDocsPath, 'assets/old_docs'),
+      assetsDirectory: path.join(pulledDocsPath, 'assets'),
       isLocalDevelopment: false,
     };
   }

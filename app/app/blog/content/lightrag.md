@@ -3,7 +3,7 @@ title: 'A self-hosted Movie Recommendation Agent with LightRAG and MCP'
 date: '2026-01-12'
 author: 'Dominik Broj, Founding Engineer'
 description: 'How I built a personal movie expert with LightRAG and Archestra that learns from my feedback'
-image: '/blog/2026-01-12-hero.jpg'
+image: '/blog/2026-01-12-hero.webp'
 ---
 
 I've watched so many TV shows that finding the next one has become a mission. I keep jumping between streaming platforms looking for something I actually want to watch. Filters barely help. Finding something great but not that popular? Good luck with that 😅
@@ -18,7 +18,7 @@ We'll use **LightRAG**, **Neo4j** and **Qdrant** to create a system that learns 
 
 **LightRAG** is a retrieval-augmented generation framework. We'll back it with **Neo4j** for graph storage and **Qdrant** for vector storage. **Archestra** connects to LightRAG via an MCP server running on the [Archestra MCP Orchestrator](https://archestra.ai/docs/platform-orchestrator).
 
-<img src="/blog/2026-01-12-diagram.png" alt="Architecture Diagram" />
+<img src="/blog/2026-01-12-diagram.webp" alt="Architecture Diagram" />
 
 [Neo4j](https://neo4j.com/) stores complex relationships between entities while [Qdrant](https://qdrant.tech/) handles vector similarity search.
 
@@ -110,7 +110,7 @@ node ingest-tv-shows.mjs
 
 All 100 TV shows will be ingested. Check out the knowledge graph in the UI - pretty cool!
 
-<img src="/blog/2026-01-12-ingest.gif" alt="LightRAG ingestion" />
+<img src="/blog/2026-01-12-ingest.webp" alt="LightRAG ingestion" />
 
 ---
 
@@ -143,7 +143,7 @@ We'll use an MCP server via the **Archestra MCP Orchestrator** - specifically [m
 
 First, add the MCP server to the registry:
 
-<img src="/blog/2026-01-12-mcp-registry.gif" alt="Add MCP Server to MCP registry" />
+<img src="/blog/2026-01-12-mcp-registry.webp" alt="Add MCP Server to MCP registry" />
 
 ## Install MCP server and assign tools
 
@@ -151,7 +151,7 @@ Install the MCP server with the credentials for **LightRAG**. Under the hood, Ar
 
 Then assign the tools to a **profile** so they're available in chat. We'll also loosen the tool policies since we trust our data.
 
-<img src="/blog/2026-01-12-install-mcp.gif" alt="Install MCP server and connect with profile" />
+<img src="/blog/2026-01-12-install-mcp.webp" alt="Install MCP server and connect with profile" />
 
 ## Create agents
 
@@ -173,7 +173,7 @@ Here are the system prompts:
 
 > You track the user's TV show watching history and ratings. When asked to check for feedback, query LightRAG for recent user activity and identify shows that were discussed but lack ratings. When collecting feedback, ask the user about their impressions and ratings (1-10), then use the LightRAG insert tool to add this feedback as a new entry. LightRAG will extract entities from the feedback and link them to existing shows in the knowledge graph, enriching future recommendations.
 
-<img src="/blog/2026-01-12-agents.gif" alt="Create agents" />
+<img src="/blog/2026-01-12-agents.webp" alt="Create agents" />
 
 # The result 🎉
 
@@ -181,10 +181,10 @@ Let's test it! Start a chat with **Movie Recommender**. When you share feelings 
 
 In future sessions, this enriched graph is available. When you ask for recommendations, **Movie Finder** queries LightRAG with your preferences baked in. The knowledge graph grows with every piece of feedback you provide.
 
-<img src="/blog/2026-01-12-chat-result.png" alt="Final chat demo" />
+<img src="/blog/2026-01-12-chat-result.webp" alt="Final chat demo" />
 
 Exactly what I wanted!
 
 Now I can finally focus on watching TV shows instead of spending time finding the right ones 😌🍿
 
-<img src="/blog/2026-01-12-popcorn-giphy.gif" alt="More time for this" />
+<img src="/blog/2026-01-12-popcorn-giphy.webp" alt="More time for this" />
