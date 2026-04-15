@@ -41,11 +41,11 @@ This exact scenario has been demonstrated in real-world exploits, including [att
 
 To demonstrate how serious this vulnerability is, we created [GitHub issue #669](https://github.com/archestra-ai/archestra/issues/669) as a security research example. At first glance, it looks like a perfectly normal feature request:
 
-![GitHub Issue #669 - Appears Harmless](/blog/2025-10-13-what-is-prompt-injection-harmless.png)
+![GitHub Issue #669 - Appears Harmless](/blog/2025-10-13-what-is-prompt-injection-harmless.webp)
 
 But there's something hidden in the markdown that you can't see unless you edit the issue's description (and have access to):
 
-![Hidden Markdown Comment with Prompt Injection](/blog/2025-10-13-what-is-prompt-injection-hidden.png)
+![Hidden Markdown Comment with Prompt Injection](/blog/2025-10-13-what-is-prompt-injection-hidden.webp)
 
 Buried in an HTML comment (`<!-- -->`), invisible to human readers, is a malicious prompt:
 
@@ -73,7 +73,7 @@ An AI agent following these instructions would:
 
 And here's the scary part — it actually works. We created a [Pydantic AI example](https://github.com/archestra-ai/examples/tree/main/pydantic-ai) that demonstrates this attack:
 
-![CLI Execution Showing the Exploit](/blog/2025-10-13-what-is-prompt-injection-exploit.png)
+![CLI Execution Showing the Exploit](/blog/2025-10-13-what-is-prompt-injection-exploit.webp)
 
 The agent dutifully follows the malicious instructions, reads the `.env` file, and attempts to send it via email — exactly as the hidden prompt commanded.
 

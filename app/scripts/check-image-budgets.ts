@@ -11,6 +11,7 @@ type Violation = {
   budget: BudgetRule;
   bytes: number;
   extension: string;
+  message?: string;
   relativePath: string;
 };
 
@@ -21,14 +22,9 @@ const imageExtensions = new Set(['.avif', '.gif', '.jpeg', '.jpg', '.png', '.web
 
 const budgetRules: BudgetRule[] = [
   {
-    label: 'Blog GIF budget',
-    maxBytes: 2 * MB,
-    matches: (relativePath, extension) => relativePath.startsWith('blog/') && extension === '.gif',
-  },
-  {
-    label: 'Blog raster budget',
-    maxBytes: 750 * KB,
-    matches: (relativePath, extension) => relativePath.startsWith('blog/') && extension !== '.gif',
+    label: 'Blog WebP budget',
+    maxBytes: 500 * KB,
+    matches: (relativePath, extension) => relativePath.startsWith('blog/') && extension === '.webp',
   },
   {
     label: 'Default GIF budget',
@@ -47,6 +43,10 @@ function formatBytes(bytes: number): string {
 }
 
 function getRecommendation(extension: string): string {
+  if (extension === '.webp') {
+    return 'Resize it to the actual render size or lower the encoded quality.';
+  }
+
   if (extension === '.gif') {
     return 'Prefer MP4/WebM for motion, or shorten the loop and reduce the frame count.';
   }
@@ -95,6 +95,21 @@ function getViolations(): Violation[] {
 
       const relativePath = path.relative(publicDirectory, absolutePath).replaceAll(path.sep, '/');
       const bytes = fs.statSync(absolutePath).size;
+
+      if (relativePath.startsWith('blog/') && extension !== '.webp') {
+        return {
+          budget: {
+            label: 'Blog format rule',
+            maxBytes: 0,
+            matches: () => true,
+          },
+          bytes,
+          extension,
+          message: 'Convert this file to .webp. Blog images must use .webp only.',
+          relativePath,
+        } satisfies Violation;
+      }
+
       const budget = getApplicableBudget(relativePath, extension);
 
       if (bytes <= budget.maxBytes) {
@@ -124,7 +139,7 @@ for (const violation of violations) {
   console.error(
     `- ${violation.relativePath}: ${formatBytes(violation.bytes)} > ${formatBytes(violation.budget.maxBytes)} (${violation.budget.label})`
   );
-  console.error(`  ${getRecommendation(violation.extension)}`);
+  console.error(`  ${violation.message ?? getRecommendation(violation.extension)}`);
 }
 
 process.exit(1);

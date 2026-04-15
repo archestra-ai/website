@@ -3,7 +3,7 @@ title: 'One Month: From v0.0.1 to v0.6.25'
 date: '2025-12-09'
 author: 'Matvey Kukuy, CEO'
 excerpt: "379 PRs, 2 new team members, and 4 major features - here's what we've been building at Archestra"
-image: '/blog/2025-12-09-platform-evolvement-image5.jpg'
+image: '/blog/2025-12-09-platform-evolvement-image5.webp'
 ---
 
 We've been a bit quiet here on the blog for the last month, and I feel like I owe you all an update. In short, it's been **a lot**.
@@ -23,7 +23,7 @@ A month ago Archestra was 100% an AI security engine. At the end of October, we 
 
 We've built a cloud-native MCP orchestrator ready to work at scale for a multi-team enterprise environment. We've solved tons of complexity by storing secrets in [Vault](https://archestra.ai/docs/platform-secrets-management), supporting Streamable HTTP, SSE, Stdio, Remote MCP servers, and wiring it up with RBAC...
 
-![MCP Orchestrator](/blog/2025-12-09-platform-evolvement-image1.png)
+![MCP Orchestrator](/blog/2025-12-09-platform-evolvement-image1.webp)
 
 ## 🆕 Chat UI
 

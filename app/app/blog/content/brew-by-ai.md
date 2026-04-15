@@ -290,7 +290,7 @@ Quite impressive, the shot was definitely not a great one and AI managed to get 
 
 <img src="/blog/2025-12-28-shot-1.webp" alt="AI barista is tuning the machine for the light roast">
 
-<img src="/blog/2025-12-28-shot-1-graph.png" alt="5s pre-infusion, 32g out.">
+<img src="/blog/2025-12-28-shot-1-graph.webp" alt="5s pre-infusion, 32g out.">
 
 AI created a "classical" profile: 5s pre-infusion; 9 bar till 1:2 ratio after that. It went with 94C.
 

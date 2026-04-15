@@ -3,7 +3,7 @@ title: 'A self-hosted Movie Recommendation Agent with LightRAG and MCP'
 date: '2026-01-12'
 author: 'Dominik Broj, Founding Engineer'
 description: 'How I built a personal movie expert with LightRAG and Archestra that learns from my feedback'
-image: '/blog/2026-01-12-hero.jpg'
+image: '/blog/2026-01-12-hero.webp'
 ---
 
 I've watched so many TV shows that finding the next one has become a mission. I keep jumping between streaming platforms looking for something I actually want to watch. Filters barely help. Finding something great but not that popular? Good luck with that 😅
@@ -18,7 +18,7 @@ We'll use **LightRAG**, **Neo4j** and **Qdrant** to create a system that learns 
 
 **LightRAG** is a retrieval-augmented generation framework. We'll back it with **Neo4j** for graph storage and **Qdrant** for vector storage. **Archestra** connects to LightRAG via an MCP server running on the [Archestra MCP Orchestrator](https://archestra.ai/docs/platform-orchestrator).
 
-<img src="/blog/2026-01-12-diagram.png" alt="Architecture Diagram" />
+<img src="/blog/2026-01-12-diagram.webp" alt="Architecture Diagram" />
 
 [Neo4j](https://neo4j.com/) stores complex relationships between entities while [Qdrant](https://qdrant.tech/) handles vector similarity search.
 
