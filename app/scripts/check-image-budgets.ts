@@ -99,15 +99,15 @@ function getViolations(): Violation[] {
       if (relativePath.startsWith('blog/') && extension !== '.webp') {
         return [
           {
-          budget: {
-            label: 'Blog format rule',
-            maxBytes: 0,
-            matches: () => true,
-          },
-          bytes,
-          extension,
-          message: 'Convert this file to .webp. Blog images must use .webp only.',
-          relativePath,
+            budget: {
+              label: 'Blog format rule',
+              maxBytes: 0,
+              matches: () => true,
+            },
+            bytes,
+            extension,
+            message: 'Convert this file to .webp. Blog images must use .webp only.',
+            relativePath,
           } satisfies Violation,
         ];
       }
