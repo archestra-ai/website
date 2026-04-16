@@ -3,7 +3,7 @@ title: 'Building Enterprise-Ready MCP Servers with JWKS and Identity Providers'
 date: '2026-02-11'
 author: 'Joey Orlando'
 description: 'How to integrate MCP servers with enterprise identity providers using JWKS for scalable, stateless token validation.'
-image: '/blog/2026-02-11-enterprise-mcp-servers.jpg'
+image: '/blog/2026-02-11-enterprise-mcp-servers.webp'
 ---
 
 ## Beyond Basic Auth

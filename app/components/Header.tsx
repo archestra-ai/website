@@ -21,13 +21,9 @@ export default function Header() {
       <div className="container flex items-center px-4 md:px-6 justify-between h-16">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <Image
-              src={websiteUrls.logoRelativeUrl}
-              alt={`${companyName} Logo`}
-              width={40}
-              height={40}
-              className="object-contain"
-            />
+            <div className="relative h-10 w-10 shrink-0">
+              <Image src={websiteUrls.logoRelativeUrl} alt={`${companyName} Logo`} fill className="object-contain" />
+            </div>
             <span className="font-[family-name:var(--font-roboto-mono)] text-2xl text-black hidden lg:inline">
               Archestra.AI
             </span>

@@ -39,7 +39,8 @@ const STEPS: Step[] = [
         delay: 2,
         node: (
           <p>
-            We don&apos;t want to do that. <span className="font-semibold text-gray-900">We believe in open source.</span>
+            We don&apos;t want to do that.{' '}
+            <span className="font-semibold text-gray-900">We believe in open source.</span>
           </p>
         ),
       },
@@ -74,9 +75,8 @@ const STEPS: Step[] = [
         delay: 0,
         node: (
           <p>
-            There&apos;s <span className="font-semibold text-gray-900">no value</span>
-            {' '}in unrevised PRs, kilometer-long comments, or useless &ldquo;readiness checklists&rdquo;. We all have
-            Claude.
+            There&apos;s <span className="font-semibold text-gray-900">no value</span> in unrevised PRs, kilometer-long
+            comments, or useless &ldquo;readiness checklists&rdquo;. We all have Claude.
           </p>
         ),
       },
@@ -84,9 +84,8 @@ const STEPS: Step[] = [
         delay: 1,
         node: (
           <p>
-            There&apos;s <span className="font-semibold text-gray-900">great value</span>
-            {' '}in your critical thinking, personal judgement, and strong opinions as a user and engineer. Be crisp
-            in communication.
+            There&apos;s <span className="font-semibold text-gray-900">great value</span> in your critical thinking,
+            personal judgement, and strong opinions as a user and engineer. Be crisp in communication.
           </p>
         ),
       },
@@ -290,7 +289,7 @@ export default function OnboardWizard({ initialError }: OnboardWizardProps) {
                 action="/api/contributor-onboard"
                 className="reveal-item flex flex-col items-end gap-3"
               >
-                <div className="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} />
+                <div className="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} data-theme="light" />
                 <button
                   type="submit"
                   disabled={!unlocked}
@@ -301,7 +300,7 @@ export default function OnboardWizard({ initialError }: OnboardWizardProps) {
                   </svg>
                   Sign in with GitHub
                 </button>
-                <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer />
+                <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" />
               </form>
             ) : (
               <button

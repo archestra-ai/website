@@ -15,14 +15,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
       return new NextResponse('Docs not available', { status: 503 });
     }
 
-    // Try multiple possible paths for the image
-    let fullPath = path.join(assetsDirectory, imagePath);
-
-    // If not found in old_docs, try in assets root (for automated_screenshots)
-    if (!fs.existsSync(fullPath)) {
-      const basePath = assetsDirectory.replace('/old_docs', '');
-      fullPath = path.join(basePath, imagePath);
-    }
+    const fullPath = path.join(assetsDirectory, imagePath);
 
     // Check if file exists
     if (!fs.existsSync(fullPath)) {
@@ -40,6 +33,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
         '.jpg': 'image/jpeg',
         '.jpeg': 'image/jpeg',
         '.gif': 'image/gif',
+        '.webp': 'image/webp',
         '.svg': 'image/svg+xml',
       }[ext] || 'application/octet-stream';
 

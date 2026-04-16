@@ -7,6 +7,8 @@ export interface BlogPost {
   content: string;
   readingTime: string;
   image?: string;
+  imageHeight?: number;
+  imageWidth?: number;
   github?: string;
   cta?: {
     text: string;

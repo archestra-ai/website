@@ -1,5 +1,6 @@
 import 'highlight.js/styles/github.css';
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import BlogContent from '@components/BlogContent';
@@ -83,7 +84,18 @@ export default async function BlogPostPage({ params }: Props) {
 
               {post.image && (
                 <div className="mb-8 max-w-4xl mx-auto">
-                  <img src={post.image} alt={post.title} className="w-full rounded-lg shadow-lg" />
+                  {post.imageWidth && post.imageHeight ? (
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      width={post.imageWidth}
+                      height={post.imageHeight}
+                      className="w-full h-auto rounded-lg shadow-lg"
+                      sizes="(min-width: 1280px) 896px, (min-width: 768px) calc(100vw - 96px), calc(100vw - 32px)"
+                    />
+                  ) : (
+                    <img src={post.image} alt={post.title} className="w-full rounded-lg shadow-lg" />
+                  )}
                 </div>
               )}
 

@@ -64,6 +64,8 @@ function ContributorOnboardContent() {
 export default function ContributorOnboardPage() {
   return (
     <>
+      <link rel="preconnect" href="https://challenges.cloudflare.com" crossOrigin="" />
+      <link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
       <Header />
       <main className="min-h-screen bg-gradient-to-b from-white via-gray-50/50 to-white">
         <Suspense>

@@ -178,7 +178,7 @@ export default function AboutPage() {
                 <CardContent className="p-6 text-left">
                   <div className="flex justify-center mb-4">
                     <Image
-                      src="/team/dominik.png"
+                      src="/team/dominik.webp"
                       alt={DOMINIK.name}
                       width={150}
                       height={150}
