@@ -2,7 +2,7 @@
 
 import { Link as LinkIcon } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import type React from 'react';
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
@@ -41,7 +41,7 @@ export default function BlogContent({ content }: BlogContentProps) {
       remarkPlugins={[remarkGfm, remarkBreaks]}
       rehypePlugins={[rehypeHighlight, rehypeRaw, rehypeSlug]}
       components={{
-        p: ({ node, ...props }) => <p {...props} className="text-lg text-gray-700 leading-relaxed mb-6" />,
+        p: ({ node, ...props }) => <div {...props} className="text-lg text-gray-700 leading-relaxed mb-6" />,
         h1: ({ node, children, ...props }) => {
           const id = props.id || '';
           return (

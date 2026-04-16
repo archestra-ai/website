@@ -1,6 +1,6 @@
 ---
 title: "Let's talk about AI slop"
-date: '2026-04-07'
+date: '2026-04-16'
 author: 'Ildar Iskhakov, CTO'
 description: 'Is it the end of open source we know and love?'
 image: '/blog/2026-04-07-only-responsible-ai.png'
@@ -76,8 +76,8 @@ The full flow:
 
 ## Final Words
 
-It's a pretty weird position that while GitHub reports massive wins caused by AI, we as a small startup have to do the heavy lifting of cleaning up this AI slop from our repository and care about the legitimacy of our audience.
+It's a pretty weird position that while GitHub reports massive metric growth — a substantial part of which is AI-generated — we have to do the heavy lifting of cleaning up AI slop from our repository and come up with pretty esoteric workarounds to keep the level of legitimacy of our open source audience.
 
-Dear community, let's talk about the effect AI slop has on honest contributors who want to spend their time doing good and have to break through the wall of noise instead.
+It's not only demotivating contributors who want to spend their time doing good and have to break through the wall of noise instead, it's also bringing a substantial security risk, as it happened [in the LiteLLM repo](https://github.com/BerriAI/litellm/issues/24512) when attackers tried to steer the conversation using AI bots.
 
-Let's do better.
+Let's talk about the effect AI has on open source and take it seriously.
