@@ -61,6 +61,10 @@ const nextConfig = {
         destination: '/api/docs-images/:path*.gif',
       },
       {
+        source: '/docs/:path*.webp',
+        destination: '/api/docs-images/:path*.webp',
+      },
+      {
         source: '/docs/:path*.svg',
         destination: '/api/docs-images/:path*.svg',
       },

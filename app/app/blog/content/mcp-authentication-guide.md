@@ -3,7 +3,7 @@ title: "A Developer's Guide to MCP Authentication"
 date: '2026-02-11'
 author: 'Joey Orlando'
 description: 'The standards, protocols, and patterns behind secure AI tool access — OAuth 2.1, PKCE, CIMD, and more.'
-image: '/blog/2026-02-11-mcp-authentication.png'
+image: '/blog/2026-02-11-mcp-authentication.webp'
 ---
 
 ## Every MCP Connection Starts with a 401

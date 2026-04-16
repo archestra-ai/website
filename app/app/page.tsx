@@ -1,6 +1,7 @@
 'use client';
 
 import { AlertTriangle, Calendar, Server, ShieldCheck } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -9,7 +10,6 @@ import Footer from '@components/Footer';
 import Header from '@components/Header';
 import MermaidDiagram from '@components/MermaidDiagram';
 import NewsletterForm from '@components/NewsletterForm';
-import PlatformDiagram from '@components/PlatformDiagram';
 import QuickStartBlock, { type MessagingProvider } from '@components/QuickStartBlock';
 import constants from '@constants';
 
@@ -66,7 +66,7 @@ export default function Home() {
           <div className="container px-4 md:px-6 max-w-7xl mx-auto relative">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
               {/* Left: Heading */}
-              <div className="flex-1 text-center lg:text-left">
+              <div className="flex-1 text-center lg:text-left lg:shrink-0 lg:basis-2/5">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-950 leading-[1.15] tracking-tight">
                   Open Source AI Stack for Your{' '}
                   <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
@@ -77,8 +77,15 @@ export default function Home() {
               </div>
 
               {/* Right: Platform Architecture Diagram */}
-              <div className="flex-1 w-full max-w-lg lg:max-w-xl">
-                <PlatformDiagram />
+              <div className="lg:basis-3/5 w-full">
+                <Image
+                  src="/api/docs-images/platform-overview-architecture.webp"
+                  alt="Archestra Platform Architecture"
+                  width={2208}
+                  height={1420}
+                  className="w-full h-auto rounded-xl shadow-lg"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -126,7 +133,14 @@ export default function Home() {
                   className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 cursor-zoom-in"
                   onClick={() => setLightboxOpen(true)}
                 >
-                  <img src="/clawdbot_hack.jpeg" alt="ClawdBot vulnerability demonstration" className="w-full h-auto" />
+                  <Image
+                    src="/clawdbot_hack.jpeg"
+                    alt="ClawdBot vulnerability demonstration"
+                    width={3418}
+                    height={2142}
+                    className="w-full h-auto"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                  />
                 </div>
                 <ol className="relative text-sm text-gray-500 space-y-1 pl-1">
                   <li>1. Sending ClawdBot email with prompt injection</li>
@@ -262,9 +276,12 @@ export default function Home() {
 
                 {/* Chat UI Screenshot */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
-                  <img
-                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/chat.png"
+                  <Image
+                    src="/api/docs-images/chat.webp"
                     alt="Chat Interface"
+                    width={3644}
+                    height={2368}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="w-full h-auto"
                   />
                 </div>
@@ -387,7 +404,14 @@ export default function Home() {
                 {/* Slack Screenshot */}
                 <div className="relative">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-                    <img src="/screenshot-slack.png" alt="Agent conversation in Slack" className="w-full h-auto" />
+                    <Image
+                      src="/screenshot-slack.png"
+                      alt="Agent conversation in Slack"
+                      width={856}
+                      height={212}
+                      className="w-full h-auto"
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                    />
                   </div>
                   <div className="absolute -top-3 -right-3 bg-gradient-to-r from-teal-600 to-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                     Slack example
@@ -397,10 +421,13 @@ export default function Home() {
                 {/* MS Teams Screenshot */}
                 <div className="relative">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-                    <img
+                    <Image
                       src="/sales-assistant-msteams-chat.png"
                       alt="Sales assistant in Microsoft Teams chat"
+                      width={1065}
+                      height={725}
                       className="w-full h-auto"
+                      sizes="(min-width: 1024px) 50vw, 100vw"
                     />
                   </div>
                   <div className="absolute -top-3 -right-3 bg-gradient-to-r from-teal-600 to-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
@@ -518,9 +545,12 @@ export default function Home() {
 
                 {/* Screenshot Container */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
-                  <img
-                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/mcp-registry.png"
+                  <Image
+                    src="/api/docs-images/mcp-registry.webp"
                     alt="Private MCP Registry Interface"
+                    width={2490}
+                    height={1554}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="w-full h-auto"
                   />
                 </div>
@@ -787,9 +817,12 @@ export default function Home() {
 
                 {/* Cost Chart Screenshot */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
-                  <img
-                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/cost.png"
+                  <Image
+                    src="/api/docs-images/cost.webp"
                     alt="Cost Monitoring Dashboard"
+                    width={2000}
+                    height={1048}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="w-full h-auto"
                   />
                 </div>
@@ -951,9 +984,12 @@ export default function Home() {
 
                 {/* Observability Dashboard Screenshot */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
-                  <img
-                    src="https://raw.githubusercontent.com/archestra-ai/archestra/main/docs/assets/observability.png"
+                  <Image
+                    src="/api/docs-images/observability.webp"
                     alt="Observability Dashboard"
+                    width={2920}
+                    height={1488}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="w-full h-auto"
                   />
                 </div>
@@ -1331,9 +1367,11 @@ export default function Home() {
           className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out"
           onClick={() => setLightboxOpen(false)}
         >
-          <img
+          <Image
             src="/clawdbot_hack.jpeg"
             alt="ClawdBot vulnerability demonstration"
+            width={3418}
+            height={2142}
             className="max-w-full max-h-[90vh] rounded-lg shadow-2xl"
           />
         </div>

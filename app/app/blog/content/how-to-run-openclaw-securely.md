@@ -3,7 +3,7 @@ title: 'How to Run OpenClaw Securely'
 date: '2026-02-04'
 author: 'Joey Orlando'
 description: 'OpenClaw is a security nightmare out of the box. Here is how to lock it down with Archestra.'
-image: '/blog/2026-02-04-openclaw-secure-hero.png'
+image: '/blog/2026-02-04-openclaw-secure-hero.webp'
 ---
 
 OpenClaw has taken the world by storm. In a matter of weeks, Peter Steinberger's open-source personal AI agent — originally called Clawdbot, then briefly Moltbot — has racked up over 160,000 GitHub stars, making it one of the fastest-growing open-source projects in history. It can read your email, write code, control your browser, manage your smart home, and even post on social media. All from a single chat interface. All running locally on your machine.
@@ -22,7 +22,7 @@ The risks aren't theoretical.
 
 Our CEO, [Matvey Kukuy](https://www.linkedin.com/in/matveykukuy/), demonstrated just how trivial it is to exploit an unprotected OpenClaw instance. He sent an email with an embedded prompt injection, waited for the agent to check its inbox, and received the target machine's SSH private key back — all within five minutes.
 
-![Matvey Kukuy's prompt injection demo — SSH key exfiltrated via email in under 5 minutes](/blog/2026-02-04-openclaw-matvey-prompt-injection.png)
+![Matvey Kukuy's prompt injection demo — SSH key exfiltrated via email in under 5 minutes](/blog/2026-02-04-openclaw-matvey-prompt-injection.webp)
 
 No malware. No privilege escalation. Just a cleverly worded email that the AI treated as a legitimate instruction.
 
