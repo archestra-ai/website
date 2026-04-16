@@ -62,7 +62,7 @@ function ContributorOnboardContent() {
               </div>
             )}
             <form method="POST" action="/api/contributor-onboard" className="flex flex-col items-center gap-4">
-              <div className="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} />
+              <div className="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} data-theme="light" />
               <button
                 type="submit"
                 className="inline-flex items-center gap-3 px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-lg transition-colors"
@@ -73,7 +73,7 @@ function ContributorOnboardContent() {
                 Sign in with GitHub
               </button>
             </form>
-            <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer />
+            <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" />
           </div>
         )}
       </div>
@@ -84,6 +84,8 @@ function ContributorOnboardContent() {
 export default function ContributorOnboardPage() {
   return (
     <>
+      <link rel="preconnect" href="https://challenges.cloudflare.com" crossOrigin="" />
+      <link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
       <Header />
       <main className="min-h-screen bg-white">
         <Suspense>
