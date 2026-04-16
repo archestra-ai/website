@@ -111,9 +111,7 @@ export default function OnboardSuccess({ username }: OnboardSuccessProps) {
                     {!isLast && (
                       <div
                         className={`w-0.5 flex-1 rounded-full transition-colors duration-300 ${
-                          state === 'done'
-                            ? 'bg-gradient-to-b from-fuchsia-500 to-pink-500'
-                            : 'bg-gray-200'
+                          state === 'done' ? 'bg-gradient-to-b from-fuchsia-500 to-pink-500' : 'bg-gray-200'
                         }`}
                       />
                     )}

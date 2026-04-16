@@ -75,8 +75,8 @@ const STEPS: Step[] = [
         delay: 0,
         node: (
           <p>
-            There&apos;s <span className="font-semibold text-gray-900">no value</span>{' '}
-            in unrevised PRs, kilometer-long comments, or useless &ldquo;readiness checklists&rdquo;. We all have Claude.
+            There&apos;s <span className="font-semibold text-gray-900">no value</span> in unrevised PRs, kilometer-long
+            comments, or useless &ldquo;readiness checklists&rdquo;. We all have Claude.
           </p>
         ),
       },
@@ -84,9 +84,8 @@ const STEPS: Step[] = [
         delay: 1,
         node: (
           <p>
-            There&apos;s <span className="font-semibold text-gray-900">great value</span>{' '}
-            in your critical thinking, personal judgement, and strong opinions as a user and engineer. Be crisp in
-            communication.
+            There&apos;s <span className="font-semibold text-gray-900">great value</span> in your critical thinking,
+            personal judgement, and strong opinions as a user and engineer. Be crisp in communication.
           </p>
         ),
       },
@@ -115,11 +114,7 @@ const STEPS: Step[] = [
     body: [
       {
         delay: 0,
-        node: (
-          <p>
-            We practice paid bounties in the repo. It&apos;s our way of saying thank you.
-          </p>
-        ),
+        node: <p>We practice paid bounties in the repo. It&apos;s our way of saying thank you.</p>,
       },
       {
         delay: 2,
