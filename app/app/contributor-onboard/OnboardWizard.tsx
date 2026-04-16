@@ -177,8 +177,11 @@ type OnboardWizardProps = {
 export default function OnboardWizard({ initialError }: OnboardWizardProps) {
   const [step, setStep] = useState(0);
   const [unlocked, setUnlocked] = useState(false);
+  const [dismissedError, setDismissedError] = useState(false);
   const seenStepsRef = useRef<Set<number>>(new Set());
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const shouldShowError = !!initialError && !dismissedError;
 
   useEffect(() => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -198,6 +201,16 @@ export default function OnboardWizard({ initialError }: OnboardWizardProps) {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [step]);
+
+  // Dismiss stale error banner as soon as Turnstile fires a success token.
+  useEffect(() => {
+    (window as unknown as { onTurnstileSuccess?: () => void }).onTurnstileSuccess = () => {
+      setDismissedError(true);
+    };
+    return () => {
+      delete (window as unknown as { onTurnstileSuccess?: () => void }).onTurnstileSuccess;
+    };
+  }, []);
 
   const current = STEPS[step];
   const Icon = current.icon;
@@ -257,7 +270,7 @@ export default function OnboardWizard({ initialError }: OnboardWizardProps) {
             </div>
 
             {/* Error banner on final step */}
-            {isFinal && initialError && (
+            {isFinal && shouldShowError && (
               <div className="reveal-item rounded-lg border border-red-200 bg-red-50 p-4">
                 <p className="text-sm text-red-600">{initialError}</p>
               </div>
@@ -289,7 +302,12 @@ export default function OnboardWizard({ initialError }: OnboardWizardProps) {
                 action="/api/contributor-onboard"
                 className="reveal-item flex flex-col items-end gap-3"
               >
-                <div className="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} data-theme="light" />
+                <div
+                  className="cf-turnstile"
+                  data-sitekey={TURNSTILE_SITE_KEY}
+                  data-theme="light"
+                  data-callback="onTurnstileSuccess"
+                />
                 <button
                   type="submit"
                   disabled={!unlocked}
