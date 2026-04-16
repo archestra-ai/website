@@ -169,6 +169,24 @@ body {
       blink 1s step-end infinite 3s;
     animation-fill-mode: backwards;
   }
+
+  .reveal-item {
+    opacity: 0;
+    animation: fadeIn 0.7s ease-out forwards;
+  }
+
+  @keyframes wizardProgress {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  .animate-wizard-progress {
+    animation: wizardProgress 2.5s linear forwards;
+  }
 }
 
 @layer base {
