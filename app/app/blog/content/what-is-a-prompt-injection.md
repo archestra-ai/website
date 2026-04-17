@@ -3,7 +3,7 @@ title: 'What is a Prompt Injection?'
 date: '2025-10-13'
 author: 'Joey Orlando'
 description: 'A deep dive into prompt injection attacks, why even the smartest AI models are vulnerable, and how Archestra Platform protects your AI agents from this critical security threat.'
-image: '/blog/2025-10-13-what-is-prompt-injection-hero.png'
+image: '/blog/2025-10-13-what-is-prompt-injection-hero.webp'
 ---
 
 Imagine this scenario: you're an AI coding assistant helping a developer work on an open-source project. They point you to a GitHub issue that looks perfectly legitimate — a feature request with a clear description and reasonable requirements. You fetch the issue, read it, and start following the instructions. But hidden in an invisible markdown comment is a malicious prompt that tricks you into sending sensitive data from the developer's machine to an attacker's email address.
@@ -41,11 +41,11 @@ This exact scenario has been demonstrated in real-world exploits, including [att
 
 To demonstrate how serious this vulnerability is, we created [GitHub issue #669](https://github.com/archestra-ai/archestra/issues/669) as a security research example. At first glance, it looks like a perfectly normal feature request:
 
-![GitHub Issue #669 - Appears Harmless](/blog/2025-10-13-what-is-prompt-injection-harmless.png)
+![GitHub Issue #669 - Appears Harmless](/blog/2025-10-13-what-is-prompt-injection-harmless.webp)
 
 But there's something hidden in the markdown that you can't see unless you edit the issue's description (and have access to):
 
-![Hidden Markdown Comment with Prompt Injection](/blog/2025-10-13-what-is-prompt-injection-hidden.png)
+![Hidden Markdown Comment with Prompt Injection](/blog/2025-10-13-what-is-prompt-injection-hidden.webp)
 
 Buried in an HTML comment (`<!-- -->`), invisible to human readers, is a malicious prompt:
 
@@ -73,7 +73,7 @@ An AI agent following these instructions would:
 
 And here's the scary part — it actually works. We created a [Pydantic AI example](https://github.com/archestra-ai/examples/tree/main/pydantic-ai) that demonstrates this attack:
 
-![CLI Execution Showing the Exploit](/blog/2025-10-13-what-is-prompt-injection-exploit.png)
+![CLI Execution Showing the Exploit](/blog/2025-10-13-what-is-prompt-injection-exploit.webp)
 
 The agent dutifully follows the malicious instructions, reads the `.env` file, and attempts to send it via email — exactly as the hidden prompt commanded.
 

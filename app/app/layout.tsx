@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
 import { Roboto_Mono } from 'next/font/google';
 
@@ -87,6 +88,7 @@ export default function RootLayout({
         {children}
         <GDPRConsentPanel />
         <ConditionalAnalytics gaId={constants.googleAnalytics.measurementId} />
+        <SpeedInsights />
       </body>
     </html>
   );
