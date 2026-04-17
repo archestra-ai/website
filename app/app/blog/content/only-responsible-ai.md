@@ -26,13 +26,13 @@ At first, we tried to calculate the "reputation" of contributors and built ["Lon
 
 As a next step, we built an "AI sheriff" ([example](https://github.com/archestra-ai/archestra/pull/2843#issuecomment-3916574929)), which obviously closed a few legitimate PRs 🤦.
 
-The constant flow of useless AI comments and proposals was only getting worse, turning legitimate contributors away and making us reconsider: should we stop [motivating contributions with bounties](https://github.com/archestra-ai/archestra/issues?q=is%3Aissue%20state%3Aclosed%20label%3A%22%F0%9F%92%8E%20Bounty%22)? Should we stop [giving fun test tasks to our job candidates](http://archestra.ai/careers)?
+The constant flow of useless AI comments and proposals was only getting worse, turning legitimate contributors away and making us reconsider: should we stop [motivating contributions with bounties](https://github.com/archestra-ai/archestra/issues?q=is%3Aissue%20state%3Aclosed%20label%3A%22%F0%9F%92%8E%20Bounty%22)? Should we stop [giving fun test tasks to our job candidates](https://archestra.ai/careers)?
 
 We've decided that we need to fight back and insist on making our repo a comfortable and safe space for legitimate contributors, responsible AI users, newbies, and seasoned engineers.
 
 Today we're **blocking the ability to create issues, open PRs, and leave comments for those who didn't go through the onboarding**.
 
-![Contributor onboarding, five steps to get white-listed](/blog/2026-04-07-onboarding.webp)
+![Contributor onboarding, five steps to get whitelisted](/blog/2026-04-07-onboarding.webp)
 
 It's a nuclear option, yes. It's especially sensitive for a VC-backed startup that is measured thoroughly by GitHub activity, but we have to pull the trigger: **we value quality over quantity. We don't value metrics pumped by AI slop.**
 
@@ -40,7 +40,7 @@ We want Archestra to be a great piece of software that everyone can contribute t
 
 ## Doing It in GitHub
 
-There is no straightforward way to white-list those who can comment or create PRs on an open source repo, so we had to hack around.
+There is no straightforward way to whitelist those who can comment or create PRs on an open source repo, so we had to hack around.
 
 There is a setting called "Limit to prior contributors." Simple rule: if you haven't previously committed to `main`, you can't comment on issues or PRs.
 
@@ -76,8 +76,8 @@ The full flow:
 
 ## Final Words
 
-It's pretty weird that while GitHub reports massive metric growth — a substantial part of which is AI-generated — we as an open source project team have to do the heavy lifting of cleaning up AI slop from our repository and come up with pretty esoteric workarounds to keep the level of legitimacy of our open source audience.
+While GitHub reports massive metric growth — a substantial part of which is AI-generated — we as an open source project team have to do the heavy lifting of cleaning up AI slop from our repository and come up with esoteric workarounds to keep the level of legitimacy of our open source audience.
 
-It's not only demotivating contributors who want to spend their time doing good and have to break through the wall of noise instead, it's also bringing a substantial security risk, as it happened [in the LiteLLM repo](https://github.com/BerriAI/litellm/issues/24512) when attackers tried to steer the conversation using AI bots.
+Slop is not only demotivating contributors who want to spend their time doing good and have to break through the wall of noise instead, it's also bringing a substantial security risk, as it happened [in the LiteLLM repo](https://github.com/BerriAI/litellm/issues/24512) when attackers tried to steer the conversation using AI bots.
 
-Let's talk about the effect AI has on open source and take it seriously.
+Dear community, it's time to have a serious talk about the effect AI has on open source.
