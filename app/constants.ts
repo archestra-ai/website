@@ -100,7 +100,7 @@ const INNOKENTII = {
 const KARAN = {
   '@type': 'Person',
   name: 'Karan Shahani',
-  jobTitle: 'Not Founding Engineer',
+  jobTitle: 'Software Engineer',
   worksFor: {
     '@type': 'Organization',
     name: COMPANY_NAME,
