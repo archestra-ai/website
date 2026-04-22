@@ -97,12 +97,31 @@ const INNOKENTII = {
     'Engineer with experience ranging from building user interfaces to developing high-load distributed systems. Previously working on Grafana Mimir. Founding engineer at Amixr (acquired by Grafana Labs).',
 };
 
+const KARAN = {
+  '@type': 'Person',
+  name: 'Karan Shahani',
+  jobTitle: 'Not Founding Engineer',
+  worksFor: {
+    '@type': 'Organization',
+    name: COMPANY_NAME,
+  },
+  // sameAs: 'https://www.linkedin.com/in/karanshahani/',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Montréal',
+    addressCountry: 'Canada',
+  },
+  description:
+    'Software engineer and leader with a decade of experience scaling web platforms across fintech, blockchain, and media. Previously co-led engineering at Zapper.xyz.',
+};
+
 const PEOPLE = {
   matvey: MATVEY,
   ildar: ILDAR,
   joey: JOEY,
   dominik: DOMINIK,
   innokentii: INNOKENTII,
+  karan: KARAN,
 };
 
 // GitHub constants
