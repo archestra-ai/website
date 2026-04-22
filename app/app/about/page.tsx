@@ -15,7 +15,7 @@ const {
     name: companyName,
     alternateName: companyAlternateName,
     description: companyDescription,
-    people: { joey: JOEY, matvey: MATVEY, ildar: ILDAR, innokentii: INNOKENTII },
+    people: { joey: JOEY, matvey: MATVEY, ildar: ILDAR, innokentii: INNOKENTII, karan: KARAN },
   },
 } = constants;
 
@@ -202,6 +202,28 @@ export default function AboutPage() {
                       <LinkedInIcon size={20} />
                     </a>
                   </div>
+                </CardContent>
+              </Card>
+
+              {/* Karan */}
+              <Card className="border-2 hover:border-purple-200 transition-colors">
+                <CardContent className="p-6 text-left">
+                  <div className="flex justify-center mb-4">
+                    <Image
+                      src="/team/karan.jpg"
+                      alt={KARAN.name}
+                      width={150}
+                      height={150}
+                      className="rounded-full object-cover"
+                    />
+                  </div>
+                  <h3 className="font-bold text-xl mb-2">{KARAN.name}</h3>
+                  <p className="text-gray-700 font-medium mb-1">{KARAN.jobTitle}</p>
+                  <p className="text-gray-500 text-sm mb-3">
+                    {KARAN.address.addressLocality}, {KARAN.address.addressCountry}
+                  </p>
+                  <p className="text-gray-700 text-sm leading-relaxed mb-4">{KARAN.description}</p>
+                  <EmailCodePanel email="karan@archestra.ai" />
                 </CardContent>
               </Card>
             </div>
