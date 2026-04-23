@@ -102,8 +102,8 @@ function pullDocs(forceRemote = false) {
     }
   } catch (error) {
     console.error('❌ Failed to pull platform docs:', error.message);
-    console.error('   Documentation may not be available in production.');
-    // Don't fail the build, just warn
+    console.error('   Failing build because docs are required for deployment.');
+    throw error;
   } finally {
     // Clean up temp directory
     if (fs.existsSync(tempPath)) {
