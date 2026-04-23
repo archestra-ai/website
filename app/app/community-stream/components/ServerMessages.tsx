@@ -21,13 +21,13 @@ interface ServerMessagesProps {
 function cleanText(text: string): string {
   return replaceEmojiShortcodes(
     text
-      .replace(/&amp;/g, '&')
       .replace(/&lt;/g, '<')
       .replace(/&gt;/g, '>')
       .replace(/<https?:\/\/[^|>]+\|([^>]+)>/g, '$1')
       .replace(/<https?:\/\/([^>]+)>/g, '$1')
       .replace(/<@[A-Z0-9]+(?:\|([^>]+))?>/g, (_, name) => `@${name || 'user'}`)
       .replace(/<#[A-Z0-9]+(?:\|([^>]+))?>/g, (_, name) => `#${name || 'channel'}`)
+      .replace(/&amp;/g, '&')
   );
 }
 
