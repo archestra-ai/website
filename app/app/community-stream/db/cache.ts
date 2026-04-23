@@ -71,7 +71,7 @@ async function backgroundSync() {
   }
 }
 
-export async function getCache(): Promise<CacheData> {
+async function getCache(): Promise<CacheData> {
   if (!cache) {
     cache = await loadFromDb();
     if (!refreshTimer) {

@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
-  "entry": ["scripts/**/*.{js,ts}", "app/mcp-catalog/scripts/**/*.ts"],
+  "entry": ["scripts/**/*.{js,ts}", "app/mcp-catalog/scripts/**/*.ts", "app/community-stream/scripts/**/*.ts"],
   "project": ["**/*.{js,ts,tsx}"],
   "ignore": ["components/ui/**"]
 }
