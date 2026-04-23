@@ -66,7 +66,17 @@ function CopyLinkButton({ permalink }: { permalink: string }) {
   );
 }
 
-function TimeLink({ permalink, messageTs, className, children }: { permalink: string; messageTs: string; className?: string; children: React.ReactNode }) {
+function TimeLink({
+  permalink,
+  messageTs,
+  className,
+  children,
+}: {
+  permalink: string;
+  messageTs: string;
+  className?: string;
+  children: React.ReactNode;
+}) {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     window.history.replaceState(null, '', permalink);
@@ -134,7 +144,9 @@ export default function Message({ message, user, channelName, compact = false, h
         <div className="w-9 flex-shrink-0 flex items-start justify-center pt-0.5">
           <span className="text-[12px] text-[#616061] opacity-0 group-hover:opacity-100 transition-opacity">
             {permalink ? (
-              <TimeLink permalink={permalink} messageTs={message.ts}>{formatTime(message.createdAt)}</TimeLink>
+              <TimeLink permalink={permalink} messageTs={message.ts}>
+                {formatTime(message.createdAt)}
+              </TimeLink>
             ) : (
               formatTime(message.createdAt)
             )}
@@ -163,7 +175,11 @@ export default function Message({ message, user, channelName, compact = false, h
         <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0">
           <span className="font-bold text-[15px] text-[#1D1C1D]">{displayName}</span>
           {permalink ? (
-            <TimeLink permalink={permalink} messageTs={message.ts} className="text-[12px] text-[#616061] hover:underline">
+            <TimeLink
+              permalink={permalink}
+              messageTs={message.ts}
+              className="text-[12px] text-[#616061] hover:underline"
+            >
               {formatTime(message.createdAt)}
             </TimeLink>
           ) : (
