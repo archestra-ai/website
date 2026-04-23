@@ -8,7 +8,7 @@ interface ServerMessage {
   ts: string;
   userId: string | null;
   text: string;
-  replyCount: number;
+  replyCount: number | null;
   createdAt: Date | string;
 }
 
@@ -55,7 +55,7 @@ export default function ServerMessages({ messages, users, channelName }: ServerM
               <time dateTime={new Date(msg.createdAt).toISOString()}>{formatDate(msg.createdAt)}</time>
             </p>
             <p>{cleanText(msg.text)}</p>
-            {msg.replyCount > 0 && (
+            {(msg.replyCount || 0) > 0 && (
               <p>
                 <a href={`/community-stream/${channelName}/${msg.ts}`}>
                   {msg.replyCount} {msg.replyCount === 1 ? 'reply' : 'replies'}

@@ -298,7 +298,6 @@ const EMOJI_MAP: Record<string, string> = {
   pointup: '☝️',
   pointright: '👉',
   pointleft: '👈',
-  point_down: '👇',
   // Thread reference
   thread: '🧵',
 };
