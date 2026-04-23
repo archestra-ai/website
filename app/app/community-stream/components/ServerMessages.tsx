@@ -44,18 +44,15 @@ export default function ServerMessages({ messages, users, channelName }: ServerM
   if (messages.length === 0) return null;
 
   return (
-    <div
-      className="sr-only"
-      aria-hidden="true"
-      suppressHydrationWarning
-    >
+    <div className="sr-only" aria-hidden="true" suppressHydrationWarning>
       <h2>Messages in #{channelName}</h2>
       {messages.map((msg) => {
         const author = msg.userId ? users[msg.userId]?.displayName || 'Someone' : 'Someone';
         return (
           <article key={msg.ts} data-ts={msg.ts}>
             <p>
-              <strong>{author}</strong> — <time dateTime={new Date(msg.createdAt).toISOString()}>{formatDate(msg.createdAt)}</time>
+              <strong>{author}</strong> —{' '}
+              <time dateTime={new Date(msg.createdAt).toISOString()}>{formatDate(msg.createdAt)}</time>
             </p>
             <p>{cleanText(msg.text)}</p>
             {msg.replyCount > 0 && (

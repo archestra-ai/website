@@ -271,9 +271,7 @@ export async function cachedGetAvailableDates(channelId: string): Promise<string
   return Array.from(dateSet).sort();
 }
 
-export async function cachedGetThreadsForSitemap(): Promise<
-  { channelName: string; ts: string; createdAt: Date }[]
-> {
+export async function cachedGetThreadsForSitemap(): Promise<{ channelName: string; ts: string; createdAt: Date }[]> {
   const c = await getCache();
   const results: { channelName: string; ts: string; createdAt: Date }[] = [];
   const channelMap = new Map(c.channels.map((ch) => [ch.id, ch.name]));

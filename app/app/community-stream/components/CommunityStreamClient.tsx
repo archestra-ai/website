@@ -3,7 +3,6 @@
 import { useState } from 'react';
 
 import { Channel, MessagePage, ThreadData } from '../data/types';
-
 import ChannelSidebar from './ChannelSidebar';
 import MessageArea from './MessageArea';
 import ThreadPanel from './ThreadPanel';
@@ -44,15 +43,17 @@ export default function CommunityStreamClient({
         onCloseMobile={() => setIsMobileSidebarOpen(false)}
       />
 
-      <MessageArea
-        channel={selectedChannel}
-        focusedMessageTs={messageTs}
-        onToggleSidebar={() => setIsMobileSidebarOpen(true)}
-        initialData={initialMessages}
-        currentDate={currentDate}
-        prevDate={prevDate}
-        nextDate={nextDate}
-      />
+      <div className={hasThread && messageTs ? 'hidden md:flex flex-1 min-w-0' : 'flex flex-1 min-w-0'}>
+        <MessageArea
+          channel={selectedChannel}
+          focusedMessageTs={messageTs}
+          onToggleSidebar={() => setIsMobileSidebarOpen(true)}
+          initialData={initialMessages}
+          currentDate={currentDate}
+          prevDate={prevDate}
+          nextDate={nextDate}
+        />
+      </div>
 
       {hasThread && messageTs && (
         <ThreadPanel

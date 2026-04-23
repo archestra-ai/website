@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import { SlackMessage, User } from '../data/types';
-
 import Avatar from './Avatar';
 import FileAttachments from './FileAttachments';
 import ReactionComponent from './Reaction';
@@ -67,6 +66,25 @@ function CopyLinkButton({ permalink }: { permalink: string }) {
   );
 }
 
+function TimeLink({ permalink, messageTs, className, children }: { permalink: string; messageTs: string; className?: string; children: React.ReactNode }) {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.history.replaceState(null, '', permalink);
+    // Flash highlight on the message
+    const el = document.getElementById(`msg-${messageTs}`);
+    if (el) {
+      el.classList.add('bg-[#FFF8E7]');
+      setTimeout(() => el.classList.remove('bg-[#FFF8E7]'), 2000);
+    }
+  };
+
+  return (
+    <a href={permalink} onClick={handleClick} className={className || 'hover:underline'}>
+      {children}
+    </a>
+  );
+}
+
 function MessageLinks({ permalink, slackUrl }: { permalink?: string; slackUrl?: string | null }) {
   if (!permalink && !slackUrl) return null;
   return (
@@ -95,24 +113,28 @@ export default function Message({ message, user, channelName, compact = false, h
   const displayName = user?.displayName || 'Unknown';
   const reactions = message.reactions || [];
 
-  const threadLink = channelName && hasThread ? (
-    <Link
-      href={`/community-stream/${channelName}/${message.ts}`}
-      className="flex items-center gap-1.5 mt-1 py-1 px-1 -mx-1 rounded-md hover:bg-gray-100 transition-colors group/thread"
-    >
-      <span className="text-[13px] font-bold text-[#1264A3] group-hover/thread:underline">
-        {message.replyCount} {message.replyCount === 1 ? 'reply' : 'replies'}
-      </span>
-    </Link>
-  ) : null;
+  const threadLink =
+    channelName && hasThread ? (
+      <Link
+        href={`/community-stream/${channelName}/${message.ts}`}
+        className="flex items-center gap-1.5 mt-1 py-1 px-1 -mx-1 rounded-md hover:bg-gray-100 transition-colors group/thread"
+      >
+        <span className="text-[13px] font-bold text-[#1264A3] group-hover/thread:underline">
+          {message.replyCount} {message.replyCount === 1 ? 'reply' : 'replies'}
+        </span>
+      </Link>
+    ) : null;
 
   if (compact) {
     return (
-      <div id={`msg-${message.ts}`} className={`flex gap-2 px-5 py-0.5 hover:bg-[#F8F8F8] group relative ${highlightClass}`}>
+      <div
+        id={`msg-${message.ts}`}
+        className={`flex gap-2 px-5 py-0.5 hover:bg-[#F8F8F8] group relative ${highlightClass}`}
+      >
         <div className="w-9 flex-shrink-0 flex items-start justify-center pt-0.5">
           <span className="text-[12px] text-[#616061] opacity-0 group-hover:opacity-100 transition-opacity">
             {permalink ? (
-              <Link href={permalink} className="hover:underline">{formatTime(message.createdAt)}</Link>
+              <TimeLink permalink={permalink} messageTs={message.ts}>{formatTime(message.createdAt)}</TimeLink>
             ) : (
               formatTime(message.createdAt)
             )}
@@ -138,12 +160,12 @@ export default function Message({ message, user, channelName, compact = false, h
     <div id={`msg-${message.ts}`} className={`flex gap-2 px-5 pt-2 pb-0.5 hover:bg-[#F8F8F8] group ${highlightClass}`}>
       <Avatar initials={initials} color={color} avatarUrl={user?.avatarUrl} />
       <div className="flex-1 min-w-0">
-        <div className="flex items-baseline gap-2">
+        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0">
           <span className="font-bold text-[15px] text-[#1D1C1D]">{displayName}</span>
           {permalink ? (
-            <Link href={permalink} className="text-[12px] text-[#616061] hover:underline">
+            <TimeLink permalink={permalink} messageTs={message.ts} className="text-[12px] text-[#616061] hover:underline">
               {formatTime(message.createdAt)}
-            </Link>
+            </TimeLink>
           ) : (
             <span className="text-[12px] text-[#616061]">{formatTime(message.createdAt)}</span>
           )}

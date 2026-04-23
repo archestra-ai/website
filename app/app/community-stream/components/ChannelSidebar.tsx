@@ -45,9 +45,7 @@ export default function ChannelSidebar({
               href={`/community-stream/${channel.name}`}
               onClick={onCloseMobile}
               className={`block w-full text-left px-4 py-1.5 transition-colors ${
-                isActive
-                  ? 'bg-[#1164A3] text-white'
-                  : 'text-[#CDB1CE] hover:bg-[#522653]'
+                isActive ? 'bg-[#1164A3] text-white' : 'text-[#CDB1CE] hover:bg-[#522653]'
               }`}
             >
               <div className="flex items-center gap-1.5 text-[15px] font-medium">
@@ -62,7 +60,6 @@ export default function ChannelSidebar({
             </Link>
           );
         })}
-
       </div>
     </div>
   );

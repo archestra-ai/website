@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 
 import { fetchThread } from '../data/api';
 import { SlackMessage, ThreadData, User } from '../data/types';
-
 import Message from './Message';
 
 interface ThreadPanelProps {

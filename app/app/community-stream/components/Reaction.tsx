@@ -1,5 +1,5 @@
-import { emojiFromName } from '../lib/emoji';
 import { Reaction as ReactionType } from '../data/types';
+import { emojiFromName } from '../lib/emoji';
 
 interface ReactionProps {
   reaction: ReactionType;

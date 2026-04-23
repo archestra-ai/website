@@ -8,6 +8,8 @@ import { useState } from 'react';
 import { GitHubStarButton } from '@components/GitHubStarButton';
 import constants from '@constants';
 
+import { useCommunityStats } from '../app/community-stream/data/use-stats';
+
 const {
   company: { name: companyName },
   website: { urls: websiteUrls },
@@ -15,6 +17,7 @@ const {
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const stats = useCommunityStats();
 
   return (
     <header className="border-b border-gray-200 bg-white">
@@ -54,14 +57,17 @@ export default function Header() {
               Careers
             </Link>
 
-            <a
-              href="/join-slack"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors"
+            <Link
+              href="/community-stream"
+              className="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors flex items-center gap-1.5"
             >
-              Slack Community
-            </a>
+              Community
+              {stats.totalTodayMessages > 0 && (
+                <span className="bg-red-500 text-white text-[11px] font-bold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5">
+                  {stats.totalTodayMessages}
+                </span>
+              )}
+            </Link>
           </nav>
         </div>
 
@@ -133,15 +139,18 @@ export default function Header() {
               Careers
             </Link>
 
-            <a
-              href="/join-slack"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium rounded-lg transition-colors"
+            <Link
+              href="/community-stream"
+              className="px-3 py-2 text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium rounded-lg transition-colors flex items-center gap-1.5"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Slack Community
-            </a>
+              Community
+              {stats.totalTodayMessages > 0 && (
+                <span className="bg-red-500 text-white text-[11px] font-bold rounded-full min-w-[20px] h-5 flex items-center justify-center px-1.5">
+                  {stats.totalTodayMessages}
+                </span>
+              )}
+            </Link>
           </nav>
         </div>
       )}

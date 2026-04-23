@@ -39,7 +39,7 @@ export const slackMessages = pgTable(
   (table) => [
     index('idx_messages_channel_created').on(table.channelId, table.createdAt),
     index('idx_messages_thread').on(table.channelId, table.threadTs),
-  ],
+  ]
 );
 
 export const syncState = pgTable('sync_state', {

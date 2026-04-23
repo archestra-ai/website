@@ -17,7 +17,7 @@ function parseInline(raw: string): React.ReactNode[] {
           className="bg-[#F0F4F8] border border-gray-200 rounded-[3px] px-1 py-0.5 text-[13px] text-[#E01E5A] font-mono"
         >
           {codeMatch[1]}
-        </code>,
+        </code>
       );
       remaining = remaining.slice(codeMatch[0].length);
       continue;
@@ -29,7 +29,7 @@ function parseInline(raw: string): React.ReactNode[] {
       nodes.push(
         <strong key={key++} className="font-bold">
           {parseInline(boldMatch[1])}
-        </strong>,
+        </strong>
       );
       remaining = remaining.slice(boldMatch[0].length);
       continue;
@@ -63,7 +63,7 @@ function parseInline(raw: string): React.ReactNode[] {
           className="text-[#1264A3] hover:underline"
         >
           {linkMatch[2]}
-        </a>,
+        </a>
       );
       remaining = remaining.slice(linkMatch[0].length);
       continue;
@@ -80,7 +80,7 @@ function parseInline(raw: string): React.ReactNode[] {
           className="text-[#1264A3] hover:underline"
         >
           {linkOnlyMatch[1]}
-        </a>,
+        </a>
       );
       remaining = remaining.slice(linkOnlyMatch[0].length);
       continue;
@@ -93,7 +93,7 @@ function parseInline(raw: string): React.ReactNode[] {
       nodes.push(
         <span key={key++} className="bg-[#E8F5FA] text-[#1264A3] rounded px-0.5">
           @{display}
-        </span>,
+        </span>
       );
       remaining = remaining.slice(mentionMatch[0].length);
       continue;
@@ -106,7 +106,7 @@ function parseInline(raw: string): React.ReactNode[] {
       nodes.push(
         <span key={key++} className="bg-[#E8F5FA] text-[#1264A3] rounded px-0.5">
           #{display}
-        </span>,
+        </span>
       );
       remaining = remaining.slice(channelMatch[0].length);
       continue;
@@ -160,7 +160,7 @@ export default function SlackMarkdown({ text }: SlackMarkdownProps) {
           className="bg-[#F8F8F8] border border-gray-200 rounded-md p-3 my-1 overflow-x-auto text-[13px] font-mono text-[#1D1C1D] leading-relaxed"
         >
           <code>{codeLines.join('\n')}</code>
-        </pre>,
+        </pre>
       );
       continue;
     }
@@ -173,14 +173,11 @@ export default function SlackMarkdown({ text }: SlackMarkdownProps) {
         i++;
       }
       blocks.push(
-        <blockquote
-          key={blockKey++}
-          className="border-l-4 border-gray-300 pl-3 my-1 text-[#616061]"
-        >
+        <blockquote key={blockKey++} className="border-l-4 border-gray-300 pl-3 my-1 text-[#616061]">
           {quoteLines.map((ql, qi) => (
             <div key={qi}>{parseInline(ql)}</div>
           ))}
-        </blockquote>,
+        </blockquote>
       );
       continue;
     }
@@ -197,7 +194,7 @@ export default function SlackMarkdown({ text }: SlackMarkdownProps) {
           {items.map((item, idx) => (
             <li key={idx}>{parseInline(item)}</li>
           ))}
-        </ul>,
+        </ul>
       );
       continue;
     }
@@ -212,7 +209,7 @@ export default function SlackMarkdown({ text }: SlackMarkdownProps) {
     blocks.push(
       <div key={blockKey++} className="my-0.5">
         {parseInline(line)}
-      </div>,
+      </div>
     );
     i++;
   }

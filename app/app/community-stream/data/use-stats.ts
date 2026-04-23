@@ -16,7 +16,9 @@ export function useCommunityStats(): CommunityStats {
   const [stats, setStats] = useState<CommunityStats>(DEFAULT_STATS);
 
   useEffect(() => {
-    fetchStats().then(setStats).catch(() => {});
+    fetchStats()
+      .then(setStats)
+      .catch(() => {});
   }, []);
 
   return stats;

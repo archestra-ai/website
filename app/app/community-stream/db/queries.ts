@@ -13,7 +13,7 @@ export async function getChannels() {
 export async function getUsers() {
   const db = getDb();
   const rows = await db.select().from(slackUsers);
-  const map: Record<string, typeof rows[0]> = {};
+  const map: Record<string, (typeof rows)[0]> = {};
   for (const row of rows) {
     map[row.id] = row;
   }
@@ -91,11 +91,7 @@ export async function getMessage(channelId: string, messageTs: string) {
 
 export async function getMessageById(messageId: string) {
   const db = getDb();
-  const [row] = await db
-    .select()
-    .from(slackMessages)
-    .where(eq(slackMessages.id, messageId))
-    .limit(1);
+  const [row] = await db.select().from(slackMessages).where(eq(slackMessages.id, messageId)).limit(1);
   return row || null;
 }
 
@@ -122,12 +118,24 @@ export async function getChannelStats() {
     const [todayResult] = await db
       .select({ count: count() })
       .from(slackMessages)
-      .where(and(eq(slackMessages.channelId, ch.id), isNull(slackMessages.threadTs), gte(slackMessages.createdAt, todayStart)));
+      .where(
+        and(
+          eq(slackMessages.channelId, ch.id),
+          isNull(slackMessages.threadTs),
+          gte(slackMessages.createdAt, todayStart)
+        )
+      );
 
     const [monthResult] = await db
       .select({ count: count() })
       .from(slackMessages)
-      .where(and(eq(slackMessages.channelId, ch.id), isNull(slackMessages.threadTs), gte(slackMessages.createdAt, thirtyDaysAgo)));
+      .where(
+        and(
+          eq(slackMessages.channelId, ch.id),
+          isNull(slackMessages.threadTs),
+          gte(slackMessages.createdAt, thirtyDaysAgo)
+        )
+      );
 
     stats[ch.name] = {
       today: todayResult?.count || 0,

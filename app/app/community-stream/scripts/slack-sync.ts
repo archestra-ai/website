@@ -43,7 +43,18 @@ async function syncUsers(slack: WebClient, db: ReturnType<typeof getDb>) {
   let cursor: string | undefined;
   let total = 0;
 
-  const colors = ['#2BAC76', '#E8912D', '#4A90D9', '#9B59B6', '#E74C3C', '#1ABC9C', '#E91E63', '#607D8B', '#FF6B35', '#3D5A80'];
+  const colors = [
+    '#2BAC76',
+    '#E8912D',
+    '#4A90D9',
+    '#9B59B6',
+    '#E74C3C',
+    '#1ABC9C',
+    '#E91E63',
+    '#607D8B',
+    '#FF6B35',
+    '#3D5A80',
+  ];
 
   do {
     const result = await slack.users.list({ cursor, limit: 200 });
@@ -82,8 +93,8 @@ async function syncUsers(slack: WebClient, db: ReturnType<typeof getDb>) {
                 isBot: user.isBot,
                 updatedAt: user.updatedAt,
               },
-            }),
-        ),
+            })
+        )
       );
       total += chunk.length;
     }
@@ -118,15 +129,33 @@ async function syncChannelInfo(slack: WebClient, db: ReturnType<typeof getDb>, c
 
     await db
       .insert(slackChannels)
-      .values({ id: channelId, name, topic: ch.topic?.value || null, purpose: ch.purpose?.value || null, memberCount, updatedAt: new Date() })
+      .values({
+        id: channelId,
+        name,
+        topic: ch.topic?.value || null,
+        purpose: ch.purpose?.value || null,
+        memberCount,
+        updatedAt: new Date(),
+      })
       .onConflictDoUpdate({
         target: slackChannels.id,
-        set: { name, topic: ch.topic?.value || null, purpose: ch.purpose?.value || null, memberCount, updatedAt: new Date() },
+        set: {
+          name,
+          topic: ch.topic?.value || null,
+          purpose: ch.purpose?.value || null,
+          memberCount,
+          updatedAt: new Date(),
+        },
       });
   }
 }
 
-async function syncChannelMessages(slack: WebClient, db: ReturnType<typeof getDb>, channelName: string, channelId: string) {
+async function syncChannelMessages(
+  slack: WebClient,
+  db: ReturnType<typeof getDb>,
+  channelName: string,
+  channelId: string
+) {
   const [state] = await db.select().from(syncState).where(eq(syncState.channelId, channelId));
 
   let totalNew = 0;
@@ -143,7 +172,7 @@ async function fetchMessages(
   slack: WebClient,
   db: ReturnType<typeof getDb>,
   channelId: string,
-  opts: { oldest?: string; latest?: string },
+  opts: { oldest?: string; latest?: string }
 ): Promise<number> {
   let cursor: string | undefined;
   let total = 0;
@@ -161,7 +190,7 @@ async function fetchMessages(
 
     const messages = result.messages || [];
     const validMsgs = messages.filter(
-      (msg) => msg.ts && msg.subtype !== 'channel_join' && msg.subtype !== 'channel_leave',
+      (msg) => msg.ts && msg.subtype !== 'channel_join' && msg.subtype !== 'channel_leave'
     );
 
     for (let i = 0; i < validMsgs.length; i += 50) {
@@ -178,20 +207,32 @@ async function fetchMessages(
           return db
             .insert(slackMessages)
             .values({
-              id, channelId, userId: msg.user || msg.bot_id || null, ts: msg.ts!,
+              id,
+              channelId,
+              userId: msg.user || msg.bot_id || null,
+              ts: msg.ts!,
               threadTs: msg.thread_ts && msg.thread_ts !== msg.ts ? msg.thread_ts : null,
-              text: msg.text || '', replyCount: msg.reply_count || 0, replyUsersCount: msg.reply_users_count || 0,
-              reactions, files: files.length > 0 ? files : null,
-              slackUrl: buildSlackUrl(channelId, msg.ts!), createdAt: tsToDate(msg.ts!), syncedAt: new Date(),
+              text: msg.text || '',
+              replyCount: msg.reply_count || 0,
+              replyUsersCount: msg.reply_users_count || 0,
+              reactions,
+              files: files.length > 0 ? files : null,
+              slackUrl: buildSlackUrl(channelId, msg.ts!),
+              createdAt: tsToDate(msg.ts!),
+              syncedAt: new Date(),
             })
             .onConflictDoUpdate({
               target: slackMessages.id,
               set: {
-                text: msg.text || '', replyCount: msg.reply_count || 0, replyUsersCount: msg.reply_users_count || 0,
-                reactions, files: files.length > 0 ? files : null, syncedAt: new Date(),
+                text: msg.text || '',
+                replyCount: msg.reply_count || 0,
+                replyUsersCount: msg.reply_users_count || 0,
+                reactions,
+                files: files.length > 0 ? files : null,
+                syncedAt: new Date(),
               },
             });
-        }),
+        })
       );
     }
 
@@ -228,7 +269,12 @@ async function fetchMessages(
   return total;
 }
 
-async function fetchThreadReplies(slack: WebClient, db: ReturnType<typeof getDb>, channelId: string, threadTs: string): Promise<number> {
+async function fetchThreadReplies(
+  slack: WebClient,
+  db: ReturnType<typeof getDb>,
+  channelId: string,
+  threadTs: string
+): Promise<number> {
   let cursor: string | undefined;
   let count = 0;
 
@@ -249,16 +295,25 @@ async function fetchThreadReplies(slack: WebClient, db: ReturnType<typeof getDb>
         return db
           .insert(slackMessages)
           .values({
-            id, channelId, userId: msg.user || msg.bot_id || null, ts: msg.ts!, threadTs,
-            text: msg.text || '', replyCount: 0, replyUsersCount: 0,
-            reactions, files: files.length > 0 ? files : null,
-            slackUrl: buildSlackUrl(channelId, msg.ts!, threadTs), createdAt: tsToDate(msg.ts!), syncedAt: new Date(),
+            id,
+            channelId,
+            userId: msg.user || msg.bot_id || null,
+            ts: msg.ts!,
+            threadTs,
+            text: msg.text || '',
+            replyCount: 0,
+            replyUsersCount: 0,
+            reactions,
+            files: files.length > 0 ? files : null,
+            slackUrl: buildSlackUrl(channelId, msg.ts!, threadTs),
+            createdAt: tsToDate(msg.ts!),
+            syncedAt: new Date(),
           })
           .onConflictDoUpdate({
             target: slackMessages.id,
             set: { text: msg.text || '', reactions, files: files.length > 0 ? files : null, syncedAt: new Date() },
           });
-      }),
+      })
     );
     count += replies.length;
 
@@ -294,6 +349,6 @@ if (isDirectRun) {
     runSlackSync().catch((err) => {
       console.error('Sync failed:', err);
       process.exit(1);
-    }),
+    })
   );
 }

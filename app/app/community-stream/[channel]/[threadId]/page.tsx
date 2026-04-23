@@ -58,7 +58,10 @@ async function generateThreadMetadata(channel: string, threadId: string): Promis
 
   const user = msg.userId ? await cachedGetUser(msg.userId) : null;
   const displayName = user?.displayName || 'Someone';
-  const bodyPreview = msg.text.replace(/[*_~`<>]/g, '').replace(/\|[^>]*/g, '').slice(0, 150);
+  const bodyPreview = msg.text
+    .replace(/[*_~`<>]/g, '')
+    .replace(/\|[^>]*/g, '')
+    .slice(0, 150);
   const replies = await cachedGetThreadReplies(ch.id, threadId);
   const replyCount = replies.length;
 
@@ -106,7 +109,7 @@ async function renderDatePage(
   channel: string,
   date: string,
   channels: Awaited<ReturnType<typeof cachedGetChannels>>,
-  ch: Awaited<ReturnType<typeof cachedGetChannels>>[number],
+  ch: Awaited<ReturnType<typeof cachedGetChannels>>[number]
 ) {
   const rawMessages = await cachedGetMessagesByDate(ch.id, date);
   const rawUsers = await cachedGetUsers();
@@ -147,7 +150,7 @@ async function renderThreadPage(
   channel: string,
   threadId: string,
   channels: Awaited<ReturnType<typeof cachedGetChannels>>,
-  ch: Awaited<ReturnType<typeof cachedGetChannels>>[number],
+  ch: Awaited<ReturnType<typeof cachedGetChannels>>[number]
 ) {
   const msg = await cachedGetMessage(ch.id, threadId);
   if (!msg) notFound();
@@ -172,7 +175,10 @@ async function renderThreadPage(
 
   const user = msg.userId ? users[msg.userId] : null;
   const displayName = user?.displayName || 'Someone';
-  const bodyPreview = msg.text.replace(/[*_~`<>]/g, '').replace(/\|[^>]*/g, '').slice(0, 200);
+  const bodyPreview = msg.text
+    .replace(/[*_~`<>]/g, '')
+    .replace(/\|[^>]*/g, '')
+    .slice(0, 200);
 
   const structuredData: Record<string, unknown> = {
     '@context': 'https://schema.org',

@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from 'react';
 
 import { Channel, MessagePage, SlackMessage, User } from '../data/types';
 import { useCommunityStats } from '../data/use-stats';
-
 import DateSeparator from './DateSeparator';
 import Message from './Message';
 
@@ -231,9 +230,27 @@ function JoinSlackBar() {
           className="group relative inline-flex items-center gap-3 text-[17px] font-bold text-white rounded-full px-10 py-4 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.03] bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-500 hover:via-indigo-500 hover:to-violet-500"
         >
           <span className="text-2xl group-hover:animate-[wave_0.5s_ease-in-out] inline-block origin-[70%_70%]">👋</span>
-          Join the discussion with{stats.memberCount > 0 && <span className="bg-white/20 rounded-md px-2 py-0.5 mx-1 tabular-nums">{stats.memberCount.toLocaleString()}</span>}AI enthusiasts!
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="opacity-70 group-hover:translate-x-0.5 transition-transform">
-            <path d="M3 8h8.5M8 4.5 11.5 8 8 11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          Join the discussion with
+          {stats.memberCount > 0 && (
+            <span className="bg-white/20 rounded-md px-2 py-0.5 mx-1 tabular-nums">
+              {stats.memberCount.toLocaleString()}
+            </span>
+          )}
+          AI enthusiasts!
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            className="opacity-70 group-hover:translate-x-0.5 transition-transform"
+          >
+            <path
+              d="M3 8h8.5M8 4.5 11.5 8 8 11.5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </a>
       </div>
