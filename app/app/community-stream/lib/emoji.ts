@@ -1,0 +1,125 @@
+// Comprehensive Slack emoji shortcode to Unicode mapping
+const EMOJI_MAP: Record<string, string> = {
+  // Smileys & People
+  grinning: '😀', smile: '😄', laughing: '😆', satisfied: '😆', blush: '😊',
+  relaxed: '☺️', wink: '😉', heart_eyes: '😍', kissing_heart: '😘',
+  stuck_out_tongue_winking_eye: '😜', stuck_out_tongue: '😛', sunglasses: '😎',
+  smirk: '😏', unamused: '😒', disappointed: '😞', pensive: '😔',
+  confused: '😕', confounded: '😖', persevere: '😣', cry: '😢', sob: '😭',
+  joy: '😂', astonished: '😲', scream: '😱', angry: '😠', rage: '😡',
+  triumph: '😤', sleepy: '😪', sweat: '😓', weary: '😩',
+  fearful: '😨', cold_sweat: '😰', disappointed_relieved: '😥',
+  rolling_on_the_floor_laughing: '🤣', thinking_face: '🤔', thinking: '🤔',
+  face_with_monocle: '🧐', nerd_face: '🤓', zipper_mouth_face: '🤐',
+  face_with_raised_eyebrow: '🤨', shushing_face: '🤫', exploding_head: '🤯',
+  skull: '💀', ghost: '👻', alien: '👽', robot_face: '🤖',
+  hugging_face: '🤗', saluting_face: '🫡', melting_face: '🫠',
+  // Hands & Gestures
+  wave: '👋', raised_hands: '🙌', clap: '👏', pray: '🙏', handshake: '🤝',
+  thumbsup: '👍', '+1': '👍', thumbsdown: '👎', '-1': '👎',
+  muscle: '💪', point_up: '☝️', point_up_2: '👆', point_down: '👇',
+  point_left: '👈', point_right: '👉', ok_hand: '👌', v: '✌️',
+  raised_hand: '✋', open_hands: '👐', palms_up_together: '🤲',
+  the_horns: '🤘', call_me_hand: '🤙', pinched_fingers: '🤌',
+  // Hearts & Symbols
+  heart: '❤️', orange_heart: '🧡', yellow_heart: '💛', green_heart: '💚',
+  blue_heart: '💙', purple_heart: '💜', black_heart: '🖤', white_heart: '🤍',
+  broken_heart: '💔', sparkling_heart: '💖', revolving_hearts: '💞',
+  heartbeat: '💓', heartpulse: '💗', two_hearts: '💕',
+  star: '⭐', star2: '🌟', dizzy: '💫', sparkles: '✨', boom: '💥',
+  collision: '💥', fire: '🔥', zap: '⚡', lightning: '⚡',
+  '100': '💯', heavy_check_mark: '✔️', white_check_mark: '✅',
+  heavy_plus_sign: '➕', heavy_minus_sign: '➖', x: '❌',
+  warning: '⚠️', exclamation: '❗', question: '❓',
+  // Objects
+  rocket: '🚀', eyes: '👀', tada: '🎉', party_popper: '🎉',
+  trophy: '🏆', medal: '🏅', crown: '👑',
+  gem: '💎', money_bag: '💰', bulb: '💡', electric_plug: '🔌',
+  lock: '🔒', unlock: '🔓', key: '🔑', shield: '🛡️',
+  wrench: '🔧', hammer: '🔨', gear: '⚙️', link: '🔗',
+  memo: '📝', pencil: '✏️', pencil2: '✏️', clipboard: '📋',
+  books: '📚', book: '📖', bookmark: '🔖',
+  megaphone: '📣', loudspeaker: '📢', bell: '🔔',
+  envelope: '✉️', email: '📧', inbox_tray: '📥', outbox_tray: '📤',
+  package: '📦', label: '🏷️', mag: '🔍', mag_right: '🔎',
+  calendar: '📅', chart_with_upwards_trend: '📈', chart_with_downwards_trend: '📉',
+  bar_chart: '📊',
+  // Tech & Dev
+  computer: '💻', desktop_computer: '🖥️', keyboard: '⌨️', mouse: '🖱️',
+  floppy_disk: '💾', cd: '💿', dvd: '📀', bug: '🐛', spider_web: '🕸️',
+  globe_with_meridians: '🌐', satellite: '🛰️',
+  // Food & Drink
+  coffee: '☕', tea: '🍵', beer: '🍺', beers: '🍻', wine_glass: '🍷',
+  pizza: '🍕', hamburger: '🍔', taco: '🌮', burrito: '🌯',
+  cookie: '🍪', cake: '🎂', ice_cream: '🍨', doughnut: '🍩',
+  apple: '🍎', green_apple: '🍏', avocado: '🥑', banana: '🍌',
+  // Nature & Animals
+  dog: '🐶', cat: '🐱', unicorn: '🦄', butterfly: '🦋',
+  bee: '🐝', turtle: '🐢', octopus: '🐙', parrot: '🦜',
+  penguin: '🐧', whale: '🐳', dolphin: '🐬',
+  seedling: '🌱', evergreen_tree: '🌲', deciduous_tree: '🌳',
+  cactus: '🌵', sunflower: '🌻', rose: '🌹', cherry_blossom: '🌸',
+  rainbow: '🌈', sun_with_face: '🌞', cloud: '☁️',
+  snowflake: '❄️', umbrella: '☂️',
+  // Travel & Places
+  house: '🏠', office: '🏢', hospital: '🏥', earth_americas: '🌎',
+  earth_africa: '🌍', earth_asia: '🌏',
+  airplane: '✈️', car: '🚗', bike: '🚲', ship: '🚢',
+  // Activities
+  soccer: '⚽', basketball: '🏀', football: '🏈', baseball: '⚾',
+  tennis: '🎾', art: '🎨', video_game: '🎮', dart: '🎯',
+  musical_note: '🎵', notes: '🎶', microphone: '🎤',
+  movie_camera: '🎥', camera: '📷',
+  // Flags & misc
+  checkered_flag: '🏁', triangular_flag_on_post: '🚩',
+  raised_hand_with_fingers_splayed: '🖐️',
+  // Slack custom common aliases
+  slightly_smiling_face: '🙂', upside_down_face: '🙃',
+  face_with_rolling_eyes: '🙄', grimacing: '😬',
+  relieved: '😌', yum: '😋', stuck_out_tongue_closed_eyes: '😝',
+  money_mouth_face: '🤑', hugs: '🤗', nerd: '🤓',
+  no_mouth: '😶', neutral_face: '😐', expressionless: '😑',
+  sleeping: '😴', drooling_face: '🤤', mask: '😷',
+  face_with_thermometer: '🤒', sneezing_face: '🤧',
+  innocent: '😇', cowboy_hat_face: '🤠', clown_face: '🤡',
+  lying_face: '🤥', see_no_evil: '🙈', hear_no_evil: '🙉',
+  speak_no_evil: '🙊', smiley: '😃', grin: '😁', sweat_smile: '😅',
+  rofl: '🤣', kissing: '😗', kissing_smiling_eyes: '😙',
+  kissing_closed_eyes: '😚', yawning_face: '🥱',
+  partying_face: '🥳', woozy_face: '🥴', hot_face: '🥵',
+  cold_face: '🥶', pleading_face: '🥺',
+  // More smileys
+  open_mouth: '😮', hushed: '😯', flushed: '😳', anguished: '😧',
+  worried: '😟', frowning: '😦', steam_locomotive: '🚂',
+  // Blob/custom emojis that have rough equivalents
+  party_blob: '🎉', blob_wave: '👋', partyparrot: '🦜',
+  blobdance: '💃', blob_clap: '👏',
+  hand_wave: '👋', taco_wave: '👋', kitty_wave: '👋',
+  // Slack shortcode variants without underscores
+  slightlysmilingface: '🙂', slightlysmiling_face: '🙂',
+  whitecheckmark: '✅', white_checkmark: '✅',
+  sweatsmile: '😅',
+  pointdown: '👇', pointup: '☝️', pointright: '👉', pointleft: '👈',
+  point_down: '👇',
+  // Thread reference
+  thread: '🧵',
+};
+
+/**
+ * Convert a Slack emoji shortcode name to its Unicode emoji.
+ * Returns the shortcode wrapped in colons if no mapping exists.
+ */
+export function emojiFromName(name: string): string {
+  // Handle skin tone suffixes like :wave::skin-tone-2:
+  const baseName = name.replace(/::skin-tone-\d+$/, '').replace(/::skin-tone-\d+/, '');
+  return EMOJI_MAP[baseName] || `:${name}:`;
+}
+
+/**
+ * Replace all :emoji_shortcode: patterns in text with Unicode emojis.
+ */
+export function replaceEmojiShortcodes(text: string): string {
+  return text.replace(/:([a-z0-9_+-]+(?:::skin-tone-\d+)?):/g, (_, name) => {
+    return emojiFromName(name);
+  });
+}
