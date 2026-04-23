@@ -133,8 +133,8 @@ interface SlackMarkdownProps {
 }
 
 export default function SlackMarkdown({ text }: SlackMarkdownProps) {
-  // Decode Slack HTML entities
-  const decoded = text.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+  // Decode Slack HTML entities (&amp; must be decoded last to avoid double-unescaping)
+  const decoded = text.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 
   // Split into blocks: code blocks, blockquotes, bullet lists, paragraphs
   const blocks: React.ReactNode[] = [];
