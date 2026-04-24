@@ -1,9 +1,10 @@
 import 'highlight.js/styles/github.css';
-import { Github } from 'lucide-react';
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 import BlogContent from '@components/BlogContent';
+import { GitHubIcon } from '@components/BrandIcons';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 import constants from '@constants';
@@ -83,7 +84,18 @@ export default async function BlogPostPage({ params }: Props) {
 
               {post.image && (
                 <div className="mb-8 max-w-4xl mx-auto">
-                  <img src={post.image} alt={post.title} className="w-full rounded-lg shadow-lg" />
+                  {post.imageWidth && post.imageHeight ? (
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      width={post.imageWidth}
+                      height={post.imageHeight}
+                      className="w-full h-auto rounded-lg shadow-lg"
+                      sizes="(min-width: 1280px) 896px, (min-width: 768px) calc(100vw - 96px), calc(100vw - 32px)"
+                    />
+                  ) : (
+                    <img src={post.image} alt={post.title} className="w-full rounded-lg shadow-lg" />
+                  )}
                 </div>
               )}
 
@@ -96,7 +108,7 @@ export default async function BlogPostPage({ params }: Props) {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors"
                     >
-                      <Github className="h-5 w-5" />
+                      <GitHubIcon className="h-5 w-5" />
                       GitHub
                     </a>
                   )}

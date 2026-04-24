@@ -1,6 +1,7 @@
-import { Github, Home, Search } from 'lucide-react';
+import { Home, Search } from 'lucide-react';
 import Link from 'next/link';
 
+import { GitHubIcon } from '@components/BrandIcons';
 import Header from '@components/Header';
 import constants from '@constants';
 
@@ -49,7 +50,7 @@ export default function NotFound() {
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Github className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <GitHubIcon className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
                   <div>
                     <span className="font-medium">Add a new server</span>
                     <p className="text-sm text-gray-600">Contribute to the catalog by adding missing servers</p>
@@ -81,7 +82,7 @@ export default function NotFound() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-900 text-white font-semibold rounded-lg transition-colors"
               >
-                <Github className="w-4 h-4" />
+                <GitHubIcon className="w-4 h-4" />
                 Add New Server
               </a>
             </div>

@@ -3,6 +3,8 @@ import matter from 'gray-matter';
 import path from 'path';
 import readingTime from 'reading-time';
 
+import { getPublicImageSize } from '@lib/image-size';
+
 import { BlogPost } from './types';
 
 const postsDirectory = path.join(process.cwd(), 'app/blog/content');
@@ -23,6 +25,7 @@ export function getAllPosts(): BlogPost[] {
         const fileContents = fs.readFileSync(fullPath, 'utf8');
         const { data, content } = matter(fileContents);
         const stats = readingTime(content);
+        const imageSize = getPublicImageSize(data.image);
 
         return {
           slug,
@@ -33,6 +36,8 @@ export function getAllPosts(): BlogPost[] {
           content,
           readingTime: stats.text,
           image: data.image,
+          imageHeight: imageSize?.height,
+          imageWidth: imageSize?.width,
           github: data.github,
           cta: data.cta,
         } as BlogPost;
@@ -59,6 +64,7 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
   const stats = readingTime(content);
+  const imageSize = getPublicImageSize(data.image);
 
   return {
     slug,
@@ -69,6 +75,8 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
     content,
     readingTime: stats.text,
     image: data.image,
+    imageHeight: imageSize?.height,
+    imageWidth: imageSize?.width,
     github: data.github,
     cta: data.cta,
   };

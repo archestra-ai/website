@@ -49,7 +49,7 @@ const ILDAR = {
 const JOEY = {
   '@type': 'Person',
   name: 'Joey Orlando',
-  jobTitle: 'Founding Engineer',
+  jobTitle: 'Co-Founder',
   worksFor: {
     '@type': 'Organization',
     name: COMPANY_NAME,
@@ -60,8 +60,7 @@ const JOEY = {
     addressLocality: 'Montréal',
     addressCountry: 'Canada',
   },
-  description:
-    'Experienced software engineer/leader with 10+ years in full-stack development and expertise in Python, TypeScript, Clojure, Go, and cloud infrastructure.',
+  description: 'Second-time founder. Experienced engineer. Harvard/McGill biochemist in past life.',
 };
 const DOMINIK = {
   '@type': 'Person',
@@ -78,22 +77,6 @@ const DOMINIK = {
     addressCountry: 'Poland',
   },
   description: 'Software engineer with 10+ years of experience.',
-};
-const ANNA = {
-  '@type': 'Person',
-  name: 'Anna Shishliakova',
-  jobTitle: 'Software Engineer',
-  worksFor: {
-    '@type': 'Organization',
-    name: COMPANY_NAME,
-  },
-  sameAs: 'https://linkedin.com/in/ashlkv/',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Berlin',
-    addressCountry: 'Germany',
-  },
-  description: 'Fullstack engineer with a focus on interfaces and 10+ years of experience.',
 };
 
 const INNOKENTII = {
@@ -114,13 +97,31 @@ const INNOKENTII = {
     'Engineer with experience ranging from building user interfaces to developing high-load distributed systems. Previously working on Grafana Mimir. Founding engineer at Amixr (acquired by Grafana Labs).',
 };
 
+const KARAN = {
+  '@type': 'Person',
+  name: 'Karan Shahani',
+  jobTitle: 'Software Engineer',
+  worksFor: {
+    '@type': 'Organization',
+    name: COMPANY_NAME,
+  },
+  // sameAs: 'https://www.linkedin.com/in/karanshahani/',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Montréal',
+    addressCountry: 'Canada',
+  },
+  description:
+    'Software engineer and leader with a decade of experience scaling web platforms across fintech, blockchain, and media. Previously co-led engineering at Zapper.xyz.',
+};
+
 const PEOPLE = {
   matvey: MATVEY,
   ildar: ILDAR,
   joey: JOEY,
   dominik: DOMINIK,
-  anna: ANNA,
   innokentii: INNOKENTII,
+  karan: KARAN,
 };
 
 // GitHub constants

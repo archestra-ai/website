@@ -1,5 +1,6 @@
 import { ArrowRight, Calendar, Clock } from 'lucide-react';
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import Footer from '@components/Footer';
@@ -54,7 +55,13 @@ export default function BlogPage() {
                   <Link href={`/blog/${slug}`} className="flex flex-col h-full">
                     {image && (
                       <div className="aspect-video relative overflow-hidden bg-gray-100">
-                        <img src={image} alt={title} className="w-full h-full object-cover" />
+                        <Image
+                          src={image}
+                          alt={title}
+                          fill
+                          className="object-cover"
+                          sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw"
+                        />
                       </div>
                     )}
                     <div className="p-6 flex flex-col flex-grow">

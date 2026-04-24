@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Clock, Edit } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import ReactMarkdown from 'react-markdown';
 
 import Footer from '@components/Footer';
 import Header from '@components/Header';
@@ -167,7 +168,18 @@ export default async function DocPage({ params }: Props) {
                               text-gray-600 hover:text-gray-900 border-l border-transparent
                             `}
                           >
-                            {item.text}
+                            <ReactMarkdown
+                              components={{
+                                p: ({ children }) => <>{children}</>,
+                                code: ({ children }) => (
+                                  <code className="rounded bg-gray-100 px-1 py-0.5 font-mono text-[0.85em] text-gray-800">
+                                    {children}
+                                  </code>
+                                ),
+                              }}
+                            >
+                              {item.rawText}
+                            </ReactMarkdown>
                           </a>
                         ))}
                       </nav>

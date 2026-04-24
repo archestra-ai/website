@@ -1,7 +1,7 @@
-import { Linkedin } from 'lucide-react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 
+import { LinkedInIcon } from '@components/BrandIcons';
 import Footer from '@components/Footer';
 import Header from '@components/Header';
 import { Card, CardContent } from '@components/ui/card';
@@ -15,7 +15,7 @@ const {
     name: companyName,
     alternateName: companyAlternateName,
     description: companyDescription,
-    people: { joey: JOEY, matvey: MATVEY, ildar: ILDAR, dominik: DOMINIK, innokentii: INNOKENTII },
+    people: { joey: JOEY, matvey: MATVEY, ildar: ILDAR, innokentii: INNOKENTII, karan: KARAN },
   },
 } = constants;
 
@@ -113,7 +113,7 @@ export default function AboutPage() {
                       rel="noopener noreferrer"
                       className="text-gray-500 hover:text-blue-600 transition-colors"
                     >
-                      <Linkedin size={20} />
+                      <LinkedInIcon size={20} />
                     </a>
                   </div>
                 </CardContent>
@@ -140,7 +140,7 @@ export default function AboutPage() {
                       rel="noopener noreferrer"
                       className="text-gray-500 hover:text-blue-600 transition-colors"
                     >
-                      <Linkedin size={20} />
+                      <LinkedInIcon size={20} />
                     </a>
                   </div>
                 </CardContent>
@@ -167,39 +167,7 @@ export default function AboutPage() {
                       rel="noopener noreferrer"
                       className="text-gray-500 hover:text-blue-600 transition-colors"
                     >
-                      <Linkedin size={20} />
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Dominik */}
-              <Card className="border-2 hover:border-purple-200 transition-colors">
-                <CardContent className="p-6 text-left">
-                  <div className="flex justify-center mb-4">
-                    <Image
-                      src="/team/dominik.png"
-                      alt={DOMINIK.name}
-                      width={150}
-                      height={150}
-                      className="rounded-full object-cover"
-                    />
-                  </div>
-                  <h3 className="font-bold text-xl mb-2">{DOMINIK.name}</h3>
-                  <p className="text-gray-700 font-medium mb-1">{DOMINIK.jobTitle}</p>
-                  <p className="text-gray-500 text-sm mb-3">
-                    {DOMINIK.address.addressLocality}, {DOMINIK.address.addressCountry}
-                  </p>
-                  <p className="text-gray-700 text-sm leading-relaxed mb-4">{DOMINIK.description}</p>
-                  <EmailCodePanel email="dominik@archestra.ai" />
-                  <div className="flex justify-center gap-3 mt-3">
-                    <a
-                      href={DOMINIK.sameAs}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-500 hover:text-blue-600 transition-colors"
-                    >
-                      <Linkedin size={20} />
+                      <LinkedInIcon size={20} />
                     </a>
                   </div>
                 </CardContent>
@@ -231,9 +199,31 @@ export default function AboutPage() {
                       rel="noopener noreferrer"
                       className="text-gray-500 hover:text-blue-600 transition-colors"
                     >
-                      <Linkedin size={20} />
+                      <LinkedInIcon size={20} />
                     </a>
                   </div>
+                </CardContent>
+              </Card>
+
+              {/* Karan */}
+              <Card className="border-2 hover:border-purple-200 transition-colors">
+                <CardContent className="p-6 text-left">
+                  <div className="flex justify-center mb-4">
+                    <Image
+                      src="/team/karan.jpg"
+                      alt={KARAN.name}
+                      width={150}
+                      height={150}
+                      className="rounded-full object-cover"
+                    />
+                  </div>
+                  <h3 className="font-bold text-xl mb-2">{KARAN.name}</h3>
+                  <p className="text-gray-700 font-medium mb-1">{KARAN.jobTitle}</p>
+                  <p className="text-gray-500 text-sm mb-3">
+                    {KARAN.address.addressLocality}, {KARAN.address.addressCountry}
+                  </p>
+                  <p className="text-gray-700 text-sm leading-relaxed mb-4">{KARAN.description}</p>
+                  <EmailCodePanel email="karan@archestra.ai" />
                 </CardContent>
               </Card>
             </div>
@@ -333,7 +323,7 @@ export default function AboutPage() {
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-blue-600 transition-colors ml-3"
                       >
-                        <Linkedin size={18} />
+                        <LinkedInIcon size={18} />
                       </a>
                     </div>
                   </div>
@@ -349,7 +339,7 @@ export default function AboutPage() {
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-blue-600 transition-colors ml-3"
                       >
-                        <Linkedin size={18} />
+                        <LinkedInIcon size={18} />
                       </a>
                     </div>
                   </div>
@@ -365,7 +355,7 @@ export default function AboutPage() {
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-blue-600 transition-colors ml-3"
                       >
-                        <Linkedin size={18} />
+                        <LinkedInIcon size={18} />
                       </a>
                     </div>
                   </div>
@@ -381,7 +371,7 @@ export default function AboutPage() {
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-blue-600 transition-colors ml-3"
                       >
-                        <Linkedin size={18} />
+                        <LinkedInIcon size={18} />
                       </a>
                     </div>
                   </div>
@@ -397,7 +387,7 @@ export default function AboutPage() {
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-blue-600 transition-colors ml-3"
                       >
-                        <Linkedin size={18} />
+                        <LinkedInIcon size={18} />
                       </a>
                     </div>
                   </div>
