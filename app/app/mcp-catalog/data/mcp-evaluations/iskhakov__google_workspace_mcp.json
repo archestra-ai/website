@@ -3,13 +3,13 @@
   "display_name": "Google Workspace",
   "description": "Control Gmail, Google Calendar, Docs, Sheets, Slides, Chat, Forms, Tasks, Search & Drive with AI - Comprehensive Google Workspace / G Suite MCP Server",
   "author": {
-    "name": "iskhakov"
+    "name": "taylorwilsdon"
   },
   "server": {
     "command": "uvx",
     "args": [
       "--from",
-      "git+https://github.com/iskhakov/google_workspace_mcp",
+      "git+https://github.com/taylorwilsdon/google_workspace_mcp",
       "workspace-mcp",
       "--transport",
       "streamable-http"
@@ -127,9 +127,9 @@
     "works_in_archestra": true
   },
   "github_info": {
-    "owner": "iskhakov",
+    "owner": "taylorwilsdon",
     "repo": "google_workspace_mcp",
-    "url": "https://github.com/iskhakov/google_workspace_mcp",
+    "url": "https://github.com/taylorwilsdon/google_workspace_mcp",
     "name": "google_workspace_mcp",
     "path": null,
     "stars": 390,
