@@ -72,6 +72,16 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: '/community-calls',
+        destination: '/community-stream',
+        permanent: true,
+      },
+      {
+        source: '/community-calls/:path*',
+        destination: '/community-stream/:path*',
+        permanent: true,
+      },
       /**
        * Address some typos we have in the platform docs URLs
        */
