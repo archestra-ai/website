@@ -1,4 +1,4 @@
-import { asc } from 'drizzle-orm';
+import { asc, gt } from 'drizzle-orm';
 
 import { getDb } from './connection';
 import { slackChannels, slackMessages, slackUsers } from './schema';
@@ -18,9 +18,9 @@ interface CacheData {
 }
 
 let cache: CacheData | null = null;
-let refreshTimer: ReturnType<typeof setInterval> | null = null;
+let syncTimer: ReturnType<typeof setInterval> | null = null;
 
-const REFRESH_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
+const SYNC_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
 
 async function loadFromDb(): Promise<CacheData> {
   const db = getDb();
@@ -57,14 +57,70 @@ async function loadFromDb(): Promise<CacheData> {
   return { channels, users, messagesByChannel, threads, loadedAt: Date.now() };
 }
 
-let syncTimer: ReturnType<typeof setInterval> | null = null;
-const SYNC_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
+async function incrementalRefresh(): Promise<void> {
+  if (!cache) {
+    cache = await loadFromDb();
+    return;
+  }
+
+  const db = getDb();
+  const since = new Date(cache.loadedAt);
+
+  const [channels, userRows, updatedMessages] = await Promise.all([
+    db.select().from(slackChannels).orderBy(asc(slackChannels.name)),
+    db.select().from(slackUsers),
+    db.select().from(slackMessages).where(gt(slackMessages.syncedAt, since)).orderBy(asc(slackMessages.createdAt)),
+  ]);
+
+  // Update channels and users (small tables, cheap)
+  cache.channels = channels;
+  const users: Record<string, User> = {};
+  for (const u of userRows) users[u.id] = u;
+  cache.users = users;
+
+  // Re-initialize messagesByChannel keys for any new channels
+  for (const ch of channels) {
+    if (!cache.messagesByChannel[ch.id]) cache.messagesByChannel[ch.id] = [];
+  }
+
+  // Merge only changed messages into existing cache
+  for (const msg of updatedMessages) {
+    if (msg.threadTs) {
+      const key = `${msg.channelId}:${msg.threadTs}`;
+      if (!cache.threads[key]) cache.threads[key] = [];
+      const existing = cache.threads[key];
+      const idx = existing.findIndex((m) => m.id === msg.id);
+      if (idx >= 0) {
+        existing[idx] = msg;
+      } else {
+        // Insert in sorted order by createdAt
+        const insertIdx = existing.findIndex((m) => m.createdAt > msg.createdAt);
+        if (insertIdx === -1) existing.push(msg);
+        else existing.splice(insertIdx, 0, msg);
+      }
+    } else {
+      const channelMsgs = cache.messagesByChannel[msg.channelId] || [];
+      if (!cache.messagesByChannel[msg.channelId]) cache.messagesByChannel[msg.channelId] = channelMsgs;
+      const idx = channelMsgs.findIndex((m) => m.id === msg.id);
+      if (idx >= 0) {
+        channelMsgs[idx] = msg;
+      } else {
+        // Insert in sorted order by createdAt
+        const insertIdx = channelMsgs.findIndex((m) => m.createdAt > msg.createdAt);
+        if (insertIdx === -1) channelMsgs.push(msg);
+        else channelMsgs.splice(insertIdx, 0, msg);
+      }
+    }
+  }
+
+  cache.loadedAt = Date.now();
+}
 
 async function backgroundSync() {
   try {
     const { runSlackSync } = await import('../scripts/slack-sync');
     await runSlackSync();
-    cache = await loadFromDb();
+    await incrementalRefresh();
     console.log('[sync] Background sync + cache refresh done');
   } catch (e) {
     console.error('[sync] Background sync failed:', e);
@@ -74,33 +130,37 @@ async function backgroundSync() {
 async function getCache(): Promise<CacheData> {
   if (!cache) {
     cache = await loadFromDb();
-    if (!refreshTimer) {
-      refreshTimer = setInterval(async () => {
-        try {
-          cache = await loadFromDb();
-        } catch (e) {
-          console.error('Cache refresh failed:', e);
+    if (process.env.SLACK_BOT_TOKEN) {
+      // Start background sync interval (also refreshes cache after sync)
+      if (!syncTimer) {
+        syncTimer = setInterval(backgroundSync, SYNC_INTERVAL_MS);
+        if (syncTimer && typeof syncTimer === 'object' && 'unref' in syncTimer) {
+          syncTimer.unref();
         }
-      }, REFRESH_INTERVAL_MS);
-      if (refreshTimer && typeof refreshTimer === 'object' && 'unref' in refreshTimer) {
-        refreshTimer.unref();
+        // Run first sync after a short delay to not block startup
+        setTimeout(backgroundSync, 10_000);
       }
-    }
-    // Start background sync interval
-    if (!syncTimer && process.env.SLACK_BOT_TOKEN) {
-      syncTimer = setInterval(backgroundSync, SYNC_INTERVAL_MS);
-      if (syncTimer && typeof syncTimer === 'object' && 'unref' in syncTimer) {
-        syncTimer.unref();
+    } else {
+      // No Slack token — just refresh cache from DB periodically
+      if (!syncTimer) {
+        syncTimer = setInterval(async () => {
+          try {
+            await incrementalRefresh();
+          } catch (e) {
+            console.error('Cache refresh failed:', e);
+          }
+        }, SYNC_INTERVAL_MS);
+        if (syncTimer && typeof syncTimer === 'object' && 'unref' in syncTimer) {
+          syncTimer.unref();
+        }
       }
-      // Run first sync after a short delay to not block startup
-      setTimeout(backgroundSync, 10_000);
     }
   }
   return cache;
 }
 
 export async function refreshCache(): Promise<void> {
-  cache = await loadFromDb();
+  await incrementalRefresh();
 }
 
 // --- Cached query helpers ---
