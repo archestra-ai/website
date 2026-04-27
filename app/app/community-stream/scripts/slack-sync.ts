@@ -1,5 +1,5 @@
 import { WebClient } from '@slack/web-api';
-import { eq } from 'drizzle-orm';
+import { eq, inArray } from 'drizzle-orm';
 
 import { getDb } from '../db/connection';
 import { slackChannels, slackMessages, slackUsers, syncState } from '../db/schema';
@@ -165,7 +165,64 @@ async function syncChannelMessages(
     totalNew += await fetchMessages(slack, db, channelId, {});
   }
 
+  // Re-fetch recent messages (last 30 days) to pick up updated reply counts and new thread replies
+  // for messages that were synced before any replies were added
+  if (state?.newestTs) {
+    const oneMonthAgo = String(Date.now() / 1000 - 30 * 86400);
+    await refreshRecentThreads(slack, db, channelId, oneMonthAgo);
+  }
+
   console.log(`  Synced ${totalNew} new messages for #${channelName}`);
+}
+
+async function refreshRecentThreads(slack: WebClient, db: ReturnType<typeof getDb>, channelId: string, oldest: string) {
+  let cursor: string | undefined;
+
+  do {
+    const result = await slack.conversations.history({
+      channel: channelId,
+      oldest,
+      limit: 200,
+      cursor,
+    });
+
+    const messages = result.messages || [];
+    const threadedMsgs = messages.filter((m) => m.ts && m.reply_count && m.reply_count > 0);
+
+    if (threadedMsgs.length > 0) {
+      // Batch-read existing reply counts to skip unchanged threads
+      const ids = threadedMsgs.map((m) => makeMessageId(channelId, m.ts!));
+      const existingRows = await db
+        .select({ id: slackMessages.id, replyCount: slackMessages.replyCount })
+        .from(slackMessages)
+        .where(inArray(slackMessages.id, ids));
+      const existingMap = new Map(existingRows.map((r) => [r.id, r.replyCount]));
+
+      for (const msg of threadedMsgs) {
+        const id = makeMessageId(channelId, msg.ts!);
+        const existingCount = existingMap.get(id);
+
+        // Skip if reply count hasn't changed
+        if (existingCount === msg.reply_count) continue;
+
+        // Update the parent message's reply count
+        await db
+          .update(slackMessages)
+          .set({
+            replyCount: msg.reply_count!,
+            replyUsersCount: msg.reply_users_count || 0,
+            syncedAt: new Date(),
+          })
+          .where(eq(slackMessages.id, id));
+
+        // Fetch thread replies (upserts, so safe to re-run)
+        await fetchThreadReplies(slack, db, channelId, msg.ts!);
+      }
+    }
+
+    cursor = result.response_metadata?.next_cursor || undefined;
+    if (cursor) await sleep(500);
+  } while (cursor);
 }
 
 async function fetchMessages(
