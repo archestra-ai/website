@@ -1,0 +1,70 @@
+{
+  "name": "BrunoKrugel__go-review-mcp",
+  "display_name": "go-review-mcp",
+  "description": "A Model Context Protocol (MCP) server that provides real-time access to official Go style guides for intelligent code review.",
+  "author": {
+    "name": "BrunoKrugel"
+  },
+  "server": {
+    "command": "go-review-mcp",
+    "args": [],
+    "env": {},
+    "type": "local"
+  },
+  "tools": [],
+  "prompts": [],
+  "keywords": [],
+  "user_config": {},
+  "readme": "# Go Review MCP\n\nA Model Context Protocol (MCP) server that provides real-time access to official Go style guides for intelligent code review.\n\n## Overview\n\nGo Review MCP fetches the latest style guides directly from official and recommended sources:\n\n### Official\n\n- [Google Go Style Guide](https://google.github.io/styleguide/go/guide)\n- [Google Go Style Decisions](https://google.github.io/styleguide/go/decisions)\n- [Google Go Best Practices](https://google.github.io/styleguide/go/best-practices)\n\n### Recommended\n\n- [Uber Go Style Guide](https://github.com/uber-go/guide/blob/master/style.md)\n\n## Features\n\n### Tools\n\n- **fetch_live_guide** - Fetch and index the latest style guides from all official sources (Google and Uber)\n- **search_live_guide** - Search through all live-fetched guide content for specific patterns\n- **get_guide_topic** - Extract topic-specific content from all live guides (naming, errors, concurrency, testing, interfaces, formatting, comments, imports, context)\n- **get_review_guidelines** - Get curated review guidelines for specific topics\n\n### Prompts\n\n- **review_code** - Comprehensive Go code review\n- **check_naming** - Review naming conventions\n- **check_error_handling** - Review error handling patterns\n- **check_concurrency** - Review concurrency patterns\n- **check_testing** - Review test code quality\n- **check_interfaces** - Review interface design\n\n## Installation\n\n### Using go install\n\n```bash\ngo install github.com/BrunoKrugel/go-review-mcp@latest\n```\n\n## Configuration\n\n### Claude Desktop\n\nAdd to your `claude_desktop_config.json`:\n\n```json\n{\n  \"mcpServers\": {\n    \"go-review\": {\n      \"command\": \"go-review-mcp\",\n      \"args\": []\n    }\n  }\n}\n```\n\n### HTTP Mode (for testing with MCP Inspector)\n\n```bash\ngo-review-mcp --transport http --port 8080\n```\n\n## Requirements\n\n- Go 1.21 or later\n- Internet connection for fetching live guides\n\n## License\n\nMIT License\n",
+  "category": "Development",
+  "quality_score": 55,
+  "archestra_config": {
+    "client_config_permutations": {
+      "go-review-mcp-stdio": {
+        "command": "go-review-mcp",
+        "args": [],
+        "env": {}
+      },
+      "go-review-mcp-http": {
+        "command": "go-review-mcp",
+        "args": ["--transport", "http", "--port", "8080"],
+        "env": {}
+      }
+    },
+    "oauth": {
+      "provider": null,
+      "required": false
+    },
+    "works_in_archestra": false
+  },
+  "github_info": {
+    "owner": "BrunoKrugel",
+    "repo": "go-review-mcp",
+    "url": "https://github.com/BrunoKrugel/go-review-mcp",
+    "name": "BrunoKrugel__go-review-mcp",
+    "path": null,
+    "stars": 2,
+    "contributors": 1,
+    "issues": 1,
+    "releases": true,
+    "ci_cd": false,
+    "latest_commit_hash": "67cff145b407b9cb16f9d705621f8a6c0d87df76"
+  },
+  "programming_language": "Go",
+  "framework": null,
+  "last_scraped_at": "2026-04-16T13:00:00.000Z",
+  "evaluation_model": "gemini-2.5-flash",
+  "protocol_features": {
+    "implementing_tools": true,
+    "implementing_prompts": true,
+    "implementing_resources": false,
+    "implementing_sampling": false,
+    "implementing_roots": false,
+    "implementing_logging": false,
+    "implementing_stdio": true,
+    "implementing_streamable_http": true,
+    "implementing_oauth2": false
+  },
+  "dependencies": [],
+  "raw_dependencies": ""
+}
