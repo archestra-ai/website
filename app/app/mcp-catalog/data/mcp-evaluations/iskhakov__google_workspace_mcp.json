@@ -9,7 +9,7 @@
     "command": "uvx",
     "args": [
       "--from",
-      "git+https://github.com/iskhakov/google_workspace_mcp",
+      "git+https://github.com/taylorwilsdon/google_workspace_mcp",
       "workspace-mcp",
       "--transport",
       "streamable-http"
