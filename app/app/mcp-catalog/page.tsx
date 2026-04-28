@@ -20,14 +20,22 @@ const {
   website: { keywords: websiteKeywords, urls: websiteUrls },
 } = constants;
 
-const TITLE = 'MCP Server Catalog | Browse 900+ Model Context Protocol Servers';
+const TITLE = 'MCP Server Catalog | 900+ Evaluated Model Context Protocol Servers';
 const DESCRIPTION =
-  'Explore the comprehensive catalog of MCP servers. Find, evaluate, and integrate Model Context Protocol implementations for your AI agents.';
+  'Browse and evaluate 900+ MCP servers with quality scores, security analysis, and enterprise readiness ratings. The most comprehensive Model Context Protocol catalog for AI agent integration.';
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  keywords: ['MCP servers', 'Model Context Protocol catalog', ...websiteKeywords],
+  keywords: [
+    'MCP servers',
+    'Model Context Protocol catalog',
+    'MCP server directory',
+    'MCP server list',
+    'enterprise MCP servers',
+    'MCP quality score',
+    ...websiteKeywords,
+  ],
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -212,8 +220,18 @@ export default function MCPCatalogPage() {
     name: 'your-repo-name',
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://archestra.ai' },
+      { '@type': 'ListItem', position: 2, name: 'MCP Server Catalog', item: 'https://archestra.ai/mcp-catalog' },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Header />
 
       <main className="flex-1 relative flex flex-col">

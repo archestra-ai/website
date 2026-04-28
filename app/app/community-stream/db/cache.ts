@@ -20,7 +20,7 @@ interface CacheData {
 let cache: CacheData | null = null;
 let syncTimer: ReturnType<typeof setInterval> | null = null;
 
-const SYNC_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
+const SYNC_INTERVAL_MS = 60 * 60 * 1000; // 1 hour
 
 async function loadFromDb(): Promise<CacheData> {
   const db = getDb();

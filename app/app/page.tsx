@@ -13,48 +13,12 @@ import NewsletterForm from '@components/NewsletterForm';
 import QuickStartBlock, { type MessagingProvider } from '@components/QuickStartBlock';
 import constants from '@constants';
 
-const {
-  company: {
-    name: companyName,
-    alternateName: companyAlternateName,
-    description: companyDescription,
-    foundingDate: companyFoundingDate,
-    address: companyAddress,
-    people: companyPeople,
-  },
-  website: { urls: websiteUrls },
-  github: {
-    archestra: {
-      archestra: { repoUrl: githubArchestraRepoUrl },
-    },
-  },
-} = constants;
-
 export default function Home() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [messagingProvider, setMessagingProvider] = useState<MessagingProvider>('slack');
 
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: companyName,
-    alternateName: companyAlternateName,
-    url: websiteUrls.base,
-    logo: websiteUrls.logoAbsoluteUrl,
-    description: companyDescription,
-    sameAs: [githubArchestraRepoUrl],
-    foundingDate: companyFoundingDate,
-    founders: [companyPeople.matvey, companyPeople.ildar],
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: companyAddress.addressCountry,
-      addressLocality: companyAddress.addressLocality,
-    },
-  };
-
   return (
     <div className="min-h-screen flex flex-col">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <Header />
 
       <main className="flex-1">

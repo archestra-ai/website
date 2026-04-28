@@ -29,16 +29,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const absoluteImage = post.image
+    ? post.image.startsWith('http')
+      ? post.image
+      : `https://archestra.ai${post.image}`
+    : undefined;
+
   return {
-    title: `${post.title} | ${companyName} Blog`,
+    title: `${post.title} | Blog`,
     description: post.excerpt,
+    keywords: ['MCP', 'Model Context Protocol', 'enterprise AI', post.title],
     openGraph: {
       title: post.title,
       description: post.excerpt,
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
-      images: post.image ? [{ url: post.image }] : undefined,
+      images: absoluteImage ? [{ url: absoluteImage, width: 1200, height: 630 }] : undefined,
+    },
+    alternates: {
+      canonical: `https://archestra.ai/blog/${slug}`,
     },
   };
 }
@@ -58,8 +68,51 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
+  const postUrl = `https://archestra.ai/blog/${slug}`;
+  const absoluteImage = post.image
+    ? post.image.startsWith('http')
+      ? post.image
+      : `https://archestra.ai${post.image}`
+    : undefined;
+  const wordCount = post.content.trim().split(/\s+/).length;
+
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { '@type': 'Person', name: post.author },
+    publisher: {
+      '@type': 'Organization',
+      name: companyName,
+      url: 'https://archestra.ai',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://archestra.ai/logo.png',
+      },
+    },
+    description: post.excerpt,
+    image: absoluteImage,
+    url: postUrl,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
+    wordCount,
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://archestra.ai' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://archestra.ai/blog' },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `https://archestra.ai/blog/${slug}` },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Header />
 
       <main className="flex-1 relative flex flex-col">

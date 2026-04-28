@@ -142,7 +142,7 @@ export default {
     name: COMPANY_NAME,
     tagline: `${COMPANY_NAME} | Enterprise MCP Platform for AI Agents`,
     description:
-      'Enterprise-grade platform enabling non-technical users to safely leverage AI agents and MCP (Model Context Protocol) servers with security guardrails and compliance.',
+      'Enterprise MCP platform with security guardrails, compliance controls, and a curated catalog of 900+ evaluated Model Context Protocol servers for AI agents.',
     alternateName: 'Archestra.ai',
     foundingDate: '2024',
     address: {
@@ -170,6 +170,12 @@ export default {
       'enterprise AI',
       'secure runtime',
       'prompt injection prevention',
+      'enterprise MCP',
+      'MCP gateway',
+      'MCP security',
+      'MCP compliance',
+      'MCP server catalog',
+      'AI agent security',
     ],
   },
   github: {

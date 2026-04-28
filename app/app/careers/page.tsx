@@ -10,7 +10,7 @@ const {
   company: { name: companyName },
 } = constants;
 
-const TITLE = `We're Hiring | ${companyName}`;
+const TITLE = "We're Hiring";
 const DESCRIPTION = 'Join the Archestra team and help build the enterprise MCP platform for AI agents.';
 
 export const metadata: Metadata = {
@@ -71,9 +71,54 @@ const STEP_COLORS = [
   { ring: 'ring-fuchsia-200', bg: 'bg-fuchsia-600', line: 'from-fuchsia-500 to-pink-500' },
 ];
 
+const jobPostingJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'JobPosting',
+  title: 'Software Engineer',
+  description:
+    'Join Archestra to build open source AI infrastructure. Founding team with prior exits to Grafana Labs and Elastic. Work on the platform core or the customer-facing edge team. Remote-first, with the option to work on-site in London or Montreal.',
+  hiringOrganization: {
+    '@type': 'Organization',
+    name: companyName,
+    sameAs: websiteUrls.base,
+    logo: websiteUrls.logoAbsoluteUrl,
+  },
+  jobLocation: [
+    {
+      '@type': 'Place',
+      address: { '@type': 'PostalAddress', addressLocality: 'London', addressCountry: 'GB' },
+    },
+    {
+      '@type': 'Place',
+      address: { '@type': 'PostalAddress', addressLocality: 'Montreal', addressCountry: 'CA' },
+    },
+  ],
+  jobLocationType: 'TELECOMMUTE',
+  applicantLocationRequirements: {
+    '@type': 'Country',
+    name: 'United Kingdom, Europe, United States, Canada, Israel, Armenia, Georgia',
+  },
+  employmentType: 'FULL_TIME',
+  datePosted: '2026-04-15',
+  validThrough: '2027-12-31',
+  baseSalary: {
+    '@type': 'MonetaryAmount',
+    currency: 'USD',
+    value: {
+      '@type': 'QuantitativeValue',
+      minValue: 100000,
+      maxValue: 160000,
+      unitText: 'YEAR',
+    },
+  },
+  url: `${websiteUrls.base}/careers`,
+  directApply: false,
+};
+
 export default function CareersPage() {
   return (
     <div className="min-h-screen flex flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingJsonLd) }} />
       <Header />
 
       <main className="flex-1 relative overflow-hidden">

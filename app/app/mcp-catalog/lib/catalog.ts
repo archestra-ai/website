@@ -416,6 +416,19 @@ function loadServersFromSameRepo(targetServer: ArchestraMcpServerManifest): Arch
 }
 
 /**
+ * Get related servers from the same category, sorted by quality score
+ */
+export function getRelatedServers(server: ArchestraMcpServerManifest, limit: number = 6): ArchestraMcpServerManifest[] {
+  if (!server.category) return [];
+
+  const allServers = loadServers();
+  return allServers
+    .filter((s) => s.name !== server.name && s.category === server.category)
+    .sort((a, b) => (b.quality_score ?? 0) - (a.quality_score ?? 0))
+    .slice(0, limit);
+}
+
+/**
  * Count the number of MCP servers in the same repository
  */
 export function countServersInRepo(

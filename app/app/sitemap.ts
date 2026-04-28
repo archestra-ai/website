@@ -4,6 +4,7 @@ import constants from '@constants';
 import { loadServers } from '@mcpCatalog/lib/catalog';
 import { generateMcpCatalogDetailPageUrl } from '@mcpCatalog/lib/urls';
 
+import { getAllPosts } from './blog/utils';
 import { cachedGetAvailableDates, cachedGetChannels, cachedGetThreadsForSitemap } from './community-stream/db/cache';
 
 // Regenerate sitemap every 10 minutes
@@ -17,51 +18,33 @@ const {
 } = constants.website.urls;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Load all MCP servers for dynamic routes
   const servers = loadServers();
+  const posts = getAllPosts();
 
-  // Static pages
-  const staticPages = [
-    {
-      url: websiteBaseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 1,
-    },
-    {
-      url: websiteMcpCatalogUrl,
-      lastModified: new Date(),
-      changeFrequency: 'daily' as const,
-      priority: 0.9,
-    },
-    {
-      url: websiteAboutUrl,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: websiteStateOfMcpUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
+  const staticPages: MetadataRoute.Sitemap = [
+    { url: websiteBaseUrl, lastModified: new Date() },
+    { url: websiteMcpCatalogUrl, lastModified: new Date() },
+    { url: websiteAboutUrl, lastModified: new Date() },
+    { url: websiteStateOfMcpUrl, lastModified: new Date() },
+    { url: `${websiteBaseUrl}/blog`, lastModified: new Date() },
+    { url: `${websiteBaseUrl}/careers`, lastModified: new Date() },
+    { url: `${websiteBaseUrl}/community-stream`, lastModified: new Date() },
   ];
 
-  // Dynamic MCP server pages
-  const serverPages = servers.map((server) => ({
-    url: generateMcpCatalogDetailPageUrl(server.name),
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.6,
+  const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${websiteBaseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
   }));
 
-  // Community stream pages
+  const serverPages: MetadataRoute.Sitemap = servers.map((server) => ({
+    url: generateMcpCatalogDetailPageUrl(server.name),
+    lastModified: server.last_scraped_at ? new Date(server.last_scraped_at) : new Date(),
+  }));
+
   let communityPages: MetadataRoute.Sitemap = [];
   try {
     const channels = await cachedGetChannels();
 
-    // Date-based pages for each channel
     const datePages: MetadataRoute.Sitemap = [];
     for (const ch of channels) {
       const dates = await cachedGetAvailableDates(ch.id);
@@ -69,19 +52,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         datePages.push({
           url: `${websiteBaseUrl}/community-stream/${ch.name}/${date}`,
           lastModified: new Date(date + 'T23:59:59.000Z'),
-          changeFrequency: 'weekly' as const,
-          priority: 0.5,
         });
       }
     }
 
-    // Thread pages (still valuable — unique content with replies)
     const threads = await cachedGetThreadsForSitemap();
-    const threadPages = threads.map((t) => ({
+    const threadPages: MetadataRoute.Sitemap = threads.map((t) => ({
       url: `${websiteBaseUrl}/community-stream/${t.channelName}/${t.ts}`,
       lastModified: new Date(t.createdAt),
-      changeFrequency: 'weekly' as const,
-      priority: 0.4,
     }));
 
     communityPages = [...datePages, ...threadPages];
@@ -89,5 +67,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // DB may not be available at build time
   }
 
-  return [...staticPages, ...serverPages, ...communityPages];
+  return [...staticPages, ...blogPages, ...serverPages, ...communityPages];
 }
