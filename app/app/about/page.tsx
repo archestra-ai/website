@@ -19,7 +19,7 @@ const {
   },
 } = constants;
 
-const TITLE = `About ${companyName} | Team & Mission`;
+const TITLE = 'About Us | Team & Mission';
 const DESCRIPTION =
   'Meet the founding team from Grafana Labs and Elastic building the enterprise-grade MCP platform for AI agents.';
 

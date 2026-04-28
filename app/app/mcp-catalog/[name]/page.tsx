@@ -20,7 +20,7 @@ import ResourcesCard from '@mcpCatalog/components/ResourcesCard';
 import ServerHeader from '@mcpCatalog/components/ServerHeader';
 import TrustScoreBadge from '@mcpCatalog/components/TrustScoreBadge';
 import TrustScoreBadgeMarkdown from '@mcpCatalog/components/TrustScoreBadgeMarkdown';
-import { countServersInRepo, loadServers } from '@mcpCatalog/lib/catalog';
+import { countServersInRepo, getRelatedServers, loadServers } from '@mcpCatalog/lib/catalog';
 import { calculateQualityScore } from '@mcpCatalog/lib/quality-calculator';
 import { generateMcpCatalogDetailPageUrl } from '@mcpCatalog/lib/urls';
 
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const qualityScore = calculateQualityScore(server);
   const mcpCatalogDetailPageUrl = generateMcpCatalogDetailPageUrl(serverId);
 
-  let keywords = ['MCP server', 'Model Context Protocol', serverName];
+  let keywords = ['MCP server', 'Model Context Protocol', serverName, 'enterprise', 'AI agent integration'];
   if (category) {
     keywords.push(category);
   }
@@ -65,9 +65,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${serverName} MCP Server | Documentation & Integration`,
     description:
       description ||
-      `${serverName} - Model Context Protocol server. Quality score: ${
+      `${serverName} - Model Context Protocol server for enterprise AI agent integration. Quality score: ${
         qualityScore.total
-      }/100. ${category ? `Category: ${category}` : ''}`,
+      }/100. ${category ? `Category: ${category}.` : ''}`,
     keywords,
     openGraph: {
       title: `${serverName} MCP Server`,
@@ -125,6 +125,8 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
   const {
     name: serverId,
     display_name: serverName,
+    category,
+    description,
     github_info: gitHubInfo,
     quality_score: qualityScore,
     server: serverConfig,
@@ -137,8 +139,40 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
   const qualityScoreBreakdown =
     qualityScore !== null || serverConfig.type === 'remote' ? calculateQualityScore(server) : null;
 
+  const relatedServers = getRelatedServers(server);
+
+  const mcpCatalogDetailPageUrl = generateMcpCatalogDetailPageUrl(serverId);
+
+  const softwareAppJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: serverName,
+    description: description || `${serverName} MCP server`,
+    applicationCategory: category || 'Developer Tools',
+    operatingSystem: 'Cross-platform',
+    url: mcpCatalogDetailPageUrl,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://archestra.ai' },
+      { '@type': 'ListItem', position: 2, name: 'MCP Catalog', item: 'https://archestra.ai/mcp-catalog' },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: serverName,
+        item: `https://archestra.ai/mcp-catalog/${serverId}`,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Header />
       <main className="flex-1 relative flex flex-col">
         <div
@@ -237,6 +271,31 @@ export default async function MCPDetailPage({ params, searchParams }: PageProps)
           <div className="lg:hidden mt-8">
             <ReadMeCard server={server} />
           </div>
+
+          {relatedServers.length > 0 && (
+            <div className="mt-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Related MCP Servers</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {relatedServers.map((related) => (
+                  <Link
+                    key={related.name}
+                    href={`/mcp-catalog/${related.name}`}
+                    className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-shadow"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-semibold text-gray-900 truncate">{related.display_name}</h3>
+                      {related.quality_score !== null && (
+                        <span className="text-sm font-medium text-gray-500 ml-2 flex-shrink-0">
+                          {related.quality_score}/100
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm text-gray-600 line-clamp-2">{related.description}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </main>
       <Footer />

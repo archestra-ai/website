@@ -116,8 +116,24 @@ async function renderDatePage(
   const availableDates = await cachedGetAvailableDates(ch.id);
 
   const dateIdx = availableDates.indexOf(date);
-  const prevDate = dateIdx > 0 ? availableDates[dateIdx - 1] : null;
-  const nextDate = dateIdx >= 0 && dateIdx < availableDates.length - 1 ? availableDates[dateIdx + 1] : null;
+  let prevDate: string | null = null;
+  let nextDate: string | null = null;
+
+  if (dateIdx >= 0) {
+    // Date exists in available dates
+    prevDate = dateIdx > 0 ? availableDates[dateIdx - 1] : null;
+    nextDate = dateIdx < availableDates.length - 1 ? availableDates[dateIdx + 1] : null;
+  } else {
+    // Date not in available dates (no messages on this day) — find nearest neighbors
+    const insertIdx = availableDates.findIndex((d) => d > date);
+    if (insertIdx === -1) {
+      // All available dates are before this date
+      prevDate = availableDates.length > 0 ? availableDates[availableDates.length - 1] : null;
+    } else {
+      prevDate = insertIdx > 0 ? availableDates[insertIdx - 1] : null;
+      nextDate = availableDates[insertIdx];
+    }
+  }
 
   const messages = JSON.parse(JSON.stringify(rawMessages));
   const users = JSON.parse(JSON.stringify(rawUsers));

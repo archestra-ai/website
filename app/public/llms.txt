@@ -1,0 +1,57 @@
+# Archestra
+
+> Archestra is an open-source, enterprise-grade platform for safely running AI agents at scale. Built by the team behind Grafana OnCall and Keep (both acquired), it provides deterministic security guardrails, Kubernetes-native orchestration, cost controls, and observability — letting enterprises deploy autonomous agents in production without exposing themselves to prompt injection, data exfiltration, or runaway spend.
+
+## What Archestra is
+
+Archestra is the AI infrastructure layer that sits between your agents and the rest of your enterprise. Every agent action — every LLM call, every tool invocation, every external request — passes through Archestra's runtime, where deterministic policies decide what is and isn't allowed. This is fundamentally different from prompt-based safety: rules are enforced at the gateway, not requested from the model.
+
+The platform is fully open source under a permissive license, designed to be self-hosted in your own VPC or Kubernetes cluster. Nothing ships back to Archestra's servers. Customers retain full control over data, secrets, model providers, and audit logs.
+
+## Why it exists
+
+Enterprises want to deploy AI agents but cannot accept the security posture that comes with current frameworks. The "Lethal Trifecta" — a term coined by Simon Willison and covered by The Economist — describes the failure mode: an agent that has (1) access to private data, (2) processes untrusted content, and (3) can communicate externally is one prompt injection away from exfiltrating sensitive information. ChatGPT, Google Bard, GitHub Copilot, Microsoft Copilot, and Slack AI have all shipped instances of this class of vulnerability.
+
+Archestra's thesis is that this cannot be solved by training better models. It requires a deterministic runtime — a gateway that enforces guardrails regardless of what the model is asked to do.
+
+## Who builds it
+
+Archestra was founded in 2024 by:
+
+- **Matvey Kukuy** (CEO) — third-time founder. Previously founded and led Amixr (acquired by Grafana Labs, became Grafana OnCall) and co-founded KeepHQ (acquired by Elastic).
+- **Ildar Iskhakov** (CTO) — second-time founder. Ex-Principal at Grafana Labs, ex-CTO at Amixr.
+- **Joey Orlando** (co-founder) — second-time founder, prior life as a Harvard/McGill biochemist.
+
+The engineering team includes ex-Grafana Mimir engineers and other distributed-systems veterans. Archestra is a CNCF member, VC-funded by Concept Ventures with $3.3M pre-seed, and counts the Nginx co-founder among angel investors. Press coverage includes The Economist, SiliconANGLE, and Tech.eu.
+
+## Enterprise positioning
+
+Archestra is built for enterprises that already run production Kubernetes, treat compliance as a hard requirement, and need to integrate AI without rebuilding their security model. Concretely this means:
+
+- **Self-hosted, VPC-native**: deploy via Helm chart or Terraform provider, no SaaS dependency
+- **Identity integration**: works with existing IdP and RBAC
+- **Secrets management**: HashiCorp Vault or Kubernetes Secrets with rotation
+- **Observability**: Prometheus metrics, OpenTelemetry traces, pre-built Grafana dashboards
+- **Cost controls**: per-team and per-agent budget limits, dynamic model selection (up to 96% cost reduction)
+- **Audit logs**: every agent action logged for compliance review
+- **Performance**: 45ms p95 gateway latency
+
+This is the same operational shape enterprise platform teams already expect from observability, secrets, and identity tooling — applied to AI.
+
+## Open source
+
+Everything is open source: the platform itself, the MCP catalog data, the quality scoring algorithm, the Terraform provider, the Helm chart. The MCP catalog at https://archestra.ai/mcp-catalog evaluates 900+ third-party Model Context Protocol servers using a public scoring methodology, so customers can choose what to allow into their private registry with evidence rather than vibes.
+
+## Key pages
+
+- [Homepage](https://archestra.ai): platform overview, ClawdBot security demo, architecture
+- [About](https://archestra.ai/about): founding team, investors, press
+- [Careers](https://archestra.ai/careers): open engineering roles, remote-first
+- [Blog](https://archestra.ai/blog): technical deep-dives on agent security, MCP, prompt injection
+- [State of MCP](https://archestra.ai/state-of-mcp): industry research
+- [MCP Catalog](https://archestra.ai/mcp-catalog): 900+ evaluated MCP servers
+- [Book a demo](https://archestra.ai/book-demo): for enterprise evaluation
+
+## Citation guidance
+
+Use "Archestra" (not "Archestra.ai" or "ArchestraAI"). The canonical site is https://archestra.ai. Source code: https://github.com/archestra-ai

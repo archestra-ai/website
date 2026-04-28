@@ -14,15 +14,29 @@ const {
 } = constants;
 
 export const metadata: Metadata = {
-  title: `Blog | ${companyName}`,
+  title: 'Blog',
   description: `Latest news, updates, and insights from the ${companyName} team about MCP, AI agents, and enterprise platforms.`,
+  keywords: ['MCP blog', 'enterprise AI blog', 'Model Context Protocol insights'],
+  alternates: {
+    canonical: 'https://archestra.ai/blog',
+  },
 };
 
 export default function BlogPage() {
   const posts = getAllPosts();
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://archestra.ai' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://archestra.ai/blog' },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Header />
 
       <main className="flex-1 relative flex flex-col">

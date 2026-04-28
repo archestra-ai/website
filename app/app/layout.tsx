@@ -15,9 +15,56 @@ const robotoMono = Roboto_Mono({
 
 const {
   website: { urls: websiteUrls, keywords: websiteKeywords },
-  company: { name: companyName, tagline: companyTagline, description: companyDescription, people: companyPeople },
+  company: {
+    name: companyName,
+    alternateName: companyAlternateName,
+    tagline: companyTagline,
+    description: companyDescription,
+    foundingDate: companyFoundingDate,
+    address: companyAddress,
+    people: companyPeople,
+  },
   twitter: { handle: twitterHandle },
+  github: {
+    archestra: {
+      archestra: { repoUrl: githubArchestraRepoUrl },
+    },
+  },
 } = constants;
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: companyName,
+  alternateName: companyAlternateName,
+  url: websiteUrls.base,
+  logo: websiteUrls.logoAbsoluteUrl,
+  description: companyDescription,
+  sameAs: [githubArchestraRepoUrl, 'https://www.linkedin.com/company/archestra-ai/'],
+  foundingDate: companyFoundingDate,
+  founders: [companyPeople.matvey, companyPeople.ildar],
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: companyAddress.addressCountry,
+    addressLocality: companyAddress.addressLocality,
+  },
+};
+
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: companyName,
+  url: websiteUrls.base,
+  description: companyDescription,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${websiteUrls.mcpCatalog}?search={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(websiteUrls.base),
@@ -84,6 +131,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
+      </head>
       <body className={robotoMono.variable}>
         {children}
         <GDPRConsentPanel />

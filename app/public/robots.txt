@@ -2,15 +2,11 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /_next/
-Disallow: /static/
 
 # Sitemap
 Sitemap: https://archestra.ai/sitemap.xml
 
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
-
-# Allow search engines to index everything except API routes
+# Search engines
 User-agent: Googlebot
 Allow: /
 Disallow: /api/
@@ -24,5 +20,50 @@ Allow: /
 Disallow: /api/
 
 User-agent: DuckDuckBot
+Allow: /
+Disallow: /api/
+
+# AI search crawlers (explicit allow)
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /api/
+
+User-agent: CCBot
+Allow: /
+Disallow: /api/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /api/
+
+User-agent: cohere-ai
 Allow: /
 Disallow: /api/
